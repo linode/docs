@@ -91,7 +91,7 @@ You can find more formatting instructions and detailed examples on the [PHP Mark
 Topic List and Submission Instructions
 --------------------------------------
 
-Send article submissions to **librarysubmissions @ linode.com** or create a pull request on (GitHub)[github.com/linode/docs]. For more instructions, and to see a topic list, please visit the [Article Submissions](/docs/contribute) guide.
+Send article submissions to **librarysubmissions @ linode.com** or create a pull request on [GitHub](https://github.com/linode/docs). For more instructions, and to see a topic list, please visit the [Article Submissions](/docs/contribute) guide.
 
 Thanks for writing for us! We hope to hear from you soon.
 
