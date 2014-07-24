@@ -155,7 +155,7 @@ If you previously enabled the Linode Backup Service, you may be able to restore 
 
 Did an unauthorized intruder gain access to your Linode? Since it is virtually impossible to determine the full scope of an attacker's reach into a compromised system, you should never continue using a compromised Linode. We recommend that you follow the instructions in [Recovering from a System Compromise](/docs/troubleshooting/compromise-recovery). You'll need to create a new Linode, copy your existing data from the old Linode to the new one, and then swap IP addresses.
 
-### Erasing Everything and Staring Over
+### Erasing Everything and Starting Over
 
 Sometimes it's just easier to erase all of your Linode's disk images and start over with a fresh Linux distribution. This is the "nuclear option" that will erase *everything* on your Linode.
 
