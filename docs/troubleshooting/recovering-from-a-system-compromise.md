@@ -1,1 +1,1 @@
-security/recovering-from-a-system-compromise.md
+../security/recovering-from-a-system-compromise.md
