@@ -1,5 +1,5 @@
 ---
-deprecated: true
+deprecated: false
 author:
   name: Alex Fornuto
   email: afornuto@linode.com
