@@ -5,7 +5,7 @@ author:
 description: 'Learn how to use Lish as a shell for managing or rescuing your Linode.'
 keywords: 'Console,Shell,Lish,rescue'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['using-lish-the-linode-shell/']
+alias: ['using-lish-the-linode-shell/','troubleshooting/using-lish-the-linode-shell/']
 modified: Thursday, May 8th, 2014
 modified_by:
   name: Alex Fornuto
