@@ -5,7 +5,7 @@ author:
 description: 'Learning about DNS records and system structure.'
 keywords: 'DNS,domains,subdomains,domain records,mx records,cname records'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['dns-guides/introduction-to-dns-records/']
+alias: ['dns-guides/introduction-to-dns-records/','dns-guides/introduction-to-dns/']
 modified: Friday, August 2nd, 2013
 modified_by:
   name: Linode
