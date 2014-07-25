@@ -245,9 +245,9 @@ Set your default text editor with the command:
 
     git config --global core.editor <editor-name>
 
-Below is a sample gitconfig file with the username and email address.
+Below is a sample gitconfig file with the username and email address:
 
-    ![Sample gitconfig.](/docs/assets/1594-gitconfig.png)
+![Sample gitconfig.](/docs/assets/1594-gitconfig.png)
 
 Working with the Repository
 ---------------------------
