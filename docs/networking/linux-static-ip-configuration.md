@@ -127,8 +127,7 @@ In the example below, change the IP addresses to reflect the values shown under 
 
     # The loopback interface 
     auto lo 
-    iface lo 
-    inet loopback
+    iface lo inet loopback
     
     # Configuration for eth0 and aliases
     
