@@ -94,7 +94,7 @@ Next, edit your `/etc/hosts` file to resemble the following example, replacing "
     127.0.0.1 localhost.localdomain localhost 12.34.56.78 plato.example.com plato
     ~~~
 
-The value you assign as your system's FQDN should have an "A" record in DNS pointing to your Linode's IP address. For more information on configuring DNS, please see our guide on [configuring DNS with the Linode Manager](/docs/dns-guides/configuring-dns-with-the-linode-manager).
+The value you assign as your system's FQDN should have an "A" record in DNS pointing to your Linode's IP address. For more information on configuring DNS, please see our guide on [configuring DNS with the Linode Manager](/docs/networking/dns/dns-manager).
 
 DNS Resolver Settings
 ---------------------
