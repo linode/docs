@@ -224,7 +224,7 @@ Configuring Git
 After the installation is complete, you will need to configure Git for first time use. There is a built-in tool called **git config** that obtains and sets configuration variables for how Git functions and appears. These configuration variables are located in three different places on a Linux system:
 
 -   /etc/gitconfig file - stores the information for all system users and their respective repositories
--   \~/.gitconfig file - pertains to your user
+-   ~/.gitconfig file - pertains to your user
 -   .git/config - this is the configuration file of your current working repository.
 
 For a Windows system, the `.gitconfig` is located in the `$HOME` directory of the user's profile. The full path is `C:\Document and Settings\$USER` or `C:\Users\$USER`
