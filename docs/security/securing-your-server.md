@@ -146,7 +146,7 @@ Here's how to create a firewall on your Linode:
 
 	{: .file }
 	/etc/iptables.firewall.rules
-	: ~~~
+	
 *filter
 
 #  Allow all loopback (lo0) traffic and drop all traffic to 127/8 that doesn't use lo0
@@ -180,7 +180,7 @@ Here's how to create a firewall on your Linode:
 -A FORWARD -j DROP
 
 COMMIT
-	~~~
+	
 
 5.  Edit the rules as necessary. By default, the rules will allow traffic to the following services and ports: HTTP (80), HTTPS (443), SSH (22), and ping. All other ports will be blocked.
 
