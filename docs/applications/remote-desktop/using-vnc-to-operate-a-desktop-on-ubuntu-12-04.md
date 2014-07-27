@@ -23,7 +23,7 @@ Installing a Desktop and VNC on your Linode
         sudo apt-get update
         sudo apt-get upgrade
 
-2.  Ubuntu has several desktop environments available in its repositories. The following command installs the default desktop, [Gnome](http://www.gnome.org/):
+2.  Ubuntu has several desktop environments available in its repositories. The following command installs the default desktop, [Unity](https://unity.ubuntu.com/):
 
         sudo apt-get install ubuntu-desktop
 
