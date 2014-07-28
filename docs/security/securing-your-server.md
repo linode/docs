@@ -146,42 +146,41 @@ Here's how to create a firewall on your Linode:
 
 	{: .file }
 	/etc/iptables.firewall.rules
-	: ~~~
-	
-		*filter
+	:   ~~~
+	    *filter
 
-		#  Allow all loopback (lo0) traffic and drop all traffic to 127/8 that doesn't use lo0
-		-A INPUT -i lo -j ACCEPT
-		-A INPUT -d 127.0.0.0/8 -j REJECT
+	    #  Allow all loopback (lo0) traffic and drop all traffic to 127/8 that doesn't use lo0
+	    -A INPUT -i lo -j ACCEPT
+	    -A INPUT -d 127.0.0.0/8 -j REJECT
 
-		#  Accept all established inbound connections
-		-A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+	    #  Accept all established inbound connections
+	    -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
 
-		#  Allow all outbound traffic - you can modify this to only allow certain traffic
-		-A OUTPUT -j ACCEPT
+	    #  Allow all outbound traffic - you can modify this to only allow certain traffic
+	    -A OUTPUT -j ACCEPT
 
-		#  Allow HTTP and HTTPS connections from anywhere (the normal ports for websites and SSL).
-		-A INPUT -p tcp --dport 80 -j ACCEPT
-		-A INPUT -p tcp --dport 443 -j ACCEPT
+	    #  Allow HTTP and HTTPS connections from anywhere (the normal ports for websites and SSL).
+	    -A INPUT -p tcp --dport 80 -j ACCEPT
+	    -A INPUT -p tcp --dport 443 -j ACCEPT
 
-		#  Allow SSH connections
-		#
-		#  The -dport number should be the same port number you set in sshd_config
-		#
-		-A INPUT -p tcp -m state --state NEW --dport 22 -j ACCEPT
+	    #  Allow SSH connections
+	    #
+	    #  The -dport number should be the same port number you set in sshd_config
+	    #
+	    -A INPUT -p tcp -m state --state NEW --dport 22 -j ACCEPT
 
-		#  Allow ping
-		-A INPUT -p icmp -j ACCEPT
+	    #  Allow ping
+	    -A INPUT -p icmp -j ACCEPT
 
-		#  Log iptables denied calls
-		-A INPUT -m limit --limit 5/min -j LOG --log-prefix "iptables denied: " --log-level 7
+	    #  Log iptables denied calls
+	    -A INPUT -m limit --limit 5/min -j LOG --log-prefix "iptables denied: " --log-level 7
 
-		#  Drop all other inbound - default deny unless explicitly allowed policy
-		-A INPUT -j DROP
-		-A FORWARD -j DROP
+	    #  Drop all other inbound - default deny unless explicitly allowed policy
+	    -A INPUT -j DROP
+	    -A FORWARD -j DROP
 
-		COMMIT
-	~~~
+	    COMMIT
+	    ~~~
 
 5.  Edit the rules as necessary. By default, the rules will allow traffic to the following services and ports: HTTP (80), HTTPS (443), SSH (22), and ping. All other ports will be blocked.
 
@@ -233,14 +232,14 @@ Here's how to create a firewall on your Linode:
 	{: .file }
 	/etc/network/if-pre-up.d/firewall
 	: ~~~
-		#!/bin/sh 
-		/sbin/iptables-restore < /etc/iptables.firewall.rules
+	#!/bin/sh 
+	/sbin/iptables-restore < /etc/iptables.firewall.rules
 	~~~
 	
 12. Press Control-X and then press Y to save the script.
 13. Set the script's permissions by entering the following command:
 
-    sudo chmod +x /etc/network/if-pre-up.d/firewall
+        sudo chmod +x /etc/network/if-pre-up.d/firewall
 
 That's it! Your firewall rules are in place and protecting your Linode. Remember, you'll need to edit the firewall rules later if you install other software or services.
 
