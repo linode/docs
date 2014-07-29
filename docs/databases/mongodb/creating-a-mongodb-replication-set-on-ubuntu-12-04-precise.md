@@ -28,16 +28,15 @@ The MongoDB repository provides the latest stable release (currently mongodb-10g
 
         nano /etc/hostname
 
-> Replace the name in brackets <> with your own hostname. This example uses the Nano text editor. However, you may use the text editor you prefer.
->
-> {: .file-excerpt }
-/etc/hostname
-> :   ~~~ bash
->     ~~~
->
->     <hana>
->
-> Ubuntu's package management tool requires distributors to sign packages with GPG keys, this ensures consistency and authenticity. Therefore, you will need to copy the MongoDB public GPG key.
+    Replace the name in brackets <> with your own hostname. This example uses the Nano text editor. However, you may use the text editor you prefer.
+
+    {: .file-excerpt }
+    /etc/hostname
+    :   ~~~ bash
+        hana
+        ~~~
+
+    Ubuntu's package management tool requires distributors to sign packages with GPG keys, this ensures consistency and authenticity. Therefore, you will need to copy the MongoDB public GPG key.
 
 2.  Copy the public key with the command:
 
@@ -70,12 +69,15 @@ Once you have all your private IPs, add them to the `hosts` file. Use your favor
 
 {: .file-excerpt }
 /etc/hosts
-
-> 192.168.160.1 mongo1 192.168.170.1 mongo2 192.168.180.1 mongo3
+:   ~~~
+    192.168.160.1 mongo1
+    192.168.170.1 mongo2
+    192.168.180.1 mongo3
+    ~~~
 
 Use your own IP addresses in place of the addresses in the above example. The names of the members in the replication set are also variables, so you may name them what you choose. However, it would be prudent to have some numerical or alphabetic notation as this will make it easier to identify when connecting to the different replication set members.
 
- {: .note }
+{: .note }
 >
 > Replication set member names and the actual server name are different. In this instance, the server name is **hana**, and the replication set members are **mongo1**, **mongo2**, and **mongo3** respectively.
 
