@@ -6,10 +6,12 @@ description: 'Accomplishing system administration tasks from a command prompt.'
 keywords: 'Linux terminal,terminal HOWTO,Linode terminal tutorial'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['using-linux/using-the-terminal/']
-modified: Tuesday, June 21st, 2011
+modified: Monday, July 28, 2014
 modified_by:
-  name: Amanda Folson
+  name: Dave Russell Jr
 published: 'Sunday, August 2nd, 2009'
+=======
+published: 'Monday, July 28, 2014'
 title: Using the Terminal
 ---
 
@@ -49,7 +51,9 @@ You can also use various shortcuts to navigate the file system tree. If you're i
 
     cd ../
 
-You can use `cd ../../` to get to the top level of your file system `/`, or `cd ../jack/` to get from your user directory to the home directory for the user "Jack."
+From the `/home` directory, using `cd ../` will get you to the top level of your file system (`/`). Similarly, if you were to use `cd ../jack/` from the `~/` directory, you would be placed in the `/home/jack` directory. 
+
+Using `cd ./jack` in the `/home` directory, however, will also place you in the `/home/jack` directory, as the `.` indicates the working or current directory (use `pwd` to print the working directory in the terminal).
 
 The relative paths work to specify files and directories for all commands.
 
