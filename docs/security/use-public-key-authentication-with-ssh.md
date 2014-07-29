@@ -5,7 +5,7 @@ author:
 description: 'Access your VPS via SSH using Public Key Authentication.'
 keywords: 'ssh,pki,ssh keys,secure shell,vpn,tunneling'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['security/ssh-keys/','networking/ssh/use-public-key-authentication-with-ssh/']
+alias: ['security/ssh-keys/']
 modified: Thursday, December 5th, 2013
 modified_by:
   name: Linode
