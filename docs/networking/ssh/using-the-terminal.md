@@ -10,8 +10,6 @@ modified: Monday, July 28, 2014
 modified_by:
   name: Dave Russell Jr
 published: 'Sunday, August 2nd, 2009'
-=======
-published: 'Monday, July 28, 2014'
 title: Using the Terminal
 ---
 
