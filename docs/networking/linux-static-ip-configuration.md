@@ -6,45 +6,57 @@ description: 'Setting up networking for multiple IP addresses.'
 keywords: 'static ip,linux networking,ifconfig,configure network,linux network,multiple ip'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['networking/configuring-static-ip-interfaces/']
-modified: Thursday, February 27th, 2014
+modified: Thursday, July 27th, 2014
 modified_by:
-  name: Alex Fornuto
-published: 'Thursday, July 16th, 2009'
+  name: Dave Russell Jr
+published: 'Thursday, July 20th, 2014'
 title: Linux Static IP Configuration
 ---
 
 By default, Linodes use DHCP to acquire their IP address, routing and DNS information. However, DHCP will only assign one IP to your Linode, so if you have multiple IPs, you'll need to use a static configuration. Even if you only have one IP, you can still do a static assignment, but it's not required in most cases.
 
-Obtain Networking Info
-----------------------
+**Note**: As errors in network configurations may cause SSH connections to be disconnected, it is advised that you use the Linode Shell (LISH) when making network configuration changes. See [Using the Linode Shell (LISH)] (/using-the-linode-shell-lish) for more information. 
 
-Before you edit any files, you'll need to obtain some information. Log into the [Linode Manager](https://manager.linode.com) and click the "Remote Access" tab. You'll find your IP addresses (both public and private, if you have a private IP assigned), gateways, netmasks and DNS resolvers.
 
-Keep this information handy, because you'll need to refer to it as you configure your Linode's network settings. Since Linodes only have one virtual ethernet interface (`eth0`), you'll need to assign additional IPs to aliases on that interface. This means you'll append a colon and a number to the interface name. For these examples, the aliases are numbered in the order they were given, but most outbound connections will originate from the IP assigned to the `eth0` interface. If you need server daemons to bind to a particular IP address, you'll need to specify the correct IP in their configuration files.
+Note: Some distributions will automatically determine the netmask based on the block of the IP address. The blocks of each type of IP address are:
+
+  - Public IPv4 - /24
+  - Private IPv4 - /17
+  - IPv6 - /64 (unless you have another pool assigned to you, you can see this from the "Remote Access" tab of the Linode Manager)
+
+
+Obtain Network Configuration
+----------------------------
+
+Before you edit any files, you'll need to obtain some information. Log into the [Linode Manager] (https://manager.linode.com/) and click the "Remote Access" tab. You'll find your IP addresses (both public and private, if you have a private IP assigned), gateways, netmasks and DNS resolvers.
+
+Keep this information handy, because you'll need to refer to it as you configure your Linode's network settings. Since Linodes only have one virtual ethernet interface (**eth0**), you'll need to assign additional IPs to aliases on that interface. This means you'll append a colon and a number to the interface name. For these examples, the aliases are numbered in the order they were given, but most outbound connections will originate from the IP assigned to the **eth0** interface. If you need server daemons to bind to a particular IP address, you'll need to specify the correct IP in their configuration files.
 
 Please note that although your VPS may have multiple IP addresses assigned to it, you should only specify a default gateway for one IP. This gateway should be the one that corresponds to the IP address you are setting it on. For example, if you are setting the default gateway for "12.34.56.78" you should use "12.34.56.1" for the gateway.
 
 A default gateway should not be specified for private IP addresses. Additionally, the subnet mask for private IP addresses should be set to "255.255.128.0" (**not** "255.255.255.0").
 
+
 Hostname and FQDN Settings
 --------------------------
 
-If you haven't already done so, set your system's hostname and FQDN (fully qualified domain name). Your hostname should be something unique; some people name their systems after planets, others after philosophers, etc. Please note that the system's hostname has no relationship to websites or email services hosted on it, aside from providing a name for the system itself. Thus, your hostname should *not* be "www" or anything else too generic.
+If you haven't already done so, set your system's hostname and FQDN (fully qualified domain name). Your hostname should be something unique; some people name their systems after planets, others after philosophers, etc. Please note that the system's hostname has no relationship to websites or email services hosted on it, aside from providing a name for the system itself. Thus, your hostname should not be "www" or anything else too generic.
 
 ### Debian and Ubuntu
 
-Issue the following commands to set the hostname, replacing "plato" with the hostname of your choice:
+
+Issue the following commands to set the hostname, replacing "plato" with the hostname of your choice: 
 
     echo "plato" > /etc/hostname
     hostname -F /etc/hostname
 
-If it exists, edit the file `/etc/default/dhcpcd` to comment out the "SET\_HOSTNAME" directive:
+If it exists, edit the file /etc/default/dhcpd to comment out the "SET_HOSTNAME" directive:
 
-{: .file-excerpt }
+{: .file-excerpt } 
 /etc/default/dhcpcd
-:   ~~~
-    #SET_HOSTNAME='yes'
-    ~~~
+: ~~~
+  #SET_HOSTNAME='yes'
+  ~~~
 
 Proceed to the section entitled "Update /etc/hosts" to continue.
 
@@ -59,6 +71,7 @@ Proceed to the section entitled "Update /etc/hosts" to continue.
 
 ### Slackware
 
+
 Issue the following commands to set the hostname, replacing "plato" with the hostname of your choice:
 
     echo "plato" > /etc/HOSTNAME
@@ -68,14 +81,17 @@ Proceed to the section entitled "Update /etc/hosts" to continue.
 
 ### Gentoo
 
+
 Issue the following commands to set the hostname, replacing "plato" with the hostname of your choice:
 
     echo "HOSTNAME=\"plato\"" > /etc/conf.d/hostname
     /etc/init.d/hostname restart
 
+
 Proceed to the section entitled "Update /etc/hosts" to continue.
 
 ### Arch Linux
+
 
 Issue the following commands to set the hostname, replacing "plato" with the hostname of your choice:
 
@@ -86,15 +102,18 @@ Proceed to the section entitled "Update /etc/hosts" to continue.
 
 ### Update /etc/hosts
 
-Next, edit your `/etc/hosts` file to resemble the following example, replacing "plato" with your chosen hostname, "example.com" with your system's domain name, and "12.34.56.78" with your system's IP address. As with the hostname, the domain name part of your FQDN does not necesarily need to have any relationship to websites or other services hosted on the server (although it may if you wish). As an example, you might host "www.something.com" on your server, but the system's FQDN might be "mars.somethingelse.com."
+
+Next, edit your `/etc/hosts` file to resemble the following example, replacing "plato" with your chosen hostname, "example.com" with your system's domain name, and "12.34.56.78" with your system's IP address. As with the hostname, the domain name part of your FQDN does not necessarily need to have any relationship to websites or other services hosted on the server (although it may if you wish). As an example, you might host "www.something.com" on your server, but the system's FQDN might be "mars.something.com."
 
 {: .file }
 /etc/hosts
-:   ~~~
-    127.0.0.1 localhost.localdomain localhost 12.34.56.78 plato.example.com plato
-    ~~~
+: ~~~
+  127.0.0.1 localhost.localdomain localhost 
+  12.34.56.78 plato.example.com plato
+  ~~~
 
-The value you assign as your system's FQDN should have an "A" record in DNS pointing to your Linode's IP address. For more information on configuring DNS, please see our guide on [configuring DNS with the Linode Manager](/docs/networking/dns/dns-manager).
+The value you assign as your system's FQDN should have an "A" record in DNS pointing to your Linode's IP address.
+For more information on configuring DNS, please see our guide on [configuring DNS with the Linode Manager] (/library/dns-guides/configuring-dns-with-the-linode-manager).
 
 DNS Resolver Settings
 ---------------------
@@ -103,14 +122,15 @@ If you've migrated to a new location, you may need to edit your `/etc/resolv.con
 
 In the example below, change the IP addresses to reflect the values shown under the "Remote Access" tab of the Linode Manager.
 
-{: .file }
+{: .file-excerpt }
 /etc/resolv.conf
-:   ~~~
-    domain members.linode.com
-    nameserver 203.0.113.1
-    nameserver 203.0.113.2
-    options rotate
-    ~~~
+: ~~~
+  domain members.linode.com
+  search members.linode.com
+  nameserver 96.76.54.32
+  nameserver 76.54.32.10
+  options rotate
+  ~~~
 
 Static IP Configuration
 -----------------------
@@ -124,104 +144,149 @@ In the example below, change the IP addresses to reflect the values shown under 
 {: .file }
 /etc/network/interfaces
 :   ~~~
-
-    # The loopback interface 
-    auto lo 
+    # The loopback interface
+    auto lo
     iface lo inet loopback
-    
-    # Configuration for eth0 and aliases
-    
-    # This line ensures that the interface will be brought up during boot. 
-    auto eth0 eth0:0 eth0:1
-    
-    # eth0 - This is the main IP address that will be used for most outbound connections. 
-    # The address, netmask and gateway are all necessary. 
-    iface eth0 inet static 
-        address 12.34.56.78 
-        netmask 255.255.255.0 
+
+    # Configuration for eth0
+    # We no longer need to use aliases (eg. eth0:0 eth0:1 eth0:2) 
+
+    # This line ensures that the interface will be brought up during boot
+    auto eth0
+
+    # The address and gateway are necessary.
+    # The netmask is taken automatically from the block.
+    # Example: /24 is considered to be a public IP address: netmask 255.255.255.0
+    iface eth0 inet static
+        address 12.34.56.78/24
         gateway 12.34.56.1
-    
-    # eth0:0 
-    # This is a second public IP address. 
-    iface eth0:0 inet static 
-        address 34.56.78.90 
-        netmask 255.255.255.0
-    
-    # eth0:1 - Private IPs have no gateway (they are not publicly routable) so all you need to
-    # specify is the address and netmask. 
-    iface eth0:1 inet static 
-        address 192.168.133.234 
-        netmask 255.255.128.0
+
+    # This is a second public IP address
+    iface eth0 inet static
+        address 34.56.78.90/24
+
+    # This is a private IP address. Private IPs do not have a gateway (they are not publicly routable).
+    # All you need to specify is the address and the block. The netmask is taken from the block.
+    # Example: /17 is considered to be a private IP address: netmask 255.255.128.0
+    iface eth0 inet static
+    address 192.168.133.234/17
     ~~~
 
 Restart networking:
 
-    /etc/init.d/networking restart
+    ifdown -a && ifup -a
 
 From the Linode, `ping` each of the default gateways listed on the "Remote Access" tab of the Linode Manager:
 
     ping 12.34.56.1
     ping 98.76.54.1
 
-Once you have confirmed that your networking settings have been correctly configured, issue the following command to uninstall the DHCP client, as it is no longer required.
+### CentOS 7 & Fedora 20
 
-    apt-get remove isc-dhcp-client dhcp3-client dhcpcd
 
-### CentOS & Fedora
-
-Note: CentOS & Fedora may include two services to configure networking, and having the wrong one enabled may cause networking to not come up after making these changes. You can check your configuration using [these instructions](http://www.linode.com/wiki/index.php/NetworkManagerService).
-
-CentOS keeps the information for each interface in a separate file named `/etc/sysconfig/network-scripts/ifcfg-<interface_alias_name>` so you'll need to create one for `eth0` and one for each alias.
+Note: CentOS 7/Fedora 20 no longer uses the `network` service. Instead, use the `nmcli` utility. The Network Manager in CentOS 7 also allows you to have each IP address defined in one interface file. 
 
 In the example below, change the IP addresses to reflect the values shown under the "Remote Access" tab of the Linode Manager.
 
+You must create the `/etc/sysconfig/network-scripts/ifcfg-static-eth0` file.
+
 {: .file }
+/etc/sysconfig/network-scripts/ifcfg-static-eth0
+: ~~~
+  # Configuration for eth0
+  DEVICE=eth0
+  BOOTPROTO=none
+  ONBOOT=yes
+
+  # Adding a public IP address.
+  # The netmask is taken from the PREFIX (where 24 is Public IP, 17 is Private IP)
+  IPADDR0=12.34.56.78
+  PREFIX0=24
+
+  # Specifying the gateway
+  GATEWAY0=12.34.56.1
+
+  # Adding a second public IP address.
+  IPADDR1=34.56.78.90
+  PREFIX1=24
+
+  # Adding a private IP address.
+  IPADDR2=192.168.133.234
+  PREFIX2=17
+  ~~~
+
+Reload NetworkManager:
+
+    nmcli con reload
+
+Put the DHCP network configuration offline:
+
+    nmcli con down "Wired connection 1"
+
+Bring the static network configuration we just created online:
+
+    nmcli con up "System static-eth0" 
+
+Any changes you make to the configuration will require you to reload and down/up the interface.
+
+From the Linode, `ping` each of the default gateways listed on the "Remote Access" tab of the Linode Manager:
+
+    ping 12.34.56.1
+    ping 98.76.54.1
+
+### CentOS 6.5
+
+CentOS 6.5 keeps the information for each interface in a separate file named `/etc/sysconfig/network-scripts/ifcfg-<interface_alias_name>` so you'll need to create one for `eth0` and one for each alias.
+
+In the example below, change the IP addresses to reflect the values shown under the "Remote Access" tab of the Linode Manager.
+ 
+{: .file } 
 /etc/sysconfig/network-scripts/ifcfg-eth0
 : ~~~
-    # Configuration for eth0 
-    DEVICE=eth0 
-    BOOTPROTO=none
-    
-    # This line ensures that the interface will be brought up during boot.
-    ONBOOT=yes
-    
-    # eth0 - This is the main IP address that will be used for most outbound connections. 
-    # The address, netmask and gateway are all necessary. 
-    IPADDR=12.34.56.78 
-    NETMASK=255.255.255.0 
-    GATEWAY=12.34.56.1
-~~~
+  # Configuration for eth0
+  DEVICE=eth0
+  BOOTPROTO=none
 
-{: .file }
+  # This line ensures that the interface will be brought up during boot.
+  ONBOOT=yes
+  # eth0 - This is the main IP address that will be used for most outbound connections.
+  # The address, netmask, and gateway are all necessary.
+  IPADDR=12.34.56.78
+  NETMASK=255.255.255.0
+  GATEWAY=12.34.56.1
+  ~~~
+
+{: .file } 
 /etc/sysconfig/network-scripts/ifcfg-eth0:0
-:   ~~~
-    # Configuration for eth0:0 
-    DEVICE=eth0:0 
-    BOOTPROTO=none
-    
-    # This line ensures that the interface will be brought up during boot. 
-    ONBOOT=yes
-    
-    # eth0:0 
-    IPADDR=34.56.78.90
-    NETMASK=255.255.255.0
-    ~~~
+: ~~~
+  # Configuration for eth0:0
+  DEVICE=eth0:0
+  BOOTPROTO=none
 
-{: .file }
+  # This line ensures that the interface will be brought up during boot.
+  ONBOOT=yes
+
+  # eth0:0
+  IPADDR=34.56.78.90
+  NETMASK=255.255.255.0
+  ~~~
+
+{: .file } 
 /etc/sysconfig/network-scripts/ifcfg-eth0:1
-:   ~~~
-    # Configuration for eth0:1 
-    DEVICE=eth0:1 
-    BOOTPROTO=none
+: ~~~
+  # Configuration for eth0:1
+  DEVICE=eth0:1
+  BOOTPROTO=none
 
-    # This line ensures that the interface will be brought up during boot. 
-    ONBOOT=yes
+  # This line ensures that the interface will be brought up during boot.
+  ONBOOT=yes
 
-    # eth0:1 - Private IPs have no gateway (they are not publicly routable) so all you need to 
-    # specify is the address and netmask. 
-    IPADDR=192.168.133.234 
-    NETMASK=255.255.128.0
-    ~~~
+  # eth0:1
+  # This is a private IP address. Private IPs do not have a gateway (they are not publicly routable).
+  # All you need to specify is the address and netmask
+  IPADDR=192.168.133.234
+  NETMASK=255.255.128.0
+  ~~~
 
 Restart networking:
 
@@ -232,94 +297,23 @@ From the Linode, `ping` each of the default gateways listed on the "Remote Acces
     ping 12.34.56.1
     ping 98.76.54.1
 
-### Arch Linux
-
-Networking on Arch Linux is configured using the `netctl` utility. Ensure that you have `netctl` and `iproute2` installed by issuing the following command:
-
-    pacman -Sy netctl iproute2
-
-The configuration file for netctl is stored in `/etc/netctl/`. You'll want to copy the example configuration from the `/etc/netctl/examples/` directory by issuing the following command:
-
-    cp /etc/netctl/examples/ethernet-static /etc/netctl/static
-
-You will now need to edit the `/etc/netctl/static` file so that it resembles the example below. Be sure to change the IP addresses and gateway to reflect the values shown under the "Remote Access" tab of the Linode Manager. You will also need to set the DNS resolvers in the `DNS=()` portion of the configuration.
-
-{: .file-excerpt }
-/etc/netctl/static
-:   ~~~
-    Description='A basic static ethernet connection' Interface=eth0 Connection=ethernet
-    
-    #
-    # IPv4 Static Configuration 
-    IP=static 
-    Address=('12.34.56.75/24' '192.168.134.241/17') Gateway='12.34.56.1'
-    
-    #
-    # For IPv6 autoconfiguration #IP6=stateless
-    
-    #
-    # For IPv6 static address configuration IP6=static Address6=('1234:5678:9abc:def::1/64') Gateway6='fe80::1'
-    
-    #
-    # DNS resolvers DNS=('14.25.36.9' '41.52.63.8' '47.58.60.7')
-
-For more information on configuring netctl, please see `man netctl.profile`.
-
-You will also need to modify the services that systemd starts when your system boots. You can run the following commands on your Linode to disable DHCP and enable the `netctl` service:
-
-    systemctl disable dhcpcd@eth0
-    netctl enable static
-
-You can check which networking services you have enabled with the following command:
-
-    systemctl list-unit-files --type=service | grep 'net\|dhcp'
-
-The netctl service can be started with the following command:
-
-    netctl start static
-
-If issuing the above command results in a failure, then use `journalctl -xn` and `netctl status static` in order to obtain a more in depth explanation of the failure.
-
-Once you have made these changes `ping` each of the default gateways listed on the "Remote Access" tab of the Linode Manager.
-
-    ping 12.34.56.1
-    ping 98.76.54.1
-
-If you need to add IP addresses later on, you will need to edit your netctl profile in `/etc/netctl/static` and then restart networking with this command.
-
-    netctl restart static
-
 ### Gentoo
 
-In the example below, change the IP addresses to reflect the values shown under the "Remote Access" tab of the Linode Manager. You'll be setting up a static public IP on `eth0` and a static private IP on `eth0:1`. We recommend logging into [Lish](/docs/troubleshooting/using-lish-the-linode-shell), since you'll be restarting the network.
 
-First, open `/etc/conf.d/net` and comment out any existing `config_ethX` and `routes_ethX` lines:
+Networking in Gentoo utilizes the `netifrc` utility. 
 
-    #config_eth0="12.34.56.XXX netmask 255.255.255.0"
-    #routes_eth0="default gw 12.34.56.1"
+You will need to edit the `/etc/conf.d/net` file so that it resembles the example below. However, you should change the IP addresses in the example to match the IP addresses from the "Remote Access" tab of the Linode Manager.
 
-Using the comments in `/usr/share/doc/openrc-*/net.example.bz2` as your guide, create a new `config_eth0` entry that contains both of your addresses in CIDR notation:
+{. file: } 
+/etc/conf.d/net
+: ~~~
+  # Configuration for eth0 on multiple IP addresses
+  # Each IP address is separated by a space
+  config_eth0="12.34.56.78/24 34.56.78.90/24 192.168.133.234/17 1234:5678:9abc:def::1/64"
+  routes_eth0="default gw 12.34.56.1"
+  ~~~
 
-    config_eth0="12.34.56.XXX/24 192.168.133.XXX/17"
-
-**Tip**: You can use the free [whatmask](http://grox.net/utils/whatmask/) online tool to get the correct [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) entry for your netmask.
-
-Now add a new `routes_eth0` entry:
-
-    routes_eth0="default via 12.34.56.1"
-
-Full example of working */etc/conf.d/net*:
-
-    config_eth0="12.34.56.XXX/24 192.168.133.XXX/17"
-
-    routes_eth0="default via 12.34.56.1"
-
-    # Below is optional, and will erase any existing configuration in /etc/resolv.conf
-    dns_servers="34.56.78.90 34.56.78.91 34.56.78.92"
-    dns_search="example.com members.linode.com"
-    dns_domain="example.com"
-
-Restart networking:
+Restart networking interface:
 
     /etc/init.d/net.eth0 restart
 
@@ -328,41 +322,99 @@ From the Linode, `ping` each of the default gateways listed on the "Remote Acces
     ping 12.34.56.1
     ping 98.76.54.1
 
-### OpenSuse
+### Arch Linux
+
+
+Networking on Arch Linux is configured using the `systemd-networkd` service.
+
+The configuration file for systemd-networkd should be created in `/etc/systemd/network`. 
+
+**Note:** The systemd version may be outdated, and you may need to run `pacman -Syuu` before continuing. You can check the version by running `systemctl --version`.
+
+1. Prior to creating the configuration file, you will need to use [LISH] (/using-lish-the-linode-shell) to disable the DHCP connection that we provide by default. To do so, on LISH, use the following command:
+
+    ln -s /dev/null /etc/systemd/network/10-dhcp.network
+
+2. Create the `/etc/systemd/network/50-static.network` file so that it resembles the example below. Be sure to change the IP addresses to reflect the values shown under the "Remote Access" tab of the Linode Manager.
+
+    {: .file }
+    /etc/systemd/network/50-static.network
+    : ~~~
+      [Match]
+      Name=eth0
+
+      [Network]
+      Address=12.34.56.78/24
+      Address=34.56.78.90/24
+      Address=192.168.133.234/17
+      Gateway=12.34.56.1
+      ~~~
+
+3. Restart `systemd-networkd`. To do so, run this command:
+
+    systemctl restart systemd-networkd
+
+Once you have made these changes, `ping` each of the default gateways listed on the "Remote Access" tab of the Linode Manager:
+
+    ping 12.34.56.1
+    ping 98.76.54.1
+
+If this configuration does not work, please open a support ticket with the output of the following commands:
+
+    journalctl -f -n 100
+    ip a
+    systemctl --version
+
+### OpenSUSE
+
 
 In the example below, change the IP addresses to reflect the values shown under the "Remote Access" tab of the Linode Manager.
 
 {: .file }
 /etc/sysconfig/network/ifcfg-eth0
+: ~~~
+  # Configuration for eth0
+  BOOTPROTO='static'
 
-> \# Configuration for eth0 BOOTPROTO='static'
->
-> \# This line ensures that the interface will be brought up during boot. STARTMODE='onboot'
->
-> \# eth0 - This is the main IP address that will be used for most outbound connections. \# The address, netmask and gateway are all necessary. The metric is not necessary but \# ensures you always talk to the same gateway if you have multiple public IPs from \# different subnets. IPADDR='12.34.56.78' NETMASK='255.255.255.0'
->
-> \# eth0:0 \# This is a second public IP address. IPADDR1='34.56.78.90' NETMASK1='255.255.255.0' LABEL1='0'
->
-> \# eth0:1 - Private IP \# Private IP addresses do not have a gateway. IPADDR2='192.168.133.234' NETMASK2='255.255.128.0' LABEL2='1'
+  # This line ensures that the interface will be brought up during boot.
+  STARTMODE='onboot'
 
-Create the following file if necessary:
+  # eth0 - This is the main IP address that will be used for most outbound connections
+  # The address, netmask and gateway are all necessary. The metric is not necessary, but
+  # ensures you always talk to the same gateway if you have multiple public IPs from
+  # different subnets.
+  IPADDR='12.34.56.78'
+  NETMASK='255.255.255.0'
 
-**File**: */etc/sysconfig/network/routes* :
+  # eth0:0
+  # This is a second public IP address.
+  IPADDR1='34.56.78.90'
+  NETMASK1='255.255.255.0'
+  LABEL1='0'
 
-    # Destination   Gateway                 Netmask                 Device
-    66.246.75.0     0.0.0.0                 255.255.255.0           eth0
-    0.0.0.0         12.34.56.1              0.0.0.0                 eth0
+  # eth0:1 - Private IP
+  # Private IP addresses do not have a gateway.
+  IPADDR2='192.168.133.234'
+  NETMASK2='255.255.128.0'
+  LABEL2='1'
+  ~~~
+
+Create the following file if necessary. You will need to change the gateway (0.0.0.0) to your gateway found in the "Remote Access" tab of the Linode Manager: 
+
+{: .file } 
+/etc/sysconfig/network/routes
+: ~~~
+  # Destination   Gateway                 Netmask                 Device
+  default        0.0.0.0                 255.255.255.0           eth0
+  ~~~
 
 Double-check that your `/etc/resolv.conf` exists and is correct.
 
 Restart networking:
 
-    /etc/init.d/network restart
+    systemctl reload network
 
-From the Linode, `ping` each of the default gateways listed on the "Remote Access" tab of the Linode Manager:
+From the Linode, `ping` each of the default gateways listed in the "Remote Access" tab of the Linode Manager. ::
 
     ping 12.34.56.1
     ping 98.76.54.1
-
-
-
