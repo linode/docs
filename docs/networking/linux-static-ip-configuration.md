@@ -262,6 +262,8 @@ You will now need to edit the `/etc/netctl/static` file so that it resembles the
     
     #
     # DNS resolvers DNS=('14.25.36.9' '41.52.63.8' '47.58.60.7')
+    
+    ~~~
 
 For more information on configuring netctl, please see `man netctl.profile`.
 
