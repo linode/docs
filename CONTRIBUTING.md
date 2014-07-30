@@ -12,7 +12,7 @@ Want to make sure you don't waste time writing a long article we can't use? Subm
 Submit Your Article
 -------------------
 
-Submit your article as a pull request, or by emailing **librarysubmissions @ linode.com**. Articles should be sent as a plain text or PHP Markdown Extra file attachment. Writing samples are welcome as well.
+Submit your article as a pull request, or by emailing <librarysubmissions@linode.com>. Articles should be sent as a plain text or PHP Markdown Extra file attachment. Writing samples are welcome as well.
 
 Got images? Attach them as **.png** or **.jpg** files. If an image is over 650 pixels wide, please send both the original and a 650-pixel-wide version.
 
