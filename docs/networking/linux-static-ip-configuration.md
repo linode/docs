@@ -6,7 +6,7 @@ description: 'Setting up networking for multiple IP addresses.'
 keywords: 'static ip,linux networking,ifconfig,configure network,linux network,multiple ip'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['networking/configuring-static-ip-interfaces/']
-modified: Thursday, July 27th, 2014
+modified: Wednesday, July 30th, 2014
 modified_by:
   name: Dave Russell Jr
 published: 'Thursday, July 20th, 2014'
@@ -15,10 +15,11 @@ title: Linux Static IP Configuration
 
 By default, Linodes use DHCP to acquire their IP address, routing and DNS information. However, DHCP will only assign one IP to your Linode, so if you have multiple IPs, you'll need to use a static configuration. Even if you only have one IP, you can still do a static assignment, but it's not required in most cases.
 
-**Note**: As errors in network configurations may cause SSH connections to be disconnected, it is advised that you use the Linode Shell (LISH) when making network configuration changes. See [Using the Linode Shell (LISH)] (/using-the-linode-shell-lish) for more information. 
+{:.note}
+> As errors in network configurations may cause SSH connections to be disconnected, it is advised that you use the Linode Shell (LISH) when making network configuration changes. See [Using the Linode Shell (LISH)] (/using-the-linode-shell-lish) for more information. 
 
 
-Note: Some distributions will determine the netmask based on the block of the IP address. The blocks of each type of IP address are:
+Some distributions will determine the netmask based on the block of the IP address. The blocks of each type of IP address are:
 
   - Public IPv4 - /24
   - Private IPv4 - /17
