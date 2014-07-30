@@ -13,11 +13,9 @@ published: 'Wednesday, May 19th, 2010'
 title: Article Submissions
 ---
 
-Get published by Linode.
+Get published by Linode, and get paid! Earn \$100 per article, if it's accepted for publication.
 
-Get paid. Earn \$100 per article, if it is accepted for publication.
-
-We're expanding the Linode Library, and we want you to help! If you like writing, teaching people how to use Linux, and money, we want to hear from you. The guidelines are below.
+We're expanding the Linode Guides & Tutorials, and we want you to help! If you like writing, teaching people how to use Linux, and money, we want to hear from you. The guidelines are below.
 
 Topic List
 ----------
