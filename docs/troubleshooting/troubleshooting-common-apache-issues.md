@@ -97,9 +97,14 @@ Sometimes it can be helpful to see extra information from Apache. You can increa
 2.  Locate the `LogLevel` variable, and update it from the default `warn` to `info` or `debug`. `debug` will produce the greatest amount of output.
 
     {: .file-excerpt }
-/etc/apache2/apache2.conf
-
-    > \# \# LogLevel: Control the number of messages logged to the error\_log. \# Possible values include: debug, info, notice, warn, error, crit, \# alert, emerg. \# LogLevel debug
+    /etc/apache2/apache2.conf
+    : ~~~
+      # LogLevel: Control the number of messages logged to the error_log.
+      # Possible values include: debug, info, notice, warn, error, crit,
+      # alert, emerg.
+      # 
+      LogLevel debug
+      ~~~
 
 3.  Restart Apache:
 
