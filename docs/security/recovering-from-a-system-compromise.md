@@ -77,7 +77,7 @@ The next task is to copy your data to the new Linode, and make sure you've purge
 1.  Create a temporary directory on the new Linode.
 2.  Copy any needed user and configuration data from the compromised Linode using [rsync](/docs/linux-tools/utilities/rsync) or `scp`. If you are not familiar with these programs, you can find more information by entering the `man rsync` or `man scp` commands.
 
-    > **warning**
+    {: .caution }
     >
     > Do not log in to the new Linode from the compromised Linode. Files should be pulled from the compromised server to your new setup instead.
 
