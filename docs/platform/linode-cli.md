@@ -183,9 +183,10 @@ The Linode CLI requires your API key to function. If you need to generate an API
 -   In the `.linodecli/config` file:
 
     {: .file-excerpt }
-.linodecli/config
-
-    > ... api-key SampleKey123456 ...
+    .linodecli/config
+    :   ~~~
+        ... api-key SampleKey123456 ...
+        ~~~
 
 -   As an environment variable:
 
@@ -406,12 +407,12 @@ Sample output:
 
     managed: yes
     balance: $ 0.00
+    transfer pool: 6732.00GB 
+    transfer used: 13.02GB
+    transfer billable: 0.00GB
+    billing method: prepay
 
-> transfer pool: 6732.00GB transfer used: 13.02GB
 
-> transfer billable: 0.00GB
-> :   billing method: prepay
->
 To see all the available options, check the man pages:
 
     man linode-account
