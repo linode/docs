@@ -18,7 +18,7 @@ Public key authentication provides SSH users with the convenience of logging in 
 Intro to SSH Keys Authentication
 --------------------------------
 
-SSH keys come in pairs; a private and a public key. Usually the private key is saved as `~/.ssh/id_rsa` and the public key is `~/.ssh/id_rsa.pub`. The public key is meant to be handed out freely, and added to servers you wish to connect to in the `~/.ssh/authorized_keys` file. The private key should be secured on your local machine with strict access rules.
+SSH keys come in pairs; a private and a public key. Usually the private key is saved as `~/.ssh/id_<type>` and the public key is `~/.ssh/id_<type>.pub`. The type of encryption most often used by default is RSA, so your keys should be named `id_rsa` and `id_rsa.pub`. The public key is meant to be handed out freely, and added to servers you wish to connect to in the `~/.ssh/authorized_keys` file. The private key should be secured on your local machine with strict access rules.
 
 It might be easier to think of SSH keys in terms of a lock and key. The public part is the lock, which can be copied to multiple locations as long as the private component, or key, is not compromised. Since the private key is password-protected, it is analogous to keeping a physical key in a lockbox. With this example in mind, using an SSH key works as follows. First, the lockbox/passphrase is opened to obtain the key/private key, which is then used to open the lock/public key and grant access to your Linode.
 
