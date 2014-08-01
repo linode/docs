@@ -1,6 +1,6 @@
 ---
 author:
-  name: Amanda Folson
+  name: Linpde
   email: docs@linode.com
 description: 'Installation, configuration and usage guides for bulletin boards and forums.'
 keywords: 'bulletin board,boards,forums,phpbb,smf'
@@ -10,7 +10,7 @@ modified: Tuesday, April 19th, 2011
 modified_by:
   name: System
 published: 'Monday, March 1st, 2010'
-title: Bulletin Boards
+title: Forums
 ---
 
-Bulletin boards and forum systems are a popular means to build communities and help keep people connected without real-time communication methods. There are a number of popular systems that make it possible to establish your own independent forum on the Internet. These guides will help you install your board software of choice on your Linux VPS.
+Forums and bulletin board systems are a popular means to build communities and help keep people connected without real-time communication methods. There are a number of popular systems that make it possible to establish your own independent forum on the Internet. These guides will help you install your board software of choice on your Linux VPS.
