@@ -44,15 +44,15 @@ While there are many options for OS X and Windows, this guide will use [RealVNC 
 
 1.  After installing and opening the viewer, enter your Linode's IP address or domain name into the first field and press **Connect**.
 
-    [![RealVNC Viewer.](/docs/assets/1655-vnc-1.2.png)](/docs/assets/1636-vnc-1.png)
+    [![RealVNC Viewer.](/docs/assets/1655-vnc-1-2.png)](/docs/assets/1636-vnc-1.png)
 
 2.  You will be warned that the connection is unencrypted. We will secure the connection later. For now, press **Continue**.
 
-    [![VNC Security Warning.](/docs/assets/1656-vnc-2.2.png)](/docs/assets/1637-vnc-2.png)
+    [![VNC Security Warning.](/docs/assets/1656-vnc-2-2.png)](/docs/assets/1637-vnc-2.png)
 
 3.  You will be prompted to enter the password you specified in step four of [the previous section](#installing-a-desktop-and-vnc-on-your-linode).
 
-    [![The VNC password prompt.](/docs/assets/1657-vnc-3.2.png)](/docs/assets/1638-vnc-3.png)
+    [![The VNC password prompt.](/docs/assets/1657-vnc-3-2.png)](/docs/assets/1638-vnc-3.png)
 
 4.  After connecting you will be greeted with a terminal emulator window.
 
@@ -70,11 +70,11 @@ There are a variety of VNC clients available for Ubuntu desktops. You can find t
 
 2.  Click the button to `Create a new remote desktop profile`. Name your profile, specify the VNC protocol, and enter your Linode's IP address or domain. Be sure to include `:1` in the `Server` section. In the password section fill in the password you specified in step four of [the previous section](#installing-a-desktop-and-vnc-on-your-linode):
 
-    [![.](/docs/assets/1654-vnc-ubuntu-2.2.png)](/docs/assets/1641-vnc-ubuntu-2.png)
+    [![.](/docs/assets/1654-vnc-ubuntu-2-2.png)](/docs/assets/1641-vnc-ubuntu-2.png)
 
 3.  Press **Connect**.
 
-    [![An Ubuntu desktop computer connected to an Ubuntu desktop session on a Linode.](/docs/assets/1644-vnc-ubuntu-3.1_small.png)](/docs/assets/1645-vnc-ubuntu-3.1.png)
+    [![An Ubuntu desktop computer connected to an Ubuntu desktop session on a Linode.](/docs/assets/1644-vnc-ubuntu-3-1_small.png)](/docs/assets/1645-vnc-ubuntu-3-1.png)
 
 In the next section we will configure your Linode to launch a full desktop.
 
