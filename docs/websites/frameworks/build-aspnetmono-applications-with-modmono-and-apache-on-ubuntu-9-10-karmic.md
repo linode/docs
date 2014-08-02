@@ -212,7 +212,7 @@ Now that you have created a sample database, you can test your installation with
 
 {: .file-excerpt }
 /srv/www/example.com/public\_html/testdb.aspx
-:   ~~~ aspx-cs
+:   ~~~ aspx
     <%@ Page Language="C#" %>
     <%@ Import Namespace="System.Data" %>
     <%@ Import Namespace="MySql.Data.MySqlClient" %>
@@ -254,19 +254,19 @@ Now that you have created a sample database, you can test your installation with
 Next you will need to create a `web.config` file. You can copy and paste the the example below. Please note that `Custom Errors` have been turned off in this web.config for debugging purposes. The `customErrors mode` line should be removed in a production environment.
 
 {: .file-excerpt }
-/srv/www/example.com/public\_html/web.config
-
-> \<configuration\>
-> :   \<system.web\>
->     :   \<customErrors mode="Off"/\>
->         :   \<compilation\>
->             :   \<assemblies\> \<add assembly="MySql.Data"/\> \</assemblies\>
->
->             \</compilation\>
->
->     \</system.web\>
->
-> \</configuration\>
+/srv/www/example.org/public\_html/web.config
+:   ~~~
+    <configuration>
+      <system.web>
+        <customErrors mode="Off"/>
+        <compilation>
+          <assemblies>
+            <add assembly="MySql.Data"/>
+          </assemblies>
+        </compilation>
+      </system.web>
+    </configuration>
+    ~~~
 
 Point your browser to the `testdb.aspx` page. If you see the text "Testing Sample Databases" in your browser with the information that you inserted into the database above, you now have a functioning `mod_mono` installation and can continue with the development and deployment of your own application!
 
