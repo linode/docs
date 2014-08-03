@@ -40,7 +40,7 @@ All services are billed automatically at the end of the month. If you used a ser
 {: .table .table-striped }
 | Service          | Hourly Rate | Monthly
 |:-----------------|:------------|:-------
-| Additional IP    | $1.0015/hr  | $1/mo
+| Additional IP    | $0.0015/hr  | $1/mo
 | Linode Managed   | $0.15/hr    | $100/mo
 | NodeBalancer     | $0.03/hr    | $20/mo
 | Longview Pro 3   | $0.03/hr    | $20/mo
