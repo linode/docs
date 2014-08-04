@@ -69,7 +69,7 @@ Configure Log Rotation
 ----------------------
 
 {: .file-excerpt }
-logrotate configuration
+logrotate.conf
 :   ~~~
     rotate 4
     ~~~
@@ -77,7 +77,7 @@ logrotate configuration
 The `rotate` directive controls how many times a log is rotated before old logs are removed. If you specify a rotation number of `0`, logs will be removed immediately after they are rotated. If you specify an email address using the `mail` directive as file, logs are emailed and removed.
 
 {: .file-excerpt }
-logrotate configuration
+logrotate.conf
 :   ~~~
     mail <squire@example.com>
     ~~~
@@ -90,7 +90,7 @@ Configure Rotation Intervals
 To rotate logs every week, set the following configuration directive:
 
 {: .file-excerpt }
-logrotate configuration
+logrotate.conf
 :   ~~~
     weekly
     ~~~
@@ -100,7 +100,7 @@ When `weekly` is set, logs are rotated if the current week day is lower than the
 To configure monthly log rotation, use the following directive:
 
 {: .file-excerpt }
-logrotate configuration
+logrotate.conf
 :   ~~~
     monthly
     ~~~
@@ -110,7 +110,7 @@ Logs with this value set will rotate every month on the first day of the month t
 For annual rotation:
 
 {: .file-excerpt }
-logrotate configuration
+logrotate.conf
 :   ~~~
     yearly
     ~~~
@@ -120,7 +120,7 @@ Logs are rotated when the current year differs from the date of the last rotatio
 To rotate based on size, use the following directive:
 
 {: .file-excerpt }
-logrotate configuration
+logrotate.conf
 :   ~~~
     size [value]
     ~~~
@@ -131,7 +131,7 @@ Configure Log Compression
 -------------------------
 
 {: .file-excerpt }
-logrotate configuration
+logrotate.conf
 :   ~~~
     compress
     ~~~
@@ -139,7 +139,7 @@ logrotate configuration
 The `compress` directive compresses all logs after they have been rotated. If this directive is placed in the global configuration, all logs will be compressed. If you want to disable a globally enabled compression directive for a specific log, use the `nocompress` directive.
 
 {: .file-excerpt }
-logrotate configuration
+logrotate.conf
 :   ~~~
     compresscmd xz
     ~~~
@@ -150,7 +150,7 @@ Delay Log File Compression
 --------------------------
 
 {: .file-excerpt }
-logrotate configuration
+logrotate.conf
 :   ~~~
     delaycompress
     ~~~
@@ -163,7 +163,7 @@ Maintain Log File Extension
 In typical operation, `logrotate` will append a number to a file name so the `access.log` file would be rotated to `access.log.1`. To ensure that an extension is maintained, use the following directive.
 
 {: .file-excerpt }
-logrotate configuration
+logrotate.conf
 :   ~~~
     extension log
     ~~~
@@ -176,7 +176,7 @@ Control Log File Permissions
 If your daemon process requires that a log file exist to function properly, `logrotate` may interfere when it rotates logs. As a result, it is possible to have `logrotate` create new empty log files after rotation. Consider the following example:
 
 {: .file-excerpt }
-logrotate configuration
+logrotate.conf
 :   ~~~
     create 640 www-data users
     ~~~
@@ -189,7 +189,7 @@ Running Commands
 `logrotate` can run commands before and after rotation to ensure that routine tasks associated with log ration are run such as restarting or reloading daemons and passing other kinds of signals. To run a command before rotation begins, use a directive similar to the following:
 
 {: .file-excerpt }
-logrotate configuration
+logrotate.conf
 :   ~~~
     prerotate
         touch /srv/www/example.com/application/tmp/stop
@@ -199,7 +199,7 @@ logrotate configuration
 The command `touch /srv/www/example.com/application/tmp/stop` runs before rotating the logs. Ensure that there are no errant directives or commands on the lines that contain `prerotate` and `endscript`. Also be aware that all lines *between* these directives will be executed. To run a command or set of commands after log rotation, consider the following example:
 
 {: .file-excerpt }
-logrotate configuration
+logrotate.conf
 :   ~~~
     postrotate
         touch /srv/www/example.com/application/tmp/start
