@@ -37,10 +37,10 @@ Create the following MX records:
 3.  `ALT2.ASPMX.L.GOOGLE.COM`
     -   Priority = `5`
 
-4.  `ASPMX2.GOOGLEMAIL.COM`
+4.  `ALT3.ASPMX.L.GOOGLE.COM`
     -   Priority = `10`
 
-5.  `ASPMX3.GOOGLEMAIL.COM`
+5.  `ALT4.ASPMX.L.GOOGLE.COM`
     -   Priority = `10`
 
 Please note that although the Google Apps documentation states that there must be a trailing dot after each hostname, this is not required in the Linode DNS Manager. The trailing dot will be added to our DNS records automatically, and should not be specified in the hostname.
