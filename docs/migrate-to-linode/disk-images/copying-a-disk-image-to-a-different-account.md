@@ -5,7 +5,7 @@ author:
 description: Our guide to copying a disk image to a different Linode account
 keywords: 'disk image,migration,moving to different accounts'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['migration/copy-disk-image-different-account/']
+alias: ['migration/copy-disk-image-different-account/','linode-platform/manager/managing-disk-images/']
 modified: Thursday, June 12th, 2014
 modified_by:
   name: Alex Fornuto
