@@ -17,6 +17,5 @@ categories:
  - longview
  - nodebalancer
  - api
- - custom-kernels-distros
 ---
 
