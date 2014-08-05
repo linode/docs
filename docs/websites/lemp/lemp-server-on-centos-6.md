@@ -391,8 +391,9 @@ Edit the `/etc/sudoers` file to comment the `Defaults    requiretty` line and en
 
 {: .file-excerpt }
 /etc/sudoers
-
-> \# Defaults requiretty
+:   ~~~
+    # Defaults requiretty
+    ~~~
 
 Consider the following nginx virtual host configuration. Modify your configuration to resemble the one below, and ensure that the `location ~ \.php$ { }` resembles the one in this example:
 

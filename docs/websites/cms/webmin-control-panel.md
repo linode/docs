@@ -47,8 +47,12 @@ Additionally, on CentOS and Fedora systems, you'll need to create a file with th
 
 {: .file }
 /etc/yum.repos.d/webmin.repo
-
-> [Webmin] name=Webmin Distribution Neutral baseurl=http://download.webmin.com/download/yum enabled=1
+:   ~~~
+    [Webmin]
+    name=Webmin Distribution Neutral
+    baseurl=http://download.webmin.com/download/yum
+    enabled=1
+    ~~~
 
 On CentOS and Fedora systems, you'll also need to run the following command to install the corresponding Webmin GPG key:
 
