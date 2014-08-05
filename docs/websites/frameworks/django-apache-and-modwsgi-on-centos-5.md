@@ -137,8 +137,9 @@ Edit the `/etc/httpd/conf.d/wsgi.conf` file to enable the `mod_wsgi` by uncommen
 
 {: .file-excerpt }
 /etc/httpd/conf.d/wsgi.conf
-
-> LoadModule wsgi\_module modules/mod\_wsgi.so
+:   ~~~
+    LoadModule wsgi_module modules/mod_wsgi.so
+    ~~~
 
 When you have successfully configured your Apache virtual host, and enabled the required module, issue the following command to restart the web server:
 

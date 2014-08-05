@@ -212,9 +212,9 @@ There are several modules not listed here. You may review the list of extended m
 
 Below is a sample rule used in ip6tables:
 
-> \# limit the number of parallel HTTP requests to 16 for the link local network ip6tables -A INPUT -p tcp --syn --dport 80 -s fe80::/64 -m connlimit --connlimit-above 16 --connlimit-mask 64 -j REJECT
->
-> ip6tables -A INPUT -p tcp -m tcp --dport 22 -j ACCEPT
+    # limit the number of parallel HTTP requests to 16 for the link local network 
+    ip6tables -A INPUT -p tcp --syn --dport 80 -s fe80::/64 -m connlimit --connlimit-above 16 --connlimit-mask 64 -j REJECT
+    ip6tables -A INPUT -p tcp -m tcp --dport 22 -j ACCEPT
 
 This rule breaks down as follows:
 
