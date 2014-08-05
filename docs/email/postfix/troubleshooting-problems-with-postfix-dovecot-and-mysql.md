@@ -47,7 +47,7 @@ To check that Postfix and Dovecot are running and to find startup errors, follow
 3.  Examine the results. If you see no output, or output that says `stop/waiting` or `not running`, the service is not running. The next step is to try restarting the services.
 4.  Try to restart the services. Restarting Postfix and Dovecot is also a good troubleshooting procedure even if they're currently running, because then you can examine the startup messages, which can give you troubleshooting clues. Enter the following command to restart Postfix:
 
-        service restart postfix
+        service postfix restart
 
     You should see the following messages:
 
@@ -56,7 +56,7 @@ To check that Postfix and Dovecot are running and to find startup errors, follow
 
 5.  Execute the following command to restart Dovecot:
 
-        service restart dovecot
+        service dovecot restart
 
     You should see the following messages:
 
