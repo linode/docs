@@ -5,7 +5,7 @@ author:
 description: 'Instructions for configuring your Linode to run a custom compiled kernel with PV-GRUB.'
 keywords: 'compile kernel,kernel compiling,pv-grub,pvgrub,custom linux kernel,custom linode'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['custom-instances/pv-grub-custom-compiled-kernel/']
+alias: ['platform/custom-kernels-distros/run-a-custom-compiled-kernel-with-pvgrub/',  'custom-instances/pv-grub-custom-compiled-kernel/']
 modified: Thursday, June 19th, 2014
 modified_by:
   name: Linode
