@@ -168,7 +168,7 @@ HTTPS operates on port 443 instead of port 80. Take note of the version of nginx
 
 ### Using SSL with Versions of Nginx Prior to 0.7.14
 
-In addition to basic [nginx virtual host configuration](/docs/web-servers/nginx/configuration/basic), using SSL with nginx requires a modification to the `listen` directive and three ssl-related directives as shown in the following examples:
+In addition to basic [nginx virtual host configuration](/docs/websites/nginx/basic-nginx-configuration/basic), using SSL with nginx requires a modification to the `listen` directive and three ssl-related directives as shown in the following examples:
 
 {: .file-excerpt }
 nginx.conf
@@ -355,7 +355,7 @@ You may wish to consult the following resources for additional information on th
 
 - [Nginx Project Home Page](http://nginx.org)
 - [Nginx Project SSL Documentation](http://wiki.nginx.org/NginxHttpSslModule)
-- [Nginx Basic Configuration Documentation](/docs/web-servers/nginx/configuration/basic)
+- [Nginx Basic Configuration Documentation](/docs/websites/nginx/basic-nginx-configuration/basic)
 - [Nginx Installation Documentation](/docs/web-servers/nginx/installation)
 
 

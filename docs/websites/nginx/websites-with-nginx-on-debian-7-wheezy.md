@@ -131,7 +131,7 @@ You now have a running and fully functional HTTP server powered by the Nginx web
 
 ![Nginx version 1.5.9 test page.](/docs/assets/1537-nginx-1.5.9.png)
 
-Continue reading our introduction to [Basic Nginx Configuration](/docs/web-servers/nginx/configuration) for more information about using and setting up a web server.
+Continue reading our introduction to [Basic Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration) for more information about using and setting up a web server.
 
 More Information
 ----------------

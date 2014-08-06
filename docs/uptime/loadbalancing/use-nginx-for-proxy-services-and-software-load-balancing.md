@@ -17,7 +17,7 @@ The nginx web server can act as a very capable software load-balancer, in additi
 
 Using a proxy is helpful when the demands of serving a single website outgrow the capabilities of a single machine. Additionally, there are some web frameworks, like [Seaside](/docs/frameworks/seaside/) and Ruby On Rails's Mongrel server, that deploy applications on framework-specific web servers. While these single-purpose servers provide powerful application services, they are not suitable for hosting entire applications. In these cases, using nginx as a front-end proxy to pass only the essential requests to the application server is a viable means of unifying dynamic content with static content and providing a stable production environment.
 
-This document provides an overview of using nginx as a front-end proxy server for other HTTP servers, and as a software load balancer to distribute traffic across a cluster of machines providing HTTP resources. For an introductory guide to configuring nginx, please see our [Basic Nginx Configuration](/docs/web-servers/nginx/configuration/basic) guide. If you want a simple nginx deployment with content that uses PHP or Perl scripts, consider following one of our [Installing Nginx](/docs/web-servers/nginx/) guides.
+This document provides an overview of using nginx as a front-end proxy server for other HTTP servers, and as a software load balancer to distribute traffic across a cluster of machines providing HTTP resources. For an introductory guide to configuring nginx, please see our [Basic Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration/basic) guide. If you want a simple nginx deployment with content that uses PHP or Perl scripts, consider following one of our [Installing Nginx](/docs/web-servers/nginx/) guides.
 
 Prerequisites
 -------------
@@ -26,7 +26,7 @@ Before we begin, make sure you have completed the following:
 
 -   Follow the [Getting Started](/docs/getting-started/) guide.
 -   Install the [nginx server](/docs/web-servers/nginx/).
--   Familiarize yourself with [Basic Nginx Configuration](/docs/web-servers/nginx/configuration/basic).
+-   Familiarize yourself with [Basic Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration/basic).
 
 If you're new to Linux server administration, you may be interested in our [using Linux](/docs/using-linux/) document series, including the [Beginner's Guide](/docs/beginners-guide/) and [Administration Basics](/docs/using-linux/administration-basics) guide.
 
@@ -303,7 +303,7 @@ You may wish to consult the following resources for additional information on th
 
 - [nginx Proxy Module](http://wiki.nginx.org/NginxHttpProxyModule)
 - [HTTP Upstream Module](http://wiki.nginx.org/NginxHttpUpstreamModule)
-- [nginx Configuration](/docs/web-servers/nginx/configuration)
+- [nginx Configuration](/docs/websites/nginx/basic-nginx-configuration)
 - [nginx and Perl-FastCGI](/docs/web-servers/nginx/perl-fastcgi)
 - [nginx and PHP-FastCGI](/docs/web-servers/nginx/php-fastcgi)
 
