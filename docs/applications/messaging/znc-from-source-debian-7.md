@@ -62,6 +62,7 @@ This will launch an interactive script asking you for input on a variety of para
         [ ** ] First let's start with some global settings...
         [ ** ] 
         [ ?? ] What port would you like ZNC to listen on? (1025 to 65535): 
+        [ ?? ] Would you like ZNC to listen using SSL? (yes/no) [no]: yes
         [ ?? ] Would you like ZNC to listen using both IPv4 and IPv6? (yes/no) [yes]: 
         [ .. ] Verifying the listener...
         [ >> ] ok
