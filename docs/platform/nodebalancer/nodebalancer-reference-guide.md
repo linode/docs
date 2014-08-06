@@ -13,7 +13,7 @@ published: 'Friday, July 8th, 2011'
 title: NodeBalancer Reference Guide
 ---
 
-This is the NodeBalancer reference guide. Please see the [NodeBalancer How-To](/docs/linode-platform/nodebalancer-howto) for practical examples.
+This is the NodeBalancer reference guide. Please see the [NodeBalancer Getting Started Guide](/docs/platform/nodebalancer/getting-started-with-nodebalancers) for practical examples.
 
 Adding a NodeBalancer
 ---------------------
