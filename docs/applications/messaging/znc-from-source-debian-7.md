@@ -1,3 +1,17 @@
+---
+author:
+    name: Alex Fornuto
+    email: docs@linode.com
+description: 'Using the ZNC bouncer to retain an IRC connection'
+keywords: 'znc,irc,debain,source'
+license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+modified: Wednesday, August 6, 2014
+modified_by: 
+    name: 'Alex Fornuto'
+published: 'Wednesday, August 6, 2014'
+title: 'Installing ZNC from Source on Debian 7.5'
+---
+
 ZNC is an IRC bouncer. It's designed to run on a server that remains connected to an IRC network and buffer messages, so that a local IRC client can connect and disconnect without loosing a chat session or missing any messages. In this guide we'll go over installing ZNC from source, and configuring 
 
 Prepping the system
@@ -54,6 +68,7 @@ To begin configuring ZNC, run the following command:
     znc --makeconf
 
 This will launch an interactive script asking you for input on a variety of parameters. Below is an example output of the `makeconf` script with standard options selected. You can use or change the input provided at your discretion, to match your needs. If you're not sure, use the default option. Many of these options can be adjusted later through the web interface.
+
 
         [ .. ] Checking for list of available modules...
         [ >> ] ok
@@ -196,34 +211,18 @@ This will launch an interactive script asking you for input on a variety of para
         [ >> ] [pid: 12784]
         [ ** ] ZNC 1.4 - http://znc.in
 
+Connecting the client.
+
+You can use any GUI or CLI client you prefer to connect to ZNC. For the example below we'll be using [Colloquy](http://colloquy.info/).
+
+1. 
 
 SSL Encryption
 --------------
 
-The following additional steps will create a self-signed certificate and pass it to ZNC to use. After running these steps, you can encrypt your connection to the ZNC bouncer through the web admin interface.
+If you would like to use a signed certificate to encrypt your connection to ZNC, you can do so by adding your key and certificate to the `znc.pem` file:
 
-1. Generate your SSL key:
-
-    openssl genrsa -out OFTC.key 2048
-
-   You can name your key anything you like. I chose OFTC since I'll be using this certificate on their network.
-
-2. Create a certificate signing request (CSR):
-
-    openssl req -new -key OFTC.key -out OFTC.csr
-
-
-3. Create and sign the new certificate:
-
-    openssl x509 -req -days 365 -in OFTC.csr -signkey OFTC.key -out OFTC.crt
-
-4. Run the command below to get your SSL fingerprint. Save it in a text editor, as you may need it later to register with a network:
-
-    openssl x509 -in OFTC.crt -fingerprint -noout | cut -d'=' -f2 | tr -d ':'
-
-5. Copy your key and certificate in to a new file named `znc.pem`:
-
-    cat OFTC.key OFTC.crt > ZNC.pem
+    cat domain.key domain.crt > ZNC.pem
 
 
 
