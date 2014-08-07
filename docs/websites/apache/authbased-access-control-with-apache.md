@@ -60,8 +60,11 @@ The `AuthUserFile` will, when populated look something like this:
 
 {: .file-excerpt }
 /srv/auth/.htpasswd
-
-> hobby:isiA3Q4djD/.Q fore:{SHA}x9VvwHI6dmgk9VTE0A8o6hbCw2s= squire:\$apr1\$vVzQJxvX\$6EyHww61nnZr6IdQv0pVx/
+:   ~~~
+    hobby:isiA3Q4djD/.Q
+    fore:{SHA}x9VvwHI6dmgk9VTE0A8o6hbCw2s=
+    squire:\$apr1\$vVzQJxvX\$6EyHww61nnZr6IdQv0pVx/
+    ~~~
 
 Each user is specified on their own line. Each line follows the form `[username]:[hash]`, where the `[hash]` is a cryptographic hash of the users' password. This provides one-way encryption and some small measure of additional security.
 
@@ -83,8 +86,9 @@ To address this need, Apache allows you to use a single `UserAuthFile`, containi
 
 {: .file-excerpt }
 Apache configuration option
-
-> Require user squire fore
+:   ~~~
+    Require user squire fore
+    ~~~
 
 Given this directive, the users `squire` and `fore` will be able to log into the resource. Any subset of users can be specified on the `Require` line. Apache also provides the ability to organize users into groups, and then permit access to resources based on group membership. The configuration directives for this setup would look like this:
 
@@ -93,7 +97,7 @@ Apache configuration file
 :   ~~~ apache
     AuthType Basic
     AuthUserFile /srv/auth/.htpasswd
-    AuthGroupFile /srv/auth/.htpgroup
+    AuthGroupFile /srv/auth/.htgroup
     Require group Authorized
     ~~~
 
@@ -101,8 +105,10 @@ In this example, we cite the same `AuthUserFile`, but we add an `AuthGroupFile` 
 
 {: .file-excerpt }
 /srv/auth/.htgroup
-
-> Authorized: squire betty Team: fore hobby
+:   ~~~
+    Authorized: squire betty
+    Team: fore hobby
+    ~~~
 
 Given this `htgroup` file, only the users `squire` and `betty` will have access to the above listed resource. The syntax of the group file follows a simple `[groupname]: [username 1] [username 2] [...]`. You can put as many usernames from your `AuthUserFile` into a group entry as you need for the particular resource.
 
