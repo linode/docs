@@ -135,8 +135,6 @@ Change it to the following to use password authentication:
     local all all md5
     ~~~
 
-> local all all md5
-
 If you changed the authentication method as shown above, restart Postgresql with the following command:
 
     service postgresql restart
