@@ -19,16 +19,16 @@ Prepping the system
 
 1. Start by making sure your system is up to date:
 
-    sudo apt-get update
-    sudo apt-get upgrade
+        sudo apt-get update
+        sudo apt-get upgrade
 
 2. Since we're installing from source, we'll need the `build-essential` package:
 
-    sudo apt-get install build-essential
+       sudo apt-get install build-essential
 
-3. If you want to use SSL encryption on your IRC connections (recommended) you'll also need to install `libssl-dev`:
+3. If you want to use SSL encryption to connect to the web interface (recommended) you'll also need to install `libssl-dev`:
 
-    sudo apt-get install libssl-dev
+       sudo apt-get install libssl-dev
 
 Installation
 ------------
@@ -37,26 +37,26 @@ The commands listed below reference ZNC version 1.4, which is the latest at the 
 
 1. Download the latest version of ZNC:
 
-    wget http://znc.in/releases/znc-1.4.tar.gz
+        wget http://znc.in/releases/znc-1.4.tar.gz
 
 2. Expand the archive file:
 
-    tar -xvf http://znc.in/releases/znc-1.4.tar.gz
+       tar -xvf http://znc.in/releases/znc-1.4.tar.gz
 
 3. Move into the ZNC directory:
 
-    cd znc-1.4
+        cd znc-1.4
 
 4. Run the `configure` script to make sure your Linode has all the necessary prerequisites:
 
-    ./configure
+       ./configure
 
    If not, you will need to install whichever package the script references as missing before continuing.
 
 5. Run the following two commands to install ZNC to your Linode:
 
-    make 
-    sudo make install
+        make 
+        sudo make install
 
 
 Configuration
@@ -76,7 +76,7 @@ This will launch an interactive script asking you for input on a variety of para
         [ ** ] 
         [ ** ] First let's start with some global settings...
         [ ** ] 
-        [ ?? ] What port would you like ZNC to listen on? (1025 to 65535): 
+        [ ?? ] What port would you like ZNC to listen on? (1025 to 65535): 5678
         [ ?? ] Would you like ZNC to listen using SSL? (yes/no) [no]: yes
         [ ?? ] Would you like ZNC to listen using both IPv4 and IPv6? (yes/no) [yes]: 
         [ .. ] Verifying the listener...
@@ -211,18 +211,35 @@ This will launch an interactive script asking you for input on a variety of para
         [ >> ] [pid: 12784]
         [ ** ] ZNC 1.4 - http://znc.in
 
-Connecting the client.
+
+Once you've completed the configuration and launched ZNC, you can access the web interface by going to your Linode's IP address in your web browser. Be sure to specify the port you defined during the configuration script.
+
+[![ZNC's Web Admin](/docs/assets/znc-web-admin_small.png)](/docs/assets/znc-web-admin.png)
+
+Connecting The Client
+---------------------
 
 You can use any GUI or CLI client you prefer to connect to ZNC. For the example below we'll be using [Colloquy](http://colloquy.info/).
 
-1. 
+1. Under the **file** menu, select **New Connection**
 
-SSL Encryption
---------------
+   [![Colloquy Menu](/docs/assets/colloquy-new-connection.png)](/docs/assets/colloquy-new-connection.png)
+
+2. Fill out the New Connection window with the relevant information used during your configuration of ZNC.
+
+   [![New Connection Options](/docs/assets/colloquy-settings.png)](colloquy-settings.png)
+
+3. Press **Connect**. You should be connected to your ZNC server, and from there to any networks and channels you've configured to autojoin.
+
+   [![Colloquy Connected.](/docs/assets/colloquy-connected_small.png)](colloquy-connected.png)
+
+
+SSL Encryption with a Signed Certificate (Optional)
+---------------------------------------------------
 
 If you would like to use a signed certificate to encrypt your connection to ZNC, you can do so by adding your key and certificate to the `znc.pem` file:
 
-    cat domain.key domain.crt > ZNC.pem
+    cat domain.key domain.crt > znc.pem
 
 
 
