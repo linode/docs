@@ -94,9 +94,16 @@ In the next few steps we'll configure VNC to launch the full Gnome desktop.
     :   ~~~
         #!/bin/sh
 
-        # Uncomment the following two lines for normal desktop: \# unset SESSION\_MANAGER \# exec /etc/X11/xinit/xinitrc
+        # Uncomment the following two lines for normal desktop:
+        # unset SESSION_MANAGER
+        # exec /etc/X11/xinit/xinitrc
 
-        [ -x /etc/vnc/xstartup ] && exec /etc/vnc/xstartup [ -r \$HOME/.Xresources ] && xrdb \$HOME/.Xresources xsetroot -solid grey vncconfig -iconic & x-terminal-emulator -geometry 80x24+10+10 -ls -title "\$VNCDESKTOP Desktop" & x-window-manager &
+        [ -x /etc/vnc/xstartup ] && exec /etc/vnc/xstartup
+        [ -r $HOME/.Xresources ] && xrdb $HOME/.Xresources
+        xsetroot -solid grey 
+        vncconfig -iconic &
+        x-terminal-emulator -geometry 80x24+10+10 -ls -title "$VNCDESKTOP Desktop" &
+        x-window-manager &
         ~~~
 
 3.  Edit the last line of the file, replacing it with the following:
@@ -157,7 +164,29 @@ Below we've outlined optional steps to ensure that the VNC server starts automat
     {: .file-excerpt }
     crontab
     :   ~~~
-        Edit this file to introduce tasks to be run by cron. \# \# Each task to run has to be defined through a single line \# indicating with different fields when the task will be run \# and what command to run for the task \# \# To define the time you can provide concrete values for \# minute (m), hour (h), day of month (dom), month (mon), \# and day of week (dow) or use '*' in these fields (for 'any').\# \# Notice that tasks will be started based on the cron's system \# daemon's notion of time and timezones. \# \# Output of the crontab jobs (including errors) is sent through \# email to the user the crontab file belongs to (unless redirected). \# \# For example, you can run a backup of all your user accounts \# at 5 a.m every week with: \# 0 5* \* 1 tar -zcf /var/backups/home.tgz /home/ \# \# For more information see the manual pages of crontab(5) and cron(8) \# \# m h dom mon dow command
+        # Edit this file to introduce tasks to be run by cron.
+        #
+        # Each task to run has to be defined through a single line
+        # indicating with different fields when the task will be run
+        # and what command to run for the task
+        #
+        # To define the time you can provide concrete values for
+        # minute (m), hour (h), day of month (dom), month (mon),
+        # and day of week (dow) or use '*' in these fields (for 'any').
+        #
+        # Notice that tasks will be started based on the cron's system
+        # daemon's notion of time and timezones.
+        #
+        # Output of the crontab jobs (including errors) is sent through
+        # email to the user the crontab file belongs to (unless redirected).
+        #
+        # For example, you can run a backup of all your user accounts
+        # at 5 a.m every week with:
+        # 0 5 * * 1 tar -zcf /var/backups/home.tgz /home/
+        #
+        # For more information see the manual pages of crontab(5) and cron(8)
+        #
+        # m h dom mon dow command
 
         @reboot /usr/bin/vncserver :1
         ~~~
