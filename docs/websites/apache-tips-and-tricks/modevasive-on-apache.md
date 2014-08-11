@@ -43,20 +43,34 @@ You'll then need to add the mod\_evasive configuration to your Apache configurat
 
 {: .file }
 /etc/apache2/apache2.conf (Debian / Ubuntu)
-
-> \# Include module configuration: Include mods-enabled/*.load Include mods-enabled/*.conf
+:   ~~~
+    # Include module configuration: 
+    Include mods-enabled/*.load
+    Include mods-enabled/*.conf
+    ~~~
 
 {: .file }
 /etc/httpd/conf/httpd.conf (CentOS / Fedora)
-
-> LoadModule evasive20\_module /usr/lib/httpd/modules/mod\_evasive20.so \#
+:   ~~~
+    LoadModule evasive20_module /usr/lib/httpd/modules/mod_evasive20.so
+    #
+    ~~~
 
 Below those sections, add the mod\_evasive configuration:
 
 {: .file-excerpt }
 mod\_evasive configuration
-
-> \<IfModule mod\_evasive20.c\> DOSHashTableSize 3097 DOSPageCount 2 DOSSiteCount 50 DOSPageInterval 1 DOSSiteInterval 1 DOSBlockingPeriod 60 DOSEmailNotify <someone@somewhere.com> \</IfModule\>
+:   ~~~
+    <IfModule mod_evasive20.c>
+        DOSHashTableSize 3097
+        DOSPageCount 2
+        DOSSiteCount 50
+        DOSPageInterval 1
+        DOSSiteInterval 1
+        DOSBlockingPeriod 60
+        DOSEmailNotify <someone@somewhere.com>
+    </IfModule>
+    ~~~
 
 You'll then need to restart Apache for your changes to take effect:
 
@@ -122,10 +136,11 @@ IP addresses of trusted clients can be whitelisted to insure they are never deni
 To whitelist an address (or range) add an entry to the Apache configuration in the following fashion:
 
 {: .file }
-/etc/apache2/apache2.conf (Debian / Ubuntu)
-
-> DOSWhitelist 127.0.0.1 DOSWhitelist 127.0.0.\*
-
+/etc/apache2/apache2.conf
+:   ~~~
+    DOSWhitelist 127.0.0.1
+    DOSWhitelist 127.0.0.*
+    ~~~
 Wildcards can be used on up to the last 3 octets if necessary. Multiple DOSWhitelist commands may be used in the configuration.
 
 More Information
