@@ -39,7 +39,7 @@ To hold the files that will be transferred from the other Linode, you should cre
 3.  Select the Linode that will be receiving the disk image. The Linode's dashboard appears.
 4.  Create a disk image to hold the files from the other account's disk image. Select **Create a new Disk Image**. The webpage shown below appears.
 
-[![Creating a configuration profile](/docs/assets/1746-migration3.1_small.png)](/docs/assets/1747-migration3.1.png)
+[![Creating a configuration profile](/docs/assets/1746-migration3-1_small.png)](/docs/assets/1747-migration3-1.png)
 
 5.  Enter a descriptive name for the disk image in the **Label** field.
 6.  Enter a size for the disk image in the **Size** field. You should make the disk image large enough to hold the contents of the other disk image.
