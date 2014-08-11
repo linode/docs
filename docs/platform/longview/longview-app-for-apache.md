@@ -56,17 +56,25 @@ To enable the Apache Longview app manually, follow these steps on your Linode vi
 2.  Your `httpd.conf` file (or the file where you enabled mod\_status; `status.conf` is another common location) should look like the following:
 
     {: .file-excerpt }
-httpd.conf
-
-    > \<IfModule mod\_status.c\> ExtendedStatus On \<Location /server-status\> SetHandler server-status Order deny,allow Deny from all Allow from 127.0.0.1 \</Location\> \</IfModule\>
-
+    httpd.conf
+    :   ~~~
+        <IfModule mod_status.c>
+            ExtendedStatus On
+            <Location /server-status>
+                SetHandler server-status
+                Order deny,allow
+                Deny from all
+                Allow from 127.0.0.1
+            </Location>
+        </IfModule>
+        ~~~
 3.  Edit `/etc/linode/longview.d/Apache.conf` to look like the following:
 
     {: .file }
-/etc/linode/longview.d/Apache.conf
-
-    > location <http://127.0.0.1/server-status?auto>
-
+    /etc/linode/longview.d/Apache.conf
+    :   ~~~
+        location <http://127.0.0.1/server-status?auto>
+        ~~~
 4.  Restart Apache:
 
     Debian and Ubuntu:
@@ -204,21 +212,21 @@ To fix this, follow these steps:
 3.  Check the location for `mod_status`. The default location on Debian and Ubuntu systems is `http://127.0.0.1/server-status?auto` on localhost. In the Apache configuration file (typically `httpd.conf` or `status.conf`), this is designated with the lines:
 
     {: .file-excerpt }
-httpd.conf
-
-    > \<Location /server-status\>
-    > :   SetHandler server-status
-    >
+    httpd.conf
+    :   ~~~
+        <Location /server-status>
+            SetHandler server-status
+        ~~~
     The `SetHandler server-status` line indicates that this is the location block for mod\_status. The location line itself sets the location.
 
 4.  Longview is designed to check the default location automatically. If you use the default location shown above, you should be done. Refresh the Longview Apache tab in the Linode Manager to verify that it's working now.
 5.  If you're not using the default location, you need to create a new file, `/etc/linode/longview.d/Apache.conf`, and set the `location` variable to match what you set in the Apache configuration file:
 
     {: .file }
-/etc/linode/longview.d/Apache.conf
-
-    > location <http://127.0.0.1/url-goes-here>
-
+    /etc/linode/longview.d/Apache.conf
+    :   ~~~
+        location <http://127.0.0.1/url-goes-here>
+        ~~~
 6.  Restart Longview:
 
         service longview restart
@@ -258,9 +266,10 @@ This indicates that you need to add the following line to your Apache configurat
 
 {: .file-excerpt }
 httpd.conf
-
-> ExtendedStatus On
-
+:   ~~~
+    ExtendedStatus On
+    ~~~
+    
 When you've finished modifying the configuration file, restart Apache:
 
 Debian and Ubuntu:
