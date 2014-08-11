@@ -63,9 +63,11 @@ The installation process will prompt you to answer a couple of questions. Use th
 -   Enter `443` for the Webcit HTTPS port (or enter -1 to disable it)
 -   Select your desired language
 
-If you need to reconfigure any of these options later, you can use the following command:
+If you need to reconfigure these options later, you can use the following command:
 
     dpkg-reconfigure citadel-server
+
+To edit the ports later, you will need to edit the file `/etc/default/webcit`.
 
 Enabling Spamassassin Filtering
 -------------------------------
