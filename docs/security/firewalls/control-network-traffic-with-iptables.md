@@ -236,6 +236,14 @@ This rule breaks down as follows:
 - `-j` is for jump, it tells the target of the rule what to do if the packet is a match.
 - `REJECT` means the packet is dropped.
 
+### Required Rules for Non-Static IPv6 Allocations
+
+    # Below are the rules which are required for your IPv6 address to be properly allocated
+    ip6tables -A INPUT -p icmpv6 --icmpv6-type router-advertisement -m hl --hl-eq 255 -j ACCEPT
+    ip6tables -A INPUT -p icmpv6 --icmpv6-type neighbor-solicitation -m hl --hl-eq 255 -j ACCEPT
+    ip6tables -A INPUT -p icmpv6 --icmpv6-type neighbor-advertisement -m hl --hl-eq 255 -j ACCEPT
+    ip6tables -A INPUT -p icmpv6 --icmpv6-type redirect -m hl --hl-eq 255 -j ACCEPT
+
 ### Saving ip6table Rules
 
 Changes made with the ip6tables command are temporary. These rules will disappear upon reboot. To prevent this from happening use the instructions below:
