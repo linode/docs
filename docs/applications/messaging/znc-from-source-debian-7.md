@@ -49,7 +49,7 @@ The commands listed below reference ZNC version 1.4, which is the latest at the 
 
 4. Run the `configure` script to make sure your Linode has all the necessary prerequisites:
 
-       ./configure
+        ./configure
 
    If not, you will need to install whichever package the script references as missing before continuing.
 
@@ -161,6 +161,7 @@ This will launch an interactive script asking you for input on a variety of para
         [ ?? ] IRC server (host only): irc.oftc.net
         [ ?? ] [irc.oftc.net] Port (1 to 65535) [6667]: 6697
         [ ?? ] [irc.oftc.net] Password (probably empty):
+        [ ?? ] Does this server use SSL? (yes/no) [no]: yes
         [ ** ]
         [ ?? ] Would you like to add another server for this IRC network? (yes/no) [no]:
         [ ** ]
@@ -168,7 +169,8 @@ This will launch an interactive script asking you for input on a variety of para
         [ ** ]
         [ ?? ] Would you like to add a channel for ZNC to automatically join? (yes/no) [yes]: yes
         [ ?? ] Channel name: #linode  
-        [ ?? ] Would you like to add another channel? (yes/no) [no]: 
+        [ ?? ] Would you like to add another channel? (yes/no) [no]:
+        [ ?? ] Would you like to set up another network? (yes/no) [no]: no 
         [ ** ]
         [ ?? ] Would you like to set up another user? (yes/no) [no]:
         [ .. ] Writing config [/home/user/.znc/configs/znc.conf]...
@@ -215,7 +217,7 @@ This will launch an interactive script asking you for input on a variety of para
         [ ** ] ZNC 1.4 - http://znc.in
 
 
-Once you've completed the configuration and launched ZNC, you can access the web interface by going to your Linode's IP address in your web browser. Be sure to specify the port you defined during the configuration script.
+Once you've completed the configuration and launched ZNC, you can access the web interface by going to your Linode's IP address in your web browser. Be sure to specify the port you defined during the configuration script, and prefix it with `https://` .
 
 [![ZNC's Web Admin](/docs/assets/znc-web-admin_small.png)](/docs/assets/znc-web-admin.png)
 
