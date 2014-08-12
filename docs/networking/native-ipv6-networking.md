@@ -68,7 +68,7 @@ Note: For Linodes prior to the year 2012, you need to click the **Enable IPv6** 
 Firewall
 --------
 
-If you have already implemented a firewall for IPv6, please use the following rules for IPv6 addresses to properly allocate without manual intervention or static networking. We want to ensure that neighbor solicitation is able to pass through your Linodes firewall.
+If you have already implemented a firewall for IPv6, please ensure the following rules are in place. This will ensure that IPv6 address properly allocate without manual intervention or static networking. We want to ensure that neighbor solicitation is able to pass through your Linodes firewall.
 
     ip6tables -A INPUT -p icmpv6 --icmpv6-type router-advertisement -m hl --hl-eq 255 -j ACCEPT
     ip6tables -A INPUT -p icmpv6 --icmpv6-type neighbor-solicitation -m hl --hl-eq 255 -j ACCEPT
