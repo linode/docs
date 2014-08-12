@@ -65,6 +65,16 @@ The **c** option is for count, and the 3 is for the number of packets sent.
 
 Note: For Linodes prior to the year 2012, you need to click the **Enable IPv6** link from the **Remote Access** tab in the Linode Manager. A manual reboot will be required to enable IPv6.
 
+Firewall
+--------
+
+If you have already implemented a firewall for IPv6, please use the following rules for IPv6 addresses to properly allocate without manual intervention or static networking. We want to ensure that neighbor solicitation is able to pass through your Linodes firewall.
+
+    ip6tables -A INPUT -p icmpv6 --icmpv6-type router-advertisement -m hl --hl-eq 255 -j ACCEPT
+    ip6tables -A INPUT -p icmpv6 --icmpv6-type neighbor-solicitation -m hl --hl-eq 255 -j ACCEPT
+    ip6tables -A INPUT -p icmpv6 --icmpv6-type neighbor-advertisement -m hl --hl-eq 255 -j ACCEPT
+    ip6tables -A INPUT -p icmpv6 --icmpv6-type redirect -m hl --hl-eq 255 -j ACCEPT
+
 IPv6 Address Pools
 ------------------
 
