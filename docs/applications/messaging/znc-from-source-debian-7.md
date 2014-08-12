@@ -69,6 +69,9 @@ To begin configuring ZNC, run the following command:
 
 This will launch an interactive script asking you for input on a variety of parameters. Below is an example output of the `makeconf` script with standard options selected. You can use or change the input provided at your discretion, to match your needs. If you're not sure, use the default option. Many of these options can be adjusted later through the web interface.
 
+{:.note} 
+> Make sure to change the Username variable.
+
 
         [ .. ] Checking for list of available modules...
         [ >> ] ok
