@@ -224,7 +224,7 @@ Connecting The Client
 
 You can use any GUI or CLI client you prefer to connect to ZNC. For the example below we'll be using [Colloquy](http://colloquy.info/).
 
-1. Under the **file** menu, select **New Connection**
+1. Under the **file** menu, select **New Connection**. If you've just opened Colloquy for the first time, this window should open automatically.
 
    [![Colloquy Menu](/docs/assets/colloquy-new-connection.png)](/docs/assets/colloquy-new-connection.png)
 
