@@ -237,6 +237,16 @@ When dealing with IPv6, pool sizes can get very large, very fast. Linode offers 
 | /116   | 4,096                         |
 |--------|-------------------------------|
 
+Firewall
+--------
+
+For IPv6 addresses to properly allocate without manual intervention or static networking ensure that neighbor solicitation is allowed to pass through your Linodes firewall.
+
+    ip6tables -A INPUT -p icmpv6 --icmpv6-type router-advertisement -m hl --hl-eq 255 -j ACCEPT
+    ip6tables -A INPUT -p icmpv6 --icmpv6-type neighbor-solicitation -m hl --hl-eq 255 -j ACCEPT
+    ip6tables -A INPUT -p icmpv6 --icmpv6-type neighbor-advertisement -m hl --hl-eq 255 -j ACCEPT
+    ip6tables -A INPUT -p icmpv6 --icmpv6-type redirect -m hl --hl-eq 255 -j ACCEPT
+
 More Information
 ----------------
 
