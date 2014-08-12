@@ -6,9 +6,9 @@ description: 'Setting up networking for multiple IP addresses.'
 keywords: 'static ip,linux networking,ifconfig,configure network,linux network,multiple ip'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['networking/configuring-static-ip-interfaces/']
-modified: Wednesday, July 30th, 2014
+modified: Tuesday, August 12, 2014
 modified_by:
-  name: Dave Russell Jr
+  name: Linode
 published: 'Thursday, July 20th, 2014'
 title: Linux Static IP Configuration
 ---

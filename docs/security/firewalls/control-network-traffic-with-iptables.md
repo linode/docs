@@ -1,12 +1,12 @@
 ---
 author:
   name: Linode
-  email: bolow@linode.com
+  email: docs@linode.com
 description: 'Use iptables to manage Netfilter rules.'
 keywords: 'iptables,networking,firewalls,filtering'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['security/firewalls/iptables/']
-modified: Monday, April 21st, 2014
+modified: Tuesday, August 12, 2014
 modified_by:
   name: Linode
 published: 'Friday, July 30th, 2010'
