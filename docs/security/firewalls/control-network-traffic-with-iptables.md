@@ -144,6 +144,8 @@ To remove these rules, add `--delete` or `-D` to the command as in the following
 One method of creating a firewall is by blocking all traffic to the system and then allowing traffic on certain ports. Below are sample commands to illustrate the process:
 
     iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+    iptables -A INPUT -i lo -m comment --comment "Allow loopback connections" -j ACCEPT
+    iptables -A INPUT -p icmp -m comment --comment "Allow Ping to work as expected" -j ACCEPT
     iptables -A INPUT -p tcp -m multiport --destination-ports 22,25,53,80,443,465,5222,5269,5280,8999:9003 -j ACCEPT
     iptables -A INPUT -p udp -m multiport --destination-ports 53 -j ACCEPT
     iptables -P INPUT DROP
@@ -158,6 +160,8 @@ Note that the rules described above only control incoming packets, and do not li
 You can use iptables to block all traffic and then only allow traffic from certain IP addresses. These firewall rules are useful for limiting access to specific resources at the network layer. Below is an example:
 
     iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+    iptables -A INPUT -i lo -m comment --comment "Allow loopback connections" -j ACCEPT
+    iptables -A INPUT -p icmp -m comment --comment "Allow Ping to work as expected" -j ACCEPT
     iptables -A INPUT -s 192.168.1.0/24 -j ACCEPT
     iptables -A INPUT -s 12.34.56.78 -j ACCEPT
     iptables -P INPUT DROP
