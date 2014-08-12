@@ -41,7 +41,7 @@ The commands listed below reference ZNC version 1.4, which is the latest at the 
 
 2. Expand the archive file:
 
-       tar -xvf http://znc.in/releases/znc-1.4.tar.gz
+       tar -xvf znc-1.4.tar.gz
 
 3. Move into the ZNC directory:
 
