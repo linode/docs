@@ -67,9 +67,9 @@ Issue the following commands to set the system hostname:
 
 Although you'd normally set the system hostname to the short version of its fully qualified domain name, in this case it should be set to "oracle" to avoid issues with database connections. To complete network configuration, issue the following command:
 
-    /etc/init.d/networking restart
+    ifdown -a && ifup -a
 
-You can use the `ifconfig` command to verify your network interfaces. If everything looks correct, you may proceed to Oracle installation.
+You can use the `ip addr show` command to verify your network interfaces. If everything looks correct, you may proceed to Oracle installation.
 
 Install Required Software
 -------------------------

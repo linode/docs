@@ -104,7 +104,7 @@ Use your own IP addresses in place of the addresses in the above example. The na
 
 2.  Restart the network services to establish communication between the Linodes. Use the command:
 
-        sudo service networking --full-restart
+        sudo ifdown -a && ifup -a
 
 ### Edit the Mongo Conf File
 
