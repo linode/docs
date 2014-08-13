@@ -7,7 +7,7 @@ description: 'Install Oracle 10g to power server-side applications and web apps 
 keywords: 'oracle debian lenny,oracle debian,oracle linux,sql database,relational database,rdbms,oracle 10g'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['databases/oracle/10g-debian-5-lenny/']
-modified: Wednesday, October 3rd, 2012
+modified: Wednesday, August 13, 2014
 modified_by:
   name: Linode
 published: 'Thursday, January 28th, 2010'
