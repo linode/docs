@@ -62,9 +62,19 @@ Nagios can send alerts by email, but to receive them you'll need to add your ema
 2.  Enter your system username and your email address by replacing `your_username` with your username, and `youremail@example.com` with your email address.
 
     {: .file }
-/etc/nagios3/conf.d/contacts\_nagios2.cfg
-
-    > define contact{ contact\_name your\_username service\_notification\_period 24x7 host\_notification\_period 24x7 service\_notification\_options w,u,c,r,f host\_notification\_options d,u,r,f service\_notification\_commands notify-service-by-email host\_notification\_commands notify-host-by-email email <youremail@example.com> }
+    /etc/nagios3/conf.d/contacts\_nagios2.cfg
+    :   ~~~
+        define contact{
+            contact_name your_username
+            service_notification_period 24x7
+            host_notification_period 24x7
+            service_notification_options w,u,c,r,f
+            host_notification_options d,u,r,f
+            service_notification_commands notify-service-by-email
+            host_notification_commands notify-host-by-email
+            email <youremail@example.com>
+        }
+        ~~~
 
     {:.note}
     >

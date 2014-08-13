@@ -82,12 +82,15 @@ Begin by editing the `/usr/local/nagios/etc/objects/contacts.cfg` file's email f
 
 {: .file-excerpt }
 /usr/local/nagios/etc/objects/contacts.cfg
+:   ~~~
+    define contact{
+        contact_name nagiosadmin ; Short name of user use generic-contact
+        ; Inherit default values from generic-contact template (defined above)
+        alias John Doe ; Full name of user
+        email nagiosuser@ducklington.org> ; <<***** CHANGE THIS TO YOUR EMAIL ADDRESS ****** 
+    }
+    ~~~
 
-> define contact{
-> :   contact\_name nagiosadmin ; Short name of user use generic-contact ; Inherit default values from generic-contact template (defined above) alias John Doe ; Full name of user
->
->     email <nagiosuser@ducklington.org> ; \<\<****\* CHANGE THIS TO YOUR EMAIL ADDRESS****\*\* }
->
 Issue the following commands to configure the web interface for Nagios:
 
     cd /opt/nagios-3.2.3
@@ -149,13 +152,18 @@ When the installation process prompts you to define the type of mail setup you'r
 
 {: .file }
 /usr/local/nagios/etc/objects/commands.cfg
+:   ~~~
+    define command{
+        command_name    notify-host-by-email
+        command_line    /usr/bin/printf "%b" "***** Nagios *****\n\nNotification Type: $NOTIFICATIONTYPE$\nHost: $HOSTNAME$\nState: $HOSTSTATE$\nAddress: $HOSTADDRESS$\nInfo: $HOSTOUTPUT$\n\nDate/Time: $LONGDATETIME$\n" | /usr/bin/mail -s "** $NOTIFICATIONTYPE$ Host Alert: $HOSTNAME$ is $HOSTSTATE$ **" $CONTACTEMAIL$
+    }
 
-> define command{
-> :   command\_name notify-host-by-email command\_line /usr/bin/printf "%b" "****\* Nagios*****nnNotification Type: \$NOTIFICATIONTYPE\$nHost: \$HOSTNAME\$nState: \$HOSTSTATE\$nAddress: \$HOSTADDRESS\$nInfo: \$HOSTOUTPUT\$nnDate/Time: \$LONGDATETIME\$n" | /usr/bin/mail -s "*\* \$NOTIFICATIONTYPE\$ Host Alert: \$HOSTNAME\$ is \$HOSTSTATE\$ \*\*" \$CONTACTEMAIL\$
->
-> }
->
-> \# 'notify-service-by-email' command definition define command{ command\_name notify-service-by-email command\_line /usr/bin/printf "%b" "****\* Nagios*****nnNotification Type: \$NOTIFICATIONTYPE\$nnService: \$SERVICEDESC\$nHost: \$HOSTALIAS\$nAddress: \$HOSTADDRESS\$nState: \$SERVICESTATE\$nnDate/Time: \$LONGDATETIME\$nnAdditional [Info:\\n\\n\$SERVICEOUTPUT](Info:\n\n$SERVICEOUTPUT)\$" | /usr/bin/mail -s "*\* \$NOTIFICATIONTYPE\$ Service Alert: \$HOSTALIAS\$/\$SERVICEDESC\$ is \$SERVICESTATE\$ \*\*" \$CONTACTEMAIL\$ }
+    # 'notify-service-by-email' command definition
+    define command{
+        command_name    notify-service-by-email
+        command_line    /usr/bin/printf "%b" "***** Nagios *****\n\nNotification Type: $NOTIFICATIONTYPE$\n\nService: $SERVICEDESC$\nHost: $HOSTALIAS$\nAddress: $HOSTADDRESS$\nState: $SERVICESTATE$\n\nDate/Time: $LONGDATETIME$\n\nAdditional Info:\n\n$SERVICEOUTPUT$" | /usr/bin/mail -s "** $NOTIFICATIONTYPE$ Service Alert: $HOSTALIAS$/$SERVICEDESC$ is $SERVICESTATE$ **" $CONTACTEMAIL$
+    }
+    ~~~
 
 In order for these changes to take effect, you will need to restart Nagios:
 
