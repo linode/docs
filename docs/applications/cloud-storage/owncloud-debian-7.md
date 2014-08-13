@@ -32,6 +32,8 @@ Installing ownCloud
 
 2.  Enter the following path into the file:
 
+        deb http://download.opensuse.org/repositories/isv:/ownCloud:/community/Debian_7.0/ /
+    
 3.  Download the key associated with ownCloud:
 
         wget http://download.opensuse.org/repositories/isv:ownCloud:community/Debian_7.0/Release.key
