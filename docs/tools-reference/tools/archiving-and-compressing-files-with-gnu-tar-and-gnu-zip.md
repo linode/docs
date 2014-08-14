@@ -88,7 +88,7 @@ Compressing Archives
 
 In conventional usage, `tar` is combined with a compression utility to not only archive files for more efficient backup but also compress them. However, some alternate compression and archiving tools with which you may be familiar include both functions in a single procedure. However, modern versions of `tar` are able to interface with common compression libraries and tools like `gzip` to compress archives effectively. Consider the following command:
 
-> tar -czf \~/backup-archive.tar.gz \~/backup/
+    tar -czf ~/backup-archive.tar.gz ~/backup/
 
 The `-z` option in this command compresses the archive using `gzip`, which is a common practice when creating "tar files".
 
