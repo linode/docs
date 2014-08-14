@@ -7,9 +7,9 @@ description: 'Install Oracle 10g to power server-side applications and web apps 
 keywords: 'oracle ubuntu maverick,oracle 10g ubuntu 10.10,oracle ubuntu 10.10,oracle ubuntu,oracle linux,sql database,relational database,rdbms,oracle 10g'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['databases/oracle/10g-ubuntu-10-10-maverick/']
-modified: Wednesday, October 3rd, 2012
+modified: Wednesday, August 13, 2014
 modified_by:
-  name: Linode
+  name: Dave Russell Jr
 published: 'Tuesday, April 5th, 2011'
 title: 'Oracle 10g Express Edition on Ubuntu 10.10 (Maverick)'
 ---
@@ -68,9 +68,9 @@ Issue the following commands to set the system hostname:
 
 Although you'd normally set the system hostname to the short version of its fully qualified domain name, in this case it should be set to "oracle" to avoid issues with database connections. To complete network configuration, issue the following command:
 
-    /etc/init.d/networking restart
+    ifdown -a && ifup -a
 
-You can use the `ifconfig` command to verify your network interfaces. If everything looks correct, you may proceed to Oracle installation.
+You can use the `ip addr show` command to verify your network interfaces. If everything looks correct, you may proceed to Oracle installation.
 
 Install Required Software
 -------------------------

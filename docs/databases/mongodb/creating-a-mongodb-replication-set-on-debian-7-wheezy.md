@@ -1,14 +1,14 @@
 ---
 author:
   name: Linode
-  email: bolow@linode.com
+  email: docs@linode.com
 description: 'Configure a MongoDB ReplSet (Debian)'
 keywords: 'mongodb,nosql,clusters,replset,databases'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['databases/mongodb/debian-7/']
-modified: Wednesday, April 9th, 2014
+modified: Wednesday, August 13, 2014
 modified_by:
-  name: Linode
+  name: Dave Russell Jr
 published: 'Wednesday, April 9th, 2014'
 title: 'Creating a MongoDB Replication Set on Debian 7 (Wheezy)'
 ---
@@ -106,7 +106,7 @@ Use your own IP addresses in place of the addresses in the above example. The na
 
 2.  Restart the network services to establish communication between the Linodes. Use the command:
 
-        sudo service networking --full-restart
+        sudo ifdown -a && sudo ifup -a
 
 ### Edit the Mongo Conf File
 
