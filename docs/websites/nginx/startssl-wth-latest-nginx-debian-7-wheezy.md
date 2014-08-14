@@ -1,3 +1,20 @@
+---
+deprecated: false
+author:
+  name: capecodrailfan
+  email: 
+description: 'Using StartSSL with the latest Nginx on Debian 7'
+keywords: 'startssl,nginx'
+license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+modified: Thursday, August 14, 2014
+modified_by:
+  name: Alex Fornuto
+published: 'Pending'
+title: 'Using StartSSL with the latest Nginx on Debian 7'
+---
+
+This is a Linode Community guide by author [capecodrailfan](https://github.com/capecodrailfan) and submitted via [GitHub](https://github.com/linode/docs).
+
 There comes a time when anyone using a cloud server learns about a new feature in a package only to find out that the latest version of the package is not installed on their VPS and not provided their distribution's repositories. This guide is going to show you how to install the latest stable version of Nginx on Debian Wheezy and deploy a free SSL certificate from StartSSL that will get you an A on the [Qualys SSL Labs SSL Server Test](https://www.ssllabs.com/ssltest/). In order to achieve an "A" on the test we are going to configure Nginx to prefer server ciphers, only use strong ciphers, and disable vulnerable protocols SSLv2 & SSLv3.
 
 ### Prerequisites
