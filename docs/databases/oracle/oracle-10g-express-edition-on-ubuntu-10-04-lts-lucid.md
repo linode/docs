@@ -9,7 +9,7 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['databases/oracle/10g-ubuntu-10-04-lucid/']
 modified: Wednesday, August 13, 2014
 modified_by:
-  name: Linode
+  name: Dave Russell Jr
 published: 'Wednesday, May 5th, 2010'
 title: 'Oracle 10g Express Edition on Ubuntu 10.04 LTS (Lucid)'
 ---

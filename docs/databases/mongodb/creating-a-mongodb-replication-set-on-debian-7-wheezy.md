@@ -8,7 +8,7 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['databases/mongodb/debian-7/']
 modified: Wednesday, August 13, 2014
 modified_by:
-  name: Linode
+  name: Dave Russell Jr
 published: 'Wednesday, April 9th, 2014'
 title: 'Creating a MongoDB Replication Set on Debian 7 (Wheezy)'
 ---
