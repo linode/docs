@@ -10,11 +10,11 @@ This article assumes that you already have Debian Wheezy running on a Linode. If
 
 ### Add the Nginx Debian Repisitory to Your Linode Package Sources
 
-1.  Open up your /etc/apt/source.list file that instructs the package manager which servers to download packages from using your favorite text editor. I'm going to use `nano`, but you could also use `vi` or `emacs`. If you have not used Nano before, I highly recommend reading [Using Nano](https://www.linode.com/docs/tools-reference/tools/using-nano) before continuing.
+1.  Create a new file in `/etc/apt/sources.list.d/` that instructs the package manager to download packages from the Nginx repositories using your favorite text editor. I'm going to use `nano`, but you could also use `vi` or `emacs`. If you have not used Nano before, I highly recommend reading [Using Nano](https://www.linode.com/docs/tools-reference/tools/using-nano) before continuing.
 
-        nano /etc/apt/sources.list
+        nano /etc/apt/sources.list.d/nginx.list
 
-2.  Append the following lines to the bottom of the file. Save your changes and exit your text editor.
+2.  Add the following lines to the file. Save your changes and exit your text editor.
     
         deb http://nginx.org/packages/debian/ wheezy nginx
         deb-src http://nginx.org/packages/debian/ wheezy nginx
