@@ -223,9 +223,21 @@ Here's how to create a firewall on your Linode:
 
         sudo nano /etc/network/if-pre-up.d/firewall
 
-    **CentOS users:** If you are using CentOS 6.2 or higher, save your current iptables rules with the following command:
+    **CentOS users:** 
+
+      If you are using CentOS 6.2 or 6.5, save your current iptables rules with the following command:
 
         /sbin/service iptables save 
+
+      If you are using CentOS 7, the base image does not include iptables-services. You will need to install it before your firewall is persistent through boots
+      
+        yum install -y iptables-services
+        systemctl enable iptables
+        systemctl start iptables
+
+      To save your current rule set use the following command
+
+        /usr/libexec/iptables/iptables.init save
 
 11. Copy and paste the following lines in to the file you just created:
 
