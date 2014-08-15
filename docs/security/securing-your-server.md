@@ -229,7 +229,7 @@ Here's how to create a firewall on your Linode:
 
         /sbin/service iptables save 
 
-      If you are using CentOS 7, the base image does not include iptables-services. You will need to install it before your firewall is persistent through boots
+      If you are using CentOS 7, the base image does not include iptables-services. You will need to install it before your firewall is persistent through boots:
       
         yum install -y iptables-services
         systemctl enable iptables
