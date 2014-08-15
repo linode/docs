@@ -1,7 +1,8 @@
 ---
+deprecated: true
 author:
   name: Linode
-  email: bolow@linode.com
+  email: docs@linode.com
 description: 'Setting up an email and groupware server using Citadel on an Ubuntu 12.04 LTS (Precise Pangolin) Linode VPS.'
 keywords: 'citadel,citadel ubuntu 12.04,ubuntu 12.04 mail server,groupware,email server'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
