@@ -164,6 +164,10 @@ The command `ps` lists active processes by Process ID (PID) numbers. You can use
 
 The `top` command, which is installed by default on all systems, provides a regularly refreshed list of processes and resource utilization information. You may also wish to consider installing the `htop` application (with your system's [package management](/docs/using-linux/package-management/) tool), which provides more coherent output.
 
+The `df` command, which is native to all systems, provides a metric of your current disk usage including free and unused space. You can use the `df -h` command (including the "-h" flag) to list your current space in MegaBytes, which is a little easier to understand. You can also use the command `df -i` to view the number of iNodes your disk image has used and remain available. (An iNode is how the filesystem keeps track of files, and is directly related to the number of files that can be created).
+
+The `du` command, also native to all systems, provides a facet to check which directories are using the most space. There are a number of useful flags which you can use with this command, the first of which the `du -h` command will show the disk usage of every file in your current directory and as a whole in MegaBytes. Another especially useful flag "--max-depth" allows you to specify how many directories deep the command should iterate through. In example to obtain a list of the biggest directories which are contained in your filesystem you would use the command `du -h --max-depth 1 /`. You may also wish to consider installing the `ncdu` application (with your system's [package management](/docs/using-linux/package-management/) tool), which provides a terminal based file browser with usage included in the listings.
+
 The Terminal Environment
 ------------------------
 
