@@ -42,7 +42,7 @@ Both `mod_fastcgi` and `PHP-FPM` are part of repositories for aptitude supported
 
 		{: .file-excerpt }
 		/etc/apt/sources.list
-		:	---
+		:	~~~
 			deb http://mirrors.linode.com/debian/ wheezy main contrib non-free
 			deb-src http://mirrors.linode.com/debian/ wheezy main contrib non-free
 
@@ -52,13 +52,13 @@ Both `mod_fastcgi` and `PHP-FPM` are part of repositories for aptitude supported
 			# wheezy-updates, previously known as 'volatile'
 			deb http://mirrors.linode.com/debian/ wheezy-updates main
 			deb-src http://mirrors.linode.com/debian/ wheezy-updates main
-			---
+			~~~
 
 	b) If you are using Debian's mirrors:
 
 		{: .file-excerpt }
 		/etc/apt/sources.list
-		:	---
+		:	~~~
 			deb http://ftp.es.debian.org/debian stable main contrib non-free
 			deb-src http://ftp.es.debian.org/debian stable main contrib non-free
 
@@ -67,7 +67,7 @@ Both `mod_fastcgi` and `PHP-FPM` are part of repositories for aptitude supported
 
 			deb http://security.debian.org/ wheezy/updates main contrib non-free
 			deb-src http://security.debian.org/ wheezy/updates main contrib non-free
-			---
+			~~~
 
 4. Update the apt-get repositories.
 
@@ -101,17 +101,17 @@ You should see the following output:
 
 	{: .file-excerpt } 
 	/etc/php5/fpm/pool.d/www.conf
-	:	---
+	:	~~~
 		listen = /var/run/php5-fpm.sock
-		---
+		~~~
 
 4. Find the following line and remove it.
 
 	{: .file-excerpt }
 	/etc/php5/fpm/pool.d/www.conf
-	:	---
+	:	~~~
 		listen = 127.0.0.1:9000
-		---
+		~~~
 
 5. Restart the php5-fpm daemon for these changes to take effect.
 
@@ -127,20 +127,20 @@ You should see the following output:
 
 	{: .file-excerpt }
 	/etc/apache2/mods-enabled/fastcgi.conf
-	:	---
+	:	~~~
 		<IfModule mod_fastcgi.c>
 		 AddType application/x-httpd-fastphp5 .php
 		 Action application/x-httpd-fastphp5 /php5-fcgi
 		 Alias /php5-fcgi /usr/lib/cgi-bin/php5-fcgi
 		 FastCgiExternalServer /usr/lib/cgi-bin/php5-fcgi -socket /var/run/php5-fpm.sock -pass-header Authorization
 		</IfModule>
-		---
+		~~~
 
 ###Apache 2.4 or later
 
 	{: .file-excerpt }
 	/etc/apache2/mods-enabled/fastcgi.conf
-	:	---
+	:	~~~
 		<IfModule mod_fastcgi.c>
 		 AddType application/x-httpd-fastphp5 .php
 		 Action application/x-httpd-fastphp5 /php5-fcgi
@@ -150,7 +150,7 @@ You should see the following output:
 		  Require all granted
 		 </Directory>
 		</IfModule>
-		---
+		~~~
 
 8. Save the file and check for configuration errors.
 
@@ -181,7 +181,7 @@ In this section we will create a pool for the domain example.com which is owned 
 
 	{: .file-excerpt }
 	/etc/php5/fpm/pool.d/example.com.conf
-	:	---
+	:	~~~
 		; Start a new pool named 'www'.
 		; the variable $pool can we used in any directive and will be replaced by the
 		; pool name ('www' here)
@@ -198,7 +198,7 @@ In this section we will create a pool for the domain example.com which is owned 
 		...
 
 		listen = /var/run/php5-fpm_example.com.sock
-		---
+		~~~
 
 3. Restart the php5-fpm process for the new pool to be created.
 
@@ -208,7 +208,7 @@ In this section we will create a pool for the domain example.com which is owned 
 
 	{: .file-excerpt }
 	/etc/apache2/sites-available/example.com.conf
-	:	---
+	:	~~~
 		<VirtualHost *:80>
 		    ServerAdmin webmaster@example.com
 		    ServerName example.com
@@ -225,7 +225,7 @@ In this section we will create a pool for the domain example.com which is owned 
 		    </IfModule>
 
 		</VirtualHost>
-		---
+		~~~
 
 5. Check the configuration file for errors.
 
@@ -239,11 +239,12 @@ In this section we will create a pool for the domain example.com which is owned 
 
 	{: .file-excerpt }
 	/var/www/example.com/public_html/user.php
-	:	---
+	:	~~~
 		<?php
 		$processUser = posix_getpwuid( posix_geteuid() );
 		print $processUser('name');
 		?>
+		~~~
 
 8. Access the following URL in a web browser, replacing example.com with your domain or IP address.
 
