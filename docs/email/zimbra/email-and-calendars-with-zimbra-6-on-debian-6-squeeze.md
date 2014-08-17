@@ -31,8 +31,10 @@ Edit your `/etc/hosts` file to resemble the following, substituting your Linode'
 
 {: .file }
 /etc/hosts
-
-> 127.0.0.1 localhost.localdomain localhost 12.34.56.78 plato.example.com plato
+:   ~~~
+    127.0.0.1 localhost.localdomain localhost
+    12.34.56.78 plato.example.com plato
+    ~~~
 
 Before proceeding with the rest of this guide, you should create a DNS entry for your system's FQDN (fully qualified domain name). This means you'll need to make sure "plato.example.com" (substituting your FQDN) points to your Linode's IP address. Additionally, you should create or edit the MX record for your domain to use your FQDN as the host that handles your email. For more information on this topic, please refer to our guides on [DNS basics](/docs/dns-guides/introduction-to-dns) and the [Linode DNS Manager](/docs/dns-guides/configuring-dns-with-the-linode-manager).
 
@@ -63,15 +65,17 @@ Edit the file `util/utilfunc.sh`. Search for the first instance of the following
 
 {: .file-excerpt }
 util/utilfunc.sh
-
-> PREREQ\_PACKAGES="sudo libidn11 libgmp3 libstdc++6"
+:   ~~~
+    PREREQ_PACKAGES="sudo libidn11 libgmp3 libstdc++6"
+    ~~~
 
 Change it to match the following excerpt:
 
 {: .file-excerpt }
 util/utilfunc.sh
-
-> PREREQ\_PACKAGES="sudo libidn11 libgmp3c2 libstdc++6"
+:   ~~~
+    PREREQ_PACKAGES="sudo libidn11 libgmp3c2 libstdc++6"
+    ~~~
 
 Due to stricter behavior in the version supplied in Debian 6, you'll need to temporarily downgrade your `dpkg` binary before proceeding. Issue one of the following commands, depending on whether your running 32-bit or 64-bit Debian:
 

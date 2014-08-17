@@ -42,8 +42,10 @@ Before proceeding, make sure your `/etc/hosts` file has valid entries. For refer
 
 {: .file }
 /etc/hosts
-
-> 127.0.0.1 localhost.localdomain localhost 12.34.56.78 hostname.example.com hostname
+:   ~~~
+    127.0.0.1 localhost.localdomain localhost
+    12.34.56.78 hostname.example.com hostname
+    ~~~
 
 Be sure to replace "12.34.56.78" with your Linode's IP address. Replace "hostname.example.com" with your Linode's fully qualified domain name. Next, make sure your hostname is set in `/etc/hostname` by issuing the following commands (insert your one-word hostname in place of "hostname").
 
@@ -70,15 +72,23 @@ You'll need to edit the file `util/utilfunc.sh` to work around a package require
 
 {: .file-excerpt }
 util/utilfunc.sh
-
-> checkUbuntuRelease PACKAGEINST='dpkg -i' PACKAGERM='dpkg --purge' PACKAGEQUERY='dpkg -s' PACKAGEEXT='deb' PACKAGEVERSION="dpkg-query -W -f \${Version}" PREREQ\_PACKAGES="sudo libidn11 libgmp3 libstdc++6"
+:   ~~~
+    checkUbuntuRelease
+    PACKAGEINST='dpkg -i'
+    PACKAGERM='dpkg --purge'
+    PACKAGEQUERY='dpkg -s'
+    PACKAGEEXT='deb'
+    PACKAGEVERSION="dpkg-query -W -f \${Version}"
+    PREREQ_PACKAGES="sudo libidn11 libgmp3 libstdc++6"
+    ~~~
 
 Change the last line to read as follows:
 
 {: .file-excerpt }
 util/utilfunc.sh
-
-> PREREQ\_PACKAGES="sudo libidn11 libgmp3c2 libstdc++6"
+:   ~~~
+    PREREQ_PACKAGES="sudo libidn11 libgmp3c2 libstdc++6"
+    ~~~
 
 Launch the installer with the following commands.
 
