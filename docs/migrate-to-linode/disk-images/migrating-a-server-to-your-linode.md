@@ -121,7 +121,7 @@ Now the files from your existing server are stored on your Linode. You can't boo
 
 ### Setting the IP Address
 
-After the network copy is complete and the files from the existing server have been moved in to the disk images, you'll need to update the existing server's IP address with your Linode's IP address. Here's how:
+After the network copy is complete and the files from the existing server have been moved in to the disk images, you'll need to update the existing server's IP address and network configuration with your Linode's IP address and network settings. Here's how:
 
 1.  On the Linode, which should still be running in rescue mode, enter the following command to change directories:
 
@@ -133,6 +133,24 @@ After the network copy is complete and the files from the existing server have b
 
 The entire mounted filesystem will be recursively searched for any instances of your old IP address. Note that this replacement operation can take a while to complete.
 
+3.  You can find your IP information in the Linode Manger under the remote access tab.  You'll need your public IP, gateway, and dns server.  On the Linode open the /media/xvda/etc/network/interfaces file
+
+        nano /media/xvda/etc/network/interfaces
+        
+Replace your old network informaiton with the new network settings
+
+        auto lo
+        iface lo inet loopback
+
+        auto eth0
+        iface eth0 inet static
+          address 12.34.56.78
+          netmask 255.255.255.0
+          network 12.34.56.0
+          broadcast 12.34.56.255
+          gateway 12.34.56.1
+          dns-nameservers 72.14.179.5
+          
 ### Configuring Mount Points
 
 Now you should configure mount points for the new disk images. Here's how:
