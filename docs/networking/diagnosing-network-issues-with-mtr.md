@@ -47,13 +47,13 @@ On Arch Linux systems issue the following commands to update the package databas
 
 You may also want to use MTR to diagnose networking issues from your local workstation. If you're running a Linux system, you can install MTR using the commands above. 
 
-If you're running a Mac OS X workstation, you may install MTR with either [MacPorts](http://www.macports.org/) or [Homebrew](http://brew.sh/). To install MTR with MacPorts, you can issue the following command:
-
-    port install mtr
-    
-To install MTR with Homebrew, you can issue a similar command:
+If you're running a Mac OS X workstation, you may install MTR with either [Homebrew](http://brew.sh/), or [MacPorts](http://www.macports.org/). To install MTR with Homebrew, run:
 
     brew install mtr
+
+To install MTR with MacPorts, run:
+
+    port install mtr
 
 If your desktop runs Windows, you can use the windows port of MTR called "WinMTR". You can download this application from the [WinMTR upstream](http://winmtr.sourceforge.net/).
 
