@@ -131,30 +131,10 @@ After the network copy is complete and the files from the existing server have b
 
         find ./ -type f -exec sed -i 's/98\.76\.54\.32/12\.34\.56\.78/' {} \;
 
-The entire mounted filesystem will be recursively searched for any instances of your old IP address. Note that this replacement operation can take a while to complete.
+    The entire mounted filesystem will be recursively searched for any instances of your old IP address. Note that this replacement operation can take a while to complete.
 
-3.  You can find your IP information in the Linode Manger under the remote access tab.  You'll need your public IP, gateway, and dns server.  On the Linode open the `/media/xvda/etc/network/interfaces` file
+3.  You can find your IP information in the Linode Manger under the remote access tab.  You'll need your public IP, gateway, and dns server.  On the Linode, open the releveant network configuration files for your distribution and adjust them accordingly.
 
-        nano /media/xvda/etc/network/interfaces
-        
-Replace your old network information with the new network settings:
-
-        {: .file-excerpt }
-        /media/xvda/network/interfaces
-        : ~~~
-        auto lo
-        iface lo inet loopback
-
-        auto eth0
-        iface eth0 inet static
-          address 12.34.56.78
-          netmask 255.255.255.0
-          network 12.34.56.0
-          broadcast 12.34.56.255
-          gateway 12.34.56.1
-          dns-nameservers 72.14.179.5
-        ~~~
-        
 ### Configuring Mount Points
 
 Now you should configure mount points for the new disk images. Here's how:
