@@ -34,7 +34,7 @@ Installing mod\_evasive
 You'll first want to get the mod\_evasive package, uncompress it, and install it using apxs:
 
     cd /usr/src
-    wget wget http://www.zdziarski.com/blog/wp-content/uploads/2010/02/mod_evasive_1.10.1.tar.gz
+    wget http://www.zdziarski.com/blog/wp-content/uploads/2010/02/mod_evasive_1.10.1.tar.gz
     tar xzf mod_evasive_1.10.1.tar.gz
     cd mod_evasive
     apxs2 -cia mod_evasive20.c
