@@ -43,8 +43,10 @@ Before proceeding, make sure your `/etc/hosts` file has valid entries. For refer
 
 {: .file }
 /etc/hosts
-
-> 127.0.0.1 localhost.localdomain localhost 12.34.56.78 hostname.example.com hostname
+:   ~~~
+    127.0.0.1 localhost.localdomain localhost
+    12.34.56.78 hostname.example.com hostname
+    ~~~
 
 Be sure to replace "12.34.56.78" with your Linode's IP address. Replace "hostname.example.com" with your Linode's fully qualified domain name. Next, make sure your hostname is set in `/etc/hostname` by issuing the following commands (insert your one-word hostname in place of "hostname").
 
