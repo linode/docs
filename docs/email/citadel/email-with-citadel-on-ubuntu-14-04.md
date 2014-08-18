@@ -1,17 +1,16 @@
 ---
-deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Setting up an email and groupware server using Citadel on an Ubuntu 12.04 LTS (Precise Pangolin) Linode VPS.'
-keywords: 'citadel,citadel ubuntu 12.04,ubuntu 12.04 mail server,groupware,email server'
+description: 'Setting up an email and groupware server using Citadel on an Ubuntu 14.04 LTS (Precise Pangolin) Linode VPS.'
+keywords: 'citadel,citadel ubuntu 14.04,ubuntu 14.04 mail server,groupware,email server'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['email/citadel/ubuntu-12-04-precise-pangolin/']
 modified: Friday, August 15, 2014
 modified_by:
   name: Alex Fornuto
 published: 'Monday, November 5th, 2012'
-title: 'Email with Citadel on Ubuntu 12.04 LTS (Precise Pangolin)'
+title: 'Email with Citadel on Ubuntu 14.04 LTS (Precise Pangolin)'
 ---
 
 Citadel is a groupware suite that provides system administrators with an easy method to set up and manage email, calendars, mailing lists and other collaboration tools. It also features an automated installation process and versatile deployment options that allow the application to be scaled across multiple servers.
@@ -68,7 +67,8 @@ If you need to reconfigure these options later, you can use the following comman
 
     dpkg-reconfigure citadel-server
 
-To edit the ports later, you will need to edit the file `/etc/default/webcit`.
+To edit the ports later, you will need to edit the file ``/etc/default/webcit``.
+
 
 Enabling Spamassassin Filtering
 -------------------------------
@@ -115,7 +115,7 @@ Visit the web interface in your Web browser. Using our preceding example, the We
 
 The SSL certificate for your Citadel web interface will be self-signed; accept it to continue. If you don't get a login page in your web browser, you may need to start "webcit" with the following command:
 
-    webcit -d 
+    service webcit start 
 
 Notes for Running Citadel
 -------------------------
@@ -148,5 +148,6 @@ You may wish to consult the following resources for additional information on th
 - [Spamassassin Home Page](http://spamassassin.apache.org/)
 - [Spamassassin Wiki](http://wiki.apache.org/spamassassin/)
 - [Spamassassin Documentation](http://spamassassin.apache.org/doc.html)
+
 
 
