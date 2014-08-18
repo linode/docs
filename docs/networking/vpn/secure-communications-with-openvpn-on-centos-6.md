@@ -50,8 +50,13 @@ Before we can generate the public key infrastructure for OpenVPN we must configu
 
 {: .file }
 /etc/openvpn/easy-rsa/2.0/vars
-
-> export KEY\_COUNTRY="US" export KEY\_PROVINCE="OH" export KEY\_CITY="Oxford" export KEY\_ORG="My Company" export [KEY\_EMAIL="squire@example.com](mailto:KEY_EMAIL="squire@example.com)"
+:   ~~~
+    export KEY_COUNTRY="US"
+    export KEY_PROVINCE="OH"
+    export KEY_CITY="Oxford"
+    export KEY_ORG="My Company"
+    export KEY_EMAIL="squire@example.com"
+    ~~~
 
 Alter the examples to reflect your configuration. This information will be included in certificates you create and it is important that the information be accurate, particularly the `KEY_ORG` and `KEY_EMAIL` values.
 
@@ -143,18 +148,29 @@ We'll now need to configure our server file. There is an example file in `/usr/s
 Modify the `remote` line in your `~/client.conf` file to reflect the OpenVPN server's name.
 
 {: .file }
-\~/client.conf
-
-> \# The hostname/IP and port of the server. \# You can have multiple remote entries \# to load balance between the servers.
->
-> remote example.com 1194
+~/client.conf
+:   ~~~
+    # The hostname/IP and port of the server.
+    # You can have multiple remote entries
+    # to load balance between the servers.
+    remote example.com 1194
+    ~~~
 
 Edit the `client.conf` file to reflect the name of your key. In this example we use `client1` for the file name.
 
 {: .file }
-\~/client.conf
-
-> \# SSL/TLS parms. \# See the server config file for more \# description. It's best to use \# a separate .crt/.key file pair \# for each client. A single ca \# file can be used for all clients. ca ca.crt cert client1.crt key client1.key
+~/client.conf
+:   ~~~
+    # SSL/TLS parms.
+    # See the server config file for more
+    # description. It's best to use
+    # a separate .crt/.key file pair
+    # for each client. A single ca
+    # file can be used for all clients.
+    ca ca.crt
+    cert client1.crt
+    key client1.key
+    ~~~
 
 Copy the `~/client1.conf` file to your client system. You'll need to repeat the entire key generation and distribution process for every user and every key that will connect to your network.
 
@@ -188,15 +204,17 @@ By deploying the following configuration, you will be able to forward *all* traf
 
 {: .file-excerpt }
 /etc/openvpn/server.conf
-
-> push "redirect-gateway def1"
+:   ~~~
+    push "redirect-gateway def1"
+    ~~~
 
 Now edit the `/etc/sysctl.conf` file to modify the following line to ensure that your system is able to forward IPv4 traffic:
 
 {: .file-excerpt }
 /etc/sysctl.conf
-
-> net.ipv4.ip\_forward = 1
+:   ~~~
+    net.ipv4.ip_forward = 1
+    ~~~
 
 Issue the following command to set this variable for the current session:
 
@@ -213,12 +231,16 @@ Before continuing, insert these `iptables` rules into your system's `/etc/rc.loc
 
 {: .file-excerpt }
 /etc/rc.local
-
-> \#!/bin/sh \# \# [...] \#
->
-> iptables -A FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT iptables -A FORWARD -s 10.8.0.0/24 -j ACCEPT iptables -A FORWARD -j REJECT iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -o eth0 -j MASQUERADE
->
-> touch /var/lock/subsys/local
+:   ~~~
+    #!/bin/sh
+    #
+    # [...]
+    #
+    
+    iptables -A FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT iptables -A FORWARD -s 10.8.0.0/24 -j ACCEPT iptables -A FORWARD -j REJECT iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -o eth0 -j MASQUERADE
+    
+    touch /var/lock/subsys/local
+    ~~~
 
 This will enable all client traffic *except* DNS queries to be forwarded through the VPN. To forward DNS traffic through the VPN you will need to install the `dnsmasq` package and modify the `/etc/openvpn/server.conf` package. Begin by issuing the following command to install the service:
 
@@ -228,10 +250,11 @@ After completing the installation the configuration will need to be modified so 
 
 {: .file-excerpt }
 /etc/dnsmasq.conf
-
-> listen-address=127.0.0.1,10.8.0.1
->
-> bind-interfaces
+:   ~~~
+    listen-address=127.0.0.1,10.8.0.1
+    
+    bind-interfaces
+    ~~~
 
 This will configure dnsmasq to listen on localhost and the gateway IP address of your OpenVPN's tun device.
 
@@ -239,17 +262,19 @@ When your system boots, dnsmasq will try to start prior to the OpenVPN tun devic
 
 {: .file-excerpt }
 /etc/rc.local
-
-> /etc/init.d/dnsmasq restart
->
-> touch /var/lock/subsys/local
+:   ~~~
+    /etc/init.d/dnsmasq restart
+    
+    touch /var/lock/subsys/local
+    ~~~
 
 Add the following directive to the `/etc/openvpn/server.conf` file:
 
 {: .file-excerpt }
 /etc/openvpn/server.conf
-
-> push "dhcp-option DNS 10.8.0.1"
+:   ~~~
+    push "dhcp-option DNS 10.8.0.1"
+    ~~~
 
 Finally, before attempting to connect to the VPN in any configuration, restart the OpenVPN server. You will also need to start dnsmasq and configure it to start at boot by issuing the following commands:
 

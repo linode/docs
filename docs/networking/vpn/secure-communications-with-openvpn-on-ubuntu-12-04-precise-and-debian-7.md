@@ -188,29 +188,29 @@ In this section, you'll create two important configuration files. One is for the
 
     {: .file }
 	~/client.conf
-	: ~~~
-		# The hostname/IP and port of the server.
-		# You can have multiple remote entries
-		# to load balance between the servers.
+    :   ~~~
+        # The hostname/IP and port of the server.
+        # You can have multiple remote entries
+        # to load balance between the servers.
 
-		remote example.com 1194
-	~~~
+        remote example.com 1194
+        ~~~
 
 7.  In the same file, `client.conf`, edit the `cert` and `key` lines to reflect the name of your key. In this example we use `client1` for the file name.
 
     {: .file }
-	~/client.conf
-	: ~~~
-		# SSL/TLS parms.
-		# See the server config file for more
-		# description.  It's best to use
-		# a separate .crt/.key file pair
-		# for each client.  A single ca
-		# file can be used for all clients.
-		ca ca.crt
-		cert client1.crt
-		key client1.key
-	~~~
+    ~/client.conf
+    :   ~~~
+        # SSL/TLS parms.
+        # See the server config file for more
+        # description.  It's best to use
+        # a separate .crt/.key file pair
+        # for each client.  A single ca
+        # file can be used for all clients.
+        ca ca.crt
+        cert client1.crt
+        key client1.key
+        ~~~
 
 8.  Copy the `~/client.conf` file to your client system.
 9.  Repeat the entire key generation and distribution process for every user and every key that will connect to your network.
@@ -273,20 +273,20 @@ By deploying the following configuration, you will be able to forward *all* traf
 
     {: .file-excerpt }
 	/etc/openvpn/server.conf
-	: ~~~
-		push "redirect-gateway def1 bypass-dhcp"
-	~~~
+    : ~~~
+      push "redirect-gateway def1 bypass-dhcp"
+      ~~~
 	
 2.  Edit the `/etc/sysctl.conf` file to uncomment or add the following line to ensure that your system can forward IPv4 traffic:
 
         nano /etc/sysctl.conf
 
     {: .file-excerpt }
-	/etc/sysctl.conf
-	: ~~~
-		net.ipv4.ip\_forward=1
-	~~~
-	
+    /etc/sysctl.conf
+    : ~~~
+      net.ipv4.ip_forward=1
+      ~~~
+
 3.  Issue the following command to set this variable for the current session:
 
         echo 1 > /proc/sys/net/ipv4/ip_forward
@@ -307,24 +307,24 @@ By deploying the following configuration, you will be able to forward *all* traf
         nano /etc/rc.local
 
     {: .file-excerpt }
-	/etc/rc.local
-	: ~~~
-		#!/bin/sh -e
-		#
-		# [...]
-		#
+    /etc/rc.local
+    :   ~~~
+        #!/bin/sh -e
+        #
+        # [...]
+        #
 
-		iptables -A FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT
-		iptables -A FORWARD -s 10.8.0.0/24 -j ACCEPT
-		iptables -A FORWARD -j REJECT
-		iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -o eth0 -j MASQUERADE
-		iptables -A INPUT -i tun+ -j ACCEPT
-		iptables -A FORWARD -i tun+ -j ACCEPT
-		iptables -A INPUT -i tap+ -j ACCEPT
-		iptables -A FORWARD -i tap+ -j ACCEPT
+        iptables -A FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT
+        iptables -A FORWARD -s 10.8.0.0/24 -j ACCEPT
+        iptables -A FORWARD -j REJECT
+        iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -o eth0 -j MASQUERADE
+        iptables -A INPUT -i tun+ -j ACCEPT
+        iptables -A FORWARD -i tun+ -j ACCEPT
+        iptables -A INPUT -i tap+ -j ACCEPT
+        iptables -A FORWARD -i tap+ -j ACCEPT
 
-		exit 0
-	~~~
+        exit 0
+        ~~~
 
     This will enable all client traffic except for DNS queries to be forwarded through the VPN.
 
@@ -352,13 +352,13 @@ By deploying the following configuration, you will be able to forward *all* traf
 
         nano /etc/dnsmasq.conf
 
-	{: .file-excerpt }
-	/etc/dnsmasq.conf
-	: ~~~
-		listen-address=127.0.0.1,10.8.0.1
+    {: .file-excerpt }
+    /etc/dnsmasq.conf
+    :   ~~~
+        listen-address=127.0.0.1,10.8.0.1
 
-		bind-interfaces
-	~~~
+        bind-interfaces
+        ~~~
 
 11. Now that dnsmasq is configured, you will need to add two new lines to /etc/network/interfaces. First, go to the Linode's **Remote Access** page, shown below. You'll need the IP addresses listed under **DNS Resolvers** for the `dns-nameservers` line:
 
@@ -370,14 +370,14 @@ By deploying the following configuration, you will be able to forward *all* traf
 
 	{: .file-excerpt }
 	/etc/network/interfaces
-	: ~~~
-		# The primary network interface
-		auto eth0
-		iface eth0 inet dhcp
+    :   ~~~
+        # The primary network interface
+        auto eth0
+        iface eth0 inet dhcp
 
-		dns-search members.linode.com
-		dns-nameservers 97.107.133.4 207.192.69.4 207.192.69.5
-	~~~~
+        dns-search members.linode.com
+        dns-nameservers 97.107.133.4 207.192.69.4 207.192.69.5
+        ~~~~
 
 	{: .note }
 	>
@@ -387,23 +387,23 @@ By deploying the following configuration, you will be able to forward *all* traf
 
         nano /etc/rc.local
 
-	{: .file-excerpt }
-	/etc/rc.local
-	: ~~~
-		/etc/init.d/dnsmasq restart
-		
-		exit 0
-	~~~
+    {: .file-excerpt }
+    /etc/rc.local
+	:   ~~~
+        /etc/init.d/dnsmasq restart
+
+        exit 0
+        ~~~
 	
 14. Add the following line to the `/etc/openvpn/server.conf` file:
 
         nano /etc/openvpn/server.conf
 
-	{: .file-excerpt }
-	/etc/openvpn/server.conf
-	: ~~~
-		push "dhcp-option DNS 10.8.0.1"
-	~~~
+    {: .file-excerpt }
+    /etc/openvpn/server.conf
+    :   ~~~
+        push "dhcp-option DNS 10.8.0.1"
+        ~~~
 
 15. Restart the Linode:
 
