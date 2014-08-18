@@ -45,7 +45,13 @@ On Arch Linux systems issue the following commands to update the package databas
     pacman -Sy
     pacman -S mtr
 
-You may also want to use MTR to diagnose networking issues from your local workstation. If you're running a Linux system, you can install MTR using the commands above. If you're running a Mac OS X workstation, you may install MTR from [MacPorts](http://www.macports.org/) by issuing the following command:
+You may also want to use MTR to diagnose networking issues from your local workstation. If you're running a Linux system, you can install MTR using the commands above. 
+
+If you're running a Mac OS X workstation, you may install MTR with either [Homebrew](http://brew.sh/), or [MacPorts](http://www.macports.org/). To install MTR with Homebrew, run:
+
+    brew install mtr
+
+To install MTR with MacPorts, run:
 
     port install mtr
 
