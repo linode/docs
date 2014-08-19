@@ -85,10 +85,10 @@ Deploying from a StackScript
       # when deploying using this script. 
       # 
       # 
-      <UDF name="hostname" label="The hostname for the new Linode.">
+      #<UDF name="hostname" label="The hostname for the new Linode.">
       # HOSTNAME= 
       # 
-      <UDF name="fqdn" label="The new Linode's Fully Qualified Domain Name">
+      #<UDF name="fqdn" label="The new Linode's Fully Qualified Domain Name">
       # FQDN=
       
       # This sets the variable $IPADDR to the IP address the new Linode receives. 
