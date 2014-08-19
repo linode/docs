@@ -20,8 +20,8 @@ Installing
 
 Prerequisites:
 
--   Install and start [Nginx](/docs/web-servers/nginx)
--   Install the [Longview client](/docs/longview#sph_installing-the-client)
+-   Install and start [Nginx](/docs/websites/nginx)
+-   Install the [Longview client](/docs/platform/longview/longview#installing-the-client)
 
 ### Debian and Ubuntu Automatic Configuration
 
