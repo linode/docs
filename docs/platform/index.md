@@ -11,6 +11,7 @@ featured:
  - accounts-and-passwords.md
  - linode-cli.md
  - package-mirrors.md
+ - stackscripts.md
  - billing-and-payments.md
  - support.md
 categories:
