@@ -1,6 +1,7 @@
 ---
 title:  Linode Platform
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+alias: ['linode-platform/']
 description: 'Learn about everything Linode!'
 modified: Monday, August 4th, 2014
 modified_by:
