@@ -43,15 +43,26 @@ Edit the `/etc/sysconfig/network-scripts/ifcfg-eth0` file to resemble the follow
 
 {: .file }
 /etc/sysconfig/network-scripts/ifcfg-eth0
-
-> DEVICE=eth0 BOOTPROTO=none ONBOOT=yes IPADDR=12.34.56.78 NETMASK=255.255.255.0 GATEWAY=12.34.56.1
+: ~~~
+  DEVICE=eth0
+  BOOTPROTO=none
+  ONBOOT=yes
+  IPADDR=12.34.56.78
+  NETMASK=255.255.255.0
+  GATEWAY=12.34.56.1
+  ~~~
 
 If your Linode has a second IP address, edit the `/etc/sysconfig/network-scripts/ifcfg-eth0:0` file to resemble the following. Replace `98.76.54.32` with the second IP address. No gateway should be specified for this IP address, as all traffic will be properly routed through the primary IP's gateway.
 
 {: .file }
 /etc/sysconfig/network-scripts/ifcfg-eth0:0
-
-> DEVICE=eth0:0 BOOTPROTO=none ONBOOT=yes IPADDR=98.76.54.32 NETMASK=255.255.255.0
+: ~~~
+  DEVICE=eth0:0
+  BOOTPROTO=none
+  ONBOOT=yes
+  IPADDR=98.76.54.32
+  NETMASK=255.255.255.0
+  ~~~
 
 Restart networking by issuing the following command:
 
@@ -61,9 +72,10 @@ Edit the `/etc/resolv.conf` to resemble the following, replacing `11.11.11.11` a
 
 {: .file }
 /etc/resolv.conf
-
-> nameserver 11.11.11.11 nameserver 22.22.22.22 options rotate
-
+: ~~~
+  nameserver 11.11.11.11 nameserver 22.22.22.22 options rotate
+  ~~~
+  
 Make sure your package repositories and installed packages are up to date by issuing the following command:
 
     yum update
