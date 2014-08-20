@@ -5,7 +5,7 @@ author:
 description: 'Install and configure mod_fastcgi and PHP-FPM on Debian with Apache'
 keywords: 'apache,fastcgi,php-fpm,php'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['docs/websites/apache/php-fpm/debian-7/','/web-servers/apache/php-fpm/apache-php-fpm-debian-ubuntu/']
+alias: ['websites/apache/php-fpm/debian-7/','web-servers/apache/php-fpm/apache-php-fpm-debian-ubuntu/']
 modified: Saturday, August 16, 2014
 modified_by:
   name: Dave Russell Jr
