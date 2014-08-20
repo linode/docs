@@ -486,8 +486,8 @@ Debian 6 (Squeeze)
 
         Linux li263-140 2.6.32-5-xen-686 #1 SMP Wed May 18 09:43:15 UTC 2011 i686 GNU/Linux
 
-CentOS 6 and newer
---------
+CentOS 6 And Newer
+-------------------
 
 1.  Make sure your package repositories and installed packages are up to date by issuing the following command:
 
@@ -518,7 +518,7 @@ CentOS 6 and newer
     {: .file }
 	/boot/grub/menu.lst
 	: ~~~
-timeout 10
+timeout 5
 title CentOS (2.6.32-431.23.3.el6.x86_64)
 	root (hd0)
 	kernel /boot/vmlinuz-2.6.32-431.23.3.el6.x86_64 root=/dev/xvda
