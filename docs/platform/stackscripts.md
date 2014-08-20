@@ -5,7 +5,7 @@ author:
 description: 'Create Custom Instances and Automate Deployment with StackScritps.'
 keywords: 'ami,automation,elasticity,cloud,custom instance'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['/docs/stackscripts/']
+alias: ['stackscripts/']
 modified: Tuesday, April 22nd, 2014
 modified_by:
   name: Alex Fornuto
