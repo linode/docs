@@ -6,9 +6,9 @@ description: 'Instructions for configuring your Linode to run a native distribut
 keywords: 'pv-grub,pvgrub,custom linux kernel,custom linode'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['platform/custom-kernels-distros/run-a-distributionsupplied-kernel-with-pvgrub/', 'custom-instances/pv-grub-howto/']
-modified: Friday, February 7th, 2014
+modified: Wednesday, August 20th, 2014
 modified_by:
-  name: Nick Atzert
+  name: James Stewart
 published: 'Wednesday, September 9th, 2009'
 title: 'Run a Distribution-Supplied Kernel with PV-GRUB'
 ---
