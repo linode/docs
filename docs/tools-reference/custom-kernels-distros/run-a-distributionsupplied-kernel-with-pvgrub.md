@@ -529,7 +529,7 @@ title CentOS (2.6.32-431.23.3.el6.x86_64)
 8.  Make sure the root device is specified as **xvda**.
 9.  Save your changes by clicking **Save Profile** at the bottom of the page.
 10.  Reboot your Linode from the **Dashboard** tab.
-111111111111. Once your Linode has rebooted, log in via SSH and issue the following command:
+11. Once your Linode has rebooted, log in via SSH and issue the following command:
 
         uname -a
 
