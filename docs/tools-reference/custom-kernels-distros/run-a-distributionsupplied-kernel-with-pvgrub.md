@@ -486,7 +486,7 @@ Debian 6 (Squeeze)
 
         Linux li263-140 2.6.32-5-xen-686 #1 SMP Wed May 18 09:43:15 UTC 2011 i686 GNU/Linux
 
-CentOS 6 And Newer
+CentOS 6 and Newer
 -------------------
 
 1.  Make sure your package repositories and installed packages are up to date by issuing the following command:
