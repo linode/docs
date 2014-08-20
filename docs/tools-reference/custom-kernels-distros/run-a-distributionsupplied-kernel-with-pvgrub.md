@@ -486,8 +486,8 @@ Debian 6 (Squeeze)
 
         Linux li263-140 2.6.32-5-xen-686 #1 SMP Wed May 18 09:43:15 UTC 2011 i686 GNU/Linux
 
-CentOS 6
---------
+CentOS 6 and Newer
+-------------------
 
 1.  Make sure your package repositories and installed packages are up to date by issuing the following command:
 
@@ -502,21 +502,34 @@ CentOS 6
         Linux li63-119 2.6.32-358.14.1.el6.x86_64 #1 SMP Tue Jul 16 23:51:20 UTC 2013 x86_64 x86_64 x86_64 GNU/Linux
 
 4.  Make a note of the kernel you're currently using (`2.6.32-358.14.1.el6.x86_64` in our example). You will be replacing it with the kernel shown in the configuration below.
-5.  Create a file named `/boot/grub/menu.lst` with the following contents. Adjust the `title`, `kernel`, and `initrd` lines to reflect the actual file names found in the `/boot/` directory.
+
+5.  Issue the following command to install the default kernel for CentOS6:
+
+    **32-bit CentOS:** :
+
+        yum install kernel-PAE.i686
+
+    **64-bit CentOS:** :
+
+        yum install kernel-x86_64
+
+6.  Create a file named `/boot/grub/menu.lst` with the following contents. Adjust the `title`, `kernel`, and `initrd` lines to reflect the actual file names found in the `/boot/` directory.
 
     {: .file }
 	/boot/grub/menu.lst
 	: ~~~
-		timeout 10
-    	
-    	title CentOS 6, kernel-2.6.32-358.14.1.el6.x86\_64 root (hd0) kernel /boot/vmlinuz-2.6.32-358.14.1.el6.x86\_64 root=/dev/xvda ro quiet initrd /boot/initramfs-2.6.32-358.14.1.el6.x86\_64.img
+timeout 5
+title CentOS (2.6.32-431.23.3.el6.x86_64)
+	root (hd0)
+	kernel /boot/vmlinuz-2.6.32-431.23.3.el6.x86_64 root=/dev/xvda
+	initrd /boot/initramfs-2.6.32-431.23.3.el6.x86_64.img
 	~~~
 
-6.  In the Linode Manager, edit your Linode's configuration profile to use either **pv-grub-x86\_32** or **pv-grub-x86\_64** as the **Kernel**, depending on the version of CentOS you have deployed (32-bit or 64-bit).
-7.  Make sure the root device is specified as **xvda**.
-8.  Save your changes by clicking **Save Profile** at the bottom of the page.
-9.  Reboot your Linode from the **Dashboard** tab.
-10. Once your Linode has rebooted, log in via SSH and issue the following command:
+7.  In the Linode Manager, edit your Linode's configuration profile to use either **pv-grub-x86\_32** or **pv-grub-x86\_64** as the **Kernel**, depending on the version of CentOS you have deployed (32-bit or 64-bit).
+8.  Make sure the root device is specified as **xvda**.
+9.  Save your changes by clicking **Save Profile** at the bottom of the page.
+10.  Reboot your Linode from the **Dashboard** tab.
+11. Once your Linode has rebooted, log in via SSH and issue the following command:
 
         uname -a
 
