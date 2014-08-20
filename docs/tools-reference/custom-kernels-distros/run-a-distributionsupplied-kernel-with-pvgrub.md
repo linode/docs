@@ -533,7 +533,7 @@ title CentOS (2.6.32-431.23.3.el6.x86_64)
 
         uname -a
 
-You should see output similar to the following, indicating you're running the native kernel:
+    You should see output similar to the following, indicating you're running the native kernel:
 
         Linux li63-119 2.6.32-358.14.1.el6.x86_64 #1 SMP Tue Jul 16 23:51:20 UTC 2013 x86_64 x86_64 x86_64 GNU/Linux
 
