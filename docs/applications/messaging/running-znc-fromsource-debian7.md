@@ -12,7 +12,7 @@ published: 'Wednesday, August 6, 2014'
 title: 'Installing ZNC from Source on Debian 7.5'
 ---
 
-ZNC is an IRC bouncer. It's designed to run on a server that remains connected to an IRC network and buffer messages, so that a local IRC client can connect and disconnect without loosing a chat session or missing any messages. In this guide we'll go over installing ZNC from source, and configuring 
+ZNC is an IRC bouncer. It's designed to run on a server that remains connected to an IRC network and buffer messages, so that a local IRC client can connect and disconnect without loosing a chat session or missing any messages. In this guide we'll go over installing ZNC from source and configuring 
 
 {:.note}
 > This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
@@ -70,7 +70,7 @@ To begin configuring ZNC, run the following command:
 
     znc --makeconf
 
-This will launch an interactive script asking you for input on a variety of parameters. Below is an example output of the `makeconf` script with standard options selected. You can use or change the input provided at your discretion, to match your needs. If you're not sure, use the default option. Many of these options can be adjusted later through the web interface.
+This will launch an interactive script asking you for input on a variety of parameters. Below is an example output of the `makeconf` script with standard options selected. To match your needs, you can use or change the provided input at your discretion. If you're not sure, use the default option. Many of these options can be adjusted later through the web interface.
 
 {:.note} 
 > Make sure to change the Username variable.
@@ -220,14 +220,16 @@ This will launch an interactive script asking you for input on a variety of para
         [ ** ] ZNC 1.4 - http://znc.in
 
 
-Once you've completed the configuration and launched ZNC, you can access the web interface by going to your Linode's IP address in your web browser. Be sure to specify the port you defined during the configuration script, and prefix it with `https://` .
+Once you've completed the configuration and launched ZNC, you can access the web interface by going to your Linode's IP address in your web browser. Be sure to specify the port you defined during the configuration script and prefix it with `https://` .
 
 [![ZNC's Web Admin](/docs/assets/znc-web-admin_small.png)](/docs/assets/znc-web-admin.png)
 
 Connecting The Client
 ---------------------
 
-You can use any GUI or CLI client you prefer to connect to ZNC. For the example below we'll be using [Colloquy](http://colloquy.info/).
+You can use any preferred GUI or CLI client to connect to ZNC. For the example below we'll be using
+
+[Colloquy](http://colloquy.info/).
 
 1. Under the **file** menu, select **New Connection**. If you've just opened Colloquy for the first time, this window should open automatically.
 
@@ -237,7 +239,7 @@ You can use any GUI or CLI client you prefer to connect to ZNC. For the example 
 
    [![New Connection Options](/docs/assets/colloquy-settings.png)](colloquy-settings.png)
 
-3. Press **Connect**. You should be connected to your ZNC server, and from there to any networks and channels you've configured to autojoin.
+3. Press **Connect**. You should be connected to your ZNC server and from there to any networks and channels you've configured to autojoin.
 
    [![Colloquy Connected.](/docs/assets/colloquy-connected_small.png)](colloquy-connected.png)
 
