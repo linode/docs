@@ -237,11 +237,8 @@ You can use any preferred GUI or CLI client to connect to ZNC. For the example b
 
 2. Fill out the New Connection window with the relevant information used during your configuration of ZNC.
 
-   [![New Connection Options](/docs/assets/colloquy-settings.png)](colloquy-settings.png)
 
 3. Press **Connect**. You should be connected to your ZNC server and from there to any networks and channels you've configured to autojoin.
-
-   [![Colloquy Connected.](/docs/assets/colloquy-connected_small.png)](colloquy-connected.png)
 
 
 SSL Encryption with a Signed Certificate (Optional)
