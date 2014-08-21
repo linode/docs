@@ -46,6 +46,8 @@ The default VNC connection is unencrypted. In order to secure your passwords and
 
         vncserver :1
 
+3.  Initiate your connection as per the steps listed in the following section.
+
 
 ### Windows
 
@@ -56,6 +58,8 @@ The default VNC connection is unencrypted. In order to secure your passwords and
 2.  Launch the VNC server manually to test your connection. You will need to specify a password to use:
 
         vncserver :1
+
+3.  Initiate your connection as per the steps listed in the following section.
 
 
 Connecting to VNC From your Desktop
@@ -69,11 +73,7 @@ While there are many options for OS X and Windows, this guide will use [RealVNC 
 
     [![Connecting through an SSH tunnel.](/docs/assets/1647-vnc-5.png)](/docs/assets/1647-vnc-5.png)
 
-<<<<<<< HEAD
 2.  You will be warned that the connection is unencrypted, however if you have followed the steps above for securing your VNC connection, your session will be securely tunneled to your Linode. To proceed, press **Continue**.
-=======
-2.  2.  You will be warned that the connection is unencrypted, however if you have followed the steps above for securing your VNC connection, your session will be securely tunneled to your Linode. To proceed, press **Continue**.
->>>>>>> 3d34f17ff26c5e8ec81056cd913e0938bab6d2cb
 
     [![VNC Security Warning.](/docs/assets/1656-vnc-2-2.png)](/docs/assets/1656-vnc-2-2.png)
 
@@ -95,7 +95,7 @@ There are a variety of VNC clients available for Ubuntu desktops. You can find t
 
     [![The Remmina Software.](/docs/assets/1640-vnc-ubuntu-1.png)](/docs/assets/1640-vnc-ubuntu-1.png)
 
-2.  Click the button to `Create a new remote desktop profile`. Name your profile, specify the VNC protocol, and configure the server to point to localhost. Be sure to include `:1` in the `Server` section. In the password section fill in the password you specified in step four of [the previous section](#installing-a-desktop-and-vnc-on-your-linode):
+2.  Click the button to `Create a new remote desktop profile`. Name your profile, specify the VNC protocol, and enter localhost :1 in the server field. Be sure to include the`:1` in the `Server` section. In the password section fill in the password you specified in step four of [the previous section](#installing-a-desktop-and-vnc-on-your-linode):
 
     [![.](/docs/assets/1641-vnc-ubuntu-2.png)](/docs/assets/1641-vnc-ubuntu-2.png)
 
