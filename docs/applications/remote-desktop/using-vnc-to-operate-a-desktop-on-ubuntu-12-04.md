@@ -6,9 +6,9 @@ description: How to install and connect to a desktop environment on your Linode
 keywords: 'vnc,remote desktop,ubuntu,12.04'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['remote-desktops/vnc-desktop-ubuntu-12-04/']
-modified: Thursday, April 10th, 2014
+modified: Thursday, August 21, 2014
 modified_by:
-  name: Alex Fornuto
+  name: James Stewart
 published: 'Thursday, April 10th, 2014'
 title: 'Using VNC to Operate a Desktop on Ubuntu 12.04'
 ---
@@ -31,9 +31,32 @@ Installing a Desktop and VNC on your Linode
 
         sudo apt-get install vnc4server
 
-4.  Launch the VNC server manually at first to test your connection. You will need to specify a password to use:
+Securing your VNC connection
+----------------------------
+
+The default VNC connection is unencrypted. In order to secure your passwords and data, you will need to tunnel the traffic through an SSH connection to a local port.
+
+### Mac OS X and Linux
+
+1.  From your desktop, connect to your Linode with the following command:
+
+        ssh -L 5901:127.0.0.1:5901 user@example.com
+
+2.  Launch the VNC server manually to test your connection. You will need to specify a password to use:
 
         vncserver :1
+
+
+### Windows
+
+1.  Open [PuTTY](/docs/networking/using-putty) and navigate under the `SSH` menu to `Tunnels`. Add a new forwarded port as shown below:
+
+    [![Adding a forwarded port to PuTTY.](/docs/assets/1648-vnc-putty-1.png)](/docs/assets/1648-vnc-putty-1.png)
+
+2.  Launch the VNC server manually to test your connection. You will need to specify a password to use:
+
+        vncserver :1
+
 
 Connecting to VNC From your Desktop
 -----------------------------------
@@ -42,11 +65,11 @@ Connecting to VNC From your Desktop
 
 While there are many options for OS X and Windows, this guide will use [RealVNC Viewer](http://www.realvnc.com/download/viewer/).
 
-1.  After installing and opening the viewer, enter your Linode's IP address or domain name into the first field and press **Connect**.
+1.  After installing and opening the viewer, connect with your VNC client to the localhost:
 
-    [![RealVNC Viewer.](/docs/assets/1655-vnc-1-2.png)](/docs/assets/1636-vnc-1.png)
+    [![Connecting through an SSH tunnel.](/docs/assets/1647-vnc-5.png)](/docs/assets/1647-vnc-5.png)
 
-2.  You will be warned that the connection is unencrypted. We will secure the connection later. For now, press **Continue**.
+2.  2.  You will be warned that the connection is unencrypted, however if you have followed the steps above for securing your VNC connection, your session will be securely tunneled to your Linode. To proceed, press **Continue**.
 
     [![VNC Security Warning.](/docs/assets/1656-vnc-2-2.png)](/docs/assets/1637-vnc-2.png)
 
@@ -68,9 +91,9 @@ There are a variety of VNC clients available for Ubuntu desktops. You can find t
 
     [![The Remmina Software.](/docs/assets/1640-vnc-ubuntu-1.png)](/docs/assets/1640-vnc-ubuntu-1.png)
 
-2.  Click the button to `Create a new remote desktop profile`. Name your profile, specify the VNC protocol, and enter your Linode's IP address or domain. Be sure to include `:1` in the `Server` section. In the password section fill in the password you specified in step four of [the previous section](#installing-a-desktop-and-vnc-on-your-linode):
+2.  Click the button to `Create a new remote desktop profile`. Name your profile, specify the VNC protocol, and configure the server to point to localhost. Be sure to include `:1` in the `Server` section. In the password section fill in the password you specified in step four of [the previous section](#installing-a-desktop-and-vnc-on-your-linode):
 
-    [![.](/docs/assets/1654-vnc-ubuntu-2-2.png)](/docs/assets/1641-vnc-ubuntu-2.png)
+    [![.](/docs/assets/1641-vnc-ubuntu-2.png)](/docs/assets/1641-vnc-ubuntu-2.png)
 
 3.  Press **Connect**.
 
@@ -94,9 +117,16 @@ In the next few steps we'll configure VNC to launch the full Gnome desktop.
     :   ~~~
         #!/bin/sh
 
-        # Uncomment the following two lines for normal desktop: \# unset SESSION\_MANAGER \# exec /etc/X11/xinit/xinitrc
+        # Uncomment the following two lines for normal desktop:
+        # unset SESSION_MANAGER
+        # exec /etc/X11/xinit/xinitrc
 
-        [ -x /etc/vnc/xstartup ] && exec /etc/vnc/xstartup [ -r \$HOME/.Xresources ] && xrdb \$HOME/.Xresources xsetroot -solid grey vncconfig -iconic & x-terminal-emulator -geometry 80x24+10+10 -ls -title "\$VNCDESKTOP Desktop" & x-window-manager &
+        [ -x /etc/vnc/xstartup ] && exec /etc/vnc/xstartup
+        [ -r $HOME/.Xresources ] && xrdb $HOME/.Xresources
+        xsetroot -solid grey 
+        vncconfig -iconic &
+        x-terminal-emulator -geometry 80x24+10+10 -ls -title "$VNCDESKTOP Desktop" &
+        x-window-manager &
         ~~~
 
 3.  Edit the last line of the file, replacing it with the following:
@@ -111,28 +141,6 @@ In the next few steps we'll configure VNC to launch the full Gnome desktop.
 
     [![A VNC connection with a full Ubuntu desktop.](/docs/assets/1643-vnc-ubuntu-3_small.png)](/docs/assets/1642-vnc-ubuntu-3.png)
 
-Encrypting the connection through an SSH tunnel
------------------------------------------------
-
-The default VNC connection is unencrypted. In order to secure your passwords and data, you can tunnel the traffic through an SSH connection to a local port.
-
-### Mac OS X and Linux
-
-1.  From your desktop, connect to your Linode with the following command:
-
-        ssh -L 5901:127.0.0.1:5901 user@example.com
-
-2.  Once this is set up, connect with your VNC client to the localhost:
-
-    [![Connecting through an SSH tunnel.](/docs/assets/1647-vnc-5.png)](/docs/assets/1647-vnc-5.png)
-
-### Windows
-
-1.  Open [PuTTY](/docs/networking/using-putty) and navigate under the `SSH` menu to `Tunnels`. Add a new forwarded port as shown below:
-
-    [![Adding a forwarded port to PuTTY.](/docs/assets/1648-vnc-putty-1.png)](/docs/assets/1648-vnc-putty-1.png)
-
-2.  Once this is set up, connect with your VNC client to the localhost.
 
 Starting VNC Server on Boot
 ---------------------------
@@ -157,7 +165,29 @@ Below we've outlined optional steps to ensure that the VNC server starts automat
     {: .file-excerpt }
     crontab
     :   ~~~
-        Edit this file to introduce tasks to be run by cron. \# \# Each task to run has to be defined through a single line \# indicating with different fields when the task will be run \# and what command to run for the task \# \# To define the time you can provide concrete values for \# minute (m), hour (h), day of month (dom), month (mon), \# and day of week (dow) or use '*' in these fields (for 'any').\# \# Notice that tasks will be started based on the cron's system \# daemon's notion of time and timezones. \# \# Output of the crontab jobs (including errors) is sent through \# email to the user the crontab file belongs to (unless redirected). \# \# For example, you can run a backup of all your user accounts \# at 5 a.m every week with: \# 0 5* \* 1 tar -zcf /var/backups/home.tgz /home/ \# \# For more information see the manual pages of crontab(5) and cron(8) \# \# m h dom mon dow command
+        # Edit this file to introduce tasks to be run by cron.
+        #
+        # Each task to run has to be defined through a single line
+        # indicating with different fields when the task will be run
+        # and what command to run for the task
+        #
+        # To define the time you can provide concrete values for
+        # minute (m), hour (h), day of month (dom), month (mon),
+        # and day of week (dow) or use '*' in these fields (for 'any').
+        #
+        # Notice that tasks will be started based on the cron's system
+        # daemon's notion of time and timezones.
+        #
+        # Output of the crontab jobs (including errors) is sent through
+        # email to the user the crontab file belongs to (unless redirected).
+        #
+        # For example, you can run a backup of all your user accounts
+        # at 5 a.m every week with:
+        # 0 5 * * 1 tar -zcf /var/backups/home.tgz /home/
+        #
+        # For more information see the manual pages of crontab(5) and cron(8)
+        #
+        # m h dom mon dow command
 
         @reboot /usr/bin/vncserver :1
         ~~~
