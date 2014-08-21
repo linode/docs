@@ -5,10 +5,10 @@ author:
 description: 'Using the ZNC bouncer to retain an IRC connection'
 keywords: 'znc,irc,debain,source'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Wednesday, August 6, 2014
+modified: Friday, August 21, 2014
 modified_by: 
     name: 'Alex Fornuto'
-published: 'Wednesday, August 6, 2014'
+published: 'Friday, August 21, 2014'
 title: 'Installing ZNC from Source on Debian 7.5'
 ---
 
