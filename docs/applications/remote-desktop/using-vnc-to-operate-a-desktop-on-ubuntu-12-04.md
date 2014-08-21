@@ -69,7 +69,11 @@ While there are many options for OS X and Windows, this guide will use [RealVNC 
 
     [![Connecting through an SSH tunnel.](/docs/assets/1647-vnc-5.png)](/docs/assets/1647-vnc-5.png)
 
+<<<<<<< HEAD
 2.  You will be warned that the connection is unencrypted, however if you have followed the steps above for securing your VNC connection, your session will be securely tunneled to your Linode. To proceed, press **Continue**.
+=======
+2.  2.  You will be warned that the connection is unencrypted, however if you have followed the steps above for securing your VNC connection, your session will be securely tunneled to your Linode. To proceed, press **Continue**.
+>>>>>>> 3d34f17ff26c5e8ec81056cd913e0938bab6d2cb
 
     [![VNC Security Warning.](/docs/assets/1656-vnc-2-2.png)](/docs/assets/1656-vnc-2-2.png)
 
