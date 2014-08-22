@@ -212,9 +212,9 @@ Then insert the following line:
 
 {: .file-excerpt }
 root crontab
-
-> */5* \* \* \* /usr/bin/nice -n 18 /root/repo/fixupcheck.sh
-
+:   ~~~
+    */5 * * * * /usr/bin/nice -n 18 /root/repo/fixupcheck.sh
+    ~~~
 This configures the script to run once every 5 minutes. Monitor the length of time it takes to run the script, and the frequency of pushes, and adjust the frequency based on this data.
 
 Additionally issue the following command to create a `repo` user cronjob:
@@ -225,9 +225,9 @@ Then insert the following line:
 
 {: .file-excerpt }
 repo crontab
-
-> */5* \* \* \* /usr/bin/nice -n 18 /srv/repo/bin/jobd/jobd.sh -q --all-once
-
+:   ~~~
+    */5 * * * * /usr/bin/nice -n 18 /srv/repo/bin/jobd/jobd.sh -q --all-once
+    ~~~
 This configures the script to run once every 5 minutes. Monitor the length of time it takes to run the script, note any error messages this produces, and modify the frequency in response to this. You may also run the command `/srv/repo/bin/jobd/jobd.sh` in an interactive terminal as needed. Some tasks related to mirroring will not appear to succeed unless jobd is running constantly or runs at the appropriate time. You may want to run jobd in a GNU Screen session, by issuing the following command as the *repo* user:
 
     while ( true ); do /srv/repo/bin/jobd/jobd.sh; sleep 5; done
@@ -236,8 +236,9 @@ Additionally, add the following two lines as instructed by the installation scri
 
 {: .file-excerpt }
 /etc/rc.local
-
-> mount --bind /srv/repo/git /srv/repo/data/srv/git mount --bind /proc /srv/repo/data/proc
+:   ~~~
+    mount --bind /srv/repo/git /srv/repo/data/srv/git mount --bind /proc /srv/repo/data/proc
+    ~~~
 
 Configure Web Server
 --------------------
