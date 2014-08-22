@@ -217,7 +217,7 @@ Note the changes to `server_name`, `ssl_certificate`, `ssl_certificate_key`, `ss
 
 ### Test
 
-Launch a web browser and navigate to https://YOUR DOMAIN OR SUB DOMAIN HERE and you should see the default nginx page. Please note that this will not work until your have created an A record for your hostname at your domain provider pointing to the IP address of your Linode. Please contact your domain provider is you need assistant.
+Launch a web browser and navigate to https://YOUR DOMAIN OR SUB DOMAIN HERE and you should see the default nginx page. Please note that this will not work until your have created an A record for your hostname at your domain provider pointing to the IP address of your Linode. Please contact your domain provider if you need assistance.
 
 [![Up and Running](/docs/assets/1768-Up-And-Running.jpg)](/docs/assets/1768-Up-And-Running.jpg)
 
