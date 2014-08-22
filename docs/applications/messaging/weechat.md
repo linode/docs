@@ -186,7 +186,8 @@ Once you have installed WeeGet, you can run ``/weeget install <script name>`` to
 
 ## WeeChat Commands
 
-All WeeChat commands begin with a **/**. Every channel in WeeChat is a *buffer*. Servers are also buffers. By default, WeeChat does not include a list of buffers, but you may install a plugin which does. The buffers.pl plugin is recommended and displays a list of buffers on the left of the screen. This allows you to see what channels and servers you are in without having to remember special commands. It also shows you buffer numbers if you want to use ``/buffer <x>`` to switch to a buffer. ::
+All WeeChat commands begin with a **/**. Every channel in WeeChat is a *buffer*. Servers are also buffers. By default, WeeChat does not include a list of buffers, but you may install a plugin which does. The buffers.pl plugin is recommended and displays a list of buffers on the left of the screen. This allows you to see what channels and servers you are in without having to remember special commands. It also shows you buffer numbers if you want to use ``/buffer <x>`` to switch to a buffer.
+
     # On WeeChat <= 0.3.8 (after installing WeeGet as shown in the section above)
     /weeget install buffers.pl
     # On WeeChat > 0.3.8
@@ -196,60 +197,49 @@ All WeeChat commands begin with a **/**. Every channel in WeeChat is a *buffer*.
 
 A list of basic commands is below.
 
-.. list-table::
-   :widths: 20 80
-   :header-rows: 1
+  {: .table .table-striped }
+  | Command    | Description                                                                     |
+  | --------   | ------------------------------------------------------------------------------- |
+  | `/help`    | Lists commands, if a command is given then shows command usage and description  |
+  | `/join`    | Joins a channel                                                                 |
+  | `/close`   | Closes a buffer, parting the channel if you are in it                           |
+  | `/quit`    | Quit WeeChat                                                                    |
+  | `/msg`     | Send a message to a nick (or channel)                                           |
+  | `/query`   | Opens a private buffer with a nick                                              |
+  | `/ban`     | Ban a user from a channel                                                       |
+  | `/unban`   | Unban a user from a channel                                                     |
+  | `/kick`    | Kick a user from a channel                                                      |
+  | `/kickban` | Kick and ban a user from a channel                                              |
+  | `/part`    | Parts a channel but does not close the buffers                                  |
+  | `/topic`   | Sets channel topic                                                              |
+  | `/whois`   | Shows information about a user                                                  |
 
-   * - Command
-     - Description
-   * - /help
-     - Lists commands, if a command is given then shows command usage and description
-   * - /join
-     - Joins a channel
-   * - /close
-     - Closes a buffer, parting the channel if you are in it
-   * - /quit
-     - Quit WeeChat
-   * - /msg
-     - Send a message to a nick (or channel)
-   * - /query
-     - Opens a private buffer with a nick
-   * - /ban
-     - Ban a user from a channel
-   * - /unban
-     - Unban a user from a channel
-   * - /kick
-     - Kick a user from a channel
-   * - /kickban
-     - Kick and ban a user from a channel
-   * - /part
-     - Parts a channel but does not close the buffer
-   * - /topic
-     - Sets channel topic
-   * - /whois
-     - Shows information about a user
-
-Setting Default Channels
-~~~~~~~~~~~~~~~~~~~~~~~~
+## Setting Default Channels
 
 WeeChat uses the ``/set`` command to manipulate WeeChat settings. It allows you to change many different attributes about WeeChat, including appearance and functionality.
 
-You can tell WeeChat to automatically connect to some channels when it connects to a server using the ``irc.server.<server>.autojoin`` setting. This setting should be a comma separated list of channels to join. For example, if I want to join #linode when I connect to the oftc network, I would run: ::
+You can tell WeeChat to automatically connect to some channels when it connects to a server using the ``irc.server.<server>.autojoin`` setting. This setting should be a comma separated list of channels to join. For example, if I want to join #linode when I connect to the oftc network, I would run:
+
     /set irc.server.oftc.autojoin "#linode"
+
 Then, whenever I connect to the oftc server, I will automatically join #linode.
 
-Setting Default Nickname, Username, and Real Name
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+## Setting Default Nickname, Username, and Real Name
 
-Setting the default nickname, username, and real name is just as simple. To set your default nickname, run: ::
+Setting the default nickname, username, and real name is just as simple. To set your default nickname, run:
+
     /set irc.server_default.nicks "nickname"
-You can also specify backup nicknames in case the one you want is taken when you connect. ::
+
+You can also specify backup nicknames in case the one you want is taken when you connect.
+
     /set irc.server_default.nicks "nickname,othernickname"
 
-Setting the default username: ::
+Setting the default username:
+  
     /set irc.server_default.username "username"
 
-Setting the default real name: ::
+Setting the default real name:
+
     /set irc.server_default.realname "realname"
 
 
@@ -261,16 +251,9 @@ If you ran WeeChat in a screen as specified above, you have the ability to detac
 More Information
 ----------------
 
-.. moreinfo::
+You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-    - `WeeChat Home Page <http://www.weechat.org/>`_
-    - `GNU Screen <http://www.gnu.org/software/screen/>`_
-    - `Screen for Persistent Terminal Sessions </linux-tools/utilities/screen>`_
-
-.. container:: license
-    .. image: /media/images/cc.png
-        :alt: Creative Commons License
-
-    This guide is licensed under a `Creative Commons Attribution-NoDerivs 3.0
-    United States License <http://creativecommons.org/licenses/by-nd/3.0/us/>`_.
+- [WeeChat Home Page](http://www.weechat.org/)
+- [GNU Screen](http://www.gnu.org/software/screen/)
+- [Screen for Persistent Terminal Sessions](/linux-tools/utilities/screen)
 
