@@ -69,35 +69,35 @@ Now you're ready to configure Exim for local mail service. Here's how:
 
 2.  You'll be presented with a welcome screen, followed by a screen asking what type mail delivery you'd like to support. Select the option for **internet site**, and then select **Ok** to continue.
 
-[![Exim4 mail delivery type configuration on Ubuntu 12.04 LTS (Precise).](/docs/assets/1153-011-exim4-ubuntu-12.04-general.png)](/docs/assets/1153-011-exim4-ubuntu-12.04-general.png)
+[![Exim4 mail delivery type configuration on Ubuntu 12.04 LTS (Precise).](/docs/assets/1153-011-exim4-ubuntu-12-04-general.png)](/docs/assets/1153-011-exim4-ubuntu-12-04-general.png)
 
 3.  Enter your system's FQDN (fully qualified domain name) in the **mail name** configuration screen.
 
-[![Exim4 system mail name configuration on Ubuntu 12.04 LTS (Precise).](/docs/assets/1154-02-exim4-ubuntu-12.04-mail-name.png)](/docs/assets/1154-02-exim4-ubuntu-12.04-mail-name.png)
+[![Exim4 system mail name configuration on Ubuntu 12.04 LTS (Precise).](/docs/assets/1154-02-exim4-ubuntu-12-04-mail-name.png)](/docs/assets/1154-02-exim4-ubuntu-12-04-mail-name.png)
 
 4.  Enter `127.0.0.1 ; ::1` when asked which IP address to listen on for SMTP connections.
 
-[![Exim4 listening IP address configuration on Ubuntu 12.04 LTS (Precise).](/docs/assets/1156-03-exim4-ubuntu-12.04-ip-listen.png)](/docs/assets/1156-03-exim4-ubuntu-12.04-ip-listen.png)
+[![Exim4 listening IP address configuration on Ubuntu 12.04 LTS (Precise).](/docs/assets/1156-03-exim4-ubuntu-12-04-ip-listen.png)](/docs/assets/1156-03-exim4-ubuntu-12-04-ip-listen.png)
 
 5.  Make sure you list your FQDN, hostname, and localhost entries when you're asked which destinations mail should be accepted for.
 
-[![Exim4 mail destination configuration on Ubuntu 12.04 LTS (Precise).](/docs/assets/1157-04-exim4-ubuntu-12.04-local-domains.png)](/docs/assets/1157-04-exim4-ubuntu-12.04-local-domains.png)
+[![Exim4 mail destination configuration on Ubuntu 12.04 LTS (Precise).](/docs/assets/1157-04-exim4-ubuntu-12-04-local-domains.png)](/docs/assets/1157-04-exim4-ubuntu-12-04-local-domains.png)
 
 6.  Leave the relay domains and relay machines fields blank.
 
-[![Exim4 relay domains configuration on Ubuntu 12.04 LTS (Precise).](/docs/assets/1158-05-exim4-ubuntu-12.04-relay-domains.png)](/docs/assets/1158-05-exim4-ubuntu-12.04-relay-domains.png)
+[![Exim4 relay domains configuration on Ubuntu 12.04 LTS (Precise).](/docs/assets/1158-05-exim4-ubuntu-12-04-relay-domains.png)](/docs/assets/1158-05-exim4-ubuntu-12-04-relay-domains.png)
 
 7.  Select **No** when asked whether to keep DNS queries to a minimum.
 
-[![Exim4 DNS queries configuration on Ubuntu 12.04 LTS (Precise).](/docs/assets/1159-06-exim4-ubuntu-12.04-dns-queries.png)](/docs/assets/1159-06-exim4-ubuntu-12.04-dns-queries.png)
+[![Exim4 DNS queries configuration on Ubuntu 12.04 LTS (Precise).](/docs/assets/1159-06-exim4-ubuntu-12-04-dns-queries.png)](/docs/assets/1159-06-exim4-ubuntu-12-04-dns-queries.png)
 
 8.  You may select either **mbox** or **Maildir** when asked about the delivery method used for incoming mail. While many utilities use mbox format, Maildir format can make handling individual locally delivered mail messages easier, and is widely supporting by a range of applications.
 
-[![Exim4 mail format configuration on Ubuntu 12.04 LTS (Precise).](/docs/assets/1160-07-exim4-ubuntu-12.04-mail-format.png)](/docs/assets/1160-07-exim4-ubuntu-12.04-mail-format.png)
+[![Exim4 mail format configuration on Ubuntu 12.04 LTS (Precise).](/docs/assets/1160-07-exim4-ubuntu-12-04-mail-format.png)](/docs/assets/1160-07-exim4-ubuntu-12-04-mail-format.png)
 
 ​9. Accept the default **non-split** option for your mail configuration file. Enter at least one external email address (choose one that you check frequently) in addition to `root` when asked to specify postmaster mail recipients.
 
-[![Exim4 postmaster recipient configuration on Ubuntu 12.04 LTS (Precise).](/docs/assets/1161-08-exim4-ubuntu-12.04-postmater-mail.png)](/docs/assets/1161-08-exim4-ubuntu-12.04-postmater-mail.png)
+[![Exim4 postmaster recipient configuration on Ubuntu 12.04 LTS (Precise).](/docs/assets/1161-08-exim4-ubuntu-12-04-postmater-mail.png)](/docs/assets/1161-08-exim4-ubuntu-12-04-postmater-mail.png)
 
 Test Your Mail Configuration
 ----------------------------
