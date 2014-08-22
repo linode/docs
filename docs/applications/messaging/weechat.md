@@ -40,6 +40,7 @@ Before installing WeeChat, we suggest:
 
   * Completing the instructions in the [Getting Started](/docs/getting-started/) guide.
   * Completing the **Adding a New User** section in the [Securing Your Server](/docs/security/securing-your-server#adding-a-new-user) guide.
+  * This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
 # Using GNU Screen
 
@@ -49,11 +50,22 @@ GNU Screen allows you to start WeeChat and leave it running, even if you disconn
 
 Below are instructions for installing WeeChat and Screen on different Operating Systems. Find your Operating System and follow the instructions there.
 
-Debian 7 (We first add the repository maintained by WeeChat decelopers to ensure we install the most up-to-date version of WeeChat):
+**Debian 7**
 
-    echo "deb http://debian.weechat.org wheezy main" >> /etc/apt/sources.list.d/weechat.list
+1. Add the repository maintained by WeeChat decelopers to ensure the most up-to-date version of WeeChat:
+
+    ~~~~.bash
+    sudo touch /etc/apt/sources.list.d/weechat.list
+    echo "deb http://debian.weechat.org wheezy main" | sudo tee  /etc/apt/sources.list.d/weechat.list
+    ~~~~
+
+2. Update `apt` and install Weechat:
+ 
+    ~~~
     apt-get update
-    apt-get install screen weechat
+    pt-get install screen weechat
+    ~~~
+
 
 Ubuntu:
 
@@ -144,10 +156,11 @@ To send a private message to a nickname, run:
 
     /msg nick message
 
-For example, to message "friend" "Have you heard about Linode?", run: ::
+For example, to message someone with the nickname `friend` "Have you heard about Linode?", run:
+
     /msg friend Have you heard about Linode?
 
-You can also open a buffer for a nickname with ``/query nick``. This will create a new buffer which you can send and receive messages in to and from a user. For example, ``/query friend`` will open a conversation with "friend".
+You can also open a buffer for a nickname with ``/query nickname``. This will create a new buffer which you can send and receive messages in to and from a user. For example, ``/query friend`` will open a conversation with "friend".
 
 ## Changing your Nickname
 
