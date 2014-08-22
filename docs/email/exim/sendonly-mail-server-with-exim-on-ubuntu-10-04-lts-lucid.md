@@ -70,35 +70,35 @@ Issue the following command to start Exim configuration:
 
 You'll be presented with a welcome screen, followed by a screen asking what type mail delivery you'd like to support. Choose the option for "internet site" and select "Ok" to continue.
 
-[![Exim4 mail delivery type configuration on Ubuntu 10.04 LTS (Lucid).](/docs/assets/134-01-exim4-ubuntu-10.04-general.png)](/docs/assets/134-01-exim4-ubuntu-10.04-general.png)
+[![Exim4 mail delivery type configuration on Ubuntu 10.04 LTS (Lucid).](/docs/assets/134-01-exim4-ubuntu-10-04-general.png)](/docs/assets/134-01-exim4-ubuntu-10-04-general.png)
 
 Enter your system's FQDN (fully qualified domain name) in the "mail name" configuration screen.
 
-[![Exim4 system mail name configuration on Ubuntu 10.04 LTS (Lucid).](/docs/assets/135-02-exim4-ubuntu-10.04-mail-name.png)](/docs/assets/135-02-exim4-ubuntu-10.04-mail-name.png)
+[![Exim4 system mail name configuration on Ubuntu 10.04 LTS (Lucid).](/docs/assets/135-02-exim4-ubuntu-10-04-mail-name.png)](/docs/assets/135-02-exim4-ubuntu-10-04-mail-name.png)
 
 Enter "127.0.0.1" when asked which IP address to listen on for SMTP connections.
 
-[![Exim4 listening IP address configuration on Ubuntu 10.04 LTS (Lucid).](/docs/assets/136-03-exim4-ubuntu-10.04-ip-listen.png)](/docs/assets/136-03-exim4-ubuntu-10.04-ip-listen.png)
+[![Exim4 listening IP address configuration on Ubuntu 10.04 LTS (Lucid).](/docs/assets/136-03-exim4-ubuntu-10-04-ip-listen.png)](/docs/assets/136-03-exim4-ubuntu-10-04-ip-listen.png)
 
 Make sure you list your FQDN, hostname, and localhost entries when you're asked which destinations mail should be accepted for.
 
-[![Exim4 mail destination configuration on Ubuntu 10.04 LTS (Lucid).](/docs/assets/137-04-exim4-ubuntu-10.04-local-domains.png)](/docs/assets/137-04-exim4-ubuntu-10.04-local-domains.png)
+[![Exim4 mail destination configuration on Ubuntu 10.04 LTS (Lucid).](/docs/assets/137-04-exim4-ubuntu-10-04-local-domains.png)](/docs/assets/137-04-exim4-ubuntu-10-04-local-domains.png)
 
 Leave the relay domains and relay machines fields blank.
 
-[![Exim4 relay domains configuration on Ubuntu 10.04 LTS (Lucid).](/docs/assets/138-05-exim4-ubuntu-10.04-relay-domains.png)](/docs/assets/138-05-exim4-ubuntu-10.04-relay-domains.png)
+[![Exim4 relay domains configuration on Ubuntu 10.04 LTS (Lucid).](/docs/assets/138-05-exim4-ubuntu-10-04-relay-domains.png)](/docs/assets/138-05-exim4-ubuntu-10-04-relay-domains.png)
 
 Select "No" when asked whether to keep DNS queries to a minimum.
 
-[![Exim4 DNS queries configuration on Ubuntu 10.04 LTS (Lucid).](/docs/assets/140-07-exim4-ubuntu-10.04-dns-queries.png)](/docs/assets/140-07-exim4-ubuntu-10.04-dns-queries.png)
+[![Exim4 DNS queries configuration on Ubuntu 10.04 LTS (Lucid).](/docs/assets/140-07-exim4-ubuntu-10-04-dns-queries.png)](/docs/assets/140-07-exim4-ubuntu-10-04-dns-queries.png)
 
 You may select either "mbox" or "Maildir" when asked about the delivery method used for incoming mail. While many utilities use mbox format, Maildir format can make handling individual locally delivered mail messages easier, and is widely supporting by a range of applications.
 
-[![Exim4 mail format configuration on Ubuntu 10.04 LTS (Lucid).](/docs/assets/141-08-exim4-ubuntu-10.04-mail-format.png)](/docs/assets/141-08-exim4-ubuntu-10.04-mail-format.png)
+[![Exim4 mail format configuration on Ubuntu 10.04 LTS (Lucid).](/docs/assets/141-08-exim4-ubuntu-10-04-mail-format.png)](/docs/assets/141-08-exim4-ubuntu-10-04-mail-format.png)
 
 Accept the default "non-split" option for your mail configuration file. Enter at least one external email address (choose one that you check frequently) in addition to "root" when asked to specify postmaster mail recipients.
 
-[![Exim4 postmaster recipient configuration on Ubuntu 10.04 LTS (Lucid).](/docs/assets/142-10-exim4-ubuntu-10.04-postmater-mail.png)](/docs/assets/142-10-exim4-ubuntu-10.04-postmater-mail.png)
+[![Exim4 postmaster recipient configuration on Ubuntu 10.04 LTS (Lucid).](/docs/assets/142-10-exim4-ubuntu-10-04-postmater-mail.png)](/docs/assets/142-10-exim4-ubuntu-10-04-postmater-mail.png)
 
 Test Your Mail Configuration
 ----------------------------
