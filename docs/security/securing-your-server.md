@@ -23,23 +23,28 @@ In the [Getting Started](getting-started) guide, we asked you to log in to your 
 Here's how to add a new user:
 
 1.  Open a terminal window and [log in to your Linode via SSH](/docs/getting-started#sph_logging-in-for-the-first-time).
+
 2.  Create the user by entering the following command. Replace *example\_user* with your desired username:
 
         adduser example_user
+        
+3.  Create the sudo group by entering the following command.
 
-3.  Add the user to the *administer the system* (admin) group by entering the following command. Replace *example\_user* with your username:
+	groupadd sudo
+
+4.  Add the user to the *administer the system* (admin) group by entering the following command. Replace *example\_user* with your username:
 
         usermod -a -G sudo example_user
 
-4.  On Debian 7 installations, you will need to install sudo before logging in as the new user:
+5.  On Debian 7 installations, you will need to install sudo before logging in as the new user:
 
         apt-get install sudo
 
-5.  Log out of your Linode as the `root` user by entering the following command:
+6.  Log out of your Linode as the `root` user by entering the following command:
 
         logout
 
-6.  Log in to your Linode as the new user by entering the following command. Replace *example\_user* with your username, and the example IP address with your Linode's IP address:
+7.  Log in to your Linode as the new user by entering the following command. Replace *example\_user* with your username, and the example IP address with your Linode's IP address:
 
         ssh example_user@123.456.78.90
 
