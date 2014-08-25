@@ -599,12 +599,12 @@ Here's how to configure Postfix:
     {: .file-excerpt }
 	/etc/postfix/mysql-virtual-alias-maps.cf
 	: ~~~
-		user = mailuser
-		password = mailuserpass
-		hosts = 127.0.0.1
-		dbname = mailserver
-		query = SELECT destination FROM virtual_aliases WHERE source='%s'
-	~~~
+	  user = mailuser
+	  password = mailuserpass
+	  hosts = 127.0.0.1
+	  dbname = mailserver
+	  query = SELECT destination FROM virtual_aliases WHERE source='%s'
+	  ~~~
 	
 23. Save the changes you've made to the */etc/postfix/mysql-virtual-alias-maps.cf* file.
 24. Restart Postfix by entering the following command:
@@ -630,34 +630,34 @@ Here's how to configure Postfix:
     {: .file-excerpt }
 	/etc/postfix/master.cf
 	: ~~~
-		#
-		# Postfix master process configuration file.  For details on the format
-		# of the file, see the master(5) manual page (command: "man 5 master").
-		#
-		# Do not forget to execute "postfix reload" after editing this file.
-		#
-		# ==========================================================================
-		# service type  private unpriv  chroot  wakeup  maxproc command + args
-		#               (yes)   (yes)   (yes)   (never) (100)
-		# ==========================================================================
-		smtp      inet  n       -       -       -       -       smtpd
-		#smtp      inet  n       -       -       -       1       postscreen
-		#smtpd     pass  -       -       -       -       -       smtpd
-		#dnsblog   unix  -       -       -       -       0       dnsblog
-		#tlsproxy  unix  -       -       -       -       0       tlsproxy
-		submission inet n       -       -       -       -       smtpd
-		#  -o syslog_name=postfix/submission
-		#  -o smtpd_tls_security_level=encrypt
-		#  -o smtpd_sasl_auth_enable=yes
-		#  -o smtpd_client_restrictions=permit_sasl_authenticated,reject
-		#  -o milter_macro_daemon_name=ORIGINATING
-		smtps     inet  n       -       -       -       -       smtpd
-		#  -o syslog_name=postfix/smtps
-		#  -o smtpd_tls_wrappermode=yes
-		#  -o smtpd_sasl_auth_enable=yes
-		#  -o smtpd_client_restrictions=permit_sasl_authenticated,reject
-		#  -o milter_macro_daemon_name=ORIGINATING
-	~~~
+	  #
+	  # Postfix master process configuration file.  For details on the format
+	  # of the file, see the master(5) manual page (command: "man 5 master").
+	  #
+	  # Do not forget to execute "postfix reload" after editing this file.
+	  #
+	  # ==========================================================================
+	  # service type  private unpriv  chroot  wakeup  maxproc command + args
+	  #               (yes)   (yes)   (yes)   (never) (100)
+	  # ==========================================================================
+	  smtp      inet  n       -       -       -       -       smtpd
+	  #smtp      inet  n       -       -       -       1       postscreen
+	  #smtpd     pass  -       -       -       -       -       smtpd
+	  #dnsblog   unix  -       -       -       -       0       dnsblog
+	  #tlsproxy  unix  -       -       -       -       0       tlsproxy
+	  submission inet n       -       -       -       -       smtpd
+	  #  -o syslog_name=postfix/submission
+	  #  -o smtpd_tls_security_level=encrypt
+	  #  -o smtpd_sasl_auth_enable=yes
+	  #  -o smtpd_client_restrictions=permit_sasl_authenticated,reject
+	  #  -o milter_macro_daemon_name=ORIGINATING
+	  smtps     inet  n       -       -       -       -       smtpd
+	  #  -o syslog_name=postfix/smtps
+	  #  -o smtpd_tls_wrappermode=yes
+	  #  -o smtpd_sasl_auth_enable=yes
+	  #  -o smtpd_client_restrictions=permit_sasl_authenticated,reject
+	  #  -o milter_macro_daemon_name=ORIGINATING
+	  ~~~
 
 29. Save the changes you've made to the `/etc/postfix/master.cf` file.
 30. Restart Postfix by entering the following command:
@@ -715,18 +715,18 @@ Here's how to configure Dovecot:
     {: .file-excerpt }
 	/etc/dovecot/dovecot.conf
 	: ~~~
-		!include conf.d/\*.conf
-	~~~
+	  !include conf.d/*.conf
+	  ~~~
 	
 4.  Add the following line to */etc/dovecot/dovecot.conf* so Dovecot knows to support IMAP, POP3, and LMTP. In this example, we have inserted it below the existing `!include_try /usr/share/dovecot/protocols.d/*.protocol` line:
 
     {: .file-excerpt }
 	/etc/dovecot/dovecot.conf
 	: ~~~
-		# Enable installed protocols
-		!include_try /usr/share/dovecot/protocols.d/*.protocol
-		protocols = imap pop3 lmtp
-	~~~
+	  # Enable installed protocols
+	  !include_try /usr/share/dovecot/protocols.d/*.protocol
+	  protocols = imap pop3 lmtp
+	  ~~~
 	
 5.  Save your changes to the */etc/dovecot/dovecot.conf* file.
 6.  Open the */etc/dovecot/conf.d/10-mail.conf* file for editing by entering the following command. This file allows us to control how Dovecot interacts with the server's file system to store and retrieve messages.
@@ -742,16 +742,16 @@ Here's how to configure Dovecot:
     {: .file-excerpt }
 	/etc/dovecot/conf.d/10-mail.conf
 	: ~~~
-		mail\_location = maildir:/var/mail/vhosts/%d/%n
-	~~~
+	  mail_location = maildir:/var/mail/vhosts/%d/%n
+	  ~~~
 	
 8.  Find the `mail_privileged_group` variable. Uncomment it, and then set it to the following value. This allows Dovecot to write to the */var/mail/* folder.
 
     {: .file-excerpt }
 	/etc/dovecot/conf.d/10-mail.conf
 	: ~~~
-		mail\_privileged\_group = mail
-	~~~
+	  mail_privileged_group = mail
+	  ~~~
 	
 9.  Save your changes to the */etc/dovecot/conf.d/10-mail.conf* file.
 10. Enter the following command to verify the permissions for */var/mail*:
@@ -788,38 +788,38 @@ Here's how to configure Dovecot:
     {: .file-excerpt }
 	/etc/dovecot/conf.d/10-auth.conf
 	: ~~~
-		disable\_plaintext\_auth = yes
-	~~~
+	  disable_plaintext_auth = yes
+	  ~~~
 	
 17. Set the `auth_mechanisms` by modifying the following line:
 
     {: .file-excerpt }
 	/etc/dovecot/conf.d/10-auth.conf
 	: ~~~
-		auth\_mechanisms = plain login
-	~~~
+	  auth_mechanisms = plain login
+	  ~~~
 	
 18. Add a hash tag (`#`) to comment out the system user login line:
 
     {: .file-excerpt }
 	/etc/dovecot/conf.d/10-auth.conf
 	: ~~~
-		#!include auth-system.conf.ext
-	~~~
+	  #!include auth-system.conf.ext
+	  ~~~
 	
 19. Enable MySQL authentication by uncommenting the `auth-sql.conf.ext` line. That section should look like this:
 
     {: .file-excerpt }
 	/etc/dovecot/conf.d/10-auth.conf
 	: ~~~
-		#!include auth-system.conf.ext
-		!include auth-sql.conf.ext
-		#!include auth-ldap.conf.ext
-		#!include auth-passwdfile.conf.ext
-		#!include auth-checkpassword.conf.ext
-		#!include auth-vpopmail.conf.ext
-		#!include auth-static.conf.ext
-	~~~
+	  #!include auth-system.conf.ext
+	  !include auth-sql.conf.ext
+	  #!include auth-ldap.conf.ext
+	  #!include auth-passwdfile.conf.ext
+	  #!include auth-checkpassword.conf.ext
+	  #!include auth-vpopmail.conf.ext
+	  #!include auth-static.conf.ext
+	  ~~~
 
 20. Save your changes to the */etc/dovecot/conf.d/10-auth.conf* file.
 21. Now you need to create the */etc/dovecot/conf.d/auth-sql.conf.ext* file with your authentication information. Enter the following command to create the new file:
@@ -831,15 +831,15 @@ Here's how to configure Dovecot:
     {: .file-excerpt }
 	/etc/dovecot/conf.d/auth-sql.conf.ext
 	: ~~~
-		passdb {
-		  driver = sql
-		  args = /etc/dovecot/dovecot-sql.conf.ext
-		}
-		userdb {
-		  driver = static
-		  args = uid=vmail gid=vmail home=/var/mail/vhosts/%d/%n
-		}
-	~~~
+	  passdb {
+	    driver = sql
+	    args = /etc/dovecot/dovecot-sql.conf.ext
+	  }
+	  userdb {
+	    driver = static
+	    args = uid=vmail gid=vmail home=/var/mail/vhosts/%d/%n
+	  }
+	  ~~~
 	
     Explanation of parameters:
 
@@ -860,32 +860,32 @@ Here's how to configure Dovecot:
     {: .file-excerpt }
 	/etc/dovecot/dovecot-sql.conf.ext
 	: ~~~
-		driver = mysql
-	~~~
+	  driver = mysql
+	  ~~~
 	
 26. Uncomment the `connect` line and set your MySQL connection information. Make sure you use your own password and any other custom settings:
 
     {: .file-excerpt }
 	/etc/dovecot/dovecot-sql.conf.ext
 	: ~~~
-		connect = host=127.0.0.1 dbname=mailserver user=mailuser password=mailuserpass
-	~~~
+	  connect = host=127.0.0.1 dbname=mailserver user=mailuser password=mailuserpass
+	  ~~~
 	
 27. Uncomment the `default_pass_scheme` line and set it to `SHA512-CRYPT`. This tells Dovecot to expect the passwords in an ecrypted format (which is how they are stored in the database).
 
     {: .file-excerpt }
 	/etc/dovecot/dovecot-sql.conf.ext
 	: ~~~
-		default\_pass\_scheme = SHA512-CRYPT
-	~~~
+	  default_pass_scheme = SHA512-CRYPT
+	  ~~~
 	
 28. Uncomment the `password_query` line and set it to the following. This is a MySQL query that Dovecot uses to retrieve the password from the database.
 
     {: .file-excerpt }
 	/etc/dovecot/dovecot-sql.conf.ext
 	: ~~~
-		 password\_query = SELECT email as user, password FROM virtual\_users WHERE email='%u';
-	~~~
+	  password_query = SELECT email as user, password FROM virtual_users WHERE email='%u';
+	  ~~~
     
 	{:.note}
     >
@@ -959,46 +959,46 @@ Here's how to configure Dovecot:
     {: .file-excerpt }
 	/etc/dovecot/conf.d/10-master.conf
 	: ~~~
-		service auth {
-		  # auth_socket_path points to this userdb socket by default. It's typically
-		  # used by dovecot-lda, doveadm, possibly imap process, etc. Its default
-		  # permissions make it readable only by root, but you may need to relax these
-		  # permissions. Users that have access to this socket are able to get a list
-		  # of all usernames and get results of everyone's userdb lookups.
-		  unix_listener /var/spool/postfix/private/auth {
-		    mode = 0666
-		    user = postfix
-		    group = postfix
-		  }
+	  service auth {
+	    # auth_socket_path points to this userdb socket by default. It's typically
+	    # used by dovecot-lda, doveadm, possibly imap process, etc. Its default
+	    # permissions make it readable only by root, but you may need to relax these
+	    # permissions. Users that have access to this socket are able to get a list
+	    # of all usernames and get results of everyone's userdb lookups.
+	    unix_listener /var/spool/postfix/private/auth {
+	      mode = 0666
+	      user = postfix
+	      group = postfix
+	    }
 
-		  unix_listener auth-userdb {
-		    mode = 0600
-		    user = vmail
-		    #group =
-		  }
+	    unix_listener auth-userdb {
+	      mode = 0600
+	      user = vmail
+	      #group =
+	    }
 
-		  # Postfix smtp-auth
-		  #unix_listener /var/spool/postfix/private/auth {
-		  #  mode = 0666
-		  #}
+	    # Postfix smtp-auth
+	    #unix_listener /var/spool/postfix/private/auth {
+	    #  mode = 0666
+	    #}
 
-		  # Auth process is run as this user.
-		  user = dovecot
-		}
-	~~~
+	    # Auth process is run as this user.
+	    user = dovecot
+	  }
+	  ~~~
 	
 36. In the `service auth-worker` section, uncomment the `user` line and set it to `vmail`, as shown below.
 
     {: .file-excerpt }
 	/etc/dovecot/conf.d/10-master.conf
 	: ~~~
-		service auth-worker {
-		  # Auth worker process is run as root by default, so that it can access
-		  # /etc/shadow. If this isn't necessary, the user should be changed to
-		  # $default_internal_user.
-		  user = vmail
-		}
-	~~~
+	  service auth-worker {
+	    # Auth worker process is run as root by default, so that it can access
+	    # /etc/shadow. If this isn't necessary, the user should be changed to
+	    # $default_internal_user.
+	    user = vmail
+	  }
+	  ~~~
 
 37. Save your changes to the */etc/dovecot/conf.d/10-master.conf* file.
 38. Verify that the default Dovecot SSL certificate and key exist by entering the following commands, one by one:
@@ -1023,17 +1023,17 @@ Here's how to configure Dovecot:
     {: .file-excerpt }
 	/etc/dovecot/conf.d/10-ssl.conf
 	: ~~~
-		ssl_cert = </etc/ssl/certs/dovecot.pem
-		ssl_key = </etc/ssl/private/dovecot.pem
-	~~~
+	  ssl_cert = </etc/ssl/certs/dovecot.pem
+	  ssl_key = </etc/ssl/private/dovecot.pem
+	  ~~~
 	
 41. Force your clients to use SSL encryption for all connections. Set `ssl` to `required`:
 
     {: .file-excerpt }
 	/etc/dovecot/conf.d/10-ssl.conf
 	: ~~~
-		ssl = required
-	~~~
+	  ssl = required
+	  ~~~
 	
 42. Save your changes to the */etc/dovecot/conf.d/10-ssl.conf* file. Dovecot has been configured!
 43. Restart Dovecot by entering the following command:
@@ -1052,29 +1052,29 @@ Here's how to configure Dovecot:
     {: .file-excerpt }
 	/var/log/mail.log
 	: ~~~
-		Mar 22 18:18:15 host postfix/smtpd[22574]: connect from mail1.linode.com[96.126.108.55]
-		Mar 22 18:18:15 host postfix/smtpd[22574]: 2BD192839B: client=mail1.linode.com[96.126.108.55]
-		Mar 22 18:18:15 host postfix/cleanup[22583]: 2BD192839B: message-id=<D4887A5E-DEAC-45CE-BDDF-3C89DEA84236@example.com>
-		Mar 22 18:18:15 host postfix/qmgr[15878]: 2BD192839B: from=<support@linode.com>, size=1156, nrcpt=1 (queue active)
-		Mar 22 18:18:15 host postfix/smtpd[22574]: disconnect from mail1.linode.com[96.126.108.55]
-		Mar 22 18:18:15 host dovecot: lmtp(22587): Connect from local
-		Mar 22 18:18:15 host dovecot: lmtp(22587, email1@example.com): 5GjrDafYTFE7WAAABf1gKA: msgid=<D4887A5E-DEAC-45CE-BDDF-3C89DEA84236@linode.com>: saved mail to INBOX
-		Mar 22 18:18:15 host dovecot: lmtp(22587): Disconnect from local: Client quit (in reset)
-		Mar 22 18:18:15 host postfix/lmtp[22586]: 2BD192839B: to=<email1@example.com>, relay=host.example.com[private/dovecot-lmtp], delay=0.09, delays=0.03/0.02/0.03/0.01, dsn=2.0.0, status=sent (250 2.0.0 <email1@example.com> 5GjrDafYTFE7WAAABf1gKA Saved)
-		Mar 22 18:18:15 host postfix/qmgr[15878]: 2BD192839B: removed
-	~~~
+	  Mar 22 18:18:15 host postfix/smtpd[22574]: connect from mail1.linode.com[96.126.108.55]
+	  Mar 22 18:18:15 host postfix/smtpd[22574]: 2BD192839B: client=mail1.linode.com[96.126.108.55]
+	  Mar 22 18:18:15 host postfix/cleanup[22583]: 2BD192839B: message-id=<D4887A5E-DEAC-45CE-BDDF-3C89DEA84236@example.com>
+	  Mar 22 18:18:15 host postfix/qmgr[15878]: 2BD192839B: from=<support@linode.com>, size=1156, nrcpt=1 (queue active)
+	  Mar 22 18:18:15 host postfix/smtpd[22574]: disconnect from mail1.linode.com[96.126.108.55]
+	  Mar 22 18:18:15 host dovecot: lmtp(22587): Connect from local
+	  Mar 22 18:18:15 host dovecot: lmtp(22587, email1@example.com): 5GjrDafYTFE7WAAABf1gKA: msgid=<D4887A5E-DEAC-45CE-BDDF-3C89DEA84236@linode.com>: saved mail to INBOX
+	  Mar 22 18:18:15 host dovecot: lmtp(22587): Disconnect from local: Client quit (in reset)
+	  Mar 22 18:18:15 host postfix/lmtp[22586]: 2BD192839B: to=<email1@example.com>, relay=host.example.com[private/dovecot-lmtp], delay=0.09, delays=0.03/0.02/0.03/0.01, dsn=2.0.0, status=sent (250 2.0.0 <email1@example.com> 5GjrDafYTFE7WAAABf1gKA Saved)
+	  Mar 22 18:18:15 host postfix/qmgr[15878]: 2BD192839B: removed
+	  ~~~
 
     {: .file-excerpt }
 	/var/log/mail.log
 	: ~~~
-		Mar 22 18:20:29 host postfix/smtpd[22590]: connect from 173-161-199-49-Philadelphia.hfc.comcastbusiness.net[173.161.199.49]
-		Mar 22 18:20:29 host dovecot: auth-worker: mysql(127.0.0.1): Connected to database mailserver
-		Mar 22 18:20:29 host postfix/smtpd[22590]: AA10A2839B: client=173-161-199-49-Philadelphia.hfc.comcastbusiness.net[173.161.199.49], sasl_method=PLAIN, sasl_username=email1@example.com
-		Mar 22 18:20:29 host postfix/cleanup[22599]: AA10A2839B: message-id=<FB6213FA-6F13-49A8-A5DD-F324A4FCF9E9@example.com>
-		Mar 22 18:20:29 host postfix/qmgr[15878]: AA10A2839B: from=<email1@example.com>, size=920, nrcpt=1 (queue active)
-		Mar 22 18:20:29 host postfix/smtp[22601]: AA10A2839B: to=<support@linode.com>, relay=mail1.linode.com[96.126.108.55]:25, delay=0.14, delays=0.08/0.01/0.05/0.01, dsn=2.0.0, status=sent (250 2.0.0 Ok: queued as C4232266C9)
-		Mar 22 18:20:29 host postfix/qmgr[15878]: AA10A2839B: removed
-	~~~
+	  Mar 22 18:20:29 host postfix/smtpd[22590]: connect from 173-161-199-49-Philadelphia.hfc.comcastbusiness.net[173.161.199.49]
+	  Mar 22 18:20:29 host dovecot: auth-worker: mysql(127.0.0.1): Connected to database mailserver
+	  Mar 22 18:20:29 host postfix/smtpd[22590]: AA10A2839B: client=173-161-199-49-Philadelphia.hfc.comcastbusiness.net[173.161.199.49], sasl_method=PLAIN, sasl_username=email1@example.com
+	  Mar 22 18:20:29 host postfix/cleanup[22599]: AA10A2839B: message-id=<FB6213FA-6F13-49A8-A5DD-F324A4FCF9E9@example.com>
+	  Mar 22 18:20:29 host postfix/qmgr[15878]: AA10A2839B: from=<email1@example.com>, size=920, nrcpt=1 (queue active)
+	  Mar 22 18:20:29 host postfix/smtp[22601]: AA10A2839B: to=<support@linode.com>, relay=mail1.linode.com[96.126.108.55]:25, delay=0.14, delays=0.08/0.01/0.05/0.01, dsn=2.0.0, status=sent (250 2.0.0 Ok: queued as C4232266C9)
+	  Mar 22 18:20:29 host postfix/qmgr[15878]: AA10A2839B: removed
+	  ~~~
 
 Congratulations! You now have a functioning mail server that can securely send and receive email. If things are not working smoothly, you may also want to consult the [Troubleshooting Problems with Postfix, Dovecot, and MySQL](/docs/email/postfix/troubleshooting) guide. At this point, you may want to consider adding spam and virus filtering and a webmail client. If you haven't switched the DNS records for your mail server yet, you should be able to do so now. Once the DNS records have propagated, you will start receiving email for your domain on the server.
 
