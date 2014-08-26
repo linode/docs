@@ -6,9 +6,9 @@ description: How to install and connect to a desktop environment on your Linode
 keywords: 'vnc,remote desktop,ubuntu,12.04'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['remote-desktops/vnc-desktop-ubuntu-12-04/']
-modified: Thursday, April 10th, 2014
+modified: Thursday, August 21, 2014
 modified_by:
-  name: Alex Fornuto
+  name: James Stewart
 published: 'Thursday, April 10th, 2014'
 title: 'Using VNC to Operate a Desktop on Ubuntu 12.04'
 ---
@@ -31,9 +31,38 @@ Installing a Desktop and VNC on your Linode
 
         sudo apt-get install vnc4server
 
-4.  Launch the VNC server manually at first to test your connection. You will need to specify a password to use:
+Securing your VNC connection
+----------------------------
+
+The default VNC connection is unencrypted. In order to secure your passwords and data, you will need to tunnel the traffic through an SSH connection to a local port.
+
+### Mac OS X and Linux
+
+1.  From your desktop, connect to your Linode with the following command.  Be sure to replace user@example.com with your username and your Linode's hostname or IP address:
+
+        ssh -L 5901:127.0.0.1:5901 user@example.com
+
+2.  Launch the VNC server manually to test your connection. You will need to specify a password to use:
 
         vncserver :1
+
+3.  Initiate your connection as per the steps listed in the following section.
+
+
+### Windows
+
+1.  Open [PuTTY](/docs/networking/using-putty) and navigate under the `SSH` menu to `Tunnels`. Add a new forwarded port as shown below, replacing example.com with your Linode's IP address or hostname:
+
+    [![Adding a forwarded port to PuTTY.](/docs/assets/1648-vnc-putty-1.png)](/docs/assets/1648-vnc-putty-1.png)
+
+2.  Return to the 'Session' screen and enter your Linode's hostname or IP address, and a title for your session.  Click save to save your settings for future use, and then click open to initiate your SSH tunnel.
+
+3.  Launch the VNC server manually to test your connection. You will need to specify a password to use:
+
+        vncserver :1
+
+4.  Initiate your connection as per the steps listed in the following section.
+
 
 Connecting to VNC From your Desktop
 -----------------------------------
@@ -42,13 +71,13 @@ Connecting to VNC From your Desktop
 
 While there are many options for OS X and Windows, this guide will use [RealVNC Viewer](http://www.realvnc.com/download/viewer/).
 
-1.  After installing and opening the viewer, enter your Linode's IP address or domain name into the first field and press **Connect**.
+1.  After installing and opening the viewer, connect with your VNC client to the localhost:
 
-    [![RealVNC Viewer.](/docs/assets/1655-vnc-1-2.png)](/docs/assets/1636-vnc-1.png)
+    [![Connecting through an SSH tunnel.](/docs/assets/1647-vnc-5.png)](/docs/assets/1647-vnc-5.png)
 
-2.  You will be warned that the connection is unencrypted. We will secure the connection later. For now, press **Continue**.
+2.  You will be warned that the connection is unencrypted, however if you have followed the steps above for securing your VNC connection, your session will be securely tunneled to your Linode. To proceed, press **Continue**.
 
-    [![VNC Security Warning.](/docs/assets/1656-vnc-2-2.png)](/docs/assets/1637-vnc-2.png)
+    [![VNC Security Warning.](/docs/assets/1656-vnc-2-2.png)](/docs/assets/1656-vnc-2-2.png)
 
 3.  You will be prompted to enter the password you specified in step four of [the previous section](#installing-a-desktop-and-vnc-on-your-linode).
 
@@ -68,9 +97,9 @@ There are a variety of VNC clients available for Ubuntu desktops. You can find t
 
     [![The Remmina Software.](/docs/assets/1640-vnc-ubuntu-1.png)](/docs/assets/1640-vnc-ubuntu-1.png)
 
-2.  Click the button to `Create a new remote desktop profile`. Name your profile, specify the VNC protocol, and enter your Linode's IP address or domain. Be sure to include `:1` in the `Server` section. In the password section fill in the password you specified in step four of [the previous section](#installing-a-desktop-and-vnc-on-your-linode):
+2.  Click the button to `Create a new remote desktop profile`. Name your profile, specify the VNC protocol, and enter localhost :1 in the server field. Be sure to include the`:1` in the `Server` section. In the password section fill in the password you specified in step four of [the previous section](#installing-a-desktop-and-vnc-on-your-linode):
 
-    [![.](/docs/assets/1654-vnc-ubuntu-2-2.png)](/docs/assets/1641-vnc-ubuntu-2.png)
+    [![.](/docs/assets/1641-vnc-ubuntu-2.png)](/docs/assets/1641-vnc-ubuntu-2.png)
 
 3.  Press **Connect**.
 
@@ -118,28 +147,6 @@ In the next few steps we'll configure VNC to launch the full Gnome desktop.
 
     [![A VNC connection with a full Ubuntu desktop.](/docs/assets/1643-vnc-ubuntu-3_small.png)](/docs/assets/1642-vnc-ubuntu-3.png)
 
-Encrypting the connection through an SSH tunnel
------------------------------------------------
-
-The default VNC connection is unencrypted. In order to secure your passwords and data, you can tunnel the traffic through an SSH connection to a local port.
-
-### Mac OS X and Linux
-
-1.  From your desktop, connect to your Linode with the following command:
-
-        ssh -L 5901:127.0.0.1:5901 user@example.com
-
-2.  Once this is set up, connect with your VNC client to the localhost:
-
-    [![Connecting through an SSH tunnel.](/docs/assets/1647-vnc-5.png)](/docs/assets/1647-vnc-5.png)
-
-### Windows
-
-1.  Open [PuTTY](/docs/networking/using-putty) and navigate under the `SSH` menu to `Tunnels`. Add a new forwarded port as shown below:
-
-    [![Adding a forwarded port to PuTTY.](/docs/assets/1648-vnc-putty-1.png)](/docs/assets/1648-vnc-putty-1.png)
-
-2.  Once this is set up, connect with your VNC client to the localhost.
 
 Starting VNC Server on Boot
 ---------------------------
