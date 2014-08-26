@@ -38,7 +38,7 @@ The default VNC connection is unencrypted. In order to secure your passwords and
 
 ### Mac OS X and Linux
 
-1.  From your desktop, connect to your Linode with the following command:
+1.  From your desktop, connect to your Linode with the following command.  Be sure to replace user@example.com with your username and your Linode's hostname or IP address:
 
         ssh -L 5901:127.0.0.1:5901 user@example.com
 
