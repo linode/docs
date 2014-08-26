@@ -12,7 +12,7 @@ published: 'Wednesday, August 6, 2014'
 title: 'Using WeeChat for Internet Relay Chat'
 ---
 
-**WeeChat** is a terminal-based Internet Relay Chat (IRC) client. It is written in C, and is intended to be very flexible and extensible. WeeChat has all sorts of plugins written in different languages including Python, Perl, and Ruby. IRC is a protocol for chat networks which allow people to create servers and talk using various clients (such as WeeChat). Linode customers use IRC to get technical help and exchange knowledge. 
+**WeeChat** is a terminal-based Internet Relay Chat (IRC) client. WeeChat is written in C, and is intended to be very flexible and extensible. WeeChat has all sorts of plugins written in different languages including Python, Perl, and Ruby.  
 
 Because WeeChat is written in C, it runs on many different platforms including Linux, Unix, BSD, Mac OS X and Windows (in cygwin). Many users prefer WeeChat over other graphical and terminal-based clients because of its many features and its customizability. One advantage of terminal-based clients over graphical IRC clients is the ability to detach from your WeeChat instance and come back later, locally or remotely, using a terminal multiplexer such as screen or tmux.
 
@@ -21,7 +21,7 @@ WeeChat is usually run in a Linux terminal. It may be ran either on your compute
 
 # What is IRC?
 
-Internet Relay Chat (IRC) is a protocol which is used to create IRC "networks", sets of IRC servers which can be connected to using IRC clients. Networks are usually independent. Inside a network, there are many channels which can be joined by users. Usually anybody can create a channel. Channels are usually prefixed with hash signs (**#**), and sometimes contain multiple hash signs to represent different types of channels. Individual users can also chat with each other privately using private messages.
+Internet Relay Chat (IRC) is a protocol which is used to create IRC "networks", sets of IRC servers which can be connected to using IRC clients. Networks are usually independent. Inside a network, there are many channels which can be joined by users. Usually anybody can create a channel. Channels are usually prefixed with hash signs (**#**), and sometimes contain multiple hash signs to represent different types of channels. Individual users can also chat with each other privately using private messages. Many Linode customers use IRC to get technical help and exchange knowledge.
 
 The official Linode channel is **#linode** on the OFTC network (**irc.oftc.net**). 
 
@@ -44,48 +44,44 @@ Before installing WeeChat, we suggest:
 
 # Using GNU Screen
 
-GNU Screen allows you to start WeeChat and leave it running, even if you disconnect from your Linode. We recommend running WeeChat in screen, so our instructions include screen-specific commands. For more information, see [Using GNU Screen to Manage Persistent Terminal Sessions](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions)
+GNU Screen allows you to start WeeChat and leave it running, even if you disconnect from your Linode. We recommend running WeeChat in Screen, so our instructions include Screen-specific commands. For more information, see [Using GNU Screen to Manage Persistent Terminal Sessions](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions)
 
 # Installing WeeChat
 
 Below are instructions for installing WeeChat and Screen on different Operating Systems. Find your Operating System and follow the instructions there.
 
-**Debian 7**
+## Debian 7
 
 1. Add the repository maintained by WeeChat decelopers to ensure the most up-to-date version of WeeChat:
 
-    ~~~~.bash
-    sudo touch /etc/apt/sources.list.d/weechat.list
-    echo "deb http://debian.weechat.org wheezy main" | sudo tee  /etc/apt/sources.list.d/weechat.list
-    ~~~~
+        sudo touch /etc/apt/sources.list.d/weechat.list
+        echo "deb http://debian.weechat.org wheezy main" | sudo tee  /etc/apt/sources.list.d/weechat.list
+
 
 2. Update `apt` and install Weechat:
  
-    ~~~
-    apt-get update
-    pt-get install screen weechat
-    ~~~
+        apt-get update
+        pt-get install screen weechat
 
-
-Ubuntu:
+## Ubuntu:
 
     apt-get install screen weechat
 
-Fedora/CentOS: :
+## Fedora/CentOS: :
 
     yum install screen weechat
 
-Arch Linux: :
+## Arch Linux: :
 
     pacman -S screen weechat
 
-Mac OS X (HomeBrew):
+## Mac OS X (HomeBrew):
 
     brew update
     brew install screen
     brew install weechat
 
-Mac OS X (MacPorts):
+## Mac OS X (MacPorts):
 
     port install screen
     port install weechat
