@@ -106,6 +106,11 @@ You may wish to consult the following resources for additional information on th
 
 - [cPanel Home Page](http://cpanel.net)
 - [cPanel Support](http://cpanel.net/support.html)
+- 
 
+6. Restart Services
 
+On the right side in WHM under "restart services" Click DNS Server (BIND/NSD/My).
+
+Click Yes to restart the service. Allow a few minutes for the service to restart. DNS can take 24-48 hours to propagate once these changes have been made.
 
