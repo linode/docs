@@ -12,7 +12,7 @@ published: 'Friday, August 21, 2014'
 title: 'Installing ZNC from Source on Debian 7.5'
 ---
 
-ZNC is an IRC bouncer. It's designed to run on a server that remains connected to an IRC network and buffer messages, so that a local IRC client can connect and disconnect without loosing a chat session or missing any messages. In this guide we'll go over installing ZNC from source and configuring the daemon.
+ZNC is an IRC bouncer. It's designed to run on a server that remains connected to an IRC network and buffer messages, so that a local IRC client can connect and disconnect without losing a chat session or missing any messages. In this guide we'll go over installing ZNC from source and configuring the daemon.
 
 {:.note}
 > This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
