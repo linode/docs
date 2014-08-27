@@ -83,7 +83,7 @@ Now that Apache is optimized for performance, it's time to starting hosting one 
 
 1.  Disable the default Apache virtual host by entering the following command:
 
-        sudo a2dissite default
+        sudo a2dissite *default
 
 2.  Navigate to your home directory by entering the following command:
 
@@ -140,7 +140,7 @@ Now that Apache is optimized for performance, it's time to starting hosting one 
 
         sudo a2ensite example.com.conf
 
-11. Restart Apache to save the changes. Enter the following command:
+11. The previous command will alert you that you need to restart Apache to save the changes. Enter the following command to apply your new configuration:
 
         sudo service apache2 restart
 
