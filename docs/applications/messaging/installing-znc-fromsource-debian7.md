@@ -25,7 +25,7 @@ Prepping the system
         sudo apt-get update
         sudo apt-get upgrade
 
-2. Since we're installing from source, we'll need the `build-essential` package:
+2. Since we're installing from source, we'll need the `build-essential` and `checkinstall` packages:
 
        sudo apt-get install build-essential checkinstall
 
