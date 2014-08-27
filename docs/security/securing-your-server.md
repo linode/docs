@@ -8,7 +8,7 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['securing-your-server/']
 modified: Thursday, September 12th, 2013
 modified_by:
-  name: Linode
+  name: James Stewart
 published: 'Friday, February 17th, 2012'
 title: Securing Your Server
 ---
@@ -28,9 +28,10 @@ Here's how to add a new user:
 
         adduser example_user
         
-3.  Create the sudo group by entering the following command.
+3.  On CentOS or Fedora installations, create the sudo group by entering the following command.
 
-	groupadd sudo
+        passwd example_user
+        groupadd sudo
 
 4.  Add the user to the *administer the system* (admin) group by entering the following command. Replace *example\_user* with your username:
 
@@ -269,7 +270,13 @@ Here's how to install and configure Fail2Ban:
 
 1.  Install Fail2Ban by entering the following command:
 
+    Debian/Ubuntu
+
         sudo apt-get install fail2ban
+
+    CentOS/Fedora
+
+        sudo yum install fail2ban
 
 2.  Optionally, you can override the default Fail2Ban configuration by creating a new `jail.local` file. Enter the following command to create the file:
 
