@@ -14,7 +14,7 @@ title: 'Using WeeChat for Internet Relay Chat'
 
 **WeeChat** is a terminal-based Internet Relay Chat (IRC) client. WeeChat is written in C, and is intended to be very flexible and extensible. WeeChat has all sorts of plugins written in different languages including Python, Perl, and Ruby.  
 
-Because WeeChat is written in C, it runs on many different platforms including Linux, Unix, BSD, Mac OS X and Windows (in cygwin). Many users prefer WeeChat over other graphical and terminal-based clients because of its many features and its customizability. One advantage of terminal-based clients over graphical IRC clients is the ability to detach from your WeeChat instance and come back later, locally or remotely, using a terminal multiplexer such as screen or tmux.
+Because WeeChat is written in C, it runs on many different platforms including Linux, Unix, BSD, Mac OS X and Windows (in Cygwin). Many users prefer WeeChat over other graphical and terminal-based clients because of its many features and its customizability. One advantage of terminal-based clients over graphical IRC clients is the ability to detach from your WeeChat instance and come back later, locally or remotely, using a terminal multiplexer such as screen or tmux.
 
 WeeChat is usually run in a Linux terminal. It may be ran either on your computer, a Linode instance, or any computer running a supported platform. If you run WeeChat on your Linode, you can access WeeChat at any time from any system simply by connecting via SSH and attaching to your screen or tmux instance. This guide assumes you have read [Using The Terminal](/docs/networking/ssh/using-the-terminal) and [Linux System Administration Basics](/docs/tools-reference/linux-system-administration-basics), along with the [Getting Started Guide](/docs/getting-started/). 
 
@@ -85,6 +85,19 @@ Below are instructions for installing WeeChat and Screen on different Operating 
 
     port install screen
     port install weechat
+
+## Windows (Cygwin)
+
+1. Install Cygwin.  Ensure that subversion and wget are marked to be included during the installation process
+
+2. Install apt-cyg with the following commands
+
+        svn --force export http://apt-cyg.googlecode.com/svn/trunk/ /bin/
+        chmod +x /bin/apt-cyg
+
+3. Install WeeChat using the apt-cyg package
+
+        apt-cyg install weechat
 
 
 
@@ -178,28 +191,13 @@ You usually will not have to directly edit any WeeChat configuration files. Most
 
 ## Installing Plugins
 
-WeeChat has a plugins system which allows you to install different modifications to WeeChat for different use cases and user preference.
+WeeChat has a plugins system which allows you to install different modifications to WeeChat for different use cases and user preference. In WeeChat versions 0.3.9 and above, a script management system is included. ``/script`` will open up a list of available and installed scripts. From there, you can follow the instructions to install scripts interactively, or install a script using ``/script install <script name>``.
 
-In WeeChat versions 0.3.9 and above, a script management system is included. ``/script`` will open up a list of available and installed scripts. From there, you can follow the instructions to install scripts interactively, or install a script using ``/script install <script name>``.
-
-In WeeChat versions 0.3.8 and below (including Debian 7's version of WeeChat), you can manually manage scripts or use the WeeGet plugin (recommended). To install the WeeGet plugin and have it load automatically on start up:
-
-    cd ~/.weechat/python
-    wget http://www.weechat.org/files/scripts/weeget.py
-    cd ~/.weechat/python/autoload
-    ln -s ../weeget.py
-    # Then, in WeeChat:
-    /python load weeget.py
-
-Once you have installed WeeGet, you can run ``/weeget install <script name>`` to install a script. ``/weeget remove <script name>`` will remove a script. For more information, run ``/help weeget``.
 
 ## WeeChat Commands
 
 All WeeChat commands begin with a **/**. Every channel in WeeChat is a *buffer*. Servers are also buffers. By default, WeeChat does not include a list of buffers, but you may install a plugin which does. The buffers.pl plugin is recommended and displays a list of buffers on the left of the screen. This allows you to see what channels and servers you are in without having to remember special commands. It also shows you buffer numbers if you want to use ``/buffer <x>`` to switch to a buffer.
 
-    # On WeeChat <= 0.3.8 (after installing WeeGet as shown in the section above)
-    /weeget install buffers.pl
-    # On WeeChat > 0.3.8
     /script install buffers.pl
 
 ``/mouse enable`` will enable mouse support, which allows you to scroll as well as click buffers to change channels and servers.
