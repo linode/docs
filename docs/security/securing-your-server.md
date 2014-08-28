@@ -28,7 +28,7 @@ Here's how to add a new user:
 
         adduser example_user
         
-3.  On CentOS or Fedora installations, create the sudo group by entering the following command.
+3.  On CentOS or Fedora installations, set the password for your new user and create the sudo group by entering the following commands.
 
         passwd example_user
         groupadd sudo
