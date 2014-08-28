@@ -6,7 +6,7 @@ modified_by:
   name: Alex Fornuto
 categories:
  - remote-desktop
- - viop
+ - voip
  - cloud-storage
  - containers
  - game-servers
