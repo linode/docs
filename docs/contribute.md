@@ -40,7 +40,8 @@ These authors got their articles published and \$100. You could be next.
 -   [Basic NFS Configuration on Debian 7](/docs/networking/file-transfer/basic-nfs-debian) - Juan Traverso
 -   [Configure Postfix to Send Mail Using an External SMTP Server](/docs/email/postfix/postfix-smtp-debian7) - Santiago Ti
 -   [MariaDB Setup on Debian 7](/docs/databases/mariadb/mariadb-setup-debian7) - Nashruddin Amin
--   [Running Apache with PHP-FPM on Debian and Ubuntu](web-servers/apache/php-fpm/apache-php-fpm-debian-ubuntu) - Jesin A.
+-   [Running Apache with PHP-FPM on Debian and Ubuntu](/docs/web-servers/apache/php-fpm/apache-php-fpm-debian-ubuntu) - Jesin A.
+-   [Using WeeChat for Internet Relay Chat](/docs/applications/messaging/using-weechat-for-irc) - Samuel Damashek
 
 How Much Money Will I Earn?
 ---------------------------
