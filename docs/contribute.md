@@ -61,7 +61,7 @@ Want to make sure you don't waste time writing a long article we can't use? Subm
 Submit Your Article
 -------------------
 
-Submit your article as a [pull request on GitHub](http://www.github.com/linode/docs), or by emailing it to <librarysubmissions@linode.com> as a plain text or Markdown file attachment. Writing samples are welcome as well.
+Submit your article as a [pull request on GitHub](http://www.github.com/linode/docs), or by emailing it to <contribute@linode.com> as a plain text or Markdown file attachment. Writing samples are welcome as well.
 
 Got images? Attach them as **.png** or **.jpg** files. If an image is over 650 pixels wide, please send both the original and a 650-pixel-wide version.
 
