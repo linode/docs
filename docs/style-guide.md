@@ -6,7 +6,7 @@ author:
 description: 'The Linode Library style guide.'
 keywords: 'style guide, write for us, linode library, article submissions'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Wednesday, July 23rd, 2014
+modified: Thursday, August 25th, 2014
 modified_by:
   name: Alex Fornuto
 published: 'Wednesday, January 15th, 2014'
@@ -15,8 +15,7 @@ title: Style Guide
 
 So you're interested in writing for us — great! New articles need to match the style and tone of existing Linode Library guides. Before you put keyboard to cursor, take a look at these guidelines.
 
-Content
--------
+# Content
 
 The introduction for your guide should focus on two things:
 
@@ -31,8 +30,7 @@ Aim for an appropriate level of technical difficulty. For example, an article ab
 
 Instructions should be straightforward, technically accurate, and thoroughly tested. Skip shortcuts and err on the side of clarity, security, and best practices.
 
-Tone
-----
+# Tone
 
 The tone we use in the Library is friendly and informational — the kind of tone you would use to explain something to a friend, while still getting down to business. A little informality is encouraged, but make sure you use proper spelling and grammar. Here's an example of an article with a [beginner-friendly tone](/docs/migrate-from-shared). Here's an example of an article written for [an advanced audience](/docs/email/postfix/postfix2.9.6-dovecot2.0.19-mysql).
 
@@ -40,8 +38,7 @@ Use short, direct sentences, especially when you're writing a single step in a s
 
 Be concise.
 
-Formatting
-----------
+# Formatting
 
 First, a few housekeeping points about file types:
 
@@ -50,20 +47,18 @@ First, a few housekeeping points about file types:
 
 Section titles should provide an at-a-glance outline of the article. Just by reading the table of contents, a reader should be able to grasp all the topics in the article, and click to jump to the most relevant section. If you use subsections, make sure you have at least two titles that belong in the lower level. Create section titles like this:
 
-    Section 1 
-    =========
+    # Section 1 
 
     Some text.
 
-    Subsection 1 
-    ------------
+    ## Subsection 1 
+
 
     More text.
 
-    Subsection 2 
-    ------------
+    ## Subsection 2 
 
-Final text.
+    Final text.
 
 When you provide step-by-step instructions, list them as numbered steps. Each task, even small ones, should get its own number.
 
@@ -88,10 +83,9 @@ If you reference outside materials, provide a link:
 
 You can find more formatting instructions and detailed examples on the [PHP Markdown Extra](https://michelf.ca/projects/php-markdown/extra/) website, but the tips above should be enough to get you started!
 
-Topic List and Submission Instructions
---------------------------------------
+# Topic List and Submission Instructions
 
-Send article submissions to **librarysubmissions @ linode.com** or create a pull request on [GitHub](https://github.com/linode/docs). For more instructions, and to see a topic list, please visit the [Article Submissions](/docs/contribute) guide.
+Send article submissions to <contribute@linode.com> or create a pull request on [GitHub](https://github.com/linode/docs). For more instructions, and to see a topic list, please visit the [Article Submissions](/docs/contribute) guide.
 
 Thanks for writing for us! We hope to hear from you soon.
 

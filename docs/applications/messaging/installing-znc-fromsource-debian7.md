@@ -12,7 +12,7 @@ published: 'Friday, August 21, 2014'
 title: 'Installing ZNC from Source on Debian 7.5'
 ---
 
-ZNC is an IRC bouncer. It's designed to run on a server that remains connected to an IRC network and buffer messages, so that a local IRC client can connect and disconnect without loosing a chat session or missing any messages. In this guide we'll go over installing ZNC from source and configuring the daemon.
+ZNC is an IRC bouncer. It's designed to run on a server that remains connected to an IRC network and buffer messages, so that a local IRC client can connect and disconnect without losing a chat session or missing any messages. In this guide we'll go over installing ZNC from source and configuring the daemon.
 
 {:.note}
 > This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
@@ -25,9 +25,9 @@ Prepping the system
         sudo apt-get update
         sudo apt-get upgrade
 
-2. Since we're installing from source, we'll need the `build-essential` package:
+2. Since we're installing from source, we'll need the `build-essential` and `checkinstall` packages:
 
-       sudo apt-get install build-essential
+       sudo apt-get install build-essential checkinstall
 
 3. If you want to use SSL encryption to connect to the web interface (recommended) you'll also need to install `libssl-dev`:
 
@@ -59,7 +59,7 @@ The commands listed below reference ZNC version 1.4, which is the latest at the 
 5. Run the following two commands to install ZNC to your Linode:
 
         make 
-        sudo make install
+        sudo checkinstall --fstrans=0 make install
 
 
 Configuration

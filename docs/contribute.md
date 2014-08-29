@@ -40,7 +40,9 @@ These authors got their articles published and \$100. You could be next.
 -   [Basic NFS Configuration on Debian 7](/docs/networking/file-transfer/basic-nfs-debian) - Juan Traverso
 -   [Configure Postfix to Send Mail Using an External SMTP Server](/docs/email/postfix/postfix-smtp-debian7) - Santiago Ti
 -   [MariaDB Setup on Debian 7](/docs/databases/mariadb/mariadb-setup-debian7) - Nashruddin Amin
--   [Running Apache with PHP-FPM on Debian and Ubuntu](web-servers/apache/php-fpm/apache-php-fpm-debian-ubuntu) - Jesin A.
+-   [Running Apache with PHP-FPM on Debian and Ubuntu](/docs/web-servers/apache/php-fpm/apache-php-fpm-debian-ubuntu) - Jesin A.
+-   [Configure Postfix to Send Mail Using an External SMTP Server](/docs/email/postfix/postfix-smtp-debian7) - Santiago Ti
+-   [Using WeeChat for Internet Relay Chat](/docs/applications/messaging/using-weechat-for-irc) - Samuel Damashek
 
 How Much Money Will I Earn?
 ---------------------------
@@ -61,7 +63,7 @@ Want to make sure you don't waste time writing a long article we can't use? Subm
 Submit Your Article
 -------------------
 
-Submit your article as a [pull request on GitHub](http://www.github.com/linode/docs), or by emailing it to <librarysubmissions@linode.com> as a plain text or Markdown file attachment. Writing samples are welcome as well.
+Submit your article as a [pull request on GitHub](http://www.github.com/linode/docs), or by emailing it to <contribute@linode.com> as a plain text or Markdown file attachment. Writing samples are welcome as well.
 
 Got images? Attach them as **.png** or **.jpg** files. If an image is over 650 pixels wide, please send both the original and a 650-pixel-wide version.
 
