@@ -17,7 +17,7 @@ This is a Linode Community guide by author Nashruddin Amin.
 
 GitLab is a free git repository management application based on Ruby on Rails. It is an interesting alternative if you want to host your own git repositories, since third-party hosting is not always the best option when writing private or closed source software.
 
-GitLab provides a [deb package](https://www.gitlab.com/downloads/) which contains GitLab Community Edition and all its dependencies (Ruby, PostgreSQL, Redis, Nginx, Unicorn and other gems) already compiled. Installing this package is [straightforward](https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/README.md#installation). But since it will install its own package dependencies (Nginx, PostgreSQL, etc), this installation method only suitable if the server is dedicated only to manage git repositories. If you want GitLab to use your existing resources (i.e: you already have Nginx and PostgreSQL installed), you need to install GitLab manually.
+GitLab provides a [.deb package](https://www.gitlab.com/downloads/) which contains GitLab Community Edition and all its dependencies (Ruby, PostgreSQL, Redis, Nginx, Unicorn and other gems) already compiled. Installing this package is [straightforward](https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/README.md#installation). But since it will install its own package dependencies (Nginx, PostgreSQL, etc), this installation method only suitable if the server is dedicated only to manage git repositories. If you want GitLab to use your existing resources (i.e: you already have Nginx and PostgreSQL installed), you need to install GitLab manually.
 
 This guide will help you install and configure GitLab on your Ubuntu 14.04 (Precise Pangolin) Linode. We will be using the latest Ruby and GitLab as of this writing, but perhaps there are newer versions as you read this. We will assume that you want to install GitLab on `git.example.com` and you have configured the DNS properly. If you are new to Linux system administration, you might want to consider the guides in our [Using Linux Guide](https://library.linode.com/using-linux/) series, particularly [Linux Administration Basics](https://library.linode.com/using-linux/administration-basics).
 
@@ -25,57 +25,53 @@ This guide will help you install and configure GitLab on your Ubuntu 14.04 (Prec
 >
 > This guide is written for non-root users. Commands that require elevated privileges are prefixed with sudo. If you are not familiar with the sudo command, you can check out our [Users and Groups](https://library.linode.com/using-linux/users-and-groups) guide.
 
-Hardware Requirements
----------------------
+# System Requirements
 
 GitLab is a large and heavy application. To get the most of GitLab, the recommended hardware is as follows:
 
 - **CPU:** 2 cores to support up to 500 users.
 - **Memory:** 2 GB to support up to 500 users.
 
-Prepare System for Deployment
------------------------------
+# Prepare System for Deployment
 
 Before beginning with the GitLab installation, make sure that your system's package database is up to date and that all installed software is running the latest version. 
 
-1. Update your system by issuing the following commands from your shell
+1. Update your system by issuing the following commands from your shell:
 
         sudo apt-get update
         sudo apt-get upgrade
 
-2. Also create a git user for GitLab
+2. Also create a git user for GitLab:
 
         sudo adduser --disabled-login --gecos 'GitLab' git
 
-Installing Package Dependencies
--------------------------------
+## Installing Package Dependencies
 
 In this section you will install the development tools and the required packages for GitLab.
 
-1. Install the required packages to compile Ruby and native extensions to Ruby gems
+1. Install the required packages to compile Ruby and native extensions to Ruby gems:
 
         sudo apt-get install build-essential zlib1g-dev libyaml-dev libssl-dev libgdbm-dev libreadline-dev libncurses5-dev libffi-dev curl openssh-server redis-server checkinstall libxml2-dev libxslt-dev libcurl4-openssl-dev libicu-dev logrotate
 
-2. Install Git::
+2. Install Git:
     
         sudo apt-get install git
 
-3. In order to receive mail notifications, you need to install a mail server. Issue the following command to install Postfix mail server
+3. In order to receive mail notifications, you need to install a mail server. Issue the following command to install Postfix mail server:
 
         sudo apt-get install postfix
 
-   Select "Internet site" and enter your hostname to complete the installation. If you need to set up a complete SMTP/IMAP/POP3 server, refer to the `Email with Postfix, Dovecot, and [MySQL](https://library.linode.com/email/postfix/postfix2.9.6-dovecot2.0.19-mysql) guide. 
+   Select `Internet site` and enter your hostname to complete the installation. If you need to set up a complete SMTP/IMAP/POP3 server, refer to the [Email with Postfix, Dovecot, and MySQL](/docs/email/postfix/email-with-postfix-dovecot-and-mysql) guide. 
 
-Installing Ruby
----------------
+## Installing Ruby
 
 While GitLab is a Ruby on Rails application, using ruby version managers such as [RVM](http://rvm.io/) and [rbenv](https://github.com/sstephenson/rbenv) is not supported. For example, GitLab shell is called from OpenSSH and having a version manager can prevent pushing and pulling over SSH. Thus GitLab can only work with system-wide Ruby installation. In addition, GitLab requires Ruby 2.0 or higher while the default version on Ubuntu 14.04 is 1.9.3.
 
-1. Remove the old Ruby if present
+1. Remove the old Ruby if present:
 
         sudo apt-get remove ruby
 
-2. The current stable Ruby version as of this writing is 2.1.2. To install Ruby, download the source code and compile the package
+2. The current stable Ruby version as of this writing is 2.1.2. To install Ruby, download the source code and compile the package:
 
         mkdir /tmp/ruby && cd /tmp/ruby
         wget http://ftp.ruby-lang.org/pub/ruby/2.1/ruby-2.1.2.tar.gz 
@@ -85,63 +81,62 @@ While GitLab is a Ruby on Rails application, using ruby version managers such as
         make
         sudo make install
 
-3. Check if the installation succeed by checking the Ruby version
+3. Check if the installation succeed by checking the Ruby version:
 
         ruby -v
 
-Setup PostgreSQL Database for GitLab
-------------------------------------
+## Setup PostgreSQL Database for GitLab
 
 GitLab supports both MySQL and PostgreSQL for the database backend, but the latter is recommended. GitLab requires PostgreSQL version 9.1 or higher since it needs to make use of extensions.
 
-1. Install PostgreSQL if you haven't installed it
+1. Install PostgreSQL if you haven't installed it:
 
         sudo apt-get install postgresql postgresql-client libpq-dev
 
-2. Create new database and new user by issuing the following commands
+2. Create new database and new user by issuing the following commands:
 
         sudo -u postgres createuser --createdb git
         sudo -u postgres createdb --owner=git gitlabhq_production
 
-3. Try connecting to the new database with the new user and display PostgreSQL version for testing
+3. Try connecting to the new database with the new user and display PostgreSQL version for testing:
 
         sudo -u git -H psql -d gitlabhq_production -c "SELECT VERSION()"
 
-   If everything is ok, you should see the PostgreSQL version displayed on the console like this::
+   If everything is ok, you should see the PostgreSQL version displayed on the console like this:
 
                                                        version                                                
         ------------------------------------------------------------------------------------------------------
          PostgreSQL 9.3.4 on x86_64-unknown-linux-gnu, compiled by gcc (Ubuntu 4.8.2-16ubuntu6) 4.8.2, 64-bit
         (1 row)
 
-Installing GitLab
------------------
+# Installing GitLab
 
 In this section you will install GitLab and make some configuration changes.
 
-1. We will install GitLab into home directory of the user git. Change the current working directory
+1. We will install GitLab into home directory of the user git. Change the current working directory:
 
         cd /home/git
 
-2. Download the GitLab source
+2. Download the GitLab source:
 
         sudo -u git -H git clone https://gitlab.com/gitlab-org/gitlab-ce.git -b 6-9-stable gitlab
         cd gitlab
 
    The command above will download the 6-9-stable branch from the GitLab repository. Feel free to select other stable branches, but never install the master branch on a production server.
 
-3. Create the GitLab config file
+3. Create the GitLab config file:
 
         sudo -u git -H cp config/gitlab.yml.example config/gitlab.yml
 
-   Open the file::
+   Open the file:
 
         sudo nano config/gitlab.yml
    
    You need to change the value of host to the fully-qualified domain of your server. Also set the email_from and support_email to the email addresses intended for GitLab.
 
-   excerpt /home/git/gitlab/config/gitlab.yml
-
+   {: .file-excerpt }
+   /home/git/gitlab/config/gitlab.yml
+   :    ~~~
         production: &base
           gitlab:
             host: git.example.com 
@@ -151,49 +146,52 @@ In this section you will install GitLab and make some configuration changes.
             email_from: gitlab@example.com
             ...
             support_email: support@example.com
+        ~~~
 
-   Save and exit the file.
+     {: .note } 
+     > If you specified a database name other than `gitlabhq_production` when creating the PostgreSQL database in the previous section, edit the `config/database.yml` file to match with your database name.
 
-4. Make sure GitLab can write to the log/ and tmp/ directories
+4. Save and exit the file.
+
+5. Make sure GitLab can write to the log/ and tmp/ directories:
 
         sudo chown -R git {log,tmp}
         sudo chmod -R u+rwX {log,tmp,tmp/pids,tmp/sockets,public/uploads}
 
-5. Create directory for satellites
+6. Create directory for satellites:
 
         sudo -u git -H mkdir /home/git/gitlab-satellites
         sudo chmod u+rwx,g+rx,o-rwx /home/git/gitlab-satellites
 
-6. Create the Unicorn, Rack attack, and PostgreSQL configuration files
+7. Create the Unicorn, Rack attack, and PostgreSQL configuration files:
 
         sudo -u git -H cp config/unicorn.rb.example config/unicorn.rb
         sudo -u git -H cp config/initializers/rack_attack.rb.example config/initializers/rack_attack.rb
         sudo -u git cp config/database.yml.postgresql config/database.yml
 
-   If you specified other than gitlabhq_production when creating the PostgreSQL database in the previous section, edit the config/database.yml file to match with your database name.
-
-7. Make sure that config/database.yml is readable to git only
+   
+8. Make sure that config/database.yml is readable to git only:
 
         sudo -u git -H chmod o-rwx config/database.yml
 
-8. Install the gems
+9. Install the gems:
 
         sudo gem install bundler
         sudo -u git -H bundle install --deployment --without development test mysql aws
 
-9. Install GitLab shell, which is an SSH access and repository management software for GitLab
+10. Install GitLab shell, which is an SSH access and repository management software for GitLab:
 
         sudo -u git -H bundle exec rake gitlab:shell:install[v1.9.4] REDIS_URL=redis://localhost:6379 RAILS_ENV=production
 
-10. Open the GitLab shell configuration file
+11. Open the GitLab shell configuration file:
 
         sudo nano /home/git/gitlab-shell/config.yml
 
-    Check if the value of gitlab_url matches with the URL of your server.
+12. Check if the value of `gitlab_url` matches with the URL of your server.
 
-    excerpt /home/git/gitlab-shell/config.yml
-
-        ---
+    {: .file-excerpt}
+    /home/git/gitlab-shell/config.yml
+    :   ~~~
         user: git
         gitlab_url: http://git.example.com/
         http_settings:
@@ -207,10 +205,11 @@ In this section you will install GitLab and make some configuration changes.
           namespace: resque:gitlab
         log_level: INFO
         audit_usernames: false
+        ~~~
 
     When you are satisfied with the configuration, save and exit the file.
 
-11. Initialize database and activate advanced features
+13. Initialize database and activate advanced features:
 
         sudo -u git -H bundle exec rake gitlab:setup RAILS_ENV=production
 
@@ -220,18 +219,18 @@ In this section you will install GitLab and make some configuration changes.
         You will lose any previous data stored in the database.
         Do you want to continue (yes/no)? 
 
-    Type 'yes' and press Enter to continue.
+    Type **yes** and press Enter to continue.
 
-12. Install the init script and make GitLab start on boot
+14. Install the init script and make GitLab start on boot:
 
         sudo cp lib/support/init.d/gitlab /etc/init.d/gitlab
         sudo update-rc.d gitlab defaults 21
 
-13. Set up logrotate
+15. Set up logrotate:
 
         sudo cp lib/support/logrotate/gitlab /etc/logrotate.d/gitlab
 
-14. Check application status
+16. Check application status:
 
         sudo -u git -H bundle exec rake gitlab:env:info RAILS_ENV=production
 
@@ -264,63 +263,64 @@ In this section you will install GitLab and make some configuration changes.
         Hooks:          /home/git/gitlab-shell/hooks/
         Git:            /usr/bin/git    
 
-15. Compile assets
+17. Compile assets:
 
         sudo -u git -H bundle exec rake assets:precompile RAILS_ENV=production
 
-16. Configure Git global settings for the git user
+18. Configure Git global settings for the git user:
 
         sudo -u git -H git config --global user.name "GitLab"
         sudo -u git -H git config --global user.email "gitlab@example.com"
         sudo -u git -H git config --global core.autocrlf input
 
 
- {: .note }
->
-> Set the value for user.email according to what is set in config/gitlab.yml
+     {: .note }
+    >
+    > Set the value for user.email according to what is set in config/gitlab.yml
 
-17. Start GitLab::
+19. Start GitLab:
 
         sudo service gitlab start
 
-Set Up Nginx Virtual Host for GitLab
-------------------------------------
+# Set Up Nginx Virtual Host for GitLab
 
 Nginx is the only supported web server for GitLab. In this section, you will create a new virtual host for GitLab and activate the site.
 
-1. Install Nginx if you haven't installed it
+1. Install Nginx if you haven't installed it:
 
         sudo apt-get install nginx
 
-2. Copy the sample site config
+2. Copy the sample site config:
 
         sudo cp lib/support/nginx/gitlab /etc/nginx/sites-available/gitlab
 
-3. Open the config file
+3. Open the config file:
 
         sudo nano /etc/nginx/sites-available/gitlab
 
-   Modify the value for server_name to the fully-qualified domain name of your server.
+4. Modify the value for `server_name` to the fully-qualified domain name of your server:
 
-   excerpt /etc/nginx/sites-available/gitlab
-
+   {: .file-excerpt}
+   /etc/nginx/sites-available/gitlab
+    :   ~~~
         listen 80;
         server_name git.example.com;
         server_tokens off; 
         root /home/git/gitlab/public;
+        ~~~
 
    Save and exit the file.
 
-4. Deactivate the default virtual host
+5. Deactivate the default virtual host
 
         sudo rm /etc/nginx/sites-enabled/default
 
-5. Activate the site and restart Nginx to take effect
+6. Activate the site and restart Nginx to take effect
 
         sudo ln -s /etc/nginx/sites-available/gitlab /etc/nginx/sites-enabled/gitlab
         sudo service nginx restart
 
-6.  If Nginx failed to start with the following message
+7.  If Nginx failed to start with the following message
 
         Restarting nginx: nginx: [emerg] could not build the server_names_hash, you should increase server_names_hash_bucket_size: 32
 
@@ -328,17 +328,16 @@ Nginx is the only supported web server for GitLab. In this section, you will cre
 
         server_names_hash_bucket_size 64;
 
-    and restart Nginx.
+    Then restart Nginx.
             
-Open GitLab on Your Browser
----------------------------
+# Open GitLab on Your Browser
 
-Double check the application status
+Double check the application status:
 
         cd /home/git/gitlab
         sudo -u git -H bundle exec rake gitlab:check RAILS_ENV=production
 
-If most of the items are green and some are purple (which is okay since you don't have any git project yet), then you have successfully installing GitLab. Below are the sample output::
+If most of the items are green and some are purple (which is okay since you don't have any git project yet), then you have successfully installing GitLab. Below are the sample output:
 
         Checking Environment ...
 
@@ -404,15 +403,13 @@ Now you can open http://git.example.com on your browser. GitLab will show you th
 
 [![GitLab Login Page](/docs/assets/gitlab-login-page-s.png)](/docs/assets/gitlab-login-page-linode.png)
 
-You can login using root as the username and 5iveL!fe for the password.
+You can login using **root** as the username and **5iveL!fe** for the password.
 
-Securing GitLab
----------------
+# Securing GitLab
 
-Now that you have GitLab running on your server, you might want to add SSL support to secure your GitLab site. Refer to the [SSL Certificates with Nginx](https://library.linode.com/web-servers/nginx/configuration/ssl) guide to protect your site with SSL.
+Now that you have GitLab running on your server, you might want to add SSL support to secure your GitLab site. Refer to the [SSL Certificates with Nginx](/docs/security/ssl/ssl-certificates-with-nginx) guide to protect your site with SSL.
 
-More Information
-----------------
+# More Information
 
 - [GitLab Community Edition](https://www.gitlab.com/gitlab-ce/)
 - [GitLab Documentation](https://www.gitlab.com/documentation/)
