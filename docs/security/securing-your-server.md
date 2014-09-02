@@ -22,14 +22,17 @@ In the [Getting Started](/docs/getting-started) guide, we asked you to log in to
 
 Here's how to add a new user:
 
+Debian/Ubuntu
+
 1.  Open a terminal window and [log in to your Linode via SSH](/docs/getting-started#sph_logging-in-for-the-first-time).
-2.  Create the user by entering the following command. Replace *example\_user* with your desired username:
 
-        adduser example_user
+2.  Create the user by entering the following command. Replace *exampleuser* with your desired username:
 
-3.  Add the user to the *administer the system* (admin) group by entering the following command. Replace *example\_user* with your username:
+        adduser exampleuser
 
-        usermod -a -G sudo example_user
+3.  Add the user to the *administer the system* (admin) group by entering the following command. Replace *exampleuser* with your username:
+
+        usermod -a -G sudo exampleuser
 
 4.  On Debian 7 installations, you will need to install sudo before logging in as the new user:
 
@@ -39,9 +42,39 @@ Here's how to add a new user:
 
         logout
 
-6.  Log in to your Linode as the new user by entering the following command. Replace *example\_user* with your username, and the example IP address with your Linode's IP address:
+6.  Log in to your Linode as the new user by entering the following command. Replace *exampleuser* with your username, and the example IP address with your Linode's IP address:
 
-        ssh example_user@123.456.78.90
+        ssh exampleuser@123.456.78.90
+
+CentOS/Fedora
+
+1. Open a terminal window and [log in to your Linode via SSH](/docs/getting-started#sph_logging-in-for-the-first-time).
+
+2.  Create the user by entering the following command. Replace *exampleuser* with your desired username:
+
+        adduser exampleuser
+
+3.  Set the password for your new user by entering the following command.  Replace *exampleuser* with your desired username:
+
+        passwd exampleuser
+	
+4.  You will now need to edit your sudoers file to grant your new user the correct permissions.  Enter the following command to open your sudoers file for editing:
+
+        visudo
+
+5.  Type 'i' to enter the insert mode, and add an entry for your user below the root user, granting all permissions.
+
+		## Allow root to run any commands anywhere
+		root    ALL=(ALL)       ALL
+		jstewart        ALL=(ALL)       ALL
+
+6.  Log out of your Linode as the `root` user by entering the following command:
+
+        logout
+
+7.  Log in to your Linode as the new user by entering the following command. Replace *exampleuser* with your username, and the example IP address with your Linode's IP address:
+
+        ssh exampleuser@123.456.78.90
 
 Now you can administer your Linode with the new user account instead of `root`. When you need to execute superuser commands in the future, preface them with `sudo`. For example, later in this guide you'll execute `sudo iptables -L` while logged in with your new account. Nearly all superuser commands can be executed with `sudo`, and all commands executed with `sudo` will be logged to `/var/log/auth.log`.
 
@@ -264,7 +297,11 @@ Here's how to install and configure Fail2Ban:
 
 1.  Install Fail2Ban by entering the following command:
 
-        sudo apt-get install fail2ban
+        Debian/Ubuntu
+	    sudo apt-get install fail2ban
+		
+		CentOS/Fedora
+		sudo yum install fail2banßß
 
 2.  Optionally, you can override the default Fail2Ban configuration by creating a new `jail.local` file. Enter the following command to create the file:
 
