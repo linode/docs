@@ -62,11 +62,11 @@ CentOS/Fedora
 
         visudo
 
-5.  Type 'i' to enter the insert mode, and add an entry for your user below the root user, granting all permissions.
+5.  Type 'i' to enter the insert mode, and add an entry for your user below the root user, granting all permissions.  Replace *exampleuser* with your username:
 
 		## Allow root to run any commands anywhere
 		root    ALL=(ALL)       ALL
-		jstewart        ALL=(ALL)       ALL
+		exampleuser        ALL=(ALL)       ALL
 
 6.  Log out of your Linode as the `root` user by entering the following command:
 
