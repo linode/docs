@@ -8,7 +8,7 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['securing-your-server/']
 modified: Thursday, September 12th, 2013
 modified_by:
-  name: Linode
+  name: James Stewart
 published: 'Friday, February 17th, 2012'
 title: Securing Your Server
 ---
@@ -23,23 +23,29 @@ In the [Getting Started](/docs/getting-started) guide, we asked you to log in to
 Here's how to add a new user:
 
 1.  Open a terminal window and [log in to your Linode via SSH](/docs/getting-started#sph_logging-in-for-the-first-time).
+
 2.  Create the user by entering the following command. Replace *example\_user* with your desired username:
 
         adduser example_user
+        
+3.  On CentOS or Fedora installations, set the password for your new user and create the sudo group by entering the following commands.
 
-3.  Add the user to the *administer the system* (admin) group by entering the following command. Replace *example\_user* with your username:
+        passwd example_user
+        groupadd sudo
+
+4.  Add the user to the *administer the system* (admin) group by entering the following command. Replace *example\_user* with your username:
 
         usermod -a -G sudo example_user
 
-4.  On Debian 7 installations, you will need to install sudo before logging in as the new user:
+5.  On Debian 7 installations, you will need to install sudo before logging in as the new user:
 
         apt-get install sudo
 
-5.  Log out of your Linode as the `root` user by entering the following command:
+6.  Log out of your Linode as the `root` user by entering the following command:
 
         logout
 
-6.  Log in to your Linode as the new user by entering the following command. Replace *example\_user* with your username, and the example IP address with your Linode's IP address:
+7.  Log in to your Linode as the new user by entering the following command. Replace *example\_user* with your username, and the example IP address with your Linode's IP address:
 
         ssh example_user@123.456.78.90
 
@@ -264,7 +270,13 @@ Here's how to install and configure Fail2Ban:
 
 1.  Install Fail2Ban by entering the following command:
 
+    Debian/Ubuntu
+
         sudo apt-get install fail2ban
+
+    CentOS/Fedora
+
+        sudo yum install fail2ban
 
 2.  Optionally, you can override the default Fail2Ban configuration by creating a new `jail.local` file. Enter the following command to create the file:
 
