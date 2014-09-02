@@ -1,20 +1,19 @@
 ---
-deprecated: true
 author:
   name: Alex Fornuto
   email: afornuto@linode.com
-description: 'Getting started with MySQL for web and server applications on Ubuntu 12.04 LTS (Precise Pangolin).'
-keywords: 'mysql ubuntu 12.04,mysql ubuntu,mysql on linux,mysql vps'
+description: 'Getting started with MySQL for web and server applications on Ubuntu 14.04 LTS (Trusty Tahr).'
+keywords: 'mysql ubuntu 14.04,mysql ubuntu,mysql on linux,mysql vps'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['databases/mysql/ubuntu-12-04-precise-pangolin/']
-modified: Tuesday, January 28th, 2014
+alias: ['databases/mysql/ubuntu-14.04-trusty-pangolin/']
+modified: Tuesday, August 27th, 2014 
 modified_by:
-  name: Alex Fornuto
+  name: James Stewart
 published: 'Monday, October 8th, 2012'
-title: 'Using MySQL Relational Databases on Ubuntu 12.04 LTS (Precise Pangolin)'
+title: 'Using MySQL Relational Databases on Ubuntu 14.04 LTS (Trusty Tahr)'
 ---
 
-MySQL is a popular database management system, used as the data storage provider for thousands of web and server applications. This guide will help beginners get started with MySQL on an Ubuntu 12.04 LTS (Precise Pangolin) Linux VPS. For purposes of this tutorial, we'll assume you've followed the steps outlined in our [getting started guide](/docs/getting-started/), that your system is up to date, and that you've logged into your Linode as root via SSH. If you're performing these steps as a standard user with sudo privileges, remember to prepend "sudo" to the commands shown below.
+MySQL is a popular database management system, used as the data storage provider for thousands of web and server applications. This guide will help beginners get started with MySQL on an Ubuntu 14.04 LTS (Trusty Tahr) Linux VPS. For purposes of this tutorial, we'll assume you've followed the steps outlined in our [getting started guide](/docs/getting-started/), and that your system is up to date. The commands listed will need to be run with root permissions. You can elevate your login session to your root user by using the "su" command, and then entering your root password when prompted. If you're performing these steps as a standard user with sudo privileges, remember to prepend "sudo" to the commands shown below.
 
 Basic System Configuration
 --------------------------
@@ -39,20 +38,20 @@ To make sure `universe` repositories are enabled, modify your `/etc/apt/sources.
 /etc/apt/sources.list
 :   ~~~
     ## main & restricted repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ precise main restricted
-    deb-src http://us.archive.ubuntu.com/ubuntu/ precise main restricted
+    deb http://us.archive.ubuntu.com/ubuntu/ trusty main restricted
+    deb-src http://us.archive.ubuntu.com/ubuntu/ trusty main restricted
 
-    deb http://security.ubuntu.com/ubuntu precise-security main restricted
-    deb-src http://security.ubuntu.com/ubuntu precise-security main restricted
+    deb http://security.ubuntu.com/ubuntu trusty-security main restricted
+    deb-src http://security.ubuntu.com/ubuntu trusty-security main restricted
 
     ## universe repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ precise universe
-    deb-src http://us.archive.ubuntu.com/ubuntu/ precise universe
-    deb http://us.archive.ubuntu.com/ubuntu/ precise-updates universe
-    deb-src http://us.archive.ubuntu.com/ubuntu/ precise-updates universe
+    deb http://us.archive.ubuntu.com/ubuntu/ trusty universe
+    deb-src http://us.archive.ubuntu.com/ubuntu/ trusty universe
+    deb http://us.archive.ubuntu.com/ubuntu/ trusty-updates universe
+    deb-src http://us.archive.ubuntu.com/ubuntu/ trusty-updates universe
 
-    deb http://security.ubuntu.com/ubuntu precise-security universe
-    deb-src http://security.ubuntu.com/ubuntu precise-security universe
+    deb http://security.ubuntu.com/ubuntu trusty-security universe
+    deb-src http://security.ubuntu.com/ubuntu trusty-security universe
     ~~~
 
 Installing MySQL
@@ -69,7 +68,7 @@ Begin by issuing the following command in your terminal:
 
 You will be prompted to set a password for the MySQL root user. Choose a strong password and keep it in a safe place for future reference.
 
-[![Setting the MySQL root password in Ubuntu 12.04 LTS (Precise Pangolin).](/docs/assets/1128-360-lucid-01-mysql-root-password.png)](/docs/assets/1128-360-lucid-01-mysql-root-password.png)
+[![Setting the MySQL root password in Ubuntu 14.04 LTS (Trusty Tahr).](/docs/assets/1128-360-lucid-01-mysql-root-password.png)](/docs/assets/1128-360-lucid-01-mysql-root-password.png)
 
 The MySQL server package will be installed on your server, along with dependencies and client libraries. After installing MySQL, it's recommended that you run `mysql_secure_installation` in order to help secure MySQL. While running `mysql_secure_installation`, you will be presented with the opportunity to change the MySQL root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases. It is recommended that you answer yes to these options. If you are prompted to reload the privilege tables, select yes. Run the following command to execute the program:
 

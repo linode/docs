@@ -150,10 +150,9 @@ In the example below, change the IP addresses to reflect the values shown under 
     iface lo inet loopback
 
     # Configuration for eth0
-    # We no longer need to use aliases (eg. eth0:0 eth0:1 eth0:2) 
-
+	
     # This line ensures that the interface will be brought up during boot
-    auto eth0
+    auto eth0 eth0:0 eth0:1
 
     # The address and gateway are necessary.
     # The netmask is taken automatically from the block.
@@ -163,13 +162,13 @@ In the example below, change the IP addresses to reflect the values shown under 
         gateway 12.34.56.1
 
     # This is a second public IP address
-    iface eth0 inet static
+    iface eth0:0 inet static
         address 34.56.78.90/24
 
     # This is a private IP address. Private IPs do not have a gateway (they are not publicly routable).
     # All you need to specify is the address and the block. The netmask is taken from the block.
     # Example: /17 is considered to be a private IP address: netmask 255.255.128.0
-    iface eth0 inet static
+    iface eth0:1 inet static
     address 192.168.133.234/17
     ~~~
 

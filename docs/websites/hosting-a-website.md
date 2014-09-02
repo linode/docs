@@ -256,10 +256,6 @@ Here's how to install PHP with MySQL support and the Suhosin security module:
 
         sudo apt-get install php5-mysql
 
-3.  Secure PHP with Suhosin by entering the following command:
-
-        sudo apt-get install php5-suhosin
-
 ### Optimizing PHP for a Linode 1GB
 
 After you install PHP, you'll need to enable logging and tune PHP for better performance. The setting you'll want to pay the most attention to is `memory_limit`, which controls how much memory is allocated to PHP. Here's how to enable logging and optimize PHP for performance:
