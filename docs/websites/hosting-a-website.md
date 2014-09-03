@@ -17,7 +17,7 @@ Now that you've installed Linux and secured your Linode, it's time to start *doi
 
  {: .note }
 >
-> Ubuntu 12.04 LTS is the [Linux distribution](/docs/getting-started#sph_deploying-a-linux-distribution) we're using as the starting point for the packages and configurations mentioned in this guide.
+> Debian 7 and Ubuntu 14.04 LTS are the [Linux distributions](/docs/getting-started#sph_deploying-a-linux-distribution) we're using as the starting point for the packages and configurations mentioned in this guide.
 >
 > This guide is designed for small and medium-size websites running on WordPress, Drupal, or another PHP content management system. If your website doesn't belong in that category, you'll need to assess your requirements and install custom packages tailored for your particular requirements.
 
@@ -50,7 +50,7 @@ Installing Apache is easy, but if you leave it running with the default settings
 
         sudo nano /etc/apache2/apache2.conf
 
-3.  Make sure that the following values are set:
+3.  Make sure that the following values are set  In Ubuntu 14.04 LTS, you will need to append the module section noted below to the end of your apache2.conf file:
 
     ~~~ apache
     KeepAlive Off
@@ -85,27 +85,22 @@ Now that Apache is optimized for performance, it's time to starting hosting one 
 
         sudo a2dissite *default
 
-2.  Navigate to your home directory by entering the following command:
+2.  Navigate to your /var/www directory:
 
-        cd ~
+        cd /var/www
 
-3.  Create a folder to hold your website by entering the following command:
+3.  Create a folder to hold your website by entering the following command, replacing 'example.com' with your domain name:
 
-        mkdir public
+        sudo mkdir example.com
 
 4.  Create a set of folders inside `public` to store your website's files, logs, and backups. Enter the following command, replacing `example.com` with your domain name:
 
-        mkdir -p public/example.com/{public,log,backup} 
+        sudo mkdir -p example.com/public_html
+		sudo mkdir -p example.com/log
+		sudo mkdir -p example.com/backups
 
-5.  Set your home directory to be readable and accessible to all users on the system by entering the following command:
 
-        sudo chmod a+rx ~
-
-6.  Set the `public` directory (and all of the files in it) to be readable and accessible to all users on the system by entering the following command:
-
-        sudo chmod -R a+rx ~/public
-
-7.  Create the virtual host file for your website by entering the following command. Replace `example.com.conf` with your domain name:
+5.  Create the virtual host file for your website by entering the following command. Replace `example.com.conf` with your domain name:
 
         sudo nano /etc/apache2/sites-available/example.com.conf
 
@@ -116,7 +111,7 @@ Now that Apache is optimized for performance, it's time to starting hosting one 
 
     ~~~ apache
     # domain: example.com
-    # public: /home/example_user/public/example.com/
+    # public: /var/www/example.com/public_html/
 
     <VirtualHost *:80>
       # Admin email, Server Name (domain name), and any aliases
@@ -126,12 +121,12 @@ Now that Apache is optimized for performance, it's time to starting hosting one 
 
       # Index file and Document Root (where the public files are located)
       DirectoryIndex index.html index.php
-      DocumentRoot /home/example_user/public/example.com/public
+      DocumentRoot /var/www/example.com/public_html
 
       # Log file locations
       LogLevel warn
-      ErrorLog  /home/example_user/public/example.com/log/error.log
-      CustomLog /home/example_user/public/example.com/log/access.log combined
+      ErrorLog  /var/www/example.com/log/error.log
+      CustomLog /var/www/example.com/log/access.log combined
     </VirtualHost>
     ~~~
 
@@ -235,7 +230,7 @@ If you have an existing website, you may want to import an existing database in 
 1.  Upload the database file to your Linode. See the instructions in [Uploading Files](#id3).
 2.  Import the database by entering the following command. Replace `username` with your MySQL username, `password` with your MySQL password, and `database_name` with your own:
 
-        mysql -u username -ppassword database_name < FILE.sql
+        mysql -u username -p password database_name < FILE.sql
 
 Your database will be imported in to MySQL.
 
@@ -246,7 +241,7 @@ PHP is a general-purpose scripting language that allows you to produce dynamic a
 
 ### Installing PHP
 
-Here's how to install PHP with MySQL support and the Suhosin security module:
+Here's how to install PHP with MySQL support:
 
 1.  Install the base PHP package by entering the following command:
 
