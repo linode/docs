@@ -13,7 +13,7 @@ published: 'Thursday, August 28, 2014'
 title: Manage Git Repositories with GitLab on Ubuntu 14.04 (Trusty)
 ---
 
-This is a Linode Community guide by author **Nashruddin Amin**. [Write for us](/docs/contribute) and earn $100 per published guide.
+This is a Linode Community guide by author **Nashruddin Amin**[<i class="fa fa-twitter"></i>](https://twitter.com/bsd_noobz). [Write for us](/docs/contribute) and earn $100 per published guide.
 
 GitLab is a free git repository management application based on Ruby on Rails. It is an interesting alternative if you want to host your own git repositories, since third-party hosting is not always the best option when writing private or closed source software.
 
