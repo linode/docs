@@ -6,10 +6,10 @@ description: Hosting your own Git repositories with GitLab Community Edition
 keywords: 'version control,git,gitlab'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['gitlab-with-ubuntu/']
-modified: Wednesday, September 18th, 2013
+modified: Thursday, September 4th, 2014
 modified_by:
-  name: Linode
-published: 'Thursday, August 28, 2014'
+  name: Alex Fornuto
+published: 'Thursday, September 4th, 2014'
 title: Manage Git Repositories with GitLab on Ubuntu 14.04 (Trusty)
 ---
 
