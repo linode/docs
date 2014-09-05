@@ -71,8 +71,6 @@ Mid-Month Billing
 
 You may receive a mid-month bill from Linode if you reach a certain threshold of Linode services used within a single month. For many users, this amount will be **$50.00**, although your account history with Linode can adjust that amount. In general, a history of on-time payments to Linode will increase the threshold amount. In the example image in the previous section, the user received a mid-month bill for $50.16 on February 9th.
 
-You may also receive a mid-month bill from Linode if you add more than **20** Linodes or NodeBalancers to your account. Again, this threshold can change based on your account history with Linode.
-
 What does a mid-month bill mean? Your existing active services will stay active. However, you must pay the mid-month bill before you can activate additional Linode services. Once your payment is processed, you may continue adding new services.
 
 If My Linode is Powered Off, Will I Be Billed?
