@@ -20,6 +20,8 @@ Now that you've installed Linux and secured your Linode, it's time to start *doi
 > Debian 7 and Ubuntu 14.04 LTS are the [Linux distributions](/docs/getting-started#sph_deploying-a-linux-distribution) we're using as the starting point for the packages and configurations mentioned in this guide.
 >
 > This guide is designed for small and medium-size websites running on WordPress, Drupal, or another PHP content management system. If your website doesn't belong in that category, you'll need to assess your requirements and install custom packages tailored for your particular requirements.
+>
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
 Web Server
 ----------
