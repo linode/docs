@@ -1,5 +1,5 @@
 ---
-deprecated: true
+deprecated: false
 author:
   name: Linode
   email: docs@linode.com
