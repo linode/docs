@@ -180,7 +180,7 @@ Apache virtual hosting file
 
 Restart Apache:
 
-    service apache2 restart
+    sudo service apache2 restart
 
 You should now be able to visit your site with SSL enabled. Congratulations, you've installed a commercial SSL certificate!
 
