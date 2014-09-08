@@ -85,7 +85,7 @@ You've used password authentication to connect to your Linode via SSH, but there
 
 Here's how to use SSH key pair autentication to connect to your Linode:
 
-1.  Generate the SSH keys on a desktop computer running Linux or Mac OS X by entering the following command in a terminal window *on your desktop computer*. PuTTY users can generate the SSH keys by following the instructions in our [PuTTY guide](networking/using-putty).
+1.  Generate the SSH keys on a desktop computer running Linux or Mac OS X by entering the following command in a terminal window *on your desktop computer*. PuTTY users can generate the SSH keys by following the windows specific instructions in the [Use Public Key Authentication with SSH Guide](/docs/security/use-public-key-authentication-with-ssh#windows-operating-system).
 
         ssh-keygen
 
