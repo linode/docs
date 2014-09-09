@@ -7,13 +7,15 @@ keywords: 'Varnish,Ubuntu 12.04,Cache,'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-servers/varnish/']
 modified: Friday, February 7th, 2014
+contributor:
+    name: Kevin Cupp
 modified_by:
   name: Alex Fornuto
 published: 'Wednesday, February 5th, 2014'
 title: Getting Started with Varnish Cache
 ---
 
-This is a Linode Community guide by author **Kevin Cupp**. [Write for us](/docs/contribute) and earn \$100 per published guide.
+*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $100 per published guide.*
 
 Need to handle a lot of traffic? Caching is one of the best ways to maximize the output of your Linode. The idea is your server shouldn't have to regenerate the same dynamic content from scratch every time it's accessed. Save your Linode's resources by putting a caching proxy like Varnish Cache in front of your web service to accelerate responses to HTTP requests and reduce server workload.
 
@@ -54,7 +56,7 @@ Installation
                      -f /etc/varnish/default.vcl \
                      -S /etc/varnish/secret \
                      -s malloc,256m"
-       ~~~
+        ~~~
 
 We particularly need to edit the `-f` option. Change it to:
 
@@ -96,12 +98,12 @@ Let's start customizing our VCL. Start by copying `default.vcl` to a new file, t
 
         http://example.com:6081
 
-You should be seeing the homepage of your website. To confirm you're seeing a cached version of your site, inspect the headers returned. You should see these two headers:
+    You should be seeing the homepage of your website. To confirm you're seeing a cached version of your site, inspect the headers returned. You should see these two headers:
 
-    Via: 1.1 varnish
-    Age: 10
+        Via: 1.1 varnish
+        Age: 10
 
-**Age** is how old this item in the cache is in seconds. Refresh the page a few times and ensure the `Age` header is incrementing properly. If it stays at **0**, your page likely isn't caching and it could be for a number of reasons. If your website sets cookies, Varnish assumes it is displaying user-specific content and therefore will not cache the request. Or if your web application sets Expires headers that are too short, or if it sets a strict `no-cache` policy in its caching headers, Varnish will also not cache that.
+    **Age** is how old this item in the cache is in seconds. Refresh the page a few times and ensure the `Age` header is incrementing properly. If it stays at **0**, your page likely isn't caching and it could be for a number of reasons. If your website sets cookies, Varnish assumes it is displaying user-specific content and therefore will not cache the request. Or if your web application sets Expires headers that are too short, or if it sets a strict `no-cache` policy in its caching headers, Varnish will also not cache that.
 
 ### Configuring Cache Time-to-Live (TTL)
 

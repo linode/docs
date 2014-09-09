@@ -5,6 +5,8 @@ author:
 description: 'Use WeeChat and GNU Screen to create and maintain connections to IRC networks'
 keywords: 'weechat,irc,oftc,real time,chat'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+contributor:
+  name: Samuel Damashek
 modified: Wednesday, August 27, 2014
 modified_by: 
     name: 'Alex Fornuto'
@@ -12,7 +14,7 @@ published: 'Wednesday, August 27, 2014'
 title: 'Using WeeChat for Internet Relay Chat'
 ---
 
-This is a Linode Community guide by author Samuel Damashek. [Write for us](/docs/contribute) and earn $100 per published guide.
+*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $100 per published guide.*
 
 **WeeChat** is a terminal-based Internet Relay Chat (IRC) client. WeeChat is written in C, and is intended to be very flexible and extensible. WeeChat has all sorts of plugins written in different languages including Python, Perl, and Ruby.  
 

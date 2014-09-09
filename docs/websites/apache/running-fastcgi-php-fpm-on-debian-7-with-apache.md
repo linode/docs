@@ -6,6 +6,8 @@ description: 'Install and configure mod_fastcgi and PHP-FPM on Debian with Apach
 keywords: 'apache,fastcgi,php-fpm,php'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['websites/apache/php-fpm/debian-7/','web-servers/apache/php-fpm/apache-php-fpm-debian-ubuntu/']
+contributor:
+    name: Jesin A
 modified: Saturday, August 16, 2014
 modified_by:
   name: Dave Russell Jr
@@ -13,7 +15,7 @@ published: 'Monday, June 16, 2014'
 title: 'Running mod_fastcgi and PHP-FPM on Debian 7 (Wheezy) with Apache'
 ---
 
-This is a Linode Community guide by author **Jesin A**. [Write for us](/docs/contribute) and earn $100 per published guide.
+*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $100 per published guide.*
 
 This article explains how to configure and install `mod_fastcgi` and `PHP-FPM` on a Debian 7 instance using Apache. Apache's default configuration, which uses `mod_php` instead of `mod_fastcgi`, uses a significant amount of system resources.
 

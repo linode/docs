@@ -6,6 +6,8 @@ description: 'Follow these instructions to launch a SOCKS server on your compute
 keywords: 'socks,proxy,socks proxy,tunnel,tunnelling'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['networking/socks-proxy/']
+contributor:
+    name: Arnaldo Ariel Arrieta
 modified: Monday, February 17th, 2014
 modified_by:
   name: Linode
@@ -13,7 +15,7 @@ published: 'Monday, February 17th, 2014'
 title: Setting up an SSH Tunnel with Your Linode for Safe Browsing
 ---
 
-This is a Linode Community guide by author **Arnaldo Ariel Arrieta**. [Write for us](/docs/contribute) and earn \$100 per published guide.
+*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $100 per published guide.*
 
 Often you may need to browse the web from a public Wi-Fi access point, such as a coffee shop or library, where you do not know the security measures taken by the administrator. Your communications could be snooped on by a malicious user or even by the network owner.
 
