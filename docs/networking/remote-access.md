@@ -6,9 +6,9 @@ description: Our guide to the remote access area of the Linode Manager
 keywords: 'remote access,ip addresses,ip failover,swapping ip addresses,console access'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['remote-access/']
-modified: Monday, April 7th, 2014
+modified: Saturday, September 6th, 2014
 modified_by:
-  name: Linode
+  name: Dave Russell Jr
 published: 'Tuesday, April 24th, 2012'
 title: Remote Access
 ---
@@ -128,7 +128,7 @@ Here's how to swap IP addresses:
 8.  Select both of the **Move It** checkboxes to verify that you want the IP addresses switched.
 9.  Click **Do it**.
 
-The Linode Manager will shut down both Linodes to switch the IP address. Don't forget to turn the Linodes back on after the process is complete - you'll need to boot them manually.
+The IP address(es) will be swapped immediately as your Linode's networking is hotplugged. There may be a delay, however, of a few minutes (usually no more than five to ten) between the IP swap. There may be a brief period of time when your Linode's IP is unreachable due to this delay.
 
 ### Adding Private IP Addresses
 
