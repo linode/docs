@@ -52,21 +52,26 @@ Installing Apache is easy, but if you leave it running with the default settings
 
         sudo nano /etc/apache2/apache2.conf
 
-3.  Make sure that the following values are set  In Ubuntu 14.04 LTS, you will need to append the module section noted below to the end of your apache2.conf file:
+3.  Make sure that the following values are set.  
 
-    ~~~ apache
-    KeepAlive Off
+ {: .note }
+>
+> In Ubuntu 14.04 LTS, you will need to append the module section noted below to the end of your apache2.conf file:
 
-    ---
-
-    <IfModule mpm_prefork_module>
-    StartServers 2
-    MinSpareServers 6
-    MaxSpareServers 12
-    MaxClients 80
-    MaxRequestsPerChild 3000
-    </IfModule>
-    ~~~
+{: .file-excerpt}
+/etc/apache2/apache2.conf
+:	~~~ apache
+	KeepAlive Off
+   
+	...
+	<IfModule mpm_prefork_module>
+	StartServers 2
+	MinSpareServers 6
+	MaxSpareServers 12
+	MaxClients 80
+	MaxRequestsPerChild 3000
+	</IfModule>
+	~~~
 
 4.  Save the changes to Apache's configuration file by pressing `Control` + `x` and then pressing `y`. Press `Enter` to confirm.
 5.  Restart Apache to incorporate the new settings. Enter the following command:
@@ -111,26 +116,7 @@ Now that Apache is optimized for performance, it's time to starting hosting one 
 
 6.  Now it's time to create a configuration for your virtual host. We've created some basic settings to get your started. Copy and paste the settings shown below in to the virtual host file you just created. Replace `example.com` with your domain name.
 
-    ~~~ apache
-    # domain: example.com
-    # public: /var/www/example.com/public_html/
 
-    <VirtualHost *:80>
-      # Admin email, Server Name (domain name), and any aliases
-      ServerAdmin webmaster@example.com
-      ServerName  www.example.com
-      ServerAlias example.com
-
-      # Index file and Document Root (where the public files are located)
-      DirectoryIndex index.html index.php
-      DocumentRoot /var/www/example.com/public_html
-
-      # Log file locations
-      LogLevel warn
-      ErrorLog  /var/www/example.com/log/error.log
-      CustomLog /var/www/example.com/log/access.log combined
-    </VirtualHost>
-    ~~~
 
 7.  Save the changes to the virtual host configuration file by pressing `Control + x` and then pressing `y`. Press `Enter` to confirm.
 
@@ -183,14 +169,16 @@ MySQL consumes a lot of memory when using the default configuration. To set reso
         sudo nano /etc/mysql/my.cnf
 
 2.  Make sure that the following values are set:
-
-    ~~~ ini
-    max_connections = 75
-    key_buffer = 32M
-    max_allowed_packet = 1M
-    thread_stack = 128K
-    table_cache = 32
-    ~~~
+    
+	{: .file-excerpt}
+    /etc/mysql/my.cnf
+    :   ~~~ ini
+        max_connections = 75
+        key_buffer = 32M
+        max_allowed_packet = 1M
+        thread_stack = 128K
+        table_cache = 32
+        ~~~
 
 3.  Save the changes to MySQL's configuration file by pressing `Control + x` and then pressing `y`.
 4.  Restart MySQL to save the changes. Enter the following command:
@@ -271,7 +259,7 @@ After you install PHP, you'll need to enable logging and tune PHP for better per
 
     {: .file-excerpt}
     /etc/php5/apache2/php.ini
-    :   ~~~ ini
+    :	~~~ apache
         max_execution_time = 30
         memory_limit = 128M
         error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
