@@ -20,6 +20,8 @@ Now that you've installed Linux and secured your Linode, it's time to start *doi
 > Debian 7 and Ubuntu 14.04 LTS are the [Linux distributions](/docs/getting-started#sph_deploying-a-linux-distribution) we're using as the starting point for the packages and configurations mentioned in this guide.
 >
 > This guide is designed for small and medium-size websites running on WordPress, Drupal, or another PHP content management system. If your website doesn't belong in that category, you'll need to assess your requirements and install custom packages tailored for your particular requirements.
+>
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
 Web Server
 ----------
@@ -66,7 +68,7 @@ Installing Apache is easy, but if you leave it running with the default settings
     </IfModule>
     ~~~
 
-4.  Save the changes to Apache's configuration file by pressing `Control` + `x` and then pressing `y`.
+4.  Save the changes to Apache's configuration file by pressing `Control` + `x` and then pressing `y`. Press `Enter` to confirm.
 5.  Restart Apache to incorporate the new settings. Enter the following command:
 
         sudo service apache2 restart
@@ -100,14 +102,14 @@ Now that Apache is optimized for performance, it's time to starting hosting one 
 		sudo mkdir -p example.com/backups
 
 
-5.  Create the virtual host file for your website by entering the following command. Replace `example.com.conf` with your domain name:
+5.  Create the virtual host file for your website by entering the following command. Replace the `example.com` in `example.com.conf` with your domain name:
 
         sudo nano /etc/apache2/sites-available/example.com.conf
 
     {:.caution}
-    > The file name *must* end with `.conf` in Apache versions 2.4 and later. It won't hurt to use `.conf` in earlier versions.
+    > The file name *must* end with `.conf` in Apache versions 2.4 and later, which Ubuntu 14.04 uses. The `.conf` extension is backwards-compatible with earlier versions.
 
-8.  Now it's time to create a configuration for your virtual host. We've created some basic settings to get your started. Copy and paste the settings shown below in to the virtual host file you just created. Replace `example_user` with your username, and `example.com` with your domain name.
+6.  Now it's time to create a configuration for your virtual host. We've created some basic settings to get your started. Copy and paste the settings shown below in to the virtual host file you just created. Replace `example.com` with your domain name.
 
     ~~~ apache
     # domain: example.com
@@ -130,10 +132,13 @@ Now that Apache is optimized for performance, it's time to starting hosting one 
     </VirtualHost>
     ~~~
 
-9.  Save the changes to the virtual host configuration file by pressing `Control + x` and then pressing `y`. Press `Enter` to confirm.
-10. Create a symbolic link to your new `public` directory by entering the following command. Replace `example.com` with your domain name:
+7.  Save the changes to the virtual host configuration file by pressing `Control + x` and then pressing `y`. Press `Enter` to confirm.
+
+8. Enable your new website by entering the following command. Replace `example.com` with your domain name:
 
         sudo a2ensite example.com.conf
+
+    This creates a symbolic link to your `example.com.conf` file in the appropriate directory for active virtual hosts.
 
 11. The previous command will alert you that you need to restart Apache to save the changes. Enter the following command to apply your new configuration:
 
@@ -141,7 +146,7 @@ Now that Apache is optimized for performance, it's time to starting hosting one 
 
 12. Repeat steps 1-11 for every other website you want to host on your Linode.
 
-Congratulations! You've configured Apache to host one or more websites on your Linode. After you [upload files](#id3) and [add DNS records](#adding-dns-records) later in this guide, your websites will be accessible to the outside world.
+Congratulations! You've configured Apache to host one or more websites on your Linode. After you [upload files](#uploading-files) and [add DNS records](#adding-dns-records) later in this guide, your websites will be accessible to the outside world.
 
 Database
 --------
@@ -196,13 +201,13 @@ Now that you've edited the MySQL configuration file, you're ready to start creat
 
 ### Creating a Database
 
-The first thing you'll need to do in MySQL is create a *database*. (If you already have a database that you'd like to import, skip to [Importing a Database](#id1).) Here's how to create a database in MySQL:
+The first thing you'll need to do in MySQL is create a *database*. (If you already have a database that you'd like to import, skip to [Importing a Database](#importing-a-database).) Here's how to create a database in MySQL:
 
 1.  Log in to MySQL by entering the following command and then entering the MySQL root password:
 
         mysql -u root -p
 
-2.  Create a database and grant a user permission to it by entering the following command. Replace `exampleDB` with your own database name:
+2.  Create a database by entering the following command. Replace `exampleDB` with your own database name:
 
         create database exampleDB;
 
@@ -221,13 +226,13 @@ The first thing you'll need to do in MySQL is create a *database*. (If you alrea
 
         quit
 
-Now you have a new database that you can use for your website. If you don't need to import a database, go ahead and skip to [PHP](#id2).
+Now you have a new database that you can use for your website. If you don't need to import a database, go ahead and skip to [PHP](#php).
 
 ### Importing a Database
 
 If you have an existing website, you may want to import an existing database in to MySQL. It's easy, and it allows you to have an established website up and running on your Linode in a matter of minutes. Here's how to import a database in to MySQL:
 
-1.  Upload the database file to your Linode. See the instructions in [Uploading Files](#id3).
+1.  Upload the database file to your Linode. See the instructions in [Uploading Files](#uploading-files).
 2.  Import the database by entering the following command. Replace `username` with your MySQL username, `password` with your MySQL password, and `database_name` with your own:
 
         mysql -u username -p password database_name < FILE.sql
@@ -264,15 +269,17 @@ After you install PHP, you'll need to enable logging and tune PHP for better per
 
 2.  Verify that the following values are set. All of the lines listed below should be uncommented. Be sure to remove any semi-colons (;) at the beginning of the lines.
 
-    ~~~ ini
-    max_execution_time = 30
-    memory_limit = 128M
-    error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
-    display_errors = Off
-    log_errors = On
-    error_log = /var/log/php/error.log
-    register_globals = Off
-    ~~~
+    {: .file-excerpt}
+    /etc/php5/apache2/php.ini
+    :   ~~~ ini
+        max_execution_time = 30
+        memory_limit = 128M
+        error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
+        display_errors = Off
+        log_errors = On
+        error_log = /var/log/php/error.log
+        register_globals = Off
+        ~~~
 
     {: .note }
     > The 128M setting for `memory_limit` is a general guideline. While this value should be sufficient for most websites, larger websites and some web applications may require 256 megabytes or more.
@@ -282,7 +289,7 @@ After you install PHP, you'll need to enable logging and tune PHP for better per
 
         sudo mkdir -p /var/log/php
 
-5.  Change the owner of the `/var/log/php/` directory to `www-data`, which the user PHP runs as:
+5.  Change the owner of the `/var/log/php/` directory to `www-data`, which the PHP user runs as:
 
         sudo chown www-data /var/log/php
 
@@ -297,13 +304,13 @@ Uploading Files
 
 You've successfully installed Apache, MySQL, and PHP. Now it's time to upload a website to your Linode. This is one of the last steps before you "flip the switch" and publish your website on the Internet. Here's how to upload files to your Linode:
 
-1.  If you haven't done so already, download and install an FTP client on your desktop computer. We recommend using [Filezilla](/docs/networking/file-transfer/transfer-files-filezilla-ubuntu-9.10) on Linux systems, [Cyberduck](/docs/networking/file-transfer/transfer-files-cyberduck) on Mac OS X, and [WinSCP](/docs/networking/file-transfer/transfer-files-winscp) on Windows.
+1.  If you haven't done so already, download and install an FTP client on your desktop computer. We recommend using [Filezilla](/docs/tools-reference/file-transfer/transfer-files-with-filezilla-on-ubuntu-9-10-desktop) on Linux systems, [Cyberduck](/docs/networking/file-transfer/transfer-files-cyberduck) on Mac OS X, and [WinSCP](/docs/networking/file-transfer/transfer-files-winscp) on Windows.
 2.  Follow the instructions in the guides listed above to connect to your Linode.
 3.  Upload your website's files to the `~/public/example.com/public` directory. Replace `example.com` with your domain name.
 
- {: .note }
->
-> If you configured name-based virtual hosts, don't forget to upload the files for the other websites to their respective directories.
+     {: .note }
+    >
+    > If you configured name-based virtual hosts, don't forget to upload the files for the other websites to their respective directories.
 
 If you're using a content management system like WordPress or Drupal, you may need to configure the appropriate settings file to point the content management system at the MySQL database.
 
@@ -313,14 +320,13 @@ Testing
 It's a good idea to test your website(s) before you add the DNS records. This is your last chance to check everything and make sure that it looks good before it goes live. Here's how to test your website:
 
 1.  Enter your Linode's IP address in a web browser (e.g., type `http://123.456.78.90` in the address bar, replacing the example IP address with your own.) Your website should load in the web browser.
-2.  If you plan on hosting multiple websites and you're using Linux or Mac OS X, you can test the virtual hosts by editing the `/etc/hosts` file on your desktop computer. Add two new lines to the `hosts` file with your IP address and the domain names, as shown below:
 
-        123.456.78.90   domain1.com
-        123.456.78.90   domain2.com
+2.  If you plan on hosting multiple websites you can test the virtual hosts by editing the `hosts` file on your desktop computer. Check out the [Previewing Websites Without DNS](/docs/networking/dns/previewing-websites-without-dns) guide for more information.
 
 3.  Test the name-based virtual hosts by entering the domain names in the address bar of the web browser on your desktop computer. Your websites should load in the web browser.
 
-This is important: Remember to remove the entries for the name-based virtual hosts from your `/etc/hosts` file before you add the DNS records. When everything looks good, you're ready to add a DNS record to point your domain name at your website! For more information, check out [Previewing Websites Without DNS](https://library.linode.com/dns-guides/preview-websites)
+    {: .caution} 
+    >Remember to remove the entries for the name-based virtual hosts from your `hosts` file when you're ready to test the DNS records.
 
 Adding DNS Records
 ------------------
@@ -340,7 +346,7 @@ Now you need to point your domain name(s) at your Linode. This process can take 
 
     [![The DNS records created for the domain.](/docs/assets/911-hosting-2-small.png)](/docs/assets/912-hosting-2.png)
 
-8.  Make sure that your domain name is set to use our DNS server. Use your domain name registrar's interface to set the name servers for your domain to the following:
+8. Over at your domain registrar (where you bought the domain), make sure that your domain name is set to use our DNS server. Use your domain name registrar's interface to set the name servers for your domain to the following:
 
     - `ns1.linode.com`
     - `ns2.linode.com`
