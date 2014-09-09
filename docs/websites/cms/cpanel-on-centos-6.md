@@ -13,7 +13,7 @@ published:
 title: Installing cPanel on CentOS 6
 ---
 
-[cPanel](http://cpanel.net) is a commercial web-based control panel for server systems. It can help ease the burden of common system administration tasks such as website creation, database deployment and management, and more. This guide will help you get up and running with the [VPS Optimized cPanel](http://cpanel.net/products/cpanelwhm/vps-optimized.html) product on your CentOS 5 Linode. Please note that Linode does not sell cPanel licenses; you'll need to obtain one directly from cPanel or an authorized distributor. Additionally, Linode does not provide cPanel support, although you may contact [cPanel support](http://cpanel.net/support.html) directly once you've purchased a license. This product **must** be installed on a freshly deployed CentOS 5 VPS. These instructions should be performed as the "root" user via SSH.
+[cPanel](http://cpanel.net) is a commercial web-based control panel for server systems. It can help ease the burden of common system administration tasks such as website creation, database deployment and management, and more. This guide will help you get up and running with the [VPS Optimized cPanel](http://cpanel.net/products/cpanelwhm/vps-optimized.html) product on your CentOS 6 Linode. Please note that Linode does not sell cPanel licenses; you'll need to obtain one directly from cPanel or an authorized distributor. Additionally, Linode does not provide cPanel support, although you may contact [cPanel support](http://cpanel.net/support.html) directly once you've purchased a license. This product **must** be installed on a freshly deployed CentOS 6 VPS. These instructions should be performed as the "root" user via SSH.
 
 DNS Prerequisites
 -----------------
