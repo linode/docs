@@ -1,11 +1,15 @@
 ---
 author:
-  name: Alex H
-  email: me@lxsol.net
+  name: Linode
+  email: docs@Linode.com
 description: 'Use cPanel to manage services on your CentOS 6.x Linux VPS.'
 keywords: 'cpanel,vps control panel,cpanel linux,cpanel centos'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['web-applications/control-panels/cpanel/centos-5/']
+alias: ['web-applications/control-panels/cpanel/centos-6/']
+modified: Tuesday, September 9th, 2014
+modified_by:
+  name: Alex H.
+published: 
 title: Installing cPanel on CentOS 6
 ---
 
