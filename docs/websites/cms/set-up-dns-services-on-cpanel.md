@@ -50,6 +50,8 @@ When using your BIND install on cPanel as your master nameserver and the Linode 
 -   `ns4.linode.com`
 -   `ns5.linode.com`
 
+The DNS changes can take up to 48 hours to propagate.
+
 To get your cPanel Linode ready as your master DNS server, you'll need to make a few additions/edits to your `/etc/named.conf` file.
 
 The transfer of DNS records from your Master DNS server to the Linode DNS servers is done through AXFR queries. By default these are no allowed.
@@ -88,6 +90,17 @@ After you make that edit, add these two sections under your recursion line:
 
 After your updates are complete, save and close the `named.conf` file. 
 
+Check that the configuration file is usable by issuing the command : 
+
+		root@Linode [~]# named-checkconf /etc/named.conf
+
+If everything was done correctly, you should see no output. No output means everything is OK. If you get any errors, open the file and fix the reported issue. The errors are self explanatory and point to the exact issue.
+
+Once the check is OK, the BIND service will need to be restarted in order for the changes to be picked up.
+
+On the Left side in WHM under "Restart Services" Click DNS Server (BIND/NSD/My).
+
+Click Yes to restart the service. Allow a few minutes for the service to restart. 
 
 You'll then want to begin adding your domains to the Linode DNS Manager as slave zones.
 
@@ -100,8 +113,6 @@ You'll then want to begin adding your domains to the Linode DNS Manager as slave
 
 5.  Click the "Add a Slave Zone" button.
 
-    {:.note}
-    >
     > Once you save your slave zone, you'll see a new text field titled "Domain Transfers". You can leave this empty.
 
 More Information
@@ -111,11 +122,6 @@ You may wish to consult the following resources for additional information on th
 
 - [cPanel Home Page](http://cpanel.net)
 - [cPanel Support](http://cpanel.net/support.html)
-- 
+- [DNS zone transfer](http://en.wikipedia.org/wiki/DNS_zone_transfer)
 
-6. Restart Services
-
-On the right side in WHM under "restart services" Click DNS Server (BIND/NSD/My).
-
-Click Yes to restart the service. Allow a few minutes for the service to restart. DNS can take 24-48 hours to propagate once these changes have been made.
 
