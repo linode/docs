@@ -22,7 +22,7 @@ In your root WHM, under the Service Configuration section, click on "Nameserver 
 
 [![cPanel Nameserver selection screen.](/docs/assets/829-NSSelect.png)](/docs/assets/829-NSSelect.png)
 
-You can choose from BIND or NSD; the advantages and disadvantages for each are displayed. If you are unfamiliar with either of them, BIND will be the easiest to work with.
+You can choose from BIND, MyDNS or NSD; the advantages and disadvantages for each are displayed. If you are unfamiliar with either of them, BIND will be the easiest to work with.
 
 Nameserver Records
 ------------------
@@ -40,7 +40,7 @@ Just make sure you use your own Linode's IP address. You can add more than two n
 Using Linode's DNS Manager as a Slave
 -------------------------------------
 
-When using your BIND install on cPanel as your master nameserver and the Linode DNS Manager as a slave, you will want to set all of the nameservers at your registrar. You should have a list like this:
+When using your BIND install on cPanel as your master nameserver and the Linode DNS Servers as a slave, you will want to set all of the nameservers at your registrar. You should have a list like this:
 
 -   `ns1.mydomain.com`
 -   `ns2.mydomain.com`
@@ -52,11 +52,13 @@ When using your BIND install on cPanel as your master nameserver and the Linode 
 
 To get your cPanel Linode ready as your master DNS server, you'll need to make a few additions/edits to your `/etc/named.conf` file.
 
-You'll first want to find this line:
+The transfer of DNS records from your Master DNS server to the Linode DNS servers is done through AXFR queries. By default these are no allowed.
+
+First open the `/etc/named.conf` file in your text editor and search for `view    "external"`. Below this line you will see :
 
     recursion no; 
 
-And change it to:
+You will need to change it to:
 
     recursion yes;
 
@@ -84,7 +86,10 @@ After you make that edit, add these two sections under your recursion line:
          109.74.194.10;
      };
 
-After your updates are complete, save and close the `named.conf` file. You'll then want to begin adding your domains to the Linode DNS Manager as slave zones.
+After your updates are complete, save and close the `named.conf` file. 
+
+
+You'll then want to begin adding your domains to the Linode DNS Manager as slave zones.
 
 1.  Log in to the Linode Manager and click on the DNS Manager tab.
 2.  At the bottom, click on the "Add a domain zone" link.
