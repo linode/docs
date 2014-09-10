@@ -54,18 +54,29 @@ The DNS changes can take up to 48 hours to propagate.
 
 To get your cPanel Linode ready as your master DNS server, you'll need to make a few additions/edits to your `/etc/named.conf` file.
 
-The transfer of DNS records from your Master DNS server to the Linode DNS servers is done through AXFR queries. By default these are no allowed.
+The transfer of DNS records from your Master DNS server to the Linode DNS servers is done through AXFR queries. By default these are not allowed.
 
-First open the `/etc/named.conf` file in your text editor and search for `view    "external"`. Below this line you will see :
+First open the `/etc/named.conf` file in your text editor and search for the following line:
 
+{: .file-excerpt }
+/etc/named.conf
+:   ~~~
     recursion no; 
+    ~~~
 
 You will need to change it to:
 
+{: .file-excerpt }
+/etc/named.conf
+:   ~~~
     recursion yes;
+    ~~~
 
 After you make that edit, add these two sections under your recursion line:
 
+{: .file-excerpt }
+/etc/named.conf
+:   ~~~
     allow-recursion {
          69.164.199.240;
          69.164.199.241;
@@ -87,12 +98,13 @@ After you make that edit, add these two sections under your recursion line:
          207.192.70.10;
          109.74.194.10;
      };
+    ~~~
 
 After your updates are complete, save and close the `named.conf` file. 
 
 Check that the configuration file is usable by issuing the command : 
 
-		root@Linode [~]# named-checkconf /etc/named.conf
+    named-checkconf /etc/named.conf
 
 If everything was done correctly, you should see no output. No output means everything is OK. If you get any errors, open the file and fix the reported issue. The errors are self explanatory and point to the exact issue.
 
@@ -113,6 +125,7 @@ You'll then want to begin adding your domains to the Linode DNS Manager as slave
 
 5.  Click the "Add a Slave Zone" button.
 
+    {: .note }
     > Once you save your slave zone, you'll see a new text field titled "Domain Transfers". You can leave this empty.
 
 More Information
