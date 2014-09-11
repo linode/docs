@@ -12,6 +12,7 @@ featured:
  - email-with-postfix-dovecot-and-mysql.md
  - installing-mail-filtering-for-ubuntu-12-04.md
  - using-google-apps-for-email.md
+ - iredmail-server.md
 categories:
  - clients
  - postfix
