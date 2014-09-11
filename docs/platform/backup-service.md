@@ -8,8 +8,8 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['backup-service/']
 modified: Wednesday, June 18th, 2014
 modified_by:
-  name: Les Aker
-published: 'Wednesday, March 14th, 2012'
+  name: James Stewart
+published: 'Thursday, September 11th, 2014'
 title: Backup Service
 ---
 
@@ -103,14 +103,22 @@ Restoring from a Backup
 
 You can restore a backup to any Linode located in the same data center, even if it does not have the Backup Service enabled. Here's how:
 
-1.  From the **Linodes** tab, select the Linode that you want to restore from.
-2.  Click the **Backups** tab.
-3.  Find the backup you want to restore. Click the **Restore to...** link. The backup details webpage appears, as shown below.
+ {: .note}
+>If you are restoring your backup to an existing Linode, you will need to ensure that the Linode in question has sufficient space available to contain the restored disk images.  If you are restoring your backup to a brand new Linode, or you have sufficient free space, you can skip to step 6.
+
+1.  Click the **Linodes** tab and select the Linode that you wish to restore to.
+2.  Click **Shut down** to turn your Linode off. Watch the *Host Job Queue* for confirmation that the Linode has shut down.
+3.  Select the disk image you want to resize. The *Edit Disk Image* webpage appears.
+4.  In the **New Size** field, enter a different size for the disk image in megabytes.
+5.  Click **Save Changes**. The Linode's dashboard appears. Watch the *Host Job Queue* for confirmation that the disk image has been resized.
+6.  From the **Linodes** tab, select the Linode that you want to restore from.
+7.  Click the **Backups** tab.
+8.  Find the backup you want to restore. Click the **Restore to...** link. The backup details webpage appears, as shown below.
 
 [![The restore from backup interface.](/docs/assets/974-backups1-2-small.png)](/docs/assets/975-backups1-2.png)
 
-4.  Find the Linode you want to restore the backup to. Click the **Restore to this Linode** link. If there is not enough free space on the Linode you want to restore to, try [resizing a disk image](/docs/disk-images-config-profiles#sph_resizing-a-disk-image).
-5.  A warning appears asking if you would like to restore the backup to the Linode you selected. Click **OK**.
+9.  Find the Linode you want to restore the backup to. Click the **Restore to this Linode** link.
+10.  A warning appears asking if you would like to restore the backup to the Linode you selected. Click **OK**.
 
 The backup disk images and configuration profiles will be restored to the Linode you selected. Watch the *Host Job Queue* to monitor the progress. Restoring from a backup can take several minutes depending on the size of your Linode and the amount of data you have stored on it.
 
