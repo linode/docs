@@ -30,7 +30,7 @@ Sound good? Let's get started setting up a basic Varnish install. The examples i
 Installation
 ------------
 
-1.  Fist update current packages and install Varnish from apt:
+1.  First update current packages and install Varnish from apt:
 
         $ apt-get update
         $ apt-get upgrade
