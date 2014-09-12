@@ -104,7 +104,7 @@ Restoring from a Backup
 You can restore a backup to any Linode located in the same data center, even if it does not have the Backup Service enabled. Here's how:
 
  {: .note}
->If you are restoring your backup to an existing Linode, you will need to ensure that the Linode in question has sufficient space available to contain the restored disk images.  If you are restoring your backup to a brand new Linode, or you have sufficient free space, you can skip to step 6.
+>If you are restoring your backup to an existing Linode, you will need to ensure that you have sufficient available space to contain the disk images. You can confirm the disk space required by visiting the Backups tab in your Linode Manager, and selecting the 'Restore To' option under your required backup. The 'Total Size Required' value will display the required disk space in megabytes. If you are restoring your backup to a brand new Linode, or you have sufficient free space, you can skip to step 6.
 
 1.  Click the **Linodes** tab and select the Linode that you wish to restore to.
 2.  Click **Shut down** to turn your Linode off. Watch the *Host Job Queue* for confirmation that the Linode has shut down.
