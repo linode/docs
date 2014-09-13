@@ -24,12 +24,12 @@ Ready to start protecting your data? Let us help you sign up and get going with 
 
 Pricing is per Linode and varies depending on the size of your virtual private server, as shown below:
 
--   Linode 1GB: \$2.50/month
--   Linode 2GB: \$5.00/month
--   Linode 4GB: \$10.00/month
--   Linode 8GB: \$20.00/month
--   Linode 16GB: \$40.00/month
--   Linode 32GB: \$80.00/month
+-   Linode 1GB: $2.50/month
+-   Linode 2GB: $5.00/month
+-   Linode 4GB: $10.00/month
+-   Linode 8GB: $20.00/month
+-   Linode 16GB: $40.00/month
+-   Linode 32GB: $80.00/month
 
 Annual and biennial discounts are not available for this service.
 
@@ -104,10 +104,10 @@ Restoring from a Backup
 You can restore a backup to any Linode located in the same data center, even if it does not have the Backup Service enabled. Here's how:
 
  {: .note}
->If you are restoring your backup to an existing Linode, you will need to ensure that you have sufficient available space to contain the disk images. You can confirm the disk space required by visiting the Backups tab in your Linode Manager, and selecting the 'Restore To' option under your required backup. The 'Total Size Required' value will display the required disk space in megabytes. If you are restoring your backup to a brand new Linode, or you have sufficient free space, you can skip to step 6.
+>If you are restoring your backup to an existing Linode, you will need to ensure that you have sufficient available space to contain the disk images. You can confirm the disk space required by visiting the Backups tab in your Linode Manager, and selecting the 'Restore To' option under your required backup. The 'Total Size Required' value will display the required disk space in megabytes. The new size for your current disk image cannot be smaller than the contents of the disk image itself. If you are restoring your backup to a brand new Linode, or you have sufficient free space, you can skip to step 6.
 
 1.  Click the **Linodes** tab and select the Linode that you wish to restore to.
-2.  Click **Shut down** to turn your Linode off. Watch the *Host Job Queue* for confirmation that the Linode has shut down.
+2.  Click **Shut down** to turn your Linode off.
 3.  Select the disk image you want to resize. The *Edit Disk Image* webpage appears.
 4.  In the **New Size** field, enter a different size for the disk image in megabytes.
 5.  Click **Save Changes**. The Linode's dashboard appears. Watch the *Host Job Queue* for confirmation that the disk image has been resized.
