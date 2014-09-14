@@ -301,7 +301,7 @@ Here's how to install and configure Fail2Ban:
 	    sudo apt-get install fail2ban
 		
 		CentOS/Fedora
-		sudo yum install fail2banßß
+		sudo yum install fail2ban
 
 2.  Optionally, you can override the default Fail2Ban configuration by creating a new `jail.local` file. Enter the following command to create the file:
 
