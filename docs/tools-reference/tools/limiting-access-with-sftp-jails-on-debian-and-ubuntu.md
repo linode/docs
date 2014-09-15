@@ -37,16 +37,17 @@ First, you need to configure OpenSSH.
 
 3.  Add this block of settings to the end of the file:
 
-    {: .file-excerpt }
-/etc/ssh/sshd\_config
-
-    >     Match group filetransfer
+   {: .file-excerpt }
+   /etc/ssh/sshd\_config
+   :    ~~~
+        Match group filetransfer
             ChrootDirectory %h
             X11Forwarding no
             AllowTcpForwarding no
             ForceCommand internal-sftp
+        ~~~
 
-    Save the changes to your file.
+   Save the changes to your file.
 
 4.  Restart OpenSSH:
 
