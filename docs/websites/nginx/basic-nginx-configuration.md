@@ -34,7 +34,7 @@ Before we begin, make sure you have completed the following:
 -   Install the [Nginx server](/docs/web-servers/nginx/installation).
 -   The steps required in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](https://library.linode.com/using-linux/users-and-groups) guide.
 
-If you're new to Linux server administration, you may also be interested in our [Using Linux](/docs/using-linux/) document series, including the [Beginner's Guide](/docs/beginners-guide/) and [Administration Basics Guide](/docs/using-linux/administration-basics).
+If you're new to Linux server administration, you may also be interested in our [Beginner's Guide](/docs/beginners-guide/) and [Administration Basics Guide](/docs/using-linux/administration-basics).
 
 Before You Start
 ----------------
