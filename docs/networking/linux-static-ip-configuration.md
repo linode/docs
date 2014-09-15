@@ -213,6 +213,10 @@ You must create the `/etc/sysconfig/network-scripts/ifcfg-static-eth0` file.
   # Adding a private IP address.
   IPADDR2=192.168.133.234
   PREFIX2=17
+  
+  # Specifying DNS
+  DNS1=56.78.9.10
+  DNS2=56.78.10.10
   ~~~
 
 Reload NetworkManager:
