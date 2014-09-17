@@ -6,10 +6,10 @@ description: Our guide to using the Linode backup service
 keywords: 'backup,linode platform,linode backup service'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['backup-service/']
-modified: Wednesday, June 18th, 2014
+modified: Wednesday, September 17th, 2014
 modified_by:
   name: James Stewart
-published: 'Thursday, September 11th, 2014'
+published: 'Wednesday, March 14th, 2012'
 title: Backup Service
 ---
 
