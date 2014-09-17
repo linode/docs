@@ -1,221 +1,398 @@
 ---
-author: 
+author:
   name: Si-Qi Liu
   email: liusq@tsinghua.edu.cn
 description: 'Installing the web framework Yesod with the server Nginx and MySQL on Debian 7'
 keywords: 'yesod, nginx, mysql, debian 7'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias:
-modified: Tuesday, September 2nd, 2014
+modified: Thursday, September 11th, 2014
 modified_by:
   name: Joseph Dooley
-published: Tuesday, September 2nd, 2014
-title: 'Yesod, Nginx, and MySQL on Debian 7(Wheezy)'
+published: Tuesday, September 11th, 2014
+title: 'Yesod, Nginx, and MySQL on Debian 7 (Wheezy)'
 ---
 
 This is a Linode Community guide by author Si-Qi Liu. [Write for us](/docs/contribute) and earn $100 per published guide.
 
-Yesod is a web framework based on the purely functional programming language Haskell. It is designed for productive development of type-safe, RESTful, and high
-performance web applications. This guide describes the required process for deploying Yesod and Nginx web server with MySQL database on Debian 7 (Wheezy).
+Yesod is a web framework based on the purely functional programming language Haskell. It is designed for productive development of type-safe, RESTful, and high performance web applications. This guide describes the required process for deploying Yesod and Nginx web server, MySQL database on Debian 7 (Wheezy).
 
-#Set the Hostname
+ {: .note }
+>
+> The steps required in this guide require root privileges. Be sure to run the steps below as root or with the sudo prefix. For more information on privileges see our [Users and Groups](https://library.linode.com/using-linux/users-and-groups) guide.
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for setting your hostname.
-Issue the following commands to make sure it is set properly:
+#Prerequisites 
 
-    hostname
-    hostname -f
+Before you begin installing and configuring the components described below, please make sure you've followed our instructions in the [Getting Started](/docs/getting-started) guide for setting your hostname. Here's how to check.
 
-The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
+1. Enter the following commands to view the hostname:
 
-#Install Required Packages
+        hostname
+    
+2. And to display the fully qualified doman name (FQDN):
 
-Update your system's repository database and upgrade the system:
+        hostname -f
 
-    sudo apt-get update
-    sudo apt-get upgrade
+	If the commands list a previously created hostname, then you can begin the installation.
 
-Issue the following command to install packages required by Yesod:
+3. So now, make sure your system is up to date. Issue the following command to update your system's repository database and upgrade the system:
 
-	sudo apt-get install haskell-platform libpcre3-dev libmysqlclient-dev
+		apt-get update
+		apt-get upgrade
 
-The two `lib*-dev` packages are required by the Haskell module `mysql`. If you would like to use SQLite, then you don't need to install them.
-
-Obviously, you also need Nginx and MySQL, please check
+You might have guessed, but you also need Nginx and MySQL software. Please refer to
 [Websites with Nginx on Debian 7 (Wheezy)](/docs/websites/nginx/websites-with-nginx-on-debian-7-wheezy)
 and
 [Using MySQL Relational Databases on Debian 7 (Wheezy)](/docs/databases/mysql/using-mysql-relational-databases-on-debian-7-wheezy)
 for their installation guides.
 
+#Install Required Packages
+
+Since Yesod is built with the Haskell programming language, the Haskell packages are a prelimanary install. The web framework Yesod requires two packages from the Haskell platform. 
+
+1. Issue the following command to install the Haskell packages required by Yesod:
+
+   	 apt-get install haskell-platform libpcre3-dev libmysqlclient-dev
+
+The two `lib*-dev` packages are required by the Haskell module `mysql`. If you would like to use SQLite, then you don't need to install them.
+
 #Install Yesod
 
-Yesod is a large project, which depend on a lot of other packages. We will use *cabal* to manage all of them. Cabal is the package manager for the Haskell
-community's central package archive *Hackage*. Because all packages on Hackage are maintained by the community, the dependency relations are not well protected,
-so you will probably meet the so-called "cabal dependency hell" problem.
+Yesod is a large framework, which depends on many of other packages. We will use *cabal* to manage all of them. Cabal is a package manager for the Haskell
+community's central package archive *Hackage*. Because all packages on Hackage are maintained by the community, the dependency relationships are not well protected.
+So you might meet the so-called "cabal dependency hell" problem.
 
-To avoid such problem, the maintainer of Yesod give us a metapackage named *yesod-platform*. The version numbers of its dependencies are fixed, so you won't
-meet the "hell". On the other hand, fixed version numbers may cause other problems, especially when you also use cabal to manage other large projects (such
+To avoid this problem, the maintainers of Yesod created a metapackage named *yesod-platform*. The version numbers of its dependencies are fixed, so you won't
+meet the "cabal hell". On the other hand, fixed version numbers may cause other problems, especially when you also use cabal to manage other large projects (such
 as pandoc, a Haskell library for converting markup formats). The solution for this problem is very simple: if you have several large projects to manage, create new
 users for each of them, and then install them into their users' home folder.
 
-So let us create a new user. We name it "yesod":
+1. So let's create a new user. We can name it "yesod":
 
-    sudo adduser yesod
+        sudo adduser yesod
 
-Switch to it.
+2. Then switch over to user yesod:
+    
+        su - yesod
 
-    su - yesod
+3. Update cabal:
+	
+		cabal update
 
-Add the path variable for the programs installed by cabal.
+		Then you will find a new folder ``.cabal`` in yesod's home folder. The configuration files for ``cabal``, all programs, all libraries, and all their documents installed by ``cabal`` will be placed in this folder. In particular, new programs are installed in ``$HOME/.cabal/bin``. To use them, you can add this folder to yesod's PATH:
 
-    echo PATH=\$HOME/.cabal/bin:\$PATH >> .bashrc
-    source .bashrc
+		echo PATH=\$HOME/.cabal/bin:\$PATH >> .bashrc
+        source .bashrc
 
-Create the *.cabal* folder, and download the latest package list from *hackage.haskell.org*.
-
-    cabal update
-
-Upgrade *cabal-install* first. The *cabal-install* package offered by the *haskell-platform* package of Debian 7 doesn't have the "sandbox" feature, which is very
+5. Upgrade *cabal-install* first. The *cabal-install* package offered by the *haskell-platform* package of Debian 7 doesn't have the "sandbox" feature, which is very
 useful for Yesod, so we need to upgrade it.
 
-    cabal install cabal-install
+     cabal install cabal-install
 
-Logout and su again, then check whether the new cabal is in use
+6. Logout and su again, then check whether the new cabal is in use
 
-    exit
-    su - yesod
-    cabal --version
+        exit
+        su - yesod
+        cabal --version
 
-The version should be greater than 1.20.
+   The version should be greater than 1.20.
 
-Upgrade *alex* and *happy*. They are "flex and bison" for Haskell. The *language-javascript* package, which is required by Yesod, depend on higher versions
+7. Upgrade *alex* and *happy*. They are "flex and bison" for Haskell. The *language-javascript* package, which is required by Yesod, depend on higher versions
 of them, so we need to upgrade them.
 
-    cabal install alex happy
+        cabal install alex happy
 
-Now we can install the *yesod-platform* package and its friend *yesod-bin*.
+8.  Now you can install the ``yesod-platform`` and ``yesod-bin`` packages. ::
 
-    cabal install --reorder-goals --max-backjumps=-1 yesod-platform yesod-bin
+        cabal install --reorder-goals --max-backjumps=-1 yesod-platform yesod-bin
 
-If your Linode doesn't have enough memory, cabal may complain that it can not resolve the dependency relations. You can tell it the answer for Debian 7 directly:
+    The ``yesod-bin`` package provides scaffolding, devel server, and some simple code generation helpers for your ``yesod-platform``. We will use it in the next section to construct the scaffold for a new site.
 
-    cabal install --reorder-goals --max-backjumps=-1 yesod-platform-1.2.10 yesod-bin-1.2.10.2
+    The flag ``--reorder-goals`` tries to reorder goals according to certain heuristics. It may make backtracking faster. If you don't add this flag, ``cabal`` may get into certain "bad" searching branches, and waste a lot of time and memories here. If your machine doesn't have enough memory, it is even possible that ``cabal`` cannot resolve the dependency relation, and give you an error message.
 
-It may take about 20 minutes to compile everything, so you can have a cup of tea now. When it finishes, you Yesod platform has been succsesfully installed.
+    The parameter ``--max-backjumps`` set the maximum number of back jumps. The default value is 200. We set it to -1, which means unlimited backtracking. If you don't add this parameter, ``cabal`` may fail, if it cannot find a solution within 200 steps of backtracking.
+
+    It needs about 20 minutes to build the ``yesod-platform`` and ``yesod-bin`` packages on a Linode 1G.
 
 #Use Yesod
 
-To develop your Yesod site, issue the following command to construct a scaffold first.
+To start development of your Yesod site, first construct a scaffold. In development, a scaffold is a placeholder or example set, which is constructed by the defaults of the framework or compiler chosen. The developer can then overwrite the scaffold site. 
 
-    yesod init
+1. Initiate Yesod development with the commands:
 
-You will be asked the name of your project, and the database you want to use. I suppose the name you give is "myblog", and the answer for the second question
-is "mysql". 
+        cd $HOME
+        yesod init
 
-Enter the folder created by *yesod*
+	You will be asked the name of your project, and the database you want to use. You must name the project "myblog". This is important later on. And the answer for the second question
+   	is "mysql".
 
-    cd myblog
+2. Enter the project folder created by *Yesod*:
 
-Issue the following command to initialize the sandbox. The sandbox feature ensure that the dependencies of your site are installed *into* the folder where you site
-located, so *cabal* won't destroy the packages installed in */home/yesod/.cabal*. You can develop several sites simultaneously, and don't need to worry about the
-"cabal dependency hell".
+        cd $HOME/myblog
 
-    cabal sandbox init
+3. Then, issue the following command to initialize the sandbox. The sandbox feature ensures that the dependencies of your site are installed *into* the folder where your site is
+located, so *cabal* won't destroy the packages installed in */home/yesod/.cabal*. You can develop several sites simultaneously, and you won't need to worry about the
+"cabal dependency hell":
 
-If you get an error here, your *cabal* is probably not the latest one. Please upgrade it.
+        cabal sandbox init
 
-Then install the packages required by your project in the sandbox
+    This command will generate a configuration file ``$HOME/myblog/cabal.sandbox.config``, and create a local cabal environment in ``$HOME/myblog/.cabal-sandbox``
 
-    cabal install --enable-tests . --reorder-goals  --max-backjumps=-1 yesod-platform yesod-bin
+    If you get an error here, then your *cabal* package is probably not the latest version. Please upgrade it.
 
-If cabal complain again about the memory, give it the version numbers explicitly like above. If it reports that mysql is fail to install, it is probably that
-you don't have "libpcre3-dev" and "libmysqlclient-dev" in your Debian 7. Instal them, and run the above command again. If everything goes well, after another
-20 minutes, your site's scaffold will be compiled succesfully.
+4. Then install the packages required by your project in the sandbox:
+
+         cabal install --enable-tests . --reorder-goals  --max-backjumps=-1 yesod-platform yesod-bin
+
+It will compile and install all packages needed by our site "myblog" into the sandbox created in the last step. You may notice that the "sandbox" version of ``yesod-platform`` may be newer than the one we installed in the last section, because in the sandbox, ``cabal`` search the solution on a smaller tree, so the result could be better.
+
+If you want to construct another site, just go back to ``$HOME`` folder, and issue ``yesod init`` again. Different sites won't affect each other because of the sandbox mechanism.
 
 #Working with MySQL
 
-Before testing the scaffold of your site, you need create a user and several databases in MySQL. The configuratioin file of your project for MySQL is located
-at *config/mysql.yml*, you can modify it, using your own host, port, username, password, databases, and so on. The default username, password, and database for
-development are same with the name of your project, so they are "myblog" in this guide. We also need three databases "myblog_test", "myblog_staging",
-and "myblog_production" for different aims. You can follow the guide
-[Using MySQL Relational Databases on Debian 7 (Wheezy)](/docs/databases/mysql/using-mysql-relational-databases-on-debian-7-wheezy)
-to create user, databases, and assign the user to the databases.
+Before testing the scaffold of your site, you need to create a user and several databases in MySQL. The "yesod" command has generated a configuration file for MySQL, which is located at ``$HOME/myblog/config/mysql.yml``. Take a look. 
 
-When the MySQL user and databases are ready, you can issue the following command to start you project:
+    .. excerpt from: $HOME/myblog/config/mysql.yml
 
-    yesod devel
+        Default: &defaults
+          user: myblog
+          password: myblog
+          host: localhost
+          port: 3306
+          database: myblog
+          poolsize: 10
 
-Please wait for a while for compilation, then you can see the scaffold of your site at [*http://localhost:3000/*](http://localhost:3000/).
-Next, you can go on to use yesod, and develop your site.
+        ...
+
+        Production:
+          database: myblog_production
+          poolsize: 100
+          <<: *defaults
+
+Your site can be started in different environments such as Development, Testing, Staging and Production, and you can give different configurations for them. The configuration for the four different enviroments is given in the ``Default`` section. You can modify this section, using your own host, port, username, password, database, and so on. If you need different settings in the Production environment, for example, you can write your new settings in the ``Production`` section first, and then import the default ones by ``<<: *defaults``.
+
+We don't need to modify this configuration file, it's acceptable as is. So you only need to create a user "myblog" with password "myblog", and four databases "myblog", "myblog_testing", "myblog_staging", and "myblog_production".
+
+1.  Issue the following command to login the root account of the mysql database management system:
+
+        mysql -u root -p
+
+2.  Create user "myblog" with password "myblog":
+
+        create user 'myblog'@'localhost' identified by 'myblog';
+
+3.  Create databases:
+
+        create database myblog;
+        create database myblog_test;
+        create database myblog_staging;
+        create database myblog_production;
+
+4.  Don't forget to assign the user to the databases:
+
+        grant all privileges on myblog.* to 'myblog'@'localhost';
+        grant all privileges on myblog_testing.* to 'myblog'@'localhost';
+        grant all privileges on myblog_staging.* to 'myblog'@'localhost';
+        grant all privileges on myblog_production.* to 'myblog'@'localhost';
+
+5.  You can exit the mysql database management system now:
+
+        exit;
+
+6. When the MySQL user and databases are ready, you can issue the following command to start the project:
+
+		cd $HOME/myblog
+		yesod devel
+
+Please wait for compilation, then you can see the scaffold of your site at http://www.yoursite.com:3000/, where ``www.yoursite.com`` is your FQDN. To stop it, just press ``Enter``.
+
+If your Linode has a firewall, the port ``3000`` is probably inaccessible from outside, so you will not be able to see your site at http://www.yoursite.com:3000/. This port is only for testing or developing, so don't open it on your firewall. Instead, you can set up an SSH tunnel on your Linode, and view your site at http://localhost:3000/ via this tunnel. Please check [Setting up an SSH Tunnel with Your Linode for Safe Browsing](https://library.linode.com/networking/socks-proxy) for more details.
+
+You may have noticed that we haven't configure Nginx yet. In fact, Yesod applications contain an http server called Warp, which is written in Haskell, and has a very fast run-time. Without http servers like Apache or Nginx installed, you can run Yesod applications as standalones. This feature is similar to the Express framework on Node.js.
+
+The initial setup of your first Yesod site has been finished. To start more advanced development of your Yesod site, please read [The Yesod Book](http://www.yesodweb.com/book/) for more details. 
 
 #Deploy to Nginx
 
-When you finish the development of your site, you can deploy it to a certain web server. We choose Nginx in this guide, which is also recommended in
-[The Yesod Book](http://www.yesodweb.com/book).
 
-First you need to prepare the files to be deployed. Issue the following command in the folder */home/yesod/myblog*:
+Warp is a fast http server, but it lacks some advanced features like virtual hosts, load balancers, or SSL proxies, so we need Nginx to serve our site with more flexibility. In this section, we will introduce a method to deploy your site to Nginx.
 
-    cabal clean && cabal configure && cabal build
+1.  Before deployment, you need to prepare the files to be deployed. Issue the following commands in the folder ``$HOME/myblog``:
 
-Then copy *dist/build/myblog/myblog* and the config folder and the static folder to some where you plan to place your site. We assume you place them in
-*/home/yesod/deploy*. Make sure this fold can be accessed by nginx.
+        cabal clean
+        cabal configure
+        cabal build
 
-    chmod 755 /home/yesod
-    mkdir ../deploy
-    cp dist/build/myblog/myblog ../deploy
-    cp -R static ../deploy
-    cp -R config ../deploy
+    You can regard them as ``make distclean && ./configure && make``, which is the standard way to build a Unix package from its source. But don't run ``cabal install`` here! This command will install your application into its sandbox, which is not what we want.
 
-Enter */home/yesod/deploy*, modify the file *config/settings.yml*, replace the variable *approot* in section *Production* by your FQDN.
+2.  After issuing the command ``cabal build``, your application (myblog) is built and placed in ``$HOME/myblog/dist/build/myblog/``. This is the program that we are to deploy. You can move the directory anywhere. 
+ 
 
-    The last three lines of modified /home/yesod/deploy/config/settings.yml:
-        Production:
-          approot: "http://www.yoursite.com"
-          <<: *defaults
+    You also need to place the two files ``$HOME/myblog/config`` and ``$HOME/myblog/static`` into the same directory.
 
-You can also use other virtual host name here, like *myblog.yoursite.com*. Just make sure it is same with the one you give to nginx. Then issue
+    Let's create a folder in ``/var`` to deploy those files. You need root privileges to issue the following commands:
 
-     ./myblog Production --port 3000
+        mkdir /var/myblog
+        chmod 755 /var/myblog/
+        chown yesod.yesod /var/myblog
 
-Your site is online now.
+    Then copy the files:
 
-The last step is to configure nginx. Create the file */etc/nginx/sites-available/myblog*
+        cp $HOME/myblog/dist/build/myblog/myblog /var/myblog
+        cp -R $HOME/myblog/config /var/myblog
+        cp -R $HOME/myblog/static /var/myblog
 
-    server {
-        listen 80;
-        server_name www.yoursite.com;
-        location / {
-            proxy_pass http://127.0.0.1:3000;
-        }
-        location /static {
-            root /home/yesod/deploy;
-            expires max;
-        }
-    }
+3.  Before starting your site, you need to modify the file ``/var/myblog/config/settings.yml``. This file has the same structure as ``mysql.yml``. There is a ``Default`` section and four other sections for various environments. We will only run ``/var/myblog`` in the ``Production`` environment, so we only need to modify the last three lines of this settings file:
 
-Link it into */etc/nginx/sites-enabled*, and restart nginx
+        .. excerpt:: /var/myblog/config/settings.yml
 
-    sudo ln -s /etc/nginx/sites-available/myblog /etc/nginx/sites-enabled
-    sudo service nginx restart
+            Production:
+              approot: "http://www.yoursite.com"
+              <<: *defaults
 
-You can check it at *http://www.yoursite.com/* now.
+    Here *www.yoursite.com* should be replaced by your FQDN. You can also use other virtual host names here, like *myblog.yoursite.com*. **Just make sure that it is the same as the one that you will pass to Nginx below during Step 5.**
 
-One can also configure Nginx to run Yesod in FastCGI  mode, which is not covered here. You can check
-[the corresponding chapter in The Yesod Book](http://www.yesodweb.com/book/deploying-your-webapp>)
-for details.
+4.  To start your site, issue the following commands:
+
+        cd /var/myblog
+        ./myblog Production
+
+    Your site is now online. You can check it at http://www.yoursite.com:3000/ or http://hostingIP:3000/, if you have set up an SSH tunnel. Note, that it doesn't work smoothly yet, because we haven't instructed your site where its static files are. We will do this in the next step. Please press Ctrl-C to stop it now.
+
+       If you want your site running as a daemon, which means in a constant state of running, you can create an init.d script. We have created a simple one, here, for your reference:
+
+           file: /etc/init.d/myblog
+
+            #! /bin/sh
+            ### BEGIN INIT INFO
+            # Provides:          myblog
+            # Required-Start:    $network $syslog mysql nginx
+            # Required-Stop:     $network $syslog mysql nginx
+            # Default-Start:     2 3 4 5
+            # Default-Stop:      0 1 6
+            # Short-Description: MyBlog
+            # Description:       MyBlog: My First Yesod Application
+            ### END INIT INFO
+
+            PATH=/sbin:/bin:/usr/sbin:/usr/bin
+            DESC="MyBlog"
+            NAME=myblog
+            MYROOT=/var/myblog
+            MYGROUP=yesod
+            MYUSER=yesod
+            PIDFILE=/var/opt/myblog/run/$NAME.pid
+            LOGFILE=/var/opt/myblog/log/$NAME.log
+            DAEMON=/var/myblog/myblog
+            DAEMON_ARGS="Production"
+
+            . /lib/lsb/init-functions
+
+            case "$1" in
+            start)
+                    log_daemon_msg "Starting $DESC" "$NAME"
+
+                    mkdir -p /var/opt/myblog/run
+                    mkdir -p /var/opt/myblog/log
+                    chown -R ${MYUSER}:${MYGROUP} /var/opt/myblog
+
+                    start-stop-daemon --start --quiet  --background  \
+                            --make-pidfile --pidfile $PIDFILE        \
+                            --chuid $MYUSER:$MYGROUP --chdir $MYROOT \
+                            --exec /bin/bash -- -c                   \
+                            "exec $DAEMON $DAEMON_ARGS > $LOGFILE"   \
+                            || true
+
+                    log_end_msg $?
+                    ;;
+            stop)
+                    log_daemon_msg "Stopping $DESC" "$NAME"
+
+                    start-stop-daemon --stop --quiet          \
+                            --pidfile $PIDFILE --exec $DAEMON \
+                            || true
+
+                    rm -f $PIDFILE
+
+                    log_end_msg $?
+                    ;;
+            status)
+                    status_of_proc "$DAEMON" "$NAME" && exit 0 || exit $?
+                    ;;
+            restart)
+                    $0 stop
+                    $0 start
+                    ;;
+            *)
+                    echo "Usage: $SCRIPTNAME {start|stop|status|restart}" >&2
+                    exit 3
+                    ;;
+            esac
+
+            exit 0
+
+    Don't forget to make it executable:
+
+        chmod +x /etc/init.d/myblog
+
+    You can issue the following command to start your site:
+
+        service myblog start
+
+    You can also stop, restart, or query the status of your site by using the corresponding commands. If there is anything wrong, you can check the log file at ``/var/opt/myblog/log/myblog.log``.
+
+    If you need your site to run on startup, issue the following command to add it to the default run level of your Debian system:
+
+        update-rc.d myblog defaults
+
+5.  Configure Nginx. Create the file ``/etc/nginx/sites-available/myblog``:
+
+        .. file: /etc/nginx/sites-available/myblog
+
+            server {
+
+                listen 80;
+
+                server_name www.yoursite.com;
+
+                location / {
+                    proxy_pass http://127.0.0.1:3000;
+                }
+
+                location /static {
+                    root /var/myblog;
+                    expires max;
+                }
+
+            }
+
+    The ``server_name`` should be your FQDN, or the virtual host name you wrote in ``/var/myblog/config/settings.yml``. The location ``/static`` tells Nginx where to find files with url ``http://server_name/statics/*``. A highly recommended optimization is to serve static files from a separate domain name, therefore bypassing the cookie transfer overhead. You can find more details on this optimization in the chapter [Deploying your Webapp of The Yesod Book](http://www.yesodweb.com/book/).
+
+    Link the above file into ``/etc/nginx/sites-enabled``, and restart ``nginx``:
+
+        ln -s /etc/nginx/sites-available/myblog /etc/nginx/sites-enabled
+        service nginx restart
+
+    You can check it at *http://www.yoursite.com/* now.
 
 The installation and configuration of Yesod working with Nginx and MySQL are finished.
 
+#For More Information
 
-#More Information
+You may wish to consult the following resources for additional information on this topic.
 
-You may wish to consult the following resources for additional information on this topic:
-
-- [Hakell Platform](http://www.haskell.org/platform/)
+- [Haskell Platform](http://www.haskell.org/platform/)
 - [Haskell Wiki for *cabal-install*](http://www.haskell.org/haskellwiki/Cabal-Install)
 - [Information for *yesod-platform*](http://hackage.haskell.org/package/yesod-platform)
 - [Yesod Quick Start Guide](http://www.yesodweb.com/page/quickstart)
-- [The Chapter on Deployment of the Yesod Book](http://www.yesodweb.com/book/deploying-your-webapp)
+
+
+
+
+
+
+
+
+
 
 
 
