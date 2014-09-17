@@ -6,9 +6,9 @@ description: 'Getting started with MySQL for web and server applications on Ubun
 keywords: 'mysql ubuntu 14.04,mysql ubuntu,mysql on linux,mysql vps'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['databases/mysql/ubuntu-14.04-trusty-pangolin/']
-modified: Tuesday, August 27th, 2014 
+modified: Saturday, September 13th, 2014 
 modified_by:
-  name: James Stewart
+  name: Linode 
 published: 'Monday, October 8th, 2012'
 title: 'Using MySQL Relational Databases on Ubuntu 14.04 LTS (Trusty Tahr)'
 ---
@@ -68,7 +68,7 @@ Begin by issuing the following command in your terminal:
 
 You will be prompted to set a password for the MySQL root user. Choose a strong password and keep it in a safe place for future reference.
 
-[![Setting the MySQL root password in Ubuntu 14.04 LTS (Trusty Tahr).](/docs/assets/1128-360-lucid-01-mysql-root-password.png)](/docs/assets/1128-360-lucid-01-mysql-root-password.png)
+[![Setting the MySQL root password in Ubuntu 14.04 LTS (Trusty Tahr).](/docs/assets/1130-tahr-01-mysql-root-password.png)](/docs/assets/1130-tahr-01-mysql-root-password.png)
 
 The MySQL server package will be installed on your server, along with dependencies and client libraries. After installing MySQL, it's recommended that you run `mysql_secure_installation` in order to help secure MySQL. While running `mysql_secure_installation`, you will be presented with the opportunity to change the MySQL root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases. It is recommended that you answer yes to these options. If you are prompted to reload the privilege tables, select yes. Run the following command to execute the program:
 
@@ -95,8 +95,8 @@ The standard tool for interacting with MySQL is the `mysql` client program. To g
 You will be prompted to enter the root MySQL user's password. Enter the password you assigned when you installed MySQL, and you'll be presented with the MySQL monitor display:
 
     Welcome to the MySQL monitor.  Commands end with ; or \g.
-    Your MySQL connection id is 34
-    Server version: 5.1.41-3ubuntu12 (Ubuntu)
+    Your MySQL connection id is 42
+    Server version: 5.5.38-0ubuntu0.14.04.1 (Ubuntu)
 
     Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
@@ -104,7 +104,7 @@ You will be prompted to enter the root MySQL user's password. Enter the password
 
 If you've forgotten your root password, use the package reconfiguration tool to change that password:
 
-    dpkg-reconfigure mysql-server-5.1
+    dpkg-reconfigure mysql-server-5.5
 
 To generate a list of commands for the MySQL prompt type `\h`:
 
@@ -177,7 +177,7 @@ More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [MySQL 5.1 Reference Manual](http://dev.mysql.com/doc/refman/5.1/en/)
+- [MySQL 5.5 Reference Manual](http://dev.mysql.com/doc/refman/5.5/en/)
 - [PHP MySQL Manual](http://us2.php.net/manual/en/book.mysql.php)
 - [Perl DBI examples for DBD::mysql](http://sql-info.de/mysql/examples/Perl-DBI-examples.html)
 - [MySQLdb User's Guide](http://mysql-python.sourceforge.net/MySQLdb.html)

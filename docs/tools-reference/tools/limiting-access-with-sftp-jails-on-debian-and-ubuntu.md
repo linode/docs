@@ -6,7 +6,7 @@ description: 'Restricting remote users to their home directories, only allowing 
 keywords: 'sftp,sftp jail,openssh,ssh jail'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['security/sftp-jails/']
-modified: Thursday, April 4th, 2013
+modified: Tuesday, April 16th, 2014
 modified_by:
   name: Linode
 published: 'Wednesday, January 6th, 2010'
@@ -51,7 +51,7 @@ First, you need to configure OpenSSH.
 
 4.  Restart OpenSSH:
 
-        /etc/init.d/ssh restart
+        service ssh restart
 
 OpenSSH has been successfully modified.
 
@@ -60,9 +60,9 @@ Modify User Accounts
 
 In this section, we'll set up the correct new groups, ownership, and permissions for your user accounts.
 
-1.  Create a group for users whom you want to restrict to SFTP access:
+1.  Create a system group for users whom you want to restrict to SFTP access:
 
-        addgroup filetransfer
+        addgroup --system filetransfer
 
 2.  Modify the user accounts that you wish to restrict to SFTP. Issue the following commands for each account, substituting the appropriate username. Please keep in mind that this will prevent these users from being able to log into a remote shell session.
 
