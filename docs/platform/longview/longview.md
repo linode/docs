@@ -6,7 +6,7 @@ description: Our guide to installing and using Linode Longview.
 keywords: 'system monitoring,longview,troubleshooting'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['longview/']
-modified: Tuesday, November 26th, 2013
+modified: Tuesday, September 19th, 2014
 modified_by:
   name: Linode
 published: 'Wednesday, March 27th, 2013'
@@ -224,6 +224,18 @@ Follow these commands to install Longview on your Linode manually:
     > ...
 
 Congratulations! The Longview client is now installed.
+
+### Firewall Rules
+
+In order for your Linode to communicate with the Longview aggregation host you will want to allow traffic destined for 'longview.linode.com' to be routed through your Firewall. The following rules should allow your Linode to provide its metrics to the Longview application:
+
+1. You will want to edit your INPUT chain so that traffic is routed to your Linode.
+
+    iptables -I INPUT -s longview.linode.com -j ACCEPT
+
+2. In order for your Linode to provide its metrics to Longview you will want to allow the same address through the OUTPUT chain of your Firewall.
+
+    iptables -I OUTPUT -d longview.linode.com -j ACCEPT 
 
 ### Labeling Systems
 
