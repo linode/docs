@@ -89,7 +89,7 @@ Now that you have set up two-factor authentication for your account, you'll need
 
     [![Enter your token.](/docs/assets/1270-manager_login_token_470042.png)](/docs/assets/1270-manager_login_token_470042.png)
 
-4.  Enter your token, and then click **Authenticate**.  Checking the box below the authentication option will add your computer to the trusted computer list for 30 days, and generate a confirmation email to the address on file for your account.
+4.  Enter your token, and then click **Authenticate**. Checking the box below the authentication option will add your computer to the trusted computer list for 30 days, and generate a confirmation email to the address on file for your account.
 
 You have successfully logged in to the Linode Manager using two-factor authentication.
 
