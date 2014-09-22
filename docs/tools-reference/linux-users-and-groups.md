@@ -18,7 +18,7 @@ If you are new to Linux/Unix, then the concept of permissions may be confusing. 
 What are User and Group Permissions?
 ------------------------------------
 
-Linux/Unix operating systems have the ability to multitask in a manner similar to other operating systems. However, Linux's major difference from other operating systems is its ability to have multiple users. Linux was designed to allow more than one user to have  access to the system at the same time. In order for this multiuser design to work properly, there needs to be a method to protect users from each other. This is where permissions come in to play.
+Linux/Unix operating systems have the ability to multitask in a manner similar to other operating systems. However, Linux's major difference from other operating systems is its ability to have multiple users. Linux was designed to allow more than one user to have access to the system at the same time. In order for this multiuser design to work properly, there needs to be a method to protect users from each other. This is where permissions come in to play.
 
 ### Read, Write & Execute Permissions
 
@@ -274,7 +274,7 @@ To set the sticky bit on a file named `/root/sticky.txt`, issue the following co
 
 To remove the sticky bit from a file, use the `chmod -t` command. Note, to change the sticky bit, you need to be either root or the file owner. The root user will be able to delete files regardless of the status of the sticky bit.
 
-The *setuid* bit, or *+s*, when set on files allows users with permissions to execute a given file the ability to run that file with the permissions of file owner. For instance, if the file `work` was owned by the `root` user and the `marketing` group, members of the `marketing` group could run the `work` program as if they were the root user. This may pose potential security risks in some cases and executables should be properly evaluated before receiving the `+s` syntax. To set the `+s` bit on a file named `/usr/bin/work`, issue the following command:
+The *setuid* bit, or *+s*, when set on files allows users with permissions to execute a given file the ability to run that file with the permissions of file owner. For instance, if the file `work` was owned by the `root` user and the `marketing` group, members of the `marketing` group could run the `work` program as if they were the root user. This may pose potential security risks in some cases and executables should be properly evaluated before receiving the `+s` flag. To set the `+s` bit on a file named `/usr/bin/work`, issue the following command:
 
     chmod g+s /usr/bin/work
 
