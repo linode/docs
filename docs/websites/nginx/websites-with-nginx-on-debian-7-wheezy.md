@@ -17,7 +17,7 @@ Nginx is a lightweight and high performance web server designed with the purpose
 
 Although Nginx is a relatively new entry in the web server field, it has achieved a great deal of respect for its agility and efficiency, particularly in high profile situations. Many very high traffic/profile websites have begun to use Nginx for its efficiency. At the same time administrators of smaller systems have found Nginx ideal for their systems for its slim memory footprint.
 
-Before you begin installing the Nginx web server, it is assumed that you have followed our [Getting Started Guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [Using Linux](/docs/using-linux/) document series including the [Beginner's Guide](/docs/beginners-guide/) and [Administration Basics Guide](/docs/using-linux/administration-basics).
+Before you begin installing the Nginx web server, it is assumed that you have followed our [Getting Started Guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [Beginner's Guide](/docs/beginners-guide/) and [Administration Basics Guide](/docs/using-linux/administration-basics).
 
 Set the Hostname
 ----------------
