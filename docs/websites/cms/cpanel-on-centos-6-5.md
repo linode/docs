@@ -33,8 +33,10 @@ If you plan to use a domain name for your nameservers that you will also be host
     {: .file }
     /etc/hosts
     :   ~~~
-        127.0.0.1 localhost.localdomain localhost 12.34.56.78 hostname.example.com hostname
-        ::1       localhost.localdomain localhost 2600:3c03::f03c:91ff:fedb:26b7 hostname.example.com hostname
+        127.0.0.1 localhost.localdomain localhost
+        ::1       localhost.localdomain localhost
+        12.34.56.78 hostname.example.com hostname
+        2600:3c03::f03c:91ff:fedb:26b7 hostname.example.com hostname
         ~~~
 
 2. Set your system's hostname by issuing the following commands, replacing quoted "hostname" entries with your system's short hostname:
