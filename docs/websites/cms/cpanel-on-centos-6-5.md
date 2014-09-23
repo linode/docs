@@ -24,7 +24,7 @@ cPanel includes options for hosting your own DNS services. We generally recommen
 
 Should you wish to provide DNS services, you'll need to add A records for your nameservers in your WHM as described in the [DNS on cPanel guide](https://library.linode.com/web-applications/control-panels/cpanel/dns-on-cpanel#sph_nameserver-records).
 
-If you plan to use a domain name for your nameservers that you will also be hosting a DNS service for, then you'll need to ask your domain name registrar to create [DNS glue records](http://en.wikipedia.org/wiki/Domain_Name_System#Circular_dependencies_and_glue_records) based on your Linode's IP addresses before proceeding.
+If you plan to use a domain name for your nameservers that you will also be hosting DNS services for, then you'll need to ask your domain name registrar to create [DNS glue records](http://en.wikipedia.org/wiki/Domain_Name_System#Circular_dependencies_and_glue_records) based on your Linode's IP addresses before proceeding.
 
 # Basic System Configuration
 
@@ -119,7 +119,7 @@ When you've finished, click on "Save & Go to Step 5".
 
 ## Services
 
-This section goes over configuration options for additional cPanel services.
+The next page of the cPanel installation goes over configuration options for additional cPanel services.
 
 
 1. We recommend against installing an FTP server on your Linode, as FTP is an outdated and insecure protocol. Instead, we recommend using [SFTP](/docs/platform/linode-beginners-guide/#how-do-i-upload-files-to-my-linode) to upload and download files. However, you may install an FTP server if you wish. SFTP is available by default for any main cPanel username. If you need to add file access for multiple users, you may want to install Pure-FTPd during the configuration phase.
