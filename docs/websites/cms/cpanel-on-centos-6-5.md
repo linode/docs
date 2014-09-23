@@ -26,33 +26,6 @@ Should you wish to provide DNS services, you'll need to add A records for your n
 
 If you plan to use a domain name for your nameservers that you will also be hosting DNS services for, then you'll need to ask your domain name registrar to create [DNS glue records](http://en.wikipedia.org/wiki/Domain_Name_System#Circular_dependencies_and_glue_records) based on your Linode's IP addresses before proceeding.
 
-# Basic System Configuration
-
-1. Edit your `/etc/hosts` file to resemble the following example. Replace `hostname` with a unique name for your server, replace `example.com` with your domain name, `12.34.56.78` with your Linode's public IPv4 address, and `2600:3c03::f03c:91ff:fedb:26b7` with your IPv6 address. If your Linode has two IPv4 addresses assigned to it, use the first IP in the list displayed on the "Remote Access" tab of the Linode Manager.
-
-    {: .file }
-    /etc/hosts
-    :   ~~~
-        127.0.0.1 localhost.localdomain localhost
-        ::1       localhost.localdomain localhost
-        12.34.56.78 hostname.example.com hostname
-        2600:3c03::f03c:91ff:fedb:26b7 hostname.example.com hostname
-        ~~~
-
-2. Set your system's hostname by issuing the following commands, replacing quoted "hostname" entries with your system's short hostname:
-
-        echo "HOSTNAME=hostname" >> /etc/sysconfig/network
-        hostname "hostname"
-
-3. If your Linode has multiple IPv4 addresses, or you plan on adding more addresses at a later time, configure static networking by following the steps in our [Linux Static IP Configuration](/docs/networking/linux-static-ip-configuration#centos-65) guide.
-
-  
-4. Make sure your package repositories and installed packages are up to date by issuing the following command:
-
-        yum update
-
-Your system is now ready for cPanel installation.
-
 # Install cPanel
 
 Before proceeding, make sure you've purchased a cPanel license. You may obtain a license from the [cPanel Store](https://www2.cpanel.net/store/). Next, log into your Linode as the "root" user via SSH to its IP address (found on the "Remote Access" tab in the Linode Manager). 
