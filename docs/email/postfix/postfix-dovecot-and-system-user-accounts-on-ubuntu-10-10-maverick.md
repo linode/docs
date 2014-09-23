@@ -76,7 +76,7 @@ SSL or TLS provides a method of encrypting the communication between your remote
 Issue the following sequence of commands to install the prerequisites and [generate a self-signed SSL certificate](/docs/security/ssl-certificates/self-signed):
 
     apt-get install openssl
-    openssl req -new -x509 -days 365 -nodes -out /etc/ssl/postfix.pem -keyout /etc/ssl/postfix.key
+    openssl req -new -x509 -sha256 -days 365 -nodes -out /etc/ssl/postfix.pem -keyout /etc/ssl/postfix.key
 
 Be sure to generate a certificate with a "Common Name" that corresponds to the host name that your users will connect your mail server (e.g. `mail.ducklington.org`).
 
