@@ -6,6 +6,8 @@ description: 'Receive daily emails with Postfix mail server stats from Pflogsumm
 keywords: 'pflogsumm, postfix, monitoring, mail server'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['email/postfix/pflogsumm-centos-6/']
+contributor: 
+    name: Robert Accettura
 modified: Wednesday, February 5th, 2014
 modified_by:
   name: Linode
@@ -13,7 +15,7 @@ published: 'Wednesday, February 5th, 2014'
 title: Pflogsumm for Postfix Monitoring on CentOS 6
 ---
 
-This is a Linode Community guide by author **Robert Accettura**. [Write for us](/docs/contribute) and earn \$100 per published guide.
+*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $100 per published guide.*
 
 Pflogsumm is a simple Perl script that monitors your [Postfix](/docs/email/postfix) mail server's activity. This guide will show you how to install Pflogsumm on CentOS 6 and configure it to send you a daily email with your mail server stats.
 
@@ -132,9 +134,9 @@ root's Crontab
 
 3.  Save the changes to your Cron file. For **nano**, this is `Ctrl-x y`.
 
- {: .note }
->
-> Non-root users will not have permission to access the mail log.
+     {: .note }
+    >
+    > Non-root users will not have permission to access the mail log.
 
 You will now receive daily emails with your Postfix mail server stats. It's a great way to keep track of what your server is doing.
 

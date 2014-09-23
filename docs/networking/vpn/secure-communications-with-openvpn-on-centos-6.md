@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: skleinman@linode.com
-description: 'Use OpenVPN to securely connect separate networks on a CentOS 5 Linux VPS.'
+description: 'Use OpenVPN to securely connect separate networks on a CentOS 6 Linux VPS.'
 keywords: 'openvpn,networking,vpn,centos'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['networking/openvpn/centos-6/']

@@ -105,7 +105,7 @@ Here's how to add a new domain zone:
 2.  Click the **DNS Manager** tab.
 3.  Select the **Add a domain zone** link. The webpage shown below appears.
 
-[![This page lets you add a domain zone.](/docs/assets/1120-dns8.png)](/docs/assets/1120-dns8.png)
+[![This page lets you add a domain zone.](/docs/assets/1120-dns8.png)](/docs/assets/1332-hosting-1.png)
 
  {: .note }
 >

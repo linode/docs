@@ -85,7 +85,7 @@ You've used password authentication to connect to your Linode via SSH, but there
 
 Here's how to use SSH key pair autentication to connect to your Linode:
 
-1.  Generate the SSH keys on a desktop computer running Linux or Mac OS X by entering the following command in a terminal window *on your desktop computer*. PuTTY users can generate the SSH keys by following the instructions in our [PuTTY guide](networking/using-putty).
+1.  Generate the SSH keys on a desktop computer running Linux or Mac OS X by entering the following command in a terminal window *on your desktop computer*. PuTTY users can generate the SSH keys by following the windows specific instructions in the [Use Public Key Authentication with SSH Guide](/docs/security/use-public-key-authentication-with-ssh#windows-operating-system).
 
         ssh-keygen
 
@@ -153,6 +153,10 @@ Creating a Firewall
 -------------------
 
 Now it's time to set up a *firewall* to limit and block unwanted inbound traffic to your Linode. This step is optional, but we strongly recommend that you use the example below to block traffic to ports that are not commonly used. It's a good way to deter would-be intruders! You can always modify the rules or disable the firewall later.
+
+ {: .note }
+>
+>Newer versions of CentOS and Fedora ship with firewalld configured as the default firewall.  The firewalld package adds some additional enterprise-focused functionality to iptables that will not be covered in this guide.  For reference, documentation for configuring firewalld can be found at [Red Hat's Customer Portal](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Security_Guide/sec-Using_Firewalls.html).
 
 Here's how to create a firewall on your Linode:
 
@@ -252,17 +256,35 @@ Here's how to create a firewall on your Linode:
         target     prot opt source               destination         
         ACCEPT     all  --  anywhere             anywhere  
 
-10. Now you need to ensure that the firewall rules are activated every time you restart your Linode. Start by creating a new script with the following command:
+10. Now you need to ensure that the firewall rules are activated every time you restart your Linode. 
+
+	**Debian/Ubuntu Users:**
+	
+	Start by creating a new script with the following command:
 
         sudo nano /etc/network/if-pre-up.d/firewall
 
-    **CentOS users:** 
+    Copy and paste the following lines in to the file you just created:
+
+	{: .file }
+	/etc/network/if-pre-up.d/firewall
+	:   ~~~
+	    #!/bin/sh 
+	    /sbin/iptables-restore < /etc/iptables.firewall.rules
+	    ~~~
+	
+    Press Control-X and then press Y to save the script.
+    Set the script's permissions by entering the following command:
+
+        sudo chmod +x /etc/network/if-pre-up.d/firewall
+	
+    **CentOS/Fedora users:** 
 
       If you are using CentOS 6.2 or 6.5, save your current iptables rules with the following command:
 
         /sbin/service iptables save 
 
-      If you are using CentOS 7, the base image does not include iptables-services. You will need to install it before your firewall is persistent through boots:
+      If you are using CentOS 7 or Fedora 20, the base image does not include iptables-services. You will need to install it before your firewall is persistent through boots:
       
         yum install -y iptables-services
         systemctl enable iptables
@@ -271,20 +293,6 @@ Here's how to create a firewall on your Linode:
       To save your current rule set use the following command
 
         /usr/libexec/iptables/iptables.init save
-
-11. Copy and paste the following lines in to the file you just created:
-
-	{: .file }
-	/etc/network/if-pre-up.d/firewall
-	: ~~~
-	#!/bin/sh 
-	/sbin/iptables-restore < /etc/iptables.firewall.rules
-	~~~
-	
-12. Press Control-X and then press Y to save the script.
-13. Set the script's permissions by entering the following command:
-
-        sudo chmod +x /etc/network/if-pre-up.d/firewall
 
 That's it! Your firewall rules are in place and protecting your Linode. Remember, you'll need to edit the firewall rules later if you install other software or services.
 
@@ -301,7 +309,7 @@ Here's how to install and configure Fail2Ban:
 	    sudo apt-get install fail2ban
 		
 		CentOS/Fedora
-		sudo yum install fail2banßß
+		sudo yum install fail2ban
 
 2.  Optionally, you can override the default Fail2Ban configuration by creating a new `jail.local` file. Enter the following command to create the file:
 
