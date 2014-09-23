@@ -42,7 +42,7 @@ The following procedure generates a single self-signed SSL certificate. These ce
 
     mkdir /srv/ssl/
     cd /srv/ssl/
-    openssl req -new -x509 -days 365 -nodes -out /srv/ssl/nginx.pem -keyout /srv/ssl/nginx.key
+    openssl req -new -x509 -sha256 -days 365 -nodes -out /srv/ssl/nginx.pem -keyout /srv/ssl/nginx.key
 
 If you wish to use a 2048-bit certificate, add the following option to the above command:
 
