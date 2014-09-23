@@ -5,7 +5,7 @@ author:
 description: 'Setting up a mail server with Postfix, Dovecot, and MySQL'
 keywords: 'email,mail,postfix,dovecot,mysql,ubuntu 12.04,dovecot 2, dovecot 2.0.19, postfix 2.9.6'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['email/postfix/postfix2-9-6-dovecot2-0-19-mysql/']
+alias: ['email/postfix/postfix2.9.6-dovecot2.0.19-mysql/']
 modified: Friday, March 14th, 2014
 modified_by:
   name: Linode
@@ -708,7 +708,7 @@ Here's how to configure Dovecot:
 
     {:.note}
     >
-    > Click this link to see the final, complete version of our [dovecot.conf](/docs/assets/1243-dovecot_dovecot.conf.txt) example file.
+    > Click this link to see the final, complete version of <a href="/docs/assets/1243-dovecot_dovecot.conf.txt" target="_blank">dovecot.conf</a> example file.
 
 3.  Verify that `dovecot.conf` is including all of the other configuration files. This option should be enabled by default:
 
@@ -735,7 +735,7 @@ Here's how to configure Dovecot:
 
     {:.note}
     >
-    > Click this link to see the final, complete version of our [10-mail.conf](/docs/assets/1239-dovecot_10-mail.conf.txt) example file. This is a long file, so you may need to use your editor's search feature to find the values you need to edit.
+    > Click this link to see the final, complete version of <a href="/docs/assets/1239-dovecot_10-mail.conf.txt" target="_blank">10-mail.conf</a> example file. This is a long file, so you may need to use your editor's search feature to find the values you need to edit.
 
 7.  Find the `mail_location` variable, uncomment it, and then set it to the following value. This tells Dovecot where to look for mail. In this case, the mail will be stored in */var/mail/vhosts/example.com/user/*, where `example.com` and `user` are variables that get pulled from the connecting email address. For example, if someone logs in to the server with the email address `email1@example.com`, Dovecot will use `example.com` for `%d`, and `email1` for `%n`. You can change this path if you want, but you'll have to change it everywhere else the mail storage path is referenced in this tutorial. It's useful to keep this location in mind if you ever need to manually download the raw mail files from the server.
 
@@ -781,7 +781,7 @@ Here's how to configure Dovecot:
 
     {:.note}
     >
-    > Click the link to see the final, complete version of [10-auth.conf](/docs/assets/1238-dovecot_10-auth.conf.txt).
+    > Click the link to see the final, complete version of <a href="/docs/assets/1238-dovecot_10-auth.conf.txt" target="_blank">10-auth.conf<a/>.
 
 16. Disable plain-text authentication by uncommenting this line:
 
@@ -853,7 +853,7 @@ Here's how to configure Dovecot:
 
     {:.note}
     >
-    > Click the link to see the final, complete version of [dovecot-sql.conf.ext](/docs/assets/1284-dovecot__dovecot-sql.conf.ext.txt).
+    > Click the link to see the final, complete version of <a href="/docs/assets/1284-dovecot__dovecot-sql.conf.ext.txt" target="_blank">dovecot-sql.conf.ext</a>.
 
 25. Uncomment and set the `driver` line as shown below:
 
@@ -908,7 +908,7 @@ Here's how to configure Dovecot:
 
     {:.note}
     >
-    > Click the link to see the final, complete version of [10-master.conf](/docs/assets/1240-dovecot_10-master.conf.txt). There are many nested blocks of code in this file, so please pay very close attention to your brackets. It's probably better if you edit line by line, rather than copying large chunks of code. If there's a syntax error, Dovecot will crash silently, but you can check `/var/log/upstart/dovecot.log` to help you find the error.
+    > Click the link to see the final, complete version of <a href="/docs/assets/1240-dovecot_10-master.conf.txt" target="_blank">10-master.conf</a>. There are many nested blocks of code in this file, so please pay very close attention to your brackets. It's probably better if you edit line by line, rather than copying large chunks of code. If there's a syntax error, Dovecot will crash silently, but you can check `/var/log/upstart/dovecot.log` to help you find the error.
 
 33. Disable unencrypted IMAP and POP3 by setting the protocols' ports to 0, as shown below. This will force your users to use secure IMAP or secure POP on 993 or 995 when they configure their mail clients:
 
@@ -1016,7 +1016,7 @@ Here's how to configure Dovecot:
 
     {:.note}
     >
-    > Click the link to see the final, complete version of [10-ssl.conf](/docs/assets/1241-dovecot_10-ssl.conf.txt).
+    > Click the link to see the final, complete version of <a href="/docs/assets/1241-dovecot_10-ssl.conf.txt" target="_blank">10-ssl.conf</a>.
 
 40. Verify that the `ssl_cert` setting has the path to your certificate, and that the `ssl_key` setting has the path to your key. The default setting here uses Dovecot's built-in certificate, so you can leave this as-is if you are using the Dovecot certificate. You should update the paths if you are using a different certificate and key.
 
