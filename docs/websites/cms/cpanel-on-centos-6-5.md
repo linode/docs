@@ -42,8 +42,6 @@ If you're planning to use a domain name for your nameservers that you will also 
         echo "HOSTNAME=hostname" >> /etc/sysconfig/network
         hostname "hostname"
 
-    Edit the `/etc/sysconfig/network-scripts/ifcfg-eth0` file to resemble the following, replacing `12.34.56.78` with your Linode's IP address and `12.34.56.1` with its default gateway. If your Linode has two IPs assigned to it, use the first IP in the list displayed on the "Remote Access" tab of the Linode Manager.
-
 3. If your Linode has multiple IPv4 addresses, or you plan on adding more addresses at a later time, configure static networking by following the steps in our [Linux Static IP Configuration](/docs/networking/linux-static-ip-configuration#centos-65) guide.
 
   
