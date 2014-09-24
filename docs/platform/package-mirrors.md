@@ -6,9 +6,9 @@ description: Setting Linode Package Mirrors
 keywords: 'package,mirrors,linode,repository,Debian,Ubuntu,CentOS,yum,apt-get'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['package-mirrors/']
-modified: Monday, April 21st, 2014
+modified: Wednesday, September 24, 2014
 modified_by:
-  name: Alex Fornuto
+  name: Kenyon Ralph
 published: 'Tuesday, February 11th, 2014'
 title: Package Mirrors
 ---
@@ -41,9 +41,7 @@ For a Ubuntu system follow the instructions below:
 
     <http://mirrors.linode.com/ubuntu/>
 
-3.  Edit all lines containing the address <http://security.ubuntu.com/ubuntu/> to reflect the new address location:
-
-    <http://mirrors.linode.com/ubuntu/>
+3.  Do not modify lines containing the address <http://security.ubuntu.com/ubuntu/>.
 
 4.  Save and exit the `sources.list` file.
 
@@ -59,9 +57,7 @@ For a Debian system follow the instructions below:
 
     <http://mirrors.linode.com/debian/>
 
-3.  Edit all lines containing the address <http://security.debian.org/> to reflect the new address location:
-
-    <http://mirrors.linode.com/debian-security/>
+3.  Do not modify lines containing the address <http://security.debian.org/>.
 
 4.  Save and exit the `sources.list` file.
 
@@ -92,6 +88,3 @@ For a CentOS system follow the instructions below:
     <http://mirrors.linode.com/centos/$releasever/os/$basearch/>
 
 8.  Save and exit the `CentOS-Base.repo` file.
-
-
-
