@@ -359,11 +359,6 @@ Once you have made these changes, `ping` each of the default gateways listed on 
     ping 12.34.56.1
     ping 98.76.54.1
 
-If this configuration does not work, please open a support ticket with the output of the following commands:
-
-    journalctl -f -n 100
-    ip a
-    systemctl --version
 
 ### OpenSUSE
 
