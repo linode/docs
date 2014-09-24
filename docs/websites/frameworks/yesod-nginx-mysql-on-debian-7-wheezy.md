@@ -19,7 +19,7 @@ Yesod is a web framework based on the purely functional programming language Has
 
  {: .note }
 >
-> The steps required in this guide require root privileges. Be sure to run the steps below as root or with the sudo prefix. For more information on privileges see our [Users and Groups](https://library.linode.com/using-linux/users-and-groups) guide.
+> The steps required in this guide require root privileges. Be sure to run the steps below as root or with the sudo prefix. For more information on privileges, see our [Users and Groups](https://library.linode.com/using-linux/users-and-groups) guide.
 
 #Prerequisites 
 
@@ -29,7 +29,7 @@ Before you begin installing and configuring the components described below, plea
 
         hostname
     
-2. And to display the fully qualified doman name (FQDN):
+2. And to display the fully qualified domain name (FQDN):
 
         hostname -f
 
@@ -44,7 +44,7 @@ Before you begin installing and configuring the components described below, plea
 
 #Install Required Packages
 
-Since Yesod is built with the Haskell programming language, the Haskell packages are a prelimanary install. The web framework Yesod requires two packages from the Haskell platform. 
+Since Yesod is built with the Haskell programming language, the Haskell packages are a preliminary install. The web framework Yesod requires two packages from the Haskell platform. 
 
 1. Issue the following command to install the Haskell packages required by Yesod:
 
@@ -56,7 +56,7 @@ Since Yesod is built with the Haskell programming language, the Haskell packages
 
 Yesod is a large framework, which depends on many of other packages. We will use *cabal* to manage all of them. Cabal is a package manager for the Haskell community's central package archive *Hackage*. Because all packages on Hackage are maintained by the community, the dependency relationships are not well protected. So you might meet the so-called <a href="http://www.haskell.org/haskellwiki/Cabal/Survival#What_is_the_difficulty_caused_by_Cabal-install.3F" target="_blank">cabal dependency hell</a> problem.
 
-To avoid this problem, the maintainers of Yesod created a metapackage named *yesod-platform*. The version numbers of its dependencies are fixed, so you won'tmeet the "cabal hell". On the other hand, fixed version numbers may cause other problems, especially when you also use cabal to manage other large projects (such as pandoc, a Haskell library for converting markup formats). The solution for this problem is very simple: if you have several large projects to manage, create new users for each of them, and then install them into their users' home folder.
+To avoid this problem, the maintainers of Yesod created a metapackage named *yesod-platform*. The version numbers of its dependencies are fixed, so you won't meet the "cabal hell". On the other hand, fixed version numbers may cause other problems, especially when you also use cabal to manage other large projects (such as pandoc, a Haskell library for converting markup formats). The solution for this problem is very simple: if you have several large projects to manage, create new users for each of them, and then install them into their users' home folder.
 
 1. So let's create a new user. We can name it "yesod":
 
@@ -122,9 +122,7 @@ To start development of your Yesod site, first construct a scaffold. In developm
 
         cabal sandbox init
 
-    This command will generate a configuration file ``$HOME/myblog/cabal.sandbox.config``, and create a local cabal environment in ``$HOME/myblog/.cabal-sandbox``
-
-    If you get an error here, then your *cabal* package is probably not the latest version. Please upgrade it.
+    This command will generate a configuration file ``$HOME/myblog/cabal.sandbox.config``, and create a local cabal environment in ``$HOME/myblog/.cabal-sandbox``.
 
 4. Then install the packages required by your project in the sandbox:
 
@@ -157,7 +155,7 @@ $HOME/myblog/config/mysql.yml
        <<: *defaults
     ~~~
 
-Your site can be started in different environments such as Development, Testing, Staging and Production, and you can give different configurations for them. The configuration for the four different enviroments is given in the ``Default`` section. You can modify this section, using your own host, port, username, password, database, and so on. If you need different settings in the Production environment, for example, you can write your new settings in the ``Production`` section first, and then import the default ones by ``<<: *defaults``.
+Your site can be started in different environments such as Development, Testing, Staging and Production, and you can give different configurations for them. The configuration for the four different environments is given in the ``Default`` section. You can modify this section, using your own host, port, username, password, database, and so on. If you need different settings in the Production environment, for example, you can write your new settings in the ``Production`` section first, and then import the default ones by ``<<: *defaults``.
 
 We don't need to modify this configuration file, it's acceptable as is. So you only need to create a user "myblog" with password "myblog", and four databases "myblog", "myblog_testing", "myblog_staging", and "myblog_production". Remember to replace "myblog" with the name of your project.
 
