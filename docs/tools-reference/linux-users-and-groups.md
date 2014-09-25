@@ -6,27 +6,27 @@ description: 'An introduction to the principal concepts and use of the users and
 keywords: 'users,permissions,access control lists,chmod,chown,linux'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['using-linux/users-and-groups/']
-modified: Wednesday, January 22nd, 2014
+modified: Wednesday, September 17, 2014
 modified_by:
-  name: Alex Fornuto
+  name: Joseph Dooley
 published: 'Monday, August 31st, 2009'
 title: Linux Users and Groups
 ---
 
-If you are new to Linux/Unix the concept of permissions may be confusing. This guide will provide you with an explanation of what permissions are, how they work, and how to manage them. A number of examples will be provided to illustrate how to set and change permissions for both users and groups.
+If you are new to Linux/Unix, then the concept of permissions may be confusing. This guide will provide you with an explanation of what permissions are, how they work, and how to manage them. A number of examples will be provided to illustrate how to set and change permissions for both users and groups.
 
 What are User and Group Permissions?
 ------------------------------------
 
-Linux/Unix operating systems have the ability to multitask in a manner similar to other operating systems. However, Linux's major difference from other operating systems is its ability to have multiple users. Linux was designed to allow more than one user access to the system at the same time. In order for this multiuser design to work properly, there needs to be a method to protect users from each other. This is where permissions come in to play.
+Linux/Unix operating systems have the ability to multitask in a manner similar to other operating systems. However, Linux's major difference from other operating systems is its ability to have multiple users. Linux was designed to allow more than one user to have access to the system at the same time. In order for this multiuser design to work properly, there needs to be a method to protect users from each other. This is where permissions come in to play.
 
 ### Read, Write & Execute Permissions
 
 Permissions are the "rights" to act on a file or directory. The basic rights are read, write, and execute.
 
--   Read - A readable permission allows the contents of the file to be viewed. A read permission on a directory allows you to list the contents of a directory.
--   Write - A write permission on a file allows you to modify the contents of that file. For a directory, the write permission allows you to edit the contents of a directory (e.g. add/delete files).
--   Execute - For a file the executable permission allows you to run the file and execute a program or script. For a directory, the execute permission allows you to change to a different directory and make it your current working directory. Users usually have a default group, but they may belong to several additional groups.
+-   Read - a readable permission allows the contents of the file to be viewed. A read permission on a directory allows you to list the contents of a directory.
+-   Write - a write permission on a file allows you to modify the contents of that file. For a directory, the write permission allows you to edit the contents of a directory (e.g. add/delete files).
+-   Execute - for a file, the executable permission allows you to run the file and execute a program or script. For a directory, the execute permission allows you to change to a different directory and make it your current working directory. Users usually have a default group, but they may belong to several additional groups.
 
 ### Viewing File Permissions
 
@@ -58,7 +58,7 @@ The useradd command utilizes a variety of variables, some of which are shown in 
 | `-s <shell>`    | sets the default shell type                                        | `useradd <name> -s /bin/<shell>`           |
 |:----------------|:-------------------------------------------------------------------|:-------------------------------------------|
 
-You will need to set a password for the new user by using the `passwd` command. Note you will need root privileges to change a user password. The syntax is as follows:
+You will need to set a password for the new user by using the `passwd` command. Note, you will need root privileges to change a user password. The syntax is as follows:
 
     passwd <username>
 
@@ -71,7 +71,7 @@ The user will be able to change their password at any time using the `passwd` co
     Retype new UNIX password:
     passwd: password updated successfully
 
-There is another way of creating user accounts that might be easier for first-time administrators. However, you may need to install the package (if it is not already installed). The installation command for Debian/Ubuntu is as follows:
+There is another way of creating user accounts that might be easier for first-time administrators. However, you may need to install a new package. The installation command for Debian/Ubuntu is as follows:
 
     apt-get install adduser
 
@@ -113,7 +113,7 @@ To remove the user, their home folder, and their files, use this command:
 
 ### Understanding Sudo
 
-Root is the super user and has the ability to do anything on a system. Therefore, in order to have protection against potential damage sudo is used in place of root. Sudo allows users and groups access to commands they normally would not be able to use. Sudo will allow a user to have administration privileges without logging in as root. The sample of the sudo command is as follows:
+Root is the super user and has the ability to do anything on a system. Therefore, in order to have protection against potential damage sudo is used in place of root. Sudo allows users and groups access to commands they normally would not be able to use. Sudo will allow a user to have administration privileges without logging in as root. A sample of the sudo command is as follows:
 
     sudo apt-get install <package>
 
@@ -121,13 +121,13 @@ Before using sudo, it may need to be installed if it is not part of your distrib
 
     apt-get install sudo
 
-For CentOS the command is as follows:
+For CentOS, the command is as follows:
 
     yum install sudo
 
 In order to provide a user with sudo ability, their name will need to be added to the sudoers file. This file is very important and should not be edited directly with a text editor. If the sudoers file is edited incorrectly it could result in preventing access to the system.
 
-Therefore the `visudo` command should be used to edit the sudoers file. At a command line log into your system as root and enter the command `visudo`.
+Therefore the `visudo` command should be used to edit the sudoers file. At a command line, log into your system as root and enter the command `visudo`.
 
 Below is the portion of the sudoers file that shows the users with sudo access.
 
@@ -147,7 +147,7 @@ Linux uses groups as a way to organize users. Groups organize collections of acc
 
     $ newgrp <marketing>
 
-If the user entering the above-referenced command is a member of the **marketing** group in the `/etc/group` file, then the current group membership will change. It is important to note that any files created will now be associated with the **marketing** group rather then the user's primary group. Users may also change their group by using the `chgrp` command. The syntax for the chgrp command is as follows:
+If the user entering the above-referenced command is a member of the **marketing** group in the `/etc/group` file, then the current group membership will change. It is important to note that any files created will now be associated with the **marketing** group rather than the user's primary group. Users may also change their group by using the `chgrp` command. The syntax for the chgrp command is as follows:
 
     $ chgrp <newgroup>
 
@@ -161,9 +161,9 @@ To make a directory and set the permissions at the same time, use the following 
 
     mkdir -m a=rwx <directory name>
 
-The **-m** option is short for mode and **a=rwx** means that all users have read, write, and execute permissions on the directory. To see a complete list of all options for the mkdir command enter `man mkdir` at a command prompt.
+The **-m** option is short for mode, and **a=rwx** means that all users have read, write, and execute permissions on the directory. To see a complete list of all options for the mkdir command enter `man mkdir` at a command prompt.
 
-To remove a file use the following:
+To remove a file, use the following:
 
     rm <file>
 
@@ -171,17 +171,17 @@ To remove a directory:
 
     rm -r <directory name>
 
-It is important to note that if you remove a directory all the files inside will be deleted, as well.
+It is important to note that if you remove a directory all the files inside will be deleted as well.
 
 ### Changing Directory and File Permissions
 
-To view file permissions and ownership on files and directories, use the `ls -al` command. The `a` option is to show hidden files and the `l` options is for long listing. The output will be similar to the following:
+To view file permissions and ownership on files and directories, use the `ls -al` command. The `a` option is to show hidden files or all files, and the `l` option is for the long listing. The output will be similar to the following:
 
     drwxr-xr-x 2 user user 4096 Jan  9 10:11 documents
     -rw-r--r-- 1 user user  675 Jan  7 12:05 .profile
     drwxr-xr-x 4 user user 4096 Jan  7 14:55 public
 
-The first column with the ten letters and dashes shows the permissions of the file or directory. The second column (with the single number) indicates the number of files or directories contained in the directory. The next column indicates the owner, followed by the group name, the size, date and time of last access, and finally the name of the file . For example, using the first line from the output above, the details are as follows:
+The first column with the ten letters and dashes shows the permissions of the file or directory. The second column (with the single number) indicates the number of files or directories contained in the directory. The next column indicates the owner, followed by the group name, the size, date, and time of last access, and finally the name of the file . For example, using the first line from the output above, the details are as follows:
 
     ``drwxr-xr-x`` are the permissions
     ``2`` is the number of files or directories
@@ -197,7 +197,7 @@ The first column with the ten letters and dashes shows the permissions of the fi
 
 ### Chmod Command
 
-The command `chmod` is short for change mode. Chmod is used to change permissions on files and directories. The command `chmod` may be used with either letters or numbers (a.k.a octal) to set the permissions. The letters used with chmod are in the table below:
+The command `chmod` is short for change mode. Chmod is used to change permissions on files and directories. The command `chmod` may be used with either letters or numbers (also known as octal) to set the permissions. The letters used with chmod are in the table below:
 
 {: .table .table-striped }
 | Letter | Permission                                                   |
@@ -213,7 +213,7 @@ The command `chmod` is short for change mode. Chmod is used to change permission
 | o      | Current permissions the file has for others not in the group |
 |:-------|:-------------------------------------------------------------|
 
-It is important to remember that the first character of the first column of a file listing denotes whether it is a directory or a file. The other nine characters are the permissions for the file/directory. The first three characters are for the user; the next three are for the group, and the last three are for others. The example **drwxrw-r--** is broken down as follows:
+It is important to remember that the first character of the first column of a file listing denotes whether it is a directory or a file. The other nine characters are the permissions for the file/directory. The first three characters are for the user, the next three are for the group, and the last three are for others. The example **drwxrw-r--** is broken down as follows:
 
 > **d** is a directory
 >
@@ -223,7 +223,7 @@ It is important to remember that the first character of the first column of a fi
 >
 > **r--** all others have read only permissions
 
-Note that the dash (-) denotes permissions are removed. Therefore, with the others group r-- translates to read permission only, the write and execute permissions were removed.
+Note that the dash (-) denotes permissions are removed. Therefore, with the "all others" group, r-- translates to read permission only, the write and execute permissions were removed.
 
 Conversely, the plus sign (+) is equivalent to granting permissions: `chmod u+r,g+x <filename>`
 
@@ -272,7 +272,7 @@ To set the sticky bit on a file named `/root/sticky.txt`, issue the following co
 
     chmod +t /root/sticky.txt
 
-To remove the sticky bit from a file, use the `chmod -t` command. Note that to change the sticky bit, you need to be either root or the file owner. The root user will be able to delete files regardless of the status of the sticky bit.
+To remove the sticky bit from a file, use the `chmod -t` command. Note, to change the sticky bit, you need to be either root or the file owner. The root user will be able to delete files regardless of the status of the sticky bit.
 
 The *setuid* bit, or *+s*, when set on files allows users with permissions to execute a given file the ability to run that file with the permissions of file owner. For instance, if the file `work` was owned by the `root` user and the `marketing` group, members of the `marketing` group could run the `work` program as if they were the root user. This may pose potential security risks in some cases and executables should be properly evaluated before receiving the `+s` flag. To set the `+s` bit on a file named `/usr/bin/work`, issue the following command:
 
@@ -292,14 +292,14 @@ By default, all files are "owned" by the user who creates them and by that user'
 
     chown cjones:marketing list.html
 
-To change the ownership of a directory and all the files contained inside, use the recursive option with the `-R` flag. In the following example change the ownership of `/srv/smb/leadership/` to the "cjones" user in the "marketing" group:
+To change the ownership of a directory and all the files contained inside, use the recursive option with the `-R` flag. In the following example, change the ownership of `/srv/smb/leadership/` to the "cjones" user in the "marketing" group:
 
     chown -R cjones:marketing /srv/smb/leadership/
 
 Leveraging Users and Groups
 ---------------------------
 
-In many cases user permissions are used to provide your system with greater security without any direct interaction, as packages for many operating systems create specific system user accounts during the installation process.
+In many cases, user permissions are used to provide your system with greater security without any direct interaction. Many operating systems create specific system user accounts for different packages during the installation process.
 
 The best practice is to give each user their own login to your system. This protects each user's files from all other users. Furthermore, using specific accounts for users allows more accurate system logging, particularly when combined with tools like `sudo`. We recommend avoiding situations where more than one individual knows the password for a user account for maximum security.
 
