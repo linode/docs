@@ -6,7 +6,7 @@ author:
 description: 'Information on submitting articles to the Linode Library, including benefits and procedures.'
 keywords: 'writing,open source software,contribute linode library, submissions'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Monday, June 16th, 2014
+modified: Thursday, September 25, 2014
 modified_by:
   name: Alex Fornuto
 published: 'Wednesday, May 19th, 2010'
@@ -43,6 +43,7 @@ These authors got their articles published and \$100. You could be next.
 -   [Running Apache with PHP-FPM on Debian and Ubuntu](/docs/web-servers/apache/php-fpm/apache-php-fpm-debian-ubuntu) - Jesin A.
 -   [Using WeeChat for Internet Relay Chat](/docs/applications/messaging/using-weechat-for-irc) - Samuel Damashek
 -   [Manage Git Repositories with GitLab on Ubuntu 14.04 (Trusty)](/docs/applications/development/gitlab-on-ubuntu-14-04) - Nashruddin Amin
+-   [Yesod, Nginx, and MySQL on Debian 7 (Wheezy)](/docs/websites/frameworks/yesod-nginx-mysql-on-debian-7-wheezy)- Si-Qi Liu
 
 How Much Money Will I Earn?
 ---------------------------
