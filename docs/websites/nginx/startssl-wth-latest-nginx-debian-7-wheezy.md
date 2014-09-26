@@ -15,19 +15,21 @@ title: 'Using StartSSL with the latest Nginx on Debian 7'
 
 This is a Linode Community guide by author [capecodrailfan](https://github.com/capecodrailfan) and submitted via [GitHub](https://github.com/linode/docs).
 
-There comes a time when anyone using a cloud server learns about a new feature in a package only to find out that the latest version of the package is not installed on their VPS and not provided their distribution's repositories. This guide is going to show you how to install the latest stable version of Nginx on Debian Wheezy and deploy a free SSL certificate from StartSSL that will get you an A on the [Qualys SSL Labs SSL Server Test](https://www.ssllabs.com/ssltest/). In order to achieve an "A" on the test we are going to configure Nginx to prefer server ciphers, only use strong ciphers, and disable vulnerable protocols SSLv2 & SSLv3.
+There comes a time when anyone using a cloud server learns about a new feature in a package only to find out that the latest version of that package is not installed on their VPS. And then, the new package is not provided by their distribution's repositories.
+
+This guide is going to show you how to install the latest stable version of Nginx on Debian Wheezy. It will also deploy a free SSL certificate from StartSSL that will get you an A on the [Qualys SSL Labs SSL Server Test](https://www.ssllabs.com/ssltest/). In order to achieve an "A" on the test, we are going to configure Nginx to prefer server ciphers, only use strong ciphers, and disable vulnerable protocols SSLv2 and SSLv3.
 
 ### Prerequisites
 
-This article assumes that you already have Debian Wheezy running on a Linode. If you do not, follow the [Getting Started guide](https://www.linode.com/docs/getting-started) and them come back here. 
+This article assumes that you already have Debian 7 Wheezy running on a Linode. If you do not, follow the [Getting Started guide](https://www.linode.com/docs/getting-started) and them come back here. 
 
-Please note that in order to obtain an SSL certificate for your Linode, you must have registered a domain name, and have access to an email account like webmaster@yourdomain.com. This is necessary for StartSSL to verify that you have control of the domain you are requesting an SSL certificate for. 
+Please note, in order to obtain an SSL certificate for your Linode, you must have registered a domain name, and have access to an email account like webmaster@yourdomain.com. This is necessary for StartSSL to verify that you have control of the domain you are requesting an SSL certificate for. 
 
 All of the commands below should be executed as the ``root`` user.
 
-### Add the Nginx Debian Repisitory to Your Linode Package Sources
+### Add the Nginx Debian Repository to Your Linode Package Sources
 
-1.  Create a new file in `/etc/apt/sources.list.d/` that instructs the package manager to download packages from the Nginx repositories using your favorite text editor. I'm going to use `nano`, but you could also use `vi` or `emacs`. If you have not used Nano before, I highly recommend reading [Using Nano](https://www.linode.com/docs/tools-reference/tools/using-nano) before continuing.
+1.  Create a new file in `/etc/apt/sources.list.d/` that instructs the package manager to download packages from the Nginx repositories using your favorite text editor. Here we'll use `nano`, but you could also use `vi` or `emacs`. If you have not used Nano before, I highly recommend reading [Using Nano](https://www.linode.com/docs/tools-reference/tools/using-nano) before continuing.
 
         nano /etc/apt/sources.list.d/nginx.list
 
@@ -36,52 +38,51 @@ All of the commands below should be executed as the ``root`` user.
         deb http://nginx.org/packages/debian/ wheezy nginx
         deb-src http://nginx.org/packages/debian/ wheezy nginx
 
-3.  Download the PGP key used to sign the packages in the Nginx repository using wget.
+3.  Download the PGP key used to sign the packages in the Nginx repository using wget:
     
         wget http://nginx.org/keys/nginx_signing.key
 
-4.  Import the PGP key into the keyring used by the package manager to verify the authenticity of packages downloaded from the repository.
+4.  Import the PGP key into the keyring used by the package manager to verify the authenticity of packages downloaded from the repository:
 
         apt-key add nginx_signing.key
     
-5.  Delete the PGP key from the file system.
+5.  Delete the PGP key from the file system:
 
         rm nginx_signing.key
     
-6.  Update your list of available packages.
+6.  Update your list of available packages:
 
         apt-get update
     
 ### Install Nginx
 
-1.  Instruct the package manager to install the Nginx package
+1.  Instruct the package manager to install the Nginx package:
     
         apt-get install nginx
 
 ### Generate a Private Key and Certificate Signing Request (CSR)
 
-1.  Create a directory to store your certificate and private key. On Debian systems the default location for storing certificates and private keys is in `/etc/ssl/`. To keep things simple we are going to create a new `/etc/ssl/nginx` directory to store your certificate and private key for Nginx.
+1.  Create a directory to store your certificate and private key. On Debian systems, the default location for storing certificates and private keys is in `/etc/ssl/`. To keep things simple we are going to create a new `/etc/ssl/nginx` directory to store your certificate and private key for Nginx:
 
         mkdir /etc/ssl/nginx
 
-2.  Navigate to the newly created directory.
+2.  Navigate to the newly created directory:
 
         cd /etc/ssl/nginx
 
-3.  Generate a 2048 bit RSA private key. If you are paranoid you could change 2048 to 4096 to create a 4096 bit private key. Currently most certificate authorities are requring customers to use a 2048
-bit or higher RSA private key.
+3.  Generate a 2048 bit RSA private key. If you are paranoid you could change 2048 to 4096 to create a 4096 bit private key. Currently, most certificate authorities are requring customers to use a 2048 bit or higher RSA private key.
 
         openssl genrsa -out server.key 2048
 
-4. Generate a certificate signing request (CSR). When prompted for a `Common Name` be sure to enter the domain name that you will be using to access your Linode, all other fields can be filled as you see fit. Optionally you may enter a sub domain for instance www.yourdomain.com. This must be a domain that you have control over and which you can recieve email sent to webmaster@yourdomain.com. Any certificate issued for YOURNAMEHAME.yourdomain.com is also valid for yourdomain.com.
+4. Generate a certificate signing request (CSR). When prompted for a `Common Name`, be sure to enter the domain name that you will be using to access your Linode, all other fields can be filled as you see fit. Optionally, you may enter a sub domain, for instance www.yourdomain.com. This must be a domain that you have control over and which you can recieve email sent to webmaster@yourdomain.com. Any certificate issued for *yourname*.yourdomain.com is also valid for yourdomain.com.
 
         openssl req -new -key server.key -out server.csr
 
-[![CSR Creation](/docs/assets/1751-CSR.jpg)](/docs/assets/1751-CSR.jpg)
+    [![CSR Creation](/docs/assets/1751-CSR.jpg)](/docs/assets/1751-CSR.jpg)
 
 ### Sign-up With StartSSL
 
-1.  Launch a web browser and naviagte to the [StartSSL Control Panel](https://www.startssl.com/?app=12). If this is your first time requesting a certificate from StartSSL, click on the "Sign-up" button. If you have already requested a certificate from StartSSL, log into you account, and skip to the next section.
+1.  Launch a web browser and naviagte to the [StartSSL Control Panel](https://www.startssl.com/?app=12). If this is your first time requesting a certificate from StartSSL, click on the "Sign-up" button. If you have already requested a certificate from StartSSL, log into your account, and skip to the next section.
 [![StartSSL Control Panel](/docs/assets/1752-StartSSL-Control-Panel.jpg)](/docs/assets/1752-StartSSL-Control-Panel.jpg)
 
 2. Provide the requested information and a click "Continue >> >>"
@@ -128,7 +129,7 @@ You should now be logged into your StartSSL account.
 3.  Click "Skip >> >>" to skip generating a RSA private key. In the previous step an RSA private key was generated before creating a certificate signing request.
 [![StartSSL Certificates Wizard Skip Creating a RSA Private Key](/docs/assets/1762-StartSSL-Certificates-Wizard-Private-Key.jpg)](/docs/assets/1762-StartSSL-Certificates-Wizard-Private-Key.jpg)
 
-4.  Using the text editor of your choice open up your certificate signing request and copy it. If you using Putty on Windows, highlight the entire certificate signing request to copy it to the clipboard then exit the text editor.
+4.  Using the text editor of your choice, open up your certificate signing request and copy it. If you're using Putty on Windows, highlight the entire certificate signing request to copy it to the clipboard, then exit the text editor.
 
         nano /etc/ssl/nginx/server.csr
 
@@ -154,33 +155,33 @@ You should now be logged into your StartSSL account.
 11. You can now exit the StartSSL website.
 
 ### Gather Additional Required Certificate Files
-1.  Navigate to the directory you are storing your certificate and private key in.
+1.  Navigate to the directory you are storing your certificate and private key in:
 
         cd /etc/ssl/nginx
 
-2.  Download the StartSSL CA Certificate using wget.
+2.  Download the StartSSL CA Certificate using wget:
 
         wget http://www.startssl.com/certs/ca.pem
     
-3.  Download the StartSSL Intermediate CA Certificate using wget.
+3.  Download the StartSSL Intermediate CA Certificate using wget:
 
         wget http://www.startssl.com/certs/sub.class1.server.ca.pem
 
-4.  Create a unified CA Certificate file.
+4.  Create a unified CA Certificate file:
 
         cat sub.class1.server.ca.pem >> ca.pem
 
-5. Delete the no longer needed StartSSL Intermediate CA Certificate file.
+5. Delete the no longer needed StartSSL Intermediate CA Certificate file:
 
         rm -rf sub.class1.server.ca.pem
 
-6.  Create a single file containing your signed certificate and the StartSSL CA certificates for Nginx.
+6.  Create a single file containing your signed certificate and the StartSSL CA certificates for Nginx:
 
         cat server.crt ca.pem > nginx.crt
 
 ### Install Your StartSSL Certificate
 
-1.  By default Nginx is configured to only serve HTTP requests on TCP port 80. You need to configure Nginx to server HTTPS requests on TCP port 443. Open up the sample Nginx SSL virtual host configuration file.
+1.  By default, Nginx is configured to only serve HTTP requests on TCP port 80. You need to configure Nginx to server HTTPS requests on TCP port 443. Open up the sample Nginx SSL virtual host configuration file.
 
         nano /etc/nginx/conf.d/example_ssl.conf
 
@@ -209,7 +210,9 @@ You should now be logged into your StartSSL account.
             }
         }
 
-Note the changes to `server_name`, `ssl_certificate`, `ssl_certificate_key`, `ssl_session_cache`, `ssl_ciphers`, and the removal of # signs. Also note the addition of `ssl_protocols`.
+    {: .note }
+    >
+    >The changes are to `server_name`, `ssl_certificate`, `ssl_certificate_key`, `ssl_session_cache`, `ssl_ciphers`, and the removal of # signs. Also note, the addition of `ssl_protocols`.
     
 3.  Restart Nginx to apply your changes.
 
@@ -217,7 +220,7 @@ Note the changes to `server_name`, `ssl_certificate`, `ssl_certificate_key`, `ss
 
 ### Test
 
-Launch a web browser and navigate to https://YOUR DOMAIN OR SUB DOMAIN HERE and you should see the default nginx page. Please note that this will not work until your have created an A record for your hostname at your domain provider pointing to the IP address of your Linode. Please contact your domain provider if you need assistance.
+Launch a web browser and navigate to https://yourdomainorsubdomainhere and you should see the default nginx page. Please note, this will not work until you have created an A record for your hostname at your domain provider pointing to the IP address of your Linode. Please contact your domain provider if you need assistance.
 
 [![Up and Running](/docs/assets/1768-Up-And-Running.jpg)](/docs/assets/1768-Up-And-Running.jpg)
 
