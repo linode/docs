@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-description: Our guide to submitting support tickets and getting technical support
+description: Our guide to submitting support tickets and getting technical support.
 keywords: 'support,tech support,tickets,help desk'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['support/']
