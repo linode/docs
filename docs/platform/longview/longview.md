@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-description: Our guide to installing and using Linode Longview
+description: Our guide to installing and using Linode Longview.
 keywords: 'system monitoring,longview,troubleshooting'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['longview/']

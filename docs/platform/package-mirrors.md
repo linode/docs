@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: bolow@linode.com
-description: Setting Linode Package Mirrors
+description: Setting Linode Package Mirrors.
 keywords: 'package,mirrors,linode,repository,Debian,Ubuntu,CentOS,yum,apt-get'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['package-mirrors/']

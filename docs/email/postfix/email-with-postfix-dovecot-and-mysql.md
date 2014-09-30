@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: scampbell@linode.com
-description: 'Setting up a mail server with Postfix, Dovecot, and MySQL'
+description: 'Setting up a mail server with Postfix, Dovecot, and MySQL.'
 keywords: 'email,mail,postfix,dovecot,mysql,ubuntu 12.04,dovecot 2, dovecot 2.0.19, postfix 2.9.6'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['email/postfix/postfix2.9.6-dovecot2.0.19-mysql/']

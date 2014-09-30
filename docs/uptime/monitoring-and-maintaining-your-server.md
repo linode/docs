@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-description: Our guide to monitoring and maintaing your server
+description: Our guide to monitoring and maintaing your server.
 keywords: 'monitor,monitoring,maintaining,maintainance'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['monitoring-and-maintaining/']
