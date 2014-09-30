@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: scampbell@linode.com
-description: 'How to use two-factor authentication and other security controls in the Linode Manager'
+description: 'How to use two-factor authentication and other security controls in the Linode Manager.'
 keywords: 'two-factor authentication,password,security,Linode Manager,token'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['linode-manager-security/']
