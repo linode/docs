@@ -12,7 +12,6 @@ featured:
  - email-with-postfix-dovecot-and-mysql.md
  - installing-mail-filtering-for-ubuntu-12-04.md
  - using-google-apps-for-email.md
- - iredmail-server.md
 categories:
  - clients
  - postfix
@@ -20,6 +19,8 @@ categories:
  - zimbra
  - exim
  - mailman
+ - iredmail
 ---
 
 Every organization needs email service. Whether you're running a personal blog or an entire company's web infrastructure on your Linodes, these guides will assist you in getting a stable mail/groupware server up and running quickly.
+

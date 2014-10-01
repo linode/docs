@@ -158,9 +158,9 @@ Here's how to check for a new kernel and start using it on your Linode:
 
         cat /proc/version
 
-2.  Examine the output and remember the version number (in this case, 3.7.5). It should match the latest available version of the kernel in the Linode Manager, as you'll see in just a minute:
+2.  Examine the output and remember the version number (in this case, 3.15.4). It should match the latest available version of the kernel in the Linode Manager, as you'll see in just a minute:
 
-        Linux version 3.7.5-linode48 (maker@build) (gcc version 4.4.5 (Debian 4.4.5-8) ) #1 SMP Thu Jan 31 14:40:54 EST 2013
+        Linux version 3.15.4-x86_64-linode45 (maker@build) (gcc version 4.4.5 (Debian 4.4.5-8) ) #1 SMP Mon Jul 7 08:42:36 EDT 2014
 
 3.  Log in to the [Linode Manager](https://manager.linode.com).
 4.  Click the **Linodes** tab. A list of your virtual private servers appears.
@@ -169,7 +169,7 @@ Here's how to check for a new kernel and start using it on your Linode:
 
 [![Selecting the active configuration profile](/docs/assets/1195-monitor6-1.png)](/docs/assets/1195-monitor6-1.png)
 
-7.  From the **Kernel** menu, verify that **Latest 32 bit** is selected, as shown below.
+7.  From the **Kernel** menu, verify that **Latest 64 bit** is selected, as shown below.
 
  {: .note }
 >
