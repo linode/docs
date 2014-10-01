@@ -1078,6 +1078,11 @@ Here's how to configure Dovecot:
 
 Congratulations! You now have a functioning mail server that can securely send and receive email. If things are not working smoothly, you may also want to consult the [Troubleshooting Problems with Postfix, Dovecot, and MySQL](/docs/email/postfix/troubleshooting) guide. At this point, you may want to consider adding spam and virus filtering and a webmail client. If you haven't switched the DNS records for your mail server yet, you should be able to do so now. Once the DNS records have propagated, you will start receiving email for your domain on the server.
 
+{: .note }
+>If you encounter errors in your /var/log/syslog stating "Invalid settings: postmaster_address setting not given", you may need to append the following line to your /etc/dovecot/dovecot.conf file, replacing domain with your domain name.
+>
+>     postmaster_address=postmaster at DOMAIN
+
 Adding New Domains, Email Addresses, and Aliases
 ------------------------------------------------
 
