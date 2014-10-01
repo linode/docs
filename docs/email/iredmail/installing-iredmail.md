@@ -383,6 +383,8 @@ For this reason, the author recommends turning this module off. Note, since bein
 
 	    service postfix-cluebringer restart
 
+<!-- Please rewrite the above section without Nano specific commands. Tell them what file and what to change, it's up to the reader to choose a text editor and know how it works. -->
+
 # Final Testing and Conclusion
 
 We’re almost finished. Of the many services available to test the mail server's operation and “spaminess”, we'll be using the Mail Tester and Port25 solution services.
@@ -398,8 +400,8 @@ Point a web browser to [Mail Tester][m], copy the automatically generated email 
 
 Remember, your DNS entries (SPF and DKIM) may take awhile to push through. If so, just wait a few hours and try the test again.
 
-## Port 25 Solutions Email Verification
-The Port25 soulution is much simpler. Compose an email to <mailto:check-auth@verifier.port25.com> (checks “mail_from” header) and <mailto:check-auth2@verifier.port25.com> (checks “from” header), add some random text to the subject and body, and send. A few minutes later you’ll receive the results in your inbox.
+## Port25 Solutions Email Verification
+The Port25 solution is much simpler. Compose an email to <mailto:check-auth@verifier.port25.com> (checks “mail_from” header) and <mailto:check-auth2@verifier.port25.com> (checks “from” header), add some random text to the subject and body, and send. A few minutes later you’ll receive the results in your inbox.
 
 ## Conclusion
 Familiarize yourself with the various files, configs, and settings listed in the iRedMail emails and website and start adding users to your mail server. Happy Mailing!
