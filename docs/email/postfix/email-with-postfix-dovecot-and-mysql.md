@@ -3,12 +3,12 @@ author:
   name: Linode
   email: scampbell@linode.com
 description: 'Setting up a mail server with Postfix, Dovecot, and MySQL.'
-keywords: 'email,mail,postfix,dovecot,mysql,ubuntu 12.04,dovecot 2, dovecot 2.0.19, postfix 2.9.6'
+keywords: 'email,mail,postfix,dovecot,mysql,debian 7,ubuntu 14.04,dovecot 2'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['email/postfix/postfix2.9.6-dovecot2.0.19-mysql/']
-modified: Friday, March 14th, 2014
+alias: ['email/postfix/postfix-dovecot-mysql/']
+modified: Wednesday, October 1, 2014
 modified_by:
-  name: Linode
+  name: James Stewart
 published: 'Monday, May 13th, 2013'
 title: 'Email with Postfix, Dovecot, and MySQL'
 ---
@@ -20,12 +20,12 @@ Getting Started
 
 Setting up a mail server is a big project. Before installing and configuring the necessary packages on your mail server, you should learn what everything does and understand how the components work together to send and receive email. For the purposes of this guide, we'll assume that you'll be using the following packages and operating system:
 
--   **Postfix:** This Mail Transfer Agent (MTA) handles relaying mail between different servers. It decides what to do with email from the outside world, and whether a particular user is allowed to send email using your server. It handles both incoming and outgoing SMTP. Postfix hands off local delivery (that is, the actual saving of the mail files on the server) to Dovecot's Local Mail Transfer Protocol service (LMTP). Postfix also lets Dovecot take care of authentication before users are allowed to send email from the server. We'll use version 2.9.6.
--   **Dovecot:** This IMAP/POP3 server handles requests from users who want to log in and check their email. Dovecot's LMTP service functions as the Mail Delivery Agent (MDA) by saving mail files on the server. Dovecot also handles all authorization. It checks users' email addresses and passwords in the MySQL database before allowing them to view or send email. We'll use version 2.0.19.
--   **MySQL:** This database server stores lookup tables for domains, usernames and passwords, and aliases on the mail server. We'll use version 14.14 Distrib 5.5.29.
--   **Ubuntu 12.04 LTS:** These instructions are designed to work with Ubuntu 12.04 LTS. Other distributions can also be made to work with Postfix, Dovecot, and MySQL, but those instructions are outside the scope of this guide.
+-   **Postfix:** This Mail Transfer Agent (MTA) handles relaying mail between different servers. It decides what to do with email from the outside world, and whether a particular user is allowed to send email using your server. It handles both incoming and outgoing SMTP. Postfix hands off local delivery (that is, the actual saving of the mail files on the server) to Dovecot's Local Mail Transfer Protocol service (LMTP). Postfix also lets Dovecot take care of authentication before users are allowed to send email from the server.
+-   **Dovecot:** This IMAP/POP3 server handles requests from users who want to log in and check their email. Dovecot's LMTP service functions as the Mail Delivery Agent (MDA) by saving mail files on the server. Dovecot also handles all authorization. It checks users' email addresses and passwords in the MySQL database before allowing them to view or send email.
+-   **MySQL:** This database server stores lookup tables for domains, usernames and passwords, and aliases on the mail server.
+-   **Debian 7/Ubuntu 14.04 LTS:** These instructions have been tested and confirmed to work with Debian 7 and Ubuntu 14.04 LTS. Other distributions can also be made to work with Postfix, Dovecot, and MySQL, but those instructions are outside the scope of this guide.
 
-If you encounter problems while using this guide, please double-check that you are using Ubuntu 12.04, and that the package versions match the ones listed above. You can also consult the [Troubleshooting Problems with Postfix, Dovecot, and MySQL](/docs/email/postfix/troubleshooting) guide.
+If you encounter problems while using this guide, please double-check that you are using either Debian 7 or Ubuntu 14.04 LTS, and that the package versions match the ones listed above. You can also consult the [Troubleshooting Problems with Postfix, Dovecot, and MySQL](/docs/email/postfix/troubleshooting) guide.
 
 ### What's Not Covered
 
@@ -39,7 +39,7 @@ For the sake of brevity, we've decided *not* to cover the following topics in th
 
 Before setting up your mail server, you'll need to set up your Linode as specified in the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/securing-your-server) guides. You'll also need to verify that you've completed the following steps:
 
--   [Booted into Ubuntu 12.04 LTS](/docs/getting-started#sph_deploying-a-linux-distribution).
+-   [Deployed your Linode](/docs/getting-started#sph_deploying-a-linux-distribution).
 -   Set a [root password](/docs/getting-started#sph_deploying-a-linux-distribution).
 -   Set the [hostname](/docs/getting-started#sph_setting-the-hostname) and updated the [/etc/hosts](/docs/getting-started#sph_update-etc-hosts) file.
 -   [Updated and upgraded](/docs/getting-started#sph_installing-software-updates) the operating system and all installed packages.
@@ -191,7 +191,7 @@ Here's how to create the necessary database and tables in MySQL:
 
 6.  Reload MySQL's privileges to make sure the user has been added successfully:
 
-        FLUSH PRIVILEGES;               
+        FLUSH PRIVILEGES;
 
 7.  Enter the following command to create a table for the domains that will receive mail on your Linode. You can copy and paste the whole block of code at once - MySQL won't execute it until you get to the semicolon (`;`). This will create a table called `virtual_domains` and give it two fields, an `id` field, and a `name` field for the domains.
 
@@ -232,9 +232,9 @@ Now that you've created the database and tables, let's add some data to MySQL. H
 
 1.  Add your domains to the `virtual_domains` table. You can add as many domains as you want in the `VALUES` section of the command below, but in this example you'll add just the primary domain (`example.com`), your hostname (`hostname`), your FQDN (`hostname.example.com`), and `localhost.example.com`. (You'll add `localhost` in a different file later). Be sure to replace `example.com` and `hostname` with your own domain name and hostname. You'll need an `id` value and a `name` value for each entry. Separate each entry with a comma (`,`), and close the last one with a semicolon (`;`).
 
-        INSERT INTO `mailserver`.`virtual_domains` 
+        INSERT INTO `mailserver`.`virtual_domains`
           (`id` ,`name`)
-        VALUES 
+        VALUES
           ('1', 'example.com'),
           ('2', 'hostname.example.com'),
           ('3', 'hostname'),
@@ -248,7 +248,7 @@ Now that you've created the database and tables, let's add some data to MySQL. H
 
         INSERT INTO `mailserver`.`virtual_users`
           (`id`, `domain_id`, `password` , `email`)
-        VALUES 
+        VALUES
           ('1', '1', ENCRYPT('firstpassword', CONCAT('$6$', SUBSTRING(SHA(RAND()), -16))), 'email1@example.com'),
           ('2', '1', ENCRYPT('secondpassword', CONCAT('$6$', SUBSTRING(SHA(RAND()), -16))), 'email2@example.com');
 
@@ -381,7 +381,7 @@ Here's how to configure Postfix:
 		recipient_delimiter = +
 		inet_interfaces = all
     ~~~
-	
+
 4.  Comment out all of the lines in the `#TLS parameters` section, and then paste in the four new lines shown below. Since we're using Dovecot for authentication, we're going to use Dovecot's default certificate rather than Postfix's default certificate. For increased security, we're also going to force users to use TLS encryption.
 
     {:.note}
@@ -405,8 +405,8 @@ Here's how to configure Postfix:
 		 #smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache
 		 #smtp_tls_session_cache_database = btree:${data_directory}/smtp_scache
 
-		 smtpd_tls_cert_file=/etc/ssl/certs/dovecot.pem
-		 smtpd_tls_key_file=/etc/ssl/private/dovecot.pem
+		 smtpd_tls_cert_file=/etc/dovecot/dovecot.pem
+		 smtpd_tls_key_file=/etc/dovecot/private/dovecot.pem
 		 smtpd_use_tls=yes
 		 smtpd_tls_auth_only = yes
     ~~~
@@ -442,7 +442,7 @@ Here's how to configure Postfix:
 		#mydestination = example.com, hostname.example.com, localhost.example.com, localhost
 		mydestination = localhost
 	~~~
-	
+
 7.  Add a new line for local mail delivery (the service that actually saves the emails to individual user mailboxes). We're telling Postfix not to use its own Local Delivery Agent (LDA) and instead use Dovecot's LMTP (Local Mail Transfer Protocol) for local delivery. This applies to all virtual domains listed in the MySQL table.
 
     {: .file-excerpt }
@@ -500,8 +500,8 @@ Here's how to configure Postfix:
 		#smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache
 		#smtp_tls_session_cache_database = btree:${data_directory}/smtp_scache
 
-		smtpd_tls_cert_file=/etc/ssl/certs/dovecot.pem
-		smtpd_tls_key_file=/etc/ssl/private/dovecot.pem
+		smtpd_tls_cert_file=/etc/dovecot/dovecot.pem
+		smtpd_tls_key_file=/etc/dovecot/private/dovecot.pem
 		smtpd_use_tls=yes
 		smtpd_tls_auth_only = yes
 
@@ -555,7 +555,7 @@ Here's how to configure Postfix:
 		dbname = mailserver
 		query = SELECT 1 FROM virtual_domains WHERE name='%s'
 	~~~
-	
+
 13. Save the changes you've made to the */etc/postfix/mysql-virtual-mailbox-domains.cf* file.
 14. Restart Postfix by entering the following command:
 
@@ -605,7 +605,7 @@ Here's how to configure Postfix:
 	  dbname = mailserver
 	  query = SELECT destination FROM virtual_aliases WHERE source='%s'
 	  ~~~
-	
+
 23. Save the changes you've made to the */etc/postfix/mysql-virtual-alias-maps.cf* file.
 24. Restart Postfix by entering the following command:
 
@@ -717,7 +717,7 @@ Here's how to configure Dovecot:
 	: ~~~
 	  !include conf.d/*.conf
 	  ~~~
-	
+
 4.  Add the following line to */etc/dovecot/dovecot.conf* so Dovecot knows to support IMAP, POP3, and LMTP. In this example, we have inserted it below the existing `!include_try /usr/share/dovecot/protocols.d/*.protocol` line:
 
     {: .file-excerpt }
@@ -727,7 +727,7 @@ Here's how to configure Dovecot:
 	  !include_try /usr/share/dovecot/protocols.d/*.protocol
 	  protocols = imap pop3 lmtp
 	  ~~~
-	
+
 5.  Save your changes to the */etc/dovecot/dovecot.conf* file.
 6.  Open the */etc/dovecot/conf.d/10-mail.conf* file for editing by entering the following command. This file allows us to control how Dovecot interacts with the server's file system to store and retrieve messages.
 
@@ -744,7 +744,7 @@ Here's how to configure Dovecot:
 	: ~~~
 	  mail_location = maildir:/var/mail/vhosts/%d/%n
 	  ~~~
-	
+
 8.  Find the `mail_privileged_group` variable. Uncomment it, and then set it to the following value. This allows Dovecot to write to the */var/mail/* folder.
 
     {: .file-excerpt }
@@ -752,7 +752,7 @@ Here's how to configure Dovecot:
 	: ~~~
 	  mail_privileged_group = mail
 	  ~~~
-	
+
 9.  Save your changes to the */etc/dovecot/conf.d/10-mail.conf* file.
 10. Enter the following command to verify the permissions for */var/mail*:
 
@@ -790,7 +790,7 @@ Here's how to configure Dovecot:
 	: ~~~
 	  disable_plaintext_auth = yes
 	  ~~~
-	
+
 17. Set the `auth_mechanisms` by modifying the following line:
 
     {: .file-excerpt }
@@ -798,7 +798,7 @@ Here's how to configure Dovecot:
 	: ~~~
 	  auth_mechanisms = plain login
 	  ~~~
-	
+
 18. Add a hash tag (`#`) to comment out the system user login line:
 
     {: .file-excerpt }
@@ -806,7 +806,7 @@ Here's how to configure Dovecot:
 	: ~~~
 	  #!include auth-system.conf.ext
 	  ~~~
-	
+
 19. Enable MySQL authentication by uncommenting the `auth-sql.conf.ext` line. That section should look like this:
 
     {: .file-excerpt }
@@ -840,7 +840,7 @@ Here's how to configure Dovecot:
 	    args = uid=vmail gid=vmail home=/var/mail/vhosts/%d/%n
 	  }
 	  ~~~
-	
+
     Explanation of parameters:
 
     -   `passdb` tells Dovecot how to look up users for authentication. We're telling Dovecot to use MySQL. In the `args` line, we're also specifying the file that contains the MySQL connection information.
@@ -862,7 +862,7 @@ Here's how to configure Dovecot:
 	: ~~~
 	  driver = mysql
 	  ~~~
-	
+
 26. Uncomment the `connect` line and set your MySQL connection information. Make sure you use your own password and any other custom settings:
 
     {: .file-excerpt }
@@ -870,7 +870,7 @@ Here's how to configure Dovecot:
 	: ~~~
 	  connect = host=127.0.0.1 dbname=mailserver user=mailuser password=mailuserpass
 	  ~~~
-	
+
 27. Uncomment the `default_pass_scheme` line and set it to `SHA512-CRYPT`. This tells Dovecot to expect the passwords in an ecrypted format (which is how they are stored in the database).
 
     {: .file-excerpt }
@@ -878,7 +878,7 @@ Here's how to configure Dovecot:
 	: ~~~
 	  default_pass_scheme = SHA512-CRYPT
 	  ~~~
-	
+
 28. Uncomment the `password_query` line and set it to the following. This is a MySQL query that Dovecot uses to retrieve the password from the database.
 
     {: .file-excerpt }
@@ -886,7 +886,7 @@ Here's how to configure Dovecot:
 	: ~~~
 	  password_query = SELECT email as user, password FROM virtual_users WHERE email='%u';
 	  ~~~
-    
+
 	{:.note}
     >
     > This password query lets you use an email address listed in the `virtual_users` table as your username credential for an email account. The primary email address should still be used as the username, even if you have set up your email client for an alias. If you want to be able to use the alias as your username instead (listed in the `virtual_aliases` table), you should first add every primary email address to the `virtual_aliases` table (directing to themselves) and then use the following line in `/etc/dovecot/dovecot-sql.conf.ext` instead:
@@ -929,7 +929,7 @@ Here's how to configure Dovecot:
 		...
 		}
 	~~~
-	
+
     {:.note}
     >
     > Make sure you leave the secure versions alone - `imaps` and `pop3s` - so their ports still work. The default settings for `imaps` and `pop3s` are fine. You can leave the `port` lines commented out, as the default ports are the standard 993 and 995.
@@ -986,7 +986,7 @@ Here's how to configure Dovecot:
 	    user = dovecot
 	  }
 	  ~~~
-	
+
 36. In the `service auth-worker` section, uncomment the `user` line and set it to `vmail`, as shown below.
 
     {: .file-excerpt }
@@ -1003,8 +1003,8 @@ Here's how to configure Dovecot:
 37. Save your changes to the */etc/dovecot/conf.d/10-master.conf* file.
 38. Verify that the default Dovecot SSL certificate and key exist by entering the following commands, one by one:
 
-        ls /etc/ssl/certs/dovecot.pem
-        ls /etc/ssl/private/dovecot.pem
+        ls /etc/dovecot/dovecot.pem
+        ls /etc/dovecot/private/dovecot.pem
 
     {:.note}
     >
@@ -1023,10 +1023,10 @@ Here's how to configure Dovecot:
     {: .file-excerpt }
 	/etc/dovecot/conf.d/10-ssl.conf
 	: ~~~
-	  ssl_cert = </etc/ssl/certs/dovecot.pem
-	  ssl_key = </etc/ssl/private/dovecot.pem
+	  ssl_cert = </etc/dovecot/dovecot.pem
+	  ssl_key = </etc/dovecot/private/dovecot.pem
 	  ~~~
-	
+
 41. Force your clients to use SSL encryption for all connections. Set `ssl` to `required`:
 
     {: .file-excerpt }
@@ -1034,7 +1034,7 @@ Here's how to configure Dovecot:
 	: ~~~
 	  ssl = required
 	  ~~~
-	
+
 42. Save your changes to the */etc/dovecot/conf.d/10-ssl.conf* file. Dovecot has been configured!
 43. Restart Dovecot by entering the following command:
 
@@ -1110,9 +1110,9 @@ Here's how to add a new domain to your Postfix and Dovecot setup:
 
 6.  To add another domain, enter the following command, replacing `newdomain.com` with your domain name:
 
-        INSERT INTO `mailserver`.`virtual_domains` 
+        INSERT INTO `mailserver`.`virtual_domains`
           (`name`)
-        VALUES 
+        VALUES
           ('newdomain.com');
 
 7.  Verify that the new domain has been added by entering the following command. You should see the new domain name in the output.
@@ -1133,7 +1133,7 @@ Here's how to add a new email address to your Postfix and Dovecot setup:
 
         INSERT INTO `mailserver`.`virtual_users`
           (`domain_id`, `password` , `email`)
-        VALUES 
+        VALUES
           ('5', ENCRYPT('newpassword', CONCAT('$6$', SUBSTRING(SHA(RAND()), -16))) , 'email3@newdomain.com');
 
  {: .note }
