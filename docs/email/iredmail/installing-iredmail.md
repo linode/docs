@@ -160,7 +160,7 @@ After first logging in to the postmaster account, you should have two emails wai
 
 1. After moving your certificate and key onto your Linode, make a note of its location. The recommendation is to install in the same directories as the iRedMail default certificate and key. The certificate is located in `/etc/ssl/certs/` and the key is in `/etc/ssl/private/`.
 
-        mv mail.yourcomain.com.crt /etc/ssl/certs/
+        mv mail.yourdomain.com.crt /etc/ssl/certs/
         mv mail.yourdomain.com.key /etc/ssl/private/
 
 2. To replace the certificates used by Apache2, substitute the following paths in `default-ssl.conf` with the location of your certificate and key:
@@ -168,8 +168,8 @@ After first logging in to the postmaster account, you should have two emails wai
     {: .file-excerpt}
     /etc/apache2/sites-available/default-ssl.conf
     :   ~~~ conf
-        SSLCertificateFile /etc/ssl/certs/mail.yourcomain.com.crt
-        SSLCertificateKeyFile /etc/ssl/private/mail.yourcomain.com.key
+        SSLCertificateFile /etc/ssl/certs/mail.yourdomain.com.crt
+        SSLCertificateKeyFile /etc/ssl/private/mail.yourdomain.com.key
         ~~~
 
 
@@ -178,8 +178,8 @@ After first logging in to the postmaster account, you should have two emails wai
     {: .file-excerpt}
     /etc/postfix/main.cf
     :   ~~~ conf
-	    smtpd_tls_cert_file = /etc/ssl/certs/mail.yourcomain.com.crt
-        smtpd_tls_key_file = /etc/ssl/private/mail.yourcomain.com.key
+	    smtpd_tls_cert_file = /etc/ssl/certs/mail.yourdomain.com.crt
+        smtpd_tls_key_file = /etc/ssl/private/mail.yourdomain.com.key
         ~~~
 
 4. To replace the certs used by Postfix, subsitute the following paths in `dovecot.conf` with the location of your certificate and key:
@@ -187,8 +187,8 @@ After first logging in to the postmaster account, you should have two emails wai
     {: .file-excerpt}
     /etc/dovecot/dovecot.conf
     :   ~~~ conf
-	    ssl_cert = </etc/ssl/certs/mail.yourcomain.com.crt
-        ssl_key = </etc/ssl/private/mail.yourcomain.com.key
+	    ssl_cert = </etc/ssl/certs/mail.yourdomain.com.crt
+        ssl_key = </etc/ssl/private/mail.yourdomain.com.key
         ~~~
 <!-- syntax hilighting fix-->
 
@@ -206,7 +206,7 @@ This section covers the insertion of SPF and DKIM records in your DNS entry. SPF
 
 ### SPF
 
-1. Navigate to your DNS provider, either where you purchased your domain name or Linode if you’ve transferred your DNS, and enter the following bits of information in your subdomain area to activate SPF:
+1. Navigate to your DNS provider, either where you purchased your domain name or Linode if you’ve transferred your DNS, and enter the following bits of information in your subdomain area to activate SPF: (see screenshot in DKIM section below)
 
         hostname	 | ip address/url | record type | ttl
         -----------  | -------------- | ----------  | ---
@@ -219,7 +219,7 @@ This section covers the insertion of SPF and DKIM records in your DNS entry. SPF
 
 ### DKIM
 
-1. In the same area of your DNS host records, add the following entry to enable DKIM:
+1. In the same area of your DNS host records, add the following entry to enable DKIM: (see screenshot below)
 
         hostname | ip address/url | record type | ttl
         -----------  | -------------- | ----------- | ---
@@ -241,11 +241,13 @@ This section covers the insertion of SPF and DKIM records in your DNS entry. SPF
 
 To set your rDNS, check out the [Setting Reverse DNS][r] section of the DNS Manager guide. This is optional but gives additional credibility to a mail server for certain spam filters.
 
-# Apache Authentication Fix, Cluebringer and AWStats Login, and Greylisting Recommendation
+## Apache Authentication Fix for Cluebringer and AWStats Login
 
-<!-- note to the author: please explain what Cluebringer & AwStats is and why we want them running. This entire title has too much going on, needs to be broken up.-->
+Cluebringer (a.k.a. PolicyD v2) is a policy server utility for our mail transfer agent, Postfix. It provides a web-based interface ([example screenshot] [p]) where you can fine tune policies applied to Postfix. For more info, see the Policy D [documentation] [d].
 
-Due to "mod-auth-mysql" not working with Apache 2.4 (this module hasn't been updated in several years and various bug reports on the internet document this), the default installation doesn't allow us to utilize the module to log in to Cluebringer or AWStats. Below is the fix, which can also be found in [this] [f] iRedMail forum post.
+AWStats quickly analyzes and displays log files/server activity via a few web-based (or command line) statistical graphs. In our case it will display the # of emails sent, the total size of the emails, sender, receiver, time (hourly/daily/monthly), and SMTP error codes. An example can be seen [here] [w]. For more info, see the AWStats [documentation] [e].
+
+**Due to "mod-auth-mysql" not working with Apache 2.4 (this module hasn't been updated in several years and various bug reports on the internet document this), the default installation doesn't allow us to utilize the module to log in to Cluebringer or AWStats. Below is the fix, which can also be found in [this] [f] iRedMail forum post.**
 
 1. Install libaprutil1-dbd-mysql:
 
@@ -354,14 +356,10 @@ Due to "mod-auth-mysql" not working with Apache 2.4 (this module hasn't been upd
         </Directory>
         ~~~
 
-6.  Restart Apache for the changes to take effect, then test them by logging in to either cluebringer or awstats.
-<!-- Should those two items be capitalized? -->
+6.  Restart Apache for the changes to take effect, then test them by logging in to either Cluebringer or Awstats.
+
 	    service apache2 restart
 
-     {: .note }
-    >You *may* remove the libapache2-mod-auth-mysql module completely or disable apache module by entering `a2dismod auth_mysql`
-
-<!-- Note to author: is the step above required? Are there advantages or other reasons to do it? -->
 
 ## Greylisting Recommendation
 
@@ -369,21 +367,15 @@ By default, cluebringer starts with the greylisting feature enabled. While the i
 
 For this reason, the author recommends turning this module off. Note, since being disabled, neither *delays* nor *denials* of email have been observed on the author's mail server. Additionally, the mail server has yet to receive any spam.
 
-1. Edit cluebringer config file to disable Greylisting module:
+1. Edit the cluebringer config file (/etc/cluebringer/cluebringer.conf) to disable the Greylisting module.
 
-        nano /etc/cluebringer/cluebringer.conf
-
-2.  Search.
-
-	    (Ctrl + W)[Greylisting]
+2.  Search for the term "Greylisting" (without the quotation marks).
 
 3.  Change the "1" to "0" to disable.
 
 4.  Restart cluebringer to complete the changes.
 
 	    service postfix-cluebringer restart
-
-<!-- Please rewrite the above section without Nano specific commands. Tell them what file and what to change, it's up to the reader to choose a text editor and know how it works. -->
 
 # Final Testing and Conclusion
 
@@ -417,3 +409,7 @@ Familiarize yourself with the various files, configs, and settings listed in the
 [c]:https://www.linode.com/docs/websites/ssl/obtaining-a-commercial-ssl-certificate
 [a]:https://www.linode.com/docs/networking/dns/introduction-to-dns-records#mx
 [f]:http://www.iredmail.org/forum/post30654.html#p30654
+[p]:http://wiki.policyd.org/_detail/policyd_web_gui.png?id=screenshots
+[d]:http://wiki.policyd.org/documentation
+[w]:http://www.awstats.org/awstats.mail.html
+[e]:http://www.awstats.org/docs/index.html
