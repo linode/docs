@@ -21,7 +21,7 @@ Running your own mail server has many benefits. It allows you to manage the size
 
 # Prerequisites
 
-Before beginning this guide you should have: 
+Before beginning this guide you should have:
 
 - A domain name.
 - An understanding of the [Linux command line](/docs/networking/ssh/using-the-terminal).
@@ -60,7 +60,7 @@ A DNS MX record tells the internet where to send email directed at you domain. B
 
 	    cd /root/
 	    wget https://bitbucket.org/zhb/iredmail/downloads/iRedMail-0.8.7.tar.bz2
-        
+
 4. Uncompress the package and run the script:
 
 	    tar xjf iRedMail-0.8.7.tar.bz2
@@ -71,7 +71,7 @@ A DNS MX record tells the internet where to send email directed at you domain. B
     The remainder of the installation refers to on-screen confirmation of default options and selections. With the exception of the backend and hostname selections, most users will simply confirm the default options and continue the installation.
 
     {: .note }
-    >The next few steps were taken directly from the iRedMail [Ubuntu installation steps][u].  
+    >The next few steps were taken directly from the iRedMail [Ubuntu installation steps][u].
 
 5. Press "enter" to say "yes" to installing iRedMail. NOTE: Ctrl-C will exit the installation process when pressed at any time prior to step #12.
 
@@ -117,7 +117,7 @@ A DNS MX record tells the internet where to send email directed at you domain. B
 15. The installation is now complete! While the bottom half of the screen is filled with useful URL information and the location of the iRedMail tips file, a couple emails will be waiting in postmaster@yourdomain.com’s inbox.
 
     ![install complete](/docs/assets/install-complete.png)
-	
+
 16.  Reboot the Linode and navigate to `https://mail.yourdomain.com/mail` and login as “postmaster@yourdomain.com” to retrieve the necessary info.
 
 17. As a security precaution, we will remove the config file. This file is no longer needed after a successful iRedMail install, and contains sensitive information (usernames/passwords) about your mail server configuration.
@@ -146,7 +146,7 @@ By default, iRedMail generates a key and self-signed certificate for the mail se
 
 The process of obtaining a trusted certificate is outside the scope of this guide. You can follow the [Obtaining a Commercial SSL Certificate] [c] guide to obtain a certificate.
 
-The next section assumes you have the .key and .crt (or .pem) file in hand and are ready to go. 
+The next section assumes you have the .key and .crt (or .pem) file in hand and are ready to go.
 
 {: .note}
 >Be sure to apply for a certificate covering either your subdomain (mail.yourdomain.com) or a wildcard of your domain so all subdomains are covered).
@@ -202,32 +202,31 @@ After first logging in to the postmaster account, you should have two emails wai
 
 ## SPF, DKIM and rDNS
 
-This section covers the insertion of SPF and DKIM records in your DNS entry. SPF records allow us to specify the authority to send mail from our domain to specific IP addresses. DKIM records is another way of proving the validity of an email by allowing the receiver to check a public key, or the mail server’s DNS TXT record, against the DKIM key included in every email message sent by your mail server.
+This section covers the insertion of SPF and DKIM records in your DNS entry. SPF records allow us to specify the authority to send mail from our domain to specific IP addresses. DKIM records are another way of proving the validity of an email by allowing the receiver to check a public key, or the mail server’s DNS TXT record, against the DKIM key included in every email message sent by your mail server.
 
 ### SPF
 
-1. Navigate to your DNS provider, either where you purchased your domain name or Linode if you’ve transferred your DNS, and enter the following bits of information in your subdomain area to activate SPF: (see screenshot in DKIM section below)
+1. Navigate to your DNS provider, either where you purchased your domain name or Linode if you’ve transferred your DNS, and enter the following bits of information in your subdomain area to activate SPF. If you are using Linode's DNS manager, you can leave the name field blank, but other DNS providers may require you to specifiy @ for the hostname.
 
-        hostname	 | ip address/url | record type | ttl
-        -----------  | -------------- | ----------  | ---
-                @	 | v=spf1 ip4:xx.xxx.xx.xxx -all | txt | 1800
+    ![SPF Record](/docs/assets/iredmail-spf.png)
 
-2. The “xxx” is, of course, your server’s IP address and the “-all” states that no other IP addresses may serve mail for the domain.
-<!-- Fix the wording above when you replace the table with an image. -->
+        hostname  | ip address/url                | record type | ttl
+        --------  | ----------------------------- | ----------- | ---
+               @  | v=spf1 ip4:12.34.56.78 -all   | txt         | 1800
 
-3. For more information, you can check out the [SPF website link][s] recommended by iRedMail.
+2.  For more information, you can check out the [SPF website link][s] recommended by iRedMail.
 
 ### DKIM
 
-1. In the same area of your DNS host records, add the following entry to enable DKIM: (see screenshot below)
+1. In the same area of your DNS host records, add the following entry to enable DKIM. The IP address/url entry following the “p=“ is your public DKIM key, which can be found in your “Details of this iRedMail installation” email about halfway down under the “DNS record for DKIM support” section. Copy everything BETWEEN the double quotes and place after the “p=“ portion of the dkim._domainkey DNS entry.
 
-        hostname | ip address/url | record type | ttl
-        -----------  | -------------- | ----------- | ---
-        dkim._domainkey | v=DKIM1; p=MIGFdfs… | txt | 1800
 
-2. The IP address/url entry following the “p=“ is your public DKIM key, which can be found in your “Details of this iRedMail installation” email about halfway down under the “DNS record for DKIM support” section. Copy everything BETWEEN the double quotes and place after the “p=“ portion of the dkim._domainkey DNS entry.
-<!-- Fix the wording above when you replace the table with an image. -->
-    ![dns spf entry](/docs/assets/dns-spf-entry.png)
+    ![DKIM Record](/docs/assets/iredmail-dkim.png)
+
+        hostname        | ip address/url      | record type | ttl
+        --------------  | ------------------- | ----------- | ---
+        dkim._domainkey | v=DKIM1; p=MIGFdfs… | txt         | 1800
+
 
 3. A good way to test your mail server’s DKIM is to enter the following command:
 
@@ -237,17 +236,17 @@ This section covers the insertion of SPF and DKIM records in your DNS entry. SPF
 
 4. For more information on DKIM records, you can check out the [DKIM website link][d] recommended by iRedMail.
 
-### rDNS 
+### rDNS
 
 To set your rDNS, check out the [Setting Reverse DNS][r] section of the DNS Manager guide. This is optional but gives additional credibility to a mail server for certain spam filters.
 
 ## Apache Authentication Fix for Cluebringer and AWStats Login
 
-Cluebringer (a.k.a. PolicyD v2) is a policy server utility for our mail transfer agent, Postfix. It provides a web-based interface ([example screenshot] [p]) where you can fine tune policies applied to Postfix. For more info, see the Policy D [documentation] [d].
+Cluebringer (a.k.a. PolicyD v2) is a policy server utility for our mail transfer agent, Postfix. It provides a web-based interface ([example] [p]) where you can fine tune policies applied to Postfix. For more info, see the Policy D [documentation] [d].
 
-AWStats quickly analyzes and displays log files/server activity via a few web-based (or command line) statistical graphs. In our case it will display the # of emails sent, the total size of the emails, sender, receiver, time (hourly/daily/monthly), and SMTP error codes. An example can be seen [here] [w]. For more info, see the AWStats [documentation] [e].
+AWStats quickly analyzes and displays log files/server activity via a few web-based (or command line) statistical graphs. Using the configuration outlined below, it will display the # of emails sent, the total size of the emails, sender and receiver, time (hourly/daily/monthly), and SMTP error codes. An example can be seen [here] [w]. For more info, see the AWStats [documentation] [e].
 
-**Due to "mod-auth-mysql" not working with Apache 2.4 (this module hasn't been updated in several years and various bug reports on the internet document this), the default installation doesn't allow us to utilize the module to log in to Cluebringer or AWStats. Below is the fix, which can also be found in [this] [f] iRedMail forum post.**
+**Due to "mod-auth-mysql" not working with Apache 2.4, the default installation cannot use the module to log in to Cluebringer or AWStats. Below is the fix, which can also be found in [this] [f] iRedMail forum post.**
 
 1. Install libaprutil1-dbd-mysql:
 
@@ -285,7 +284,7 @@ AWStats quickly analyzes and displays log files/server activity via a few web-ba
             Options ExecCGI
             AuthType Basic
             AuthName "Authorization Required"
-        
+
             ##############################
             # mod_auth_mysql (deprecated)#
             ##############################
@@ -302,14 +301,14 @@ AWStats quickly analyzes and displays log files/server activity via a few web-ba
             # AuthMySQL_Encryption_Types Crypt_MD5
             # Auth_MySQL_Authoritative On
             # #AuthMySQLUserCondition "isglobaladmin=1"
-        
+
             #################
             # mod_authn_dbd #
             #################
             # Password related.
             AuthBasicProvider dbd
             AuthDBDUserPWQuery "SELECT password FROM mailbox WHERE mailbox.username=%s"
-        
+
             Order allow,deny
             Allow from all
             Require valid-user
@@ -325,7 +324,7 @@ AWStats quickly analyzes and displays log files/server activity via a few web-ba
             DirectoryIndex index.php
             AuthType basic
             AuthName "Authorization Required"
-        
+
             ##############################
             # mod_auth_mysql (deprecated)#
             ##############################
@@ -342,14 +341,14 @@ AWStats quickly analyzes and displays log files/server activity via a few web-ba
             # AuthMySQL_Empty_Passwords off
             # AuthMySQL_Encryption_Types Crypt_MD5
             # Auth_MySQL_Authoritative On
-        
+
 		    #################
             # mod_authn_dbd #
             #################
             # Password related.
             AuthBasicProvider dbd
             AuthDBDUserPWQuery "SELECT password FROM mailbox WHERE mailbox.username=%s"
-        
+
             Order allow,deny
             Allow from all
             Require valid-user
@@ -363,9 +362,7 @@ AWStats quickly analyzes and displays log files/server activity via a few web-ba
 
 ## Greylisting Recommendation
 
-By default, cluebringer starts with the greylisting feature enabled. While the implementation of greylisting does protect a mail server from receiving spam, there are unintended consequences to its operation. This was tested by sending a few emails from a well-known "free" email account to my new mail server. Most of the "free" email SMTP services are provided by SEVERAL SMTP servers that upon receiving the 4XX reply code from your server, since the hostname and IP of the SMTP server isn't "known", does retransmit the email. However, usually, the retransmitted email is from either another host or from the same host but from another IP address. The greylisting feature of cluebringer either severely delayed, or completely denied, a few of the test emails. 
-
-For this reason, the author recommends turning this module off. Note, since being disabled, neither *delays* nor *denials* of email have been observed on the author's mail server. Additionally, the mail server has yet to receive any spam.
+Cluebringer starts with the greylisting feature enabled by default. While the implementation of greylisting does protect against unwanted spam messages, it can unintentionally affect legitimate messages. Using the default configuration can cause emails from free email services to be severely delayed or completely denied. For this reason, the author recommends turning this module off.
 
 1. Edit the cluebringer config file (/etc/cluebringer/cluebringer.conf) to disable the Greylisting module.
 
@@ -379,21 +376,10 @@ For this reason, the author recommends turning this module off. Note, since bein
 
 # Final Testing and Conclusion
 
-We’re almost finished. Of the many services available to test the mail server's operation and “spaminess”, we'll be using the Mail Tester and Port25 solution services.
+As a final test, you can utilize a service such as [Mail Tester][m] to ensure that your records have been configured correctly. If you have followed this guide precisely, you should receive a score of 10/10 on Mail Tester's site. If not, Mail Tester will provide you with a report indicating what portion of your configuration needs improvement.
 
  {: .note }
->While some DNS records update almost instantaneously, some records take awhile and you may experience a lower score on the following tests.
-
-## Mail Tester
-
-Point a web browser to [Mail Tester][m], copy the automatically generated email address, and send with your new mail server’s postmaster account. A simple “test” or “check” in both the subject and body should suffice. Wait 10-15 seconds, then head back to the webpage and click the “THEN CHECK YOUR SCORE” button. If you’ve followed this guide (to include SPF, DKIM, and rDNS), you should receive a score of 10/10. If not, the results will indicate what portion of your mail server needs improvement.
-
-![mail tester](/docs/assets/mail-tester.png)
-
-Remember, your DNS entries (SPF and DKIM) may take awhile to push through. If so, just wait a few hours and try the test again.
-
-## Port25 Solutions Email Verification
-The Port25 solution is much simpler. Compose an email to <mailto:check-auth@verifier.port25.com> (checks “mail_from” header) and <mailto:check-auth2@verifier.port25.com> (checks “from” header), add some random text to the subject and body, and send. A few minutes later you’ll receive the results in your inbox.
+>While some DNS records update almost instantaneously, updates can take up to 24 hours to propigate. You may receive a lower score on these tests if your records have not yet updated.
 
 ## Conclusion
 Familiarize yourself with the various files, configs, and settings listed in the iRedMail emails and website and start adding users to your mail server. Happy Mailing!
