@@ -376,7 +376,7 @@ Cluebringer starts with the greylisting feature enabled by default. While the im
 
 3.  Change the "1" to "0" to disable.
 
-4.  Restart cluebringer to complete the changes.
+4.  Restart Cluebringer to complete the changes.
 
 	    service postfix-cluebringer restart
 
