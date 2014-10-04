@@ -6,7 +6,7 @@ description: 'Our guide to securing your first Linode.'
 keywords: 'security,linode quickstart,getting started'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['securing-your-server/']
-modified: Thursday, September 12th, 2013
+modified: Saturday, October 4th, 2013
 modified_by:
   name: Linode
 published: 'Friday, February 17th, 2012'
