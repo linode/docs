@@ -2,7 +2,7 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Installing and Securing iRedMail on your Linode.'
+description: 'Installing iRedMail on your Linode.'
 keywords: 'email,mail,iredmail'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['installing-iredmail/']
@@ -13,7 +13,7 @@ modified: Monday, October 6, 2014
 modified_by:
   name: James Stewart
 published: 'Monday, October 6, 2014'
-title: 'Installing and Securing iRedMail on your Linode'
+title: 'Installing iRedMail on your Linode'
 ---
 
 *This is a Linode Community guide. [Write for us](/docs/contribute) and earn $100 per published guide.*
