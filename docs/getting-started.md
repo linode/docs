@@ -192,7 +192,7 @@ If it exists, edit the file `/etc/default/dhcpcd` to comment out the `SET_HOSTNA
   #SET_HOSTNAME='yes'
   ~~~
 
-### CentOS / Fedora version 7 and above
+### CentOS 7 / Fedora version 18 and above
 
 
 Enter the following command to set the hostname, replacing `plato` with the hostname of your choice:
@@ -200,7 +200,7 @@ Enter the following command to set the hostname, replacing `plato` with the host
     hostnamectl set-hostname plato
 
 
-### CentOS / Fedora version 6 and below
+### CentOS 6 / Fedora version 17 and below
 
 Enter the following commands to set the hostname, replacing `plato` with the hostname of your choice:
 
