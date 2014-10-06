@@ -6,10 +6,10 @@ description: 'Securely copying files to and from your Linode with FileZilla, a f
 keywords: 'filezilla,ftp,linux scp,sftp,linux sftp program,linux ftp'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['networking/file-transfer/transfer-files-filezilla/']
-modified: Monday, August 22nd, 2011
+modified: Monday, October 6th, 2014
 modified_by:
   name: James Stewart
-published: 'Friday, November 13th, 2009'
+published: 'Monday, October 6th, 2014'
 title: 'Transfer Files with FileZilla'
 ---
 
