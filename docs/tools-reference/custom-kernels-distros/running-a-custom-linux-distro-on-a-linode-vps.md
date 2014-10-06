@@ -70,9 +70,9 @@ Here's how to get started:
 15. Click the CD icon, and then select **Choose a virtual CD/DVD disk file**.
 16. Select your Linux distribution install image, and then click **Open**.
 
- {: .note }
->
-> If you haven't already downloaded the image of the Linux distribution to your desktop computer, do that now.
+     {: .note }
+    >
+    > If you haven't already downloaded the image of the Linux distribution to your desktop computer, do that now.
 
 17. Click **Network**. The window shown below appears.
 
