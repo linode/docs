@@ -1,16 +1,16 @@
 ---
+deprecated: false
 author:
   name: Linode
   email: docs@linode.com
-description: 'Setting up an email and groupware server using Citadel on an Ubuntu 14.04 LTS (Precise Pangolin) Linode VPS.'
+description: 'Setting up an email and groupware server using Citadel on an Ubuntu 14.04 LTS (Truly Tahr) Linode VPS.'
 keywords: 'citadel,citadel ubuntu 14.04,ubuntu 14.04 mail server,groupware,email server'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['email/citadel/ubuntu-12-04-precise-pangolin/']
-modified: Friday, August 15, 2014
+modified: Saturday, September 20, 2014
 modified_by:
-  name: Alex Fornuto
+  name: Dave Russell Jr
 published: 'Monday, November 5th, 2012'
-title: 'Email with Citadel on Ubuntu 14.04 LTS (Precise Pangolin)'
+title: 'Email with Citadel on Ubuntu 14.04 LTS (Truly Tahr)'
 ---
 
 Citadel is a groupware suite that provides system administrators with an easy method to set up and manage email, calendars, mailing lists and other collaboration tools. It also features an automated installation process and versatile deployment options that allow the application to be scaled across multiple servers.
@@ -67,8 +67,7 @@ If you need to reconfigure these options later, you can use the following comman
 
     dpkg-reconfigure citadel-server
 
-To edit the ports later, you will need to edit the file ``/etc/default/webcit``.
-
+To edit the ports later, you will need to edit the file `/etc/default/webcit`.
 
 Enabling Spamassassin Filtering
 -------------------------------
@@ -91,7 +90,7 @@ You'll need to edit the SpamAssassin configuration file to enable spamd:
     ~~~
 Start the spamassassin service as follows:
 
-    /etc/init.d/spamassassin start
+    service spamassassin start
 
 Please note that you'll finish enabling SpamAssassin support within Citadel later in the "Notes" section.
 
@@ -107,7 +106,7 @@ Customize the login banner for your Citadel server by editing the relevant file:
     ~~~
 Use the following startup script to initialize Citadel.
 
-    /etc/init.d/citadel restart 
+    service citadel restart 
 
 Visit the web interface in your Web browser. Using our preceding example, the Web address to visit would look like:
 
@@ -115,7 +114,7 @@ Visit the web interface in your Web browser. Using our preceding example, the We
 
 The SSL certificate for your Citadel web interface will be self-signed; accept it to continue. If you don't get a login page in your web browser, you may need to start "webcit" with the following command:
 
-    service webcit start 
+    webcit -d 
 
 Notes for Running Citadel
 -------------------------
@@ -133,7 +132,7 @@ If you lose the password to your administrator account, re-run the setup as foll
 
 Specify a different name for the admin user and restart Citadel as follows:
 
-    /etc/init.d/citadel restart
+    service citadel restart
 
 You should be able to log in as the new admin user with no password. You may then reset the password for your original administrator account. After this is done, log back in as the original administrator and delete the temporary admin account.
 
@@ -148,6 +147,5 @@ You may wish to consult the following resources for additional information on th
 - [Spamassassin Home Page](http://spamassassin.apache.org/)
 - [Spamassassin Wiki](http://wiki.apache.org/spamassassin/)
 - [Spamassassin Documentation](http://spamassassin.apache.org/doc.html)
-
 
 

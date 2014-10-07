@@ -52,7 +52,7 @@ Installing Apache is easy, but if you leave it running with the default settings
 
         sudo nano /etc/apache2/apache2.conf
 
-3.  Make sure that the following values are set.  
+3.  Make sure that the following values are set.
 
  {: .note }
 >
@@ -62,7 +62,7 @@ Installing Apache is easy, but if you leave it running with the default settings
 /etc/apache2/apache2.conf
 :	~~~ apache
 	KeepAlive Off
-   
+
 	...
 	<IfModule mpm_prefork_module>
 	StartServers 2
@@ -100,7 +100,7 @@ Now that Apache is optimized for performance, it's time to starting hosting one 
 
         sudo mkdir example.com
 
-4.  Create a set of folders inside `public` to store your website's files, logs, and backups. Enter the following command, replacing `example.com` with your domain name:
+4.  Create a set of folders inside the folder you've just created to store your website's files, logs, and backups. Enter the following command, replacing `example.com` with your domain name:
 
         sudo mkdir -p example.com/public_html
 		sudo mkdir -p example.com/log
@@ -189,7 +189,7 @@ MySQL consumes a lot of memory when using the default configuration. To set reso
         sudo nano /etc/mysql/my.cnf
 
 2.  Make sure that the following values are set:
-    
+
 	{: .file-excerpt}
     /etc/mysql/my.cnf
     :   ~~~ ini
@@ -314,7 +314,7 @@ You've successfully installed Apache, MySQL, and PHP. Now it's time to upload a 
 
 1.  If you haven't done so already, download and install an FTP client on your desktop computer. We recommend using [Filezilla](/docs/tools-reference/file-transfer/transfer-files-with-filezilla-on-ubuntu-9-10-desktop) on Linux systems, [Cyberduck](/docs/networking/file-transfer/transfer-files-cyberduck) on Mac OS X, and [WinSCP](/docs/networking/file-transfer/transfer-files-winscp) on Windows.
 2.  Follow the instructions in the guides listed above to connect to your Linode.
-3.  Upload your website's files to the `~/public/example.com/public` directory. Replace `example.com` with your domain name.
+3.  Upload your website's files to the `/var/www/example.com` directory. Replace `example.com` with your domain name.
 
      {: .note }
     >
@@ -333,7 +333,7 @@ It's a good idea to test your website(s) before you add the DNS records. This is
 
 3.  Test the name-based virtual hosts by entering the domain names in the address bar of the web browser on your desktop computer. Your websites should load in the web browser.
 
-    {: .caution} 
+    {: .caution}
     >Remember to remove the entries for the name-based virtual hosts from your `hosts` file when you're ready to test the DNS records.
 
 Adding DNS Records
