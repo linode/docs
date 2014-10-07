@@ -78,7 +78,7 @@ Once you have satisfied all dependencies, you will need to download the Webmin s
 Debian / Ubuntu:
 
     cd /tmp
-    wget http://prdownloads.sourceforge.net/webadmin/webmin_1.570_all.deb
+    wget http://www.webmin.com/download/deb/webmin-current.deb
     dpkg -i webmin_1.570_all.deb
 
 CentOS / Fedora:
