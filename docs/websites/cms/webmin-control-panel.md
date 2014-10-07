@@ -64,7 +64,7 @@ You will now need to install a few other packages in order for Webmin to work pr
 
 Debian / Ubuntu:
 
-    apt-get install perl libnet-ssleay-perl openssl libauthen-pam-perl libio-pty-perl libmd5-perl
+    apt-get install perl libnet-ssleay-perl openssl libauthen-pam-perl libio-pty-perl apt-show-versions libapt-pkg-perl
 
 CentOS / Fedora:
 
@@ -79,7 +79,7 @@ Debian / Ubuntu:
 
     cd /tmp
     wget http://www.webmin.com/download/deb/webmin-current.deb
-    dpkg -i webmin_1.570_all.deb
+    dpkg -i webmin-current.deb
 
 CentOS / Fedora:
 
