@@ -8,8 +8,8 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-applications/control-panels/webmin/installing-webmin/']
 modified: Thursday, November 17th, 2011
 modified_by:
-  name: Chris Ciufo
-published: 'Thursday, November 10th, 2011'
+  name: Alex Fornuto
+published: 'Wednesday, October 8th, 2014'
 title: Webmin Control Panel
 ---
 
@@ -41,13 +41,6 @@ Before you begin installing and configuring the components described in this gui
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-## Installing Required Packages
-
-You will need to install a few other packages in order for Webmin to work properly. Issue the following command to install all prerequisites:
-
-    apt-get install perl libnet-ssleay-perl openssl libauthen-pam-perl libio-pty-perl apt-show-versions libapt-pkg-perl
-
-
 # Installing Webmin
 
 Once you have satisfied all dependencies, you will need to download the Webmin package to your Linode.
@@ -72,7 +65,7 @@ Once you have satisfied all dependencies, you will need to download the Webmin p
         apt-get update
 
 3. Install Webmin:
-   
+
        apt-get install webmin
 
 
