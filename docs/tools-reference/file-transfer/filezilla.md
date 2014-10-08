@@ -53,7 +53,12 @@ Using FileZilla
 Connecting Without a Password (SSH Keys)
 ----------------------------------------
 
-If you have followed our [Securing Your Server](docs/security/securing-your-server) guide, you won't be able to connect to your Linode just using a password. If you are using Linux or OSX, the keys that you generated while following that guide will be automatically used for authentication.  However, if you are using Windows, you'll need to follow a few additional steps. The instructions below assume that you have already completed the guide for [generating your SSH key with Putty](https://www.linode.com/docs/security/use-public-key-authentication-with-ssh#windows-operating-system).
+If you have followed our [Securing Your Server](docs/security/securing-your-server) guide, you won't be able to connect to your Linode just using a password. If you are using Linux or OSX, the keys that you generated while following that guide will be automatically used for authentication.
+
+{: .note }
+>If you are using OSX, the passphrase for your key will need to be stored in your keychain in order to successfully connect via FileZilla. FileZilla will not be able to use a key that was generated without a passphrase to connect to your Linode.
+
+If you are using Windows, you'll need to follow a few additional steps to enable key based authentication. The instructions below assume that you have already completed the guide for [generating your SSH key with Putty](https://www.linode.com/docs/security/use-public-key-authentication-with-ssh#windows-operating-system).
 
 1.  Install Pageant from the [Putty site](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
 
