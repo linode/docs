@@ -114,10 +114,10 @@ The virtual machine is now ready to be transferred to your Linode.
 Migrating the Virtual Machine to Your Linode
 --------------------------------------------
 
-You've just completed the steps to create a virtual machine and prepared it to be transferred to your Linode.  The steps below will walk you through configuring a Linode for your custom image. In this how-to, we will start with a new Linode. However, the information provided can be applied to existing Linodes by adding new disk images.
+Above, you created a virtual machine and prepared it for transfer to your Linode.  The steps below will walk you through configuring a Linode for your custom image. In this how-to, we will start with a new Linode. However, the information provided can be applied to existing Linodes by adding new disk images.
 
 ###Setting up your Configuration Profile
-We will start by configuring the Linode to boot your custom image.
+Start with the Linode Manager and the configuration of a Linode to boot your custom image.
 
 1. Log in to the Linode Manager.
 
@@ -143,10 +143,10 @@ We will start by configuring the Linode to boot your custom image.
 
 11. Next, select the **Rescue** sub-tab, which is located on the same row as the **Dashboard** tab. Select **Reboot into Rescue Mode**. Monitor the **Host Job Queue** progress bar for the system shutdown and the system boot. It should take under a minute.
 
-12. Once your Linode has booted into Finnix Rescue Mode, you should be able to connect to it via the [Lish Console](https://www.linode.com/docs/networking/remote-access#console-access)
+12. Once your Linode has booted into Finnix Rescue Mode, you should be able to connect to it via the [Lish Console](https://www.linode.com/docs/networking/remote-access#console-access).
 
 ###Starting SSH in Finnix
-In order to transfer the disk images from your virtual machine to your Linode, you will need to start SSH on the Linode itself.
+In order to transfer the disk images from the virtual machine to the Linode, you will need to start SSH on the Linode itself.
 
 1.  Set the password for Finnix's root user by issuing the following command:
 
@@ -203,6 +203,6 @@ The steps below will walk you through transferring your new disk image from your
         ~~~~
 6.  Exit and save the file by holding control and pressing c, type yes to save your changes, and press enter to exit.
 
-Your disk image has been transferred to your Linode. You should now be able to boot your Linode normally and log in [via SSH](https://www.linode.com/docs/getting-started#logging-in-for-the-first-time).
+The disk image has been transferred to your Linode. You should now be able to boot your Linode normally and log in [via SSH](https://www.linode.com/docs/getting-started#logging-in-for-the-first-time). Remember to use the username and password created during step 23 under the "Creating the Virtual Machine" heading. Also, check your network configuration and if necessary refer to the [Linux Static IP Configuration](https://www.linode.com/docs/networking/linux-static-ip-configuration/) guide. 
 
-Congratulations, you have successfully transferred the disk image from your local virtual machine to your Linode.
+Congratulations, you have successfully transferred the custom distro disk image from your local virtual machine to your Linode.
