@@ -84,6 +84,9 @@ Here's how to get started:
 20. You should see the *Oracle VM VirtualBox Manager* window again. Click **Start** to turn on the virtual machine.
 21. Follow the distribution's installation instructions. When prompted to partition the disk, create a single partition for `/` and a small partition for `swap`, as shown below.
 
+    {: .note }
+    >You will need to ensure that your distribution's installer configures your partitions without LVM (Logical Volume Management), as disk images created with LVM cannot be transferred to your Linode.
+
     [![Partitioning the drive.](/docs/assets/1179-vbvm11.png)](/docs/assets/1179-vbvm11.png)
 
 22. Select the packages you'd like installed on your server, such as OpenSSH server for easy remote administration, as shown below.
@@ -203,6 +206,6 @@ The steps below will walk you through transferring your new disk image from your
         ~~~~
 6.  Exit and save the file by holding control and pressing c, type yes to save your changes, and press enter to exit.
 
-The disk image has been transferred to your Linode. You should now be able to boot your Linode normally and log in [via SSH](https://www.linode.com/docs/getting-started#logging-in-for-the-first-time). Remember to use the username and password created during step 23 under the "Creating the Virtual Machine" heading. Also, check your network configuration and if necessary refer to the [Linux Static IP Configuration](https://www.linode.com/docs/networking/linux-static-ip-configuration/) guide. 
+The disk image has been transferred to your Linode. You should now be able to boot your Linode normally and log in [via SSH](https://www.linode.com/docs/getting-started#logging-in-for-the-first-time). Remember to use the username and password created during step 23 under the "Creating the Virtual Machine" heading. Also, check your network configuration and if necessary refer to the [Linux Static IP Configuration](https://www.linode.com/docs/networking/linux-static-ip-configuration/) guide.
 
 Congratulations, you have successfully transferred the custom distro disk image from your local virtual machine to your Linode.
