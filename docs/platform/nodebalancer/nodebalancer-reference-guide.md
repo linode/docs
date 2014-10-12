@@ -124,7 +124,7 @@ Changes to a Node's Mode are applied within 60 seconds.
 
 -   **Accept** - allows the node to accept incoming connections so long as it is healthy.
 -   **Reject** - remove the node from rotation; discontinue health checks on this backend. Existing connections remain active.
--   **Drain** - will only recieve connections from clients whose session stickiness points to this node.
+-   **Drain** - will only receive connections from clients whose session stickiness points to this node.
 
 The use-case for Drain would be to set a node to Drain a day or so in advance of taking the node down. That way existing sessions would likely have ended.
 

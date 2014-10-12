@@ -26,7 +26,7 @@ If you followed our [LAMP guide](/docs/lamp-guides/), your web accessible `Docum
 
     cd /srv/www/example.com/
 
-Use `wget` to download the latest package. You may need to intall the `wget` program first by issuing the command `apt-get install wget` under Debian/Ubuntu, or `yum install wget` under CentOS/Fedora.
+Use `wget` to download the latest package. You may need to install the `wget` program first by issuing the command `apt-get install wget` under Debian/Ubuntu, or `yum install wget` under CentOS/Fedora.
 
     wget http://download.wikimedia.org/mediawiki/1.17/mediawiki-1.17.0.tar.gz
 

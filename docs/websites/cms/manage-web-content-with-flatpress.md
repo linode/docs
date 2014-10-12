@@ -14,7 +14,7 @@ title: Manage Web Content with FlatPress
 deprecated: true
 ---
 
-FlatPress is a web application for managing and publishing blogs. Modeled on other popular content management systems for blogging, FlatPress uses a file-based system for storing content and does not require any kind of database system. FlatPress provides advanced features, and depending on the specific needs of your project, FlatPress may support higher load. Additionally, FlatPress provides a fully featured template engine and plugin framework for user-generated plug-ins.
+FlatPress is a web application for managing and publishing blogs. Modelled on other popular content management systems for blogging, FlatPress uses a file-based system for storing content and does not require any kind of database system. FlatPress provides advanced features, and depending on the specific needs of your project, FlatPress may support higher load. Additionally, FlatPress provides a fully featured template engine and plugin framework for user-generated plug-ins.
 
 This guide assumes that you have completed the appropriate [Apache Web server](/docs/web-servers/apache/installation/) installation guide for your operating system but you may choose an alternate web server such as [nginx](/docs/web-servers/nginx/php-fastcgi/) to provide access to your FlatPress powered site.
 

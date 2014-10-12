@@ -59,7 +59,7 @@ Modify these `interface:` directives to conform with the actual addresses assign
 
 ### Control Access to your Unbound Instance
 
-By default, Unbound will only listen for and respond to requests for DNS queries on the localhost interface (i.e. from 127.0.0.1). Unbound must be configured to listen for requests on a given interface, as above, **and** be configured to allow requests from a given IP address before it can successfully provide DNS services. Insert lines modeled on the following example into the `unbound.conf` file, following the `server:` directive.
+By default, Unbound will only listen for and respond to requests for DNS queries on the localhost interface (i.e. from 127.0.0.1). Unbound must be configured to listen for requests on a given interface, as above, **and** be configured to allow requests from a given IP address before it can successfully provide DNS services. Insert lines modelled on the following example into the `unbound.conf` file, following the `server:` directive.
 
 {: .file-excerpt }
 /etc/unbound/unbound.conf

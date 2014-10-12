@@ -45,7 +45,7 @@ You will be asked for several configuration values. Enter values appropriate for
     Country Name (2 letter code) [GB]:US
     State or Province Name (full name) [Berkshire]:New Jersey
     Locality Name (eg, city) [Newbury]:Absecon
-    Organization Name (eg, company) [My Comany Ltd]:SoftwareDev, LLC
+    Organization Name (eg, company) [My Company Ltd]:SoftwareDev, LLC
     Organizational Unit Name (eg, section) []:Web Services
     Common Name (eg, YOUR name) []:archimedes.mydomain.com
     Email Address []:support@mydomain.com
@@ -108,7 +108,7 @@ Here are the values we entered for our example certificate. Note that you can ig
     Country Name (2 letter code) [GB]:US
     State or Province Name (full name) [Berkshire]:New Jersey
     Locality Name (eg, city) [Newbury]:Absecon
-    Organization Name (eg, company) [My Comany Ltd]:SoftwareDev, LLC
+    Organization Name (eg, company) [My Company Ltd]:SoftwareDev, LLC
     Organizational Unit Name (eg, section) []:Web Services
     Common Name (eg, YOUR name) []:archimedes.mydomain.com
     Email Address []:support@mydomain.com

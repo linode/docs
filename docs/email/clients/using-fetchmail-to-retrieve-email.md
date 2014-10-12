@@ -111,7 +111,7 @@ In the above example, fetchmail will poll mail sources for new mail every 300 se
 Global Settings
 ---------------
 
-In addition to the configuration options described above, fetchmail provides a number of additional "global" configuration options. These allow you to configure the behavior of fetchmail with regards to all of the servers that it polls. These options are included at the begining of the file and begin with the word `set`. Here is an example:
+In addition to the configuration options described above, fetchmail provides a number of additional "global" configuration options. These allow you to configure the behavior of fetchmail with regards to all of the servers that it polls. These options are included at the begginning of the file and begin with the word `set`. Here is an example:
 
 {: .file-excerpt }
 .fetchmailrc
@@ -156,11 +156,11 @@ The `set postmaster` option allows you to configure where otherwise undeliverabl
 	     username "gigs" password "p@rty";
 ~~~
 
-Assuming that that there are system user accounts for `squire` and `fore`, mail downloaded from these accounts will be deposited in `/var/mail/squire` and `/var/mail/fore` respectively. However, if there is no system account for a `gigs` user this mail would be deposited in the `squire` user's mail spool (i.e. `/var/mail/squire`) because the `squire` user is set as the postmaster for this fetchmail session.
+Assuming that there are system user accounts for `squire` and `fore`, mail downloaded from these accounts will be deposited in `/var/mail/squire` and `/var/mail/fore` respectively. However, if there is no system account for a `gigs` user this mail would be deposited in the `squire` user's mail spool (i.e. `/var/mail/squire`) because the `squire` user is set as the postmaster for this fetchmail session.
 
 ### Logging
 
-When invoked from the command line, `fetchmail` generates output regarding its activities to standard out. If this is undesireable behavior you can use the logging directives to specify an alternate record keeping behavior. Let us consider the following directives:
+When invoked from the command line, `fetchmail` generates output regarding its activities to standard out. If this is undesirable behavior you can use the logging directives to specify an alternate record keeping behavior. Let us consider the following directives:
 
 {: .file-excerpt }
 .fetchmailrc
