@@ -243,7 +243,7 @@ If you have an existing website, you may want to import an existing database in 
 1.  Upload the database file to your Linode. See the instructions in [Uploading Files](#uploading-files).
 2.  Import the database by entering the following command. Replace `username` with your MySQL username, `password` with your MySQL password, and `database_name` with your own:
 
-        mysql -u username -p password database_name < FILE.sql
+        mysql -u username -ppassword database_name < FILE.sql
 
 Your database will be imported in to MySQL.
 
