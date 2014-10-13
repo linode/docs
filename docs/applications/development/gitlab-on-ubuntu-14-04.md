@@ -6,6 +6,9 @@ description: Hosting your own Git repositories with GitLab Community Edition
 keywords: 'version control,git,gitlab'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['gitlab-with-ubuntu/']
+contributor:
+    name: Nashruddin Amin
+    link: https://twitter.com/bsd_noobz
 modified: Thursday, September 4th, 2014
 modified_by:
   name: Alex Fornuto
@@ -13,7 +16,7 @@ published: 'Thursday, September 4th, 2014'
 title: Manage Git Repositories with GitLab on Ubuntu 14.04 (Trusty)
 ---
 
-This is a Linode Community guide by author **Nashruddin Amin**[<i class="fa fa-twitter"></i>](https://twitter.com/bsd_noobz). [Write for us](/docs/contribute) and earn $100 per published guide.
+*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $100 per published guide.*
 
 GitLab is a free git repository management application based on Ruby on Rails. It is an interesting alternative if you want to host your own git repositories, since third-party hosting is not always the best option when writing private or closed source software.
 
@@ -51,7 +54,7 @@ In this section you will install the development tools and the required packages
 
 1. Install the required packages to compile Ruby and native extensions to Ruby gems:
 
-        sudo apt-get install build-essential zlib1g-dev libyaml-dev libssl-dev libgdbm-dev libreadline-dev libncurses5-dev libffi-dev curl openssh-server redis-server checkinstall libxml2-dev libxslt-dev libcurl4-openssl-dev libicu-dev logrotate
+        sudo apt-get install build-essential cmake zlib1g-dev libyaml-dev libssl-dev libgdbm-dev libreadline-dev libncurses5-dev libffi-dev curl openssh-server redis-server checkinstall libxml2-dev libxslt-dev libcurl4-openssl-dev libicu-dev logrotate
 
 2. Install Git:
     

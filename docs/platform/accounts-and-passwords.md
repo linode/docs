@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-description: Our guide to managing accounts and passwords
+description: Our guide to managing accounts and passwords.
 keywords: 'accounts,passwords,linode manager,manager'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['accounts-and-passwords/']

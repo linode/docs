@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: scampbell@linode.com
-description: Our guide to prepaid billing and payments
+description: Our guide to prepaid billing and payments.
 keywords: 'billing,payments'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['billing-and-payments/']
@@ -27,6 +27,7 @@ All services are billed automatically at the end of the month. If you used a ser
 |:------------|:------------|:--------|:--------------------|:---------------
 | Linode 1GB  | $0.015/hr   | $10/mo  | $0.004/hr           | $2.50/mo
 | Linode 2GB  | $0.03/hr    | $20/mo  | $0.008/hr           | $5/mo
+| Linode 4GB  | $0.06/hr    | $40/mo  | $0.016/hr           | $10/mo
 | Linode 8GB  | $0.12/hr    | $80/mo  | $0.03/hr            | $20/mo
 | Linode 16GB | $0.24/hr    | $160/mo | $0.06/hr            | $40/mo
 | Linode 32Gb | $0.48/hr    | $320/mo | $0.12/hr            | $80/mo

@@ -6,6 +6,8 @@ description: 'Learn how to use Postfix to send mail through an external SMTP ser
 keywords: 'Postfix, Debian 7, SMTP, Email, Mail'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 location: ['email/postfix/postfix-smtp-debian7/']
+contributor:
+    name: Santiago Ti
 modified: Friday, May 30th, 2014
 modified_by:
   name: Linode
@@ -13,7 +15,7 @@ published: 'Friday, May 30th, 2014'
 title: Configure Postfix to Send Mail Using an External SMTP Server
 ---
 
-This is a Linode Community guide by author **Santiago Ti**. [Write for us](/docs/contribute) and earn \$100 per published guide.
+*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $100 per published guide.*
 
 There are many reasons why you would want to configure Postfix to send email using an external SMTP provider such as Google Apps (Gmail), Mandrill, SendGrid, Amazon SES, or any other SMTP server. One reason is to avoid getting your mail flagged as spam if your current server's IP has been added to a spam list.
 

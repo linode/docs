@@ -2,10 +2,12 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: Basic NFS Configuration on Debian 7
+description: Basic NFS Configuration on Debian 7.
 keywords: 'NFS,Debian,network,file,system,wheezy'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['networking/file-transfer/basic-nfs-debian/']
+contributor:
+    
 modified: Thursday, February 27th, 2014
 modified_by:
   name: Linode
@@ -13,7 +15,7 @@ published: 'Thursday, February 27th, 2014'
 title: Basic NFS Configuration on Debian 7
 ---
 
-This is a Linode Community guide by author **Juan Traverso**. [Write for us](/docs/contribute) and earn \$100 per published guide.
+*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $100 per published guide.*
 
 Network File System (**NFS**) is a file system that allows computer users to access files over a network in much the same way they can access files in local storage. This is useful for sharing files across several Linodes, or other computers on the Internet. For example, you might want to share the home directories for your users, or system configuration files, over NFS.
 

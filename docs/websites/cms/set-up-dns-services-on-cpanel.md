@@ -22,7 +22,7 @@ In your root WHM, under the Service Configuration section, click on "Nameserver 
 
 [![cPanel Nameserver selection screen.](/docs/assets/829-NSSelect.png)](/docs/assets/829-NSSelect.png)
 
-You can choose from BIND or NSD; the advantages and disadvantages for each are displayed. If you are unfamiliar with either of them, BIND will be the easiest to work with.
+You can choose from BIND, MyDNS or NSD; the advantages and disadvantages for each are displayed. If you are unfamiliar with either of them, BIND will be the easiest to work with.
 
 Nameserver Records
 ------------------
@@ -40,7 +40,7 @@ Just make sure you use your own Linode's IP address. You can add more than two n
 Using Linode's DNS Manager as a Slave
 -------------------------------------
 
-When using your BIND install on cPanel as your master nameserver and the Linode DNS Manager as a slave, you will want to set all of the nameservers at your registrar. You should have a list like this:
+When using your BIND install on cPanel as your master nameserver and the Linode DNS Servers as a slave, you will want to set all of the nameservers at your registrar. You should have a list like this:
 
 -   `ns1.mydomain.com`
 -   `ns2.mydomain.com`
@@ -50,18 +50,33 @@ When using your BIND install on cPanel as your master nameserver and the Linode 
 -   `ns4.linode.com`
 -   `ns5.linode.com`
 
+The DNS changes can take up to 48 hours to propagate.
+
 To get your cPanel Linode ready as your master DNS server, you'll need to make a few additions/edits to your `/etc/named.conf` file.
 
-You'll first want to find this line:
+The transfer of DNS records from your Master DNS server to the Linode DNS servers is done through AXFR queries. By default these are not allowed.
 
+First open the `/etc/named.conf` file in your text editor and search for the following line:
+
+{: .file-excerpt }
+/etc/named.conf
+:   ~~~
     recursion no; 
+    ~~~
 
-And change it to:
+You will need to change it to:
 
+{: .file-excerpt }
+/etc/named.conf
+:   ~~~
     recursion yes;
+    ~~~
 
 After you make that edit, add these two sections under your recursion line:
 
+{: .file-excerpt }
+/etc/named.conf
+:   ~~~
     allow-recursion {
          69.164.199.240;
          69.164.199.241;
@@ -83,8 +98,23 @@ After you make that edit, add these two sections under your recursion line:
          207.192.70.10;
          109.74.194.10;
      };
+    ~~~
 
-After your updates are complete, save and close the `named.conf` file. You'll then want to begin adding your domains to the Linode DNS Manager as slave zones.
+After your updates are complete, save and close the `named.conf` file. 
+
+Check that the configuration file is usable by issuing the command : 
+
+    named-checkconf /etc/named.conf
+
+If everything was done correctly, you should see no output. No output means everything is OK. If you get any errors, open the file and fix the reported issue. The errors are self explanatory and point to the exact issue.
+
+Once the check is OK, the BIND service will need to be restarted in order for the changes to be picked up.
+
+On the Left side in WHM under "Restart Services" Click DNS Server (BIND/NSD/My).
+
+Click Yes to restart the service. Allow a few minutes for the service to restart. 
+
+You'll then want to begin adding your domains to the Linode DNS Manager as slave zones.
 
 1.  Log in to the Linode Manager and click on the DNS Manager tab.
 2.  At the bottom, click on the "Add a domain zone" link.
@@ -95,8 +125,7 @@ After your updates are complete, save and close the `named.conf` file. You'll th
 
 5.  Click the "Add a Slave Zone" button.
 
-    {:.note}
-    >
+    {: .note }
     > Once you save your slave zone, you'll see a new text field titled "Domain Transfers". You can leave this empty.
 
 More Information
@@ -106,11 +135,6 @@ You may wish to consult the following resources for additional information on th
 
 - [cPanel Home Page](http://cpanel.net)
 - [cPanel Support](http://cpanel.net/support.html)
-- 
+- [DNS zone transfer](http://en.wikipedia.org/wiki/DNS_zone_transfer)
 
-6. Restart Services
-
-On the right side in WHM under "restart services" Click DNS Server (BIND/NSD/My).
-
-Click Yes to restart the service. Allow a few minutes for the service to restart. DNS can take 24-48 hours to propagate once these changes have been made.
 

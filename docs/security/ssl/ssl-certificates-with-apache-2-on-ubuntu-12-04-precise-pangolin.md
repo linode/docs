@@ -9,11 +9,14 @@ alias: ['web-servers/apache/ssl-guides/ubuntu-12-04-precise-pangolin/']
 modified: Wednesday, January 29th, 2014
 modified_by:
   name: Alex Fornuto
-published: 'Monday, October 15th, 2012'
+published: 'Monday, September 8th, 2014'
 title: 'SSL Certificates with Apache 2 on Ubuntu 12.04 (Precise Pangolin)'
 ---
 
-This guide will assist you with enabling SSL for websites served under the Apache web server. It is assumed that you've completed the steps detailed in our [getting started guide](/docs/getting-started/), and that you've successfully set up Apache for serving virtual hosts as outlined in our [Apache 2 on Ubuntu 12.04 LTS (Precise Pangolin) guide](/docs/web-servers/apache/installation/ubuntu-12.04-precise-pangolin). These steps should be performed via an SSH session to your Linode as the root user.
+This guide will assist you with enabling SSL for websites served under the Apache web server. It is assumed that you've completed the steps detailed in our [Getting Started guide](/docs/getting-started/), and that you've successfully set up Apache for serving virtual hosts as outlined in our [Apache 2 on Ubuntu 12.04 guide](/docs/websites/apache/apache-2-web-server-on-ubuntu-12-04-lts-precise-pangolin).
+
+{: .note}
+>The steps required in this guide require root privileges. Be sure to run the steps below as ``root`` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
 Use a Self-Signed SSL Certificate with Apache
 ---------------------------------------------
@@ -26,7 +29,7 @@ At the shell prompt, issue the following commands to enable SSL for Apache and g
 
     a2enmod ssl
     mkdir /etc/apache2/ssl
-    openssl req -new -x509 -days 365 -nodes -out /etc/apache2/ssl/apache.pem -keyout /etc/apache2/ssl/apache.key
+    openssl req -new -x509 -sha256 -days 365 -nodes -out /etc/apache2/ssl/apache.pem -keyout /etc/apache2/ssl/apache.key
 
 You will be asked for several configuration values. Enter values appropriate for your organization and server, as shown here. This example will create a certificate valid for 365 days; you may wish to increase this value. We've specified the FQDN (fully qualified domain name) of the VPS for the "Common Name" entry, as this certificate will be used for generic SSL service.
 
