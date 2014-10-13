@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Securely copying files to and from your Linode with FileZilla, a free and open source file transfer client for Linux, OSX, and Windows systems.'
+description: 'Securely copying files to and from your Linode with FileZilla, a free and open source file transfer client for Linux, OS X, and Windows systems.'
 keywords: 'filezilla,ftp,linux scp,sftp,linux sftp program,linux ftp'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['networking/file-transfer/transfer-files-filezilla/']
@@ -22,7 +22,7 @@ Prior to following this guide, you will need to ensure that the following steps 
 
 1.  Created a user as per the instructions in our [securing your server](docs/security/securing-your-server/) guide.
 
-2.  Ensure that you can connect to your Linode [via SSH](docs/getting-started#connecting-to-your-linode)
+2.  Ensure that you can connect to your Linode [via SSH](docs/getting-started#connecting-to-your-linode).
 
 {: .note }
 >If you wish, you may use the `root` account on your Linode to perform file transfers, although you may need to change [file ownership and permissions](/docs/using-linux/users-and-groups) on the server after doing so.
@@ -30,27 +30,27 @@ Prior to following this guide, you will need to ensure that the following steps 
 Installing FileZilla
 --------------------
 
-Windows and OSX users can download FileZilla [here](https://filezilla-project.org).
+Windows and OS X users can download FileZilla [here](https://filezilla-project.org).
 
  {: .note }
->Filezilla downloads for Windows and OSX are currently directed to SourceForge, and are often bundled with added offers which may modify your search preferences or install unwanted browser toolbars.  You can decline these offers at the beginning of the installation process, and you will still be able to install FileZilla even after declining the offers.
+>Filezilla downloads for Windows and OS X are currently directed to SourceForge, and are often bundled with added offers which may modify your search preferences or install unwanted browser toolbars.  You can decline these offers at the beginning of the installation process, and you will still be able to install FileZilla.
 
 Linux users can run the following commands to install FileZilla.
 
 Debian/Ubuntu:
 
-    apt-get install filezilla
+    sudo apt-get install filezilla
 
 CentOS/Fedora
 
-    yum install filezilla
+    sudo yum install filezilla
 
 Using FileZilla
 ---------------
 
-1.  Open FileZilla from your Windows start menu, OSX Launchpad, or the launcher provided by your Linux distribution of choice.
+1.  Open FileZilla from your Windows start menu, OS X Launchpad, or the launcher provided by your Linux distribution of choice.
 
-2.  Enter your Linode's IP address in the "Host" field. Enter the account username you wish to connect as in the "Username" field. Please note that this must be a user account on your Linode; if in doubt, enter "root" to log in as the root user. Enter the account's password in the "Password" field, and enter "22" in the "Port" field. Click "Quickconnect" to initiate the file transfer session.
+2.  Enter your Linode's IP address or domain name in the "Host" field. Enter the account username you wish to connect as in the "Username" field. Please note that this must be a user account on your Linode; if in doubt, enter "root" to log in as the root user. Enter the account's password in the "Password" field, and enter "22" in the "Port" field. Click "Quickconnect" to initiate the file transfer session.
 
     [![Quickconnect](/docs/assets/filezilla-quick-connect-resized.png)](/docs/assets/filezilla-quick-connect.png)
 
@@ -63,10 +63,10 @@ Using FileZilla
 Connecting Without a Password (SSH Keys)
 ----------------------------------------
 
-If you have followed our [Securing Your Server](docs/security/securing-your-server) guide, you won't be able to connect to your Linode just using a password. If you are using Linux or OSX, the keys that you generated while following that guide will be automatically used for authentication.
+If you have followed our [Securing Your Server](docs/security/securing-your-server) guide, you won't be able to connect to your Linode using a password. If you are using Linux or OS X, the keys that you generated while following that guide will be automatically used for authentication.
 
 {: .note }
->If you are using OSX, the passphrase for your key will need to be stored in your keychain in order to successfully connect via FileZilla. FileZilla will not be able to use a key that was generated without a passphrase to connect to your Linode.
+>If you are using OS X, the passphrase for your key will need to be stored in your keychain in order to successfully connect via SSH key. FileZilla will not be able to use a key that was generated without a passphrase to connect to your Linode.
 
 If you are using Windows, you'll need to follow a few additional steps to enable key based authentication. The instructions below assume that you have already completed the guide for [generating your SSH key with Putty](https://www.linode.com/docs/security/use-public-key-authentication-with-ssh#windows-operating-system).
 
