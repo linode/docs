@@ -20,9 +20,11 @@ Prerequisites
 
 Prior to following this guide, you will need to ensure that the following steps have been taken on your Linode.
 
-1.  Created a user as per the instructions in our [securing your server](docs/security/securing-your-server/) guide.
+-  Created a user as per the instructions in our [securing your server](docs/security/securing-your-server/) guide.
 
-2.  Ensure that you can connect to your Linode [via SSH](docs/getting-started#connecting-to-your-linode).
+-  Ensure that you can connect to your Linode [via SSH](docs/getting-started#connecting-to-your-linode).
+
+-  This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
 {: .note }
 >If you wish, you may use the `root` account on your Linode to perform file transfers, although you may need to change [file ownership and permissions](/docs/using-linux/users-and-groups) on the server after doing so.
