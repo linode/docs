@@ -98,7 +98,7 @@ Configuring Openfire is relatively easy and can be completed in just a couple of
 
     [![Language selection in Openfire setup on Ubuntu 12.04 (Precise).](/docs/assets/1143-openfire-ubuntu-12.04-language-selection.png)](/docs/assets/1143-openfire-ubuntu-12.04-language-selection.png)
 
-2.  Configure your domain and ports for administration. Use the fully qualified domain name you have assigned to your Linode in DNS. For more infomation: [configuring DNS with the Linode Manager](/docs/dns-guides/configuring-dns-with-the-linode-manager)).
+2.  Configure your domain and ports for administration. Use the fully qualified domain name you have assigned to your Linode in DNS. For more information: [configuring DNS with the Linode Manager](/docs/dns-guides/configuring-dns-with-the-linode-manager)).
 
     [![Domain and admin ports selection in Openfire setup on Ubuntu 12.04 (Precise).](/docs/assets/1142-openfire-ubuntu-12.04-domain-ports-selection.png)](/docs/assets/1142-openfire-ubuntu-12.04-domain-ports-selection.png)
 

@@ -229,7 +229,7 @@ Enter the following command to set the hostname, replacing `plato` with the host
 
 ### Update /etc/hosts
 
-Next, edit your `/etc/hosts` file to resemble the following example, replacing `plato` with your chosen hostname, `example.com` with your system's domain name, and `12.34.56.78` with your system's IP address. As with the hostname, the domain name part of your FQDN does not necesarily need to have any relationship to websites or other services hosted on the server (although it may if you wish). As an example, you might host "www.something.com" on your server, but the system's FQDN might be "mars.somethingelse.com."
+Next, edit your `/etc/hosts` file to resemble the following example, replacing `plato` with your chosen hostname, `example.com` with your system's domain name, and `12.34.56.78` with your system's IP address. As with the hostname, the domain name part of your FQDN does not necessarily need to have any relationship to websites or other services hosted on the server (although it may if you wish). As an example, you might host "www.something.com" on your server, but the system's FQDN might be "mars.somethingelse.com."
 
 {:.file }
 /etc/hosts

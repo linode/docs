@@ -409,7 +409,7 @@ By deploying the following configuration, you will be able to forward *all* traf
 
         reboot
 
-To test your connection, connect to the VPN connection from your local machine, then access one of the many [websites that will display your public IP address](http://www.whatismyip.com/). If the IP address displayed doesn't match the IP address of your Linode, your traffic is not being filtered through your Linode or encrypted by the VPN. If the IP matches, network traffic from your local machine is being filtered through your Linode and encrypted over the VPN, and you have succesfully completed your OpenVPN setup!
+To test your connection, connect to the VPN connection from your local machine, then access one of the many [websites that will display your public IP address](http://www.whatismyip.com/). If the IP address displayed doesn't match the IP address of your Linode, your traffic is not being filtered through your Linode or encrypted by the VPN. If the IP matches, network traffic from your local machine is being filtered through your Linode and encrypted over the VPN, and you have successfully completed your OpenVPN setup!
 
 More Information
 ----------------

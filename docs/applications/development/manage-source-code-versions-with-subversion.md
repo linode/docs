@@ -301,7 +301,7 @@ Apache Virtual Host Configuration
 
 Here, all repositories located beneath `/srv/svn` on the file system will be accessible over HTTP at URLs that begin with `http://svn.example.com/`.
 
-As an alternate option, you can specify multiple repositories using the `SVNPath` directive in multiple `location` blocks. In the following example, the Subversion repository located on the file system at `/srv/svn/morris` will be accessible over HTTP at the URL `http://example.com/morris`, while the repository at `/srv/svn/molly` will be accessible at `http://example.com/molly`. In this example each repository will use a seperate set of user credentials.
+As an alternate option, you can specify multiple repositories using the `SVNPath` directive in multiple `location` blocks. In the following example, the Subversion repository located on the file system at `/srv/svn/morris` will be accessible over HTTP at the URL `http://example.com/morris`, while the repository at `/srv/svn/molly` will be accessible at `http://example.com/molly`. In this example each repository will use a separate set of user credentials.
 
 {: .file-excerpt }
 Apache Virtual Host Configuration

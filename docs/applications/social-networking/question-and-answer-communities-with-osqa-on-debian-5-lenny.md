@@ -102,7 +102,7 @@ You can update your copy of OSQA to the latest version released by developers, b
     cd /srv/www/ducklington.org/osqa/
     svn up 
 
-Please remember to take take reasonable precautions before performing this operation on your production sites to avoid breaking the application without proper testing.
+Please remember to take reasonable precautions before performing this operation on your production sites to avoid breaking the application without proper testing.
 
 ### Configure OSQA
 
