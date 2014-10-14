@@ -68,11 +68,15 @@ CentOS/Fedora
 		root    ALL=(ALL)       ALL
 		exampleuser        ALL=(ALL)       ALL
 
-6.  Log out of your Linode as the `root` user by entering the following command:
+6.  Press 'Esc' to leave insert mode and enter the following command to save the file and quit visudo:
+
+        :wq
+        
+7.  Log out of your Linode as the `root` user by entering the following command:
 
         logout
 
-7.  Log in to your Linode as the new user by entering the following command. Replace *exampleuser* with your username, and the example IP address with your Linode's IP address:
+8.  Log in to your Linode as the new user by entering the following command. Replace *exampleuser* with your username, and the example IP address with your Linode's IP address:
 
         ssh exampleuser@123.456.78.90
 
@@ -145,7 +149,7 @@ Here's how to disable SSH password authentication and root login:
 4.  Save the changes to the SSH configuration file by pressing **Control-X**, and then **Y**.
 5.  Restart the SSH service to load the new configuration. Enter the following command:
 
-        sudo service ssh restart
+        sudo service sshd restart
 
 After the SSH service restarts, the SSH configuration changes will be applied.
 
