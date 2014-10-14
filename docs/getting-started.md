@@ -253,7 +253,7 @@ Enter the following command to access the timezone utility:
 
     dpkg-reconfigure tzdata
 
-### Arch Linux
+### Arch Linux and CentOS 7
 
 Enter the following command to view a list of available time zones:
 
