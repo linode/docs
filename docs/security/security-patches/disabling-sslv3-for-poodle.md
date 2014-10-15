@@ -23,7 +23,7 @@ In order to resolve this issue, we must disable SSLv3 for applications. Unfortun
 
 # The Impact of Disabling SSLv3
 
-There's little impact for most people in disabling SSLv3 because they are not relying on SSLv3 to make connections via SSL/TLS.The large majority relies on TLS.
+There's little impact for most people in disabling SSLv3 because they are not relying on SSLv3 to make connections via SSL/TLS. The large majority relies on TLS.
 
 In the future, browsers such as Google Chrome and FireFox will have SSLv3 disabled at release. It is also advisable to disable SSLv3 on home browsers, not only server applications. 
 
