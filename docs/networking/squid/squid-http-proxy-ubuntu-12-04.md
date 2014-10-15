@@ -45,7 +45,8 @@ This section covers the easiest way to use Squid as an HTTP proxy, using only th
 	{: .file-excerpt }
 	/etc/squid3/squid.conf
 	: ~~~
-		acl client src 12.34.56.78 \# Home IP http\_access allow client
+		acl client src 12.34.56.78 # Home IP 
+		http_access allow client
 	~~~
 	
 	Be sure to replace **client** with a name identifying the connecting computer, and **12.34.56.78** with your local IP address. The comment `# Home IP` isn't required, but comments can be used to help identify clients.
