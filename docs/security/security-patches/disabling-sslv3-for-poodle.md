@@ -12,7 +12,7 @@ published: 'Wednesday, October 15th, 2014'
 title: Disabling SSLv3 For POODLE
 ---
 
-Padding Oracle On Downgraded Legacy Encryption (POODLE) was released with the CVE identifier of [CVE-2014-3566](http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-3566). The vulnerability was found in SSL protocol 3.0, not in OpenSSL, like the recently discovered [Heartbleed](/docs/security/security-patches/patching-openssl-for-the-heartbleed-vulnerability) vulnerability.
+Padding Oracle On Downgraded Legacy Encryption (POODLE) was released with the CVE identifier of [CVE-2014-3566](http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-3566). The vulnerability was found in SSL protocol 3.0, unlike [Heartbleed](/docs/security/security-patches/patching-openssl-for-the-heartbleed-vulnerability) which was found in OpenSSL.
 
 SSL protocol 3.0 makes use of CBC-mode ciphers that allow for man-in-the-middle attacks using padding-oracle stacks. These attacks target the CBC ciphers, such as the ones SSL protocol 3.0 uses, to retrieve plain-text output from otherwise encrypted information. 
 
