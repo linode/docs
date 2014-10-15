@@ -255,7 +255,7 @@ You can now log into your admin panel at <http://example.com/dolphin/administrat
 Installing Dolphin Modules
 --------------------------
 
-Now you can install any of Dolphin's modules in the the **Tools** \> **Modules** section. Take a look!
+Now you can install any of Dolphin's modules in the **Tools** \> **Modules** section. Take a look!
 
 ### Updating PHP Permissions
 

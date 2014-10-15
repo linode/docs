@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: skleinman@linode.com
-description: Guides for installing and managing software on major Linux operating systems
+description: Guides for installing and managing software on major Linux operating systems.
 keywords: 'Linux package management,rpm,apt,dpkg,apt-get,apt-cache,pacman,yum'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['using-linux/package-management/']

@@ -73,7 +73,7 @@ You must append the path of your application to the system path as above. The de
 
 ### Web.py WSGI Configuration
 
-Consider the following example Web.py *application* which is embeded in a `application.wsgi` file. The [Web.py Framework](/docs/frameworks/webpy/) must be installed in order for the following application to run successfully.
+Consider the following example Web.py *application* which is embedded in a `application.wsgi` file. The [Web.py Framework](/docs/frameworks/webpy/) must be installed in order for the following application to run successfully.
 
 {: .file-excerpt }
 /srv/www/ducklington.org/application/application.wsgi

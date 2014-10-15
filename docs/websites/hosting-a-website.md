@@ -6,9 +6,9 @@ description: 'Our guide to hosting a website on your Linode.'
 keywords: 'linode guide,hosting a website,website,linode quickstart guide'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['hosting-website/']
-modified: Wednesday, January 29th, 2014
+modified: Tuesday, October 14th, 2014
 modified_by:
-  name: Linode
+  name: Joseph Dooley
 published: 'Tuesday, March 13th, 2012'
 title: Hosting a Website
 ---
@@ -52,7 +52,7 @@ Installing Apache is easy, but if you leave it running with the default settings
 
         sudo nano /etc/apache2/apache2.conf
 
-3.  Make sure that the following values are set.  
+3.  Make sure that the following values are set.
 
  {: .note }
 >
@@ -62,7 +62,7 @@ Installing Apache is easy, but if you leave it running with the default settings
 /etc/apache2/apache2.conf
 :	~~~ apache
 	KeepAlive Off
-   
+
 	...
 	<IfModule mpm_prefork_module>
 	StartServers 2
@@ -100,7 +100,7 @@ Now that Apache is optimized for performance, it's time to starting hosting one 
 
         sudo mkdir example.com
 
-4.  Create a set of folders inside `public` to store your website's files, logs, and backups. Enter the following command, replacing `example.com` with your domain name:
+4.  Create a set of folders inside the folder you've just created to store your website's files, logs, and backups. Enter the following command, replacing `example.com` with your domain name:
 
         sudo mkdir -p example.com/public_html
 		sudo mkdir -p example.com/log
@@ -189,7 +189,7 @@ MySQL consumes a lot of memory when using the default configuration. To set reso
         sudo nano /etc/mysql/my.cnf
 
 2.  Make sure that the following values are set:
-    
+
 	{: .file-excerpt}
     /etc/mysql/my.cnf
     :   ~~~ ini
@@ -241,9 +241,9 @@ Now you have a new database that you can use for your website. If you don't need
 If you have an existing website, you may want to import an existing database in to MySQL. It's easy, and it allows you to have an established website up and running on your Linode in a matter of minutes. Here's how to import a database in to MySQL:
 
 1.  Upload the database file to your Linode. See the instructions in [Uploading Files](#uploading-files).
-2.  Import the database by entering the following command. Replace `username` with your MySQL username, `password` with your MySQL password, and `database_name` with your own:
+2.  Import the database by entering the following command. Replace `username` with your MySQL username and `database_name` with the database name you want to import to. You will be prompted for your MySQL password:
 
-        mysql -u username -p password database_name < FILE.sql
+        mysql -u username -p database_name < FILE.sql
 
 Your database will be imported in to MySQL.
 
@@ -312,9 +312,9 @@ Uploading Files
 
 You've successfully installed Apache, MySQL, and PHP. Now it's time to upload a website to your Linode. This is one of the last steps before you "flip the switch" and publish your website on the Internet. Here's how to upload files to your Linode:
 
-1.  If you haven't done so already, download and install an FTP client on your desktop computer. We recommend using [Filezilla](/docs/tools-reference/file-transfer/transfer-files-with-filezilla-on-ubuntu-9-10-desktop) on Linux systems, [Cyberduck](/docs/networking/file-transfer/transfer-files-cyberduck) on Mac OS X, and [WinSCP](/docs/networking/file-transfer/transfer-files-winscp) on Windows.
+1.  If you haven't done so already, download and install an SFTP capable client on your computer. We recommend using the [FileZilla](/docs/tools-reference/file-transfer/filezilla) SFTP client.
 2.  Follow the instructions in the guides listed above to connect to your Linode.
-3.  Upload your website's files to the `~/public/example.com/public` directory. Replace `example.com` with your domain name.
+3.  Upload your website's files to the `/var/www/example.com/public_html` directory. Replace `example.com` with your domain name.
 
      {: .note }
     >
@@ -333,7 +333,7 @@ It's a good idea to test your website(s) before you add the DNS records. This is
 
 3.  Test the name-based virtual hosts by entering the domain names in the address bar of the web browser on your desktop computer. Your websites should load in the web browser.
 
-    {: .caution} 
+    {: .caution}
     >Remember to remove the entries for the name-based virtual hosts from your `hosts` file when you're ready to test the DNS records.
 
 Adding DNS Records

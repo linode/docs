@@ -159,7 +159,7 @@ Now we need to configure uWSGI. Here's how:
 
         service nginx restart
 
-You can test by pointing a web browser to your domian. If you see `Hello World!` than you have succesfully configured your Linode for uWSGI with Nginx!
+You can test by pointing a web browser to your domian. If you see `Hello World!` than you have successfully configured your Linode for uWSGI with Nginx!
 
 Additional Application Servers
 ------------------------------

@@ -50,7 +50,7 @@ planet.conf
 :   ~~~
     # Example Planet Venus configuration file
 
-    # Documenation: <file:///usr/share/doc/planet-venus>
+    # Documentation: <file:///usr/share/doc/planet-venus>
     # Examples: <file:///usr/share/planet-venus/example>
     # Filters: <file:///usr/share/planet-venus/filter>
     # Themes: <file:///usr/share/planet-venus/theme>

@@ -422,7 +422,7 @@ Here's how to restore files from an rsync backup:
 4.  Upload your chosen files to the *production\_server* with scp, SFTP, rsync, etc.
 5.  *Windows only:* Restore the correct Linux ownership and file permissions.
 
-Congratulations! You have succesfully restored your Rsync backup to your Linode.
+Congratulations! You have successfully restored your Rsync backup to your Linode.
 
 Maintaining Your Backups
 ------------------------
