@@ -149,7 +149,13 @@ Here's how to disable SSH password authentication and root login:
 4.  Save the changes to the SSH configuration file by pressing **Control-X**, and then **Y**.
 5.  Restart the SSH service to load the new configuration. Enter the following command:
 
-        sudo service sshd restart
+	**Debian/Ubuntu Users:**
+
+        sudo service ssh restart
+        
+	**Fedora/CentOS:**
+
+        sudo systemctl restart sshd
 
 After the SSH service restarts, the SSH configuration changes will be applied.
 
@@ -309,15 +315,19 @@ Here's how to install and configure Fail2Ban:
 
 1.  Install Fail2Ban by entering the following command:
 
-        Debian/Ubuntu
-	    sudo apt-get install fail2ban
-		
-		Fedora
-		sudo yum install fail2ban
-		
-		CentOS
-		sudo yum install epel-release
-		sudo yum install fail2ban
+	**Debian/Ubuntu Users:**
+
+        sudo apt-get install fail2ban
+        
+	**Fedora Users:**
+
+        sudo yum install fail2ban
+        
+	**CentOS Users:**
+
+        sudo yum install epel-release
+        sudo yum install fail2ban
+
 
 2.  Optionally, you can override the default Fail2Ban configuration by creating a new `jail.local` file. Enter the following command to create the file:
 
