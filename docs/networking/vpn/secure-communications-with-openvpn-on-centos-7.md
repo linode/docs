@@ -1,12 +1,16 @@
 ---
 author:
-  name: Dakota Schneider
-  email: dakota@codefromabove.com
+  name: Linode
+  email: docs@linode.com
 description: 'Use OpenVPN to securely connect separate networks on a CentOS 7 Linux VPS.'
 keywords: 'openvpn,networking,vpn,centos'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['networking/openvpn/centos-7/']
-title: Secure Communications with OpenVPN on CentOS 7
+modified: Thursday, October 19th, 2014
+modified_by:
+  name: Dakota Schneider
+published: 'Thursday, August 22nd, 2013'
+title: 'Secure Communications with OpenVPN on Ubuntu 12.04 (Precise) and Debian 7'
 ---
 
 OpenVPN, or Open Virtual Private Network, is a tool for creating networking "tunnels" between and among groups of computers that are not on the same local network. This is useful if you have services on a local network and need to access them remotely but don't want these services to be publicly accessible. By integrating with OpenSSL, OpenVPN can encrypt all VPN traffic to provide a secure connection between machines.
@@ -24,7 +28,7 @@ The packages required to install OpenVPN and its dependencies are not available 
 
 Make sure your package repositories and installed programs are up to date by issuing the following command:
 
-    yum update 
+    yum update
 
 Now we can install OpenVPN and Easy-RSA and with the following command:
 
@@ -135,9 +139,22 @@ Configuring the Virtual Private Network
 
 We'll now need to configure our server file. There is an example file in `/usr/share/doc/openvpn-2.1.4/examples/sample-config-files`. Issue the following sequence of commands to retrieve the example configuration files and move them to the required directories:
 
-    cp /usr/share/doc/openvpn-*/sample-config-files/server.conf /etc/openvpn/
-    cp /usr/share/doc/openvpn-*/sample-config-files/client.conf ~/
+    cp /usr/share/doc/openvpn-*/sample/sample-config-files/server.conf /etc/openvpn/
+    cp /usr/share/doc/openvpn-*/sample/sample-config-files/client.conf ~/
     cd ~/
+
+Edit the `/etc/openvpn/server.conf` file and ensure that the Diffie hellman Parameters match the content below.
+
+{: .file }
+/etc/openvpn/server.conf
+:   ~~~
+    # Diffie hellman parameters.
+    # Generate your own with:
+    #   openssl dhparam -out dh1024.pem 1024
+    # Substitute 2048 for 1024 if you are using
+    # 2048 bit keys.
+    dh dh2048.pem
+    ~~~
 
 Modify the `remote` line in your `~/client.conf` file to reflect the OpenVPN server's name.
 
@@ -241,12 +258,12 @@ Before continuing, insert these `iptables` rules into your system's `/etc/rc.loc
     #
     # [...]
     #
-    
+
     iptables -A FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT
     iptables -A FORWARD -s 10.8.0.0/24 -j ACCEPT
     iptables -A FORWARD -j REJECT
     iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -o eth0 -j MASQUERADE
-    
+
     touch /var/lock/subsys/local
     ~~~
 
@@ -266,7 +283,7 @@ After completing the installation the configuration will need to be modified so 
 /etc/dnsmasq.conf
 :   ~~~
     listen-address=127.0.0.1,10.8.0.1
-    
+
     bind-interfaces
     ~~~
 
@@ -278,7 +295,7 @@ When your system boots, dnsmasq will try to start prior to the OpenVPN tun devic
 /etc/rc.local
 :   ~~~
     /etc/init.d/dnsmasq restart
-    
+
     touch /var/lock/subsys/local
     ~~~
 
