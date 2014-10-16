@@ -18,7 +18,7 @@ SSL protocol 3.0 makes use of CBC-mode ciphers that allow for man-in-the-middle 
 
 There is some good news. Most connections are using TLS and not SSL. However, sometimes there are problems negotiating a TLS session, and then the web servers, browsers, and other applications must downgrade to SSL. 
 
-In order to resolve this issue, we must disable SSLv3 for applications. Unfortunately, there is no way to do this for an entire server at one. You will need to edit each individual configuration separately. 
+In order to resolve this issue, we must disable SSLv3 for applications. Unfortunately, there is no way to do this for an entire server at once. You will need to edit each individual configuration separately. 
 
 
 # The Impact of Disabling SSLv3
