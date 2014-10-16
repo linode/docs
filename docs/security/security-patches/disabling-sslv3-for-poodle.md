@@ -81,6 +81,19 @@ You will also need to restart your NGINX server:
 
 For more information about NGINX's SSL protocol setting, please see their [NGX HTTP SSL Module Documentation](http://nginx.org/en/docs/http/ngx_http_ssl_module.html#ssl_protocols).
 
+## Hiawatha
+
+If you're using the security-focused [Hiawatha web server](https://www.hiawatha-webserver.org/), it's likely that SSLv3 is already disabled by default. But if for some reason you're running an older version that does allow SSLv3, you can use the `MinSSLversion` setting in `hiawatha.conf`:
+
+	MinSSLversion = TLS1.0
+	# or TLS1.1 or TLS1.2
+
+Then restart Hiawatha. For example, in Debian or Ubuntu:
+
+	sudo service hiawatha restart
+
+For more information on Hiawatha's configuration settings, see the [manual page](https://www.hiawatha-webserver.org/manpages).
+
 ## Postfix SMTP
 
 If your Postfix installation is set up for `opportunistic SSL`, which means that encryption is not enforced and plain text is accepted, you do not need to change anything. However, if you are running Postfix in `mandatory SSL` mode, you will need to adjust your configuration to reflect the following change:
