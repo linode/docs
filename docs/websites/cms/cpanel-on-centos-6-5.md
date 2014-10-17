@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@Linode.com
-description: 'Use cPanel to manage services on your CentOS 6.5 Linux VPS.'
+description: 'Use cPanel to manage services on your CentOS Linux VPS.'
 keywords: 'cpanel,vps control panel,cpanel linux,cpanel centos'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-applications/control-panels/cpanel/centos-6/']
@@ -10,10 +10,10 @@ modified: Monday, September 22, 2014
 modified_by:
   name: Alex Fornuto.
 published: 
-title: Installing cPanel on CentOS 6.5
+title: Installing cPanel on CentOS
 ---
 
-[cPanel](http://cpanel.net) is a commercial web-based control panel for server systems. It can help ease the burden of common system administration tasks such as website creation, database deployment and management, and more. This guide will help you get up and running with the [VPS Optimized cPanel](http://cpanel.net/products/cpanelwhm/vps-optimized.html) product on your CentOS 6.5 Linode. Please note, Linode does not sell cPanel licenses; you'll need to obtain one directly from cPanel or an authorized distributor. Additionally, Linode does not provide cPanel support, although you may contact [cPanel support](http://cpanel.net/support.html) directly once you've purchased a license. This product **must** be installed on a freshly deployed, CentOS 6.5 Linode. These instructions should be performed as the "root" user via SSH.
+[cPanel](http://cpanel.net) is a commercial web-based control panel for server systems. It can help ease the burden of common system administration tasks such as website creation, database deployment and management, and more. This guide will help you get up and running with the [VPS Optimized cPanel](http://cpanel.net/products/cpanelwhm/vps-optimized.html) product on your CentOS Linode. Please note, Linode does not sell cPanel licenses; you'll need to obtain one directly from cPanel or an authorized distributor. Additionally, Linode does not provide cPanel support, although you may contact [cPanel support](http://cpanel.net/support.html) directly once you've purchased a license. This product **must** be installed on a freshly deployed, CentOS Linode. These instructions should be performed as the "root" user via SSH.
 
 {: .note}
 >The steps required in this guide require root privileges. Be sure to run the steps below as ``root`` or with the **sudo** prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
