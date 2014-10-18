@@ -5,7 +5,7 @@ author:
 description: 'Instructions on disabling SSLv3 to protect against the POODLE vulnerability'
 keywords: 'sslv3,poodle,security,patch,ubuntu,debian,centos,fedora'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Wednesday, October 15th, 2014
+modified: 'Saturday, October 18th, 2014'
 modified_by:
   name: Dave Russell
 published: 'Wednesday, October 15th, 2014'
@@ -66,6 +66,18 @@ On CentOS and Fedora:
     systemctl restart httpd
 
 For more information about configuring Apache to disallow SSLv2 and SSLv3, please see their [Mod_SSL Documentation](https://httpd.apache.org/docs/2.2/mod/mod_ssl.html#sslprotocol)
+
+## Apache on cPanel/WHM
+
+cPanel/WHM does not allow you to edit the configuration profiles, and will overwrite most changes that are made to configuration profiles. However, cPanel/WHM does give the option of configuring SSL Ciphersuites for Apache within the control panel.
+
+In WHM, type `apache` into the left-hand sidebar's search field. You will see `Apache Configuration` in the menu list. After clicking `Apache Configuration` you will navigate to `Global Configuration`. It is the first option on the page in cPanel 11.44+. 
+
+The first option is `SSL Cipher Suite`, and you will need to modify the current SSL Cipher Suite to include `-SSLv3`. An example of this is shown below.
+
+	ALL:!ADH:RC4+RSA:+HIGH:+MEDIUM:-LOW:-SSLv2:-SSLv3:-EXP:!kEDH
+
+After saving the page, you will be asked to rebuild and restart Apache. Your changes should take effect after Apache has been rebuilt and restarted.
 
 ## NGINX
 
