@@ -6,9 +6,9 @@ description: 'Our guide to securing your first Linode.'
 keywords: 'security,linode quickstart,getting started'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['securing-your-server/']
-modified: Thursday, September 12th, 2013
+modified: Saturday, October 18th, 2014
 modified_by:
-  name: Linode
+  name: Dave Russell
 published: 'Friday, February 17th, 2012'
 title: Securing Your Server
 ---
@@ -322,6 +322,7 @@ Here's how to install and configure Fail2Ban:
 3.  Set the `bantime` variable to specify how long (in seconds) bans should last.
 4.  Set the `maxretry` variable to specify the default number of tries a connection may be attempted before an attacker's IP address is banned.
 5.  Press `Control-x` and then press `y` to save the changes to the Fail2Ban configuration file.
+6.  Restart Fail2Ban by using `sudo service fail2ban restart`.
 
 Fail2Ban is now installed and running on your Linode. It will monitor your log files for failed login attempts. After an IP address has exceeded the maximum number of authentication attempts, it will be blocked at the network level and the event will be logged in `/var/log/fail2ban.log`.
 

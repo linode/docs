@@ -6,14 +6,18 @@ description: Our guide to upgrading and resizing your Linode
 keywords: 'upgrading,resizing'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['resizing/']
-modified: Monday, June 16th, 2014
+modified: Saturday, October 18th, 2014
 modified_by:
-  name: Alex Fornuto
+  name: Dave Russell
 published: 'Tuesday, March 20th, 2012'
 title: Resizing a Linode
 ---
 
 We make it easy to upgrade or downgrade your Linode VPS by changing plans and adding additional resources. If you're expecting a temporary burst of traffic to your website, or if you're not using your VPS as much as you thought, you can temporarily or permanently resize your Linode to a different plan. You can also make smaller changes to your Linode by adding extras, like RAM or storage space.
+
+{: .note }
+>
+> It is important to note that only clients using the legacy billing will have extras available. New clients, and those who have converted to [Metered Billing](https://www.linode.com/docs/platform/prepaid-billing-and-payments-legacy) will not have the `Extras` option any longer.
 
 Resizing Your Linode
 --------------------
