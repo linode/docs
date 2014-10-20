@@ -115,7 +115,7 @@ You should now be logged into your StartSSL account.
 [![StartSSL Validation Wizard Email Verification Code Page](/docs/assets/1759-StartSSL-Validation-Wizard-Validation-Preview.jpg)](/docs/assets/1759-StartSSL-Validation-Wizard-Validation.jpg)
 
 6.  Your domain has now been verified. Click "Finish >> >>".
-[![StartSSL Validation Wizard Complete Page](/docs/assets/1760-StartSSL-Validation-Wizard-Complete.jpg)](/docs/assets/1760-StartSSL-Validation-Wizard-Complete.jpg)
+[![StartSSL Validation Wizard Complete Page](/docs/assets/1760-StartSSL-Validation-Wizard-Complete-Preview.jpg)](/docs/assets/1760-StartSSL-Validation-Wizard-Complete.jpg)
 
 ### Submit Your Certificate Signing Request to StartSSL
 
