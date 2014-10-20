@@ -141,7 +141,7 @@ You should now be logged into your StartSSL account.
 [![StartSSL Certificates Wizard CSR Domain Selection](/docs/assets/1765-StartSSL-Certificates-Wizard-CSR-Domain-Preview.jpg)](/docs/assets/1765-StartSSL-Certificates-Wizard-CSR-Domain.jpg)
 
 8.  Enter the sub domain you entered when creating the CSR before (ex. www.yourdomain.com, server1.yourdomain.com), or if your entered yourdomain.com before, enter www into this field to make your certificate valid for www.yourdomain.com as well. Then click "Continue >> >>".
-[![StartSSL Certificates Wizard Choose a SubDomain](/docs/assets/1766-StartSSL-Certificates-Wizard-CSR-SubDomain.jpg)](/docs/assets/1766-StartSSL-Certificates-Wizard-CSR-SubDomain.jpg)
+[![StartSSL Certificates Wizard Choose a SubDomain](/docs/assets/1766-StartSSL-Certificates-Wizard-CSR-SubDomain-Preview.jpg)](/docs/assets/1766-StartSSL-Certificates-Wizard-CSR-SubDomain.jpg)
 
 9.  Click "Continue >> >>".
 [![StartSSL Certificates Wizard CSR Ready for Issuing Certificate](/docs/assets/1767-StartSSL-Certificates-Wizard-CSR-Ready-Preview.jpg)](/docs/assets/1767-StartSSL-Certificates-Wizard-CSR-Ready.jpg)
