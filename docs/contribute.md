@@ -44,11 +44,13 @@ These authors got their articles published and \$100. You could be next.
 -   [Using WeeChat for Internet Relay Chat](/docs/applications/messaging/using-weechat-for-irc) - Samuel Damashek
 -   [Manage Git Repositories with GitLab on Ubuntu 14.04 (Trusty)](/docs/applications/development/gitlab-on-ubuntu-14-04) - Nashruddin Amin
 -   [Yesod, Nginx, and MySQL on Debian 7 (Wheezy)](/docs/websites/frameworks/yesod-nginx-mysql-on-debian-7-wheezy)- Si-Qi Liu
+-   [Installing iRedMail on your Linode](/docs/email/iredmail/installing-iredmail) - Nick Reichley
+-   [Using StartSSL with the latest Nginx on Debian 7](/docs/websites/nginx/startssl-wth-latest-nginx-debian-7) - Ryan Laverdiere
 
 How Much Money Will I Earn?
 ---------------------------
 
-We will pay you \$100 per article that is accepted for publication, in cash via PayPal, or as Linode credit. Note that submitting an article is not a guarantee of publication. After you submit it, we will let you know if your article has been accepted.
+We will pay you $100 per article that is accepted for publication, in cash via PayPal, or as Linode credit. Note that submitting an article is not a guarantee of publication. After you submit it, we will let you know if your article has been accepted.
 
 Write Your Article
 ------------------
