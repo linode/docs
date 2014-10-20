@@ -5,7 +5,7 @@ author:
 description: 'Instructions on disabling SSLv3 to protect against the POODLE vulnerability'
 keywords: 'sslv3,poodle,security,patch,ubuntu,debian,centos,fedora'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: 'Saturday, October 18th, 2014'
+modified: Monday, October 20th, 2014
 modified_by:
   name: Dave Russell
 published: 'Wednesday, October 15th, 2014'
@@ -69,15 +69,17 @@ For more information about configuring Apache to disallow SSLv2 and SSLv3, pleas
 
 ## Apache on cPanel/WHM
 
-cPanel/WHM does not allow you to edit the configuration profiles, and will overwrite most changes that are made to configuration profiles. However, cPanel/WHM does give the option of configuring SSL Ciphersuites for Apache within the control panel.
+cPanel/WHM does not allow you to edit the Apache configuration files, and will overwrite most changes that are made to them. However, cPanel/WHM does give the option of configuring SSL cipher suites for Apache within the control panel.
 
-In WHM, type `apache` into the left-hand sidebar's search field. You will see `Apache Configuration` in the menu list. After clicking `Apache Configuration` you will navigate to `Global Configuration`. It is the first option on the page in cPanel 11.44+. 
+In order to change the Apache cipher suites, follow these steps:
 
-The first option is `SSL Cipher Suite`, and you will need to modify the current SSL Cipher Suite to include `-SSLv3`. An example of this is shown below.
+1.  In WHM, type `apache` into the left-hand sidebar's search field. You will see `Apache Configuration` in the menu list. After clicking `Apache Configuration`, navigate to `Global Configuration`. It is the first option on the page in cPanel 11.44+. 
+
+2.  The first option is `SSL Cipher Suite`, and you will need to modify the current SSL Cipher Suite to include `-SSLv3`. An example of this is shown below.
 
 	ALL:!ADH:RC4+RSA:+HIGH:+MEDIUM:-LOW:-SSLv2:-SSLv3:-EXP:!kEDH
 
-After saving the page, you will be asked to rebuild and restart Apache. Your changes should take effect after Apache has been rebuilt and restarted.
+3.  After saving the page, you will be asked to rebuild and restart Apache. Your changes should take effect after Apache has been rebuilt and restarted.
 
 ## NGINX
 
