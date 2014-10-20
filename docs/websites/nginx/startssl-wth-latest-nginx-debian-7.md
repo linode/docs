@@ -6,10 +6,10 @@ author:
 description: 'Using StartSSL with the latest Nginx on Debian 7'
 keywords: 'startssl,nginx'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Thursday, August 14, 2014
+modified: Monday, October 20, 2014
 modified_by:
   name: Alex Fornuto
-published: 'Pending'
+published: Monday, October 20, 2014
 title: 'Using StartSSL with the latest Nginx on Debian 7'
 contributor:
     name: Ryan Laverdiere
