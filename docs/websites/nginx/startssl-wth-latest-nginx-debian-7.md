@@ -85,21 +85,21 @@ All of the commands below should be executed as the ``root`` user.
 
 1.  Launch a web browser and naviagte to the [StartSSL Control Panel](https://www.startssl.com/?app=12). If this is your first time requesting a certificate from StartSSL, click on the "Sign-up" button. If you have already requested a certificate from StartSSL, log into your account, and skip to the next section.
 
-  [![StartSSL Control Panel](/docs/assets/1752-StartSSL-Control-Panel-Preview.jpg)](/docs/assets/1752-StartSSL-Control-Panel.jpg)
+    [![StartSSL Control Panel](/docs/assets/1752-StartSSL-Control-Panel-Preview.jpg)](/docs/assets/1752-StartSSL-Control-Panel.jpg)
 
 2. Provide the requested information and a click "Continue >> >>"
 
-  [![StartSSL Sign-up Page](/docs/assets/1753-StartSSL-Register.jpg)](/docs/assets/1753-StartSSL-Register.jpg)
+    [![StartSSL Sign-up Page](/docs/assets/1753-StartSSL-Register.jpg)](/docs/assets/1753-StartSSL-Register.jpg)
 
 3.  A verification code will be sent to the email address provided. Log into your email account and provide the verification code. Then click "Continue >> >>".
 
 4.  Once your email address has been verified. Choose to generate a high grade private key. This private key and certificate pair will be used to identify you to StartSSL. If you ever loose it, you will be unable to regain access to your account, make sure to backup this certificate and private key.
 
-  [![StartSSL Generate Private Key Page](/docs/assets/1754-StartSSL-Generate-Private-Key.jpg)](/docs/assets/1754-StartSSL-Generate-Private-Key.jpg)
+    [![StartSSL Generate Private Key Page](/docs/assets/1754-StartSSL-Generate-Private-Key.jpg)](/docs/assets/1754-StartSSL-Generate-Private-Key.jpg)
 
 5.  Click "Install >> >>" to install your personal certificate into your browser to identify yourself to StartSSL. 
 
-  [![StartSSL Certificate Installation Page](/docs/assets/1755-StartSSL-Install-Certificate.jpg)](/docs/assets/1755-StartSSL-Install-Certificate.jpg)
+    [![StartSSL Certificate Installation Page](/docs/assets/1755-StartSSL-Install-Certificate.jpg)](/docs/assets/1755-StartSSL-Install-Certificate.jpg)
 
 6.  Click "Finish >> >>".
 
@@ -111,23 +111,23 @@ You should now be logged into your StartSSL account.
 
 2.  Select "Domain Name Validation" and click "Continue >> >>".
 
-  [![StartSSL Validation Wizard Start Page](/docs/assets/1756-StartSSL-Validation-Wizard-Preview.jpg)](/docs/assets/1756-StartSSL-Validation-Wizard.jpg)
+    [![StartSSL Validation Wizard Start Page](/docs/assets/1756-StartSSL-Validation-Wizard-Preview.jpg)](/docs/assets/1756-StartSSL-Validation-Wizard.jpg)
 
 3.  Enter your domain name and click "Continue >> >>".
 
-  [![StartSSL Validation Wizard Domain Name Validation Page](/docs/assets/1757-StartSSL-Validation-Wizard-Domain-Preview.jpg)](/docs/assets/1757-StartSSL-Validation-Wizard-Domain.jpg)
+    [![StartSSL Validation Wizard Domain Name Validation Page](/docs/assets/1757-StartSSL-Validation-Wizard-Domain-Preview.jpg)](/docs/assets/1757-StartSSL-Validation-Wizard-Domain.jpg)
 
 4.  Choose an email address @ your domain that you access to and click "Continue >> >>". Note that the domain being used for this tutorial has been omitted from the screenshot below.
 
-  [![StartSSL Validation Wizard Domain Control Email Validation Page](/docs/assets/1758-StartSSL-Validation-Wizard-Email-Preview.jpg)](/docs/assets/1758-StartSSL-Validation-Wizard-Email.jpg)
+    [![StartSSL Validation Wizard Domain Control Email Validation Page](/docs/assets/1758-StartSSL-Validation-Wizard-Email-Preview.jpg)](/docs/assets/1758-StartSSL-Validation-Wizard-Email.jpg)
 
 5.  A verification code should be sent to the email address selected. Access your email account and provide the verification code and click "Continue >> >>".
 
-  [![StartSSL Validation Wizard Email Verification Code Page](/docs/assets/1759-StartSSL-Validation-Wizard-Validation-Preview.jpg)](/docs/assets/1759-StartSSL-Validation-Wizard-Validation.jpg)
+    [![StartSSL Validation Wizard Email Verification Code Page](/docs/assets/1759-StartSSL-Validation-Wizard-Validation-Preview.jpg)](/docs/assets/1759-StartSSL-Validation-Wizard-Validation.jpg)
 
 6.  Your domain has now been verified. Click "Finish >> >>".
 
-  [![StartSSL Validation Wizard Complete Page](/docs/assets/1760-StartSSL-Validation-Wizard-Complete-Preview.jpg)](/docs/assets/1760-StartSSL-Validation-Wizard-Complete.jpg)
+    [![StartSSL Validation Wizard Complete Page](/docs/assets/1760-StartSSL-Validation-Wizard-Complete-Preview.jpg)](/docs/assets/1760-StartSSL-Validation-Wizard-Complete.jpg)
 
 ### Submit Your Certificate Signing Request to StartSSL
 
@@ -135,11 +135,11 @@ You should now be logged into your StartSSL account.
 
 2.  From the "Certificate Target" drop down menu select "Web Server SSL/TLS Certicate" and click "Continue >> >>".
 
-  [![StartSSL Certificates Wizard Start](/docs/assets/1761-StartSSL-Certificates-Wizard-Target-Preview.jpg)](/docs/assets/1761-StartSSL-Certificates-Wizard-Target.jpg)
+    [![StartSSL Certificates Wizard Start](/docs/assets/1761-StartSSL-Certificates-Wizard-Target-Preview.jpg)](/docs/assets/1761-StartSSL-Certificates-Wizard-Target.jpg)
 
 3.  Click "Skip >> >>" to skip generating a RSA private key. In the previous step an RSA private key was generated before creating a certificate signing request.
 
-  [![StartSSL Certificates Wizard Skip Creating a RSA Private Key](/docs/assets/1762-StartSSL-Certificates-Wizard-Private-Key-Preview.jpg)](/docs/assets/1762-StartSSL-Certificates-Wizard-Private-Key.jpg)
+    [![StartSSL Certificates Wizard Skip Creating a RSA Private Key](/docs/assets/1762-StartSSL-Certificates-Wizard-Private-Key-Preview.jpg)](/docs/assets/1762-StartSSL-Certificates-Wizard-Private-Key.jpg)
 
 4.  Using the text editor of your choice, open up your certificate signing request and copy it. If you're using Putty on Windows, highlight the entire certificate signing request to copy it to the clipboard, then exit the text editor.
 
@@ -147,23 +147,23 @@ You should now be logged into your StartSSL account.
 
 5.  Paste your certificate signing request into the empty text box and then click "Continue >> >>".
 
-  [![StartSSL Certificates Wizard Submit CSR](/docs/assets/1763-StartSSL-Certificates-Wizard-CSR-Preview.jpg)](/docs/assets/1763-StartSSL-Certificates-Wizard-CSR.jpg)
+    [![StartSSL Certificates Wizard Submit CSR](/docs/assets/1763-StartSSL-Certificates-Wizard-CSR-Preview.jpg)](/docs/assets/1763-StartSSL-Certificates-Wizard-CSR.jpg)
 
 6.  Click "Continue >> >>".
 
-  [![StartSSL Certificates Wizard CSR Received](/docs/assets/1764-StartSSL-Certificates-Wizard-CSR-Received-Preview.jpg)](1764-StartSSL-Certificates-Wizard-CSR-Received.jpg)
+    [![StartSSL Certificates Wizard CSR Received](/docs/assets/1764-StartSSL-Certificates-Wizard-CSR-Received-Preview.jpg)](1764-StartSSL-Certificates-Wizard-CSR-Received.jpg)
 
 7.  Choose the domain you would like a certificate for and click "Continue >> >>".
 
-  [![StartSSL Certificates Wizard CSR Domain Selection](/docs/assets/1765-StartSSL-Certificates-Wizard-CSR-Domain-Preview.jpg)](/docs/assets/1765-StartSSL-Certificates-Wizard-CSR-Domain.jpg)
+    [![StartSSL Certificates Wizard CSR Domain Selection](/docs/assets/1765-StartSSL-Certificates-Wizard-CSR-Domain-Preview.jpg)](/docs/assets/1765-StartSSL-Certificates-Wizard-CSR-Domain.jpg)
 
 8.  Enter the sub domain you entered when creating the CSR before (ex. www.yourdomain.com, server1.yourdomain.com), or if your entered yourdomain.com before, enter www into this field to make your certificate valid for www.yourdomain.com as well. Then click "Continue >> >>".
 
-  [![StartSSL Certificates Wizard Choose a SubDomain](/docs/assets/1766-StartSSL-Certificates-Wizard-CSR-SubDomain-Preview.jpg)](/docs/assets/1766-StartSSL-Certificates-Wizard-CSR-SubDomain.jpg)
+    [![StartSSL Certificates Wizard Choose a SubDomain](/docs/assets/1766-StartSSL-Certificates-Wizard-CSR-SubDomain-Preview.jpg)](/docs/assets/1766-StartSSL-Certificates-Wizard-CSR-SubDomain.jpg)
 
 9.  Click "Continue >> >>".
 
-  [![StartSSL Certificates Wizard CSR Ready for Issuing Certificate](/docs/assets/1767-StartSSL-Certificates-Wizard-CSR-Ready-Preview.jpg)](/docs/assets/1767-StartSSL-Certificates-Wizard-CSR-Ready.jpg)
+    [![StartSSL Certificates Wizard CSR Ready for Issuing Certificate](/docs/assets/1767-StartSSL-Certificates-Wizard-CSR-Ready-Preview.jpg)](/docs/assets/1767-StartSSL-Certificates-Wizard-CSR-Ready.jpg)
 
 10. Once your certificate has been issued paste the certificate into a new server.crt file. Then save your changes and exit the editor.
 
