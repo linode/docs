@@ -36,7 +36,7 @@ Themes, sometimes called skins, are HTML or CSS based. They act as templates, me
 
 #Drupal, Joomla, and WordPress 
 
-Three of the world's most popular content management systems are open source, free, and quality. Each has its own strengths and development history. 
+Three of the world's most popular content management systems are open source, free, and top quality. Each has its own strengths and development history. 
 
 ##Drupal
 
@@ -48,7 +48,7 @@ Drupal's strength lies in its organization. Drupal starts with the Drupal core. 
 
 [Joomla](/docs/websites/cms/manage-web-content-with-joomla) has been in release since 2005 and manages sites like eBay, General Electric, and Ikea. Joomla's 3.5 release date is scheduled for November 2014, and Joomla 4.0 is scheduled for March 2015. While Drupal has more modules and themes, Joomla has more extensions with thousands of add-on options, although the idea of modules and extensions often overlap. Both Drupal and Joomla have users in the millions, meaning, thousands of user comments and help topics.
 
-While WordPress is the beginner platform, and Drupal is the more advanced one, Joomla is in the middle. It's best for intermediate users. Joomla has a reputation for social collaboration or community driven websites, but can be customized towards any situation. The installation process is uncomplicated, but generating content will not be as easy as WordPress. 
+ Joomla is best for intermediate users. Joomla has a reputation for social collaboration or community driven websites, but can be customized towards any situation. The installation process is uncomplicated, but generating content will not be as easy as WordPress. 
 
 ##WordPress
 
