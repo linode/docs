@@ -3,7 +3,7 @@ author:
   name: Joseph Dooley
   email: jdooley@linode.com
 description: 'An overview of the three content management systems that Linode supports'
-keywords: 'drupal,wordpress,joomla,cms,content management system,content management framwork, '
+keywords: 'drupal,WordPress,joomla,cms,content management system,content management framwork, '
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: 
 modified: Friday, October 17th, 2014
@@ -19,7 +19,7 @@ Even experienced programmers often choose a CMS over coding a website. Content m
 
 #Content Management Systems on a Linode
 
-Linode has installation guides for [Drupal](/docs/websites/cms/managing-web-content-with-drupal-7), [Wordpress](/docs/websites/cms/manage-web-content-with-wordpress), and [Joomla](/docs/websites/cms/manage-web-content-with-joomla). Together, they are the most popular CMS apps on the web. However, before you install, you'll need a running Linode, so see the [Getting Started](/docs/getting-started) guide. For security, work through the [Securing Your Server](/docs/securing-your-server) guide. And, finally for server configuration, create a LAMP stack with one of the [LAMP](/docs/websites/lamp/) guides.
+Linode has installation guides for [Drupal](/docs/websites/cms/managing-web-content-with-drupal-7), [WordPress](/docs/websites/cms/manage-web-content-with-WordPress), and [Joomla](/docs/websites/cms/manage-web-content-with-joomla). Together, they are the most popular CMS apps on the web. However, before you install, you'll need a running Linode, so see the [Getting Started](/docs/getting-started) guide. For security, work through the [Securing Your Server](/docs/securing-your-server) guide. And, finally for server configuration, create a LAMP stack with one of the [LAMP](/docs/websites/lamp/) guides.
 
  {: .note }
 >
@@ -48,18 +48,18 @@ Drupal's strength lies in its organization. Drupal starts with the Drupal core. 
 
 [Joomla](/docs/websites/cms/manage-web-content-with-joomla) has been in release since 2005 and manages sites like eBay, General Electric, and Ikea. Joomla's 3.5 release date is scheduled for November 2014, and Joomla 4.0 is scheduled for March 2015. While Drupal has more modules and themes, Joomla has more extensions with thousands of add-on options, although the idea of modules and extensions often overlap. Both Drupal and Joomla have users in the millions, meaning, thousands of user comments and help topics.
 
-While WordPress is the beginner platform, and Drupal is the more advanced one, Joomla is in the middle. It's best for intermediate users. Joomla has a reputation for social collaboration or community driven websites, but can be customized towards any situation. The installation process is uncomplicated, but generating content will not be as easy as Wordpress. 
+While WordPress is the beginner platform, and Drupal is the more advanced one, Joomla is in the middle. It's best for intermediate users. Joomla has a reputation for social collaboration or community driven websites, but can be customized towards any situation. The installation process is uncomplicated, but generating content will not be as easy as WordPress. 
 
 ##WordPress
 
-Originally built as a blogger platform, [Wordpress](/docs/websites/cms/manage-web-content-with-wordpress) is subjectively the easiest to use and the most popular. It's initial release was in 2003 and has grown rapidly ever since. The WP platform is used for over 60 million websites, and 100,000 new websites are created daily. 
+Originally built as a blogger platform, [WordPress](/docs/websites/cms/manage-web-content-with-WordPress) is subjectively the easiest to use and the most popular. It's initial release was in 2003 and has grown rapidly ever since. The WP platform is used for over 60 million websites, and 100,000 new websites are created daily. 
 
 WordPress is best for static content. However, WP sites are often built for complex, dynamic solutions because the community is so large and have added so many capabilities. The structure of the company behind WordPress, Automattic, and its philosophy represent the ability for large growth with such an Open Source project.   
 
 
 #Next Steps
 
-We have briefly covered the concepts of content management systems, CMS themes, LAMP stacks, CMS add-ons, open source, [Drupal](/docs/websites/cms/managing-web-content-with-drupal-7), [Joomla](/docs/websites/cms/manage-web-content-with-joomla), and [Wordpress](/docs/websites/cms/manage-web-content-with-wordpress). Create a Linode, follow our installation guides, and start delivering your content to the world. 
+We have briefly covered the concepts of content management systems, CMS themes, LAMP stacks, CMS add-ons, open source, [Drupal](/docs/websites/cms/managing-web-content-with-drupal-7), [Joomla](/docs/websites/cms/manage-web-content-with-joomla), and [WordPress](/docs/websites/cms/manage-web-content-with-WordPress). Create a Linode, follow our installation guides, and start delivering your content to the world. 
 
 
 
