@@ -61,7 +61,7 @@ Use the [style guide](/docs/style-guide). While you're writing, make sure your c
 -   Formatted. Your style should use [PHP Markdown Extra](https://michelf.ca/projects/php-markdown/extra/) formatting and match the Linode Library [style guide](/docs/style-guide).
 -   Original. Your content should be original material written for Linode. We will not accept submissions that have been copied from other sources.
 
-Want to make sure you don't waste time writing a long article we can't use? Submit a writing sample first, to **librarysubmissions @ linode.com**.
+Want to make sure you don't waste time writing a long article we can't use? Submit a writing sample first, to **contribute @ linode.com**.
 
 Submit Your Article
 -------------------
