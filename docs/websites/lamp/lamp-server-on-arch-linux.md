@@ -22,7 +22,7 @@ Because of its minimalist underpinnings and focus on simplicity, many users find
 
 This guide contains step-by-step instructions for installing a full-featured LAMP stack on an Arch Linux system, which includes Apache, MySQL, and PHP. This stack sets you up with a solid web server. If you feel that you don't need MySQL or PHP, please don't feel obligated to install them.
 
-Arch Linux doesn't come in specific versions. This guide is current as of 2013-10-04.
+Arch Linux doesn't come in specific versions. This guide is current as of 2014-10-01.
 
 {: .note }
 >
@@ -43,26 +43,21 @@ Install and Configure the Apache Web Server
 
 The Apache Web Server is a very popular choice for serving web pages. While many alternatives have appeared in the last few years, Apache remains a powerful option that we recommend for most uses.
 
-1. If this is a brand new deployment of Arch Linux, before you can use the package manager you need to run the following commands:
-
-        pacman-key --init
-        pacman-key --populate archlinux
-
-2. Make sure your system is up to date by issuing the following command:
+1. Make sure your system is up to date by issuing the following command:
 
         pacman -Syyu
 
-3. To install the current version of the Apache web server (2.2 as of the writing of this article) use the following command:
+2. To install the current version of the Apache web server (2.4 as of the writing of this article) use the following command:
 
         pacman -Syu apache
 
-4. Configurations directives for Apache are contained in the `httpd.conf` file, which is located at `/etc/httpd/conf/httpd.conf`. We advise you to make a backup of this file into your home directory, like so:
+3. Configurations directives for Apache are contained in the `httpd.conf` file, which is located at `/etc/httpd/conf/httpd.conf`. We advise you to make a backup of this file into your home directory, like so:
 
         cp /etc/httpd/conf/httpd.conf ~/httpd.conf.backup
 
     There are additional Apache configuration files, which are included near the end of the `httpd.conf` file, and referenced in the `/etc/httpd/conf/extra/` directory. You may also choose to include additional files in your Apache configuration using a similar syntax. Regardless of how you choose to organize your configuration files, making regular backups of known working states is highly recommended.
 
-5. Edit the httpd-mpm.conf Apache configuration file in /etc/httpd/conf/extras/ to adjust the resource use settings. The settings shown below are a good starting point for a **Linode 1GB**.
+4. Edit the httpd-mpm.conf Apache configuration file in /etc/httpd/conf/extras/ to adjust the resource use settings. The settings shown below are a good starting point for a **Linode 1GB**.
 
     {: .file }
     /etc/httpd/conf/extra/httpd-mpm.conf
@@ -76,7 +71,7 @@ The Apache Web Server is a very popular choice for serving web pages. While many
         </IfModule>
         ~~~
 
-6. Edit the httpd-default.conf file to turn KeepAlives off.
+5. Edit the httpd-default.conf file to turn KeepAlives off.
 
     {: .file }
     /etc/httpd/conf/extra/httpd-default.conf
@@ -272,7 +267,7 @@ PHP makes it possible to produce dynamic and interactive pages using your own sc
     {: .file-excerpt }
     /etc/httpd/conf/httpd.conf
     :   ~~~ apache
-        LoadModule mpm_prefork_module modules/mod_mpm_prefork.so
+        LoadModule php5_module modules/libphp5.so
         
         Include conf/extra/php5_module.conf
 
@@ -299,7 +294,7 @@ More Information
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [Arch Linux Wiki](http://wiki.Arch%20Linux.org/)
-- [Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)
+- [Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.4/)
 - [MySQL Documentation](http://dev.mysql.com/doc/)
 - [Oracle MySQL and MariaDB Comparison](https://mariadb.com/kb/en/mariadb-vs-mysql-compatibility/)
 - [PHP Documentation](http://www.php.net/docs.php)
