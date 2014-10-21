@@ -59,11 +59,7 @@ For a Debian system follow the instructions below:
 
     <http://mirrors.linode.com/debian/>
 
-3.  Edit all lines containing the address <http://security.debian.org/> to reflect the new address location:
-
-    <http://mirrors.linode.com/debian-security/>
-
-4.  Save and exit the `sources.list` file.
+3.  Save and exit the `sources.list` file.
 
 ### CentOS System Settings
 

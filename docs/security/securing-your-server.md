@@ -6,9 +6,9 @@ description: 'Our guide to securing your first Linode.'
 keywords: 'security,linode quickstart,getting started'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['securing-your-server/']
-modified: Thursday, September 12th, 2013
+modified: Saturday, October 18th, 2014
 modified_by:
-  name: Linode
+  name: Dave Russell
 published: 'Friday, February 17th, 2012'
 title: Securing Your Server
 ---
@@ -83,7 +83,7 @@ Using SSH Key Pair Authentication
 
 You've used password authentication to connect to your Linode via SSH, but there's a more secure method available: *key pair authentication*. In this section, you'll generate a public and private key pair using your desktop computer and then upload the public key to your Linode. SSH connections will be authenticated by matching the public key with the private key stored on your desktop computer - you won't need to type your account password. When combined with the steps outlined later in this guide that disable password authentication entirely, key pair authentication can protect against brute-force password cracking attacks.
 
-Here's how to use SSH key pair autentication to connect to your Linode:
+Here's how to use SSH key pair authentication to connect to your Linode:
 
 1.  Generate the SSH keys on a desktop computer running Linux or Mac OS X by entering the following command in a terminal window *on your desktop computer*. PuTTY users can generate the SSH keys by following the windows specific instructions in the [Use Public Key Authentication with SSH Guide](/docs/security/use-public-key-authentication-with-ssh#windows-operating-system).
 
@@ -322,6 +322,7 @@ Here's how to install and configure Fail2Ban:
 3.  Set the `bantime` variable to specify how long (in seconds) bans should last.
 4.  Set the `maxretry` variable to specify the default number of tries a connection may be attempted before an attacker's IP address is banned.
 5.  Press `Control-x` and then press `y` to save the changes to the Fail2Ban configuration file.
+6.  Restart Fail2Ban by using `sudo service fail2ban restart`.
 
 Fail2Ban is now installed and running on your Linode. It will monitor your log files for failed login attempts. After an IP address has exceeded the maximum number of authentication attempts, it will be blocked at the network level and the event will be logged in `/var/log/fail2ban.log`.
 

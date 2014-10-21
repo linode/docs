@@ -33,7 +33,7 @@ To list directories use the `ls` command. If the directory is empty, ls will exe
 
     ls /etc/init.d/
 
-To list all of the files in the current directory, including hidden files (such as those begining with a `.`) use the `-a` flag for all files.
+To list all of the files in the current directory, including hidden files (such as those begginning with a `.`) use the `-a` flag for all files.
 
 To generate a list with more information about the files, the long flag, `-l` may be used. This provides information on file sizes, permissions, and last modified times (with either -a or the standard output). You may further modify the long output with an -h flag to convert the file size information from raw bytes to human-readable numbers (in KB, MB, GB, etc) for easier comprehension. This command might look like:
 

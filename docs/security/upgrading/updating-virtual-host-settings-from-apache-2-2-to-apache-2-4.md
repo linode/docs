@@ -65,7 +65,7 @@ Your sites have now been added to Apache. Now follow the instructions in the nex
 
 ### All Distros: Permissions
 
-If you are utilizing acces control rules within your virtual host files, you will need to follow these instructions to update your permissions for Apache 2.4. You cannot add the `Require all granted` line in Apache 2.2, or you'll get a 500 Internal Server Error. Make this change just after updating to Apache 2.4.
+If you are utilizing access control rules within your virtual host files, you will need to follow these instructions to update your permissions for Apache 2.4. You cannot add the `Require all granted` line in Apache 2.2, or you'll get a 500 Internal Server Error. Make this change just after updating to Apache 2.4.
 
 1.  Open your website's virtual host configuration file with your favorite text editor. For Ubuntu and Debian, this is typically a file like `/etc/apache2/sites-available/example.com.conf`. On CentOS and Fedora, this is typically `/etc/httpd/conf.d/vhost.conf`.
 

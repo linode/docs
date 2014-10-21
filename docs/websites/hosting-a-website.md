@@ -6,9 +6,9 @@ description: 'Our guide to hosting a website on your Linode.'
 keywords: 'linode guide,hosting a website,website,linode quickstart guide'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['hosting-website/']
-modified: Wednesday, January 29th, 2014
+modified: Tuesday, October 14th, 2014
 modified_by:
-  name: Linode
+  name: Joseph Dooley
 published: 'Tuesday, March 13th, 2012'
 title: Hosting a Website
 ---
@@ -312,9 +312,9 @@ Uploading Files
 
 You've successfully installed Apache, MySQL, and PHP. Now it's time to upload a website to your Linode. This is one of the last steps before you "flip the switch" and publish your website on the Internet. Here's how to upload files to your Linode:
 
-1.  If you haven't done so already, download and install an FTP client on your desktop computer. We recommend using [Filezilla](/docs/tools-reference/file-transfer/transfer-files-with-filezilla-on-ubuntu-9-10-desktop) on Linux systems, [Cyberduck](/docs/networking/file-transfer/transfer-files-cyberduck) on Mac OS X, and [WinSCP](/docs/networking/file-transfer/transfer-files-winscp) on Windows.
+1.  If you haven't done so already, download and install an SFTP capable client on your computer. We recommend using the [FileZilla](/docs/tools-reference/file-transfer/filezilla) SFTP client.
 2.  Follow the instructions in the guides listed above to connect to your Linode.
-3.  Upload your website's files to the `/var/www/example.com` directory. Replace `example.com` with your domain name.
+3.  Upload your website's files to the `/var/www/example.com/public_html` directory. Replace `example.com` with your domain name.
 
      {: .note }
     >

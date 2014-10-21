@@ -207,7 +207,7 @@ This section covers the insertion of SPF and DKIM records in your DNS entry. SPF
 
 ### SPF
 
-1. Navigate to your DNS provider, either where you purchased your domain name or Linode if you’ve transferred your DNS, and enter the following bits of information in your subdomain area to activate SPF. If you are using Linode's DNS manager, you can leave the name field blank, but other DNS providers may require you to specifiy @ for the hostname.
+1. Navigate to your DNS provider, either where you purchased your domain name or Linode if you’ve transferred your DNS, and enter the following bits of information in your subdomain area to activate SPF. If you are using Linode's DNS manager, you can leave the name field blank, but other DNS providers may require you to specify @ for the hostname.
 
     [![SPF Record](/docs/assets/iredmail-spf_preview.png)](/docs/assets/iredmail-spf.png)
 

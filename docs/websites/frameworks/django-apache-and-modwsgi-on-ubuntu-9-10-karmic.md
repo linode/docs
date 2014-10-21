@@ -23,7 +23,7 @@ This guide provides an introduction to getting started with the Django framework
 Install Dependencies
 --------------------
 
-Before we can procede with the installation and deployment of Django, we mus enable the `universe` repositories for Ubuntu 9.10 Karmic. To enable `universe`, first modify your `/etc/apt/sources.list` file to mirror the example file below. You'll need to uncomment the universe lines:
+Before we can proceed with the installation and deployment of Django, we mus enable the `universe` repositories for Ubuntu 9.10 Karmic. To enable `universe`, first modify your `/etc/apt/sources.list` file to mirror the example file below. You'll need to uncomment the universe lines:
 
 {: .file }
 /etc/apt/sources.list

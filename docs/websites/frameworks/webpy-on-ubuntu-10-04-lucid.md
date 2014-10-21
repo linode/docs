@@ -220,7 +220,7 @@ More Information
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [The Web.py Project Home Page](http://webpy.org/)
-- [Offical Web.py Documentation](http://webpy.org/docs/0.3)
+- [Official Web.py Documentation](http://webpy.org/docs/0.3)
 - [Rewrite URLs in Apache with Mod\_Rewrite](/docs/web-servers/apache/configuration/rewriting-urls)
 - [WSGI Configuration Options](http://code.google.com/p/modwsgi/wiki/ConfigurationDirectives)
 

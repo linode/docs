@@ -93,19 +93,19 @@ The hash table size defines the number of top-level nodes for each child's hash 
 
 ### DOSPageCount
 
-This is the threshhold for the number of requests for the same page (or URI) per page interval. Once the threshhold for that interval has been exceeded, the IP address of the client will be added to the blocking list.
+This is the threshold for the number of requests for the same page (or URI) per page interval. Once the threshold for that interval has been exceeded, the IP address of the client will be added to the blocking list.
 
 ### DOSSiteCount
 
-This is the threshhold for the total number of requests for any object by the same client on the same listener per site interval. Once the threshhold for that interval has been exceeded, the IP address of the client will be added to the blocking list.
+This is the threshold for the total number of requests for any object by the same client on the same listener per site interval. Once the threshold for that interval has been exceeded, the IP address of the client will be added to the blocking list.
 
 ### DOSPageInterval
 
-The interval for the page count threshhold; defaults to 1 second intervals.
+The interval for the page count threshold; defaults to 1 second intervals.
 
 ### DOSSiteInterval
 
-The interval for the site count threshhold; defaults to 1 second intervals.
+The interval for the site count threshold; defaults to 1 second intervals.
 
 ### DOSBlockingPeriod
 
