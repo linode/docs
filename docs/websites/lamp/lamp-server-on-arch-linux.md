@@ -54,7 +54,7 @@ The Apache Web Server is a very popular choice for serving web pages. While many
 
 3. To install the current version of the Apache web server (2.2 as of the writing of this article) use the following command:
 
-        pacman -Sy apache
+        pacman -Syu apache
 
 4. Configurations directives for Apache are contained in the `httpd.conf` file, which is located at `/etc/httpd/conf/httpd.conf`. We advise you to make a backup of this file into your home directory, like so:
 
@@ -184,7 +184,7 @@ By default, Arch Linux provides MariaDB as a relational database solution. Maria
 
 Install the `mariadb`, `mariadb-clients` and `libmariadbclient` packages:
 
-    pacman -Sy mariadb mariadb-clients libmariadbclient
+    pacman -Syu mariadb mariadb-clients libmariadbclient
 
 ### Enable Starting MySQL at Boot
 
@@ -243,7 +243,7 @@ PHP makes it possible to produce dynamic and interactive pages using your own sc
 
 1. Install PHP using pacman:
 
-       pacman -Sy php php-apache
+       pacman -Syu php php-apache
 
 2. Once PHP is installed we'll need to tune the configuration file located in `/etc/php/php.ini` for better error messages and logs, and better performance. These modifications provide a good starting point if you're unfamiliar with PHP configuration.
 
