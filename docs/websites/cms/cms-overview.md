@@ -19,7 +19,7 @@ Even experienced programmers often choose a CMS over coding a website. Content m
 
 #Content Management Systems on a Linode
 
-Linode has installation guides for [Drupal](/docs/websites/cms/managing-web-content-with-drupal-7), [WordPress](/docs/websites/cms/manage-web-content-with-WordPress), and [Joomla](/docs/websites/cms/manage-web-content-with-joomla). Together, they are the most popular CMS apps on the web. However, before you install, you'll need a running Linode, so see the [Getting Started](/docs/getting-started) guide. For security, work through the [Securing Your Server](/docs/securing-your-server) guide. And, finally for server configuration, create a LAMP stack with one of the [LAMP](/docs/websites/lamp/) guides.
+Linode has installation guides for [Drupal](/docs/websites/cms/managing-web-content-with-drupal-7), [WordPress](/docs/websites/cms/manage-web-content-with-WordPress), and [Joomla](/docs/websites/cms/manage-web-content-with-joomla). Together, they are the most popular CMS apps on the web. However, before you install, you'll need a running Linode, so see the [Getting Started](/docs/getting-started) guide. For security, work through the [Securing Your Server](/docs/securing-your-server) guide. And, finally for server configuration, create a LAMP stack with the [Hosting a Website](/docs/websites/hosting-a-website) guides.
 
  {: .note }
 >
