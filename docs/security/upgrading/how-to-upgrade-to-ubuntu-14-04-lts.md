@@ -1,0 +1,127 @@
+---
+author:
+  name: Dave Russell
+  email: drussell@linode.com
+description: 'Our guide to upgrading to Ubuntu 14.04 LTS'
+keywords: 'upgrading,ubuntu,ubuntu 14.04'
+license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+modified: Tuesday, October 21st, 2014
+modified_by:
+  name: Dave Russell
+published: 'Tuesday, October 21st, 2014'
+title: 'How to Upgrade to Ubuntu 14.04 LTS'
+---
+
+Ubuntu 14.04 is a long-term support (LTS) release that will be supported until April 2019. This guide explains how to upgrade your Linode from Ubuntu 12.04 (Precise Pangolin) to Ubuntu 14.04 (Trusty Tahr).
+
+This guide was written assuming that you have root access to your Linode. If you do not have root access, you will need to prepend each command with `sudo`. 
+
+Preparing to Upgrade
+--------------------
+
+Before upgrading, you will need to prepare your Linode to be upgraded. In order to do so, we will:
+
+1.  Install updates for Ubuntu 12.04
+
+2.  Backup your data
+
+3.  Check to ensure the kernel version you're using is the latest kernel
+
+4.  Stop non-critical services
+
+5.  Start a screen session to ensure that the installation is not interrupted
+
+Each of these will be discussed in more detail below. 
+
+### Installing Available Updates
+
+You should install all available updates for Ubuntu 12.04 LTS before upgrading to Ubuntu 14.04 LTS. You can do so by running these commands:
+
+1.  Update your package lists by entering the following command:
+
+        apt-get update
+
+2.  Install the updates by entering the following command:
+
+        apt-get upgrade
+
+Any available updates for Ubuntu 12.04 LTS will be installed on your Linode.
+
+### Backing Up Your Linode
+
+It's a good idea to back up your Linode before performing a major upgrade. That way, you can restore from backup if anything goes wrong during the upgrade process. If you subscribe to the Linode Backup Service, we recommend that you [take a manual snapshot](/docs/backup-service#sph_id2) before upgrading to Ubuntu 14.04 LTS. If you use another backup service or application, we recommend that you make a manual backup now.
+
+### Checking Your Kernel
+
+Verify that your Linode is using the latest supported kernel. See [Applying Kernel Updates](/docs/monitoring-and-maintaining#sph_applying-kernel-updates) for more information.
+
+### Stopping Services
+
+We recommend that you stop as many services as possible before upgrading to Ubuntu 14.04 LTS. This includes web server daemons (Apache and nginx), database servers (PostgreSQL and MySQL), and any other non-critical services. To stop a service, enter the following command, replacing `apache2` with the name of the service you want to stop:
+
+    service apache2 stop
+
+### Starting a Screen Session
+
+We recommend that you start a screen session to ensure that the updates will continue to install in the unlikely event you are disconnected from the Linode during the upgrade process. Here's how to install `screen` and start a screen session:
+
+1.  Install screen by entering the following command:
+
+        apt-get install screen
+
+2.  After installation has completed, start a screen session by entering the following command:
+
+        screen
+
+3.  If you are disconnected from your server, you can reconnect to the screen session by entering the following command:
+
+        screen -Dr
+
+You are now ready to install Ubuntu 14.04 LTS on your Linode.
+
+Upgrading from Ubuntu 12.04 LTS
+-------------------------------
+
+Here's how to upgrade from Ubuntu 12.04 LTS to Ubuntu 14.04 LTS:
+
+1.  If it's not already installed, enter the following command to install the `update-manager-core` package:
+
+        apt-get install update-manager-core
+
+2.  Open the `release-upgrades` file for editing by entering the following command:
+
+        nano /etc/update-manager/release-upgrades
+
+3.  Verify that the following line is present in the file, and that `Prompt` is set to `lts`:
+
+        Prompt=lts
+
+4.  Exit nano and upgrade your Linode to Ubuntu 14.04 LTS by entering the following command:
+
+        do-release-upgrade
+
+5.  Follow the on-screen instructions to complete the installation process. You will be prompted as to whether you wish to continue; as you are on screen, it is safe to continue via SSH.
+
+6.  The upgrade will cause your Linode to reboot. After it does so, verify that it's running Ubuntu 14.04 LTS by entering the following command:
+
+        cat /etc/lsb-release
+
+7.  You should see output that resembles the following:
+
+        DISTRIB_ID=Ubuntu
+        DISTRIB_RELEASE=14.04
+        DISTRIB_CODENAME=trusty
+        DISTRIB_DESCRIPTION="Ubuntu 14.04.1 LTS"
+
+Your Linode is now running Ubuntu 14.04 LTS.
+
+
+Upgrading from Previous Ubuntu Releases
+---------------------------------------
+
+If your Linode is running an release of Ubuntu older than 12.04 LTS, use the upgrade guides in the [Upgrading](/docs/security/upgrading) section to upgrade to Ubuntu 12.04 LTS first. You may then upgrade your Linode to Ubuntu 14.04 LTS.
+
+
+
+
+
