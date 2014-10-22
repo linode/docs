@@ -19,7 +19,7 @@ Even experienced programmers often choose a CMS over coding a website. Content m
 
 ##Content Management Systems on a Linode
 
-Linode has installation guides for [Drupal](/docs/websites/cms/managing-web-content-with-drupal-7), [WordPress](/docs/websites/cms/manage-web-content-with-WordPress), and [Joomla](/docs/websites/cms/manage-web-content-with-joomla). Together, they are the most popular CMS apps on the web. However, before you install, you'll need a running Linode, so see the [Getting Started](/docs/getting-started) guide. For security, work through the [Securing Your Server](/docs/securing-your-server) guide. And, finally for server configuration, create a LAMP stack with the [Hosting a Website](/docs/websites/hosting-a-website) guide.
+Linode has installation guides for [Drupal](/docs/websites/cms/managing-web-content-with-drupal-7), [WordPress](/docs/websites/cms/manage-web-content-with-wordpress), and [Joomla](/docs/websites/cms/manage-web-content-with-joomla). Together, they are the most popular CMS apps on the web. However, before you install, you'll need a running Linode, so see the [Getting Started](/docs/getting-started) guide. For security, work through the [Securing Your Server](/docs/securing-your-server) guide. And, finally for server configuration, create a LAMP stack with the [Hosting a Website](/docs/websites/hosting-a-website) guide.
 
  {: .note }
 >
@@ -52,14 +52,14 @@ Drupal's strength lies in its organization. Drupal starts with the Drupal core. 
 
 ###WordPress
 
-Originally built as a blogger platform, [WordPress](/docs/websites/cms/manage-web-content-with-WordPress) is subjectively the easiest to use and the most popular. It's initial release was in 2003 and has grown rapidly ever since. The WP platform is used for over 60 million websites, and 100,000 new websites are created daily. 
+Originally built as a blogger platform, [WordPress](/docs/websites/cms/manage-web-content-with-wordpress) is subjectively the easiest to use and the most popular. It's initial release was in 2003 and has grown rapidly ever since. The WP platform is used for over 60 million websites, and 100,000 new websites are created daily. 
 
 WordPress is best for static content. However, WP sites are often built for complex, dynamic solutions because the community is so large and have added so many capabilities. The structure of the company behind WordPress, Automattic, and its philosophy represent the ability for large growth with such an Open Source project.   
 
 
 ##Next Steps
 
-We have briefly covered the concepts of content management systems, CMS themes, LAMP stacks, CMS add-ons, open source, [Drupal](/docs/websites/cms/managing-web-content-with-drupal-7), [Joomla](/docs/websites/cms/manage-web-content-with-joomla), and [WordPress](/docs/websites/cms/manage-web-content-with-WordPress). Create a Linode, follow our installation guides, and start delivering your content to the world. 
+We have briefly covered the concepts of content management systems, CMS themes, LAMP stacks, CMS add-ons, open source, [Drupal](/docs/websites/cms/managing-web-content-with-drupal-7), [Joomla](/docs/websites/cms/manage-web-content-with-joomla), and [WordPress](/docs/websites/cms/manage-web-content-with-wordpress). Create a Linode, follow our installation guides, and start delivering your content to the world. 
 
 
 
