@@ -9,7 +9,7 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['communications/xmpp/prosody/ubuntu-9-10-karmic/']
 modified: Friday, April 29th, 2011
 modified_by:
-  name: System
+  name: Linode
 published: 'Monday, November 9th, 2009'
 title: 'Installing Prosody XMPP Server on Ubuntu 9.10 (Karmic)'
 ---

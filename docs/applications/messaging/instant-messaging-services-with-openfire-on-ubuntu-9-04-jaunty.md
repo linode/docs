@@ -9,7 +9,7 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['communications/xmpp/openfire/ubuntu-9-04-jaunty/']
 modified: Friday, April 29th, 2011
 modified_by:
-  name: System
+  name: Linode
 published: 'Saturday, September 19th, 2009'
 title: 'Instant Messaging Services with Openfire on Ubuntu 9.04 (Jaunty)'
 ---
