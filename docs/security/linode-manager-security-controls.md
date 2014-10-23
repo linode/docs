@@ -143,10 +143,10 @@ You have successfully disabled the two-factor authentication feature for your Li
 
 If you lose your token and get locked out of the Linode Manager, email <**support@linode.com**> to regain access to your account.
 
-Should you need us to temporarily disable your Two-Factor Authentication, the following information is required:
+Should you need us to disable your Two-Factor Authentication, the following information is required:
 
-1. An image of the front and back of the payment card on file, which clearly shows both  the last 6 digits, and owner of the card.
-2. An image of the front and back of the matching identity documentation.
+1. An image of the front and back of the payment card on file, which clearly shows both the last 6 digits and owner of the card.
+2. An image of the front and back of the matching government-issued photo ID.
 
 IP Address Whitelisting
 -----------------------
