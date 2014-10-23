@@ -77,33 +77,33 @@ Deploying from a StackScript
     [![A StackScript being created.](/docs/assets/1525-stackscripts_add_filled_small.png)](/docs/assets/1526-stackscripts_add_filled.png)
 
     Here's the code used in our example script. The comment lines explain what each section does:
-  
+
     {: .file }
     Initial Setup StackScript
     : ~~~ bash
       #!/bin/bash
       # This block defines the variables the user of the script needs to input
-      # when deploying using this script. 
-      # 
-      # 
+      # when deploying using this script.
+      #
+      #
       #<UDF name="hostname" label="The hostname for the new Linode.">
-      # HOSTNAME= 
-      # 
+      # HOSTNAME=
+      #
       #<UDF name="fqdn" label="The new Linode's Fully Qualified Domain Name">
       # FQDN=
-      
-      # This sets the variable $IPADDR to the IP address the new Linode receives. 
+
+      # This sets the variable $IPADDR to the IP address the new Linode receives.
       IPADDR=$(/sbin/ifconfig eth0 | awk '/inet / { print $2 }' | sed 's/addr://')
-     
-      # This updates the packages on the system from the distribution repositories. 
-      apt-get update 
+
+      # This updates the packages on the system from the distribution repositories.
+      apt-get update
       apt-get upgrade -y
-   
-      # This section sets the hostname. 
-      echo $HOSTNAME > /etc/hostname 
+
+      # This section sets the hostname.
+      echo $HOSTNAME > /etc/hostname
       hostname -F /etc/hostname
-      
-      # This section sets the Fully Qualified Domain Name (FQDN) in the hosts file. 
+
+      # This section sets the Fully Qualified Domain Name (FQDN) in the hosts file.
       echo $IPADDR $FQDN $HOSTNAME >> /etc/hosts
       ~~~
 
@@ -184,14 +184,14 @@ StackScript
        apt-get -y install php5
     elif [-f /etc/yum.conf ]; then
        yum -y install php
-    elif [-f /etc/pacman.conf ]; then 
-       pacman -Sy 
+    elif [-f /etc/pacman.conf ]; then
+       pacman -Sy
        pacman -S --noconfirm pacman
        pacman -S --noconfirm php
-    else 
-       echo "Your distribution is not supported by this StackScript" 
+    else
+       echo "Your distribution is not supported by this StackScript"
        exit
-    fi 
+    fi
 
     wget http://example.com/ --output-document=/opt/deployment-script.php
     chmod +x /opt/deployment-script.php
@@ -211,14 +211,14 @@ StackScript
        apt-get -y install php5
     elif [-f /etc/yum.conf ]; then
        yum -y install php
-    elif [-f /etc/pacman.conf ]; then 
-       pacman -Sy 
+    elif [-f /etc/pacman.conf ]; then
+       pacman -Sy
        pacman -S --noconfirm pacman
        pacman -S --noconfirm php
-    else 
-       echo "Your distribution is not supported by this StackScript" 
+    else
+       echo "Your distribution is not supported by this StackScript"
        exit
-    fi 
+    fi
 
     cat >/opt/deployment-script.php <<EOF
     #!/usr/bin/php
@@ -244,7 +244,7 @@ The [Linode API](http://www.linode.com/api/index.cfm) contains support for manag
     >
     > If creating a disk image with `linode.disk.createfromstackscript`, you will need to create a configuration profile and attach the disk to the profile before you can boot and run the StackScript.
 
-### Managing the Environment
+### Variables and UDFs
 
 The StackScript system provides a basic markup specification that interfaces with the Linode deployment process so that users can customize the behavior of a StackScript on a per-deployment basis. These `UDF` tags, when processed, insert variables and values into the script's environment. There are also a set of Linode created environmental variables that can be used for API calls or other tasks from within the script.
 
@@ -274,3 +274,24 @@ StackScript
     ~~~
 
 Make sure that there are files accessible via `HTTP` hosted on the `example.com` domain for both basic environment (e.g. `base.env`) and machine specific (e.g. `[ip-address].env`) files before launching this StackScript. Also consider the possible security implications of allowing any file with sensitive information regarding your deployment to be publicly accessible.
+
+{: .file-excerpt }
+StackScript
+:   ~~~ bash
+    # [...]
+    <UDF name="var1" Label="A question" default="" example="Enter something here." />
+    <UDF name="var2" Label="A question" oneOf="foo,bar" example="Enter something here." />
+    <UDF name="var3" Label="A question" oneOf="foo,bar" default="foo" />
+    <UDF name="var4" Label="A question" manyOf="foo,bar" default="foo,bar" />
+    # [...]
+    ~~~
+
+UDF properties are defined as:
+
+* name (the variable name) - alphanumeric, len <64, must be unique
+* label (the question to ask) - text 0-255
+* optionally one of these:
+   * oneof - a comma separated list of values
+   * manyof - a comma separated list of values
+* default - the default value, if not specified then this UDF is required
+* example - text to display next to the question as additional description
