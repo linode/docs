@@ -8,7 +8,7 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-servers/nginx/']
 modified: Tuesday, April 19th, 2011
 modified_by:
-  name: System
+  name: Linode
 published: 'Monday, December 14th, 2009'
 title: Hosting Websites with Nginx
 ---

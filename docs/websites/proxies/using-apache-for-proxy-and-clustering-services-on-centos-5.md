@@ -8,7 +8,7 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-servers/apache/proxy-configuration/proxy-and-clustering-services-centos-5/']
 modified: Friday, April 29th, 2011
 modified_by:
-  name: System
+  name: Linode
 published: 'Monday, March 22nd, 2010'
 title: Using Apache for Proxy and Clustering Services on CentOS 5
 ---

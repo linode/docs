@@ -9,7 +9,7 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['frameworks/ruby-on-rails-nginx/ubuntu-9-04-jaunty/']
 modified: Friday, April 29th, 2011
 modified_by:
-  name: System
+  name: Linode
 published: 'Wednesday, August 19th, 2009'
 title: 'Ruby on Rails with Nginx on Ubuntu 9.04 (Jaunty)'
 ---

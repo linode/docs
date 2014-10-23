@@ -8,7 +8,7 @@ keywords: 'postgresql,postgresql database,postgresql ubuntu,postgresql ubuntu 9.
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: Friday, April 29th, 2011
 modified_by:
-  name: System
+  name: Linode
 published: 'Thursday, October 29th, 2009'
 title: 'Use PostgreSQL Relational Databases on Ubuntu 9.10 (Karmic)'
 ---

@@ -9,7 +9,7 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['server-monitoring/cacti/centos-5/']
 modified: Friday, April 29th, 2011
 modified_by:
-  name: System
+  name: Linode
 published: 'Friday, February 12th, 2010'
 title: Monitoring Resource Utilization with Cacti on CentOS 5
 ---

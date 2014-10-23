@@ -8,7 +8,7 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['linux-tools/common-commands/killall-kill/']
 modified: Tuesday, April 19th, 2011
 modified_by:
-  name: System
+  name: Linode
 published: 'Monday, November 29th, 2010'
 title: Manage Processes with killall and kill
 ---

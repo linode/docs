@@ -9,7 +9,7 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-applications/analytics/webalizer/']
 modified: Tuesday, April 19th, 2011
 modified_by:
-  name: System
+  name: Linode
 published: 'Saturday, April 17th, 2010'
 title: Webalizer
 ---

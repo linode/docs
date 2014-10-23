@@ -9,7 +9,7 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['databases/couchdb/ubuntu-9-10-karmic/']
 modified: Friday, April 29th, 2011
 modified_by:
-  name: System
+  name: Linode
 published: 'Thursday, February 18th, 2010'
 title: 'Use CouchDB for Document Based Data Storage on Ubuntu 9.10 (Karmic)'
 ---

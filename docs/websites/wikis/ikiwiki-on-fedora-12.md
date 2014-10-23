@@ -9,7 +9,7 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-applications/wikis/ikiwiki/fedora-12/']
 modified: Friday, April 29th, 2011
 modified_by:
-  name: System
+  name: Linode
 published: 'Tuesday, March 23rd, 2010'
 title: Ikiwiki on Fedora 12
 ---

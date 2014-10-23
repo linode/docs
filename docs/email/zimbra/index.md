@@ -7,7 +7,7 @@ keywords: 'zimbra,zimbra groupware,zimbra on linux,linux mail server,linux email
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: Tuesday, April 19th, 2011
 modified_by:
-  name: System
+  name: Linode
 published: 'Sunday, September 13th, 2009'
 title: Zimbra Groupware Guides
 ---
