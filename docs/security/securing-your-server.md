@@ -68,11 +68,15 @@ CentOS/Fedora
 		root    ALL=(ALL)       ALL
 		exampleuser        ALL=(ALL)       ALL
 
-6.  Log out of your Linode as the `root` user by entering the following command:
+6.  Press 'Esc' to leave insert mode and enter the following command to save the file and quit visudo:
+
+        :wq
+        
+7.  Log out of your Linode as the `root` user by entering the following command:
 
         logout
 
-7.  Log in to your Linode as the new user by entering the following command. Replace *exampleuser* with your username, and the example IP address with your Linode's IP address:
+8.  Log in to your Linode as the new user by entering the following command. Replace *exampleuser* with your username, and the example IP address with your Linode's IP address:
 
         ssh exampleuser@123.456.78.90
 
@@ -145,7 +149,13 @@ Here's how to disable SSH password authentication and root login:
 4.  Save the changes to the SSH configuration file by pressing **Control-X**, and then **Y**.
 5.  Restart the SSH service to load the new configuration. Enter the following command:
 
+	**Debian/Ubuntu Users:**
+
         sudo service ssh restart
+        
+	**Fedora/CentOS:**
+
+        sudo systemctl restart sshd
 
 After the SSH service restarts, the SSH configuration changes will be applied.
 
@@ -305,11 +315,19 @@ Here's how to install and configure Fail2Ban:
 
 1.  Install Fail2Ban by entering the following command:
 
-        Debian/Ubuntu
-	    sudo apt-get install fail2ban
-		
-		CentOS/Fedora
-		sudo yum install fail2ban
+	**Debian/Ubuntu Users:**
+
+        sudo apt-get install fail2ban
+        
+	**Fedora Users:**
+
+        sudo yum install fail2ban
+        
+	**CentOS Users:**
+
+        sudo yum install epel-release
+        sudo yum install fail2ban
+
 
 2.  Optionally, you can override the default Fail2Ban configuration by creating a new `jail.local` file. Enter the following command to create the file:
 
