@@ -2,15 +2,15 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Serve SSL-enabled websites with the Apache 2 web server on CentOS 5 & 6.'
-keywords: 'apache ssl,ssl on centos,web server,centos 5, centos 6'
+description: 'Serve SSL-enabled websites with the Apache 2 web server on CentOS.'
+keywords: 'apache ssl,ssl on centos,web server,centos 5,centos 6,centos 7'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['web-servers/apache/ssl-guides/centos/']
-modified: Tuesday, November 1st, 2011
+alias: ['web-servers/apache/ssl-guides/centos/','security/ssl/ssl-certificates-with-apache-2-on-centos-5-6']
+modified: Tuesday, October 21st, 2014
 modified_by:
-  name: Tim Heckman
+  name: Dave Russell
 published: 'Friday, February 26th, 2010'
-title: 'SSL Certificates with Apache 2 on CentOS 5 & 6'
+title: 'SSL Certificates with Apache 2 on CentOS'
 ---
 
 This guide will assist you with enabling SSL for websites served under the Apache web server. We assume you've completed the steps detailed in our [getting started guide](/docs/getting-started/), and that you've successfully set up Apache for serving virtual hosts as outlined in our [Apache 2 installation guide](/docs/web-servers/apache/installation). These steps should be performed via an SSH session to your Linode as the root user.
@@ -52,7 +52,7 @@ You will be asked for several configuration values. Enter values appropriate for
 
 ### Configure Apache to use the Self-Signed Certificate
 
-SSL name-based virtual hosts are still not supported in Apache. However, you may use a single IP to provide self-signed SSL service for multiple vhosts. We'll need to edit the virtual host configuration directives for sites that you would like to enable SSL on. For each virtual host, you must add the following stanza, changing the values as appropriate for each site. Note that we've essentially duplicated the configuration for a non-SSL site, with the addition of three lines for SSL.
+We'll need to edit the virtual host configuration directives for sites that you would like to enable SSL on. For each virtual host, you must add the following stanza, changing the values as appropriate for each site. Note that we've essentially duplicated the configuration for a non-SSL site, with the addition of three lines for SSL.
 
 {: .file-excerpt }
 /etc/httpd/conf.d/vhost.conf
@@ -74,7 +74,7 @@ SSL name-based virtual hosts are still not supported in Apache. However, you may
 
 Restart Apache:
 
-    /etc/init.d/httpd restart
+    service httpd restart
 
 You should now be able to visit your site with SSL enabled (after accepting your browser's warnings about the certificate).
 
@@ -162,7 +162,7 @@ In the following example, edit the virtual host configuration file for the site 
 
 Restart Apache:
 
-    /etc/init.d/httpd restart
+    service httpd restart
 
 You should now be able to visit your site with SSL enabled. Congratulations, you've installed a commercial SSL certificate!
 
