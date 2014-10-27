@@ -237,6 +237,8 @@ If your Linode has a firewall, it will need to allow communication with Longview
 
         iptables -I OUTPUT -d longview.linode.com -j ACCEPT 
 
+If you followed the instructions for setting up a firewall in our [Securing Your Server](/docs/security/securing-your-server) guide, go back to [this section](/docs/security/securing-your-server#step_6) to find additional rules for Longview.
+
 ### Labeling Systems
 
 If you plan on monitoring multiple systems with Longview, you should create *labels* for the systems to differentiate them. This will make them easier to find in the Linode Manager. Here's how to label the systems monitored by Longview:
