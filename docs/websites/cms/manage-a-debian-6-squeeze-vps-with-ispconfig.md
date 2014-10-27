@@ -8,7 +8,7 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-applications/control-panels/ispconfig/debian-6-squeeze/']
 modified: Friday, April 29th, 2011
 modified_by:
-  name: System
+  name: Linode
 published: 'Tuesday, April 5th, 2011'
 title: 'Manage a Debian 6 (Squeeze) VPS with ISPConfig'
 ---

@@ -9,7 +9,7 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-applications/project-management/egroupware/']
 modified: Tuesday, April 19th, 2011
 modified_by:
-  name: System
+  name: Linode
 published: 'Monday, February 1st, 2010'
 title: Provide Collaboration Tools with eGroupware
 ---

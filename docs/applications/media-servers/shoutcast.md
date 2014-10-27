@@ -254,7 +254,7 @@ Now we need to configure the SHOUTcast transcoder. This example will walk you th
     /home/shoutcast/sct/sc\_trans\_basic.conf
     : ~~~
     ; here you would provide any information to fill in details
-    ; provided to clients about the stream. it us upto you what
+    ; provided to clients about the stream. it us up to you what
     ; is entered though do not do anything which will annoy, etc
     streamtitle=My Test Server
     streamurl=http://www.shoutcast.com

@@ -26,7 +26,7 @@ At the shell prompt, issue the following commands to install SSL for Apache and 
 
     yum install mod_ssl
     mkdir /etc/httpd/ssl
-    openssl req -new -x509 -days 365 -nodes -out /etc/httpd/ssl/httpd.pem -keyout /etc/httpd/ssl/httpd.key
+    openssl req -new -x509 -sha256 -days 365 -nodes -out /etc/httpd/ssl/httpd.pem -keyout /etc/httpd/ssl/httpd.key
 
 You will be asked for several configuration values. Enter values appropriate for your organization and server, as shown here. This example will create a certificate valid for 365 days; you may wish to increase this value. We've specified the FQDN (fully qualified domain name) of the VPS for the "Common Name" entry, as this certificate will be used for generic SSL service.
 
@@ -45,7 +45,7 @@ You will be asked for several configuration values. Enter values appropriate for
     Country Name (2 letter code) [GB]:US
     State or Province Name (full name) [Berkshire]:New Jersey
     Locality Name (eg, city) [Newbury]:Absecon
-    Organization Name (eg, company) [My Comany Ltd]:SoftwareDev, LLC
+    Organization Name (eg, company) [My Company Ltd]:SoftwareDev, LLC
     Organizational Unit Name (eg, section) []:Web Services
     Common Name (eg, YOUR name) []:archimedes.mydomain.com
     Email Address []:support@mydomain.com
@@ -108,7 +108,7 @@ Here are the values we entered for our example certificate. Note that you can ig
     Country Name (2 letter code) [GB]:US
     State or Province Name (full name) [Berkshire]:New Jersey
     Locality Name (eg, city) [Newbury]:Absecon
-    Organization Name (eg, company) [My Comany Ltd]:SoftwareDev, LLC
+    Organization Name (eg, company) [My Company Ltd]:SoftwareDev, LLC
     Organizational Unit Name (eg, section) []:Web Services
     Common Name (eg, YOUR name) []:archimedes.mydomain.com
     Email Address []:support@mydomain.com

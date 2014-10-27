@@ -9,7 +9,7 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-servers/apache/ssl-guides/ubuntu-9-10-karmic/']
 modified: Friday, April 29th, 2011
 modified_by:
-  name: System
+  name: Linode
 published: 'Friday, February 26th, 2010'
 title: 'SSL Certificates with Apache 2 on Ubuntu 9.10 (Karmic)'
 ---
@@ -29,7 +29,7 @@ At the shell prompt, issue the following commands to enable SSL for Apache and g
 
     a2enmod ssl
     mkdir /etc/apache2/ssl
-    openssl req -new -x509 -days 365 -nodes -out /etc/apache2/ssl/apache.pem -keyout /etc/apache2/ssl/apache.key
+    openssl req -new -x509 -sha256 -days 365 -nodes -out /etc/apache2/ssl/apache.pem -keyout /etc/apache2/ssl/apache.key
 
 You will be asked for several configuration values. Enter values appropriate for your organization and server, as shown here. This example will create a certificate valid for 365 days; you may wish to increase this value. We've specified the FQDN (fully qualified domain name) of the VPS for the "Common Name" entry, as this certificate will be used for generic SSL service.
 

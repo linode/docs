@@ -9,7 +9,7 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['server-monitoring/cacti/centos-5/']
 modified: Friday, April 29th, 2011
 modified_by:
-  name: System
+  name: Linode
 published: 'Friday, February 12th, 2010'
 title: Monitoring Resource Utilization with Cacti on CentOS 5
 ---
@@ -186,7 +186,7 @@ Next we'll need to modify the `/etc/snmp/snmpd.conf` file with the name of our c
     mv /etc/snmp/snmpd.conf /etc/snmp/old.snmpd.conf
     echo "rocommunity mycommunity" > /etc/snmp/snmpd.conf
 
-Note that the format is "rocommunity community\_name", where `community_name` is the name of the community you originally used with Cacti, e.g. `Bucknell`. If you're monitoring a CentOS machine and you need to configure which interface SNMPD binds to you must edit the `/etc/sysconfig/snmpd.options` file. Append any IP address needed to the end of the following line, and uncomment it by removing the `#` at the begining if needed. You should not need to edit this file.
+Note that the format is "rocommunity community\_name", where `community_name` is the name of the community you originally used with Cacti, e.g. `Bucknell`. If you're monitoring a CentOS machine and you need to configure which interface SNMPD binds to you must edit the `/etc/sysconfig/snmpd.options` file. Append any IP address needed to the end of the following line, and uncomment it by removing the `#` at the begginning if needed. You should not need to edit this file.
 
 {: .file }
 /etc/sysconfig/snmpd.options

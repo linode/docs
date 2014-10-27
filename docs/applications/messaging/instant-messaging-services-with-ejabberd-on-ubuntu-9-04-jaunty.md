@@ -9,7 +9,7 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['communications/xmpp/ejabberd/ubuntu-9-04-jaunty/']
 modified: Friday, April 29th, 2011
 modified_by:
-  name: System
+  name: Linode
 published: 'Tuesday, October 13th, 2009'
 title: 'Instant Messaging Services with ejabberd on Ubuntu 9.04 (Jaunty)'
 ---

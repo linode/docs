@@ -7,7 +7,7 @@ keywords: 'pgadmin,pgadmin windows,postgresql gui,postgresql windows,manage post
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: Friday, April 29th, 2011
 modified_by:
-  name: System
+  name: Linode
 published: 'Wednesday, April 28th, 2010'
 title: Securely Manage Remote PostgreSQL Servers with pgAdmin on Windows
 ---

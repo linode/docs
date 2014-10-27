@@ -9,7 +9,7 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['frameworks/ruby-on-rails-nginx/ubuntu-8-04-hardy/']
 modified: Friday, April 29th, 2011
 modified_by:
-  name: System
+  name: Linode
 published: 'Friday, August 21st, 2009'
 title: 'Ruby on Rails with Nginx on Ubuntu 8.04 LTS (Hardy)'
 ---

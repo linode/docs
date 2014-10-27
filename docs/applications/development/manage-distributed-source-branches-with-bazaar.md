@@ -86,7 +86,7 @@ If you run the `bzr status` command here, you would see the following:
 
 To create a commit, or save local changes to the Bazaar branch, issue the `bzr commit` command. This will open a text editor so you may create a commit message. Commit messages give allow you to describe the changes since the last commit. These notes can help your team understand the work. After creating, saving, and exiting the editor, Bazaar will output the following message to inform you that the commit was successful:
 
-    Commited revision 1.
+    Committed revision 1.
 
 Commits in Bazaar are stored sequentially and identified by their number. You can use this number later to reference this moment in your project's history. If you would like to create a commit without needing to open a text editor you can use a command in the following form:
 

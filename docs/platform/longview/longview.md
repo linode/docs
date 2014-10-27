@@ -2,11 +2,11 @@
 author:
   name: Linode
   email: docs@linode.com
-description: Our guide to installing and using Linode Longview
+description: Our guide to installing and using Linode Longview.
 keywords: 'system monitoring,longview,troubleshooting'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['longview/']
-modified: Tuesday, September 19th, 2014
+modified: Monday, October 27th, 2014
 modified_by:
   name: Linode
 published: 'Wednesday, March 27th, 2013'
@@ -227,15 +227,17 @@ Congratulations! The Longview client is now installed.
 
 ### Firewall Rules
 
-If your Linode is currently utilizing a Firewall, it will need to allow communication with Longview's aggregation host. In order to do so, you will want to allow traffic destined for 'longview.linode.com' to be routed through your Firewall. The following rules should allow your Linode to provide its metrics to the Longview application:
+If your Linode has a firewall, it will need to allow communication with Longview's aggregation host. To do so, you will need to allow traffic destined for 'longview.linode.com' to be routed through your firewall. The following rules should allow your Linode to provide its metrics to the Longview application:
 
 1. You will want to edit your INPUT chain so that traffic is routed to your Linode.
 
-    iptables -I INPUT -s longview.linode.com -j ACCEPT
+        iptables -I INPUT -s longview.linode.com -j ACCEPT
 
 2. In order for your Linode to provide its metrics to Longview you will want to allow the same address through the OUTPUT chain of your Firewall.
 
-    iptables -I OUTPUT -d longview.linode.com -j ACCEPT 
+        iptables -I OUTPUT -d longview.linode.com -j ACCEPT 
+
+If you followed the instructions for setting up a firewall in our [Securing Your Server](/docs/security/securing-your-server) guide, go back to [this section](/docs/security/securing-your-server#step_6) to find additional rules for Longview.
 
 ### Labeling Systems
 

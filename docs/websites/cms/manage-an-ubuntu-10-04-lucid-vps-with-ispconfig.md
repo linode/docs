@@ -9,7 +9,7 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-applications/control-panels/ispconfig/ubuntu-10-04-lucid/']
 modified: Friday, April 29th, 2011
 modified_by:
-  name: System
+  name: Linode
 published: 'Wednesday, May 19th, 2010'
 title: 'Manage an Ubuntu 10.04 (Lucid) VPS with ISPConfig'
 ---

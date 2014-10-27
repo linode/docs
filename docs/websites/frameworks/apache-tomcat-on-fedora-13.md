@@ -9,7 +9,7 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['frameworks/apache-tomcat/fedora-13/']
 modified: Friday, April 29th, 2011
 modified_by:
-  name: System
+  name: Linode
 published: 'Friday, July 23rd, 2010'
 title: Apache Tomcat on Fedora 13
 ---

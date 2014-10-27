@@ -9,7 +9,7 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['communications/xmpp/openfire/ubuntu-9-04-jaunty/']
 modified: Friday, April 29th, 2011
 modified_by:
-  name: System
+  name: Linode
 published: 'Saturday, September 19th, 2009'
 title: 'Instant Messaging Services with Openfire on Ubuntu 9.04 (Jaunty)'
 ---
@@ -108,7 +108,7 @@ Direct your browser to your Linode's IP address or FQDN (fully qualified domain 
 
 [![Language selection in Openfire setup on Ubuntu 9.04 (Jaunty).](/docs/assets/471-openfire-ubuntu-9.04-01-language-selection.png)](/docs/assets/471-openfire-ubuntu-9.04-01-language-selection.png)
 
-Next, you'll be asked to configure your domain and ports for administration. Use the fully qualified domain name you have assigned to your Linode in DNS (more infomation: [configuring DNS with the Linode Manager](/docs/dns-guides/configuring-dns-with-the-linode-manager)).
+Next, you'll be asked to configure your domain and ports for administration. Use the fully qualified domain name you have assigned to your Linode in DNS (more information: [configuring DNS with the Linode Manager](/docs/dns-guides/configuring-dns-with-the-linode-manager)).
 
 [![Domain and admin ports selection in Openfire setup on Ubuntu 9.04 (Jaunty).](/docs/assets/472-openfire-ubuntu-9.04-02-domain-ports-selection.png)](/docs/assets/472-openfire-ubuntu-9.04-02-domain-ports-selection.png)
 

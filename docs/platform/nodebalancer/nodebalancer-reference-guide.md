@@ -124,7 +124,7 @@ Changes to a Node's Mode are applied within 60 seconds.
 
 -   **Accept** - allows the node to accept incoming connections so long as it is healthy.
 -   **Reject** - remove the node from rotation; discontinue health checks on this backend. Existing connections remain active.
--   **Drain** - will only recieve connections from clients whose session stickiness points to this node.
+-   **Drain** - will only receive connections from clients whose session stickiness points to this node.
 
 The use-case for Drain would be to set a node to Drain a day or so in advance of taking the node down. That way existing sessions would likely have ended.
 
@@ -139,7 +139,7 @@ You'll need to configure your web server software to use the XFF header.
 
 ### Apache
 
-If you're using the Apache web server, you can use the [mod\_rpaf module](http://stderr.net/apache/rpaf/) to replace `REMOTE_ADDR` with the clent's IP address in the XFF header. After you install the module, you'll need to specify 192.168.255.0/24 as a proxy in `httpd.conf`.
+If you're using the Apache web server, you can use the [mod\_rpaf module](http://www.stderr.net/apache/rpaf/) to replace `REMOTE_ADDR` with the clent's IP address in the XFF header. After you install the module, you'll need to specify 192.168.255.0/24 as a proxy in `httpd.conf`.
 
 ### Nginx
 

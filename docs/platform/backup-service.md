@@ -2,7 +2,7 @@
 author:
   name: Alex Fornuto
   email: afornuto@linode.com
-description: Our guide to using the Linode backup service
+description: Our guide to using the Linode backup service.
 keywords: 'backup,linode platform,linode backup service'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['backup-service/']

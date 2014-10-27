@@ -26,7 +26,7 @@ Download and Install Drupal
 
 The Drupal software is frequently updated as bugs are patched and security vulnerabilities are found and removed. Visit the [Drupal download page](http://drupal.org/project/drupal) to find the latest version of the Drupal 7 Release, and download that file rather than the file mentioned in the example below.
 
-If you installed and configured your Apache server as described in our other guides, the publicly accessible DocumentRoot will be in a directory similar to `/srv/www/ducklington.org/public_html/`. You will change directories to the *non-publically accessable* `/srv/www/ducklington.org/` directory, using the following command:
+If you installed and configured your Apache server as described in our other guides, the publicly accessible DocumentRoot will be in a directory similar to `/srv/www/ducklington.org/public_html/`. You will change directories to the *non-publically accessible* `/srv/www/ducklington.org/` directory, using the following command:
 
     cd /srv/www/ducklington.org 
 

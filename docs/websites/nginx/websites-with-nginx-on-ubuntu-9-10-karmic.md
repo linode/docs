@@ -9,7 +9,7 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-servers/nginx/installation/ubuntu-9-10-karmic/']
 modified: Friday, April 29th, 2011
 modified_by:
-  name: System
+  name: Linode
 published: 'Wednesday, February 24th, 2010'
 title: 'Websites with nginx on Ubuntu 9.10 (Karmic)'
 ---

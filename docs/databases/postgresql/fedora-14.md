@@ -8,7 +8,7 @@ keywords: 'postgresql fedora 14,postgresql database,relational database'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: Friday, April 29th, 2011
 modified_by:
-  name: System
+  name: Linode
 published: 'Wednesday, December 8th, 2010'
 title: Use PostgreSQL Relational Databases on Fedora 14
 ---

@@ -8,7 +8,7 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-servers/apache/proxy-configuration/multiple-webservers-proxypass-debian-6-squeeze/']
 modified: Friday, April 29th, 2011
 modified_by:
-  name: System
+  name: Linode
 published: 'Thursday, April 7th, 2011'
 title: 'Multiple Web Servers with ProxyPass on Debian 6 (Squeeze)'
 ---

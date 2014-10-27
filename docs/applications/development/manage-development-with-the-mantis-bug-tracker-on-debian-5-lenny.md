@@ -8,7 +8,7 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-applications/project-management/mantis/debian-5-lenny/']
 modified: Friday, April 29th, 2011
 modified_by:
-  name: System
+  name: Linode
 published: 'Tuesday, February 16th, 2010'
 title: 'Manage Development with the Mantis Bug Tracker on Debian 5 (Lenny)'
 ---

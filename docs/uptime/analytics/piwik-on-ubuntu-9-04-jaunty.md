@@ -8,7 +8,7 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-applications/analytics/piwik/ubuntu-9-04-jaunty/']
 modified: Wednesday, April 27th, 2011
 modified_by:
-  name: System
+  name: Linode
 published: 'Wednesday, December 23rd, 2009'
 title: 'iwik on Ubuntu 9.04 (Jaunty)'
 deprecated: true

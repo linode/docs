@@ -8,7 +8,7 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['linux-tools/common-commands/find/']
 modified: Tuesday, April 19th, 2011
 modified_by:
-  name: System
+  name: Linode
 published: 'Monday, October 25th, 2010'
 title: Filter File systems with the find Command
 ---
