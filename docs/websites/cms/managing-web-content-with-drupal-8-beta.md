@@ -94,7 +94,7 @@ The Drupal developers actively update their application for security vulnerabili
 
 You're now ready to begin using Drupal.
 
-##Taking the next Steps with Drupal
+##Taking the Next Steps with Drupal
 
 Typically, the next steps would be to install a theme, and then write up some content for the homepage. However, Drupal 8 may not have many themes available yet, so try [creating one](https://www.drupal.org/theme-guide/8). Once you have a theme, try [creating modules](https://www.drupal.org/developing/modules).
 
