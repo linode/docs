@@ -246,7 +246,35 @@ The [Linode API](http://www.linode.com/api/index.cfm) contains support for manag
 
 ### Variables and UDFs
 
-The StackScript system provides a basic markup specification that interfaces with the Linode deployment process so that users can customize the behavior of a StackScript on a per-deployment basis. These `UDF` tags, when processed, insert variables and values into the script's environment. There are also a set of Linode created environmental variables that can be used for API calls or other tasks from within the script.
+The StackScript system provides a basic markup specification that interfaces with the Linode deployment process so that users can customize the behavior of a StackScript on a per-deployment basis. These `UDF` tags, when processed, insert variables and values into the script's environment.
+
+The UDF tags are explained in the table below:
+
+{: .table .table-striped}
+|Label    | Description           | Requirements
+|--------------------------------------------
+|name     | The variable name     | Alphanumeric, len <64, must be unique
+|label    | The question to ask   | Text 0-255
+|default  | The default value     | If not specified then this UDF is required
+|example  | Example input         |
+|oneof    | A comma separated list of values| Optional
+|manyof   | A comma separated list of values| Optional
+
+
+Below is an example implementation of the UDF variables:
+
+{: .file-excerpt }
+StackScript
+:   ~~~ bash
+    # [...]
+    <UDF name="var1" Label="A question" default="" example="Enter something here." />
+    <UDF name="var2" Label="Pick one of" oneOf="foo,bar" example="Enter something here." />
+    <UDF name="var3" Label="A question" oneOf="foo,bar" default="foo" />
+    <UDF name="var4" Label="Pick several from" manyOf="foo,bar" default="foo,bar" />
+    # [...]
+    ~~~
+
+There are also a set of Linode created environmental variables that can be used for API calls or other tasks from within the script.
 
 {: .table .table-striped}
 | Environment Variable               | Description                                                                               |
@@ -256,6 +284,8 @@ The StackScript system provides a basic markup specification that interfaces wit
 | `LINODE_RAM=1024`                  | The RAM available on this Linode's plan                                                   |
 | `LINODE_DATACENTERID=6`            | The ID number of the data center containing the Linode. See our API for more information. |
 |:-----------------------------------|:------------------------------------------------------------------------------------------|
+
+
 
 If you do not want to use the StackScript system to set your environment variables, you might consider hosting files with settings on a different system. This is accomplished with the following fragment:
 
@@ -274,24 +304,3 @@ StackScript
     ~~~
 
 Make sure that there are files accessible via `HTTP` hosted on the `example.com` domain for both basic environment (e.g. `base.env`) and machine specific (e.g. `[ip-address].env`) files before launching this StackScript. Also consider the possible security implications of allowing any file with sensitive information regarding your deployment to be publicly accessible.
-
-{: .file-excerpt }
-StackScript
-:   ~~~ bash
-    # [...]
-    <UDF name="var1" Label="A question" default="" example="Enter something here." />
-    <UDF name="var2" Label="A question" oneOf="foo,bar" example="Enter something here." />
-    <UDF name="var3" Label="A question" oneOf="foo,bar" default="foo" />
-    <UDF name="var4" Label="A question" manyOf="foo,bar" default="foo,bar" />
-    # [...]
-    ~~~
-
-UDF properties are defined as:
-
-* name (the variable name) - alphanumeric, len <64, must be unique
-* label (the question to ask) - text 0-255
-* optionally one of these:
-   * oneof - a comma separated list of values
-   * manyof - a comma separated list of values
-* default - the default value, if not specified then this UDF is required
-* example - text to display next to the question as additional description
