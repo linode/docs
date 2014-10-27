@@ -57,7 +57,7 @@ CentOS/Fedora
 3.  Set the password for your new user by entering the following command.  Replace *exampleuser* with your desired username:
 
         passwd exampleuser
-	
+
 4.  You will now need to edit your sudoers file to grant your new user the correct permissions.  Enter the following command to open your sudoers file for editing:
 
         visudo
@@ -71,7 +71,7 @@ CentOS/Fedora
 6.  Press 'Esc' to leave insert mode and enter the following command to save the file and quit visudo:
 
         :wq
-        
+
 7.  Log out of your Linode as the `root` user by entering the following command:
 
         logout
@@ -152,7 +152,7 @@ Here's how to disable SSH password authentication and root login:
 	**Debian/Ubuntu Users:**
 
         sudo service ssh restart
-        
+
 	**Fedora/CentOS:**
 
         sudo systemctl restart sshd
@@ -177,13 +177,13 @@ Here's how to create a firewall on your Linode:
 2.  Examine the output. If you haven't implemented any firewall rules yet, you should see an *empty ruleset*, as shown below:
 
         Chain INPUT (policy ACCEPT)
-        target     prot opt source               destination         
+        target     prot opt source               destination
 
         Chain FORWARD (policy ACCEPT)
-        target     prot opt source               destination         
+        target     prot opt source               destination
 
         Chain OUTPUT (policy ACCEPT)
-        target     prot opt source               destination 
+        target     prot opt source               destination
 
 3.  Create a file to hold your firewall rules by entering the following command:
 
@@ -203,7 +203,7 @@ Here's how to create a firewall on your Linode:
 	    #  Accept all established inbound connections
 	    -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
 
-        #  Allow incoming Longview connections 
+        #  Allow incoming Longview connections
         -A INPUT -s longview.linode.com -j ACCEPT
 
         # Allow metrics to be provided Longview
@@ -254,29 +254,29 @@ Here's how to create a firewall on your Linode:
 9.  Examine the output. The new ruleset should look like the one shown below:
 
         Chain INPUT (policy ACCEPT)
-        target     prot opt source               destination         
-        ACCEPT     all  --  anywhere             anywhere            
+        target     prot opt source               destination
+        ACCEPT     all  --  anywhere             anywhere
         REJECT     all  --  anywhere             127.0.0.0/8          reject-with icmp-port-unreachable
         ACCEPT     all  --  anywhere             anywhere             state RELATED,ESTABLISHED
         ACCEPT     tcp  --  anywhere             anywhere             tcp dpt:http
         ACCEPT     tcp  --  anywhere             anywhere             tcp dpt:https
         ACCEPT     tcp  --  anywhere             anywhere             state NEW tcp dpt:ssh
-        ACCEPT     icmp --  anywhere             anywhere            
+        ACCEPT     icmp --  anywhere             anywhere
         LOG        all  --  anywhere             anywhere             limit: avg 5/min burst 5 LOG level debug prefix "iptables denied: "
-        DROP       all  --  anywhere             anywhere            
+        DROP       all  --  anywhere             anywhere
 
         Chain FORWARD (policy ACCEPT)
-        target     prot opt source               destination         
-        DROP       all  --  anywhere             anywhere            
+        target     prot opt source               destination
+        DROP       all  --  anywhere             anywhere
 
         Chain OUTPUT (policy ACCEPT)
-        target     prot opt source               destination         
+        target     prot opt source               destination
         ACCEPT     all  --  anywhere             anywhere  
 
-10. Now you need to ensure that the firewall rules are activated every time you restart your Linode. 
+10. Now you need to ensure that the firewall rules are activated every time you restart your Linode.
 
 	**Debian/Ubuntu Users:**
-	
+
 	Start by creating a new script with the following command:
 
         sudo nano /etc/network/if-pre-up.d/firewall
@@ -286,23 +286,23 @@ Here's how to create a firewall on your Linode:
 	{: .file }
 	/etc/network/if-pre-up.d/firewall
 	:   ~~~
-	    #!/bin/sh 
+	    #!/bin/sh
 	    /sbin/iptables-restore < /etc/iptables.firewall.rules
 	    ~~~
-	
+
     Press Control-X and then press Y to save the script.
     Set the script's permissions by entering the following command:
 
         sudo chmod +x /etc/network/if-pre-up.d/firewall
-	
-    **CentOS/Fedora users:** 
+
+    **CentOS/Fedora users:**
 
       If you are using CentOS 6.2 or 6.5, save your current iptables rules with the following command:
 
-        /sbin/service iptables save 
+        /sbin/service iptables save
 
       If you are using CentOS 7 or Fedora 20, the base image does not include iptables-services. You will need to install it before your firewall is persistent through boots:
-      
+
         yum install -y iptables-services
         systemctl enable iptables
         systemctl start iptables
@@ -325,11 +325,11 @@ Here's how to install and configure Fail2Ban:
 	**Debian/Ubuntu Users:**
 
         sudo apt-get install fail2ban
-        
+
 	**Fedora Users:**
 
         sudo yum install fail2ban
-        
+
 	**CentOS Users:**
 
         sudo yum install epel-release
@@ -355,6 +355,3 @@ Next Steps
 ----------
 
 Good work! You have secured your Linode to protect it from unauthorized access. Next, you'll learn how to host a website. Start reading the [Hosting a Website](/docs/hosting-website) quick start guide to get going!
-
-
-
