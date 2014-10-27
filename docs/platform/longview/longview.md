@@ -227,7 +227,7 @@ Congratulations! The Longview client is now installed.
 
 ### Firewall Rules
 
-If your Linode is currently utilizing a Firewall, it will need to allow communication with Longview's aggregation host. In order to do so, you will want to allow traffic destined for 'longview.linode.com' to be routed through your Firewall. The following rules should allow your Linode to provide its metrics to the Longview application:
+In order for your Linode to communicate with the Longview aggregation host you will want to allow traffic destined for 'longview.linode.com' to be routed through your Firewall. The following rules should allow your Linode to provide its metrics to the Longview application:
 
 1. You will want to edit your INPUT chain so that traffic is routed to your Linode.
 
