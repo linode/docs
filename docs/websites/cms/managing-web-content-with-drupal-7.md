@@ -101,12 +101,12 @@ Remember to change the commands above to reflect the latest version or version t
 
     {: .note }
 >
-> During the creation of the LAMP stack, you should have created a MySQL database. If you have forgotten the name of that database, log back into MySQL withe `mysql -u root -p` command, and then enter the `show databases;` command. 
+> During the creation of the LAMP stack, you should have created a MySQL database. If you have forgotten the name of that database, log back into MySQL with the `mysql -u root -p` command, and then enter the `show databases;` command. 
 
 You're now ready to begin using Drupal.
 
-Using Drupal
-------------
+##Using Drupal
+
 
 Because Drupal is such a flexible and versatile system, it is difficult to recommend any particular set of practices for effective Drupal administration. The following guidelines and suggestions may be helpful on your journey:
 
