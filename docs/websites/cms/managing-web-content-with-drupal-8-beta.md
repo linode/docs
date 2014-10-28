@@ -13,11 +13,15 @@ published: 'Friday, October 24th, 2014'
 title: Managing Web Content with Drupal 8 Beta
 ---
 
-[Drupal 8](https://www.drupal.org/drupal-8.0) is the lastest version of the extremely popular [Drupal](https://www.drupal.org/) content management system. The Drupal 8 beta-2 was released on October 15th, and since it's so new, there isn't much documentation on the web. This how-to explains the entire installation process. It demonstrates all of the necessary commands to install Drupal 8 on a linux server, hosted by a Linode cloud computing system. 
+[Drupal 8](https://www.drupal.org/drupal-8.0) is the lastest version of the extremely popular [Drupal](https://www.drupal.org/) content management system. The Drupal 8 beta-2 was released on October 15th, and since it's so new, there isn't much documentation on the web. This how-to explains the entire installation process. It demonstrates all of the necessary commands to install Drupal 8 on a Linux server, hosted by a Linode cloud computing system. 
 
 ##Prerequisites
 
 Before installing Drupal, you will need a running Linode, which can be created by following the [Getting Started](/docs/getting-started/) guide. Also, address security concerns with the [Securing Your Server](/docs/securing-your-server) guide. Finally, build a server with a LAMP stack using the [Hosting a Website](/docs/websites/hosting-a-website) guide. Linode also has other CMS guides, including [Content Management System: an Overview](/docs/websites/cms/cms-overview), [Managing Web Content with Drupal 7](/docs/websites/cms/managing-web-content-with-drupal-7), [Managing Web Content with WordPress](/docs/websites/cms/manage-web-content-with-wordpress), and [Managing Web Content with Joomla](/docs/websites/cms/manage-web-content-with-joomla). Since Drupal 8 is so new, if you are not a developer, then you might find more online support for Drupal 7. 
+
+{: .note }
+>
+>This guide assumes that you are familiar with the __sudo__ prefix or that you are logged into the server as the root user. Top level permissions may be necessary to create the recommended directories or other commands.
 
 ##Download and Install Drupal 8
 
@@ -86,7 +90,11 @@ The Drupal developers actively update their application for security vulnerabili
 
         chmod 775 /var/www/example.com/public_html/drupal/sites/default/files/
 
-4.  Visit `www.example.com/drupal/core/install.php`. Alter the previous URL to reflect your domain and the actual path to your Drupal files. You will arrive at an iconic Drupal page and if you select "Install Drupal in English," you will enter the installation process.
+4.  Visit `www.example.com/drupal/core/install.php`. Alter the previous URL to reflect your domain, and the actual path to your Drupal files. You will arrive at an iconic Drupal page and if you select "Install Drupal in English," you will enter the installation process.
+
+    {: .note }
+>
+> During the creation of the LAMP stack, you should have created a MySQL database. If you have forgotten the name of that database, log back into MySQL with the `mysql -u root -p` command, and then enter the `show databases;` command. 
 
 5. The installation process is fairly straightforward and asks you to provide information regarding your database, your site, and your administrative users. Follow each step as instructed. When you've completed the installation process you can remove the write access to the `settings.php` file with the following command:
 
