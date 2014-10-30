@@ -25,7 +25,7 @@ If you haven't already signed up for a Linode account, do that first. Follow the
 
     [![Available Linode plans.](/docs/assets/1744-getting-started1_small.png)](/docs/assets/1743-getting-started1.png)
 
-If you don't know which data center to select, try downloading our [speed test](http://www.linode.com/speedtest) to find the location that provides the best performance for your target audience. European users may find that the London or Newark data centers offer the best performance, and many users in Asia and Australia select the Tokyo or Fremont data centers. You can also generate [MTR reports](networking/diagnosing-network-issues-with-mtr/) for each of the data centers to determine which of our facilities provides the best latency from your particular location.
+If you don't know which data center to select, try downloading our [speed test](http://www.linode.com/speedtest) to find the location that provides the best performance for your target audience. European users may find that the London or Newark data centers offer the best performance, and many users in Asia and Australia select the Tokyo or Fremont data centers. You can also generate [MTR reports](/docs/networking/diagnosing-network-issues-with-mtr/) for each of the data centers to determine which of our facilities provides the best latency from your particular location.
 
 Provisioning Your Linode
 ------------------------
