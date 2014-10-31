@@ -9,7 +9,7 @@ alias: ['web-applications/cms-guides/drupal/']
 modified: Friday, October 24th, 2014
 modified_by:
     name: Joseph Dooley
-published: 'Friday, October 24th, 2014'
+published: 'Friday, October 31, 2014'
 title: Managing Web Content with Drupal 8 Beta
 ---
 
