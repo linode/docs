@@ -137,6 +137,8 @@ Here's how to disable SSH password authentication and root login:
 	{: .note }
 	>
 	> If you see a message similar to *-bash: sudo: command not found*, you'll need to install `sudo` on your Linode. To do so, log in as root by entering the `su` command, and type the `root` password when prompted. Next, install `sudo` by entering the following command: `apt-get install sudo`. After `sudo` has been installed, log out as the `root` user by entering the `exit` command.
+    >
+    > `nano` is the text editor we use in the examples here, but it's fine to use others e.g. `vim` (preinstalled) or `emacs`.
 
 2.  Change the `PasswordAuthentication` setting to `no` as shown below. Verify that the line is uncommented by removing the \# in front of the line, if there is one.:
 
