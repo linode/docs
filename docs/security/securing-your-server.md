@@ -34,7 +34,7 @@ Debian/Ubuntu
 
         usermod -a -G sudo exampleuser
 
-4.  On Debian 7 installations, you will need to install sudo before logging in as the new user:
+4.  On Debian 7.6 installations, sudo is already installed.  If it isn't (`/usr/bin/sudo` doesn't exist), install it before logging in as the new user:
 
         apt-get install sudo
 
