@@ -736,12 +736,12 @@ Here's how to configure Dovecot:
     >
     > Click this link to see the final, complete version of <a href="/docs/assets/1239-dovecot_10-mail.conf.txt" target="_blank">10-mail.conf</a> example file. This is a long file, so you may need to use your editor's search feature to find the values you need to edit.
 
-7.  Find the `mail_location` variable, uncomment it, and then set it to the following value. This tells Dovecot where to look for mail. In this case, the mail will be stored in */var/mail/vhosts/example.com/user/*, where `example.com` and `user` are variables that get pulled from the connecting email address. For example, if someone logs in to the server with the email address `email1@example.com`, Dovecot will use `example.com` for `%d`, and `email1` for `%n`. You can change this path if you want, but you'll have to change it everywhere else the mail storage path is referenced in this tutorial. It's useful to keep this location in mind if you ever need to manually download the raw mail files from the server.
+7.  Find the `mail_location` variable, uncomment it, and then set it to the following value. This tells Dovecot where to look for mail. In this case, the mail will be stored in the Maildir subdirectory within the virtual users's home directory. We will configure that parameter in the */etc/dovecot/conf.d/auth-sql.conf.ext* file (which we will cover shortly).
 
     {: .file-excerpt }
 	/etc/dovecot/conf.d/10-mail.conf
 	: ~~~
-	  mail_location = maildir:/var/mail/vhosts/%d/%n
+	  mail_location = maildir:~/Maildir
 	  ~~~
 
 8.  Find the `mail_privileged_group` variable. Uncomment it, and then set it to the following value. This allows Dovecot to write to the */var/mail/* folder.
@@ -843,7 +843,7 @@ Here's how to configure Dovecot:
     Explanation of parameters:
 
     -   `passdb` tells Dovecot how to look up users for authentication. We're telling Dovecot to use MySQL. In the `args` line, we're also specifying the file that contains the MySQL connection information.
-    -   `userdb` tells Dovecot where to look for users' mail on the server. We're using a static driver since the path will be in the same format for everyone.
+    -   `userdb` tells Dovecot where to look for users' mail on the server. We're using a static driver since the path will be in the same format for everyone. Here we configure the home directory to point to */var/mail/vhosts/example.com/user/*, where `example.com` and `user` are variables that get pulled from the connecting email address. For example, if someone logs in to the server with the email address `email1@example.com`, Dovecot will use `example.com` for `%d`, and `email1` for `%n`. You can change this path if you want, but you'll have to change it everywhere else the mail storage path is referenced in this tutorial. It's useful to keep this location in mind if you ever need to manually download the raw mail files from the server.
 
 23. Save your changes to the */etc/dovecot/conf.d/auth-sql.conf.ext* file.
 24. Update the */etc/dovecot/dovecot-sql.conf.ext* file with our custom MySQL connection information. Open the file for editing by entering the following command:
