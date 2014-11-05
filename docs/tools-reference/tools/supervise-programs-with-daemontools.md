@@ -1,4 +1,19 @@
-# Supervise programs with daemontools
+---
+author:
+  name: Tim Henrich
+  email:
+description: 'Using daemontools to supervise programs.'
+keywords: 'daemontools'
+license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+contributor:
+    name: Tim Henrich
+    link: https://github.com/thenrich
+modified: Wednesday, November 5, 2014
+modified_by:
+  name: Alex Fornuto
+published:
+title: Supervise Programs with Daemontools
+---
 
 There's no lack of programs out there to supervise long-running applications: Upstart, supervisord, systemd, and daemonize just to name a few. For many system administrators, it's a matter of what they know and what they're comfortable with. Daemontools has been around for a long time (over 10 years) and it's great at one thing: monitoring a process and restarting it if it dies.
 
