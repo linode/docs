@@ -85,7 +85,11 @@ Since the LAMP stack utilizes MySQL, ownCloud can be configured to use this data
 
 4.  Exit MySQL with either:
 
-        exit or quit
+        exit 
+        
+    Or: 
+    
+        quit
 
 Configure ownCloud
 ------------------
