@@ -15,7 +15,7 @@ title: Running a Custom Linux Distribution on a Linode
 
 If you'd like to run a Linux distribution on your Linode that isn't available from our distribution list, you can do so by following these instructions. This guide is handy for people who prefer distributions that aren't heavily used in the community, or for those interested in creating a highly customized Linux environment and porting it to their Linode.
 
-#Creating the Virtual Machine
+##Creating the Virtual Machine
 
 We'll use a free virtualization suite called [VirtualBox](https://www.virtualbox.org/) to install a Linux distribution locally, but you can also use another virtualization package, such as VMware or Parallels. If you already have a Linux virtual machine that you'd like to run on your Linode, skip to [Booting the Virtual Machine with Finnix](#booting-the-virtual-machine-with-finnix) .
 
@@ -96,7 +96,7 @@ Here's how to get started:
 
 You have successfully created the virtual machine.
 
-#Booting the Virtual Machine with Finnix
+##Booting the Virtual Machine with Finnix
 
 Now you need to boot the virtual machine with Finnix to transfer it to your Linode. Here's how to boot the virtual machine with Finnix:
 
@@ -112,11 +112,11 @@ Now you need to boot the virtual machine with Finnix to transfer it to your Lino
 
 The virtual machine is now ready to be transferred to your Linode.
 
-#Migrating the Virtual Machine to Your Linode
+##Migrating the Virtual Machine to Your Linode
 
 Above, you created a virtual machine and prepared it for transfer to your Linode.  The steps below will walk you through configuring a Linode for your custom image. In this how-to, we will start with a new Linode. However, the information provided can be applied to existing Linodes by adding new disk images.
 
-##Setting up your Configuration Profile
+###Setting up your Configuration Profile
 
 Start from the Linode Manager by configuring a Linode to boot your custom image.
 
@@ -162,7 +162,7 @@ In order to transfer the disk images from the virtual machine to the Linode, you
 
         mount /media/xvda
 
-##Copying the Disk Image from VirtualBox to your Linode
+###Copying the Disk Image from VirtualBox to your Linode
 
 The steps below will walk you through transferring your new disk image from your local Virtual Machine to your Linode.
 
