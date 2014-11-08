@@ -1,0 +1,53 @@
+---
+author: rarlan
+  name: Linode
+  email: rarlan@linode.com
+description: 'Install "LEMP," an application stack using nginx, MariaDB, and PHP with fastcgi for CentOS 7'
+keywords: 'nginx,lemp,php,fastcgi,linux,web applications, CentOS'
+license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+alias: ['lemp-guides/centos-7']
+modified: Saturday, November 8th, 2014
+modified_by:
+  name: Ryan Arlan
+published: 
+title: LEMP Stack on CentOS 7 with FastCGI
+---
+
+This document describes install a LEMP stack (Linux nginx (pronounced engine-x) MariaDB and PHP) on CentOS 7 with php-fastcgi. It includes configuring php-fastcgi as a service in systemd for easier administration. 
+
+Make sure that before starting this guide you have read through and complete our [getting started guide](/docs/getting-started/).
+
+Set the hostname
+-----------------
+
+Before you install any packages, ensure that your hostname is correct by completing our [setting your hostname](/docs/getting-started#sph_setting-the-hostname) guide and issuing the following commands to verify:
+
+  hostname
+  hostname -f
+  
+In the first example, the hostname command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
+
+System Setup
+-------------
+
+Make sure your system is up to date using yum:
+
+  yum update
+  
+This ensures that all software is up to date and running at the latest version.
+
+Install nginx from the EPEL
+---------------------------
+
+The quickest and easiest way to install nginx is from the Extra Packages for Enterprise Linux (EPEL) repository.  You can install this using rpm:
+
+  rpm -Uvh http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-2.noarch.rpm
+  yum update
+  yum install nginx
+  
+This installs the EPEL repository, pulls the metadata from the new repository, and then installs nginx.
+
+Configuring nginx
+------------------
+
+After installing nginx it needs to be enabled and started in systemd, 
