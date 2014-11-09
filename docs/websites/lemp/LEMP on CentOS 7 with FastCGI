@@ -177,3 +177,14 @@ Enter the root password then you can issue the following commands to create the 
 You can edit the name of the user, database, and password to what you would like it to be.  You can then configure your application to use that database, username, and password to insert data.
 
 Congratulations!  You now have a fully functioning and working LEMP stack on CentOS 7!
+
+More Information
+----------------
+
+You may wish to consult the following resources for additional information on this topic.  While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
+
+- [Basic nginx Configuration](/docs/websites/nginx/basic-nginx-configuration/basic)
+- [Clustered Web Servers and Software Load Balancing with nginx](/docs/websites/nginx/basic-nginx-configuration/front-end-proxy-and-software-load-balancing)
+- [Nginx Documentation](http://nginx.org/en/docs/)
+- [MariaDB Knowledgebase](https://mariadb.com/kb/en/)
+- [MariaDB and MySQL compatibility](https://mariadb.com/kb/en/mariadb/mariadb-vs-mysql-compatibility/)
