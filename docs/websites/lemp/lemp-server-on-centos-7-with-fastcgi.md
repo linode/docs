@@ -130,9 +130,9 @@ You can then run the file manually, or for easier administration, you can set up
 
 When PHP-FastCGI is installed it does not automatically get set up as a service in systemd.  If you want to be able to more easily control PHP-FastCGI with systemd, you can configure PHP-FastCGI as a systemd service.  To do this, you need to create a service file that points to the /usr/bin/php-fastcgi file you created:
 
-{: .file-excerpt }
+{: .file }
 /etc/systemd.system/php-fastcgi.service
-: ~~~
+: ~~~ systemd
   [Unit]
   Description= php-fastcgi systemd service script
 
