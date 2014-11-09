@@ -5,7 +5,6 @@ author:
 description: 'Creating a LAMP stack on a CentOS 7 Linode.'
 keywords: 'LAMP,CentOS,CentOS 7'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['lamp-guides/centos-7/']
 modified: Monday, Novemeber 10th, 2014
 modified_by:
   name: Joel Kruger
