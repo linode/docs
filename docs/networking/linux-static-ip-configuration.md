@@ -114,7 +114,7 @@ Next, edit your `/etc/hosts` file to resemble the following example, replacing "
   ~~~
 
 The value you assign as your system's FQDN should have an "A" record in DNS pointing to your Linode's IP address.
-For more information on configuring DNS, please see our guide on [configuring DNS with the Linode Manager] (/library/dns-guides/configuring-dns-with-the-linode-manager).
+For more information on configuring DNS, please see our guide on [configuring DNS with the Linode Manager](/library/dns-guides/configuring-dns-with-the-linode-manager).
 
 DNS Resolver Settings
 ---------------------
