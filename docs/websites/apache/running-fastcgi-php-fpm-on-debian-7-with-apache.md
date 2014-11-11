@@ -195,14 +195,17 @@ In this section we will create a pool for the domain example.com which is owned 
         ; Unix user/group of processes
         ; Note: The user is mandatory. If the group is not set, the default user's group
         ;       will be used.
-        ; Due to recently fixed bug: https://bugs.launchpad.net/ubuntu/+source/php5/+bug/1307027,
-        ; group shuld be the same as apache group.
         user = bob
-        group = www-data
+        group = bob
 
         ...
 
         listen = /var/run/php5-fpm_example.com.sock
+        ; Due to recently fixed bug: https://bugs.launchpad.net/ubuntu/+source/php5/+bug/1307027,
+        ; group shuld be the same as apache group.
+        listen.owner = bob
+        listen.group = www-data
+        
         ~~~
 
 3. Restart the php5-fpm process for the new pool to be created.
