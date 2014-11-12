@@ -32,10 +32,7 @@ Prior to following this guide, you will need to ensure that the following steps 
 Installing FileZilla
 --------------------
 
-Windows and OS X users can download FileZilla [here](https://filezilla-project.org).
-
- {: .note }
->Filezilla downloads for Windows and OS X are currently directed to SourceForge, and are often bundled with added offers which may modify your search preferences or install unwanted browser toolbars.  You can decline these offers at the beginning of the installation process, and you will still be able to install FileZilla.
+Windows and OS X users can download FileZilla [here](https://filezilla-project.org/download.php?show_all=1).
 
 Linux users can run the following commands to install FileZilla.
 
