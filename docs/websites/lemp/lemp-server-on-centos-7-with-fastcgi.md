@@ -13,7 +13,7 @@ published:
 title: lemp-server-on-centos-7-with-fastcgi
 ---
 
-This document describes install a LEMP stack (Linux nginx (pronounced engine-x) MariaDB and PHP) on CentOS 7 with php-fastcgi. It includes configuring php-fastcgi as a service in systemd for easier administration. 
+This document describes how to install a Linux, nginx (pronounced engine-x), MariaDB and PHP server, also called LEMP stack, on CentOS 7 with php-fastcgi. It includes configuring php-fastcgi as a service in systemd for easier administration. 
 
 Make sure that before starting this guide you have read through and complete our [getting started guide](/docs/getting-started/).
 
