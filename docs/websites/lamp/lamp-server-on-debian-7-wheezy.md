@@ -190,7 +190,7 @@ Make sure that the following values are set, and relevant lines are uncommented 
     error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
     display_errors = Off 
     log_errors = On 
-    error_log = /var/log/php.log  
+    error_log = /var/log/php/error.log  
     register_globals = Off
     max_input_time = 30
     ~~~
