@@ -86,29 +86,29 @@ There are different ways to set up virtual hosts, however we recommend the metho
 
 5.  Now we will create virtual host entries for each site that we need to host with this server. Here are two examples for sites at "example.com" and "example.org".
 
-{: .file-excerpt }
-/etc/httpd/conf.d/vhost.conf
-:   ~~~ apache
-      NameVirtualHost *:80
+      {: .file-excerpt }
+      /etc/httpd/conf.d/vhost.conf
+      :   ~~~ apache
+        NameVirtualHost *:80
 
-      <VirtualHost *:80> 
-          ServerAdmin webmaster@example.com
-          ServerName example.com
-          ServerAlias www.example.com
-          DocumentRoot /srv/www/example.com/public_html/
-          ErrorLog /srv/www/example.com/logs/error.log 
-          CustomLog /srv/www/example.com/logs/access.log combined
-      </VirtualHost>
+        <VirtualHost *:80> 
+            ServerAdmin webmaster@example.com
+            ServerName example.com
+            ServerAlias www.example.com
+            DocumentRoot /srv/www/example.com/public_html/
+            ErrorLog /srv/www/example.com/logs/error.log 
+            CustomLog /srv/www/example.com/logs/access.log combined
+        </VirtualHost>
 
-      <VirtualHost *:80> 
-          ServerAdmin webmaster@example.org     
-          ServerName example.org
-          ServerAlias www.example.org
-          DocumentRoot /srv/www/example.org/public_html/
-          ErrorLog /srv/www/example.org/logs/error.log 
-          CustomLog /srv/www/example.org/logs/access.log combined
-      </VirtualHost>
-      ~~~
+        <VirtualHost *:80> 
+            ServerAdmin webmaster@example.org     
+            ServerName example.org
+            ServerAlias www.example.org
+            DocumentRoot /srv/www/example.org/public_html/
+            ErrorLog /srv/www/example.org/logs/error.log 
+            CustomLog /srv/www/example.org/logs/access.log combined
+          </VirtualHost>
+          ~~~
 
 Notes regarding this example configuration:
 
