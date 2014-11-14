@@ -177,11 +177,13 @@ In the example below, `example_database_name` is the name of the database, `e
 7. Now, to create a new database and grant your users permissions on it, issue the following commands. Note, the semi-colons (`;`) at the end of the lines are crucial for ending the commands. Your commands should look similar to the following:
 
         create database example_database_name;
-        grant all on example_database_name.* to 'example_user'@'localhost' identified by 'example_password';
+        grant all on example_database_name.* to 
+        'example_user'@'localhost' identified by 'example_password';
 
 8. Note that database user names and passwords are only used by scripts connecting to the database, and that database user account names need not (and perhaps should not) represent actual user accounts on the system. If you need to create additional users in the database you just created, simply run the command below, as like before:
 
-        grant all on example_database_name.* to 'example_user'@'localhost' identified by 'example_password';
+        grant all on example_database_name.* to 
+        'example_user'@'localhost' identified by 'example_password';
 
 9. With that completed you’ve successfully configured MariaDB and you may now pass these database credentials on to your users. To exit the MariaDB database administration utility issue the following command:
 
