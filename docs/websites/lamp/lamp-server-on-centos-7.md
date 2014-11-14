@@ -110,10 +110,10 @@ There are different ways to set up virtual hosts, however we recommend the metho
           </VirtualHost>
           ~~~
 
-Notes regarding this example configuration:
+    Notes regarding this example configuration:
 
--   All of the files for the sites that you host will be located in directories that exist underneath `/srv/www` You can symbolically link these directories into other locations if you need them to exist in other places.
--   `ErrorLog` and `CustomLog` entries are suggested for more fine-grained logging, but are not required. If they are defined (as shown above), the `logs` directories must be created before you restart Apache.
+    -   All of the files for the sites that you host will be located in directories that exist underneath `/srv/www` You can symbolically link these directories into other locations if you need them to exist in other places.
+    -   `ErrorLog` and `CustomLog` entries are suggested for more fine-grained logging, but are not required. If they are defined (as shown above), the `logs` directories must be created before you restart Apache.
 
 6. Before you can use the above configuration you’ll need to create the specified directories. For the above configuration, you can do this by issuing the following commands:
 
@@ -177,13 +177,11 @@ In the example below, `example_database_name` is the name of the database, `e
 7. Now, to create a new database and grant your users permissions on it, issue the following commands. Note, the semi-colons (`;`) at the end of the lines are crucial for ending the commands. Your commands should look similar to the following:
 
         create database example_database_name;
-        grant all on example_database_name.* to 
-        'example_user'@'localhost' identified by 'example_password';
+        grant all on example_database_name.* to 'example_user'@'localhost' identified by 'example_password';
 
 8. Note that database user names and passwords are only used by scripts connecting to the database, and that database user account names need not (and perhaps should not) represent actual user accounts on the system. If you need to create additional users in the database you just created, simply run the command below, as like before:
 
-        grant all on example_database_name.* to 
-        'example_user'@'localhost' identified by 'example_password';
+        grant all on example_database_name.* to 'example_user'@'localhost' identified by 'example_password';
 
 9. With that completed you’ve successfully configured MariaDB and you may now pass these database credentials on to your users. To exit the MariaDB database administration utility issue the following command:
 
@@ -200,7 +198,7 @@ PHP makes it possible to produce dynamic and interactive pages using your own sc
 
         sudo yum install php php-pear
 
-Once PHP5 is installed we'll need to tune the configuration file located in `/etc/php.ini` to enable more descriptive errors, logging, and better performance. These modifications provide a good starting point if you're unfamiliar with PHP configuration.
+      Once PHP5 is installed we'll need to tune the configuration file located in `/etc/php.ini` to enable more           descriptive errors, logging, and better performance. These modifications provide a good starting point if           you're unfamiliar with PHP configuration.
 
 2. Make sure that the following values are set, and relevant lines are uncommented (comments are lines beginning with a semi-colon (`;`)):
 
