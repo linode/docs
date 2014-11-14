@@ -14,16 +14,22 @@ title: LAMP Server on CentOS 7
 
 This guide provides step-by-step instructions for installing a full-featured LAMP stack on a CentOS 7 system.
 
-As a friendly reminder, since you will be exposing your server (and content) to the rest of the world, it is an excellent choice to impliment some security percautions. For assistance with this, please see our documentation: [Securing Your](https://linode.com/docs/security/securing-your-server)
-
-In this guide, you will be instructed on setting up Apache, MariaDB, and PHP. Please note: the CentOS 7 Project has elected to replace the init service management daemon with the newer, systemd daemon for this latest release. In addition, this release of CentOS ships with MariaDB repositories instead of MySQL. If you would prefer to use the more traditional MySQL instead, there are instructions provided below to use those repositories as well.
+In this guide, you will be instructed on setting up Apache, MariaDB, and PHP. Please note: the CentOS 7 Project has elected to replace the `init` service management daemon with the newer, `systemd` daemon for this latest release. In addition, this release of CentOS ships with MariaDB repositories instead of MySQL. If you would prefer to use the more traditional MySQL instead, there are instructions provided below to use those repositories as well.
 
  {: .note }
 >
 > Throughout this guide we will offer several suggested values for specific configuration settings. Some of these values will be set by default. These settings are shown in the guide as a reference, in the event that you change these settings to suit your needs and then need to change them back.
 
-Set the Hostname
-----------------
+## Prerequisites
+
+Your Linode should already be set up according to the instructions in our [Getting Started](/docs/getting-started) guide.
+
+As a friendly reminder, since you will be exposing your server (and content) to the rest of the world, it is an excellent choice to implement some security precautions. For assistance with this, please see our documentation: [Securing Your Server](https://linode.com/docs/security/securing-your-server)
+
+{: .note}
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+
+### Set the Hostname
 
 Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](https://www.linode.com/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
@@ -37,34 +43,38 @@ Install and Configure the Apache Web Server
 
 The Apache Web Server is a very popular choice for serving web pages. While many alternatives have appeared in the last few years, Apache remains a powerful option that we recommend for most uses.
 
-To install the current version of the Apache web server (in the 2.x series) use the following command:
+1. Update existing packages:
 
-    sudo yum update
-    sudo yum install httpd
+        sudo yum update
 
-The configuration for Apache is contained in the `httpd.conf` file, which is located at: `/etc/httpd/conf/httpd.conf`. We advise you to make a backup of this file into your home directory, like so:
+2. Install the current version of the Apache web server (in the 2.x series):
 
-    cp /etc/httpd/conf/httpd.conf ~/httpd.conf.backup
+        sudo yum install httpd
 
-By default all files ending in the `.conf` extension in `/etc/httpd/conf.d/` are treated as Apache configuration files, and we recommend placing your non-standard configuration options in files in these directories. Regardless how you choose to organize your configuration files, making regular backups of known working states is highly recommended.
+3. The configuration for Apache is contained in the `httpd.conf` file, which is located at: `/etc/httpd/conf/httpd.conf`. We advise you to make a backup of this file into your home directory, like so:
 
-Edit the main Apache configuration file to adjust the resource use settings. The settings shown below are a good starting point for a **Linode 1GB**.
+        cp /etc/httpd/conf/httpd.conf ~/httpd.conf.backup
 
-{: .file }
-/etc/httpd/conf/httpd.conf
-:   ~~~ apache
-    KeepAlive Off
+    {: .note}
+    > By default all files ending in the `.conf` extension in `/etc/httpd` and `/etc/httpd/conf.d/` are treated as Apache configuration files, and we recommend placing your non-standard configuration options in files in these directories. Regardless how you choose to organize your configuration files, making regular backups of known working states is highly recommended.
 
-    ...
+4. Edit the main Apache configuration file to adjust the resource use settings. The settings shown below are a good starting point for a **Linode 1GB**.
 
-    <IfModule prefork.c>
-    StartServers 2
-    MinSpareServers 6
-    MaxSpareServers 12
-    MaxClients 80
-    MaxRequestsPerChild 3000
-    </IfModule>
-    ~~~
+    {: .file }
+    /etc/httpd/conf/httpd.conf
+    :   ~~~ apache
+        KeepAlive Off
+
+        ...
+
+        <IfModule prefork.c>
+        StartServers 2
+        MinSpareServers 6
+        MaxSpareServers 12
+        MaxClients 80
+        MaxRequestsPerChild 3000
+        </IfModule>
+        ~~~
 
 Now we'll configure virtual hosting so that we can host multiple domains (or subdomains) with the server. These websites can be controlled by different users, or by a single user, as you prefer.
 
