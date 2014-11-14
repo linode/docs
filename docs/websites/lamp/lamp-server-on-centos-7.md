@@ -202,18 +202,18 @@ Once PHP5 is installed we'll need to tune the configuration file located in `/et
 
 2. Make sure that the following values are set, and relevant lines are uncommented (comments are lines beginning with a semi-colon (`;`)):
 
-  {: .file-excerpt }
-  /etc/php.ini
-  :   ~~~ ini
-      error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
-      display_errors = Off 
-      log_errors = On 
-      error_log = /var/log/php/error.log
-      max_execution_time = 30 
-      memory_limit = 128M
-      register_globals = Off
-      max_input_time = 30
-      ~~~
+        {: .file-excerpt }
+        /etc/php.ini
+        :   ~~~ ini
+            error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
+            display_errors = Off 
+            log_errors = On 
+            error_log = /var/log/php/error.log
+            max_execution_time = 30 
+            memory_limit = 128M
+            register_globals = Off
+            max_input_time = 30
+            ~~~
 
 3. You will need to create the log directory for PHP and give the Apache user ownership:
 
