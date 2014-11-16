@@ -53,7 +53,7 @@ If the prospect of managing your own mail server is too daunting, you should con
 -   [Google Apps](http://www.google.com/intl/en/enterprise/apps/business/) uses the top-notch Gmail interface and has great uptime. It's paid and the IMAP implementation is unusual. We have a [guide](/docs/email/google-mail) on how to use Google Apps with your Linode.
 -   [Outlook.com](http://www.microsoft.com/en-us/outlook-com/) is probably the best free mail host. The interface is nice and easy to use. Also, Outlook has been updated to use the IMAP protocol. Here's a [review](http://lifehacker.com/5928102/outlook-is-a-completely-new-feature+filled-webmail-service-from-microsoft).
 
-If you decide to use an outside mail service, you will still need to set up [DNS](adding-dns-records) for your mail, using the settings provided by the third-party mail service.
+If you decide to use an outside mail service, you will still need to set up [DNS](/docs/networking/dns/adding-dns-records) for your mail, using the settings provided by the third-party mail service.
 
 How Mail Servers Work
 ---------------------
