@@ -47,7 +47,7 @@ The basic `'s///'` form provides the core of `sed` functionality in common use. 
     's/look for \/ characters/I found several \//'
     's;look for / characters;I found several /;'
 
-Sed uses regular expressions in the "search" part of the substitution syntax. Most characters in regular expressions match with input data literally; however, there are some sequences that carry special significance. If you want to mach these characters literally you can use the escape character `\` to transform the *next* character into a literal match. Consider the following characters with special significance in `sed` substitution scripts:
+Sed uses regular expressions in the "search" part of the substitution syntax. Most characters in regular expressions match with input data literally; however, there are some sequences that carry special significance. If you want to match these characters literally you can use the escape character `\` to transform the *next* character into a literal match. Consider the following characters with special significance in `sed` substitution scripts:
 
 -   The `.` symbol matches any character.
 -   The `*` symbol causes the character immediately proceeding this character to successfully match to *zero* or more instances of that character in the data set.
