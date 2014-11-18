@@ -34,7 +34,7 @@ Once you've submitted your article, here's what you can expect:
 Legal Information
 -----------------
 
-COPYRIGHT OWNERSHIP. Writer agrees that the Work is being created by the writer for the Linode Guides and Tutorials Repository and that each form of Work is being created by the writer as a <E2><80><9C>work made for hire<E2><80><9D> under the United States Copyright Ac
+COPYRIGHT OWNERSHIP. Writer agrees that the Work is being created by the writer for the Linode Guides and Tutorials Repository and that each form of Work is being created by the writer as a <E2><80><9C>work made for hire<E2><80><9D> under the United States Copyright Act.
 
 CREDIT. Nothing contained in this Agreement shall be deeded to require Linode to use the Work, or any part thereof, in connection with the Linode Guides and Tutorials Repository or otherwise. Credit for the Work shall read "This is a Linode Community guide by author "writer's
 

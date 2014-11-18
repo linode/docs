@@ -220,6 +220,7 @@ Now let's go over the directives and settings that make up the `server` block:
                     # Uncomment to enable naxsi on this location
                     # include /etc/nginx/naxsi.rules
             }
+    }
     ~~~
 
 The `server` block is where the typical Nginx user will make most of his or her changes to the default configuration. Generally, you'll want to make a separate file with its own `server` block for each virtual domain on your server. More configuration options for the server block are shown in the following sections.
