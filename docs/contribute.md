@@ -58,6 +58,7 @@ Write Your Article
 Use the [style guide](/docs/style-guide). While you're writing, make sure your content is:
 
 -   Accurate. Your instructions should be straightforward and technically accurate.
+-   Detailed. Your content should include detailed explanations of each step taken, to familiarize readers with the purpose behind each step.
 -   Formatted. Your style should use [PHP Markdown Extra](https://michelf.ca/projects/php-markdown/extra/) formatting and match the Linode Library [style guide](/docs/style-guide).
 -   Original. Your content should be original material written for Linode. We will not accept submissions that have been copied from other sources.
 
