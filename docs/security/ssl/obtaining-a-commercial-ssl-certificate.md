@@ -6,9 +6,9 @@ description: 'How to prepare and submit a request for a commercially-signed SSL 
 keywords: 'openssl,commercial ssl cert,apache ssl,ssl linux'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['security/ssl-certificates/commercial/']
-modified: Monday, August 22nd, 2011
+modified: Tuesday, November 18th, 2014
 modified_by:
-  name: Amanda Folson
+  name: James Stewart
 published: 'Monday, November 16th, 2009'
 title: Obtaining a Commercial SSL Certificate
 ---
