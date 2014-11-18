@@ -201,6 +201,11 @@ In this section we will create a pool for the domain example.com which is owned 
         ...
 
         listen = /var/run/php5-fpm_example.com.sock
+        ; Due to recently fixed bug: https://bugs.launchpad.net/ubuntu/+source/php5/+bug/1307027,
+        ; group shuld be the same as apache group.
+        listen.owner = bob
+        listen.group = www-data
+        
         ~~~
 
 3. Restart the php5-fpm process for the new pool to be created.
