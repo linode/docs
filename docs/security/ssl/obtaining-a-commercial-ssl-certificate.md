@@ -38,15 +38,11 @@ Create a Certificate Signing Request
 Issue these commands to create a certificate signing request (CSR) for the site which you'd like to use with SSL. Be sure to change "www.mydomain.com" to reflect the fully qualified domain name (subdomain.domainname.com) of the site you'll be using SSL with. Leave the challenge password blank. We entered 365 for the days parameter to the command, as we would be paying for one year of SSL certificate verification from a commercial CA (certificate authority).
 
     cd /etc/ssl/localcerts
-    openssl req -new -nodes -days 365 -keyout www.mydomain.com.key -out www.mydomain.com.csr
-
-If your SSL provider requires 2048-bit keys, please add the following option to the command shown above:
-
-    -newkey rsa:2048
+    openssl req -new -newkey rsa:2048 -nodes -days 365 -keyout www.mydomain.com.key -out www.mydomain.com.csr
 
 Here are the values we entered for our example certificate. Note that you can ignore the extra attributes.
 
-    Generating a 1024 bit RSA private key
+    Generating a 2048 bit RSA private key
     ......................................................++++++
     ....++++++
     writing new private key to 'www.mydomain.com.key'
