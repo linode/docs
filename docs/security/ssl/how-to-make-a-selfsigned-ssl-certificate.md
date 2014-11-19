@@ -25,12 +25,12 @@ Debian/Ubuntu users:
     apt-get update
     apt-get upgrade
     apt-get install openssl
-    mkdir /etc/ssl/localcerts
+    mkdir /etc/apache2/ssl
 
 CentOS/Fedora users:
 
     yum install openssl
-    mkdir /etc/ssl/localcerts
+    mkdir /etc/apache2/ssl
 
 Creating a Self-Signed Certificate
 ----------------------------------
