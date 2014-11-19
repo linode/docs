@@ -2,14 +2,14 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Serve SSL-enabled websites with the Apache web server on Debian 7.'
+description: 'Serve SSL-enabled websites with the Apache web server.'
 keywords: 'apache SSL,ssl on debian,web sever,debian'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: Wednesday, November 19th, 2014
 modified_by:
   name: James Stewart
 published: 'Wednesday, November 19th, 2014'
-title: 'SSL Certificates with Apache on Debian 7'
+title: 'SSL Certificates with Apache'
 ---
 
 This guide will assist you with enabling SSL for websites served under the Apache web server, in order to ensure secure access to your website and services.
@@ -17,7 +17,7 @@ This guide will assist you with enabling SSL for websites served under the Apach
 Prerequisites
 -------------
 
-Prior to following this guide, you will need to ensure that the following steps have been taken on your Linode.
+Thsi guide assumes that you are running Apache2 on Debian7 or Ubuntu 14.04. Prior to following this guide, you will also need to ensure that the following steps have been taken on your Linode.
 
 - Follow our [getting started guide](/docs/getting-started/) to configure your Linode.
 
@@ -59,7 +59,7 @@ Apache virtual hosting file
 
 Restart Apache:
 
-    /etc/init.d/apache2 restart
+    service apache2 restart
 
 You should now be able to visit your site with SSL enabled (after accepting your browser's warnings about the certificate).
 
@@ -100,7 +100,7 @@ Apache virtual hosting file
 
 Restart Apache:
 
-    /etc/init.d/apache2 restart
+    service apache2 restart
 
 You should now be able to visit your site with SSL enabled. Congratulations, you've installed a commercial SSL certificate!
 
