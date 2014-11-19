@@ -25,12 +25,12 @@ Debian/Ubuntu users:
     apt-get update
     apt-get upgrade
     apt-get install openssl
-    mkdir /etc/apache2/ssl
+    mkdir /etc/ssl/localcerts
 
 CentOS/Fedora users:
 
     yum install openssl
-    mkdir /etc/apache2/ssl
+    mkdir /etc/ssl/localcerts
 
 Creating a Self-Signed Certificate
 ----------------------------------
@@ -42,7 +42,13 @@ As an example, we'll create a certificate that might be used to secure a persona
 
 You will be asked for several configuration values. Enter values appropriate for your organization and server, as shown here. This example will create a certificate valid for 365 days; you may wish to increase this value. We've specified the FQDN (fully qualified domain name) of the VPS for the "Common Name" entry, as this certificate will be used for generic SSL service. The `-nodes` flag instructs OpenSSL to create a certificate that does not require a passphrase. If this option is omitted, you will be required to enter a passphrase on the console to unlock the certificate each time the server application using it is restarted (most frequently, this will happen when you reboot your Linode).
 
-Once the certificate is generated, you'll need to configure your server software properly to reference the certificate file.
+Next Steps
+----------
+
+Once your certificate has been generated, you will need to configure your web server to utilize the new certificate.  Instructions for doing so with several popular platforms can be found at the links below.
+
+- [SSL Certificates with Apache on Debian 7](docs/security/ssl/ssl-apache2-debian7)
+- [SSL Certificates with Nginx}(docs/security/ssl/ssl-certificates-with-nginx)Next Steps
 
 More Information
 ----------------
@@ -50,6 +56,3 @@ More Information
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [OpenSSL documentation](http://openssl.org/docs/)
-
-
-

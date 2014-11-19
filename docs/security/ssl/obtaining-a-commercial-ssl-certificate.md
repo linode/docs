@@ -89,12 +89,17 @@ Now you'll need to get the root certificate for the CA that you paid to sign you
 
 For example, if we downloaded a root cert for Verisign, we would save it to `/etc/ssl/localcerts/verisign.cer`. Note that many Linux distributions offer a package that contains updated root certificates for major certificate authorities; check your distribution's repositories for a package named "ca-certificates". If you have this package installed, the root CA certs will be installed under `/etc/ssl/certs`.
 
+Next Steps
+----------
+
+Once your certificate has been generated, you will need to configure your web server to utilize the new certificate.  Instructions for doing so with several popular platforms can be found at the links below.
+
+- [SSL Certificates with Apache on Debian 7](docs/security/ssl/ssl-apache2-debian7)
+- [SSL Certificates with Nginx}(docs/security/ssl/ssl-certificates-with-nginx)Next Steps
+
 More Information
 ----------------
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [OpenSSL Documentation](http://www.openssl.org/docs/)
-
-
-
