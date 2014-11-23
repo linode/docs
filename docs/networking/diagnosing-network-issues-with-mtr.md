@@ -55,7 +55,7 @@ To install MTR with MacPorts, run:
 
     port install mtr
 
-If your desktop runs Windows, you can use the windows port of MTR called "WinMTR". You can download this application from the [WinMTR upstream](http://winmtr.sourceforge.net/).
+If your desktop runs Windows, you can use the windows port of MTR called "WinMTR". You can download this application from the [WinMTR upstream](http://sourceforge.net/projects/winmtr/).
 
 Generating an MTR report
 ------------------------
