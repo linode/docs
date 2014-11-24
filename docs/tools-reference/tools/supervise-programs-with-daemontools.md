@@ -25,7 +25,8 @@ Enter the directory and then download both the daemontools source and the errno 
 
 Apply the patch and run the install script. This will install the daemontools binaries to `/command` with symlinks to `/user/local/bin/`. `/service` and `/package` directories will also be created.
 ```
-> patch -p1 < daemontools-0.76.errno.patch
+> cd admin/daemontools-0.76
+> patch -p1 < ../../daemontools-0.76.errno.patch
 > package/install
 ```
 
