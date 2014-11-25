@@ -356,8 +356,10 @@ root      1192  0.0  0.2  1336  156 ?        S    May28
 does not exist?envdir: fatal: unable to switch to directo
 ry ../env: file does not exist?envdir: fatal: unable to s
 witch to directory ../env: file does not exist?envdir: fa
-tal: unable to switch to directory ../env: file does not exist?envdir: fatal: unable to switch to directory ../env
-: file does not exist?envdir: fatal: unable to switch to directory ../env: file does not exist?
+tal: unable to switch to directory ../env: file does not 
+exist?envdir: fatal: unable to switch to directory ../env
+: file does not exist?envdir: fatal: unable to switch to 
+directory ../env: file does not exist?
 ~~~
 
 This shows a repeating message from the [envdir](http://cr.yp.to/daemontools/envdir.html) tool that says "*fatal: unable to switch to directory ../env: file does not exist\n*".
