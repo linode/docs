@@ -164,7 +164,7 @@ Ubuntu 12.04 (Precise)
 
     {: .file-excerpt }
 	/boot/grub/menu.lst
-	:~~~
+	: ~~~
     	 kopt=root=/dev/xvda console=hvc0 ro quiet
 	~~~
 
