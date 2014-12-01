@@ -770,7 +770,7 @@ Here's how to configure Dovecot:
         groupadd -g 5000 vmail
         useradd -g vmail -u 5000 vmail -d /var/mail
 
-14. Change the owner of the */var/vmail/* folder and its contents to belong to `vmail` by entering the following command:
+14. Change the owner of the */var/mail/* folder and its contents to belong to `vmail` by entering the following command:
 
         chown -R vmail:vmail /var/mail
 
