@@ -15,7 +15,10 @@ title: Network Helper
 
 Linode's Network Helper is a tool implemented in a Linode configuration profile, which automatically configures static networking on your Linode at boot. Network Helper is currently in beta, and available to anyone who would like to try it. Network Helper works will all current Linux distributions available for deployment.
 
-Thanks to Network Helper, you don't have to worry about manually configuring a static IPv4 address, or changing that configuration when you enable private networking, or add an additional public IPv4 address.
+Thanks to Network Helper, you don't have to worry about manually configuring a static IPv4 address, or changing that configuration when you enable private networking, add an additional public IPv4 address, or migrate to a new data center.
+
+{: .note }
+> Network Helper does not effect IPv6 networking. Please see our [Native IPv6 Networking](/docs/networking/native-ipv6-networking) for more information on IPv6.
 
 ## What Does It Do?
 
@@ -69,7 +72,7 @@ Once Network Helper moves out of beta it will be enabled on all new configuratio
 
 Even with Network Helper's default behavior set to **OFF**, you can enable Network Helper on specific configuration profiles. 
 
-1.  Do to your Linode's Dashboard, and under Configuration Profiles click **Edit** for the profile you want to adjust:
+1.  Go to your Linode's Dashboard, and under Configuration Profiles click **Edit** for the profile you want to adjust:
 
     [![The Edit link for a Configuration Profile](/docs/assets/linode-dashboard-hilighted_small.png)](/docs/assets/linode-dashboard-hilighted.png)
 
@@ -80,10 +83,31 @@ Even with Network Helper's default behavior set to **OFF**, you can enable Netwo
 
 3. Click on **Save Changes**.
 
+### Failure to Run
+
+If Network Helper is unable to determine the operating system during boot, it will not attempt to write any new configuration files. When this happens, Network Helper will let you know in the Host Job Queue:
+
+[![Network Helper Failure Message](/docs/assets/network-helper-failure_small.png)](/docs/assets/network-helper-failure.png)
+
+Similarly, if you boot a unsupported older distribution while Network Helper is enabled, you'll see a warning in the Host Job Queue:
+
+[![Network Helper Failure Message](/docs/assets/network-helper-unsupported_small.png)](/docs/assets/network-helper-unsupported.png)
 
 ## What files are Affected
 
-The files modified depend on the distribution, but in all cases Network Helper modified `/etc/resolv.conf` to include the `options rotate` directive. If you'd like to know what files it modifies specifically, scroll down to your preferred distribution.
+The files modified depend on the distribution, but in all cases Network Helper modifies `/etc/resolv.conf` to include the `options rotate` directive.
+
+For each file modified by Network Helper. you will have 3 versions of this file after each boot. Let's use Debian as an example. In addition to the `/etc/network/interfaces` file, Network Helper will create:
+
+- A copy of the file as the distribution provided it: `interfaces.linode-orig`.
+
+- A copy of the file from the previous boot: `interfaces.linode-last`. If you made manual changes to the file during the previous boot, you'll find it saved here.
+
+    If you need to restore manual changes made during a previous reboot, use the following command, replacing `/etc/network/interfaces` with the files for your specific distribution:
+
+        mv /etc/network/interfaces.linode-last /etc/network/interfaces
+
+If you'd like to know what files Network Helper modifies specifically, scroll down to your preferred distribution.
 
 ###Debian & Ubuntu
 
