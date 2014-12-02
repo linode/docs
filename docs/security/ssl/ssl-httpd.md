@@ -2,22 +2,22 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Serve SSL-enabled websites with the Apache web server.'
-keywords: 'apache SSL,ssl on debian,web sever,debian'
+description: 'Serve SSL-enabled websites with the HTTPD web server.'
+keywords: 'apache SSL,ssl on centos, ssl on fedora'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: Wednesday, November 19th, 2014
 modified_by:
   name: James Stewart
 published: 'Wednesday, November 19th, 2014'
-title: 'SSL Certificates with Apache'
+title: 'SSL Certificates with HTTPD'
 ---
 
-This guide will assist you with enabling SSL for websites served under the Apache web server, in order to ensure secure access to your website and services.
+This guide will assist you with enabling SSL for websites served under the HTTPD web server, in order to ensure secure access to your website and services.
 
 Prerequisites
 -------------
 
-Thsi guide assumes that you are running Apache2 on Debian7 or Ubuntu 14.04. Prior to following this guide, you will also need to ensure that the following steps have been taken on your Linode.
+Thsi guide assumes that you are running HTTPD on CentOS or Fedora. Prior to following this guide, you will also need to ensure that the following steps have been taken on your Linode.
 
 - Follow our [getting started guide](/docs/getting-started/) to configure your Linode.
 
@@ -25,24 +25,38 @@ Thsi guide assumes that you are running Apache2 on Debian7 or Ubuntu 14.04. Prio
 
 - Follow our guide for obtaining either a [self signed](/docs/security/ssl/how-to-make-a-selfsigned-ssl-certificate) or [commercial](/docs/security/ssl/obtaining-a-commercial-ssl-certificate) SSL certificate.
 
-NameVirtualHost Configuration
------------------------------
+- In order to configure your Linode to function with SSL, you will need to ensure that mod_ssl and OpenSSL are installed on your system.  You can do so by running the following command
 
-You will need to add a NameVirtualHost entry for the IP address that you wish to use for SSL. You may use a single IP to provide self-signed SSL service for multiple vhosts.  If you wish to host multiple sites with commercial SSL certificates, you will need to [contact support](/docs/platform/support) to request an additional IP address, and create an entry as shown below for each IP you are using for SSL.  Replace 12.34.56.78 with the IP address that you wish to use for SSL.
+        yum install mod_ssl openssl
+
+Configure HTTPD to use SSL
+--------------------------
+
+You will need to configure HTTPD to point to your certificate files.  This can be done by editing the /etc/httpd/conf.d/ssl.conf file and ensuring the the following values are present.
 
 {: .file-excerpt }
-/etc/apache2/ports.conf
+/etc/httpd/conf.d/ssl.conf
+:   ~~~ apache
+    SSLCertificateFile /etc/ssl/localcerts/www.mydomain.com.crt
+    SSLCertificateKeyFile /etc/ssl/localcerts/www.mydomain.com.key
+    ~~~
+
+Configure HTTPD to use a Self-Signed Certificate
+------------------------------------------------
+Next, we will need to create virtual host entries in the /etc/httpd/conf/httpd.conf file, in order to provide the certificate files that should be used by each virtual host. For each virtual host, you will need to replicate the configuration shown below. You'll need to replace 12.34.56.78 with your Linode's IP address, and any mentions of mydomain.com with your own domain as provided when configuring your certificate.
+
+You will need to add the following line to the top of your httpd.conf file.
+
+[: .file-excerpt )
+/etc/httpd/conf/httpd.conf
 :   ~~~ apache
     NameVirtualHost 12.34.56.78:443
     ~~~
 
-Configure Apache to use a Self-Signed Certificate
----------------------------------------------------
-
-You will need to edit the virtual host configuration files located in /etc/apache2/sites-available, to provide the certificate files that should be used by each virtual host. For each virtual host, you will need to replicate the configuration shown below. You'll need to replace 12.34.56.78 with your Linode's IP address, and any mentions of mydomain.com with your own domain as provided when configuring your certificate. Note that we've essentially reproduced the configuration for a non-SSL site, with the addition of three lines for SSL.
+You will also need to add the lines below, ensuring that the domain names have been changed to match your configuration.
 
 {: .file-excerpt }
-Apache virtual hosting file
+/etc/httpd/conf/httpd.conf
 :   ~~~ apache
     <VirtualHost 12.34.56.78:443>
          SSLEngine On
@@ -57,9 +71,9 @@ Apache virtual hosting file
     </VirtualHost>
     ~~~
 
-Restart Apache:
+Restart the HTTPD daemon.
 
-    service apache2 restart
+    systemctl restart httpd
 
 You should now be able to visit your site with SSL enabled (after accepting your browser's warnings about the certificate).
 
@@ -79,10 +93,32 @@ Most providers will provide a root certificate file as either a .cer or .pem fil
 
 ### Configure Apache to use the Signed SSL Certificate
 
-You will need to edit the virtual host configuration files located in /etc/apache2/sites-available, to provide the certificate files that should be used by each virtual host.For each virtual host, you will need to replicate the configuration shown below. You'll need to replace 12.34.56.78 with your Linode's IP address, and any mentions of mydomain.com with your own domain as provided when configuring your certificate. You will also need to ensure that the SSLCACertificateFile value is configured to point to the CA root certificate downloaded in the previous step.
+You will need to configure HTTPD to point to your certificate files.  This can be done by editing the /etc/httpd/conf.d/ssl.conf file and ensuring the the following values are present.
 
 {: .file-excerpt }
-Apache virtual hosting file
+/etc/httpd/conf.d/ssl.conf
+:   ~~~ apache
+    SSLCertificateFile /etc/ssl/localcerts/www.mydomain.com.crt
+    SSLCertificateKeyFile /etc/ssl/localcerts/www.mydomain.com.key
+    SSLCACertificateFile /etc/ssl/localcerts/ca.pem
+    ~~~
+
+Configure HTTPD to use a Self-Signed Certificate
+------------------------------------------------
+Next, we will need to create virtual host entries in the /etc/httpd/conf/httpd.conf file, in order to provide the certificate files that should be used by each virtual host. For each virtual host, you will need to replicate the configuration shown below. You'll need to replace 12.34.56.78 with your Linode's IP address, and any mentions of mydomain.com with your own domain as provided when configuring your certificate.
+
+You will need to add the following line to the top of your httpd.conf file.
+
+{: .file-excerpt )
+/etc/httpd/conf/httpd.conf
+:   ~~~ apache
+    NameVirtualHost 12.34.56.78:443
+    ~~~
+
+You will also need to add the lines below, ensuring that the domain names have been changed to match your configuration. You will also need to ensure that the SSLCACertificateFile value is configured to point to the CA root certificate downloaded in the previous step.
+
+{: .file-excerpt }
+/etc/httpd/conf/httpd.conf
 :   ~~~ apache
     <VirtualHost 12.34.56.78:443>
          SSLEngine On
@@ -100,7 +136,7 @@ Apache virtual hosting file
 
 Restart Apache:
 
-    service apache2 restart
+    systemctl restart httpd
 
 You should now be able to visit your site with SSL enabled. Congratulations, you've installed a commercial SSL certificate!
 
@@ -110,3 +146,4 @@ More Information
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [Apache HTTP Server Version 2.0 Documentation](http://httpd.apache.org/docs/2.0/)
+- [Setting up an SSL Secured Webserver with CentOS](http://wiki.centos.org/HowTos/Https)
