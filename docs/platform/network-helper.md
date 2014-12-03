@@ -43,8 +43,8 @@ Below is an example network configuration file for a Linode booted to Debian 7, 
     iface eth0 inet static
         address 198.74.53.231/24
         gateway 198.74.53.1
-        up   ip addr add 66.228.60.128/24 dev eth0 label eth0:1
-        down ip addr del 66.228.60.128/24 dev eth0 label eth0:1
+        up   ip addr add 12.34.56.78/24 dev eth0 label eth0:1
+        down ip addr del 12.34.56.78/24 dev eth0 label eth0:1
         up   ip addr add 192.168.138.44/17 dev eth0 label eth0:2
         down ip addr del 192.168.138.44/17 dev eth0 label eth0:2
     ~~~
