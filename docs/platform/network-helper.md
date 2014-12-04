@@ -99,13 +99,13 @@ The files modified depend on the distribution, but in all cases Network Helper m
 
 For each file modified by Network Helper. you will have 3 versions of this file after each boot. Let's use Debian as an example. In addition to the `/etc/network/interfaces` file, Network Helper will create:
 
-- A copy of the file as the distribution provided it: `interfaces.linode-orig`.
+- A copy of the file as the distribution provided it: `.interfaces.linode-orig`.
 
-- A copy of the file from the previous boot: `interfaces.linode-last`. If you made manual changes to the file during the previous boot, you'll find it saved here.
+- A copy of the file from the previous boot: `.interfaces.linode-last`. If you made manual changes to the file during the previous boot, you'll find it saved here.
 
     If you need to restore manual changes made during a previous reboot, use the following command, replacing `/etc/network/interfaces` with the files for your specific distribution:
 
-        mv /etc/network/interfaces.linode-last /etc/network/interfaces
+        mv /etc/network/.interfaces.linode-last /etc/network/interfaces
 
 If you'd like to know what files Network Helper modifies specifically, scroll down to your preferred distribution.
 
