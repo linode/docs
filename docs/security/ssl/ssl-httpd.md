@@ -140,6 +140,13 @@ Restart Apache:
 
 You should now be able to visit your site with SSL enabled. Congratulations, you've installed a commercial SSL certificate!
 
+Hosting Multiple SSL Enabled Sites With SNI
+-------------------------------------------
+
+SNI is a new TLS that can be used to host SSL certificates for multiple domains on a single IP address. As this is a fairly recent update to Apache, older browsers may not support this configuration. Information on hosting multiple sites using SNI can be found in Apache's documentation.
+
+- [SSL With Virtual Hosts Using SNI](https://wiki.apache.org/httpd/NameBasedSSLVHostsWithSNI)
+
 More Information
 ----------------
 
