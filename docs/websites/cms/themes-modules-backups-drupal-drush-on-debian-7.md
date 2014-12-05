@@ -14,7 +14,7 @@ external_resources:
  - '[SSL Certificates](/docs/security/ssl/)'
 ---
 
-Drush is a command line tool, which can be used for various Drupal projects. This tutorial uses Drush to install themes, modules, and a manual backup system, covering some basic administration tasks for Drupal websites. 
+Drush is a command line tool, which can be used for various Drupal projects. This tutorial uses Drush to install themes, modules, and a manual backup system, covering some basic administration tasks for Drupal websites.
 
 Linode has another guide for installing Drush and creating a Drupal website, [Installing & Using Drupal Drush on Debian 7](/docs/websites/cms/drush-drupal). Depending on your experience level with Drush, you may want to start with that guide.
 
@@ -31,21 +31,23 @@ Before installing themes, modules, and a backup system with Drush, make sure tha
 4. Install Drush and a Drupal website core with the [Installing & Using Drupal Drush on Debian 7](/docs/websites/cms/drush-drupal) guide.
 
 5. Make sure that your system is up to date, using:
-       
-       su root
-       apt-get update && apt-get upgrade
-       exit
 
-{: .note } 
+       sudo apt-get update && sudo apt-get upgrade
+
+
+{: .note }
 >This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
 ##Installing Themes with Drush
 
-Downloading, enabling, and setting the theme is extremely easy with Drupal Drush. 
+Downloading, enabling, and setting the theme is extremely easy with Drupal Drush.
 
 1. Find a theme to download. The Drush download name is usually in the release notes under the "Downloads" section on any drupal.org/project/project_theme theme page. Spaces are either removed or replaced with an underscore. Pictured below is an example. Here, "corporateclean" would be used in the Drush command:
 
     [![Corporate Clean Drupal Theme Notes.](/docs/assets/corporate-clean-drupal-theme-name.png)](/docs/assets/corporate-clean-drupal-theme-name.png)
+
+   {: .note}
+   > At the time of this guide's publication, this theme is not yet available for Drupal 8 beta. If you're using this version of Drupal, select another theme to replace Corporate Clean for this example.
 
 2. While logged in as the website owner, download and enable the theme:
 
@@ -59,11 +61,11 @@ Downloading, enabling, and setting the theme is extremely easy with Drupal Drush
 
        drush vset theme_default corporateclean
 
-Check the homepage of your site and the new them should appear.
+   Check the homepage of your site and the new them should appear.
 
 ##Installing Modules with Drush
 
-Downloading and enabling a module is similar to working with a theme. However, modules can be used for almost any purpose. From enhancing public facing functionality or providing a better administrative UI, there are thousands of Drupal modules. Try to find modules with clear documentation. Once installed, the browser interface can still be challenging.
+Downloading and enabling a module is similar to working with a theme. However, modules can be used for almost any purpose. From enhancing public facing functionality to providing a better administrative UI, there are thousands of Drupal modules. Try to find modules with clear documentation. Once installed, the browser interface can still be challenging.
 
 1. To download a popular module called Commerce, first install the supporting modules. There are several:
 
@@ -84,20 +86,20 @@ Downloading and enabling a module is similar to working with a theme. However, m
 4. Next, scroll down to the the "Commerce" module set, pictured below. Start checking or turning on the different Commerce sub-modules. Finally, select the "Save configuration" button at the very bottom of the page.
 
     [![Drupal Modules Page.](/docs/assets/drupal-modules-page.png)](/docs/assets/drupal-modules-page.png)
-    
-You have successfully installed and turned on a new module. The module is now running and ready to be used. In the case of the Commerce module set, notice the new "Store" menu on the Admin's homepage. 
+
+You have successfully installed and turned on a new module. The module is now running and ready to be used. In the case of the Commerce module set, notice the new "Store" menu on the Admin's homepage.
 
 ##Backup a Drupal Site with Drush
 
-There are many reasons to back up a website, here are two. First, save an existing version of the site while developing a new version. If you decide the new version is not what you want, then revert back to the older saved version. These back ups can be saved locally. Second, save to a remote location in case someone hacks your site and destroys it.
+It's always important to keep regular backups of a website. Backups protect you from losing data due to configuration changes, vulnerabilites, or system failures. Backups should be stored on a separate system whenever possible. Drush has tools built in to help create backups of your site.
 
 1. While in the `/drupal` directory, create a .tar.gz back-up file containing the site database and site files with:
 
        drush archive-dump
 
-    *The site has been backed up locally.* Notice the file has been created and placed in the the `/home/user/drush-backups/archive-dump/time-stamp` directory. It contains the Drupal site folder and a copy of the MySql database.
+    *The site has been backed up locally.* Notice the backup has been created and placed in the the `/home/user/drush-backups/archive-dump/` directory, in a folder time stamped with its creation time. Drush saves your data into a .tar.gz archive file, containing the Drupal site folder and a copy of the MySql database.
 
-2. To copy the file to a remote Linode, use the rsync command. Replace the `date-time-stamp`, `examplesitename.date-time-stamp.tar.gz`, `user`, `ip-address`, and `/user/` with the appropriate inputs.
+2. To copy the file to a remote backup location, use the rsync command. Replace the `date-time-stamp`, `examplesitename.date-time-stamp.tar.gz`, `user`, `ip-address`, and `/user/` with the appropriate inputs:
 
        rsync -avz /home/user/drush-backups/achive-dump/date-time-stamp/examplesitename.date-time-stamp.tar.gz user@ip-address:/home/user/
 
@@ -105,30 +107,30 @@ There are many reasons to back up a website, here are two. First, save an existi
 
        drush archive-restore /home/user/drush-backups/achive-dump/date-time-stamp/examplesitename.date-time-stamp.tar.gz
 
-    The file can be restored from any location. 
+    This will recreate the `drupal` folder, which you can then manually move into your web directory.
 
 ###Automated Backups on Linode with Drush
 
 The backup process above can be automated. You must create an SHH Pair Key, a Bash script, and use Cron automation.
 
-1. Create SSH Key Pair Authentication *without a password* for the Drupal hosting Linode to sign into the backup Linode. This is a simple task. It's covered in the Using [SSH Key Pair Authentication](/docs/security/securing-your-server#using-ssh-key-pair-authentication) section of the [Securing Your Server](/docs/security/securing-your-server) guide. 
+1. Create SSH Key Pair Authentication *without a password* for the Linode hosting your Drupal site, and pass the public key to the backup server. This is a simple task. It's covered in the Using [SSH Key Pair Authentication](/docs/security/securing-your-server#using-ssh-key-pair-authentication) section of the [Securing Your Server](/docs/security/securing-your-server) guide.
 
-2. On the Drupal hosting Linode, create a Bash script file. In the file excerpt below, replace `example.com` and the rsync command inputs from step 3 above:
+2. On the Drupal hosting Linode, create a Bash script file. In the file excerpt below, replace `example.com` and the rsync command inputs from step 2 above:
 
        nano drupal-backup.sh
 
-    {: .file-excerpt }
-    /home/user/drupal-backup.sh
+    {: .file }
+    ~/drupal-backup.sh
     : ~~~
-    #!/bin/bash
-    # Drupal Backup Script
-    cd /var/www/example.com/public_html/drupal/
-    drush archive-dump
-    rsync -avz /home/local-user/drush-backups/archive-dump/ remote-user@remote-ip-address:/home/user/
+      #!/bin/bash
+      # Drupal Backup Script
+      cd /var/www/example.com/public_html/drupal/
+      drush archive-dump
+      rsync -avz /home/local-user/drush-backups/archive-dump/ remote-user@remote-ip-address:/home/user/
       ~~~
 
 3. Make the script file executable:
-      
+
        chmod +x drupal-backup.sh
 
 4. Open and edit the Crontab file:
@@ -145,13 +147,13 @@ The backup process above can be automated. You must create an SHH Pair Key, a Ba
     # For more information see the manual pages of crontab(5) and cron(8)
     #
     # m h  dom mon dow   command
-         1 0   *   *   1    ~/drupal-backup.sh > ~/backup-log.log
+         1 0   *   *   1    ~/drupal-backup.sh
       ~~~
 
-This back up configuration creates a saved version once a week. The Cron timer is set for 12:01 AM on every Sunday. There are many ways to configure a back up with additional options to consider.
+   This back up configuration creates a saved version once a week. The Cron timer is set for 12:01 AM on every Sunday. There are many ways to configure a back up with additional options to consider. Check out our [Cron](/docs/tools-reference/tools/schedule-tasks-with-cron) guide for more information.
 
-This back up system leaves saved versions of the site and database on both the local and remote Linodes. Depending on the disk size of your Linode, you may want to occasionally delete older back up versions. The deletion task could be automated within the Bash script above. Since the Cron timer is only set for once a week, disk usage is probably not a large concern. There are many configuration options to consider.
+   This back up system leaves saved versions of the site and database on both the local and remote Linodes. Depending on the disk size of your Linode, you may want to occasionally delete older back up versions. The deletion task could be automated within the Bash script above. Since the Cron timer is only set for once a week, disk usage is probably not a large concern. There are many configuration options to consider.
 
 ##Next Steps
 
-This guide was part of a series that created a Drupal site from start to finish on Linode. Your server is complete. Now that everything is installed, master the Drupal interface, Drupal modules, and themes. Create a stunning site for the world to see. 
+This guide was part of a series that created a Drupal site from start to finish on Linode. Your server is complete. Now that everything is installed, master the Drupal interface, Drupal modules, and themes. Create a stunning site for the world to see.
