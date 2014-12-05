@@ -91,13 +91,13 @@ You have successfully installed and turned on a new module. The module is now ru
 
 ##Backup a Drupal Site with Drush
 
-It's always important to keep regular backups of a website. Backups protect you from losing data due to configuration changes, vulnerabilited, system failure. Backups should be stored on a separate system whenever possible. Drush has tools built in to help create backups of your site.
+It's always important to keep regular backups of a website. Backups protect you from losing data due to configuration changes, vulnerabilites, or system failures. Backups should be stored on a separate system whenever possible. Drush has tools built in to help create backups of your site.
 
 1. While in the `/drupal` directory, create a .tar.gz back-up file containing the site database and site files with:
 
        drush archive-dump
 
-    *The site has been backed up locally.* Notice the backup has been created and placed in the the `/home/user/drush-backups/archive-dump/` directory, in a folder timestamped for when you ran it. Drush backups up your data into a .tar.gz archive file, containing the Drupal site folder and a copy of the MySql database.
+    *The site has been backed up locally.* Notice the backup has been created and placed in the the `/home/user/drush-backups/archive-dump/` directory, in a folder time stamped with its creation time. Drush saves your data into a .tar.gz archive file, containing the Drupal site folder and a copy of the MySql database.
 
 2. To copy the file to a remote backup location, use the rsync command. Replace the `date-time-stamp`, `examplesitename.date-time-stamp.tar.gz`, `user`, `ip-address`, and `/user/` with the appropriate inputs:
 
@@ -113,7 +113,7 @@ It's always important to keep regular backups of a website. Backups protect you 
 
 The backup process above can be automated. You must create an SHH Pair Key, a Bash script, and use Cron automation.
 
-1. Create SSH Key Pair Authentication *without a password* for the Linode hosting your drupal site, and pass the public key to the backup server. This is a simple task. It's covered in the Using [SSH Key Pair Authentication](/docs/security/securing-your-server#using-ssh-key-pair-authentication) section of the [Securing Your Server](/docs/security/securing-your-server) guide.
+1. Create SSH Key Pair Authentication *without a password* for the Linode hosting your Drupal site, and pass the public key to the backup server. This is a simple task. It's covered in the Using [SSH Key Pair Authentication](/docs/security/securing-your-server#using-ssh-key-pair-authentication) section of the [Securing Your Server](/docs/security/securing-your-server) guide.
 
 2. On the Drupal hosting Linode, create a Bash script file. In the file excerpt below, replace `example.com` and the rsync command inputs from step 2 above:
 
