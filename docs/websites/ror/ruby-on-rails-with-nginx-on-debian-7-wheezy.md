@@ -59,16 +59,6 @@ Update your local package database and install Phusion Passenger:
     apt-get update
     apt-get install nginx-extras passenger
 
-Run the Phusion Passenger installer for Nginx:
-
-    passenger-install-nginx-module
-
-You'll be greeted by the Phusion Passenger Nginx installer program. Press "Enter" to continue with the installation.
-
-[![Phusion Passenger nginx installer program running on Debian 7 (Wheezy).](/docs/assets/351-01-passenger-nginx-installer.png)](/docs/assets/351-01-passenger-nginx-installer.png)
-
-The installation process will begin an interactive session that will guide you through the process of building Phusion Passenger. When prompted for the Nginx installation method, we recommend you choose "1" for both options to allow the installer to automatically download, compile, and install Nginx for you. Unless you have specific needs that would necessitate passing custom options to Nginx at compile time, this is the safest way to proceed. Accept the default installation location for Nginx.
-
 Enable Passenger Support and Start Nginx
 ----------------------------------------
 
