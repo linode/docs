@@ -6,7 +6,7 @@ description: 'Using the ZNC bouncer to retain an IRC connection'
 keywords: 'znc,irc,debain,source'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: Friday, August 21, 2014
-modified_by: 
+modified_by:
     name: 'Alex Fornuto'
 published: 'Friday, August 21, 2014'
 title: 'Installing ZNC from Source on Debian 7.5'
@@ -36,7 +36,7 @@ Prepping the system
 Installation
 ------------
 
-The commands listed below reference ZNC version 1.4, which is the latest at the time of publishing. Please refer to [ZNC](http://wiki.znc.in/ZNC)'s official website for the latest version and download URL. 
+The commands listed below reference ZNC version 1.4, which is the latest at the time of publishing. Please refer to [ZNC](http://wiki.znc.in/ZNC)'s official website for the latest version and download URL.
 
 1. Download the latest version of ZNC:
 
@@ -58,8 +58,11 @@ The commands listed below reference ZNC version 1.4, which is the latest at the 
 
 5. Run the following two commands to install ZNC to your Linode:
 
-        make 
+        make
         sudo checkinstall --fstrans=0 make install
+
+   {: .note }
+   > The program `checkinstall` will create a `.deb` package which you can use to reinstall this version of ZNC in the future. It has it's own set of options to review. If you prefer, you can instead run `sudo make install` to install ZNC as is.
 
 
 Configuration
@@ -72,24 +75,24 @@ To begin configuring ZNC, run the following command:
 
 This will launch an interactive script asking you for input on a variety of parameters. Below is an example output of the `makeconf` script with standard options selected. To match your needs, you can use or change the provided input at your discretion. If you're not sure, use the default option. Many of these options can be adjusted later through the web interface.
 
-{:.note} 
+{:.note}
 > Make sure to change the Username variable.
 
 
         [ .. ] Checking for list of available modules...
         [ >> ] ok
         [ ** ] Building new config
-        [ ** ] 
+        [ ** ]
         [ ** ] First let's start with some global settings...
-        [ ** ] 
+        [ ** ]
         [ ?? ] What port would you like ZNC to listen on? (1025 to 65535): 5678
         [ ?? ] Would you like ZNC to listen using SSL? (yes/no) [no]: yes
-        [ ?? ] Would you like ZNC to listen using both IPv4 and IPv6? (yes/no) [yes]: 
+        [ ?? ] Would you like ZNC to listen using both IPv4 and IPv6? (yes/no) [yes]:
         [ .. ] Verifying the listener...
         [ >> ] ok
-        [ ** ] 
+        [ ** ]
         [ ** ] -- Global Modules --
-        [ ** ] 
+        [ ** ]
         [ ** ] +-----------+----------------------------------------------------------+
         [ ** ] | Name      | Description                                              |
         [ ** ] +-----------+----------------------------------------------------------+
@@ -97,27 +100,27 @@ This will launch an interactive script asking you for input on a variety of para
         [ ** ] | webadmin  | Web based administration module                          |
         [ ** ] +-----------+----------------------------------------------------------+
         [ ** ] And 9 other (uncommon) modules. You can enable those later.
-        [ ** ] 
-        [ ?? ] Load global module <partyline>? (yes/no) [no]: 
+        [ ** ]
+        [ ?? ] Load global module <partyline>? (yes/no) [no]:
         [ ?? ] Load global module <webadmin>? (yes/no) [no]: yes
-        [ ** ] 
+        [ ** ]
         [ ** ] Now we need to set up a user...
-        [ ** ] 
+        [ ** ]
         [ ?? ] Username (AlphaNumeric): user
-        [ ?? ] Enter Password: 
-        [ ?? ] Confirm Password: 
-        [ ?? ] Would you like this user to be an admin? (yes/no) [yes]:    
+        [ ?? ] Enter Password:
+        [ ?? ] Confirm Password:
+        [ ?? ] Would you like this user to be an admin? (yes/no) [yes]:
         [ ?? ] Nick [user]: user
-        [ ?? ] Alt Nick [user_]: 
-        [ ?? ] Ident [user]: 
-        [ ?? ] Real Name [Got ZNC?]:     
-        [ ?? ] Bind Host (optional): 
-        [ ?? ] Number of lines to buffer per channel [50]: 
-        [ ?? ] Would you like to clear channel buffers after replay? (yes/no) [yes]: 
-        [ ?? ] Default channel modes [+stn]: 
-        [ ** ] 
+        [ ?? ] Alt Nick [user_]:
+        [ ?? ] Ident [user]:
+        [ ?? ] Real Name [Got ZNC?]:
+        [ ?? ] Bind Host (optional):
+        [ ?? ] Number of lines to buffer per channel [50]:
+        [ ?? ] Would you like to clear channel buffers after replay? (yes/no) [yes]:
+        [ ?? ] Default channel modes [+stn]:
+        [ ** ]
         [ ** ] -- User Modules --
-        [ ** ] 
+        [ ** ]
         [ ** ] +--------------+------------------------------------------------------------------------------------------+
         [ ** ] | Name         | Description                                                                              |
         [ ** ] +--------------+------------------------------------------------------------------------------------------+
@@ -127,10 +130,10 @@ This will launch an interactive script asking you for input on a variety of para
         [ ** ] | webadmin     | Web based administration module                                                          |
         [ ** ] +--------------+------------------------------------------------------------------------------------------+
         [ ** ] And 20 other (uncommon) modules. You can enable those later.
-        [ ** ] 
+        [ ** ]
         [ ?? ] Load module <chansaver>? (yes/no) [no]: yes
         [ ?? ] Load module <controlpanel>? (yes/no) [no]:
-        [ ?? ] Load module <perform>? (yes/no) [no]: 
+        [ ?? ] Load module <perform>? (yes/no) [no]:
         [ ?? ] Load module <webadmin>? (yes/no) [no]: yes
         [ ** ]
         [ ?? ] Would you like to set up a network? (yes/no) [no]: yes
@@ -171,9 +174,9 @@ This will launch an interactive script asking you for input on a variety of para
         [ ** ] -- Channels --
         [ ** ]
         [ ?? ] Would you like to add a channel for ZNC to automatically join? (yes/no) [yes]: yes
-        [ ?? ] Channel name: #linode  
+        [ ?? ] Channel name: #linode
         [ ?? ] Would you like to add another channel? (yes/no) [no]:
-        [ ?? ] Would you like to set up another network? (yes/no) [no]: no 
+        [ ?? ] Would you like to set up another network? (yes/no) [no]: no
         [ ** ]
         [ ?? ] Would you like to set up another user? (yes/no) [no]:
         [ .. ] Writing config [/home/user/.znc/configs/znc.conf]...
@@ -196,7 +199,7 @@ This will launch an interactive script asking you for input on a variety of para
         [ .. ] Binding to port [4567]...
         [ >> ] ok
         [ ** ] Loading user [user]
-        [ ** ] Loading network [oftc] 
+        [ ** ] Loading network [oftc]
         [ .. ] Loading network module [chansaver]...
         [ >> ] [/usr/local/lib/znc/chansaver.so]
         [ .. ] Loading network module [keepnick]...
