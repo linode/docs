@@ -159,7 +159,12 @@ Last but not least, your LEMP stack needs a database.  MySQL is no longer suppor
 
 	yum install mariadb-server
   
-Once the installation is complete, you can use it the same way you use MySQL.  MariaDB installs with default information and no root password, so it is highly recommend to secure your installation using the build in mysql_secure_installation command:
+Once the installation is complete, you can use it the same way you use MySQL. First however, you must enable and start it in systemd:
+
+	systemctl enable mariadb.service
+	systemctl start mariadb.service
+
+MariaDB installs with default information and no root password, so it is highly recommend to secure your installation using the build in mysql_secure_installation command:
 
 	mysql_secure_installation
 
