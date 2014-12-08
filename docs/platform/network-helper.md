@@ -22,7 +22,7 @@ Thanks to Network Helper, you don't have to worry about manually configuring a s
 
 ## What Does It Do?
 
-On enabled profiles, the Network Helper works during boot or reboot jobs while your Linode is starting up. It detects which distribution is booting, and modifies the appropriate configuration files to assign the IPv4 address statically. Toward the end of this guide, we've listed which distribution-dependent files get modified..
+On enabled profiles, the Network Helper works during boot or reboot jobs while your Linode is starting up. It detects which distribution is booting, and modifies the appropriate configuration files to assign the IPv4 address statically. Toward the end of this guide, we've listed which distribution-dependent files get modified.
 
 Below is an example of a network configuration file for a Linode booted to Debian 7, with Network Helper enabled:
 
