@@ -6,7 +6,7 @@ author:
 description: 'Information on the Network Helper option.'
 keywords: 'network, networking, network helper, ip, ip address, static ip,'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Wednesday, November 26, 2014
+modified: Monday, December 8, 2014
 modified_by:
   name: Alex Fornuto
 published: ''
