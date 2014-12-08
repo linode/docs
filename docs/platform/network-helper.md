@@ -10,7 +10,7 @@ modified: Wednesday, November 26, 2014
 modified_by:
   name: Alex Fornuto
 published: ''
-title: Network Helper
+title: Network Helper - BETA
 ---
 
 Linode's Network Helper is a tool implemented in a Linode configuration profile, which automatically configures static networking on your Linode at boot. Network Helper is currently in beta, and available to anyone who would like to try it. Network Helper works with all current Linux distributions available for deployment.
