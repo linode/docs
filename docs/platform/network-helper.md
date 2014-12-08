@@ -69,7 +69,7 @@ Below is an example network configuration file for a Linode booted to Debian 7, 
 
 ##Turn Network Helper On for all New Configuration Profiles
 
-Once Network Helper moves out of beta it will be enabled on all new configuration profiles by default. In order to turn this behavior on, follow the steps below. 
+Once Network Helper moves out of beta it will be enabled on all new configuration profiles by default. In order to turn this behavior on, follow the steps below.
 
 1.  From the Linode Manager, click on the **Account** tab:
 
@@ -84,7 +84,7 @@ Once Network Helper moves out of beta it will be enabled on all new configuratio
 
 ## Turn Network Helper On for Individual Configuration Profiles.
 
-Even with Network Helper's default behavior set to **OFF**, you can enable Network Helper on specific configuration profiles. 
+Even with Network Helper's default behavior set to **OFF**, you can enable Network Helper on specific configuration profiles.
 
 1.  Go to your Linode's Dashboard, and under Configuration Profiles click **Edit** for the profile you want to adjust:
 
@@ -92,7 +92,7 @@ Even with Network Helper's default behavior set to **OFF**, you can enable Netwo
 
 2.  Under the Filesystem/Boot Helpers section, change the **Auto-Configure Networking** option to Yes:
 
-    
+
     [![The Auto-configure Networking option](/docs/assets/network-helper-hilighted_small.png)](/docs/assets/network-helper-hilighted.png)
 
 3. Click on **Save Changes**.
@@ -109,7 +109,7 @@ Similarly, if you boot a unsupported older distribution while Network Helper is 
 
 ## What files are Affected
 
-The files modified depend on the distribution, but in all cases Network Helper modifies `/etc/resolv.conf` to include the `options rotate` directive.
+The files modified depend on the distribution, but in all cases Network Helper writes `/etc/resolv.conf`, which includes the `options rotate` directive.
 
 For each file modified by Network Helper. you will have 3 versions of this file after each boot. Let's use Debian as an example. In addition to the `/etc/network/interfaces` file, Network Helper will create:
 
