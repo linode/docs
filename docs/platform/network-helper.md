@@ -13,18 +13,24 @@ published: ''
 title: Network Helper - BETA
 ---
 
-Linode's Network Helper is a tool implemented in a Linode configuration profile, which automatically configures static networking on your Linode at boot. Network Helper is currently in beta, and available to anyone who would like to try it. Network Helper works with all current Linux distributions available for deployment.
+Network Helper automatically deposits a static networking configuration in to your Linode at boot. Thanks to Network Helper, you don't have to worry about altering your network configuration when you:
 
-Thanks to Network Helper, you don't have to worry about manually configuring a static IPv4 address or changing that configuration when you enable private networking, add an additional public IPv4 address or migrate to a new data center.
+ - Deploy a Linode
+ - Add a public or private IPv4 address
+ - Restore from a backup
+ - Deploy from an Linode Images template
+ - Migrate your Linode to a new datacenter
+ - Clone from another Linode
+
 
 {: .note }
 > Network Helper does not affect IPv6 networking. Please see our [Native IPv6 Networking](/docs/networking/native-ipv6-networking) for more information on IPv6.
 
 ## What Does It Do?
 
-On enabled profiles, the Network Helper works during boot or reboot jobs while your Linode is starting up. It detects which distribution is booting, and modifies the appropriate configuration files to assign the IPv4 address statically. Toward the end of this guide, we've listed which distribution-dependent files get modified.
+On enabled profiles, the Network Helper works by detecting which distribution is booting, and modifies the appropriate configuration files to assign the IPv4 address statically. [Jump to](#what-files-are-affected) the list of distribution-specific files.
 
-Below is an example of a network configuration file for a Linode booted to Debian 7, with Network Helper enabled:
+Below is an example network configuration file for a Debian 7 Linode with Network Helper enabled:
 
 {: .file}
 /etc/network/interfaces
@@ -64,23 +70,7 @@ Below is an example of a network configuration file for a Linode booted to Debia
     ~~~
 
 {: .caution}
->If you modify your network configuration manually, Network Helper will undo those changes during the next boot job. If you need to create manual network configurations, you will need to either turn off Network Helper or store the configuration in a file not modified by Network Helper. Please see the [What Files Are Affected](#what-files-are-affected) section for the specific files.
-
-
-##Turn Network Helper On for all New Configuration Profiles
-
-Once Network Helper moves out of beta it will be enabled on all new configuration profiles by default. Until then, to set this behavior as default follow the steps below.
-
-1.  From the Linode Manager, click on the **Account** tab:
-
-    ![The Account tab in the Linode Manager](/docs/assets/account-tab.png)
-
-2.  Click on the **Account Settings** tab. Under The Network Helper section, Change the Default Behavior to **ON**:
-
-    [![The Network Helper Default Behavior option](/docs/assets/account-settings_small.png)](/docs/assets/account-settings.png)
-
-3. Click the **Save** button.
-
+>If you create an advanced configuration, Network Helper will undo those changes at the next boot. For advanced configurations, turn off Network Helper.
 
 ## Turn Network Helper On for Individual Configuration Profiles.
 
@@ -109,8 +99,6 @@ Similarly, if you boot an unsupported older distribution while Network Helper is
 
 ## What Files are Affected
 
-The files modified depend on the distribution, but in all cases Network Helper writes `/etc/resolv.conf`, which includes the `options rotate` directive.
-
 You will retain 3 versions of each file modified by Network Helper after each boot. Consider Debian for this example. In addition to the `/etc/network/interfaces` file, Network Helper will create:
 
 - A copy of the file as the distribution provided it: `.interfaces.linode-orig`.
@@ -125,24 +113,38 @@ If you'd like to know what files Network Helper modifies specifically, scroll do
 
 ###Debian & Ubuntu
 
-Network helper configures `/etc/network/interfaces`.
+Network helper configures `/etc/network/interfaces` & `/etc/resolv.conf`.
 
 ### CentOS & Fedora
 
-Network Helper configures `/etc/sysconfig/network-scripts/ifcfg-eth0`.
+Network Helper configures `/etc/sysconfig/network-scripts/ifcfg-eth0` & `/etc/resolv.conf`.
 
 ### Arch
 
-Network Helper configures `/etc/systemd/network/05-eth0.network`.
+Network Helper configures `/etc/systemd/network/05-eth0.network` & `/etc/resolv.conf`.
 
 ### Gentoo
 
-Network Helper configures `/etc/conf.d/net`.
+Network Helper configures `/etc/conf.d/net` & `/etc/resolv.conf`.
 
 ### OpenSUSE
 
-Network Helper configures `/etc/sysconfig/network/ifcfg-eth0` and `/etc/sysconfig/network/routes`.
+Network Helper configures `/etc/sysconfig/network/ifcfg-eth0`, `/etc/sysconfig/network/routes` & `/etc/resolv.conf`.
 
 ###Slackware
 
-Network Helper configures `/etc/rc.d/rc.inet1.conf`.
+Network Helper configures `/etc/rc.d/rc.inet1.conf` & `/etc/resolv.conf`.
+
+##Turn Network Helper On for all New Configuration Profiles
+
+Once Network Helper moves out of beta it will be enabled on all new configuration profiles by default. Until then, to set this behavior as default follow the steps below.
+
+1.  From the Linode Manager, click on the **Account** tab:
+
+    ![The Account tab in the Linode Manager](/docs/assets/account-tab.png)
+
+2.  Click on the **Account Settings** tab. Under The Network Helper section, Change the Default Behavior to **ON**:
+
+    [![The Network Helper Default Behavior option](/docs/assets/account-settings_small.png)](/docs/assets/account-settings.png)
+
+3. Click the **Save** button.
