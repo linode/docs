@@ -54,6 +54,10 @@ Create the file `/etc/apt/sources.list.d/passenger.list` with the following cont
 
     deb https://oss-binaries.phusionpassenger.com/apt/passenger wheezy main
 
+Enable HTTPS support for APT by running the command below:
+
+    sudo apt-get install apt-transport-https
+
 Update your local package database and install Phusion Passenger:
 
     apt-get update
@@ -94,7 +98,7 @@ Install MySQL Support (optional)
 
 If your application uses MySQL, install the database server by following our [MySQL on Debian 7 (Wheezy) guide](/docs/databases/mysql/debian-7-wheezy). Once it's installed and configured properly, issue the following command:
 
-    apt-get install libmysqlclient-dev libmysql-ruby 
+    apt-get install libmysqlclient-dev libmysql-ruby
 
 More Information
 ----------------
