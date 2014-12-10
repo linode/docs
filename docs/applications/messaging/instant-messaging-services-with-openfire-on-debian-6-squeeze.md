@@ -105,7 +105,7 @@ Before proceeding, reboot your Linode. Once it has come back online, direct your
 
 [![Language selection in Openfire setup on Debian 6 (Squeeze).](/docs/assets/387-openfire-debian-squeeze-01-language-selection.png)](/docs/assets/387-openfire-debian-squeeze-01-language-selection.png)
 
-Next, you'll be asked to configure your domain and ports for administration. Use the fully qualified domain name you have assigned to your Linode in DNS (more infomation: [configuring DNS with the Linode Manager](/docs/dns-guides/configuring-dns-with-the-linode-manager)).
+Next, you'll be asked to configure your domain and ports for administration. Use the fully qualified domain name you have assigned to your Linode in DNS (more information: [configuring DNS with the Linode Manager](/docs/dns-guides/configuring-dns-with-the-linode-manager)).
 
 [![Domain and admin ports selection in Openfire setup on Debian 6 (Squeeze).](/docs/assets/388-openfire-debian-squeeze-02-domain-ports-selection.png)](/docs/assets/388-openfire-debian-squeeze-02-domain-ports-selection.png)
 

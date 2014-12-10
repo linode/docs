@@ -51,7 +51,7 @@ To start the server for the first time, use the following command:
 
     /etc/rc.d/nginx start
 
-Congratulations! You now have a running and fully functional HTTP server powered by nginx. Continue reading our introduction to [basic nginx configuration](/docs/web-servers/nginx/configuration) for more information about using and setting up the web server.
+Congratulations! You now have a running and fully functional HTTP server powered by nginx. Continue reading our introduction to [basic nginx configuration](/docs/websites/nginx/basic-nginx-configuration) for more information about using and setting up the web server.
 
 More Information
 ----------------

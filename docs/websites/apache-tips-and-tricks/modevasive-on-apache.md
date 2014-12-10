@@ -34,7 +34,7 @@ Installing mod\_evasive
 You'll first want to get the mod\_evasive package, uncompress it, and install it using apxs:
 
     cd /usr/src
-    wget wget http://www.zdziarski.com/blog/wp-content/uploads/2010/02/mod_evasive_1.10.1.tar.gz
+    wget http://www.zdziarski.com/blog/wp-content/uploads/2010/02/mod_evasive_1.10.1.tar.gz
     tar xzf mod_evasive_1.10.1.tar.gz
     cd mod_evasive
     apxs2 -cia mod_evasive20.c
@@ -43,20 +43,34 @@ You'll then need to add the mod\_evasive configuration to your Apache configurat
 
 {: .file }
 /etc/apache2/apache2.conf (Debian / Ubuntu)
-
-> \# Include module configuration: Include mods-enabled/*.load Include mods-enabled/*.conf
+:   ~~~
+    # Include module configuration: 
+    Include mods-enabled/*.load
+    Include mods-enabled/*.conf
+    ~~~
 
 {: .file }
 /etc/httpd/conf/httpd.conf (CentOS / Fedora)
-
-> LoadModule evasive20\_module /usr/lib/httpd/modules/mod\_evasive20.so \#
+:   ~~~
+    LoadModule evasive20_module /usr/lib/httpd/modules/mod_evasive20.so
+    #
+    ~~~
 
 Below those sections, add the mod\_evasive configuration:
 
 {: .file-excerpt }
 mod\_evasive configuration
-
-> \<IfModule mod\_evasive20.c\> DOSHashTableSize 3097 DOSPageCount 2 DOSSiteCount 50 DOSPageInterval 1 DOSSiteInterval 1 DOSBlockingPeriod 60 DOSEmailNotify <someone@somewhere.com> \</IfModule\>
+:   ~~~
+    <IfModule mod_evasive20.c>
+        DOSHashTableSize 3097
+        DOSPageCount 2
+        DOSSiteCount 50
+        DOSPageInterval 1
+        DOSSiteInterval 1
+        DOSBlockingPeriod 60
+        DOSEmailNotify <someone@somewhere.com>
+    </IfModule>
+    ~~~
 
 You'll then need to restart Apache for your changes to take effect:
 
@@ -79,19 +93,19 @@ The hash table size defines the number of top-level nodes for each child's hash 
 
 ### DOSPageCount
 
-This is the threshhold for the number of requests for the same page (or URI) per page interval. Once the threshhold for that interval has been exceeded, the IP address of the client will be added to the blocking list.
+This is the threshold for the number of requests for the same page (or URI) per page interval. Once the threshold for that interval has been exceeded, the IP address of the client will be added to the blocking list.
 
 ### DOSSiteCount
 
-This is the threshhold for the total number of requests for any object by the same client on the same listener per site interval. Once the threshhold for that interval has been exceeded, the IP address of the client will be added to the blocking list.
+This is the threshold for the total number of requests for any object by the same client on the same listener per site interval. Once the threshold for that interval has been exceeded, the IP address of the client will be added to the blocking list.
 
 ### DOSPageInterval
 
-The interval for the page count threshhold; defaults to 1 second intervals.
+The interval for the page count threshold; defaults to 1 second intervals.
 
 ### DOSSiteInterval
 
-The interval for the site count threshhold; defaults to 1 second intervals.
+The interval for the site count threshold; defaults to 1 second intervals.
 
 ### DOSBlockingPeriod
 
@@ -122,10 +136,11 @@ IP addresses of trusted clients can be whitelisted to insure they are never deni
 To whitelist an address (or range) add an entry to the Apache configuration in the following fashion:
 
 {: .file }
-/etc/apache2/apache2.conf (Debian / Ubuntu)
-
-> DOSWhitelist 127.0.0.1 DOSWhitelist 127.0.0.\*
-
+/etc/apache2/apache2.conf
+:   ~~~
+    DOSWhitelist 127.0.0.1
+    DOSWhitelist 127.0.0.*
+    ~~~
 Wildcards can be used on up to the last 3 octets if necessary. Multiple DOSWhitelist commands may be used in the configuration.
 
 More Information

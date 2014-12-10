@@ -1,5 +1,5 @@
 ---
-author: rarlan
+author:
   name: Linode
   email: rarlan@linode.com
 description: 'Install "LEMP," an application stack using nginx, MariaDB, and PHP with fastcgi for CentOS 7'
@@ -10,7 +10,7 @@ modified: Sunday, November 9th, 2014
 modified_by:
   name: Ryan Arlan
 published: 
-title: lemp-server-on-centos-7-with-fastcgi
+title: LEMP server on CentOS7 with FastCGI
 ---
 
 This document describes how to install a Linux, nginx (pronounced engine-x), MariaDB and PHP server, also called LEMP stack, on CentOS 7 with php-fastcgi. It includes configuring php-fastcgi as a service in systemd for easier administration. 
@@ -67,7 +67,7 @@ You can then check the status to make sure it is running at any time:
 Once nginx is installed, you need to configure your 'server' directives to specify your virtual hosts.  Each virtual host needs to have a server and location directive.  You can do this multiple ways, either through different vhost files or all in the /etc/nginx/nginx.conf file:
 
 {: .file-excerpt }
-/etc/nginx.nginx.conf
+/etc/nginx/	nginx.conf
 :	~~~ nginx
 	server {
 	listen  80;
@@ -103,8 +103,7 @@ Once PHP-FastCGI is istalled, you will need to create a script to start and cont
 /usr/bin/php-fastcgi
 :	~~~ bash
 	#!/bin/sh
-
-  	if [ `grep -c "nginx" /etc/passwd` = "1" ]; then 
+    if [ `grep -c "nginx" /etc/passwd` = "1" ]; then 
      	FASTCGI_USER=nginx
 	elif [ `grep -c "www-data" /etc/passwd` = "1" ]; then 
 		FASTCGI_USER=www-data
@@ -131,7 +130,7 @@ You can then run the file manually, or for easier administration, you can set up
 When PHP-FastCGI is installed it does not automatically get set up as a service in systemd.  If you want to be able to more easily control PHP-FastCGI with systemd, you can configure PHP-FastCGI as a systemd service.  To do this, you need to create a service file that points to the /usr/bin/php-fastcgi file you created:
 
 {: .file }
-/etc/systemd.system/php-fastcgi.service
+/etc/systemd/system/php-fastcgi.service
 :	~~~ systemd
 	[Unit]
 	Description= php-fastcgi systemd service script

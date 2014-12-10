@@ -168,7 +168,7 @@ More Information
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [The Zope Book](http://www.zope.org/Documentation/Books/ZopeBook/)
-- [Basic nginx configuration](/docs/web-servers/nginx/configuration)
+- [Basic nginx configuration](/docs/websites/nginx/basic-nginx-configuration)
 - [ProxyPass Apache to Multiple Webservers](/docs/web-servers/apache/proxy-configuration/multiple-webservers-proxypass-debian-5-lenny)
 
 

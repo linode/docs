@@ -139,7 +139,7 @@ Do be aware that when backing up a single table using the MySQL client, that tab
 
         mysql -u root -p -h localhost
 
-    You will be prompted for a password. Once you have entered the correct password and are at the MySQL client prompt, you can use a `SELECT * INTO OUTFILE` statement. The syntax of this statment looks like the following:
+    You will be prompted for a password. Once you have entered the correct password and are at the MySQL client prompt, you can use a `SELECT * INTO OUTFILE` statement. The syntax of this statement looks like the following:
 
         SELECT * INTO OUTFILE 'file_name' FROM tbl_name;
 

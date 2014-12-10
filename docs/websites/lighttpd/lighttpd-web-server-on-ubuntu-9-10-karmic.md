@@ -191,7 +191,7 @@ lighttpd.conf
     evhost.path-pattern = "/srv/www/%0/public/"
     ~~~
 
-You have maximum flexibility to create virtual hosts in this manner. The naming convention for these virtual hosts is derived from the domains names, given the following (ficticious) web address: `http://lookhere.somesubdomain.example.com/`
+You have maximum flexibility to create virtual hosts in this manner. The naming convention for these virtual hosts is derived from the domains names, given the following (fictitious) web address: `http://lookhere.somesubdomain.example.com/`
 
 We read domain names backwards, so `com` is the tld or "top level domain", `example` is the domain, `somesubdomain` is the subdomain 1 name, and `lookhere` is the subdomain 2 name. These can be combined using the above syntax to create a virtual hosting scheme that makes sense for your use case.
 

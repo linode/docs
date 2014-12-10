@@ -251,7 +251,7 @@ More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [Basic nginx Configuration](/docs/web-servers/nginx/configuration/basic)
+- [Basic nginx Configuration](/docs/websites/nginx/basic-nginx-configuration/basic)
 - [nginx Wiki](http://wiki.nginx.org/Main)
 - [PHP Documentation](http://php.net/docs.php)
 - [MySQL Documentation](http://dev.mysql.com/doc/)

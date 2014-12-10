@@ -8,7 +8,7 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-applications/project-management/mantis/centos-5/']
 modified: Friday, April 29th, 2011
 modified_by:
-  name: System
+  name: Linode
 published: 'Tuesday, April 5th, 2011'
 title: Manage Development with the Mantis Bug Tracker on CentOS 5
 ---

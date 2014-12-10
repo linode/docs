@@ -9,7 +9,7 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-applications/analytics/piwik/ubuntu-9-10-karmic/']
 modified: Wednesday, April 27th, 2011
 modified_by:
-  name: System
+  name: Linode
 published: 'Wednesday, December 23rd, 2009'
 title: 'Piwik on Ubuntu 9.10 (Karmic)'
 ---

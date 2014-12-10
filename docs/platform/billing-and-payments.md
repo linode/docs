@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: scampbell@linode.com
-description: Our guide to prepaid billing and payments
+description: Our guide to prepaid billing and payments.
 keywords: 'billing,payments'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['billing-and-payments/']
@@ -27,6 +27,7 @@ All services are billed automatically at the end of the month. If you used a ser
 |:------------|:------------|:--------|:--------------------|:---------------
 | Linode 1GB  | $0.015/hr   | $10/mo  | $0.004/hr           | $2.50/mo
 | Linode 2GB  | $0.03/hr    | $20/mo  | $0.008/hr           | $5/mo
+| Linode 4GB  | $0.06/hr    | $40/mo  | $0.016/hr           | $10/mo
 | Linode 8GB  | $0.12/hr    | $80/mo  | $0.03/hr            | $20/mo
 | Linode 16GB | $0.24/hr    | $160/mo | $0.06/hr            | $40/mo
 | Linode 32Gb | $0.48/hr    | $320/mo | $0.12/hr            | $80/mo
@@ -40,7 +41,7 @@ All services are billed automatically at the end of the month. If you used a ser
 {: .table .table-striped }
 | Service          | Hourly Rate | Monthly
 |:-----------------|:------------|:-------
-| Additional IP    | $1.0015/hr  | $1/mo
+| Additional IP    | $0.0015/hr  | $1/mo
 | Linode Managed   | $0.15/hr    | $100/mo
 | NodeBalancer     | $0.03/hr    | $20/mo
 | Longview Pro 3   | $0.03/hr    | $20/mo
@@ -70,8 +71,6 @@ Mid-Month Billing
 -----------------
 
 You may receive a mid-month bill from Linode if you reach a certain threshold of Linode services used within a single month. For many users, this amount will be **$50.00**, although your account history with Linode can adjust that amount. In general, a history of on-time payments to Linode will increase the threshold amount. In the example image in the previous section, the user received a mid-month bill for $50.16 on February 9th.
-
-You may also receive a mid-month bill from Linode if you add more than **20** Linodes or NodeBalancers to your account. Again, this threshold can change based on your account history with Linode.
 
 What does a mid-month bill mean? Your existing active services will stay active. However, you must pay the mid-month bill before you can activate additional Linode services. Once your payment is processed, you may continue adding new services.
 

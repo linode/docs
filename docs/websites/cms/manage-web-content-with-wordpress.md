@@ -8,14 +8,14 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-applications/cms-guides/wordpress/']
 modified: Tuesday, April 19th, 2011
 modified_by:
-  name: System
+  name: Linode
 published: 'Tuesday, July 27th, 2010'
 title: Manage Web Content with WordPress
 ---
 
 WordPress is popular dynamic blog-focused content management system. The software is built upon the popular LAMP stack and features an extensible plugin framework and extensive theme system, which allows site owners and developers to deploy easy to use and powerful publishing tools. As a result, WordPress has in many ways become the default choice for developers and systems administrators who need easily managed blog systems.
 
-This guide assumes you have a complete and up to date system, and that you have completed the [getting started guide](/docs/getting-started/). If you are new to Linux system administration, you may want to review our [administration basics guide](/docs/using-linux/administration-basics) or the rest of the documents in the [using Linux series](/docs/using-linux).
+This guide assumes you have a complete and up to date system, and that you have completed the [getting started guide](/docs/getting-started/). If you are new to Linux system administration, you may want to review our [administration basics guide](/docs/using-linux/administration-basics) or the rest of the documents in the [using Linux series](/docs/tools-reference/).
 
 Install Prerequisites
 ---------------------

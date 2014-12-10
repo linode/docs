@@ -204,7 +204,7 @@ Now that you have created a sample database, you can test your installation with
 
 {: .file-excerpt }
 /srv/www/example.org/public\_html/testdb.aspx
-:   ~~~ aspx-cs
+:   ~~~ aspx
     <%@ Page Language="C#" %>
     <%@ Import Namespace="System.Data" %>
     <%@ Import Namespace="MySql.Data.MySqlClient" %>
@@ -247,19 +247,19 @@ Next you will need to create a `web.config` file. You can copy and paste the the
 
 {: .file-excerpt }
 /srv/www/example.org/public\_html/web.config
-
-> \<configuration\>
-> :   \<system.web\>
->     :   \<customErrors mode="Off"/\>
->         :   \<compilation\>
->             :   \<assemblies\> \<add assembly="MySql.Data"/\> \</assemblies\>
->
->             \</compilation\>
->
->     \</system.web\>
->
-> \</configuration\>
-
+:   ~~~
+    <configuration>
+      <system.web>
+        <customErrors mode="Off"/>
+        <compilation>
+          <assemblies>
+            <add assembly="MySql.Data"/>
+          </assemblies>
+        </compilation>
+      </system.web>
+    </configuration>
+    ~~~
+    
 Restart the web server process by issuing the following command:
 
     /etc/init.d/apache2 restart

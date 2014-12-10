@@ -355,7 +355,7 @@ You may wish to consult the following resources for additional information on th
 - [FastCGI Project Homepage](http://www.fastcgi.com/)
 - [Perl Documentation](http://perldoc.perl.org/)
 - [Installing Nginx on Fedora 14](/docs/web-servers/nginx/installation/fedora-14)
-- [Basic Ngnix Configuration](/docs/web-servers/nginx/configuration/basic)
+- [Basic Ngnix Configuration](/docs/websites/nginx/basic-nginx-configuration/basic)
 
 
 

@@ -61,7 +61,7 @@ You can add the `-v` flag to increase verbosity and output statistics regarding 
 
     cat full-text.txt | gzip > full-text.txt.gz
 
-The compression algorithm that gzip uses to compress files (e.g. `DEFLATE`), can be configured to compress content more severely and thus save space at the expense of time. This ratio is controlled by a numeric argument between `-1` and `-9`. The default configuration is `-6`. `gzip` also contains `--fast` (equivalent to `-1`) and `--best` (equivelent to `-9`) as helpful mnemonics. Consider the following examples and their output:
+The compression algorithm that gzip uses to compress files (e.g. `DEFLATE`), can be configured to compress content more severely and thus save space at the expense of time. This ratio is controlled by a numeric argument between `-1` and `-9`. The default configuration is `-6`. `gzip` also contains `--fast` (equivalent to `-1`) and `--best` (equivalent to `-9`) as helpful mnemonics. Consider the following examples and their output:
 
     gzip --best -v full-text.txt 
     gzip --fast -v full-text.txt 
@@ -88,7 +88,7 @@ Compressing Archives
 
 In conventional usage, `tar` is combined with a compression utility to not only archive files for more efficient backup but also compress them. However, some alternate compression and archiving tools with which you may be familiar include both functions in a single procedure. However, modern versions of `tar` are able to interface with common compression libraries and tools like `gzip` to compress archives effectively. Consider the following command:
 
-> tar -czf \~/backup-archive.tar.gz \~/backup/
+    tar -czf ~/backup-archive.tar.gz ~/backup/
 
 The `-z` option in this command compresses the archive using `gzip`, which is a common practice when creating "tar files".
 

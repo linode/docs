@@ -162,8 +162,8 @@ Creating a Simple ASP.NET Application
 Now that you have created a sample database, you can test your installation with the following test page. This will not only test your Mono installation but it will also will test your MySQL connector configuration. First create a file called `testdb.aspx` in your `DocumentRoot` and paste the text below into it. Be sure to change the `User ID` and `Password` to match what you specified above.
 
 {: .file-excerpt }
-/srv/www/example.com/public\_html/testdb.aspx
-:   ~~~ aspx-cs
+/srv/www/example.com/public_html/testdb.aspx
+:   ~~~ aspx
     <%@ Page Language="C#" %>
     <%@ Import Namespace="System.Data" %>
     <%@ Import Namespace="MySql.Data.MySqlClient" %>
@@ -205,19 +205,19 @@ Now that you have created a sample database, you can test your installation with
 Next you will need to create a `web.config` file. You can copy and paste the the example below. Please note that `Custom Errors` have been turned off in this web.config for debugging purposes. The `customErrors mode` line should be removed in a production environment.
 
 {: .file-excerpt }
-/srv/www/example.com/public\_html/web.config
-
-> \<configuration\>
-> :   \<system.web\>
->     :   \<customErrors mode="Off"/\>
->         :   \<compilation\>
->             :   \<assemblies\> \<add assembly="MySql.Data"/\> \</assemblies\>
->
->             \</compilation\>
->
->     \</system.web\>
->
-> \</configuration\>
+/srv/www/example.com/public_html/web.config
+:   ~~~
+    <configuration>
+      <system.web>
+        <customErrors mode="Off"/>
+        <compilation>
+          <assemblies>
+            <add assembly="MySql.Data"/>
+          </assemblies>
+        </compilation>
+      </system.web>
+    </configuration>
+    ~~~
 
 Visit the `testdb.aspx` file in a web browser. If you see the text "Testing Sample Databases" in your browser with the information that you inserted into the database above, you now have a functioning `mod_mono` installation and can continue with the development and deployment of your own application!
 

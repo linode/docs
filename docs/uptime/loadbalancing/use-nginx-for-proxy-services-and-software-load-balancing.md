@@ -17,7 +17,7 @@ The nginx web server can act as a very capable software load-balancer, in additi
 
 Using a proxy is helpful when the demands of serving a single website outgrow the capabilities of a single machine. Additionally, there are some web frameworks, like [Seaside](/docs/frameworks/seaside/) and Ruby On Rails's Mongrel server, that deploy applications on framework-specific web servers. While these single-purpose servers provide powerful application services, they are not suitable for hosting entire applications. In these cases, using nginx as a front-end proxy to pass only the essential requests to the application server is a viable means of unifying dynamic content with static content and providing a stable production environment.
 
-This document provides an overview of using nginx as a front-end proxy server for other HTTP servers, and as a software load balancer to distribute traffic across a cluster of machines providing HTTP resources. For an introductory guide to configuring nginx, please see our [Basic Nginx Configuration](/docs/web-servers/nginx/configuration/basic) guide. If you want a simple nginx deployment with content that uses PHP or Perl scripts, consider following one of our [Installing Nginx](/docs/web-servers/nginx/) guides.
+This document provides an overview of using nginx as a front-end proxy server for other HTTP servers, and as a software load balancer to distribute traffic across a cluster of machines providing HTTP resources. For an introductory guide to configuring nginx, please see our [Basic Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration/basic) guide. If you want a simple nginx deployment with content that uses PHP or Perl scripts, consider following one of our [Installing Nginx](/docs/web-servers/nginx/) guides.
 
 Prerequisites
 -------------
@@ -26,7 +26,7 @@ Before we begin, make sure you have completed the following:
 
 -   Follow the [Getting Started](/docs/getting-started/) guide.
 -   Install the [nginx server](/docs/web-servers/nginx/).
--   Familiarize yourself with [Basic Nginx Configuration](/docs/web-servers/nginx/configuration/basic).
+-   Familiarize yourself with [Basic Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration/basic).
 
 If you're new to Linux server administration, you may be interested in our [using Linux](/docs/using-linux/) document series, including the [Beginner's Guide](/docs/beginners-guide/) and [Administration Basics](/docs/using-linux/administration-basics) guide.
 
@@ -49,52 +49,58 @@ In this section, you'll configure Apache to listen on an alternate port so it ca
         sudo nano /etc/apache2/ports.conf
 
     {: .file-excerpt }
-/etc/apache2/ports.conf
-    :   ~~~ apacheport
+    /etc/apache2/ports.conf
+    :   ~~~ httpd
         NameVirtualHost *:8000
         Listen 8000
+         
+        <IfModule mod_ssl.c>
+          # If you add NameVirtualHost *:443 here, you will also have to change
+          # the VirtualHost statement in /etc/apache2/sites-available/default-ssl
+          # to <VirtualHost*:443>
+          # Server Name Indication for SSL named virtual hosts is currently not
+          # supported by MSIE on Windows XP.
+          Listen 443
+        </IfModule>
+ 
+        <IfModule mod_gnutls.c>
+          Listen 443
+        </IfModule>
         ~~~
-
-        > \<IfModule mod\_ssl.c\>
-        > :   \# If you add NameVirtualHost *:443 here, you will also have to change \# the VirtualHost statement in /etc/apache2/sites-available/default-ssl \# to \<VirtualHost*:443\> \# Server Name Indication for SSL named virtual hosts is currently not \# supported by MSIE on Windows XP.
-        >
-        > Listen 443 \</IfModule\>
-        >
-        > \<IfModule mod\_gnutls.c\> Listen 443 \</IfModule\>
 
 2.  Next, in the virtual host configuration file, edit the port to match the new default port set in the previous step. More specifically, edit the `<VirtualHost>` line to use port 8000.
 
         sudo nano /etc/apache2/sites-available/example.com
 
-> {: .file-excerpt }
-/etc/apache2/sites-available/example.com
-> :   ~~~ apachevhost
->     <VirtualHost *:8000>
->         ServerAdmin webmaster@example.com
->         ServerName  www.example.com
->         DocumentRoot /var/www/example.com
->
->     <Directory />
->         Options FollowSymLink
->         AllowOverride None
->     </Directory>
->
->     <Directory /var/www/example.com>
->         Options Indexes FollowSymLinks MultiViews
->         AllowOverride None
->         Order allow,deny
->         allow from all
->     </Directory>
->     </VirtualHost>
->     ~~~
->
+      {: .file-excerpt }
+      /etc/apache2/sites-available/example.com
+      :  ~~~ httpd
+         <VirtualHost *:8000>
+          ServerAdmin webmaster@example.com
+          ServerName  www.example.com
+          DocumentRoot /var/www/example.com
+ 
+          <Directory />
+            Options FollowSymLink
+            AllowOverride None
+          </Directory>
+ 
+          <Directory /var/www/example.com>
+            Options Indexes FollowSymLinks MultiViews
+            AllowOverride None
+            Order allow,deny
+            allow from all
+          </Directory>
+         </VirtualHost>
+         ~~~
+
 3.  In the `/etc/apache2/apache2.conf` file, comment out the `LogFormat {User-Agent}` line. Then, add a forward so that Apache will log the original user’s IP address in the access logs instead of nginx's IP address (which would be listed as 127.0.0.1).
 
         sudo nano /etc/apache2/apache2.conf
 
     {: .file-excerpt }
-/etc/apache2/apache2.conf
-    :   ~~~ apachelogs
+    /etc/apache2/apache2.conf
+    :   ~~~ httpd
         #LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\"" combined
         LogFormat "%{X-Forwarded-For}i %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\"" combined
         ~~~
@@ -112,8 +118,8 @@ In this section, you'll configure Apache to listen on an alternate port so it ca
         sudo nano /etc/nginx/proxy_params
 
     {: .file }
-/etc/nginx/sites-available/example.com
-    :   ~~~ nginxparameters
+    /etc/nginx/sites-available/example.com
+    :   ~~~ nginx
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -135,28 +141,28 @@ In this section, you'll configure Apache to listen on an alternate port so it ca
         sudo nano /etc/nginx/sites-available/example.com
 
     {: .file-excerpt }
-/etc/nginx/sites-available/example.com
-    :   ~~~ nginxlocal
+    /etc/nginx/sites-available/example.com
+    :   ~~~ nginx
         server {
             listen 80;
             server_name www.example.com example.com;
             root /var/www/example.com;
 
             if ($http_host != "www.example.com") {
-                    rewrite ^ www.example.com$request_uri permanent;
-                    }
+                rewrite ^ www.example.com$request_uri permanent;
+            }
 
             index index.php index.html;
 
             location / {
                 proxy_pass http://localhost:8000;
                 include /etc/nginx/proxy_params;
-                }
+            }
 
             location ~* \.(js|css|jpg|jpeg|gif|png|svg|ico|pdf|html|htm)$ {
             }
 
-            }
+        }
         ~~~
 
     There are some additional `location` directives to add in the `server` section of the `/etc/nginx/sites-available/example.com` file. You will probably need these directives, but it's possible that you may not, depending on your nginx and Apache configuration.
@@ -193,16 +199,16 @@ In this section, you'll configure Apache to listen on an alternate port so it ca
 
 10. For most conventional proxy setups, you will also want to add a `proxy_redirect` specification to your `location` directive blocks. This directive rewrites the HTTP headers that nginx receives from the proxied server to make them appear as if they were generated by the nginx server. Here's the `location` block:
 
-> {: .file-excerpt }
-example.com.vhost proxy location directive
-> :   ~~~ nginx
->     location /pictures/ {
->       proxy_pass       http://192.168.3.106:8080;
->       proxy_redirect   http://192.168.3.106:8080 http://example.com/pictures/;
->     }
->     ~~~
->
-> In this example, requests are made for resources under `http://example.com/pictures/`, then passed to a server running on port `8080` of the LAN IP address `192.168.3.106`. Without the `proxy_redirect` directive, the `Location:` header of the HTTP response would return the location for a request of `http://example.com/team.jpg` as `http://192.168.3.106:8080/team.jpg`. By adding the `proxy_redirect` directive, proxied requests return the expected `Location:` header.
+    {: .file-excerpt }
+    example.com.vhost proxy location directive
+    :   ~~~ nginx
+        location /pictures/ {
+          proxy_pass       http://192.168.3.106:8080;
+          proxy_redirect   http://192.168.3.106:8080 http://example.com/pictures/;
+        }
+        ~~~
+
+    In this example, requests are made for resources under `http://example.com/pictures/`, then passed to a server running on port `8080` of the LAN IP address `192.168.3.106`. Without the `proxy_redirect` directive, the `Location:` header of the HTTP response would return the location for a request of `http://example.com/team.jpg` as `http://192.168.3.106:8080/team.jpg`. By adding the `proxy_redirect` directive, proxied requests return the expected `Location:` header.
 
 Software Load Balancing
 -----------------------
@@ -218,21 +224,29 @@ In this example, we'll show you how to build a cluster named `appcluster` with a
 :   ~~~ nginx
     server {
 
-    listen 80;
-    server_name example.com www.example.com;
+      listen 80;
+      server_name example.com www.example.com;
 
-    location / {
+      location / {
          proxy_pass  http://appcluster;
          include /etc/nginx/proxy_params;
-         }
-    ~~~
+      }
 
-    > }
-    >
-    > > upstream appcluster {
-    > > :   server linode.example.com:8801; server linode.example.com:8802; server linode.example.com:8803 down; server linode.example.com:8804; server galloway.example.com:8801; server galloway.example.com:8802; server galloway.example.com:8803; server galloway.example.com:8804; }
-    > >
-    > > \# [...]
+    }
+    
+    upstream appcluster {
+       server linode.example.com:8801;
+       server linode.example.com:8802;
+       server linode.example.com:8803 down;
+       server linode.example.com:8804;
+       server galloway.example.com:8801;
+       server galloway.example.com:8802;
+       server galloway.example.com:8803;
+       server galloway.example.com:8804;
+    }
+    
+    # [...]
+    ~~~
 
 In this example, in the `server` directive block, nginx is configured to listen for requests on a specific IP address and port (e.g. `21.43.65.87` and `80`), and respond to requests for the domains `example.com` and `www.example.com`. All requests for resources at this domain (e.g. `/`) will be passed to the `http://appcluster` server established in the `upstream` directive.
 
@@ -303,7 +317,7 @@ You may wish to consult the following resources for additional information on th
 
 - [nginx Proxy Module](http://wiki.nginx.org/NginxHttpProxyModule)
 - [HTTP Upstream Module](http://wiki.nginx.org/NginxHttpUpstreamModule)
-- [nginx Configuration](/docs/web-servers/nginx/configuration)
+- [nginx Configuration](/docs/websites/nginx/basic-nginx-configuration)
 - [nginx and Perl-FastCGI](/docs/web-servers/nginx/perl-fastcgi)
 - [nginx and PHP-FastCGI](/docs/web-servers/nginx/php-fastcgi)
 

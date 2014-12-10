@@ -9,7 +9,7 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['communications/xmpp/prosody/ubuntu-8-04-hardy/']
 modified: Friday, April 29th, 2011
 modified_by:
-  name: System
+  name: Linode
 published: 'Tuesday, October 13th, 2009'
 title: 'Installing Prosody XMPP Server on Ubuntu 8.04 (Hardy)'
 ---

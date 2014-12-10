@@ -6,9 +6,9 @@ description: 'Accomplishing system administration tasks from a command prompt.'
 keywords: 'Linux terminal,terminal HOWTO,Linode terminal tutorial'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['using-linux/using-the-terminal/']
-modified: Tuesday, June 21st, 2011
+modified: Monday, July 28, 2014
 modified_by:
-  name: Amanda Folson
+  name: Dave Russell Jr
 published: 'Sunday, August 2nd, 2009'
 title: Using the Terminal
 ---
@@ -33,7 +33,7 @@ To list directories use the `ls` command. If the directory is empty, ls will exe
 
     ls /etc/init.d/
 
-To list all of the files in the current directory, including hidden files (such as those begining with a `.`) use the `-a` flag for all files.
+To list all of the files in the current directory, including hidden files (such as those begginning with a `.`) use the `-a` flag for all files.
 
 To generate a list with more information about the files, the long flag, `-l` may be used. This provides information on file sizes, permissions, and last modified times (with either -a or the standard output). You may further modify the long output with an -h flag to convert the file size information from raw bytes to human-readable numbers (in KB, MB, GB, etc) for easier comprehension. This command might look like:
 
@@ -49,7 +49,9 @@ You can also use various shortcuts to navigate the file system tree. If you're i
 
     cd ../
 
-You can use `cd ../../` to get to the top level of your file system `/`, or `cd ../jack/` to get from your user directory to the home directory for the user "Jack."
+From the `/home` directory, using `cd ../` will get you to the top level of your file system (`/`). Similarly, if you were to use `cd ../jack/` from the `~/` directory, you would be placed in the `/home/jack` directory. 
+
+Using `cd ./jack` in the `/home` directory, however, will also place you in the `/home/jack` directory, as the `.` indicates the working or current directory (use `pwd` to print the working directory in the terminal).
 
 The relative paths work to specify files and directories for all commands.
 
@@ -161,6 +163,14 @@ The terminal can also be useful for monitoring the current status of your server
 The command `ps` lists active processes by Process ID (PID) numbers. You can use the `ps -A` command (including the "-A" flag) to list all currently running processes, including inactive processes.
 
 The `top` command, which is installed by default on all systems, provides a regularly refreshed list of processes and resource utilization information. You may also wish to consider installing the `htop` application (with your system's [package management](/docs/using-linux/package-management/) tool), which provides more coherent output.
+
+The `df` command, which is native to all systems, provides a metric of your current disk usage including free and unused space. You can use the `df -h` command (including the "-h" flag) to list your current space in megabytes and gigabytes, which is easier to read than flat kilobytes. You can also use the command `df -i` to view the number of iNodes your disk image has used and remain available. An iNode is how the filesystem keeps track of files, and is directly related to the number of files that can be created.
+
+The `du` command, also native to all systems, checks which directories are using the most space. There are a number of useful flags which you can use with this command, the first of which the `du -h` command will show the disk usage of every file in your current directory and as a whole in megabytes. Another especially useful flag, "--max-depth", allows you to specify how many directories deep the command should iterate through. For example, to obtain a list of the biggest directories which are contained in your filesystem you would use the command `du -h --max-depth 1 /`.
+
+You may also wish to consider installing the `ncdu` application (with your system's [package management](/docs/using-linux/package-management/) tool), which provides the file size using a curses-based file browser.
+
+For more information about monitoring the internals of your Linode, you can refer to the [System Diagnostics](/docs/tools-reference/linux-system-administration-basics#system-diagnostics) guide.
 
 The Terminal Environment
 ------------------------

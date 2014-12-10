@@ -40,7 +40,7 @@ This will delete your current compromised images and deploy fresh disks. All dat
 Copying Data Offsite
 --------------------
 
-If there is data on the compromised Linode that you need to retain, you can use the [Finnix rescue environment](/docs/troubleshooting/finnix-rescue-mode) to examine your old disk images first. Once you have verified the integrity of your data, copy it to the appropriate location on your new server or another offsite location. Our [SSH disk copy guide](/docs/linode-platform/migration/copy-disk-image-over-ssh) explains how to copy your entire disk image offsite.
+If there is data on the compromised Linode that you need to retain, you can use the [Finnix rescue environment](/docs/troubleshooting/rescue-and-rebuild) to examine your old disk images first. Once you have verified the integrity of your data, copy it to the appropriate location on your new server or another offsite location. Our [SSH disk copy guide](/docs/linode-platform/migration/copy-disk-image-over-ssh) explains how to copy your entire disk image offsite.
 
 Using a Second Linode
 ---------------------
@@ -77,7 +77,7 @@ The next task is to copy your data to the new Linode, and make sure you've purge
 1.  Create a temporary directory on the new Linode.
 2.  Copy any needed user and configuration data from the compromised Linode using [rsync](/docs/linux-tools/utilities/rsync) or `scp`. If you are not familiar with these programs, you can find more information by entering the `man rsync` or `man scp` commands.
 
-    > **warning**
+    {: .caution }
     >
     > Do not log in to the new Linode from the compromised Linode. Files should be pulled from the compromised server to your new setup instead.
 

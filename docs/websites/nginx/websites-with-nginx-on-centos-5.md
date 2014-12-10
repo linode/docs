@@ -46,7 +46,7 @@ During the installation process you will need to accept the EPEL repository's ke
 
     /etc/init.d/nginx start
 
-You can now continue with the [configuration](/docs/web-servers/nginx/configuration) of nginx. Installing nginx in this manner will allow you to rely on the EPEL maintainers to provide quality control, testing, and security teams to ensure that you're running the best possible version of the server. However, the packages provided by the EPEL project do not necessarily track the latest development of the nginx server and do not allow you to enable certain nginx options at compile time. Given the rapid development of nginx and variances between recent versions, installing from distribution packages is not ideal for many users. Continue to the next section to install nginx directly from source.
+You can now continue with the [configuration](/docs/websites/nginx/basic-nginx-configuration) of nginx. Installing nginx in this manner will allow you to rely on the EPEL maintainers to provide quality control, testing, and security teams to ensure that you're running the best possible version of the server. However, the packages provided by the EPEL project do not necessarily track the latest development of the nginx server and do not allow you to enable certain nginx options at compile time. Given the rapid development of nginx and variances between recent versions, installing from distribution packages is not ideal for many users. Continue to the next section to install nginx directly from source.
 
 Installing nginx from the Source Distribution
 ---------------------------------------------
@@ -127,7 +127,7 @@ You can now start, stop, and restart nginx just like any other server daemon. Fo
 
     /etc/init.d/nginx start
 
-Congratulations! You now have a running and fully functional HTTP server powered by the nginx web server. Continue reading our introduction to [basic nginx configuration](/docs/web-servers/nginx/configuration) for more information about using and setting up the web server.
+Congratulations! You now have a running and fully functional HTTP server powered by the nginx web server. Continue reading our introduction to [basic nginx configuration](/docs/websites/nginx/basic-nginx-configuration) for more information about using and setting up the web server.
 
 More Information
 ----------------

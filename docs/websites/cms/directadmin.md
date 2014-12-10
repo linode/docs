@@ -16,7 +16,7 @@ title: DirectAdmin
 
 
 
-DirectAdmin is a propietary control panel that is similar to cPanel and Plesk. The guides in this section will help you install DirectAdmin and manage services on your Linode.
+DirectAdmin is a proprietary control panel that is similar to cPanel and Plesk. The guides in this section will help you install DirectAdmin and manage services on your Linode.
 
 
 

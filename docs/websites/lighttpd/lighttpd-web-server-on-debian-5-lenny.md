@@ -138,7 +138,7 @@ To accomplish the same directory structure with evhost as with the simple-vhost,
 
     evhost.path-pattern = "/var/www/%0/pages/"
 
-You have maximum flexibility to create virtual hosts in this manner. The naming convention for these virtual hosts is derived from the domains names, given the following (ficticious) web address: `http://abraham-brown.dances.brackley.com/`
+You have maximum flexibility to create virtual hosts in this manner. The naming convention for these virtual hosts is derived from the domains names, given the following (fictitious) web address: `http://abraham-brown.dances.brackley.com/`
 
 We read domain names backwards, so `com` is the tld or "top level domain, `brackley` is the domain, `dances` is the subdomain 1 name, and `abraham-brown` is the subdomain 2 name. These can be combined using the above syntax to create a virtual hosting scheme that makes sense for your use case.
 

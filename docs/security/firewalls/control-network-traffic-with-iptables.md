@@ -1,12 +1,12 @@
 ---
 author:
   name: Linode
-  email: bolow@linode.com
+  email: docs@linode.com
 description: 'Use iptables to manage Netfilter rules.'
 keywords: 'iptables,networking,firewalls,filtering'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['security/firewalls/iptables/']
-modified: Monday, April 21st, 2014
+modified: Tuesday, August 12, 2014
 modified_by:
   name: Linode
 published: 'Friday, July 30th, 2010'
@@ -143,9 +143,11 @@ To remove these rules, add `--delete` or `-D` to the command as in the following
 
 One method of creating a firewall is by blocking all traffic to the system and then allowing traffic on certain ports. Below are sample commands to illustrate the process:
 
+    iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+    iptables -A INPUT -i lo -m comment --comment "Allow loopback connections" -j ACCEPT
+    iptables -A INPUT -p icmp -m comment --comment "Allow Ping to work as expected" -j ACCEPT
     iptables -A INPUT -p tcp -m multiport --destination-ports 22,25,53,80,443,465,5222,5269,5280,8999:9003 -j ACCEPT
     iptables -A INPUT -p udp -m multiport --destination-ports 53 -j ACCEPT
-    iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
     iptables -P INPUT DROP
     iptables -P FORWARD DROP
 
@@ -157,9 +159,11 @@ Note that the rules described above only control incoming packets, and do not li
 
 You can use iptables to block all traffic and then only allow traffic from certain IP addresses. These firewall rules are useful for limiting access to specific resources at the network layer. Below is an example:
 
+    iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+    iptables -A INPUT -i lo -m comment --comment "Allow loopback connections" -j ACCEPT
+    iptables -A INPUT -p icmp -m comment --comment "Allow Ping to work as expected" -j ACCEPT
     iptables -A INPUT -s 192.168.1.0/24 -j ACCEPT
     iptables -A INPUT -s 12.34.56.78 -j ACCEPT
-    iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
     iptables -P INPUT DROP
     iptables -P FORWARD DROP
 
@@ -212,9 +216,9 @@ There are several modules not listed here. You may review the list of extended m
 
 Below is a sample rule used in ip6tables:
 
-> \# limit the number of parallel HTTP requests to 16 for the link local network ip6tables -A INPUT -p tcp --syn --dport 80 -s fe80::/64 -m connlimit --connlimit-above 16 --connlimit-mask 64 -j REJECT
->
-> ip6tables -A INPUT -p tcp -m tcp --dport 22 -j ACCEPT
+    # limit the number of parallel HTTP requests to 16 for the link local network 
+    ip6tables -A INPUT -p tcp --syn --dport 80 -s fe80::/64 -m connlimit --connlimit-above 16 --connlimit-mask 64 -j REJECT
+    ip6tables -A INPUT -p tcp -m tcp --dport 22 -j ACCEPT
 
 This rule breaks down as follows:
 
@@ -231,6 +235,14 @@ This rule breaks down as follows:
 - `--connlimit-mask 64` it is the group hosts using a prefix length of 64.
 - `-j` is for jump, it tells the target of the rule what to do if the packet is a match.
 - `REJECT` means the packet is dropped.
+
+### Required Rules for Non-Static IPv6 Allocations
+
+    # Below are the rules which are required for your IPv6 address to be properly allocated
+    ip6tables -A INPUT -p icmpv6 --icmpv6-type router-advertisement -m hl --hl-eq 255 -j ACCEPT
+    ip6tables -A INPUT -p icmpv6 --icmpv6-type neighbor-solicitation -m hl --hl-eq 255 -j ACCEPT
+    ip6tables -A INPUT -p icmpv6 --icmpv6-type neighbor-advertisement -m hl --hl-eq 255 -j ACCEPT
+    ip6tables -A INPUT -p icmpv6 --icmpv6-type redirect -m hl --hl-eq 255 -j ACCEPT
 
 ### Saving ip6table Rules
 

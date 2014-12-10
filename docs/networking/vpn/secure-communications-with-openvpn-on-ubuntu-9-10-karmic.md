@@ -46,8 +46,13 @@ Before we can generate the public key infrastructure for OpenVPN we must configu
 
 {: .file }
 /etc/openvpn/easy-rsa/2.0/vars
-
-> export KEY\_COUNTRY="US" export KEY\_PROVINCE="OH" export KEY\_CITY="Oxford" export KEY\_ORG="Example" export [KEY\_EMAIL="squire@example.com](mailto:KEY_EMAIL="squire@example.com)"
+:   ~~~
+    export KEY_COUNTRY="US"
+    export KEY_PROVINCE="OH"
+    export KEY_CITY="Oxford"
+    export KEY_ORG="My Company"
+    export KEY_EMAIL="squire@example.com"
+    ~~~
 
 Alter the examples to reflect your configuration. This information will be included in certificates you create and it is important that the information be accurate, particularly the `KEY_ORG` and `KEY_EMAIL` values.
 
@@ -56,8 +61,9 @@ Alter the examples to reflect your configuration. This information will be inclu
 Issue the following three commands in sequence to initialize the certificate authority and the public key infrastructure:
 
     cd /etc/openvpn/easy-rsa/2.0/
-
-> . /etc/openvpn/easy-rsa/2.0/vars . /etc/openvpn/easy-rsa/2.0/clean-all . /etc/openvpn/easy-rsa/2.0/build-ca
+    . /etc/openvpn/easy-rsa/2.0/vars
+    . /etc/openvpn/easy-rsa/2.0/clean-all
+    . /etc/openvpn/easy-rsa/2.0/build-ca
 
 These scripts will prompt you to enter a number of values. By configuring the `vars` you can be sure that your PKI is configured properly. If you set the correct values in `vars`, you will be able to press return at each prompt.
 
@@ -134,24 +140,35 @@ We'll now need to configure our server file. There's an example file in `/usr/sh
     cd /usr/share/doc/openvpn/examples/sample-config-files
     gunzip -d server.conf.gz
     cp server.conf /etc/openvpn/
-        cp client.conf ~/
-        cd ~/
+    cp client.conf ~/
+    cd ~/
 
 Modify the `remote` line in your `~/client.conf` file to reflect the OpenVPN server's name.
 
 {: .file }
-\~/client.conf
-
-> \# The hostname/IP and port of the server. \# You can have multiple remote entries \# to load balance between the servers.
->
-> remote example.com 1194
+~/client.conf
+:   ~~~
+    # The hostname/IP and port of the server.
+    # You can have multiple remote entries
+    # to load balance between the servers.
+    remote example.com 1194
+    ~~~
 
 Edit the `client.conf` file to reflect the name of your key. In this example we use `client1` for the file name.
 
 {: .file }
-\~/client.conf
-
-> \# SSL/TLS parms. \# See the server config file for more \# description. It's best to use \# a separate .crt/.key file pair \# for each client. A single ca \# file can be used for all clients. ca ca.crt cert client1.crt key client1.key
+~/client.conf
+:   ~~~
+    # SSL/TLS parms.
+    # See the server config file for more
+    # description. It's best to use
+    # a separate .crt/.key file pair
+    # for each client. A single ca
+    # file can be used for all clients.
+    ca ca.crt
+    cert client1.crt
+    key client1.key
+    ~~~
 
 Copy the `~/client.conf` file to your client system. You'll need to repeat the entire key generation and distribution process for every user and every key that will connect to your network.
 
@@ -183,15 +200,17 @@ By deploying the following configuration, you will be able to forward *all* traf
 
 {: .file-excerpt }
 /etc/openvpn/server.conf
-
-> push "redirect-gateway def1"
+:   ~~~
+    push "redirect-gateway def1"
+    ~~~
 
 Now edit the `/etc/sysctl.conf` file to uncomment or add the following line to ensure that your system is able to forward IPv4 traffic:
 
 {: .file-excerpt }
 /etc/sysctl.conf
-
-> net.ipv4.ip\_forward=1
+:   ~~~
+    net.ipv4.ip_forward=1
+    ~~~
 
 Issue the following command to set this variable for the current session:
 
@@ -208,21 +227,33 @@ Before continuing, insert these `iptables` rules into your system's `/etc/rc.loc
 
 {: .file-excerpt }
 /etc/rc.local
-
-> \#!/bin/sh -e \# \# [...] \#
->
-> iptables -A FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT iptables -A FORWARD -s 10.8.0.0/24 -j ACCEPT iptables -A FORWARD -j REJECT iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -o eth0 -j MASQUERADE
->
-> exit 0
+:   ~~~
+    #!/bin/sh -e
+    #
+    # [...]
+    #
+    iptables -A FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT
+    iptables -A FORWARD -s 10.8.0.0/24 -j ACCEPT
+    iptables -A FORWARD -j REJECT
+    iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -o eth0 -j MASQUERADE
+    
+    exit 0
+    ~~~
 
 This will enable all client traffic *except* DNS queries to be forwarded through the VPN. To forward forward DNS traffic through the VPN you will need to install the `dnsmasq` package and modify the `/etc/opnevpn/server.conf` package. Before we can install `dnsmasq` we must enable the "universe" repositories. Edit the `/etc/apt/sources.list` to uncomment or add the following lines:
 
 {: .file-excerpt }
 /etc/apt/sources.list
-
-> \#\# universe repositories deb <http://us.archive.ubuntu.com/ubuntu/> karmic universe deb-src <http://us.archive.ubuntu.com/ubuntu/> karmic universe deb <http://us.archive.ubuntu.com/ubuntu/> karmic-updates universe deb-src <http://us.archive.ubuntu.com/ubuntu/> karmic-updates universe
->
-> deb <http://security.ubuntu.com/ubuntu> karmic-security universe deb-src <http://security.ubuntu.com/ubuntu> karmic-security universe
+:   ~~~
+    #
+    # universe repositories
+    deb http://us.archive.ubuntu.com/ubuntu/ karmic universe 
+    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic universe
+    deb http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
+    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
+    deb http://security.ubuntu.com/ubuntu karmic-security universe
+    deb-src http://security.ubuntu.com/ubuntu karmic-security universe
+    ~~~
 
 Now reload the package database by issuing the following command:
 
@@ -236,8 +267,9 @@ Add the following directive to the `/etc/openvpn/server.conf` file:
 
 {: .file-excerpt }
 /etc/openvpn/server.conf
-
-> push "dhcp-option DNS 10.8.0.1"
+:   ~~~
+    push "dhcp-option DNS 10.8.0.1"
+    ~~~
 
 Finally, before attempting to connect to the VPN in any configuration, restart the OpenVPN server by issuing the following command:
 

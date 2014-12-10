@@ -137,7 +137,7 @@ You may wish to consult the following resources for additional information on th
 - [FastCGI Project Homepage](http://www.fastcgi.com/)
 - [Perl Documentation](http://perldoc.perl.org/)
 - [Installing Nginx on Debian 5 (Lenny)](/docs/web-servers/nginx/installation/debian-5-lenny)
-- [Basic Ngnix Configuration](/docs/web-servers/nginx/configuration/basic)
+- [Basic Ngnix Configuration](/docs/websites/nginx/basic-nginx-configuration/basic)
 
 
 

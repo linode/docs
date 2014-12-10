@@ -5,7 +5,7 @@ author:
 description: 'A basic guide to installing nginx from source on Debian 7 (Wheezy)'
 keywords: 'nginx,http,web servers,debian,debian wheezy,debian 7'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['web-servers/nginx/installation/debian-7-wheezy/']
+alias: ['web-servers/nginx/installation/debian-7-wheezy/','websites/nginx/basic-nginx-installation/']
 modified: Tuesday, January 28th, 2014
 modified_by:
   name: Linode
@@ -17,7 +17,7 @@ Nginx is a lightweight and high performance web server designed with the purpose
 
 Although Nginx is a relatively new entry in the web server field, it has achieved a great deal of respect for its agility and efficiency, particularly in high profile situations. Many very high traffic/profile websites have begun to use Nginx for its efficiency. At the same time administrators of smaller systems have found Nginx ideal for their systems for its slim memory footprint.
 
-Before you begin installing the Nginx web server, it is assumed that you have followed our [Getting Started Guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [Using Linux](/docs/using-linux/) document series including the [Beginner's Guide](/docs/beginners-guide/) and [Administration Basics Guide](/docs/using-linux/administration-basics).
+Before you begin installing the Nginx web server, it is assumed that you have followed our [Getting Started Guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [Beginner's Guide](/docs/beginners-guide/) and [Administration Basics Guide](/docs/using-linux/administration-basics).
 
 Set the Hostname
 ----------------
@@ -131,7 +131,7 @@ You now have a running and fully functional HTTP server powered by the Nginx web
 
 ![Nginx version 1.5.9 test page.](/docs/assets/1537-nginx-1.5.9.png)
 
-Continue reading our introduction to [Basic Nginx Configuration](/docs/web-servers/nginx/configuration) for more information about using and setting up a web server.
+Continue reading our introduction to [Basic Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration) for more information about using and setting up a web server.
 
 More Information
 ----------------

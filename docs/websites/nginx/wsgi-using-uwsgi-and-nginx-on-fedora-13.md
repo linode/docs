@@ -9,7 +9,7 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-servers/nginx/python-uwsgi/fedora-13/']
 modified: Friday, April 29th, 2011
 modified_by:
-  name: System
+  name: Linode
 published: 'Wednesday, November 10th, 2010'
 title: WSGI using uWSGI and nginx on Fedora 13
 ---
@@ -151,7 +151,7 @@ All requests to URLs ending in `/static` will be served directly from the `/srv/
 Additional Application Servers
 ------------------------------
 
-If the Python application you've deployed requires more application resources than a single Linode instance can provide, all of the methods for deploying a uWSGI application server are easily scaled to rely on multiple uSWGI instances that run on additional Linodes with the request load balanced using nginx's `upstream` capability. See our documentation of [proxy and software load balancing with nginx](/docs/web-servers/nginx/configuration/front-end-proxy-and-software-load-balancing) for more information. For a basic example configuration, see the following example:
+If the Python application you've deployed requires more application resources than a single Linode instance can provide, all of the methods for deploying a uWSGI application server are easily scaled to rely on multiple uSWGI instances that run on additional Linodes with the request load balanced using nginx's `upstream` capability. See our documentation of [proxy and software load balancing with nginx](/docs/websites/nginx/basic-nginx-configuration/front-end-proxy-and-software-load-balancing) for more information. For a basic example configuration, see the following example:
 
 {: .file-excerpt }
 nginx configuration
@@ -191,7 +191,7 @@ You may wish to consult the following resources for additional information on th
 
 - [Installing Nginx on Fedora 13](/docs/web-servers/nginx/installation/fedora-13)
 - [Deploy a LEMP Server on Fedora 13](/docs/lemp-guides/fedora-13/)
-- [Configure nginx Proxy Servers](/docs/web-servers/nginx/configuration/front-end-proxy-and-software-load-balancing)
+- [Configure nginx Proxy Servers](/docs/websites/nginx/basic-nginx-configuration/front-end-proxy-and-software-load-balancing)
 
 
 

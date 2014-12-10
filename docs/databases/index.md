@@ -2,12 +2,11 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Guides in support of database management system.'
 keywords: 'SQL database,relational database,RDBMS,MySQL,Postgresql,nosql,mongodb,couchdb,'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Tuesday, April 19th, 2011
+modified: Monday, August 4th, 2014
 modified_by:
-  name: System
+  name: Alex Fornuto
 published: 'Thursday, July 16th, 2009'
 title: Database Management Systems
 ---

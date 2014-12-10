@@ -9,7 +9,7 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['databases/mongodb/debian-5-lenny/']
 modified: Friday, April 29th, 2011
 modified_by:
-  name: System
+  name: Linode
 published: 'Wednesday, February 3rd, 2010'
 title: 'Use MongoDB to Store Application Data on Debian 5 (Lenny)'
 ---

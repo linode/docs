@@ -70,8 +70,9 @@ The Arch package manager Pacman chooses what architecture-specific builds to dow
 
 {: .file-excerpt }
 /etc/pacman.conf
-
-> Architecture=i686
+:   ~~~
+    Architecture=i686
+    ~~~
 
 ### Gentoo
 

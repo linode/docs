@@ -115,7 +115,7 @@ To install Git by MacPorts do the following:
 9.  Open a terminal window.
 10. To install Git use the following command:
 
-        $ sudo port install git-core +svn +doc +bash_completion +gitweb
+        $ sudo port install git +svn +doc +bash_completion +gitweb
 
 ##### Installing Git by Package Installer
 

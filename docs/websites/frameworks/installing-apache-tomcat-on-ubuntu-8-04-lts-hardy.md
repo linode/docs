@@ -9,7 +9,7 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['frameworks/apache-tomcat/ubuntu-8-04-hardy/']
 modified: Friday, April 29th, 2011
 modified_by:
-  name: System
+  name: Linode
 published: 'Wednesday, September 23rd, 2009'
 title: 'Installing Apache Tomcat on Ubuntu 8.04 LTS (Hardy)'
 ---

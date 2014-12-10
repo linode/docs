@@ -151,7 +151,7 @@ lighttpd.conf
     evhost.path-pattern = "/var/www/%0/htdocs/"
     ~~~
 
-You have maximum flexibility to create virtual hosts in this manner. The naming convention for these virtual hosts is derived from the domains names, given the following (ficticious) web address: `http://lookhere.somesubdomain.example.com/`
+You have maximum flexibility to create virtual hosts in this manner. The naming convention for these virtual hosts is derived from the domains names, given the following (fictitious) web address: `http://lookhere.somesubdomain.example.com/`
 
 You can modify the url format lighttpd recognizes by defining the pattern that gets passed through to the directory from which the content lives.
 

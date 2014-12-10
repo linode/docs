@@ -9,7 +9,7 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['frameworks/ruby-on-rails-nginx/ubuntu-9-10-karmic/']
 modified: Friday, April 29th, 2011
 modified_by:
-  name: System
+  name: Linode
 published: 'Monday, February 22nd, 2010'
 title: 'Ruby on Rails with Nginx on Ubuntu 9.10 (Karmic)'
 ---
@@ -136,7 +136,7 @@ You may wish to consult the following resources for additional information on th
 - [Ruby on Rails Documentation](http://rubyonrails.org/documentation)
 - [Nginx Home Page](http://nginx.org/)
 - [Nginx Documentation](http://nginx.org/en/docs/)
-- [Nginx Configuration](/docs/web-servers/nginx/configuration/basic)
+- [Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration/basic)
 
 
 

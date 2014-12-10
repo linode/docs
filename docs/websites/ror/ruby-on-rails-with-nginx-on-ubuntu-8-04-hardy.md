@@ -9,7 +9,7 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['frameworks/ruby-on-rails-nginx/ubuntu-8-04-hardy/']
 modified: Friday, April 29th, 2011
 modified_by:
-  name: System
+  name: Linode
 published: 'Friday, August 21st, 2009'
 title: 'Ruby on Rails with Nginx on Ubuntu 8.04 LTS (Hardy)'
 ---
@@ -142,7 +142,7 @@ You may wish to consult the following resources for additional information on th
 - [Ruby on Rails Documentation](http://rubyonrails.org/documentation)
 - [Nginx Home Page](http://nginx.org/)
 - [Nginx Documentation](http://nginx.org/en/docs/)
-- [Nginx Configuration](/docs/web-servers/nginx/configuration/basic)
+- [Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration/basic)
 
 
 

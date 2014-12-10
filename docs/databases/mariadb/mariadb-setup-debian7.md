@@ -6,13 +6,16 @@ description: 'Install and configure the MariaDB database server on Debian 7.'
 keywords: 'mariadb, debian 7, reset, root, password, install, configure'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: Thursday, June 12th, 2014
+contributor:
+    name: Nashruddin Amin
+    link: https://twitter.com/bsd_noobz
 modified_by:
   name: Linode
 published: 'Thursday, June 12th, 2014'
 title: MariaDB Setup on Debian 7
 ---
 
-This is a Linode Community guide by author **Nashruddin Amin**. [Write for us](/docs/contribute) and earn \$100 per published guide.
+*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $100 per published guide.*
 
 MariaDB is a drop-in replacement for MySQL and it strives to be the logical choice for database professionals looking for a robust, scalable, and reliable SQL Server. This guide will help beginners get started with MariaDB on a Debian 7 (Wheezy) Linode.
 

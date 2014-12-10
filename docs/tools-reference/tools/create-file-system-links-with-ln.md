@@ -97,12 +97,22 @@ To avoid the pitfalls of specifying relative symbolic link targets, you may crea
 In most cases, symbolic links are preferable over hard links. There are some situations that require hard links. Consider the following example:
 
     $ ls -l 
-
-> total 4.0K -rw-r--r-- 1 squire squire 3 Aug 27 12:23 foo
->
-> \$ ln foo bar \$ ls -l total 8.0K -rw-r--r-- 2 squire squire 3 Aug 27 12:23 bar -rw-r--r-- 2 squire squire 3 Aug 27 12:23 foo
->
-> \$ touch foo \$ ls -l total 8.0K -rw-r--r-- 2 squire squire 3 Aug 27 12:24 bar -rw-r--r-- 2 squire squire 3 Aug 27 12:24 foo
+    total 4.0K 
+    -rw-r--r-- 1 squire squire 3 Aug 27 12:23 foo
+    
+    $ ln foo bar
+    
+    $ ls -l
+    total 8.0K
+    -rw-r--r-- 2 squire squire 3 Aug 27 12:23 bar 
+    -rw-r--r-- 2 squire squire 3 Aug 27 12:23 foo
+    
+    $ touch foo
+    
+    $ ls -l
+    total 8.0K 
+    -rw-r--r-- 2 squire squire 3 Aug 27 12:24 bar 
+    -rw-r--r-- 2 squire squire 3 Aug 27 12:24 foo
 
 
 

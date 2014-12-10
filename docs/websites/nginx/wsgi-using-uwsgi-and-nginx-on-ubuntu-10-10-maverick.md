@@ -157,7 +157,7 @@ All requests to URLs ending in `/static` will be served directly from the `/srv/
 Additional Application Servers
 ------------------------------
 
-If the Python application you've deployed requires more application resources than a single Linode instance can provide, all of the methods for deploying a uWSGI application server are easily scaled to rely on multiple uSWGI instances that run on additional Linodes with the request load balanced using nginx's `upstream` capability. See our documentation of [proxy and software load balancing with nginx](/docs/web-servers/nginx/configuration/front-end-proxy-and-software-load-balancing) for more information. For a basic example configuration, see the following example:
+If the Python application you've deployed requires more application resources than a single Linode instance can provide, all of the methods for deploying a uWSGI application server are easily scaled to rely on multiple uSWGI instances that run on additional Linodes with the request load balanced using nginx's `upstream` capability. See our documentation of [proxy and software load balancing with nginx](/docs/websites/nginx/basic-nginx-configuration/front-end-proxy-and-software-load-balancing) for more information. For a basic example configuration, see the following example:
 
 {: .file-excerpt }
 nginx configuration
@@ -197,7 +197,7 @@ You may wish to consult the following resources for additional information on th
 
 - [Installing Nginx on Ubuntu 10.10 (Maverick)](/docs/web-servers/nginx/installation/ubuntu-10.10-maverick)
 - [Deploy a LEMP Server on Ubuntu 10.10 (Maverick)](/docs/lemp-guides/ubuntu-10.10-maverick/)
-- [Configure nginx Proxy Servers](/docs/web-servers/nginx/configuration/front-end-proxy-and-software-load-balancing)
+- [Configure nginx Proxy Servers](/docs/websites/nginx/basic-nginx-configuration/front-end-proxy-and-software-load-balancing)
 
 
 

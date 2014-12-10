@@ -44,7 +44,7 @@ Consider the following invocation of `chmod`:
 
 This grants all members of the usergroup that owns the file `~/group-project.txt` write permissions. To remove this permission later, switch the `+` sign to a `-`, as in the following example.
 
-> chmod g-w \~/group-project.txt
+    chmod g-w ~/group-project.txt
 
 You can specify multiple permissions by separating them with a comma, as in the following example:
 
@@ -52,7 +52,7 @@ You can specify multiple permissions by separating them with a comma, as in the 
 
 This adds write permissions to the usergroup members, and removes read and write permissions from the "other" users of the system. Finally the `a+x` adds the execute permissions to all categories. This value may also be specified as `+x`. If no category is specified, the permission is added or subtracted to all permission categories. In this notation the owner of the file is referred to as the `user` (e.g. `u+x`).
 
-> chmod -R +w,g=rw,o-rw, \~/group-project-files/
+    chmod -R +w,g=rw,o-rw, ~/group-project-files/
 
 The `-R` option applies the modification to the permissions recursively to the directory specified and all of its contents. You may also specify file permissions using the `=` sign rather than the `+` or `-` operators to signify only the specified permissions if you need to specify a set of permissions without relation to the current state of the file's permission.
 
@@ -76,7 +76,7 @@ Either notation is equivalent, and you may chose to use whichever form is more a
 Making a File Executable
 ------------------------
 
-Issue the following command to change the file permissions so that any user can execute the file "\~/group-project.py":
+Issue the following command to change the file permissions so that any user can execute the file "~/group-project.py":
 
     chmod +x ~/group-project.py
 

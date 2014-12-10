@@ -25,7 +25,7 @@ If you haven't already signed up for a Linode account, do that first. Follow the
 
     [![Available Linode plans.](/docs/assets/1744-getting-started1_small.png)](/docs/assets/1743-getting-started1.png)
 
-If you don't know which data center to select, try downloading our [speed test](http://www.linode.com/speedtest) to find the location that provides the best performance for your target audience. European users may find that the London or Newark data centers offer the best performance, and many users in Asia and Australia select the Tokyo or Fremont data centers. You can also generate [MTR reports](networking/diagnosing-network-issues-with-mtr/) for each of the data centers to determine which of our facilities provides the best latency from your particular location.
+If you don't know which data center to select, try downloading our [speed test](http://www.linode.com/speedtest) to find the location that provides the best performance for your target audience. European users may find that the London or Newark data centers offer the best performance, and many users in Asia and Australia select the Tokyo or Fremont data centers. You can also generate [MTR reports](/docs/networking/diagnosing-network-issues-with-mtr/) for each of the data centers to determine which of our facilities provides the best latency from your particular location.
 
 Provisioning Your Linode
 ------------------------
@@ -192,7 +192,15 @@ If it exists, edit the file `/etc/default/dhcpcd` to comment out the `SET_HOSTNA
   #SET_HOSTNAME='yes'
   ~~~
 
-### CentOS / Fedora
+### CentOS 7 / Fedora version 18 and above
+
+
+Enter the following command to set the hostname, replacing `plato` with the hostname of your choice:
+
+    hostnamectl set-hostname plato
+
+
+### CentOS 6 / Fedora version 17 and below
 
 Enter the following commands to set the hostname, replacing `plato` with the hostname of your choice:
 
@@ -221,7 +229,7 @@ Enter the following command to set the hostname, replacing `plato` with the host
 
 ### Update /etc/hosts
 
-Next, edit your `/etc/hosts` file to resemble the following example, replacing `plato` with your chosen hostname, `example.com` with your system's domain name, and `12.34.56.78` with your system's IP address. As with the hostname, the domain name part of your FQDN does not necesarily need to have any relationship to websites or other services hosted on the server (although it may if you wish). As an example, you might host "www.something.com" on your server, but the system's FQDN might be "mars.somethingelse.com."
+Next, edit your `/etc/hosts` file to resemble the following example, replacing `plato` with your chosen hostname, `example.com` with your system's domain name, and `12.34.56.78` with your system's IP address. As with the hostname, the domain name part of your FQDN does not necessarily need to have any relationship to websites or other services hosted on the server (although it may if you wish). As an example, you might host "www.something.com" on your server, but the system's FQDN might be "mars.somethingelse.com."
 
 {:.file }
 /etc/hosts
@@ -253,7 +261,7 @@ Enter the following command to access the timezone utility:
 
     dpkg-reconfigure tzdata
 
-### Arch Linux
+### Arch Linux and CentOS 7
 
 Enter the following command to view a list of available time zones:
 
