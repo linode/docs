@@ -64,10 +64,10 @@ You can then check the status to make sure it is running at any time:
   
 ### Configure nginx Virtual Hosts
 
-Once nginx is installed, you need to configure your 'server' directives to specify your virtual hosts.  Each virtual host needs to have a server and location directive.  You can do this multiple ways, either through different vhost files or all in the /etc/nginx/nginx.conf file:
+Once nginx is installed, you need to configure your 'server' directives to specify your virtual hosts.  Each virtual host needs to have a server and location directive.  You can do this multiple ways, either through different vhost files or all in the /etc/nginx/nginx.conf file.  In this example, we will use the multiple file approach.  By default, nginx uses the /etc/nginx/conf.d directory, and will include any files ending in .conf:
 
 {: .file-excerpt }
-/etc/nginx/	nginx.conf
+/etc/nginx/conf.d/example.com.conf
 :	~~~ nginx
 	server {
 	listen  80;
@@ -82,7 +82,7 @@ Once nginx is installed, you need to configure your 'server' directives to speci
 	}
 	~~~
   
-Once you set the configuration, you need to make the directories for your public html files, and your logs:
+Any additional websites you like ot host can be added as new files in the /etc/nginx/conf.d/ directory.  Once you set the configuration, you need to make the directories for your public html files, and your logs:
 
 	mkdir -p /var/www/example.com/{public_html,logs}
   
