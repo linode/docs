@@ -68,7 +68,7 @@ Once nginx is installed, you need to configure your 'server' directives to speci
 
 {: .file-excerpt }
 /etc/nginx/conf.d/example.com.conf
-:	~~~ nginx
+:	~~~
 	server {
 	listen  80;
 	server_name www.example.com example.com;
