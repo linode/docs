@@ -5,7 +5,7 @@ author:
 description: 'Serve SSL-enabled websites with the Apache 2 web server on Ubuntu.'
 keywords: 'apache ssl,ssl ubuntu,web sever,ubuntu,ubuntu precise pangolin,ubuntu'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['web-servers/apache/ssl-guides/ubuntu-12-04-precise-pangolin/','security/ssl/ssl-certificates-with-apache2-on-ubuntu-12-04-precise-pangolin']
+alias: ['web-servers/apache/ssl-guides/ubuntu-12-04-precise-pangolin/','security/ssl/ssl-certificates-with-apache2-on-ubuntu-12-04-precise-pangolin/']
 modified: Saturday, November 1st, 2014
 modified_by:
   name: Dave Russell
