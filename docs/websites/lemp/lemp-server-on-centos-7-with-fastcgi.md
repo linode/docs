@@ -2,23 +2,23 @@
 author:
     name: Linode
     email: rarlan@linode.com
-description: 'Install "LEMP," an application stack using nginx, MariaDB, and PHP with fastcgi for CentOS 7'
+description: 'Install "LEMP," an application stack using Nginx, MariaDB, and PHP with fastcgi for CentOS 7'
 keywords: 'nginx,lemp,php,fastcgi,linux,web applications, CentOS'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['lemp-guides/centos-7']
-modified: Sunday, November 9th, 2014
+alias: ['websites/lemp-guides/centos-7']
+modified: Thursday, December 11, 2014
 modified_by:
     name: Ryan Arlan
 published: 
-title: LEMP server on CentOS7 with FastCGI
+title: LEMP server on CentOS 7 with FastCGI
 external_resources:
-- '[Basic nginx Configuration](/docs/websites/nginx/basic-nginx-configuration/)'
+- '[Basic Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration/)'
 - '[Nginx Documentation](http://nginx.org/en/docs/)'
 - '[MariaDB Knowledgebase](https://mariadb.com/kb/en/)'
 - '[MariaDB and MySQL compatibility](https://mariadb.com/kb/en/mariadb/mariadb-vs-mysql-compatibility/)'
 ---
 
-This document describes how to install a Linux, nginx (pronounced engine-x), MariaDB and PHP server, also called LEMP stack, on CentOS 7 with php-fastcgi. It includes configuring php-fastcgi as a service in systemd for easier administration. 
+This document describes how to install a Linux, Nginx (pronounced engine-x), MariaDB and PHP server, also called LEMP stack, on CentOS 7 with php-fastcgi. It includes configuring php-fastcgi as a service in systemd for easier administration. 
 
 Make sure that before starting this guide you have read through and completed our [Getting Started](/docs/getting-started/) guide.
 
@@ -39,21 +39,21 @@ Make sure your system is up to date using yum:
 
 This ensures that all software is up to date and running at the latest version.
 
-## Install nginx from the EPEL
+## Install Nginx from the EPEL
 
-The quickest and easiest way to install nginx is from the Extra Packages for Enterprise Linux (EPEL) repository.  You can install this using rpm:
+The quickest and easiest way to install Nginx is from the Extra Packages for Enterprise Linux (EPEL) repository.  You can install this using rpm:
 
     rpm -Uvh http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-2.noarch.rpm
     yum update
     yum install nginx
 
-This installs the EPEL repository, pulls the metadata from the new repository, and then installs nginx.
+This installs the EPEL repository, pulls the metadata from the new repository, and then installs Nginx.
 
-## Configuring nginx
+## Configuring Nginx
 
-### Starting nginx with systemd
+### Starting Nginx with systemd
 
-After installing nginx it needs to be enabled and started in systemd. You can do this with the systemctl command:
+After installing Nginx it needs to be enabled and started in systemd. You can do this with the systemctl command:
 
     systemctl enable nginx.service
     systemctl start nginx.service
@@ -62,9 +62,9 @@ You can then check the status to make sure it is running at any time:
 
     systemctl status nginx.service
 
-### Configure nginx Virtual Hosts
+### Configure Nginx Virtual Hosts
 
-Once nginx is installed, you need to configure your 'server' directives to specify your server blocks.  Each server block needs to have a server and location directive.  You can do this multiple ways, either through different server block files or all in the `/etc/nginx/nginx.conf` file.  In this example, we will use the multiple file approach.  By default, nginx uses the `/etc/nginx/conf.d directory`, and will include any files ending in `.conf`:
+Once Nginx is installed, you need to configure your 'server' directives to specify your server blocks.  Each server block needs to have a server and location directive.  You can do this multiple ways, either through different server block files or all in the `/etc/nginx/nginx.conf` file.  In this example, we will use the multiple file approach.  By default, Nginx uses the `/etc/nginx/conf.d directory`, and will include any files ending in `.conf`:
 
 {: .file-excerpt }
 /etc/nginx/conf.d/example.com.conf
@@ -93,7 +93,7 @@ Once you have configured your virtual hosts, you'll need to restart nginx for yo
 Deploy PHP with FastCGI
 -----------------------
 
-If you are using PHP code with your application, you will need to implement "PHP-FastCGI" in order to allow nginx to properly handle and parse PHP code.  You can install this via YUM from the EPEL repository that was previously installed:
+If you are using PHP code with your application, you will need to implement "PHP-FastCGI" in order to allow Nginx to properly handle and parse PHP code.  You can install this via YUM from the EPEL repository that was previously installed:
 
     yum install php-cli php spawn-fcgi
   
