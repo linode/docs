@@ -2,15 +2,17 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Serve SSL-enabled websites with the Apache 2 web server on Ubuntu 12.04 (Precise Pangolin).'
-keywords: 'apache ssl,ssl ubuntu,web sever,ubuntu,ubuntu precise pangolin,ubuntu 12.04'
+description: 'Serve SSL-enabled websites with the Apache 2 web server on Ubuntu.'
+keywords: 'apache ssl,ssl ubuntu,web sever,ubuntu,ubuntu precise pangolin,ubuntu'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['web-servers/apache/ssl-guides/ubuntu-12-04-precise-pangolin/']
-modified: Wednesday, January 29th, 2014
+alias: ['web-servers/apache/ssl-guides/ubuntu-12-04-precise-pangolin/','security/ssl/ssl-certificates-with-apache2-on-ubuntu-12-04-precise-pangolin']
+modified: Saturday, November 1st, 2014
 modified_by:
-  name: Alex Fornuto
+  name: Dave Russell
 published: 'Monday, September 8th, 2014'
-title: 'SSL Certificates with Apache 2 on Ubuntu 12.04 (Precise Pangolin)'
+title: 'SSL Certificates with Apache 2 on Ubuntu'
+external_resources:
+ - '[Official Apache Documentation](http://httpd.apache.org/docs/2.0/)'
 ---
 
 This guide will assist you with enabling SSL for websites served under the Apache web server. It is assumed that you've completed the steps detailed in our [Getting Started guide](/docs/getting-started/), and that you've successfully set up Apache for serving virtual hosts as outlined in our [Apache 2 on Ubuntu 12.04 guide](/docs/websites/apache/apache-2-web-server-on-ubuntu-12-04-lts-precise-pangolin).
@@ -29,11 +31,11 @@ At the shell prompt, issue the following commands to enable SSL for Apache and g
 
     a2enmod ssl
     mkdir /etc/apache2/ssl
-    openssl req -new -x509 -sha256 -days 365 -nodes -out /etc/apache2/ssl/apache.pem -keyout /etc/apache2/ssl/apache.key
+    openssl req -newkey rsa:2048 -x509 -sha256 -days 365 -nodes -out /etc/apache2/ssl/apache.pem -keyout /etc/apache2/ssl/apache.key
 
 You will be asked for several configuration values. Enter values appropriate for your organization and server, as shown here. This example will create a certificate valid for 365 days; you may wish to increase this value. We've specified the FQDN (fully qualified domain name) of the VPS for the "Common Name" entry, as this certificate will be used for generic SSL service.
 
-    Generating a 1024 bit RSA private key
+    Generating a 2048 bit RSA private key
     ...................................++++++
     ..............................++++++
     writing new private key to '/etc/apache2/ssl/apache.pem'
@@ -55,18 +57,10 @@ You will be asked for several configuration values. Enter values appropriate for
 
 ### Configure Apache to use the Self-Signed Certificate
 
-Since SSL name-based virtual hosts are still not supported in `/etc/apache2/ports.conf`, we'll need to add an entry for a specific IP address on your VPS as follows. You may use a single IP to provide self-signed SSL service for multiple vhosts, and the same IP may also be used for multiple non-SSL vhosts (HTTPS uses port 443, while HTTP uses port 80).
-
-{: .file-excerpt }
-/etc/apache2/ports.conf
-:   ~~~ apache
-    NameVirtualHost 12.34.56.78:443
-    ~~~
-
 Replace "12.34.56.78" with your Linode's IP address. Next, edit the virtual host configuration files for sites which you would like to enable SSL on. For each virtual host, you must add the following stanza (change the values as appropriate for each site). Note that this example essentially reproduces the configuration for a non-SSL site, with the addition of three lines for SSL.
 
 {: .file-excerpt }
-Apache virtual hosting file
+/etc/apache2/sites-available/default-ssl.conf
 :   ~~~ apache
     <VirtualHost 12.34.56.78:443>
          SSLEngine On
@@ -99,11 +93,11 @@ Issue these commands to create a certificate signing request (CSR) for the site 
     a2enmod ssl
     mkdir /etc/apache2/ssl
     cd /etc/apache2/ssl
-    openssl req -new -days 365 -nodes -keyout www.mydomain.com.key -out www.mydomain.com.csr
+    openssl req -newkey rsa:2048 -days 365 -nodes -keyout www.mydomain.com.key -out www.mydomain.com.csr
 
 Enter values appropriate for your organization and domain name. Note that you can ignore the extra attributes.
 
-    Generating a 1024 bit RSA private key
+    Generating a 2048 bit RSA private key
     ......................................................++++++
     ....++++++
     writing new private key to 'www.mydomain.com.key'
@@ -151,18 +145,19 @@ For example, if you download a root cert for Verisign, you would save it to `/et
 
 ### Configure Apache to use the Signed SSL Certificate
 
-Next, add an entry to `/etc/apache2/ports.conf` for the IP address you'll be using to host your SSL-enabled site.
+If you are using Ubuntu 12.04, you will need to add an entry to '/etc/apache2/ports.conf' for the IP address you'll be using to host your SSL-enabled site. 
 
 {: .file-excerpt }
 /etc/apache2/ports.conf
-:   ~~~ apache
+
+:   ~~~
     NameVirtualHost 12.34.56.78:443
     ~~~
 
 Replace "12.34.56.78" with the IP address of your SSL-enabled site. Next, edit the virtual host configuration file for the site you would like to enable SSL on (www.mydomain.com in this example). Add the following stanza to your configuration file. Note that this example essentially reproduces the configuration for the non-SSL version of the site, with the addition of four lines for SSL. This example uses the CA certificate file for a certificate signed by Verisign.
 
 {: .file-excerpt }
-Apache virtual hosting file
+/etc/apache2/sites-enabled/default-ssl.conf
 :   ~~~ apache
     <VirtualHost 12.34.56.78:443>
          SSLEngine On
@@ -183,14 +178,3 @@ Restart Apache:
     service apache2 restart
 
 You should now be able to visit your site with SSL enabled. Congratulations, you've installed a commercial SSL certificate!
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Install Apache 2 on Ubuntu 12.04 LTS (Precise Pangolin) guide](/docs/web-servers/apache/installation/ubuntu-12.04-precise-pangolin)
-- [Official Apache Documentation](http://httpd.apache.org/docs/2.0/)
-
-
-

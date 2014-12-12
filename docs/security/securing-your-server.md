@@ -6,9 +6,9 @@ description: 'Our guide to securing your first Linode.'
 keywords: 'security,linode quickstart,getting started'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['securing-your-server/']
-modified: Saturday, October 18th, 2014
+modified: Monday, October 27, 2014
 modified_by:
-  name: Dave Russell
+  name: Linode
 published: 'Friday, February 17th, 2012'
 title: Securing Your Server
 ---
@@ -57,21 +57,21 @@ CentOS/Fedora
 3.  Set the password for your new user by entering the following command.  Replace *exampleuser* with your desired username:
 
         passwd exampleuser
-	
+
 4.  You will now need to edit your sudoers file to grant your new user the correct permissions.  Enter the following command to open your sudoers file for editing:
 
         visudo
 
 5.  Type 'i' to enter the insert mode, and add an entry for your user below the root user, granting all permissions.  Replace *exampleuser* with your username:
 
-		## Allow root to run any commands anywhere
-		root    ALL=(ALL)       ALL
-		exampleuser        ALL=(ALL)       ALL
+        ## Allow root to run any commands anywhere
+        root    ALL=(ALL)       ALL
+        exampleuser        ALL=(ALL)       ALL
 
 6.  Press 'Esc' to leave insert mode and enter the following command to save the file and quit visudo:
 
         :wq
-        
+
 7.  Log out of your Linode as the `root` user by entering the following command:
 
         logout
@@ -95,9 +95,9 @@ Here's how to use SSH key pair authentication to connect to your Linode:
 
 2.  The *SSH keygen* utility appears. Follow the on-screen instructions to create the SSH keys on your desktop computer. To use key pair authentication without a passphrase, press Enter when prompted for a passphrase.
 
-	{: .note }
-	>
-	> Two files will be created in your \~/.ssh directory: `id_rsa` and `id_rsa.pub`. The public key is `id_rsa.pub` - this file will be uploaded to your Linode. The other file is your private key. Do not share this file with anyone!
+    {: .note }
+    >
+    > Two files will be created in your \~/.ssh directory: `id_rsa` and `id_rsa.pub`. The public key is `id_rsa.pub` - this file will be uploaded to your Linode. The other file is your private key. Do not share this file with anyone!
 
 3.  Upload the public key to your Linode with the *secure copy* command (`scp`) by entering the following command in a terminal window *on your desktop computer*. Replace `example_user` with your username, and `123.456.78.90` with your Linode's IP address. If you have a Windows desktop, you can use a third-party client like [WinSCP](http://winscp.net/) to upload the file to your home directory.
 
@@ -134,9 +134,9 @@ Here's how to disable SSH password authentication and root login:
 
         sudo nano /etc/ssh/sshd_config
 
-	{: .note }
-	>
-	> If you see a message similar to *-bash: sudo: command not found*, you'll need to install `sudo` on your Linode. To do so, log in as root by entering the `su` command, and type the `root` password when prompted. Next, install `sudo` by entering the following command: `apt-get install sudo`. After `sudo` has been installed, log out as the `root` user by entering the `exit` command.
+    {: .note }
+    >
+    > If you see a message similar to *-bash: sudo: command not found*, you'll need to install `sudo` on your Linode. To do so, log in as root by entering the `su` command, and type the `root` password when prompted. Next, install `sudo` by entering the following command: `apt-get install sudo`. After `sudo` has been installed, log out as the `root` user by entering the `exit` command.
 
 2.  Change the `PasswordAuthentication` setting to `no` as shown below. Verify that the line is uncommented by removing the \# in front of the line, if there is one.:
 
@@ -149,11 +149,11 @@ Here's how to disable SSH password authentication and root login:
 4.  Save the changes to the SSH configuration file by pressing **Control-X**, and then **Y**.
 5.  Restart the SSH service to load the new configuration. Enter the following command:
 
-	**Debian/Ubuntu Users:**
+    **Debian/Ubuntu Users:**
 
         sudo service ssh restart
-        
-	**Fedora/CentOS:**
+
+    **Fedora/CentOS:**
 
         sudo systemctl restart sshd
 
@@ -177,13 +177,13 @@ Here's how to create a firewall on your Linode:
 2.  Examine the output. If you haven't implemented any firewall rules yet, you should see an *empty ruleset*, as shown below:
 
         Chain INPUT (policy ACCEPT)
-        target     prot opt source               destination         
+        target     prot opt source               destination
 
         Chain FORWARD (policy ACCEPT)
-        target     prot opt source               destination         
+        target     prot opt source               destination
 
         Chain OUTPUT (policy ACCEPT)
-        target     prot opt source               destination 
+        target     prot opt source               destination
 
 3.  Create a file to hold your firewall rules by entering the following command:
 
@@ -191,111 +191,127 @@ Here's how to create a firewall on your Linode:
 
 4.  Now it's time to create some firewall rules. We've created some basic rules to get you started. Copy and paste the rules shown below in to the `iptables.firewall.rules` file you just created.
 
-	{: .file }
-	/etc/iptables.firewall.rules
-	:   ~~~
-	    *filter
+    {: .file }
+    /etc/iptables.firewall.rules
+    :   ~~~
+        *filter
 
-	    #  Allow all loopback (lo0) traffic and drop all traffic to 127/8 that doesn't use lo0
-	    -A INPUT -i lo -j ACCEPT
-	    -A INPUT -d 127.0.0.0/8 -j REJECT
+        #  Allow all loopback (lo0) traffic and drop all traffic to 127/8 that doesn't use lo0
+        -A INPUT -i lo -j ACCEPT
+        -A INPUT -d 127.0.0.0/8 -j REJECT
 
-	    #  Accept all established inbound connections
-	    -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+        #  Accept all established inbound connections
+        -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
 
-	    #  Allow all outbound traffic - you can modify this to only allow certain traffic
-	    -A OUTPUT -j ACCEPT
+        #  Allow all outbound traffic - you can modify this to only allow certain traffic
+        -A OUTPUT -j ACCEPT
 
-	    #  Allow HTTP and HTTPS connections from anywhere (the normal ports for websites and SSL).
-	    -A INPUT -p tcp --dport 80 -j ACCEPT
-	    -A INPUT -p tcp --dport 443 -j ACCEPT
+        #  Allow HTTP and HTTPS connections from anywhere (the normal ports for websites and SSL).
+        -A INPUT -p tcp --dport 80 -j ACCEPT
+        -A INPUT -p tcp --dport 443 -j ACCEPT
 
-	    #  Allow SSH connections
-	    #
-	    #  The -dport number should be the same port number you set in sshd_config
-	    #
-	    -A INPUT -p tcp -m state --state NEW --dport 22 -j ACCEPT
+        #  Allow SSH connections
+        #
+        #  The -dport number should be the same port number you set in sshd_config
+        #
+        -A INPUT -p tcp -m state --state NEW --dport 22 -j ACCEPT
 
-	    #  Allow ping
-	    -A INPUT -p icmp -j ACCEPT
+        #  Allow ping
+        -A INPUT -p icmp --icmp-type echo-request -j ACCEPT
 
-	    #  Log iptables denied calls
-	    -A INPUT -m limit --limit 5/min -j LOG --log-prefix "iptables denied: " --log-level 7
+        #  Log iptables denied calls
+        -A INPUT -m limit --limit 5/min -j LOG --log-prefix "iptables denied: " --log-level 7
 
-	    #  Drop all other inbound - default deny unless explicitly allowed policy
-	    -A INPUT -j DROP
-	    -A FORWARD -j DROP
+        #  Drop all other inbound - default deny unless explicitly allowed policy
+        -A INPUT -j DROP
+        -A FORWARD -j DROP
 
-	    COMMIT
-	    ~~~
+        COMMIT
+        ~~~
+
+
 
 5.  Edit the rules as necessary. By default, the rules will allow traffic to the following services and ports: HTTP (80), HTTPS (443), SSH (22), and ping. All other ports will be blocked.
 
-	{: .note }
-	>
-	> Be sure to revise these rules if you add new services later.
+    {: .note }
+    >
+    > Be sure to revise these rules if you add new services later.
 
-6.  Save the changes to the firewall rules file by pressing Control-X, and then Y.
-7.  Activate the firewall rules by entering the following command:
+6. <div id="step_6">**Optional:**  If you plan on using the Linode Longview service, add these additional lines above the `#  Drop all other inbound` section:
+
+    {: .file-excerpt}
+    /etc/iptables.firewall.rules
+    :   ~~~
+        #  Allow incoming Longview connections 
+        -A INPUT -s longview.linode.com -j ACCEPT
+
+        # Allow metrics to be provided Longview
+        -A OUTPUT -d longview.linode.com -j ACCEPT
+        ~~~
+    </div>
+
+7.  Save the changes to the firewall rules file by pressing Control-X, and then Y.
+
+8.  Activate the firewall rules by entering the following command:
 
         sudo iptables-restore < /etc/iptables.firewall.rules
 
-8.  Recheck your Linode's firewall rules by entering the following command:
+9.  Recheck your Linode's firewall rules by entering the following command:
 
         sudo iptables -L
 
-9.  Examine the output. The new ruleset should look like the one shown below:
+10.  Examine the output. The new ruleset should look like the one shown below:
 
-        Chain INPUT (policy ACCEPT)
-        target     prot opt source               destination         
-        ACCEPT     all  --  anywhere             anywhere            
-        REJECT     all  --  anywhere             127.0.0.0/8          reject-with icmp-port-unreachable
-        ACCEPT     all  --  anywhere             anywhere             state RELATED,ESTABLISHED
-        ACCEPT     tcp  --  anywhere             anywhere             tcp dpt:http
-        ACCEPT     tcp  --  anywhere             anywhere             tcp dpt:https
-        ACCEPT     tcp  --  anywhere             anywhere             state NEW tcp dpt:ssh
-        ACCEPT     icmp --  anywhere             anywhere            
-        LOG        all  --  anywhere             anywhere             limit: avg 5/min burst 5 LOG level debug prefix "iptables denied: "
-        DROP       all  --  anywhere             anywhere            
+            Chain INPUT (policy ACCEPT)
+            target     prot opt source               destination
+            ACCEPT     all  --  anywhere             anywhere
+            REJECT     all  --  anywhere             127.0.0.0/8          reject-with icmp-port-unreachable
+            ACCEPT     all  --  anywhere             anywhere             state RELATED,ESTABLISHED
+            ACCEPT     tcp  --  anywhere             anywhere             tcp dpt:http
+            ACCEPT     tcp  --  anywhere             anywhere             tcp dpt:https
+            ACCEPT     tcp  --  anywhere             anywhere             state NEW tcp dpt:ssh
+            ACCEPT     icmp --  anywhere             anywhere
+            LOG        all  --  anywhere             anywhere             limit: avg 5/min burst 5 LOG level debug prefix "iptables denied: "
+            DROP       all  --  anywhere             anywhere
 
-        Chain FORWARD (policy ACCEPT)
-        target     prot opt source               destination         
-        DROP       all  --  anywhere             anywhere            
+            Chain FORWARD (policy ACCEPT)
+            target     prot opt source               destination
+            DROP       all  --  anywhere             anywhere
 
-        Chain OUTPUT (policy ACCEPT)
-        target     prot opt source               destination         
-        ACCEPT     all  --  anywhere             anywhere  
+            Chain OUTPUT (policy ACCEPT)
+            target     prot opt source               destination
+            ACCEPT     all  --  anywhere             anywhere  
 
-10. Now you need to ensure that the firewall rules are activated every time you restart your Linode. 
+11. Now you need to ensure that the firewall rules are activated every time you restart your Linode.
 
-	**Debian/Ubuntu Users:**
-	
-	Start by creating a new script with the following command:
+    **Debian/Ubuntu Users:**
+
+    Start by creating a new script with the following command:
 
         sudo nano /etc/network/if-pre-up.d/firewall
 
     Copy and paste the following lines in to the file you just created:
 
-	{: .file }
-	/etc/network/if-pre-up.d/firewall
-	:   ~~~
-	    #!/bin/sh 
-	    /sbin/iptables-restore < /etc/iptables.firewall.rules
-	    ~~~
-	
+    {: .file }
+    /etc/network/if-pre-up.d/firewall
+    :   ~~~
+        #!/bin/sh
+        /sbin/iptables-restore < /etc/iptables.firewall.rules
+        ~~~
+
     Press Control-X and then press Y to save the script.
     Set the script's permissions by entering the following command:
 
         sudo chmod +x /etc/network/if-pre-up.d/firewall
-	
-    **CentOS/Fedora users:** 
+
+    **CentOS/Fedora users:**
 
       If you are using CentOS 6.2 or 6.5, save your current iptables rules with the following command:
 
-        /sbin/service iptables save 
+        /sbin/service iptables save
 
       If you are using CentOS 7 or Fedora 20, the base image does not include iptables-services. You will need to install it before your firewall is persistent through boots:
-      
+
         yum install -y iptables-services
         systemctl enable iptables
         systemctl start iptables
@@ -315,15 +331,15 @@ Here's how to install and configure Fail2Ban:
 
 1.  Install Fail2Ban by entering the following command:
 
-	**Debian/Ubuntu Users:**
+    **Debian/Ubuntu Users:**
 
         sudo apt-get install fail2ban
-        
-	**Fedora Users:**
+
+    **Fedora Users:**
 
         sudo yum install fail2ban
-        
-	**CentOS Users:**
+
+    **CentOS Users:**
 
         sudo yum install epel-release
         sudo yum install fail2ban
@@ -333,9 +349,9 @@ Here's how to install and configure Fail2Ban:
 
         sudo nano /etc/fail2ban/jail.local
 
-	{: .note }
-	>
-	> To learn more about Fail2Ban configuration options, see [this article](http://www.fail2ban.org/wiki/index.php/MANUAL_0_8#Configuration) on the Fail2Ban website.
+    {: .note }
+    >
+    > To learn more about Fail2Ban configuration options, see [this article](http://www.fail2ban.org/wiki/index.php/MANUAL_0_8#Configuration) on the Fail2Ban website.
 
 3.  Set the `bantime` variable to specify how long (in seconds) bans should last.
 4.  Set the `maxretry` variable to specify the default number of tries a connection may be attempted before an attacker's IP address is banned.
@@ -348,6 +364,3 @@ Next Steps
 ----------
 
 Good work! You have secured your Linode to protect it from unauthorized access. Next, you'll learn how to host a website. Start reading the [Hosting a Website](/docs/hosting-website) quick start guide to get going!
-
-
-

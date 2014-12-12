@@ -15,6 +15,7 @@ featured:
  - stackscripts.md
  - billing-and-payments.md
  - support.md
+ - network-helper.md
 categories:
  - longview
  - nodebalancer

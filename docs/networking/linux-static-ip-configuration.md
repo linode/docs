@@ -13,10 +13,10 @@ published: 'Thursday, July 20th, 2014'
 title: Linux Static IP Configuration
 ---
 
-By default, Linodes use DHCP to acquire their IP address, routing and DNS information. However, DHCP will only assign one IP to your Linode, so if you have multiple IPs, you'll need to use a static configuration. Even if you only have one IP, you can still do a static assignment, but it's not required in most cases.
+By default, Linodes use DHCP to acquire their IP address, routing and DNS information. However, DHCP will only assign one IP to your Linode, so if you have multiple IPs, you'll need to use a static configuration. You can use [Network Helper](/docs/platform/network-helper) to to create static a networking configuration for you automatically, or follow the steps below.
 
 {:.note}
-> As errors in network configurations may cause SSH connections to be disconnected, it is advised that you use the Linode Shell (LISH) when making network configuration changes. See [Using the Linode Shell (LISH)] (/docs/networking/using-the-linode-shell-lish) for more information. 
+> As errors in network configurations may cause SSH connections to be disconnected, it is advised that you use the Linode Shell (LISH) when making network configuration changes. See [Using the Linode Shell (LISH)](/docs/networking/using-the-linode-shell-lish) for more information. 
 
 
 Some distributions will determine the netmask based on the block of the IP address. The blocks of each type of IP address are:
@@ -114,7 +114,7 @@ Next, edit your `/etc/hosts` file to resemble the following example, replacing "
   ~~~
 
 The value you assign as your system's FQDN should have an "A" record in DNS pointing to your Linode's IP address.
-For more information on configuring DNS, please see our guide on [configuring DNS with the Linode Manager] (/library/dns-guides/configuring-dns-with-the-linode-manager).
+For more information on configuring DNS, please see our guide on [configuring DNS with the Linode Manager](/library/dns-guides/configuring-dns-with-the-linode-manager).
 
 DNS Resolver Settings
 ---------------------

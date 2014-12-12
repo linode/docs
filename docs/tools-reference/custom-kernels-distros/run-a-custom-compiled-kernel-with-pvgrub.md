@@ -100,7 +100,9 @@ Create a `menu.lst` file with the following contents. Adjust the "title" and "ke
 : ~~~
 	timeout 5
 	
-	title Custom Compiled, kernel 2.6.32.16-custom root (hd0) kernel /boot/vmlinuz-2.6.32.16-custom root=/dev/xvda ro quiet
+	title Custom Compiled, kernel 2.6.32.16-custom 
+	root (hd0) 
+	kernel /boot/vmlinuz-2.6.32.16-custom root=/dev/xvda ro quiet
 ~~~
 
 Note that there is no `initrd` line. With some distributions, the `initrd` image prepared during the kernel installation process will not work correctly with your Linode, and it isn't needed anyhow.
