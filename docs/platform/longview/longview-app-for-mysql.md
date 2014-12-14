@@ -61,9 +61,13 @@ To enable the MySQL Longview app manually, follow these steps on your Linode via
 2.  Edit `/etc/linode/longview.d/MySQL.conf` to include the same username and password you just added. It should look like the following:
 
     {: .file }
-/etc/linode/longview.d/MySQL.conf
-
-    > \#username root \#password example\_password username linode-longview password *******\********
+    /etc/linode/longview.d/MySQL.conf
+    :   ~~~ conf
+        #username root
+        #password example_password
+        username linode-longview 
+        password ***************
+        ~~~
 
 3.  Restart Longview:
 
