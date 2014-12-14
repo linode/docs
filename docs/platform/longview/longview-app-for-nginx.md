@@ -95,7 +95,7 @@ To enable the Nginx Longview app manually, follow these steps on your Linode via
     {: .file }
     /etc/linode/longview.d/Nginx.conf
     :   ~~~
-        location <http://127.0.0.1/nginx_status>
+        location http://127.0.0.1/nginx_status
         ~~~
         
 4.  Restart Longview:
@@ -197,7 +197,7 @@ To fix this, follow these steps:
     {: .file }
     /etc/linode/longview.d/Nginx.conf
     :   ~~~
-        location <http://127.0.0.1/url-goes-here>
+        location http://127.0.0.1/url-goes-here
         ~~~
         
 5.  Restart Longview:
