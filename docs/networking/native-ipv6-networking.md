@@ -84,6 +84,16 @@ Your pool will be visible under the "Remote Access Tab" of the Linode Manager in
 
     Public IP Pools  2600:3c03:e000:0084::/64 
 
+When dealing with IPv6, pool sizes can get very large, very fast. Linode offers three different sizes of IPv6 pools (/56, /64, and /116), with the default size being /64. The table below breaks down the number of available addresses per pool.
+
+{: .table .table-striped }
+| Subnet | No. of IPS                    |
+|:-------|:------------------------------|
+| /56    | 4,722,366,482,869,645,213,696 |
+| /64    | 18,446,744,073,709,551,616    |
+| /116   | 4,096                         |
+|--------|-------------------------------|
+
 ### Adding IPv6 Addresses
 
 To attach an IP to your interface, issue the following command, be sure to replace the example IP with one of the addresses from your pool:
@@ -234,18 +244,6 @@ The configuration of additional IPv6 addresses in Gentoo is simple. Append the I
     config_eth0="dhcp 2600:3c03:e000:84::0/64 2600:3c03:e000:84::1/64 2600:3c03:e000:84::2/64"
     ~~~
 
-IPv6 Pools
-----------
-
-When dealing with IPv6, pool sizes can get very large, very fast. Linode offers three different sizes of IPv6 pools (/56, /64, and /116), with the default size being /64. The table below breaks down the number of available addresses per pool.
-
-{: .table .table-striped }
-| Subnet | No. of IPS                    |
-|:-------|:------------------------------|
-| /56    | 4,722,366,482,869,645,213,696 |
-| /64    | 18,446,744,073,709,551,616    |
-| /116   | 4,096                         |
-|--------|-------------------------------|
 
 More Information
 ----------------
