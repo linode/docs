@@ -56,8 +56,13 @@ Follow these instructions at any time to update your virtual host configuration 
 
         a2ensite example.com.conf
 
-3.  Repeat Steps 1-2 for all of your virtual hosts.
-4.  Reload Apache:
+3.  Use the `a2dissite` command to disable the old virtual host. Make sure you do not include the `.conf` extension:
+
+        a2dissite example.com
+
+4.  Repeat Steps 1-3 for all of your virtual hosts.
+
+5.  Reload Apache:
 
         service apache2 reload
 
