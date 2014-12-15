@@ -6,9 +6,9 @@ description: 'How to create and interpret MTR reports on your Linux VPS or home 
 keywords: 'mtr,traceroute,latency,loss'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['linux-tools/mtr/']
-modified: Tuesday, February 11th, 2014
+modified: Monday, December 15, 2014
 modified_by:
-  name: Linode
+  name: Dave Russell Jr
 published: 'Wednesday, April 28th, 2010'
 title: Diagnosing Network Issues with MTR
 ---
@@ -70,21 +70,31 @@ For the sake of clarity, when referring to MTR reports this document refers to t
 
 Once installed on Linux or a Mac OS X system, you may generate MTR reports using the following syntax:
 
-    mtr --report [destination_host]
+    mtr -rwc 100 [destination_host]
 
 For example, to test the route and connection quality of traffic to the destination host `example.com`, run the following command from the desired source host:
 
-    mtr --report example.com
+    mtr -rwc 100 example.com
 
 When contacting Linode Support with an issue that may be networking related, the technician may request MTR reports **both to and from your Linode**. An MTR report **to your Linode** would be run while logged in to your home PC (or other PC at your current location). The command may resemble the following:
 
-    mtr --report 87.65.43.21
+    mtr -rwc 100 87.65.43.21
 
 Be sure to replace `87.65.43.21` with the IP address of your Linode, which is listed on the "Remote Access" tab of the Linode Manager. At the same time, also collect the MTR report **from your Linode** to your home network. This command may resemble the following:
 
-    mtr --report 12.34.56.78
+    mtr -rwc 100 12.34.56.78
 
 Replace `12.34.56.78` with the IP address of your home network. If you are unsure of what your home IP address is you may use the first or second host on your outgoing MTR reports (depending on the configuration of your home network). Alternatively, you may use a third party service, such as [WhatIsMyIP.com](http://whatismyip.com/).
+
+{: .note }
+>
+> The flags we are using above (`rwc`) are useful to our support technicians when contacting support about network-related issues.
+>
+> The `r` option flag generates the report (short for `--report`).
+>
+> The `w` option flag uses the long-version of the hostname so our technicians and you can see the full hostname of each hop (short for `--report-wide`).
+>
+> The `c` option flag tells MTR how many packets to send to the server (short for `--report-cycles`). The default for `--report` would be `10`, but we change it to `100` in the examples above so that we can see the severity of the network issues.
 
 ### Using MTR on Windows Systems
 
