@@ -88,6 +88,7 @@ Replace `12.34.56.78` with the IP address of your home network. If you are unsur
 
 {: .note }
 >
+<<<<<<< HEAD
 > The flags we are using above (`rwc`) are useful to our support technicians when contacting support about network-related issues.
 >
 > The `r` option flag generates the report (short for `--report`).
@@ -95,6 +96,9 @@ Replace `12.34.56.78` with the IP address of your home network. If you are unsur
 > The `w` option flag uses the long-version of the hostname so our technicians and you can see the full hostname of each hop (short for `--report-wide`).
 >
 > The `c` option flag tells MTR how many packets to send to the server (short for `--report-cycles`). The default for `--report` would be `10`, but we change it to `100` in the examples above so that we can see the severity of the network issues.
+=======
+> The flags used for the MTR reports above (`rwc`) are to generate the report with a packet count of 100 without shortening the hostname of the hops. This is particularly important when contacting our support team because it will provide more information and a better idea of the severity of the packet loss.
+>>>>>>> 5aae4b3007f4542b5e417d3938800327b1cbfe49
 
 ### Using MTR on Windows Systems
 
