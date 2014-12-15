@@ -11,6 +11,7 @@ featured:
  - backup-service.md
  - accounts-and-passwords.md
  - linode-cli.md
+ - linode-images.md
  - package-mirrors.md
  - stackscripts.md
  - billing-and-payments.md
