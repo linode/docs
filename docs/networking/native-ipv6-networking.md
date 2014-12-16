@@ -78,7 +78,7 @@ If you have already implemented a firewall for IPv6, please ensure the following
 IPv6 Address Pools
 ------------------
 
-Additional blocks of IPv6 addresses may be requested at no charge. Addresses in these pools can be used on any of your Linodes that reside in the same facility. For example, if you have four Linodes in Newark, you could assign each of them addresses from your Newark address pool. Open a support ticket to request your IPv6 pool.
+**By default, each Linode has a single IPv6 address assigned to it.** Additional blocks of IPv6 addresses may be requested at no charge. Addresses in these pools can be used on any of your Linodes that reside in the same facility. For example, if you have four Linodes in Newark, you could assign each of them addresses from your Newark address pool. Open a support ticket to request your IPv6 pool.
 
 Your pool will be visible under the "Remote Access Tab" of the Linode Manager in a manner similar to the following:
 
