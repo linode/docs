@@ -76,7 +76,7 @@ To learn more about the different types of DNS records, see our [Introduction to
 Setting Domain Names to Use Linode's Name Servers
 -------------------------------------------------
 
-After you purchase is setting your domain name to use our name servers. Use your domain name registrar's interface to set the name servers for your domain name to the following entries:
+After you purchase a domain, the next step is setting your domain registrar to use our name servers. Use your domain name registrar's interface to set the name servers for your domain name to the following entries:
 
 -   `ns1.linode.com`
 -   `ns2.linode.com`
