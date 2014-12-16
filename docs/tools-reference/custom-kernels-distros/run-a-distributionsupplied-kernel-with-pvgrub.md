@@ -564,46 +564,101 @@ CentOS 5
 
         Linux li181-194 2.6.18-194.26.1.el5xen #1 SMP Tue Nov 9 14:13:46 EST 2010 i686 i686 i386 GNU/Linux
 
-Fedora 17
----------
+Fedora 20 and Newer
+-------------------
 
 1.  Make sure your package repositories and installed packages are up to date by issuing the following command:
 
         yum update
 
-2.  Issue the following command to install the default kernel for Fedora 13:
+2.  Make sure you have grubby installed:
 
-    **32-bit Fedora:** :
+        yum install grubby
 
-        yum install kernel-PAE.i686
+3.  Create a directory called `grub` in `/boot`
 
-    **64-bit Fedora:** :
+        mkdir /boot/grub
 
-        yum install kernel.x86_64
+4.  Create a file named `/boot/grub/menu.lst` with the following contents:
 
-3.  Create a file named `/boot/grub/menu.lst` with the following contents. Adjust the `title`, `kernel`, and `initrd` lines to reflect the actual file names found in the `/boot/` directory.
+      {:.file }
+      /boot/grub/menu.lst
+      : ~~~
+        default=0
+        timeout=5
 
-    {: .file }
-	/boot/grub/menu.lst
-	: ~~~
-		timeout 5
-    	
-    	title Fedora 17, kernel 3.9.10-100.fc17.x86\_64 root (hd0) kernel /boot/vmlinuz-3.9.10-100.fc17.x86\_64 root=/dev/xvda ro quiet initrd /boot/initramfs-3.9.10-100.fc17.x86\_64.img
-	~~~
-	
-4.  In the Linode Manager, edit your Linode's configuration profile to use either **pv-grub-x86\_32** or **pv-grub-x86\_64** as the **Kernel**, depending on the version of Fedora you have deployed (32-bit or 64-bit).
-5.  Make sure the root device is specified as **xvda**.
-6.  Save your changes by clicking **Save Profile** at the bottom of the page.
-7.  Reboot your Linode from the **Dashboard** tab.
-8.  Once your Linode has rebooted, log in via SSH and issue the following command:
+        title Initial
+                root (hd0)
+                kernel /boot/initial root=/dev/xvda console=tty0 console=hvc0 ro quiet LANG=en_US.UTF-8
+        ~~~
+
+5.  Create a symlink to `menu.lst` as `grub.conf` in `/etc`:
+
+        ln -s /boot/grub/menu.lst /etc/grub.conf
+
+6.  Create an empty file called `initial` in `/boot`
+
+        touch /boot/initial
+
+7.  Create a symlink to your root device (replace `xvda` with your root device if it's different)
+
+        ln -s /dev/xvda /dev/root
+
+8.  Install the distribution kernel for Fedora:
+
+        yum install kernel
+
+9.  Open `/boot/grub/menu.lst` and make sure the value of `default` points to the new kernel. For example, in this case, `default` has been changed to `1` to point to the second entry in the list, which is our newly installed kernel:
+
+      {:.file }
+      /boot/grub/menu.lst
+      : ~~~
+        default=1
+        timeout=5
+
+        title Fedora 20 Rescue e6e288d4c0ed44e5965d1a180d06a84d (3.18.7-100.fc20.x86_64)
+                root (hd0)
+                kernel /boot/vmlinuz-0-rescue-e6e288d4c0ed44e5965d1a180d06a84d root=/dev/xvda console=tty0 console=hvc0 ro quiet LANG=en_US.UTF-8
+                initrd /boot/initramfs-0-rescue-e6e288d4c0ed44e5965d1a180d06a84d.img
+        title Fedora (3.18.7-100.fc20.x86_64) 20 (Heisenbug)
+                root (hd0)
+                kernel /boot/vmlinuz-3.18.7-100.fc20.x86_64 root=/dev/xvda console=tty0 console=hvc0 ro quiet LANG=en_US.UTF-8
+                initrd /boot/initramfs-3.18.7-100.fc20.x86_64.img
+        title Initial
+                root (hd0)
+                kernel /boot/initial root=/dev/xvda console=tty0 console=hvc0 ro quiet LANG=en_US.UTF-8
+        ~~~
+
+10.  Remove the `Initial` entry:
+
+      {:.file }
+      /boot/grub/menu.lst
+      : ~~~
+        default=1
+        timeout=5
+
+        title Fedora 20 Rescue e6e288d4c0ed44e5965d1a180d06a84d (3.18.7-100.fc20.x86_64)
+                root (hd0)
+                kernel /boot/vmlinuz-0-rescue-e6e288d4c0ed44e5965d1a180d06a84d root=/dev/xvda console=tty0 console=hvc0 ro quiet LANG=en_US.UTF-8
+                initrd /boot/initramfs-0-rescue-e6e288d4c0ed44e5965d1a180d06a84d.img
+        title Fedora (3.18.7-100.fc20.x86_64) 20 (Heisenbug)
+                root (hd0)
+                kernel /boot/vmlinuz-3.18.7-100.fc20.x86_64 root=/dev/xvda console=tty0 console=hvc0 ro quiet LANG=en_US.UTF-8
+                initrd /boot/initramfs-3.18.7-100.fc20.x86_64.img
+        ~~~
+
+11.  Delete `initial` in `/boot`
+
+        rm /boot/initial
+
+12.  In the Linode Manager, edit the Configuration Profile for your Linode and change the Kernel entry to `pv-grub-x86_64`
+
+13.  Reboot your Linode
+
+14.  Your Linode should now use the distro kernel and grubby will take care of making sure `menu.lst` always uses the latest kernel version installed. You can confirm you're running the distro kernel by running:
 
         uname -a
 
-    You should see output similar to the following, indicating you're running the native kernel:
+    You should get a similar result to:
 
-        Linux li63-119 3.9.10-100.fc17.x86_64 #1 SMP Sun Jul 14 01:31:27 UTC 2013 x86_64 x86_64 x86_64 GNU/Linux
-
-Note that if you later install an updated kernel, you'll need to add an entry for it to your `menu.lst` file. By default, the first kernel in the list will be booted.
-
-
-
+        Linux li911-150 3.18.7-100.fc20.x86_64 #1 SMP Wed Feb 11 19:01:50 UTC 2015 x86_64 x86_64 x86_64 GNU/Linux
