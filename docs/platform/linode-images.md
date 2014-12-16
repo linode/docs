@@ -13,11 +13,7 @@ published: 'Thursday, September 25th, 2014'
 title: Linode Images
 ---
 
-Linode Images allows you to take snapshots of your disk images, and then deploy them to any Linode under your account. This can be useful for capturing a master image for a large deployment, or retaining a disk image for a configuration that you may not need running, but wish to return to in the future. Linode Images will be retained whether or not you have an active Linode on your account, which also makes them useful for long term storage of a template that you may need in the future.
-
-## Getting Started
-
-Once you've purchased a Linode, you're automatically set up for the Linode Images service. The steps included in this guide assume that you have already deployed a distribution to your Linode, and configured it to your desired specifications.
+Linode Images allows you to take snapshots of your disk images, and then deploy them to any Linode under your account. This can be useful for bootstrapping a master image for a large deployment, or retaining a disk image for a configuration that you may not need running, but wish to return to in the future. Linode Images will be retained whether or not you have an active Linode on your account, which also makes them useful for long term storage of a template that you may need in the future.
 
 ## Capturing Your Image
 
@@ -39,6 +35,9 @@ Linode Images captures an exact copy of your disk image at the moment when the p
 4.  Once you click the Imagize button, your image will be frozen for later use. You can view the progress on the Dashboard under the Host Job Queue.
 
 	[![Host Job Queue](/docs/assets/host-job-queue.png)](/docs/assets/host-job-queue.png)
+
+ {: .note}
+>Linode Images are limited to 2048MB of data per disk image.  You will need to ensure that that data within your disk image does not exceed this size limit.
 
 Once the job in the host queue has completed, your Linode's disk image has been captured and stored.
 
