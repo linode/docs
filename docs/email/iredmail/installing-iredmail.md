@@ -28,7 +28,7 @@ Before beginning this guide you should have:
 - An understanding of the [Linux command line](/docs/networking/ssh/using-the-terminal).
 - A Linode running Ubuntu 14.04.
 
-This guide assumes you've followed the Linode [Getting Started](h) documentation If you haven't done so, read through the guide, and return here following the completion of the "Setting the Hostname" section.
+This guide assumes you've followed the Linode [Getting Started](/docs/getting-started) documentation If you haven't done so, read through the guide, and return here following the completion of the "Setting the Hostname" section.
 
 The steps required in this guide require root privileges. Be sure to run the steps below as ``root`` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
