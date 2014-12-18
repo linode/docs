@@ -22,7 +22,7 @@ It is assumed that you've followed the steps outlined in our [getting started gu
 
 **Please note:** Depending on the amount of memory your Linode has, Oracle may require up to a 1,024 MB swap partition. While we normally do not advise using a swap partition larger than 256 MB, in this case it's a good idea to resize your existing swap to 1,025 MB before proceeding with Oracle installation (the extra MB avoids differences in how megabytes are calculated).
 
-To do this, log into the Linode Manager and shut down your Linode. Once your Linode is completely shut down, click the swap disk image under the "Disk Images" heading in the Dashboard. Then change the size to 1,025 MB. If you're already using all of your allocated disk space, you may need to shrink your main disk image first to accommodate the larger swap image.
+To do this, log into the Linode Manager and shut down your Linode. Once your Linode is completely shut down, click the swap disk under the "Disks" heading in the Dashboard. Then change the size to 1,025 MB. If you're already using all of your allocated disk space, you may need to shrink your main disk first to accommodate the larger swap image.
 
 Configure Networking and Set the Hostname
 -----------------------------------------

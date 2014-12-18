@@ -83,9 +83,9 @@ Using SSHFS with MacOS X
 
 With MacFUSE and Macfusion, you can mount remote filesystems over SSH in Mac OS X. You may use Finder or the terminal to access files in this manner.
 
-Visit the [MacFUSE homepage](http://code.google.com/p/macfuse/) to download a current copy of the MacFUSE installer for MacOS X 10.5 or greater. Open the disk image in Finder and double-click "MacFUSE.pkg" to start the installation process:
+Visit the [MacFUSE homepage](http://code.google.com/p/macfuse/) to download a current copy of the MacFUSE installer for MacOS X 10.5 or greater. Open the disk in Finder and double-click "MacFUSE.pkg" to start the installation process:
 
-[![Opening the MacFUSE disk image in MacOS X.](/docs/assets/185-macfuse-install-01.png)](/docs/assets/185-macfuse-install-01.png)
+[![Opening the MacFUSE disk in MacOS X.](/docs/assets/185-macfuse-install-01.png)](/docs/assets/185-macfuse-install-01.png)
 
 You'll be presented with information on MacFUSE. Click "Continue" to proceed:
 

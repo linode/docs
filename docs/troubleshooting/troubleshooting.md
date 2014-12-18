@@ -84,7 +84,7 @@ If you can log in, continue to the next section, even if there are error message
 
 ### Is your disk full?
 
-Like a local machine, if your virtual machine's disk is nearly filled to capacity it will see a massive degradation in performance. You will be able to see the total data available and free space of the current disk image using the command:
+Like a local machine, if your virtual machine's disk is nearly filled to capacity it will see a massive degradation in performance. You will be able to see the total data available and free space of the current disk using the command:
 
     sudo egrep --color 'Mem' /proc/meminfo
 
@@ -93,7 +93,7 @@ The output will look akin to:
     MemTotal:        1011048 kB
     MemFree:          418908 kB
 
-If you have 80%+ of your disk image used you may start seeing this degradation. You may want to start investigating temporary files, logs, and unneeded processes. You may also want to consider upgrading your Linode for more storage.
+If you have 80%+ of your disk used you may start seeing this degradation. You may want to start investigating temporary files, logs, and unneeded processes. You may also want to consider upgrading your Linode for more storage.
 
 ### Is the Linode out of memory?
 
@@ -284,16 +284,16 @@ If you recently created a new account, resized an existing Linode, or added extr
 
 ### Did you add additional storage?
 
-If you recently upgraded your plan or added extra storage space, your Linode won't be able to take advantage of the additional space until you resize the disk image. You can use the Linode Manager to see if there's additional storage space available for disk images:
+If you recently upgraded your plan or added extra storage space, your Linode won't be able to take advantage of the additional space until you resize the disk. You can use the Linode Manager to see if there's additional storage space available for disks:
 
 1.  Log in to the [Linode Manager](https://manager.linode.com).
 2.  Click the **Linode** tab. A list of your virtual private servers appears.
 3.  Select a Linode. The Linode's dashboard appears.
-4.  Examine the *Storage* pane on the sidebar, as shown below. If you have free storage space, you can allocate that space to your existing disk images.
+4.  Examine the *Storage* pane on the sidebar, as shown below. If you have free storage space, you can allocate that space to your existing disks.
 
-[![Resize disk images.](/docs/assets/944-troubleshooting4-1.png)](/docs/assets/944-troubleshooting4-1.png)
+[![Resize disks.](/docs/assets/944-troubleshooting4-1.png)](/docs/assets/944-troubleshooting4-1.png)
 
-For instructions on resizing disk images, see the [Manage Linode Disk Images](/docs/disk-images-config-profiles#sph_resizing-a-disk-image) guide.
+For instructions on resizing disks, see the [Manage Linode Disks](/docs/disk-images-config-profiles#sph_resizing-a-disk-image) guide.
 
 
 

@@ -12,9 +12,9 @@ published: 'Friday, July 5th, 2013'
 title: Full Disk Encryption
 ---
 
-Full disk encryption protects the information stored on your Linode's disk images by converting it into unreadable code that can only be deciphered by authorized individuals. Nearly everything on the disk is encrypted, including the swap space and temporary files. This guide will help you implement full disk encryption on a Linode running Debian 7 (Wheezy). You'll learn how to:
+Full disk encryption protects the information stored on your Linode's disks by converting it into unreadable code that can only be deciphered by authorized individuals. Nearly everything on the disk is encrypted, including the swap space and temporary files. This guide will help you implement full disk encryption on a Linode running Debian 7 (Wheezy). You'll learn how to:
 
--   Format and encrypt your disk images
+-   Format and encrypt your disks
 -   Install a base Debian 7 (Wheezy) system with `debootstrap`
 -   Configure services and networking
 -   Boot from the encrypted images
@@ -22,27 +22,27 @@ Full disk encryption protects the information stored on your Linode's disk image
 Potential Drawbacks
 -------------------
 
-Full disk encryption does a great job of keeping your data secure, but there are a few caveats. To decrypt and mount the disk image, you'll need to enter the encryption passphrase in the console every time your Linode boots. And some Linode Manager tools may not work as expected if your disk images are encrypted. You'll need to manually resize your filesystem if you want to resize your disk image. You'll also need to implement your own backup solution since the [Linode Backup Service](/docs/backup-service) can't mount encrypted disk images.
+Full disk encryption does a great job of keeping your data secure, but there are a few caveats. To decrypt and mount the disk, you'll need to enter the encryption passphrase in the console every time your Linode boots. And some Linode Manager tools may not work as expected if your disks are encrypted. You'll need to manually resize your filesystem if you want to resize your disk. You'll also need to implement your own backup solution since the [Linode Backup Service](/docs/backup-service) can't mount encrypted disks.
 
 Getting Started
 ---------------
 
-Ready to encrypt your Linode's disk images? Here's how to prepare a Linode for full disk encryption:
+Ready to encrypt your Linode's disks? Here's how to prepare a Linode for full disk encryption:
 
 1.  Create a new Linode in the data center of your choice.
-2.  Make at least three unformatted / raw disk images for your Linode. You'll probably want to use the rest of your disk quota for your main disk image.
+2.  Make at least three unformatted / raw disks for your Linode. You'll probably want to use the rest of your disk quota for your main disk.
 
     - A `/boot` image, which will be unencrypted. In most cases, 128-256MB will be suitable for /boot.
     - A swap image. You'll need to choose an appropriate swap size based your particular needs.
     - A `root` image to store the files in the root of your filesystem.
 
-3.  After you have created these disk images, you'll want to [boot into Finnix from the Rescue tab](/docs/rescue-and-rebuild#sph_booting-into-rescue-mode). Ensure that your disk images are attached as follows:
+3.  After you have created these disks, you'll want to [boot into Finnix from the Rescue tab](/docs/rescue-and-rebuild#sph_booting-into-rescue-mode). Ensure that your disks are attached as follows:
 
     - /boot xvda
     - swap xvdb
     - / xvdc
 
-You've successfully created the disk images for your Linode.
+You've successfully created the disks for your Linode.
 
 Creating a Configuration Profile
 --------------------------------
@@ -51,7 +51,7 @@ Next, you'll need to create a configuration profile for the new Linode. Here's h
 
 1.  [Create a new configuration profile](/docs/disk-images-config-profiles#sph_creating-a-configuration-profile) in the Linode Manager.
 2.  Select the `pv-grub-x86_64` kernel from the **Kernel** menu.
-3.  In the **Block Device Assignment** section, select the disk images you created in the previous section of this guide.
+3.  In the **Block Device Assignment** section, select the disks you created in the previous section of this guide.
 4.  Disable the **Automount devtmpfs** and **Xenify Distro** settings.
 5.  Save the configuration profile.
 
@@ -172,7 +172,7 @@ You have successfully configured Debian for full disk encryption.
 
 ### Tidying Up
 
-You're almost finished! Just a couple more steps and you'll have a Linode with encrypted disk images:
+You're almost finished! Just a couple more steps and you'll have a Linode with encrypted disks:
 
 1.  You'll need to make some changes to the structure in `/boot` due to the way pvgrub expects to see your boot disk. Enter the following commands, one by one:
 
@@ -191,14 +191,14 @@ You're almost finished! Just a couple more steps and you'll have a Linode with e
         iface lo inet loopback
         iface eth0 inet dhcp
 
-4.  Now exit `chroot`, unmount your disk images, and reboot. You can do this by detaching the screen session and entering the "reboot" command in LISH:
+4.  Now exit `chroot`, unmount your disks, and reboot. You can do this by detaching the screen session and entering the "reboot" command in LISH:
 
         exit
         umount -l mnt/
         ^a^d
         reboot 1
 
-If everything is configured properly your Linode will boot and prompt you for the encryption passphrase. Enter the passphrase on your console to mount your encrypted disk image and boot your Linode. Now you'll want to follow the steps in our [Getting Started](/docs/getting-started) guide.
+If everything is configured properly your Linode will boot and prompt you for the encryption passphrase. Enter the passphrase on your console to mount your encrypted disk and boot your Linode. Now you'll want to follow the steps in our [Getting Started](/docs/getting-started) guide.
 
 
 

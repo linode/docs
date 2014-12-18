@@ -50,7 +50,7 @@ This command will prompt you for a password before beginning the database backup
 
 ### Option 2: Create Backups of an Entire DBMS Using Copies of the MySQL Data Directory
 
-While the `mysqldump` tool is the preferred backup method, there are a couple of cases that require a different approach. `mysqldump` only works when the database server is accessible and running. If the database cannot be started or the host system is inaccessible, we can copy MySQL's database directly. This method is often necessary in situations where you only have access to a recovery environment like [Finnix](/docs/troubleshooting/finnix-rescue-mode) with your system's disk images mounted in that file system. If you're attempting this method on your system itself, ensure that the database is **not** running. Issue a command that resembles the following:
+While the `mysqldump` tool is the preferred backup method, there are a couple of cases that require a different approach. `mysqldump` only works when the database server is accessible and running. If the database cannot be started or the host system is inaccessible, we can copy MySQL's database directly. This method is often necessary in situations where you only have access to a recovery environment like [Finnix](/docs/troubleshooting/finnix-rescue-mode) with your system's disks mounted in that file system. If you're attempting this method on your system itself, ensure that the database is **not** running. Issue a command that resembles the following:
 
     /etc/init.d/mysqld stop
 

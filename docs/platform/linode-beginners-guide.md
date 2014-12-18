@@ -62,8 +62,8 @@ First and foremost, you might want to give the official [Linode backup system](h
 
 -   [Introduction to Rsync](/docs/linux-tools/utilities/rsync) - Using `rsync` to mirror files to another server.
 -   [Using Rdiff-backup with SSHFS](/docs/linux-tools/rdiff-backup) - An easy approach to using the `rdiff-backup` utility to maintain differential backups.
--   [Duplicating a Disk Image](/docs/disk-images-config-profiles#sph_duplicating-a-disk-image) - Creating an exact copy of a disk in the Linode Manager.
--   [Copying a Disk Image Over SSH](/docs/linode-platform/migration/copy-disk-image-over-ssh) - How to download an exact binary image of your Linode's disk over SSH.
+-   [Duplicating a Disk](/docs/disk-images-config-profiles#sph_duplicating-a-disk-image) - Creating an exact copy of a disk in the Linode Manager.
+-   [Copying a Disk Over SSH](/docs/linode-platform/migration/copy-disk-image-over-ssh) - How to download an exact binary image of your Linode's disk over SSH.
 
 How can I install software on my Linode?
 ----------------------------------------

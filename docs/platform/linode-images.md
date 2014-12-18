@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-description: How to retain Disk Images with the Linode Images service
+description: How to retain Disks with the Linode Images service
 keywords: 'linode Images, imagize'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['linode-images/']
@@ -22,11 +22,11 @@ Linode Images captures an exact copy of your disk at the moment when the process
  {: .note }
  >While an image can be captured while your Linode is running, we would recommend shutting your Linode down first if you are running any active databases. Capturing an image that includes a running database can cause corruption or data loss in the imaged copy of the database.
 
-1.  Navigate to your Linode Dashboard and select the disk that you wish to freeze from the **Disk Images** list.
+1.  Navigate to your Linode Dashboard and select the disk that you wish to freeze from the **Disks** list.
 
-2.  On the **Edit Disk Image** page, click the **Imagize Image** button.
+2.  On the **Edit Disk** page, click the **Imagize Image** button.
 
-	[![Edit Disk Image](/docs/assets/edit-disk-image.png)](/docs/assets/edit-disk-image.png)
+	[![Edit Disk](/docs/assets/edit-disk-image.png)](/docs/assets/edit-disk-image.png)
 
 3.  On the Image page, you can provide a label for your image. You can also write short notes about the image being captured in the Description box.
 

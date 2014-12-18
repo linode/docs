@@ -108,7 +108,7 @@ You can restore a backup to any Linode located in the same data center, even if 
 
 1.  Click the **Linodes** tab and select the Linode that you wish to restore to.
 2.  Click **Shut down** to turn your Linode off.
-3.  Select the disk you want to resize. The *Edit Disk Image* webpage appears.
+3.  Select the disk you want to resize. The *Edit Disk* webpage appears.
 4.  In the **New Size** field, enter a different size for the disk in megabytes.
 5.  Click **Save Changes**. The Linode's dashboard appears. Watch the *Host Job Queue* for confirmation that the disk has been resized.
 6.  From the **Linodes** tab, select the Linode that you want to restore from.

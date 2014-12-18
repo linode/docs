@@ -89,16 +89,16 @@ We'll evaluate seven different backup utilities to see how they meet these crite
 
 To configure Linode's Backup Service for your Linode, follow [these instructions](/docs/backup-service).
 
-### Linode's Disk Images
+### Linode's Disks
 
-You can use the Linode Manager to [duplicate your Linode's disk image](/docs/disk-images-config-profiles). This is not a backup utility *per se*, but it is a quick and easy way to create a full snapshot of your Linode. Once you've duplicated the disk image, you can boot it or clone it to a different Linode.
+You can use the Linode Manager to [duplicate your Linode's disk](/docs/disk-images-config-profiles). This is not a backup utility *per se*, but it is a quick and easy way to create a full snapshot of your Linode. Once you've duplicated the disk, you can boot it or clone it to a different Linode.
 
 -   **What**: Full-server file system backup.
--   **When**: Disk images are created manually. You have to shut down your server to make a new disk image.
--   **Where**: The disk image is stored on your Linode.
--   **Rotation**: Manual. The number of backups you can store at once depends on how small you make the disk images.
+-   **When**: Duplicate disks are created manually. You have to shut down your server to make a new disk.
+-   **Where**: The disk is stored on your Linode.
+-   **Rotation**: Manual. The number of backups you can store at once depends on how small you make the disks.
 
-See [this article](/docs/disk-images-config-profiles) to learn more about disk images.
+See [this article](/docs/disk-images-config-profiles) to learn more about disks.
 
 ### Rsync
 
@@ -157,7 +157,7 @@ Unison is a file synchronization tool. It can be used to replicate a file system
 
 -   **What**: You set the file path for this file-system backup.
 -   **When**: The basic command is manual.
--   **Where**: You can back up to a different server running Unison, or a different disk image on your Linode.
+-   **Where**: You can back up to a different server running Unison, or a different disk on your Linode.
 -   **Rotation**: Only one backup is stored. It will be from the date you last synched the servers.
 
 For more information, see [Synchronize Files with Unison](/docs/linux-tools/unison) and the [Unison Manual](http://www.cis.upenn.edu/~bcpierce/unison/download/releases/stable/unison-manual.html).

@@ -45,7 +45,7 @@ After selecting your new Linode, select it and then click on **Deploy a Linux Di
 Here's how to deploy a Linux distribution:
 
 1.  Select a Linux distribution from the **Distribution** menu. You should choose the distribution that you are most comfortable with. If you're new to the Linux operating system, consider selecting Ubuntu 12.04 LTS. Ubuntu is the most popular distribution among Linode customers, and the LTS version is a stable distribution we use as an example throughout this Library.
-2.  Enter a size for the disk image in the **Deployment Disk Size** field. By default, all of the available space is allocated, but you can set a lower size if you plan on cloning a disk image or creating different configuration profiles. You can always create, resize, and delete disk images later.
+2.  Enter a size for the disk in the **Deployment Disk Size** field. By default, all of the available space is allocated, but you can set a lower size if you plan on cloning a disk or creating different configuration profiles. You can always create, resize, and delete disks later.
 3.  Select a size for the swap disk from the **Swap Disk** menu. We strongly recommend using the default size.
 4.  Enter a root password for your Linode in the **Root Password** field. The password must be at least 6 characters long and contain characters from two of the following categories: lower case letters, upper case letters, numbers, and punctuation. Don't forget this credential! You'll need it to log in to your Linode via SSH.
 5.  Click **Rebuild**.
