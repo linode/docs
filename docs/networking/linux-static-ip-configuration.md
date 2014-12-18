@@ -304,7 +304,7 @@ Networking in Gentoo utilizes the `netifrc` utility.
 
 You will need to edit the `/etc/conf.d/net` file so that it resembles the example below. However, you should change the IP addresses in the example to match the IP addresses from the "Remote Access" tab of the Linode Manager.
 
-{. file: } 
+{: .file }
 /etc/conf.d/net
 : ~~~
   # Configuration for eth0 on multiple IP addresses
