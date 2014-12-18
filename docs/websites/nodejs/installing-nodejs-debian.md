@@ -26,33 +26,27 @@ To Install, use the Node.js version manager, NVM.
 
 3.  Install the latest version of Node.js 10:
 
-        sudo nvm install 0.10
+        nvm install 0.10
 
 4.  Ensure proper installation:
 
         node -h
         
 ##Upgrade Node.js
-Upgrade using the binary manager N.  
 
 1.  Use the Node.js package manager to clean the Node.js cache:
 
         npm cache clean -f
 
-2.  Globally install N:
-
-        npm install -g n
-
-3.  Upgrade Node.js to the lastest stable version:
-
-        n stable
-
-4.  Deactivate the existing Node.js version:
+2.  Deactivate the existing Node.js version:
 
         nvm deactivate
 
-5.  Check for the updated version:
+3.  Install the latest version of Node.js 10:
+
+        nvm install 0.10
+
+4.  Check for the updated version:
 
         node -v
-
 
