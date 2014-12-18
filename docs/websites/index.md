@@ -21,6 +21,7 @@ categories:
  - apache-tips-and-tricks
  - nginx
  - ssl
+ - nodejs
  - frameworks
  - proxies
  - varnish
@@ -32,7 +33,6 @@ categories:
  - ecommerce
  - cherokee
  - lighttpd
- - nodejs
 ---
 
 

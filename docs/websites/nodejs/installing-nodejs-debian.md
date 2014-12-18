@@ -6,11 +6,15 @@ description: 'Our guide to hosting a website on your Linode.'
 keywords: 'linode guide,hosting a website,website,linode quickstart guide'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['hosting-website/']
-modified: Monday, December 22nd, 2014
+modified: Thursday, December 18, 2014
 modified_by:
   name: Joseph Dooley
-published: 'Monday, December 22nd, 2014'
+published: 'Thursday, December 18, 2014'
 title: Install or Upgrade Node.js
+external_resources:
+ - '[NodeSchool](http://nodeschool.io/)'
+ - '[Node Version Manager](https://github.com/creationix/nvm)'
+ - '[npm](https://www.npmjs.com/)'
 ---
 
 Node.js is a Javascript platform designed for backend, server-side management and applications. Node.js can work along side, or replace, other server-side tools, such as Apache, Nginx, or PHP.
