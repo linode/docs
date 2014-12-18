@@ -6,7 +6,7 @@ description: 'How to use two-factor authentication and other security controls i
 keywords: 'two-factor authentication,password,security,Linode Manager,token'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['linode-manager-security/']
-modified: Friday, February 14th, 2014
+modified: Thursday, October 23, 2014
 modified_by:
   name: Linode
 published: 'Thursday, May 2nd, 2013'
@@ -141,7 +141,12 @@ You have successfully disabled the two-factor authentication feature for your Li
 
 ### Recovery Procedure
 
-If you lose your token and get locked out of the Linode Manager, email <**support@linode.com*>\* to regain access to your account.
+If you lose your token and get locked out of the Linode Manager, email <support@linode.com> to regain access to your account.
+
+Should you need us to disable your Two-Factor Authentication, the following information is required:
+
+1. An image of the front and back of the payment card on file, which clearly shows both the last 6 digits and owner of the card.
+2. An image of the front and back of the matching government-issued photo ID.
 
 IP Address Whitelisting
 -----------------------
