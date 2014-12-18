@@ -62,8 +62,8 @@ First and foremost, you might want to give the official [Linode backup system](h
 
 -   [Introduction to Rsync](/docs/linux-tools/utilities/rsync) - Using `rsync` to mirror files to another server.
 -   [Using Rdiff-backup with SSHFS](/docs/linux-tools/rdiff-backup) - An easy approach to using the `rdiff-backup` utility to maintain differential backups.
--   [Duplicating a Disk Image](/docs/disk-images-config-profiles#sph_duplicating-a-disk-image) - Creating an exact copy of a disk image in the Linode Manager.
--   [Copying a Disk Image Over SSH](/docs/linode-platform/migration/copy-disk-image-over-ssh) - How to download an exact binary image of your Linode's disk image over SSH.
+-   [Duplicating a Disk Image](/docs/disk-images-config-profiles#sph_duplicating-a-disk-image) - Creating an exact copy of a disk in the Linode Manager.
+-   [Copying a Disk Image Over SSH](/docs/linode-platform/migration/copy-disk-image-over-ssh) - How to download an exact binary image of your Linode's disk over SSH.
 
 How can I install software on my Linode?
 ----------------------------------------
@@ -95,7 +95,7 @@ First, check to be sure that the service (SSH, HTTP, etc) you're trying to acces
 How can I upgrade or downgrade my Linode?
 -----------------------------------------
 
-Resizing your Linode is automated via the "Resize" tab in the Linode Manager, pending [availability](http://www.linode.com/avail.cfm) for the plan you wish to move to in your datacenter. If you're downgrading, please make sure you've resized your disk images to fit within your desired plan's disk space allocation before issuing the resize job.
+Resizing your Linode is automated via the "Resize" tab in the Linode Manager, pending [availability](http://www.linode.com/avail.cfm) for the plan you wish to move to in your datacenter. If you're downgrading, please make sure you've resized your disks to fit within your desired plan's disk space allocation before issuing the resize job.
 
 How can I test downloads speeds from different data centers?
 ------------------------------------------------------------
@@ -105,7 +105,7 @@ You may use our [speed test](http://www.linode.com/speedtest/) page to check lat
 Can I transfer my Linode to another data center?
 ------------------------------------------------
 
-Yes! Any time you'd like to transfer your Linode, you may open a ticket via the "Support" tab in the Linode Manager to request a DC migration. Your disk images and configuration profiles will move with your Linode, although your IP addresses will need to change. Once we stage your migration, you'll see a "migration pending" link in the Linode Manager, which you may use at your convenience to migrate your Linode.
+Yes! Any time you'd like to transfer your Linode, you may open a ticket via the "Support" tab in the Linode Manager to request a DC migration. Your disks and configuration profiles will move with your Linode, although your IP addresses will need to change. Once we stage your migration, you'll see a "migration pending" link in the Linode Manager, which you may use at your convenience to migrate your Linode.
 
 Where can I learn about Linux basics?
 -------------------------------------

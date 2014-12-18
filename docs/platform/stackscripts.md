@@ -20,16 +20,16 @@ external_resources:
 Introduction
 ------------
 
-StackScripts are usually Bash scripts, stored in the Linode Manager, and can be accessed when you use the **Rebuild** link from the Linode Dashboard. During the first boot job of the newly created disk images, the StackScript will run, using any variable you may have added, and perform the scripted commands.
+StackScripts are usually Bash scripts, stored in the Linode Manager, and can be accessed when you use the **Rebuild** link from the Linode Dashboard. During the first boot job of the newly created disks, the StackScript will run, using any variable you may have added, and perform the scripted commands.
 
  {: .caution }
 >
-> The **Rebuild** option will destroy all existing disk images and profiles.
+> The **Rebuild** option will destroy all existing disks and profiles.
 
 Deploying from a StackScript
 ----------------------------
 
-1.  We start by navigating to the Linode Dashboard. Before deploying a new disk image, make sure you have enough storage space available. If not you may need to [resize](https://library.linode.com/disk-images-config-profiles#sph_resizing-a-disk-image) or [remove](https://library.linode.com/disk-images-config-profiles#sph_removing-a-disk-image) a disk image. Alternately you can create a new Linode for testing purposes.
+1.  We start by navigating to the Linode Dashboard. Before deploying a new disk, make sure you have enough storage space available. If not you may need to [resize](https://library.linode.com/disk-images-config-profiles#sph_resizing-a-disk-image) or [remove](https://library.linode.com/disk-images-config-profiles#sph_removing-a-disk-image) a disk. Alternately you can create a new Linode for testing purposes.
 2.  Click on the **Deploy a Linux Distribution** link.
 
     [![Click the 'Deploy a Distribution' link.](/docs/assets/1682-stackscripts-1.png)](/docs/assets/1682-stackscripts-1.png)
@@ -48,11 +48,11 @@ Deploying from a StackScript
 
     [![A search.](/docs/assets/1509-stackscripts_search_small.png)](/docs/assets/1510-stackscripts_search.png)
 
-2.  For this example we'll select the first search result. This brings us to a page where we can define the variables that will go into the StackScript. In this case, the MySQL root password. The other options are standard whenever you deploy a new disk image.
+2.  For this example we'll select the first search result. This brings us to a page where we can define the variables that will go into the StackScript. In this case, the MySQL root password. The other options are standard whenever you deploy a new disk.
 
     [![A public StackScript.](/docs/assets/1511-stackscripts_com_example_small.png)](/docs/assets/1512-stackscripts_com_example.png)
 
-3.  Once you've adjusted the options, hit **Deploy**. You will be returned to the Linode Dashboard, and a disk image will be created.
+3.  Once you've adjusted the options, hit **Deploy**. You will be returned to the Linode Dashboard, and a disk will be created.
 
     [![The newly created.](/docs/assets/1521-stackscripts_disk_create_small.png)](/docs/assets/1522-stackscripts_disk_create.png)
 
@@ -242,7 +242,7 @@ The [Linode API](http://www.linode.com/api/index.cfm) contains support for manag
 
     {: .note }
     >
-    > If creating a disk image with `linode.disk.createfromstackscript`, you will need to create a configuration profile and attach the disk to the profile before you can boot and run the StackScript.
+    > If creating a disk with `linode.disk.createfromstackscript`, you will need to create a configuration profile and attach the disk to the profile before you can boot and run the StackScript.
 
 ### Variables and UDFs
 
