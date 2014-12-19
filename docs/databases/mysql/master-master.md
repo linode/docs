@@ -20,7 +20,7 @@ Install MySQL
 
 Use the following command to install MySQL on each of your Linodes.
 
-    sudo apt-get update && sudo apt-get upgrade && sudo apt-get install mysql-server mysql-client
+    sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get install mysql-server mysql-client
 
 Edit MySQL's Configuration
 --------------------------
