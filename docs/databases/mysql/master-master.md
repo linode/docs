@@ -13,7 +13,7 @@ published: 'Tbursday, December 18th, 2014'
 title: Configuring MySQL Master-Master Replication
 ---
 
-MySQL Master-Master replication creates a redundant MySQL configuration, where both servers are able to perform reads and writes.  This allows two separate MySQL servers to act as a cluster, and is particularly useful for high availability website configurations.  You will need two separate Linodes to configure database replication.
+MySQL Master-Master replication adds redundancy to your deployment.  This allows two separate MySQL servers to act as a cluster, and is particularly useful for high availability website configurations.  You will need two separate Linodes to configure database replication.
 
 Install MySQL
 -------------
@@ -89,6 +89,8 @@ Create Replication Users
     >Once you have completed this step, you can test your configuration by running the following command.
     >
     >     mysql -ureplication -p -h x.x.x.x -P 3306
+    >
+    >This command should connect you to the remote server's MySQL instance.
 
 Configure Database Replication
 ------------------------------
