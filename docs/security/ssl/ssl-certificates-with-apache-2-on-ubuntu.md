@@ -70,8 +70,8 @@ Replace "12.34.56.78" with your Linode's IP address. Next, edit the virtual host
          ServerAdmin info@mydomain.com
          ServerName www.mydomain.com
          DocumentRoot /var/www/mydomain.com/public_html/
-         ErrorLog /var/www/mydomain.com/logs/error.log
-         CustomLog /var/www/mydomain.com/logs/access.log combined
+         ErrorLog /var/www/mydomain.com/log/error.log
+         CustomLog /var/www/mydomain.com/log/access.log combined
     </VirtualHost>
     ~~~
 
@@ -168,8 +168,8 @@ Replace "12.34.56.78" with the IP address of your SSL-enabled site. Next, edit t
          ServerAdmin info@mydomain.com
          ServerName www.mydomain.com
          DocumentRoot /var/www/mydomain.com/public_html/
-         ErrorLog /var/www/mydomain.com/logs/error.log
-         CustomLog /var/www/mydomain.com/logs/access.log combined
+         ErrorLog /var/www/mydomain.com/log/error.log
+         CustomLog /var/www/mydomain.com/log/access.log combined
     </VirtualHost>
     ~~~
 
