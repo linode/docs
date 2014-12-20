@@ -208,7 +208,7 @@ Here's how to create the necessary database and tables in MySQL:
           `password` varchar(106) NOT NULL,
           `email` varchar(100) NOT NULL,
           PRIMARY KEY (`id`),
-          UNIQUE KEY `email` (`email`),
+          UNIQUE KEY `domain_email` (`domain_id`, `email`),
           FOREIGN KEY (domain_id) REFERENCES virtual_domains(id) ON DELETE CASCADE
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
