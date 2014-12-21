@@ -99,6 +99,13 @@ Configure Database Replication
 
         SHOW MASTER STATUS;
 
+        +------------------+----------+--------------+------------------+
+        | File             | Position | Binlog_Do_DB | Binlog_Ignore_DB |
+        +------------------+----------+--------------+------------------+
+        | mysql-bin.000003 | 107      |              |                  |
+        +------------------+----------+--------------+------------------+
+        1 row in set (0.00 sec)
+
 2.  On Server 2, enter the following at the MySQL prompt to set up the slave functionality for that database.  Replace x.x.x.x with the private IP from Server 1, and replace the file and position values captured in the last step under master_log_file and master_log_pos with those captured in the previous step.
 
         CHANGE MASTER TO master_host='x.x.x.x', master_port=3306, master_user='replication', master_password='password', master_log_file='mysql-bin.000001', master_log_pos=106;
