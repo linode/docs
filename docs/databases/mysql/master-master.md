@@ -13,25 +13,26 @@ published: 'Tbursday, December 18th, 2014'
 title: Configuring MySQL Master-Master Replication
 ---
 
-MySQL Master-Master replication adds redundancy to your deployment.  This allows two separate MySQL servers to act as a cluster, and is particularly useful for high availability website configurations.  You will need two separate Linodes to configure database replication.
+MySQL Master-Master replication adds redundancy to your deployment.  This allows two separate MySQL servers to act as a cluster, and is particularly useful for high availability website configurations.  You will need two separate Linodes to configure database replication, each with private IPv4 addresses.
 
-Install MySQL
--------------
+##Install MySQL
 
-Use the following command to install MySQL on each of your Linodes.
+Use the following command to install MySQL on each of your Linodes:
 
-    sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get install mysql-server mysql-client
+    sudo apt-get update
+    sudo apt-get upgrade -y
+    sudo apt-get install mysql-server mysql-client
 
-Edit MySQL's Configuration
---------------------------
+##Edit MySQL's Configuration
 
-1.  Edit /etc/mysql/my.cnf on each of your Linodes and add the following values.
 
-    Server 1:
+1.  Edit `/etc/mysql/my.cnf` on each of your Linodes and add the following values. Note that some of these directives may already be in place and need to be modified:
+
+    **Server 1:**
 
     {: .file-excerpt }
     /etc/mysql/my.cnf
-    : ~~~
+    : ~~~ conf
     server_id           = 1
     log_bin             = /var/log/mysql/mysql-bin.log
     log_bin_index       = /var/log/mysql/mysql-bin.log.index
@@ -44,11 +45,11 @@ Edit MySQL's Configuration
     auto-increment-offset = 1
     ~~~
 
-    Server 2:
+    **Server 2:**
 
     {: .file-excerpt }
     /etc/mysql/my.cnf
-    : ~~~
+    : ~~~ conf
     server_id           = 2
     log_bin             = /var/log/mysql/mysql-bin.log
     log_bin_index       = /var/log/mysql/mysql-bin.log.index
@@ -61,7 +62,7 @@ Edit MySQL's Configuration
     auto-increment-offset = 2
     ~~~
 
-2.  In addition to modifying the values as shown, you will need to edit the bind address for each of your Linodes.  We recommend assigining a private IP address to each of your Linodes, and then inserting that address in each of your my.cnf files.
+2.  Edit the `bind-address` for each of your Linodes to use its private IP address:
 
     {: .file-excerpt }
     /etc/mysql/my.cnf
@@ -69,46 +70,48 @@ Edit MySQL's Configuration
     bind-address    = x.x.x.x
     ~~~
 
-3.  Once these steps have been completed, restart the MySQL service.
+3.  Once these steps have been completed, restart the MySQL service:
 
         sudo service mysql restart
 
-Create Replication Users
-------------------------
+##Create Replication Users
 
-1.  Log in to MySQL on each of your Linodes.
+1.  Log in to MySQL on each of your Linodes:
 
         mysql -u root -p
 
-2.  Configure replication users on each Linode.  Replace x.x.x.x with the private IP address of the opposing Linode.
+2.  Configure replication users on each Linode.  Replace `x.x.x.x` with the private IP address of the opposing Linode, and `password` with a strong password:
 
         GRANT REPLICATION SLAVE ON *.* TO 'replication'@'x.x.x.x' IDENTIFIED BY 'password';
 
-    {:.note}
-    >
-    >Once you have completed this step, you can test your configuration by running the following command.
-    >
-    >     mysql -ureplication -p -h x.x.x.x -P 3306
-    >
-    >This command should connect you to the remote server's MySQL instance.
+3.  Test your configuration by running the following command, using the private IP address of the opposing Linode:
 
-Configure Database Replication
-------------------------------
+        mysql -ureplication -p -h x.x.x.x -P 3306
+        
+    This command should connect you to the remote server's MySQL instance.
 
-1.  On Server 1, while logged into MySQL, query the master status.  Take note of the file and position values that are displayed.
+##Configure Database Replication
+
+
+1.  On Server 1, while logged into MySQL, query the master status:
 
         SHOW MASTER STATUS;
 
+    Take note of the file and position values that are displayed:
+
+        mysql> SHOW MASTER STATUS;
         +------------------+----------+--------------+------------------+
         | File             | Position | Binlog_Do_DB | Binlog_Ignore_DB |
         +------------------+----------+--------------+------------------+
-        | mysql-bin.000003 | 107      |              |                  |
+        | mysql-bin.000001 |      277 |              |                  |
         +------------------+----------+--------------+------------------+
         1 row in set (0.00 sec)
 
-2.  On Server 2, enter the following at the MySQL prompt to set up the slave functionality for that database.  Replace x.x.x.x with the private IP from Server 1, and replace the file and position values captured in the last step under master_log_file and master_log_pos with those captured in the previous step.
+2.  On Server 2, at the MySQL prompt set up the slave functionality for that database.  Replace`x.x.x.x` with the private IP from Server 1, the value for `master_log_file` with the file value from the previous step, and the value for `master_log_pos` with the position value.
 
+        SLAVE STOP;
         CHANGE MASTER TO master_host='x.x.x.x', master_port=3306, master_user='replication', master_password='password', master_log_file='mysql-bin.000001', master_log_pos=106;
+        SLAVE START;
 
 3.  On Server 2, query the master status, and once again note the file and position values.
 
@@ -116,7 +119,9 @@ Configure Database Replication
 
 4.  Set slave database status on Server 1, replacing the same values swapped in step 2 with those from Server 2.
 
-        CHANGE MASTER TO master_host='x.x.x.x', master_port=3306, master_user='replication', master_password='password', master_log_file='mysql-bin.000001', master_log_pos=106;
+        SLAVE STOP;
+        CHANGE MASTER TO master_host='x.x.x.x', master_port=3306, master_user='replication', master_password='password', master_log_file='mysql-bin.000001', master_log_pos=277;
+        SLAVE START;
 
 5.  Test by creating a datbase and inserting a row.
 
