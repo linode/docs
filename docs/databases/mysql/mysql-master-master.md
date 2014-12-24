@@ -6,17 +6,21 @@ description: 'Configuring MySQL Master-Master Replication.'
 keywords: 'mysql,replication,master-master,high availability'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['databases/mysql/backup-options/']
-modified: Thursday, December 18th, 2014
+modified: Wednesday, December 24, 2014
 modified_by:
   name: James Stewart
-published: 'Tbursday, December 18th, 2014'
+published: 'Wednesday, December 24, 2014'
 title: Configuring MySQL Master-Master Replication
+external_resources:
+ - '[MySQL Reference Manuals](http://dev.mysql.com/doc/)'
 ---
 
 MySQL Master-Master replication adds speed and redundancy for active websites. With replication, two separate MySQL servers act as a cluster. Database clustering is particularly useful for high availability website configurations. Use two separate Linodes to configure database replication, each with private IPv4 addresses.
 
 {: .note}
 >This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+>
+>This guide is written for Debian 7 or Ubuntu 14.04.
 
 ##Install MySQL
 
