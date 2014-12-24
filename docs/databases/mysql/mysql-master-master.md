@@ -13,14 +13,14 @@ published: 'Tbursday, December 18th, 2014'
 title: Configuring MySQL Master-Master Replication
 ---
 
-MySQL Master-Master replication adds redundancy to your deployment.  This allows two separate MySQL servers to act as a cluster, and is particularly useful for high availability website configurations.  You will need two separate Linodes to configure database replication, each with private IPv4 addresses.
+MySQL Master-Master replication adds speed and redundancy for active websites. With replication, two separate MySQL servers act as a cluster. Database clustering is particularly useful for high availability website configurations. Use two separate Linodes to configure database replication, each with private IPv4 addresses.
 
 {: .note}
 >This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
 ##Install MySQL
 
-Use the following command to install MySQL on each of your Linodes:
+Use the following commands to install MySQL on each of the Linodes:
 
     sudo apt-get update
     sudo apt-get upgrade -y
@@ -28,8 +28,7 @@ Use the following command to install MySQL on each of your Linodes:
 
 ##Edit MySQL's Configuration
 
-
-1.  Edit `/etc/mysql/my.cnf` on each of your Linodes and add the following values. Note that some of these directives may already be in place and need to be modified:
+1.  Edit the `/etc/mysql/my.cnf` file on each of the Linodes. Add or modify the following values:
 
     **Server 1:**
 
@@ -65,7 +64,7 @@ Use the following command to install MySQL on each of your Linodes:
     auto-increment-offset = 2
     ~~~
 
-2.  Edit the `bind-address` for each of your Linodes to use its private IP address:
+2.  For each of the Linodes, edit the `bind-address` configuration in order to use the private IP addresses:
 
     {: .file-excerpt }
     /etc/mysql/my.cnf
@@ -73,21 +72,21 @@ Use the following command to install MySQL on each of your Linodes:
     bind-address    = x.x.x.x
     ~~~
 
-3.  Once these steps have been completed, restart the MySQL service:
+3.  Once completed, restart the MySQL application:
 
         sudo service mysql restart
 
 ##Create Replication Users
 
-1.  Log in to MySQL on each of your Linodes:
+1.  Log in to MySQL on each of the Linodes:
 
         mysql -u root -p
 
-2.  Configure replication users on each Linode.  Replace `x.x.x.x` with the private IP address of the opposing Linode, and `password` with a strong password:
+2.  Configure the replication users on each Linode.  Replace `x.x.x.x` with the private IP address of the opposing Linode, and `password` with a strong password:
 
         GRANT REPLICATION SLAVE ON *.* TO 'replication'@'x.x.x.x' IDENTIFIED BY 'password';
 
-3.  Test your configuration by running the following command, using the private IP address of the opposing Linode:
+3.  Run the following command to test the configuration. Use the private IP address of the opposing Linode:
 
         mysql -ureplication -p -h x.x.x.x -P 3306
         
@@ -96,11 +95,11 @@ Use the following command to install MySQL on each of your Linodes:
 ##Configure Database Replication
 
 
-1.  On Server 1, while logged into MySQL, query the master status:
+1.  While logged into MySQL on Server 1, query the master status:
 
         SHOW MASTER STATUS;
 
-    Take note of the file and position values that are displayed:
+    Note the file and position values that are displayed:
 
         mysql> SHOW MASTER STATUS;
         +------------------+----------+--------------+------------------+
@@ -110,23 +109,23 @@ Use the following command to install MySQL on each of your Linodes:
         +------------------+----------+--------------+------------------+
         1 row in set (0.00 sec)
 
-2.  On Server 2, at the MySQL prompt set up the slave functionality for that database.  Replace`x.x.x.x` with the private IP from Server 1, the value for `master_log_file` with the file value from the previous step, and the value for `master_log_pos` with the position value.
+2.  On Server 2 at the MySQL prompt, set up the slave functionality for that database.  Replace`x.x.x.x` with the private IP from the first server. Also replace the value for `master_log_file` with the file value from the previous step, and the value for `master_log_pos` with the position value.
 
         SLAVE STOP;
         CHANGE MASTER TO master_host='x.x.x.x', master_port=3306, master_user='replication', master_password='password', master_log_file='mysql-bin.000001', master_log_pos=106;
         SLAVE START;
 
-3.  On Server 2, query the master status, and once again note the file and position values.
+3.  On Server 2, query the master status. Again note the file and position values.
 
         SHOW MASTER STATUS;
 
-4.  Set slave database status on Server 1, replacing the same values swapped in step 2 with those from Server 2.
+4.  Set the slave database status on Server 1, replacing the same values swapped in step 2 with those from the Server 2.
 
         SLAVE STOP;
         CHANGE MASTER TO master_host='x.x.x.x', master_port=3306, master_user='replication', master_password='password', master_log_file='mysql-bin.000001', master_log_pos=277;
         SLAVE START;
 
-5.  Test by creating a datbase and inserting a row.
+5.  Test by creating a datbase and inserting a row:
 
     Server 1:
 
@@ -137,4 +136,4 @@ Use the following command to install MySQL on each of your Linodes:
 
         show tables in test;
 
-You should see the tables from Server 1 replicated on Server 2 when queried.  Congratulations, you now have a MySQL Master-Master cluster!
+When queried, you should see the tables from Server 1 replicated on Server 2.  Congratulations, you now have a MySQL Master-Master cluster!
