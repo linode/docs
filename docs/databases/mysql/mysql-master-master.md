@@ -15,6 +15,9 @@ title: Configuring MySQL Master-Master Replication
 
 MySQL Master-Master replication adds redundancy to your deployment.  This allows two separate MySQL servers to act as a cluster, and is particularly useful for high availability website configurations.  You will need two separate Linodes to configure database replication, each with private IPv4 addresses.
 
+{: .note}
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+
 ##Install MySQL
 
 Use the following command to install MySQL on each of your Linodes:
