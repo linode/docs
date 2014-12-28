@@ -189,10 +189,10 @@ Note: CentOS 7/Fedora 20 no longer uses the `network` service. Instead, use the 
 
 In the example below, change the IP addresses to reflect the values shown under the "Remote Access" tab of the Linode Manager.
 
-You must create the `/etc/sysconfig/network-scripts/ifcfg-static-eth0` file.
+You must create the `/etc/sysconfig/network-scripts/ifcfg-eth0` file.
 
 {: .file }
-/etc/sysconfig/network-scripts/ifcfg-static-eth0
+/etc/sysconfig/network-scripts/ifcfg-eth0
 : ~~~
   # Configuration for eth0
   DEVICE=eth0
@@ -226,7 +226,7 @@ Put the DHCP network configuration offline:
 
 Bring the static network configuration we just created online:
 
-    nmcli con up "System static-eth0" 
+    nmcli con up "System eth0" 
 
 Any changes you make to the configuration will require you to reload and down/up the interface.
 
