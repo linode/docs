@@ -1,14 +1,14 @@
 ---
 author:
   name: Linode
-  email: docs@linode.com
+  email: bolow@linode.com
 description: 'How to configure IPv6 natively on your Linode.'
 keywords: 'ipv6,networking'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['networking/ipv6/']
-modified: Wednesday, December 24, 2014
+modified: Thursday, March 13th, 2014
 modified_by:
-  name: Dave Russell Jr
+  name: Linode
 published: 'Tuesday, May 3rd, 2011'
 title: Native IPv6 Networking
 ---
@@ -19,11 +19,23 @@ Native IPv6 support is provided in all of our datacenters. IPv6 is enabled by de
 >
 > The steps required in this guide require root privileges. Run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](https://library.linode.com/using-linux/users-and-groups) guide.
 
-
 Setting up IPv6
 ---------------
 
-IPv6 is automatically configured on your Linode. To view the network configuration of your Linode, run the `ip addr` command. The output will look similar to the example below:
+IPv6 is automatically configured on your Linode. To view the network configuration of your Linode, run the `ifconfig` command. The output should look similar to the following:
+
+    [root@europa ~]# ifconfig eth0
+              eth0      Link encap:Ethernet  HWaddr F2:3C:91:DB:26:B7
+              inet addr:xx.xx.xx.xx  Bcast:xx.xx.xx.xx  Mask:255.255.255.0
+              inet6 addr: 2600:3c03::f03c:91ff:fedb:26b7/64 Scope:Global
+              inet6 addr: fe80::f03c:91ff:fedb:26b7/64 Scope:Link
+              UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+              RX packets:26002 errors:0 dropped:0 overruns:0 frame:0
+              TX packets:20325 errors:0 dropped:0 overruns:0 carrier:0
+              collisions:0 txqueuelen:1000
+              RX bytes:2585353 (2.4 MiB)  TX bytes:3245741 (3.0 MiB)
+
+Alternately, the output for the network configuration using the `ip addr` command will look similar to the example below:
 
     [root@europa ~]# ip addr show dev eth0
     3: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP qlen 1000
@@ -35,7 +47,7 @@ IPv6 is automatically configured on your Linode. To view the network configurati
        inet6 fe80::f03c:91ff:fedb:26b7/64 scope link
           valid_lft forever preferred_lft forever
 
-In the example above, the IPv6 address associated with this Linode is `2600:3c03::f03c:91ff:fedb:26b7`," which is denoted by the `scope global` declaration that follows it. The `/64` at the end of the addresses is part of the "CIDR" notation, which refers to the subnet that you are on. The `scope link` declaration after the `fe80::f03c:91ff:fedb:26b7/64` IP indicates a local link address.
+In the examples above, the IPv6 address associated with this Linode is `2600:3c03::f03c:91ff:fedb:26b7`," which is denoted by the "`Scope:Global` declaration that follows it. The `/64` at the end of the addresses is part of the "CIDR" notation, which refers to the subnet that you are on. The `Scope:Link` declaration after the `fe80::f03c:91ff:fedb:26b7/64` IP indicates a local link address.
 
 To test the connection, you can use the `ping6` utility:
 
@@ -72,6 +84,23 @@ Your pool will be visible under the "Remote Access Tab" of the Linode Manager in
 
     Public IP Pools  2600:3c03:e000:0084::/64 
 
+### Adding IPv6 Addresses
+
+To attach an IP to your interface, issue the following command, be sure to replace the example IP with one of the addresses from your pool:
+
+    ip -6 addr add 2600:3c03:e000:0084::/64 dev eth0
+
+You may verify that the IP has been brought up by issuing the `ip -6 addr show eth0` command:
+
+    [root@europa ~]# ip -6 addr show eth0
+    3: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qlen 1000
+        inet6 2600:3c03:e000:84::/64 scope global
+           valid_lft forever preferred_lft forever
+        inet6 2600:3c03::f03c:91ff:fedb:26b7/64 scope global dynamic
+           valid_lft 2591982sec preferred_lft 604782sec
+        inet6 fe80::f03c:91ff:fedb:26b7/64 scope link
+           valid_lft forever preferred_lft forever
+
 If you need to configure more than 16 IPv6 address, add a line to `/etc/sysctl.conf` that resembles the following:
 
 {: .file-excerpt }
@@ -94,13 +123,6 @@ Since addresses in your pool can be used on any of your Linodes in the same faci
 
 IPv6 traffic to and from Linodes within the same facility is not counted towards your monthly transfer, so there is no need to request private IPv6 IPs.
 
-
-### IPv6 Address Forwarding
-
-As there are several drawbacks to configuring your Linode to support IPv6 forwarding, it is recommended that you instead request a /116 block, which you will automatically be able to be used on any of your Linodes within the facility. With a /116, you will not need to set up a single Linode to forward your IPv6 pool traffic, which means you will not have a single point of failure. 
-
-The /116 gets routed by our routers in a way that allows it to be configured on any given Linode within the facility without IPv6 forwarding. 
-
 Adding IPv6 Addresses
 ---------------------
 
@@ -108,7 +130,7 @@ This section will provide instructions on how to configure your IPv6 addresses f
 
 ### Ubuntu / Debian
 
-On Debian and Ubuntu distributions, you can edit your `/etc/network/interfaces` file. In this example, we will use the `ip` command to add and remove the address depending on the current action. If the interface is brought up, then add the address.
+On Debian and Ubuntu distributions, you can edit your `/etc/network/interfaces` file. In this example, we will use the `ip` command to add the address.
 
 {: .note }
 >
@@ -124,17 +146,9 @@ On Debian and Ubuntu distributions, you can edit your `/etc/network/interfaces` 
         up /sbin/ip -6 addr add 2600:3c03:e000:84::2/64 dev eth0
     ~~~
 
-If the interface is being brought down, remove the address. You can also use similar syntax if you are using static IPv4 addresses.
+You will then need to restart networking by using the following command:
 
-{: .file }
-/etc/network/interfaces
-:   ~~~
-    auto eth0
-    iface eth0 inet dhcp
-        down /sbin/ip -6 addr del 2600:3c03:e000:84::0/64 dev eth0
-        down /sbin/ip -6 addr del 2600:3c03:e000:84::1/64 dev eth0
-        down /sbin/ip -6 addr del 2600:3c03:e000:84::2/64 dev eth0
-    ~~~
+    ifdown -a && ifup -a
 
 ### CentOS / Fedora
 
