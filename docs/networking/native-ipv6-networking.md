@@ -6,7 +6,7 @@ description: 'How to configure IPv6 natively on your Linode.'
 keywords: 'ipv6,networking'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['networking/ipv6/']
-modified: Wednesday, December 24, 2014
+modified: Saturday, December 27th, 2014
 modified_by:
   name: Dave Russell Jr
 published: 'Tuesday, May 3rd, 2011'
