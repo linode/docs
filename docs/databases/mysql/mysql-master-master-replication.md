@@ -5,7 +5,7 @@ author:
 description: 'Configuring MySQL Master-Master Replication.'
 keywords: 'mysql,replication,master-master,high availability'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['databases/mysql/backup-options/']
+alias: ['databases/mysql/backup-options/', 'databases/mysql/mysql-master-master/']
 modified: Wednesday, December 24, 2014
 modified_by:
   name: James Stewart
