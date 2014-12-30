@@ -248,7 +248,7 @@ table#t01 th  {
   <th></th>
   </tr>
   <tr>
-    <td>
+    <td width="50%">
     &nbsp;{: .note}
     <br>>
     <br>> This is a sample note.
@@ -257,7 +257,7 @@ table#t01 th  {
     <td><img src="/docs/assets/example-note.png"></td>      
   </tr>
   <tr>
-    <td>
+    <td width="50%">
     <br>
     &nbsp;{: .caution}
     <br>>
