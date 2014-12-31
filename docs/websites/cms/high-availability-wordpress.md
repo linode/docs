@@ -230,8 +230,24 @@ The steps in this section will need to be performed on both of your Linodes.
 
         sudo service apache2 restart
 
-You should now be able to visit your new Wordpress site on both of your Linodes, and updates from one Linode should be seen almost immediately on the other.
+You should now be able to visit your new Wordpress site on both of your Linodes, and updates from one Linode should be seen immediately on the other.
 
 ##Configure Your Nodebalancer
 
+1.  Visit the NodeBalancers tab in the Linode Manager.
 
+2.  If you have not done so already, add a NodeBalancer, ensuring that it is in the same datacenter that your backend Linodes are located in.
+
+3.  Click create configuration and edit your configuration settings as follows:
+
+        Port: 80
+        Protocol: HTTP
+        Algorithm: Least Connections
+        Session Stickiness: Table
+        Health Check Type: HTTP Valid Status
+
+4.  Once you click the "Save Changes" button, you will be prompted to add your nodes.  Provide a unique label for each one, and enter your private network address and port in the address field for each of your nodes.
+
+5.  Once you have added both of your nodes, ensure that the health checks mark them as up.  Once both nodes are showing as up, return to the NodeBalancer's main page and note the IP address listed.  You should now be able to navigate to that IP address and view your webpage.
+
+In order to test the High Availability functionality, you can either stop the Apache2/MySQL services on one of your nodes, or simply power them down one at a time.  Your website should continue to be served without issue even when one of the nodes is marked as down.  Congratulations, you have now configured your high availability Wordpress site.
