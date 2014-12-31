@@ -11,11 +11,11 @@ modified_by:
 published: 'Wednesday, December 24, 2014'
 title: High Availability Wordpress Hosting
 ---
-In this guide, we will walk you through configuring a highly available Wordpress site with a two Linode cluster, using MySQL Master-Master replication and a Linode NodeBalancer frontend.
+This guide configures a high availability Wordpress site with a two Linode cluster, using MySQL Master-Master replication and a Linode NodeBalancer frontend.
 
 ##Prerequisites
 
-In order to complete this guide, you must ensure that there are two Linodes and a NodeBalancer present on your account.  Both Linodes will need to be assigned a [Private IP address](/docs/networking/remote-access#adding-private-ip-addresses).   You will also need to ensure that both of your Linode's have been configured with SSH keys, and placed the opposing Linode's SSH key in the other's /.ssh/authorized_keys file.
+To complete this guide, ensure that there are two Linodes and a NodeBalancer present on your account.  Both Linodes need to be assigned a [Private IP address](/docs/networking/remote-access#adding-private-ip-addresses). Also ensure that both of your Linode's have been configured with SSH keys, and place the opposing Linode's SSH key in the other's /.ssh/authorized_keys file.
 
 {: .note}
 >This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
@@ -152,14 +152,14 @@ The steps in this section will need to be performed on both of your Linodes.
         sudo mkdir -p example.com/backups
 
 
-5.  Create the virtual host file for your website by entering the following command. Replace the `example.com` in `example.com.conf` with your domain name:
+5.  Create the virtual host file for the website by entering the following command. Replace the `example.com` in `example.com.conf` with your domain name:
 
         sudo nano /etc/apache2/sites-available/example.com.conf
 
     {:.caution}
     > The file name *must* end with `.conf` in Apache versions 2.4 and later, which Ubuntu 14.04 uses. The `.conf` extension is backwards-compatible with earlier versions.
 
-6.  Create your new virtual host file.  Replace `example.com` with your domain name.
+6.  Create the new virtual host file.  Replace `example.com` with your domain name.
 
 {: .file-excerpt}
 /etc/apache2/sites-available/example.com.conf
@@ -185,7 +185,7 @@ The steps in this section will need to be performed on both of your Linodes.
 
 7.  Save the changes to the virtual host configuration file by pressing `Control + x` and then pressing `y`. Press `Enter` to confirm.
 
-8. Enable your new website by entering the following command. Replace `example.com` with your domain name:
+8. Enable the new website by entering the following command. Replace `example.com` with your domain name:
 
         sudo a2ensite example.com.conf
 
@@ -195,14 +195,14 @@ The steps in this section will need to be performed on both of your Linodes.
 
 ##Install Wordpress
 
-1.  On your primary Linode, download and install the latest version of WordPress.  Ensure you replace any paths listed with the correct path for your configuration, and replace example.com with your domain name.
+1.  On the primary Linode, download and install the latest version of WordPress.  Replace any paths listed with the correct path for your configuration, and replace example.com with the proper domain name.
 
         cd /var/www
         wget https://wordpress.org/latest.tar.gz
         tar -xvf latest.tar.gz
         cp wordpress/* /var/www/example.com/public_html        
 
-2.  Configure your MySQL database for your new WordPress installation.  You'll need to replace "wordpressuser" and "password" with your own settings
+2.  Configure the MySQL database for the new WordPress installation.  You'll need to replace "wordpressuser" and "password" with your own settings
 
         mysql -u root -p
         CREATE DATABASE wordpress;
@@ -210,7 +210,7 @@ The steps in this section will need to be performed on both of your Linodes.
         FLUSH PRIVILEGES;
         EXIT
 
-3.  Set permissions on your Document Root directory to enable WordPress to complete its configuration steps.
+3.  Set permissions on the Document Root directory to enable WordPress to complete its configuration steps.
 
         chmod 777 /var/www/example.com/public_html/
 
@@ -222,15 +222,15 @@ The steps in this section will need to be performed on both of your Linodes.
         
         chmod 755 /var/www/example.com/public_html/
 
-5.  Once your WordPress installation steps have been completed, copy your configurations to your second Linode.  Replace x.x.x.x with the second Linode's IP address.
+5.  Once the WordPress installation steps have been completed, copy the configurations to your second Linode. Replace x.x.x.x with the second Linode's IP address.
 
         rsync /var/www/* x.x.x.x:/var/www/.
 
-6.  Log in to your second Linode and restart Apache.
+6.  Log in to the second Linode and restart Apache.
 
         sudo service apache2 restart
 
-You should now be able to visit your new Wordpress site on both of your Linodes, and updates from one Linode should be seen immediately on the other.
+You should now be able to visit the new Wordpress site on both of your Linodes, and updates from one Linode should be seen immediately on the other.
 
 ##Configure Your Nodebalancer
 
@@ -246,8 +246,8 @@ You should now be able to visit your new Wordpress site on both of your Linodes,
         Session Stickiness: Table
         Health Check Type: HTTP Valid Status
 
-4.  Once you click the "Save Changes" button, you will be prompted to add your nodes.  Provide a unique label for each one, and enter your private network address and port in the address field for each of your nodes.
+4.  Once you click the "Save Changes" button, you will be prompted to add your nodes.  Provide a unique label for each one, and enter the private network address and port in the address field for each of the nodes.
 
-5.  Once you have added both of your nodes, ensure that the health checks mark them as up.  Once both nodes are showing as up, return to the NodeBalancer's main page and note the IP address listed.  You should now be able to navigate to that IP address and view your webpage.
+5.  When you have added both of your nodes, ensure that the health checks mark them as up.  Once both nodes are showing as up, return to the NodeBalancer's main page and note the IP address listed.  You should now be able to navigate to that IP address and view your webpage.
 
-In order to test the High Availability functionality, you can either stop the Apache2/MySQL services on one of your nodes, or simply power them down one at a time.  Your website should continue to be served without issue even when one of the nodes is marked as down.  Congratulations, you have now configured your high availability Wordpress site.
+In order to test the High Availability functionality, either stop the Apache2/MySQL services on one of your nodes, or simply power them down one at a time.  The website should continue to be served without issue even when one of the nodes is marked as down.  Congratulations, you have now configured your high availability Wordpress site.
