@@ -70,7 +70,7 @@ You'll need a configuration profile to boot your existing server after you uploa
 	 > Make sure that you select the correct kernel for your existing server. There are 32-bit and 64-bit versions available. The 64-bit version has `x86_64` in the name.
 
 5.  Set `/dev/xvda` to the primary disk you created for the existing server.
-6.  Set `/dev/xvdb` to the swap image you created for the existing server.
+6.  Set `/dev/xvdb` to the swap disk you created for the existing server.
 7.  Click **Save Changes**.
 
 You have successfully created the configuration profile.
@@ -79,7 +79,7 @@ You have successfully created the configuration profile.
 
 Before you initiate the transfer, you need to start the Linode in rescue mode. Here's how:
 
-1.  Boot your Linode into Rescue Mode. For instructions, see [Booting into Rescue Mode](/docs/rescue-and-rebuild#sph_booting-into-rescue-mode). Be sure to set the primary disk to `/dev/xvda` and the swap image to `/dev/xvdb`.
+1.  Boot your Linode into Rescue Mode. For instructions, see [Booting into Rescue Mode](/docs/rescue-and-rebuild#sph_booting-into-rescue-mode). Be sure to set the primary disk to `/dev/xvda` and the swap disk to `/dev/xvdb`.
 2.  After the Linode has booted, connect to it via LISH. For instructions, see [Connecting to a Linode Running in rescue mode](/docs/rescue-and-rebuild#sph_connecting-to-a-linode-running-in-rescue-mode).
 3.  Start SSH. For instructions, see [Start SSH](/docs/rescue-and-rebuild#sph_starting-ssh).
 4.  Mount the blank primary disk by entering the following command:

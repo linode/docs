@@ -6,275 +6,86 @@ author:
 description: 'Mark Down Reference Guide'
 keywords: 'style guide, write for us, linode library, article submissions, mark down,'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Tuesday, December 30th, 2014
+modified: Friday, January 2nd, 2014
 modified_by:
   name: Joseph Dooley
-published: 'Tuesday, December 30th, 2014'
+published: 'Friday, January 2nd, 2014'
 title: Mark Down Quick Reference
 ---
 
-At Linode, we use Markdown. We even created some custom tags of our own. Use the tables below to get started writing your first Linode guide. Feel free to copy and paste from the left hand column into a text editor.
+At Linode, we use PHP Markdown Extra. We even created some custom classes of our own. Use the tables below to get started writing your first Linode guide. Feel free to copy and paste from the left hand column into a text editor.
 
-To preview Markdown, find a Markdown interpreter. Try [Nottingham](http://clickontyler.com/nottingham/), a simple, free notepad for Mac; command, shift, and p to preview. For more advanced text editors, try [textmate](http://macromates.com) or [Sublime Text](http://www.sublimetext.com/).
+To preview Markdown, find a Markdown interpreter. Try [Nottingham](http://clickontyler.com/nottingham/), a simple, free notepad for Mac; command, shift, and p to preview. For more advanced text editors, try [TextMate](http://macromates.com) or [Sublime Text](http://www.sublimetext.com/).
 
 ##Markdown
-<head>
-<style>
-table {
-    width:100%;
-}
-table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
-}
-th, td {
-    padding: 5px;
-    text-align: left;
-}
-table#t01 tr:nth-child(even) {
-    background-color: #eee;
-}
-table#t01 tr:nth-child(odd) {
-   background-color:#fff;
-}
-table#t01 th  {
-    background-color: black;
-    color: white;
-}
-</style>
-</head>
-<table id="t01">
-  <tr>
-  <th>
-  <font size="5">
-  Text Highlighting
-  </font>
-  </th>
-  <th>
-  </th>
-  </tr>
-  <tr>
-    <td>
-    <br>
-    *italics* 
-    </td>
-    <td>
-    <br>
-    <em>
-    &nbsp;italics
-    </em> 
-    </td>
-  </tr>
-    <tr>
-    <td>
-    <br>
-    `highlight`
-    </td>     
-    <td>
-    <br>
-    <img src="/docs/assets/example-highlight.png"> 
-    </td>
-  </tr>
-  <tr>
-    <td>
-    <br>
-    **bold** 
-    </td>     
-    <td>
-    <br>
-    <b>
-    &nbsp;bold
-    </b> 
-    </td>
-  </tr>
-  <tr>
-  <th>
-  <font size="5">
-  Headers
-  </font>
-  </th>
-  <th></th>
-  </tr>
-  <tr>
-    <td>
-    #Main Title or h1 
-    </td>     
-    <td>
-    <font size="6">Main Title or h1</font> 
-    </td>
-  </tr>
-  <tr>
-    <td>
-    <br>
-    ##Primary Section or h2
-    </td>     
-    <td>
-    <br>
-    <font size="5">Primary Section or h2</font> 
-    </td>
-  </tr>
-  <tr>
-    <td>
-    <br>
-    ###Sub-section or h3
-    </td>     
-    <td>
-    <br>
-    <font size="4">Sub-section or h3</font>
-    </td>
-  </tr> 
-  <tr>
-  <th>
-  <font size="5">
-  Lists
-  </font>
-  </th>
-  <th></th>
-  </tr>
-    <tr>
-    <td>
-    - For bullet points,
-    <br>
-    * Or unordered lists,
-    <br>
-    + Use hyphens, asterisks,
-    <br>
-    + Or plus symbols.
-    </td>     
-    <td>
-    <ul>
-    <li>For bullet points,</li>
-    <li>Or unordered lists,</li>
-    <li>Use hyphens, asterisks,</li>
-    <li>Or plus symbols.</li>
-    </ul>
-    </td>
-  </tr>
-  <tr>
-    <td>
-    <br>
-1.  A numbered list. 
-<br>
-<br>
-2.  Two spaces after the period. 
-<br>
-<br>       
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Eight spaces for indentation. 
-<br>
-<br>
-3.  Above, an indented command. 
-    </td>     
-    <td>
-    <img src="/docs/assets/example-numbered-list.png">
-    </td>
-  </tr>
-  <tr>
-    <th>
-    <font size="5">
-    Links and Images
-    </font>
-    </th>
-    <th></th>
-  </tr>
-  <tr>
-    <td>
-    <br>
-    [Mask text link.](https://www.linode.com) 
-    </td>
-    <td>
-    <br>
-    <a href="https://www.linode.com">Mask text link.</a> 
-    </td>
-  </tr>
-  <tr>
-    <td width="50%">
-    <br>
-    [![Image text.](/docs/assets/sample.png)](/docs/assets/sample.png) 
-    </td>
-    <td width="50%">
-    <br>
-    <img src="/docs/assets/example.png"> 
-    </td>
-  </tr>
-  <tr>
-  <th>
-  <font size="5">
-  Tables and Separated Quotes
-  </font>
-  </th>
-  <th></th>
-  </tr>
-  <tr>
-    <td>
-| Left-Aligned | Centered     | Right-Aligned |
-<br>
-| ---------------- |:-------------:| -----------------:|
-<br>
-| Columns,&nbsp;&nbsp;&nbsp;&nbsp; | both&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| headers &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
-<br>
-| and &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | line items, | are aligned &nbsp;&nbsp;|
-<br>
-| by the hypens | and colons | above. &nbsp;&nbsp;&nbsp; |
-    </td>
-    <td>
-    <img src="/docs/assets/example-markdown-table.png">
-    </td>
-  </tr>
-      <tr>
-    <td>
-    <br>
-    > To separate text, use right angle brackets.
-    <br>
-    Break in separated text.
-    <br>
-    > Some more separated text. 
-    </td>
-    <td>
-    <br>
-    <img src="/docs/assets/example-separated-quote.png"> 
-    </td>    
-  </tr>     
-</table>
+
+
+
+###Text Highlighting
+
+{: .table .table-striped .table-bordered }
+| Formatting    |  Example    |
+|:--------------|:------------|
+| \*italics\*   | *italics*   |
+| \`highlight\` | `highlight` |
+| \*\*bold\*\*  | **bold**    |
+|:--------------|:------------|
+
+For code blocks, we use unformatted text blocks by prepending an indent of four spaces:
+
+    Like this.
+
+###Headers
+
+{: .table .table-striped .table-bordered }
+| Formatting                |  Example                                      |
+|:--------------------------|:----------------------------------------------|
+| \#Main Title or h1        | <font size="6">Main Title or h1</font>        |
+| \#\#Primary Section or h2 | <font size="5">Primary Section or h2</font>   |
+| \#\#\#Sub-section or h3   | <font size="4">Sub-section or h3</font>       |
+
+
+###Lists
+
+{: .table .table-striped .table-bordered }
+| Formatting                |  Example                                      |
+|:--------------------------|:----------------------------------------------|
+| - For bullet points,<br>* Or unordered lists,<br>+ Use hyphens, asterisks,<br>+ Or plus symbols.      | <span>&bull; For bullet points<br>&bull; Or unordered lists,<br>&bull; Use hyphens, asterisks,<br>&bull; Or plus symbols |
+| 1.  A numbered list.<br>2.  Two spaces after the period.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Eight spaces for a indentation within.<br>3.  Above, an indented command. | ![](/docs/assets/example-numbered-list.png) |
+
+###Links and Images
+
+{: .table .table-striped .table-bordered }
+| Formatting                                                                    |  Example                                      |
+|:------------------------------------------------------------------------------|:----------------------------------------------|
+| \[Mask text link.](https://www.linode.com)                                    | [Mask text link.](https://www.linode.com)     |
+| \[\!\[Image text.](/docs/assets/resized-sample.png)](/docs/assets/sample.png) | <img src="/docs/assets/example.png">  |
+
+###Tables and Separated Quotes
+
+
+{: .table .table-striped .table-bordered }
+| Formatting                                                                        |  Example                                      |
+|:----------------------------------------------------------------------------------|:----------------------------------------------|
+\|  Left-Aligned    \| Centered      \| Right-Aligned     \|<br>\| ---------------- \|:-------------:\| ----------------: \|<br>\| Columns,         \| both          \| headers           \|<br>\| and              \| line items,   \| are aligned       \|<br>\| by the hypens    \| and colons     \| above.            \|<br> | <img src="/docs/assets/example-markdown-table.png"> |
+| > To separate text, use right angle brackets. <br> Break in separated text. <br>> Some more separated text. | <img src="/docs/assets/example-separated-quote.png"> |
+
 
 ##Custom Linode Class Tags
 
-<table id="t01">
-  <tr>
-  <th>
-  <font size="5">
-  Notes and Cautions
-  </font>
-  </th>
-  <th></th>
-  </tr>
-  <tr>
-    <td width="50%">
-    &nbsp;{: .note}
-    <br>>
-    <br>> This is a sample note.
-    <br>
-    </td>
-    <td><img src="/docs/assets/example-note.png"></td>      
-  </tr>
-  <tr>
-    <td width="50%">
-    <br>
-    &nbsp;{: .caution}
-    <br>>
-    <br>> This is a sample caution.
-    <br>    
-    </td>
-    <td>
-    <img src="/docs/assets/example-caution.png">
-    </td>        
-  </tr> 
-    <tr>
-  <th>
-  <font size="5">
-  Custom Table
-  </font>
-  </th>
-  <th></th>
+###Notes and Cautions
+
+{: .table .table-striped .table-bordered }
+| Formatting                |  Example                                      |
+|:--------------------------|:----------------------------------------------|
+| {: .note}<br>><br>> This is a sample note.<br> | <img src="/docs/assets/example-note.png"> |
+| {: .caution}<br>><br>> This is a sample caution.<br> | <img src="/docs/assets/example-caution.png"> |
+
+
+###Custom Tables
+
+<table class="table table-striped table-bordered">
+  <thead><th>Formatting</th><th>Example</th></thead>
   </tr>
   <tr>
     <td>
