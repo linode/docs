@@ -13,9 +13,9 @@ published: 'Friday, January 2nd, 2014'
 title: Mark Down Quick Reference
 ---
 
-At Linode, we use PHP Markdown Extra. We even created some custom classes of our own. Use the tables below to get started writing your first Linode guide. Feel free to copy and paste from the left hand column into a text editor.
+At Linode, we use [PHP Markdown Extra](https://michelf.ca/projects/php-markdown/extra/). We even created some custom classes of our own. Use the tables below to get started writing your first Linode guide. Feel free to copy and paste from the left hand column into a text editor.
 
-To preview Markdown, find a Markdown interpreter. Try [Nottingham](http://clickontyler.com/nottingham/), a simple, free notepad for Mac; command, shift, and p to preview. For more advanced text editors, try [TextMate](http://macromates.com) or [Sublime Text](http://www.sublimetext.com/).
+To preview Markdown, find a Markdown interpreter. Try [Nottingham](http://clickontyler.com/nottingham/), a simple, free notepad for Mac; `cmd + shift + p` to preview. For more advanced text editors, try [TextMate](http://macromates.com) or [Sublime Text](http://www.sublimetext.com/).
 
 ##Markdown
 
@@ -35,7 +35,7 @@ For code blocks, we use unformatted text blocks by prepending an indent of four 
 
     Like this.
 
-###Headers
+###Headings
 
 {: .table .table-striped .table-bordered }
 | Formatting                |  Example                                      |
