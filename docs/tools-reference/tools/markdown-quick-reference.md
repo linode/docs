@@ -67,7 +67,7 @@ For code blocks, we use unformatted text blocks by prepending an indent of four 
 {: .table .table-striped .table-bordered }
 | Formatting                                                                        |  Example                                      |
 |:----------------------------------------------------------------------------------|:----------------------------------------------|
-\|  Left-Aligned    \| Centered      \| Right-Aligned     \|<br>\| ---------------- \|---------------\| ----------------- \|<br>\| Columns,         \| both          \| headers           \|<br>\| and              \| line items,   \| are aligned       \|<br>\| by the hypens    \| and pipes     \| above.            \|<br> | <img src="/docs/assets/example-markdown-table.png"> |
+\|  Left-Aligned    \| Centered      \| Right-Aligned     \|<br>\| ---------------- \|---------------\| ----------------- \|<br>\| Columns,         \| both          \| headers           \|<br>\| and              \| line items,   \| are aligned       \|<br>\| by the hypens    \| and colons     \| above.            \|<br> | <img src="/docs/assets/example-markdown-table.png"> |
 | > To separate text, use right angle brackets. <br> Break in separated text. <br>> Some more separated text. | <img src="/docs/assets/example-separated-quote.png"> |
 
 
@@ -99,7 +99,7 @@ For code blocks, we use unformatted text blocks by prepending an indent of four 
 <br>
 | and &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | line items, | are aligned &nbsp;&nbsp;|
 <br>
-| by the hypens | and pipes | above. &nbsp;&nbsp;&nbsp; |
+| by the hypens | and colons | above. &nbsp;&nbsp;&nbsp; |
     </td>
     <td>
     <img src="/docs/assets/example-blue-stripe-table.png">
