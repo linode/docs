@@ -3,14 +3,14 @@ deprecated: false
 author:
   name: Joseph Dooley
   email: jdooley@linode.com
-description: 'Mark Down Reference Guide'
-keywords: 'style guide, write for us, linode library, article submissions, mark down,'
+description: 'Markdown Reference Guide'
+keywords: 'style guide, write for us, linode library, article submissions, markdown,'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: Friday, January 2nd, 2014
 modified_by:
   name: Joseph Dooley
 published: 'Friday, January 2nd, 2014'
-title: Mark Down Quick Reference
+title: Markdown Quick Reference
 ---
 
 At Linode, we use PHP Markdown Extra. We even created some custom classes of our own. Use the tables below to get started writing your first Linode guide. Feel free to copy and paste from the left hand column into a text editor.
