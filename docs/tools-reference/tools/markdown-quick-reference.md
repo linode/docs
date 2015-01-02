@@ -1,15 +1,15 @@
 ---
 deprecated: false
 author:
-  name: Linode
-  email: docs@linode.com
+  name: Joseph Dooley
+  email: jdooley@linode.com
 description: 'Mark Down Reference Guide'
 keywords: 'style guide, write for us, linode library, article submissions, mark down,'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Tuesday, December 30th, 2014
+modified: Friday, January 2nd, 2014
 modified_by:
-  name: Linode
-published: 'Tuesday, December 30th, 2014'
+  name: Joseph Dooley
+published: 'Friday, January 2nd, 2014'
 title: Mark Down Quick Reference
 ---
 
@@ -67,7 +67,7 @@ For code blocks, we use unformatted text blocks by prepending an indent of four 
 {: .table .table-striped .table-bordered }
 | Formatting                                                                        |  Example                                      |
 |:----------------------------------------------------------------------------------|:----------------------------------------------|
-\|  Left-Aligned    \| Centered      \| Right-Aligned     \|<br>\| ---------------- \|---------------\| ----------------- \|<br>\| Columns,         \| both          \| headers           \|<br>\| and              \| line items,   \| are aligned       \|<br>\| by the hypens    \| and colons     \| above.            \|<br> | <img src="/docs/assets/example-markdown-table.png"> |
+\|  Left-Aligned    \| Centered      \| Right-Aligned     \|<br>\| ---------------- \|:-------------:\| ----------------: \|<br>\| Columns,         \| both          \| headers           \|<br>\| and              \| line items,   \| are aligned       \|<br>\| by the hypens    \| and colons     \| above.            \|<br> | <img src="/docs/assets/example-markdown-table.png"> |
 | > To separate text, use right angle brackets. <br> Break in separated text. <br>> Some more separated text. | <img src="/docs/assets/example-separated-quote.png"> |
 
 
