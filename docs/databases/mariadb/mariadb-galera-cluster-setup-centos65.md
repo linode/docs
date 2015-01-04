@@ -33,4 +33,11 @@ So another advantage of this architecture that it will reduce public ip usage to
 >
 > For this tutorial we will not use public IP as it is an test environment, all CentOSs will use local ips.
 
+Here is sample IPs that you may also give to your CentOS instances:
 
+1. **Node1** - *192.168.1.71*
+2. **Node2** - *192.168.1.81*
+3. Node3 - 192.168.1.91
+4. HAproxy1 - 192.168.1.88
+5. HAproxy2 - 192.168.1.89
+6. KeepAlived - 192.168.1.90 (this will be public ip)
