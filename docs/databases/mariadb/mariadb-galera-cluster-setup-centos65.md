@@ -23,4 +23,4 @@ General Overview
 ----------------
 
 Before diving in the step-by-step guide let's to see what we want to accomplish at the end of tutorial.
-[![General Architecture Overview](/docs/assets/mrdclhakeep-general-overview.png)](/docs/assets/mrdclhakeep-general-overview.png)
+    [![General Architecture Overview](/docs/assets/mrdclhakeep-general-overview.png)](/docs/assets/mrdclhakeep-general-overview.png)
