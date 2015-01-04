@@ -20,7 +20,7 @@ We will use:
     
 
 General Architecture
-----------------
+--------------------
 
 Before diving in the step-by-step guide let's to see what we want to accomplish at the end of tutorial:
     [![General Architecture Overview](/docs/assets/mrdclhakeep-general-overview.png)](/docs/assets/mrdclhakeep-general-overview.png)
@@ -33,11 +33,32 @@ So another advantage of this architecture that it will reduce public ip usage to
 >
 > For this tutorial we will not use public IP as it is an test environment, all CentOSs will use local ips.
 
-Here is sample IPs that you may also give to your CentOS instances:
+
+Prerequisites
+-------------
+
+We need 5 instances of CentOS 6.5 installed as "basic server" (for us all servers are fresh installed).
+Also you should give a static ips to all servers.
+Here is sample IPs that you may give to your CentOS instances for testing this tutorial:
 
 1. **Node1** - *192.168.1.71*
 2. **Node2** - *192.168.1.81*
 3. **Node3** - *192.168.1.91*
 4. **HAproxy1** - *192.168.1.88*
 5. **HAproxy2** - *192.168.1.89*
-6. **KeepAlived** - *192.168.1.90* (this will be public ip)
+
+Also keep in mind that we need another IP for KeepAlived that will act as Virtual IP for HAproxy intances.
+
+
+Installing and Configuring MariaDB Cluster
+------------------------------------------
+
+Installing and Configuring HAproxy
+----------------------------------
+
+Installing and Configuring KeepAlived
+-------------------------------------
+
+Testing Environment
+-------------------
+
