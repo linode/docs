@@ -1,0 +1,1 @@
+title: Install MariaDB Galera Cluster with HAproxy and KeepAlived on CentOS 6.5
