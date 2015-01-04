@@ -17,3 +17,10 @@ We will use:
 
 3. **KeepAlived** - Keepalived is a routing software written in C. The main goal of this project is to provide simple and robust facilities for loadbalancing and high-availability to Linux system and Linux based infrastructures
     See for further information [KeepAlived official site](http://www.keepalived.org/)
+    
+
+General Overview
+----------------
+
+Before diving in the step-by-step guide let's to see what we want to accomplish at the end of tutorial.
+[![General Architecture Overview](/docs/assets/mrdclhakeep-general-overview.png)](/docs/assets/mrdclhakeep-general-overview.png)
