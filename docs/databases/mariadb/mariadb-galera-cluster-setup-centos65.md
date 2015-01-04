@@ -19,8 +19,18 @@ We will use:
     See for further information [KeepAlived official site](http://www.keepalived.org/)
     
 
-General Overview
+General Architecture
 ----------------
 
 Before diving in the step-by-step guide let's to see what we want to accomplish at the end of tutorial:
     [![General Architecture Overview](/docs/assets/mrdclhakeep-general-overview.png)](/docs/assets/mrdclhakeep-general-overview.png)
+    
+As diagram shows there must be at least 3 CentOS 6.5 instance for MariaDB Galera Cluster setup, as well as 2 for HAproxy instance.
+Total 5 CentOS 6.5 instance with all static local IPs and only 1 public IP for KeepAlived.
+So another advantage of this architecture that it will reduce public ip usage to 1.
+
+{: .note }
+>
+> For this tutorial we will not use public IP as it is an test environment, all CentOSs will use local ips.
+
+
