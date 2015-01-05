@@ -13,7 +13,7 @@ published: 'Friday, January 2nd, 2014'
 title: Mark Down Quick Reference
 ---
 
-At Linode, we use [PHP Markdown Extra](https://michelf.ca/projects/php-markdown/extra/). We even created some custom classes of our own. Use the tables below to get started writing your first Linode guide. Feel free to copy and paste from the left hand column into a text editor.
+At Linode, we use [PHP Markdown Extra](https://michelf.ca/projects/php-markdown/extra/). We even created some custom class tags of our own. Use the tables below to get started writing your first Linode guide. Feel free to copy and paste from the left hand column into a text editor.
 
 To preview Markdown, find a Markdown interpreter. Try [Nottingham](http://clickontyler.com/nottingham/), a simple, free notepad for Mac; `cmd + shift + p` to preview. For more advanced text editors, try [TextMate](http://macromates.com) or [Sublime Text](http://www.sublimetext.com/).
 
@@ -31,9 +31,6 @@ To preview Markdown, find a Markdown interpreter. Try [Nottingham](http://clicko
 | \*\*bold\*\*  | **bold**    |
 |:--------------|:------------|
 
-For code blocks, we use unformatted text blocks by prepending an indent of four spaces:
-
-    Like this.
 
 ###Headings
 
@@ -51,7 +48,7 @@ For code blocks, we use unformatted text blocks by prepending an indent of four 
 | Formatting                |  Example                                      |
 |:--------------------------|:----------------------------------------------|
 | - For bullet points,<br>* Or unordered lists,<br>+ Use hyphens, asterisks,<br>+ Or plus symbols.      | <span>&bull; For bullet points<br>&bull; Or unordered lists,<br>&bull; Use hyphens, asterisks,<br>&bull; Or plus symbols |
-| 1.  A numbered list.<br>2.  Two spaces after the period.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Eight spaces for a indentation within.<br>3.  Above, an indented command. | ![](/docs/assets/example-numbered-list.png) |
+| 1.  A numbered list.<br>2.  Two spaces after the period.<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Eight spaces for an indentation.<br><br>3.  Above, an indented command. | ![](/docs/assets/example-numbered-list.png) |
 
 ###Links and Images
 
