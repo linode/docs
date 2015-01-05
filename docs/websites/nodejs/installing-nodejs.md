@@ -5,7 +5,6 @@ author:
 description: 'Our guide to hosting a website on your Linode.'
 keywords: 'linode guide,hosting a website,website,linode quickstart guide'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['hosting-website/']
 modified: Thursday, December 18, 2014
 modified_by:
   name: Joseph Dooley
