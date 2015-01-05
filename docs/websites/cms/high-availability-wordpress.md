@@ -129,6 +129,10 @@ Use the following commands to install Apache, PHP, and MySQL on each of the Lino
         CHANGE MASTER TO master_host='x.x.x.x', master_port=3306, master_user='replication', master_password='password', master_log_file='mysql-bin.000001', master_log_pos=277;
         SLAVE START;
 
+5.  Exit MySQL on both of your Linodes
+
+        exit
+
 ##Configure Apache
 
 The steps in this section will need to be performed on both of your Linodes.
@@ -149,8 +153,6 @@ The steps in this section will need to be performed on both of your Linodes.
 
         sudo mkdir -p example.com/public_html
         sudo mkdir -p example.com/log
-        sudo mkdir -p example.com/backups
-
 
 5.  Create the virtual host file for the website by entering the following command. Replace the `example.com` in `example.com.conf` with your domain name:
 
@@ -200,13 +202,13 @@ The steps in this section will need to be performed on both of your Linodes.
         cd /var/www
         wget https://wordpress.org/latest.tar.gz
         tar -xvf latest.tar.gz
-        cp wordpress/* /var/www/example.com/public_html        
+        cp -R wordpress/* /var/www/example.com/public_html
 
 2.  Configure the MySQL database for the new WordPress installation.  You'll need to replace "wordpressuser" and "password" with your own settings
 
         mysql -u root -p
         CREATE DATABASE wordpress;
-        GRANT ALL PRIVILEGES ON wordpress.* TO "wordpressuser"@"hostname" IDENTIFIED BY "password";  
+        GRANT ALL PRIVILEGES ON wordpress.* TO 'wordpressuser'@'localhost' IDENTIFIED BY 'password';  
         FLUSH PRIVILEGES;
         EXIT
 
@@ -224,7 +226,7 @@ The steps in this section will need to be performed on both of your Linodes.
 
 5.  Once the WordPress installation steps have been completed, copy the configurations to your second Linode. Replace x.x.x.x with the second Linode's IP address.
 
-        rsync /var/www/* x.x.x.x:/var/www/.
+        rsync -r /var/www/* x.x.x.x:/var/www/.
 
 6.  Log in to the second Linode and restart Apache.
 
