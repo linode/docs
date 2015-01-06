@@ -53,7 +53,8 @@ Also keep in mind that we need another IP for KeepAlived that will act as Virtua
 Installing and Configuring MariaDB Cluster
 ------------------------------------------
 
-1. Installing and Running MariaDB Cluster:
+
+**Installing and Running MariaDB Cluster:**
 
 The easy way to install is through official yum repo. You should activate MariaDB repo.
 Create **MariaDB.repo** file on **'/etc/yum.repos.d/'** directory on all **3 Nodes**:
@@ -85,7 +86,8 @@ All needed packages and dependencies will be resolved automatically and at this 
         
 At this point, we have 3 running MariaDB Galera Cluster instances.
 
-2. Installing Several other needed packages:
+
+**Installing Several other needed packages:**
 
 We need several other packages from epel repo, such as rsync for MaridDB SST [See Documentation](https://mariadb.com/kb/en/mariadb/documentation/replication/galera/galera-cluster-system-variables/#wsrep_sst_method)
 That's why we must activate epel repo on all 3 Nodes:
@@ -110,7 +112,8 @@ That's why we must activate epel repo on all 3 Nodes:
         [root@node3 ~]# yum install socat
         [root@node3 ~]# yum install rsync
 
-3. server.cnf configuration file for MariaDB nodes:
+
+**server.cnf configuration file for MariaDB nodes:**
 
 Now we must edit all 3 nodes **server.cnf** (default location is '/etc/my.cnf.d/server.cnf') file to reflect our needs.
 Following content is the **same** on all 3 nodes:
@@ -239,7 +242,8 @@ Afer editing configuration files. On all 3 Nodes you must create *wsrep_sst_auth
         MariaDB [(none)]> grant all on *.* to 'sstuser'@'%'
         
 
-4. Creating directory for binary logs:
+
+**Creating directory for binary logs:**
 
 On all 3 Nodes apply following commands. Our binary logs will reside in **/var/lib/mysql/data**, if it not suitable with your installation change this path in server.cnf file too.
 
@@ -256,14 +260,16 @@ On all 3 Nodes apply following commands. Our binary logs will reside in **/var/l
         [root@node3 ~]# chown -R mysql:mysql data/
 
 
-5. Disable SElinux or set to permissive mode on all 3 Nodes. As SElinux prevents Galera to start:
+
+**Disable SElinux or set to permissive mode on all 3 Nodes. As SElinux prevents Galera to start:**
         
         [root@node1 ~]# setenforce 0
         [root@node2 ~]# setenforce 0
         [root@node3 ~]# setenforce 0
 
 
-6. **'/etc/hosts'** file contents for MariaDB Nodes:
+
+**'/etc/hosts' file contents for MariaDB Nodes:**
 
     **Node1**
     
@@ -308,7 +314,8 @@ On all 3 Nodes apply following commands. Our binary logs will reside in **/var/l
         192.168.1.88 haproxy2
 
 
-7. Iptables settings related to MariaDB nodes:
+
+**Iptables settings related to MariaDB nodes:**
 
     **Node1**
         
@@ -587,6 +594,7 @@ Installing and Configuring HAproxy
 
 As we have mentioned we have 2 VMs dedicated to HAproxy.
 
+
 **Install HAproxy:**
 
         [root@haproxy1 ~]# yum install haproxy
@@ -594,6 +602,7 @@ As we have mentioned we have 2 VMs dedicated to HAproxy.
         
         [root@haproxy2 ~]# yum install haproxy
         [root@haproxy2 ~]# chkconfig haproxy on
+
 
 **Fix HAproxy logging:**
 By default HAproxy does not log anything, we must fix it by adding *haproxy.conf* file into */etc/rsyslog.d* directory:
@@ -627,6 +636,7 @@ By default HAproxy does not log anything, we must fix it by adding *haproxy.conf
         -- SElinux related command:
         [root@haproxy2 ~]# /sbin/restorecon -v -F /etc/rsyslog.d/haproxy.conf
         [root@haproxy2 ~]# service rsyslog restart
+
 
 
 
@@ -758,6 +768,7 @@ Another thing to remember that when using MariaDB Galera Cluster with SST option
 To avoid such situation and not to stuck with Deadlocks, we decide to separate Write operations. In other words, Writes operations (e.g insert, update, delete etc.) will go only to **Node1**.
 So on the application side, you should send write operations to port 3310 as we put in haproxy.cfg file, and for read operations to port number 3311.
 There is an available non-locking SST option XtraBackup (the famous hot online backup tool for MySQL), but it is the subject of another topic.
+
 
 
 
