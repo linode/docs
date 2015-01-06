@@ -15,7 +15,7 @@ This guide configures a high availability Wordpress site with a two Linode clust
 
 ##Prerequisites
 
-To complete this guide, ensure that there are two Linodes and a NodeBalancer present on your account.  Both Linodes need to be assigned a [Private IP address](/docs/networking/remote-access#adding-private-ip-addresses). Also ensure that both of your Linode's have been configured with SSH keys, and place the opposing Linode's SSH key in the other's /.ssh/authorized_keys file.
+To complete this guide, ensure that there are two Linodes and a NodeBalancer present on your account.  Both Linodes need to be assigned a [Private IP address](/docs/networking/remote-access#adding-private-ip-addresses). Also ensure that both of your Linode's have been configured with SSH keys, and place the opposing Linode's SSH key in the other's `/.ssh/authorized_keys` file.
 
 {: .note}
 >This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
@@ -116,7 +116,7 @@ Use the following commands to install Apache, PHP, and MySQL on each of the Lino
 2.  On Server 2 at the MySQL prompt, set up the slave functionality for that database.  Replace`x.x.x.x` with the private IP from the first server. Also replace the value for `master_log_file` with the file value from the previous step, and the value for `master_log_pos` with the position value.
 
         SLAVE STOP;
-        CHANGE MASTER TO master_host='x.x.x.x', master_port=3306, master_user='replication', master_password='password', master_log_file='mysql-bin.000001', master_log_pos=106;
+        CHANGE MASTER TO master_host='x.x.x.x', master_port=3306, master_user='replication', master_password='password', master_log_file='mysql-bin.000001', master_log_pos=277;
         SLAVE START;
 
 3.  On Server 2, query the master status. Again note the file and position values.
@@ -135,7 +135,7 @@ Use the following commands to install Apache, PHP, and MySQL on each of the Lino
 
 ##Configure Apache
 
-The steps in this section will need to be performed on both of your Linodes.
+The steps in this section will need to be performed on **both** of your Linodes.
 
 1.  Disable the default Apache virtual host by entering the following command:
 
@@ -185,7 +185,7 @@ The steps in this section will need to be performed on both of your Linodes.
     </VirtualHost>
     ~~~
 
-7.  Save the changes to the virtual host configuration file by pressing `Control + x` and then pressing `y`. Press `Enter` to confirm.
+7.  Save the changes to the virtual host configuration file by pressing `Control + x` and then `y`. Press `Enter` to confirm.
 
 8. Enable the new website by entering the following command. Replace `example.com` with your domain name:
 
@@ -208,7 +208,7 @@ The steps in this section will need to be performed on both of your Linodes.
 
         mysql -u root -p
         CREATE DATABASE wordpress;
-        GRANT ALL PRIVILEGES ON wordpress.* TO 'wordpressuser'@'localhost' IDENTIFIED BY 'password';  
+        GRANT ALL PRIVILEGES ON wordpress.* TO 'wordpressuser'@'localhost' IDENTIFIED BY 'password';
         FLUSH PRIVILEGES;
         EXIT
 
@@ -218,9 +218,9 @@ The steps in this section will need to be performed on both of your Linodes.
 
 4.  Connect to your Linode's IP address using your web browser, and walk through the configuration steps to fully install WordPress.
 
-{: .note}
->
->After completing your WordPress installation steps and logging in for the first time, you will want to reset your permissions on your Document Root directory to ensure additional security.  You can do so with the following command.
+    {: .note}
+    >
+    >After completing your WordPress installation steps and logging in for the first time, you will want to reset your permissions on your Document Root directory to ensure additional security.  You can do so with the following command.
         
         chmod 755 /var/www/example.com/public_html/
 
@@ -238,7 +238,7 @@ You should now be able to visit the new Wordpress site on both of your Linodes, 
 
 1.  Visit the NodeBalancers tab in the Linode Manager.
 
-2.  If you have not done so already, add a NodeBalancer, ensuring that it is in the same datacenter that your backend Linodes are located in.
+2.  If you have not done so already, add a NodeBalancer, ensuring that it is in the same datacenter as your backend Linodes.
 
 3.  Click create configuration and edit your configuration settings as follows:
 
