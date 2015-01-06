@@ -41,11 +41,11 @@ We need 5 instances of CentOS 6.5 (x86_64) installed as **"Basic Server"** (for 
 Also you should give a static ips to all servers.
 Here is sample IPs that you may give to your CentOS instances for testing this tutorial:
 
-1. **Node1** (512 MB RAM, 1 CPU VM)- *192.168.1.71*
-2. **Node2** (512 MB RAM, 1 CPU VM)- *192.168.1.81*
-3. **Node3** (512 MB RAM, 1 CPU VM)- *192.168.1.91*
-4. **HAproxy1** - *192.168.1.33*
-5. **HAproxy2** - *192.168.1.88*
+1. **Node1**    (512 MB RAM, 1 CPU VM) - *192.168.1.71*
+2. **Node2**    (512 MB RAM, 1 CPU VM) - *192.168.1.81*
+3. **Node3**    (512 MB RAM, 1 CPU VM) - *192.168.1.91*
+4. **HAproxy1** (512 MB RAM, 1 CPU VM) - *192.168.1.33*
+5. **HAproxy2** (512 MB RAM, 1 CPU VM) - *192.168.1.88*
 
 Also keep in mind that we need another IP for KeepAlived that will act as Virtual IP for HAproxy intances.
 
@@ -433,10 +433,360 @@ Configuring Clustercheck script for cluster health check
 [Percona ClusterCheck](https://github.com/olafz/percona-clustercheck) is simple script o make a proxy (i.e HAProxy) capable of monitoring Percona XtraDB Cluster nodes properly.
 Also it is originally mentioned for Percona XTRAdb Cluster it works with MariaDB Galera Cluster too. It is just naming taste.
 
-You should setup this script in all 3 Nodes
+You should setup this script in all 3 Nodes with following steps:
+First aff all move Clustercheck to */usr/bin* directory
+
+        [root@node1 ~]# yum install wget unzip
+        [root@node1 ~]# wget https://github.com/olafz/percona-clustercheck/archive/master.zip
+        [root@node1 ~]# unzip master.zip
+        [root@node1 ~]# cd percona-clustercheck-master/
+        [root@node1 ~]# mv clustercheck /usr/bin/
+        
+        -- Move file to other nodes
+        
+        [root@node1 ~]# scp /usr/bin/clustercheck root@192.168.1.81:/usr/bin/
+        [root@node1 ~]# scp /usr/bin/clustercheck root@192.168.1.91:/usr/bin/
+        
+
+Then setup this script as Xinetd service, before setup install xinetd:
+
+        [root@node1 ~]# yum install xinetd
+        [root@node1 ~]# service xinetd start
+        [root@node1 ~]# chkconfig xinetd on
+        
+        [root@node2 ~]# yum install xinetd
+        [root@node2 ~]# service xinetd start
+        [root@node2 ~]# chkconfig xinetd on
+        
+        [root@node3 ~]# yum install xinetd
+        [root@node3 ~]# service xinetd start
+        [root@node3 ~]# chkconfig xinetd on
+        
+
+After installing Xinetd and ensuring that it will start on system reboot automatically, we need configure mysqlchk file:
+
+        [root@node1 ~]# nano /etc/xinetd.d/mysqlchk
+        
+        -- Add following lines to this file
+        
+        service mysqlchk
+        {
+            disable = no
+            flags = REUSE
+            socket_type = stream
+            port = 9200
+            wait = no
+            user = nobody
+            server = /usr/bin/clustercheck
+            log_on_failure += USERID
+            only_from = 0.0.0.0/0
+            per_source = UNLIMITED
+        }
+        
+        
+        [root@node2 ~]# nano /etc/xinetd.d/mysqlchk
+        
+        -- Add following lines to this file
+        
+        service mysqlchk
+        {
+            disable = no
+            flags = REUSE
+            socket_type = stream
+            port = 9200
+            wait = no
+            user = nobody
+            server = /usr/bin/clustercheck
+            log_on_failure += USERID
+            only_from = 0.0.0.0/0
+            per_source = UNLIMITED
+        }
+        
+        [root@node3 ~]# nano /etc/xinetd.d/mysqlchk
+        
+        -- Add following lines to this file
+        
+        service mysqlchk
+        {
+            disable = no
+            flags = REUSE
+            socket_type = stream
+            port = 9200
+            wait = no
+            user = nobody
+            server = /usr/bin/clustercheck
+            log_on_failure += USERID
+            only_from = 0.0.0.0/0
+            per_source = UNLIMITED
+        }
+
+Then edit */etc/services* file. Locate wap-wsp word in this file and comment out as follows, then add mysqlchk entry:
+        
+        [root@node1 ~]# nano /etc/services
+        mysqlchk        9200/tcp                # SERVICE for Checking MariaDB Cluster      
+        #wap-wsp         9200/tcp                # WAP connectionless session service
+        #wap-wsp         9200/udp                # WAP connectionless session service
+
+        [root@node2 ~]# nano /etc/services
+        mysqlchk        9200/tcp                # SERVICE for Checking MariaDB Cluster      
+        #wap-wsp         9200/tcp                # WAP connectionless session service
+        #wap-wsp         9200/udp                # WAP connectionless session service
+        
+        [root@node3 ~]# nano /etc/services
+        mysqlchk        9200/tcp                # SERVICE for Checking MariaDB Cluster      
+        #wap-wsp         9200/tcp                # WAP connectionless session service
+        #wap-wsp         9200/udp                # WAP connectionless session service
+        
+
+Now create clustercheck database user on **ALL Nodes**:
+        
+        create user 'clustercheckuser'@'localhost' identified by 'clustercheckpassword!';
+        grant process on *.* to 'clustercheckuser'@'localhost';
+
+Restart Xinetd on all Nodes:
+        
+        [root@node1 ~]# service xinetd restart
+        [root@node2 ~]# service xinetd restart
+        [root@node3 ~]# service xinetd restart
+        
+
+And final step for this section is to check this new script:
+
+        [root@node1 ~]# clustercheck 
+        HTTP/1.1 200 OK
+        Content-Type: text/plain
+        Connection: close
+        Content-Length: 40
+
+        Percona XtraDB Cluster Node is synced.
+
+        
+        [root@node2 ~]# clustercheck
+        HTTP/1.1 200 OK
+        Content-Type: text/plain
+        Connection: close
+        Content-Length: 40
+
+        Percona XtraDB Cluster Node is synced.
+        
+        
+        [root@node3 ~]# clustercheck
+        HTTP/1.1 200 OK
+        Content-Type: text/plain
+        Connection: close
+        Content-Length: 40
+
+        Percona XtraDB Cluster Node is synced.
+
+
+As you see everything is OK and it works.
+
 
 Installing and Configuring HAproxy
 ----------------------------------
+
+As we have mentioned we have 2 VMs dedicated to HAproxy.
+
+**Install HAproxy:**
+
+        [root@haproxy1 ~]# yum install haproxy
+        [root@haproxy1 ~]# chkconfig haproxy on
+        
+        [root@haproxy2 ~]# yum install haproxy
+        [root@haproxy2 ~]# chkconfig haproxy on
+
+**Fix HAproxy logging:**
+By default HAproxy does not log anything, we must fix it by adding *haproxy.conf* file into */etc/rsyslog.d* directory:
+        
+        
+        [root@haproxy1 ~]# cd /etc/rsyslog.d/
+        -- Add following lines into file:
+        [root@haproxy1 rsyslog.d]# nano haproxy.conf
+        $ModLoad imudp
+        $UDPServerRun 514
+        $template Haproxy,"%msg%\n"
+        local0.=info -/var/log/haproxy.log;Haproxy
+        local0.notice -/var/log/haproxy-status.log;Haproxy
+        local0.* ~
+        
+        -- SElinux related command:
+        [root@haproxy1 ~]# /sbin/restorecon -v -F /etc/rsyslog.d/haproxy.conf
+        [root@haproxy1 ~]# service rsyslog restart
+        
+        
+        [root@haproxy2 ~]# cd /etc/rsyslog.d/
+        -- Add following lines into file:
+        [root@haproxy2 rsyslog.d]# nano haproxy.conf
+        $ModLoad imudp
+        $UDPServerRun 514
+        $template Haproxy,"%msg%\n"
+        local0.=info -/var/log/haproxy.log;Haproxy
+        local0.notice -/var/log/haproxy-status.log;Haproxy
+        local0.* ~
+        
+        -- SElinux related command:
+        [root@haproxy2 ~]# /sbin/restorecon -v -F /etc/rsyslog.d/haproxy.conf
+        [root@haproxy2 ~]# service rsyslog restart
+
+
+
+**Edit haproxy.cfg config file:**
+        
+        [root@haproxy1 ~]# cd /etc/haproxy/
+        [root@haproxy1 ~]# mv haproxy.cfg haproxy.cfg.orig
+        [root@haproxy1 ~]# nano haproxy.cfg
+    
+        global
+            log         127.0.0.1   local0
+            log         127.0.0.1   local1 notice
+            maxconn     4096
+            user        haproxy
+            group       haproxy
+            nbproc      1
+            pidfile     /var/run/haproxy.pid
+
+        defaults
+            log         global
+            option      tcplog
+            option      dontlognull
+            retries     3
+            maxconn     4096
+            option      redispatch
+            timeout     connect 50000ms
+            timeout     client  50000ms
+            timeout     server  50000ms
+
+        listen mariadb-galera-writes
+            bind 0.0.0.0:3310
+            mode tcp
+            #    option mysql-check user haproxy
+            option httpchk 
+            server node1 192.168.1.71:3306 check port 9200
+            server node2 192.168.1.81:3306 check port 9200 backup
+            server node3 192.168.1.91:3306 check port 9200 backup
+
+        listen mariadb-galera-reads
+            bind 0.0.0.0:3311
+            mode tcp
+            balance leastconn
+        #    option mysql-check user haproxy
+            option httpchk
+            server node1 192.168.1.71:3306 check port 9200
+            server node2 192.168.1.81:3306 check port 9200
+            server node3 192.168.1.91:3306 check port 9200
+
+        # HAProxy web ui
+            listen stats 0.0.0.0:9000
+            mode http
+            stats enable
+            stats uri /haproxy
+            stats realm HAProxy\ Statistics
+            stats auth haproxy:haproxy
+            stats admin if TRUE
+            
+        
+        -- SElinux related command:
+        
+        [root@haproxy1 ~]# /sbin/restorecon -v -F /etc/haproxy/haproxy.cfg
+        [root@haproxy1 ~]# service haproxy start
+        
+        
+        
+        
+        [root@haproxy2 ~]# cd /etc/haproxy/
+        [root@haproxy2 ~]# mv haproxy.cfg haproxy.cfg.orig
+        [root@haproxy2 ~]# nano haproxy.cfg
+    
+        global
+            log         127.0.0.1   local0
+            log         127.0.0.1   local1 notice
+            maxconn     4096
+            user        haproxy
+            group       haproxy
+            nbproc      1
+            pidfile     /var/run/haproxy.pid
+
+        defaults
+            log         global
+            option      tcplog
+            option      dontlognull
+            retries     3
+            maxconn     4096
+            option      redispatch
+            timeout     connect 50000ms
+            timeout     client  50000ms
+            timeout     server  50000ms
+
+        listen mariadb-galera-writes
+            bind 0.0.0.0:3310
+            mode tcp
+            #    option mysql-check user haproxy
+            option httpchk 
+            server node1 192.168.1.71:3306 check port 9200
+            server node2 192.168.1.81:3306 check port 9200 backup
+            server node3 192.168.1.91:3306 check port 9200 backup
+
+        listen mariadb-galera-reads
+            bind 0.0.0.0:3311
+            mode tcp
+            balance leastconn
+        #    option mysql-check user haproxy
+            option httpchk
+            server node1 192.168.1.71:3306 check port 9200
+            server node2 192.168.1.81:3306 check port 9200
+            server node3 192.168.1.91:3306 check port 9200
+
+        # HAProxy web ui
+            listen stats 0.0.0.0:9000
+            mode http
+            stats enable
+            stats uri /haproxy
+            stats realm HAProxy\ Statistics
+            stats auth haproxy:haproxy
+            stats admin if TRUE
+            
+        
+        -- SElinux related command:
+        
+        [root@haproxy2 ~]# /sbin/restorecon -v -F /etc/haproxy/haproxy.cfg
+        [root@haproxy2 ~]# service haproxy start
+
+
+Lets explore config file a bit more:
+The default port number 9000 is for WEB UI for HAproxy monitoring.
+Another thing to remember that when using MariaDB Galera Cluster with SST options *mysqldump* and *rsync* (default) it will lock each other nodes from getting updates while DDL, DML statements executing.
+To avoid such situation and not to stuck with Deadlocks, we decide to separate Write operations. In other words, Writes operations (e.g insert, update, delete etc.) will go only to **Node1**.
+So on the application side, you should send write operations to port 3310 as we put in haproxy.cfg file, and for read operations to port number 3311.
+There is an available non-locking SST option XtraBackup (the famous hot online backup tool for MySQL), but it is the subject of another topic.
+
+
+
+**And ofcourse we should check our work:**
+
+Check for listening ports:
+
+        [root@haproxy1 ~]# netstat -ntpl | grep haproxy
+        tcp        0      0 0.0.0.0:9000                0.0.0.0:*                   LISTEN      11902/haproxy       
+        tcp        0      0 0.0.0.0:3310                0.0.0.0:*                   LISTEN      11902/haproxy       
+        tcp        0      0 0.0.0.0:3311                0.0.0.0:*                   LISTEN      11902/haproxy
+        
+        [root@haproxy2 haproxy]# netstat -ntpl | grep haproxy
+        tcp        0      0 0.0.0.0:9000                0.0.0.0:*                   LISTEN      12846/haproxy       
+        tcp        0      0 0.0.0.0:3310                0.0.0.0:*                   LISTEN      12846/haproxy       
+        tcp        0      0 0.0.0.0:3311                0.0.0.0:*                   LISTEN      12846/haproxy
+        
+ 
+As we have mentioned port number 9000 for WEB Ui related to HAproxy statistics. So lets connect to IP of on of the HAproxy servers.
+The connection URL for me is: [http://192.168.1.88:9000/haproxy_stats](http://192.168.1.88:9000/haproxy_stats)
+In Very first connection there will be an pop-screen for login and password. These information is stored  in /etc/haproxy/haproxy.cfg file *stats auth haproxy:haproxy*.
+So the Login is: haproxy and Password is: haproxy too.
+See print screen below:
+[![HAproxy Login Attempt](/docs/assets/192.168.1.88_9000_haproxy.png)](/docs/assets/192.168.1.88_9000_haproxy.png)
+
+
+
+        
+    
 
 Installing and Configuring KeepAlived
 -------------------------------------
