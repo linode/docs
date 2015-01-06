@@ -174,7 +174,7 @@ Following content is the **same** on all 3 nodes:
 
 And now we provide per Node settings for configuration file:
 
-**Node1**
+        **Node1**
 
         #
         # * Galera-related settings
@@ -191,7 +191,7 @@ And now we provide per Node settings for configuration file:
         bind-address=0.0.0.0
 
 
-**Node2**
+        **Node2**
 
         #
         # * Galera-related settings
@@ -208,7 +208,7 @@ And now we provide per Node settings for configuration file:
         bind-address=0.0.0.0
 
 
-**Node3**
+        **Node3**
 
         #
         # * Galera-related settings
@@ -642,6 +642,8 @@ By default HAproxy does not log anything, we must fix it by adding *haproxy.conf
 
 **Edit haproxy.cfg config file:**
         
+        **HAproxy1**
+        
         [root@haproxy1 ~]# cd /etc/haproxy/
         [root@haproxy1 ~]# mv haproxy.cfg haproxy.cfg.orig
         [root@haproxy1 ~]# nano haproxy.cfg
@@ -701,7 +703,7 @@ By default HAproxy does not log anything, we must fix it by adding *haproxy.conf
         [root@haproxy1 ~]# service haproxy start
         
         
-        
+        **HAproxy2**
         
         [root@haproxy2 ~]# cd /etc/haproxy/
         [root@haproxy2 ~]# mv haproxy.cfg haproxy.cfg.orig
@@ -768,8 +770,6 @@ Another thing to remember that when using MariaDB Galera Cluster with SST option
 To avoid such situation and not to stuck with Deadlocks, we decide to separate Write operations. In other words, Writes operations (e.g insert, update, delete etc.) will go only to **Node1**.
 So on the application side, you should send write operations to port 3310 as we put in haproxy.cfg file, and for read operations to port number 3311.
 There is an available non-locking SST option XtraBackup (the famous hot online backup tool for MySQL), but it is the subject of another topic.
-
-
 
 
 **And ofcourse we should check our work:**
@@ -889,6 +889,7 @@ Lets test:
 We send connection to KeepAlived virtual IP and it passes to one of HAproxy servers.
 Enough theory lets to achieve our goal.
 
+
 **Installing/Configuring**
 
         **HAproxy1**
@@ -962,6 +963,7 @@ Enough theory lets to achieve our goal.
         -- Save and exit file editing.
         
         [root@haproxy2 ~]# /sbin/restorecon -v -F /etc/keepalived/keepalived.conf
+
 
 
 
