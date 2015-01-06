@@ -777,15 +777,73 @@ Check for listening ports:
         
  
 As we have mentioned port number 9000 for WEB Ui related to HAproxy statistics. So lets connect to IP of on of the HAproxy servers.
-The connection URL for me is: [http://192.168.1.88:9000/haproxy_stats](http://192.168.1.88:9000/haproxy_stats)
+The connection URL for me is: [http://192.168.1.88:9000/haproxy_stats](http://192.168.1.88:9000/haproxy_stats).
 In Very first connection there will be an pop-screen for login and password. These information is stored  in /etc/haproxy/haproxy.cfg file *stats auth haproxy:haproxy*.
 So the Login is: haproxy and Password is: haproxy too.
 See print screen below:
+
 [![HAproxy Login Attempt](/docs/assets/192.168.1.88_9000_haproxy.png)](/docs/assets/192.168.1.88_9000_haproxy.png)
 
+You will see the statistics page with correctly working Cluster Nodes:
+
+[![HAproxy Web Statistics Page](/docs/assets/192.168.1.88_9000_haproxy_stats.png)](/docs/assets/192.168.1.88_9000_haproxy_stats.png)
+
+{: .note }
+>
+> Remember that, you should also add iptables rule to open 9000 port for incoming connections. But if you will access web page from local there is no need.
+> Iptables rule maybe something like:
+> -A INPUT -i eth0 -p tcp -m tcp --dport 9000 -j ACCEPT
 
 
+Now lets check MySQL connectivity over HAproxy. For this purpose create sample database user on MariaDB Cluster nodes. Our cluster is ready and that's why it is sufficient to run this command one of the nodes and other will pick-up automatically
         
+        create user 'all'@'%' identified by '12345';
+        grant all on *.* 'all'@'%';
+
+Our testing result should be something like:
+        
+        -- First make connection through HAproxy2 server to port 3310 (our write node)
+        
+        sh@sh--work:~$ mysql -u all -p --host=192.168.1.88 --port=3310 -e "select @@version, @@hostname";
+        Enter password: 
+        +---------------------------+------------+
+        | @@version                 | @@hostname |
+        +---------------------------+------------+
+        | 10.0.15-MariaDB-wsrep-log | node1      |
+        +---------------------------+------------+
+        
+        -- Second to port 3311 (one of our read nodes)
+        
+        sh@sh--work:~$ mysql -u all -p --host=192.168.1.88 --port=3311 -e "select @@version, @@hostname";
+        Enter password: 
+        +---------------------------+------------+
+        | @@version                 | @@hostname |
+        +---------------------------+------------+
+        | 10.0.15-MariaDB-wsrep-log | node2      |
+        +---------------------------+------------+
+    
+        -- Second make connection through HAproxy1 server to port 3310 (our write node)
+        
+        sh@sh--work:~$ mysql -u all -p --host=192.168.1.33 --port=3310 -e "select @@version, @@hostname";
+        Enter password: 
+        +---------------------------+------------+
+        | @@version                 | @@hostname |
+        +---------------------------+------------+
+        | 10.0.15-MariaDB-wsrep-log | node1      |
+        +---------------------------+------------+
+        
+        -- Second to port 3311 (one of our read nodes)
+        
+        sh@sh--work:~$ mysql -u all -p --host=192.168.1.33 --port=3311 -e "select @@version, @@hostname";
+        Enter password: 
+        +---------------------------+------------+
+        | @@version                 | @@hostname |
+        +---------------------------+------------+
+        | 10.0.15-MariaDB-wsrep-log | node3      |
+        +---------------------------+------------+
+
+
+
     
 
 Installing and Configuring KeepAlived
