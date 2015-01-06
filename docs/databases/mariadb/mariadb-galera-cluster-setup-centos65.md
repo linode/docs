@@ -860,6 +860,158 @@ Our testing result should be something like:
 Installing and Configuring KeepAlived
 -------------------------------------
 
-Testing Environment
+The Final step in our environment is installing and configuring KeepAlived , acting as Virtual IP and switch-over between HAproxy instances.
+The idea is, when one of HAproxy servers fails, another one must do same work without interrupting all architecture.
+The new IP address for us is *192.168.1.99* - which is Virtual IP for our HAproxy servers.
+We will connect to MySQL(MariaDB) through this IP and KeepAlived will decide to which HAproxy instance it must send this connection.
+Lets test:
+        
+        -- Pay Attention to host IP address
+        
+        sh@sh--work:~$ mysql -u all -p --host=192.168.1.99 --port=3310 -e "select @@version, @@hostname";
+        Enter password: 
+        +---------------------------+------------+
+        | @@version                 | @@hostname |
+        +---------------------------+------------+
+        | 10.0.15-MariaDB-wsrep-log | node1      |
+        +---------------------------+------------+
+        
+        
+        sh@sh--work:~$ mysql -u all -p --host=192.168.1.99 --port=3311 -e "select @@version, @@hostname";
+        Enter password: 
+        +---------------------------+------------+
+        | @@version                 | @@hostname |
+        +---------------------------+------------+
+        | 10.0.15-MariaDB-wsrep-log | node2      |
+        +---------------------------+------------+
+
+
+We send connection to KeepAlived virtual IP and it passes to one of HAproxy servers.
+Enough theory lets to achieve our goal.
+
+**Installing/Configuring**
+
+        **HAproxy1**
+        
+        [root@haproxy1 ~]# yum install keepalived
+        [root@haproxy1 ~]# chkonfig keepalived on
+        
+        [root@haproxy1 ~]# cd /etc/keepalived/
+        [root@haproxy1 ~]# mv keepalived.conf keepalived.conf.orig
+        [root@haproxy1 ~]# nano keepalived.conf
+        -- Add following lines to file        
+        vrrp_script chk_haproxy {
+            script "killall -0 haproxy" # verify the pid is exist or not
+            interval 2                      # check every 2 seconds
+            weight 2                        # add 2 points of prio if OK
+        }
+
+        vrrp_instance VI_1 {
+            interface eth0                  # interface to monitor
+            state MASTER
+            virtual_router_id 51            # Assign one ID for this route
+            priority 101                    # 101 on master, 100 on backup
+            authentication {
+                     auth_type PASS
+                     auth_pass 12345
+            }
+        virtual_ipaddress {
+            192.168.1.99                # the virtual IP
+        }
+	track_script {
+            chk_haproxy
+        }
+        }
+        
+        -- Save and exit file editing.
+        
+        [root@haproxy1 ~]# /sbin/restorecon -v -F /etc/keepalived/keepalived.conf
+        
+        **HAproxy2**
+        
+        [root@haproxy2 ~]# yum install keepalived
+        [root@haproxy2 ~]# chkonfig keepalived on
+        
+        [root@haproxy2 ~]# cd /etc/keepalived/
+        [root@haproxy2 ~]# mv keepalived.conf keepalived.conf.orig
+        [root@haproxy2 ~]# nano keepalived.conf
+        -- Add following lines to file        
+        vrrp_script chk_haproxy {
+            script "killall -0 haproxy" # verify the pid is exist or not
+            interval 2                      # check every 2 seconds
+            weight 2                        # add 2 points of prio if OK
+        }
+
+        vrrp_instance VI_1 {
+            interface eth0                  # interface to monitor
+            state MASTER
+            virtual_router_id 51            # Assign one ID for this route
+            priority 101                    # 101 on master, 100 on backup
+            authentication {
+                     auth_type PASS
+                     auth_pass 12345
+            }
+        virtual_ipaddress {
+            192.168.1.99                # the virtual IP
+        }
+	track_script {
+            chk_haproxy
+        }
+        }
+        
+        -- Save and exit file editing.
+        
+        [root@haproxy2 ~]# /sbin/restorecon -v -F /etc/keepalived/keepalived.conf
+
+
+
+**Iptables settings for KeepAlived**
+
+        [root@haproxy1 ~]# iptables -I INPUT -i eth0 -d 224.0.0.0/8 -j ACCEPT
+        [root@haproxy1 ~]# iptables -A INPUT -p 112 -i eth0 -j ACCEPT
+        [root@haproxy1 ~]# iptables -A OUTPUT -p 112 -o eth0 -j ACCEPT
+        [root@haproxy1 ~]# service iptables save
+        
+        
+        [root@haproxy2 ~]# iptables -I INPUT -i eth0 -d 224.0.0.0/8 -j ACCEPT
+        [root@haproxy2 ~]# iptables -A INPUT -p 112 -i eth0 -j ACCEPT
+        [root@haproxy2 ~]# iptables -A OUTPUT -p 112 -o eth0 -j ACCEPT
+        [root@haproxy2 ~]# service iptables save
+        
+
+
+**Starting KeepAlived**
+
+        [root@haproxy1 ~]# service keepalived start
+        [root@haproxy2 ~]# service keepalived start
+
+
+
+
+**Testing MySQL connection with KeepAlived**
+    
+        sh@sh--work:~$ mysql -u all -p --host=192.168.1.99 --port=3310 -e "select @@version, @@hostname";
+        Enter password: 
+        +---------------------------+------------+
+        | @@version                 | @@hostname |
+        +---------------------------+------------+
+        | 10.0.15-MariaDB-wsrep-log | node1      |
+        +---------------------------+------------+
+
+        
+        sh@sh--work:~$ mysql -u all -p --host=192.168.1.99 --port=3311 -e "select @@version, @@hostname";
+        Enter password: 
+        +---------------------------+------------+
+        | @@version                 | @@hostname |
+        +---------------------------+------------+
+        | 10.0.15-MariaDB-wsrep-log | node2      |
+        +---------------------------+------------+
+
+
+Conclusion
 -------------------
 
+In this tutorial you learn how to install and configure MariaDB Galera Cluster on CentOS 6.5 and also how to load balance this cluster using wellknown HAproxy.
+As bonus you learn to install/configure KeepAlived and access database over Virtual IP which is a next level of redundancy in High Availability approach.
+If you have any suggesstions or errors, please do not hesitate to contact.
+Thank you for reading.
