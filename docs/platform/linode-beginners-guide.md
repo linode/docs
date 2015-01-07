@@ -95,7 +95,7 @@ First, check to be sure that the service (SSH, HTTP, etc) you're trying to acces
 How can I upgrade or downgrade my Linode?
 -----------------------------------------
 
-Resizing your Linode is automated via the "Resize" tab in the Linode Manager, pending [availability](http://www.linode.com/avail.cfm) for the plan you wish to move to in your datacenter. If you're downgrading, please make sure you've resized your disk images to fit within your desired plan's disk space allocation before issuing the resize job.
+Resizing your Linode is automated via the "Resize" tab in the Linode Manager, pending availability for the plan you wish to move to in your datacenter. If you're downgrading, please make sure you've resized your disk images to fit within your desired plan's disk space allocation before issuing the resize job.
 
 How can I test downloads speeds from different data centers?
 ------------------------------------------------------------
