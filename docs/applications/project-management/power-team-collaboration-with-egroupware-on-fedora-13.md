@@ -18,7 +18,7 @@ title: Power Team Collaboration with eGroupware on Fedora 13
 
 The eGroupware suite provides a group of server-based applications that offer collaboration and enterprise-targeted tools to help enable communication and information sharing between teams and institutions. These tools are tightly coupled and allow users to take advantage of data from one system, like the address book, and make use of it in other systems including the calendar, CRM, and email systems. eGroupware is designed to be flexible and adaptable, and is capable of scaling to meet the demands of a diverse class of enterprise needs and work groups without the need to rely on a third-party vendor.
 
-Before installing eGroupware, it is assumed that you have followed our [getting started guide](/docs/getting-started/). If you're new to Linux server administration, you may be interested in our [using Linux](/docs/using-linux/) document series including the [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics). Additionally, you will need install a [LAMP stack](/docs/lamp-guides/fedora-13/) as a prerequisite for installing eGroupware.
+Before installing eGroupware, it is assumed that you have followed our [getting started guide](/docs/getting-started/). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics). Additionally, you will need install a [LAMP stack](/docs/lamp-guides/fedora-13/) as a prerequisite for installing eGroupware.
 
 Install eGroupware
 ------------------

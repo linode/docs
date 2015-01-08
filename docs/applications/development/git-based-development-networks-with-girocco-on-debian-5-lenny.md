@@ -16,7 +16,7 @@ deprecated: true
 
 Girocco is the underlying engine created to power one of the first public git hosting services at [repo.or.cz](http://repo.or.cz/), and it allows users an easy to use web-based interface to create and view git repositories. Perhaps most excitingly, Girocco provides the ability to seamlessly "fork" an existing repository on the site and publish those changes without needing "push" access to the original repository, thus enabling a wide rage of distributed workflows and collaborative experiences.
 
-Before beginning this guide, we assume that you've completed the [getting started guide](/docs/getting-started/). If you're new to using git, you may also find our [introduction to git](/docs/linux-tools/version-control/git) a helpful prerequisite. If you're new Linux system administration, consider the guides in our [using Linux](/docs/using-linux/) series, particularly the [administration basics](/docs/using-linux/administration-basics) and [user accounts and permissions](/docs/using-linux/users-and-groups) guides.
+Before beginning this guide, we assume that you've completed the [getting started guide](/docs/getting-started/). If you're new to using git, you may also find our [introduction to git](/docs/linux-tools/version-control/git) a helpful prerequisite. If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
 
 Install Prerequisites
 ---------------------

@@ -16,7 +16,7 @@ deprecated: true
 
 Postfix is an efficient, stable, and modern Mail Transfer Agent, or "MTA", used for transmitting email messages between severs on the Internet. Most configurations involving Postfix combine the MTA with a server to allow users to download email using a protocol like IMAP or POP3. This document outlines a very simple configuration of Postfix that makes it possible to forward email, and deliver email to local mailboxes on your Linode instance. This guide *does not* provide any way to download this email or remotely access these mailboxes. In addition, this document provides instructions for sending email with this configuration. If you want to deploy a complete and fully featured email solution that includes the ability download locally delivered email, consider one of our other [postfix email guides](/docs/email/postfix/).
 
-Prior to beginning this document to install a basic Postfix email gateway, it is assumed that you have completed our [getting started guide](/docs/getting-started/). If you're new to Linux systems administration we recommend that you view the guides in our [using Linux guide](/docs/using-linux/) series, particularly the [administration basics guide](/docs/using-linux/administration-basics).
+Prior to beginning this document to install a basic Postfix email gateway, it is assumed that you have completed our [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
 
 Set the Hostname
 ----------------

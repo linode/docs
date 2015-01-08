@@ -17,7 +17,7 @@ Many Linux server applications need to send email. Cron jobs use mail services t
 
 You'll gain the ability to send mail from `localhost` through either a traditional "sendmail" style interface, or via port 25 locally. As this guide is not intended to provide a full send/receive mail solution, please refer to our other [email guides](/docs/email/) for ways to implement such configurations.
 
-We assume that you've already followed the steps outlined in our [getting started](/docs/getting-started/) guide. If you're just getting acquainted with Linux systems, we also encourage you to review our [using Linux](/docs/using-linux/) guides. Make sure you're logged into your Linode as "root" via SSH before proceeding.
+We assume that you've already followed the steps outlined in our [getting started](/docs/getting-started/) guide. If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics). Make sure you're logged into your Linode as "root" via SSH before proceeding.
 
 Set the Hostname
 ----------------

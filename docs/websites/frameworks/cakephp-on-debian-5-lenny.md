@@ -16,7 +16,7 @@ deprecated: true
 
 CakePHP is a framework used to develop PHP applications quickly. Many people choose CakePHP because of the simple deployment process and extensive documentation available on the CakePHP website.
 
-Before installing CakePHP, we assume that you have followed our [getting started guide](/docs/getting-started/) as well as our [LAMP guide](/docs/lamp-guides/debian-5-lenny/). If you're new to Linux server administration, you may be interested in our [using Linux](/docs/using-linux/) document series, including the [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
+Before installing CakePHP, we assume that you have followed our [getting started guide](/docs/getting-started/) as well as our [LAMP guide](/docs/lamp-guides/debian-5-lenny/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
 
 Installation
 ------------

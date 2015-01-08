@@ -15,7 +15,7 @@ title: 'Magento on Debian 5 (Lenny)'
 
 Magento is a self hosted e-commerce solution used by many people to sell products online. It runs on a [LAMP stack](/docs/lamp-guides/debian-5-lenny/) and offers the user a wide variety of options.
 
-Before installing Magento we assume that you have followed our [getting started](/docs/getting-started/) guide as well as our [LAMP guide.](/docs/lamp-guides/debian-5-lenny/) If you're new to Linux server administration, you may be interested in our [using Linux](/docs/using-linux/) document series, including the [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
+Before installing Magento we assume that you have followed our [getting started](/docs/getting-started/) guide as well as our [LAMP guide.](/docs/lamp-guides/debian-5-lenny/) If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
 
 Installing Prerequisites
 ------------------------

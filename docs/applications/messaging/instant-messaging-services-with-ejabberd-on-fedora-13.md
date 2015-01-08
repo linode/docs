@@ -18,7 +18,7 @@ title: Instant Messaging Services with ejabberd on Fedora 13
 
 Ejabberd, the Erlang Jabber Daemon, is an extensible, flexible and very high performance XMPP server written in the Erlang programming language. With a web-based interface and broad support for [XMPP standards](http://xmpp.org/), ejabberd is an ideal general-use and multi-purpose XMPP server. Although ejabberd is considered "heavyweight" by some due to the requirements of the Erlang runtimes, it is incredibly robust and can scale to support heavy loads. It even includes support for hosting multiple domains virtually.
 
-Before installing ejabberd, it is assumed that you have followed our [getting started guide](/docs/getting-started/). If you're new to Linux server administration, you may be interested in our [using Linux](/docs/using-linux/) document series including the [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
+Before installing ejabberd, it is assumed that you have followed our [getting started guide](/docs/getting-started/). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
 
 XMPP/Jabber Basics
 ------------------

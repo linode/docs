@@ -15,7 +15,7 @@ title: SSL Certificates with Nginx
 
 Transport Layer Security (TLS) and Secure Socket Layer (SSL) provide an easy method to encrypt connections between end-users and web servers. SSL uses a certificate authority system to provide identity verification in order to prevent websites from falsely claiming to be another organization or website. This guide outlines how to provide encrypted access to resources using SSL certificates and nginx.
 
-This document assumes that you have completed the [getting started guide](/docs/getting-started/). If you're new to Linux systems administration, we recommend that you read through the guides in our [using Linux guide](/docs/using-linux/) series, particularly the [administration basics guide](/docs/using-linux/administration-basics).
+This document assumes that you have completed the [getting started guide](/docs/getting-started/). If you're new to Linux systems administration, we recommend that you read through the [Linux users and groups guide](/docs/tools-reference/linux-users-and-groups) and the [administration basics guide](/docs/using-linux/administration-basics).
 
 Install Nginx With SSL Support
 ------------------------------
