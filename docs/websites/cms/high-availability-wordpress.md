@@ -90,7 +90,7 @@ Use the following commands to install Apache, PHP, and MySQL on each of the Lino
 
         GRANT REPLICATION SLAVE ON *.* TO 'replication'@'x.x.x.x' IDENTIFIED BY 'password';
 
-3.  Run the following command to test the configuration. Use the private IP address of the opposing Linode:
+3.  Back in the terminal, run the following command to test the configuration. Use the private IP address of the opposing Linode:
 
         mysql -ureplication -p -h x.x.x.x -P 3306
         
@@ -224,7 +224,7 @@ The steps in this section will need to be performed on **both** of your Linodes.
 
     {: .note}
     >
-    >After completing your WordPress installation steps and logging in for the first time, you will want to reset your permissions on your Document Root directory to ensure additional security.  You can do so with the following command.
+    >After completing your WordPress installation steps and logging in for the first time, you should reset  permissions on your Document Root directory to ensure additional security.  You can do so with the following command.
         
         chmod 755 /var/www/example.com/public_html/
 
