@@ -218,19 +218,24 @@ The steps in this section will need to be performed on **both** of your Linodes.
 
 4.  Connect to your Linode's IP address using your web browser, and walk through the configuration steps to fully install WordPress.
 
+5.  Configure your Wordpress URL and Site Address via the General Settings in the Wordpress admin interface.  Ensure that your domain is configured in both fields.
+
+    [![WordpressURL](/docs/assets/WP-site-address-rs.png)](/docs/assets/WP-site-address.png)
+
     {: .note}
     >
     >After completing your WordPress installation steps and logging in for the first time, you will want to reset your permissions on your Document Root directory to ensure additional security.  You can do so with the following command.
         
         chmod 755 /var/www/example.com/public_html/
 
-5.  Once the WordPress installation steps have been completed, copy the configurations to your second Linode. Replace x.x.x.x with the second Linode's IP address.
+6.  Once the WordPress installation steps have been completed, copy the configurations to your second Linode. Replace x.x.x.x with the second Linode's IP address.
 
         rsync -r /var/www/* x.x.x.x:/var/www/.
 
-6.  Log in to the second Linode and restart Apache.
+7.  Log in to the second Linode and restart Apache.
 
         sudo service apache2 restart
+
 
 You should now be able to visit the new Wordpress site on both of your Linodes, and updates from one Linode should be seen immediately on the other.
 
