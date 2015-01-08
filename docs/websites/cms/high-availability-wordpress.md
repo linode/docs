@@ -220,7 +220,8 @@ The steps in this section will need to be performed on both of your Linodes.
 
 5.  Configure your Wordpress URL and Site Address via the General Settings in the Wordpress admin interface.  Ensure that your domain is configured in both fields.
 
-        [![Wordpress URL](/docs/assets/WP-site-address-rs.png)](/docs/assets/WP-site-address.png)
+    [![WordpressURL](/docs/assets/WP-site-address-rs.png)](/docs/assets/WP-site-address.png)
+
 
 {: .note}
 >
