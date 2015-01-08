@@ -15,7 +15,7 @@ This guide configures a high availability Wordpress site with a two Linode clust
 
 ##Prerequisites
 
-To complete this guide, ensure that there are two Linodes and a NodeBalancer present on your account.  Both Linodes need to be assigned a [Private IP address](/docs/networking/remote-access#adding-private-ip-addresses). Also ensure that both of your Linode's have been configured with SSH keys, and place the opposing Linode's SSH key in the other's /.ssh/authorized_keys file.
+To complete this guide, ensure that there are two Linodes and a NodeBalancer present on your account. Both Linodes need to be assigned a [Private IP address](/docs/networking/remote-access#adding-private-ip-addresses). Also ensure that both of your Linode's have been configured with SSH keys, and place the opposing Linode's SSH key in the other's /.ssh/authorized_keys file.
 
 {: .note}
 >This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
@@ -86,7 +86,7 @@ Use the following commands to install Apache, PHP, and MySQL on each of the Lino
 
         mysql -u root -p
 
-2.  Configure the replication users on each Linode.  Replace `x.x.x.x` with the private IP address of the opposing Linode, and `password` with a strong password:
+2.  Configure the replication users on each Linode. Replace `x.x.x.x` with the private IP address of the opposing Linode, and `password` with a strong password:
 
         GRANT REPLICATION SLAVE ON *.* TO 'replication'@'x.x.x.x' IDENTIFIED BY 'password';
 
@@ -113,7 +113,7 @@ Use the following commands to install Apache, PHP, and MySQL on each of the Lino
         +------------------+----------+--------------+------------------+
         1 row in set (0.00 sec)
 
-2.  On Server 2 at the MySQL prompt, set up the slave functionality for that database.  Replace`x.x.x.x` with the private IP from the first server. Also replace the value for `master_log_file` with the file value from the previous step, and the value for `master_log_pos` with the position value.
+2.  On Server 2 at the MySQL prompt, set up the slave functionality for that database. Replace`x.x.x.x` with the private IP from the first server. Also replace the value for `master_log_file` with the file value from the previous step, and the value for `master_log_pos` with the position value.
 
         SLAVE STOP;
         CHANGE MASTER TO master_host='x.x.x.x', master_port=3306, master_user='replication', master_password='password', master_log_file='mysql-bin.000001', master_log_pos=106;
@@ -151,8 +151,8 @@ The steps in this section will need to be performed on both of your Linodes.
 
 4.  Create a set of folders inside the folder you've just created to store your website's files, logs, and backups. Enter the following command, replacing `example.com` with your domain name:
 
-        sudo mkdir -p example.com/public_html
-        sudo mkdir -p example.com/log
+        sudo mkdir example.com/public_html
+        sudo mkdir example.com/log
 
 5.  Create the virtual host file for the website by entering the following command. Replace the `example.com` in `example.com.conf` with your domain name:
 
@@ -161,7 +161,7 @@ The steps in this section will need to be performed on both of your Linodes.
     {:.caution}
     > The file name *must* end with `.conf` in Apache versions 2.4 and later, which Ubuntu 14.04 uses. The `.conf` extension is backwards-compatible with earlier versions.
 
-6.  Create the new virtual host file.  Replace `example.com` with your domain name.
+6.  Create the new virtual host file. Replace `example.com` with your domain name.
 
 {: .file-excerpt}
 /etc/apache2/sites-available/example.com.conf
@@ -197,14 +197,14 @@ The steps in this section will need to be performed on both of your Linodes.
 
 ##Install Wordpress
 
-1.  On the primary Linode, download and install the latest version of WordPress.  Replace any paths listed with the correct path for your configuration, and replace example.com with the proper domain name.
+1.  On the primary Linode, download and install the latest version of WordPress. Replace any paths listed with the correct path for your configuration, and replace example.com with the proper domain name.
 
         cd /var/www
         wget https://wordpress.org/latest.tar.gz
         tar -xvf latest.tar.gz
         cp -R wordpress/* /var/www/example.com/public_html
 
-2.  Configure the MySQL database for the new WordPress installation.  You'll need to replace "wordpressuser" and "password" with your own settings
+2.  Configure the MySQL database for the new WordPress installation. You'll need to replace "wordpressuser" and "password" with your own settings
 
         mysql -u root -p
         CREATE DATABASE wordpress;
@@ -218,14 +218,13 @@ The steps in this section will need to be performed on both of your Linodes.
 
 4.  Connect to your Linode's IP address using your web browser, and walk through the configuration steps to fully install WordPress.
 
-5.  Configure your Wordpress URL and Site Address via the General Settings in the Wordpress admin interface.  Ensure that your domain is configured in both fields.
+5.  Configure your Wordpress URL and Site Address via the General Settings in the Wordpress admin interface. Ensure that your domain is configured in both fields.
 
     [![WordpressURL](/docs/assets/WP-site-address-rs.png)](/docs/assets/WP-site-address.png)
 
-
 {: .note}
 >
->After completing your WordPress installation steps and logging in for the first time, you will want to reset your permissions on your Document Root directory to ensure additional security.  You can do so with the following command.
+>After completing your WordPress installation steps and logging in for the first time, you will want to reset your permissions on your Document Root directory to ensure additional security. You can do so with the following command.
         
         chmod 755 /var/www/example.com/public_html/
 
@@ -246,7 +245,7 @@ You should now be able to visit the new Wordpress site on both of your Linodes, 
 
 2.  If you have not done so already, add a NodeBalancer, ensuring that it is in the same datacenter that your backend Linodes are located in.
 
-3.  Click create configuration and edit your configuration settings as follows:
+3.  Select your new NodeBalancer, and click create configuration. Edit your configuration settings as follows:
 
         Port: 80
         Protocol: HTTP
@@ -254,8 +253,8 @@ You should now be able to visit the new Wordpress site on both of your Linodes, 
         Session Stickiness: Table
         Health Check Type: HTTP Valid Status
 
-4.  Once you click the "Save Changes" button, you will be prompted to add your nodes.  Provide a unique label for each one, and enter the private network address and port in the address field for each of the nodes.
+4.  Once you click the "Save Changes" button, you will be prompted to add your nodes. Provide a unique label for each one, and enter the private network address and port in the address field for each of the nodes.
 
-5.  When you have added both of your nodes, ensure that the health checks mark them as up.  Once both nodes are showing as up, return to the NodeBalancer's main page and note the IP address listed.  You should now be able to navigate to that IP address and view your webpage.
+5.  When you have added both of your nodes, ensure that the health checks mark them as up. Once both nodes are showing as up, return to the NodeBalancer's main page and note the IP address listed. You should now be able to navigate to that IP address and view your webpage.
 
-In order to test the High Availability functionality, either stop the Apache2/MySQL services on one of your nodes, or simply power them down one at a time.  The website should continue to be served without issue even when one of the nodes is marked as down.  Congratulations, you have now configured your high availability Wordpress site.
+In order to test the High Availability functionality, either stop the Apache2/MySQL services on one of your nodes, or simply power them down one at a time. The website should continue to be served without issue even when one of the nodes is marked as down. Congratulations, you have now configured your high availability Wordpress site.
