@@ -42,11 +42,11 @@ We need 5 instances of CentOS 6.5 (x86_64) installed as **"Basic Server"** (for 
 Also you should give a static ips to all servers.
 Here is sample IPs that you may give to your CentOS instances for testing this tutorial:
 
-1. **Node1**    (512 MB RAM, 1 CPU VM) - *192.168.1.71*
-2. **Node2**    (512 MB RAM, 1 CPU VM) - *192.168.1.81*
-3. **Node3**    (512 MB RAM, 1 CPU VM) - *192.168.1.91*
-4. **HAproxy1** (512 MB RAM, 1 CPU VM) - *192.168.1.33*
-5. **HAproxy2** (512 MB RAM, 1 CPU VM) - *192.168.1.88*
+1. **Node1**    (1 GB RAM, 1 CPU VM) - *192.168.1.71*
+2. **Node2**    (1 GB RAM, 1 CPU VM) - *192.168.1.81*
+3. **Node3**    (1 GB RAM, 1 CPU VM) - *192.168.1.91*
+4. **HAproxy1** (1 GB RAM, 1 CPU VM) - *192.168.1.33*
+5. **HAproxy2** (1 GB RAM, 1 CPU VM) - *192.168.1.88*
 
 Also keep in mind that we need another IP for KeepAlived that will act as Virtual IP for HAproxy intances.
 
