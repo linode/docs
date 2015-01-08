@@ -22,7 +22,7 @@ Fundamentally, Elgg is a specialized CMS (content management system) designed to
 
 Before beginning, we assume that you have followed our [getting started guide](/docs/getting-started/). You will also need to install a [LAMP stack](/docs/lamp-guides/debian-5-lenny/) before installing Elgg.
 
-If you're new to Linux server administration, you may be interested in our [using Linux](/docs/using-linux/) document series including the [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics). You will need to be logged into your Linode as root in order to complete the installation process.
+If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics). You will need to be logged into your Linode as root in order to complete the installation process.
 
 Prerequisites for Installing Elgg
 ---------------------------------

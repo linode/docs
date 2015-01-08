@@ -16,7 +16,7 @@ deprecated: true
 
 The Catalyst web framework is a contemporary Perl-based MVC, or Model View Controller. Like similar projects such as [Django](/docs/frameworks/), [Ruby On Rails](/docs/frameworks/), and [Seaside](/docs/frameworks/seaside/), Catalyst promotes efficient and rapid development, clear application logic, and web centric development paradigms. If you are used to developing applications with Perl and would like to develop modern web applications, you may consider using the Catalyst framework.
 
-In this document, we outline deploying applications developed with Catalyst using the Apache web server and the `mod_perl` method of running Perl applications embedded in the web server process. Before installing Catalyst, we assume that you have followed our [getting started guide](/docs/getting-started/). If you're new to Linux server administration you may be interested in our [using Linux](/docs/using-linux/) document series including the [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
+In this document, we outline deploying applications developed with Catalyst using the Apache web server and the `mod_perl` method of running Perl applications embedded in the web server process. Before installing Catalyst, we assume that you have followed our [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
 
 Installing Catalyst
 -------------------

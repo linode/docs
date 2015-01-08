@@ -15,7 +15,7 @@ title: DokuWiki Engine
 
 DokuWiki is a flexible and extensible wiki engine that aims to be easy to manage while providing a rich feature set to enable collaborative document editing and creation for users of all skill levels and technical inclinations. DokuWiki stores wiki pages in text files on the web-server rather than in a database management system, which increases data usability and portability for moderately sized wiki projects without requiring the system resources to power a relational database server.
 
-Before beginning the installation of DokuWiki, we assume that you have completed the [getting started guide](/docs/getting-started/). If you are new to Linux systems administration, consider the guides in our [using Linux](/docs/using-linux/) document series, particularly the [administration basics](/docs/using-linux/administration-basics) guide.
+Before beginning the installation of DokuWiki, we assume that you have completed the [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
 
 Install Prerequisites
 ---------------------

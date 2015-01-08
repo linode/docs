@@ -148,7 +148,6 @@ More Information
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [Wikipdia article on cron](http://en.wikipedia.org/wiki/Cron)
-- [Using Linux](/docs/using-linux)
 - [Administration Basics](/docs/using-linux/administration-basics)
 
 
