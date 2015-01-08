@@ -15,7 +15,7 @@ title: 'Secure Communications with OpenVPN on Ubuntu 12.04 (Precise) and Debian 
 
 OpenVPN, or Open Virtual Private Network, is a tool for creating networking tunnels between and among groups of computers that are not on the same local network. This is useful if you want to remotely access services on a local network without making them publicly accessible. By integrating with OpenSSL, OpenVPN can encrypt all VPN traffic to provide a secure connection between machines.
 
-Before installing OpenVPN, we assume that you have followed our [Getting Started Guide](/docs/getting-started/). If you're new to Linux server administration you may be interested in our [Using Linux](/docs/using-linux/) document series, including the [Beginner's Guide](/docs/beginners-guide/) and [Administration Basics Guide](/docs/using-linux/administration-basics). If you're concerned about securing on your Linode, you might be interested in our [Security Basics](/docs/security/basics) article as well.
+Before installing OpenVPN, we assume that you have followed our [Getting Started Guide](/docs/getting-started/). If you're new to Linux server administration you may be interested in our [Introduction to Linux Concepts Guide](/docs/tools-reference/introduction-to-linux-concepts), [Beginner's Guide](/docs/beginners-guide/) and [Administration Basics Guide](/docs/using-linux/administration-basics). If you're concerned about securing on your Linode, you might be interested in our [Security Basics](/docs/security/basics) article as well.
 
  {: .note }
 >

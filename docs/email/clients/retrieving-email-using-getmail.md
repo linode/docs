@@ -15,7 +15,7 @@ title: Retrieving Email Using Getmail
 
 Getmail is a simple mail retriever. In many ways, the software is a response to the complexity of [fetchmail](/docs/email/fetchmail/). It aims to provide a simple and efficient tool for downloading email from POP and IMAP servers. You can use getmail to download email from your Linode's mail server powered by [Citadel](/docs/email/citadel/) or [Courier](/docs/email/postfix/) or you can use getmail on your Linode to download email from one or more third party mail providers (as long as POP or IMAP is supported) and deliver it to a local email gateway.
 
-Before getting started with Getmail, we assume that you have followed our [getting started guide](/docs/getting-started/). If you're new to Linux server administration, you may be interested in our [using Linux](/docs/using-linux/) document series including the [beginner's guide](/docs/beginners-guide/) and the [administration basics guide](/docs/using-linux/administration-basics).
+Before getting started with Getmail, we assume that you have followed our [getting started guide](/docs/getting-started/). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and the [administration basics guide](/docs/using-linux/administration-basics).
 
 Installing Getmail
 ------------------

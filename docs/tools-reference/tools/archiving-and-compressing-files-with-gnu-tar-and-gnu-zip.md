@@ -15,7 +15,7 @@ title: Archiving and Compressing files with GNU Tar and GNU Zip
 
 `tar` and `gzip` provide a standard interface for creating archives and compressing files on Linux-based systems. Fundamentally, the function of these utilities is to take a large number of files, save them together in an archive (i.e. as a single file), and compress the archive to save space. However, tar and gzip provide a multitude of features that may obfuscate even the most simple of operations.
 
-This document provides an overview of `tar` and `gzip` usage, accompanied by a number of practical applications of these utilities. If you find this guide helpful, please consider our guide to [basic administration practices](/docs/using-linux/administration-basics) or the rest of the [common commands](/docs/linux-tools/common-commands/) and [using linux](/docs/using-linux/) series.
+This document provides an overview of `tar` and `gzip` usage, accompanied by a number of practical applications of these utilities. If you find this guide helpful, please consider our guide to [basic administration practices](/docs/using-linux/administration-basics) or the rest of the [Tools & Reference](/docs/tools-reference/) series.
 
 Using Tar and Gzip
 ------------------
