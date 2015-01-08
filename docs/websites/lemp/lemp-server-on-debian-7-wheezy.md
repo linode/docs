@@ -71,7 +71,7 @@ You will need to configure `server` declarations to specify name-based virtual h
 
 Create the `public_html` and `log` directories referenced in this configuration by issuing the following command (make sure to change example.com to your domain name):
 
-    sudo mkdir -p /srv/www/example.com/{public_html, logs}
+    sudo mkdir -p /srv/www/example.com/{public_html,logs}
 
 Then issue the following commands to enable the site and restart the web server.
 
