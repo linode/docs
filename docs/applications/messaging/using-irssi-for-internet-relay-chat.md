@@ -25,7 +25,6 @@ Complete these tasks before you start:
 -   All the procedures listed in the [Getting Started](/docs/getting-started/) guide
 -   The **Adding a New User**, **Using SSH Key Pair Authentication**, and **Disabling SSH Password Authentication and Root Login** sections in the [Securing Your Server](/docs/securing-your-server/) guide
 -   Make sure **GNU Screen** is installed. It should be by default. See our [Screen Guide](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions) for information.
--   If the [Firewall portion](/docs/security/securing-your-server#creating-a-firewall) of the [Securing Your Server](/docs/securing-your-server/) guide has been completed, add a line to `/etc/iptables.firewall.rules` allowing traffic to your IRC port.
 
 Installing Irssi
 ----------------
