@@ -86,7 +86,7 @@ Use the following commands to install Apache, PHP, and MySQL on each of the Lino
 
         mysql -u root -p
 
-2.  Configure the replication users on each Linode. Replace "x.x.x.x" with the private IP address of the opposing Linode, and "password" with a strong password:
+2.  Configure the replication users on each Linode. Replace `x.x.x.x` with the private IP address of the opposing Linode, and `password` with a strong password:
 
         GRANT REPLICATION SLAVE ON *.* TO 'replication'@'x.x.x.x' IDENTIFIED BY 'password';
 
@@ -113,7 +113,7 @@ Use the following commands to install Apache, PHP, and MySQL on each of the Lino
         +------------------+----------+--------------+------------------+
         1 row in set (0.00 sec)
 
-2.  On Server 2, at the MySQL prompt, set up the slave functionality for that database. Replace "x.x.x.x" with the private IP from the first server. Also replace the values for `master_log_file` and `master_log_pos` with the values from the previous step:
+2.  On Server 2, at the MySQL prompt, set up the slave functionality for that database. Replace `x.x.x.x` with the private IP from the first server. Also replace the values for `master_log_file` and `master_log_pos` with the values from the previous step:
 
         SLAVE STOP;
         CHANGE MASTER TO master_host='x.x.x.x', master_port=3306, master_user='replication', master_password='password', master_log_file='mysql-bin.000001', master_log_pos=277;
@@ -232,7 +232,7 @@ The steps in this section will need to be performed on **both** of your Linodes.
     >
     >     chmod 755 /var/www/example.com/public_html/
 
-6.  Once the WordPress installation steps have been completed, copy the configurations to your second Linode. Replace "x.x.x.x" with the second Linode's IP address:
+6.  Once the WordPress installation steps have been completed, copy the configurations to your second Linode. Replace `x.x.x.x` with the second Linode's IP address:
 
         rsync -r /var/www/* x.x.x.x:/var/www/.
 
