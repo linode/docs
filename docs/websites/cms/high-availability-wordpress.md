@@ -15,12 +15,12 @@ This guide configures a high availability Wordpress site with a two Linode clust
 
 ##Prerequisites
 
-To complete this guide, ensure that there are two Linodes and a NodeBalancer present on your account. Both Linodes need to be assigned a [Private IP address](/docs/networking/remote-access#adding-private-ip-addresses). Also ensure that both of your Linode's have been configured with SSH keys, and place the opposing Linode's SSH key in the other's `/.ssh/authorized_keys` file.
+This guide is written for Debian 7 or Ubuntu 14.04.
+
+To complete this guide, ensure that there are two Linodes and a NodeBalancer present on your account. Both Linodes need to be assigned a [private IP address](/docs/networking/remote-access#adding-private-ip-addresses) and configured with SSH keys. Place the opposing Linode's SSH key in the other's `/.ssh/authorized_keys` file.
 
 {: .note}
 >This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
->
->This guide is written for Debian 7 or Ubuntu 14.04.
 
 ##Install Required Software Packages
 
@@ -30,7 +30,7 @@ Use the following commands to install Apache, PHP, and MySQL on each of the Lino
     sudo apt-get upgrade -y
     sudo apt-get install apache2 php5 php5-mysql mysql-server mysql-client
 
-##Edit MySQL's Configuration to set up Master-Master Replication
+##Edit MySQL's Configuration to Set Up Master-Master Replication
 
 1.  Edit the `/etc/mysql/my.cnf` file on each of the Linodes. Add or modify the following values:
 
@@ -86,7 +86,7 @@ Use the following commands to install Apache, PHP, and MySQL on each of the Lino
 
         mysql -u root -p
 
-2.  Configure the replication users on each Linode. Replace `x.x.x.x` with the private IP address of the opposing Linode, and `password` with a strong password:
+2.  Configure the replication users on each Linode. Replace "x.x.x.x" with the private IP address of the opposing Linode, and "password" with a strong password:
 
         GRANT REPLICATION SLAVE ON *.* TO 'replication'@'x.x.x.x' IDENTIFIED BY 'password';
 
@@ -113,29 +113,32 @@ Use the following commands to install Apache, PHP, and MySQL on each of the Lino
         +------------------+----------+--------------+------------------+
         1 row in set (0.00 sec)
 
-2.  On Server 2 at the MySQL prompt, set up the slave functionality for that database. Replace`x.x.x.x` with the private IP from the first server. Also replace the value for `master_log_file` with the file value from the previous step, and the value for `master_log_pos` with the position value.
+2.  On Server 2, at the MySQL prompt, set up the slave functionality for that database. Replace "x.x.x.x" with the private IP from the first server. Also replace the values for `master_log_file` and `master_log_pos` with the values from the previous step:
 
         SLAVE STOP;
         CHANGE MASTER TO master_host='x.x.x.x', master_port=3306, master_user='replication', master_password='password', master_log_file='mysql-bin.000001', master_log_pos=277;
         SLAVE START;
 
-3.  On Server 2, query the master status. Again note the file and position values.
+3.  On Server 2, query the master status. Note the file and position values:
 
         SHOW MASTER STATUS;
 
-4.  Set the slave database status on Server 1, replacing the same values swapped in step 2 with those from the Server 2.
+4.  Set the slave database status on Server 1, replacing the same values swapped in step 2 with those from the Server 2:
 
         SLAVE STOP;
         CHANGE MASTER TO master_host='x.x.x.x', master_port=3306, master_user='replication', master_password='password', master_log_file='mysql-bin.000001', master_log_pos=277;
         SLAVE START;
 
-5.  Exit MySQL on both of your Linodes
+5.  Exit MySQL on both of your Linodes:
 
         exit
 
 ##Configure Apache
 
 The steps in this section will need to be performed on **both** of your Linodes.
+
+{: .note}
+>For the following sections of this guide, replace "example.com" with your domain name.
 
 1.  Disable the default Apache virtual host by entering the following command:
 
@@ -145,23 +148,23 @@ The steps in this section will need to be performed on **both** of your Linodes.
 
         cd /var/www
 
-3.  Create a folder to hold your website by entering the following command, replacing 'example.com' with your domain name:
+3.  Create a folder to hold your website by entering the following command:
 
         sudo mkdir example.com
 
-4.  Create a set of folders inside the folder you've just created to store your website's files, logs, and backups. Enter the following command, replacing `example.com` with your domain name:
+4.  Create a set of folders inside the folder you've just created to store your website's files, logs, and backups:
 
         sudo mkdir example.com/public_html
         sudo mkdir example.com/log
 
-5.  Create the virtual host file for the website by entering the following command. Replace the `example.com` in `example.com.conf` with your domain name:
+5.  Create the virtual host file for the website by entering the following command:
 
         sudo nano /etc/apache2/sites-available/example.com.conf
 
     {:.caution}
     > The file name *must* end with `.conf` in Apache versions 2.4 and later, which Ubuntu 14.04 uses. The `.conf` extension is backwards-compatible with earlier versions.
 
-6.  Create the new virtual host file. Replace `example.com` with your domain name.
+6.  Create the new virtual host file:
 
     {: .file-excerpt}
     /etc/apache2/sites-available/example.com.conf
@@ -187,24 +190,24 @@ The steps in this section will need to be performed on **both** of your Linodes.
 
 7.  Save the changes to the virtual host configuration file by pressing `Control + x` and then `y`. Press `Enter` to confirm.
 
-8. Enable the new website by entering the following command. Replace `example.com` with your domain name:
+8. Enable the new website by entering the following command:
 
         sudo a2ensite example.com.conf
 
-9.  Restart Apache.
+9.  Restart Apache:
 
         sudo service apache2 restart
 
 ##Install Wordpress
 
-1.  On the primary Linode, download and install the latest version of WordPress. Replace any paths listed with the correct path for your configuration, and replace example.com with the proper domain name.
+1.  On the primary Linode, download and install the latest version of WordPress. Replace any paths listed with the correct path for your configuration:
 
         cd /var/www
         wget https://wordpress.org/latest.tar.gz
         tar -xvf latest.tar.gz
         cp -R wordpress/* /var/www/example.com/public_html
 
-2.  Configure the MySQL database for the new WordPress installation. You'll need to replace "wordpressuser" and "password" with your own settings
+2.  Configure the MySQL database for the new WordPress installation. You'll need to replace "wordpressuser" and "password" with your own settings:
 
         mysql -u root -p
         CREATE DATABASE wordpress;
@@ -212,7 +215,7 @@ The steps in this section will need to be performed on **both** of your Linodes.
         FLUSH PRIVILEGES;
         EXIT
 
-3.  Set permissions on the Document Root directory to enable WordPress to complete its configuration steps.
+3.  Set permissions on the Document Root directory to enable WordPress to complete its configuration steps:
 
         chmod 777 /var/www/example.com/public_html/
 
@@ -229,11 +232,11 @@ The steps in this section will need to be performed on **both** of your Linodes.
     >
     >     chmod 755 /var/www/example.com/public_html/
 
-6.  Once the WordPress installation steps have been completed, copy the configurations to your second Linode. Replace x.x.x.x with the second Linode's IP address.
+6.  Once the WordPress installation steps have been completed, copy the configurations to your second Linode. Replace "x.x.x.x" with the second Linode's IP address:
 
         rsync -r /var/www/* x.x.x.x:/var/www/.
 
-7.  Log in to the second Linode and restart Apache.
+7.  Log in to the second Linode and restart Apache:
 
         sudo service apache2 restart
 
@@ -246,7 +249,7 @@ You should now be able to visit the new Wordpress site on both of your Linodes, 
 
 2.  If you have not done so already, add a NodeBalancer, ensuring that it is in the same datacenter as your backend Linodes.
 
-3.  Select your new NodeBalancer, and click create configuration. Edit your configuration settings as follows:
+3.  Select your new NodeBalancer, and click "Create Configuration." Edit your configuration settings as follows:
 
         Port: 80
         Protocol: HTTP
@@ -258,4 +261,6 @@ You should now be able to visit the new Wordpress site on both of your Linodes, 
 
 5.  When you have added both of your nodes, ensure that the health checks mark them as up. Once both nodes are showing as up, return to the NodeBalancer's main page and note the IP address listed. You should now be able to navigate to that IP address and view your webpage.
 
-In order to test the High Availability functionality, either stop the Apache2/MySQL services on one of your nodes, or simply power them down one at a time. The website should continue to be served without issue even when one of the nodes is marked as down. Congratulations, you have now configured your high availability Wordpress site.
+In order to test the high availability functionality, either stop the Apache2/MySQL services on one of your nodes, or power them down one at a time. The website should continue to be served without issue even when one of the nodes is marked as down.
+
+Congratulations, you have now configured your high availability Wordpress site!
