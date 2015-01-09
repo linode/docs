@@ -2,16 +2,16 @@
 author:
   name: James Stewart
   email: jstewart@linode.com
-description: 'Configuring a highly available Wordpress installation.'
+description: 'Configuring a highly available WordPress installation.'
 keywords: 'wordpress,mysql,replication,master-master,high availability'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Wednesday, December 24, 2014
+modified: Friday, January 9, 2015
 modified_by:
   name: James Stewart
-published: 'Wednesday, December 24, 2014'
-title: High Availability Wordpress Hosting
+published: 'Friday, January 9, 2015'
+title: High Availability WordPress Hosting
 ---
-This guide configures a high availability Wordpress site with a two Linode cluster, using MySQL Master-Master replication and a Linode NodeBalancer frontend.
+This guide configures a high availability WordPress site with a two Linode cluster, using MySQL Master-Master replication and a Linode NodeBalancer frontend.
 
 ##Prerequisites
 
@@ -198,7 +198,7 @@ The steps in this section will need to be performed on **both** of your Linodes.
 
         sudo service apache2 restart
 
-##Install Wordpress
+##Install WordPress
 
 1.  On the primary Linode, download and install the latest version of WordPress. Replace any paths listed with the correct path for your configuration:
 
@@ -221,9 +221,9 @@ The steps in this section will need to be performed on **both** of your Linodes.
 
 4.  Connect to your Linode's IP address using your web browser, and walk through the configuration steps to fully install WordPress.
 
-5.  Configure your Wordpress URL and Site Address via the General Settings in the Wordpress admin interface. Ensure that your domain is configured in both fields.
+5.  Configure your WordPress URL and Site Address via the General Settings in the WordPress admin interface. Ensure that your domain is configured in both fields.
 
-    [![WordpressURL](/docs/assets/WP-site-address-rs.png)](/docs/assets/WP-site-address.png)
+    [![WordPressURL](/docs/assets/WP-site-address-rs.png)](/docs/assets/WP-site-address.png)
 
     {: .note}
     >
@@ -241,7 +241,7 @@ The steps in this section will need to be performed on **both** of your Linodes.
         sudo service apache2 restart
 
 
-You should now be able to visit the new Wordpress site on both of your Linodes, and updates from one Linode should be seen immediately on the other.
+You should now be able to visit the new WordPress site on both of your Linodes, and updates from one Linode should be seen immediately on the other.
 
 ##Configure Your Nodebalancer
 
@@ -263,4 +263,4 @@ You should now be able to visit the new Wordpress site on both of your Linodes, 
 
 In order to test the high availability functionality, either stop the Apache2/MySQL services on one of your nodes, or power them down one at a time. The website should continue to be served without issue even when one of the nodes is marked as down.
 
-Congratulations, you have now configured your high availability Wordpress site!
+Congratulations, you have now configured your high availability WordPress site!
