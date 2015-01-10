@@ -8,7 +8,11 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['networking/configuring-static-ip-interfaces/']
 modified: Saturday, December 27th, 2014
 modified_by:
+<<<<<<< HEAD
   name: Dave Russell Jr
+=======
+  name: Dave Russell
+>>>>>>> d4f444241a661b318e873ff9d48698fedbe0158e
 published: 'Thursday, July 20th, 2014'
 title: Linux Static IP Configuration
 ---
@@ -150,7 +154,11 @@ In the example below, change the IP addresses to reflect the values shown under 
     iface lo inet loopback
 
     # Configuration for eth0
+<<<<<<< HEAD
     # We no longer need to use aliases (eg. eth0:0 eth0:1 eth0:2)
+=======
+    # We no longer need to use aliases (eg. eth0:0 eth0:1 eth0:2) 
+>>>>>>> d4f444241a661b318e873ff9d48698fedbe0158e
     # This line ensures that the interface will be brought up during boot
     auto eth0
 
@@ -168,6 +176,10 @@ In the example below, change the IP addresses to reflect the values shown under 
     # This is a private IP address. Private IPs do not have a gateway (they are not publicly routable).
     # All you need to specify is the address and the block. The netmask is taken from the block.
     # Example: /17 is considered to be a private IP address: netmask 255.255.128.0
+<<<<<<< HEAD
+=======
+
+>>>>>>> d4f444241a661b318e873ff9d48698fedbe0158e
     iface eth0 inet static
     address 192.168.133.234/17
     ~~~
@@ -225,7 +237,11 @@ Put the DHCP network configuration offline:
 
 Bring the static network configuration we just created online:
 
+<<<<<<< HEAD
     nmcli con up "System eth0"
+=======
+    nmcli con up "System eth0" 
+>>>>>>> d4f444241a661b318e873ff9d48698fedbe0158e
 
 Any changes you make to the configuration will require you to reload and down/up the interface.
 
