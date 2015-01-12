@@ -6,7 +6,7 @@ description: 'Setting up networking for multiple IP addresses.'
 keywords: 'static ip,linux networking,ifconfig,configure network,linux network,multiple ip'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['networking/configuring-static-ip-interfaces/']
-modified: Tuesday, August 12, 2014
+modified: Friday, December 26, 2014
 modified_by:
   name: Linode
 published: 'Thursday, July 20th, 2014'
@@ -29,7 +29,7 @@ Some distributions will determine the netmask based on the block of the IP addre
 Obtain Network Configuration
 ----------------------------
 
-Before you edit any files, you'll need to obtain some information. Log into the [Linode Manager] (https://manager.linode.com/) and click the "Remote Access" tab. You'll find your IP addresses (both public and private, if you have a private IP assigned), gateways, netmasks and DNS resolvers.
+Before you edit any files, you'll need to obtain some information. Log into the [Linode Manager](https://manager.linode.com/) and click the "Remote Access" tab. You'll find your IP addresses (both public and private, if you have a private IP assigned), gateways, netmasks and DNS resolvers.
 
 Keep this information handy, because you'll need to refer to it as you configure your Linode's network settings. Since Linodes only have one virtual ethernet interface (**eth0**), you'll need to assign additional IPs to aliases on that interface. This means you'll append a colon and a number to the interface name. For these examples, the aliases are numbered in the order they were given, but most outbound connections will originate from the IP assigned to the **eth0** interface. If you need server daemons to bind to a particular IP address, you'll need to specify the correct IP in their configuration files.
 
@@ -188,10 +188,10 @@ Note: CentOS 7/Fedora 20 no longer uses the `network` service. Instead, use the 
 
 In the example below, change the IP addresses to reflect the values shown under the "Remote Access" tab of the Linode Manager.
 
-You must create the `/etc/sysconfig/network-scripts/ifcfg-static-eth0` file.
+You must create the `/etc/sysconfig/network-scripts/ifcfg-eth0` file.
 
 {: .file }
-/etc/sysconfig/network-scripts/ifcfg-static-eth0
+/etc/sysconfig/network-scripts/ifcfg-eth0
 : ~~~
   # Configuration for eth0
   DEVICE=eth0
@@ -225,7 +225,7 @@ Put the DHCP network configuration offline:
 
 Bring the static network configuration we just created online:
 
-    nmcli con up "System static-eth0" 
+    nmcli con up "System eth0"
 
 Any changes you make to the configuration will require you to reload and down/up the interface.
 
@@ -304,7 +304,7 @@ Networking in Gentoo utilizes the `netifrc` utility.
 
 You will need to edit the `/etc/conf.d/net` file so that it resembles the example below. However, you should change the IP addresses in the example to match the IP addresses from the "Remote Access" tab of the Linode Manager.
 
-{. file: } 
+{: .file }
 /etc/conf.d/net
 : ~~~
   # Configuration for eth0 on multiple IP addresses

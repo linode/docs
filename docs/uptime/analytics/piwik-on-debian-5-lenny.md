@@ -15,7 +15,7 @@ title: 'Piwik on Debian 5 (Lenny)'
 
 Piwik is a "downloadable, open source (GPL licensed) web analytics software program." As an alternative to services like Google Analytics, Piwik allows you to host your statistics services on your own server and have full ownership of control of the data collected from your visitors.
 
-For the purpose of this guide, we assume that you have running and functional server, and have followed the [getting started guide](/docs/getting-started/). If you are new to administering Linux servers and have questions about basic system usage, you might want to consider the [beginners guide](/docs/beginners-guide) and our [using Linux](/docs/using-linux/) documentation for a more complete introduction to Linux.
+For the purpose of this guide, we assume that you have running and functional server, and have followed the [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
 
 Beyond the basics, Piwik requires a functioning LAMP stack, which is outlined in our [Debian 5 (Lenny) LAMP guide](/docs/lamp-guides/debian-5-lenny/). Make sure you follow the steps for installing PHP and PHP-MySQL support. You will also want to be logged in over SSH as root.
 

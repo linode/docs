@@ -5,7 +5,7 @@ author:
 description: 'Serve SSL-enabled websites with the Apache 2 web server on Ubuntu.'
 keywords: 'apache ssl,ssl ubuntu,web sever,ubuntu,ubuntu precise pangolin,ubuntu'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['web-servers/apache/ssl-guides/ubuntu-12-04-precise-pangolin/','security/ssl/ssl-certificates-with-apache2-on-ubuntu-12-04-precise-pangolin']
+alias: ['web-servers/apache/ssl-guides/ubuntu-12-04-precise-pangolin/','security/ssl/ssl-certificates-with-apache-2-on-ubuntu-12-04-precise-pangolin/']
 modified: Saturday, November 1st, 2014
 modified_by:
   name: Dave Russell
@@ -70,8 +70,8 @@ Replace "12.34.56.78" with your Linode's IP address. Next, edit the virtual host
          ServerAdmin info@mydomain.com
          ServerName www.mydomain.com
          DocumentRoot /var/www/mydomain.com/public_html/
-         ErrorLog /var/www/mydomain.com/logs/error.log
-         CustomLog /var/www/mydomain.com/logs/access.log combined
+         ErrorLog /var/www/mydomain.com/log/error.log
+         CustomLog /var/www/mydomain.com/log/access.log combined
     </VirtualHost>
     ~~~
 
@@ -168,8 +168,8 @@ Replace "12.34.56.78" with the IP address of your SSL-enabled site. Next, edit t
          ServerAdmin info@mydomain.com
          ServerName www.mydomain.com
          DocumentRoot /var/www/mydomain.com/public_html/
-         ErrorLog /var/www/mydomain.com/logs/error.log
-         CustomLog /var/www/mydomain.com/logs/access.log combined
+         ErrorLog /var/www/mydomain.com/log/error.log
+         CustomLog /var/www/mydomain.com/log/access.log combined
     </VirtualHost>
     ~~~
 

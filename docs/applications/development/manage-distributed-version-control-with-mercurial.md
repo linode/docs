@@ -15,7 +15,7 @@ title: Manage Distributed Version Control with Mercurial
 
 Mercurial is one of the leading distributed version control systems that allows software developers and teams of collaborators to work on a common code base without needing to rely on a centralized server or constant network connection while working. This document will provide an introduction to the Mercurial version control system so you can begin to use Mercurial to manage source control and collaboration for your development projects.
 
-Mercurial runs on multiple platforms and you may choose to use Mercurial to manage code projects on systems running many different operating systems. Before deploying Mercurial on a Linode, we assume that you have completed our [getting started guide](/docs/getting-started/). If you're new to Linux systems administration, we recommend engaging the guides in our [using Linux](/docs/using-linux/) series, particularly the [administration basics](/docs/using-linux/administration-basics) guide.
+Mercurial runs on multiple platforms and you may choose to use Mercurial to manage code projects on systems running many different operating systems. Before deploying Mercurial on a Linode, we assume that you have completed our [getting started guide](/docs/tools-reference/introduction-to-linux-concepts). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
 
 Installing Mercurial
 --------------------

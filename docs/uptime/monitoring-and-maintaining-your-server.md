@@ -190,7 +190,7 @@ Linux distributions such as Ubuntu and Fedora use version numbers to identify th
 There are two ways to upgrade a Linode running an unsupported release. You can upgrade your existing server to the next release, or you can create a new Linode with the newest release available and transfer your files from the old server:
 
 -   To upgrade your server, use one of our [Upgrading Guides](/docs/upgrading) or check the distribution's website for instructions.
--   To create a new Linode and transfer your files from the old server, use our [Getting Started](/docs/getting-started) guide and then [migrate the disk image](/docs/migration) from the old server to transfer the files, or use an FTP client.
+-   To create a new Linode and transfer your files from the old server, use our [Getting Started](/docs/getting-started) guide and then [migrate the disk](/docs/migration) from the old server to transfer the files, or use an FTP client.
 
  {: .note }
 >

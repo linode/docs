@@ -16,7 +16,7 @@ title: 'Websites with Nginx on Ubuntu 12.04 LTS (Precise Pangolin)'
 
 Nginx is a lightweight and high performance web server designed with the purpose of delivering large amounts of static content quickly and with efficient use of system resources. In contrast to the [Apache HTTP server](/docs/web-servers/apache/) that uses a threaded or process-oriented approach to handling requests, nginx uses an asynchronous event-driven model which provides more predictable performance under load. This guide will help you get nginx up and running on your Ubuntu 12.04 LTS (Precise Pangolin) Linux VPS.
 
-Before we begin installing the nginx web server, we assume that you have followed our [getting started guide](/docs/getting-started/). If you're new to Linux server administration, you may be interested in our [using Linux](/docs/using-linux/) document series including the [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
+Before we begin installing the nginx web server, we assume that you have followed our [getting started guide](/docs/getting-started/). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
 
 Set the Hostname
 ----------------

@@ -18,7 +18,7 @@ title: Use MongoDB to Store Application Data on Fedora 13
 
 MongoDB is a database engine that provides access to non-relational key-value databases. It is part of the growing NoSQL movement, which seeks to provide an alternative to traditional relational database management systems (RDBMS). In addition to its schema-free design and scalable architecture, MongoDB provides a JSON-based output format and specialized language specific bindings that make it particularly attractive for use in custom application development. Although MongoDB is a relatively new project and has not yet been packaged by most major operating system distributions, the software has been used in a number of large scale [production deployments](http://www.mongodb.org/display/DOCS/Production+Deployments) such as "GitHub", "SourceForge", and "DISQUS".
 
-Before installing MongoDB, it is assume that you have followed our [getting started guide](/docs/getting-started/). If you're new to Linux server administration, you may be interested in our [using Linux](/docs/using-linux/) document series including the [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
+Before installing MongoDB, it is assume that you have followed our [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
 
 Installing MongoDB
 ------------------

@@ -15,7 +15,7 @@ title: Manipulate Text from the Command Line with sed
 
 The traditional Unix utility `sed` makes it possible to manipulate strings and streams of text from the command line without using a text editing application. `sed` is useful in a number of different contexts, including finding and replacing strings of text in a large number of files, manipulating text for [Stack Scripts](http://linode.com/stackscripts/) and other kinds of scripts, as well as a component in basic shell scripting.
 
-This document provides a gentle overview of `sed` usage, accompanied by a number of practical applications of `sed`. If you find this guide helpful, please consider our guide to [basic administration practices](/docs/using-linux/administration-basics) or the rest of the [using linux series](/docs/using-linux/).
+This document provides a gentle overview of `sed` usage, accompanied by a number of practical applications of `sed`. If you find this guide helpful, please consider our guide to [basic administration practices](/docs/using-linux/administration-basics) or the rest of the [Tools & Reference section](/docs/tools-reference/).
 
 Using Sed
 ---------

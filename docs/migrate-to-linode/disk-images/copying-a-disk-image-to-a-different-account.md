@@ -2,23 +2,23 @@
 author:
   name: Linode
   email: docs@linode.com
-description: Our guide to copying a disk image to a different Linode account
-keywords: 'disk image,migration,moving to different accounts'
+description: Our guide to copying a disk to a different Linode account
+keywords: 'disk,migration,moving to different accounts'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['migration/copy-disk-image-different-account/','linode-platform/manager/managing-disk-images/']
 modified: Thursday, June 12th, 2014
 modified_by:
   name: Alex Fornuto
 published: 'Friday, June 1st, 2012'
-title: Copying a Disk Image to a Different Account
+title: Copying a Disk to a Different Account
 ---
 
-You can copy a Linode's disk image from one Linode account to another. This is a great way to prepare a disk image for another Linode customer and transfer it from your account to the other user's account. Or if you have multiple Linode accounts, you can use this guide to consolidate all of your disk images in one account.
+You can copy a Linode's disk from one Linode account to another. This is a great way to prepare a disk for another Linode customer and transfer it from your account to the other user's account. Or if you have multiple Linode accounts, you can use this guide to consolidate all of your disks in one account.
 
 Preparing the Source Linode
 ---------------------------
 
-Before initiating the transfer, you'll need to prepare the *source* Linode that contains the disk image you want to copy. Start the Linode in rescue mode to transfer files to the other account. Here's how:
+Before initiating the transfer, you'll need to prepare the *source* Linode that contains the disk you want to copy. Start the Linode in rescue mode to transfer files to the other account. Here's how:
 
 1.  Boot your Linode into Rescue Mode. For instructions, see [Booting into Rescue Mode](/docs/rescue-and-rebuild#sph_booting-into-rescue-mode).
 2.  After the Linode has booted, connect to it via LISH. For instructions, see [Connecting to a Linode Running in rescue mode](/docs/rescue-and-rebuild#sph_connecting-to-a-linode-running-in-rescue-mode).
@@ -28,24 +28,24 @@ Your Linode is now ready to transfer files to the other account.
 Preparing the Receiving Linode
 ------------------------------
 
-You'll also need to prepare the *receiving* Linode before initiating the transfer. First, create a new disk image to hold the files from the other Linode. Then start the Linode in rescue mode to receive the files from the other account.
+You'll also need to prepare the *receiving* Linode before initiating the transfer. First, create a new disk to hold the files from the other Linode. Then start the Linode in rescue mode to receive the files from the other account.
 
-### Creating a New Disk Image
+### Creating a New Disk
 
-To hold the files that will be transferred from the other Linode, you should create a new disk image. Here's how:
+To hold the files that will be transferred from the other Linode, you should create a new disk. Here's how:
 
-1.  Log in to the [Linode Manager](https://manager.linode.com) with the account that will be receiving the disk image.
+1.  Log in to the [Linode Manager](https://manager.linode.com) with the account that will be receiving the disk.
 2.  Click the **Linodes** tab. A list of your virtual private servers appears.
-3.  Select the Linode that will be receiving the disk image. The Linode's dashboard appears.
-4.  Create a disk image to hold the files from the other account's disk image. Select **Create a new Disk Image**. The webpage shown below appears.
+3.  Select the Linode that will be receiving the disk. The Linode's dashboard appears.
+4.  Create a disk to hold the files from the other account's disk. Select **Create a new disk**. The webpage shown below appears.
 
 [![Creating a configuration profile](/docs/assets/1746-migration3-1_small.png)](/docs/assets/1747-migration3-1.png)
 
-5.  Enter a descriptive name for the disk image in the **Label** field.
-6.  Enter a size for the disk image in the **Size** field. You should make the disk image large enough to hold the contents of the other disk image.
-7.  Click **Save Changes** to create the disk image. You can monitor the disk image creation process by watching the *Host Job Queue*.
+5.  Enter a descriptive name for the disk in the **Label** field.
+6.  Enter a size for the disk in the **Size** field. You should make the disk large enough to hold the contents of the other disk.
+7.  Click **Save Changes** to create the disk. You can monitor the disk creation process by watching the *Host Job Queue*.
 
-You have successfully created a disk image to hold the files from the other account's disk image.
+You have successfully created a disk to hold the files from the other account's disk.
 
 ### Booting into Rescue Mode
 
@@ -57,12 +57,12 @@ Start the receiving Linode in rescue mode. Here's how:
 
 Your Linode is now ready to receive the files from the other Linode account.
 
-Copying the Disk Image
+Copying the disk
 ----------------------
 
-Now it's time to start copying the files on the disk image from one account to another. Here's how to initiate the file transfer:
+Now it's time to start copying the files on the disk from one account to another. Here's how to initiate the file transfer:
 
-1.  On the source Linode, enter the following command to start copying the disk image, replacing `12.34.56.78` with your Linode's IP address.:
+1.  On the source Linode, enter the following command to start copying the disk, replacing `12.34.56.78` with your Linode's IP address.:
 
         dd if=/dev/xvda | ssh -C 12.34.56.78 "dd of=/dev/xvda"
 
@@ -85,22 +85,22 @@ Now it's time to start copying the files on the disk image from one account to a
         2048000+0 records out
         1048576000 bytes (1.0 GB) copied, 387.843 seconds, 2.7 MB/s
 
-Wait for the transfer to complete. Note that this process can take a while, depending on the size of your disk image.
+Wait for the transfer to complete. Note that this process can take a while, depending on the size of your disk.
 
-Verifying the Disk Image
+Verifying the Disk
 ------------------------
 
-After the file transfer has completed, you should verify the disk image by mounting it on the receiving Linode. Here's how:
+After the file transfer has completed, you should verify the disk by mounting it on the receiving Linode. Here's how:
 
-1.  Make a new directory for the disk image by entering the following command:
+1.  Make a new directory for the disk by entering the following command:
 
         mkdir linode
 
-2.  Mount the disk image by entering the following command:
+2.  Mount the disk by entering the following command:
 
         mount /dev/xvda linode
 
-3.  View the directories in the disk image by entering the following command:
+3.  View the directories in the disk by entering the following command:
 
         ls linode/
 
@@ -109,41 +109,41 @@ After the file transfer has completed, you should verify the disk image by mount
         bin   dev  home  lost+found  mnt  proc  sbin     srv  tmp  var
         boot  etc  lib   media       opt  root  selinux  sys  usr   
 
-Now that you've ready to boot from the disk image.
+Now that you've ready to boot from the disk.
 
-Booting from the Disk Image
+Booting from the Disk
 ---------------------------
 
-Now it's time to boot from the disk image. First, you'll create a configuration profile on the receiving Linode, and then you'll boot the receiving Linode with the disk image you just transferred.
+Now it's time to boot from the disk. First, you'll create a configuration profile on the receiving Linode, and then you'll boot the receiving Linode with the disk you just transferred.
 
 ### Creating the Configuration Profile
 
-The boot the receiving Linode from the transferred disk image, you'll need to create a new configuration profile. Here's how:
+The boot the receiving Linode from the transferred disk, you'll need to create a new configuration profile. Here's how:
 
 1.  Click the **Linodes** tab. A list of your virtual private servers appears.
-2.  Select the Linode that received the disk image. The Linode's dashboard appears.
+2.  Select the Linode that received the disk. The Linode's dashboard appears.
 3.  Select **Create a new Configuration Profile**. The webpage shown below appears.
 
 [![Selecting the configuration profile](/docs/assets/1065-migration6-small.png)](/docs/assets/1064-migration6.png)
 
-4.  Enter a name for the configuration profile in the **Label** field, such as *Received Disk Image*.
-5.  In the *Block Device Assignment* section, set `/dev/xvda` to **Received Disk Image**.
-6.  Set `/dev/xvdb` to a swap disk image.
+4.  Enter a name for the configuration profile in the **Label** field, such as *Received disk*.
+5.  In the *Block Device Assignment* section, set `/dev/xvda` to **Received disk**.
+6.  Set `/dev/xvdb` to a swap disk.
 7.  Click **Save Changes**.
 
 You have successfully created the configuration profile.
 
 ### Booting the Receiving Linode
 
-Now to start the receiving Linode from the transferred disk image, you'll need to select the configuration profile you just created. Here's how:
+Now to start the receiving Linode from the transferred disk, you'll need to select the configuration profile you just created. Here's how:
 
-1.  From the Linode's dashboard, select the **Received Disk Image** configuration profile you created in the last section, as shown below.
+1.  From the Linode's dashboard, select the **Received disk** configuration profile you created in the last section, as shown below.
 
 [![Selecting the configuration profile](/docs/assets/1060-migration4-small.png)](/docs/assets/1061-migration4.png)
 
-2.  Click **Reboot** to restart the Linode from the transferred disk image.
+2.  Click **Reboot** to restart the Linode from the transferred disk.
 
-Your Linode will boot using the disk image you transferred.
+Your Linode will boot using the disk you transferred.
 
 
 

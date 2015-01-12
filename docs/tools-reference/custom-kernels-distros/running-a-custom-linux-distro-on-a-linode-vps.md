@@ -48,7 +48,7 @@ Here's how to get started:
 
     [![Adding a virtual hard drive](/docs/assets/1169-vbvm5.png)](/docs/assets/1169-vbvm5.png)
 
-9.  Select **VDI (VirtualBox Disk Image)** and then click **Continue**. The window shown below appears.
+9.  Select **VDI (VirtualBox Disk)** and then click **Continue**. The window shown below appears.
 
     [![Adding a virtual hard drive](/docs/assets/1168-vbvm6.png)](/docs/assets/1168-vbvm6.png)
 
@@ -84,7 +84,7 @@ Here's how to get started:
 21. Follow the distribution's installation instructions. When prompted to partition the disk, create a single partition for `/` and a small partition for `swap`, as shown below.
 
     {: .note }
-    >You will need to ensure that your distribution's installer configures your partitions without LVM (Logical Volume Management), as disk images created with LVM cannot be transferred to your Linode.
+    >You will need to ensure that your distribution's installer configures your partitions without LVM (Logical Volume Management), as disks created with LVM cannot be transferred to your Linode.
 
     [![Partitioning the drive.](/docs/assets/1179-vbvm11.png)](/docs/assets/1179-vbvm11.png)
 
@@ -114,7 +114,7 @@ The virtual machine is now ready to be transferred to your Linode.
 
 ##Migrating the Virtual Machine to Your Linode
 
-Above, you created a virtual machine and prepared it for transfer to your Linode.  The steps below will walk you through configuring a Linode for your custom image. In this how-to, we will start with a new Linode. However, the information provided can be applied to existing Linodes by adding new disk images.
+Above, you created a virtual machine and prepared it for transfer to your Linode.  The steps below will walk you through configuring a Linode for your custom image. In this how-to, we will start with a new Linode. However, the information provided can be applied to existing Linodes by adding new disks.
 
 ###Setting up your Configuration Profile
 
@@ -132,11 +132,11 @@ Start from the Linode Manager by configuring a Linode to boot your custom image.
 
 6. Select the newly labelled Custom_Distro Linode.
 
-7. Select **Create a new Disk Image**. Label the new disk image to "Custom_Distro" or similar. Select the **Type** as ext4. Ensure that the **Size** of the disk image is at least as large as the **fixed size** of the virtual machine disk image running on your local machine. In Step 10 of the [Creating the Virtual Machine](#creating-the-virtual-machine) section, we pictured the disk image size as 3.00 GB or 3,000 MB. Continue with this size. Select **Save Changes**.
+7. Select **Create a new Disk**. Label the new disk to "Custom_Distro" or similar. Select the **Type** as ext4. Ensure that the **Size** of the disk is at least as large as the **fixed size** of the virtual machine disk running on your local machine. In Step 10 of the [Creating the Virtual Machine](#creating-the-virtual-machine) section, we pictured the disk size as 3.00 GB or 3,000 MB. Continue with this size. Select **Save Changes**.
 
-8. Now create the swap disk image. Again, select **Create a new Disk Image**. This time set the **Label** as "Swap". Set the **Type** as **swap**. Finally, set the size to 256 MB or larger.
+8. Now create the swap disk. Again, select **Create a new Disk**. This time set the **Label** as "Swap". Set the **Type** as **swap**. Finally, set the size to 256 MB or larger.
 
-9. Next, create a configuration profile for the Linode by selecting **Create a new Configuration Profile**. Change the **Label** to "Custom_Distro" or similar. Under **Block Device Assignment** change **/dev/xvda** to **Custom_Distro** and **/dev/xvdb** to **Swap**. Notice that **root device** is set to **Standard: /dev/xvda** making the Custom_Distro disk image the boot device. Warning, do not change the **root device** setting.
+9. Next, create a configuration profile for the Linode by selecting **Create a new Configuration Profile**. Change the **Label** to "Custom_Distro" or similar. Under **Block Device Assignment** change **/dev/xvda** to **Custom_Distro** and **/dev/xvdb** to **Swap**. Notice that **root device** is set to **Standard: /dev/xvda** making the Custom_Distro disk the boot device. Warning, do not change the **root device** setting.
 
     [![Configuration Profile.](/docs/assets/config-profile-small.png)](/docs/assets/config-profile-large.png)
 
@@ -148,7 +148,7 @@ Start from the Linode Manager by configuring a Linode to boot your custom image.
 
 ##Starting SSH in Finnix
 
-In order to transfer the disk images from the virtual machine to the Linode, you will need to start SSH on the Linode itself.
+In order to transfer the disks from the virtual machine to the Linode, you will need to start SSH on the Linode itself.
 
 1.  Set the password for Finnix's root user by issuing the following command:
 
@@ -158,23 +158,23 @@ In order to transfer the disk images from the virtual machine to the Linode, you
 
         service ssh start
 
-3.  Mount your Custom_Distro disk image by entering the following command:
+3.  Mount your Custom_Distro disk by entering the following command:
 
         mount /media/xvda
 
-###Copying the Disk Image from VirtualBox to your Linode
+###Copying the Disk from VirtualBox to your Linode
 
-The steps below will walk you through transferring your new disk image from your local Virtual Machine to your Linode.
+The steps below will walk you through transferring your new disk from your local Virtual Machine to your Linode.
 
-1. Mount your local disk image by entering the following command at the prompt on your local virtual machine:
+1. Mount your local disk by entering the following command at the prompt on your local virtual machine:
 
         mount /media/sda1
 
     {: .note }
     >
-    > /media/sda1 is typically where the disk image lives, but it may be in a different directory path or filename depending on your configuration.
+    > /media/sda1 is typically where the disk lives, but it may be in a different directory path or filename depending on your configuration.
 
-2. Enter the command below to copy your disk image to your Linode. Make sure to replace `12.34.56.78` with the IP address of your destination Linode:
+2. Enter the command below to copy your disk to your Linode. Make sure to replace `12.34.56.78` with the IP address of your destination Linode:
 
         rsync -avz /media/sda1/ root@12.34.56.78:/media/xvda/
 
@@ -205,6 +205,6 @@ The steps below will walk you through transferring your new disk image from your
         ~~~~
 6.  Exit and save the file by pressing `Ctrl+x`, type `y` to save your changes, and press `enter` to exit.
 
-The disk image has been transferred to your Linode. You should now be able to boot your Linode normally and log in [via SSH](https://www.linode.com/docs/getting-started#logging-in-for-the-first-time). Remember to use the username and password created during step 23 under the [Creating the Virtual Machine](#creating-the-virtual-machine) heading. Also, check your network configuration and if necessary refer to the [Linux Static IP Configuration](https://www.linode.com/docs/networking/linux-static-ip-configuration/) guide.
+The disk has been transferred to your Linode. You should now be able to boot your Linode normally and log in [via SSH](https://www.linode.com/docs/getting-started#logging-in-for-the-first-time). Remember to use the username and password created during step 23 under the [Creating the Virtual Machine](#creating-the-virtual-machine) heading. Also, check your network configuration and if necessary refer to the [Linux Static IP Configuration](https://www.linode.com/docs/networking/linux-static-ip-configuration/) guide.
 
-Congratulations, you have successfully transferred the custom distro disk image from your local virtual machine to your Linode.
+Congratulations, you have successfully transferred the custom distro disk from your local virtual machine to your Linode.

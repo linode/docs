@@ -33,7 +33,7 @@ Run the following commands to install all the necessary packages:
     apt-get upgrade
     apt-get install amavisd-new spamassassin clamav-daemon libnet-dns-perl libmail-spf-perl pyzor razor
 
-**Optional:** Installing the following packages will allow your filters to better scan through various archive files. Unless you're deploying on a small disk image where storage is a concern, this step is recommended:
+**Optional:** Installing the following packages will allow your filters to better scan through various archive files. Unless you're deploying on a small disk where storage is a concern, this step is recommended:
 
     apt-get install arj bzip2 cabextract cpio file gzip lha nomarch pax rar unrar unzip zip zoo
 

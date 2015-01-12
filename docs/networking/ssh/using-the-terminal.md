@@ -33,7 +33,7 @@ To list directories use the `ls` command. If the directory is empty, ls will exe
 
     ls /etc/init.d/
 
-To list all of the files in the current directory, including hidden files (such as those begginning with a `.`) use the `-a` flag for all files.
+To list all of the files in the current directory, including hidden files (such as those beginning with a `.`) use the `-a` flag for all files.
 
 To generate a list with more information about the files, the long flag, `-l` may be used. This provides information on file sizes, permissions, and last modified times (with either -a or the standard output). You may further modify the long output with an -h flag to convert the file size information from raw bytes to human-readable numbers (in KB, MB, GB, etc) for easier comprehension. This command might look like:
 
@@ -164,7 +164,7 @@ The command `ps` lists active processes by Process ID (PID) numbers. You can use
 
 The `top` command, which is installed by default on all systems, provides a regularly refreshed list of processes and resource utilization information. You may also wish to consider installing the `htop` application (with your system's [package management](/docs/using-linux/package-management/) tool), which provides more coherent output.
 
-The `df` command, which is native to all systems, provides a metric of your current disk usage including free and unused space. You can use the `df -h` command (including the "-h" flag) to list your current space in megabytes and gigabytes, which is easier to read than flat kilobytes. You can also use the command `df -i` to view the number of iNodes your disk image has used and remain available. An iNode is how the filesystem keeps track of files, and is directly related to the number of files that can be created.
+The `df` command, which is native to all systems, provides a metric of your current disk usage including free and unused space. You can use the `df -h` command (including the "-h" flag) to list your current space in megabytes and gigabytes, which is easier to read than flat kilobytes. You can also use the command `df -i` to view the number of iNodes your disk has used and remain available. An iNode is how the filesystem keeps track of files, and is directly related to the number of files that can be created.
 
 The `du` command, also native to all systems, checks which directories are using the most space. There are a number of useful flags which you can use with this command, the first of which the `du -h` command will show the disk usage of every file in your current directory and as a whole in megabytes. Another especially useful flag, "--max-depth", allows you to specify how many directories deep the command should iterate through. For example, to obtain a list of the biggest directories which are contained in your filesystem you would use the command `du -h --max-depth 1 /`.
 

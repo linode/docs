@@ -28,7 +28,7 @@ Before we begin, make sure you have completed the following:
 -   Install the [nginx server](/docs/web-servers/nginx/).
 -   Familiarize yourself with [Basic Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration/basic).
 
-If you're new to Linux server administration, you may be interested in our [using Linux](/docs/using-linux/) document series, including the [Beginner's Guide](/docs/beginners-guide/) and [Administration Basics](/docs/using-linux/administration-basics) guide.
+If you're new to Linux server administration, you may be interested in our [introduction to Linux basics](/docs/tools-reference/introduction-to-linux-concepts) guide, [Beginner's Guide](/docs/beginners-guide/) and [Administration Basics](/docs/using-linux/administration-basics) guide.
 
 How It Works: Front-End Proxy Services with Nginx
 -------------------------------------------------

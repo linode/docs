@@ -84,7 +84,7 @@ Now you can use the console, or exit to the Lish prompt by pressing `Control-a-d
 
 ### Adding Your Public Key
 
-If you don't want to enter your password every time you connect to Lish, you can add your public SSH key to the Linode Manager. If you haven't yet created SSH keys, please see our [Public Key Authentication with SSH](http://library.linode.com/security/ssh-keys) guide for more information. Here's how to add your public SSH key to the Linode Manager:
+If you don't want to enter your password every time you connect to Lish, you can add your public SSH key to the Linode Manager. If you haven't yet created SSH keys, please see our [Public Key Authentication with SSH](/docs/networking/ssh/use-public-key-authentication-with-ssh/) guide for more information. Here's how to add your public SSH key to the Linode Manager:
 
 1.  Log in to the [Linode Manager](https://manager.linode.com).
 2.  Select the **my profile** link.

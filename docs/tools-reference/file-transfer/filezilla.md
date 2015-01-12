@@ -86,4 +86,4 @@ You may wish to consult the following resources for additional information on th
 
 - [FileZilla Documentation](http://wiki.filezilla-project.org/Documentation)
 - [FileZilla SSH Key Documentation](https://wiki.filezilla-project.org/Howto#SFTP_using_SSH2:_Key_based_authentication)
-- [Using Linux](/docs/using-linux/)
+- [Tools & Reference](/docs/tools-reference/)

@@ -15,7 +15,7 @@ title: Modify File Permissions with chmod
 
 Unix-like systems, including the Linux systems that run on the Linode platform, have an incredibly robust access control system that allows systems administrators to effectively permit multiple users access to a single system without giving every user access to every file on the file system. The `chmod` command is the best and easiest way to modify these file permissions.
 
-This document provides a brief overview of file permissions and the operation of the `chmod` command in addition to a number of practical examples and applications of `chmod`. If you find this guide helpful, please consider our guide to [basic administration practices](/docs/using-linux/administration-basics) or the rest of the [using linux series](/docs/using-linux/).
+This document provides a brief overview of file permissions and the operation of the `chmod` command in addition to a number of practical examples and applications of `chmod`. If you find this guide helpful, please consider our [basic administration practices guide](/docs/using-linux/administration-basics) and the [Linux users and groups guide](/docs/tools-reference/linux-users-and-groups/).
 
 Using Chmod
 -----------

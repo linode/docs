@@ -163,7 +163,7 @@ If you can't remember the password for the `root` user on a Linode, use the Lino
 2.  Select a Linode. The Linode's dashboard appears.
 3.  Click **Shut down** to turn off your Linode. Monitor the *Host Job Queue* for a message indicating that your Linode has shut down.
 4.  Click the **Rescue** tab. The rescue webpage appears.
-5.  Select your primary disk image from the **Filesystem** menu.
+5.  Select your primary disk from the **Filesystem** menu.
 6.  Enter a new password for the `root` user in the **New Password** field.
 7.  Click **Reset Root Password**. The Linode's dashboard appears.
 8.  Click **Boot** to turn on your Linode.

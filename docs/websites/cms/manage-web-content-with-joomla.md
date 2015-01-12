@@ -15,7 +15,7 @@ title: 'Manage Web Content with Joomla!'
 
 Joomla is an advanced "content management system" (CMS) used to facilitate the easy creation and ongoing maintenance of dynamic websites. Comparable in some respects to other web applications like [Drupal](/docs/web-applications/cms-guides/drupal/) and [WordPress](/docs/web-applications/cms-guides/wordpress/), Joomla also has advanced features that resemble web development frameworks like [Ruby On Rails](/docs/frameworks/) and [Django](/docs/frameworks/). Deployed on top of the industry standard [LAMP Stack](/docs/lamp-guides/), Joomla is designed to be both easy to use and manage from the end-user's perspective and easy to administer and host.
 
-Before installing Joomla, we assume that you have followed our [getting started guide](/docs/getting-started/). If you're new to Linux server administration you may be interested in our [using Linux](/docs/using-linux/) document series including the [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics). Additionally, you will need to follow the [LAMP Guide](/docs/lamp-guides) appropriate for the distribution you have deployed.
+Before installing Joomla, we assume that you have followed our [getting started guide](/docs/getting-started/). If you're new to Linux server administration you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics). Additionally, you will need to follow the [LAMP Guide](/docs/lamp-guides) appropriate for the distribution you have deployed.
 
 Installing Prerequisites
 ------------------------

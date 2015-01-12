@@ -39,6 +39,7 @@ Nginx is included as part of the Debian software repositories. The preferred ins
     sudo apt-get update
     sudo apt-get upgrade
     sudo apt-get install nginx
+    sudo service nginx start
 
 Installing Nginx with the Debian package maintainers provides quality control, testing, and security updates that ensure that you are running the best possible version of the software for your operating system. This document is written against the release version 1.2.1-22.
 

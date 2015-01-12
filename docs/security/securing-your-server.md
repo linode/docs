@@ -6,9 +6,9 @@ description: 'Our guide to securing your first Linode.'
 keywords: 'security,linode quickstart,getting started'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['securing-your-server/']
-modified: Monday, October 27, 2014
+modified: Saturday, December 27th, 2014
 modified_by:
-  name: Linode
+  name: Dave Russell
 published: 'Friday, February 17th, 2012'
 title: Securing Your Server
 ---
@@ -22,7 +22,7 @@ In the [Getting Started](/docs/getting-started) guide, we asked you to log in to
 
 Here's how to add a new user:
 
-Debian/Ubuntu
+### Debian/Ubuntu
 
 1.  Open a terminal window and [log in to your Linode via SSH](/docs/getting-started#sph_logging-in-for-the-first-time).
 
@@ -34,19 +34,15 @@ Debian/Ubuntu
 
         usermod -a -G sudo exampleuser
 
-4.  On Debian 7.6 installations, sudo is already installed.  If it isn't (`/usr/bin/sudo` doesn't exist), install it before logging in as the new user:
-
-        apt-get install sudo
-
-5.  Log out of your Linode as the `root` user by entering the following command:
+4.  Log out of your Linode as the `root` user by entering the following command:
 
         logout
 
-6.  Log in to your Linode as the new user by entering the following command. Replace *exampleuser* with your username, and the example IP address with your Linode's IP address:
+5.  Log in to your Linode as the new user by entering the following command. Replace *exampleuser* with your username, and the example IP address with your Linode's IP address:
 
         ssh exampleuser@123.456.78.90
 
-CentOS/Fedora
+### CentOS/Fedora
 
 1. Open a terminal window and [log in to your Linode via SSH](/docs/getting-started#sph_logging-in-for-the-first-time).
 
