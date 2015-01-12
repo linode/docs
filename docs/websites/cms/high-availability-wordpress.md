@@ -222,9 +222,9 @@ The steps in this section will need to be performed on **both** of your Linodes.
 4.  Connect to your Linode's IP address using your web browser, and walk through the configuration steps to fully install WordPress.
 
     {: .note}
-    >In order to ensure that each of your Wordpress instances addresses the local database, you will need to ensure that the Database Host value in this step is set to 'localhost'.  This should be filled in by default.
+    >In order to ensure that each of your WordPress instances addresses the local database, you will need to ensure that the Database Host value in this step is set to 'localhost'.  This should be filled in by default.
 
-5.  Configure your Wordpress URL and Site Address via the General Settings in the Wordpress admin interface. Ensure that your domain is configured in both fields.
+5.  Configure your WordPress URL and Site Address via the General Settings in the WordPress admin interface. Ensure that your domain is configured in both fields.
 
     [![WordPressURL](/docs/assets/WP-site-address-rs.png)](/docs/assets/WP-site-address.png)
 
@@ -240,7 +240,7 @@ The steps in this section will need to be performed on **both** of your Linodes.
         rsync -r /var/www/* x.x.x.x:/var/www/.
 
     {: .note}
-    >If you install new Wordpress themes or plugins, you will need to re-run this command in order to syncronize the change between your Linodes.
+    >If you install new WordPress themes or plugins, you will need to re-run this command in order to syncronize the change between your Linodes.
 
 7.  Log in to the second Linode and restart Apache:
 
