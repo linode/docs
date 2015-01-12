@@ -239,8 +239,8 @@ The steps in this section will need to be performed on **both** of your Linodes.
 
         rsync -r /var/www/* x.x.x.x:/var/www/.
 
-        {: .note}
-        >If you install new Wordpress themes or plugins, you will need to re-run this command in order to syncronize the changes between your Linodes.
+    {: .note}
+    >If you install new Wordpress themes or plugins, you will need to re-run this command in order to syncronize the change between your Linodes.
 
 7.  Log in to the second Linode and restart Apache:
 
