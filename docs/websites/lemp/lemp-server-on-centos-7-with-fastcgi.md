@@ -43,7 +43,7 @@ This ensures that all software is up to date and running at the latest version.
 
 The quickest and easiest way to install Nginx is from the Extra Packages for Enterprise Linux (EPEL) repository.  You can install this using rpm:
 
-    rpm -Uvh http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-2.noarch.rpm
+    sudo yum install epel-release
     yum update
     yum install nginx
 
@@ -72,12 +72,12 @@ Once Nginx is installed, you need to configure your 'server' directives to speci
     server {
     listen  80;
     server_name www.example.com example.com;
-    access_log /var/www/example.com/logs/access.log
-    error_log /var/www/example.com/logs/error.log
+    access_log /var/www/example.com/logs/access.log;
+    error_log /var/www/example.com/logs/error.log;
     
     location / {
-        root  /var/www/example.com/public_html
-        index index.html index.htm index.php
+        root  /var/www/example.com/public_html;
+        index index.html index.htm index.php;
         }
     }
     ~~~
