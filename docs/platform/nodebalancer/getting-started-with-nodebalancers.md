@@ -117,7 +117,7 @@ Once the DNS changes propagate, traffic will begin flowing through the NodeBalan
 
 Congratulations! You have now configured a NodeBalancer and transitioned traffic over to it. All of the benefits of NodeBalancer are now available to you, such as adding backends to accommodate load.
 
-On another Linode, make an exact copy of your current Web server. The Linode backups service can be instrumental for doing so, as a snapshot can be restored to any other Linode. Once you have another backend ready, simply [repeat the earlier process](/docs/platform/nodebalancer/getting-started-with-nodebalancers#configuring-a-nodebalancer) to add it to the NodeBalancer configuration.
+On another Linode, make an exact copy of your current Web server. The Linode backups service can be instrumental for doing so, as a snapshot can be restored to any other Linode. Once you have another backend ready, simply [repeat the earlier process](#configuring-a-nodebalancer) to add it to the NodeBalancer configuration.
 
 [![Adding another backend to the NodeBalancer's configuration.](/docs/assets/805-10.png)](/docs/assets/788-another-backend.png)
 
