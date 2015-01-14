@@ -9,7 +9,7 @@ modified: Tuesday, January 6th, 2014
 modified_by:
   name: Joseph Dooley
 published: 'Wednesday, January 14, 2015'
-title: Using Node.js with NGINX
+title: Using Node.js with NGINX on Debian
 external_resources:
  - '[Node.js](http://nodejs.org)'
  - '[NGINX](http://nginx.com/)'
