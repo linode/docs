@@ -153,6 +153,7 @@ In the example below, change the IP addresses to reflect the values shown under 
     # We no longer need to use aliases (eg. eth0:0 eth0:1 eth0:2)
     # This line ensures that the interface will be brought up during boot
     auto eth0
+    allow-hotplug eth0
 
     # The address and gateway are necessary.
     # The netmask is taken automatically from the block.
