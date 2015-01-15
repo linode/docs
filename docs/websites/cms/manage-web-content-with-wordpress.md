@@ -6,9 +6,9 @@ description: 'Install and optimize the WordPress blogging and content management
 keywords: 'install WordPress,WordPress on Linode,WordPress howto'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-applications/cms-guides/wordpress/']
-modified: Tuesday, April 19th, 2011
+modified: Thursday, January 15, 2015
 modified_by:
-  name: Linode
+  name: Elle Krout
 published: 'Tuesday, July 27th, 2010'
 title: Manage Web Content with WordPress
 ---
