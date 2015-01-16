@@ -6,11 +6,15 @@ description: 'Install and optimize the WordPress blogging and content management
 keywords: 'install WordPress,WordPress on Linode,WordPress howto'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-applications/cms-guides/wordpress/']
-modified: Thursday, January 15, 2015
+modified: Friday, January 16, 2015
 modified_by:
   name: Elle Krout
 published: 'Tuesday, July 27th, 2010'
 title: Manage Web Content with WordPress
+external_resources:
+- '[WordPress.org](http://wordpress.org)'
+- '[WordPress Codex](http://codex.wordpress.org)'
+- '[WordPress Support](http://wordpress.org/support)'
 ---
 
 WordPress is popular dynamic blog-focused content management system. The software is built upon the LAMP stack and features an extensible plugin framework and extensive theme system, which allows site owners and developers to deploy easy-to-use and powerful publishing tools.
@@ -89,15 +93,6 @@ Monitor for Software Updates and Security Notices
 When running software compiled or installed directly from sources provided by upstream developers, you are responsible for monitoring updates, bug fixes, and security issues. After becoming aware of releases and potential issues, update your software to resolve flaws and prevent possible system compromise. Monitoring releases and maintaining up-to-date versions of all software is crucial for the security and integrity of a system.
 
 WordPress comes with update alerts, accessible within the "Updates" page of your web-based administration interface. From here you can also reinstall WordPress, and update both your WordPress version and any plug-ins you have installed, as needed.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [WordPress.org](http://wordpress.org)
-- [WordPress Codex](http://codex.wordpress.org)
-- [WordPress Support](http://wordpress.org/support)
 
 
 
