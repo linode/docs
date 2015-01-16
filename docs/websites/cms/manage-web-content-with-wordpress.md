@@ -90,5 +90,14 @@ When running software compiled or installed directly from sources provided by up
 
 WordPress comes with update alerts, accessible within the "Updates" page of your web-based administration interface. From here you can also reinstall WordPress, and update both your WordPress version and any plug-ins you have installed, as needed.
 
+More Information
+----------------
+
+You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
+
+- [WordPress.org](http://wordpress.org)
+- [WordPress Codex](http://codex.wordpress.org)
+- [WordPress Support](http://wordpress.org/support)
+
 
 
