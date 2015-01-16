@@ -249,6 +249,47 @@ The steps in this section will need to be performed on **both** of your Linodes.
 
 You should now be able to visit the new WordPress site on both of your Linodes, and updates from one Linode should be seen immediately on the other.
 
+##Configure Folder Sync With Lsyncd
+
+1.  Install lsyncd on your primary Linode in the cluster.
+ 
+        apt-get install lsyncd
+ 
+2.  Create configuration file in order to perform sync actions.  Replace x.x.x.x with the Private IP address of the second Linode in your cluster.
+ 
+    {: .file-excerpt}
+    /etc/lsyncd/lsyncd.conf.lua
+    :   ~~~ lua
+        settings = {
+        logfile = "/var/log/lsyncd.log",
+        statusFile = "/var/log/lsyncd-status.log"
+        }
+        sync{
+        default.rsyncssh,
+        delete = false,=
+        source="/var/www",
+        host="x.x.x.x",
+        targetdir="/var/www",
+        rsync = {
+        archive = true,
+        perms = true,
+        owner = true,
+        _extra = {"-a"},
+        },
+        delay = 5,
+        maxProcesses = 4,
+        ssh = {
+        port = 22
+        }
+        }
+        ~~~
+
+3.  Start the lsyncd daemon.
+
+        service lsyncd start
+
+4.  Test replication by creating a file in your primary Linode's /var/www folder.  You should be able to see that same file in that location on the second Linode within a few seconds.
+
 ##Configure Your Nodebalancer
 
 1.  Visit the NodeBalancers tab in the Linode Manager.
