@@ -28,7 +28,7 @@ Additionally, this guide assumes that you are deploying WordPress on the domain 
 
 ###Prepare WordPress
 
-The WordPress installer assumes you've already created a [MySQL](http://0.0.0.0:4567/docs/websites/lamp/lamp-server-on-debian-7-wheezy#configure-mysql-and-set-up-mysql-databases) database and user that it can use. If you haven't yet, use the following steps to create one.
+The WordPress installer assumes you've already created a [MySQL](/docs/websites/lamp/lamp-server-on-debian-7-wheezy#configure-mysql-and-set-up-mysql-databases) database and user that it can use. If you haven't yet, use the following steps to create one.
 
 1.  Enter the MySQL command line:
 
