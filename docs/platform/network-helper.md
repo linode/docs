@@ -66,7 +66,7 @@ Network helper is enabled on all new configuration profiles by default. To modif
 
     ![The Account tab in the Linode Manager](/docs/assets/account-tab.png)
 
-2.  Click on the **Account Settings** tab. Under The Network Helper section, Change the Default Behavior to **ON**:
+2.  Click on the **Account Settings** tab. You can modify the default behavior under the network helper section:
 
     [![The Network Helper Default Behavior option](/docs/assets/account-settings_small.png)](/docs/assets/account-settings.png)
 
