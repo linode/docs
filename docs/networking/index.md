@@ -15,11 +15,11 @@ featured:
  - using-the-linode-shell-lish.md
  - linux-static-ip-configuration.md
  - remote-access.md
- - diagnosing-network-issues-with-mtr.md
  - native-ipv6-networking.md
  - set-up-an-ipv6-tunnel-on-your-linode.md
  - basic-nfs-configuration-on-debian-7.md
 categories:
+ - diagnostics
  - ssh
  - dns
  - firewalls
