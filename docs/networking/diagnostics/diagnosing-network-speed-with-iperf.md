@@ -228,10 +228,10 @@ It is important to note the IDs next to the connection notices. These IDs will a
 {: .table .table-striped}
 | Option                             | Description                                                                               |
 |:-----------------------------------|:------------------------------------------------------------------------------------------|
-| -f 		                         | You can change the format in which the tests are run by passing the `-f` option. For example, you can use `-f k` to get results in Kbits per second instead of Mbits per second. Valid options include `m` (Mbits, default), `k` (Kbits), `K` (KBytes), and `M` (MBytes). |
-| -V            					 | This option will force Iperf to use IPv6 rather than IPv4.								 |
-| -i            					 | You can change the interval between periodic bandwidth tests. For example, `-i 60` will make a new bandwidth report every 60 seconds. The default is zero, which when set only perform one bandwidth test.			                                         |
-| -p            					 | If you are uncomfortable allowing Iperf to connect and listen on port 5001, you can change the port using the `-p` option. You must pass this through both the client and server commands, though.  															   |
-| -B 								 | The `-B` option is particularly useful for binding a specific interface or address to Iperf. If passed through the server command, the incoming interface will be set. If passed through the client command, the outgoing interface will be set.           |
+| -f 		                     | You can change the format in which the tests are run by passing the `-f` option. For example, you can use `-f k` to get results in Kbits per second instead of Mbits per second. Valid options include `m` (Mbits, default), `k` (Kbits), `K` (KBytes), and `M` (MBytes). |
+| -V            	 	     | This option will force Iperf to use IPv6 rather than IPv4.								 |
+| -i            	             | You can change the interval between periodic bandwidth tests. For example, `-i 60` will make a new bandwidth report every 60 seconds. The default is zero, which when set only perform one bandwidth test.			                                         |
+| -p                                 | If you are uncomfortable allowing Iperf to connect and listen on port 5001, you can change the port using the `-p` option. You must pass this through both the client and server commands, though.  															   |
+| -B 			             | The `-B` option is particularly useful for binding a specific interface or address to Iperf. If passed through the server command, the incoming interface will be set. If passed through the client command, the outgoing interface will be set.           |
 |:-----------------------------------|:------------------------------------------------------------------------------------------|
 
