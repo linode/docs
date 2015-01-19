@@ -6,9 +6,9 @@ author:
 description: 'Information on the Network Helper option.'
 keywords: 'network, networking, network helper, ip, ip address, static ip,'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Monday, December 8, 2014
+modified: Monday, January 19, 2014
 modified_by:
-  name: Alex Fornuto
+  name: James Stewart
 published: ''
 title: Network Helper - BETA
 ---
@@ -35,7 +35,7 @@ On enabled profiles, the Network Helper works by detecting which distribution is
 
 ## Turn Network Helper On for Individual Configuration Profiles.
 
-Even with Network Helper's default behavior set to **OFF**, you can enable Network Helper on specific configuration profiles.
+Even with the global setting for Network Helper set to **OFF**, you can enable Network Helper on specific configuration profiles.
 
 1.  Go to your Linode's Dashboard, and under Configuration Profiles click **Edit** for the profile you want to adjust:
 
@@ -58,15 +58,15 @@ Similarly, if you boot an unsupported older distribution while Network Helper is
 
 [![Network Helper Failure Message](/docs/assets/network-helper-unsupported_small.png)](/docs/assets/network-helper-unsupported.png)
 
-##Turn Network Helper On for all New Configuration Profiles
+##Modify Global Network Helper Settings
 
-Once Network Helper moves out of beta it will be enabled on all new configuration profiles by default. Until then, to set this behavior as default follow the steps below.
+Network helper is enabled on all new configuration profiles by default. To modify this behavior as default follow the steps below.
 
 1.  From the Linode Manager, click on the **Account** tab:
 
     ![The Account tab in the Linode Manager](/docs/assets/account-tab.png)
 
-2.  Click on the **Account Settings** tab. Under The Network Helper section, Change the Default Behavior to **ON**:
+2.  Click on the **Account Settings** tab. You can modify the default behavior under the network helper section:
 
     [![The Network Helper Default Behavior option](/docs/assets/account-settings_small.png)](/docs/assets/account-settings.png)
 
