@@ -13,7 +13,7 @@ published: 'Thursday, July 16th, 2009'
 title: Common DNS Configurations
 ---
 
-[[[It's one thing to know how to use the DNS Manager to add domain zones and DNS records — it's another to know exactly *which* records you should add, and under which circumstances you should add them.]]] This guide discusses common DNS configurations that you can reference when creating your DNS records. If you are still unfamiliar with DNS and Linode's DNS Manager, please see our [DNS Manager](/docs/networking/dns/dns-manager) guide.
+After familiarizing yourself with Linode's Domain Manager, the next step is determining which DNS records should be added. This guide discusses common DNS configurations that you can reference when creating your DNS records. If you are still unfamiliar with DNS and Linode's DNS Manager, please see our [DNS Manager](/docs/networking/dns/dns-manager) guide.
 
 Setting Up a Domain
 -------------------
@@ -24,7 +24,7 @@ The most common DNS configuration is a single domain name on one Linode. For thi
 
  {: .note }
 >
-> The DNS Manager can automatically add all of these records when you create a domain zone. For instructions, see [this section](#adding).
+> The DNS Manager can automatically add all of these records when you create a domain zone. For instructions, see [Adding Domain Zones](/docs/networking/dns/dns-manager#adding) in the [DNS Manager](/docs/networking/dns/dns-manager) guide.
 
 Configuring Subdomains
 ----------------------
@@ -35,18 +35,18 @@ To configure a subdomain, such as `staging.example.org`, create an A record with
 
  {: .note }
 >
-> Of course, you'll also need to create a name-based virtual host for the subdomain. If you're using Apache, see [these instructions](/docs/hosting-website#sph_configuring-name-based-virtual-hosts) for more information.
+> You will also need to create a name-based virtual host for the subdomain. If you're using Apache, see [Configuring Name-Based Virtual Hosts](/docs/hosting-website#configuring-name-based-virtual-hosts) for more information.
 
 Hosting Multiple Domains on a Single Server
 -------------------------------------------
 
-To host multiple domain names on a single server, create a separate domain zone for each domain name, as shown below. When creating the new domain zones, we recommend that you allow the DNS Manager to automatically [insert basic records](#adding). At a minimum, you'll need an A record for each domain name pointing to the server's IP address.
+To host multiple domain names on a single server, create a separate domain zone for each domain name, as shown below. When creating the new domain zones, we recommend that you allow the DNS Manager to automatically [insert basic records](/docs/networking/dns/dns-manager#adding). At a minimum, you'll need an A record for each domain name pointing to the server's IP address.
 
 [![This page shows the DNS Manager tab with three different domain zones listed.](/docs/assets/1126-dns15.png)](/docs/assets/1126-dns15.png)
 
  {: .note }
 >
-> Of course, you'll also need to create a name-based virtual host for each domain name. If you're using Apache, see [these instructions](/docs/hosting-website#sph_configuring-name-based-virtual-hosts) for more information.
+> You will also need to create a name-based virtual host for each domain name. If you're using Apache, see [Configuring Name-Based Virtual Hosts](/docs/hosting-website#configuring-name-based-virtual-hosts) for more information.
 
 Using One Domain on Multiple Servers
 ------------------------------------

@@ -35,7 +35,7 @@ When setting up any domain name on your Linode, you'll need to perform the follo
 
 ### The DNS Manager Page
 
-Ready to add or edit DNS records? Log in to the [Linode Manager](https://manager.linode.com) and click the **DNS Manager** tab. The Domain Manager contains all of the DNS records for your Linode's domain names. When you open the DNS Manager, you'll see the webpage like the one below:
+Ready to add or edit DNS records? Log in to the [Linode Manager](https://manager.linode.com) and click the **DNS Manager** tab. The Domain Manager contains all of the DNS records for your Linode's domain names. When you open the DNS Manager, you'll see a webpage like the one below:
 
 [![1. All of the domain zones are listed in the Domain Zone column. 2. The "Import a zone" link lets you import zone files. 3. The "Clone an existing zone" link lets you duplicate another zone you already have set up in the Linode Manager. 4. The "Add a domain zone" link lets you create a new zone file for a domain. 5. In the Options column for each domain, you have the following links: "Edit," "Remove," "Check," and "Zone file."](/docs/assets/1112-dns1-2.png)](/docs/assets/1112-dns1-2.png)
 
@@ -43,7 +43,7 @@ Ready to add or edit DNS records? Log in to the [Linode Manager](https://manager
 2.  If you have a zone file that can be exported from a server or another hosting provider, click **Import a zone** to import it.
 3.  Click **Clone an existing zone** to duplicate an existing zone that you've already set up in the Linode Manager.
 4.  Click **Add a domain zone** to create a new domain zone.
-5.  Use the links to the far right column of the domain zone's line to edit DNS records within a zone, delete a zone, check a zone, or view a zone's file.
+5.  Use the links to the far right of the domain zone link to edit DNS records within a zone, delete a zone, check a zone, or view a zone's file.
 
 ### The Domain Zones Page
 
@@ -82,7 +82,7 @@ See the instructions on your domain name registrar's website for more informatio
 Domain Zones
 ------------
 
-A *domain zone* is essentially synonymous with the term "domain." Before you can add any DNS records, you must create a domain zone — a container for DNS records associated with a single domain name. The Linode Manager allows you to add new domain zones, import domain zones from other DNS servers, clone existing zones that you've already created in the DNS Manager, check to make sure that a zone is correctly loaded, view the raw output of a zone file, and permanently remove a zone and all associated DNS records.
+Before you can add any DNS records, you must create a domain zone — a container for DNS records associated with a single domain name. The Linode Manager allows you to add new domain zones, import domain zones from other DNS servers, clone existing zones that you've already created in the DNS Manager, check to make sure that a zone is correctly loaded, view the raw output of a zone file, and permanently remove a zone and all associated DNS records.
 
 ### Adding
 
@@ -101,9 +101,7 @@ Here's how to add a new domain zone:
     Alternatively, to keep the domain zone empty and prevent the DNS Manager from creating DNS records, select **No, I want the zone empty**.
 5.  Click **Add a Master Zone**. The webpage shown below then appears, with your domain zone information.
 
-    {: .note }
-    >
-    > If you want to add a *slave zone* instead of a master zone, click the **I wanted a slave zone** link to the lower right.
+     If you want to add a *slave zone* instead of a master zone, click the **I wanted a slave zone** link to the lower right.
 
 [![This page lets you add specific DNS records.](/docs/assets/1121-dns9.png)](/docs/assets/1121-dns9.png)
 
@@ -158,7 +156,7 @@ If you see a message stating that your zone looks good, everything is working co
 
 The DNS Manager allows you to view the contents of a domain zone file. This is especially useful should you need to import the zone to a different server, or if you wish to inspect the file.
 
-You can view the contents of the domain zone file through the DNS Manager tab of your Linode Manager. From there, select the **Zone file** link to the far right column of the row featuring your choosen domain. An example of the file is provided below.
+You can view the contents of the domain zone file through the DNS Manager tab of your Linode Manager. From there, select the **Zone file** link to the far right column of your choosen domain's name. An example of the file is provided below.
 
 [![This page shows a text-only dump of the DNS zone file for this domain.](/docs/assets/1115-dns3.png)](/docs/assets/1115-dns3.png)
 
@@ -200,7 +198,7 @@ When you first create a domain zone, you'll need to add some DNS records. Here's
 	[![This page allows you to create a new A/AAAA record. In the "Hostname" field, enter any text you want for a subdomain. For example, you could type "www". "\*" will make a wildcard entry. Leave this field blank if this is the primary A record for the domain. The other fields for the A record screen are explained in the steps below.](/docs/assets/1122-dns10.png)](/docs/assets/1122-dns10.png)
 
 3.  Enter a hostname in the **Hostname** field.
-4.  Enter the IP address of your server in the **IP Address** field. For instructions, see [Finding the IP Address](/docs/getting-started#sph_finding-the-ip-address).
+4.  Enter the IP address of your server in the **IP Address** field. For instructions, see [Finding the IP Address](/docs/getting-started#finding-the-ip-address).
 5.  From the **TTL** menu, select a time interval. *TTL*, which stands for "time to live," controls how long DNS records are cached by DNS resolvers before the resolver must query the authoritative name servers for new records.
 6.  Click **Save Changes**.
 
