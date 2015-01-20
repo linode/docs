@@ -6,9 +6,9 @@ description: 'Resolving an IP address to your domain name.'
 keywords: 'linode dns,linode manager dns,dns configuration'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['dns-manager/','dns-guides/configuring-dns-with-the-linode-manager/']
-modified: Monday, April 7th, 2014
+modified: Tuesday, Janaury 20, 2015
 modified_by:
-  name: Linode
+  name: Elle Krout
 published: 'Thursday, July 16th, 2009'
 title: Reverse DNS
 ---
@@ -19,7 +19,7 @@ Before setting up the reverse DNS for your Linode, be sure to set up your domain
 
 {: .note}
 >
->Reverse DNS uses a *PTR Record* or *pointer record* to match up the IP address with the domain or subdomain. Because PTR records are generally set with your hosting provider, when hosting on a Linode you will always set the reverse DNS within the Linode Manager using the method detailed above.
+>Reverse DNS uses a *PTR Record* or *pointer record* to match up the IP address with the domain or subdomain. Because PTR records are generally set with your hosting provider, when hosting on a Linode you will always set the reverse DNS within the Linode Manager using the method detailed below.
 >
 >For more information about [PTR records](/docs/networking/dns/introduction-to-dns-records#ptr) and DNS in general please see our [Introduction to DNS Records](/docs/networking/dns/introduction-to-dns-records) guide.
 

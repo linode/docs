@@ -6,9 +6,9 @@ description: 'Directing domains to your Linode.'
 keywords: 'linode dns,linode manager dns,dns configuration'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['dns-manager/','dns-guides/configuring-dns-with-the-linode-manager/']
-modified: Monday, April 7th, 2014
+modified: Tuesday, January 20, 2015
 modified_by:
-  name: Linode
+  name: Elle Krout
 published: 'Thursday, July 16th, 2009'
 title: DNS Manager
 ---
@@ -56,7 +56,7 @@ When you select the name of a domain zone, or select the **Edit** link next to a
 
     {: .note}
     >
-    >You can add NS (name server), A/AAAA, MX (mail exchange), TXT (text), SRV (service record), and CNAME (Canonical Name) records in Linode's DNS Manager. To learn about these types of DNS records and more please see our [Introduction to DNS Records](/docs/networding/dns/introduction-to-dns-records) guide.
+    >You can add NS (name server), A/AAAA, MX (mail exchange), TXT (text), SRV (service record), and CNAME (Canonical Name) records in Linode's DNS Manager. To learn about these types of DNS records and more please see our [Introduction to DNS Records](/docs/networking/dns/introduction-to-dns-records) guide.
     >
     >Please note that NS and A/AAAA records are necessary for every domain.
 
@@ -105,7 +105,7 @@ Here's how to add a new domain zone:
 
 [![This page lets you add specific DNS records.](/docs/assets/1121-dns9.png)](/docs/assets/1121-dns9.png)
 
-If you selected the option to have the DNS Manager insert basic DNS records, those records will be visible, as shown above. If you elected to keep the zone empty, you can start adding DNS records now. Skip to the [Adding DNS Records](#id4) section for instructions.
+If you selected the option to have the DNS Manager insert basic DNS records, those records will be visible, as shown above. If you elected to keep the zone empty, you can start adding DNS records now. Skip to the [Adding DNS Records](#adding-1) section for instructions.
 
 ### Importing
 
@@ -248,7 +248,7 @@ The solution is to lower your TTL before making a DNS change. You'll want to low
 >TTL is always written out in seconds, so 24 hours = 86400 seconds.
 
 1.  Check the TTL on your current zone file. Typically, this will be 24 or 48 hours.
-2.  Visit your current zone file 24 or 48 hours early, and lower the TTL to five minutes (300 seconds, or the lowest allowed value). Do not make any other changes at this time. If you're using Linode's DNS Manager, [lower the TTL](#dns-records) to 5 minutes for each entry you're going to change.
+2.  Visit your current zone file 24 or 48 hours early, and lower the TTL to five minutes (300 seconds, or the lowest allowed value). Do not make any other changes at this time. If you're using Linode's DNS Manager, lower the TTL to 5 minutes for each entry you're going to change.
 3.  Wait out the original 24 or 48 hours.
 4.  Visit your zone file again to make all of your IP address and other updates.
 5.  DNS changes should propagate within five minutes, meaning that your new website and/or email will now be live.
@@ -281,6 +281,6 @@ If you're on a Windows machine, or you're more comfortable using a web-based too
 Next Steps
 ----------
 
-Now that you are familiar with Linode's DNS Manager, you should set up your [reverse DNS configuration](/docs/networking/dns/setting-reverse-dns), and consider looking at our [Common DNS Configurations](/docs/networking/dns/common-dns-configurations) guide for some common DNS settings.
+Now that you are familiar with Linode's DNS Manager, you should set up your [reverse DNS configuration](/docs/networking/dns/setting-reverse-dns), and consider looking at our [Common DNS Configurations](/docs/networking/dns/common-dns-configurations) guide.
 
 
