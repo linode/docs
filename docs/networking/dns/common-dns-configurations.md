@@ -6,7 +6,7 @@ description: 'Configurations for common DNS records.'
 keywords: 'linode dns,linode manager dns,dns configuration'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['dns-manager/','dns-guides/configuring-dns-with-the-linode-manager/']
-modified: Monday, April 7th, 2014
+modified: Tuesday, January 20, 2015
 modified_by:
   name: Linode
 published: 'Thursday, July 16th, 2009'
