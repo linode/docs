@@ -323,10 +323,10 @@ From the Linode, `ping` each of the default gateways listed on the "Remote Acces
     ping 12.34.56.1
     ping 98.76.54.1
 
-### Arch Linux
+### Arch Linux & Fedora 21
 
 
-Networking on Arch Linux is configured using the `systemd-networkd` service.
+Networking on Arch Linux and Fedora 21 is configured using the `systemd-networkd` service.
 
 The configuration file for systemd-networkd should be created in `/etc/systemd/network`. 
 
