@@ -13,15 +13,14 @@ published: 'Thursday, July 16th, 2009'
 title: DNS Manager
 ---
 
-The *DNS Manager* is a comprehensive DNS management interface available within the [Linode Manager](https://manager.linode.com) that allows you to add DNS records for all of your domain names. This guide covers the use of Linode's DNS Manager and basic domain zone set-up. For an introduction to DNS in general, please see our [Introduction to DNS Records](/docs/dns-guides/introduction-to-dns-records) guide.
+The *DNS Manager* is a comprehensive DNS management interface available within the [Linode Manager](https://manager.linode.com) that allows you to add DNS records for all of your domain names. This guide covers the use of Linode's DNS Manager and basic domain zone set-up. For an introduction to DNS in general, please see our [Introduction to DNS Records](/docs/networking/dns/introduction-to-dns-records) guide.
 
-Getting Started
----------------
+##Getting Started
 
 The Domain Name System (DNS) attaches human-usable domain names to machine-usable IP addresses. In many ways, it is the phone book of the Internet. Just like a phone book can help you find the phone number of a business, DNS can take a domain name like `google.com` and translate it into an IP address like `74.125.19.147`, the IP address for Google's homepage. This global system allows users to remember the names of websites instead of their IP addresses.
 
 {: .note}
->All steps within this guide are done within the **DNS Manager** tab of your Linode Manager.
+>All steps within this guide are done within the **[DNS Manager](https://manager.linode.com/dns)** tab of your Linode Manager.
 
 ### DNS Set-Up Checklist
 
@@ -40,7 +39,7 @@ Ready to add or edit DNS records? Log in to the [Linode Manager](https://manager
 [![1. All of the domain zones are listed in the Domain Zone column. 2. The "Import a zone" link lets you import zone files. 3. The "Clone an existing zone" link lets you duplicate another zone you already have set up in the Linode Manager. 4. The "Add a domain zone" link lets you create a new zone file for a domain. 5. In the Options column for each domain, you have the following links: "Edit," "Remove," "Check," and "Zone file."](/docs/assets/1112-dns1-2.png)](/docs/assets/1112-dns1-2.png)
 
 1.  All of your domain zones are listed here. A *domain zone*, essentially synonymous for the term "domain," is a collection of DNS records for a single domain name. Click the name of a domain zone to add or edit DNS records within that zone.
-2.  If you have a zone file that can be exported from a server or another hosting provider, click **Import a zone** to import it.
+2.  If you have a zone that can be exported from a server or another hosting provider, click **Import a zone** to import it.
 3.  Click **Clone an existing zone** to duplicate an existing zone that you've already set up in the Linode Manager.
 4.  Click **Add a domain zone** to create a new domain zone.
 5.  Use the links to the far right of the domain zone link to edit DNS records within a zone, delete a zone, check a zone, or view a zone's file.
@@ -62,8 +61,7 @@ When you select the name of a domain zone, or select the **Edit** link next to a
 
 3.  Use the links at the right columns to edit or remove DNS records.
 
-Setting Domain Names to Use Linode's Name Servers
--------------------------------------------------
+##Setting Domain Names to Use Linode's Name Servers
 
 After you purchase a domain, the next step is setting your domain registrar to use our name servers. Use your domain name registrar's interface to set the name servers for your domain name to the following entries:
 
@@ -79,8 +77,7 @@ See the instructions on your domain name registrar's website for more informatio
 >
 > DNS changes can take up to 24 hours to propagate throughout the Internet, although the changes are usually visible within a couple hours.
 
-Domain Zones
-------------
+##Domain Zones
 
 Before you can add any DNS records, you must create a domain zone — a container for DNS records associated with a single domain name. The Linode Manager allows you to add new domain zones, import domain zones from other DNS servers, clone existing zones that you've already created in the DNS Manager, check to make sure that a zone is correctly loaded, view the raw output of a zone file, and permanently remove a zone and all associated DNS records.
 
@@ -103,7 +100,7 @@ Here's how to add a new domain zone:
 
      If you want to add a *slave zone* instead of a master zone, click the **I wanted a slave zone** link to the lower right.
 
-[![This page lets you add specific DNS records.](/docs/assets/1121-dns9.png)](/docs/assets/1121-dns9.png)
+    [![This page lets you add specific DNS records.](/docs/assets/1121-dns9.png)](/docs/assets/1121-dns9.png)
 
 If you selected the option to have the DNS Manager insert basic DNS records, those records will be visible, as shown above. If you elected to keep the zone empty, you can start adding DNS records now. Skip to the [Adding DNS Records](#adding-1) section for instructions.
 
@@ -172,8 +169,7 @@ Click **Yes, delete this sucker** to permanently delete the zone.
 
 The domain zone and all of its associated records has now been removed.
 
-DNS Records
------------
+##DNS Records
 
 Once you've created a domain zone, you can start filling it with DNS records. DNS records are the link between your domain and your virtual private server. This section shows you how to add, edit, and remove DNS records.
 
@@ -225,8 +221,7 @@ If you no longer need an existing DNS record, you can remove it from the DNS man
 
 You have successfully removed the DNS record. It can take up to 30 minutes for the changes to be removed.
 
-Troubleshooting
----------------
+##Troubleshooting
 
 Having problems with your DNS records? We recommend reviewing this section to help get your DNS settings back on track. Follow these tips to troubleshoot DNS issues.
 
@@ -234,7 +229,7 @@ Having problems with your DNS records? We recommend reviewing this section to he
 
 If you've just made a DNS change and aren't seeing it reflected yet, try waiting 48 hours. DNS updates will take effect, or *propagate*, within the time period set by your zone file's [TTL](#setting-the-time-to-live-or-ttl). In some cases the new information may not be reflected for up to 48 hours.
 
-While you can't control DNS caching at every point on the internet, you do have control over your web browser. Try holding down the *Shift* key or the *Control* key (depending on your browser) while you refresh the page to bypass your browser's cache of the old DNS data. You can also try bringing up your site in an alternate browser.
+While you can't control DNS caching at every point on the internet, you do have control over your web browser. Try holding down the *Shift* key or the *Control* key (depending on your browser) while you refresh the page to bypass your browser's cache of the old DNS data. You can also try bringing up your site in an alternate browser, or [Previewing Your Website Without DNS](/docs/networking/dns/previewing-websites-without-dns).
 
 ### Setting the Time To Live or TTL
 
@@ -248,10 +243,10 @@ The solution is to lower your TTL before making a DNS change. You'll want to low
 >TTL is always written out in seconds, so 24 hours = 86400 seconds.
 
 1.  Check the TTL on your current zone file. Typically, this will be 24 or 48 hours.
-2.  Visit your current zone file 24 or 48 hours early, and lower the TTL to five minutes (300 seconds, or the lowest allowed value). Do not make any other changes at this time. If you're using Linode's DNS Manager, lower the TTL to 5 minutes for each entry you're going to change.
-3.  Wait out the original 24 or 48 hours.
+2.  Visit your current zone file 48 (for a 24 hour record) to 96 (for a 48 hour record) hours early, taking into account any intermediate DNS servers. Lower the TTL to five minutes (300 seconds, or the lowest allowed value). Do not make any other changes at this time. If you're using Linode's DNS Manager, lower the TTL to 5 minutes for each entry you're going to change.
+3.  Wait out the original 48 to 96 hours.
 4.  Visit your zone file again to make all of your IP address and other updates.
-5.  DNS changes should propagate within five minutes, meaning that your new website and/or email will now be live.
+5.  DNS changes should propagate within fifteen minutes, meaning that your new website and/or email will now be live.
 
 ### Finding Current DNS Information
 
@@ -278,9 +273,9 @@ This generates a large amount of information about the domain. The basic informa
 
 If you're on a Windows machine, or you're more comfortable using a web-based tool, you can also use [kloth.net](http://www.kloth.net/services/dig.php) for dig requests and [whois.net](http://whois.net/) for WHOIS requests. Note that since you're running these lookups from a third-party website, the information they find is not necessarily what your local computer has cached. (There should be a difference only if you've made recent changes to your DNS information.)
 
-Next Steps
-----------
+##Next Steps
 
 Now that you are familiar with Linode's DNS Manager, you should set up your [reverse DNS configuration](/docs/networking/dns/setting-reverse-dns), and consider looking at our [Common DNS Configurations](/docs/networking/dns/common-dns-configurations) guide.
+
 
 

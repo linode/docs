@@ -9,7 +9,7 @@ alias: ['dns-manager/','dns-guides/configuring-dns-with-the-linode-manager/']
 modified: Tuesday, Janaury 20, 2015
 modified_by:
   name: Elle Krout
-published: 'Thursday, July 16th, 2009'
+published: 'Tuesday, January 20, 2015'
 title: Reverse DNS
 ---
 
@@ -23,8 +23,7 @@ Before setting up the reverse DNS for your Linode, be sure to set up your domain
 >
 >For more information about [PTR records](/docs/networking/dns/introduction-to-dns-records#ptr) and DNS in general please see our [Introduction to DNS Records](/docs/networking/dns/introduction-to-dns-records) guide.
 
-Setting Reverse DNS
--------------------
+##Setting Reverse DNS
 
 1.  Select the Linode you wish to set up reverse DNS for from your Linodes tab.
 2.  Click the **Remote Access** tab.

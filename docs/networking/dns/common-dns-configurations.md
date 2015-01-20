@@ -8,15 +8,14 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['dns-manager/','dns-guides/configuring-dns-with-the-linode-manager/']
 modified: Tuesday, January 20, 2015
 modified_by:
-  name: Linode
-published: 'Thursday, July 16th, 2009'
+  name: Elle Krout
+published: 'Tuesday, January 20, 2015'
 title: Common DNS Configurations
 ---
 
-After familiarizing yourself with Linode's Domain Manager, the next step is determining which DNS records should be added. This guide discusses common DNS configurations that you can reference when creating your DNS records. If you are still unfamiliar with DNS and Linode's DNS Manager, please see our [DNS Manager](/docs/networking/dns/dns-manager) guide.
+After familiarizing yourself with Linode's [DNS Manager](/docs/networking/dns/dns-manager), the next step is determining which DNS records should be added. This guide discusses common DNS configurations that you can reference when creating your DNS records.
 
-Setting Up a Domain
--------------------
+##Setting Up a Domain
 
 The most common DNS configuration is a single domain name on one Linode. For this, you'll need to add *SOA* and *NS records* for all of your name servers, and *A/AAAA* records for your domain names. Use the screenshot below as a guide.
 
@@ -26,8 +25,7 @@ The most common DNS configuration is a single domain name on one Linode. For thi
 >
 > The DNS Manager can automatically add all of these records when you create a domain zone. For instructions, see [Adding Domain Zones](/docs/networking/dns/dns-manager#adding) in the [DNS Manager](/docs/networking/dns/dns-manager) guide.
 
-Configuring Subdomains
-----------------------
+##Configuring Subdomains
 
 To configure a subdomain, such as `staging.example.org`, create an A record with the hostname of the subdomain you want to create. Point the the record at the IP address of the server you want to host the subdomain, as shown below.
 
@@ -37,8 +35,7 @@ To configure a subdomain, such as `staging.example.org`, create an A record with
 >
 > You will also need to create a name-based virtual host for the subdomain. If you're using Apache, see [Configuring Name-Based Virtual Hosts](/docs/websites/hosting-a-website/#configuring-name-based-virtual-hosts) for more information.
 
-Hosting Multiple Domains on a Single Server
--------------------------------------------
+##Hosting Multiple Domains on a Single Server
 
 To host multiple domain names on a single server, create a separate domain zone for each domain name, as shown below. When creating the new domain zones, we recommend that you allow the DNS Manager to automatically [insert basic records](/docs/networking/dns/dns-manager#adding). At a minimum, you'll need an A record for each domain name pointing to the server's IP address.
 
@@ -48,18 +45,15 @@ To host multiple domain names on a single server, create a separate domain zone 
 >
 > You will also need to create a name-based virtual host for each domain name. If you're using Apache, see [Configuring Name-Based Virtual Hosts](/docs/websites/hosting-a-website/#configuring-name-based-virtual-hosts) for more information.
 
-Using One Domain on Multiple Servers
-------------------------------------
+##Using One Domain on Multiple Servers
 
 If you have more than one server, but only one domain name, you can point A records with server-specific hostnames to all servers that need domain names. One machine will be the "front end" for the domain, by virtue of the first-level domain's A record pointing to it, but if needed the domain can serve as a proxy for services provided by other machines. For example, if you wanted to create a development environment on another server, you could create an A record for `staging.example.org` and point it at another Linode's IP address.
 
-Routing Email to Third-Party Mail Services
-------------------------------------------
+##Routing Email to Third-Party Mail Services
 
 To route email to a third-party email service, create MX records that associate your mail server (for example, `mail.example.org`) with a *hostname* provided by the third-party service. For instructions, see the website of your third-party email service.
 
-Using Wildcard DNS Records
---------------------------
+##Using Wildcard DNS Records
 
 A *wildcard* DNS record matches requests for non-existent domain names. For example, if you create an A record for `*.example.org`, and a user visits `nonexistantname.example.org`, that user will be redirected to `example.org`. An example wildcard DNS record is shown below.
 
