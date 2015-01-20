@@ -260,5 +260,5 @@ More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-[PHP-FPM configuration directives](http://php.net/manual/en/install.fpm.configuration.php)
-[mod_fastcgi configuration directives](http://www.fastcgi.com/mod_fastcgi/docs/mod_fastcgi.html)
+* [PHP-FPM configuration directives](http://php.net/manual/en/install.fpm.configuration.php)
+* [mod_fastcgi configuration directives](http://www.fastcgi.com/mod_fastcgi/docs/mod_fastcgi.html)
