@@ -46,8 +46,7 @@ The WordPress installer assumes you've already created a [MySQL](/docs/websites/
 
         grant all on example_com.* to 'wordpress' identified by '5t1ck';
 
-Install WordPress
------------------
+## Install WordPress
 
 As of this writing, the latest version of WordPress is 4.1. The latest version of WordPress is always available from the URL `http://wordpress.org/latest.tar.gz`. Issue the following sequence of commands to download and install the required files:
 
@@ -61,8 +60,7 @@ As of this writing, the latest version of WordPress is 4.1. The latest version o
 
 These commands create a `src/` folder within the `/var/www/example.com/` directory to store and manage pristine copies of the source files that you use to deploy your WordPress site. New versions of WordPress and plug-ins can be downloaded from within the WordPress administration interface, once installed.
 
-Configure WordPress
--------------------
+## Configure WordPress
 
 1.  Ensure that the WordPress installation process has the ability to create the required configuration file by issuing the following command:
 
@@ -77,7 +75,19 @@ Configure WordPress
         chmod 755 /var/www/example.com/public_html/
         chown www-data:www-data /var/www/example.com/public_html/wp-config.php
 
-4.  Unless you've decided to use a web server other than Apache, issue the following commands to ensure that `mod_rewrite` is enabled:
+5.  As it stands, should you try to update WordPress or install new themes or plugins, you will be asked to input your FTP information. To bypass this you must alter your `wp-config.php` file by adding the following line:
+
+    {: .file-excerpt}
+    /var/www/example.com/public_html/wp-config.php
+    :   ~~~
+        define('FS_METHOD', 'direct');
+        ~~~
+
+    Next, give WordPress permission to add and edit files in the `wp_content` folder:
+
+        chown -R www-data:www-data /var/www/example.com/public_html/wp-content
+
+6.  Unless you've decided to use a web server other than Apache, issue the following commands to ensure that `mod_rewrite` is enabled:
 
         a2enmod rewrite
         service apache2 restart
@@ -86,9 +96,7 @@ You will now be able to log in to your new WordPress-powered website. You can co
 
 Congratulations! You have now successfully installed WordPress!
 
-
-Monitor for Software Updates and Security Notices
--------------------------------------------------
+## Monitor for Software Updates and Security Notices
 
 When running software compiled or installed directly from sources provided by upstream developers, you are responsible for monitoring updates, bug fixes, and security issues. After becoming aware of releases and potential issues, update your software to resolve flaws and prevent possible system compromise. Monitoring releases and maintaining up-to-date versions of all software is crucial for the security and integrity of a system.
 
