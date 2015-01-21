@@ -67,7 +67,7 @@ redis.conf
     appendonly no
     ~~~
 
-The values in this configuration mirror the default Redis configuration Ubuntu provides. However, this configuration configures Redis to run ina daemon mode bound only to the local network interface. You may want to change these values depending on the needs of your application.
+The values in this configuration mirror the default Redis configuration Ubuntu provides. However, this configuration configures Redis to run in daemon mode bound only to the local network interface. You may want to change these values depending on the needs of your application.
 
 Managing Redis Instances
 ------------------------

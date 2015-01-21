@@ -43,7 +43,7 @@ To provide additional security, it is recommended that you set the `auth` option
 
 Please note that after making any changes to the MongoDB configuration file, you'll always need to restart the service for the changes to take effect (see below).
 
-Starting and Stopping the MondoDB Server
+Starting and Stopping the MongoDB Server
 ----------------------------------------
 
 To start, restart, or stop MongoDB, issue the appropriate command from the following:
