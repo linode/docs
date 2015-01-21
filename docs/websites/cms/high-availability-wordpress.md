@@ -5,10 +5,10 @@ author:
 description: 'Configuring a highly available WordPress installation.'
 keywords: 'wordpress,mysql,replication,master-master,high availability'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Friday, January 9, 2015
+modified: Wednesday, January 21, 2015
 modified_by:
   name: James Stewart
-published: 'Wednesday, January 21, 2015'
+published: 'Friday, January 9, 2015'
 title: High Availability WordPress Hosting
 ---
 
