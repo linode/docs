@@ -220,7 +220,7 @@ You will be asked to change the root password, remove anonymous users, disable r
     OK, successfully used password, moving on...
 
     Setting the root password ensures that nobody can log into the MariaDB
-    root user without the proper authorisation.
+    root user without the proper authorization.
 
     You already have a root password set, so you can safely answer 'n'.
 

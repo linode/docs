@@ -129,7 +129,7 @@ Use the following commands to install MySQL on each of the Linodes:
         CHANGE MASTER TO master_host='x.x.x.x', master_port=3306, master_user='replication', master_password='password', master_log_file='mysql-bin.000001', master_log_pos=277;
         SLAVE START;
 
-5.  Test by creating a datbase and inserting a row:
+5.  Test by creating a database and inserting a row:
 
     Server 1:
 

@@ -100,7 +100,7 @@ Modify the value of `bind_ip` to reflect the address over which you would like t
 
 Modify the value of `bind_ip` to reflect the address over which you would like to access MongoDB. You may connect multiple slave nodes to a single master node.
 
-The `slavedelay` option, disabled in this configuration, allows administratos to force a specific slave to intentionally "lag" behind the master by the specified number of seconds. This makes it possible to more easily revert to an older instance of the database if something happens to the current version. The `slavedelay` value is in seconds.
+The `slavedelay` option, disabled in this configuration, allows administrators to force a specific slave to intentionally "lag" behind the master by the specified number of seconds. This makes it possible to more easily revert to an older instance of the database if something happens to the current version. The `slavedelay` value is in seconds.
 
 The `autoresync` option forces the slave database to automatically resynchronize itself with the master in case the slave should become out of sync. When the master does fall out of sync, the `autoresync` option will not attempt to synchronize more than once in any ten minute period.
 

@@ -50,7 +50,7 @@ The MongoDB repository provides the latest stable release (currently mongodb-10g
 
         sudo apt-get update
 
-5.  Install MongoDb with the command:
+5.  Install MongoDB with the command:
 
         sudo apt-get install mongodb-10gen
 

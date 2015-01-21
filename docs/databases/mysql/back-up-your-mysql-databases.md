@@ -326,7 +326,7 @@ Remember that the semi-colons (e.g. `;`) following each statement are required. 
     USE customer;
     CREATE TABLE order (custNum INT, orderName VARCHAR(20));
 
-Depending on your deployment, you may need to create a new MySQL user or recreate aprevious user with access to the newly created database. The command for creating a new MySQL user takes the following form:
+Depending on your deployment, you may need to create a new MySQL user or recreate a previous user with access to the newly created database. The command for creating a new MySQL user takes the following form:
 
     CREATE USER '[username]'@'[host]' IDENTIFIED BY '[password]';
 
