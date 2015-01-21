@@ -8,7 +8,7 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: Friday, January 9, 2015
 modified_by:
   name: James Stewart
-published: 'Friday, January 9, 2015'
+published: 'Wednesday, January 21, 2015'
 title: High Availability WordPress Hosting
 ---
 
@@ -16,7 +16,7 @@ This guide configures a high availability WordPress site with a two Linode clust
 
 ##Prerequisites
 
-This guide is written for Debian 7 or Ubuntu 14.04. To complete this guide, ensure that there are two Linodes and a NodeBalancer present on your account.  Both Linodes need a [Private IP address](/docs/networking/remote-access#adding-private-ip-addresses). Also ensure that both of your Linode's have been configured with SSH keys, and place the opposing Linode's SSH key in the other's `/.ssh/authorized_keys` file.
+This guide is written for Debian 7 or Ubuntu 14.04. To complete this guide, ensure that there are two Linodes and a NodeBalancer present on your account.  Both Linodes need a [Private IP address](/docs/networking/remote-access#adding-private-ip-addresses). Also ensure that both of your Linodes have been configured with SSH keys, and place the opposing Linode's SSH key in the other's `/.ssh/authorized_keys` file.
 
 
 {: .note}
@@ -247,7 +247,7 @@ The steps in this section will need to be performed on **both** of your Linodes.
  
         sudo apt-get install lsyncd
 
-2.  Create a configuration file in order to perform sync actions.  Replace x.x.x.x with the Private IP address of the second Linode in your cluster.
+2.  Create a configuration file in order to perform sync actions.  Replace `x.x.x.x` with the Private IP address of the second Linode in your cluster.
  
     {: .file-excerpt}
     /etc/lsyncd/lsyncd.conf.lua
@@ -287,7 +287,7 @@ The steps in this section will need to be performed on **both** of your Linodes.
 
     If this command returns something other than `lsyncd is running.`, double-check your `lsyncd.conf.lua` file and ensure that the RSA public key is in the right location on the secondary server. 
 
-5.  Test replication by creating a file in your primary Linode's /var/www folder.  You should be able to see that same file in that location on the second Linode within a few seconds.
+5.  Test replication by creating a file in your primary Linode's `/var/www` folder.  You should be able to see that same file in that location on the second Linode within a few seconds.
 
 ##Configure Your Nodebalancer
 
