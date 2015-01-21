@@ -27,7 +27,7 @@ The main reason `mod_php` uses more resources is because it is loaded even for n
 
 Additionally, using PHP-FPM allows each virtual host to be configured to run PHP code as individual users. Previously, this was only possible by using suPHP.
 
-This guide assumes that you are familiar and comfortable with setting up [LAMP stacks](/docs/assets/1700-private_ip-v3.png) on Debian 7. If you are new to Linux server administration, you may be interested in reading our [Linux System Administration Basics](/docs/tools-reference/linux-system-administration-basics) documentation series. 
+This guide assumes that you are familiar and comfortable with setting up [LAMP stacks](/docs/websites/lamp) on Debian 7. If you are new to Linux server administration, you may be interested in reading our [Linux System Administration Basics](/docs/tools-reference/linux-system-administration-basics) documentation series. 
 
 Installing mod_fastcgi and PHP-FPM
 --------------------------------
