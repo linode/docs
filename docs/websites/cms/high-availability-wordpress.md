@@ -157,14 +157,9 @@ The steps in this section will need to be performed on **both** of your Linodes.
         sudo mkdir example.com/public_html
         sudo mkdir example.com/log
 
-5.  Create the virtual host file for the website by entering the following command:
+5.  Create the virtual host file for the website:
 
-        sudo nano /etc/apache2/sites-available/example.com.conf
 
-    {:.caution}
-    > The file name *must* end with `.conf` in Apache versions 2.4 and later, which Ubuntu 14.04 uses. The `.conf` extension is backwards-compatible with earlier versions.
-
-6.  Create the new virtual host file:
 
     {: .file-excerpt}
     /etc/apache2/sites-available/example.com.conf
@@ -188,13 +183,14 @@ The steps in this section will need to be performed on **both** of your Linodes.
         </VirtualHost>
         ~~~
 
-7.  Save the changes to the virtual host configuration file by pressing `Control + x` and then `y`. Press `Enter` to confirm.
+    {:.caution}
+    > The file name *must* end with `.conf` in Apache versions 2.4 and later, which Ubuntu 14.04 uses. The `.conf` extension is backwards-compatible with earlier versions.
 
-8. Enable the new website by entering the following command:
+6.  Enable the new website by entering the following command:
 
         sudo a2ensite example.com.conf
 
-9.  Restart Apache:
+7.  Restart Apache:
 
         sudo service apache2 restart
 
@@ -207,7 +203,7 @@ The steps in this section will need to be performed on **both** of your Linodes.
         tar -xvf latest.tar.gz
         cp -R wordpress/* /var/www/example.com/public_html
 
-2.  Configure the MySQL database for the new WordPress installation. You'll need to replace "wordpressuser" and "password" with your own settings:
+2.  Configure the MySQL database for the new WordPress installation. You'll need to replace `wordpressuser` and `password` with your own settings:
 
         mysql -u root -p
         CREATE DATABASE wordpress;
@@ -221,8 +217,8 @@ The steps in this section will need to be performed on **both** of your Linodes.
 
 4.  Connect to your Linode's IP address using your web browser, and walk through the configuration steps to fully install WordPress.
 
-    {: .note}
-    >In order to ensure that each of your WordPress instances addresses the local database, you will need to ensure that the Database Host value in this step is set to 'localhost'.  This should be filled in by default.
+    {: .caution}
+    >In order to ensure that each of your WordPress instances addresses the local database, you will need to ensure that the Database Host value in this step is set to `localhost`.  This should be filled in by default.
 
 5.  Configure your WordPress URL and Site Address via the General Settings in the WordPress admin interface. Ensure that your domain is configured in both fields.
 
@@ -239,23 +235,23 @@ The steps in this section will need to be performed on **both** of your Linodes.
 
         rsync -r /var/www/* x.x.x.x:/var/www/.
 
-    {: .note}
-    >If you install new WordPress themes or plugins, you will need to re-run this command in order to syncronize the change between your Linodes.
 
 7.  Log in to the second Linode and restart Apache:
 
         sudo service apache2 restart
 
 
-You should now be able to visit the new WordPress site on both of your Linodes, and updates from one Linode should be seen immediately on the other.
-
 ##Configure Folder Sync With Lsyncd
 
-1.  Install lsyncd on your primary Linode in the cluster.
+1.  Create an RSA key pair on your primary Linode for the root user. Check out our guide on [Public Key Authentication](/docs/security/use-public-key-authentication-with-ssh) if you're unfamiliar with the process. Make sure to create a key *without* a passphrase.
+
+2.  Copy the contents of the `id_rsa.pub` file into `/root/.ssh/authorized_keys` on the secondary Linode.
+
+3.  Install Lsyncd on your primary Linode in the cluster.
  
-        apt-get install lsyncd
- 
-2.  Create configuration file in order to perform sync actions.  Replace x.x.x.x with the Private IP address of the second Linode in your cluster.
+        sudo apt-get install lsyncd
+
+4.  Create configuration file in order to perform sync actions.  Replace x.x.x.x with the Private IP address of the second Linode in your cluster.
  
     {: .file-excerpt}
     /etc/lsyncd/lsyncd.conf.lua
@@ -266,7 +262,8 @@ You should now be able to visit the new WordPress site on both of your Linodes, 
         }
         sync{
         default.rsyncssh,
-        delete = false,=
+        delete = false,
+        insist
         source="/var/www",
         host="x.x.x.x",
         targetdir="/var/www",
@@ -284,11 +281,17 @@ You should now be able to visit the new WordPress site on both of your Linodes, 
         }
         ~~~
 
-3.  Start the lsyncd daemon.
+5.  Start the Lsyncd daemon.
 
         service lsyncd start
 
-4.  Test replication by creating a file in your primary Linode's /var/www folder.  You should be able to see that same file in that location on the second Linode within a few seconds.
+6.  Test that Lsyncd started successfully:
+
+        service lsyncd status
+
+    If this command returns something other than `lsyncd is running.`, double-check your `lsyncd.conf.lua` file and ensure that the RSA public key is in the right location on the secondary server. 
+
+7.  Test replication by creating a file in your primary Linode's /var/www folder.  You should be able to see that same file in that location on the second Linode within a few seconds.
 
 ##Configure Your Nodebalancer
 
