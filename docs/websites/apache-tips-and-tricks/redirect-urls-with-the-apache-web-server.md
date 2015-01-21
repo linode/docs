@@ -13,7 +13,7 @@ published: 'Tuesday, October 13th, 2009'
 title: Redirect URLs with the Apache Web Server
 ---
 
-When HTTP resources, or web pages, change locations it is often important to provide some means of alerting users that these resources have moved. HTTP provides a number of "redirection" codes that can be used to facilitate this process, by communicating with he client application without interfering on the users experience.
+When HTTP resources, or web pages, change locations it is often important to provide some means of alerting users that these resources have moved. HTTP provides a number of "redirection" codes that can be used to facilitate this process, by communicating with the client application without interfering on the users experience.
 
 Apache provides a number of "redirect" configuration directives that allow administrators to specify resources in the configuration file to redirect to another URL. When a request is redirected the server returns a result for that request that instructs the client to initiate a second request for the target resource's new location.
 
