@@ -11,13 +11,13 @@ modified_by:
 published: 'Friday, January 9, 2015'
 title: High Availability WordPress Hosting
 ---
+
 This guide configures a high availability WordPress site with a two Linode cluster, using MySQL Master-Master replication and a Linode NodeBalancer frontend.
 
 ##Prerequisites
 
-This guide is written for Debian 7 or Ubuntu 14.04.
+This guide is written for Debian 7 or Ubuntu 14.04. To complete this guide, ensure that there are two Linodes and a NodeBalancer present on your account.  Both Linodes need a [Private IP address](/docs/networking/remote-access#adding-private-ip-addresses). Also ensure that both of your Linode's have been configured with SSH keys, and place the opposing Linode's SSH key in the other's `/.ssh/authorized_keys` file.
 
-To complete this guide, ensure that there are two Linodes and a NodeBalancer present on your account. Both Linodes need to be assigned a [private IP address](/docs/networking/remote-access#adding-private-ip-addresses) and configured with SSH keys. Place the opposing Linode's SSH key in the other's `/.ssh/authorized_keys` file.
 
 {: .note}
 >This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
@@ -243,15 +243,11 @@ The steps in this section will need to be performed on **both** of your Linodes.
 
 ##Configure Folder Sync With Lsyncd
 
-1.  Create an RSA key pair on your primary Linode for the root user. Check out our guide on [Public Key Authentication](/docs/security/use-public-key-authentication-with-ssh) if you're unfamiliar with the process. Make sure to create a key *without* a passphrase.
-
-2.  Copy the contents of the `id_rsa.pub` file into `/root/.ssh/authorized_keys` on the secondary Linode.
-
-3.  Install Lsyncd on your primary Linode in the cluster.
+1.  Install Lsyncd on your primary Linode in the cluster.
  
         sudo apt-get install lsyncd
 
-4.  Create configuration file in order to perform sync actions.  Replace x.x.x.x with the Private IP address of the second Linode in your cluster.
+2.  Create a configuration file in order to perform sync actions.  Replace x.x.x.x with the Private IP address of the second Linode in your cluster.
  
     {: .file-excerpt}
     /etc/lsyncd/lsyncd.conf.lua
@@ -281,17 +277,17 @@ The steps in this section will need to be performed on **both** of your Linodes.
         }
         ~~~
 
-5.  Start the Lsyncd daemon.
+3.  Start the Lsyncd daemon.
 
         service lsyncd start
 
-6.  Test that Lsyncd started successfully:
+4.  Test that Lsyncd started successfully:
 
         service lsyncd status
 
     If this command returns something other than `lsyncd is running.`, double-check your `lsyncd.conf.lua` file and ensure that the RSA public key is in the right location on the secondary server. 
 
-7.  Test replication by creating a file in your primary Linode's /var/www folder.  You should be able to see that same file in that location on the second Linode within a few seconds.
+5.  Test replication by creating a file in your primary Linode's /var/www folder.  You should be able to see that same file in that location on the second Linode within a few seconds.
 
 ##Configure Your Nodebalancer
 
