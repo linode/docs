@@ -1,237 +1,231 @@
-This guide will show you how to setup, secure, and enable maintenance functions on a Garry's Mod server for CentOS 7. 
+---
+author:
+  name: Julian Meyer
+  email: --
+description: 'A Garrys Mod Server for CentOS 7'
+keywords: 'garry''s mod,centos,centos 7'
+license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+alias: ['web-applications/game-servers/minecraft-ubuntu12-04/']
+published: 'Wednesday, January 21, 2015'
+modified: Wednesday, January 21, 2015
+modified_by:
+  name: Julian Meyer
+title: 'Garry''s Mod on CentOS 7'
+external_resources:
+- '[SRCDS](http://www.srcds.com/)'
+- '[GMod Forums](http://facepunch.com/forum.php)'
+- '[GMod Wiki](http://wiki.garrysmod.com/page/Main_Page)'
+---
 
-Garry's Mod is a game that enables complete control and modification to the main game, allowing it to be essentially any game you want it to be. The modifications are coded in Lua.
+Garry's Mod is a game that enables complete control and modification to the main game, essentially allowing it to be any game you want it to be. There are a variety of gamemodes, and setting up a Garry's Mod server is a great way to play with friends over the Internet, while giving you control over what the server runs.
 
-Setting up a Garry's Mod server is a great way to play with friends over the internet and allows for complete control over what the server runs.
+In this guide, we will show you how to create, maintain, and secure a Garry's Mod server.
 
-In this guide, we will show you how to create a Garry's Mod server running TTT, one of the many gamemodes for Garry's Mod, and maintain the server. We will also show you how to secure the server so no nasty admins ruin your Linode.
+{: .note}
+>
+>You will need a [Steam](http://www.steampowered.com) account and a copy of Garry's Mod to complete this guide.
 
-Preparation
------------
+##Preparation
 
-First, we'll need to install necessary packages and create a user.
+Before you begin, you will need to install necessary packages, create a user, and edit your firewall privileges.
+
+{: .note}
+> This section assumes root access. Be sure to run the guide as `root` or with the sudo prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
 ### Update Packages
 
-1.  Log in to your Linode via [SSH](/docs/getting-started#sph_logging-in-for-the-first-time).
-2.  Run the update command:
+1.  Log in to your Linode via [SSH](/docs/getting-started#logging-in-for-the-first-time).
+2.  Run the update command, and install the required dependencies to run SteamCMD:
 
-	```
-	yum update
-	yum install tmux gdb mailx postfix glibc.i686 libstdc++.i686
-	```
+    	yum update
+	    yum install tmux gdb mailx postfix glibc.i686 libstdc++.i686
 
-### Add a gmod user
+###Update Firewall
 
-1.  Create the user:
+If you have a firewall on your Linode you will need to add the following ruleset to `iptables.firewall.rules` in order to run SteamCMD:
 
-	```
-	adduser gmod
-	```
+{: .file-excerpt}
+/etc/iptables.firewall.rules
+:   ~~~
+    # Allow SteamCMD
+    -A INPUT -p udp -m udp --sport 27000:27030 --dport 1025:65355 -j ACCEPT
+    -A INPUT -p udp -m udp --sport 4380 --dport 1025:65355 -j ACCEPT
+    ~~~
 
-2.  Set the password for gmod:
+### Add A User
 
-	```
-	passwd gmod
-	```
+1.  Create the user. In this example, the user is called `gmod`:
 
-3.  Login as gmod:
+    	adduser gmod
 
-	```
-	su - gmod
-	```
+2.  Set the password for your user:
+
+	    passwd gmod
+
+    You will be prompted to enter a password.
+
+3.  Login to your new user:
+
+    	su - gmod
 
 	Enter the password that you set before.
 
-Installation
-------------
+## Installation
 
-1.  Download the required script:
+1.  Download the required script. This script will install both the server installer (SteamCMD) and the necessary server files:
 
-	```
-	wget http://danielgibbs.co.uk/dl/gmodserver
-	```
+    	wget http://danielgibbs.co.uk/dl/gmodserver
 
-2.  Give the user execute permissions for the script (this means that you can run it):
+2.  Give the user execute permissions for the script:
 
-	```
-	chmod +x gmodserver
-	```
+    	chmod +x gmodserver
 
-3.  Run the installer
+3.  Run the installer:
 
-	```
-	./gmodserver install
-	```
+    	./gmodserver install
 
-4.  Press `Y` when it asks about the server directory.
-5.  Ensure that the install was successful and press `Y` when it asks you:
+4.  Press `y` when it asks about the server directory.
 
-	```
-	 Update state (0x61) downloading, progress: 97.37 (3695044726 / 3795030198)
-	 Update state (0x61) downloading, progress: 99.92 (3792009490 / 3795030198)
-	Success! App '4020' fully installed.
+5.  Ensure that the install was successful, pressing `y` if the output reads affirmative:
 
-	=================================
-	Was the install successful? [y/N]
-	```
+        Update state (0x61) downloading, progress: 97.37 (3695044726 / 3795030198)
+	    Update state (0x61) downloading, progress: 99.92 (3792009490 / 3795030198)
+	    Success! App '4020' fully installed.
 
-6.  You can choose to install [GameServerQuery](https://code.google.com/p/ax-gameserver-query/) in the next step.
-7.  Configure your server by changing the next couple of values:
+	    =================================
+	    Was the install successful? [y/N]
 
-	```
-	Enter server name: Example Server
-	Enter rcon password: example
-	```
+6.  You can choose to install [Game Server Query](https://code.google.com/p/ax-gameserver-query/) in the next step. The Game Server Query plugin improves monitoring of the server. 
 
-Configuration
-=============
+7.  Configure your server by replacing `Example Server` and `password` with your desired server name and password.
 
-In this step, we will configure different aspects of the server including gamemode and workshop addons.
+	    Enter server name: Example Server
+    	Enter rcon password: password
 
-1.  Create a collection of addons you want to install on your server here: [Garry's Mod Collections](http://steamcommunity.com/workshop/browse/?section=collections&appid=4000&p=3).
-2.  Note the collection ID of your collection:
+## Configuration
 
-	```
-	http://steamcommunity.com/sharedfiles/filedetails/?id=XXXXXXXXX
-	```
+In this section, we will configure different aspects of the server, including gamemode and workshop addons.
 
-3.  Grab a Steam API key from here: [Steam API Keys](http://steamcommunity.com/dev/apikey).
-4.  Start the `nano` editor:
+1.  Create a collection of addons you want to install on your server at [Garry's Mod Collections](http://steamcommunity.com/workshop/browse/?section=collections&appid=4000&p=3). You will need to be logged into Steam.
 
-	```
-	nano gmodserver
-	```
+2.  Note the collection ID of your collection. It will be located at the end of the url, denoted by the 'X's here:
+
+    	http://steamcommunity.com/sharedfiles/filedetails/?id=XXXXXXXXX
+
+3.  Acquire a Steam API key from the [Steam API Keys](http://steamcommunity.com/dev/apikey) page. Note the key.
+
+4.  Open `gmodserver` in the editor:
+
+    	nano gmodserver
 
 5.  Set the `workshopauth` to your Steam API Key, and your `workshopcollectionid` to your collection ID.
-6.  Set the gamemode of the Garry's Mod server by adding this to the `parms` variable on line 34.
 
-	```
-	+gamemode terrortown 
-	```
+6.  Set the gamemode of the Garry's Mod server by adding the following to the `parms` variable on line 34:
 
-7.  Save and exit `nano` with CTRL-X followed by Y.
+    	+gamemode terrortown
+
+    This sets the game for the Trouble in Terrorist Town (TTT) gamemode, but can be changed to your desired gamemode, if you have it downloaded.
+
+7.  Save and exit with CTRL-X followed by Y.
 
 ### Running the Server
 
 You can now start the server using:
 
-```
-./gmodserver start
-```
+    ./gmodserver start
 
 To ensure it is running and access the console use:
 
-```
-./gmodserver console
-```
+    ./gmodserver console
 
-**To exit the console, use CTRL-B followed by D. DO NOT USE CTRL-C!**
+{: .note}
+>
+>To exit the console, use CTRL-B followed by D. Do not CTRL-C out of the console, which will shut down your server.
 
-To stop the server user:
+To stop the server use:
 
-```
-./gmodserver stop
-```
+    ./gmodserver stop
 
-Server Maintenance
-==================
+## Server Maintenance
 
 In this section, we will discuss how to do different maintenance functions for the server.
 
 ### Run on Boot
 
-1.  Open up nano:
+1.  Open up `/etc/rc.local`:
 
-	```
-	nano /etc/rc.local
-	```
+    	nano /etc/rc.local
+	
+2.  Add a line at the end of the file for Garry's Mod:
 
-2.  Add a line at the end of the file for Garry's Mod.
-
-	```
-	su - gmod -c '/home/gmod/gmodserver start'
-	```
+    {: .file-excerpt}
+    /etc/rc.local
+    :   ~~~
+    	su - gmod -c '/home/gmod/gmodserver start'
+    	~~~
 
 3.  Save and exit using CTRL-X followed by Y.
 
-### Email Notification
+### Enable Email Notification
 
-1.  Open up nano:
+1.  Open the `gmodserver` file:
 
-	```
-	nano gmodserver
-	```
-
+    	nano gmodserver
+	
 2.  Turn on email notification by editing these lines:
 
-	```
-	emailnotification="on"
-	email="test@example.com"
-	```
+    {: .file}
+    gmodserver
+    :   ~~~
+    	emailnotification="on"
+	    email="test@example.com"
+        ~~~
 
 3.  Save and exit using CTRL-X followed by Y.
 
-### Update the Server Everyday
+### Daily Server Update
 
 1.  Edit the crontab using:
 
-	```
-	crontab -e
-	```
+    	crontab -e
 
-2.  Press I to enter insertion mode.
+2.  Press `i` to enter insertion mode.
+
 3.  Add this line to the the end of the crontab:
 
-	```
-	0 5 * * *  su - gmod -c '/home/gmod/gmodserver update-restart' > /dev/null 2>&1
-	```
+    	0 5 * * *  su - gmod -c '/home/gmod/gmodserver update-restart' > /dev/null 2>&1
 
 	This will update and restart the server everyday at 5:00 am.
 
-4.  Exit cron using ESC, `:X`, ENTER.
+4.  Exit cron using ESC, `:x`, ENTER.
 
 ### Monitor the Server
 
-Make sure the server is online every 30 minutes.
+This will make sure the server is online every 30 minutes.
 
 1.  Edit the crontab using:
 
-	```
-	crontab -e
-	```
+    	crontab -e
 
-2.  Press I to enter insertion mode.
+2.  Press `i` to enter insertion mode.
+
 3.  Add this line to the end of the crontab:
 
-	```
-	*/30 * * * *  su - gmod -c '/home/gmod/gmodserver monitor' > /dev/null 2>&1
-	```
+    	*/30 * * * *  su - gmod -c '/home/gmod/gmodserver monitor' > /dev/null 2>&1
 
-	This will make sure the server is online every 30 minutes.
-
-4.  Exit cron using ESC, `:X`, ENTER.
+4.  Exit cron using ESC, `:x`, ENTER.
 
 ### Updating the Server
 
 To update the server, run:
 
-```
-./gmodserver update
-```
+    ./gmodserver update
 
 ### Validating the Server
 
 If you think your Garry's Mod version is corrupted for one reason or another, run:
 
-```
-./gmodserver validate
-```
+    ./gmodserver validate
 
-More Information
-----------------
 
-For more information see the links below:
-- [SRCDS](http://www.srcds.com/)
-- [GMod Forums](http://facepunch.com/forum.php)
-- [GMod Wiki](http://wiki.garrysmod.com/page/Main_Page)
+
