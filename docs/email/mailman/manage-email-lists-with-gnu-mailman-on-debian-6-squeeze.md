@@ -154,7 +154,7 @@ If you need to configure additional domains for use, ensure that you've made the
     POSTFIX_STYLE_VIRTUAL_DOMAINS = ['lists.example.com', 'lists.example.org']
     ~~~
 
-Ensure that your domains have valid MX and [A Records](/docs/dns-guides/introduction-to-dns#a_aaaa_records) that point to your Linode. When you've finished configuring Mailman, issue the following commands to create the default list (which will prompt you to enter an address for the list administrator and a password), restart postifx, and start Mailman for the first time:
+Ensure that your domains have valid MX and [A Records](/docs/dns-guides/introduction-to-dns#a_aaaa_records) that point to your Linode. When you've finished configuring Mailman, issue the following commands to create the default list (which will prompt you to enter an address for the list administrator and a password), restart postfix, and start Mailman for the first time:
 
     newlist mailman
     /etc/init.d/postfix restart

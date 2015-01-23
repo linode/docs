@@ -143,7 +143,7 @@ Save the following script in the `/opt` directory on the system you wish to send
 :   ~~~ perl
     #!/usr/bin/perl
 
-    # A SMTP-over-SSH Port Forwarding Scrpt
+    # A SMTP-over-SSH Port Forwarding Script
     # Copyright (c) 2010 Linode, LLC
     # Author: Philip C. Paradis <pparadis@linode.com>
     # Modifications: Linode <sam@linode.com>

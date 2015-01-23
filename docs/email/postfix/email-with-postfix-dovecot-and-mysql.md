@@ -870,7 +870,7 @@ Here's how to configure Dovecot:
 	  connect = host=127.0.0.1 dbname=mailserver user=mailuser password=mailuserpass
 	  ~~~
 
-27. Uncomment the `default_pass_scheme` line and set it to `SHA512-CRYPT`. This tells Dovecot to expect the passwords in an ecrypted format (which is how they are stored in the database).
+27. Uncomment the `default_pass_scheme` line and set it to `SHA512-CRYPT`. This tells Dovecot to expect the passwords in an encrypted format (which is how they are stored in the database).
 
     {: .file-excerpt }
 	/etc/dovecot/dovecot-sql.conf.ext

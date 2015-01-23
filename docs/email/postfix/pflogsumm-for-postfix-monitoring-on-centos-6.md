@@ -66,7 +66,7 @@ In this section, you will install and configure Pflogsumm.
 Testing
 -------
 
-Test the script by running the following command. Make sure you subsitute **/var/log/maillog** with your actual Postfix log location.
+Test the script by running the following command. Make sure you substitute **/var/log/maillog** with your actual Postfix log location.
 
     sudo perl /usr/local/pflogsumm/pflogsumm.pl /var/log/maillog
 

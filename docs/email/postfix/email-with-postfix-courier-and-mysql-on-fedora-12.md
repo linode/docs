@@ -304,7 +304,7 @@ Edit the file `/etc/sysconfig/saslauthd`, setting "FLAGS" to "-r" as shown below
     SOCKETDIR=/var/run/saslauthd
 
     # Mechanism to use when checking passwords.  Run "saslauthd -v" to get a list
-    # of which mechanism your installation was compiled with the ablity to use.
+    # of which mechanism your installation was compiled with the ability to use.
     MECH=pam
 
     # Options sent to the saslauthd. If the MECH is other than "pam" uncomment the next line.
