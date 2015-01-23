@@ -1,0 +1,214 @@
+---
+author:
+  name: Elle Krout
+  email: ekrout@linode.com
+description: 'Get in-depth website visitor statistics with Google Analytics on your WordPress website.'
+keywords: 'analytics,google analytics,wordpress,analytics,tracking,statistics'
+license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+alias: ['']
+modified: Thursday, January 22, 2015
+modified_by:
+  name: Elle Krout
+published: 'Thursday, January 22, 2015'
+title: Google Analytics for Websites
+external_resources:
+- '[Analytics Help](https://support.google.com/analytics/?hl=en#topic=3544906)'
+- '[Google Analytics Developers](https://developers.google.com/analytics/)'
+- '[Google Analytics for WordPress](/docs/uptime/analytics/google-analytics/google-analytics-on-wordpress)'
+---
+
+Google Analytics offers detailed statistics related to visitor traffic and sales for your website, allowing you to better know your audience. It can be beneficial to any website interested in growing its visitor base.
+
+Although Google Analytics provides a way to add the tracking code to your webpages, adding a code individually to each page can be time-consuming and inefficient. This guide provides three alternatives to inserting the Google Analytics tracking code to your website, depending on your website's set-up.
+
+{: .note}
+>
+>The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+>
+>This guide also assumes you have configured your Apache server as described in our guides with your publicly accessible directory located at something similar to `/var/www/example.com/public_html`. Replace all instances of `example.com` with your own domain information.
+
+## Signing Up for Google Analytics
+
+Prior to adding Google Analytics to your website, you need to sign up and set up your Google Analytics account.
+
+1.  Navigate to the [Google Analytics](http://www.google.com/analytics) website, clicking the **Access Google Analytics** button to the top right.
+
+2.  Click **Sign Up**.
+
+3.  Be sure the **Website** option is selected, then enter your account information as desired. Be sure that your website URL is accurate.
+
+    ![Google Analytics account creation](/docs/assets/googleana-wordpress-signup.png)
+
+4.  Press **Get Tracking ID**, and read through and accept the Google Analytics Terms of Service.
+
+5.  You will then be given your **Tracking ID** and **tracking code**. Make note of both of these items, you will use them later.
+
+    {: .note}
+    >
+    >At this time you may want to consider enabling the *demographics* feature of Google Analytics. If you decide to do so, you will need to add an additional line of code to your JavaScript in the steps below. Insert the following between the lines containing `ga('create', 'UA-00000000-0', 'auto');` and `ga('send', 'pageview');`:
+    >
+    >     ga('require', 'displayfeatures');
+    >
+    >Should you decide to disable the demographics feature at a later date, simply remove the above code.
+
+You can now add this code to your website through [the header file](#add-through-the-header-file), [PHP](#add-through-php), or an [external Javascript file](#add-through-external-javascript).
+
+##Add Through the Header File
+
+If your website is built using Server Side Includes or PHP includes, with your header coding in a file separate from your content, you can simply log on to your Linode through SSH, navigate to and open the file for your header (generally `header.php` or similar):
+
+    cd /var/www/example.com/public_html/
+    nano header.php
+
+From here you can copy and paste your tracking code and insert it below your `<body>` tag:
+
+{: .file-excerpt}
+/var/www/example.com/public_html/header.php
+:   ~~~
+    <script>
+     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+     ga('create', 'UA-00000000-0', 'auto');
+     ga('send', 'pageview');
+
+    </script>
+    ~~~
+
+    {: .note}
+    >
+    >If you copy the above code replace `UA-00000000-0` with your **tracking ID**, and add the additional demographics code if needed.
+
+This is by far the easiest option for inserting the tracking code onto your website: Beyond navigating to the proper file, little other work is required. It may take up to twenty-four hours for any data concerning your website to show up on Google Analytics.
+
+##Add Through PHP
+
+If your website is coded using PHP (your files will end in `.php`), you can also add the tracking code through a PHP script. This is useful if you are not using a seperate PHP file for your header, or otherwise want to keep the code itself outside of your header file. This also makes any additional changes you may want to make to the tracking code far more efficient, since you will only have to edit one file.
+
+1.  Navigate to the directory your website is hosted on:
+
+        cd /var/www/example.com/public_html
+
+2.  Create a file for `googleanalytics.php`:
+
+        nano googleanalytics.php
+
+3.  Add your tracking code:
+
+    {: .file-excerpt}
+    /var/www/example.com/public_html/googleanalytics.php
+    :   ~~~
+        <script>
+         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+         ga('create', 'UA-00000000-0', 'auto');
+         ga('send', 'pageview');
+
+        </script>
+        ~~~
+
+    {: .note}
+    >
+    >If you copy the above code replace `UA-00000000-0` with your **tracking ID**.
+
+4.  Press **CTRL-X**, then **Y** to save and exit.
+
+5.  If your website does not have a separate header file, and you need to insert the code in every page, skip to step 6; otherwise, open and add the following code to your header document (`header.php` here) after your `<body>` tag:
+
+        nano header.php
+
+    {: .file-excerpt}
+    /var/www/example.com/public_html/header.php
+    :   ~~~
+        <?php include_once("googleanalytics.php") ?>
+        ~~~
+
+    You have now added Google Analytics to your website! It may take up to twenty-four hours for any data concerning your website to show up on Google Analytics. You need not follow the rest of this guide.
+
+6.  If your PHP-enabled website does not have a header template, then you can insert the needed code to your website through the terminal. Make sure you are in the directory that holds your website's files.
+
+7.  Through using the *stream editor* command (`sed`), you can insert the needed code into multiple documents at once:
+
+        sed -i 's/<body>/<body><?php include_once("googleanalytics.php") ?>/g' *.php
+
+    {: .note}
+    >
+    >If the `<body>` tag of your website contains other variables, please adjust the two instances of `<body>` in the above code to match your current coding.
+    >
+    >Similarly, if your files end with something other than `.php`, replace the file ending in the code above.
+
+8.  To see if the code was successfully inserted into your website files, you can either open your website in your browser and view the source file, or open up a file in the terminal:
+
+        nano index.php
+
+    When you view the file, you should see the code inserted immediately after the `<body>` tag:
+
+    {: .file-excerpt}
+    /var/www/example.com/public_html/index.php
+    :   ~~~
+        <body><?php include_once("googleanalytics.php") ?>
+        ~~~
+
+You have now added Google Analytics to your website! It may take up to twenty-four hours for any data concerning your website to show up on Google Analytics.
+
+##Add Through External Javascript
+
+If your website cannot use PHP (its files end in `.html`, `.htm`, or otherwise), you can insert the Google Analytics code through your terminal, using an external Javascript file and the `sed` command.
+
+1.  Navigate to the directory your website is hosted in:
+
+        cd /var/www/example.com/public_html
+
+2. (Optional) If you already have a Javascript folder, change directories to that folder. Otherwise, you may want to create a Javascript folder now:
+
+        mkdir javascript
+
+    Navigate to your newly-made folder:
+
+        cd javascript
+
+3.  Create a `ga.js` file to hold your Google Analytics code:
+
+        nano ga.js
+
+5.  Insert the following code, replacing `UA-00000000-0` with your **tracking ID**:
+
+    {: .file-excerpt}
+    /var/www/example.com/public_html/javascript/ga.js
+    :   ~~~
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-00000000-0', 'auto');
+        ga('send', 'pageview');
+        ~~~
+
+6.  **CTRL-X**, then **Y** to exit.
+
+7.  To insert a link to the JavaScript file holding your tracking code, you will use the `sed` command, which will search for and replace all instances of your `<head>` tag with `<head><script type="text/javascript" src="javascript/ga.js"></script>`:
+
+        sed -i 's@<head>@<head><script type="text/javascript" src="javascript/ga.js"></script>@g' *.html
+
+    {: .note}
+    >
+    >Because this is inserting JavaScript code and PHP, the code can be inserted in the `<head>` tag, and does not to be located after the `<body>` tag.
+
+8.  To check that the code has been successfully inserted into your `.html` files, you can either open up your website in your browser and view the source code or view a file in your terminal. The folllowing should appear in conjuction to your `<head>` tag:
+
+    {: .file-excerpt}
+    /var/www/example.com/public_html/index.html
+    :   ~~~
+        <head><script type="text/javascript" src="javascript/ga.js"></script>
+        ~~~
+
+    You have now added Google Analytics to your website! It may take up to twenty-four hours for any data concerning your website to show up on Google Analytics.
+
+
+
