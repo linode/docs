@@ -92,7 +92,7 @@ Once the `.fetchmailrc` file is configured, fetchmail can be invoked simply by i
 
     fetchmail
 
-When invoked from the command line, fetchmail will `poll` all of the configured servers from the `.fetchmailrc` file and deliver the messages to the default mail spool for that user in `/var/mail/` or hand the messages off to the specfied `mda` command.
+When invoked from the command line, fetchmail will `poll` all of the configured servers from the `.fetchmailrc` file and deliver the messages to the default mail spool for that user in `/var/mail/` or hand the messages off to the specified `mda` command.
 
 Fetchmail will deliver the message to the current user's mailbox under the following conditions:
 
@@ -100,7 +100,7 @@ Fetchmail will deliver the message to the current user's mailbox under the follo
 -   There are no local users are specified with the `is "[local-user]" here;` syntax in the account specification within the `.fetchmailrc` file.
 -   There are no corresponding local users for the remote usernames on the server.
 
-If fetchmail is running as the root user, it will drop privledges to deliver messages to specific user accounts. If fetchmail is unable to deliver messages as root it will deposit them in the system's "postmaster" account. The postmaster account defaults to postmaster, and the mail spool is located at `/var/mail/postmaster`, unless modified by a global option.
+If fetchmail is running as the root user, it will drop privileges to deliver messages to specific user accounts. If fetchmail is unable to deliver messages as root it will deposit them in the system's "postmaster" account. The postmaster account defaults to postmaster, and the mail spool is located at `/var/mail/postmaster`, unless modified by a global option.
 
 When fetchmail has completed this process it will quit until it is invoked again. If you want fetchmail to run as a daemon process, consider using the daemon option, either by specifying a global option as described below or by specifying the `-d` option on the command line. For example:
 
@@ -111,7 +111,7 @@ In the above example, fetchmail will poll mail sources for new mail every 300 se
 Global Settings
 ---------------
 
-In addition to the configuration options described above, fetchmail provides a number of additional "global" configuration options. These allow you to configure the behavior of fetchmail with regards to all of the servers that it polls. These options are included at the begginning of the file and begin with the word `set`. Here is an example:
+In addition to the configuration options described above, fetchmail provides a number of additional "global" configuration options. These allow you to configure the behavior of fetchmail with regards to all of the servers that it polls. These options are included at the beginning of the file and begin with the word `set`. Here is an example:
 
 {: .file-excerpt }
 .fetchmailrc

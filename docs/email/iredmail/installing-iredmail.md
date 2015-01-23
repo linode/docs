@@ -183,7 +183,7 @@ After first logging in to the postmaster account, you should have two emails wai
         smtpd_tls_key_file = /etc/ssl/private/mail.yourdomain.com.key
         ~~~
 
-4. To replace the certs used by Postfix, subsitute the following paths in `dovecot.conf` with the location of your certificate and key:
+4. To replace the certs used by Postfix, substitute the following paths in `dovecot.conf` with the location of your certificate and key:
 
     {: .file-excerpt}
     /etc/dovecot/dovecot.conf
@@ -191,7 +191,7 @@ After first logging in to the postmaster account, you should have two emails wai
 	    ssl_cert = </etc/ssl/certs/mail.yourdomain.com.crt
         ssl_key = </etc/ssl/private/mail.yourdomain.com.key
         ~~~
-<!-- syntax hilighting fix-->
+<!-- syntax highlighting fix-->
 
 5. To apply the certificate changes to both your web and mail server, run the following commands:
 
@@ -382,7 +382,7 @@ For this reason, the author recommends turning this module off. Note, since bein
 As a final test, you can utilize a service such as [Mail Tester][m] to ensure that your records have been configured correctly. If you have followed this guide precisely, you should receive a score of 10/10 on Mail Tester's site. If not, Mail Tester will provide you with a report indicating what portion of your configuration needs improvement.
 
  {: .note }
->While some DNS records update almost instantaneously, updates can take up to 24 hours to propigate. You may receive a lower score on these tests if your records have not yet updated.
+>While some DNS records update almost instantaneously, updates can take up to 24 hours to propagate. You may receive a lower score on these tests if your records have not yet updated.
 
 ## Conclusion
 Familiarize yourself with the various files, configs, and settings listed in the iRedMail emails and website and start adding users to your mail server. Happy Mailing!

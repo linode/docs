@@ -112,7 +112,7 @@ Configuring SquirrelMail
 
 Before using SquirrelMail for the first time, it needs to be configured to access your mail server. SquirrelMail provides a tool called `squirrelmail-configure`, which provides an interactive interface which edits the `/etc/squirrelmail/config.php` file for you with the input you provide.
 
-1.  Launch the squirrelmail-configure applicaton with the command:
+1.  Launch the squirrelmail-configure application with the command:
 
         sudo squirrelmail-configure
 

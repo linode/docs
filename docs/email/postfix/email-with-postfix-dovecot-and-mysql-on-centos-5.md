@@ -277,7 +277,7 @@ MySQL will be used to store password information, so `/etc/dovecot-sql.conf` mus
 
 > driver = mysql connect = host=127.0.0.1 dbname=mail user=mail\_admin password=mail\_admin\_password default\_pass\_scheme = CRYPT password\_query = SELECT email as user, password FROM users WHERE email='%u';
 
-Since the mail database username and password are stored in `/etc/dovecot-sql.conf` you will want to restrict access to the file by changing the permissions to allow users in the `dovecot` group to access it, while denying access to other users. You can restirct access to `/etc/dovecot-sql.conf` by running the following commands:
+Since the mail database username and password are stored in `/etc/dovecot-sql.conf` you will want to restrict access to the file by changing the permissions to allow users in the `dovecot` group to access it, while denying access to other users. You can restrict access to `/etc/dovecot-sql.conf` by running the following commands:
 
     chgrp dovecot /etc/dovecot-sql.conf
     chmod o= /etc/dovecot-sql.conf
