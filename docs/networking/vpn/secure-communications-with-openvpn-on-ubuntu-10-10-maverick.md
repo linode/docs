@@ -20,7 +20,7 @@ OpenVPN, or Open Virtual Private Network, is a tool for creating networking "tun
 
 For many private networking tasks, we urge users to consider the many capabilities of the OpenSSH package which can provide easier VPN and VPN-like services. OpenSSH is also installed and configured by default on all Linodes. Nevertheless, if your deployment requires a more traditional VPN solution like OpenVPN, this document covers the installation and configuration of the OpenVPN software.
 
-Before installing OpenVPN, we assume that you have followed our [getting started guide](/docs/getting-started/). If you're new to Linux server administration you may be interested in our [using Linux](/docs/using-linux/) document series including the [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics). If you're concerned about securing and "hardening" the system on your Linode, you might be interested in our [security basics](/docs/security/basics) article as well.
+Before installing OpenVPN, we assume that you have followed our [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics). If you're concerned about securing and "hardening" the system on your Linode, you might be interested in our [security basics](/docs/security/basics) article as well.
 
 Installing OpenVPN
 ------------------

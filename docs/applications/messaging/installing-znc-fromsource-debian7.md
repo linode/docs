@@ -5,17 +5,18 @@ author:
 description: 'Using the ZNC bouncer to retain an IRC connection'
 keywords: 'znc,irc,debain,source'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Friday, August 21, 2014
+modified: Friday, January 9th, 2015
 modified_by:
-    name: 'Alex Fornuto'
+    name: 'Elle Krout'
 published: 'Friday, August 21, 2014'
 title: 'Installing ZNC from Source on Debian 7.5'
 ---
 
 ZNC is an IRC bouncer. It's designed to run on a server that remains connected to an IRC network and buffer messages, so that a local IRC client can connect and disconnect without losing a chat session or missing any messages. In this guide we'll go over installing ZNC from source and configuring the daemon.
 
-{:.note}
-> This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{: .note}
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+
 
 Prepping the system
 -------------------
@@ -224,6 +225,9 @@ This will launch an interactive script asking you for input on a variety of para
 
 
 Once you've completed the configuration and launched ZNC, you can access the web interface by going to your Linode's IP address in your web browser. Be sure to specify the port you defined during the configuration script and prefix it with `https://` .
+
+{: .note}
+>If the [Firewall portion](/docs/security/securing-your-server#creating-a-firewall) of the [Securing Your Server](/docs/securing-your-server/) guide has been completed, add a line to `/etc/iptables.firewall.rules` allowing traffic to your IRC port.
 
 [![ZNC's Web Admin](/docs/assets/znc-web-admin_small.png)](/docs/assets/znc-web-admin.png)
 

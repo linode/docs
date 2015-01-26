@@ -16,7 +16,7 @@ deprecated: true
 
 Web.py is a web application framework that stresses minimalism, flexibility, rapid application development, and straight forward deployment. Originally developed to power the popular news and link aggregation site "Reddit," web.py is a powerful option for developing systems for the web.
 
-This guide assumes that have you followed the [getting started guide](/docs/getting-started/) prior to beginning. If you are new to Linux systems administration, you might like to consider the guides in the [using Linux](/docs/using-linux/) section, particularly the [administration basics guide](/docs/using-linux/administration-basics). Furthermore a background in Python programing will be useful as you begin to develop applications with Web.py
+This guide assumes that have you followed the [getting started guide](/docs/getting-started/) prior to beginning. If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics). Furthermore a background in Python programing will be useful as you begin to develop applications with Web.py
 
 Set the Hostname
 ----------------

@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-description: Configure a MondoDB ReplSet
+description: Configure a MongoDB ReplSet
 keywords: 'mongodb,nosql,clusters,replset,databases'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['databases/mongodb/ubuntu-12/']

@@ -24,7 +24,7 @@ Getting Started
 
 Before you dive into Puppet, you should complete the [Getting Started Guide](/docs/getting-started/).
 
-If you're new to Linux systems administration, we also recommend reviewing the guides in our [Using Linux](/docs/using-linux/) series, particularly the [Administration Basics Guide](/docs/using-linux/administration-basics).
+If you're new to Linux systems administration, we also recommend reviewing the guides in our [Tools & Reference](/docs/tools-reference/) section, particularly the [Administration Basics Guide](/docs/using-linux/administration-basics).
 
 This document covers the installation and configuration of Puppet. Once you've finished the installation, head over to the [Manage and Automate Systems Configuration with Puppet](/docs/application-stacks/puppet/automation) article to learn how to use Puppet effectively.
 

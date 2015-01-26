@@ -15,7 +15,7 @@ title: 'Creating a MongoDB Replication Set on Debian 7 (Wheezy)'
 
 MongoDB is an open-source, non-SQL database engine. MongoDB is scalable and an alternative to the standard relational database management system (RDBMS). A replication set is used for redundancy and to provide access to your data in the event of a node failure.
 
-Before installing MongoDB, it is assumed that you have followed our getting started guide. If you are new to Linux server administration, you may want to consult our using Linux document series including the [Linux Beginner's guide](/docs/using-linux/) and [Administration Basics guide](/docs/using-linux/administration-basics).
+Before installing MongoDB, it is assumed that you have followed our getting started guide. If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
 
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo command`, you can review our [Users and Groups](https://library.linode.com/using-linux/users-and-groups) guide.
 
@@ -50,7 +50,7 @@ The MongoDB repository provides the latest stable release (currently mongodb-10g
 
         sudo apt-get update
 
-5.  Install MongoDb with the command:
+5.  Install MongoDB with the command:
 
         sudo apt-get install mongodb-10gen
 

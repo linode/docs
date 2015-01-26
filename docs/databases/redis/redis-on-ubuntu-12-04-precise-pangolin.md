@@ -15,7 +15,7 @@ title: 'Redis on Ubuntu 12.04 (Precise Pangolin)'
 
 Redis is a high performance persistent key-value store, and is intended as a datastore solution for applications where performance and flexibility are more critical than persistence and absolute data integrity. As such, Redis may be considered a participant in the "NoSQL" movement and is an attractive tool for developers of some kinds of applications. This document provides both instructions for deploying the Redis server and an overview of best practices for maintaining Redis instances.
 
-Prior to beginning this guide for installing Redis, we assume that you have completed the steps outlined in our [getting started guide](/docs/getting-started/). If you're new to Linux systems administration, we recommend that you read the guides in our [using Linux](/docs/using-linux/) series, particularly the [administration basics guide](/docs/using-linux/administration-basics).
+Prior to beginning this guide for installing Redis, we assume that you have completed the steps outlined in our [getting started guide](/docs/getting-started/). If you're new to Linux systems administration, we recommend that you read the [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts), and the [administration basics guide](/docs/using-linux/administration-basics).
 
 Install Redis
 -------------
@@ -67,7 +67,7 @@ redis.conf
     appendonly no
     ~~~
 
-The values in this configuration mirror the default Redis configuration Ubuntu provides. However, this configuration configures Redis to run ina daemon mode bound only to the local network interface. You may want to change these values depending on the needs of your application.
+The values in this configuration mirror the default Redis configuration Ubuntu provides. However, this configuration configures Redis to run in daemon mode bound only to the local network interface. You may want to change these values depending on the needs of your application.
 
 Managing Redis Instances
 ------------------------

@@ -15,7 +15,7 @@ title: Schedule Tasks with Cron
 
 `cron` is a classic utility found on Linux and UNIX systems for running tasks at predetermined intervals. Systems administrators and developers of Linux applications use `cron` for automating and managing recurring tasks.
 
-Since `cron` is a standard component of modern Linux systems, this documentation is applicable regardless of your choice in distribution. If you are new to Linode we strongly recommend consulting the [getting started guide](/docs/getting-started/) and the [beginners guide](/docs/beginners-guide) to facilitate the setup and configuration of your server. If you're new to using Linux in general, the Linode Library contains a number of documents covering [basic Linux usage](/docs/using-linux) that you might find helpful.
+Since `cron` is a standard component of modern Linux systems, this documentation is applicable regardless of your choice in distribution. If you are new to Linode we strongly recommend consulting the [getting started guide](/docs/getting-started/) and the [beginners guide](/docs/beginners-guide) to facilitate the setup and configuration of your server. If you're new to using Linux in general, you may find the [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts) helpful.
 
 Before we get started, there are a couple of terms associated with `cron` that are non-obvious. First, the job or **cronjob** refers to the task, script, or application that `cron` runs. Second, **crontab** refers to each user's list of cronjobs.
 
@@ -148,7 +148,6 @@ More Information
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [Wikipdia article on cron](http://en.wikipedia.org/wiki/Cron)
-- [Using Linux](/docs/using-linux)
 - [Administration Basics](/docs/using-linux/administration-basics)
 
 

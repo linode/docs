@@ -43,7 +43,7 @@ The MySQL server package will be installed on your server, along with dependenci
     12.34.56.78 servername.mydomain.com servername
     ~~~
 
-Be sure to substitude your Linode's public IP address for "12.34.56.78" in the example above.
+Be sure to substitute your Linode's public IP address for "12.34.56.78" in the example above.
 
 After installing MySQL, it's recommended that you run `mysql_secure_installation`, a program that helps secure MySQL. `mysql_secure_installation` gives you the option to disable root logins from outside localhost, remove anonymous user accounts, and the option to remove the test database. Additionally, it allows you to set your root password. Run the following command to execute the program:
 

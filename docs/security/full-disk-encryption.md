@@ -161,7 +161,7 @@ Now that you're "inside" the newly installed Debian system, you'll need to make 
 
 8.  Change the line in `/boot/grub/menu.lst` to match the following. This will allow update-grub to properly generate a new menu.lst when you update your kernel.
 
-        # kopt=root=/dev/mapper/crypt-xvdc cryptdevice=/dev/xvdc:crypt-xvdc console=hvc0 ro
+        # kopt=root=/dev/mapper/crypt-xvdc console=hvc0 ro
 
 9.  Run `update-grub` and generate a new `initramfs` by entering the following commands, one by one:
 

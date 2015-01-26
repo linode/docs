@@ -6,16 +6,16 @@ description: 'Use IRC and GNU Screen to maintain persistent connections to IRC n
 keywords: 'irssi,irc,oftc,freenode,real time,chat'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['communications/irc/irssi/']
-modified: Thursday, June 19th, 2014
+modified: Friday, January 9th, 2015
 modified_by:
-  name: Linode
+  name: Elle Krout
 published: 'Monday, March 29th, 2010'
 title: Using Irssi for Internet Relay Chat
 ---
 
 **Irssi** is a terminal-based chat client for real-time conversations over Internet Relay Chat (**IRC**). IRC is the common meeting ground for Linode users to exchange knowledge and troubleshoot issues in our public channel, **#linode** on **OFTC**.
 
-Irssi can run on Linux or MAC OS X, either from your local workstation or your Linode. If you are unfamiliar with using a Linux terminal, you may want to review the Linode Library guides for [Using the Terminal](/docs/using-linux/using-the-terminal) and [Using Linux](/docs/using-linux/). Additionally, it is assumed that you have followed our [Getting Started Guide](/docs/getting-started/) if you intend to run Irssi on your Linode.
+Irssi can run on Linux or MAC OS X, either from your local workstation or your Linode. If you are unfamiliar with using a Linux terminal, you may want to review the Linode Library guides [Using the Terminal](/docs/using-linux/using-the-terminal) and [Introduction to Linux Concepts](/docs/tools-reference/introduction-to-linux-concepts). Additionally, it is assumed that you have followed our [Getting Started Guide](/docs/getting-started/) if you intend to run Irssi on your Linode.
 
 Prerequisites
 -------------
@@ -166,6 +166,9 @@ Use the `Alt` key and the window number to change to a different window. Window 
 
     /win number
 
+{: .note}
+>If the `Alt` + `num` command does not switch windows, use `esc` followed by the window number.
+
 Below are more commands for navigating between windows:
 
 -   `/win list` - generates a list in detail of all the windows. Sample output is below.
@@ -195,7 +198,7 @@ Note that you may add as many channels as you like.
 Irssi Commands and Usage
 ------------------------
 
-All Irssi command are preceded by a slash (**/**). Each channel you join as well as any private messages you receive will appear in their own window. A prompt down on the left-hand side will display the name of the active window.
+All Irssi commands are preceded by a slash (**/**). Each channel you join as well as any private messages you receive will appear in their own window. A prompt down on the left-hand side will display the name of the active window.
 
 If you expect output from a command but don't see it, you may need to return to your **(status)** channel.
 

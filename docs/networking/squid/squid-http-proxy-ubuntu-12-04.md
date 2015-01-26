@@ -88,7 +88,7 @@ The following configuration allows for authenticated access to the Squid proxy s
 	{: .file-excerpt }
 	/etc/squid3/squid.conf
 	: ~~~
-		auth_param basic program /usr/lib64/squid/ncsa_auth /etc/squid/squid_passwd
+		auth_param basic program /usr/lib/squid3/ncsa_auth /etc/squid3/squid_passwd
 		acl ncsa_users proxy_auth REQUIRED
 		http_access allow ncsa_users
 	~~~

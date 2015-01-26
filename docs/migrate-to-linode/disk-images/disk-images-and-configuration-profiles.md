@@ -39,10 +39,10 @@ All of a Linode's disks and configuration profiles are displayed on the Linode's
 5.  Click this link to create a new blank disk.
 6.  This box indicates how much storage space is allocated to disks. To see how much much space inside your disk is currently being used, connect to your Linode via SSH and execute the `df -m` command.
 
-disks
+Disks
 -----------
 
-Just like your desktop computer has a physical hard drive that can be partitioned into smaller virtual drives, your Linode plan's storage space can be split in to disks. disks can be used to store anything, including files, applications, or other Linux distributions. The space allocated to disks reduces your plan's available storage space.
+Just like your desktop computer has a physical hard drive that can be partitioned into smaller virtual drives, your Linode plan's storage space can be split in to disks. Disks can be used to store anything, including files, applications, or other Linux distributions. The space allocated to disks reduces your plan's available storage space.
 
 ### Creating a Disk with a Linux Distribution Installed
 

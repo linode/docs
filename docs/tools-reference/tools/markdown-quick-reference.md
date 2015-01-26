@@ -48,7 +48,7 @@ To preview Markdown, find a Markdown interpreter. Try [Nottingham](http://clicko
 | Formatting                |  Example                                      |
 |:--------------------------|:----------------------------------------------|
 | - For bullet points,<br>* Or unordered lists,<br>+ Use hyphens, asterisks,<br>+ Or plus symbols.      | <span>&bull; For bullet points<br>&bull; Or unordered lists,<br>&bull; Use hyphens, asterisks,<br>&bull; Or plus symbols |
-| 1.  A numbered list.<br>2.  Two spaces after the period.<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Eight spaces for an indentation.<br><br>3.  Above, an indented command. | ![](/docs/assets/example-numbered-list.png) |
+| 1.  A numbered list.<br><br>2.  Two spaces after the period.<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Eight spaces for indentation.<br><br>3.  Above, an indented command. | ![](/docs/assets/example-numbered-list.png) |
 
 ###Links and Images
 
@@ -64,7 +64,7 @@ To preview Markdown, find a Markdown interpreter. Try [Nottingham](http://clicko
 {: .table .table-striped .table-bordered }
 | Formatting                                                                        |  Example                                      |
 |:----------------------------------------------------------------------------------|:----------------------------------------------|
-\|  Left-Aligned    \| Centered      \| Right-Aligned     \|<br>\| ---------------- \|:-------------:\| ----------------: \|<br>\| Columns,         \| both          \| headers           \|<br>\| and              \| line items,   \| are aligned       \|<br>\| by the hypens    \| and colons     \| above.            \|<br> | <img src="/docs/assets/example-markdown-table.png"> |
+|\|  Left-Aligned    \| Centered      \| Right-Aligned     \|<br>\| \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\- \|:\-\-\-\-\-\-\-\-\-\-\-\-\-:\| \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-: \|<br>\| Columns,         \| both          \| headers           \|<br>\| and              \| line items,   \| are aligned       \|<br>\| by the hypens    \| and colons     \| above.            \|<br> | <img src="/docs/assets/example-markdown-table.png"> |
 | > To separate text, use right angle brackets. <br> Break in separated text. <br>> Some more separated text. | <img src="/docs/assets/example-separated-quote.png"> |
 
 

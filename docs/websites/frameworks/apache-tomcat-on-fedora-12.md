@@ -18,7 +18,7 @@ title: Apache Tomcat on Fedora 12
 
 Apache Tomcat is a free and open source software implementation for Java Servlets. It provides support for the Java Server Pages (JSP) that power many popular web-based applications.
 
-This guide assumes that you have a working installation of Fedora 12, and that you have followed our [getting started guide](/docs/getting-started/) to get your system working and up to date. If you are new to Linux system administration, you may be interested in our [Linux administration basics guide](/docs/using-linux/administration-basics) or other documents in our series on [using Linux](/docs/using-linux/).
+This guide assumes that you have a working installation of Fedora 12, and that you have followed our [getting started guide](/docs/getting-started/) to get your system working and up to date. If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
 
 Install Apache Tomcat
 ---------------------

@@ -15,7 +15,7 @@ title: 'LEMP Server on Ubuntu 12.04 (Precise Pangolin)'
 
 This document describes a compatible alternative to the "LAMP" (Linux, Apache, MySQL, and PHP) stack, known as "LEMP." The LEMP stack replaces the Apache web server component with nginx (pronounced "engine x," providing the "E" in LEMP,) which can increase the ability of the server to scale in response to demand.
 
-Prior to beginning this guide, please complete the [getting started guide](/docs/getting-started/). If you are new to Linux systems administration, you may want to consider the guides in our [using Linux guide](/docs/using-linux/) series, particularly "[Linux Administration Basics](/docs/using-linux/administration-basics)."
+Prior to beginning this guide, please complete the [getting started guide](/docs/getting-started/). If you are new to Linux systems administration, you may want to consider the [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts) and the [Linux administration basics guide](/docs/using-linux/administration-basics).
 
 Set the Hostname
 ----------------
@@ -227,7 +227,7 @@ Additionally, it's a good idea to secure any upload directories your application
 location ~ \.php$ {
     include /etc/nginx/fastcgi_params;
     if ($uri !~ "^/images/") {
-    fastcgi_pass 127.0.0.1:9000;
+    fastcgi_pass unix:/var/run/php5-fpm.sock;
     }
     fastcgi_index index.php;
     fastcgi_param SCRIPT_FILENAME /srv/www/example.com/public_html$fastcgi_script_name;

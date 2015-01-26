@@ -21,7 +21,7 @@ MySQL is a popular database management system, used as the data storage provider
 Basic System Configuration
 --------------------------
 
-Make sure your `/etc/hosts` file contains sensible values. In the example file below, you would replace "12.34.56.78" with your Linode's IP address, and "servername.example.com" with your Linode's fully qualifed domain name (FQDN). It is advisable to use something unique and memorable for "servername" in this file.
+Make sure your `/etc/hosts` file contains sensible values. In the example file below, you would replace "12.34.56.78" with your Linode's IP address, and "servername.example.com" with your Linode's fully qualified domain name (FQDN). It is advisable to use something unique and memorable for "servername" in this file.
 
 {: .file }
 /etc/hosts

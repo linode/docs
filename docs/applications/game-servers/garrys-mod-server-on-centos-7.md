@@ -2,24 +2,30 @@
 author:
   name: Julian Meyer
   email: --
-description: 'A Garrys Mod Server for CentOS 7'
+description: 'A Garrys Mod Server for CentOS 7.'
 keywords: 'garry''s mod,centos,centos 7'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-applications/game-servers/minecraft-ubuntu12-04/']
 published: 'Wednesday, January 21, 2015'
 modified: Wednesday, January 21, 2015
 modified_by:
-  name: Julian Meyer
+  name: Elle Krout
 title: 'Garry''s Mod on CentOS 7'
 external_resources:
 - '[SRCDS](http://www.srcds.com/)'
 - '[GMod Forums](http://facepunch.com/forum.php)'
 - '[GMod Wiki](http://wiki.garrysmod.com/page/Main_Page)'
+contributor:
+    name: Julian Meyer
+    link: https://github.com/jmeyer2k # optional
 ---
 
-Garry's Mod is a game that enables complete control and modification to the main game, essentially allowing it to be any game you want it to be. There are a variety of gamemodes, and setting up a Garry's Mod server is a great way to play with friends over the Internet, while giving you control over what the server runs.
+*This is a Linode Community guide. [Write for us](/docs/contribute) and
+earn $100 per published guide.*
 
-In this guide, we will show you how to create, maintain, and secure a Garry's Mod server.
+Garry's Mod enables complete control and modification of the video game engine, Source Engine. With Garry's Mod, you can create almost any game you want. Setting up a Garry's Mod server is a great way to play with friends over the internet while maintaining control over the server.
+
+This guide shows how to create, maintain, and secure a Garry's Mod server.
 
 {: .note}
 >
@@ -27,7 +33,7 @@ In this guide, we will show you how to create, maintain, and secure a Garry's Mo
 
 ##Preparation
 
-Before you begin, you will need to install necessary packages, create a user, and edit your firewall privileges.
+Before you begin, install necessary packages, create a user, and edit your firewall privileges.
 
 {: .note}
 > This section assumes root access. Be sure to run the guide as `root` or with the sudo prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
@@ -42,7 +48,7 @@ Before you begin, you will need to install necessary packages, create a user, an
 
 ###Update Firewall
 
-If you have a firewall on your Linode you will need to add the following ruleset to `iptables.firewall.rules` in order to run SteamCMD:
+If you have a firewall on your Linode, add the following ruleset to `iptables.firewall.rules` in order to run SteamCMD:
 
 {: .file-excerpt}
 /etc/iptables.firewall.rules
@@ -62,17 +68,13 @@ If you have a firewall on your Linode you will need to add the following ruleset
 
 	    passwd gmod
 
-    You will be prompted to enter a password.
-
 3.  Login to your new user:
 
     	su - gmod
 
-	Enter the password that you set before.
-
 ## Installation
 
-1.  Download the required script. This script will install both the server installer (SteamCMD) and the necessary server files:
+1.  Download the required script. This script installs both the server installer (SteamCMD) and the necessary server files:
 
     	wget http://danielgibbs.co.uk/dl/gmodserver
 
@@ -86,7 +88,7 @@ If you have a firewall on your Linode you will need to add the following ruleset
 
 4.  Press `y` when it asks about the server directory.
 
-5.  Ensure that the install was successful, pressing `y` if the output reads affirmative:
+5.  Ensure that the install was successful, press `y` if the output reads affirmative:
 
         Update state (0x61) downloading, progress: 97.37 (3695044726 / 3795030198)
 	    Update state (0x61) downloading, progress: 99.92 (3792009490 / 3795030198)
@@ -104,11 +106,11 @@ If you have a firewall on your Linode you will need to add the following ruleset
 
 ## Configuration
 
-In this section, we will configure different aspects of the server, including gamemode and workshop addons.
+This section configures different aspects of the server, including gamemode and workshop addons.
 
 1.  Create a collection of addons you want to install on your server at [Garry's Mod Collections](http://steamcommunity.com/workshop/browse/?section=collections&appid=4000&p=3). You will need to be logged into Steam.
 
-2.  Note the collection ID of your collection. It will be located at the end of the url, denoted by the 'X's here:
+2.  Note the collection ID. It is located at the end of the url, denoted by the 'X's here:
 
     	http://steamcommunity.com/sharedfiles/filedetails/?id=XXXXXXXXX
 
@@ -130,25 +132,25 @@ In this section, we will configure different aspects of the server, including ga
 
 ### Running the Server
 
-You can now start the server using:
+Start the server using:
 
     ./gmodserver start
 
-To ensure it is running and access the console use:
+To ensure it is running and access to the console, use:
 
     ./gmodserver console
 
 {: .note}
 >
->To exit the console, use CTRL-B followed by D. Do not CTRL-C out of the console, which will shut down your server.
+>To exit the console, use CTRL-B followed by D. Do not CTRL-C out of the console, which shuts down the server.
 
-To stop the server use:
+To stop the server, use:
 
     ./gmodserver stop
 
 ## Server Maintenance
 
-In this section, we will discuss how to do different maintenance functions for the server.
+This section discusses how to do different maintenance functions for the server.
 
 ### Run on Boot
 
@@ -172,7 +174,7 @@ In this section, we will discuss how to do different maintenance functions for t
 
     	nano gmodserver
 	
-2.  Turn on email notification by editing these lines:
+2.  Turn on email notifications by editing these lines:
 
     {: .file}
     gmodserver
@@ -195,7 +197,7 @@ In this section, we will discuss how to do different maintenance functions for t
 
     	0 5 * * *  su - gmod -c '/home/gmod/gmodserver update-restart' > /dev/null 2>&1
 
-	This will update and restart the server everyday at 5:00 am.
+	This configuration updates and restarts the server everyday at 5:00 am.
 
 4.  Exit cron using ESC, `:x`, ENTER.
 

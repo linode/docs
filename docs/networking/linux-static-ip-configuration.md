@@ -6,9 +6,9 @@ description: 'Setting up networking for multiple IP addresses.'
 keywords: 'static ip,linux networking,ifconfig,configure network,linux network,multiple ip'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['networking/configuring-static-ip-interfaces/']
-modified: Friday, December 26, 2014
+modified: Saturday, December 27th, 2014
 modified_by:
-  name: Linode
+  name: Dave Russell
 published: 'Thursday, July 20th, 2014'
 title: Linux Static IP Configuration
 ---
@@ -150,9 +150,10 @@ In the example below, change the IP addresses to reflect the values shown under 
     iface lo inet loopback
 
     # Configuration for eth0
-	
+    # We no longer need to use aliases (eg. eth0:0 eth0:1 eth0:2)
     # This line ensures that the interface will be brought up during boot
-    auto eth0 eth0:0 eth0:1
+    auto eth0
+    allow-hotplug eth0
 
     # The address and gateway are necessary.
     # The netmask is taken automatically from the block.
@@ -162,13 +163,13 @@ In the example below, change the IP addresses to reflect the values shown under 
         gateway 12.34.56.1
 
     # This is a second public IP address
-    iface eth0:0 inet static
+    iface eth0 inet static
         address 34.56.78.90/24
 
     # This is a private IP address. Private IPs do not have a gateway (they are not publicly routable).
     # All you need to specify is the address and the block. The netmask is taken from the block.
     # Example: /17 is considered to be a private IP address: netmask 255.255.128.0
-    iface eth0:1 inet static
+    iface eth0 inet static
     address 192.168.133.234/17
     ~~~
 
@@ -322,10 +323,10 @@ From the Linode, `ping` each of the default gateways listed on the "Remote Acces
     ping 12.34.56.1
     ping 98.76.54.1
 
-### Arch Linux
+### Arch Linux & Fedora 21
 
 
-Networking on Arch Linux is configured using the `systemd-networkd` service.
+Networking on Arch Linux and Fedora 21 is configured using the `systemd-networkd` service.
 
 The configuration file for systemd-networkd should be created in `/etc/systemd/network`. 
 

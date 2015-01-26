@@ -18,7 +18,7 @@ This document presents a collection of common issues and useful tips for Linux s
 Basic Configuration
 -------------------
 
-These tips cover some of the basic steps and issues encountered during the beginning of system configuration. We provide a general [getting started guide](/docs/getting-started) for your convenience if you're new to Linode and basic Linux system administration. Additionally, you may find some of our other [core Linux guides](/docs/using-linux/) useful.
+These tips cover some of the basic steps and issues encountered during the beginning of system configuration. We provide a general [getting started guide](/docs/getting-started) for your convenience if you're new to Linode and basic Linux system administration. Additionally, you may find some of our [Introduction to Linux Concepts guide](/docs/tools-reference-introduction-to-linux-concepts) useful.
 
 ### Set the Hostname
 
@@ -229,7 +229,7 @@ File System Management
 
 Historically, web developers and editors have used the FTP protocol to transfer and manage files on a remote system. FTP, however, is very insecure and inefficient for managing the files on a system when you have SSH access.
 
-If you're new to administering systems and the Linux world, you might consider our "[using Linux](/docs/using-linux/)" series and articles including: "[installing and using WinSCP](/docs/networking/file-transfer/transfer-files-winscp)" [using rsync to synchronize files](/docs/linux-tools/utilities/rsync) and "[using SSH and the terminal](/docs/using-linux/using-the-terminal)."
+If you're new to administering systems and the Linux world, you might consider our "[Tools & Reference](/docs/tools-reference/)" section and articles including: "[installing and using WinSCP](/docs/networking/file-transfer/transfer-files-winscp)" [using rsync to synchronize files](/docs/linux-tools/utilities/rsync) and "[using SSH and the terminal](/docs/using-linux/using-the-terminal)."
 
 As always, if you are giving other users access to upload files to your server, it would be wise to consider the [security implications](/docs/security/basics) of all additional access that you grant to third parties seriously.
 

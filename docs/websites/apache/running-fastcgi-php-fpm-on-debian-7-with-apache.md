@@ -9,6 +9,9 @@ alias: ['websites/apache/php-fpm/debian-7/','web-servers/apache/php-fpm/apache-p
 contributor:
     name: Jesin A
     link: https://twitter.com/jesin_a
+external_resources:
+ - '[PHP-FPM configuration directives](http://php.net/manual/en/install.fpm.configuration.php)'
+ - '[mod_fastcgi configuration directives](http://www.fastcgi.com/mod_fastcgi/docs/mod_fastcgi.html)'
 modified: Saturday, August 16, 2014
 modified_by:
   name: Dave Russell Jr
@@ -24,22 +27,22 @@ The main reason `mod_php` uses more resources is because it is loaded even for n
 
 Additionally, using PHP-FPM allows each virtual host to be configured to run PHP code as individual users. Previously, this was only possible by using suPHP.
 
-This guide assumes that you are familiar and comfortable with setting up [LAMP stacks](/docs/assets/1700-private_ip-v3.png) on Debian 7. If you are new to Linux server administration, you may be interested in reading our [Linux System Administration Basics](/docs/tools-reference/linux-system-administration-basics) documentation series. 
+This guide assumes that you are familiar and comfortable with setting up [LAMP stacks](/docs/websites/lamp) on Debian 7. If you are new to Linux server administration, you may be interested in reading our [Linux System Administration Basics](/docs/tools-reference/linux-system-administration-basics) documentation series. 
 
 Installing mod_fastcgi and PHP-FPM
 --------------------------------
 
 Both `mod_fastcgi` and `PHP-FPM` are part of repositories for aptitude supported by Debian 7. The following are necessary steps to install `mod_fastcgi` and `PHP-FPM`.
 
-1. Update the apt-get repositories
+1.  Update the apt-get repositories
     
         sudo apt-get update && sudo apt-get upgrade --show-upgraded
 
-2. See if `mod_fastcgi` is available. By default, the Debian 7 does not include the necessary repositories to install `mod_fastcgi` because it is a contrib module and is non-free (in terms of Debian's licensing restrictions).
+2.  See if `mod_fastcgi` is available. By default, the Debian 7 does not include the necessary repositories to install `mod_fastcgi` because it is a contrib module and is non-free (in terms of Debian's licensing restrictions).
     
         sudo apt-cache search libapache2-mod-fastcgi
 
-3. If it is not available, you will need to edit your `/etc/apt/sources.list` file to allow for contrib and non-free software to be loaded in the repository list. Your sources file should look like:
+3.  If it is not available, you will need to edit your `/etc/apt/sources.list` file to allow for contrib and non-free software to be loaded in the repository list. Your sources file should look like:
 
     a) If you are using Linode's mirrors:
 
@@ -72,11 +75,11 @@ Both `mod_fastcgi` and `PHP-FPM` are part of repositories for aptitude supported
          deb-src http://security.debian.org/ wheezy/updates main contrib non-free
          ~~~
 
-4. Update the apt-get repositories.
+4.  Update the apt-get repositories.
 
         sudo apt-get update && sudo apt-get upgrade --show-upgraded
 
-5. Install `mod_fastcgi` and `PHP-FPM`.
+5.  Install `mod_fastcgi` and `PHP-FPM`.
 
         sudo apt-get install libapache2-mod-fastcgi php5-fpm
 
@@ -86,11 +89,11 @@ Configuring Apache with PHP-FPM
 
 We will now configure Apache to pass all requests for PHP files, with the _php_ file extension, to the PHP wrapper through FastCGI.
 
-1. Enable the `mod_actions` module with the following command:
+1.  Enable the `mod_actions` module with the following command:
     
         sudo a2enmod actions
 
-2. Configure PHP-FPM to use UNIX sockets instead of TCP. In this command, we will use `grep` to determine if the sockets are already being used. In a standard installation, they will be.
+2.  Configure PHP-FPM to use UNIX sockets instead of TCP. In this command, we will use `grep` to determine if the sockets are already being used. In a standard installation, they will be.
 
         sudo grep -E '^\s*listen\s*=\s*[a-zA-Z/]+' /etc/php5/fpm/pool.d/www.conf
 
@@ -100,7 +103,7 @@ We will now configure Apache to pass all requests for PHP files, with the _php_ 
 
     If you see the above output, skip to step 6.
 
-3. If no output is returned, you will need to edit the following file and add this line:
+3.  If no output is returned, you will need to edit the following file and add this line:
 
     {: .file-excerpt } 
     etc/php5/fpm/pool.d/www.conf
@@ -108,7 +111,7 @@ We will now configure Apache to pass all requests for PHP files, with the _php_ 
         listen = /var/run/php5-fpm.sock
         ~~~
 
-4. Find the following line and remove it.
+4.  Find the following line and remove it.
 
     {: .file-excerpt }
     /etc/php5/fpm/pool.d/www.conf
@@ -116,15 +119,15 @@ We will now configure Apache to pass all requests for PHP files, with the _php_ 
         listen = 127.0.0.1:9000
         ~~~
 
-5. Restart the php5-fpm daemon for these changes to take effect.
+5.  Restart the php5-fpm daemon for these changes to take effect.
 
         sudo service php5-fpm restart
 
-6. Check for the version of Apache with the following command.
+6.  Check for the version of Apache with the following command.
 
         apache2 -v
 
-7. Depending on your Apache version, edit the following file accordingly.
+7.  Depending on your Apache version, edit the following file accordingly.
 
     **Apache 2.2 or earlier**
 
@@ -155,17 +158,17 @@ We will now configure Apache to pass all requests for PHP files, with the _php_ 
         </IfModule>
         ~~~
 
-8. Save the file and check for configuration errors.
+8.  Save the file and check for configuration errors.
 
         sudo apache2ctl configtest
 
-9. As long as you received _Syntax OK_ as a result of that command, restart the Apache service:
+9.  As long as you received _Syntax OK_ as a result of that command, restart the Apache service:
 
         sudo service apache2 restart
 
 If you did not get the _Syntax OK_ result, check your configuration for errors.
 
-10. Check if the PHP is working by creating and accessing a page with `phpinfo()` displayed. The following command will create info.php in /var/www (default directory for websites in Apache):
+10.  Check if the PHP is working by creating and accessing a page with `phpinfo()` displayed. The following command will create info.php in /var/www (default directory for websites in Apache):
 
         sudo echo "<?php phpinfo(); ?>" > /var/www/info.php
 
@@ -176,11 +179,11 @@ PHP-FPM brings in the concept of pools. Using pools you can control the amount o
 
 In this section we will create a pool for the domain example.com which is owned by the user **bob**.
 
-1. Create a copy of the original pool file to make changes to using the following command.
+1.  Create a copy of the original pool file to make changes to using the following command.
 
         sudo cp /etc/php5/fpm/pool.d/www.conf /etc/php5/fpm/pool.d/example.com.conf
 
-2. Edit the file to change the site name, socket name, and user/group.
+2.  Edit the file to change the site name, socket name, and user/group.
 
     {: .file-excerpt }
     /etc/php5/fpm/pool.d/example.com.conf
@@ -203,11 +206,11 @@ In this section we will create a pool for the domain example.com which is owned 
         listen = /var/run/php5-fpm_example.com.sock
         ~~~
 
-3. Restart the php5-fpm process for the new pool to be created.
+3.  Restart the php5-fpm process for the new pool to be created.
 
         sudo service php5-fpm restart
 
-4. Edit the virtual host file of example.com to use this PHP-FPM pool
+4.  Edit the virtual host file of example.com to use this PHP-FPM pool
 
     {: .file-excerpt }
     /etc/apache2/sites-available/example.com.conf
@@ -230,15 +233,15 @@ In this section we will create a pool for the domain example.com which is owned 
         </VirtualHost>
         ~~~
 
-5. Check the configuration file for errors.
+5.  Check the configuration file for errors.
 
         sudo apache2ctl configtest
 
-6. If there were no errors, restart Apache.
+6.  If there were no errors, restart Apache.
 
         sudo apache2 restart
 
-7. Create a PHP file inside the `DocumentRoot` of this domain to check the owner of this PHP-FPM pool.
+7.  Create a PHP file inside the `DocumentRoot` of this domain to check the owner of this PHP-FPM pool.
 
     {: .file-excerpt }
     /var/www/example.com/public_html/user.php
@@ -249,16 +252,9 @@ In this section we will create a pool for the domain example.com which is owned 
         ?>
         ~~~
 
-8. Access the following URL in a web browser, replacing example.com with your domain or IP address.
+8.  Access the following URL in a web browser, replacing example.com with your domain or IP address.
 
         http://example.com/user.php
 
 The page should say **bob**.
 
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-[PHP-FPM configuration directives](http://php.net/manual/en/install.fpm.configuration.php)
-[mod_fastcgi configuration directives](http://www.fastcgi.com/mod_fastcgi/docs/mod_fastcgi.html)

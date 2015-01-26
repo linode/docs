@@ -13,7 +13,7 @@ title: 'Use PostgreSQL Relational Databases on Ubuntu 10.10 (Maverick)'
 deprecated: true
 ---
 
-The [PostgreSQL](http://www.postgresql.org/) relational database system is a fast, scalable, and stadards-compliant open source database platform. This guide will help you install and configure PostgreSQL on your Ubuntu 10.10 (Maverick) system. We assume you've followed the steps detailed in our [getting started guide](/docs/getting-started/), and that you're logged into your Linode as root via SSH.
+The [PostgreSQL](http://www.postgresql.org/) relational database system is a fast, scalable, and standards-compliant open source database platform. This guide will help you install and configure PostgreSQL on your Ubuntu 10.10 (Maverick) system. We assume you've followed the steps detailed in our [getting started guide](/docs/getting-started/), and that you're logged into your Linode as root via SSH.
 
 Installing PostgreSQL
 ---------------------
