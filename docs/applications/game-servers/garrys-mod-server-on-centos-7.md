@@ -29,7 +29,7 @@ This guide shows how to create, maintain, and secure a Garry's Mod server.
 
 {: .note}
 >
->You will need a [Steam](http://www.steampowered.com) account and a copy of Garry's Mod to complete this guide.
+>You will need a [Steam](http://www.steampowered.com) account and a copy of [Garry's Mod](http://store.steampowered.com/app/4000/) to complete this guide.
 
 ##Preparation
 
