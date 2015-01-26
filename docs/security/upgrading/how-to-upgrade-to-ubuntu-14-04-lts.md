@@ -5,14 +5,22 @@ author:
 description: 'Our guide to upgrading to Ubuntu 14.04 LTS'
 keywords: 'upgrading,ubuntu,ubuntu 14.04'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Tuesday, October 21st, 2014
+modified: Monday, January 26, 2015
 modified_by:
-  name: Dave Russell
+  name: Alex Fornuto
 published: 'Tuesday, October 21st, 2014'
 title: 'How to Upgrade to Ubuntu 14.04 LTS'
 ---
 
 Ubuntu 14.04 is a long-term support (LTS) release that will be supported until April 2019. This guide explains how to upgrade your Linode from Ubuntu 12.04 (Precise Pangolin) to Ubuntu 14.04 (Trusty Tahr).
+
+ {: .note }
+ >Distribution upgrades can yield unpredictable results, due to variations in software stacks. When possible, we recommend:
+ >
+ - Creating a new Linode with the latest disk template
+ - Rebuilding your stack
+ - Transferring your data
+ - Swapping IP addresses
 
 This guide was written assuming that you have root access to your Linode. If you do not have root access, you will need to prepend each command with `sudo`.
 
@@ -102,15 +110,31 @@ Here's how to upgrade from Ubuntu 12.04 LTS to Ubuntu 14.04 LTS:
 
 4.  Exit nano and upgrade your Linode to Ubuntu 14.04 LTS by entering the following command:
 
-        do-release-upgrade
+        do-release-upgrade -d
 
 5.  Follow the on-screen instructions to complete the installation process. You will be prompted as to whether you wish to continue; as you are on screen, it is safe to continue via SSH.
 
-6.  The upgrade will cause your Linode to reboot. After it does so, verify that it's running Ubuntu 14.04 LTS by entering the following command:
+6.  Because Linode offers internal package mirrors for Ubuntu, you may see this message:
+
+        No valid mirror found
+
+        While scanning your repository information no mirror entry for the
+        upgrade was found. This can happen if you run an internal mirror or
+        if the mirror information is out of date.
+
+        Do you want to rewrite your 'sources.list' file anyway? If you choose
+        'Yes' here it will update all 'precise' to 'trusty' entries.
+        If you select 'No' the upgrade will cancel.
+
+        Continue [yN]
+
+    Type `y` and `return` to continue.
+
+7.  The upgrade will cause your Linode to reboot. After it does so, verify that it's running Ubuntu 14.04 LTS by entering the following command:
 
         cat /etc/lsb-release
 
-7.  You should see output that resembles the following:
+8.  You should see output that resembles the following:
 
         DISTRIB_ID=Ubuntu
         DISTRIB_RELEASE=14.04
