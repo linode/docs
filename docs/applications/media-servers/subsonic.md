@@ -39,9 +39,9 @@ This guide explains how to set up [Subsonic](http://subsonic.org) on a 1 GB Lino
 
         apt-get update && apt-get upgrade
 
-2.  Install a Java Runtime Environment (JRE). Subsonic runs on Java. If you don’t already have a JRE installed, the Oracle JRE is suggested. You will have to agree to Oracle’s EULA:
+2.  Subsonic runs on Java. If you do not already have a Java Runtime Environment, install one:
 
-        sudo apt-get install python-software-properties && sudo add-apt-repository ppa:webupd8team/java && sudo apt-get update && sudo apt-get install oracle-java7-installer
+        sudo apt-get install openjdk-7-jre-headless
 
 3.  Verify that Java is working by a performing a version check:
 
@@ -58,8 +58,6 @@ This guide explains how to set up [Subsonic](http://subsonic.org) on a 1 GB Lino
         sudo dpkg -i subsonic-5.1.deb
 
 2.  By default, Subsonic listens on port 4040. To change this or any other options, look at it’s configuration file, located in `/etc/default/subsonic`:
-
-        nano /etc/default/subsonic
 
     {: .note}
     >
