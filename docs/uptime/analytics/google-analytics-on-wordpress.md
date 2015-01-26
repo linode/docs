@@ -6,20 +6,20 @@ description: 'Get in-depth website visitor statistics with Google Analytics on y
 keywords: 'analytics,google analytics,wordpress,analytics,tracking,statistics'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['']
-modified: Thursday, January 22, 2015
+modified: Monday, January 26, 2015
 modified_by:
   name: Elle Krout
-published: 'Thursday, January 22, 2015'
+published: 'Monday, January 26, 2015'
 title: Google Analytics for WordPress
 external_resources:
 - '[Analytics Help](https://support.google.com/analytics/?hl=en#topic=3544906)'
 - '[Google Analytics Developers](https://developers.google.com/analytics/)'
-- '[Google Analytics for Websites](/docs/uptime/analytics/google-analytics/google-analytics-for-websites)'
+- '[Google Analytics for Websites](/docs/uptime/analytics/google-analytics-for-websites)'
 ---
 
-Google Analytics offers detailed statistics related to visitor traffic and sales for your website, allowing you to better know your audience. It can be beneficial to any website interested in growing its visitor base.
+Google Analytics offers detailed statistics related to visitor traffic and sales for your website, allowing you to better know your audience. It can be beneficial to any website owner interested in growing their visitor base.
 
-This guide provides three ways to add Google Analytics to your website: By directly adding the analytics code to your theme, and two plugin options. Prior to using this guide you should have completed our [Manage Web Content with WordPress](/docs/websites/cms/manage-web-content-with-wordpress) guide, and have a fully-configured WordPress website set up.
+This guide provides three ways to add Google Analytics to WordPress: By directly adding the analytics code to your theme, and two plugin options. Prior to using this guide you should have completed our [Manage Web Content with WordPress](/docs/websites/cms/manage-web-content-with-wordpress) guide, and have a fully-configured WordPress website set up.
 
 {: .note}
 >
@@ -49,9 +49,9 @@ Prior to adding Google Analytics to your website, you need to sign up and set up
     >
     >Should you decide to disable the demographics feature at a later date, simply remove the above code.
 
-You are now set up with Google Analytics and can decide how to procede with adding the code to your WordPress website: [Through your theme](#directly-add-google-analytics-to-wordpress) or [through a plugin](#add-google-analytics-through-a-plugin).
+You are now set up with Google Analytics and can decide how to procede with adding the code to your WordPress website: [Through your theme](#add-google-analytics-through-a-theme) or [through a plugin](#add-google-analytics-through-a-plugin).
 
-##Add Google Analytics through Theme
+##Add Google Analytics Through a Theme
 
 WordPress uses PHP includes, so adding a Google Analytics code is as easy as altering a single file in your WordPress theme.
 
@@ -66,8 +66,6 @@ WordPress uses PHP includes, so adding a Google Analytics code is as easy as alt
 2.  Use the `ls` command to see your list of theme folders. Note the folder name of the theme are you *currently* using:
 
         ls
-
-    ![WordPress themes list](/docs/assets/googleana-wordpress-themels.png)
 
 4.  Navigate to the folder that denotes the *current* theme you are using. In this example we are using the default Twenty Fifteen theme:
 
@@ -96,9 +94,9 @@ WordPress uses PHP includes, so adding a Google Analytics code is as easy as alt
 
     {: .note}
     >
-    >If you copy the above code replace `UA-00000000-0` with your **tracking ID**, and add the additional demographics code if needed.
+    >If you copy the above code, replace `UA-00000000-0` with your **tracking ID**, and add the additional demographics code if needed.
 
-7.  Press **CTRL-X**, then **Y** to exit the editor.
+7.  Press **CTRL-X**, then **Y**, to exit the editor.
 
 8.  To determine the success of the above process, open your WordPress website in your browser, then view the source code. You should see the Google Analytics code inserted below the `<body>` tag. It is highlighted in the below example:
 
@@ -110,7 +108,7 @@ Congratulations! You have added Google Analytics to your WordPress website. It m
 
 In this section, we will explore adding Google Analytics to a WordPress website through two popular plugins. These plugins both add Google Analytics dashboards to your adminstration interface and insert the tracking code into your theme. If you have already added Google Analytics through the above method, these plugins can complement that process by adding in-dashboard features, should you desire to view your analytics within WordPress itself.
 
-If you do not want to incorporate an added dashboard to WordPress, and would rather monitor your visitors and demographics from the Google Analytics website, consider using the method of adding your code through your choosen theme, as shown above.
+If you do not want to incorporate an added dashboard to WordPress, and would rather monitor your visitors and demographics from the Google Analytics website, consider using the method of adding your code through your choosen theme, [as shown above](#add-google-analytics-through-a-theme).
 
 ###Google Analytics Dashboard for WP
 
@@ -137,17 +135,17 @@ Google Analytics Dashboard for WP has now been set up and configured. You can pr
 
 ###Google Analytics by Yoast
 
-Google Analytics by Yoast inserts Google Analytics dashboard options within your WordPress dashboard and adds your tracking code to your website. Google Analytics by Yoast allows for wider customization of your analytics within your WordPress adminstration interface, but cannot be shared with other authors or visitors of your WordPress website.
+Google Analytics by Yoast inserts a Google Analytics section to your WordPress dashboard, and adds your tracking code to your website. Google Analytics by Yoast allows for wider customization of your analytics within your WordPress adminstration interface, but cannot be shared with other authors or visitors of your WordPress website.
 
-1.  Log in to your WordPress dashboard and navigate to the **Add New Plugin**  link. Search for, download, and extract **Google Analytics by Yoast**. Once activated, a Google Analytics link will be added to the left navigation pane.
+1.  Log in to your WordPress dashboard and navigate to the **Add New Plugin** link. Search for, download, and extract **Google Analytics by Yoast**. Once activated, a Google Analytics link will be added to the left navigation pane.
 
-2.  Click on the **Analytics** link. From here you will need to authenticate with your Google account by selecting the authenticate button. You will need to log in to your Google account and allow Google Analytics by Yoast to view your Google Analytics data.
+2.  Click on the **Analytics** link. You will need to authenticate with your Google account by selecting the authenticate button, logging in to your Google account and allowing Google Analytics by Yoast to view your Google Analytics data.
 
-3.  Copy the resulting code and paste it into the box. From here you can select the domain you are using Google Analytics for, and alter other settings as needed.
+3.  Copy the resulting code and paste it into the box. From here you can select the domain you are using Google Analytics for, and alter other settings as needed. Be aware that if your domain information is not entered correctly, this plugin will not work.
 
     ![Google Analytics by Yoast](/docs/assets/googleana-wordpress-yoast.png)
 
-4. From here, you must select your Analytics profile from the drop-down menu and save changes. Be aware that if your domain information is not entered correctly, this plugin will not work. It may take up to twenty-four hours for any data concerning your website to show up on Google Analytics.
+Google Analytics by Yoast has now been set up. It may take up to twenty-four hours for any data concerning your website to show up on Google Analytics.
 
 
 

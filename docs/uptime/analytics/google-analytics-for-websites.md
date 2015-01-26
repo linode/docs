@@ -14,12 +14,12 @@ title: Google Analytics for Websites
 external_resources:
 - '[Analytics Help](https://support.google.com/analytics/?hl=en#topic=3544906)'
 - '[Google Analytics Developers](https://developers.google.com/analytics/)'
-- '[Google Analytics for WordPress](/docs/uptime/analytics/google-analytics/google-analytics-on-wordpress)'
+- '[Google Analytics for WordPress](/docs/uptime/analytics/google-analytics-on-wordpress)'
 ---
 
-Google Analytics offers detailed statistics related to visitor traffic and sales for your website, allowing you to better know your audience. It can be beneficial to any website interested in growing its visitor base.
+Google Analytics offers detailed statistics related to visitor traffic and sales for your website, allowing you to better know your audience. It can be beneficial to any website owner interested in growing their visitor base.
 
-Although Google Analytics provides a way to add the tracking code to your webpages, adding a code individually to each page can be time-consuming and inefficient. This guide provides three alternatives to inserting the Google Analytics tracking code to your website, depending on your website's set-up.
+Although Google Analytics provides a way to add the tracking code to your webpages, if you are not using PHP includes, Server Side Includes, or another form of layout template, the process can be tedious and inefficient. This guide provides two alternatives to inserting the Google Analytics tracking code to your website, depending on your website's set-up.
 
 {: .note}
 >
@@ -51,37 +51,7 @@ Prior to adding Google Analytics to your website, you need to sign up and set up
     >
     >Should you decide to disable the demographics feature at a later date, simply remove the above code.
 
-You can now add this code to your website through [the header file](#add-through-the-header-file), [PHP](#add-through-php), or an [external Javascript file](#add-through-external-javascript).
-
-##Add Through the Header File
-
-If your website is built using Server Side Includes or PHP includes, with your header coding in a file separate from your content, you can simply log on to your Linode through SSH, navigate to and open the file for your header (generally `header.php` or similar):
-
-    cd /var/www/example.com/public_html/
-    nano header.php
-
-From here you can copy and paste your tracking code and insert it below your `<body>` tag:
-
-{: .file-excerpt}
-/var/www/example.com/public_html/header.php
-:   ~~~
-    <script>
-     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-     ga('create', 'UA-00000000-0', 'auto');
-     ga('send', 'pageview');
-
-    </script>
-    ~~~
-
-    {: .note}
-    >
-    >If you copy the above code replace `UA-00000000-0` with your **tracking ID**, and add the additional demographics code if needed.
-
-This is by far the easiest option for inserting the tracking code onto your website: Beyond navigating to the proper file, little other work is required. It may take up to twenty-four hours for any data concerning your website to show up on Google Analytics.
+You can now add this code to your website through [PHP](#add-through-php), or an [external Javascript file](#add-through-external-javascript).
 
 ##Add Through PHP
 
@@ -114,9 +84,9 @@ If your website is coded using PHP (your files will end in `.php`), you can also
 
     {: .note}
     >
-    >If you copy the above code replace `UA-00000000-0` with your **tracking ID**.
+    >If you copy the above code, replace `UA-00000000-0` with your **tracking ID**, and add the additional demographics code if needed.
 
-4.  Press **CTRL-X**, then **Y** to save and exit.
+4.  Press **CTRL-X**, then **Y**, to save and exit.
 
 5.  If your website does not have a separate header file, and you need to insert the code in every page, skip to step 6; otherwise, open and add the following code to your header document (`header.php` here) after your `<body>` tag:
 
@@ -139,10 +109,8 @@ If your website is coded using PHP (your files will end in `.php`), you can also
     {: .note}
     >
     >If the `<body>` tag of your website contains other variables, please adjust the two instances of `<body>` in the above code to match your current coding.
-    >
-    >Similarly, if your files end with something other than `.php`, replace the file ending in the code above.
 
-8.  To see if the code was successfully inserted into your website files, you can either open your website in your browser and view the source file, or open up a file in the terminal:
+8.  To see if the code was successfully inserted into your website's files, you can either open your website in your browser and view the source file, or open up a file in the terminal:
 
         nano index.php
 
@@ -176,7 +144,7 @@ If your website cannot use PHP (its files end in `.html`, `.htm`, or otherwise),
 
         nano ga.js
 
-5.  Insert the following code, replacing `UA-00000000-0` with your **tracking ID**:
+5.  Insert the following code, replacing `UA-00000000-0` with your **tracking ID**, and adding the additional demographics code if desired:
 
     {: .file-excerpt}
     /var/www/example.com/public_html/javascript/ga.js
@@ -190,7 +158,7 @@ If your website cannot use PHP (its files end in `.html`, `.htm`, or otherwise),
         ga('send', 'pageview');
         ~~~
 
-6.  **CTRL-X**, then **Y** to exit.
+6.  **CTRL-X**, then **Y**, to exit.
 
 7.  To insert a link to the JavaScript file holding your tracking code, you will use the `sed` command, which will search for and replace all instances of your `<head>` tag with `<head><script type="text/javascript" src="javascript/ga.js"></script>`:
 
@@ -198,9 +166,9 @@ If your website cannot use PHP (its files end in `.html`, `.htm`, or otherwise),
 
     {: .note}
     >
-    >Because this is inserting JavaScript code and PHP, the code can be inserted in the `<head>` tag, and does not to be located after the `<body>` tag.
+    >Change the `.html` ending to match the ending of your website's files.
 
-8.  To check that the code has been successfully inserted into your `.html` files, you can either open up your website in your browser and view the source code or view a file in your terminal. The folllowing should appear in conjuction to your `<head>` tag:
+8.  To check that the code has been successfully inserted into your `.html` files, you can either open up your website in your browser and view the source code, or view a file in your terminal. The folllowing should appear in conjuction to your `<head>` tag:
 
     {: .file-excerpt}
     /var/www/example.com/public_html/index.html
