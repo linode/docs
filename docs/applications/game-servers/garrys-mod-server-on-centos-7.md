@@ -7,7 +7,7 @@ keywords: 'garry''s mod,centos,centos 7'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-applications/game-servers/minecraft-ubuntu12-04/']
 published: 'Wednesday, January 21, 2015'
-modified: Wednesday, January 21, 2015
+modified: Monday, January 26, 2015
 modified_by:
   name: Elle Krout
 title: 'Garry''s Mod on CentOS 7'
@@ -17,7 +17,7 @@ external_resources:
 - '[GMod Wiki](http://wiki.garrysmod.com/page/Main_Page)'
 contributor:
     name: Julian Meyer
-    link: https://github.com/jmeyer2k # optional
+    link: https://github.com/jmeyer2k
 ---
 
 *This is a Linode Community guide. [Write for us](/docs/contribute) and
