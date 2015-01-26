@@ -25,6 +25,10 @@ Submit your own topic, or choose from the list of open topics we want to add to 
 -   Nginx Tuning and Performance
 -   [OpenChange](http://www.openchange.org/)
 -   [WebRTC](http://www.webrtc.org/)
+-   Gaming Servers
+-   [Puppet](http://puppetlabs.com/)
+-   [Ansible](http://www.ansible.com/home)
+-   [SaltStack](http://www.saltstack.com/)
 
 Each article is worth \$100 if it is accepted for publication. In addition, we always welcome edits, suggestions, and updates to existing guides.
 
