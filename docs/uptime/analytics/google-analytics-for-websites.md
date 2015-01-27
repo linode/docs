@@ -6,10 +6,10 @@ description: 'Get in-depth website visitor statistics with Google Analytics on y
 keywords: 'analytics,google analytics,wordpress,analytics,tracking,statistics'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['']
-modified: Thursday, January 22, 2015
+modified: Tuesday, January 27, 2015
 modified_by:
   name: Elle Krout
-published: 'Thursday, January 22, 2015'
+published: 'Tuesday, January 27, 2015'
 title: Google Analytics for Websites
 external_resources:
 - '[Analytics Help](https://support.google.com/analytics/?hl=en#topic=3544906)'
@@ -43,13 +43,6 @@ Prior to adding Google Analytics to your website, you need to sign up and set up
 
 5.  You will then be given your **Tracking ID** and **tracking code**. Make note of both of these items, you will use them later.
 
-    {: .note}
-    >
-    >At this time you may want to consider enabling the *demographics* feature of Google Analytics. If you decide to do so, you will need to add an additional line of code to your JavaScript in the steps below. Insert the following between the lines containing `ga('create', 'UA-00000000-0', 'auto');` and `ga('send', 'pageview');`:
-    >
-    >     ga('require', 'displayfeatures');
-    >
-    >Should you decide to disable the demographics feature at a later date, simply remove the above code.
 
 You can now add this code to your website through [PHP](#add-through-php), or an [external Javascript file](#add-through-external-javascript).
 
@@ -84,7 +77,13 @@ If your website is coded using PHP (your files will end in `.php`), you can also
 
     {: .note}
     >
-    >If you copy the above code, replace `UA-00000000-0` with your **tracking ID**, and add the additional demographics code if needed.
+    >If you copy the above code, replace `UA-00000000-0` with your **tracking ID**.
+    >
+    >At this time you may want to consider enabling the *[demographics](https://support.google.com/analytics/answer/2819948?hl=en)* feature of Google Analytics. If you decide to do so, you will need to add an additional line of code to your JavaScript in the steps below. Insert the following between the lines containing `ga('create', 'UA-00000000-0', 'auto');` and `ga('send', 'pageview');`:
+    >
+    >     ga('require', 'displayfeatures');
+    >
+    >Should you decide to disable the demographics feature at a later date, simply remove the above code.
 
 4.  Press **CTRL-X**, then **Y**, to save and exit.
 
