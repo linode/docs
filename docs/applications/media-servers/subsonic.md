@@ -13,35 +13,22 @@ published: 'Monday, January 26, 2015'
 title: Using Subsonic to Stream Music From Your Linode
 ---
 
-One of the many things you can do with a Linode is create your own music server. By having your music "in the cloud" you don’t have to worry about syncing your music library between your various devices, and can have access to it wherever you have the Internet.
+One of the many things you can do with a Linode is create your own music server. By storing your music "in the cloud" you don’t have to worry about syncing your music library between your various devices, and can have access to it wherever you have the Internet.
 
-This guide explains how to set up [Subsonic](http://subsonic.org) on a 1 GB Linode using Ubuntu 14.04 LTS. Subsonic is an easy-to-use music streaming service with a user-friendly interface, and the ability to share music with multiple users.
+This guide explains how to set up [Subsonic](http://subsonic.org) on a Linode. Subsonic is an easy-to-use music streaming service with a user-friendly interface, and the ability to share music with multiple users.  This guide has been tested for Debian and Ubuntu.
 
 {: .note }
 >The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
 ##Preparing Your System
 
-1.  Before you begin, create a directory for your music (Subsonic's default is in `/var/music`), and upload your songs:
-
-	{: .file}
-	/var/music/
-	:	~~~
-	    alex@localhost:~$ ls -x music/Christopher_Colucci/Force_of_Circumstance,The/
-	    01.Available_light.mp3            02.Sacred_games.mp3            03.Alone.mp3
-	    04.The_Idea_of_Alone.mp3          05.Maggi`s_Cafe.mp3            06.Agnus.mp3
-	    07.One_Night,_After_Dreaming.mp3  08.As_Deep_As_Your_Ocean.mp3   09.The_Last_Stand_Up.mp3
-	    10.David`s_Third_Story.mp3        11.Spontaneous_Corruption.mp3  12.The_Force_of_Circumstance.mp3
-	    13.Look_Back.mp3
-	    ~~~
-
-2.  Update your system:
+1.  Update your system:
 
         apt-get update && apt-get upgrade
 
 2.  Subsonic runs on Java. If you do not already have a Java Runtime Environment, install one:
 
-        sudo apt-get install openjdk-7-jre-headless
+        apt-get install openjdk-7-jre-headless
 
 3.  Verify that Java is working by a performing a version check:
 
@@ -55,7 +42,7 @@ This guide explains how to set up [Subsonic](http://subsonic.org) on a 1 GB Lino
 1.  The latest version of Subsonic is 5.1, and the most recent release can always be found on their [download](http://www.subsonic.org/pages/download.jsp) page. Download and install Subsonic onto your Linode:
 
         wget http://downloads.sourceforge.net/project/subsonic/subsonic/5.1/subsonic-5.1.deb
-        sudo dpkg -i subsonic-5.1.deb
+        dpkg -i subsonic-5.1.deb
 
 2.  By default, Subsonic listens on port 4040. To change this or any other options, look at it’s configuration file, located in `/etc/default/subsonic`:
 
@@ -113,7 +100,7 @@ This guide explains how to set up [Subsonic](http://subsonic.org) on a 1 GB Lino
 
 3. Restart Subsonic:
 
-        sudo service subsonic restart
+        service subsonic restart
 
 ##Configuration and Use
 
@@ -135,7 +122,7 @@ This guide explains how to set up [Subsonic](http://subsonic.org) on a 1 GB Lino
     >
 	>Passwords in the Subsonic database are stored in hex format, but not encrypted.
 
-5.  Click on the **Media folders** link. Here you will need to point Subsonic to where you wish to store your music. If you decide to store your music files in `/var/music`, Subsonic's default directory, you can skip this step. Once Subsonic is looking in the right directories, you can press **Scan media folders now**. Subsonic will create a database of music files.
+5.  Click on the **Media folders** link. Here you will need to point Subsonic to where you wish to store your music. If you decide to store your music files in `/var/music`, Subsonic's default directory, you can skip this step. Once you've pointed Subsonic to the correct directory and uploaded your music, you can press **Scan media folders now**. Subsonic will then create a database of music files.
 
     ![First time Subsonic access](/docs/assets/subsonic-foldersetup.png)
 

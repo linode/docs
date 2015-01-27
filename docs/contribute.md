@@ -25,6 +25,10 @@ Submit your own topic, or choose from the list of open topics we want to add to 
 -   Nginx Tuning and Performance
 -   [OpenChange](http://www.openchange.org/)
 -   [WebRTC](http://www.webrtc.org/)
+-   Gaming Servers
+-   [Puppet](http://puppetlabs.com/)
+-   [Ansible](http://www.ansible.com/home)
+-   [SaltStack](http://www.saltstack.com/)
 
 Each article is worth \$100 if it is accepted for publication. In addition, we always welcome edits, suggestions, and updates to existing guides.
 
@@ -45,6 +49,7 @@ These authors got their articles published and \$100. You could be next.
 -   [Yesod, Nginx, and MySQL on Debian 7 (Wheezy)](/docs/websites/frameworks/yesod-nginx-mysql-on-debian-7-wheezy)- Si-Qi Liu
 -   [Installing iRedMail on your Linode](/docs/email/iredmail/installing-iredmail) - Nick Reichley
 -   [Using StartSSL with the latest Nginx on Debian 7](/docs/websites/nginx/startssl-wth-latest-nginx-debian-7) - Ryan Laverdiere
+-  [Garry''s Mod on CentOS 7](/docs/applications/game-servers/garrys-mod-server-on-centos-7)
 
 How Much Money Will I Earn?
 ---------------------------
