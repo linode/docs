@@ -37,7 +37,7 @@ Issue the following commands to install the `citadel-suite`, `spamassassin` and 
 
     apt-get install citadel-suite spamassassin amavisd-new 
 
-The installation process will prompt you for several configuration items. Recommened answers for these prompts are as follows.
+The installation process will prompt you for several configuration items. Recommended answers for these prompts are as follows.
 
 **Please note:** The HTTP and HTTPS port options are particularly important. If you have already installed a web server package such as Apache or nginx that will use ports 80 and 443, please do *not* specify these ports for your Citadel installation.
 

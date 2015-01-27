@@ -2,10 +2,10 @@
 author:
   name: Joseph Dooley
   email: jdooley@linode.com
-description: 'Nginx for static content and Node.js for dynamic requests'
+description: 'NGINX for static content and Node.js for dynamic requests.'
 keywords: 'linode guide,hosting a website,website,linode quickstart guide'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Tuesday, January 6th, 2014
+modified: Wednesday, January 14th, 2015
 modified_by:
   name: Joseph Dooley
 published: 'Wednesday, January 14, 2015'
@@ -40,17 +40,17 @@ This guide can be started immediately after terminal login on a new Linode, it's
     {:.file }
     /etc/nginx/sites-available/example.com 
     : ~~~ nginx
-    #Names a server and declares the listening port.
+    #Names a server and declares the listening port
     server {
         listen 80;
         server_name example.com www.example.com;
 
-        #Configures the publicly served root directory.
-        #Configures the index file to be served.
+        #Configures the publicly served root directory
+        #Configures the index file to be served
         root /var/www/example.com;
             index index.html index.htm;
 
-        #These lines create a bypass for certain pathnames.
+        #These lines create a bypass for certain pathnames
         #www.example.com/test.js is now routed to port 3000 
         #instead of port 80
         location /test.js {
