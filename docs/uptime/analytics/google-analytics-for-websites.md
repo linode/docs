@@ -25,7 +25,7 @@ Although Google Analytics provides a way to add the tracking code to your webpag
 >
 >The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 >
->This guide also assumes you have configured your Apache server as described in our guides with your publicly accessible directory located at something similar to `/var/www/example.com/public_html`. Replace all instances of `example.com` with your own domain information.
+>This guide also assumes you have configured your Apache server as described in our [LAMP](/docs/websites/lamp/) guides with your publicly accessible directory located at something similar to `/var/www/example.com/public_html`. Replace all instances of `example.com` with your own domain information.
 
 ## Signing Up for Google Analytics
 
@@ -48,19 +48,15 @@ You can now add this code to your website through [PHP](#add-through-php), or an
 
 ##Add Through PHP
 
-If your website is coded using PHP (your files will end in `.php`), you can also add the tracking code through a PHP script. This is useful if you are not using a seperate PHP file for your header, or otherwise want to keep the code itself outside of your header file. This also makes any additional changes you may want to make to the tracking code far more efficient, since you will only have to edit one file.
+If your website is coded using PHP (your files will end in `.php`), you can add the tracking code through a PHP script. This is useful if you are not using a seperate PHP file for your header, or otherwise want to keep the code itself outside of your header file. This also makes any additional changes to the tracking code far more efficient, since you will only have to edit one file.
 
-1.  Navigate to the directory your website is hosted on:
+1.  Navigate to the directory your website is hosted in:
 
         cd /var/www/example.com/public_html
 
-2.  Create a file for `googleanalytics.php`:
+2.  Create a file named `googleanalytics.php` and copy your tracking code:
 
-        nano googleanalytics.php
-
-3.  Add your tracking code:
-
-    {: .file-excerpt}
+    {: .file }
     /var/www/example.com/public_html/googleanalytics.php
     :   ~~~
         <script>
@@ -85,11 +81,7 @@ If your website is coded using PHP (your files will end in `.php`), you can also
     >
     >Should you decide to disable the demographics feature at a later date, simply remove the above code.
 
-4.  Press **CTRL-X**, then **Y**, to save and exit.
-
-5.  If your website does not have a separate header file, and you need to insert the code in every page, skip to step 6; otherwise, open and add the following code to your header document (`header.php` here) after your `<body>` tag:
-
-        nano header.php
+3.  If your website does not have a separate header file, and you need to insert the code in every page, skip to step 6; otherwise, open and add the following code to your header document (`header.php` here) after your `<body>` tag:
 
     {: .file-excerpt}
     /var/www/example.com/public_html/header.php
@@ -99,9 +91,9 @@ If your website is coded using PHP (your files will end in `.php`), you can also
 
     You have now added Google Analytics to your website! It may take up to twenty-four hours for any data concerning your website to show up on Google Analytics. You need not follow the rest of this guide.
 
-6.  If your PHP-enabled website does not have a header template, then you can insert the needed code to your website through the terminal. Make sure you are in the directory that holds your website's files.
+4.  If your PHP-enabled website does not have a header template, then you can insert the needed code to your website through the terminal. Make sure you are in the directory that holds your website's files.
 
-7.  Through using the *stream editor* command (`sed`), you can insert the needed code into multiple documents at once:
+    Through using the *stream editor* command (`sed`), you can insert the needed code into multiple documents at once:
 
         sed -i 's/<body>/<body><?php include_once("googleanalytics.php") ?>/g' *.php
 
@@ -109,11 +101,7 @@ If your website is coded using PHP (your files will end in `.php`), you can also
     >
     >If the `<body>` tag of your website contains other variables, please adjust the two instances of `<body>` in the above code to match your current coding.
 
-8.  To see if the code was successfully inserted into your website's files, you can either open your website in your browser and view the source file, or open up a file in the terminal:
-
-        nano index.php
-
-    When you view the file, you should see the code inserted immediately after the `<body>` tag:
+5.  To see if the code was successfully inserted into your website's files, you can either open your website in your browser and view the source file, or open up a file in the terminal. When you view the file, you should see the code inserted immediately after the `<body>` tag:
 
     {: .file-excerpt}
     /var/www/example.com/public_html/index.php
@@ -131,7 +119,7 @@ If your website cannot use PHP (its files end in `.html`, `.htm`, or otherwise),
 
         cd /var/www/example.com/public_html
 
-2. (Optional) If you already have a Javascript folder, change directories to that folder. Otherwise, you may want to create a Javascript folder now:
+2. (Optional) If you already have a Javascript folder, change directories to that folder. Otherwise, create a Javascript folder now:
 
         mkdir javascript
 
@@ -139,11 +127,7 @@ If your website cannot use PHP (its files end in `.html`, `.htm`, or otherwise),
 
         cd javascript
 
-3.  Create a `ga.js` file to hold your Google Analytics code:
-
-        nano ga.js
-
-5.  Insert the following code, replacing `UA-00000000-0` with your **tracking ID**, and adding the additional demographics code if desired:
+3.  Create a `ga.js` file to hold your Google Analytics code. Insert the following code, replacing `UA-00000000-0` with your **tracking ID**:
 
     {: .file-excerpt}
     /var/www/example.com/public_html/javascript/ga.js
@@ -157,9 +141,15 @@ If your website cannot use PHP (its files end in `.html`, `.htm`, or otherwise),
         ga('send', 'pageview');
         ~~~
 
-6.  **CTRL-X**, then **Y**, to exit.
+    {: .note}
+    >
+    >At this time you may want to consider enabling the *[demographics](https://support.google.com/analytics/answer/2819948?hl=en)* feature of Google Analytics. If you decide to do so, you will need to add an additional line of code to your JavaScript in the steps below. Insert the following between the lines containing `ga('create', 'UA-00000000-0', 'auto');` and `ga('send', 'pageview');`:
+    >
+    >     ga('require', 'displayfeatures');
+    >
+    >Should you decide to disable the demographics feature at a later date, simply remove the above code.
 
-7.  To insert a link to the JavaScript file holding your tracking code, you will use the `sed` command, which will search for and replace all instances of your `<head>` tag with `<head><script type="text/javascript" src="javascript/ga.js"></script>`:
+7.  Use the `sed` command to insert a link to the JavaScript file holding your tracking code. Sed which will search for and replace all instances of your `<head>` tag with `<head><script type="text/javascript" src="javascript/ga.js"></script>`:
 
         sed -i 's@<head>@<head><script type="text/javascript" src="javascript/ga.js"></script>@g' *.html
 
