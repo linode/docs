@@ -1,6 +1,6 @@
 ---
 author:
-  name: Amanda Folson
+  name: Linode
   email: docs@linode.com
 description: 'Guides for setting up PHP-FastCGI with nginx.'
 keywords: 'web server,vps web server,vps hosting,nginx'

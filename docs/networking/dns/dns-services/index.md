@@ -1,7 +1,6 @@
 ---
-deprecated: true
 author:
-  name: Amanda Folson
+  name: Linode
   email: docs@linode.com
 description: 'Installation, configuration and usage guides for DNS.'
 keywords: 'networking,dns,nsd,rdiff,sshfs,unbound'

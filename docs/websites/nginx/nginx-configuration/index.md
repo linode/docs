@@ -1,6 +1,6 @@
 ---
 author:
-  name: Amanda Folson
+  name: Linode
   email: docs@linode.com
 description: 'Guides for basic and advanced setup and configuration of nginx.'
 keywords: 'web server,vps web server,vps hosting,nginx'

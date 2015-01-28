@@ -1,7 +1,6 @@
 ---
-deprecated: true
 author:
-  name: Amanda Folson
+  name: Linode
   email: docs@linode.com
 description: 'Guides for using PHP/CGI with the Apache web server.'
 keywords: 'Apache web server,Apache on Linode,VPS web server,php,cgi,php-cgi'

@@ -1,6 +1,6 @@
 ---
 author:
-  name: Amanda Folson
+  name: Linode
   email: docs@linode.com
 description: 'Guides for using ProxyPass with the Apache web server.'
 keywords: 'Apache web server,Apache on Linode,VPS web server,proxypass,proxy'

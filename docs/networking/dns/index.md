@@ -1,5 +1,5 @@
 ---
-title:  DNS
+title: DNS
 featured:
  - introduction-to-dns-records.md
  - dns-manager.md

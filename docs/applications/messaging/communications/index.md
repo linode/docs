@@ -1,7 +1,6 @@
 ---
-deprecated: true
 author:
-  name: Amanda Folson
+  name: Linode
   email: docs@linode.com
 description: 'Guides on setting up and using communication solutions on a Linux VPS.'
 keywords: 'communication,xmpp,ejabberd,openfire,prosody,irc,irssi,voip,asterisk'

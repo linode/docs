@@ -1,7 +1,6 @@
 ---
-deprecated: true
 author:
-  name: Amanda Folson
+  name: Linode
   email: docs@linode.com
 description: 'Installation, configuration and usage guides for the Ikiwiki wiki system.'
 keywords: 'ikiwiki,wiki,perl,git,markdown'

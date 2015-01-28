@@ -1,6 +1,6 @@
 ---
 author:
-  name: Amanda Folson
+  name: Linode
   email: docs@linode.com
 description: 'Installation, configuration and usage guides for e-Commerce solutions.'
 keywords: 'e-commerce,online store,store,shopping cart,magento,oscommerce'

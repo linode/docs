@@ -1,6 +1,6 @@
 ---
 author:
-  name: Linpde
+  name: Linode
   email: docs@linode.com
 description: 'Installation, configuration and usage guides for bulletin boards and forums.'
 keywords: 'bulletin board,boards,forums,phpbb,smf'

@@ -1,6 +1,6 @@
 ---
 author:
-  name: Amanda Folson
+  name: Linode
   email: docs@linode.com
 description: 'Installation, configuration and usage guides for website statistics.'
 keywords: 'statistics,analytics,stats,piwik'
@@ -8,7 +8,7 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-applications/analytics/']
 modified: Monday, April 25th, 2011
 modified_by:
-  name: Jed Smith
+  name: Linode
 published: 'Monday, March 1st, 2010'
 title: Analytics
 ---
