@@ -43,7 +43,7 @@ This guide shows you how to set up a personal [Minecraft](https://minecraft.net/
 
 1.  Exit your SSH session, and log back in to your Linode as the `minecraft` user:
 
-2.  Download the latest version of the Minecraft Multiplayer Server from [Minecraft.net](https://minecraft.net/). The current version as of publis is 1.8.1. Refer to the linked page to download the latest version:
+2.  Download the latest version of the Minecraft Multiplayer Server from [Minecraft.net](https://minecraft.net/). The current version as of publcation is 1.8.1. Refer to the linked page to download the latest version:
 
         wget https://s3.amazonaws.com/Minecraft.Download/versions/1.8.1/minecraft_server.1.8.1.jar
 
