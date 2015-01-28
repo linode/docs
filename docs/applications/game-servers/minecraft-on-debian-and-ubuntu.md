@@ -8,10 +8,10 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 external_resources:
 - '[Minecraft.net](https://minecraft.net/)'
 - '[The Official Minecraft Wiki](http://minecraft.gamepedia.com/Minecraft_Wiki)'
-modified: Tuesday, January 27, 2015
+modified: Wednesday, January 28, 2015
 modified_by:
   name: Alex Fornuto
-published: ''
+published: 'Wednesday, January 28, 2015'
 title: 'Minecraft on Debian and Ubuntu'
 ---
 
