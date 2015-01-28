@@ -10,6 +10,11 @@ modified_by:
   name: Elle Krout
 published: 'Wednesday, January 28, 2015'
 title: 'LAMP Server on Ubuntu 14.04'
+external_resources:
+- '[Ubuntu Server Edition Homepage](http://www.ubuntu.com/products/whatisubuntu/serveredition)'
+- '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)'
+- '[MySQL Documentation](http://dev.mysql.com/doc/)'
+- '[PHP Documentation](http://www.php.net/docs.php)'
 ---
 
 This guide provides step-by-step instructions for installing a full-featured LAMP stack on an Ubuntu 14.04 (Trusty Tahr) system. The 14.04 release is the most current LTS (long term support) version of the Ubuntu operating system, and will be supported with security updates until April of 2019.
@@ -20,8 +25,7 @@ In this guide, you'll learn how to set up Apache, MySQL, and PHP. If you don't n
 >
 > Throughout this guide we will offer several suggested values for specific configuration settings. Some of these values will be set by default. These settings are shown in the guide as a reference, in the event that you change these settings to suit your needs and then need to change them back.
 
-Set the Hostname
-----------------
+##Set the Hostname
 
 Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
@@ -30,8 +34,7 @@ Before you begin installing and configuring the components described in this gui
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-Install and Configure the Apache Web Server
--------------------------------------------
+##Install and Configure the Apache Web Server
 
 The Apache web server is a popular choice for serving web pages. While many alternatives have appeared in the last few years, Apache remains a powerful option that we recommend for most uses.
 
@@ -132,8 +135,7 @@ If you wanted to disable the `example.com` site, for example, issue the followin
 
 The `a2dissite` command is the inverse of `a2ensite`. After enabling, disabling, or modifying any part of your Apache configuration you will need to reload the Apache configuration again with the `/etc/init.d/apache2 reload` command. You can create as many virtual hosting files as you need to support the domains that you want to host with your Linode.
 
-Install and Configure the MySQL Database Server
------------------------------------------------
+##Install and Configure the MySQL Database Server
 
 MySQL is a relational database management system (RDBMS) and is a popular component in contemporary web development. It is used to store data for many popular applications, including WordPress and Drupal.
 
@@ -174,8 +176,7 @@ With that completed you've successfully configured MySQL and you may now pass th
 
 With Apache and MySQL installed you are now ready to move on to installing PHP to provide scripting support for your web pages.
 
-Install and Configure PHP
--------------------------
+##Install and Configure PHP
 
 PHP makes it possible to produce dynamic and interactive pages using your own scripts and popular web development frameworks. Furthermore, many popular web applications like WordPress are written in PHP. If you want to be able to develop your websites using PHP, you must first install it.
 
@@ -218,16 +219,6 @@ Restart Apache to make sure everything is loaded correctly:
     service apache2 reload
 
 Congratulations! You have now set up and configured a LAMP system.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Ubuntu Server Edition Homepage](http://www.ubuntu.com/products/whatisubuntu/serveredition)
-- [Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)
-- [MySQL Documentation](http://dev.mysql.com/doc/)
-- [PHP Documentation](http://www.php.net/docs.php)
 
 
 
