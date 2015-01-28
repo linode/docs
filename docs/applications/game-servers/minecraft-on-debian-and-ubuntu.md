@@ -34,6 +34,11 @@ This guide shows you how to set up a personal [Minecraft](https://minecraft.net/
 
         sudo adduser minecraft
 
+{: .note }
+> If you have a firewall configured according to our [Securing Your Server](/docs/security/securing-your-server) guide, you will need to add an exception for port 25565. The line to add to your `iptables.firewall.rules` file is:
+>
+>     -A INPUT -p tcp --dport 25565 -j ACCEPT
+
 ##Install Minecraft
 
 1.  Exit your SSH session, and log back in to your Linode as the `minecraft` user:
