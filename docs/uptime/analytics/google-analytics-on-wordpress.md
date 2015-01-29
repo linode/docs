@@ -5,16 +5,15 @@ author:
 description: 'Get in-depth website visitor statistics with Google Analytics on your WordPress website.'
 keywords: 'analytics,google analytics,wordpress,analytics,tracking,statistics'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['']
 modified: Thursday, January 29th, 2015
 modified_by:
   name: Elle Krout
 published: 'Thursday, January 29th, 2015'
 title: Google Analytics for WordPress
 external_resources:
-- '[Analytics Help](https://support.google.com/analytics/?hl=en#topic=3544906)'
-- '[Google Analytics Developers](https://developers.google.com/analytics/)'
-- '[Google Analytics for Websites](/docs/uptime/analytics/google-analytics-for-websites)'
+ - '[Analytics Help](https://support.google.com/analytics/?hl=en#topic=3544906)'
+ - '[Google Analytics Developers](https://developers.google.com/analytics/)'
+ - '[Google Analytics for Websites](/docs/uptime/analytics/google-analytics-for-websites)'
 ---
 
 Google Analytics offers detailed statistics related to visitor traffic and sales for your website, allowing you to better know your audience. It can be beneficial to any website owner interested in growing their visitor base.
@@ -142,6 +141,4 @@ Google Analytics by Yoast inserts a Google Analytics section to your WordPress d
     ![Google Analytics by Yoast](/docs/assets/googleana-wordpress-yoast.png)
 
 Google Analytics by Yoast has now been set up. It may take up to twenty-four hours for any data concerning your website to show up on Google Analytics.
-
-
 
