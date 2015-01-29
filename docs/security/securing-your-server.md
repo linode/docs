@@ -233,17 +233,17 @@ Here's how to create a firewall on your Linode:
     >
     > Be sure to revise these rules if you add new services later.
 
-7.  Save the changes to the firewall rules file by pressing Control-X, and then Y.
+6.  Save the changes to the firewall rules file by pressing Control-X, and then Y.
 
-8.  Activate the firewall rules by entering the following command:
+7.  Activate the firewall rules by entering the following command:
 
         sudo iptables-restore < /etc/iptables.firewall.rules
 
-9.  Recheck your Linode's firewall rules by entering the following command:
+8.  Recheck your Linode's firewall rules by entering the following command:
 
         sudo iptables -L
 
-10.  Examine the output. The new ruleset should look like the one shown below:
+9.  Examine the output. The new ruleset should look like the one shown below:
 
             Chain INPUT (policy ACCEPT)
             target     prot opt source               destination
@@ -265,7 +265,7 @@ Here's how to create a firewall on your Linode:
             target     prot opt source               destination
             ACCEPT     all  --  anywhere             anywhere  
 
-11. Now you need to ensure that the firewall rules are activated every time you restart your Linode.
+10. Now you need to ensure that the firewall rules are activated every time you restart your Linode.
 
     **Debian/Ubuntu Users:**
 
