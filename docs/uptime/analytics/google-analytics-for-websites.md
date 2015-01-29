@@ -6,10 +6,10 @@ description: 'Get in-depth website visitor statistics with Google Analytics on y
 keywords: 'analytics,google analytics,wordpress,analytics,tracking,statistics'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['']
-modified: Tuesday, January 27, 2015
+modified: Thursday, January 29, 2015
 modified_by:
   name: Elle Krout
-published: 'Tuesday, January 27, 2015'
+published: 'Thursday, January 29, 2015'
 title: Google Analytics for Websites
 external_resources:
 - '[Analytics Help](https://support.google.com/analytics/?hl=en#topic=3544906)'
