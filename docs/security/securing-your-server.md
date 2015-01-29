@@ -233,19 +233,6 @@ Here's how to create a firewall on your Linode:
     >
     > Be sure to revise these rules if you add new services later.
 
-6. <div id="step_6">**Optional:**  If you plan on using the Linode Longview service, add these additional lines above the `#  Drop all other inbound` section:
-
-    {: .file-excerpt}
-    /etc/iptables.firewall.rules
-    :   ~~~
-        #  Allow incoming Longview connections 
-        -A INPUT -s longview.linode.com -j ACCEPT
-
-        # Allow metrics to be provided Longview
-        -A OUTPUT -d longview.linode.com -j ACCEPT
-        ~~~
-    </div>
-
 7.  Save the changes to the firewall rules file by pressing Control-X, and then Y.
 
 8.  Activate the firewall rules by entering the following command:
