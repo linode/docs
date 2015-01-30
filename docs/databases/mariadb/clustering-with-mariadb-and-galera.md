@@ -9,7 +9,7 @@ modified: Wednesday, January 30th, 2015
 modified_by:
   name: James Stewart
 published: 'Thursday, Januray 30th, 2015'
-title: Configuring a MariaDB Cluster with Galera on Debian 7.
+title: Configuring a MariaDB Cluster with Galera on Debian 7
 external_resources:
  - '[MariaDB Foundation: Installing MariaDB Galera Cluster on Debian/Ubuntu](https://blog.mariadb.org/installing-mariadb-galera-cluster-on-debian-ubuntu/)'
 ---
@@ -17,7 +17,7 @@ external_resources:
 MariaDB replication with Galera adds redundancy for the database backend of your websites. With replication, multiple database servers act as a cluster. Database clustering is particularly useful for high availability website configurations. In this example, we will use three separate Linodes to configure database replication, each with private IPv4 addresses.
 
 {: .note}
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.  This guide also assumes that your Linodes are each configured with a [Private IP Address](/docs/networking/remote-access#adding-private-ip-addresses).
 
 ##Install Required Packages
 
@@ -54,7 +54,7 @@ MariaDB replication with Galera adds redundancy for the database backend of your
     wsrep_sst_method=rsync
     ~~~
 
-2.  Copy the /etc/mysql/debian.cnf file from your primary Linode in the cluster to each of your other Linodes, overwriting the existing copies if present.
+2.  Copy the /etc/mysql/debian.cnf file from your primary Linode in the cluster to each of your other Linodes, overwriting the existing copies.
 
 3.  Stop the MariaDB service on each of your Linodes:
 
@@ -67,6 +67,16 @@ MariaDB replication with Galera adds redundancy for the database backend of your
 5.  Confirm that the cluster has started by running the following command.  You should receive an output of the cluster size.
 
 		mysql -u root -e 'SELECT VARIABLE_VALUE as "cluster size" FROM INFORMATION_SCHEMA.GLOBAL_STATUS WHERE VARIABLE_NAME="wsrep_cluster_size"'
+
+	You should see output similar to the following:
+
+		MariaDB [(none)]> SELECT VARIABLE_VALUE as "cluster size" FROM INFORMATION_SCHEMA.GLOBAL_STATUS WHERE VARIABLE_NAME="wsrep_cluster_size";
+		+--------------+
+		| cluster size |
+		+--------------+
+		| 1            |
+		+--------------+
+		1 row in set (0.00 sec)
 
 6.  Start the MariaDB service on the other two Linodes.  Re-run the command from step 5 to ensure that each system has joined the cluster.
 
@@ -86,5 +96,15 @@ MariaDB replication with Galera adds redundancy for the database backend of your
 2.  From each of the other servers, run the following command.  You should receive an output of the datbase and row that you created in the previous step.
 
 		show tables in test;
+
+	You should see output simliar to the following:
+
+		MariaDB [(none)]> show tables in test;
+		+----------------+
+		| Tables_in_test |
+		+----------------+
+		| flowers        |
+		+----------------+
+		1 row in set (0.00 sec)
 
 Congratulations, you have now configured a MariaDB cluster with Galera.
