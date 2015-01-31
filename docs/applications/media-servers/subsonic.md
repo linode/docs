@@ -13,9 +13,7 @@ published: 'Monday, January 26, 2015'
 title: Using Subsonic to Stream Music From Your Linode
 ---
 
-One of the many things you can do with a Linode is create your own music server. By storing your music "in the cloud" you don’t have to worry about syncing your music library between your various devices, and can have access to it wherever you have the Internet.
-
-This guide explains how to set up [Subsonic](http://subsonic.org) on a Linode. Subsonic is an easy-to-use music streaming service with a user-friendly interface, and the ability to share music with multiple users.  This guide has been tested for Debian and Ubuntu.
+This guide explains how to set up [Subsonic](http://subsonic.org) on a Linode. Subsonic is an easy-to-use media streaming service with a user-friendly interface, and the ability to share music and video with multiple users.  This guide is for Debian and Ubuntu.
 
 {: .note }
 >The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
@@ -34,21 +32,21 @@ This guide explains how to set up [Subsonic](http://subsonic.org) on a Linode. S
 
         java -version
 
-    This should output your version information.
-
 
 ##Installing Subsonic
 
-1.  The latest version of Subsonic is 5.1, and the most recent release can always be found on their [download](http://www.subsonic.org/pages/download.jsp) page. Download and install Subsonic onto your Linode:
+1.  The latest version of Subsonic (as of publication) is 5.1, and the most recent release can always be found on their [download](http://www.subsonic.org/pages/download.jsp) page. Download and install Subsonic onto your Linode:
 
         wget http://downloads.sourceforge.net/project/subsonic/subsonic/5.1/subsonic-5.1.deb
         dpkg -i subsonic-5.1.deb
 
-2.  By default, Subsonic listens on port 4040. To change this or any other options, look at it’s configuration file, located in `/etc/default/subsonic`:
+2.  Subsonic runs as the root user by default, which is insecure. Create a new system user for subsonic to run as:
 
-    {: .note}
-    >
-    >If you have a firewall set up on your Linode, be sure to edit the permissions to allow connections from the port Subsonic is listening on.
+        service subsonic stop
+        useradd --system subsonic
+        gpasswd --add subsonic audio
+
+3. Open the configuration file `/etc/default/subsonic`:
 
     {: .file}
     /etc/default/subsonic
@@ -79,7 +77,7 @@ This guide explains how to set up [Subsonic](http://subsonic.org) on a Linode. S
         SUBSONIC_USER=root
         ~~~
 
-    Here you can change the port Subsonic listens on, increase the amount of memory it can use, and encrypt your streaming traffic with SSL. To use your own SSL certificate, look here. The following is an example of the server set up to use https on port 8080 with the default SSL certificate:
+    Here you can change the user, the port Subsonic listens on, increase the amount of memory it can use, and encrypt your streaming traffic with SSL. To use your own SSL certificate, look [here](http://www.subsonic.org/pages/getting-started.jsp#4). The following is an example of the server set up to use https on port 8080 with the default SSL certificate:
 
     {: .file-excerpt}
     /etc/default/subsonic
@@ -92,37 +90,48 @@ This guide explains how to set up [Subsonic](http://subsonic.org) on a Linode. S
         # the following:
         #
         # SUBSONIC_ARGS="--port=80 --https-port=443 --max-memory=200"
-        #SUBSONIC_ARGS="--max-memory=150"
+        
         SUBSONIC_ARGS="--https-port=8443 --max-memory=150"
+        
+        SUBSONIC_USER=subsonic
         ~~~
 
-    Note that you can still use port 4040 when you first connect to the server, and it will redirect your browser or app.
+    {: .note}
+    >
+    >If you have a firewall set up on your Linode, be sure to edit the permissions to allow connections from the port Subsonic is listening on.
 
-3. Restart Subsonic:
+3. Start Subsonic:
 
-        service subsonic restart
+        service subsonic start
 
 ##Configuration and Use
 
-1.  Open Subsonic in your brower. If you’re using Subsonic’s default SSL certificate, you’ll see a message like the following. You can safely "procede anyway":
+1.  Make the directory `/var/music` and change it's ownership to the `subsonic` user. If you plan on storing media files elsewhere, adjust accordingly:
 
-    ![Subsonic untrusted website](/docs/assets/subsonic-untrustedwebsite.png)
+        mkdir /var/music
+        chown subsonic:subsonic /var/music
 
-2.  The first time you access your Subsonic server in your browser, you will see the following: 
+2.  Open Subsonic in your broswer by navigating to the Linode's IP address or domain name. Be sure to append a colon and the port number after the address. If you've configured subsonic to use SSL, be sure to prepend `https` to the address.
+
+    If you’re using Subsonic’s default SSL certificate, you’ll see a message like the following. You can safely "procede anyway":
+
+    ![Subsonic untrusted website](/docs/assets/untrusted-connection.png)
+
+3.  The first time you access your Subsonic server in your browser, you will see the following: 
 
     ![First time Subsonic access](/docs/assets/subsonic-firstlogin.png)
 
-3.  As instructed, you can log in with admin/admin, or use the link to bring you to Subsonic, where you will be greeted with the *Getting started* screen:
+4.  As instructed, you can log in with admin/admin, or use the link to bring you to Subsonic, where you will be greeted with the *Getting started* screen:
 
     ![First time Subsonic access](/docs/assets/subsonic-gettingstarted.png)
 
-4. Create a password for your admin account. You can also set up any other accounts at this time. 
+5. Create a password for your admin account. You can also set up any other accounts at this time. 
 
     {: .note}
     >
 	>Passwords in the Subsonic database are stored in hex format, but not encrypted.
 
-5.  Click on the **Media folders** link. Here you will need to point Subsonic to where you wish to store your music. If you decide to store your music files in `/var/music`, Subsonic's default directory, you can skip this step. Once you've pointed Subsonic to the correct directory and uploaded your music, you can press **Scan media folders now**. Subsonic will then create a database of music files.
+6.  Click on the **Media folders** link. Here you will need to point Subsonic to where you wish to store your music. If you decide to store your music files in `/var/music`, Subsonic's default directory, you can skip this step. Once you've pointed Subsonic to the correct directory and uploaded your music, you can press **Scan media folders now**. Subsonic will then create a database of music files.
 
     ![First time Subsonic access](/docs/assets/subsonic-foldersetup.png)
 
