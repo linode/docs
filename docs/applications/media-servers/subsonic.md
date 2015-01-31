@@ -135,6 +135,10 @@ This guide explains how to set up [Subsonic](http://subsonic.org) on a Linode. S
 
     ![First time Subsonic access](/docs/assets/subsonic-foldersetup.png)
 
+&nbsp;
+
+[![The Subsonic Interface.](/docs/assets/subsonic-setup_small.png)](/docs/assets/subsonic-setup.png)
+
 You have now installed and configured Subsonic! To learn more about the many ways to customize your Subsonic setup, check out their [website](http://subsonic.org/).
 
 
