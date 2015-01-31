@@ -173,7 +173,7 @@ Now you can use the new `root` user password to log in to your Linode. See [Conn
 Next Steps
 ----------
 
-You can take additional steps to secure your Linode Manager account by enabling the two-factor authentication and IP address whitelisting features. You can also configure security event notifications and disable API access. For instructions, see the [Security](/docs/linode-manager-security) guide.
+You can take additional steps to secure your Linode Manager account by enabling the two-factor authentication and IP address whitelisting features. You can also configure security event notifications and disable API access. For instructions, see the [Security](/docs/security/linode-manager-security-controls/) guide.
 
 
 
