@@ -12,4 +12,4 @@ published: 'Friday, June 20th, 2014'
 title: 'Squid Proxy/Cache'
 ---
 
-Squid Proxy/Cache is a versatilte piece of software with a variety of uses. These guides detail several use cases for Squid on a Linode
+Squid Proxy/Cache is a versatile piece of software with a variety of uses. These guides detail several use cases for Squid on a Linode

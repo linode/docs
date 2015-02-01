@@ -28,7 +28,7 @@ Once configured, the OpenVPN server encrypts traffic between your local computer
 
 [![Splash screen for TunnelBlick.](/docs/assets/1359-BasicVPNTraffic.jpg)](/docs/assets/1359-BasicVPNTraffic.jpg)
 
-With the additional configuration we will set up at the end of this guide, all traffic coming from your local computer can be tunneled through the VPN server. This can be used to curcumvent local traffic restrictions, or to mask the traffic coming from your computer.
+With the additional configuration we will set up at the end of this guide, all traffic coming from your local computer can be tunneled through the VPN server. This can be used to circumvent local traffic restrictions, or to mask the traffic coming from your computer.
 
 [![Splash screen for TunnelBlick.](/docs/assets/1360-FullTunneling.jpg)](/docs/assets/1360-FullTunneling.jpg)
 
@@ -334,7 +334,7 @@ By deploying the following configuration, you will be able to forward *all* traf
 
 	{: .note }
 	>
-	> If you are using Debian 7, replace this command with `apt-get install dnsmasq resolvconf` and skip steps 7 thorugh 9
+	> If you are using Debian 7, replace this command with `apt-get install dnsmasq resolvconf` and skip steps 7 through 9
 
 7.  You will be presented with a series of options in an ncurses menu. First, choose **yes** to prepare `/etc/resolv.conf` for dynamic updates.
 
