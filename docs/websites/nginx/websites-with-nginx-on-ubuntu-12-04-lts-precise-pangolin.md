@@ -72,6 +72,10 @@ The source files and binaries will be downloaded in the `/opt/` directory of the
     tar -zxvf nginx*
     cd /opt/nginx*/
 
+{: .note}
+> ensure that the extracted archive is NOT under /opt/nginx/, otherwise 'make install' will report an error when it tries
+> to install into the build directory (i.e. /opt/nginx/ will be created automatically for you)
+
 Now we can compile the nginx server. If you want to enable [third-party modules](http://wiki.nginx.org/Nginx3rdPartyModules), append options to `./configure` at this juncture. Issue the following command to configure the build options:
 
     ./configure --prefix=/opt/nginx --user=nginx --group=nginx --with-http_ssl_module
