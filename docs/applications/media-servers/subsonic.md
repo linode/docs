@@ -5,11 +5,10 @@ author:
 description: Subsonic
 keywords: 'subsonic, music, audio'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['communications/media-servers/shoutcast/']
-modified: Monday, January 26, 2015
+modified: Monday, February 2, 2015
 modified_by:
   name: Elle Krout
-published: 'Monday, January 26, 2015'
+published: 'Monday, February 2, 2015'
 title: Using Subsonic to Stream Music From Your Linode
 ---
 
