@@ -11,19 +11,19 @@ modified_by:
 published: 'Wednesday, January 28, 2015'
 title: 'LAMP Server on Ubuntu 14.04'
 external_resources:
-- '[Ubuntu Server Edition Homepage](http://www.ubuntu.com/products/whatisubuntu/serveredition)'
-- '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)'
-- '[MySQL Documentation](http://dev.mysql.com/doc/)'
-- '[PHP Documentation](http://www.php.net/docs.php)'
+ - '[Ubuntu Server Edition Homepage](http://www.ubuntu.com/products/whatisubuntu/serveredition)'
+ - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)'
+ - '[MySQL Documentation](http://dev.mysql.com/doc/)'
+ - '[PHP Documentation](http://www.php.net/docs.php)'
 ---
 
 This guide provides step-by-step instructions for installing a full-featured LAMP stack on an Ubuntu 14.04 (Trusty Tahr) system. The 14.04 release is the most current LTS (long term support) version of the Ubuntu operating system, and will be supported with security updates until April of 2019.
 
+Before beginning this guide, we suggest you first read through [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server/).
+
  {: .note }
 >
 > Throughout this guide we will offer several suggested values for specific configuration settings. Some of these values will be set by default. These settings are shown in the guide as a reference, in the event that you change these settings to suit your needs and then need to change them back.
-
-Before beginning this guide, we suggest you first read through [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server/).
 
 ##Install and Configure the Apache Web Server
 
@@ -54,13 +54,13 @@ Before beginning this guide, we suggest you first read through [Getting Started]
         </IfModule>
         ~~~
 
-Now we'll configure virtual hosting so that we can host multiple domains (or subdomains) with the server. These websites can be controlled by different users, or by a single user, as you prefer.
+Now you'll configure virtual hosting so that you can host multiple domains (or subdomains) with the server. These websites can be controlled by different users, or by a single user, as you prefer.
 
 ### Configure Name-based Virtual Hosts
 
 There are different ways to set up virtual hosts; however, we recommend the method below. By default, Apache listens on all IP addresses available to it.
 
-1.  Create a file in the `/etc/apache2/sites-available/` directory for each virtual host that you want to set up. Name each file with the domain for which you want to provide virtual hosting, followed by `.conf`. See the following example configurations for the hypothetical "example.com" and "example.org" domains:
+1.  Create a file in the `/etc/apache2/sites-available/` directory for each virtual host that you want to set up. Name each file with the domain that will be hosted, followed by `.conf`. See the following example configurations for the "example.com" and "example.org" domains:
 
     {: .file }
     /etc/apache2/sites-available/example.com.conf
@@ -93,9 +93,11 @@ There are different ways to set up virtual hosts; however, we recommend the meth
         </VirtualHost>
         ~~~
 
-    Note that `ErrorLog` and `CustomLog` entries are suggested for more fine-grained logging, but are not required. If they are defined (as shown above), the `logs` directories must be created before you restart Apache.
+    {: .note}
+    >
+    >The `ErrorLog` and `CustomLog` entries are suggested for more fine-grained logging, but are not required. If they are defined (as shown above), the `logs` directories must be created before you restart Apache.
 
-2.  Before you can use the above configuration you'll need to create the specified directories. For the above configuration, you can do this with the following commands:
+2.  Before you can use the above configuration you'll need to create the specified directories:
 
         mkdir -p /var/www/html/example.com/public_html
         mkdir /var/www/html/example.com/logs
@@ -103,20 +105,18 @@ There are different ways to set up virtual hosts; however, we recommend the meth
         mkdir -p /var/www/html/example.org/public_html
         mkdir /var/www/html/example.org/logs
 
-3.  After you've set up your virtual hosts, issue the following commands:
+3.  Link your virtual host file from the `sites-available` directory to the `sites-enabled` directory:
 
         a2ensite example.com.conf
         a2ensite example.org.conf
-
-    This command symbolically links your virtual host file from `sites-available` to the `sites-enabled` directory. 
     
-4.  Finally, before you can access your sites you must reload Apache with the following command:
+4.  Reload Apache:
 
         service apache2 reload
 
 Assuming that you have configured the DNS for your domain to point to your Linode's IP address, virtual hosting for your domain should now work.
 
-If you wanted to disable the `example.com` site, for example, issue the following command:
+If later you wanted to disable the `example.com` site issue the following command:
 
     a2dissite example.com.conf
 
@@ -128,9 +128,9 @@ The `a2dissite` command is the inverse of `a2ensite`. After enabling, disabling,
 
         apt-get install mysql-server 
 
-    During the installation you will be prompted for a password. Choose something secure (use letters, numbers, and non-alphanumeric characters) and record it for future reference.
+    During the installation you will be prompted for a password. Choose something secure and record it for future reference.
 
-    At this point MySQL should be ready to configure and run. While you shouldn't need to change the configuration file, note that it is located at `/etc/mysql/my.cnf`. The default values should be fine for a **Linode 1GB**, but if you decide to adjust them you should first make a backup copy:
+    At this point, MySQL should be ready to configure and run. While you shouldn't need to change the configuration file, note that it is located at `/etc/mysql/my.cnf`. The default values should be fine for a **Linode 1GB**, but if you decide to adjust them you should first make a backup copy:
 
         cp /etc/mysql/my.cnf ~/my.cnf.backup
 
