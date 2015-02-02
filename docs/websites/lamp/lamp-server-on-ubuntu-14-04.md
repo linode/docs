@@ -19,51 +19,40 @@ external_resources:
 
 This guide provides step-by-step instructions for installing a full-featured LAMP stack on an Ubuntu 14.04 (Trusty Tahr) system. The 14.04 release is the most current LTS (long term support) version of the Ubuntu operating system, and will be supported with security updates until April of 2019.
 
-In this guide, you'll learn how to set up Apache, MySQL, and PHP. If you don't need MySQL or PHP, please don't feel obligated to install them.
-
  {: .note }
 >
 > Throughout this guide we will offer several suggested values for specific configuration settings. Some of these values will be set by default. These settings are shown in the guide as a reference, in the event that you change these settings to suit your needs and then need to change them back.
 
-##Set the Hostname
-
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
-
-    hostname
-    hostname -f
-
-The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
+Before beginning this guide, we suggest you first read through [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server/).
 
 ##Install and Configure the Apache Web Server
 
-The Apache web server is a popular choice for serving web pages. While many alternatives have appeared in the last few years, Apache remains a powerful option that we recommend for most uses.
+1.  Make sure your package repositories and installed programs are up to date by issuing the following commands:
 
-Make sure your package repositories and installed programs are up to date by issuing the following commands:
+        apt-get update
+        apt-get upgrade
 
-    apt-get update
-    apt-get upgrade
+2.  To install the current version of the Apache web server (2.4) on an Ubuntu system, use the following command:
 
-To install the current version of the Apache web server (2.4) on an Ubuntu system use the following command:
+        apt-get install apache2
 
-    apt-get install apache2
+3.  Edit the main Apache configuration file to adjust the KeepAlive setting and add the `<IfModule mpm_preform_module>` section. The settings shown below are a good starting point for a **Linode 1GB**:
 
-Edit the main Apache configuration file to adjust the KeepAlive setting and add the `<IfModule mpm_preform_module>` section. The settings shown below are a good starting point for a **Linode 1GB**:
+    {: .file }
+    /etc/apache2/apache2.conf
+    :   ~~~ apache
+        KeepAlive Off
 
-{: .file }
-/etc/apache2/apache2.conf
-:   ~~~ apache
-    KeepAlive Off
+        ...
 
-    ...
-
-    <IfModule mpm_prefork_module>
-    StartServers 2
-    MinSpareServers 6
-    MaxSpareServers 12
-    MaxClients 80
-    MaxRequestsPerChild 3000
-    </IfModule>
-    ~~~
+        <IfModule mpm_prefork_module>
+        StartServers 2
+        MinSpareServers 6
+        MaxSpareServers 12
+        MaxClients 80
+        MaxRequestsPerChild 3000
+        </IfModule>
+        ~~~
 
 Now we'll configure virtual hosting so that we can host multiple domains (or subdomains) with the server. These websites can be controlled by different users, or by a single user, as you prefer.
 
@@ -71,61 +60,59 @@ Now we'll configure virtual hosting so that we can host multiple domains (or sub
 
 There are different ways to set up virtual hosts; however, we recommend the method below. By default, Apache listens on all IP addresses available to it.
 
-First, create a file in the `/etc/apache2/sites-available/` directory for each virtual host that you want to set up. Name each file with the domain for which you want to provide virtual hosting, followed by `.conf`. See the following example configurations for the hypothetical "example.com" and "example.org" domains:
+1.  Create a file in the `/etc/apache2/sites-available/` directory for each virtual host that you want to set up. Name each file with the domain for which you want to provide virtual hosting, followed by `.conf`. See the following example configurations for the hypothetical "example.com" and "example.org" domains:
 
-{: .file }
-/etc/apache2/sites-available/example.com.conf
-:   ~~~ apache
-    <VirtualHost *:80> 
-         ServerAdmin webmaster@example.com
-         ServerName example.com
-         ServerAlias www.example.com
-         DocumentRoot /var/www/html/example.com/public_html/
-         ErrorLog /var/www/html/example.com/logs/error.log 
-         CustomLog /var/www/html/example.com/logs/access.log combined
-         <Directory /path/to/public/website/>
-            Require all granted
-         </Directory>
-    </VirtualHost>
-    ~~~
+    {: .file }
+    /etc/apache2/sites-available/example.com.conf
+    :   ~~~ apache
+        <VirtualHost *:80> 
+             ServerAdmin webmaster@example.com
+             ServerName example.com
+             ServerAlias www.example.com
+             DocumentRoot /var/www/html/example.com/public_html/
+             ErrorLog /var/www/html/example.com/logs/error.log 
+             CustomLog /var/www/html/example.com/logs/access.log combined
+             <Directory /path/to/public/website/>
+                Require all granted
+             </Directory>
+        </VirtualHost>
+        ~~~
 
-{: .file }
-/etc/apache2/sites-available/example.org.conf
-:   ~~~ apache
-    <VirtualHost *:80> 
-         ServerAdmin webmaster@example.org     
-         ServerName example.org
-         ServerAlias www.example.org
-         DocumentRoot /var/www/html/example.org/public_html/
-         ErrorLog /var/www/html/example.org/logs/error.log 
-         CustomLog /var/www/html/example.org/logs/access.log combined
-         <Directory /path/to/public/website/>
-            Require all granted
-         </Directory>
-    </VirtualHost>
-    ~~~
+    /etc/apache2/sites-available/example.org.conf
+    :   ~~~ apache
+        <VirtualHost *:80> 
+             ServerAdmin webmaster@example.org     
+             ServerName example.org
+             ServerAlias www.example.org
+             DocumentRoot /var/www/html/example.org/public_html/
+             ErrorLog /var/www/html/example.org/logs/error.log 
+             CustomLog /var/www/html/example.org/logs/access.log combined
+             <Directory /path/to/public/website/>
+                Require all granted
+             </Directory>
+        </VirtualHost>
+        ~~~
 
-Notes regarding this example configuration:
+    Note that `ErrorLog` and `CustomLog` entries are suggested for more fine-grained logging, but are not required. If they are defined (as shown above), the `logs` directories must be created before you restart Apache.
 
--   All of the files for the sites that you host will be located in directories that exist underneath `/var/www/html`. You can symbolically link these directories into other locations if you need them to exist in other places.
--   `ErrorLog` and `CustomLog` entries are suggested for more fine-grained logging, but are not required. If they are defined (as shown above), the `logs` directories must be created before you restart Apache.
+2.  Before you can use the above configuration you'll need to create the specified directories. For the above configuration, you can do this with the following commands:
 
-Before you can use the above configuration you'll need to create the specified directories. For the above configuration, you can do this with the following commands:
+        mkdir -p /var/www/html/example.com/public_html
+        mkdir /var/www/html/example.com/logs
 
-    mkdir -p /var/www/html/example.com/public_html
-    mkdir /var/www/html/example.com/logs
+        mkdir -p /var/www/html/example.org/public_html
+        mkdir /var/www/html/example.org/logs
 
-    mkdir -p /var/www/html/example.org/public_html
-    mkdir /var/www/html/example.org/logs
+3.  After you've set up your virtual hosts, issue the following commands:
 
-After you've set up your virtual hosts, issue the following commands:
+        a2ensite example.com.conf
+        a2ensite example.org.conf
 
-    a2ensite example.com.conf
-    a2ensite example.org.conf
+    This command symbolically links your virtual host file from `sites-available` to the `sites-enabled` directory. 
+    
+4.  Finally, before you can access your sites you must reload Apache with the following command:
 
-This command symbolically links your virtual host file from `sites-available` to the `sites-enabled` directory. Finally, before you can access your sites you must reload Apache with the following command:
-
-    service apache2 reload
+        service apache2 reload
 
 Assuming that you have configured the DNS for your domain to point to your Linode's IP address, virtual hosting for your domain should now work.
 
@@ -137,88 +124,78 @@ The `a2dissite` command is the inverse of `a2ensite`. After enabling, disabling,
 
 ##Install and Configure the MySQL Database Server
 
-MySQL is a relational database management system (RDBMS) and is a popular component in contemporary web development. It is used to store data for many popular applications, including WordPress and Drupal.
+1.  Install the mysql-server package:
 
-### Install MySQL
+        apt-get install mysql-server 
 
-The first step is to install the mysql-server package, which is accomplished by the following command:
+    During the installation you will be prompted for a password. Choose something secure (use letters, numbers, and non-alphanumeric characters) and record it for future reference.
 
-    apt-get install mysql-server 
+    At this point MySQL should be ready to configure and run. While you shouldn't need to change the configuration file, note that it is located at `/etc/mysql/my.cnf`. The default values should be fine for a **Linode 1GB**, but if you decide to adjust them you should first make a backup copy:
 
-During the installation you will be prompted for a password. Choose something secure (use letters, numbers, and non-alphanumeric characters) and record it for future reference.
+        cp /etc/mysql/my.cnf ~/my.cnf.backup
 
-At this point MySQL should be ready to configure and run. While you shouldn't need to change the configuration file, note that it is located at `/etc/mysql/my.cnf`. The default values should be fine for a **Linode 1GB**, but if you decide to adjust them you should first make a backup copy:
+2.  After installing MySQL, it's recommended that you run `mysql_secure_installation`, a program that helps secure MySQL. While running `mysql_secure_installation`, you will be presented with the opportunity to change the MySQL root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases. It is recommended that you answer `yes` to these options. If you are prompted to reload the privilege tables, select `yes`. Run the following command to execute the program:
 
-    cp /etc/mysql/my.cnf ~/my.cnf.backup
+        mysql_secure_installation
 
-### Configure MySQL and Set Up Databases
+3.  Create a database and grant your users permissions to use databases. First, log in to MySQL:
 
-After installing MySQL, it's recommended that you run `mysql_secure_installation`, a program that helps secure MySQL. While running `mysql_secure_installation`, you will be presented with the opportunity to change the MySQL root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases. It is recommended that you answer `yes` to these options. If you are prompted to reload the privilege tables, select `yes`. Run the following command to execute the program:
+        mysql -u root -p 
 
-    mysql_secure_installation
+    Enter MySQL's root password, and you'll be presented with a MySQL prompt where you can issue SQL statements to interact with the database.
 
-Next, we'll create a database and grant your users permissions to use databases. First, log in to MySQL:
+4.  Create a database and a user with permissions for it:
 
-    mysql -u root -p 
+        create database webdata; 
+        grant all on webdata.* to 'foreman' identified by '5t1ck'; 
 
-Enter MySQL's root password, and you'll be presented with a MySQL prompt where you can issue SQL statements to interact with the database.
+    In the example above, `webdata` is the name of the database, `foreman` is the username, and `5t1ck` the password. Note that database user names and passwords are only used by scripts connecting to the database, and that database user account names need not (and perhaps should not) represent actual user accounts on the system.
 
-To create a database and grant your users permissions on it, issue the following command. Note, the semi-colons (`;`) at the end of the lines are crucial for ending the commands. Your command should look like this:
+5.  With that completed you've successfully configured MySQL and you may now pass these database credentials on to your users. Exit MySQL:
 
-    create database lollipop; 
-    grant all on lollipop.* to 'foreman' identified by '5t1ck'; 
-
-In the example above, `lollipop` is the name of the database, `foreman` is the username, and `5t1ck` the password. Note that database user names and passwords are only used by scripts connecting to the database, and that database user account names need not (and perhaps should not) represent actual user accounts on the system.
-
-With that completed you've successfully configured MySQL and you may now pass these database credentials on to your users. To exit the MySQL database administration utility issue the following command:
-
-    quit 
-
-With Apache and MySQL installed you are now ready to move on to installing PHP to provide scripting support for your web pages.
+        quit 
 
 ##Install and Configure PHP
 
-PHP makes it possible to produce dynamic and interactive pages using your own scripts and popular web development frameworks. Furthermore, many popular web applications like WordPress are written in PHP. If you want to be able to develop your websites using PHP, you must first install it.
+1.  Install PHP:
 
-Ubuntu includes packages for installing PHP from the terminal. Issue the following command:
+        apt-get install php5 php-pear 
 
-    apt-get install php5 php-pear 
+2.  Once PHP5 is installed you'll need to tune the configuration file located in `/etc/php5/apache2/php.ini` to enable more descriptive errors, logging, and better performance. These modifications provide a good starting point if you're unfamiliar with PHP configuration.
 
-Once PHP5 is installed you'll need to tune the configuration file located in `/etc/php5/apache2/php.ini` to enable more descriptive errors, logging, and better performance. These modifications provide a good starting point if you're unfamiliar with PHP configuration.
+    Make sure that the following values are set, and relevant lines are uncommented (comments are lines beginning with a semi-colon [`;`]):
 
-Make sure that the following values are set, and relevant lines are uncommented (comments are lines beginning with a semi-colon [`;`]):
+    {: .file-excerpt }
+    /etc/php5/apache2/php.ini
+    :   ~~~ ini
+        max_execution_time = 30
+        memory_limit = 128M
+        error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
+        display_errors = Off
+        log_errors = On
+        error_log = /var/log/php/error.log
+        register_globals = Off
+        max_input_time = 30
+        ~~~
 
-{: .file-excerpt }
-/etc/php5/apache2/php.ini
-:   ~~~ ini
-    max_execution_time = 30
-    memory_limit = 128M
-    error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
-    display_errors = Off
-    log_errors = On
-    error_log = /var/log/php/error.log
-    register_globals = Off
-    max_input_time = 30
-    ~~~
+3.  Create the log directory for PHP and give the Apache user ownership:
 
-You will need to create the log directory for PHP and give the Apache user ownership:
+        mkdir /var/log/php
+        chown www-data /var/log/php
 
-    mkdir /var/log/php
-    chown www-data /var/log/php
+4.  After making changes to the PHP configuration file, restart Apache:
 
-After making changes to the PHP configuration file, restart Apache by issuing the following command:
+        service apache2 reload
 
-    service apache2 reload
+5.  If you need support for MySQL in PHP, then you must install the php5-mysql package:
 
-If you need support for MySQL in PHP, then you must install the php5-mysql package with the following command:
+        apt-get install php5-mysql
 
-    apt-get install php5-mysql
+6.  Restart Apache to make sure everything is loaded correctly:
 
-Restart Apache to make sure everything is loaded correctly:
+        service apache2 reload
 
-    service apache2 reload
-
-Congratulations! You have now set up and configured a LAMP system.
+Congratulations! You have now set up and configured a LAMP stack.
 
 
 
