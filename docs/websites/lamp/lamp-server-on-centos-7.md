@@ -14,7 +14,10 @@ title: LAMP Server on CentOS 7
 
 This guide provides step-by-step instructions for installing a full-featured LAMP stack on a CentOS 7 system.
 
-In this guide, you will be instructed on setting up Apache, MariaDB, and PHP. Please note: the CentOS 7 Project has elected to replace the `init` service management daemon with the newer, `systemd` daemon for this latest release. In addition, this release of CentOS ships with MariaDB repositories instead of MySQL. If you would prefer to use the more traditional MySQL instead, there are instructions provided below to use those repositories as well.
+In this guide, you will be instructed on setting up Apache, MariaDB, and PHP.
+
+{: .note}
+>The CentOS 7 Project has elected to replace the `init` service management daemon with the newer, `systemd` daemon for this latest release. In addition, this release of CentOS ships with MariaDB repositories instead of MySQL. If you would prefer to use the more traditional MySQL instead, there are instructions provided below to use those repositories as well.
 
  {: .note }
 >
@@ -22,9 +25,7 @@ In this guide, you will be instructed on setting up Apache, MariaDB, and PHP. Pl
 
 ## Prerequisites
 
-Your Linode should already be set up according to the instructions in our [Getting Started](/docs/getting-started) guide.
-
-As a friendly reminder, since you will be exposing your server (and content) to the rest of the world, it is an excellent choice to implement some security precautions. For assistance with this, please see our documentation: [Securing Your Server](https://linode.com/docs/security/securing-your-server)
+Your Linode should already be set up according to the instructions in our [Getting Started](/docs/getting-started) guide, and it is suggested that security precautions be implemented. For assistance with this, please see our documentation: [Securing Your Server](https://linode.com/docs/security/securing-your-server)
 
 {: .note}
 >This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
@@ -51,12 +52,12 @@ The Apache Web Server is a very popular choice for serving web pages. While many
 
         sudo yum install httpd
 
-3. The configuration for Apache is contained in the `httpd.conf` file, which is located at: `/etc/httpd/conf/httpd.conf`. We advise you to make a backup of this file into your home directory, like so:
+3. The configuration for Apache is contained in the `httpd.conf` file, which is located at: `/etc/httpd/conf/httpd.conf`. We advise you to make a backup of this file into your home directory:
 
         cp /etc/httpd/conf/httpd.conf ~/httpd.conf.backup
 
     {: .note}
-    > By default all files ending in the `.conf` extension in `/etc/httpd` and `/etc/httpd/conf.d/` are treated as Apache configuration files, and we recommend placing your non-standard configuration options in files in these directories. Regardless how you choose to organize your configuration files, making regular backups of known working states is highly recommended.
+    > By default, all files ending in the `.conf` extension in `/etc/httpd` and `/etc/httpd/conf.d/` are treated as Apache configuration files, and we recommend placing your non-standard configuration options in files in these directories. Regardless how you choose to organize your configuration files, making regular backups of known working states is highly recommended.
 
 4. Edit the main Apache configuration file to adjust the resource use settings. The settings shown below are a good starting point for a **Linode 1GB**.
 
@@ -78,9 +79,9 @@ The Apache Web Server is a very popular choice for serving web pages. While many
 
 ### Configure Name-based Virtual Hosts
 
-There are different ways to set up virtual hosts, however we recommend the method below. This configuration instructs Apache to listen on all IP addresses available to it.
+There are different ways to set up virtual hosts; however, we recommend the method below. This configuration instructs Apache to listen on all IP addresses available to it.
 
-1.  Create virtual host entries for each site that we need to host with this server. Here are two examples for sites at "example.com" and "example.org".
+1.  Create virtual host entries for each site that we need to host with this server. For this example we are using "example.com" and "example.org".
 
       {: .file-excerpt }
       /etc/httpd/conf.d/vhost.conf
@@ -108,7 +109,7 @@ There are different ways to set up virtual hosts, however we recommend the metho
 
     Notes regarding this example configuration:
 
-    -   All of the files for the sites that you host will be located in directories that exist underneath `/srv/www` You can symbolically link these directories into other locations if you need them to exist in other places.
+    -   All of the files for the sites that you host will be located in directories that exist underneath `/srv/www`. You can symbolically link these directories into other locations if you need them to exist elsewhere.
     -   `ErrorLog` and `CustomLog` entries are suggested for more fine-grained logging, but are not required. If they are defined (as shown above), the `logs` directories must be created before you restart Apache.
 
 2. Before you can use the above configuration you’ll need to create the specified directories. For the above configuration, you can do this by issuing the following commands:
@@ -119,21 +120,21 @@ There are different ways to set up virtual hosts, however we recommend the metho
         sudo mkdir -p /srv/www/example.org/public_html
         sudo mkdir /srv/www/example.org/logs
 
-3. After you’ve set up your virtual hosts, you can issue the following commands to enable Apache to start on boot and run it, for the first time:
+3. After you’ve set up your virtual hosts, you can issue the following commands to enable Apache to start on boot and run for the first time:
 
         sudo /bin/systemctl enable httpd.service
         sudo /bin/systemctl start httpd.service
 
 Assuming that you have configured the DNS for your domain to point to your Linode's IP address, virtual hosting for your domain should now work. Remember that you can create as many virtual hosts as you require.
 
-Anytime you change an option in your `vhost.conf` file, or any other Apache configuration file, remember to reload the configuration with the following command:
+Any time you change an option in your `vhost.conf` file, or any other Apache configuration file, remember to reload the configuration with the following command:
 
     sudo /bin/systemctl reload httpd.service
 
 Install and Configure MariaDB Database Server
 -------------------------------------------
 
-MariaDB is a relational database management system (RDBMS) and ships by default in CentOS 7. MariaDB is a popular component in contemporary web development tool-chains. It is used to store data for many popular applications, including Wordpress and Drupal.
+MariaDB is a relational database management system (RDBMS) and ships by default in CentOS 7. MariaDB is a popular component in contemporary web development tool-chains, and is used to store data for many popular applications, including Wordpress and Drupal.
 
  {: .note }
 >
@@ -143,7 +144,7 @@ MariaDB is a relational database management system (RDBMS) and ships by default 
 
 ### Install MariaDB
 
-1. The first step is to install the MariaDB-server package, which is accomplished by the following command:
+1. Install the MariaDB-server package:
 
         sudo yum install mariadb-server
 
@@ -155,7 +156,7 @@ MariaDB is a relational database management system (RDBMS) and ships by default 
 
         sudo /bin/systemctl start mariadb.service
 
-4. At this point MariaDB should be ready to configure and run. While you shouldn't need to change the configuration file, note that it is located at `/etc/my.cnf` for future reference. The default values should be fine for a **Linode 1GB**, but if you decide to adjust them you should first make a backup copy:
+4. At this point, MariaDB should be ready to configure and run. While you shouldn't need to change the configuration file, note that it is located at `/etc/my.cnf` for future reference. The default values should be fine for a **Linode 1GB**, but if you decide to adjust them you should first make a backup copy:
 
         cp /etc/my.cnf ~/my.cnf.backup
 
@@ -173,12 +174,12 @@ Enter MariaDB’s root password, and you’ll be presented with a prompt where y
 
 In the example below, `example_database_name` is the name of the database, `example_user` is used as the username, and `example_password` is used as the password for the root account on this newly established database. You should replace all three of these parameters to reflect your unique circumstances. It is recommended to create both a root and one additional user account within your database.
 
-3. To create a new database and grant your users permissions on it, issue the following commands. Note, the semi-colons (`;`) at the end of the lines are crucial for ending the commands. Your commands should look similar to the following:
+3. To create a new database and grant your users permissions on it, issue the following commands. Note that the semi-colons (`;`) at the end of the lines are crucial for ending the commands:
 
         create database example_database_name;
         grant all on example_database_name.* to 'example_user'@'localhost' identified by 'example_password';
 
-4. Note that database user names and passwords are only used by scripts connecting to the database, and that database user account names need not (and perhaps should not) represent actual user accounts on the system. If you need to create additional users in the database you just created, simply run the command below, substituting the new user name and password where appropriate:
+4. Database user names and passwords are only used by scripts connecting to the database, and that database user account names need not (and perhaps should not) represent actual user accounts on the system. If you need to create additional users in the database you just created, simply run the command below, substituting the new user name and password where appropriate:
 
         grant all on example_database_name.* to 'example_user2'@'localhost' identified by 'example_password2';
 
@@ -191,14 +192,14 @@ With Apache and MariaDB installed you are now ready to move on to installing PHP
 Installing and Configuring PHP
 ------------------------------
 
-PHP makes it possible to produce dynamic and interactive pages using your own scripts and popular web development frameworks. Furthermore, many popular web applications like WordPress are written in PHP. If you want to be able to develop your websites using PHP, you must first install it.
+PHP makes it possible to produce dynamic and interactive pages using your own scripts and web development frameworks. Furthermore, many popular web applications like WordPress are written in PHP. If you want to be able to develop your websites using PHP, you must first install it.
 
 1. CentOS includes packages for installing PHP from the terminal. Issue the following command:
 
         sudo yum install php php-pear
 
 
-2. Once PHP5 is installed we'll need to tune the configuration file located in `/etc/php.ini` to enable more descriptive errors, logging, and better performance. These modifications provide a good starting point if you're unfamiliar with PHP configuration. Make sure that the following values are set, and relevant lines are uncommented (comments are lines beginning with a semi-colon (`;`)):
+2. Once PHP5 is installed we'll need to tune the configuration file located in `/etc/php.ini` to enable more descriptive errors, logging, and better performance. These modifications provide a good starting point if you're unfamiliar with PHP configuration. Make sure that the following values are set, and relevant lines are uncommented (comments are lines beginning with a semi-colon [`;`]):
 
     {: .file-excerpt }
     /etc/php.ini
@@ -213,12 +214,12 @@ PHP makes it possible to produce dynamic and interactive pages using your own sc
         max_input_time = 30
         ~~~
 
-3. You will need to create the log directory for PHP and give the Apache user ownership:
+3. Create the log directory for PHP and give the Apache user ownership:
 
         sudo mkdir /var/log/php
         sudo chown apache /var/log/php
 
-4. If you need support for MariaDB or MySQL in PHP, then you must install the php5-mysql package with the following command:
+4. If you need support for MariaDB or MySQL in PHP, then install the php5-mysql package with the following command:
 
         sudo yum install php-mysql
 
@@ -226,7 +227,7 @@ PHP makes it possible to produce dynamic and interactive pages using your own sc
 
         sudo /bin/systemctl reload httpd
 
-You should now have a fully functioning LAMP stack on your Linode! From here, you can serve up tons of delicious content to your eager followers on the internet. If you are interested in setting up a wordpress site on your new LAMP stack, please consider reviewing this tutorial: [Manage Web Content with WordPress](https://www.linode.com/docs/websites/cms/manage-web-content-with-wordpress).
+You should now have a fully functioning LAMP stack on your Linode! From here, you can serve up tons of content to your followers on the internet. If you are interested in setting up a WordPress site on your new LAMP stack, please consider reviewing this tutorial: [Manage Web Content with WordPress](https://www.linode.com/docs/websites/cms/manage-web-content-with-wordpress).
 
 More Information
 ----------------
