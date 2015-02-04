@@ -56,12 +56,12 @@ The Apache web server is a popular choice for serving web pages. While many alte
 
         sudo apt install apache2
 
-3. Edit the main Apache configuration file to adjust the resource use settings. The settings shown below are a good starting point for a **Linode 1GB**.
+3. Edit the main Apache configuration file to adjust the resource use settings.
 
 {: .file }
 /etc/apache2/apache2.conf
 :   ~~~ apache
-    KeepAlive Off
+    KeepAlive On
     
     ~~~
 
