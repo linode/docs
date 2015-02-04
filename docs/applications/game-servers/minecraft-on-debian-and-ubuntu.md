@@ -6,8 +6,8 @@ description: 'A basic Minecraft server installation guide for Debian and Ubuntu'
 keywords: 'minecraft,ubuntu,debian'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 external_resources:
-- '[Minecraft.net](https://minecraft.net/)'
-- '[The Official Minecraft Wiki](http://minecraft.gamepedia.com/Minecraft_Wiki)'
+ - '[Minecraft.net](https://minecraft.net/)'
+ - '[The Official Minecraft Wiki](http://minecraft.gamepedia.com/Minecraft_Wiki)'
 modified: Wednesday, January 28, 2015
 modified_by:
   name: Alex Fornuto
