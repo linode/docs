@@ -1,4 +1,4 @@
-Intall PHP5, PHP-FPM and Configuring them for use with Apache
+Intall PHP5, mod_fcgid, PHP-FPM and Configuring them for use with Apache
 -------------------------------
 PHP makes it possible to produce dynamic and interactive pages using your own scripts and popular web development frameworks. By default, Apache makes requests with mod_php, a non-threaded Apache module, which requires Prefork-MPM. As a result the server forks a child process for each client request in anticipation of new requests so that the process doesn't cause response time latency. With Prefork-MPM, a file is read in an identical and independent manner on each request, without taking any previous requests into account. As a result, when a visitor's actions on a website involve a request on the system, the PHP interpreter must be activated, put in memory, list the required elements, find them and then check that the code is valid. Finally, when all of this is complete, the request gets executed.
 
