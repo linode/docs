@@ -1,8 +1,8 @@
 Intall PHP5, mod_fcgid, PHP-FPM and Configuring them for use with Apache
 -------------------------------
-PHP makes it possible to produce dynamic and interactive pages using your own scripts and popular web development frameworks. By default, Apache makes requests with mod_php, a non-threaded Apache module, which requires Prefork-MPM. As a result the server forks a child process for each client request in anticipation of new requests so that the process doesn't cause response time latency. With Prefork-MPM, a file is read in an identical and independent manner on each request, without taking any previous requests into account. As a result, when a visitor's actions on a website involve a request on the system, the PHP interpreter must be activated, put in memory, list the required elements, find them and then check that the code is valid. Finally, when all of this is complete, the request gets executed.
+PHP makes it possible to produce dynamic and interactive pages using your own scripts and popular web development frameworks. By default, Apache makes requests with mod_php, a non-threaded Apache module, which requires Prefork-MPM. With this configuration, the server forks a child process for each client request in anticipation of new requests so that each subsequent process doesn't cause latency. With Prefork-MPM, a file is read in an identical and independent manner on each request, without taking any previous requests into account. As a result, when a visitor's actions on a website involve a request on the system, the PHP interpreter must be activated, put in memory, list the required elements, find them and then check that the code is valid. Finally, when all of this is complete, the request gets executed. This can cause extraneous memory consumption and slow page load times.
 
-By contrast, using mod_fcgid with PHP-FPM, the elements and instructions that are called on when a request is made get cached as child processes, to be reused directly if the same request is made again. FastCGI was introduced as a middle ground between the PHP Apache Module and the CGI application. It allows scripts to be executed by an interpreter outside of the web server and includes the security benefits of CGI but doesn’t include any of the inefficiencies of CGI. When executing PHP scripts with FastCGI each request is passed from the web server to FastCGI via a communication socket. This allows for much greater scalability as the web server and the PHP interpreter can be split into their own individual server environments if necessary, this is what is known as pooling. Their interpretation is thus much faster, as is the page loading that follows. 
+By contrast, using mod_fcgid with PHP-FPM, the elements and instructions that are called on when a request is made get cached as child processes, to be reused directly if an identical request is made again. FastCGI is implemented as a middle ground between the PHP Apache Module and the CGI application. It allows scripts to be executed by an interpreter outside of the web server and includes the security benefits of CGI but doesn’t include any of the inefficiencies of CGI. When executing PHP scripts with FastCGI each request is passed from the web server to FastCGI via a communication socket. This allows for much greater scalability as the web server and the PHP interpreter can be split into their own individual server environments if necessary, this is what is known as pooling. Their interpretation is thus much faster, as is the page loading that follows. 
 
 Installing mod_fastcgi and PHP-FPM
 --------------------------------
@@ -103,6 +103,11 @@ If you did not get the _Syntax OK_ result, check your configuration for errors.
  >
  >If you get a permissions error, you may need to log in as the root user or change owner with `chown`.
 
+### PHP support for MySQL data base
+
+If you plan on using this guide in conjunction witha LAMP stack on Ubuntu 14.04, you will need to install the following package for use with mod_fcgid and PHP-FPM:
+
+      php5-mysql
 
 Configuring PHP Pools (Optional)
 --------------------------------
