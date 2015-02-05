@@ -15,7 +15,10 @@ published: ''
 title: 'Installing Multicraft on Ubuntu'
 ---
 
-[Multicraft](http://www.multicraft.org/) is a control panel for single or multiple Minecraft servers. There are both free and paid versions available. This guide will help you install Multicraft on a Linode running Ubuntu 14.04
+[Multicraft](http://www.multicraft.org/) is a control panel for single or multiple Minecraft servers, with free and paid versions available. This guide will help you install Multicraft on a Linode running Ubuntu 14.04.
+
+{: .note }
+>The steps required in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
 ##Prerequisites
 
@@ -25,7 +28,7 @@ Multicraft for Linux depends on several software packages in order to run.
 
         apt-get update; apt-get upgrade -y
 
-2.  Install Apache2, SQLite, Java, PHP, and their related packages:
+2.  Install Apache2, SQLite, Java, PHP, and related packages:
 
         apt-get install -y apache2 sqlite php5 php5-sqlite php5-gd openjdk-7-jre-headless
 
@@ -42,7 +45,7 @@ Multicraft for Linux depends on several software packages in order to run.
         ~~~
 
         {: .note}
-        >If you want a dedicated Apache virtual host for Multicraft, follow the instructions [here](/docs/websites/hosting-a-website#configuring-name-based-virtual-hosts).
+        >If you want a dedicated Apache virtual host for Multicraft, follow the instructions [here](/docs/websites/hosting-a-website#configuring-name-based-virtual-hosts). Be sure to configure the `AllowOverride` option on your custom virtual host.
 
 4.  Reload the Apache configuration:
 
@@ -72,7 +75,7 @@ Multicraft for Linux depends on several software packages in order to run.
 
           Location of the PHP frontend: [/var/www/multicraft] /var/www/html/multicraft
 
-    * Because of the insecure nature of FTP, we strongly recommend that you **not** enable the builtin FTP server when prompted.
+    * Because of the insecure nature of FTP, we strongly recommend that you **not** enable the builtin FTP server when prompted:
 
           Enable builtin FTP server? [y]/n n
 
@@ -84,19 +87,17 @@ Multicraft for Linux depends on several software packages in order to run.
 
     [![Multicraft Installer.](/docs/assets/multicraft-init_small.png)](/docs/assets/multicraft-init.png)
 
-2.  The next page is the Requirements Check page. If you completed the steps above without issue, your page should reflect the results show below:
+2.  Multicraft will check your requirements. If you completed the steps above without issue, your page should reflect the results show below:
 
     [![Multicraft Requirements Check.](/docs/assets/multicraft-reqs_small.png)](/docs/assets/multicraft-reqs.png)
 
     Click `Continue`.
 
-3.  Multicraft will attempt to copy the default `config.php` file into place. If successful, it should reflect the image below.
+3.  Multicraft will attempt to copy the default `config.php` file into place. If successful, click `Continue`:
 
     [![Multicraft Configuation FIle Transfer.](/docs/assets/multicraft-config_small.png)](/docs/assets/multicraft-config.png)
 
-    Click `Continue`.
-
-4.  On the next page, click on `Initialize Database`. Afterwards, the page should reflect the image below:
+4.  On the next page, click on `Initialize Database`. Afterwards, click `Continue`:
 
     [![Multicraft Database Creation.](/docs/assets/multicraft-db_small.png)](/docs/assets/multicraft-db.png)
 
@@ -104,7 +105,7 @@ Multicraft for Linux depends on several software packages in order to run.
 
     [![Multicraft Panel Database Connection.](/docs/assets/multicraft-panel_small.png)](/docs/assets/multicraft-panel.png)
 
-6.  After logging in you will be directed back to the previous page, where you can now click on `Continue`. On the next page you can configure the basic configuration setting to your choosing. When done, click `Save`.
+6.  After logging in you will be directed back to the previous page, where you can now click on `Continue`. The next page will allow you to configure your basic settings. When done, click `Save`.
 
 7.  On the daemon configuration page, you will find a start command to initiate the Multicraft Daemon. Copy the command into your terminal:
 
@@ -113,11 +114,11 @@ Multicraft for Linux depends on several software packages in order to run.
         Loading configuration from /home/minecraft/multicraft/multicraft.conf
         Starting daemon
 
-8.  Back in your browser, click on `Refresh`. You should see the daemon in a green box, and can now click on `Continue`:
+8.  Back in your browser, click on `Refresh`. You should see the daemon in a green box. Click `Continue`:
 
     [![Multicraft Daemon Configuration.](/docs/assets/multicraft-daemon_small.png)](/docs/assets/multicraft-daemon.png)
 
-9.  Your configuration of the Multicraft control panel is now complete. Per the instructions on the page, delete the `install.php` file from your terminal:
+9.  Your configuration of the Multicraft control panel is now complete. As per the instructions on the page, delete the `install.php` file from your terminal:
 
         rm /var/www/html/multicraft/install.php
 
@@ -127,11 +128,11 @@ Multicraft for Linux depends on several software packages in order to run.
 
         cd /home/minecraft/multicraft/jar/
 
-2.  Download the latest version of the Minecraft server from the Minecraft [Download](https://minecraft.net/download) page. The current latest version as of publication is 1.8.1.
+2.  Download the latest version of the Minecraft server (1.8.1 at the time of this publication) from the Minecraft [Download](https://minecraft.net/download) page:
 
         wget https://s3.amazonaws.com/Minecraft.Download/versions/1.8.1/minecraft_server.1.8.1.jar
 
-3.  Back in the Multicraft web interface, Click on `Servers`, then `Create Server`. The options you choose are up to you, but be sure to fill in `minecraft_server.1.8.1.jar` or the version of Minecraft you've downloaded in the `JAR File` field:
+3.  Back in the Multicraft web interface, click on `Servers`, then `Create Server`. Fill in the options as you see fit, but be sure to add `minecraft_server.1.8.1.jar` (or your downloaded version) in the `JAR File` field:
 
     [![Multicraft Server Settings.](/docs/assets/multicraft-server-settings_small.png)](/docs/assets/multicraft-server-settings.png)
 
