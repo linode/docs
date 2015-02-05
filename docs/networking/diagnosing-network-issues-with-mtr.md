@@ -2,7 +2,7 @@
 author:
   name: Brett Kaplan
   email: bkaplan@linode.com
-description: 'How to create and interpret MTR reports on your Linux VPS or home computer.'
+description: 'How to create and interpret MTR reports on your Linode or home computer.'
 keywords: 'mtr,traceroute,latency,loss'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['linux-tools/mtr/']
