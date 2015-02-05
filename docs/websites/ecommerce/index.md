@@ -2,7 +2,6 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Installation, configuration and usage guides for e-Commerce solutions.'
 keywords: 'e-commerce,online store,store,shopping cart,magento,oscommerce'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-applications/e-commerce/']

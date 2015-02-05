@@ -2,7 +2,6 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Serving web content with Apache on your Linode.'
 keywords: 'Apache web server,Apache on Linode,VPS web server'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-servers/apache/']
