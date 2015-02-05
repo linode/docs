@@ -6,20 +6,28 @@ description: 'Using Git and Github start to finish.'
 keywords: 'git,dvcs,vcs,scm,gitweb,debian'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: Wednesday, February 4th, 2015
+external_resources:
+ - '[Working with the Git Repository](http://docsmith:4567/docs/applications/development/git-source-control-management#working-with-the-repository)'
+ - '[GitHub Help Pages](https://help.github.com/)'
 modified_by:
   name: Joseph Dooley
 published: 'Wednesday, February 4th, 2015'
 title: Developing with Git and Github
 ---
 
-Git is a version control system, or VCS, a VCS tracks file revisions. Github is a website that allows collaboration between developers who use Git. With Git and Github, programmers from across the world can share ideas and code in an organized and up-to-date process.
+Git is a version control system, or VCS. Github is a website that allows collaboration between developers who use Git. With Git and Github, programmers from across the world can share ideas and code in an organized and up-to-date process.
+
+ {: .note }
+>
+> This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](https://library.linode.com/using-linux/users-and-groups) guide.
 
 ##Install and Configure Git
-The directions below are for a Debian or Ubuntu Linode. For installation on Mac, Windows, or other Linux distributions, find instructions in the  [Git Source Control Management](/docs/applications/development/git-source-control-management#installing-git) guide. While that guide focuses on Git, this guide focuses more on Git with Github.
+The directions below are for a Linode running Debian or Ubuntu. For installation on Mac, Windows, or other Linux distributions, find instructions in the  [Git Source Control Management](/docs/applications/development/git-source-control-management#installing-git) guide. While that guide focuses on Git, this guide focuses more on Git with Github.
 
 1.  Install:
 
-        apt-get install git -y
+        sudo apt-get update
+        sudo apt-get install git -y
 
 2.  Configure the username, replace `First Last`:
 
@@ -57,15 +65,17 @@ A repository, or repo, is a Git project. For tutorial purposes, there is a test 
 ##Create a Github Account and Fork the Test Repo
 To share new files or file revisions, you'll need a Github account and a project fork. A fork is a copy of a repo held on your Github account. 
 
-1.  Create a username on [Github](https://www.github.com). At the "Welcome to Github" page, select the green, "Finish sign up" button at the bottom. 
+1.  Create a username on [Github](https://www.github.com). 
 
-2.  Select your username at the top right of the page, pictured below, to bring you to the dashboard. It's important to recognize the dashboard.
+2.  Select your username at the top right of the page, pictured below, to bring you to your profile.
 
     [![Github username icon.](/docs/assets/github-sampleuser.png)](/docs/assets/github-sampleuser.png)
 
 3.  To fork `test-repo-789`, use the search bar at the top left of the page. Search for `test-repo-789`. 
 
 4. After you select `AccForTesting1/test-repo-789`, fork the repo using the **"Fork"** button on the top right of the page. The **"Fork"** button is under the username icon pictured in step 2 above.
+
+    [![GitHub Fork Button.](/docs/assets/github-fork.png)](/docs/assets/github-fork.png)
 
 You now have a copy of the repo on your Github account. Next, return to the terminal of the development Linode. 
 
@@ -87,8 +97,16 @@ Create files on the development Linode and push them to the forked repository on
 4.  Check the status of the Git project:
 
         git status
+        # On branch newbranch
+        # Untracked files:
+        #   (use "git add <file>..." to include in what will be committed)
+        #
+        #       project/
+        #       repoTest1.js
+        #       repoTest2.htm
+        nothing added to commit but untracked files present (use "git add" to track)
 
-5.  Add all the files in `~/test-repo-789` to Git tracking, or staging:
+5.  Add all the files in `~/test-repo-789` to the Git staging area:
 
         git add . 
 
@@ -98,20 +116,23 @@ Create files on the development Linode and push them to the forked repository on
 
 6. Check the status again with `git status`, then commit the files to the Git project:
 
-        git commit -m"Test files for test-repo-789 fork"
+        git commit -m "Test files for test-repo-789 fork"
 
 7.  Push the new files to the forked repo on your new Github account. Replace `SampleUser1234` below with your own Github username, and replace the repo name with the appropriate repo name if different:
 
-        git push https://github.com/SampleUser1234/test-repo-789.git newbranch 
+        git push https://github.com/SampleUser1234/test-repo-789.git newbranch
+
+    {: .note }
+    > If you've configure two-factor authorization (2FA) on this account, you will need to push over SSH. See GitHub's guide on [Generating SSH Keys](https://help.github.com/articles/generating-ssh-keys/).
 
 ##Create a Pull Request Against the Original, Previously Cloned Repo
-So far, Git was installed on a development Linode, a repo project was cloned to that Linode, a Github username was created, and a repo fork was copied to the Github user account. The final step is to ask the original repo project to accept the new revisions or sample files. This final process is called a pull request. 
+So far, Git was installed on a development Linode, a project was cloned to that Linode, a Github username was created, and a repo fork was copied to the Github user account. The final step is to ask the original project to accept the new revisions or sample files. This final process is called a pull request. 
 
 1.  From the Github browser window, select your username from the top right of the page, pictured below. 
 
     [![Github username icon.](/docs/assets/github-sampleuser.png)](/docs/assets/github-sampleuser.png)
 
-2.  At the Github dashboard, select the `test-repo-789` in the center of the page, pictured below. 
+2.  At your Github profile, select the `test-repo-789` in the center of the page, pictured below. 
 
     [![Github popular repositories.](/docs/assets/github-popular-repositories.png)](/docs/assets/github-popular-repositories.png)
 
