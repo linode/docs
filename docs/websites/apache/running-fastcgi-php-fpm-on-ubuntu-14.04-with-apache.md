@@ -108,7 +108,7 @@ Installing mod_fastcgi and PHP-FPM
 
 ### PHP support for MySQL
 
-If you plan on using this guide in conjunction with a LAMP stack on Ubuntu 14.04, you will need to install the following package for use with mod_fcgid and PHP-FPM:
+If you plan on using mod_fcgid and PHP-FPM in conjunction with MySQL database, you will need to install the following package:
 
         php5-mysql
 
