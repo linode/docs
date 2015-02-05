@@ -56,14 +56,6 @@ The Apache web server is a popular choice for serving web pages. While many alte
 
         sudo apt install apache2
 
-3. Edit the main Apache configuration file to adjust the resource use settings.
-
-{: .file }
-/etc/apache2/apache2.conf
-:   ~~~ apache
-    KeepAlive On
-    
-    ~~~
 
 Now we'll configure virtual hosting so that we can host multiple domains (or subdomains) with the server. These websites can be controlled by different users, or by a single user, as you prefer.
 
