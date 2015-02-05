@@ -44,9 +44,6 @@ Multicraft for Linux depends on several software packages in order to run.
         </Directory>
         ~~~
 
-        {: .note}
-        >If you want a dedicated Apache virtual host for Multicraft, follow the instructions [here](/docs/websites/hosting-a-website#configuring-name-based-virtual-hosts). Be sure to configure the `AllowOverride` option on your custom virtual host.
-
 4.  Reload the Apache configuration:
 
         service apache2 reload
@@ -95,7 +92,7 @@ Multicraft for Linux depends on several software packages in order to run.
 
 3.  Multicraft will attempt to copy the default `config.php` file into place. If successful, click `Continue`:
 
-    [![Multicraft Configuation FIle Transfer.](/docs/assets/multicraft-config_small.png)](/docs/assets/multicraft-config.png)
+    [![Multicraft Configuration File Transfer.](/docs/assets/multicraft-config_small.png)](/docs/assets/multicraft-config.png)
 
 4.  On the next page, click on `Initialize Database`. Afterwards, click `Continue`:
 

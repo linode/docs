@@ -89,7 +89,7 @@ Multicraft for Linux depends on several software packages in order to run.
 
 3.  Multicraft will attempt to copy the default `config.php` file into place. If successful, click `Continue`:
 
-    [![Multicraft Configuation FIle Transfer.](/docs/assets/multicraft-config_small.png)](/docs/assets/multicraft-config.png)
+    [![Multicraft Configuration File Transfer.](/docs/assets/multicraft-config_small.png)](/docs/assets/multicraft-config.png)
 
 4.  On the next page, click on `Initialize Database`. Afterwards, click `Continue`:
 
