@@ -108,7 +108,7 @@ If you did not get the _Syntax OK_ result, check your configuration for errors.
 
 If you plan on using this guide in conjunction with a LAMP stack on Ubuntu 14.04, you will need to install the following package for use with mod_fcgid and PHP-FPM:
 
-       php5-mysql
+        php5-mysql
 
 
 Configuring PHP Pools (Optional)
