@@ -4,6 +4,8 @@ PHP makes it possible to produce dynamic and interactive pages using your own sc
 
 By contrast, using mod_fcgid with PHP-FPM, the elements and instructions that are called on when a request is made get cached as child processes, to be reused directly if the same request is made again. FastCGI was introduced as a middle ground between the PHP Apache Module and the CGI application. It allows scripts to be executed by an interpreter outside of the web server and includes the security benefits of CGI but doesn’t include any of the inefficiencies of CGI. When executing PHP scripts with FastCGI each request is passed from the web server to FastCGI via a communication socket. This allows for much greater scalability as the web server and the PHP interpreter can be split into their own individual server environments if necessary, this is what is known as pooling. Their interpretation is thus much faster, as is the page loading that follows. 
 
+Installing mod_fastcgi and PHP-FPM
+--------------------------------
 
 1. Ubuntu includes packages for installing PHP5 with support for PHP5-FPM. From the terminal, issue the following command:
 
