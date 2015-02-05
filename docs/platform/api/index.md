@@ -2,7 +2,6 @@
 author:
   name: Linode
   email: docs@linode.com
-description: The Linode API
 keywords: 'linode api, api key, key'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['api/']

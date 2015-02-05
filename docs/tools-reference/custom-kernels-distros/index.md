@@ -2,7 +2,6 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Deploy and run custom kernels with PV-Grub and deploy custom distributions on Linode instances.'
 keywords: 'linode instances,pv grub,linux kernel,linode platform,linux distributions'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['custom-instances/']
