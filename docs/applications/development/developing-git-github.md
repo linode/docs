@@ -59,7 +59,7 @@ To share new files or file revisions, you'll need a Github account and a project
 
 1.  Create a username on [Github](https://www.github.com). At the "Welcome to Github" page, select the green, "Finish sign up" button at the bottom. 
 
-2.  Select your username at the top right of the page, pictured below, to bring you to the dashboard.
+2.  Select your username at the top right of the page, pictured below, to bring you to the dashboard. It's important to recognize the dashboard.
 
     [![Github username icon.](/docs/assets/github-sampleuser.png)](/docs/assets/github-sampleuser.png)
 
@@ -72,7 +72,7 @@ You now have a copy of the repo on your Github account. Next, return to the term
 ##Push to the Forked Repo
 Create files on the development Linode and push them to the forked repository on Github.
 
-1.  From the `~/test-repo-789` directory, create a new branch:
+1.  From the `~/test-repo-789` directory, create and checkout a new branch:
 
         git checkout -b newbranch 
 
@@ -91,6 +91,10 @@ Create files on the development Linode and push them to the forked repository on
 5.  Add all the files in `~/test-repo-789` to Git tracking, or staging:
 
         git add . 
+
+     {: .note }
+    >
+    > To add only one file, replace the period above with the full directory path and filename. 
 
 6. Check the status again with `git status`, then commit the files to the Git project:
 
