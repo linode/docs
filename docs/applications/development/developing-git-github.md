@@ -3,26 +3,22 @@ author:
   name: Joseph Dooley
   email: jdooley@linode.com
 description: 'Using Git and Github start to finish.'
-keywords: 'git,dvcs,vcs,scm,gitweb,debian'
+keywords: 'git,dvcs,vcs,scm,gitweb,'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Wednesday, February 4th, 2015
+modified: Friday, February 6th, 2015
 external_resources:
  - '[Working with the Git Repository](http://docsmith:4567/docs/applications/development/git-source-control-management#working-with-the-repository)'
  - '[GitHub Help Pages](https://help.github.com/)'
 modified_by:
   name: Joseph Dooley
-published: 'Wednesday, February 4th, 2015'
+published: 'Friday, February 6th, 2015'
 title: Developing with Git and Github
 ---
 
-Git is a version control system, or VCS. Github is a website that allows collaboration between developers who use Git. With Git and Github, programmers from across the world can share ideas and code in an organized and up-to-date process.
-
- {: .note }
->
-> This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](https://library.linode.com/using-linux/users-and-groups) guide.
+Git is a version control system, or VCS, a VCS tracks file revisions. Github is a website that allows collaboration between developers who use Git. With Git and Github, programmers from across the world can share ideas and code in an organized and up-to-date process.
 
 ##Install and Configure Git
-The directions below are for a Linode running Debian or Ubuntu. For installation on Mac, Windows, or other Linux distributions, find instructions in the  [Git Source Control Management](/docs/applications/development/git-source-control-management#installing-git) guide. While that guide focuses on Git, this guide focuses more on Git with Github.
+The directions below are for Debian or Ubuntu. For installation on Mac, Windows, or other Linux distributions, find instructions in the  [Git Source Control Management](/docs/applications/development/git-source-control-management#installing-git) guide. While that guide focuses on Git, this guide focuses more on Git with Github.
 
 1.  Install:
 
@@ -65,9 +61,9 @@ A repository, or repo, is a Git project. For tutorial purposes, there is a test 
 ##Create a Github Account and Fork the Test Repo
 To share new files or file revisions, you'll need a Github account and a project fork. A fork is a copy of a repo held on your Github account. 
 
-1.  Create a username on [Github](https://www.github.com). 
+1.  Create a username on [Github](https://www.github.com). At the "Welcome to Github" page, select the green, "Finish sign up" button at the bottom. 
 
-2.  Select your username at the top right of the page, pictured below, to bring you to your profile.
+2.  Select your username at the top right of the page, pictured below, which links to your profile.
 
     [![Github username icon.](/docs/assets/github-sampleuser.png)](/docs/assets/github-sampleuser.png)
 
@@ -94,9 +90,10 @@ Create files on the development Linode and push them to the forked repository on
 
         touch repoTest1.js repoTest2.htm project/prjtTest1.js project/prjtTest1.htm
 
-4.  Check the status of the Git project:
+4.  Check the status of the Git project, with the `git status` command:
 
         git status
+
         # On branch newbranch
         # Untracked files:
         #   (use "git add <file>..." to include in what will be committed)
@@ -126,7 +123,7 @@ Create files on the development Linode and push them to the forked repository on
     > If you've configure two-factor authorization (2FA) on this account, you will need to push over SSH. See GitHub's guide on [Generating SSH Keys](https://help.github.com/articles/generating-ssh-keys/).
 
 ##Create a Pull Request Against the Original, Previously Cloned Repo
-So far, Git was installed on a development Linode, a project was cloned to that Linode, a Github username was created, and a repo fork was copied to the Github user account. The final step is to ask the original project to accept the new revisions or sample files. This final process is called a pull request. 
+So far, Git was installed on a development Linode, a repo project was cloned to that Linode, a Github username was created, and a repo fork was copied to the Github user account. The final step is to ask the original repo project to accept the new revisions or sample files. This final process is called a pull request. 
 
 1.  From the Github browser window, select your username from the top right of the page, pictured below. 
 
