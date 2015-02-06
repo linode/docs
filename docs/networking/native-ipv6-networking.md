@@ -44,15 +44,18 @@ If your Linode does not have the correct IPv6 address or an IPv6 address at all,
 Additional IPv6 Addresses
 -------------------------
 
-You can request additional IPv6 addresses at any time by opening a support ticket with us. We do not provide additional single IPv6 addresses, however. In order to receive an additional IPv6 address, you must ask us for an IPv6 address pool. 
+You can request additional IPv6 addresses at any time by opening a support ticket with us. We do not provide additional single IPv6 addresses, however. In order to receive an additional IPv6 address, you must ask us for an IPv6 address pool.
 
-{: .note }
->
-> Each pool has a different amount of IPv6 addresses. Linode offers /116's, /64's, and /56's absolutely free! 
-> 
-> A /116 of IPv6 addresses has **4096** IPv6 addresses.
-> A /64 of IPv6 addresses is the equivalent of one IPv6 subnet, or **18,446,744,073,709,551,616** IPv6 addresses.
-> A /56 of IPv6 addresses is the equivalent of 256 LAN segments
+Each size has a different amount of IPv6 addresses. The IPv6 pool sizes Linode provides and their respective quantity of IPv6 addresses are below.
+
+{: .table .table-striped }
+| Pool   | No. of IPS                    |
+|:-------|:------------------------------|
+| /56    | 4,722,366,482,869,645,213,696 |
+| /64    | 18,446,744,073,709,551,616    |
+| /116   | 4,096                         |
+|--------|-------------------------------|
+
 
 ### IPv6 Neighbour Discovery
 
