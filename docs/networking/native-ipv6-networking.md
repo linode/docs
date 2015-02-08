@@ -126,9 +126,20 @@ On CentOS or Fedora, you can edit your `/etc/sysconfig/network-scripts/ifcfg-eth
   IPADDR2=192.168.133.234
   PREFIX2=17
 
+  IPV6INIT = yes
   # Adding IPv6 addresses from pool.
   IPV6ADDR_SECONDARIES="2001:DB8:2000:aff0::1/32 2001:DB8:2000:aff0::2/32 2001:DB8:2000:aff0::3/32"
   ~~~
+
+If you are using CentOS 6.5 or lower, you will need to restart networking:
+
+    service networking restart
+    
+If you are using CentOS 7, you will need to reload your configuration using nmcli and bring your static interface down and back up:
+
+    nmcli reload
+    nmcli con down "System eth0"
+    nmcli con up "System eth0"
 
 ### Arch Linux (netctl)
 
