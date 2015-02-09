@@ -79,7 +79,7 @@ McMyAdmin is a leading control panel for adminstration of Minecraft servers. It 
 
 ##Managing your Minecraft Server
 
-1.  Browse to the McMyAdmin web interface by visiting http://yourIPaddress:8080.
+1.  Browse to the McMyAdmin web interface by visiting `http://YourLinodeIP:8080`.
 
 	[![Login Page](/docs/assets/mcma-login-resize.png)](/docs/assets/mcma-login.png)
 
