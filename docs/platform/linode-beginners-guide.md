@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Answers to common configuration questions for the Linode VPS platform.'
+description: 'Answers to common configuration questions for the Linode platform.'
 keywords: 'linode beginners guide,linux beginner,linode beginner,vps guide'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['beginners-guide/']

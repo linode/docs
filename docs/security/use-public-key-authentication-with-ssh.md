@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: bolow@linode.com
-description: 'Access your VPS via SSH using Public Key Authentication.'
+description: 'Access your Linode via SSH using Public Key Authentication.'
 keywords: 'ssh,pki,ssh keys,secure shell,vpn,tunneling'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['security/ssh-keys/']

@@ -11,5 +11,3 @@ modified_by:
 published: 'Wednesday, September 24th, 2014'
 title: iRedMail Guides
 ---
-
-Using iRedMail to provide email services from your Linode.
