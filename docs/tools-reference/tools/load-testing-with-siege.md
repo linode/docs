@@ -16,7 +16,11 @@ external_resources:
 
 Siege is an http load testing and benchmarking utility that can be used to measure the performance of your web server when under duress. It will evaluate the amount of data transferred, response time of the server, transaction rate, throughput, concurrency, and times the program returned okay. It also offers three modes of operation: Regression, internet simulation, and brute force.
 
-{Debian Ubuntu note}
+{: .note}
+>
+>This guide is for Debian or Ubuntu systems.
+>
+>The steps in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
 ##Download and Configure Siege
 
@@ -24,7 +28,7 @@ Siege is an http load testing and benchmarking utility that can be used to measu
 
 		apt-get update && apt-get upgrade --show-upgraded
 
-2.  Download Siege:
+2.  Download the latest version of Siege (3.0.9 at the time of this publication), which is always available at [Siege's website](http://www.joedog.org/siege-home):
 
 		wget http://download.joedog.org/siege/siege-3.0.9.tar.gz
 
@@ -87,7 +91,7 @@ You are now ready to run Siege!
 
 ##Run Siege
 
-To run Siege with the default settings input the following command, replacing `www.example.com` with your domain name or IP address.
+To run Siege with the default settings, input the following command, replacing `www.example.com` with your domain name or IP address:
 
 	siege www.example.com
 
@@ -115,15 +119,15 @@ It will output your results:
 	the .siegerc file in your home directory; change
 	the directive 'show-logfile' to false.
 
-If there are no failed connections and the availability remains at 100% there are no problems.
+If there are no failed connections and the availability remains at 100%, there are no problems.
 
-##Farther Configuring and Commands
+##Further Configuring and Commands
 
 ###Creating a URL File
 
 If you want Siege to hit a number of pages on your website at random, you can configure the program to read from a `urls.txt` file that lists your selected pages.
 
-1.  Open the `urls.txt` file generally created in `/usr/local/etc/urls.txt`. Add a list of URLs or IP addresses to that file:
+1.  Open the `urls.txt` file generally created at `/usr/local/etc/urls.txt`. Add a list of URLs or IP addresses to that file:
 
 	{: .file}
 	/usr/local/etc/urls.txt
@@ -145,11 +149,11 @@ If you want Siege to hit a number of pages on your website at random, you can co
 		# -------------------------------------------------------
 
 		www.example.com
-		www.example.net
+		www.example.org
 		123.45.67.89
 		~~~
 
-2.  To run Siege with this file you only need to run the `siege` command:
+2.  To run Siege with this file you only need to use the `siege` command:
 
 		siege
 
