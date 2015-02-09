@@ -168,12 +168,12 @@ If you can't remember the password for the `root` user on a Linode, use the Lino
 7.  Click **Reset Root Password**. The Linode's dashboard appears.
 8.  Click **Boot** to turn on your Linode.
 
-Now you can use the new `root` user password to log in to your Linode. See [Connecting to Your Linode](getting-started#sph_connecting-to-your-linode) for more information about connecting.
+Now you can use the new `root` user password to log in to your Linode. See [Connecting to Your Linode](/docs/getting-started#connecting-to-your-linode) for more information about connecting.
 
 Next Steps
 ----------
 
-You can take additional steps to secure your Linode Manager account by enabling the two-factor authentication and IP address whitelisting features. You can also configure security event notifications and disable API access. For instructions, see the [Security](/docs/linode-manager-security) guide.
+You can take additional steps to secure your Linode Manager account by enabling the two-factor authentication and IP address whitelisting features. You can also configure security event notifications and disable API access. For instructions, see the [Security](/docs/security/linode-manager-security-controls/) guide.
 
 
 

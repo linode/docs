@@ -1,6 +1,6 @@
 ---
 author:
-  name: Amanda Folson
+  name: Linode
   email: docs@linode.com
 description: 'Guides on using Mailman to manage mailing lists on your Linode.'
 keywords: 'mailman,listserv,email,postfix,mailing list'
