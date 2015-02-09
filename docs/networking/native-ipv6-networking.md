@@ -71,12 +71,15 @@ Each /56 or /64 IPv6 address pool is routed to a specific Linode. If you want to
 {: .caution}
 >This will create a single point of failure for your infrastructure. If that Linode were to crash, lose networking, or have another disruption in service, your entire IPv6 network would also go down.
 
-Unlike the other pools available, /116 IPv6 address pools route to all of the Linodes on your account within the same data center as the Linode the pool is assigned to.
+Unlike the other pools available, /116 IPv6 address pools route to all of the Linodes on your account within the same data center as the Linode the pool is assigned to. This means there is no single point of failure.
 
 Adding IPv6 Addresses
 ---------------------
 
-While single IPv6 addresses are configured automatically, you will need to statically configure each IPv6 address in the pool you request. When configuring static IPv6 addresses from a pool, it's recommended that you also assign your default IPv6 address statically.
+While default IPv6 addresses are configured automatically, you will need to statically configure each IPv6 address in the pool you request. 
+
+{: .note}
+>If SLAAC is not obtaining your IPv6 address, even after verifying that privacy extensions are disabled and your Linode is accepting router advertisements, you may need to statically configure your default IPv6 address as well.
 
 ### Debian/Ubuntu
 
