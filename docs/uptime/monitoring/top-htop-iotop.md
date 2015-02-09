@@ -10,25 +10,26 @@ modified_by:
   name: Elle Krout
 published: 'Wednesday, February 4, 2015'
 title: Using top to Monitor Server Performance
+external_resources:
+ - '[htop](http://hisham.hm/htop/)'
+ - '[iotop](http://guichaz.free.fr/iotop/)'
 ---
 
-Viewing your server's processor activity in real-time can aid in discovering and diagnosing any problems in CPU usage, memory, and more. The `top` command is a Linux process manager that can assist in this process. It displays CPU, memory, and swap memory usage, as well as cache size, buffer size, and process ID.
+Viewing your server's processor activity in real-time can aid in discovering and diagnosing any problems in CPU and memory usage, and aid in any changes you need to make. The `top` command is a Linux process manager that can assist in this process.
 
 ##Reading the Screen
 
 [![The top screen](/docs/assets/top-full-small.png)](/docs/assets/top-full.png)
 
-The `top` screen contains a variety of information regarding your server, beginning with the server's uptime, load average, and tasks status.
+The `top` screen contains a variety of information regarding your server, beginning with the server's uptime, load average, and tasks status, located in the header.
 
 ![top screen heading](/docs/assets/top-top.png)
 
 1.  The first line contains the time, uptime, and load average values for your server. The **load average** is displayed over 1, 5, and 15 minutes to provide a better overall look at the load your server has undertaken. If there is a spike at one minute, but the load at the five- and fifteen-minute marks is maintained at a lower level, then you may consider a different response compared to when the load is consistently high through all time intervals.
 
-	In order to properly read the load average section, you need to be aware of how many CPU cores your Linode has. If you have one CPU core, then a load average of 1.00 means your server is at its capacity. This number increases to 2.00 on Linodes with 2 CPU cores, 4.00 with 4, etc.
+	In order to properly read the load average section, you need to be aware of how many CPU cores your Linode has. If you have one CPU core, then a load average of 1.00 means your server is at its capacity. This number increases to 2.00 on a Linode with 2 CPU cores, 4.00 with 4, etc.
 
 	A load of .70 for a Linode with 1 core is generally considered the threshold. Any higher than this, and you will want to either reconfigure your resources or look into upgrading your plan.
-
-	If it helps, you can view the load average and CPU percentage as a highway: A highway with one lane is a Linode with one CPU core. At 0.00 there are no cars on the highway, but at 1.00 the highway is filled with cars. Any higher and there is a traffic jam.
 
 2.  A list of **tasks** and their various states.
 
@@ -56,7 +57,7 @@ Following the heading section is a list of processes and related data:
 
 -  **SHR**: The shared memory size, or memory that could be allocated to other processes.
 
--  **S**: The processes status. Can be: Running (`R`), sleeping and unable to be interrupted (`D`), sleeping and able to be interrupted (`S`), traced/stopped (`T`), or zombie (`Z`). This ties in with the task list above.
+-  **S**: The processes status. Can be: Running (`R`), sleeping and unable to be interrupted (`D`), sleeping and able to be interrupted (`S`), traced/stopped (`T`), or zombie (`Z`). This ties in with the task list in the header.
 
 -  **%CPU**: CPU percentage since last `top` update.
 
@@ -79,7 +80,7 @@ Important commands to know include:
 
 -  **`-d[interval]`**: Sets the delay time that `top` will use to refresh the results.
 -  **`-i`**: Toggles whether or not idle processes will be shown.
--  **`-p[PID,PID]`**: Allows the user to filter top so only the defined processes are shown.
+-  **`-p[PID,PID]`**: Allows the user to filter `top` so only the defined processes are shown.
 -  **`-u [username]`**: Filters by user.
 -  **`-n[limit]`**: Sets `top` to run for a set amount of intervals before exiting.
 -  **`-b`**: Runs `top` in batch mode, ideal for log files and for use in conjunction with other programs.
@@ -155,7 +156,7 @@ The `htop` screen runs much the same as `top`, but with scroll and mouse support
 
 ###iotop
 
-The `iotop` command tracks the input/output operations on a per-process basis. It allows for more specific monitoring of disk I/O operations in order to gauge any problems with bottlenecking. `iotop` must be run as root or with the `sudo` prefix.
+The `iotop` command tracks the input/output operations on a per-process basis. `iotop` must be run as root or with the `sudo` prefix.
 
 To install `iotop` for Debian/Ubuntu:
 
@@ -169,8 +170,8 @@ Run `iotop` by entering:
 
 	iotop
 
-To focus only on processed inputting and outputting run it with the `--only` suffix:
+To focus only on processes running, run it with the `--only` suffix:
 
 	iotop --only
 
-`iotop` also shares a number of command line options with `top` including: `-n`, `-b`, `-d`, `-u`, and `-p`. To learn more about operating iotop run `man iotop` in your terminal.
+`iotop` also shares a number of command line options with `top` including: `-n`, `-b`, `-d`, `-u`, and `-p`, but is not interactive. To learn more about operating iotop run `iotop -h` in your terminal.
