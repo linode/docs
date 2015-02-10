@@ -50,13 +50,13 @@ Siege is an http load testing and benchmarking utility that can be used to measu
 		make
 		make install
 
-4. Generate a configuration file by running:
+7. Generate a configuration file by running:
 
 		siege.config
 
-5.  Open the `.siegerc` file located in your home directory.
+8.  Open the `.siegerc` file located in your home directory.
 
-6.  It is suggested that you set the configuration for 25 concurrent users over a period of 1 minute, and set a location for your log file:
+9.  It is suggested that you set the configuration for 25 concurrent users over a period of 1 minute, and set a location for your log file. Be sure to uncomment any commented settings by removing the pound sign (`#`):
 
 	{: .file-excerpt}
 	.siegerc
