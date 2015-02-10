@@ -83,31 +83,35 @@ While default IPv6 addresses are configured automatically, you will need to stat
 
 ### Debian/Ubuntu
 
-On Debian and Ubuntu, edit `/etc/network/interfaces` to set up statically configured IPv6:
+1.  On Debian and Ubuntu, edit `/etc/network/interfaces` to set up statically configured IPv6:
 
-{: .file }
-/etc/network/interfaces
-: ~~~
-  # This file describes the network interfaces available on your system
-  # and how to activate them. For more information, see interfaces(5).
+    {: .file }
+    /etc/network/interfaces
+    : ~~~
+      # This file describes the network interfaces available on your system
+      # and how to activate them. For more information, see interfaces(5).
 
-  # The loopback network interface
-  auto lo
-  iface lo inet loopback
+      # The loopback network interface
+      auto lo
+      iface lo inet loopback
 
-  # The primary network interface (IPv4)
-  auto eth0
-  iface eth0 inet dhcp
+      # The primary network interface (IPv4)
+      auto eth0
+      iface eth0 inet dhcp
 
-  # IPv6 Address Blocks
-  # You should add an additional block for each IPv6 address you need configured.
-  # You do not need to configure a block for your default IPv6 address, it will be brought up via SLAAC
-  iface eth0 inet6 static
-    address 2001:DB8:2000:aff0::1/64
+      # IPv6 Address Blocks
+      # You should add an additional block for each IPv6 address you need configured.
+      # You do not need to configure a block for your default IPv6 address, it will be brought up via SLAAC
+      iface eth0 inet6 static
+        address 2001:DB8:2000:aff0::1/64
 
-  iface eth0 inet6 static
-    address 2001:DB8:2000:aff0::2/64
-  ~~~
+      iface eth0 inet6 static
+        address 2001:DB8:2000:aff0::2/64
+      ~~~
+
+2.  Restart networking. As this will break an SSH connection, this command should be performed in [LISH](/docs/networking/using-the-linode-shell-lish)
+
+        ifdown -a && ifup -a
 
 ### CentOS/Fedora
 
