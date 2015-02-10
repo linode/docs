@@ -19,9 +19,12 @@ external_resources:
  - '[SMF Community Forum](http://www.simplemachines.org/community/index.php)'
 ---
 
-Simple Machines Forum (SMF) is a popular forum solution for small- to large-sized communities that offers a variety of features that make it ideal for many use cases. With its modular design and flexibility, users can create their own plugins to modify the behavior of SMF in any way they wish.
+Simple Machines Forum (SMF) is a popular forum solution for small- to large-sized communities that offers a variety of features. With its modular design and flexibility, users can create their own plugins to modify the behavior of SMF in any way they wish.
 
-Before you begin, be sure you have followed the steps outlined in the [getting started guide](/docs/getting-started/). You will also need a working [LAMP stack](/docs/websites/lamp/).
+Before you begin, be sure you have followed the steps outlined in the [Getting Started Guide](/docs/getting-started/). You will also need a working [LAMP stack](/docs/websites/lamp/).
+
+{: .note }
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
 ##Prerequisites
 
@@ -37,15 +40,16 @@ You will need to create a MySQL user and database for SMF.
         grant all on forums.* to 'forumadmin' identified by 'password';
         quit
 
-You will now need to perform the following steps as the user in which you intend to run SMF.
-
 ##Installing SMF
 
-The following instructions will download the latest stable release, which is 2.0.9 at the time of this writing.
+The following instructions will download the latest stable release, which is 2.0.9 as of publication.
+
+{: .note }
+> If you're using a web server other than Apache, or otherwise have an alternate system user for your web server, be sure to replace `www-data` in the commands below with the appropriate system user.
 
 1.  Navigate to the document root (typically similar to `/var/www/example.com/public_html`) and create a directory for the forums:
 
-        mkdir forums
+        sudo -u www-data mkdir forums
         cd forums/
 
     {: .note}
@@ -54,8 +58,8 @@ The following instructions will download the latest stable release, which is 2.0
 
 2.  Download and extract the package:
 
-        wget http://mirror.ord.simplemachines.org/downloads/smf_2-0-9_install.tar.gz
-        tar -zxvf smf_2-0-9_install.tar.gz
+        sudo -u www-data wget http://mirror.ord.simplemachines.org/downloads/smf_2-0-9_install.tar.gz
+        sudu -u www-data tar -zxvf smf_2-0-9_install.tar.gz
 
 3.  In your browser, navigate to the website where you installed SMF (ex. `http://www.example.com/forums/`). You will be asked for your FTP details; however, because of the insecure nature of FTP it is recommended that you instead change the permissions of the following files in your terminal to make them writable:
 
@@ -69,10 +73,10 @@ The following instructions will download the latest stable release, which is 2.0
         chmod 777 Settings.php
         chmod 777 Settings_bak.php
 
-    Click "Click here to test if these files are writable again" to update the page, then "continue."
+    Click on `Click here to test if these files are writable again` to update the page, then `continue`.
 
 4.  Follow the instructions on the web interface to finish the installation; then, in your terminal, remove the installation script:
 
-        rm install.php
+        sudo rm install.php
 
 Your SMF installation is now complete! In order to maintain the integrity of your system, please update your forums as needed.
