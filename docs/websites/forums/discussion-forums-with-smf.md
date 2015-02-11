@@ -49,6 +49,7 @@ The following instructions will download the latest stable release, which is 2.0
 
 1.  Navigate to the document root (typically similar to `/var/www/example.com/public_html`) and create a directory for the forums:
 
+        sudo chown -R www-data:www-data /var/www
         sudo -u www-data mkdir forums
         cd forums/
 
@@ -59,7 +60,7 @@ The following instructions will download the latest stable release, which is 2.0
 2.  Download and extract the package:
 
         sudo -u www-data wget http://mirror.ord.simplemachines.org/downloads/smf_2-0-9_install.tar.gz
-        sudu -u www-data tar -zxvf smf_2-0-9_install.tar.gz
+        sudo -u www-data tar -zxvf smf_2-0-9_install.tar.gz
 
 3.  In your browser, navigate to the website where you installed SMF (ex. `http://www.example.com/forums/`). You will be asked for your FTP details; however, because of the insecure nature of FTP it is recommended that you instead change the permissions of the following files in your terminal to make them writable:
 
