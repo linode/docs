@@ -68,7 +68,7 @@ Installing Apache is easy, but if you leave it running with the default settings
 	StartServers 2
 	MinSpareServers 6
 	MaxSpareServers 12
-	MaxClients 80
+	MaxClients 8
 	MaxRequestsPerChild 3000
 	</IfModule>
 	~~~
