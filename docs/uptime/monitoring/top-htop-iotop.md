@@ -148,7 +148,7 @@ To download `htop` for Debian/Ubuntu:
 
 For CentOS/Fedora:
 
-	yum install 
+	yum install htop
 
 Run `htop` by entering:
 
