@@ -6,7 +6,7 @@ description: 'Configuring the SMF system for hosting web-based discussion forums
 keywords: 'smf,forum software,web applications,PHP'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-applications/bulletin-boards/smf/']
-modified: Tuesday, January 27, 2015
+modified: Wednesday, February 11, 2015
 modified_by:
   name: Elle Krout
 published: 'Thursday, March 18th, 2010'
