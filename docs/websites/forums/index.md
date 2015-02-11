@@ -2,7 +2,6 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Installation, configuration and usage guides for bulletin boards and forums.'
 keywords: 'bulletin board,boards,forums,phpbb,smf'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-applications/bulletin-boards/']

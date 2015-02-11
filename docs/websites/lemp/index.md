@@ -2,7 +2,6 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'How to build a stable LEMP stack using your Linode.'
 keywords: 'LEMP,LEMP stack,LEMP server'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['lemp-guides/']
