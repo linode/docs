@@ -62,21 +62,7 @@ The following instructions will download the latest stable release, which is 2.0
         sudo -u www-data wget http://mirror.ord.simplemachines.org/downloads/smf_2-0-9_install.tar.gz
         sudo -u www-data tar -zxvf smf_2-0-9_install.tar.gz
 
-3.  In your browser, navigate to the website where you installed SMF (ex. `http://www.example.com/forums/`). You will be asked for your FTP details; however, because of the insecure nature of FTP it is recommended that you instead change the permissions of the following files in your terminal to make them writable:
-
-        chmod -R 777 attachments/
-        chmod -R 777 avatars/
-        chmod -R 777 cache/ 
-        chmod -R 777 Packages/
-        chmod -R 777 Smileys/
-        chmod -R 777 Themes/
-        chmod 777 agreement.txt
-        chmod 777 Settings.php
-        chmod 777 Settings_bak.php
-
-    Click on `Click here to test if these files are writable again` to update the page, then `continue`.
-
-4.  Follow the instructions on the web interface to finish the installation; then, in your terminal, remove the installation script:
+3.  Follow the instructions on the web interface to finish the installation; then, in your terminal, remove the installation script:
 
         sudo rm install.php
 
