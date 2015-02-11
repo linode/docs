@@ -186,7 +186,7 @@ Next we'll need to modify the `/etc/snmp/snmpd.conf` file with the name of our c
     mv /etc/snmp/snmpd.conf /etc/snmp/old.snmpd.conf
     echo "rocommunity mycommunity" > /etc/snmp/snmpd.conf
 
-Note that the format is "rocommunity community\_name", where `community_name` is the name of the community you originally used with Cacti, e.g. `Bucknell`. If you're monitoring a CentOS machine and you need to configure which interface SNMPD binds to you must edit the `/etc/sysconfig/snmpd.options` file. Append any IP address needed to the end of the following line, and uncomment it by removing the `#` at the begginning if needed. You should not need to edit this file.
+Note that the format is "rocommunity community\_name", where `community_name` is the name of the community you originally used with Cacti, e.g. `Bucknell`. If you're monitoring a CentOS machine and you need to configure which interface SNMPD binds to you must edit the `/etc/sysconfig/snmpd.options` file. Append any IP address needed to the end of the following line, and uncomment it by removing the `#` at the beginning if needed. You should not need to edit this file.
 
 {: .file }
 /etc/sysconfig/snmpd.options

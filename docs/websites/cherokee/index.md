@@ -2,7 +2,6 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Serving web content with Cherokee on your Linode Linux VPS.'
 keywords: 'cherokee web server,cherokee on linode,vps web server'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-servers/cherokee/']
