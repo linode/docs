@@ -1,1 +1,0 @@
-diagnostics/diagnosing-network-issues-with-mtr.md
