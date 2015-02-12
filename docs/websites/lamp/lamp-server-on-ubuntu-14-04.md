@@ -25,18 +25,21 @@ Before beginning this guide, we suggest you first read through [Getting Started]
 >
 > Throughout this guide we will offer several suggested values for specific configuration settings. Some of these values will be set by default. These settings are shown in the guide as a reference, in the event that you change these settings to suit your needs and then need to change them back.
 
+{: .note }
+>The steps required in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+
 ##Install and Configure the Apache Web Server
 
-1.  Make sure your package repositories and installed programs are up to date by issuing the following commands:
+1.  Update your package repositories and installed programs:
 
         apt-get update
         apt-get upgrade
 
-2.  To install the current version of the Apache web server (2.4) on an Ubuntu system, use the following command:
+2.  Install the current version of the Apache web server (2.4):
 
         apt-get install apache2
 
-3.  Edit the main Apache configuration file to adjust the KeepAlive setting and add the `<IfModule mpm_preform_module>` section. The settings shown below are a good starting point for a **Linode 1GB**:
+3.  Edit the main Apache configuration file to adjust the KeepAlive setting, and add the `<IfModule mpm_preform_module>` section. The settings shown below are a good starting point for a **Linode 1GB**:
 
     {: .file }
     /etc/apache2/apache2.conf
@@ -54,13 +57,12 @@ Before beginning this guide, we suggest you first read through [Getting Started]
         </IfModule>
         ~~~
 
-Now you'll configure virtual hosting so that you can host multiple domains (or subdomains) with the server. These websites can be controlled by different users, or by a single user, as you prefer.
 
 ### Configure Name-based Virtual Hosts
 
-There are different ways to set up virtual hosts; however, we recommend the method below. By default, Apache listens on all IP addresses available to it.
+There are several different ways to set up virtual hosts; however, we recommend the method below. By default, Apache listens on all IP addresses available to it.
 
-1.  Create a file in the `/etc/apache2/sites-available/` directory for each virtual host that you want to set up. Name each file with the domain that will be hosted, followed by `.conf`. See the following example configurations for the "example.com" and "example.org" domains:
+1.  Create a file in the `/etc/apache2/sites-available/` directory for each virtual host that you want to set up. Name each file with the domain that will be hosted, followed by `.conf`. See the following example configurations for the `example.com` and `example.org` domains:
 
     {: .file }
     /etc/apache2/sites-available/example.com.conf
