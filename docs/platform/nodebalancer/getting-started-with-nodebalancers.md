@@ -99,7 +99,7 @@ Your NodeBalancer is now working and is able to pass traffic to your Web applica
 
 Once you are satisfied that NodeBalancer is working normally, you can switch your Web application's traffic over to it through DNS. On the NodeBalancer's overview, you can see its IP address as well as a hostname that resolves to that IP address. Take note of the IP address, to use in the A record for your domain.
 
-Remove any record for `www.example.org`, then add an A record for `www.example.org` to your NodeBalancer's IP address.
+Edit or create an A record for `www.example.org`, pointing to your NodeBalancer's IP address.
 
 [![Adding an A Record.](/docs/assets/nodebalancer-a-record_small.png)](/docs/assets/nodebalancer-a-record.png)
 
