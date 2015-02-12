@@ -41,8 +41,8 @@ McMyAdmin is a leading control panel for adminstration of Minecraft servers. It 
 
 2.  Download the extra required files from McMyAdmin's website:
 
-		wget http://mcmyadmin.com/Downloads/etc.zip
-		unzip etc.zip; rm etc.zip
+		sudo wget http://mcmyadmin.com/Downloads/etc.zip
+		sudo unzip etc.zip; sudo rm etc.zip
 
 ##Install McMyAdmin
 
@@ -61,7 +61,7 @@ McMyAdmin is a leading control panel for adminstration of Minecraft servers. It 
 
 4.  Start the initial configuration of McMyAdmin.  Replace PASSWORD with the admin password for your McMyAdmin web interface:
 
-		 ./MCMA2_Linux_x86_64 -setpass PASSWORD -configonly
+		./MCMA2_Linux_x86_64 -setpass PASSWORD -configonly
 
 ##Running McMyAdmin
 
@@ -83,7 +83,7 @@ McMyAdmin is a leading control panel for adminstration of Minecraft servers. It 
 
 	[![Login Page](/docs/assets/mcma-login-resize.png)](/docs/assets/mcma-login.png)
 
-2.  Log in with the password that you provided in the installation step.
+2.  Log in with the username `admin` and the password that you provided in the installation step.
 	
 	[![Configuration Page](/docs/assets/mcma-config-resize.png)](/docs/assets/mcma-config.png)
 
