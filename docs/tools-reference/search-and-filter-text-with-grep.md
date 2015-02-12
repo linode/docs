@@ -45,7 +45,7 @@ Grep provides a number of very powerful options to control its output. The most 
 
 In addition to reading content from files, `grep` can read and filter a text feed on standard input. The output of any command or stream can be "piped" (e.g. with the `|` operator) to the `grep` command. Then, `grep` filters this output according to the match pattern specified and outputs only the matching lines. For instance, given the following command:
 
-> ls --help | grep "dired"
+    ls --help | grep "dired"
 
 This filters the output of the `ls` commands help text and looks for appearances of "dired", and outputs them to standard out (the current session). The output resembles:
 

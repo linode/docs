@@ -155,7 +155,7 @@ More Information
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [Cacti Website](http://www.cacti.net/index.php)
-- [Cacti Users Plugin Communty](http://cactiusers.org/index.php)
+- [Cacti Users Plugin Community](http://cactiusers.org/index.php)
 - [Linux Security Basics](/docs/security/basics/)
 
 

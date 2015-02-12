@@ -168,7 +168,7 @@ You have installed the C compiler and `make` on your Linode.
 Zabbix Server
 -------------
 
-Now that all of the Zabbix prerequesites are ready, we can start installing.
+Now that all of the Zabbix prerequisites are ready, we can start installing.
 
 ### Downloading and Unpacking
 
@@ -411,7 +411,7 @@ You'll need to complete the installation of the Zabbix web interface with your w
 
 [![Zabbix installer.](/docs/assets/1086-new_zabbix_1.png)](/docs/assets/1086-new_zabbix_1.png)
 
-3.  Correct any prerequesite errors, as shown below. Click **Next** to continue.
+3.  Correct any prerequisite errors, as shown below. Click **Next** to continue.
 
 [![Zabbix installer.](/docs/assets/1087-new_zabbix_2.png)](/docs/assets/1087-new_zabbix_2.png)
 

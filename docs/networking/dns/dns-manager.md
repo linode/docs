@@ -145,7 +145,7 @@ The DNS records will then be copied from the existing zone to the new zone.
 
 Under normal circumstances, there's no reason to suspect a problem with your domain zone or DNS records, but sometimes things go wrong. You can use the *Check zone* feature to verify that your domain zone is working correctly.
 
-In order to check the status of your domain zone, from within the DNS Manager, click the **Check** option to the far right of your choosen domain zone. A webpage with the results of the domain zone check will then appear.
+In order to check the status of your domain zone, from within the DNS Manager, click the **Check** option to the far right of your chosen domain zone. A webpage with the results of the domain zone check will then appear.
 
 If you see a message stating that your zone looks good, everything is working correctly; otherwise, check that all of the DNS records in your domain zone are properly configured.
 
@@ -153,7 +153,7 @@ If you see a message stating that your zone looks good, everything is working co
 
 The DNS Manager allows you to view the contents of a domain zone file. This is especially useful should you need to import the zone to a different server, or if you wish to inspect the file.
 
-You can view the contents of the domain zone file through the DNS Manager tab of your Linode Manager. From there, select the **Zone file** link to the far right column of your choosen domain's name. An example of the file is provided below.
+You can view the contents of the domain zone file through the DNS Manager tab of your Linode Manager. From there, select the **Zone file** link to the far right column of your chosen domain's name. An example of the file is provided below.
 
 [![This page shows a text-only dump of the DNS zone file for this domain.](/docs/assets/1115-dns3.png)](/docs/assets/1115-dns3.png)
 

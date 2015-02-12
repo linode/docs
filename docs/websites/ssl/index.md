@@ -1,8 +1,7 @@
 ---
 author:
-  name: Amanda Folson
+  name: Linode
   email: docs@linode.com
-description: 'Guides for installing and utilizing SSL certificates with web servers.'
 keywords: 'Apache web server,Apache on Linode,nginx on Linode,nginx web server,VPS web server,ssl,certificate'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-servers/apache/ssl-guides/']

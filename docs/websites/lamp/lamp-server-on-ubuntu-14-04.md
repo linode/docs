@@ -183,15 +183,11 @@ The `a2dissite` command is the inverse of `a2ensite`. After enabling, disabling,
         mkdir /var/log/php
         chown www-data /var/log/php
 
-4.  After making changes to the PHP configuration file, restart Apache:
-
-        service apache2 reload
-
-5.  If you need support for MySQL in PHP, then you must install the php5-mysql package:
+4.  If you need support for MySQL in PHP, then you must install the php5-mysql package:
 
         apt-get install php5-mysql
 
-6.  Restart Apache to make sure everything is loaded correctly:
+5.  Restart Apache to make sure everything is loaded correctly:
 
         service apache2 reload
 

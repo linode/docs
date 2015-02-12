@@ -55,7 +55,7 @@ As of this writing, the latest version of WordPress is 4.1. The latest version o
     wget http://wordpress.org/latest.tar.gz
     tar -zxvf latest.tar.gz
     mv latest.tar.gz wordpress-`date "+%Y-%m-%d"`.tar.gz
-    cp -R wordpress/* ../
+    cp -R wordpress/* ../public_html/
     rm -rf wordpress/
 
 These commands create a `src/` folder within the `/var/www/example.com/` directory to store and manage pristine copies of the source files that you use to deploy your WordPress site. New versions of WordPress and plug-ins can be downloaded from within the WordPress administration interface, once installed.
