@@ -27,9 +27,11 @@ The `top` screen contains a variety of information regarding your server, beginn
 
 1.  The first line contains the time, uptime, and load average values for your server. The **load average** is displayed over 1, 5, and 15 minutes to provide a better overall look at the load your server has undertaken. If there is a spike at one minute, but the load at the five- and fifteen-minute marks is maintained at a lower level, then you may consider a different response compared to when the load is consistently high through all time intervals.
 
-	In order to properly read the load average section, you need to be aware of how many CPU cores your Linode has. If you have one CPU core, then a load average of 1.00 means your server is at its capacity. This number increases to 2.00 on a Linode with 2 CPU cores, 4.00 with 4, etc.
-
-	A load of .70 for a Linode with 1 core is generally considered the threshold. Any higher than this, and you will want to either reconfigure your resources or look into upgrading your plan.
+	{: .note}
+	>
+	>In order to properly read the load average section, you need to be aware of how many CPU cores your Linode has. If you have one CPU core, then a load average of 1.00 means your server is at its capacity. This number increases to 2.00 on a Linode with 2 CPU cores, 4.00 with 4, etc.
+	>
+	>A load of .70 for a Linode with 1 core is generally considered the threshold. Any higher than this, and you will want to either reconfigure your resources or look into upgrading your plan.
 
 2.  A list of **tasks** and their various states.
 
@@ -146,7 +148,7 @@ To download `htop` for Debian/Ubuntu:
 
 For CentOS/Fedora:
 
-	yum install 
+	yum install htop
 
 Run `htop` by entering:
 
