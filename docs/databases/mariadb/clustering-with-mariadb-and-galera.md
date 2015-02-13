@@ -62,19 +62,17 @@ MariaDB replication with Galera adds redundancy for the database backend of your
     wsrep_sst_method=rsync
     ~~~
 
-2.  Copy the `/etc/mysql/debian.cnf` file from your primary Linode in the cluster to each of your other Linodes, overwriting the existing copies.
+2.  Reboot both of your non-primary servers in your cluster to enable the new debian.cnf file settings.
 
-3.  Reboot both of your non-primary servers in your cluster to enable the new debian.cnf file settings.
-
-4.  Stop the MariaDB service on each of your Linodes:
+3.  Stop the MariaDB service on each of your Linodes:
 
 		sudo service mysql stop
 
-5.  Restart the MariaDB service on your primary Linode, with the --wsrep-new-cluster flag:
+4.  Restart the MariaDB service on your primary Linode, with the --wsrep-new-cluster flag:
 
 		sudo service mysql start --wsrep-new-cluster
 
-6.  Confirm that the cluster has started by running the following command.  You should receive an output of the current cluster size:
+5.  Confirm that the cluster has started by running the following command.  You should receive an output of the current cluster size:
 
 		mysql -u root -e 'SELECT VARIABLE_VALUE as "cluster size" FROM INFORMATION_SCHEMA.GLOBAL_STATUS WHERE VARIABLE_NAME="wsrep_cluster_size"'
 
@@ -88,9 +86,13 @@ MariaDB replication with Galera adds redundancy for the database backend of your
 		+--------------+
 		1 row in set (0.00 sec)
 
-7.  Start the MariaDB service on the other two Linodes.  Re-run the command from step 5 to ensure that each system has joined the cluster:
+6.  Start the MariaDB service on the other two Linodes.  Re-run the command from step 5 to ensure that each system has joined the cluster:
 
 		sudo service mysql start
+
+7.  To prevent repeated errors on startup, copy the `/etc/mysql/debian.cnf` file from your primary Linode in the cluster to each of your other Linodes, overwriting the existing copies.
+
+8.  Reboot both of your secondary Linodes to apply the new debian.cnf settings.
 
 ##Testing database replication
 
