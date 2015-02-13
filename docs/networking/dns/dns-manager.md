@@ -176,14 +176,12 @@ Once you've created a domain zone, you can start filling it with DNS records. DN
 {: .note }
 >
 > If you haven't already created a domain zone, please do so. For instructions, see [Adding a Domain Zone](#adding) above. If you don't know which DNS records to create, the DNS Manager can automatically insert some basic DNS records when you create a domain zone to get you started.
+>
+>Should you remove your Linode(s), you will no longer be able to use Linode's Domain Manager to host your DNS records.
 
 ### Adding
 
 When you first create a domain zone, you'll need to add some DNS records.
-
-{: .note}
->
->You will not be able to add any DNS records if you do not have any Linodes.
 
 1.  Select a domain zone from within your DNS Manager.
 
