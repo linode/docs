@@ -179,7 +179,11 @@ Once you've created a domain zone, you can start filling it with DNS records. DN
 
 ### Adding
 
-When you first create a domain zone, you'll need to add some DNS records. Here's how:
+When you first create a domain zone, you'll need to add some DNS records.
+
+{: .note}
+>
+>You will not be able to add any DNS records if you do not have any Linodes.
 
 1.  Select a domain zone from within your DNS Manager.
 
