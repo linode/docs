@@ -43,7 +43,7 @@ The RPMForge repository is not produced or maintained by RedHat, but is designed
 1.  Use `wget` and `rpm` to prepare your system for the installation:
 
         wget http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.3-1.el7.rf.x86_64.rpm
-            rpm -Uvh rpmforge-release-0.5.3-1.el7.rf.x86_64.rpm
+        rpm -Uvh rpmforge-release-1.5.3-1.el7.rf.x86_64.rpm
 
 2.  Use `yum` to install Iperf:
 
@@ -69,13 +69,13 @@ To install Iperf on your Fedora instance run:
     yum update
     yum install iperf
 
-###Arch Linux
+### Arch Linux
 
 To install Iperf on your Arch Linux instance run:
 
 	pacman -S iperf
 
-###Gentoo
+### Gentoo
 
 Using Portage, install Iperf on your Gentoo instance:
 
@@ -99,10 +99,10 @@ Iperf requires two systems because one system must act as a server, while the ot
 
     You should see output similar to:
 
-            ------------------------------------------------------------
-            Server listening on TCP port 5001
-            TCP window size: 85.3 KByte (default)
-            ------------------------------------------------------------
+         ------------------------------------------------------------
+         Server listening on TCP port 5001
+         TCP window size: 85.3 KByte (default)
+         ------------------------------------------------------------
 
 2.  On your second Linode, connect to the first. Replace `198.51.100.5` with the first Linode's IP address.
 
