@@ -15,11 +15,7 @@ published: 'Friday, February 6th, 2015'
 title: Developing with Git and Github
 ---
 
-<<<<<<< HEAD
-Git is a version control system, or VCS, a VCS tracks file revisions. Github is a website that allows collaboration between developers who use Git. With Git and Github, programmers from across the world can share ideas and code in an organized and up-to-date process.
-=======
 Git is a file tracking application, or version control system. Github is a website that allows collaboration between developers who use Git. With Git and Github, programmers from across the world can share ideas and code in an organized and up-to-date process.
->>>>>>> f22b994562f17dd40aa37964766ed31a170b2e36
 
 ##Install and Configure Git
 The directions below are for Debian or Ubuntu. For installation on Mac, Windows, or other Linux distributions, find instructions in the  [Git Source Control Management](/docs/applications/development/git-source-control-management#installing-git) guide. While that guide focuses on Git, this guide focuses more on Git with Github.
