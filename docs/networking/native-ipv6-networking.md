@@ -204,7 +204,9 @@ If you are still using `netctl` in Arch Linux, you can statically configure your
 
 ### Arch Linux/Fedora 21 (systemd-networkd)
 
-1.  Set up [Static IP Networking](/docs/networking/linux-static-ip-configuration/#arch-linux--fedora-21) for IPv4
+If you are using `systemd-networkd` on Arch Linux or Fedora 21, you can statically configure IPv6 pools by editing `/etc/systemd/network/50-static.network`.
+
+1.  Set up [Static IP Networking](/docs/networking/linux-static-ip-configuration/#arch-linux--fedora-21) for your IPv4 address.
 
 2.  Edit your current static IP networking configuration to allow for your IPv6 addresses. You will need to include your default IPv6 address as well.
 
