@@ -202,6 +202,31 @@ If you are still using `netctl` in Arch Linux, you can statically configure your
 
         netctl enable ethernet-static
 
+### Arch Linux/Fedora 21 (systemd-networkd)
+
+1.  Set up [Static IP Networking](/docs/networking/linux-static-ip-configuration/#arch-linux--fedora-21) for IPv4
+
+2.  Edit your current static IP networking configuration to allow for your IPv6 addresses. You will need to include your default IPv6 address as well.
+
+    {: .file }
+    /etc/systemd/network/50-static.network
+    :   ~~~
+        [Match]
+        Name=eth0
+
+        [Network]
+        Address=198.51.100.2/24
+        Address=192.168.133.234/17
+        Gateway=198.51.100.1
+        Address=2001:DB8:2000:aff0::/32
+        Address=2001:DB8:2000:aff0::1/32
+        Address=2001:DB8:2000:aff0::2/32
+        ~~~
+
+3.  Restart `systemd-networkd`
+
+        systemctl restart systemd-networkd
+
 ### Gentoo
 
 The configuration of additional IPv6 addresses in Gentoo is simple. Append the IPv6 addresses and netmask you want to the `config_eth0` line in `/etc/conf.d/net`. The list itself is a space separated list.
