@@ -14,10 +14,10 @@ external_resources:
  - '[MariaDB Foundation: Installing MariaDB Galera Cluster on Debian/Ubuntu](https://blog.mariadb.org/installing-mariadb-galera-cluster-on-debian-ubuntu/)'
 ---
 
-MariaDB replication with Galera adds redundancy for the database backend of your websites. With database replication, multiple servers act as a cluster. Database clustering is particularly useful for high availability website configurations. In this example, we will use three separate Linodes to configure database replication, each with private IPv4 addresses.
+MariaDB replication with Galera adds redundancy for the database backend of your websites. With database replication, multiple servers act as a cluster. Database clustering is particularly useful for high availability website configurations. In this example, we will use three separate Linodes to configure database replication, each with private IPv4 addresses. This guide is written for Debian and Ubuntu.
 
 {: .note}
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.  This guide also assumes that your Linodes are each configured with a [Private IP Address](/docs/networking/remote-access#adding-private-ip-addresses).
+>This guide assumes that your Linodes are each configured with a [Private IP Address](/docs/networking/remote-access#adding-private-ip-addresses).
 
 ##Install Required Packages
 
@@ -74,7 +74,7 @@ MariaDB replication with Galera adds redundancy for the database backend of your
 
 5.  Confirm that the cluster has started by running the following command.  You should receive an output of the current cluster size:
 
-		mysql -u root -e 'SELECT VARIABLE_VALUE as "cluster size" FROM INFORMATION_SCHEMA.GLOBAL_STATUS WHERE VARIABLE_NAME="wsrep_cluster_size"'
+		mysql -u root -p -e 'SELECT VARIABLE_VALUE as "cluster size" FROM INFORMATION_SCHEMA.GLOBAL_STATUS WHERE VARIABLE_NAME="wsrep_cluster_size"'
 
 	You should see output similar to the following:
 
@@ -98,7 +98,7 @@ MariaDB replication with Galera adds redundancy for the database backend of your
 
 1.  Log in to MariaDB on each of your Linodes:
 
-		mysql -u root
+		mysql -u root -p
 
 1.  Test by creating a database and inserting a row on your primary Linode:
 
