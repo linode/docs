@@ -61,7 +61,7 @@ You can connect to Lish with the SSH client of your choice. For example, you can
 5.  At the Lish command prompt, type a Linode's name. For example, typing `linode241706` will connect you to the screen console session for that Linode.
 6.  Log in to the Linode with your root username and password, or any other username and password.
 
-After you log in, you'll have console access to your Linode. You'll be able to restart services like `sshd`, edit firewall settings, and make other changes to your Linode. To exit your Linode's console, press **Control-A-D** to return to the host machine, and then press **Control-A-D** again to return to the Lish menu. If you'd like to see the list of your Linodes again, type `list` from the gateway.
+After you log in, you'll have console access to your Linode. You'll be able to restart services like `sshd`, edit firewall settings, and make other changes to your Linode. To exit your Linode's console, press **Control-A-D** to return to the host machine, and then press **Control-D** to return to the Lish menu. If you'd like to see the list of your Linodes again, type `list` from the gateway.
 
 ### Using a Web Browser
 

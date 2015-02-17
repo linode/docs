@@ -1,192 +1,164 @@
 ---
 author:
-  name: Linode
-  email: bolow@linode.com
-description: 'How to configure IPv6 natively on your Linode.'
-keywords: 'ipv6,networking'
+    name: Linode
+    email: docs@linode.com
+description: 'How to configure IPv6 networking natively on your Linode.'
+keywords: 'ipv6, networking'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['networking/ipv6/']
-modified: Thursday, March 13th, 2014
+modified: Friday, February 6th, 2015
 modified_by:
-  name: Linode
+    name: Dave Russell
 published: 'Tuesday, May 3rd, 2011'
 title: Native IPv6 Networking
+external_resources:
+ - '[Understanding IP Addressing](http://www.ripe.net/internet-coordination/press-centre/understanding-ip-addressing)'
+ - '[IPv6 Subnet Cheat Sheet](http://www.ipv6ve.info/project-definition/ipv6-subnet-cheat-sheet-and-ipv6-cheat-sheet-reference)'
 ---
 
-Native IPv6 support is provided in all of our datacenters. IPv6 is enabled by default as well as IPv4. To check your Linode's public IP addresses click on the **Remote Access** tab.
+Linode provides IPv6 support in all of our data centers, and all Linodes come with one IPv6 address at creation. By default, IPv6 is enabled on all Linodes and the IPv6 address is acquired via SLAAC. To determine your Linode's IPv6 address, click on the [Remote Access](/docs/networking/remote-access) tab of the Linode's dashboard.
 
- {: .note }
+It is important to note that Linode does not offer private IPv6 address allocations. We have designed our IPv6 accounting so that local IPv6 traffic does not count against your transfer quota and you can use them just like private IPv6 addresses. 
+
+{: .note }
 >
-> The steps required in this guide require root privileges. Run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](https://library.linode.com/using-linux/users-and-groups) guide.
+> The steps provided in this guide require root privileges. It is assumed that you will run these commands as the root superuser. If you are not logged in as `root` you will need to use `sudo`. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 
 Setting up IPv6
 ---------------
 
-IPv6 is automatically configured on your Linode. To view the network configuration of your Linode, run the `ifconfig` command. The output should look similar to the following:
+The IPv6 address provided with your Linode will automatically assign itself to your Linode via SLAAC. Our system is set up to do this so that you will not need to statically configure your IPv6 address unless you have an IPv6 address pool.
 
-    [root@europa ~]# ifconfig eth0
-              eth0      Link encap:Ethernet  HWaddr F2:3C:91:DB:26:B7
-              inet addr:xx.xx.xx.xx  Bcast:xx.xx.xx.xx  Mask:255.255.255.0
-              inet6 addr: 2600:3c03::f03c:91ff:fedb:26b7/64 Scope:Global
-              inet6 addr: fe80::f03c:91ff:fedb:26b7/64 Scope:Link
-              UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
-              RX packets:26002 errors:0 dropped:0 overruns:0 frame:0
-              TX packets:20325 errors:0 dropped:0 overruns:0 carrier:0
-              collisions:0 txqueuelen:1000
-              RX bytes:2585353 (2.4 MiB)  TX bytes:3245741 (3.0 MiB)
+To ensure that your IPv6 address has been correctly assigned to your Linode, you can use the following command: 
 
-Alternately, the output for the network configuration using the `ip addr` command will look similar to the example below:
+    ip -6 addr show
 
-    [root@europa ~]# ip addr show dev eth0
-    3: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP qlen 1000
-       link/ether f2:3c:91:db:26:b7 brd ff:ff:ff:ff:ff:ff
-       inet xx.xxx.xx.x/24 brd xx.xxx.xx.xxx scope global eth0
-          valid_lft forever preferred_lft forever
-       inet6 2600:3c03::f03c:91ff:fedb:26b7/64 scope global dynamic
-          valid_lft 2591986sec preferred_lft 604786sec
-       inet6 fe80::f03c:91ff:fedb:26b7/64 scope link
-          valid_lft forever preferred_lft forever
+This will show a block of text similar to:
 
-In the examples above, the IPv6 address associated with this Linode is `2600:3c03::f03c:91ff:fedb:26b7`," which is denoted by the "`Scope:Global` declaration that follows it. The `/64` at the end of the addresses is part of the "CIDR" notation, which refers to the subnet that you are on. The `Scope:Link` declaration after the `fe80::f03c:91ff:fedb:26b7/64` IP indicates a local link address.
+    3: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qlen 1000
+          inet6 2001:DB8:2000:aff0::/32 scope global
+            valid_lft forever preferred_lft forever
+          inet6 ff32:20:2001:db8::/96 scope link
+            valid_lft forever preferred_lft forever
 
-To test the connection, you can use the `ping6` utility:
+The second and fourth lines in the output above show your IPv6 address block. 
 
-    [root@europa ~]# ping6 ipv6.google.com -c 3
-    PING ipv6.google.com(lga15s42-in-x05.1e100.net) 56 data bytes
-    64 bytes from lga15s42-in-x05.1e100.net: icmp_seq=1 ttl=55 time=7.89 ms
-    64 bytes from lga15s42-in-x05.1e100.net: icmp_seq=2 ttl=55 time=8.12 ms
-    64 bytes from lga15s42-in-x05.1e100.net: icmp_seq=3 ttl=55 time=8.06 ms
+As displayed above, you will have inet6 blocks even if you only have one IPv6 address:
 
-    --- ipv6.google.com ping statistics ---
-    3 packets transmitted, 3 received, 0% packet loss, time 2011ms
-    rtt min/avg/max/mdev = 7.893/8.027/8.127/0.098 ms
+ * The first, ending in `global`, is the global IPv6 address which everyone can connect to. 
 
-The **c** option is for count, and the 3 is for the number of packets sent.
+ * The second, ending in `link`, is your link-local address. An IPv6 link-local address is a unicast address that can be automatically configured on any interface. The link-local is usually in the FE80::/10 range, however to comply with [RFC 3849](https://tools.ietf.org/html/rfc3849), the link-local for the documentation address is in the FF32::/10 range.
 
-Note: For Linodes prior to the year 2012, you need to click the **Enable IPv6** link from the **Remote Access** tab in the Linode Manager. A manual reboot will be required to enable IPv6.
+If your Linode does not have the correct IPv6 address or an IPv6 address at all, you should verify that you have router advertisements enabled and you have disabled privacy extensions. In order to use Linode's SLAAC, your Linode will need to accept router advertisements. These settings are properly set in our distribution templates by default.
 
-Firewall
---------
+Additional IPv6 Addresses
+-------------------------
 
-If you have already implemented a firewall for IPv6, please ensure the following rules are in place. This will ensure that IPv6 address properly allocate without manual intervention or static networking. We want to ensure that neighbor solicitation is able to pass through your Linodes firewall.
-
-    ip6tables -A INPUT -p icmpv6 --icmpv6-type router-advertisement -m hl --hl-eq 255 -j ACCEPT
-    ip6tables -A INPUT -p icmpv6 --icmpv6-type neighbor-solicitation -m hl --hl-eq 255 -j ACCEPT
-    ip6tables -A INPUT -p icmpv6 --icmpv6-type neighbor-advertisement -m hl --hl-eq 255 -j ACCEPT
-    ip6tables -A INPUT -p icmpv6 --icmpv6-type redirect -m hl --hl-eq 255 -j ACCEPT
-
-IPv6 Address Pools
-------------------
-
-**By default, each Linode has a single IPv6 address assigned to it.** Additional blocks of IPv6 addresses may be requested at no charge. Addresses in these pools can be used on any of your Linodes that reside in the same facility. For example, if you have four Linodes in Newark, you could assign each of them addresses from your Newark address pool. Open a support ticket to request your IPv6 pool.
-
-Your pool will be visible under the "Remote Access Tab" of the Linode Manager in a manner similar to the following:
-
-    Public IP Pools  2600:3c03:e000:0084::/64 
-
-When dealing with IPv6, pool sizes can get very large, very fast. Linode offers three different sizes of IPv6 pools (/56, /64, and /116), with the default size being /64. The table below breaks down the number of available addresses per pool.
+You can request additional IPv6 addresses at any time by opening a [support ticket](/docs/platform/support). Additional addresses are allotted in pools. Each pool has a different amount of IPv6 addresses. The IPv6 pool sizes Linode provides and their respective quantity of IPv6 addresses are below.
 
 {: .table .table-striped }
-| Subnet | No. of IPS                    |
+| Pool   | No. of IPS                    |
 |:-------|:------------------------------|
 | /56    | 4,722,366,482,869,645,213,696 |
 | /64    | 18,446,744,073,709,551,616    |
 | /116   | 4,096                         |
 |--------|-------------------------------|
 
-### Adding IPv6 Addresses
 
-To attach an IP to your interface, issue the following command, be sure to replace the example IP with one of the addresses from your pool:
+### IPv6 Neighbor Discovery
 
-    ip -6 addr add 2600:3c03:e000:0084::/64 dev eth0
+Each /56 or /64 IPv6 address pool is routed to a specific Linode. If you want to use that same address pool across multiple Linodes, you can using neighbor discovery. In order to take advantage of neighbor discovery you must configure your Linode to be a router using `net.ipv6.conf.default.forwarding`. 
 
-You may verify that the IP has been brought up by issuing the `ip -6 addr show eth0` command:
+{: .caution}
+>This will create a single point of failure for your infrastructure. If that Linode were to crash, lose networking, or have another disruption in service, your entire IPv6 network would also go down.
 
-    [root@europa ~]# ip -6 addr show eth0
-    3: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qlen 1000
-        inet6 2600:3c03:e000:84::/64 scope global
-           valid_lft forever preferred_lft forever
-        inet6 2600:3c03::f03c:91ff:fedb:26b7/64 scope global dynamic
-           valid_lft 2591982sec preferred_lft 604782sec
-        inet6 fe80::f03c:91ff:fedb:26b7/64 scope link
-           valid_lft forever preferred_lft forever
-
-If you need to configure more than 16 IPv6 address, add a line to `/etc/sysctl.conf` that resembles the following:
-
-{: .file-excerpt }
-/etc/sysctl.conf
-:   ~~~ bash
-    net.ipv6.conf.eth0.max_addresses=32
-    ~~~
-
-If at any time you wish to see IPv6 addresses that are brought up on your Linode, issue the following command:
-
-    ip -6 addr show
-
-Additionally, you can use the following command to see information about your network route:
-
-    ip -6 route show
-
-### Private and Floating IPs
-
-Since addresses in your pool can be used on any of your Linodes in the same facility, you will not need to configure failover through the Linode Manager for any of your IPv6 addresses. However, you will still need to configure software on your Linode to handle the failover process.
-
-IPv6 traffic to and from Linodes within the same facility is not counted towards your monthly transfer, so there is no need to request private IPv6 IPs.
+Unlike the other pools available, /116 IPv6 address pools route to all of the Linodes on your account within the same data center as the Linode the pool is assigned to. This means there is no single point of failure.
 
 Adding IPv6 Addresses
 ---------------------
 
-This section will provide instructions on how to configure your IPv6 addresses for a specific Linux distribution. In the examples below, we used the following pool with a /64 subnet: `2600:3c03:e000:0084:: - 2600:3c03:e000:84:ffff:ffff:ffff:ffff:`. Remember to replace the sample addresses with the ones you have been assigned.
+While default IPv6 addresses are configured automatically, you will need to statically configure each IPv6 address in the pool you request. 
 
-### Ubuntu / Debian
+{: .note}
+>If SLAAC is not obtaining your IPv6 address, even after verifying that privacy extensions are disabled and your Linode is accepting router advertisements, you may need to statically configure your default IPv6 address as well.
 
-On Debian and Ubuntu distributions, you can edit your `/etc/network/interfaces` file. In this example, we will use the `ip` command to add and remove the address depending on the current action. If the interface is brought up, then add the address.
+### Debian/Ubuntu
 
-{: .note }
->
-> You should only add IPv6 addresses within the `eth0` section, and not an interface label section such as `eth0:0` or `eth0:1`.
+1.  On Debian and Ubuntu, edit `/etc/network/interfaces` to set up statically configured IPv6:
 
-{: .file }
-/etc/network/interfaces
-:   ~~~
-    auto eth0
-    iface eth0 inet dhcp
-        up /sbin/ip -6 addr add 2600:3c03:e000:84::0/64 dev eth0
-        up /sbin/ip -6 addr add 2600:3c03:e000:84::1/64 dev eth0
-        up /sbin/ip -6 addr add 2600:3c03:e000:84::2/64 dev eth0
-    ~~~
+    {: .file }
+    /etc/network/interfaces
+    : ~~~
+      # This file describes the network interfaces available on your system
+      # and how to activate them. For more information, see interfaces(5).
 
-If the interface is being brought down, remove the address. You can also use similar syntax if you are using static IPv4 addresses.
+      # The loopback network interface
+      auto lo
+      iface lo inet loopback
 
-{: .file }
-/etc/network/interfaces
-:   ~~~
-    auto eth0
-    iface eth0 inet dhcp
-        down /sbin/ip -6 addr del 2600:3c03:e000:84::0/64 dev eth0
-        down /sbin/ip -6 addr del 2600:3c03:e000:84::1/64 dev eth0
-        down /sbin/ip -6 addr del 2600:3c03:e000:84::2/64 dev eth0
-    ~~~
+      # The primary network interface (IPv4)
+      auto eth0
+      iface eth0 inet dhcp
 
-### CentOS / Fedora
+      # IPv6 Address Blocks
+      # You should add an additional block for each IPv6 address you need configured.
+      # You do not need to configure a block for your default IPv6 address, it will be brought up via SLAAC
+      iface eth0 inet6 static
+        address 2001:DB8:2000:aff0::1/64
 
-In CentOS and Fedora you will need to add an `IPV6ADDR_SECONDARIES` line to your `/etc/sysconfig/network-scripts/ifcfg-eth0` file. This line is a space separated list of the IPv6 addresses and the subnet you want brought up at boot. Below is an example of the configuration file.
+      iface eth0 inet6 static
+        address 2001:DB8:2000:aff0::2/64
+      ~~~
+
+2.  Restart networking. As this will break an SSH connection, this command should be performed in [LISH](/docs/networking/using-the-linode-shell-lish)
+
+        ifdown -a && ifup -a
+
+### CentOS/Fedora
+
+On CentOS or Fedora, edit `/etc/sysconfig/network-scripts/ifcfg-eth0` to set up statically configured IPv6. You should configure [Static IP Networking](/docs/networking/linux-static-ip-configuration) for IPv4 as well.
 
 {: .file }
 /etc/sysconfig/network-scripts/ifcfg-eth0
-:   ~~~
-    DEVICE="eth0"
-    BOOTPROTO="dhcp"
-    IPV6INIT="yes"
-    IPV6_AUTOCONF="yes"
-    ONBOOT="yes"
-    TYPE="Ethernet"
-    IPV6ADDR_SECONDARIES="2600:3c03:e000:84::0/64 2600:3c03:e000:84::1/64 2600:3c03:e000:84::2/64"
-    ~~~
+: ~~~
+  # Configuration for eth0
+  DEVICE=eth0
+  BOOTPROTO=none
+  ONBOOT=yes
 
-### Arch Linux
+  # Adding a public IP address.
+  # The netmask is taken from the PREFIX (where 24 is Public IP, 17 is Private IP)
+  IPADDR0=198.51.100.5
+  PREFIX0=24
 
-In Arch Linux, if you have a single fixed wired network connection, DHCP is already enabled by default. However, to manually configure IP addresses you will need to do the following:
+  # Specifying the gateway
+  GATEWAY0=198.51.100.1
+
+  # Adding a second public IP address.
+  IPADDR1=198.51.100.6
+  PREFIX1=24
+
+  # Adding a private IP address.
+  IPADDR2=192.168.133.234
+  PREFIX2=17
+
+  IPV6INIT = yes
+  # Adding IPv6 addresses from pool.
+  IPV6ADDR_SECONDARIES="2001:DB8:2000:aff0::1/32 2001:DB8:2000:aff0::2/32 2001:DB8:2000:aff0::3/32"
+  ~~~
+
+If you are using CentOS 6.5 or lower, restart networking:
+
+    service networking restart
+    
+If you are using CentOS 7, you will need to reload your configuration using `nmcli`, and bring your static interface down and back up:
+
+    nmcli reload
+    nmcli con down "System eth0"
+    nmcli con up "System eth0"
+
+### Arch Linux (netctl)
+
+If you are still using `netctl` in Arch Linux, you can statically configure your IPv6 pools by editing the `/etc/netctl/examples/ethernet-static` file and copying it to `/etc/netctl`.
 
 1.  Navigate to examples directory:
 
@@ -211,24 +183,51 @@ In Arch Linux, if you have a single fixed wired network connection, DHCP is alre
 
             ## IPv4 Static Configuration
             IP=static
-            Address=('xx.xx.xx.xx/24' 'xxx.xxx.xxx.xxx/17')
-            Gateway='xxx.xxxx.xx.x'
+            Address=('198.51.100.2/24' '192.168.133.234/17')
+            Gateway='198.51.100.1'
 
             ## For IPv6 autoconfiguration
             #IP6=stateless
 
             ## For IPv6 static address configuration
             IP6=static
-            Address6=('2600:3c03:e000:00084::/64')
+            Address6=('2001:DB8:2000:aff0::1/32')
             Gateway6='fe80::1'
 
             ## DNS resolvers
-            DNS=('xx.xx.xx.x' 'xx.xx.xx.x' 'xx.xx.xx.x')
+            DNS=('198.51.100.6' '198.51.100.7' '198.51.100.8')
         ~~~
-	
+  
 5.  Enable your new network profile:
 
         netctl enable ethernet-static
+
+### Arch Linux/Fedora 21 (systemd-networkd)
+
+If you are using `systemd-networkd` on Arch Linux or Fedora 21, you can statically configure IPv6 pools by editing `/etc/systemd/network/50-static.network`.
+
+1.  Set up [Static IP Networking](/docs/networking/linux-static-ip-configuration/#arch-linux--fedora-21) for your IPv4 address.
+
+2.  Edit your current static IP networking configuration to allow for your IPv6 addresses. You will need to include your default IPv6 address as well.
+
+    {: .file }
+    /etc/systemd/network/50-static.network
+    :   ~~~
+        [Match]
+        Name=eth0
+
+        [Network]
+        Address=198.51.100.2/24
+        Address=192.168.133.234/17
+        Gateway=198.51.100.1
+        Address=2001:DB8:2000:aff0::/32
+        Address=2001:DB8:2000:aff0::1/32
+        Address=2001:DB8:2000:aff0::2/32
+        ~~~
+
+3.  Restart `systemd-networkd`
+
+        systemctl restart systemd-networkd
 
 ### Gentoo
 
@@ -241,17 +240,6 @@ The configuration of additional IPv6 addresses in Gentoo is simple. Append the I
     # scripts in /etc/init.d.  To create a more complete configuration,
     # please review /usr/share/doc/openrc*/net.example* and save your configuration
     # in /etc/conf.d/net (this file :]!).
-    config_eth0="dhcp 2600:3c03:e000:84::0/64 2600:3c03:e000:84::1/64 2600:3c03:e000:84::2/64"
+    config_eth0="dhcp 2001:DB8:2000:aff0::1/32 2001:DB8:2000:aff0::2/32 2001:DB8:2000:aff0::3/32"
     ~~~
-
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Understanding IP Addressing](http://www.ripe.net/internet-coordination/press-centre/understanding-ip-addressing)
-- [IPv6 Subnet Cheat Sheet](http://www.ipv6ve.info/project-definition/ipv6-subnet-cheat-sheet-and-ipv6-cheat-sheet-reference)
-
-
-
+    
