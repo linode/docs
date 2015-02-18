@@ -142,13 +142,15 @@ Although there are a vast number of `top` commands, some of the more common ones
 
 The `htop` command is an alternative to `top`, offering an easier interface featuring color, mouse operation, the ability to scroll through processes (horizontally and vertically). It is overall more intuitive, although providing similar output as the regular `top` command.
 
-To download `htop` for Debian/Ubuntu:
+To install:
 
-	apt-get install htop
+- 	For Debian/Ubuntu:
 
-For CentOS/Fedora:
+		apt-get install htop
 
-	yum install htop
+- 	For CentOS/Fedora:
+
+		yum install htop
 
 Run `htop` by entering:
 
@@ -160,13 +162,15 @@ The `htop` screen runs similar to `top`, but with scroll and mouse support, and 
 
 The `iotop` command tracks the input/output operations on a per-process basis. `iotop` must be run as root or with the `sudo` prefix.
 
-To install `iotop` for Debian/Ubuntu:
+To install:
 
-	apt-get install iptop
+-	For Debian/Ubuntu:
 
-For CentOS/Fedora:
+		apt-get install iptop
 
-	yum install iotop
+- 	For CentOS/Fedora:
+
+		yum install iotop
 
 Run `iotop` by entering:
 
