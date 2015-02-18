@@ -101,13 +101,13 @@ The file you will be changing is located at `/etc/mysql/my.cnf`.
 >
 >It is also suggested that you only make small changes at a time and monitor your server after each change. After each change restart MySQL:
 >
->On Debian/Ubuntu:
+>-	On Debian/Ubuntu:
 >
->	service mysql restart
+>		service mysql restart
 >
->On CentOS/Fedora:
+>-	On CentOS/Fedora:
 >
->	/etc/init.d/mysqld restart
+>		/etc/init.d/mysqld restart
 >
 >When changing values in your `my.cnf` file be sure that the line you are changing is not commented out with the pound (`#`) prefix.
 
