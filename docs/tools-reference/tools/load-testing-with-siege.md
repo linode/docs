@@ -56,7 +56,7 @@ Siege is an HTTP load testing and benchmarking utility that can be used to measu
 
 8.  Open the `.siegerc` file located in your home directory.
 
-9.  Suggested configuration is for 25 concurrent users over a period of 1 minute. Set a location for your log file. Be sure to uncomment any commented settings by removing the pound sign (`#`):
+9.  The suggested Siege configuration is for 25 concurrent users over a period of 1 minute. Set a location for your log file. Be sure to uncomment any commented settings by removing the pound sign (`#`):
 
 	{: .file-excerpt}
 	.siegerc
