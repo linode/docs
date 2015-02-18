@@ -10,7 +10,7 @@ modified: Monday, January 19, 2014
 modified_by:
   name: James Stewart
 published: ''
-title: Network Helper - BETA
+title: Network Helper
 ---
 
 Network Helper automatically deposits a static networking configuration in to your Linode at boot. Thanks to Network Helper, you don't have to worry about altering your network configuration when you:

@@ -14,14 +14,14 @@ external_resources:
  - '[McMyAdmin Home Page](http://mcmyadmin.com/#/home)'
 ---
 
-McMyAdmin is a leading control panel for adminstration of Minecraft servers. It boasts compatibility with third party mods and a very slick web interface for managing your server. This guide will walk you through installation and configuration of your new McMyAdmin server. This guide assumes that you have an up to date Debian 7 Linode. If you have not followed our [getting started](/docs/getting-started/) guide, we recommend that you do so prior to following these instructions.
+McMyAdmin is a leading control panel for Minecraft servers. It boasts compatibility with third party mods and a sleek web interface for managing your server. This guide covers the installation and configuration of a new McMyAdmin server and assumes that you have an up-to-date, Debian 7 Linode. If you have not followed our [getting started](/docs/getting-started/) guide, it's recommended that you do so prior to following this tutorial.
 
 {: .note }
 > To use a Minecraft server you must also have a version of the game client from [Minecraft.net](https://minecraft.net/).
 
 ##Prerequisite software
 
-1.  Ensure that you have the latest operating system updates:
+1.  Update the operating system:
 
 		sudo apt-get update && sudo apt-get upgrade
 
@@ -29,7 +29,7 @@ McMyAdmin is a leading control panel for adminstration of Minecraft servers. It 
 
 		sudo apt-get install openjdk-7-jre
 
-3.  If you have configured your firewall, ensure that a port is open for accessing the McMyAdmin web interface.
+3.  If you have configured the firewall, ensure that a port is open for accessing the McMyAdmin web interface.
 		
 		 sudo iptables -A INPUT -p tcp --dport 8080 -j ACCEPT
 
@@ -46,7 +46,7 @@ McMyAdmin is a leading control panel for adminstration of Minecraft servers. It 
 
 ##Install McMyAdmin
 
-1.  Change to the MdMyAdmin installation directory:
+1.  Change to the McMyAdmin installation directory:
 
 		mkdir ~/mcmyadmin
 		cd ~/mcmyadmin
@@ -65,15 +65,15 @@ McMyAdmin is a leading control panel for adminstration of Minecraft servers. It 
 
 ##Running McMyAdmin
 
-1.  Install screen, if it is not already installed on your system:
+1.  Install screen, if it is not already installed:
 
 		sudo apt-get install screen
 
-2.  Start a screen session for your McMyAdmin client to run in:
+2.  Start a screen session for the McMyAdmin client:
 
 		screen -S mcma
 
-3.  Ensure that you are in the correct directory, then execute the McMyAdmin server:
+3.  Check the current working directory, then execute the McMyAdmin server:
 
 		cd ~/McMyAdmin; ./MCMA2_Linux_x86_64
 
@@ -87,13 +87,13 @@ McMyAdmin is a leading control panel for adminstration of Minecraft servers. It 
 	
 	[![Configuration Page](/docs/assets/mcma-config-resize.png)](/docs/assets/mcma-config.png)
 
-3.  Once you have completed the initial configuraition steps and selected your settings, switch to the status page.
+3.  Once the initial configuration steps are completed,  select your settings, then switch to the status page.
 	
 	[![Status Page](/docs/assets/mcma-status-resize.png)](/docs/assets/mcma-status.png)
 
-4.  Click on "Start Server"
+4.  Select "Start Server"
 
 	[![Server Started](/docs/assets/mcma-running-resize.png)](/docs/assets/mcma-running.png)
 
 
-Congratulations, you've now set up a new Minecraft server using McMyAdmin.
+Congratulations, you have now set up a new Minecraft server using McMyAdmin.
