@@ -16,25 +16,21 @@ external_resources:
 
 Siege is an HTTP load testing and benchmarking utility that can be used to measure the performance of a web server when under duress. It evaluates the amount of data transferred, response time of the server, transaction rate, throughput, concurrency, and times the program returned okay. Siege offers three modes of operation: Regression, internet simulation, and brute force.
 
-{: .note}
->
->This guide is for Debian or Ubuntu systems.
->
->The steps in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+This guide is for Debian or Ubuntu systems.
 
 ##Download and Configure Siege
 
 1.  Prior to installing any new programs, update your system:
 
-		apt-get update && apt-get upgrade --show-upgraded
+		sudo apt-get update && sudo apt-get upgrade --show-upgraded
 
 2.  Download the latest version of Siege (3.0.9 at the time of this publication), which is always available at [Siege's website](http://www.joedog.org/siege-home):
 
-		wget http://download.joedog.org/siege/siege-3.0.9.tar.gz
+		wget http://download.joedog.org/siege/siege-latest.tar.gz
 
 3.  Extract the program:
 
-		tar -zxvf siege-3.0.9.tar.gz
+		tar -zxvf siege-latest.tar.gz
 
 4.  Navigate to the Siege directory:
 
@@ -42,13 +38,13 @@ Siege is an HTTP load testing and benchmarking utility that can be used to measu
 
 5.  If the GNU Compiler Collection (gcc) is not installed, install now:
 
-		apt-get install build-essential
+		sudo apt-get install build-essential
 
 6.  Configure and complete the installation:
 
 		./configure
 		make
-		make install
+		sudo make install
 
 7.  Generate a configuration file:
 
