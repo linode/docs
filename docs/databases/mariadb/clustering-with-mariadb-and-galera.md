@@ -5,23 +5,23 @@ author:
 description: 'Configuring a MariaDB Cluster with Galera.'
 keywords: 'mariadb,mysql,highavailability,high availability,HA,cluster,debian,ubuntu'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Wednesday, January 30th, 2015
+modified: Wednesday, February 18th, 2015
 modified_by:
   name: James Stewart
-published: 'Thursday, January 30th, 2015'
+published: 'Wednesday, February 18th, 2015'
 title: Configuring a MariaDB Cluster with Galera
 external_resources:
  - '[MariaDB Foundation: Installing MariaDB Galera Cluster on Debian/Ubuntu](https://blog.mariadb.org/installing-mariadb-galera-cluster-on-debian-ubuntu/)'
 ---
 
-MariaDB replication with Galera adds redundancy for the database backend of your websites. With database replication, multiple servers act as a cluster. Database clustering is particularly useful for high availability website configurations. In this example, we will use three separate Linodes to configure database replication, each with private IPv4 addresses. This guide is written for Debian and Ubuntu.
+MariaDB replication with Galera adds redundancy for a site's database. With database replication, multiple servers act as a database cluster. Database clustering is particularly useful for high availability website configurations. This guide uses three separate Linodes to configure database replication, each with private IPv4 addresses on Debian and Ubuntu.
 
 {: .note}
 >This guide assumes that your Linodes are each configured with a [Private IP Address](/docs/networking/remote-access#adding-private-ip-addresses).
 
 ##Install Required Packages
 
-1.  To install the required packages, you will first need to add the keys for the Galera repository by running the following commands:
+1.  To install the required packages, first add the keys for the Galera repository by running:
 
 		sudo apt-get install python-software-properties
 		sudo apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 0xcbcb082a1bb943db
@@ -42,7 +42,7 @@ MariaDB replication with Galera adds redundancy for the database backend of your
 
 ##Configuring Galera
 
-1.  Create the file /etc/mysql/conf.d/galera.cnf on each of your Linodes with the following contents.  Replace the IP addresses in the "wsrep_cluster_address" section with the private IP addresses of each of your Linodes:
+1.  Create the file /etc/mysql/conf.d/galera.cnf on each of the Linodes with the following content.  Replace the IP addresses in the "wsrep_cluster_address" section with the private IP addresses of each of the Linodes:
 
 	{: .file-excerpt}
     /etc/mysql/conf.d/galera.cnf
@@ -62,13 +62,13 @@ MariaDB replication with Galera adds redundancy for the database backend of your
     wsrep_sst_method=rsync
     ~~~
 
-2.  Reboot both of your non-primary servers in your cluster to enable the new debian.cnf file settings.
+2.  Reboot both of your non-primary servers in the cluster to enable the new debian.cnf file settings.
 
 3.  Stop the MariaDB service on each of your Linodes:
 
 		sudo service mysql stop
 
-4.  Restart the MariaDB service on your primary Linode, with the --wsrep-new-cluster flag:
+4.  Restart the MariaDB service on the primary Linode, with the --wsrep-new-cluster flag:
 
 		sudo service mysql start --wsrep-new-cluster
 
@@ -76,7 +76,7 @@ MariaDB replication with Galera adds redundancy for the database backend of your
 
 		mysql -u root -p -e 'SELECT VARIABLE_VALUE as "cluster size" FROM INFORMATION_SCHEMA.GLOBAL_STATUS WHERE VARIABLE_NAME="wsrep_cluster_size"'
 
-	You should see output similar to the following:
+	The output should be similar to the following:
 
 		MariaDB [(none)]> SELECT VARIABLE_VALUE as "cluster size" FROM INFORMATION_SCHEMA.GLOBAL_STATUS WHERE VARIABLE_NAME="wsrep_cluster_size";
 		+--------------+
@@ -96,20 +96,20 @@ MariaDB replication with Galera adds redundancy for the database backend of your
 
 ##Testing database replication
 
-1.  Log in to MariaDB on each of your Linodes:
+1.  Log in to MariaDB on each of the Linodes:
 
 		mysql -u root -p
 
-1.  Test by creating a database and inserting a row on your primary Linode:
+1.  To test, create a database and insert a row on your primary Linode:
 
         create database test;
         create table test.flowers (`id` varchar(10));
 
-2.  From each of the other servers, run the following command.  You should receive an output of the datbase and row that you created in the previous step:
+2.  From each of the other servers, run the following command.  You should receive an output of the database and row that you created in the previous step:
 
 		show tables in test;
 
-	You should see output simliar to the following:
+	You should see output similar to the following:
 
 		MariaDB [(none)]> show tables in test;
 		+----------------+
