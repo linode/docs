@@ -87,7 +87,7 @@ Important commands to know include:
 -  **`-n[limit]`**: Sets `top` to run for a set amount of intervals before exiting.
 -  **`-b`**: Runs `top` in batch mode, ideal for log files and for use in conjunction with other programs.
 
-Used alongside one-another these commands can prove especially useful. For example, if you want to log a set number of processes over a period of time, combine batch mode, the process ID filter, the delay setting, and the iteration setting to output the results you are looking for:
+Used alongside one-another, these commands can prove especially useful. For example, if you want to log a set number of processes over a period of time, you can combine batch mode, the process ID filter, the delay setting, and the iteration setting to output the results you are looking for:
 
 	top -b -p[PID] -d[interval] -n[limit]
 
@@ -117,7 +117,7 @@ Which outputs these results:
 
 ###Interactive Commands
 
-When run on its own, not in batch mode, `top` is interactive. Use commands to filter through or toggle various options, alter settings, and even manipulate tasks.
+When run on its own, not in batch mode, `top` is interactive. You can use commands to filter through or toggle various options, alter settings, and even manipulate tasks.
 
 Although there are a vast number of `top` commands, some of the more common ones to know include:
 
