@@ -68,23 +68,23 @@ Apache `mod_status` allows you to access information related to connections bein
 
 4.  Restart Apache:
 
-	Debian/Ubuntu:
+	- 	Debian/Ubuntu:
 
-		service apache2 restart
+			service apache2 restart
 
-	CentOS/Fedora:
+	-	CentOS/Fedora:
 
-		/bin/systemctl reload httpd.service
+			/bin/systemctl reload httpd.service
 
 5.  To view the file generated, download Lynx:
 
-	Debian/Ubuntu:
+	-	Debian/Ubuntu:
 
-		apt-get install lynx
+			apt-get install lynx
 
-	Fedora/CentOS:
+	- 	Fedora/CentOS:
 
-		yum install lynx
+			yum install lynx
 
 6.  Open the file:
 
