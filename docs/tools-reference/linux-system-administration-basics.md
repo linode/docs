@@ -1,14 +1,14 @@
 ---
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Tips, troubleshooting pointers, and software usage suggestions for Linux beginners.'
 keywords: 'linux tips,linux beginners,systems administration,admin,linux,mail,http,troubleshooting'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['using-linux/administration-basics/']
-modified: Monday, June 16th, 2014
+modified: Wednesday, February 18, 2015
 modified_by:
-  name: Alex Fornuto
+  name: Dave Russell
 published: 'Sunday, December 13th, 2009'
 title: Linux System Administration Basics
 ---
@@ -116,8 +116,18 @@ The `traceroute` command expands on the functionality of the [ping](#using_the_p
 Here is an example of output from a `traceroute` command:
 
     traceroute to google.com (74.125.53.100), 30 hops max, 40 byte packets
-
-> 1 207.192.75.2 (207.192.75.2) 0.414 ms 0.428 ms 0.509 ms 2 vlan804.tbr2.mmu.nac.net (209.123.10.13) 0.287 ms 0.324 ms 0.397 ms 3 0.e1-1.tbr2.tl9.nac.net (209.123.10.78) 1.331 ms 1.402 ms 1.477 ms 4 core1-0-2-0.lga.net.google.com (198.32.160.130) 1.514 ms 1.497 ms 1.519 ms 5 209.85.255.68 (209.85.255.68) 1.702 ms 72.14.238.232 (72.14.238.232) 1.731 ms 21.031 ms 6 209.85.251.233 (209.85.251.233) 26.111 ms 216.239.46.14 (216.239.46.14) 23.582 ms 23.468 ms 7 216.239.43.80 (216.239.43.80) 123.668 ms 209.85.249.19 (209.85.249.19) 47.228 ms 47.250 ms 8 209.85.241.211 (209.85.241.211) 76.733 ms 216.239.43.80 (216.239.43.80) 73.582 ms 73.570 ms 9 209.85.250.144 (209.85.250.144) 86.025 ms 86.151 ms 86.136 ms 10 64.233.174.131 (64.233.174.131) 80.877 ms 216.239.48.34 (216.239.48.34) 76.212 ms 64.233.174.131 (64.233.174.131) 80.884 ms 11 216.239.48.32 (216.239.48.32) 81.267 ms 81.198 ms 81.186 ms 12 216.239.48.137 (216.239.48.137) 77.478 ms pw-in-f100.1e100.net (74.125.53.100) 79.009 ms 216.239.48.137 (216.239.48.137) 77.437 ms
+    1 207.192.75.2 (207.192.75.2) 0.414 ms 0.428 ms 0.509 ms 
+    2 vlan804.tbr2.mmu.nac.net (209.123.10.13) 0.287 ms 0.324 ms 0.397 ms 
+    3 0.e1-1.tbr2.tl9.nac.net (209.123.10.78) 1.331 ms 1.402 ms 1.477 ms 
+    4 core1-0-2-0.lga.net.google.com (198.32.160.130) 1.514 ms 1.497 ms 1.519 ms 
+    5 209.85.255.68 (209.85.255.68) 1.702 ms 72.14.238.232 (72.14.238.232) 1.731 ms 21.031 ms 
+    6 209.85.251.233 (209.85.251.233) 26.111 ms 216.239.46.14 (216.239.46.14) 23.582 ms 23.468 ms 
+    7 216.239.43.80 (216.239.43.80) 123.668 ms 209.85.249.19 (209.85.249.19) 47.228 ms 47.250 ms 
+    8 209.85.241.211 (209.85.241.211) 76.733 ms 216.239.43.80 (216.239.43.80) 73.582 ms 73.570 ms 
+    9 209.85.250.144 (209.85.250.144) 86.025 ms 86.151 ms 86.136 ms 
+    10 64.233.174.131 (64.233.174.131) 80.877 ms 216.239.48.34 (216.239.48.34) 76.212 ms 64.233.174.131 (64.233.174.131) 80.884 ms 
+    11 216.239.48.32 (216.239.48.32) 81.267 ms 81.198 ms 81.186 ms 
+    12 216.239.48.137 (216.239.48.137) 77.478 ms pw-in-f100.1e100.net (74.125.53.100) 79.009 ms 216.239.48.137 (216.239.48.137) 77.437 ms
 
 Often the hostnames and IP addresses on either side of a failed jump are useful in determining who operates the machine where the routing error occurs. Failed jumps are designated by line with three asterisks (e.g. `* * *`).
 
@@ -130,16 +140,15 @@ The "mtr" command, like the [traceroute](#using_the_traceroute_command) tool, pr
 Here is the example output of an `mtr` command:
 
     HOST: squire.example.com  Loss%   Snt   Last   Avg  Best  Wrst StDev
-
-> 1.  256.129.75.4 0.0% 10 0.4 0.4 0.3 0.6 0.1
-> 2.  vlan804.tbr2.mmu.nac.net 0.0% 10 0.3 0.4 0.3 0.7 0.1
-> 3.  0.e1-1.tbr2.tl9.nac.net 0.0% 10 4.3 4.4 1.3 11.4 4.1
-> 4.  core1-0-2-0.lga.net.google.c 0.0% 10 64.9 11.7 1.5 64.9 21.2
-> 5.  209.85.255.68 0.0% 10 1.7 4.5 1.7 29.3 8.7
-> 6.  209.85.251.9 0.0% 10 23.1 35.9 22.6 95.2 27.6
-> 7.  72.14.239.127 0.0% 10 24.2 24.8 23.7 26.1 1.0
-> 8.  209.85.255.190 0.0% 10 27.0 27.3 23.9 37.9 4.2
-> 9.  gw-in-f100.1e100.net 0.0% 10 24.1 24.4 24.0 26.5 0.7
+        1.  256.129.75.4 0.0% 10 0.4 0.4 0.3 0.6 0.1
+        2.  vlan804.tbr2.mmu.nac.net 0.0% 10 0.3 0.4 0.3 0.7 0.1
+        3.  0.e1-1.tbr2.tl9.nac.net 0.0% 10 4.3 4.4 1.3 11.4 4.1
+        4.  core1-0-2-0.lga.net.google.c 0.0% 10 64.9 11.7 1.5 64.9 21.2
+        5.  209.85.255.68 0.0% 10 1.7 4.5 1.7 29.3 8.7
+        6.  209.85.251.9 0.0% 10 23.1 35.9 22.6 95.2 27.6
+        7.  72.14.239.127 0.0% 10 24.2 24.8 23.7 26.1 1.0
+        8.  209.85.255.190 0.0% 10 27.0 27.3 23.9 37.9 4.2
+        9.  gw-in-f100.1e100.net 0.0% 10 24.1 24.4 24.0 26.5 0.7
 
 Used without the `--report` flag, `mtr` tracks the speed of the connection in real time until you exit the program. Additionally, be aware that `mtr` will pause for a few moments before generating output. For more information regarding `mtr` consider our [guide to diagnosing network issues with mtr](/docs/linux-tools/mtr).
 
@@ -158,9 +167,10 @@ If you need to see how much memory your system is using at the current moment is
 
 On a moderately utilized Linode 1GB, this command will generate output that resembles the following:
 
-    total       used       free     shared    buffers     cached
-
-> Mem: 1002 956 46 0 171 357 -/+ buffers/cache: 427 575 Swap: 127 39 88
+        total       used       free     shared    buffers     cached
+    Mem: 1002        956         46          0        171        357 
+    -/+ buffers/cache: 427      575 
+    Swap: 127         39         88
 
 This output takes a little bit of careful reading to interpret correctly. Out of a total 1002 megabytes of memory (RAM), the system is using 956 megabytes, and has 46 megabytes free. **However**, the system also has 427 megabytes of "stale" data buffered and stored in cache. The operating system will "drop" the caches when and if it needs the space, but retains the cache if there is no other need for the space. It is totally normal for a Linux system to leave old data in RAM until the space is needed, and you should not be alarmed if only a small amount of memory is actually "free."
 
