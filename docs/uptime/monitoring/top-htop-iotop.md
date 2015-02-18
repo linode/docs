@@ -5,17 +5,17 @@ author:
 description: 'How to use top to monitor a server''s performance.'
 keywords: 'top,htop,iotop,monitoring,server monitoring'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Wednesday, February 4, 2015
+modified: Wednesday, February 18th, 2015
 modified_by:
   name: Elle Krout
-published: 'Wednesday, February 4, 2015'
+published: 'Wednesday, February 18th, 2015'
 title: Using top to Monitor Server Performance
 external_resources:
  - '[htop](http://hisham.hm/htop/)'
  - '[iotop](http://guichaz.free.fr/iotop/)'
 ---
 
-Viewing your server's processor activity in real-time can aid in discovering and diagnosing any problems in CPU and memory usage, and aid in any changes you need to make. The `top` command is a Linux process manager that can assist in this process.
+Viewing a server's processor activity in real-time can aid in discovering and diagnosing any problems in CPU and memory usage. The `top` command is a Linux process manager that can assist with monitoring.
 
 ##Reading the Screen
 
@@ -25,13 +25,13 @@ The `top` screen contains a variety of information regarding your server, beginn
 
 ![top screen heading](/docs/assets/top-top.png)
 
-1.  The first line contains the time, uptime, and load average values for your server. The **load average** is displayed over 1, 5, and 15 minutes to provide a better overall look at the load your server has undertaken. If there is a spike at one minute, but the load at the five- and fifteen-minute marks is maintained at a lower level, then you may consider a different response compared to when the load is consistently high through all time intervals.
+1.  The first line contains the time, uptime, and load average values for the server. The **load average** is displayed over 1, 5, and 15 minutes to provide a better overall look at the load your server has undertaken. If there is a spike at one minute, but the load at the five- and fifteen-minute marks is maintained at a lower level, then consider a different response compared to when the load is consistently high through all time intervals.
 
 	{: .note}
 	>
-	>In order to properly read the load average section, you need to be aware of how many CPU cores your Linode has. If you have one CPU core, then a load average of 1.00 means your server is at its capacity. This number increases to 2.00 on a Linode with 2 CPU cores, 4.00 with 4, etc.
+	>In order to properly read the load average section, be aware of how many CPU cores the Linode has. If there is one CPU core, then a load average of 1.00 means the server is at its capacity. This number increases to 2.00 on a Linode with 2 CPU cores, 4.00 with 4, etc.
 	>
-	>A load of .70 for a Linode with 1 core is generally considered the threshold. Any higher than this, and you will want to either reconfigure your resources or look into upgrading your plan.
+	>A load of .70 for a Linode with 1 core is generally considered the threshold. Any higher than this, then reconfigure your resources or look into upgrading your plan.
 
 2.  A list of **tasks** and their various states.
 
@@ -51,7 +51,7 @@ Following the heading section is a list of processes and related data:
 
 -  **PR**: The task's priority, ranging from -20 to 19, with -20 being the most important.
 
--  **NI**: The *nice value*, which augments the priority of a task. Negative values will increase a task's priority, while positive values will lower it.
+-  **NI**: The *nice value*, which augments the priority of a task. Negative values increase a task's priority, while positive values decrease it.
 
 -  **VIRT**: Virtual memory used, virtual memory being the combination of both RAM and swap memory.
 
@@ -71,23 +71,23 @@ Following the heading section is a list of processes and related data:
 
 ##Commands
 
-The `top` command offers a set of commands that can be used to enhance its use through sorting and locating information.
+The `top` command offers a set of additional commands that can be used to enhance its use through sorting and locating information.
 
 There are two types of commands that can be used in conjunction with `top`: Command-line options, and interactive commands that can be used while in the program.
 
 ###Command-Line Options
-Command-line options can help you organize and filter from the start of the program.
+Command-line options can help organize and filter from the start of the program.
 
 Important commands to know include:
 
--  **`-d[interval]`**: Sets the delay time that `top` will use to refresh the results.
--  **`-i`**: Toggles whether or not idle processes will be shown.
+-  **`-d[interval]`**: Sets the delay time that `top` uses to refresh the results.
+-  **`-i`**: Toggles whether or not idle processes are shown.
 -  **`-p[PID,PID]`**: Allows the user to filter `top` so only the defined processes are shown.
 -  **`-u [username]`**: Filters by user.
 -  **`-n[limit]`**: Sets `top` to run for a set amount of intervals before exiting.
 -  **`-b`**: Runs `top` in batch mode, ideal for log files and for use in conjunction with other programs.
 
-Used alongside one-another these commands can prove especially useful. For example, if you want to log a set number of processes over a period of time, you can combine batch mode, the process ID filter, the delay setting, and the iteration setting to output the results you are looking for:
+Used alongside one-another these commands can prove especially useful. For example, if you want to log a set number of processes over a period of time, combine batch mode, the process ID filter, the delay setting, and the iteration setting to output the results you are looking for:
 
 	top -b -p[PID] -d[interval] -n[limit]
 
@@ -117,7 +117,7 @@ Which outputs these results:
 
 ###Interactive Commands
 
-When run on its own (not in batch mode), `top` is interactive. You can use commands to filter through or toggle various options, alter settings, and even manipulate tasks.
+When run on its own, not in batch mode, `top` is interactive. Use commands to filter through or toggle various options, alter settings, and even manipulate tasks.
 
 Although there are a vast number of `top` commands, some of the more common ones to know include:
 
@@ -136,11 +136,11 @@ Although there are a vast number of `top` commands, some of the more common ones
 
 ##Additional top-like Programs
 
-`top` can be used in conjuction with other similar programs that either offer different output results or provide a more intuitive experience.
+`top` can be used in conjunction with other similar programs that either offer different output results or provide a more intuitive experience.
 
 ###htop
 
-The `htop` command is an alternative to `top`, offering an easier interface featuring color, mouse operation, the ability to scroll through processes (horizontally and vertically). It is overall more intuitive, although provides much the same output as the regular `top` command.
+The `htop` command is an alternative to `top`, offering an easier interface featuring color, mouse operation, the ability to scroll through processes (horizontally and vertically). It is overall more intuitive, although providing similar output as the regular `top` command.
 
 To download `htop` for Debian/Ubuntu:
 
@@ -154,7 +154,7 @@ Run `htop` by entering:
 
 	htop
 
-The `htop` screen runs much the same as `top`, but with scroll and mouse support, and a variety of menus that allows for more intuitive use. When a process is highlighted you are also able to act on that process, such as pressing `k` (kill). To learn more regarding `htop` commands press `h` to open it's help menu.
+The `htop` screen runs similar to `top`, but with scroll and mouse support, and a variety of menus that allow for more intuitive use. When a process is highlighted you can act on that process, such as pressing `k` (kill). To learn more regarding `htop` commands, press `h` to open its help menu.
 
 ###iotop
 
@@ -176,4 +176,4 @@ To focus only on processes running, run it with the `--only` suffix:
 
 	iotop --only
 
-`iotop` also shares a number of command line options with `top` including: `-n`, `-b`, `-d`, `-u`, and `-p`, but is not interactive. To learn more about operating iotop run `iotop -h` in your terminal.
+`iotop` also shares a number of command line options with `top` including: `-n`, `-b`, `-d`, `-u`, and `-p`, but is not interactive. To learn more about operating iotop, run `iotop -h` in your terminal.
