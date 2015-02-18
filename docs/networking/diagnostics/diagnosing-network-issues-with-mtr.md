@@ -5,7 +5,7 @@ author:
 description: 'How to create and interpret MTR reports on your Linode or home computer.'
 keywords: 'mtr,traceroute,latency,loss'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['linux-tools/mtr/', 'networking/diagnosing-network-issues-with-mtr/']
+alias: ['linux-tools/mtr/','networking/diagnosing-network-issues-with-mtr/']
 modified: Monday, December 15, 2014
 modified_by:
   name: Dave Russell Jr
