@@ -5,26 +5,26 @@ author:
 description: 'Load testing your web server with regression testing and benchmarking utility Siege'
 keywords: 'siege,load testing,benchmarking'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Thursday, February 5, 2015
+modified: Wednesday, February 18th, 2015
 modified_by:
   name: Elle Krout
-published: 'Thursday, February 5, 2015'
+published: 'Wednesday, February 18th, 2015'
 title: Load Testing Web Servers with Siege
 external_resources:
  - '[Siege Home](http://www.joedog.org/siege-home)'
 ---
 
-Siege is an http load testing and benchmarking utility that can be used to measure the performance of your web server when under duress. It will evaluate the amount of data transferred, response time of the server, transaction rate, throughput, concurrency, and times the program returned okay. It also offers three modes of operation: Regression, internet simulation, and brute force.
+Siege is an HTTP load testing and benchmarking utility that can be used to measure the performance of a web server when under duress. It evaluates the amount of data transferred, response time of the server, transaction rate, throughput, concurrency, and times the program returned okay. Siege offers three modes of operation: Regression, internet simulation, and brute force.
 
 {: .note}
 >
 >This guide is for Debian or Ubuntu systems.
 >
->The steps in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+>The steps in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
 ##Download and Configure Siege
 
-1.  Prior to installing any new programs, it is suggested that you update your system:
+1.  Prior to installing any new programs, update your system:
 
 		apt-get update && apt-get upgrade --show-upgraded
 
@@ -40,7 +40,7 @@ Siege is an http load testing and benchmarking utility that can be used to measu
 
 		cd siege-3.0.9/
 
-5.  If you do not have the GNU Compiler Collection (gcc) installed, do that now:
+5.  If the GNU Compiler Collection (gcc) is not installed, install now:
 
 		apt-get install build-essential
 
@@ -50,13 +50,13 @@ Siege is an http load testing and benchmarking utility that can be used to measu
 		make
 		make install
 
-7. Generate a configuration file by running:
+7.  Generate a configuration file:
 
 		siege.config
 
 8.  Open the `.siegerc` file located in your home directory.
 
-9.  It is suggested that you set the configuration for 25 concurrent users over a period of 1 minute, and set a location for your log file. Be sure to uncomment any commented settings by removing the pound sign (`#`):
+9.  Suggested configuration is for 25 concurrent users over a period of 1 minute. Set a location for your log file. Be sure to uncomment any commented settings by removing the pound sign (`#`):
 
 	{: .file-excerpt}
 	.siegerc
@@ -95,7 +95,7 @@ To run Siege with the default settings, input the following command, replacing `
 
 	siege www.example.com
 
-It will output your results:
+Siege outputs the results:
 
 	** SIEGE 2.70
 	** Preparing 25 concurrent users for battle.
@@ -125,7 +125,7 @@ If there are no failed connections and the availability remains at 100%, there a
 
 ###Creating a URL File
 
-If you want Siege to hit a number of pages on your website at random, you can configure the program to read from a `urls.txt` file that lists your selected pages.
+If you want Siege to hit a number of pages on your website at random, configure the program to read from a `urls.txt` file that lists the selected pages.
 
 1.  Open the `urls.txt` file generally created at `/usr/local/etc/urls.txt`. Add a list of URLs or IP addresses to that file:
 
@@ -153,25 +153,25 @@ If you want Siege to hit a number of pages on your website at random, you can co
 		123.45.67.89
 		~~~
 
-2.  To run Siege with this file you only need to use the `siege` command:
+2.  To run Siege with this file use the `siege` command:
 
 		siege
 
-	If you are using a seperate file you should run:
+	If using a separate file, run:
 
 		siege -f your/file/path.txt
 
 ###Commands
 
-Siege features a number of command line options that you can use when you want to deviate from your default configuration but do not wish to edit the file.
+Siege features a number of command line options to use when you want to deviate from the default configuration but do not wish to edit the file.
 
--  **`-c [num]`**: Set the number of concurrent users. Most web servers will have less than a couple hundred users trying to access their website at the same time, so setting this to anything more than a few hundred is often not needed.
+-  **`-c [num]`**: Set the number of concurrent users. Most web servers have less than a couple hundred users trying to access their website at the same time, so setting this to more than a few hundred is often not needed.
 
--  **`-t [num]`**: Set a time limit for which Siege will run. Can be run with the modifiers `s` for seconds, `m` for minutes, or `h` for hours. There should be no space between the number and the modifier (`-t10s` not `-t10 s`).
+-  **`-t [num]`**: Set a time limit for which Siege runs. Siege can run with the modifiers `s` for seconds, `m` for minutes, or `h` for hours. There should be no space between the number and the modifier (`-t10s` not `-t10 s`).
 
-- **`-d [num]`**: Set the delay for each Siege user. Each user will then be delayed for a random amount of second inbetween 1 and the set number. The default value is 3.
+- **`-d [num]`**: Set the delay for each Siege user. Each user is then delayed for a random amount of seconds in between 1 and the set number. The default value is 3.
 
--  **`-i`**: Used in conjunction with a URLs file, this will cause each user to randomly hit one of the URLs, with no predetermined pattern. Similar to real life (the 'i' stands for "internet"), where you will not know where site visitors go, not all pages may be hit.
+-  **`-i`**: Used in conjunction with a URLs file, this causes each user to randomly hit one of the URLs, with no predetermined pattern. Similar to real life (the 'i' stands for "internet"), where you will not know where site visitors go, not all pages may be hit.
 
 -  **`-v`**: Verbose output. This outputs the results Siege gets in real time before printing the final results. 
 
