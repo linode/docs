@@ -9,7 +9,7 @@ modified: Friday, February 28th, 2015
 modified_by:
   name: Joseph Dooley
 published: 'Friday, February 28th, 2015'
-title: LAMP Container with Docker
+title: LAMP Stack with Docker
 external_resources:
  - '[Linode Dockerhub Page](https://hub.docker.com/u/linode/)'
  - '[Docker Docs](http://docs.docker.com/)'
@@ -22,18 +22,18 @@ Docker is a container platform for applications. With Docker, users can quickly 
 *If you are familiar with Docker containers, also try [Linode Images](/docs/platform/linode-images) to capture and deploy larger system profiles.*
 
 ##Install Docker
-Use the Docker maintained install script. The install script is for Debian or Ubuntu. For other operating systems, use the [Docker Installation](https://docs.docker.com/en/latest/installation/) page.
+Use the Docker maintained install script. The install script is for Debian or Ubuntu. For other operating systems, follow the [Docker Installation](https://docs.docker.com/en/latest/installation/) guides.
 
 1.  Run:
 
         curl -sSL https://get.docker.com/ | sh
 
-2.  Add the non-root user to the "docker" group:
+2.  If necessary, add the non-root user to the "docker" group:
 
         sudo usermod -aG docker example_user
 
 ##Download the Docker Lamp Image
-Visit the Dockerhub [Linode user page here](https://hub.docker.com/u/linode/). 
+Optionally, visit the Dockerhub [Linode user page here](https://hub.docker.com/u/linode/) for configuration information. 
 
 1.  Search for "linode" user images:
 
@@ -68,7 +68,7 @@ When an image downloads, there are no image containers running.
 
 5. Enter the IP address in a web browser to test the site.
 
-Congratulations, you have installed a configured LAMP stack using Docker in seven commands. For the LAMP configuration settings, see below. 
+Congratulations, you have installed a configured LAMP stack using Docker in seven commands. 
 
 ##Where to Find Configuration Settings
 The LAMP image was installed using the [Hosting a Website](/docs/websites/hosting-a-website) guide on a Ubuntu container. The configuration files and settings can be found there, or on the [Dockerhub linode/lamp](https://registry.hub.docker.com/u/linode/lamp/) page.   
