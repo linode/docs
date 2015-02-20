@@ -116,7 +116,7 @@ The applications on your Linode require a certain amount of physical memory to f
 
         ps -eo pmem,pcpu,rss,vsize,args --sort -pmem | less
 
-9.  If an application is consuming all of your available memory, you have three options. You can [kill the application](/docs/linux-tools/common-commands/killall-kill), change the application's settings to reduce its memory footprint, or [upgrade your Linode](/docs/upgrading) to a larger plan.
+9.  If an application is consuming all of your available memory, you have three options. You can kill the application, change the application's settings to reduce its memory footprint, or [upgrade your Linode](/docs/upgrading) to a larger plan.
 10. To reduce the memory footprint of common applications like Apache and MySQL, see [Troubleshooting Memory and Networking Issues](/docs/troubleshooting/memory-networking).
 
 If your Linode is not out of memory, continue to the next section.
@@ -142,7 +142,7 @@ Disk input/output (I/O) bottlenecks can occur when an application or service is 
 
 3.  Examine the I/O wait percentage, as shown above. If the number is zero, your server does not currently have a bottleneck.
 4.  If your I/O wait percentage is above zero, verify that your server has enough free memory available. In many cases, high I/O is an indication that your server has started "swapping," or using disk space as memory.
-5.  If your server has free memory available and is not using swap space, use `iotop` or [vmstat](/docs/linux-tools/common-commands/vmstat) to find the application responsible for the excessive I/O. Databases are the usual suspects. You may need to stop and/or reconfigure the application.
+5.  If your server has free memory available and is not using swap space, use `iotop` or [vmstat](/docs/uptime/monitoring/use-vmstat-to-monitor-system-performance) to find the application responsible for the excessive I/O. Databases are the usual suspects. You may need to stop and/or reconfigure the application.
 
  {: .note }
 >

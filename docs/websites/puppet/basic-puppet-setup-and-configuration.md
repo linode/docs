@@ -131,7 +131,7 @@ This section provides instructions for configuring your new Puppet installation.
 
 By default, the Puppet client locates the Puppetmaster instance by contacting the host with the name `puppet`. There are a number of options for setting up hostname resolution, with various advantages and disadvantages. The easiest way is to create entries for the `puppet` host in the `/etc/hosts` file that point to the puppet server's IP address; however, this may be difficult to update across multiple hosts if you need to change the IP of your Puppetmaster server at any point. A better option is to create DNS records for the `puppet` record that point to the Puppetmaster server.
 
-1.  Create an A record or a CNAME for the hostname `puppet` (e.g., puppet.example.com) and point it to your master server's IP address. For more about adding DNS records, please read our [Adding DNS Records](/docs/adding-dns-records) article.
+1.  Create an A record or a CNAME for the hostname `puppet` (e.g., puppet.example.com) and point it to your master server's IP address. For more about adding DNS records, please read our [Adding DNS Records](/docs/networking/dns/dns-manager#adding-1) article.
 2.  On your client machine, [configure static networking](/docs/using-linux/) to ensure that DHCP will not overwrite the contents of the `/etc/resolv.conf` file, which we'll be modifying in the next step.
 3.  Edit your `/etc/resolv.conf` file to include a `search` statement for the domain where you've set up the Puppet master server:
 

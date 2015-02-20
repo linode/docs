@@ -105,7 +105,6 @@ You may wish to consult the following resources for additional information on th
 
 - [Rsync tips at Calomel.org](https://calomel.org/rsync_tips.html)
 - [Rsync Guide at Comentum.com](http://www.comentum.com/rsync.html)
-- [Rsync Guide at Scrounge.org](http://www.scrounge.org/linux/rsync.html)
 
 
 

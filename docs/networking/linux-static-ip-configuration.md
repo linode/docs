@@ -332,7 +332,7 @@ The configuration file for systemd-networkd should be created in `/etc/systemd/n
 
 **Note:** The systemd version may be outdated, and you may need to run `pacman -Syu` before continuing. You can check the version by running `systemctl --version`.
 
-1. Prior to creating the configuration file, you will need to use [LISH](/using-lish-the-linode-shell) to disable the DHCP connection that we provide by default. To do so, on LISH, use the following command:
+1. Prior to creating the configuration file, you will need to use [LISH](/docs/networking/using-the-linode-shell-lish) to disable the DHCP connection that we provide by default. To do so, on LISH, use the following command:
 
     ln -s /dev/null /etc/systemd/network/10-dhcp.network
 

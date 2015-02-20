@@ -44,7 +44,7 @@ You can now access the Nagios web interface for administration and reporting by 
 
  {: .note }
 >
-> The above example does not use SSL, and your password will be sent unencrypted. If you want to use encryption, you will need to generate (or purchase) and install an SSL certificate. Steps for generating and using your own certificate can be found in our [SSL guide](/docs/security/ssl-certificates/self-signed).
+> The above example does not use SSL, and your password will be sent unencrypted. If you want to use encryption, you will need to generate (or purchase) and install an SSL certificate. Steps for generating and using your own certificate can be found in our [SSL guide](/docs/security/ssl//self-signed).
 
 Configuring Notifications
 -------------------------

@@ -540,7 +540,7 @@ The following example, from our [migrating a server to your Linode](/docs/linode
 
 In the above example, period characters are escaped as `\.`. In regular expressions the full-stop (period) character matches to any character.
 
-Once again, `sed` is a very powerful and useful tool; however, if you are unfamiliar with it, we strongly recommend testing your search and replace patterns before making any edit of consequence. For more information about `sed` consider the full documentation of [text manipulation with sed](/docs/linux-tools/common-commands/sed).
+Once again, `sed` is a very powerful and useful tool; however, if you are unfamiliar with it, we strongly recommend testing your search and replace patterns before making any edit of consequence. For more information about `sed` consider the full documentation of [text manipulation with sed](docs/tools-reference/tools/manipulate-text-from-the-command-line-with-sed).
 
 ### How to Edit Text Interactively
 
