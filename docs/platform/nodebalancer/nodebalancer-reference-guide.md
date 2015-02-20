@@ -133,7 +133,7 @@ X-Forwarded-For Header
 
 NodeBalancers add an X-Forwarded-For (XFF) HTTP header field, which allows your nodes to identify a client's originating IP address. This is useful for logging purposes. Here's an example XFF HTTP header:
 
-    X-Fowarded-For: 196.180.44.172
+    X-Forwarded-For: 196.180.44.172
 
 You'll need to configure your web server software to use the XFF header.
 
