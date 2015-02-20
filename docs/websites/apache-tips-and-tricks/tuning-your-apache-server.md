@@ -104,11 +104,11 @@ ApacheBuddy, similar to MySQLTuner, is a script that reviews your Apache setup, 
 >
 >On Debian/Ubuntu:
 >
->	cp /etc/apache2/apache2.config ~/apache2.config.backup
+>	cp /etc/apache2/apache2.config ~/apache2.conf.backup
 >
 >On CentOS/Fedora:
 >
->	cp /etc/httpd/conf/httpd.config ~/httpd.config.backup
+>	cp /etc/httpd/conf/httpd.config ~/httpd.conf.backup
 
 Apache offers two Multi Processing Modules (three if on Apache 2.4) for managing your settings.
 
