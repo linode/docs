@@ -241,7 +241,7 @@ More Information
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [Redis Project Home Page](http://code.google.com/p/redis/)
-- [Redis Configuration](http://github.com/antirez/redis/blob/master/redis.conf)
+- [Redis Configuration](http://redis.io/topics/config)
 - [Redis Data Durability](http://code.google.com/p/redis/wiki/AppendOnlyFileHowto)
 - [Redis Command Reference](http://code.google.com/p/redis/wiki/CommandReference)
 

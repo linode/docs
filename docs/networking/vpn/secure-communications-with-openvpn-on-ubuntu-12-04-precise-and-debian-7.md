@@ -246,8 +246,6 @@ Here we will go through installing Tunneblick on OSX:
 
 4.  Tunnelblick will open a Finder window into which you can copy the client.conf and client1 ca, crt, and key files you created on the Linode and copied to this client machine. Follow the rest of the instructions shown in Tunnelblick to create and install your Tunnelblick configuration file.
 
-    [![Splash screen for TunnelBlick.](/docs/assets/1357-tunnelblick5.3.png)](/docs/assets/1357-tunnelblick5.3.png)
-
 Connecting to the VPN
 ---------------------
 

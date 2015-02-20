@@ -1,4 +1,5 @@
 ---
+deprecated: true
 author:
   name: Linode
   email: docs@linode.com
@@ -142,7 +143,7 @@ You may wish to consult the following resources for additional information on th
 - [Ruby on Rails Documentation](http://rubyonrails.org/documentation)
 - [Nginx Home Page](http://nginx.org/)
 - [Nginx Documentation](http://nginx.org/en/docs/)
-- [Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration/basic)
+- [Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration)
 
 
 

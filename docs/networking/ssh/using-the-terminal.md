@@ -222,7 +222,6 @@ More Information
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [Command Line at FLOSS Manuals](http://en.flossmanuals.net/gnulinux/index.php)
-- [Common Linux Commands at Linode Library](/docs/linux-tools/common-commands)
 
 
 

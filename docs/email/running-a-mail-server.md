@@ -123,7 +123,7 @@ Now that you understand how a mail server works and you've chosen the primary co
 
 The first step is to obtain and install an SSL certificate. An SSL certificate encrypts connections to your mail server, protecting passwords and email from harmful surveillance. It's possible to run a mail server without this protection, but we don't recommend it. If you follow our recommended build, you will absolutely need an SSL certificate.
 
-Any type of SSL certificate will work, but some certificates have different degrees of trustworthiness for your users. If you want the highest level of trustworthiness, you should [purchase a signed SSL certificate](/docs/security/ssl-certificates/commercial) from a reputable company. You can also use a free self-signed certificate if you are comfortable with the warnings it generates. You can [make your own](/docs/security/ssl-certificates/self-signed), or, if you're following our recommended build, you can use the one that comes with Dovecot by default. Decide what type of SSL certificate you need and acquire and install it now.
+Any type of SSL certificate will work, but some certificates have different degrees of trustworthiness for your users. If you want the highest level of trustworthiness, you should [purchase a signed SSL certificate](/docs/security/ssl//commercial) from a reputable company. You can also use a free self-signed certificate if you are comfortable with the warnings it generates. You can [make your own](/docs/security/ssl//self-signed), or, if you're following our recommended build, you can use the one that comes with Dovecot by default. Decide what type of SSL certificate you need and acquire and install it now.
 
 ### Software Installation
 

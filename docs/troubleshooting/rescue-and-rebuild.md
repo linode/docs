@@ -130,7 +130,7 @@ The Finnix recovery distribution does not automatically start an SSH server, but
 
         /etc/init.d/ssh start
 
-Now you can access mounted disks with an SFTP client by using the `root` user and the password you just set. For instructions on connecting with an SFTP client, see the [File Transfer reference manuals](/docs/networking/file-transfer). For instructions on copying an entire disk over SSH, see [Copy a Disk Over SSH](/docs/linode-platform/migration/copy-disk-image-over-ssh).
+Now you can access mounted disks with an SFTP client by using the `root` user and the password you just set. For instructions on connecting with an SFTP client, see the [File Transfer reference manuals](/docs/networking/file-transfer). For instructions on copying an entire disk over SSH, see [Copy a Disk Over SSH](/docs/migrate-to-linode/disk-images/copying-a-disk-image-over-ssh).
 
 ### Installing Packages
 

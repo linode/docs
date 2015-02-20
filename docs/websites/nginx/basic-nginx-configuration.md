@@ -47,7 +47,7 @@ Sometimes, server configuration files can get so corrupted or convoluted that th
 
     cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.backup
 
-For even better restoration options, we recommend making regular [backups](/docs/backups) of your Nginx configuration. You might want to store your entire `/etc/nginx/` directory in a [Git](/docs/linux-tools/version-control/git) repository so you can save the original settings and all the versions from all your different changes. Another option is to periodically create dated copies of your files. You can accomplish this by issuing the following command:
+For even better restoration options, we recommend making regular [backups](/docs/platform/backup-service) of your Nginx configuration. You might want to store your entire `/etc/nginx/` directory in a [Git](/docs/linux-tools/version-control/git) repository so you can save the original settings and all the versions from all your different changes. Another option is to periodically create dated copies of your files. You can accomplish this by issuing the following command:
 
     cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.$(date "+%b_%d_%Y_%H.%M.%S")
 

@@ -147,7 +147,7 @@ You may wish to consult the following resources for additional information on th
 - [Munin Exchange](http://muninexchange.projects.linpro.no/)
 - [Installing Munin on Other Linux Distributions](http://munin.projects.linpro.no/wiki/LinuxInstallation)
 - [Installing Munin on Mac OSX](http://munin.projects.linpro.no/wiki/DarwinInstallation)
-- [Installing Munin on Solaris](http://munin.projects.linpro.no/wiki/SolarisInstallation)
+- [Installing Munin on Solaris](http://munin-monitoring.org/wiki/MuninInstallationSolaris)
 
 
 

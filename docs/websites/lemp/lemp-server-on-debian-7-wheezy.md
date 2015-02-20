@@ -85,7 +85,7 @@ To deactivate a site, simply delete the symbolic link by issuing the following c
 
 The source file is saved, and the site can be re-enabled at any time.
 
-For more information regarding Nginx configuration options, consider our [Overview of Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration/basic).
+For more information regarding Nginx configuration options, consider our [Overview of Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration).
 
 Deploy PHP with FastCGI
 -----------------------
@@ -216,7 +216,7 @@ More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [Basic Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration/basic)
+- [Basic Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration)
 - [Clustered Web Servers and Software Load Balancing with Nginx](/docs/websites/nginx/basic-nginx-configuration/front-end-proxy-and-software-load-balancing)
 - [Deploy CGI and Perl Scripts with Perl-FastCGI and Nginx](/docs/web-servers/nginx/perl-fastcgi/debian-6-squeeze)
 - [Use PostgeSQL as an Alternative to MySQL for data storage](/docs/databases/postgresql/debian-6-squeeze)
