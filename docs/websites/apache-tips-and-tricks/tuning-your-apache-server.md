@@ -126,11 +126,11 @@ The event module is *only* available on Apache 2.4 and is based off the worker M
 
 ##Module Values
 
-Once you select your MPM, you will need to change the values inside the configuration. These settings are located in the `/etc/apache2/apache2.config` file on Debian/Ubuntu, and the `/etc/httpd/conf/httpd.conf` file on CentOS/Fedora. The MPM will look like this:
+Once you select your MPM, you will need to change the values inside the configuration. These settings are located in the `/etc/apache2/apache2.conf` file on Debian/Ubuntu, and the `/etc/httpd/conf/httpd.conf` file on CentOS/Fedora. The MPM will look like this:
 
 {: .file-excerpt}
-/etc/apache2/apache2.config
-/etc/httpd/conf/httpd.config
+/etc/apache2/apache2.conf
+/etc/httpd/conf/httpd.conf
 :	~~~
 	<IfModule mpm_prefork_module>
     	StartServers          2
