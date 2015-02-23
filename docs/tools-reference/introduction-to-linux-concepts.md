@@ -318,7 +318,7 @@ That's it! Your packages are now up to date.
 
  {: .caution }
 >
-> Updating your software is good for your system security. In most cases updates will go smoothly, but it's possible that some updates may break something on your server. It's always wise to make a [backup](/docs/backups) of your system before updating it.
+> Updating your software is good for your system security. In most cases updates will go smoothly, but it's possible that some updates may break something on your server. It's always wise to make a [backup](/docs/platform/backup-service) of your system before updating it.
 
 ### Uninstalling
 

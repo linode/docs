@@ -7,7 +7,7 @@ keywords: 'git,dvcs,vcs,scm,gitweb,'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: Friday, February 6th, 2015
 external_resources:
- - '[Working with the Git Repository](http://docsmith:4567/docs/applications/development/git-source-control-management#working-with-the-repository)'
+ - '[Working with the Git Repository](/docs/applications/development/git-source-control-management#working-with-the-repository)'
  - '[GitHub Help Pages](https://help.github.com/)'
 modified_by:
   name: Joseph Dooley

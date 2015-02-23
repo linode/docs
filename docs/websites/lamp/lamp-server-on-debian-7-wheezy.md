@@ -60,7 +60,7 @@ Edit the main Apache configuration file to adjust the resource use settings. The
     StartServers 2
     MinSpareServers 6
     MaxSpareServers 12
-    MaxClients 80
+    MaxClients 30
     MaxRequestsPerChild 3000
     </IfModule>
     ~~~

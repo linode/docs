@@ -52,7 +52,7 @@ Before beginning this guide, we suggest you first read through [Getting Started]
         StartServers 2
         MinSpareServers 6
         MaxSpareServers 12
-        MaxClients 80
+        MaxClients 30
         MaxRequestsPerChild 3000
         </IfModule>
         ~~~

@@ -43,7 +43,7 @@ Each of these will be discussed in more detail below.
 
 {: .note }
 >
->In the interest of security, Ubuntu 14.04 LTS disables password based SSH authentication for the root user.  If you log into your root account directly via SSH, you will need to ensure that you have configured key based authentication prior to following these upgrade steps.  If you have already followed our steps for [adding a new user](docs/security/securing-your-server/#adding-a-new-user) to your Linode, you should be able to log in with that account after the upgrade process has completed.
+>In the interest of security, Ubuntu 14.04 LTS disables password based SSH authentication for the root user.  If you log into your root account directly via SSH, you will need to ensure that you have configured key based authentication prior to following these upgrade steps.  If you have already followed our steps for [adding a new user](/docs/security/securing-your-server/#adding-a-new-user) to your Linode, you should be able to log in with that account after the upgrade process has completed.
 
 ### Installing Available Updates
 
