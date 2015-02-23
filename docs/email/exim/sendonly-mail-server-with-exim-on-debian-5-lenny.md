@@ -102,7 +102,5 @@ You may wish to consult the following resources for additional information on th
 
 - [Exim Homepage](http://www.exim.org/)
 - [Email Guides](/docs/email/)
-- [Using Linux](/docs/using-linux/)
-
 
 

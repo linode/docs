@@ -404,7 +404,7 @@ If most of the items are green and some are purple (which is okay since you don'
 
 Now you can open http://git.example.com on your browser. GitLab will show you the login page.
 
-[![GitLab Login Page](/docs/assets/gitlab-login-page-s.png)](/docs/assets/gitlab-login-page-linode.png)
+![GitLab Login Page](/docs/assets/gitlab-login-page-s.png)
 
 You can login using **root** as the username and **5iveL!fe** for the password.
 

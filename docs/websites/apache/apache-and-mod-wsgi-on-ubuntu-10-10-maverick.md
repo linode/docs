@@ -71,7 +71,7 @@ You must append the path of your application to the system path as above. The de
 
 ### Web.py WSGI Configuration
 
-Consider the following example Web.py *application* which is embedded in a `application.wsgi` file. The [Web.py Framework](/docs/frameworks/webpy/) must be installed in order for the following application to run successfully.
+Consider the following example Web.py *application* which is embedded in a `application.wsgi` file. The [Web.py Framework](/docs/websites/frameworks/webpy-on-ubuntu-12-04-precise-pangolin/) must be installed in order for the following application to run successfully.
 
 {: .file-excerpt }
 /srv/www/ducklington.org/application/application.wsgi
@@ -158,8 +158,8 @@ More Information
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [A Basic "Hello World" Django Application](http://appgallery.appspot.com/about_app?app_id=agphcHBnYWxsZXJ5chMLEgxBcHBsaWNhdGlvbnMYvw8M)
-- [Deploy Django Applications with mod\_wsgi](/docs/frameworks/django-apache-mod-wsgi/)
-- [Deploy Web.py Applications with mod\_wsgi](/docs/frameworks/webpy/)
+- [Deploy Django Applications with mod\_wsgi](/docs/websites/apache/apache-and-modwsgi-on-ubuntu-12-04-precise-pangolin/)
+- [Deploy Web.py Applications with mod\_wsgi](/docs/websites/frameworks/webpy-on-ubuntu-12-04-precise-pangolin/)
 - [Flask Framework](http://flask.pocoo.org/)
 - [Werkzug](http://werkzeug.pocoo.org/)
 - [Django](http://www.djangoproject.com/)

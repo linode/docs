@@ -4,7 +4,7 @@ author:
   email: sschwertly@linode.com
 description: 'Deploying osCommerce, a popular e-commerce web application, on Ubuntu 9.10 (Karmic).'
 keywords: 'oscommerce,ecommerce,store,cart,shop,shopping'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 3.0](http://creative commons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-applications/e-commerce/oscommerce/ubuntu-9-10-karmic/']
 modified: Monday, August 22nd, 2011
 modified_by:
@@ -102,7 +102,7 @@ From here you can begin customizing your store. The default index page will give
 SSL Certificates
 ----------------
 
-You may want to install a commercial SSL certificate on your store to encrypt the data sent from your customer to your server. After [Obtaining a Commercial SSL Certificate](/docs/security/ssl//commercial), you'll need to make a couple of changes to your `includes/configure.php` file. Below is an example section from that file that highlights the changes you need to make:
+You may want to install a commercial SSL certificate on your store to encrypt the data sent from your customer to your server. After [Obtaining a Commercial SSL Certificate](/docs/security/ssl/obtaining-a-commercial-ssl-certificate), you'll need to make a couple of changes to your `includes/configure.php` file. Below is an example section from that file that highlights the changes you need to make:
 
 {: .file }
 /srv/www/bucknell.net/public\_html/includes/configure.php

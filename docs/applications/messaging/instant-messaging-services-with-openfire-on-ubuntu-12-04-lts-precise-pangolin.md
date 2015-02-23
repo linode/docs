@@ -94,25 +94,15 @@ Configuring Openfire
 
 Configuring Openfire is relatively easy and can be completed in just a couple of steps. Here's how to configure Openfire:
 
-1.  Direct your browser to your Linode's IP address or FQDN (fully qualified domain name, if an entry in DNS points to your Linode's IP) on port 9090. As an example, if your Linode's IP address were `12.34.56.78`, you would visit `http://12.34.56.78:9090` in your web browser. The webpage shown below appears:
-
-    [![Language selection in Openfire setup on Ubuntu 12.04 (Precise).](/docs/assets/1143-openfire-ubuntu-12.04-language-selection.png)](/docs/assets/1143-openfire-ubuntu-12.04-language-selection.png)
+1.  Direct your browser to your Linode's IP address or FQDN (fully qualified domain name, if an entry in DNS points to your Linode's IP) on port 9090. As an example, if your Linode's IP address were `12.34.56.78`, you would visit `http://12.34.56.78:9090` in your web browser.
 
 2.  Configure your domain and ports for administration. Use the fully qualified domain name you have assigned to your Linode in DNS. For more information: [configuring DNS with the Linode Manager](/docs/dns-guides/configuring-dns-with-the-linode-manager)).
 
-    [![Domain and admin ports selection in Openfire setup on Ubuntu 12.04 (Precise).](/docs/assets/1142-openfire-ubuntu-12.04-domain-ports-selection.png)](/docs/assets/1142-openfire-ubuntu-12.04-domain-ports-selection.png)
-
 3.  You may choose to use Openfire's internal database for account management, or you may connect to an external database. Most users will want to choose the built-in option.
-
-    [![Database type selection in Openfire setup on Ubuntu 12.04 (Precise).](/docs/assets/1141-openfire-ubuntu-12.04-database-selection.png)](/docs/assets/1141-openfire-ubuntu-12.04-database-selection.png)
 
 4.  User profiles may be stored in the server database, or they may be pulled from LDAP or Clearspace. Most users will want to choose the default option.
 
-    [![Profile storage selection in Openfire setup on Ubuntu 12.04 (Precise).](/docs/assets/1145-openfire-ubuntu-12.04-profile-settings.png)](/docs/assets/1145-openfire-ubuntu-12.04-profile-settings.png)
-
 5.  Enter the email address of the default administrative user and select a strong password.
-
-    [![Administrator account settings in Openfire setup on Ubuntu 12.04 (Precise).](/docs/assets/1140-openfire-ubuntu-12.04-admin-account-settings.png)](/docs/assets/1140-openfire-ubuntu-12.04-admin-account-settings.png)
 
 6.  After the initial web-based configuration is complete, restart the Openfire server before attempting to log in with the default "**admin**" user account. Enter the following commands, one by one:
 
