@@ -156,7 +156,7 @@ More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [A Basic "Hello World" Django Application](http://appgallery.appspot.com/about_app?app_id=agphcHBnYWxsZXJ5chMLEgxBcHBsaWNhdGlvbnMYvw8M)
+- [A Basic "Hello World" Django Application](http://runnable.com/UWRVp6lLuONCAABD/hello-world-in-django-for-python)
 - [Deploy Django Applications with mod\_wsgi](/docs/websites/frameworks/django-apache-and-modwsgi-on-centos-5/)
 - [Deploy Web.py Applications with mod\_wsgi](/docs/websites/frameworks/webpy-on-ubuntu-12-04-precise-pangolin/)
 - [Flask Framework](http://flask.pocoo.org/)

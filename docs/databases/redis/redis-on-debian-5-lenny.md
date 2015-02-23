@@ -117,7 +117,7 @@ In the default configuration, Redis runs in an interactive mode after being invo
 
     /opt/redis/redis-server /opt/redis/redis.conf.default
 
-You may now interact with Redis using any of the language specific bindings or use the built-in command line interface to interact with the Redis instance. Simply prefix any [Redis command](http://code.google.com/p/redis/wiki/CommandReference/) with the following string:
+You may now interact with Redis using any of the language specific bindings or use the built-in command line interface to interact with the Redis instance. Simply prefix any [Redis command](http://redis.io/commands/) with the following string:
 
     /opt/redis/redis-cli
 
@@ -195,7 +195,7 @@ You may wish to consult the following resources for additional information on th
 - [Redis Project Home Page](http://code.google.com/p/redis/)
 - [Redis Configuration](http://redis.io/topics/config)
 - [Redis Data Durability](http://code.google.com/p/redis/wiki/AppendOnlyFileHowto)
-- [Redis Command Reference](http://code.google.com/p/redis/wiki/CommandReference)
+- [Redis Command Reference](http://redis.io/commands)
 
 
 

@@ -48,7 +48,7 @@ Create symbolic links to the installed version of Ruby:
     ln -s /usr/bin/ruby1.8 /usr/bin/ruby 
     ln -s /usr/bin/irb1.8 /usr/bin/irb 
 
-Now we'll need to install gems. The version in the Ubuntu 8.04 repositories is quite outdated, and does not work correctly. Issue the following commands to download and install a fresh version. You may wish to check the [RubyForge files page](http://rubyforge.org/frs/?group_id=126) for the most recent version.
+Now we'll need to install gems. The version in the Ubuntu 8.04 repositories is quite outdated, and does not work correctly. Issue the following commands to download and install a fresh version. You may wish to check the [RubyForge files page](http://http://rubygems.org/gems/rubyforge) for the most recent version.
 
     wget http://rubyforge.org/frs/download.php/69365/rubygems-1.3.6.tgz
     tar -xvf rubygems-1.3.6.tgz

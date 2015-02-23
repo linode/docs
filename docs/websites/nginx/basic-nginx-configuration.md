@@ -395,7 +395,7 @@ You can also disable the access log, although this is not recommended:
 
 The final component of the `server` settings block is the `location` directive. We'll cover the specifics of what goes *inside* of a location block in the next section; right now we're going to focus on the basic path setting.
 
-The `location` setting lets you configure how Nginx will respond to requests for resources within the server. Just like the `server_name` directive tells Nginx how to process requests for the domain, such as **<http://example.com>**, the `location` directive covers requests for specific files and folders, such as **<http://example.com/blog/>**.
+The `location` setting lets you configure how Nginx will respond to requests for resources within the server. Just like the `server_name` directive tells Nginx how to process requests for the domain, such as **http://example.com**, the `location` directive covers requests for specific files and folders, such as **http://example.com/blog/**.
 
 {: .note }
 >

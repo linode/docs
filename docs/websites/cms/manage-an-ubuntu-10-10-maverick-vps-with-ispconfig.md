@@ -114,8 +114,8 @@ More Information
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [ISPConfig Home Page](http://www.ispconfig.org/)
-- [ISPConfig Support](http://www.ispconfig.org/support.htm)
-- [ISPConfig Community](http://www.ispconfig.org/community.htm)
+- [ISPConfig Support](http://www.ispconfig.org/page/en/support.html)
+- [ISPConfig Community](http://www.ispconfig.org/page/en/community.html)
 - [Limit User Access with SFTP Jails](/docs/security/sftp-jails)
 
 

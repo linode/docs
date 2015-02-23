@@ -38,7 +38,7 @@ Issue the following commands to update your system and install the nginx web ser
     apt-get install nginx php5-cli php5-cgi build-essential wget psmisc
     /etc/init.d/nginx start
 
-Various additional dependency packages will be installed along with the ones we requested. Once the installation process finishes, you may wish to make sure nginx is running by browsing to your Linode's IP address (found on the "Remote Access" tab in the [Linode Manager](/docs/linode-platform/manager/)). You should get the default ngnix page.
+Various additional dependency packages will be installed along with the ones we requested. Once the installation process finishes, you may wish to make sure nginx is running by browsing to your Linode's IP address (found on the "Remote Access" tab in the [Linode Manager](http://manager.linode.com//)). You should get the default ngnix page.
 
 Configure Your Site
 -------------------

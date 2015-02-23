@@ -202,7 +202,7 @@ More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [Installing Nginx on Ubuntu 12.04 (Precise Pangolin)](/docs/web-servers/nginx/installation/ubuntu-12.04-precise-pangolin)
+- [Installing Nginx on Ubuntu 12.04 (Precise Pangolin)](/docs/websites/apache/apache-2-web-server-on-ubuntu-12-04-lts-precise-pangolin)
 - [Deploy a LEMP Server on Ubuntu 12.04 (Precise Pangolin)](/docs/lemp-guides/ubuntu-12.04-precise-pangolin)
 - [Configure nginx Proxy Servers](/docs/uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing)
 
