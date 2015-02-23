@@ -72,11 +72,11 @@ There are many plugins for Irssi that add a large amount of functionality. To fi
 
 The following plugins are popular among the Linode community:
 
--   [trackbar.pl](http://scripts.irssi.org/html/trackbar.pl.html) generates a horizontal rule in a channel to mark the last time you viewed this channel's window. This is useful if you are monitoring a number of channels and would like to be reminded of the last time you viewed this window.
--   [go.pl](http://scripts.irssi.org/html/go.pl.html) provides advanced completion for accessing windows with a `/go` command that offers tab completion for all windows, and is even able to complete based on character combinations from the middle of the channel or private message names.
--   [nickcolor.pl](http://scripts.irssi.org/html/nickcolor.pl.html) colorizes the nicknames of all members of a channel, based on activity and join time, in an effort to make the flow of conversation a bit easier to read.
--   [screen\_away.pl](http://scripts.irssi.org/html/screen_away.pl.html) automatically detects if your Irssi session resides within an attached or detached screen session. If your screen session is detached, this plugin will set your status to away. When you reattach to the session, the plugin unsets the away status.
--   [highlite.pl](http://scripts.irssi.org/html/highlite.pl.html) collects in one window all channel events like joins, parts, and quits.
+-   [trackbar.pl](http://www.scripts.irssi.org/scripts/trackbar.pl) generates a horizontal rule in a channel to mark the last time you viewed this channel's window. This is useful if you are monitoring a number of channels and would like to be reminded of the last time you viewed this window.
+-   [go.pl](http://www.scripts.irssi.org/scripts/go.pl) provides advanced completion for accessing windows with a `/go` command that offers tab completion for all windows, and is even able to complete based on character combinations from the middle of the channel or private message names.
+-   [nickcolor.pl](http://scripts.irssi.org/scripts/nickcolor.pl.html) colorizes the nicknames of all members of a channel, based on activity and join time, in an effort to make the flow of conversation a bit easier to read.
+-   [screen\_away.pl](http://scripts.irssi.org/scripts/screen_away.pl) automatically detects if your Irssi session resides within an attached or detached screen session. If your screen session is detached, this plugin will set your status to away. When you reattach to the session, the plugin unsets the away status.
+-   [highlite.pl](http://scripts.irssi.org/scripts/highlite.pl) collects in one window all channel events like joins, parts, and quits.
 -   [adv\_windowlist.pl](/docs/assets/633-adv_windowlist.pl) provides a more useful and configurable window list if you have trouble with the default window list implementation.
 
 You can install all of these scripts to "autorun" when you invoke Irssi the next time by issuing the following sequence of commands:

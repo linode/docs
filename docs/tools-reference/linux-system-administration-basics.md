@@ -534,13 +534,13 @@ To match literal slashes (e.g. `/`), you must escape them with a backslash (e.g.
 
 This would strip the slashes from the string `r/e/g/e/x` so that this string would be `regex` after running the `sed` command on the file that contains the string.
 
-The following example, from our [migrating a server to your Linode](/docs/linode-platform/migration/migrate-server-to-linode) document, searches and replaces one IP address with another. In this case `98.76.54.32` is replaced with `12.34.56.78`:
+The following example, from our [migrating a server to your Linode](/docs/migrate-to-linode/disk-images/migrating-a-server-to-your-linode) document, searches and replaces one IP address with another. In this case `98.76.54.32` is replaced with `12.34.56.78`:
 
     sed -i 's/98\.76\.54\.32/12\.34\.56\.78/'
 
 In the above example, period characters are escaped as `\.`. In regular expressions the full-stop (period) character matches to any character.
 
-Once again, `sed` is a very powerful and useful tool; however, if you are unfamiliar with it, we strongly recommend testing your search and replace patterns before making any edit of consequence. For more information about `sed` consider the full documentation of [text manipulation with sed](docs/tools-reference/tools/manipulate-text-from-the-command-line-with-sed).
+Once again, `sed` is a very powerful and useful tool; however, if you are unfamiliar with it, we strongly recommend testing your search and replace patterns before making any edit of consequence. For more information about `sed` consider the full documentation of [text manipulation with sed](/docs/tools-reference/tools/manipulate-text-from-the-command-line-with-sed).
 
 ### How to Edit Text Interactively
 
@@ -627,7 +627,7 @@ The *Domain Name System*, or DNS, is the service that the Internet uses to assoc
 
 CNAMEs are **only** valid when pointing from one domain to another. If you need to redirect a full URL, you will need to set up a web server and [configure redirection](/docs/web-servers/apache/configuration/redirecting-urls) and/or virtual hosting on the server level. CNAMEs will allow you to redirect subdomains, such as `team.example.com`, to other subdomains or domains, such as `jack.example.org`. CNAMEs must point a valid a domain that has a valid A Record, or to another CNAME.
 
-Although limited in their capabilities, CNAMEs can be quite useful in some situations. In particular, if you need to change the hostname of a machine, CNAMEs are quite useful. To learn how to set up CNAME records with the [Linode Manager](/docs/linode-platform/manager/), consult our documentation of the [Linode DNS Manager](/docs/dns-guides/configuring-dns-with-the-linode-manager).
+Although limited in their capabilities, CNAMEs can be quite useful in some situations. In particular, if you need to change the hostname of a machine, CNAMEs are quite useful. To learn how to set up CNAME records with the [Linode Manager](http://manager.linode.com//), consult our documentation of the [Linode DNS Manager](/docs/dns-guides/configuring-dns-with-the-linode-manager).
 
 ### How to Set Up Subdomains
 
@@ -639,7 +639,7 @@ First we need to create an [A Record](/docs/dns-guides/introduction-to-dns#a_aaa
 
 in the DNS zone for the domain. This is easily accomplished when using the [Linode DNS Manager](/docs/dns-guides/configuring-dns-with-the-linode-manager). As always, you may host the DNS for your domain with any provider you choose.
 
-In order for your server to respond to requests for this domain, you must set up a server to respond to these requests. For web servers like [Apache](/docs/web-servers/apache/) this requires [configuring a new virtual host](/docs/web-servers/apache/installation/debian-5-lenny#configure_apache_for_named_based_virtual_hosting). For [XMPP Servers](/docs/communications/xmpp/) you must [configure an additional host](/docs/applications/messaging/instant-messaging-services-with-ejabberd-on-ubuntu-12-04-precise-pangolin/debian-5-lenny#hostnames_and_virtual_hosting) to receive the requests for this host. For more information, consult the documentation for the specific server you wish to deploy.
+In order for your server to respond to requests for this domain, you must set up a server to respond to these requests. For web servers like [Apache](/docs/web-servers/apache/) this requires [configuring a new virtual host](/docs/web-servers/apache/installation/debian-5-lenny#configure_apache_for_named_based_virtual_hosting). For XMPP Servers you must [configure an additional host](/docs/applications/messaging/instant-messaging-services-with-ejabberd-on-ubuntu-12-04-precise-pangolin#hostnames_and_virtual_hosting) to receive the requests for this host. For more information, consult the documentation for the specific server you wish to deploy.
 
 Once configured, subdomains function identically to first-level domains on your server in almost all respects. If you need to, you can set up HTTP redirection for the new sub domain.
 

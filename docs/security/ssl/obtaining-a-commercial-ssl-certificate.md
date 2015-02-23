@@ -84,7 +84,7 @@ Now you'll need to get the root certificate for the CA that you paid to sign you
 
 -   [Verisign](https://knowledge.verisign.com/support/ssl-certificates-support/index.html)
 -   [Thawte](http://www.thawte.com/roots/index.html)
--   [Globalsign](http://secure.globalsign.net/cacert/)
+-   [Globalsign](http://www.globalsign.com/en//)
 -   [Comodo](https://support.comodo.com/index.php?_m=downloads&_a=view&parentcategoryid=1&pcid=0&nav=0)
 
 For example, if we downloaded a root cert for Verisign, we would save it to `/etc/ssl/localcerts/verisign.cer`. Note that many Linux distributions offer a package that contains updated root certificates for major certificate authorities; check your distribution's repositories for a package named "ca-certificates". If you have this package installed, the root CA certs will be installed under `/etc/ssl/certs`.

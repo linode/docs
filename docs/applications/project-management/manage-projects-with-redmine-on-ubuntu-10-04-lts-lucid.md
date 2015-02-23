@@ -157,7 +157,7 @@ Issue the following commands to enable proxy support:
     a2enmod proxy_http
     /etc/init.d/apache2 restart
 
-Configure an Apache virtualhost for your Redmine installation. The example shown below assumes Apache is configured as recommended in our [Ubuntu 10.04 LAMP guide](/docs/lamp-guides/ubuntu-10.04-lucid/). Remember to replace "12.34.56.78" with your Linode's IP address, `support@example.com` with your administrative email address, and "redmine.example.com" with your Redmine domain.
+Configure an Apache virtualhost for your Redmine installation. The example shown below assumes Apache is configured as recommended in our [Ubuntu 10.04 LAMP guide](/docs/websites/apache/apache-2-web-server-on-ubuntu-10-04-lts-lucid/). Remember to replace "12.34.56.78" with your Linode's IP address, `support@example.com` with your administrative email address, and "redmine.example.com" with your Redmine domain.
 
 {: .file }
 /etc/apache2/sites-available/redmine.example.com
