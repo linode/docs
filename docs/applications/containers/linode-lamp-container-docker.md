@@ -19,9 +19,7 @@ external_resources:
 
 Docker is a container platform for applications. With Docker, users can download pre-configured apps without the hassle of the installation and configuration process. Docker containers can also build on each other. 
 
-{: .note}
->
->If you are familiar with Docker containers, also try [Linode Images](/docs/platform/linode-images) to capture and deploy larger system profiles.
+*If you are familiar with Docker containers, also try [Linode Images](/docs/platform/linode-images) to capture and deploy larger system profiles.*
 
 ##Install Docker
 Use the Docker-maintained install script for Debian or Ubuntu. For other operating systems, see the [Docker Installation](https://docs.docker.com/en/latest/installation/) guides.
@@ -35,7 +33,7 @@ Use the Docker-maintained install script for Debian or Ubuntu. For other operati
         sudo usermod -aG docker example_user
 
 ##Download the Docker Lamp Image
-The Docker Hub user page for Linode can be accessed [here](https://hub.docker.com/u/linode/).
+The Docker Hub user page for Linode can be accessed [here](https://hub.docker.com/u/linode/). Select the **lamp** image for configuration information.
 
 1.  Search for **linode** user images:
 
@@ -70,7 +68,7 @@ When an image downloads, there are no image containers running.
 
     {: .note}
     >
-    >The website's public, root directory is `/var/www/example.com/public_html/`, replacing `example.com` with your website's domain.
+    >The website's root directory is `/var/www/example.com/public_html/`.
 
 Congratulations, you have installed a configured LAMP stack using Docker!
 
