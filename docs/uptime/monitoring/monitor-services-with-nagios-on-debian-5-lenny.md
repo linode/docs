@@ -120,7 +120,7 @@ Any errors will be shown in red. If everything is okay, you may issue the follow
 
 You may now access the web based administration and reporting tools by visiting `http://example.com/nagios/`, where `example.com` refers to your Linode's default virtual host. You may also access this interface by visiting `http://12.34.56.78/nagios/` where `12.34.56.78` is the IP address of your Linode. You will need to authenticate with the nagiosadmin user you created earlier.
 
-**Please note:** The above example does not use SSL and your password will be sent unencrypted. You will need to generate an SSL certificate and install it yourself. Steps for doing so can be found in our [SSL guide](/docs/security/ssl//self-signed).
+**Please note:** The above example does not use SSL and your password will be sent unencrypted. You will need to generate an SSL certificate and install it yourself. Steps for doing so can be found in our [SSL guide](/docs/security/ssl/how-to-make-a-selfsigned-ssl-certificate).
 
 Configure Nagios Alerts
 -----------------------

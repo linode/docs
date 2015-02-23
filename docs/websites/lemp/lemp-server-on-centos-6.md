@@ -41,7 +41,7 @@ There are several viable and popular options for installing nginx. The first opt
 
 The second option requires downloading the source for nginx from the upstream provider and compiling the software manually. Manual compilation makes it possible to run the most current version of the software at the expense of the testing and automatic updates from the Fedora project. All options are compatible, but in most cases we recommend using the packages from the EPEL repositories, unless your needs require a version newer than the one available in the EPEL repositories. Possible reasons for compiling nginx yourself include access to optional compile-time modules and features added in more recent versions.
 
-For more in-depth installation instructions consider our [guide to installing nginx](/docs/web-servers/nginx/installation/centos-6).
+For more in-depth installation instructions consider our [guide to installing nginx](/docs/websites/lemp/lemp-server-on-centos-6).
 
 ### Deploy from EPEL Packages
 
@@ -282,7 +282,7 @@ Make sure that the directories referenced in your configuration exist on your fi
 Deploy PHP with FastCGI
 -----------------------
 
-If your application includes PHP code you will need to implement the following "PHP-FastCGI" solution to allow nginx to properly handle and serve pages that contain PHP code. For a more complete introduction to this subject, consider our dedicated guide to [PHP FastCGI with Nginx](/docs/web-servers/nginx/php-fastcgi). Begin the deployment process by issuing the following commands to install the required dependencies:
+If your application includes PHP code you will need to implement the following "PHP-FastCGI" solution to allow nginx to properly handle and serve pages that contain PHP code. Begin the deployment process by issuing the following commands to install the required dependencies:
 
     rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm 
     yum update     
@@ -503,7 +503,7 @@ More Information
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [Basic nginx Configuration](/docs/websites/nginx/basic-nginx-configuration)
-- [Clustered Web Servers and Software Load Balancing with nginx](/docs/websites/nginx/basic-nginx-configuration/front-end-proxy-and-software-load-balancing)
+- [Clustered Web Servers and Software Load Balancing with nginx](/docs/uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing)
 - [Deploy CGI and Perl Scripts with Perl-FastCGI and nginx](/docs/web-servers/nginx/perl-fastcgi/centos-5)
 - [Use PostgeSQL as an Alternative to MySQL for data storage](/docs/databases/postgresql/centos-5)
 - [Deploy Python Applications with uWSGI and nginx](/docs/web-servers/nginx/python-uwsgi/centos-5)

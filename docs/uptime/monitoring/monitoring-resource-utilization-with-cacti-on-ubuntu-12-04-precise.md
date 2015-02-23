@@ -13,7 +13,7 @@ published: 'Thursday, October 11th, 2012'
 title: 'Monitoring Resource Utilization with Cacti on Ubuntu 12.04 (Precise)'
 ---
 
-The Linode Manager provides some basic monitoring of system resource utilization, which includes information regarding Network, CPU, and Input/Output usage over the last 24 hours and 30 days. While this basic information is helpful for monitoring your system, there are cases where more fine-grained information is useful. The simple monitoring tool [Munin](/docs/server-monitoring/munin) is capable of monitoring needs of a small group of machines. In some cases, Munin may not be flexible enough for advanced monitoring needs.
+The Linode Manager provides some basic monitoring of system resource utilization, which includes information regarding Network, CPU, and Input/Output usage over the last 24 hours and 30 days. While this basic information is helpful for monitoring your system, there are cases where more fine-grained information is useful. The simple monitoring tool [Munin](/docs/uptime/monitoring/monitoring-servers-with-munin-on-ubuntu-12-04-precise-pangolin) is capable of monitoring needs of a small group of machines. In some cases, Munin may not be flexible enough for advanced monitoring needs.
 
 For these kinds of deployments we encourage you to consider a tool like Cacti, which is a flexible front end for the RRDtool application. Cacti simply provides a framework and a mechanism to poll a number of sources for data regarding your systems, which can then be graphed and presented in a clear web-based interface. Whereas packages like Munin provide monitoring for a specific set of metrics on systems which support the Munin plug in, Cacti provides increased freedom to monitor larger systems and more complex deployment by way of its plug-in framework.
 
@@ -58,7 +58,7 @@ If you had to enable new repositories, issue the following command to update you
 
 You will need to create a password for the `root` user of your MySQL database during the installation. After the installation completes, be sure to run `mysql_secure_installation` to disable some of MySQL's less for configuration recommendations.
 
-The above command will additionally install the Apache web server. Consider our documentation on [installing the Apache HTTP server](/docs/websites/apache/apache-2-web-server-on-ubuntu-12-04-lts-precise-pangolin) for more information regarding this server. Additionally Cacti can function with alternate web server configurations, including [Apache with PHP running as a CGI process](/docs/web-servers/apache/php-cgi) and with [nginx](/docs/web-servers/nginx/php-fastcgi) running PHP as a FastCGI process.
+The above command will additionally install the Apache web server. Consider our documentation on [installing the Apache HTTP server](/docs/websites/apache/apache-2-web-server-on-ubuntu-12-04-lts-precise-pangolin) for more information regarding this server. Additionally Cacti can function with alternate web server configurations, including [Apache with PHP running as a CGI process](/docs/websites/apache/run-php-applications-under-cgi-with-apache-on-ubuntu-12-04-lts-precise-pangolin) and with [nginx](/docs/websites/nginx/nginx-and-phpfastcgi-on-ubuntu-12-04-lts-precise-pangolin) running PHP as a FastCGI process.
 
 ### Installing Cacti
 

@@ -318,8 +318,5 @@ You may wish to consult the following resources for additional information on th
 - [nginx Proxy Module](http://wiki.nginx.org/NginxHttpProxyModule)
 - [HTTP Upstream Module](http://wiki.nginx.org/NginxHttpUpstreamModule)
 - [nginx Configuration](/docs/websites/nginx/basic-nginx-configuration)
-- [nginx and Perl-FastCGI](/docs/web-servers/nginx/perl-fastcgi)
-- [nginx and PHP-FastCGI](/docs/web-servers/nginx/php-fastcgi)
-
 
 

@@ -80,7 +80,7 @@ If you can log in, continue to the next section, even if there are error message
 
  {: .note }
 >
-> For more information about LISH, see [this guide](troubleshooting/using-lish-the-linode-shell).
+> For more information about LISH, see [this guide](/docs/networking/using-the-linode-shell-lish).
 
 ### Is your disk full?
 
@@ -150,7 +150,7 @@ Disk input/output (I/O) bottlenecks can occur when an application or service is 
 
 6.  If you cannot determine the source of the IO bottleneck, contact [Linode support](/docs/support) for assistance.
 
-Since `top` only reports what is currently happening, and most I/O issues are temporary, it helps to have a monitoring utility set up so you can see a graph of I/O trends and spot potential issues *before* they become major problems. See the guides in [Server Monitoring](server-monitoring) for instructions on setting up a server monitoring utility.
+Since `top` only reports what is currently happening, and most I/O issues are temporary, it helps to have a monitoring utility set up so you can see a graph of I/O trends and spot potential issues *before* they become major problems. See the guides in [Server Monitoring](/docs/uptime/monitoring/) for instructions on setting up a server monitoring utility.
 
 Website is Not Loading
 ----------------------
@@ -234,11 +234,11 @@ If the files are in the correct directory, continue to the next section.
 
 ### Are virtual hosts correctly configured?
 
-If you're hosting more than website on your Linode, verify that you correctly configured the virtual host configuration files. Review the instructions for [Configuring Name Based Virtual Hosts](hosting-website#sph_configuring-name-based-virtual-hosts) and the [web server reference manuals](/docs/web-servers).
+If you're hosting more than website on your Linode, verify that you correctly configured the virtual host configuration files. Review the instructions for [Configuring Name Based Virtual Hosts](/docs/websites/hosting-a-website#configuring-name-based-virtual-hosts) and the [web server reference manuals](/docs/web-servers).
 
 ### Did you add a new IP address?
 
-If you recently added a new IP address for an SSL certificate and it's not working, try rebooting your server. The reboot is required to activate the new IP address. You should have also configured a virtual host for the new IP address. Review the instructions for [Configuring Name Based Virtual Hosts](hosting-website#sph_configuring-name-based-virtual-hosts) and the [web server reference manuals](/docs/web-servers).
+If you recently added a new IP address for an SSL certificate and it's not working, try rebooting your server. The reboot is required to activate the new IP address. You should have also configured a virtual host for the new IP address. Review the instructions for [Configuring Name Based Virtual Hosts](/docs/websites/hosting-a-website#configuring-name-based-virtual-hosts) and the [web server reference manuals](/docs/web-servers).
 
 Can't Connect via SSH or FTP
 ----------------------------

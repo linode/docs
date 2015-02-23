@@ -90,7 +90,7 @@ For more information regarding Nginx configuration options, consider our [Overvi
 Deploy PHP with FastCGI
 -----------------------
 
-In order to deploy PHP applications, you will need to implement the following "PHP-FastCGI" solution to allow Nginx to properly handle and serve pages that contain PHP code. For a more complete introduction to this subject, consider our dedicated guide to [PHP FastCGI with Nginx](/docs/web-servers/nginx/php-fastcgi/debian-7-wheezy). Begin the deployment process by issuing the following command to install the required dependencies:
+In order to deploy PHP applications, you will need to implement the following "PHP-FastCGI" solution to allow Nginx to properly handle and serve pages that contain PHP code. Begin the deployment process by issuing the following command to install the required dependencies:
 
     sudo apt-get install php5-cli php5-cgi spawn-fcgi php-pear
 
@@ -217,7 +217,7 @@ More Information
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [Basic Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration)
-- [Clustered Web Servers and Software Load Balancing with Nginx](/docs/websites/nginx/basic-nginx-configuration/front-end-proxy-and-software-load-balancing)
+- [Clustered Web Servers and Software Load Balancing with Nginx](/docs/uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing)
 - [Deploy CGI and Perl Scripts with Perl-FastCGI and Nginx](/docs/web-servers/nginx/perl-fastcgi/debian-6-squeeze)
 - [Use PostgeSQL as an Alternative to MySQL for data storage](/docs/databases/postgresql/debian-6-squeeze)
 - [Deploy Python Applications with uWSGI and Nginx](/docs/web-servers/nginx/python-uwsgi/debian-6-squeeze)

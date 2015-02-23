@@ -32,7 +32,7 @@ Instructions should be straightforward, technically accurate, and thoroughly tes
 
 # Tone
 
-The tone we use in the Library is friendly and informational — the kind of tone you would use to explain something to a friend, while still getting down to business. A little informality is encouraged, but make sure you use proper spelling and grammar. Here's an example of an article with a [beginner-friendly tone](/docs/migrate-from-shared). Here's an example of an article written for [an advanced audience](/docs/email/postfix/postfix2.9.6-dovecot2.0.19-mysql).
+The tone we use in the Library is friendly and informational — the kind of tone you would use to explain something to a friend, while still getting down to business. A little informality is encouraged, but make sure you use proper spelling and grammar. Here's an example of an article with a [beginner-friendly tone](/docs/migrate-from-shared). Here's an example of an article written for [an advanced audience](/docs/email/postfix/email-with-postfix-dovecot-and-mysql).
 
 Use short, direct sentences, especially when you're writing a single step in a set of instructions.
 

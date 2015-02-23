@@ -53,7 +53,7 @@ If the prospect of managing your own mail server is too daunting, you should con
 -   [Google Apps](http://www.google.com/intl/en/enterprise/apps/business/) uses the top-notch Gmail interface and has great uptime. It's paid and the IMAP implementation is unusual. We have a [guide](/docs/email/google-mail) on how to use Google Apps with your Linode.
 -   [Office 365](https://login.microsoftonline.com/) is the successor to Outlook.com and can support custom domains for email, amongst other services.
 
-If you decide to use an outside mail service, you will still need to set up [DNS](/docs/networking/dns/adding-dns-records) for your mail, using the settings provided by the third-party mail service.
+If you decide to use an outside mail service, you will still need to set up [DNS](/docs/networking/dns/dns-manager#adding-1) for your mail, using the settings provided by the third-party mail service.
 
 How Mail Servers Work
 ---------------------
@@ -123,11 +123,11 @@ Now that you understand how a mail server works and you've chosen the primary co
 
 The first step is to obtain and install an SSL certificate. An SSL certificate encrypts connections to your mail server, protecting passwords and email from harmful surveillance. It's possible to run a mail server without this protection, but we don't recommend it. If you follow our recommended build, you will absolutely need an SSL certificate.
 
-Any type of SSL certificate will work, but some certificates have different degrees of trustworthiness for your users. If you want the highest level of trustworthiness, you should [purchase a signed SSL certificate](/docs/security/ssl//commercial) from a reputable company. You can also use a free self-signed certificate if you are comfortable with the warnings it generates. You can [make your own](/docs/security/ssl//self-signed), or, if you're following our recommended build, you can use the one that comes with Dovecot by default. Decide what type of SSL certificate you need and acquire and install it now.
+Any type of SSL certificate will work, but some certificates have different degrees of trustworthiness for your users. If you want the highest level of trustworthiness, you should [purchase a signed SSL certificate](/docs/security/ssl/obtaining-a-commercial-ssl-certificate) from a reputable company. You can also use a free self-signed certificate if you are comfortable with the warnings it generates. You can [make your own](/docs/security/ssl/how-to-make-a-selfsigned-ssl-certificate), or, if you're following our recommended build, you can use the one that comes with Dovecot by default. Decide what type of SSL certificate you need and acquire and install it now.
 
 ### Software Installation
 
-The second step is installing and configuring the MTA, MDA, and IMAP/POP3 server. You'll also probably want to install a database server like MySQL or PostgreSQL to help you manage your domains, email addresses, user credentials, aliases, etc. Providing step-by-step instructions for every possible mail server build is beyond the scope of this article. For detailed instructions, see our [Postfix, Dovecot, and MySQL](/docs/email/postfix/postfix2.9.6-dovecot2.0.19-mysql) guide. Go ahead and install and configure the software you've chosen for your mail server build now.
+The second step is installing and configuring the MTA, MDA, and IMAP/POP3 server. You'll also probably want to install a database server like MySQL or PostgreSQL to help you manage your domains, email addresses, user credentials, aliases, etc. Providing step-by-step instructions for every possible mail server build is beyond the scope of this article. For detailed instructions, see our [Postfix, Dovecot, and MySQL](/docs/email/postfix/email-with-postfix-dovecot-and-mysql) guide. Go ahead and install and configure the software you've chosen for your mail server build now.
 
 {: .note }
 >
