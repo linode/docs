@@ -2,13 +2,13 @@
 author:
   name: Joseph Dooley
   email: jdooley@linode.com
-description: 'LAMP, LEMP, WordPress, Drupal, Node.js with Docker on Linode'
-keywords: 'docker, lamp, lemp, wordpress, drupal. node.js, ubuntu, debian'
+description: 'LAMP container with Docker on Linode'
+keywords: 'docker,lamp,LAMP,ubuntu,debian'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Friday, February 28th, 2015
+modified: Monday, February 23rd, 2015
 modified_by:
   name: Joseph Dooley
-published: 'Friday, February 28th, 2015'
+published: 'Monday, February 23rd, 2015'
 title: LAMP Stack with Docker
 external_resources:
  - '[Linode Dockerhub Page](https://hub.docker.com/u/linode/)'
@@ -71,13 +71,4 @@ When an image downloads, there are no image containers running.
 Congratulations, you have installed a configured LAMP stack using Docker in seven commands. 
 
 ##Where to Find Configuration Settings
-The LAMP image was installed using the [Hosting a Website](/docs/websites/hosting-a-website) guide on a Ubuntu container. The configuration files and settings can be found there, or on the [Dockerhub linode/lamp](https://registry.hub.docker.com/u/linode/lamp/) page.   
-
-
-
-
-
-
-
-
-
+The LAMP image was installed using the [Hosting a Website](/docs/websites/hosting-a-website) guide on a Ubuntu container. The configuration files and settings can be found there, or on the [Dockerhub linode/lamp](https://registry.hub.docker.com/u/linode/lamp/) page.
