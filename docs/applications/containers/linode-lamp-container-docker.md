@@ -11,18 +11,20 @@ modified_by:
 published: 'Monday, February 23rd, 2015'
 title: LAMP Stack with Docker
 external_resources:
- - '[Linode Dockerhub Page](https://hub.docker.com/u/linode/)'
+ - '[Linode Docker Hub Page](https://hub.docker.com/u/linode/)'
  - '[Docker Docs](http://docs.docker.com/)'
  - '[Docker Try it Tutorial](https://www.docker.com/tryit/)'
- - '[Dockerhub](https://hub.docker.com/)'
+ - '[Docker Hub](https://hub.docker.com/)'
 ---
 
-Docker is a container platform for applications. With Docker, users can quickly download pre-configured apps without the hassle of the installation and configuration process. Docker containers can also build on each other. 
+Docker is a container platform for applications. With Docker, users can download pre-configured apps without the hassle of the installation and configuration process. Docker containers can also build on each other. 
 
-*If you are familiar with Docker containers, also try [Linode Images](/docs/platform/linode-images) to capture and deploy larger system profiles.*
+{: .note}
+>
+>If you are familiar with Docker containers, also try [Linode Images](/docs/platform/linode-images) to capture and deploy larger system profiles.
 
 ##Install Docker
-Use the Docker maintained install script. The install script is for Debian or Ubuntu. For other operating systems, follow the [Docker Installation](https://docs.docker.com/en/latest/installation/) guides.
+Use the Docker-maintained install script for Debian or Ubuntu. For other operating systems, see the [Docker Installation](https://docs.docker.com/en/latest/installation/) guides.
 
 1.  Run:
 
@@ -33,13 +35,13 @@ Use the Docker maintained install script. The install script is for Debian or Ub
         sudo usermod -aG docker example_user
 
 ##Download the Docker Lamp Image
-Optionally, visit the Dockerhub [Linode user page here](https://hub.docker.com/u/linode/) for configuration information. 
+The Docker Hub user page for Linode can be accessed [here](https://hub.docker.com/u/linode/).
 
-1.  Search for "linode" user images:
+1.  Search for **linode** user images:
 
         sudo docker search linode
 
-2.  Download the "linode/lamp" image:
+2.  Download the **linode/lamp** image:
 
         sudo docker pull linode/lamp
 
@@ -54,21 +56,23 @@ When an image downloads, there are no image containers running.
     >
     > This command also changes the terminal prompt to the root user within the new container.
 
-2.  From the container's root user, start Apache:
+2.  As the container's root user, start Apache:
 
         service apache2 start
-
-    The website's public, root directory is `/var/www/example.com/public_html/`.
 
 3.  Start MySQL:
 
         service mysql start
 
-4.  Exit the container while leaving it running, press `ctrl + p` then `ctrl + q`.
+4.  Exit the container while leaving it running by pressing `ctrl + p` then `ctrl + q`.
 
 5. Enter the IP address in a web browser to test the site.
 
-Congratulations, you have installed a configured LAMP stack using Docker in seven commands. 
+    {: .note}
+    >
+    >The website's public, root directory is `/var/www/example.com/public_html/`, replacing `example.com` with your website's domain.
+
+Congratulations, you have installed a configured LAMP stack using Docker!
 
 ##Where to Find Configuration Settings
-The LAMP image was installed using the [Hosting a Website](/docs/websites/hosting-a-website) guide on a Ubuntu container. The configuration files and settings can be found there, or on the [Dockerhub linode/lamp](https://registry.hub.docker.com/u/linode/lamp/) page.
+The LAMP image was installed using the [Hosting a Website](/docs/websites/hosting-a-website) guide on a Ubuntu container. The configuration files and settings can be found there, or on the [Docker Hub linode/lamp](https://registry.hub.docker.com/u/linode/lamp/) page.
