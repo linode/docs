@@ -160,7 +160,7 @@ The `server.cfg` file is what contains all of the settings you need to customize
 >For the configuration of this file `0` means "off" and `1` means "on".
 
 {: .file}
-tf/cfg/server.cfg
+~/steamcmd/tf2/tf/cfg/server.cfg
 :	~~~
 	// General Settings //
 
