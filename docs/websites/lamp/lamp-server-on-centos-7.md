@@ -210,7 +210,6 @@ PHP makes it possible to produce dynamic and interactive pages using your own sc
         error_log = /var/log/php/error.log
         max_execution_time = 30
         memory_limit = 128M
-        register_globals = Off
         max_input_time = 30
         ~~~
 
