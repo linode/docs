@@ -38,7 +38,7 @@ What we're doing right now is *lowering the TTL* for your domain. Time to Live, 
 >
 > If you can't lower your TTL, it's not the end of the world. The first day or two of your transition to Linode may be a little bumpy, but your updated and correct domain information will eventually spread throughout the internet, and in less than a week you won't notice the difference.
 
-For more information on the TTL concept, see this section in our [DNS guide](/docs/adding-dns-records#sph_setting-the-time-to-live-or-ttl).
+For more information on the TTL concept, see this section in our [DNS guide](/docs/networking/dns/dns-manager#setting-the-time-to-live-or-ttl).
 
 Back Up Your Old Website and Data Files
 ---------------------------------------
@@ -303,8 +303,8 @@ Move Your Domain
 
 By this point, your website should be fully functional on your Linode. All that's left is to move your domain, or, to use the technical term, *point* your domain at your Linode IP address. If you decided to lower your TTL, make sure you've waited out the original time period.
 
-1.  Follow these instructions to [create DNS records](/docs/adding-dns-records#sph_creating-dns-records) at Linode for your domain name.
-2.  Edit the default MX records so that they are correct for your [third-party mail service](/docs/adding-dns-records#sph_third-party-email).
+1.  Follow these instructions to [create DNS records](/docs/networking/dns/dns-manager#adding-1) at Linode for your domain name.
+2.  Edit the default MX records so that they are correct for your third-party mail service.
 3.  Locate the *registrar* for your domain. This may or may not be your old hosting company. If you're not sure who the registrar is, you can use this [Whois Search tool](http://www.internic.net/whois.html) to find your registrar.
 
     [![Locate your registrar.](/docs/assets/1425-internic_whois_registrar-4.png)](/docs/assets/1425-internic_whois_registrar-4.png)
@@ -319,7 +319,7 @@ By this point, your website should be fully functional on your Linode. All that'
 
 6.  Wait five minutes. (Or, if you didn't lower your TTL first, wait 24-48 hours.)
 7.  Visit your domain. It should now be showing the website from Linode, rather than your old host. If you can't tell the difference, you can use the [Dig](http://www.kloth.net/services/dig.php) service at kloth.net. It should show the IP address for your Linode.
-8.  [Set reverse DNS](/docs/adding-dns-records#sph_setting-reverse-dns) for your domain so you don't have any mail problems.
+8.  [Set reverse DNS](/docs/networking/dns/setting-reverse-dns) for your domain so you don't have any mail problems.
 
  {: .note }
 >

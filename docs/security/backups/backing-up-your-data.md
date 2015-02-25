@@ -149,7 +149,7 @@ Explanation of flags:
 -   v or --verbose: Shows which files were processed
 -   f or --file=ARCHIVE: Tells us that the next argument is the name for the new archive file
 
-For a more detailed discussion of tar and more examples, see [Archiving and Compressing files with GNU Tar and GNU Zip](/docs/linux-tools/common-commands/tar-gzip).
+For a more detailed discussion of tar and more examples, see [Archiving and Compressing files with GNU Tar and GNU Zip](/docs/tools-reference/tools/archiving-and-compressing-files-with-gnu-tar-and-gnu-zip).
 
 ### Unison
 

@@ -441,8 +441,8 @@ More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- <https://github.com/linode/cli>
-- <https://library.linode.com/admin/api/key>
+- [Github Linode CLI](https://github.com/linode/cli)
+- [Linode API Key](/docs/platform/api/api-key)
 
 
 

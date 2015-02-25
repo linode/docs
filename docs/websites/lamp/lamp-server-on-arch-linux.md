@@ -16,7 +16,7 @@ title: LAMP Server on Arch Linux
 
 Arch Linux is a contemporary minimalist Linux distribution. It was started in 2002 in an effort to provide a clean, lightweight distribution of the Linux operating system. Arch uses a rolling release system, which means that Arch eschews specific distribution versions in favor of the ability to bring any system up to date with a simple `pacman -Syu` command.
 
-As a result, Arch Linux is a great distribution for users who want or need to run the most up-to-date versions of their software packages and libraries. Arch's [package management tool](/docs/using-linux/package-management), [pacman](https://wiki.Arch%20Linux.org/index.php/Pacman), is clean and coherent.
+As a result, Arch Linux is a great distribution for users who want or need to run the most up-to-date versions of their software packages and libraries. Arch's [package management tool](/docs/using-linux/package-management), [pacman](https://wiki.ArchLinux.org/index.php/Pacman), is clean and coherent.
 
 Because of its minimalist underpinnings and focus on simplicity, many users find it easy to gain a deep understanding of how Arch systems work. It's great for people who want to learn more about the inner workings of a Linux system, or even go on to develop environments and applications on top of Arch Linux.
 
@@ -171,7 +171,7 @@ Anytime you change an option in your `httpd-vhosts.conf` file, or any other Apac
 Install and Configure MySQL Database Server
 -------------------------------------------
 
-MySQL is a relational database management system (RDBMS), and is a popular component in contemporary web development tool chains. Many popular applications, including WordPress and Drupal, use MySQL as their primary database. Arch Linux has chosen MariaDB as the default MySQL implementation, pushing Oracle MySQL to the [AUR](https://aur.Arch%20Linux.org/packages/mysql/). For the purposes of this guide, we will be using MariaDB.
+MySQL is a relational database management system (RDBMS), and is a popular component in contemporary web development tool chains. Many popular applications, including WordPress and Drupal, use MySQL as their primary database. Arch Linux has chosen MariaDB as the default MySQL implementation, pushing Oracle MySQL to the [AUR](https://aur.ArchLinux.org/packages/mysql/). For the purposes of this guide, we will be using MariaDB.
 
 ### Install MariaDB
 
@@ -293,7 +293,7 @@ More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [Arch Linux Wiki](http://wiki.Arch%20Linux.org/)
+- [Arch Linux Wiki](http://wiki.ArchLinux.org/)
 - [Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.4/)
 - [MySQL Documentation](http://dev.mysql.com/doc/)
 - [Oracle MySQL and MariaDB Comparison](https://mariadb.com/kb/en/mariadb-vs-mysql-compatibility/)

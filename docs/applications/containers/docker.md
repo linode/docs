@@ -105,7 +105,7 @@ When building an image, Docker follows the instruction set in a file named `Dock
 
 Running a program like `echo` in a Docker container is pretty simple. However, for programs that act as servers, such as [Nginx](http://nginx.com/), you will need to ensure that the program is configured not to self-daemonize.
 
-This is an [example Dockerfile](https://index.docker.io/u/bsdlp/docker-nginx/) for Nginx:
+This is an example Dockerfile for Nginx:
 
     FROM        ubuntu:12.04
     MAINTAINER  Jon Chen "fly@burrito.sh"
@@ -142,11 +142,11 @@ The important thing to remember for programs such as Nginx is to ensure that the
 
     RUN echo "\ndaemon off;" >> /etc/nginx/nginx.conf
 
-To expose a port inside the container to the outside of the container, use the [EXPOSE](http://docs.docker.io/en/latest/use/builder/#expose) instruction:
+To expose a port inside the container to the outside of the container, use the EXPOSE instruction:
 
     EXPOSE 80
 
-The [CMD](http://docs.docker.io/en/latest/use/builder/#cmd) instruction defines the default command to run when the container starts. In our example, we want to run Nginx:
+The CMD instruction defines the default command to run when the container starts. In our example, we want to run Nginx:
 
     CMD ["nginx"]
 

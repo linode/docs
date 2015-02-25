@@ -164,7 +164,7 @@ You can test by pointing a web browser to your domian. If you see `Hello World!`
 Additional Application Servers
 ------------------------------
 
-If the Python application you've deployed requires more application resources than a single Linode instance can provide, all of the methods for deploying a uWSGI application server are easily scaled to rely on multiple uSWGI instances that run on additional Linodes with the request load balanced using nginx's `upstream` capability. See our documentation of [proxy and software load balancing with nginx](/docs/websites/nginx/basic-nginx-configuration/front-end-proxy-and-software-load-balancing) for more information. For a basic example configuration, see the following example:
+If the Python application you've deployed requires more application resources than a single Linode instance can provide, all of the methods for deploying a uWSGI application server are easily scaled to rely on multiple uSWGI instances that run on additional Linodes with the request load balanced using nginx's `upstream` capability. See our documentation of [proxy and software load balancing with nginx](/docs/uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing) for more information. For a basic example configuration, see the following example:
 
 {: .file-excerpt }
 nginx configuration
@@ -202,9 +202,9 @@ More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [Installing Nginx on Ubuntu 12.04 (Precise Pangolin)](/docs/web-servers/nginx/installation/ubuntu-12.04-precise-pangolin)
+- [Installing Nginx on Ubuntu 12.04 (Precise Pangolin)](/docs/websites/apache/apache-2-web-server-on-ubuntu-12-04-lts-precise-pangolin)
 - [Deploy a LEMP Server on Ubuntu 12.04 (Precise Pangolin)](/docs/lemp-guides/ubuntu-12.04-precise-pangolin)
-- [Configure nginx Proxy Servers](/docs/websites/nginx/basic-nginx-configuration/front-end-proxy-and-software-load-balancing)
+- [Configure nginx Proxy Servers](/docs/uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing)
 
 
 

@@ -13,7 +13,7 @@ published: 'Monday, November 29th, 2010'
 title: View and Follow the End of Text Files with tail
 ---
 
-The `tail` command is a core Linux utility used to view the very end of a text file. Additionally, with `tail` you may "follow" a text file to see new lines as they're added to the file in real time. For related functionality that addresses the beginning of a file, consider the [head utility](/docs/linux-tools/common-commands/head).
+The `tail` command is a core Linux utility used to view the very end of a text file. Additionally, with `tail` you may "follow" a text file to see new lines as they're added to the file in real time. For related functionality that addresses the beginning of a file, consider the [head utility](/docs/tools-reference/tools/view-the-beginning-of-text-files-with-head).
 
 Using tail
 ----------
@@ -70,7 +70,7 @@ The "follow" mode of `tail` is very useful when troubleshooting issues because i
 
 ### Filter Lines in Followed Logs with grep
 
-The [grep](/docs/linux-tools/common-commands/grep) tool can be combined with `tail` to filter the contents of a log file in real time. Consider the following examples:
+The [grep](/docs/tools-reference/search-and-filter-text-with-grep) tool can be combined with `tail` to filter the contents of a log file in real time. Consider the following examples:
 
     tail -F procmail.log | grep -e "^Subject"
     tail -F access.log | grep "404" 

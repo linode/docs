@@ -54,7 +54,7 @@ Issue the following commands to download and install Web.py, using a packaged ve
 
 > apt-get install python-webpy
 
-If you want to upload a more recent version, consider [this procedure](/docs/frameworks/webpy/ubuntu-10.04-lucid#install_webpy), to install Web.py from source.
+If you want to upload a more recent version, consider [this procedure](/docs/websites/frameworks/webpy-on-ubuntu-12-04-precise-pangolin/ubuntu-10.04-lucid#install_webpy), to install Web.py from source.
 
 Create a Basic Application with Web.py
 --------------------------------------

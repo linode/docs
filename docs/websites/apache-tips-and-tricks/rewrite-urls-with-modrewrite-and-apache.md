@@ -104,7 +104,7 @@ More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
--   [Apache Rewrite Guide](http://httpd.apache.org/docs/2.2/rewrite/rewrite_guide.html)
+-   [Apache Rewrite Guide](http://httpd.apache.org/docs/2.2/rewrite/)
 -   [Apache URL Redirection Guide](/docs/web-servers/apache/configuration/redirecting-urls)
 
 

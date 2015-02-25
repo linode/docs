@@ -84,7 +84,7 @@ Ensure that you have no whitespace at the end of this file, or Mantis will throw
 
     rm -rf /srv/www/bucknell.net/public_html/mantis/admin/
 
-At this point, MantisBT is ready to use for your development project! For specific Mantis help and instruction, see the [administration guide](http://docs.mantisbt.org/master/en/administration_guide.html) available on the MantisBT website. You can also install a number of plugins that allow you to customize MantisBT to your needs. Each of these plugins has a specific set of instructions that come with it. You can read more about these on the plugins section of the MantisBT site, listed below.
+At this point, MantisBT is ready to use for your development project! For specific Mantis help and instruction, see the [administration guide](http://www.mantisbt.org/manual/) available on the MantisBT website. You can also install a number of plugins that allow you to customize MantisBT to your needs. Each of these plugins has a specific set of instructions that come with it. You can read more about these on the plugins section of the MantisBT site, listed below.
 
 Monitor for Software Updates and Security Notices
 -------------------------------------------------
@@ -107,7 +107,7 @@ You may wish to consult the following resources for additional information on th
 - [MantisBT Website](http://www.mantisbt.org/)
 - [MantisBT Plugin Page](http://deboutv.free.fr/mantis/)
 - [MantisBT Wiki](http://www.mantisbt.org/wiki/doku.php)
-- [MantisBT Administration Guide](http://docs.mantisbt.org/master/en/administration_guide.html)
+- [MantisBT Administration Guide](http://www.mantisbt.org/manual/)
 
 
 
