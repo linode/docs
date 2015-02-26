@@ -12,7 +12,7 @@ external_resources:
 modified_by:
   name: Joseph Dooley
 published: 'Friday, February 6th, 2015'
-title: Developing with Git and Github
+title: Developing with Git and Github the Basics
 ---
 
 Git is a file tracking application, or version control system. Github is a website that allows collaboration between developers who use Git. With Git and Github, programmers from across the world can share ideas and code in an organized and up-to-date process.
@@ -32,6 +32,11 @@ The directions below are for Debian or Ubuntu. For installation on Mac, Windows,
 3.  Configure the email, replace `example@example.com`:
         
         git config --global user.email "example@example.com"
+
+
+    Now that Git has been installed, refer to the image below for help with using Git and Github together.
+
+    [![Workflow for using Git with Github.](/docs/assets/git-github-workflow-650w.png)](/docs/assets/git-github-workflow-1000w.png)
 
 ##Clone a Test Repository
 A repository, or repo, is a Git project. For tutorial purposes, there is a test repository setup on Github, which is listed below.
