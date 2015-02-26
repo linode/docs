@@ -12,7 +12,7 @@ external_resources:
 modified_by:
   name: Joseph Dooley
 published: 'Friday, February 6th, 2015'
-title: Developing with Git and Github the Basics
+title: Developing with Git and Github for Beginners
 ---
 
 Git is a file tracking application, or version control system. Github is a website that allows collaboration between developers who use Git. With Git and Github, programmers from across the world can share ideas and code in an organized and up-to-date process.
