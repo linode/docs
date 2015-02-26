@@ -16,9 +16,9 @@ external_resources:
  - '[MySQLTuner](http://mysqltuner.com/)'
 ---
 
-Getting MySQL to run at optimal settings for your resources will help in handling larger server loads and prevent any server slow-down. Generally, after [tuning Apache](/docs/websites/apache-tips-and-tricks/tuning-your-apache-server) to handle larger loads it is beneficial to tune MySQL to handle any additional connections.
+Running MySQL at optimal settings for specific resources helps in handling larger server loads and prevents any server slow-down. Generally, after [tuning Apache](/docs/websites/apache-tips-and-tricks/tuning-your-apache-server) to handle larger loads it is beneficial to tune MySQL to additional connections.
 
-It should be noted that database tuning is an expansive topic, and this guide will cover just the basics of editing your MySQL configuration.
+Database tuning is an expansive topic, and this guide covers only the basics of editing your MySQL configuration.
 
 {: .note}
 >
