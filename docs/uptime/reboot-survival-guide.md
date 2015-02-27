@@ -16,6 +16,10 @@ Although constant server uptime is optimal, downtime is inevitable. Cloud infras
 
 This guide covers best practices to ensure that your server is prepared to handle an unexpected reboot, and considerations for scheduled downtime.
 
+## Testing for Reboot Issues
+
+The best way to know what occurs during a server reboot is to test for it. During your development process, or whenever you make significant changes to your stack, reboot your system and test to ensure that your stack is fully operational afterwards. By conducting scheduled reboot tests, you can be sure that your system is prepared for the unexpected.
+
 ## Backups
 
 All critical data should be backed up, and if possible in more than one location. RAID arrays offer a level of fault tolerance against hard drive failure, but backups are a necessary additional option. Linode provides an integrated [Backups](https://www.linode.com/backups) solution with daily, weekly, and bi-weekly backup windows, as well as a manual snapshot option. Our backups solution is one of many Linode services to ensure that your data is never in only one place.
