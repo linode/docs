@@ -9,10 +9,10 @@ modified: Friday, February 27, 2015
 modified_by:
   name: Alex Fornuto
 published: 'Friday, February 27, 2015'
-title: Preparing for Server Reboots
+title: Reboot Survival Guide
 ---
 
-Although constant server uptime is optimal, downtime is inevitable. Cloud infrastructure and RAID arrays offer resilience, but all servers rely on physical hardware, which eventually needs maintenance. Hardware aside, kernel updates and other software patches can mean rebooting to ensure your system is secure and up-to-date.
+Although constant server uptime is optimal, downtime is inevitable. Cloud infrastructure and RAID arrays offer resilience, but all servers rely on physical hardware, which eventually need maintenance. Hardware aside, kernel updates and other software patches can mean rebooting to ensure your system is secure and up-to-date.
 
 This guide covers best practices to ensure that your server is prepared to handle an unexpected reboot, and considerations for scheduled downtime.
 
@@ -22,7 +22,7 @@ All critical data should be backed up, and if possible in more than one location
 
 ### Backing up Databases
 
-Proper backup knowlege for a database is important. On an active server, file-level backups of a database can be inconsistent. By "dumping" your database to a file on a regular basis, your backup service pulls a consistent and readable copy of your database for later restores. If you're using MySQL or MariaDB, dump all databases with a simple one line command:
+Proper backup knowledge for a database is important. On an active server, file-level backups of a database can be inconsistent. By "dumping" your database to a file on a regular basis, your backup service pulls a consistent and readable copy of your database for later restores. If you're using MySQL or MariaDB, dump all databases with a simple one line command:
 
     mysqldump --all-databases > dump-$( date '+%Y-%m-%d_%H-%M-%S' ).sql -u root -p
 
