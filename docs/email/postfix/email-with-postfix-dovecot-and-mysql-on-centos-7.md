@@ -2,15 +2,14 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Installing Postfix with Dovecot and MySQL on CentOS.'
-keywords: 'postfix centos 5,dovecot centos 5,linux mail server,email,centos5'
+description: 'Installing Postfix with Dovecot and MariaDB on CentOS.'
+keywords: 'postfix centos 7,dovecot centos 7,linux mail server,email,centos 7'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['email/postfix/dovecot-mysql-centos-5/']
 modified: Friday, February 27th, 2015
 modified_by:
   name: Elle Krout
-published: 'Friday, June 24th, 2011'
-title: 'Email with Postfix, Dovecot and MySQL on CentOS 5'
+published: 'Friday, February 27th, 2015'
+title: 'Email with Postfix, Dovecot and MariaDB on CentOS 7'
 external_resources:
  - '[ISP-style Email Server with Debian-Lenny and Postfix 2.5 guide](http://workaround.org/ispmail/lenny)'
  - '[Groupware Server With Group-Office, Postfix, Dovecot And SpamAssassin On Debian Lenny (5.0)](http://www.howtoforge.com/groupware-server-with-group-office-postfix-dovecot-spamassassin-on-debian-lenny)'
@@ -20,13 +19,13 @@ external_resources:
  - '[MySQL Documentation](http://dev.mysql.com/doc/)'
 ---
 
-The Postfix Mail Transfer Agent (**MTA**) is a high performance open source e-mail server system. This guide will help you get Postfix running on your CentOS 5 Linode, using Dovecot for IMAP/POP3 service, and MySQL to store information on virtual domains and users.
+The Postfix Mail Transfer Agent (**MTA**) is a high performance open source e-mail server system. This guide will help you get Postfix running on your CentOS 7 Linode, using Dovecot for IMAP/POP3 service, and MariaDB, a drop-in replacement for MySQL, to store information on virtual domains and users.
 
 Prior to using this guide, be sure you have followed the [getting started guide](/docs/getting-started/) and set your hostname.
 
 {: .note}
 >
->The steps in this guide require root privileges. Be sure to run the steps below as `root`, or use `su - root` to log in as root. Certain commands below cannot be run as `sudo` and must be run as root.
+>The steps in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
 ##Install Required Packages
 
@@ -34,7 +33,7 @@ Prior to using this guide, be sure you have followed the [getting started guide]
 
         yum update
 
-2.  The version of Postfix included in the main CentOS repository does not include support for MySQL; therefore, you will need install Postfix from the CentOS Plus repository. Before doing so, add exclusions to the `[base]` and `[updates]` repositories for the Postfix package to prevent it from being overwritten with updates that do not have MySQL support:
+2.  The version of Postfix included in the main CentOS repository does not include support for MariaDB; therefore, you will need install Postfix from the CentOS Plus repository. Before doing so, add exclusions to the `[base]` and `[updates]` repositories for the Postfix package to prevent it from being overwritten with updates that do not have MariaDB support:
 
     {: .file-excerpt }
     /etc/yum.repos.d/CentOS-Base.repo
@@ -52,24 +51,24 @@ Prior to using this guide, be sure you have followed the [getting started guide]
 3.  Install the required packages:
 
         yum --enablerepo=centosplus install postfix
-        yum install dovecot mysql-server
+        yum install dovecot mariadb-server dovecot-mysql
 
-    This installs the Postfix mail server, the MySQL database server, the Dovecot IMAP and POP daemons, and several supporting packages that provide services related to authentication.
+    This installs the Postfix mail server, the MariaDB database server, the Dovecot IMAP and POP daemons, and several supporting packages that provide services related to authentication.
 
-Next, set up a MySQL database to handle virtual domains and users.
+Next, set up a MariaDB database to handle virtual domains and users.
 
-##Set up MySQL for Virtual Domains and Users
+##Set up MariaDB for Virtual Domains and Users
 
-1.  Configure MySQL to start on boot, then start MySQL:
+1.  Configure MariaDB to start on boot, then start MariaDB:
 
-        chkconfig mysqld on
-        service mysqld start
+        systemctl enable mariadb.service
+        /bin/systemctl start  mariadb.service
 
-2.  Run `mysql_secure_installation`. You will be presented with the opportunity to change the MySQL root password, remove anonymous user accounts, disable root logins outside of localhost, remove test databases, and reload privilege tables. It is recommended that you answer yes to these options:
+2.  Run `mysql_secure_installation`. You will be presented with the opportunity to change the MariaDB root password, remove anonymous user accounts, disable root logins outside of localhost, remove test databases, and reload privilege tables. It is recommended that you answer yes to these options:
 
         mysql_secure_installation
 
-3.  Start the MySQL shell:
+3.  Start the MariaDB shell:
 
         mysql -u root -p
 
@@ -100,11 +99,11 @@ Next, set up a MySQL database to handle virtual domains and users.
 
         CREATE TABLE transport ( domain varchar(128) NOT NULL default '', transport varchar(128) NOT NULL default '', UNIQUE KEY domain (domain) );
 
-10. Exit the MySQL shell:
+10. Exit the MariaDB shell:
 
         quit
 
-11. Bind MySQL to localhost (127.0.0.1) by editing `/etc/my.cnf`, and adding the following to the `[mysqld]` section of the file:
+11. Bind MariaDB to localhost (127.0.0.1) by editing `/etc/my.cnf`, and adding the following to the `[mysqld]` section of the file:
 
     {: .file-excerpt }
     /etc/my.cnf
@@ -112,15 +111,15 @@ Next, set up a MySQL database to handle virtual domains and users.
         bind-address=127.0.0.1
         ~~~
 
-    This is required for Postfix to be able to communicate with the database server. If you have MySQL set up to run on another IP address (such as an internal IP), you will need to substitute this IP address in place of `127.0.0.1` during the Postfix configuration steps. It is *not* advisable to run MySQL on a publicly-accessible IP address.
+    This is required for Postfix to be able to communicate with the database server. If you have MariaDB set up to run on another IP address (such as an internal IP), you will need to substitute this IP address in place of `127.0.0.1` during the Postfix configuration steps. It is *not* advisable to run MariaDB on a publicly-accessible IP address.
 
 12. Restart the database server:
 
-        service mysqld restart
+        /bin/systemctl restart  mariadb.service
 
 Next, perform additional Postfix configuration to set up communication with the database.
 
-##Configure Postfix to work with MySQL
+##Configure Postfix to work with MariaDB
 
 {: .note}
 >
@@ -205,8 +204,8 @@ Next, perform additional Postfix configuration to set up communication with the 
         postconf -e 'smtpd_sasl_authenticated_header = yes'
         postconf -e 'smtpd_recipient_restrictions = permit_mynetworks, permit_sasl_authenticated, reject_unauth_destination'
         postconf -e 'smtpd_use_tls = yes'
-        postconf -e 'smtpd_tls_cert_file = /etc/pki/dovecot/certs/dovecot.pem'
-        postconf -e 'smtpd_tls_key_file = /etc/pki/dovecot/private/dovecot.pem'
+        postconf -e 'smtpd_tls_cert_file = </etc/pki/dovecot/certs/dovecot.pem'
+        postconf -e 'smtpd_tls_key_file = </etc/pki/dovecot/private/dovecot.pem'
         postconf -e 'virtual_create_maildirsize = yes'
         postconf -e 'virtual_maildir_extended = yes'
         postconf -e 'proxy_read_maps = $local_recipient_maps $mydestination $virtual_alias_maps $virtual_alias_domains $virtual_mailbox_maps $virtual_mailbox_domains $relay_recipient_maps $relay_domains $canonical_maps $sender_canonical_maps $recipient_canonical_maps $relocated_maps $transport_maps $mynetworks $virtual_mailbox_limit_maps'
@@ -222,83 +221,82 @@ Next, perform additional Postfix configuration to set up communication with the 
             flags=DRhu user=vmail:vmail argv=/usr/libexec/dovecot/deliver -f ${sender} -d ${recipient}
         ~~~
 
-9.  Shut down Sendmail, then configure Postfix to start on boot and start the service for the first time:
+9.  Configure Postfix to start on boot and start the service for the first time:
 
-        service sendmail stop
-        chkconfig sendmail off
-        chkconfig postfix on
-        service postfix start
+        systemctl enable postfix.service
+        /bin/systemctl start  postfix.service
 
 This completes the configuration for Postfix.
 
 ##Configure Dovecot
 
-1.  Make a backup copy of your `/etc/dovecot.conf` file:
+1.  Make a backup copy of your `/etc/dovecot/dovecot.conf` file:
 
-        cp -a /etc/dovecot.conf /etc/dovecot.conf-backup
+        cp -a /etc/dovecot/dovecot.conf /etc/dovecot/dovecot.conf-backup
 
-2.  Replace the contents of the file with the following, substituting your system's domain name for `example.com` in line 17:
+2.  Replace the contents of the file with the following, substituting your system's domain name for `example.com` in line 37:
 
     {: .file }
-    /etc/dovecot.conf
+    /etc/dovecot/dovecot.conf
     :   ~~~
-        protocols = imap imaps pop3 pop3s
+        protocols = imap pop3
         log_timestamp = "%Y-%m-%d %H:%M:%S "
         mail_location = maildir:/home/vmail/%d/%n/Maildir
 
-        ssl_cert_file = /etc/pki/dovecot/certs/dovecot.pem
-        ssl_key_file = /etc/pki/dovecot/private/dovecot.pem
+        ssl_cert = </etc/pki/dovecot/certs/dovecot.pem
+        ssl_key = </etc/pki/dovecot/private/dovecot.pem
 
-        namespace private {
+        namespace {
+            type = private
             separator = .
             prefix = INBOX.
             inbox = yes
         }
-    
+
+        service auth {
+            unix_listener auth-master {
+                mode = 0600
+                user = vmail
+            }
+
+            unix_listener /var/spool/postfix/private/auth {
+                mode = 0666
+                user = postfix
+                group = postfix
+            }
+
+        user = root
+        }
+
+        service auth-worker {
+            user = root
+        }
+
         protocol lda {
             log_path = /home/vmail/dovecot-deliver.log
             auth_socket_path = /var/run/dovecot/auth-master
-            postmaster_address = <postmaster@example.com>
+            postmaster_address = postmaster@example.com
         }
 
         protocol pop3 {
-        pop3_uidl_format = %08Xu%08Xv
+            pop3_uidl_format = %08Xu%08Xv
         }
 
-        auth default {
-            user = root
+        passdb {
+            driver = sql
+            args = /etc/dovecot/dovecot-sql.conf.ext
+        }
 
-            passdb sql {
-                args = /etc/dovecot-sql.conf
-            }
-
-            userdb static {
-                args = uid=5000 gid=5000 home=/home/vmail/%d/%n allow_all_users=yes
-            }
-
-            socket listen {
-                master {
-                    path = /var/run/dovecot/auth-master
-                    mode = 0600
-                    user = vmail
-                }
-
-                client {
-                    path = /var/spool/postfix/private/auth
-                    mode = 0660
-                    user = postfix
-                    group = postfix
-                }
-    
-            }
-
+        userdb {
+            driver = static
+            args = uid=5000 gid=5000 home=/home/vmail/%d/%n allow_all_users=yes
         }
         ~~~
 
-3.  MySQL will be used to store password information, so `/etc/dovecot-sql.conf` must be created. Insert the following contents into the file, making sure to replace `main_admin_password` with your mail password:
+3.  MariaDB will be used to store password information, so `/etc/dovecot/dovecot-sql.conf.ext` must be created. Insert the following contents into the file, making sure to replace `main_admin_password` with your mail password:
 
     {: .file }
-    /etc/dovecot-sql.conf
+    /etc/dovecot/dovecot-sql.conf.ext
     :   ~~~
         driver = mysql
         connect = host=127.0.0.1 dbname=mail user=mail_admin password=mail_admin_password
@@ -308,13 +306,13 @@ This completes the configuration for Postfix.
 
 4.  Restrict access to the avoce file by changing the permissions to allow users in the `dovecot` group to access it, while denying access to others:
 
-        chgrp dovecot /etc/dovecot-sql.conf
-        chmod o= /etc/dovecot-sql.conf
+        chgrp dovecot /etc/dovecot/dovecot-sql.conf.ext
+        chmod o= /etc/dovecot/dovecot-sql.conf.ext
 
 5.  Configure Dovecot to start on boot, and start it for the first time:
 
-        chkconfig dovecot on
-        service dovecot start
+        systemctl enable dovecot.service
+        /bin/systemctl start  dovecot.service
 
 6.  Now check `/var/log/maillog` to make sure Dovecot started without errors. Your log should have lines similar to the following:
 
@@ -322,11 +320,11 @@ This completes the configuration for Postfix.
     /var/log/maillog
     :   ~~~
         Jan 21 20:00:18 li181-194 dovecot: Dovecot v1.0.15 starting up
-        Jan 21 20:00:18 li181-194 dovecot: auth-worker(default): mysql: Connected to 127.0.0.1 (mail)
         ~~~
 
 7.  Test your POP3 server to make sure it's running properly:
 
+        yum install telnet
         telnet localhost pop3
 
 8.  The terminal should output results similar to the following:
@@ -336,9 +334,7 @@ This completes the configuration for Postfix.
         Escape character is '^]'.
         +OK Dovecot ready.
 
-9.  Enter the command `quit` to return to your shell. This completes the Dovecot configuration.
-
-Next, you'll make sure aliases are configured properly.
+9.  Enter the command `quit` to return to your shell. This completes the Dovecot configuration. Next, you'll make sure aliases are configured properly.
 
 ##Configure Mail Aliases
 
@@ -348,13 +344,13 @@ Next, you'll make sure aliases are configured properly.
     /etc/aliases
     :   ~~~
         postmaster: root
-        root: <postmaster@example.com>
+        root: postmaster@example.com
         ~~~
 
 2.  Update aliases and restart Postfix:
 
         newaliases
-        service postfix restart
+        /bin/systemctl restart  postfix.service
 
 This completes alias configuration. Next, test Postfix to make sure it's operating properly.
 
@@ -387,9 +383,9 @@ This completes alias configuration. Next, test Postfix to make sure it's operati
         250-8BITMIME
         250 DSN
 
-4.  Issue the command `quit` to terminate the Postfix connection. 
+4.  Issue the command `quit` to terminate the Postfix connection.
 
-Next, populate the MySQL database with domains and email users.
+Next, populate the MariaDB database with domains and email users.
 
 ##Set Up and Test Domains and Users
 
@@ -397,9 +393,9 @@ Next, populate the MySQL database with domains and email users.
 >
 >Before continuing, modify the DNS records for any domains that you wish to handle email by adding an MX record that points to your mail server's fully qualified domain name. If MX records already exist for a domain you would like to handle the email for, either delete them or set them to a higher priority number than your mail server. Smaller priority numbers indicate higher priority for mail delivery, with "0" being the highest priority.
 
-In the following example, the MySQL shell is used to add support for the domain "example.com", which will have an email account called "sales".
+In the following example, the MariaDB shell is used to add support for the domain "example.com", which will have an email account called "sales".
 
-1.  Log into the MySQL shell:
+1.  Log into the MariaDB shell:
 
         mysql -u root -p
 
@@ -410,27 +406,28 @@ In the following example, the MySQL shell is used to add support for the domain 
         INSERT INTO users (email, password) VALUES ('sales@example.com', ENCRYPT('password'));
         quit
 
-3.  Prior to accessing any newly-created email accounts, a test message needs to be sent to create that user's mailbox:
+3.  Prior to accessing any newly-created email account, a test message needs to be sent to create that user's mailbox:
 
+        yum install mailx
         mailx sales@example.com
 
     Press `Ctrl+D` to complete the message. You can safely leave the field for `Cc:` blank. This completes the configuration for a new domain and email user.
 
 {: .note}
 >
->Given the possibility for hosting a large number of virtual domains on a single mail system, the username portion of an email address (i.e. before the `@` sign) is not sufficient to authenticate to the mail server. When email users authenticate to the server, they must supply their email clients with the *entire* email address created above as their username.
+>Given the possibility for virtual hosting a large number of virtual domains on a single mail system, the username portion of an email address (i.e. before the `@` sign) is not sufficient to authenticate to the mail server. When email users authenticate to the server, they must supply their email clients with the *entire* email address created above as their username.
 
 ###Check Your Logs
 
-After the test mail is sent, check the mail logs to make sure the mail was delivered.
+After the test mail is sent, check the mail logs to make sure the mail was delivered. 
 
 1.  Check the `maillog` located in `/var/log/maillog`. You should see something similar to the following:
 
     {: .file-excerpt }
     /var/log/maillog
     :   ~~~
-        Jan 21 20:03:19 li181-194 postfix/cleanup[5877]: E1D148908: message-id=<<20110121200319.E1D148908@plato.example.com>>
-        Jan 21 20:03:19 li181-194 postfix/qmgr[5867]: E1D148908: from=<<root@plato.example.com>>, size=377, nrcpt=1 (queue active) Jan 21 20:03:19 li181-194 postfix/pipe[5883]: E1D148908: to=<<sales@example.com>>, relay=dovecot, delay=0.05, delays=0.04/0.01/0/0.01, dsn=2.0.0, status=sent (delivered via dovecot service)
+        Jan 21 20:03:19 li181-194 postfix/cleanup[5877]: E1D148908: message-id=\<<20110121200319.E1D148908@plato.example.com>>
+        Jan 21 20:03:19 li181-194 postfix/qmgr[5867]: E1D148908: from=\<<root@plato.example.com>>, size=377, nrcpt=1 (queue active) Jan 21 20:03:19 li181-194 postfix/pipe[5883]: E1D148908: to=\<<sales@example.com>>, relay=dovecot, delay=0.05, delays=0.04/0.01/0/0.01, dsn=2.0.0, status=sent (delivered via dovecot service)
         Jan 21 20:03:19 li181-194 postfix/qmgr[5867]: E1D148908: removed
         ~~~
 
@@ -442,7 +439,7 @@ After the test mail is sent, check the mail logs to make sure the mail was deliv
         deliver(<sales@example.com>): 2011-01-21 20:03:19 Info: msgid=<<20110121200319.E1D148908@plato.example.com>>: saved mail to INBOX
         ~~~
 
-Now test to see what the users of your email server would see with their email clients.
+Now you can test to see what the users of your email server would see with their email clients.
 
 ###Test the Mailbox
 
@@ -463,8 +460,8 @@ Now test to see what the users of your email server would see with their email c
 
 3.  Test the maillbox by using a mail client. For this test, using **mutt** is recommended. If it is not installed by default, install it with `yum install mutt`, then run:
 
-    mutt -f .
+        mutt -f .
 
     You may be prompted to create the root mailbox. This is not required.
 
-4.  If there is an email in the inbox, Postfix, Dovecot, and MySQL have been successfully configured!
+4.  If there is an email in the inbox, Postfix, Dovecot, and MariaDB have been successfully configured!
