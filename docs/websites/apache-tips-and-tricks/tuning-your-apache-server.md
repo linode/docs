@@ -40,8 +40,8 @@ Apache `mod_status` diplays information related to incoming server connections b
 2.  Add the following to the `<virtual_hosts>` block:
 
 	{: .file-excerpt}
-	/etc/apache2/sites-available/example.com.conf
-	/etc/httpd/conf.d/vhost.conf
+	/etc/apache2/sites-available/example.com.conf (Debian/Ubuntu)
+	/etc/httpd/conf.d/vhost.conf (CentOS/Fedora)
 	:	~~~
 		<Location /server-status>
 	      SetHandler server-status
@@ -54,8 +54,8 @@ Apache `mod_status` diplays information related to incoming server connections b
 3.  Apache `mod_status` also offers an option called **ExtendedStatus**, which provides additional information about each request made to Apache. To enable **ExtendedStatus** edit your Apache configuration file:
 
 	{: .file-excerpt}
-	/etc/apache2/apache2.conf
-	/etc/httpd/confd/httpd.conf
+	/etc/apache2/apache2.conf (Debian/Ubuntu)
+	/etc/httpd/confd/httpd.conf (CentOS/Fedora)
 	:	~~~
 		ExtendedStatus On
 		~~~
@@ -127,8 +127,8 @@ The event module is *only* available on Apache 2.4 and is based off the worker M
 Once you select your MPM, you will need to change the values inside the configuration. These settings are located in the `/etc/apache2/apache2.conf` file on Debian/Ubuntu, and the `/etc/httpd/conf/httpd.conf` file on CentOS/Fedora. The MPM looks like this:
 
 {: .file-excerpt}
-/etc/apache2/apache2.conf
-/etc/httpd/conf/httpd.conf
+/etc/apache2/apache2.conf (Debian/Ubuntu)
+/etc/httpd/conf/httpd.conf (CentOS/Fedora)
 :	~~~
 	<IfModule mpm_prefork_module>
     	StartServers          2
