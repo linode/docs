@@ -40,7 +40,7 @@ This will delete your current compromised images and deploy fresh disks. All dat
 Copying Data Offsite
 --------------------
 
-If there is data on the compromised Linode that you need to retain, you can use the [Finnix rescue environment](/docs/troubleshooting/rescue-and-rebuild) to examine your old disks first. Once you have verified the integrity of your data, copy it to the appropriate location on your new server or another offsite location. Our [SSH disk copy guide](/docs/linode-platform/migration/copy-disk-image-over-ssh) explains how to copy your entire disk offsite.
+If there is data on the compromised Linode that you need to retain, you can use the [Finnix rescue environment](/docs/troubleshooting/rescue-and-rebuild) to examine your old disks first. Once you have verified the integrity of your data, copy it to the appropriate location on your new server or another offsite location. Our [SSH disk copy guide](/docs/migrate-to-linode/disk-images/copying-a-disk-image-over-ssh) explains how to copy your entire disk offsite.
 
 Using a Second Linode
 ---------------------
@@ -97,7 +97,7 @@ Alternately, you may wish to [update your DNS entries](/docs/hosting-website#sph
 
 ### Preserving Data for Forensics and Linode Cancellation
 
-You may wish to download a complete copy of the old Linode's disk(s) for forensic analysis. To do this, follow the instructions in our [SSH disk copy guide](/docs/linode-platform/migration/copy-disk-image-over-ssh). Even if you don't need a full copy of the affected disks, you may still want to make a copy of all system log files for later review.
+You may wish to download a complete copy of the old Linode's disk(s) for forensic analysis. To do this, follow the instructions in our [SSH disk copy guide](/docs/migrate-to-linode/disk-images/copying-a-disk-image-over-ssh). Even if you don't need a full copy of the affected disks, you may still want to make a copy of all system log files for later review.
 
 When you no longer need the old Linode's disks, you should [remove the Linode](/docs/billing-and-payments#sph_removing-services). Your account will be issued a pro-rated credit for that Linode's charges in the current billing period.
 

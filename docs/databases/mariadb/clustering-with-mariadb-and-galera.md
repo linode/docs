@@ -42,7 +42,7 @@ MariaDB replication with Galera adds redundancy for a site's database. With data
 
 ##Configuring Galera
 
-1.  Create the file /etc/mysql/conf.d/galera.cnf on each of the Linodes with the following content.  Replace the IP addresses in the "wsrep_cluster_address" section with the private IP addresses of each of the Linodes:
+1.  Create the file `/etc/mysql/conf.d/galera.cnf` on each of the Linodes with the following content.  Replace the IP addresses in the `wsrep_cluster_address` section with the private IP addresses of each of the Linodes:
 
 	{: .file-excerpt}
     /etc/mysql/conf.d/galera.cnf
@@ -62,21 +62,21 @@ MariaDB replication with Galera adds redundancy for a site's database. With data
     wsrep_sst_method=rsync
     ~~~
 
-2.  Reboot both of your non-primary servers in the cluster to enable the new debian.cnf file settings.
+2.  Reboot both of your non-primary servers in the cluster to enable the new `galera.cnf` file settings.
 
 3.  Stop the MariaDB service on each of your Linodes:
 
 		sudo service mysql stop
 
-4.  Restart the MariaDB service on the primary Linode, with the --wsrep-new-cluster flag:
+4.  Restart the MariaDB service on the primary Linode, with the `--wsrep-new-cluster` flag:
 
 		sudo service mysql start --wsrep-new-cluster
 
-5.  Confirm that the cluster has started by running the following command.  You should receive an output of the current cluster size:
+5.  Confirm that the cluster has started:
 
 		mysql -u root -p -e 'SELECT VARIABLE_VALUE as "cluster size" FROM INFORMATION_SCHEMA.GLOBAL_STATUS WHERE VARIABLE_NAME="wsrep_cluster_size"'
 
-	The output should be similar to the following:
+	You should receive an output of the current cluster size:
 
 		MariaDB [(none)]> SELECT VARIABLE_VALUE as "cluster size" FROM INFORMATION_SCHEMA.GLOBAL_STATUS WHERE VARIABLE_NAME="wsrep_cluster_size";
 		+--------------+
@@ -92,7 +92,7 @@ MariaDB replication with Galera adds redundancy for a site's database. With data
 
 7.  To prevent repeated errors on startup, copy the `/etc/mysql/debian.cnf` file from your primary Linode in the cluster to each of your other Linodes, overwriting the existing copies.
 
-8.  Reboot both of your secondary Linodes to apply the new debian.cnf settings.
+8.  Reboot both of your secondary Linodes to apply the new `debian.cnf` settings.
 
 ##Testing database replication
 
@@ -105,11 +105,11 @@ MariaDB replication with Galera adds redundancy for a site's database. With data
         create database test;
         create table test.flowers (`id` varchar(10));
 
-2.  From each of the other servers, run the following command.  You should receive an output of the database and row that you created in the previous step:
+2.  From each of the other servers, list the tables in your test database:
 
 		show tables in test;
 
-	You should see output similar to the following:
+	You should receive an output of the database and row that you created in the previous step:
 
 		MariaDB [(none)]> show tables in test;
 		+----------------+

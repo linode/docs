@@ -78,7 +78,7 @@ Copy your certificate into the **Certificate** field. If you have chained certif
 
 Copy your passphraseless private key into the **Private Key** field.
 
-You can [purchase an SSL certificate](/docs/security/ssl-certificates/commercial) or [create your own](/docs/security/ssl-certificates/self-signed).
+You can [purchase an SSL certificate](/docs/security/ssl/obtaining-a-commercial-ssl-certificate) or [create your own](/docs/security/ssl/how-to-make-a-selfsigned-ssl-certificate).
 
 Health Checks
 -------------

@@ -14,10 +14,10 @@ external_resources:
  - '[McMyAdmin Home Page](http://mcmyadmin.com/#/home)'
 ---
 
-McMyAdmin is a leading control panel for Minecraft servers. It boasts compatibility with third party mods and a sleek web interface for managing your server. This guide covers the installation and configuration of a new McMyAdmin server and assumes that you have an up-to-date, Debian 7 Linode. If you have not followed our [getting started](/docs/getting-started/) guide, it's recommended that you do so prior to following this tutorial.
+McMyAdmin is a leading control panel for Minecraft servers. It boasts compatibility with third party mods and a sleek web interface for managing your server. This guide covers the installation and configuration of a new McMyAdmin server on an up-to-date, Debian 7 Linode. If you have not followed our [Getting Started](/docs/getting-started/) guide, it's recommended that you do so prior to following this tutorial.
 
 {: .note }
-> To use a Minecraft server you must also have a version of the game client from [Minecraft.net](https://minecraft.net/).
+> To play on a Minecraft server you must also have a version of the game client from [Minecraft.net](https://minecraft.net/).
 
 ##Prerequisite software
 
@@ -29,9 +29,12 @@ McMyAdmin is a leading control panel for Minecraft servers. It boasts compatibil
 
 		sudo apt-get install openjdk-7-jre
 
-3.  If you have configured the firewall, ensure that a port is open for accessing the McMyAdmin web interface.
+3.  If you have configured the firewall according to our [Securing Your Server](/docs/security/securing-your-server#creating-a-firewall) guide, ensure that a port is open for accessing the McMyAdmin web interface.
 		
 		 sudo iptables -A INPUT -p tcp --dport 8080 -j ACCEPT
+
+    {: .note}
+    > To ensure this rule is persistent through server reboots, be sure to modify your `/etc/iptables.firewall.rules` file.
 
 ##Install Mono
 
@@ -39,7 +42,7 @@ McMyAdmin is a leading control panel for Minecraft servers. It boasts compatibil
 
 		cd /usr/local
 
-2.  Download the extra required files from McMyAdmin's website:
+2.  Download and extract the extra required files from McMyAdmin's website:
 
 		sudo wget http://mcmyadmin.com/Downloads/etc.zip
 		sudo unzip etc.zip; sudo rm etc.zip
@@ -51,7 +54,7 @@ McMyAdmin is a leading control panel for Minecraft servers. It boasts compatibil
 		mkdir ~/mcmyadmin
 		cd ~/mcmyadmin
 
-2.  Download the latest version of McMyAdmin:
+2.  Download McMyAdmin. Be sure to check the [Download](https://www.mcmyadmin.com/#/download) page for the latest version:
 
 		wget http://mcmyadmin.com/Downloads/MCMA2_glibc26_2.zip
 
@@ -59,7 +62,7 @@ McMyAdmin is a leading control panel for Minecraft servers. It boasts compatibil
 
 		unzip MCMA2_glibc26_2.zip
 
-4.  Start the initial configuration of McMyAdmin.  Replace PASSWORD with the admin password for your McMyAdmin web interface:
+4.  Start the initial configuration of McMyAdmin.  Replace `PASSWORD` with the admin password for your McMyAdmin web interface:
 
 		./MCMA2_Linux_x86_64 -setpass PASSWORD -configonly
 

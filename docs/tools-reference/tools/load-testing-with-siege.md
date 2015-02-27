@@ -34,7 +34,7 @@ This guide is for Debian or Ubuntu systems.
 
 4.  Navigate to the Siege directory:
 
-		cd siege-3.0.9/
+		cd siege-*/
 
 5.  If the GNU Compiler Collection (gcc) is not installed, install now:
 
@@ -52,11 +52,13 @@ This guide is for Debian or Ubuntu systems.
 
 8.  Open the `.siegerc` file located in your home directory.
 
-9.  The suggested Siege configuration is for 25 concurrent users over a period of 1 minute. Set a location for your log file. Be sure to uncomment any commented settings by removing the pound sign (`#`):
+9.  The suggested Siege configuration is for 25 concurrent users over a period of 1 minute. Set a location for your log file. Be sure to uncomment the variables shown below, and any other commented settings you want to use by removing the pound sign (`#`):
 
 	{: .file-excerpt}
-	.siegerc
+	~/.siegerc
 	:	~~~
+        ...
+        
 		#
 		# Variable declarations. You can set variables here
 		# for use in the directives below. Example:
@@ -66,6 +68,8 @@ This guide is for Debian or Ubuntu systems.
 		# You can also reference ENVIRONMENT variables without
 		# actually declaring them, example:
 		logfile = $(HOME)/siege.log
+
+        ...
 
 		#
 		# Default number of simulated  concurrent users

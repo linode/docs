@@ -66,11 +66,11 @@ To establish a tunnel in Windows, you can use the free SSH client PuTTY. It can 
 
 2.  Under the **Connection** menu, under **SSH** select **Tunnels**. There you must enter the port you want (**12345**, for example) in **Source Port**, and check **Dynamic**.
 
-    [![PuTTY - Options controlling port forwarding.](/docs/assets/1564-02-putty_tunnels1.png)](02-putty_tunnels1.png)
+    ![PuTTY - Options controlling port forwarding.](/docs/assets/1564-02-putty_tunnels1.png)
 
 3.  Then press the **Add** button. In the **Forwarded ports** text area, you will now see **D12345**.
 
-    [![PuTTY - Options controlling port forwarding with forwarding configured.](/docs/assets/1565-03-putty_tunnels2.png)](02-putty_tunnels2.png)
+    ![PuTTY - Options controlling port forwarding with forwarding configured.](/docs/assets/1565-03-putty_tunnels2.png)]
 
 4.  Click the **Open** button. A new window asking for your password will appear. After you type your password you will be logged in to your Linode and the tunnel will be launched. Now you can minimize this window and go to the browser.
 
@@ -87,7 +87,7 @@ To set up the browser:
 2.  Go to **Advanced** and from there to the **Network** tab.
 3.  In the **Connection** area click on **Settings**.
 
-    [![Firefox preferences - Network Tab.](/docs/assets/1566-04-firefox1.png)](04-firefox1.png)
+    ![Firefox preferences - Network Tab.](/docs/assets/1566-04-firefox1.png)
 
 4.  The window **Connection Settings** will open. Check **Manual Proxy Configuration**, and in **SOCKS Host** write your local host address (127.0.0.1) and the port you choose when you created the tunnel (**12345**, in this example). Make sure **SOCKS v5** is selected (it will be by default).
 

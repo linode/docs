@@ -80,7 +80,7 @@ If you can log in, continue to the next section, even if there are error message
 
  {: .note }
 >
-> For more information about LISH, see [this guide](troubleshooting/using-lish-the-linode-shell).
+> For more information about LISH, see [this guide](/docs/networking/using-the-linode-shell-lish).
 
 ### Is your disk full?
 
@@ -116,7 +116,7 @@ The applications on your Linode require a certain amount of physical memory to f
 
         ps -eo pmem,pcpu,rss,vsize,args --sort -pmem | less
 
-9.  If an application is consuming all of your available memory, you have three options. You can [kill the application](/docs/linux-tools/common-commands/killall-kill), change the application's settings to reduce its memory footprint, or [upgrade your Linode](/docs/upgrading) to a larger plan.
+9.  If an application is consuming all of your available memory, you have three options. You can kill the application, change the application's settings to reduce its memory footprint, or [upgrade your Linode](/docs/upgrading) to a larger plan.
 10. To reduce the memory footprint of common applications like Apache and MySQL, see [Troubleshooting Memory and Networking Issues](/docs/troubleshooting/memory-networking).
 
 If your Linode is not out of memory, continue to the next section.
@@ -142,7 +142,7 @@ Disk input/output (I/O) bottlenecks can occur when an application or service is 
 
 3.  Examine the I/O wait percentage, as shown above. If the number is zero, your server does not currently have a bottleneck.
 4.  If your I/O wait percentage is above zero, verify that your server has enough free memory available. In many cases, high I/O is an indication that your server has started "swapping," or using disk space as memory.
-5.  If your server has free memory available and is not using swap space, use `iotop` or [vmstat](/docs/linux-tools/common-commands/vmstat) to find the application responsible for the excessive I/O. Databases are the usual suspects. You may need to stop and/or reconfigure the application.
+5.  If your server has free memory available and is not using swap space, use `iotop` or [vmstat](/docs/uptime/monitoring/use-vmstat-to-monitor-system-performance) to find the application responsible for the excessive I/O. Databases are the usual suspects. You may need to stop and/or reconfigure the application.
 
  {: .note }
 >
@@ -150,7 +150,7 @@ Disk input/output (I/O) bottlenecks can occur when an application or service is 
 
 6.  If you cannot determine the source of the IO bottleneck, contact [Linode support](/docs/support) for assistance.
 
-Since `top` only reports what is currently happening, and most I/O issues are temporary, it helps to have a monitoring utility set up so you can see a graph of I/O trends and spot potential issues *before* they become major problems. See the guides in [Server Monitoring](server-monitoring) for instructions on setting up a server monitoring utility.
+Since `top` only reports what is currently happening, and most I/O issues are temporary, it helps to have a monitoring utility set up so you can see a graph of I/O trends and spot potential issues *before* they become major problems. See the guides in [Server Monitoring](/docs/uptime/monitoring/) for instructions on setting up a server monitoring utility.
 
 Website is Not Loading
 ----------------------
@@ -234,11 +234,11 @@ If the files are in the correct directory, continue to the next section.
 
 ### Are virtual hosts correctly configured?
 
-If you're hosting more than website on your Linode, verify that you correctly configured the virtual host configuration files. Review the instructions for [Configuring Name Based Virtual Hosts](hosting-website#sph_configuring-name-based-virtual-hosts) and the [web server reference manuals](/docs/web-servers).
+If you're hosting more than website on your Linode, verify that you correctly configured the virtual host configuration files. Review the instructions for [Configuring Name Based Virtual Hosts](/docs/websites/hosting-a-website#configuring-name-based-virtual-hosts) and the [web server reference manuals](/docs/web-servers).
 
 ### Did you add a new IP address?
 
-If you recently added a new IP address for an SSL certificate and it's not working, try rebooting your server. The reboot is required to activate the new IP address. You should have also configured a virtual host for the new IP address. Review the instructions for [Configuring Name Based Virtual Hosts](hosting-website#sph_configuring-name-based-virtual-hosts) and the [web server reference manuals](/docs/web-servers).
+If you recently added a new IP address for an SSL certificate and it's not working, try rebooting your server. The reboot is required to activate the new IP address. You should have also configured a virtual host for the new IP address. Review the instructions for [Configuring Name Based Virtual Hosts](/docs/websites/hosting-a-website#configuring-name-based-virtual-hosts) and the [web server reference manuals](/docs/web-servers).
 
 Can't Connect via SSH or FTP
 ----------------------------

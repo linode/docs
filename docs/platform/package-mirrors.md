@@ -83,8 +83,8 @@ For a CentOS system follow the instructions below:
 
 5.  Comment each `mirrorlist` line by adding the **\#** sign before each line.
 6.  Uncomment each `baseurl` line by removing the **\#** sign before each line.
-7.  Edit all `baseurl` lines containing the address <http://mirror.centos.org/centos/$releasever/os/$basearch/> to reflect the new address location:
+7.  Edit all `baseurl` lines containing the address http://mirror.centos.org/centos/$releasever/os/$basearch/ to reflect the new address location:
 
-    <http://mirrors.linode.com/centos/$releasever/os/$basearch/>
+        http://mirrors.linode.com/centos/$releasever/os/$basearch/
 
 8.  Save and exit the `CentOS-Base.repo` file.

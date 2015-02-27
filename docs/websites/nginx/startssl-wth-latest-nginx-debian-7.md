@@ -127,7 +127,7 @@ You should now be logged into your StartSSL account.
 
 6.  Your domain has now been verified. Click "Finish >> >>".
 
-    [![StartSSL Validation Wizard Complete Page](/docs/assets/1760-StartSSL-Validation-Wizard-Complete-Preview.jpg)](/docs/assets/1760-StartSSL-Validation-Wizard-Complete.jpg)
+    ![StartSSL Validation Wizard Complete Page](/docs/assets/1760-StartSSL-Validation-Wizard-Complete-Preview.jpg)
 
 ### Submit Your Certificate Signing Request to StartSSL
 
@@ -151,7 +151,7 @@ You should now be logged into your StartSSL account.
 
 6.  Click "Continue >> >>".
 
-    [![StartSSL Certificates Wizard CSR Received](/docs/assets/1764-StartSSL-Certificates-Wizard-CSR-Received-Preview.jpg)](1764-StartSSL-Certificates-Wizard-CSR-Received.jpg)
+    ![StartSSL Certificates Wizard CSR Received](/docs/assets/1764-StartSSL-Certificates-Wizard-CSR-Received-Preview.jpg)
 
 7.  Choose the domain you would like a certificate for and click "Continue >> >>".
 

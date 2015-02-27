@@ -107,8 +107,6 @@ The next page of the cPanel installation goes over configuration options for add
 
 3. Choose whether or not to enable cPHulk. Please note, if you are locked out of cPanel due to multiple failed login attempts, you can release the lockout by following the instructions <a href="https://documentation.cpanel.net/display/ALD/cPHulk+Brute+Force+Protection#cPHulkBruteForceProtection-Howtoreleasealockout" target="_blank">here</a>. 
 
-    [![cPanel cPHulk settings.](/docs/assets/cphulk-settings.png)](/docs/assets/phulk-settings.png)
-
 4. After reviewing all options on this page, click on "Save & Go to Step 6"
 
 5. You may choose to enable or disable support for filesystem quotas. Unless you actually need to track disk usage on a per-user basis, it's best to leave this disabled.

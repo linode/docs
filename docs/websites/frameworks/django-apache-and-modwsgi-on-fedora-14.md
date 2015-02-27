@@ -151,7 +151,7 @@ You may wish to consult the following resources for additional information on th
 - [The Django Project Introductory Tutorial](http://docs.djangoproject.com/en/dev/intro/tutorial01/#intro-tutorial01)
 - [The Django Book](http://www.djangobook.com/)
 - [Deploying Django Applications](http://www.djangobook.com/en/2.0/chapter12/)
-- [A Basic "Hello World" Django Application](http://appgallery.appspot.com/about_app?app_id=agphcHBnYWxsZXJ5chMLEgxBcHBsaWNhdGlvbnMYvw8M)
+- [A Basic "Hello World" Django Application](http://runnable.com/UWRVp6lLuONCAABD/hello-world-in-django-for-python)
 - [Integrating Django and mod\_wsgi](http://code.google.com/p/modwsgi/wiki/IntegrationWithDjango)
 
 

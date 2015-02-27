@@ -112,7 +112,7 @@ Rebuild the NSD database and restart the daemon with following command sequence:
     nsdc rebuild
     /etc/init.d/nsd restart
 
-Test the configuration and functionality of the DNS serve using `dig`, which provides a [command line DNS client](/docs/linux-tools/common-commands/dig). Issue the following command to test the DNS server:
+Test the configuration and functionality of the DNS serve using `dig`, which provides a [command line DNS client](/docs/networking/dns/use-dig-to-perform-manual-dns-queries). Issue the following command to test the DNS server:
 
     dig @localhost www.example.org
 
