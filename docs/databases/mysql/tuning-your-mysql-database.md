@@ -5,10 +5,10 @@ author:
 description: 'Reviewing your MySQL configuration for optimum resource usage'
 keywords: 'mysql,mysqltuner,resource tuning'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Tuesday, February 10, 2015
+modified: Friday, February 27th, 2015
 modified_by:
   name: Linode
-published: 'Tuesday, February 10, 2015'
+published: 'Friday, February 27th, 2015'
 title: Tuning Your MySQL Database
 external_resources:
  - '[MySQL Documentation Library](http://dev.mysql.com/doc/index.html)'
@@ -16,9 +16,9 @@ external_resources:
  - '[MySQLTuner](http://mysqltuner.com/)'
 ---
 
-Getting MySQL to run at optimal settings for your resources will help in handling larger server loads and prevent any server slow-down. Generally, after [tuning Apache](/docs/websites/apache-tips-and-tricks/tuning-your-apache-server) to handle larger loads it is beneficial to tune MySQL to handle any additional connections.
+Running MySQL at optimal settings for specific resources helps in handling larger server loads and prevents any server slow-down. Generally, after [tuning Apache](/docs/websites/apache-tips-and-tricks/tuning-your-apache-server) to handle larger loads it is beneficial to tune MySQL to additional connections.
 
-It should be noted that database tuning is an expansive topic, and this guide will cover just the basics of editing your MySQL configuration.
+Database tuning is an expansive topic, and this guide covers only the basics of editing your MySQL configuration.
 
 {: .note}
 >
@@ -33,7 +33,7 @@ In order to determine if your MySQL database needs to be reconfigured, it is bes
 
 ###MySQLTuner
 
-[MySQLTuner](http://mysqltuner.com/) is a script that assesses your MySQL installation and outputs suggestions to increase your server's performance and stability.
+The [MySQLTuner](http://mysqltuner.com/) script assesses your MySQL installation, and then outputs suggestions to increase your server's performance and stability.
 
 1.  Download MySQLTuner:
 
@@ -43,7 +43,7 @@ In order to determine if your MySQL database needs to be reconfigured, it is bes
 
 		perl mysqltuner.pl
 
-3.  It will output your results:
+3.  It outputs your results:
 
 		 >>  MySQLTuner 1.4.0 - Major Hayden <major@mhtx.net>
 		 >>  Bug reports, feature requests, and downloads at http://mysqltuner.com/
@@ -86,20 +86,20 @@ In order to determine if your MySQL database needs to be reconfigured, it is bes
 		Variables to adjust:
 		    query_cache_limit (> 1M, or use smaller result sets)
 
-	MySQLTuner will offer you suggestions regarding how to better your database. If you are wary about updating your database on your own, going by MySQLTuner's suggestions is one of the safer ways to improve your database performance.
+	MySQLTuner offers suggestions regarding how to better the database. If you are wary about updating your database on your own, going by MySQLTuner's suggestions is one of the safer ways to improve your database performance.
 
 ##Tuning MySQL
-When altering your MySQL configuration you should be aware of what you are changing and how it will affect your database. Even when following the instructions of programs such as [MySQLTuner](#mysqltuner) it is best to have some understanding of things.
+When altering the MySQL configuration, be aware of the changes and how they affect your database. Even when following the instructions of programs such as [MySQLTuner](#mysqltuner), it is best to have some understanding of the process.
 
-The file you will be changing is located at `/etc/mysql/my.cnf`.
+The file you are changing is located at `/etc/mysql/my.cnf`.
 
 {: .note}
 >
->Prior to updating your MySQL configuration, make a backup of your `my.cnf` file:
+>Prior to updating the MySQL configuration, create a backup of the `my.cnf` file:
 >
 >	cp /etc/mysql/my.cnf ~/my.cnf.backup
 >
->It is also suggested that you only make small changes at a time and monitor your server after each change. After each change restart MySQL:
+>Best practices suggest that you make small changes at a time and monitor the server after each change. After each change restart MySQL:
 >
 >-	On Debian/Ubuntu:
 >
@@ -109,25 +109,25 @@ The file you will be changing is located at `/etc/mysql/my.cnf`.
 >
 >		/etc/init.d/mysqld restart
 >
->When changing values in your `my.cnf` file be sure that the line you are changing is not commented out with the pound (`#`) prefix.
+>When changing values in the `my.cnf` file be sure that the line you are changing is not commented out with the pound (`#`) prefix.
 
 ####key_buffer
-Changing the `key_buffer` will allocate more memory to MySQL, which can substantially speed up your databases (assuming you have the memory free). The `key_buffer` size should generally take up no more than 25% of the system memory when using the MyISAM table engine, and up to 70% for InnoDB. If the value is set too high, resources will be wasted. According to MySQL's documentation, for servers with 256MB of RAM (or more) with many tables, a setting of 64M is recommended, while servers with 128MB of RAM and fewer tables can be set to 16M (the default value). Websites with even fewer resources and tables can have this value set lower.
+Changing the `key_buffer` allocates more memory to MySQL, which can substantially speed up your databases, assuming you have the memory free. The `key_buffer` size should generally take up no more than 25% of the system memory when using the MyISAM table engine, and up to 70% for InnoDB. If the value is set too high, resources are wasted. According to MySQL's documentation, for servers with 256MB of RAM (or more) with many tables, a setting of 64M is recommended, while servers with 128MB of RAM and fewer tables can be set to 16M, the default value. Websites with even fewer resources and tables can have this value set lower.
 
 ####max_allowed_packet
-The maximum size of a packet allowed to be sent, with a packet being a single SQL state, a single row being sent to a client, or a log being sent from a master to a slave. If you know that your MySQL server is going to be processing large packets, it is best to raise this to the size of your largest packet. Should this value be set too small, you would receive an error in your error log.
+The maximum size of a packet allowed to be sent. A packet is a single SQL state, a single row being sent to a client, or a log being sent from a master to a slave. If you know that your MySQL server is going to be processing large packets, it is best to raise this to the size of your largest packet. Should this value be set too small, you would receive an error in your error log.
 
 ####thread_stack
 This value contains the stack size for each thread. MySQL considers the default value of the `thread_stack` variable sufficient for normal use; however, should an error relating to the `thread_stack` be logged, this can be raised. 
 
 ####thread_cache_size
-If `thread_cache_size` is "turned off" (set to 0), then all new connections being made will need a new thread created for them, and when the connections disconnect the thread will be destroyed. Otherwise, this value sets the number of unused threads to store in a cache until they need to be used for a connection. Generally this setting has little affect on performance, unless you are receiving hundreds of connections per minute, at which time this value should be rasied so the majority of connections are being made on cached threads.
+If `thread_cache_size` is "turned off" (set to 0), then all new connections being made need a new thread created for them, and when the connections disconnect the thread is destroyed. Otherwise, this value sets the number of unused threads to store in a cache until they need to be used for a connection. Generally this setting has little affect on performance, unless you are receiving hundreds of connections per minute, at which time this value should be rasied so the majority of connections are being made on cached threads.
 
 ####max_connections
-This sets the maximum amount of *concurrent* connections. It is best to consider the maximum amount of connections you have gotten in the past and setting this so there is some buffer between that number and the `max_connections` value. Please note the this does not mean the maximum amount of *users* on your website at one time, but the maximum amount of users making *requests* concurrently.
+Sets the maximum amount of *concurrent* connections. It is best to consider the maximum amount of connections you have had in the past and then setting this so there is some buffer between that number and the `max_connections` value. Note, the this does not mean the maximum amount of *users* on your website at one time, but the maximum amount of users making *requests* concurrently.
 
 ####table_cache
-This number should be kept higher than your `open_tables` value. To determine this value use:
+Should be kept higher than your `open_tables` value. To determine this value use:
 
 	SHOW STATUS LIKE 'open%';
 

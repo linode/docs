@@ -13,7 +13,7 @@ published: 'Friday, April 29th, 2011'
 title: Set Up an IPv6 Tunnel on Your Linode
 ---
 
-As IPv4 exhaustion nears, many people are preparing to make the switch to IPv6. Linode offers native IPv6 addresses in all locations; please refer to our [native IPv6 guide](/docs/networking/ipv6) for configuration instructions. Additionally, be sure to watch the [IPv6 status page](http://www.linode.com/IPv6/) for updates.
+As IPv4 exhaustion nears, many people are preparing to make the switch to IPv6. Linode offers native IPv6 addresses in all locations; please refer to our [native IPv6 guide](/docs/networking/native-ipv6-networking) for configuration instructions. Additionally, be sure to watch the [IPv6 status page](http://www.linode.com/IPv6/) for updates.
 
 Before beginning this guide, you should have already signed up for an IPv6 tunnel through a tunnel broker. [Wikipedia contains a list of tunnel brokers by region](http://en.wikipedia.org/wiki/List_of_IPv6_tunnel_brokers), and we encourage you to research each one before you decide which one to use. The steps outlined in this guide were performed using tunnels from HE.
 

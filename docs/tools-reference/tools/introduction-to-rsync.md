@@ -15,7 +15,7 @@ title: Introduction to Rsync
 
 [Rsync](http://www.samba.org/rsync/) is a tool created as part of the [Samba](http://www.samba.org/) project that provides quick and incremental file transfer. It serves as a replacement for the `scp` and `rcp` tools. Rsync is a great way to upload files to a remote server, particularly when you need the remote machine to maintain a current mirror of the local files using minimal transfer, because rsync is very efficient in what it transfers over the network.
 
-There are many great tools and workflows that can be implemented using rsync. This includes deploying updated content from a development machine to production hosts, backing up files to a remote file server, and keeping two production servers synchronized. You can even use rsync to [migrate servers to Linode](/docs/linode-platform/migration/migrate-server-to-linode) from other providers.
+There are many great tools and workflows that can be implemented using rsync. This includes deploying updated content from a development machine to production hosts, backing up files to a remote file server, and keeping two production servers synchronized. You can even use rsync to [migrate servers to Linode](/docs/migrate-to-linode/disk-images/migrating-a-server-to-your-linode) from other providers.
 
 This document provides an introductory overview of rsync along with example applications of rsync. We assume you've already reviewed our [getting started guide](/docs/getting-started/), and that you're logged into your Linode VPS as root via SSH.
 
@@ -105,7 +105,6 @@ You may wish to consult the following resources for additional information on th
 
 - [Rsync tips at Calomel.org](https://calomel.org/rsync_tips.html)
 - [Rsync Guide at Comentum.com](http://www.comentum.com/rsync.html)
-- [Rsync Guide at Scrounge.org](http://www.scrounge.org/linux/rsync.html)
 
 
 

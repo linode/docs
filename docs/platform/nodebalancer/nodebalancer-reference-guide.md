@@ -78,7 +78,7 @@ Copy your certificate into the **Certificate** field. If you have chained certif
 
 Copy your passphraseless private key into the **Private Key** field.
 
-You can [purchase an SSL certificate](/docs/security/ssl-certificates/commercial) or [create your own](/docs/security/ssl-certificates/self-signed).
+You can [purchase an SSL certificate](/docs/security/ssl/obtaining-a-commercial-ssl-certificate) or [create your own](/docs/security/ssl/how-to-make-a-selfsigned-ssl-certificate).
 
 Health Checks
 -------------
@@ -133,7 +133,7 @@ X-Forwarded-For Header
 
 NodeBalancers add an X-Forwarded-For (XFF) HTTP header field, which allows your nodes to identify a client's originating IP address. This is useful for logging purposes. Here's an example XFF HTTP header:
 
-    X-Fowarded-For: 196.180.44.172
+    X-Forwarded-For: 196.180.44.172
 
 You'll need to configure your web server software to use the XFF header.
 

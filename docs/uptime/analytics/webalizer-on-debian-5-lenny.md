@@ -120,7 +120,7 @@ Congratulations, you have successfully installed Webalizer! You can leave future
 Other Considerations
 --------------------
 
-Even with a low traffic site, Apache logs can become large. If your logs are routinely large, processing those logs can be time-consuming. You should look into [log rotation](http://eregie.premier-ministre.gouv.fr/manual/logs.html#rotation) to prevent potential performance issues.
+Even with a low traffic site, Apache logs can become large. If your logs are routinely large, processing those logs can be time-consuming. You should look into [log rotation](http://www.webalizer.org/faq.html#rotation) to prevent potential performance issues.
 
 More Information
 ----------------

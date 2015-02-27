@@ -343,7 +343,7 @@ Because the ABS system downloads source and versions of the PKGBUILD file as it 
 
 If you're interested in learning more about Arch and its package management tools, please consult these external sources for the documentation provided by the Arch community.
 
--   [The Arch Build System](http://wiki.archlinux.org/index.php/ABS_-_The_Arch_Build_System)
+-   [The Arch Build System](http://wiki.archlinux.org/index.php/Arch_Build_System)
 -   [Pacman](http://wiki.archlinux.org/index.php/Pacman)
 
 Gentoo Linux Package Management

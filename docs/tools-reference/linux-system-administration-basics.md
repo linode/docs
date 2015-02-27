@@ -18,7 +18,7 @@ This document presents a collection of common issues and useful tips for Linux s
 Basic Configuration
 -------------------
 
-These tips cover some of the basic steps and issues encountered during the beginning of system configuration. We provide a general [getting started guide](/docs/getting-started) for your convenience if you're new to Linode and basic Linux system administration. Additionally, you may find some of our [Introduction to Linux Concepts guide](/docs/tools-reference-introduction-to-linux-concepts) useful.
+These tips cover some of the basic steps and issues encountered during the beginning of system configuration. We provide a general [getting started guide](/docs/getting-started) for your convenience if you're new to Linode and basic Linux system administration. Additionally, you may find some of our [Introduction to Linux Concepts guide](/docs/tools-reference/introduction-to-linux-concepts) useful.
 
 ### Set the Hostname
 
@@ -81,7 +81,7 @@ The second entry tells the system to look to `192.168.1.1` for the domain `stick
 Network Diagnostics
 -------------------
 
-The following tips address the basic usage and functionality of a number of tools that you can use to assess and diagnose network problems. If you suspect connectivity issues, including output of the relevant commands in your [support ticket](/docs/linode-platform/manager/linode-support-system) can help our staff diagnose your issue. This is particularly helpful in cases where networking issues are intermittent.
+The following tips address the basic usage and functionality of a number of tools that you can use to assess and diagnose network problems. If you suspect connectivity issues, including output of the relevant commands in your [support ticket](/docs/platform/support) can help our staff diagnose your issue. This is particularly helpful in cases where networking issues are intermittent.
 
 ### Using the Ping Command
 
@@ -121,7 +121,7 @@ Here is an example of output from a `traceroute` command:
 
 Often the hostnames and IP addresses on either side of a failed jump are useful in determining who operates the machine where the routing error occurs. Failed jumps are designated by line with three asterisks (e.g. `* * *`).
 
-Furthermore, including `traceroute` information in tickets to [Linode support](/docs/linode-platform/manager/linode-support-system/) is sometimes useful when trying to diagnose network issues. You may also want to forward `traceroute` information to your Internet Service Provider (ISP) if you suspect that the connectivity issue is with your ISP's network. Recording `traceroute` information is particularly useful if you are experiencing an intermittent issue.
+Furthermore, including `traceroute` information in tickets to [Linode support](/docs/platform/support/) is sometimes useful when trying to diagnose network issues. You may also want to forward `traceroute` information to your Internet Service Provider (ISP) if you suspect that the connectivity issue is with your ISP's network. Recording `traceroute` information is particularly useful if you are experiencing an intermittent issue.
 
 ### Using the mtr Command
 
@@ -203,7 +203,7 @@ The memory and swap columns provide the same kind of information provided by the
 
 If this number is consistently and considerably higher than 0, you might consider taking measures to address your IO usage. However, if the `vmstat` output resembles the above, you can be sure in the knowledge that you're not experiencing an IO-related issues.
 
-If you are experiencing an intermittent issue, you will need to run `vmstat` *when* you experience the issue in order to properly diagnose or rule out an IO issue. `vmsat` output can sometimes help [support](/docs/linode-platform/manager/linode-support-system/) diagnose problems.
+If you are experiencing an intermittent issue, you will need to run `vmstat` *when* you experience the issue in order to properly diagnose or rule out an IO issue. `vmsat` output can sometimes help [support](/docs/platform/support/) diagnose problems.
 
 ### Monitor Processes, Memory, and CPU Usage with htop
 
@@ -512,7 +512,7 @@ You can use `grep` to filter the results of another command that sends output to
 
     ls /home/squire/data | grep "1257"
 
-In this example, we assume that the `/home/squire/data` directory contains a large number of files that have a UNIX time stamp in their file name. The above command will filter the output to only display those tiles that have the four digits "1257" in their file name. Note, in these cases `grep` only filters the output of `ls` and does not look into file contents. For more information regarding `grep` consider the full documentation of the [grep command](/docs/linux-tools/common-commands/grep).
+In this example, we assume that the `/home/squire/data` directory contains a large number of files that have a UNIX time stamp in their file name. The above command will filter the output to only display those tiles that have the four digits "1257" in their file name. Note, in these cases `grep` only filters the output of `ls` and does not look into file contents. For more information regarding `grep` consider the full documentation of the [grep command](/docs/tools-reference/search-and-filter-text-with-grep).
 
 ### How to Search and Replace Across a Group of Files
 
@@ -534,13 +534,13 @@ To match literal slashes (e.g. `/`), you must escape them with a backslash (e.g.
 
 This would strip the slashes from the string `r/e/g/e/x` so that this string would be `regex` after running the `sed` command on the file that contains the string.
 
-The following example, from our [migrating a server to your Linode](/docs/linode-platform/migration/migrate-server-to-linode) document, searches and replaces one IP address with another. In this case `98.76.54.32` is replaced with `12.34.56.78`:
+The following example, from our [migrating a server to your Linode](/docs/migrate-to-linode/disk-images/migrating-a-server-to-your-linode) document, searches and replaces one IP address with another. In this case `98.76.54.32` is replaced with `12.34.56.78`:
 
     sed -i 's/98\.76\.54\.32/12\.34\.56\.78/'
 
 In the above example, period characters are escaped as `\.`. In regular expressions the full-stop (period) character matches to any character.
 
-Once again, `sed` is a very powerful and useful tool; however, if you are unfamiliar with it, we strongly recommend testing your search and replace patterns before making any edit of consequence. For more information about `sed` consider the full documentation of [text manipulation with sed](/docs/linux-tools/common-commands/sed).
+Once again, `sed` is a very powerful and useful tool; however, if you are unfamiliar with it, we strongly recommend testing your search and replace patterns before making any edit of consequence. For more information about `sed` consider the full documentation of [text manipulation with sed](/docs/tools-reference/tools/manipulate-text-from-the-command-line-with-sed).
 
 ### How to Edit Text Interactively
 
@@ -627,7 +627,7 @@ The *Domain Name System*, or DNS, is the service that the Internet uses to assoc
 
 CNAMEs are **only** valid when pointing from one domain to another. If you need to redirect a full URL, you will need to set up a web server and [configure redirection](/docs/web-servers/apache/configuration/redirecting-urls) and/or virtual hosting on the server level. CNAMEs will allow you to redirect subdomains, such as `team.example.com`, to other subdomains or domains, such as `jack.example.org`. CNAMEs must point a valid a domain that has a valid A Record, or to another CNAME.
 
-Although limited in their capabilities, CNAMEs can be quite useful in some situations. In particular, if you need to change the hostname of a machine, CNAMEs are quite useful. To learn how to set up CNAME records with the [Linode Manager](/docs/linode-platform/manager/), consult our documentation of the [Linode DNS Manager](/docs/dns-guides/configuring-dns-with-the-linode-manager).
+Although limited in their capabilities, CNAMEs can be quite useful in some situations. In particular, if you need to change the hostname of a machine, CNAMEs are quite useful. To learn how to set up CNAME records with the [Linode Manager](http://manager.linode.com//), consult our documentation of the [Linode DNS Manager](/docs/dns-guides/configuring-dns-with-the-linode-manager).
 
 ### How to Set Up Subdomains
 
@@ -639,7 +639,7 @@ First we need to create an [A Record](/docs/dns-guides/introduction-to-dns#a_aaa
 
 in the DNS zone for the domain. This is easily accomplished when using the [Linode DNS Manager](/docs/dns-guides/configuring-dns-with-the-linode-manager). As always, you may host the DNS for your domain with any provider you choose.
 
-In order for your server to respond to requests for this domain, you must set up a server to respond to these requests. For web servers like [Apache](/docs/web-servers/apache/) this requires [configuring a new virtual host](/docs/web-servers/apache/installation/debian-5-lenny#configure_apache_for_named_based_virtual_hosting). For [XMPP Servers](/docs/communications/xmpp/) you must [configure an additional host](/docs/communications/xmpp/ejabberd/debian-5-lenny#hostnames_and_virtual_hosting) to receive the requests for this host. For more information, consult the documentation for the specific server you wish to deploy.
+In order for your server to respond to requests for this domain, you must set up a server to respond to these requests. For web servers like [Apache](/docs/web-servers/apache/) this requires [configuring a new virtual host](/docs/web-servers/apache/installation/debian-5-lenny#configure_apache_for_named_based_virtual_hosting). For XMPP Servers you must [configure an additional host](/docs/applications/messaging/instant-messaging-services-with-ejabberd-on-ubuntu-12-04-precise-pangolin#hostnames_and_virtual_hosting) to receive the requests for this host. For more information, consult the documentation for the specific server you wish to deploy.
 
 Once configured, subdomains function identically to first-level domains on your server in almost all respects. If you need to, you can set up HTTP redirection for the new sub domain.
 

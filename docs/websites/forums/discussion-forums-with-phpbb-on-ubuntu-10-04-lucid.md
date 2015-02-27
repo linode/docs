@@ -62,7 +62,7 @@ Before you can install phpBB, you need to make sure that it has access to write 
 
     chmod 0777 /srv/www/ducklington.org/public_html/forum/config.php 
 
-Click the "Install" tab in the top left region of the page. You should be looking at a requirements page. If you followed the [LAMP guide](/docs/lamp-guides/ubuntu-10.04-lucid/), your server will meet the requirements specified by the phpBB installation process. Click "Proceed to next step." The next page is simply a confirmation that your server meets the minimum installation requirements. Click "Start Install."
+Click the "Install" tab in the top left region of the page. You should be looking at a requirements page. If you followed the [LAMP guide](/docs/websites/apache/apache-2-web-server-on-ubuntu-10-04-lts-lucid/), your server will meet the requirements specified by the phpBB installation process. Click "Proceed to next step." The next page is simply a confirmation that your server meets the minimum installation requirements. Click "Start Install."
 
 You will need to fill in your database information. Assuming you installed MySQL while following the LAMP guide, here you would fill in your `database name`, `database username`, and `database password`. The other fields can be left blank for the defaults. If you are unsure of what to put here, head over to the [MySQL database guides](/docs/databases/mysql/) to become familiar with MySQL and to create the database and username. Click "Proceed to next step."
 
@@ -94,7 +94,7 @@ More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [phpBB Styles Database](http://www.phpbb.com/styles/db/)
+- [phpBB Styles Database](http://www.phpbb.com/styles/)
 - [Styles Forum](http://www.phpbb.com/community/viewforum.php?f=80)
 - [phpBB Modifications](http://www.phpbb.com/mods/)
 - [Modifications Forum](http://www.phpbb.com/community/viewforum.php?f=81)
