@@ -26,15 +26,7 @@ All critical data should be backed up, and if possible in more than one location
 
 ### Backing up Databases
 
-Proper backup knowledge for a database is important. On an active server, file-level backups of a database can be inconsistent. By "dumping" your database to a file on a regular basis, your backup service pulls a consistent and readable copy of your database for later restores. If you're using MySQL or MariaDB, dump all databases with a simple one line command:
-
-    mysqldump --all-databases > dump-$( date '+%Y-%m-%d_%H-%M-%S' ).sql -u root -p
-
-This creates a timestamped file of your current set of databases. Automate this process by adding a line to `crontab`:
-
-    0 1 * * * /usr/bin/mysqldump --all-databases > dump-$( date '+%Y-%m-%d_%H-%M-%S' ).sql -u root -pPASSWORD
-
-For the example above, use the command `which mysqldump` to confirm the correct path to the command, and be sure to replace `root` with the mysql user you would like to run backups as, and `PASSWORD` with the correct password for that user.
+Proper backup knowledge for a database is important. Steps for properly backing up your MySQL or MariaDB database can be found [here](docs/databases/mysql/back-up-your-mysql-databases#option-1-create-backups-of-an-entire-database-management-system-using-the-mysqldump-utility).
 
 ### Backing up Important Files
 
