@@ -173,6 +173,10 @@ If you followed the [Creating a Firewall](/docs/security/securing-your-server#cr
 
 If your system absolutely **cannot** afford any downtime, then scale the platform across multiple servers. Multi-server availability ensures that your service can remain live even if one of the servers goes down. The services and options for enabling highly available stacks are too numerous to detail here, but refer to these guides to get started with high availability:
 
+{: .note}
+>
+> You can deploy your services to an additional Linode to enable high availability.  New Linodes will automatically be placed on known good hosts, and can ensure that vital services remain online throughout the reboot process.
+
  - [Linode NodeBalancers](/docs/platform/nodebalancer/)
  - [Using Nginx for Proxy Services and Software Load Balancing](/docs/uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing)
  - [MySQL Master-Master Replication](/docs/databases/mysql/mysql-master-master-replication)
