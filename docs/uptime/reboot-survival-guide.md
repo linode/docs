@@ -26,7 +26,7 @@ All critical data should be backed up, and if possible in more than one location
 
 ### Backing up Databases
 
-Proper backup knowledge for a database is important. Steps for properly backing up your MySQL or MariaDB database can be found [here](docs/databases/mysql/back-up-your-mysql-databases#option-1-create-backups-of-an-entire-database-management-system-using-the-mysqldump-utility).
+Proper backup knowledge for a database is important. Steps for properly backing up your MySQL or MariaDB database can be found [here](/docs/databases/mysql/back-up-your-mysql-databases#option-1-create-backups-of-an-entire-database-management-system-using-the-mysqldump-utility).
 
 ### Backing up Important Files
 
