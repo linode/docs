@@ -5,7 +5,7 @@ author:
 description: 'Instructions for backing up MySQL databases using various methods.'
 keywords: 'mysql,backup,mysqldump'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['databases/mysql/backup-options/']
+alias: ['databases/mysql/backup-options/','uptime/docs/databases/mysql/back-up-your-mysql-databases']
 modified: Wednesday, September 11th, 2013
 modified_by:
   name: Linode
