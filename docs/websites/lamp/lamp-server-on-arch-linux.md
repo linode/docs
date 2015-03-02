@@ -274,12 +274,13 @@ PHP makes it possible to produce dynamic and interactive pages using your own sc
         AddType application/x-httpd-php .php
         AddType application/x-httpd-php-source .phps
         ~~~
-5. While in that file, comment out the line `LoadModule mpm_event_module modules/mod_mpm_event.so` by adding a `#` in front:
+5. While in that file, need to replace mpm_event_module with mpm_prefork_module, comment out the line `LoadModule mpm_event_module modules/mod_mpm_event.so` by adding a `#` in front, and add `LoadModule mpm_prefork_module modules/mod_mpm_prefork.so` after that line
 
     {: .file-excerpt }
     /etc/httpd/conf/httpd.conf
     :   ~~~ apache
         #LoadModule mpm_event_module modules/mod_mpm_event.so
+        LoadModule mpm_prefork_module modules/mod_mpm_prefork.so
         ~~~
 
 6. With this completed, restart the httpd service:
