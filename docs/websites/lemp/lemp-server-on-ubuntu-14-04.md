@@ -1,4 +1,5 @@
-#How to install LEMP Stack on Ubuntu 14.04
+
+w to install LEMP Stack on Ubuntu 14.04
 
 LEMP Stack is a group of software that is used to server web applications.LEMP stands for Linux,Nginx (also called Engine X),Mysql and Php.In this guide we will explain how you can install LEMP Stack on Ubuntu 14.04.
 
