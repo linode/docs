@@ -73,7 +73,7 @@ Use this option with extreme caution.
 Filter Files Based on Content with Grep
 ---------------------------------------
 
-`find` is only able to filter the directory hierarchy based on a file's name and meta data. If you need to filter based on the content of the file, use a tool like [grep](/docs/linux-tools/common-commands/grep) to filter using grep. Take the following example:
+`find` is only able to filter the directory hierarchy based on a file's name and meta data. If you need to filter based on the content of the file, use a tool like [grep](/docs/tools-reference/search-and-filter-text-with-grep) to filter using grep. Take the following example:
 
     find . -type f -exec grep "ducklington" '{}' \; -print 
 

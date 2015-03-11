@@ -92,7 +92,7 @@ More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [phpBB Styles Database](http://www.phpbb.com/styles/db/)
+- [phpBB Styles Database](http://www.phpbb.com/styles/)
 - [Styles Forum](http://www.phpbb.com/community/viewforum.php?f=80)
 - [phpBB Modifications](http://www.phpbb.com/mods/)
 - [Modifications Forum](http://www.phpbb.com/community/viewforum.php?f=81)

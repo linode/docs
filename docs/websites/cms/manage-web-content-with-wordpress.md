@@ -1,12 +1,12 @@
 ---
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Install and optimize the WordPress blogging and content management system on your Linux VPS.'
 keywords: 'install WordPress,WordPress on Linode,WordPress howto'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-applications/cms-guides/wordpress/']
-modified: Friday, January 16, 2015
+modified: Monday, February 16, 2015
 modified_by:
   name: Elle Krout
 published: 'Tuesday, July 27th, 2010'
@@ -52,8 +52,9 @@ As of this writing, the latest version of WordPress is 4.1. The latest version o
 
     mkdir /var/www/example.com/src/
     cd /var/www/example.com/src/
+    chown -R www-data:www-data /var/www/
     wget http://wordpress.org/latest.tar.gz
-    tar -zxvf latest.tar.gz
+    sudo -u www-data tar -xvf latest.tar.gz
     mv latest.tar.gz wordpress-`date "+%Y-%m-%d"`.tar.gz
     cp -R wordpress/* ../public_html/
     rm -rf wordpress/
@@ -62,20 +63,11 @@ These commands create a `src/` folder within the `/var/www/example.com/` directo
 
 ## Configure WordPress
 
-1.  Ensure that the WordPress installation process has the ability to create the required configuration file by issuing the following command:
-
-        chmod 777 /var/www/example.com/public_html/
-
-2.  Visit your domain in your web browser, and follow the steps outlined by the configuration process. Begin by reviewing the informational page and clicking the "Let's go!" button. Supply WordPress with the database credentials established when you installed the database server. Finally, select "Run the install" and supply the required values as prompted:
+1.  Visit your domain in your web browser, and follow the steps outlined by the configuration process. Begin by reviewing the informational page and clicking the "Let's go!" button. Supply WordPress with the database credentials established when you installed the database server. Finally, select "Run the install" and supply the required values as prompted:
 
     [![WordPress Installer.](/docs/assets/wordpress-setup_small.png)](/docs/assets/wordpress-setup.png)
 
-3.  As soon as the installation completes, issue the following commands to reset file permissions and ownership of your files to ensure basic security:
-
-        chmod 755 /var/www/example.com/public_html/
-        chown www-data:www-data /var/www/example.com/public_html/wp-config.php
-
-5.  As it stands, should you try to update WordPress or install new themes or plugins, you will be asked to input your FTP information. To bypass this you must alter your `wp-config.php` file by adding the following line:
+2.  As it stands, should you try to update WordPress or install new themes or plugins, you will be asked to input your FTP information. To bypass this you must alter your `wp-config.php` file by adding the following line:
 
     {: .file-excerpt}
     /var/www/example.com/public_html/wp-config.php
@@ -87,7 +79,7 @@ These commands create a `src/` folder within the `/var/www/example.com/` directo
 
         chown -R www-data:www-data /var/www/example.com/public_html/wp-content
 
-6.  Unless you've decided to use a web server other than Apache, issue the following commands to ensure that `mod_rewrite` is enabled:
+3.  Unless you've decided to use a web server other than Apache, issue the following commands to ensure that `mod_rewrite` is enabled:
 
         a2enmod rewrite
         service apache2 restart

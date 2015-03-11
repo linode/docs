@@ -1,7 +1,7 @@
 ---
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Use TLS/SSL to provide transport later encryption for HTTP connections with nginx.'
 keywords: 'ssl,tls,nginx,https,secure http'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -20,7 +20,7 @@ This document assumes that you have completed the [getting started guide](/docs/
 Install Nginx With SSL Support
 ------------------------------
 
-Before proceeding, ensure that you've compiled nginx with support for SSL. The [nginx installation guides](/docs/web-servers/nginx/installation/) in the Linode Library provide a more comprehensive explanation on compiling nginx. Follow the appropriate guide for the Linux distribution you deployed and be aware of the following considerations:
+Before proceeding, ensure that you've compiled nginx with support for SSL. The [nginx installation guides](/docs/websites/nginx/) in the Linode Library provide a more comprehensive explanation on compiling nginx. Follow the appropriate guide for the Linux distribution you deployed and be aware of the following considerations:
 
 -   If you compiled nginx from source code obtained from the upstream, ensure that the `--with-http_ssl_module` argument is added to the `./configure` command as specified in these documents.
 -   If you installed nginx using your system's package management tools, make sure that the package is built with SSL support.
@@ -32,7 +32,7 @@ Create and Manage SSL Certificates
 
 Before configuring nginx to use SSL, you must generate SSL certificates. This section outlines the steps for creating SSL certificates and keys for "self-signed" certificates and "certificate signing requests" for commercially-signed certificates.
 
-SSL certificates are only valid for a single domain or host name unless you generate or purchase a certificate with one or more subject alternate names (`SubjectAltName`) or a wild card certificate which supports all sub-domains beneath a certain domain. For additional information, consider the document series on [SSL certificates](/docs/security/ssl-certificates/).
+SSL certificates are only valid for a single domain or host name unless you generate or purchase a certificate with one or more subject alternate names (`SubjectAltName`) or a wild card certificate which supports all sub-domains beneath a certain domain. For additional information, consider the document series on [SSL certificates](/docs/security/ssl//).
 
 These examples store the SSL certificate in the `/srv/ssl/` directory. You may choose to store your SSL certificates and related files in whatever directory makes the most sense for the needs and organization of your deployment.
 
@@ -168,7 +168,7 @@ HTTPS operates on port 443 instead of port 80. Take note of the version of nginx
 
 ### Using SSL with Versions of Nginx Prior to 0.7.14
 
-In addition to basic [nginx virtual host configuration](/docs/websites/nginx/basic-nginx-configuration/basic), using SSL with nginx requires a modification to the `listen` directive and three ssl-related directives as shown in the following examples:
+In addition to basic [nginx virtual host configuration](/docs/websites/nginx/basic-nginx-configuration), using SSL with nginx requires a modification to the `listen` directive and three ssl-related directives as shown in the following examples:
 
 {: .file-excerpt }
 nginx.conf
@@ -355,8 +355,8 @@ You may wish to consult the following resources for additional information on th
 
 - [Nginx Project Home Page](http://nginx.org)
 - [Nginx Project SSL Documentation](http://wiki.nginx.org/NginxHttpSslModule)
-- [Nginx Basic Configuration Documentation](/docs/websites/nginx/basic-nginx-configuration/basic)
-- [Nginx Installation Documentation](/docs/web-servers/nginx/installation)
+- [Nginx Basic Configuration Documentation](/docs/websites/nginx/basic-nginx-configuration)
+- [Nginx Installation Documentation](/docs/websites/nginx/)
 
 
 

@@ -357,7 +357,7 @@ Start nginx:
 
     /etc/init.d/nginx start
 
-Your Redmine installation should be accessible at <http://redmine.example.com>; if you encounter issues, please refer to your log files for a listing of any errors that may have occurred. The default login is username "admin" and password "admin". You should change the admin password immediately. Congratulations, you've installed Redmine for project management on your Linode!
+Your Redmine installation should be accessible at `http://redmine.example.com`; if you encounter issues, please refer to your log files for a listing of any errors that may have occurred. The default login is username "admin" and password "admin". You should change the admin password immediately. Congratulations, you've installed Redmine for project management on your Linode!
 
 Monitor for Software Updates and Security Notices
 -------------------------------------------------

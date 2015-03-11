@@ -18,7 +18,7 @@ Sometimes, you may want to preview your website here at Linode before you update
 What Is a Hosts File?
 ---------------------
 
-The hosts file exists on all major operating systems. You can use the hosts file to force your local computer to look for your domain at Linode, rather than its current location on the Internet. From a technical perspective, the hosts file is used to associate specific hostnames to IP addresses, and takes precedence over the association provided by DNS queries. By manually specifying a specific IP address/hostname pair, web traffic sent to a domain can be directed to a server other than what's specified in the domain's A records. If these terms are unfamiliar, you might want to take a look at our [DNS](/docs/adding-dns-records) guide.
+The hosts file exists on all major operating systems. You can use the hosts file to force your local computer to look for your domain at Linode, rather than its current location on the Internet. From a technical perspective, the hosts file is used to associate specific hostnames to IP addresses, and takes precedence over the association provided by DNS queries. By manually specifying a specific IP address/hostname pair, web traffic sent to a domain can be directed to a server other than what's specified in the domain's A records. If these terms are unfamiliar, you might want to take a look at our [DNS](/docs/networking/dns/introduction-to-dns-records) guide.
 
  {: .note }
 >

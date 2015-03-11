@@ -49,7 +49,7 @@ Issue the following commands to update your system and install the nginx web ser
     chkconfig --level 35 nginx on
     service nginx start
 
-You'll be asked to accept the key for EPEL, as it gets imported the first time you install an EPEL package. Various additional dependency packages will be installed along with the ones we requested. Once the installation process finishes, you may wish to make sure nginx is running by browsing to your Linode's IP address (found on the "Remote Access" tab in the [Linode Manager](/docs/linode-platform/manager/)). You should get the default ngnix page.
+You'll be asked to accept the key for EPEL, as it gets imported the first time you install an EPEL package. Various additional dependency packages will be installed along with the ones we requested. Once the installation process finishes, you may wish to make sure nginx is running by browsing to your Linode's IP address (found on the "Remote Access" tab in the [Linode Manager](http://manager.linode.com//)). You should get the default ngnix page.
 
 Configure Your Site
 -------------------
@@ -171,7 +171,7 @@ You may wish to consult the following resources for additional information on th
 - [FastCGI Project Homepage](http://www.fastcgi.com/)
 - [PHP Documentation](http://www.php.net/docs.php)
 - [Installing Nginx on CentOS 5](/docs/web-servers/nginx/installation/centos-5)
-- [Basic Ngnix Configuration](/docs/websites/nginx/basic-nginx-configuration/basic)
+- [Basic Ngnix Configuration](/docs/websites/nginx/basic-nginx-configuration)
 
 
 
