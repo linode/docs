@@ -32,7 +32,7 @@ With these dependencies installed and running, we're ready to begin installing t
 >
 >The steps required in this guide require root privileges. Be sure to run the steps below as ``root`` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
-##Download and Install Drupal
+##Download and Install Drupal 7
 
 The Drupal software is frequently updated as bugs are patched and security vulnerabilities are found and removed. Visit the [Drupal download page](http://drupal.org/project/drupal) to find the latest version of the Drupal 7 Release, and download that file rather than the file mentioned in the example below. A sample release chart is pictured below.
 
