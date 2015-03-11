@@ -10,7 +10,7 @@ modified: Thursday, November 6th, 2014
 modified_by:
   name: Joseph Dooley
 published: 'Tuesday, September 29th, 2009'
-title: Managing Web Content with Drupal 7
+title: Installing Drupal 7
 ---
 
 Drupal is an advanced and powerful content management framework, built on the PHP scripting language, and supported by a [database](/docs/databases/) engine like [MySQL](/docs/databases/mysql/). Drupal provides a flexible system that can be used to manage websites of all different sorts and profiles. Drupal is capable of providing the tools necessary to create rich, interactive "community" websites with forums, user blogs, and private messaging. Drupal can also provide support for multifaceted personal publishing projects and can power podcasts, blogs, and knowledge bases systems all within a single unified system.
