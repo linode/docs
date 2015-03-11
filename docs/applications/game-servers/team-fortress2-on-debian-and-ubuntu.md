@@ -12,13 +12,11 @@ published: 'Monday, February 16, 2015'
 title: 'Team Fortress 2 on Debian and Ubuntu'
 ---
 
-Team Fortress 2 is a team-based first-person shooter, where you and a team of fellow players can play a variety of game modes: From capture the flag, to a battle pitting your team against a robotic horde, there are numerous options to choose. Setting up your own game server puts you in control of what game modes and maps you use, as well as a variety of other settings to customize your experience.
-
-This guide is for Debian and Ubuntu.
+Team Fortress 2 is a team-based, first-person shooter, where you and a team of fellow players can enact a variety of game modes. From capture the flag, to a battle pitting your team against a robotic horde, there are numerous options to choose. Setting up a personal game server puts you in control of what game modes and maps you use, as well as a variety of other settings to customize your experience.
 
 ##Prerequisites
 
-Prior to installing Team Fortress 2, you need to create a user for Steam, and set up the Steam Console Client, SteamCMD, which will allow you to use a command line version of Steam. You may also need to update your firewall permissions.
+Prior to installing Team Fortress 2, create a user for Steam and set up the Steam Console Client, SteamCMD, which allows you to use a command line version of Steam. You may also need to update your firewall permissions.
 
 ###Prepare Your Server
 
@@ -47,7 +45,7 @@ Prior to installing Team Fortress 2, you need to create a user for Steam, and se
 
 ###Install SteamCMD
 
-1.  Create a separate user for Steam, and switch to that user:
+1.  Create a separate user for Steam and switch to that user:
 
 		sudo adduser steam
 		su - steam
@@ -86,7 +84,7 @@ With SteamCMD set up, Team Fortress 2 can now be installed.
 
 		login anonymous
 
-2.  Create a directory for Team Fortress 2, and install the game:
+2.  Create a directory for Team Fortress 2 and install the game:
 
 		force_install_dir ./tf2/
 		app_update 232250
@@ -115,9 +113,9 @@ If you would like to set up your server with custom settings see [Configure Team
 
 		script /dev/null
 
-3.  To have the server continuously running, use the screen command in conjuction to the start up command.
+3.  To have the server continuously running, use the screen command in conjunction with the start up command.
 
-	- 	If you're running the server with a `server.cfg` file use:
+	- 	If you're running the server with a `server.cfg`, file use:
 
 			screen ./srcds_run -game tf +map ctf_2fort.bsp
 
@@ -125,15 +123,15 @@ If you would like to set up your server with custom settings see [Configure Team
 
 			screen ./srcds_run -game tf +map ctf_2fort.bsp +maxplayers 24
 
-	You can replace `cft_2fort.bsp` with the name of your choosen map's file, or replace `+map ctf_2fort.bsp` with `+randommap` for a randomized map select.
+	Optionally, replace `cft_2fort.bsp` with the name of your chosen map's file, or replace `+map ctf_2fort.bsp` with `+randommap` for a randomized map select.
 
 ##Configure Team Fortress 2
 
 ###Maps
 
-You can select from a variety of maps on which you can play Team Fortress 2, a number of which are already installed to your server.
+You can select from a variety of maps on which you can play Team Fortress 2, a number of them are already installed to the server.
 
-In order to create a custom list of maps for your server, you need to create `mapcycle.txt` within the `tf2/tf/cfg` directory. The best way to do this is to copy the example file and edit that to include your choosen maps.
+In order to create a custom list of maps for your server, create `mapcycle.txt` within the `tf2/tf/cfg` directory. The best way to do this is to copy the example file and edit it to include your chosen maps.
 
 1.  Navigate to `steamcmd/tf2/tf/cfg`:
 
@@ -149,7 +147,7 @@ In order to create a custom list of maps for your server, you need to create `ma
 
 The "Message of the Day" appears when loaded onto a server. This can be a message to your normal group of players, a statement about the server's settings, or anything else. Configure this by editing the `motd_default.txt` and `motd_text_default.txt` file.
 
-The `motd_default.txt` file can contain HTML and will be displayed as a website upon loading the server in-game. The `modt_text_default.txt` file should just be the text copy, with no additional code.
+The `motd_default.txt` file can contain HTML and is displayed as a website upon loading the server in-game. The `modt_text_default.txt` file should be the text copy, with no additional code.
 
 ###Server.cfg
 
@@ -157,7 +155,7 @@ The `server.cfg` file is what contains all of the settings you need to customize
 
 {: .note}
 >
->For the configuration of this file `0` means "off" and `1` means "on".
+>For the configuration of this file, `0` means "off" and `1` means "on".
 
 {: .file}
 ~/steamcmd/tf2/tf/cfg/server.cfg
@@ -276,11 +274,11 @@ The `server.cfg` file is what contains all of the settings you need to customize
 
 ##RCON
 
-RCON allows you to make changes to your server from inside of the game.
+RCON allows changes to your server from inside of the game.
 
-1.  To start using RCON you need to need to go to the **Options** setting in the game, and then select **Advanced...**  
+1.  To start using RCON, go to the **Options** setting in the game, and then select **Advanced...**  
 
-	[![Enable the developer console](/docs/assets/team-fortress-rcon-small.png)](/docs/assets/team-fortress-rcon.png)
+	[![Enable the developer console.](/docs/assets/team-fortress-rcon-small.png)](/docs/assets/team-fortress-rcon.png)
 
 2.  From here, check **Enable developer console** and apply these settings.
 
@@ -292,7 +290,7 @@ RCON allows you to make changes to your server from inside of the game.
 
 ###RCON Commands
 
-The commands for RCON are as followed:
+The commands for RCON are as follows:
 
 -	**`rcon sv_password`**: Add a server password
 -	**`rcon users`**: Display a list of users on the server
@@ -304,4 +302,4 @@ The commands for RCON are as followed:
 -	**`rcon maps`**: Displays the maps available to your server
 -	**`rcon changelevel [mapname]`**: Change to set map
 
-Most `server.cfg` options can also be altered through RCON using the same values. For example, should you want enable friendly fire, you would enter `rcon mp_friendlyfire 1`.
+Most `server.cfg` options can also be altered through RCON using the same values. For example, should you want to enable friendly fire, enter `rcon mp_friendlyfire 1`.
