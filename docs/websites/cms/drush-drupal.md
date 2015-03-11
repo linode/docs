@@ -34,7 +34,7 @@ Before installing Drush and Drupal, ensure that the following prerequisites have
 
 ##Install Git & Composer
 
-The developers of Drush recommend installation through Composer, a PHP dependency manager. The Drush project is hosted on Github and controlled with Git, another necessary app to install.
+The developers of Drush recommend installation through Composer, a PHP dependency manager. The Drush project is hosted on GitHub and controlled with Git, another necessary app to install.
 
 
 1. Install Git:
@@ -57,7 +57,7 @@ Composer is designed to install PHP dependencies on a per project basis, but the
 
        sudo ln -s /usr/local/bin/composer /usr/bin/composer
 
-2. Use Git to download, or clone, the Github Drush project into a new directory:
+2. Use Git to download, or clone, the GitHub Drush project into a new directory:
 
        sudo git clone https://github.com/drush-ops/drush.git /usr/local/src/drush
 
