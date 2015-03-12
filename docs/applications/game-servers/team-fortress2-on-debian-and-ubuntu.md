@@ -5,14 +5,14 @@ author:
 description: 'A basic Team Fortress 2 server installation guide for Debian and Ubuntu'
 keywords: 'team fortress 2,team fortress,steam,ubuntu,debian'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Monday, February 16, 2015
+modified: Thursday, March 12th, 2015
 modified_by:
   name: Elle Krout
-published: 'Monday, February 16, 2015'
+published: 'Thursday, March 12th, 2015'
 title: 'Team Fortress 2 on Debian and Ubuntu'
 ---
 
-Team Fortress 2 is a team-based, first-person shooter, where you and a team of fellow players can enact a variety of game modes. From capture the flag, to a battle pitting your team against a robotic horde, there are numerous options to choose. Setting up a personal game server puts you in control of what game modes and maps you use, as well as a variety of other settings to customize your experience.
+Team Fortress 2 is a team-based, first-person shooter, where you and a team of fellow players can play a variety of game modes. From capture the flag, to a battle pitting your team against a robotic horde, there are numerous options to choose. Setting up a personal game server puts you in control of what game modes and maps you use, as well as a variety of other settings to customize your experience.
 
 ##Prerequisites
 
@@ -274,7 +274,7 @@ The `server.cfg` file is what contains all of the settings you need to customize
 
 ##RCON
 
-RCON allows changes to your server from inside of the game.
+RCON allows you to make changes to your server from inside of the game.
 
 1.  To start using RCON, go to the **Options** setting in the game, and then select **Advanced...**  
 
