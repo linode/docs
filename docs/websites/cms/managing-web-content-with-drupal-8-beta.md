@@ -10,7 +10,7 @@ modified: Friday, October 24th, 2014
 modified_by:
     name: Joseph Dooley
 published: 'Friday, October 31, 2014'
-title: Managing Web Content with Drupal 8 Beta
+title: Installing Drupal 8 (beta)
 ---
 
 [Drupal 8](https://www.drupal.org/drupal-8.0) is the lastest version of the extremely popular [Drupal](https://www.drupal.org/) content management system. The Drupal 8 beta-2 version was released on October 15th, and since it's so new, there isn't much documentation on the web. This how-to demonstrates all of the necessary steps to install Drupal 8 on your Linode.
