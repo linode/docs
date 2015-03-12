@@ -122,7 +122,7 @@ Slave_IO_Running: Yes
 Lot of Web applications are hosted in a distributed system. 
 
 
-(attached image : Distributed system having separate master.jpg)
+[![Distributed MySQL with separate master.](/docs/assets/mysql-distributed-master.jpg)](/docs/assets/mysql-distributed-master.jpg)
 
 For a better response time, slaves are used for read operations and master is used for write operations. 
 What if you decide to add a new web server, you will need to setup a slave. This procedure will come in really handy at that time.
