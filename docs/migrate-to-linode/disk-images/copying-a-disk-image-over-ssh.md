@@ -46,7 +46,7 @@ Now that the Linode is running in Rescue Mode, you can transfer the disk from th
         Warning: Permanently added '123.45.67.89' (RSA) to the list of known hosts.
         root@123.45.67.89's password:
 
-    The transfer starts. You'll see output similar to the following:
+    The transfer starts, and you'll see output similar to the following:
 
         4096000+0 records in
         4096000+0 records out
@@ -96,7 +96,7 @@ Once you have a copy of your Linode's disk you may want to upload that copy from
 
     [![Create a new disk](/docs/assets/copydisk-create-disk.png)](/docs/assets/copydisk-create-disk-full.png)
 
-2.  Input a descriptive name in the in the **Label** field, and be sure the **Size** is large enough to hold the contents of the disk you are uploading. Save changes.
+2.  Input a descriptive name in the in the **Label** field, and be sure the **Size** is large enough to hold the contents of the disk you are uploading. CLick on **Save Changes**.
 
 3. [Boot the Linode in Rescue Mode and start SSH](#starting-your-linode-in-rescue-mode)
 
