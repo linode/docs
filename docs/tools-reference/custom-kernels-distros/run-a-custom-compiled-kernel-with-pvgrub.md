@@ -110,7 +110,7 @@ Note that there is no `initrd` line. With some distributions, the `initrd` image
 Configure for PV-GRUB
 ---------------------
 
-In the Linode Manager, edit your Linode's configuration profile to use either `pv-grub-x86_32` or `pv-grub-x86_64` as the "Kernel", depending on the version of Fedora you have deployed (32-bit or 64-bit). Make sure the root device is specified as `xvda`. Save your changes by clicking "Save Profile" at the bottom of the page, and reboot your Linode from the "Dashboard" tab.
+In the Linode Manager, edit your Linode's configuration profile to use either `pv-grub-x86_32` or `pv-grub-x86_64` as the "Kernel", depending on the version of Linux you have deployed (32-bit or 64-bit). Make sure the root device is specified as `xvda`. Save your changes by clicking "Save Profile" at the bottom of the page, and reboot your Linode from the "Dashboard" tab.
 
 Once your Linode has rebooted, log back into it and issue the command `uname -a`. You should see output similar to the following, indicating you're running your custom kernel:
 
