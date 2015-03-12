@@ -15,7 +15,7 @@ title: 'Run a Custom Compiled Kernel with PV-GRUB'
 
 For some use cases, you may wish to run a custom-compiled Linux kernel on your Linode. This can be useful if you need to enable certain kernel features that are unavailable in Linode-supplied or distribution-supplied kernels, or when you want to disable features that are compiled into such kernels. For example, some users may desire [SELinux](http://en.wikipedia.org/wiki/Security-Enhanced_Linux) support, which is not enabled in stock Linode kernels, and may not be enabled in some distribution-supplied kernels.
 
-If you'd rather run a distribution-supplied kernel instead, please follow our guide for [running a distribution-supplied kernel](/docs/linode-platform/custom-instances/pv-grub-howto). Before proceeding with these instructions, you should follow the steps outlined in our [getting started](/docs/getting-started/) guide. After doing so, make sure you are logged into your Linode as the "root" user via an SSH session.
+If you'd rather run a distribution-supplied kernel instead, please follow our guide for [running a distribution-supplied kernel](/docs/tools-reference/custom-kernels-distros/run-a-distributionsupplied-kernel-with-pvgrub). Before proceeding with these instructions, you should follow the steps outlined in our [getting started](/docs/getting-started/) guide. After doing so, make sure you are logged into your Linode as the "root" user via an SSH session.
 
 Prepare the System
 ------------------
@@ -110,7 +110,7 @@ Note that there is no `initrd` line. With some distributions, the `initrd` image
 Configure for PV-GRUB
 ---------------------
 
-In the Linode Manager, edit your Linode's configuration profile to use either `pv-grub-x86_32` or `pv-grub-x86_64` as the "Kernel", depending on the version of Fedora you have deployed (32-bit or 64-bit). Make sure the root device is specified as `xvda`. Save your changes by clicking "Save Profile" at the bottom of the page, and reboot your Linode from the "Dashboard" tab.
+In the Linode Manager, edit your Linode's configuration profile to use either `pv-grub-x86_32` or `pv-grub-x86_64` as the "Kernel", depending on the version of Linux you have deployed (32-bit or 64-bit). Make sure the root device is specified as `xvda`. Save your changes by clicking "Save Profile" at the bottom of the page, and reboot your Linode from the "Dashboard" tab.
 
 Once your Linode has rebooted, log back into it and issue the command `uname -a`. You should see output similar to the following, indicating you're running your custom kernel:
 

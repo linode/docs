@@ -180,8 +180,8 @@ More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [Oracle XE Home Page](http://www.oracle.com/technology/xe/index.html)
-- [Oracle XE 10g Documentation](http://www.oracle.com/technology/documentation/database10gR2.html)
+- [Oracle XE Home Page](http://www.oracle.com/technetwork/database/database-technologies/express-edition/overview/index.html)
+- [Oracle XE 10g Documentation](http://www.oracle.com/pls/db102/homepage)
 - [Oracle XE Getting Started Guide](http://download.oracle.com/docs/cd/B25329_01/doc/admin.102/b25610/toc.htm)
 
 

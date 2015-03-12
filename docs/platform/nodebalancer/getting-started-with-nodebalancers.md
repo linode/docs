@@ -8,8 +8,8 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['nodebalancers/getting-started/']
 modified: Thursday, August 8th, 2013
 modified_by:
-  name: Linode
-published: 'Wednesday, July 13th, 2011'
+  name: Alex Fornuto
+published: 'Thursday, February 12, 2015'
 title: Getting Started with NodeBalancers
 ---
 
@@ -19,8 +19,7 @@ NodeBalancers are built for high availability and designed to be "set and forgot
 
 This guide attempts to give a high-level overview of transitioning to a NodeBalancer, but makes no attempt to document or explain the underlying parts of the application NodeBalancer will be balancing; for more information on various applications that might be useful behind NodeBalancer review the rest of the Linode Library.
 
-Overview
---------
+## Overview
 
 A NodeBalancer listens on a public IP address for incoming connections, then uses configurable rules to select a backend node (out of one or more) to which to send the connection. In HTTP mode, NodeBalancers can reach into the incoming Web request and make decisions based on it.
 
@@ -40,8 +39,7 @@ Now, backend Linodes can be added or removed to the work load seamlessly, withou
 
 Additionally, NodeBalancer will watch each backend for failure, rerouting users to working backends transparently and without any manual intervention.
 
-Configuring a NodeBalancer
---------------------------
+## Configuring a NodeBalancer
 
 First, the backend Linode currently powering the Web site must have a private IP address. If it does not, add one now and configure the Linode for [static networking](/docs/networking/configuring-static-ip-interfaces/) -- this will then be a good opportunity to do the same for the database server, since private network traffic is unbilled. Reboot if necessary, and configure your Web application to respond on the private IP address, if it is not already.
 
@@ -53,7 +51,7 @@ For the example Web application, only one NodeBalancer is needed. Add one, and c
 
 [![The NodeBalancer has been added.](/docs/assets/797-2.png)](/docs/assets/772-nodebalancer-added.png)
 
-A NodeBalancer is configured using ports, and the example Web application uses only one: port 80 for regular HTTP traffic.
+Now click on **Create Configuration**. A NodeBalancer is configured using ports, and the example Web application uses only one: port 80 for regular HTTP traffic.
 
 [![Adding a port configuration to a NodeBalancer.](/docs/assets/798-3.png)](/docs/assets/774-add-port.png)
 
@@ -81,8 +79,7 @@ Now that the backend is up, go directly to your NodeBalancer's IP address in a b
 
 That is enough to configure the NodeBalancer. For HTTPS/SSL configurations, use the HTTPS protocol and provide a key and certificate.
 
-A Note about Virtual Hosts
---------------------------
+## A Note about Virtual Hosts
 
 You might not see the web application that you expect when you go directly to the NodeBalancer's IP address. This is due to virtual hosts, and is not an issue unique to NodeBalancers. In the default configurations of many Web servers, an application might only be configured to respond for certain hostnames. This can impact testing NodeBalancers as well as the behavior of their health checks.
 
@@ -92,22 +89,15 @@ It is important to configure the "default" virtual host in your Web server to po
 >
 > Health checks are transmitted with a Host header (in HTTP/1.0 mode).
 
-Putting the NodeBalancer in Charge
-----------------------------------
+## Putting the NodeBalancer in Charge
 
 Your NodeBalancer is now working and is able to pass traffic to your Web application. It is important to note at this point that configuring the NodeBalancer has not impacted your application's normal operations at all -- you can test NodeBalancer without your users ever knowing. The only exception to this would be to add a private IP address, if it was necessary to do so.
 
-Once you are satisfied that NodeBalancer is working normally, you can switch your Web application's traffic over to it through DNS. On the NodeBalancer's overview, you can see its IP address as well as a hostname that resolves to that IP address. For nearly all cases, we recommend using the hostname as a CNAME; if for any unforeseen reason it becomes necessary to change your IP address, the change will happen automatically and without intervention from you.
+Once you are satisfied that NodeBalancer is working normally, you can switch your Web application's traffic over to it through DNS. On the NodeBalancer's overview, you can see its IP address as well as a hostname that resolves to that IP address. Take note of the IP address, to use in the A record for your domain.
 
-Remove any record for www.example.org, then add a CNAME for www.example.org to your NodeBalancer's hostname.
+Edit or create an A record for `www.example.org`, pointing to your NodeBalancer's IP address.
 
-[![Viewing the NodeBalancer-driven Web site in a browser.](/docs/assets/802-7.png)](/docs/assets/782-dns-cname.png)
-
-"Root" domains, such as example.org as opposed to www.example.org, cannot use a CNAME. An A and AAAA record must be used instead. Your NodeBalancer comes with an IPv6 address; including an AAAA record is strongly recommended in addition to the A record to terminate IPv6 for your visitors.
-
-Remove any A and AAAA record for example.org, then add your NodeBalancer's IPv4 address as an A record for the root domain.
-
-[![Adding an A record for the NodeBalancer.](/docs/assets/803-8.png)](/docs/assets/784-dns-a.png)
+[![Adding an A Record.](/docs/assets/nodebalancer-a-record_small.png)](/docs/assets/nodebalancer-a-record.png)
 
 Also add an AAAA record for the IPv6 address.
 

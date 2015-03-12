@@ -31,7 +31,7 @@ Prerequisites
 Before we begin, make sure you have completed the following:
 
 -   Follow the [Getting Started](/docs/getting-started/) guide.
--   Install the [Nginx server](/docs/web-servers/nginx/installation).
+-   Install the [Nginx server](/docs/websites/nginx/websites-with-nginx-on-debian-7-wheezy).
 -   The steps required in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](https://library.linode.com/using-linux/users-and-groups) guide.
 
 If you're new to Linux server administration, you may also be interested in our [Beginner's Guide](/docs/beginners-guide/) and [Administration Basics Guide](/docs/using-linux/administration-basics).
@@ -47,7 +47,7 @@ Sometimes, server configuration files can get so corrupted or convoluted that th
 
     cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.backup
 
-For even better restoration options, we recommend making regular [backups](/docs/backups) of your Nginx configuration. You might want to store your entire `/etc/nginx/` directory in a [Git](/docs/linux-tools/version-control/git) repository so you can save the original settings and all the versions from all your different changes. Another option is to periodically create dated copies of your files. You can accomplish this by issuing the following command:
+For even better restoration options, we recommend making regular [backups](/docs/platform/backup-service) of your Nginx configuration. You might want to store your entire `/etc/nginx/` directory in a [Git](/docs/linux-tools/version-control/git) repository so you can save the original settings and all the versions from all your different changes. Another option is to periodically create dated copies of your files. You can accomplish this by issuing the following command:
 
     cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.$(date "+%b_%d_%Y_%H.%M.%S")
 
@@ -395,7 +395,7 @@ You can also disable the access log, although this is not recommended:
 
 The final component of the `server` settings block is the `location` directive. We'll cover the specifics of what goes *inside* of a location block in the next section; right now we're going to focus on the basic path setting.
 
-The `location` setting lets you configure how Nginx will respond to requests for resources within the server. Just like the `server_name` directive tells Nginx how to process requests for the domain, such as **<http://example.com>**, the `location` directive covers requests for specific files and folders, such as **<http://example.com/blog/>**.
+The `location` setting lets you configure how Nginx will respond to requests for resources within the server. Just like the `server_name` directive tells Nginx how to process requests for the domain, such as **http://example.com**, the `location` directive covers requests for specific files and folders, such as **http://example.com/blog/**.
 
 {: .note }
 >

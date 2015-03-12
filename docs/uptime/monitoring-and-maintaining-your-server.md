@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-description: Our guide to monitoring and maintaing your server.
+description: Our guide to monitoring and maintaining your server.
 keywords: 'monitor,monitoring,maintaining,maintenance'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['monitoring-and-maintaining/']
@@ -105,8 +105,8 @@ The graphs in the Linode Manager provide basic information for things like CPU u
 
 There are several free third-party performance monitoring tools available for your Linode:
 
--   [Munin](/docs/server-monitoring/munin): Munin is a system and network monitoring tool that generates graphs of resource usage in an accessible web based interface. Munin also makes it possible to monitor multiple Linodes with a single installation.
--   [Cacti](/docs/server-monitoring/cacti): If you have advanced monitoring needs, try Cacti. It allows you to monitor larger systems and more complex deployments with its plugin framework and web-based interface.
+-   Munin: Munin is a system and network monitoring tool that generates graphs of resource usage in an accessible web based interface. Munin also makes it possible to monitor multiple Linodes with a single installation.
+-   Cacti: If you have advanced monitoring needs, try Cacti. It allows you to monitor larger systems and more complex deployments with its plugin framework and web-based interface.
 -   [Nagios](/docs/server-monitoring/nagios): Nagios is primarily used as an availability monitoring tool, but it can also be configured to monitor performance. For more information, check out the [graphing and trending add-ons](http://exchange.nagios.org/directory/Addons/Graphing-and-Trending).
 
 If you need a third-party performance monitoring tool, take a look at Munin, Cacti, or Nagios now.
@@ -190,7 +190,7 @@ Linux distributions such as Ubuntu and Fedora use version numbers to identify th
 There are two ways to upgrade a Linode running an unsupported release. You can upgrade your existing server to the next release, or you can create a new Linode with the newest release available and transfer your files from the old server:
 
 -   To upgrade your server, use one of our [Upgrading Guides](/docs/upgrading) or check the distribution's website for instructions.
--   To create a new Linode and transfer your files from the old server, use our [Getting Started](/docs/getting-started) guide and then [migrate the disk](/docs/migration) from the old server to transfer the files, or use an FTP client.
+-   To create a new Linode and transfer your files from the old server, use our [Getting Started](/docs/getting-started) guide and then [migrate the disk](/docs/migrate-to-linode/disk-images/migrating-a-server-to-your-linode) from the old server to transfer the files, or use an FTP client.
 
  {: .note }
 >

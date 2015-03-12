@@ -20,7 +20,7 @@ The Linode Manager provides some basic monitoring of system resource utilization
 
 Munin is a system and network monitoring tool that uses RRDTool to generate useful visualizations of resource usage. The primary goal of the Munin project is to provide an easy to use tool that is simple to install and configure and provides information in an accessible web based interface. Munin also makes it possible to monitor multiple "nodes" with a single installation.
 
-Before installing Munin, we assume that you have followed our [getting started guide](/docs/getting-started/). IIf you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics). Additionally, you'll need to install a web server such as [Apache](/docs/web-servers/apache/installation/ubuntu-9.10-karmic) in order to use the web interface.
+Before installing Munin, we assume that you have followed our [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics). Additionally, you'll need to install a web server such as [Apache](/docs/web-servers/apache/installation/ubuntu-9.10-karmic) in order to use the web interface.
 
 Installing Munin
 ----------------
@@ -147,7 +147,7 @@ You may wish to consult the following resources for additional information on th
 - [Munin Exchange](http://muninexchange.projects.linpro.no/)
 - [Installing Munin on Other Linux Distributions](http://munin.projects.linpro.no/wiki/LinuxInstallation)
 - [Installing Munin on Mac OSX](http://munin.projects.linpro.no/wiki/DarwinInstallation)
-- [Installing Munin on Solaris](http://munin.projects.linpro.no/wiki/SolarisInstallation)
+- [Installing Munin on Solaris](http://munin-monitoring.org/wiki/MuninInstallationSolaris)
 
 
 

@@ -2,7 +2,6 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'How to build a stable LAMP stack using your Linode.'
 keywords: 'LAMP,LAMP stack,LAMP server'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['lamp-guides/']

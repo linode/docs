@@ -1,5 +1,5 @@
 ---
-title:  DNS
+title: DNS
 featured:
  - introduction-to-dns-records.md
  - dns-manager.md
@@ -10,4 +10,3 @@ featured:
  - provide-authoritative-dns-services-with-nsd-on-debian-6-squeeze.md
  - provide-authoritative-dns-services-with-nsd-on-ubuntu-12-04-precise-pangolin.md
 ---
-

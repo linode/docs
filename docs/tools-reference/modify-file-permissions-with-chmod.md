@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: skleinman@linode.com
-description: 'Use the chmod command to modify file permissions on your Linux VPS.'
+description: 'Use the chmod command to modify file permissions on your Linode.'
 keywords: 'TAGS=chmod,commands,reference,file permissions'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['linux-tools/common-commands/chmod/']

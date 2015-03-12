@@ -1,4 +1,3 @@
 ---
 title: Longview Guides
-description: 
 ---

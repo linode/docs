@@ -34,19 +34,21 @@ It is often necessary to take a back up (or "dump") of an entire database manage
 
 ### Option 1: Create Backups of an Entire Database Management System Using the mysqldump Utility
 
-The most straight forward method for creating a single coherent backup of the entire MySQL database management system uses the `mysqldump` utility from the command line. The syntax resembles the following:
+The most straight forward method for creating a single coherent backup of the entire MySQL database management system uses the `mysqldump` utility from the command line. The syntax for creating a database dump with a current timestamp is as follows:
 
-    mysqldump -u squire -ps3cr1t -h localhost --all-databases > 1266861650-backup-all.sql
+    mysqldump --all-databases > dump-$( date '+%Y-%m-%d_%H-%M-%S' ).sql -u root -p
 
-In this example the *database* username is "squire," and the password is "s3cr1t." Additionally the hostname is "localhost." As long as the MySQL server is running and bound to an accessible IP address, `mysqldump` can backup a database located on a remote machine. Since `mysqldump` prints all of the database content to the standard output, the above command routes all database content into the `1266861650-backup-all.sql` file. We strongly recommend naming backup files in such a way as to allow easy determination of when a backup was taken and what databases were backed up. The following example provides a clearer demonstration of `mysqldump` syntax:
+This command will prompt you for a password before beginning the database backup in the current directory. This process can take anywhere from a few seconds to a few hours depending on the size of your databases.
 
-    mysqldump -u [username] -p[password] -h [host] --all-databases > [backup].sql
+Automate this process by adding a line to `crontab`:
 
-To back up the entire DBMS using the root account, the command might resemble the following:
+    0 1 * * * /usr/bin/mysqldump --all-databases > dump-$( date '+%Y-%m-%d_%H-%M-%S' ).sql -u root -pPASSWORD
 
-    mysqldump -u root -p -h localhost --all-databases > 1266863089-mysqlFullBackup.sql
+For the example above, use `which mysqldump` to confirm the correct path to the command, and replace `root` with the mysql user you would like to run backups as, and `PASSWORD` with the correct password for that user.
 
-This command will prompt you for a password before beginning the database backup located at `1266863089-mysqlFullBackup.sql` in the current directory. This process can take anywhere from a few seconds to a few hours depending on the size of your databases.
+{: .note}
+>
+> In the crontab example, ensure that there is no space between the -P flag, and your password entry.
 
 ### Option 2: Create Backups of an Entire DBMS Using Copies of the MySQL Data Directory
 

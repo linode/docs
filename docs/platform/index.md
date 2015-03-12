@@ -12,6 +12,7 @@ featured:
  - accounts-and-passwords.md
  - linode-cli.md
  - linode-images.md
+ - linode-managed.md
  - package-mirrors.md
  - stackscripts.md
  - billing-and-payments.md

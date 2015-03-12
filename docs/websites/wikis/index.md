@@ -1,14 +1,13 @@
 ---
 author:
-  name: Amanda Folson
+  name: Linode
   email: docs@linode.com
-description: 'Installation, configuration and usage guides for wiki software.'
 keywords: 'wiki,mediawiki,ikiwiki'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-applications/wikis/']
 modified: Tuesday, May 17th, 2011
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Monday, March 1st, 2010'
 title: Wikis
 ---

@@ -72,7 +72,7 @@ More Information
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [WinSCP Documentation](http://winscp.net/eng/docs/start)
-- [Tools & Resources](/docs/tools-resources/)
+- [Tools & Resources](/docs/tools-reference/)
 
 
 

@@ -390,7 +390,7 @@ Familiarize yourself with the various files, configs, and settings listed in the
 [l]:https://www.linode.com
 [i]:http://www.iredmail.org
 [h]:https://library.linode.com/getting-started
-[u]:http://www.iredmail.org/install_iredmail_on_ubuntu.html
+[u]:http://www.iredmail.org/docs/install.iredmail.on.debian.ubuntu.html
 [d]:https://code.google.com/p/iredmail/wiki/DNS_DKIM
 [s]:https://code.google.com/p/iredmail/wiki/DNS_SPF
 [m]:http://www.mail-tester.com

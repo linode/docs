@@ -120,7 +120,7 @@ This command:
 
 1.  Generates a list of the files in `/usr/bin/` (with the `ls /usr/bin/` command.)
 2.  Sends the output of `ls` to the `grep` command (with the `|` or "pipe" operator.)
-3.  Searches the output of `ls` with `grep`, which looks for all files that begin with the letters `py` (a common prefix for programs written in the Python programing language.)
+3.  Searches the output of `ls` with `grep`, which looks for all files that begin with the letters `py` (a common prefix for programs written in the Python programming language.)
 4.  Sends the output of `grep` to a file located in the current user's home directory (`~/`) named `python-bins.txt` (with the `>` operator.)
 
 If the file specified at the end of the `>` operator has contents, `>` will overwrite that content. To append the output of a command to the end of an existing file use the append operator, which is `>>`.
@@ -222,7 +222,6 @@ More Information
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [Command Line at FLOSS Manuals](http://en.flossmanuals.net/gnulinux/index.php)
-- [Common Linux Commands at Linode Library](/docs/linux-tools/common-commands)
 
 
 

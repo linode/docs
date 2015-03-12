@@ -266,5 +266,5 @@ You may wish to consult the following resources for additional information on th
 
 - [WeeChat Home Page](http://www.weechat.org/)
 - [GNU Screen](http://www.gnu.org/software/screen/)
-- [Screen for Persistent Terminal Sessions](/linux-tools/utilities/screen)
+- [Screen for Persistent Terminal Sessions](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions)
 

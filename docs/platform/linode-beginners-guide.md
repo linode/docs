@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Answers to common configuration questions for the Linode VPS platform.'
+description: 'Answers to common configuration questions for the Linode platform.'
 keywords: 'linode beginners guide,linux beginner,linode beginner,vps guide'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['beginners-guide/']
@@ -63,7 +63,7 @@ First and foremost, you might want to give the official [Linode backup system](h
 -   [Introduction to Rsync](/docs/linux-tools/utilities/rsync) - Using `rsync` to mirror files to another server.
 -   [Using Rdiff-backup with SSHFS](/docs/linux-tools/rdiff-backup) - An easy approach to using the `rdiff-backup` utility to maintain differential backups.
 -   [Duplicating a Disk](/docs/disk-images-config-profiles#sph_duplicating-a-disk-image) - Creating an exact copy of a disk in the Linode Manager.
--   [Copying a Disk Over SSH](/docs/linode-platform/migration/copy-disk-image-over-ssh) - How to download an exact binary image of your Linode's disk over SSH.
+-   [Copying a Disk Over SSH](/docs/migrate-to-linode/disk-images/copying-a-disk-image-over-ssh) - How to download an exact binary image of your Linode's disk over SSH.
 
 How can I install software on my Linode?
 ----------------------------------------

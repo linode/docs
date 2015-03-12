@@ -1,8 +1,7 @@
 ---
 author:
-  name: Amanda Folson
+  name: Linode
   email: docs@linode.com
-description: 'Guides for transferring files via different methods across multiple platforms.'
 keywords: 'file transfer,file transferring,cyberduck,filezilla,winscp'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['networking/file-transfer/']
