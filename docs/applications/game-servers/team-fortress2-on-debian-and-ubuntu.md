@@ -28,7 +28,7 @@ Prior to installing Team Fortress 2, create a user for Steam and set up the Stea
 
 		sudo apt-get install lib32gcc1
 
-3.  If you have an iptables firewall on your server, open the files that hosts your iptables rules (located at `iptables.firewall.rules` if following the [Securing Your Server](/docs/security/securing-your-server) guide) and add the following above the `DROP` command section:
+3. 	If your server runs a firewall, you will need to add exceptions for several port ranges for Steam. If you’ve configured iptables according to our [Securing Your Server](/docs/security/securing-your-server) guide, add the following lines to your `iptables.firewall.rules`:
 
 	{: .file-excerpt}
 	/etc/iptables.firewall.rules
