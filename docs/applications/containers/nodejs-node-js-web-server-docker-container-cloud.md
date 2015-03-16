@@ -2,7 +2,7 @@
 author:
   name: Joseph Dooley
   email: jdooley@linode.com
-description: 'Basic Node.js Server in a Docker Container on Linode'
+description: 'Basic Node.js Server in a Docker Container on Linode.'
 keywords: 'docker, nodejs, node.js, debian, ubuntu, server, web server, js, javascript'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: Thursday, March 19th, 2015
@@ -18,9 +18,9 @@ external_resources:
 ---
 
 
-Docker is a container platform for applications. With Docker, users can download pre-configured apps without the hassle of the installation and configuration process. Docker containers can also build on each other.
+Compared to typical browser-side JavaScript, Node.js is server-side JavaScript, often used for various cloud related applications.
 
-Node.js, commonly referred to as node, node js, or nodejs, is a JavaScript platform for the cloud. Compared to typical browser-side JavaScript, Node.js is server-side JavaScript, often used for various cloud related applications. 
+Docker is a container platform. With Docker, users can download pre-configured apps without the hassle of the installation and configuration process. Docker containers can also build on each other. 
 
 ##Install Docker
 Use the Docker-maintained install script for Debian or Ubuntu. For other operating systems, see the [Docker Installation](https://docs.docker.com/en/latest/installation/) guides.
