@@ -111,7 +111,7 @@ Next, set up a MariaDB database to handle virtual domains and users.
         bind-address=127.0.0.1
         ~~~
 
-    This is required for Postfix to be able to communicate with the database server. If you have MariaDB set up to run on another IP address (such as an internal IP), you will need to substitute this IP address in place of `127.0.0.1` during the Postfix configuration steps. It is *not* advisable to run MariaDB on a publicly-accessible IP address.
+    This is required for Postfix to be able to communicate with the database server. If you have MariaDB set up to listen on another IP address (such as an internal IP), you will need to substitute this IP address in place of `127.0.0.1` during the Postfix configuration steps. It is *not* advisable to run MariaDB on a publicly-accessible IP address.
 
 12. Restart the database server:
 
@@ -183,7 +183,7 @@ Next, perform additional Postfix configuration to set up communication with the 
         groupadd -g 5000 vmail
         useradd -g vmail -u 5000 vmail -d /home/vmail -m
 
-7.  Complete the remaining steps required for Postfix configuration. Please be sure to replace `server.example.com` with the Linode's fully qualified domain name:
+7.  Complete the remaining steps required for Postfix configuration. Please be sure to replace `server.example.com` with the Linode's fully qualified domain name. If you are planning on using your own SSL certificate and key, replace `/etc/pki/dovecot/private/dovecot.pem` with the appropriate path:
 
         postconf -e 'myhostname = server.example.com'
         postconf -e 'mydestination = $myhostname, localhost, localhost.localdomain'
@@ -230,11 +230,11 @@ This completes the configuration for Postfix.
 
 ##Configure Dovecot
 
-1.  Make a backup copy of your `/etc/dovecot/dovecot.conf` file:
+1.  Move `/etc/dovecot/dovecot.conf` to a backup file:
 
-        cp -a /etc/dovecot/dovecot.conf /etc/dovecot/dovecot.conf-backup
+        mv /etc/dovecot/dovecot.conf /etc/dovecot/dovecot.conf-backup
 
-2.  Replace the contents of the file with the following, substituting your system's domain name for `example.com` in line 37:
+2.  Copy the following into the now-empty `dovecot.conf` file, substituting your system's domain name for `example.com` in line 37:
 
     {: .file }
     /etc/dovecot/dovecot.conf
@@ -293,7 +293,7 @@ This completes the configuration for Postfix.
         }
         ~~~
 
-3.  MariaDB will be used to store password information, so `/etc/dovecot/dovecot-sql.conf.ext` must be created. Insert the following contents into the file, making sure to replace `main_admin_password` with your mail password:
+3.  MariaDB will be used to store password information, so `/etc/dovecot/dovecot-sql.conf.ext` must be created. Insert the following contents into the file, making sure to replace `mail_admin_password` with your mail password:
 
     {: .file }
     /etc/dovecot/dovecot-sql.conf.ext
@@ -304,7 +304,7 @@ This completes the configuration for Postfix.
         password_query = SELECT email as user, password FROM users WHERE email='%u';
         ~~~
 
-4.  Restrict access to the avoce file by changing the permissions to allow users in the `dovecot` group to access it, while denying access to others:
+4.  Restrict access to the file by changing the permissions to allow users in the `dovecot` group to access it, while denying access to others:
 
         chgrp dovecot /etc/dovecot/dovecot-sql.conf.ext
         chmod o= /etc/dovecot/dovecot-sql.conf.ext
@@ -319,7 +319,9 @@ This completes the configuration for Postfix.
     {: .file-excerpt }
     /var/log/maillog
     :   ~~~
-        Jan 21 20:00:18 li181-194 dovecot: Dovecot v1.0.15 starting up
+        Mar 18 17:10:26 localhost postfix/postfix-script[3274]: starting the Postfix mail system
+        Mar 18 17:10:26 localhost postfix/master[3276]: daemon started -- version 2.10.1, configuration /etc/postfix
+        Mar 18 17:12:28 localhost dovecot: master: Dovecot v2.2.10 starting up for imap, pop3 (core dumps disabled)
         ~~~
 
 7.  Test your POP3 server to make sure it's running properly:
@@ -366,11 +368,6 @@ This completes alias configuration. Next, test Postfix to make sure it's operati
 
 3.  You should see output similar to the following:
 
-        Trying 127.0.0.1...
-        Connected to localhost.
-        Escape character is '^]'.
-        220 plato.example.com ESMTP Postfix
-        ehlo localhost
         250-plato.example.com
         250-PIPELINING
         250-SIZE 30720000
@@ -426,9 +423,10 @@ After the test mail is sent, check the mail logs to make sure the mail was deliv
     {: .file-excerpt }
     /var/log/maillog
     :   ~~~
-        Jan 21 20:03:19 li181-194 postfix/cleanup[5877]: E1D148908: message-id=\<<20110121200319.E1D148908@plato.example.com>>
-        Jan 21 20:03:19 li181-194 postfix/qmgr[5867]: E1D148908: from=\<<root@plato.example.com>>, size=377, nrcpt=1 (queue active) Jan 21 20:03:19 li181-194 postfix/pipe[5883]: E1D148908: to=\<<sales@example.com>>, relay=dovecot, delay=0.05, delays=0.04/0.01/0/0.01, dsn=2.0.0, status=sent (delivered via dovecot service)
-        Jan 21 20:03:19 li181-194 postfix/qmgr[5867]: E1D148908: removed
+        Mar 18 17:18:47 localhost postfix/cleanup[3427]: B624062FA: message-id=<20150318171847.B624062FA@example.com>
+        Mar 18 17:18:47 localhost postfix/qmgr[3410]: B624062FA: from=<root@example.com>, size=515, nrcpt=1 (queue active)
+        Mar 18 17:18:47 localhost postfix/pipe[3435]: B624062FA: to=<sales@example.com>, relay=dovecot, delay=0.14, delays=0.04/0.01/0/0.09, dsn=2.0.0, $
+        Mar 18 17:18:47 localhost postfix/qmgr[3410]: B624062FA: removed
         ~~~
 
 2.  Check the Dovecot delivery log located in `/home/vmail/dovecot-deliver.log`. The contents should look similar to the following:
@@ -445,6 +443,7 @@ Now you can test to see what the users of your email server would see with their
 
 1.  To test the `sales@example.com` mailbox, navigate to the mailbox directory `/home/vmail/example.com/sales/Maildir` and issue the following command:
 
+        cd /home/vmail/example.com/sales/Maildir
         find
 
 2.  You should see output similar to the following:
@@ -464,4 +463,6 @@ Now you can test to see what the users of your email server would see with their
 
     You may be prompted to create the root mailbox. This is not required.
 
-4.  If there is an email in the inbox, Postfix, Dovecot, and MariaDB have been successfully configured!
+4.  If there is an email in the inbox, Postfix, Dovecot, and MySQL have been successfully configured! To quit mutt press `q`.
+
+    [![/docs/assets/postfixcentos-mutt.png](/docs/assets/postfixcentos-mutt.png)](/docs/assets/postfixcentos-mutt.png)
