@@ -185,7 +185,7 @@ Note that the `key` section comes *after* the `database` is defined.
 For additional configuration options you may wish to define, you can look at
 the comments in the original `nsd.conf.default` file.
 
-### zones.config
+### Master zones.config
 
 The `zones.config` file is where you will define what zones the NSD server is
 responsible for and where the configuration file is located. We will use
@@ -262,7 +262,7 @@ Start the daemon:
     service nsd start
     
 With the daemon running, we can now use the `dig` command to test and see if it
-working:
+is working:
 
     [alice@localhost ~]$ dig @localhost mail.example.org.
     
@@ -291,4 +291,36 @@ working:
     ;; WHEN: Fri Mar 20 02:26:57 PDT 2015
     ;; MSG SIZE  rcvd: 111
     
-Your result should look something like that.
+Your result should look something like that if is working.
+
+## Configure the Slave
+
+On the slave, the `nsd.conf` file should be identical to the master *except*
+for the IP addresses it listens on, which of course should correspond to the
+IP addresses of the slave. It is imperitive that the `key` section in the slave
+`nsd.conf` is identical to the `key` section in master `nsd.conf`.
+
+The `zones.config` file however will be different, and we do not need to create
+any zone files on the slave.
+
+### Slave zones.config
+
+Again we will use `example.org` and `example.net` to demonstrate:
+
+    zone:
+        name: example.org
+        zonefile: /etc/nsd/example.org.zone
+        allow-notify: 2600:3c00::12 mynsdkey
+        request-xfr: 2600:3c00::12 mynsdkey
+
+    zone:
+        name: example.net
+        zonefile: /etc/nsd/example.net.zone
+        allow-notify: 2600:3c00::12 mynsdkey
+        request-xfr: 2600:3c00::12 mynsdkey
+        
+On the slave servers, we use `allow-notify` and `request-xfr` *instead* of
+`notify` and `provide-xfr`.
+
+The IP address should correspond with the master. Again, I recommend using the
+IPv6 address.
