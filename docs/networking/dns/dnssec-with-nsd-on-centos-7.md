@@ -79,15 +79,16 @@ varies from registrar to registrar and it is necessary, otherwise when you
 register new domains you won't be able to assign your nameservers as their
 authoritative nameservers.
 
-It might be tempting to use your registrar's nameserver. Doing so can cause
-issues if you ever decide to transfer your domain. The registrars will often
-remove the zone file from their nameserver when a transfer begins but you can
-not update the nameservers until the transfer ends.
+It might be tempting to use your registrar's nameserver for this instead of
+Linode's. Be warned that doing so can cause issues if you ever decide to
+transfer your domain. The registrars will often remove the zone file from
+their nameserver when a transfer begins but you can not update the nameservers
+until the transfer ends.
 
 In the case of the nameservers you operate, this would mean all of the domains
 under your administration would lose service until the transfer is over. When
 you use the Linode nameserver, there is no loss of service during a transfer of
-domain from one registrar to another.
+your nameserver domain from one registrar to another.
 
 For more information on the Linode DNS Manager, see [DNS Manager](https://www.linode.com/docs/networking/dns/dns-manager).
 
@@ -160,6 +161,8 @@ crontab:
 Once a minute, the cron daemon will run the script, starting the daemon if it
 is not already running. You probably do not want to load the cron job until
 you have NSD configured and working.
+
+If you need more information on how to use `cron`, see [Schedule Tasks with Cron](https://www.linode.com/docs/tools-reference/tools/schedule-tasks-with-cron).
 
 ## Configure the Master
 
