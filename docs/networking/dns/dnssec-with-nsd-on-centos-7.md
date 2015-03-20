@@ -324,3 +324,15 @@ On the slave servers, we use `allow-notify` and `request-xfr` *instead* of
 
 The IP address should correspond with the master. Again, I recommend using the
 IPv6 address.
+
+When you start the NSD server on the slave, it should request the zone
+information from the master and populate the zone files itself.
+
+You should test the slave with the `dig` command the same way that you tested
+the master.
+
+### Important Note
+
+When you modify the `zones.config` file on the master to add a new zone, do not
+forget to also modify the `zones.config` file on all of your slaves. The slave
+will only update zones it knows about from that file.
