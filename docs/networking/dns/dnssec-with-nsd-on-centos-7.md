@@ -182,6 +182,9 @@ secret of your own, run the following command:
     
 Note that the `key` section comes *after* the `database` is defined.
 
+For additional configuration options you may wish to define, you can look at
+the comments in the original `nsd.conf.default` file.
+
 ### zones.config
 
 The `zones.config` file is where you will define what zones the NSD server is
@@ -243,3 +246,13 @@ bind. Below is an example for the `example.org` zone:
 
 For more information on the zone file and DNS records, please refer to
 [Introduction to DNS Records](https://www.linode.com/docs/networking/dns/introduction-to-dns-records).
+
+### Test Configuration
+
+One your zone files have been created, you should test your NSD configuration
+file:
+
+    nsd-checkconf /etc/nsd/nsd.conf
+    
+If it passes the configuration test, start the daemon and then test how it
+responds:
