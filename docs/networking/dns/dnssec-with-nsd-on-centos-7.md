@@ -98,12 +98,7 @@ Create the following shell script and put it in the `/root/bin` directory:
       [ ! -f /root/nsdflush ] && touch /root/nsdflush
       if test `find /root/nsdflush -mmin + 240`; then
         touch /root/nsdflush                #keep it from triggering
-        
-        sleep $[ ( $RANDOM % 600 ) + 1 ]    #sleep randomizes when it
-                                            #restarts, can be useful if
-                                            #running several slaves to
-                                            #reduce odds of restarting at
-                                            #the same time
+        sleep $[ ( $RANDOM % 600 ) + 1 ]
         /sbin/service nsd restart > /dev/null 2>&1
         /usr/sbin/nsdc rebuild > /dev/null 2>&1
         /usr/sbin/nsdc reload > /dev/null 2>&1
@@ -123,9 +118,11 @@ from the master.
 The purpose of the `sleep` in the `else` block, in the event that you run
 multiple slaves, if they all boot at the same time the `sleep` will space out
 when the maintenance restart and flush happens reducing the odds that multiple
-slaves happen to reboot at the same time.
+slaves happen to restart at the same time. It probably does not matter if they
+do but during the brief daemon restart they won't be responding to name lookup
+requests.
 
-Once the script is in its proper place, I add the following to the `root`
+With the script is in its proper place, add the following to the `root`
 crontab:
 
     * * * * * /bin/bash /root/bin/start_nsd.sh > /dev/null 2>&1
@@ -142,3 +139,40 @@ slave servers working without DNSSEC.
 The configuration files for NSD can be found in the `/etc/nsd` directory. If
 you are starting from the rebuilt Fedora RPM linked to earlier, initially there
 will only be one file in that directory: `nsd.conf`.
+
+That configuration file is mostly comments that explain what some of the
+options are for and what the defaults are. I would suggest backing it up and
+creating a fresh configuration file without the comments.
+
+Most of the defaults are fine, in most cases there is very little to actually
+configure. You will want to specify the IPv4 and IPv6 address that it listens
+on, the database location, a key for pushing updates, and an include file:
+
+    #
+    # nsd.conf
+    #
+    server:
+            ip-address: 69.164.200.202
+            ip-address: 127.0.0.1
+            ip-address: 2600:3c00::12
+            ip-address: ::1
+
+    database: /var/lib/nsd/nsd.db
+    
+    key:
+            name: "mynsdkey"
+            algorithm: hmac-sha256
+            secret: "iRkBVSG+F4FtAHSdpb6FDvhdExeTKpSoBSyi4c9TbIg="
+            
+    include: "/etc/nsd/zones.config"
+    
+You will want to replace `69.164.200.202` with your master IPv4 address and
+`2600:3c00::12` with your master IPv6 address.
+
+In the `key` configuration, you can change `name` if you want but it is not
+sensitive data. You do however want to change the `secret`. To generate a
+secret of your own, run the following command:
+
+    dd if=/dev/urandom count=1 bs=32 2> /dev/null |base64
+    
+Note that the `key` section comes *after* the `database` is defined.
