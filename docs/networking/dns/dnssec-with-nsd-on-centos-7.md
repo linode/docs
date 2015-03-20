@@ -11,7 +11,9 @@ bad data somewhere along that line of trust, ultimately resulting in an
 incorrect IP address being delivered to some users.
 
 DNSSEC is an extension to DNS that greatly reduces the amount of trust involved
-by using cryptographic signed records to validate the result of a query.
+by using cryptographic signed records that allows caching nameservers along the
+way and your web browser to validate the authenticity of the result and reject
+the result if it does not validate.
 
 This document was written with CentOS 7 in mind but it should work with most
 Linux distributions with very little tweaking needed.
@@ -21,8 +23,8 @@ Linux distributions with very little tweaking needed.
 NSD is an alternative to bind. It is an authoritative only nameserver and works
 well with DNSSEC out of the box. I personally find it easier to configure than
 bind, it does what an authoritative name server needs to do and it does it
-quite well. Several of root nameservers many more TLD nameservers run NSD, so
-it is more than capable of handling my needs.
+quite well. Several of root nameservers as well as numerousm TLD nameservers
+run NSD, so it is more than capable of handling my needs.
 
 ## Redundancy and Security
 
@@ -33,8 +35,10 @@ facilities. For example, you can use a linode in the Dallas facility for your
 master and a linode in the Fremont facility for a slave.
 
 For security reasons, the linodes you use for your nameserver really should be
-dedicated to the nameserver. You do not want an exploit in the nameserver to
-allow your other services to be compromised and vice versa.
+dedicated to the nameserver. A nameserver listens for requests on an open port
+providing potential vectors for remote exploits if the daemon has a
+vulnerability. You do not want an exploit in the nameserver to allow your other
+services to be compromised or vice versa.
 
 Running an authoritative only nameserver is not very CPU or Memory intensive
 and does not use a lot of disk space, it is fine to use the smallest option
@@ -42,11 +46,12 @@ that Linode has to offer for your nameservers.
 
 ### Nameserver Domain Name and Nameserver's DNS
 
-I do not manage the DNS zone for the domain I use as my DNS server for my
-other domains. There are ways to do it (look up glue records if curious) but it
-is much simpler not to and simplicity has benefits. I let Linode manage the
-zone for the DNS server domain. That zone will be the only zone not under my
-direct administration.
+I do not manage the DNS zone for the domain I use as my DNS server. There are
+ways to do it (look up glue records if curious) but it is much simpler not to
+and simplicity has benefits.
+
+I let Linode manage the zone for the DNS server domain. That zone will be the
+only zone not under my direct administration.
 
 For example, I might register the `exampledns.com` domain to use as the
 domain for my nameserver. When using the Linode DNS manager, both
@@ -74,6 +79,18 @@ varies from registrar to registrar and it is necessary, otherwise when you
 register new domains you won't be able to assign your nameservers as their
 authoritative nameservers.
 
+It might be tempting to use your registrar's nameserver. Doing so can cause
+issues if you ever decide to transfer your domain. The registrars will often
+remove the zone file from their nameserver when a transfer begins but you can
+not update the nameservers until the transfer ends.
+
+In the case of the nameservers you operate, this would mean all of the domains
+under your administration would lose service until the transfer is over. When
+you use the Linode nameserver, there is no loss of service during a transfer of
+domain from one registrar to another.
+
+For more information on the Linode DNS Manager, see [DNS Manager](https://www.linode.com/docs/networking/dns/dns-manager).
+
 ## Installing NSD on RHEL / CentOS 7
 
 Unfortunately NSD is not packaged for RHEL / CentOS 7 either in their base
@@ -84,6 +101,11 @@ A rebuild of NSD for RHEL / CentOS 7 can be found here:
 [NSD for RHEL / CentOS 7](http://awel.domblogger.net/7/misc/x86_64/repoview/nsd.html)
 
 Alternatively, you can rebuild the src.rpm from Fedora yourself.
+
+You will also want the `dig` command available on your nameservers. If it is
+not present when you create your linode, it can be installed with command
+
+    yum install bind-utils
 
 ### Starting NSD Automatically
 
@@ -253,7 +275,7 @@ For more information on the zone file and DNS records, please refer to
 
 ### Test Configuration
 
-One your zone files have been created, you should test your NSD configuration
+Once your zone files have been created, you should test your NSD configuration
 file:
 
     nsd-checkconf /etc/nsd/nsd.conf
