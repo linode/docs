@@ -32,6 +32,10 @@ dedicated linodes for your master and slave(s) and run them from different
 facilities. For example, you can use a linode in the Dallas facility for your
 master and a linode in the Fremont facility for a slave.
 
+For security reasons, the linodes you use for your nameserver really should be
+dedicated to the nameserver. You do not want an exploit in the nameserver to
+allow your other services to be compromised and vice versa.
+
 Running an authoritative only nameserver is not very CPU or Memory intensive
 and does not use a lot of disk space, it is fine to use the smallest option
 that Linode has to offer for your nameservers.
