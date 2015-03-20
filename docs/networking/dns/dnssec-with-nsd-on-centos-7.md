@@ -58,3 +58,14 @@ Finally, you will need to have your registrar recognize your nameservers (e.g.
 varies from registrar to registrar and it is necessary, otherwise when you
 register new domains you won't be able to assign your nameservers as their
 authoritative nameservers.
+
+## Installing NSD on RHEL / CentOS 7
+
+Unfortunately NSD is not packaged for RHEL / CentOS 7 either in their base
+repositories or in EPEL. However the Fedora src.rpm rebuilds in CentOS 7
+without modification.
+
+A rebuild of NSD for RHEL / CentOS 7 can be found here:
+[NSD for RHEL / CentOS 7](http://awel.domblogger.net/7/misc/x86_64/repoview/nsd.html)
+
+Alternatively, you can rebuild the src.rpm from Fedora yourself.
