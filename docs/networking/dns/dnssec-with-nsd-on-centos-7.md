@@ -49,6 +49,13 @@ the zone.
 `ns2.exampledns.com` would point to the IPv4 and IPv6 address for the first
 slave, and so on.
 
+Using Linode's nameserver for the zone that controls my nameservers does create
+a point of failure. If all five of Linode's nameservers can not be reached,
+then a client will not be able to resolve the domain names for my nameservers.
+However if all five of Linode's nameservers can not be reached, the odds are
+pretty good that my nameservers running on Linode powered virtual machines
+can not be reached anyway.
+
 Once Linode's DNS server has updated (usually less than 15 minutes after you
 create the zone) you then need to log in to your account with your registrar
 and point the DNS records for the domain to the Linode DNS servers.
@@ -86,18 +93,18 @@ Create the following shell script and put it in the `/root/bin` directory:
     /sbin/service nsd status > /dev/null 2>&1
     if [ $? -ne 0 ]; then
       /sbin/service nsd start > /dev/null 2>&1
+      touch /root/nsdflush
     else
       [ ! -f /root/nsdflush ] && touch /root/nsdflush
       if test `find /root/nsdflush -mmin + 240`; then
         touch /root/nsdflush                #keep it from triggering
         
-        sleep $[ ( $RANDOM % 600 ) + 1 ]s   #sleep randomizes when it
+        sleep $[ ( $RANDOM % 600 ) + 1 ]    #sleep randomizes when it
                                             #restarts, can be useful if
                                             #running several slaves to
                                             #reduce odds of restarting at
                                             #the same time
         /sbin/service nsd restart > /dev/null 2>&1
-        sleep 3
         /usr/sbin/nsdc rebuild > /dev/null 2>&1
         /usr/sbin/nsdc reload > /dev/null 2>&1
         touch /root/nsdflush
@@ -107,10 +114,16 @@ Create the following shell script and put it in the `/root/bin` directory:
     exit 0
     
 That script will start NSD if it is not running. If it is running, it will
-restart it and rebuild / reload its database about every four hours. That is
-not really necessary on the master and I personally remove that part of the
-script on the master, but on the slaves I have found it can hasten how quickly
-they publish updates they receive from the master.
+restart it and rebuild / reload its database about every four hours.
+
+I recommend removing the `else` block from the script on the master, but on the
+slaves I have found it can hasten how quickly they publish updates they receive
+from the master.
+
+The purpose of the `sleep` in the `else` block, in the event that you run
+multiple slaves, if they all boot at the same time the `sleep` will space out
+when the maintenance restart and flush happens reducing the odds that multiple
+slaves happen to reboot at the same time.
 
 Once the script is in its proper place, I add the following to the `root`
 crontab:
@@ -120,3 +133,12 @@ crontab:
 Once a minute, the cron daemon will run the script, starting the daemon if it
 is not already running. You probably do not want to load the cron job until
 you have NSD configured and working.
+
+## Configure the Master
+
+Before we start using DNSSEC it is a good idea to get both the master and the
+slave servers working without DNSSEC.
+
+The configuration files for NSD can be found in the `/etc/nsd` directory. If
+you are starting from the rebuilt Fedora RPM linked to earlier, initially there
+will only be one file in that directory: `nsd.conf`.
