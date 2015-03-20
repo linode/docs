@@ -28,7 +28,7 @@ Prior to installing Team Fortress 2, create a user for Steam and set up the Stea
 
 		sudo apt-get install lib32gcc1
 
-3.  If you have a firewall on your server, open the `iptables.firewall.rules` file and add the following above the `DROP` command section:
+3. 	If your server runs a firewall, you will need to add exceptions for several port ranges for Steam. If you’ve configured iptables according to our [Securing Your Server](/docs/security/securing-your-server) guide, add the following lines to your `iptables.firewall.rules`:
 
 	{: .file-excerpt}
 	/etc/iptables.firewall.rules
@@ -39,7 +39,7 @@ Prior to installing Team Fortress 2, create a user for Steam and set up the Stea
 		-A INPUT -p udp -m udp --dport 26900:27030 -j ACCEPT
 		~~~
 
-	Refresh the firewall:
+	Refresh the firewall, replacing `/etc/iptables.firewall.rules` with the location of your iptables rules if needed:
 
 		sudo iptables-restore < /etc/iptables.firewall.rules
 
@@ -52,6 +52,7 @@ Prior to installing Team Fortress 2, create a user for Steam and set up the Stea
 
 2.  From your home directory, create and switch to a new directory for SteamCMD:
 
+		cd ~
 		mkdir steamcmd
 		cd steamcmd
 
@@ -129,7 +130,7 @@ If you would like to set up your server with custom settings see [Configure Team
 
 ###Maps
 
-You can select from a variety of maps on which you can play Team Fortress 2, a number of them are already installed to the server.
+You can select from a variety of maps on which you can play Team Fortress 2, a number of which are already installed to the server.
 
 In order to create a custom list of maps for your server, create `mapcycle.txt` within the `tf2/tf/cfg` directory. The best way to do this is to copy the example file and edit it to include your chosen maps.
 
@@ -145,7 +146,7 @@ In order to create a custom list of maps for your server, create `mapcycle.txt` 
 
 ###Message of the Day
 
-The "Message of the Day" appears when loaded onto a server. This can be a message to your normal group of players, a statement about the server's settings, or anything else. Configure this by editing the `motd_default.txt` and `motd_text_default.txt` file.
+The "Message of the Day" appears when joining a server. This can be a message to your normal group of players, a statement about the server's settings, or anything else. Configure this by editing the `motd_default.txt` and `motd_text_default.txt` file.
 
 The `motd_default.txt` file can contain HTML and is displayed as a website upon loading the server in-game. The `modt_text_default.txt` file should be the text copy, with no additional code.
 
