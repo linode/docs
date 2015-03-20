@@ -4,10 +4,14 @@ DNSSEC With NSD in RHEL / CentOS 7
 The Domain Name System has some inherent insecurities, it is a system based
 largely upon trust. When a web browser requests an IP Address, it trusts the
 nameserver is giving it the correct address. The nameserver in turn is also
-trusting that it received the correct address.
+trusting that it received the correct address from its source, and so on.
+
+DNS spoofing is an attack that exploits that trust by injecting intentionally
+bad data somewhere along that line of trust, ultimately resulting in an
+incorrect IP address being delivered to some users.
 
 DNSSEC is an extension to DNS that greatly reduces the amount of trust involved
-by using cryptographic signed records to validate the result of the query.
+by using cryptographic signed records to validate the result of a query.
 
 This document was written with CentOS 7 in mind but it should work with most
 Linux distributions with very little tweaking needed.
@@ -141,8 +145,9 @@ you are starting from the rebuilt Fedora RPM linked to earlier, initially there
 will only be one file in that directory: `nsd.conf`.
 
 That configuration file is mostly comments that explain what some of the
-options are for and what the defaults are. I would suggest backing it up and
-creating a fresh configuration file without the comments.
+options are for and what the defaults are. I would suggest backing it up to
+`nsd.conf.default` and creating a fresh configuration file without the
+comments.
 
 Most of the defaults are fine, in most cases there is very little to actually
 configure. You will want to specify the IPv4 and IPv6 address that it listens
@@ -176,3 +181,28 @@ secret of your own, run the following command:
     dd if=/dev/urandom count=1 bs=32 2> /dev/null |base64
     
 Note that the `key` section comes *after* the `database` is defined.
+
+### zones.config
+
+The `zones.config` file is where you will define what zones the NSD server is
+responsible for and where the configuration file is located. We will use
+`example.org` and `example.net` in this example `zones.config` file:
+
+    zone:
+        name: example.org
+        zonefile: /etc/nsd/example.org.zone
+        notify: 2600:3c00::4e mynsdkey
+        provide-xfr: 2600:3c00::4e mynsdkey
+        
+    zone:
+        name: example.net
+        zonefile: /etc/nsd/example.net.zone
+        notify: 2600:3c00::4e mynsdkey
+        provide-xfr: 2600:3c00::4e mynsdkey
+        
+For the `notify` and `provide-xfr` you want to specify the IPv6 address of your
+slave. You could use the IPv4 address instead, but I generally recommend using
+IPv6 for network communication between servers.
+
+If you have more than one slave, you will need additional `notify` and
+`provide-xfr` directives for each zone.
