@@ -69,3 +69,30 @@ A rebuild of NSD for RHEL / CentOS 7 can be found here:
 [NSD for RHEL / CentOS 7](http://awel.domblogger.net/7/misc/x86_64/repoview/nsd.html)
 
 Alternatively, you can rebuild the src.rpm from Fedora yourself.
+
+There is one caveat. Starting the daemon works just swell when the server is up
+and running, but it often does not start during a system boot. That's a
+problem. That problem has existed for me since at least the CentOS 5 days, but
+it is easy to work around. Create the following shell script and put it in the
+`/root/bin` directory:
+
+    #!/bin/bash
+    # /root/bin/start_nsd.sh
+    
+    /sbin/service nsd status > /dev/null 2>&1
+    if [ $? -ne 0 ]; then
+      /sbin/service nsd start > /dev/null 2>&1
+    else
+      [ ! -f /root/nsdflush ] && touch /root/nsdflush
+      if test `find /root/nsdflush -mmin + 240`; then
+        touch /root/nsdflush #keep it from triggering
+        sleep $[ ( $RANDOM % 600 ) + 1 ]s #so that unlikely all slaves trigger at same time
+        /sbin/service nsd restart > /dev/null 2>&1
+        sleep 3
+        /usr/sbin/nsdc rebuild > /dev/null 2>&1
+        /usr/sbin/nsdc reload > /dev/null 2>&1
+        touch /root/nsdflush
+      fi
+    fi
+    
+    exit 0
