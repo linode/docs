@@ -27,3 +27,34 @@ two. One master, and at least one slave. I highly recommend that you use
 dedicated linodes for your master and slave(s) and run them from different
 facilities. For example, you can use a linode in the Dallas facility for your
 master and a linode in the Fremont facility for a slave.
+
+Running an authoritative only nameserver is not very CPU or Memory intensive
+and does not use a lot of disk space, it is fine to use the smallest option
+that Linode has to offer for your nameservers.
+
+### Nameserver Domain Name and Nameserver's DNS
+
+I do not manage the DNS zone for the domain I use as my DNS server for my
+other domains. There are ways to do it (look up glue records if curious) but it
+is much simpler not to and simplicity has benefits. I let Linode manage the
+zone for the DNS server domain. That zone will be the only zone not under my
+direct administration.
+
+For example, I might register the `exampledns.com` domain to use as the
+domain for my nameserver. When using the Linode DNS manager, both
+`exampledns.com` and `ns1.exampledns.com` would point to the IP address I am
+using as the master. Remember to include both the IPv4 and IPv6 when creating
+the zone.
+
+`ns2.exampledns.com` would point to the IPv4 and IPv6 address for the first
+slave, and so on.
+
+Once Linode's DNS server has updated (usually less than 15 minutes after you
+create the zone) you then need to log in to your account with your registrar
+and point the DNS records for the domain to the Linode DNS servers.
+
+Finally, you will need to have your registrar recognize your nameservers (e.g.
+`ns1.exampledns.com` and `ns2.exampledns.com`) as nameservers. How to do that
+varies from registrar to registrar and it is necessary, otherwise when you
+register new domains you won't be able to assign your nameservers as their
+authoritative nameservers.
