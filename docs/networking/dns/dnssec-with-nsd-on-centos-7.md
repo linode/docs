@@ -209,3 +209,37 @@ If you have more than one slave, you will need additional `notify` and
 
 `mynsdkey` needs to be whatever was defined with the `name` directive in the
 `key` definition of the `nsd.conf` file.
+
+### Zone Files
+
+For each zone defined in your `zones.config` file you will need to create a
+zone file. The zone file format used by NSD is very similar to what is used by
+bind. Below is an example for the `example.org` zone:
+
+    $ORIGIN example.org.
+    $TTL 86400
+    
+    @       IN      SOA     ns1.exampledns.com.        admin.example.org.  (
+                                     2015032001       ; serial number
+                                     28800            ; Refresh
+                                     7200             ; Retry
+                                     864000           ; Expire
+                                     86400            ; Min TTL
+                                     )
+                                     
+                    NS               ns1.exampledns.com.
+                    NS               ns2.exampledns.com.
+                    
+                    MX      10       mail.example.org.
+                    
+    example.org.            IN       A        93.184.216.34
+    www                     IN       A        93.184.216.34
+    mail                    IN       A        93.184.216.63
+    
+    
+    example.org.            IN       AAAA     2606:2800:220:1:248:1893:25c8:1946
+    www                     IN       AAAA     2606:2800:220:1:248:1893:25c8:1946
+    mail                    IN       AAAA     2606:2800:220:1:248:1893:25c8:1942
+
+For more information on the zone file and DNS records, please refer to
+[Introduction to DNS Records](https://www.linode.com/docs/networking/dns/introduction-to-dns-records).
