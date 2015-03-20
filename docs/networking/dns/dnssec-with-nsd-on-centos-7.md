@@ -254,5 +254,41 @@ file:
 
     nsd-checkconf /etc/nsd/nsd.conf
     
-If it passes the configuration test, start the daemon and then test how it
-responds:
+If there is no output, it passed the check. Running the above command will not
+check the `zones.config` file or the various zone files.
+
+Start the daemon:
+
+    service nsd start
+    
+With the daemon running, we can now use the `dig` command to test and see if it
+working:
+
+    [alice@localhost ~]$ dig @localhost mail.example.org.
+    
+    ; <<>> DiG 9.9.4-RedHat-9.9.4-14.el7_0.1 <<>> @localhost mail.example.org.
+    ; (2 servers found)
+    ;; global options: +cmd
+    ;; Got answer:
+    ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 20133
+    ;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 1
+    ;; WARNING: recursion requested but not available
+    
+    ;; OPT PSEUDOSECTION:
+    ; EDNS: version: 0, flags:; udp: 4096
+    ;; QUESTION SECTION:
+    ;mail.example.org.    IN  A
+    
+    ;; ANSWER SECTION:
+    mail.example.org. 86400 IN  A 93.184.216.63
+    
+    ;; AUTHORITY SECTION:
+    example.org.    86400 IN  NS  ns1.exampledns.com.
+    example.org.    86400 IN  NS  ns2.exampledns.com.
+    
+    ;; Query time: 0 msec
+    ;; SERVER: ::1#53(::1)
+    ;; WHEN: Fri Mar 20 02:26:57 PDT 2015
+    ;; MSG SIZE  rcvd: 111
+    
+Your result should look something like that.
