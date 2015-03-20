@@ -206,3 +206,6 @@ IPv6 for network communication between servers.
 
 If you have more than one slave, you will need additional `notify` and
 `provide-xfr` directives for each zone.
+
+`mynsdkey` needs to be whatever was defined with the `name` directive in the
+`key` definition of the `nsd.conf` file.
