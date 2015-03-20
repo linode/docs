@@ -258,7 +258,7 @@ This completes the configuration for Postfix.
         protocol lda {
             log_path = /home/vmail/dovecot-deliver.log
             auth_socket_path = /var/run/dovecot/auth-master
-            postmaster_address = <postmaster@example.com>
+            postmaster_address = postmaster@example.com
         }
 
         protocol pop3 {
@@ -350,7 +350,7 @@ Next, you'll make sure aliases are configured properly.
     /etc/aliases
     :   ~~~
         postmaster: root
-        root: <postmaster@example.com>
+        root: postmaster@example.com
         ~~~
 
 2.  Update aliases and restart Postfix:
