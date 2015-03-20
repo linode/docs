@@ -380,7 +380,7 @@ This completes alias configuration. Next, test Postfix to make sure it's operati
         250-8BITMIME
         250 DSN
 
-4.  Issue the command `quit` to terminate the Postfix connection.
+4.  Issue the command `quit` to terminate the telnet connection.
 
 Next, populate the MariaDB database with domains and email users.
 
