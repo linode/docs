@@ -70,11 +70,15 @@ A rebuild of NSD for RHEL / CentOS 7 can be found here:
 
 Alternatively, you can rebuild the src.rpm from Fedora yourself.
 
+### Starting NSD Automatically
+
 There is one caveat. Starting the daemon works just swell when the server is up
 and running, but it often does not start during a system boot. That's a
-problem. That problem has existed for me since at least the CentOS 5 days, but
-it is easy to work around. Create the following shell script and put it in the
-`/root/bin` directory:
+problem. That problem has existed for me since at least the CentOS 5 days and
+that *might* be why it is not packaged for CentOS / RHEL in the official RPM
+repositories, but it is easy to work around.
+
+Create the following shell script and put it in the `/root/bin` directory:
 
     #!/bin/bash
     # /root/bin/start_nsd.sh
@@ -85,8 +89,13 @@ it is easy to work around. Create the following shell script and put it in the
     else
       [ ! -f /root/nsdflush ] && touch /root/nsdflush
       if test `find /root/nsdflush -mmin + 240`; then
-        touch /root/nsdflush #keep it from triggering
-        sleep $[ ( $RANDOM % 600 ) + 1 ]s #so that unlikely all slaves trigger at same time
+        touch /root/nsdflush                #keep it from triggering
+        
+        sleep $[ ( $RANDOM % 600 ) + 1 ]s   #sleep randomizes when it
+                                            #restarts, can be useful if
+                                            #running several slaves to
+                                            #reduce odds of restarting at
+                                            #the same time
         /sbin/service nsd restart > /dev/null 2>&1
         sleep 3
         /usr/sbin/nsdc rebuild > /dev/null 2>&1
@@ -96,3 +105,18 @@ it is easy to work around. Create the following shell script and put it in the
     fi
     
     exit 0
+    
+That script will start NSD if it is not running. If it is running, it will
+restart it and rebuild / reload its database about every four hours. That is
+not really necessary on the master and I personally remove that part of the
+script on the master, but on the slaves I have found it can hasten how quickly
+they publish updates they receive from the master.
+
+Once the script is in its proper place, I add the following to the `root`
+crontab:
+
+    * * * * * /bin/bash /root/bin/start_nsd.sh > /dev/null 2>&1
+    
+Once a minute, the cron daemon will run the script, starting the daemon if it
+is not already running. You probably do not want to load the cron job until
+you have NSD configured and working.
