@@ -12,8 +12,8 @@ incorrect IP address being delivered to some users.
 
 DNSSEC is an extension to DNS that greatly reduces the amount of trust involved
 by using cryptographic signed records that allows caching nameservers along the
-way and your web browser to validate the authenticity of the result and reject
-the result if it does not validate.
+way and the web browser (or any other Internet client) to validate the
+authenticity of the result and reject the result if it does not validate.
 
 This document was written with CentOS 7 in mind but it should work with most
 Linux distributions with very little tweaking needed.
