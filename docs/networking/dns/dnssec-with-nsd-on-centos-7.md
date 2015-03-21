@@ -169,8 +169,7 @@ slaves happen to restart at the same time. It probably does not matter if they
 do but during the brief daemon restart they won't be responding to name lookup
 requests.
 
-With the script is in its proper place, add the following to the `root`
-crontab:
+With the script in its proper place, add the following to the `root` crontab:
 
     * * * * * /bin/bash /root/bin/start_nsd.sh > /dev/null 2>&1
     
@@ -381,3 +380,44 @@ the master.
 When you modify the `zones.config` file on the master to add a new zone, do not
 forget to also modify the `zones.config` file on all of your slaves. The slave
 will only update zones it knows about from that file.
+
+## Test Your Setup
+
+Before continuing with the DNSSEC setup, test that everything is working as
+intended. Start by rebooting the linodes for your nameservers.
+
+After they have rebooted, you can test whether or not the nameservers are
+listening by using the `nmap` command from a different host:
+
+    [alice@localhost ~]$ nmap ns2.exampledns.com
+    
+    Starting Nmap 6.40 ( http://nmap.org ) at 2015-03-21 00:55 PDT
+    Nmap scan report for ns2.exampledns.com (*.*.*.*)
+    Host is up (0.044s latency).
+    rDNS record for *.*.*.(: li*-*.members.linode.com
+    Not shown: 995 closed ports
+    PORT    STATE    SERVICE
+    53/tcp  open     domain
+    135/tcp filtered msrpc
+    139/tcp filtered netbios-ssn
+    445/tcp filtered microsoft-ds
+    593/tcp filtered http-rpc-epmap
+    
+    Nmap done: 1 IP address (1 host up) scanned in 1.82 seconds
+    
+The important line that should be there is
+
+    53/tcp  open     domain
+    
+Port 53 should have a state of `open`. If it is not listed then NSD is not
+running. Check to make sure that you set up the cron daemon to check its state
+once a minute and start it for you when it is not running.
+
+Next, make sure all your nameservers are recognized as nameservers. If your
+nameserver is on a `.com` or `.net` TLD you can do this at
+[http://www.internic.net/whois.html](http://www.internic.net/whois.html)
+
+Check the radio button for nameserver and enter the FQDN of the nameserver into
+the text input. If your nameservers are not seen as nameservers, you need to
+log into your account at your domain registry and make sure they are flagged as
+nameservers.
