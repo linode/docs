@@ -24,7 +24,11 @@ NSD is an alternative to bind. It is an authoritative only nameserver and works
 well with DNSSEC out of the box. I personally find it easier to configure than
 bind, it does what an authoritative name server needs to do and it does it
 quite well. Several of root nameservers as well as numerousm TLD nameservers
-run NSD, so it is more than capable of handling my needs.
+run NSD, so it is more than capable of the needs of an authoritative
+nameserver.
+
+NSD is not the right choice if you need a round robin or a recursive
+nameserver.
 
 ## Redundancy and Security
 
