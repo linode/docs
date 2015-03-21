@@ -28,7 +28,9 @@ run NSD, so it is more than capable of the needs of an authoritative
 nameserver.
 
 NSD is not the right choice if you need a round robin or a recursive
-nameserver.
+nameserver. Generally speaking, an authoritative name server should not also be
+a recursive nameserver, but round robin is sometimes beneficial. If you do need
+round robin then you should use a different nameserver.
 
 ## Redundancy and Security
 
