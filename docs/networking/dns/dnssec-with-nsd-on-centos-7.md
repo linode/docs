@@ -62,6 +62,10 @@ used for my nameservers and host the zone for that domain on a third party
 nameserver, such as the Linode provided nameserver. It is simpler and
 simplicity has its benefits.
 
+I suggest using a `.com` or `.net` TLD for the nameserver domain, it allows you
+to use [http://www.internic.net/whois.html](http://www.internic.net/whois.html)
+to easily verify that your nameservers are in fact seen as nameservers.
+
 For example, I might register the `exampledns.com` domain to use as the
 domain for my nameserver. When using the Linode DNS manager, both
 `exampledns.com` and `ns1.exampledns.com` would point to the IP address I am
@@ -71,28 +75,23 @@ the zone.
 `ns2.exampledns.com` would point to the IPv4 and IPv6 address for the first
 slave, and so on.
 
-Using Linode's nameserver for the zone that controls my nameservers does create
-a point of failure. If all five of Linode's nameservers can not be reached,
-then a client will not be able to resolve the domain names for my nameservers.
-However in the highly unlikely event that all five of Linode's nameservers can
-not be reached, the odds are pretty good that my nameservers running on Linode
-powered virtual machines can not be reached anyway.
-
 Once Linode's DNS server has updated (usually less than 15 minutes after you
 create the zone) you then need to log in to your account with your registrar
 and point the DNS records for your DNS specific domain to the Linode DNS
 servers. Specify all five of Linode's nameservers as authoritive:
 
+[![Entering Linode DNS Servers at Registrar](/docs/assets/specify_linode_nameservers.png)](/docs/assets/specify_linode_nameservers.png)
+
 It might be tempting to use your registrar's nameserver for this instead of
 Linode's. Be warned that doing so can cause issues if you ever decide to
-transfer your domain. The registrars will often remove the zone file from
+transfer that domain. The registrars will often remove the zone file from
 their nameserver when a transfer begins but you can not update the nameservers
 until the transfer ends.
 
-In the case of the nameservers you operate, this would mean all of the domains
-under your administration would lose service until the transfer is over. When
-you use the Linode nameserver, there is no loss of service during a transfer of
-your nameserver domain from one registrar to another.
+In the case of the nameservers you operate, this could result in all of the
+domains under your administration losing service until the transfer is over.
+When you use the Linode nameserver, there is no loss of service during a
+transfer of your nameserver domain from one registrar to another.
 
 For more information on the Linode DNS Manager, see [DNS Manager](https://www.linode.com/docs/networking/dns/dns-manager).
 
