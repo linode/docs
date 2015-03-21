@@ -90,7 +90,7 @@ until the transfer ends.
 
 In the case of the nameservers you operate, this could result in all of the
 domains under your administration losing service until the transfer is over.
-When you use the Linode nameserver, there is no loss of service during a
+When you use the Linode nameservers, there is no loss of service during a
 transfer of your nameserver domain from one registrar to another.
 
 For more information on the Linode DNS Manager, see [DNS Manager](https://www.linode.com/docs/networking/dns/dns-manager).
@@ -120,6 +120,9 @@ You will also want the `dig` command available on your nameservers. If it is
 not present when you create your linode, it can be installed with command
 
     yum install bind-utils
+    
+`dig` is useful for testing how your nameserver responds to a query and that
+often needs to be done when logged in to the nameserver itself.
 
 ### Starting NSD Automatically
 
