@@ -52,12 +52,15 @@ that Linode has to offer for your nameservers.
 
 ### Nameserver Domain Name and Nameserver's DNS
 
-I do not manage the DNS zone for the domain I use as my DNS server. There are
-ways to do it (look up glue records if curious) but it is much simpler not to
-and simplicity has benefits.
+Your nameserver itself will have a domain name that needs to be resolved. It is
+possible to create a special kind of record, called a glue record, that allows
+your nameservers to be hosts in a zone the nameserver controls.
 
-I let Linode manage the zone for the DNS server domain. That zone will be the
-only zone not under my direct administration.
+I personally prefer not to use domain names for my nameserver that are part of
+the zones they control. I prefer to register a separate domain that is only
+used for my nameservers and host the zone for that domain on a third party
+nameserver, such as the Linode provided nameserver. It is simpler and
+simplicity has its benefits.
 
 For example, I might register the `exampledns.com` domain to use as the
 domain for my nameserver. When using the Linode DNS manager, both
@@ -71,19 +74,14 @@ slave, and so on.
 Using Linode's nameserver for the zone that controls my nameservers does create
 a point of failure. If all five of Linode's nameservers can not be reached,
 then a client will not be able to resolve the domain names for my nameservers.
-However if all five of Linode's nameservers can not be reached, the odds are
-pretty good that my nameservers running on Linode powered virtual machines
-can not be reached anyway.
+However in the highly unlikely event that all five of Linode's nameservers can
+not be reached, the odds are pretty good that my nameservers running on Linode
+powered virtual machines can not be reached anyway.
 
 Once Linode's DNS server has updated (usually less than 15 minutes after you
 create the zone) you then need to log in to your account with your registrar
-and point the DNS records for the domain to the Linode DNS servers.
-
-Finally, you will need to have your registrar recognize your nameservers (e.g.
-`ns1.exampledns.com` and `ns2.exampledns.com`) as nameservers. How to do that
-varies from registrar to registrar and it is necessary, otherwise when you
-register new domains you won't be able to assign your nameservers as their
-authoritative nameservers.
+and point the DNS records for your DNS specific domain to the Linode DNS
+servers. Specify all five of Linode's nameservers as authoritive:
 
 It might be tempting to use your registrar's nameserver for this instead of
 Linode's. Be warned that doing so can cause issues if you ever decide to
@@ -97,6 +95,16 @@ you use the Linode nameserver, there is no loss of service during a transfer of
 your nameserver domain from one registrar to another.
 
 For more information on the Linode DNS Manager, see [DNS Manager](https://www.linode.com/docs/networking/dns/dns-manager).
+
+Finally, you will need to have your registrar recognize your nameservers (e.g.
+`ns1.exampledns.com` and `ns2.exampledns.com`) as nameservers. How to do that
+varies from registrar to registrar and it is necessary, otherwise when you
+register new domains you won't be able to assign your nameservers as their
+authoritative nameservers.
+
+It may be under Advanced Options and be called Nameserver Registration. The
+registrar will make a special record with ICANN that then allows your
+nameservers to be specified as authoritative nameservers for other domains.
 
 ## Installing NSD on RHEL / CentOS 7
 
