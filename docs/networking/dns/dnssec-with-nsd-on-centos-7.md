@@ -496,3 +496,9 @@ Create a directory specific directory that will be used for your zone files as
 well as the keys used to sign them. Call it something like `zonesign` or
 whatever floats your boat. You will want to back it up to a secure location in
 case of hard drive failure.
+
+Within this directory, place your zone files but append `.template` to the end
+of the zone name. The purpose of this has to do with key roll-overs, we want to
+be able to script the generation of a zone files that include new ZSK keys
+before the new ZSK is used to sign zones, allowing for a smooth transition from
+an old ZSK to a new ZSK.

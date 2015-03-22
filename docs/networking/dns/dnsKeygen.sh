@@ -5,16 +5,18 @@ if [ ! -f ${zone}.template ]; then
   exit 1
 fi
 
-cat ${zone}.template > ${zone}.zone
+/bin/cat ${zone}.template > ${zone}.zone
 
 if [ -f ${zone}.zone.signed ]; then
   ZSK=`/bin/grep "(zsk)" K${zone}.+*.key |/bin/head -1 |cut -d":" -f1 |/bin/sed -e s?"\.key$"?""?`
   KSK=`/bin/grep "(ksk)" K${zone}.+*.key |/bin/head -1 |cut -d":" -f1 |/bin/sed -e s?"\.key$"?""?`
+  if [ -f rollover/${zone}.new.zsk ]
+    /bin/cat rollover/${zone}.new.zsk >> ${zone}.zone
+  fi
 else
   ZSK=`/usr/bin/ldns-keygen -a RSASHA1-NSEC3-SHA1 -b 1024 ${zone}`
-  #ZSK=`/usr/bin/ldns-keygen -a RSASHA1-NSEC3-SHA1 -b 2048 ${zone}`
   KSK=`/usr/bin/ldns-keygen -k -a RSASHA1-NSEC3-SHA1 -b 2048 ${zone}`
-  rm -f ${ZSK}.ds ${KSK}.ds
+  /bin/rm -f ${ZSK}.ds ${KSK}.ds
 fi
 
 SALT=`/bin/head -n 1024 /dev/random |/usr/bin/sha1sum |cut -d' ' -f1`
