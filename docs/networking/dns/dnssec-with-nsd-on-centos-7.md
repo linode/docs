@@ -446,37 +446,26 @@ signature. The signature of your TLD is then used to verify your KSK
 signature. Your KSK signature is then used to verify your ZSK signature.
 Finally your ZSK signature is used to verify the results of the query.
 
-In order for this to work, you need to be able to make your TLD aware of your
+There is a reason two keys are used. The larger the key, the larger the resonse
+to a DNSSEC query. This is problematic, especially with DNS amplification
+attacks.
+
+The KSK needs to be 2048 bits making it unlikely that it will ever be cracked.
+The digital signature from your KSK is then submitted through your registrar
+where it can be signed by your TLD. It is recommended that a 2048 bit KSK be
+rotated once a year.
+
+The KSK can then sign a smaller 1024 bit ZSK that is rotated more frequently
+without the need for updating information with your registrar. The ZSK should
+be rotated every other month.
+
+In order for DNSSEC to work, you need to be able to make your TLD aware of your
 KSK digital signature (DS). This will be unique for each registered domain
 name.
 
 Unfortunately some domain registrars do not yet support informing the TLD of
 your KSK signature, to use DNSSEC you will need to transfer your domains to a
 registry that does support adding DS information to the domain.
-
-It is important to note that even if the ZSK is compromised, an attacker can
-not forge DNS results that would be accepted by DNSSEC aware clients. However
-the reverse is not true, if the KSK is compromised, it is possible for an
-attacker to forge DNS results that could be accepted by DNSSEC aware clients.
-
-For this reason, the ZSK is usually only a 1024 bit key while the KSK needs to
-be a 2048 bit key. You could use 2048 for both, but that signifigantly
-increases the size of DNSSEC queries without any real security benefit.
-
-The problem with an increased DNSSEC query response has to do with a kind of
-DDoS attack known as an amplification attack. It is irresponsible to make your
-DNSSEC responses larger when there isn't a security justification for doing so.
-
-You should use a 1024 bit key for the ZSK and only use a 2048 bit key where it
-matters, the KSK.
-
-Due to the smaller size of the key, the ZSK should be rotated frequently, I do
-it about every 3 months. The KSK does not need to be rotated as frequently, I
-only do it once every two years but you probably could safely go many years
-without any fear of it being cracked.
-
-Rotating the KSK is more tedious as it involves updating DS records stored with
-your registrar.
 
 ### Zone Signing Machine
 
@@ -498,6 +487,12 @@ You will need to install the `ldns` tools and I highly recommend that you also
 install and start the `haveged` daemon.
 
 You do not need to have NSD installed on the computer you use to sign your
-zones.
+zones. You also do not need a privileged account to sign zones, you can sign
+zones from a regular user account.
 
 ### Zones Directory
+
+Create a directory specific directory that will be used for your zone files as
+well as the keys used to sign them. Call it something like `zonesign` or
+whatever floats your boat. You will want to back it up to a secure location in
+case of hard drive failure.
