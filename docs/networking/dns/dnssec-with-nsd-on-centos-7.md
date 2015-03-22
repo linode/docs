@@ -460,11 +460,11 @@ without the need for updating information with your registrar. The ZSK should
 be rotated every other month.
 
 In order for DNSSEC to work, you need to be able to make your TLD aware of your
-KSK digital signature (DS). This will be unique for each registered domain
+KSK Delegation Signer (DS). This will be unique for each registered domain
 name.
 
 Unfortunately some domain registrars do not yet support informing the TLD of
-your KSK signature, to use DNSSEC you will need to transfer your domains to a
+your KSK DS, to use DNSSEC you will need to transfer your domains to a
 registry that does support adding DS information to the domain.
 
 ### Zone Signing Machine
