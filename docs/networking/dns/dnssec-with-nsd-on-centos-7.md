@@ -421,3 +421,76 @@ Check the radio button for nameserver and enter the FQDN of the nameserver into
 the text input. If your nameservers are not seen as nameservers, you need to
 log into your account at your domain registry and make sure they are flagged as
 nameservers.
+
+When your nameservers pass these tests, you can log in to your domain registry
+accounts and update the authoritative nameserver settings for the domains that
+your NSD nameservers have zones for.
+
+## DNSSEC
+
+DNSSEC works on the principle of a chain of trust verified by cryptographic
+signed keys.
+
+Several new types of records are added to the zone that include the digitally
+signed data.
+
+Two different signing keys are used, a Zone Signing Key (ZSK) and a second Key
+Signing Key (KSK).
+
+A digital signature (DS record) of your KSK is then kept on record with your
+TLD.
+
+When a DNSSEC aware application does a DNS lookup, it uses the digital
+signature of the root nameserver to verify the signature of your TLD
+signature. The signature of your TLD is then used to verify your KSK
+signature. Your KSK signature is then used to verify your ZSK signature.
+Finally your ZSK signature is used to verify the results of the query.
+
+In order for this to work, you need to be able to make your TLD aware of your
+KSK digital signature (DS). This will be unique for each registered domain
+name.
+
+Unfortunately some domain registrars do not yet support informing the TLD of
+your KSK signature, to use DNSSEC you will need to transfer your domains to a
+registry that does support adding DS information to the domain.
+
+It is important to note that even if the ZSK is compromised, an attacker can
+not forge DNS results that would be accepted by DNSSEC aware clients. However
+the reverse is not true, if the KSK key is compromised, it is possible for an
+attacker to forge DNS results that could be accepted by DNSSEC aware clients.
+
+For this reason, the ZSK is usually only a 1024 bit key while the KSK needs to
+be a 2048 bit key. You could use 2048 for both, but that signifigantly
+increases the size of DNSSEC queries without any real security benefit.
+
+The problem with an increased DNSSEC query response has to do with a kind of
+DDoS attack known as an amplification attack. It is irresponsible to make your
+DNSSEC responses larger when there isn't a security justification for doing so.
+
+So, you should use a 1024 bit key for the ZSK and only use a 2048 bit key where
+it matters, the KSK.
+
+The ZSK should be rotated frequently, I do it about every 3 months. The KSK
+does not need to be rotated as frequently, I only do it about once a year.
+
+Rotating the KSK is more tedious as it involves updating DS records stored with
+your registrar.
+
+### Zone Signing Machine
+
+Do not sign zones on the nameserver itself. I have read many tutorials on
+DNSSEC that do just that, but it is a very dangerous practice.
+
+If your nameserver is compromised, an attacker will not be able to create zone
+files that will DNSSEC validate if the keys are not on the server. However if
+the keys *are* on the server, all your zone are belong to us.
+
+It is best to do your zone signing from a computer without a public IP address.
+It is even better to do your zone signing from a computer without a public IP
+address *or* a wifi interface.
+
+The instructions here assume the computer used for signing keys is RHEL /
+CentOS 7 but any Linux distribution should work.
+
+You will need to install the `ldns` tools and I highly recommend that you also
+install and start the `haveged` daemon.
