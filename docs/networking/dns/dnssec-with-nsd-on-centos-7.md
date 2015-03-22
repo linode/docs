@@ -441,7 +441,7 @@ A digital signature (DS record) of your KSK is then kept on record with your
 TLD.
 
 When a DNSSEC aware application does a DNS lookup, it uses the digital
-signature of the root nameserver to verify the signature of your TLD
+signature of the root nameserver to verify the validity of your TLD
 signature. The signature of your TLD is then used to verify your KSK
 signature. Your KSK signature is then used to verify your ZSK signature.
 Finally your ZSK signature is used to verify the results of the query.
@@ -456,7 +456,7 @@ registry that does support adding DS information to the domain.
 
 It is important to note that even if the ZSK is compromised, an attacker can
 not forge DNS results that would be accepted by DNSSEC aware clients. However
-the reverse is not true, if the KSK key is compromised, it is possible for an
+the reverse is not true, if the KSK is compromised, it is possible for an
 attacker to forge DNS results that could be accepted by DNSSEC aware clients.
 
 For this reason, the ZSK is usually only a 1024 bit key while the KSK needs to
@@ -467,11 +467,13 @@ The problem with an increased DNSSEC query response has to do with a kind of
 DDoS attack known as an amplification attack. It is irresponsible to make your
 DNSSEC responses larger when there isn't a security justification for doing so.
 
-So, you should use a 1024 bit key for the ZSK and only use a 2048 bit key where
-it matters, the KSK.
+You should use a 1024 bit key for the ZSK and only use a 2048 bit key where it
+matters, the KSK.
 
-The ZSK should be rotated frequently, I do it about every 3 months. The KSK
-does not need to be rotated as frequently, I only do it about once a year.
+Due to the smaller size of the key, the ZSK should be rotated frequently, I do
+it about every 3 months. The KSK does not need to be rotated as frequently, I
+only do it once every two years but you probably could safely go many years
+without any fear of it being cracked.
 
 Rotating the KSK is more tedious as it involves updating DS records stored with
 your registrar.
@@ -494,3 +496,8 @@ CentOS 7 but any Linux distribution should work.
 
 You will need to install the `ldns` tools and I highly recommend that you also
 install and start the `haveged` daemon.
+
+You do not need to have NSD installed on the computer you use to sign your
+zones.
+
+### Zones Directory
