@@ -5,10 +5,10 @@ author:
 description: 'Basic Node.js Server in a Docker Container.'
 keywords: 'docker, nodejs, node.js, node, debian, ubuntu, server, web server, js, javascript'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Thursday, March 19th, 2015
+modified: Monday, March 23rd, 2015
 modified_by:
   name: Joseph Dooley
-published: 'Thursday, March 19th, 2015'
+published: 'Monday, March 23rd, 2015'
 title: Basic Node.js Web Server with Docker
 ---
 
