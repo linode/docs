@@ -50,6 +50,7 @@ These authors got their articles published and \$100. You could be next.
 -   [Installing iRedMail on your Linode](/docs/email/iredmail/installing-iredmail) - Nick Reichley
 -   [Using StartSSL with the latest Nginx on Debian 7](/docs/websites/nginx/startssl-wth-latest-nginx-debian-7) - Ryan Laverdiere
 -   [Garry's Mod on CentOS 7](/docs/applications/game-servers/garrys-mod-server-on-centos-7) - Julian Meyer
+-   [OSSEC IDS on Debian 7](/docs/security/ossec-ids-debian-7) - Sunday Ogwu-Chinuwa
 
 How Much Money Will I Earn?
 ---------------------------

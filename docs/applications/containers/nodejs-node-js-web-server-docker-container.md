@@ -13,12 +13,12 @@ title: Basic Node.js Web Server with Docker
 ---
 
 
-Node.js is a server-side JavaScript package, often used for various cloud applications. Docker is a container platform. With Docker, users can download pre-configured apps without the hassle of the installation and configuration process. Docker containers can also build on each other. 
+Node.js is a server-side, JavaScript package, often used for various cloud applications. Docker is a container platform. With Docker, users can download applications without the hassle of the installation and configuration process.
 
 ##Install Docker
 Use the Docker-maintained install script for Debian or Ubuntu. For other operating systems, see the [Docker Installation](https://docs.docker.com/en/latest/installation/) guides.
 
-1.  Run:
+1.  Install Docker:
 
         curl -sSL https://get.docker.com/ | sh
 
@@ -27,20 +27,24 @@ Use the Docker-maintained install script for Debian or Ubuntu. For other operati
         sudo usermod -aG docker example_user
 
 ##Download the Docker Node.js Server Image
-The Docker Hub user page for Linode can be accessed [here](https://hub.docker.com/u/linode/). Select the **nodejs-server** image for configuration information.
+The Docker Hub user page for Linode can be accessed [here](https://hub.docker.com/u/linode/). Select the **server-node-js** image for configuration information.
 
-1.  Search for **linode** user images:
+{: .note}
+>
+>Docker images made for one operating system can be used on servers running a different OS. The **server-node-js** Ubuntu 14.04 image was tested on Debian 7, Ubuntu 14.04, Centos 7, and Fedora 21. On Centos and Fedora after Docker installation, run the `sudo service docker start` command.
+
+1.  Search for **linode** images:
 
         sudo docker search linode
 
-2.  Download the **linode/nodejs-server** image:
+2.  Download the **linode/server-node-js** image:
 
         sudo docker pull linode/server-node-js
 
-##Run a Docker Container, Node.js, and the Web Server
+##Run the Docker Container, Node.js, and the Web Server
 When an image downloads, there are no image containers running. 
 
-1.  Run, create, or turn on a new container. Forward the Linode server's port 80 to port 3000 of the container:
+1.  Run, create, or turn on a new container. Forward the Linode's port 80 to port 3000 of the container:
 
         sudo docker run -p 80:3000 -t -i linode/server-node-js /bin/bash 
 
@@ -64,11 +68,11 @@ When an image downloads, there are no image containers running.
 
 5.  To exit the container while leaving it running, press `ctrl + p` then `ctrl + q`.
 
-6. Test the server at `<ip address>/test.htm`. A page with "Test File" should appear.
+6. Test the server at `123.45.67.89/test.htm`, replacing `123.45.67.89` with your Linode's IP address. A page with "Test File" should appear.
 
-The [Docker Hub image page](https://registry.hub.docker.com/u/linode/server-node-js/) has information explaining what the Docker image contains. 
+The [Docker Hub image page](https://registry.hub.docker.com/u/linode/server-node-js/) has information explaining what the Docker image contains.
 
-## For More Information
+##For More Information
  - [Linode Docker Hub Page](https://hub.docker.com/u/linode/)
  - [Docker Docs](http://docs.docker.com/)
  - [Docker Try it Tutorial](https://www.docker.com/tryit/)
