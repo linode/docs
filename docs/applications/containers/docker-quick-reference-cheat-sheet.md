@@ -20,15 +20,26 @@ Docker is a Linux based container platform. Docker images and containers can be 
 ###Installation
 
 {: .table .table-striped .table-bordered} 
-| Docker Command | Description | 
+| Docker Syntax | Description | 
 |:-------------|:---------| 
-| curl -sSL https://get.docker.com/ \| sh    | The docker maintained installation script for Debian or Ubuntu.   | 
-| sudo yum -y install docker | The install command for Centos 7 or Fedora 21 and up. | 
-| by the hypens| above.      |
+| curl -sSL https://get.docker.com/ \| sh    | The docker maintained installation script<br> for **Debian** or **Ubuntu**.   | 
+| sudo yum -y install docker | The install command for **Centos 7**<br> or **Fedora 21** and up. | 
+| sudo service docker start | For **Centos 7** and **Fedora 21** after install,<br> docker must be started.      |
 
 ###Image Creation
 
 {: .table .table-striped .table-bordered} 
-| Docker Command | Description | 
+| Docker Syntax | Description | 
 |:-------------|:---------| 
-| curl -sSL https://get.docker.com/     | The docker maintained|
+| FROM ubuntu:14.04 <br> MAINTAINER Sample User <user.email@email.com> <br> RUN apt-get update | Create an empty directory with a file named "Docker", <br> insert this text. From the new directory,<br> run the build command, listed below.|
+| sudo docker build -t sampleuser/ubuntu . | Builds a Docker image from a Docker file, as shown above. |
+| sudo docker images | Lists all images on the local machine. |
+
+###Docker Hub
+
+{: .table .table-striped .table-bordered} 
+| Docker Syntax | Description | 
+|:-------------|:---------| 
+| sudo docker search SearchItem | Search Docker Hub for images. Replace <br>"SearchItem" with a search-able term. |
+| sudo docker build -t sampleuser/ubuntu . | Builds a Docker image from a Docker file, as shown above. |
+| sudo docker images | Lists all images on the local machine. |
