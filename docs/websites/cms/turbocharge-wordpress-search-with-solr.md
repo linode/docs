@@ -16,7 +16,7 @@ published: 'Saturday, February 14, 2015'
 title: 'Turbocharge your WordPress blog search using Solr search engine'
 ---
 
-##Introduction
+#Introduction
 The standard search that is built into WordPress does not really provide a great search experience to your visitors.  For example:
 
 + It does not suggest useful search phrases while your visitor is typing a search phrase.
@@ -35,7 +35,7 @@ In this guide, you will learn how to install Java, install and configure Solr on
 
 Let's get started!
 
-## Prerequisites
+# Prerequisites
 + This article is written for Debian 7.x and Ubuntu 14.x. Some steps may not work on older OS versions.
 
 + WordPress is already installed and configured. If you are installing WordPress newly, follow the [Manage Web Content with WordPress guide](https://www.linode.com/docs/websites/cms/manage-web-content-with-wordpress).
@@ -90,6 +90,7 @@ To restart an apache server after installing curl:
 
         $ sudo service apache2 restart
 
+# Install and Configure Solr
 
 ## Download  Solr
 For downloading the latest Solr package, follow these steps:
@@ -442,7 +443,7 @@ Run the following commands on the server where Solr is being installed.
         $ sudo service solr start
 
 
-## Test Solr
+# Test Solr
 
 Run the following command on the server where Solr is being installed.
 
