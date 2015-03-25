@@ -6,7 +6,7 @@ description: 'Installing Postfix with Dovecot and MySQL on CentOS.'
 keywords: 'postfix centos 5,dovecot centos 5,linux mail server,email,centos5'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['email/postfix/dovecot-mysql-centos-5/']
-modified: Friday, February 27th, 2015
+modified: Thursday, March 27th, 2015
 modified_by:
   name: Elle Krout
 published: 'Friday, June 24th, 2011'
@@ -384,7 +384,7 @@ This completes alias configuration. Next, test Postfix to make sure it's operati
         250-8BITMIME
         250 DSN
 
-4.  Issue the command `quit` to terminate the Postfix connection. 
+4.  Issue the command `quit` to terminate the telnet connection. 
 
 Next, populate the MySQL database with domains and email users.
 
@@ -415,7 +415,7 @@ In the following example, the MySQL shell is used to add support for the domain 
 
 {: .note}
 >
->Given the possibility for hosting a large number of virtual domains on a single mail system, the username portion of an email address (i.e. before the `@` sign) is not sufficient to authenticate to the mail server. When email users authenticate to the server, they must supply their email clients with the *entire* email address created above as their username.
+>Given the possibility for virtual hosting a large number of domains on a single mail system, the username portion of an email address (i.e. before the `@` sign) is not sufficient for authentication. When email users authenticate to the server, they must supply the *entire* email address created above as their username.
 
 ###Check Your Logs
 

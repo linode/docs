@@ -5,10 +5,10 @@ author:
 description: 'Installing Postfix with Dovecot and MariaDB on CentOS.'
 keywords: 'postfix centos 7,dovecot centos 7,linux mail server,email,centos 7'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Friday, February 27th, 2015
+modified: Thursday, March 27th, 2015
 modified_by:
   name: Elle Krout
-published: 'Friday, February 27th, 2015'
+published: 'Thursday, March 27th, 2015'
 title: 'Email with Postfix, Dovecot and MariaDB on CentOS 7'
 external_resources:
  - '[ISP-style Email Server with Debian-Lenny and Postfix 2.5 guide](http://workaround.org/ispmail/lenny)'
@@ -380,7 +380,7 @@ This completes alias configuration. Next, test Postfix to make sure it's operati
         250-8BITMIME
         250 DSN
 
-4.  Issue the command `quit` to terminate the telnet connection.
+4.  Issue the command `quit` to terminate the Postfix connection.
 
 Next, populate the MariaDB database with domains and email users.
 
@@ -412,7 +412,7 @@ In the following example, the MariaDB shell is used to add support for the domai
 
 {: .note}
 >
->Given the possibility for virtual hosting a large number of domains on a single mail system, the username portion of an email address (i.e. before the `@` sign) is not sufficient for authentication. When email users authenticate to the server, they must supply the *entire* email address created above as their username.
+>Given the possibility for virtual hosting a large number of virtual domains on a single mail system, the username portion of an email address (i.e. before the `@` sign) is not sufficient to authenticate to the mail server. When email users authenticate to the server, they must supply their email clients with the *entire* email address created above as their username.
 
 ###Check Your Logs
 
