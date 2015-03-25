@@ -380,7 +380,7 @@ This completes alias configuration. Next, test Postfix to make sure it's operati
         250-8BITMIME
         250 DSN
 
-4.  Issue the command `quit` to terminate the Postfix connection.
+4.  Issue the command `quit` to terminate the telnet connection.
 
 Next, populate the MariaDB database with domains and email users.
 
@@ -412,7 +412,7 @@ In the following example, the MariaDB shell is used to add support for the domai
 
 {: .note}
 >
->Given the possibility for virtual hosting a large number of virtual domains on a single mail system, the username portion of an email address (i.e. before the `@` sign) is not sufficient to authenticate to the mail server. When email users authenticate to the server, they must supply their email clients with the *entire* email address created above as their username.
+>Given the possibility for virtual hosting a large number of domains on a single mail system, the username portion of an email address (i.e. before the `@` sign) is not sufficient for authentication. When email users authenticate to the server, they must supply the *entire* email address created above as their username.
 
 ###Check Your Logs
 
