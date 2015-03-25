@@ -74,7 +74,7 @@ Now you're ready to enable full disk encryption on your Linode running Debian 7 
 
 	{: .note }
 	>
-	> You may receive a FATAL notice about loading a kernel modeule used for hardware crypto acceleration. This message can be safely ignored.
+	> You may receive a FATAL notice about loading a kernel module used for hardware crypto acceleration. This message can be safely ignored.
 
 4.  Open this encrypted device for access by entering the following command. Enter your passphrase when prompted.
 
