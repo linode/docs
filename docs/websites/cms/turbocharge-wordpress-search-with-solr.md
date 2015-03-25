@@ -92,7 +92,7 @@ To restart an apache server after installing curl:
 
 # Install and Configure Solr
 
-## Download  Solr
+## Download Solr
 For downloading the latest Solr package, follow these steps:
 
 1. Open [Solr download site](http://www.apache.org/dyn/closer.cgi/lucene/solr/) in your browser.
