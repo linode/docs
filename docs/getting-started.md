@@ -19,7 +19,7 @@ Signing Up
 
 If you haven't already signed up for a Linode account, do that first. Follow these steps:
 
-1.  Visit the [Sign Up webpage](https://manager.linode.com/signup) and create a new account..
+1.  Visit the [Sign Up webpage](https://manager.linode.com/signup) and create a new account.
 2.  Once you've signed in, enter your billing and account information. Most accounts are activated instantly, but some accounts require manual review prior to activation. If your account is not immediately activated, please check your email for additional instructions.
 3.  Select a Linode plan and data center, as shown below.
 
@@ -48,7 +48,7 @@ Here's how to deploy a Linux distribution:
 2.  Enter a size for the disk in the **Deployment Disk Size** field. By default, all of the available space is allocated, but you can set a lower size if you plan on cloning a disk or creating different configuration profiles. You can always create, resize, and delete disks later.
 3.  Select a size for the swap disk from the **Swap Disk** menu. We strongly recommend using the default size.
 4.  Enter a root password for your Linode in the **Root Password** field. The password must be at least 6 characters long and contain characters from two of the following categories: lower case letters, upper case letters, numbers, and punctuation. Don't forget this credential! You'll need it to log in to your Linode via SSH.
-5.  Click **Rebuild**.
+5.  Click **Deploy**.
 
  {: .note }
 >
@@ -56,7 +56,7 @@ Here's how to deploy a Linux distribution:
 
 ### Monitoring the Provisioning Status
 
-When you click the **Rebuild** button, the Linode Manager will start provisioning your server in the data center you selected, a process that can take several minutes to complete. You can use the Linode Manager's Dashboard to monitor the progress in real time, as shown below.
+When you click the **Deploy** button, the Linode Manager will start provisioning your server in the data center you selected, a process that can take several minutes to complete. You can use the Linode Manager's Dashboard to monitor the progress in real time, as shown below.
 
 [![Select a data center.](/docs/assets/900-linode-manager-3-2-small.png)](/docs/assets/898-linode-manager-3.png)
 

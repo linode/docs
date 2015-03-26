@@ -3,14 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Installing Postfix with Dovecot and MySQL on CentOS.'
-keywords: 'postfix centos 5,dovecot centos 5,linux mail server,email,centos5'
+keywords: 'postfix centos 6,dovecot centos 6,linux mail server,email,centos 6'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['email/postfix/dovecot-mysql-centos-5/']
 modified: Thursday, March 26th, 2015
 modified_by:
   name: Elle Krout
-published: 'Friday, June 24th, 2011'
-title: 'Email with Postfix, Dovecot and MySQL on CentOS 5'
+published: 'Thursday, March 26th, 2015'
+title: 'Email with Postfix, Dovecot and MySQL on CentOS 6'
 external_resources:
  - '[ISP-style Email Server with Debian-Lenny and Postfix 2.5 guide](http://workaround.org/ispmail/lenny)'
  - '[Groupware Server With Group-Office, Postfix, Dovecot And SpamAssassin On Debian Lenny (5.0)](http://www.howtoforge.com/groupware-server-with-group-office-postfix-dovecot-spamassassin-on-debian-lenny)'
@@ -20,7 +19,7 @@ external_resources:
  - '[MySQL Documentation](http://dev.mysql.com/doc/)'
 ---
 
-The Postfix Mail Transfer Agent (**MTA**) is a high performance open source e-mail server system. This guide will help you get Postfix running on your CentOS 5 Linode, using Dovecot for IMAP/POP3 service, and MySQL to store information on virtual domains and users.
+The Postfix Mail Transfer Agent (**MTA**) is a high performance open source e-mail server system. This guide will help you get Postfix running on your CentOS 6 Linode, using Dovecot for IMAP/POP3 service, and MySQL to store information on virtual domains and users.
 
 Prior to using this guide, be sure you have followed the [getting started guide](/docs/getting-started/) and set your hostname.
 
@@ -52,7 +51,7 @@ Prior to using this guide, be sure you have followed the [getting started guide]
 3.  Install the required packages:
 
         yum --enablerepo=centosplus install postfix
-        yum install dovecot mysql-server
+        yum install dovecot mysql-server dovecot-mysql
 
     This installs the Postfix mail server, the MySQL database server, the Dovecot IMAP and POP daemons, and several supporting packages that provide services related to authentication.
 
@@ -205,8 +204,8 @@ Next, perform additional Postfix configuration to set up communication with the 
         postconf -e 'smtpd_sasl_authenticated_header = yes'
         postconf -e 'smtpd_recipient_restrictions = permit_mynetworks, permit_sasl_authenticated, reject_unauth_destination'
         postconf -e 'smtpd_use_tls = yes'
-        postconf -e 'smtpd_tls_cert_file = /etc/pki/dovecot/certs/dovecot.pem'
-        postconf -e 'smtpd_tls_key_file = /etc/pki/dovecot/private/dovecot.pem'
+        postconf -e 'smtpd_tls_cert_file = </etc/pki/dovecot/certs/dovecot.pem'
+        postconf -e 'smtpd_tls_key_file = </etc/pki/dovecot/private/dovecot.pem'
         postconf -e 'virtual_create_maildirsize = yes'
         postconf -e 'virtual_maildir_extended = yes'
         postconf -e 'proxy_read_maps = $local_recipient_maps $mydestination $virtual_alias_maps $virtual_alias_domains $virtual_mailbox_maps $virtual_mailbox_domains $relay_recipient_maps $relay_domains $canonical_maps $sender_canonical_maps $recipient_canonical_maps $relocated_maps $transport_maps $mynetworks $virtual_mailbox_limit_maps'
@@ -222,10 +221,8 @@ Next, perform additional Postfix configuration to set up communication with the 
             flags=DRhu user=vmail:vmail argv=/usr/libexec/dovecot/deliver -f ${sender} -d ${recipient}
         ~~~
 
-9.  Shut down Sendmail, then configure Postfix to start on boot and start the service for the first time:
+9.  Configure Postfix to start on boot and start the service for the first time:
 
-        service sendmail stop
-        chkconfig sendmail off
         chkconfig postfix on
         service postfix start
 
@@ -233,28 +230,48 @@ This completes the configuration for Postfix.
 
 ##Configure Dovecot
 
-1.  Move `/etc/dovecot.conf` to a backup file:
+1.  Move `/etc/dovecot/dovecot.conf` to a backup file:
 
-        mv /etc/dovecot.conf /etc/dovecot.conf-backup
+        mv /etc/dovecot/dovecot.conf /etc/dovecot/dovecot.conf-backup
 
-2.  Copy the following into the now-empty `dovecot.conf` file, substituting your system's domain name for `example.com` in line 17:
+2.  Copy the following into the now-empty `dovecot.conf` file, substituting your system's domain name for `example.com` in line 37:
 
     {: .file }
-    /etc/dovecot.conf
+    /etc/dovecot/dovecot.conf
     :   ~~~
-        protocols = imap imaps pop3 pop3s
+        protocols = imap pop3
         log_timestamp = "%Y-%m-%d %H:%M:%S "
         mail_location = maildir:/home/vmail/%d/%n/Maildir
 
-        ssl_cert_file = /etc/pki/dovecot/certs/dovecot.pem
-        ssl_key_file = /etc/pki/dovecot/private/dovecot.pem
+        ssl_cert = </etc/pki/dovecot/certs/dovecot.pem
+        ssl_key = </etc/pki/dovecot/private/dovecot.pem
 
-        namespace private {
+        namespace {
+            type = private
             separator = .
             prefix = INBOX.
             inbox = yes
         }
-    
+
+        service auth {
+            unix_listener auth-master {
+                mode = 0600
+                user = vmail
+            }
+
+            unix_listener /var/spool/postfix/private/auth {
+                mode = 0666
+                user = postfix
+                group = postfix
+            }
+
+        user = root
+        }
+
+        service auth-worker {
+            user = root
+        }
+
         protocol lda {
             log_path = /home/vmail/dovecot-deliver.log
             auth_socket_path = /var/run/dovecot/auth-master
@@ -262,43 +279,24 @@ This completes the configuration for Postfix.
         }
 
         protocol pop3 {
-        pop3_uidl_format = %08Xu%08Xv
+            pop3_uidl_format = %08Xu%08Xv
         }
 
-        auth default {
-            user = root
+        passdb {
+            driver = sql
+            args = /etc/dovecot/dovecot-sql.conf.ext
+        }
 
-            passdb sql {
-                args = /etc/dovecot-sql.conf
-            }
-
-            userdb static {
-                args = uid=5000 gid=5000 home=/home/vmail/%d/%n allow_all_users=yes
-            }
-
-            socket listen {
-                master {
-                    path = /var/run/dovecot/auth-master
-                    mode = 0600
-                    user = vmail
-                }
-
-                client {
-                    path = /var/spool/postfix/private/auth
-                    mode = 0660
-                    user = postfix
-                    group = postfix
-                }
-    
-            }
-
+        userdb {
+            driver = static
+            args = uid=5000 gid=5000 home=/home/vmail/%d/%n allow_all_users=yes
         }
         ~~~
 
-3.  MySQL will be used to store password information, so `/etc/dovecot-sql.conf` must be created. Insert the following contents into the file, making sure to replace `mail_admin_password` with your mail password:
+3.  MySQL will be used to store password information, so `/etc/dovecot/dovecot-sql.conf.ext` must be created. Insert the following contents into the file, making sure to replace `mail_admin_password` with your mail password:
 
     {: .file }
-    /etc/dovecot-sql.conf
+    /etc/dovecot/dovecot-sql.conf.ext
     :   ~~~
         driver = mysql
         connect = host=127.0.0.1 dbname=mail user=mail_admin password=mail_admin_password
@@ -308,27 +306,27 @@ This completes the configuration for Postfix.
 
 4.  Restrict access to the file by changing the permissions to allow users in the `dovecot` group to access it, while denying access to others:
 
-        chgrp dovecot /etc/dovecot-sql.conf
-        chmod o= /etc/dovecot-sql.conf
+        chgrp dovecot /etc/dovecot/dovecot-sql.conf.ext
+        chmod o= /etc/dovecot/dovecot-sql.conf.ext
 
 5.  Configure Dovecot to start on boot, and start it for the first time:
 
         chkconfig dovecot on
         service dovecot start
 
-6.  Now check `/var/log/maillog` to make sure Dovecot started without errors. Your log should have lines similar to the following:
+6.  Check `/var/log/maillog` to make sure Dovecot started without errors. Your log should have lines similar to the following:
 
     {: .file-excerpt }
     /var/log/maillog
     :   ~~~
-        Mar 18 10:00:23 li833-84 dovecot: Dovecot v1.0.7 starting up
-        Mar 18 10:00:23 li833-84 dovecot: Generating Diffie-Hellman parameters for the first time. This may take a while..
-        Mar 18 10:00:23 li833-84 dovecot: auth-worker(default): mysql: Connected to 127.0.0.1 (mail)
-        Mar 18 10:00:25 li833-84 dovecot: ssl-build-param: SSL parameters regeneration completed
+        Mar 18 15:21:59 sothoryos postfix/postfix-script[3069]: starting the Postfix mail system
+        Mar 18 15:22:00 sothoryos postfix/master[3070]: daemon started -- version 2.6.6, configuration /etc/postfix
+        Mar 18 15:32:03 sothoryos dovecot: master: Dovecot v2.0.9 starting up (core dumps disabled)
         ~~~
 
 7.  Test your POP3 server to make sure it's running properly:
 
+        yum install telnet
         telnet localhost pop3
 
 8.  The terminal should output results similar to the following:
@@ -338,9 +336,7 @@ This completes the configuration for Postfix.
         Escape character is '^]'.
         +OK Dovecot ready.
 
-9.  Enter the command `quit` to return to your shell. This completes the Dovecot configuration.
-
-Next, you'll make sure aliases are configured properly.
+9.  Enter the command `quit` to return to your shell. This completes the Dovecot configuration. Next, you'll make sure aliases are configured properly.
 
 ##Configure Mail Aliases
 
@@ -384,7 +380,7 @@ This completes alias configuration. Next, test Postfix to make sure it's operati
         250-8BITMIME
         250 DSN
 
-4.  Issue the command `quit` to terminate the telnet connection. 
+4.  Issue the command `quit` to terminate the telnet connection.
 
 Next, populate the MySQL database with domains and email users.
 
@@ -407,8 +403,9 @@ In the following example, the MySQL shell is used to add support for the domain 
         INSERT INTO users (email, password) VALUES ('sales@example.com', ENCRYPT('password'));
         quit
 
-3.  Prior to accessing any newly-created email accounts, a test message needs to be sent to create that user's mailbox:
+3.  Prior to accessing any newly-created email account, a test message needs to be sent to create that user's mailbox:
 
+        yum install mailx
         mailx sales@example.com
 
     Press `Ctrl+D` to complete the message. You can safely leave the field for `Cc:` blank. This completes the configuration for a new domain and email user.
@@ -426,12 +423,10 @@ After the test mail is sent, check the mail logs to make sure the mail was deliv
     {: .file-excerpt }
     /var/log/maillog
     :   ~~~
-        Mar 18 10:19:08 li833-84 postfix/cleanup[4568]: 73A35BE52: message-id=<201503181419.t2IEJ7jn004561@server.example.com>
-        Mar 18 10:19:08 li833-84 postfix/qmgr[4510]: 73A35BE52: from=<root@server.example.com>, size=630, nrcpt=1 (queue active)
-        Mar 18 10:19:08 li833-84 sendmail[4561]: t2IEJ7jn004561: to=sales@example.com, ctladdr=root (0/0), delay=00:00:01, xdelay=00:00:00, mailer=relay$
-        Mar 18 10:19:08 li833-84 postfix/smtpd[4562]: disconnect from localhost.localdomain[127.0.0.1]
-        Mar 18 10:19:08 li833-84 postfix/pipe[4570]: 73A35BE52: to=<sales@example.com>, relay=dovecot, delay=0.07, delays=0.05/0.01/0/0.01, dsn=2.0.0, s$
-        Mar 18 10:19:08 li833-84 postfix/qmgr[4510]: 73A35BE52: removed
+        Mar 18 15:39:07 server postfix/cleanup[3252]: 444E34055: message-id=<20150318153907.444E34055@server.example.com>
+        Mar 18 15:39:07 server postfix/qmgr[3218]: 444E34055: from=<root@server.example.com>, size=489, nrcpt=1 (queue active)
+        Mar 18 15:39:07 server postfix/pipe[3258]: 444E34055: to=<sales@example.com>, relay=dovecot, delay=0.09, delays=0.04/0.01/0/0.05, dsn=2.0.0, sta$
+        Mar 18 15:39:07 server postfix/qmgr[3218]: 444E34055: removed
         ~~~
 
 2.  Check the Dovecot delivery log located in `/home/vmail/dovecot-deliver.log`. The contents should look similar to the following:
@@ -439,10 +434,10 @@ After the test mail is sent, check the mail logs to make sure the mail was deliv
     {: .file-excerpt }
     /home/vmail/dovecot-deliver.log
     :   ~~~
-        deliver(<sales@example.com>): 2011-01-21 20:03:19 Info: msgid=<<20110121200319.E1D148908@plato.example.com>>: saved mail to INBOX
+        deliver(<sales@example.com>): 2011-01-21 20:03:19 Info: msgid=\<<20110121200319.E1D148908@plato.example.com>>: saved mail to INBOX
         ~~~
 
-Now test to see what the users of your email server would see with their email clients.
+Now you can test to see what the users of your email server would see with their email clients.
 
 ###Test the Mailbox
 
@@ -466,7 +461,7 @@ Now test to see what the users of your email server would see with their email c
 
         mutt -f .
 
-    You may be prompted to create the root mailbox. This is not required. 
+    You may be prompted to create the root mailbox. This is not required.
 
 4.  If there is an email in the inbox, Postfix, Dovecot, and MySQL have been successfully configured! To quit mutt press `q`.
 
