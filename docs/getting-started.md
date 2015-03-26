@@ -19,7 +19,7 @@ Signing Up
 
 If you haven't already signed up for a Linode account, do that first. Follow these steps:
 
-1.  Visit the [Sign Up webpage](https://manager.linode.com/signup) and create a new account..
+1.  Visit the [Sign Up webpage](https://manager.linode.com/signup) and create a new account.
 2.  Once you've signed in, enter your billing and account information. Most accounts are activated instantly, but some accounts require manual review prior to activation. If your account is not immediately activated, please check your email for additional instructions.
 3.  Select a Linode plan and data center, as shown below.
 
