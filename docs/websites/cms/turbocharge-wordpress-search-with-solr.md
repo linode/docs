@@ -5,14 +5,12 @@ author:
 description: 'Turbocharge your WordPress blog search using Solr search engine.'
 keywords: 'wordpress,search,solr,ubuntu,debian'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['wp-solr/']
 contributor:
     name: Karthik Shiraly
-    link: http://www.pathbreak.com/
-modified: Saturday, February 14, 2015
+modified: Thursday, March 26, 2015
 modified_by:
-  name: Karthik Shiraly
-published: 'Saturday, February 14, 2015'
+  name: James Stewart
+published: 'Thursday, March 26, 2015'
 title: 'Turbocharge your WordPress blog search using Solr search engine'
 ---
 
