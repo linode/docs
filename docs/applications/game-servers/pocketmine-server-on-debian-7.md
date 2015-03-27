@@ -22,15 +22,17 @@ PocketMine is a third party server for the MineCraft - Pocket Edition game for [
 
 ##Prerequisites
 
-1.  Ensure that your Linode is up to date:
+1.  Your Linode should already be configured per our [Getting Started](/docs/getting-started) guide, and secured per our [Securing Your Server]() guide.
+
+2.  Ensure that your Linode is up to date:
 
         apt-get update; apt-get upgrade
 
-2.  Install dependancies:
+3.  Install dependancies:
 
         apt-get install perl gcc g++ make automake libtool autoconf m4
 
-2.  Create a user for the PocketMine server:
+4.  Create a user for the PocketMine server:
 
         adduser pocketmine
 
@@ -110,5 +112,46 @@ PocketMine is a third party server for the MineCraft - Pocket Edition game for [
         23:16:36 [INFO] Default game type: SURVIVAL
         23:16:36 [INFO] Done (275.348s)! For help, type "help" or "?"
 
+5.  You can detach from the PocketMine screen session with the command `ctrl+a` then `d`. To reattach, run:
+
+        screen -r
+
 ## Connecting to The Server
 
+1.  Open Minecraft - Pocket Edition on your phone or tablet. Tap on **Play**:
+
+    [![Minecraft Pocket Edition.](/docs/assets/pocketmine-game-home_small.png)](/docs/assets/pocketmine-game-home.png)
+
+2.  From the next screen, tap **Edit**, then **External**.
+
+
+3.  Enter a name under `Server Name`, and your Linode's domain or IP address under `Address`. When you're done, tap **Add Server**:
+
+    [![Adding a remote server to Minecraft Pocket Edition.](/docs/assets/pocketmine-add-server_small.png)](/docs/assets/pocketmine-add-server.png)
+
+4.  You can now connect to your server, and begin playing!
+
+    [![Gameplay on the PocketMine server.](/docs/assets/pocketmine-gameplay_small.png)](/docs/assets/pocketmine-gameplay.png)
+
+## Installing Plugins
+
+You can downloaded plugins for PocketMine from their [site](http://forums.pocketmine.net/plugins/). As an example, we'll download and install the [RandomItem](http://forums.pocketmine.net/plugins/randomitem.203/) plugin.
+
+1.  From the plugin page, copy the **Download Plugin** link address:
+
+    [![A plugin download page.](/docs/assets/pocketmine-plugin-page_small.png)](/docs/assets/pocketmine-plugin-page.png)
+
+2.  In your Linode terminal, while detached from your screen session, use `curl` to download the plugin into the `plugins` directory:
+
+        cd /home/pocketmine/plugins
+        curl -OJL http://forums.pocketmine.net/plugins/randomitem.203/download?version=1461
+
+3.  Reattach to the screen session, and reload to activate the plugin:
+
+        screen -r
+        reload
+
+4.  Confirm that your plugin is loaded with the command `plugins`:
+
+        plugins
+        18:36:45 [INFO] Plugins (1): RandomItem v4.2
