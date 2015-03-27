@@ -38,10 +38,10 @@ title: Docker Quick Reference
 {: .table .table-striped .table-bordered} 
 | Docker Syntax | Description | 
 |:-------------|:---------| 
-| **sudo docker run -t -i** user/image | Runs an image, creating a container.<br> Changing the command prompt<br> to within the container. |
+| **sudo docker run -t -i** user/image | Runs an image, creating a container and<br> changing the command prompt<br> to within the container. |
 | **sudo docker run -p 80:3000 -t -i** user/image | Similar to the command above<br> but with port forwarding. |
-| **`ctrl+p` then `ctrl+q`** | From the container's command prompt,<br> detach and resume to the<br> host's command prompt. |
-| **sudo docker attach** 1aa| Changes the command prompt<br> from the host's to a running container's.<br> Replace “1aa” with a container ID. |
+| **`ctrl+p` then `ctrl+q`** | From the container's command prompt,<br> detach and return to the host's prompt. |
+| **sudo docker attach** 1aa| Changes the command prompt<br> from the host to a running container.<br> Replace “1aa” with a container ID. |
 | **sudo docker ps -a** | List all container instances, with their ID,<br> and status. |
 | **sudo docker images** | Lists all images on the local machine. |
 | **sudo docker rm -f** 1aa | Delete a container.<br> Replace "1aa" with a container ID. |
