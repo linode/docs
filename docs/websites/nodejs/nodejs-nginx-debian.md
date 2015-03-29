@@ -128,6 +128,8 @@ NGINX is now configured. However, the `example.com` server block points to direc
 ##Install Node.js and Write a Web Server
 NGINX is now listening on port 80 and serving content. It's also configured to pass `/test.js` requests to port 3000. The next steps are to install Node.js, then write a server with Node.js. The new server listens on port 3000. 
 
+0. Ensure you have the pre-requisite compilation packages installed. See documentation for NVM (https://github.com/creationix/nvm) for more information.
+
 1.  Install the Node Version Manager:
 
         curl https://raw.githubusercontent.com/creationix/nvm/v0.20.0/install.sh | bash
