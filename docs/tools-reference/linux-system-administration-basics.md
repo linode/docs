@@ -51,8 +51,9 @@ In Arch Linux, set the timezone in the `/etc/rc.conf` file by configuring the `T
 
 {: .file-excerpt }
 /etc/rc.conf
-
-> TIMEZONE="America/New\_York"
+:   ~~~
+    TIMEZONE="America/New\_York"
+    ~~~
 
 Note that the string specified in `TIMEZONE` refers to the "zoneinfo" file located in or below the `/usr/share/zoneinfo/` directory.
 
@@ -64,15 +65,17 @@ Some applications require that the machine properly identify itself in the `/etc
 
 {: .file-excerpt }
 /etc/hosts
-
-> 127.0.0.1 localhost.localdomain localhost 12.34.56.78 squire.example.com squire
+:   ~~~
+    127.0.0.1 localhost.localdomain localhost 12.34.56.78 squire.example.com squire
+    ~~~
 
 You can specify a number of hostnames on each line separated by spaces. Every line must begin with one and only one IP address. In this case, replace `12.34.56.78` with your machine's IP address. Let us consider a few additional `/etc/hosts` entries:
 
 {: .file-excerpt }
 /etc/hosts
-
-> 74.125.67.100 test.com 192.168.1.1 stick.example.com
+:   ~~~
+    74.125.67.100 test.com 192.168.1.1 stick.example.com
+    ~~~
 
 In this example, all requests for the test.com" hostname or domain will resolve to the IP address `74.125.67.100`, which bypasses the DNS records for `test.com` and returns an alternate website.
 
@@ -296,7 +299,7 @@ If you're new to using Linux and manipulating files on the terminal interface we
 
 To **copy** files, issue the following command:
 
-> cp /home/squire/todo.txt /home/squire/archive/todo.01.txt
+    cp /home/squire/todo.txt /home/squire/archive/todo.01.txt
 
 This copies `todo.txt` to an archive folder, and adds a number to the file name. If you want to recursively copy all of the files and subdirectories in a directory to another directory, use the `-R` option. This command looks like:
 
@@ -612,8 +615,9 @@ In the default virtual host configurations suggested in our [Apache installation
 
 {: .file-excerpt }
 Apache Virtual Host Configuration
-
-> ErrorLog /srv/www/example.com/logs/error.log CustomLog /srv/www/example.com/logs/access.log combined
+:   ~~~
+    ErrorLog /srv/www/example.com/logs/error.log CustomLog /srv/www/example.com/logs/access.log combined
+    ~~~
 
 Where `bucknell.net` represents the name of your virtual host, and the location of relevant files. These configuration directives make Apache create two log files that contain logging information specific to that virtual host. This allows you to easily troubleshoot errors on specific virtual hosts. To track or tail the error log, issue the following command:
 
@@ -645,9 +649,7 @@ When [reading domain names](/docs/dns-guides/introduction-to-dns#anatomy_of_a_do
 
 If you want to [create and host a sub-domain](/docs/dns-guides/introduction-to-dns#configuring_subdomains), consider the following process:
 
-First we need to create an [A Record](/docs/dns-guides/introduction-to-dns#a_aaaa_records)
-
-in the DNS zone for the domain. This is easily accomplished when using the [Linode DNS Manager](/docs/dns-guides/configuring-dns-with-the-linode-manager). As always, you may host the DNS for your domain with any provider you choose.
+First we need to create an [A Record](/docs/dns-guides/introduction-to-dns#a_aaaa_records) in the DNS zone for the domain. This is easily accomplished when using the [Linode DNS Manager](/docs/dns-guides/configuring-dns-with-the-linode-manager). As always, you may host the DNS for your domain with any provider you choose.
 
 In order for your server to respond to requests for this domain, you must set up a server to respond to these requests. For web servers like [Apache](/docs/web-servers/apache/) this requires [configuring a new virtual host](/docs/web-servers/apache/installation/debian-5-lenny#configure_apache_for_named_based_virtual_hosting). For XMPP Servers you must [configure an additional host](/docs/applications/messaging/instant-messaging-services-with-ejabberd-on-ubuntu-12-04-precise-pangolin#hostnames_and_virtual_hosting) to receive the requests for this host. For more information, consult the documentation for the specific server you wish to deploy.
 
@@ -698,8 +700,9 @@ Use the command `type msmtp`, to find the location of `msmtp` on your system. Ty
 
 {: .file-excerpt }
 .msmtprc example
-
-> account default host smtp.example.com from <squire@example.com> auth on user squire password s3cr37 tls on tls\_certcheck off port 587
+:   ~~~
+    account default host smtp.example.com from <squire@example.com> auth on user squire password s3cr37 tls on tls\_certcheck off port 587
+    ~~~
 
 The `.msmptrc` file needs to be set to mode 600, and owned by the user account that will be sending mail. If the configuration file is located at `/srv/smtp/msmtprc`, you can call mstmp with the following command:
 
