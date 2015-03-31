@@ -117,16 +117,16 @@ For downloading the latest Solr package, follow these steps:
 6. On your server, download that file into your home directory using **wget** command and paste the link address. For example:
 
 
-        wget http://apache.bytenet.in/lucene/solr/4.10.3/solr-4.10.3.tgz
+        wget http://apache.bytenet.in/lucene/solr/4.10.4/solr-4.10.4.tgz
 
 
 ## Install Solr
 
 We will install solr under the /opt directory, since that's where add-on softwares are normally installed.
 
-    sudo tar -C /opt -xzvf solr-4.10.3.tgz
+    sudo tar -C /opt -xzvf solr-4.10.4.tgz
 
-This will install all files from the archive into /opt/solr-4.10.3 directory. 
+This will install all files from the archive into /opt/solr-4.10.4 directory. 
 
 
 ## Install WPSolr configuration files
@@ -142,11 +142,7 @@ Visit the [WPSolr website](http://wpsolr.com/releases/) and get the link address
 
 3. Next, in the ssh session to the Linode server where you're installing Solr, use wget command to download the  file from copied address and save it as **wpsolr_config.zip**.
 
-        wget -O wpsolr_config.zip &lt;copied-url&gt;
-
-    For example:
-
-        wget -O wpsolr_config.zip  http://wpsolr.com/?wpdmdl=2064
+        wget -O wpsolr_config.zip http://wpsolr.com/?wpdmdl=2064
 
 
 4. Extract wpsolr_config.zip:
@@ -154,17 +150,17 @@ Visit the [WPSolr website](http://wpsolr.com/releases/) and get the link address
         unzip wpsolr_config.zip
 
 
-5. Copy two of the extracted files – **schema.xml** and **solrconfig.xml** - into **/opt/solr-4.10.3/example/solr/collection1/conf**. Backup the original files before copying.
+5. Copy two of the extracted files – **schema.xml** and **solrconfig.xml** - into **/opt/solr-4.10.4/example/solr/collection1/conf**. Backup the original files before copying.
 
         # Backup the original config files
-        sudo cp /opt/solr-4.10.3/example/solr/collection1/conf/schema.xml /opt/solr-4.10.3/example/solr/collection1/conf/schema.xml.original
+        sudo cp /opt/solr-4.10.4/example/solr/collection1/conf/schema.xml /opt/solr-4.10.4/example/solr/collection1/conf/schema.xml.original
 
-        sudo cp /opt/solr-4.10.3/example/solr/collection1/conf/solrconfig.xml  /opt/solr-4.10.3/example/solr/collection1/conf/solrconfig.xml.original
+        sudo cp /opt/solr-4.10.4/example/solr/collection1/conf/solrconfig.xml  /opt/solr-4.10.4/example/solr/collection1/conf/solrconfig.xml.original
 
         # And replace them with WPSolr's files.
-        sudo cp schema.xml  /opt/solr-4.10.3/example/solr/collection1/conf/
+        sudo cp schema.xml  /opt/solr-4.10.4/example/solr/collection1/conf/
 
-        sudo cp solrconfig.xml  /opt/solr-4.10.3/example/solr/collection1/conf/
+        sudo cp solrconfig.xml  /opt/solr-4.10.4/example/solr/collection1/conf/
 
 
 
@@ -174,14 +170,14 @@ By default, Solr listens for search requests on all IP addresses at port 8983.
 
 For security reasons, you may wish to change the IP address and/or port it listens on.  It's recommended that only your WordPress be able to query Solr, and prevent external parties from doing so.
 
-The listening IP address and port are configured by changing **/opt/solr-4.10.3/example/etc/jetty.xml**. 
+The listening IP address and port are configured by changing **/opt/solr-4.10.4/example/etc/jetty.xml**. 
 
 1. First, take a backup of it. 
     Then open it with a text editor like nano or vi. 
 
-        sudo cp /opt/solr-4.10.3/example/etc/jetty.xml /opt/solr-4.10.3/example/etc/jetty.xml.backup
+        sudo cp /opt/solr-4.10.4/example/etc/jetty.xml /opt/solr-4.10.4/example/etc/jetty.xml.backup
 
-        sudo nano /opt/solr-4.10.3/example/etc/jetty.xml
+        sudo nano /opt/solr-4.10.4/example/etc/jetty.xml
 
 2. Locate the section where listening host and port are set (highlighted below).
 
@@ -226,12 +222,12 @@ Run the following commands on the server where Solr is being installed.
 
 2. Create a user named **solr**:
 
-        sudo adduser --system --ingroup solr --home /opt/solr-4.10.3 --shell /bin/sh --disabled-password --disabled-login solr
+        sudo adduser --system --ingroup solr --home /opt/solr-4.10.4 --shell /bin/sh --disabled-password --disabled-login solr
 
 
 3. Transfer ownership of installed Solr directory to this new user named **solr**:
 
-        sudo chown -R solr:solr /opt/solr-4.10.3
+        sudo chown -R solr:solr /opt/solr-4.10.4
 
 
 ## Configure Solr as a startup service
@@ -245,7 +241,7 @@ Run the following commands on the server where Solr is being installed.
 2. Copy this text into the editor, save it and close it:
 
     {: .note}
-    > You may have to change the line "JETTY_HOME=/opt/solr-4.10.3/example" to match the Solr version you have downloaded and installed.
+    > You may have to change the line "JETTY_HOME=/opt/solr-4.10.4/example" to match the Solr version you have downloaded and installed.
 
     {:.file }
     /etc/init.d/solr
@@ -270,7 +266,7 @@ Run the following commands on the server where Solr is being installed.
       PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
       NAME=solr
       DESC="Solr search engine"
-      JETTY_HOME=/opt/solr-4.10.3/example
+      JETTY_HOME=/opt/solr-4.10.4/example
       START_JAR="$JETTY_HOME/start.jar"
 
       if [ `id -u` -ne 0 ]; then
@@ -681,11 +677,11 @@ Whenever you publish a new post, go to **Administration dashboard > WPSOLR > Sol
 
 ## Location of search data
 
-Search engine data is stored in **/opt/solr-4.10.3/example/solr/collection1/data** directory. 
+Search engine data is stored in **/opt/solr-4.10.4/example/solr/collection1/data** directory. 
 
 ## Backup or restore search data
 
-If you have a data backup procedure for your server, you can optionally backup search data too by including **/opt/solr-4.10.3/example/solr/collection1/data** directory in the backup. 
+If you have a data backup procedure for your server, you can optionally backup search data too by including **/opt/solr-4.10.4/example/solr/collection1/data** directory in the backup. 
 
 Generally, backup of search data is not critical, since it can always be recreated from the WordPress database. However, for very large blogs with thousands of posts and attachments, backing up and restoring search data will be much faster than recreating it newly.
 
