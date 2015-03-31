@@ -153,7 +153,7 @@ These are the fingerprints for the Lish gateway in our London data center (lish-
 Understanding Lish Commands
 ---------------------------
 
-The Lish shell provides access to many functions which are otherwise only accessible via the Linode Manager web-based administration tool. Enter the `help` command to see a full list of available commands. The output provides an introduction to Lish functionality:
+The Lish shell provides access to many functions which are otherwise only accessible via the Linode Manager web-based administration tool. All commands must be prefixed with the label of the Linode they are to operate on, for example, enter `linode241706 jobs` to list recent jobs for 'linode241706'. Enter the `help` command to see a full list of available commands. The output provides an introduction to Lish functionality:
 
     kill            - kill stuck screen sessions
     exit            - exit from lish
