@@ -456,37 +456,10 @@ If Solr is installed on a different server from WordPress, repeat the test from 
 
 ## Install WPSolr plugin
 
-1. Go to the plugin's page at [https://wordpress.org/plugins/wpsolr-search-engine/](https://wordpress.org/plugins/wpsolr-search-engine/) and copy its link address as shown below:
+1. Install the [WPSolr](https://wordpress.org/plugins/wpsolr-search-engine/) WordPress plugin, either through your WordPress admin console, or by donwloading the files into your `plugins/` directory.
 
-    [![WPSolr plugin link](/docs/assets/wpsolr_wpsolr_plugin_link_resized.png)](/docs/assets/wpsolr_wpsolr_plugin_link.png)
 
-2. Next, in the ssh session to the Linode server where you're installing Solr, use **wget** command to download the plugin file from copied address.
-
-        wget <copied-url>
-
-    For example:
-
-        wget https://downloads.wordpress.org/plugin/wpsolr-search-engine.1.8.zip
-
-3. Extract the zip file:
-
-        unzip wpsolr-search-engine.1.8.zip
-
-4. Move the extracted plugin directory to WordPress plugins directory:
-
-    + On Debian:
-
-            mv wpsolr-search-engine /var/www/wordpress/wp-content/plugins/
-
-    + On Ubuntu:
- 
-            mv wpsolr-search-engine /var/www/html/wordpress/wp-content/plugins/
-
-5. Next, log into WordPress Administration page and go to **Installed Plugins** page:
-
-    [![Installed Plugins](/docs/assets/wpsolr_admin_goto_plugins_resized.png)](/docs/assets/wpsolr_admin_goto_plugins.png)
-
-6. In the **Plugins** page, activate the plugin named **Enterprise Search in seconds**:
+2. In the **Plugins** page, activate the plugin named **Enterprise Search in seconds**:
 
     [![Activate WPSolr plugin](/docs/assets/wpsolr_activate_wpsolr_plugin_resized.png)](/docs/assets/wpsolr_activate_wpsolr_plugin.png)
 
@@ -535,7 +508,7 @@ If Solr is installed on a different server from WordPress, repeat the test from 
 
 5. Press the **Check Solr Status, then Save** button. If everything is set correctly, it'll show a green tick mark.
 
-6. The plugin then takes you to the **Indexing Options** page:
+6. Next, click on the  **Solr Options** tab:
 
     [![WPSolr Indexing Options](/docs/assets/wpsolr_wpsolr_indexing_options_resized.png)](/docs/assets/wpsolr_wpsolr_indexing_options.png)
 
@@ -621,7 +594,7 @@ If Solr is installed on a different server from WordPress, repeat the test from 
 
     [![WPSolr Faceting](/docs/assets/wpsolr_search_results_facets_resized.png)](/docs/assets/wpsolr_search_results_facets.png)
 
-11. Next, go to **Solr Operations** tab and click the **Load documents incrementally in the Solr index** button. 
+11. Next, go to **Solr Operations** tab and click the **Synchronize Wordpress with my Solr index** button. 
 
     Whenever you publish a new post or page or attachment, come to this page and click this button to update the search data.
 
