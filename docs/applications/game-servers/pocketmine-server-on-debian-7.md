@@ -26,16 +26,18 @@ PocketMine is a third party server for the MineCraft - Pocket Edition game for [
 
 2.  Ensure that your Linode is up to date:
 
-        apt-get update; apt-get upgrade
+        sudo apt-get update; apt-get upgrade
 
 3.  Install dependancies:
 
-        apt-get install perl gcc g++ make automake libtool autoconf m4
+        sudo apt-get install perl gcc g++ make automake libtool autoconf m4
 
 4.  Create a user for the PocketMine server:
 
-        adduser pocketmine
+        sudo adduser pocketmine
 
+    {: .note }
+    >If you've followed the steps in our [Securing Your Server](/docs/security/securing-your-server) guide, you will need to add your public key to `/home/pocketmine/.ssh/authorized_keys` in order to log in as this user later in the guide. You will also need to add an iptables exception for port `19132`
 
 ##Installation
 
@@ -54,6 +56,11 @@ PocketMine is a third party server for the MineCraft - Pocket Edition game for [
 1.  Run the `start.sh` script within a GNU-screen instance:
 
         screen ./start.sh
+
+    {: .note }
+    > If you've used `su` to switch to the pocketmine user, you will get an error message of `Cannot open your terminal '/dev/pts/0' - please check.` when attempting to start screen. You can resolve this by first running the command:
+    >
+    >     script /dev/null
 
 2.  The set-up wizard will begin by asking you to select a language. Enter the two-character value for your language of choice, or just press **return** for English.
 
