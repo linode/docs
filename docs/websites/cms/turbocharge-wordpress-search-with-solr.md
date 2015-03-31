@@ -445,12 +445,7 @@ If it shows output like this, Solr is installed and configured correctly:
 
     <?xml version="1.0" encoding="UTF-8"?>
     <response>
-        <lst name="responseHeader">
-            <int name="status">0</int>
-            <int name="QTime">8</int>
-            <lst name="params"/>
-        </lst>
-        <result name="response" numFound="0" start="0"></result>
+    <lst name="responseHeader"><int name="status">0</int><int name="QTime">1</int><lst name="params"/></lst><result name="response" numFound="0" start="0"></result>
     </response>
 
 
