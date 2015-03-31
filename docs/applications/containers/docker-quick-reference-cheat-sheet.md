@@ -27,7 +27,7 @@ title: Docker Quick Reference
 {: .table .table-striped .table-bordered} 
 | Docker Syntax | Description | 
 |:-------------|:---------| 
-| **sudo docker search** searchitem | Search Docker Hub for images. Replace <br>"searchitem" with a search-able term. |
+| **sudo docker search** searchitem | Search Docker Hub for images. Replace <br>`searchitem` with a search-able term. |
 | **sudo docker pull** user/image | Downloads an image from Docker Hub. |
 | **sudo docker push** user/image | Uploads an image to Docker Hub. <br> A Docker Hub username is necessary. |
 
@@ -41,20 +41,19 @@ title: Docker Quick Reference
 | **sudo docker run -t -i** user/image | Runs an image, creating a container and<br> changing the command prompt<br> to within the container. |
 | **sudo docker run -p 80:3000 -t -i** user/image | Similar to the command above<br> but with port forwarding. |
 | **`ctrl+p` then `ctrl+q`** | From the container's command prompt,<br> detach and return to the host's prompt. |
-| **sudo docker attach** 1aa| Changes the command prompt<br> from the host to a running container.<br> Replace “1aa” with a container ID. |
+| **sudo docker attach** 1aa| Changes the command prompt<br> from the host to a running container.<br> Replace `1aa` with a container ID. |
 | **sudo docker ps -a** | List all container instances, with their ID,<br> and status. |
 | **sudo docker images** | Lists all images on the local machine. |
-| **sudo docker rm -f** 1aa | Delete a container.<br> Replace "1aa" with a container ID. |
-| **sudo docker commit** 1aa user/image | Save a container as an image.<br> Replace "1aa" with a container ID. |
+| **sudo docker rm -f** 1aa | Delete a container.<br> Replace `1aa` with a container ID. |
+| **sudo docker commit** 1aa user/image | Save a container as an image.<br> Replace `1aa` with a container ID. |
 
 ##Image Creation
 
 {: .table .table-striped .table-bordered} 
 | Docker Syntax | Description | 
 |:-------------|:---------| 
-| **FROM ubuntu:14.04 <br> MAINTAINER Sample User** <user.email@email.com> <br> **RUN apt-get update** | Create an empty directory <br> with a file named **"Dockerfile"**, <br> then insert this syntax. <br> From the new directory,<br> run the build command,<br> listed below.|
+| **FROM ubuntu:14.04 <br> MAINTAINER Sample User** <user.email@email.com> <br> **RUN apt-get update** | Create an empty directory <br> with a file named **`dockerfile`**, <br> then insert this syntax. <br> From the new directory,<br> run the build command,<br> listed below.|
 | **sudo docker build -t sampleuser/ubuntu .** | Builds a Docker image<br> from a Docker file,<br> as shown above. |
-
 
 
 
