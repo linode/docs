@@ -1,4 +1,5 @@
 ---
+deprecated: true
 author:
   name: Jon Chen
   email: jchen@linode.com
