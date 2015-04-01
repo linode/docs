@@ -1,4 +1,4 @@
-﻿# How to Install and Configure Don’t Starve Together Server on Ubuntu 14.04
+# How to Install and Configure Don’t Starve Together Server on Ubuntu 14.04
 
 
 ### Introduction
@@ -213,6 +213,15 @@ Telling Client our new session identifier: XXXXXXXXXXXXXXXX
 ModIndex: Load sequence finished successfully.  
 Reset() returning
 ```
+
+You will see a error that looks similar to this:
+```
+[200] Account Failed (6): "E_INVALID_TOKEN"
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!! Your Server Will Not Start !!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+```
+This is completely normal and we will fix this in the next step. 
 
 
 Now, press the **CONTROL + C** keys simultaneously for a moment to quit the server. You will be left with your linux command prompt.
