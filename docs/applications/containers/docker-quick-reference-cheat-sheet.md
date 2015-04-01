@@ -52,7 +52,7 @@ title: Docker Quick Reference
 {: .table .table-striped .table-bordered} 
 | Docker Syntax | Description | 
 |:-------------|:---------| 
-| **FROM ubuntu:14.04 <br> MAINTAINER Sample User** <user.email@email.com> <br> **RUN apt-get update** | Create an empty directory <br> with a file named **`dockerfile`**, <br> then insert this syntax. <br> From the new directory,<br> run the build command,<br> listed below.|
+| **FROM ubuntu:14.04 <br> MAINTAINER Sample User** <user.email@email.com> <br> **RUN apt-get update** | Create an empty directory <br> with a file named **`Dockerfile`**, <br> then insert this syntax. <br> From the new directory,<br> run the build command,<br> listed below.|
 | **sudo docker build -t sampleuser/ubuntu .** | Builds a Docker image<br> from a Docker file,<br> as shown above. |
 
 
