@@ -26,7 +26,7 @@ PocketMine is a third party server for the MineCraft - Pocket Edition game for [
 
 2.  Ensure that your Linode is up to date:
 
-        sudo apt-get update; apt-get upgrade
+        sudo apt-get update; sudo apt-get upgrade
 
 3.  Install dependancies:
 
