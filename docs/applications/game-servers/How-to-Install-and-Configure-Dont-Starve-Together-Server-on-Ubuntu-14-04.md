@@ -160,6 +160,15 @@ Once you see something similar to this, the server has been successfully launche
 	ModIndex: Load sequence finished successfully.  
 	Reset() returning
 
+You will see a error that looks similar to this:
+
+	[200] Account Failed (6): "E_INVALID_TOKEN"
+	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	!!!! Your Server Will Not Start !!!!
+	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+This is completely normal and we will fix this in the next step. 
+
 Now, press the **CONTROL + C** keys simultaneously for a moment to quit the server. You will be left with your linux command prompt.
 
 We now need to edit the configuration file for your server. Move your shell to the configuration directory:
