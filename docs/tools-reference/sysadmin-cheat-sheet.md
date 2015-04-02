@@ -14,15 +14,17 @@ title: System Administration Cheat Sheet
 ---
 
 <style type="text/css">
+.center {
+	text-align: center;
+}
+
 #cs-table {
 	width: 100%;
 }
 
 #cs-table #col1 {
-	background-color: #000000;
-	width: 10%;
-	color: #FFFFFF;
-	font-weight: bold;
+	background-color: #2D8EC6;
+	width: 8%;
 }
 
 #cs-table #col2 {
@@ -30,7 +32,7 @@ title: System Administration Cheat Sheet
 }
 
 #cs-table #col3and4 {
-	width: 33%;
+	width: 34%;
 }
 
 #cs-table thead, #cs-table tbody {
@@ -39,20 +41,60 @@ title: System Administration Cheat Sheet
 	#cs-table-title {
 		background-color: #FFFFFF;
 		color: #000000;
+		text-align: center;
 	}
 
 	#cs-table th ~ th {
 		background-color: #000000;
 		color: #FFFFFF;
+		text-align: center;
 	}
 
 	#cs-table tbody th:first-child {
+		vertical-align: top;
+		padding-left: 5px;
 		color: #FFFFFF;
+		font-size: 12px;
+		font-weight: bold;
 	}
 
 	#cs-table tbody tr:nth-child(even) {
-		background-color: #F3F3F3;
+		background-color: #F4F4F4;
 	}
+
+	#cs-table tbody td {
+		border-top: 1px solid #DDDDDD;
+		border-left: 1px solid #DDDDDD;
+		padding-left: 10px;
+		vertical-align: top;
+		font-size: 14px;
+	}
+		#cs-table tbody td:first-child {
+			border-left: none;
+		}
+
+		#cs-table tbody tr:first-child td {
+			border-top: none;
+		}
+			#cs-table tbody tr:first-child td:nth-child(2) {
+				border-left: none;
+			}
+
+	#cs-table span.v4note, #cs-table span.v6note {
+		font-style: italic;
+		font-size: smaller;
+	}
+		#cs-table span.v4note:before {
+			content: "(IPv4)";
+		}
+
+		#cs-table span.v6note:after {
+			content: "(IPv6)"
+		}
+
+#ubuntu:hover {
+	color: #DD4814;
+}
 </style>
 
 <table id="cs-table">
@@ -64,7 +106,7 @@ title: System Administration Cheat Sheet
 <thead>
 	<tr>
 		<th id="cs-table-title" colspan="2">SysAdmin Cheat Sheet</th>
-		<th scope="col">Debian / Ubuntu</th>
+		<th scope="col">Debian / <span id="ubuntu">Ubuntu</span></th>
 		<th scope="col">CentOS / Fedora</th>
 	</tr>
 </thead>
@@ -133,7 +175,7 @@ title: System Administration Cheat Sheet
 </tbody>
 <tbody>
 	<tr>
-		<th rowspan="10" scope="rowgroup">Network</th>
+		<th rowspan="14" scope="rowgroup">Network</th>
 		<td>Restart network.</td>
 		<td>ifdown eth0 && ifup eth0</td>
 		<td>
@@ -148,24 +190,20 @@ title: System Administration Cheat Sheet
 		</td>
 	</tr>
 	<tr>
-		<td>Interface info.</td>
-		<td colspan="2">
-			<strong>IPv4</strong><br />
-			ip addr<br />
-			<br />
-			<strong>IPv6</strong><br />
-			ip -6 addr
-		</td>
+		<td>Interface info. <span class="v4note"></span></td>
+		<td colspan="2">ip addr</td>
 	</tr>
 	<tr>
-		<td>Routing info</td>
-		<td colspan="2">
-			<strong>IPv4</strong><br />
-			ip route<br />
-			<br />
-			<strong>IPv6</strong>
-			ip -6 route
-		</td>
+		<td>Interface info. <span class="v6note"></span></td>
+		<td colspan="2">ip -6 addr</td>
+	</tr>
+	<tr>
+		<td>Routing info. <span class="v4note"></span></td>
+		<td colspan="2">ip route</td>
+	</tr>
+	<tr>
+		<td>Routing info. <span class="v6note"></span></td>
+		<td colspan="2">ip -6 route</td>
 	</tr>
 	<tr>
 		<td>Neighbor solicitations.</td>
@@ -174,11 +212,13 @@ title: System Administration Cheat Sheet
 	<tr>
 		<td>View iptables rules.</td>
 		<td colspan="2">
-			<strong>IPv4</strong><br />
 			iptables-save<br />
-			iptables -nv -L --line-numbers<br />
-			<br />
-			<strong>IPv6</strong><br />
+			iptables -nv -L --line-numbers
+		</td>
+	</tr>
+	<tr>
+		<td>View ip6tables rules.</td>
+		<td colspan="2">
 			ip6tables-save<br />
 			ip6tables -nv -L --line-numbers
 		</td>
@@ -186,15 +226,17 @@ title: System Administration Cheat Sheet
 	<tr>
 		<td>Back up, flush, and restore iptables rules.</td>
 		<td colspan="2">
-			<strong>IPv4</strong><br />
 			iptables-save > /root/iptbls.save<br />
 			iptables -P INPUT ACCEPT<br />
 			iptables -P OUTPUT ACCEPT<br />
 			iptables -P FORWARD ACCEPT<br />
 			iptables -F<br />
-			iptables-restore < /root/iptbls.save<br />
-			<br />
-			<strong>IPv6</strong><br />
+			iptables-restore < /root/iptbls.save
+		</td>
+	</tr>
+	<tr>
+		<td>Back up, flush, and restore ip6tables rules.</td>
+		<td colspan="2">
 			ip6tables-save > /root/iptbls.save<br />
 			ip6tables -P INPUT ACCEPT<br />
 			ip6tables -P OUTPUT ACCEPT<br />
@@ -212,18 +254,20 @@ title: System Administration Cheat Sheet
 	</tr>
 	<tr>
 		<td>
-			<p>Test the network speed between two servers.</p>
-			<p>Useful between data centers. `iperf` would need to be installed.</p>
+			Test the network speed between two servers.<br />
+			<br />
+			Useful between data centers. `iperf` would need to be installed.
 		</td>
 		<td colspan="2">
-			<p>On one endpoint, you would start the server:</p>
-			<p class="center">iperf -s</p>
-			<p>On the other endpoint, you would connect to the server as a
-			client:</p>
-			<p class="center">iperf -dc <strong>&lt;IP&gt;</strong></p>
-			<p>`iperf` needs to be installed. You can find instructions in the <a
+			On one endpoint, you would start the server:<br />
+			<span style="display:block;" class="center">iperf -s</span><br />
+			On the other endpoint, you would connect to the server as a
+			client:<br />
+			<span style="display:block;" class="center">iperf -dc
+			<strong>&lt;IP&gt;</strong></span><br />
+			`iperf` needs to be installed. You can find instructions in the <a
 			href="https://www.linode.com/docs/networking/diagnostics/diagnosing-network-speed-with-iperf">Linode
-			Docs</a></p>
+			Docs</a>
 		</td>
 	</tr>
 	<tr>
