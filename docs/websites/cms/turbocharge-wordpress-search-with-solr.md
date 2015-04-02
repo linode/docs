@@ -7,10 +7,10 @@ keywords: 'wordpress,search,solr,ubuntu,debian'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 contributor:
     name: Karthik Shiraly
-modified: Thursday, March 26, 2015
+modified: Friday, April 3, 2015
 modified_by:
     name: James Stewart
-published: 'Thursday, March 26, 2015'
+published: 'Friday, April 3, 2015'
 title: 'Turbocharge Your WordPress Search Using Solr'
 ---
 
@@ -24,7 +24,7 @@ In this guide, you will learn how to install Java, install and configure Solr on
 
 ## Prerequisites
 
--   WordPress much be already installed and configured. If you have not yet installed WordPress, follow the [Manage Web Content with WordPress](/docs/websites/cms/manage-web-content-with-wordpress) guide.
+-   WordPress must be already installed and configured. If you have not yet installed WordPress, follow the [Manage Web Content with WordPress](/docs/websites/cms/manage-web-content-with-wordpress) guide.
 
 -   Much of this guide assumes that Solr is being installed on the same server as WordPress; however, Solr can be installed on a second server for security or scalibility reasons. Alternate steps are provided should Solr be installed on a second server.
 
@@ -38,7 +38,7 @@ Since Solr is a Java web application, it requires a *Java Runtime Environment (J
         whereis java
         java -version
 
-    If Java is already installed it will output the path of the Java executable and the version of Java that is being run.
+    If Java is already installed it will output the path of the Java executable and the version of Java that is being run. Skip to the [next step](#install-unzip-curl-and-php5-curl).
 
 2.  Install the `openjdk-7-jre-headless` package:
 
@@ -168,7 +168,9 @@ By default, Solr listens for search requests on all IP addresses at port 8983. F
 
     -   If Solr is on a **different** server from WordPress replace `<Set name="host"><SystemProperty name="jetty.host" /></Set>` with:
 	
-            <Set name="host">192.168.12.3</Set>
+            <Set name="host">123.45.67.89</Set>
+
+        Replace `123.45.67.89` with your own private IP or FQDN.
 
 
 ### Create a User Account and User Group for Solr
@@ -308,7 +310,7 @@ For security purposes, Solr should run with its own user account and group.
                 else
                         log_warning_msg "(already running)."
                         log_end_msg 0
-                        xit 1
+                        exit 1
                 fi
                 ;;
 
@@ -452,9 +454,9 @@ If Solr is installed on a different server from WordPress, repeat the test from 
 
     [![WPSolr self hosting settings](/docs/assets/wpsolr_wpsolr_hosting_tab_settings_resized.png)](/docs/assets/wpsolr_wpsolr_hosting_tab_settings.png)
 
-    -   **Solr Host**: This should be the same value as the host typed in `/etc/jetty.xml`. If Solr is installed on same server as WordPress, enter `localhost`. If Solr is installed on a different server, enter the same IP address or hostname.
+    -   **Solr Host**: This should be the same value as the host typed in `/opt/solr-4.10.4/example/etc/jetty.xml`. If Solr is installed on same server as WordPress, enter `localhost`. If Solr is installed on a different server, enter the same IP address or hostname.
 
-    -   **Solr Port**: This should be the same value as the port typed in `/etc/jetty.xml`.
+    -   **Solr Port**: This should be the same value as the port typed in `/opt/solr-4.10.4/example/etc/jetty.xml`.
 
     -   **Solr Path**: Set this value to `/solr/collection1`, the default Solr core. The Solr server can run multiple Solr cores, each core serving a different set of search data. For more information on Solr cores, go through the [Solr Core wiki](https://wiki.apache.org/solr/CoreAdmin).
 
@@ -547,5 +549,5 @@ If you have a data backup procedure for your server, you can back up search data
 
 The backing up of search data is not critical, since it can always be recreated from the WordPress database; however, for very large blogs with thousands of posts and attachments, backing up and restoring search data will be much faster than recreating it. Overall, when migrating or merging a blog from another WordPress server, the recommended approach is to *recreate* the search data.
 
-After a migration or merger, go to the **Solr Operations** option located at the WPSOLR plugin section of your administration panel and press the **Load documents incrementally in the Solr index** to recreate the search data.
+After a migration or merger, go to the **Solr Operations** option located at the WPSOLR plugin section of your administration panel and press the **Synchronize Wordpress with my Solr index** to recreate the search data.
 
