@@ -26,7 +26,7 @@ PocketMine is a third party server for the MineCraft - Pocket Edition game for [
 
 2.  Ensure that your Linode is up to date:
 
-        sudo apt-get update; sudo apt-get upgrade
+        sudo apt-get update && sudo apt-get upgrade
 
 3.  Install dependancies:
 
@@ -58,7 +58,7 @@ PocketMine is a third party server for the MineCraft - Pocket Edition game for [
         screen ./start.sh
 
     {: .note }
-    > If you've used `su` to switch to the pocketmine user, you will get an error message of `Cannot open your terminal '/dev/pts/0' - please check.` when attempting to start screen. You can resolve this by first running the command:
+    > If you've used `su` to switch to the pocketmine user, you will get an error message stating `Cannot open your terminal '/dev/pts/0' - please check.` when attempting to start screen. You can resolve this by first running the command:
     >
     >     script /dev/null
 
