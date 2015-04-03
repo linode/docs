@@ -525,7 +525,7 @@ find the existing keys if they exist and re-use them.
     if [ -f ${zone}.zone.signed ]; then
       ZSK=`/bin/grep "(zsk)" K${zone}.+*.key |/bin/head -1 |cut -d":" -f1 |/bin/sed -e s?"\.key$"?""?`
       KSK=`/bin/grep "(ksk)" K${zone}.+*.key |/bin/head -1 |cut -d":" -f1 |/bin/sed -e s?"\.key$"?""?`
-      if [ -f rollover/${zone}.new.zsk ]
+      if [ -L rollover/${zone}.new.zsk ]; then
         /bin/cat rollover/${zone}.new.zsk >> ${zone}.zone
       fi
     else
@@ -550,4 +550,71 @@ The way to use the script on our `example.org.template` file:
     cd ~/zonesign
     sh ~/bin/dnsKeygen.sh example.org
 
-The signed zone file will be called `example.org.zone.signed`
+The signed zone file will be called `example.org.zone.signed`.
+
+Upload the signed zone file to your master nameserver, and place it in the
+`/etc/nsd/` directory. You should *not* upload the `.private` files, those are
+your private keys and do not belong on the nameserver for security reasons.
+
+Do not delete them, keep them on your signing machine in the `zonesign`
+directory.
+
+The *only* file you need to upload to the master nameserver is the
+`.zone.signed` file(s).
+
+On the master nameserver, edit the `/etc/nsd/zones.config` file and append
+`.signed` to the `zonefile` definition for any signed zones you uploaded.
+
+In this example, since we only signed the zone for example.org but did not
+sign the zone for example.net, our `zones.config` file would now look like:
+
+    zone:
+        name: example.org
+        zonefile: /etc/nsd/example.org.zone.signed
+        notify: 2600:3c00::4e mynsdkey
+        provide-xfr: 2600:3c00::4e mynsdkey
+    
+    zone:
+        name: example.net
+        zonefile: /etc/nsd/example.net.zone
+        notify: 2600:3c00::4e mynsdkey
+        provide-xfr: 2600:3c00::4e mynsdkey
+        
+You do *not* need to modify `zones.config` file on the slave. That only needs
+to be modified when adding a new zone.
+
+Restart the NSD daemon on the master:
+
+    service nsd restart
+    nsdc rebuild
+    nsdc reload
+    
+Finally, instruct the master to push the changes to the slave(s):
+
+    nsdc notify
+    
+Within a few hours, the slaves will respond with updated information. If you
+need them to respond immediately, you can log in to the slaves and restart,
+rebuild, and reload manually. Generally that is not needed, most clients
+will only query the slave when the master is not responsive, it is usually
+okay to leave it alone and let it update when the TTL for the zone expires
+or when the slave restarts from the cron job running on the slave.
+
+### DS Files
+
+There will also be two files generated with a `.ds` extension, these contain
+the Designated Signer information you need to submit through your registrar so
+that your Top Level Domain can sign your Key Signing Key:
+
+    K256example.org.+007+12933.ds
+    Kexample.org.+007+12933.ds
+    
+Here is what the contents will look like:
+
+    [alice@new zonesign]$ cat K256example.org.+007+12933.ds 
+    example.org.    86400   IN      DS      12933 7 2 8696a5bf3d9f0be5a2486b5b761481683e9507fa9b3f562a1b49d65b9cebfce0
+    [alice@new zonesign]$ cat Kexample.org.+007+12933.ds 
+    example.org.    86400   IN      DS      12933 7 1 61fe11182591548d37c0d0e06e5bb0fd19213b5b
+    
+We generated two of them, the `.ds` file with the longer DS is more secure but
+some DNSSEC clients may not support it, so the shorter type is also generated.
