@@ -7,6 +7,7 @@ keywords: 'wordpress,search,solr,ubuntu,debian'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 contributor:
     name: Karthik Shiraly
+    link: https://twitter.com/pathbreaksoft
 modified: Friday, April 3, 2015
 modified_by:
     name: James Stewart
