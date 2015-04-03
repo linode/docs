@@ -1,4 +1,6 @@
 #!/bin/bash
+# ~/bin/dnsKeygen.sh
+
 zone=$1
 if [ ! -f ${zone}.template ]; then
   /bin/echo "Template file ${zone}.template not found."

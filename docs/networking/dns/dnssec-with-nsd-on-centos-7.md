@@ -501,4 +501,53 @@ Within this directory, place your zone files but append `.template` to the end
 of the zone name. The purpose of this has to do with key roll-overs, we want to
 be able to script the generation of a zone files that include new ZSK keys
 before the new ZSK is used to sign zones, allowing for a smooth transition from
-an old ZSK to a new ZSK.
+an old ZSK to a new ZSK. The directory should have a sub-directory called
+`rollover` which will initially be empty.
+
+### Signing Zone Files
+
+The following shell script, which I call `dnsKeygen.sh`, will generate the
+initial signing keys and sign the zone files. Whenever you update one of the
+templates, make sure you update the `serial` and re-run the script. It will
+find the existing keys if they exist and re-use them.
+
+    #!/bin/bash
+    # ~/bin/dnsKeygen.sh
+    
+    zone=$1
+    if [ ! -f ${zone}.template ]; then
+      /bin/echo "Template file ${zone}.template not found."
+      exit 1
+    fi
+    
+    /bin/cat ${zone}.template > ${zone}.zone
+    
+    if [ -f ${zone}.zone.signed ]; then
+      ZSK=`/bin/grep "(zsk)" K${zone}.+*.key |/bin/head -1 |cut -d":" -f1 |/bin/sed -e s?"\.key$"?""?`
+      KSK=`/bin/grep "(ksk)" K${zone}.+*.key |/bin/head -1 |cut -d":" -f1 |/bin/sed -e s?"\.key$"?""?`
+      if [ -f rollover/${zone}.new.zsk ]
+        /bin/cat rollover/${zone}.new.zsk >> ${zone}.zone
+      fi
+    else
+      ZSK=`/usr/bin/ldns-keygen -a RSASHA1-NSEC3-SHA1 -b 1024 ${zone}`
+      KSK=`/usr/bin/ldns-keygen -k -a RSASHA1-NSEC3-SHA1 -b 2048 ${zone}`
+      /bin/rm -f ${ZSK}.ds ${KSK}.ds
+    fi
+    
+    SALT=`/bin/head -n 1024 /dev/random |/usr/bin/sha1sum |cut -d' ' -f1`
+    
+    /usr/bin/ldns-signzone -n -p -s ${SALT} ${zone}.zone $ZSK $KSK
+    
+    #KSK DS
+    /usr/bin/ldns-key2ds -n -1 ${zone}.zone.signed > ${KSK}.ds
+    
+    KKSK=`echo ${KSK} |/bin/sed -e s?"^K"?"K256"?`
+    
+    /usr/bin/ldns-key2ds -n -2 ${zone}.zone.signed > ${KKSK}.ds
+
+The way to use the script on our `example.org.template` file:
+
+    cd ~/zonesign
+    sh ~/bin/dnsKeygen.sh example.org
+
+The signed zone file will be called `example.org.zone.signed`
