@@ -543,7 +543,13 @@ add one each edit).
     
     SALT=`/bin/head -n 1024 /dev/random |/usr/bin/sha1sum |cut -d' ' -f1`
     
-    /usr/bin/ldns-signzone -n -p -s ${SALT} ${zone}.zone $ZSK $KSK
+    #KSK sign
+    if [ -L rollover/${zone}.new.ksk ]; then
+      #sign with both KSK keys
+      /usr/bin/ldns-signzone -n -p -s ${SALT} ${zone}.zone $ZSK $KSK rollover/${zone}.new.ksk
+    else
+      /usr/bin/ldns-signzone -n -p -s ${SALT} ${zone}.zone $ZSK $KSK
+    fi
     
     #KSK DS
     /usr/bin/ldns-key2ds -n -1 ${zone}.zone.signed > ${KSK}.ds
@@ -596,6 +602,13 @@ Restart the NSD daemon on the master:
     nsdc rebuild
     nsdc reload
     
+Check that NSD sees the DNSKEY information using dig:
+
+    dig DNSKEY example.com. @localhost +multiline +norec
+    
+The result should have several `IN DNSKEY` entries if NSD is loading the signed
+zone file.
+    
 Finally, instruct the master to push the changes to the slave(s):
 
     nsdc notify
@@ -606,6 +619,24 @@ rebuild, and reload manually. Generally that is not needed, most clients
 will only query the slave when the master is not responsive, it is usually
 okay to leave it alone and let it update when the TTL for the zone expires
 or when the slave restarts from the cron job running on the slave.
+
+#### Description of dnsKeygen.sh Script
+
+The script starts by copying the appropriate `.template` file to a `.zone`
+file for the zone.
+
+The script then checks to see if there is already a signed version of the
+zone file. If there is, then the script will find and use the existing
+signing keys rather than generate new signing keys. It generates new
+signing keys if there is not an existing *signed* zone file.
+
+If there is already a signed zone file, the script will check to see if there
+is a new version of the ZSK key it should add to the zone file.
+
+The script then generates a one time use salt and signs the zone file. If it
+detects a new KSK it will sign the zone file using the current ZSK, the
+current ZSK, and the new ZSK. If it does not detect a new KSK then it will sign
+the zone file using the current ZSK and KSK.
 
 ### DS Files
 
