@@ -508,8 +508,15 @@ an old ZSK to a new ZSK. The directory should have a sub-directory called
 
 The following shell script, which I call `dnsKeygen.sh`, will generate the
 initial signing keys and sign the zone files. Whenever you update one of the
-templates, make sure you update the `serial` and re-run the script. It will
-find the existing keys if they exist and re-use them.
+templates, the script will find the existing keys if they exist and re-use
+them.
+
+**IMPORTANT**: Always increment the `serial` before running this script. There
+is not a specified standard for the serial, other than it needs to be a
+positive integer. I like to use `YYYYMMDDNN` where `YYYY` is the year, `MM`
+is the two-digit month, `DD` is the two-digit day, and `NN` is a two-digit
+number in case I need to do more than one edit in a day (I start at 00 and then
+add one each edit).
 
     #!/bin/bash
     # ~/bin/dnsKeygen.sh
