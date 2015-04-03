@@ -205,11 +205,11 @@ For security purposes, Solr should run with its own user account and group.
 >
 >Run the following commands on the server where **Solr** is installed.
 
-1.  Use a text editor to create a new script `/etc/init.d/solr`:
+1.  Use a text editor to create a new script `/etc/init.d/solr`.  Alternatively, you can download it from [this link](/docs/assets/solr):
 
         sudo nano /etc/init.d/solr
 
-2.  Copy the following text into the editor, save and close it. Alternatively, you can download it from [this link](/docs/assets/solr):
+2.  Copy the following text into the editor, save and close it:
 
     {: .note}
     >
