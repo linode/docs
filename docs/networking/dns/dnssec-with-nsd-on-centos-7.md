@@ -638,11 +638,21 @@ detects a new KSK it will sign the zone file using the current ZSK, the
 current ZSK, and the new ZSK. If it does not detect a new KSK then it will sign
 the zone file using the current ZSK and KSK.
 
-### DS Files
+### Delegation Signer Records
 
-There will also be two files generated with a `.ds` extension, these contain
-the Designated Signer information you need to submit through your registrar so
-that your Top Level Domain can sign your Key Signing Key:
+The nameserver is now giving proper DNSSEC responses, but DNSSEC clients have
+no way to validate the responses your nameserver is giving. They need to be
+able to trust that responses are what they are suppose to be.
+
+This is accomplished through Delegation Signer Records that you must submit
+through your domain registrar.
+
+In the directory where you generated the signed zone files, there will be two
+files with a `.ds` extension per signed zome. These contain the Designated
+Signer information you need to submit through your registrar so that your Top
+Level Domain can sign your Key Signing Key.
+
+For the example.org zone the file names would be similar to:
 
     K256example.org.+007+12933.ds
     Kexample.org.+007+12933.ds
@@ -656,3 +666,27 @@ Here is what the contents will look like:
     
 We generated two of them, the `.ds` file with the longer DS is more secure but
 some DNSSEC clients may not support it, so the shorter type is also generated.
+
+The first field contains the name of the zone. The second field contains the
+TTL for the zone. The second and third fields contain `IN` and `DS`
+respectively. It is the fields after those fields that have the information we
+need to input with the registrar.
+
+The fifth field, `12933` in the above examples, is the **Key tag** field.
+
+The sixth field, `7` in the above examples, is the **Algorithm** field.
+
+The seventh field, `2` in the longer example and `1` in the shorter example,
+is the **Digest Type** field.
+
+The eighth field with the hexadecimal string is the **Digest** field.
+
+That is the information you will need when creating a DS record for your zone
+with your domain registrar. You should create two DS records, one for the
+shorter digest and one for the longer digest.
+
+You will want to create DS records for both the Type 1 and Type 2 digest types.
+
+You do not have to update the DS records with your registrar every time you
+make a change to your zone, you only need to do it when you change your KSK
+key, which you probably should do about once a year or so.
