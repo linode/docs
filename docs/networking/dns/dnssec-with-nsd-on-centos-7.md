@@ -672,7 +672,7 @@ TTL for the zone. The second and third fields contain `IN` and `DS`
 respectively. It is the fields after those fields that have the information we
 need to input with the registrar.
 
-The fifth field, `12933` in the above examples, is the **Key tag** field.
+The fifth field, `12933` in the above examples, is the **Key Tag** field.
 
 The sixth field, `7` in the above examples, is the **Algorithm** field.
 
@@ -690,3 +690,31 @@ You will want to create DS records for both the Type 1 and Type 2 digest types.
 You do not have to update the DS records with your registrar every time you
 make a change to your zone, you only need to do it when you change your KSK
 key, which you probably should do about once a year or so.
+
+### Testing DNSSEC
+
+When your nameserver is serving your signed zone files and you have entered the
+necessary information into your registrar for the DS data, you can test your
+DNSSEC setup using
+[http://dnssec-debugger.verisignlabs.com/](http://dnssec-debugger.verisignlabs.com/)
+
+Please note it that entering a DS record with your registrar may take a little
+while before it actually is reflected using that resource. Usually in my own
+experience it takes less than an hour, but it may take longer.
+
+## Key Rollover
+
+DNSSEC uses two different keys. In order to keep DNS responses small, it is
+recommended that you use a 1024-bit key for the ZSK (Zone Signing Key). A
+consequence of using only a 1024-bit key for your ZSK is that it needs to be
+changed fairly frequently so that there is an extremely low probability of the
+ZSK ever being cracked while it is still valid.
+
+Most tutorials recommend rolling over to a new ZSK every 1 to 3 months. I
+personally do a roll over once a week, and *always* have the next key loaded
+in the zone file. Any given ZSK will thus have only two weeks that it is
+valid: the week before it is actually used to sign the zone file and the
+week that it is being used to sign the zone file.
+
+The KSK (Key Signing Key) should be a 2048-bit key. It is probably safe to
+keep the same KSK for two years but I like to change it once a year.
