@@ -18,6 +18,14 @@ authenticity of the result and reject the result if it does not validate.
 This document was written with CentOS 7 in mind but it should work with most
 Linux distributions with very little tweaking needed.
 
+I need to warn you that migrating to DNSSEC is not something where you can just
+set it up and forget it for awhile. It does require frequent maintenance to
+roll over one of the keys. You can automate that, but that automation is beyond
+the scope of this document.
+
+I have however attempted to make the key rollover a simple matter of running a
+few scripts.
+
 ## The NSD Daemon
 
 NSD is an alternative to bind. It is an authoritative only nameserver and works
@@ -848,3 +856,15 @@ Once again, update the serial in the example.org.template file and run the
 Now the generated zone file is signed by the new ZSK key and the old ZSK key is
 no longer valid and responses signed with it will be rejected by DNSSEC aware
 clients.
+
+Remember after each step to upload the new signed zone files to your NSD
+master. Rebuild and reload the NSD database and send the notify message to the
+slaves.
+
+Most people seem to like the roll the ZSK key over once ever 1-3 months but I
+personally like to start the process on the 1st and 16th of every month, just
+to reduce the lifespan of the 1024-bit ZSK key even more.
+
+Doing it twice a month doesn't cost me anything but it does significantly
+reduce the already slim odds that an attacker will crack the key while it is
+still a valid key.
