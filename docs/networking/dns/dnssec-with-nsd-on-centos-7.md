@@ -535,6 +535,9 @@ add one each edit).
       if [ -L rollover/${zone}.new.zsk ]; then
         /bin/cat rollover/${zone}.new.zsk >> ${zone}.zone
       fi
+      if [ -L rollover/${zone}.old.zsk ]; then
+        /bin/cat rollover/${zone}.old.zsk >> ${zone}.zone
+      fi
     else
       ZSK=`/usr/bin/ldns-keygen -a RSASHA1-NSEC3-SHA1 -b 1024 ${zone}`
       KSK=`/usr/bin/ldns-keygen -k -a RSASHA1-NSEC3-SHA1 -b 2048 ${zone}`
@@ -659,9 +662,9 @@ For the example.org zone the file names would be similar to:
     
 Here is what the contents will look like:
 
-    [alice@new zonesign]$ cat K256example.org.+007+12933.ds 
+    [alice@localhost zonesign]$ cat K256example.org.+007+12933.ds 
     example.org.    86400   IN      DS      12933 7 2 8696a5bf3d9f0be5a2486b5b761481683e9507fa9b3f562a1b49d65b9cebfce0
-    [alice@new zonesign]$ cat Kexample.org.+007+12933.ds 
+    [alice@localhost zonesign]$ cat Kexample.org.+007+12933.ds 
     example.org.    86400   IN      DS      12933 7 1 61fe11182591548d37c0d0e06e5bb0fd19213b5b
     
 We generated two of them, the `.ds` file with the longer DS is more secure but
@@ -718,3 +721,41 @@ week that it is being used to sign the zone file.
 
 The KSK (Key Signing Key) should be a 2048-bit key. It is probably safe to
 keep the same KSK for two years but I like to change it once a year.
+
+Due to the fact that DNS responses are often cached, you can not simply
+stop using one key are start using another. That will result in cases where
+the old key is cached but an un-cached query is made, the response for which
+is signed by the new key. This would cause the new response to be rejected
+by a DNSSEC aware client as the response is signed by a different key than
+the cached key it looked at.
+
+For the ZSK this is handled by pre-publishing the new ZSK before it is used
+to sign the zone and to keep publishing the old key for a short while after
+the new key has been started, double the zone TTL is what I recommend.
+
+For the KSK it is handled differently. Initially you want to sign the zone
+using both the olk KSK and the new KSK. You will need to enter the new KSK DS
+information with your registrar. When the DS information for the new KSK has
+been live with your TLD for twice the TTL, then you can remove the DS info
+for the old KSK and stop signing the zone with the old KSK.
+
+### ZSK Rollover
+
+There are three steps involved with a ZSK Rollover:
+
+1. Generate the new ZSK and had the public key to your zone file while still
+signing the zone with the old ZSK.
+2. Add the old ZSK to the zone file and start signing with the new ZSK.
+3. Remove the old ZSK from the zone file and sign with with the new ZSK.
+
+In order to avoid loss of service with some clients, it is a good idea to
+wait at least twice the zone TTL between the first step and the second, and
+between the second step and the third.
+
+As I personally never use a TTL longer than a day, I allow two days between
+the steps.
+
+The following scripts takes care of each step of the rollover, and takes two
+arguments. The first argument specifies what step in the process it is going
+to take, and the second argument is the zone:
+
