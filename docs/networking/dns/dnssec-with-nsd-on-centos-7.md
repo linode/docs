@@ -506,7 +506,7 @@ an old ZSK to a new ZSK. The directory should have a sub-directory called
 
 ### Signing Zone Files
 
-The following shell script, which I call `dnsKeygen.sh`, will generate the
+The following shell script, which I call `dnsSignZone.sh`, will generate the
 initial signing keys and sign the zone files. Whenever you update one of the
 templates, the script will find the existing keys if they exist and re-use
 them.
@@ -519,7 +519,7 @@ number in case I need to do more than one edit in a day (I start at 00 and then
 add one each edit).
 
     #!/bin/bash
-    # ~/bin/dnsKeygen.sh
+    # ~/bin/dnsSignZone.sh
     
     zone=$1
     if [ ! -f ${zone}.template ]; then
@@ -530,8 +530,8 @@ add one each edit).
     /bin/cat ${zone}.template > ${zone}.zone
     
     if [ -f ${zone}.zone.signed ]; then
-      ZSK=`/bin/grep "(zsk)" K${zone}.+*.key |/bin/head -1 |cut -d":" -f1 |/bin/sed -e s?"\.key$"?""?`
-      KSK=`/bin/grep "(ksk)" K${zone}.+*.key |/bin/head -1 |cut -d":" -f1 |/bin/sed -e s?"\.key$"?""?`
+      ZSK=`/bin/grep -H "(zsk)" K${zone}.+*.key |/bin/head -1 |cut -d":" -f1 |/bin/sed -e s?"\.key$"?""?`
+      KSK=`/bin/grep -H "(ksk)" K${zone}.+*.key |/bin/head -1 |cut -d":" -f1 |/bin/sed -e s?"\.key$"?""?`
       if [ -L rollover/${zone}.new.zsk ]; then
         /bin/cat rollover/${zone}.new.zsk >> ${zone}.zone
       fi
@@ -564,7 +564,7 @@ add one each edit).
 The way to use the script on our `example.org.template` file:
 
     cd ~/zonesign
-    sh ~/bin/dnsKeygen.sh example.org
+    sh ~/bin/dnsSignZone.sh example.org
 
 The signed zone file will be called `example.org.zone.signed`.
 
@@ -623,7 +623,7 @@ will only query the slave when the master is not responsive, it is usually
 okay to leave it alone and let it update when the TTL for the zone expires
 or when the slave restarts from the cron job running on the slave.
 
-#### Description of dnsKeygen.sh Script
+#### Description of dnsSignZone.sh Script
 
 The script starts by copying the appropriate `.template` file to a `.zone`
 file for the zone.
@@ -759,3 +759,92 @@ The following scripts takes care of each step of the rollover, and takes two
 arguments. The first argument specifies what step in the process it is going
 to take, and the second argument is the zone:
 
+    #!/bin/bash
+    # ~/bin/zskRollover.sh
+    
+    step=$1
+    zone=$2
+    if [ ! -f ${zone}.template ]; then
+      /bin/echo "Template file ${zone}.template not found."
+      exit 1
+    fi
+    [ ! -d archive ] && mkdir archive
+    [ ! -d rollover ] && mkdir rollover
+    
+    case "${step}" in
+      "newkey")
+        if [ ! -L rollover/${zone}.new.zsk ]; then
+          cd rollover
+          ZSK=`/usr/bin/ldns-keygen -a RSASHA1-NSEC3-SHA1 -b 1024 ${zone}`
+          rm -f ${ZSK}.ds
+          ln -s ${ZSK}.key ${zone}.new.zsk
+        fi
+        exit 0;
+        ;;
+      "switch")
+        if [ -L rollover/${zone}.new.zsk ]; then
+          OLD=`/bin/grep -H "(zsk)" K${zone}.+*.key |/bin/head -1 |cut -d":" -f1 |/bin/sed -e s?"\.key$"?""?`
+          cd rollover
+          rm -f ${zone}.new.zsk
+          NEW=`/bin/grep -H "(zsk)" K${zone}.+*.key |/bin/head -1 |cut -d":" -f1 |/bin/sed -e s?"\.key$"?""?`
+          mv "../${OLD}.key" .
+          mv "../${OLD}.private" .
+          ln -s ${OLD}.key ${zone}.old.zsk
+          mv "${NEW}.key" ../
+          mv "${NEW}.private" ../
+        fi
+        exit 0
+        ;;
+      "rmold")
+        if [ -L rollover/${zone}.old.zsk ]; then
+          cd rollover
+          rm -f ${zone}.old.zsk
+          ZSK=`/bin/grep -H "(zsk)" K${zone}.+*.key |/bin/head -1 |cut -d":" -f1 |/bin/sed -e s?"\.key$"?""?`
+          mv "${ZSK}.key" ../archive/
+          mv "${ZSK}.private" ../archive/
+        fi
+        exit 0
+        ;;
+      *)
+        echo "usage: zskRollover.sh newkey|switch|rmold zone"
+        ;;
+    esac
+    
+    exit 1
+    
+Please note that this script does *not* sign the zones, it merely adjusts the
+signing keys so that the `dnsSignZone.sh` script will do the right thing.
+
+When we want to do a ZSK rollover on the example.org zone, we start by calling
+this script with the `newkey` argument:
+
+    cd ~/zonesign
+    sh ~/bin/zskRollover.sh newkey example.org
+    
+The update the serial in the example.org.template file and run the
+`dnsSignZone.sh` script to create a new signed zone for file for example.org
+that is still signed by the old ZSK key but tells clients the new ZSK is also
+valid for the zone.
+
+Two days later:
+
+    cd ~/zonesign
+    sh ~/bin/zskRollover.sh switch example.org
+    
+Again update the serial in the example.org.template file and run the
+`dnsSignZone.sh` script to create a new signed zone for file for example.org.
+
+That will create a signed zone file using the new ZSK key but it will indicate
+that responses signed by the previous key are valid.
+
+Two days later:
+
+    cd ~/zonesign
+    sh ~/bin/zskRollover.sh rmold example.org
+    
+Once again, update the serial in the example.org.template file and run the
+`dnsSignZone.sh` script to create a new signed zone for file for example.org.
+
+Now the generated zone file is signed by the new ZSK key and the old ZSK key is
+no longer valid and responses signed with it will be rejected by DNSSEC aware
+clients.
