@@ -827,7 +827,7 @@ to take, and the second argument is the zone:
     
     exit 1
     
-Please note that this script does *not* sign the zones, it merely adjusts the
+Please note that this script does *not* sign the zone, it merely adjusts the
 signing keys so that the `dnsSignZone.sh` script will do the right thing.
 
 When we want to do a ZSK rollover on the example.org zone, we start by calling
@@ -836,7 +836,7 @@ this script with the `newkey` argument:
     cd ~/zonesign
     sh ~/bin/zskRollover.sh newkey example.org
     
-Then update the serial in the example.org.template file and run the
+Then update the serial in the `example.org.template` file and run the
 `dnsSignZone.sh` script to create a new signed zone for file for example.org
 that is still signed by the old ZSK key but tells clients the new ZSK is also
 valid for the zone.
@@ -846,7 +846,7 @@ Two days later:
     cd ~/zonesign
     sh ~/bin/zskRollover.sh switch example.org
     
-Again update the serial in the example.org.template file and run the
+Again update the serial in the `example.org.template` file and run the
 `dnsSignZone.sh` script to create a new signed zone for file for example.org.
 
 That will create a signed zone file using the new ZSK key but it will indicate
@@ -857,7 +857,7 @@ Two days later:
     cd ~/zonesign
     sh ~/bin/zskRollover.sh rmold example.org
     
-Once again, update the serial in the example.org.template file and run the
+Once again, update the serial in the `example.org.template` file and run the
 `dnsSignZone.sh` script to create a new signed zone for file for example.org.
 
 Now the generated zone file is signed by the new ZSK key and the old ZSK key is
@@ -930,4 +930,186 @@ To roll over the KSK, you can use the following script:
     esac
     
     exit 1
+
+Like the previous script, again please note that this script does *not* sign
+the zone, it adjusts the keys so that the `dnsSignZone.sh` script will do the
+right thing.
+
+When we want to a KSK rollover on the example.org zone, we start the process by
+calling this script with the `newkey` argument:
+
+    cd ~/zonesign
+    sh ~/bin/kskRollover.sh newkey example.org
     
+Update the serial in the `example.org.template` file and run the
+`dnsSignZone.sh` script to generate a new signed zone file.
+
+The `dnsSignZone.sh` script will also re-create the `.ds` files that contain
+the Delegation Signer information you need to enter with your domain registrar.
+
+As the zone is currently being signed by two KSK keys, each of the `.ds` files
+will have two records: one for the old key which should already have been
+entered at your registrar, and a second one for the new key.
+
+You will need to create two new DS records with your registrar. One for the
+new Type 1 digest and one for the new Type 2 digest.
+
+It is a good idea to make a note of which Key Tag corresponds to the old KSK
+and which Kay Tag corresponds with the new KSK.
+
+After twice the zone's TTL has passed, remove the DS records associated with
+the old KSK from your registrar, so that only the DS records associated with
+the new KSK remain.
+
+Then you can remove the old signature from your zone as it is no longer
+necessary:
+
+    cd ~/zonesign
+    sh ~/bin/kskRollover.sh newkey example.org
+    
+Update the serial for the zone and run the `dnsSignZone.sh` script. The zone is
+now only being signed with the new KSK, the old has been retired.
+
+## Signing Key Backup
+
+If you lose your signing keys, you will essentially need to start over and
+there will be a loss of service to DNSSEC aware clients as they will initially
+reject the new signed records until the TTL has expired on any cached copies of
+your old keys.
+
+I highly recommend that you create a cron job that runs at least once a day and
+backs up the `zonesign` directory, preferably as an encrypted tarball, and then
+uploads the backup to two other locations.
+
+That way if there is a hardware failure on your zone signing machine, you can
+use the backup to create a new zone signing machine with your current signing
+keys intact.
+
+## Automation
+
+Taking care of you DNSSEC manually is fine for a few zones, but if you have
+many zones, you probably want to automate much of this.
+
+Automation is beyond the scope of this document, but I will list some things to
+consider.
+
+### Zone Template Files
+
+For automation, you probably want to create a database driven application for
+your zone information, and create the zone template files from the database.
+
+If taking this approach, you can just use the UNIX seconds since epoch as your
+zone serial number, seconds since epoch being the time you requested the
+zone information from the database rather than the last time the information
+was updated in the database.
+
+You can then modify the `dnsSignZone.sh` to always grab the template from the
+database so that the serial will always be newer than the last template that
+was signed.
+
+If you choose to write your own application to generate zone files from a
+database, make it complete. Zone information you do not think you need now, you
+may end up needing in the future, and it is always easier to code it as part of
+the design rather than modifying the database in the future.
+
+### Automate the `zones.config` file
+
+Without automation, every time you add a new zone you want your nameservers to
+control, you need to log in to the master and all of the slaves to update the
+`zones.config` file.
+
+If you frequently add and/or remove domains, that gets old really fast. You can
+use the same application that generates zone files from a database to generate
+new `zones.config` files for your master and slaves.
+
+The `start_nsd.sh` script near the beginning of this article, for the slaves
+the else block can be modified to attempt to create a fresh copy of the
+`zones.config` file from the database before it does its periodic restart and
+reload. It should only replace the `zones.config` file if it was successful in
+talking to the database to get an updated list of zones.
+
+For the master it should be done a little differently, the master should not
+have the else block in that script.
+
+In the instructions for setting up the master to use signed zones, I suggested
+changing the master to look for `example.org.zone.signed` instead of looking
+for `example.org.zone`.
+
+When automating things, you probably do not want that distinction.
+
+On the master, you should have an incoming directory where you upload new and
+modified zone files.
+
+A cron job on the master should check for new files in that directory once a
+minute. When it finds new files in that directory, then the master should:
+
+1. Attempt to fetch a fresh `zones.config` from the database, only replacing
+the existing `zones.config` upon success.
+2. `/bin/cat` the new domain.tld.zone *or* domain.tld.zone.signed file on top
+of the old `/etc/nsd/domain.tld.zone` file, creating a new one if it does not
+already exist.
+3. Restart the NSD daemon.
+4. Rebuild and reload the NSD database
+5. Issue a notify to all the slaves
+
+Remember that when generating the `zones.config` file that it is different for
+the master than for the slaves.
+
+For the master, each zone defined needs a `notify` and `provide-xfr` directive
+for each slave.
+
+For the slaves, each zone defined needs a `allow-notify` and `request-xfr`
+directive that points to the master.
+
+### Automate ZSK Rollover
+
+The Zone Signing Key is only a 1024-bit key and should be rotated often. For
+manual management of a DNSSEC enabled zone, I usually do it twice a month. If
+automating things, you may as well do it once a week.
+
+Rolling over the ZSK is a three step process, as described above. Do the first
+step every Sunday. On Tuesday, use a public DNS to check and make sure the new
+ZSK key is in fact being reported by that public DNS server and if so, do the
+second step. Then on Thursday, again use a public DNS to check and make sure
+the results are signed with the new ZSK. If they are, then run the third step
+that removes the old ZSK.
+
+When automating it, it is important to do those checks before proceeding. If
+there was a problem uploading the signed zone file after any of those steps
+were performed (e.g. a temporary network outage) then proceeding with the next
+step in the rollover could result in a loss of service for some users.
+
+Your automation must verify that each previous step in the rollover worked
+before proceeding with the next step.
+
+Google's public nameservers are a nice nameserver to specify to dig when
+testing. They are fully DNSSEC aware, if they give you the result you expect
+then the previous step did in fact work.
+
+### Automate KSK Rollover
+
+Rolling over the KSK can only be partially automated because it requires manual
+interaction with the domain registrar. Fortunately this only needs to be done
+about once a year.
+
+Once a week, say every Wednesday, scan the `zonesign` directory for KSK keys
+that are at least 345 days old (ignoring the archive directory).
+
+When it finds a key that is at least 345 days old:
+
+1. Check to see if the rollover has started. If not, start the rollover. Send
+an e-mail to the admin address in the zone with the new DS information and
+instructions on how to add the new DS information.
+2. If a rollover has started, use a public DNS server to check to see if the
+new DS information has been added through their registrar. If not, send a
+reminder e-mail.
+3. If new DS information is in place, check to see if the expiring DS info
+is still active. If it is, send an e-mail to the admin requesting that they
+delete the old DS infor from their registrar.
+4. Once the old DS info has been removed, stop signing the zone with the old
+KSK.
+
+It is imperitive that you do those checks and notifications when automating a
+KSK rollover so that you do not stop signing the zone with the old key until
+the DS information from the new key has been properly added to the domain by
+the registrar.
