@@ -31,7 +31,7 @@ few scripts.
 NSD is an alternative to bind. It is an authoritative only nameserver and works
 well with DNSSEC out of the box. I personally find it easier to configure than
 bind, it does what an authoritative name server needs to do and it does it
-quite well. Several of root nameservers as well as numerousm TLD nameservers
+quite well. Several of the root nameservers as well as numerous TLD nameservers
 run NSD, so it is more than capable of the needs of an authoritative
 nameserver.
 
@@ -62,13 +62,13 @@ that Linode has to offer for your nameservers.
 
 Your nameserver itself will have a domain name that needs to be resolved. It is
 possible to create a special kind of record, called a glue record, that allows
-your nameservers to be hosts in a zone the nameserver controls.
+your nameservers to be hosts in a zone the nameservers controls.
 
-I personally prefer not to use domain names for my nameserver that are part of
-the zones they control. I prefer to register a separate domain that is only
-used for my nameservers and host the zone for that domain on a third party
-nameserver, such as the Linode provided nameserver. It is simpler and
-simplicity has its benefits.
+I personally prefer not to do that, I do not like to use domain names for my
+nameserver that are part of the zones they control. I prefer to register a
+separate domain that is only used for my nameservers and host the zone for that
+domain on a third party nameserver, such as the Linode provided nameserver. It
+is simpler and simplicity has its benefits.
 
 I suggest using a `.com` or `.net` TLD for the nameserver domain, it allows you
 to use [http://www.internic.net/whois.html](http://www.internic.net/whois.html)
@@ -445,7 +445,7 @@ signed data.
 Two different signing keys are used, a Zone Signing Key (ZSK) and a second Key
 Signing Key (KSK).
 
-A digital signature (DS record) of your KSK is then kept on record with your
+A Delegation Signer (DS record) of your KSK is then kept on record with your
 TLD.
 
 When a DNSSEC aware application does a DNS lookup, it uses the digital
@@ -459,21 +459,21 @@ to a DNSSEC query. This is problematic, especially with DNS amplification
 attacks.
 
 The KSK needs to be 2048 bits making it unlikely that it will ever be cracked.
-The digital signature from your KSK is then submitted through your registrar
+The Delegation Signer from your KSK is then submitted through your registrar
 where it can be signed by your TLD. It is recommended that a 2048 bit KSK be
 rotated once a year.
 
 The KSK can then sign a smaller 1024 bit ZSK that is rotated more frequently
 without the need for updating information with your registrar. The ZSK should
-be rotated every other month.
+be rotated at least every other month but I prefer more often.
 
 In order for DNSSEC to work, you need to be able to make your TLD aware of your
 KSK Delegation Signer (DS). This will be unique for each registered domain
 name.
 
 Unfortunately some domain registrars do not yet support informing the TLD of
-your KSK DS, to use DNSSEC you will need to transfer your domains to a
-registry that does support adding DS information to the domain.
+your KSK DS. If your registrar does not support DS records you will need to
+transfer your domains to a registrar that does.
 
 ### Zone Signing Machine
 
@@ -506,11 +506,10 @@ whatever floats your boat. You will want to back it up to a secure location in
 case of hard drive failure.
 
 Within this directory, place your zone files but append `.template` to the end
-of the zone name. The purpose of this has to do with key roll-overs, we want to
+of the zone name. The purpose of this has to do with key rollovers, we want to
 be able to script the generation of a zone files that include new ZSK keys
 before the new ZSK is used to sign zones, allowing for a smooth transition from
-an old ZSK to a new ZSK. The directory should have a sub-directory called
-`rollover` which will initially be empty.
+an old ZSK to a new ZSK.
 
 ### Signing Zone Files
 
@@ -523,8 +522,9 @@ them.
 is not a specified standard for the serial, other than it needs to be a
 positive integer. I like to use `YYYYMMDDNN` where `YYYY` is the year, `MM`
 is the two-digit month, `DD` is the two-digit day, and `NN` is a two-digit
-number in case I need to do more than one edit in a day (I start at 00 and then
-add one each edit).
+number in case I need to do more than one edit in a day (I start at 01 and then
+increment each time I edit it, returning it to 01 when doing the first edit on
+a given day).
 
     #!/bin/bash
     # ~/bin/dnsSignZone.sh
@@ -587,8 +587,9 @@ Upload the signed zone file to your master nameserver, and place it in the
 `/etc/nsd/` directory. You should *not* upload the `.private` files, those are
 your private keys and do not belong on the nameserver for security reasons.
 
-Do not delete them, keep them on your signing machine in the `zonesign`
-directory.
+Do not delete your keys, keep them on your signing machine in the `zonesign`
+directory. Do not delete the signed zone file from the `zonesign` directory, it
+is how the script knows that signing keys already exist for the zone.
 
 The *only* file you need to upload to the master nameserver is the
 `.zone.signed` file(s).
@@ -649,11 +650,12 @@ signing keys rather than generate new signing keys. It generates new
 signing keys if there is not an existing *signed* zone file.
 
 If there is already a signed zone file, the script will check to see if there
-is a new version of the ZSK key it should add to the zone file.
+is a new version of the ZSK key it should add to the zone file. It also will
+check to see if it should add an old version of the ZSK to the zone file.
 
 The script then generates a one time use salt and signs the zone file. If it
 detects a new KSK it will sign the zone file using the current ZSK, the
-current ZSK, and the new ZSK. If it does not detect a new KSK then it will sign
+current KSK, and the new KSK. If it does not detect a new KSK then it will sign
 the zone file using the current ZSK and KSK.
 
 ### Delegation Signer Records
@@ -662,11 +664,11 @@ The nameserver is now giving proper DNSSEC responses, but DNSSEC clients have
 no way to validate the responses your nameserver is giving. They need to be
 able to trust that responses are what they are suppose to be.
 
-This is accomplished through Delegation Signer Records that you must submit
+This is accomplished through Delegation Signer records that you must submit
 through your domain registrar.
 
 In the directory where you generated the signed zone files, there will be two
-files with a `.ds` extension per signed zome. These contain the Designated
+files with a `.ds` extension per signed zone. These contain the Designated
 Signer information you need to submit through your registrar so that your Top
 Level Domain can sign your Key Signing Key.
 
@@ -682,8 +684,9 @@ Here is what the contents will look like:
     [alice@localhost zonesign]$ cat Kexample.org.+007+12933.ds 
     example.org.    86400   IN      DS      12933 7 1 61fe11182591548d37c0d0e06e5bb0fd19213b5b
     
-We generated two of them, the `.ds` file with the longer DS is more secure but
-some DNSSEC clients may not support it, so the shorter type is also generated.
+We generated two of them, the `.ds` file with the longer digest is more secure
+but some DNSSEC clients may not support it, so the shorter type is also
+generated.
 
 The first field contains the name of the zone. The second field contains the
 TTL for the zone. The second and third fields contain `IN` and `DS`
@@ -702,8 +705,6 @@ The eighth field with the hexadecimal string is the **Digest** field.
 That is the information you will need when creating a DS record for your zone
 with your domain registrar. You should create two DS records, one for the
 shorter digest and one for the longer digest.
-
-You will want to create DS records for both the Type 1 and Type 2 digest types.
 
 You do not have to update the DS records with your registrar every time you
 make a change to your zone, you only need to do it when you change your KSK
@@ -729,10 +730,8 @@ changed fairly frequently so that there is an extremely low probability of the
 ZSK ever being cracked while it is still valid.
 
 Most tutorials recommend rolling over to a new ZSK every 1 to 3 months. I
-personally do a roll over once a week, and *always* have the next key loaded
-in the zone file. Any given ZSK will thus have only two weeks that it is
-valid: the week before it is actually used to sign the zone file and the
-week that it is being used to sign the zone file.
+personally do it more often, it does not cost any money and it reduces the time
+a potential hacker has to crack the key.
 
 The KSK (Key Signing Key) should be a 2048-bit key. It is probably safe to
 keep the same KSK for two years but I like to change it once a year.
@@ -746,10 +745,13 @@ the cached key it looked at.
 
 For the ZSK this is handled by pre-publishing the new ZSK before it is used
 to sign the zone and to keep publishing the old key for a short while after
-the new key has been started, double the zone TTL is what I recommend.
+the new key has been started. Double the zone TTL is what I recommend. As I
+never use a TTL longer than a day, I use two days to pre-publish the new key
+before I sign with it and include the old key in the zone for two days after
+I start signing with the new key.
 
 For the KSK it is handled differently. Initially you want to sign the zone
-using both the olk KSK and the new KSK. You will need to enter the new KSK DS
+using both the old KSK and the new KSK. You will need to enter the new KSK DS
 information with your registrar. When the DS information for the new KSK has
 been live with your TLD for twice the TTL, then you can remove the DS info
 for the old KSK and stop signing the zone with the old KSK.
@@ -758,14 +760,12 @@ for the old KSK and stop signing the zone with the old KSK.
 
 There are three steps involved with a ZSK Rollover:
 
-1. Generate the new ZSK and had the public key to your zone file while still
+1. Generate the new ZSK and add the public key to your zone file while still
 signing the zone with the old ZSK.
-2. Add the old ZSK to the zone file and start signing with the new ZSK.
-3. Remove the old ZSK from the zone file and sign with with the new ZSK.
-
-In order to avoid loss of service with some clients, it is a good idea to
-wait at least twice the zone TTL between the first step and the second, and
-between the second step and the third.
+2. Add the old ZSK public key to the zone file and start signing with the new
+ZSK.
+3. Remove the old ZSK from the zone file and continue signing with with the new
+ZSK.
 
 As I personally never use a TTL longer than a day, I allow two days between
 the steps.
@@ -837,9 +837,9 @@ this script with the `newkey` argument:
     sh ~/bin/zskRollover.sh newkey example.org
     
 Then update the serial in the `example.org.template` file and run the
-`dnsSignZone.sh` script to create a new signed zone for file for example.org
-that is still signed by the old ZSK key but tells clients the new ZSK is also
-valid for the zone.
+`dnsSignZone.sh` script to create a new signed zone file for example.org that
+is still signed by the old ZSK key but tells clients the new ZSK is also valid
+for the zone.
 
 Two days later:
 
@@ -847,7 +847,7 @@ Two days later:
     sh ~/bin/zskRollover.sh switch example.org
     
 Again update the serial in the `example.org.template` file and run the
-`dnsSignZone.sh` script to create a new signed zone for file for example.org.
+`dnsSignZone.sh` script to create a new signed zone file for example.org.
 
 That will create a signed zone file using the new ZSK key but it will indicate
 that responses signed by the previous key are valid.
@@ -965,7 +965,7 @@ Then you can remove the old signature from your zone as it is no longer
 necessary:
 
     cd ~/zonesign
-    sh ~/bin/kskRollover.sh newkey example.org
+    sh ~/bin/kskRollover.sh switch example.org
     
 Update the serial for the zone and run the `dnsSignZone.sh` script. The zone is
 now only being signed with the new KSK, the old has been retired.
@@ -1047,7 +1047,7 @@ minute. When it finds new files in that directory, then the master should:
 the existing `zones.config` upon success.
 2. `/bin/cat` the new domain.tld.zone *or* domain.tld.zone.signed file on top
 of the old `/etc/nsd/domain.tld.zone` file, creating a new one if it does not
-already exist.
+already exist. Then delete the uploaded zone from the incoming directory.
 3. Restart the NSD daemon.
 4. Rebuild and reload the NSD database
 5. Issue a notify to all the slaves
@@ -1056,7 +1056,7 @@ Remember that when generating the `zones.config` file that it is different for
 the master than for the slaves.
 
 For the master, each zone defined needs a `notify` and `provide-xfr` directive
-for each slave.
+pointing to each slave.
 
 For the slaves, each zone defined needs a `allow-notify` and `request-xfr`
 directive that points to the master.
@@ -1079,10 +1079,10 @@ there was a problem uploading the signed zone file after any of those steps
 were performed (e.g. a temporary network outage) then proceeding with the next
 step in the rollover could result in a loss of service for some users.
 
-Your automation must verify that each previous step in the rollover worked
-before proceeding with the next step.
+Your automation therefore **must** verify that each previous step in the
+rollover worked before proceeding with the next step.
 
-Google's public nameservers are a nice nameserver to specify to dig when
+Google's public nameservers are a nice nameserver to specify to `dig` when
 testing. They are fully DNSSEC aware, if they give you the result you expect
 then the previous step did in fact work.
 
@@ -1093,7 +1093,8 @@ interaction with the domain registrar. Fortunately this only needs to be done
 about once a year.
 
 Once a week, say every Wednesday, scan the `zonesign` directory for KSK keys
-that are at least 345 days old (ignoring the archive directory).
+that are at least 345 days old (top level of the zonesign directory, ignore
+the `archive` sub-directory where expired keys are preserved).
 
 When it finds a key that is at least 345 days old:
 
@@ -1105,7 +1106,7 @@ new DS information has been added through their registrar. If not, send a
 reminder e-mail.
 3. If new DS information is in place, check to see if the expiring DS info
 is still active. If it is, send an e-mail to the admin requesting that they
-delete the old DS infor from their registrar.
+delete the old DS info from their registrar.
 4. Once the old DS info has been removed, stop signing the zone with the old
 KSK.
 
