@@ -536,6 +536,7 @@ add one each edit).
     fi
     
     /bin/cat ${zone}.template > ${zone}.zone
+    /bin/echo -e '\n\n' >> ${zone}.zone
     
     if [ -f ${zone}.zone.signed ]; then
       ZSK=`/bin/grep -H "(zsk)" K${zone}.+*.key |/bin/head -1 |cut -d":" -f1 |/bin/sed -e s?"\.key$"?""?`
@@ -557,12 +558,18 @@ add one each edit).
     #KSK sign
     if [ -L rollover/${zone}.new.ksk ]; then
       #sign with both KSK keys
-      /usr/bin/ldns-signzone -n -p -s ${SALT} ${zone}.zone $ZSK $KSK rollover/${zone}.new.ksk
+      cd rollover
+      NKSK=`/bin/grep -H "(ksk)" K${zone}.+*.key |/bin/head -1 |cut -d":" -f1 |/bin/sed -e s?"\.key$"?""?`
+      cd ..
+      /usr/bin/ldns-signzone -n -p -s ${SALT} ${zone}.zone $ZSK $KSK rollover/${NKSK}
     else
       /usr/bin/ldns-signzone -n -p -s ${SALT} ${zone}.zone $ZSK $KSK
     fi
     
     #KSK DS
+    /bin/rm -f K256${zone}.+*.ds
+    /bin/rm -f K${zone}.+*.ds
+    
     /usr/bin/ldns-key2ds -n -1 ${zone}.zone.signed > ${KSK}.ds
     
     KKSK=`echo ${KSK} |/bin/sed -e s?"^K"?"K256"?`
@@ -829,7 +836,7 @@ this script with the `newkey` argument:
     cd ~/zonesign
     sh ~/bin/zskRollover.sh newkey example.org
     
-The update the serial in the example.org.template file and run the
+Then update the serial in the example.org.template file and run the
 `dnsSignZone.sh` script to create a new signed zone for file for example.org
 that is still signed by the old ZSK key but tells clients the new ZSK is also
 valid for the zone.
@@ -861,10 +868,66 @@ Remember after each step to upload the new signed zone files to your NSD
 master. Rebuild and reload the NSD database and send the notify message to the
 slaves.
 
-Most people seem to like the roll the ZSK key over once ever 1-3 months but I
+Most people seem to like the roll the ZSK key over once every 1-3 months but I
 personally like to start the process on the 1st and 16th of every month, just
 to reduce the lifespan of the 1024-bit ZSK key even more.
 
 Doing it twice a month doesn't cost me anything but it does significantly
 reduce the already slim odds that an attacker will crack the key while it is
 still a valid key.
+
+### KSK Rollover
+
+Rolling over the Key Signing Key is a different process. When a new KSK is
+generated, initially the zone needs to be signed by both the old and the new
+key.
+
+DS records for the new key must be submitted to your registrar, and after
+roughly twice the TTL of the zone has passed, then the zone is only signed
+using the new KSK and the DS records associated with the old key can be deleted
+from your registrar.
+
+To roll over the KSK, you can use the following script:
+
+    #!/bin/bash
+    # ~/bin/kskRollover.sh
+    
+    step=$1
+    zone=$2
+    if [ ! -f ${zone}.template ]; then
+      /bin/echo "Template file ${zone}.template not found."
+      exit 1
+    fi
+    [ ! -d archive ] && mkdir archive
+    [ ! -d rollover ] && mkdir rollover
+    
+    case "${step}" in
+      "newkey")
+        if [ ! -L rollover/${zone}.new.ksk ]; then
+          cd rollover
+          KSK=`/usr/bin/ldns-keygen -k -a RSASHA1-NSEC3-SHA1 -b 2048 ${zone}`
+          rm -f ${KSK}.ds
+          ln -s ${KSK}.key ${zone}.new.ksk
+        fi
+        exit 0
+        ;;
+      "switch")
+        if [ -L rollover/${zone}.new.ksk ]; then
+          OLD=`/bin/grep -H "(ksk)" K${zone}.+*.key |/bin/head -1 |cut -d":" -f1 |/bin/sed -e s?"\.key$"?""?`
+          mv "${OLD}.key" archive/
+          mv "${OLD}.private" archive/
+          cd rollover
+          rm ${zone}.new.ksk
+          KSK=`/bin/grep -H "(ksk)" K${zone}.+*.key |/bin/head -1 |cut -d":" -f1 |/bin/sed -e s?"\.key$"?""?`
+          mv "${KSK}.key" ../
+          mv "${KSK}.private" ../
+        fi
+        exit 0
+        ;;
+      *)
+        echo "usage: kskRollover.sh newkey|switch zone"
+        ;;
+    esac
+    
+    exit 1
+    
