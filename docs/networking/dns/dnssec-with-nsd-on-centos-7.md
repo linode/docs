@@ -1,7 +1,7 @@
 DNSSEC With NSD in RHEL / CentOS 7
 ==================================
 
-By Alice Wonder, Linode ACCT e-mail mpeters@domblogger.net
+By Alice Wonder
 
 The Domain Name System has some inherent insecurities, it is a system based
 largely upon trust. When a web browser requests an IP Address, it trusts the
