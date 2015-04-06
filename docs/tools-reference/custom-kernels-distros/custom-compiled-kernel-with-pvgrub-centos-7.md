@@ -1,42 +1,29 @@
 ---
-deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Instructions for configuring your Linode to run a custom compiled kernel with PV-GRUB.'
-keywords: 'compile kernel,kernel compiling,pv-grub,pvgrub,custom linux kernel,custom linode'
+description: 'Instructions for configuring your Linode to run a custom compiled kernel with PV-GRUB on CentOS 7'
+keywords: 'compile kernel,kernel compiling,pv-grub,pvgrub,custom linux kernel,custom linode, centos'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['platform/custom-kernels-distros/run-a-custom-compiled-kernel-with-pvgrub/',  'custom-instances/pv-grub-custom-compiled-kernel/']
 modified: Thursday, June 19th, 2014
 modified_by:
   name: Linode
 published: 'Saturday, July 17th, 2010'
-title: 'Run a Custom Compiled Kernel with PV-GRUB'
+title: 'Run a Custom Compiled Kernel with PV-GRUB on CentOS 7'
 ---
 
 For some use cases, you may wish to run a custom-compiled Linux kernel on your Linode. This can be useful if you need to enable certain kernel features that are unavailable in Linode-supplied or distribution-supplied kernels, or when you want to disable features that are compiled into such kernels. For example, some users may desire [SELinux](http://en.wikipedia.org/wiki/Security-Enhanced_Linux) support, which is not enabled in stock Linode kernels, and may not be enabled in some distribution-supplied kernels.
 
-If you'd rather run a distribution-supplied kernel instead, please follow our guide for [running a distribution-supplied kernel](/docs/tools-reference/custom-kernels-distros/run-a-distributionsupplied-kernel-with-pvgrub). Before proceeding with these instructions, you should follow the steps outlined in our [getting started](/docs/getting-started/) guide. After doing so, make sure you are logged into your Linode as the "root" user via an SSH session.
+If you'd rather run a distribution-supplied kernel instead, please follow our guide for [Running a Distribution-Supplied Kernel](/docs/tools-reference/custom-kernels-distros/run-a-distributionsupplied-kernel-with-pvgrub). Before proceeding with these instructions, you should follow the steps outlined in our [Getting Started](/docs/getting-started/) guide. After doing so, make sure you are logged into your Linode as the `root` user via an SSH session.
 
 ## Prepare the System
 
 Issue the following commands to update your package repositories and installed packages, install development tools required for compiling a kernel, and install the `ncurses` library.
 
-Ubuntu and Debian:
-
-    apt-get update
-    apt-get upgrade --show-upgraded
-    apt-get install -y build-essential libncurses5-dev
-
 CentOS and Fedora:
 
     yum update
     yum install -y ncurses-devel make gcc bc
-
-Arch Linux:
-
-    pacman -Syu
-    pacman -Sy base-devel ncurses
 
 If this is the first time you've compiled a kernel on your Linode, issue the following command to remove any existing files in the `/boot` directory. This helps avoid confusion later, as certain distributions elect to install a pre-compiled kernel package along with their development packages.
 
@@ -46,7 +33,7 @@ If this is the first time you've compiled a kernel on your Linode, issue the fol
 
 ### Download Kernel Sources
 
-1.  Download the latest 3.x kernel sources from [kernel.org](http://kernel.org/). A conventional location to download to is `/usr/src/kernels`, but it's not required.
+1.  Download the latest 3.x kernel sources from [kernel.org](http://kernel.org/). A conventional location to download to is `/usr/src/kernels/kernels`, but it's not required.
 
         wget https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.19.3.tar.xz
 
@@ -123,7 +110,7 @@ In the Linode Manager, edit your Linode's configuration profile to use `pv-grub-
 
 Once your Linode has rebooted, log back into it and issue the command `uname -a`. You should see output similar to the following, indicating you're running your custom kernel:
 
-    Linux li175-165 2.6.34.16-custom #1 SMP Sat Jul 17 17:09:58 EDT 2010 i686 i686 i386 GNU/Linux
+    Linux li175-165 3.19.3-custom #1 SMP Sat Jul 17 17:09:58 EDT 2010 i686 i686 i386 GNU/Linux
 
 Note that if you install an updated kernel, you'll need to add an entry for it to your `menu.lst` file. By default, the first kernel in the list will be booted. If you have multiple kernels installed, you can choose which one your Linode uses to boot by watching for the kernel list in the Lish console (see the "Console" tab in the Linode Manager). Congratulations, you've booted your Linode using a custom-compiled kernel!
 
