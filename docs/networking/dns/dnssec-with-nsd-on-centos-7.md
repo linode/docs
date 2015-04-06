@@ -183,8 +183,8 @@ With the script in its proper place, add the following to the `root` crontab:
 
     * * * * * /bin/bash /root/bin/start_nsd.sh > /dev/null 2>&1
     
-Once a minute, the cron daemon will run the script, starting the daemon if it
-is not already running. You probably do not want to load the cron job until
+Once a minute, the cron daemon will run the script, starting the NSD daemon if
+it is not already running. You probably do not want to load the cron job until
 you have NSD configured and working.
 
 If you need more information on how to use `cron`, see [Schedule Tasks with Cron](https://www.linode.com/docs/tools-reference/tools/schedule-tasks-with-cron).
