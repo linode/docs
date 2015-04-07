@@ -153,7 +153,7 @@ Create the following shell script and put it in the `/root/bin` directory:
       touch /root/nsdflush
     else
       [ ! -f /root/nsdflush ] && touch /root/nsdflush
-      if test `find /root/nsdflush -mmin 240`; then
+      if test `find /root/nsdflush -mmin +240`; then
         touch /root/nsdflush                #keep it from triggering
         sleep $[ ( $RANDOM % 600 ) + 1 ]
         /sbin/service nsd restart > /dev/null 2>&1
