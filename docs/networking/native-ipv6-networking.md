@@ -148,7 +148,7 @@ On CentOS or Fedora, edit `/etc/sysconfig/network-scripts/ifcfg-eth0` to set up 
 
 If you are using CentOS 6.5 or lower, restart networking:
 
-    service networking restart
+    service network restart
     
 If you are using CentOS 7, you will need to reload your configuration using `nmcli`, and bring your static interface down and back up:
 
