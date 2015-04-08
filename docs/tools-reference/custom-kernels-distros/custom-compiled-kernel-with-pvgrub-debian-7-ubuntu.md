@@ -104,5 +104,3 @@ Once your Linode has rebooted, log back into it and issue the command `uname -a`
 
 Note that if you install an updated kernel, you'll need to add an entry for it to your `menu.lst` file. By default, the first kernel in the list will be booted. If you have multiple kernels installed, you can choose which one your Linode uses to boot by watching for the kernel list in the Lish console (see the "Console" tab in the Linode Manager). Congratulations, you've booted your Linode using a custom-compiled kernel!
 
-
-
