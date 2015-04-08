@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # How to Install and Configure Don’t Starve Together Server on Ubuntu 14.04
 
 
@@ -22,7 +21,6 @@ contributor:
     name: Andrew Gottschling
     link: https://github.com/agottschling
 ---
->>>>>>> ed992cf6f64253f1e70854fb049135ce57dea609
 
 Don’t Starve Together is a multiplayer game written and published by Klei Entertainment, and is a multiplayer add on to their single-player game Don’t Starve. This guide will explain how to prepare your VPS, install SteamCMD, and install, then configure, Don’t Starve Together.
 
@@ -168,9 +166,7 @@ Once you see something similar to this, the server has been successfully launche
 	ModIndex: Load sequence finished successfully.  
 	Reset() returning
 
-You will see a error that looks similar to this:
 
-<<<<<<< HEAD
 You will see a error that looks similar to this:
 ```
 [200] Account Failed (6): "E_INVALID_TOKEN"
@@ -178,15 +174,6 @@ You will see a error that looks similar to this:
 !!!! Your Server Will Not Start !!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ```
-This is completely normal and we will fix this in the next step. 
-
-=======
-	[200] Account Failed (6): "E_INVALID_TOKEN"
-	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	!!!! Your Server Will Not Start !!!!
-	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
->>>>>>> ed992cf6f64253f1e70854fb049135ce57dea609
-
 This is completely normal and we will fix this in the next step. 
 
 Now, press the **CONTROL + C** keys simultaneously for a moment to quit the server. You will be left with your linux command prompt.
