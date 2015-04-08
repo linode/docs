@@ -13,6 +13,8 @@ published: 'Wednesday, April 1st, 2015'
 title: System Administration Cheat Sheet
 ---
 
+[Click Here]() to download this table as a PDF.
+
 <style type="text/css">
 .center {
 	text-align: center;
@@ -96,6 +98,7 @@ title: System Administration Cheat Sheet
 	color: #DD4814;
 }
 </style>
+
 
 <table id="cs-table">
 <colgroup>
