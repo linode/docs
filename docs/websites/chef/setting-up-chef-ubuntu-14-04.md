@@ -9,14 +9,14 @@ modified: Monday, March 30th, 2015
 modified_by:
   name: Elle Krout
 published: 'Monday, March 30th, 2015'
-title: Setting up a Chef Server, Workstation, and Node on Ubuntu 14.04
+title: Setting Up a Chef Server, Workstation, and Node on Ubuntu 14.04
 ---
 
 Chef is an automation platform that "turns infrastructure into code," allowing users to manage and deploy resources across multiple servers, or *nodes*. Chef allows users to create and download recipes (stored in cookbooks) to automate content and policies on these nodes.
 
 Chef is comprised of a Chef Server, one or more workstations, and a number of nodes that are managed by the chef-client installed on each node.
 
-This guide will show users how to create and configure a Chef Server, a virtual workstation, and how to bootstrap a node, all on individual Linodes.
+This guide will show users how to create and configure a Chef Server, a virtual workstation, and how to bootstrap a node to run the chef-client, all on individual Linodes.
 
 {: .note }
 >The steps required in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
@@ -35,7 +35,7 @@ This guide will show users how to create and configure a Chef Server, a virtual 
 
 The Chef Server is the hub of interaction between all workstations and nodes using Chef. Changes made through workstations are uploaded to the Chef Server, which is then accessed by the chef-client and used to configure each individual node.
 
-### Install and Configure the Chef Server
+### Install the Chef Server
 
 1.	Download the latest Chef Server core (12.0.6 at the time of writing):
 
@@ -49,55 +49,35 @@ The Chef Server is the hub of interaction between all workstations and nodes usi
 
 		rm chef-server-core_12.0.6-1_amd64.deb
 
-4.	Download the Chef Development Kit:
-
-		wget https://opscode-omnibus-packages.s3.amazonaws.com/ubuntu/12.04/x86_64/chefdk_0.4.0-1_amd64.deb
-
-5.	Install the ChefDK:
-
-		sudo dpkg -i chefdk_0.4.0-1_amd64.deb
-
-6.	Check that Chef has been downloaded successfully by running:
-
-		knife --version
-
-	The version of Chef will be output.
-
-7.	Remove the download file for ChefDK:
-
-		rm chefdk_0.4.0-1_amd64.deb
-
-8.	Run the `chef-server-ctl` command to start the Chef Server services:
+4.	Run the `chef-server-ctl` command to start the Chef Server services:
 
 		sudo chef-server-ctl reconfigure
 
-9.	Generate the `chef-repo` filesystem from the main directory. This is where all of Chef's cookbooks, attributes, roles, and other configurations will be stored:
-
-		cd ~
-		chef generate repo chef-repo
-
-10.	Move to the `chef-repo` and make a new directory called `.chef`. There is where all certificates and configuration files will be stored:
-
-		cd chef-repo
-		mkdir .chef
 
 ### Create a User and Organization
 
-1.	In order to link workstations and nodes to the Chef Server, administrators and an organization need to be created with their associated RSA private keys. Create an administrator:
+1.	In order to link workstations and nodes to the Chef Server, administrators and an organization need to be created with their associated RSA private keys. From the home directory, create a `.chef` directory to store the keys:
 
-		sudo chef-server-ctl user-create username firstname lastname email password --filename ~/chef-repo/.chef/FILENAME.pem
+		cd ~
+		mkdir .chef
+
+2.	Create an administrator:
+
+		sudo chef-server-ctl user-create username firstname lastname email password --filename ~/.chef/FILENAME.pem
 
 2.	Create an organization. The `shortname` value should be a basic idenifier for your organization with no spaces, whereas the `fullname` can be the full, proper name of the organization. The `association_user`  value `username` refers to the username made in the step above:
 
-		sudo chef-server-ctl org-create shortname fullname --association_user username --filename ~/chef-repo/.chef/FILENAME.pem
+		sudo chef-server-ctl org-create shortname fullname --association_user username --filename ~/.chef/FILENAME.pem
 
-	Some sort of sum-up here. D:
+With the Chef Server installed and the needed RSA keys generated, you can move on to configuring your workstation, where all major work will be performed for your Chef's nodes.
 
-## Setting Up a Workstation
+## Workstations
 
 Your Chef workstation will be where you create and configure any recipes, cookbooks, attributes, and other changes made to your Chef configurations. Although this can be a local machine of any OS, there is some benefit to keeping a remote server as your workstation since it can be accessed from anywhere.
 
-1.	Download the latest Chef Developement Kit:
+### Setting Up a Workstation
+
+1.	Download the latest Chef Development Kit:
 
 		wget https://opscode-omnibus-packages.s3.amazonaws.com/ubuntu/12.04/x86_64/chefdk_0.4.0-1_amd64.deb
 
@@ -122,50 +102,115 @@ Your Chef workstation will be where you create and configure any recipes, cookbo
 
 		mkdir .chef
 
-7.	The RSA private keys generated when setting up the Chef Server will now need to be placed on this server. The process behind this will vary depending on if you are using SSH key pair authentication to log into your Linodes.
+### Add the RSA Private Keys
 
-	-	If you are **not** using key pair authentication, then log in to your **Chef Server** and use `scp` to copy the files from the server to the workstation, replacing `userauth` with the name of your user's file, `orgauth` with the name of the organization's private key file, `user` with your username on your workstation Linode, and `123.45.67.89` with the IP address of your workstation:
+1.	The RSA private keys generated when setting up the Chef Server will now need to be placed on this server. The process behind this will vary depending on if you are using SSH key pair authentication to log into your Linodes.
 
-			scp ~/chef-repo/.chef/userauth.pem user@123.45.67.89:
-			scp ~/chef-repo/.chef/orgauth.pem user@123.45.67.89:
+	-	If you are **not** using key pair authentication, then copy the file directly off of the Chef Server. replace `user` with your username on the server, and `123.45.67.89` with the URL or IP of your Chef Server:
 
-	-	If you **are** using key pair authentication, then this secton will be filled out when I get there~
+			scp user@123.45.67.89:~/.chef/*.pem ~/chef-repo/.chef/
 
-8.	From the home directory, move the keys to the `.chef` directory:
+	-	If you **are** using key pair authentication, then from the **computer terminal** copy the .pem files from your server to your workstation using the `scp` command. Replace `user` with the appropriate usernames, and `123.45.67.89` with the URL or IP for your Chef Server and `987.65.43.21` with the URL or IP for your workstation:
+
+			scp -3 user@123.45.67.89:~/.chef/*.pem user@987.65.43.21:~/chef-repo/.chef/
+
+2.	To confirm that the files have been copied successfully by listening the contents of the .chef directory:
+
+		ls ~/chef-repo/.chef
+
+	Your `.pem` files should be listed.
+
+### Add Version Control
+
+Because the workstation is used to add and edit cookbooks and other configuration files, it is beneficial to put it under version control. For this, Git proves to be a useful program.
+
+1.	Move to your home directory and download Git:
 
 		cd ~
-		mv *.pem ~/chef-repo/.chef/
+		sudo apt-get install git
 
-9.	Move to the `.chef` directory:
+2.	Configure Git by adding your username and email, replacing the needed values:
 
-		cd ~/chef-repo/.chef
+		git config --global user.name yourname
+		git config --global user.email user@email.com
 
-10.	Generate a knife configuration file:
+3.	Move to the chef-repo, and initialize the repository:
 
-		knife configure
+		cd ~/chef-repo
+		git init
 
-	You will be asked to confirm that the `knife.rb` file is being placed at `~/chef-repo/.chef/knife.rb`, as well as the URL (or IP) of the **Chef Server** prefixed with `https://` (`https://123.45.67.89`), the admin's username (created earlier), the name of the validator (can be anything), the path to the organization's validation key (`~/chef-repo/.chef/orgauth.pem`), and the location of the chef-repo (`~/chef-repo`).
+4.	Add the `.chef` directory to the `.gitignore` file:
 
-11.	The `client.rb` file will also need to be configured. Because the default location for the `client.rb` file is `/etc/chef/client.rb`, create that directory:
+		echo ".chef" > .gitignore
 
-		sudo mkdir /etc/chef
+5.  Add and commit all existing files:
 
-	Then generate the file:
+		git add .
+		git commit -m "initial commit"
 
-		sudo knife configure client /etc/chef
+6.	Make sure the directory is clean:
 
-12.	Because the Chef Server is located on a seperate Linode, the `client.rb` file will need to be updated to reflect this. Change the `chef_server_url` and the name of the validator to be the same as the values in the `knife.rb` file:
+		git status
+
+
+### Generate knife.rb
+
+1.	Create a knife configuration file by navigating to your `~/chef-repo/.chef` folder and opening a file named `knife.rb` in your chosen text editor.
+
+2.	Copy the following configuration into the `knife.rb` file, making the necessary changes. 
 
 	{: .file}
-	/etc/chef/client.rb
+	~/chef-repo/.chef/knife.rb
 	:	~~~
-		log_level        :info
-		log_location     STDOUT
-		chef_server_url  'https://123.45.67.89'
-		validation_client_name 'chef-validator'
+		log_level                :info
+		log_location             STDOUT
+		node_name                'username'
+		client_key               '~/chef-repo/.chef/userauth.pem'
+		validation_client_name   'organization-validator'
+		validation_key           '~/chef-repo/.chef/orgauth.pem'
+		chef_server_url          'https://123.45.67.89/organizations/orgshortname'
+		syntax_check_cache_path  '~/chef-repo/.chef/syntax_check_cache'
+		cookbook_path [ '~/chef-repo/cookbooks' ]
 		~~~
 
-## Bootstrapping a Node
+3.	Move to the chef-repo and copy the needed SSL certificates from the server:
+
+		cd ~/chef-repo
+		knife ssl fetch
+
+4.	Confirm that `knife.rb` is set up correctly by running the client list:
+
+		knife client list
+
+	The validator name should be output.
+
+With both the server and a workstation configured, it is possible to bootstrap your first node.
 
 
+## Bootstrap a Node
 
+Bootstrapping a node installs the chef-client and validates the node, preparing it to be able to read from the Chef Server and make any needed configuration changes picked up by the chef-client in the future.
+
+1.	Bootstrap the node:
+
+	-	As the node's root user:
+
+			knife bootstrap 123.45.67.89 -x root -P password --node-name nodename
+
+	-	As a user with sudo priviledges:
+
+			knife bootstrap 123.45.67.89 -x root -P password --sudo --node-name nodename
+
+2.	Confirm that the node has been bootstrapped by listing the nodes:
+
+		knife node list
+
+## Download the chef-client Cookbook
+
+The chef-client cookbook contains basic configuration for newly-installed nodes, such as setting up a cron job to run the chef-client, and removing the `vaidation.pem` file from your nodes for security purposes.
+
+1.	Download the cookbook:
+
+		knife cookbook site install chef-client
+
+2.	
