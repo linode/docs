@@ -46,7 +46,7 @@ This guide is also available as a printer friendly [Cheat Sheet](sysadmin-cheat-
 | Action                                     | Command / File                                  |
 |:-------------------------------------------|:------------------------------------------------|
 | API key location.                          | `etc/linode/longview.key`                             | 
-| Start in debug mode.<br><br>**Debian/Ubuntu**<br><br>**CentOS 7 & Fedora 20+**<br><br>**CentOS 6 & Fedora <=19** | <br><br>service longview stop && /etc/init.d/longview debug<br><br>systemctl stop longview<br><br>service longview stop<br>/etc/init.d/longview debug |
+| Start in debug mode.<br>**Debian/Ubuntu**<br><br>**CentOS 7 & Fedora 20+**<br><br>**CentOS 6 & Fedora <=19** | <br><br><br>service longview stop <br> /etc/init.d/longview debug<br><br>systemctl stop longview<br>/etc/init.d/longview debug<br><br>service longview stop<br>/etc/init.d/longview debug |
 | Log location.                              | `/var/log/linode/longview.log`                        |
 
 
