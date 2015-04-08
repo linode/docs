@@ -117,6 +117,7 @@ Once your configuration options are set, exit the configuration interface and an
 
 Note that there is no `initrd` line. With some distributions, the `initrd` image prepared during the kernel installation process will not work correctly with your Linode, and it isn't needed anyhow.
 
+
 ## Configure for PV-GRUB
 
 In the Linode Manager, edit your Linode's configuration profile to use `pv-grub-x86_64` as the "Kernel". Make sure the root device is specified as `xvda`. Save your changes by clicking "Save Profile" at the bottom of the page, and reboot your Linode from the "Dashboard" tab.
