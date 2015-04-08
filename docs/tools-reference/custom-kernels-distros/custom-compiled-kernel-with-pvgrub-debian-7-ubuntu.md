@@ -22,7 +22,7 @@ Issue the following commands to update your package repositories and installed p
 
     apt-get update
     apt-get upgrade --show-upgraded
-    apt-get install -y build-essential libncurses5-dev
+    apt-get install -y build-essential libncurses5-dev gcc
 
 If this is the first time you've compiled a kernel on your Linode, issue the following command to remove any existing files in the `/boot` directory. This helps avoid confusion later, as certain distributions elect to install a pre-compiled kernel package along with their development packages.
 
