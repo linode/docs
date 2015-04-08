@@ -161,7 +161,8 @@ title: System Administration Cheat Sheet
 		</td>
 		<td>
 			<strong>CentOS 7 & Fedora 20+</strong><br />
-			systemctl restart systemd-networkd<br />
+			systemctl stop longview<br />
+			/etc/init.d/longview debug<br />
 			<br />
 			<strong>CentOS 6 & Fedora &lt;=19</strong><br />
 			service longview stop<br />
