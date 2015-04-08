@@ -33,7 +33,7 @@ If this is the first time you've compiled a kernel on your Linode, issue the fol
 
 ### Download Kernel Sources
 
-1.  Download the latest 3.x kernel sources from [kernel.org](http://kernel.org/). A conventional location to download to is `/usr/src/kernels/kernels`, but it's not required.
+1.  Download the latest 3.x kernel sources from [kernel.org](http://kernel.org/). A conventional location to download to is `/usr/src/kernels/`, but it's not required.
 
         wget https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.19.3.tar.xz
 
