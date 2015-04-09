@@ -3,7 +3,6 @@
 
 ### Introduction
 
-=======
 ---
 author:
     name: Andrew Gottschling
@@ -168,12 +167,12 @@ Once you see something similar to this, the server has been successfully launche
 
 
 You will see a error that looks similar to this:
-```
-[200] Account Failed (6): "E_INVALID_TOKEN"
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!!!! Your Server Will Not Start !!!!
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-```
+
+    [200] Account Failed (6): "E_INVALID_TOKEN"
+    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    !!!! Your Server Will Not Start !!!!
+    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 This is completely normal and we will fix this in the next step. 
 
 Now, press the **CONTROL + C** keys simultaneously for a moment to quit the server. You will be left with your linux command prompt.
