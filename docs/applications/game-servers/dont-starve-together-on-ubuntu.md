@@ -17,14 +17,13 @@ contributor:
 
 Don’t Starve Together is a multiplayer game written and published by Klei Entertainment, and is a multiplayer add on to their single-player game Don’t Starve. This guide will explain how to prepare your Linode, install SteamCMD, and install, then configure, Don’t Starve Together.
 
-
 ## Prerequisites
 
 Have the following items before you begin:
 
 - A [Steam](http://store.steampowered.com) account.
 - A copy of [Don’t Starve Together](http://store.steampowered.com/app/322330/) that you have purchased on Steam.
-- A Up-to-date Linode running Ubuntu 14.04. We suggest you follow our [Getting Started](/docs/getting-started) guide for help configuring your Linode.
+- An up-to-date Linode running Ubuntu 14.04. We suggest you follow our [Getting Started](/docs/getting-started) guide for help configuring your Linode.
 
 {: .note }
 >This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the sudo command, reference the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
@@ -34,7 +33,6 @@ Have the following items before you begin:
 Don't Starve Together is sold on Steam, and requires a valid license. Therefore, we will use SteamCMD to download and maintain servers for games sold on steam.
 
 Because current generation Linodes run a 64-bit operating system, we need to download a few extra libraries in order to run SteamCMD.
-
 
 1.  Configure the package manager to include packages for i386 architecture:
 
@@ -58,7 +56,6 @@ If you have a firewall running on your Linode, add exceptions for SteamCMD:
     sudo iptables -A INPUT -p udp- m udp --sport 4380 --dport 1025:65355 -j ACCEPT
     sudo iptables -A INPUT -p udp -m udp --sport 10999 --dport 1025:65355 -j ACCEPT
     sudo iptables -A INPUT -p udp -m udp --sport 27000:27030 --dport 1025:65355 -j ACCEPT
-
 
 {: .note }
 > If you've configured your firewall according to our [Securing Your Server](/docs/security/securing-your-server) guide, be sure to add these port ranges to your `/etc/iptables.firewall.rules` file.
@@ -127,9 +124,7 @@ If you have a firewall running on your Linode, add exceptions for SteamCMD:
 
         quit
 
-
 ##Configuring Don’t Starve Together
-
 
 1.  Before you configure Don’t Starve Together, you should launch it at least once so that it can generate its configuration files:
 
@@ -201,8 +196,6 @@ If you have a firewall running on your Linode, add exceptions for SteamCMD:
 
         chmod +x ~/dstserver/bin/start_dst.sh
 
-
-
 ## Getting your Authentication Token
 
 You will need Don’t Starve Together installed on your personal computer to get your token.
@@ -221,7 +214,7 @@ You will need Don’t Starve Together installed on your personal computer to get
     It should look like this:
     [![DST Console with command](/docs/assets/DSTconsolecommand_resized.png)](/docs/assets/DSTconsolecommand.png)
 
-    Once you have done this, press **ENTER** on your keyboard. The console will close, and you can exit the game. What we care about is a file that has been generated in one of the following directories, depending on your operating system. 
+    Once you have done this, press **ENTER** on your keyboard. The console will close, and you can exit the game. Locate the file that has been generated in one of the following directories, depending on your operating system. 
 
     On Windows, the file is located in: 
 
@@ -241,9 +234,7 @@ You will need Don’t Starve Together installed on your personal computer to get
 
          scp ~/Documents/Klei/DoNotStarveTogether/server_token.txt user@12.34.56.78:~/.klei/DoNotStarveTogether/
 
-
 ##Using the Server
-
 
 1.  Now that your server is installed and configured, it can be launched by running the `start_dst.sh` script from the `~/dstserver/bin/` directory. Please note that if your current working directory is not `~/dstserver/bin/` the game will fail to start:
 
@@ -263,7 +254,6 @@ You will need Don’t Starve Together installed on your personal computer to get
         screen -r
 
 4.  To stop the server, bring back the console and press **CONTROL + C**.
-
 
 ## Entering The Server
 
