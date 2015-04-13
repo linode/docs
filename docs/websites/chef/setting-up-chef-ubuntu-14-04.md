@@ -58,7 +58,6 @@ The Chef Server is the hub of interaction between all workstations and nodes usi
 
 1.	In order to link workstations and nodes to the Chef Server, administrators and an organization need to be created with their associated RSA private keys. From the home directory, create a `.chef` directory to store the keys:
 
-		cd ~
 		mkdir .chef
 
 2.	Create an administrator:
@@ -69,7 +68,7 @@ The Chef Server is the hub of interaction between all workstations and nodes usi
 
 		sudo chef-server-ctl org-create shortname fullname --association_user username --filename ~/.chef/FILENAME.pem
 
-With the Chef Server installed and the needed RSA keys generated, you can move on to configuring your workstation, where all major work will be performed for your Chef's nodes.
+	With the Chef Server installed and the needed RSA keys generated, you can move on to configuring your workstation, where all major work will be performed for your Chef's nodes.
 
 ## Workstations
 
@@ -114,7 +113,7 @@ Your Chef workstation will be where you create and configure any recipes, cookbo
 
 			scp -3 user@123.45.67.89:~/.chef/*.pem user@987.65.43.21:~/chef-repo/.chef/
 
-2.	To confirm that the files have been copied successfully by listening the contents of the .chef directory:
+2.	To confirm that the files have been copied successfully by listing the contents of the `.chef` directory:
 
 		ls ~/chef-repo/.chef
 
@@ -157,7 +156,7 @@ Because the workstation is used to add and edit cookbooks and other configuratio
 
 1.	Create a knife configuration file by navigating to your `~/chef-repo/.chef` folder and opening a file named `knife.rb` in your chosen text editor.
 
-2.	Copy the following configuration into the `knife.rb` file, making the necessary changes. 
+2.	Copy the following configuration into the `knife.rb` file, making the necessary changes:
 
 	{: .file}
 	~/chef-repo/.chef/knife.rb
@@ -173,9 +172,9 @@ Because the workstation is used to add and edit cookbooks and other configuratio
 		cookbook_path [ '~/chef-repo/cookbooks' ]
 		~~~
 
-3.	Move to the chef-repo and copy the needed SSL certificates from the server:
+3.	Move to the `chef-repo` and copy the needed SSL certificates from the server:
 
-		cd ~/chef-repo
+		cd ..
 		knife ssl fetch
 
 4.	Confirm that `knife.rb` is set up correctly by running the client list:
@@ -205,12 +204,61 @@ Bootstrapping a node installs the chef-client and validates the node, preparing 
 
 		knife node list
 
-## Download the chef-client Cookbook
+	Your new node should be included on the list.
 
-The chef-client cookbook contains basic configuration for newly-installed nodes, such as setting up a cron job to run the chef-client, and removing the `vaidation.pem` file from your nodes for security purposes.
+## Download a Cookbook (Optional)
 
-1.	Download the cookbook:
+When using Chef you will want the chef-client to periodically run on your nodes and pull in any changes pushed to the Chef Server. You will also want the `validation.pem` file that is uploaded to your node upon bootstrap to be deleted for security purposes. While these things can be done manually, it is often easier and more efficient to have it set up as a cookbook.
 
-		knife cookbook site install chef-client
+This section is optional, but provides instructions on downloading a cookbook to your workstation, pushing it to a server, and includes the skeleton of a basic cookbook to expand and experiment with.
 
-2.	
+1.	From your **workstation** download the cookbook and dependencies:
+
+		knife cookbook site install cron-delvalidate
+
+2.	(Optional) Open the `default.rb` file to examine the default cookbook recipe:
+
+	{: .file-excerpt}
+	~/chef-repo/cookbooks/cron-delvalidate/recipies/default.rb
+	:	~~~
+		#
+		# Cookbook Name:: cron-delvalidate
+		# Recipe:: Chef-Client Cron & Delete Validation.pem
+		#
+		#
+
+		cron "clientrun" do
+		  minute '0'
+		  hour '*/1'
+		  command "/usr/bin/chef-client"
+		  action :create
+		end
+
+		file "/etc/chef/validation.pem" do
+		  action :delete
+		end
+		~~~
+
+	The section `cron "clientrun" do` defines the cron action. It is set to run the chef-client action (`/usr/bin/chef-client`) every hour (`*/1` with the `*/` defining that it's every hour and not 1AM daily). The `action` code denotes that Chef is *creating* a new cronjob.
+
+	`file "/etc/chef/validation.pem" do` calls to the `validation.pem` file. The `action` defines that the file should be removed (`:delete`).
+
+	These are two very basic sets of code in Ruby, and provide an example of the code structure that will be used when creating Chef cookbooks. These examples can be edited and expanded as needed.
+
+3.	Add the recipe to your node's run list, replacing `nodename` with your node's name:
+
+		knife node run_list add nodename 'recipe[cron-delvalidate::default]'
+
+4.	Push the cookbook to the Chef server:
+
+		knife cookbook upload cron-delvalidate
+
+	This command is also used when updating cookbooks.
+
+5.	Switch to your **bootstrapped** nodes and run the inital chef-client command:
+
+		chef-client
+
+	The recipes in the Run List will then be pulled from the server and run. In this instance, it will be the `cron-delvalidate` recipe, which then means that any cookbooks made, pushed to the Chef Server, and added to the node's Run List will be periodically pulled down once an hour, eliminating the need to got into the node in the future to pull down changes.
+
+
