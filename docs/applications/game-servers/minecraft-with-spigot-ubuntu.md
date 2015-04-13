@@ -1,6 +1,6 @@
 ---
 author:
-  name: ???
+  name: Sam Mauldin
   email: --
 description: 'Run a Mincecraft server with Spigot on Ubuntu'
 keywords: 'garry''s mod,centos,centos 7'
@@ -10,28 +10,27 @@ published: 'Friday, April 10th, 2015'
 modified: Friday, April 10th, 2015
 modified_by:
   name: Elle Krout
-title: 'Running a 1.8 Spigot Minecraft Server on Ubuntu 12.04 though 15.04'
+title: 'Running a 1.8 Spigot Minecraft Server on Ubuntu 14.04 and 14.10'
 contributor:
-    name: ???
-    link: ???
+    name: Sam Mauldin
 ---
 
-This guide shows you how to setup your own Minecraft server on a Linode running Ubuntu 12.04 through 14.10. You can play online with your friends and/or host a public server.
+This guide shows you how to setup your own Minecraft server on a Linode running Ubuntu 14.04/14.10. You can play online with your friends and/or host a public server.
 
 We'll compile the [Spigot](https://spigotmc.com) Minecraft server (1.8.3 at the time of publication) so you can use the whole expanse of Bukkit plugins available then deploy it so you can start crafting.
 
 ## Preparation
 
-First, we'll need to install Oracle's JRE, because OpenJDK just won't cut it for running intensive applications.
-
 ### Updating your system
 
-Make sure your system is up to date before installing things. Run the following in a command line. Also, make sure that git is installed.
+Make sure your system is up to date before installing things. Run the following in a command line. Also, make sure that git is installed:
 
 	sudo apt-get update && sudo apt-get upgrade
 	sudo apt-get install git
 
 ### Installing Oracle Java
+
+We'll need to install Oracle's JRE, because OpenJDK just won't cut it for running intensive applications.
 
 1.	We'll being using the [Webupd8](http://www.webupd8.org) PPAs to install Java because it's not in the official package repositories.
 
@@ -53,11 +52,11 @@ Make sure your system is up to date before installing things. Run the following 
 
 ### Add Firewall Exception
 
-If you completed the guide without error, and can view the server console, but not connect, then your firewall may be blocking the Minecraft port. Try adding a rule to your firewall.
+If running an IP tables firewall (as shown in the [Securing Your Server](/docs/security/securing-your-server/) guide), add an exception to your iptables rules:
 
 	sudo iptables -A INPUT -p tcp --dport 25565 -j ACCEPT
 
-If you're using something other than iptables for a firewall, then you'll need to allow incoming TCP connections over port 25565.
+If you are running a different form of firewall, an exception will also need to be added.
 
 ### Creating a Minecraft user
 
@@ -69,85 +68,74 @@ If you're using something other than iptables for a firewall, then you'll need t
 
 		su - minecraft
 
-## Building SpigotMC
+## Installing SpigotMC
 
-Now let's install SpigotMC, a high performance Minecraft server based on Bukkit.
+1.	Now let's install SpigotMC, a high performance Minecraft server based on Bukkit.
 
-	mkdir build
-	cd build
-	wget https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar
-	nice -n 15 java -jar BuildTools.jar
+		mkdir build
+		cd build
+		wget https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar
+		nice -n 15 java -jar BuildTools.jar
 
-This will take a few minutes, so take the opportunity to take a coffee break.
+	This will take a few minutes, so take the opportunity to take a coffee break.
 
-### Installing Spigot
+2.	When the build has finished, move the resulting jar to a server folder.
 
-When the build has finished, move the resulting jar to a server folder.
+		mkdir ../server
+		cd ../server
+		mv ../build/spigot-1.*.jar spigot.jar
 
-	mkdir ../server
-	cd ../server
-	mv ../build/spigot-1.*.jar spigot.jar
+3.	We'll make a few scripts to make sure that your server's always up. Open a file called `wrapper.sh` in your perfered text editor. In the text editor, insert the following.
 
-We'll make a few scripts to make sure that your server's always up.
-
-	nano wrapper.sh
-
-In the text editor, insert the following.
-
-	#!/bin/bash
-	cd /home/minecraft/server;
+	{: .file}
+	wrapper.sh
+	:	~~~
+		#!/bin/bash
+		cd /home/minecraft/server;
 	
-	while true; do
-	java -XX:MaxPermSize=128M -Xms512M -Xmx900M -jar spigot.jar
-	sleep 5
-	done
+		while true; do
+		java -XX:MaxPermSize=128M -Xms512M -Xmx900M -jar spigot.jar
+		sleep 5
+		done
+		~~~
 
-You may want to change the RAM allocated depending on your Linode specs. Press Ctrl-X on your keyboard and type `y` to save your changes. Then make the file executable.
+You may want to change the RAM allocated depending on your Linode specs. Save your changes.
 
-	chmod +x wrapper.sh
+4.	Then make the file executable.
 
-Start your server for the first time.
+		chmod +x wrapper.sh
 
-	java -Xms512M -Xmx900M -jar spigot.jar
+5.	Start your server for the first time.
 
-It'll close itself and tell you to accept the EULA.
+		java -Xms512M -Xmx900M -jar spigot.jar
 
-	nano eula.txt
+6.	It'll close itself and tell you to accept the EULA.
 
-Change the value of eula to `true`.
+		nano eula.txt
+
+	Change the value of eula to `true`.
 
 ### Starting your server on boot
 
-We'll add an entry to rc.local to start your server.
+1.	We'll add an entry to rc.local to start your server.
 
-	sudo nano /etc/rc.local
+		sudo nano /etc/rc.local
 
-Change it to look like this, respecting previous edits:
+2.	Change it to include the following before the `exit 0` line:
 
-	#!/bin/sh -e
-	#
-	# rc.local
-	#
-	# This script is executed at the end of each multiuser runlevel.
-	# Make sure that the script will "exit 0" on success or any other
-	# value on error.
-	#
-	# In order to enable or disable this script just change the execution
-	# bits.
-	#
-	# By default this script does nothing.
-	
-	su -l minecraft -c "screen -dmS minecraft /home/minecraft/server/wrapper.sh"
-	
-	exit 0
+	{: .file-excerpt}
+	/etc/local.rc
+	:	~~~
+		su -l minecraft -c "screen -dmS minecraft /home/minecraft/server/wrapper.sh"
+		~~~
 
-Now, start your server!
+3.	Now, start your server!
 
-	screen -dmS minecraft /home/minecraft/server/wrapper.sh
+		screen -dmS minecraft /home/minecraft/server/wrapper.sh
 
-To access the console, type `screen -r` as your Minecraft user. You might want to `/op` yourself so you can run admin commands. Have fun playing on your new Minecraft server! The IP that you connect with in Minecraft is the same as your Linode IP.
+	To access the console, type `screen -r` as your Minecraft user. You might want to `/op` yourself so you can run admin commands. Have fun playing on your new Minecraft server! The IP that you connect with in Minecraft is the same as your Linode IP.
 
-Happy crafting!
+	Happy crafting!
 
 ## Customization
 
