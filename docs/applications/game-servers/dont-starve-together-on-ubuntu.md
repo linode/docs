@@ -1,14 +1,14 @@
 ---
 author:
-    name: Andrew Gottschling
-    email: andrewgottschling@gmx.us
+    name: Linode Community
+    email: docs@linode.com
 description: 'Install and configure a Don''t Starve Together server for Ubuntu 14.04'
-keywords: 'don''t starve, don''t starve together, game servers, games, ubuntu, ubuntu 14.04'
+keywords: 'don''t starve,don''t starve together,game servers,games,ubuntu, ubuntu 14.04,steam'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-published: ''
-modified: Friday, April 10, 2015
+published: 'Tuesday, April 14, 2015'
+modified: Tuesday, April 14, 2015
 modified_by:
-  name: Alex Fornuto
+    name: Alex Fornuto
 title: 'Install and Configure Don''t Starve Together Server on Ubuntu 14.04'
 contributor:
     name: Andrew Gottschling
