@@ -93,6 +93,7 @@ These authors got their articles published and \$100. You could be next.
 -   [Garry's Mod on CentOS 7](/docs/applications/game-servers/garrys-mod-server-on-centos-7) - Julian Meyer
 -   [OSSEC IDS on Debian 7](/docs/security/ossec-ids-debian-7) - Sunday Ogwu-Chinuwa
 -	[Turbocharge Your WordPress Search Using Solr](/docs/websites/cms/turbocharge-wordpress-search-with-solr) - Karthik Shiraly
+-	[Install and Configure Don''t Starve Together Server on Ubuntu 14.04](/docs/applications/game-servers/dont-starve-together-on-ubuntu) - Andrew Gottschling
 
 
 Legal Information
