@@ -40,6 +40,12 @@ We'll need to install Oracle's JRE, because OpenJDK just won't cut it for runnin
 
 	You'll be asked to accept the Oracle Java license.
 
+	{: .note}
+	>
+	>If you would rather install Java 8, do so with the following:
+	>
+	>	sudo apt-get install oracle-java8-installer
+
 2.	Now we should have Java installed. Type `java -version` to make sure. You should see something like this:
 
 		java version "1.7.0_76"
@@ -66,7 +72,7 @@ If you are running a different form of firewall, an exception will also need to 
 
 2.	Type a password then accept all the defaults. Then login to the Minecraft account.
 
-		su - minecraft
+		sudo su - minecraft
 
 ## Installing SpigotMC
 
@@ -117,11 +123,13 @@ You may want to change the RAM allocated depending on your Linode specs. Save yo
 
 ### Starting your server on boot
 
-1.	We'll add an entry to rc.local to start your server.
+1.	Exit out of the minecraft user so we have permission to modify `/etc/rc.local`. We'll add an entry in it to start your server at boot:
 
-		sudo nano /etc/rc.local
+		exit
 
-2.	Change it to include the following before the `exit 0` line:
+2.	Open `/etc/rc.local` in your preferred text editor.
+
+4.	Change it to include the following before the `exit 0` line:
 
 	{: .file-excerpt}
 	/etc/local.rc
@@ -129,11 +137,11 @@ You may want to change the RAM allocated depending on your Linode specs. Save yo
 		su -l minecraft -c "screen -dmS minecraft /home/minecraft/server/wrapper.sh"
 		~~~
 
-3.	Now, start your server!
+5.	Now, start your server!
 
-		screen -dmS minecraft /home/minecraft/server/wrapper.sh
+		sudo su -l minecraft -c "screen -dmS minecraft /home/minecraft/server/wrapper.sh"
 
-	To access the console, type `screen -r` as your Minecraft user. You might want to `/op` yourself so you can run admin commands. Have fun playing on your new Minecraft server! The IP that you connect with in Minecraft is the same as your Linode IP.
+	To access the console, type `screen -r` as your **minecraft** user. To run admin commands during the game run `op username` replacing `username` with your in-game username. Have fun playing on your new Minecraft server! The IP that you connect with in Minecraft is the same as your Linode IP.
 
 	Happy crafting!
 
@@ -155,7 +163,12 @@ You may want to change the RAM allocated depending on your Linode specs. Save yo
 
 ###Plugins
 
-To add Bukkit plugins, put the .jar in `/home/minecraft/server/plugins` then type `stop`
-into the server console.
+1.	To add Bukkit plugins, download the file to your server using the `wget` command, and then put the .jar in `/home/minecraft/server/plugins`:
 
+		wget <plugin url>
+		mv <plugin file> /home/minecraft/server/plugins/<plugin file>
+
+2.	From within your screen session type `stop` to reset the server. Your plugin will be loaded:
+
+		stop
 
