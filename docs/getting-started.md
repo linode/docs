@@ -36,7 +36,7 @@ After your Linode is created, you'll need to prepare it for operation. In this s
 
 The [Linode Manager](https://manager.linode.com) is a web-based control panel that allows you to manage your Linode virtual servers and services. Log in now by entering the username and password you created when you signed up. After you've created your first Linode, you can use the Linode Manager to boot and shut down your virtual server, access monitoring statistics, update your billing and account information, request support, and perform other administrative tasks.
 
-### Deploying am Image
+### Deploying an Image
 
 After creating your new Linode, select it and then click on **Deploy an Image**. You'll be prompted to deploy a *Linux distribution*, as shown below. This is the operating system that will be installed on your Linode. You can choose from [Arch Linux](http://www.archlinux.org/), [CentOS](http://www.centos.org/), [Debian](http://www.debian.org/), [Fedora](http://fedoraproject.org/), [Gentoo](http://www.gentoo.org/), [openSUSE](http://www.opensuse.org/en/), [Slackware](http://www.slackware.com/), and [Ubuntu](http://www.ubuntu.com/).
 
