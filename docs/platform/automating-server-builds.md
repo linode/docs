@@ -12,7 +12,9 @@ published: 'Friday, June 28th, 2013'
 title: Automating Server Builds
 ---
 
-If you run a large website that requires multiple servers, or have a general interest in server automation, you may want to automate your server builds. You can rapidly spin up multiple servers with exactly the same configuration by creating a *golden image* that can be cloned to multiple Linodes, or by making a *StackScript* that installs the same software and settings on each Linode, with the intention of eliminating server descrepancies.
+If you run a large website that requires multiple servers, or have a general interest in server automation, you may want to automate your server builds. You can rapidly spin up multiple servers with exactly the same configuration by creating a *golden image* that can be cloned to multiple Linodes with the intention of eliminating server discrepancies.
+
+Server configuration can also be automated through [Stackcripts](https://www.linode.com/stackscripts). View the [Stackscripts](/docs/platform/stackscripts/) guide for more information.
 
 ##Why You Should Automate Server Builds
 
@@ -84,13 +86,9 @@ You can create and store a golden disk using an *existing Linode*, with some dra
 
 After you restore or clone a disk to another Linode, you may need to change its hostname and IP address. For instructions on changing the hostname, see [Setting the Hostname](/docs/getting-started#sph_setting-the-hostname). If the golden disk was configured to use a static IP address, you'll also need to replace the IP address. See [Static IP Configuration](/docs/networking/configuring-static-ip-interfaces#sph_static-ip-configuration) for more information.
 
-## StackScripts
-
-[StackScripts](http://www.linode.com/stackscripts) are custom scripts that run when a Linode boots for the first time. You can use public StackScripts that were contributed by members of the community, or you can create your own StackScript that is private to your account. StackScripts can update the system, set the host name, add SSH keys, install packages, and even configure settings. For more information about StackScripts, and to learn how you can use them to automate server builds, [see this article](https://library.linode.com/stackscripts).
-
 ## Third-Party Tools
 
-Golden disks and StackScripts are capable of handling automated server builds for most individuals and small businesses, but if you work for a large business that manages dozens of Linodes, you may need to turn to a third-party configuration management tool such as:
+Golden disks are capable of handling automated server builds for most individuals and small businesses, but if you work for a large business that manages dozens of Linodes, you may need to turn to a third-party configuration management tool such as:
 
 -   **Puppet:** An open source configuration management tool that manages systems declaratively. It can automates IT tasks like application configuration, patch management, and even infrastructure audit and compliance. See the following Puppet guides:
 
