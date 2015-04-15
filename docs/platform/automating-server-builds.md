@@ -45,7 +45,7 @@ These methods are discussed in further detail below, with the exception of [Lino
 
 ### Linode Backup Service
 
-If you subscribe to the [Linode Backup Service](http://www.linode.com/backups/), you can create a golden disk by making a manual backup of an existing disk. Take a *snapsnot* of the disk to back it up, and then restore it to your other Linodes. There's no need to clone or resize the disk. And the snapshot will be stored until you overwrite it with another backup.
+If you subscribe to the [Linode Backup Service](http://www.linode.com/backups/), you can create a golden disk by making a manual backup of an existing disk. Take a *snapsnot* of the disk to back it up, and then restore it to your other Linodes. There's no need to clone or resize the disk. The snapshot will be stored until you overwrite it with another backup.
 
 1.  Use the Linode's existing disk, or [create a new disk](/docs/disk-images-config-profiles#sph_creating-a-disk-image-with-a-linux-distribution-installed).
 2.  Install all necessary packages and configure the system settings.
@@ -58,7 +58,7 @@ If you subscribe to the [Linode Backup Service](http://www.linode.com/backups/),
 
 ### Dedicated Linode
 
-A dedicatd Linode can be used to store and maintain a golden disk. It can be shut down after you've created the disk, and then boot it to update the image.
+A dedicated Linode can be used to store and maintain a golden disk. It can be shut down after you've created the disk, and then boot it to update the image.
 
 1.  Use an existing Linode, or [set up a new one](/docs/getting-started#sph_signing-up).
 2.  Install all necessary packages and configure the system settings, if you haven't already done so.
@@ -70,7 +70,7 @@ A dedicatd Linode can be used to store and maintain a golden disk. It can be shu
 
 ### Existing Linode
 
-You can create and store a golden disk using an *existing Linode*, with some drawbacks: All of the disks stored on the Linode will need to be resized to fit within your Linode's allocated storage space, and you will have to shut down the Linode to duplicate and clone the disk, which will result in downtime.
+You can create and store a golden disk using an *existing Linode*, with some drawbacks: All of the disks stored on the Linode will need to be resized to fit within your target Linode's allocated storage space, and you will have to shut down the Linode to ensure an accurate clone, which will result in downtime.
 
 1.  Use the Linode's existing disk, or [create a new disk](/docs/disk-images-config-profiles#sph_creating-a-disk-image-with-a-linux-distribution-installed).
 2.  Install all necessary packages and configure the system settings, if you haven't already done so.
