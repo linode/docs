@@ -9,7 +9,7 @@ modified: Thursday, June 19th, 2014
 modified_by:
     name: Linode
 published: 'Saturday, July 17th, 2010'
-title: 'Run a Custom Compiled Kernel with PV-GRUB on Arch Linux'
+title: 'Custom Compiled Kernel with PV-GRUB on Arch Linux'
 ---
 
 For some use cases, you may wish to run a custom-compiled Linux kernel on your Linode. This can be useful if you need to enable certain kernel features that are unavailable in Linode-supplied or distribution-supplied kernels, or when you want to disable features that are compiled into such kernels. For example, some users may desire [SELinux](http://en.wikipedia.org/wiki/Security-Enhanced_Linux) support, which is not enabled in stock Linode kernels, and may not be enabled in some distribution-supplied kernels.
