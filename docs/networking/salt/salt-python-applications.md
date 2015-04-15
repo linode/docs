@@ -12,7 +12,7 @@ published: 'Wednesday, April 9th, 2015'
 title: Salt for Python Applications
 ---
 
-Salt, also called SaltStack, is designed for server management. A single Salt Master controls many Salt Minions. The master can remotely run commands, transfer files, and can do much more concerning scalability. 
+Salt, also called SaltStack, is designed for server management. A single Salt Master controls many Salt Minions. The master can remotely run commands, transfer files, and much more concerning scalability. 
 
 This tutorial is primarily for Salt, although it does display how to create and then remotely run a server-side Python application.
 
