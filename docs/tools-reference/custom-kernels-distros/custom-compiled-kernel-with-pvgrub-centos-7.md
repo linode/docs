@@ -22,8 +22,6 @@ Prior to these instructions, follow the steps outlined in our [Getting Started](
 
 Update your package repositories and installed packages, install the development tools required for compiling a kernel, and install the `ncurses` library.
 
-CentOS and Fedora:
-
     yum update
     yum install -y ncurses-devel make gcc bc
 
@@ -57,14 +55,14 @@ The kernel must be properly configured to run under the Linode environment. Some
 -   CONFIG\_XEN\_SCRUB\_PAGES=y
 -   CONFIG\_HVC\_XEN=y
 
-It's recommended to start with a kernel config from a running Linode kernel. All Linode kernels expose their configuraton via `/proc/config.gz`. For example:
+It's recommended to start with a kernel config from a running Linode kernel. All Linode kernels expose their configuration via `/proc/config.gz`. For example:
 
     zcat /proc/config.gz > .config
     make oldconfig
 
-`make oldconfig` prompts a user to answer any new configuration options not present in the old configuration file.
+`make oldconfig` prompts the user to answer any new configuration options not present in the old configuration file.
 
-Changes to the kernel's configuration can be made with the `menuconfig` command. Enable any additional options, make sure to leave filesystem support (likely ext3 or ext4) compiled into the kernel (*not* configured as a module). For example, to enable SELinux support, check the option "Security options --\> NSA SELinux Support" in the configuration interface. :
+Changes to the kernel's configuration can be made with the `menuconfig` command. Enable any additional options, making sure to leave filesystem support (likely ext3 or ext4) compiled into the kernel (*not* configured as a module). For example, to enable SELinux support, check the option "Security options --\> NSA SELinux Support" in the configuration interface:
 
     make menuconfig
 
@@ -80,7 +78,7 @@ Once your configuration options are set, exit the configuration interface and an
         make install
         make modules_install
 
-2.  Give the kernel a more descriptive name. Modify the command as necessary to reflect the kernel version just compiled.
+2.  Give the kernel a more descriptive name. Modify the command as necessary to reflect the kernel version you've just compiled.
 
         mv /boot/vmlinuz /boot/vmlinuz-3.19.3-custom
 
@@ -88,11 +86,11 @@ Once your configuration options are set, exit the configuration interface and an
 
         mkinitrd -o initrd-3.19.3-custom.img
 
-3.  PV-GRUB looks for `menu.lst` in the directory `/boot/grub`. Create this directory with the following command:
+4.  PV-GRUB looks for `menu.lst` in the directory `/boot/grub`. Create this directory with the following command:
 
         mkdir /boot/grub
 
-4.  Create a `menu.lst` file with the following contents. Adjust the "title" and "kernel" lines to reflect the actual filenames found in the `/boot` directory.
+5.  Create a `menu.lst` file with the following contents. Adjust the "title" and "kernel" lines to reflect the actual filenames found in the `/boot` directory.
 
     {: .file-excerpt }
     /boot/grub/menu.lst
@@ -108,11 +106,11 @@ Note that there is no `initrd` line. With some distributions, the `initrd` image
 
 ## Configure for PV-GRUB
 
-In the Linode Manager, edit your Linode's configuration profile to use `pv-grub-x86_64` as the "Kernel". Make sure the root device is specified as `xvda`. Save the changes by clicking "Save Profile" at the bottom of the page, and reboot your Linode from the "Dashboard" tab.
+In the Linode Manager, edit your Linode's configuration profile to use `pv-grub-x86_64` as the "Kernel". Make sure the root device is specified as `xvda`. Save the changes by clicking **Save Profile** at the bottom of the page, and reboot your Linode from the "Dashboard" tab.
 
 Once the Linode has rebooted, log back into it and issue the command `uname -a`. You should see output similar to the following, indicating you're running the custom kernel:
 
     Linux li175-165 3.19.3-custom #1 SMP Sat Jul 17 17:09:58 EDT 2010 i686 i686 i386 GNU/Linux
 
-Note, if you install an updated kernel, you need to add an entry for it to your `menu.lst` file. By default, the first kernel in the list is booted. If you have multiple kernels installed, you can choose which kernal your Linode uses to boot by watching for the kernel list in the Lish console (see the "Console" tab in the Linode Manager). Congratulations, you've booted your Linode using a custom-compiled kernel!
+Note that if you install an updated kernel, you need to add an entry for it to your `menu.lst` file. By default, the first kernel in the list is booted. If you have multiple kernels installed, you can choose which kernel your Linode uses to boot by watching for the kernel list in the Lish console (see the "Console" tab in the Linode Manager). Congratulations, you've booted your Linode using a custom-compiled kernel!
 
