@@ -5,7 +5,7 @@ author:
 description: Our guide to automating server builds with the Linode Manager
 keywords: 'server builds,disks,golden disk,puppet,chef'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Wednesday, March 25, 2015
+modified: Wednesday, April 15, 2015
 modified_by:
   name: Alex Fornuto
 published: 'Friday, June 28th, 2013'
