@@ -14,6 +14,7 @@ featured:
  - linode-images.md
  - linode-managed.md
  - package-mirrors.md
+ - automating-server-builds.md
  - stackscripts.md
  - billing-and-payments.md
  - support.md
