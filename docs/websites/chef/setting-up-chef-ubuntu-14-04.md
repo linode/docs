@@ -19,7 +19,7 @@ Chef is comprised of a Chef Server, one or more workstations, and a number of no
 This guide will show users how to create and configure a Chef Server, a virtual workstation, and how to bootstrap a node to run the chef-client, all on individual Linodes.
 
 {: .note }
->The steps required in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
 ##Prerequisites
 
@@ -37,17 +37,17 @@ The Chef Server is the hub of interaction between all workstations and nodes usi
 
 ### Install the Chef Server
 
-1.	Download the latest Chef Server core (12.0.6 at the time of writing):
+1.	[Download](https://downloads.chef.io/chef-server/ubuntu/) the latest Chef Server core (12.0.7 at the time of writing):
 
-		wget https://web-dl.packagecloud.io/chef/stable/packages/ubuntu/trusty/chef-server-core_12.0.6-1_amd64.deb
+		wget https://web-dl.packagecloud.io/chef/stable/packages/ubuntu/trusty/chef-server-core_12.0.7-1_amd64.deb
 
 2.	Install the server:
 
-		sudo dpkg -i chef-server-core_12.0.6-1_amd64.deb
+		sudo dpkg -i chef-server-core_*.deb
 
 3.	Remove the download file:
 
-		rm chef-server-core_12.0.6-1_amd64.deb
+		rm chef-server-core_*.deb
 
 4.	Run the `chef-server-ctl` command to start the Chef Server services:
 
@@ -60,13 +60,13 @@ The Chef Server is the hub of interaction between all workstations and nodes usi
 
 		mkdir .chef
 
-2.	Create an administrator:
+2.	Create an administrator. Change `username` to your desired username, `firstname` and `lastname` to your first and last names, `email` to your email, `password` to a secure password, and `username.pem` to your username followed by `.pem`:
 
-		sudo chef-server-ctl user-create username firstname lastname email password --filename ~/.chef/FILENAME.pem
+		sudo chef-server-ctl user-create username firstname lastname email password --filename ~/.chef/username.pem
 
 2.	Create an organization. The `shortname` value should be a basic idenifier for your organization with no spaces, whereas the `fullname` can be the full, proper name of the organization. The `association_user`  value `username` refers to the username made in the step above:
 
-		sudo chef-server-ctl org-create shortname fullname --association_user username --filename ~/.chef/FILENAME.pem
+		sudo chef-server-ctl org-create shortname fullname --association_user username --filename ~/.chef/shortname.pem
 
 	With the Chef Server installed and the needed RSA keys generated, you can move on to configuring your workstation, where all major work will be performed for your Chef's nodes.
 
@@ -76,7 +76,7 @@ Your Chef workstation will be where you create and configure any recipes, cookbo
 
 ### Setting Up a Workstation
 
-1.	Download the latest Chef Development Kit:
+1.	[Download](https://downloads.chef.io/chef-dk/ubuntu/) the latest Chef Development Kit (0.4.0 at time of writing):
 
 		wget https://opscode-omnibus-packages.s3.amazonaws.com/ubuntu/12.04/x86_64/chefdk_0.4.0-1_amd64.deb
 
@@ -91,6 +91,31 @@ Your Chef workstation will be where you create and configure any recipes, cookbo
 4.	Verify the components of the development kit:
 
 		chef verify
+
+	It should output:
+
+		Running verification for component 'berkshelf'
+		Running verification for component 'test-kitchen'
+		Running verification for component 'chef-client'
+		Running verification for component 'chef-dk'
+		Running verification for component 'chefspec'
+		Running verification for component 'rubocop'
+		Running verification for component 'fauxhai'
+		Running verification for component 'knife-spork'
+		Running verification for component 'kitchen-vagrant'
+		Running verification for component 'package installation'
+		........................
+		---------------------------------------------
+		Verification of component 'rubocop' succeeded.
+		Verification of component 'kitchen-vagrant' succeeded.
+		Verification of component 'fauxhai' succeeded.
+		Verification of component 'berkshelf' succeeded.
+		Verification of component 'knife-spork' succeeded.
+		Verification of component 'test-kitchen' succeeded.
+		Verification of component 'chef-dk' succeeded.
+		Verification of component 'chef-client' succeeded.
+		Verification of component 'chefspec' succeeded.
+		Verification of component 'package installation' succeeded.
 
 5.	Generate the chef-repo and move into the newly-created directory:
 
@@ -123,9 +148,8 @@ Your Chef workstation will be where you create and configure any recipes, cookbo
 
 Because the workstation is used to add and edit cookbooks and other configuration files, it is beneficial to put it under version control. For this, Git proves to be a useful program.
 
-1.	Move to your home directory and download Git:
+1.	Download Git:
 
-		cd ~
 		sudo apt-get install git
 
 2.	Configure Git by adding your username and email, replacing the needed values:
@@ -133,9 +157,8 @@ Because the workstation is used to add and edit cookbooks and other configuratio
 		git config --global user.name yourname
 		git config --global user.email user@email.com
 
-3.	Move to the chef-repo, and initialize the repository:
+3.	From the chef-repo, initialize the repository:
 
-		cd ~/chef-repo
 		git init
 
 4.	Add the `.chef` directory to the `.gitignore` file:
@@ -151,12 +174,16 @@ Because the workstation is used to add and edit cookbooks and other configuratio
 
 		git status
 
+	It should output:
+
+		nothing to commit, working directory clean
+
 
 ### Generate knife.rb
 
 1.	Create a knife configuration file by navigating to your `~/chef-repo/.chef` folder and opening a file named `knife.rb` in your chosen text editor.
 
-2.	Copy the following configuration into the `knife.rb` file, making the necessary changes:
+2.	Copy the following configuration into the `knife.rb` file:
 
 	{: .file}
 	~/chef-repo/.chef/knife.rb
@@ -164,13 +191,21 @@ Because the workstation is used to add and edit cookbooks and other configuratio
 		log_level                :info
 		log_location             STDOUT
 		node_name                'username'
-		client_key               '~/chef-repo/.chef/userauth.pem'
-		validation_client_name   'organization-validator'
-		validation_key           '~/chef-repo/.chef/orgauth.pem'
-		chef_server_url          'https://123.45.67.89/organizations/orgshortname'
+		client_key               '~/chef-repo/.chef/username.pem'
+		validation_client_name   'shortname-validator'
+		validation_key           '~/chef-repo/.chef/shortname.pem'
+		chef_server_url          'https://123.45.67.89/organizations/shortname'
 		syntax_check_cache_path  '~/chef-repo/.chef/syntax_check_cache'
 		cookbook_path [ '~/chef-repo/cookbooks' ]
 		~~~
+
+	Change the following:
+
+	-	The value for `node_name` should be the username was was created above.
+	-	Change `username.pem` under `client_key` to reflect your `.pem` file for your **user**.
+	-	The `validation_client_name` should be your organization's `shortname` followed by `-validator`.
+	-	`shortname.pem` in the `validation_key` path should be set to the shortname was was defined in the steps above.
+	-	Finally the `chef_server-url` needs to contain the IP address or URL of your Chef Server, with the `shortname` in the file path changed to the shortname defined above.
 
 3.	Move to the `chef-repo` and copy the needed SSL certificates from the server:
 
@@ -192,13 +227,13 @@ Bootstrapping a node installs the chef-client and validates the node, preparing 
 
 1.	Bootstrap the node:
 
-	-	As the node's root user:
+	-	As the node's root user, changing `password` to your root password and `nodename` to the desired name for your node. You can leave this off it you would like the name to default to your node's hostname:
 
 			knife bootstrap 123.45.67.89 -x root -P password --node-name nodename
 
-	-	As a user with sudo priviledges:
+	-	As a user with sudo priviledges, changing `username` to the username of a user on the node, `password` to the user's passwork and `nodename` to the desired name for the node. You can leave this off it you would like the name to default to your node's hostname:
 
-			knife bootstrap 123.45.67.89 -x root -P password --sudo --node-name nodename
+			knife bootstrap 123.45.67.89 -x username -P password --sudo --node-name nodename
 
 2.	Confirm that the node has been bootstrapped by listing the nodes:
 
