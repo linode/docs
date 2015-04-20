@@ -39,7 +39,7 @@ Before beginning this guide, we suggest you first read through [Getting Started]
 
         apt-get install apache2
 
-3.  Edit the main Apache configuration file to adjust the KeepAlive setting, and add the `<IfModule mpm_preform_module>` section. The settings shown below are a good starting point for a **Linode 1GB**:
+3.  Edit the main Apache configuration file to adjust the KeepAlive setting, and add the `<IfModule mpm_prefork_module>` section. The settings shown below are a good starting point for a **Linode 1GB**:
 
     {: .file }
     /etc/apache2/apache2.conf
