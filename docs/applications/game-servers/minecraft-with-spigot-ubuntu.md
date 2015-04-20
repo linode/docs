@@ -15,7 +15,7 @@ contributor:
     name: Sam Mauldin
 ---
 
-This guide shows you how to setup your own Minecraft server on a Linode running Ubuntu 14.04/14.10. You can play online with your friends and/or host a public server.
+This guide shows you how to setup your own Minecraft server on a Linode running Ubuntu 14.04/14.10. You can play online with your friends or host a public server.
 
 We'll compile the [Spigot](https://spigotmc.com) Minecraft server (1.8.3 at the time of publication) so you can use the whole expanse of [Bukkit](https://bukkit.org/) plugins available.
 
@@ -64,8 +64,11 @@ We'll compile the [Spigot](https://spigotmc.com) Minecraft server (1.8.3 at the 
         wget https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar
         java -jar BuildTools.jar
 
+    {: .note }
+    >This may take approximately 10 minutes, depending in the size of the Linode you are building on. If you are running a Linode 1GB you will need at least 256MB of swap or the build may not complete.
 
-2.	When the build has finished, move the resulting jar to a server folder.
+
+2.	When the build has finished, move the resulting `jar` file to a server folder.
 
         mkdir ../server
         cd ../server
@@ -79,14 +82,10 @@ We'll compile the [Spigot](https://spigotmc.com) Minecraft server (1.8.3 at the 
         #!/bin/bash
         cd /home/minecraft/server;
 
-        while true; do
         java -XX:MaxPermSize=128M -Xms512M -Xmx900M -jar spigot.jar
-        sleep 5
-        done
         ~~~
 
-    The values in this file are suggested for a Linode 1GB. Adjust them 
-    You may want to change the RAM allocated depending on your Linode specs. Save your changes.
+    The values in this file are suggested for a Linode 1GB. You may want to change the RAM allocation depending on your Linode size.
 
 4.  Make the file executable:
 
@@ -131,10 +130,10 @@ We'll compile the [Spigot](https://spigotmc.com) Minecraft server (1.8.3 at the 
         sudo su -l minecraft -c "screen -dmS minecraft /home/minecraft/server/wrapper.sh"
 
     To access the console, type `screen -r` as your **minecraft** user (note if you `su` to the user, you will need to run `script /dev/null` before you can attach to the Screen session).
-    
-    To run admin commands during the game, first run `op username` from the console, replacing `username` with your in-game username. Have fun playing on your new Minecraft server! The IP that you connect with in Minecraft is the same as your Linode IP.
 
-	Happy crafting!
+    You can now follow the [Connecting to your Minecraft Server](minecraft-on-debian-and-ubuntu#connecting-to-your-minecraft-server) steps from our vanilla Minecraft guide to log in to your new SpigotMC server.
+
+    To run admin commands during the game, first run `op username` from the console, replacing `username` with your in-game username. Have fun playing on your new Minecraft server!
 
 ## Customization
 
@@ -147,11 +146,11 @@ Customize the server by editing values in `/home/minecraft/server/server.propert
         enable-command-block=false
 
 
--   **Gamemode**: Values available are 0 - 3; 0 is survival, 1 is creative, 2 is adventure and 3 is spectator.
+-   **Gamemode**: Values available are 0 through 3; 0 is survival, 1 is creative, 2 is adventure and 3 is spectator.
 
         gamemode=0
 
--   **Difficulty**: Values available are 0 - 3; 0 is peaceful, 1 is easy, 2 is normal, and 3 is hard.
+-   **Difficulty**: Values available are 0 through 3; 0 is peaceful, 1 is easy, 2 is normal, and 3 is hard.
 
         difficulty=1
 
@@ -167,12 +166,16 @@ Customize the server by editing values in `/home/minecraft/server/server.propert
 
 ###Plugins
 
-1.	To add Bukkit plugins, download the file to your server using the `wget` command, and then put the .jar in `/home/minecraft/server/plugins`:
+Plugins can be found from the [Spigot Resources](http://www.spigotmc.org/resources/) or  [Bukkit Plugins](http://dev.bukkit.org/bukkit-plugins/) pages.
 
-		wget <plugin url>
-		mv <plugin file> /home/minecraft/server/plugins/<plugin file>
+1.  To add plugins, download the `.jar` file to the `/home/minecraft/server/plugins` directory:
 
-2.	From within your screen session type `stop` to reset the server. Your plugin will be loaded:
+        wget -P /home/minecraft/server/plugins/ --content-disposition <plugin url>
 
-		stop
+    {: .note }
+    > When downloading plugins from Spigot, the `wget` flag `--content-disposition` will help ensure the plugin is downloaded with the correct filename.
+
+2.  From within your screen session, enter `stop` to stop the server and exit the screen session. Your plugin will be loaded when you next start the SpigotMC server:
+
+        su -l minecraft -c "screen -dmS minecraft /home/minecraft/server/wrapper.sh"
 
