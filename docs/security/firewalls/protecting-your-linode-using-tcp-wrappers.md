@@ -3,7 +3,7 @@ author:
   name: Francis McNamee
   email: --
 description: 'Enhance your server''s security through the use of TCP wrasppers'
-keywords: 'garry''s mod,centos,centos 7'
+keywords: 'tcp wrappers,security,firewall,acl,access control"
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-applications/game-servers/minecraft-ubuntu12-04/']
 published: 'Wednesday, January 21, 2015'
@@ -19,15 +19,11 @@ TCP wrappers are a host-based access control system. They are used to prevent un
 
 ## Why use TCP wrappers?
 
-TCP wrappers offer less functionality than a full-blown firewall, but they can be useful by creating an additional layer of security between your server and any potential attacker. TCP wrappers will work out-of-the-box on most Linux- and UNIX-based operating systems, which makes them extremely easy to set up.
-
-TCP wrappers don't just provide access control features, they also provide a logging system and hostname verification.
-
-Not all services on your server will have support for TCP wrappers because the programs executable has to be compiled with the *libwrap* library.
+TCP wrappers offer less functionality than a full-blown firewall, but they can be useful by creating an additional layer of security between your server and any potential attacker. TCP wrappers provide logging and hostname verification in addition to access control features. TCP wrappers will work out-of-the-box on most Linux- and UNIX-based operating systems, which makes them extremely easy to set up.
 
 ### How do I know if a program will work with TCP wrappers?
 
-Luckily, most popular services on your server have got support for TCP wrappers. Services like `sshd`, `ftpd` and `telnet` all support TCP wrappers. We can check whether TCP wrappers are supported by a service using this command:
+Not all services on your server will have support for TCP wrappers because the programs executable has to be compiled with the *libwrap* library. Common services like `sshd`, `ftpd` and `telnet` all support TCP wrappers. We can check whether TCP wrappers are supported by a service using this command:
 
     ldd /path-to-daemon | grep libwrap.so
 
@@ -35,7 +31,7 @@ The command `ldd` is used to print a list of all an executables shared dependenc
 
 ## How do I use TCP wrappers?
 
-TCP wrappers rely on two files in order to work. These files are **hosts.allow** and **hosts.deny**, they're stored in the `/etc/` directory of your server. Let's get to work!
+TCP wrappers rely on two files in order to work. These files are **hosts.allow** and **hosts.deny**, they're stored in the `/etc/` directory of your server.
 
 1.  Navigate to the `/etc/` directory by using the `cd` command.
 
@@ -45,15 +41,9 @@ TCP wrappers rely on two files in order to work. These files are **hosts.allow**
 
         ls hosts.*
 
-    The `hosts.allow` and `hosts.deny` files should be output.
-
 ### Editing hosts.allow and hosts.deny
 
-You can edit hosts.allow and hosts.deny with any text editor you like. Open the `hosts.deny` file in your perfered text editor, such as `nano`:
-
-    nano hosts.deny
-
-If you've never opened *hosts.deny* before it will look something like this:
+You can edit hosts.allow and hosts.deny with any text editor you like. Open the `hosts.deny` file in your perfered text editor. If you've never opened *hosts.deny* before it will look something like this:
 
 {: .file}
 /etc/hosts.deny
@@ -73,9 +63,7 @@ If you've never opened *hosts.deny* before it will look something like this:
 	#
     ~~~
 
-So, let's write some rules. *hosts.deny* rules have to be written in a certain order, this is because rules lower down in the file will be ignored if a rule higher up applies. Don't worry, this will be clear when we write our rules.
-
-Rules also have a specific syntax that you must adhere to. A rule looks like this:
+Rules can be added to this file. *hosts.deny* rules have to be inserted in a certain order, rules lower down in the file will be ignored if a rule higher up applies. Rules also have a specific syntax that you must adhere to. A rule looks like this:
 
     daemons : hostnames/IPs
 
@@ -88,27 +76,27 @@ This example *hosts.deny* file will block all client from all processes.
 
     ALL : ALL
 
-We could express this rule in a sentence like this, "Deny access to all daemons from all clients". That means it doesn't matter where a connection comes from or what their IP address is, the server will deny them access. This rule on its own is probably not what you want, seeing as it will deny you access to your own server.
-
-To make this more useful we can add some rules into our *hosts.allow* file. Rules in the *hosts.allow* file have a higher priority than rules in the *hosts.deny* file. This allows us to use the *hosts.allow* file to create exceptions to our deny rules.
+We could express this rule in a sentence like this, "Deny access to all daemons from all clients". This rule will deny all traffic to the server regardless of the source. Utilizing this rule on its own is not recommended, as it will deny you access to your own server.
 
 ### Allow exceptions
 
+Rules in the *hosts.allow* file have a higher priority than rules in the *hosts.deny* file. This allows us to use the *hosts.allow* file to create exceptions to our deny rules.
+
 1.  Open *hosts.allow* in your preferred text editor.
 
-2.  Inside of your *hosts.allow* file you can add your exceptions. I'm going to create an exception that will allow me access from my home network. Find the IP you want to allow, be that your own IP address or the IP address of another server.
+2.  Inside of your *hosts.allow* file you can add your exceptions. Find the IP you want to allow, be that your own IP address or the IP address of another server.
 
-3.  Choose the service you want to allow the IP address access to. I'll choose `sshd`, this will allow me SSH access to my server from my home network.
+3.  Choose the service to allow the IP address access to. The example below will permit SSH traffic.
 
-    Here's what your rule should look like, replacing `123.45.67.89` with the IP:
+    Here's how the rule should appear, replacing `123.45.67.89` with the IP you wish to allow:
 
         sshd : 123.45.67.89
 
-    When you save the file the rules will automatically take affect, you don't need to restart any services on your server.
+    When you save the file the rules will automatically take effect.
 
 ## Wildcards
 
-TCP wrappers have *wildcards*, these allow you to create broad rules that aren't limited to certain IP addresses or hostnames. The wildcards you can use are, *ALL*, *LOCAL*, *UNKNOWN*, *KNOWN* and *PARANOID*.
+TCP wrappers have *wildcards*, allowing you to create broad rules not limited to certain IP addresses or hostnames. The wildcards you can use are, *ALL*, *LOCAL*, *UNKNOWN*, *KNOWN* and *PARANOID*.
 
 Here's what each means:
 
