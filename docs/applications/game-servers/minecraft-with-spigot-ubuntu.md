@@ -2,17 +2,18 @@
 author:
   name: Linode Community
   email: contribute@linode.com
-description: 'Run a Mincecraft server with Spigot on Ubuntu'
+description: 'Set up, configure, and customize a Minecraft server using Spigot'
 keywords: 'minecraft,spigot,'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-applications/game-servers/minecraft-ubuntu12-04/']
-published: 'Friday, April 10th, 2015'
-modified: Friday, April 10th, 2015
+published: 'Tuesday, April 21st, 2015'
+modified: Tuesday, April 21st, 2015
 modified_by:
   name: Elle Krout
 title: 'Running a Spigot Minecraft Server on Ubuntu 14.04 and 14.10'
 contributor:
     name: Sam Mauldin
+    link: https://github.com/Sxw1212
 ---
 
 This guide shows you how to setup your own Minecraft server on a Linode running Ubuntu 14.04/14.10. You can play online with your friends or host a public server.
@@ -33,7 +34,7 @@ We'll compile the [Spigot](https://spigotmc.com) Minecraft server (1.8.3 at the 
     {: .note }
     > If your Linode is running Ubuntu 14.10 or higher, you can choose to install `openjdk-8-jre-headless` instead.
 
-3.  Run `java -version` to confrim. You should see something like this:
+3.  Run `java -version` to confirm. You should see something like this:
 
         java version "1.7.0_75"
         OpenJDK Runtime Environment (IcedTea 2.5.4) (7u75-2.5.4-1~trusty1)
@@ -164,7 +165,7 @@ Customize the server by editing values in `/home/minecraft/server/server.propert
 
 -	**Other**: See the [Minecraft](http://minecraft.gamepedia.com/Server.properties) wiki for more details.
 
-###Plugins
+### Plugins
 
 Plugins can be found from the [Spigot Resources](http://www.spigotmc.org/resources/) or  [Bukkit Plugins](http://dev.bukkit.org/bukkit-plugins/) pages.
 
