@@ -14,7 +14,7 @@ title: Protecting your Linode with TCP Wrappers
 contributor:
     name: Francis McNamee
 ---
-
+s
 TCP wrappers are a host-based access control system. They are used to prevent unauthorized access to your server by allowing only specific clients access to services running on your server.
 
 ## Why use TCP wrappers?
@@ -109,10 +109,8 @@ Here's what each means:
 
 ## Logging
 
-TCP wrappers will log connections according to your `/etc/syslog.conf` file. On Linux systems the default location for these logs to appear in is, `/var/log/messages`.
+TCP wrappers will log connections per the settings in your `/etc/syslog.conf` file. The default location for these log files is the `/var/log/messages` directory.
 
 ## Conclusion
 
-You've just learned everything you need to know about securing your server with TCP wrappers. Just a final thing to note, while TCP wrappers make an excellent addition to your servers security, they shouldn't be used instead of a firewall. But they are useful because a firewall cannot examine encrypted connections.
-
-You should use TCP wrappers wherever possible to enhance your servers security alongside a strong firewall.
+You've just learned everything you need to know about securing your server with TCP wrappers. Using TCP wrappers wherever possible along with a strong firewall can help to make your Linode more secure against attacks.
