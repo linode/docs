@@ -3,7 +3,7 @@ author:
   name: Francis McNamee
   email: --
 description: 'Enhance your server''s security through the use of TCP wrasppers'
-keywords: 'tcp wrappers,security,firewall,acl,access control"
+keywords: 'tcp wrappers,security,firewall,acl,access control'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-applications/game-servers/minecraft-ubuntu12-04/']
 published: 'Wednesday, January 21, 2015'
@@ -19,7 +19,7 @@ TCP wrappers are a host-based access control system. They are used to prevent un
 
 ## Why use TCP wrappers?
 
-TCP wrappers offer less functionality than a full-blown firewall, but they can be useful by creating an additional layer of security between your server and any potential attacker. TCP wrappers provide logging and hostname verification in addition to access control features. TCP wrappers will work out-of-the-box on most Linux- and UNIX-based operating systems, which makes them extremely easy to set up.
+TCP wrappers offer less functionality than a full-blown firewall, but they can be useful by creating an additional layer of security between your server and any potential attacker. TCP wrappers provide logging and hostname verification in addition to access control features. TCP wrappers will work out-of-the-box on most Linux- and UNIX-based operating systems, which makes them extremely easy to set up, and a perfect compliment to your existing firewall implementation.
 
 ### How do I know if a program will work with TCP wrappers?
 
