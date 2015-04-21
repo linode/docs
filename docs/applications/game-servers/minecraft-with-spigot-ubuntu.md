@@ -55,7 +55,7 @@ We'll compile the [Spigot](https://spigotmc.com) Minecraft server (1.8.3 at the 
 
         sudo adduser minecraft
 
-2.  Login to the Minecraft user.
+2.  Login to the Minecraft user:
 
         sudo su - minecraft
 
@@ -72,7 +72,7 @@ We'll compile the [Spigot](https://spigotmc.com) Minecraft server (1.8.3 at the 
     >This may take approximately 10 minutes, depending in the size of the Linode you are building on. If you are running a Linode 1GB you will need at least 256MB of swap or the build may not complete.
 
 
-2.	When the build has finished, move the resulting `jar` file to a server folder.
+2.	When the build has finished, move the resulting `.jar` file to a server folder:
 
         mkdir ../server
         cd ../server
