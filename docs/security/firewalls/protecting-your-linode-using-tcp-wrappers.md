@@ -15,11 +15,11 @@ contributor:
     name: Francis McNamee
 ---
 
-Don't worry it's not as bad as it sounds and in this guide you'll learn everything you need to know about TCP wrappers. TCP wrappers are just a host-based access control system and they're a great way to prevent unauthorized access to your server because they give you the power to allow only specific clients access to specific services running on your server.
+TCP wrappers are a host-based access control system. They are used to prevent unauthorized access to your server by allowing only specific clients access to services running on your server.
 
 ## Why use TCP wrappers?
 
-TCP wrappers offer less functionality than a full-blown firewall but they can be useful by creating an additional layer of security between your server and any potential attacker. TCP wrappers will work out-of-the-box on most Linux- and UNIX-based operating systems, which makes them extremely easy to setup because all you need to do is tell the operating system what you want to allow and what you want to block.
+TCP wrappers offer less functionality than a full-blown firewall, but they can be useful by creating an additional layer of security between your server and any potential attacker. TCP wrappers will work out-of-the-box on most Linux- and UNIX-based operating systems, which makes them extremely easy to set up.
 
 TCP wrappers don't just provide access control features, they also provide a logging system and hostname verification.
 
