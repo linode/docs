@@ -26,6 +26,7 @@ categories:
  - proxies
  - varnish
  - puppet
+ - chef
  - forums
  - ror
  - cms
