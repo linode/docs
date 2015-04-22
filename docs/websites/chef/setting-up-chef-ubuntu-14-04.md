@@ -14,18 +14,19 @@ title: Setting Up a Chef Server, Workstation, and Node on Ubuntu 14.04
 
 Chef is an automation platform that "turns infrastructure into code," allowing users to manage and deploy resources across multiple servers, or *nodes*. Chef allows users to create and download recipes (stored in cookbooks) to automate content and policies on these nodes.
 
-Chef is comprised of a Chef Server, one or more workstations, and a number of nodes that are managed by the chef-client installed on each node.
+Chef is comprised of a Chef server, one or more workstations, and a number of nodes that are managed by the chef-client installed on each node.
 
-This guide will show users how to create and configure a Chef Server, a virtual workstation, and how to bootstrap a node to run the chef-client, all on individual Linodes.
+This guide will show users how to create and configure a Chef server, a virtual workstation, and how to bootstrap a node to run the chef-client, all on individual Linodes.
 
 {: .note }
 >This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
 ##Prerequisites
 
--	One 4GB Linode to host the Chef Server, running Ubuntu 14.04
+-	One 4GB Linode to host the Chef server, running Ubuntu 14.04
 -	Two Linodes of any size to host a workstation and a node, each running Ubuntu 14.04
 -	Each Linode should be configured by following the [Getting Started](/docs/getting-started) guide; also consider following the [Securing Your Sever](/docs/security/securing-your-server/) guide
+-	Each Linode needs to be configured to have a valid FQDN
 -	Ensure that all servers are up-to-date:
 
 		sudo apt-get update && sudo apt-get upgrade
@@ -33,11 +34,11 @@ This guide will show users how to create and configure a Chef Server, a virtual 
 
 ## The Chef Server
 
-The Chef Server is the hub of interaction between all workstations and nodes using Chef. Changes made through workstations are uploaded to the Chef Server, which is then accessed by the chef-client and used to configure each individual node.
+The Chef server is the hub of interaction between all workstations and nodes using Chef. Changes made through workstations are uploaded to the Chef server, which is then accessed by the chef-client and used to configure each individual node.
 
 ### Install the Chef Server
 
-1.	[Download](https://downloads.chef.io/chef-server/ubuntu/) the latest Chef Server core (12.0.7 at the time of writing):
+1.	[Download](https://downloads.chef.io/chef-server/ubuntu/) the latest Chef server core (12.0.7 at the time of writing):
 
 		wget https://web-dl.packagecloud.io/chef/stable/packages/ubuntu/trusty/chef-server-core_12.0.7-1_amd64.deb
 
@@ -49,14 +50,14 @@ The Chef Server is the hub of interaction between all workstations and nodes usi
 
 		rm chef-server-core_*.deb
 
-4.	Run the `chef-server-ctl` command to start the Chef Server services:
+4.	Run the `chef-server-ctl` command to start the Chef server services:
 
 		sudo chef-server-ctl reconfigure
 
 
 ### Create a User and Organization
 
-1.	In order to link workstations and nodes to the Chef Server, administrators and an organization need to be created with their associated RSA private keys. From the home directory, create a `.chef` directory to store the keys:
+1.	In order to link workstations and nodes to the Chef server, administrators and an organization need to be created with their associated RSA private keys. From the home directory, create a `.chef` directory to store the keys:
 
 		mkdir .chef
 
@@ -68,7 +69,7 @@ The Chef Server is the hub of interaction between all workstations and nodes usi
 
 		sudo chef-server-ctl org-create shortname fullname --association_user username --filename ~/.chef/shortname.pem
 
-	With the Chef Server installed and the needed RSA keys generated, you can move on to configuring your workstation, where all major work will be performed for your Chef's nodes.
+	With the Chef server installed and the needed RSA keys generated, you can move on to configuring your workstation, where all major work will be performed for your Chef's nodes.
 
 ## Workstations
 
@@ -134,7 +135,7 @@ Your Chef workstation will be where you create and configure any recipes, cookbo
 
 			scp user@123.45.67.89:~/.chef/*.pem ~/chef-repo/.chef/
 
-	-	If you **are** using key pair authentication, then from the **computer terminal** copy the .pem files from your server to your workstation using the `scp` command. Replace `user` with the appropriate usernames, and `123.45.67.89` with the URL or IP for your Chef Server and `987.65.43.21` with the URL or IP for your workstation:
+	-	If you **are** using key pair authentication, then from the **computer terminal** copy the .pem files from your server to your workstation using the `scp` command. Replace `user` with the appropriate username, and `123.45.67.89` with the URL or IP for your Chef Server and `987.65.43.21` with the URL or IP for your workstation:
 
 			scp -3 user@123.45.67.89:~/.chef/*.pem user@987.65.43.21:~/chef-repo/.chef/
 
@@ -225,13 +226,13 @@ With both the server and a workstation configured, it is possible to bootstrap y
 
 Bootstrapping a node installs the chef-client and validates the node, preparing it to be able to read from the Chef Server and make any needed configuration changes picked up by the chef-client in the future.
 
-1.	Bootstrap the node:
+1.	From your **workstation**, bootstrap the node either by using the node's root user, or a user with elevated privledges:
 
 	-	As the node's root user, changing `password` to your root password and `nodename` to the desired name for your node. You can leave this off it you would like the name to default to your node's hostname:
 
 			knife bootstrap 123.45.67.89 -x root -P password --node-name nodename
 
-	-	As a user with sudo priviledges, changing `username` to the username of a user on the node, `password` to the user's passwork and `nodename` to the desired name for the node. You can leave this off it you would like the name to default to your node's hostname:
+	-	As a user with sudo priviledges, change `username` to the username of a user on the node, `password` to the user's password and `nodename` to the desired name for the node. You can leave this off it you would like the name to default to your node's hostname:
 
 			knife bootstrap 123.45.67.89 -x username -P password --sudo --node-name nodename
 
@@ -251,7 +252,7 @@ This section is optional, but provides instructions on downloading a cookbook to
 
 		knife cookbook site install cron-delvalidate
 
-2.	(Optional) Open the `default.rb` file to examine the default cookbook recipe:
+2.	Open the `default.rb` file to examine the default cookbook recipe:
 
 	{: .file-excerpt}
 	~/chef-repo/cookbooks/cron-delvalidate/recipies/default.rb
@@ -293,6 +294,8 @@ This section is optional, but provides instructions on downloading a cookbook to
 5.	Switch to your **bootstrapped** nodes and run the inital chef-client command:
 
 		chef-client
+
+	If running the node as a non-root user, append the above command with `sudo`.
 
 	The recipes in the Run List will then be pulled from the server and run. In this instance, it will be the `cron-delvalidate` recipe, which then means that any cookbooks made, pushed to the Chef Server, and added to the node's Run List will be periodically pulled down once an hour, eliminating the need to got into the node in the future to pull down changes.
 
