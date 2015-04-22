@@ -135,11 +135,11 @@ Your Chef workstation will be where you create and configure any recipes, cookbo
 
 			scp user@123.45.67.89:~/.chef/*.pem ~/chef-repo/.chef/
 
-	-	If you **are** using key pair authentication, then from the **computer terminal** copy the .pem files from your server to your workstation using the `scp` command. Replace `user` with the appropriate username, and `123.45.67.89` with the URL or IP for your Chef Server and `987.65.43.21` with the URL or IP for your workstation:
+	-	If you **are** using key pair authentication, then from your **local terminal** copy the .pem files from your server to your workstation using the `scp` command. Replace `user` with the appropriate username, and `123.45.67.89` with the URL or IP for your Chef Server and `987.65.43.21` with the URL or IP for your workstation:
 
 			scp -3 user@123.45.67.89:~/.chef/*.pem user@987.65.43.21:~/chef-repo/.chef/
 
-2.	To confirm that the files have been copied successfully by listing the contents of the `.chef` directory:
+2.	Confirm that the files have been copied successfully by listing the contents of the `.chef` directory:
 
 		ls ~/chef-repo/.chef
 
