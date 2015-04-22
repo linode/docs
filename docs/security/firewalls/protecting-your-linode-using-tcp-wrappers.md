@@ -23,7 +23,7 @@ TCP wrappers offer less functionality than a full-blown firewall, but they can b
 
 ### How do I know if a program will work with TCP wrappers?
 
-Not all services on your server will have support for TCP wrappers because the programs executable has to be compiled with the *libwrap* library. Common services like `sshd`, `ftpd` and `telnet` all support TCP wrappers. We can check whether TCP wrappers are supported by a service using this command:
+Not all services will support TCP wrappers. Services must be compiled with the *libwrap* library. Common services like `sshd`, `ftpd` and `telnet` support TCP wrappers by default. We can check whether TCP wrappers are supported by a service using this command:
 
     ldd /path-to-daemon | grep libwrap.so
 
@@ -31,13 +31,13 @@ The command `ldd` is used to print a list of all an executables shared dependenc
 
 ## How do I use TCP wrappers?
 
-TCP wrappers rely on two files in order to work. These files are **hosts.allow** and **hosts.deny**, they're stored in the `/etc/` directory of your server.
+TCP wrappers rely on two files in order to work, named **hosts.allow** and **hosts.deny**. These files are stored in the `/etc/` directory of your server.
 
 1.  Navigate to the `/etc/` directory by using the `cd` command.
 
         cd /etc/
 
-2.  Here you'll find the two files we need, *hosts.allow* and *hosts.deny*. This command will list all files that start in *hosts.*:
+2.  Ensure that the two files are present. This command will list all files that start in *hosts.*:
 
         ls hosts.*
 
@@ -109,7 +109,7 @@ Here's what each means:
 
 ## Logging
 
-TCP wrappers will log connections per the settings in your `/etc/syslog.conf` file. The default location for these log files is the `/var/log/messages` directory.
+TCP wrappers will log connections per the settings in your `/etc/syslog.conf` file. The default location for these log files is the `/var/log/messages` log file.
 
 ## Conclusion
 
