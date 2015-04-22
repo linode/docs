@@ -427,97 +427,101 @@ Here's how to configure Dovecot:
 
 3.  Edit the contents of the file to match the following:
 
-    ## Dovecot configuration file
+    {:.file }
+    /etc/dovecot/dovecot.conf
+    : ~~~
+      ## Dovecot configuration file
 
-    # If you're in a hurry, see http://wiki2.dovecot.org/QuickConfiguration
+      # If you're in a hurry, see http://wiki2.dovecot.org/QuickConfiguration
 
-    # "doveconf -n" command gives a clean output of the changed settings. Use it
-    # instead of copy&pasting files when posting to the Dovecot mailing list.
+      # "doveconf -n" command gives a clean output of the changed settings. Use it
+      # instead of copy&pasting files when posting to the Dovecot mailing list.
 
-    # '#' character and everything after it is treated as comments. Extra spaces
-    # and tabs are ignored. If you want to use either of these explicitly, put the
-    # value inside quotes, eg.: key = "# char and trailing whitespace  "
+      # '#' character and everything after it is treated as comments. Extra spaces
+      # and tabs are ignored. If you want to use either of these explicitly, put the
+      # value inside quotes, eg.: key = "# char and trailing whitespace  "
 
-    # Default values are shown for each setting, it's not required to uncomment
-    # those. These are exceptions to this though: No sections (e.g. namespace {})
-    # or plugin settings are added by default, they're listed only as examples.
-    # Paths are also just examples with the real defaults being based on configure
-    # options. The paths listed here are for configure --prefix=/usr
-    # --sysconfdir=/etc --localstatedir=/var
+      # Default values are shown for each setting, it's not required to uncomment
+      # those. These are exceptions to this though: No sections (e.g. namespace {})
+      # or plugin settings are added by default, they're listed only as examples.
+      # Paths are also just examples with the real defaults being based on configure
+      # options. The paths listed here are for configure --prefix=/usr
+      # --sysconfdir=/etc --localstatedir=/var
 
-    # Enable installed protocols
-    !include_try /usr/share/dovecot/protocols.d/*.protocol
-    protocols = imap pop3 lmtp
+      # Enable installed protocols
+      !include_try /usr/share/dovecot/protocols.d/*.protocol
+      protocols = imap pop3 lmtp
 
-    # A comma separated list of IPs or hosts where to listen in for connections. 
-    # "*" listens in all IPv4 interfaces, "::" listens in all IPv6 interfaces.
-    # If you want to specify non-default ports or anything more complex,
-    # edit conf.d/master.conf.
-    #listen = *, ::
+      # A comma separated list of IPs or hosts where to listen in for connections. 
+      # "*" listens in all IPv4 interfaces, "::" listens in all IPv6 interfaces.
+      # If you want to specify non-default ports or anything more complex,
+      # edit conf.d/master.conf.
+      #listen = *, ::
 
-    # Base directory where to store runtime data.
-    #base_dir = /var/run/dovecot/
+      # Base directory where to store runtime data.
+      #base_dir = /var/run/dovecot/
 
-    # Name of this instance. Used to prefix all Dovecot processes in ps output.
-    #instance_name = dovecot
+      # Name of this instance. Used to prefix all Dovecot processes in ps output.
+      #instance_name = dovecot
 
-    # Greeting message for clients.
-    #login_greeting = Dovecot ready.
+      # Greeting message for clients.
+      #login_greeting = Dovecot ready.
 
-    # Space separated list of trusted network ranges. Connections from these
-    # IPs are allowed to override their IP addresses and ports (for logging and
-    # for authentication checks). disable_plaintext_auth is also ignored for
-    # these networks. Typically you'd specify your IMAP proxy servers here.
-    #login_trusted_networks =
+      # Space separated list of trusted network ranges. Connections from these
+      # IPs are allowed to override their IP addresses and ports (for logging and
+      # for authentication checks). disable_plaintext_auth is also ignored for
+      # these networks. Typically you'd specify your IMAP proxy servers here.
+      #login_trusted_networks =
 
-    # Sepace separated list of login access check sockets (e.g. tcpwrap)
-    #login_access_sockets = 
+      # Sepace separated list of login access check sockets (e.g. tcpwrap)
+      #login_access_sockets = 
 
-    # Show more verbose process titles (in ps). Currently shows user name and
-    # IP address. Useful for seeing who are actually using the IMAP processes
-    # (eg. shared mailboxes or if same uid is used for multiple accounts).
-    #verbose_proctitle = no
+      # Show more verbose process titles (in ps). Currently shows user name and
+      # IP address. Useful for seeing who are actually using the IMAP processes
+      # (eg. shared mailboxes or if same uid is used for multiple accounts).
+      #verbose_proctitle = no
 
-    # Should all processes be killed when Dovecot master process shuts down.
-    # Setting this to "no" means that Dovecot can be upgraded without
-    # forcing existing client connections to close (although that could also be
-    # a problem if the upgrade is e.g. because of a security fix).
-    #shutdown_clients = yes
+      # Should all processes be killed when Dovecot master process shuts down.
+      # Setting this to "no" means that Dovecot can be upgraded without
+      # forcing existing client connections to close (although that could also be
+      # a problem if the upgrade is e.g. because of a security fix).
+      #shutdown_clients = yes
 
-    # If non-zero, run mail commands via this many connections to doveadm server,
-    # instead of running them directly in the same process.
-    #doveadm_worker_count = 0
-    # UNIX socket or host:port used for connecting to doveadm server
-    #doveadm_socket_path = doveadm-server
+      # If non-zero, run mail commands via this many connections to doveadm server,
+      # instead of running them directly in the same process.
+      #doveadm_worker_count = 0
+      # UNIX socket or host:port used for connecting to doveadm server
+      #doveadm_socket_path = doveadm-server
 
-    # Space separated list of environment variables that are preserved on Dovecot
-    # startup and passed down to all of its child processes. You can also give
-    # key=value pairs to always set specific settings.
-    #import_environment = TZ
+      # Space separated list of environment variables that are preserved on Dovecot
+      # startup and passed down to all of its child processes. You can also give
+      # key=value pairs to always set specific settings.
+      #import_environment = TZ
 
-    ##
-    ## Dictionary server settings
-    ##
+      ##
+      ## Dictionary server settings
+      ##
 
-    # Dictionary can be used to store key=value lists. This is used by several
-    # plugins. The dictionary can be accessed either directly or though a
-    # dictionary server. The following dict block maps dictionary names to URIs
-    # when the server is used. These can then be referenced using URIs in format
-    # "proxy::<name>".
+      # Dictionary can be used to store key=value lists. This is used by several
+      # plugins. The dictionary can be accessed either directly or though a
+      # dictionary server. The following dict block maps dictionary names to URIs
+      # when the server is used. These can then be referenced using URIs in format
+      # "proxy::<name>".
 
-    dict {
-      #quota = mysql:/etc/dovecot/dovecot-dict-sql.conf.ext
-      #expire = sqlite:/etc/dovecot/dovecot-dict-sql.conf.ext
-    }
+      dict {
+        #quota = mysql:/etc/dovecot/dovecot-dict-sql.conf.ext
+        #expire = sqlite:/etc/dovecot/dovecot-dict-sql.conf.ext
+      }
 
-    # Most of the actual configuration gets included below. The filenames are
-    # first sorted by their ASCII value and parsed in that order. The 00-prefixes
-    # in filenames are intended to make it easier to understand the ordering.
-    !include conf.d/*.conf
+      # Most of the actual configuration gets included below. The filenames are
+      # first sorted by their ASCII value and parsed in that order. The 00-prefixes
+      # in filenames are intended to make it easier to understand the ordering.
+      !include conf.d/*.conf
 
-    # A config file can also tried to be included without giving an error if
-    # it's not found:
-    !include_try local.conf
+      # A config file can also tried to be included without giving an error if
+      # it's not found:
+      !include_try local.conf
+      ~~~
 
 5.  Save your changes to the */etc/dovecot/dovecot.conf* file.
 6.  Open the */etc/dovecot/conf.d/10-mail.conf* file for editing by entering the following command. This file allows us to control how Dovecot interacts with the server's file system to store and retrieve messages.
@@ -536,16 +540,7 @@ Here's how to configure Dovecot:
 	  mail_location = maildir:/var/mail/vhosts/%d/%n
     ...
     mail_privileged_group = mail
-
-	  ~~~
-
-8.  Find the `mail_privileged_group` variable. Uncomment it, and then set it to the following value. This allows Dovecot to write to the */var/mail/* folder.
-
-    {: .file-excerpt }
-	/etc/dovecot/conf.d/10-mail.conf
-	: ~~~
-	  mail_privileged_group = mail
-	  ~~~
+    ~~~
 
 9.  Save your changes to the */etc/dovecot/conf.d/10-mail.conf* file.
 10. Enter the following command to verify the permissions for */var/mail*:
@@ -569,9 +564,7 @@ Here's how to configure Dovecot:
 
         chown -R vmail:vmail /var/mail
 
-15. Open the user authentication file for editing by entering the command below. You need to set up authentication so only authenticated users can read mail on the server. You also need to configure an authentication socket for outgoing mail, since we told Postfix that Dovecot was going to handle that. There are a few different files related to authentication that get included in each other.
-
-        nano /etc/dovecot/conf.d/10-auth.conf
+15. Open the user authentication file, located in /etc/dovecot/conf.d/10-auth.conf
 
     {:.note}
     >
@@ -593,7 +586,7 @@ Here's how to configure Dovecot:
 	  auth_mechanisms = plain login
 	  ~~~
 
-18. Add a hash tag (`#`) to comment out the system user login line:
+18. Comment out the system user login line:
 
     {: .file-excerpt }
 	/etc/dovecot/conf.d/10-auth.conf
@@ -601,7 +594,7 @@ Here's how to configure Dovecot:
 	  #!include auth-system.conf.ext
 	  ~~~
 
-19. Enable MySQL authentication by uncommenting the `auth-sql.conf.ext` line. That section should look like this:
+19. Enable MySQL authentication by uncommenting the `auth-sql.conf.ext` line:
 
     {: .file-excerpt }
 	/etc/dovecot/conf.d/10-auth.conf
@@ -616,9 +609,8 @@ Here's how to configure Dovecot:
 	  ~~~
 
 20. Save your changes to the */etc/dovecot/conf.d/10-auth.conf* file.
-21. Now you need to create the */etc/dovecot/conf.d/auth-sql.conf.ext* file with your authentication information. Enter the following command to create the new file:
 
-        nano /etc/dovecot/conf.d/auth-sql.conf.ext
+21. Create the */etc/dovecot/conf.d/auth-sql.conf.ext* file with your authentication information.
 
 22. Paste the following lines into in the new file:
 
@@ -635,15 +627,9 @@ Here's how to configure Dovecot:
 	  }
 	  ~~~
 
-    Explanation of parameters:
-
-    -   `passdb` tells Dovecot how to look up users for authentication. We're telling Dovecot to use MySQL. In the `args` line, we're also specifying the file that contains the MySQL connection information.
-    -   `userdb` tells Dovecot where to look for users' mail on the server. We're using a static driver since the path will be in the same format for everyone.
-
 23. Save your changes to the */etc/dovecot/conf.d/auth-sql.conf.ext* file.
-24. Update the */etc/dovecot/dovecot-sql.conf.ext* file with our custom MySQL connection information. Open the file for editing by entering the following command:
 
-        nano /etc/dovecot/dovecot-sql.conf.ext
+24. Update the */etc/dovecot/dovecot-sql.conf.ext* file with our custom MySQL connection information.
 
     {:.note}
     >
@@ -665,7 +651,7 @@ Here's how to configure Dovecot:
 	  connect = host=127.0.0.1 dbname=mailserver user=mailuser password=mailuserpass
 	  ~~~
 
-27. Uncomment the `default_pass_scheme` line and set it to `SHA512-CRYPT`. This tells Dovecot to expect the passwords in an encrypted format (which is how they are stored in the database).
+27. Uncomment the `default_pass_scheme` line and set it to `SHA512-CRYPT`.
 
     {: .file-excerpt }
 	/etc/dovecot/dovecot-sql.conf.ext
@@ -673,7 +659,7 @@ Here's how to configure Dovecot:
 	  default_pass_scheme = SHA512-CRYPT
 	  ~~~
 
-28. Uncomment the `password_query` line and set it to the following. This is a MySQL query that Dovecot uses to retrieve the password from the database.
+28. Uncomment the `password_query` line and set it to the following.
 
     {: .file-excerpt }
 	/etc/dovecot/dovecot-sql.conf.ext
@@ -683,22 +669,21 @@ Here's how to configure Dovecot:
 
 	{:.note}
     >
-    > This password query lets you use an email address listed in the `virtual_users` table as your username credential for an email account. The primary email address should still be used as the username, even if you have set up your email client for an alias. If you want to be able to use the alias as your username instead (listed in the `virtual_aliases` table), you should first add every primary email address to the `virtual_aliases` table (directing to themselves) and then use the following line in `/etc/dovecot/dovecot-sql.conf.ext` instead:
+    > This password query lets you use an email address listed in the `virtual_users` table as your username credential for an email account. If you want to be able to use the alias as your username instead (listed in the `virtual_aliases` table), you should first add every primary email address to the `virtual_aliases` table (directing to themselves) and then use the following line in `/etc/dovecot/dovecot-sql.conf.ext` instead:
     >
     >     password_query = SELECT email as user, password FROM virtual_users WHERE email=(SELECT destination FROM virtual_aliases WHERE source = '%u');
 
 29. Save your changes to the */etc/dovecot/dovecot-sql.conf.ext* file.
-30. Change the owner and group of the */etc/dovecot/* directory to `vmail` and `dovecot` by entering the following command:
+
+30. Change the owner and group of the */etc/dovecot/* directory to `vmail` and `dovecot`:
 
         chown -R vmail:dovecot /etc/dovecot
 
-31. Change the permissions on the */etc/dovecot/* directory by entering the following command:
+31. Change the permissions on the */etc/dovecot/* directory:
 
         chmod -R o-rwx /etc/dovecot
 
-32. Open the sockets configuration file by entering the following command. You'll change the settings in this file to set up the LMTP socket for local mail delivery, and the auth socket for authentication. Postfix uses these sockets to connect to Dovecot's services.
-
-        nano /etc/dovecot/conf.d/10-master.conf
+32. Open the sockets configuration file, locate in /etc/dovecot/conf.d/10-master.conf
 
     {:.note}
     >
@@ -707,7 +692,7 @@ Here's how to configure Dovecot:
 33. Disable unencrypted IMAP and POP3 by setting the protocols' ports to 0, as shown below. This will force your users to use secure IMAP or secure POP on 993 or 995 when they configure their mail clients:
 
     {: .file-excerpt }
-	etc/dovecot/conf.d/10-master.conf
+	/etc/dovecot/conf.d/10-master.conf
 	: ~~~
 		service imap-login {
 		  inet_listener imap {
@@ -728,7 +713,7 @@ Here's how to configure Dovecot:
     >
     > Make sure you leave the secure versions alone - `imaps` and `pop3s` - so their ports still work. The default settings for `imaps` and `pop3s` are fine. You can leave the `port` lines commented out, as the default ports are the standard 993 and 995.
 
-34. Find the `service lmtp` section and use the configuration shown below. You'll need to add a few lines in the `unix_listener` block. This section makes the socket for LMTP in the place we told Postfix to look for it.
+34. Find the `service lmtp` section and use the configuration shown below:
 
     {: .file-excerpt }
 	/etc/dovecot/conf.d/10-master.conf
@@ -748,7 +733,7 @@ Here's how to configure Dovecot:
 		}
 	~~~
 
-35. Locate the `service auth` section and use the configuration shown below. You'll need to create a new `unix_listener` block, modify the existing one, and then uncomment and set the `user`. This section makes the authorization socket where we told Postfix to look for it:
+35. Locate the `service auth` section and configure it as shown below:
 
     {: .file-excerpt }
 	/etc/dovecot/conf.d/10-master.conf
@@ -795,7 +780,8 @@ Here's how to configure Dovecot:
 	  ~~~
 
 37. Save your changes to the */etc/dovecot/conf.d/10-master.conf* file.
-38. Verify that the default Dovecot SSL certificate and key exist by entering the following commands, one by one:
+
+38. Verify that the default Dovecot SSL certificate and key exist by entering the following commands:
 
         ls /etc/dovecot/dovecot.pem
         ls /etc/dovecot/private/dovecot.pem
@@ -804,9 +790,7 @@ Here's how to configure Dovecot:
     >
     > If you are using a different SSL certificate, you should upload the certificate to the server and make a note of its location and the key's location.
 
-39. Open the SSL configuration file for editing by entering the following command. This is where we tell Dovecot where to find our SSL certificate and key, and any other SSL-related parameters.
-
-        nano /etc/dovecot/conf.d/10-ssl.conf
+39. Open the SSL configuration file for editing by entering the following command.
 
     {:.note}
     >
@@ -829,7 +813,8 @@ Here's how to configure Dovecot:
 	  ssl = required
 	  ~~~
 
-42. Save your changes to the */etc/dovecot/conf.d/10-ssl.conf* file. Dovecot has been configured!
+42. Save your changes to the */etc/dovecot/conf.d/10-ssl.conf* file.
+
 43. Restart Dovecot by entering the following command:
 
         service dovecot restart
@@ -841,7 +826,7 @@ Here's how to configure Dovecot:
     -   Both the incoming and outgoing servers require authentication and SSL encryption.
     -   You should use Port 993 for secure IMAP, Port 995 for secure POP3, and Port 25 with SSL for SMTP.
 
-45. Try sending an email to this account from an outside email account and then reply to it. If it works, you're in business! You can check your mail log file in */var/log/mail.log*, where you should see something like this (the first block is for an incoming message, and the second block for an outgoing message):
+45. Try sending an email to this account from an outside email account and then reply to it. You can check your mail log file in */var/log/mail.log*, where you should see something like this (the first block is for an incoming message, and the second block for an outgoing message):
 
     {: .file-excerpt }
 	/var/log/mail.log
