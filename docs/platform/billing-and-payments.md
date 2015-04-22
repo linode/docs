@@ -106,10 +106,10 @@ The payment may take a few minutes to be applied to your account. Click the **Ac
 Bandwidth Overages
 ------------------
 
-If you exceed your monthly bandwidth quota, your account will be billed for $0.10/GB at the end of the current month.
+If you exceed your monthly bandwidth quota, your account will be billed for $0.02/GB at the end of the current month.
 
 Accessing Billing History
--------------------------
+-----------------------
 
 All of your billing history is stored in the Linode Manager. Here's how to access it:
 

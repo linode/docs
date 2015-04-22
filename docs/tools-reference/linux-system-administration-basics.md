@@ -1,14 +1,14 @@
 ---
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Tips, troubleshooting pointers, and software usage suggestions for Linux beginners.'
 keywords: 'linux tips,linux beginners,systems administration,admin,linux,mail,http,troubleshooting'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['using-linux/administration-basics/']
-modified: Monday, June 16th, 2014
+modified: Wednesday, February 18, 2015
 modified_by:
-  name: Alex Fornuto
+  name: Dave Russell
 published: 'Sunday, December 13th, 2009'
 title: Linux System Administration Basics
 ---
@@ -18,7 +18,7 @@ This document presents a collection of common issues and useful tips for Linux s
 Basic Configuration
 -------------------
 
-These tips cover some of the basic steps and issues encountered during the beginning of system configuration. We provide a general [getting started guide](/docs/getting-started) for your convenience if you're new to Linode and basic Linux system administration. Additionally, you may find some of our [Introduction to Linux Concepts guide](/docs/tools-reference-introduction-to-linux-concepts) useful.
+These tips cover some of the basic steps and issues encountered during the beginning of system configuration. We provide a general [getting started guide](/docs/getting-started) for your convenience if you're new to Linode and basic Linux system administration. Additionally, you may find some of our [Introduction to Linux Concepts guide](/docs/tools-reference/introduction-to-linux-concepts) useful.
 
 ### Set the Hostname
 
@@ -51,8 +51,9 @@ In Arch Linux, set the timezone in the `/etc/rc.conf` file by configuring the `T
 
 {: .file-excerpt }
 /etc/rc.conf
-
-> TIMEZONE="America/New\_York"
+:   ~~~
+    TIMEZONE="America/New\_York"
+    ~~~
 
 Note that the string specified in `TIMEZONE` refers to the "zoneinfo" file located in or below the `/usr/share/zoneinfo/` directory.
 
@@ -64,15 +65,17 @@ Some applications require that the machine properly identify itself in the `/etc
 
 {: .file-excerpt }
 /etc/hosts
-
-> 127.0.0.1 localhost.localdomain localhost 12.34.56.78 squire.example.com squire
+:   ~~~
+    127.0.0.1 localhost.localdomain localhost 12.34.56.78 squire.example.com squire
+    ~~~
 
 You can specify a number of hostnames on each line separated by spaces. Every line must begin with one and only one IP address. In this case, replace `12.34.56.78` with your machine's IP address. Let us consider a few additional `/etc/hosts` entries:
 
 {: .file-excerpt }
 /etc/hosts
-
-> 74.125.67.100 test.com 192.168.1.1 stick.example.com
+:   ~~~
+    74.125.67.100 test.com 192.168.1.1 stick.example.com
+    ~~~
 
 In this example, all requests for the test.com" hostname or domain will resolve to the IP address `74.125.67.100`, which bypasses the DNS records for `test.com` and returns an alternate website.
 
@@ -81,7 +84,7 @@ The second entry tells the system to look to `192.168.1.1` for the domain `stick
 Network Diagnostics
 -------------------
 
-The following tips address the basic usage and functionality of a number of tools that you can use to assess and diagnose network problems. If you suspect connectivity issues, including output of the relevant commands in your [support ticket](/docs/linode-platform/manager/linode-support-system) can help our staff diagnose your issue. This is particularly helpful in cases where networking issues are intermittent.
+The following tips address the basic usage and functionality of a number of tools that you can use to assess and diagnose network problems. If you suspect connectivity issues, including output of the relevant commands in your [support ticket](/docs/platform/support) can help our staff diagnose your issue. This is particularly helpful in cases where networking issues are intermittent.
 
 ### Using the Ping Command
 
@@ -116,12 +119,22 @@ The `traceroute` command expands on the functionality of the [ping](#using_the_p
 Here is an example of output from a `traceroute` command:
 
     traceroute to google.com (74.125.53.100), 30 hops max, 40 byte packets
-
-> 1 207.192.75.2 (207.192.75.2) 0.414 ms 0.428 ms 0.509 ms 2 vlan804.tbr2.mmu.nac.net (209.123.10.13) 0.287 ms 0.324 ms 0.397 ms 3 0.e1-1.tbr2.tl9.nac.net (209.123.10.78) 1.331 ms 1.402 ms 1.477 ms 4 core1-0-2-0.lga.net.google.com (198.32.160.130) 1.514 ms 1.497 ms 1.519 ms 5 209.85.255.68 (209.85.255.68) 1.702 ms 72.14.238.232 (72.14.238.232) 1.731 ms 21.031 ms 6 209.85.251.233 (209.85.251.233) 26.111 ms 216.239.46.14 (216.239.46.14) 23.582 ms 23.468 ms 7 216.239.43.80 (216.239.43.80) 123.668 ms 209.85.249.19 (209.85.249.19) 47.228 ms 47.250 ms 8 209.85.241.211 (209.85.241.211) 76.733 ms 216.239.43.80 (216.239.43.80) 73.582 ms 73.570 ms 9 209.85.250.144 (209.85.250.144) 86.025 ms 86.151 ms 86.136 ms 10 64.233.174.131 (64.233.174.131) 80.877 ms 216.239.48.34 (216.239.48.34) 76.212 ms 64.233.174.131 (64.233.174.131) 80.884 ms 11 216.239.48.32 (216.239.48.32) 81.267 ms 81.198 ms 81.186 ms 12 216.239.48.137 (216.239.48.137) 77.478 ms pw-in-f100.1e100.net (74.125.53.100) 79.009 ms 216.239.48.137 (216.239.48.137) 77.437 ms
+    1 207.192.75.2 (207.192.75.2) 0.414 ms 0.428 ms 0.509 ms 
+    2 vlan804.tbr2.mmu.nac.net (209.123.10.13) 0.287 ms 0.324 ms 0.397 ms 
+    3 0.e1-1.tbr2.tl9.nac.net (209.123.10.78) 1.331 ms 1.402 ms 1.477 ms 
+    4 core1-0-2-0.lga.net.google.com (198.32.160.130) 1.514 ms 1.497 ms 1.519 ms 
+    5 209.85.255.68 (209.85.255.68) 1.702 ms 72.14.238.232 (72.14.238.232) 1.731 ms 21.031 ms 
+    6 209.85.251.233 (209.85.251.233) 26.111 ms 216.239.46.14 (216.239.46.14) 23.582 ms 23.468 ms 
+    7 216.239.43.80 (216.239.43.80) 123.668 ms 209.85.249.19 (209.85.249.19) 47.228 ms 47.250 ms 
+    8 209.85.241.211 (209.85.241.211) 76.733 ms 216.239.43.80 (216.239.43.80) 73.582 ms 73.570 ms 
+    9 209.85.250.144 (209.85.250.144) 86.025 ms 86.151 ms 86.136 ms 
+    10 64.233.174.131 (64.233.174.131) 80.877 ms 216.239.48.34 (216.239.48.34) 76.212 ms 64.233.174.131 (64.233.174.131) 80.884 ms 
+    11 216.239.48.32 (216.239.48.32) 81.267 ms 81.198 ms 81.186 ms 
+    12 216.239.48.137 (216.239.48.137) 77.478 ms pw-in-f100.1e100.net (74.125.53.100) 79.009 ms 216.239.48.137 (216.239.48.137) 77.437 ms
 
 Often the hostnames and IP addresses on either side of a failed jump are useful in determining who operates the machine where the routing error occurs. Failed jumps are designated by line with three asterisks (e.g. `* * *`).
 
-Furthermore, including `traceroute` information in tickets to [Linode support](/docs/linode-platform/manager/linode-support-system/) is sometimes useful when trying to diagnose network issues. You may also want to forward `traceroute` information to your Internet Service Provider (ISP) if you suspect that the connectivity issue is with your ISP's network. Recording `traceroute` information is particularly useful if you are experiencing an intermittent issue.
+Furthermore, including `traceroute` information in tickets to [Linode support](/docs/platform/support/) is sometimes useful when trying to diagnose network issues. You may also want to forward `traceroute` information to your Internet Service Provider (ISP) if you suspect that the connectivity issue is with your ISP's network. Recording `traceroute` information is particularly useful if you are experiencing an intermittent issue.
 
 ### Using the mtr Command
 
@@ -130,16 +143,15 @@ The "mtr" command, like the [traceroute](#using_the_traceroute_command) tool, pr
 Here is the example output of an `mtr` command:
 
     HOST: squire.example.com  Loss%   Snt   Last   Avg  Best  Wrst StDev
-
-> 1.  256.129.75.4 0.0% 10 0.4 0.4 0.3 0.6 0.1
-> 2.  vlan804.tbr2.mmu.nac.net 0.0% 10 0.3 0.4 0.3 0.7 0.1
-> 3.  0.e1-1.tbr2.tl9.nac.net 0.0% 10 4.3 4.4 1.3 11.4 4.1
-> 4.  core1-0-2-0.lga.net.google.c 0.0% 10 64.9 11.7 1.5 64.9 21.2
-> 5.  209.85.255.68 0.0% 10 1.7 4.5 1.7 29.3 8.7
-> 6.  209.85.251.9 0.0% 10 23.1 35.9 22.6 95.2 27.6
-> 7.  72.14.239.127 0.0% 10 24.2 24.8 23.7 26.1 1.0
-> 8.  209.85.255.190 0.0% 10 27.0 27.3 23.9 37.9 4.2
-> 9.  gw-in-f100.1e100.net 0.0% 10 24.1 24.4 24.0 26.5 0.7
+        1.  256.129.75.4 0.0% 10 0.4 0.4 0.3 0.6 0.1
+        2.  vlan804.tbr2.mmu.nac.net 0.0% 10 0.3 0.4 0.3 0.7 0.1
+        3.  0.e1-1.tbr2.tl9.nac.net 0.0% 10 4.3 4.4 1.3 11.4 4.1
+        4.  core1-0-2-0.lga.net.google.c 0.0% 10 64.9 11.7 1.5 64.9 21.2
+        5.  209.85.255.68 0.0% 10 1.7 4.5 1.7 29.3 8.7
+        6.  209.85.251.9 0.0% 10 23.1 35.9 22.6 95.2 27.6
+        7.  72.14.239.127 0.0% 10 24.2 24.8 23.7 26.1 1.0
+        8.  209.85.255.190 0.0% 10 27.0 27.3 23.9 37.9 4.2
+        9.  gw-in-f100.1e100.net 0.0% 10 24.1 24.4 24.0 26.5 0.7
 
 Used without the `--report` flag, `mtr` tracks the speed of the connection in real time until you exit the program. Additionally, be aware that `mtr` will pause for a few moments before generating output. For more information regarding `mtr` consider our [guide to diagnosing network issues with mtr](/docs/linux-tools/mtr).
 
@@ -158,9 +170,10 @@ If you need to see how much memory your system is using at the current moment is
 
 On a moderately utilized Linode 1GB, this command will generate output that resembles the following:
 
-    total       used       free     shared    buffers     cached
-
-> Mem: 1002 956 46 0 171 357 -/+ buffers/cache: 427 575 Swap: 127 39 88
+        total       used       free     shared    buffers     cached
+    Mem: 1002        956         46          0        171        357 
+    -/+ buffers/cache: 427      575 
+    Swap: 127         39         88
 
 This output takes a little bit of careful reading to interpret correctly. Out of a total 1002 megabytes of memory (RAM), the system is using 956 megabytes, and has 46 megabytes free. **However**, the system also has 427 megabytes of "stale" data buffered and stored in cache. The operating system will "drop" the caches when and if it needs the space, but retains the cache if there is no other need for the space. It is totally normal for a Linux system to leave old data in RAM until the space is needed, and you should not be alarmed if only a small amount of memory is actually "free."
 
@@ -203,7 +216,7 @@ The memory and swap columns provide the same kind of information provided by the
 
 If this number is consistently and considerably higher than 0, you might consider taking measures to address your IO usage. However, if the `vmstat` output resembles the above, you can be sure in the knowledge that you're not experiencing an IO-related issues.
 
-If you are experiencing an intermittent issue, you will need to run `vmstat` *when* you experience the issue in order to properly diagnose or rule out an IO issue. `vmsat` output can sometimes help [support](/docs/linode-platform/manager/linode-support-system/) diagnose problems.
+If you are experiencing an intermittent issue, you will need to run `vmstat` *when* you experience the issue in order to properly diagnose or rule out an IO issue. `vmsat` output can sometimes help [support](/docs/platform/support/) diagnose problems.
 
 ### Monitor Processes, Memory, and CPU Usage with htop
 
@@ -286,7 +299,7 @@ If you're new to using Linux and manipulating files on the terminal interface we
 
 To **copy** files, issue the following command:
 
-> cp /home/squire/todo.txt /home/squire/archive/todo.01.txt
+    cp /home/squire/todo.txt /home/squire/archive/todo.01.txt
 
 This copies `todo.txt` to an archive folder, and adds a number to the file name. If you want to recursively copy all of the files and subdirectories in a directory to another directory, use the `-R` option. This command looks like:
 
@@ -512,7 +525,7 @@ You can use `grep` to filter the results of another command that sends output to
 
     ls /home/squire/data | grep "1257"
 
-In this example, we assume that the `/home/squire/data` directory contains a large number of files that have a UNIX time stamp in their file name. The above command will filter the output to only display those tiles that have the four digits "1257" in their file name. Note, in these cases `grep` only filters the output of `ls` and does not look into file contents. For more information regarding `grep` consider the full documentation of the [grep command](/docs/linux-tools/common-commands/grep).
+In this example, we assume that the `/home/squire/data` directory contains a large number of files that have a UNIX time stamp in their file name. The above command will filter the output to only display those tiles that have the four digits "1257" in their file name. Note, in these cases `grep` only filters the output of `ls` and does not look into file contents. For more information regarding `grep` consider the full documentation of the [grep command](/docs/tools-reference/search-and-filter-text-with-grep).
 
 ### How to Search and Replace Across a Group of Files
 
@@ -534,13 +547,13 @@ To match literal slashes (e.g. `/`), you must escape them with a backslash (e.g.
 
 This would strip the slashes from the string `r/e/g/e/x` so that this string would be `regex` after running the `sed` command on the file that contains the string.
 
-The following example, from our [migrating a server to your Linode](/docs/linode-platform/migration/migrate-server-to-linode) document, searches and replaces one IP address with another. In this case `98.76.54.32` is replaced with `12.34.56.78`:
+The following example, from our [migrating a server to your Linode](/docs/migrate-to-linode/disk-images/migrating-a-server-to-your-linode) document, searches and replaces one IP address with another. In this case `98.76.54.32` is replaced with `12.34.56.78`:
 
     sed -i 's/98\.76\.54\.32/12\.34\.56\.78/'
 
 In the above example, period characters are escaped as `\.`. In regular expressions the full-stop (period) character matches to any character.
 
-Once again, `sed` is a very powerful and useful tool; however, if you are unfamiliar with it, we strongly recommend testing your search and replace patterns before making any edit of consequence. For more information about `sed` consider the full documentation of [text manipulation with sed](/docs/linux-tools/common-commands/sed).
+Once again, `sed` is a very powerful and useful tool; however, if you are unfamiliar with it, we strongly recommend testing your search and replace patterns before making any edit of consequence. For more information about `sed` consider the full documentation of [text manipulation with sed](/docs/tools-reference/tools/manipulate-text-from-the-command-line-with-sed).
 
 ### How to Edit Text Interactively
 
@@ -602,8 +615,9 @@ In the default virtual host configurations suggested in our [Apache installation
 
 {: .file-excerpt }
 Apache Virtual Host Configuration
-
-> ErrorLog /srv/www/example.com/logs/error.log CustomLog /srv/www/example.com/logs/access.log combined
+:   ~~~
+    ErrorLog /srv/www/example.com/logs/error.log CustomLog /srv/www/example.com/logs/access.log combined
+    ~~~
 
 Where `bucknell.net` represents the name of your virtual host, and the location of relevant files. These configuration directives make Apache create two log files that contain logging information specific to that virtual host. This allows you to easily troubleshoot errors on specific virtual hosts. To track or tail the error log, issue the following command:
 
@@ -627,7 +641,7 @@ The *Domain Name System*, or DNS, is the service that the Internet uses to assoc
 
 CNAMEs are **only** valid when pointing from one domain to another. If you need to redirect a full URL, you will need to set up a web server and [configure redirection](/docs/web-servers/apache/configuration/redirecting-urls) and/or virtual hosting on the server level. CNAMEs will allow you to redirect subdomains, such as `team.example.com`, to other subdomains or domains, such as `jack.example.org`. CNAMEs must point a valid a domain that has a valid A Record, or to another CNAME.
 
-Although limited in their capabilities, CNAMEs can be quite useful in some situations. In particular, if you need to change the hostname of a machine, CNAMEs are quite useful. To learn how to set up CNAME records with the [Linode Manager](/docs/linode-platform/manager/), consult our documentation of the [Linode DNS Manager](/docs/dns-guides/configuring-dns-with-the-linode-manager).
+Although limited in their capabilities, CNAMEs can be quite useful in some situations. In particular, if you need to change the hostname of a machine, CNAMEs are quite useful. To learn how to set up CNAME records with the [Linode Manager](http://manager.linode.com//), consult our documentation of the [Linode DNS Manager](/docs/dns-guides/configuring-dns-with-the-linode-manager).
 
 ### How to Set Up Subdomains
 
@@ -635,11 +649,9 @@ When [reading domain names](/docs/dns-guides/introduction-to-dns#anatomy_of_a_do
 
 If you want to [create and host a sub-domain](/docs/dns-guides/introduction-to-dns#configuring_subdomains), consider the following process:
 
-First we need to create an [A Record](/docs/dns-guides/introduction-to-dns#a_aaaa_records)
+First we need to create an [A Record](/docs/dns-guides/introduction-to-dns#a_aaaa_records) in the DNS zone for the domain. This is easily accomplished when using the [Linode DNS Manager](/docs/dns-guides/configuring-dns-with-the-linode-manager). As always, you may host the DNS for your domain with any provider you choose.
 
-in the DNS zone for the domain. This is easily accomplished when using the [Linode DNS Manager](/docs/dns-guides/configuring-dns-with-the-linode-manager). As always, you may host the DNS for your domain with any provider you choose.
-
-In order for your server to respond to requests for this domain, you must set up a server to respond to these requests. For web servers like [Apache](/docs/web-servers/apache/) this requires [configuring a new virtual host](/docs/web-servers/apache/installation/debian-5-lenny#configure_apache_for_named_based_virtual_hosting). For [XMPP Servers](/docs/communications/xmpp/) you must [configure an additional host](/docs/communications/xmpp/ejabberd/debian-5-lenny#hostnames_and_virtual_hosting) to receive the requests for this host. For more information, consult the documentation for the specific server you wish to deploy.
+In order for your server to respond to requests for this domain, you must set up a server to respond to these requests. For web servers like [Apache](/docs/web-servers/apache/) this requires [configuring a new virtual host](/docs/web-servers/apache/installation/debian-5-lenny#configure_apache_for_named_based_virtual_hosting). For XMPP Servers you must [configure an additional host](/docs/applications/messaging/instant-messaging-services-with-ejabberd-on-ubuntu-12-04-precise-pangolin#hostnames_and_virtual_hosting) to receive the requests for this host. For more information, consult the documentation for the specific server you wish to deploy.
 
 Once configured, subdomains function identically to first-level domains on your server in almost all respects. If you need to, you can set up HTTP redirection for the new sub domain.
 
@@ -688,8 +700,9 @@ Use the command `type msmtp`, to find the location of `msmtp` on your system. Ty
 
 {: .file-excerpt }
 .msmtprc example
-
-> account default host smtp.example.com from <squire@example.com> auth on user squire password s3cr37 tls on tls\_certcheck off port 587
+:   ~~~
+    account default host smtp.example.com from <squire@example.com> auth on user squire password s3cr37 tls on tls\_certcheck off port 587
+    ~~~
 
 The `.msmptrc` file needs to be set to mode 600, and owned by the user account that will be sending mail. If the configuration file is located at `/srv/smtp/msmtprc`, you can call mstmp with the following command:
 

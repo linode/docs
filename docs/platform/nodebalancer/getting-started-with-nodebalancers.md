@@ -19,8 +19,7 @@ NodeBalancers are built for high availability and designed to be "set and forgot
 
 This guide attempts to give a high-level overview of transitioning to a NodeBalancer, but makes no attempt to document or explain the underlying parts of the application NodeBalancer will be balancing; for more information on various applications that might be useful behind NodeBalancer review the rest of the Linode Library.
 
-Overview
---------
+## Overview
 
 A NodeBalancer listens on a public IP address for incoming connections, then uses configurable rules to select a backend node (out of one or more) to which to send the connection. In HTTP mode, NodeBalancers can reach into the incoming Web request and make decisions based on it.
 
@@ -40,8 +39,7 @@ Now, backend Linodes can be added or removed to the work load seamlessly, withou
 
 Additionally, NodeBalancer will watch each backend for failure, rerouting users to working backends transparently and without any manual intervention.
 
-Configuring a NodeBalancer
---------------------------
+## Configuring a NodeBalancer
 
 First, the backend Linode currently powering the Web site must have a private IP address. If it does not, add one now and configure the Linode for [static networking](/docs/networking/configuring-static-ip-interfaces/) -- this will then be a good opportunity to do the same for the database server, since private network traffic is unbilled. Reboot if necessary, and configure your Web application to respond on the private IP address, if it is not already.
 
@@ -53,7 +51,7 @@ For the example Web application, only one NodeBalancer is needed. Add one, and c
 
 [![The NodeBalancer has been added.](/docs/assets/797-2.png)](/docs/assets/772-nodebalancer-added.png)
 
-A NodeBalancer is configured using ports, and the example Web application uses only one: port 80 for regular HTTP traffic.
+Now click on **Create Configuration**. A NodeBalancer is configured using ports, and the example Web application uses only one: port 80 for regular HTTP traffic.
 
 [![Adding a port configuration to a NodeBalancer.](/docs/assets/798-3.png)](/docs/assets/774-add-port.png)
 
@@ -81,8 +79,7 @@ Now that the backend is up, go directly to your NodeBalancer's IP address in a b
 
 That is enough to configure the NodeBalancer. For HTTPS/SSL configurations, use the HTTPS protocol and provide a key and certificate.
 
-A Note about Virtual Hosts
---------------------------
+## A Note about Virtual Hosts
 
 You might not see the web application that you expect when you go directly to the NodeBalancer's IP address. This is due to virtual hosts, and is not an issue unique to NodeBalancers. In the default configurations of many Web servers, an application might only be configured to respond for certain hostnames. This can impact testing NodeBalancers as well as the behavior of their health checks.
 
@@ -92,8 +89,7 @@ It is important to configure the "default" virtual host in your Web server to po
 >
 > Health checks are transmitted with a Host header (in HTTP/1.0 mode).
 
-Putting the NodeBalancer in Charge
-----------------------------------
+## Putting the NodeBalancer in Charge
 
 Your NodeBalancer is now working and is able to pass traffic to your Web application. It is important to note at this point that configuring the NodeBalancer has not impacted your application's normal operations at all -- you can test NodeBalancer without your users ever knowing. The only exception to this would be to add a private IP address, if it was necessary to do so.
 

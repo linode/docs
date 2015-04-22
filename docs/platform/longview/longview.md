@@ -60,7 +60,7 @@ To start monitoring a system with Longview, you'll need to add the system to the
     [![Adding a system to Linode Longview.](/docs/assets/1383-lv_install.png)](/docs/assets/1383-lv_install.png)
 
 4.  Copy the Longview installation command to your clipboard.
-5.  Open a terminal window and [log in to your Linode via SSH](getting-started#sph_logging-in-for-the-first-time).
+5.  Open a terminal window and [log in to your Linode via SSH](/docs/getting-started#logging-in-for-the-first-time).
 6.  Paste the Longview installation command into the terminal window, and then press Return. The Longview client will be installed on your system.
 
 You have successfully installed the Longview client on your system. Longview will start collecting system-level data immediately. Repeat this process to add additional systems to Longview.
@@ -73,7 +73,7 @@ If the installation process described above doesn't work, you'll need to manuall
 
 If you're running a Debian or Ubuntu distribution, follow these steps to manually install the Longview client on your system:
 
-1.  Open a terminal window and [log in to your Linode via SSH](getting-started#sph_logging-in-for-the-first-time).
+1.  Open a terminal window and [log in to your Linode via SSH](/docs/getting-started#logging-in-for-the-first-time).
 2.  Find the name of your distribution by entering the following command. For example, if you're running Ubuntu 12.04, the output will be `precise`. Remember this name - you'll need it later.
 
         lsb_release -sc
@@ -131,7 +131,7 @@ Congratulations! The Longview client is now installed on your Ubuntu or Debian s
 
 If you're running a Fedora or CentOS distribution, follow these steps to manually install the Longview client on your system:
 
-1.  Open a terminal window and [log in to your Linode via SSH](getting-started#sph_logging-in-for-the-first-time).
+1.  Open a terminal window and [log in to your Linode via SSH](/docs/getting-started#logging-in-for-the-first-time).
 2.  Create a file to hold the repository by entering the following command:
 
         sudo nano /etc/yum.repos.d/longview.repo
@@ -202,7 +202,7 @@ Follow these commands to install Longview on your Linode manually:
     [![Adding a system to Linode Longview.](/docs/assets/1383-lv_install.png)](/docs/assets/1383-lv_install.png)
 
 4.  Copy the Longview installation command to your clipboard.
-5.  Open a terminal window and [log in to your Linode via SSH](getting-started#sph_logging-in-for-the-first-time).
+5.  Open a terminal window and [log in to your Linode via SSH](/docs/getting-started#logging-in-for-the-first-time).
 6.  Paste the Longview installation command into the terminal window, and then press Return. The Longview client will be installed on your system.
 7.  View the output as Longview's core dependencies are installed. If you're missing any core dependencies, you'll need to look up the corresponding error and install or reconfigure the appropriate item. On a successful installation, you should see output like the following:
 
@@ -346,7 +346,7 @@ All of the graphs will be updated to display data for the time interval you sele
 
 Longview allows you to *zoom* in on graphs to take a close look at a specific time interval. For example, if you saw a major spike in CPU usage that lasted 19 minutes, you could zoom in on that 19 minute interval to see the graphs in more detail. To zoom in, click and drag the pointer to select a specific portion of the graph, as shown below.
 
-[![Zooming in Linode Longview.](/docs/assets/1397-lv_zoom_crop_sm.png)](/docs/assets/1398-lv_zoom_crop.png)
+![Zooming in Linode Longview.](/docs/assets/1397-lv_zoom_crop_sm.png)
 
 All of the graphs will be updated to display data for the time interval you selected. The graphs will stay set to the time interval you selected until you *reset the zoom*.
 
@@ -467,7 +467,7 @@ The system has been removed from the Longview interface in the Linode Manager. R
 
 Next, you should remove the Longview client application from the system you want to stop monitoring. Here's how:
 
-1.  Open a terminal window and [log in to your Linode via SSH](getting-started#sph_logging-in-for-the-first-time).
+1.  Open a terminal window and [log in to your Linode via SSH](/docs/getting-started#logging-in-for-the-first-time).
 2.  If you are using Debian or Ubuntu, enter the following command into the terminal window:
 
         sudo apt-get remove linode-longview

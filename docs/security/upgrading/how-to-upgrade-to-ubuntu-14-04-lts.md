@@ -5,24 +5,28 @@ author:
 description: 'Our guide to upgrading to Ubuntu 14.04 LTS'
 keywords: 'upgrading,ubuntu,ubuntu 14.04'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Monday, January 26, 2015
+modified: Sunday, February 22, 2015
 modified_by:
-  name: Alex Fornuto
+  name: Dave Russell
 published: 'Tuesday, October 21st, 2014'
 title: 'How to Upgrade to Ubuntu 14.04 LTS'
 ---
 
 Ubuntu 14.04 is a long-term support (LTS) release that will be supported until April 2019. This guide explains how to upgrade your Linode from Ubuntu 12.04 (Precise Pangolin) to Ubuntu 14.04 (Trusty Tahr).
 
- {: .note }
+ {: .caution }
  >Distribution upgrades can yield unpredictable results, due to variations in software stacks. When possible, we recommend:
  >
  - Creating a new Linode with the latest disk template
  - Rebuilding your stack
  - Transferring your data
  - Swapping IP addresses
+ >
+ > In addition, you should use [LISH](https://www.linode.com/docs/networking/using-the-linode-shell-lish) to perform this upgrade as, in the event your internet connection is disconnected, your system may end up corrupted or the upgrade may be incomplete.
 
-This guide was written assuming that you have root access to your Linode. If you do not have root access, you will need to prepend each command with `sudo`.
+
+{: .note }
+>This guide was written assuming that you have root access to your Linode. If you do not have root access, you will need to prepend each command with `sudo`. 
 
 Preparing to Upgrade
 --------------------
@@ -37,13 +41,13 @@ Before upgrading, you will need to prepare your Linode to be upgraded. In order 
 
 4.  Stop non-critical services
 
-5.  Start a screen session to ensure that the installation is not interrupted
+5.  Start a LISH session to ensure that the installation is not interrupted
 
 Each of these will be discussed in more detail below.
 
 {: .note }
 >
->In the interest of security, Ubuntu 14.04 LTS disables password based SSH authentication for the root user.  If you log into your root account directly via SSH, you will need to ensure that you have configured key based authentication prior to following these upgrade steps.  If you have already followed our steps for [adding a new user](docs/security/securing-your-server/#adding-a-new-user) to your Linode, you should be able to log in with that account after the upgrade process has completed.
+>In the interest of security, Ubuntu 14.04 LTS disables password based SSH authentication for the root user.  If you log into your root account directly via SSH, you will need to ensure that you have configured key based authentication prior to following these upgrade steps.  If you have already followed our steps for [adding a new user](/docs/security/securing-your-server/#adding-a-new-user) to your Linode, you should be able to log in with that account after the upgrade process has completed.
 
 ### Installing Available Updates
 
@@ -73,22 +77,6 @@ We recommend that you stop as many services as possible before upgrading to Ubun
 
     service apache2 stop
 
-### Starting a Screen Session
-
-We recommend that you start a screen session to ensure that the updates will continue to install in the unlikely event you are disconnected from the Linode during the upgrade process. Here's how to install `screen` and start a screen session:
-
-1.  Install screen by entering the following command:
-
-        apt-get install screen
-
-2.  After installation has completed, start a screen session by entering the following command:
-
-        screen
-
-3.  If you are disconnected from your server, you can reconnect to the screen session by entering the following command:
-
-        screen -Dr
-
 You are now ready to install Ubuntu 14.04 LTS on your Linode.
 
 Upgrading from Ubuntu 12.04 LTS
@@ -112,7 +100,7 @@ Here's how to upgrade from Ubuntu 12.04 LTS to Ubuntu 14.04 LTS:
 
         do-release-upgrade -d
 
-5.  Follow the on-screen instructions to complete the installation process. You will be prompted as to whether you wish to continue; as you are on screen, it is safe to continue via SSH.
+5.  Follow the on-screen instructions to complete the installation process. You will be prompted as to whether you wish to continue; as you are on LISH, it is safe to continue via SSH.
 
 6.  Because Linode offers internal package mirrors for Ubuntu, you may see this message:
 

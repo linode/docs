@@ -164,10 +164,7 @@ If you need to quickly access Lish, use the Ajax Console to open it directly fro
 2.  Click the **Linodes** tab. A list of your virtual private servers appears.
 3.  Select a Linode. The Linode's dashboard appears.
 4.  Click the **Remote Access** tab. Scroll down to the *Console Access* section.
-5.  Select the **Launch Lish Ajax Console** link. The window shown below appears.
-
-[![The Lish Ajax console](/docs/assets/1578-remote-7.2.png)](/docs/assets/1578-remote-7.2.png)
-
+5.  Select the **Launch Lish Ajax Console** link.
 6.  Enter a username and password to log in.
 
 You are now logged in to the Lish Ajax console.

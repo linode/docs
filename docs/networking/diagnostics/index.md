@@ -1,5 +1,5 @@
 ---
-deprecated: true
+deprecated: false
 author:
   name: Dave Russell
   email: docs@linode.com

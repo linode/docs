@@ -22,7 +22,7 @@ This article is not a comprehensive guide to updating from Apache 2.2 to 2.4. Fo
 Make a Backup
 -------------
 
-Make a [backup](/docs/backups) of your data before upgrading your Apache software. Upgrading can sometimes cause you to lose data, particularly if you had settings in an Apache configuration file that no longer apply in Apache 2.4. If you use Apache modules, this is especially likely.
+Make a [backup](/docs/platform/backup-service) of your data before upgrading your Apache software. Upgrading can sometimes cause you to lose data, particularly if you had settings in an Apache configuration file that no longer apply in Apache 2.4. If you use Apache modules, this is especially likely.
 
 Even with the simplest Apache setup, you should back up your Apache settings, modules, and other data in case unforeseen issues arise.
 

@@ -109,7 +109,7 @@ Make sure you do this for all domains and subdomains that might receive email fo
 
 You should think about whether you need to purchase a valid SSL certificate or not. In this guide, you'll use the default self-signed certificate that comes with Dovecot for free. This certificate encrypts your mail connections just like a purchased certificate, but your email users will receive warnings about the certificate when they attempt to set up their email accounts.
 
-This can be confusing for users, and it may encourage bad security habits by forcing them to accept a self-signed certificate. If you're going to set up all of your users' mail clients yourself, or if you have a small number of tech-savvy users, this might not be a problem. You'll need to use your best judgement to decide whether you need to purchase a signed SSL certificate or not. For information about SSL certificates, see [these guides in the Linode Library](/docs/security/ssl-certificates).
+This can be confusing for users, and it may encourage bad security habits by forcing them to accept a self-signed certificate. If you're going to set up all of your users' mail clients yourself, or if you have a small number of tech-savvy users, this might not be a problem. You'll need to use your best judgement to decide whether you need to purchase a signed SSL certificate or not. For information about SSL certificates, see [these guides in the Linode Library](/docs/security/ssl/).
 
 ### Finding the Hostname
 

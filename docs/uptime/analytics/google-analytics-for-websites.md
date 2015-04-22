@@ -2,8 +2,8 @@
 author:
   name: Elle Krout
   email: ekrout@linode.com
-description: 'Get in-depth website visitor statistics with Google Analytics on your WordPress website.'
-keywords: 'analytics,google analytics,wordpress,analytics,tracking,statistics'
+description: 'Get in-depth website visitor statistics with Google Analytics on your website.'
+keywords: 'analytics,google analytics,analytics,tracking,statistics'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: Thursday, January 29, 2015
 modified_by:

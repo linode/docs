@@ -32,24 +32,6 @@ Submit your own topic, or choose from the list of open topics we want to add to 
 
 Each article is worth \$100 if it is accepted for publication. In addition, we always welcome edits, suggestions, and updates to existing guides.
 
-Completed Topics
-----------------
-
-These authors got their articles published and \$100. You could be next.
-
--   [Varnish Cache](/docs/websites/varnish/getting-started-with-varnish-cache) - Kevin Cupp
--   [Pflogsumm](/docs/email/postfix/pflogsumm-for-postfix-monitoring-on-centos-6) - Robert Accettura
--   [SSH Tunnel with SOCKS Proxy](/docs/networking/ssh/setting-up-an-ssh-tunnel-with-your-linode-for-safe-browsing) - Arnaldo Ariel Arrieta
--   [Basic NFS Configuration on Debian 7](/docs/networking/basic-nfs-configuration-on-debian-7) - Juan Traverso
--   [Configure Postfix to Send Mail Using an External SMTP Server](/docs/email/postfix/postfix-smtp-debian7) - Santiago Ti
--   [MariaDB Setup on Debian 7](/docs/databases/mariadb/mariadb-setup-debian7) - Nashruddin Amin
--   [Running Apache with PHP-FPM on Debian and Ubuntu](/docs/websites/apache/running-fastcgi-php-fpm-on-debian-7-with-apache) - Jesin A.
--   [Using WeeChat for Internet Relay Chat](/docs/applications/messaging/using-weechat-for-irc) - Samuel Damashek
--   [Manage Git Repositories with GitLab on Ubuntu 14.04 (Trusty)](/docs/applications/development/gitlab-on-ubuntu-14-04) - Nashruddin Amin
--   [Yesod, Nginx, and MySQL on Debian 7 (Wheezy)](/docs/websites/frameworks/yesod-nginx-mysql-on-debian-7-wheezy)- Si-Qi Liu
--   [Installing iRedMail on your Linode](/docs/email/iredmail/installing-iredmail) - Nick Reichley
--   [Using StartSSL with the latest Nginx on Debian 7](/docs/websites/nginx/startssl-wth-latest-nginx-debian-7) - Ryan Laverdiere
--  [Garry''s Mod on CentOS 7](/docs/applications/game-servers/garrys-mod-server-on-centos-7)
 
 How Much Money Will I Earn?
 ---------------------------
@@ -90,6 +72,30 @@ Once you've submitted your article, here's what you can expect:
 4.  You may receive questions or comments from us, or a request for a resubmission with a few changes.
 5.  We will let you know that your article has been chosen for publication and send you the final version we are planning to publish. You will have 36 hours to respond and approve our publication of the final version.
 6.  If you respond positively (non-response will be taken as a go-ahead to publish), we will publish the article and give you the cash or Linode credit.
+
+Completed Topics
+----------------
+
+These authors got their articles published and \$100. You could be next.
+
+-   [Varnish Cache](/docs/websites/varnish/getting-started-with-varnish-cache) - Kevin Cupp
+-   [Pflogsumm](/docs/email/postfix/pflogsumm-for-postfix-monitoring-on-centos-6) - Robert Accettura
+-   [SSH Tunnel with SOCKS Proxy](/docs/networking/ssh/setting-up-an-ssh-tunnel-with-your-linode-for-safe-browsing) - Arnaldo Ariel Arrieta
+-   [Basic NFS Configuration on Debian 7](/docs/networking/basic-nfs-configuration-on-debian-7) - Juan Traverso
+-   [Configure Postfix to Send Mail Using an External SMTP Server](/docs/email/postfix/postfix-smtp-debian7) - Santiago Ti
+-   [MariaDB Setup on Debian 7](/docs/databases/mariadb/mariadb-setup-debian7) - Nashruddin Amin
+-   [Running Apache with PHP-FPM on Debian and Ubuntu](/docs/websites/apache/running-fastcgi-php-fpm-on-debian-7-with-apache) - Jesin A.
+-   [Using WeeChat for Internet Relay Chat](/docs/applications/messaging/using-weechat-for-irc) - Samuel Damashek
+-   [Manage Git Repositories with GitLab on Ubuntu 14.04 (Trusty)](/docs/applications/development/gitlab-on-ubuntu-14-04) - Nashruddin Amin
+-   [Yesod, Nginx, and MySQL on Debian 7 (Wheezy)](/docs/websites/frameworks/yesod-nginx-mysql-on-debian-7-wheezy)- Si-Qi Liu
+-   [Installing iRedMail on your Linode](/docs/email/iredmail/installing-iredmail) - Nick Reichley
+-   [Using StartSSL with the latest Nginx on Debian 7](/docs/websites/nginx/startssl-wth-latest-nginx-debian-7) - Ryan Laverdiere
+-   [Garry's Mod on CentOS 7](/docs/applications/game-servers/garrys-mod-server-on-centos-7) - Julian Meyer
+-   [OSSEC IDS on Debian 7](/docs/security/ossec-ids-debian-7) - Sunday Ogwu-Chinuwa
+-	[Turbocharge Your WordPress Search Using Solr](/docs/websites/cms/turbocharge-wordpress-search-with-solr) - Karthik Shiraly
+-	[Install and Configure Don't Starve Together Server on Ubuntu 14.04](/docs/applications/game-servers/dont-starve-together-on-ubuntu) - Andrew Gottschling
+-	[Running a Spigot Minecraft Server on Ubuntu 14.04 and 14.10](/docs/applications/game-servers/minecraft-with-spigot-ubuntu) - Sam Mauldin
+
 
 Legal Information
 -----------------
