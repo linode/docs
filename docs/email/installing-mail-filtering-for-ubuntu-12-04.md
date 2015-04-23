@@ -120,7 +120,7 @@ Here we'll set various options and settings for SpamAssassin.
     :   ~~~
         #   Set the threshold at which a message is considered spam (default: 5.0)
         #
-        required_score 3.5
+        required_score 8
         ~~~
 
 4.  Once finished, save and exit the file. If you're using Nano the command is Control + x
