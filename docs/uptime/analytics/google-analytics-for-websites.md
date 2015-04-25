@@ -47,7 +47,7 @@ You can now add this code to your website through [PHP](#add-through-php), or an
 
 ##Add Through PHP
 
-If your website is coded using PHP (your files will end in `.php`), you can add the tracking code through a PHP script. This is useful if you are not using a seperate PHP file for your header, or otherwise want to keep the code itself outside of your header file. This also makes any additional changes to the tracking code far more efficient, since you will only have to edit one file.
+If your website is coded using PHP (your files will end in `.php`), you can add the tracking code through a PHP script. This is useful if you are not using a separate PHP file for your header, or otherwise want to keep the code itself outside of your header file. This also makes any additional changes to the tracking code far more efficient, since you will only have to edit one file.
 
 1.  Navigate to the directory your website is hosted in:
 
@@ -156,7 +156,7 @@ If your website cannot use PHP (its files end in `.html`, `.htm`, or otherwise),
     >
     >Change the `.html` ending to match the ending of your website's files.
 
-8.  To check that the code has been successfully inserted into your `.html` files, you can either open up your website in your browser and view the source code, or view a file in your terminal. The folllowing should appear in conjuction to your `<head>` tag:
+8.  To check that the code has been successfully inserted into your `.html` files, you can either open up your website in your browser and view the source code, or view a file in your terminal. The folllowing should appear in conjunction to your `<head>` tag:
 
     {: .file-excerpt}
     /var/www/example.com/public_html/index.html
