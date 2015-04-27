@@ -1,4 +1,4 @@
-ccess restriction with Fail2ban on CentOS/Debian
+Access restriction with Fail2ban on CentOS/Debian
 
 Any Internet-connected server will be at some point the target of unauthorized access attempts. While these attacks are usually harmless, they are a nuisance: system resources are being used to serve the unauthorized access attempts and system logs increase in size and become cluttered. Even worse, any public-facing accounts (FTP, POP3/IMAP, SSH) with weak passwords can be accessed by a thorough password scanner. 
 
