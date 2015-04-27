@@ -5,10 +5,10 @@ author:
 description: 'A look into Chef''s primary components, features, and configurations for the new Chef user'
 keywords: 'chef,automation,chefdk,chef server,chef development kit,cookbooks,beginners,server automation,configuration management'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Friday, February 27, 2015
+modified: Thursday, April 23rd, 2015
 modified_by:
   name: Elle Krout
-published: 'Friday, February 27, 2015'
+published: 'Thursday, April 23rd, 2015'
 title: A Beginner's Guide to Chef
 ---
 
@@ -24,7 +24,7 @@ These three components communicate in a mostly-linear fashion, with any changes 
 
 The Chef server works as the primary mode of communication between the workstations where your infrastructure is coded, and the nodes where it is deployed. All configuration files, cookbooks, and other metadata and information are stored on the server, as well as information regarding the state of all nodes at the last run of the chef-client.
 
-Everything done in Chef must eventually pass through the Chef server to be deployed. In that way, Chef is the hub of all action, where it verifies [auth key node stuff ahhhrg]
+Everything done in Chef must eventually pass through the Chef server to be deployed. In that way, Chef is the hub of all action, where it verifies that the nodes and workstations are paired with the server through the use of authorization keys generated during the creation of the server, and then allows for communication between the workstations and nodes.
 
 ### Bookshelf
 
@@ -33,9 +33,9 @@ The Bookshelf is a versioned repository where cookbooks are stored on the Chef s
 
 ## Workstations
 
-Workstations are where Chef users author, test, and maintain cookbooks and policies that will be pushed to the nodes. The cookbooks created on workstations can be used for organization-specific nodes, or uploaded to the Chef Supermarket, for others to use. Similarly, workstations can be used to download cookbooks created by other Chef users and found in the Supermarket.
+Workstations are where Chef users author, test, and maintain cookbooks and policies that will be pushed to the nodes. The cookbooks created on workstations can be used for organization-specific nodes, or uploaded to the Chef Supermarket for others to use. Similarly, workstations can be used to download cookbooks created by other Chef users and found in the Supermarket.
 
-Workstations are set up to use the Chef Development Kit (ChefDK), and can be located on a virtual servers or on a normal workstation computer. Workstations are set to interact with only one Chef server, and most work will be done in the chef-repo located on the workstation.
+Workstations are set up to use the *Chef Development Kit* (ChefDK), and can be located on a virtual servers or on a normal workstation computer. Workstations are set to interact with only one Chef server, and most work will be done in the chef-repo located on the workstation.
 
 ### chef-repo
 
@@ -61,7 +61,7 @@ The `knife` command communicates specifically between the chef-repo located on a
 	cookbook_path [ '~/chef-repo/cookbooks' ]
 	~~~
 
-The `knife.rb` file is defined with the following properties:
+The default `knife.rb` file is defined with the following properties:
 
 -	**log_level:** The amount of logging that will be stored in the log file. The default value, `:info`, notes that any informational messages will be logged.
 -	**log_location:** The location of the log file. The default value, `STOUT` is for *standard output logging*. If set to another value standard output logging will still be performed. 
@@ -84,7 +84,7 @@ Nodes are kept up-to-date through the use of the chef-client, which runs a conve
 
 ### chef-client
 
-The chef-client checks the current configuration of the node against the recipes and policies stored in the Chef server and brings the node up to match. The process begins with the chef-client checking the node's run-list, loading the cookbooks required, then checking the syncing the cookbooks with the current configuration of the node, before finally compiling the cookbooks.
+The chef-client checks the current configuration of the node against the recipes and policies stored in the Chef server and brings the node up to match. The process begins with the chef-client checking the node's run-list, loading the cookbooks required, then checking and syncing the cookbooks with the current configuration of the node. The cookbooks are then compiled.
 
 The chef-client must be run with elevated privileges in order to properly configure the node, and it should be run periodically to ensure that the server is always up to date -- often this is achieved through a cron job or by setting up the chef-client to run as a service.
 
@@ -101,16 +101,20 @@ The information gathered includes network and memory usage, CPU data, kernel dat
 
 ## Environments
 
-Chef environments exist to mimic real-life workflow, allowing for organizations to separate nodes into different environments for developing, staging, and any other evolutions a project may pass though. This allows for users to combine environments and versioned cookbooks to have different attributes for different nodes. For example, one portion of the Chef fleet may need to use a test shopping cart API instead of processing real payments while running tests.
+Chef environments exist to mimic real-life workflow, allowing for organizations to separate nodes into different environments for developing, staging, and any other evolutions a project may pass though. This allows for users to combine environments and versioned cookbooks to have different attributes for different nodes. For example, one portion of the Chef fleet may need to use a test shopping cart API instead of processing real payments.
 
-Environments are defined in `chef-repo/environments` and saved as `.rb` or JSON files.
+Environments are defined in `chef-repo/environments` and saved as Ruby or JSON files.
 
 As a Ruby file:
 
 {: .file}
 chef-repo/environments/environame.rb
 :	~~~
-	hjghjg
+	name "environmentname"
+	description "environment_description"
+	cookbook_versions  "cookbook" => "cookbook_version"
+	default_attributes "node" => { "attribute" => [ "value", "value", "etc." ] }
+	override_attributes "node" => { "attribute" => [ "value", "value", "etc." ] }
 	~~~
 	
 As a JSON:
@@ -141,9 +145,9 @@ All nodes are automatically set to the "default" environment upon bootstrap. To 
 
 Cookbooks are the main components to configuring nodes on a Chef infrastructure. Cookbooks contain values and information about the *desired state* of a node, not how to get to that desired state -- Chef does all the work for that.
 
-Cookbooks are comprised of recipes, metadata,  attributes, resources, templates, libraries, and anything else that assists in creating the skeleton and meat of a system. Components of a cookbook should be module, keeping recipes small and related.
+Cookbooks are comprised of recipes, metadata,  attributes, resources, templates, libraries, and anything else that assists in creating the skeleton and meat of a system, with attributes and recipes being the two core parts of creating a cookbook. Components of a cookbook should be module, keeping recipes small and related.
 
-Cookbooks can and should have versions. Versions can help when using environments and~~
+Cookbooks can and should have versions. Versions can help when using environments and allow for the easier tracking of changes that have been made to the cookbook.
 
 ### Recipes
 
@@ -153,8 +157,3 @@ Recipes are the fundamental part of cookbooks. Recipes are written in Ruby and c
 ### Attributes
 
 Attributes denote the current state of the node, as well as the state of the node before and after the current chef-client run. When defined in cookbooks, attributes are used to override default values, and are loaded in the order cookbooks are listed in the run-list.
-
-
-### Templates
-
-Templates are used to generate files based on the information contained in the template. Templates are Embedded Ruby Files (`.erb`), and will only be used when called upon in a recipe. Templates can be used for HTML files, any configuration files that need to be added to the server, and any other form of file that may need to be injected into a node. Often templates are paired with attributes, allowing users to replace variables within the template code as needed.
