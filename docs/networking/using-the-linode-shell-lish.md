@@ -35,6 +35,7 @@ You can connect to Lish with the SSH client of your choice. For example, you can
     -   lish-atlanta.linode.com
     -   lish-newark.linode.com
     -   lish-london.linode.com
+    -   lish-singapore.linode.com
 
 2.  Open a terminal window and enter the following command, replacing *[manager-username]* with your Linode Manager username, and *[location]* with your preferred Lish SSH gateway. Lish listens for connections on ports 22, 443, and 2200.
 
@@ -149,6 +150,13 @@ These are the fingerprints for the Lish gateway in our London data center (lish-
 
     RSA 71:27:30:cd:dc:69:7a:fe:58:4a:04:e6:6b:5f:b4:e2
     DSA ce:41:c0:48:2c:93:de:c8:d2:a9:bf:3f:97:1f:04:ad
+
+### Singapore
+
+These are the fingerprints for the Lish gateway in our Singapore data center (lish-singapore.linode.com):
+
+    RSA 06:26:d8:2a:12:8b:2f:d7:6c:54:72:5a:a7:7b:da:7b
+    DSA 3b:ed:f1:a6:68:5f:aa:2f:c6:f7:8b:ce:e2:0e:3f:85
 
 Understanding Lish Commands
 ---------------------------
