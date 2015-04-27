@@ -1,4 +1,5 @@
 ---
+deprecated: true
 author:
   name: Linode
   email: docs@linode.com
@@ -17,8 +18,7 @@ For some use cases, you may wish to run a custom-compiled Linux kernel on your L
 
 If you'd rather run a distribution-supplied kernel instead, please follow our guide for [running a distribution-supplied kernel](/docs/tools-reference/custom-kernels-distros/run-a-distributionsupplied-kernel-with-pvgrub). Before proceeding with these instructions, you should follow the steps outlined in our [getting started](/docs/getting-started/) guide. After doing so, make sure you are logged into your Linode as the "root" user via an SSH session.
 
-Prepare the System
-------------------
+## Prepare the System
 
 Issue the following commands to update your package repositories and installed packages, install development tools required for compiling a kernel, and install the `ncurses` library.
 
@@ -31,7 +31,7 @@ Ubuntu and Debian:
 CentOS and Fedora:
 
     yum update
-    yum install -y ncurses-devel make gcc
+    yum install -y ncurses-devel make gcc bc
 
 Arch Linux:
 
@@ -42,12 +42,18 @@ If this is the first time you've compiled a kernel on your Linode, issue the fol
 
     rm -rf /boot/*
 
-Compile and Install the Kernel
-------------------------------
+##Compile and Install the Kernel
 
 ### Download Kernel Sources
 
-Download the latest 3.0 kernel sources from [kernel.org](http://kernel.org/).
+1.  Download the latest 3.x kernel sources from [kernel.org](http://kernel.org/). A conventional location to download to is `/usr/src/kernels`, but it's not required.
+
+        wget https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.19.3.tar.xz
+
+2.  Expand the archived file and change directory to it:
+
+        tar -xvf linux-3.19.3.tar.xz
+        cd linux-3.19.3
 
 ### Default Kernel Configuration
 
@@ -77,40 +83,44 @@ Once your configuration options are set, exit the configuration interface and an
 
 ### Build the Kernel
 
-Issue the following commands to compile and install the kernel and modules:
+1.  Compile and install the kernel and modules:
 
-    make -j3 bzImage
-    make -j3 modules
-    make 
-    make install
-    make modules_install
+        make -j3 bzImage
+        make -j3 modules
+        make 
+        make install
+        make modules_install
 
-If you're running Arch Linux, issue the following command to give the kernel a more descriptive name. Modify the command as necessary to reflect the kernel version you've just compiled.
+2.  Give the kernel a more descriptive name. Modify the command as necessary to reflect the kernel version you've just compiled.
 
-    mv /boot/vmlinuz /boot/vmlinuz-2.6.32.16-custom
+        mv /boot/vmlinuz /boot/vmlinuz-3.19.3-custom
 
-PV-GRUB will always look for `menu.lst` in the directory `/boot/grub`. Create this directory with the following command:
+3.  Create an `initrd` file. Aagain, adjust the filename to match your current kernel version:
 
-    mkdir /boot/grub
+        mkinitrd -o initrd-3.19.3-custom.img
 
-Create a `menu.lst` file with the following contents. Adjust the "title" and "kernel" lines to reflect the actual filenames found in the `/boot` directory.
+3.  PV-GRUB will always look for `menu.lst` in the directory `/boot/grub`. Create this directory with the following command:
 
-{: .file-excerpt }
-/boot/grub/menu.lst
-: ~~~
-	timeout 5
+        mkdir /boot/grub
+
+4.  Create a `menu.lst` file with the following contents. Adjust the "title" and "kernel" lines to reflect the actual filenames found in the `/boot` directory.
+
+    {: .file-excerpt }
+    /boot/grub/menu.lst
+    :   ~~~
+    	timeout 5
 	
-	title Custom Compiled, kernel 2.6.32.16-custom 
-	root (hd0) 
-	kernel /boot/vmlinuz-2.6.32.16-custom root=/dev/xvda ro quiet
-~~~
+    	title Custom Compiled, kernel 3.19.3-custom 
+    	root (hd0) 
+    	kernel /boot/vmlinuz-3.19.3-custom root=/dev/xvda ro quiet
+        ~~~
 
 Note that there is no `initrd` line. With some distributions, the `initrd` image prepared during the kernel installation process will not work correctly with your Linode, and it isn't needed anyhow.
 
-Configure for PV-GRUB
----------------------
 
-In the Linode Manager, edit your Linode's configuration profile to use either `pv-grub-x86_32` or `pv-grub-x86_64` as the "Kernel", depending on the version of Linux you have deployed (32-bit or 64-bit). Make sure the root device is specified as `xvda`. Save your changes by clicking "Save Profile" at the bottom of the page, and reboot your Linode from the "Dashboard" tab.
+## Configure for PV-GRUB
+
+In the Linode Manager, edit your Linode's configuration profile to use `pv-grub-x86_64` as the "Kernel". Make sure the root device is specified as `xvda`. Save your changes by clicking "Save Profile" at the bottom of the page, and reboot your Linode from the "Dashboard" tab.
 
 Once your Linode has rebooted, log back into it and issue the command `uname -a`. You should see output similar to the following, indicating you're running your custom kernel:
 

@@ -113,14 +113,14 @@ Here we'll set various options and settings for SpamAssassin.
 
         cp /etc/spamassassin/local.cf /etc/spamassassin/local.cf.orig
 
-3.  SpamAssassin scores incoming messages and assigns a score between 0 and 5. A score of 0 is considered safe, and a score of 5 is usually spam. You need to adjust its configuration file to determine what score threshold will be allowed through the filter. We're going to use 3.5, but this can be adjusted later. Locate and uncomment the line `# required_score 5.0` by removing the **\#** symbol, and adjust the value to 3.5:
+3.  SpamAssassin scores incoming messages and assigns a score based on its spam characteristics. A score of 0 is considered safe, and a score of 10 or higher is usually spam. You need to adjust its configuration file to determine what score threshold will be allowed through the filter. We're going to use 8, but this can be adjusted later. Locate and uncomment the line `# required_score 5.0` by removing the **\#** symbol, and adjust the value to 8:
 
     {: .file }
     /etc/spamassassin/local.cf
     :   ~~~
         #   Set the threshold at which a message is considered spam (default: 5.0)
         #
-        required_score 3.5
+        required_score 8
         ~~~
 
 4.  Once finished, save and exit the file. If you're using Nano the command is Control + x

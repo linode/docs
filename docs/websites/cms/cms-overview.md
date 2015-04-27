@@ -25,14 +25,14 @@ Linode has installation guides for [Drupal](/docs/websites/cms/managing-web-cont
 >
 >A LAMP stack is a System Admin term for a web server using Linux, Apache, MySQL, and PHP. Linux is an operating system, Apache is web server software, MySQL is a database, and PHP is a programming language. This is a common stack combination and supports many CMS applications. 
 
-Using a Linode gives you more control and a greater understanding of website adminstration. Linux and content management systems play a huge role in the open source world, and now, you can begin learning both. 
+Using a Linode gives you more control and a greater understanding of website administration. Linux and content management systems play a huge role in the open source world, and now, you can begin learning both.
 
 
 ##Themes and Templates
 
-Most content management systems create their webpage layout with a theme. The appeal of any site starts with visual design. The appearance of your homepage keeps vistors coming back for more and more content. After installation, picking a theme is the next major decision. No worries, it's never too difficult to change.  
+Most content management systems create their webpage layout with a theme. The appeal of any site starts with visual design. The appearance of your homepage keeps visitors coming back for more and more content. After installation, picking a theme is the next major decision. No worries, it's never too difficult to change.
 
-Themes, sometimes called skins, are HTML or CSS based. They act as templates, meaning, they are customizable. For example, a theme can create the header image divisions, column alignments, title text placement, webpage width, paragraph placement, side bars, and side bar modules. CMS applications may have default themes already availible, themes availible on the web, or themes availible for purchase. 
+Themes, sometimes called skins, are HTML or CSS based. They act as templates, meaning, they are customizable. For example, a theme can create the header image divisions, column alignments, title text placement, webpage width, paragraph placement, side bars, and side bar modules. CMS applications may have default themes already available, themes available on the web, or themes available for purchase.
 
 ##Drupal, Joomla, and WordPress 
 
