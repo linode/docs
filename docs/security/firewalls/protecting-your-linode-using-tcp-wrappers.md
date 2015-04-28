@@ -16,7 +16,7 @@ title: Protecting your Linode with TCP Wrappers
 contributor:
     name: Francis McNamee
 ---
-s
+
 TCP wrappers are a host-based access control system. They are used to prevent unauthorized access to your server by allowing only specific clients access to services running on your server.
 
 ## Why use TCP wrappers?
