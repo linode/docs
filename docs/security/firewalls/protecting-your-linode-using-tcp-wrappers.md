@@ -7,6 +7,8 @@ keywords: 'tcp wrappers,security,firewall,acl,access control'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-applications/game-servers/minecraft-ubuntu12-04/']
 published: 'Wednesday, January 21, 2015'
+external_resources:
+ - '[Wikipedia](external_resources:)'
 modified: Monday, January 26, 2015
 modified_by:
   name: Elle Krout
@@ -19,27 +21,34 @@ TCP wrappers are a host-based access control system. They are used to prevent un
 
 ## Why use TCP wrappers?
 
-TCP wrappers offer less functionality than a full-blown firewall, but they can be useful by creating an additional layer of security between your server and any potential attacker. TCP wrappers provide logging and hostname verification in addition to access control features. TCP wrappers will work out-of-the-box on most Linux- and UNIX-based operating systems, which makes them extremely easy to set up, and a perfect compliment to your existing firewall implementation.
+TCP wrappers create an additional layer of security between your server and any potential attacker. They provide logging and hostname verification in addition to access control features. TCP wrappers will work out-of-the-box on most Linux and UNIX-based operating systems, which makes them easy to set up, and a perfect compliment to your existing firewall implementation.
 
 ### How do I know if a program will work with TCP wrappers?
 
-Not all services will support TCP wrappers. Services must be compiled with the *libwrap* library. Common services like `sshd`, `ftpd` and `telnet` support TCP wrappers by default. We can check whether TCP wrappers are supported by a service using this command:
+Not all services will support TCP wrappers. Services must be compiled with the `libwrap` library. Common services like `sshd`, `ftpd` and `telnet` support TCP wrappers by default. We can check whether TCP wrappers are supported by a service:
 
     ldd /path-to-daemon | grep libwrap.so
 
-The command `ldd` is used to print a list of all an executables shared dependencies. By attaching `grep` onto the end of the command, we're searching the returned list for `libwrap.so`. If there is any output from this command we can assume that TCP wrappers are supported.
+The command `ldd` prints a list of an executable's shared dependencies. By piping the output of `lld` to `grep`, we're searching the returned list for `libwrap.so`. If there is any output from this command we can assume that TCP wrappers are supported.
+
+For example, if we want to test the `ssh` daemon on a server, we must first locate its binary file:
+
+    whereis sshd
+
+You will most likely get multiple results:
+
+    sshd: /usr/sbin/sshd /usr/share/man/man8/sshd.8.gz
+
+Files located in `/usr/bin` and `/usr/sbin` are most likely the executables you are looking for. Now we know which file to check for the `libwrap` dependency:
+
+    ldd /usr/sbin/sshd | grep libwrap.so
+            libwrap.so.0 => /lib/x86_64-linux-gnu/libwrap.so.0 (0x00007ff363c01000)
 
 ## How do I use TCP wrappers?
 
-TCP wrappers rely on two files in order to work, named **hosts.allow** and **hosts.deny**. These files are stored in the `/etc/` directory of your server.
+TCP wrappers rely on two files in order to work: `/etc/hosts.allow` and `/etc/hosts.deny`. If these files don't yet exist, create them:
 
-1.  Navigate to the `/etc/` directory by using the `cd` command.
-
-        cd /etc/
-
-2.  Ensure that the two files are present. This command will list all files that start in *hosts.*:
-
-        ls hosts.*
+        touch /etc/hosts.{allow,deny}
 
 ### Editing hosts.allow and hosts.deny
 
@@ -76,7 +85,7 @@ This example *hosts.deny* file will block all client from all processes.
 
     ALL : ALL
 
-We could express this rule in a sentence like this, "Deny access to all daemons from all clients". This rule will deny all traffic to the server regardless of the source. Utilizing this rule on its own is not recommended, as it will deny you access to your own server.
+We could express this rule in a sentence like this, "Deny access to all daemons from all clients". This rule will deny all traffic to the server regardless of the source. Utilizing this rule on its own is not recommended, as it will deny you access to your own server, excepting [LISH](/docs/networking/using-the-linode-shell-lish).
 
 ### Allow exceptions
 
@@ -98,19 +107,15 @@ Rules in the *hosts.allow* file have a higher priority than rules in the *hosts.
 
 TCP wrappers have *wildcards*, allowing you to create broad rules not limited to certain IP addresses or hostnames. The wildcards you can use are, *ALL*, *LOCAL*, *UNKNOWN*, *KNOWN* and *PARANOID*.
 
-Here's what each means:
+Here's what each wildcard means:
 
-    ALL - Matches everything
-    LOCAL - Matches hostnames that don't contain a dot (.).
-    UNKNOWN - Matches any user/hostname whose name is not known.
-    KNOWN - Matches any user/hostname whose name is known.
-    PARANOID - Matches any host whose name doesn't match its address.
+* ALL - Matches everything.
+* LOCAL - Matches hostnames that don't contain a dot (`.`).
+* UNKNOWN - Matches any user/hostname whose name is not known.
+* KNOWN - Matches any user/hostname whose name is known.
+* PARANOID - Matches any host whose name doesn't match its address.
 
 
 ## Logging
 
 TCP wrappers will log connections per the settings in your `/etc/syslog.conf` file. The default location for these log files is the `/var/log/messages` log file.
-
-## Conclusion
-
-You've just learned everything you need to know about securing your server with TCP wrappers. Using TCP wrappers wherever possible along with a strong firewall can help to make your Linode more secure against attacks.
