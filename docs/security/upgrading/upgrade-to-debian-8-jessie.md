@@ -81,6 +81,10 @@ Here's how to upgrade from Debian 7 to Debian 8:
         deb-src http://ftp.us.debian.org/debian/ wheezy-updates main
         ~~~
 
+    {: .note}
+    >
+    > Check your /etc/apt/sources.list.d for additional package repositories, and ensure that they are querying for packages from `jessie`.  You will need to check with the maintainers of each package to ensure that their own repositories have been updated.
+
 2.  Enter the following command to update your package lists:
 
         sudo apt-get update
