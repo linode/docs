@@ -5,50 +5,50 @@ author:
 description: 'Setting up a mail server with Postfix, Dovecot, and MySQL.'
 keywords: 'email,mail,postfix,dovecot,mysql,debian 7,ubuntu 14.04,dovecot 2'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Wednesday, October 1, 2014
+modified: Wednesday, April 29th, 2015
 modified_by:
   name: James Stewart
 published: 'Monday, May 13th, 2013'
 title: 'Email with Postfix, Dovecot, and MySQL'
 ---
 
-This guide shows you how to set up a secure mail server on your Linode with Postfix, Dovecot, and MySQL. By the time you reach the end, you'll know how to create mailboxes for your users and send and receive email for your domains.
+This guide shows you how to set up a secure mail server on the Linode with Postfix, Dovecot, and MySQL. By the time you reach the end, you'll know how to create mailboxes for the users and send and receive email for the domains.
 
 ### Prerequisites
 
-Before setting up your mail server, you'll need to set up your Linode as specified in the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/securing-your-server) guides. You'll also need to verify that you've completed the following steps:
+Before setting up the mail server, you'll need to set up the Linode as specified in the [Getting Started](/docs/getting-started) and [Securing the Server](/docs/securing-the-server) guides. You'll also need to verify that you've completed the following steps:
 
--   [Deployed your Linode](/docs/getting-started#sph_deploying-a-linux-distribution).
+-   [Deployed the Linode](/docs/getting-started#sph_deploying-a-linux-distribution).
 -   Set a [root password](/docs/getting-started#sph_deploying-a-linux-distribution).
 -   Set the [hostname](/docs/getting-started#sph_setting-the-hostname) and updated the [/etc/hosts](/docs/getting-started#sph_update-etc-hosts) file.
 -   [Updated and upgraded](/docs/getting-started#sph_installing-software-updates) the operating system and all installed packages.
--   [Created a Linux user with sudo access](/docs/securing-your-server#sph_adding-a-new-user).
--   *Optional:* Created [SSH keys](/docs/securing-your-server#sph_using-ssh-key-pair-authentication) for secure SSH sessions.
--   Made sure that your [firewall](/docs/securing-your-server#sph_creating-a-firewall) is not blocking any of the standard mail ports (25, 465, 587, 110, 995, 143, and 993).
+-   [Created a Linux user with sudo access](/docs/securing-the-server#sph_adding-a-new-user).
+-   *Optional:* Created [SSH keys](/docs/securing-the-server#sph_using-ssh-key-pair-authentication) for secure SSH sessions.
+-   Made sure that the [firewall](/docs/securing-the-server#sph_creating-a-firewall) is not blocking any of the standard mail ports (25, 465, 587, 110, 995, 143, and 993).
 
 ### Configuring DNS
 
-When you're ready to switch the DNS and start sending mail to the server, edit your domain's MX record so it points to your Linode's domain or IP address, similar to the example below:
+When you're ready to switch the DNS and start sending mail to the server, edit the domain's MX record so it points to the Linode's domain or IP address, similar to the example below:
 
     example.com            MX       10      example.com
     example.com         MX      10      12.34.56.78
     mail.example.com    MX      10      12.34.56.78
 
-Make sure you do this for all domains and subdomains that might receive email for your domain. These steps can be peformed prior to configuring your mailserver if you are setting up a brand new domain. If you use Linode's [DNS Manager](/docs/dns-manager), you will need to create an MX record that points to the desired domain or subdomain, and then create an A record for that domain or subdomain as well, that points to the correct IP address.
+Make sure you do this for all domains and subdomains that might receive email for the domain. These steps can be peformed prior to configuring the mailserver if you are setting up a brand new domain. If you use Linode's [DNS Manager](/docs/dns-manager), you will need to create an MX record that points to the desired domain or subdomain, and then create an A record for that domain or subdomain as well, that points to the correct IP address.
 
 ### Installing an SSL Certificate
 
-In this guide, you'll use the default self-signed certificate that comes with Dovecot for free. This certificate encrypts your mail connections just like a purchased certificate, but your email users will receive warnings about the certificate when they attempt to set up their email accounts.  You may want to purchase and configure a commercial SSL certificate to avoid this.  For information about SSL certificates, see [these guides in the Linode Library](/docs/security/ssl/).
+In this guide, you'll use the default self-signed certificate that comes with Dovecot for free. This certificate encrypts the mail connections just like a purchased certificate, but the email users will receive warnings about the certificate when they attempt to set up their email accounts.  You may want to purchase and configure a commercial SSL certificate to avoid this.  For information about SSL certificates, see [these guides in the Linode Library](/docs/security/ssl/).
 
 ### Finding the Hostname
 
-Ensure that your Linode's hostname and FQDN have been set before beginning. Here's how to find your Linode's hostname:
+Ensure that the Linode's hostname and FQDN have been set before beginning. Here's how to find the Linode's hostname:
 
-1.  Enter the following command via your SSH session to query your server's hostname:
+1.  Enter the following command via the SSH session to query the server's hostname:
 
         hostname
 
-3.  Find your server's fully-qualified domain name (FQDN) by entering the following command:
+3.  Find the server's fully-qualified domain name (FQDN) by entering the following command:
 
         hostname -f
 
@@ -71,17 +71,17 @@ The next steps will walk through installing the required packages on the Linode.
 
 4.  When prompted, type a new secure password for the root MySQL user, as shown below.
 
-    [![Set your root MySQL password.](/docs/assets/1234-mysql_setroot1.png)](/docs/assets/1234-mysql_setroot1.png)
+    [![Set the root MySQL password.](/docs/assets/1234-mysql_setroot1.png)](/docs/assets/1234-mysql_setroot1.png)
 
 5.  Type the password again, as shown below. Make sure you remember what it is - you'll need it later.
 
-    [![Re-enter your root MySQL password.](/docs/assets/1235-mysql_setroot2.png)](/docs/assets/1235-mysql_setroot2.png)
+    [![Re-enter the root MySQL password.](/docs/assets/1235-mysql_setroot2.png)](/docs/assets/1235-mysql_setroot2.png)
 
-6.  Select **Internet Site** when prompted for your Postfix configuration.
+6.  Select **Internet Site** when prompted for the Postfix configuration.
 
     [![Choose "Internet Site" for Postfix.](/docs/assets/1236-postfix_internetsite.png)](/docs/assets/1236-postfix_internetsite.png)
 
-7.  Enter your FQDN as the *System Mail Name*
+7.  Enter the FQDN as the *System Mail Name*
 
     [![Set the system mail name for Postfix.](/docs/assets/1237-postfix_systemmailname.png)](/docs/assets/1237-postfix_systemmailname.png)
 
@@ -102,7 +102,7 @@ Here's how to create the necessary database and tables in MySQL:
 
         mysql -p mailserver
 
-5.  Create your MySQL user and grant the new user permissions over your database.  Replace *mailuserpass* with a secure password.
+5.  Create the MySQL user and grant the new user permissions over the database.  Replace *mailuserpass* with a secure password.
 
         GRANT SELECT ON mailserver.* TO 'mailuser'@'127.0.0.1' IDENTIFIED BY 'mailuserpass';
 
@@ -110,7 +110,7 @@ Here's how to create the necessary database and tables in MySQL:
 
         FLUSH PRIVILEGES;
 
-7.  Enter the following command to create a table for the domains that will receive mail on your Linode.
+7.  Enter the following command to create a table for the domains that will receive mail on the Linode.
 
         CREATE TABLE `virtual_domains` (
           `id` int(11) NOT NULL auto_increment,
@@ -130,7 +130,7 @@ Here's how to create the necessary database and tables in MySQL:
           FOREIGN KEY (domain_id) REFERENCES virtual_domains(id) ON DELETE CASCADE
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-9.  Enter the following command to create a table for your email aliases.
+9.  Enter the following command to create a table for the email aliases.
 
         CREATE TABLE `virtual_aliases` (
           `id` int(11) NOT NULL auto_increment,
@@ -145,7 +145,7 @@ Here's how to create the necessary database and tables in MySQL:
 
 Now that you've created the database and tables, let's add some data to MySQL. Here's how:
 
-1.  Add your domains to the `virtual_domains` table.  Replace the values for *example.com* and *hostname* with your own settings.
+1.  Add the domains to the `virtual_domains` table.  Replace the values for *example.com* and *hostname* with the own settings.
 
         INSERT INTO `mailserver`.`virtual_domains`
           (`id` ,`name`)
@@ -159,7 +159,7 @@ Now that you've created the database and tables, let's add some data to MySQL. H
     >
     > Make a note of which `id` goes with which domain - you'll need for the next two steps.
 
-2.  Add email addresses to the `virtual_users` table.  Replace the email address values with the addresses that you wish to configure on your mailserver, and the `password` values with strong passwords. 
+2.  Add email addresses to the `virtual_users` table.  Replace the email address values with the addresses that you wish to configure on the mailserver, and the `password` values with strong passwords. 
 
         INSERT INTO `mailserver`.`virtual_users`
           (`id`, `domain_id`, `password` , `email`)
@@ -227,7 +227,7 @@ Now that you've entered all of the information into MySQL, you need to double ch
 
         exit
 
-Now you're ready to set up Postfix so your server can accept incoming messages for your domains.
+Now you're ready to set up Postfix so the server can accept incoming messages for the domains.
 
 Postfix
 -------
@@ -238,7 +238,7 @@ Here's how to configure Postfix:
 
         cp /etc/postfix/main.cf /etc/postfix/main.cf.orig
 
-3.  Edit your `/etc/postfix/main.cf` file to match the following.  Ensure that occurances of `example.com` are replaced with your domain name, and `hostname` with your system's hostname.
+3.  Edit the `/etc/postfix/main.cf` file to match the following.  Ensure that occurances of `example.com` are replaced with the domain name, and `hostname` with the system's hostname.
 
     {:.file }
     /etc/postfix/main.cf
@@ -312,50 +312,50 @@ Here's how to configure Postfix:
     {: .file }
     /etc/postfix/mysql-virtual-mailbox-domains.cf
     : ~~~
-    user = mailuser
-    password = mailuserpass
-    hosts = 127.0.0.1
-    dbname = mailserver
-    query = SELECT 1 FROM virtual_domains WHERE name='%s'
-      ~~~
-
-8. Edit the `/etc/postfix/mysql-virtual-domains.cf` file, and enter the following values. Make sure you use your own password, and make any other changes as needed.
-
-    {: .file }
-    /etc/postfix/mysql-virtual-mailbox-maps.cf
-    : ~~~
-    user = mailuser
-    password = mailuserpass
-    hosts = 127.0.0.1
-    dbname = mailserver
-    query = SELECT 1 FROM virtual_users WHERE email='%s'
-      ~~~
-
-11. Edit the `/etc/postfix/mysql-virtual-alias-maps.cf` file and enter the following values. Again, make sure you use your own password, and make any other changes as necessary.
-
-      {: .file }
-      /etc/postfix/mysql-virtual-alias-maps.cf
-      : ~~~
       user = mailuser
       password = mailuserpass
       hosts = 127.0.0.1
       dbname = mailserver
-      query = SELECT destination FROM virtual_aliases WHERE source='%s'
+      query = SELECT 1 FROM virtual_domains WHERE name='%s'
+      ~~~
+
+8. Edit the `/etc/postfix/mysql-virtual-domains.cf` file, and enter the following values. Make sure you use the own password, and make any other changes as needed.
+
+    {: .file }
+    /etc/postfix/mysql-virtual-mailbox-maps.cf
+    : ~~~
+      user = mailuser
+      password = mailuserpass
+      hosts = 127.0.0.1
+      dbname = mailserver
+      query = SELECT 1 FROM virtual_users WHERE email='%s'
+      ~~~
+
+11. Edit the `/etc/postfix/mysql-virtual-alias-maps.cf` file and enter the following values. Again, make sure you use the own password, and make any other changes as necessary.
+
+      {: .file }
+      /etc/postfix/mysql-virtual-alias-maps.cf
+      : ~~~
+        user = mailuser
+        password = mailuserpass
+        hosts = 127.0.0.1
+        dbname = mailserver
+        query = SELECT destination FROM virtual_aliases WHERE source='%s'
         ~~~
 
 13. Save the changes you've made to the */etc/postfix/mysql-virtual-alias-maps.cf* file, and restart Postfix with the following command.
 
         sudo service postfix restart
 
-14. Enter the following command to ensure that Postfix can find your first domain. Be sure to replace `example.com` with your first virtual domain. The command should return `1` if it is successful.
+14. Enter the following command to ensure that Postfix can find the first domain. Be sure to replace `example.com` with the first virtual domain. The command should return `1` if it is successful.
 
         postmap -q example.com mysql:/etc/postfix/mysql-virtual-mailbox-domains.cf
 
-15. Test Postfix to verify that it can find the first email address in your MySQL table. Enter the following command, replacing `email1@example.com` with the first email address in your MySQL table. You should again receive `1` as the output:
+15. Test Postfix to verify that it can find the first email address in the MySQL table. Enter the following command, replacing `email1@example.com` with the first email address in the MySQL table. You should again receive `1` as the output:
 
         postmap -q email1@example.com mysql:/etc/postfix/mysql-virtual-mailbox-maps.cf
 
-16. Test Postfix to verify that it can find your aliases by entering the following command. Be sure to replace `alias@example.com` with the actual alias you entered:
+16. Test Postfix to verify that it can find the aliases by entering the following command. Be sure to replace `alias@example.com` with the actual alias you entered:
 
         postmap -q alias@example.com mysql:/etc/postfix/mysql-virtual-alias-maps.cf
 
@@ -365,7 +365,7 @@ Here's how to configure Postfix:
 
         cp /etc/postfix/master.cf /etc/postfix/master.cf.orig
 
-18. Open the configuration file for editing, and uncomment the two lines starting with `submission` and `smtps`. The first section of your `/etc/postfix/master.cf` file should resemble the following:
+18. Open the configuration file for editing, and uncomment the two lines starting with `submission` and `smtps`. The first section of the `/etc/postfix/master.cf` file should resemble the following:
 
     {: .file-excerpt }
 	/etc/postfix/master.cf
@@ -421,11 +421,7 @@ Here's how to configure Dovecot:
         cp /etc/dovecot/conf.d/10-master.conf /etc/dovecot/conf.d/10-master.conf.orig
         cp /etc/dovecot/conf.d/10-ssl.conf /etc/dovecot/conf.d/10-ssl.conf.orig
 
-2.  Enter the following command to open the main configuration file for editing:
-
-        nano /etc/dovecot/dovecot.conf
-
-3.  Edit the contents of the file to match the following:
+2.  Open the main configuration file and edit the contents to match the following:
 
     {:.file }
     /etc/dovecot/dovecot.conf
@@ -470,7 +466,7 @@ Here's how to configure Dovecot:
       # Space separated list of trusted network ranges. Connections from these
       # IPs are allowed to override their IP addresses and ports (for logging and
       # for authentication checks). disable_plaintext_auth is also ignored for
-      # these networks. Typically you'd specify your IMAP proxy servers here.
+      # these networks. Typically you'd specify the IMAP proxy servers here.
       #login_trusted_networks =
 
       # Sepace separated list of login access check sockets (e.g. tcpwrap)
@@ -523,14 +519,14 @@ Here's how to configure Dovecot:
       !include_try local.conf
       ~~~
 
-5.  Save your changes to the */etc/dovecot/dovecot.conf* file.
+5.  Save the changes to the */etc/dovecot/dovecot.conf* file.
 6.  Open the */etc/dovecot/conf.d/10-mail.conf* file for editing by entering the following command. This file allows us to control how Dovecot interacts with the server's file system to store and retrieve messages.
 
         nano /etc/dovecot/conf.d/10-mail.conf
 
     {:.note}
     >
-    > Click this link to see the final, complete version of <a href="/docs/assets/1239-dovecot_10-mail.conf.txt" target="_blank">10-mail.conf</a> example file. This is a long file, so you may need to use your editor's search feature to find the values you need to edit.
+    > Click this link to see the final, complete version of <a href="/docs/assets/1239-dovecot_10-mail.conf.txt" target="_blank">10-mail.conf</a> example file. This is a long file, so you may need to use the editor's search feature to find the values you need to edit.
 
 7.  Modify the following variables within the configuration file.
 
@@ -542,7 +538,7 @@ Here's how to configure Dovecot:
     mail_privileged_group = mail
     ~~~
 
-9.  Save your changes to the */etc/dovecot/conf.d/10-mail.conf* file.
+9.  Save the changes to the */etc/dovecot/conf.d/10-mail.conf* file.
 10. Enter the following command to verify the permissions for */var/mail*:
 
         ls -ld /var/mail
@@ -551,7 +547,7 @@ Here's how to configure Dovecot:
 
         drwxrwsr-x 2 root mail 4096 Mar  6 15:08 /var/mail
 
-12. Create the */var/mail/vhosts/* folder and the folder(s) for each of your domains by entering the following command:
+12. Create the */var/mail/vhosts/* folder and the folder(s) for each of the domains by entering the following command:
 
         mkdir -p /var/mail/vhosts/example.com
 
@@ -608,9 +604,9 @@ Here's how to configure Dovecot:
 	  #!include auth-static.conf.ext
 	  ~~~
 
-20. Save your changes to the */etc/dovecot/conf.d/10-auth.conf* file.
+20. Save the changes to the */etc/dovecot/conf.d/10-auth.conf* file.
 
-21. Create the */etc/dovecot/conf.d/auth-sql.conf.ext* file with your authentication information.
+21. Create the */etc/dovecot/conf.d/auth-sql.conf.ext* file with the authentication information.
 
 22. Paste the following lines into in the new file:
 
@@ -627,7 +623,7 @@ Here's how to configure Dovecot:
 	  }
 	  ~~~
 
-23. Save your changes to the */etc/dovecot/conf.d/auth-sql.conf.ext* file.
+23. Save the changes to the */etc/dovecot/conf.d/auth-sql.conf.ext* file.
 
 24. Update the */etc/dovecot/dovecot-sql.conf.ext* file with our custom MySQL connection information.
 
@@ -643,7 +639,7 @@ Here's how to configure Dovecot:
 	  driver = mysql
 	  ~~~
 
-26. Uncomment the `connect` line and set your MySQL connection information. Make sure you use your own password and any other custom settings:
+26. Uncomment the `connect` line and set the MySQL connection information. Make sure you use the own password and any other custom settings:
 
     {: .file-excerpt }
 	/etc/dovecot/dovecot-sql.conf.ext
@@ -669,11 +665,11 @@ Here's how to configure Dovecot:
 
 	{:.note}
     >
-    > This password query lets you use an email address listed in the `virtual_users` table as your username credential for an email account. If you want to be able to use the alias as your username instead (listed in the `virtual_aliases` table), you should first add every primary email address to the `virtual_aliases` table (directing to themselves) and then use the following line in `/etc/dovecot/dovecot-sql.conf.ext` instead:
+    > This password query lets you use an email address listed in the `virtual_users` table as the username credential for an email account. If you want to be able to use the alias as the username instead (listed in the `virtual_aliases` table), you should first add every primary email address to the `virtual_aliases` table (directing to themselves) and then use the following line in `/etc/dovecot/dovecot-sql.conf.ext` instead:
     >
     >     password_query = SELECT email as user, password FROM virtual_users WHERE email=(SELECT destination FROM virtual_aliases WHERE source = '%u');
 
-29. Save your changes to the */etc/dovecot/dovecot-sql.conf.ext* file.
+29. Save the changes to the */etc/dovecot/dovecot-sql.conf.ext* file.
 
 30. Change the owner and group of the */etc/dovecot/* directory to `vmail` and `dovecot`:
 
@@ -687,24 +683,30 @@ Here's how to configure Dovecot:
 
     {:.note}
     >
-    > Click the link to see the final, complete version of <a href="/docs/assets/1240-dovecot_10-master.conf.txt" target="_blank">10-master.conf</a>. There are many nested blocks of code in this file, so please pay very close attention to your brackets. It's probably better if you edit line by line, rather than copying large chunks of code. If there's a syntax error, Dovecot will crash silently, but you can check `/var/log/upstart/dovecot.log` to help you find the error.
+    > Click the link to see the final, complete version of <a href="/docs/assets/1240-dovecot_10-master.conf.txt" target="_blank">10-master.conf</a>. There are many nested blocks of code in this file, so please pay very close attention to the brackets. It's probably better if you edit line by line, rather than copying large chunks of code. If there's a syntax error, Dovecot will crash silently, but you can check `/var/log/upstart/dovecot.log` to help you find the error.
 
-33. Disable unencrypted IMAP and POP3 by setting the protocols' ports to 0, as shown below. This will force your users to use secure IMAP or secure POP on 993 or 995 when they configure their mail clients:
+33. Disable unencrypted IMAP and POP3 by setting the protocols' ports to 0, as shown below. Ensure that the entries for port and ssl below the IMAPS and pop3s entries are uncommented:
 
     {: .file-excerpt }
 	/etc/dovecot/conf.d/10-master.conf
 	: ~~~
-		service imap-login {
-		  inet_listener imap {
-		    port = 0
-		  }
+    service imap-login {
+      inet_listener imap {
+        #port = 0
+      }
+    inet_listener imaps {
+      port = 993
+      ssl = yes
+      }
 		...
-		}
-
 		service pop3-login {
 		  inet_listener pop3 {
 		    port = 0
 		  }
+      inet_listener pop3s {
+        port = 995
+        ssl = yes
+      }
 		...
 		}
 	~~~
@@ -718,12 +720,12 @@ Here's how to configure Dovecot:
     {: .file-excerpt }
 	/etc/dovecot/conf.d/10-master.conf
 	: ~~~
-		service lmtp {
-		 unix_listener /var/spool/postfix/private/dovecot-lmtp {
-		   mode = 0600
-		   user = postfix
-		   group = postfix
-		  }
+    service lmtp {
+        unix_listener /var/spool/postfix/private/dovecot-lmtp {
+          mode = 0600
+          user = postfix
+          group = postfix
+         }
 		  # Create inet listener only if you can't use the above UNIX socket
 		  #inet_listener lmtp {
 		    # Avoid making LMTP visible for the entire internet
@@ -731,7 +733,7 @@ Here's how to configure Dovecot:
 		    #port =
 		  #}
 		}
-	~~~
+	  ~~~
 
 35. Locate the `service auth` section and configure it as shown below:
 
@@ -779,7 +781,7 @@ Here's how to configure Dovecot:
 	  }
 	  ~~~
 
-37. Save your changes to the */etc/dovecot/conf.d/10-master.conf* file.
+37. Save the changes to the */etc/dovecot/conf.d/10-master.conf* file.
 
 38. Verify that the default Dovecot SSL certificate and key exist by entering the following commands:
 
@@ -790,13 +792,13 @@ Here's how to configure Dovecot:
     >
     > If you are using a different SSL certificate, you should upload the certificate to the server and make a note of its location and the key's location.
 
-39. Open the SSL configuration file for editing by entering the following command.
+39. Open /etc/dovecot/conf.d/10-ssl.conf.
 
     {:.note}
     >
     > Click the link to see the final, complete version of <a href="/docs/assets/1241-dovecot_10-ssl.conf.txt" target="_blank">10-ssl.conf</a>.
 
-40. Verify that the `ssl_cert` setting has the path to your certificate, and that the `ssl_key` setting has the path to your key. The default setting here uses Dovecot's built-in certificate, so you can leave this as-is if you are using the Dovecot certificate. You should update the paths if you are using a different certificate and key.
+40. Verify that the `ssl_cert` setting has the path to the certificate, and that the `ssl_key` setting has the path to the key. The default setting here uses Dovecot's built-in certificate, so you can leave this as-is if you are using the Dovecot certificate. You should update the paths if you are using a different certificate and key.
 
     {: .file-excerpt }
 	/etc/dovecot/conf.d/10-ssl.conf
@@ -805,7 +807,7 @@ Here's how to configure Dovecot:
 	  ssl_key = </etc/dovecot/private/dovecot.pem
 	  ~~~
 
-41. Force your clients to use SSL encryption for all connections. Set `ssl` to `required`:
+41. Force the clients to use SSL encryption by uncommenting the `ssl` line and setting it to `required`:
 
     {: .file-excerpt }
 	/etc/dovecot/conf.d/10-ssl.conf
@@ -813,20 +815,20 @@ Here's how to configure Dovecot:
 	  ssl = required
 	  ~~~
 
-42. Save your changes to the */etc/dovecot/conf.d/10-ssl.conf* file.
+42. Save the changes to the */etc/dovecot/conf.d/10-ssl.conf* file.
 
 43. Restart Dovecot by entering the following command:
 
         service dovecot restart
 
-44. Set up a test account in an email client to make sure everything is working. You'll need to use the following parameters:
-    -   Your full email address, including the `@example.com` part, is your username.
-    -   Your password should be the one you added to the MySQL table for this email address.
-    -   The incoming and outgoing server names must be a domain that resolves to your Linode.
+44. Set up a test account in an email client to make sure everything is working. Many clients will detect server settings automatically, however manual configuration will require the following parameters:
+    -   the full email address, including the `@example.com` part, is the username.
+    -   the password should be the one you added to the MySQL table for this email address.
+    -   The incoming and outgoing server names must be a domain that resolves to the Linode.
     -   Both the incoming and outgoing servers require authentication and SSL encryption.
     -   You should use Port 993 for secure IMAP, Port 995 for secure POP3, and Port 25 with SSL for SMTP.
 
-45. Try sending an email to this account from an outside email account and then reply to it. You can check your mail log file in */var/log/mail.log*, where you should see something like this (the first block is for an incoming message, and the second block for an outgoing message):
+45. Try sending an email to this account from an outside email account and then reply to it. Check the mail log file in */var/log/mail.log* for the following output (the first block is for an incoming message, and the second block for an outgoing message):
 
     {: .file-excerpt }
 	/var/log/mail.log
@@ -855,29 +857,29 @@ Here's how to configure Dovecot:
 	  Mar 22 18:20:29 host postfix/qmgr[15878]: AA10A2839B: removed
 	  ~~~
 
-Congratulations! You now have a functioning mail server that can securely send and receive email. If things are not working smoothly, you may also want to consult the [Troubleshooting Problems with Postfix, Dovecot, and MySQL](/docs/email/postfix/troubleshooting) guide. At this point, you may want to consider adding spam and virus filtering and a webmail client. If you haven't switched the DNS records for your mail server yet, you should be able to do so now. Once the DNS records have propagated, you will start receiving email for your domain on the server.
+You now have a functioning mail server that can securely send and receive email. If things are not working smoothly, you may also want to consult the [Troubleshooting Problems with Postfix, Dovecot, and MySQL](/docs/email/postfix/troubleshooting) guide. At this point, consider adding spam and virus filtering and a webmail client. If DNS records have not been created for the mail server yet, do so now. Once the DNS records have propagated, email will be delivered via the new mailserver.
 
 {: .note }
->If you encounter errors in your /var/log/syslog stating "Invalid settings: postmaster_address setting not given", you may need to append the following line to your /etc/dovecot/dovecot.conf file, replacing domain with your domain name.
+>If errors are encountered in the /var/log/syslog stating "Invalid settings: postmaster_address setting not given", you may need to append the following line to the /etc/dovecot/dovecot.conf file, replacing domain with the domain name.
 >
 >     postmaster_address=postmaster at DOMAIN
 
 Adding New Domains, Email Addresses, and Aliases
 ------------------------------------------------
 
-Now your mail server is up and running, but eventually you'll probably need to add new domains, email addresses, and aliases for your users. To do this, all you'll have to do is add a new line to the appropriate MySQL table. These instructions are for command-line MySQL, but you can just as easily use [phpMyAdmin](http://www.phpmyadmin.net/) to add new entries to your tables as well.
+Now the mail server is up and running, but eventually you'll probably need to add new domains, email addresses, and aliases for the users. To do this, all you'll have to do is add a new line to the appropriate MySQL table. These instructions are for command-line MySQL, but you can just as easily use [phpMyAdmin](http://www.phpmyadmin.net/) to add new entries to the tables as well.
 
 ### Domains
 
-Here's how to add a new domain to your Postfix and Dovecot setup:
+Here's how to add a new domain:
 
-1.  Open a terminal window and [log in to your Linode via SSH](/docs/getting-started#sph_logging-in-for-the-first-time).
-2.  Log in to your MySQL server with an appropriately privileged user. In this example, we'll use the `root` user:
+1.  Open a terminal window and [log in to the Linode via SSH](/docs/getting-started#sph_logging-in-for-the-first-time).
+2.  Log in to the MySQL server with an appropriately privileged user. In this example, we'll use the `root` user:
 
         mysql -u root -p mailserver
 
-3.  Enter your root MySQL password when prompted.
-4.  You should always view the contents of the table before adding new entries. Enter the following command to view the current contents of any table, replacing `virtual_domains` with your table:
+3.  Enter the root MySQL password when prompted.
+4.  Always view the contents of the table before adding new entries. Enter the following command to view the current contents of any table, replacing `virtual_domains` with the table:
 
         SELECT * FROM mailserver.virtual_domains;
 
@@ -892,7 +894,7 @@ Here's how to add a new domain to your Postfix and Dovecot setup:
         |  4 | localhost.example.com |
         +----+-----------------------+
 
-6.  To add another domain, enter the following command, replacing `newdomain.com` with your domain name:
+6.  To add another domain, enter the following command, replacing `newdomain.com` with the domain name:
 
         INSERT INTO `mailserver`.`virtual_domains`
           (`name`)
@@ -907,11 +909,11 @@ Here's how to add a new domain to your Postfix and Dovecot setup:
 
         quit
 
-Congratulations! You have successfully added the new domain to your Postfix and Dovecot setup.
+You have successfully added the new domain to the Postfix and Dovecot setup.
 
 ### Email Addresses
 
-Here's how to add a new email address to your Postfix and Dovecot setup:
+Here's how to add a new email address:
 
 1.  Enter the following command in MySQL, replacing `newpassword` with the user's password, and `email3@newdomain.com` with the user's email address:
 
@@ -924,7 +926,7 @@ Here's how to add a new email address to your Postfix and Dovecot setup:
 >
 > Be sure to use the correct number for the `domain_id`. In this case, we are using `5`, because we want to make an email address for `newdomain.com`, and `newdomain.com` has an `id` of `5` in the `virtual_domains` table.
 
-2.  Verify that the new email address has been added by entering the following command. You should see the new email address in the output.
+2.  Verify that the new email address has been added by entering the following command.  The new email address should be displayed in the output.
 
         SELECT * FROM mailserver.virtual_users;
 
@@ -932,13 +934,13 @@ Here's how to add a new email address to your Postfix and Dovecot setup:
 
         quit
 
-Congratulations! You have successfully added the new email address to your Postfix and Dovecot setup.
+You have successfully added the new email address to the Postfix and Dovecot setup.
 
 ### Aliases
 
-Here's how to add a new alias to your Postfix and Dovecot setup:
+Here's how to add a new alias:
 
-1.  Enter the following command in MySQL, replacing `alias@newdomain.com` with the address from which you want to forward email, and `myemail@gmail.com` with the address that you want to forward the mail to. The `alias@newdomain.com` needs to be an email address that already exists on your server.
+1.  Enter the following command in MySQL, replacing `alias@newdomain.com` with the address from which you want to forward email, and `myemail@gmail.com` with the address that you want to forward the mail to. The `alias@newdomain.com` needs to be an email address that already exists on the server.
 
         INSERT INTO `mailserver`.`virtual_aliases`
           (`domain_id`, `source`, `destination`)
@@ -947,9 +949,9 @@ Here's how to add a new alias to your Postfix and Dovecot setup:
 
  {: .note }
 >
-> You will need to use the correct number for the `domain_id`. You should use the `id` of the domain for this email address; see the explanation in the email users section above.
+> Ensure that the correct number is entered for the`domain_id` value. You should use the `id` of the domain for this email address; see the explanation in the email users section above.
 
-2.  Verify that the new alias has been added by entering the following command. You should see the new alias in the output.
+2.  Verify that the new alias has been added by entering the following command. The new alias will be displayed in the output.
 
         SELECT * FROM mailserver.virtual_aliases;
 
@@ -957,7 +959,7 @@ Here's how to add a new alias to your Postfix and Dovecot setup:
 
         quit
 
-Congratulations! You have successfully added the new alias to your Postfix and Dovecot setup.
+You have successfully added the new alias to the Postfix and Dovecot setup.
 
 
 
