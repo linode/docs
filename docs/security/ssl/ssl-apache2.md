@@ -29,42 +29,11 @@ This guide assumes that you are running Apache2.4 or higher on Debian 8 or Ubunt
 
 - Hosting multiple websites with commercial SSL certificates on the same IP address is possible, thanks to the [SNI](https://wiki.apache.org/httpd/NameBasedSSLVHostsWithSNI) extension of TLS. SNI is accepted by most modern web browsers. If you expect to receive connections from clients running legacy browsers (Like Internet Explorer for Windows XP), you will need to [contact support](/docs/platform/support) to request an additional IP address.
 
-Configure Apache to use a Self-Signed Certificate
----------------------------------------------------
 
-1.  Edit the virtual host configuration files located in `/etc/apache2/sites-available`, to provide the certificate files that should be used by each virtual host. For each virtual host using SSL, you will need to replicate the configuration shown below. Replace `12.34.56.78` with your Linode's IP address, and any mentions of `mydomain.com` with your own domain as provided when configuring your certificate. Note that we've essentially reproduced the configuration for a non-SSL site, with the addition of three lines for SSL.
+##Get the CA Root Certificate
 
-    {: .file-excerpt }
-    Apache virtual hosting file
-    :   ~~~ apache
-        <VirtualHost 12.34.56.78:443>
-            SSLEngine On
-            SSLCertificateFile /etc/ssl/localcerts/www.mydomain.com.crt
-            SSLCertificateKeyFile /etc/ssl/localcerts/www.mydomain.com.key
-
-            ServerAdmin info@mydomain.com
-            ServerName www.mydomain.com
-            ServerAlias mydomain.com
-            DocumentRoot /var/www/mydomain.com/public_html/
-            ErrorLog /var/www/mydomain.com/log/error.log
-            CustomLog /var/www/mydomain.com/log/access.log combined
-        </VirtualHost>
-        ~~~
-
-2.  Ensure that the Apache SSL module is enabled:
-
-        a2enmod ssl
-
-3.  Restart Apache:
-
-        service apache2 restart
-
-You should now be able to visit your site with SSL enabled (after accepting your browser's warnings about the certificate).
-
-Configure Apache to use a Commercial SSL Certificate
-----------------------------------------------------
-
-###Get the CA Root Certificate
+{: .note }
+> If you're using a self-signed certificate, skip this step.
 
 You will need to download the root certificate for the provider that issued your commercial certificate before you can begin using it. You may obtain the root certs for various providers from these sites:
 
@@ -76,7 +45,7 @@ You will need to download the root certificate for the provider that issued your
 
 Most providers will provide a root certificate file as either a .cer or .pem file. Save the provided root certificate in /etc/ssl/localcerts.
 
-### Configure Apache to use the Signed SSL Certificate
+## Configure Apache to use the SSL Certificate
 
 1.  Edit the virtual host configuration files located in `/etc/apache2/sites-available`, to provide the certificate file paths. For each virtual host, replicate the configuration shown below. Replace `12.34.56.78` with your Linode's IP address, and any mentions of `mydomain.com` with your own domain as provided when configuring your certificate. You will also need to ensure that the `SSLCACertificateFile` value is configured to point to the CA root certificate downloaded in the previous step.
 
@@ -87,7 +56,7 @@ Most providers will provide a root certificate file as either a .cer or .pem fil
             SSLEngine On
             SSLCertificateFile /etc/ssl/localcerts/www.mydomain.com.crt
             SSLCertificateKeyFile /etc/ssl/localcerts/www.mydomain.com.key
-            SSLCACertificateFile /etc/ssl/localcerts/ca.pem
+            SSLCACertificateFile /etc/ssl/localcerts/ca.pem  # If using a self-signed certificate, omit this line
 
             ServerAdmin info@mydomain.com
             ServerName www.mydomain.com
