@@ -6,7 +6,7 @@ author:
 description: 'Information on submitting articles to the Linode Library, including benefits and procedures.'
 keywords: 'writing,open source software,contribute linode library, submissions'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Thursday, September 25, 2014
+modified: Thursday, April 30th, 2015
 modified_by:
   name: Alex Fornuto
 published: 'Wednesday, May 19th, 2010'
@@ -93,6 +93,7 @@ These authors got their articles published and $100. You could be next.
 -	[Turbocharge Your WordPress Search Using Solr](/docs/websites/cms/turbocharge-wordpress-search-with-solr) - Karthik Shiraly
 -	[Install and Configure Don't Starve Together Server on Ubuntu 14.04](/docs/applications/game-servers/dont-starve-together-on-ubuntu) - Andrew Gottschling
 -	[Running a Spigot Minecraft Server on Ubuntu 14.04 and 14.10](/docs/applications/game-servers/minecraft-with-spigot-ubuntu) - Sam Mauldin
+-	[Protecting Your Linode with TCP Wrappers](/docs/security/firewalls/protecting-your-linode-using-tcp-wrappers)
 
 
 Legal Information

@@ -6,16 +6,18 @@ description: 'Enhance your server''s security through the use of TCP wrasppers'
 keywords: 'tcp wrappers,security,firewall,acl,access control'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-applications/game-servers/minecraft-ubuntu12-04/']
-published: 'Wednesday, January 21, 2015'
+published: 'Thursday, April 30th, 2015'
 external_resources:
  - '[Wikipedia](external_resources:)'
-modified: Monday, January 26, 2015
+modified: Thursday, April 30th, 2015
 modified_by:
   name: Elle Krout
-title: Protecting your Linode with TCP Wrappers
+title: Protecting Your Linode with TCP Wrappers
 contributor:
     name: Francis McNamee
 ---
+
+*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $100 per published guide.*
 
 TCP wrappers are a host-based access control system. They are used to prevent unauthorized access to your server by allowing only specific clients access to services running on your server.
 
