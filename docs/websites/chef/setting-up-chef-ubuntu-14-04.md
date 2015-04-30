@@ -129,7 +129,7 @@ Your Chef workstation will be where you create and configure any recipes, cookbo
 
 ### Add the RSA Private Keys
 
-1.	The RSA private keys generated when setting up the Chef Server will now need to be placed on this server. The process behind this will vary depending on if you are using SSH key pair authentication to log into your Linodes.
+1.	The RSA private keys generated when setting up the Chef Server will now need to be placed on the Workstation server. The process behind this will vary depending on if you are using SSH key pair authentication to log into your Linodes.
 
 	-	If you are **not** using key pair authentication, then copy the file directly off of the Chef Server. replace `user` with your username on the server, and `123.45.67.89` with the URL or IP of your Chef Server:
 
@@ -147,7 +147,7 @@ Your Chef workstation will be where you create and configure any recipes, cookbo
 
 ### Add Version Control
 
-Because the workstation is used to add and edit cookbooks and other configuration files, it is beneficial to put it under version control. For this, Git proves to be a useful program.
+The workstation is used to add and edit cookbooks and other configuration files. It is beneficial to implement some form of version control. For this, Git proves to be a useful program.
 
 1.	Download Git:
 
@@ -217,7 +217,7 @@ Because the workstation is used to add and edit cookbooks and other configuratio
 
 		knife client list
 
-	The validator name should be output.
+	This command should output the validator name.
 
 With both the server and a workstation configured, it is possible to bootstrap your first node.
 
@@ -244,7 +244,7 @@ Bootstrapping a node installs the chef-client and validates the node, preparing 
 
 ## Download a Cookbook (Optional)
 
-When using Chef you will want the chef-client to periodically run on your nodes and pull in any changes pushed to the Chef Server. You will also want the `validation.pem` file that is uploaded to your node upon bootstrap to be deleted for security purposes. While these things can be done manually, it is often easier and more efficient to have it set up as a cookbook.
+When using Chef you will want the chef-client to periodically run on your nodes and pull in any changes pushed to the Chef Server. You will also want the `validation.pem` file that is uploaded to your node upon bootstrap to be deleted for security purposes. While these things can be done manually, it is often easier and more efficient to set it up as a cookbook.
 
 This section is optional, but provides instructions on downloading a cookbook to your workstation, pushing it to a server, and includes the skeleton of a basic cookbook to expand and experiment with.
 
@@ -297,6 +297,6 @@ This section is optional, but provides instructions on downloading a cookbook to
 
 	If running the node as a non-root user, append the above command with `sudo`.
 
-	The recipes in the Run List will then be pulled from the server and run. In this instance, it will be the `cron-delvalidate` recipe, which then means that any cookbooks made, pushed to the Chef Server, and added to the node's Run List will be periodically pulled down once an hour, eliminating the need to got into the node in the future to pull down changes.
+	The recipes in the Run List will be pulled from the server and run. In this instance, it will be the `cron-delvalidate` recipe. This recipe ensures that any cookbooks made, pushed to the Chef Server, and added to the node's Run List will be pulled down to bootstrapped nodes once an hour. This automated step eliminates connecting to the node in the future to pull down changes.
 
 
