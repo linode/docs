@@ -47,8 +47,8 @@ Next Steps
 
 Once your certificate has been generated, you will need to configure your web server to utilize the new certificate.  Instructions for doing so with several popular platforms can be found at the links below.
 
-- [SSL Certificates with Apache](docs/security/ssl/ssl-apache2)
-- [SSL Certificates with Nginx}(docs/security/ssl/ssl-certificates-with-nginx)Next Steps
+- [SSL Certificates with Apache](/docs/security/ssl/ssl-apache2)
+- [SSL Certificates with Nginx](/docs/security/ssl/ssl-certificates-with-nginx)
 
 More Information
 ----------------
