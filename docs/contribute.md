@@ -13,12 +13,11 @@ published: 'Wednesday, May 19th, 2010'
 title: Article Submissions
 ---
 
-Get published by Linode, and get paid! Earn \$100 per article, if it's accepted for publication.
+Get published by Linode and get paid! Earn $100 per article if it's accepted for publication.
 
 We're expanding the Linode Guides & Tutorials, and we want you to help! If you like writing, teaching people how to use Linux, and money, we want to hear from you. The guidelines are below.
 
-Topic List
-----------
+## Topic List
 
 Submit your own topic, or choose from the list of open topics we want to add to the Linode Library:
 
@@ -30,16 +29,14 @@ Submit your own topic, or choose from the list of open topics we want to add to 
 -   [Ansible](http://www.ansible.com/home)
 -   [SaltStack](http://www.saltstack.com/)
 
-Each article is worth \$100 if it is accepted for publication. In addition, we always welcome edits, suggestions, and updates to existing guides.
+Each article is worth $100 if it is accepted for publication. In addition, we always welcome edits, suggestions, and updates to existing guides.
 
 
-How Much Money Will I Earn?
----------------------------
+## How Much Money Will I Earn?
 
-We will pay you $100 per article that is accepted for publication, in cash via PayPal, or as Linode credit. Note that submitting an article is not a guarantee of publication. After you submit it, we will let you know if your article has been accepted.
+We will pay you $100 per article that is accepted for publication in cash via PayPal, or as Linode credit. Note that submitting an article is not a guarantee of publication. After you submit it, we will let you know if your article has been accepted.
 
-Write Your Article
-------------------
+## Write Your Article
 
 Use the [style guide](/docs/style-guide). While you're writing, make sure your content is:
 
@@ -48,7 +45,7 @@ Use the [style guide](/docs/style-guide). While you're writing, make sure your c
 -   Formatted. Your style should use [PHP Markdown Extra](https://michelf.ca/projects/php-markdown/extra/) formatting and match the Linode Library [style guide](/docs/style-guide).
 -   Original. Your content should be original material written for Linode. We will not accept submissions that have been copied from other sources.
 
-Want to make sure you don't waste time writing a long article we can't use? Submit a writing sample first, to <contribute@linode.com>.
+Want to make sure you don't waste time writing a long article we can't use? Submit a writing sample first to <contribute@linode.com>.
 
 Submit Your Article
 -------------------
@@ -67,16 +64,17 @@ Submission checklist:
 Once you've submitted your article, here's what you can expect:
 
 1.  You'll receive a brief response acknowledging your submission.
-2.  We will do a technical review of your material. This will take a few days.
-3.  We will do a copy review of the article. This will take a few days.
-4.  You may receive questions or comments from us, or a request for a resubmission with a few changes.
-5.  We will let you know that your article has been chosen for publication and send you the final version we are planning to publish. You will have 36 hours to respond and approve our publication of the final version.
-6.  If you respond positively (non-response will be taken as a go-ahead to publish), we will publish the article and give you the cash or Linode credit.
+2.	If not already submitted through GitHub, most articles will be added for community review for a period of about one week.
+3.	After the initial one to two week period of review, your article will be accepted or rejected.
+4.  If accepted, we will do a technical review of your material. This will take a few days.
+5.  We will do a copy edit of the article. This will take a few days.
+6.  You may receive questions or comments from us, or a request for a resubmission with a few changes.
+7.  We will then send you the final version of the article before publication. You will have 36 hours to respond and approve our publication of the final version.
+8.  If you respond positively (non-response will be taken as a go-ahead to publish), we will publish the article and give you the cash or Linode credit.
 
-Completed Topics
-----------------
+## Completed Topics
 
-These authors got their articles published and \$100. You could be next.
+These authors got their articles published and $100. You could be next.
 
 -   [Varnish Cache](/docs/websites/varnish/getting-started-with-varnish-cache) - Kevin Cupp
 -   [Pflogsumm](/docs/email/postfix/pflogsumm-for-postfix-monitoring-on-centos-6) - Robert Accettura
