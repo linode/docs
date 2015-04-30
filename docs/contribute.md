@@ -65,7 +65,7 @@ Once you've submitted your article, here's what you can expect:
 
 1.  You'll receive a brief response acknowledging your submission.
 2.	If not already submitted through GitHub, most articles will be added for community review for a period of about one week.
-3.	After the initial one week period of review, your article will be accepted or rejected.
+3.	After the initial one to two week period of review, your article will be accepted or rejected.
 4.  If accepted, we will do a technical review of your material. This will take a few days.
 5.  We will do a copy edit of the article. This will take a few days.
 6.  You may receive questions or comments from us, or a request for a resubmission with a few changes.
