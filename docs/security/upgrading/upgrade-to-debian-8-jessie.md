@@ -70,15 +70,15 @@ Here's how to upgrade from Debian 7 to Debian 8:
     {: .file-excerpt }
     /etc/apt/sources.list
     :   ~~~
-        deb http://ftp.us.debian.org/debian/ wheezy main
-        deb-src http://ftp.us.debian.org/debian/ wheezy main
+        deb http://ftp.us.debian.org/debian/ jessie main
+        deb-src http://ftp.us.debian.org/debian/ jessie main
 
-        deb http://security.debian.org/ wheezy/updates main
-        deb-src http://security.debian.org/ wheezy/updates main
+        deb http://security.debian.org/ jessie/updates main
+        deb-src http://security.debian.org/ jessie/updates main
 
-        # wheezy-updates, previously known as 'volatile'
-        deb http://ftp.us.debian.org/debian/ wheezy-updates main
-        deb-src http://ftp.us.debian.org/debian/ wheezy-updates main
+        # jessie-updates, previously known as 'volatile'
+        deb http://ftp.us.debian.org/debian/ jessie-updates main
+        deb-src http://ftp.us.debian.org/debian/ jessie-updates main
         ~~~
 
     {: .note}
