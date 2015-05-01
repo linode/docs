@@ -30,27 +30,27 @@ On CentOS and Fedora systems, issue the following commands to ensure your system
 
     yum update
 
-For the purpose of this guide we will assume that you have virtual hosting configured for the domain `ducklington.org` with all publicly accessible resources located in the document root `/srv/www/ducklington.org/public_html/`. In this document you will install FluxBB into this document root. Modify all of the instructions below to agree with the architecture of your deployment.
+For the purpose of this guide we will assume that you have virtual hosting configured for the domain `example.com` with all publicly accessible resources located in the document root `/srv/www/example.com/public_html/`. In this document you will install FluxBB into this document root. Modify all of the instructions below to agree with the architecture of your deployment.
 
 Install FluxBB
 --------------
 
 This document contains specific instructions for installing version 1.2.22 of FluxBB. Check the [upstream](http://fluxbb.org/downloads/) source to confirm that this is the most up to date version of the software and that there are no vulnerabilities or bugs. Issue the following sequence of commands to download, extract, move the FluxBB files to your web server's document root, and properly configure file permissions:
 
-    mkdir -p /srv/www/ducklington.org/src/fluxbb-1.2.22
-    cd /srv/www/ducklington.org/src/
+    mkdir -p /srv/www/example.com/src/fluxbb-1.2.22
+    cd /srv/www/example.com/src/
     wget http://fluxbb.org/download/releases/1.2.22/fluxbb-1.2.22.tar.gz
-    cp fluxbb-1.2.22.tar.gz /srv/www/ducklington.org/src/fluxbb-1.2.22
-    cd /srv/www/ducklington.org/src/fluxbb-1.2.22
+    cp fluxbb-1.2.22.tar.gz /srv/www/example.com/src/fluxbb-1.2.22
+    cd /srv/www/example.com/src/fluxbb-1.2.22
     tar -zxvf fluxbb-1.2.22.tar.gz; rm fluxbb-1.2.22.tar.gz
-    cp -R /srv/www/ducklington.org/src/fluxbb-1.2.33/upload/* /srv/www/ducklington.org/public_html/
-    chmod -R 777 /srv/www/ducklington.org/public_html/cache/
-    chmod -R 777 /srv/www/ducklington.org/public_html/img/avatars/
+    cp -R /srv/www/example.com/src/fluxbb-1.2.33/upload/* /srv/www/example.com/public_html/
+    chmod -R 777 /srv/www/example.com/public_html/cache/
+    chmod -R 777 /srv/www/example.com/public_html/img/avatars/
 
-Now visit `http://ducklington.org/install.php` in your web browser, and follow the setup procedure provided by the FluxBB web based interface. During this process you will be asked to create a `config.php` file that resembles the following:
+Now visit `http://example.com/install.php` in your web browser, and follow the setup procedure provided by the FluxBB web based interface. During this process you will be asked to create a `config.php` file that resembles the following:
 
 {: .file }
-/srv/www/ducklington.org/public\_html/config.php
+/srv/www/example.com/public\_html/config.php
 :   ~~~ php
     <?php
 
@@ -73,7 +73,7 @@ Now visit `http://ducklington.org/install.php` in your web browser, and follow t
 
 When you have created this file, you will have completed the installation of FluxBB. Issue the following command to remove the setup files:
 
-    rm -rf /srv/www/ducklington.org/public_html/install.php
+    rm -rf /srv/www/example.com/public_html/install.php
 
 Congratulations! You have now successfully deployed FluxBB.
 

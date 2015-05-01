@@ -81,7 +81,7 @@ Install a Web Server
 
 If you have already installed Apache or nginx you can skip this section. For the purposes of this document nginx and Apache are equivalent. The Linode Library contains extensive documentation of both systems and you should deploy your Ikiwiki site with the server that you are most familiar or comfortable, if you do not already have a web-server installed.
 
-Both of the following subsections assume that you will deploy your ikiwiki site within the top level of the `ducklington.org` virtual host. You will need to modify the domains and file system paths to match your domain name.
+Both of the following subsections assume that you will deploy your ikiwiki site within the top level of the `example.com` virtual host. You will need to modify the domains and file system paths to match your domain name.
 
 ### Install Apache
 
@@ -103,15 +103,15 @@ Replace the existing example `VirtualHost` configuration examples with one that 
 /etc/httpd/conf/extra/httpd-vhosts.conf
 :   ~~~ apache
     <VirtualHost *:80>
-            ServerAdmin squire@ducklington.org
-            ServerName ducklington.org
-            ServerAlias www.ducklington.org
+            ServerAdmin squire@example.com
+            ServerName example.com
+            ServerAlias www.example.com
 
-            DocumentRoot /srv/http/ducklington.org/public_html
-            ErrorLog /srv/http/ducklington.org/logs/error.log
-            CustomLog /srv/http/ducklington.org/logs/access.log combined
+            DocumentRoot /srv/http/example.com/public_html
+            ErrorLog /srv/http/example.com/logs/error.log
+            CustomLog /srv/http/example.com/logs/access.log combined
 
-        <Directory /srv/http/ducklington.org/public_html> 
+        <Directory /srv/http/example.com/public_html> 
                AddHandler cgi-script .cgi 
                    Options FollowSymLinks +ExecCGI
         </Directory> 
@@ -120,9 +120,9 @@ Replace the existing example `VirtualHost` configuration examples with one that 
 
 Issue the following commands to create the required directories and to restart the web server:
 
-    mkdir -p /srv/http/ducklington.org/public_html 
-    mkdir -p /srv/http/ducklington.org/logs
-    chown -R squire:squire /srv/http/ducklington.org
+    mkdir -p /srv/http/example.com/public_html 
+    mkdir -p /srv/http/example.com/logs
+    chown -R squire:squire /srv/http/example.com
         /etc/rc.d/http start
 
 You will want to add the `http` daemon to the `DAEMONS=()` array at the end of the `/etc/rc.conf` file to ensure that the FastCGI daemon starts following then next reboot cycle.
@@ -162,12 +162,12 @@ Create a virtual host by inserting a version of the following excerpt into your 
 :   ~~~ nginx
     server {
         listen   80;
-        server_name www.ducklington.org ducklington.org;
-        access_log /srv/http/ducklington.org/logs/access.log;
-        error_log /srv/http/ducklington.org/logs/error.log;
+        server_name www.example.com example.com;
+        access_log /srv/http/example.com/logs/access.log;
+        error_log /srv/http/example.com/logs/error.log;
 
         location / {
-        root   /srv/http/ducklington.org/public_html;
+        root   /srv/http/example.com/public_html;
         index  index.html index.htm;
         }
 
@@ -176,16 +176,16 @@ Create a virtual host by inserting a version of the following excerpt into your 
         include /etc/nginx/conf/fastcgi_params;
         fastcgi_pass  127.0.0.1:9001;
         fastcgi_index index.cgi;
-        fastcgi_param  SCRIPT_FILENAME  /srv/http/ducklington.org/public_html$fastcgi_script_name;
+        fastcgi_param  SCRIPT_FILENAME  /srv/http/example.com/public_html$fastcgi_script_name;
         }
     }
     ~~~
 
 Issue the following commands to create the required directories and to restart the web server:
 
-    mkdir -p /srv/http/ducklington.org/public_html 
-    mkdir -p /srv/http/ducklington.org/logs
-    chown -R squire:squire /srv/http/ducklington.org
+    mkdir -p /srv/http/example.com/public_html 
+    mkdir -p /srv/http/example.com/logs
+    chown -R squire:squire /srv/http/example.com
     /etc/rc.d/nginx start
 
 You will want to add the `nginx` daemon to the `DAEMONS=()` array at the end of the `/etc/rc.conf` file to ensure that the nginx process starts following then next reboot cycle.
@@ -220,8 +220,8 @@ Add the following excerpt to `~/wiki/.git/config`:
 
 Configure the `squire` user's identity within git. Modify the following model for your user:
 
-    git config --global user.email "squire@ducklington.org" 
-    git config --global user.name "Squire Ducklington" 
+    git config --global user.email "squire@example.com" 
+    git config --global user.name "Squire example" 
 
 Issue the following commands to copy the default `basewiki` and `templates` to the `~/wiki` directory, download a [sample ikiwiki configuration file](/docs/assets/694-ikiwiki.yaml), and create an initial commit in the `~/wiki` repository:
 
@@ -233,7 +233,7 @@ Issue the following commands to copy the default `basewiki` and `templates` to t
     git commit -m "initial ikiwiki commit" 
     git push origin master
 
-Edit the `~/wiki/ikiwiki.yaml` file to suit the needs of your deployment, paying particular attention to example directory paths and URLs. You should take care to replace all instances of "ducklington.org" with your domain name, and all instances of "squire" with the username you created at the beginning of this guide. You may wish to review the [ikiwiki documentation](http://ikiwiki.info) for more information regarding specific configuration directives. Issue the following commands to commit your changes and push them:
+Edit the `~/wiki/ikiwiki.yaml` file to suit the needs of your deployment, paying particular attention to example directory paths and URLs. You should take care to replace all instances of "example.com" with your domain name, and all instances of "squire" with the username you created at the beginning of this guide. You may wish to review the [ikiwiki documentation](http://ikiwiki.info) for more information regarding specific configuration directives. Issue the following commands to commit your changes and push them:
 
     git commit ~/wiki/ikiwiki.yaml -m "edited ikiwiki yaml config"
     git push origin master
@@ -252,9 +252,9 @@ When the configuration file has been edited, and there is content in the `~/wiki
 
     ikiwiki --setup ~/wiki/ikiwiki.yaml
 
-Rerun this command any time you edit the `ikiwiki.yaml` file. You can now visit and interact with your wiki directly at `http://ducklington.org/`, or via the git interface by issuing the following command on your local system:
+Rerun this command any time you edit the `ikiwiki.yaml` file. You can now visit and interact with your wiki directly at `http://example.com/`, or via the git interface by issuing the following command on your local system:
 
-    git clone ssh://ducklington.org:/srv/git/wiki.git
+    git clone ssh://example.com:/srv/git/wiki.git
 
 Administration Notes
 --------------------

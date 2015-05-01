@@ -77,7 +77,7 @@ Issue the following command to install the prerequisites and [generate a self-si
 
     openssl req -new -x509 -sha256 -days 365 -nodes -out /etc/ssl/certs/postfix.pem -keyout /etc/ssl/private/postfix.key
 
-Be sure to generate a certificate with a "Common Name" that corresponds to the host name that your users will connect your mail server (e.g. `mail.ducklington.org`).
+Be sure to generate a certificate with a "Common Name" that corresponds to the host name that your users will connect your mail server (e.g. `mail.example.com`).
 
 Mail clients may have an issue with certificates generated in this manner because they are not signed by a recognized certificate authority. Consider our documentation for generating [commercial ssl certificates](/docs/security/ssl/obtaining-a-commercial-ssl-certificate) if you need a commercially verified certificate.
 
@@ -131,7 +131,7 @@ The above Postfix configuration makes it possible to *send* mail using postfix. 
 {: .file-excerpt }
 /etc/postfix/main.cf
 :   ~~~ ini
-    myhostname = lollipop.ducklington.org
+    myhostname = lollipop.example.com
     virtual_alias_maps = hash:/etc/postfix/virtual
     home_mailbox = mail/
     ~~~
@@ -149,13 +149,13 @@ Create a `/etc/postfix/virtual` file to map incoming email addresses to their de
 {: .file }
 /etc/postfix/virtual
 
-> <squire@ducklington.com> squire <squire@ducklington.net> squire <squire@ducklington.org> squire
+> <squire@example.com> squire <squire@example.net> squire <squire@example.com> squire
 >
-> <fore@ducklington.com> <foreman@bucknell.net> <fore@ducklington.net> <foreman@bucknell.net> <fore@ducklington.org> <foreman@bucknell.net>
+> <fore@example.com> <foreman@example.com> <fore@example.net> <foreman@example.com> <fore@example.com> <foreman@example.com>
 >
-> <team@ducklington.com> squire, <foreman@bucknell.net> <team@ducklington.net> squire, <foreman@bucknell.net> <team@ducklington.org> squire, <foreman@bucknell.net>
+> <team@example.com> squire, <foreman@example.com> <team@example.net> squire, <foreman@example.com> <team@example.com> squire, <foreman@example.com>
 
-Here, all mail sent to the three addresses beginning with the characters `squire@` are delivered to the local user "squire" and deposited to a Maildir in the `/home/squire/mail/` directory. The three addresses that begin with the characters `fore@` are delivered to the email address `foreman@bucknell.net`. The final set of three email addresses beginning with `team@` are both delivered locally and sent to the `foreman@bucknell.net` email address.
+Here, all mail sent to the three addresses beginning with the characters `squire@` are delivered to the local user "squire" and deposited to a Maildir in the `/home/squire/mail/` directory. The three addresses that begin with the characters `fore@` are delivered to the email address `foreman@example.com`. The final set of three email addresses beginning with `team@` are both delivered locally and sent to the `foreman@example.com` email address.
 
 You can add additional lines in the same format as the above to control how all incoming email is delivered to local or external destinations. Remember that incoming email has no firm relationship to the name of the user account.
 

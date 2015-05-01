@@ -106,7 +106,7 @@ Reading MTR Reports
 Because MTR reports contain a wealth of information, they may be difficult to interpret at first. Consider the following example from a local connection to `google.com`:
 
     $ mtr --report google.com
-    HOST: ducklington                  Loss%   Snt   Last   Avg  Best  Wrst StDev
+    HOST: example                  Loss%   Snt   Last   Avg  Best  Wrst StDev
       1. inner-cake                    0.0%    10    2.8   2.1   1.9   2.8   0.3
       2. outer-cake                    0.0%    10    3.2   2.6   2.4   3.2   0.3
       3. 68.85.118.13                  0.0%    10    9.8  12.2   8.7  18.2   3.0
@@ -156,7 +156,7 @@ Analyzing MTR Reports
 When analyzing MTR output, you are looking for two things: loss and latency. First, let's talk about loss. If you see a percentage of loss at any particular hop, that may be an indication that there is a problem with that particular router. However, it is common practice among some service providers to rate limit the ICMP traffic that MTR uses. This can give the illusion of packet loss when there is in fact no loss. To determine if the loss you're seeing is real or due to rate limiting, take a look at the subsequent hop. If that hop shows a loss of 0.0%, then you can be pretty sure that you're seeing ICMP rate limiting and not actual loss. See below for an example:
 
     root@localhost:~# mtr --report www.google.com
-    HOST: ducklington               Loss%   Snt   Last   Avg  Best  Wrst StDev
+    HOST: example               Loss%   Snt   Last   Avg  Best  Wrst StDev
     1. 63.247.74.43                  0.0%    10    0.3   0.6   0.3   1.2   0.3
     2. 63.247.64.157                50.0%    10    0.4   1.0   0.4   6.1   1.8
     3. 209.51.130.213                0.0%    10    0.8   2.7   0.8  19.0   5.7

@@ -82,9 +82,9 @@ Start `cherokee-admin` by issuing the following command:
 
 This instructs the administration program to bind to all IP addresses so it may be reached remotely. It will be launched in the background, so you'll still be able to use your SSH session. You should see output similar to the following:
 
-    root@plato:~# cherokee-admin -b &
+    root@hostname:~# cherokee-admin -b &
     [1] 2154
-    root@plato:~# 
+    root@hostname:~# 
     Login:
       User:              admin
       One-time Password: eFxccWtngt75ALZg

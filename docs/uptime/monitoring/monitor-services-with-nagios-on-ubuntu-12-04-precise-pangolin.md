@@ -101,9 +101,9 @@ You can also configure Nagios to send notifications to an IRC channel through a 
 
         sudo nagircbot
 
-4.  Now you need to set those parameters. Use the following example as a starting point. Replace `irc.example.com` with the address of your IRC network, and `#bucknell` with the name of the IRC channel to which the bot should send notifications. Replace `nagircbot` with the desired nickname for your bot, and `ident` and `realname` with the ident and real name strings for the IRC bot.
+4.  Now you need to set those parameters. Use the following example as a starting point. Replace `irc.example.com` with the address of your IRC network, and `#example` with the name of the IRC channel to which the bot should send notifications. Replace `nagircbot` with the desired nickname for your bot, and `ident` and `realname` with the ident and real name strings for the IRC bot.
 
-        nagircbot -f /var/cache/nagios3/status.dat -s irc.example.com:6667 -c \#bucknell -C -n nagircbot -u ident -U realname -I 900
+        nagircbot -f /var/cache/nagios3/status.dat -s irc.example.com:6667 -c \#example -C -n nagircbot -u ident -U realname -I 900
 
     In the above example, `-f /usr/local/nagios/var/status.dat` tells the bot where to get status updates. The `-C` flag allows the bot to send colored messages to the channel depending on the status of the service. When services are down, red status messages are displayed. These messages turn green when the service has recovered. Warnings are displayed in yellow, but do not typically represent a critical issue.
 

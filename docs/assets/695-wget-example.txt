@@ -1,5 +1,5 @@
 This is an example resource for the `wget` document
-<http://library.linode.com/using-linux/common-commands/wget/>, located
+<http://www.linode.com/docs/tools-reference/tools/download-resources-from-the-command-line-with-wget>, located
 in the Linode Library.
 
 There are four lines of random characters at the end of this file.

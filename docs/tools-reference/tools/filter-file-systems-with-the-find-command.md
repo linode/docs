@@ -75,13 +75,13 @@ Filter Files Based on Content with Grep
 
 `find` is only able to filter the directory hierarchy based on a file's name and meta data. If you need to filter based on the content of the file, use a tool like [grep](/docs/tools-reference/search-and-filter-text-with-grep) to filter using grep. Take the following example:
 
-    find . -type f -exec grep "ducklington" '{}' \; -print 
+    find . -type f -exec grep "example" '{}' \; -print 
 
-This filters every object in the current hierarchy (e.g. `.`) that is a file (e.g. `-type f`) and then runs the command `grep "ducklington"` for every file that matches. The files that match are printed. (e.g. `-print`). The curly braces (e.g. "`{}`) are a placeholder for the `find` match results. The `{}` are enclosed in single quotes to avoid handing `grep` a malformed file name. The `-exec` command is terminated with a semi-colon (e.g. `;`), which should be escaped (e.g. "`\;`) to avoid interpretation by the shell.
+This filters every object in the current hierarchy (e.g. `.`) that is a file (e.g. `-type f`) and then runs the command `grep "example"` for every file that matches. The files that match are printed. (e.g. `-print`). The curly braces (e.g. "`{}`) are a placeholder for the `find` match results. The `{}` are enclosed in single quotes to avoid handing `grep` a malformed file name. The `-exec` command is terminated with a semi-colon (e.g. `;`), which should be escaped (e.g. "`\;`) to avoid interpretation by the shell.
 
 Before the implementation of the `-exec` option, this kind of command might have used the `xargs` command to generate a similar output:
 
-    find . -type f -print | xargs grep "ducklington
+    find . -type f -print | xargs grep "example
 
 Process Files with find
 -----------------------

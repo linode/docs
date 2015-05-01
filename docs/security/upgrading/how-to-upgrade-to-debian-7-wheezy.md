@@ -41,7 +41,7 @@ It's a good idea to [back up](/docs/platform/backup-service) your Linode before 
 
 ### Checking Your Kernel
 
-Verify that your Linode is using the latest supported kernel. See [Applying Kernel Updates](https://library.linode.com/monitoring-and-maintaining#sph_applying-kernel-updates) for more information.
+Verify that your Linode is using the latest supported kernel. See [Applying Kernel Updates](/docs/uptime/monitoring-and-maintaining-your-server/#applying-kernel-updates) for more information.
 
 ### Stopping Services
 

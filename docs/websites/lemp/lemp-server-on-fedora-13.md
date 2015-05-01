@@ -257,14 +257,14 @@ Issue the following command to get a root prompt for the MySQL server:
 
     mysql -u root -p
 
-Enter the root password created above and then issue the following sequence of commands to create the `ducklington` and `squire` database users, grant the `squire` user access to the `ducklington` database, and exit from the database:
+Enter the root password created above and then issue the following sequence of commands to create the `example` and `squire` database users, grant the `squire` user access to the `example` database, and exit from the database:
 
-    CREATE DATABASE ducklington;
+    CREATE DATABASE example;
     CREATE USER 'squire' IDENTIFIED BY 's8723hk2';
-    GRANT ALL PRIVILEGES ON ducklington.* TO 'squire';
+    GRANT ALL PRIVILEGES ON example.* TO 'squire';
     exit
 
-You may now provide the credentials for the `ducklington` database and the `bagman` user to your application, which will now be able to use the database for its purposes. To ensure that PHP will be able to access the MySQL connector your just installed, restart the PHP service by issue the following command:
+You may now provide the credentials for the `example` database and the `bagman` user to your application, which will now be able to use the database for its purposes. To ensure that PHP will be able to access the MySQL connector your just installed, restart the PHP service by issue the following command:
 
     /etc/init.d/php-fastcgi restart
 

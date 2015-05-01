@@ -21,7 +21,7 @@ Installation Prerequisites
 
 Before you can use your Linode with ownCloud you will need to have a working LAMP (Linux, Apache, MySQL, and PHP) stack. For more information on how to create a LAMP stack on your Linode consult our [LAMP Guides](/docs/websites/lamp).
 
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](https://library.linode.com/using-linux/users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
 Installing ownCloud
 ===================

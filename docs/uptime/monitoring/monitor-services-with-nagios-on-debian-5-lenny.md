@@ -169,9 +169,9 @@ You will need to provide a few parameters to the IRC bot such as its nickname an
 
     nagircbot -h
 
-To start the Nagios IRC bot, issue the `nagircbot` command. See the following example as a starting point. Replace `irc.example.net` with the address of your IRC network, and `#bucknell` with the name of the IRC channel that the bot should send notifications to. Replace `nagircbot` with the desired nickname for your bot, and `ident` and `realname` with the ident and real name that the IRC bot should use.
+To start the Nagios IRC bot, issue the `nagircbot` command. See the following example as a starting point. Replace `irc.example.net` with the address of your IRC network, and `#example` with the name of the IRC channel that the bot should send notifications to. Replace `nagircbot` with the desired nickname for your bot, and `ident` and `realname` with the ident and real name that the IRC bot should use.
 
-    nagircbot -f /usr/local/nagios/var/status.dat -s irc.example.net:6667 -c \#bucknell -C -n nagircbot -u ident -U realname -I 900
+    nagircbot -f /usr/local/nagios/var/status.dat -s irc.example.net:6667 -c \#example -C -n nagircbot -u ident -U realname -I 900
 
 In this example, "-f /usr/local/nagios/var/status.dat" tells the bot where to get status updates. The "-C" flag will allow the bot to send colored messages to the channel depending on the status of the service. When services are down, red status messages are displayed. These messages turn green when the service has recovered. Warnings are displayed in yellow, but do not typically represent a critical issue. The "-I 900" parameter tells the bot to send a status message to the channel every 900 seconds (or 15 minutes). For example, the bot may send something like "Critical: 0, warning: 1, ok: 6, up: 2, down: 0, unreachable: 0, pending: 0", which indicates that there are no critical messages and 1 warning.
 

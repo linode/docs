@@ -7,8 +7,6 @@ keywords: 'tcp wrappers,security,firewall,acl,access control'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-applications/game-servers/minecraft-ubuntu12-04/']
 published: 'Thursday, April 30th, 2015'
-external_resources:
- - '[Wikipedia](external_resources:)'
 modified: Thursday, April 30th, 2015
 modified_by:
   name: Elle Krout

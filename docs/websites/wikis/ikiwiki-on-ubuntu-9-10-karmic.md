@@ -66,14 +66,14 @@ From the command line, you can issue the following command to generate a basic c
 This will ask you a series of questions about file locations and the revision control system you want to use. We recommend using git. When it's completed, it will generate the following output:
 
     Successfully set up foo:
-        url:         http://bucknell.com/~squire/wiki
+        url:         http://example.com/~squire/wiki
         srcdir:      ~/wiki
         destdir:     ~/public_html/wiki
         repository:  ~/wiki.git
     To modify settings, edit ~/wiki.setup and then run:
         ikiwiki -setup ~/wiki.setup
 
-In this example, `bucknell` is the machine's hostname, `squire` is the admin user specified in the setup process, and `wiki` is the name of the wiki you specified during setup. You will need to configure your web server to serve files in `~/public_html/wiki` before this wiki will be accessible.
+In this example, `example` is the machine's hostname, `squire` is the admin user specified in the setup process, and `wiki` is the name of the wiki you specified during setup. You will need to configure your web server to serve files in `~/public_html/wiki` before this wiki will be accessible.
 
 While the auto-setup script is great for getting up and running in a matter of moments, you are encouraged to examine and edit the the config file `~/wiki.setup` as needed. If the automatic wiki setup is not ideal for your use case, we recommend manual configuration.
 
@@ -129,9 +129,9 @@ This assumes the `ikiwiki.setup` file is located in the home directory of the cu
 
 If you have git installed, you can now clone the repository that stores the content for your wiki to your local machine. Use the following command:
 
-    git clone ssh://squire@colab.bucknell.net/srv/git/wiki.git
+    git clone ssh://squire@colab.example.com/srv/git/wiki.git
 
-In this example, `squire` is the username, `colab.bucknell.net` is the name of the host where the repository resides, and `/srv/git/wiki.git` is the location of the "bare" repository.
+In this example, `squire` is the username, `colab.example.com` is the name of the host where the repository resides, and `/srv/git/wiki.git` is the location of the "bare" repository.
 
 If Ikiwiki is configured correctly, when you do a `git push` to the remote repository a "`post-update` hook" will trigger Ikiwiki to refresh the wiki with the content contained in your commit.
 
@@ -180,9 +180,9 @@ Now you can perform the first push for the `wiki-admin` repository by issuing th
 
 You can clone the `wiki-admin` repository to your local machine with the following command (issued locally):
 
-    git clone ssh://squire@colab.bucknell.net/srv/git/wiki-admin.git
+    git clone ssh://squire@colab.example.com/srv/git/wiki-admin.git
 
-In this example, `squire` is the username, `colab.bucknell.net` is the name of the host where the repository resides, and `/srv/git/wiki-admin.git` is the location of the "bare" repository. When you push to this repository, you'll need to issue a `git pull` from within `~/wiki-admin/` on your server so that Ikiwiki will be able to see the changes you've made. You may set up a `post-update` hook at `/srv/git/wiki-admin.git/hooks/post-update` to make sure that `~/wiki-admin` stays up to date.
+In this example, `squire` is the username, `colab.example.com` is the name of the host where the repository resides, and `/srv/git/wiki-admin.git` is the location of the "bare" repository. When you push to this repository, you'll need to issue a `git pull` from within `~/wiki-admin/` on your server so that Ikiwiki will be able to see the changes you've made. You may set up a `post-update` hook at `/srv/git/wiki-admin.git/hooks/post-update` to make sure that `~/wiki-admin` stays up to date.
 
 The `wiki-admin` repository is totally optional, however it will simplify backup and mirroring down the road and allow you to version the templates. If you think any of these features will be helpful in your use case, we encourage you to consider storing your files in this manner.
 
@@ -208,7 +208,7 @@ The files that needed to be owned by the `gitosis` user are the "destination" di
 
     chown -R gitosis:gitosis /srv/git/wiki.git
     chown -R gitosis:gitosis ~/wiki/
-    chown -R gitosis:gitosis /srv/www/bucknell.net/public_html/wiki
+    chown -R gitosis:gitosis /srv/www/example.com/public_html/wiki
 
 Change the paths as necessary and run those commands again to correct permissions errors if you're having a permissions problem.
 

@@ -185,7 +185,7 @@ The first option is to search through our large database of [StackScripts](https
 
 Using a StackScript is the most convenient approach, but you may not be able to find the exact software you need, or the most updated versions. The other option is to take a more hands-on approach and install the software yourself from the *command line*. If you're not familiar with how to use the command line, check out the [Connecting to Your Linode](/docs/getting-started#sph_connecting-to-your-linode) section of our **Getting Started** article. It's a lot like a DOS prompt.
 
-Once you're connected to your Linode's command line, search the [Linode Library](https://library.linode.com/), or even the wider internet, for instructions on how to install your desired software. When possible, look for instructions for **Ubuntu 12.04**. In most cases, the command will be as simple as:
+Once you're connected to your Linode's command line, search the [Linode Guides & Tutorials](/docs/), or even the wider internet, for instructions on how to install your desired software. When possible, look for instructions for **Ubuntu 12.04**. In most cases, the command will be as simple as:
 
     apt-get install software
 

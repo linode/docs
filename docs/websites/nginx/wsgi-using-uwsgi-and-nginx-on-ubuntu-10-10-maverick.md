@@ -92,21 +92,21 @@ Create an `/etc/default/uwsgi` file to specify specific settings for your Python
 {: .file-excerpt }
 /etc/default/uwsgi
 :   ~~~ bash
-    PYTHONPATH=/srv/www/ducklington.org/application
+    PYTHONPATH=/srv/www/example.com/application
     MODULE=wsgi_configuration_module
     ~~~
 
-If you want to deploy a "Hello World" application, insert the following code into the `/srv/www/ducklington.org/application/wsgi_configuration_module.py` file:
+If you want to deploy a "Hello World" application, insert the following code into the `/srv/www/example.com/application/wsgi_configuration_module.py` file:
 
 {: .file }
-/srv/www/ducklington.org/application/wsgi\_configuration\_module.py
+/srv/www/example.com/application/wsgi\_configuration\_module.py
 :   ~~~ python
     import os
     import sys
 
-    sys.path.append('/srv/www/ducklington.org/application')
+    sys.path.append('/srv/www/example.com/application')
 
-    os.environ['PYTHON_EGG_CACHE'] = '/srv/www/ducklington.org/.python-egg'
+    os.environ['PYTHON_EGG_CACHE'] = '/srv/www/example.com/.python-egg'
 
     def application(environ, start_response):
         status = '200 OK'
@@ -134,9 +134,9 @@ nginx virtual host configuration
 :   ~~~ nginx
     server {
         listen   80;
-        server_name www.ducklington.org ducklington.org;
-        access_log /srv/www/ducklington.org/logs/access.log;
-        error_log /srv/www/ducklington.org/logs/error.log;
+        server_name www.example.com example.com;
+        access_log /srv/www/example.com/logs/access.log;
+        error_log /srv/www/example.com/logs/error.log;
 
         location / {
             include        uwsgi_params;
@@ -144,13 +144,13 @@ nginx virtual host configuration
         }
 
         location /static {
-            root   /srv/www/ducklington.org/public_html/static/;
+            root   /srv/www/example.com/public_html/static/;
             index  index.html index.htm;
         }
     }
     ~~~
 
-All requests to URLs ending in `/static` will be served directly from the `/srv/www/ducklington.org/public_html/static` directory. Restart the web server by issuing the following command:
+All requests to URLs ending in `/static` will be served directly from the `/srv/www/example.com/public_html/static` directory. Restart the web server by issuing the following command:
 
     /etc/init.d/nginx restart
 
@@ -172,9 +172,9 @@ nginx configuration
 
     server {
         listen   80;
-        server_name www.ducklington.org ducklington.org;
-        access_log /srv/www/ducklington.org/logs/access.log;
-        error_log /srv/www/ducklington.org/logs/error.log;
+        server_name www.example.com example.com;
+        access_log /srv/www/example.com/logs/access.log;
+        error_log /srv/www/example.com/logs/error.log;
 
         location / {
             include        uwsgi_params;
@@ -182,7 +182,7 @@ nginx configuration
         }
 
         location /static {
-            root   /srv/www/ducklington.org/public_html/static/;
+            root   /srv/www/example.com/public_html/static/;
             index  index.html index.htm;
         }
     }

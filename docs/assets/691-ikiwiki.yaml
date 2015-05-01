@@ -1,8 +1,6 @@
 # IkiWiki::Setup::Yaml - YAML formatted setup file
 # 
-# Setup file for ikiwiki. Provided as part of the Linode Library [http://library.linode.com]
-# documentation for installing ikiwiki. See these documents here: 
-# [http://library.linode.com/web-applications/wikis/ikiwiki/]
+# Setup file for ikiwiki. Provided as part of Linode Guides & Tutorials [http://www.linode.com/docs]
 # 
 # Edit this file, particularly the referenced domains and the "destdir" specified
 # to suit the needs of your specific deployment
@@ -17,9 +15,9 @@
 
 
 # name of the wiki
-wikiname: ducklington wiki
+wikiname: example wiki
 # contact email for wiki
-adminemail: squire@ducklington.org
+adminemail: squire@example.com
 # users who are banned from the wiki
 banned_users: []
 # users who are wiki admins (openid or usernames)
@@ -28,13 +26,13 @@ adminuser:
 # where the source of the wiki is located
 srcdir: /home/squire/wiki/source
 # where to build the wiki
-destdir: /srv/www/ducklington.org/public_html/
+destdir: /srv/www/example.com/public_html/
 # base url to the wiki
-url: http://ducklington.org
+url: http://example.com
 # url to the ikiwiki.cgi
-cgiurl: http://ducklington.org/ikiwiki.cgi
+cgiurl: http://example.com/ikiwiki.cgi
 # filename of cgi wrapper to generate
-cgi_wrapper: /srv/www/ducklington.org/public_html/ikiwiki.cgi
+cgi_wrapper: /srv/www/example.com/public_html/ikiwiki.cgi
 # mode for cgi_wrapper (can safely be made suid)
 cgi_wrappermode: 6755
 # rcs backend to use
@@ -120,9 +118,9 @@ git_wrappermode: 06755
 # unix users whose commits should be checked by the pre-receive hook
 #untrusted_committers: []
 # gitweb url to show file history ([[file]] substituted)
-historyurl: 'http://git.ducklington.org/?p=wiki.git;a=history;f=[[file]]'
+historyurl: 'http://git.example.com/?p=wiki.git;a=history;f=[[file]]'
 # gitweb url to show a diff ([[file]], [[sha1_to]], [[sha1_from]], [[sha1_commit]], and [[sha1_parent]] substituted)
-diffurl: 'http://git.ducklington.org/git/?p=wiki.git;a=blobdiff;f=[[file]];h=[[sha1_to]];hp=[[sha1_from]];hb=[[sha1_commit]];hpb=[[sha1_parent]]'
+diffurl: 'http://git.example.com/git/?p=wiki.git;a=blobdiff;f=[[file]];h=[[sha1_to]];hp=[[sha1_from]];hb=[[sha1_commit]];hpb=[[sha1_parent]]'
 # where to pull and push changes (set to empty string to disable)
 gitorigin_branch: origin
 # branch that the wiki is stored in
@@ -226,7 +224,7 @@ multimarkdown: 0
 # repolist plugin
 # URIs of repositories containing the wiki's source
 repositories:
-  - http://git.ducklington.org/git/wiki.git
+  - http://git.example.com/git/wiki.git
 
 # search plugin
 # path to the omega cgi program

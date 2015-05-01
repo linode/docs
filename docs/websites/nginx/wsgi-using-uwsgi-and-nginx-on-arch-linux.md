@@ -63,7 +63,7 @@ Create an `/etc/conf.d/uwsgi` file to specify specific settings for your Python 
 {: .file-excerpt }
 /etc/conf.d/uwsgi
 :   ~~~ bash
-    PYTHONPATH=/srv/www/ducklington.org/application
+    PYTHONPATH=/srv/www/example.com/application
     MODULE=wsgi_configuration_module
     ~~~
 
@@ -89,9 +89,9 @@ nginx virtual host configuration
 :   ~~~ nginx
     server {
         listen   80;
-        server_name www.ducklington.org ducklington.org;
-        access_log /srv/www/ducklington.org/logs/access.log;
-        error_log /srv/www/ducklington.org/logs/error.log;
+        server_name www.example.com example.com;
+        access_log /srv/www/example.com/logs/access.log;
+        error_log /srv/www/example.com/logs/error.log;
 
         location / {
             include        uwsgi_params;
@@ -99,13 +99,13 @@ nginx virtual host configuration
         }
 
         location /static {
-            root   /srv/www/ducklington.org/public_html/static/;
+            root   /srv/www/example.com/public_html/static/;
             index  index.html index.htm;
         }
     }
     ~~~
 
-All requests to URLs ending in `/static` will be served directly from the `/srv/www/ducklington.org/public_html/static` directory. Restart the web server by issuing the following command:
+All requests to URLs ending in `/static` will be served directly from the `/srv/www/example.com/public_html/static` directory. Restart the web server by issuing the following command:
 
     /etc/rc.d/nginx restart
 
@@ -127,9 +127,9 @@ nginx configuration
 
     server {
         listen   80;
-        server_name www.ducklington.org ducklington.org;
-        access_log /srv/www/ducklington.org/logs/access.log;
-        error_log /srv/www/ducklington.org/logs/error.log;
+        server_name www.example.com example.com;
+        access_log /srv/www/example.com/logs/access.log;
+        error_log /srv/www/example.com/logs/error.log;
 
         location / {
             include        uwsgi_params;
@@ -137,7 +137,7 @@ nginx configuration
         }
 
         location /static {
-            root   /srv/www/ducklington.org/public_html/static/;
+            root   /srv/www/example.com/public_html/static/;
             index  index.html index.htm;
         }
     }

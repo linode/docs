@@ -399,9 +399,9 @@ You should see output similar to the following, with the line "250-STARTTLS" inc
     Trying 127.0.0.1...
     Connected to localhost.localdomain.
     Escape character is '^]'.
-    220 plato.example.com ESMTP Postfix (Debian/GNU)
+    220 hostname.example.com ESMTP Postfix (Debian/GNU)
     ehlo localhost
-    250-plato.example.com
+    250-hostname.example.com
     250-PIPELINING
     250-SIZE 30720000
     250-VRFY
@@ -445,14 +445,14 @@ After you have sent the test mail, you'll want to check your error logs to make 
 {: .file-excerpt }
 /var/log/mail.log
 
-> Jan 21 20:03:19 li181-194 postfix/cleanup[5877]: E1D148908: message-id=\<<20110121200319.E1D148908@plato.example.com>\> Jan 21 20:03:19 li181-194 postfix/qmgr[5867]: E1D148908: from=\<<root@plato.example.com>\>, size=377, nrcpt=1 (queue active) Jan 21 20:03:19 li181-194 postfix/pipe[5883]: E1D148908: to=\<<sales@example.com>\>, relay=dovecot, delay=0.05, delays=0.04/0.01/0/0.01, dsn=2.0.0, status=sent (delivered via dovecot service) Jan 21 20:03:19 li181-194 postfix/qmgr[5867]: E1D148908: removed
+> Jan 21 20:03:19 li181-194 postfix/cleanup[5877]: E1D148908: message-id=\<<20110121200319.E1D148908@hostname.example.com>\> Jan 21 20:03:19 li181-194 postfix/qmgr[5867]: E1D148908: from=\<<root@hostname.example.com>\>, size=377, nrcpt=1 (queue active) Jan 21 20:03:19 li181-194 postfix/pipe[5883]: E1D148908: to=\<<sales@example.com>\>, relay=dovecot, delay=0.05, delays=0.04/0.01/0/0.01, dsn=2.0.0, status=sent (delivered via dovecot service) Jan 21 20:03:19 li181-194 postfix/qmgr[5867]: E1D148908: removed
 
 Next you should check the Dovecot delivery log located in `/home/vmail/dovecot-deliver.log`. The contents should look similar to the following:
 
 {: .file-excerpt }
 /home/vmail/dovecot-deliver.log
 
-> deliver(<sales@example.com>): 2011-01-21 20:03:19 Info: msgid=\<<20110121200319.E1D148908@plato.example.com>\>: saved mail to INBOX
+> deliver(<sales@example.com>): 2011-01-21 20:03:19 Info: msgid=\<<20110121200319.E1D148908@hostname.example.com>\>: saved mail to INBOX
 
 Now you can test to see what the users of your email server would see with their email clients.
 

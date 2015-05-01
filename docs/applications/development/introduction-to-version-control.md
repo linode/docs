@@ -65,7 +65,7 @@ Installing Git
 
 You can install Git on your desktop computer, your Linode, or both. Getting started with Git is easy. All you have to do is install Git on your Linode, create a repository, and make an initial commit. Here's how:
 
-1.  Open a terminal window and [log in to your Linode via SSH](http://library.linode.com/getting-started#sph_logging-in-for-the-first-time).
+1.  Open a terminal window and [log in to your Linode via SSH](/docs/getting-started#logging-in-for-the-first-time).
 2.  Install Git on your Linode by entering the following commands, one by one:
 
         sudo apt-get update

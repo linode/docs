@@ -29,7 +29,7 @@ StackScripts are usually Bash scripts, stored in the Linode Manager, and can be 
 Deploying from a StackScript
 ----------------------------
 
-1.  We start by navigating to the Linode Dashboard. Before deploying a new disk, make sure you have enough storage space available. If not you may need to [resize](https://library.linode.com/disk-images-config-profiles#sph_resizing-a-disk-image) or [remove](https://library.linode.com/disk-images-config-profiles#sph_removing-a-disk-image) a disk. Alternately you can create a new Linode for testing purposes.
+1.  We start by navigating to the Linode Dashboard. Before deploying a new disk, make sure you have enough storage space available. If not you may need to [resize](h/docs/migrate-to-linode/disk-images/disk-images-and-configuration-profiles#resizing-a-disk) or [remove](/docs/migrate-to-linode/disk-images/disk-images-and-configuration-profiles#removing-a-disk) a disk. Alternately you can create a new Linode for testing purposes.
 2.  Click on the **Deploy a Linux Distribution** link.
 
     [![Click the 'Deploy a Distribution' link.](/docs/assets/1682-stackscripts-1.png)](/docs/assets/1682-stackscripts-1.png)
@@ -119,7 +119,7 @@ Below are several common use cases for StackScripts.
 
 ### Calling StackScripts Recursively
 
-StackScripts have the ability to call other StackScripts from the library at runtime. This functionality reduces the need to write duplicate code for multiple scripts. For example, the Linode [StackScript Bash Library](https://www.linode.com/stackscripts/view/?StackScriptID=1) is a set of functions that perform various tasks. The script creates the functions but does not run them. A new StackScript can import the Bash Library and then execute functions from it. This reduces the size and time-to-write of all StackScripts using the functions built into the library script.
+StackScripts have the ability to call other StackScripts from the library at runtime. This functionality reduces the need to write duplicate code for multiple scripts. For example, the Linode [StackScript Bash Library](https://www.linode.com/stackscripts/view/1) is a set of functions that perform various tasks. The script creates the functions but does not run them. A new StackScript can import the Bash Library and then execute functions from it. This reduces the size and time-to-write of all StackScripts using the functions built into the library script.
 
 In another example use case for linked StackScripts, a user could create a StackScript that updates all software packages on the system. They would most likely want to perform this function on all new Linodes. The user could then create a StackScript to build a web server that would integrate into his current cluster. Rather than rewrite the commands to update the system, they can call the previous StackScript.
 
@@ -138,7 +138,7 @@ Otherwise execute the script on a second line, as seen below:
     <ssinclude StackScriptID="[NUMBER]">
     ./ssinclude-[NUMBER]
 
-A great example of this use case is the [StackScript Bash Library](https://www.linode.com/stackscripts/view/?StackScriptID=1), created by Linode. This script contains several useful functions to perform common tasks such as updating software and installing Apache, MySQL,etc. Run on its own it does nothing to alter your system. By importing the Bash Library script you can save time in your own StackScripts.
+A great example of this use case is the [StackScript Bash Library](https://www.linode.com/stackscripts/view/1), created by Linode. This script contains several useful functions to perform common tasks such as updating software and installing Apache, MySQL,etc. Run on its own it does nothing to alter your system. By importing the Bash Library script you can save time in your own StackScripts.
 
 ### Demonstrating or Distributing Software Capabilities
 

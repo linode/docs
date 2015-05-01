@@ -18,7 +18,7 @@ ModSecurity is a web application firewall for the Apache web server. In addition
 Installing ModSecurity
 ----------------------
 
-Before you install ModSecurity, you'll want to have a LAMP stack set up on your Linode. For instructions, see the [LAMP Guides](https://library.linode.com/lamp-guides).
+Before you install ModSecurity, you'll want to have a LAMP stack set up on your Linode. For instructions, see the [LAMP Guides](/docs/websites/lamp/).
 
 ### Ubuntu / Debian
 
