@@ -20,10 +20,10 @@ Prerequisites
 
 Before contacting Linode support, use the following resources to try to resolve the issue on your own. If you can't resolve the issue after reviewing these resources, please feel free to contact us.
 
--   **Frequently Asked Questions:** Review the [Linode FAQ](http://www.linode.com/faq.cfm) for the answer to your question.
+-   **Frequently Asked Questions:** Review the [Linode Beginner's Guide](http://www.linode.com/docs/platform/linode-beginners-guide) for the answer to your question.
 -   **Network Status:** If a data center experiences downtime, our support staff will regularly update the [Status webpage](http://status.linode.com/) until the issue has been resolved.
 -   **Troubleshooting:** Use the checklists in the [Troubleshooting quick start guide](/docs/quick-start-troubleshooting) to try to resolve the issue yourself.
--   **Community Support:** Search our [forums](http://www.linode.com/forums/) to see if your issue has already been posted. If not, you can create a new post or ask your question in the [IRC channel](http://www.linode.com/irc/).
+-   **Community Support:** Search our [forums](https://forum.linode.com/) to see if your issue has already been posted. If not, you can create a new post or ask your question in the [IRC channel](https://www.linode.com/chat/).
 
 Contacting Linode Support
 -------------------------

@@ -49,7 +49,7 @@ At this point, you may want to create a user to access the "Tomcat Manager" web 
 {: .file-excerpt }
 /etc/tomcat6/tomcat-users.xml
 :   ~~~ xml
-    <user name="squire" password="ducklingtonmorris" roles="manager" />
+    <user name="squire" password="examplemorris" roles="manager" />
     ~~~
 
 Once you have saved the `tomcat-users.xml` file, restart the tomcat6 service with the following command:

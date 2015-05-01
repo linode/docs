@@ -43,10 +43,10 @@ If a file is smaller than the specified number of lines, `head` will print the e
 `head` can process multiple files at once. Consider the following:
 
     $ ls 
-    ducklington  roster
+    example  roster
 
     $ head * 
-    ==> ducklington <==
+    ==> example <==
     Lollipop
     The Joke
     Jockey to the Fair

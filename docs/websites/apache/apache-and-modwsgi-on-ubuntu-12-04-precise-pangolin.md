@@ -43,17 +43,17 @@ In order for `mod_wsgi` to be able to provide access to your application, you wi
 
 ### Basic Hello World WSGI Configuration
 
-In this example, the application is stored in `/var/www/ducklington.org/application` directory. Modify this example and all following examples to conform to the actual files and locations used in your deployment.
+In this example, the application is stored in `/var/www/example.com/application` directory. Modify this example and all following examples to conform to the actual files and locations used in your deployment.
 
 {: .file }
-/var/www/ducklington.org/application/application.wsgi
+/var/www/example.com/application/application.wsgi
 :   ~~~ python
     import os
     import sys
 
-    sys.path.append('/var/www/ducklington.org/application')
+    sys.path.append('/var/www/example.com/application')
 
-    os.environ['PYTHON_EGG_CACHE'] = '/var/www/ducklington.org/.python-egg'
+    os.environ['PYTHON_EGG_CACHE'] = '/var/www/example.com/.python-egg'
 
     def application(environ, start_response):
         status = '200 OK'
@@ -73,7 +73,7 @@ You must append the path of your application to the system path as above. The de
 Consider the following example Web.py *application* which is embedded in a `application.wsgi` file. The [Web.py Framework](/docs/websites/frameworks/webpy-on-ubuntu-12-04-precise-pangolin/) must be installed in order for the following application to run successfully.
 
 {: .file-excerpt }
-/var/www/ducklington.org/application/application.wsgi
+/var/www/example.com/application/application.wsgi
 :   ~~~ python
     import web
 
@@ -99,14 +99,14 @@ Consider the following example Web.py *application* which is embedded in a `appl
 Consider the following example `application.wsgi` file for Django applications:
 
 {: .file-excerpt }
-/var/www/ducklington.org/application/application.wsgi
+/var/www/example.com/application/application.wsgi
 :   ~~~ python
     import os
     import sys
 
-    sys.path.append('/var/www/ducklington.org/application')
+    sys.path.append('/var/www/example.com/application')
 
-    os.environ['PYTHON_EGG_CACHE'] = '/var/www/ducklington.org/.python-egg'
+    os.environ['PYTHON_EGG_CACHE'] = '/var/www/example.com/.python-egg'
 
     os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
 
@@ -114,7 +114,7 @@ Consider the following example `application.wsgi` file for Django applications:
     application = django.core.handlers.wsgi.WSGIHandler()
     ~~~
 
-`Django` must be installed on your system and a working Django application before this example will function. The `DJANGO_SETTINGS_MODULE` points to the "`settings.py` file for your application, which would be located in the "`/var/www/ducklington.org/application/settings.py` in the case of this example.
+`Django` must be installed on your system and a working Django application before this example will function. The `DJANGO_SETTINGS_MODULE` points to the "`settings.py` file for your application, which would be located in the "`/var/www/example.com/application/settings.py` in the case of this example.
 
 Configure Apache
 ----------------
@@ -125,21 +125,21 @@ Deploy the following `VirtualHost` configuration and modify the paths and domain
 Apache `VirtualHost` Configuration
 :   ~~~ apache
     <VirtualHost *:80>
-       ServerName ducklington.org
-       ServerAlias www.ducklington.org
-       ServerAdmin squire@ducklington.org
+       ServerName example.com
+       ServerAlias www.example.com
+       ServerAdmin squire@example.com
 
-       DocumentRoot /var/www/ducklington.org/public_html
+       DocumentRoot /var/www/example.com/public_html
 
-       ErrorLog /var/www/ducklington.org/logs/error.log 
-       CustomLog /var/www/ducklington.org/logs/access.log combined
+       ErrorLog /var/www/example.com/logs/error.log 
+       CustomLog /var/www/example.com/logs/access.log combined
 
-       WSGIScriptAlias / /var/www/ducklington.org/application/application.wsgi
+       WSGIScriptAlias / /var/www/example.com/application/application.wsgi
 
-       Alias /robots.txt /var/www/ducklington.org/public_html/robots.txt
-       Alias /favicon.ico /var/www/ducklington.org/public_html/favicon.ico
-       Alias /images /var/www/ducklington.org/public_html/images 
-       Alias /static /var/www/ducklington.org/public_html/static
+       Alias /robots.txt /var/www/example.com/public_html/robots.txt
+       Alias /favicon.ico /var/www/example.com/public_html/favicon.ico
+       Alias /images /var/www/example.com/public_html/images 
+       Alias /static /var/www/example.com/public_html/static
     </VirtualHost>
     ~~~
 

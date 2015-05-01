@@ -63,20 +63,20 @@ Additionally, the application you deploy will likely have additional dependencie
 Configuring Apache to Work with Passenger
 -----------------------------------------
 
-If you configured Apache virtual hosting as outlined in the [Ubuntu 10.10 (Maverick) Apache guide](/docs/web-servers/apache/installation/ubuntu-10.10-maverick), the public directory for your domain (e.g. `ducklington.org`) is located in `/srv/www/ducklington.org/public_html/`, and your `<VirtualHost >` configuration block contains a line that reads:
+If you configured Apache virtual hosting as outlined in the [Ubuntu 10.10 (Maverick) Apache guide](/docs/web-servers/apache/installation/ubuntu-10.10-maverick), the public directory for your domain (e.g. `example.com`) is located in `/srv/www/example.com/public_html/`, and your `<VirtualHost >` configuration block contains a line that reads:
 
 {: .file-excerpt }
 Apache Virtual Host Configuration
 :   ~~~ apache
-    DocumentRoot /srv/www/ducklington.org/public_html/ 
+    DocumentRoot /srv/www/example.com/public_html/ 
     ~~~
 
-Modify this line to point to the `public/` folder within your Rails application's root directory. For instance, if your Rail application is located within `/srv/www/ducklington.org/application/` then the `DocumentRoot` would point to `/srv/www/ducklington.org/application/public/`, as in the following example:
+Modify this line to point to the `public/` folder within your Rails application's root directory. For instance, if your Rail application is located within `/srv/www/example.com/application/` then the `DocumentRoot` would point to `/srv/www/example.com/application/public/`, as in the following example:
 
 {: .file-excerpt }
 Apache Virtual Host Configuration
 :   ~~~ apache
-    DocumentRoot /srv/www/ducklington.org/application/public
+    DocumentRoot /srv/www/example.com/application/public
     ~~~
 
 Restart Apache once to ensure all settings have been loaded using the following command:
@@ -91,19 +91,19 @@ There are a number of strategies for deploying more than one Rails application u
 {: .file-excerpt }
 Apache Virtual Host Configuration
 :   ~~~ apache
-    DocumentRoot /srv/www/ducklington.org/public_html/
+    DocumentRoot /srv/www/example.com/public_html/
     RailsBaseURI /lollipop
     RailsBaseURI /frogs
     RailsBaseURI /simon
     ~~~
 
-These directives configure Passenger to run three Rails apps on the `ducklington.org` site at the three locations specified. Rather than linking the `public/` directory of your Rails app to the `public_html/` directory as above, link the `public/` directory of the application to a directory within the `public_html/` directory. These links would be created in the following manner:
+These directives configure Passenger to run three Rails apps on the `example.com` site at the three locations specified. Rather than linking the `public/` directory of your Rails app to the `public_html/` directory as above, link the `public/` directory of the application to a directory within the `public_html/` directory. These links would be created in the following manner:
 
-    ln -s /srv/www/ducklington.org/lollipop/public/ /srv/www/ducklington.org/public_html/lollipop/
-    ln -s /srv/www/ducklington.org/frogs/public/ /srv/www/ducklington.org/public_html/frogs/
-    ln -s /srv/www/ducklington.org/simon/public/ /srv/www/ducklington.org/public_html/simon/
+    ln -s /srv/www/example.com/lollipop/public/ /srv/www/example.com/public_html/lollipop/
+    ln -s /srv/www/example.com/frogs/public/ /srv/www/example.com/public_html/frogs/
+    ln -s /srv/www/example.com/simon/public/ /srv/www/example.com/public_html/simon/
 
-The files for each Rails application are located in a `/srv/www/ducklington.org/` directory, which is inaccessible to the web server. Congratulations! You have successfully deployed Ruby On Rails applications with the Apache Web server and Passenger.
+The files for each Rails application are located in a `/srv/www/example.com/` directory, which is inaccessible to the web server. Congratulations! You have successfully deployed Ruby On Rails applications with the Apache Web server and Passenger.
 
 More Information
 ----------------

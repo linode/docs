@@ -22,7 +22,7 @@ title: Installing cPanel on CentOS
 
 cPanel includes options for hosting your own DNS services. We generally recommend using [Linode DNS services](/docs/dns-guides/configuring-dns-with-the-linode-manager), as it provides a stable, redundant, and easily managed DNS platform. If you elect to run your own DNS services on a single Linode using cPanel, please be aware that such a setup provides no redundancy.
 
-Should you wish to provide DNS services, you'll need to add A records for your nameservers in your WHM as described in the [DNS on cPanel guide](https://library.linode.com/web-applications/control-panels/cpanel/dns-on-cpanel#sph_nameserver-records).
+Should you wish to provide DNS services, you'll need to add A records for your nameservers in your WHM as described in the [DNS on cPanel guide](/docs/websites/cms/set-up-dns-services-on-cpanel/#nameserver-selection).
 
 If you plan to use a domain name for your nameservers that you will also be hosting DNS services for, then you'll need to ask your domain name registrar to create [DNS glue records](http://en.wikipedia.org/wiki/Domain_Name_System#Circular_dependencies_and_glue_records) based on your Linode's IP addresses before proceeding.
 

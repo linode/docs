@@ -19,18 +19,18 @@ Ikiwiki is a static website content management system. Originally designed as a 
 Basic System Configuration
 --------------------------
 
-Issue the following commands to set your system hostname, substituting a unique value for "plato":
+Issue the following commands to set your system hostname, substituting a unique value for "hostname":
 
-    echo "plato" > /etc/hostname
+    echo "hostname" > /etc/hostname
     hostname -F /etc/hostname
 
-Edit your `/etc/hosts` file to resemble the following, substituting your Linode's public IP address for 12.34.56.78, your hostname for "plato", and your primary domain name for "ducklington.org".
+Edit your `/etc/hosts` file to resemble the following, substituting your Linode's public IP address for 12.34.56.78, your hostname for "hostname", and your primary domain name for "example.com".
 
 {: .file }
 /etc/hosts
 :   ~~~
     127.0.0.1 localhost.localdomain localhost 
-    12.34.56.78 plato.ducklington.org plato
+    12.34.56.78 hostname.example.com hostname
     ~~~
 
 If you haven't already added an unprivileged system user, create one now. This will be the user that manages your ikiwiki content. Issue the following command, substituting a unique username for "squire":
@@ -54,7 +54,7 @@ Issue the following command to install Ikiwiki and other required software:
 Install and Configure a Web Server
 ----------------------------------
 
-Both of the following subsections assume that you will deploy your ikiwiki site within the top level of the `ducklington.org` virtual host. You will need to modify the domains and file system paths to match your domain name.
+Both of the following subsections assume that you will deploy your ikiwiki site within the top level of the `example.com` virtual host. You will need to modify the domains and file system paths to match your domain name.
 
 ### Install Apache
 
@@ -62,31 +62,31 @@ Issue the following command to install Apache:
 
     apt-get install apache2 
 
-Create a virtual host that resembles the following example. Be sure to substitute your own domain name for "ducklington.org".
+Create a virtual host that resembles the following example. Be sure to substitute your own domain name for "example.com".
 
 {: .file }
-/etc/apache2/sites-available/ducklington.org
+/etc/apache2/sites-available/example.com
 :   ~~~ apache
     <VirtualHost *:80>
-        ServerAdmin squire@ducklington.org
-        ServerName ducklington.org
-        ServerAlias www.ducklington.org
+        ServerAdmin squire@example.com
+        ServerName example.com
+        ServerAlias www.example.com
 
-        DocumentRoot /srv/www/ducklington.org/public_html
-        ErrorLog /srv/www/ducklington.org/logs/error.log
-        CustomLog /srv/www/ducklington.org/logs/access.log combined
+        DocumentRoot /srv/www/example.com/public_html
+        ErrorLog /srv/www/example.com/logs/error.log
+        CustomLog /srv/www/example.com/logs/access.log combined
 
         AddHandler cgi-script .cgi 
         Options FollowSymLinks +ExecCGI
     </VirtualHost>
     ~~~
 
-Issue the following commands to create the required directories, enable the site, disable the default virtual host, and restart the web server. Replace "ducklington.org" with your own domain name, and "squire" with the username you created at the beginning of this guide:
+Issue the following commands to create the required directories, enable the site, disable the default virtual host, and restart the web server. Replace "example.com" with your own domain name, and "squire" with the username you created at the beginning of this guide:
 
-    mkdir -p /srv/www/ducklington.org/public_html 
-    mkdir /srv/www/ducklington.org/logs
-    chown -R squire:squire /srv/www/ducklington.org
-    a2ensite ducklington.org
+    mkdir -p /srv/www/example.com/public_html 
+    mkdir /srv/www/example.com/logs
+    chown -R squire:squire /srv/www/example.com
+    a2ensite example.com
     a2dissite default
     /etc/init.d/apache2 restart
 
@@ -240,25 +240,25 @@ Issue the following commands to make the scripts executable and start Perl-FastC
     update-rc.d perl-fastcgi defaults
     /etc/init.d/perl-fastcgi start
 
-In this guide, the domain "ducklington.org" is used as an example site. You should substitute your own domain name in the configuration steps that follow, along with substituting the username you created at the beginning of this guide for "squire". First, create directories to hold content and log files:
+In this guide, the domain "example.com" is used as an example site. You should substitute your own domain name in the configuration steps that follow, along with substituting the username you created at the beginning of this guide for "squire". First, create directories to hold content and log files:
 
-    mkdir -p /srv/www/ducklington.org/public_html
-    mkdir /srv/www/ducklington.org/logs
-    chown -R squire:squire /srv/www/ducklington.org
+    mkdir -p /srv/www/example.com/public_html
+    mkdir /srv/www/example.com/logs
+    chown -R squire:squire /srv/www/example.com
 
 Next, you'll need to define your site's virtual host file:
 
 {: .file }
-/etc/nginx/sites-available/ducklington.org
+/etc/nginx/sites-available/example.com
 :   ~~~ nginx
     server {
         listen   80;
-        server_name www.ducklington.org ducklington.org;
-        access_log /srv/www/ducklington.org/logs/access.log;
-        error_log /srv/www/ducklington.org/logs/error.log;
+        server_name www.example.com example.com;
+        access_log /srv/www/example.com/logs/access.log;
+        error_log /srv/www/example.com/logs/error.log;
 
         location / {
-            root   /srv/www/ducklington.org/public_html;
+            root   /srv/www/example.com/public_html;
             index  index.html index.htm;
         }
 
@@ -267,7 +267,7 @@ Next, you'll need to define your site's virtual host file:
             include /etc/nginx/fastcgi_params;
             fastcgi_pass  127.0.0.1:8999;
             fastcgi_index index.pl;
-            fastcgi_param  SCRIPT_FILENAME  /srv/www/ducklington.org/public_html$fastcgi_script_name;
+            fastcgi_param  SCRIPT_FILENAME  /srv/www/example.com/public_html$fastcgi_script_name;
         }
     }
     ~~~
@@ -275,7 +275,7 @@ Next, you'll need to define your site's virtual host file:
 Issue the following commands to enable the site:
 
     cd /etc/nginx/sites-enabled/
-    ln -s /etc/nginx/sites-available/ducklington.org
+    ln -s /etc/nginx/sites-available/example.com
     /etc/init.d/nginx restart
 
 Configure Ikiwiki
@@ -317,7 +317,7 @@ Issue the following commands to copy the default `basewiki` and `templates` to t
     git commit -m "initial ikiwiki commit" 
     git push origin master
 
-Edit the `~/wiki/ikiwiki.setup` file to suit the needs of your deployment, paying particular attention to example directory paths and URLs. You should take care to replace all instances of "ducklington.org" with your domain name, and all instances of "squire" with the username you created at the beginning of this guide. You may wish to review the [ikiwiki documentation](http://ikiwiki.info) for more information regarding specific configuration directives. Issue the following commands to commit your changes and push them:
+Edit the `~/wiki/ikiwiki.setup` file to suit the needs of your deployment, paying particular attention to example directory paths and URLs. You should take care to replace all instances of "example.com" with your domain name, and all instances of "squire" with the username you created at the beginning of this guide. You may wish to review the [ikiwiki documentation](http://ikiwiki.info) for more information regarding specific configuration directives. Issue the following commands to commit your changes and push them:
 
     git commit ~/wiki/ikiwiki.setup -m "edited ikiwiki config"
     git push origin master
@@ -335,9 +335,9 @@ When the configuration file has been edited, and there is content in the `~/wiki
 
     ikiwiki --setup ~/wiki/ikiwiki.setup
 
-Rerun this command any time you edit the `ikiwiki.setup` file. You can now visit and interact with your wiki directly at `http://ducklington.org/`, or via the git interface by issuing the following command on your local system:
+Rerun this command any time you edit the `ikiwiki.setup` file. You can now visit and interact with your wiki directly at `http://example.com/`, or via the git interface by issuing the following command on your local system:
 
-    git clone ssh://ducklington.org:/srv/git/wiki.git
+    git clone ssh://example.com:/srv/git/wiki.git
 
 Administration Notes
 --------------------

@@ -20,14 +20,14 @@ This document explains how to use the `Alias` directive to manage resources on t
 Creating Aliases
 ----------------
 
-Typically, Virtual Host configurations specify a `DocumentRoot` which specifies a directory named, by convention, `public_html/` or `public/`. If the document root for the `ducklington.org` virtual host is `/srv/www/ducklington.org/public_html/`, then a request for `http://www.ducklington.org/index.htm` will return the file located at `/srv/www/ducklington.org/public_html/index.htm`.
+Typically, Virtual Host configurations specify a `DocumentRoot` which specifies a directory named, by convention, `public_html/` or `public/`. If the document root for the `example.com` virtual host is `/srv/www/example.com/public_html/`, then a request for `http://www.example.com/index.htm` will return the file located at `/srv/www/example.com/public_html/index.htm`.
 
-If the administrator needed to maintain the `code/` resource on the file system at `/srv/git/public/` but have it be accessible at `http://ducklington.org/code/`, an alias would be required. This is accomplished in the following example:
+If the administrator needed to maintain the `code/` resource on the file system at `/srv/git/public/` but have it be accessible at `http://example.com/code/`, an alias would be required. This is accomplished in the following example:
 
 {: .file-excerpt }
 Apache Configuration
 :   ~~~ apache
-    DocumentRoot /srv/www/ducklington.org/public_html/
+    DocumentRoot /srv/www/example.com/public_html/
     Alias /code /srv/git/public
     <Directory /srv/git/public>
         Order allow,deny
@@ -35,20 +35,20 @@ Apache Configuration
     </Directory> 
     ~~~
 
-Without the `Alias` directive, a request for `http://ducklington.org/code/` would return resources available in the folder `/srv/www/ducklington.org/public_html/code/`. However, the `Alias` would direct Apache to serve content from the `/srv/git/public` directory. The `<Directory>` section permits remote users to access this directory.
+Without the `Alias` directive, a request for `http://example.com/code/` would return resources available in the folder `/srv/www/example.com/public_html/code/`. However, the `Alias` would direct Apache to serve content from the `/srv/git/public` directory. The `<Directory>` section permits remote users to access this directory.
 
 There are a couple of important factors to consider when using `Alias` directives:
 
 -   Directory blocks need to be created **after** `Alias` directives are asserted for the destination of the `Alias`. This makes it possible to permit access and otherwise control the behavior of those sections. In the example above that would be `/srv/git/public`.
--   In general trailing slashes are to be avoided in `Alias` directives. If the above had read `Alias /code/ /srv/git/public/` a request for `http://ducklington.org/code`, without a trailing slash, would be served from the `DocumentRoot`.
+-   In general trailing slashes are to be avoided in `Alias` directives. If the above had read `Alias /code/ /srv/git/public/` a request for `http://example.com/code`, without a trailing slash, would be served from the `DocumentRoot`.
 -   `Alias` directives need to be created *either* in the root-level server config (e.g. `httpd.conf`) or inside of a `<VirtualHost>` configuration block.
 
-In addition to `Alias`, Apache provides an `AliasMatch` directive that offers similar functionality. `AlaisMatch` provides the additional ability to alias a class of requests for a given resource to a location outside of the `DocumentRoot`. Let us consider another fictive `ducklington.org` virtual host configuration:
+In addition to `Alias`, Apache provides an `AliasMatch` directive that offers similar functionality. `AlaisMatch` provides the additional ability to alias a class of requests for a given resource to a location outside of the `DocumentRoot`. Let us consider another fictive `example.com` virtual host configuration:
 
 {: .file-excerpt }
 Apache Configuration
 :   ~~~ apache
-    DocumentRoot /srv/www/ducklington.org/public_html/
+    DocumentRoot /srv/www/example.com/public_html/
     AliasMatch /code/projects/(.+) /srv/git/projects/$1
     <DirectoryMatch "^/srv/git/projects/.+$">
         Order allow,deny
@@ -56,7 +56,7 @@ Apache Configuration
     </Directory>
     ~~~
 
-In this example, requests for URLs such as `http://ducklington.org/code/projects/lollipop` and `http://ducklington.org/code/projects/glorishears` will be served resources in `/srv/git/projects/lollipop` and `/srv/git/projects/glorishears` respectively. However, `http://ducklington.org/code/projects` would be served from `/srv/www/ducklington.org/public_html/code/projects/` rather than `/srv/git/projects/`, because of the trailing slash in the alias to `/code/projects/(.+)`.
+In this example, requests for URLs such as `http://example.com/code/projects/lollipop` and `http://example.com/code/projects/glorishears` will be served resources in `/srv/git/projects/lollipop` and `/srv/git/projects/glorishears` respectively. However, `http://example.com/code/projects` would be served from `/srv/www/example.com/public_html/code/projects/` rather than `/srv/git/projects/`, because of the trailing slash in the alias to `/code/projects/(.+)`.
 
 Although the potential use case for `Alias` is somewhat narrow, the functionality is very powerful for maintaining a secure and well organized web server.
 

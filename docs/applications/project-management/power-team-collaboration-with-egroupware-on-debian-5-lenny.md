@@ -29,7 +29,7 @@ In this guide we will be installing eGroupware from the packages provided by the
 
     apt-get install egroupware
 
-During the installation process, an interactive "package configuration" is provided by Debian's `debconf` system. This provides a URL to access the setup utility after you've finished the installation process. Make note of the URL, the form is `http://ducklington/egroupware/setup/` where `ducklington` is the hostname of the system. Continue with the installation process.
+During the installation process, an interactive "package configuration" is provided by Debian's `debconf` system. This provides a URL to access the setup utility after you've finished the installation process. Make note of the URL, the form is `http://example/egroupware/setup/` where `example` is the hostname of the system. Continue with the installation process.
 
 The `debconf` process creates an administrator account, which it allows you to specify at this time. By default this eGroupware username is "admin." Change the username, if you like, and create a password as instructed. When this process is complete, the installation process is finished. You will also want to issue the following commands to install additional dependencies and resolve several minor issues with the distribution package in order:
 
@@ -44,11 +44,11 @@ Congratulations, you've now installed eGroupware!
 Configure Access to eGroupware
 ------------------------------
 
-If you do not have any virtual hosts enabled and your domain is `ducklington.org`, you should be able to visit `http://ducklington.org/egroupware/setup` to access the remainder of the eGroupware setup provided that `ducklington.org` points to the IP of your server. However, if you have virtual hosting setup, you will need to issue the following command to create a symbolic link to eGroupware:
+If you do not have any virtual hosts enabled and your domain is `example.com`, you should be able to visit `http://example.com/egroupware/setup` to access the remainder of the eGroupware setup provided that `example.com` points to the IP of your server. However, if you have virtual hosting setup, you will need to issue the following command to create a symbolic link to eGroupware:
 
-    ln -s /usr/share/egroupware/ /srv/www/ducklington.org/public_html/egroupware
+    ln -s /usr/share/egroupware/ /srv/www/example.com/public_html/egroupware
 
-Replace `/srv/ducklington.org/public_html/` with the path to your virtual host's `DocumentRoot`, or other location within the `DocumentRoot` where you want eGroupware to be located. Then, visit `http://ducklington.org/egroupware/setup/` to complete the setup process. You will be prompted for a password then brought to a configuration interface. Review the settings and modify them to reflect the specifics of your deployment, particularly the database settings. Do not forget to create an administrative user for the database instance you are creating. When you have completed the eGroupware configuration, select the "'Write' Configuration file" option. Continue to the "Login" page.
+Replace `/srv/example.com/public_html/` with the path to your virtual host's `DocumentRoot`, or other location within the `DocumentRoot` where you want eGroupware to be located. Then, visit `http://example.com/egroupware/setup/` to complete the setup process. You will be prompted for a password then brought to a configuration interface. Review the settings and modify them to reflect the specifics of your deployment, particularly the database settings. Do not forget to create an administrative user for the database instance you are creating. When you have completed the eGroupware configuration, select the "'Write' Configuration file" option. Continue to the "Login" page.
 
 Configure eGroupware
 --------------------

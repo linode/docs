@@ -55,31 +55,31 @@ Configure a Dedicated Virtual Host for Piwik
 
 This phase of the installation process is optional, but recommended. Here we configure a subdomain and virtual host configuration in Apache specifically for Piwik. This makes it easy to separate the statistics package from the website or websites that Piwik monitors.
 
-To create a virtual host we need to add an "[A Record](/docs/dns-guides/introduction-to-dns#a_aaaa_records)," for the subdomain that Piwik will use; in our example this is `stats.ducklington.org`. If your DNS is hosted with Linode's DNS servers, you can configure the A record in the [DNS manager](/docs/dns-guides/configuring-dns-with-the-linode-manager). Additionally, we'll need to create a new virtual hosting file for this sub domain.
+To create a virtual host we need to add an "[A Record](/docs/dns-guides/introduction-to-dns#a_aaaa_records)," for the subdomain that Piwik will use; in our example this is `stats.example.com`. If your DNS is hosted with Linode's DNS servers, you can configure the A record in the [DNS manager](/docs/dns-guides/configuring-dns-with-the-linode-manager). Additionally, we'll need to create a new virtual hosting file for this sub domain.
 
-We'll create the following host file, located at `/etc/apache2/sites-available/stats.ducklington.org`:
+We'll create the following host file, located at `/etc/apache2/sites-available/stats.example.com`:
 
 {: .file }
-/etc/apache2/sites-available/stats.ducklington.org
+/etc/apache2/sites-available/stats.example.com
 :   ~~~ apache
     <VirtualHost 12.34.56.78:80>
-        ServerAdmin admin@stats.ducklington.org
-        ServerName stats.ducklington.org
-        ServerAlias stats.ducklington.org
-        DocumentRoot /srv/www/stats.ducklington.org/public_html/
-        ErrorLog /srv/www/stats.ducklington.org/logs/error.log
-        CustomLog /srv/www/stats.ducklington.org/logs/access.log combined
+        ServerAdmin admin@stats.example.com
+        ServerName stats.example.com
+        ServerAlias stats.example.com
+        DocumentRoot /srv/www/stats.example.com/public_html/
+        ErrorLog /srv/www/stats.example.com/logs/error.log
+        CustomLog /srv/www/stats.example.com/logs/access.log combined
     </VirtualHost>
     ~~~
 
 We'll need to create the `logs/` and `public_html/` directories by issuing the following commands:
 
-    mkdir -p /srv/www/stats.ducklington.org/public_html
-    mkdir /srv/www/stats.ducklington.org/logs
+    mkdir -p /srv/www/stats.example.com/public_html
+    mkdir /srv/www/stats.example.com/logs
 
 Enable the virtual host and reload the web server's configuration with the following two commands:
 
-    a2ensite stats.ducklington.org
+    a2ensite stats.example.com
     /etc/init.d/apache2 reload
 
 Remember that the configuration of a special virtual host for Piwik is optional. If you use a web server other than Apache, you will need to pursue different steps to configure the virtual host.
@@ -89,7 +89,7 @@ Installing Piwik
 
 First we'll download the latest distribution of the Piwik package. Issue the following two commands:
 
-    cd /srv/www/stats.ducklington.org/
+    cd /srv/www/stats.example.com/
     wget http://piwik.org/latest.zip
 
 Uncompress the archive and move the contents of the archive to the directory where you want to install Piwik. Use these two commands:
@@ -99,10 +99,10 @@ Uncompress the archive and move the contents of the archive to the directory whe
 
 Before running Piwik's installation script, we need to change the permissions of several directories. Piwik requires these permissions to remain set to function properly. Issue the following commands:
 
-    chmod a+w /srv/www/stats.ducklington.org/public_html/tmp
-    chmod a+w /srv/www/stats.ducklington.org/public_html/config
+    chmod a+w /srv/www/stats.example.com/public_html/tmp
+    chmod a+w /srv/www/stats.example.com/public_html/config
 
-Visit your new Piwik instance in your browser. In our example, this is located at `http://stats.ducklington.org/`. Follow the instructions provided by the Piwik installation process. It will prompt you for the name of your MySQL database as well as access credentials for this database. This information was created when you installed the LAMP stack.
+Visit your new Piwik instance in your browser. In our example, this is located at `http://stats.example.com/`. Follow the instructions provided by the Piwik installation process. It will prompt you for the name of your MySQL database as well as access credentials for this database. This information was created when you installed the LAMP stack.
 
 When Piwik's installation process is complete, you will receive JavaScript snippet that you can insert in every page on your site that you want to track using Piwik.
 

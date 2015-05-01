@@ -34,7 +34,7 @@ There are several different availability monitoring tools available. Your decisi
 
 -   **Multiple Servers**: If you run more than one server, [Nagios](/docs/server-monitoring/nagios) makes an ideal monitoring tool. This free and flexible framework makes it possible to keep an eye on a broad range of infrastructural components and network services. After installing the Nagios server and client packages, one Linode will act as the primary server to monitor the other servers.
 -   **Single Server**: If you only run a single server, you might want to use a third-party service to monitor your Linode. (You could install Nagios, but if your server goes down, Nagios will go down with it.) You could also use a network diagnostic tool like [MTR](/docs/linux-tools/mtr) to diagnose and isolate networking errors.
--   **Linode Longview**: [Longview](https://library.linode.com/longview) is Linode's own monitoring and graphing service. It offers real time data that can be used to help identify system issues. Using [Longview](https://library.linode.com/longview) in conjunction with a notification service like Nagios can help you to identify issues faster, and get your system up and running sooner.
+-   **Linode Longview**: [Longview](/docs/platform/longview/longview) is Linode's own monitoring and graphing service. It offers real time data that can be used to help identify system issues. Using Longview in conjunction with a notification service like Nagios can help you to identify issues faster, and get your system up and running sooner.
 
 If you need an availability monitoring tool for one or more server, take a look at Nagios or MTR now.
 
@@ -97,7 +97,7 @@ You have successfully configured email alerts in the Linode Manager.
 
 ### Using Linode Longview
 
-Our custom monitoring and graphing tool [Longview](https://library.linode.com/longview) can give you a detailed breakdown of system performance and resource usage. Longview can be used to monitor any virtual server or computer running Linux - including systems not hosted by Linode. On our platform, Longview, in conjunction with the Linode Manager email alerts, can help you to know quickly when your system is overloaded, and find out why.
+Our custom monitoring and graphing tool [Longview](/docs/platform/longview/longview) can give you a detailed breakdown of system performance and resource usage. Longview can be used to monitor any virtual server or computer running Linux - including systems not hosted by Linode. On our platform, Longview, in conjunction with the Linode Manager email alerts, can help you to know quickly when your system is overloaded, and find out why.
 
 ### Using Third-Party Tools
 

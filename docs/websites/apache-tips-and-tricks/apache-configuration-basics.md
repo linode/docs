@@ -85,17 +85,17 @@ If you use an operating system other than Debian or would like to use the "sites
 
 If you haven't yet created this directory, you will need to do so with a command similar to the following: `mkdir -p /etc/httpd/sites-enabled/`. Now your Apache server will include configuration options specified in any files stored in these directories. To create a link to this directory, issue the following command:
 
-    ln -s /etc/httpd/vhosts/ducklington.org /etc/httpd/sites-enabled/ducklington.org
+    ln -s /etc/httpd/vhosts/example.com /etc/httpd/sites-enabled/example.com
 
 The syntax for creating symbolic links is `ln -s` followed by the "target" or the original file you are linking, and then the path to the link you wish to create. If you omit the final term, the link name, `ln` will create a link with the same name as the target file in the current directory. If you remove a link, the original file will be unaffected. Apache will follow multiple layers of symbolic links, though this can become confusing in its own right.
 
-One possible advantage of this is that the configuration files for a virtual host can be kept in close proximity to the other related files for that virtual host. Often all resources related to your virtual host are located in a directory such as `/srv/www/ducklington.org/`. The `DocumentRoot`, logs directory, and application support files are located beneath this directory at `public_html/`, `logs/`, and `application/` respectively. Given this organization, you may find it convent to store your virtual host configuration file at `/srv/www/ducklington.org/`. This makes backing up and moving a virtual host easy, as all files are located in a single directory. If the virtual host configuration file is located at `/srv/www/ducklington.org/apache.conf` you might create the symbolic link as follows:
+One possible advantage of this is that the configuration files for a virtual host can be kept in close proximity to the other related files for that virtual host. Often all resources related to your virtual host are located in a directory such as `/srv/www/example.com/`. The `DocumentRoot`, logs directory, and application support files are located beneath this directory at `public_html/`, `logs/`, and `application/` respectively. Given this organization, you may find it convent to store your virtual host configuration file at `/srv/www/example.com/`. This makes backing up and moving a virtual host easy, as all files are located in a single directory. If the virtual host configuration file is located at `/srv/www/example.com/apache.conf` you might create the symbolic link as follows:
 
-    ln -s /srv/www/ducklington.org/apache.conf /etc/apache2/sites-available/ducklington.org
+    ln -s /srv/www/example.com/apache.conf /etc/apache2/sites-available/example.com
 
-If you're using a Debian-based distribution, you can use the `a2ensite` and `a2dissite` tools to manage virtual host files. You can also manually link your configuration files to `/etc/apache2/sites-enabled/ducklington.org`. If you aren't using a Debian-based distribution, the symbolic link might look something like the following, although the file names and locations may change somewhat:
+If you're using a Debian-based distribution, you can use the `a2ensite` and `a2dissite` tools to manage virtual host files. You can also manually link your configuration files to `/etc/apache2/sites-enabled/example.com`. If you aren't using a Debian-based distribution, the symbolic link might look something like the following, although the file names and locations may change somewhat:
 
-    ln -s /srv/www/ducklington.org/apache.conf /etc/httpd/conf.d/ducklington.conf
+    ln -s /srv/www/example.com/apache.conf /etc/httpd/conf.d/example.conf
 
 ### Create a Single Virtual Hosts file
 

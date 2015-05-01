@@ -27,7 +27,7 @@ The `<Directory>` block refers to a directory in the filesystem and specifies ho
 {: .file-excerpt }
 Virtual Host Entry in an Apache Configuration file
 :   ~~~ apache
-    <Directory /srv/www/ducklington.org/public_html/images>
+    <Directory /srv/www/example.com/public_html/images>
         Order Allow,Deny
         Allow from all
         Deny 55.1
@@ -63,7 +63,7 @@ If enclosed in a `<VirtualHost>` block, this will apply to all files named `rost
 Location Options
 ----------------
 
-While `<Directory>` and `<Files>` blocks control Apache's behavior with regards to locations in the *filesystem*, the `<Location>` directive controls Apache's behavior with regard to a particular path requested by the client. If a user makes a request for `http://www.ducklington.org/webmail/inbox/`, the web server would look in the `webmail/inbox/` directory beneath the `DocumentRoot` such as `/srv/www/ducklington.org/public_html/webmail/inbox/`. One common use for this functionality might be to allow a script to handle requests made to a given path. For example, the following block directs all requests for the specified path to a `mod_python` script:
+While `<Directory>` and `<Files>` blocks control Apache's behavior with regards to locations in the *filesystem*, the `<Location>` directive controls Apache's behavior with regard to a particular path requested by the client. If a user makes a request for `http://www.example.com/webmail/inbox/`, the web server would look in the `webmail/inbox/` directory beneath the `DocumentRoot` such as `/srv/www/example.com/public_html/webmail/inbox/`. One common use for this functionality might be to allow a script to handle requests made to a given path. For example, the following block directs all requests for the specified path to a `mod_python` script:
 
 {: .file-excerpt }
 Location Directive in an Apache Configuration file
@@ -71,7 +71,7 @@ Location Directive in an Apache Configuration file
     <Location /webmail/inbox>
         SetHandler python-program
         PythonHandler modpython
-        PythonPath "['/srv/www/ducklington.org/application/inbox'] + sys.path"
+        PythonPath "['/srv/www/example.com/application/inbox'] + sys.path"
     </Location>
     ~~~
 
@@ -132,7 +132,7 @@ DirectoryMatch Block in an Apache Configuration file
     </DirectoryMatch>
     ~~~
 
-This block specifies a number of options for any directory that matches the regular expression `^.+/images`. In other words, any path which begins with a number of characters and ends with images will match these options, including the following paths: `/srv/www/ducklington.org/public_html/images/`, `/srv/www/ducklington.org/public_html/objects/images`, and `/home/squire/public/www/images`.
+This block specifies a number of options for any directory that matches the regular expression `^.+/images`. In other words, any path which begins with a number of characters and ends with images will match these options, including the following paths: `/srv/www/example.com/public_html/images/`, `/srv/www/example.com/public_html/objects/images`, and `/home/squire/public/www/images`.
 
 Apache also allows an alternate syntax for regular expression-defined directory blocks. Adding a tilde (e.g. `~`) between the `Directory` term and the specified path causes the specified path to be read as a regular expression. Regular expressions are a standard syntax for pattern matching, and Apache supports standard and Perl regular expression variants.
 
@@ -191,7 +191,7 @@ The following list provides a guide to the priority that Apache uses to "merge c
 4.  `<Files>` and `<FilesMatch>` are read after directory behaviors have been determined.
 5.  Finally, `<Location>` and `<LocationMatch>` are read.
 
-Generally, `<Directory>` options are parsed in order from shortest to longest. In other words, options set for `/srv/www/ducklington.org/public_html/objects` will be processed before options set for `/srv/www/ducklington.org/public_html/objects/images` regardless of what order they appear in the configuration file. All other directives are processed in the order that they appear in the configuration file.
+Generally, `<Directory>` options are parsed in order from shortest to longest. In other words, options set for `/srv/www/example.com/public_html/objects` will be processed before options set for `/srv/www/example.com/public_html/objects/images` regardless of what order they appear in the configuration file. All other directives are processed in the order that they appear in the configuration file.
 
 Additionally, note that `Include` directives are processed linearly. Options specified in a file included in line 20 of `httpd.conf` can be overridden by an option specified in line 30 of that file or in a file that is included at that point.
 

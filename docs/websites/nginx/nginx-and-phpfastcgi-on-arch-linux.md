@@ -64,10 +64,10 @@ In the default configuration, `spawn-fcgi-php` starts four `php-cgi` child proce
 Configure Virtual Hosting
 -------------------------
 
-Create directories for your web content and logs by issuing the following commands. Be sure to replace "ducklington.org" with your domain name.
+Create directories for your web content and logs by issuing the following commands. Be sure to replace "example.com" with your domain name.
 
-    mkdir -p /srv/http/ducklington.org/public_html
-    mkdir /srv/http/ducklington.org/logs
+    mkdir -p /srv/http/example.com/public_html
+    mkdir /srv/http/example.com/logs
 
 Issue the following commands to create nginx virtual host directories:
 
@@ -77,13 +77,13 @@ Issue the following commands to create nginx virtual host directories:
 Next, define your site's virtual host file:
 
 {: .file }
-/etc/nginx/sites-available/www.ducklington.org
+/etc/nginx/sites-available/www.example.com
 :   ~~~ nginx
     server {
-        server_name www.ducklington.org ducklington.org;
-        access_log /srv/http/ducklington.org/logs/access.log;
-        error_log /srv/http/ducklington.org/logs/error.log;
-        root /srv/http/ducklington.org/public_html;
+        server_name www.example.com example.com;
+        access_log /srv/http/example.com/logs/access.log;
+        error_log /srv/http/example.com/logs/error.log;
+        root /srv/http/example.com/public_html;
 
         location / {
             index index.html index.htm index.php;
@@ -93,7 +93,7 @@ Next, define your site's virtual host file:
             include /etc/nginx/fastcgi_params;
             fastcgi_pass  127.0.0.1:9000;
             fastcgi_index index.php;
-            fastcgi_param SCRIPT_FILENAME /srv/http/ducklington.org/public_html$fastcgi_script_name;
+            fastcgi_param SCRIPT_FILENAME /srv/http/example.com/public_html$fastcgi_script_name;
         }
     }
     ~~~
@@ -108,7 +108,7 @@ location ~ \.php$ {
     include /etc/nginx/fastcgi_params;
     fastcgi_pass 127.0.0.1:9000;
     fastcgi_index index.php;
-    fastcgi_param SCRIPT_FILENAME /srv/http/ducklington.org/public_html$fastcgi_script_name;
+    fastcgi_param SCRIPT_FILENAME /srv/http/example.com/public_html$fastcgi_script_name;
 }
 ~~~
 
@@ -121,14 +121,14 @@ location ~ \.php$ {
     fastcgi_pass 127.0.0.1:9000;
     }
     fastcgi_index index.php;
-    fastcgi_param SCRIPT_FILENAME /srv/http/ducklington.org/public_html$fastcgi_script_name;
+    fastcgi_param SCRIPT_FILENAME /srv/http/example.com/public_html$fastcgi_script_name;
 }
 ~~~
 
 After reviewing your configuration for potential security issues, issue the following commands to enable the site:
 
     cd /etc/nginx/conf/sites-enabled/
-    ln -s /etc/nginx/conf/sites-available/www.ducklington.org
+    ln -s /etc/nginx/conf/sites-available/www.example.com
 
 Edit the file `/etc/nginx/conf/nginx.conf`, inserting the line `include /etc/nginx/conf/sites-enabled/*;` at the start of the `http {` block, as shown in the following file excerpt:
 
@@ -150,12 +150,12 @@ Test PHP with FastCGI
 Create a file called "test.php" in your site's "public\_html" directory with the following contents:
 
 {: .file }
-/srv/http/ducklington.org/public\_html/test.php
+/srv/http/example.com/public\_html/test.php
 :   ~~~ php
     <?php phpinfo(); ?>
     ~~~
 
-When you visit `http://www.ducklington.org/test.php` in your browser, the standard "PHP info" output is shown. Congratulations, you've configured the nginx web server to use PHP-FastCGI for dynamic content!
+When you visit `http://www.example.com/test.php` in your browser, the standard "PHP info" output is shown. Congratulations, you've configured the nginx web server to use PHP-FastCGI for dynamic content!
 
 More Information
 ----------------

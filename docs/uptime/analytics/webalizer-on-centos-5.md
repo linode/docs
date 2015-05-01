@@ -121,7 +121,7 @@ Congratulations, you have successfully installed Webalizer! You can leave future
 Other Considerations
 --------------------
 
-Even with a low traffic site, Apache logs can become large. If your logs are routinely large, processing those logs can be time-consuming. You should consider [log rotation](http://library.linode.com/linux-tools/utilities/logrotate) to prevent potential performance issues.
+Even with a low traffic site, Apache logs can become large. If your logs are routinely large, processing those logs can be time-consuming. You should consider [log rotation](/docs/uptime/logs/use-logrotate-to-manage-log-files) to prevent potential performance issues.
 
 More Information
 ----------------

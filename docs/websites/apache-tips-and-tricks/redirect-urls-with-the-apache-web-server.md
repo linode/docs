@@ -29,10 +29,10 @@ The `Redirect` configuration directive can be located in "main" server configura
 {: .file-excerpt }
 Apache configuration option
 :   ~~~ apache
-    Redirect /squire http://team.ducklington.org/~squire/
+    Redirect /squire http://team.example.com/~squire/
     ~~~
 
-If no argument is given, `Redirect` sends a temporary (e.g. 302) status. In this case, the client (user agent) is informed that the resource available at `/squire` has moved temporarily to `http://team.ducklington.org/~squire/`.
+If no argument is given, `Redirect` sends a temporary (e.g. 302) status. In this case, the client (user agent) is informed that the resource available at `/squire` has moved temporarily to `http://team.example.com/~squire/`.
 
 Remember that no matter what configuration file they are located in, `Redirect` statements must specify the full path of the redirected resource following the domain name. These statements must also include the full URL of the resource's new location..
 
@@ -41,9 +41,9 @@ To specify a particular HTTP redirection status, specify one of the following st
 {: .file-excerpt }
 Apache configuration option
 :   ~~~ apache
-    Redirect permanent /squire http://team.ducklington.org/~squire/
-    Redirect temp /squire http://team.ducklington.org/~squire/
-    Redirect seeother /squire http://team.ducklington.org/~squire/
+    Redirect permanent /squire http://team.example.com/~squire/
+    Redirect temp /squire http://team.example.com/~squire/
+    Redirect seeother /squire http://team.example.com/~squire/
     Redirect gone /squire
     ~~~
 
@@ -54,9 +54,9 @@ You can also specify specific HTTP codes, as follows.
 {: .file-excerpt }
 Apache configuration option
 :   ~~~ apache
-    Redirect 301 /squire http://team.ducklington.org/~squire/
-    Redirect 302 /squire http://team.ducklington.org/~squire/
-    Redirect 303 /squire http://team.ducklington.org/~squire/
+    Redirect 301 /squire http://team.example.com/~squire/
+    Redirect 302 /squire http://team.example.com/~squire/
+    Redirect 303 /squire http://team.example.com/~squire/
     Redirect 410 /squire
     ~~~
 
@@ -65,8 +65,8 @@ Apache also provides two additional directives for permanent and temporary redir
 {: .file-excerpt }
 Apache configuration option
 :   ~~~ apache
-    RedirectPermanent /squire/bio.html http://team.ducklington.org/~squire/bio/
-    RedirectTemp /squire/bio.html http://team.ducklington.org/~squire/bio/
+    RedirectPermanent /squire/bio.html http://team.example.com/~squire/bio/
+    RedirectTemp /squire/bio.html http://team.example.com/~squire/bio/
     ~~~
 
 Additionally, Apache makes it possible to redirect a given class of requests to match a given regular expression using the `RedirectMatch` directive. For example:
@@ -74,13 +74,13 @@ Additionally, Apache makes it possible to redirect a given class of requests to 
 {: .file-excerpt }
 Apache configuration option
 :   ~~~ apache
-    RedirectMatch (.*)\.jpg$ http://static.ducklington.org$1.jpg 
+    RedirectMatch (.*)\.jpg$ http://static.example.com$1.jpg 
     ~~~
 
 This directive matches against any request for a file with a `.jpg` extension and replaces it with a location on a second domain. Therefore:
 
--   A request for `http://www.ducklington.org/avatar.jpg` will be redirected to `http://static.ducklington.org/avatar.jpg` and
--   A request for `http://www.ducklington.org/images/avatar.jpg` will be redirected to `http://static.ducklington.org/images/avatar.jpg`.
+-   A request for `http://www.example.com/avatar.jpg` will be redirected to `http://static.example.com/avatar.jpg` and
+-   A request for `http://www.example.com/images/avatar.jpg` will be redirected to `http://static.example.com/images/avatar.jpg`.
 
 Beyond URL Redirection
 ----------------------

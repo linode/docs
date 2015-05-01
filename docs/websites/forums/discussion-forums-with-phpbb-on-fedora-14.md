@@ -55,20 +55,20 @@ This will allow you to decompress the file you just downloaded. Using the follow
 
     tar -jxvf phpBB-3.0.8.tar.bz2
 
-Move the newly formed `phpBB3` folder into your `public_html` folder. This will make the location on your server `ducklington.org/phpBB3` in the example provided by our LAMP guides. Feel free to rename the folder after you move it:
+Move the newly formed `phpBB3` folder into your `public_html` folder. This will make the location on your server `example.com/phpBB3` in the example provided by our LAMP guides. Feel free to rename the folder after you move it:
 
-    mv phpBB3/ /srv/www/ducklington.org/public_html/
-    cd /srv/www/ducklington.org/public_html/
+    mv phpBB3/ /srv/www/example.com/public_html/
+    cd /srv/www/example.com/public_html/
     mv phpBB3/ forum/
 
-This will move the PHP instance into a directory called `forum/`. You can move the location of the phpBB software into the top level of your `DocumentRoot`, in this case `public_html/` but phpBB can be installed in any folder you wish. Now, visit that directory in your browser. In the above example, that would be `http://ducklington.org/forum/`. At this point, you will be guided through the rest of the configuration by phpBB's browser-driven install process.
+This will move the PHP instance into a directory called `forum/`. You can move the location of the phpBB software into the top level of your `DocumentRoot`, in this case `public_html/` but phpBB can be installed in any folder you wish. Now, visit that directory in your browser. In the above example, that would be `http://example.com/forum/`. At this point, you will be guided through the rest of the configuration by phpBB's browser-driven install process.
 
 Configure phpBB
 ---------------
 
 Before you can install phpBB, you need to make sure that it has access to write to the config file. Issue the following command to make sure that phpBB can write to `config.php`:
 
-    chmod 0777 /srv/www/ducklington.org/public_html/forum/config.php 
+    chmod 0777 /srv/www/example.com/public_html/forum/config.php 
 
 Click the "Install" tab in the top left region of the page. You should be looking at a requirements page. If you followed the [LAMP guide](/docs/lamp-guides/fedora-14/), your server will meet the requirements specified by the phpBB installation process. Click "Proceed to next step." The next page is simply a confirmation that your server meets the minimum installation requirements. Click "Start Install."
 
@@ -80,8 +80,8 @@ You should now be on the "Advanced Settings" page. Modify these settings as you 
 
 Issue the following commands to delete the `install/` directory and change the permissions on `config.php`:
 
-    rm -rf /srv/www/ducklington.org/public_html/forum/install/
-    chmod 0644 /srv/www/ducklington.org/public_html/forum/config.php
+    rm -rf /srv/www/example.com/public_html/forum/install/
+    chmod 0644 /srv/www/example.com/public_html/forum/config.php
 
 You should now be done configuring your phpBB setup!
 

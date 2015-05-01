@@ -161,7 +161,7 @@ If you need to configure additional domains for use, ensure that you've made the
 {: .file-excerpt }
 /etc/mailman/mm\_cfg.py
 :   ~~~
-    add_virtualhost('lists.bucknell.net', 'lists.example.org')
+    add_virtualhost('lists.example.com', 'lists.example.org')
 
     # Modify the following line
     POSTFIX_STYLE_VIRTUAL_DOMAINS = ['lists.example.com', 'lists.example.org']

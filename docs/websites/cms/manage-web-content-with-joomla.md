@@ -41,22 +41,22 @@ On Gentoo Linux systems issue the following commands to update the package datab
     emerge --sync
     emerge wget unzip
 
-Now we are ready to begin to install Joomla. For the purposes of this document we will assume that the `DocumentRoot` for the virtual host where you will be installing Joomla is located at `/srv/www/ducklington.org/public_html/` for the domain `ducklington.org`.
+Now we are ready to begin to install Joomla. For the purposes of this document we will assume that the `DocumentRoot` for the virtual host where you will be installing Joomla is located at `/srv/www/example.com/public_html/` for the domain `example.com`.
 
 Download and Install Joomla
 ---------------------------
 
 At the time of publication the latest stable version of Joomla was 1.5.15. [Consult the upstream](http://www.joomla.org/download.html) to ensure that you're installing the most up to date version of the software. This is important to avoid deploying software with known security holes and resolved bugs. Begin by issuing the following sequence of commands to create the required directories, change directories, download the required files, extract the archive and move the files into the `DocumentRoot`:
 
-    mkdir -p /srv/www/ducklington.org/src/joomla-1.5.15-stable
-    cd /srv/www/ducklington.org/src/joomla-1.5.15-stable
+    mkdir -p /srv/www/example.com/src/joomla-1.5.15-stable
+    cd /srv/www/example.com/src/joomla-1.5.15-stable
     wget http://joomlacode.org/gf/download/frsrelease/11396/45610/Joomla_1.5.15-Stable-Full_Package.zip
     mv Joomla_1.5.15-Stable-Full_Package.zip joomla-1.5.15-stable.zip
-    unzip /srv/www/ducklington.org/src/joomla-1.5.15-stable/joomla-1.5.15-stable.zip
-    cp /srv/www/ducklington.org/src/joomla-1.5.15-stable/joomla-1.5.15-stable.zip /srv/www/ducklington.org/src/joomla-1.5.15-stable.zip
-    cp -R /srv/www/ducklington.org/src/joomla-1.5.15-stable/* /srv/www/ducklington.org/public_html/
+    unzip /srv/www/example.com/src/joomla-1.5.15-stable/joomla-1.5.15-stable.zip
+    cp /srv/www/example.com/src/joomla-1.5.15-stable/joomla-1.5.15-stable.zip /srv/www/example.com/src/joomla-1.5.15-stable.zip
+    cp -R /srv/www/example.com/src/joomla-1.5.15-stable/* /srv/www/example.com/public_html/
 
-These commands create a `src/` folder within the `/srv/www/ducklington.org/` directory to store and manage pristine copies of the source files that you use to deploy your Joomla site from. Repeat this process, changing file names as appropriate, following new releases and updates of the Joomla software to ensure that you have easily accessible copies of releases in case you need to restore or reference the code you have running on your site.
+These commands create a `src/` folder within the `/srv/www/example.com/` directory to store and manage pristine copies of the source files that you use to deploy your Joomla site from. Repeat this process, changing file names as appropriate, following new releases and updates of the Joomla software to ensure that you have easily accessible copies of releases in case you need to restore or reference the code you have running on your site.
 
 We encourage you to monitor the [Joomla download page](http://www.joomla.org/download.html) for new releases and updates to ensure you're always running the most up to date version of the Joomla software.
 
@@ -65,13 +65,13 @@ Configure Joomla
 
 Before we proceed with the installation of Joomla we must create a configuration file that Joomla can write to. Issue the following sequence of commands:
 
-    touch /srv/www/ducklington.org/public_html/configuration.php
-    chmod 777 /srv/www/ducklington.org/public_html/configuration.php       
+    touch /srv/www/example.com/public_html/configuration.php
+    chmod 777 /srv/www/example.com/public_html/configuration.php       
 
-Now visit your site in your web browser. In the case of our example this would correspond to the URL of `http://ducklington.org/`. Follow the steps laid out in the Joomla installer presented before you. We do not recommend that you install or enable an FTP server. When the installation is complete, issue the following commands to remove the installation files and secure the `configuration.php` file.
+Now visit your site in your web browser. In the case of our example this would correspond to the URL of `http://example.com/`. Follow the steps laid out in the Joomla installer presented before you. We do not recommend that you install or enable an FTP server. When the installation is complete, issue the following commands to remove the installation files and secure the `configuration.php` file.
 
-    rm -rf /srv/www/ducklington.org/public_html/installation/
-    chmod 755 /srv/www/ducklington.org/public_html/configuration.php
+    rm -rf /srv/www/example.com/public_html/installation/
+    chmod 755 /srv/www/example.com/public_html/configuration.php
 
 Congratulations! You now have a fully functional Joomla powered website!
 

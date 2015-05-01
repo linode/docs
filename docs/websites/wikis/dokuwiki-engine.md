@@ -34,39 +34,39 @@ Additionally, you will likely want to configure your Apache instance for virtual
     chkconfig --levels 235 httpd on
     /etc/init.d/httpd start
 
-Be sure to configure virtual hosting for your domains. Now we are ready to begin installing DokuWiki. For the purposes of this document, we will assume that the `DocumentRoot` for the virtual host where you will be installing DokuWiki is located at `/srv/www/ducklington.org/public_html/` for the domain `ducklington.org`, and the wiki will be accessible at the address `http://www.ducklington.org/`. Modify the instructions below to conform to the requirements of your own configuration.
+Be sure to configure virtual hosting for your domains. Now we are ready to begin installing DokuWiki. For the purposes of this document, we will assume that the `DocumentRoot` for the virtual host where you will be installing DokuWiki is located at `/srv/www/example.com/public_html/` for the domain `example.com`, and the wiki will be accessible at the address `http://www.example.com/`. Modify the instructions below to conform to the requirements of your own configuration.
 
 Installing DokuWiki
 -------------------
 
 At the time of writing, the latest stable version of DokuWiki is 2009-12-25c. However, be sure to check the [DokuWiki upstream](http://www.splitbrain.org/projects/dokuwiki) to ensure that you are downloading the latest version of the software. Issue the following commands with the paths adjusted for the requirements of your specific deployment:
 
-    mkdir -p /srv/www/ducklington.org/src/
-    cd /srv/www/ducklington.org/src/
+    mkdir -p /srv/www/example.com/src/
+    cd /srv/www/example.com/src/
     wget http://www.splitbrain.org/_media/projects/dokuwiki/dokuwiki-2009-12-25c.tgz
     tar -zxvf dokuwiki-2009-12-25c.tgz 
-    cp -R /srv/www/ducklington.org/src/dokuwiki-2009-12-25/* /srv/www/ducklington.org/public_html/
-    chmod -R 777 /srv/www/ducklington.org/public_html/data/ /srv/www/ducklington.org/public_html/conf/
+    cp -R /srv/www/example.com/src/dokuwiki-2009-12-25/* /srv/www/example.com/public_html/
+    chmod -R 777 /srv/www/example.com/public_html/data/ /srv/www/example.com/public_html/conf/
 
-Navigate to the resource located at `http://ducklington.org/install.php` to complete the installation and follow the steps outlined by the installer. When this has completed, issue the following commands:
+Navigate to the resource located at `http://example.com/install.php` to complete the installation and follow the steps outlined by the installer. When this has completed, issue the following commands:
 
-    chmod -R 755 /srv/www/ducklington.org/public_html/conf/
-    chmod -R 775 /srv/www/ducklington.org/public_html/data/
-    chmod 664 /srv/www/ducklington.org/public_html/conf/local.php /srv/www/ducklington.org/public_html/conf/users.auth.php /srv/www/ducklington.org/public_html/conf/acl.auth.php
+    chmod -R 755 /srv/www/example.com/public_html/conf/
+    chmod -R 775 /srv/www/example.com/public_html/data/
+    chmod 664 /srv/www/example.com/public_html/conf/local.php /srv/www/example.com/public_html/conf/users.auth.php /srv/www/example.com/public_html/conf/acl.auth.php
 
 For Debian and Ubuntu systems, issue the following commands:
 
-    chgrp -R www-data /srv/www/ducklington.org/public_html/data/ /srv/www/ducklington.org/public_html/conf/local.php /srv/www/ducklington.org/public_html/conf/users.auth.php /srv/www/ducklington.org/public_html/conf/acl.auth.php
+    chgrp -R www-data /srv/www/example.com/public_html/data/ /srv/www/example.com/public_html/conf/local.php /srv/www/example.com/public_html/conf/users.auth.php /srv/www/example.com/public_html/conf/acl.auth.php
 
 For CentOS and Fedora systems, issue the following command:
 
-    chgrp -R apache /srv/www/ducklington.org/public_html/data/ /srv/www/ducklington.org/public_html/conf/local.php /srv/www/ducklington.org/public_html/conf/users.auth.php /srv/www/ducklington.org/public_html/conf/acl.auth.php
+    chgrp -R apache /srv/www/example.com/public_html/data/ /srv/www/example.com/public_html/conf/local.php /srv/www/example.com/public_html/conf/users.auth.php /srv/www/example.com/public_html/conf/acl.auth.php
 
 When you have completed these commands and the installation process has finished, issue the following command to remove the installation script and secure your application:
 
-    rm /srv/www/ducklington.org/public_html/install.php
+    rm /srv/www/example.com/public_html/install.php
 
-Congratulations! Your DokuWiki instance is installed and you will be able to access and edit a functional wiki at `http://ducklington.org/`.
+Congratulations! Your DokuWiki instance is installed and you will be able to access and edit a functional wiki at `http://example.com/`.
 
 Monitor for Software Updates and Security Notices
 -------------------------------------------------

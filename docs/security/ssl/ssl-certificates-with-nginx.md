@@ -67,25 +67,25 @@ This produces a self-signed certificate that is valid for 365 days. You you may 
     Locality Name (eg, city) []:Absecon
     Organization Name (eg, company) [Internet Widgits Pty Ltd]:SoftwareDev, LLC
     Organizational Unit Name (eg, section) []:Web Services
-    Common Name (eg, YOUR name) []:squire.ducklington.org
-    Email Address []:squire@ducklington.org
+    Common Name (eg, YOUR name) []:squire.example.com
+    Email Address []:squire@example.com
 
 The `Common Name` for your certificate must match the host name that you want to generate a valid certificate for. Continue to configure nginx to serve SSL content.
 
 ### Generate a Certificate Signing Request for a Commercial SSL Certificate
 
-Issue the following sequence of commands to create a certificate signing request (CSR) for the site that you'd like to provide with SSL. Be sure to change "ducklington.org" to reflect the fully qualified domain name (`subdomain.domainname.com`) of your server. Leave the challenge password blank. This command creates an SSL certificate that is valid for 365 days. Alter this value as needed for the certificate you wish to purchase.
+Issue the following sequence of commands to create a certificate signing request (CSR) for the site that you'd like to provide with SSL. Be sure to change "example.com" to reflect the fully qualified domain name (`subdomain.domainname.com`) of your server. Leave the challenge password blank. This command creates an SSL certificate that is valid for 365 days. Alter this value as needed for the certificate you wish to purchase.
 
     mkdir /srv/ssl
     cd /srv/ssl
-    openssl req -new -days 365 -nodes -keyout ducklington.org.key -out ducklington.org.csr
+    openssl req -new -days 365 -nodes -keyout example.com.key -out example.com.csr
 
 The following output of the `openssl` command demonstrates the creation of a certificate signing request. You may safely ignore the `'extra' attributes`.
 
     Generating a 1024 bit RSA private key
     ......................................................++++++
     ....++++++
-    writing new private key to 'ducklington.org.key'
+    writing new private key to 'example.com.key'
     -----
     You are about to be asked to enter information that will be incorporated
     into your certificate request.
@@ -97,10 +97,10 @@ The following output of the `openssl` command demonstrates the creation of a cer
     Country Name (2 letter code) [AU]:US
     State or Province Name (full name) [Some-State]:New Jersey
     Locality Name (eg, city) []:Absecon
-    Organization Name (eg, company) [Internet Widgits Pty Ltd]:Ducklington Morris
+    Organization Name (eg, company) [Internet Widgits Pty Ltd]:example Morris
     Organizational Unit Name (eg, section) []:Web Services
-    Common Name (eg, YOUR name) []:ducklington.org
-    Email Address []:squire@ducklington.org
+    Common Name (eg, YOUR name) []:example.com
+    Email Address []:squire@example.com
 
     Please enter the following 'extra' attributes
     to be sent with your certificate request
@@ -109,24 +109,24 @@ The following output of the `openssl` command demonstrates the creation of a cer
 
 Issue the following command to limit access to the key:
 
-    chmod 400 /srv/ssl/ducklington.org.key
+    chmod 400 /srv/ssl/example.com.key
 
-Certificate files for your domain are now located in `/srv/ssl/`. You can provide the `/srv/ssl/ducklington.org.csr` file to a commercial certificate provider for signing. You will receive a signed certificate file after the CA signs the request. Save this file as `/srv/ssl/ducklington.com.crt`.
+Certificate files for your domain are now located in `/srv/ssl/`. You can provide the `/srv/ssl/example.com.csr` file to a commercial certificate provider for signing. You will receive a signed certificate file after the CA signs the request. Save this file as `/srv/ssl/example.com.crt`.
 
 Use the following command to limit access to the signed certificate:
 
-    chmod 400 /srv/ssl/ducklington.org.crt
+    chmod 400 /srv/ssl/example.com.crt
 
 In some cases, certificate authorities will sign certificates using a chained authority certificate. This may cause browsers to warn users when trying to connect to your server. To prevent this from affecting your users, issue the following command to create a certificate file that nginx can serve properly:
 
-    cat /srv/ssl/ducklington.org.crt /srv/ssl/authority-chain.crt > /srv/ssl/ducklington.org.combined.crt
+    cat /srv/ssl/example.com.crt /srv/ssl/authority-chain.crt > /srv/ssl/example.com.combined.crt
 
-Then, specify the `/srv/ssl/ducklington.org.combined.crt` file in the `ssl_certificate` configuration directive within your nginx configuration, as follows:
+Then, specify the `/srv/ssl/example.com.combined.crt` file in the `ssl_certificate` configuration directive within your nginx configuration, as follows:
 
 {: .file-excerpt }
 nginx.conf
 :   ~~~
-    ssl_certificate /srv/ssl/ducklington.org.combined.crt;
+    ssl_certificate /srv/ssl/example.com.combined.crt;
     ~~~
 
 You can append as many chain certificates as you require. Make sure that the certificate you generate for your site is at the beginning of the file.
@@ -188,7 +188,7 @@ nginx.conf
 
 Modify the directives above to point to the proper certificates and keys. If you have a commercially signed certificate, the `ssl_certificate` directive may resemble the following:
 
-    ssl_certificate /srv/ssl/ducklington.org.crt;
+    ssl_certificate /srv/ssl/example.com.crt;
 
 Be sure to add other required configuration directives to control the functionality of your web server.
 
@@ -199,22 +199,22 @@ nginx.conf
 :   ~~~ nginx
     server {
           listen 12.34.56.78:443;
-          server_name ducklington.org;
+          server_name example.com;
 
           ssl on; 
-          ssl_certificate      /srv/ssl/ducklington.org.pem;
-          ssl_certificate_key  /srv/ssl/ducklington.org.key;  
+          ssl_certificate      /srv/ssl/example.com.pem;
+          ssl_certificate_key  /srv/ssl/example.com.key;  
 
           # [...]
     }
 
     server {
           listen 12.34.56.79:443;
-          server_name bucknell.net;
+          server_name example.com;
 
           ssl on; 
-          ssl_certificate      /srv/ssl/bucknell.net.pem;
-          ssl_certificate_key  /srv/ssl/bucknell.net.key;  
+          ssl_certificate      /srv/ssl/example.com.pem;
+          ssl_certificate_key  /srv/ssl/example.com.key;  
 
           # [...]
     }
@@ -241,7 +241,7 @@ nginx.conf
 
 Modify the directives above to point to the proper certificates and keys. If you have a commercially signed certificate, the `ssl_certificate` directive may resemble the following:
 
-    ssl_certificate /srv/ssl/ducklington.org.crt;
+    ssl_certificate /srv/ssl/example.com.crt;
 
 Be sure to add other required configuration directives to control the functionality of your web server.
 
@@ -252,20 +252,20 @@ nginx.conf
 :   ~~~ nginx
     server {
           listen 12.34.56.78:443 ssl;
-          server_name ducklington.org;
+          server_name example.com;
 
-          ssl_certificate      /srv/ssl/ducklington.org.pem;
-          ssl_certificate_key  /srv/ssl/ducklington.org.key;  
+          ssl_certificate      /srv/ssl/example.com.pem;
+          ssl_certificate_key  /srv/ssl/example.com.key;  
 
           # [...]
     }
 
     server {
           listen 12.34.56.79:443 ssl;
-          server_name bucknell.net;
+          server_name example.com;
 
-          ssl_certificate      /srv/ssl/bucknell.net.pem;
-          ssl_certificate_key  /srv/ssl/bucknell.net.key;  
+          ssl_certificate      /srv/ssl/example.com.pem;
+          ssl_certificate_key  /srv/ssl/example.com.key;  
 
           # [...]
     }
@@ -280,32 +280,32 @@ If you have access to a certificate that is valid for multiple host names, such 
 nginx.conf
 :   ~~~ nginx
     http {
-        ssl_certificate   /srv/ssl/ducklington.org.crt;
-        ssl_certificate_key  /srv/ssl/ducklington.org.key;
+        ssl_certificate   /srv/ssl/example.com.crt;
+        ssl_certificate_key  /srv/ssl/example.com.key;
 
         server {
            listen       12.3.45.6:443;
-           server_name      ducklington.org www.ducklington.org;
+           server_name      example.com www.example.com;
            ssl on; 
 
            location / {
-                 root /srv/www/ducklington.org/public_html;
+                 root /srv/www/example.com/public_html;
            }
         }                 
         server {
            listen       12.3.45.7:443;
-           server_name      team.ducklington.org;
+           server_name      team.example.com;
            ssl on; 
 
            location / {
-                 root /srv/www/team.ducklington.org/public_html;
+                 root /srv/www/team.example.com/public_html;
            }
 
         # [...]
         }                 
     ~~~
 
-In this example, the wild card certificate is specified once in the root level of the `http {}` configuration, and the domains `ducklington.org`, `www.ducklington.org`, and `team.ducklington.org` are all served using the `/srv/ssl/ducklington.org.crt` certificate.
+In this example, the wild card certificate is specified once in the root level of the `http {}` configuration, and the domains `example.com`, `www.example.com`, and `team.example.com` are all served using the `/srv/ssl/example.com.crt` certificate.
 
 If you are running a version of nginx newer than 0.7.14, omit the `ssl on;` directive and specify the ssl option as an argument to the `listen` directive.
 
@@ -317,7 +317,7 @@ If you want to redirect all HTTP traffic for a domain to HTTPS, insert the follo
 {: .file-excerpt }
 nginx.conf
 :   ~~~ nginx
-    rewrite ^ https://ducklington.org$request_uri permanent;
+    rewrite ^ https://example.com$request_uri permanent;
     ~~~
 
 Once you have added this line, your config should resemble the following:
@@ -327,7 +327,7 @@ nginx.conf
 :   ~~~ nginx
     server {
           listen 12.34.56.78:80;
-          server_name ducklington.org;
+          server_name example.com;
 
           location / {
               rewrite ^ https://$server_name$request_uri permanent;
@@ -337,10 +337,10 @@ nginx.conf
     }
     server {
           listen 12.34.56.79:443 ssl;
-          server_name ducklington.org;
+          server_name example.com;
 
-          ssl_certificate      /srv/ssl/ducklington.org.pem;
-          ssl_certificate_key  /srv/ssl/ducklington.org.key;  
+          ssl_certificate      /srv/ssl/example.com.pem;
+          ssl_certificate_key  /srv/ssl/example.com.key;  
 
           # [...]
     }

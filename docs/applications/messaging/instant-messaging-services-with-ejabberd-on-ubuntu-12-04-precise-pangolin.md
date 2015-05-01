@@ -87,12 +87,12 @@ A single ejabberd instance can provide XMPP services for multiple domains at onc
     {hosts, ["localhost"]}.
     ~~~
 
-In the following example, ejabberd has been configured to host a number of additional domains. In this case "squire.bucknell.net," "bucknell.net," and "example.com."
+In the following example, ejabberd has been configured to host a number of additional domains. In this case "squire.example.com," "example.com," and "example.com."
 
 {: .file-excerpt }
 /etc/ejabberd/ejabberd.cfg
 :   ~~~
-    {hosts, ["squire.bucknell.net", "bucknell.net", "example.com"]}.
+    {hosts, ["squire.example.com", "example.com", "example.com"]}.
     ~~~
 
 You can specify any number of hostnames in the host list, but you should be careful to avoid adding inserting a line break as this will cause ejabberd to fail.

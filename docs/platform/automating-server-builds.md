@@ -33,13 +33,13 @@ The idea behind a golden disk is simple: Create the perfect image and then save 
 
 There are several places to store a golden disk:
 
--   **Linode Images:** [Linode Images](/docs/server-management/linode-platform/linode-images) allows you to take snapshots of your disks, and then deploy them to any Linode under your account. 
+-   **Linode Images:** [Linode Images](/docs/platform/linode-images) allows you to take snapshots of your disks, and then deploy them to any Linode under your account. 
 -   **Linode Backup Service:** After enabling the Linode Backup Service, you can [make a manual backup](/docs/backup-service#sph_id2) of your Linode (called a "snapshot"). This snapshot can function as your golden disk. Instead of cloning a disk to new Linodes, you can simply restore them from the snapshot backup.
 -   **Dedicated Linode:** Boot the Linode, make the desired changes, and clone the disk again.
 -   **Existing Linode:** You can clone from an existing Linode, but you will need to power down the Linode to ensure a consistent copy.
 -   **Different Computer:** You can transfer the disk to another computer. For instructions, see our guide on [Copying a Disk Over SSH](/docs/migration/ssh-copy).
 
-These methods are discussed in further detail below, with the exception of [Linode Images](/docs/server-management/linode-platform/linode-images) which has its own article.
+These methods are discussed in further detail below, with the exception of [Linode Images](/docs/platform/linode-images) which has its own article.
 
 
 
