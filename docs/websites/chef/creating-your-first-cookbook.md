@@ -38,14 +38,14 @@ Cookbooks are one of the key components in Chef, describing the *desired state* 
 	-	The **attributes** directory will contain files that define specific details about a node.
 	-	The **CHANGELOG.md** file is a markdown file meant to to be used to record any changes between versions of the cookbook.
 	-	The **definitions** directory is used to contain files that work similarly to a compile-time macro, by defining code that is reused across recipes.
-	-	Files
-	-	Libraries
-	-	metadata.rb
-	-	Providers
-	-	README.md
-	-	Recipes
-	-	Resources
-	-	Templates
+	-	The **files** directory contains files that need to be transferred to the nodes.
+	-	**Libraries** allow for the use of extended Ruby code within a cookbook. They can be used to extend already existing classes, or create new functionalities.
+	-	The **metadata.rb** file is used to contain information that will assist in the cookbook being deloyed correctly to nodes.
+	-	**Providers** define the steps that allow the resources to get the nodes to their desired state. The chef-client included have a vast library of providers already set up.
+	-	The **README.md** file is the "read me" information for your cookbook. It comes as a template with sections to fill out regarding needed requirements, resources, attributes, and licensing information.
+	-	The **recipes** directory contains all recipes that were written for the cookbook. Recipes define the desired state of the nodes.
+	-	Custom resources are located in the **resources** directory. The resources directory defines the actions that need to be taken during a chef-client run, while the providers directory contains the information on handling each action.
+	-	**Templates** are Embedded Ruby files (.erb) that allows for content based on the node itself and other variables to be generated when chef-client is run and the template is used to generate a file.
 
 
 ## default.rb
