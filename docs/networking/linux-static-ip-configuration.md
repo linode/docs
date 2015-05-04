@@ -3,7 +3,7 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Setting up networking for multiple IP addresses.'
-keywords: 'static ip,linux networking,ifconfig,configure network,linux network,multiple ip'
+keywords: 'static ip,linux networking,ifconfig,configure network,linux network,multiple ip,static'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['networking/configuring-static-ip-interfaces/']
 modified: Saturday, December 27th, 2014
