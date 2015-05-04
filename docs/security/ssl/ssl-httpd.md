@@ -9,19 +9,21 @@ modified: Wednesday, November 19th, 2014
 modified_by:
   name: James Stewart
 published: 'Wednesday, November 19th, 2014'
-title: 'SSL Certificates with HTTPD'
+title: 'SSL Certificates with Apache on CentOS 7'
+external_resources:
+ - '[Apache HTTP Server Version 2.0 Documentation](http://httpd.apache.org/docs/2.0/)'
+ - '[Setting up an SSL Secured Webserver with CentOS](http://wiki.centos.org/HowTos/Https)'
 ---
 
-This guide will assist you with enabling SSL for websites served under the HTTPD web server, in order to ensure secure access to your website and services.
+This guide will assist you with enabling SSL for websites served with the Apache2 web server, in order to ensure secure access to your website and services.
 
-Prerequisites
--------------
+##Prerequisites
 
-Thsi guide assumes that you are running HTTPD on CentOS or Fedora. Prior to following this guide, you will also need to ensure that the following steps have been taken on your Linode.
+This guide assumes that you are running Apache2 on CentOS or Fedora. Prior to following this guide, you will also need to ensure that the following steps have been taken on your Linode.
 
-- Follow our [getting started guide](/docs/getting-started/) to configure your Linode.
+- Follow our [Getting Started](/docs/getting-started/) guide to configure your Linode.
 
-- Follow our [hosting a website guide](/docs/websites/hosting-a-website), and create a site that you wish to secure with SSL.
+- Follow our [Hosting a Website](/docs/websites/hosting-a-website) guide, and create a site that you wish to secure with SSL.
 
 - Follow our guide for obtaining either a [self signed](/docs/security/ssl/how-to-make-a-selfsigned-ssl-certificate) or [commercial](/docs/security/ssl/obtaining-a-commercial-ssl-certificate) SSL certificate.
 
@@ -29,58 +31,12 @@ Thsi guide assumes that you are running HTTPD on CentOS or Fedora. Prior to foll
 
         yum install mod_ssl openssl
 
-Configure HTTPD to use SSL
---------------------------
+- Hosting multiple websites with commercial SSL certificates on the same IP address is possible, thanks to the [SNI](https://wiki.apache.org/httpd/NameBasedSSLVHostsWithSNI) extension of TLS. SNI is accepted by most modern web browsers. If you expect to receive connections from clients running legacy browsers (Like Internet Explorer for Windows XP), you will need to [contact support](/docs/platform/support) to request an additional IP address.
 
-You will need to configure HTTPD to point to your certificate files.  This can be done by editing the /etc/httpd/conf.d/ssl.conf file and ensuring the the following values are present.
+##Get the CA Root Certificate
 
-{: .file-excerpt }
-/etc/httpd/conf.d/ssl.conf
-:   ~~~ apache
-    SSLCertificateFile /etc/ssl/localcerts/www.mydomain.com.crt
-    SSLCertificateKeyFile /etc/ssl/localcerts/www.mydomain.com.key
-    ~~~
-
-Configure HTTPD to use a Self-Signed Certificate
-------------------------------------------------
-Next, we will need to create virtual host entries in the /etc/httpd/conf/httpd.conf file, in order to provide the certificate files that should be used by each virtual host. For each virtual host, you will need to replicate the configuration shown below. You'll need to replace 12.34.56.78 with your Linode's IP address, and any mentions of mydomain.com with your own domain as provided when configuring your certificate.
-
-You will need to add the following line to the top of your httpd.conf file.
-
-[: .file-excerpt )
-/etc/httpd/conf/httpd.conf
-:   ~~~ apache
-    NameVirtualHost 12.34.56.78:443
-    ~~~
-
-You will also need to add the lines below, ensuring that the domain names have been changed to match your configuration.
-
-{: .file-excerpt }
-/etc/httpd/conf/httpd.conf
-:   ~~~ apache
-    <VirtualHost 12.34.56.78:443>
-         SSLEngine On
-         SSLCertificateFile /etc/ssl/localcerts/www.mydomain.com.crt
-         SSLCertificateKeyFile /etc/ssl/localcerts/www.mydomain.com.key
-
-         ServerAdmin info@mydomain.com
-         ServerName www.mydomain.com
-         DocumentRoot /var/www/mydomain.com/public_html/
-         ErrorLog /var/www/mydomain.com/logs/error.log
-         CustomLog /var/www/mydomain.com/logs/access.log combined
-    </VirtualHost>
-    ~~~
-
-Restart the HTTPD daemon.
-
-    systemctl restart httpd
-
-You should now be able to visit your site with SSL enabled (after accepting your browser's warnings about the certificate).
-
-Configure Apache to use a Commercial SSL Certificate
-----------------------------------------------------
-
-###Get the CA Root Certificate
+{: .note }
+> If you're using a self-signed certificate, skip this step.
 
 You will need to download the root certificate for the provider that issued your commercial certificate before you can begin using it. You may obtain the root certs for various providers from these sites:
 
@@ -89,68 +45,31 @@ You will need to download the root certificate for the provider that issued your
 -   [Globalsign](http://secure.globalsign.net/cacert/)
 -   [Comodo](https://support.comodo.com/index.php?_m=downloads&_a=view&parentcategoryid=1&pcid=0&nav=0)
 
-Most providers will provide a root certificate file as either a .cer or .pem file. Save the provided root certificate in /etc/ssl/localcerts.
+Most providers will provide a root certificate file as either a .cer or .pem file. Save the provided root certificate in `/etc/ssl/localcerts`.
 
-### Configure Apache to use the Signed SSL Certificate
+## Configure Apache to use the Signed SSL Certificate
 
-You will need to configure HTTPD to point to your certificate files.  This can be done by editing the /etc/httpd/conf.d/ssl.conf file and ensuring the the following values are present.
+1.  Create virtual host entries in the `/etc/httpd/conf/httpd.conf` file, in order to provide the certificate files that should be used by each domain. For each virtual host, you will need to replicate the configuration shown below. Replace any mentions of `mydomain.com` with your own domain as provided when configuring your certificate. Ensure that the `SSLCACertificateFile` value is configured to point to the CA root certificate downloaded in the previous step.
 
-{: .file-excerpt }
-/etc/httpd/conf.d/ssl.conf
-:   ~~~ apache
-    SSLCertificateFile /etc/ssl/localcerts/www.mydomain.com.crt
-    SSLCertificateKeyFile /etc/ssl/localcerts/www.mydomain.com.key
-    SSLCACertificateFile /etc/ssl/localcerts/ca.pem
-    ~~~
+    {: .file-excerpt }
+    /etc/httpd/conf.d/vhost.conf
+    :   ~~~ apache
+        <VirtualHost *:443>
+             SSLEngine On
+             SSLCertificateFile /etc/ssl/localcerts/www.mydomain.com.crt
+             SSLCertificateKeyFile /etc/ssl/localcerts/www.mydomain.com.key
+             SSLCACertificateFile /etc/ssl/localcerts/ca.pem
 
-Configure HTTPD to use a Self-Signed Certificate
-------------------------------------------------
-Next, we will need to create virtual host entries in the /etc/httpd/conf/httpd.conf file, in order to provide the certificate files that should be used by each virtual host. For each virtual host, you will need to replicate the configuration shown below. You'll need to replace 12.34.56.78 with your Linode's IP address, and any mentions of mydomain.com with your own domain as provided when configuring your certificate.
-
-You will need to add the following line to the top of your httpd.conf file.
-
-{: .file-excerpt )
-/etc/httpd/conf/httpd.conf
-:   ~~~ apache
-    NameVirtualHost 12.34.56.78:443
-    ~~~
-
-You will also need to add the lines below, ensuring that the domain names have been changed to match your configuration. You will also need to ensure that the SSLCACertificateFile value is configured to point to the CA root certificate downloaded in the previous step.
-
-{: .file-excerpt }
-/etc/httpd/conf/httpd.conf
-:   ~~~ apache
-    <VirtualHost 12.34.56.78:443>
-         SSLEngine On
-         SSLCertificateFile /etc/ssl/localcerts/www.mydomain.com.crt
-         SSLCertificateKeyFile /etc/ssl/localcerts/www.mydomain.com.key
-         SSLCACertificateFile /etc/ssl/localcerts/ca.pem
-
-         ServerAdmin info@mydomain.com
-         ServerName www.mydomain.com
-         DocumentRoot /var/www/mydomain.com/public_html/
-         ErrorLog /var/www/mydomain.com/logs/error.log
-         CustomLog /var/www/mydomain.com/logs/access.log combined
-    </VirtualHost>
-    ~~~
+             ServerAdmin info@mydomain.com
+             ServerName www.mydomain.com
+             DocumentRoot /var/www/mydomain.com/public_html/
+             ErrorLog /var/www/mydomain.com/logs/error.log
+             CustomLog /var/www/mydomain.com/logs/access.log combined
+        </VirtualHost>
+        ~~~
 
 Restart Apache:
 
     systemctl restart httpd
 
-You should now be able to visit your site with SSL enabled. Congratulations, you've installed a commercial SSL certificate!
-
-Hosting Multiple SSL Enabled Sites With SNI
--------------------------------------------
-
-SNI is a new TLS that can be used to host SSL certificates for multiple domains on a single IP address. As this is a fairly recent update to Apache, older browsers may not support this configuration. Information on hosting multiple sites using SNI can be found in Apache's documentation.
-
-- [SSL With Virtual Hosts Using SNI](https://wiki.apache.org/httpd/NameBasedSSLVHostsWithSNI)
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Apache HTTP Server Version 2.0 Documentation](http://httpd.apache.org/docs/2.0/)
-- [Setting up an SSL Secured Webserver with CentOS](http://wiki.centos.org/HowTos/Https)
+You should now be able to visit your site with SSL enabled. 

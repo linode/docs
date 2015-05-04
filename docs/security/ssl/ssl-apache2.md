@@ -10,7 +10,7 @@ modified: Wednesday, November 19th, 2014
 modified_by:
   name: James Stewart
 published: 'Wednesday, November 19th, 2014'
-title: 'SSL Certificates with Apache'
+title: 'SSL Certificates with Apache on Debian & Ubuntu'
 external_resources:
  - '[Apache HTTP Server Version 2.0 Documentation](http://httpd.apache.org/docs/2.4/)'
 ---
@@ -44,16 +44,16 @@ You will need to download the root certificate for the provider that issued your
 -   [Comodo](https://support.comodo.com/index.php?_m=downloads&_a=view&parentcategoryid=1&pcid=0&nav=0)
 -   [StartSSL](http://www.startssl.com/certs/)
 
-Most providers will provide a root certificate file as either a .cer or .pem file. Save the provided root certificate in /etc/ssl/localcerts.
+Most providers will provide a root certificate file as either a .cer or .pem file. Save the provided root certificate in `/etc/ssl/localcerts`.
 
 ## Configure Apache to use the SSL Certificate
 
-1.  Edit the virtual host configuration files located in `/etc/apache2/sites-available`, to provide the certificate file paths. For each virtual host, replicate the configuration shown below. Replace `12.34.56.78` with your Linode's IP address, and any mentions of `mydomain.com` with your own domain as provided when configuring your certificate. You will also need to ensure that the `SSLCACertificateFile` value is configured to point to the CA root certificate downloaded in the previous step.
+1.  Edit the virtual host configuration files located in `/etc/apache2/sites-available`, to provide the certificate file paths. For each virtual host, replicate the configuration shown below. Replace any mentions of `mydomain.com` with your own domain as provided when configuring your certificate. You will also need to ensure that the `SSLCACertificateFile` value is configured to point to the CA root certificate downloaded in the previous step.
 
     {: .file-excerpt }
     Apache virtual hosting file
     :   ~~~ apache
-        <VirtualHost 12.34.56.78:443>
+        <VirtualHost *:443>
             SSLEngine On
             SSLCertificateFile /etc/ssl/localcerts/www.mydomain.com.crt
             SSLCertificateKeyFile /etc/ssl/localcerts/www.mydomain.com.key
