@@ -3,7 +3,7 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Setting up a mail server with Postfix, Dovecot, and MySQL.'
-keywords: 'email,mail,postfix,dovecot,mysql,debian 7,ubuntu 14.04,dovecot 2'
+keywords: 'email, mail, postfix, dovecot, mysql, debian, ubuntu, dovecot 2'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: Wednesday, April 29th, 2015
 modified_by:
@@ -12,7 +12,7 @@ published: 'Monday, May 13th, 2013'
 title: 'Email with Postfix, Dovecot, and MySQL'
 ---
 
-This guide shows you how to set up a secure mail server on a Linode with Postfix, Dovecot, and MySQL on Debian and Ubuntu systems. By the time you reach the end, you'll know how to create mailboxes for the users and send and receive email for the domains.
+Learn how to set up a secure mail server on a Linode with Postfix, Dovecot, and MySQL on Debian and Ubuntu systems. For Centos, search our documentation. When finished, you'll know how to create user mailboxes and send and receive email for the domains.
 
 ### Prerequisites
 
