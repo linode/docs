@@ -12,32 +12,32 @@ published: 'Monday, May 13th, 2013'
 title: 'Email with Postfix, Dovecot, and MySQL'
 ---
 
-Learn how to set up a secure mail server on a Linode with Postfix, Dovecot, and MySQL on Debian and Ubuntu systems. For Centos, search our documentation. When finished, you'll know how to create user mailboxes and send and receive email for the domains.
+Learn how to set up a secure mail server on a Linode with Postfix, Dovecot, and MySQL on Debian and Ubuntu. For a different Linux distribution or mail server, <a href="/docs/" target="_blank">search our guides</a>. When finished with this tutorial, you'll know how to create user mailboxes and send or receive email for configured domains.
 
 ### Prerequisites
 
-1.  Set up the Linode as specified in the [Getting Started](/docs/getting-started) and [Securing the Server](/docs/securing-the-server) guides.
+1.  Set up the Linode as specified in the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/securing-the-server) guides.
 
-2.  Make sure that the iptables [firewall](/docs/securing-the-server#sph_creating-a-firewall) is not blocking any of the standard mail ports (25, 465, 587, 110, 995, 143, and 993). If using a different form of firewall, confirm that it is not blocking any of the needed ports either.
+2.  Ensure that the iptables [firewall](/docs/securing-the-server#sph_creating-a-firewall) is not blocking any of the standard mail ports (25, 465, 587, 110, 995, 143, and 993). If using a different form of firewall, confirm that it is not blocking any of the needed ports either.
 
 ### Configuring DNS
 
-When you're ready to switch the DNS and start sending mail to the server, edit the domain's MX record so it points to the Linode's domain or IP address, similar to the example below:
+When ready to switch the DNS and start sending mail to the server, edit the domain's MX record so that it points to the Linode's domain or IP address, similar to the example below:
 
     example.com         MX      10      example.com
     example.com         MX      10      12.34.56.78
     mail.example.com    MX      10      12.34.56.78
 
-Make sure you do this for all domains and subdomains that might receive email for the domain. These steps can be peformed prior to configuring the mailserver if you are setting up a brand new domain. If you use Linode's [DNS Manager](/docs/dns-manager), you will need to create an MX record that points to the desired domain or subdomain, and then create an A record for that domain or subdomain as well, that points to the correct IP address.
+Ensure that the MX record is changed for all domains and subdomains that might receive email. If setting up a brand new domain, these steps can be performed prior to configuring the mail server. When using Linode's [DNS Manager](/docs/dns-manager), create an MX record that points to the desired domain or subdomain, and then create an A record for that domain or subdomain, which points to the correct IP address.
 
 ### Installing an SSL Certificate
 
-In this guide, you'll use the default self-signed certificate that comes with Dovecot for free. This certificate encrypts the mail connections just like a purchased certificate, but the email users will receive warnings about the certificate when they attempt to set up their email accounts.  You may want to purchase and configure a commercial SSL certificate to avoid this.  For information about SSL certificates, see [these guides in the Linode Library](/docs/security/ssl/).
+Dovecot offers a default self-signed certificate for free. This certificate encrypts the mail connections similar to a purchased certificate. However, the email users receive warnings about the certificate when they attempt to set up their email accounts. Optionally, purchase and configure a commercial SSL certificate to avoid the warnings. For information about SSL certificates, see <a href="/docs/security/ssl/" target="_blank">Linode's SSL Certificate guides</a>.
 
 
 ## Installing Packages
 
-The next steps will walk through installing the required packages on the Linode.
+The next steps are to install the required packages on the Linode.
 
 1.  Log in as the root user by entering the following command and entering the root password:
 
@@ -47,7 +47,7 @@ The next steps will walk through installing the required packages on the Linode.
 
         apt-get install postfix postfix-mysql dovecot-core dovecot-imapd dovecot-pop3d dovecot-lmtpd dovecot-mysql mysql-server
 
-    You will be prompted to type in a secure MySQL password, and to select the type of mail server you wish to configure. Select **Internet Site**. The *System Mail Name* should be your FQDN.
+    Follow the prompt to type in a secure MySQL password and to select the type of mail server you wish to configure. Select **Internet Site**. The *System Mail Name* should be the FQDN.
 
     [![Set the root MySQL password.](/docs/assets/1234-mysql_setroot1.png)](/docs/assets/1234-mysql_setroot1.png)
 
@@ -59,27 +59,27 @@ The next steps will walk through installing the required packages on the Linode.
 
 ### Creating the Database
 
-Here's how to create the necessary database and tables in MySQL:
+Create the necessary database and tables in MySQL:
 
-1.  Create a new database by entering the following command.
+1.  Create a new database:
 
         mysqladmin -p create mailserver
 
 2.  Enter the MySQL root password.
 
-3.  Log in to MySQL by entering the following command:
+3.  Log in to MySQL:
 
         mysql -p mailserver
 
-4.  Create the MySQL user and grant the new user permissions over the database.  Replace `mailuserpass` with a secure password.
+4.  Create the MySQL user and grant the new user permissions over the database. Replace `mailuserpass` with a secure password:
 
         GRANT SELECT ON mailserver.* TO 'mailuser'@'127.0.0.1' IDENTIFIED BY 'mailuserpass';
 
-5.  Flush the MySQL privileges to apply the change.
+5.  Flush the MySQL privileges to apply the change:
 
         FLUSH PRIVILEGES;
 
-6.  Enter the following command to create a table for the domains that will receive mail on the Linode.
+6.  Enter the following command to create a table for the domains that will receive mail on the Linode:
 
         CREATE TABLE `virtual_domains` (
           `id` int(11) NOT NULL auto_increment,
@@ -87,7 +87,7 @@ Here's how to create the necessary database and tables in MySQL:
           PRIMARY KEY (`id`)
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-7.  Enter the following command to create a table for all of the email addresses and passwords.
+7.  Enter the following command to create a table for all of the email addresses and passwords:
 
         CREATE TABLE `virtual_users` (
           `id` int(11) NOT NULL auto_increment,
@@ -99,7 +99,7 @@ Here's how to create the necessary database and tables in MySQL:
           FOREIGN KEY (domain_id) REFERENCES virtual_domains(id) ON DELETE CASCADE
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-8.  Enter the following command to create a table for the email aliases.
+8.  Enter the following command to create a table for the email aliases:
 
         CREATE TABLE `virtual_aliases` (
           `id` int(11) NOT NULL auto_increment,
@@ -112,9 +112,9 @@ Here's how to create the necessary database and tables in MySQL:
 
 ### Adding Data
 
-Now that you've created the database and tables, let's add some data to MySQL. Here's how:
+Now that the database and tables have been created, add some data to MySQL. 
 
-1.  Add the domains to the `virtual_domains` table.  Replace the values for `example.com` and `hostname` with your own settings.
+1.  Add the domains to the `virtual_domains` table. Replace the values for `example.com` and `hostname` with your own settings.
 
         INSERT INTO `mailserver`.`virtual_domains`
           (`id` ,`name`)
@@ -126,9 +126,9 @@ Now that you've created the database and tables, let's add some data to MySQL. H
 
     {: .note }
     >
-    > Make a note of which `id` goes with which domain - you'll need for the next two steps.
+    > Note which `id` goes with which domain - the `id` is necessary for the next two steps.
 
-2.  Add email addresses to the `virtual_users` table.  Replace the email address values with the addresses that you wish to configure on the mailserver, and the `password` values with strong passwords. 
+2.  Add email addresses to the `virtual_users` table.  Replace the email address values with the addresses that you wish to configure on the mailserver. Replace the `password` values with strong passwords. 
 
         INSERT INTO `mailserver`.`virtual_users`
           (`id`, `domain_id`, `password` , `email`)
@@ -136,7 +136,7 @@ Now that you've created the database and tables, let's add some data to MySQL. H
           ('1', '1', ENCRYPT('password', CONCAT('$6$', SUBSTRING(SHA(RAND()), -16))), 'email1@example.com'),
           ('2', '1', ENCRYPT('password', CONCAT('$6$', SUBSTRING(SHA(RAND()), -16))), 'email2@example.com');
 
-3.  If you want to set up an email alias, add it to the `virtual_aliases` table.
+3.  To set up an email alias, add it to the `virtual_aliases` table.
 
         INSERT INTO `mailserver`.`virtual_aliases`
           (`id`, `domain_id`, `source`, `destination`)
@@ -147,9 +147,9 @@ That's it! Now you're ready to verify that the data was successfully added to My
 
 ### Testing
 
-Now that you've entered all of the information into MySQL, you need to double check that it's there. Here's how:
+Now that all of the information has been entered into MySQL, check that the data is there.
 
-1.  Check the contents of the `virtual_domains` table by entering the following command:
+1.  Check the contents of the `virtual_domains` table:
 
         SELECT * FROM mailserver.virtual_domains;
 
@@ -165,11 +165,11 @@ Now that you've entered all of the information into MySQL, you need to double ch
         +----+-----------------------+
         4 rows in set (0.00 sec)
 
-3.  Check the `virtual_users` table by entering the following command:
+3.  Check the `virtual_users` table:
 
         SELECT * FROM mailserver.virtual_users;
 
-4.  Verify that you see the following output (the hashed passwords will be longer than they appear below):
+4.  Verify the following output, the hashed passwords are longer than they appear below:
 
         +----+-----------+-------------------------------------+--------------------+
         | id | domain_id | password                            | email              |
@@ -179,11 +179,11 @@ Now that you've entered all of the information into MySQL, you need to double ch
         +----+-----------+-------------------------------------+--------------------+
         2 rows in set (0.01 sec)
 
-5.  Check the `virtual_users` table by entering the following command:
+5.  Check the `virtual_users` table:
 
         SELECT * FROM mailserver.virtual_aliases;
 
-6.  Verify that you see the following output:
+6.  Verify that the following output:
 
         +----+-----------+-------------------+--------------------+
         | id | domain_id | source            | destination        |
@@ -192,21 +192,19 @@ Now that you've entered all of the information into MySQL, you need to double ch
         +----+-----------+-------------------+--------------------+
         1 row in set (0.00 sec)
 
-7.  If everything looks good, you're done with MySQL! Enter the following command to exit MySQL:
+7.  If everything outputs correctly, you're done with MySQL! Exit MySQL:
 
         exit
 
-Now you're ready to set up Postfix so the server can accept incoming messages for the domains.
 
 ## Postfix
+Next, set up Postfix so the server can accept incoming messages for the domains.
 
-Here's how to configure Postfix:
-
-1.  Before doing anything else, enter the following command to make a copy of the default Postfix configuration file. This will come in handy if you mess up and need to revert to the default configuration.
+1.  Immediately make a copy of the default Postfix configuration file in case you need to revert to the default configuration:
 
         cp /etc/postfix/main.cf /etc/postfix/main.cf.orig
 
-2.  Edit the `/etc/postfix/main.cf` file to match the following.  Ensure that occurances of `example.com` are replaced with the domain name, and `hostname` with the system's hostname on line 44.
+2.  Edit the `/etc/postfix/main.cf` file to match the following. Ensure that occurrences of `example.com` are replaced with the domain name. Also, replace `hostname` with the system's hostname on line 44.
 
     {:.file }
     /etc/postfix/main.cf
