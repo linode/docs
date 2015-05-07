@@ -12,23 +12,22 @@ published: 'Monday, May 17th, 2015'
 title: Forcing SSL connections with Nodebalancers
 ---
 
-This guide provides step-by-step instructions for installing a full-featured LAMP stack on a CentOS 7 system.
-
-In this guide, you will be instructed on setting up Apache, MariaDB, and PHP.
-
-{: .note}
->The CentOS 7 Project has elected to replace the `init` service management daemon with the newer, `systemd` daemon for this latest release. In addition, this release of CentOS ships with MariaDB repositories instead of MySQL. If you would prefer to use the more traditional MySQL instead, there are instructions provided below to use those repositories as well.
+This guide provides step-by-step instructions for configuring a NodeBalancer to redirect all connections to SSL over port 443/HTTPS. Provisions will be provided to configure this with both the Apache and Nginx web servers. You will be responsible, however, for determining the appropriate document root as recommended by the distribution of Linux that your will be using.
 
  {: .note }
 >
-> Throughout this guide we will offer several suggested values for specific configuration settings. Some of these values will be set by default. These settings are shown in the guide as a reference, in the event that you change these settings to suit your needs and then need to change them back.
+> Throughout this guide we will offer several suggested values for specific configuration settings, some of these values will be set by default. These settings are shown in the guide as a reference and you may need to modify them to suit your application accordingly.
 
 ## Prerequisites
 
-Your Linode should already be set up according to the instructions in our [Getting Started](/docs/getting-started) guide, and it is suggested that security precautions be implemented. For assistance with this, please see our documentation: [Securing Your Server](https://linode.com/docs/security/securing-your-server)
+- Your Linode should already be set up according to the instructions in our [Getting Started](/docs/getting-started) guide, and it is suggested that security precautions be implemented. For assistance with this, please see our documentation: [Securing Your Server](https://linode.com/docs/security/securing-your-server)
+
+- This guide assumes that you have already deployed two Linodes, configured with either a LAMP stack, or a LEMP Stack
+
+- This guide assumes that you have already deployed a Nodebalancer
 
 {: .note}
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+>This guide is written, assuming that you are logged in as the root user and that you will not need to prepend commands with ``sudo``.
 
 ### Set the Hostname
 
