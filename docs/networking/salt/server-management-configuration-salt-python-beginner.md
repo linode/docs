@@ -9,7 +9,7 @@ modified: Wednesday, April 9th, 2015
 modified_by:
   name: Joseph Dooley
 published: 'Thursday, April 30th, 2015'
-title: Server Management and Configuration with Salt and Python for a Beginner
+title: Salt and Python for a Beginner
 ---
 
 Salt, often referred to as SaltStack, is designed for server management. A single Salt Master controls many Salt Minions. The master can remotely run commands, transfer files, and much more concerning scalability. 
