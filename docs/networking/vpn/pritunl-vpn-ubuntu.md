@@ -1,4 +1,4 @@
-﻿# Easy VPN Management with Pritunl on Ubuntu.
+# Easy VPN Management with Pritunl on Ubuntu.
 
 
 Pritunl is a very powerful, open source, VPN management panel that uses the OpenVPN standard. This gives it the flexibility, security, and power of OpenVPN, while making it extremely easy to use. This guide will show you how to install, configure, and connect to Pritunl.
@@ -70,7 +70,7 @@ Alternatively you may enter a any valid MongoDB uri to use as the database for P
 
 2.  You should see a screen similar to this:
 
-[![Pritunl setup screen](/docs/assets/pritunl-setup-resized.png)](/docs/assets/pritunl-setup.png)
+[![Pritunl setup screen](/docs/assets/pritunl-setup.png)](/docs/assets/pritunl-setup.png)
 3.  Fill out the Initial Setup form shown.
 
 {: .note }
@@ -83,7 +83,7 @@ Next, click **Add User** and add a user to the organization you just created.
 
 
 5. Next, head over to the Servers tab. Click **Add server**. You will see a screen like this:
-[![Pritunl server setup screen](/docs/assets/pritunl-server-setup-resized.png)](/docs/assets/pritunl-server-setup.png)
+[![Pritunl server setup screen](/docs/assets/pritunl-server-setup.png)](/docs/assets/pritunl-server-setup.png)
 
 If you have a firewall, make sure that the **Port** and **Protocol** fields match what you entered into the rules previously. 
 The rest of the configuration is up to you.
@@ -102,3 +102,4 @@ Next to your username, there is a Online/Offline indicator. Next to that, there 
 
 The download icon will download the keyfiles as a **TAR** file. 
 The link icon will display a link that you can give to your users to download their key. These links unique to the user as well as temporary and expire after they have been used or 24 hours. Whichever comes first.
+
