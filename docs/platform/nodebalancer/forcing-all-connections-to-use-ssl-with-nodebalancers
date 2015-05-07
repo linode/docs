@@ -1,0 +1,113 @@
+---
+author:
+  name: Joel Kruger
+  email: jkruger@linode.com
+description: 'Forcing all connections to use SSL with NodeBalancers.'
+keywords: 'Linode,NodeBalancer,SSL,redirect'
+license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+modified: Monday, May 11th, 2015
+modified_by:
+  name: Joel Kruger
+published: 'Monday, May 17th, 2015'
+title: Forcing SSL connections with Nodebalancers
+---
+
+This guide provides step-by-step instructions for installing a full-featured LAMP stack on a CentOS 7 system.
+
+In this guide, you will be instructed on setting up Apache, MariaDB, and PHP.
+
+{: .note}
+>The CentOS 7 Project has elected to replace the `init` service management daemon with the newer, `systemd` daemon for this latest release. In addition, this release of CentOS ships with MariaDB repositories instead of MySQL. If you would prefer to use the more traditional MySQL instead, there are instructions provided below to use those repositories as well.
+
+ {: .note }
+>
+> Throughout this guide we will offer several suggested values for specific configuration settings. Some of these values will be set by default. These settings are shown in the guide as a reference, in the event that you change these settings to suit your needs and then need to change them back.
+
+## Prerequisites
+
+Your Linode should already be set up according to the instructions in our [Getting Started](/docs/getting-started) guide, and it is suggested that security precautions be implemented. For assistance with this, please see our documentation: [Securing Your Server](https://linode.com/docs/security/securing-your-server)
+
+{: .note}
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+
+### Set the Hostname
+
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](https://www.linode.com/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+
+    hostname
+    hostname -f
+
+The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
+
+Install and Configure the Apache Web Server
+-------------------------------------------
+
+The Apache Web Server is a very popular choice for serving web pages. While many alternatives have appeared in the last few years, Apache remains a powerful option that we recommend for most uses.
+
+1. Update existing packages:
+
+        sudo yum update
+
+2. Install the current version of the Apache web server (in the 2.x series):
+
+        sudo yum install httpd
+
+3. The configuration for Apache is contained in the `httpd.conf` file, which is located at: `/etc/httpd/conf/httpd.conf`. We advise you to make a backup of this file into your home directory:
+
+        cp /etc/httpd/conf/httpd.conf ~/httpd.conf.backup
+
+    {: .note}
+    > By default, all files ending in the `.conf` extension in `/etc/httpd` and `/etc/httpd/conf.d/` are treated as Apache configuration files, and we recommend placing your non-standard configuration options in files in these directories. Regardless how you choose to organize your configuration files, making regular backups of known working states is highly recommended.
+
+4. Edit the main Apache configuration file to adjust the resource use settings. The settings shown below are a good starting point for a **Linode 1GB**.
+
+    {: .file }
+    /etc/httpd/conf/httpd.conf
+    :   ~~~ apache
+        KeepAlive Off
+
+        ...
+
+        <IfModule prefork.c>
+        StartServers 2
+        MinSpareServers 6
+        MaxSpareServers 12
+        MaxClients 80
+        MaxRequestsPerChild 3000
+        </IfModule>
+        ~~~
+
+### Configure Name-based Virtual Hosts
+
+There are different ways to set up virtual hosts; however, we recommend the method below. This configuration instructs Apache to listen on all IP addresses available to it.
+
+1.  Create virtual host entries for each site that we need to host with this server. For this example we are using "example.com" and "example.org".
+
+      {: .file-excerpt }
+      /etc/httpd/conf.d/vhost.conf
+      :   ~~~ apache
+        NameVirtualHost *:80
+
+        <VirtualHost *:80>
+            ServerAdmin webmaster@example.com
+            ServerName example.com
+            ServerAlias www.example.com
+            DocumentRoot /srv/www/example.com/public_html/
+            ErrorLog /srv/www/example.com/logs/error.log
+            CustomLog /srv/www/example.com/logs/access.log combined
+        </VirtualHost>
+
+        <VirtualHost *:80>
+            ServerAdmin webmaster@example.org
+            ServerName example.org
+            ServerAlias www.example.org
+            DocumentRoot /srv/www/example.org/public_html/
+            ErrorLog /srv/www/example.org/logs/error.log
+            CustomLog /srv/www/example.org/logs/access.log combined
+          </VirtualHost>
+          ~~~
+
+    Notes regarding this example configuration:
+
+    -   All of the files for the sites that you host will be located in directories that exist underneath `/srv/www`. You can symbolically link these directories into other locations if you need them to exist elsewhere.
+    -   `ErrorLog` and `CustomLog` entries are suggested for more fine-grained logging, but are not required. If they are defined (as shown above), the `logs` directories must be created before you restart Apache.
