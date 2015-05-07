@@ -22,59 +22,93 @@ This guide provides step-by-step instructions for configuring a NodeBalancer to 
 
 - Your Linode should already be set up according to the instructions in our [Getting Started](/docs/getting-started) guide, and it is suggested that security precautions be implemented. For assistance with this, please see our documentation: [Securing Your Server](https://linode.com/docs/security/securing-your-server)
 
-- This guide assumes that you have already deployed two Linodes, configured with either a LAMP stack, or a LEMP Stack
+- This guide assumes that you have already deployed two Linodes and configured them with either a LAMP stack, or a LEMP Stack. If you have not, please review the following supportive documentation for assistance with configuring one:
 
-- This guide assumes that you have already deployed a Nodebalancer
+    - [LAMP Stack](/docs/websites/lamp/)
+    - [LEMP Stack](/docs/websites/lemp/)
+
+- In addition, this guide assumes that you have already deployed a NodeBalancer and have configured it with two or more 'Backend' Linodes that make connections on port 80/HTTP. If you would like assitance with this, please review the following supportive documentation:
+
+   - [Getting Started with NodeBalancers](/docs/platform/nodebalancer/getting-started-with-nodebalancers)
+   - [NodeBalancer Reference Guide](/docs/platform/nodebalancer/nodebalancer-reference-guide)
 
 {: .note}
 >This guide is written, assuming that you are logged in as the root user and that you will not need to prepend commands with ``sudo``.
 
-### Set the Hostname
+Follow these instructions to get a commercial SSL certificate installed on your server. Please note that commercial SSL certificates require a unique IP address for each certificate. As SSL certificates may be used by many kinds of software, these instructions are generic in nature. If you're intending to use your SSL certificate on a website powered by Apache, you should follow our [Apache SSL guides](/docs/web-servers/apache/ssl-guides/) instead.
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](https://www.linode.com/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Install OpenSSL
+---------------
 
-    hostname
-    hostname -f
+Issue the following command to install required packages for OpenSSL, the open source SSL toolkit.
 
-The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
+Debian/Ubuntu users:
 
-Install and Configure the Apache Web Server
--------------------------------------------
+    apt-get update
+    apt-get upgrade
+    apt-get install openssl
+    mkdir /etc/ssl/localcerts
 
-The Apache Web Server is a very popular choice for serving web pages. While many alternatives have appeared in the last few years, Apache remains a powerful option that we recommend for most uses.
+CentOS/Fedora users:
 
-1. Update existing packages:
+    yum install openssl
+    mkdir /etc/ssl/localcerts
 
-        sudo yum update
+Create a Certificate Signing Request
+------------------------------------
 
-2. Install the current version of the Apache web server (in the 2.x series):
+Issue these commands to create a certificate signing request (CSR) for the site which you'd like to use with SSL. Be sure to change "www.mydomain.com" to reflect the fully qualified domain name (subdomain.domainname.com) of the site you'll be using SSL with. Leave the challenge password blank. We entered 365 for the days parameter to the command, as we would be paying for one year of SSL certificate verification from a commercial CA (certificate authority).
 
-        sudo yum install httpd
+    cd /etc/ssl/localcerts
+    openssl req -new -newkey rsa:2048 -nodes -days 365 -keyout www.mydomain.com.key -out www.mydomain.com.csr
 
-3. The configuration for Apache is contained in the `httpd.conf` file, which is located at: `/etc/httpd/conf/httpd.conf`. We advise you to make a backup of this file into your home directory:
+Here are the values we entered for our example certificate. Note that you can ignore the extra attributes.
 
-        cp /etc/httpd/conf/httpd.conf ~/httpd.conf.backup
+    Generating a 2048 bit RSA private key
+    ......................................................++++++
+    ....++++++
+    writing new private key to 'www.mydomain.com.key'
+    -----
+    You are about to be asked to enter information that will be incorporated
+    into your certificate request.
+    What you are about to enter is what is called a Distinguished Name or a DN.
+    There are quite a few fields but you can leave some blank
+    For some fields there will be a default value,
+    If you enter '.', the field will be left blank.
+    -----
+    Country Name (2 letter code) [AU]:US
+    State or Province Name (full name) [Some-State]:New Jersey
+    Locality Name (eg, city) []:Absecon
+    Organization Name (eg, company) [Internet Widgits Pty Ltd]:MyDomain, LLC
+    Organizational Unit Name (eg, section) []:Web Services
+    Common Name (eg, YOUR name) []:www.mydomain.com
+    Email Address []:support@mydomain.com
 
-    {: .note}
-    > By default, all files ending in the `.conf` extension in `/etc/httpd` and `/etc/httpd/conf.d/` are treated as Apache configuration files, and we recommend placing your non-standard configuration options in files in these directories. Regardless how you choose to organize your configuration files, making regular backups of known working states is highly recommended.
+    Please enter the following 'extra' attributes
+    to be sent with your certificate request
+    A challenge password []:
+    An optional company name []:
 
-4. Edit the main Apache configuration file to adjust the resource use settings. The settings shown below are a good starting point for a **Linode 1GB**.
+Execute the following command to protect the key:
 
-    {: .file }
-    /etc/httpd/conf/httpd.conf
-    :   ~~~ apache
-        KeepAlive Off
+    chmod 400 /etc/ssl/localcerts/www.mydomain.com.key
 
-        ...
+Files for your domain will be created in `/etc/ssl/localcerts`. You may now submit the file ending in `.csr` to a commercial SSL provider for signing. You will receive a signed file after the CA signs the request. Save this file as `/etc/ssl/localcerts/www.mydomain.com.crt`.
 
-        <IfModule prefork.c>
-        StartServers 2
-        MinSpareServers 6
-        MaxSpareServers 12
-        MaxClients 80
-        MaxRequestsPerChild 3000
-        </IfModule>
-        ~~~
+Execute the following command to protect the signed certificate:
+
+    chmod 400 /etc/ssl/localcerts/www.mydomain.com.crt
+
+Get the CA Root Certificate
+---------------------------
+
+Now you'll need to get the root certificate for the CA that you paid to sign your certificate. You may obtain the root certs for various providers from these sites:
+
+-   [Verisign](https://knowledge.verisign.com/support/ssl-certificates-support/index.html)
+-   [Thawte](http://www.thawte.com/roots/index.html)
+-   [Globalsign](http://secure.globalsign.net/cacert/)
+-   [Comodo](https://support.comodo.com/index.php?_m=downloads&_a=view&parentcategoryid=1&pcid=0&nav=0)
+
 
 ### Configure Name-based Virtual Hosts
 
@@ -105,8 +139,3 @@ There are different ways to set up virtual hosts; however, we recommend the meth
             CustomLog /srv/www/example.org/logs/access.log combined
           </VirtualHost>
           ~~~
-
-    Notes regarding this example configuration:
-
-    -   All of the files for the sites that you host will be located in directories that exist underneath `/srv/www`. You can symbolically link these directories into other locations if you need them to exist elsewhere.
-    -   `ErrorLog` and `CustomLog` entries are suggested for more fine-grained logging, but are not required. If they are defined (as shown above), the `logs` directories must be created before you restart Apache.
