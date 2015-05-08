@@ -81,7 +81,7 @@ Here are the values we entered for our example certificate. Note that you can ig
     Locality Name (eg, city) []:Absecon
     Organization Name (eg, company) [Internet Widgits Pty Ltd]:MyDomain, LLC
     Organizational Unit Name (eg, section) []:Web Services
-    Common Name (eg, YOUR name) []:www.mydomain.com
+    Common Name (eg, YOUR name) []:www.example.com
     Email Address []:support@mydomain.com
 
     Please enter the following 'extra' attributes
@@ -110,14 +110,14 @@ Now you'll need to get the root certificate for the CA that you paid to sign you
 -   [Comodo](https://support.comodo.com/index.php?_m=downloads&_a=view&parentcategoryid=1&pcid=0&nav=0)
 
 
-### Configure Name-based Virtual Hosts
+### Configure Name-based Virtual Hosts for SSL
 
-There are different ways to set up virtual hosts; however, we recommend the method below. This configuration instructs Apache to listen on all IP addresses available to it.
+#### Configuring your vhost file for Apache Webserver.
 
-1.  Create virtual host entries for each site that we need to host with this server. For this example we are using "example.com" and "example.org".
+1.  Configure your virtual host file for the site that we need to host with this server. For this example we are using "example.com" and "example.org".
 
       {: .file-excerpt }
-      /etc/httpd/conf.d/vhost.conf
+      /etc/apache2/sites-available/example.com.conf
       :   ~~~ apache
         NameVirtualHost *:80
 
@@ -126,16 +126,28 @@ There are different ways to set up virtual hosts; however, we recommend the meth
             ServerName example.com
             ServerAlias www.example.com
             DocumentRoot /srv/www/example.com/public_html/
-            ErrorLog /srv/www/example.com/logs/error.log
-            CustomLog /srv/www/example.com/logs/access.log combined
+            ErrorLog /var/www/example.com/logs/error.log
+            CustomLog /var/www/example.com/logs/access.log combined
         </VirtualHost>
 
-        <VirtualHost *:80>
-            ServerAdmin webmaster@example.org
-            ServerName example.org
-            ServerAlias www.example.org
-            DocumentRoot /srv/www/example.org/public_html/
-            ErrorLog /srv/www/example.org/logs/error.log
-            CustomLog /srv/www/example.org/logs/access.log combined
-          </VirtualHost>
-          ~~~
+#### Configuring your vhost file for the Nginx Webserver.
+
+ {: .file-excerpt }
+      /etc/nginx/sites-available/example.com.conf
+      
+      server {                                                                                              
+      server_name example.com;                                                                           
+      rewrite ^/(.*) https://example.com/$1 permanent;                                                   
+      }                                                                                                     
+
+      server {                                                                                              
+          listen   80;                                                                                      
+          server_name www.example.com frijoles.com;                                                        
+          access_log /srv/www/example.com/logs/access.log;                                                 
+          error_log /srv/www/example.com/logs/error.log;                                                   
+          
+          location / {                                                                                      
+          root   /srv/www/example.com/public_html;                                                     
+          index  index.html index.htm;                                                                  
+          }                                                                                                 
+      } 
