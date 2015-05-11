@@ -16,6 +16,10 @@ OpenVPN is a very popular software package utilized for creating encrypted tunne
 
 Before installing OpenVPN Access Server, you will need to follow our [getting started guide](/docs/getting-started/). You will also want to follow our [Securing Your Server](/docs/security/basics) guide to ensure the security of your Linode.
 
+{: .note}
+>
+>After securing your server, you will need to ensure that TCP port 943 and UDP port 1194 are permitted through your firewall in order to allow the OpenVPN Access Server to function.
+
 Installing OpenVPN Access Server
 --------------------------------
 
@@ -157,6 +161,10 @@ Client Software Installation
 2.  Connect to the OpenVPN Access Server client interface, and download the appropriate profile for your usage.
 
 	[![DMG Finder Window.](/docs/assets/openvpn-download-profile-ubuntu-resize.png)](/docs/assets/openvpn-download-profile-ubuntu.png)
+
+{: .note}
+>
+>If you are connecting two servers with OpenVPN, you will need to utilize the wget tool to download the appropriate profile.  You can do so by copying the link from the OpenVPN Access Server client page for your required profile, and then utilizing the [wget](https://www.linode.com/docs/tools-reference/tools/download-resources-from-the-command-line-with-wget) tool to download the client profile.
 
 3.  Copy the downloaded profile to your /etc/openvpn folder, and rename it to client.conf.  Replace ~/Downloads/client.ovpn with the location of your download folder, if necessary.
 
