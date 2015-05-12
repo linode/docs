@@ -22,6 +22,17 @@ Use the Docker-maintained install script for Debian or Ubuntu. For other operati
 
         curl -sSL https://get.docker.com/ | sh
 
+    {: .note}
+    >
+    >The most recent version of the docker script checks for AUFS support, and displays the warning below if support is not found:
+    >
+    >     Warning: current kernel is not supported by the linux-image-extra-virtual
+          package.  We have no AUFS support.  Consider installing the packages
+          linux-image-virtual kernel and linux-image-extra-virtual for AUFS support.
+          + sleep 10
+    >
+    >This message can be safely ignored, as the script will continue the installation using DeviceMapper.  If you require AUFS support, you will need to configure a [distribution supplied kernel](https://www.linode.com/docs/tools-reference/custom-kernels-distros/run-a-distributionsupplied-kernel-with-pvgrub).
+
 2.  If necessary, add the non-root user to the "docker" group:
 
         sudo usermod -aG docker example_user
