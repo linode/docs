@@ -5,7 +5,7 @@ author:
 description: 'Serve SSL-enabled websites with the HTTPD web server.'
 keywords: 'apache SSL,ssl on centos,ssl on fedora,ssl,contos,fedora,apache,httpd'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Wednesday, November 19th, 2014
+modified: Wednesday, May 6th, 2015
 modified_by:
   name: James Stewart
 published: 'Wednesday, November 19th, 2014'

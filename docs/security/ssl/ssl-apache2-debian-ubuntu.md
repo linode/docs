@@ -6,7 +6,7 @@ description: 'Serve SSL-enabled websites with the Apache web server.'
 keywords: 'apache SSL,ssl on debian,web sever,debian,apache,ssl,ubuntu,ssl on ubuntu'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['security/ssl/ssl-certificates-with-apache-2-on-ubuntu']
-modified: Wednesday, November 19th, 2014
+modified: Wednesday, May 6th, 2015
 modified_by:
   name: James Stewart
 published: 'Wednesday, November 19th, 2014'
@@ -17,8 +17,7 @@ external_resources:
 
 This guide will assist you with enabling SSL for websites served under the Apache web server, in order to ensure secure access to your website and services.
 
-Prerequisites
--------------
+##Prerequisites
 
 This guide assumes that you are running Apache2.4 or higher on Debian 8 or Ubuntu 14.04 or above. Prior to following this guide, you will also need to ensure that the following steps have been taken on your Linode.
 
