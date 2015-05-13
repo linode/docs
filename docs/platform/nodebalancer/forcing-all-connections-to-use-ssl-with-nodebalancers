@@ -15,14 +15,15 @@ title: Forcing SSL connections with Nodebalancers
 This guide provides step-by-step instructions for configuring a NodeBalancer to redirect all connections to SSL over port 443/HTTPS. Provisions will be provided to configure this with both the Apache and Nginx web servers. You will be responsible, however, for determining the appropriate document root as recommended by the distribution of Linux that your will be using.
 
  {: .note }
->
+ > 
 > Throughout this guide we will offer several suggested values for specific configuration settings, some of these values will be set by default. These settings are shown in the guide as a reference and you may need to modify them to suit your application accordingly.
 
-## Prerequisites
+Prerequisites
+---------------
 
-- Your Linode should already be set up according to the instructions in our [Getting Started](/docs/getting-started) guide, and it is suggested that security precautions be implemented. For assistance with this, please see our documentation: [Securing Your Server](https://linode.com/docs/security/securing-your-server)
+- Your backend Linodes should already be set up according to the instructions in our [Getting Started](/docs/getting-started) guide, and it is suggested that security precautions be implemented. For assistance with this, please see our documentation: [Securing Your Server](https://linode.com/docs/security/securing-your-server)
 
-- This guide assumes that you have already deployed two Linodes and configured them with either a LAMP stack, or a LEMP Stack. If you have not, please review the following supportive documentation for assistance with configuring one:
+- This guide assumes that you have already deployed two or more backend Linodes and configured them with either a LAMP stack, or a LEMP Stack. If you have not, please review the following supportive documentation for assistance with configuring one:
 
     - [LAMP Stack](/docs/websites/lamp/)
     - [LEMP Stack](/docs/websites/lemp/)
@@ -32,15 +33,15 @@ This guide provides step-by-step instructions for configuring a NodeBalancer to 
    - [Getting Started with NodeBalancers](/docs/platform/nodebalancer/getting-started-with-nodebalancers)
    - [NodeBalancer Reference Guide](/docs/platform/nodebalancer/nodebalancer-reference-guide)
 
-{: .note}
->This guide is written, assuming that you are logged in as the root user and that you will not need to prepend commands with ``sudo``.
+    {: .note}
+> This guide is written, assuming that you are logged in as the root user and that you will not need to prepend commands with ``sudo``.
 
-Follow these instructions to get a commercial SSL certificate installed on your server. Please note that commercial SSL certificates require a unique IP address for each certificate. As SSL certificates may be used by many kinds of software, these instructions are generic in nature. If you're intending to use your SSL certificate on a website powered by Apache, you should follow our [Apache SSL guides](/docs/web-servers/apache/ssl-guides/) instead.
+####The following instructions will assist you with obtaining a valid commercially signed SSL certificate and installing it on your NodeBalancer. Please note that commercial SSL certificates require a unique IP address for each certificat. As a result, you will be able to host only one SSL enabled website, per NodeBalancer
 
 Install OpenSSL
 ---------------
 
-Issue the following command to install required packages for OpenSSL, the open source SSL toolkit.
+Issue the following commands to update the system and install the required packages for OpenSSL.
 
 Debian/Ubuntu users:
 
@@ -57,10 +58,11 @@ CentOS/Fedora users:
 Create a Certificate Signing Request
 ------------------------------------
 
-Issue these commands to create a certificate signing request (CSR) for the site which you'd like to use with SSL. Be sure to change "www.mydomain.com" to reflect the fully qualified domain name (subdomain.domainname.com) of the site you'll be using SSL with. Leave the challenge password blank. We entered 365 for the days parameter to the command, as we would be paying for one year of SSL certificate verification from a commercial CA (certificate authority).
+Issue the following commands to generate a certificate signing request (CSR) for the domain that you would like to configure with SSL. Be sure to change "www.example.com" to reflect the fully qualified domain name (subdomain.domainname.com) of the site you'll be using SSL with. Leave the challenge password blank. We entered 365 for the days parameter to the command, as we would be paying for one year of SSL certificate verification from a commercial CA (certificate authority).
 
     cd /etc/ssl/localcerts
-    openssl req -new -newkey rsa:2048 -nodes -days 365 -keyout www.mydomain.com.key -out www.mydomain.com.csr
+    
+    openssl req -new -newkey rsa:2048 -nodes -days 365 -keyout www.example.com.key -out www.example.com.csr
 
 Here are the values we entered for our example certificate. Note that you can ignore the extra attributes.
 
@@ -89,36 +91,133 @@ Here are the values we entered for our example certificate. Note that you can ig
     A challenge password []:
     An optional company name []:
 
-Execute the following command to protect the key:
 
-    chmod 400 /etc/ssl/localcerts/www.mydomain.com.key
+A `certificate signing request` file, ending with `.csr`, file will be generated and placed in `/etc/ssl/localcerts`. An example of what this file will look like can be found below (yours will be unique):
 
-Files for your domain will be created in `/etc/ssl/localcerts`. You may now submit the file ending in `.csr` to a commercial SSL provider for signing. You will receive a signed file after the CA signs the request. Save this file as `/etc/ssl/localcerts/www.mydomain.com.crt`.
+    -----BEGIN CERTIFICATE REQUEST-----
+    MIICpDCCAYwCAQAwRTELMAkGA1UEBhMCQVUxEzARBgNVBAgMClNvbWUtU3RhdGUx
+    ITAfBgNVBAoMGEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZDCCASIwDQYJKoZIhvcN
+    AQEBBQADggEPADCCAQoCggEBAOGpH/RP26JljSy1Dbt/R6zU5V/cWQd8CMKwzUba
+    (additional encrypted data... the cropped text is not important)
+    kaYVdWJ5+BXNe5AQursBYcXoo1/cl4aSbVV2XxRtNWZmpuvNCtt0iAvWyQypTNp0
+    7+eFgy625DXD7n3pScFDPb/RXaawku1EB+vpG1lpwhr+bU+8mtqa/wEPC2IVzNba
+    lEObO2p9I7nZZpPXc05KA+034Rc4JFoABq0j2HuxlF2tL/U/EqjWB5ksOy96c7BL
+    hofUVA2XXBs=
+    -----END CERTIFICATE REQUEST-----
 
-Execute the following command to protect the signed certificate:
+In addition, a key file ending with `.key`, file will be generated and placed in `/etc/ssl/localcerts`. An example of what this file will look like can be found below (yours will be unique):
 
-    chmod 400 /etc/ssl/localcerts/www.mydomain.com.crt
+    -----BEGIN PRIVATE KEY-----
+    MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDhqR/0T9uiZY0s
+    tQ27f0es1OVf3FkHfAjCsM1G2uMtGadRAFQN7lsa+W0W0tzfeJGSk4tqDanOPeJU
+    3jm/Udxy18DSl2xYKhJAF8YL50UPN6Yih1p+XPIEBqKjAEn+p7BgH/R7vehZQh+z
+    (additional encrypted data... the cropped text is not important)
+    ZegL7vs+//1jBJy3h/dcFNl7Pgiv7UlsxXhFw7aZAoGATUW7pWP1osmMFTshW6xo
+    qSdRwPnDjilI9r9SEEwlcssGIYReIUfRuXnaaPLudKDeZ3GZ0kjXfbsWFOnwLyAE
+    pNaMF47bTIFES5Ytqhp4rEYe5Hxn2VePrGJp/j7tAIzTXeV3IC6ICkEueKpKS2Dl
+    xHtX/Rl40JHhTCiGK5eIR3E=
+    -----END PRIVATE KEY-----
+
 
 Get the CA Root Certificate
 ---------------------------
 
-Now you'll need to get the root certificate for the CA that you paid to sign your certificate. You may obtain the root certs for various providers from these sites:
+Now you'll need to get the root certificate for the CA that you paid to sign your certificate. You may obtain the root certs for various providers, here are some popular ones:
 
 -   [Verisign](https://knowledge.verisign.com/support/ssl-certificates-support/index.html)
 -   [Thawte](http://www.thawte.com/roots/index.html)
 -   [Globalsign](http://secure.globalsign.net/cacert/)
 -   [Comodo](https://support.comodo.com/index.php?_m=downloads&_a=view&parentcategoryid=1&pcid=0&nav=0)
 
+ {:.note}
+> 
+> There are many vendors, including some listed above, that provide free SSL certificates. They typically have shorter expiration dates, and less features.
 
-### Configure Name-based Virtual Hosts for SSL
+### Submit your CSR to a Certificate Authority
 
-#### Configuring your vhost file for Apache Webserver.
+You may now submit the contents of this file to a commercial SSL provider (Certificate Authroity) for signing. Typically, they will provide you with a field to paste the contents of your CSR file into, somewhere on their website. Once this request has been submitted, you will receive a commercially signed SSL certificate file. Save this file as `/etc/ssl/localcerts/www.example.com.crt`. Which will look similar to the following (yours will be unique):
+
+    -----BEGIN CERTIFICATE-----
+    MIIFSzCCBDOgAwIBAgIQVjCXC0bF9U8FypJOnL9cuDANBgkqhkiG9w0BAQsFADCB
+    kDELMAkGA1UEBhMCR0IxGzAZBgNVBAgTEkdyZWF0ZXIgTWFuY2hlc3RlcjEQMA4G
+    A1UEBxMHU2FsZm9yZDEaMBgGA1UEChMRQ09NT0RPIENBIExpbWl0ZWQxNjA0BgNV
+    (additional encrypted data... the cropped text is not important)
+    RWieiEDSZqbtZRPBaGooDJ5QbdHqUanvoVzf1aB1S5RrJB5qH/UG6WbTZ07rFfsn
+    age7UPo4ZwheAtpO2mhcYypBG1zln4cvxVBAcrnaa1GWwKjgwXUr5k2Pv7BXWEex
+    ncHG3hwHHwhiEz6ukC2mqxA+D3KILiywgHgWcumnpeCEUQgDzy0Fz2Ip/kR/1Fkv
+    DCQzME2NkT1ZdW8fdz+Y
+    -----END CERTIFICATE-----
+
+### Preparing a Chained SSL Certificate
+
+However, you may recieve several files ending with `.crt`. If this is the case, then they are collectively reffered to as a `chained SSL certificate` and must be concatonated into one file in order to provide full support with most browsers. The following example uses a chained SSL certificate that was signed by Comodo, but other vendors are perfectly reputable as well. Enter the following command to do this:
+
+    cat example_com.crt COMODORSADomainValidationSecureServerCA.crt  COMODORSAAddTrustCA.crt AddTrustExternalCARoot.crt > chained-ssl.crt
+
+The contents of the resulting file will appear similar to the following (yours will be unique):
+
+    -----BEGIN CERTIFICATE-----
+    MIIFSzCCBDOgAwIBAgIQVjCXC0bF9U8FypJOnL9cuDANBgkqhkiG9w0BAQsFADCB
+    kDELMAkGA1UEBhMCR0IxGzAZBgNVBAgTEkdyZWF0ZXIgTWFuY2hlc3RlcjEQMA4G
+    A1UEBxMHU2FsZm9yZDEaMBgGA1UEChMRQ09NT0RPIENBIExpbWl0ZWQxNjA0BgNV
+    (additional encrypted data... the cropped text is not important)
+    RWieiEDSZqbtZRPBaGooDJ5QbdHqUanvoVzf1aB1S5RrJB5qH/UG6WbTZ07rFfsn
+    age7UPo4ZwheAtpO2mhcYypBG1zln4cvxVBAcrnaa1GWwKjgwXUr5k2Pv7BXWEex
+    ncHG3hwHHwhiEz6ukC2mqxA+D3KILiywgHgWcumnpeCEUQgDzy0Fz2Ip/kR/1Fkv
+    DCQzME2NkT1ZdW8fdz+Y
+    -----END CERTIFICATE-----
+    -----BEGIN CERTIFICATE-----
+    MIIGCDCCA/CgAwIBAgIQKy5u6tl1NmwUim7bo3yMBzANBgkqhkiG9w0BAQwFADCB
+    hTELMAkGA1UEBhMCR0IxGzAZBgNVBAgTEkdyZWF0ZXIgTWFuY2hlc3RlcjEQMA4G
+    A1UEBxMHU2FsZm9yZDEaMBgGA1UEChMRQ09NT0RPIENBIExpbWl0ZWQxKzApBgNV
+    (additional encrypted data... the cropped text is not important)
+    j4rBYKEMrltDR5FL1ZoXX/nUh8HCjLfn4g8wGTeGrODcQgPmlKidrv0PJFGUzpII
+    0fxQ8ANAe4hZ7Q7drNJ3gjTcBpUC2JD5Leo31Rpg0Gcg19hCC0Wvgmje3WYkN5Ap
+    lBlGGSW4gNfL1IYoakRwJiNiqZ+Gb7+6kHDSVneFeO/qJakXzlByjAA6quPbYzSf
+    +AZxAeKCINT+b72x
+    -----END CERTIFICATE-----
+    -----BEGIN CERTIFICATE-----
+    MIIFdDCCBFygAwIBAgIQJ2buVutJ846r13Ci/ITeIjANBgkqhkiG9w0BAQwFADBv
+    MQswCQYDVQQGEwJTRTEUMBIGA1UEChMLQWRkVHJ1c3QgQUIxJjAkBgNVBAsTHUFk
+    ZFRydXN0IEV4dGVybmFsIFRUUCBOZXR3b3JrMSIwIAYDVQQDExlBZGRUcnVzdCBF
+    (additional encrypted data... the cropped text is not important)
+    Uspzgb8c8+a4bmYRBbMelC1/kZWSWfFMzqORcUx8Rww7Cxn2obFshj5cqsQugsv5
+    B5a6SE2Q8pTIqXOi6wZ7I53eovNNVZ96YUWYGGjHXkBrI/V5eu+MtWuLt29G9Hvx
+    PUsE2JOAWVrgQSQdso8VYFhH2+9uRv0V9dlfmrPb2LjkQLPNlzmuhbsdjrzch5vR
+    pu/xO28QOG8=
+    -----END CERTIFICATE-----
+    -----BEGIN CERTIFICATE-----
+    MIIENjCCAx6gAwIBAgIBATANBgkqhkiG9w0BAQUFADBvMQswCQYDVQQGEwJTRTEU
+    MBIGA1UEChMLQWRkVHJ1c3QgQUIxJjAkBgNVBAsTHUFkZFRydXN0IEV4dGVybmFs
+    IFRUUCBOZXR3b3JrMSIwIAYDVQQDExlBZGRUcnVzdCBFeHRlcm5hbCBDQSBSb290
+    (additional encrypted data... the cropped text is not important)
+    6wwCURQtjr0W4MHfRnXnJK3s9EK0hZNwEGe6nQY1ShjTK3rMUUKhemPR5ruhxSvC
+    Nr4TDea9Y355e6cJDUCrat2PisP29owaQgVR1EX1n6diIWgVIEM8med8vSTYqZEX
+    c4g/VhsxOBi0cQ+azcgOno4uG+GMmIPLHzHxREzGBHNJdmAPx/i9F4BrLunMTA5a
+    mnkPIAou1Z5jJh5VkpTYghdae9C8x49OhgQ=
+    -----END CERTIFICATE-----
+
+
+Installing the SSL Certificate and Private Key on your NodeBalancer
+---------------------------
+
+
+
+Configuring your Web Server with a 301 Redirect
+---------------------------
+
+
+### Debian based distributions
+---------------------------
+
+#### Configuring your vhost file for the Apache Webserver.
 
 1.  Configure your virtual host file for the site that we need to host with this server. For this example we are using "example.com" and "example.org".
 
       {: .file-excerpt }
       /etc/apache2/sites-available/example.com.conf
       :   ~~~ apache
+      
         NameVirtualHost *:80
 
         <VirtualHost *:80>
@@ -132,22 +231,75 @@ Now you'll need to get the root certificate for the CA that you paid to sign you
 
 #### Configuring your vhost file for the Nginx Webserver.
 
- {: .file-excerpt }
-      /etc/nginx/sites-available/example.com.conf
-      
-      server {                                                                                              
-      server_name example.com;                                                                           
-      rewrite ^/(.*) https://example.com/$1 permanent;                                                   
-      }                                                                                                     
+2. Configure your virtual host file for the site that we need to host with this server. For this example we are using “example.com” and “example.org”.
 
-      server {                                                                                              
-          listen   80;                                                                                      
-          server_name www.example.com frijoles.com;                                                        
-          access_log /srv/www/example.com/logs/access.log;                                                 
-          error_log /srv/www/example.com/logs/error.log;                                                   
-          
-          location / {                                                                                      
-          root   /srv/www/example.com/public_html;                                                     
-          index  index.html index.htm;                                                                  
-          }                                                                                                 
-      } 
+	{: .file-excerpt }    
+	/etc/nginx/sites-available/example.com.conf
+	:   ~~~ nginx
+
+		    server {
+		    server_name frijoles.world;
+		    rewrite ^/(.*) https://frijoles.world/$1 permanent;
+		    }
+
+		    server {
+		        listen   80;
+		        server_name www.frijoles.com frijoles.com;
+		        access_log /srv/www/frijoles.com/logs/access.log;
+		        error_log /srv/www/frijoles.com/logs/error.log;
+
+		    location / {
+		        root   /srv/www/frijoles.com/public_html;
+		        index  index.html index.htm;
+		        }
+		    } 
+
+
+### Redhat based distributions
+---------------------------
+
+#### Configuring your vhost file for the Apache Webserver.
+
+1.  Configure your virtual host file for the site that we need to host with this server. For this example we are using "example.com" and "example.org".
+
+      {: .file-excerpt }
+      /etc/apache2/sites-available/example.com.conf
+      :   ~~~ apache
+      
+        NameVirtualHost *:80
+
+        <VirtualHost *:80>
+            ServerAdmin webmaster@example.com
+            ServerName example.com
+            ServerAlias www.example.com
+            DocumentRoot /srv/www/example.com/public_html/
+            ErrorLog /var/www/example.com/logs/error.log
+            CustomLog /var/www/example.com/logs/access.log combined
+        </VirtualHost>
+
+#### Configuring your vhost file for the Nginx Webserver.
+
+2. Configure your virtual host file for the site that we need to host with this server. For this example we are using “example.com” and “example.org”.
+
+	{: .file-excerpt }    
+	/etc/nginx/sites-available/example.com.conf
+	:   ~~~ nginx
+
+		    server {
+		    server_name frijoles.world;
+		    rewrite ^/(.*) https://frijoles.world/$1 permanent;
+		    }
+
+		    server {
+		        listen   80;
+		        server_name www.frijoles.com frijoles.com;
+		        access_log /srv/www/frijoles.com/logs/access.log;
+		        error_log /srv/www/frijoles.com/logs/error.log;
+
+		    location / {
+		        root   /srv/www/frijoles.com/public_html;
+		        index  index.html index.htm;
+		        }
+		    }
+
+
