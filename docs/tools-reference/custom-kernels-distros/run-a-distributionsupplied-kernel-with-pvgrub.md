@@ -318,6 +318,11 @@ Ubuntu 10.04 LTS (Lucid)
 
         Linux li263-140 2.6.32-31-generic-pae #61-Ubuntu SMP Fri Apr 8 20:00:13 UTC 2011 i686 GNU/Linux
 
+Debian 8 (Jessie)
+-----------------
+
+Follow the instructions for Debian 7 (Wheezy) below.
+
 Debian 7 (Wheezy)
 -----------------
 
