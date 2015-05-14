@@ -201,13 +201,18 @@ The contents of the resulting file will appear similar to the following (yours w
 Installing the SSL Certificate and Private Key on your NodeBalancer
 ---------------------------
 
+### Certificate and Private Key
+
+If you select the HTTPS protocol, the **Certificate** and **Private Key** fields will appear.
+
+[![The NodeBalancer Certificate and Private Key fields.](/docs/assets/1354-nodebalancer_cert.png)](/docs/assets/1354-nodebalancer_cert.png)
+
+Copy the contents of your SSL certificate into the **Certificate** field. If you have concatenated multiple segments of a chained certificate, be sure to copy all of it's contents into the text field, appearing one after the other.
+
+Copy your passphraseless private key into the **Private Key** field.
 
 
 Configuring your Web Server with a 301 Redirect
----------------------------
-
-
-### Debian based distributions
 ---------------------------
 
 #### Configuring your vhost file for the Apache Webserver.
@@ -257,51 +262,19 @@ Configuring your Web Server with a 301 Redirect
 		    } 
 
 
-### Redhat based distributions
+
+
+Tips for Troubleshooting
 ---------------------------
 
-#### Configuring your vhost file for the Apache Webserver.
+- If you end up having difficulty getting the redirect to work properly or would like to see detailed information about how your SSL certificate is configured, you may wish to utilize the following tool from Qualys:
 
-1.  Configure your virtual host file for the site that we need to host with this server. For this example we are using "example.com" and "example.org".
+ - [Qualys online SSL Server Test](https://www.ssllabs.com/ssltest/)
 
-      {: .file-excerpt }
-      /etc/apache2/sites-available/example.com.conf
-      :   ~~~ apache
-      
-        NameVirtualHost *:80
-
-        <VirtualHost *:80>
-            ServerAdmin webmaster@example.com
-            ServerName example.com
-            ServerAlias www.example.com
-            DocumentRoot /srv/www/example.com/public_html/
-            ErrorLog /var/www/example.com/logs/error.log
-            CustomLog /var/www/example.com/logs/access.log combined
-        </VirtualHost>
-
-#### Configuring your vhost file for the Nginx Webserver.
-
-2. Configure your virtual host file for the site that we need to host with this server. For this example we are using “example.com” and “example.org”.
-
-	{: .file-excerpt }    
-	/etc/nginx/sites-available/example.com.conf
-	:   ~~~ nginx
-
-		    server {
-		    server_name frijoles.world;
-		    rewrite ^/(.*) https://frijoles.world/$1 permanent;
-		    }
-
-		    server {
-		        listen   80;
-		        server_name www.frijoles.com frijoles.com;
-		        access_log /srv/www/frijoles.com/logs/access.log;
-		        error_log /srv/www/frijoles.com/logs/error.log;
-
-		    location / {
-		        root   /srv/www/frijoles.com/public_html;
-		        index  index.html index.htm;
-		        }
-		    }
-
-
+- Every time that you make changes to either your web server's document root file or other configuration files, be sure to reload the server.
+ 
+        service apache2 reload
+        systemctl restart apache2.service
+    
+        service nginx reload
+        systemctl restart nginx.service
