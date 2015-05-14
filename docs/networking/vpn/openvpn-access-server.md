@@ -181,4 +181,3 @@ Client Software Installation
 {: .note}
 >
 >After completing this process on any of the listed operating systems, you can utilize a website such as [WhatIsMyIp.com](https://www.whatismyip.com) to verify your VPN connectivity.  You can also query from the command line with `curl ifconfig.me`  If successful, these steps should return the IP address of your Linode rather than your local IP.
-
