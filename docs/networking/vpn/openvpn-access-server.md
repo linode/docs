@@ -1,24 +1,24 @@
 ---
 author:
-  name: James Stewart
-  email: jstewart@linode.com
+    name: James Stewart
+    email: jstewart@linode.com
 description: 'Configuring OpenVPN Access Server on your Linode.'
 keywords: 'openvpn,networking,vpn,debian,ubuntu,centos,fedora'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: Thursday, April 30th, 2015
 modified_by:
-  name: James Stewart
-published: 'Thursday, April 30th, 2015'
+    name: James Stewart
+published: ''
 title: Secure Communications with OpenVPN Access Server
 ---
 
-OpenVPN is a very popular software package utilized for creating encrypted tunnels for secure transfer of data.  In this guide, you will learn how to configure your Linode as a VPN gateway using the OpenVPN Access Server software, and connect your Windows, OSX, or Linux computer to it.
+OpenVPN is a popular software package which creates encrypted tunnels for secure data transfer.  In this guide, you will learn to configure your Linode as a VPN gateway using the OpenVPN Access Server software, and connect your Windows, OSX, or Linux computer to it.
 
-Before installing OpenVPN Access Server, you will need to follow our [getting started guide](/docs/getting-started/). You will also want to follow our [Securing Your Server](/docs/security/basics) guide to ensure the security of your Linode.
+Before installing OpenVPN Access Server, you will need to follow our [Getting Started](/docs/getting-started/) guide. We also suggest following our [Securing Your Server](/docs/security/basics) guide.
 
 {: .note}
 >
->After securing your server, you will need to ensure that TCP port 943 and UDP port 1194 are permitted through your firewall in order to allow the OpenVPN Access Server to function.
+>After securing your server, ensure that TCP port 943 and UDP port 1194 are permitted through your firewall in order for the OpenVPN Access Server to function.
 
 Installing OpenVPN Access Server
 --------------------------------
@@ -34,7 +34,7 @@ Installing OpenVPN Access Server
 
 	Debian based systems (Debian/Ubuntu):
 		
-		sudo dpkg -i /path/to/download
+		sudo dpkg -i openvpn-as-*.deb
 
 	RPM based systems(Fedora/CentOS/OpenSuse):
 		
@@ -46,11 +46,11 @@ Installing OpenVPN Access Server
 		Admin  UI: https://192.0.2.1:943/admin
 		Client UI: https://192.0.2.1:943/
 
-	The Admin user interface will be utilized for configuration of the OpenVPN Access Server, while the Client UI is used for downloading the VPN packages to connect new client computers
+	The Admin UI is where you configure the OpenVPN Access Server, while the Client UI is used to download the VPN packages to connect new client computers
 
 5.  Set the password for the OpenVPN user.
 		
-		passwd openvpn
+		sudo passwd openvpn
 
 Configuring OpenVPN Access Server
 ---------------------------------
@@ -61,11 +61,11 @@ Configuring OpenVPN Access Server
 
 	[![OpenVPN Admin Web Interface.](/docs/assets/openvpn-admin-web-resize.png)](/docs/assets/openvpn-admin-web.png)
 
-2.  Click the Client Settings option, and ensure that all options besides "Offer server-locked profile" are checked.
+2.  Click on **Client Settings**. Under the **Customize Client Web Server UI** section, ensure that all options besides "Offer server-locked profile" are checked.
 
 	[![OpenVPN Admin Web Interface.](/docs/assets/openvpn-server-profiles.png)](/docs/assets/openvpn-server-profiles.png)
 
-3.  Once the changes to the settings have been saved, you will be prompted to reload the OpenVPN server.
+3.  Click on **Save Settings**, and you will be prompted to reload the OpenVPN server.
 
 	[![OpenVPN Admin Web Interface.](/docs/assets/openvpn-update-server-resize.png)](/docs/assets/openvpn-update-server.png)
 
@@ -77,17 +77,17 @@ You can add additional users to your OpenVPN Access Server to enable auditing of
 >
 > OpenVPN Access Server's free edition is limited to two users.  If you require additional users for your VPN, you can view pricing details and purchase licenses at [OpenVPN's Website](https://openvpn.net/index.php/access-server/pricing.html)
 
-1.  From the OpenVPN Access Server admin web interface, click the User Permissions tab.
+1.  From the OpenVPN Access Server admin web interface, click the User Permissions link under **User Management**.
 
-2.  Enter the new username that you wish to add in the "New Username" field at the bottom fo the list.
+2.  Enter the new username that you wish to add in the `New Username` field at the bottom fo the list.
 
 	[![OpenVPN Admin User Interface.](/docs/assets/openvpn-admin-web-resize.png)](/docs/assets/openvpn-admin-web.png)
 
-3.  View and configure additional settings for the new user by clicking the "Show" link in the More Settings column.
+3.  View and configure additional settings for the new user by clicking the **Show** link in the "More Settings" column.
 
 	[![OpenVPN Admin User Settings.](/docs/assets/openvpn-admin-user-settings.png)](/docs/assets/openvpn-admin-user-settings.png)
 
-4.  Click the "Save Settings" option at the bottom of the page to complete the creation of the new user account.
+4.  Click the **Save Settings** option at the bottom of the page to complete the creation of the new user account.
 
 ###Permit Autologin Profiles
 
