@@ -218,16 +218,18 @@ Configuring your Web Server with a 301 Redirect
       /etc/apache2/sites-available/example.com.conf
       :   ~~~ apache
       
-        NameVirtualHost *:80
+      	<VirtualHost *:80>
+	    ServerAdmin   webmaster@example.com
+	    ServerName    example.com
+	    ServerAlias   www.example.com
+	    DocumentRoot  /var/www/example.com/public_html/
+	    ErrorLog      /var/www/example.com/logs/error.log
+	    CustomLog     /var/www/example.com/logs/access.log combined
+	    RewriteEngine On
+	    RewriteCond   %{HTTP:X-Forwarded-Proto} !https
+	    RewriteRule   ^.*$ https://%{SERVER_NAME}%{REQUEST_URI}
+	</VirtualHost>
 
-        <VirtualHost *:80>
-            ServerAdmin webmaster@example.com
-            ServerName example.com
-            ServerAlias www.example.com
-            DocumentRoot /srv/www/example.com/public_html/
-            ErrorLog /var/www/example.com/logs/error.log
-            CustomLog /var/www/example.com/logs/access.log combined
-        </VirtualHost>
 
 #### Configuring your vhost file for the Nginx Webserver.
 
@@ -238,18 +240,18 @@ Configuring your Web Server with a 301 Redirect
 	:   ~~~ nginx
 
 		    server {
-		    server_name frijoles.world;
-		    rewrite ^/(.*) https://frijoles.world/$1 permanent;
+		    server_name example.com;
+		    rewrite ^/(.*) https://example.com/$1 permanent;
 		    }
 
 		    server {
 		        listen   80;
-		        server_name www.frijoles.com frijoles.com;
-		        access_log /srv/www/frijoles.com/logs/access.log;
-		        error_log /srv/www/frijoles.com/logs/error.log;
+		        server_name www.example.com example.com;
+		        access_log /srv/www/example.com/logs/access.log;
+		        error_log /srv/www/example.com/logs/error.log;
 
 		    location / {
-		        root   /srv/www/frijoles.com/public_html;
+		        root   /srv/www/example.com/public_html;
 		        index  index.html index.htm;
 		        }
 		    } 
