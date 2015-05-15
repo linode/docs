@@ -67,7 +67,7 @@ Follow these steps to remove an API key. If all keys are removed, the API will b
 
  {: .note }
 >
-> Using the [Linode Manager iPhone App](https://www.linode.com/iphone/) or the [Linode CLI](/docs/cli) will enable access to the API and generate a new API key, even if you have removed (or never created) all API keys for this account. If a key has been saved within the application, that key will be used in the future. If no key is saved in the application, a new key will be generated, even if your account has other existing keys.
+> Using the [Linode Manager iPhone App](https://www.linode.com/mobile/) or the [Linode CLI](/docs/cli) will enable access to the API and generate a new API key, even if you have removed (or never created) all API keys for this account. If a key has been saved within the application, that key will be used in the future. If no key is saved in the application, a new key will be generated, even if your account has other existing keys.
 
 
 

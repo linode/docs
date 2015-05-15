@@ -40,7 +40,7 @@ The following is a list of software with known issues running on a 32-bit distri
 -   OpeniSCSI
 -   Java
 
-If you're ready to rebuild your Linode using a 64-bit distribution, you can start by following the steps outlined [here](https://library.linode.com/disk-images-config-profiles#sph_creating-a-disk-image-with-a-linux-distribution-installed) to create a second deployment. From there, you can copy your data to the new 64-bit version, then delete your old profile and disks.
+If you're ready to rebuild your Linode using a 64-bit distribution, you can start by following the steps outlined [here](/docs/migrate-to-linode/disk-images/disk-images-and-configuration-profiles/) to create a second deployment. From there, you can copy your data to the new 64-bit version, then delete your old profile and disks.
 
 Otherwise, find your Linux distribution of choice below to check for additional known issues.
 

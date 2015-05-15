@@ -90,8 +90,8 @@ Once Postfix is properly configured, edit the `/etc/postfix/virtual` file to con
 {: .file-excerpt }
 /etc/postfix/virtual
 :   ~~~
-    admin@example.org bucknell
-    foreman@example.org bucknell
+    admin@example.org example
+    foreman@example.org example
 
     squire@example.com squire
     squire@example.com squire
@@ -102,12 +102,12 @@ Once Postfix is properly configured, edit the `/etc/postfix/virtual` file to con
     jay@example.com jay@chartercast.net
 
     lollipop@example.com stacy@morris.net, squire
-    jockey@example.org squire, bucknell
+    jockey@example.org squire, example
 
     @oddington.com oddington
     ~~~
 
-In this example there are a number of addresses in the `example.org` domain forwarded to the `bucknell` system user account. In the next group, a collection of emails at different domains beginning with the `squire` name, are all forwarded to the `squire` system user group. Finally, a number of email addresses at the `example.com` domain are forwarded to external addresses at the fictitious `chartercast.net` domain. The next two email addresses are directed to multiple sources: `lollipop@example.com` mail is delivered to the local `squire` user as well as the external email address `stacy@morris.net`, while `jockey@example.org` is delivered to the local system users `squire` and `bucknell`. Finally all messages sent to addresses within the `oddington.com` domain are forwarded to the mailbox for the `oddington` user.
+In this example there are a number of addresses in the `example.org` domain forwarded to the `example` system user account. In the next group, a collection of emails at different domains beginning with the `squire` name, are all forwarded to the `squire` system user group. Finally, a number of email addresses at the `example.com` domain are forwarded to external addresses at the fictitious `chartercast.net` domain. The next two email addresses are directed to multiple sources: `lollipop@example.com` mail is delivered to the local `squire` user as well as the external email address `stacy@morris.net`, while `jockey@example.org` is delivered to the local system users `squire` and `example`. Finally all messages sent to addresses within the `oddington.com` domain are forwarded to the mailbox for the `oddington` user.
 
 When you've successfully edited your `/etc/postfix/virtual` file to ensure the proper delivery of your email, issue the following command to rebuild the virtual alias database:
 

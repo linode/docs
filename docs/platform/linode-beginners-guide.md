@@ -68,7 +68,7 @@ First and foremost, you might want to give the official [Linode backup system](h
 How can I install software on my Linode?
 ----------------------------------------
 
-Please refer to our guide on [Linux package management](/docs/using-linux/package-management) for distribution-specific instructions on getting software installed on your Linode. As you have full root access to your system, you're allowed to install anything that complies with our [terms of service](http://www.linode.com/tos.cfm).
+Please refer to our guide on [Linux package management](/docs/using-linux/package-management) for distribution-specific instructions on getting software installed on your Linode. As you have full root access to your system, you're allowed to install anything that complies with our [terms of service](http://www.linode.com/tos).
 
 How do I add another IP address?
 --------------------------------
@@ -121,7 +121,7 @@ For those just getting started with Linux systems, we've created a series of gui
 Where can I get help with something not covered here?
 -----------------------------------------------------
 
-We always recommend consulting our excellent [user community](http://www.linode.com/community) first when faced with a question that doesn't seem to be addressed in our documentation. That said, if you get stuck you may open a support ticket from the "Support" tab in the Linode Manager.
+We always recommend consulting our excellent [user community](https://forum.linode.com) first when faced with a question that doesn't seem to be addressed in our documentation. That said, if you get stuck you may open a support ticket from the "Support" tab in the Linode Manager.
 
 
 

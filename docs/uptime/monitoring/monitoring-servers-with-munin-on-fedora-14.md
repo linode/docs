@@ -60,8 +60,8 @@ The last section of the `munin.conf` file defines the hosts Munin retrieves info
 {: .file }
 /etc/munin/munin.conf
 
-> [ducklington.org]
-> :   address ducklington.org
+> [example.com]
+> :   address example.com
 >
 For more complex configurations, including grouping domains, see the comment section in the file, reproduced below for your convenience:
 
@@ -111,8 +111,8 @@ If you are using the [Apache HTTP Server](/docs/web-servers/apache/) you can cre
 /etc/httpd/conf.d/vhost.conf
 :   ~~~ apache
     <VirtualHost 123.45.67.89:80>
-       ServerAdmin webmaster@stats.ducklington.org
-       ServerName stats.ducklington.org
+       ServerAdmin webmaster@stats.example.com
+       ServerName stats.example.com
        DocumentRoot /var/www/html/munin
        <Directory />
            Options FollowSymLinks

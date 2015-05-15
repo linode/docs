@@ -61,8 +61,8 @@ The last section of the `munin.conf` file defines the hosts Munin retrieves info
 {: .file }
 /etc/munin/munin.conf
 
-> [ducklington.org]
-> :   address ducklington.org
+> [example.com]
+> :   address example.com
 >
 For more complex configurations, including grouping domains, see the comment section in the file, reproduced below for your convenience:
 
@@ -109,11 +109,11 @@ You can use Munin with the web server of your choice, simply point your web serv
 If you are using the [Apache HTTP Server](/docs/web-servers/apache/) you can create a Virtual Host configuration to serve the reports from Munin. In this scenario, we've created a subdomain in the DNS Manager and are now creating the virtual host file:
 
 {: .file }
-/etc/apache2/sites-available/stats.ducklington.org
+/etc/apache2/sites-available/stats.example.com
 :   ~~~ apache
     <VirtualHost 123.45.67.89:80>
-       ServerAdmin webmaster@stats.ducklington.org
-       ServerName stats.ducklington.org
+       ServerAdmin webmaster@stats.example.com
+       ServerName stats.example.com
        DocumentRoot /var/www/munin
        <Directory />
            Options FollowSymLinks
@@ -128,7 +128,7 @@ If you are using the [Apache HTTP Server](/docs/web-servers/apache/) you can cre
 
 If you use this configuration you will want to issue the following commands to ensure that all required directories exist, and that your site is enabled:
 
-    a2ensite stats.ducklington.org
+    a2ensite stats.example.com
 
 Now restart the server so that the changes to your configuration file can take effect. Issue the following command:
 

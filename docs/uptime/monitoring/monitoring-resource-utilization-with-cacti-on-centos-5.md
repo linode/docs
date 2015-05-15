@@ -64,12 +64,12 @@ SNMPD binds to all local interface by default. If you only plan on using Cacti l
 
 In this example SNMPD is configured to listen for data only on the LAN IP address `192.168.169.170`. To limit access to SNMPD so that only local data can access the daemon, use `127.0.0.1` as the IP address. If, however, you need to receive data from machines on the Internet at large, do not append any IP addresses to this line.
 
-We'll create an SNMP "community" to help identify our group of devices for Cacti. In this instance, our hostname is "bucknell.org", so we've named the community "Bucknell". The community name choice is up to the user. Add the following line to the section of `snmpd.conf` with `com2sec` directives making sure to only grant `readonly` privileges.
+We'll create an SNMP "community" to help identify our group of devices for Cacti. In this instance, our hostname is "example.org", so we've named the community "example". The community name choice is up to the user. Add the following line to the section of `snmpd.conf` with `com2sec` directives making sure to only grant `readonly` privileges.
 
 {: .file }
 /etc/snmp/snmpd.conf
 
-> com2sec readonly localhost Bucknell
+> com2sec readonly localhost example
 
 If you want a remote machine to connect to Cacti, replace "localhost" with the IP address of the remote machine.
 
@@ -156,7 +156,7 @@ Configuring Cacti
 
 At this point Cacti will contain an entry for `localhost`, which we'll need to modify. Click the "Console" tab in the top left corner, and select "Create Devices for network". Click the "Localhost" entry to begin making the needed changes. Select the Host Template drop down and pick the "ucd/net SNMP Host". Scroll down to SNMP Options and click the drop down box for SNMP Version, selecting "Version 1". Enter "public" in the box for the "SNMP Community" field. The "Associated Graph Templates" section allows you to add additional graphs. Hit "Save" to keep the changes.
 
-Click "Settings" under "Configuration" in the left menu bar and set your "SNMP Version" to "Version 1" in the drop down box. Type the name of your community for the "SNMP Community" (in this example, "Bucknell") and save. To run the data poller to collect data for the first time, issue the following command:
+Click "Settings" under "Configuration" in the left menu bar and set your "SNMP Version" to "Version 1" in the drop down box. Type the name of your community for the "SNMP Community" (in this example, "example") and save. To run the data poller to collect data for the first time, issue the following command:
 
     php /usr/share/cacti/cmd.php 
 
@@ -186,7 +186,7 @@ Next we'll need to modify the `/etc/snmp/snmpd.conf` file with the name of our c
     mv /etc/snmp/snmpd.conf /etc/snmp/old.snmpd.conf
     echo "rocommunity mycommunity" > /etc/snmp/snmpd.conf
 
-Note that the format is "rocommunity community\_name", where `community_name` is the name of the community you originally used with Cacti, e.g. `Bucknell`. If you're monitoring a CentOS machine and you need to configure which interface SNMPD binds to you must edit the `/etc/sysconfig/snmpd.options` file. Append any IP address needed to the end of the following line, and uncomment it by removing the `#` at the beginning if needed. You should not need to edit this file.
+Note that the format is "rocommunity community\_name", where `community_name` is the name of the community you originally used with Cacti, e.g. `example`. If you're monitoring a CentOS machine and you need to configure which interface SNMPD binds to you must edit the `/etc/sysconfig/snmpd.options` file. Append any IP address needed to the end of the following line, and uncomment it by removing the `#` at the beginning if needed. You should not need to edit this file.
 
 {: .file }
 /etc/sysconfig/snmpd.options

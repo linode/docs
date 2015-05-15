@@ -23,32 +23,32 @@ This guide provides a number of configuration examples and suggestions for using
 Case One: Separating Static Content from Dynamic Content
 --------------------------------------------------------
 
-In this configuration, Apache provides two or more virtual hosts which perform different functions. Here we might configure our site to use `static.ducklington.org` for hosting static resources for direct delivery like images, JavaScript, CSS files, media files, and static HTML, while using `ducklington.org` to host dynamic content including CGI scripts and PHP pages. In this kind of system it becomes easy to move the `static` subdomain to another Linode instance or content delivery system without modifying any internal configuration.
+In this configuration, Apache provides two or more virtual hosts which perform different functions. Here we might configure our site to use `static.example.com` for hosting static resources for direct delivery like images, JavaScript, CSS files, media files, and static HTML, while using `example.com` to host dynamic content including CGI scripts and PHP pages. In this kind of system it becomes easy to move the `static` subdomain to another Linode instance or content delivery system without modifying any internal configuration.
 
 To accomplish this, insert the following configuration directives into your Virtual Hosting configuration:
 
 {: .file-excerpt }
 Apache Virtual Host Configuration
 :   ~~~ apache
-    <VirtualHost ducklington.org:80> 
-        ServerAdmin admin@ducklington.org
-        ServerName static.ducklington.org
-        DocumentRoot /srv/www/static.ducklington.org/public_html/
-        ErrorLog /srv/www/static.ducklington.org/logs/error.log 
-        CustomLog /srv/www/static.ducklington.org/logs/access.log combined
+    <VirtualHost example.com:80> 
+        ServerAdmin admin@example.com
+        ServerName static.example.com
+        DocumentRoot /srv/www/static.example.com/public_html/
+        ErrorLog /srv/www/static.example.com/logs/error.log 
+        CustomLog /srv/www/static.example.com/logs/access.log combined
     </VirtualHost>
     ~~~
 
 Create the necessary directories by issuing the following commands:
 
-    mkdir -p /srv/www/static.ducklington.org/public_html/
-    mkdir -p /srv/www/static.ducklington.org/logs/        
+    mkdir -p /srv/www/static.example.com/public_html/
+    mkdir -p /srv/www/static.example.com/logs/        
 
 Reload the web server configuration to create the virtual host. Issue the following command at this point and at any point after you've made changes to an Apache configuration file:
 
     /etc/init.d/apache2 reload
 
-Now, place the static files in the `/srv/www/static.ducklington.org/public_html/` folder and ensure all static content is served from URLs that begin with `http://static.ducklington.org/`. You must create an [A Record](/docs/dns-guides/introduction-to-dns#a_aaaa_records) that points to your Linode's IP for the `static.ducklington.org` domain. You can repeat and expand on this process by effectively creating a small cluster of independent servers that can serve separate components of a single website using sub-domains.
+Now, place the static files in the `/srv/www/static.example.com/public_html/` folder and ensure all static content is served from URLs that begin with `http://static.example.com/`. You must create an [A Record](/docs/dns-guides/introduction-to-dns#a_aaaa_records) that points to your Linode's IP for the `static.example.com` domain. You can repeat and expand on this process by effectively creating a small cluster of independent servers that can serve separate components of a single website using sub-domains.
 
 Case Two: Using ProxyPass to Delegate Services to Alternate Machines
 --------------------------------------------------------------------
@@ -64,18 +64,18 @@ Once `mod_proxy` is enabled and configured, you can insert the following directi
 {: .file-excerpt }
 Apache Virtual Host Configuration
 :   ~~~ apache
-    ProxyPass /static/ http://static.ducklington.org/
-    ProxyPass /media http://media.ducklington.org
+    ProxyPass /static/ http://static.example.com/
+    ProxyPass /media http://media.example.com
     ProxyPass /wiki/static/ !
-    ProxyPass /wiki/ http://application.ducklington.org/
+    ProxyPass /wiki/ http://application.example.com/
     ~~~
 
-When added to the virtual host configuration for the `ducklington.org` domain, these directives will have the following effects.
+When added to the virtual host configuration for the `example.com` domain, these directives will have the following effects.
 
--   All requests for resources located at `http://ducklington.org/static/` will be served by the server running at `http://static.ducklington.org`. As a result, a request from the users perspective for `http://ducklington.org/static/screen.css` will return the resource located at `http://static.ducklington.org/screen.css`. Requests without a trailing slash (i.e. `http://ducklington.org/static`) will not be passed to external server.
--   All requests for resources located at `/media` and paths "below" this location will return resources located at `http://media.ducklington.org`. This functions the same as the `ProxyPass` for `static` above, except it does not include the trailing slash for either domain name. Either form is acceptable, but both the local server address and the proxied URL must agree to ensure that the number of slashes is correct.
--   Requests for `http://ducklington.org/wiki/static/` will **not** be passed to `http://application.ducklington.org/static/` and will be served or processed by the current virtual host in a manner described outside of the current excerpt. Use the `!` directive instead of a URL to add an exception for a subdirectory of a directory that is to be proxy passed. Proxy exclusions must be declared before proxy passes.
--   Requests for resources located below `/wiki/` will be passed to the external server located at `http://application.ducklington.org/` in the conventional manner as described for `/static/` and `/media`. Note that exclusions *must* be declared before proxy passes are declared.
+-   All requests for resources located at `http://example.com/static/` will be served by the server running at `http://static.example.com`. As a result, a request from the users perspective for `http://example.com/static/screen.css` will return the resource located at `http://static.example.com/screen.css`. Requests without a trailing slash (i.e. `http://example.com/static`) will not be passed to external server.
+-   All requests for resources located at `/media` and paths "below" this location will return resources located at `http://media.example.com`. This functions the same as the `ProxyPass` for `static` above, except it does not include the trailing slash for either domain name. Either form is acceptable, but both the local server address and the proxied URL must agree to ensure that the number of slashes is correct.
+-   Requests for `http://example.com/wiki/static/` will **not** be passed to `http://application.example.com/static/` and will be served or processed by the current virtual host in a manner described outside of the current excerpt. Use the `!` directive instead of a URL to add an exception for a subdirectory of a directory that is to be proxy passed. Proxy exclusions must be declared before proxy passes.
+-   Requests for resources located below `/wiki/` will be passed to the external server located at `http://application.example.com/` in the conventional manner as described for `/static/` and `/media`. Note that exclusions *must* be declared before proxy passes are declared.
 
 In essence, the `ProxyPass` directive in this manner allows you to distribute serving HTTP resources amongst a larger pool of machines. At the same time, end users will still see a unified and coherent website hosted on a single domain.
 
@@ -94,37 +94,37 @@ Once `mod_proxy` is enabled and configured, ensure that the server is [configure
 {: .file-excerpt }
 Apache Virtual Host Configuration
 :   ~~~ apache
-    <VirtualHost ducklington.org:80>
-        ServerName ducklington.org
-        ServerAlias www.ducklington.org
-        DocumentRoot /srv/www/ducklington.org/public_html/
+    <VirtualHost example.com:80>
+        ServerName example.com
+        ServerAlias www.example.com
+        DocumentRoot /srv/www/example.com/public_html/
 
-        ErrorLog /srv/www/ducklington.org/logs/error.log 
-        CustomLog /srv/www/ducklington.org/logs/access.log combined
+        ErrorLog /srv/www/example.com/logs/error.log 
+        CustomLog /srv/www/example.com/logs/access.log combined
 
         RewriteEngine On
-        RewriteRule ^/blog/(.*)\.php$ http://app.ducklington.org/blog/$1.php [proxy]
+        RewriteRule ^/blog/(.*)\.php$ http://app.example.com/blog/$1.php [proxy]
     </VirtualHost>
     ~~~
 
-In this example all requests for resources that end with `.php` are proxied to `http://app.ducklington.org/blog/`. This would include requests for `http://ducklington.org/blog/index.php` and `http://ducklington.org/blog/archive/index.php` but not `http://ducklington.org/blog/screen.css` or `http://ducklington.org/blog/` itself. All requests that do not end in `.php` will be served from resources located in the `DocumentRoot`. The `[proxy]` flags tell Apache that the rewritten URL should be passed to the Proxy module: this is equivalent to using the `last` directive as well. When a match is made, rewriting stops and the request is processed.
+In this example all requests for resources that end with `.php` are proxied to `http://app.example.com/blog/`. This would include requests for `http://example.com/blog/index.php` and `http://example.com/blog/archive/index.php` but not `http://example.com/blog/screen.css` or `http://example.com/blog/` itself. All requests that do not end in `.php` will be served from resources located in the `DocumentRoot`. The `[proxy]` flags tell Apache that the rewritten URL should be passed to the Proxy module: this is equivalent to using the `last` directive as well. When a match is made, rewriting stops and the request is processed.
 
 While this method of specifying resources for proxying is much more limited in some respects, it does allow you to very specifically control and distribute HTTP requests among a group of servers. Use the above example, and the others that follow, as inspiration when constructing the rewrite rules for your deployment:
 
 {: .file-excerpt }
 Apache Virtual Host Configuration
 :   ~~~ apache
-    RewriteRule ^/(.*)\.js$ http://static.ducklington.org/javascript/$1.js [proxy]
-    RewriteRule ^/(.*)\.css$ http://static.ducklington.org/styles/$1.css [proxy]
-    RewriteRule ^/(.*)\.jpg$ http://static.ducklington.org/images/$1.jpg [proxy]
+    RewriteRule ^/(.*)\.js$ http://static.example.com/javascript/$1.js [proxy]
+    RewriteRule ^/(.*)\.css$ http://static.example.com/styles/$1.css [proxy]
+    RewriteRule ^/(.*)\.jpg$ http://static.example.com/images/$1.jpg [proxy]
 
-    RewriteRule ^/blog/(.*)\.php$ http://app.ducklington.org/wordpress/$1.php [proxy]
-    RewriteRule ^/wiki/(.*)$ http://app.ducklington.org/mediawiki/$1 [proxy]
+    RewriteRule ^/blog/(.*)\.php$ http://app.example.com/wordpress/$1.php [proxy]
+    RewriteRule ^/wiki/(.*)$ http://app.example.com/mediawiki/$1 [proxy]
     ~~~
 
-In the first group we present three examples of requests for specific types of files that will be proxied to various directories in the `http://static.ducklington.org/` host. Note that the entire contents of the parenthetical (e.g. `(.*)` in this case) will be passed to the proxy host. If you do not capture the extension of a request in the regular expression, you must add it to the rewritten location. Using the first example, assuming these rewrite rules are in the `ducklington.org` virtual host, a requests for `http://ducklington.org/toggle.js` and `http://ducklington.org/blog/js/functions.js` are passed to `http://static.ducklington.org/javascript/toggle.js` and `http://static.ducklington.org/javascript/blog/js/functions.js` respectively.
+In the first group we present three examples of requests for specific types of files that will be proxied to various directories in the `http://static.example.com/` host. Note that the entire contents of the parenthetical (e.g. `(.*)` in this case) will be passed to the proxy host. If you do not capture the extension of a request in the regular expression, you must add it to the rewritten location. Using the first example, assuming these rewrite rules are in the `example.com` virtual host, a requests for `http://example.com/toggle.js` and `http://example.com/blog/js/functions.js` are passed to `http://static.example.com/javascript/toggle.js` and `http://static.example.com/javascript/blog/js/functions.js` respectively.
 
-In the second group of examples, rather than passing the entire request back to a proxy, we choose to only pass a part of the request. In the first rule of this group, a request for `http://ducklington.org/blog/index.php` would be served from `http://app.ducklington.org/wordpress/index.php` however a request for `http://ducklington.org/wordpress/style.css` would not be be passed to `app.ducklington.org`; indeed, given the earlier rules, this request would be passed to `http://static.ducklington.org/styles/wordpress/style.css`. In the second rule in this example, every request for a resource that begins with `http://ducklington.org/wiki/` would be passed to `http://app.ducklington.org/mediawiki/`. With this rewrite rule, both `http://ducklington.org/wiki/index.php` and `http://ducklington.org/wiki/info/about.html` would be rewritten as `http://app.ducklington.org/mediawiki/index.php` and `http://app.ducklington.org/mediawiki/info/about.html`.
+In the second group of examples, rather than passing the entire request back to a proxy, we choose to only pass a part of the request. In the first rule of this group, a request for `http://example.com/blog/index.php` would be served from `http://app.example.com/wordpress/index.php` however a request for `http://example.com/wordpress/style.css` would not be be passed to `app.example.com`; indeed, given the earlier rules, this request would be passed to `http://static.example.com/styles/wordpress/style.css`. In the second rule in this example, every request for a resource that begins with `http://example.com/wiki/` would be passed to `http://app.example.com/mediawiki/`. With this rewrite rule, both `http://example.com/wiki/index.php` and `http://example.com/wiki/info/about.html` would be rewritten as `http://app.example.com/mediawiki/index.php` and `http://app.example.com/mediawiki/info/about.html`.
 
 In order to ensure that your rewrite rules function as predicted, keep in mind the following:
 
@@ -141,21 +141,21 @@ The following case presents a more streamlined and simple proxy and rewrite exam
 {: .file-excerpt }
 Apache Virtual Host Configuration
 :   ~~~ apache
-    <VirtualHost ducklington.org:80>
-        ServerName ducklington.org
-        ServerAlias www.ducklington.org
-        DocumentRoot /srv/www/ducklington.org/public_html/
+    <VirtualHost example.com:80>
+        ServerName example.com
+        ServerAlias www.example.com
+        DocumentRoot /srv/www/example.com/public_html/
 
-        ErrorLog /srv/www/ducklington.org/logs/error.log 
-        CustomLog /srv/www/ducklington.org/logs/access.log combined
+        ErrorLog /srv/www/example.com/logs/error.log 
+        CustomLog /srv/www/example.com/logs/access.log combined
 
         RewriteEngine On
-        RewriteCond /srv/www/ducklington.org/public_html%{REQUEST_FILENAME} !-f
-        RewriteRule ^/(.*)$ http://app.ducklington.org/$1 [proxy]
+        RewriteCond /srv/www/example.com/public_html%{REQUEST_FILENAME} !-f
+        RewriteRule ^/(.*)$ http://app.example.com/$1 [proxy]
     </VirtualHost>
     ~~~
 
-In this example, the `RewriteCond` controls the behavior of the `RewriteEngine` so that requests for resources will *only* be passed to the proxied server (e.g. `http://app.ducklington.org/`) if there is no file in the `/srv/www/ducklington.org/public_html/` directory that matches the request. All other requests are passed to `http://app.ducklington.org/`. This kind of configuration is quite useful in situations where your deployment's dynamic content is powered by an application specific HTTP server, but also requires static content that can be more efficiently served directly from Apache.
+In this example, the `RewriteCond` controls the behavior of the `RewriteEngine` so that requests for resources will *only* be passed to the proxied server (e.g. `http://app.example.com/`) if there is no file in the `/srv/www/example.com/public_html/` directory that matches the request. All other requests are passed to `http://app.example.com/`. This kind of configuration is quite useful in situations where your deployment's dynamic content is powered by an application specific HTTP server, but also requires static content that can be more efficiently served directly from Apache.
 
 Case Five: Deploy an Apache Proxy Cluster
 -----------------------------------------
@@ -172,19 +172,19 @@ Edit the `/etc/apache2/mods-available/proxy.conf` file as described in [this doc
 {: .file-excerpt }
 Apache Virtual Host Configuration
 :   ~~~ apache
-    <VirtualHost ducklington.org:80>
-        ServerName ducklington.org
-        ServerAlias www.ducklington.org
+    <VirtualHost example.com:80>
+        ServerName example.com
+        ServerAlias www.example.com
 
-        ErrorLog /srv/www/ducklington.org/logs/error.log 
-        CustomLog /srv/www/ducklington.org/logs/access.log combined
+        ErrorLog /srv/www/example.com/logs/error.log 
+        CustomLog /srv/www/example.com/logs/access.log combined
 
         <Proxy balancer://cluster>
-            BalancerMember http://app1.ducklington.org
-            BalancerMember http://app2.ducklington.org
-            BalancerMember http://app3.ducklington.org
-            BalancerMember http://app4.ducklington.org
-            BalancerMember http://app5.ducklington.org
+            BalancerMember http://app1.example.com
+            BalancerMember http://app2.example.com
+            BalancerMember http://app3.example.com
+            BalancerMember http://app4.example.com
+            BalancerMember http://app5.example.com
         </Proxy>
 
         ProxyPass / balancer://cluster/
@@ -195,7 +195,7 @@ Apache Virtual Host Configuration
     </VirtualHost>
     ~~~
 
-In this case we establish a cluster of services, running on hosts named `app1.ducklington.org` through `app4.ducklington.org`. You can specify any host name or IP and port combination when creating the initial cluster. The `BalancerMember` directive also takes all of the arguments of the [ProxyPass directive](http://httpd.apache.org/docs/2.2/mod/mod_proxy.html#proxypass) which allow you to customize and limit the behavior of each cluster component. Variables like `min=`, `max=`, and `smax=` allow you to control "minimum" and "maximum" limits for sessions as well as "soft maximum" which sets a soft maximum after which additional connections will be subject to a time to live. Once the cluster is established simply use the `ProxyPass` directive as described in earlier cases to pass requests to the cluster.
+In this case we establish a cluster of services, running on hosts named `app1.example.com` through `app4.example.com`. You can specify any host name or IP and port combination when creating the initial cluster. The `BalancerMember` directive also takes all of the arguments of the [ProxyPass directive](http://httpd.apache.org/docs/2.2/mod/mod_proxy.html#proxypass) which allow you to customize and limit the behavior of each cluster component. Variables like `min=`, `max=`, and `smax=` allow you to control "minimum" and "maximum" limits for sessions as well as "soft maximum" which sets a soft maximum after which additional connections will be subject to a time to live. Once the cluster is established simply use the `ProxyPass` directive as described in earlier cases to pass requests to the cluster.
 
 The `lbmethod=` argument to the `ProxyPass` directive, controls the method by which Apache distributes requests to the backend server. There are three options displayed in commented lines (e.g. beginning with hash marks, `#`). The first, `lbmethod=byrequests` is the default and equivalent to not specifying a `lbmethod=` argument. `byrequests` distributes requests, so that each backend server receives the same number of requests or the configured share of the requests. By contrast the `bytraffic` and `bybusyness` methods attempt to distribute the traffic between different cluster elements by assessing the amount of actual traffic and load, respectively, on each backend. Test each method your deployment to ensure that you select the most useful load balancer method.
 
@@ -217,7 +217,7 @@ Apache Virtual Host Configuration
     </Location>
     ~~~
 
-Modify the `Allow from` directive to allow access *only* from your current local machine's IP address, and read more about [rule-based access control](/docs/web-servers/apache/configuration/rule-based-access-control). Now visit `/balancer-manager` of the domain of your virtual host (e.g. `ducklington.org`,) in our example `http://ducklington.org/balancer-manager` to use Apache's tools for managing your cluster. Ensure that the `/balancer-manager` location is **not** established at a location that is to be passed to a proxied server. Congratulations you are now able to configure a fully functional cluster of web servers using the Apache web server as a frontend!
+Modify the `Allow from` directive to allow access *only* from your current local machine's IP address, and read more about [rule-based access control](/docs/web-servers/apache/configuration/rule-based-access-control). Now visit `/balancer-manager` of the domain of your virtual host (e.g. `example.com`,) in our example `http://example.com/balancer-manager` to use Apache's tools for managing your cluster. Ensure that the `/balancer-manager` location is **not** established at a location that is to be passed to a proxied server. Congratulations you are now able to configure a fully functional cluster of web servers using the Apache web server as a frontend!
 
 More Information
 ----------------

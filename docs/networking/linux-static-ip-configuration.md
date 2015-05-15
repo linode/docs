@@ -3,7 +3,7 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Setting up networking for multiple IP addresses.'
-keywords: 'static ip,linux networking,ifconfig,configure network,linux network,multiple ip'
+keywords: 'static ip,linux networking,ifconfig,configure network,linux network,multiple ip,static'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['networking/configuring-static-ip-interfaces/']
 modified: Saturday, December 27th, 2014
@@ -46,9 +46,9 @@ If you haven't already done so, set your system's hostname and FQDN (fully quali
 ### Debian and Ubuntu
 
 
-Issue the following commands to set the hostname, replacing "plato" with the hostname of your choice: 
+Issue the following commands to set the hostname, replacing "hostname" with the hostname of your choice: 
 
-    echo "plato" > /etc/hostname
+    echo "hostname" > /etc/hostname
     hostname -F /etc/hostname
 
 If it exists, edit the file /etc/default/dhcpd to comment out the "SET_HOSTNAME" directive:
@@ -63,19 +63,19 @@ Proceed to the section entitled "Update /etc/hosts" to continue.
 
 ### CentOS/Fedora
 
-Issue the following commands to set the hostname, replacing "plato" with the hostname of your choice:
+Issue the following commands to set the hostname, replacing "hostname" with the hostname of your choice:
 
-    echo "HOSTNAME=plato" >> /etc/sysconfig/network
-    hostname "plato"
+    echo "HOSTNAME=hostname" >> /etc/sysconfig/network
+    hostname "hostname"
 
 Proceed to the section entitled "Update /etc/hosts" to continue.
 
 ### Slackware
 
 
-Issue the following commands to set the hostname, replacing "plato" with the hostname of your choice:
+Issue the following commands to set the hostname, replacing "hostname" with the hostname of your choice:
 
-    echo "plato" > /etc/HOSTNAME
+    echo "hostname" > /etc/HOSTNAME
     hostname -F /etc/HOSTNAME
 
 Proceed to the section entitled "Update /etc/hosts" to continue.
@@ -83,9 +83,9 @@ Proceed to the section entitled "Update /etc/hosts" to continue.
 ### Gentoo
 
 
-Issue the following commands to set the hostname, replacing "plato" with the hostname of your choice:
+Issue the following commands to set the hostname, replacing "hostname" with the hostname of your choice:
 
-    echo "HOSTNAME=\"plato\"" > /etc/conf.d/hostname
+    echo "HOSTNAME=\"hostname\"" > /etc/conf.d/hostname
     /etc/init.d/hostname restart
 
 
@@ -94,9 +94,9 @@ Proceed to the section entitled "Update /etc/hosts" to continue.
 ### Arch Linux
 
 
-Issue the following commands to set the hostname, replacing "plato" with the hostname of your choice:
+Issue the following commands to set the hostname, replacing "hostname" with the hostname of your choice:
 
-    echo "plato" > /etc/hostname
+    echo "hostname" > /etc/hostname
     hostname -F /etc/hostname
 
 Proceed to the section entitled "Update /etc/hosts" to continue.
@@ -104,13 +104,13 @@ Proceed to the section entitled "Update /etc/hosts" to continue.
 ### Update /etc/hosts
 
 
-Next, edit your `/etc/hosts` file to resemble the following example, replacing "plato" with your chosen hostname, "example.com" with your system's domain name, and "198.51.100.5" with your system's IP address. As with the hostname, the domain name part of your FQDN does not necessarily need to have any relationship to websites or other services hosted on the server (although it may if you wish). As an example, you might host "www.something.com" on your server, but the system's FQDN might be "mars.something.com."
+Next, edit your `/etc/hosts` file to resemble the following example, replacing "hostname" with your chosen hostname, "example.com" with your system's domain name, and "198.51.100.5" with your system's IP address. As with the hostname, the domain name part of your FQDN does not necessarily need to have any relationship to websites or other services hosted on the server (although it may if you wish). As an example, you might host "www.something.com" on your server, but the system's FQDN might be "mars.something.com."
 
 {: .file }
 /etc/hosts
 : ~~~
   127.0.0.1 localhost.localdomain localhost 
-  198.51.100.5 plato.example.com plato
+  198.51.100.5 hostname.example.com hostname
   ~~~
 
 The value you assign as your system's FQDN should have an "A" record in DNS pointing to your Linode's IP address.

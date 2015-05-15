@@ -82,17 +82,17 @@ Apache Virtual Host Configuration
 
 This line will allow mod\_python to look for your settings file in the `/srv/www/brackley.net/application` directory, for an application in the "brackley.net" virtual host entry.
 
-The `Location` block tells Apache what to do when a request comes in for a given URL location. For instance, if the above block is located in the `VirtualHost` entry for the `ducklington.org` domain, then all requests for the URL `http://ducklington.org/` would be directed to the Django application. Consider the following complete virtual host configuration.
+The `Location` block tells Apache what to do when a request comes in for a given URL location. For instance, if the above block is located in the `VirtualHost` entry for the `example.com` domain, then all requests for the URL `http://example.com/` would be directed to the Django application. Consider the following complete virtual host configuration.
 
 {: .file-excerpt }
 Apache Virtual Host Configuration
 :   ~~~ apache
-    <VirtualHost ducklington.org:80>
-        ServerName ducklington.org
-        ServerAdmin squire@ducklington.org
-        DocumentRoot /srv/www/ducklington.org/public_html
+    <VirtualHost example.com:80>
+        ServerName example.com
+        ServerAdmin squire@example.com
+        DocumentRoot /srv/www/example.com/public_html
 
-        PythonPath "['/srv/www/ducklington.org/application'] + sys.path"
+        PythonPath "['/srv/www/example.com/application'] + sys.path"
         <Location "/">
             SetHandler python-program
             PythonHandler django.core.handlers.modpython
@@ -110,7 +110,7 @@ Given this configuration the `DocumentRoot` is optional, but we recommend that y
 Hosting Static Content
 ----------------------
 
-If you wanted to have a static page located at the root of the domain and only use Django to power a blog at the URL `http://ducklington.org/blog/`, the above block would begin with `<Location "/blog">`. In this situation, you would need to set up a DocumentRoot to contain the files for the static portion of the site.
+If you wanted to have a static page located at the root of the domain and only use Django to power a blog at the URL `http://example.com/blog/`, the above block would begin with `<Location "/blog">`. In this situation, you would need to set up a DocumentRoot to contain the files for the static portion of the site.
 
 Typically, Django applications use a secondary "media" web server to more efficiently serve static content like images, video, audio, and even static text resources. This permits more effective scaling possibilities. If you need to turn off Django and `mod_python` for a particular URL, add a second location block, like so:
 
@@ -122,7 +122,7 @@ Apache Virtual Host Configuration
     </Location>
     ~~~
 
-In the above example, this would allow any static content requested with the URL `http://ducklington.org/files/` to be served without Django interference from the location specified in the `DocumentRoot`. An alternate, and potentially easier solution, would use a second VirtualHost for all non-Python content.
+In the above example, this would allow any static content requested with the URL `http://example.com/files/` to be served without Django interference from the location specified in the `DocumentRoot`. An alternate, and potentially easier solution, would use a second VirtualHost for all non-Python content.
 
 Hosting Multiple Django Applications
 ------------------------------------

@@ -83,12 +83,12 @@ SNMPD binds to `localhost` by default. If you only plan on using Cacti to monito
 
 At this point SNMPD is configured to listen on all interfaces. Now we'll open `/etc/snmp/snmpd.conf` to establish which host is trusted to receive data.
 
-We'll create an SNMP "community" to help identify our group of devices for Cacti. In this instance, our hostname is "bucknell.org", so we've named the community "Bucknell". The community name choice is up to the user. Locate the section of `snmpd.conf` that begins with `com2sec` and make sure the `readonly` line is the only uncommented line. This section of the file should now look like this:
+We'll create an SNMP "community" to help identify our group of devices for Cacti. In this instance, our hostname is "example.org", so we've named the community "example". The community name choice is up to the user. Locate the section of `snmpd.conf` that begins with `com2sec` and make sure the `readonly` line is the only uncommented line. This section of the file should now look like this:
 
 {: .file }
 /etc/snmp/snmpd.conf
 
-> \#com2sec paranoid default public com2sec readonly localhost Bucknell \#com2sec readwrite default private
+> \#com2sec paranoid default public com2sec readonly localhost example \#com2sec readwrite default private
 
 If you want a remote machine to connect to Cacti, replace "localhost" with the IP address of the remote machine.
 
@@ -112,9 +112,9 @@ At the login screen, enter `admin/admin` for the username/password combination. 
 Configuring Cacti
 -----------------
 
-At this point Cacti will contain an entry for `localhost`, which we'll need to modify. Click the "Console" tab in the top left corner, and select "Create Devices for network". Click the "Localhost" entry to begin making the needed changes. Select the Host Template drop down and pick the "ucd/net SNMP Host". Scroll down to SNMP Options and click the drop down box for SNMP Version, picking "Version 1". Enter "Bucknell" (or the community name you created above) in the box for the "SNMP Community" field. The "Associated Graph Templates" section allows you to add additional graphs. Hit "Save" to keep the changes.
+At this point Cacti will contain an entry for `localhost`, which we'll need to modify. Click the "Console" tab in the top left corner, and select "Create Devices for network". Click the "Localhost" entry to begin making the needed changes. Select the Host Template drop down and pick the "ucd/net SNMP Host". Scroll down to SNMP Options and click the drop down box for SNMP Version, picking "Version 1". Enter "example" (or the community name you created above) in the box for the "SNMP Community" field. The "Associated Graph Templates" section allows you to add additional graphs. Hit "Save" to keep the changes.
 
-Click "Settings" under "Configuration" and set your "SNMP Version" to "Version 1" in the drop down box. Type the name of your community for the "SNMP Community" (in this example, "Bucknell") and save.
+Click "Settings" under "Configuration" and set your "SNMP Version" to "Version 1" in the drop down box. Type the name of your community for the "SNMP Community" (in this example, "example") and save.
 
 Configuring Client Machines
 ---------------------------

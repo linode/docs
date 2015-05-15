@@ -25,9 +25,9 @@ XMPP/Jabber Basics
 
 Though you can successfully run an XMPP server with only a passing familiarity of the way the XMPP network and system works, understanding the following basic concepts will be helpful:
 
--   The *JID* or "Jabber ID," is the unique identifier for a user in the XMPP network. It often looks like an email and contains the username that identifies a specific user on a server, the hostname that identifies the server, and a resource that identifies where a given user is logged in from. The resource is optional, and is often safely omitted or ignored for most users. In following example, "squire" is the username, "ducklington.org" is the hostname, and "/office" is the resource.
+-   The *JID* or "Jabber ID," is the unique identifier for a user in the XMPP network. It often looks like an email and contains the username that identifies a specific user on a server, the hostname that identifies the server, and a resource that identifies where a given user is logged in from. The resource is optional, and is often safely omitted or ignored for most users. In following example, "squire" is the username, "example.com" is the hostname, and "/office" is the resource.
 
-        squire@ducklington/office
+        squire@example/office
 
     Again, the resource is optional; although XMPP allows a single JID to be connected to the server from multiple machines (i.e. resources), the resource adds a useful amount of specificity.
 
@@ -54,7 +54,7 @@ If you have not already configured your `/etc/hosts` as follows, please do that 
 /etc/hosts
 :   ~~~
     127.0.0.1    localhost.localdomain   localhost
-    12.34.56.78  squire.ducklington.org  squire
+    12.34.56.78  squire.example.com  squire
     ~~~
 
 With the hostname configured, you're ready to begin configuring ejabberd.
@@ -74,13 +74,13 @@ Some users will need the ability to administer the XMPP server remotely. By defa
     %% Admin user {acl, admin, {user, "", "localhost"}}.
     ~~~
 
-In Erlang, comments begin with the `%` sign, and the access control list segment contains information in the following form: `{user, "USERNAME", "HOSTNAME"}`. The following examples correspond to the users with the JIDs of `admin@ducklington.org` and `squire@ducklington.org`. You only need to specify one administrator, but you can add more than one administrator simply by adding more lines, as shown below:
+In Erlang, comments begin with the `%` sign, and the access control list segment contains information in the following form: `{user, "USERNAME", "HOSTNAME"}`. The following examples correspond to the users with the JIDs of `admin@example.com` and `squire@example.com`. You only need to specify one administrator, but you can add more than one administrator simply by adding more lines, as shown below:
 
 {: .file-excerpt }
 /etc/ejabberd/ejabberd.cfg
 :   ~~~
-    {acl, admin, {user, "admin", "ducklington.org"}}.
-    {acl, admin, {user, "squire", "ducklington.org"}}.
+    {acl, admin, {user, "admin", "example.com"}}.
+    {acl, admin, {user, "squire", "example.com"}}.
     ~~~
 
 All users specified in this manner have full administrative access to the server through both the XMPP and web-based interfaces. You will have to create your administrative users (as described below) before they can log in.
@@ -95,12 +95,12 @@ A single ejabberd instance can provide XMPP services for multiple domains at onc
     {hosts, ["localhost"]}.
     ~~~
 
-In the following example, ejabberd has been configured to host a number of additional domains. In this case, these domains are "squire.bucknell.net," "bucknell.net," and "ducklington.org."
+In the following example, ejabberd has been configured to host a number of additional domains. In this case, these domains are "squire.example.com," "example.com," and "example.com."
 
 {: .file-excerpt }
 /etc/ejabberd/ejabberd.cfg
 :   ~~~
-    {hosts, ["squire.bucknell.net", "bucknell.net", "ducklington.org"]}.
+    {hosts, ["squire.example.com", "example.com", "example.com"]}.
     ~~~
 
 You can specify any number of hostnames in the host list, but you should be careful to avoid inserting a line break as this will cause ejabberd to fail.
@@ -138,21 +138,21 @@ Once installed, the use and configuration of ejabberd is uncomplicated. To start
 
 By default, ejabberd is configured to disallow "in-band-registrations," which prevents Internet users from getting accounts on your server without your consent. To register a new user, issue a command in the following form:
 
-    ejabberdctl register lollipop ducklington.org man
+    ejabberdctl register lollipop example.com man
 
-In this example, `lollipop` is the username, `ducklington.org` is the domain, and `man` is the password. This will create a JID for `lollipop@ducklington.org` with the password of "man." Use this form to create the administrative users specified above.
+In this example, `lollipop` is the username, `example.com` is the domain, and `man` is the password. This will create a JID for `lollipop@example.com` with the password of "man." Use this form to create the administrative users specified above.
 
 To remove a user from your server, issue a command in the following form:
 
-    ejabberdctl unregister lollipop ducklington.org
+    ejabberdctl unregister lollipop example.com
 
-The above command would unregister the `lollipop@ducklington.org` account from the server.
+The above command would unregister the `lollipop@example.com` account from the server.
 
 To set or reset the password for a user, issue the following command:
 
-    ejabberdctl set-password lollipop ducklington.org morris
+    ejabberdctl set-password lollipop example.com morris
 
-This command changes the password for the `lollipop@ducklington.org` user to `morris`.
+This command changes the password for the `lollipop@example.com` user to `morris`.
 
 To back up ejabberd's database, issue the following command:
 
@@ -164,7 +164,7 @@ This command dumps the contents of the internal ejabberd database into a file lo
 
 For more information about the `ejabberdctl` command, issue `ejabberdctl help` or `man ejabberdctl`.
 
-If you would prefer to administer your ejabberd instance via the web-based interface, log in to `http://ducklington.org:5280/admin/`, where "ducklington.org" is the domain where ejabberd is running. Log in with the full JID as the username and the password of one of the administrators specified in the `/etc/ejabberd/ejabberd.cfg` file.
+If you would prefer to administer your ejabberd instance via the web-based interface, log in to `http://example.com:5280/admin/`, where "example.com" is the domain where ejabberd is running. Log in with the full JID as the username and the password of one of the administrators specified in the `/etc/ejabberd/ejabberd.cfg` file.
 
 XMPP Federation and DNS
 -----------------------
@@ -175,7 +175,7 @@ To ensure that your ejabberd instance will federate properly with the rest of th
 2.  Service: `_xmpp-client` Protocol: TCP Port: 5222
 3.  Service: `_jabber` Protocol: TCP Port: 5269
 
-The "target" of the SRV record should point to the publicly routable hostname for that machine (e.g. "squire.ducklington.org"). The priority and weight should both be set to `0`.
+The "target" of the SRV record should point to the publicly routable hostname for that machine (e.g. "squire.example.com"). The priority and weight should both be set to `0`.
 
 Troubleshooting
 ---------------

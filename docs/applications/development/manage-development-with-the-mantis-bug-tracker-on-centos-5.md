@@ -45,18 +45,18 @@ Afterwards, restart Apache by running the following command:
 Installing Mantis
 -----------------
 
-For this installation, we'll assume you're installing Mantis to a directory under your document root (in this example the directory is named `Mantis`). To begin, we'll change into the site directory, download the latest MantisBT package, and unpack it. When running the following commands, be sure to download the latest release. You can find the latest version of MantisBT on the [SourceForge page for MantisBT](http://sourceforge.net/projects/mantisbt/files/). Additionally, replace `bucknell.net` with the name of your site:
+For this installation, we'll assume you're installing Mantis to a directory under your document root (in this example the directory is named `Mantis`). To begin, we'll change into the site directory, download the latest MantisBT package, and unpack it. When running the following commands, be sure to download the latest release. You can find the latest version of MantisBT on the [SourceForge page for MantisBT](http://sourceforge.net/projects/mantisbt/files/). Additionally, replace `example.com` with the name of your site:
 
-    cd /srv/www/bucknell.net/
+    cd /srv/www/example.com/
     wget http://downloads.sourceforge.net/project/mantisbt/mantis-stable/1.2.4/mantisbt-1.2.4.tar.gz
     tar xvzf mantisbt-1.2.4.tar.gz
 
 Next, we'll move the `mantisbt-1.2.4` directory to our `public_html` directory under the name `mantis`. Additionally, we'll give Apache ownership in order to create the needed configuration files:
 
-    mv mantisbt-1.2.4/ /srv/www/bucknell.net/public_html/mantis
-    chown -R apache:apache /srv/www/bucknell.net/public_html/mantis/ 
+    mv mantisbt-1.2.4/ /srv/www/example.com/public_html/mantis
+    chown -R apache:apache /srv/www/example.com/public_html/mantis/ 
 
-Visit the location of MantisBT in your browser. In our first example, the URL would be `http://bucknell.net/mantis`. Follow the installation instructions by providing the credentials to the MySQL database you created in the LAMP guide, or especially for Mantis. For additional MySQL help, see our [MySQL guide](/docs/databases/mysql/fedora-13). At this point Mantis is installed and ready to configure.
+Visit the location of MantisBT in your browser. In our first example, the URL would be `http://example.com/mantis`. Follow the installation instructions by providing the credentials to the MySQL database you created in the LAMP guide, or especially for Mantis. For additional MySQL help, see our [MySQL guide](/docs/databases/mysql/fedora-13). At this point Mantis is installed and ready to configure.
 
 Configuring Mantis
 ------------------
@@ -66,7 +66,7 @@ After the installation completes, you will be redirected to the login page. The 
 Next, we'll set the timezone in `config_inc.php`. You can find a list of supported timezones at the [List of Supported Timezones in the PHP Manual](http://php.net/manual/en/timezones.php) page. You'll need to add the `$g_default_timezone` line yourself. This section of the files should look similar to the following:
 
 {: .file }
-/srv/www/bucknell.net/public\_html/mantis/config\_inc.php
+/srv/www/example.com/public\_html/mantis/config\_inc.php
 :   ~~~ php
     <?php   
         $g_hostname = 'localhost';
@@ -82,7 +82,7 @@ Next, we'll set the timezone in `config_inc.php`. You can find a list of support
 
 Ensure that you have no whitespace at the end of this file, or Mantis will throw an error. Save and close the file. Finally, make sure to remove the `admin` folder under your MantisBT installation. In our example, the command would look like the following command. Note: Make sure to double-check your syntax when using the `rm -rf` command:
 
-    rm -rf /srv/www/bucknell.net/public_html/mantis/admin/
+    rm -rf /srv/www/example.com/public_html/mantis/admin/
 
 At this point, MantisBT is ready to use for your development project! For specific Mantis help and instruction, see the [administration guide](http://www.mantisbt.org/manual/) available on the MantisBT website. You can also install a number of plugins that allow you to customize MantisBT to your needs. Each of these plugins has a specific set of instructions that come with it. You can read more about these on the plugins section of the MantisBT site, listed below.
 

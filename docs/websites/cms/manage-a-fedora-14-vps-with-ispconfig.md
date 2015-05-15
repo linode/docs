@@ -25,15 +25,15 @@ Prepare Your System
 
 Set your system's host name by issuing the following commands:
 
-    echo "HOSTNAME=ducklington" >> /etc/sysconfig/network
-    hostname "ducklington"
+    echo "HOSTNAME=example" >> /etc/sysconfig/network
+    hostname "example"
 
 Configure your `/etc/hosts` file to include your Linode's fully qualified domain name (FQDN) and localhost are set up in your `/etc/hosts` file. You can use the following example file, modifying the entries to suit your setup (12.34.56.78 should be replaced with your Linode's IP address):
 
 {: .file }
 /etc/hosts
 
-> 127.0.0.1 localhost.localdomain localhost 12.34.56.78 plato.example.com plato
+> 127.0.0.1 localhost.localdomain localhost 12.34.56.78 hostname.example.com hostname
 
 It is essential that you set these values before proceeding with the installation of ISPConfig.
 

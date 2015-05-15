@@ -55,12 +55,12 @@ When the installation process completes, proceed with the configuration of Postf
 Fundamental Postfix Configuration
 ---------------------------------
 
-Begin by editing the `/etc/postfix/main.cf` file. Most of the default values should be correct. Modify the `myhostname` value to correspond to the fully qualified domain name (FQDN) for your server, in this case `lollipop.ducklington.org`:
+Begin by editing the `/etc/postfix/main.cf` file. Most of the default values should be correct. Modify the `myhostname` value to correspond to the fully qualified domain name (FQDN) for your server, in this case `lollipop.example.com`:
 
 {: .file-excerpt }
 /etc/postfix/main.cf
 :   ~~~
-    myhostname = lollipop.ducklington.org
+    myhostname = lollipop.example.com
     ~~~
 
 Add the following lines to your configuration file. This configures postfix for virtual hosting:
@@ -87,29 +87,29 @@ Email Virtual Hosting
 
 ### Configure Mail Delivery
 
-Once Postfix is properly configured, edit the `/etc/postfix/virtual` file to configure virtual hosting for your mail gateway. This provides instructions for the mail agent with regards to processing email that it receives. Prior to beginning, ensure that you have properly configured DNS to direct email to your mail gateway. Create an "A Record" for the machine specific domain name that corresponds to your `myhostname` FQDN (e.g. `lollipop.ducklington.org`). Then, ensure that there are MX records for *all* domains that you want to process with this mail gateway pointed to that FQDN. Consider the following example `/etc/postfix/virtual` file:
+Once Postfix is properly configured, edit the `/etc/postfix/virtual` file to configure virtual hosting for your mail gateway. This provides instructions for the mail agent with regards to processing email that it receives. Prior to beginning, ensure that you have properly configured DNS to direct email to your mail gateway. Create an "A Record" for the machine specific domain name that corresponds to your `myhostname` FQDN (e.g. `lollipop.example.com`). Then, ensure that there are MX records for *all* domains that you want to process with this mail gateway pointed to that FQDN. Consider the following example `/etc/postfix/virtual` file:
 
 {: .file-excerpt }
 /etc/postfix/virtual
 :   ~~~
-    admin@bucknell.net bucknell
-    foreman@bucknell.net bucknell
+    admin@example.com example
+    foreman@example.com example
 
-    squire@ducklington.com squire
-    squire@ducklington.net squire
-    squire@ducklington.org squire
+    squire@example.com squire
+    squire@example.net squire
+    squire@example.com squire
 
-    jim@ducklington.org jim@chartercast.net
-    ted@ducklington.org ted@chartercast.net
-    jay@ducklington.org jay@chartercast.net
+    jim@example.com jim@chartercast.net
+    ted@example.com ted@chartercast.net
+    jay@example.com jay@chartercast.net
 
-    lollipop@ducklington.org stacy@morris.net, squire
-    jockey@bucknell.net squire, bucknell
+    lollipop@example.com stacy@morris.net, squire
+    jockey@example.com squire, example
 
     @oddington.com oddington
     ~~~
 
-In this example there are a number of addresses in the `bucknell.net` domain forwarded to the `bucknell` system user account. In the next group, a collection of emails at different domains beginning with the `squire` name, are all forwarded to the `squire` system user group. Finally, a number of email addresses at the `ducklington.org` domain are forwarded to external addresses at the fictitious `chartercast.net` domain. The next two email addresses are directed to multiple sources: `lollipop@ducklington.org` mail is delivered to the local `squire` user as well as the external email address `stacy@morris.net`, while `jockey@bucknell.net` is delivered to the local system users `squire` and `bucknell`. Finally all messages sent to addresses within the `oddington.com` domain are forwarded to the mailbox for the `oddington` user.
+In this example there are a number of addresses in the `example.com` domain forwarded to the `example` system user account. In the next group, a collection of emails at different domains beginning with the `squire` name, are all forwarded to the `squire` system user group. Finally, a number of email addresses at the `example.com` domain are forwarded to external addresses at the fictitious `chartercast.net` domain. The next two email addresses are directed to multiple sources: `lollipop@example.com` mail is delivered to the local `squire` user as well as the external email address `stacy@morris.net`, while `jockey@example.com` is delivered to the local system users `squire` and `example`. Finally all messages sent to addresses within the `oddington.com` domain are forwarded to the mailbox for the `oddington` user.
 
 When you've successfully edited your `/etc/postfix/virtual` file to ensure the proper delivery of your email, issue the following command to rebuild the virtual alias database:
 
@@ -225,12 +225,12 @@ When the tunnel is active, you will be able to configure your local mail sending
 :   ~~~
     account default
     host localhost
-    from squire@ducklington.org
+    from squire@example.com
     port 25
 
     account alternate
     host localhost
-    from foreman@bucknell.net
+    from foreman@example.com
     port 2525
     ~~~
 

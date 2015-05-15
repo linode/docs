@@ -368,7 +368,7 @@ This completes alias configuration. Next, test Postfix to make sure it's operati
 
 3.  You should see output similar to the following:
 
-        250-plato.example.com
+        250-hostname.example.com
         250-PIPELINING
         250-SIZE 30720000
         250-VRFY
@@ -434,7 +434,7 @@ After the test mail is sent, check the mail logs to make sure the mail was deliv
     {: .file-excerpt }
     /home/vmail/dovecot-deliver.log
     :   ~~~
-        deliver(<sales@example.com>): 2011-01-21 20:03:19 Info: msgid=\<<20110121200319.E1D148908@plato.example.com>>: saved mail to INBOX
+        deliver(<sales@example.com>): 2011-01-21 20:03:19 Info: msgid=\<<20110121200319.E1D148908@hostname.example.com>>: saved mail to INBOX
         ~~~
 
 Now you can test to see what the users of your email server would see with their email clients.

@@ -75,7 +75,7 @@ All of the commands below should be executed as the ``root`` user.
 
         openssl genrsa -out server.key 2048
 
-4. Generate a certificate signing request (CSR). When prompted for a `Common Name`, be sure to enter the domain name that you will be using to access your Linode, all other fields can be filled as you see fit. Optionally, you may enter a sub domain, for instance www.yourdomain.com. This must be a domain that you have control over and which you can recieve email sent to webmaster@yourdomain.com. Any certificate issued for *yourname*.yourdomain.com is also valid for yourdomain.com.
+4. Generate a certificate signing request (CSR). When prompted for a `Common Name`, be sure to enter the domain name that you will be using to access your Linode, all other fields can be filled as you see fit. Optionally, you may enter a sub domain, for instance www.yourdomain.com. This must be a domain that you have control over and which you can receive email sent to webmaster@yourdomain.com. Any certificate issued for *yourname*.yourdomain.com is also valid for yourdomain.com.
 
         openssl req -new -key server.key -out server.csr
 
@@ -155,7 +155,7 @@ You should now be logged into your StartSSL account.
 
 7.  Choose the domain you would like a certificate for and click "Continue >> >>".
 
-    [![StartSSL Certificates Wizard CSR Domain Selection](/docs/assets/1765-StartSSL-Certificates-Wizard-CSR-Domain-Preview.jpg)](/docs/assets/1765-StartSSL-Certificates-Wizard-CSR-Domain.jpg)
+    ![StartSSL Certificates Wizard CSR Domain Selection](/docs/assets/1765-StartSSL-Certificates-Wizard-CSR-Domain-Preview.jpg)
 
 8.  Enter the sub domain you entered when creating the CSR before (ex. www.yourdomain.com, server1.yourdomain.com), or if your entered yourdomain.com before, enter www into this field to make your certificate valid for www.yourdomain.com as well. Then click "Continue >> >>".
 

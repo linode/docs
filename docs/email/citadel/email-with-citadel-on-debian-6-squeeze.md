@@ -66,7 +66,7 @@ Finally, edit the `/etc/mailname` file to reflect your system's fully qualified 
 {: .file }
 /etc/mailname
 :   ~~~
-    plato.example.com
+    hostname.example.com
     ~~~
 
 Enable Spamassassin Filtering
@@ -110,7 +110,7 @@ As part of this process, you will be prompted to enter several values, as shown 
     Locality Name (eg, city) []:Galloway
     Organization Name (eg, company) [Internet Widgits Pty Ltd]:Example Org
     Organizational Unit Name (eg, section) []:Network Services
-    Common Name (eg, YOUR name) []:plato.example.com
+    Common Name (eg, YOUR name) []:hostname.example.com
     Email Address []:support@example.com
     Please enter the following 'extra' attributes
     to be sent with your certificate request
@@ -135,7 +135,7 @@ As part of this process, you will be prompted to enter several values, as shown 
     Locality Name (eg, city) []:Galloway
     Organization Name (eg, company) [Internet Widgits Pty Ltd]:Example Org
     Organizational Unit Name (eg, section) []:Network Services
-    Common Name (eg, YOUR name) []:plato.example.com
+    Common Name (eg, YOUR name) []:hostname.example.com
     Email Address []:support@example.com
     Please enter the following 'extra' attributes
     to be sent with your certificate request
@@ -167,7 +167,7 @@ Issue the following commands to initialize Citadel.
 
 Visit the web interface in your web browser. Using our preceding example, the Web address to visit would resemble the following URL (append ":4343" if necessary):
 
-    https://plato.example.com
+    https://hostname.example.com
 
 At this point, your email system should be fully functional and can be configured through the web interface. To finish enabling SpamAssassin support, select "Administration" in the control panel. Next, click "Domain names and Internet mail configuration". Enter "127.0.0.1" in the box for the SpamAssassin host.
 

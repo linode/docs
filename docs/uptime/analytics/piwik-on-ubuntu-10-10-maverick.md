@@ -37,7 +37,7 @@ Configure a Dedicated Virtual Host for Piwik
 
 This phase of the installation process is optional, but recommended. Here we configure a subdomain and virtual host configuration in Apache specifically for Piwik. This makes it easy to separate the statistics package from the website or websites that Piwik monitors.
 
-To create a virtual host we need to add an "[A Record](/docs/dns-guides/introduction-to-dns#a_aaaa_records)" for the subdomain that Piwik will use; in our example this is `stats.ducklington.org`. If your DNS is hosted with Linode's DNS servers, you can configure the A record in the [DNS manager](/docs/dns-guides/configuring-dns-with-the-linode-manager). Additionally, we'll need to create a new virtual hosting file for this sub domain.
+To create a virtual host we need to add an "[A Record](/docs/dns-guides/introduction-to-dns#a_aaaa_records)" for the subdomain that Piwik will use; in our example this is `stats.example.com`. If your DNS is hosted with Linode's DNS servers, you can configure the A record in the [DNS manager](/docs/dns-guides/configuring-dns-with-the-linode-manager). Additionally, we'll need to create a new virtual hosting file for this sub domain.
 
 We'll create the following host file, located at `/etc/apache2/sites-available/stats.example.org`:
 

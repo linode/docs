@@ -83,7 +83,7 @@ First, issue the following command to disable the default Apache virtual host.
 
 Each additional virtual host needs its own file in the `/etc/apache2/sites-available/` directory. In this example, you'll create files for two **name-based** virtually hosted sites, "example.net" and "example.org".
 
-First create bucknell.net (`/etc/apache2/sites-available/example.net`) so that it resembles the following example.
+First create example.com (`/etc/apache2/sites-available/example.net`) so that it resembles the following example.
 
 {: .file }
 /etc/apache2/sites-available/example.net
@@ -107,7 +107,7 @@ If you would like to enable Perl support, then add the following lines to the `V
     AddHandler cgi-script .pl
     ~~~
 
-Next, create ducklington.org (`/etc/apache2/sites-available/example.org`) so that it resembles this:
+Next, create example.com (`/etc/apache2/sites-available/example.org`) so that it resembles this:
 
 {: .file }
 /etc/apache2/sites-available/example.org

@@ -116,44 +116,44 @@ Next, issue the following command to disable the default Apache virtual host.
 
     a2dissite default
 
-Each additional virtual host needs its own file in the `/etc/apache2/sites-available/` directory. In this example, you'll create files for two **name-based** virtually hosted sites, "bucknell.net" and "ducklington.org".
+Each additional virtual host needs its own file in the `/etc/apache2/sites-available/` directory. In this example, you'll create files for two **name-based** virtually hosted sites, "example.com" and "example.com".
 
-First create bucknell.net (`/etc/apache2/sites-available/bucknell.net`) so that it resembles the following. Make sure to replace "12.34.56.78" with your Linode's IP address.
+First create example.com (`/etc/apache2/sites-available/example.com`) so that it resembles the following. Make sure to replace "12.34.56.78" with your Linode's IP address.
 
 {: .file }
-/etc/apache2/sites-available/bucknell.net
+/etc/apache2/sites-available/example.com
 :   ~~~ apache
     <VirtualHost 12.34.56.78:80> 
-             ServerAdmin squire@bucknell.net     
-         ServerName bucknell.net
-         ServerAlias www.bucknell.net
-         DocumentRoot /srv/www/bucknell.net/public_html/
-         ErrorLog /srv/www/bucknell.net/logs/error.log 
-         CustomLog /srv/www/bucknell.net/logs/access.log combined
+             ServerAdmin squire@example.com     
+         ServerName example.com
+         ServerAlias www.example.com
+         DocumentRoot /srv/www/example.com/public_html/
+         ErrorLog /srv/www/example.com/logs/error.log 
+         CustomLog /srv/www/example.com/logs/access.log combined
     </VirtualHost>
     ~~~
 
 If you would like to enable Perl support, add the following lines to the `VirtualHost` entry above.
 
 {: .file-excerpt }
-/etc/apache2/sites-available/bucknell.net
+/etc/apache2/sites-available/example.com
 :   ~~~ apache
     Options ExecCGI
     AddHandler cgi-script .pl
     ~~~
 
-Next, create ducklington.org (`/etc/apache2/sites-available/ducklington.org`) so that it resembles this:
+Next, create example.com (`/etc/apache2/sites-available/example.com`) so that it resembles this:
 
 {: .file }
-/etc/apache2/sites-available/ducklington.org
+/etc/apache2/sites-available/example.com
 :   ~~~ apache
     <VirtualHost 12.34.56.78:80> 
-         ServerAdmin squire@ducklington.org
-         ServerName ducklington.org
-         ServerAlias www.ducklington.org
-         DocumentRoot /srv/www/ducklington.org/public_html/
-         ErrorLog /srv/www/ducklington.org/logs/error.log 
-         CustomLog /srv/www/ducklington.org/logs/access.log combined
+         ServerAdmin squire@example.com
+         ServerName example.com
+         ServerAlias www.example.com
+         DocumentRoot /srv/www/example.com/public_html/
+         ErrorLog /srv/www/example.com/logs/error.log 
+         CustomLog /srv/www/example.com/logs/access.log combined
     </VirtualHost>
     ~~~
 
@@ -161,16 +161,16 @@ You'll note that some basic options are specified for both sites, including wher
 
 Create required directories for these sites by issuing the following commands:
 
-    mkdir -p /srv/www/bucknell.net/public_html
-    mkdir /srv/www/bucknell.net/logs
+    mkdir -p /srv/www/example.com/public_html
+    mkdir /srv/www/example.com/logs
 
-    mkdir -p /srv/www/ducklington.org/public_html
-    mkdir /srv/www/ducklington.org/logs
+    mkdir -p /srv/www/example.com/public_html
+    mkdir /srv/www/example.com/logs
 
 Enable the sites by issuing these commands:
 
-    a2ensite bucknell.net
-    a2ensite ducklington.org
+    a2ensite example.com
+    a2ensite example.com
 
 Finally, restart the Apache server to initialize all the changes, with this command:
 

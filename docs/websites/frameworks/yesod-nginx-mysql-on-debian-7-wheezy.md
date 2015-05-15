@@ -20,7 +20,7 @@ Yesod is a web framework based on the purely functional programming language Has
 
 {: .note }
 >
-> The steps required in this guide require root privileges. Be sure to run the steps below as root or with the sudo prefix. For more information on privileges see our [Users and Groups](https://library.linode.com/using-linux/users-and-groups) guide.
+> The steps required in this guide require root privileges. Be sure to run the steps below as root or with the sudo prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
 #Prerequisites 
 
@@ -193,7 +193,7 @@ We don't need to modify this configuration file, it's acceptable as is. So you o
 
 Please wait for compilation, then you can see the scaffold of your site at http://www.yoursite.com:3000/, where ``www.yoursite.com`` is your FQDN. To stop it, just press ``Enter``.
 
-If your Linode has a firewall, the port ``3000`` is probably inaccessible from outside, so you will not be able to see your site at http://www.yoursite.com:3000/. This port is only for testing or developing, so don't open it on your firewall. Instead, you can set up an SSH tunnel on your Linode, and view your site at http://localhost:3000/ via this tunnel. Please check [Setting up an SSH Tunnel with Your Linode for Safe Browsing](https://library.linode.com/networking/socks-proxy) for more details.
+If your Linode has a firewall, the port ``3000`` is probably inaccessible from outside, so you will not be able to see your site at http://www.yoursite.com:3000/. This port is only for testing or developing, so don't open it on your firewall. Instead, you can set up an SSH tunnel on your Linode, and view your site at http://localhost:3000/ via this tunnel. Please check [Setting up an SSH Tunnel with Your Linode for Safe Browsing](/docs/networking/ssh/setting-up-an-ssh-tunnel-with-your-linode-for-safe-browsing/) for more details.
 
 You may have noticed that we haven't configure Nginx yet. In fact, Yesod applications contain an http server called Warp, which is written in Haskell, and has a very fast run-time. Without http servers like Apache or Nginx installed, you can run Yesod applications as standalones. This feature is similar to the Express framework on Node.js.
 
