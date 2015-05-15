@@ -16,6 +16,8 @@ Chef is an automation platform that "turns infrastructure into code," allowing u
 
 Chef is comprised of a Chef server, one or more workstations, and a number of nodes that are managed by the chef-client installed on each node.
 
+[![/docs/assets/chef_graph-small.png](/docs/assets/chef_graph-small.png)](/docs/assets/chef_graph.png)
+
 This guide will show users how to create and configure a Chef server, a virtual workstation, and how to bootstrap a node to run the chef-client, all on individual Linodes.
 
 {: .note }
@@ -38,9 +40,9 @@ The Chef server is the hub of interaction between all workstations and nodes usi
 
 ### Install the Chef Server
 
-1.	[Download](https://downloads.chef.io/chef-server/ubuntu/) the latest Chef server core (12.0.7 at the time of writing):
+1.	[Download](https://downloads.chef.io/chef-server/ubuntu/) the latest Chef server core (12.0.8 at the time of writing):
 
-		wget https://web-dl.packagecloud.io/chef/stable/packages/ubuntu/trusty/chef-server-core_12.0.7-1_amd64.deb
+		wget https://web-dl.packagecloud.io/chef/stable/packages/ubuntu/trusty/chef-server-core_12.0.8-1_amd64.deb
 
 2.	Install the server:
 
@@ -57,15 +59,15 @@ The Chef server is the hub of interaction between all workstations and nodes usi
 
 ### Create a User and Organization
 
-1.	In order to link workstations and nodes to the Chef server, administrators and an organization need to be created with their associated RSA private keys. From the home directory, create a `.chef` directory to store the keys:
+1.	In order to link workstations and nodes to the Chef server, an administrator and an organization need to be created with associated RSA private keys. From the home directory, create a `.chef` directory to store the keys:
 
 		mkdir .chef
 
-2.	Create an administrator. Change `username` to your desired username, `firstname` and `lastname` to your first and last names, `email` to your email, `password` to a secure password, and `username.pem` to your username followed by `.pem`:
+2.	Create an administrator. Change `username` to your desired username, `firstname` and `lastname` to your first and last name, `email` to your email, `password` to a secure password, and `username.pem` to your username followed by `.pem`:
 
 		sudo chef-server-ctl user-create username firstname lastname email password --filename ~/.chef/username.pem
 
-2.	Create an organization. The `shortname` value should be a basic idenifier for your organization with no spaces, whereas the `fullname` can be the full, proper name of the organization. The `association_user`  value `username` refers to the username made in the step above:
+2.	Create an organization. The `shortname` value should be a basic identifier for your organization with no spaces, whereas the `fullname` can be the full, proper name of the organization. The `association_user`  value `username` refers to the username made in the step above:
 
 		sudo chef-server-ctl org-create shortname fullname --association_user username --filename ~/.chef/shortname.pem
 
@@ -77,17 +79,17 @@ Your Chef workstation will be where you create and configure any recipes, cookbo
 
 ### Setting Up a Workstation
 
-1.	[Download](https://downloads.chef.io/chef-dk/ubuntu/) the latest Chef Development Kit (0.4.0 at time of writing):
+1.	[Download](https://downloads.chef.io/chef-dk/ubuntu/) the latest Chef Development Kit (0.5.1 at time of writing):
 
-		wget https://opscode-omnibus-packages.s3.amazonaws.com/ubuntu/12.04/x86_64/chefdk_0.4.0-1_amd64.deb
+		wget https://opscode-omnibus-packages.s3.amazonaws.com/ubuntu/12.04/x86_64/chefdk_0.5.1-1_amd64.deb
 
 2.	Install ChefDK:
 
-		sudo dpkg -i chefdk_0.4.0-1_amd64.deb
+		sudo dpkg -i chefdk_*.deb
 
 3.	Remove the install file:
 
-		rm chefdk_0.4.0-1_amd64.deb
+		rm chefdk_*.deb
 
 4.	Verify the components of the development kit:
 
@@ -129,7 +131,7 @@ Your Chef workstation will be where you create and configure any recipes, cookbo
 
 ### Add the RSA Private Keys
 
-1.	The RSA private keys generated when setting up the Chef Server will now need to be placed on the Workstation server. The process behind this will vary depending on if you are using SSH key pair authentication to log into your Linodes.
+1.	The RSA private keys generated when setting up the Chef server will now need to be placed on the workstation. The process behind this will vary depending on if you are using SSH key pair authentication to log into your Linodes.
 
 	-	If you are **not** using key pair authentication, then copy the file directly off of the Chef Server. replace `user` with your username on the server, and `123.45.67.89` with the URL or IP of your Chef Server:
 
@@ -147,7 +149,7 @@ Your Chef workstation will be where you create and configure any recipes, cookbo
 
 ### Add Version Control
 
-The workstation is used to add and edit cookbooks and other configuration files. It is beneficial to implement some form of version control. For this, Git proves to be a useful program.
+The workstation is used to add and edit cookbooks and other configuration files. It is beneficial to implement some form of version control. For this, Git proves to be useful.
 
 1.	Download Git:
 
@@ -202,11 +204,11 @@ The workstation is used to add and edit cookbooks and other configuration files.
 
 	Change the following:
 
-	-	The value for `node_name` should be the username was was created above.
+	-	The value for `node_name` should be the username that was created above.
 	-	Change `username.pem` under `client_key` to reflect your `.pem` file for your **user**.
 	-	The `validation_client_name` should be your organization's `shortname` followed by `-validator`.
 	-	`shortname.pem` in the `validation_key` path should be set to the shortname was was defined in the steps above.
-	-	Finally the `chef_server-url` needs to contain the IP address or URL of your Chef Server, with the `shortname` in the file path changed to the shortname defined above.
+	-	Finally the `chef_server-url` needs to contain the IP address or URL of your Chef server, with the `shortname` in the file path changed to the shortname defined above.
 
 3.	Move to the `chef-repo` and copy the needed SSL certificates from the server:
 
@@ -224,9 +226,9 @@ With both the server and a workstation configured, it is possible to bootstrap y
 
 ## Bootstrap a Node
 
-Bootstrapping a node installs the chef-client and validates the node, preparing it to be able to read from the Chef Server and make any needed configuration changes picked up by the chef-client in the future.
+Bootstrapping a node installs the chef-client and validates the node, allowing it to read from the Chef server and make any needed configuration changes picked up by the chef-client in the future.
 
-1.	From your **workstation**, bootstrap the node either by using the node's root user, or a user with elevated privledges:
+1.	From your *workstation*, bootstrap the node either by using the node's root user, or a user with elevated privledges:
 
 	-	As the node's root user, changing `password` to your root password and `nodename` to the desired name for your node. You can leave this off it you would like the name to default to your node's hostname:
 
@@ -244,11 +246,11 @@ Bootstrapping a node installs the chef-client and validates the node, preparing 
 
 ## Download a Cookbook (Optional)
 
-When using Chef you will want the chef-client to periodically run on your nodes and pull in any changes pushed to the Chef Server. You will also want the `validation.pem` file that is uploaded to your node upon bootstrap to be deleted for security purposes. While these things can be done manually, it is often easier and more efficient to set it up as a cookbook.
+When using Chef you will want the chef-client to periodically run on your nodes and pull in any changes pushed to the Chef server. You will also want the `validation.pem` file that is uploaded to your node upon bootstrap to be deleted for security purposes. While these things can be done manually, it is often easier and more efficient to set it up as a cookbook.
 
 This section is optional, but provides instructions on downloading a cookbook to your workstation, pushing it to a server, and includes the skeleton of a basic cookbook to expand and experiment with.
 
-1.	From your **workstation** download the cookbook and dependencies:
+1.	From your *workstation* download the cookbook and dependencies:
 
 		knife cookbook site install cron-delvalidate
 
@@ -275,7 +277,7 @@ This section is optional, but provides instructions on downloading a cookbook to
 		end
 		~~~
 
-	The section `cron "clientrun" do` defines the cron action. It is set to run the chef-client action (`/usr/bin/chef-client`) every hour (`*/1` with the `*/` defining that it's every hour and not 1AM daily). The `action` code denotes that Chef is *creating* a new cronjob.
+	The resource `cron "clientrun" do` defines the cron action. It is set to run the chef-client action (`/usr/bin/chef-client`) every hour (`*/1` with the `*/` defining that it's every hour and not 1AM daily). The `action` code denotes that Chef is *creating* a new cronjob.
 
 	`file "/etc/chef/validation.pem" do` calls to the `validation.pem` file. The `action` defines that the file should be removed (`:delete`).
 
@@ -291,12 +293,12 @@ This section is optional, but provides instructions on downloading a cookbook to
 
 	This command is also used when updating cookbooks.
 
-5.	Switch to your **bootstrapped** nodes and run the inital chef-client command:
+5.	Switch to your *bootstrapped* node(s) and run the inital chef-client command:
 
 		chef-client
 
 	If running the node as a non-root user, append the above command with `sudo`.
 
-	The recipes in the Run List will be pulled from the server and run. In this instance, it will be the `cron-delvalidate` recipe. This recipe ensures that any cookbooks made, pushed to the Chef Server, and added to the node's Run List will be pulled down to bootstrapped nodes once an hour. This automated step eliminates connecting to the node in the future to pull down changes.
+	The recipes in the run list will be pulled from the server and run. In this instance, it will be the `cron-delvalidate` recipe. This recipe ensures that any cookbooks made, pushed to the Chef Server, and added to the node's run list will be pulled down to bootstrapped nodes once an hour. This automated step eliminates connecting to the node in the future to pull down changes.
 
 
