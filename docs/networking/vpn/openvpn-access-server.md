@@ -40,7 +40,7 @@ Installing OpenVPN Access Server
 		
 		sudo rpm --install openvpn-as-*.rpm
 
-4.  Once the install process is completed, information on accessing the Admin and Client UI will be displayed.
+4.  Once the install process is complete, information on accessing the Admin and Client UI will be displayed.
 
 		Access Server web UIs are available here:
 		Admin  UI: https://192.0.2.1:943/admin
@@ -57,11 +57,11 @@ Configuring OpenVPN Access Server
 
 ###Configuring Client Settings
 
-1.  Connect to the OpenVPN Access Server Admin UI address shown at the end of the install process, using the password that you set for your OpenVPN User.
+1.  Connect to the Admin UI address shown at the end of the install process, using the password for your OpenVPN User.
 
 	[![OpenVPN Admin Web Interface.](/docs/assets/openvpn-admin-web-resize.png)](/docs/assets/openvpn-admin-web.png)
 
-2.  Click the Client Settings link, and ensure that all options besides "Offer server-locked profile" are checked.
+2.  Click the **Client Settings** link, and ensure that all options besides "Offer server-locked profile" are checked.
 
 	[![OpenVPN Admin Web Interface.](/docs/assets/openvpn-server-profiles.png)](/docs/assets/openvpn-server-profiles.png)
 
@@ -79,9 +79,9 @@ You can add additional users to your OpenVPN Access Server to enable auditing of
 > OpenVPN Access Server's free edition is limited to two users.  If you require additional users for your VPN, you can view pricing details and purchase licenses at [OpenVPN's Website](https://openvpn.net/index.php/access-server/pricing.html)
 
 
-1.  From the OpenVPN Access Server admin web interface, click the User Permissions link under **User Management**.
+1.  From the admin web interface, click the **User Permissions** link under User Management.
 
-2.  Enter the new username that you wish to add in the `New Username` field at the bottom fo the list.
+2.  Enter the new username that you wish to add in the `New Username` field at the bottom of the list.
 
 	[![OpenVPN Admin User Interface.](/docs/assets/openvpn-user-management-resize.png)](/docs/assets/openvpn-user-management.png)
 
@@ -140,11 +140,11 @@ Client Software Installation
 
 	[![DMG Finder Window.](/docs/assets/openvpn-osx-install-2-resize.png)](/docs/assets/openvpn-osx-install-2.png)
 
-4.  Once the installation process has completed, you will see an OpenVPN icon in your OSX taskbar.  Right clicking this icon will bring up the context menu for starting your OpenVPN connection
+4.  Once the installation process has completed, you will see an OpenVPN icon in your OSX taskbar.  Right clicking this icon will bring up the context menu for starting your OpenVPN connection.
 
 	[![DMG Finder Window.](/docs/assets/openvpn-osx-install-3-resize.png)](/docs/assets/openvpn-osx-install-3.png)
 
-5.  Clicking Connect will bring up a window prompting for the OpenVPN username and password.  Enter the credentials for your OpenVPN user and click Connect to establish a VPN tunnel
+5.  Clicking Connect will bring up a window prompting for the OpenVPN username and password.  Enter the credentials for your OpenVPN user and click Connect to establish a VPN tunnel.
 
 	[![DMG Finder Window.](/docs/assets/openvpn-osx-install-4-resize.png)](/docs/assets/openvpn-osx-install-4.png)
 
