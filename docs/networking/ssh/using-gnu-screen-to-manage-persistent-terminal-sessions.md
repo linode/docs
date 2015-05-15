@@ -22,7 +22,7 @@ Installing GNU Screen
 
 The section covers installing Screen on a number of different systems. Examples have been provided to simplify the installation process.
 
-When installing Screen you will need root privileges. The examples provided do not use the root account. If you are using your root login then the sudo before the commands is not necessary. If you need more information regarding sudo, you can review the [Linux Users and Groups Guide](/docs/using-linux/users-and-groups).
+When installing Screen you will need root privileges. The examples provided do not use the root account. If you are using your root login then the sudo before the commands is not necessary. If you need more information regarding sudo, you can review the [Linux Users and Groups Guide](/docs/tools-reference/linux-users-and-groups).
 
 For a Debian or Ubuntu system use the following commands to update, upgrade, and install Screen:
 

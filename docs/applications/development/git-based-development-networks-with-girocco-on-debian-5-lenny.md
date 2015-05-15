@@ -285,7 +285,7 @@ You may wish to consult the following resources for additional information on th
 - [Girocco](http://repo.or.cz/w/girocco.git)
 - [Repo.or.cz](http://repo.or.cz/)
 - [Using Cron to Schedule Tasks](/docs/linux-tools/utilities/cron)
-- [Managing Permissions with Unix Users and Groups](/docs/using-linux/users-and-groups)
+- [Managing Permissions with Unix Users and Groups](/docs/tools-reference/linux-users-and-groups)
 - [Using GNU Screen](/docs/linux-tools/utilities/screen)
 
 

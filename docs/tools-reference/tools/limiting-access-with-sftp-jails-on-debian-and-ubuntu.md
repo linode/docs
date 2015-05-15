@@ -86,7 +86,7 @@ More Information
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [OpenSSH Documentation](http://www.openssh.org/manual.html)
-- [An Introduction to Users and Groups](/docs/using-linux/users-and-groups)
+- [An Introduction to Users and Groups](/docs/tools-reference/linux-users-and-groups)
 
 
 

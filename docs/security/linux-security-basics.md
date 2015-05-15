@@ -84,7 +84,7 @@ To address these possible threats we suggest the following best practices with r
 
 -   Don't give people user accounts if they don't need them. There are often ways to provide access to specific servers without giving users accounts with even limited access to the system. Giving someone a shell account on your system should be seen as a last resort in most cases.
 -   If you need to have multiple administrators for a system, rather than share a single root password among many people, use `sudo` to give "root access" but force users to authenticate with their own password. The `sudo` command also provides more detailed logging, so you know which root commands were issued by which user.
--   Leverage [user groups and permissions](/docs/using-linux/users-and-groups) to provide granular access control when you have no option but to give a user an account on your system.
+-   Leverage [user groups and permissions](/docs/tools-reference/linux-users-and-groups) to provide granular access control when you have no option but to give a user an account on your system.
 -   Disable unused system user accounts, either by removing the account outright with the `userdel` command, or by locking the user account with `usermod --lock LOGIN-NAME` until the user needs access again (achieved with `usermod --unlock`).
 
 Limiting access to your servers and adhering to best practices with regards to administrative access and user account management won't guard against escalation attacks or all possible intrusions. However, by limiting the size of your "shadow" you decrease the likelihood of becoming the victim of many kinds of attacks.

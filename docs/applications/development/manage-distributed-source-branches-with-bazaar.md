@@ -131,7 +131,7 @@ Once published you can allow others to create local branches from this centraliz
 
     bzr branch sftp://fore@example.com/srv/bzr/morris-shared
 
-In this case, your system will need a user account for the user `fore` and additional user accounts for whatever users that require access to your project. Be sure to deploy [user groups and permissions](/docs/using-linux/users-and-groups) with prudence. You can also offer read only access to a Bazaar repository over HTTP by configuring a [web-server](/docs/web-servers) to provide access to the Bazaar project. Simply alter the branch command to resemble the following, depending on your web server configuration:
+In this case, your system will need a user account for the user `fore` and additional user accounts for whatever users that require access to your project. Be sure to deploy [user groups and permissions](/docs/tools-reference/linux-users-and-groups) with prudence. You can also offer read only access to a Bazaar repository over HTTP by configuring a [web-server](/docs/web-servers) to provide access to the Bazaar project. Simply alter the branch command to resemble the following, depending on your web server configuration:
 
     bzr branch http://bzr.example.com/morris-shared
 

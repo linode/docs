@@ -29,7 +29,7 @@ StackScripts are usually Bash scripts, stored in the Linode Manager, and can be 
 Deploying from a StackScript
 ----------------------------
 
-1.  We start by navigating to the Linode Dashboard. Before deploying a new disk, make sure you have enough storage space available. If not you may need to [resize](h/docs/migrate-to-linode/disk-images/disk-images-and-configuration-profiles#resizing-a-disk) or [remove](/docs/migrate-to-linode/disk-images/disk-images-and-configuration-profiles#removing-a-disk) a disk. Alternately you can create a new Linode for testing purposes.
+1.  We start by navigating to the Linode Dashboard. Before deploying a new disk, make sure you have enough storage space available. If not you may need to [resize](/docs/migrate-to-linode/disk-images/disk-images-and-configuration-profiles#resizing-a-disk#resizing-a-disk) or [remove](/docs/migrate-to-linode/disk-images/disk-images-and-configuration-profiles#removing-a-disk) a disk. Alternately you can create a new Linode for testing purposes.
 2.  Click on the **Deploy a Linux Distribution** link.
 
     [![Click the 'Deploy a Distribution' link.](/docs/assets/1682-stackscripts-1.png)](/docs/assets/1682-stackscripts-1.png)

@@ -113,7 +113,7 @@ Where can I learn about Linux basics?
 For those just getting started with Linux systems, we've created a series of guides that will help explain basic concepts:
 
 -   [Introduction to Linux Concepts](/docs/using-linux/linux-concepts) - An introduction to Linux and Unix-like systems.
--   [Linux Users and Groups](/docs/using-linux/users-and-groups) - An introduction to the principal concepts and use of the users and groups system.
+-   [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups) - An introduction to the principal concepts and use of the users and groups system.
 -   [Using the Terminal](/docs/using-linux/using-the-terminal) - Introducing the command line interface known as the shell or terminal.
 -   [Linux Package Management](/docs/using-linux/package-management) - How to install software on your Linode.
 -   [Basic Linux Security Practices](/docs/security/basics) - Keeping your Linode safe from unauthorized access or abuse.

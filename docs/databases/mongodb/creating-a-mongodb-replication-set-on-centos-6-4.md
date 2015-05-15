@@ -17,7 +17,7 @@ MongoDB is an open-source non-SQL database engine. MongoDB is scalable and an al
 
 Before installing MongoDB, it is assumed that you have followed our getting started guide. If you are new to Linux server administration, you may want to consult our using Linux document series including the [Introduction to Linux Concepts guide](/docs/tools-reference/introduction-to-linux-concepts) and [Administration Basics guide](/docs/using-linux/administration-basics).
 
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, you can review our [Users and Groups](/docs/using-linux/users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, you can review our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
 Installing MongoDB
 ------------------

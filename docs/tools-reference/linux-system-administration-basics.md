@@ -250,7 +250,7 @@ As always, if you are giving other users access to upload files to your server, 
 
 If you're used to using an FTP client, OpenSSH (which is included and active with all of the Linode provided installation templates) allows you to use an FTP-like interface over the SSH protocol. Known as "SFTP," many clients support this protocol, including: "[WinSCP](/docs/networking/file-transfer/transfer-files-winscp)" for Windows, "[Cyberduck](/docs/networking/file-transfer/transfer-files-cyberduck)" for Mac OS X, and "[Filezilla](/docs/networking/file-transfer/transfer-files-filezilla-ubuntu-9.10)" for Linux, OS X, and Windows desktops.
 
-If you are accustomed to FTP, SFTP is great option. Do note that by default, whatever access a user has to a file system at the command line, they will also have over SFTP. Consider [file permissions](/docs/using-linux/users-and-groups) very carefully.
+If you are accustomed to FTP, SFTP is great option. Do note that by default, whatever access a user has to a file system at the command line, they will also have over SFTP. Consider [file permissions](/docs/tools-reference/linux-users-and-groups) very carefully.
 
 Conversely, you can use Unix utilities including `scp` and [rsync](/docs/linux-tools/utilities/rsync) to securely transfer files to your Linode. On local machine, a command to copy `team-info.tar.gz` would look like:
 
@@ -266,7 +266,7 @@ The syntax of `scp` follows the form `scp [source] [destination]`. You can copy 
 
 ### How to Protect Files on a Remote Server
 
-Because Linode servers are network accessible and often have a number of distinct users, maintaining the security of files is often an important concern. We recommend you familiarize yourself with our [basic security guide](/docs/security/basics). Furthermore, our documentation of [access control with user accounts and permissions](/docs/using-linux/users-and-groups) may provide additional insight.
+Because Linode servers are network accessible and often have a number of distinct users, maintaining the security of files is often an important concern. We recommend you familiarize yourself with our [basic security guide](/docs/security/basics). Furthermore, our documentation of [access control with user accounts and permissions](/docs/tools-reference/linux-users-and-groups) may provide additional insight.
 
 Additionally, we suggest the following best practices for maintaining security:
 

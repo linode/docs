@@ -106,7 +106,7 @@ Apache Virtual Hosting Configuration Block
     </IfModule>
     ~~~
 
-In this example, `webeditor` is the name of the user of the specific site in question, and `webgroup` is the name of the user group that "owns" the web server related files and processes for this host. Remember that you must create the user accounts and groups using the `useradd` command. Consider our documentation of [user groups and permissions](/docs/using-linux/users-and-groups) for more information about creating the necessary users and groups.
+In this example, `webeditor` is the name of the user of the specific site in question, and `webgroup` is the name of the user group that "owns" the web server related files and processes for this host. Remember that you must create the user accounts and groups using the `useradd` command. Consider our documentation of [user groups and permissions](/docs/tools-reference/linux-users-and-groups) for more information about creating the necessary users and groups.
 
 More Information
 ----------------

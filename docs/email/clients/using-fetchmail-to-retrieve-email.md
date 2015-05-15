@@ -72,7 +72,7 @@ In the first specification, fetchmail is told to check the `mail.example.com` se
 
 In the second example, a single account (i.e. `betty`) is retrieved from the remote server (i.e. `mail.dexample.org`) and passed to the MDA `procmail` utility. Additionally, account has the `sslproto` option is enabled to encrypt this traffic using `ssl`.
 
-Fetchmail requires that the `~/.fetchmailrc` file have the [access permissions](/docs/using-linux/users-and-groups) of 600. Permissions of 600 equate to read and writeable by the user account which "owns" the file with no permissions granted to group or other users. To achieve this, issue the following command:
+Fetchmail requires that the `~/.fetchmailrc` file have the [access permissions](/docs/tools-reference/linux-users-and-groups) of 600. Permissions of 600 equate to read and writeable by the user account which "owns" the file with no permissions granted to group or other users. To achieve this, issue the following command:
 
     chmod 600 ~/.fetchmailrc
 

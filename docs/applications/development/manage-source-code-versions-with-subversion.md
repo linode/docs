@@ -186,7 +186,7 @@ In order to avoid permission conflicts with multiple users, set the "sticky" bit
 
     chmod -R +s /srv/svn/morris
 
-The sticky bit allows all users with access to the files, by virtue of their group membership, to create files that are owned by the user and group that owns the directory, rather than by their own default user and group. This also allows users to execute scripts in these directories, typically the "hooks," as the user that owns them, and thus poses a potential security risk. If you would like to learn more about [groups and UNIX permissions consult this overview](/docs/using-linux/users-and-groups).
+The sticky bit allows all users with access to the files, by virtue of their group membership, to create files that are owned by the user and group that owns the directory, rather than by their own default user and group. This also allows users to execute scripts in these directories, typically the "hooks," as the user that owns them, and thus poses a potential security risk. If you would like to learn more about [groups and UNIX permissions consult this overview](/docs/tools-reference/linux-users-and-groups).
 
 ### Configuring the Apache Web Server
 

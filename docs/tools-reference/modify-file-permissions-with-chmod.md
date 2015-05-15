@@ -34,7 +34,7 @@ The first block of data contains information regarding the file permissions and 
 
 The remaining characters represent the core permissions. In groupings of three, these characters represent read, write, and execute permissions. The first grouping represents the owners permissions, the second grouping represents the usergroup that owns the file, and the final grouping represents the permissions of all users on the system.
 
-Any object on the file system may have any combination of permissions. Note, access to the files targeted by symbolic links is controlled by the permissions of the targeted file, not the permissions of the link object. There are [additional file permissions](/docs/using-linux/users-and-groups#additional_file_permissions) that control other aspects of access to files.
+Any object on the file system may have any combination of permissions. Note, access to the files targeted by symbolic links is controlled by the permissions of the targeted file, not the permissions of the link object. There are [additional file permissions](/docs/tools-reference/linux-users-and-groups#additional_file_permissions) that control other aspects of access to files.
 
 ### The Chmod Command
 
@@ -106,7 +106,7 @@ More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [Manage File Permission with Users and Groups](/docs/using-linux/users-and-groups)
+- [Manage File Permission with Users and Groups](/docs/tools-reference/linux-users-and-groups)
 - [Administration Basics](/docs/using-linux/administration-basics)
 
 

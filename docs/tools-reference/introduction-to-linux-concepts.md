@@ -256,7 +256,7 @@ To view the users and permissions for a particular file or directory, run the `l
 
     ls -l my_directory
 
-To learn about users and groups in more detail, read the [Linux Users and Groups](/docs/using-linux/users-and-groups) article.
+To learn about users and groups in more detail, read the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups) article.
 
 Software
 --------
@@ -295,7 +295,7 @@ You want some programs, like your web server, to run constantly. These are the p
 
 **Once:**
 
-Sometimes you want to run a program on an as-needed basis. For example, you might want to run a script to rename a group of files. In that case, first use the `cd` command to move into the directory where the script is located. Make sure that your user has [execute permissions](#users-and-permissions) for the script file. If you need to modify the permissions, see the [Linux Users and Groups](/docs/using-linux/users-and-groups#sph_administering-file-permissions) guide. Then run the script with the following syntax:
+Sometimes you want to run a program on an as-needed basis. For example, you might want to run a script to rename a group of files. In that case, first use the `cd` command to move into the directory where the script is located. Make sure that your user has [execute permissions](#users-and-permissions) for the script file. If you need to modify the permissions, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups#sph_administering-file-permissions) guide. Then run the script with the following syntax:
 
     ./my_script
 

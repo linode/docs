@@ -90,7 +90,7 @@ You can use any SSL certificate with Postfix. If you already have a commercial c
 Postfix
 -------
 
-At this point you should be able to send email using your Postfix instance by authenticating with SMTP. Authentication credentials are your [system user accounts](/docs/using-linux/users-and-groups/).
+At this point you should be able to send email using your Postfix instance by authenticating with SMTP. Authentication credentials are your [system user accounts](/docs/tools-reference/linux-users-and-groups/).
 
 Consider the [basic email gateway guide](/docs/email/postfix/gateway-ubuntu-10.04-lucid) for more information regarding Postfix virtual hosting configuration. If you need to deliver mail locally, continue for documentation of mail routing and the Dovecot POP3/IMAP server.
 
