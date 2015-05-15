@@ -9,7 +9,7 @@ modified: Wednesday, April 9th, 2015
 modified_by:
   name: Joseph Dooley
 published: 'Thursday, April 30th, 2015'
-title: Salt and Python for a Beginner
+title: Server Management and Configuration with Salt and Python for a Beginner
 ---
 
 Salt, often referred to as SaltStack, is designed for server management. A single Salt Master controls many Salt Minions. The master can remotely run commands, transfer files, and much more concerning scalability. 
@@ -17,7 +17,7 @@ Salt, often referred to as SaltStack, is designed for server management. A singl
 This tutorial is primarily for Salt, although it displays how to create, transfer, and then remotely run a server-side Python script or application.
 
 ##Install a Salt Master and a Salt Minion
-The directions below are for two separate Debian 8 Linodes. For other operating systems or single servers, visit the <a href="http://docs.saltstack.com/en/latest/topics/installation/" target="_blank">Salt installation guides</a>. Start with the necessary steps for both servers. Have the terminal windows open side-by-side.
+The directions below are for two separate Debian 8 Linodes. For other operating systems or single servers, visit the <a href="http://docs.saltstack.com/en/latest/topics/installation/" target="_blank">Salt installation guides</a>. Start with the necessary steps for both servers. Have the terminal windows open side-by-side. Also, log into both servers <a href="http://docs.saltstack.com/en/latest/ref/configuration/nonroot.html" target="_blank">as the root user</a>.
 
 1.  On both Linode 1 and Linode 2, open `/etc/apt/sources.list` and insert the below syntax at the bottom of the file: 
     
@@ -42,7 +42,7 @@ The directions below are for two separate Debian 8 Linodes. For other operating 
 
         apt-get install salt-master
 
-2.  On Linode 1 the Salt Master, open `/etc/salt/master`, uncomment the `#interface:` line, and replace `<master's IP address>` from below with the Salt Master's IP address:
+2.  On Linode 1 the Salt Master, open `/etc/salt/master`, uncomment the `#interface:` line, and replace `<master's IP address>` from below with the local, Salt Master's IP address:
 
     {:.file }
     /etc/salt/master 
@@ -91,7 +91,7 @@ The directions below are for two separate Debian 8 Linodes. For other operating 
 
         salt-key -L
 
-2.  Accept the listed Salt Minions. You will be asked to proceed. Press `y`:
+2.  Accept the listed Salt Minions:
 
         salt-key -A
 
@@ -106,7 +106,7 @@ The directions below are for two separate Debian 8 Linodes. For other operating 
 ##Using Python with Salt 
 Python is used as an example for remotely running a server-side language. However, Bash, Perl, Python, or other languages can be used, often interchangeably. For example, transferring a start-up, or on-boot script, might be better written in Bash, but still remotely pushed to all minions through Salt. 
 
-1.  Create a Python hello world app and test it on the Master. In your editor of choice open a file named `hello.py`:
+1.  Create a Python hello world app and test it on the Master. Create and open a file named `hello.py`:
 
     {:.file }
     hello.py 
@@ -126,5 +126,5 @@ Python is used as an example for remotely running a server-side language. Howeve
 
         salt '*' cmd.run 'python /destination-directory-path/hello.py'
 
-For possible next steps, continue building a multi-server configuration setup. This would most likely come in use for servers with a high amount of requests or an application that is handling a great deal of data. Note, there is a <a href="http://docs.saltstack.com/en/latest/ref/clients/" target="_blank">Python client API for Salt</a>. 
+For possible next steps, continue building a multi-server configuration setup and read more about <a href="http://docs.saltstack.com/en/latest/ref/clients/" target="_blank">configuration management with Salt States</a>. This would most likely come in use for applications with a high amount of requests or a great deal of data manipulations. Also note, there is a <a href="http://docs.saltstack.com/en/latest/ref/clients/" target="_blank">Python client API for Salt</a>.  
 
