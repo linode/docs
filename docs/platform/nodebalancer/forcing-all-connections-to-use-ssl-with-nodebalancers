@@ -25,14 +25,14 @@ The following documentation will assist you with obtaining a valid, commercially
 Prerequisites
 ---------------
 
-- When first configuring your backend Linodes, they should already be set up according to the instructions in our [Getting Started](/docs/getting-started) guide, and it is suggested that security precautions be implemented. For assistance with this, please see our documentation: [Securing Your Server](https://linode.com/docs/security/securing-your-server)
+- When first configuring your back-end Linodes, they should be set up according to the instructions in our [Getting Started](/docs/getting-started) guide, and it is suggested that security precautions be implemented. For assistance with this, please see our documentation: [Securing Your Server](https://linode.com/docs/security/securing-your-server)
 
 - This guide assumes that you have already deployed two or more backend Linodes and configured them with either a LAMP stack, or a LEMP Stack. If you have not, please review the following supportive documentation for assistance with configuring one:
 
     - [LAMP Stack](/docs/websites/lamp/)
     - [LEMP Stack](/docs/websites/lemp/)
 
-- In addition, this guide assumes that you have already deployed a NodeBalancer and have configured it with two or more 'Backend' Linodes that make connections on port 80/HTTP. It is recommended that you first verify that this is configured correctly, prior to introducing the complexities of an encrypted connection over SSL. If you would like assistance with setting up a basic NodeBalancer configuration, please review the following supportive documentation:
+- In addition, this guide assumes that you have already deployed a NodeBalancer and have configured it with two or more 'Back-end' Linodes that make connections on port 80/HTTP. It is recommended that you first verify that this is configured correctly, prior to introducing the complexities of an encrypted connection over SSL. If you would like assistance with setting up a basic NodeBalancer configuration, please review the following supportive documentation:
 
    - [Getting Started with NodeBalancers](/docs/platform/nodebalancer/getting-started-with-nodebalancers)
    - [NodeBalancer Reference Guide](/docs/platform/nodebalancer/nodebalancer-reference-guide)
@@ -94,6 +94,8 @@ Here are the values we entered for our example certificate. Note that you can ig
     An optional company name []:
 
 
+
+
 A `certificate signing request` file, ending with `.csr`, file will be generated and placed in `/etc/ssl/localcerts`. An example of what this file will look like can be found below (yours will be unique):
 
     -----BEGIN CERTIFICATE REQUEST-----
@@ -107,7 +109,11 @@ A `certificate signing request` file, ending with `.csr`, file will be generated
     hofUVA2XXBs=
     -----END CERTIFICATE REQUEST-----
 
-In addition, a key file ending with `.key`, file will be generated and placed in `/etc/ssl/localcerts`. An example of what this file will look like can be found below (yours will be unique):
+In addition, a key file ending with `.key`, file will be generated and placed in `/etc/ssl/localcerts`. Execute the following command to protect the key:
+
+    chmod 400 /etc/ssl/localcerts/www.mydomain.com.key 
+
+An example of what this file will look like can be found below (yours will be unique):
 
     -----BEGIN PRIVATE KEY-----
     MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDhqR/0T9uiZY0s
@@ -122,7 +128,7 @@ In addition, a key file ending with `.key`, file will be generated and placed in
 
 ### Submit your CSR to a Certificate Authority
 
-You may now submit the contents of this file to a commercial SSL provider (Certificate Authority) for signing. Typically, they will provide you with a field to paste the contents of your CSR file into, somewhere on their website. The following is a list of well known commercial SSL vendors:
+You may now submit the contents of this file to a commercial SSL provider (Certificate Authority) for signing. Typically, they will provide you with a field to paste the contents of your CSR file into, somewhere on their website. The following is a list of well known commercial SSL vendors, provided for your convenience:
 
 -   [Verisign](https://www.verisign.com/)
 -   [Thawte](https://www.thawte.com/)
@@ -133,18 +139,7 @@ You may now submit the contents of this file to a commercial SSL provider (Certi
 > 
 > There are many vendors, including some listed above, that provide free SSL certificates. However, free SSL certificates typically have shorter expiration dates, and less features.
 
-
-Get the CA Root Certificate
----------------------------
-
-Now you'll need to get the root certificate for the CA that you paid to sign your certificate. You may obtain the root certs for various providers, here are some popular ones:
-
--   [Verisign](https://knowledge.verisign.com/support/ssl-certificates-support/index.html)
--   [Thawte](http://www.thawte.com/roots/index.html)
--   [Globalsign](http://secure.globalsign.net/cacert/)
--   [Comodo](https://support.comodo.com/index.php?_m=downloads&_a=view&parentcategoryid=1&pcid=0&nav=0)
-
-Once this request has been submitted, you will receive a commercially signed SSL certificate file. Save this file as `/etc/ssl/localcerts/www.example.com.crt`. Which will look similar to the following (yours will be unique):
+Once this request has been submitted, you will receive a commercially signed SSL certificate file, which will look similar to the following (yours will be unique):
 
     -----BEGIN CERTIFICATE-----
     MIIFSzCCBDOgAwIBAgIQVjCXC0bF9U8FypJOnL9cuDANBgkqhkiG9w0BAQsFADCB
@@ -157,9 +152,13 @@ Once this request has been submitted, you will receive a commercially signed SSL
     DCQzME2NkT1ZdW8fdz+Y
     -----END CERTIFICATE-----
 
+Save this file as /etc/ssl/localcerts/www.mydomain.com.crt. Execute the following command to protect the signed certificate:
+
+    chmod 400 /etc/ssl/localcerts/www.mydomain.com.crt
+
 ### Preparing a Chained SSL Certificate
 
-However, you may recieve several files ending with `.crt`. If this is the case, then they are collectively reffered to as a `chained SSL certificate` and must be concatonated into one file in order to provide full support with most browsers. The following example uses a chained SSL certificate that was signed by Comodo, but other vendors are perfectly reputable as well. Enter the following command to do this:
+However, you may receive several files ending with `.crt`. If this is the case, then they are collectively refereed to as a `chained SSL certificate` and must be concatenated into one file in order to provide full support with most browsers. The following example uses a chained SSL certificate that was signed by Comodo, but other vendors are perfectly reputable as well. Enter the following command to do this:
 
     cat example_com.crt COMODORSADomainValidationSecureServerCA.crt  COMODORSAAddTrustCA.crt AddTrustExternalCARoot.crt > chained-ssl.crt
 
@@ -206,6 +205,9 @@ The contents of the resulting file will appear similar to the following (yours w
     mnkPIAou1Z5jJh5VkpTYghdae9C8x49OhgQ=
     -----END CERTIFICATE-----
 
+If you have concatenated a chained SSL certificate, save this file as `/etc/ssl/localcerts/www.mydomain.com.crt`. Then execute the following command to protect the signed certificate:
+
+    chmod 400 /etc/ssl/localcerts/www.mydomain.com.crt
 
 Installing the SSL Certificate and Private Key on your NodeBalancer
 ---------------------------
@@ -224,7 +226,17 @@ Copy your passphraseless private key into the **Private Key** field.
 Configuring your Web Server with a 301 Redirect
 ---------------------------
 
-#### Configuring your vhost file for the Apache Webserver.
+### X-Forwarded-For Header
+
+NodeBalancers add an X-Forwarded-For (XFF) HTTP header field, which allows your nodes to identify a client's originating IP address. This is useful for logging purposes. Here's an example XFF HTTP header:
+
+    X-Fowarded-For: 196.180.44.172
+
+You'll need to configure your web server software to use the XFF header.
+
+### Configuring your vhost file for the Apache Webserver.
+
+If you're using the Apache web server, you can use the [mod\_rpaf module](http://www.stderr.net/apache/rpaf/) to replace `REMOTE_ADDR` with the clent's IP address in the XFF header. After you install the module, you'll need to specify 192.168.255.0/24 as a proxy in `httpd.conf`.
 
 1.  Configure your virtual host file for the site that we need to host with this server. For this example we are using "example.com" and "example.org".
 
@@ -232,7 +244,7 @@ Configuring your Web Server with a 301 Redirect
       /etc/apache2/sites-available/example.com.conf
       :   ~~~ apache
       
-      	<VirtualHost *:80>
+>      <VirtualHost *:80>
 	    ServerAdmin   webmaster@example.com
 	    ServerName    example.com
 	    ServerAlias   www.example.com
@@ -242,10 +254,17 @@ Configuring your Web Server with a 301 Redirect
 	    RewriteEngine On
 	    RewriteCond   %{HTTP:X-Forwarded-Proto} !https
 	    RewriteRule   ^.*$ https://%{SERVER_NAME}%{REQUEST_URI}
-	</VirtualHost>
+>      </VirtualHost>
 
+    
+### Configuring your vhost file for the Nginx Webserver.
 
-#### Configuring your vhost file for the Nginx Webserver.
+If you're using the Nginx web server, you can add the following lines to your Nginx configuration file:
+
+    real_ip_header X-Forwarded-For;
+    set_real_ip_from 192.168.255.0/24;
+
+This will allow Nginx to capture the client's IP address in the logs.
 
 2. Configure your virtual host file for the site that we need to host with this server. For this example we are using “example.com” and “example.org”.
 
@@ -287,3 +306,4 @@ Tips for Troubleshooting
     
         service nginx reload
         systemctl restart nginx.service
+
