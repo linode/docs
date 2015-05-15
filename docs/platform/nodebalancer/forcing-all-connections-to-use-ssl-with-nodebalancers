@@ -12,7 +12,11 @@ published: 'Monday, May 17th, 2015'
 title: Forcing SSL connections with Nodebalancers
 ---
 
-This guide provides step-by-step instructions for configuring a NodeBalancer to redirect all connections to SSL over port 443/HTTPS. Provisions will be provided to configure this with both the Apache and Nginx web servers. You will be responsible, however, for determining the appropriate document root as recommended by the distribution of Linux that your will be using.
+The following documentation will assist you with obtaining a valid, commercially signed SSL certificate and installing it on your NodeBalancer. This guide provides step-by-step instructions for configuring a NodeBalancer to redirect all web connections, using SSL, over port 443/HTTPS. Instructions will be provided to configure this with both the Apache and Nginx servers on Debian and Redhat based distributions.
+
+{: .note }
+> 
+> Please note that commercial SSL certificates require a unique IP address for each certificate. As a result, you will only be able to host one SSL-enabled website, per NodeBalancer
 
  {: .note }
  > 
@@ -21,22 +25,20 @@ This guide provides step-by-step instructions for configuring a NodeBalancer to 
 Prerequisites
 ---------------
 
-- Your backend Linodes should already be set up according to the instructions in our [Getting Started](/docs/getting-started) guide, and it is suggested that security precautions be implemented. For assistance with this, please see our documentation: [Securing Your Server](https://linode.com/docs/security/securing-your-server)
+- When first configuring your backend Linodes, they should already be set up according to the instructions in our [Getting Started](/docs/getting-started) guide, and it is suggested that security precautions be implemented. For assistance with this, please see our documentation: [Securing Your Server](https://linode.com/docs/security/securing-your-server)
 
 - This guide assumes that you have already deployed two or more backend Linodes and configured them with either a LAMP stack, or a LEMP Stack. If you have not, please review the following supportive documentation for assistance with configuring one:
 
     - [LAMP Stack](/docs/websites/lamp/)
     - [LEMP Stack](/docs/websites/lemp/)
 
-- In addition, this guide assumes that you have already deployed a NodeBalancer and have configured it with two or more 'Backend' Linodes that make connections on port 80/HTTP. If you would like assitance with this, please review the following supportive documentation:
+- In addition, this guide assumes that you have already deployed a NodeBalancer and have configured it with two or more 'Backend' Linodes that make connections on port 80/HTTP. It is recommended that you first verify that this is configured correctly, prior to introducing the complexities of an encrypted connection over SSL. If you would like assistance with setting up a basic NodeBalancer configuration, please review the following supportive documentation:
 
    - [Getting Started with NodeBalancers](/docs/platform/nodebalancer/getting-started-with-nodebalancers)
    - [NodeBalancer Reference Guide](/docs/platform/nodebalancer/nodebalancer-reference-guide)
 
     {: .note}
 > This guide is written, assuming that you are logged in as the root user and that you will not need to prepend commands with ``sudo``.
-
-####The following instructions will assist you with obtaining a valid commercially signed SSL certificate and installing it on your NodeBalancer. Please note that commercial SSL certificates require a unique IP address for each certificat. As a result, you will be able to host only one SSL enabled website, per NodeBalancer
 
 Install OpenSSL
 ---------------
@@ -116,7 +118,20 @@ In addition, a key file ending with `.key`, file will be generated and placed in
     qSdRwPnDjilI9r9SEEwlcssGIYReIUfRuXnaaPLudKDeZ3GZ0kjXfbsWFOnwLyAE
     pNaMF47bTIFES5Ytqhp4rEYe5Hxn2VePrGJp/j7tAIzTXeV3IC6ICkEueKpKS2Dl
     xHtX/Rl40JHhTCiGK5eIR3E=
-    -----END PRIVATE KEY-----
+    -----END PRIVATE KEY----
+
+### Submit your CSR to a Certificate Authority
+
+You may now submit the contents of this file to a commercial SSL provider (Certificate Authority) for signing. Typically, they will provide you with a field to paste the contents of your CSR file into, somewhere on their website. The following is a list of well known commercial SSL vendors:
+
+-   [Verisign](https://www.verisign.com/)
+-   [Thawte](https://www.thawte.com/)
+-   [Globalsign](https://www.globalsign.com/en/)
+-   [Comodo](https://www.comodo.com/)
+
+ {:.note}
+> 
+> There are many vendors, including some listed above, that provide free SSL certificates. However, free SSL certificates typically have shorter expiration dates, and less features.
 
 
 Get the CA Root Certificate
@@ -129,13 +144,7 @@ Now you'll need to get the root certificate for the CA that you paid to sign you
 -   [Globalsign](http://secure.globalsign.net/cacert/)
 -   [Comodo](https://support.comodo.com/index.php?_m=downloads&_a=view&parentcategoryid=1&pcid=0&nav=0)
 
- {:.note}
-> 
-> There are many vendors, including some listed above, that provide free SSL certificates. They typically have shorter expiration dates, and less features.
-
-### Submit your CSR to a Certificate Authority
-
-You may now submit the contents of this file to a commercial SSL provider (Certificate Authroity) for signing. Typically, they will provide you with a field to paste the contents of your CSR file into, somewhere on their website. Once this request has been submitted, you will receive a commercially signed SSL certificate file. Save this file as `/etc/ssl/localcerts/www.example.com.crt`. Which will look similar to the following (yours will be unique):
+Once this request has been submitted, you will receive a commercially signed SSL certificate file. Save this file as `/etc/ssl/localcerts/www.example.com.crt`. Which will look similar to the following (yours will be unique):
 
     -----BEGIN CERTIFICATE-----
     MIIFSzCCBDOgAwIBAgIQVjCXC0bF9U8FypJOnL9cuDANBgkqhkiG9w0BAQsFADCB
