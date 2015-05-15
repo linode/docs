@@ -236,10 +236,29 @@ You'll need to configure your web server software to use the XFF header.
 
 ### Configuring your vhost file for the Apache Webserver.
 
-      {: .file-excerpt }
+Enable mod_rewrite so that you can redirect all traffic back to the NodeBalancer over port 443/HTTPS. Enter the following command:
+
+    a2enmod rewrite
+    
+    
+   or, you can load the module manually by appending the following to your Apache configuration file:
+    
+
+ >   LoadModule rewrite_module modules/mod_rewrite.so
+  
+  {:.note}
+   > Depending on if you are using a Debian or a Redhat based distribution, this file will be located in one of the following locations:
+       
+>      /etc/apache2/apache2.conf
+>    
+>      /etc/httpd/httpd.conf
+
+
+
+   {: .file-excerpt }
       /etc/apache2/sites-available/example.com.conf
       :   ~~~ apache
-      
+        
 >      <VirtualHost *:80>
 	    ServerAdmin   webmaster@example.com
 	    ServerName    example.com
@@ -292,4 +311,5 @@ Tips for Troubleshooting
     
         service nginx reload
         systemctl restart nginx.service
+
 
