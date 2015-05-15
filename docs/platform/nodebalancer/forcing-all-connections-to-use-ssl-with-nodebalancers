@@ -236,10 +236,6 @@ You'll need to configure your web server software to use the XFF header.
 
 ### Configuring your vhost file for the Apache Webserver.
 
-If you're using the Apache web server, you can use the [mod\_rpaf module](http://www.stderr.net/apache/rpaf/) to replace `REMOTE_ADDR` with the clent's IP address in the XFF header. After you install the module, you'll need to specify 192.168.255.0/24 as a proxy in `httpd.conf`.
-
-1.  Configure your virtual host file for the site that we need to host with this server. For this example we are using "example.com" and "example.org".
-
       {: .file-excerpt }
       /etc/apache2/sites-available/example.com.conf
       :   ~~~ apache
@@ -253,20 +249,12 @@ If you're using the Apache web server, you can use the [mod\_rpaf module](http:/
 	    CustomLog     /var/www/example.com/logs/access.log combined
 	    RewriteEngine On
 	    RewriteCond   %{HTTP:X-Forwarded-Proto} !https
-	    RewriteRule   ^.*$ https://%{SERVER_NAME}%{REQUEST_URI}
+	    RewriteRule   ^.*$ https://%{SERVER_NAME}%{REQUEST_URI} [L,R=301,NE]
+            RewriteLog   /var/log/apache2/rewrite.log
 >      </VirtualHost>
 
     
 ### Configuring your vhost file for the Nginx Webserver.
-
-If you're using the Nginx web server, you can add the following lines to your Nginx configuration file:
-
-    real_ip_header X-Forwarded-For;
-    set_real_ip_from 192.168.255.0/24;
-
-This will allow Nginx to capture the client's IP address in the logs.
-
-2. Configure your virtual host file for the site that we need to host with this server. For this example we are using “example.com” and “example.org”.
 
 	{: .file-excerpt }    
 	/etc/nginx/sites-available/example.com.conf
@@ -290,8 +278,6 @@ This will allow Nginx to capture the client's IP address in the logs.
 		    } 
 
 
-
-
 Tips for Troubleshooting
 ---------------------------
 
@@ -299,7 +285,7 @@ Tips for Troubleshooting
 
  - [Qualys online SSL Server Test](https://www.ssllabs.com/ssltest/)
 
-- Every time that you make changes to either your web server's document root file or other configuration files, be sure to reload the server.
+- Every time that you make changes to your web server's document root file or other configuration files, be sure to reload the server.
  
         service apache2 reload
         systemctl restart apache2.service
