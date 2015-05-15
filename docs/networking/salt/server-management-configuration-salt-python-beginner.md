@@ -21,14 +21,12 @@ The directions below are for two separate Debian 8 Linodes. For other operating 
 
 1.  On both Linode 1 and Linode 2, open `/etc/apt/sources.list` and insert the below syntax at the bottom of the file: 
     
-        nano /etc/apt/sources.list
-
 	{:.file }
 	/etc/apt/sources.list
-	: ~~~  
-	# salt
-	deb http://debian.saltstack.com/debian jessie-saltstack main
-	~~~
+	:  ~~~  
+	   # salt
+	   deb http://debian.saltstack.com/debian jessie-saltstack main
+	   ~~~
 
 2.  On both Linode 1 and Linode 2, run the wget command:
 	
@@ -44,17 +42,14 @@ The directions below are for two separate Debian 8 Linodes. For other operating 
 
         apt-get install salt-master
 
-2.  On Linode 1 the Salt Master, open `/etc/salt/master`, uncomment the `#interface:` line, and replace `<master's IP address>` from below with the local, Salt Master's, IP address:
-
-        nano /etc/salt/master
+2.  On Linode 1 the Salt Master, open `/etc/salt/master`, uncomment the `#interface:` line, and replace `<master's IP address>` from below with the Salt Master's IP address:
 
     {:.file }
     /etc/salt/master 
-    : ~~~  
-       # The address of the interface to bind to:
-       interface:<master's IP address>
-    ~~~
-
+    :   ~~~  
+        # The address of the interface to bind to:
+        interface:<master's IP address>
+        ~~~
 
         {: .caution}
     >
@@ -74,15 +69,13 @@ The directions below are for two separate Debian 8 Linodes. For other operating 
     
 2.  On Linode 2 the Salt Minion, open `/etc/salt/minion`, uncomment the `#master: salt` line, and replace "salt" with the IP address of Linode 1, the Salt Master:
 
-        nano /etc/salt/minion
-
     {:.file }
     /etc/salt/minion 
-    : ~~~ 
-       # Set the location of the salt master server. If the master server cannot be
-       # resolved, then the minion will fail to start. 
-       master: <master's IP address>
-    ~~~
+    :   ~~~ 
+        # Set the location of the salt master server. If the master server cannot be
+        # resolved, then the minion will fail to start. 
+        master: <master's IP address>
+        ~~~
 
         {: .caution}
     >
@@ -94,11 +87,11 @@ The directions below are for two separate Debian 8 Linodes. For other operating 
 
 ##Using the Salt Master
 
-1.  List the known Salt Minions linked to the Salt Master. On Debian 8, the Minions are listed by default as `Debian`:
+1.  List the known Salt Minions linked to the Salt Master. The Minions will be listed by the hostname:
 
         salt-key -L
 
-2.  Accept the listed Salt Minions:
+2.  Accept the listed Salt Minions. You will be asked to proceed. Press `y`:
 
         salt-key -A
 
@@ -113,15 +106,13 @@ The directions below are for two separate Debian 8 Linodes. For other operating 
 ##Using Python with Salt 
 Python is used as an example for remotely running a server-side language. However, Bash, Perl, Python, or other languages can be used, often interchangeably. For example, transferring a start-up, or on-boot script, might be better written in Bash, but still remotely pushed to all minions through Salt. 
 
-1.  Create a Python hello world app and test it on the Master:
-
-        nano hello.py
+1.  Create a Python hello world app and test it on the Master. In your editor of choice open a file named `hello.py`:
 
     {:.file }
     hello.py 
-    : ~~~  
-       print "Hello world."
-    ~~~
+    :   ~~~  
+        print "Hello world."
+        ~~~
 
 2.  Run the app on the Salt Master:
 
