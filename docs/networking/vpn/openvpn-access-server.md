@@ -38,7 +38,7 @@ Installing OpenVPN Access Server
 
 	RPM based systems(Fedora/CentOS/OpenSuse):
 		
-		sudo rpm --install /path/to/download
+		sudo rpm --install openvpn-as-*.rpm
 
 4.  Once the install process is completed, information on accessing the Admin and Client UI will be displayed.
 
