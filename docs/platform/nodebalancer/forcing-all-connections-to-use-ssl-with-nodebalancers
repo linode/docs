@@ -43,92 +43,93 @@ Prerequisites
 Install OpenSSL
 ---------------
 
-Issue the following commands to update the system and install the required packages for OpenSSL.
+1. Issue the following commands to update the system and install the required packages for OpenSSL.
 
-Debian/Ubuntu users:
+ Debian/Ubuntu users:
 
-    apt-get update
-    apt-get upgrade
-    apt-get install openssl
-    mkdir /etc/ssl/localcerts
+        apt-get update
+        apt-get upgrade
+        apt-get install openssl
+        mkdir /etc/ssl/localcerts
 
-CentOS/Fedora users:
+ CentOS/Fedora users:
 
-    yum install openssl
-    mkdir /etc/ssl/localcerts
+        yum install openssl
+        mkdir /etc/ssl/localcerts
 
 Create a Certificate Signing Request
 ------------------------------------
 
-Issue the following commands to generate a certificate signing request (CSR) for the domain that you would like to configure with SSL. Be sure to change "www.example.com" to reflect the fully qualified domain name (subdomain.domainname.com) of the site you'll be using SSL with. Leave the challenge password blank. We entered 365 for the days parameter to the command, as we would be paying for one year of SSL certificate verification from a commercial CA (certificate authority).
+1. Issue the following commands to generate a certificate signing request (CSR) for the domain that you would like to configure with SSL. Be sure to change "www.example.com" to reflect the fully qualified domain name (subdomain.domainname.com) of the site you'll be using SSL with. Leave the challenge password blank. We entered 365 for the days parameter to the command, as we would be paying for one year of SSL certificate verification from a commercial CA (certificate authority).
 
-    cd /etc/ssl/localcerts
+        cd /etc/ssl/localcerts
     
-    openssl req -new -newkey rsa:2048 -nodes -days 365 -keyout www.example.com.key -out www.example.com.csr
-
-Here are the values we entered for our example certificate. Note that you can ignore the extra attributes.
-
-    Generating a 2048 bit RSA private key
-    ......................................................++++++
-    ....++++++
-    writing new private key to 'www.mydomain.com.key'
-    -----
-    You are about to be asked to enter information that will be incorporated
-    into your certificate request.
-    What you are about to enter is what is called a Distinguished Name or a DN.
-    There are quite a few fields but you can leave some blank
-    For some fields there will be a default value,
-    If you enter '.', the field will be left blank.
-    -----
-    Country Name (2 letter code) [AU]:US
-    State or Province Name (full name) [Some-State]:New Jersey
-    Locality Name (eg, city) []:Absecon
-    Organization Name (eg, company) [Internet Widgits Pty Ltd]:MyDomain, LLC
-    Organizational Unit Name (eg, section) []:Web Services
-    Common Name (eg, YOUR name) []:www.example.com
-    Email Address []:support@mydomain.com
-
-    Please enter the following 'extra' attributes
-    to be sent with your certificate request
-    A challenge password []:
-    An optional company name []:
+        openssl req -new -newkey rsa:2048 -nodes -days 365 -keyout www.example.com.key -out www.example.com.csr
 
 
+ Here are the values we entered for our example certificate. Note that you can ignore the extra attributes.
+
+        Generating a 2048 bit RSA private key
+        ......................................................++++++
+        ....++++++
+        writing new private key to 'www.mydomain.com.key'
+        -----
+        You are about to be asked to enter information that will be incorporated
+        into your certificate request.
+        What you are about to enter is what is called a Distinguished Name or a DN.
+        There are quite a few fields but you can leave some blank
+        For some fields there will be a default value,
+        If you enter '.', the field will be left blank.
+        -----
+        Country Name (2 letter code) [AU]:US
+        State or Province Name (full name) [Some-State]:New Jersey
+        Locality Name (eg, city) []:Absecon
+        Organization Name (eg, company) [Internet Widgits Pty Ltd]:MyDomain, LLC
+        Organizational Unit Name (eg, section) []:Web Services
+        Common Name (eg, YOUR name) []:www.example.com
+        Email Address []:support@mydomain.com
+
+        Please enter the following 'extra' attributes
+        to be sent with your certificate request
+        A challenge password []:
+        An optional company name []:
 
 
-A `certificate signing request` file, ending with `.csr`, file will be generated and placed in `/etc/ssl/localcerts`. An example of what this file will look like can be found below (yours will be unique):
 
-    -----BEGIN CERTIFICATE REQUEST-----
-    MIICpDCCAYwCAQAwRTELMAkGA1UEBhMCQVUxEzARBgNVBAgMClNvbWUtU3RhdGUx
-    ITAfBgNVBAoMGEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZDCCASIwDQYJKoZIhvcN
-    AQEBBQADggEPADCCAQoCggEBAOGpH/RP26JljSy1Dbt/R6zU5V/cWQd8CMKwzUba
-    (additional encrypted data... the cropped text is not important)
-    kaYVdWJ5+BXNe5AQursBYcXoo1/cl4aSbVV2XxRtNWZmpuvNCtt0iAvWyQypTNp0
-    7+eFgy625DXD7n3pScFDPb/RXaawku1EB+vpG1lpwhr+bU+8mtqa/wEPC2IVzNba
-    lEObO2p9I7nZZpPXc05KA+034Rc4JFoABq0j2HuxlF2tL/U/EqjWB5ksOy96c7BL
-    hofUVA2XXBs=
-    -----END CERTIFICATE REQUEST-----
 
-In addition, a key file ending with `.key`, file will be generated and placed in `/etc/ssl/localcerts`. Execute the following command to protect the key:
+2. A `certificate signing request` file, ending with `.csr`, file will be generated and placed in `/etc/ssl/localcerts`. An example of what this file will look like can be found below (yours will be unique):
 
-    chmod 400 /etc/ssl/localcerts/www.mydomain.com.key 
+        -----BEGIN CERTIFICATE REQUEST-----
+        MIICpDCCAYwCAQAwRTELMAkGA1UEBhMCQVUxEzARBgNVBAgMClNvbWUtU3RhdGUx
+        ITAfBgNVBAoMGEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZDCCASIwDQYJKoZIhvcN
+        AQEBBQADggEPADCCAQoCggEBAOGpH/RP26JljSy1Dbt/R6zU5V/cWQd8CMKwzUba
+        (additional encrypted data... the cropped text is not important)
+        kaYVdWJ5+BXNe5AQursBYcXoo1/cl4aSbVV2XxRtNWZmpuvNCtt0iAvWyQypTNp0
+        7+eFgy625DXD7n3pScFDPb/RXaawku1EB+vpG1lpwhr+bU+8mtqa/wEPC2IVzNba
+        lEObO2p9I7nZZpPXc05KA+034Rc4JFoABq0j2HuxlF2tL/U/EqjWB5ksOy96c7BL
+        hofUVA2XXBs=
+        -----END CERTIFICATE REQUEST-----
 
-An example of what this file will look like can be found below (yours will be unique):
+3. In addition, a key file ending with `.key`, file will be generated and placed in `/etc/ssl/localcerts`. Execute the following command to protect the key:
 
-    -----BEGIN PRIVATE KEY-----
-    MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDhqR/0T9uiZY0s
-    tQ27f0es1OVf3FkHfAjCsM1G2uMtGadRAFQN7lsa+W0W0tzfeJGSk4tqDanOPeJU
-    3jm/Udxy18DSl2xYKhJAF8YL50UPN6Yih1p+XPIEBqKjAEn+p7BgH/R7vehZQh+z
-    (additional encrypted data... the cropped text is not important)
-    ZegL7vs+//1jBJy3h/dcFNl7Pgiv7UlsxXhFw7aZAoGATUW7pWP1osmMFTshW6xo
-    qSdRwPnDjilI9r9SEEwlcssGIYReIUfRuXnaaPLudKDeZ3GZ0kjXfbsWFOnwLyAE
-    pNaMF47bTIFES5Ytqhp4rEYe5Hxn2VePrGJp/j7tAIzTXeV3IC6ICkEueKpKS2Dl
-    xHtX/Rl40JHhTCiGK5eIR3E=
-    -----END PRIVATE KEY----
+        chmod 400 /etc/ssl/localcerts/www.mydomain.com.key 
+
+ An example of what this file will look like can be found below (yours will be unique):
+
+        -----BEGIN PRIVATE KEY-----
+        MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDhqR/0T9uiZY0s
+        tQ27f0es1OVf3FkHfAjCsM1G2uMtGadRAFQN7lsa+W0W0tzfeJGSk4tqDanOPeJU
+        3jm/Udxy18DSl2xYKhJAF8YL50UPN6Yih1p+XPIEBqKjAEn+p7BgH/R7vehZQh+z
+        (additional encrypted data... the cropped text is not important)
+        ZegL7vs+//1jBJy3h/dcFNl7Pgiv7UlsxXhFw7aZAoGATUW7pWP1osmMFTshW6xo
+        qSdRwPnDjilI9r9SEEwlcssGIYReIUfRuXnaaPLudKDeZ3GZ0kjXfbsWFOnwLyAE
+        pNaMF47bTIFES5Ytqhp4rEYe5Hxn2VePrGJp/j7tAIzTXeV3IC6ICkEueKpKS2Dl
+        xHtX/Rl40JHhTCiGK5eIR3E=
+        -----END PRIVATE KEY----
 
 ### Submit your CSR to a Certificate Authority
 
-You may now submit the contents of this file to a commercial SSL provider (Certificate Authority) for signing. Typically, they will provide you with a field to paste the contents of your CSR file into, somewhere on their website. The following is a list of well known commercial SSL vendors, provided for your convenience:
+4. You may now submit the contents of this file to a commercial SSL provider (Certificate Authority) for signing. Typically, they will provide you with a field to paste the contents of your CSR file into, somewhere on their website. The following is a list of well known commercial SSL vendors, provided for your convenience:
 
 -   [Verisign](https://www.verisign.com/)
 -   [Thawte](https://www.thawte.com/)
@@ -139,88 +140,88 @@ You may now submit the contents of this file to a commercial SSL provider (Certi
 > 
 > There are many vendors, including some listed above, that provide free SSL certificates. However, free SSL certificates typically have shorter expiration dates, and less features.
 
-Once this request has been submitted, you will receive a commercially signed SSL certificate file, which will look similar to the following (yours will be unique):
+5. Once this request has been submitted, you will receive a commercially signed SSL certificate file, which will look similar to the following (yours will be unique):
 
-    -----BEGIN CERTIFICATE-----
-    MIIFSzCCBDOgAwIBAgIQVjCXC0bF9U8FypJOnL9cuDANBgkqhkiG9w0BAQsFADCB
-    kDELMAkGA1UEBhMCR0IxGzAZBgNVBAgTEkdyZWF0ZXIgTWFuY2hlc3RlcjEQMA4G
-    A1UEBxMHU2FsZm9yZDEaMBgGA1UEChMRQ09NT0RPIENBIExpbWl0ZWQxNjA0BgNV
-    (additional encrypted data... the cropped text is not important)
-    RWieiEDSZqbtZRPBaGooDJ5QbdHqUanvoVzf1aB1S5RrJB5qH/UG6WbTZ07rFfsn
-    age7UPo4ZwheAtpO2mhcYypBG1zln4cvxVBAcrnaa1GWwKjgwXUr5k2Pv7BXWEex
-    ncHG3hwHHwhiEz6ukC2mqxA+D3KILiywgHgWcumnpeCEUQgDzy0Fz2Ip/kR/1Fkv
-    DCQzME2NkT1ZdW8fdz+Y
-    -----END CERTIFICATE-----
+        -----BEGIN CERTIFICATE-----
+        MIIFSzCCBDOgAwIBAgIQVjCXC0bF9U8FypJOnL9cuDANBgkqhkiG9w0BAQsFADCB
+        kDELMAkGA1UEBhMCR0IxGzAZBgNVBAgTEkdyZWF0ZXIgTWFuY2hlc3RlcjEQMA4G
+        A1UEBxMHU2FsZm9yZDEaMBgGA1UEChMRQ09NT0RPIENBIExpbWl0ZWQxNjA0BgNV
+        (additional encrypted data... the cropped text is not important)
+        RWieiEDSZqbtZRPBaGooDJ5QbdHqUanvoVzf1aB1S5RrJB5qH/UG6WbTZ07rFfsn
+        age7UPo4ZwheAtpO2mhcYypBG1zln4cvxVBAcrnaa1GWwKjgwXUr5k2Pv7BXWEex
+        ncHG3hwHHwhiEz6ukC2mqxA+D3KILiywgHgWcumnpeCEUQgDzy0Fz2Ip/kR/1Fkv
+        DCQzME2NkT1ZdW8fdz+Y
+        -----END CERTIFICATE-----
 
-Save this file as /etc/ssl/localcerts/www.mydomain.com.crt. Execute the following command to protect the signed certificate:
+6. Save this file as /etc/ssl/localcerts/www.mydomain.com.crt. Execute the following command to protect the signed certificate:
 
-    chmod 400 /etc/ssl/localcerts/www.mydomain.com.crt
+        chmod 400 /etc/ssl/localcerts/www.mydomain.com.crt
 
 ### Preparing a Chained SSL Certificate
 
-However, you may receive several files ending with `.crt`. If this is the case, then they are collectively refereed to as a `chained SSL certificate` and must be concatenated into one file in order to provide full support with most browsers. The following example uses a chained SSL certificate that was signed by Comodo, but other vendors are perfectly reputable as well. Enter the following command to do this:
+7. However, you may receive several files ending with `.crt`. If this is the case, then they are collectively refereed to as a `chained SSL certificate` and must be concatenated into one file in order to provide full support with most browsers. The following example uses a chained SSL certificate that was signed by Comodo, but other vendors are perfectly reputable as well. Enter the following command to do this:
 
-    cat example_com.crt COMODORSADomainValidationSecureServerCA.crt  COMODORSAAddTrustCA.crt AddTrustExternalCARoot.crt > chained-ssl.crt
+        cat example_com.crt COMODORSADomainValidationSecureServerCA.crt  COMODORSAAddTrustCA.crt AddTrustExternalCARoot.crt > chained-ssl.crt
 
-The contents of the resulting file will appear similar to the following (yours will be unique):
+ The contents of the resulting file will appear similar to the following (yours will be unique):
 
-    -----BEGIN CERTIFICATE-----
-    MIIFSzCCBDOgAwIBAgIQVjCXC0bF9U8FypJOnL9cuDANBgkqhkiG9w0BAQsFADCB
-    kDELMAkGA1UEBhMCR0IxGzAZBgNVBAgTEkdyZWF0ZXIgTWFuY2hlc3RlcjEQMA4G
-    A1UEBxMHU2FsZm9yZDEaMBgGA1UEChMRQ09NT0RPIENBIExpbWl0ZWQxNjA0BgNV
-    (additional encrypted data... the cropped text is not important)
-    RWieiEDSZqbtZRPBaGooDJ5QbdHqUanvoVzf1aB1S5RrJB5qH/UG6WbTZ07rFfsn
-    age7UPo4ZwheAtpO2mhcYypBG1zln4cvxVBAcrnaa1GWwKjgwXUr5k2Pv7BXWEex
-    ncHG3hwHHwhiEz6ukC2mqxA+D3KILiywgHgWcumnpeCEUQgDzy0Fz2Ip/kR/1Fkv
-    DCQzME2NkT1ZdW8fdz+Y
-    -----END CERTIFICATE-----
-    -----BEGIN CERTIFICATE-----
-    MIIGCDCCA/CgAwIBAgIQKy5u6tl1NmwUim7bo3yMBzANBgkqhkiG9w0BAQwFADCB
-    hTELMAkGA1UEBhMCR0IxGzAZBgNVBAgTEkdyZWF0ZXIgTWFuY2hlc3RlcjEQMA4G
-    A1UEBxMHU2FsZm9yZDEaMBgGA1UEChMRQ09NT0RPIENBIExpbWl0ZWQxKzApBgNV
-    (additional encrypted data... the cropped text is not important)
-    j4rBYKEMrltDR5FL1ZoXX/nUh8HCjLfn4g8wGTeGrODcQgPmlKidrv0PJFGUzpII
-    0fxQ8ANAe4hZ7Q7drNJ3gjTcBpUC2JD5Leo31Rpg0Gcg19hCC0Wvgmje3WYkN5Ap
-    lBlGGSW4gNfL1IYoakRwJiNiqZ+Gb7+6kHDSVneFeO/qJakXzlByjAA6quPbYzSf
-    +AZxAeKCINT+b72x
-    -----END CERTIFICATE-----
-    -----BEGIN CERTIFICATE-----
-    MIIFdDCCBFygAwIBAgIQJ2buVutJ846r13Ci/ITeIjANBgkqhkiG9w0BAQwFADBv
-    MQswCQYDVQQGEwJTRTEUMBIGA1UEChMLQWRkVHJ1c3QgQUIxJjAkBgNVBAsTHUFk
-    ZFRydXN0IEV4dGVybmFsIFRUUCBOZXR3b3JrMSIwIAYDVQQDExlBZGRUcnVzdCBF
-    (additional encrypted data... the cropped text is not important)
-    Uspzgb8c8+a4bmYRBbMelC1/kZWSWfFMzqORcUx8Rww7Cxn2obFshj5cqsQugsv5
-    B5a6SE2Q8pTIqXOi6wZ7I53eovNNVZ96YUWYGGjHXkBrI/V5eu+MtWuLt29G9Hvx
-    PUsE2JOAWVrgQSQdso8VYFhH2+9uRv0V9dlfmrPb2LjkQLPNlzmuhbsdjrzch5vR
-    pu/xO28QOG8=
-    -----END CERTIFICATE-----
-    -----BEGIN CERTIFICATE-----
-    MIIENjCCAx6gAwIBAgIBATANBgkqhkiG9w0BAQUFADBvMQswCQYDVQQGEwJTRTEU
-    MBIGA1UEChMLQWRkVHJ1c3QgQUIxJjAkBgNVBAsTHUFkZFRydXN0IEV4dGVybmFs
-    IFRUUCBOZXR3b3JrMSIwIAYDVQQDExlBZGRUcnVzdCBFeHRlcm5hbCBDQSBSb290
-    (additional encrypted data... the cropped text is not important)
-    6wwCURQtjr0W4MHfRnXnJK3s9EK0hZNwEGe6nQY1ShjTK3rMUUKhemPR5ruhxSvC
-    Nr4TDea9Y355e6cJDUCrat2PisP29owaQgVR1EX1n6diIWgVIEM8med8vSTYqZEX
-    c4g/VhsxOBi0cQ+azcgOno4uG+GMmIPLHzHxREzGBHNJdmAPx/i9F4BrLunMTA5a
-    mnkPIAou1Z5jJh5VkpTYghdae9C8x49OhgQ=
-    -----END CERTIFICATE-----
+        -----BEGIN CERTIFICATE-----
+        MIIFSzCCBDOgAwIBAgIQVjCXC0bF9U8FypJOnL9cuDANBgkqhkiG9w0BAQsFADCB
+        kDELMAkGA1UEBhMCR0IxGzAZBgNVBAgTEkdyZWF0ZXIgTWFuY2hlc3RlcjEQMA4G
+        A1UEBxMHU2FsZm9yZDEaMBgGA1UEChMRQ09NT0RPIENBIExpbWl0ZWQxNjA0BgNV
+        (additional encrypted data... the cropped text is not important)
+        RWieiEDSZqbtZRPBaGooDJ5QbdHqUanvoVzf1aB1S5RrJB5qH/UG6WbTZ07rFfsn
+        age7UPo4ZwheAtpO2mhcYypBG1zln4cvxVBAcrnaa1GWwKjgwXUr5k2Pv7BXWEex
+        ncHG3hwHHwhiEz6ukC2mqxA+D3KILiywgHgWcumnpeCEUQgDzy0Fz2Ip/kR/1Fkv
+        DCQzME2NkT1ZdW8fdz+Y
+        -----END CERTIFICATE-----
+        -----BEGIN CERTIFICATE-----
+        MIIGCDCCA/CgAwIBAgIQKy5u6tl1NmwUim7bo3yMBzANBgkqhkiG9w0BAQwFADCB
+        hTELMAkGA1UEBhMCR0IxGzAZBgNVBAgTEkdyZWF0ZXIgTWFuY2hlc3RlcjEQMA4G
+        A1UEBxMHU2FsZm9yZDEaMBgGA1UEChMRQ09NT0RPIENBIExpbWl0ZWQxKzApBgNV
+        (additional encrypted data... the cropped text is not important)
+        j4rBYKEMrltDR5FL1ZoXX/nUh8HCjLfn4g8wGTeGrODcQgPmlKidrv0PJFGUzpII
+        0fxQ8ANAe4hZ7Q7drNJ3gjTcBpUC2JD5Leo31Rpg0Gcg19hCC0Wvgmje3WYkN5Ap
+        lBlGGSW4gNfL1IYoakRwJiNiqZ+Gb7+6kHDSVneFeO/qJakXzlByjAA6quPbYzSf
+        +AZxAeKCINT+b72x
+        -----END CERTIFICATE-----
+        -----BEGIN CERTIFICATE-----
+        MIIFdDCCBFygAwIBAgIQJ2buVutJ846r13Ci/ITeIjANBgkqhkiG9w0BAQwFADBv
+        MQswCQYDVQQGEwJTRTEUMBIGA1UEChMLQWRkVHJ1c3QgQUIxJjAkBgNVBAsTHUFk
+        ZFRydXN0IEV4dGVybmFsIFRUUCBOZXR3b3JrMSIwIAYDVQQDExlBZGRUcnVzdCBF
+        (additional encrypted data... the cropped text is not important)
+        Uspzgb8c8+a4bmYRBbMelC1/kZWSWfFMzqORcUx8Rww7Cxn2obFshj5cqsQugsv5
+        B5a6SE2Q8pTIqXOi6wZ7I53eovNNVZ96YUWYGGjHXkBrI/V5eu+MtWuLt29G9Hvx
+        PUsE2JOAWVrgQSQdso8VYFhH2+9uRv0V9dlfmrPb2LjkQLPNlzmuhbsdjrzch5vR
+        pu/xO28QOG8=
+        -----END CERTIFICATE-----
+        -----BEGIN CERTIFICATE-----
+        MIIENjCCAx6gAwIBAgIBATANBgkqhkiG9w0BAQUFADBvMQswCQYDVQQGEwJTRTEU
+        MBIGA1UEChMLQWRkVHJ1c3QgQUIxJjAkBgNVBAsTHUFkZFRydXN0IEV4dGVybmFs
+        IFRUUCBOZXR3b3JrMSIwIAYDVQQDExlBZGRUcnVzdCBFeHRlcm5hbCBDQSBSb290
+        (additional encrypted data... the cropped text is not important)
+        6wwCURQtjr0W4MHfRnXnJK3s9EK0hZNwEGe6nQY1ShjTK3rMUUKhemPR5ruhxSvC
+        Nr4TDea9Y355e6cJDUCrat2PisP29owaQgVR1EX1n6diIWgVIEM8med8vSTYqZEX
+        c4g/VhsxOBi0cQ+azcgOno4uG+GMmIPLHzHxREzGBHNJdmAPx/i9F4BrLunMTA5a
+        mnkPIAou1Z5jJh5VkpTYghdae9C8x49OhgQ=
+        -----END CERTIFICATE-----
 
-If you have concatenated a chained SSL certificate, save this file as `/etc/ssl/localcerts/www.mydomain.com.crt`. Then execute the following command to protect the signed certificate:
+8. If you have concatenated a chained SSL certificate, save this file as `/etc/ssl/localcerts/www.mydomain.com.crt`. Then execute the following command to protect the signed certificate:
 
-    chmod 400 /etc/ssl/localcerts/www.mydomain.com.crt
+        chmod 400 /etc/ssl/localcerts/www.mydomain.com.crt
 
 Installing the SSL Certificate and Private Key on your NodeBalancer
 ---------------------------
 
 ### Certificate and Private Key
 
-If you select the HTTPS protocol, the **Certificate** and **Private Key** fields will appear.
+1. If you select the HTTPS protocol, the **Certificate** and **Private Key** fields will appear.
 
-[![The NodeBalancer Certificate and Private Key fields.](/docs/assets/1354-nodebalancer_cert.png)](/docs/assets/1354-nodebalancer_cert.png)
+ [![The NodeBalancer Certificate and Private Key fields.](/docs/assets/1354-nodebalancer_cert.png)](/docs/assets/1354-nodebalancer_cert.png)
 
-Copy the contents of your SSL certificate into the **Certificate** field. If you have concatenated multiple segments of a chained certificate, be sure to copy all of it's contents into the text field, appearing one after the other.
+2. Copy the contents of your SSL certificate into the **Certificate** field. If you have concatenated multiple segments of a chained certificate, be sure to copy all of it's contents into the text field, appearing one after the other.
 
-Copy your passphraseless private key into the **Private Key** field.
+3. Copy your passphraseless private key into the **Private Key** field.
 
 
 Configuring your Web Server with a 301 Redirect
@@ -236,9 +237,9 @@ You'll need to configure your web server software to use the XFF header.
 
 ### Configuring your vhost file for the Apache Webserver.
 
-Enable mod_rewrite so that you can redirect all traffic back to the NodeBalancer over port 443/HTTPS. Enter the following command:
+1. Enable mod_rewrite so that you can redirect all traffic back to the NodeBalancer over port 443/HTTPS. Enter the following command:
 
-    a2enmod rewrite
+        a2enmod rewrite
     
     
    or, you can load the module manually by appending the following to your Apache configuration file:
@@ -249,17 +250,15 @@ Enable mod_rewrite so that you can redirect all traffic back to the NodeBalancer
   {:.note}
    > Depending on if you are using a Debian or a Redhat based distribution, this file will be located in one of the following locations:
        
->      /etc/apache2/apache2.conf
->    
->      /etc/httpd/httpd.conf
-
-
+ >      /etc/apache2/apache2.conf
+ >    
+ >      /etc/httpd/httpd.conf
 
    {: .file-excerpt }
       /etc/apache2/sites-available/example.com.conf
       :   ~~~ apache
         
->      <VirtualHost *:80>
+ >      <VirtualHost *:80>
 	    ServerAdmin   webmaster@example.com
 	    ServerName    example.com
 	    ServerAlias   www.example.com
@@ -275,22 +274,22 @@ Enable mod_rewrite so that you can redirect all traffic back to the NodeBalancer
     
 ### Configuring your vhost file for the Nginx Webserver.
 
-	{: .file-excerpt }    
-	/etc/nginx/sites-available/example.com.conf
+   {: .file-excerpt }    
+       	/etc/nginx/sites-available/example.com.conf
 	:   ~~~ nginx
-
-		    server {
+   > 
+   >     server {
 		    server_name example.com;
 		    rewrite ^/(.*) https://example.com/$1 permanent;
 		    }
-
+>
 		    server {
 		        listen   80;
 		        server_name www.example.com example.com;
 		        access_log /srv/www/example.com/logs/access.log;
 		        error_log /srv/www/example.com/logs/error.log;
 
-		    location / {
+>		    location / {
 		        root   /srv/www/example.com/public_html;
 		        index  index.html index.htm;
 		        }
@@ -304,7 +303,7 @@ Tips for Troubleshooting
 
  - [Qualys online SSL Server Test](https://www.ssllabs.com/ssltest/)
 
-- Every time that you make changes to your web server's document root file or other configuration files, be sure to reload the server.
+- Every time that you make changes to your web server's document root file or other configuration files, be sure to reload the server:
  
         service apache2 reload
         systemctl restart apache2.service
@@ -312,4 +311,6 @@ Tips for Troubleshooting
         service nginx reload
         systemctl restart nginx.service
 
-
+- When testing behind a load balancer, using curl with the `-IL` flags can be very helpful when debugging:
+     
+        curl -IL example.com
