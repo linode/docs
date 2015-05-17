@@ -5,10 +5,10 @@ author:
 description: 'Forcing all connections to use SSL with NodeBalancers.'
 keywords: 'Linode,NodeBalancer,SSL,redirect'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Monday, May 11th, 2015
+modified: Monday, May 18th, 2015
 modified_by:
   name: Joel Kruger
-published: 'Monday, May 17th, 2015'
+published: 'Monday, May 25th, 2015'
 title: Forcing SSL connections with Nodebalancers
 ---
 
@@ -213,6 +213,9 @@ Create a Certificate Signing Request
 Installing the SSL Certificate and Private Key on your NodeBalancer
 ---------------------------
 
+### Create a configuration profile for Port 443 on your Nodebalancer
+
+
 ### Certificate and Private Key
 
 1. If you select the HTTPS protocol, the **Certificate** and **Private Key** fields will appear.
@@ -223,78 +226,108 @@ Installing the SSL Certificate and Private Key on your NodeBalancer
 
 3. Copy your passphraseless private key into the **Private Key** field.
 
+4. On your NodeBalancer `Configurations` page, select `Create Configuration`, you will need to create one for each port/protocol that you would like to use, i.e. `80` and `443`.
+
+5. Under `Edit Configuration`  Once selected, fill out the values in the fields as shown below:
+ 
+**Port**                                    443
+**Protocol**                              HTTPS
+**Algorithm**                            Round Robin
+**Session Stickiness**                None
+**Certificate**                           < Insert your signed SSL Certificate >
+**Private Key**                         < Insert your Private Key >
+**Health Check Type**               HTTP Valid Status
+**Check Interval**                     5
+**Check Timeout**                    3
+**Check Attempts**                   2
+**Check HTTP Path**                 /
+
+Then, select **`Save Changes`**. 
+
+6. Add as many nodes as you require for the port configuration by selecting **`Add Node`**. Once selected, fill out the values in the fields like so:
+
+**Label**                                  < Backend Linode 1 >
+**Address**                               < xxx.xxx.xxx.xxx:443 >
+**Weight**                                100
+**Mode**                                  Accept
+
+{: .note }
+> 
+> In the section labelled **`Address`**,  you will need to replace `xxx.xxx.xxx.xxx` by specify the private IP address that has been provisioned for that particular Linode, followed by a colon and `443`
+
+Then, select **`Save Changes`**.
+
 
 Configuring your Web Server with a 301 Redirect
 ---------------------------
 
-### X-Forwarded-For Header
-
-NodeBalancers add an X-Forwarded-For (XFF) HTTP header field, which allows your nodes to identify a client's originating IP address. This is useful for logging purposes. Here's an example XFF HTTP header:
-
-    X-Fowarded-For: 196.180.44.172
-
-You'll need to configure your web server software to use the XFF header.
-
-### Configuring your vhost file for the Apache Webserver.
+### Configuring the Apache Webserver.
 
 1. Enable mod_rewrite so that you can redirect all traffic back to the NodeBalancer over port 443/HTTPS. Enter the following command:
 
         a2enmod rewrite
-    
-    
+     
    or, you can load the module manually by appending the following to your Apache configuration file:
-    
 
- >   LoadModule rewrite_module modules/mod_rewrite.so
-  
   {:.note}
+ >     LoadModule rewrite_module modules/mod_rewrite.so
+
    > Depending on if you are using a Debian or a Redhat based distribution, this file will be located in one of the following locations:
        
  >      /etc/apache2/apache2.conf
  >    
  >      /etc/httpd/httpd.conf
 
+2. Now edit the Apache vhost configuration file to establish the rewrite rules necessary in order to redirect all traffic on port 80/HTTP, back to the NodeBalancer so that it can get send to the back-ends Linodes on port 443/HTTPS:
+
    {: .file-excerpt }
-      /etc/apache2/sites-available/example.com.conf
+   /etc/apache2/sites-available/example.com.conf
       :   ~~~ apache
         
- >      <VirtualHost *:80>
-	    ServerAdmin   webmaster@example.com
-	    ServerName    example.com
-	    ServerAlias   www.example.com
-	    DocumentRoot  /var/www/example.com/public_html/
-	    ErrorLog      /var/www/example.com/logs/error.log
-	    CustomLog     /var/www/example.com/logs/access.log combined
-	    RewriteEngine On
-	    RewriteCond   %{HTTP:X-Forwarded-Proto} !https
-	    RewriteRule   ^.*$ https://%{SERVER_NAME}%{REQUEST_URI} [L,R=301,NE]
-            RewriteLog   /var/log/apache2/rewrite.log
->      </VirtualHost>
+            <VirtualHost *:80>
+                ServerAdmin       ebmaster@example.com
+	        ServerName        xample.com
+	        ServerAlias         www.example.com
+	        DocumentRoot   /var/www/example.com/public_html/
+	        ErrorLog             /var/www/example.com/logs/error.log
+	        CustomLog         /var/www/example.com/logs/access.log combined
+	        RewriteEngine    On
+	        RewriteCond       %{HTTP:X-Forwarded-Proto} !https
+	        RewriteRule        ^.*$ https://%{SERVER_NAME}%{REQUEST_URI} [L,R=301,NE]
+	        RewriteLog          /var/log/apache2/rewrite.log
+	        RewriteLogLevel  5
+	    </VirtualHost>
 
-    
+   ~~~
+   
+   3. Create the RewriteLog as referenced from above:
+
+            mkdir /var/log/apache2/rewrite.log
+
 ### Configuring your vhost file for the Nginx Webserver.
 
-   {: .file-excerpt }    
-       	/etc/nginx/sites-available/example.com.conf
-	:   ~~~ nginx
-   > 
-   >     server {
-		    server_name example.com;
-		    rewrite ^/(.*) https://example.com/$1 permanent;
-		    }
->
-		    server {
-		        listen   80;
-		        server_name www.example.com example.com;
-		        access_log /srv/www/example.com/logs/access.log;
-		        error_log /srv/www/example.com/logs/error.log;
+   {: .file-excerpt }
+   /etc/nginx/sites-available/example.com.conf
+      :   ~~~ nginx
+ 
+      server {
+              server_name example.com;
+	      rewrite ^/(.*) https://example.com/$1 permanent;
+	     }
+ 
+      server {
+	      listen   80;
+              server_name www.example.com example.com;
+	      access_log /srv/www/example.com/logs/access.log;
+	      error_log /srv/www/example.com/logs/error.log;
 
->		    location / {
-		        root   /srv/www/example.com/public_html;
-		        index  index.html index.htm;
-		        }
-		    } 
+	      location / {
+	      root   /srv/www/example.com/public_html;
+	      index  index.html index.htm;
+	                 }
+             } 
 
+   ~~~
 
 Tips for Troubleshooting
 ---------------------------
@@ -314,3 +347,4 @@ Tips for Troubleshooting
 - When testing behind a load balancer, using curl with the `-IL` flags can be very helpful when debugging:
      
         curl -IL example.com
+
