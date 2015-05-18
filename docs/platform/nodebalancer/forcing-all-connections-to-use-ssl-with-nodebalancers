@@ -278,7 +278,7 @@ Configuring your Web Server with a 301 Redirect
  >    
  >      /etc/httpd/httpd.conf
 
-2. Now edit the Apache vhost configuration file to establish the rewrite rules necessary in order to redirect all traffic on port 80/HTTP, back to the NodeBalancer so that it can get send to the back-ends Linodes on port 443/HTTPS:
+2. Now edit the Apache vhost configuration file to establish the rewrite rules necessary in order to redirect all incoming traffic from port 80/HTTP, back to the NodeBalancer on port 443/HTTPS:
 
    {: .file-excerpt }
    /etc/apache2/sites-available/example.com.conf
@@ -305,6 +305,8 @@ Configuring your Web Server with a 301 Redirect
             mkdir /var/log/apache2/rewrite.log
 
 ### Configuring your vhost file for the Nginx Webserver.
+
+   4. Now edit the Nginx vhost configuration file to establish the rewrite rules necessary in order to redirect all incoming traffic from port 80/HTTP, back to the NodeBalancer on port 443/HTTPS:
 
    {: .file-excerpt }
    /etc/nginx/sites-available/example.com.conf
