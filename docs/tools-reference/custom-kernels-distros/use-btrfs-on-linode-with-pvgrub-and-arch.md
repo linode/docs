@@ -37,7 +37,7 @@ MODULES="btrfs"
 HOOKS="base udev autodetect modconf block filesystems keyboard fsck btrfs"
 `````
 
-Now it is time to reinstall the kernel to ensure - this will ensure that the initrd is created with the new settings: (The output below has been heavily abridged.)
+Now it is time to reinstall the kernel - this will ensure that the initrd is created with the new settings: (The output below has been heavily abridged.)
 
 `````
 # pacman -Sy linux
@@ -201,7 +201,7 @@ Since grub is looking for a configuration at `/boot/boot/grub/menu.lst`, the fir
 
 Now that there is a config where pv-grub will find it, it is time to update it. At this stage, there are two things wrong with the old file. First, according to grub the files are under /, not /boot. Second, in the next step you are going to change your root device.
 
-You can edit the file by hand, but if you are using the basic one from this guide you can just replace it with this: (Remember that the file is now in `/mnt/btrfsroot/boot/boot/grub`. Once the system is running, it will be in `/boot/boot/grub`.)
+You can edit the file by hand, but if you are using the basic one from this guide you can just replace it with this: (Remember that the file is currently in `/mnt/btrfsroot/boot/boot/grub`. Once the system is running, it will be in `/boot/boot/grub`.)
 
 `````
 timeout 15
