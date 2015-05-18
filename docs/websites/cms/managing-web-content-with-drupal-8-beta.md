@@ -9,7 +9,7 @@ alias: ['web-applications/cms-guides/drupal/']
 modified: Tuesday, May 18th, 2015
 modified_by:
     name: Joseph Dooley
-published: 'Tuesday, May 18th, 2015'
+published: 'Friday, October 31, 2014'
 title: Installing Drupal 8 (beta)
 ---
 
