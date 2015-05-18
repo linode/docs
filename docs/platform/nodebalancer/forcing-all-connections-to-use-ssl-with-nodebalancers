@@ -230,30 +230,30 @@ Installing the SSL Certificate and Private Key on your NodeBalancer
 
 5. Under `Edit Configuration`  Once selected, fill out the values in the fields as shown below:
  
-**Port**                                    443
-**Protocol**                              HTTPS
-**Algorithm**                            Round Robin
-**Session Stickiness**                None
-**Certificate**                           < Insert your signed SSL Certificate >
-**Private Key**                         < Insert your Private Key >
-**Health Check Type**               HTTP Valid Status
-**Check Interval**                     5
-**Check Timeout**                    3
-**Check Attempts**                   2
-**Check HTTP Path**                 /
+         **Port**                    443
+         **Protocol**                HTTPS
+         **Algorithm**               Round Robin
+         **Session Stickiness**      None
+         **Certificate**             < Insert your signed SSL Certificate >
+         **Private Key**             < Insert your Private Key >
+         **Health Check Type**       HTTP Valid Status
+         **Check Interval**          5
+         **Check Timeout**           3
+         **Check Attempts**          2
+         **Check HTTP Path**         /
 
 Then, select **`Save Changes`**. 
 
 6. Add as many nodes as you require for the port configuration by selecting **`Add Node`**. Once selected, fill out the values in the fields like so:
 
 **Label**                                  < Backend Linode 1 >
-**Address**                               < xxx.xxx.xxx.xxx:443 >
+**Address**                               < xxx.xxx.xxx.xxx:80 >
 **Weight**                                100
 **Mode**                                  Accept
 
 {: .note }
 > 
-> In the section labelled **`Address`**,  you will need to replace `xxx.xxx.xxx.xxx` by specify the private IP address that has been provisioned for that particular Linode, followed by a colon and `443`
+> In the section labelled **`Address`**,  you will need to replace `xxx.xxx.xxx.xxx` by specify the private IP address that has been provisioned for that particular Linode, followed by a colon and `80`. This is because SSL is terminating at the NodeBalancer.
 
 Then, select **`Save Changes`**.
 
@@ -285,16 +285,16 @@ Configuring your Web Server with a 301 Redirect
       :   ~~~ apache
         
             <VirtualHost *:80>
-                ServerAdmin       ebmaster@example.com
-	        ServerName        xample.com
-	        ServerAlias         www.example.com
-	        DocumentRoot   /var/www/example.com/public_html/
-	        ErrorLog             /var/www/example.com/logs/error.log
-	        CustomLog         /var/www/example.com/logs/access.log combined
+                ServerAdmin      admin@example.com
+	        ServerName       example.com
+	        ServerAlias      www.example.com
+	        DocumentRoot     /var/www/example.com/public_html/
+	        ErrorLog         /var/www/example.com/logs/error.log
+	        CustomLog        /var/www/example.com/logs/access.log combined
 	        RewriteEngine    On
-	        RewriteCond       %{HTTP:X-Forwarded-Proto} !https
-	        RewriteRule        ^.*$ https://%{SERVER_NAME}%{REQUEST_URI} [L,R=301,NE]
-	        RewriteLog          /var/log/apache2/rewrite.log
+	        RewriteCond      %{HTTP:X-Forwarded-Proto} !https
+	        RewriteRule      ^.*$ https://%{SERVER_NAME}%{REQUEST_URI} [L,R=301,NE]
+	        RewriteLog       /var/log/apache2/rewrite.log
 	        RewriteLogLevel  5
 	    </VirtualHost>
 
@@ -310,22 +310,21 @@ Configuring your Web Server with a 301 Redirect
    /etc/nginx/sites-available/example.com.conf
       :   ~~~ nginx
  
-      server {
-              server_name example.com;
-	      rewrite ^/(.*) https://example.com/$1 permanent;
-	     }
- 
-      server {
-	      listen   80;
-              server_name www.example.com example.com;
-	      access_log /srv/www/example.com/logs/access.log;
-	      error_log /srv/www/example.com/logs/error.log;
+         server {
+                 listen   80;
+                 server_name example.com;
+                 access_log /var/log/nginx/access.log;
+                 error_log /var/log/nginx/error.log;
+                 proxy_set_header X-Forwarded-Proto $scheme;
+                     location / {
+                     root   /srv/www/example.com/public_html;
+                     index  index.html index.htm;
+                         if ($http_x_forwarded_proto = "http") {
+                         rewrite  ^/(.*)$  https://example.com/$1 permanent;
+                                                               }           
+                                }
+                }
 
-	      location / {
-	      root   /srv/www/example.com/public_html;
-	      index  index.html index.htm;
-	                 }
-             } 
 
    ~~~
 
