@@ -3,17 +3,22 @@ author:
     name: Joseph Dooley
     email: jdooley@linode.com
 description: 'Installing, configuring, and optimizing the Drupal content management framework on your Linode.'
-keywords: 'drupal,cms,web framework,web application,php,content management system,content management framwork'
+keywords: 'drupal, cms, web framework, web application, php, content management system, content management framwork'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-applications/cms-guides/drupal/']
-modified: Friday, October 24th, 2014
+modified: Tuesday, May 18th, 2015
 modified_by:
     name: Joseph Dooley
-published: 'Friday, October 31, 2014'
+published: 'Tuesday, May 18th, 2015'
 title: Installing Drupal 8 (beta)
 ---
 
-[Drupal 8](https://www.drupal.org/drupal-8.0) is the lastest version of the extremely popular [Drupal](https://www.drupal.org/) content management system. The Drupal 8 beta-2 version was released on October 15th, and since it's so new, there isn't much documentation on the web. This how-to demonstrates all of the necessary steps to install Drupal 8 on your Linode.
+[Drupal 8](https://www.drupal.org/drupal-8.0) is the lastest version of the extremely popular [Drupal](https://www.drupal.org/) content management system. The Drupal 8 beta-2 version was released on October 15th, and since it's so new, there isn't much documentation on the web. This how-to article demonstrates all of the necessary steps to install Drupal 8 on your Linode. 
+
+Also consider the video tutorial linked below:
+
+<iframe width="640" height="360" src="https://www.youtube.com/embed/103wI0EslBg" frameborder="0" allowfullscreen></iframe>
+
 
 ##Prerequisites
 
