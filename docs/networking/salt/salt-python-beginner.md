@@ -17,11 +17,11 @@ Salt, often referred to as SaltStack, is designed for server management. A singl
 This tutorial is primarily for Salt, although it displays how to create, transfer, and then remotely run a server-side Python script or application.
 
 ##Install a Salt Master and a Salt Minion
-The directions below are for two separate Debian 8 Linodes. For other operating systems or single servers, visit the <a href="http://docs.saltstack.com/en/latest/topics/installation/" target="_blank">Salt installation guides</a>. Start with the necessary steps for both servers. Have the terminal windows open side-by-side. Also, log into both servers <a href="http://docs.saltstack.com/en/latest/ref/configuration/nonroot.html" target="_blank">as the root user</a>.
+The directions below are for two separate Debian 8 Linodes. For other operating systems or single servers, visit the <a href="http://docs.saltstack.com/en/latest/topics/installation/" target="_blank">Salt installation guides</a>.
 
-1.  On both Linode 1 and Linode 2, set the hostname. Salt Masters' IDs and Salt Minions' IDs may default to the hostname without manually setting them. 
+1.  <a href="http://docs.saltstack.com/en/latest/ref/configuration/nonroot.html" target="_blank">As the root user</a> log into both Linode 1 and Linode 2  and <a href="https://www.linode.com/docs/getting-started#setting-the-hostname" target="_blank">set the hostnames</a>. Without changing the configurations in Salt, the Salt Master's ID and Salt Minions' IDs default to the hostname. 
 
-1.  On both Linode 1 and Linode 2, open `/etc/apt/sources.list` and insert the below syntax at the bottom of the file: 
+2. On both Linode 1 and Linode 2, open `/etc/apt/sources.list` and insert the below syntax at the bottom of the file: 
     
 	{:.file }
 	/etc/apt/sources.list
@@ -30,11 +30,11 @@ The directions below are for two separate Debian 8 Linodes. For other operating 
 	   deb http://debian.saltstack.com/debian jessie-saltstack main
 	   ~~~
 
-2.  On both Linode 1 and Linode 2, run the wget command:
+3.  On both Linode 1 and Linode 2, run the wget command:
 	
 		wget -q -O- "http://debian.saltstack.com/debian-salt-team-joehealy.gpg.key" | apt-key add -
 
-3.  On both Linode 1 and Linode 2, run the update command:
+4.  On both Linode 1 and Linode 2, run the update command:
 
 		apt-get update
 
@@ -89,7 +89,7 @@ The directions below are for two separate Debian 8 Linodes. For other operating 
 
 ##Using the Salt Master
 
-1.  List the known Salt Minions linked to the Salt Master. The Minions will be listed by the hostname:
+1.  List the known Salt Minions linked to the Salt Master:
 
         salt-key -L
 
@@ -128,5 +128,5 @@ Python is used as an example for remotely running a server-side language. Howeve
 
         salt '*' cmd.run 'python /destination-directory-path/hello.py'
 
-For possible next steps, continue building a multi-server configuration setup and read more about <a href="http://docs.saltstack.com/en/latest/ref/clients/" target="_blank">configuration management with Salt States</a>. This would most likely come in use for applications with a high amount of requests or a great deal of data manipulations. Also note, there is a <a href="http://docs.saltstack.com/en/latest/ref/clients/" target="_blank">Python client API for Salt</a>.  
+For possible next steps, continue building a multi-server configuration setup and read more about <a href="http://docs.saltstack.com/en/latest/ref/clients/" target="_blank">configuration management with Salt States</a>. Also note, there is a <a href="http://docs.saltstack.com/en/latest/ref/clients/" target="_blank">Python client API for Salt</a>.  
 
