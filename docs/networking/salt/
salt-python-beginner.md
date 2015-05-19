@@ -1,15 +1,15 @@
 ---
 author:
   name: Joseph Dooley
-  email: docs@linode.com
-description: 'Salt Master and Salt Minions remotely running Python files.'
-keywords: 'salt, saltstack, python, applications'
+  email: jdooley@linode.com
+description: 'Salt Master and Salt Minions to remotely runn Python files.'
+keywords: 'salt, saltstack, python, applications, beginner'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Wednesday, April 9th, 2015
+modified: Wednesday, May 20th, 2015
 modified_by:
   name: Joseph Dooley
-published: 'Thursday, April 30th, 2015'
-title: Server Management and Configuration with Salt and Python for a Beginner
+published: 'Wednesday, May 20th, 2015'
+title: Salt with Python for a Beginner
 ---
 
 Salt, often referred to as SaltStack, is designed for server management. A single Salt Master controls many Salt Minions. The master can remotely run commands, transfer files, and much more concerning scalability. 
@@ -18,6 +18,8 @@ This tutorial is primarily for Salt, although it displays how to create, transfe
 
 ##Install a Salt Master and a Salt Minion
 The directions below are for two separate Debian 8 Linodes. For other operating systems or single servers, visit the <a href="http://docs.saltstack.com/en/latest/topics/installation/" target="_blank">Salt installation guides</a>. Start with the necessary steps for both servers. Have the terminal windows open side-by-side. Also, log into both servers <a href="http://docs.saltstack.com/en/latest/ref/configuration/nonroot.html" target="_blank">as the root user</a>.
+
+1.  On both Linode 1 and Linode 2, set the hostname. Salt Masters' IDs and Salt Minions' IDs may default to the hostname without manually setting them. 
 
 1.  On both Linode 1 and Linode 2, open `/etc/apt/sources.list` and insert the below syntax at the bottom of the file: 
     
