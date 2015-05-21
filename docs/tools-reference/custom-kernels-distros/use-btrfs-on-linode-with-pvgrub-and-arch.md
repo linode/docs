@@ -1,4 +1,19 @@
-Converting An Arch Linux Linode to BTRFS
+---
+author:
+  name: Linode Community
+  email: docs@linode.com
+description: 'Convert root filesystem to BTRFS '
+keywords: 'btrfs,file system,convert'
+license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+contributor:
+    name: Dis McCarthy
+    link: https://github.com/disconn3ct
+modified: Thursday, March 14, 2015
+modified_by:
+  name: Alex Fornuto
+published: ''
+title: 'Converting An Arch Linux Linode to BTRFS'
+---
 
 You have heard about all the things [btrfs](https://btrfs.wiki.kernel.org) can bring you - instant low-overhead snapshots, CoW, built-in raid and LVM, etc. Unfortunately, using btrfs in Linode it isn't as simple as selecting it from a list.
 
@@ -11,61 +26,66 @@ This process will focus on Arch Linux, but the basic methods are the same for an
 {: .note }
 > **WARNING**: Be very careful following these steps, as you are making very deep and potentially invasive changes to your node. **Data loss is possible.** At the end, some things may not work as expected. Linode does not explicitly support btrfs yet, so after this conversion "magic" features such as backups or volume resizing may not work. Fortunately, if you follow the steps carefully, you can always revert back to your existing system disks.
 
-# Step 1: Backup
+##Backup
 
 You may be great with backups and not need to take a new backup of your system, but while this procedure is set up to be cautious and protective of your system the possibility always exists that **you may lose data**. So grab your favorite tool and back up anything and everything you value, just in case.
 
-# Step 2: Install and Activate BTRFS Tools
+##Install and Activate BTRFS Tools
 
 To use btrfs, you need the tools. They are available in the `btrfs-progs` package, so that is the first thing to install. This will create the necessary initrd hooks and add the btrfs support programs to the node.
 
-`````
-# pacman -Sy btrfs-progs
-`````
 
-# Step 3: Enable pv-grub and btrfs
+    pacman -Sy btrfs-progs
+
+##Enable pv-grub and btrfs
 
 This conversion requires you to use pv-grub instead of the existing linode kernels. If you are already using pv-grub, you can probably skip some of these steps but read them carefully.
 
-## Prepare the Kernel
+###Prepare the Kernel
 The first part of this process is to ensure the kernel is set up and, while we are here, add btrfs support to the initrd.
 
-Log into your Linode and open `/etc/mkinitcpio.conf` in your favorite editor. Ensure the hooks and modules lines are both configured for btrfs. For example:
+1.  Log into your Linode and open `/etc/mkinitcpio.conf` in your favorite editor. Ensure the hooks and modules lines are both configured for btrfs. For example:
 
-`````
-MODULES="btrfs"
-HOOKS="base udev autodetect modconf block filesystems keyboard fsck btrfs"
-`````
+    {: .file}
+    /etc/mkinitcpio.conf
+    :   ~~~
+        MODULES="btrfs"
+        HOOKS="base udev autodetect modconf block filesystems keyboard fsck btrfs"
+        ~~~
 
+<<<<<<< HEAD
 Now it is time to reinstall the kernel - this will ensure that the initrd is created with the new settings: (The output below has been heavily abridged.)
+=======
+2.  Reinstall the kernel to ensure - this will ensure that the initrd is created with the new settings:
+>>>>>>> formatting edits to btrfs bounty guide
 
-`````
-# pacman -Sy linux
- ...
-warning: linux-3.18.6-1 is up to date -- reinstalling
-...
-:: Proceed with installation? [Y/n]
-...
->> Generating initial ramdisk, using mkinitcpio.  Please wait...
-==> Image generation successful
-`````
+        pacman -Sy linux
 
 ## Configure pv-grub
 
-If you do not have a pv-grub configuration file already, you will need to create one. For Arch Linux, this is very simple. Create the `/boot/grub` directory with `mkdir /boot/grub` and then create a simple text file in `/boot/grub/menu.lst` with the following content:
-`````
-timeout 15
+If you do not have a pv-grub configuration file already, you will need to create one. For Arch Linux, this is very simple. 
 
-title           Arch Linux
-root            (hd0)
-kernel          /boot/vmlinuz-linux root=/dev/xvda ro
-initrd          /boot/initramfs-linux.img
+1.  Create the `/boot/grub` directory:
 
-title           Arch Linux Fallback
-root            (hd0)
-kernel          /boot/mlinuz-linux root=/dev/xvda ro
-initrd          /boot/initramfs-linux-fallback.img
-`````
+        mkdir /boot/grub
+
+2.  Create a simple text file in `/boot/grub/menu.lst` with the following content:
+
+    {: .file}
+    /boot/grub/menu.lst
+    :   ~~~
+        timeout 15
+
+        title           Arch Linux
+        root            (hd0)
+        kernel          /boot/vmlinuz-linux root=/dev/xvda ro
+        initrd          /boot/initramfs-linux.img
+
+        title           Arch Linux Fallback
+        root            (hd0)
+        kernel          /boot/mlinuz-linux root=/dev/xvda ro
+        initrd          /boot/initramfs-linux-fallback.img
+        ~~~
 
 ## Test pv-grub
 Edit the configuration profile for your Linode and select the "pv-grub" kernel. [![Boot Settings](/docs/assets/pv-grub.png)](/docs/assets/pv-grub.png)
@@ -76,9 +96,9 @@ To be sure everything is working, reboot your Linode and ensure that it boots co
 
 Either way, you can tell by running `uname -a` and confirming that it matches the kernel version installed by Arch instead of the Linode kernel.
 
-[![Uname Output](/docs/assets/uname.png)](/docs/assets/uname.png)
+    Linux localhost 4.0.2-1-ARCH #1 SMP PREEMPT Thu May 7 06:47:54 CEST 2015 x86_64 GNU/Linux
 
-# Step 4: New Disk Images
+##New Disk Images
 
 Since pv-grub does not support btrfs, you will need to create a new 'boot' volume. (If you have been using Linux for a long time, you may remember a similar process with Lilo.)
 
@@ -86,14 +106,14 @@ Simply log into the [Linode Manager](https://manager.linode.com) and select your
 
 For more details, read [this library document](https://www.linode.com/docs/migrate-to-linode/disk-images/disk-images-and-configuration-profiles#creating-a-blank-disk).
 
-## Boot Disk
+### Boot Disk
 The first disk to be created is going to be mounted under /boot, to hold the pv-grub configuration and bootable kernels.
 
 The disk name can be anything you like, but to keep it simple you may wish to call it "Boot". It should be ext4 and doesn't need to be larger than 512M.
 
 [![Boot Disk](/docs/assets/newdisk-boot.png)](/docs/assets/newdisk-boot.png)
 
-## New Root Disk
+### New Root Disk
 
 Now it is time to create a new disk image to hold the data from your root filesystem. (For this guide, call it "BTRFS Root".) The filesystem type should be **unformatted/raw** and the size must be larger than the used space your existing root device. (You can use the `df -h /` command to find out how much space is in use on the root filesystem.)
 
@@ -102,7 +122,7 @@ Now it is time to create a new disk image to hold the data from your root filesy
 
 [![Root Disk](/docs/assets/newdisk-root.png)](/docs/assets/newdisk-root.png)
 
-# Step 5: Enter Rescue Mode
+##Enter Rescue Mode
 
 The next few steps are all done from Rescue mode. From the node page, select **Rescue** and attach the devices as follows:
 
@@ -115,54 +135,44 @@ The next few steps are all done from Rescue mode. From the node page, select **R
 
 For more information on rescue mode, check out [this article](https://www.linode.com/docs/troubleshooting/rescue-and-rebuild/#booting-into-rescue-mode).
 
-# Step 6: Mount the Old Root Volume
+##Mount the Old Root Volume
 
 Once the rescue image is running, the next step is to open the console and mount the root volume.
 
 From the console, create 2 directories under `/mnt`: `oldroot` and `btrfsroot`.
 
-````` .sh
-# mkdir /mnt/oldroot /mnt/btrfsroot
-`````
+    mkdir /mnt/oldroot /mnt/btrfsroot
 
 Then, mount the old root device under `/mnt/oldroot`. We are mounting it read-only for safety, since we will not need to write to it.
 
-````` .sh
-# mount /dev/xvdb /mnt/oldroot -o ro
-`````
+    mount /dev/xvdb /mnt/oldroot -o ro
 
+##Create the BTRFS Filesystem
 
-# Step 7: Create the BTRFS Filesystem
 {: .note }
 > Be **very** careful to use the correct volume name here. If you attached them as listed above, the empty disk will be `xvdc`. BTRFS will try to detect any existing filesystems and abort, but that is not a guarantee of safety.
 
-````` .sh
-# mkfs.btrfs /dev/xvdc
-`````
+    mkfs.btrfs /dev/xvdc
+
 
 If this does not throw any errors, you are now the proud owner of a new (empty) btrfs volume!
 
-# Step 8: Sync Data
+##Sync Data
+
 Now it is time to mount the new btrfs root device and copy the data. Start by mounting it to /mnt/btrfsroot:
 
-````` .sh
-# mount -t btrfs /dev/xvdc /mnt/btrfsroot
-`````
+    mount -t btrfs /dev/xvdc /mnt/btrfsroot
 
 To save a step later, we will also mount the new 'boot' volume:
 
-````` .sh
-# mkdir /mnt/btrfsroot/boot
-# mount /dev/xvda /mnt/btrfsroot/boot
-`````
+    mkdir /mnt/btrfsroot/boot
+    mount /dev/xvda /mnt/btrfsroot/boot
 
 [![BTRFS Setup](/docs/assets/btrfs-prep.png)](/docs/assets/btrfs-prep.png)
 
 The data copy is very straightforward. First, run it in noop mode to verify that it is going to do the correct thing:
 
-````` .sh
-# rsync -Pavlx --delete -n /mnt/oldroot/ /mnt/btrfsroot
-`````
+    rsync -Pavlx --delete -n /mnt/oldroot/ /mnt/btrfsroot
 
 You should see all of your files go by. (There may be a lot of them.) It should not show any deletions or errors, and the files should start with their correct names. If it looks wrong, double-check the command you ran. (For example, if they start with "oldroot" you have your trailing / in the wrong place.)
 
@@ -170,9 +180,7 @@ You should see all of your files go by. (There may be a lot of them.) It should 
 
 If the output looks correct and there are no errors, run the full sync by removing the `-n`:
 
-````` .sh
-# rsync -Pavlx --delete /mnt/oldroot/ /mnt/btrfsroot
-`````
+    rsync -Pavlx --delete /mnt/oldroot/ /mnt/btrfsroot
 
 This will copy all of the data from your old root filesystem to the new one.
 
@@ -181,21 +189,19 @@ Congratulations, you are almost done! Just a couple of final steps.
 [![Rsync Finished](/docs/assets/rescue-rsync-done.png)](/docs/assets/rescue-rsync-done.png)
 
 
-# Step 9: Fix Boot
+##Fix Boot
 Since pv-grub doesn't understand btrfs, the menu.lst you created earlier is wrong. (Not only wrong, but in the wrong place. Grub will see /boot as the main filesystem, and so it expects all of the paths and files to reside under /boot/boot.)
 
 Additionally, the entries in `/etc/fstab` that tells the system what to mount is incorrect. So there are a couple of fixes that need to be applied before the system will boot correctly.
 
-## PV-Grub is Confused
+###PV-Grub is Confused
 PV-Grub doesn't understand btrfs, and will not search as many locations for a configuration as 'normal' grub does. (It only searches `/boot/grub/menu.lst`.) Because of these limitations, it will not find the existing configuration. In addition, everything listed in the configuration needs to have the `/boot` stripped off. This is easy to fix.
 
 Since grub is looking for a configuration at `/boot/boot/grub/menu.lst`, the first step is to move our configuration file there.
 
-````` .sh
-# cd /mnt/btrfsroot/boot
-# mkdir boot
-# mv grub boot
-`````
+    cd /mnt/btrfsroot/boot
+    mkdir boot
+    mv grub boot
 
 [![Rescue-Grubfix](/docs/assets/rescue-grubfix.png)](/docs/assets/rescue-grubfix.png)
 
@@ -203,25 +209,27 @@ Now that there is a config where pv-grub will find it, it is time to update it. 
 
 You can edit the file by hand, but if you are using the basic one from this guide you can just replace it with this: (Remember that the file is currently in `/mnt/btrfsroot/boot/boot/grub`. Once the system is running, it will be in `/boot/boot/grub`.)
 
-`````
-timeout 15
+{: .file}
+/mnt/btrfsroot/boot/boot/grub/menu.lst
+:   ~~~
+    timeout 15
 
-title           Arch Linux
-root            (hd0)
-kernel          /vmlinuz-linux root=/dev/xvdb ro
-initrd          /initramfs-linux.img
+    title           Arch Linux
+    root            (hd0)
+    kernel          /vmlinuz-linux root=/dev/xvdb ro
+    initrd          /initramfs-linux.img
 
-title           Arch Linux Rescue
-root            (hd0)
-kernel          /vmlinuz-linux root=/dev/xvdb ro
-initrd          /initramfs-linux-fallback.img
-`````
+    title           Arch Linux Rescue
+    root            (hd0)
+    kernel          /vmlinuz-linux root=/dev/xvdb ro
+    initrd          /initramfs-linux-fallback.img
+    ~~~
 
 This will let pv-grub find the kernels and initrds that are stored in `/boot`.
 
 [![menu.lsg](/docs/assets/rescue-grubmenu.png)](/docs/assets/rescue-grubmenu.png)
 
-## Update fstab
+### Update fstab
 Since you have moved things around and created a new volume, you will need to make changes to the fstab.
 
 Open `/mnt/btrfsroot/etc/fstab` in your favorite editor. The first change is to add `/boot` so that it gets mounted properly. Add this line near the bottom of the file:
@@ -240,7 +248,7 @@ If you are using the default Arch image, it will look like this:
 
 [![FSTAB](/docs/assets/rescue-fstab.png)](/docs/assets/rescue-fstab.png)
 
-# Step 10: Rearrange the Devices
+##Rearrange the Devices
 This is the last step before booting the new system. Return to the Linode Manager and select 'edit' next to your configuration profile.
 
 [![Profiles](/docs/assets/manager-profiles.png)](/docs/assets/manager-profiles.png)
@@ -254,7 +262,7 @@ Edit the `Block Device Assignment` section to attach the volumes as follows:
 
 [![Block Device Assignment](/docs/assets/profile-settings.png)](/docs/assets/profile-settings.png)
 
-# Step 11: Reboot
+##Reboot
 You are done! When you reboot the system, it should boot cleanly to the new btrfs root. If anything goes terribly wrong, you can put the old root volume back as xvda (and swap as xvdb) and try again.
 
 Once you are certain that the system is working, you can delete the old root volume to save quota.
