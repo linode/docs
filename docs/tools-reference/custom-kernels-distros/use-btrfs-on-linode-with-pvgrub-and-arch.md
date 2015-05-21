@@ -53,11 +53,7 @@ The first part of this process is to ensure the kernel is set up and, while we a
         HOOKS="base udev autodetect modconf block filesystems keyboard fsck btrfs"
         ~~~
 
-<<<<<<< HEAD
-Now it is time to reinstall the kernel - this will ensure that the initrd is created with the new settings: (The output below has been heavily abridged.)
-=======
 2.  Reinstall the kernel to ensure - this will ensure that the initrd is created with the new settings:
->>>>>>> formatting edits to btrfs bounty guide
 
         pacman -Sy linux
 
