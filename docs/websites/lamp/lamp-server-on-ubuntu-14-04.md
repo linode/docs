@@ -161,7 +161,7 @@ The `a2dissite` command is the inverse of `a2ensite`. After enabling, disabling,
 
 1.  Install PHP:
 
-        apt-get install php5 php-pear 
+        apt-get install php5 libapache2-mod-php5 php-pear 
 
 2.  Once PHP5 is installed you'll need to tune the configuration file located in `/etc/php5/apache2/php.ini` to enable more descriptive errors, logging, and better performance. These modifications provide a good starting point if you're unfamiliar with PHP configuration.
 
