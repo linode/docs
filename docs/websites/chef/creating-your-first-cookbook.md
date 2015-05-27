@@ -386,9 +386,7 @@ With the virtual hosts files configured and your website enabled, you will want 
 
 2.	Upload these cookbooks to the server:
 
-		knife cookbook upload mysql -d
-
-	The `-d` tag denotes that all cookbook dependencies should be uploaded.
+		knife cookbook upload mysql --include-dependencies
 
 3.	From the main directory of your LAMP stack cookbook, open the `metadata.rb` file and add a dependency to the MySQL cookbook:
 
@@ -407,7 +405,7 @@ Chef contains a feature knows as *data bags*. Data bags store information, and c
 
 		openssl rand -base64 512 > ~/chef-repo/.chef/encrypted_data_bag_secret
 
-2.	Upload this key to your node that will be using encrypted data, either manually (an example can be found in the Setting Up Chef guide), or through the use of a recipe and cookbook file.
+2.	Upload this key to your node's `/etc/chef` directory, either manually by `scp` (an example can be found in the Setting Up Chef guide), or through the use of a recipe and cookbook file.
 
 3.	Create a `mysql` data bag that will contain the information `rtpass.json` for the root password:
 
