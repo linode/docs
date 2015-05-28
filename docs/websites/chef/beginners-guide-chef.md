@@ -76,7 +76,7 @@ The default `knife.rb` file is defined with the following properties:
 
 ## Nodes
 
-A *node* is anything set to run the chef-client. This can be anything, as long as it is being maintained by Chef.
+A *node* is a system configured to run the chef-client. This can be any system, as long as it is being maintained by Chef.
 
 Nodes are validated through the `validator.pem` and `client.pem` certificates that are created on the node when it is bootstrapped. All nodes must be bootstrapped over SSH as either the root user or a user with elevated privileges.
 
@@ -145,9 +145,9 @@ All nodes are automatically set to the "default" environment upon bootstrap. To 
 
 Cookbooks are the main component of configuring nodes on a Chef infrastructure. Cookbooks contain values and information about the *desired state* of a node, not how to get to that desired state -- Chef does all the work for that, through their extensive libraries.
 
-Cookbooks are comprised of recipes, metadata,  attributes, resources, templates, libraries, and anything else that assists in creating a functioning system, with attributes and recipes being the two core parts of creating a cookbook. Components of a cookbook should be module, keeping recipes small and related.
+Cookbooks are comprised of recipes, metadata,  attributes, resources, templates, libraries, and anything else that assists in creating a functioning system, with attributes and recipes being the two core parts of creating a cookbook. Components of a cookbook should be modular, keeping recipes small and related.
 
-Cookbooks can and should have versions. Versions can help when using environments and allow for the easier tracking of changes that have been made to the cookbook.
+Cookbooks can and should be version controlled. Versions can help when using environments and allow for the easier tracking of changes that have been made to the cookbook.
 
 ### Recipes
 
@@ -164,7 +164,7 @@ These are static files that can be uploaded to nodes. Files can be configuration
 
 ### Libraries
 
-Although Chef comes with a number of libraries built in, additional libraries can be defined. Libraries are what bring recipes to life: If a recipe is the *desired state* of a node, than added libraries contain the behind-the-scenes information Chef needs for the nodes to reach this state. Libraries are written in Ruby, and can also be used to expand on any functionalities that chef already contains.
+Although Chef comes with a number of libraries built in, additional libraries can be defined. Libraries are what bring recipes to life: If a recipe is the *desired state* of a node, than added libraries contain the behind-the-scenes information Chef needs for the nodes to reach this state. Libraries are written in Ruby, and can also be used to expand on any functionalities that Chef already contains.
 
 ### Providers and Resources
 
