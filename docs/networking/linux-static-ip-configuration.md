@@ -182,10 +182,10 @@ From the Linode, `ping` each of the default gateways listed on the "Remote Acces
     ping 198.51.100.1
     ping 192.0.2.1
 
-### CentOS 7 & Fedora 20
+### CentOS 7 & Fedora 22
 
 
-Note: CentOS 7/Fedora 20 no longer uses the `network` service. Instead, use the `nmcli` utility. The Network Manager in CentOS 7 also allows you to have each IP address defined in one interface file. 
+Note: CentOS 7/Fedora 22 no longer uses the `network` service. Instead, use the `nmcli` utility. The Network Manager in CentOS 7 also allows you to have each IP address defined in one interface file. 
 
 In the example below, change the IP addresses to reflect the values shown under the "Remote Access" tab of the Linode Manager.
 
