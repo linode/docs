@@ -22,7 +22,7 @@ These three components communicate in a mostly-linear fashion, with any changes 
 
 ## The Chef Server
 
-The Chef server works as the primary mode of communication between the workstations where your infrastructure is coded, and the nodes where it is deployed. All configuration files, cookbooks, metadata, and other information are stored on the server. The Chef server also keeps information regarding the state of all nodes at the time of the last [chef-client](/docs/websites/chef/beginners-guide-chef#chef-client) run.
+The Chef server is the primary mode of communication between the workstations where your infrastructure is coded, and the nodes where it is deployed. All configuration files, cookbooks, metadata, and other information are stored on the server. The Chef server also keeps information regarding the state of all nodes at the time of the last [chef-client](/docs/websites/chef/beginners-guide-chef#chef-client) run.
 
 Any changes made must pass through the Chef server to be deployed. Prior to accepting or pushing changes, it verifies that the nodes and workstations are paired with the server through the use of authorization keys, and then allows for communication between the workstations and nodes.
 
@@ -33,13 +33,13 @@ The Bookshelf is a versioned repository where cookbooks are stored on the Chef s
 
 ## Workstations
 
-Workstations are where users author, test, and maintain cookbooks and policies that will be pushed to nodes. Cookbooks created on workstations can be used privately by one organization, or uploaded to the Chef Supermarket for others to use. Similarly, workstations can be used to download cookbooks created by other Chef users and found in the Supermarket.
+Workstations are where users create, test, and maintain cookbooks and policies that will be pushed to nodes. Cookbooks created on workstations can be used privately by one organization, or uploaded to the Chef Supermarket for others to use. Similarly, workstations can be used to download cookbooks created by other Chef users and found in the Supermarket.
 
 Workstations are set up to use the *Chef Development Kit* (ChefDK), and can be located on virtual servers or on physical workstation computers. Workstations are set to interact with only one Chef server, and most work will be done in the `chef-repo` directory located on the workstation.
 
 ### chef-repo
 
-The `chef-repo` directory is the specific area of the workstation where cookbooks are authored and maintained. The `chef-repo` is always version-controlled, most often through the use of Git, and stores information and history that will be used on nodes, such as cookbooks, environments, roles, and data bags. With the use of the `knife` command, included in the ChefDK, Chef, from the `ched-repo`, is able to communicate with the server and push any changes made.
+The `chef-repo` directory is the specific area of the workstation where cookbooks are authored and maintained. The `chef-repo` is always version-controlled, most often through the use of Git, and stores information and history that will be used on nodes, such as cookbooks, environments, roles, and data bags. Chef is able to communicate with the server from the `chef-repo` and push any changes via the use of the `knife` command, which is included in the ChefDK.
 
 Originally the `chef-repo` had to be pulled from GitHub using git commands, but that action is now integrated into Chef through the use of the `chef generate repo chef-repo` command.
 
@@ -164,11 +164,11 @@ These are static files that can be uploaded to nodes. Files can be configuration
 
 ### Libraries
 
-Although Chef comes with a number of libraries built in, additional libraries can be defined. Libraries are what bring recipes to life: If a recipe is the *desired state* of a node, than added libraries contain the behind-the-scenes information Chef needs for the nodes to reach this state. Libraries are written in Ruby, and can also be used to expand on any functionalities that chef already contains, as well.
+Although Chef comes with a number of libraries built in, additional libraries can be defined. Libraries are what bring recipes to life: If a recipe is the *desired state* of a node, than added libraries contain the behind-the-scenes information Chef needs for the nodes to reach this state. Libraries are written in Ruby, and can also be used to expand on any functionalities that chef already contains.
 
 ### Providers and Resources
 
-Providers and resources are also used in defining new functionality to use in Chef recipes. A *resource* defines a set of actions and attributes, whereas  *provider* informs the chef-client how to commit each action.
+Providers and resources are also used to define new functionality to use in Chef recipes. A *resource* defines a set of actions and attributes, whereas  *provider* informs the chef-client how to commit each action.
 
 ### Templates
 
