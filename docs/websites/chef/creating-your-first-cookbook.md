@@ -409,7 +409,7 @@ Chef contains a feature knows as *data bags*. Data bags store information, and c
 
 3.	Create a `mysql` data bag that will contain the information `rtpass.json` for the root password:
 
-		knife data bag create mysql rtpass.json --secret-file ~/chef-repo/.chef/encrypted_data_bag
+		knife data bag create mysql rtpass.json --secret-file ~/chef-repo/.chef/encrypted_data_bag_secret
 
 	You will be asked to edit the `rtpass.json` file:
 
