@@ -18,9 +18,9 @@ For a different Linux distribution or different mail server, <a href="/docs/" ta
 
 ### Prerequisites
 
-1.  Set up the Linode as specified in the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/securing-the-server) guides.
+1.  Set up the Linode as specified in the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/securing-your-server) guides.
 
-2.  Ensure that the iptables [firewall](/docs/securing-the-server#sph_creating-a-firewall) is not blocking any of the standard mail ports (25, 465, 587, 110, 995, 143, and 993). If using a different form of firewall, confirm that it is not blocking any of the needed ports either.
+2.  Ensure that the iptables [firewall](/docs/securing-your-server#creating-a-firewall) is not blocking any of the standard mail ports (25, 465, 587, 110, 995, 143, and 993). If using a different form of firewall, confirm that it is not blocking any of the needed ports either.
 
 ### Configuring DNS
 
