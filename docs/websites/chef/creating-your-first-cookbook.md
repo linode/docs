@@ -128,7 +128,7 @@ Because each section of the LAMP stack (Apache, MySQL, and PHP) will be its own 
 
 5.	Add the recipe to a node's run-list, replaceing `nodename` with your choosen node's name:
 
-		knife node run_list add nodename ",recipe[lamp-stack::apache]"
+		knife node run_list add nodename "recipe[lamp-stack::apache]"
 
 	Because this is not the default recipe the recipe name, *apache*, must be appended to the recipe value.
 
@@ -179,7 +179,7 @@ After making sure the initial install works, Apache now needs to be configured, 
 3.	Return to your `apache.rb` file under `recipes` to call the attributes that were just defined. Do this through the use of the *node* resource:
 
 	{: .file-excerpt}
-	chef-repo/cookbooks/lamp-stack/apache.rb
+	chef-repo/cookbooks/lamp-stack/recipes/apache.rb
 	:	~~~ ruby
 		node["lamp-stack"]["sites"].each do |sitename, data|
 		end
