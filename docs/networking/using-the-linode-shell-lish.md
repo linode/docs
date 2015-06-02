@@ -184,7 +184,7 @@ The Lish shell provides access to many functions which are otherwise only access
     keysview        - view contents of authorized_keys2
     logview         - view contents of console log
 
-Use the `configs` and `config N` (where N is the number of the configuration profile) to get a list of each configuration profile and related information. Lish is useful both for issuing commands like `reboot` and `shutdown` to your Linode, and accessing statistics. Statistics include a list of pending jobs (e.g. jobs) and a list of configuration profiles (configs).
+
 
 Advanced Lish Tricks
 --------------------
