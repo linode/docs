@@ -16,6 +16,10 @@ This document describes a compatible alternative to the **LAMP** (Linux,Apache, 
 
 Prior to beginning this guide, please complete the [Getting Started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
 
+ {: .note }
+>
+> This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+
 Set the Hostname
 ----------------
 
@@ -105,7 +109,7 @@ Issue the following sequence of commands to download a small wrapper script for 
     sudo /etc/init.d/php-fastcgi start
     sudo update-rc.d php-fastcgi defaults
 
-In order to enable PHP with FastCGI, ensure the `location ~ \.php$ { }` block resembles the one in this example:
+In order to enable PHP with FastCGI, ensure the `location ~ \.php$ { }` block nested within the server block resembles the one in this example:
 
 {: .file }
 /etc/nginx/sites-available/example.com
