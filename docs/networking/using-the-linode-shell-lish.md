@@ -15,8 +15,7 @@ title: 'Using the Linode Shell (Lish)'
 
 The Linode Shell (*Lish*) provides console access to all of your Linodes. It also allows you to perform actions like rebooting a Linode or switching to a different configuration profile without having to open the Linode Manager. Lish is also a good rescue tool. The console provides out-of-band access to your Linode, which means you can use Lish to access your Linode even when you are unable to connect directly via SSH. This is useful if firewall settings or a bad network configuration prevent you from accessing your Linode using SSH.
 
-Connecting to Lish
-------------------
+##Connecting to Lish
 
 There are two ways to access Lish. You can use a terminal application to connect to a *Lish SSH gateway*, or you can log in to the [Linode Manager](https://manager.linode.com) and use the Ajax console in your web browser. This section explains both methods.
 
@@ -105,8 +104,7 @@ Now you can log in to any of the Lish gateway boxes without having to type your 
 If you wish to disable Lish access for users without keys, use the **Authentication modes** dropdown menu on the same page, and then click **Save Setting**.
 
 
-Understanding Lish Commands
----------------------------
+## Understanding Lish Commands
 
 The Lish shell provides access to many functions which are otherwise only accessible via the Linode Manager web-based administration tool. Enter the `help` command to see a full list of available commands. The output provides an introduction to Lish functionality:
 
@@ -137,8 +135,7 @@ There are two ways to run these commands for a specific Linode. If you are at th
 
 You can also bring up the Linode's console, then type **Control + A** then **D** to drop back to the host for that Linode. Now all of the commands above will be run for that Linode specifically. To exit back to the main Lish menu, type `exit`.
 
-Advanced Lish Tricks
---------------------
+## Advanced Lish Tricks
 
 While the Lish interface as described above is useful as a basic command-line interface, you may find that you want to issue commands to your Linode without going through the Lish login process.
 
@@ -157,8 +154,7 @@ Similarly, use the following command to generate a view of the log using Lish:
 This command format works for all Lish functionality.
 
 
-Lish Gateway Fingerprints
--------------------------
+## Lish Gateway Fingerprints
 
 The valid fingerprints for the Lish gateway boxes are as follows:
 
