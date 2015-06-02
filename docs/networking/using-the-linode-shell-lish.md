@@ -184,7 +184,11 @@ The Lish shell provides access to many functions which are otherwise only access
     keysview        - view contents of authorized_keys2
     logview         - view contents of console log
 
+There are two ways to run these commands for a specific Linode. If you are at the main Lish gateway, you can prefix the command with a Linode ID, like this:
 
+    linode123456 logview
+
+You can also bring up the Linode's console, then type **Control + A** then **D** to drop back to the host for that Linode. Now all of the commands above will be run for that Linode specifically. To exit back to the main Lish menu, type `exit`.
 
 Advanced Lish Tricks
 --------------------
