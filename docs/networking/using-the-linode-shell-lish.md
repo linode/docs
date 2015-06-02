@@ -104,59 +104,6 @@ Now you can log in to any of the Lish gateway boxes without having to type your 
 
 If you wish to disable Lish access for users without keys, use the **Authentication modes** dropdown menu on the same page, and then click **Save Setting**.
 
-Lish Gateway Fingerprints
--------------------------
-
-The valid fingerprints for the Lish gateway boxes are as follows:
-
-### Tokyo
-
-These are the fingerprints for the Lish gateway in our Tokyo data center (lish-tokyo.linode.com):
-
-    RSA af:ec:f0:b8:87:33:d5:12:04:0d:7c:bb:a6:c5:5f:be
-    DSA 1d:7d:bd:5c:a1:41:29:c3:78:de:e7:0f:d3:f2:63:34
-
-### Fremont
-
-These are the fingerprints for the Lish gateway in our Fremont data center (lish-fremont.linode.com):
-
-    RSA 2c:43:0e:fc:88:f2:3a:dd:01:43:3a:fc:9f:67:9f:66
-    DSA 19:30:1a:48:85:aa:78:ab:46:8d:0f:4d:00:88:e6:b7
-
-### Newark
-
-These are the fingerprints for the Lish gateway in our Newark data center (lish-newark.linode.com):
-
-    RSA 11:2a:57:a4:f8:ca:42:b2:c0:ab:17:58:0d:0c:b7:8b
-    DSA a1:e2:f5:5a:71:f9:b8:98:d9:a6:4c:65:e5:05:ea:04
-
-### Dallas
-
-These are the fingerprints for the Lish gateway in our Dallas data center (lish-dallas.linode.com):
-
-    RSA 6d:3d:b5:d0:42:1c:49:45:a6:47:29:bd:88:4e:58:d4
-    DSA 58:bc:07:fa:c1:61:a4:3b:b5:00:3b:9b:6b:78:c6:c5
-
-### Atlanta
-
-These are the fingerprints for the Lish gateway in our Atlanta data center (lish-atlanta.linode.com):
-
-    RSA 59:30:1a:0b:93:5e:3f:4b:6f:d1:96:ff:7e:9e:12:f8
-    DSA 0b:90:ed:f2:a1:e0:55:5b:38:6e:5d:6e:fa:00:63:7f
-
-### London
-
-These are the fingerprints for the Lish gateway in our London data center (lish-london.linode.com):
-
-    RSA 71:27:30:cd:dc:69:7a:fe:58:4a:04:e6:6b:5f:b4:e2
-    DSA ce:41:c0:48:2c:93:de:c8:d2:a9:bf:3f:97:1f:04:ad
-
-### Singapore
-
-These are the fingerprints for the Lish gateway in our Singapore data center (lish-singapore.linode.com):
-
-    RSA 06:26:d8:2a:12:8b:2f:d7:6c:54:72:5a:a7:7b:da:7b
-    DSA 3b:ed:f1:a6:68:5f:aa:2f:c6:f7:8b:ce:e2:0e:3f:85
 
 Understanding Lish Commands
 ---------------------------
@@ -210,4 +157,57 @@ Similarly, use the following command to generate a view of the log using Lish:
 This command format works for all Lish functionality.
 
 
+Lish Gateway Fingerprints
+-------------------------
+
+The valid fingerprints for the Lish gateway boxes are as follows:
+
+### Tokyo
+
+These are the fingerprints for the Lish gateway in our Tokyo data center (lish-tokyo.linode.com):
+
+    RSA af:ec:f0:b8:87:33:d5:12:04:0d:7c:bb:a6:c5:5f:be
+    DSA 1d:7d:bd:5c:a1:41:29:c3:78:de:e7:0f:d3:f2:63:34
+
+### Fremont
+
+These are the fingerprints for the Lish gateway in our Fremont data center (lish-fremont.linode.com):
+
+    RSA 2c:43:0e:fc:88:f2:3a:dd:01:43:3a:fc:9f:67:9f:66
+    DSA 19:30:1a:48:85:aa:78:ab:46:8d:0f:4d:00:88:e6:b7
+
+### Newark
+
+These are the fingerprints for the Lish gateway in our Newark data center (lish-newark.linode.com):
+
+    RSA 11:2a:57:a4:f8:ca:42:b2:c0:ab:17:58:0d:0c:b7:8b
+    DSA a1:e2:f5:5a:71:f9:b8:98:d9:a6:4c:65:e5:05:ea:04
+
+### Dallas
+
+These are the fingerprints for the Lish gateway in our Dallas data center (lish-dallas.linode.com):
+
+    RSA 6d:3d:b5:d0:42:1c:49:45:a6:47:29:bd:88:4e:58:d4
+    DSA 58:bc:07:fa:c1:61:a4:3b:b5:00:3b:9b:6b:78:c6:c5
+
+### Atlanta
+
+These are the fingerprints for the Lish gateway in our Atlanta data center (lish-atlanta.linode.com):
+
+    RSA 59:30:1a:0b:93:5e:3f:4b:6f:d1:96:ff:7e:9e:12:f8
+    DSA 0b:90:ed:f2:a1:e0:55:5b:38:6e:5d:6e:fa:00:63:7f
+
+### London
+
+These are the fingerprints for the Lish gateway in our London data center (lish-london.linode.com):
+
+    RSA 71:27:30:cd:dc:69:7a:fe:58:4a:04:e6:6b:5f:b4:e2
+    DSA ce:41:c0:48:2c:93:de:c8:d2:a9:bf:3f:97:1f:04:ad
+
+### Singapore
+
+These are the fingerprints for the Lish gateway in our Singapore data center (lish-singapore.linode.com):
+
+    RSA 06:26:d8:2a:12:8b:2f:d7:6c:54:72:5a:a7:7b:da:7b
+    DSA 3b:ed:f1:a6:68:5f:aa:2f:c6:f7:8b:ce:e2:0e:3f:85
 
