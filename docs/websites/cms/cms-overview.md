@@ -9,7 +9,7 @@ alias:
 modified: Friday, October 17th, 2014
 modified_by:
   name: Joseph Dooley
-published: 'Tuesday, September 29th, 2009'
+published: 'Friday, October 17th, 2014'
 title: 'Content Management Systems: an Overview'
 ---
 

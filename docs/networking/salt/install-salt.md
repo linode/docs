@@ -2,22 +2,22 @@
 author:
   name: Joseph Dooley
   email: jdooley@linode.com
-description: 'Salt Master and Salt Minions to remotely runn Python files.'
-keywords: 'salt, saltstack, python, applications, beginner'
+description: 'Install a Salt Master and Salt Minions.'
+keywords: 'salt, saltstack, install, beginner, Debian 8'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Wednesday, May 20th, 2015
+modified: Wednesday, May 27th, 2015
 modified_by:
   name: Joseph Dooley
-published: 'Wednesday, May 20th, 2015'
-title: Salt with Python for a Beginner
+published: 'Wednesday, May 27th, 2015'
+title: Install Salt
 ---
 
-Salt, often referred to as SaltStack, is designed for server management. A single Salt Master controls many Salt Minions. The master can remotely run commands, transfer files, and much more concerning scalability. 
+Salt, often referred to as SaltStack, is designed for server management. A single Salt Master controls many Salt Minions.
 
-This tutorial is primarily for Salt, although it displays how to create, transfer, and then remotely run a server-side Python script or application.
+The directions below are for two separate Debian 8 Linodes.
 
 ##Install a Salt Master and a Salt Minion
-The directions below are for two separate Debian 8 Linodes. For other operating systems or single servers, visit the <a href="http://docs.saltstack.com/en/latest/topics/installation/" target="_blank">Salt installation guides</a>.
+
 
 1.  <a href="http://docs.saltstack.com/en/latest/ref/configuration/nonroot.html" target="_blank">As the root user</a> log into both Linode 1 and Linode 2  and <a href="https://www.linode.com/docs/getting-started#setting-the-hostname" target="_blank">set the hostnames</a>. Without changing the configurations in Salt, the Salt Master's ID and Salt Minions' IDs default to the hostname. 
 
@@ -50,12 +50,12 @@ The directions below are for two separate Debian 8 Linodes. For other operating 
     /etc/salt/master 
     :   ~~~  
         # The address of the interface to bind to:
-        interface:<master's IP address>
+          interface: <master's IP address>
         ~~~
 
         {: .caution}
     >
-    > Ensure that there is a space between the colon, in `interface:`, and the IP address.
+    > Ensure that there are two spaces in front of "interface" and a space between the colon, in `interface:`, and the IP address. YAML formatting, pronouced like camel, follows two space nesting.
 
 
 
@@ -76,12 +76,13 @@ The directions below are for two separate Debian 8 Linodes. For other operating 
     :   ~~~ 
         # Set the location of the salt master server. If the master server cannot be
         # resolved, then the minion will fail to start. 
-        master: <master's IP address>
+          master: <master's IP address>
         ~~~
 
         {: .caution}
     >
-    > Ensure that there is a space between the colon, in `master:`, and the IP address.
+    > Ensure that there are two spaces in front of "master" and a space between the colon, in `master: `, and the IP address. YAML formatting, pronouced like camel, follows two space nesting.
+
 
 3.  On Linode 2 the Salt Minion, restart Salt:
 
@@ -105,28 +106,5 @@ The directions below are for two separate Debian 8 Linodes. For other operating 
 
         salt '*' test.ping
 
-##Using Python with Salt 
-Python is used as an example for remotely running a server-side language. However, Bash, Perl, Python, or other languages can be used, often interchangeably. For example, transferring a start-up, or on-boot script, might be better written in Bash, but still remotely pushed to all minions through Salt. 
-
-1.  Create a Python hello world app and test it on the Master. Create and open a file named `hello.py`:
-
-    {:.file }
-    hello.py 
-    :   ~~~  
-        print "Hello world."
-        ~~~
-
-2.  Run the app on the Salt Master:
-
-        python hello.py
-
-3.  Copy the app to the Salt Minions. Replace `full-directory-path` with the Salt Master's correct directory path, and replace `destination-directory-path` with a Salt Minion directory path that already exists.
-
-        salt-cp '*' /full-directory-path/hello.py /destination-directory-path/hello.py
-
-4.  Remotely run the app on the Salt Minions. Replace `destination-directory-path` with the correct Salt Minion's directory path.
-
-        salt '*' cmd.run 'python /destination-directory-path/hello.py'
-
-For possible next steps, continue building a multi-server configuration setup and read more about <a href="http://docs.saltstack.com/en/latest/ref/clients/" target="_blank">configuration management with Salt States</a>. Also note, there is a <a href="http://docs.saltstack.com/en/latest/ref/clients/" target="_blank">Python client API for Salt</a>.  
+For possible next steps, continue building a multi-server configuration setup and read more about <a href="http://docs.saltstack.com/en/latest/ref/clients/" target="_blank">configuration management with Salt States</a>.
 
