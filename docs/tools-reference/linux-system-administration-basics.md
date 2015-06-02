@@ -1,19 +1,21 @@
 ---
 author:
-  name: Linode
-  email: docs@linode.com
+    name: Linode
+    email: docs@linode.com
 description: 'Tips, troubleshooting pointers, and software usage suggestions for Linux beginners.'
 keywords: 'linux tips,linux beginners,systems administration,admin,linux,mail,http,troubleshooting'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['using-linux/administration-basics/']
 modified: Wednesday, February 18, 2015
 modified_by:
-  name: Dave Russell
+    name: Dave Russell
 published: 'Sunday, December 13th, 2009'
 title: Linux System Administration Basics
 ---
 
 This document presents a collection of common issues and useful tips for Linux system administration. Whether you're new to system administration or have been maintaining systems for some time, we hope these tips are helpful regardless of your background or choice in Linux distributions.
+
+For a list of common administrative commands, see our [System Administration Reference Sheet](sysadmin-reference-sheet).
 
 Basic Configuration
 -------------------
