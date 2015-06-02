@@ -2,14 +2,14 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Instructions for configuring your Debian 7 or Ubuntu Linode to run a custom compiled kernel with PV-GRUB.'
+description: 'Instructions for configuring your Debian or Ubuntu Linode to run a custom compiled kernel with PV-GRUB.'
 keywords: 'compile kernel,kernel compiling,pv-grub,pvgrub,custom linux kernel,custom linode, debian,ubuntu'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: 'Friday, April 3, 2015'
 modified_by:
   name: Linode
 published: 'Friday. April 3, 2015'
-title: 'Custom Compiled Kernel with PV-GRUB on Debian 7 & Ubuntu'
+title: 'Custom Compiled Kernel with PV-GRUB on Debian & Ubuntu'
 ---
 
 Running a custom-compiled Linux kernel is useful if you need to enable or disable certain kernel features that are unavailable in Linode-supplied or distribution-supplied kernels. For example, some users desire [SELinux](http://en.wikipedia.org/wiki/Security-Enhanced_Linux) support, which is not enabled in stock Linode kernels, and may not be enabled in some distribution-supplied kernels.
