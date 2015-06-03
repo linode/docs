@@ -1,0 +1,101 @@
+---
+author:
+  name: Joseph Dooley
+  email: jdooley@linode.com
+description: 'Use Salt States with a LAMP Stack and Fail2ban.'
+keywords: 'salt, saltstack, states, apache, mysql, php, fail2ban, debian 8'
+license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+modified: Wednesday, June 3rd, 2015
+modified_by:
+  name: Joseph Dooley
+published: 'Wednesday, June 3rd, 2015'
+title: Salt States with Apache, MySQL, PHP (LAMP), and Fail2ban
+---
+
+Salt States install and define a server setup on other servers. This tutorial demonstrates the use of Salt States to create a LAMP stack across all Salt Minions.
+
+##Configure the Salt Master
+Before configuration, install a Salt Master and Salt Minions with the Linode <a href="/docs/networking/salt/install-salt" target="_blank">Install Salt</a> guide. This tutorial is written for Debian 8 but can easily be adjusted for other Linux Distributions. 
+
+1.  Open the `/etc/salt/master` file. Then search for and edit the below syntax:
+    
+    {:.file }
+    /etc/salt/sources.list
+    :  ~~~  
+       # Example:
+         file_roots:
+           base:
+             - /etc/salt/base
+       ~~~
+
+        {: .note}
+    >
+    > Copy the above text exactly to ensure the proper two space nesting of YAML formatting. Also notice the other possible Minion States listed under the example base file root. 
+    
+2.  Create the newly listed, file root directory:
+
+        mkdir /etc/salt/base
+
+##Create the Top and Additional SLS Files
+The `top.sls` file is 
+
+1. Create the `/etc/salt/base/top.sls` file and add the below syntax. Again ensure exact formatting for the YAML two space nesting.
+    
+    {:.file }
+    /etc/salt/base/top.sls
+    :  ~~~  
+       base:
+         '*':
+            - lamp
+            - extras
+       ~~~
+
+2.  From step one directly above, a file for the `lamp` listing is needed. Create a `/etc/salt/base/lamp.sls` file and add the below syntax: 
+
+    
+    {:.file }
+    /etc/salt/base/lamp.sls
+    :  ~~~  
+       apache2:                # ID declaration
+         pkg:                  # state declaration
+           - installed         # function declaration
+
+       mysql-server:
+         pkg:
+           - installed
+
+       php5:
+         pkg:
+           - installed
+
+       php-pear:
+         pkg:
+           - installed
+
+       php5-mysql:
+         pkg:
+           - installed
+       ~~~
+
+3.  From step one above, a file for the `extras` listing is needed. Create a `/etc/salt/base/extras.sls` file and add the below syntax:
+    
+    {:.file }
+    /etc/salt/base/extras.sls
+    :  ~~~  
+       fail2ban:
+         pkg:
+           - installed
+       ~~~
+
+##Create the Salt State on the Minions
+
+1.  To install the packages listed above and create a Salt State, run:
+
+        salt '*' state.highstate
+
+2.  For additional verification that the services are active on the minion, run:
+
+        salt '*' cmd.run "service --status-all"
+
+A LAMP stack and Fail2ban Salt State has been created on all listed Salt Minions. 
+
