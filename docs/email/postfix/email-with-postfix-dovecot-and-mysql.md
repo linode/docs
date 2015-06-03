@@ -329,7 +329,7 @@ Next, set up Postfix so the server can accept incoming messages for the domains.
 
         cp /etc/postfix/master.cf /etc/postfix/master.cf.orig
 
-11. Open the configuration file for editing and uncomment the two lines starting with `submission` and `smtps`. The first section of the `/etc/postfix/master.cf` file should resemble the following:
+11. Open the configuration file for editing and uncomment the two lines starting with `submission` and `smtps` and the block of lines starting with `-o` after each. The first section of the `/etc/postfix/master.cf` file should resemble the following:
 
     {: .file-excerpt }
 	/etc/postfix/master.cf
@@ -350,17 +350,17 @@ Next, set up Postfix so the server can accept incoming messages for the domains.
 	  #dnsblog   unix  -       -       -       -       0       dnsblog
 	  #tlsproxy  unix  -       -       -       -       0       tlsproxy
 	  submission inet n       -       -       -       -       smtpd
-	  #  -o syslog_name=postfix/submission
-	  #  -o smtpd_tls_security_level=encrypt
-	  #  -o smtpd_sasl_auth_enable=yes
-	  #  -o smtpd_client_restrictions=permit_sasl_authenticated,reject
-	  #  -o milter_macro_daemon_name=ORIGINATING
+	    -o syslog_name=postfix/submission
+	    -o smtpd_tls_security_level=encrypt
+	    -o smtpd_sasl_auth_enable=yes
+	    -o smtpd_client_restrictions=permit_sasl_authenticated,reject
+	    -o milter_macro_daemon_name=ORIGINATING
 	  smtps     inet  n       -       -       -       -       smtpd
-	  #  -o syslog_name=postfix/smtps
-	  #  -o smtpd_tls_wrappermode=yes
-	  #  -o smtpd_sasl_auth_enable=yes
-	  #  -o smtpd_client_restrictions=permit_sasl_authenticated,reject
-	  #  -o milter_macro_daemon_name=ORIGINATING
+	    -o syslog_name=postfix/smtps
+	    -o smtpd_tls_wrappermode=yes
+	    -o smtpd_sasl_auth_enable=yes
+	    -o smtpd_client_restrictions=permit_sasl_authenticated,reject
+	    -o milter_macro_daemon_name=ORIGINATING
 	  ~~~
 
 12. Restart Postfix by entering the following command:
