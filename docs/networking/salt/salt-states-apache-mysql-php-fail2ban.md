@@ -36,8 +36,7 @@ Before configuration, install a Salt Master and Salt Minions with the Linode <a 
 
         mkdir /etc/salt/base
 
-##Create the Top and Additional SLS Files
-The `top.sls` file is 
+##Create the Top and Additional SLS Files 
 
 1. Create the `/etc/salt/base/top.sls` file and add the below syntax. Again ensure exact formatting for the YAML two space nesting.
     
