@@ -106,5 +106,5 @@ The directions below are for two separate Debian 8 Linodes.
 
         salt '*' test.ping
 
-For possible next steps, continue building a multi-server configuration setup and read more about <a href="http://docs.saltstack.com/en/latest/ref/clients/" target="_blank">configuration management with Salt States</a>.
+For possible next steps, continue building a multi-server configuration setup and read more about <a href="/docs/networking/salt/salt-states-apache-mysql-php-fail2ban" target="_blank">configuration management with Salt States</a>.
 
