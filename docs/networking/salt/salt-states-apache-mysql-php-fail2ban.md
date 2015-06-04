@@ -17,28 +17,27 @@ Salt States install and define a server setup on other servers. This tutorial de
 ##Configure the Salt Master
 Before configuration, install a Salt Master and Salt Minions with the Linode <a href="/docs/networking/salt/install-salt" target="_blank">Install Salt</a> guide. This tutorial is written for Debian 8 but can easily be adjusted for other Linux Distributions. 
 
-1.  Open the `/etc/salt/master` file. Then search for and edit the below syntax:
+1.  Open the `/etc/salt/master` file. Then search for the **File Server settings** section and add the following:
     
     {:.file }
-    /etc/salt/sources.list
-    :  ~~~  
-       # Example:
-         file_roots:
-           base:
-             - /etc/salt/base
-       ~~~
+    /etc/salt/master
+    :   ~~~
+        file_roots:
+          base:
+            - /etc/salt/base
+        ~~~
 
         {: .note}
     >
     > Copy the above text exactly to ensure the proper two space nesting of YAML formatting. Also notice the other possible Minion States listed under the example base file root. 
     
-2.  Create the newly listed, file root directory:
+2.  Create the newly listed file root directory:
 
         mkdir /etc/salt/base
 
 ##Create the Top and Additional SLS Files 
 
-1. Create the `/etc/salt/base/top.sls` file and add the below syntax. Again ensure exact formatting for the YAML two space nesting.
+1. Create the `/etc/salt/base/top.sls` file and add the following. Again, ensure exact formatting for the YAML two space nesting.
     
     {:.file }
     /etc/salt/base/top.sls
@@ -49,7 +48,7 @@ Before configuration, install a Salt Master and Salt Minions with the Linode <a 
             - extras
        ~~~
 
-2.  From step one directly above, a file for the `lamp` listing is needed. Create a `/etc/salt/base/lamp.sls` file and add the below syntax: 
+2.  From step one directly above, a file for the `lamp` listing is needed. Create a `/etc/salt/base/lamp.sls` file and add the following: 
 
     
     {:.file }
