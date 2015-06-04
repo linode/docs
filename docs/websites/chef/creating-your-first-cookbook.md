@@ -87,7 +87,7 @@ Because each section of the LAMP stack (Apache, MySQL, and PHP) will be its own 
 
         chef-client
 
-    It would output a successful Chef run. If not, review your code for any errors, usually defined in the output of the chef-client run.
+    It should output a successful Chef run. If not, review your code for any errors, usually defined in the output of the chef-client run.
 
 
 ## Apache
@@ -130,7 +130,7 @@ Because each section of the LAMP stack (Apache, MySQL, and PHP) will be its own 
 
         knife node run_list add nodename "recipe[lamp-stack::apache]"
 
-    Because this is not the default recipe the recipe name, *apache*, must be appended to the recipe value.
+    Because this is not the `default.rb` recipe the recipe name, *apache*, must be appended to the recipe value.
 
 6.  From that **node**, run the chef-client:
 
@@ -138,11 +138,11 @@ Because each section of the LAMP stack (Apache, MySQL, and PHP) will be its own 
 
     If the recipe fails do to a syntax error, Chef will note it during the output.
 
-7.  After a successful chef-client run, check to see if Apache installed by checking the directory:
+7.  After a successful chef-client run, check to see if Apache is running:
 
-        ls /etc/apache2
+        service apache2 status
 
-    Your configuration files and folders should be output.
+    It should say that apache2 is running.
 
     {: .note}
     >
@@ -181,6 +181,20 @@ After the initial installation Apache needs to be configured, starting with its 
     {: .file-excerpt}
     ~/chef-repo/cookbooks/lamp-stack/recipes/apache.rb
     :   ~~~ ruby
+
+        #Install & enable Apache
+
+        package "apache2" do
+          action :install
+        end
+
+        service "apache2" do
+          action [:enable, :start]
+        end
+
+
+        #Virtual Hosts Files
+
         node["lamp-stack"]["sites"].each do |sitename, data|
         end
         ~~~
@@ -197,7 +211,7 @@ After the initial installation Apache needs to be configured, starting with its 
         end
         ~~~
 
-5.  However, this does not create the directory itself. To do so, the *directory* resource should be used, with a *true* recursive value so all directories leading up to the `sitename` will be created. A permissions value of `0755` will allow for the root user to have full access to the directory, while sudo and regular users will have read and execute privileges:
+5.  However, this does not create the directory itself. To do so, the *directory* resource should be used, with a *true* recursive value so all directories leading up to the `sitename` will be created. A permissions value of `0755` will allow for the file owner to have full access to the directory, while group and regular users will have read and execute privileges:
 
     {: .file-excerpt}
     ~/chef-repo/cookbooks/lamp-stack/apache.rb
@@ -215,7 +229,7 @@ After the initial installation Apache needs to be configured, starting with its 
 
 6.  The template feature will be used to generate the needed virtual hosts files. From the main directory of your lamp-stack cookbook navigate to *templates*, and then *default*:
 
-        cd templates/default
+        cd ~/chef-repo/cookbooks/lamp-stack/templates/default
 
 7.  Create a virtual hosts file called `virtualhosts.erb`. Instead of inputting the true values, Use Ruby variables. Ruby variables can be noted by `<%= @brackets %>` around them and the `@` symbol. Note the variable names you use, they will need to be defined in the recipe file:
 
@@ -287,15 +301,22 @@ After the initial installation Apache needs to be configured, starting with its 
 
     The `notifies` command names the `:action` to be committed, then the resource and resource name in square brackets. 
 
-    This means it can call on `execute` commands, which we need to run `a2ensite` to enable the sites whose virtual hosts files have been made. Add the following *above* the *template* resource code to create the `a2ensite` script:
+    This means it can call on `execute` commands, which we need to run `a2ensite` in the step below to enable the sites whose virtual hosts files have been made. Add the following *execute* command *above* the *template* resource code to create the `a2ensite` script:
 
     {: .file-excerpt}
     ~/chef-repo/cookbooks/lamp-stack/recipes/apache.rb
     :   ~~~ ruby
+          directory document_root do
+            mode "0755"
+            recursive true
+          end
+
           execute "enable-sites" do
             command "a2ensite #{sitename}"
             action :nothing
           end
+
+          template "/etc/apache2/sites-available/#{sitename}.conf" do
         ~~~
 
     The `action :nothing` means the resource will wait to be called upon later. Add it to the *template* resource code to use it, *above* the previous `notifies` line:
@@ -373,6 +394,8 @@ With the virtual hosts files configured and your website enabled, you will want 
         end
         ~~~
 
+    Your `apache.rb` is now finished! An example of the final file is located [here](/docs/assets/apache.rb).
+
 
 ## MySQL
 
@@ -396,6 +419,10 @@ With the virtual hosts files configured and your website enabled, you will want 
         depends          'mysql', '~> 6.0'
         ~~~
 
+    {: .note}
+    >
+    >Check the MySQL Cookbook's [Supermarket page](https://supermarket.chef.io/cookbooks/mysql) to ensure this is the latest version.
+
 
 ### Create and Encrypt Your MySQL Password
 
@@ -407,14 +434,14 @@ Chef contains a feature knows as *data bags*. Data bags store information, and c
 
 2.  Upload this key to your node's `/etc/chef` directory, either manually by `scp` (an example can be found in the Setting Up Chef guide), or through the use of a recipe and cookbook file.
 
-3.  Create a `mysql` data bag that will contain the information `rtpass.json` for the root password:
+3.  Create a `mysql` data bag that will contain the file `rtpass.json` for the root password:
 
         knife data bag create mysql rtpass.json --secret-file ~/chef-repo/.chef/encrypted_data_bag_secret
 
     You will be asked to edit the `rtpass.json` file:
 
     {: .file}
-    ~/chef-repo/data_bags/mysql
+    ~/chef-repo/data_bags/mysql/rtpass.json
     :   ~~~ json
         {
           "id": "rtpass2.json",
@@ -477,11 +504,11 @@ With the MySQL library downloaded and an encrypted root password prepared, you c
         end
         ~~~
 
-    `mysqldefault` is the name of the MySQL service for this container. The `inital_root_password` calls to the value defined in the text above, while the action creates and starts the database.
+    `mysqldefault` is the name of the MySQL service for this container. The `inital_root_password` calls to the value defined in the text above, while the action creates the database and starts the MySQL service.
 
     {: .note}
     >
-    >To run MySQL from your nodes you will need to define the socket:
+    >When running MySQL from your nodes you will need to define the socket:
     >
     >   mysql -S /var/run/mysqldefault/mysqld.sock -p
 
@@ -553,5 +580,11 @@ With the MySQL library downloaded and an encrypted root password prepared, you c
         end
         ~~~
 
+    The PHP recipe is now done! View an example of the `php.rb` file [here](/docs/assets/php.rb).
+
+6.  When done, ensure that your Chef server contains the updated cookbook, and your node's run list is up-to-date:
+
+        knife cookbook upload lamp-stack
+        knife node run_list add nodename "recipe[lamp-stack],recipe[lamp-stack::apache],recipe[lamp-stack::mysql],recipe[lamp-stack::php]"
 
 Congratulations! You have just created a LAMP Stack cookbook. Through this guide, you should have learned to use the execute, package, service, node, directory, template, cookbook_file, and mysql_service resources within a recipe, as well as download and use LWRPs, create encrypted data bags, upload/update your cookbooks to the server, and use attributes, templates, and cookbook files, giving you a strong basis in Chef and cookbook creation for future projects.
