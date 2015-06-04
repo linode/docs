@@ -2,25 +2,25 @@
 author:
     name: Linode
     email: docs@linode.com
-description: 'Using the ZNC bouncer to retain an IRC connection'
+description: 'Using the ZNC bouncer to retain an IRC connection.'
 keywords: 'znc,irc,debain,source,debian 8,messaging,chat'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Tuesday, June 2nd, 2015
+modified: Thursday, June 3rd, 2015
 modified_by:
     name: 'Elle Krout'
 published: 'Tuesday, June 2nd, 2015'
 title: 'Installing ZNC from Source on Debian 8'
 ---
 
-ZNC is an IRC bouncer. It's designed to run on a server that remains connected to an IRC network and buffer messages, so that a local IRC client can connect and disconnect without losing a chat session or missing any messages. In this guide we'll go over installing ZNC from source and configuring the daemon.
+ZNC is an IRC bouncer. It's designed to run on a server that remains connected to an IRC network and buffer messages. With ZNC, a local IRC client can connect and disconnect without losing a chat session or missing any messages. In this guide, install ZNC from source and then configure.
 
 {: .note}
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
 
 ## Before You Begin
 
-1.  Start by making sure your system is up to date:
+1.  Make sure the system is up to date:
 
         sudo apt-get update && sudo apt-get upgrade -y
 
@@ -28,7 +28,7 @@ ZNC is an IRC bouncer. It's designed to run on a server that remains connected t
 
         sudo apt-get install build-essential checkinstall
 
-3.  If you want to use SSL encryption to connect to the web interface (recommended) you'll also need to install `libssl-dev`:
+3.  If you want to use SSL encryption to connect to the web interface (recommended), install `libssl-dev`:
 
         sudo apt-get install libssl-dev
 
@@ -46,7 +46,7 @@ ZNC is an IRC bouncer. It's designed to run on a server that remains connected t
 
         cd znc-1.6.0
 
-4.  Run the `configure` script to make sure your Linode has all the needed prerequisites:
+4.  Run the `configure` script to make sure the Linode has all the needed prerequisites:
 
         ./configure
 
@@ -58,7 +58,7 @@ ZNC is an IRC bouncer. It's designed to run on a server that remains connected t
         sudo checkinstall --fstrans=0 make install
 
     {: .note }
-    > The program `checkinstall` will create a `.deb` package which you can use to reinstall this version of ZNC in the future. It has it's own set of options to review. If you prefer, you can instead run `sudo make install` to install ZNC as is.
+    > The program `checkinstall` creates a `.deb` package which you can use to reinstall this version of ZNC in the future. It has its own set of options to review. If you prefer, you can instead run `sudo make install` to install ZNC as is.
 
 
 ## Configuration
@@ -168,15 +168,15 @@ ZNC is an IRC bouncer. It's designed to run on a server that remains connected t
 
 ## Connecting The Client
 
-You can use any preferred GUI or CLI client to connect to ZNC. For the example below we'll be using [HexChat](https://hexchat.github.io/index.hthex).
+You can use any preferred GUI or CLI client to connect to ZNC. For the example below, we'll be using [HexChat](https://hexchat.github.io/index.hthex).
 
-1.  Open HexChat, add your desired nicknames, and then create a new network. In this example the network is called **ZNCserver**:
+1.  Open HexChat, add your desired nicknames, and then create a new network. In this example, the network is called **ZNCserver**:
 
     [![ZNC](/docs/assets/znc-hexchat-1.png)](/docs/assets/znc-hexchat-1.png)
 
 2.  With **ZNCserver** selected, click `Edit...`.
 
-3.  Add your server's IP address and port to the list. If not using a signed certificate select *Accept invalid SSL certificated*. Input your password:
+3.  Add your server's IP address and port to the list. If not using a signed certificate, select *Accept invalid SSL certificated*. Input your password:
 
     [![ZNC](/docs/assets/znc-hexchat-2.png)](/docs/assets/znc-hexchat-2.png)
 
