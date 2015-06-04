@@ -1,18 +1,18 @@
 ---
 author:
-    name: Linode
+    name: Alex Fornuto
     email: docs@linode.com
 description: 'Using the ZNC bouncer to retain an IRC connection.'
-keywords: 'znc,irc,debian,source,debian 8,messaging,chat'
+keywords: 'znc,irc,debian,source,debian 8,debian 7,messaging,chat'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: Thursday, June 4th, 2015
 modified_by:
     name: 'Elle Krout'
-published: 'Tuesday, June 2nd, 2015'
-title: 'Installing ZNC from Source on Debian 8'
+published: 'Friday, August 21, 2014'
+title: 'Installing ZNC from Source on Debian'
 ---
 
-ZNC is an IRC bouncer. It's designed to run on a server that remains connected to an IRC network and buffer messages. With ZNC, a local IRC client can connect and disconnect without losing a chat session or missing any messages. In this guide, install ZNC from source and then configure.
+ZNC is an IRC bouncer. It's designed to run on a server that remains connected to an IRC network and buffer messages. With ZNC, a local IRC client can connect and disconnect without losing a chat session or missing any messages. In this guide, ZNC will be installed from source and then configured.
 
 {: .note}
 >This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
