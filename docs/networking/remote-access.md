@@ -81,15 +81,14 @@ If you're using two Linodes to make a website highly available with Heartbeat an
 
 1.  Log in to the [Linode Manager](https://manager.linode.com).
 2.  Click the **Linodes** tab. A list of your virtual private servers appears.
-3.  Select the primary Linode. The Linode's dashboard appears.
+3.  Select the Linode on which you wish to configure failover. The Linode's dashboard appears.
 4.  Click the **Remote Access** tab.
 5.  Select the **IP Failover** link. The webpage shown below appears.
 
 	[![Configuring IP failover](/docs/assets/963-remote-5.png)](/docs/assets/963-remote-5.png)
 
-6.  Select the checkbox of the secondary Linode, as shown above.
+6.  Select the checkboxes of all IP addresses that need to fail over to the chosen Linode.
 7.  Click **Save Changes**.
-8.  Reboot all Linodes that will bring up the floating IP.
 
 You have successfully configured IP failover.
 

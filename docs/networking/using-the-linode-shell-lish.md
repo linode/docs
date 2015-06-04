@@ -15,8 +15,7 @@ title: 'Using the Linode Shell (Lish)'
 
 The Linode Shell (*Lish*) provides console access to all of your Linodes. It also allows you to perform actions like rebooting a Linode or switching to a different configuration profile without having to open the Linode Manager. Lish is also a good rescue tool. The console provides out-of-band access to your Linode, which means you can use Lish to access your Linode even when you are unable to connect directly via SSH. This is useful if firewall settings or a bad network configuration prevent you from accessing your Linode using SSH.
 
-Connecting to Lish
-------------------
+##Connecting to Lish
 
 There are two ways to access Lish. You can use a terminal application to connect to a *Lish SSH gateway*, or you can log in to the [Linode Manager](https://manager.linode.com) and use the Ajax console in your web browser. This section explains both methods.
 
@@ -104,8 +103,58 @@ Now you can log in to any of the Lish gateway boxes without having to type your 
 
 If you wish to disable Lish access for users without keys, use the **Authentication modes** dropdown menu on the same page, and then click **Save Setting**.
 
-Lish Gateway Fingerprints
--------------------------
+
+## Understanding Lish Commands
+
+The Lish shell provides access to many functions which are otherwise only accessible via the Linode Manager web-based administration tool. Enter the `help` command to see a full list of available commands. The output provides an introduction to Lish functionality:
+
+    kill            - kill stuck screen sessions
+    exit            - exit from lish
+    help            - this menu
+
+    [return]        - connect to console
+    version         - display running kernel version
+    boot            - boot last used (or the only) config profile
+    boot N          - boot the specified config profile
+    shutdown        - shut down the Linode
+    reboot          - shut down, then boot the last used config profile
+    reboot N        - shut down, then boot the specified config profile
+    sysrq X         - send SysRq X to your Linode
+    destroy         - pulls the plug on a running Linode, no fs sync, no warning
+
+    jobs            - view the job queue for your Linode
+    configs         - view the configuration profiles for your Linode
+    config N        - view configuration profile details for profile N
+    status          - view the status of your Linode
+    keysview        - view contents of authorized_keys2
+    logview         - view contents of console log
+
+There are two ways to run these commands for a specific Linode. If you are at the main Lish gateway, you can prefix the command with a Linode ID, like this:
+
+    linode123456 logview
+
+You can also bring up the Linode's console, then type **Control + A** then **D** to drop back to the host for that Linode. Now all of the commands above will be run for that Linode specifically. To exit back to the main Lish menu, type `exit`.
+
+## Advanced Lish Tricks
+
+While the Lish interface as described above is useful as a basic command-line interface, you may find that you want to issue commands to your Linode without going through the Lish login process.
+
+You can directly connect to a Linode's console by entering the following command:
+
+    ssh -t [manager-username]@lish-[location].linode.com [linode-name]
+
+You can also append Lish commands to the SSH command on your system prompt. For instance, to reboot your system, using your Linode Manager username, location, and the host-id for your Linode, issue the following command:
+
+    ssh -t [manager-username]@lish-[location].linode.com [linode-name] reboot
+
+Similarly, use the following command to generate a view of the log using Lish:
+
+    ssh -t [manager-username]@lish-[location].linode.com [linode-name] logview
+
+This command format works for all Lish functionality.
+
+
+## Lish Gateway Fingerprints
 
 The valid fingerprints for the Lish gateway boxes are as follows:
 
@@ -157,53 +206,4 @@ These are the fingerprints for the Lish gateway in our Singapore data center (li
 
     RSA 06:26:d8:2a:12:8b:2f:d7:6c:54:72:5a:a7:7b:da:7b
     DSA 3b:ed:f1:a6:68:5f:aa:2f:c6:f7:8b:ce:e2:0e:3f:85
-
-Understanding Lish Commands
----------------------------
-
-The Lish shell provides access to many functions which are otherwise only accessible via the Linode Manager web-based administration tool. Enter the `help` command to see a full list of available commands. The output provides an introduction to Lish functionality:
-
-    kill            - kill stuck screen sessions
-    exit            - exit from lish
-    help            - this menu
-
-    [return]        - connect to console
-    version         - display running kernel version
-    boot            - boot last used (or the only) config profile
-    boot N          - boot the specified config profile
-    shutdown        - shut down the Linode
-    reboot          - shut down, then boot the last used config profile
-    reboot N        - shut down, then boot the specified config profile
-    sysrq X         - send SysRq X to your Linode
-    destroy         - pulls the plug on a running Linode, no fs sync, no warning
-
-    jobs            - view the job queue for your Linode
-    configs         - view the configuration profiles for your Linode
-    config N        - view configuration profile details for profile N
-    status          - view the status of your Linode
-    keysview        - view contents of authorized_keys2
-    logview         - view contents of console log
-
-Use the `configs` and `config N` (where N is the number of the configuration profile) to get a list of each configuration profile and related information. Lish is useful both for issuing commands like `reboot` and `shutdown` to your Linode, and accessing statistics. Statistics include a list of pending jobs (e.g. jobs) and a list of configuration profiles (configs).
-
-Advanced Lish Tricks
---------------------
-
-While the Lish interface as described above is useful as a basic command-line interface, you may find that you want to issue commands to your Linode without going through the Lish login process.
-
-You can directly connect to a Linode's console by entering the following command:
-
-    ssh -t [manager-username]@lish-[location].linode.com [linode-name]
-
-You can also append Lish commands to the SSH command on your system prompt. For instance, to reboot your system, using your Linode Manager username, location, and the host-id for your Linode, issue the following command:
-
-    ssh -t [manager-username]@lish-[location].linode.com [linode-name] reboot
-
-Similarly, use the following command to generate a view of the log using Lish:
-
-    ssh -t [manager-username]@lish-[location].linode.com [linode-name] logview
-
-This command format works for all Lish functionality.
-
-
 
