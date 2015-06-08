@@ -12,16 +12,15 @@ published: 'Wednesday, May 27th, 2015'
 title: Install Salt
 ---
 
-Salt, often referred to as SaltStack, is designed for server management. A single Salt Master controls many Salt Minions.
+Salt is designed for server management. A single Salt Master controls many Salt Minions.
 
 The directions below are for two separate Debian 8 Linodes.
 
 ##Install a Salt Master and a Salt Minion
 
-
 1.  <a href="http://docs.saltstack.com/en/latest/ref/configuration/nonroot.html" target="_blank">As the root user</a> log into both Linode 1 and Linode 2  and <a href="https://www.linode.com/docs/getting-started#setting-the-hostname" target="_blank">set the hostnames</a>. Without changing the configurations in Salt, the Salt Master's ID and Salt Minions' IDs default to the hostname. 
 
-2. On both Linode 1 and Linode 2, create `/etc/apt/sources.list.d/salt.list` and add the following lines: 
+2. On both Linode 1 and Linode 2, create and open `/etc/apt/sources.list.d/salt.list`, then add the following lines: 
     
 	{:.file }
 	/etc/apt/sources.list.d/salt.list
