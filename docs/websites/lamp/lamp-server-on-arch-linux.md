@@ -1,10 +1,9 @@
 ---
-deprecated: false
 author:
     name: Alex Fornuto
     email: afornuto@linode.com
 description: 'Creating a LAMP (Linux, Apache, MySQL, PHP) stack on an Arch Linux-powered Linode.'
-keywords: 'arch lamp,arch linux lamp,lamp linux,arch linode,archlinux lamp,archlinux'
+keywords: 'arch lamp,arch linux lamp,lamp linux,arch linode,archlinux lamp,archlinux,arch,lamp,lamp stack,apache,mysql,php'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['lamp-guides/arch-linux/','lamp-guides/arch-linux-10-2013/']
 modified: Tuesday, October 21, 2014
@@ -12,6 +11,12 @@ modified_by:
     name: Alex Fornuto
 published: 'Monday, October 7th, 2013'
 title: LAMP Server on Arch Linux
+external_resources:
+ - '[Arch Linux Wiki](http://wiki.ArchLinux.org/)'
+ - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.4/)'
+ - '[MySQL Documentation](http://dev.mysql.com/doc/)'
+ - '[Oracle MySQL and MariaDB Comparison](https://mariadb.com/kb/en/mariadb-vs-mysql-compatibility/)'
+ - '[PHP Documentation](http://www.php.net/docs.php)'
 ---
 
 Arch Linux is a contemporary minimalist Linux distribution. It was started in 2002 in an effort to provide a clean, lightweight distribution of the Linux operating system. Arch uses a rolling release system, which means that Arch eschews specific distribution versions in favor of the ability to bring any system up to date with a simple `pacman -Syu` command.
@@ -28,8 +33,7 @@ Arch Linux doesn't come in specific versions. This guide is current as of 2014-1
 >
 > Throughout this guide we will offer several suggested values for specific configuration settings. Some of these values will be set by default. These settings are shown in the guide as a reference, in the event that you change these settings to suit your needs and then need to change them back.
 
-Set the Hostname
-----------------
+## Set the Hostname
 
 Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_setting-the-hostname). Issue the following commands to make sure it is set properly:
 
@@ -38,14 +42,13 @@ Before you begin installing and configuring the components described in this gui
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-Install and Configure the Apache Web Server
--------------------------------------------
+## Install and Configure the Apache Web Server
 
 The Apache Web Server is a very popular choice for serving web pages. While many alternatives have appeared in the last few years, Apache remains a powerful option that we recommend for most uses.
 
 1. Make sure your system is up to date by issuing the following command:
 
-        pacman -Syyu
+        pacman -Syu
 
 2. To install the current version of the Apache web server (2.4 as of the writing of this article) use the following command:
 
@@ -57,7 +60,7 @@ The Apache Web Server is a very popular choice for serving web pages. While many
 
     There are additional Apache configuration files, which are included near the end of the `httpd.conf` file, and referenced in the `/etc/httpd/conf/extra/` directory. You may also choose to include additional files in your Apache configuration using a similar syntax. Regardless of how you choose to organize your configuration files, making regular backups of known working states is highly recommended.
 
-4. Edit the httpd-mpm.conf Apache configuration file in /etc/httpd/conf/extras/ to adjust the resource use settings. The settings shown below are a good starting point for a **Linode 1GB**.
+4. Edit the `httpd-mpm.conf` Apache configuration file in /etc/httpd/conf/extras/ to adjust the resource use settings. The settings shown below are a good starting point for a **Linode 1GB**.
 
     {: .file }
     /etc/httpd/conf/extra/httpd-mpm.conf
@@ -66,12 +69,12 @@ The Apache Web Server is a very popular choice for serving web pages. While many
         StartServers 2
         MinSpareServers 6
         MaxSpareServers 12
-        MaxRequestWorkers 80
+        MaxRequestWorkers 30
         MaxRequestsPerChild 3000
         </IfModule>
         ~~~
 
-5. Edit the httpd-default.conf file to turn KeepAlives off.
+5. Edit the `httpd-default.conf` file to turn KeepAlives off.
 
     {: .file }
     /etc/httpd/conf/extra/httpd-default.conf
@@ -168,8 +171,7 @@ Anytime you change an option in your `httpd-vhosts.conf` file, or any other Apac
 
     systemctl reload httpd.service
 
-Install and Configure MySQL Database Server
--------------------------------------------
+## Install and Configure MySQL Database Server
 
 MySQL is a relational database management system (RDBMS), and is a popular component in contemporary web development tool chains. Many popular applications, including WordPress and Drupal, use MySQL as their primary database. Arch Linux has chosen MariaDB as the default MySQL implementation, pushing Oracle MySQL to the [AUR](https://aur.ArchLinux.org/packages/mysql/). For the purposes of this guide, we will be using MariaDB.
 
@@ -231,8 +233,7 @@ We need to edit the MySQL configuration file located at `/etc/mysql/my.cnf` so t
 
 With Apache and MySQL installed, you are now ready to move on to installing PHP to provide scripting support for your web application.
 
-Installing and Configuring PHP
-------------------------------
+## Installing and Configuring PHP
 
 PHP makes it possible to produce dynamic and interactive pages using your own scripts and popular web development frameworks. Furthermore, many popular web applications like WordPress are written in PHP. If you want to be able to develop your websites using PHP, you must first install it.
 
@@ -288,14 +289,3 @@ PHP makes it possible to produce dynamic and interactive pages using your own sc
        systemctl restart httpd.service
 
 At this point, PHP should be fully functional.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Arch Linux Wiki](http://wiki.ArchLinux.org/)
-- [Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.4/)
-- [MySQL Documentation](http://dev.mysql.com/doc/)
-- [Oracle MySQL and MariaDB Comparison](https://mariadb.com/kb/en/mariadb-vs-mysql-compatibility/)
-- [PHP Documentation](http://www.php.net/docs.php)
