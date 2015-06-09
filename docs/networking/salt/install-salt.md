@@ -18,7 +18,7 @@ The directions below are for two separate Debian 8 Linodes.
 
 ##Install a Salt Master and a Salt Minion
 
-1.  <a href="http://docs.saltstack.com/en/latest/ref/configuration/nonroot.html" target="_blank">As the root user</a> log into both Linode 1 and Linode 2  and <a href="https://www.linode.com/docs/getting-started#setting-the-hostname" target="_blank">set the hostnames</a>. Without changing the configurations in Salt, the Salt Master's ID and Salt Minions' IDs default to the hostname. 
+1.  <a href="http://docs.saltstack.com/en/latest/ref/configuration/nonroot.html" target="_blank">As the root user</a> log into both Linode 1 and Linode 2, then <a href="https://www.linode.com/docs/getting-started#setting-the-hostname" target="_blank">set the hostnames</a>. Without changing the configurations in Salt, the Salt Master's ID and Salt Minions' IDs default to the hostname. 
 
 2. On both Linode 1 and Linode 2, create and open `/etc/apt/sources.list.d/salt.list`, then add the following lines: 
     
@@ -93,9 +93,27 @@ The directions below are for two separate Debian 8 Linodes.
 
         salt-key -L
 
-2.  Accept the listed Salt Minions:
+3. For security purposes, verify the Minions' IDs on both the Salt Master and the Salt Minions. The Minions' IDs are most likely the hostname from their Linode.
+        
+    On the Salt Master, replace `<hostname or Minion ID>` below and run:
+
+        salt-key -f <hostname or Minion ID>
+
+    On the Salt Minions:
+
+        salt-call key.finger --local
+
+
+
+2.  Accept the listed Salt Minions.
+
+    To accept all Minions:    
 
         salt-key -A
+
+    Or accept an individual Minion. Replace `<hostname or Minion ID>` below and run:
+
+        salt-key -a <hostname or Minion ID>
 
 3.  Check that the accepted Minions are up:
 

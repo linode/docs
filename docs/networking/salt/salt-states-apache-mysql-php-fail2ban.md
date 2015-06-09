@@ -9,7 +9,7 @@ modified: Wednesday, June 3rd, 2015
 modified_by:
   name: Joseph Dooley
 published: 'Wednesday, June 3rd, 2015'
-title: Salt States with Apache, MySQL, PHP (LAMP), and Fail2ban
+title: Salt States to Install Apache, MySQL, PHP (LAMP), and Fail2ban
 ---
 
 Salt States install and define a server setup on other servers. This tutorial demonstrates the use of Salt States to create a LAMP stack across all Salt Minions.
@@ -17,14 +17,15 @@ Salt States install and define a server setup on other servers. This tutorial de
 ##Configure the Salt Master
 Before configuration, install a Salt Master and Salt Minions with the Linode <a href="/docs/networking/salt/install-salt" target="_blank">Install Salt</a> guide. This tutorial is written for Debian 8 but can easily be adjusted for other Linux Distributions. 
 
-1.  Open the `/etc/salt/master` file. Then search for the **File Server settings** section and add the following:
+1.  Open the `/etc/salt/master` file. Then search for **file_roots**, optionally read the surrounding "File Server settings" section, and edit the following:
     
     {:.file }
     /etc/salt/master
     :   ~~~
-        file_roots:
-          base:
-            - /etc/salt/base
+        # Example:
+          file_roots:
+            base:
+              - /etc/salt/base
         ~~~
 
         {: .note}
@@ -35,7 +36,11 @@ Before configuration, install a Salt Master and Salt Minions with the Linode <a 
 
         mkdir /etc/salt/base
 
+The Salt Master's configuration file has now been adjusted for a new base directory. The base directory typically contains the SLS files that create a tree like organization for Salt States pertaining to that directory. Additional directories, similar to the base directory, could be created with additional SLS files for different Salt State categories. 
+
+
 ##Create the Top and Additional SLS Files 
+The <a href="https://docs.saltstack.com/en/latest/ref/states/top.html" target="_blank">top file</a> creates the top level organization for Salt States and Minions within the directory. SLS files typically correspond to the top file listings.
 
 1. Create the `/etc/salt/base/top.sls` file and add the following. Again, ensure exact formatting for the YAML two space nesting.
     
@@ -85,6 +90,10 @@ Before configuration, install a Salt Master and Salt Minions with the Linode <a 
            - installed
        ~~~
 
+4.  Restart the Salt Master:
+
+        systemctl restart salt-master
+
 ##Create the Salt State on the Minions
 
 1.  To install the packages listed above and create a Salt State, run:
@@ -93,7 +102,7 @@ Before configuration, install a Salt Master and Salt Minions with the Linode <a 
 
 2.  For additional verification that the services are active on the minion, run:
 
-        salt '*' cmd.run "service --status-all"
+        salt '*' cmd.run "service --status-all | grep 'apache2\|mysql\|fail2ban'"
 
 A LAMP stack and Fail2ban Salt State has been created on all listed Salt Minions. 
 
