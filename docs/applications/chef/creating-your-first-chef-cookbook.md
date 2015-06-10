@@ -5,16 +5,18 @@ author:
 description: 'Learn how to create Chef cookbooks by creating a LAMP stack in Chef'
 keywords: 'chef,automation,cookbooks,opscode,lamp,lamp stack,beginner,server automation'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Wednesday, May 6th, 2015
+modified: Wednesday, June 10th, 2015
 modified_by:
   name: Elle Krout
-published: 'Wednesday, May 6th, 2015'
+published: 'Wednesday, June 10th, 2015'
 title: Creating Your First Chef Cookbook
+external_resources:
+ - '[Chef](http://www.chef.io)'
 ---
 
 Cookbooks are one of the key components in Chef. They describe the *desired state* of your nodes, and allow Chef to push out the changes needed to achieve this state. Creating a cookbook can seem like an arduous task at first, given the sheer amount of options provided and areas to configure, so in this guide we will walk through the creation of one of the first things people often learn to configure: A LAMP stack.
 
-Prior to using this guide, be sure to set up Chef with the Setting Up a Chef Server, Workstation, and Node guide, and, if needed, review the Beginner's Guide to Chef.
+Prior to using this guide, be sure to set up Chef with the [Setting Up a Chef Server, Workstation, and Node](/docs/applications/chef/setting-up-chef-ubuntu-14-04) guide, and, if needed, review the [Beginner's Guide to Chef](/docs/applications/chef/beginners-guide-chef).
 
 {: .note}
 >
@@ -39,7 +41,7 @@ Prior to using this guide, be sure to set up Chef with the Setting Up a Chef Ser
         attributes    definitions  libraries    providers  recipes    templates
         CHANGELOG.md  files        metadata.rb  README.md  resources
 
-    For more information about these directories see the Beginner's Guide to Chef.
+    For more information about these directories see the [Beginner's Guide to Chef](/docs/applications/chef/beginners-guide-chef).
 
 
 ## default.rb
@@ -438,7 +440,7 @@ Chef contains a feature knows as *data bags*. Data bags store information, and c
 
         openssl rand -base64 512 > ~/chef-repo/.chef/encrypted_data_bag_secret
 
-2.  Upload this key to your node's `/etc/chef` directory, either manually by `scp` (an example can be found in the Setting Up Chef guide), or through the use of a recipe and cookbook file.
+2.  Upload this key to your node's `/etc/chef` directory, either manually by `scp` (an example can be found in the [Setting Up Chef](/docs/applications/chef/setting-up-chef-ubuntu-14-04#add-the-rsa-private-keys) guide), or through the use of a recipe and cookbook file.
 
 3.  Create a `mysql` data bag that will contain the file `rtpass.json` for the root password:
 

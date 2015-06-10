@@ -5,11 +5,13 @@ author:
 description: Basic setup and configuration of a Chef Server, Workstation, and Node
 keywords: 'chef,chef installation,configuration change management,server automation,chef server,chef workstation,chef-client,knife'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Monday, March 30th, 2015
+modified: Wednesday, June 10th, 2015
 modified_by:
   name: Elle Krout
-published: 'Monday, March 30th, 2015'
+published: 'Wednesday, June 10th, 2015'
 title: Setting Up a Chef Server, Workstation, and Node on Ubuntu 14.04
+external_resources:
+ - '[Chef](http://www.chef.io)'
 ---
 
 Chef is an automation platform that "turns infrastructure into code," allowing users to manage and deploy resources across multiple servers, or *nodes*. Chef allows users to create and download recipes (stored in cookbooks) to automate content and policies on these nodes.
