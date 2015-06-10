@@ -13,5 +13,6 @@ categories:
  - media-servers
  - messaging
  - development
+ - chef
  - project-management
 ---
