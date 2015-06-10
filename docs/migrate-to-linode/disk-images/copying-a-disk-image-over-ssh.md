@@ -81,7 +81,7 @@ Once the copy has completed, you can verify it by mounting the image on the rece
 
         ls linode/
 
-    You should see the directories on the disks, similar to the ones shown below, indicating that everything has transfered:
+    You should see the directories on the disks, similar to the ones shown below, indicating that everything has transferred:
 
         bin   dev  home  lost+found  mnt  proc  sbin     srv  tmp  var
         boot  etc  lib   media       opt  root  selinux  sys  usr
