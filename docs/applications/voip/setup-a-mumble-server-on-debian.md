@@ -18,15 +18,15 @@ apt-get install mumble-server
 
 The first question it will ask is if you want the server to run at boot.  This is the same as using the command `systemctl enable mumble-server`.
 
-[IMAGE]
+[![Image description](/docs/assets/murmur-debian-auto-start-resized.png)](/docs/assets/murmur-debian-auto-start.png)
 
 If you want murmur to have a highter priority over other applications on the server, you can answer yes here.
 
-[IMAGE]
+[![Image description](/docs/assets/murmur-debian-priority-resized.png)](/docs/assets/murmur-debian-priority.png)
 
 Now it will ask you to set a SuperUser password.  Murmur has a SuperUser account that you can change the settings for the server in Mumble on the client.  Set it to whatever you want.
 
-[IMAGE]
+[![Image description](/docs/assets/murmur-debian-super-user-resized.png)](/docs/assets/murmur-debian-super-user.png)
 
 You now have a working mumble server.  Now it's time to configure it.
 
