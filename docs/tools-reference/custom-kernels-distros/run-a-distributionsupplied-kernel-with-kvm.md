@@ -16,53 +16,39 @@ This guide will explain how to configure a custom kernel for a Linode residing o
 
 Before you get started, make sure you follow the steps outlined in our [Getting Started](/docs/getting-started) guide. Your Linode needs to be in a functional state. These steps should be performed as `root` on your Linode, via an SSH session.
 
-Installing the distribution provided kernel
--------------------------------------------
+## Installing the distribution provided kernel
 
-Ubuntu 13.04 (Raring)
----------------------
+
+### Ubuntu 13.04 (Raring)  14.04 (Trusty) & 15.04 (Vivid)
 
 1.  Update your package repositories and upgrade your installed packages by issuing the following commands:
 
         apt-get update          
-        apt-get upgrade --show-upgraded
+        apt-get upgrade
 
 2.  Issue the following commands to install the default kernel for Ubuntu 13.04`:
 
         apt-get install linux-image-virtual
 
 
-Ubuntu 12.04 (Precise)
-----------------------
+### Ubuntu 12.04 (Precise)
 
 1.  Update your package repositories and upgrade your installed packages by issuing the following commands:
 
         apt-get update          
-        apt-get upgrade --show-upgraded
+        apt-get upgrade
 
 2.  Issue the following commands to install the default kernel for Ubuntu 12.04:
 
         apt-get install linux-virtual
 
-Ubuntu 10.04 LTS (Lucid)
-------------------------
+
+### Debian 7 (Wheezy) / Debian 8 (Jessie)
 
 1.  Update your package repositories and upgrade your installed packages by issuing the following commands:
 
         apt-get update          
-        apt-get upgrade --show-upgraded
-
-2.  Issue the following commands to install the default kernel for Ubuntu 10.04 LTS:
-
-        apt-get install linux-virtual
-
-Debian 7 (Wheezy) / Debian 8 (Jessie)
--------------------------------------
-
-1.  Update your package repositories and upgrade your installed packages by issuing the following commands:
-
-        apt-get update          
-        apt-get upgrade --show-upgraded
+        apt-get upgrade
 
 2.  Issue the following commands to install the default kernel for Debian 7:
 
@@ -74,13 +60,12 @@ Debian 7 (Wheezy) / Debian 8 (Jessie)
 
         apt-get install linux-image-amd64
 
-Debian 6 (Squeeze)
-------------------
+### Debian 6 (Squeeze)
 
 1.  Update your package repositories and upgrade your installed packages by issuing the following commands:
 
         apt-get update          
-        apt-get upgrade --show-upgraded
+        apt-get upgrade
 
 2.  Issue the following commands to install the default kernel for Debian 6:
 
@@ -92,8 +77,7 @@ Debian 6 (Squeeze)
 
         apt-get install linux-image-xen-amd64
 
-CentOS 6 and Newer
--------------------
+### CentOS 6 and Newer
 
 1.  Make sure your package repositories and installed packages are up to date by issuing the following command:
 
@@ -119,8 +103,7 @@ CentOS 6 and Newer
 
         yum install kernel-x86_64
 
-CentOS 5
---------
+### CentOS 5
 
 [Warren Togami](http://togami.com/) was kind enough to provide a script to automate getting a native CentOS 5 kernel up and running, including with SELinux support. We will use this script in the following instructions.
 
@@ -131,8 +114,7 @@ CentOS 5
         ./selinux.sh
 
 
-Fedora 17
----------
+### Fedora 17
 
 1.  Make sure your package repositories and installed packages are up to date by issuing the following command:
 
@@ -149,12 +131,11 @@ Fedora 17
         yum install kernel.x86_64
 
 
-Configuring Grub
-----------------
+## Configuring Grub
 
 1.  Boot the Linode with the host provided kernel.
 
-2.  Edit `/etc/default/grub and add or change the variables to match the following.
+2.  Edit `/etc/default/grub` and add or change the variables to match the following.
 
 	{:.file }
 	/etc/default/grub
@@ -195,17 +176,17 @@ Configuring Grub
 	  #GRUB_INIT_TUNE="480 440 1"
 	  ~~~
 
-3. In /etc/inittab change the line that says
+3. In `/etc/inittab` change the line that says
 
-		#T0:23:respawn:/sbin/getty -L ttyS0 9600 vt100
+        #T0:23:respawn:/sbin/getty -L ttyS0 9600 vt100
 
-to
+    to
 
-		T0:23:respawn:/sbin/getty -L ttyS0 115200 vt100
+        T0:23:respawn:/sbin/getty -L ttyS0 115200 vt100
 
 4.  Run the following command to update the bootloader.
 
-		update-grub 
+        update-grub 
 
 Note that if you later install an updated kernel, you'll need to add an entry for it to your `menu.lst` file. By default, the first kernel in the list will be booted.
 
