@@ -86,8 +86,8 @@ These commands create a `src/` folder within the `/var/www/example.com/` directo
 
 4.  **Important!** If you plan to use permalinks using fancy names instead of the default (which uses post ID), Wordpress will update the `.htaccess` file. However, by default Apache will not allow individual sites to override the server settings. Open the apache config file and look for the Directory directive for `/var/www`. The initial value will be `AllowOverride None`. This must be changed to `All` to allow individual sites to override server settings
 
-	```XML
-	<Directory /var/www/>
+
+	```<Directory /var/www/>
 			Options Indexes FollowSymLinks
 			AllowOverride All
 			Require all granted
