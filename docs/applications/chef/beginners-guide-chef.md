@@ -29,7 +29,7 @@ If you wish to farther explore Chef please see the guides [Setting Up a Chef Ser
 
 ## The Chef Server
 
-The Chef server is the primary mode of communication between the workstations where your infrastructure is coded, and the nodes where it is deployed. All configuration files, cookbooks, metadata, and other information are stored on the server. The Chef server also keeps information regarding the state of all nodes at the time of the last [chef-client](/docs/websites/chef/beginners-guide-chef#chef-client) run.
+The Chef server is the primary mode of communication between the workstations where your infrastructure is coded, and the nodes where it is deployed. All configuration files, cookbooks, metadata, and other information are stored on the server. The Chef server also keeps information regarding the state of all nodes at the time of the last [chef-client](#chef-client) run.
 
 Any changes made must pass through the Chef server to be deployed. Prior to accepting or pushing changes, it verifies that the nodes and workstations are paired with the server through the use of authorization keys, and then allows for communication between the workstations and nodes.
 
