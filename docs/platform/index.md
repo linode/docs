@@ -13,6 +13,7 @@ featured:
  - linode-cli.md
  - linode-images.md
  - linode-managed.md
+ - kvm.md
  - package-mirrors.md
  - automating-server-builds.md
  - stackscripts.md
