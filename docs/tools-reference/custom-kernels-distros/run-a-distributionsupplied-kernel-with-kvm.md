@@ -18,6 +18,20 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
 
 ## Installing the distribution provided kernel
 
+1.  Ensure that your system is up to date, using the distribution's package manager.
+
+2.  Use `uname` to identify the current kernel version:
+
+        uname -a
+
+    The output will be similar to that shown below:
+
+        Linux localhost 4.0.4-x86_64-linode57 #1 SMP Thu May 21 11:01:47 EDT 2015 x86_64 x86_64 x86_64 GNU/Linux
+
+3.  Make a note of the kernel you're currently using (`4.0.4-x86_64` in our example). You will be replacing it with the current latest kernel supplied by your Linux distribution.
+
+4.  Install the Linux kernel. The package name differs based on your distribution:
+
 
 ### Ubuntu 13.04 (Raring)  14.04 (Trusty) & 15.04 (Vivid)
 
