@@ -12,7 +12,7 @@ published: ''
 title:  KVM Reference
 ---
 
-Linode's stack now supports KVM virtualization! Along with the increased performance, several small details are different between Linode-Xen and Linode-KVM.
+Linode's stack now supports KVM virtualization! Along with the increased performance, several details are different between Linode-Xen and Linode-KVM.
 
 ## What's Changed?
 
@@ -33,7 +33,7 @@ Linode-KVM uses the "*sd*" naming convention:
 
 ### Console
 
-On Linode-KVM, the is  moves from *hvc0* in Xen to *ttyS0* .
+On Linode-KVM, the console device moves from *hvc0* in Xen to *ttyS0* .
 
 ### Virtual Machine Mode 
 
