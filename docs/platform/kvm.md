@@ -62,7 +62,7 @@ You should also move your block device assignments to be sequential, without ski
 
 ### Direct Disk Boot
 
-An upgrade to KVM Linode includes the ability to do **Direct Disk** booting. Choosing Direct Disk means we will boot the Linode using the Master Boot Record on your boot device.
+An upgrade to KVM Linode includes the ability to do **Direct Disk** booting. Choosing Direct Disk means we will boot the Linode using the Master Boot Record on your boot device:
 
 [![Direct Disk Boot Mode.](/docs/assets/config_direct_disk.png)](/docs/assets/config_direct_disk.png)
 
@@ -70,7 +70,7 @@ An upgrade to KVM Linode includes the ability to do **Direct Disk** booting. Cho
 
 There are two ways to enable KVM mode for your Linodes:
 
-* **Existing Linode:** If your Linode is currently running on Xen, go to the Linode's Dashboard page. In the bottom right of the sidebar is an "Upgrade to KVM" link. Click on the link and follow the instructions to upgrade.
+* **Existing Linode:** If your Linode is currently running on Xen, go to the Linode's Dashboard page. In the bottom right of the sidebar is an "Upgrade to KVM" link. Click on the link and follow the instructions to upgrade:
 
   [![The KVM Upgrade Button.](/docs/assets/kvm_upgrade_context.png)](/docs/assets/kvm_upgrade_context.png)
 
