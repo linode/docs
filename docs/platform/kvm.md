@@ -37,7 +37,7 @@ On KVM Linodes, the console device moves from *hvc0* in Xen to *ttyS0* .
 
 ### Virtual Machine Mode 
 
-Virtual machine mode determines wether devices inside your virtual machine are *paravirtualized* or *fully virtualized*. The differences are listed below:
+Virtual machine mode determines whether devices inside your virtual machine are *paravirtualized* or *fully virtualized*. The differences are listed below:
 
 {: .table .table-striped .table-bordered}
 |         | Paravirtualization  | Full-virtualization   |
