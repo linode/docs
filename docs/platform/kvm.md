@@ -7,25 +7,25 @@ keywords: 'xen,kvm,linode,virtualization'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: Monday, June 15th, 2015
 modified_by:
-  name: Alex Fornuto
-published: ''
+  name: Josh Sager
+published: 'Monday, June 15, 2015'
 title:  KVM Reference
 ---
 
-Linode's stack now supports KVM virtualization! Along with the increased performance, several details are different between Linode-Xen and Linode-KVM.
+Linode's virtualization stack supports KVM as well as Xen. Along with the increased performance of KVM virtualization, several details are different between Xen and KVM Linodes.
 
 ## What's Changed?
 
 ### Block Device Assignment
 
-Device assignments in Linode-Xen were labeled as:
+Device assignments for Xen Linodes were labeled as:
 
  * */dev/xvda*
  * */dev/xvdb*
  * */dev/xvdc*
 
  
-Linode-KVM uses the "*sd*" naming convention:
+KVM Linodes use the "*sd*" naming convention:
 
  * */dev/sda*
  * */dev/sdb*
@@ -33,7 +33,7 @@ Linode-KVM uses the "*sd*" naming convention:
 
 ### Console
 
-On Linode-KVM, the console device moves from *hvc0* in Xen to *ttyS0* .
+On KVM Linodes, the console device moves from *hvc0* in Xen to *ttyS0* .
 
 ### Virtual Machine Mode 
 
@@ -62,15 +62,15 @@ You should also move your block device assignments to be sequential, without ski
 
 ### Direct Disk Boot
 
-An upgrade to Linode-KVM includes the ability to do **Direct Disk** booting. Choosing Direct Disk means we will boot the Linode using the Master Boot Record on your boot device.
+An upgrade to KVM Linode includes the ability to do **Direct Disk** booting. Choosing Direct Disk means we will boot the Linode using the Master Boot Record on your boot device.
 
 [![Direct Disk Boot Mode.](/docs/assets/config_direct_disk.png)](/docs/assets/config_direct_disk.png)
 
 ## How to Enable KVM
 
-There are two ways to enable Linode-KVM mode for your Linodes:
+There are two ways to enable KVM mode for your Linodes:
 
-* **Existing Linode:** If your Linode is currently running on Linode-Xen, go to the Linode's Dashboard page. In the bottom right of the sidebar is an "Upgrade to KVM" link. Click on the link and follow the instructions to upgrade.
+* **Existing Linode:** If your Linode is currently running on Xen, go to the Linode's Dashboard page. In the bottom right of the sidebar is an "Upgrade to KVM" link. Click on the link and follow the instructions to upgrade.
 
   [![The KVM Upgrade Button.](/docs/assets/kvm_upgrade_context.png)](/docs/assets/kvm_upgrade_context.png)
 
