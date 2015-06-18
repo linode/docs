@@ -125,7 +125,7 @@ Your profile's email account will be updated.
 Passwords
 ---------
 
-Creating strong passwords is essential to protecting your Linode and your Linode manager account. If you suspect that an unauthorized user has gained access to one of your accounts, you should change the password immediately. Use the instructions in this section to change your Linode Manager password and reset the password for the `root` user on the Linode.
+Creating strong passwords is essential to protecting your Linode and your Linode Manager account. If you suspect that an unauthorized user has gained access to one of your accounts, you should change the password immediately. Use the instructions in this section to change your Linode Manager password and reset the password for the `root` user on the Linode.
 
 ### Changing Your Linode Manager Password
 
