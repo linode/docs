@@ -24,7 +24,7 @@ Update your package repositories and installed packages, install the development
 
     apt-get update
     apt-get upgrade
-    apt-get install -y build-essential libncurses5-dev gcc
+    apt-get install -y build-essential libncurses5-dev gcc bc
 
 If this is the first time compiling a kernel on the Linode, issue the following command to remove any existing files in the `/boot` directory. This helps avoid confusion later, as certain distributions install a pre-compiled kernel package along with their development packages.
 
