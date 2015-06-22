@@ -99,7 +99,7 @@ Linode provides a 10% discount for annual prepayment, and a 15% discount for bie
 Bandwidth Overages
 ------------------
 
-If you exceed your monthly bandwidth quota, your account will be billed for \$0.10/GB at the end of the current month. If you will be routinely exceeding your bandwidth quota, you may wish to purchase extra bandwidth at the rate of \$0.10/GB from the **Extras** tab in the Linode Manager.
+If you exceed your monthly bandwidth quota, your account will be billed for \$0.02/GB at the end of the current month.
 
 Accessing Billing History
 -------------------------
