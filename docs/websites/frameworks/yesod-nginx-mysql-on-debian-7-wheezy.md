@@ -94,7 +94,7 @@ To avoid this problem, the maintainers of Yesod created a metapackage named *yes
 
 8.  Now you can install the ``yesod-platform`` and ``yesod-bin`` packages:
 
-        cabal install --reorder-goals --max-backjumps=-1 yesod-platform yesod-bin
+        cabal -j install --reorder-goals --max-backjumps=-1 yesod-platform yesod-bin
 
     The ``yesod-bin`` package provides scaffolding, devel server, and some simple code generation helpers for your ``yesod-platform``. We will use it in the next section to construct the scaffold for a new site.
 
@@ -127,7 +127,7 @@ To start development of your Yesod site, first construct a scaffold. In developm
 
 4. Then install the packages required by your project in the sandbox:
 
-         cabal install --enable-tests . --reorder-goals  --max-backjumps=-1 yesod-platform yesod-bin
+         cabal -j install --enable-tests . --reorder-goals  --max-backjumps=-1 yesod-platform yesod-bin
 
     It will compile and install all packages needed by our site "myblog" into the sandbox created in the last step. You may notice that the "sandbox" version of ``yesod-platform`` may be newer than the one we installed in the last section, because in the sandbox, ``cabal`` searches for the solution on a smaller tree, so the result could be better.
 
