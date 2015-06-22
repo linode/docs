@@ -147,12 +147,13 @@ Although the server could now be launched successfully, many aspects of it still
 
 ### Configure the Server
 
-1.	Create a shell script called `setup.sh` to configure the Linode's hostname, set the proper timezone, and update the server. Replace `hostname` with your choosen hostname, and `EST` with your timezone.
+1.	Create a shell script called `setup.sh` to configure the Linode's hostname, set the proper timezone, and update the server. Replace `vagranttest` with your choosen hostname, and `EST` with your timezone.
 
 	{: .file}
 	~/vagrant-linode/setup.sh
 	:	~~~ shell
-		echo "hostname" > /etc/hostname
+		#!/bin/bash
+		echo "vagranttest" > /etc/hostname
 		hostname -F /etc/hostname
 		ip=$(dig +short myip.opendns.com @resolver1.opendns.com)
 		echo "$ip	$ip	hostname" >> /etc/hosts
@@ -184,6 +185,7 @@ Although the server could now be launched successfully, many aspects of it still
 	{: .file}
 	~/vagrant-linode/apache.sh
 	:	~~~ shell
+		#!/bin/bash
 		apt-get install apache2 -y
 		mv /etc/apache2/ports.conf /etc/apache2/ports.conf.backup
 		mv /etc/apache2/ports1.conf /etc/apache2/ports.conf
