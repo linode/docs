@@ -1,7 +1,7 @@
 ---
 author:
   name: Linode
-  email: scampbell@linode.com
+  email: docs@linode.com
 description: 'Instructions for getting started with the Apache web server on Debian 7 (Wheezy).'
 keywords: 'apache debian 7,apache debian wheezy,linux web server,apache on debian,apache wheezy'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
