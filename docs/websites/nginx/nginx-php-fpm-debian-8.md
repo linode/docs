@@ -1,5 +1,3 @@
-http://markdownlivepreview.com/
-
 High performance nginx and php over Debian 8
 19th May 2015 by Javier Briz
 
