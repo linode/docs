@@ -1,3 +1,4 @@
+http://markdownlivepreview.com/
 
 High performance nginx and php over Debian 8
 19th May 2015 by Javier Briz
@@ -9,9 +10,11 @@ able to connect to a MySQL server, but the MySQL server installation itself will
 there are already [lots of guides](https://www.linode.com/docs/databases/mysql/) on this topic. 
 
 #Installation Prerequisites
+First of all, follow the [Getting Started Guide](https://www.linode.com/docs/getting-started/).
+It is also usefull to have a Fully Qualified Domain Name to have a handy pointer to the server.
+will be usefull 
 You will need to add non-free to your `sources.list`. Unfortunately, we'll need to download php-fpm from non-free.
 
-        # cat /etc/apt/sources.list
         deb http://ftp.debian.org/debian/ jessie main contrib non-free
         deb http://security.debian.org/ jessie/updates main
 
@@ -51,9 +54,8 @@ Restart nginx by running:
         /etc/init.d/nginx reload
         
 #Test
-Done! Let's test the web server. Just write the following content in /var/www/html/index.php
+Done! Let's test the web server. Just write the following content in /var/www/html/index.php:
 
-        # cat /var/www/html/index.php
         <?php
         phpinfo();
         ?>
@@ -78,9 +80,8 @@ First thing to check, is the number of processes running and the number of conne
 The worker_processes directive in `/etc/nginx/nginx.conf` is the number of system processes handling requests. If this number is too big, there will be lots of context switches and therefore, a lot of time lost.
 On the other hand, a small number of processes will make some cores to be idle, and we want them working.
 
-A good approach is to match the workers number to the cores available in your system.
+A good approach is to match the workers number to the cores available in your system. Fin the "worker processes" directive in /etc/nginx/nginx.conf and set it to your number of cores:
         
-        # cat /etc/nginx/nginx.conf |grep worker_processes
         worker_processes 4;
 
 The worker_connections directive is a bit harder to set. If you foresee few visitors, don't worry much and set it to 512, but if you are reading this you are likely expecting high traffic. You should set this directive to the number of requests divided by the number of cores your server can handle.
@@ -89,8 +90,8 @@ If your web app has an homogeneous behavior,
 i.e., it uses about the same memory and about the same cpu time each time it is called, it is easier to set a good value for *worker_connections*.
 
 If not the case, the best way to find an appropriate value is by monitoring the production system. 512 is a good starting point, and your target is to set this value as high as you can without "going over", without filling the memory, and keeping reasonable response times.
+To set this, just edit the "worker_connections" limit in "/etc/nginx/nginx.conf":
 
-        # cat /etc/nginx/nginx.conf |grep worker_connections
         worker_connections 512;
 
 We can lower latency on our nginx server by allowing processes to accept several new connections at a time. Do this by uncommenting the following line in your `/etc/nginx/nginx.conf` file.
@@ -100,14 +101,14 @@ We can lower latency on our nginx server by allowing processes to accept several
 ### Logging
 
 Another way to improve performance is to reduce I/O. This can be done in several ways. One of them is reduce or even disable logging: if you don't need access log, disable them.
+It is done by adding the following directives to "/etc/nginx/nginx.conf":
 
-          # cat /etc/nginx/nginx.conf |grep access_log
           access_log off;
           log_not_found off; 
 
 Another less dramatic solution, is to keep logs in memory until a certain buffer is filled, and then flush them to disk. They can also be compressed, which will cause an small cpu overhead but will result in less disk writing.
+You can add "flush=#m" to the "access_log" directive in the following way:
 
-        # cat /etc/nginx/nginx.conf |grep access_log
         access_log /var/log/nginx/access.log combined gzip flush=5m;
 
 It is also helpfull to keep logs in a ram-disk, the problem is that if the server reboots, the logs will be lost, so use this with caution.
@@ -137,8 +138,8 @@ What we should adjust is the number of daemons waiting to run php.
 By default, the number is dynamic, what means daemons are launched on demand. This causes higher latency.
 
 Depending on the needs of the application, while running, some of them could go to iowait, so the number highly depends on the number of cores available and the % of time the application is waiting for the disk or a database. A good starting point may be 4*number_of_cores, and reduce it if you find there is not enough memory.
+Edit the "pm.max_children =" and the "pm=" directives in "/etc/php5/fpm/pool.d/www.conf":
 
-        # cat /etc/php5/fpm/pool.d/www.conf |grep -e 'pm.max_children =' -e 'pm ='
         pm = static
         pm.max_children = 20
 
