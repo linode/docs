@@ -21,13 +21,11 @@ We're expanding the Linode Guides & Tutorials, and we want you to help! If you l
 
 Submit your own topic, or choose from the list of open topics we want to add to the Linode Library:
 
--   Nginx Tuning and Performance
 -   [OpenChange](http://www.openchange.org/)
 -   [WebRTC](http://www.webrtc.org/)
 -   Gaming Servers
 -   [Puppet](http://puppetlabs.com/)
 -   [Ansible](http://www.ansible.com/home)
--   [SaltStack](http://www.saltstack.com/)
 
 Each article is worth $100 if it is accepted for publication. In addition, we always welcome edits, suggestions, and updates to existing guides.
 
