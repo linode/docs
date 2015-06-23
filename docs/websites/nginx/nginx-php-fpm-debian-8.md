@@ -1,3 +1,5 @@
+http://markdownlivepreview.com/
+
 High performance nginx and php over Debian 8
 19th May 2015 by Javier Briz
 
@@ -11,10 +13,6 @@ there are already [lots of guides](https://www.linode.com/docs/databases/mysql/)
 First of all, follow the [Getting Started Guide](https://www.linode.com/docs/getting-started/).
 It is also usefull to have a Fully Qualified Domain Name to have a handy pointer to the server.
 will be usefull 
-You will need to add non-free to your `sources.list`. Unfortunately, we'll need to download php-fpm from non-free.
-
-        deb http://ftp.debian.org/debian/ jessie main contrib non-free
-        deb http://security.debian.org/ jessie/updates main
 
 #Packages installation
 In this step, we are installing all the necessary packages.
