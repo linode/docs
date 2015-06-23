@@ -38,7 +38,7 @@ A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used to prepare s
 
 2.  Update your system:
 
-        yum update
+        sudo yum update
 
 
 ## Install and Configure the Apache Web Server
