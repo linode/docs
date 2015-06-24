@@ -16,7 +16,7 @@ This guide explains how enable the kernels your OS provides for a Linode on a KV
 
 * Arch Linux
 * CentOS 7
-* Debian 8
+* Debian
 * Fedora 22
 * Ubuntu
 
@@ -42,11 +42,11 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
 
           pacman -S linux grub
 
-    * CentOS
+    * CentOS 7
 
           yum install kernel grub2
 
-    * Debian 8 (Jessie)
+    * Debian
 
           apt-get install linux-image-amd64 grub2
 
@@ -70,7 +70,6 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
 	: ~~~
       GRUB_TIMEOUT=10
       GRUB_CMDLINE_LINUX="console=tty0 console=ttyS0,19200n8"
-      GRUB_TERMINAL=serial
       GRUB_DISABLE_LINUX_UUID=true
       GRUB_SERIAL_COMMAND="serial --speed=19200 --unit=0 --word=8 --parity=no --stop=1"
 	  ~~~
