@@ -36,7 +36,7 @@ A LAMP (Linux, Apache, MySQL [MariaDB], PHP) stack is a common web stack used to
 
 2.  Update your system:
 
-        sudo apt-get update && sudo apt-get upgrade
+        sudo yum update
 
 
 ## Install and Configure Apache
@@ -87,9 +87,9 @@ There are different ways to set up virtual hosts; however, the below method is r
             ServerAdmin webmaster@example.com
             ServerName example.com
             ServerAlias www.example.com
-            DocumentRoot /var/www/html/example.com/public_html/
-            ErrorLog /var/www/html/example.com/logs/error.log
-            CustomLog /var/www/html/example.com/logs/access.log combined
+            DocumentRoot /var/www/example.com/public_html/
+            ErrorLog /var/www/example.com/logs/error.log
+            CustomLog /var/www/example.com/logs/access.log combined
         </VirtualHost>
         ~~~
 
