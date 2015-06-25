@@ -14,5 +14,6 @@ categories:
  - media-servers
  - messaging
  - development
+ - configuration-management
  - project-management
 ---
