@@ -40,7 +40,7 @@ The Salt Master's configuration file has now been adjusted for a new base direct
 
 
 ##Create the Top and Additional SLS Files 
-The <a href="https://docs.saltstack.com/en/latest/ref/states/top.html" target="_blank">top file</a> creates the top level organization for Salt States and Minions within the directory. SLS files typically correspond to the top file listings.
+The <a href="https://docs.saltstack.com/en/latest/ref/states/top.html" target="_blank">top file</a> creates the top level organization for Salt States and Minions within the directory. Other SLS files typically correspond to the top file listings.
 
 1. Create the `/etc/salt/base/top.sls` file and add the following. Again, ensure exact formatting for the YAML two space nesting.
     

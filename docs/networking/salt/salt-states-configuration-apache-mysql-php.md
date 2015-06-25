@@ -14,3 +14,115 @@ title: Salt States for Configuration of Apache, MySQL, and PHP (LAMP)
 
 After Salt is installed and Salt States are created, configure the Minion's setup. In this tutorial, configure a Minion's LAMP stack with further use of Salt States.
 
+##Create the LAMP Configuration States
+The below steps configure all Salt Minions for a 1GB Linode, feel free to adjust as needed. 
+
+1. Open the `/etc/salt/base/top.sls` file and add the additional line:
+ 
+    {:.file }
+    /etc/salt/base/top.sls
+    :  ~~~  
+       base:
+         '*':
+            - lamp
+            - extras
+            - lampconf
+       ~~~
+
+2.  Create and edit the `/etc/salt/base/lampconf.sls` file:
+
+    {:.file }
+    /etc/salt/base/lampconf.sls
+    :  ~~~
+       #Apache Conguration for 1GB Linode
+       /etc/apache2/apache2.conf-KA:
+         file.replace:
+           - name: /etc/apache2/apache2.conf
+           - pattern: 'KeepAlive On'
+           - repl: 'KeepAlive Off'
+           - show_changes: True
+
+       /etc/apache2/apache2.conf-IM:
+         file.append:
+           - name: /etc/apache2/apache2.conf
+           - text: |
+               <IfModule mpm_prefork_module>
+               StartServers 2
+               MinSpareServers 6
+               MaxSpareServers 12
+               MaxClients 30
+               MaxRequestsPerChild 3000
+               </IfModule>
+
+       #MySQL Configuration for 1GB Linode
+       /etc/mysql/my.cnf-br:
+         file.blockreplace:
+           - name: /etc/mysql/my.cnf
+           - marker_start: '# * Fine Tuning'
+           - marker_end: '# * Query Cache Configuration'
+           - content: |
+               #
+               key_buffer             = 32M
+               max_allowed_packet     = 1M
+               thread_stack           = 128K
+               thread_cache_size      = 8
+               # This replaces the startup script and checks MyISAM tables if
+               # needed the first time they are touched
+               myisam-recover         = BACKUP
+               max_connections        = 75
+               table_cache            = 32
+               #thread_concurrency    = 10
+               #
+           - backup: '.bak'
+           - show_changes: True
+
+       #PHP Configuration for 1GB Linode
+       /etc/php5/apache2/php.ini-er:
+         file.replace:
+           - name: /etc/php5/apache2/php.ini
+           - pattern: 'error_reporting = E_ALL & ~E_DEPRECATED & ~E_STRICT'
+           - repl: 'error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR'
+           - show_changes: True
+
+       /etc/php5/apache2/php.ini-el:
+         file.replace:
+           - name: /etc/php5/apache2/php.ini
+           - pattern: ';error_log = php_errors.log'
+           - repl: 'error_log = /var/log/php/error.log'
+           - show_changes: True
+
+       /var/log/php/error.log:
+         file.managed:
+           - user: www-data
+           - group: root
+           - dir_mode: 755
+           - file_mode: 644
+           - makedirs: True
+
+       #Restart
+       apache2-run-at-boot-restart:
+         service.running:
+           - name: apache2
+           - enable: True
+           - watch:
+             - pkg: apache2
+
+       mysql-run-at-boot-restart:
+         service.running:
+           - name: mysql
+           - enable: True
+           - watch:
+             - pkg: mysql-server
+       ~~~
+    
+3. Transfer the State settings to the Minions:
+
+        salt '*' state.highstate
+
+##Create Virtual Hosts Files
+Salt State Modules are used for settings across groups of Minions. To adjust a configuration on a single Minion, use Salt Execution Modules. 
+
+
+
+
+
