@@ -5,11 +5,11 @@ author:
 description: 'Get your website or web application on the web by setting up Apache, MySQL, and PHP'
 keywords: 'debian 8 LAMP server,debian LAMP guide,LAMP howto,lamp,debian,debian 8,websites,apache,mysql,php,apache 2.4,hosting a website'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Wednesday, May 28th, 2015
+modified: Thursday, June 25th, 2015
 modified_by:
   name: Elle Krout
-published: 'Wednesday, May 28th, 2015'
-title: 'LAMP Server on Debian 8'
+published: ''
+title: 'LAMP Server on Debian 8 (Jessie)'
 external_resources:
  - '[Debian Linux Home Page](http://www.debian.org/)'
  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.4/)'
@@ -17,7 +17,7 @@ external_resources:
  - '[PHP Documentation](http://www.php.net/docs.php)'
 ---
 
-Setting up a LAMP (Linux, Apache, MySql, PHP) stack on your server will allow for the creation and hosting of websites and web applications. This guide will provide set-up and configuration instructions to create a full-featured LAMP Stack on Debian 8.
+Setting up a LAMP (Linux, Apache, MySql, PHP) stack on your server will allow for the creation and hosting of websites and web applications. This guide will provide set-up and configuration instructions to create a full-featured LAMP Stack on Debian 8 (Jessie).
 
 {: .note }
 >
@@ -55,7 +55,7 @@ Prior to installing your LAMP stack ensure that:
         KeepAlive Off
         ~~~
 
-3.  Open `/etc/apache2/mods-available/mpm_prefork.conf` in your choosen text editor and edit the values as needed. The following is optimized for a 1GB Linode:
+3.  Open `/etc/apache2/mods-available/mpm_prefork.conf` in your text editor and edit the values as needed. The following is optimized for a 1GB Linode:
 
     {: .file}
     /etc/apache2/mods-available/mpm_prefork.comf
@@ -78,7 +78,10 @@ Prior to installing your LAMP stack ensure that:
         # vim: syntax=apache ts=4 sw=4 sts=4 sr noet
         ~~~
 
-4.  On Debian 8, the *event module* is enabled by default. This will need to be disabled, and the *prefork module* enabled:
+    {: .note }
+    >These settings are good starting points, but should be adjusted to best suite your specific stack's needs.
+
+4.  On Debian 8, the *event module* is enabled by default. This should be disabled, and the *prefork module* enabled:
 
         sudo a2dismod mpm_event
         sudo a2enmod mpm_prefork
@@ -90,16 +93,16 @@ Prior to installing your LAMP stack ensure that:
 
 ### Configure Name-Based Virtual Hosts
 
-There can be as many virtual hosts files as needed to support the amount of domains to be hosted on the Linode.
+There can be as many virtual hosts files as needed to support the amount of domains hosted on the Linode.
 
-1.  Create directories for your websites and websites' logs, replacing `example.com` with your own domain information:
+1.  Create directories for your websites and websites' logs, replacing `example.com` with your own domain name:
 
         sudo mkdir -p /var/www/html/example.com/public_html
         sudo mkdir /var/www/html/example.com/logs
 
     Repeat the process if you intend on hosting multiple websites on your Linode.
 
-2.  Create an `example.com.conf` file in `/etc/apache2/sites-available` with your text editor of choice, replacing instances of `example.com` with your own domain URL in both the configuration file and in the file name:
+2.  Create an `example.com.conf` file in `/etc/apache2/sites-available` with your text editor, replacing instances of `example.com` with your own domain URL in both the configuration file and in the file name:
 
     {: .file }
     /etc/apache2/sites-available/example.com.conf
@@ -114,7 +117,7 @@ There can be as many virtual hosts files as needed to support the amount of doma
         </VirtualHost>
         ~~~
 
-    Repeat this process for any other domains you own:
+    Repeat this process for any other domains you host:
 
     {: .file }
     /etc/apache2/sites-available/example.org.conf
@@ -136,7 +139,7 @@ There can be as many virtual hosts files as needed to support the amount of doma
 
     {: .note}
     >
-    >Should you need to disable a site, you can use the `a2dissite` command.
+    >Should you need to disable a site, you can use `a2dissite example.com`.
 
 4.  Restart Apache:
 
@@ -171,7 +174,7 @@ Next, you can create a database and grant your users permissions to use database
 
     Enter MySQL's root password when prompted.
 
-2.  Create a database and grant your users permissions on it. You can change the database name (`lollipop`) and username (`foreman`) if so desired. Change the password (`5t1ck`):
+2.  Create a database and grant your users permissions on it. Change the database name (`lollipop`) and username (`foreman`). Change the password (`5t1ck`):
 
         create database lollipop;
         grant all on lollipop.* to 'foreman' identified by '5t1ck';
@@ -188,7 +191,7 @@ PHP makes it possible to produce dynamic and interactive pages using your own sc
 
         sudo apt-get install php5 php-pear
 
-2.  Open `/etc/php5/apache2/php.ini` in your choosen text editor, and edit the following values. These settings are optimized for the 1GB Linode:
+2.  Open `/etc/php5/apache2/php.ini` in your text editor, and edit the following values. These settings are optimized for the 1GB Linode:
 
     {: .file-excerpt }
     /etc/php5/apache2/php.ini
@@ -211,7 +214,7 @@ PHP makes it possible to produce dynamic and interactive pages using your own sc
 
         sudo apt-get install php5-mysql
 
-5.  Restart Apache once changes to PHP are made:
+5.  Restart Apache:
 
         sudo systemctl restart apache2
 
