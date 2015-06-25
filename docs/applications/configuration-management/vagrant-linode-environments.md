@@ -6,10 +6,10 @@ description: 'Use Vagrant to manage development environments and content on Lino
 keywords: 'linode,vagrant,content management,management,automation,development,ruby,vagrantfile,api,apache'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: [ 'web-applications/cloud-storage/dropbox/debian-7.4' ]
-modified: Tuesday, June 9th, 2015 
+modified: Thursday, June 25th, 2015 
 modified_by:
     name: Elle Krout
-published: 'Tuesday, June 9th, 2015'
+published: 'Thursday, June 25th, 2015'
 title: 'Using Vagrant to Manage Linode Environments'
 external_resources:
  - '[Vagrant](http://www.vagrantup.com)'
@@ -18,7 +18,7 @@ external_resources:
 
 [Vagrant](http://www.vagrantup.com) is a configuration management tool that allows users to create portable and reproducible work environments. Vagrant excels at providing consistent, easy-to-configure servers that can be used to keep development environments consistent across all users. It is easy to both launch and tear down, and can be supplied to any part of a development team that may need an environment but does not have the means to configure one themselves. Often paired with providers such as Puppet, Salt, and Chef, it offers an easy solution to keeping a consistent workflow.
 
-Vagrant can be paired with Linode through the use of the *vagrant-linode* plugin to spawn and destroy Linode servers as needed . This guide will provide instructions on installing Vagrant, configuring the vagrant-linode plugin, and setting up a basic Apache server for testing.
+Vagrant can be paired with Linode through the use of the *vagrant-linode* plugin to spawn and destroy Linode servers as needed. This guide will provide instructions on installing Vagrant, configuring the vagrant-linode plugin, and setting up a basic Apache server for testing.
 
 ## Prerequisites
 
@@ -263,6 +263,7 @@ Although the server can now be created successfully, many aspects of it still ne
     ~/vagrant-linode/Vagrantfile
     :   ~~~ ruby
         Vagrant.configure('2') do |config|
+        
           ...
 
           # Synced Folders
