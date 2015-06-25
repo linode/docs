@@ -6,7 +6,7 @@ description: 'Creating a LAMP (Linux, Apache, MySQL, PHP) stack on an Arch Linux
 keywords: 'arch lamp,arch linux lamp,lamp linux,arch linode,archlinux lamp,archlinux,arch,lamp,lamp stack,apache,mysql,php'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['lamp-guides/arch-linux/','lamp-guides/arch-linux-10-2013/']
-modified: Tuesday, October 21, 2014
+modified: Thursday, June 25, 2015
 modified_by:
     name: Elle Krout
 published: 'Monday, October 7th, 2013'
@@ -56,7 +56,7 @@ Since Arch does not come in specific versions, this guide is up-to-date as of th
     >
     >     cp /etc/httpd/conf/extras/httpd-mpm.conf ~/httpd-mpm.conf.backup
 
-    {: .file }
+    {: .file-excerpt }
     /etc/httpd/conf/extra/httpd-mpm.conf
     :   ~~~ conf
         <IfModule mpm_prefork_module>
@@ -70,13 +70,13 @@ Since Arch does not come in specific versions, this guide is up-to-date as of th
 
 3. Edit the `httpd-default.conf` file to turn KeepAlive off.
 
-    {: .file }
+    {: .file-excerpt }
     /etc/httpd/conf/extra/httpd-default.conf
     :   ~~~ conf
         KeepAlive Off
         ~~~
 
-4.  Set Apache to start at boot, should the server need to be rebooted:
+4.  Set Apache to start at boot:
 
         sudo systemctl enable httpd.service
 
@@ -101,7 +101,7 @@ Virtual hosting can be configured so that multiple domains (or subdomains) can b
         Include conf/extra/httpd-vhosts.conf
         ~~~
 
-2. Open `httpd-vhosts.conf`, under `extras`. Edit the example virtual hosts block to resemble the ones below, replacing `example.com` with your domain.
+2. Open `httpd-vhosts.conf`, under the `extra` folder. Edit the example virtual hosts block to resemble the ones below, replacing `example.com` with your domain.
 
     {: .file-excerpt }
     /etc/httpd/conf/extra/httpd-vhosts.conf
@@ -142,7 +142,7 @@ Virtual hosting can be configured so that multiple domains (or subdomains) can b
     >
     >Should any additional changes be made to a configuration file restart Apache:
     >
-    >       sudo systemctl restart apache
+    >     sudo systemctl restart apache
 
 
 ## Install and Configure MySQL
@@ -189,7 +189,7 @@ With Apache and MySQL installed, you are now ready to move on to installing PHP 
 
 ## Install and Configuring PHP
 
-PHP makes it possible to produce dynamic and interactive pages using your own scripts and popular web development frameworks. Furthermore, many popular web applications like WordPress are written in PHP. If you want to be able to develop your websites using PHP, you must first install it.
+PHP makes it possible to produce dynamic and interactive pages using your own scripts and popular web development frameworks. Many popular web applications like WordPress are written in PHP. If you want to develop your websites using PHP, you must first install it.
 
 1.  Install PHP:
 
@@ -209,7 +209,7 @@ PHP makes it possible to produce dynamic and interactive pages using your own sc
 
     {: .note}
     >
-    >Ensure that all lines are uncommented. A commented line begins with a semicolon (**;**).
+    >Ensure that all lines noted above are uncommented. A commented line begins with a semicolon (**;**).
 
 3.  Create the log directory for PHP and give the Apache user ownership:
 
