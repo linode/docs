@@ -69,7 +69,7 @@ Ruby on Rails is a rapid development web framework that allows web designers and
 
 5.  Add `rails` to your $PATH environment variable. To do so, issue the following command, making sure to replace `VERSION` with the version of Ruby you are running:
         
-        ruby -v
+        ls /var/lib/gems
         PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/var/lib/gems/VERSION/bin"
 
     {: .note}
