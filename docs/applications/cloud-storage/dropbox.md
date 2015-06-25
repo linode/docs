@@ -15,11 +15,11 @@ title: 'Installing and Configuring Dropbox'
 
 Dropbox allows for the storage of your documents, files, videos, and photographs. Whatever you choose to store will be available on the Dropbox website, as well as any computers, phones, or servers you have the Dropbox application installed.
 
-Prior to setting up Dropbox on your Linode it is recommended to follow the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server/) guides. Dropbox can be used on Debian, Ubuntu, and any Red Hat Enterprise Linux-based OS.
+Prior to setting up Dropbox on your Linode it is recommended to follow the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server/) guides. You will need a [Dropbox account](https://www.dropbox.com/). Dropbox can be used on Debian, Ubuntu, and any Red Hat Enterprise Linux-based OS.
 
 ## Installing and Configuring Dropbox
 
-1. Download and install the Dropbox package:
+1.  Download and install the Dropbox package:
 
         cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
 
@@ -32,9 +32,9 @@ Prior to setting up Dropbox on your Linode it is recommended to follow the [Gett
         This computer isn't linked to any Dropbox account...
         Please visit https://www.dropbox.com/cli_xxxxxxx to link this device.
 
-    Copy the URL that is unique to your Linode, do not copy the one above.
+    Copy the unique URL. Do not copy the one above.
 
-4.  Copy and paste the address above into a web browser and log in to your Dropbox account. You should see the following message in your browser:
+4.  Paste the address above into a web browser and log in to your Dropbox account. You should see the following message in your browser:
 
         Your computer was successfully linked to your account
 
