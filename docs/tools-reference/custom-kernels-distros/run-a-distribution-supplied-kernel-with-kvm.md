@@ -52,7 +52,7 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
 
     * Fedora 22
 
-          yum install kernel-core.x86_64 grub2
+          yum install kernel-core grub2
 
     * Ubuntu
 
@@ -86,7 +86,7 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
 
     * Fedora 22
 
-          dracut initrd-4.0.5-300.fc22.x86_64.img 4.0.5-300.fc22.x86_64 #replace with the current kernel version
+          dracut /boot/initrd-4.0.5-300.fc22.x86_64.img 4.0.5-300.fc22.x86_64 #replace with the current kernel version
           mkdir /boot/grub
           grub2-mkconfig -o /boot/grub/grub.cfg
 
