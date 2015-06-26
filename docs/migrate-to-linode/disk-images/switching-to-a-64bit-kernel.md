@@ -12,12 +12,14 @@ modified_by:
   name: Alex Fornuto
 published: 'Monday, April 14th, 2014'
 title: 'Switching to a 64-bit Kernel'
+external_resources:
+ - '[AMD Developer Central](http://developer.amd.com/community/blog/2008/03/06/myths-and-facts-about-64-bit-linux/)'
+ - '[AskUbuntu](http://askubuntu.com/questions/81824/how-can-i-switch-a-32-bit-installation-to-a-64-bit-one)'
 ---
 
 Before an existing Linode can be migrated to a new SSD host, you'll need to ensure that all configuration profiles on that Linode are configured to use the 64-bit kernel. This guide will show you how to make that switch, and warn about some of the more common issues to look out for when making this change.
 
-Switching your Kernel to 64-bit
--------------------------------
+## Switching your Kernel to 64-bit
 
 1.  Next to your Configuration Profile, click **Edit**.
 
@@ -29,8 +31,7 @@ Switching your Kernel to 64-bit
 
 3.  Press **Save Changes**, which will take you back to your Linode Dashboard. Now reboot your Linode.
 
-Considerations
---------------
+## Considerations
 
 Switching to a 64-bit kernel does not mean you now have a 64-bit deployment of Linux. Until you redeploy, your user space and libraries will still be 32-bit. The 64-bit kernel will happily run software designed for 32-bit, but specific pieces of software may conflict with the new kernel.
 
@@ -77,14 +78,3 @@ The Arch package manager Pacman chooses what architecture-specific builds to dow
 ### Gentoo
 
 In Gentoo, all packages are compiled on the system. Ensure that the `-m32` flag is set in `CFLAGS`.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [AMD Developer Central](http://developer.amd.com/community/blog/2008/03/06/myths-and-facts-about-64-bit-linux/)
-- [AskUbuntu](http://askubuntu.com/questions/81824/how-can-i-switch-a-32-bit-installation-to-a-64-bit-one)
-
-
-

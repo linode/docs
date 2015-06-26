@@ -1,7 +1,7 @@
 ---
 author:
   name: Linode
-  email: scampbell@linode.com
+  email: docs@linode.com
 description: Longview App for MySQL
 keywords: 'Longview, MySQL, statistics'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -15,8 +15,7 @@ title: Longview App for MySQL
 
 Longview for MySQL is a Longview App. The Longview MySQL tab appears in the Linode Manager when Longview detects that you have MySQL installed on your Linode. With the Longview MySQL App, you'll be able to view statistics for MySQL on your Linode. It can help you keep track of MySQL's settings, queries, system resource consumption, and other information.
 
-Installing
-----------
+## Installing
 
 Prerequisites:
 
@@ -77,8 +76,7 @@ To enable the MySQL Longview app manually, follow these steps on your Linode via
 
 You should now be able to see Longview data for MySQL. If that's not the case, proceed to the [Troubleshooting](#id3) section at the end of this article.
 
-Viewing Statistics
-------------------
+## Viewing Statistics
 
 To see the output for the Longview MySQL App:
 
@@ -173,6 +171,3 @@ If you receive the error `Unable to collect MySQL status information`, this indi
 ### MySQL Tab is Missing
 
 If the Longview MySQL tab is missing entirely, this indicates that MySQL is either not installed, or has stopped. If you restart MySQL, you will be able to see the tab again and view all of your old data.
-
-
-

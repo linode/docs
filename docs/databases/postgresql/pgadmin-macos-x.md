@@ -10,12 +10,14 @@ modified_by:
   name: Linode
 published: 'Friday, April 30th, 2010'
 title: Securely Manage Remote PostgreSQL Servers with pgAdmin on Mac OS X
+external_resources:
+ - '[pgAdmin Documentation](http://www.pgadmin.org/docs/)'
+ - '[PostgreSQL Documentation](http://www.postgresql.org/docs/)'
 ---
 
 pgAdmin is a free, open source PostgreSQL database administration GUI for Microsoft Windows, Apple Mac OS X and Linux systems. It offers excellent capabilities with regard to database server information retrieval, development, testing, and ongoing maintenance. This guide will help you get up and running with pgAdmin on Mac OS X, providing secure access to remote PostgreSQL databases. It is assumed that you have already installed PostgreSQL on your Linode VPS in accordance with our [PostgreSQL installation guides](/docs/databases/postgresql/).
 
-Installing pgAdmin
-------------------
+## Installing pgAdmin
 
 Visit the [pgAdmin download page](http://www.pgadmin.org/download/macosx.php) to obtain the most recent version of the program. Save the installer to your desktop and launch it. Read the license agreement and click the "Agree" button to continue.
 
@@ -23,8 +25,7 @@ Visit the [pgAdmin download page](http://www.pgadmin.org/download/macosx.php) to
 
 After the program has uncompressed itself, you'll see a pgAdmin icon in a Finder window. You may drag this to your Applications folder or your dock.
 
-SSH Tunnel Configuration
-------------------------
+## SSH Tunnel Configuration
 
 While PostgreSQL supports SSL connections, it is not advisable to instruct it to listen on public IP addresses unless absolutely necessary. For this reason, you'll be using the script found below to create an SSH tunnel to your database server. Save it to your local home directory as `postgresql-tunnel.pl`, making sure to change the `$remote_user` and `$remote_host` variables to match your setup.
 
@@ -83,8 +84,7 @@ You can start the tunnel by issuing the following commands from your home direct
     chmod +x postgresql-tunnel.pl
     ./postgresql-tunnel.pl start
 
-Using pgAdmin
--------------
+## Using pgAdmin
 
 Launch pgAdmin and you'll be presented with a default view containing no servers. Click "File -\> Add Server" as shown below.
 
@@ -99,14 +99,3 @@ You will be presented with a full view of the databases that your user account h
 [![pgAdmin III full database view on Mac OS X](/docs/assets/378-pgadmin-mac-os-x-use-3-database-view.png)](/docs/assets/378-pgadmin-mac-os-x-use-3-database-view.png)
 
 Congratulations! You've securely connected to your remote PostgreSQL server with pgAdmin III.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [pgAdmin Documentation](http://www.pgadmin.org/docs/)
-- [PostgreSQL Documentation](http://www.postgresql.org/docs/)
-
-
-

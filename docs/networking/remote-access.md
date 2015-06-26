@@ -15,11 +15,11 @@ title: Remote Access
 
 The Remote Access section of the Linode Manager contains important network settings for your Linode. Use this tab to find your IP address, set the reverse DNS, configure IP failover, and swap IP addresses with another Linode. You can also access the Linode Shell (Lish) console to remotely connect to your Linode and troubleshoot problems.
 
-### Network Access
+## Network Access
 
 The Network Access section provides access to the settings for reverse DNS, IP failover, and swapping IP addresses. It also displays your Linode's IP addresses, default gateways, and DNS resolvers.
 
-### Setting Reverse DNS
+## Setting Reverse DNS
 
 The ability to associate an IP address with a domain name is referred to as *forward* DNS resolution. *Reverse* DNS lookup is the inverse process, where an IP address resolves to its designated domain name. Official Internet documents state that "every Internet-reachable host should have a name," and that the name should match a reverse pointer record. (See [RFC 1033](http://tools.ietf.org/html/rfc1033) and [RFC 1912](http://tools.ietf.org/html/rfc1912).)
 
@@ -55,7 +55,7 @@ You have successfully configured reverse DNS.
 >
 > If you receive the message that **no match was found**, this indicates that you need to update the forward DNS for this domain. Make sure the domain or subdomain in question resolves to the IP address for which you are trying to set the reverse DNS. If you've recently made a DNS change, you may need to wait 24-48 hours for it to propagate.
 
-### Resetting Reverse DNS
+## Resetting Reverse DNS
 
 To reset reverse DNS to the Linode domain, which will be something like **li12-345.members.linode.com**, follow these instructions:
 
@@ -75,7 +75,7 @@ To reset reverse DNS to the Linode domain, which will be something like **li12-3
 
 You'll see a confirmation message that the reverse DNS has been reset.
 
-### Configuring IP Failover
+## Configuring IP Failover
 
 If you're using two Linodes to make a website highly available with Heartbeat and Pacemaker , you can use the Linode Manager to configure IP failover. Here's how:
 
@@ -92,7 +92,7 @@ If you're using two Linodes to make a website highly available with Heartbeat an
 
 You have successfully configured IP failover.
 
-### Networking Restrictions
+## Networking Restrictions
 
 Linode's philosophy is to provide a plain Internet connection to every customer. We also implement some networking restrictions to prevent malicious activity and the abuse of our service.
 
@@ -100,7 +100,7 @@ By default, Linodes are able to send and receive traffic only for the MAC and IP
 
 If you want to allow one Linode to use another Linode's IP address, such as for a high availability setup, you will need to enable IP Failover in the Linode Manager for every Linode that needs to use the IP address. For more information on enabling IP Failover, please see the [previous section](#configuring-ip-failover) of this guide.
 
-### Swapping IP Addresses
+## Swapping IP Addresses
 
 If you have two Linodes in the same data center, you can use the *IP swap* feature to switch their IP addresses. This could be useful in several situations. For example, if you've built a new server to replace an old one, you could swap IP addresses instead of updating the DNS records.
 
@@ -133,7 +133,7 @@ Here's how to swap IP addresses:
 
 The IP address(es) will be swapped immediately as your Linode's networking is hotplugged. There may be a delay, however, of a few minutes (usually no more than five to ten) between the IP swap. There may be a brief period of time when your Linode's IP is unreachable due to this delay.
 
-### Adding Private IP Addresses
+## Adding Private IP Addresses
 
 The Linode Manager allows you to add private IP addresses for fast and secure connections between Linodes located in the same data center. Here's how to add a private IP address:
 
@@ -150,7 +150,7 @@ The Linode Manager allows you to add private IP addresses for fast and secure co
 
 If you'd like to add more than one private IP address to your Linode, please [contact support](/docs/support).
 
-### Adding Public IP Addresses
+## Adding Public IP Addresses
 
 You can use the Linode Manager to add additional public IP addresses to your account. However, due to the [impending exhaustion of the IPv4 address space](http://en.wikipedia.org/wiki/IPv4_address_exhaustion), Linode requires users to provide technical justification. To add another public IP address, please [contact support](/docs/support) with your justification.
 
@@ -171,7 +171,7 @@ If you need to quickly access Lish, use the Ajax Console to open it directly fro
 
 You are now logged in to the Lish Ajax console.
 
-### Using SSH
+## Using SSH
 
 You can also access Lish with an SSH client application installed on your computer. Here's how:
 

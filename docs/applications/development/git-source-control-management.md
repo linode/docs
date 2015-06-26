@@ -17,8 +17,7 @@ Git is version control software. Version control is used to keep track of change
 
 This document will provide rudimentary installation instructions as well as some basics for getting started. However, the way you use Git is entirely up to you.
 
-Installing Git
---------------
+## Installing Git
 
 Git can be installed on a variety of operating systems. It can also be downloaded and compiled. However, it is recommended that you use your Linux distribution's repository installer as this is usually the most reliable installation method.
 
@@ -218,8 +217,7 @@ To install Git on Windows you will need to download the installer from the [Git]
 
     ![Blank repository.](/docs/assets/1608-Git-Win-14.png)
 
-Configuring Git
----------------
+## Configuring Git
 
 After the installation is complete, you will need to configure Git for first time use. There is a built-in tool called **git config** that obtains and sets configuration variables for how Git functions and appears. These configuration variables are located in three different places on a Linux system:
 
@@ -249,8 +247,7 @@ Below is a sample gitconfig file with the username and email address:
 
 ![Sample gitconfig.](/docs/assets/1594-gitconfig.png)
 
-Working with the Repository
----------------------------
+## Working with the Repository
 
 There are two ways to obtain a Git repository, either by importing or copying. If you have an existing project and you want to start using Git to keep track of its changes, you will need to run the command from the existing project's directory:
 
@@ -331,8 +328,7 @@ The basic options used with the `git branch` command are listed below:
 | -r -d    | deletes a remote branch              |
 |----------|--------------------------------------|
 
-Working with Remote Repositories
---------------------------------
+## Working with Remote Repositories
 
 Remote repositories are hosted on a network or another location on the Internet. You can have several remote repositories. This section will provide some basics for working with remote repositories.
 
@@ -358,8 +354,7 @@ Below are some basic commands for working with remote repositories:
 | `git remote rm [name]`                    | removes the remote you specified                                    |
 |-------------------------------------------|---------------------------------------------------------------------|
 
-Installing Gitolite
--------------------
+## Installing Gitolite
 
 1.  Gitolite works on top of Git, and allows access to remote users without having to give them shell access. Install Gitolite with the command:
 
@@ -445,8 +440,7 @@ In order to add a new user, you will need their name, email, and public key. For
 
         git push
 
-More Information
-----------------
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

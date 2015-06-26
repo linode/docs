@@ -11,14 +11,18 @@ modified_by:
   name: Linode
 published: 'Monday, February 1st, 2010'
 title: Retrieving Email Using Getmail
+external_resources:
+ - '[Official Getmail Documentation](http://pyropus.ca/software/getmail/documentation.html)'
+ - '[Mailfilter MDA](http://mailfilter.sourceforge.net/)'
+ - '[Maildrop MDA](http://www.courier-mta.org/maildrop/)'
+ - '[Procmail MDA](http://www.procmail.org/)'
 ---
 
 Getmail is a simple mail retriever. In many ways, the software is a response to the complexity of [fetchmail](/docs/email/fetchmail/). It aims to provide a simple and efficient tool for downloading email from POP and IMAP servers. You can use getmail to download email from your Linode's mail server powered by [Citadel](/docs/email/citadel/) or [Courier](/docs/email/postfix/) or you can use getmail on your Linode to download email from one or more third party mail providers (as long as POP or IMAP is supported) and deliver it to a local email gateway.
 
 Before getting started with Getmail, we assume that you have followed our [getting started guide](/docs/getting-started/). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and the [administration basics guide](/docs/using-linux/administration-basics).
 
-Installing Getmail
-------------------
+## Installing Getmail
 
 Before proceeding, make sure your system is up to date. If you're using Arch or Gentoo, you'll want to refresh your repositories. If you're using Debian, Ubuntu, CentOS, or Fedora, you'll want to update your repositories and upgrade all packages to their latest versions. Select from the following commands, depending on what operating system you're running:
 
@@ -79,8 +83,7 @@ Lastly, install getmail using yum:
 
 With getmail installed successfully, we can begin to configure mail retrieval at this time.
 
-Basic Getmail Configuration
----------------------------
+## Basic Getmail Configuration
 
 All getmail configuration occurs in the `.getmail/` folder of the user's home directory. The configuration is stored in a `getmailrc` file. If you need to check multiple accounts, specify each account as a file beneath the `~/.getmail/` directory. Create the required directories and files, and set their permissions with the following commands:
 
@@ -128,8 +131,7 @@ Modify the required options to suit the needs of your desired deployment. This i
 
 Congratulations! You've successfully configured getmail in a basic mail delivery setup.
 
-Advanced Getmail Configuration
-------------------------------
+## Advanced Getmail Configuration
 
 Getmail is capable of delivering mail in a number of different situations beyond just downloading email from a single mail account. This section provides an overview of a number of more advanced uses of getmail.
 
@@ -171,16 +173,3 @@ crontab
     ~~~
 
 Adding this line will cause getmail to retrieve new mail as specified in the `~/.getmail/getmailrc` file every five minutes. The `quiet` flag suppresses all non-error output, which is desirable when running in a "daemon" mode. You may specify any options for the cronjob that you can specify on the command line, including multiple `getmailrc` files. When the crontab is properly configured, save the file. Getmail will now retrieve new mail every five minutes as specified in the appropriate `getmailrc` files.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Official Getmail Documentation](http://pyropus.ca/software/getmail/documentation.html)
-- [Mailfilter MDA](http://mailfilter.sourceforge.net/)
-- [Maildrop MDA](http://www.courier-mta.org/maildrop/)
-- [Procmail MDA](http://www.procmail.org/)
-
-
-

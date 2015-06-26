@@ -223,7 +223,7 @@ Setting up polling is easy, we do it by adding a probe section to our backend de
         }
     }
 
-These are the default settings from Varnish's documentation, so you may want to tweak them for your website. This basically says, "Go to <http://127.0.0.1:8080/> every second, and if it takes less than 34ms to respond for at least 8 of the last 10 polls, the backend is considered healthy."
+These are the default settings from Varnish's documentation, so you may want to tweak them for your website. This basically says, "Go to `http://127.0.0.1:8080/` every second, and if it takes less than 34ms to respond for at least 8 of the last 10 polls, the backend is considered healthy."
 
 If the backend fails the test, objects are served out of the cache in accordance to their grace time setting. To set this, we need to set the grace time both for the request and for the fetched object. To set grace time for the request, add this line to `vcl_recv`:
 

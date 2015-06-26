@@ -15,8 +15,7 @@ title: Disks and Configuration Profiles
 
 The Linode Manager allows you to create, edit, and use disks and configuration profiles with your Linode virtual private servers. You can install different Linux distributions on the disks, set device assignments, and configure boot settings. This guide will show you how to put the pieces together to create a custom setup.
 
-Getting Started
----------------
+## Getting Started
 
 Your Linode plan comes with persistent storage to hold your most important asset - data. This pool of storage can be broken up into individual containers called *disks*. You'll use disks to store all of the files on your VPS. It's easy to create, delete, resize, duplicate, and even clone disks to different Linodes.
 
@@ -39,8 +38,7 @@ All of a Linode's disks and configuration profiles are displayed on the Linode's
 5.  Click this link to create a new blank disk.
 6.  This box indicates how much storage space is allocated to disks. To see how much much space inside your disk is currently being used, connect to your Linode via SSH and execute the `df -m` command.
 
-Disks
------------
+## Disks
 
 Just like your desktop computer has a physical hard drive that can be partitioned into smaller virtual drives, your Linode plan's storage space can be split in to disks. Disks can be used to store anything, including files, applications, or other Linux distributions. The space allocated to disks reduces your plan's available storage space.
 
@@ -135,8 +133,7 @@ You can delete a disk to remove it from your Linode and reallocate its storage s
 
 The disk will be deleted. The storage space the disk was using is now available to other disks.
 
-Configuration Profiles
-----------------------
+## Configuration Profiles
 
 Linode's configuration profiles are similar to [GNU GRUB](http://en.wikipedia.org/wiki/GNU_GRUB), the Linux boot loader that allows you to select and boot from an operating system installed on your desktop computer. You can create different configuration profiles to build custom boot configurations with disks, kernels, and the operating system's run level.
 
@@ -200,8 +197,7 @@ You can remove a configuration profile from the Linode Manager at anytime. Here'
 
 The configuration profile is removed from the dashboard.
 
-Cloning disks and Configuration Profiles
-----------------------------------------------
+## Cloning disks and Configuration Profiles
 
 You can *clone* disks and configuration profiles from one Linode to another, as long as both of the Linodes are in your account. This is an easy way to transfer disks and configuration profiles between Linodes or migrate your Linode to a different datacenter or a new host in the same data center.
 
@@ -225,8 +221,7 @@ Here's how to clone your disks and configuration profiles from one Linode to ano
 
 After the cloning process completes, the disks and configuration profiles you selected will be available on the destination Linode.
 
-Potential Uses
---------------
+## Potential Uses
 
 If you're wondering how you could use disks and configuration profiles, here are some ideas to get you started:
 
@@ -236,6 +231,3 @@ If you're wondering how you could use disks and configuration profiles, here are
 -   **Create a Software Testing Environment:** If you're a developer, you can create different disks for testing purposes. Every disk can hold a different 32- or 64-bit distribution, and every configuration profile can be set to use a different kernel. Even if you're not a developer, this is ideal for testing open source or proprietary software on different distributions.
 
 There are plenty of other ways you can use disks and configuration profiles. Use your imagination!
-
-
-

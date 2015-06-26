@@ -11,12 +11,16 @@ modified_by:
   name: Linode 
 published: 'Monday, October 8th, 2012'
 title: 'Using MySQL Relational Databases on Ubuntu 14.04 LTS (Trusty Tahr)'
+external_resources:
+ - '[MySQL 5.5 Reference Manual](http://dev.mysql.com/doc/refman/5.5/en/)'
+ - '[PHP MySQL Manual](http://us2.php.net/manual/en/book.mysql.php)'
+ - '[Perl DBI examples for DBD::mysql](http://sql-info.de/mysql/examples/Perl-DBI-examples.html)'
+ - '[MySQLdb User''s Guide](http://mysql-python.sourceforge.net/MySQLdb.html)'
 ---
 
 MySQL is a popular database management system, used as the data storage provider for thousands of web and server applications. This guide will help beginners get started with MySQL on an Ubuntu 14.04 LTS (Trusty Tahr) Linux VPS. For purposes of this tutorial, we'll assume you've followed the steps outlined in our [getting started guide](/docs/getting-started/), and that your system is up to date. The commands listed will need to be run with root permissions. You can elevate your login session to your root user by using the "su" command, and then entering your root password when prompted. If you're performing these steps as a standard user with sudo privileges, remember to prepend "sudo" to the commands shown below.
 
-Basic System Configuration
---------------------------
+## Basic System Configuration
 
 Make sure your `/etc/hosts` file contains sensible values. In the example file below, you would replace "12.34.56.78" with your Linode's IP address, and "servername.example.com" with your Linode's fully qualified domain name (FQDN). It is advisable to use something unique and memorable for "servername" in this file.
 
@@ -54,8 +58,7 @@ To make sure `universe` repositories are enabled, modify your `/etc/apt/sources.
     deb-src http://security.ubuntu.com/ubuntu trusty-security universe
     ~~~
 
-Installing MySQL
-----------------
+## Installing MySQL
 
 Make sure your package repositories and installed programs are up to date by issuing the following commands:
 
@@ -76,8 +79,7 @@ The MySQL server package will be installed on your server, along with dependenci
 
 After running `mysql_secure_installation`, MySQL is secure and ready to be configured.
 
-Configuring MySQL
------------------
+## Configuring MySQL
 
 Issue the following command to restart MySQL after making configuration changes:
 
@@ -85,8 +87,7 @@ Issue the following command to restart MySQL after making configuration changes:
 
 MySQL will bind to localhost (127.0.0.1) by default. Allowing unrestricted access to MySQL on a public IP not advised, but you may change the address it listens on by modifying the `bind-address` parameter in `/etc/mysql/my.cnf`. If you decide to bind MySQL to your public IP, you should implement firewall rules that only allow connections from specific IP addresses.
 
-Using MySQL
------------
+## Using MySQL
 
 The standard tool for interacting with MySQL is the `mysql` client program. To get started, issue the following command at your prompt:
 
@@ -157,8 +158,7 @@ This creates a table with a customer ID field of the type INT for integer (auto-
 
 By default, access to databases will be limited to connections from localhost. To securely administer your databases from a remote location, please follow our guide for [securely administering mysql with an SSH tunnel](/docs/databases/mysql/mysql-ssh-tunnel). It is *not* a good practice to run MySQL on your public IP address, unless you have a very good reason for doing so.
 
-Tuning MySQL
-------------
+## Tuning MySQL
 
 MySQL Tuner is a useful tool that connects to a running instance of MySQL and provides configuration recommendations based on workload. Ideally, the MySQL instance should have been operating for at least 24 hours before running the tuner. The longer the instance has been running, the better advice MySQL Tuner will provide.
 
@@ -171,16 +171,3 @@ To run MySQL Tuner simply enter:
     mysqltuner
 
 Please note that this tool is designed to provide configuration suggestions and is an excellent starting point. It would be prudent to perform additional research for tuning configurations based on the application(s) utilizing MySQL.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [MySQL 5.5 Reference Manual](http://dev.mysql.com/doc/refman/5.5/en/)
-- [PHP MySQL Manual](http://us2.php.net/manual/en/book.mysql.php)
-- [Perl DBI examples for DBD::mysql](http://sql-info.de/mysql/examples/Perl-DBI-examples.html)
-- [MySQLdb User's Guide](http://mysql-python.sourceforge.net/MySQLdb.html)
-
-
-

@@ -1,16 +1,19 @@
 ---
 author:
   name: Linode
-  email: bolow@linode.com
+  email: docs@linode.com
 description: 'A basic guide to installing nginx from source on Debian 7 (Wheezy)'
 keywords: 'nginx,http,web servers,debian,debian wheezy,debian 7'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['web-servers/nginx/installation/debian-7-wheezy/','websites/nginx/basic-nginx-installation/']
+alias: ['web-servers/nginx/installation/debian-7-wheezy/','websites/nginx/basic-nginx-installation/','docs/websites/nginx/websites-with-nginx-on-debian-7-wheezy']
 modified: Tuesday, January 28th, 2014
 modified_by:
   name: Linode
 published: 'Tuesday, January 28th, 2014'
-title: 'Websites with Nginx on Debian 7 (Wheezy)'
+title: 'Installing Nginx on Debian 7 (Wheezy)'
+external_links:
+ - '[Linode Library Nginx Documentation](/docs/web-servers/nginx/)'
+ - '[Nginx Community Documentation](http://wiki.nginx.org)'
 ---
 
 Nginx is a lightweight and high performance web server designed with the purpose of delivering large amounts of static content quickly and with efficient use of system resources. In contrast to the [Apache HTTP server](/docs/web-servers/apache/) that uses a threaded or process-oriented approach to handling requests, Nginx uses an asynchronous event-driven model which provides more predictable performance under load.
@@ -19,8 +22,7 @@ Although Nginx is a relatively new entry in the web server field, it has achieve
 
 Before you begin installing the Nginx web server, it is assumed that you have followed our [Getting Started Guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [Beginner's Guide](/docs/beginners-guide/) and [Administration Basics Guide](/docs/using-linux/administration-basics).
 
-Set the Hostname
-----------------
+## Set the Hostname
 
 Before you begin installing and configuring the components described in this guide, make sure you have followed the instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure the hostname is set properly:
 
@@ -29,8 +31,7 @@ Before you begin installing and configuring the components described in this gui
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-Installing Nginx from Debian Repositories
------------------------------------------
+## Installing Nginx from Debian Repositories
 
 All of the following updates, upgrades, and installs use a non-root account. Therefore, `sudo` is required before commands, if you are using `root` to perform these commands than sudo would not be required. For more information regarding account permissions, view our [Linux Users and Groups Guide](/docs/tools-reference/linux-users-and-groups/).
 
@@ -47,8 +48,7 @@ To test if the installation of Nginx was successful, open a web browser and in t
 
 ![Nginx test page.](/docs/assets/1536-nginx-test.png)
 
-Installing and Compiling a Nginx Source Distribution
-----------------------------------------------------
+## Installing and Compiling a Nginx Source Distribution
 
 The Debian project does not track the latest development of Nginx server. Therefore, if you require a newer version, you will need to download and compile the newest distribution of Nginx (current version as of this publication is 1.5.9).
 
@@ -128,19 +128,6 @@ You can now start, stop, and restart Nginx just like any other server daemon. Fo
 
     sudo /etc/init.d/nginx start
 
-You now have a running and fully functional HTTP server powered by the Nginx web server. To test if the installation of Nginx was successful, open a web browser and in the address bar enter the IP address of your server. You should see a message similar to the one below:
-
-![Nginx version 1.5.9 test page.](/docs/assets/1537-nginx-1.5.9.png)
+You now have a running and fully functional HTTP server powered by the Nginx web server. To test if the installation of Nginx was successful, open a web browser and in the address bar enter the IP address of your server. You should see a default Nginx page.
 
 Continue reading our introduction to [Basic Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration) for more information about using and setting up a web server.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Linode Library Nginx Documentation](/docs/web-servers/nginx/)
-- [Nginx Community Documentation](http://wiki.nginx.org)
-
-
-

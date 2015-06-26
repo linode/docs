@@ -11,14 +11,19 @@ modified_by:
   name: Linode
 published: 'Monday, April 19th, 2010'
 title: Back Up Your MySQL Databases
+external_resources:
+ - '[The Official MySQL Web Site](http://www.mysql.com/)'
+ - '[MySQL Database Backup Methods page](http://dev.mysql.com/doc/refman/5.1/en/backup-methods.html)'
+ - '[mysqldump Manual Page](http://linuxcommand.org/man_pages/mysqldump1.html)'
+ - '[Schedule Tasks With Cron](/docs/linux-tools/utilities/cron)'
+ - '[MySQL''s Grant Statement, Official Documentation](http://dev.mysql.com/doc/refman/5.1/en/grant.html)'
 ---
 
 MySQL is an open source relational database management system (DBMS) which is frequently deployed in a wide assortment of contexts. Most frequently it is deployed as part of the [LAMP Stack](/docs/lamp-guides). The database system is also easy to use and highly portable and is, in the context of many applications, extremely efficient. As MySQL is often a centralized data store for large amounts of mission critical data, making regular backups of your MySQL database is one of the most important disaster recovery tasks a system administrator can perform. This guide addresses a number of distinct methods for creating back ups of your database as well as restoring databases from backups.
 
 Before beginning the installation process, we assume you've followed the steps outlined in our [getting started guide](/docs/getting-started/). Additionally, you will need to install the [MySQL Database](/docs/databases/mysql/). All configuration will be performed in a terminal session; make sure you're logged into your Linode as root via SSH. If you're new to Linux server administration you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/linux-users-and-groups/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
 
-Backup Methodology
-------------------
+## Backup Methodology
 
 Most backups of MySQL databases in this guide are performed using the `mysqldump` tool, which is distributed with the default MySQL server installation. We recommend that you use `mysqldump` whenever possible because it is often the easiest and most efficient way to take database backups. Other methods detailed in this guide are provided for situations when you do not have access to the `mysqldump` tool, as in a recovery environment like [Finnix](/docs/troubleshooting/finnix-rescue-mode) or in situations where the local instance of the MySQL server will not start.
 
@@ -27,8 +32,7 @@ Nevertheless, this guide provides a mere overview of the `mysqldump` tool, as th
 -   The `*.sql` files created with `mysqldump` can be restored at any time. You can even edit the database `.sql` files manually (with great care!) using your favorite text editor.
 -   If your databases only make use of the MyISAM storage engine, you can substitute the `mysqldump` command with the faster `mysqlhotcopy`.
 
-Creating Backups of the Entire Database Management System (DBMS)
-----------------------------------------------------------------
+## Creating Backups of the Entire Database Management System (DBMS)
 
 It is often necessary to take a back up (or "dump") of an entire database management system along with all databases and tables, including the system databases which hold the users, permissions and passwords.
 
@@ -79,8 +83,7 @@ Once the tarball is created, you can easily [transfer the file](/docs/using-linu
 
     /etc/init.d/mysql start
 
-Creating Backups of a Single Database
--------------------------------------
+## Creating Backups of a Single Database
 
 In many cases, creating a back up of the entire database server isn't required. In some cases such as upgrading a web application, the installer may recommend making a backup of the database in case the upgrade adversely affects the database. Similarly, if you want to create a "dump" of a specific database to move that database to a different server, you might consider the following method.
 
@@ -98,8 +101,7 @@ For an additional example, we will backup the database named `customer` using th
 
 You will be prompted for a password before `mysqldump` begins it's backup process. As always the backup file, in this case `customerBackup.sql`, is created in the directory where you issue this command. The `mysqldump` command can complete in a few seconds or a few hours depending on the size of the database and the load on the host when running the backup.
 
-Creating Backups of a Single Table
-----------------------------------
+## Creating Backups of a Single Table
 
 ### Option 1: Create Backups of a Single Table Using the mysqldump Utility
 
@@ -165,8 +167,7 @@ Do be aware that when backing up a single table using the MySQL client, that tab
 
 You can continue using your database as normal from this point.
 
-Considerations for an Effective Backup Strategy
------------------------------------------------
+## Considerations for an Effective Backup Strategy
 
 Creating backups of your MySQL database should be a regular and scheduled task. You might like to consider scheduling periodic backups using `cron`, `mysqldump` and/or `mail`. Consider our documentation for more information regarding [cron](/docs/linux-tools/utilities/cron). Implementing an automated backup solution may help minimize down time in a disaster recovery situation.
 
@@ -174,8 +175,7 @@ You do not need to log in as root when backing up databases. A MySQL user with r
 
 You may want to consider incremental backups as part of a long-term database backup plan. While this process is not covered here, we recommend that you consider the [MySQL Database Backup Methods](http://dev.mysql.com/doc/refman/5.1/en/backup-methods.html) resource for more information.
 
-Restoring an Entire DBMS From Backup
-------------------------------------
+## Restoring an Entire DBMS From Backup
 
 A backup that cannot be restored is of minimal value. We recommend testing your backups regularly to ensure that they can be restored in the event that you may need to restore from backups. When using restoring backups of your MySQL database, the method you use depends on the method you used to create the backup in question.
 
@@ -235,8 +235,7 @@ Before beginning the restoration process, this section assumes your system is ru
 
 After MySQL server has successfully started, you will want to test your MySQL DBMS and ensure that all databases and tables restored properly. We also recommend that you audit your logs for potential errors. In some cases MySQL can start successfully despite database errors.
 
-Restoring a Single Database from Backup
----------------------------------------
+## Restoring a Single Database from Backup
 
 In cases where you have only created a backup for one database, or only need to restore a single database, the restoration process is somewhat different.
 
@@ -280,8 +279,7 @@ In the following example, we will restore the `customer` database from a SQL bac
 
 You will be prompted for the root MySQL user's password. Once the correct credentials are supplied, the restoration process will begin. The duration of this operation depends on your system's load and the size of the database that you are restoring. It may complete in a few seconds, or it may take many hours.
 
-Restoring a Single Table from Backup
-------------------------------------
+## Restoring a Single Table from Backup
 
 ### Option 1: Restoring a Single Table Using the MySQL and Backups Created by mysqldump
 
@@ -357,17 +355,3 @@ To import the data from the `customerOrderBackup.sql` file located in `/var/lib/
 This process can take anywhere from a few seconds to many hours depending on the size of your table. The duration of this operation depends on your system's load and the size of the table that you are restoring. It may complete in a few seconds, or it may take many hours. After you have verified that your data was imported successfully, you can log out:
 
     quit
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [The Official MySQL Web Site](http://www.mysql.com/)
-- [MySQL Database Backup Methods page](http://dev.mysql.com/doc/refman/5.1/en/backup-methods.html)
-- [mysqldump Manual Page](http://linuxcommand.org/man_pages/mysqldump1.html)
-- [Schedule Tasks With Cron](/docs/linux-tools/utilities/cron)
-- [MySQL's Grant Statement, Official Documentation](http://dev.mysql.com/doc/refman/5.1/en/grant.html)
-
-
-

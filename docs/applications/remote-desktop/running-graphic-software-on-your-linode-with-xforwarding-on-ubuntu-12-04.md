@@ -11,6 +11,11 @@ modified_by:
   name: Alex Fornuto
 published: 'Thursday, April 10th, 2014'
 title: 'Running Graphic Software on your Linode with X-Forwarding on Ubuntu 12.04'
+external_resources:
+ - '[Xming](http://www.straightrunning.com/XmingNotes/)'
+ - '[Cygwin/X](http://x.cygwin.com/)'
+ - '[MobaXterm](http://mobaxterm.mobatek.net/)'
+ - '[XQuartz](http://xquartz.macosforge.org/)'
 ---
 
 There may come a time when you want to run an application that requires a graphic interface from your Linode. By using X forwarding, this is easy to accomplish.
@@ -19,8 +24,7 @@ There may come a time when you want to run an application that requires a graphi
 >
 > This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
-Installing X11 on your Linode
------------------------------
+## Installing X11 on your Linode
 
 1.  Before we begin, make sure your Linode's software is up to date:
 
@@ -31,8 +35,7 @@ Installing X11 on your Linode
 
         sudo apt-get install xauth
 
-Installing X11 on the Client
-----------------------------
+## Installing X11 on the Client
 
 ### Linux
 
@@ -52,8 +55,7 @@ There are several pieces of software available that can provide an X server on W
 
 It's up to you to choose the software that best suits your needs.
 
-Connecting
-----------
+## Connecting
 
 Connecting from a Linux or OS X client requires adding one extra parameter to your SSH command, the `-X` flag:
 
@@ -61,8 +63,7 @@ Connecting from a Linux or OS X client requires adding one extra parameter to yo
 
 Connecting from a Windows machine will depend on what software you have chosen. Please refer to the software documentation for instructions on initiating an SSH connection with X forwarding.
 
-Testing
--------
+## Testing
 
 1.  First lets install a simple graphic application to test with:
 
@@ -82,16 +83,3 @@ Testing
  {: .note }
 >
 > More intense graphic software may lag when running in this fashion. Using a Linode in a data center geographically close to you can help reduce latency.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Xming](http://www.straightrunning.com/XmingNotes/)
-- [Cygwin/X](http://x.cygwin.com/)
-- [MobaXterm](http://mobaxterm.mobatek.net/)
-- [XQuartz](http://xquartz.macosforge.org/)
-
-
-

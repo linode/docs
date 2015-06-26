@@ -19,8 +19,7 @@ You can migrate an existing server to your Linode from another hosting provider 
 >
 > These instructions assume that you'll be working with a live server. If you can boot into an alternate environment, such as a live CD, you should do so. However, most hosting providers do not offer a bootable recovery or maintenance environment.
 
-Preparing the Linode
---------------------
+## Preparing the Linode
 
 First you'll need to prepare the Linode to receive the files from the existing server. Create disks to store the files on the existing server and a configuration profile to boot the Linode from the existing server's disks. Then start the Linode in rescue mode.
 
@@ -88,8 +87,7 @@ Before you initiate the transfer, you need to start the Linode in rescue mode. H
 
 Your Linode is now ready to receive the files from your existing server.
 
-Copying the Files
------------------
+## Copying the Files
 
 You've created disks on the Linode to receive the files from the existing server, and you've created configuration profiles to boot into rescue mode and from the new disks. Now it's time to transfer files from the existing server to the Linode.
 
@@ -114,8 +112,7 @@ Now it's time to copy the files from your existing server to your Linode. Here's
 
 The files on your existing server will be copied to your Linode. Depending on the amount of data stored on existing server, the network copy may take a long time. You can monitor the progress from your current server's SSH session.
 
-Configuring the Disks
----------------------------
+## Configuring the Disks
 
 Now the files from your existing server are stored on your Linode. You can't boot from the new disks yet, however. First, you'll need to do some things to the disks, like set the IP address to the IP address assigned to your Linode. Be sure to follow all of the instructions in this section before restarting your Linode from the new disks!
 
@@ -224,8 +221,7 @@ Here's how to fix persistent rules:
 
 You have successfully fixed persistent rules.
 
-Booting the Linode with the New Disks
--------------------------------------------
+## Booting the Linode with the New Disks
 
 Now it's time to boot your Linode from the new disks. All you have to do is select the new configuration profile you created and then restart the Linode. Here's how:
 
@@ -239,6 +235,3 @@ Now it's time to boot your Linode from the new disks. All you have to do is sele
 5.  Click **Reboot** to restart your Linode with the configuration profile and disks you just created.
 
 The Linode will start with the disks you imported.
-
-
-

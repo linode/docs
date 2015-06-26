@@ -11,14 +11,18 @@ modified_by:
   name: Linode
 published: 'Thursday, October 25th, 2012'
 title: 'Redis on Ubuntu 12.04 (Precise Pangolin)'
+external_resources:
+ - '[Redis Project Home Page](http://redis.io/)'
+ - '[Redis Configuration](http://redis.io/topics/config)'
+ - '[Redis Persistence](http://redis.io/topics/persistence)'
+ - '[Redis Command Reference](http://redis.io/commands)'
 ---
 
 Redis is a high performance persistent key-value store, and is intended as a datastore solution for applications where performance and flexibility are more critical than persistence and absolute data integrity. As such, Redis may be considered a participant in the "NoSQL" movement and is an attractive tool for developers of some kinds of applications. This document provides both instructions for deploying the Redis server and an overview of best practices for maintaining Redis instances.
 
 Prior to beginning this guide for installing Redis, we assume that you have completed the steps outlined in our [getting started guide](/docs/getting-started/). If you're new to Linux systems administration, we recommend that you read the [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts), and the [administration basics guide](/docs/using-linux/administration-basics).
 
-Install Redis
--------------
+## Install Redis
 
 ### Prepare System for Redis
 
@@ -69,8 +73,7 @@ redis.conf
 
 The values in this configuration mirror the default Redis configuration Ubuntu provides. However, this configuration configures Redis to run in daemon mode bound only to the local network interface. You may want to change these values depending on the needs of your application.
 
-Managing Redis Instances
-------------------------
+## Managing Redis Instances
 
 ### Running a Redis Datastore
 
@@ -84,8 +87,7 @@ You may now interact with Redis using any of the language specific bindings or u
 
 While running the Redis instance in this configuration is useful for testing and initial deployment, production deployments may have better results by creating a dedicated and unprivileged system user for the Redis instance and controlling Redis using an "init" script. This section covers the creation of an init script and strategies for managing production Redis instances.
 
-Managing Datastore Persistence
-------------------------------
+## Managing Datastore Persistence
 
 Redis is not necessarily intended to provide a completely consistent and fault tolerant data storage layer, and in the default configuration there are some conditions that may cause your data store to lose up to 60 seconds of the most recent data. Make sure you understand the risks associated and the potential impact that this kind of data loss may have on your application before deploying Redis.
 
@@ -114,8 +116,7 @@ This command should return `Background append only file rewriting started`.
 
 You may wish to issue this command regularly, perhaps in a [cron job](/docs/linux-tools/utilities/cron), to ensure that the transaction journal doesn't expand exponentially. bgrewriteaof\` is non-destructive and can fail gracefully.
 
-Distributed Data Stores with Master Slave Replication
------------------------------------------------------
+## Distributed Data Stores with Master Slave Replication
 
 Redis contains limited support for master-slave replication which allows you to create a second database that provides a direct real time copy of the data collection on a second system. In addition to providing a "hot spare" or multiple spares for your Redis instance, master-slave systems also allow you to distribute load amongst a group of servers. As long as all write options are applied to the master node, read operations can be distributed to as many slave nodes as required.
 
@@ -134,16 +135,3 @@ When you restart the slave Redis instance, it will attempt to synchronize its da
 The traffic between slave instances and the master instance is not encrypted and does not require authentication in the default configuration. Authentication is available, and can be configured according to the documentation in the `/etc/redis/redis.conf` file; however, this is not the default method for securing Redis instances.
 
 The preferred method for controlling access to Redis instances involves using [iptables](/docs/security/firewalls/iptables) and possibly some sort of encryption such as an SSH tunnel to ensure that traffic is secure. Slaves will automatically attempt to reestablish a connection to the master node if the link fails in a number of situations. However, clusters cannot automatically promote members from slave status to master status; cluster management of this order must occur within your application.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Redis Project Home Page](http://redis.io/)
-- [Redis Configuration](http://redis.io/topics/config)
-- [Redis Persistence](http://redis.io/topics/persistence)
-- [Redis Command Reference](http://redis.io/commands)
-
-
-

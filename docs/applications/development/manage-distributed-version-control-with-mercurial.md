@@ -11,14 +11,16 @@ modified_by:
   name: Amanda Folson
 published: 'Monday, April 26th, 2010'
 title: Manage Distributed Version Control with Mercurial
+external_resources:
+ - '[Mercurial Project Home Page](http://mercurial.selenic.com/)'
+ - '[HG Init, a Guide by Joel Spolsky](http://hginit.com/)'
 ---
 
 Mercurial is one of the leading distributed version control systems that allows software developers and teams of collaborators to work on a common code base without needing to rely on a centralized server or constant network connection while working. This document will provide an introduction to the Mercurial version control system so you can begin to use Mercurial to manage source control and collaboration for your development projects.
 
 Mercurial runs on multiple platforms and you may choose to use Mercurial to manage code projects on systems running many different operating systems. Before deploying Mercurial on a Linode, we assume that you have completed our [getting started guide](/docs/tools-reference/introduction-to-linux-concepts). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
 
-Installing Mercurial
---------------------
+## Installing Mercurial
 
 Issue the following commands on Debian and Ubuntu systems to update your system's package repository, ensure that all installed packages are up to date, and install Mercurial and all of its dependencies:
 
@@ -38,8 +40,7 @@ On Arch Linux systems, issue the following commands to ensure that your system's
 
 Mac OS X and Windows users can download prepared packages for Mercurial directly from the [upstream download resource](http://mercurial.selenic.com/downloads/). Once Mercurial is installed, we can begin to manage our source control projects with this tool. All Mercurial commands in the shell environment begin with `hg` in reference to the abbreviation for the element Mercury.
 
-Local Mercurial Workflows
--------------------------
+## Local Mercurial Workflows
 
 ### Creating Repositories
 
@@ -139,8 +140,7 @@ If at any point you find yourself working in a revision and you would like to re
 
     hg update tip
 
-Distributed Mercurial Workflows
--------------------------------
+## Distributed Mercurial Workflows
 
 Most of the Mercurial workflow cycle is completed in isolation from other developers and contributors. The above outline of how to manage version control will allow you to complete work on your projects even in the context of larger Mercurial-supported collaborations. The "distributed" workflows outlined below provide an overview of common procedures for using Mercurial in distributed environments.
 
@@ -200,14 +200,3 @@ Email the `ducklignton-patch7.diff` file to your collaborators who will, in turn
     hg import patch7.diff
 
 Email-based collaboration reduces some of the architectural complexity of maintaining shared infrastructure, or running *ad hoc* http servers, and allows individuals to collaborate in an easy and asynchronous way.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Mercurial Project Home Page](http://mercurial.selenic.com/)
-- [HG Init, a Guide by Joel Spolsky](http://hginit.com/)
-
-
-

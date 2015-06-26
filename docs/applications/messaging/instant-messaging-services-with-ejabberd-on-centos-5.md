@@ -11,14 +11,17 @@ modified_by:
   name: Amanda Folson
 published: 'Tuesday, December 8th, 2009'
 title: Instant Messaging Services with ejabberd on CentOS 5
+external_resources:
+ - '[Ejabberd Community Site](http://www.ejabberd.im/)'
+ - '[XMPP Standards Foundation](http://xmpp.org/)'
+ - '[XMPP Client Software](http://xmpp.org/software/clients.shtml)'
 ---
 
 Ejabberd, the "Erlang Jabber Daemon," is an extensible, flexible and very high performance XMPP server written in the Erlang programming language. With a web-based interface and broad support for [XMPP standards](http://xmpp.org/), ejabberd is an ideal general-use and multi-purpose XMPP server. Although ejabberd is considered "heavyweight" by some, mostly due to the requirements of the Erlang runtimes, it is incredibly robust and can scale to support heavy loads. It even includes support for hosting multiple domains virtually.
 
 This installation process assumes that you have a working installation of CentOS 5.4, that you've followed the steps in the [getting started](/docs/getting-started/) guide, and that you are connected to your Linode via SSH as the root user. Once you've completed these requirements we can begin with the installation process.
 
-XMPP/Jabber Basics
-------------------
+## XMPP/Jabber Basics
 
 Though you can successfully run an XMPP server with only a passing familiarity of the way the XMPP network and system works, understanding the following basic concepts will be helpful:
 
@@ -31,8 +34,7 @@ Though you can successfully run an XMPP server with only a passing familiarity o
 -   The XMPP system is federated by nature. Users with accounts on one server--if the server administrators allow it--can communicate with users on other servers. Without a centralized server, every XMPP server maintains the accounts and serves as the communication gateway for their own users. In the XMPP system there is no single point of failure, however each server administrator can decide how their server is going to participate in the federated network. For instance, to federate with Google's "GTalk" XMPP network, server administrators need to have server-to-server (s2s) SSL/TLS encryption enabled, while other servers don't always require this.
 -   XMPP takes advantage of ["SRV" DNS Records](/docs/dns-guides/introduction-to-dns) to support the resolution of domains to the servers which provide DNS records.
 
-Set the Hostname
-----------------
+## Set the Hostname
 
 Run the following commands the set the hostname of your Linode:
 
@@ -55,8 +57,7 @@ Finally, open `/etc/hosts` and put in your IP address, fully qualified domain na
     123.123.123.123 example.com example
     ~~~
 
-Install ejabberd
-----------------
+## Install ejabberd
 
 The packages required to install ejabberd and it's dependencies are not available in the standard CentOS repositories. As a result, in order to install ejabberd, we must install the "[EPEL](https://fedoraproject.org/wiki/EPEL)" system. EPEL, or "Extra Packages for Enterprise Linux," is a product of the Fedora Project that attempts to provide Enterprise-grade software that's more current than what is typically available in the CentOS repositories. Enable EPEL with the following command:
 
@@ -67,8 +68,7 @@ Issue the following command to install ejabberd:
     yum update
     yum install ejabberd 
 
-Configure ejabberd
-------------------
+## Configure ejabberd
 
 Ejabberd's configuration files are written in Erlang syntax, which might be difficult to comprehend. Thankfully, the modifications we need to make are relatively minor and straightforward. The primary ejabberd configuration file is located at `/etc/ejabberd/ejabberd.cfg`, for this version. We'll cover each relevant option in turn.
 
@@ -142,8 +142,7 @@ The `ejabberd.cfg` file is complete and well commented, and from this point forw
 
 By default, MUCs or Multi-User-Chats (chatrooms) are accessible on the "conference.[hostname]" subdomain. If you want the public to be able to access MUCs on your domain, you need to create an "A Record" pointing the `conference` hostname (eg. subdomain) to the IP address where the ejabberd instance is running.
 
-Using Ejabberd
---------------
+## Using Ejabberd
 
 Once installed, the use and configuration of ejabberd is uncomplicated. To start, stop, or restart the server, issue the appropriate command to the `/etc/init.d/ejabberd` script:
 
@@ -185,8 +184,7 @@ For more information about the `ejabberdctl` command, issue `ejabberdctl help` o
 
 If you would prefer to administer your ejabberd instance via the web-based interface, log in to `http://example.com:5280/admin/`, where "example.com" is the domain where ejabberd is running. Log in with the full JID and password of one of the administrators specified in the `/etc/ejabberd/ejabberd.cfg` file.
 
-XMPP Federation and DNS
------------------------
+## XMPP Federation and DNS
 
 To ensure that your ejabberd instance will federate properly with the rest of the XMPP network, particularly with Google's "GTalk" service (i.e. the ["@gmail.com](mailto:"@gmail.com)" chat tool) you must set the SRV records for your domain to point to the server where the ejabberd instance is running. We need three records, which can be created in the DNS management tool of your choice:
 
@@ -196,19 +194,6 @@ To ensure that your ejabberd instance will federate properly with the rest of th
 
 The "target" of the SRV record should point to the publicly routable hostname for that machine (e.g. "example.example.com"). The priority and weight should both be set to `0`.
 
-Troubleshooting
----------------
+## Troubleshooting
 
 If you're having problems getting ejabberd to start, or are getting obscure errors on the console, don't be discouraged; the errors generated by Erlang are often abstruse at best. The logs for ejabberd are located in the `/opt/ejabberd-2.1.0_rc2/logs/` directory. If you're getting error messages look in these files. Additionally, if ejabberd crashes, the "image dump" of Erlang will be saved in this directory. Begin your investigations for error messages in these files.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Ejabberd Community Site](http://www.ejabberd.im/)
-- [XMPP Standards Foundation](http://xmpp.org/)
-- [XMPP Client Software](http://xmpp.org/software/clients.shtml)
-
-
-

@@ -11,12 +11,14 @@ modified_by:
   name: Linode
 published: 'Thursday, January 28th, 2010'
 title: Securely Administer Oracle XE with an SSH Tunnel
+external_resources:
+ - '[Using PuTTY](/docs/networking/using-putty#using_ssh_tunnels)'
+ - '[Oracle XE Documentation](http://www.oracle.com/pls/xe102/homepage)'
 ---
 
 Server administrators may wish to use local administration tools to connect to remote Oracle XE home pages. This guide shows you how to do so in a secure manner using an SSH tunnel. It is assumed that you have Oracle XE up and running on your Linode, and that it is configured to listen on `localhost` (127.0.0.1). After following these instructions, you'll be able to connect to `localhost` on your workstation using your favorite browser. The connection will be securely forwarded to your Linode over the Internet.
 
-Create a Tunnel with PuTTY on Windows
--------------------------------------
+## Create a Tunnel with PuTTY on Windows
 
 ### Connecting to your VPS
 
@@ -40,8 +42,7 @@ Visit the "Connection -\> SSH -\> Tunnels" screen in PuTTY. Enter "8080" for the
 
 Once you've connected to the remote server with this tunnel configuration, you'll be able to direct your local browser to `localhost:8080/apex`. Your connection to the remote Oracle XE home page will be encrypted through SSH, allowing you to access your databases without running your Oracle XE home page on a public IP.
 
-Create a Tunnel with oracle-tunnel on Mac OS X or Linux
--------------------------------------------------------
+## Create a Tunnel with oracle-tunnel on Mac OS X or Linux
 
 Save the following Perl script to your local home directory as `oracle-tunnel.pl`:
 
@@ -109,14 +110,3 @@ When you're done with the tunnel, you may stop it with this command:
     ./oracle-tunnel.pl stop
 
 Once you've connected to the remote server with this tunnel configuration, you'll be able to direct your local browser to `localhost:8080/apex`. Your connection to the remote Oracle XE home page will be encrypted through SSH, allowing you to access your databases without running Oracle XE on a public IP.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Using PuTTY](/docs/networking/using-putty#using_ssh_tunnels)
-- [Oracle XE Documentation](http://www.oracle.com/pls/xe102/homepage)
-
-
-

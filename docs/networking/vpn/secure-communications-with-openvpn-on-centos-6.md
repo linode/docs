@@ -11,6 +11,11 @@ modified_by:
   name: Linode
 published: 'Thursday, February 25th, 2010'
 title: Secure Communications with OpenVPN on CentOS 6
+external_resources:
+ - '[Official OpenVPN Documentation](http://openvpn.net/index.php/open-source/documentation/howto.html)'
+ - '[Tunnelblick OS X OpenVPN Client](http://code.google.com/p/tunnelblick/)'
+ - '[OpenVPN GUI for Windows](http://openvpn.se/)'
+ - '[Network Manager GNOME Configuration Management Tool](http://projects.gnome.org/NetworkManager/)'
 ---
 
 OpenVPN, or Open Virtual Private Network, is a tool for creating networking "tunnels" between and among groups of computers that are not on the same local network. This is useful if you have services on a local network and need to access them remotely but don't want these services to be publicly accessible. By integrating with OpenSSL, OpenVPN can encrypt all VPN traffic to provide a secure connection between machines.
@@ -19,8 +24,7 @@ For many private networking tasks, we urge users to consider the many capabiliti
 
 Before installing OpenVPN, we assume that you have followed our [getting started guide](/docs/getting-started/). If you're new to Linux server administration you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics). If you're concerned about securing and "hardening" the system on your Linode, you might be interested in our [security basics](/docs/security/basics) article as well.
 
-Installing OpenVPN
-------------------
+## Installing OpenVPN
 
 The packages required to install OpenVPN and it's dependencies are not available in the standard CentOS repositories. As a result, in order to install OpenVPN, we must install the "[EPEL](https://fedoraproject.org/wiki/EPEL)" system. EPEL, or "Extra Packages for Enterprise Linux," is a product of the Fedora Project that attempts to provide Enterprise-grade software that's more current than what is typically available in the CentOS repositories. Enable EPEL with the following command:
 
@@ -136,8 +140,7 @@ If you need to remove a user's access to the VPN server, issue the following com
 
 This will revoke the ability of users who have the `client1` certificate to access the VPN. For this reason, keeping track of which users are in possession of which certificates is crucial.
 
-Configuring the Virtual Private Network
----------------------------------------
+## Configuring the Virtual Private Network
 
 We'll now need to configure our server file. There is an example file in `/usr/share/doc/openvpn-2.1.4/examples/sample-config-files`. Issue the following sequence of commands to retrieve the example configuration files and move them to the required directories:
 
@@ -174,8 +177,7 @@ Edit the `client.conf` file to reflect the name of your key. In this example we 
 
 Copy the `~/client1.conf` file to your client system. You'll need to repeat the entire key generation and distribution process for every user and every key that will connect to your network.
 
-Connect to the OpenVPN
-----------------------
+## Connect to the OpenVPN
 
 To initialize the OpenVPN server process, run the following command:
 
@@ -191,8 +193,7 @@ Most network management tools provide some facility for managing connections to 
 
 If you use OS X on a Mac, we have found that the [Tunnelblick](http://code.google.com/p/tunnelblick/) tool provides an easy method for managing OpenVPN connections. If you use Windows, the [OpenVPN GUI](http://openvpn.se/) tool may be an effective tool for managing your connections too. Linux desktop users can install the OpenVPN package and use the network management tools that come with your desktop environment.
 
-Using OpenVPN
--------------
+## Using OpenVPN
 
 ### Connect Remote Networks Securely With the VPN
 
@@ -283,16 +284,3 @@ Finally, before attempting to connect to the VPN in any configuration, restart t
     chkconfig dnsmasq on
 
 Once these configuration options have been implemented, you can test the VPN connection by connecting to the VPN from your local machine, and access one of the many websites that will display your IP address. If the IP address displayed matches the IP address of your Linode, all network traffic from your local machine will be filtered through your Linode and encrypted over the VPN between your Linode and your local machine. If, however, your apparent public IP address is different from your Linode's IP address, your traffic is not being filtered through your Linode or encrypted by the VPN.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Official OpenVPN Documentation](http://openvpn.net/index.php/open-source/documentation/howto.html)
-- [Tunnelblick OS X OpenVPN Client](http://code.google.com/p/tunnelblick/)
-- [OpenVPN GUI for Windows](http://openvpn.se/)
-- [Network Manager GNOME Configuration Management Tool](http://projects.gnome.org/NetworkManager/)
-
-
-

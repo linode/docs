@@ -19,8 +19,7 @@ title: Mosh
 >
 > Mosh does not support port forwarding or proxying, and you cannot use mosh to copy files or mount remote directories. You'll still need to use SSH for these tasks.
 
-Benefits
---------
+## Benefits
 
 There are several benefits of using Mosh to connect to your Linode:
 
@@ -30,8 +29,7 @@ There are several benefits of using Mosh to connect to your Linode:
 
 Ready to get started? Let's go!
 
-Preparing Your Firewall
------------------------
+## Preparing Your Firewall
 
 Before installing Mosh, you should verify that your Linode's firewall will allow the Mosh client and server to communicate. If you [followed our instructions](/docs/securing-your-server#sph_creating-a-firewall) to create a firewall with `iptables`, you'll need to edit `/etc/iptables.firewall.rules` and add another rule to allow the Mosh client to connect to your Linode over UDP ports 60000–61000.
 
@@ -47,8 +45,7 @@ Activate the new firewall rule by entering the following command:
 
 Mosh can now communicate with your Linode.
 
-Installing Mosh on Your Linode
-------------------------------
+## Installing Mosh on Your Linode
 
 First, you need to install Mosh on your Linode. Find the instructions for your Linux distribution below.
 
@@ -94,8 +91,7 @@ Mosh is now installed on your Linode.
 
 If you have another Linux distribution installed on your Linode, see the [Mosh website](http://mosh.mit.edu/) for installation instructions.
 
-Installing Mosh on Your Desktop Computer
-----------------------------------------
+## Installing Mosh on Your Desktop Computer
 
 Now you need to install Mosh on your desktop computer. Find the instructions for your computer's operating system below.
 
@@ -117,8 +113,7 @@ Mosh is now installed on your computer.
 
 There is not currently a native Mosh client available for the Windows operating system. Please see [this issue](https://github.com/keithw/mosh/issues/293) for additional information.
 
-Connecting with Mosh
---------------------
+## Connecting with Mosh
 
 The syntax for connecting to a remote server with Mosh is similar to ssh:
 
@@ -132,6 +127,3 @@ You can also connect to an SSH daemon that is running on an alternate port:
     mosh yourusername@host --ssh="ssh -p 2222"
 
 Congratulations! You've just connected to your server with Mosh!
-
-
-

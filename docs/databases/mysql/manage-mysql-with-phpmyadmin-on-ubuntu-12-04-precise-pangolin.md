@@ -11,6 +11,9 @@ modified_by:
   name: Linode
 published: 'Thursday, September 12th, 2013'
 title: 'Manage MySQL with phpMyAdmin on Ubuntu 12.04 (Precise Pangolin)'
+external_resources:
+ - '[phpMyAdmin Home page](http://www.phpmyadmin.net/home_page/index.php)'
+ - '[phpMyAdmin Documentation Page](http://www.phpmyadmin.net/home_page/docs.php)'
 ---
 
 phpMyAdmin is an open source web application written in PHP that provides a GUI to aid in MySQL database administration. It supports multiple MySQL servers and is a robust and easy alternative to using the MySQL command line client.
@@ -19,8 +22,7 @@ We assume you've followed the steps outlined in our [getting started guide](/doc
 
 Be aware, if you have opted to install the `php-suhosin` package, there are some known issues when using phpMyAdmin. Please visit the [Suhosin phpMyAdmin Compatibility Issues page](http://www.hardened-php.net/hphp/troubleshooting.html) for more information about tuning and workarounds.
 
-Preparing Your Apache Configuration
------------------------------------
+## Preparing Your Apache Configuration
 
 Make sure your package repositories and installed programs are up to date by issuing the following commands:
 
@@ -39,8 +41,7 @@ You may need to restart your Apache server daemon for the changes to take effect
 
     /etc/init.d/apache2 restart
 
-Installing phpMyAdmin
----------------------
+## Installing phpMyAdmin
 
 To install the current version of phpMyAdmin on an Ubuntu system use the following command:
 
@@ -48,8 +49,7 @@ To install the current version of phpMyAdmin on an Ubuntu system use the followi
 
 You will be asked which server to automatically configure phpMyAdmin for. Select the web server that you have installed. If you have more than one web server installed, select the best option for your deployment.
 
-Configuring phpMyAdmin
-----------------------
+## Configuring phpMyAdmin
 
 For each virtual host that you would like to give access to your PHPMyAdmin installation, you must create a symbolic link from the document root to the phpMyAdmin installation location (`/usr/share/phpmyadmin`)
 
@@ -60,8 +60,7 @@ Change directory to your document root and issue the following commands to creat
 
 This will create a symbolic link named `phpmyadmin` in your document root.
 
-Securing phpMyAdmin
--------------------
+## Securing phpMyAdmin
 
 ### .htaccess File
 
@@ -86,20 +85,8 @@ You can force phpMyAdmin to use SSL in the phpMyAdmin configuration file `/etc/p
     $cfg['ForceSSL'] = 'true';
     ~~~
 
-Testing Your phpMyAdmin Installation
-------------------------------------
+## Testing Your phpMyAdmin Installation
 
 To test phpMyAdmin, open your favorite browser and navigate to `https://example.com/phpmyadmin`. You will be prompted for a username and password. Use the username "root" and the password you specified when you installed MySQL. Alternatively, you can log in using any MySQL user and retain their permissions.
 
 If you can successfully log in, phpMyAdmin has been installed properly.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [phpMyAdmin Home page](http://www.phpmyadmin.net/home_page/index.php)
-- [phpMyAdmin Documentation Page](http://www.phpmyadmin.net/home_page/docs.php)
-
-
-

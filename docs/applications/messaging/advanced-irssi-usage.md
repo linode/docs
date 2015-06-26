@@ -11,14 +11,20 @@ modified_by:
   name: Linode
 published: 'Monday, March 29th, 2010'
 title: Advanced Irssi Usage
+external_resources:
+ - '[Irssi Script Repository](http://scripts.irssi.org/)'
+ - '[Irssi Themes Page](http://irssi.org/themes/)'
+ - '[An Effective Guide for Using Screen and Irssi](http://quadpoint.org/articles/irssi)'
+ - '[The Open and Free Technology Community](http://www.oftc.net/oftc/)'
+ - '[The Freenode IRC Network](http://freenode.net/)'
+ - '[GNU Screen](http://www.gnu.org/software/screen/)'
 ---
 
 With a flexible plugin architecture and embedded Perl interpreter, you can customize Irssi a great deal beyond the off-the-shelf experience. The following sections outline a number of popular commands, modifications, and plugins.
 
 One of the most powerful features of Irssi is its pervasive tab completion. All commands and command arguments can be completed using the tab key by first typing the first few characters of the command or argument, and then pressing the tab key to cycle through possible completions. Nicknames, channel, and window names are also tab-completable.
 
-Key Bindings and Aliases
-------------------------
+## Key Bindings and Aliases
 
 If you find yourself using a command frequently and want to avoid typing it repeatedly, you can bind it to a key. For example, this command binds `/window last` to `Alt-x` or `Esc-x`:
 
@@ -46,8 +52,7 @@ Perhaps a more useful example is creating aliases for services. Irssi does not p
 
 When you use `/cs` or `/ns`, it will be as if you had typed `/msg chanserv` or `/msg nickserv`, respectively. The `$0-` in the aliases above passes anything after `/cs` or `/ns` on to the service you are trying to use (ChanServ or NickServ in this case). You may add aliases such as these for any other services you use.
 
-Saving State
-------------
+## Saving State
 
 Unless you explicitly save your configuration, every modification that you make to your Irssi session will be lost when you exit Irssi. Issue the following command to Irssi to save all current configuration modifications to your `~/.irssi/config` file:
 
@@ -59,8 +64,7 @@ You may also want to run `/layout save` to save the arrangement of windows so th
 
 When you issue the `/ADDALLCHAN` command, all of the channels that you are currently joined to will be auto-joined the next time you run Irssi. Consider running the above commands with some regularity to ensure that your configuration file reflects the current state of your Irssi session. Remember that you cannot safely edit the configuration file while an Irssi session is running.
 
-Using Plugins
--------------
+## Using Plugins
 
 There are many plugins for Irssi that add a large amount of functionality. To find scripts, examine the [Irssi script repository](http://scripts.irssi.org/). Here are some commands for managing scripts:
 
@@ -72,8 +76,8 @@ There are many plugins for Irssi that add a large amount of functionality. To fi
 
 The following plugins are popular among the Linode community:
 
--   [trackbar.pl](http://www.scripts.irssi.org/scripts/trackbar.pl) generates a horizontal rule in a channel to mark the last time you viewed this channel's window. This is useful if you are monitoring a number of channels and would like to be reminded of the last time you viewed this window.
--   [go.pl](http://www.scripts.irssi.org/scripts/go.pl) provides advanced completion for accessing windows with a `/go` command that offers tab completion for all windows, and is even able to complete based on character combinations from the middle of the channel or private message names.
+-   [trackbar.pl](http://scripts.irssi.org/scripts/trackbar.pl) generates a horizontal rule in a channel to mark the last time you viewed this channel's window. This is useful if you are monitoring a number of channels and would like to be reminded of the last time you viewed this window.
+-   [go.pl](http://scripts.irssi.org/scripts/go.pl) provides advanced completion for accessing windows with a `/go` command that offers tab completion for all windows, and is even able to complete based on character combinations from the middle of the channel or private message names.
 -   [nickcolor.pl](http://scripts.irssi.org/scripts/nickcolor.pl) colorizes the nicknames of all members of a channel, based on activity and join time, in an effort to make the flow of conversation a bit easier to read.
 -   [screen\_away.pl](http://scripts.irssi.org/scripts/screen_away.pl) automatically detects if your Irssi session resides within an attached or detached screen session. If your screen session is detached, this plugin will set your status to away. When you reattach to the session, the plugin unsets the away status.
 -   [highlite.pl](http://scripts.irssi.org/scripts/highlite.pl) collects in one window all channel events like joins, parts, and quits.
@@ -112,12 +116,6 @@ More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [Irssi Script Repository](http://scripts.irssi.org/)
-- [Irssi Themes Page](http://irssi.org/themes/)
-- [An Effective Guide for Using Screen and Irssi](http://quadpoint.org/articles/irssi)
-- [The Open and Free Technology Community](http://www.oftc.net/oftc/)
-- [The Freenode IRC Network](http://freenode.net/)
-- [GNU Screen](http://www.gnu.org/software/screen/)
 
 
 
