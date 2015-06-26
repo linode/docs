@@ -1,13 +1,13 @@
 ---
 author:
-  name: Joel Kruger
-  email: jkruger@linode.com
+    name: Joel Kruger
+    email: docs@linode.com
 description: 'Creating a LAMP stack on a CentOS 7 Linode.'
 keywords: 'LAMP,CentOS,CentOS 7,apache,mysql,php'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Thursday, June 18th, 2015
+modified: Friday, June 26th, 2015
 modified_by:
-  name: Elle Krout
+    name: Elle Krout
 published: 'Tuesday, January 13th, 2015'
 title: LAMP Server on CentOS 7
 external_resources:
@@ -17,7 +17,7 @@ external_resources:
  - '[PHP Documentation](http://www.php.net/docs.php)'
 ---
 
-A LAMP (Linux, Apache, MySQL [MariaDB], PHP) stack is a common web stack used to prepare servers for hosting web content. This guide provides step-by-step instructions for installing a full-featured LAMP stack on a CentOS 7 system.
+A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used to prepare servers for hosting web content. This guide provides step-by-step instructions for installing a full-featured LAMP stack on a CentOS 7 system.
 
 {: .note}
 >
@@ -51,9 +51,9 @@ A LAMP (Linux, Apache, MySQL [MariaDB], PHP) stack is a common web stack used to
     >
     >Before changing any configuration files, it is advised that you make a backup of the file. To make a backup:
     >
-    >       cp /etc/httpd/conf/httpd.conf ~/httpd.conf.backup
+    >     cp /etc/httpd/conf/httpd.conf ~/httpd.conf.backup
 
-    {: .file }
+    {: .file-excerpt }
     /etc/httpd/conf/httpd.conf
     :   ~~~ conf
         KeepAlive Off
@@ -74,9 +74,9 @@ A LAMP (Linux, Apache, MySQL [MariaDB], PHP) stack is a common web stack used to
 
 ### Configure Name-based Virtual Hosts
 
-There are different ways to set up virtual hosts; however, the below method is recommended.
+There are different ways to set up virtual hosts; however, the method below is recommended.
 
-1.  Within the `conf.d` directory create `vhost.conf` to store your virtual host configurations. The below example is a template for website `example.com`; change the necessary values for your domain:
+1.  Within the `conf.d` directory create `vhost.conf` to store your virtual host configurations. The example below is a template for website `example.com`; change the necessary values for your domain:
 
     {: .file-excerpt }
     /etc/httpd/conf.d/vhost.conf
@@ -143,7 +143,7 @@ MySQL is replaced with MariaDB in CentOS 7. MariaDB is a popular drop-in replace
 
         mysql -u root -p
 
-    Enter MariaDB’s root password. You will than be presented to the MariaDB prompt.
+    Enter MariaDB’s root password. You will get the MariaDB prompt.
 
 2.  Create a new database and user with permissions to use it:
 
@@ -156,7 +156,7 @@ MySQL is replaced with MariaDB in CentOS 7. MariaDB is a popular drop-in replace
 
         quit
 
-With Apache and MariaDB installed you are now ready to move on to installing PHP to provide scripting support for your web pages.
+With Apache and MariaDB installed, you are now ready to move on to installing PHP to provide scripting support for your web pages.
 
 
 ## Installing and Configuring PHP
@@ -182,7 +182,7 @@ With Apache and MariaDB installed you are now ready to move on to installing PHP
 
     {: .note}
     >
-    >Ensure that all lines are uncommented. A commented line begins with a semicolon (**;**).
+    >Ensure that all lines noted above are uncommented. A commented line begins with a semicolon (**;**).
 
 3.  Create the log directory for PHP and give the Apache user ownership:
 
