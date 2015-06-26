@@ -130,12 +130,5 @@ Note that if you later install an updated kernel, you'll need to run this comman
 
         Linux li63-119.members.linode.com 3.10.0-229.4.2.el7.x86_64.debug #1 SMP Wed May 13 10:20:16 UTC 2015 x86_64 x86_64 x86_64 GNU/Linux
 
-6.  Generate the configuration file:
-
-    * Arch Linux, Debian, and Ubuntu
-
-          grub-mkconfig -o /boot/grub/grub.cfg
-
-    * CentOS and Fedora
-
-          grub2-mkconfig -o /boot/grub/grub.cfg
+{: .note }
+> If you later install an updated kernel, you may need to update the bootloader again to make it available at boot.
