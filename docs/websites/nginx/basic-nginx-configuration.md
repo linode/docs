@@ -5,7 +5,7 @@ author:
 description: 'Understanding nginx web server configuration, from installation to setting up sites in nginx.conf.'
 keywords: 'nginx,web server,nginx.conf'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['web-servers/nginx/configuration/basic/']
+alias: ['web-servers/nginx/configuration/basic/','websites/nginx/basic-nginx-configuration/index.cfm']
 modified: Tuesday, May 20th, 2014
 modified_by:
   name: Alex Fornuto
