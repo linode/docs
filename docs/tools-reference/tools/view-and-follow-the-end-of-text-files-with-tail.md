@@ -1,22 +1,21 @@
 ---
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Use the Linux command tail to view and follow the end of text files.'
 keywords: 'tail,linux commands,linux,common commands,unix,cli'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['linux-tools/common-commands/tail/']
 modified: Tuesday, May 17th, 2011
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Monday, November 29th, 2010'
 title: View and Follow the End of Text Files with tail
 ---
 
 The `tail` command is a core Linux utility used to view the very end of a text file. Additionally, with `tail` you may "follow" a text file to see new lines as they're added to the file in real time. For related functionality that addresses the beginning of a file, consider the [head utility](/docs/tools-reference/tools/view-the-beginning-of-text-files-with-head).
 
-Using tail
-----------
+## Using tail
 
 Consider the following invocation:
 
@@ -78,6 +77,3 @@ The [grep](/docs/tools-reference/search-and-filter-text-with-grep) tool can be c
 In the first command, only the lines of the `procmail.log` file that begin with the characters `Subject` are printed. All other lines are discarded.
 
 In the second invocation, only entries from the access log that contain the characters `404` will be printed. All other lines are discarded.
-
-
-

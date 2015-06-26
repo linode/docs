@@ -1,7 +1,7 @@
 ---
 author:
   name: Quintin Riis
-  email: qriis@linode.com
+  email: docs@linode.com
 description: Mosh usage and Installation
 keywords: 'mosh, ssh,'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

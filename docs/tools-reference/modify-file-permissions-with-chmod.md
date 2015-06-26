@@ -1,7 +1,7 @@
 ---
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Use the chmod command to modify file permissions on your Linode.'
 keywords: 'TAGS=chmod,commands,reference,file permissions'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -11,14 +11,16 @@ modified_by:
   name: Amanda Folson
 published: 'Thursday, July 1st, 2010'
 title: Modify File Permissions with chmod
+external_resources:
+ - '[Manage File Permission with Users and Groups](/docs/tools-reference/linux-users-and-groups)'
+ - '[Administration Basics](/docs/using-linux/administration-basics)'
 ---
 
 Unix-like systems, including the Linux systems that run on the Linode platform, have an incredibly robust access control system that allows systems administrators to effectively permit multiple users access to a single system without giving every user access to every file on the file system. The `chmod` command is the best and easiest way to modify these file permissions.
 
 This document provides a brief overview of file permissions and the operation of the `chmod` command in addition to a number of practical examples and applications of `chmod`. If you find this guide helpful, please consider our [basic administration practices guide](/docs/using-linux/administration-basics) and the [Linux users and groups guide](/docs/tools-reference/linux-users-and-groups/).
 
-Using Chmod
------------
+## Using Chmod
 
 In this guide, `chmod` refers to recent versions of `chmod` such as those provided by the GNU project. By default, chmod is included with all images provided by Linode, and as part of the common "base" selection of packages provided in nearly all distributions of Linux-based operating systems.
 
@@ -73,15 +75,13 @@ Each digit is independent of the other two. Therefore, 777 creates read, write, 
 
 Either notation is equivalent, and you may chose to use whichever form is more able to clearly express your desires for the permissions.
 
-Making a File Executable
-------------------------
+## Making a File Executable
 
 Issue the following command to change the file permissions so that any user can execute the file "~/group-project.py":
 
     chmod +x ~/group-project.py
 
-Restore Default File Permissions
---------------------------------
+## Restore Default File Permissions
 
 In many cases the default permissions for files on a Unix system are often `600` or `644`. Permissions of `600` mean that the owner has full read and write access to the file, while no other user can access the file. Permissions of `644` mean that the owner of the file has read and write access, while the group members and other users on the system only have read access. Issue one of the following commands to achieve these "default" permissions:
 
@@ -93,21 +93,9 @@ For executable files, the equivalent settings would be `700` and `755` which cor
     chmod 700 ~/generate-notes.py
     chmod 755 ~/regenerate-notes.py
 
-Removing all Group and World Permissions
-----------------------------------------
+## Removing all Group and World Permissions
 
 There are a number of cases where administrators and users would be wise to restrict access to files, particularly files that contain passwords and other sensitive information. The configuration files for msmtp and fetchmail (`~/.msmtprc` and `~/.fetchmailrc`) are two common examples. You can remove all access to these files with commands in one of the following forms:
 
     chmod 600 .msmtprc
     chmod g-rwx,o-rwx .fetchmail
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Manage File Permission with Users and Groups](/docs/tools-reference/linux-users-and-groups)
-- [Administration Basics](/docs/using-linux/administration-basics)
-
-
-

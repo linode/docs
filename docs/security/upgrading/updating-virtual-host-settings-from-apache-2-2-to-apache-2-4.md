@@ -11,6 +11,8 @@ modified_by:
   name: Linode
 published: 'Wednesday, March 12th, 2014'
 title: 'Updating Virtual Host Settings from Apache 2.2 to Apache 2.4'
+external_resources:
+ - '[apache.org](http://httpd.apache.org/docs/2.4/upgrading.html)'
 ---
 
 This guide explains the configuration changes needed to update a standard virtual host setup, such as the one presented [here](/docs/hosting-website#sph_configuring-name-based-virtual-hosts), from Apache 2.2 to Apache 2.4. These configuration updates are necessary, because a working Apache 2.2 virtual host setup will break silently when you upgrade to Apache 2.4. We'll also discuss changes the new version of Apache makes to the default virtual host and module configuration.
@@ -19,15 +21,13 @@ Before you upgrade, you should make a backup of your main Apache 2.2 configurati
 
 This article is not a comprehensive guide to updating from Apache 2.2 to 2.4. For complete information, read the [apache.org guidelines](http://httpd.apache.org/docs/2.4/upgrading.html) on the subject.
 
-Make a Backup
--------------
+## Make a Backup
 
 Make a [backup](/docs/platform/backup-service) of your data before upgrading your Apache software. Upgrading can sometimes cause you to lose data, particularly if you had settings in an Apache configuration file that no longer apply in Apache 2.4. If you use Apache modules, this is especially likely.
 
 Even with the simplest Apache setup, you should back up your Apache settings, modules, and other data in case unforeseen issues arise.
 
-Virtual Host Settings Updates
------------------------------
+## Virtual Host Settings Updates
 
 You will have to make changes to your Apache 2.2 virtual hosts settings to make your websites work again with Apache 2.4. Blindly upgrading from Apache 2.2 to 2.4 will break for these reasons:
 
@@ -118,20 +118,17 @@ If you are utilizing access control rules within your virtual host files, you wi
 
 Check your websites. If you have completed these steps correctly, they should now be working again.
 
-Default Virtual Host
---------------------
+## Default Virtual Host
 
 If your Apache configuration file is replaced during the upgrade, the location of your default virtual host will change from `/var/www` to `/var/www/html`. You may have to disable the default virtual host again, if you don't want it.
 
-Module Configurations
----------------------
+## Module Configurations
 
 If you have any Apache module configurations in your main configuration file that are incompatible with Apache 2.4, this can prevent the software from starting or running. In Apache 2.4, module configurations are no longer included in the main Apache configuration file. Instead, they each have their own configuration files, located in the `mods-available/` or `mods-enabled/` directories, and named something like `module_name.conf`.
 
 The [apache.org upgrade page](http://httpd.apache.org/docs/2.4/upgrading.html) is a good place to start when checking for incompatible modules.
 
-Errors From Non-Updated Settings
---------------------------------
+## Errors From Non-Updated Settings
 
 The following symptoms may indicate that you need to make the changes to your Apache 2.4 configuration that are described in this article. Note that other causes can also produce these symptoms, so if you didn't recently upgrade from Apache 2.2 to 2.4, you should pursue additional [troubleshooting](/docs/web-servers/apache/troubleshooting) avenues.
 
@@ -151,8 +148,7 @@ Solution: Add the `Require all granted` line to each of your virtual host config
 
 Solution: Check for incompatible settings and modules in your Apache configuration files.
 
-Apache Upgrade Dates by Distribution
-------------------------------------
+## Apache Upgrade Dates by Distribution
 
 Different distributions make Apache 2.4 the norm at different times. When you upgrade to one of the distributions in this chart, you will also be upgrading to Apache 2.4 by default.
 
@@ -169,13 +165,3 @@ Different distributions make Apache 2.4 the norm at different times. When you up
 |Arch           | NA          | in the AUR
 
 Use this information to prepare for a smooth upgrade.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [apache.org](http://httpd.apache.org/docs/2.4/upgrading.html)
-
-
-

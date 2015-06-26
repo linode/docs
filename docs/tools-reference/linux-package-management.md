@@ -15,8 +15,7 @@ title: Linux Package Management
 
 Many Linode Library tutorials reference "package managers" and "package management tools." If you are new to the Linux world and don't understand the purpose of these technologies, or if you are familiar with one package management tool but need to learn how to use another, this guide will provide a comparative introduction to the major package management tools.
 
-Package Management Concepts
----------------------------
+## Package Management Concepts
 
 Contemporary distributions of Linux-based operating systems install software in pre-compiled "packages" which contain (for most systems) binaries of software, configuration files, and in most systems, information about dependencies. Furthermore, package management tools keep track of updates and upgrades so that we don't have to hunt down information about bug and security fixes.
 
@@ -35,8 +34,7 @@ In general we recommend, when installing new software, that you install the vers
 
 The remainder of this guide will cover how to use specific package management systems, including how to compile and package software yourself.
 
-Debian and Ubuntu Package Management
-------------------------------------
+## Debian and Ubuntu Package Management
 
 The Debian package management system, based on a tool called `dpkg` with the very popular `apt` system is an incredibly powerful, popular, and useful method of package management. In addition to Debian 5 (known as "Lenny") a number of other prominent distributions of GNU/Linux are derived from the Debian system, most notably the Ubuntu family of distributions.
 
@@ -114,8 +112,7 @@ The layout of sources.list is a bit different in Ubuntu systems. The lines are i
 
 For more information about building your own packages, refer to the [Debian New Maintainers Guide](http://www.debian.org/doc/maint-guide/)
 
-Fedora and CentOS Package Management
-------------------------------------
+## Fedora and CentOS Package Management
 
 Fedora and CentOS are closely related distributions, being upstream and downstream (respectively) from Red Hat Enterprise Linux. Their main differences stem from how packages are chosen for inclusion in their repositories. From a package management perspective the tools are very similar.
 
@@ -187,8 +184,7 @@ The following example is the default configuration for the "Base" repository in 
     gpgcheck=1
     gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-5
 
-Slackware Package Management
-----------------------------
+## Slackware Package Management
 
 *Credit: This section was kindly provided by* [JK Wood](http://slaxer.com/).
 
@@ -242,14 +238,13 @@ To facilitate the ease of management of SlackBuilds, sbopkg.org offers `sbopkg`,
 
 `sbopkg`, like `pkgtool`, offers a text-based menu interface. Of note is the Sync option, which ensures that you are working with the latest version of all SlackBuilds. SlackBuilds can be browsed or searched for. The Changelog can also be browsed. `sbopkg` offers an Updates option, which compares local versions of your packages to remote versions of the SlackBuilds and reports differences. Unlike `slackpkg`, sbopkg does weak checking for updated version numbers, and will not by default overwrite a package it thinks is newer than what's on the server. In addition, `sbopkg` offers the ability to manage the order in which SlackBuilds are built using a queue system, and allows the user to make changes to the SlackBuild locally. Finally, you can view which SlackBuilds.org packages are installed, and also perform such tasks as choosing a different repository version to work with or look for updates to sbopkg itself.
 
-Package Management in ArchLinux with pacman
--------------------------------------------
+## Package Management in Arch Linux with pacman
 
-ArchLinux uses binary packages in a `.tar.gz` format, and also provides a "ports" build system that facilitates building packages.
+Arch Linux uses binary packages in a `.tar.gz` format, and also provides a "ports" build system that facilitates building packages.
 
-The Arch tool, `pacman` is sophisticated, complete, modern and provides rich and helpful output. ArchLinux runs on a "rolling release" schedule, which means packages are added to the main repository when they (and their dependencies) are deemed ready for production. This means that there aren't release versions of Arch, as all systems once upgraded are of equivalent version.
+The Arch tool, `pacman` is sophisticated, complete, modern and provides rich and helpful output. Arch Linux runs on a "rolling release" schedule, which means packages are added to the main repository when they (and their dependencies) are deemed ready for production. This means that there aren't release versions of Arch, as all systems once upgraded are of equivalent version.
 
-Therefore it is incumbent upon administrators of ArchLinux to consider the output of `pacman` carefully before agreeing to upgrade or update any packages.
+Therefore it is incumbent upon administrators of Arch Linux to consider the output of `pacman` carefully before agreeing to upgrade or update any packages.
 
 ### Introducing pacman: An Overview
 
@@ -346,8 +341,7 @@ If you're interested in learning more about Arch and its package management tool
 -   [The Arch Build System](http://wiki.archlinux.org/index.php/Arch_Build_System)
 -   [Pacman](http://wiki.archlinux.org/index.php/Pacman)
 
-Gentoo Linux Package Management
--------------------------------
+## Gentoo Linux Package Management
 
 The Gentoo Linux operating system is a unique and flexible distribution. Gentoo provides the entire operating system in source format. These source packages, in concert with "ebuild" scripts, provide a sophisticated package management system that borrows and builds on many concepts from the BSD world's "ports" system.
 
@@ -388,6 +382,3 @@ The `equery` command depends on the `gentoolkit` package. This will provide info
     emerge [package-name]
 
 This will install the specified package with the appropriate options enabled.
-
-
-

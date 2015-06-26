@@ -1,7 +1,7 @@
 ---
 author:
   name: Stan Schwertly
-  email: sschwertly@linode.com
+  email: docs@linode.com
 description: 'Get in-depth website visitor statistics with Piwik, a self-hosted, open source analytics solution on CentOS 5.'
 keywords: 'open source analytics,piwik centos 5,piwik,analytics,centos,tracking,statistics'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -19,8 +19,7 @@ For the purpose of this guide, we assume that you have a running and functional 
 
 Beyond the basics, Piwik requires a functioning LAMP stack, which you can configure by following the [CentOS 5 LAMP guide](/docs/lamp-guides/centos-5). Make sure you follow the steps for installing PHP and PHP-MySQL support. You will also want to be logged in over SSH as root.
 
-Prerequisites
--------------
+## Prerequisites
 
 Make sure your system is up to date by issuing the following command:
 
@@ -46,8 +45,7 @@ You'll need to restart Apache after installing php-gd and modifying the PHP sett
 
     /etc/init.d/httpd restart
 
-Configure a Dedicated Virtual Host for Piwik
---------------------------------------------
+## Configure a Dedicated Virtual Host for Piwik
 
 This phase of the installation process is optional, but recommended. Here we configure a subdomain and virtual host configuration in Apache specifically for Piwik. This makes it easy to separate the statistics package from the website or websites that Piwik monitors.
 
@@ -78,8 +76,7 @@ Enable the virtual host and restart the web server with the following command:
 
 Remember that the configuration of a special virtual host for Piwik is optional. If you use a web server other than Apache, you will need to pursue different steps to configure the virtual host.
 
-Installing Piwik
-----------------
+## Installing Piwik
 
 First we'll download the latest distribution of the Piwik package. Issue the following two commands:
 
@@ -117,8 +114,7 @@ If you are concerned about the security of the data collected by Piwik, consider
 
 Congratulations! You now have a fully functional statistics and web traffic analytics package running on your own server.
 
-Monitor for Software Updates and Security Notices
--------------------------------------------------
+## Monitor for Software Updates and Security Notices
 
 When running software compiled or installed directly from sources provided by upstream developers, you are responsible for monitoring updates, bug fixes, and security issues. After becoming aware of releases and potential issues, update your software to resolve flaws and prevent possible system compromise. Monitoring releases and maintaining up to date versions of all software is crucial for the security and integrity of a system.
 
@@ -128,6 +124,3 @@ Please monitor the Piwik security announcement posts, and development mailing li
 -   [Piwik Mailing Lists](http://dev.piwik.org/trac#Mailinglists)
 
 When upstream sources offer new releases, repeat the instructions for installing the Piwik software as needed. These practices are crucial for the ongoing security and functioning of your system.
-
-
-

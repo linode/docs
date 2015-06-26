@@ -15,8 +15,7 @@ title: Billing and Payments
 
 We've done our best to create straightforward billing and payment policies. Still have questions? Use this guide to learn how our hourly billing works and how to make payments, update your billing information, get referral credits, and remove services. If you have a question that isn't answered here, please feel free to [contact support](/docs/support).
 
-How Hourly Billing Works
-------------------------
+## How Hourly Billing Works
 
 All services are billed automatically at the end of the month. If you used a service for the entirety of the past month, you'll be billed the **monthly cap** amount for that service. If you used a service for only part of the past month, you'll be billed at the **hourly** rate for that service. If your usage during any given month hits the monthly cap for the service, hourly billing stops. You'll never be billed more than the monthly cap for any service, excluding [bandwidth overages](#bandwidth-overages). In other words, if you've used a service for the entire month, you'll have a predictable amount on your bill.
 
@@ -54,8 +53,7 @@ All services are billed automatically at the end of the month. If you used a ser
 >
 > A large base amount of network transfer is included with all Linode plans, but exceeding that amount can result in a [bandwidth overage](#bandwidth-overages) charge beyond the monthly cap.
 
-Viewing Current Balance
------------------------
+## Viewing Current Balance
 
 To view your current balance, follow the steps below. This shows you the sum of all Linode services used so far in the month, down to the hour.
 
@@ -67,29 +65,25 @@ To view your current balance, follow the steps below. This shows you the sum of 
 
 Here, you can keep track of your outstanding balance. In the example above, the customer has used $45.60 worth of Linode services in the month so far. You can check this as frequently or infrequently as you wish. It gets updated every hour as you use and add Linode services.
 
-Mid-Month Billing
------------------
+## Mid-Month Billing
 
 You may receive a mid-month bill from Linode if you reach a certain threshold of Linode services used within a single month. For many users, this amount will be **$50.00**, although your account history with Linode can adjust that amount. In general, a history of on-time payments to Linode will increase the threshold amount. In the example image in the previous section, the user received a mid-month bill for $50.16 on February 9th.
 
 What does a mid-month bill mean? Your existing active services will stay active. However, you must pay the mid-month bill before you can activate additional Linode services. Once your payment is processed, you may continue adding new services.
 
-If My Linode is Powered Off, Will I Be Billed?
-----------------------------------------------
+## If My Linode is Powered Off, Will I Be Billed?
 
 If your Linode is powered off, but is still added as a service on your account, you will still be billed for it. This is because Linode maintains your saved data and reserves your ability to use other resources like RAM, transfer, etc. even when your Linode is powered off. You will be billed for any other active Linode service, such as Longview Pro or an extra IP, as well.
 
 If you want to stop being billed for a particular Linode service, you need to [remove](#removing-services) it from your account entirely.
 
-Payment Methods
----------------
+## Payment Methods
 
 We accept Visa, MasterCard, Discover, and American Express. We also accept checks and money orders (which *must* be in USD) made out to "Linode, LLC" and sent to our [office address](http://www.linode.com/about/). Please [contact support](/docs/support) before paying with check or money order. Note that we do not accept bank/wire transfers, and we have no plans to support PayPal at this time.
 
 If you overpay, credit will be applied to your account; this allows you to prepay if desired. Service credit is always used before charging the credit card on file for ongoing service.
 
-Making a Payment
-----------------
+## Making a Payment
 
 You can use the Linode Manager to pay an outstanding balance or prepay for Linode services. Here's how:
 
@@ -103,13 +97,11 @@ You can use the Linode Manager to pay an outstanding balance or prepay for Linod
 
 The payment may take a few minutes to be applied to your account. Click the **Account** subtab to view your new account balance.
 
-Bandwidth Overages
-------------------
+## Bandwidth Overages
 
 If you exceed your monthly bandwidth quota, your account will be billed for $0.02/GB at the end of the current month.
 
-Accessing Billing History
------------------------
+## Accessing Billing History
 
 All of your billing history is stored in the Linode Manager. Here's how to access it:
 
@@ -119,8 +111,7 @@ All of your billing history is stored in the Linode Manager. Here's how to acces
 
 Select an invoice to view the charges for a particular month. You can also download invoices in PDF format.
 
-Referral Credits
-----------------
+## Referral Credits
 
 You can receive service credit by referring new users to Linode. When you refer someone who maintains at least one active Linode for 90 days, your account will be issued a $20 service credit. Here's how to find your account referral code and URL:
 
@@ -131,8 +122,7 @@ You can receive service credit by referring new users to Linode. When you refer 
 
 Referral service credits must be used to purchase Linode services, and cannot be refunded as cash.
 
-Updating Credit Card Information
---------------------------------
+## Updating Credit Card Information
 
 Keep your credit card information up to date to prevent service interruptions. Here's how:
 
@@ -148,8 +138,7 @@ Your credit card information will be updated.
 >
 > If you have an outstanding balance, you will need to make a manual payment to bring your account up to date. See the [Making a Payment](#making-a-payment) section for more information.
 
-Removing Services
------------------
+## Removing Services
 
 Our services are provided without a contract, so you're free to remove services from your account at any time. Here's how:
 
@@ -159,8 +148,7 @@ Our services are provided without a contract, so you're free to remove services 
 4.  To remove a NodeBalancer from your account, click the **NodeBalancers** tab, and then select the **Remove** link next to the NodeBalancer you want to remove.
 5.  To remove the Linode Backup Service, please [contact support](/docs/support).
 
-Canceling Your Account
-----------------------
+## Canceling Your Account
 
 You can cancel your account and receive a refund. Here's how:
 
@@ -177,10 +165,6 @@ Your account will be canceled and all of your services will be deactivated.
 >
 > You do not have to cancel your account to prevent recurring charges. Instead, you can remove all Linodes and services from your account via the **Linodes** tab in the Linode Manager. This will allow you to retain your Linode account. If you use Longview with non-Linode services, or want to keep your account name and history, you may find this to be a useful option. See the [Removing Services](#removing-services) section for more information.
 
-More Information
-----------------
+## More Information
 
 If you've signed up before hourly billing, please check out our [Prepaid Billing](/docs/prepaid-billing) guide for more information.
-
-
-

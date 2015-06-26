@@ -1,7 +1,7 @@
 ---
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'A detailed exploration of nginx''s HTTP proxy load balancing services.'
 keywords: 'nginx,proxy,load balancing,web server,http'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -11,6 +11,10 @@ modified_by:
   name: Linode
 published: 'Tuesday, May 11th, 2010'
 title: Use Nginx for Proxy Services and Software Load Balancing
+external_resources:
+ - '[nginx Proxy Module](http://wiki.nginx.org/NginxHttpProxyModule)'
+ - '[HTTP Upstream Module](http://wiki.nginx.org/NginxHttpUpstreamModule)'
+ - '[nginx Configuration](/docs/websites/nginx/basic-nginx-configuration)'
 ---
 
 The nginx web server can act as a very capable software load-balancer, in addition to its more traditional roles serving static content over HTTP and dynamic content using FastCGI handlers for scripts. Because ngnix uses a non-threaded, event-driven architecture, nginx is able to outperform web servers like Apache. This is particularly true in deployments that receive heavy loads.
@@ -19,8 +23,7 @@ Using a proxy is helpful when the demands of serving a single website outgrow th
 
 This document provides an overview of using nginx as a front-end proxy server for other HTTP servers, and as a software load balancer to distribute traffic across a cluster of machines providing HTTP resources. For an introductory guide to configuring nginx, please see our [Basic Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration) guide. If you want a simple nginx deployment with content that uses PHP or Perl scripts, consider following one of our [Installing Nginx](/docs/web-servers/nginx/) guides.
 
-Prerequisites
--------------
+## Prerequisites
 
 Before we begin, make sure you have completed the following:
 
@@ -30,8 +33,7 @@ Before we begin, make sure you have completed the following:
 
 If you're new to Linux server administration, you may be interested in our [introduction to Linux basics](/docs/tools-reference/introduction-to-linux-concepts) guide, [Beginner's Guide](/docs/beginners-guide/) and [Administration Basics](/docs/using-linux/administration-basics) guide.
 
-How It Works: Front-End Proxy Services with Nginx
--------------------------------------------------
+## How It Works: Front-End Proxy Services with Nginx
 
 When a request reaches the nginx front-end proxy server, here's an overview of the process that occurs:
 
@@ -39,8 +41,7 @@ When a request reaches the nginx front-end proxy server, here's an overview of t
 2.  nginx sends a second *proxied* request to a specified server, and gets a response.
 3.  nginx returns the result of that request to the original requester.
 
-Configuring Apache for Port Listening
--------------------------------------
+## Configuring Apache for Port Listening
 
 In this section, you'll configure Apache to listen on an alternate port so it can respond to the nginx front end.
 
@@ -210,8 +211,7 @@ In this section, you'll configure Apache to listen on an alternate port so it ca
 
     In this example, requests are made for resources under `http://example.com/pictures/`, then passed to a server running on port `8080` of the LAN IP address `192.168.3.106`. Without the `proxy_redirect` directive, the `Location:` header of the HTTP response would return the location for a request of `http://example.com/team.jpg` as `http://192.168.3.106:8080/team.jpg`. By adding the `proxy_redirect` directive, proxied requests return the expected `Location:` header.
 
-Software Load Balancing
------------------------
+## Software Load Balancing
 
 In addition to using nginx as a front end proxy to pass requests to other web servers, nginx can also serve as the front end for clusters of servers, and even as a software load balancer.
 
@@ -309,14 +309,3 @@ Here is a more advanced configuration, where seven server components running on 
 -   The `ip_hash` directive cannot be combined with the additional arguments shown in the example above.
 
 Using these arguments, you can use nginx to manage the behavior and distribution of load across a cluster of servers.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [nginx Proxy Module](http://wiki.nginx.org/NginxHttpProxyModule)
-- [HTTP Upstream Module](http://wiki.nginx.org/NginxHttpUpstreamModule)
-- [nginx Configuration](/docs/websites/nginx/basic-nginx-configuration)
-
-

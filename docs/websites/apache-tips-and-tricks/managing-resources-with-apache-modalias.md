@@ -8,17 +8,23 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-servers/apache/configuration/managing-resources-with-apache-alias/']
 modified: Monday, August 22nd, 2011
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Wednesday, February 24th, 2010'
 title: 'Managing Resources with Apache mod_alias'
+external_resources:
+ - '[Apache Installation](/docs/web-servers/apache/)'
+ - '[LAMP Stack Guides](/docs/lamp-guides/)'
+ - '[Guide for Redirecting URLs](/docs/web-servers/apache/configuration/redirecting-urls)'
+ - '[Guide for URL Rewriting with Apache](/docs/web-servers/apache/configuration/rewriting-urls)'
+ - '[Troubleshooting Apache](/docs/web-servers/apache/troubleshooting/)'
+ - '[Linode User Community](http://linode.com/community/)'
 ---
 
 In many cases, all of the resources served by an Apache host are located in that host's `DocumentRoot`. The `DocumentRoot` is a directory specified in the `<VirtualHost>` configuration block. This directory is intended to represent the various files, directories, and resources that users access over HTTP on the file system. However, it is common for administrators to provide HTTP access to a resource on the file system which is *not* located in the `DocumentRoot`. While Apache will follow symbolic links in some situations, this can be difficult to maintain. As a result Apache makes it possible to specify an `Alias` that connects a location in the request to an alternate location.
 
 This document explains how to use the `Alias` directive to manage resources on the file system while still providing access via HTTP. Furthermore, this guide assumes you have a working installation of Apache and have access to modify configuration files. If you have not installed Apache, you might want to consider one of our [Apache installation guides](/docs/web-servers/apache/) or [LAMP stack installation guides](/docs/lamp-guides/). If you want a more thorough introduction to Apache configuration, consider our [Apache configuration basics](/docs/web-servers/apache/configuration/configuration-basics) and [Apache configuration structure](/docs/web-servers/apache/configuration/configuration-structure) documents.
 
-Creating Aliases
-----------------
+## Creating Aliases
 
 Typically, Virtual Host configurations specify a `DocumentRoot` which specifies a directory named, by convention, `public_html/` or `public/`. If the document root for the `example.com` virtual host is `/srv/www/example.com/public_html/`, then a request for `http://www.example.com/index.htm` will return the file located at `/srv/www/example.com/public_html/index.htm`.
 
@@ -59,18 +65,3 @@ Apache Configuration
 In this example, requests for URLs such as `http://example.com/code/projects/lollipop` and `http://example.com/code/projects/glorishears` will be served resources in `/srv/git/projects/lollipop` and `/srv/git/projects/glorishears` respectively. However, `http://example.com/code/projects` would be served from `/srv/www/example.com/public_html/code/projects/` rather than `/srv/git/projects/`, because of the trailing slash in the alias to `/code/projects/(.+)`.
 
 Although the potential use case for `Alias` is somewhat narrow, the functionality is very powerful for maintaining a secure and well organized web server.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Apache Installation](/docs/web-servers/apache/)
-- [LAMP Stack Guides](/docs/lamp-guides/)
-- [Guide for Redirecting URLs](/docs/web-servers/apache/configuration/redirecting-urls)
-- [Guide for URL Rewriting with Apache](/docs/web-servers/apache/configuration/rewriting-urls)
-- [Troubleshooting Apache](/docs/web-servers/apache/troubleshooting/)
-- [Linode User Community](http://linode.com/community/)
-
-
-

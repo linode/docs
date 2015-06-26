@@ -1,7 +1,7 @@
 ---
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Practical examples for using sed to transform text files and streams.'
 keywords: 'sed,find and replace,regular expression,unix'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -11,14 +11,15 @@ modified_by:
   name: Amanda Folson
 published: 'Thursday, July 1st, 2010'
 title: Manipulate Text from the Command Line with sed
+external_resources:
+ - '[Administration Basics](/docs/using-linux/administration-basics)'
 ---
 
 The traditional Unix utility `sed` makes it possible to manipulate strings and streams of text from the command line without using a text editing application. `sed` is useful in a number of different contexts, including finding and replacing strings of text in a large number of files, manipulating text for [Stack Scripts](http://linode.com/stackscripts/) and other kinds of scripts, as well as a component in basic shell scripting.
 
 This document provides a gentle overview of `sed` usage, accompanied by a number of practical applications of `sed`. If you find this guide helpful, please consider our guide to [basic administration practices](/docs/using-linux/administration-basics) or the rest of the [Tools & Reference section](/docs/tools-reference/).
 
-Using Sed
----------
+## Using Sed
 
 In this guide, `sed` refers to recent versions of "GNU sed" which are included by default in all images provided by Linode, and as part of the common "base" selection of packages provided in nearly all distributions of Linux-based operating systems.
 
@@ -61,8 +62,7 @@ Sed uses regular expressions in the "search" part of the substitution syntax. Mo
 
 While these characters provide the foundation of writing matching patterns, there are other significant characters and powerful matching abstractions. Documenting the full capabilities of the `sed` regular expression syntax is beyond the scope of this guide; however you can learn more about `sed` commands using the `info sed` command.
 
-Finding and Replacing Strings within files Using Sed
-----------------------------------------------------
+## Finding and Replacing Strings within files Using Sed
 
 In some cases, the "in place" substitution with the `-i` argument provides the desired behavior. However, if you want to test a sed operation, or provide a "safety net", consider the following command:
 
@@ -72,8 +72,7 @@ In this case, the existing file is copied to `~/roster.txt.bak` and the replacem
 
 The `g` option appended to the substitution statement sets a "global" mode that forces `sed` to replace multiple instances of the match on the same line.
 
-Changing File Extensions with Sed
----------------------------------
+## Changing File Extensions with Sed
 
 It's possible to use `sed` to modify streams of text in shell scripts. Consider the following bash function:
 
@@ -90,21 +89,10 @@ bash function
 
 When this function is called, the following operations are performed: for every item `i` (the file names in the current directory,) the move command (`mv`) is issued with the existing file name and the old file name filtered through a `sed` function. The `sed` function matches for the string of characters `.txt` at the end of the file name, and replaces that with `.text`. If the sed script fails to match, the original file name will be output and the move will fail.
 
-Deleting Lines From Files Using Sed
------------------------------------
+## Deleting Lines From Files Using Sed
 
 Consider the following expression:
 
     sed -i '56d' ~/.ssh/known_hosts
 
 In this command, the 56th line of the ssh "known hosts" file will be deleted. Commands in this form are useful for deleting a host key for a host that has changed from the `known_hosts` file, as is the case after redeploying a system or moving an IP or domain to a new host.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Administration Basics](/docs/using-linux/administration-basics)
-
-
-

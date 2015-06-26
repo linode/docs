@@ -11,12 +11,13 @@ modified_by:
   name: Lukas Sabota
 published: 'Monday, November 16th, 2009'
 title: Multiple SSL Sites Using SubjectAltName
+external_resources:
+ - '[OpenSSL Documentation](http://www.openssl.org/docs/)'
 ---
 
 If you're generating your own SSL certificates, you may wish to create a certificate that is valid for multiple DNS names. Using this approach, you can host multiple SSL sites on a single IP address. We assume you've completed the steps detailed in our [getting started guide](/docs/getting-started/), and that you're logged into your Linode as root via an SSH session.
 
-Install OpenSSL
----------------
+## Install OpenSSL
 
 Issue the following command to install required packages for OpenSSL, the open source SSL toolkit.
 
@@ -32,8 +33,7 @@ CentOS/Fedora users:
     yum install openssl
     mkdir /etc/ssl/localcerts
 
-Generate the Certificate
-------------------------
+## Generate the Certificate
 
 Edit the file `openssl.cnf`, inserting the following line immediately before the "HOME" entry. On Debian and Ubuntu systems this file can found at `/usr/lib/ssl/openssl.cnf`, on CentOS and Fedora it can be found at `/etc/pki/tls/openssl.cnf`.
 
@@ -86,13 +86,3 @@ OpenSSL will ask you for several configuration values. Enter values appropriate 
     Email Address []:support@mydomain.com
 
 You'll need to configure the applicable server software on your Linode to use the newly generated certificate. After accepting an initial warning regarding the certificate for the first domain you access over SSL, you should be able to access the domains you specified over SSL without further warnings.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [OpenSSL Documentation](http://www.openssl.org/docs/)
-
-
-

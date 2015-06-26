@@ -11,6 +11,12 @@ modified_by:
   name: Alex Fornuto
 published: 'Monday, January 18th, 2010'
 title: Basic Nginx Configuration
+external_resources:
+ - '[Nginx guides in the Linode Library](/docs/web-servers/nginx/)'
+ - '[Nginx community documentation](http://wiki.nginx.org)'
+ - '[LEMP Application Stack guides in the Linode Library](/docs/lemp-guides/)'
+ - '[Nginx Website](http://wiki.nginx.org/Main)'
+ - '[Nginx log module documentation](http://nginx.org/en/docs/http/ngx_http_log_module.html)'
 ---
 
 Nginx is a lightweight, high performance web server designed to deliver large amounts of static content quickly with efficient use of system resources. Nginx's strong point is its ability to efficiently serve static content, like plain HTML and media files. Some consider it a less than ideal server for dynamic content.
@@ -25,8 +31,7 @@ All Nginx configuration files are located in the `/etc/nginx/` directory. The pr
 >
 > This is where the files will be located if you install Nginx from the package manager. Other possible locations include `/opt/nginx/conf/`.
 
-Prerequisites
--------------
+## Prerequisites
 
 Before we begin, make sure you have completed the following:
 
@@ -36,8 +41,7 @@ Before we begin, make sure you have completed the following:
 
 If you're new to Linux server administration, you may also be interested in our [Beginner's Guide](/docs/beginners-guide/) and [Administration Basics Guide](/docs/using-linux/administration-basics).
 
-Before You Start
-----------------
+## Before You Start
 
 The following sections cover a few concepts and safeguards that should be reviewed before making any changes to your Nginx configuration.
 
@@ -59,8 +63,7 @@ Now you're ready to make changes to your Nginx configuration. Whenever you make 
 
 To completely stop or start the service, replace `reload` with `start` or `stop`.
 
-Introduction to Syntax
-----------------------
+## Introduction to Syntax
 
 This section showcases an excerpt from the beginning of the default configuration file, `/etc/nginx/nginx.conf`:
 
@@ -87,8 +90,7 @@ Normally, you will not need to change anything in this first section. Instead, w
 -   Brackets are sometimes nested inside each other for multiple sets of sub-directives. If you add or edit a section with nested brackets, make sure they all come in opening and closing pairs.
 -   White space characters (tabs, spaces, and new line characters) are not interpreted by Nginx. This doesn't mean that they aren't important, though! Using indentation in a standardized way will greatly improve the readability of your file and make it easier for you to keep up with maintenance in the long run.
 
-Understanding How Nginx Works
------------------------------
+## Understanding How Nginx Works
 
 Now that we understand the syntax, let's get into the nuts and bolts of Nginx. First we'll go over the core directives in the `nginx.conf` file, which define the basic behavior of the web server. Then we'll explain the `HTTP` block in greater detail and some of the more commonly adjusted variables. From there we'll move to the `server` block, and virtual host configuration files. This is the section you will edit the most when defining the websites you'll host with Nginx.
 
@@ -544,8 +546,7 @@ Let's analyze what happens during a few requests:
 
 **Returns:** Nginx will use the FastCGI handler to execute the file located at `/srv/www/example.com/public_html/squire/roster.pl` and return the result.
 
-Best Practices
---------------
+## Best Practices
 
 The examples and explanations in the previous sections should help you learn to configure your Nginx server with elegance and confidence. In this section, we'll look at a few best practices for keeping your Nginx configuration organized:
 
@@ -570,17 +571,3 @@ The examples and explanations in the previous sections should help you learn to 
 > You can also use a relative path, if desired.
 
 -   Name your files with a consistent pattern. Keeping your files well-organized and cleanly formatted will greatly reduce the burden of maintaining an Nginx server.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Nginx guides in the Linode Library](/docs/web-servers/nginx/)
-- [Nginx community documentation](http://wiki.nginx.org)
-- [LEMP Application Stack guides in the Linode Library](/docs/lemp-guides/)
-- [Nginx Website](http://wiki.nginx.org/Main)
-- [Nginx log module documentation](http://nginx.org/en/docs/http/ngx_http_log_module.html)
-
-
-

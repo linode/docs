@@ -11,27 +11,29 @@ modified_by:
   name: Linode
 published: 'Thursday, November 8th, 2012'
 title: 'Discussion Forums with phpBB on Ubuntu 12.04 (Precise Pangolin)'
+external_resources:
+ - '[phpBB Styles Database](http://www.phpbb.com/styles)'
+ - '[Styles Forum](http://www.phpbb.com/community/viewforum.php?f=80)'
+ - '[phpBB Modifications](http://www.phpbb.com/mods/)'
+ - '[Modifications Forum](http://www.phpbb.com/community/viewforum.php?f=81)'
 ---
 
 phpBB is one of the most widely used open source forum solutions. It is easy to install and free to use, along with being fully customizable. If you don't want to spend money on other forum software like vBulletin, consider using phpBB.
 
 For this guide, we'll assume you've already completed the [getting started](/docs/getting-started/) guide and have a working [LAMP stack](/docs/lamp-guides/) on your Linode. You should be connected to your server via SSH and logged in as root.
 
-Prerequisites
--------------
+## Prerequisites
 
 Before installing phpBB, make sure your system is up to date. Enter the following commands, one by one, and install any available updates:
 
     apt-get update
     apt-get upgrade
 
-Deciding How to Install phpBB
------------------------------
+## Deciding How to Install phpBB
 
 There are two ways to install phpBB. You can install the phpBB packages from the Ubuntu repository, or you can compile and install phpBB from source. Installing the packages is faster and makes things easier to maintain, but compiling from source is a good option for users who need to customize the install.
 
-Installing Packages
--------------------
+## Installing Packages
 
 Here's how to install the phpBB packages from the Ubuntu repository:
 
@@ -53,8 +55,7 @@ Now that phpBB is installed on your Linode, you can use a web browser to access 
 
 You can log in with `admin` username and the password you created during in the installation process.
 
-Compiling and Installing from Source
-------------------------------------
+## Compiling and Installing from Source
 
 If you decide to compiling and install phpBB from source, get started by installing the `php5-gd` and `imagemagick` packages. Enter the following command:
 
@@ -116,16 +117,3 @@ Please monitor the phpBB security announcement posts and community forums to ens
 -   [phpBB Community Forums](http://www.phpbb.com/community/index.php)
 
 When upstream sources offer new releases, repeat the instructions for installing the phpBB software as needed. These practices are crucial for the ongoing security and functioning of your system.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [phpBB Styles Database](http://www.phpbb.com/styles)
-- [Styles Forum](http://www.phpbb.com/community/viewforum.php?f=80)
-- [phpBB Modifications](http://www.phpbb.com/mods/)
-- [Modifications Forum](http://www.phpbb.com/community/viewforum.php?f=81)
-
-
-

@@ -22,8 +22,7 @@ We know it's frustrating when you run into problems with your Linode VPS. That's
 
 If the issue you're experiencing isn't listed here, or if the recommended solution doesn't help, please feel free to [contact our support staff](/docs/support) 24 hours a day, 7 days a week.
 
-VPS is Slow or Unresponsive
----------------------------
+## VPS is Slow or Unresponsive
 
 Use the following checklist if your Linode VPS is running slowly or is completely unresponsive when you try to connect.
 
@@ -152,8 +151,7 @@ Disk input/output (I/O) bottlenecks can occur when an application or service is 
 
 Since `top` only reports what is currently happening, and most I/O issues are temporary, it helps to have a monitoring utility set up so you can see a graph of I/O trends and spot potential issues *before* they become major problems. See the guides in [Server Monitoring](/docs/uptime/monitoring/) for instructions on setting up a server monitoring utility.
 
-Website is Not Loading
-----------------------
+## Website is Not Loading
 
 Use the following checklist if your website is not loading when you try to connect to it.
 
@@ -240,8 +238,7 @@ If you're hosting more than website on your Linode, verify that you correctly co
 
 If you recently added a new IP address for an SSL certificate and it's not working, try rebooting your server. The reboot is required to activate the new IP address. You should have also configured a virtual host for the new IP address. Review the instructions for [Configuring Name Based Virtual Hosts](/docs/websites/hosting-a-website#configuring-name-based-virtual-hosts) and the [web server reference manuals](/docs/web-servers).
 
-Can't Connect via SSH or FTP
-----------------------------
+## Can't Connect via SSH or FTP
 
 Use the following checklist if you cannot connect to your Linode VPS with an SSH or FTP client application.
 
@@ -268,13 +265,11 @@ The SSH and SFTP protocols operate over port 22, so you will not be able to conn
 3.  If that line is not present, your firewall rules may be blocking traffic on ports 80 or 443. Review the instructions in [Securing Your Server](/docs/securing-your-server#sph_creating-a-firewall) to revise and implement new firewall rules.
 4.  Check for default `ACCEPT` and catch-all rules that send traffic transferred over port 22 to `DROP` or `REJECT`.
 
-Forgot My Username or Password
-------------------------------
+## Forgot My Username or Password
 
 If you've forgotten the `root` password or your Linode Manager username or password, follow the instructions in the [Accounts and Passwords](/docs/accounts-and-passwords) guide to recover your username and reset your passwords.
 
-Linode Manager is Displaying "Incorrect" Information
-----------------------------------------------------
+## Linode Manager is Displaying "Incorrect" Information
 
 Use the following checklist if the Linode Manager is displaying "incorrect" information.
 
@@ -294,6 +289,3 @@ If you recently upgraded your plan or added extra storage space, your Linode won
 [![Resize disks.](/docs/assets/944-troubleshooting4-1.png)](/docs/assets/944-troubleshooting4-1.png)
 
 For instructions on resizing disks, see the [Manage Linode Disks](/docs/disk-images-config-profiles#sph_resizing-a-disk-image) guide.
-
-
-

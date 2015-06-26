@@ -1,16 +1,25 @@
 ---
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Deploying and configuring granular access control with the Apache web server.'
 keywords: 'apache,access control,security,http,web server'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-servers/apache/configuration/rule-based-access-control/']
 modified: Monday, August 22nd, 2011
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Monday, December 7th, 2009'
 title: 'Rule-based Access Control for Apache'
+external_resources:
+ - '[LAMP Stack Guides](/docs/lamp-guides/)'
+ - '[Apache Configuration and Administration](/docs/web-servers/apache/)'
+ - '[Apache Configuration Basics](/docs/web-servers/apache/configuration/configuration-basics)'
+ - '[Apache Configuration Structure](/docs/web-servers/apache/configuration/configuration-structure)'
+ - '[Auth-based Access Control](/docs/web-servers/apache/configuration/http-authentication)'
+ - '[Apache Troubleshooting](/docs/web-servers/apache/troubleshooting/)'
+ - '[Apache Documentation](http://httpd.apache.org/docs/2.2/sections.html)'
+ - '[Apache Access Control](http://httpd.apache.org/docs/2.0/mod/mod_access.html#allow)'
 ---
 
 Apache provides a number of tools that allow administrators to control access to specific resources provided by servers. You may already be familiar with [authentication based access control](/docs/web-servers/apache/configuration/http-authentication), which requires that visitors authenticate to the server before gaining access to resources.
@@ -23,8 +32,7 @@ Additional uses for these access rules include blocking particular IP ranges tha
 
 We assume that you have a working installation of Apache and have access to modify configuration files. If you have not installed Apache, you might want to follow one of our [Apache installation guides](/docs/web-servers/apache/) or [LAMP stack installation guides](/docs/lamp-guides/). If you want a more thorough introduction to Apache configuration, please reference our [Apache HTTP server configuration basics](/docs/web-servers/apache/configuration/configuration-basics) and [Apache configuration structure](/docs/web-servers/apache/configuration/configuration-structure) guides.
 
-Examples of Rule Based Access Control
--------------------------------------
+## Examples of Rule Based Access Control
 
 In the examples given in the [Apache configuration structure](/docs/web-servers/apache/configuration/configuration-structure) document, we presented configuration directives that specified rule-based access control conditions for specific resources. You may wish to consult our [Apache configuration structure](/docs/web-servers/apache/configuration/configuration-structure) guide to see a number of examples of these directives in practice.
 
@@ -46,8 +54,7 @@ To parse this in more simple terms:
 
 In short, all hosts except for `192.168.2.101` are denied access to this resource.
 
-Additional Access Control Rules
--------------------------------
+## Additional Access Control Rules
 
 You can specify granular access control rules for your resources by modifying and expanding the example above. The following notes and suggestions provide some insight into some of the more advanced functionality that is possible with these access control systems.
 
@@ -108,20 +115,3 @@ Apache Configuration File
     ~~~
 
 This access control rule works in conjunction with Apache's `mod_setenvif`. First, if a request's referrer matches `searchenginez.com` the environment variable `search_traffic` is set. Next, all hosts are denied access to the resource. Finally, requests that have the environment variable `search_traffic` set are allowed access to the resource. Please consult the official Apache documentation for [mod\_setenvif](http://httpd.apache.org/docs/2.2/mod/mod_setenvif.html) for more information about setting and using environment variables.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [LAMP Stack Guides](/docs/lamp-guides/)
-- [Apache Configuration and Administration](/docs/web-servers/apache/)
-- [Apache Configuration Basics](/docs/web-servers/apache/configuration/configuration-basics)
-- [Apache Configuration Structure](/docs/web-servers/apache/configuration/configuration-structure)
-- [Auth-based Access Control](/docs/web-servers/apache/configuration/http-authentication)
-- [Apache Troubleshooting](/docs/web-servers/apache/troubleshooting/)
-- [Apache Documentation](http://httpd.apache.org/docs/2.2/sections.html)
-- [Apache Access Control](http://httpd.apache.org/docs/2.0/mod/mod_access.html#allow)
-
-
-

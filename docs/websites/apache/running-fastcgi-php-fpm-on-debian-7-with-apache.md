@@ -29,8 +29,7 @@ Additionally, using PHP-FPM allows each virtual host to be configured to run PHP
 
 This guide assumes that you are familiar and comfortable with setting up [LAMP stacks](/docs/websites/lamp) on Debian 7. If you are new to Linux server administration, you may be interested in reading our [Linux System Administration Basics](/docs/tools-reference/linux-system-administration-basics) documentation series. 
 
-Installing mod_fastcgi and PHP-FPM
---------------------------------
+## Installing mod_fastcgi and PHP-FPM
 
 Both `mod_fastcgi` and `PHP-FPM` are part of repositories for aptitude supported by Debian 7. The following are necessary steps to install `mod_fastcgi` and `PHP-FPM`.
 
@@ -84,8 +83,7 @@ Both `mod_fastcgi` and `PHP-FPM` are part of repositories for aptitude supported
         sudo apt-get install libapache2-mod-fastcgi php5-fpm
 
 
-Configuring Apache with PHP-FPM
--------------------------------
+## Configuring Apache with PHP-FPM
 
 We will now configure Apache to pass all requests for PHP files, with the _php_ file extension, to the PHP wrapper through FastCGI.
 
@@ -172,8 +170,7 @@ If you did not get the _Syntax OK_ result, check your configuration for errors.
 
         sudo echo "<?php phpinfo(); ?>" > /var/www/info.php
 
-Configuring PHP Pools (Optional)
---------------------------------
+## Configuring PHP Pools (Optional)
 
 PHP-FPM brings in the concept of pools. Using pools you can control the amount of resources dedicated to each virtual host, and also run PHP scripts as different users.
 
@@ -257,4 +254,3 @@ In this section we will create a pool for the domain example.com which is owned 
         http://example.com/user.php
 
 The page should say **bob**.
-

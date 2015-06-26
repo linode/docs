@@ -11,14 +11,16 @@ modified_by:
   name: Alex Fornuto
 published: 'Monday, January 27th, 2014'
 title: Linode CLI
+external_resources:
+ - '[Github Linode CLI](https://github.com/linode/cli)'
+ - '[Linode API Key](/docs/platform/api/api-key)'
 ---
 
 The Linode Command Line Interface (**CLI**) is an [open-source](https://github.com/linode/cli) command line tool for managing your Linode services. You can reboot your Linode, update an MX record for your domain, manage your NodeBalancers, create a StackScript and more from the command line on any computer, without logging in to the [Linode Manager](https://manager.linode.com/) graphical user interface.
 
 Your Linode [API key](/docs/api/key) is required for the CLI to function.
 
-Installing the CLI
-------------------
+## Installing the CLI
 
 You can install the Linode CLI on any Mac OS X or Linux computer. You can install it on a Linode if you want to, but the typical use case for the CLI is to run it from your home or office workstation. You can use it to manage your Linode account quickly, without the use of a GUI.
 
@@ -82,8 +84,7 @@ In this section, you will learn how to install the Linode CLI manually on any Li
 
         cd cli-master && perl Makefile.PL && sudo make install
 
-Setup
------
+## Setup
 
 If you installed the Linode CLI in a standard location, it should already be added to your PATH variable. That way, you will be able to invoke the CLI with the `linode` command. Otherwise, you will need to manually add the `linode-cli` folder location to your PATH, or call the program directly with the command `/path/to/linode-cli/linode`.
 
@@ -208,8 +209,7 @@ To set up the API for additional Linode users, you can run the `linode configure
 
 To invoke the CLI with a particular username, use the `-u user1` option, with **user1** being your actual username, at the end of the command.
 
-Using the CLI
--------------
+## Using the CLI
 
 Invoke the CLI by prefacing your commands with `linode`. Make sure the `linode-cli` folder has been appended to your PATH variable (see the previous [Setup](#setup) section). In general, commands are in the format:
 
@@ -417,8 +417,7 @@ To see all the available options, check the man pages:
 
     man linode-account
 
-Updating the CLI
-----------------
+## Updating the CLI
 
 Follow these instructions to update your Linode CLI package.
 
@@ -435,14 +434,3 @@ Run the following commands:
 
     sudo apt-get update
     sudo apt-get upgrade linode-cli
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Github Linode CLI](https://github.com/linode/cli)
-- [Linode API Key](/docs/platform/api/api-key)
-
-
-
