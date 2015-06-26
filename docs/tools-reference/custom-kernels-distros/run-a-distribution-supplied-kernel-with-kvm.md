@@ -22,7 +22,7 @@ This guide explains how enable the kernels your OS provides for a Linode on a KV
 
 Before you get started, make sure you follow the steps outlined in our [Getting Started](/docs/getting-started) guide. Your Linode needs to be in a functional state. These steps should be performed as `root` on your Linode, via an SSH session.
 
-## Installing the distribution provided kernel
+## Installing the Distribution Provided Kernel
 
 1.  Ensure that your system is up to date, using the distribution's package manager.
 
@@ -52,7 +52,7 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
 
     * Fedora 22
 
-          yum install kernel-core grub2
+          dnf install kernel-core grub2
 
     * Ubuntu
 
@@ -60,6 +60,11 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
 
     {: .note }
     > During the installation of `grub` you may be asked which disk image to install to. Since Linode provides the grub bootloader, the system need only provide the `grub.cfg` file, and you don't need to install `grub` to your MBR.
+
+5.  Verify the kernel version provided by your distribution in `/boot`:
+ 
+        # ls /boot/vmlinuz*
+        /boot/vmlinuz-3.16.0-4-amd64
 
 ## Configuring Grub
 
@@ -76,6 +81,10 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
 
 2.  Run the following command to update the bootloader.
 
+    * Arch Linux
+
+          grub-mkconfig -o /boot/grub/grub.cfg
+
     * Debian 8 & Ubuntu 15.04
 
           update-grub
@@ -84,17 +93,11 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
 
           grub2-mkconfig -o /boot/grub/grub.cfg
 
-    * Fedora 22
+    * Fedora 22 - Replace with the current kernel version
 
-          dracut /boot/initrd-4.0.5-300.fc22.x86_64.img 4.0.5-300.fc22.x86_64 #replace with the current kernel version
+          dracut /boot/initrd-4.0.5-300.fc22.x86_64.img 4.0.5-300.fc22.x86_64 
           mkdir /boot/grub
           grub2-mkconfig -o /boot/grub/grub.cfg
-
-    * Arch Linux
-
-          grub-mkconfig -o /boot/grub/grub.cfg
-
-
 
 Note that if you later install an updated kernel, you'll need to run this command again to update your GRUB menu. By default, the first kernel in the list will be booted.
 
@@ -126,3 +129,13 @@ Note that if you later install an updated kernel, you'll need to run this comman
 5.  After logging back in to your Linode, run `uname -a` again to confirm the new kernel:
 
         Linux li63-119.members.linode.com 3.10.0-229.4.2.el7.x86_64.debug #1 SMP Wed May 13 10:20:16 UTC 2015 x86_64 x86_64 x86_64 GNU/Linux
+
+6.  Generate the configuration file:
+
+    * Arch Linux, Debian, and Ubuntu
+
+          grub-mkconfig -o /boot/grub/grub.cfg
+
+    * CentOS and Fedora
+
+          grub2-mkconfig -o /boot/grub/grub.cfg
