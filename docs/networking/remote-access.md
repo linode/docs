@@ -131,7 +131,7 @@ Here's how to swap IP addresses:
 8.  Select both of the **Move It** checkboxes to verify that you want the IP addresses switched.
 9.  Click **Do it**.
 
-The IP address(es) will be swapped immediately as your Linode's networking is hotplugged. There may be a delay, however, of a few minutes (usually no more than five to ten) between the IP swap. There may be a brief period of time when your Linode's IP is unreachable due to this delay.
+The IP address(es) will be swapped immediately as your Linode's networking is hotplugged. There may be a delay, however, of a few minutes (usually no more than five to ten) between the IP swap. There may be a brief period of time when your Linode's IP is unreachable due to this delay. Often, rebooting your Linode with the [network helper](https://www.linode.com/docs/platform/network-helper) feature enabled can make this process easier.
 
 ### Adding Private IP Addresses
 
