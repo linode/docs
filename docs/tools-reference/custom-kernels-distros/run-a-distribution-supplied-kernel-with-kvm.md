@@ -113,7 +113,7 @@ Note that if you later install an updated kernel, you'll need to run this comman
 
 3.  At the bottom of the page, click on **Save Changes**.
 
-4.  Reboot your Linode. You can follow along with the boot process in the [LISH console](/docs/networking/using-the-linode-shell-lish).
+4.  Reboot your Linode. You can monitor the boot process in the [LISH console](/docs/networking/using-the-linode-shell-lish).
 
     {: .note }
     > During boot you may see this error message:
@@ -129,6 +129,3 @@ Note that if you later install an updated kernel, you'll need to run this comman
 5.  After logging back in to your Linode, run `uname -a` again to confirm the new kernel:
 
         Linux li63-119.members.linode.com 3.10.0-229.4.2.el7.x86_64.debug #1 SMP Wed May 13 10:20:16 UTC 2015 x86_64 x86_64 x86_64 GNU/Linux
-
-{: .note }
-> If you later install an updated kernel, you may need to update the bootloader again to make it available at boot.
