@@ -5,7 +5,7 @@ author:
 description: 'A basic guide to installing nginx from source on Debian 7 (Wheezy)'
 keywords: 'nginx,http,web servers,debian,debian wheezy,debian 7'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['web-servers/nginx/installation/debian-7-wheezy/','websites/nginx/basic-nginx-installation/','docs/websites/nginx/websites-with-nginx-on-debian-7-wheezy']
+alias: ['web-servers/nginx/installation/debian-7-wheezy/','websites/nginx/basic-nginx-installation/','websites/nginx/websites-with-nginx-on-debian-7-wheezy']
 modified: Tuesday, January 28th, 2014
 modified_by:
   name: Linode
