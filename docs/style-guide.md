@@ -15,7 +15,7 @@ title: Style Guide
 
 So you're interested in writing for us — great! New articles need to match the style and tone of existing Linode Library guides. Before you put keyboard to cursor, take a look at these guidelines.
 
-# Content
+## Content
 
 The introduction for your guide should focus on two things:
 
@@ -30,7 +30,7 @@ Aim for an appropriate level of technical difficulty. For example, an article ab
 
 Instructions should be straightforward, technically accurate, and thoroughly tested. Skip shortcuts and err on the side of clarity, security, and best practices.
 
-# Tone
+## Tone
 
 The tone we use in the Library is friendly and informational — the kind of tone you would use to explain something to a friend, while still getting down to business. A little informality is encouraged, but make sure you use proper spelling and grammar. Here's an example of an article with a [beginner-friendly tone](/docs/migrate-from-shared). Here's an example of an article written for [an advanced audience](/docs/email/postfix/email-with-postfix-dovecot-and-mysql).
 
@@ -38,7 +38,7 @@ Use short, direct sentences, especially when you're writing a single step in a s
 
 Be concise.
 
-# Formatting
+## Formatting
 
 First, a few housekeeping points about file types:
 
@@ -83,11 +83,8 @@ If you reference outside materials, provide a link:
 
 You can find more formatting instructions and detailed examples on the [PHP Markdown Extra](https://michelf.ca/projects/php-markdown/extra/) website, but the tips above should be enough to get you started!
 
-# Topic List and Submission Instructions
+## Topic List and Submission Instructions
 
 Send article submissions to <contribute@linode.com> or create a pull request on [GitHub](https://github.com/linode/docs). For more instructions, and to see a topic list, please visit the [Article Submissions](/docs/contribute) guide.
 
 Thanks for writing for us! We hope to hear from you soon.
-
-
-

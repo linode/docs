@@ -15,18 +15,15 @@ title: NodeBalancer Reference Guide
 
 This is the NodeBalancer reference guide. Please see the [NodeBalancer Getting Started Guide](/docs/platform/nodebalancer/getting-started-with-nodebalancers) for practical examples.
 
-Adding a NodeBalancer
----------------------
+## Adding a NodeBalancer
 
 Click the NodeBalancers tab, and then "Add a NodeBalancer". You must choose the same location as your back-end Linodes for a given deployment.
 
-NodeBalancer Settings
----------------------
+## NodeBalancer Settings
 
 Here you may adjust the NodeBalancer's display label, along with the 'Client Connection Throttle'. The connection throttle limits the number subsequent new connections from the same client IP address.
 
-Configuration
--------------
+## Configuration
 
 Each NodeBalancer config adds another port that the NodeBalancer will listen on. For instance, if you wish to balance both port 80 and 81, you'll need to add two configuration profiles to your NodeBalancer.
 
@@ -80,8 +77,7 @@ Copy your passphraseless private key into the **Private Key** field.
 
 You can [purchase an SSL certificate](/docs/security/ssl/obtaining-a-commercial-ssl-certificate) or [create your own](/docs/security/ssl/how-to-make-a-selfsigned-ssl-certificate).
 
-Health Checks
--------------
+## Health Checks
 
 NodeBalancers perform both passive and active health checks against the backend nodes. Nodes that are no longer responding are taken out of rotation.
 
@@ -103,8 +99,7 @@ Three different Health Check Type exist:
 -   **HTTP Valid Status** - performs an HTTP request on the provided path and requires a 2xx or 3xx response from the backend node.
 -   **HTTP Body Regex** - performs an HTTP request on the provided path and requires the provided PCRE regular expression matches against the request's result body.
 
-Nodes
------
+## Nodes
 
 NodeBalancers work over the private network. Backend nodes must have a private IP configured via [static networking](/docs/networking/configuring-static-ip-interfaces).
 
@@ -128,8 +123,7 @@ Changes to a Node's Mode are applied within 60 seconds.
 
 The use-case for Drain would be to set a node to Drain a day or so in advance of taking the node down. That way existing sessions would likely have ended.
 
-X-Forwarded-For Header
-----------------------
+## X-Forwarded-For Header
 
 NodeBalancers add an X-Forwarded-For (XFF) HTTP header field, which allows your nodes to identify a client's originating IP address. This is useful for logging purposes. Here's an example XFF HTTP header:
 
@@ -149,6 +143,3 @@ If you're using the Nginx web server, you can add the following lines to your Ng
     set_real_ip_from 192.168.255.0/24;
 
 This will allow Nginx to capture the client's IP address in the logs.
-
-
-

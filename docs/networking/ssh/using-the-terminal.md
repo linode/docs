@@ -11,19 +11,19 @@ modified_by:
   name: Dave Russell Jr
 published: 'Sunday, August 2nd, 2009'
 title: Using the Terminal
+external_resources:
+ - '[Command Line at FLOSS Manuals](http://en.flossmanuals.net/gnulinux/index.php)'
 ---
 
 The shell, also known as the "command line interface" or "CLI"", is the primary method for interacting with remote Linux servers. The shell is a rich interface for manipulating your files, managing your system, and scripting common tasks. If you use Linux on your local machine you are likely already familiar with the terminal; Mac OS X users may be familiar with the command line from Terminal.app.
 
 This document provides an overview of common operations and actions in the terminal environment, with some helpful hints for making your terminal experience more successful and rewarding. When you open a terminal either locally or over SSH, you'll be greeted with a message and presented with a prompt. Depending on your system's configuration, the prompt will end with either a dollar sign (`$`) for regular users and a hash (`#`) for root. We're now ready to begin this guide.
 
-The Structure of Commands
--------------------------
+## The Structure of Commands
 
 Most shell commands follow a similar format. They begin with the name of the command (which we can think of as a verb), then have an optional series of modifiers or flags that specific particular functions (adjectives,) and (if necessary) have some sort of object that the command is to affect. If you need help figuring out how a command works, generally sending the command with a `--help` flag will provide information on how to use the command.
 
-File System Navigation
-----------------------
+## File System Navigation
 
 One of the primary functions of the shell is providing a interface to the file system. These commands allow us to move, rename, and copy files on our system.
 
@@ -93,8 +93,7 @@ The `mv` command handles all moving and renaming operations on files and directo
 
     mv ~/etc.hosts.backup ~/backup/etc.hosts
 
-Text Manipulation
------------------
+## Text Manipulation
 
 Linux, like all UNIX-derived systems uses text files to manage configuration and content. As a result the terminal provides many tools for editing and manipulating text and text files.
 
@@ -155,8 +154,7 @@ There are a number of "pager" applications which you might find useful. Pagers t
 
 There's also a `cat` command that reads the content of a file onto standard output line for line. It may also be used to send the contents of a file to a command that doesn't provide an option to read directly from files. Additionally, the command `tac` sends the contents of a file to standard output (your screen by default) in reverse.
 
-System Monitoring
------------------
+## System Monitoring
 
 The terminal can also be useful for monitoring the current status of your server, and there are a number of default and optional applications which can help you monitor your system load.
 
@@ -172,8 +170,7 @@ You may also wish to consider installing the `ncdu` application (with your syste
 
 For more information about monitoring the internals of your Linode, you can refer to the [System Diagnostics](/docs/tools-reference/linux-system-administration-basics#system-diagnostics) guide.
 
-The Terminal Environment
-------------------------
+## The Terminal Environment
 
 The above guide covers only the smallest corner of even the "core" group of commands. We feel the best way to become accustomed to the terminal environment is to actually use the terminal. As you become more familiar and comfortable with the terminal, you will discover additional commands and functionality.
 
@@ -215,13 +212,3 @@ In general, the `bash` terminal provides emacs-like key bindings for navigation.
 -   `C-b` Move cursor back one character
 -   `M-f` Move cursor forward one word
 -   `M-b` Move cursor back one word
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Command Line at FLOSS Manuals](http://en.flossmanuals.net/gnulinux/index.php)
-
-
-

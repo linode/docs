@@ -1,4 +1,5 @@
 ---
+deprecated: true
 author:
   name: Stan Schwertly
   email: sschwertly@linode.com
@@ -76,7 +77,7 @@ At this point your server has the prerequisites to install Magento.
 Installing Magento
 ------------------
 
-Magento requires you to have a cookie on your system in order to download their packages. Alternatively, you can find the latest version of Magento on [this wiki page for installing Magento via ssh](http://www.magentocommerce.com/wiki/groups/227/installing_magento_via_shell_ssh). First we'll switch to the directory in which you'd like to install Magento. For this example we'll be installing Magento to our document root directory. After changing to the proper directory, we'll download the latest version of Magento, unpack it, grant the proper permissions and run `pear`. Run the following commands to install Magento:
+Magento requires you to have a cookie on your system in order to download their packages. Alternatively, you can find the latest version of Magento on [this wiki page for installing Magento via ssh](http://www.magentocommerce.com/wiki/1_-_installation_and_configuration/installing_magento_via_shell_ssh). First we'll switch to the directory in which you'd like to install Magento. For this example we'll be installing Magento to our document root directory. After changing to the proper directory, we'll download the latest version of Magento, unpack it, grant the proper permissions and run `pear`. Run the following commands to install Magento:
 
     cd /srv/www/example.com/public_html/
     wget http://www.magentocommerce.com/downloads/docs/assets/1.4.0.1/magento-1.4.0.1.tar.gz

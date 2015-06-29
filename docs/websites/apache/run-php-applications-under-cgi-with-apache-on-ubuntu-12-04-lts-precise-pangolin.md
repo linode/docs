@@ -11,6 +11,9 @@ modified_by:
   name: Linode
 published: 'Wednesday, October 31st, 2012'
 title: 'Run PHP Applications under CGI with Apache on Ubuntu 12.04 LTS (Precise Pangolin)'
+external_resources:
+ - '[The PHP Homepage](http://php.net/)'
+ - '[Apache 2.2 CGI documentation](http://httpd.apache.org/docs/2.2/howto/cgi.html)'
 ---
 
 In most cases, we recommend using the `mod_php` module to run PHP scripts with the [Apache HTTP server](/docs/web-servers/apache/). This embeds a PHP interpreter in the web server process and makes running PHP applications easy. The embedded interpreter approach, however, is not without challenges. When the PHP interpreter is embedded in the web server process, PHP scripts are executed by and with the permissions of the web server's user. In smaller deployments, this is perfectly acceptable, but in larger deployments and operations it can create security risks. While Apache's `itk` message passing module (mpm) makes it possible to run Apache processes under user processes in a per-virtual host setup, this is incompatible with the embedded interpreter. The `itk` module is compatible with PHP running as a CGI process.
@@ -19,8 +22,7 @@ Additionally, in our experience, `mod_php` is incompatible with the `mod_rails` 
 
 Before beginning this guide we assume that you've completed the [getting started guide](/docs/getting-started/). If you are new to Linux server administration, we recommend considering the [beginner's guide](/docs/beginners-guide/), and the article concerning [systems administration basics](/docs/using-linux/administration-basics). If you're interested in learning more about the Apache HTTP server, we encourage you to consider our extensive documentation on [Apache configuration](/docs/web-servers/apache/).
 
-Set the Hostname
-----------------
+## Set the Hostname
 
 Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
 
@@ -29,8 +31,7 @@ Before you begin installing and configuring the components described in this gui
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-Installing Apache and PHP
--------------------------
+## Installing Apache and PHP
 
 If you have not already installed the Apache HTTP server, issue the following command to install the packages for Apache:
 
@@ -42,8 +43,7 @@ You can now [configure virtual hosting](/docs/web-servers/apache/installation/ub
 
 When this process completes, we can configure Apache to hand PHP scripts to the CGI process for rendering these scripts.
 
-Configure Apache for PHP CGI
-----------------------------
+## Configure Apache for PHP CGI
 
 In order to set up Apache to use PHP-CGI on Ubuntu systems, you must enable the `mod_actions` module. Issue the following command:
 
@@ -85,8 +85,7 @@ When `php-cgi` is configured, you can now safely enable the `itk` message passin
 
     service apache2 restart
 
-Enabling the "itk" Message Passing Module
------------------------------------------
+## Enabling the "itk" Message Passing Module
 
 The default Apache configuration uses a message passing module called `worker` which uses a threaded approach to efficiently handling HTTP requests. An alternative MPM is `prefork` which does not use threads and is compatible with non-thread-safe libraries. Both the `worker` and `prefork` modules require that all requests be handled by a process running under a user with particular permissions. On Ubuntu systems, Apache processes run under the `www-data` user.
 
@@ -107,14 +106,3 @@ Apache Virtual Hosting Configuration Block
     ~~~
 
 In this example, `webeditor` is the name of the user of the specific site in question, and `webgroup` is the name of the user group that "owns" the web server related files and processes for this host. Remember that you must create the user accounts and groups using the `useradd` command. Consider our documentation of [user groups and permissions](/docs/tools-reference/linux-users-and-groups) for more information about creating the necessary users and groups.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [The PHP Homepage](http://php.net/)
-- [Apache 2.2 CGI documentation](http://httpd.apache.org/docs/2.2/howto/cgi.html)
-
-
-

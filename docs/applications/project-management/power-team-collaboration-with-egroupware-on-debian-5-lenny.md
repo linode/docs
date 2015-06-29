@@ -1,4 +1,5 @@
 ---
+deprecated: truew
 author:
   name: Linode
   email: skleinman@linode.com

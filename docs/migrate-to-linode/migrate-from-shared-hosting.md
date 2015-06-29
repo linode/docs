@@ -17,8 +17,7 @@ This guide walks you through migrating an existing website to Linode step by ste
 
 Along the way, you'll be learning a few new concepts. Linode gives you a lot more flexibility and power than a shared host, but those benefits come with a bit more complexity. Just take it one step at a time, and you'll be acting like a professional system administrator in no time!
 
-Prepare Your Domain Name for a New Home
----------------------------------------
+## Prepare Your Domain Name for a New Home
 
 First, we're going to do one little step that's optional, but will save you a huge headache later on. We're going to get your domain name (a domain name is something like **example.com**) ready to move. We're not actually moving it right now; that's the last step. We're just setting it up so that when you are ready to move it, it'll go smoothly.
 
@@ -40,8 +39,7 @@ What we're doing right now is *lowering the TTL* for your domain. Time to Live, 
 
 For more information on the TTL concept, see this section in our [DNS guide](/docs/networking/dns/dns-manager#setting-the-time-to-live-or-ttl).
 
-Back Up Your Old Website and Data Files
----------------------------------------
+## Back Up Your Old Website and Data Files
 
 The next step is to download all of your website files and other unique files (like photos, videos, and configuration files) from your old server. That way, you'll have a copy of everything on your desktop, which you can later upload to Linode.
 
@@ -114,8 +112,7 @@ If you have a MySQL database on your old server - and if you run WordPress or Dr
 
 When you're done, check your desktop (or whatever location you selected on your desktop computer). Make sure all of your files and folders are there. Now you have everything you need from your old host.
 
-Purchase Your Linode
---------------------
+## Purchase Your Linode
 
 Now it's time to get started with Linode. For this part of the guide, you should open up our [Getting Started](/docs/getting-started) guide in a new tab. That guide has detailed instructions for signing up with Linode and getting your Linode server fired up. Keep this guide open too - we'll provide you with some accompanying tips and commentary geared towards people coming over from a shared hosting environment.
 
@@ -125,8 +122,7 @@ Now it's time to get started with Linode. For this part of the guide, you should
 
 Congratulations! Now you have a Linode! The next step is to start installing software on it. In the next section, we'll show you how to use Linode **StackScripts** to easily install some common software on your Linode. If you'd rather do everything by hand, you can follow the rest of the [Getting Started](/docs/getting-started) guide instead.
 
-Install and Configure Software
-------------------------------
+## Install and Configure Software
 
 Linode provides you with some prepackaged software options called [StackScripts](https://www.linode.com/stackscripts/) that make it easy to install everything you need in just a few clicks. We'll go over detailed instructions for installing the basic LAMP web server.
 
@@ -225,8 +221,7 @@ Remember that generic, bare-bones website we saw earlier? It's the default websi
 
 When you're done, you'll have a nice new location all set up for your website. You'll be uploading your files to the **/home/example\_user/public/example.com/public/** directory.
 
-Upload Website and Data Files
------------------------------
+## Upload Website and Data Files
 
 Once you've installed all the underlying software for your Linode and configured Apache, it's time to upload your website files, databases, and other data. For that, we'll break out FileZilla again!
 
@@ -298,8 +293,7 @@ If you use a separate email host like Google Apps, you will need to make sure yo
 
 If you use a mail service at your old host, you will need to think about where you're going to move your email. It's entirely possible to [run your own mail server](/docs/mailserver) at Linode, but that may be a little bit too involved for someone new to a self-managed server. Instead, we recommend that you research a few [external mail services](/docs/mailserver#sph_external-mail-services) and pick one to switch to for email.
 
-Move Your Domain
-----------------
+## Move Your Domain
 
 By this point, your website should be fully functional on your Linode. All that's left is to move your domain, or, to use the technical term, *point* your domain at your Linode IP address. If you decided to lower your TTL, make sure you've waited out the original time period.
 
@@ -327,15 +321,10 @@ By this point, your website should be fully functional on your Linode. All that'
 
 Congratulations! You have now officially moved your website to Linode. Wait a few days to make sure there aren't any hiccoughs. After that, you can feel free to cancel your account with your old host. Your site has made it to Linode.
 
-Security
---------
+## Security
 
 Your server is only as secure as you make it. You should go through all of the instructions in the [Securing Your Server](/docs/securing-your-server) article to make sure your Linode is airtight.
 
-Having Trouble? Contact Linode Support
---------------------------------------
+## Having Trouble? Contact Linode Support
 
 If you've gotten stuck at any stage during this article, feel free to [contact Linode support](/docs/support) for assistance. We're available 24/7.
-
-
-

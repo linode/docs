@@ -11,14 +11,18 @@ modified_by:
   name: Dave Russell Jr
 published: 'Wednesday, April 28th, 2010'
 title: Diagnosing Network Issues with MTR
+external_resources:
+ - '[The Official MTR Web Site](http://www.bitwizard.nl/mtr/)'
+ - '[Understanding the Traceroute Command - Cisco Systems](http://www.cisco.com/en/US/products/sw/iosswrel/ps1831/products_tech_note09186a00800a6057.shtml#traceroute)'
+ - '[Wikipedia article on traceroute](http://en.wikipedia.org/wiki/Trace_route)'
+ - '[Traceroute by Exit109.com](http://www.exit109.com/~jeremy/news/providers/traceroute.html)'
 ---
 
 MTR is a powerful network diagnostic tool that enables administrators to diagnose and isolate networking errors and provide helpful reports of network status to upstream providers. MTR represents an evolution of the `traceroute` command by providing a greater data sample, as if augmenting `traceroute` with `ping` output. This document provides an in depth overview of MTR, the data it generates, and how to properly interpret and draw conclusions based on the data provided by it.
 
 For a basic overview of network diagnostic techniques consider our introduction to [network diagnostics](/docs/using-linux/administration-basics#network_diagnostics). If you suspect that you're having some other issue with your system, you may consider our overview of general [system diagnostics](/docs/using-linux/administration-basics#system_diagnostics). As a matter of course, it is assumed that all Linode deployments will have completed our [getting started guide](/docs/getting-started/) prior to beginning with this document.
 
-Network Diagnostics Background
-------------------------------
+## Network Diagnostics Background
 
 Networking diagnostic tools including `ping`, `traceroute`, and `mtr` use "ICMP" packets to test contention and traffic between two points on the Internet. When a user pings a host on the Internet, a series of ICMP packets are sent to the host, which responds by sending packets in return. The user's client is then able to compute the round trip time between two points on the Internet.
 
@@ -26,8 +30,7 @@ By contrast, tools such as traceroute and MTR send ICMP packets with incremental
 
 Rather than provide a simple outline of the route that traffic takes across the Internet, MTR collects additional information regarding the state, connection, and responsiveness of the intermediate hosts. Because of this additional information, it is recommended that you use MTR whenever possible to provide the most complete overview of the connection between two hosts on the Internet. The following sections outline how to install the MTR software and how to interpret the results provided by this tool.
 
-Installing MTR
---------------
+## Installing MTR
 
 On Debian and Ubuntu systems, issue the following commands to ensure that your system's package repository is up to date, that all installed packages are up to date, and finally to install MTR itself:
 
@@ -57,8 +60,7 @@ To install MTR with MacPorts, run:
 
 If your desktop runs Windows, you can use the windows port of MTR called "WinMTR". You can download this application from the [WinMTR upstream](http://sourceforge.net/projects/winmtr/).
 
-Generating an MTR report
-------------------------
+## Generating an MTR Report
 
 Because MTR provides an image of the route traffic takes from one host to another, you can think of it as a directional tool. Furthermore, the route taken between two points on the Internet can vary a great deal based on location and the routers that are located upstream of you. For this reason it is often recommended that you collect MTR reports in *both* directions for all hosts that are experiencing connectivity issues, or as many hosts as possible.
 
@@ -98,8 +100,7 @@ Replace `12.34.56.78` with the IP address of your home network. If you are unsur
 
 Running MTR on Windows uses a GUI. Open WinMTR, type the destination host in the box as prompted, and select the start option to begin generating report data. You'll need to use the Linux version of MTR to generate the MTR report from your Linode. Please refer to the Linux section above for assistance.
 
-Reading MTR Reports
--------------------
+## Reading MTR Reports
 
 Because MTR reports contain a wealth of information, they may be difficult to interpret at first. Consider the following example from a local connection to `google.com`:
 
@@ -146,8 +147,7 @@ In most circumstances, you may think of the MTR output in three major sections. 
 
 For example if MTR is run from your home PC to your Linode, the first 2 or 3 hops belong to **your** ISP. The last 3 hops belong to the datacenter where your Linode resides. Any hops in the middle are intermediate hops. When running MTR locally, if you see an abnormality in the first few hops near the source, contact your local service provider or investigate your local networking configuration. Conversely, if you see abnormalities near the destination you may want to contact the operator of the destination server or network support for that machine (e.g. Linode). Unfortunately, in cases where there are problems on the intermediate hops, both service providers will have limited ability to address those glitches.
 
-Analyzing MTR Reports
----------------------
+## Analyzing MTR Reports
 
 ### Verifying Packet Loss
 
@@ -221,8 +221,7 @@ ICMP rate limiting can also create the appearance of latency, similar to the way
 
 At first glance, the latency between hops 4 and 5 draws attention. However after the fifth hop, the latency drops drastically. The actual latency measured here is about 40ms. In cases like this, MTR draws attention to an issue which does not affect the service. Consider the latency to the final hop when evaluating an MTR report.
 
-Common MTR Reports
-------------------
+## Common MTR Reports
 
 Some networking issues are novel and require escalation to the operators of the upstream networks. However, there are a selection of common MTR reports that describe common networking issues. If you're experiencing some sort of networking issue and want to diagnose your problem, consider the following examples.
 
@@ -352,24 +351,10 @@ Timeouts can happen for various reasons. Some routers will discard ICMP and no r
 
 Timeouts are not necessarily an indication of packet loss. Packets still reach their destination without significant packet loss or latency. Timeouts may be attributable to routers dropping packets for QoS (quality of service) purposes or there may be some issue with return routes causing the timeouts. This is another false positive.
 
-Resolving Routing and Networking Issues Identified in your MTR report
----------------------------------------------------------------------
+## Resolving Routing and Networking Issues Identified in your MTR report
 
 A majority of routing issues displayed by MTR reports are temporary. Most issues will clear up by themselves within 24 hours. In most cases, by the time you are able to notice a problem with a route, the Internet service provider's monitoring has already reported the problem and administrators are working to fix the issue. In cases where you are experiencing degraded service for an extended period of time, you may choose to alert a provider of the issues you're experiencing. When contacting a service provider, send MTR reports and any other relevant data you may have. Without usable data, providers have no way to verify or fix problems.
 
 While routing errors and issues account for a percentage of network-related slowness, they are by no means the only cause of degraded performance. Network congestion, particularly over long distances during peak times, can become quite congested. Transatlantic and transpacific traffic can be quite variable and are subject to general network congestion. In these cases, it is recommended that you position hosts and resources as geographically close to their targeted audience as possible.
 
 If you are experiencing connectivity issues and are unable to interpret your MTR report, you may open a support ticket including the output of your report in the "Support" tab of the Linode Manager and our technicians can help analyze your issue.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [The Official MTR Web Site](http://www.bitwizard.nl/mtr/)
-- [Understanding the Traceroute Command - Cisco Systems](http://www.cisco.com/en/US/products/sw/iosswrel/ps1831/products_tech_note09186a00800a6057.shtml#traceroute)
-- [Wikipedia article on traceroute](http://en.wikipedia.org/wiki/Trace_route)
-- [Traceroute by Exit109.com](http://www.exit109.com/~jeremy/news/providers/traceroute.html)
-
-
-

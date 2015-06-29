@@ -15,8 +15,7 @@ title: Linux System Administration Basics
 
 This document presents a collection of common issues and useful tips for Linux system administration. Whether you're new to system administration or have been maintaining systems for some time, we hope these tips are helpful regardless of your background or choice in Linux distributions.
 
-Basic Configuration
--------------------
+## Basic Configuration
 
 These tips cover some of the basic steps and issues encountered during the beginning of system configuration. We provide a general [getting started guide](/docs/getting-started) for your convenience if you're new to Linode and basic Linux system administration. Additionally, you may find some of our [Introduction to Linux Concepts guide](/docs/tools-reference/introduction-to-linux-concepts) useful.
 
@@ -81,8 +80,7 @@ In this example, all requests for the test.com" hostname or domain will resolve 
 
 The second entry tells the system to look to `192.168.1.1` for the domain `stick.example.com`. These kinds of host entries are useful for using "private" or "back channel" networks to access other servers in a cluster without needing to access the public network.
 
-Network Diagnostics
--------------------
+## Network Diagnostics
 
 The following tips address the basic usage and functionality of a number of tools that you can use to assess and diagnose network problems. If you suspect connectivity issues, including output of the relevant commands in your [support ticket](/docs/platform/support) can help our staff diagnose your issue. This is particularly helpful in cases where networking issues are intermittent.
 
@@ -155,8 +153,7 @@ Here is the example output of an `mtr` command:
 
 Used without the `--report` flag, `mtr` tracks the speed of the connection in real time until you exit the program. Additionally, be aware that `mtr` will pause for a few moments before generating output. For more information regarding `mtr` consider our [guide to diagnosing network issues with mtr](/docs/linux-tools/mtr).
 
-System Diagnostics
-------------------
+## System Diagnostics
 
 If you're having an issue with your Linode that is neither related to [networking](#network_diagnostics), nor another easily diagnosable application issue, it is worthwhile to rule out "hardware" and operating system level issues. Use the following tools to better diagnose and resolve these kinds of issues.
 
@@ -237,8 +234,7 @@ You can quit at any time by pressing the `F10` or `Q` keys. There are a couple o
 -   The default configuration of `htop` presents all application threads as independent processes, which is non-intuitive. You can disable this by selecting the "setup" option with `F2`, then "Display Options," and then toggling the "Hide userland threads" option.
 -   You can toggle a "Tree" view with the `F5` key that usefully displays the processes in a hierarchy and shows which processes were spawned by which other processes. This is helpful in diagnosing a problem when you're having trouble figuring out what processes are what.
 
-File System Management
-----------------------
+## File System Management
 
 Historically, web developers and editors have used the FTP protocol to transfer and manage files on a remote system. FTP, however, is very insecure and inefficient for managing the files on a system when you have SSH access.
 
@@ -319,8 +315,7 @@ This will delete the `scratch.txt` file from the current directory.
 
 For more information about file system navigation and manipulation, please consider our documentation of [file system navigation](/docs/using-linux/using-the-terminal#file_system_navigation) in the [using the terminal](/docs/using-linux/using-the-terminal) document.
 
-Package Management
-------------------
+## Package Management
 
 Contemporary Linux systems use package management tools to facilitate the installation and maintenance of all software on your system. For more in-depth coverage of this topic, please reference our [package management](/docs/using-linux/package-management) guide.
 
@@ -498,8 +493,7 @@ will return the same list as the plain `apt-cache search python` but the results
 
 You can append `| grep "[string]"` to any of these commands to filter package search results, or `| less` to display the results in the `less` pager, regardless of distribution.
 
-Text Manipulation
------------------
+## Text Manipulation
 
 Among Linux and UNIX-like systems, nearly all system configuration information is stored and manipulated in plain text form. These tips provide some basic information regarding the manipulation of text files on your system.
 
@@ -574,8 +568,7 @@ Since vi and vim are modal editors, their operation is a bit more complex. After
 
 This provides only the most basic outline of how to use these text editors, and there are numerous external resources which will provide a more thorough introduction for more advanced use of this software.
 
-Web Servers and HTTP Issues
----------------------------
+## Web Servers and HTTP Issues
 
 Linodes do not come with any particular web server installed by default. You have the choice and power to install and configure your web server as you see fit. This allows you to deploy a configuration in a way that makes sense for your application and desired use case. The [Linode Library](/) contains a number of documents regarding the installation and maintenance of various [web servers](/docs/web-servers/).
 
@@ -630,8 +623,7 @@ This will allow you to see new error messages as they appear. Often problems can
 -   Configuration errors.
 -   Dynamic code execution or interpretation errors.
 
-DNS Servers and Domain Names
-----------------------------
+## DNS Servers and Domain Names
 
 The *Domain Name System*, or DNS, is the service that the Internet uses to associate the hard to remember and manage IP addresses with more human-usable domain names. These tips address several specific DNS related tasks. To learn more about DNS consider our [overview of the domain name system](/docs/dns-guides/introduction-to-dns). If you are familiar with DNS and just need to figure out how to set up your DNS server, consider our documentation of the [Linode DNS manager](/docs/dns-guides/configuring-dns-with-the-linode-manager).
 
@@ -655,8 +647,7 @@ In order for your server to respond to requests for this domain, you must set up
 
 Once configured, subdomains function identically to first-level domains on your server in almost all respects. If you need to, you can set up HTTP redirection for the new sub domain.
 
-SMTP Servers and Email Issues
------------------------------
+## SMTP Servers and Email Issues
 
 We provide a number of guides that cover [email-related issues](/docs/email/). The following tips attempt to further demystify email management.
 
@@ -707,6 +698,3 @@ Use the command `type msmtp`, to find the location of `msmtp` on your system. Ty
 The `.msmptrc` file needs to be set to mode 600, and owned by the user account that will be sending mail. If the configuration file is located at `/srv/smtp/msmtprc`, you can call mstmp with the following command:
 
     /usr/bin/msmtp --file=/srv/smtp/msmtprc
-
-
-

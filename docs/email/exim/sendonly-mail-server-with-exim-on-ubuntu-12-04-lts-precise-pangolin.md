@@ -11,6 +11,9 @@ modified_by:
   name: Alex Fornuto
 published: 'Monday, November 12th, 2012'
 title: 'Send-only Mail Server with Exim on Ubuntu 12.04 LTS (Precise Pangolin)'
+external_resources:
+ - '[Exim Homepage](http://www.exim.org/)'
+ - '[Email Guides](/docs/email/)'
 ---
 
 Many Linux server applications need to send email. Cron jobs use mail services to deliver reports on jobs that have run, web applications require mail support for user registration functions, and other applications may need to send alerts via SMTP. This guide will help you install and configure the lightweight Exim MTA (Mail Transfer Agent) on your Ubuntu 12.04 LTS (Precise Pangolin) Linux VPS.
@@ -19,16 +22,14 @@ You'll gain the ability to send mail from `localhost` through either a tradition
 
 We assume that you've already followed the steps outlined in our [getting started](/docs/getting-started/) guide. If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics). Make sure you're logged into your Linode as "root" via SSH before proceeding.
 
-Set the Hostname
-----------------
+## Set the Hostname
 
 Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
 
-Install Required Packages
--------------------------
+## Install Required Packages
 
 Make sure you have the "universe" repositories enabled. Your `/etc/apt/sources.list` file should resemble this:
 
@@ -58,8 +59,7 @@ Issue the following commands to update your package repositories, upgrade your s
     apt-get upgrade
     apt-get install exim4-daemon-light mailutils
 
-Configure Exim for Local Mail Service
--------------------------------------
+## Configure Exim for Local Mail Service
 
 Now you're ready to configure Exim for local mail service. Here's how:
 
@@ -99,20 +99,10 @@ Now you're ready to configure Exim for local mail service. Here's how:
 
 [![Exim4 postmaster recipient configuration on Ubuntu 12.04 LTS (Precise).](/docs/assets/1161-08-exim4-ubuntu-12-04-postmater-mail.png)](/docs/assets/1161-08-exim4-ubuntu-12-04-postmater-mail.png)
 
-Test Your Mail Configuration
-----------------------------
+## Test Your Mail Configuration
 
 Issue the following command to send a test email, substituting an external email address for `someone@somedomain.com`.
 
     echo "This is a test." | mail -s Testing someone@somedomain.com
 
 Congratulations! You've configured Exim to send email from your Linux VPS.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Exim Homepage](http://www.exim.org/)
-- [Email Guides](/docs/email/)
-

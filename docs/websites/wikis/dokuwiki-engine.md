@@ -11,14 +11,16 @@ modified_by:
   name: Linode
 published: 'Saturday, April 17th, 2010'
 title: DokuWiki Engine
+external_resources:
+ - '[The Doku Wiki Project Home Page](http://www.dokuwiki.org/dokuwiki)'
+ - '[Doku Wiki Manual](http://www.dokuwiki.org/manual)'
 ---
 
 DokuWiki is a flexible and extensible wiki engine that aims to be easy to manage while providing a rich feature set to enable collaborative document editing and creation for users of all skill levels and technical inclinations. DokuWiki stores wiki pages in text files on the web-server rather than in a database management system, which increases data usability and portability for moderately sized wiki projects without requiring the system resources to power a relational database server.
 
 Before beginning the installation of DokuWiki, we assume that you have completed the [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
 
-Install Prerequisites
----------------------
+## Install Prerequisites
 
 There are a few prerequisites that you will need before embarking on the installation of DokuWiki. These commands will ensure that your system is up to date and that the packages for the Apache web server, PHP programing language, and other dependencies are installed. In Debian and Ubuntu-based systems issue the following commands:
 
@@ -36,8 +38,7 @@ Additionally, you will likely want to configure your Apache instance for virtual
 
 Be sure to configure virtual hosting for your domains. Now we are ready to begin installing DokuWiki. For the purposes of this document, we will assume that the `DocumentRoot` for the virtual host where you will be installing DokuWiki is located at `/srv/www/example.com/public_html/` for the domain `example.com`, and the wiki will be accessible at the address `http://www.example.com/`. Modify the instructions below to conform to the requirements of your own configuration.
 
-Installing DokuWiki
--------------------
+## Installing DokuWiki
 
 At the time of writing, the latest stable version of DokuWiki is 2009-12-25c. However, be sure to check the [DokuWiki upstream](http://www.splitbrain.org/projects/dokuwiki) to ensure that you are downloading the latest version of the software. Issue the following commands with the paths adjusted for the requirements of your specific deployment:
 
@@ -68,8 +69,7 @@ When you have completed these commands and the installation process has finished
 
 Congratulations! Your DokuWiki instance is installed and you will be able to access and edit a functional wiki at `http://example.com/`.
 
-Monitor for Software Updates and Security Notices
--------------------------------------------------
+## Monitor for Software Updates and Security Notices
 
 When running software compiled or installed directly from sources provided by upstream developers, you are responsible for monitoring updates, bug fixes, and security issues. After becoming aware of releases and potential issues, update your software to resolve flaws and prevent possible system compromise. Monitoring releases and maintaining up to date versions of all software is crucial for the security and integrity of a system.
 
@@ -79,14 +79,3 @@ Please monitor the DokuWiki newsletter and mailing lists to ensure that you are 
 -   [DokuWiki Mailing List](http://www.dokuwiki.org/mailinglist)
 
 When upstream sources offer new releases, repeat the instructions for installing the DokuWiki software as needed. These practices are crucial for the ongoing security and functioning of your system.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [The Doku Wiki Project Home Page](http://www.dokuwiki.org/dokuwiki)
-- [Doku Wiki Manual](http://www.dokuwiki.org/manual)
-
-
-

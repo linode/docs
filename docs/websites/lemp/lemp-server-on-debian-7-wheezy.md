@@ -11,14 +11,19 @@ modified_by:
   name: Alex Fornuto
 published: 'Friday, February 7th, 2014'
 title: 'LEMP Server on Debian 7 (Wheezy)'
+external_resources:
+ - '[Basic Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration)'
+ - '[Clustered Web Servers and Software Load Balancing with Nginx](/docs/uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing)'
+ - '[Deploy CGI and Perl Scripts with Perl-FastCGI and Nginx](/docs/web-servers/nginx/perl-fastcgi/debian-6-squeeze)'
+ - '[Use PostgeSQL as an Alternative to MySQL for data storage](/docs/databases/postgresql/debian-6-squeeze)'
+ - '[Deploy Python Applications with uWSGI and Nginx](/docs/web-servers/nginx/python-uwsgi/debian-6-squeeze)'
 ---
 
 This document describes a compatible alternative to the **LAMP** (Linux,Apache, MySQL, and PHP) stack, known as **LEMP**. The LEMP stack replaces the Apache web server component (which is the "A" in LAMP) with Nginx (pronounced "engine x", providing the "E" in LEMP). LEMP is comprised of a variety of open source software used to build and run web servers.
 
 Prior to beginning this guide, please complete the [Getting Started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
 
-Set the Hostname
-----------------
+## Set the Hostname
 
 Before you begin installing and configuring the components described in this guide, please make sure you have followed our instructions for [setting your hostname](/docs/getting-started#sph_setting-the-hostname). Issue the following commands to make sure it is set properly:
 
@@ -27,16 +32,14 @@ Before you begin installing and configuring the components described in this gui
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-Installation Prerequisites
---------------------------
+## Installation Prerequisites
 
 Before beginning with the installation of this web application stack,issue the following commands to ensure that your system's package database is up to date and that all installed software is running with the latest version:
 
     sudo apt-get update
     sudo apt-get upgrade
 
-Install the Nginx Web Server
-----------------------------
+## Install the Nginx Web Server
 
 There are several viable and popular options for installing the Nginx software. The method used here retrieves packages from the Debian Project's software repository and provides a stable and tested version of the web server. Another option would be to retrieve packages compiled by the Debian Backports project. Backports packages are more up to date than the stable packages provided by the Debian project. However, Backports do not necessarily receive the same updates, support, and maintenance that official packages receive.
 
@@ -48,8 +51,7 @@ To install Nginx from the Debian repository, issue the following command:
 
 This will install version 1.2.1-22 of the Nginx server.
 
-Configure Nginx Virtual Hosting
--------------------------------
+## Configure Nginx Virtual Hosting
 
 You will need to configure `server` declarations to specify name-based virtual hosts. Since you are using the packages from the Debian project, create the virtual hosting configuration in the as `/etc/nginx/sites-available/example.com`. Consider the following Nginx virtual host configuration:
 
@@ -87,8 +89,7 @@ The source file is saved, and the site can be re-enabled at any time.
 
 For more information regarding Nginx configuration options, consider our [Overview of Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration).
 
-Deploy PHP with FastCGI
------------------------
+## Deploy PHP with FastCGI
 
 In order to deploy PHP applications, you will need to implement the following "PHP-FastCGI" solution to allow Nginx to properly handle and serve pages that contain PHP code. Begin the deployment process by issuing the following command to install the required dependencies:
 
@@ -170,8 +171,7 @@ When you have completed the modifications to the configuration, make sure that t
 
 You are now able to deploy PHP scripts with with your LEMP stack.
 
-Install MySQL Database Server
------------------------------
+## Install MySQL Database Server
 
 MySQL database engine may be the leading open source relational database engine, and is a popular database solution for web-based applications. The installation is as follows:
 
@@ -210,17 +210,3 @@ MySQL database engine may be the leading open source relational database engine,
 8.  Issue `sudo /etc/init.d/php-fastcgi restart` to restart the PHP service.
 
 You now have a fully functional and fully featured LEMP stack for application deployment.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Basic Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration)
-- [Clustered Web Servers and Software Load Balancing with Nginx](/docs/uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing)
-- [Deploy CGI and Perl Scripts with Perl-FastCGI and Nginx](/docs/web-servers/nginx/perl-fastcgi/debian-6-squeeze)
-- [Use PostgeSQL as an Alternative to MySQL for data storage](/docs/databases/postgresql/debian-6-squeeze)
-- [Deploy Python Applications with uWSGI and Nginx](/docs/web-servers/nginx/python-uwsgi/debian-6-squeeze)
-
-
-

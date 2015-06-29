@@ -26,8 +26,7 @@ Some distributions will determine the netmask based on the block of the IP addre
   - IPv6 - /64 (unless you have another pool assigned to you, you can see this from the "Remote Access" tab of the Linode Manager)
 
 
-Obtain Network Configuration
-----------------------------
+## Obtain Network Configuration
 
 Before you edit any files, you'll need to obtain some information. Log into the [Linode Manager](https://manager.linode.com/) and click the "Remote Access" tab. You'll find your IP addresses (both public and private, if you have a private IP assigned), gateways, netmasks and DNS resolvers.
 
@@ -38,8 +37,7 @@ Please note that although your VPS may have multiple IP addresses assigned to it
 A default gateway should not be specified for private IP addresses. Additionally, the subnet mask for private IP addresses should be set to "255.255.128.0" (**not** "255.255.255.0").
 
 
-Hostname and FQDN Settings
---------------------------
+## Hostname and FQDN Settings
 
 If you haven't already done so, set your system's hostname and FQDN (fully qualified domain name). Your hostname should be something unique; some people name their systems after planets, others after philosophers, etc. Please note that the system's hostname has no relationship to websites or email services hosted on it, aside from providing a name for the system itself. Thus, your hostname should not be "www" or anything else too generic.
 
@@ -116,8 +114,7 @@ Next, edit your `/etc/hosts` file to resemble the following example, replacing "
 The value you assign as your system's FQDN should have an "A" record in DNS pointing to your Linode's IP address.
 For more information on configuring DNS, please see our guide on [configuring DNS with the Linode Manager](/library/dns-guides/configuring-dns-with-the-linode-manager).
 
-DNS Resolver Settings
----------------------
+## DNS Resolver Settings
 
 If you've migrated to a new location, you may need to edit your `/etc/resolv.conf` file so that your Linode can resolve DNS queries. Your nameservers are listed under the "Remote Access" tab. The `search` and `domain` lines are optional, but you should definitely include the `options rotate` line.
 
@@ -133,8 +130,7 @@ In the example below, change the IP addresses to reflect the values shown under 
   options rotate
   ~~~
 
-Static IP Configuration
------------------------
+## Static IP Configuration
 
 ### Debian & Ubuntu
 

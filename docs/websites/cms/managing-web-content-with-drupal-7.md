@@ -1,7 +1,7 @@
 ---
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Installing, configuring, and optimizing the Drupal content management framework on your Linode.'
 keywords: 'drupal,cms,web framework,web application,php,content management system,content management framwork'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

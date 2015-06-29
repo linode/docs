@@ -1,22 +1,21 @@
 ---
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: Use wget to download files on the command line
 keywords: 'wget,command line,linux common commands'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['linux-tools/common-commands/wget/']
 modified: Tuesday, May 17th, 2011
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Monday, October 25th, 2010'
 title: Download Resources from the Command Line with wget
 ---
 
 `wget` is a powerful utility that retrieves files accessible as HTTP or FTP resources and saves them to the local file system. `wget` provides a number of options to allow users to configure how resources are downloaded and saved. It also features a recursive download function which allows you to download a set of linked resources for offline use.
 
-Using wget
-----------
+## Using wget
 
 The `wget` command takes one of the following forms:
 
@@ -51,8 +50,7 @@ When issued at the command line without options, `wget` will download the file s
 
 This document specifies all options for `wget` *before* the URL. However, `wget` accepts these options before *and* after the URL argument. Both forms are functionally equivalent.
 
-Examples
---------
+## Examples
 
 ### Download Content to Standard Output
 
@@ -177,6 +175,3 @@ If you need to control how much bandwidth `wget` uses, you can specify a "rate l
     wget --limit-rate=3k http://example.com/releases/1285786486.tar.gz
 
 This command downloads the `1285786486.tar.gz` file with the operation limited to consume no more than 3 kilobytes a second. The method used to rate limit downloads is more effective for bigger files than for small downloads that complete rapidly.
-
-
-

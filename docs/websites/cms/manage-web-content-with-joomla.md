@@ -1,7 +1,7 @@
 ---
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Using the Joomla! content management system to ease administration overhead for websites.'
 keywords: 'joomla,cms,content management systems'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -17,8 +17,7 @@ Joomla is an advanced "content management system" (CMS) used to facilitate the e
 
 Before installing Joomla, we assume that you have followed our [getting started guide](/docs/getting-started/). If you're new to Linux server administration you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics). Additionally, you will need to follow the [LAMP Guide](/docs/lamp-guides) appropriate for the distribution you have deployed.
 
-Installing Prerequisites
-------------------------
+## Installing Prerequisites
 
 After installing the [LAMP stack](/docs/lamp-guides/) there are a few additional prerequsites that you will need to complete this installation of Joomla. Ensure that your distribution provides `wget` and `unzip` tools. In Debian and Ubuntu based systems issue the following command:
 
@@ -43,8 +42,7 @@ On Gentoo Linux systems issue the following commands to update the package datab
 
 Now we are ready to begin to install Joomla. For the purposes of this document we will assume that the `DocumentRoot` for the virtual host where you will be installing Joomla is located at `/srv/www/example.com/public_html/` for the domain `example.com`.
 
-Download and Install Joomla
----------------------------
+## Download and Install Joomla
 
 At the time of publication the latest stable version of Joomla was 1.5.15. [Consult the upstream](http://www.joomla.org/download.html) to ensure that you're installing the most up to date version of the software. This is important to avoid deploying software with known security holes and resolved bugs. Begin by issuing the following sequence of commands to create the required directories, change directories, download the required files, extract the archive and move the files into the `DocumentRoot`:
 
@@ -60,8 +58,7 @@ These commands create a `src/` folder within the `/srv/www/example.com/` directo
 
 We encourage you to monitor the [Joomla download page](http://www.joomla.org/download.html) for new releases and updates to ensure you're always running the most up to date version of the Joomla software.
 
-Configure Joomla
-----------------
+## Configure Joomla
 
 Before we proceed with the installation of Joomla we must create a configuration file that Joomla can write to. Issue the following sequence of commands:
 
@@ -75,8 +72,7 @@ Now visit your site in your web browser. In the case of our example this would c
 
 Congratulations! You now have a fully functional Joomla powered website!
 
-Monitor for Software Updates and Security Notices
--------------------------------------------------
+## Monitor for Software Updates and Security Notices
 
 When running software compiled or installed directly from sources provided by upstream developers, you are responsible for monitoring updates, bug fixes, and security issues. After becoming aware of releases and potential issues, update your software to resolve flaws and prevent possible system compromise. Monitoring releases and maintaining up to date versions of all software is crucial for the security and integrity of a system.
 
@@ -86,6 +82,3 @@ Please monitor the Joomla developer email lists and security web forum to ensure
 -   [Joomla Security Forum](http://forum.joomla.org/viewforum.php?f=432)
 
 When upstream sources offer new releases, repeat the instructions for installing the Joomla software as needed. These practices are crucial for the ongoing security and functioning of your system.
-
-
-

@@ -15,8 +15,7 @@ title: Rescue and Rebuild
 
 Even the best system administrators have to deal with accidents and unplanned events. Fortunately, the Linode Manager has a number of tools to assist you in the unlikely event that catastrophe strikes your VPS. This guide shows you how to use the tools at your disposal. You can boot your Linode into *rescue mode* to perform system recovery tasks and transfer data off your disks, if necessary. And if all else fails, you can *rebuild* your Linode from a backup or start over with a fresh Linux distribution.
 
-Rescuing
---------
+## Rescuing
 
 If you suspect that your primary filsystem is corrupted, use the Linode Manager to boot your Linode into rescue mode. This is a safe environment for performing many system recovery and disk management tasks. Rescue mode is based on the [Finnix recovery distribution](http://www.finnix.org/), a self-contained and bootable Linux distribution. You can also use rescue mode for tasks other than disaster recovery, such as formatting disks to use different filesystems, copying data between disks, and downloading files from a disk via SSH and SFTP.
 
@@ -142,8 +141,7 @@ The Finnix recovery distribution is based on Debian, so you can use the `apt` pa
 
 The software packages you install will be available as long as your Linode is running in rescue mode.
 
-Rebuilding
-----------
+## Rebuilding
 
 If you can't rescue an existing disk, it's time to rebuild your Linode. There are a couple different ways you can do this. You restore from an existing backup and return your Linode to a previous state. If you don't have backups, you can copy files off an existing disk, erase everything, and start over again from scratch.
 
@@ -181,6 +179,3 @@ Here's how to rebuild your Linode from scratch:
 11. Click **Boot** to turn on the Linode.
 
 Your Linode will boot with the newly-installed Linux distribution. See the [Getting Started guide](/docs/getting-started) to reprovision your server.
-
-
-

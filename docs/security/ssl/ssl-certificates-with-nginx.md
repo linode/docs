@@ -11,14 +11,18 @@ modified_by:
   name: Alex Fornuto
 published: 'Monday, November 8th, 2010'
 title: SSL Certificates with Nginx
+external_resources:
+ - '[Nginx Project Home Page](http://nginx.org)'
+ - '[Nginx Project SSL Documentation](http://wiki.nginx.org/NginxHttpSslModule)'
+ - '[Nginx Basic Configuration Documentation](/docs/websites/nginx/basic-nginx-configuration)'
+ - '[Nginx Installation Documentation](/docs/websites/nginx/)'
 ---
 
 Transport Layer Security (TLS) and Secure Socket Layer (SSL) provide an easy method to encrypt connections between end-users and web servers. SSL uses a certificate authority system to provide identity verification in order to prevent websites from falsely claiming to be another organization or website. This guide outlines how to provide encrypted access to resources using SSL certificates and nginx.
 
 This document assumes that you have completed the [getting started guide](/docs/getting-started/). If you're new to Linux systems administration, we recommend that you read through the [Linux users and groups guide](/docs/tools-reference/linux-users-and-groups) and the [administration basics guide](/docs/using-linux/administration-basics).
 
-Install Nginx With SSL Support
-------------------------------
+## Install Nginx With SSL Support
 
 Before proceeding, ensure that you've compiled nginx with support for SSL. The [nginx installation guides](/docs/websites/nginx/) in the Linode Library provide a more comprehensive explanation on compiling nginx. Follow the appropriate guide for the Linux distribution you deployed and be aware of the following considerations:
 
@@ -27,8 +31,7 @@ Before proceeding, ensure that you've compiled nginx with support for SSL. The [
 -   Take note of the version of nginx you've installed. The method of configuring sites to use SSL with nginx varies slightly between versions of nginx prior to version 0.7.14 and later versions.
 -   To see the current version and compile-time options of your `nginx` installation, issue the command `nginx -V`.
 
-Create and Manage SSL Certificates
-----------------------------------
+## Create and Manage SSL Certificates
 
 Before configuring nginx to use SSL, you must generate SSL certificates. This section outlines the steps for creating SSL certificates and keys for "self-signed" certificates and "certificate signing requests" for commercially-signed certificates.
 
@@ -131,8 +134,7 @@ nginx.conf
 
 You can append as many chain certificates as you require. Make sure that the certificate you generate for your site is at the beginning of the file.
 
-Optimizing Nginx For SSL
-------------------------
+## Optimizing Nginx For SSL
 
 Compared to conventional HTTP, HTTPS (or HTTP with SSL) requires additional overhead and server resources. To manage this load, the developers of nginx recommend the following optimizations to your `nginx.conf` configuration.
 
@@ -161,8 +163,7 @@ nginx.conf
 
 You may now continue to configure virtual hosts for your server.
 
-Configure Basic SSL Virtual Hosts
----------------------------------
+## Configure Basic SSL Virtual Hosts
 
 HTTPS operates on port 443 instead of port 80. Take note of the version of nginx running on your system with the output of `nginx -V` and model your configuration based on the appropriate example.
 
@@ -271,8 +272,7 @@ nginx.conf
     }
     ~~~
 
-Configure Multiple Sites with a Single SSL Certificate
-------------------------------------------------------
+## Configure Multiple Sites with a Single SSL Certificate
 
 If you have access to a certificate that is valid for multiple host names, such as a wild card certificate or a certificate with "subject alternate names", configure nginx in the following manner:
 
@@ -309,8 +309,7 @@ In this example, the wild card certificate is specified once in the root level o
 
 If you are running a version of nginx newer than 0.7.14, omit the `ssl on;` directive and specify the ssl option as an argument to the `listen` directive.
 
-Redirect HTTP Virtual Hosts to HTTPS
-------------------------------------
+## Redirect HTTP Virtual Hosts to HTTPS
 
 If you want to redirect all HTTP traffic for a domain to HTTPS, insert the following `rewrite` directive in a `location / {}` configuration block:
 
@@ -347,16 +346,3 @@ nginx.conf
     ~~~
 
 Modify the configuration of the `ssl` directive if you're using a version of nginx prior to `0.7.14`.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Nginx Project Home Page](http://nginx.org)
-- [Nginx Project SSL Documentation](http://wiki.nginx.org/NginxHttpSslModule)
-- [Nginx Basic Configuration Documentation](/docs/websites/nginx/basic-nginx-configuration)
-- [Nginx Installation Documentation](/docs/websites/nginx/)
-
-
-

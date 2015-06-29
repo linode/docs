@@ -11,12 +11,14 @@ modified_by:
   name: Doug Freed
 published: 'Sunday, September 20th, 2009'
 title: Using PuTTY
+external_resources:
+ - '[PuTTY Documentation](http://www.chiark.greenend.org.uk/~sgtatham/putty/docs.html)'
+ - '[Xming Manual](http://www.straightrunning.com/XmingNotes/manual.php)'
 ---
 
 PuTTY is a free, open source SSH client for Windows and UNIX systems. It provides easy connectivity to any server running an SSH daemon (usually provided by OpenSSH). With this software, you can work as if you were logged into a console session on the remote system.
 
-Obtaining and Running PuTTY
----------------------------
+## Obtaining and Running PuTTY
 
 You can obtain the software from the [PuTTY download page](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html). For Microsoft Windows users, PuTTY is compatible with Windows 95 or greater: nearly every modern Windows computer can run PuTTY. Simply save the program to your desktop and double-click it to begin. You'll be presented with this screen:
 
@@ -34,8 +36,7 @@ The key fingerprints should match; click "Yes" to accept the warning and cache t
 
 The default port for SSH is 22. If the SSH daemon is running on a different port, you'll need to specify it after the hostname on the "Session" screen. PuTTY may also be used to connect to telnet servers, although this protocol isn't commonly deployed on modern Linux servers. Telnet is an insecure protocol, as it transmits all data in cleartext over the network (including login credentials) and includes no method of verifying the identity of remote servers.
 
-Running Remote Graphical Applications over SSH
-----------------------------------------------
+## Running Remote Graphical Applications over SSH
 
 You may wish to run graphical applications hosted on a remote Linux server. This may be securely accomplished using PuTTY. First, you'll need an X11 server for Windows. To download Xming, a free X11 server, visit the [Xming Sourceforge page](http://sourceforge.net/projects/xming/). Accept the defaults presented by the installer and you'll be running an X11 server upon completion of the install process.
 
@@ -55,22 +56,10 @@ Next, you'll need to tell PuTTY to forward X11 connections to your desktop. On t
 
 You can run virtually any X11 app in this manner. The connection will be encrypted through SSH, providing a safe means of interacting with remote graphical systems.
 
-Using SSH Tunnels
------------------
+## Using SSH Tunnels
 
 SSH tunnels allow you to access network services running on a remote server though a secure channel. This is useful in cases where the service you wish to access doesn't run over SSL, or you do notest wish to allow public access to it. As an example, you can use tunneling to securely access a MySQL server running on a remote server. To do so, visit the "Connection -\> SSH -\> Tunnels" screen in PuTTY. Enter "3306" for the "Source port" field and "127.0.0.1:3306" for the "Destination" field, as shown below.
 
 [![Tunneling a remote MySQL connection through SSH with PuTTY on Windows.](/docs/assets/163-putty-04-mysql-ssh-tunnel.png)](/docs/assets/163-putty-04-mysql-ssh-tunnel.png)
 
 Once you've connected to the remote server with this tunnel configuration, you'll be able to direct your local MySQL client to `localhost:3306`. Your connection to the remote MySQL server will be encrypted through SSH, allowing you to access your databases without running MySQL on a public IP.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [PuTTY Documentation](http://www.chiark.greenend.org.uk/~sgtatham/putty/docs.html)
-- [Xming Manual](http://www.straightrunning.com/XmingNotes/manual.php)
-
-
-

@@ -38,7 +38,7 @@ On all of the additional machines you administer that you would like to monitor 
 
     apt-get install munin-node
 
-The machines that you wish to monitor with Munin do not need to run Ubuntu. The Munin project supports monitoring for a large number of operating systems. Consult the Munin project's [installation guide](http://munin.projects.linpro.no/wiki/Documentation) for more information installing nodes on additional operating systems.
+The machines that you wish to monitor with Munin do not need to run Ubuntu. The Munin project supports monitoring for a large number of operating systems. Consult the Munin project's [installation guide](http://munin-monitoring.org/wiki/MuninInstallationLinux) for more information installing nodes on additional operating systems.
 
 Configuring Munin
 -----------------
@@ -54,7 +54,9 @@ The first section of the file contains the paths to the directories used by Muni
 
 > \# dbdir /var/lib/munin \# htmldir /var/cache/munin/www \# logdir /var/log/munin \# rundir /var/run/munin
 
-There are additional directives after the directory location block such as `tmpldir`, which shows Munin where to look for HTML templates, and others that allow you to configure mail to be sent when something on the server changes. These additional directives are explained more in depth on the [munin.conf page of the Munin website](http://munin.projects.linpro.no/wiki/munin.conf). You can also find quick explanations inside the file itself via hash (`#`) comments. Take note that these global directives must be defined prior to defining hosts monitored by Munin. Do not place global directives at the bottom of the `munin.conf` file.
+There are additional directives after the directory location block such as `tmpldir`, which shows Munin where to look for HTML templates, and others that allow you to configure mail to be sent when something on the server changes. These additional directives are explained more in depth on the [munin.conf page of the Munin website](`
+`
+http://munin-monitoring.org/wiki/munin.conf). You can also find quick explanations inside the file itself via hash (`#`) comments. Take note that these global directives must be defined prior to defining hosts monitored by Munin. Do not place global directives at the bottom of the `munin.conf` file.
 
 The last section of the `munin.conf` file defines the hosts Munin retrieves information from. For a default configuration, adding a host can be done in the form shown below:
 
@@ -128,10 +130,10 @@ More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [Munin Homepage](http://munin.projects.linpro.no/)
-- [Munin Exchange](http://muninexchange.projects.linpro.no/)
-- [Installing Munin on Other Linux Distributions](http://munin.projects.linpro.no/wiki/LinuxInstallation)
-- [Installing Munin on Mac OSX](http://munin.projects.linpro.no/wiki/DarwinInstallation)
+- [Munin Homepage](http://munin-monitoring.org/)
+- [Munin Exchange](https://github.com/munin-monitoring/contrib//)
+- [Installing Munin on Other Linux Distributions](http://munin-monitoring.org/wiki/MuninInstallationLinux)
+- [Installing Munin on Mac OSX](http://munin-monitoring.org/wiki/MuninInstallationDarwin)
 - [Installing Munin on Solaris](http://munin-monitoring.org/wiki/MuninInstallationSolaris)
 
 

@@ -1,4 +1,5 @@
 ---
+deprecated: true
 author:
   name: Linode
   email: skleinman@linode.com

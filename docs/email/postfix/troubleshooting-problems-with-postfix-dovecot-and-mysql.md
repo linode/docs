@@ -17,8 +17,7 @@ This guide is a companion to the [Postfix, Dovecot, and MySQL](/docs/email/postf
 
 The first section, Troubleshooting Checklist\_, has a top-down approach to troubleshooting that will help you find specific errors for your mail server. The second section, Step-by-Step Configuration\_, uses a bottom-up approach that shows you how to get a basic mail server functioning and then gradually add more features.
 
-Troubleshooting Checklist
--------------------------
+## Troubleshooting Checklist
 
 Correctly diagnosing a problem is the first step in solving it. At first glance, many mail server errors can seem quite general. Usually the first sign of a problem is that you try to create a test mail account and can't connect. This section is a crash course in finding mail server errors. We recommend reading through the following sections in order, because they progress from general to more specific troubleshooting techniques.
 
@@ -309,8 +308,7 @@ Dovecot includes an administrative tool which is very helpful in troubleshooting
 
 3.  If you do get this type of output, you need to adjust your Dovecot settings related to virtual users. If you don't get output for the system users either, this still indicates that you have some kind of error in the Dovecot settings related to users. Go back to the [Dovecot section](/docs/email/postfix/email-with-postfix-dovecot-and-mysql#sph_dovecot) of the main setup guide and pay special attention to the sections having to do with virtual users and the MySQL settings.
 
-Step-by-Step Configuration
---------------------------
+## Step-by-Step Configuration
 
 For some troubleshooting scenarios, you may find that a top-down approach doesn't help you find the root cause of the problem. Sometimes, what you need is a bottom-up approach.
 
@@ -942,6 +940,3 @@ The final step in getting your mail server up to speed is to make it compatible 
 12. Verify that you can still send and receive mail. Check your logs if you run into any errors.
 
 Now you should be caught up with the main guide and have a fully functioning Postfix, Dovecot, and MySQL mail server. Congratulations!
-
-
-

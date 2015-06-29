@@ -1,7 +1,7 @@
 ---
 author:
   name: Chris Ciufo
-  email: cciufo@linode.com
+  email: docs@linode.com
 description: Managing Domains and Databases
 keywords: 'domains, database, cpanel'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -11,12 +11,14 @@ modified_by:
   name: Linode
 published: 'Friday, June 8th, 2012'
 title: Managing Domains and Databases
+external_resources:
+ - '[cPanel Home Page](http://cpanel.net)'
+ - '[cPanel Support](http://cpanel.net/support.html)'
 ---
 
 [cPanel](http://cpanel.net) is a commercial web-based control panel that simplifies many common system administration tasks such as website creation, database deployment and management, and more. This guide shows you how to manage your domains and databases with your cPanel user account. All of these instructions pertain to the user login located at port 2082 (2083 for SSL connection).
 
-Managing Domains
-----------------
+## Managing Domains
 
 There are three types of domains associated with your cPanel account: main domains, addon domains, and parked domains. Your main domain cannot be changed except by the reseller that owns your account or by root itself. Subdomains, addon domains, and parked domains can be managed in the Domains section.
 
@@ -58,8 +60,7 @@ In the above example, the parked domain 'mynewdomain.com' is serving the content
 
 [![cPanel parked domain screen.](/docs/assets/880-ParkOther.png)](/docs/assets/880-ParkOther.png)
 
-Creating Databases and MySQL Users
-----------------------------------
+## Creating Databases and MySQL Users
 
 The **Manage Databases** icon under the Databases section of your cPanel will allow you to create databases, create users for those databases, add users to databases, and specify the permissions each user should have. Let's start by creating a database.
 
@@ -77,8 +78,7 @@ Once you select which users to add to the database, click the **Add** button. On
 
 [![cPanel manage databases screen.](/docs/assets/881-DBPrivs.png)](/docs/assets/881-DBPrivs.png)
 
-Managing Databases
-------------------
+## Managing Databases
 
 Now that you've set up your database and user, you can start managing your database. cPanel includes phpMyAdmin for database management. Here's how to access phpMyAdmin:
 
@@ -89,14 +89,3 @@ Now that you've set up your database and user, you can start managing your datab
 [![cPanel phpMyAdmin screen.](/docs/assets/885-phpmaside.png)](/docs/assets/885-phpmaside.png)
 
 You can now begin working on your database. If you have an .sql file you would like to use to set up the database and populate it, select the **Import** tab at the top of the screen. You will be able to browse to your .sql file and upload it to be imported into your database.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [cPanel Home Page](http://cpanel.net)
-- [cPanel Support](http://cpanel.net/support.html)
-
-
-

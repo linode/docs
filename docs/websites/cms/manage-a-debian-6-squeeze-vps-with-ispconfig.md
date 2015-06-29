@@ -1,4 +1,5 @@
 ---
+deprecated: true
 author:
   name: Amanda Folson
   email: docs@linode.com

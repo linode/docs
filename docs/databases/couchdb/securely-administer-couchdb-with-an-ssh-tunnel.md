@@ -11,12 +11,14 @@ modified_by:
   name: Linode
 published: 'Thursday, February 4th, 2010'
 title: Securely Administer CouchDB with an SSH Tunnel
+external_resources:
+ - '[Using PuTTY](/docs/networking/using-putty#using_ssh_tunnels)'
+ - '[CouchDB Documentation](/docs/databases/couchdb/)'
 ---
 
 During the development and administration of your CouchDB server and application you may wish to access the "Futon" interface, or interact with the data store from the local machine. This guide shows you how to connect to your CouchDB instance in a secure manner using an SSH tunnel. We assume you have CouchDB up and running on your Linode, and that it is configured to listen on `localhost` (127.0.0.1) on the server, which is the default configuration. After following these instructions, you'll be able to connect to `localhost` on your local workstation. The connection will be securely forwarded to your Linode over the Internet.
 
-Create a Tunnel with PuTTY on Windows
--------------------------------------
+## Create a Tunnel with PuTTY on Windows
 
 ### Connecting to your VPS
 
@@ -40,8 +42,7 @@ Visit the "Connection -\> SSH -\> Tunnels" screen in PuTTY. Enter "5984" for the
 
 Once you've connected to the remote server with this tunnel configuration, you'll be able to direct the browser on your local machine to `http://localhost:5984/_utils/` to access CouchDBs "Futon" interface. You will also be able to access CouchDB directly by way of its HTTP interface located at `http://localhost:5984` without needing to access the CouchDB server over a public IP.
 
-Create a Tunnel with couchdb-tunnel on Mac OS X or Linux
---------------------------------------------------------
+## Create a Tunnel with couchdb-tunnel on Mac OS X or Linux
 
 Save the following Perl script to your local home directory as `couchdb-tunnel.pl`:
 
@@ -129,14 +130,3 @@ When you're done with the tunnel, you may stop it with this command:
     ./couchdb-tunnel.pl stop
 
 Once you've connected to the remote server with this tunnel configuration, you'll be able to direct the browser on your local machine to `http://localhost:5984/_utils/` to access CouchDBs "Futon" interface. You will also be able to access CouchDB directly by way of its HTTP interface located at `http://localhost:5984` without needing to access the CouchDB server over a public IP.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Using PuTTY](/docs/networking/using-putty#using_ssh_tunnels)
-- [CouchDB Documentation](/docs/databases/couchdb/)
-
-
-

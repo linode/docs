@@ -11,14 +11,18 @@ modified_by:
   name: Amanda Folson
 published: 'Thursday, August 5th, 2010'
 title: Redis on CentOS 5
+external_resources:
+ - '[Redis Project Home Page](http://code.google.com/p/redis/)'
+ - '[Redis Configuration](http://redis.io/topics/config)'
+ - '[Redis Data Durability](http://code.google.com/p/redis/wiki/AppendOnlyFileHowto)'
+ - '[Redis Command Reference](http://redis.io/commands)'
 ---
 
 Redis a high performance persistent key-value store, and is intended as a datastore solution for applications where performance and flexibility are more critical than persistence and absolute data integrity. As such, Redis may be considered a participant in the "NoSQL" movement and is an attractive tool for developers of some kinds of applications. This document provides both instructions for deploying the Redis server and an overview of best practices for maintaining Redis instances.
 
 Prior to beginning this guide for installing Redis, we assume that you have completed the steps outlined in our [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
 
-Install Redis
--------------
+## Install Redis
 
 ### Prepare System for Redis
 
@@ -95,8 +99,7 @@ redis.conf
 
 Most of the values in this configuration mirror the default Redis configuration. However, this configuration configures Redis to run in a daemon mode bound only to the local network interface. You may want to change these values depending on the needs of your application.
 
-Monitor for Software Updates and Security Notices
--------------------------------------------------
+## Monitor for Software Updates and Security Notices
 
 When running software compiled or installed directly from sources provided by upstream developers, you are responsible for monitoring updates, bug fixes, and security issues. After becoming aware of releases and potential issues, update your software to resolve flaws and prevent possible system compromise. Monitoring releases and maintaining up to date versions of all software is crucial for the security and integrity of a system.
 
@@ -104,8 +107,7 @@ Please monitor the [Redis Project mailing lists](http://groups.google.com/group/
 
 When upstream sources offer new releases, repeat the instructions for installing Redis and recompile your software when needed. These practices are crucial for the ongoing security and functioning of your system.
 
-Managing Redis Instances
-------------------------
+##Managing Redis Instances
 
 ### Running a Redis Datastore
 
@@ -139,8 +141,7 @@ Redis will now start following the next boot process. You may now use the follow
     /etc/init.d/redis start
     /etc/init.d/redis stop
 
-Managing Datastore Persistence
-------------------------------
+## Managing Datastore Persistence
 
 Redis is not necessarily intended to provide a completely consistent and fault tolerant data storage layer, and in the default configuration there are some conditions that may cause your data store to lose up to 60 seconds of the most recent data. Make sure you understand the risks associated and the potential impact that this kind of data loss may have on your application before deploying Redis.
 
@@ -162,8 +163,7 @@ After applying these configuration changes, restart Redis. All modifications to 
 
 You may wish to issue this command regularly, perhaps in a [cron job](/docs/linux-tools/utilities/cron), to ensure that the transaction journal doesn't expand exponentially. The `bgrewriteaof` is non-destructive and can fail gracefully.
 
-Distributed Data Stores with Master Slave Replication
------------------------------------------------------
+## Distributed Data Stores with Master Slave Replication
 
 Redis contains limited support for master-slave replication which allows you to create a second database that provides a direct real time copy of the data collection on a second system. In addition to providing a "hot spare" or multiple spares for your Redis instance, master-slave systems also allow you to distribute load amongst a group of servers. As long as all write options are applied to the master node, read operations can be distributed to as many slave nodes as required.
 
@@ -182,16 +182,3 @@ When you restart the slave Redis instance, it will attempt to synchronize its da
 The traffic between slave instances and the master instance is not encrypted and does not require authentication in the default configuration. Authentication is available, and can be configured according to the documentation in the `/opt/redis/redis.conf.default` file; however, this is not the default method for securing Redis instances.
 
 The preferred method for controlling access to Redis instances involves using [iptables](/docs/security/firewalls/iptables) and possibly some sort of encryption such as an SSH tunnel to ensure that traffic is secure. Slaves will automatically attempt to reestablish a connection to the master node if the link fails in a number of situations. However, clusters cannot automatically promote members from slave status to master status; cluster management of this order must occur within your application.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Redis Project Home Page](http://code.google.com/p/redis/)
-- [Redis Configuration](http://redis.io/topics/config)
-- [Redis Data Durability](http://code.google.com/p/redis/wiki/AppendOnlyFileHowto)
-- [Redis Command Reference](http://redis.io/commands)
-
-
-

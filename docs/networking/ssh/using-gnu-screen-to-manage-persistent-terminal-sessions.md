@@ -1,7 +1,7 @@
 ---
 author:
   name: Linode
-  email: bolow@linode.com
+  email: docs@linode.com
 description: Using GNU Screen to Manage Persistent Terminal Sessions
 keywords: 'screen,gnu screen,terminal,console,linux'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -11,14 +11,16 @@ modified_by:
   name: Linode
 published: 'Friday, April 2nd, 2010'
 title: Using GNU Screen to Manage Persistent Terminal Sessions
+external_resources:
+ - '[GNU Screen Home Page](http://www.gnu.org/software/screen/)'
+ - '[GNU Screen Manual](http://www.gnu.org/software/screen/manual/html_node/index.html)'
 ---
 
 GNU Screen is a tool which works with a terminal session to allow users to resume a session after they have disconnected. Screen prevents a session from "timing out" or disconnecting SSH connections or local terminal emulators. A single Screen session has the ability to host multiple sessions or "windows." Screen may be used for a variety of tasks such as maintaining persistent IRC sessions and multitasking in a terminal environment.
 
 Screen runs on any Unix/Linux environment (such as your Linode) and Mac OS X. Before installing and using Screen, it is recommended that you review the [Getting Started Guide](/docs/getting-started/). In addition, if you are unfamiliar with using a terminal environment, you will want to review the [Using the Terminal Guide](/docs/using-linux/using-the-terminal).
 
-Installing GNU Screen
----------------------
+## Installing GNU Screen
 
 The section covers installing Screen on a number of different systems. Examples have been provided to simplify the installation process.
 
@@ -47,8 +49,7 @@ For a Gentoo system, the following commands are used to update and install Scree
 
 By default, Screen is installed on Mac OS X systems and may be used without any other prerequisites.
 
-Screen Basics
--------------
+## Screen Basics
 
 In order to use an application with a Screen session do the following:
 
@@ -57,8 +58,7 @@ In order to use an application with a Screen session do the following:
 
 Your terminal session will function as usual. To end your current session without impacting any running processes, enter `Ctrl+a+d` or quit the Terminal application. Once you quit a session, you will be returned to the pre-Screen prompt. The Screen session and applications will continue to run. You may reattach to your session at any time by using the command `screen -r`.
 
-Managing Screen Attachment
---------------------------
+## Managing Screen Attachment
 
 Once you issue the `screen -r` command you will reattach to your last detached session. It is possible to have multiple Screen sessions as well as several detached sessions. A list of detached Screens may appear when you try to reattach to a session. Each session will have a process id or **PID**. So to determine which session to reattach to use the `screen -ls` command to display all the Screen sessions and their PIDs. Below is a sample of the screen -ls command:
 
@@ -81,8 +81,7 @@ If the Screen you want is already attached but you cannot see it, there are a nu
 -   `screen -A` - forces a Screen to resize all of its windows to the current window when it attaches.
 -   `screen -X [command]` - starts a Screen session but instead of loading a shell it will load an arbitrary command. If you create additional Screen windows they will also run this command.
 
-Manipulating Screen Sessions
-----------------------------
+## Manipulating Screen Sessions
 
 Once you attach or reattach to a Screen session, all commands are performed by using `Ctrl`, the letter `a`, and another letter or number. (Note the `Ctrl` and `a` keys are pressed at the same time.) Below is a list of the Screen commands:
 
@@ -97,8 +96,7 @@ Once you attach or reattach to a Screen session, all commands are performed by u
 
 It is important to note that the command options listed above are only a small portion of the available options.
 
-Screen Commands and Customization
----------------------------------
+## Screen Commands and Customization
 
 There are a number of additional commands that are utilized by Screen. The list of commands is quite extensive, so it is important to note that not all commands will be covered. In addition, Screen may be customized by editing the `screenrc` file.
 
@@ -121,14 +119,3 @@ There are two configuration files contained within your Screen distribution: `/e
 (Note that you may only have one of these files.) Below is a sample of the `screenrc` file:
 
 ![Sample screenrc file.](/docs/assets/1497-screenrc-resized.png)
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [GNU Screen Home Page](http://www.gnu.org/software/screen/)
-- [GNU Screen Manual](http://www.gnu.org/software/screen/manual/html_node/index.html)
-
-
-

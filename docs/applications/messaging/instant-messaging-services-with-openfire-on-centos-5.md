@@ -8,17 +8,20 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['communications/xmpp/openfire/centos-5/']
 modified: Monday, August 22nd, 2011
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Thursday, August 5th, 2010'
 title: Instant Messaging Services with Openfire on CentOS 5
+external_resources:
+ - '[Openfire Documentation](http://www.igniterealtime.org/projects/openfire/documentation.jsp)'
+ - '[XMPP Standards Foundation](http://xmpp.org/)'
+ - '[XMPP Software Clients](http://xmpp.org/software/clients.shtml)'
 ---
 
 [Openfire](http://www.igniterealtime.org/projects/openfire/) is an open source real-time collaboration (instant messaging) server, built on the [XMPP protocol](http://en.wikipedia.org/wiki/Extensible_Messaging_and_Presence_Protocol) and available for multiple platforms. This guide will help you get started with Openfire on your CentOS 5 Linux VPS.
 
 If you haven't done so already, please follow the steps outlined in our [getting started guide](/docs/getting-started/) before following these instructions, and make sure your system is fully updated. Initial configuration steps will be performed through the terminal; please make sure you're logged into your Linode as root via SSH.
 
-Install Prerequisites
----------------------
+## Install Prerequisites
 
 Openfire requires a Java runtime engine (JRE). This tutorial uses the version provided by Sun Microsystems. Please note that although alternate Java runtime engines are available, Openfire may not work well with them.
 
@@ -40,8 +43,7 @@ You will asked to accept the terms of the Java license. After entering "yes" to 
 
 You should see a message in your terminal describing the version of Java installed on your server.
 
-Adjust Firewall Settings
-------------------------
+## Adjust Firewall Settings
 
 If you employ a firewall to specify what ports can be accessed on your VPS, please make sure you have the following ports open:
 
@@ -58,8 +60,7 @@ If you employ a firewall to specify what ports can be accessed on your VPS, plea
 
 Additional ports may need to be opened later to support more advanced XMPP services, but these are the ports that Openfire will use by default.
 
-Install Openfire
-----------------
+## Install Openfire
 
 Visit the download page for the [Openfire RTC server](http://www.igniterealtime.org/downloads/index.jsp#openfire) and click the link for the RPM package. You will be taken to another page, which will start the download to your workstation. You may cancel this download, as a manual download link will be presented that you may copy to your clipboard. Use `wget` on your Linode to retrieve the package (substitute the link for the current version in the command below).
 
@@ -83,8 +84,7 @@ Restart Openfire with the following command:
 
 This completes the initial installation steps for Openfire. Next, we'll continue with configuration through a web browser.
 
-Configure Openfire
-------------------
+## Configure Openfire
 
 Direct your browser to your Linode's IP address or FQDN (fully qualified domain name, if an entry in DNS points to your Linode's IP) on port 9090. As an example, if your Linode's IP address were "12.34.56.78", you would visit `http://12.34.56.78:9090` in your web browser. You will be presented with a language selection screen similar to this:
 
@@ -111,15 +111,3 @@ After the initial web-based configuration is complete, restart the Openfire serv
     /etc/rc.d/init.d/openfire restart
 
 If you're experiencing difficulty using the credentials you just created to log in, please use "admin/admin" as the username/password. You'll need to update your credentials immediately afterward for security purposes. Congratulations! You've successfully installed the Openfire RTC server on CentOS 5!
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Openfire Documentation](http://www.igniterealtime.org/projects/openfire/documentation.jsp)
-- [XMPP Standards Foundation](http://xmpp.org/)
-- [XMPP Software Clients](http://xmpp.org/software/clients.shtml)
-
-
-

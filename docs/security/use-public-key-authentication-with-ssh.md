@@ -1,7 +1,7 @@
 ---
 author:
   name: Linode
-  email: bolow@linode.com
+  email: docs@linode.com
 description: 'Access your Linode via SSH using Public Key Authentication.'
 keywords: 'ssh,pki,ssh keys,secure shell,vpn,tunneling'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -15,8 +15,7 @@ title: Use Public Key Authentication with SSH
 
 Public key authentication provides SSH users with the convenience of logging in to their Linodes without entering their passwords. SSH keys are also more secure than passwords, because private keys are *encrypted*, or scrambled, so their contents can't be read as easily. While SSH passwords are not required once keys are set up, passwords for *decrypting*, or unscrambling, the private keys locally are still required. For added convenience, depending on your local workstation's security, you can add the new password to your local keychain so it's saved after the first login.
 
-Intro to SSH Keys Authentication
---------------------------------
+## Intro to SSH Keys Authentication
 
 SSH keys come in pairs; a private and a public key. Usually the private key is saved as `~/.ssh/id_<type>` and the public key is `~/.ssh/id_<type>.pub`. The type of encryption most often used by default is RSA, so your keys should be named `id_rsa` and `id_rsa.pub`. The public key is meant to be handed out freely, and added to servers you wish to connect to in the `~/.ssh/authorized_keys` file. The private key should be secured on your local machine with strict access rules.
 
@@ -28,8 +27,7 @@ Since private keys need to be kept secret to prevent unauthorized access to your
 
 When you create your private key, be sure to make a note of your passphrase, as you will need it for the first login to the remote server.
 
-Linux and Unix-like Operating Systems
--------------------------------------
+## Linux and Unix-like Operating Systems
 
 The process for generating SSH keys and connecting to a remote server from a Linux, Apple OS X, or Unix-like operating system is outlined below.
 
@@ -91,8 +89,7 @@ The final part in the SSH key process is to access your Linode with your new pri
 
 You should now be connected to your Linode using the SSH key.
 
-Windows Operating System
-------------------------
+## Windows Operating System
 
 Before you can generate an SSH key, you will need to download and install PuTTYgen (puttygen.exe) and PuTTY (putty.exe). These two programs are available for download from this link: [PuTTY Installer](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
 
@@ -168,6 +165,3 @@ Now it is time to connect to your Linode with the SSH connection you just create
 9.  Reconnect to PuTTY and **Load** your saved session. (Or, follow Steps 3 and 4 again to start a new SSH session.) You will be prompted to enter your login name as before. However, this time you will be prompted for your SSH key's passphrase, rather then your Linode user's password. Enter your passphrase and press *Enter*.
 
 You should now be connected to your Linode using the SSH key.
-
-
-

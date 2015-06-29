@@ -14,6 +14,12 @@ modified_by:
   name: Alex Fornuto
 published: 'Thursday, September 4th, 2014'
 title: Manage Git Repositories with GitLab on Ubuntu 14.04 (Trusty)
+external_resources:
+ - '[GitLab Community Edition](https://www.gitlab.com/gitlab-ce/)'
+ - '[GitLab Documentation](https://www.gitlab.com/documentation/)'
+ - '[GitLab Requirements](https://gitlab.com/gitlab-org/gitlab-ce/blob/master/doc/install/requirements.md)'
+ - '[GitLab Manual Installation](https://gitlab.com/gitlab-org/gitlab-ce/blob/master/doc/install/installation.md)'
+
 ---
 
 *This is a Linode Community guide. [Write for us](/docs/contribute) and earn $100 per published guide.*
@@ -28,14 +34,14 @@ This guide will help you install and configure GitLab on your Ubuntu 14.04 (Prec
 >
 > This guide is written for non-root users. Commands that require elevated privileges are prefixed with sudo. If you are not familiar with the sudo command, you can check out our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
-# System Requirements
+## System Requirements
 
 GitLab is a large and heavy application. To get the most of GitLab, the recommended hardware is as follows:
 
 - **CPU:** 2 cores to support up to 500 users.
 - **Memory:** 2 GB to support up to 500 users.
 
-# Prepare System for Deployment
+## Prepare System for Deployment
 
 Before beginning with the GitLab installation, make sure that your system's package database is up to date and that all installed software is running the latest version. 
 
@@ -48,7 +54,7 @@ Before beginning with the GitLab installation, make sure that your system's pack
 
         sudo adduser --disabled-login --gecos 'GitLab' git
 
-## Installing Package Dependencies
+### Installing Package Dependencies
 
 In this section you will install the development tools and the required packages for GitLab.
 
@@ -66,7 +72,7 @@ In this section you will install the development tools and the required packages
 
    Select `Internet site` and enter your hostname to complete the installation. If you need to set up a complete SMTP/IMAP/POP3 server, refer to the [Email with Postfix, Dovecot, and MySQL](/docs/email/postfix/email-with-postfix-dovecot-and-mysql) guide. 
 
-## Installing Ruby
+### Installing Ruby
 
 While GitLab is a Ruby on Rails application, using ruby version managers such as [RVM](http://rvm.io/) and [rbenv](https://github.com/sstephenson/rbenv) is not supported. For example, GitLab shell is called from OpenSSH and having a version manager can prevent pushing and pulling over SSH. Thus GitLab can only work with system-wide Ruby installation. In addition, GitLab requires Ruby 2.0 or higher while the default version on Ubuntu 14.04 is 1.9.3.
 
@@ -88,7 +94,7 @@ While GitLab is a Ruby on Rails application, using ruby version managers such as
 
         ruby -v
 
-## Setup PostgreSQL Database for GitLab
+### Setup PostgreSQL Database for GitLab
 
 GitLab supports both MySQL and PostgreSQL for the database backend, but the latter is recommended. GitLab requires PostgreSQL version 9.1 or higher since it needs to make use of extensions.
 
@@ -112,7 +118,7 @@ GitLab supports both MySQL and PostgreSQL for the database backend, but the latt
          PostgreSQL 9.3.4 on x86_64-unknown-linux-gnu, compiled by gcc (Ubuntu 4.8.2-16ubuntu6) 4.8.2, 64-bit
         (1 row)
 
-# Installing GitLab
+## Installing GitLab
 
 In this section you will install GitLab and make some configuration changes.
 
@@ -285,7 +291,7 @@ In this section you will install GitLab and make some configuration changes.
 
         sudo service gitlab start
 
-# Set Up Nginx Virtual Host for GitLab
+## Set Up Nginx Virtual Host for GitLab
 
 Nginx is the only supported web server for GitLab. In this section, you will create a new virtual host for GitLab and activate the site.
 
@@ -333,7 +339,7 @@ Nginx is the only supported web server for GitLab. In this section, you will cre
 
     Then restart Nginx.
             
-# Open GitLab on Your Browser
+## Open GitLab on Your Browser
 
 Double check the application status:
 
@@ -408,13 +414,9 @@ Now you can open http://git.example.com on your browser. GitLab will show you th
 
 You can login using **root** as the username and **5iveL!fe** for the password.
 
-# Securing GitLab
+## Securing GitLab
 
 Now that you have GitLab running on your server, you might want to add SSL support to secure your GitLab site. Refer to the [SSL Certificates with Nginx](/docs/security/ssl/ssl-certificates-with-nginx) guide to protect your site with SSL.
 
 # More Information
 
-- [GitLab Community Edition](https://www.gitlab.com/gitlab-ce/)
-- [GitLab Documentation](https://www.gitlab.com/documentation/)
-- [GitLab Requirements](https://gitlab.com/gitlab-org/gitlab-ce/blob/master/doc/install/requirements.md)
-- [GitLab Manual Installation](https://gitlab.com/gitlab-org/gitlab-ce/blob/master/doc/install/installation.md)

@@ -45,8 +45,7 @@ Use the [style guide](/docs/style-guide). While you're writing, make sure your c
 
 Want to make sure you don't waste time writing a long article we can't use? Submit a writing sample first to <contribute@linode.com>.
 
-Submit Your Article
--------------------
+## Submit Your Article
 
 Submit your article as a [pull request on GitHub](http://www.github.com/linode/docs), or by emailing it to <contribute@linode.com> as a plain text or Markdown file attachment. Writing samples are welcome as well.
 
@@ -94,8 +93,7 @@ These authors got their articles published and $100. You could be next.
 -	[Protecting Your Linode with TCP Wrappers](/docs/security/firewalls/protecting-your-linode-using-tcp-wrappers)
 
 
-Legal Information
------------------
+## Legal Information
 
 COPYRIGHT OWNERSHIP. Writer agrees that the Work is being created by the writer for the Linode Guides and Tutorials Repository and that each form of Work is being created by the writer as a “work made for hire” under the United States Copyright Act and, at all stages of development, the Work shall be and remain the sole and exclusive property of Linode. At Linode's sole, absolute and unfettered discretion, Linode may make any changes in, deletions from, or additions to the Work.
 

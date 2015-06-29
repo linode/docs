@@ -224,7 +224,7 @@ More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [Ubuntu Server Edition Homepage](http://www.ubuntu.com/products/whatisubuntu/serveredition)
+- [Ubuntu Server Edition Homepage](http://www.ubuntu.com/server)
 - [Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)
 - [MySQL Documentation](http://dev.mysql.com/doc/)
 - [PHP Documentation](http://www.php.net/docs.php)
