@@ -12,7 +12,7 @@ published: ''
 title: 'Run a Distribution-Supplied Kernel on KVM Hosts'
 ---
 
-This guide explains how enable the kernels your OS provides for a Linode on a KVM based host. This is useful if you'd like to enable specific kernel features, or you'd prefer to handle kernel upgrades directly. These steps have been tested on:
+This guide explains how enable the kernels your OS provides for a KVM Linode. This is useful if you'd like to enable specific kernel features, or you'd prefer to handle kernel upgrades directly. These steps have been tested on:
 
 * Arch Linux
 * CentOS 7
@@ -74,7 +74,7 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
 	/etc/default/grub
 	: ~~~
       GRUB_TIMEOUT=10
-      GRUB_CMDLINE_LINUX="console=tty0 console=ttyS0,19200n8"
+      GRUB_CMDLINE_LINUX="console=ttyS0,19200n8"
       GRUB_DISABLE_LINUX_UUID=true
       GRUB_SERIAL_COMMAND="serial --speed=19200 --unit=0 --word=8 --parity=no --stop=1"
 	  ~~~
