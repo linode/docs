@@ -6,7 +6,7 @@ description: 'Creating a LAMP (Linux, Apache, MySQL, PHP) stack on an Arch Linux
 keywords: 'arch lamp,arch linux lamp,lamp linux,arch linode,archlinux lamp,archlinux,arch,lamp,lamp stack,apache,mysql,php'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['lamp-guides/arch-linux/','lamp-guides/arch-linux-10-2013/']
-modified: Thursday, June 25, 2015
+modified: Monday, June 29th, 2015
 modified_by:
     name: Elle Krout
 published: 'Monday, October 7th, 2013'
@@ -84,13 +84,12 @@ Since Arch does not come in specific versions, this guide is up-to-date as of th
 
 Virtual hosting can be configured so that multiple domains (or subdomains) can be hosted on the server. These websites can be controlled by different users, or by a single user, as you prefer. There are different ways to set up virtual hosts; however, we recommend the method below.
 
-1. Open `httpd.conf` and edit the line `DocumentRoot /srv/http` to define the default document root. Also define the directory:
+1. Open `httpd.conf` and edit the line `DocumentRoot /srv/http` to define the default document root:
 
     {: .file-excerpt }
     /etc/httpd/conf/httpd.conf
     :   ~~~
-        DocumentRoot "/var/http/default"
-        <Directory "/var/http">
+        DocumentRoot "/srv/http/default"
         ~~~
 
 2. Uncomment the line that reads `Include  conf/extra/httpd-vhosts.conf` near the end of the `/etc/httpd/conf/httpd.conf` file:
@@ -110,9 +109,9 @@ Virtual hosting can be configured so that multiple domains (or subdomains) can b
              ServerAdmin webmaster@example.com
              ServerName example.com
              ServerAlias www.example.com
-             DocumentRoot /var/http/example.com/public_html/
-             ErrorLog /var/http/example.com/logs/error.log 
-             CustomLog /var/http/example.com/logs/access.log combined
+             DocumentRoot /srv/http/example.com/public_html/
+             ErrorLog /srv/http/example.com/logs/error.log 
+             CustomLog /srv/http/example.com/logs/access.log combined
                     <Directory />
                        Order deny,allow
                        Allow from all
@@ -128,9 +127,9 @@ Virtual hosting can be configured so that multiple domains (or subdomains) can b
 
 4.  Create the directories referenced in the configuration above:
 
-        sudo mkdir -p /var/http/default
-        sudo mkdir -p /var/http/example.com/public_html
-        sudo mkdir -p /var/http/example.com/logs
+        sudo mkdir -p /srv/http/default
+        sudo mkdir -p /srv/http/example.com/public_html
+        sudo mkdir -p /srv/http/example.com/logs
 
 5.  After you've set up your virtual hosts, issue the following command to run Apache for the first time:
 
