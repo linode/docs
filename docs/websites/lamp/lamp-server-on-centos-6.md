@@ -6,7 +6,7 @@ description: 'Creating a LAMP stack on a CentOS 6 Linode.'
 keywords: 'LAMP,CentOS,CentOS 6,apache,mysql,php'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['lamp-guides/centos-6/']
-modified: Thursday, June 18th, 2015
+modified: Friday, June 26th, 2015
 modified_by:
   name: Elle Krout
 published: 'Tuesday, July 19th, 2011'
@@ -55,7 +55,7 @@ A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used to prepare s
     >
     >     cp /etc/httpd/conf/httpd.conf ~/httpd.conf.backup
 
-    {: .file }
+    {: .file-excerpt }
     /etc/httpd/conf/httpd.conf
     :   ~~~ conf
         KeepAlive Off
@@ -151,7 +151,7 @@ There are different ways to set up virtual hosts; however, the method below is r
 
         quit
 
-With Apache and MySQL installed you are now ready to move on to installing PHP to provide scripting support for your web pages.
+With Apache and MySQL installed you are ready to move on to installing PHP.
 
 
 ## Install and Configure PHP
@@ -176,7 +176,7 @@ With Apache and MySQL installed you are now ready to move on to installing PHP t
 
     {: .note}
     >
-    >Ensure that all lines are uncommented. A commented line begins with a semicolon (**;**).
+    >Ensure that all the lines noted above are uncommented. A commented line begins with a semicolon (**;**).
 
 3.  Create the log directory for PHP and give the Apache user ownership:
 
