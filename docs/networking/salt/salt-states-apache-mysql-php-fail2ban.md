@@ -12,7 +12,7 @@ published: 'Wednesday, June 3rd, 2015'
 title: Salt States to Install Apache, MySQL, PHP (LAMP), and Fail2ban
 ---
 
-Salt States install and define a server setup on other servers. This tutorial demonstrates the use of Salt States to create a LAMP stack across all Salt Minions.
+Salt States can install and define a server setup on other servers. This tutorial demonstrates the use of Salt States to create a LAMP stack across all Salt Minions.
 
 ##Configure the Salt Master
 Before configuration, install a Salt Master and Salt Minions with the Linode <a href="/docs/networking/salt/install-salt" target="_blank">Install Salt</a> guide. This tutorial is written for Debian 8 but can easily be adjusted for other Linux Distributions. 
@@ -80,6 +80,10 @@ The <a href="https://docs.saltstack.com/en/latest/ref/states/top.html" target="_
            - installed
        ~~~
 
+    The above file defines an extremely simple Salt State using the <a href="http://docs.saltstack.com/en/latest/ref/states/all/salt.states.pkg.html" target="_blank">pkg State module</a>. State modules can be formatted a number of ways. The above text uses only an ID declaration, a state declaration, and the function declaration. 
+
+    This Salt State ensures that a LAMP stack is installed across Minions. 
+
 3.  From step one above, a file for the `extras` listing is needed. Create a `/etc/salt/base/extras.sls` file and add the below syntax:
     
     {:.file }
@@ -104,5 +108,5 @@ The <a href="https://docs.saltstack.com/en/latest/ref/states/top.html" target="_
 
         salt '*' cmd.run "service --status-all | grep 'apache2\|mysql\|fail2ban'"
 
-A LAMP stack and Fail2ban Salt State has been created on all listed Salt Minions. 
+A LAMP stack and Fail2ban Salt State has been created on all listed Salt Minions. To learn how to configure the LAMP Stack, try the <a href="/docs/networking/salt/salt-states-configuration-apache-mysql-php" target="_blank">Salt States for Configuration of Apache, MySQL, and PHP (LAMP)</a> guide.
 

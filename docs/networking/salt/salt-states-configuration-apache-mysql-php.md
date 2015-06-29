@@ -12,7 +12,7 @@ published: 'Wednesday, June 3rd, 2015'
 title: Salt States for Configuration of Apache, MySQL, and PHP (LAMP)
 ---
 
-After Salt is installed and Salt States are created, configure the Minion's setup. In this tutorial, configure a Minion's LAMP stack with further use of Salt States.
+After Salt is <a href="/docs/networking/salt/install-salt" target="_blank">installed</a> and <a href="/docs/networking/salt/salt-states-apache-mysql-php-fail2ban" target="_blank">Salt States</a> are created, configure the Minion's setup. In this tutorial, configure a Minion's LAMP stack with further use of Salt States. This tutorial is written for Debian 8 but can easily be adjusted for other Linux Distributions.
 
 ##Create the LAMP Configuration States
 The below steps configure all Salt Minions for a 1GB Linode, feel free to adjust as needed. 
@@ -114,15 +114,76 @@ The below steps configure all Salt Minions for a 1GB Linode, feel free to adjust
            - watch:
              - pkg: mysql-server
        ~~~
-    
+
+    The above file uses the <a href="http://docs.saltstack.com/en/latest/ref/states/all/salt.states.file.html" target="_blank">file</a> and <a href="http://docs.saltstack.com/en/latest/ref/states/all/salt.states.service.html" target="_blank">service</a> Salt State modules.
+
+
 3. Transfer the State settings to the Minions:
 
         salt '*' state.highstate
 
 ##Create Virtual Hosts Files
-Salt State Modules are used for settings across groups of Minions. To adjust a configuration on a single Minion, use Salt Execution Modules. 
+Salt State Modules are used for settings across groups of Minions. To adjust a configuration on a single Minion, try using Salt Execution Modules. Note, there are many ways to use Salt. 
+
+1. Disable the default Apache virtual host on either a single Minion or all Minions:
+
+    For a specific Minion:
+
+        salt '<hostname or Minion ID>' cmd.run "a2dissite *default"
+    
+    For all Minions:
+
+        salt '*' cmd.run "a2dissite *default"
 
 
+2.  Create directories for the website's files, logs, and backups. Replace `example.com` with the name of the website:
 
+        salt '<hostname or Minion ID>' file.makedirs /var/www/example.com/pubic_html/
+        salt '<hostname or Minion ID>' file.makedirs /var/www/example.com/log/
+        salt '<hostname or Minion ID>' file.makedirs /var/www/example.com/backups/
+
+3.  Create a directory on the Master to hold all of the Minion virtual host files. This directory can act as an index for all of the Minion websites. 
+
+        mkdir /etc/salt/base/minionsites
+
+4.  Create the `/etc/salt/base/minionsites/example.com.conf` vhost file for the specified Minion. Replace `example.com` throughout and in the following commands.
+
+    {:.file }
+    /etc/salt/base/minionsites/example.com.conf
+    :  ~~~  
+       # domain: example.com
+       # public: /var/www/example.com/public_html/
+
+       <VirtualHost *:80>
+         # Admin email, Server Name (domain name), and any aliases
+         ServerAdmin webmaster@example.com
+         ServerName  www.example.com
+         ServerAlias example.com
+
+         # Index file and Document Root (where the public files are located)
+         DirectoryIndex index.html index.php
+         DocumentRoot /var/www/example.com/public_html
+         # Log file locations
+         LogLevel warn
+         ErrorLog  /var/www/example.com/log/error.log
+         CustomLog /var/www/example.com/log/access.log combined
+       </VirtualHost>
+       ~~~
+
+5.  Copy the vhost file from the Master to the `/sites-available` directory of the Minion:
+
+        salt-cp '<hostname or Minion ID>' /etc/salt/base/minionsites/example.com.conf /etc/apache2/sites-available/example.com.conf
+
+6.  Enable the new website and restart Apache:
+
+        salt '<hostname or Minion ID>' cmd.run "a2ensite example.com.conf"
+        salt '<hostname or Minion ID>' cmd.run "service apache2 reload"
+
+<a href="/docs/networking/salt/salt-states-configuration-apache-mysql-php" target="_blank">
+
+
+The above section used the <a href="http://docs.saltstack.com/en/latest/ref/modules/all/salt.modules.cmdmod.html" target="_blank">cmdmod</a>, <a href="http://docs.saltstack.com/en/latest/ref/modules/all/salt.modules.file.html" target="_blank">file</a>, and <a href="http://docs.saltstack.com/en/latest/ref/modules/all/salt.modules.cp.html" target="_blank"> cp</a> Salt Execution modules.
+
+You should now have a configured LAMP stack across as many Minions as you wanted. 
 
 

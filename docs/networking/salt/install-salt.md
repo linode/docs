@@ -80,7 +80,7 @@ The directions below are for two separate Debian 8 Linodes.
 
         {: .caution}
     >
-    > Ensure that there are two spaces in front of "master" and a space between the colon, in `master: `, and the IP address. YAML formatting, pronouced like camel, follows two space nesting.
+    > Ensure that there are two spaces in front of "master" and a space between the colon, in `master: `, and the IP address. YAML formatting follows two space nesting.
 
 
 3.  On Linode 2 the Salt Minion, restart Salt:
@@ -105,7 +105,7 @@ The directions below are for two separate Debian 8 Linodes.
 
 
 
-2.  Accept the listed Salt Minions.
+2.  If the IDs have been verified, accept the listed Salt Minions.
 
     To accept all Minions:    
 
