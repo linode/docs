@@ -11,12 +11,17 @@ modified_by:
   name: Alex Fornuto
 published: 'Wednesday, February 5th, 2014'
 title: 'Ruby on Rails with Nginx on Ubuntu 12.04 LTS (Precise)'
+external_resources:
+ - '[Ruby on Rails Home Page](http://rubyonrails.org/)'
+ - '[Ruby on Rails Documentation](http://rubyonrails.org/documentation)'
+ - '[Nginx Home Page](http://nginx.org/)'
+ - '[Nginx Documentation](http://nginx.org/en/docs/)'
+ - '[Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration)'
 ---
 
 Ruby on Rails is a popular rapid development web framework that allows web designers and developers to implement fully featured dynamic web applications using the Ruby programming language. This guide describes the required process for deploying Ruby on Rails with Passenger and the Nginx web server on Ubuntu 12.04 (Precise). For the purposes of this tutorial, it is assumed that you've followed the steps outlined in our [getting started guide](/docs/getting-started/), that your system is up to date, and that you've logged into your Linode as root via SSH.
 
-Set the Hostname
-----------------
+## Set the Hostname
 
 Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
 
@@ -25,8 +30,7 @@ Before you begin installing and configuring the components described in this gui
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-Install Required Packages
--------------------------
+## Install Required Packages
 
 Update your system's repository database and installed packages with the following commands:
 
@@ -39,8 +43,7 @@ Issue the following command to install packages required for Ruby on Rails:
 
 Additionally, the application you deploy will likely have additional dependencies. Install these dependencies before proceeding.
 
-Install Passenger and Nginx
----------------------------
+## Install Passenger and Nginx
 
 Nginx does not support loadable modules, so Phusion Passenger includes a copy of Nginx with Passenger support compiled in. If you have previously installed Nginx through the Ubuntu repositories, remove it with the following commands:
 
@@ -69,8 +72,7 @@ You'll be greeted by the Phusion Passenger Nginx installer program. Press "Enter
 
 The installation process will begin an interactive session that will guide you through the process of building Phusion Passenger. When prompted for the Nginx installation method, we recommend you choose "1" for both options to allow the installer to automatically download, compile, and install Nginx for you. Unless you have specific needs that would necessitate passing custom options to Nginx at compile time, this is the safest way to proceed. Accept the default installation location for Nginx.
 
-Enable Passenger Support and Start Nginx
-----------------------------------------
+## Enable Passenger Support and Start Nginx
 
 Nginx is now installed on your system, but you need to enable support for Phusion Passenger. Edit the file `/etc/nginx/nginx.conf` and uncomment these lines:
 
@@ -89,23 +91,8 @@ If Passenger is running, you should see a few running processes under the "Passe
 
 The configuration file for Nginx is located at `/etc/nginx/nginx.conf`. This is the file you'll need to edit to add support for your Rails applications. A default server is already configured in this file, and it also contains examples for alternate virtual host and SSL configurations.
 
-Install MySQL Support (optional)
---------------------------------
+## Install MySQL Support (optional)
 
 If your application uses MySQL, install the database server by following our [MySQL on Ubuntu 12.04 (Precise) guide](/docs/databases/mysql/ubuntu-12.04-precise-pangolin). Once it's installed and configured properly, issue the following command:
 
     apt-get install libmysqlclient-dev libmysql-ruby 
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Ruby on Rails Home Page](http://rubyonrails.org/)
-- [Ruby on Rails Documentation](http://rubyonrails.org/documentation)
-- [Nginx Home Page](http://nginx.org/)
-- [Nginx Documentation](http://nginx.org/en/docs/)
-- [Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration)
-
-
-

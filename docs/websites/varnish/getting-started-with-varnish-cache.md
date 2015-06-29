@@ -13,6 +13,8 @@ modified_by:
   name: Alex Fornuto
 published: 'Wednesday, February 5th, 2014'
 title: Getting Started with Varnish Cache
+external_resources:
+ - '[Official Varnish Documentation](https://www.varnish-cache.org/docs)'
 ---
 
 *This is a Linode Community guide. [Write for us](/docs/contribute) and earn $100 per published guide.*
@@ -27,8 +29,7 @@ Sound good? Let's get started setting up a basic Varnish install. The examples i
 >
 > The steps in this guide are written assuming the root user is running them. If you are not logged in as Root you will need to use 'sudo' for certain steps.
 
-Installation
-------------
+## Installation
 
 1.  First update current packages and install Varnish from apt:
 
@@ -70,8 +71,7 @@ From the configuration above, we also see that Varnish is being told to store it
 
 We'll come back and edit these daemon options more later. For now, let's start configuring Varnish to cache and present our backend.
 
-Basic Configuration
--------------------
+## Basic Configuration
 
 Varnish is configured via the [Varnish Configuration Language (VCL)](https://www.varnish-cache.org/docs/3.0/reference/vcl.html). Once the configuration file is loaded, Varnish translates and compiles the VCL code into a C program that runs along side the Varnish process.
 
@@ -145,8 +145,7 @@ If we're happy with our basic Varnish set up, it's time to tell Varnish and Apac
         $ service apache2 reload
         $ service varnish restart
 
-Advanced Configuration
-----------------------
+## Advanced Configuration
 
 The VCL provides much control over how requests are cached, and it's likely you may need to make some custom modifications for your situation. Let's go over a few common VCL modifications, as well as some tips and tricks.
 
@@ -282,13 +281,3 @@ For reference, here is our final VCL file with all the modifications made in thi
         set beresp.grace = 1h;
     }
     ~~~
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Official Varnish Documentation](https://www.varnish-cache.org/docs)
-
-
-

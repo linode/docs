@@ -1,24 +1,28 @@
 ---
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Using HTTP AUTH to limit and control access to resources hosted on websites.'
 keywords: 'access control,http auth,mod\_auth,http,apache,web server,security'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-servers/apache/configuration/http-authentication/']
 modified: Monday, August 22nd, 2011
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Monday, December 7th, 2009'
 title: 'Auth-based Access Control with Apache'
+external_resources:
+ - '[Installation of the Apache web server](/docs/web-servers/apache/)'
+ - '[LAMP stack guides](/docs/lamp-guides/)'
+ - '[Authentication and Access Control](http://httpd.apache.org/docs/2.2/howto/auth.html)'
+ - '[Basic Authentication Module](http://httpd.apache.org/docs/2.2/mod/mod_auth_basic.html)'
 ---
 
 In many situations, HTTP services are public and intended to be accessed by anyone with the ability to connect to the server. However, there are a number of cases where site administrators need to have some additional control over which users can access the server. In these contexts, it is useful to require users to submit authentication credentials (e.g. usernames and passwords) to a site before gaining access to a resource.
 
 This guide provides an overview of both credential-based and rule-based access control tools for the Apache HTTP server. We assume that you have a working installation of Apache and have access to modify configuration files. If you have not installed Apache, you might want to follow one of our [Apache installation guides](/docs/web-servers/apache/) or [LAMP stack installation guides](/docs/lamp-guides/). If you want a more thorough introduction to Apache configuration, please reference our [Apache HTTP server configuration basics](/docs/web-servers/apache/configuration/configuration-basics) and [Apache configuration structure](/docs/web-servers/apache/configuration/configuration-structure) guides.
 
-Configuring HTTP Authentication
--------------------------------
+## Configuring HTTP Authentication
 
 To enable passwords for a directory, insert the following lines into the appropriate `<Directory>` section of an Apache configuration file. You may also insert authentication information in an `.htaccess` file or in a virtual host configuration section. The required directives are:
 
@@ -37,8 +41,7 @@ The `AuthUserFile` specifies the path (in full) to the password file where the p
 
 At this point we need to create a password file. While this file can be located anywhere on the filesystem, we **strongly** recommend that you not place them in a web accessible directory. By default, all files beginning with `.ht` are not web-accessible in most default configurations of Apache, but this should not be assumed.
 
-Generating HTTP AUTH Passwords
-------------------------------
+## Generating HTTP AUTH Passwords
 
 To generate passwords, we need the `htpasswd` tool. For many distributions, this tool may have been installed when you installed Apache itself. Debian and Ubuntu users will have to update their system and install the `apache2-utils` package with the following commands:
 
@@ -74,8 +77,7 @@ Additionally, if you would prefer to organize and maintain the `AuthUserFile` yo
 
 You can now append the `betty:{SHA}5PPXgshSpwiyJHxbz1i1LVijfKo=` line to your `AuthUserFile` manually. Once this line is in the password file, the `betty` user credentials will be able to authenticate the HTTP server.
 
-Access Control Lists with Groups
---------------------------------
+## Access Control Lists with Groups
 
 In the `Require` directive above we specified the `valid-user`. This told Apache that any user who could authenticate against one of the users specified in the `UserAuthFile` could gain access to the site. While you can maintain separate password files for different resources, this is difficult to maintain for deployments with even mildly complex authentication needs.
 
@@ -107,22 +109,8 @@ In this example, we cite the same `AuthUserFile`, but we add an `AuthGroupFile` 
 
 Given this `htgroup` file, only the users `squire` and `betty` will have access to the above listed resource. The syntax of the group file follows a simple `[groupname]: [username 1] [username 2] [...]`. You can put as many usernames from your `AuthUserFile` into a group entry as you need for the particular resource.
 
-The Caveats of HTTP Authentication
-----------------------------------
+## The Caveats of HTTP Authentication
 
 -   In "Basic" HTTP AUTH credentials are sent unencrypted over the wire, which makes HTTP AUTH particularly subject to so called "man-in-the-middle" attacks. As a result, this authentication method shouldn't be used for protecting sensitive information.
 -   In HTTP AUTH session authentication credentials must be exchanged between the client and the server for every request. While most client software can cache this information so that the user only has to enter the username and password once, the authentication credentials must be passed for every request. This can add additional network overhead.
 -   When Apache processes an HTTP AUTH request it must parse through the entire `htpasswd` file. When the file only stores a few passwords the processing time is negligible, but when password files grow, requests can longer to process.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Installation of the Apache web server](/docs/web-servers/apache/)
-- [LAMP stack guides](/docs/lamp-guides/)
-- [Authentication and Access Control](http://httpd.apache.org/docs/2.2/howto/auth.html)
-- [Basic Authentication Module](http://httpd.apache.org/docs/2.2/mod/mod_auth_basic.html)
-
-
-
