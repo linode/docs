@@ -5,7 +5,7 @@ author:
 description: 'Get your website or web application on the web by setting up Apache, MySQL, and PHP'
 keywords: 'debian 8 LAMP server,debian LAMP guide,LAMP howto,lamp,debian,debian 8,websites,apache,mysql,php,apache 2.4,hosting a website'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Thursday, June 25th, 2015
+modified: Monday, June 29th, 2015
 modified_by:
   name: Elle Krout
 published: ''
