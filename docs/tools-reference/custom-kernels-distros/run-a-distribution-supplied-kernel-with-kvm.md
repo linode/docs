@@ -9,7 +9,7 @@ modified: Friday, June 12, 2015
 modified_by:
   name: Alex Fornuto
 published: ''
-title: 'Run a Distribution-Supplied Kernel on KVM Hosts'
+title: 'Run a Distribution-Supplied Kernel on a KVM Linode'
 ---
 
 This guide explains how enable the kernels your OS provides for a KVM Linode. This is useful if you'd like to enable specific kernel features, or you'd prefer to handle kernel upgrades directly. These steps have been tested on:
