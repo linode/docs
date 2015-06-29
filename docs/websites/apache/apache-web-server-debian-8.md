@@ -5,10 +5,10 @@ author:
 description: 'Get started with an Apache web server on your Debian 8 Linode; includes how to install, configure, and add and edit any modules and scripting'
 keywords: 'apache debian 8,apache debian jessie,linux web server,apache on debian,apache jessie,apache,debian,web server'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Monday, June 22nd, 2015
+modified: Friday, June 26th, 2015
 modified_by:
   name: Elle Krout
-published: 'Monday, June 22nd, 2015'
+published: ''
 title: 'Set Up an Apache Web Server on Debian 8'
 external_resources:
  - '[Apache HTTP Server Version 2.4 Documentation](http://httpd.apache.org/docs/2.4/)'
@@ -47,7 +47,7 @@ If instead you would like to install a full LAMP stack, please see the [LAMP on 
 
 2.  Edit the main Apache configuration file and turn off the `KeepAlive` setting:
 
-    {: .file }
+    {: .file-excerpt }
     /etc/apache2/apache2.conf
     :   ~~~ conf
         KeepAlive Off
@@ -55,11 +55,11 @@ If instead you would like to install a full LAMP stack, please see the [LAMP on 
 
 ## Configure the Multi-Processing Module
 
-Apache 2.4 offers various multi-processing modules (MPMs) to handle connections. The default MPM is the *event module*, although the *prefork module* is still reccomended if using out-of-the-box PHP.
+Apache 2.4 offers various multi-processing modules (MPMs) to handle connections. The default MPM is the *event module*, although the *prefork module* is still recommended if you're using standard PHP.
 
 ### The Prefork Module
 
-1.  Open `/etc/apache2/mods-available/mpm_prefork.conf` in your choosen text editor and edit the values as needed. The following is optimized for a 1GB Linode:
+1.  Open `/etc/apache2/mods-available/mpm_prefork.conf` in your text editor and edit the values as needed. The following is optimized for a 1GB Linode:
 
     {: .file}
     /etc/apache2/mods-available/mpm_prefork.conf
@@ -92,7 +92,9 @@ Apache 2.4 offers various multi-processing modules (MPMs) to handle connections.
 
 ### The Event Module
 
-1.  Open `/etc/apache2/mods-available/mpm_event.conf` in your choosen text editor and edit the values as needed:
+If you choose to keep the *event module* enabled, these settings are suggested for a 1GB Linode.
+
+1.  Open `/etc/apache2/mods-available/mpm_event.conf` in your text editor and edit the values as needed:
 
     {: .file}
     /etc/apache2/mods-available/mpm_event.comf
@@ -122,13 +124,13 @@ Apache 2.4 offers various multi-processing modules (MPMs) to handle connections.
 
 ## Configure Apache for Named-Based Virtual Hosting
 
-Apache supports *name-based virtual hosting*, which allows you to host multiple domains on a single server with a single IP. Although there are different ways to set up virtual hosts, the below method is recommended.
+Apache supports *name-based virtual hosting*, which allows you to host multiple domains on a single server with a single IP. Although there are different ways to set up virtual hosts, the method below is recommended.
 
 1.  Disable the default Apache virtual host:
 
         sudo a2dissite 000-default.conf
 
-2.  Create an `example.com.conf` file in `/etc/apache2/sites-available` with your text editor of choice, replacing instances of `example.com` with your own domain URL in both the configuration file and in the file name:
+2.  Create an `example.com.conf` file in `/etc/apache2/sites-available` with your text editor, replacing instances of `example.com` with your own domain URL in both the configuration file and in the file name:
 
     {: .file }
     /etc/apache2/sites-available/example.com.conf
@@ -143,7 +145,7 @@ Apache supports *name-based virtual hosting*, which allows you to host multiple 
         </VirtualHost>
         ~~~
 
-    Repeat this process for any other domains you own.
+    Repeat this process for any other domains you host.
 
     {:.note}
     >
@@ -186,7 +188,7 @@ One of Apache's strengths is its ability to be customized with modules. The defa
 
         sudo apt-get install [module-name]
 
-3.  All mods are located in the `/etc/apache2/mods-avaiable` directory. The edit `.conf` file of any installed module if needed, then enable the module:
+3.  All mods are located in the `/etc/apache2/mods-avaiable` directory. Edit the `.conf` file of any installed module if needed, then enable the module:
 
         sudo a2enmod [module-name]
 
