@@ -5,7 +5,7 @@ author:
 description: 'Creating a LAMP stack on a CentOS 7 Linode.'
 keywords: 'LAMP,CentOS,CentOS 7,apache,mysql,php'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Friday, June 26th, 2015
+modified: Monday, June 29th, 2015
 modified_by:
     name: Elle Krout
 published: 'Tuesday, January 13th, 2015'
