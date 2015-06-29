@@ -3,229 +3,186 @@ author:
   name: Alex Fornuto
   email: afornuto@linode.com
 description: 'Creating a LAMP stack on a CentOS 6 Linode.'
-keywords: 'LAMP,CentOS,CentOS 6'
+keywords: 'LAMP,CentOS,CentOS 6,apache,mysql,php'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['lamp-guides/centos-6/']
-modified: Thursday, February 6th, 2014
+modified: Monday, June 29th, 2015
 modified_by:
-  name: Alex Fornuto
+  name: Elle Krout
 published: 'Tuesday, July 19th, 2011'
 title: LAMP Server on CentOS 6
+external_resources:
+ - '[CentOS Linux Home Page](http://www.centos.org/)'
+ - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)'
+ - '[MySQL Documentation](http://dev.mysql.com/doc/)'
+ - '[PHP Documentation](http://www.php.net/docs.php)'
 ---
 
-This guide provides step-by-step instructions for installing a full-featured LAMP stack on a CentOS 6 system.
 
-In this guide, you will be instructed on setting up Apache, MySQL, and PHP. If you don't feel that you will need MySQL or PHP, please don't feel obligated to install them.
+A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used to prepare servers for hosting web content. This guide provides step-by-step instructions for installing a full-featured LAMP stack on a CentOS 6 system.
 
- {: .note }
+{: .note}
 >
-> Throughout this guide we will offer several suggested values for specific configuration settings. Some of these values will be set by default. These settings are shown in the guide as a reference, in the event that you change these settings to suit your needs and then need to change them back.
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
-Set the Hostname
-----------------
+## Before You Begin
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_setting-the-hostname). Issue the following commands to make sure it is set properly:
+1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, and the Linode's [hostname is set](/docs/getting-started#setting-the-hostname).
 
-    hostname
-    hostname -f
+    To check your hostname run:
 
-The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
+        hostname
+        hostname -f
 
-Install and Configure the Apache Web Server
--------------------------------------------
+    The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-The Apache Web Server is a very popular choice for serving web pages. While many alternatives have appeared in the last few years, Apache remains a powerful option that we recommend for most uses.
+2.  Update your system:
 
-To install the current version of the Apache web server (in the 2.x series) use the following command:
+        sudo yum update
 
-    yum update
-    yum install httpd
 
-The configuration for Apache is contained in the `httpd.conf` file, which is located at: `/etc/httpd/conf/httpd.conf`. We advise you to make a backup of this file into your home directory, like so:
+## Install and Configure the Apache Web Server
 
-    cp /etc/httpd/conf/httpd.conf ~/httpd.conf.backup
+1.  Install Apache 2.2:
 
-By default all files ending in the `.conf` extension in `/etc/httpd/conf.d/` are treated as Apache configuration files, and we recommend placing your non-standard configuration options in files in these directories. Regardless how you choose to organize your configuration files, making regular backups of known working states is highly recommended.
+        sudo yum install httpd
 
-Edit the main Apache configuration file to adjust the resource use settings. The settings shown below are a good starting point for a **Linode 1GB**.
+2.  Edit the `httpd.conf` under `/etc/httpd/conf/` to adjust the resource use settings. The settings shown below are a good starting point for a **Linode 1GB**:
 
-{: .file }
-/etc/httpd/conf/httpd.conf
-:   ~~~ apache
-    KeepAlive Off
+    {: .note}
+    >
+    >Before changing any configuration files, it is advised that you make a backup of the file. To make a backup:
+    >
+    >     cp /etc/httpd/conf/httpd.conf ~/httpd.conf.backup
 
-    ...
+    {: .file-excerpt }
+    /etc/httpd/conf/httpd.conf
+    :   ~~~ conf
+        KeepAlive Off
 
-    <IfModule prefork.c>
-    StartServers 2
-    MinSpareServers 6
-    MaxSpareServers 12
-    MaxClients 80
-    MaxRequestsPerChild 3000
-    </IfModule>
-    ~~~
+        ...
 
-Now we'll configure virtual hosting so that we can host multiple domains (or subdomains) with the server. These websites can be controlled by different users, or by a single user, as you prefer.
+        <IfModule prefork.c>
+            StartServers        2
+            MinSpareServers     6
+            MaxSpareServers     12
+            MaxClients          80
+            MaxRequestsPerChild 3000
+        </IfModule>
+        ~~~
 
-Before we get started, we suggest that you combine all configuration on virtual hosting into a single file called `vhost.conf` located in the `/etc/httpd/conf.d/` directory. Open this file in your favorite text editor, and we'll begin by setting up virtual hosting.
+### Configure Apache Virtual Hosts
 
-### Configure Name-based Virtual Hosts
+There are different ways to set up virtual hosts; however, the method below is recommended. By default, Apache listens on all IP addresses available to it.
 
-There are different ways to set up virtual hosts, however we recommend the method below. By default, Apache listens on all IP addresses available to it.
+1.  Create a file under `/etc/httpd/conf.d` called `vhost.conf`. Replace instances of `example.com` with your own domain information:
 
-Now we will create virtual host entries for each site that we need to host with this server. Here are two examples for sites at "example.com" and "example.org".
+    {: .file-excerpt }
+    /etc/httpd/conf.d/vhost.conf
+    :   ~~~ apache
+        NameVirtualHost *:80
 
-{: .file-excerpt }
-/etc/httpd/conf.d/vhost.conf
-:   ~~~ apache
-    NameVirtualHost *:80
+        <VirtualHost *:80> 
+             ServerAdmin webmaster@example.com
+             ServerName example.com
+             ServerAlias www.example.com
+             DocumentRoot /var/www/example.com/public_html/
+             ErrorLog /var/www/example.com/logs/error.log 
+             CustomLog /var/www/example.com/logs/access.log combined
+        </VirtualHost>
+        ~~~
 
-    <VirtualHost *:80> 
-         ServerAdmin webmaster@example.com
-         ServerName example.com
-         ServerAlias www.example.com
-         DocumentRoot /srv/www/example.com/public_html/
-         ErrorLog /srv/www/example.com/logs/error.log 
-         CustomLog /srv/www/example.com/logs/access.log combined
-    </VirtualHost>
+    Additional code blocks can be added to the file for any other domains you with to host on the Linode.
 
-    <VirtualHost *:80> 
-         ServerAdmin webmaster@example.org     
-         ServerName example.org
-         ServerAlias www.example.org
-         DocumentRoot /srv/www/example.org/public_html/
-         ErrorLog /srv/www/example.org/logs/error.log 
-         CustomLog /srv/www/example.org/logs/access.log combined
-    </VirtualHost>
-    ~~~
+    {: .note}
+    >
+    >`ErrorLog` and `CustomLog` entries are suggested for more fine-grained logging, but are not required. If they are defined (as shown above), the `logs` directories must be created before you restart Apache.
 
-Notes regarding this example configuration:
+2.  Create the directories referenced above:
 
--   All of the files for the sites that you host will be located in directories that exist underneath `/srv/www` You can symbolically link these directories into other locations if you need them to exist in other places.
--   `ErrorLog` and `CustomLog` entries are suggested for more fine-grained logging, but are not required. If they are defined (as shown above), the `logs` directories must be created before you restart Apache.
+        sudo mkdir -p /var/www/example.com/public_html
+        sudo mkdir /var/www/example.com/logs
 
-Before you can use the above configuration you'll need to create the specified directories. For the above configuration, you can do this with the following commands:
+3.  Start Apache for the first time, and set it to run at boot:
 
-    mkdir -p /srv/www/example.com/public_html
-    mkdir /srv/www/example.com/logs
+        sudo service httpd start
+        sudo /sbin/chkconfig --levels 235 httpd on 
 
-    mkdir -p /srv/www/example.org/public_html
-    mkdir /srv/www/example.org/logs
+    You should new be able to view a default Apache page on your website.
 
-After you've set up your virtual hosts, issue the following command to run Apache for the first time:
+    {: .note}
+    >
+    >Anytime you change an option in your `vhost.conf` file, or any other Apache configuration file, remember to reload the configuration with the following command:
+    >
+    >     sudo service httpd reload 
 
-    /etc/init.d/httpd start 
 
-Assuming that you have configured the DNS for your domain to point to your Linode's IP address, virtual hosting for your domain should now work. Remember that you can create as many virtual hosts with Apache as you need.
+## Install and Configure MySQL
 
-If you want to run Apache by default when the system boots, which is a typical setup, execute the following command:
+1.  Install the MySQL package:
 
-    /sbin/chkconfig --levels 235 httpd on 
+        sudo yum install mysql-server
 
-Use the `chkconfig` command to set up [runlevels](http://en.wikipedia.org/wiki/Runlevel) as needed.
+2.  Start MySQL, and set it to run at boot:
 
-Anytime you change an option in your `vhost.conf` file, or any other Apache configuration file, remember to reload the configuration with the following command:
+        sudo service mysqld start
+        sudo /sbin/chkconfig --levels 235 mysqld on 
 
-    /etc/init.d/httpd reload 
+3.  Run `musql_secure_installation` to secure MySQL. You will be given the option to change the root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases and reload privileges. It is recommended that you answer yes to these options:
 
-Install and Configure MySQL Database Server
--------------------------------------------
+        mysql_secure_installation
 
-MySQL is a relational database management system (RDBMS) and is a popular component in contemporary web development tool-chains. It is used to store data for many popular applications, including Wordpress and Drupal.
+### Create a MySQL Database
 
-### Install MySQL
+1.  Log in to MySQL:
 
-The first step is to install the mysql-server package, which is accomplished by the following command:
+        mysql -u root -p
 
-    yum install mysql-server 
+    Enter MySQL's root password. You will then be presented with a MySQL prompt.
 
-In CentOS 6 this provides version 5.1.52 of MySQL. Before you can use MySQL some configuration is required.
+2.  Create a database and user:
 
-If you want to run MySQL by default when the system boots, which is a typical setup, execute the following command:
+        create database webdata;
+        grant all on webdata.* to 'webuser' identified by 'password';
 
-    /sbin/chkconfig --levels 235 mysqld on 
+    In the above example `webdata` is the name of the database, `webuser` the user, and `password` a strong password.
 
-Now you can start the MySQL daemon (`mysqld`) with the following command (as root):
+3.  Exit MySQL:
 
-    /etc/init.d/mysqld start 
+        quit
 
-At this point MySQL should be ready to configure and run. While you shouldn't need to change the configuration file, note that it is located at `/etc/my.cnf` for future reference. The default values should be fine for a **Linode 1GB**, but if you decide to adjust them you should first make a backup copy:
+With Apache and MySQL installed you are ready to move on to installing PHP.
 
-    cp /etc/my.cnf ~/my.cnf.backup
 
-### Configure MySQL and Set Up MySQL databases
+## Install and Configure PHP
 
-After installing MySQL, it's recommended that you run `mysql_secure_installation`, a program that helps secure MySQL. While running `mysql_secure_installation`, you will be presented with the opportunity to change the MySQL root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases. It is recommended that you answer yes to these options. If you are prompted to reload the privilege tables, select yes. Run the following command to execute the program:
+1.  Install PHP:
 
-    mysql_secure_installation
+        sudo yum install php php-pear
 
-Next, we'll create a database and grant your users permissions to use databases. First, log in to MySQL:
+    If you wish to install MySQL support for PHP also install the `php-mysql` package:
 
-    mysql -u root -p
+        sudo yum install php-mysql
 
-Enter MySQL's root password, and you'll be presented with a prompt where you can issue SQL statements to interact with the database.
+2.  Edit `/etc/php.ini` for better error messages and logs, and upgraded performance. These modifications provide a good starting point for a **Linode 1GB**:
 
-To create a database and grant your users permissions on it, issue the following command. Note, the semi-colons (`;`) at the end of the lines are crucial for ending the commands. Your command should look like this:
+    {: .file-excerpt }
+    /etc/php.ini
+    :   ~~~ ini
+        error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
+        error_log = /var/log/php/error.log
+        max_input_time = 30
+        ~~~
 
-    create database lollipop;
-    grant all on lollipop.* to 'foreman' identified by '5t1ck';
+    {: .note}
+    >
+    >Ensure that all the lines noted above are uncommented. A commented line begins with a semicolon (**;**).
 
-In the example above, `lollipop` is the name of the database, `foreman` is the username, and `5t1ck` password. Note that database user names and passwords are only used by scripts connecting to the database, and that database user account names need not (and perhaps should not) represent actual user accounts on the system.
+3.  Create the log directory for PHP and give the Apache user ownership:
 
-With that completed you've successfully configured MySQL and you may now pass these database credentials on to your users. To exit the MySQL database administration utility issue the following command:
+        sudo mkdir /var/log/php
+        sudo chown apache /var/log/php
 
-    quit
+4.  Restart Apache:
 
-With Apache and MySQL installed you are now ready to move on to installing PHP to provide scripting support for your web pages.
-
-Installing and Configuring PHP
-------------------------------
-
-PHP makes it possible to produce dynamic and interactive pages using your own scripts and popular web development frameworks. Furthermore, many popular web applications like WordPress are written in PHP. If you want to be able to develop your websites using PHP, you must first install it.
-
-CentOS includes packages for installing PHP from the terminal. Issue the following command:
-
-    yum install php php-pear
-
-Once PHP5 is installed we'll need to tune the configuration file located in `/etc/php.ini` to enable more descriptive errors, logging, and better performance. These modifications provide a good starting point if you're unfamiliar with PHP configuration.
-
-Make sure that the following values are set, and relevant lines are uncommented (comments are lines beginning with a semi-colon (`;`)):
-
-{: .file-excerpt }
-/etc/php.ini
-:   ~~~ ini
-    error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
-    display_errors = Off 
-    log_errors = On 
-    error_log = /var/log/php/error.log
-    max_execution_time = 30 
-    memory_limit = 128M
-    register_globals = Off
-    max_input_time = 30
-    ~~~
-
-You will need to create the log directory for PHP and give the Apache user ownership:
-
-    mkdir /var/log/php
-    chown apache /var/log/php
-
-If you need support for MySQL in PHP, then you must install the php5-mysql package with the following command:
-
-    yum install php-mysql
-
-After making changes to PHP, restart Apache by issuing the following command:
-
-    /etc/init.d/httpd restart
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [CentOS Linux Home Page](http://www.centos.org/)
-- [Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)
-- [MySQL Documentation](http://dev.mysql.com/doc/)
-- [PHP Documentation](http://www.php.net/docs.php)
-
-
-
+        sudo service httpd restart
