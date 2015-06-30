@@ -5,10 +5,10 @@ author:
 description: 'Instructions for configuring your Linode to run a native distribution-supplied kernel on KVM hosts. Written for distributions using systemd'
 keywords: 'kvm,custom linux, kernel,custom linode,systemd,debian 8,centos,fedora'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Friday, June 12, 2015
+modified: Monday, June 29th, 2015
 modified_by:
   name: Alex Fornuto
-published: ''
+published: 'Monday June 29th, 2015'
 title: 'Run a Distribution-Supplied Kernel on a KVM Linode'
 ---
 
