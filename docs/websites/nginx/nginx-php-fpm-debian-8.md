@@ -1,33 +1,30 @@
-http://markdownlivepreview.com/
-
-High performance nginx and php over Debian 8
+High performance Nginx and PHP over Debian 8
 19th May 2015 by Javier Briz
 
 
-This document describes how to install and setup an nginx server with php-fpm.
-This stack, together with a MySQL server, is what is called a **LEMP** server. After following this article, your php code will be
+This document describes how to install and setup an nginx server with PHP-FPM.
+This stack, together with a MySQL server, is what is called a **LEMP** server. After following this article, your PHP code will be
 able to connect to a MySQL server, but the MySQL server installation itself will not be explained;
 there are already [lots of guides](https://www.linode.com/docs/databases/mysql/) on this topic. 
 
 #Installation Prerequisites
 First of all, follow the [Getting Started Guide](https://www.linode.com/docs/getting-started/).
 It is also usefull to have a Fully Qualified Domain Name to have a handy pointer to the server.
-will be usefull 
 
 #Packages installation
 In this step, we are installing all the necessary packages.
-Run the following as root to install nginx, php and MySQL connector:
+Run the following as root to install nginx, PHP and MySQL connector:
 
         apt-get update
         apt-get install nginx php5-fpm php5-mysql
 
-Make sure nginx and php-fpm are running
+Make sure nginx and PHP-FPM are running
 
         ps aux|grep -e nginx -e php
         
 #Nginx setup
-Now we have to setup nginx server to relay on php-fpm for php requests. 
-By default, php-fpm on debian listens on a socket. We are putting everything in one single server so this is ok.
+Now we have to setup nginx server to relay on PHP-FPM for PHP requests. 
+By default, PHP-FPM on debian listens on a socket. We are putting everything in one single server so this is ok.
 To find the path for the socket run:
 
         cat /etc/php5/fpm/pool.d/www.conf |grep 'listen ='
@@ -39,7 +36,6 @@ In other words, add following lines to `/etc/nginx/sites-enabled/default`, below
 
         location ~ [^/]\.php(/|$) {
           fastcgi_param REQUEST_METHOD $request_method;
-          fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
           fastcgi_pass unix:/var/run/php5-fpm.sock;
           fastcgi_index index.php;
           include fastcgi_params;
@@ -56,11 +52,11 @@ Done! Let's test the web server. Just write the following content in /var/www/ht
         phpinfo();
         ?>
 
-And now go to http://yourserver/index.php and, if everything is ok, you will see the phpinfo for the installed version.
+And now go to http://example.com/index.php and, if everything is ok, you will see the phpinfo for the installed version.
       
 {: .note}
 >
-> At this point, you already have a working nginx+php server, and the performance should be quite good.
+> At this point, you already have a working nginx+PHP server, and the performance should be quite good.
 >
 > Anyway, it can be even better, so continue reading  :)
 
@@ -125,11 +121,11 @@ You can enable nginx cache adding the following lines to your `/etc/nginx/nginx.
 >
 > Remember that performance highly depends on your application, so if you really need top performance, [consider caching at application level](https://www.linode.com/docs/databases/redis/).
 
-##PHP-fpm performance
+##PHP-FPM performance
 
-PHP-fpm launches some daemons, which wait for incoming requests to process php. The same as above, one obvious tune is to disable logging, but in this case the proper action would be solve errors/warning on the php application.
+PHP-FPM launches some daemons, which wait for incoming requests to process PHP. The same as above, one obvious tune is to disable logging, but in this case the proper action would be solve errors/warning on the PHP application.
 
-What we should adjust is the number of daemons waiting to run php.
+What we should adjust is the number of daemons waiting to run PHP.
 
 By default, the number is dynamic, what means daemons are launched on demand. This causes higher latency.
 
@@ -145,7 +141,7 @@ Depending on your site complexity, you will need to increase the `memory_limit` 
 
 This is not always possible since some pages may allocate higher amounts of memory.
 
-After modifying php-fpm setup, just restart it.
+After modifying PHP-FPM setup, just restart it.
 
         /etc/init.d/php5-fpm restart
 
@@ -155,7 +151,7 @@ Put your application online, monitor it and check its memory and cpu needs. Acco
 
 A few good tools to do this are iotop, htop, zabbix (for the long term), ps, free...
 
-- `iotop` will show you which processes are consuming high disk bandwidth. If nginx or php stays on top with high IO% for a few seconds, that means you are using slow disks or your application needs to read or write too much to disk, take a look because this is one of the most common performance killers.
+- `iotop` will show you which processes are consuming high disk bandwidth. If nginx or PHP stays on top with high IO% for a few seconds, that means you are using slow disks or your application needs to read or write too much to disk, take a look because this is one of the most common performance killers.
 
         apt-get install iotop
 
