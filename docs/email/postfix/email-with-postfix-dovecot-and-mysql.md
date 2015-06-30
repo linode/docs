@@ -38,7 +38,7 @@ Dovecot offers a default self-signed certificate for free. This certificate encr
 
 {: .note}
 >
-> Many email service providers such as Gmail will only accept commercial SSL certificates for secure IMAP/POP3 connections. To communicate with these providers, follow our guide for [generating a commercial SSL certificate](https://www.linode.com/docs/security/ssl/obtaining-a-commercial-ssl-certificate).
+> Many email service providers such as Gmail will only accept commercial SSL certificates for secure IMAP/POP3 connections. To communicate with these providers, follow our guide for [Obtaining a Commercial SSL Certificate](https://www.linode.com/docs/security/ssl/obtaining-a-commercial-ssl-certificate).
 
 ## Installing Packages
 
