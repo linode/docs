@@ -1,13 +1,13 @@
 ---
 author:
-  name: Joseph Dooley
-  email: jdooley@linode.com
+    name: Joseph Dooley
+    email: jdooley@linode.com
 description: 'Install a Salt Master and Salt Minions.'
 keywords: 'salt, saltstack, install, beginner, Debian 8'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: Wednesday, May 27th, 2015
 modified_by:
-  name: Joseph Dooley
+    name: Joseph Dooley
 published: 'Wednesday, May 27th, 2015'
 title: Install Salt
 ---
@@ -20,7 +20,7 @@ The directions below are for two separate Debian 8 Linodes.
 
 1.  <a href="http://docs.saltstack.com/en/latest/ref/configuration/nonroot.html" target="_blank">As the root user</a> log into both Linode 1 and Linode 2, then <a href="https://www.linode.com/docs/getting-started#setting-the-hostname" target="_blank">set the hostnames</a>. Without changing the configurations in Salt, the Salt Master's ID and Salt Minions' IDs default to the hostname. 
 
-2. On both Linode 1 and Linode 2, create and open `/etc/apt/sources.list.d/salt.list`, then add the following lines: 
+2.  On both Linode 1 and Linode 2, create and open `/etc/apt/sources.list.d/salt.list`, then add the following lines: 
     
 	{:.file }
 	/etc/apt/sources.list.d/salt.list
@@ -29,13 +29,13 @@ The directions below are for two separate Debian 8 Linodes.
 	   deb http://debian.saltstack.com/debian jessie-saltstack main
 	   ~~~
 
-3.  On both Linode 1 and Linode 2, run the wget command:
+3.  On both Linode 1 and Linode 2, use `wget` to add the repository key:
 	
 		wget -q -O- "http://debian.saltstack.com/debian-salt-team-joehealy.gpg.key" | apt-key add -
 
 4.  On both Linode 1 and Linode 2, run the update command:
 
-		apt-get update
+        apt-get update
 
 ###Installing and Configuring the Salt Master
 
@@ -89,11 +89,11 @@ The directions below are for two separate Debian 8 Linodes.
 
 ##Using the Salt Master
 
-1.  List the known Salt Minions linked to the Salt Master:
+1.  From Linode 1, list the known Salt Minions linked to the Salt Master:
 
         salt-key -L
 
-3. For security purposes, verify the Minions' IDs on both the Salt Master and the Salt Minions. The Minions' IDs are most likely the hostname from their Linode.
+3.  For security purposes, verify the Minions' IDs on both the Salt Master and the Salt Minions. The Minions' IDs are most likely the hostname from their Linode.
         
     On the Salt Master, replace `<hostname or Minion ID>` below and run:
 
@@ -102,7 +102,6 @@ The directions below are for two separate Debian 8 Linodes.
     On the Salt Minions:
 
         salt-call key.finger --local
-
 
 
 2.  If the IDs have been verified, accept the listed Salt Minions.
@@ -123,5 +122,5 @@ The directions below are for two separate Debian 8 Linodes.
 
         salt '*' test.ping
 
-For possible next steps, continue building a multi-server configuration setup and read more about <a href="/docs/networking/salt/salt-states-apache-mysql-php-fail2ban" target="_blank">configuration management with Salt States</a>.
+For possible next steps, continue building a multi-server configuration setup and read more about [configuration management with Salt States](/docs/networking/salt/salt-states-apache-mysql-php-fail2ban).
 
