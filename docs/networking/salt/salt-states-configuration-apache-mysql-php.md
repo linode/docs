@@ -1,13 +1,13 @@
 ---
 author:
-  name: Joseph Dooley
-  email: jdooley@linode.com
+    name: Joseph Dooley
+    email: jdooley@linode.com
 description: 'Use Salt States with a LAMP Stack and Fail2ban.'
 keywords: 'salt, saltstack, states, apache, mysql, php, fail2ban, debian 8'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: Wednesday, June 3rd, 2015
 modified_by:
-  name: Joseph Dooley
+    name: Joseph Dooley
 published: 'Wednesday, June 3rd, 2015'
 title: Salt States for Configuration of Apache, MySQL, and PHP (LAMP)
 ---
@@ -17,7 +17,7 @@ After Salt is <a href="/docs/networking/salt/install-salt" target="_blank">insta
 ##Create the LAMP Configuration States
 The below steps configure all Salt Minions for a 1GB Linode, feel free to adjust as needed. 
 
-1. Open the `/etc/salt/base/top.sls` file and add the additional line:
+1.  Open the `/etc/salt/base/top.sls` file and add the additional line:
  
     {:.file }
     /etc/salt/base/top.sls
@@ -118,14 +118,14 @@ The below steps configure all Salt Minions for a 1GB Linode, feel free to adjust
     The above file uses the <a href="http://docs.saltstack.com/en/latest/ref/states/all/salt.states.file.html" target="_blank">file</a> and <a href="http://docs.saltstack.com/en/latest/ref/states/all/salt.states.service.html" target="_blank">service</a> Salt State modules.
 
 
-3. Transfer the State settings to the Minions:
+3.  Transfer the State settings to the Minions:
 
         salt '*' state.highstate
 
 ##Create Virtual Hosts Files
 Salt State Modules are used for settings across groups of Minions. To adjust a configuration on a single Minion, try using Salt Execution Modules. Note, there are many ways to use Salt. 
 
-1. Disable the default Apache virtual host on either a single Minion or all Minions:
+1.  Disable the default Apache virtual host on either a single Minion or all Minions:
 
     For a specific Minion:
 

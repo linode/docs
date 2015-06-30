@@ -1,13 +1,13 @@
 ---
 author:
-  name: Joseph Dooley
-  email: jdooley@linode.com
+    name: Joseph Dooley
+    email: jdooley@linode.com
 description: 'Use Salt States with a LAMP Stack and Fail2ban.'
 keywords: 'salt, saltstack, states, apache, mysql, php, fail2ban, debian 8'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: Wednesday, June 3rd, 2015
 modified_by:
-  name: Joseph Dooley
+    name: Joseph Dooley
 published: 'Wednesday, June 3rd, 2015'
 title: Salt States to Install Apache, MySQL, PHP (LAMP), and Fail2ban
 ---
@@ -42,7 +42,7 @@ The Salt Master's configuration file has now been adjusted for a new base direct
 ##Create the Top and Additional SLS Files 
 The <a href="https://docs.saltstack.com/en/latest/ref/states/top.html" target="_blank">top file</a> creates the top level organization for Salt States and Minions within the directory. Other SLS files typically correspond to the top file listings.
 
-1. Create the `/etc/salt/base/top.sls` file and add the following. Again, ensure exact formatting for the YAML two space nesting.
+1.  Create the `/etc/salt/base/top.sls` file and add the following. Again, ensure exact formatting for the YAML two space nesting.
     
     {:.file }
     /etc/salt/base/top.sls
