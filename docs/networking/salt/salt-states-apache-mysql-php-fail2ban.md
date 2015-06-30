@@ -108,5 +108,5 @@ The <a href="https://docs.saltstack.com/en/latest/ref/states/top.html" target="_
 
         salt '*' cmd.run "service --status-all | grep 'apache2\|mysql\|fail2ban'"
 
-A LAMP stack and Fail2ban Salt State has been created on all listed Salt Minions. To learn how to configure the LAMP Stack, try the <a href="/docs/networking/salt/salt-states-configuration-apache-mysql-php" target="_blank">Salt States for Configuration of Apache, MySQL, and PHP (LAMP)</a> guide.
+A LAMP stack and Fail2ban Salt State has been created on all listed Salt Minions. To learn how to configure the LAMP Stack, try the [Salt States for Configuration of Apache, MySQL, and PHP (LAMP)](/docs/networking/salt/salt-states-configuration-apache-mysql-php) guide.
 

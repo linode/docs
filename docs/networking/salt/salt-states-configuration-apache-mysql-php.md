@@ -184,6 +184,6 @@ Salt State Modules are used for settings across groups of Minions. To adjust a c
 
 The above section used the <a href="http://docs.saltstack.com/en/latest/ref/modules/all/salt.modules.cmdmod.html" target="_blank">cmdmod</a>, <a href="http://docs.saltstack.com/en/latest/ref/modules/all/salt.modules.file.html" target="_blank">file</a>, and <a href="http://docs.saltstack.com/en/latest/ref/modules/all/salt.modules.cp.html" target="_blank"> cp</a> Salt Execution modules.
 
-You should now have a configured LAMP stack across as many Minions as you wanted. 
+You should now have a configured LAMP stack across as many Minions as you wanted. You can customize your individual minions further by using [grains](http://docs.saltstack.com/en/latest/topics/targeting/grains.html) to apply specific variables to each host.
 
 
