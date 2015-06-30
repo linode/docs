@@ -36,6 +36,9 @@ Ensure that the MX record is changed for all domains and subdomains that might r
 
 Dovecot offers a default self-signed certificate for free. This certificate encrypts the mail connections similar to a purchased certificate. However, the email users receive warnings about the certificate when they attempt to set up their email accounts. Optionally, purchase and configure a commercial SSL certificate to avoid the warnings. For information about SSL certificates, see <a href="/docs/security/ssl/" target="_blank">Linode's SSL Certificate guides</a>.
 
+{: .note}
+>
+> Many email service providers such as Gmail will only accept commercial SSL certificates for secure IMAP/POP3 connections. To communicate with these providers, follow our guide for [generating a commercial SSL certificate](https://www.linode.com/docs/security/ssl/obtaining-a-commercial-ssl-certificate).
 
 ## Installing Packages
 
