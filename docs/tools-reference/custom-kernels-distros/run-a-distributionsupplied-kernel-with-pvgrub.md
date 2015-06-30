@@ -508,7 +508,7 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
 
     **64-bit CentOS:** :
 
-        yum install kernel-x86_64
+        yum install kernel.x86_64
 
 6.  Create a file named `/boot/grub/menu.lst` with the following contents. Adjust the `title`, `kernel`, and `initrd` lines to reflect the actual file names found in the `/boot/` directory.
 
