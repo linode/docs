@@ -6,7 +6,7 @@ description: 'Host websites and web applications with a LAMP server on Debian 7.
 keywords: 'debian 7 LAMP server,debian LAMP guide,LAMP howto,debian,debian 7,lamp,apache,mysql,php'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['lamp-guides/debian-7-wheezy/']
-modified: Friday, June 19th, 2015
+modified: Tuesday, June 30th, 2015
 modified_by:
   name: Elle Krout
 published: 'Wednesday, October 9th, 2013'
@@ -18,7 +18,7 @@ external_resources:
  - '[PHP Documentation](http://www.php.net/docs.php)'
 ---
 
-A LAMP (Linux, Apache, MySQL [MariaDB], PHP) stack is a common web stack used to prepare servers for hosting web content. This guide provides step-by-step instructions for installing a full-featured LAMP stack on a Debian 7.0 (Wheezy) system.
+A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used to prepare servers for hosting web content. This guide provides step-by-step instructions for installing a full-featured LAMP stack on a Debian 7.0 (Wheezy) Linode.
 
 {: .note}
 >
@@ -46,13 +46,9 @@ A LAMP (Linux, Apache, MySQL [MariaDB], PHP) stack is a common web stack used to
 
         sudo apt-get install apache2
 
-2.  Many popular web applications and frameworks make use of Apache's *rewrite* capabilities. Turn on the rewrite module:
+2.  Edit the main Apache configuration file to adjust the resource use settings. The settings shown below are a good starting point for a **Linode 1GB**:
 
-        sudo a2enmod rewrite
-
-3.  Edit the main Apache configuration file to adjust the resource use settings. The settings shown below are a good starting point for a **Linode 1GB**:
-
-    {: .file }
+    {: .file-excerpt }
     /etc/apache2/apache2.conf
     :   ~~~ conf
         KeepAlive Off
@@ -70,13 +66,13 @@ A LAMP (Linux, Apache, MySQL [MariaDB], PHP) stack is a common web stack used to
 
 ### Configure Name-Based Virtual Hosts
 
-There are different ways to set up virtual hosts; however, the below method is recommended.
+There are different ways to set up virtual hosts; however, the method below is recommended.
 
 1.  Within the `/etc/apache2/sites-available/` directory, create a configuration file for your website, `example.com.conf`, replacing `example.com` with your own domain information:
 
     {: .file }
     /etc/apache2/sites-available/example.com.conf
-    :   ~~~ apache
+    :   ~~~ conf
         <VirtualHost *:80> 
              ServerAdmin webmaster@example.com
              ServerName example.com
@@ -96,13 +92,13 @@ There are different ways to set up virtual hosts; however, the below method is r
         sudo mkdir -p /var/www/example.com/public_html
         sudo mkdir /var/www/example.com/logs
 
-3.  Enable the website's virtual hosts configuration:
+3.  Enable the website's virtual host:
 
         sudo a2ensite example.com.conf
 
     {: .note}
     >
-    >If you later need to disable your website, run:
+    >If you need to disable your website later, run:
     >
     >     sudo a2dissite example.com.conf
 
@@ -143,7 +139,7 @@ Assuming that you have configured the DNS for your domain to point to your Linod
 
         quit
 
-With Apache and MySQL installed, you are now ready to move on to installing PHP to provide scripting support for your web pages.
+With Apache and MySQL installed, you are now ready to move on to installing PHP.
 
 
 ## Install and Configure PHP
