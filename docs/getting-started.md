@@ -178,7 +178,7 @@ Enter the following command to set the hostname, replacing `hostname` with the h
 
     hostnamectl set-hostname hostname
 
-### Ubuntu14.04 / Debian 7
+### Ubuntu 14.04 / Debian 7
 
 Enter following commands to set the hostname, replacing `hostname` with the hostname of your choice:
 
