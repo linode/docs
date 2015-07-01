@@ -122,5 +122,5 @@ The directions below are for two separate Debian 8 Linodes.
 
         salt '*' test.ping
 
-For possible next steps, continue building a multi-server configuration setup and read more about [configuration management with Salt States](/docs/networking/salt/salt-states-apache-mysql-php-fail2ban).
+For possible next steps, continue building a multi-server configuration setup and read more about [configuration management with Salt States](/docs/applications/salt/salt-states-apache-mysql-php-fail2ban).
 
