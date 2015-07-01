@@ -20,7 +20,6 @@ featured:
 categories:
  - diagnostics
  - ssh
- - salt
  - dns
  - firewalls
  - vpn

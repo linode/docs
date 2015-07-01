@@ -11,6 +11,7 @@ categories:
  - containers
  - game-servers
  - media-servers
+ - salt
  - messaging
  - development
  - project-management
