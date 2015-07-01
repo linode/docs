@@ -5,10 +5,10 @@ author:
 description: 'Use Salt States with a LAMP Stack and Fail2ban.'
 keywords: 'salt, saltstack, states, apache, mysql, php, fail2ban, debian 8'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Wednesday, June 3rd, 2015
+modified: Thursday, July 2nd, 2015
 modified_by:
     name: Joseph Dooley
-published: 'Wednesday, June 3rd, 2015'
+published: 'Thursday, July 2nd, 2015'
 title: Salt States for Configuration of Apache, MySQL, and PHP (LAMP)
 ---
 
@@ -184,6 +184,6 @@ Salt State Modules are used for settings across groups of Minions. To adjust a c
 
 The above section used the <a href="http://docs.saltstack.com/en/latest/ref/modules/all/salt.modules.cmdmod.html" target="_blank">cmdmod</a>, <a href="http://docs.saltstack.com/en/latest/ref/modules/all/salt.modules.file.html" target="_blank">file</a>, and <a href="http://docs.saltstack.com/en/latest/ref/modules/all/salt.modules.cp.html" target="_blank"> cp</a> Salt Execution modules.
 
-You should now have a configured LAMP stack across as many Minions as you wanted. You can customize your individual minions further by using [grains](http://docs.saltstack.com/en/latest/topics/targeting/grains.html) to apply specific variables to each host.
+You should now have a configured LAMP stack across as many Minions as you wanted. Optionally, use [grains](http://docs.saltstack.com/en/latest/topics/targeting/grains.html) for further customization and to apply specific variables to each host.
 
 

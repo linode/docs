@@ -5,10 +5,10 @@ author:
 description: 'Install a Salt Master and Salt Minions.'
 keywords: 'salt, saltstack, install, beginner, Debian 8'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Wednesday, May 27th, 2015
+modified: Thursday, July 2nd, 2015
 modified_by:
     name: Joseph Dooley
-published: 'Wednesday, May 27th, 2015'
+published: 'Thursday, July 2nd, 2015'
 title: Install Salt
 ---
 
