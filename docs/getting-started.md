@@ -5,7 +5,7 @@ author:
 description: 'Our guide to deploying your first Linode.'
 keywords: 'linode guide,getting started,linode quickstart'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Monday, June 16th, 2014
+modified: Wednesday, July 1st, 2015
 modified_by:
   name: Linode
 published: 'Sunday, July 19th, 2009'
@@ -172,7 +172,13 @@ To learn more about setting your system's hostname and timezone, please watch th
 >
 > This video was created by [Treehouse](http://www.teamtreehouse.com), which is offering Linode customers a free one month trial. [Click here](http://teamtreehouse.com/join/free-month?utm_source=linode&utm_medium=partnership&utm_campaign=linode-2013&cid=1124) to start your free trial and start learning web design, web development, and more.
 
-### Ubuntu / Debian
+### Ubuntu 15.04 / Debian 8
+
+Enter the following command to set the hostname, replacing `hostname` with the hostname of your choice:
+
+    hostnamectl set-hostname hostname
+
+### Ubuntu 14.04 / Debian 7
 
 Enter following commands to set the hostname, replacing `hostname` with the hostname of your choice:
 
