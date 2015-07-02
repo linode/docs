@@ -75,25 +75,25 @@ If the versions are different, right click on the **Download** button for the **
 >
 > The `.tar.gz` file extension means that Roundcube downloads as a *compressed tarball*. Tarballs are used to package many files as one, similar to Windows ZIP folders, but without the compression. In this case, the tarball was compressed using `gzip`, which makes up for the lack of compression.
 
-To decompress and copy Roundcube to the `/var/www/html` directory, execute the command below. Again, replace any occurrences of `1.1.1` in the filename with the newer version number.
+To decompress and copy Roundcube to the `/var/www/html/example.com/public_html` directory, execute the command below. Again, replace any occurrences of `1.1.1` in the filename with the newer version number.
 
-        sudo tar -zxvf roundcubemail-1.1.1.tar.gz -C /var/www/html
+        sudo tar -zxvf roundcubemail-1.1.1.tar.gz -C /var/www/html/example.com/public_html
 
-To make Roundcube’s URL on your Linode version-neutral, execute the following command. It will change Roundcube’s directory name from `roundcubemail-1.1.1` to `roundcube` Doing so also makes the URL shorter for your users to type into their web browsers.
+To make Roundcube’s URL on your Linode version-neutral, execute the following command. It will change Roundcube’s directory name from `roundcubemail-1.1.1` to `roundcube`. Doing so also makes the URL shorter for your users to type into their web browsers.
 
-        sudo mv /var/www/html/roundcubemail-1.1.1 /var/www/html/roundcube
+        sudo mv /var/www/html/example.com/public_html/roundcube-1.1.1 /var/www/html/example.com/public_html/roundcube
 
 Next, grant Apache write access to Roundcube’s directory. This will allow Roundcube to save its own configuration file, instead of you having to download it and manually upload it to your Linode later in this tutorial.
 
-        sudo chown -R www-data:www-data /var/www/html/roundcube
+        sudo chown -R www-data:www-data /var/www/html/example.com/public_html/roundcube
 
-Lastly, you should add Roundcube’s `cleandb.sh` shell script as a *Cron job* on your Linode. In this case, the `cleandb.sh` shell script located in the `/var/www/html/roundcube/bin` directory will run every 24 hours at midnight. According to Roundcube’s developers, the script removes no longer needed temporary data from Roundcube’s MySQL database.
+Lastly, you should add Roundcube’s `cleandb.sh` shell script as a *Cron job* on your Linode. In this case, the `cleandb.sh` shell script located in the `/var/www/html/example.com/public_html/roundcube/bin` directory will run every 24 hours at midnight. According to Roundcube’s developers, the script removes no longer needed temporary data from Roundcube’s MySQL database.
 
 {: .note }
 >
 > A Cron job is a task scheduled in advance by a system administrator (you) and executed using the `cron` program. It allows system administrators to schedule commands to be run on their servers at set times, dates and intervals in the future automatically.
 
-        sudo echo '0 0 * * * root bash /var/www/html/roundcube/bin/cleandb.sh > /dev/null' >> /etc/crontab
+        sudo echo '0 0 * * * root bash /var/www/html/example.com/public_html/roundcube/bin/cleandb.sh > /dev/null' >> /etc/crontab
 
 ## Configuring Roundcube
 
@@ -113,7 +113,7 @@ Now you are ready to specify your Roundcube configuration options. The list of o
 
 - **General configuration > product_name:** Name of your email service (e.g. **Linode Webmail** or **University of Michigan Webmail**)
 - **General configuration > support_url:** Where should your users go if they need help? A URL to a web-based contact form or an email address should be used. (e.g. `http://example.com/support` or `mailto:support@example.com`)
-- **General configuration > skin_logo:** Replaces the default Roundcube logo with an image of your choice. The image must be located within the `/var/www/html/roundcube` directory and be linked relatively (e.g. `skins/larry/linode.png`). Recommended image resolution is `177px` by `49px`
+- **General configuration > skin_logo:** Replaces the default Roundcube logo with an image of your choice. The image must be located within the `/var/www/html/example.com/public_html/roundcube` directory and be linked relatively (e.g. `skins/larry/linode.png`). Recommended image resolution is `177px` by `49px`
 - **Database setup > db_dsnw > Database password:** Password for the **roundcube** MySQL user you created in step one (e.g. 3ENDqKF4jX6fNQh9).
 - **IMAP Settings > default_host:** Hostname of your IMAP server. Use `ssl://localhost` to access the local server (i.e. your server) using OpenSSL
 - **IMAP Settings > default_port:** TCP port for incoming IMAP connections to your server. Use port `993` to ensure OpenSSL is used
@@ -140,9 +140,9 @@ The next webpage will display more environment checks to make sure everything on
 
 ### Removing the Installer Directory
 
-You should delete the `/var/www/html/roundcube/installer` directory, which contains the files of the webpage you just used to configure Roundcube. While Roundcube has automatically disabled the installer functionality within its configuration file, not deleting the installer directory only leaves you one line of defence against hackers.
+You should delete the `/var/www/html/example.com/public_html/roundcube/installer` directory, which contains the files of the webpage you just used to configure Roundcube. While Roundcube has automatically disabled the installer functionality within its configuration file, not deleting the installer directory only leaves you one line of defence against hackers.
 
-        sudo rm -rf /var/www/html/roundcube/installer
+        sudo rm -rf /var/www/html/example.com/public_html/roundcube/installer
 
 Deleting the installer directory creates two lines of defence; the more lines of defences you have in any computer system, the better.
 
@@ -152,12 +152,12 @@ The second, and perhaps most important, thing you need to do to secure your Roun
 
 To force clients who do not request HTTPS to use an encrypted connection, add an URL rewriting rule to Roundcube’s `.htaccess` file. Open the file using `nano`.
 
-        sudo nano /var/www/html/roundcube/.htaccess
+        sudo nano /var/www/html/example.com/public_html/roundcube/.htaccess
 
 Highlight the text below, right click on it and select **Copy**.
 
 {: .file-excerpt }
-/var/www/html/roundcube/.htaccess
+/var/www/html/example.com/public_html/roundcube/.htaccess
 : ~~~
         <IfModule mod_rewrite.c>
         RewriteEngine On
@@ -202,20 +202,20 @@ As new versions of Roundcube are released in the future, you will want to update
 >
 > A **patch** means the same thing as software update, but the term is more often used to describe fixing an unexpected problem in the software rather than adding new features.
 
-Roundcube is not installed from a Debian software repository, so you cannot use the `sudo apt-get upgrade` command to update it. You have to use the `/var/www/html/roundcube/bin/installto.sh` PHP script that is included with Roundcube instead.
+Roundcube is not installed from a Debian software repository, so you cannot use the `sudo apt-get upgrade` command to update it. You have to use the `/var/www/html/example.com/public_html/roundcube/bin/installto.sh` PHP script that is included with Roundcube instead.
 
 To check if an update for Roundcube is available, go to [Roundcube’s download page](http://roundcube.net/download/) and compare the **Stable > Complete** package’s version to the version of Roundcube that is currently installed on your server. If the version listed is newer than the version on your server, right click on the **Download** button for the **Stable > Complete** package and click on **Copy link address**. Again, replace any occurrences of `1.1.1` in the filename with the newer version number.
 
         cd ~ && wget http://downloads.sourceforge.net/project/roundcubemail/roundcubemail/1.1.1/roundcubemail-1.1.1.tar.gz
 
-Extract and unzip the tarball. Unlike the initial installation, you can extract Roundcube to your UNIX user’s home directory and not the `/var/www/html` directory. Make sure to replace the file name with the name of the file you downloaded.
+Extract and unzip the tarball. Unlike the initial installation, you can extract Roundcube to your UNIX user’s home directory and not the `/var/www/html/example.com/public_html` directory. Make sure to replace the file name with the name of the file you downloaded.
 
         tar -zxvf roundcubemail-1.1.1.tar.gz
 
-Execute the `/var/www/html/roundcube/bin/installto.sh` PHP script to update Roundcube. If you did not install Roundcube in the `/var/www/html` directory, replace the trailing directory with the location of Roundcube on your server.
+Execute the `/var/www/html/example.com/public_html/roundcube/bin/installto.sh` PHP script to update Roundcube. If you did not install Roundcube in the `/var/www/html/example.com/public_html/roundcube` directory, replace the trailing directory with the location of Roundcube on your server.
 
         cd roundcubemail-1.1.1
-        sudo php bin/installto.sh /var/www/html/roundcube
+        sudo php bin/installto.sh /var/www/html/example.com/public_html/roundcube
 
 The script will ask you if you are *really* sure you want to upgrade Roundcube before it begins. You need to type the letter `y` followed by the `ENTER` or `RETURN` key to start the upgrade process. A successful upgrade will show something similar to this in your Terminal:
 
