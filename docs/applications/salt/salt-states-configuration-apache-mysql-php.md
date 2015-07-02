@@ -12,7 +12,7 @@ published: 'Thursday, July 2nd, 2015'
 title: Salt States for Configuration of Apache, MySQL, and PHP (LAMP)
 ---
 
-After Salt is <a href="/docs/networking/salt/install-salt" target="_blank">installed</a> and <a href="/docs/networking/salt/salt-states-apache-mysql-php-fail2ban" target="_blank">Salt States</a> are created, configure the Minion's setup. In this tutorial, configure a Minion's LAMP stack with further use of Salt States. This tutorial is written for Debian 8 but can easily be adjusted for other Linux Distributions.
+After Salt is <a href="/docs/networking/salt/install-salt" target="_blank">installed</a> and <a href="/docs/networking/salt/salt-states-apache-mysql-php-fail2ban" target="_blank">Salt States</a> are created, the Minion will need to be configured. In this tutorial, configure a Minion's LAMP stack with further use of Salt States. This tutorial is written for Debian 8 but can easily be adjusted for other Linux Distributions.
 
 ##Create the LAMP Configuration States
 The below steps configure all Salt Minions for a 1GB Linode, feel free to adjust as needed. 
