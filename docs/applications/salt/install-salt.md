@@ -12,9 +12,7 @@ published: 'Thursday, July 2nd, 2015'
 title: Install Salt
 ---
 
-Salt is designed for server management. A single Salt Master controls many Salt Minions.
-
-The directions below are for two separate Debian 8 Linodes.
+Salt is designed for server management. A single Salt Master controls many Salt Minions. The directions below will configure two Debian 8 Linodes, one as a Salt Master, and one as a Salt Minion.
 
 ##Install a Salt Master and a Salt Minion
 
