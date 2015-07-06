@@ -39,7 +39,7 @@ Ruby on Rails is a rapid development web framework that allows web designers and
 
         sudo apt-get update && sudo apt-get upgrade
 
-3.  Uninstall Nginx, if currently downloaded to your Linode. Nginx does not support loadable modules and is contained in the Phusion Passenger package:
+3.  Uninstall Nginx, if currently installed on your Linode. Nginx does not support loadable modules and is contained in the Phusion Passenger package:
 
         sudo apt-get remove nginx nginx-full nginx-light nginx-common
 
@@ -56,7 +56,7 @@ Ruby on Rails is a rapid development web framework that allows web designers and
 
         sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 561F9B9CAC40B2F7
 
-3.  Create the file `/etc/apt/sources.list.d/passenger.list` with the following contents:
+3.  With `sudo` or as the root user, create the file `/etc/apt/sources.list.d/passenger.list` with the following contents:
 
     {: .file}
     /etc/apt/sources.list.d/passenger.list
@@ -86,7 +86,7 @@ Ruby on Rails is a rapid development web framework that allows web designers and
 
 ## Enable Passenger Support and Start Nginx
 
-1.  Nginx is now installed on your system, but you need to enable support for Phusion Passenger. Edit the file `/etc/nginx/nginx.conf` and uncomment these lines:
+1.  Nginx is now installed on your system, but you need to enable support for Phusion Passenger. As root, or with the `sudo ` command, edit the file `/etc/nginx/nginx.conf` and uncomment these lines:
 
     {: .file-excerpt}
     /etc/nginx/nginx.conf
@@ -103,7 +103,14 @@ Ruby on Rails is a rapid development web framework that allows web designers and
 
         sudo passenger-memory-stats
 
-    If Passenger is running, you should see a few running processes under the "Passenger processes" section.
+    If Passenger is running, you should see a few running processes under the "Passenger processes" section:
+
+        ----- Passenger processes -----
+        PID    VMSize    Private  Name
+        -------------------------------
+        14337  420.8 MB  1.1 MB   Passenger watchdog
+        14340  559.3 MB  1.4 MB   Passenger core
+        14345  292.5 MB  1.2 MB   Passenger ust-router
 
     The configuration file for Nginx is located at `/etc/nginx/nginx.conf`. This is the file you'll need to edit to add support for your Rails applications. A default server is already configured in this file, and it also contains examples for alternate virtual host and SSL configurations.
 
