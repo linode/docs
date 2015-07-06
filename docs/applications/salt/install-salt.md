@@ -12,15 +12,13 @@ published: 'Thursday, July 2nd, 2015'
 title: Install Salt
 ---
 
-Salt is designed for server management. A single Salt Master controls many Salt Minions.
-
-The directions below are for two separate Debian 8 Linodes.
+Salt is designed for server management. A single Salt Master controls many Salt Minions. The directions below will configure two Debian 8 Linodes, one as a Salt Master, and one as a Salt Minion.
 
 ##Install a Salt Master and a Salt Minion
 
 1.  <a href="http://docs.saltstack.com/en/latest/ref/configuration/nonroot.html" target="_blank">As the root user</a> log into both Linode 1 and Linode 2, then <a href="https://www.linode.com/docs/getting-started#setting-the-hostname" target="_blank">set the hostnames</a>. Without changing the configurations in Salt, the Salt Master's ID and Salt Minions' IDs default to the hostname. 
 
-2.  On both Linode 1 and Linode 2, create and open `/etc/apt/sources.list.d/salt.list`, then add the following lines: 
+2.  On both Linodes, create and open `/etc/apt/sources.list.d/salt.list`, then add the following lines: 
     
 	{:.file }
 	/etc/apt/sources.list.d/salt.list
@@ -29,21 +27,21 @@ The directions below are for two separate Debian 8 Linodes.
 	   deb http://debian.saltstack.com/debian jessie-saltstack main
 	   ~~~
 
-3.  On both Linode 1 and Linode 2, use `wget` to add the repository key:
+3.  On both Linodes, use `wget` to add the repository key:
 	
 		wget -q -O- "http://debian.saltstack.com/debian-salt-team-joehealy.gpg.key" | apt-key add -
 
-4.  On both Linode 1 and Linode 2, run the update command:
+4.  On both Linodes, run the update command:
 
         apt-get update
 
 ###Installing and Configuring the Salt Master
 
-1.  On only Linode 1 the Salt Master, install Salt:
+1.  On Linode 1, the Salt Master, install Salt:
 
         apt-get install salt-master
 
-2.  On Linode 1 the Salt Master, open `/etc/salt/master`, uncomment the `#interface:` line, and replace `<master's IP address>` below with the public, Salt Master's IP address:
+2.  On Linode 1, open `/etc/salt/master`, uncomment the `#interface:` line, and replace `<master's IP address>` below with the public, Salt Master's IP address:
 
     {:.file }
     /etc/salt/master 
@@ -58,17 +56,17 @@ The directions below are for two separate Debian 8 Linodes.
 
 
 
-3.  On Linode 1 the Salt Master, restart Salt:
+3.  On Linode 1, restart Salt:
 
         systemctl restart salt-master
 
 ###Installing and Configuring a Salt Minion
 
-1.  On only Linode 2 the Salt Minion, install Salt:
+1.  On Linode 2, the Salt Minion, install Salt:
 
         apt-get install salt-minion
     
-2.  On Linode 2 the Salt Minion, open `/etc/salt/minion`, uncomment the `#master: salt` line, and replace "salt" with the IP address of Linode 1, the Salt Master:
+2.  On Linode 2, open `/etc/salt/minion`, uncomment the `#master: salt` line, and replace "salt" with the IP address of Linode 1, the Salt Master:
 
     {:.file }
     /etc/salt/minion 
@@ -83,7 +81,7 @@ The directions below are for two separate Debian 8 Linodes.
     > Ensure that there are two spaces in front of "master" and a space between the colon, in `master: `, and the IP address. YAML formatting follows two space nesting.
 
 
-3.  On Linode 2 the Salt Minion, restart Salt:
+3.  On Linode 2, restart Salt:
 
         systemctl restart salt-minion
 
