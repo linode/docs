@@ -1,13 +1,13 @@
 ---
 author:
-  name: Linode
-  email: docs@linode.com
+    name: Linode
+    email: docs@linode.com
 description: 'A basic guide to installing nginx from source on Debian 7 (Wheezy)'
 keywords: 'nginx,http,web servers,debian,debian jessie,debian 8'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: Tuesday, June 23rd, 2015
 modified_by:
-  name: Elle Krout
+    name: Elle Krout
 published: 'Tuesday, June 23rd, 2015'
 title: 'Nginx Web Server on Debian 8'
 external_resources:
@@ -48,7 +48,6 @@ The simplest way to install Nginx on a server is by downloading it from Debian's
 1.  Install Nginx and start the daemon:
 
         sudo apt-get install nginx
-        sudo service nginx start
 
     Installing Nginx from the Debian repositories ensures that Nginx has been tested and successfully runs at its best on Debian. However, the Debian repositories are often a few versions behind the latest Nginx release.
 
@@ -94,18 +93,18 @@ The Debian project does not track the latest development of Nginx server. If you
         nginx http uwsgi temporary files: "uwsgi_temp"
         nginx http scgi temporary files: "scgi_temp"
 
-4.  Build and install Nginx with the above configuration:
+6.  Build and install Nginx with the above configuration:
 
         sudo make
         sudo make install
 
-5.  Create a user and group for Nginx:
+7.  As the root user create a user and group for Nginx:
 
         sudo adduser --system --no-create-home --disabled-login --disabled-password --group nginx
 
     Nginx is now installed in `/opt/nginx`.
 
-6.  Create a script to run Nginx:
+8.  Create a script to run Nginx:
 
     {: .file}
     /lib/systemd/system/nginx.service
@@ -128,13 +127,13 @@ The Debian project does not track the latest development of Nginx server. If you
         WantedBy=multi-user.target
         ~~~
 
-7.  Change the ownership of the script:
+9.  Change the ownership of the script:
 
         sudo chmod +x /lib/systemd/system/nginx.service
 
-8.  Start Nginx:
+10.  Start Nginx:
 
-        sudo systemctl start nginx
+         sudo systemctl start nginx
 
 
 Continue reading our introduction to [Basic Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration) for more information about using and setting up a web server.
