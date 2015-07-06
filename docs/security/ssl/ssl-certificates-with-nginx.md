@@ -5,7 +5,7 @@ author:
 description: 'Use TLS/SSL to provide transport later encryption for HTTP connections with nginx.'
 keywords: 'ssl,tls,nginx,https,secure http'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['web-servers/nginx/configuration/ssl/','security/ssl/ssl-certificates-with-nginx/index.cfm/']
+alias: ['web-servers/nginx/configuration/ssl/','security/ssl/ssl-certificates-with-nginx/index.cfm/','websites/ssl/ssl-certificates-with-nginx.cfm/']
 modified: Tuesday, June 10th, 2014
 modified_by:
   name: Alex Fornuto
