@@ -30,7 +30,7 @@ Use the Docker-maintained install script for Debian or Ubuntu. For other operati
 
     {: .note}
     >
-    >The current version of the docker script checks for AUFS support, and displays the warning below if support is not found:
+    >The current version of the docker script checks for AUFS support and displays the warning below if support is not found:
     >
     >     Warning: current kernel is not supported by the linux-image-extra-virtual
           package.  We have no AUFS support.  Consider installing the packages
