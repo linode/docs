@@ -28,13 +28,14 @@ There are two ways to access Lish. You can use a terminal application to connect
 You can connect to Lish with the SSH client of your choice. For example, you can use the Terminal application in Mac OS X, PuTTY in Windows, or your favorite X11 terminal. Here's how to use a terminal application to connect to Lish:
 
 1.  Select a Lish SSH gateway. There's one in every data center. You can use any gateway to access your Linodes, but we recommend using one close to your Linode's data center. The gateway boxes are available over IPv4 and IPv6.
-    -   lish-tokyo.linode.com
-    -   lish-fremont.linode.com
-    -   lish-dallas.linode.com
     -   lish-atlanta.linode.com
-    -   lish-newark.linode.com
+    -   lish-dallas.linode.com
+    -   lish-frankfurt.linode.com
+    -   lish-fremont.linode.com
     -   lish-london.linode.com
+    -   lish-newark.linode.com
     -   lish-singapore.linode.com
+    -   lish-tokyo.linode.com
 
 2.  Open a terminal window and enter the following command, replacing *[manager-username]* with your Linode Manager username, and *[location]* with your preferred Lish SSH gateway. Lish listens for connections on ports 22, 443, and 2200.
 
@@ -158,29 +159,13 @@ This command format works for all Lish functionality.
 
 The valid fingerprints for the Lish gateway boxes are as follows:
 
-### Tokyo
+### Atlanta
 
-These are the fingerprints for the Lish gateway in our Tokyo data center (lish-tokyo.linode.com):
+These are the fingerprints for the Lish gateway in our Atlanta data center (lish-atlanta.linode.com):
 
-    RSA af:ec:f0:b8:87:33:d5:12:04:0d:7c:bb:a6:c5:5f:be
-    DSA 1d:7d:bd:5c:a1:41:29:c3:78:de:e7:0f:d3:f2:63:34
-    ECDSA 6a:a9:5a:61:d2:75:3f:56:00:36:f7:fe:6e:43:22:84
-
-### Fremont
-
-These are the fingerprints for the Lish gateway in our Fremont data center (lish-fremont.linode.com):
-
-    RSA 2c:43:0e:fc:88:f2:3a:dd:01:43:3a:fc:9f:67:9f:66
-    DSA 19:30:1a:48:85:aa:78:ab:46:8d:0f:4d:00:88:e6:b7
-    ECDSA d3:9d:48:e2:d5:ca:6e:73:34:7d:71:cf:94:04:62:b7
-
-### Newark
-
-These are the fingerprints for the Lish gateway in our Newark data center (lish-newark.linode.com):
-
-    RSA 11:2a:57:a4:f8:ca:42:b2:c0:ab:17:58:0d:0c:b7:8b
-    DSA a1:e2:f5:5a:71:f9:b8:98:d9:a6:4c:65:e5:05:ea:04
-    ECDSA d0:fa:d1:d8:0f:c5:40:91:6a:53:80:27:ae:14:0f:e5
+    RSA 59:30:1a:0b:93:5e:3f:4b:6f:d1:96:ff:7e:9e:12:f8
+    DSA 0b:90:ed:f2:a1:e0:55:5b:38:6e:5d:6e:fa:00:63:7f
+    ECDSA 7a:1e:30:ce:fb:a8:c8:85:c2:e8:2d:4c:85:d9:48:a2
 
 ### Dallas
 
@@ -190,13 +175,21 @@ These are the fingerprints for the Lish gateway in our Dallas data center (lish-
     DSA 58:bc:07:fa:c1:61:a4:3b:b5:00:3b:9b:6b:78:c6:c5
     ECDSA 0e:52:90:0e:8b:54:6f:a0:c3:1a:16:54:d2:84:d0:60
 
-### Atlanta
+### Frankfurt
 
-These are the fingerprints for the Lish gateway in our Atlanta data center (lish-atlanta.linode.com):
+These are the fingerprints for the Lish gateway in our Frankfurt data center (lish-frankfurt.linode.com):
 
-    RSA 59:30:1a:0b:93:5e:3f:4b:6f:d1:96:ff:7e:9e:12:f8
-    DSA 0b:90:ed:f2:a1:e0:55:5b:38:6e:5d:6e:fa:00:63:7f
-    ECDSA 7a:1e:30:ce:fb:a8:c8:85:c2:e8:2d:4c:85:d9:48:a2
+    RSA 
+    DSA 
+    ECDSA 
+
+### Fremont
+
+These are the fingerprints for the Lish gateway in our Fremont data center (lish-fremont.linode.com):
+
+    RSA 2c:43:0e:fc:88:f2:3a:dd:01:43:3a:fc:9f:67:9f:66
+    DSA 19:30:1a:48:85:aa:78:ab:46:8d:0f:4d:00:88:e6:b7
+    ECDSA d3:9d:48:e2:d5:ca:6e:73:34:7d:71:cf:94:04:62:b7
 
 ### London
 
@@ -206,6 +199,14 @@ These are the fingerprints for the Lish gateway in our London data center (lish-
     DSA ce:41:c0:48:2c:93:de:c8:d2:a9:bf:3f:97:1f:04:ad
     ECDSA 2c:bc:3a:6d:16:a2:82:d4:96:d2:8a:82:ec:89:e3:e8
 
+### Newark
+
+These are the fingerprints for the Lish gateway in our Newark data center (lish-newark.linode.com):
+
+    RSA 11:2a:57:a4:f8:ca:42:b2:c0:ab:17:58:0d:0c:b7:8b
+    DSA a1:e2:f5:5a:71:f9:b8:98:d9:a6:4c:65:e5:05:ea:04
+    ECDSA d0:fa:d1:d8:0f:c5:40:91:6a:53:80:27:ae:14:0f:e5
+
 ### Singapore
 
 These are the fingerprints for the Lish gateway in our Singapore data center (lish-singapore.linode.com):
@@ -213,4 +214,14 @@ These are the fingerprints for the Lish gateway in our Singapore data center (li
     RSA 06:26:d8:2a:12:8b:2f:d7:6c:54:72:5a:a7:7b:da:7b
     DSA 0c:f9:f9:d6:f3:0a:f6:bb:82:82:07:4b:51:db:e2:35
     ECDSA e4:09:16:a1:4e:b5:91:99:1a:75:25:76:b7:21:8a:f5
+
+
+### Tokyo
+
+These are the fingerprints for the Lish gateway in our Tokyo data center (lish-tokyo.linode.com):
+
+    RSA af:ec:f0:b8:87:33:d5:12:04:0d:7c:bb:a6:c5:5f:be
+    DSA 1d:7d:bd:5c:a1:41:29:c3:78:de:e7:0f:d3:f2:63:34
+    ECDSA 6a:a9:5a:61:d2:75:3f:56:00:36:f7:fe:6e:43:22:84
+
 
