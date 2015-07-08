@@ -171,7 +171,7 @@ Apache supports *name-based virtual hosting*, which allows you to host multiple 
 
 7.  Restart Apache:
 
-        sudo system apache2 restart
+        sudo service apache2 restart
 
 
 ## Set Up Mods and Scripting
