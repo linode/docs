@@ -26,20 +26,20 @@ Ruby on Rails is a rapid development web framework that allows web designers and
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, and the Linode's [hostname is set](/docs/getting-started#setting-the-hostname).
+1.  Follow the [Getting Started](/docs/getting-started) and [Securing the Server](/docs/security/securing-the-server) guides, and [set the Linode's hostname](/docs/getting-started#setting-the-hostname).
 
-    To check your hostname run:
+    To check the hostname run:
 
         hostname
         hostname -f
 
-    The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
+    The first command should show the short hostname, and the second should show the fully qualified domain name (FQDN).
 
-2.  Update your system:
+2.  Update the system:
 
         sudo apt-get update && sudo apt-get upgrade
 
-3.  Uninstall Nginx, if currently installed on your Linode. Nginx does not support loadable modules and is contained in the Phusion Passenger package:
+3.  Uninstall Nginx, if currently installed on the Linode. Nginx does not support loadable modules and is contained in the Phusion Passenger package:
 
         sudo apt-get remove nginx nginx-full nginx-light nginx-common
 
@@ -50,9 +50,9 @@ Ruby on Rails is a rapid development web framework that allows web designers and
 
         sudo apt-get install build-essential ruby ruby-dev zlib1g-dev libruby libssl-dev libpcre3-dev libcurl4-openssl-dev rake ruby-rack rails
 
-    Additionally, the application you deploy will likely have dependencies. Install these dependencies before proceeding.
+    Additionally, the deployed application will likely have dependencies. Install these dependencies before proceeding.
 
-2.  Phusion hosts a repository containing the latest version of Phusion Passenger. To add this to your package manager, first install the Phusion PGP key:
+2.  Phusion hosts a repository containing the latest version of Phusion Passenger. To add this to the package manager, first install the Phusion PGP key:
 
         sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 561F9B9CAC40B2F7
 
@@ -68,7 +68,7 @@ Ruby on Rails is a rapid development web framework that allows web designers and
 
         sudo apt-get install apt-transport-https
 
-5.  Update your local package database and install Phusion Passenger:
+5.  Update the local package database and install Phusion Passenger:
 
         sudo apt-get update
         sudo apt-get install nginx-extras passenger
@@ -77,14 +77,14 @@ Ruby on Rails is a rapid development web framework that allows web designers and
 
         sudo passenger-install-nginx-module
 
-    You'll be greeted by the Phusion Passenger Nginx installer program. Press "Enter" to continue with the installation.
+    This starts the Phusion Passenger Nginx installer program. Press "Enter" to continue with the installation.
 
-    The installation process will begin an interactive session that will guide you through the process of building Phusion Passenger. When prompted for the Nginx installation method, we recommend you choose "1" for both options to allow the installer to automatically download, compile, and install Nginx for you.
+    The installation process will begin an interactive session that will navigate through the process of building Phusion Passenger. When prompted for the Nginx installation method, we recommend selecting "1" for both options to allow the installer to automatically download, compile, and install Nginx.
 
 
 ## Enable Passenger Support and Start Nginx
 
-1.  Nginx is now installed on your system, but you need to enable support for Phusion Passenger. As root, or with the `sudo ` command, edit the file `/etc/nginx/nginx.conf` and uncomment these lines:
+1.  Nginx is now installed on the system, but support for Phusion Passenger is not enabled. As root, or with the `sudo ` command, edit the file `/etc/nginx/nginx.conf` and uncomment these lines:
 
     {: .file-excerpt}
     /etc/nginx/nginx.conf
@@ -101,7 +101,7 @@ Ruby on Rails is a rapid development web framework that allows web designers and
 
         sudo passenger-memory-stats
 
-    If Passenger is running, you should see a few running processes under the "Passenger processes" section:
+    If Passenger is running, a few running processes should be displayed under the "Passenger processes" section:
 
         ----- Passenger processes -----
         PID    VMSize    Private  Name
@@ -110,11 +110,11 @@ Ruby on Rails is a rapid development web framework that allows web designers and
         14340  559.3 MB  1.4 MB   Passenger core
         14345  292.5 MB  1.2 MB   Passenger ust-router
 
-    The configuration file for Nginx is located at `/etc/nginx/nginx.conf`. This is the file you'll need to edit to add support for your Rails applications. A default server is already configured in this file, and it also contains examples for alternate virtual host and SSL configurations.
+    The configuration file for Nginx is located at `/etc/nginx/nginx.conf`. This file must be edited to add support for Rails applications. A default server is already configured in this file, and it also contains examples for alternate virtual host and SSL configurations.
 
 
 ## Install MySQL Support (Optional)
 
-If your application uses MySQL, install the database server by following our [MySQL on Debian 8](/docs/databases/mysql/mysql-relational-databases-debian-8) guide. Once it's installed and configured properly, issue the following command:
+If the application deployed uses MySQL, install the database server by following our [MySQL on Debian 8](/docs/databases/mysql/mysql-relational-databases-debian-8) guide. Once it's installed and configured properly, issue the following command:
 
     sudo apt-get install libmysqlclient-dev
