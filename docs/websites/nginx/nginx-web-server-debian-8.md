@@ -31,7 +31,7 @@ Nginx is a lightweight, high performance web server designed with the purpose of
         hostname
         hostname -f
 
-    The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
+    The first command should show the short hostname, and the second should show the fully qualified domain name (FQDN).
 
 2.  Update your system:
 
