@@ -31,7 +31,7 @@ Before setting up the reverse DNS for your Linode, be sure to set up your domain
 
 	[![The Reverse DNS link](/docs/assets/1709-remoteaccess_reversedns.png)](/docs/assets/1709-remoteaccess_reversedns.png)
 
-4.  Enter a domain name in the **Hostname** field:
+4.  Enter your Linode's fully qualified domain name in the **Hostname** field:
 
 	[![Adding the domain name for reverse DNS](/docs/assets/1706-ptr_lookup_marked.png)](/docs/assets/1706-ptr_lookup_marked.png)
 
