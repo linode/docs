@@ -91,6 +91,7 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
 
     * CentOS 7
 
+          mkdir /boot/grub
           grub2-mkconfig -o /boot/grub/grub.cfg
 
     * Fedora 22 - Replace with the current kernel version
