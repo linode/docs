@@ -6,9 +6,9 @@ description: 'Install and optimize the WordPress blogging and content management
 keywords: 'install WordPress,WordPress on Linode,WordPress howto'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-applications/cms-guides/wordpress/']
-modified: Monday, February 16, 2015
+modified: Wednesday, June 10, 2015
 modified_by:
-  name: Elle Krout
+  name: Ramesh Vishveshwar
 published: 'Tuesday, July 27th, 2010'
 title: Manage Web Content with WordPress
 external_resources:
@@ -84,6 +84,16 @@ These commands create a `src/` folder within the `/var/www/example.com/` directo
         a2enmod rewrite
         service apache2 restart
 
+4.  **Important!** If you plan to use permalinks using fancy names instead of the default (which uses post ID), Wordpress will update the `.htaccess` file. However, by default Apache will not allow individual sites to override the server settings. Open the apache config file and look for the Directory directive for `/var/www`. The initial value will be `AllowOverride None`. This must be changed to `All` to allow individual sites to override server settings
+
+
+	```<Directory /var/www/>
+			Options Indexes FollowSymLinks
+			AllowOverride All
+			Require all granted
+	</Directory>```
+
+
 You will now be able to log in to your new WordPress-powered website. You can continue the configuration of your WordPress site from the web-based interface.
 
 Congratulations! You have now successfully installed WordPress!
@@ -93,6 +103,3 @@ Congratulations! You have now successfully installed WordPress!
 When running software compiled or installed directly from sources provided by upstream developers, you are responsible for monitoring updates, bug fixes, and security issues. After becoming aware of releases and potential issues, update your software to resolve flaws and prevent possible system compromise. Monitoring releases and maintaining up-to-date versions of all software is crucial for the security and integrity of a system.
 
 WordPress comes with update alerts, accessible within the "Updates" page of your web-based administration interface. From here you can also reinstall WordPress, and update both your WordPress version and any plug-ins you have installed, as needed.
-
-
-
