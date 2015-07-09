@@ -5,10 +5,10 @@ author:
 description: 'A basic guide to installing nginx from source on Debian 7 (Wheezy)'
 keywords: 'nginx,http,web servers,debian,debian jessie,debian 8'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Tuesday, June 23rd, 2015
+modified: Thursday, July 9th, 2015
 modified_by:
     name: Elle Krout
-published: 'Tuesday, June 23rd, 2015'
+published: 'Thursday, July 9th, 2015'
 title: 'Nginx Web Server on Debian 8'
 external_resources:
  - '[Linode Library Nginx Documentation](/docs/web-servers/nginx/)'
