@@ -37,7 +37,7 @@ Before setting up the reverse DNS for your Linode, be sure to set up your domain
 
 5.  Click **Look up**. A message appears indicating that a match has been found for both your IPv4 and IPv6 addresses:
 
-	[![Reverse DNS Match found](/docs/assets/1708-ptr_lookup_match_found_small.png)](/docs/assets/1707-ptr_lookup_match_found.png)
+	[![Reverse DNS Match found](/docs/assets/1707-ptr_lookup_match_found.png)](/docs/assets/1707-ptr_lookup_match_found.png)
 
 6.  Click **Yes** beneath the desired address. Note that you can select only one address at a time. If you want to set up reverse DNS for both the IPv4 and IPv6 addresses, you can perform another lookup and select the other address.
 
