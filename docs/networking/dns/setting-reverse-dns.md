@@ -8,8 +8,8 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['dns-manager/','dns-guides/configuring-dns-with-the-linode-manager/']
 modified: Tuesday, Janaury 20, 2015
 modified_by:
-  name: Elle Krout
-published: 'Tuesday, January 20, 2015'
+  name: James Stewart
+published: 'Thursday, July 9, 2015'
 title: Reverse DNS
 ---
 
