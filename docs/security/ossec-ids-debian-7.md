@@ -19,6 +19,8 @@ external_resources:
 
 *This is a Linode Community guide. [Write for us](/docs/contribute) and earn $100 per published guide.*
 
+<hr>
+
 OSSEC is an open-source, host-based intrusion detection system (**HIDS**) that performs log analysis, integrity checking, rootkit detection, time-based alerting, and active response, making it an ideal choice for server monitoring.
 
 When installed and configured, OSSEC will provide a real-time view of what's taking place in your server or servers in a server/agent mode.

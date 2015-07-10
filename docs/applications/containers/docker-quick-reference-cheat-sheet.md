@@ -1,13 +1,13 @@
 ---
 author:
-  name: Joseph Dooley
-  email: jdooley@linode.com
+  name: Linode
+  email: docs@linode.com
 description: 'A docker quick reference guide or cheat sheet.'
 keywords: 'docker,quick reference,cheat sheet,commands'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: Monday, March 30th, 2015
 modified_by:
-  name: Joseph Dooley
+  name: Linode
 published: 'Monday, March 30th, 2015'
 title: Docker Quick Reference
 ---

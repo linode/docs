@@ -26,7 +26,7 @@ Ruby on Rails is a rapid development web framework that allows web designers and
 
 ## Before You Begin
 
-1.  Follow the [Getting Started](/docs/getting-started) and [Securing the Server](/docs/security/securing-the-server) guides, and [set the Linode's hostname](/docs/getting-started#setting-the-hostname).
+1.  Follow the [Getting Started](/docs/getting-started) and [Securing the Server](/docs/security/securing-your-server) guides, and [set the Linode's hostname](/docs/getting-started#setting-the-hostname).
 
     To check the hostname run:
 

@@ -1,13 +1,13 @@
 ---
 author:
-    name: Joseph Dooley
-    email: jdooley@linode.com
+    name: Linode
+    email: docs@linode.com
 description: 'Use Salt States with a LAMP Stack and Fail2ban.'
 keywords: 'salt, saltstack, states, apache, mysql, php, fail2ban, debian 8'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: Thursday, July 2nd, 2015
 modified_by:
-    name: Joseph Dooley
+    name: Linode
 published: 'Thursday, July 2nd, 2015'
 title: Salt States to Install Apache, MySQL, PHP (LAMP), and Fail2ban
 ---
@@ -15,7 +15,7 @@ title: Salt States to Install Apache, MySQL, PHP (LAMP), and Fail2ban
 Salt States can install and define a server setup on other servers. This tutorial demonstrates the use of Salt States to create a LAMP stack across all Salt Minions.
 
 ##Configure the Salt Master
-Before configuration, install a Salt Master and Salt Minions with the Linode <a href="/docs/networking/salt/install-salt" target="_blank">Install Salt</a> guide. This tutorial is written for Debian 8, but can easily be adjusted for other Linux Distributions. 
+Before configuration, install a Salt Master and Salt Minions with the Linode <a href="/docs/applications/salt/install-salt" target="_blank">Install Salt</a> guide. This tutorial is written for Debian 8, but can easily be adjusted for other Linux Distributions. 
 
 1.  Open the `/etc/salt/master` file. Then search for **file_roots**, optionally read the surrounding "File Server settings" section, and edit the following:
     

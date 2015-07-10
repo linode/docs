@@ -17,6 +17,8 @@ title: 'Turbocharge Your WordPress Search Using Solr'
 
 *This is a Linode Community guide. [Write for us](/docs/contribute) and earn $100 per published guide.*
 
+<hr>
+
 The standard search that is built into WordPress does not provide the best search experience you can offer your visitors, given its inability to suggest search phrases, catch typos, understand word variations, organize and filter results, and index documents for search results. *Full text search engines* often offer these features, and **Apache Solr** is a free, open-source option that does.
 
 In this guide, you will learn how to install Java, install and configure Solr on Ubuntu 14.x or Debian 7.x, and integrate it into your WordPress blog using the WPSolr plugin.
