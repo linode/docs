@@ -418,5 +418,3 @@ You can login using **root** as the username and **5iveL!fe** for the password.
 
 Now that you have GitLab running on your server, you might want to add SSL support to secure your GitLab site. Refer to the [SSL Certificates with Nginx](/docs/security/ssl/ssl-certificates-with-nginx) guide to protect your site with SSL.
 
-# More Information
-
