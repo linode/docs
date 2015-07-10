@@ -287,7 +287,7 @@ Next, set up Postfix so the server can accept incoming messages for the domains.
       query = SELECT 1 FROM virtual_domains WHERE name='%s'
       ~~~
 
-4.  Create the `/etc/postfix/mysql-virtual-domains.cf` file, and enter the following values. Make sure you use the `mailuser`'s password and make any other changes as needed.
+4.  Create the `/etc/postfix/mysql-virtual-mailbox-maps.cf` file, and enter the following values. Make sure you use the `mailuser`'s password and make any other changes as needed.
 
     {: .file }
     /etc/postfix/mysql-virtual-mailbox-maps.cf
