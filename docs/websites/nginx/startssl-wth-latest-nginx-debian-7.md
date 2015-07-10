@@ -18,6 +18,8 @@ contributor:
 
 *This is a Linode Community guide. [Write for us](/docs/contribute) and earn $100 per published guide.*
 
+<hr>
+
 This guide is going to show you how to install the latest stable version of Nginx on Debian Wheezy. It will also deploy a free SSL certificate from StartSSL that will get you an A on the [Qualys SSL Labs SSL Server Test](https://www.ssllabs.com/ssltest/). In order to achieve an "A" on the test, we are going to configure Nginx to prefer server ciphers, only use strong ciphers, and disable vulnerable protocols SSLv2 and SSLv3.
 
 ### Prerequisites

@@ -1,7 +1,7 @@
 ---
 author:
-  name: Joseph Dooley
-  email: jdooley@linode.com
+  name: Linode
+  email: docs@linode.com
 description: 'Using Git and Github start to finish.'
 keywords: 'git,dvcs,vcs,scm,gitweb,github'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -10,7 +10,7 @@ external_resources:
  - '[Working with the Git Repository](/docs/applications/development/git-source-control-management#working-with-the-repository)'
  - '[GitHub Help Pages](https://help.github.com/)'
 modified_by:
-  name: Joseph Dooley
+  name: Linode
 published: 'Friday, February 6th, 2015'
 title: Developing with Git and GitHub for Beginners
 ---

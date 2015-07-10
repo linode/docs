@@ -23,6 +23,8 @@ contributor:
 *This is a Linode Community guide. [Write for us](/docs/contribute) and
 earn $100 per published guide.*
 
+<hr>
+
 Garry's Mod enables complete control and modification of the video game engine, Source Engine. With Garry's Mod, you can create almost any game you want. Setting up a Garry's Mod server is a great way to play with friends over the internet while maintaining control over the server.
 
 This guide shows how to create, maintain, and secure a Garry's Mod server.

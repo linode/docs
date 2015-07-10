@@ -46,7 +46,7 @@ Begin the installation process by issuing the following sequence of commands to 
     cd /opt/redis-2.2.2/
     make
 
-This will download and compile the 2.2.2 version of Redis. Check the [Redis upstream project source](http://code.google.com/p/redis/) to ensure that you are downloading the most up to date version of Redis. It is important to use the most up to date version of the software to avoid security flaws and bugs as well as to take advantage of the latest features. When you compile software manually, you are responsible for ensuring your system is running the most current version without the assistance of your system's package management tools.
+This will download and compile the 2.2.2 version of Redis. Check the [Redis upstream project source](http://redis.io/) to ensure that you are downloading the most up to date version of Redis. It is important to use the most up to date version of the software to avoid security flaws and bugs as well as to take advantage of the latest features. When you compile software manually, you are responsible for ensuring your system is running the most current version without the assistance of your system's package management tools.
 
 Move all of the redis executable files to the `/opt` directory by issuing the following sequence of commands:
 
@@ -192,9 +192,9 @@ More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [Redis Project Home Page](http://code.google.com/p/redis/)
+- [Redis Project Home Page](http://redis.io/)
 - [Redis Configuration](http://redis.io/topics/config)
-- [Redis Data Durability](http://code.google.com/p/redis/wiki/AppendOnlyFileHowto)
+- [Redis Data Durability](http://redis.io/wiki/AppendOnlyFileHowto)
 - [Redis Command Reference](http://redis.io/commands)
 
 

@@ -1,13 +1,13 @@
 ---
 author:
-    name: Joseph Dooley
-    email: jdooley@linode.com
+    name: Linode
+    email: docs@linode.com
 description: 'Install a Salt Master and Salt Minions.'
 keywords: 'salt, saltstack, install, beginner, Debian 8'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: Thursday, July 2nd, 2015
 modified_by:
-    name: Joseph Dooley
+    name: Linode
 published: 'Thursday, July 2nd, 2015'
 title: Install Salt
 ---

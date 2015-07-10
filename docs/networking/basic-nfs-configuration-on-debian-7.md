@@ -17,6 +17,8 @@ title: Basic NFS Configuration on Debian 7
 
 *This is a Linode Community guide. [Write for us](/docs/contribute) and earn $100 per published guide.*
 
+<hr>
+
 Network File System (**NFS**) is a file system that allows computer users to access files over a network in much the same way they can access files in local storage. This is useful for sharing files across several Linodes, or other computers on the Internet. For example, you might want to share the home directories for your users, or system configuration files, over NFS.
 
 This guide walks you through the setup of two Linodes; one acting as the NFS server, and the other acting as the NFS client. In this example, both Linodes are in the same data center and will communicate using their private IP addresses, so your data will never leave Linode's network. Other NFS setups can potentially send traffic over the public Internet.

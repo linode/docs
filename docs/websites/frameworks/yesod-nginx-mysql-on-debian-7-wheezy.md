@@ -9,7 +9,7 @@ contributor:
     name: Si-Qi Liu
 modified: Thursday, September 25, 2014
 modified_by:
-  name: Joseph Dooley
+  name: Linode
 published: Thursday, September 25, 2014
 title: 'Yesod, Nginx, and MySQL on Debian 7 (Wheezy)'
 external_resources:
@@ -20,6 +20,8 @@ external_resources:
 ---
 
 *This is a Linode Community guide by author Si-Qi Liu. [Write for us](/docs/contribute) and earn $100 per published guide.*
+
+<hr>
 
 Yesod is a web framework based on the purely functional programming language Haskell. It is designed for productive development of type-safe, RESTful, and high performance web applications. This guide describes the required process for deploying Yesod and Nginx web server, MySQL database on Debian 7 (Wheezy).
 
