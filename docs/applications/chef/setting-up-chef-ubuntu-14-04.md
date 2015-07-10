@@ -236,7 +236,7 @@ Bootstrapping a node installs the chef-client and validates the node, allowing i
 
 			knife bootstrap 123.45.67.89 -x root -P password --node-name nodename
 
-	-	As a user with sudo priviledges, change `username` to the username of a user on the node, `password` to the user's password and `nodename` to the desired name for the node. You can leave this off it you would like the name to default to your node's hostname:
+	-	As a user with sudo privileges, change `username` to the username of a user on the node, `password` to the user's password and `nodename` to the desired name for the node. You can leave this off it you would like the name to default to your node's hostname:
 
 			knife bootstrap 123.45.67.89 -x username -P password --sudo --node-name nodename
 
@@ -295,7 +295,7 @@ This section is optional, but provides instructions on downloading a cookbook to
 
 	This command is also used when updating cookbooks.
 
-5.	Switch to your *bootstrapped* node(s) and run the inital chef-client command:
+5.	Switch to your *bootstrapped* node(s) and run the initial chef-client command:
 
 		chef-client
 

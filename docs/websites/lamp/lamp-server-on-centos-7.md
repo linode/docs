@@ -69,7 +69,7 @@ A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used to prepare s
         </IfModule>
         ~~~
 
-    These settings can also be added to a seperate file if so desired. The file must be located in the `conf.module.d` or `conf` directories, and must end in `.conf`.
+    These settings can also be added to a separate file if so desired. The file must be located in the `conf.module.d` or `conf` directories, and must end in `.conf`.
 
 
 ### Configure Name-based Virtual Hosts
