@@ -37,7 +37,7 @@ ModSecurity is now installed on your Linode.
 
 To install ModSecurity on a Linode running CentOS or Fedora, perform the following steps:
 
-1.  Install the GCC compiler and the dependancies by entering the following commands, one by one:
+1.  Install the GCC compiler and the dependencies by entering the following commands, one by one:
 
         sudo yum install mod_security
 
