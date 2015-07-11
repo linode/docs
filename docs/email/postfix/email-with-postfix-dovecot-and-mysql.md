@@ -921,6 +921,13 @@ You have successfully added the new email address to the Postfix and Dovecot set
     >
     > Ensure that the correct number is entered for the `domain_id` value. Use the `id` of the domain for this email address. For an explanation of `id` us, see the email users section above.
 
+You can also add a "catch-all" alias which will forward all emails sent to a domain which do not have matching aliases or users by specifying `@newdomain.com` as the source of the alias.
+
+        INSERT INTO `mailserver`.`virtual_aliases`
+          (`domain_id`, `source`, `destination`)
+        VALUES
+          ('5', '@newdomain.com', 'myemail@gmail.com');
+
 2.  Verify that the new alias has been added. The new alias will be displayed in the output.
 
         SELECT * FROM mailserver.virtual_aliases;
