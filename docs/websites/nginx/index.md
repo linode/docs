@@ -13,4 +13,4 @@ published: 'Monday, December 14th, 2009'
 title: Hosting Websites with Nginx
 ---
 
-The nginx web server is a fast, lightweight server designed to efficiently handle the needs of both low and high traffic websites. These guides will help you get nginx up and running on your Linux VPS.
+The Nginx web server is a fast, lightweight server designed to efficiently handle the needs of both low and high traffic websites. These guides will help you get Nginx up and running on your Linode.
