@@ -2,7 +2,7 @@
 deprecated: true
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'How to cluster Apache web servers and proxy requests for content to external servers on Fedora 12.'
 keywords: 'clusters,proxy,proxy pass,apache,httpd'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

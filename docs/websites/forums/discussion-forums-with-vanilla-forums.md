@@ -1,7 +1,7 @@
 ---
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Install the lightweight Vanilla Forums software to power discussion forums on your Linux VPS.'
 keywords: 'vanilla,bb,fourms,lamp,discussion forums'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

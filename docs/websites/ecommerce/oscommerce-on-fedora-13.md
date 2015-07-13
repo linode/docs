@@ -2,7 +2,7 @@
 deprecated: true
 author:
   name: Stan Schwertly
-  email: sschwertly@linode.com
+  email:docs@linode.com
 description: 'How to set up an online store using the open source osCommerce system on Fedora 13.'
 keywords: 'osCommerce,Fedora,Store,Ecommerce'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

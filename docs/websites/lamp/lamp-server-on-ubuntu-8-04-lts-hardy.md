@@ -2,7 +2,7 @@
 deprecated: true
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'How to install and configure configuring a LAMP stack with the Hardy Heron (8.04 LTS) release of Ubuntu Linux.'
 keywords: 'ubuntu 8.04 lamp,lamp guide,ubuntu lamp'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

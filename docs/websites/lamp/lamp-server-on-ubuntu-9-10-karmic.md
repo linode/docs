@@ -2,7 +2,7 @@
 deprecated: true
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Configuring a LAMP stack with Apache, MySQL, PHP and on Ubuntu Linux 9.10 (Karmic).'
 keywords: 'ubuntu lamp server,ubuntu 9.10 lamp,karmic lamp,ubuntu web server,ubuntu karmic'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

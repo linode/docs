@@ -9,7 +9,7 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-applications/project-management/redmine/ubuntu-10-04-lucid/']
 modified: Tuesday, June 7th, 2011
 modified_by:
-  name: Peter Sandin
+  name: Linode
 published: 'Thursday, April 29th, 2010'
 title: 'Manage Projects with Redmine on Ubuntu 10.04 LTS (Lucid)'
 ---

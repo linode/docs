@@ -1,14 +1,14 @@
 ---
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Managing source control with Subversion, an open source version control system.'
 keywords: 'svn,version control,source control management'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['linux-tools/version-control/svn/']
 modified: Tuesday, June 7th, 2011
 modified_by:
-  name: Peter Sandin
+  name: Linode
 published: 'Tuesday, December 15th, 2009'
 title: Manage Source Code Versions with Subversion
 external_resources:

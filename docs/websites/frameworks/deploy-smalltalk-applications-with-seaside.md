@@ -1,7 +1,7 @@
 ---
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: An introductory guide to deploying applications with the Seaside Framework
 keywords: 'seaside,smalltalk,pharo,squeak,apache,framework'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

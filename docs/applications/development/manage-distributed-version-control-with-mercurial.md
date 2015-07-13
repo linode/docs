@@ -1,7 +1,7 @@
 ---
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Use the Mercurial version control system to manage source code in distributed environments.'
 keywords: 'scm,vcs,hg,mercurial,dcvs,source control management,version control,distributed version control'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

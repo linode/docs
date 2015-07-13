@@ -1,7 +1,7 @@
 ---
 author:
   name: Linode
-  email: scampbell@linode.com
+  email: docs@linode.com
 description: 'Our guide to testing and troubleshooting Postfix, Dovecot, and MySQL'
 keywords: 'postfix,dovecot,mysql'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

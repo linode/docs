@@ -2,7 +2,7 @@
 deprecated: true
 author:
   name: Chris Ciufo
-  email: cciufo@linode.com
+  email: docs@linode.com
 description: Zabbix
 keywords: 'zabbix, server monitoring, monitoring, server monitor'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

@@ -2,7 +2,7 @@
 deprecated: true
 author:
   name: Stan Schwertly
-  email: sschwertly@linode.com
+  email:docs@linode.com
 description: 'A collection of guides that introduce and support the use of Nagios.'
 keywords: 'nagios,server monitoring,nagios linux'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

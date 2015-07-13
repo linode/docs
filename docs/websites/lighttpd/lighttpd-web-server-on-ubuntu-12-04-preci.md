@@ -1,7 +1,7 @@
 ---
 author:
   name: Dave Messina
-  email: dmessina@linode.com
+  email: docs@linode.com
 description: 'Using lighttpd to host multiple websites on Ubuntu 12.04 (Precise)'
 keywords: 'lighttpd,web server,web hosting'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

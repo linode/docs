@@ -2,7 +2,7 @@
 deprecated: true
 author:
   name: Stan Schwertly
-  email: sschwertly@linode.com
+  email:docs@linode.com
 description: 'Monitor resource usage through the powerful server monitoring tool Cacti on Fedora 12.'
 keywords: 'Cacti,Fedora,Monitoring,SNMP'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

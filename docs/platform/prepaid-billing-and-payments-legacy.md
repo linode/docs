@@ -2,7 +2,7 @@
 deprecated: true
 author:
   name: Linode
-  email: scampbell@linode.com
+  email: docs@linode.com
 description: Our guide to billing and payments
 keywords: 'prepaid,billing,payments,credit,referral,invoice'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
