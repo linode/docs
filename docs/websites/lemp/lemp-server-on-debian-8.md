@@ -18,7 +18,7 @@ external_resources:
     - '[Deploy Python Applications with uWSGI and Nginx](/docs/web-servers/nginx/python-uwsgi/debian-6-squeeze)'
 ---
 
-This document describes a compatible alternative to the **LAMP** (Linux,Apache, MySQL, and PHP) stack, known as **LEMP**. The LEMP stack replaces the Apache web server component (which is the "A" in LAMP) with Nginx (pronounced "engine x", providing the "E" in LEMP). LEMP is comprised of a variety of open source software used to build and run web servers.
+This document describes a compatible alternative to the **LAMP** (Linux, Apache, MySQL, and PHP) stack, known as **LEMP**. The LEMP stack replaces the Apache web server component (which is the "A" in LAMP) with Nginx (pronounced "engine x", providing the "E" in LEMP). LEMP is comprised of a variety of open source software used to build and run web servers.
 
 {: .note }
 >
