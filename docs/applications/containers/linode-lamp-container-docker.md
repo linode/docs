@@ -2,14 +2,14 @@
 author:
   name: Joseph Dooley
   email: jdooley@linode.com
-description: 'LAMP container with Docker on Linode'
-keywords: 'docker,lamp,LAMP,ubuntu,debian'
+description: 'How to install a LAMP stack using Docker.'
+keywords: 'docker,lamp,LAMP,ubuntu,debian, how to install lamp, how to install docker, container platform, linux, apache, MySQL, PHP'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: Monday, February 23rd, 2015
 modified_by:
   name: Joseph Dooley
 published: 'Monday, February 23rd, 2015'
-title: LAMP Stack with Docker
+title: 'How to install Docker and deploy a LAMP Stack'
 external_resources:
  - '[Linode Docker Hub Page](https://hub.docker.com/u/linode/)'
  - '[Docker Docs](http://docs.docker.com/)'

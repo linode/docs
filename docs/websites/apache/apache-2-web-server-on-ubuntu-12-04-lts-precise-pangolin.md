@@ -2,15 +2,15 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Instructions for getting started with the Apache web server on Ubuntu 12.04 LTS (Precise Pangolin).'
-keywords: 'apache,apache ubuntu 12.04,apache ubuntu precise pangolin,web server,apache on ubuntu,apache lucid'
+description: 'How-to guide detailing steps needed to install Apache web server on Ubuntu 12.04 LTS (Precise Pangolin).'
+keywords: 'apache,apache ubuntu 12.04,apache ubuntu precise pangolin,web server,apache on ubuntu,apache lucid, install apache, configure apache , install apache, configure apache, how to install apache'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-servers/apache/installation/ubuntu-12-04-precise-pangolin/']
 modified: Friday, January 10th, 2014
 modified_by:
   name: Linode
 published: 'Wednesday, October 10th, 2012'
-title: 'Apache 2 Web Server on Ubuntu 12.04 LTS (Precise Pangolin)'
+title: 'How to Install and Configure Apache 2 Web Server on Ubuntu 12.04 LTS (Precise Pangolin)'
 external_resources:
  - '[Apache HTTP Server Version 2.2 Documentation](http://httpd.apache.org/docs/2.2/)'
  - '[Apache Configuration](/docs/web-servers/apache/configuration/)'

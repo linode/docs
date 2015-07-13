@@ -2,15 +2,15 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Instructions for getting started with the Apache web server on Debian 7 (Wheezy).'
-keywords: 'apache debian 7,apache debian wheezy,linux web server,apache on debian,apache wheezy'
+description: 'How-to guide for getting started with the Apache web server on Debian 7 (Wheezy).'
+keywords: 'apache debian 7,apache debian wheezy,linux web server,apache on debian,apache wheezy, install apache, configure apache'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-servers/apache/installation/debian-7-wheezy/']
 modified: Friday, January 10th, 2014
 modified_by:
   name: Linode
 published: 'Thursday, September 5th, 2013'
-title: 'Apache 2 Web Server on Debian 7 (Wheezy)'
+title: 'How to Install and Configure the Apache web server on Debian 7 (Wheezy)'
 external_resources:
  - '[Apache HTTP Server Version 2.2 Documentation](http://httpd.apache.org/docs/2.2/)'
  - '[Apache Configuration](/docs/web-servers/apache/configuration/)'
