@@ -5,10 +5,10 @@ author:
 description: 'Using the Apache web server with Debian 7 Wheezy to serve Ruby on Rails applications.'
 keywords: 'ruby on rails,rails on debian,rails apps,rails and apache'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Friday, September 13th, 2013
+modified: Monday, July 13th, 2015
 modified_by:
-  name: Linode
-published: 'Friday, September 13th, 2013'
+  name: Elle Krout
+published: 'Monday, July 13th, 2013'
 title: 'Ruby on Rails with Apache on Debian 8'
 external_resources:
  - '[Ruby on Rails Homepage](http://rubyonrails.org/)'
