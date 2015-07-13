@@ -37,7 +37,7 @@ Prior to installing your LAMP stack ensure that:
 
 -   Your Linode's repositories and packages are up-to-date:
 
-        sudo apt-get update && sudo apt-get upgrade -y
+        sudo apt-get update && sudo apt-get upgrade
 
 ## Apache
 
