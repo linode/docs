@@ -1,8 +1,8 @@
 ---
 deprecated: true
 author:
-  name: Stan Schwertly
-  email: sschwertly@linode.com
+  name: Linode
+  email: docs@linode.com
 description: 'Track development bugs and coordinate with team members using Mantis bug tracker on Fedora 14.'
 keywords: 'mantis,mantis fedora,mantis linux,bug tracker,development'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

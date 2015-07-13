@@ -18,6 +18,8 @@ contributor:
 *This is a Linode Community guide. [Write for us](/docs/contribute) and
 earn $100 per published guide.*
 
+<hr>
+
 Don’t Starve Together is a multiplayer game written and published by Klei Entertainment, and is a multiplayer add on to their single-player game Don’t Starve. This guide will explain how to prepare your Linode, install SteamCMD, and install, then configure, Don’t Starve Together.
 
 ## Prerequisites

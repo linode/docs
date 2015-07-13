@@ -1,7 +1,7 @@
 ---
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'The Planet feed aggregator provides an overview of a community by collecting all feeds produced by a community.'
 keywords: 'planet,blogs,aggregator,feed,rss'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

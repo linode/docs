@@ -11,7 +11,7 @@ modified_by:
 published: 'Wednesday, January 28th, 2015'
 title: 'How to Install a LAMP Stack on Ubuntu 14.04'
 external_resources:
- - '[Ubuntu Server Edition Homepage](http://www.ubuntu.com/products/whatisubuntu/serveredition)'
+ - '[Ubuntu Server Edition Homepage](http://www.ubuntu.com/server)'
  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.4/)'
  - '[MySQL Documentation](http://dev.mysql.com/doc/)'
  - '[PHP Documentation](http://www.php.net/docs.php)'

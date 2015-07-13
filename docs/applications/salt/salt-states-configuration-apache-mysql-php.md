@@ -1,18 +1,18 @@
 ---
 author:
-    name: Joseph Dooley
-    email: jdooley@linode.com
+    name: Linode
+    email: docs@linode.com
 description: 'Use Salt States with a LAMP Stack and Fail2ban.'
 keywords: 'salt, saltstack, states, apache, mysql, php, fail2ban, debian 8'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: Thursday, July 2nd, 2015
 modified_by:
-    name: Joseph Dooley
+    name: Linode
 published: 'Thursday, July 2nd, 2015'
 title: Salt States for Configuration of Apache, MySQL, and PHP (LAMP)
 ---
 
-After Salt is <a href="/docs/networking/salt/install-salt" target="_blank">installed</a> and <a href="/docs/networking/salt/salt-states-apache-mysql-php-fail2ban" target="_blank">Salt States</a> are created, the Minion will need to be configured. This tutorial will configure a Minion's LAMP stack with further use of Salt States. This tutorial is written for Debian 8 but can easily be adjusted for other Linux Distributions.
+After Salt is <a href="/docs/applications/salt/install-salt" target="_blank">installed</a> and <a href="/docs/applications/salt/salt-states-configuration-apache-mysql-php" target="_blank">Salt States</a> are created, the Minion will need to be configured. This tutorial will configure a Minion's LAMP stack with further use of Salt States. This tutorial is written for Debian 8 but can easily be adjusted for other Linux Distributions.
 
 ##Create the LAMP Configuration States
 The below steps configure all Salt Minions for a 1GB Linode, feel free to adjust as needed. 
@@ -179,7 +179,7 @@ Salt State Modules are used for settings across groups of Minions. To adjust a c
         salt '<hostname or Minion ID>' cmd.run "a2ensite example.com.conf"
         salt '<hostname or Minion ID>' cmd.run "service apache2 reload"
 
-<a href="/docs/networking/salt/salt-states-configuration-apache-mysql-php" target="_blank">
+<a href="/docs/applications/salt/salt-states-apache-mysql-php-fail2ban" target="_blank">
 
 
 The above section used the <a href="http://docs.saltstack.com/en/latest/ref/modules/all/salt.modules.cmdmod.html" target="_blank">cmdmod</a>, <a href="http://docs.saltstack.com/en/latest/ref/modules/all/salt.modules.file.html" target="_blank">file</a>, and <a href="http://docs.saltstack.com/en/latest/ref/modules/all/salt.modules.cp.html" target="_blank"> cp</a> Salt Execution modules.

@@ -1,7 +1,7 @@
 ---
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Use the Web.py Python framework to develop powerful and innovative web applications on Debian 5 (Lenny).'
 keywords: 'web.py,web applications,python,web frameworks'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

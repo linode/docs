@@ -162,7 +162,7 @@ MySQL is a *relational database management system* (RDBMS) and is a popular comp
 
         mysql_secure_installation
 
-    It is reccomended that you select yes (`y`) for all questions. If you already have a secure root password, you do not need to change it.
+    It is recommended that you select yes (`y`) for all questions. If you already have a secure root password, you do not need to change it.
 
 ### Set Up a MySQL Database
 

@@ -226,7 +226,7 @@ Although the server can now be created successfully, many aspects of it still ne
 
         mkdir apache2
 
-4.  Because Vagrant is often used for developement environments, we want to host Apache on a port other than 80. Create `ports1.conf`, as referenced in the shell script above. The port will be set to **6789**:
+4.  Because Vagrant is often used for development environments, we want to host Apache on a port other than 80. Create `ports1.conf`, as referenced in the shell script above. The port will be set to **6789**:
 
     {: .file}
     ~/vagrant-linode/apache2/ports1.conf
@@ -312,7 +312,7 @@ With the Vagrantfile configured, and scripts and files created, it's now time to
 
         hostname -i
 
-    Then go to your choosen web browser and navigate to your ip address with `:6789` appended to the end. You should see Apache2 Ubuntu Default Page.
+    Then go to your chosen web browser and navigate to your ip address with `:6789` appended to the end. You should see Apache2 Ubuntu Default Page.
 
     {: .note}
     >

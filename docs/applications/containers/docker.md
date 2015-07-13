@@ -2,7 +2,7 @@
 deprecated: true
 author:
   name: Jon Chen
-  email: jchen@linode.com
+  email: docs@linode.com
 description: 'An overview of Installing Docker, with an example use case for Nginx'
 keywords: 'docker, ubuntu, 12.04, centos, container'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

@@ -1,7 +1,7 @@
 ---
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Use Ikiwiki on Debian 6 to power a standard wiki implementation.'
 keywords: 'ikiwiki debian squeeze,ikiwiki debian 6,ikiwiki,wiki,perl,git,markdown,debian'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

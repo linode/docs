@@ -1,14 +1,14 @@
 ---
 author:
   name: Linode
-  email: bolow@linode.com
+  email: docs@linode.com
 description: 'An introduction to the principal concepts and use of the users and groups system in Linux systems.'
 keywords: 'users,permissions,access control lists,chmod,chown,linux'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['docs/using-linux/users-and-groups/']
 modified: Wednesday, September 17, 2014
 modified_by:
-  name: Joseph Dooley
+  name: Linode
 published: 'Monday, August 31st, 2009'
 title: Linux Users and Groups
 external_resources:

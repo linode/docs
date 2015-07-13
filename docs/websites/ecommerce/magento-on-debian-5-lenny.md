@@ -2,7 +2,7 @@
 deprecated: true
 author:
   name: Stan Schwertly
-  email: sschwertly@linode.com
+  email: docs@linode.com
 description: 'Selling products online with Magento, an open source e-commerce solution on a Debian 5 (Lenny) Linux VPS.'
 keywords: 'Magento,Debian,ecommerce,Store'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

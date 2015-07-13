@@ -2,7 +2,7 @@
 deprecated: true
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Using lighttpd to host multiple websites from your Linode VPS.'
 keywords: 'lighttpd server,lighttpd vps,web server,vps web server,vps hosting'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

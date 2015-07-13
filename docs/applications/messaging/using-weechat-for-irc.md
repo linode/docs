@@ -20,6 +20,8 @@ external_resources:
 
 *This is a Linode Community guide. [Write for us](/docs/contribute) and earn $100 per published guide.*
 
+<hr>
+
 **WeeChat** is a terminal-based Internet Relay Chat (IRC) client. WeeChat is written in C, and is intended to be very flexible and extensible. WeeChat has all sorts of plugins written in different languages including Python, Perl, and Ruby.  
 
 Because WeeChat is written in C, it runs on many different platforms including Linux, Unix, BSD, Mac OS X and Windows (in Cygwin). Many users prefer WeeChat over other graphical and terminal-based clients because of its many features and its customizability. One advantage of terminal-based clients over graphical IRC clients is the ability to detach from your WeeChat instance and come back later, locally or remotely, using a terminal multiplexer such as screen or tmux.

@@ -1,7 +1,7 @@
 ---
 author:
   name: Lee Matos
-  email: lmatos@linode.com
+  email: docs@linode.com
 description: 'Host websites and web applications with a LAMP server on Debian 7.0 (Wheezy).'
 keywords: 'debian 7 LAMP server,debian LAMP guide,LAMP howto,debian,debian 7,lamp,apache,mysql,php'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

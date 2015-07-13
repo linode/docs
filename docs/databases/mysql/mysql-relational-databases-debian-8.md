@@ -1,7 +1,7 @@
 ---
 author:
   name: Mike Rosabal
-  email: mrosabal@linode.com
+  email: docs@linode.com
 description: 'Get started with MySQL for web and server applications on Debian 8'
 keywords: 'mysql debian 8,mysql debian,mysql linux,mysql linux vps,mysql,debian,databases,debian 8'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

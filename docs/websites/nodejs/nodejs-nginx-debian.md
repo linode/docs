@@ -1,13 +1,20 @@
 ---
 author:
+<<<<<<< HEAD
   name: Joseph Dooley
   email: jdooley@linode.com
 description: 'How to install Nginx for static content and Node.js for dynamic requests.'
 keywords: 'linode guide,hosting a website,website,linode setup, install node.js, install nginx, debian, front-end requests, back-end requests'
+=======
+  name: Linode
+  email: docs@linode.com
+description: 'NGINX for static content and Node.js for dynamic requests.'
+keywords: 'linode guide,hosting a website,website,linode quickstart guide'
+>>>>>>> ff9c587436dc9bcbc8362bb997b690feb8c286d8
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: Wednesday, January 14th, 2015
 modified_by:
-  name: Joseph Dooley
+  name: Linode
 published: 'Wednesday, January 14, 2015'
 title: 'How to Install Node.js and NGINX on Debian'
 external_resources:

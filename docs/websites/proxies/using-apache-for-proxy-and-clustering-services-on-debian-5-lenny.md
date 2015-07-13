@@ -2,14 +2,14 @@
 deprecated: true
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'How to cluster Apache web servers and proxy requests for content to external servers on Debian 5 (Lenny).'
 keywords: 'clusters,proxy,proxy pass,apache,httpd'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-servers/apache/proxy-configuration/proxy-and-clustering-services-debian-5-lenny/']
 modified: Tuesday, June 7th, 2011
 modified_by:
-  name: Peter Sandin
+  name: Linode
 published: 'Wednesday, March 24th, 2010'
 title: 'Using Apache for Proxy and Clustering Services on Debian 5 (Lenny)'
 ---

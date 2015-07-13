@@ -12,7 +12,7 @@ modified_by:
 published: 'Wednesday, October 3rd, 2012'
 title: 'LAMP Server on Ubuntu 12.04'
 external_resources:
- - '[Ubuntu Server Edition Homepage](http://www.ubuntu.com/products/whatisubuntu/serveredition)'
+ - '[Ubuntu Server Edition Homepage](http://www.ubuntu.com/server)'
  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)'
  - '[MySQL Documentation](http://dev.mysql.com/doc/)'
  - '[PHP Documentation](http://www.php.net/docs.php)'

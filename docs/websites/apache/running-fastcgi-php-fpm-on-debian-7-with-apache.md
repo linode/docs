@@ -21,6 +21,8 @@ title: 'Running mod_fastcgi and PHP-FPM on Debian 7 (Wheezy) with Apache'
 
 *This is a Linode Community guide. [Write for us](/docs/contribute) and earn $100 per published guide.*
 
+<hr>
+
 This article explains how to configure and install `mod_fastcgi` and `PHP-FPM` on a Debian 7 instance using Apache. Apache's default configuration, which uses `mod_php` instead of `mod_fastcgi`, uses a significant amount of system resources.
 
 The main reason `mod_php` uses more resources is because it is loaded even for non-PHP files (like plain HTML and JavaScript files). The FastCGI Process Manager (PHP-FPM) helps to reduce the amount of system resources used by forcing the web server to act as a proxy and passing only files ending with the _php_ file extension to PHP-FPM. 

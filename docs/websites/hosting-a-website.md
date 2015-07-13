@@ -8,7 +8,7 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['hosting-website/']
 modified: Tuesday, October 14th, 2014
 modified_by:
-  name: Joseph Dooley
+  name: Linode
 published: 'Tuesday, March 13th, 2012'
 title: Hosting a Website
 ---

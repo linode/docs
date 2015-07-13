@@ -1,7 +1,7 @@
 ---
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Use the "logrotate" tool to manage logfiles.'
 keywords: 'logrotate,log rotation,log files,access logs,linux systems administration,basic systems administration'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

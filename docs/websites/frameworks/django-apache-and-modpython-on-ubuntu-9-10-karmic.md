@@ -2,7 +2,7 @@
 deprecated: true
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Installing and configuring the Django web application development framework for Apache on Ubuntu 9.10 (Karmic).'
 keywords: 'django,python,apache,mod\_python,ubuntu,ubuntu 9.10,karmic'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

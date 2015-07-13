@@ -1,13 +1,13 @@
 ---
 author:
-  name: Joseph Dooley
-  email: jdooley@linode.com
+  name: Linode
+  email: docs@linode.com
 description: 'Our guide to hosting a website on your Linode.'
 keywords: 'linode guide,hosting a website,website,linode quickstart guide'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: Thursday, December 18, 2014
 modified_by:
-  name: Joseph Dooley
+  name: Linode
 published: 'Thursday, December 18, 2014'
 title: Install or Upgrade Node.js
 external_resources:

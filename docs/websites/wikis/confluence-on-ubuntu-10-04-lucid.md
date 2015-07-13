@@ -9,7 +9,7 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-applications/wikis/confluence/ubuntu-10-04-lucid/']
 modified: Tuesday, June 7th, 2011
 modified_by:
-  name: Peter Sandin
+  name: Linode
 published: 'Sunday, September 5th, 2010'
 title: 'Confluence on Ubuntu 10.04 (Lucid)'
 ---
