@@ -2,7 +2,7 @@
 deprecated: true
 author:
   name: Stan Schwertly
-  email:docs@linode.com
+  email: docs@linode.com
 description: 'Track development bugs and coordinate with team members using Mantis bug tracker on Debian 5 (Lenny).'
 keywords: 'mantis,mantis debian,mantis linux,bug tracker,development'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

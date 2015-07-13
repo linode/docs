@@ -2,7 +2,7 @@
 deprecated: true
 author:
   name: Stan Schwertly
-  email:docs@linode.com
+  email: docs@linode.com
 description: 'Configuring the phpBB system for hosting web-based discussion forums on Fedora 14.'
 keywords: 'phpBB,forum software,web applications,PHP'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
