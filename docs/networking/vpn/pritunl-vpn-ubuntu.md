@@ -1,104 +1,100 @@
-# Pritunl VPN Server and Management Panel on Ubuntu 14.04
+---
+author:
+    name: Linode Community
+    email: docs@linode.com
+description: 'Set up Pritunl, an open source VPN server with an intuitive web interface'
+keywords: 'pritunl,vpn,vpn server,ubuntu,ubuntu 14.04'
+license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+published: 'Tuesday, July 14th, 2015'
+modified: Tuesday, July 14th, 2015
+modified_by:
+    name: Elle Krout
+title: 'Pritunl VPN Server and Management Panel on Ubuntu 14.04'
+contributor:
+    name: Andrew Gottschling
+    link: https://github.com/agottschling
+---
 
-Pritunl is an open source VPN server and management panel. It gives you the power of the OpenVPN protocol while using an intuitive web interface. This tutorial will show you how to install, configure, and connect to Pritunl VPN.
-
-## Prerequisites
-
-Have the following items before you begin:
-
-- An up-to-date Linode running Ubuntu 14.04. We suggest that you follow our [Getting Started](/docs/getting-started) guide for help configuring your Linode.
-
-- OPTIONAL: A Pritunl License Key to remove all restrictions and nag screens from the software. This can be purchased within the program.
+Pritunl is an open source VPN server and management panel. It gives the user the power of the OpenVPN protocol while using an intuitive web interface. This tutorial will show you how to install, configure, and connect to Pritunl VPN.
 
 {: .note }
 >
 > This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the sudo command, reference the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
-## Preparing your Linode
+## Before You Begin
 
-Pritunl is a VPN server. Due to the fact that it uses the OpenVPN standard, as well as apt-get, we don’t need any special libraries. Everything will get installed automatically.
+1.	Have a Linode running Ubuntu 14.04. Follow the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides for help configuring the Linode.
 
-1.  Update the packages on your system:
+2.	Ensure the Linode is up-to-date:
 
-        sudo apt-get update && sudo apt-get upgrade
+		sudo apt-get update && sudo apt-get upgrade
 
-2.  Add Pritunl’s APT repository and update the package lists:
+3.  Add Pritunl’s APT repository and update the package lists:
 
         sudo add-apt-repository -y ppa:pritunl && sudo apt-get update
 
-If you have a firewall running on your Linode, add exceptions for Pritunl’s Web UI and server:
-
+4.	If you have a firewall running on the Linode, add exceptions for Pritunl’s Web UI and server:
 
         sudo iptables -A INPUT -p udp- m udp --sport 9700 --dport 1025:65355 -j ACCEPT
         sudo iptables -A INPUT -p tcp m tcp --sport 9700 --dport 1025:65355 -j ACCEPT
         sudo iptables -A INPUT -p `your protocol here` -m `your protocol here` --sport `your_port_here` --dport 1025:65355 -j ACCEPT
 
-{: .note }
->
-> If you've configured your firewall according to our [Securing Your Server](/docs/security/securing-your-server) guide, be sure to add these port ranges to your `/etc/iptables.firewall.rules` file.
+	{: .note }
+	>
+	> If you've configured the firewall according to the [Securing Your Server](/docs/security/securing-your-server) guide, be sure to add these port ranges to the `/etc/iptables.firewall.rules` file.
 
 ## Install Pritunl
 
-1.  Using apt-get, install python-software-properties and Pritunl
-
+1.  Install `python-software-properties` and Pritunl:
 
         sudo apt-get install python-software-properties pritunl
 
-2.  Navigate to the install wizard:
+2.  Open a web browser on your computer, and navigate to `https://123.45.67.89:9700`, replacing `123.45.67.89` with your Linode's IP address. You will see a screen similar to this:
 
+	[![Pritunl DB setup screen](/docs/assets/pritunl-db-setup-resized.png)](/docs/assets/pritunl-db-setup.png)
 
-Open a web browser on your computer. Navigate to `https://YourLinodeIP:9700`
-You will see a screen similar to this:
+3.  Connect to the database. The installer has already populated the mongoDB URI. If it looks correct, click **Save**.
 
-[![Pritunl DB setup screen](/docs/assets/pritunl-db-setup-resized.png)](/docs/assets/pritunl-db-setup.png)
+	Alternatively, you may enter any valid MongoDB URI to use as the database for Pritunl.
 
+## Configuring Pritunl
 
+1.  Login with the following information:
 
-3.  Connect to the database.
+	- **Username:** *pritunl*
+	- **Password:** *pritunl*
 
-The Installer has already populated the mongoDB URI. If it looks correct, you can just click **Save**.
-Alternatively you may enter any valid MongoDB uri to use as the database for Pritunl.
+2.  The Inital Setup form will appear:
 
-##Configuring Pritunl
+	![Pritunl setup screen](/docs/assets/pritunl-setup.png)
 
-1.  To begin configuration, login with the following information :
+	Fill out the form, and press **Save**.
 
-- **Username:** *pritunl*
--  **Password:** *pritunl*
+	{: .note }
+	>
+	> The SMTP settings are not required and will not do anything without a license.
+	>
+	> If you have a license, Click on the **Upgrade to Premium** button on the upper right, and use the form to enter your license.
 
-2.  You should see a screen similar to this:
+4.	Go to the **Users** tab. Here, you will create your organizations and users. Begin by clicking **Add Organization** and entering a name. Next, click **Add User** and add a user to the organization you just created.
 
-[![Pritunl setup screen](/docs/assets/pritunl-setup-resized.png)](/docs/assets/pritunl-setup.png)
+5. 	Go to the **Servers** tab. Click **Add server**. You will see a screen like the following:
 
+	![Pritunl server setup screen](/docs/assets/pritunl-server-conf.png)
 
-3.  Fill out the Initial Setup form shown.
+	If a firewall is set up, make sure that the **Port** and **Protocol** fields match the firewall exceptions added earlier.
 
+6. 	Click the **Attach Organization** button. Attach the organization to the server.
 
-{: .note }
->
-> The SMTP settings are not required and will not do anything without a license.
-> If you have a license, Click on the **Upgrade to Premium** button on the upper right, and use the form to enter your license.
-
-4. Next, go to the **Users** tab. Here, you will create your organizations and users.
-Begin by clicking **Add Organization** and entering a name.
-Next, click **Add User** and add a user to the organization you just created.
-
-5. Next, head over to the **Servers** tab. Click **Add server**. You will see a screen like this:
-[![Pritunl server setup screen](/docs/assets/pritunl-server-setup-resized.png)](/docs/assets/pritunl-server-setup.png)
-
-
-If you have a firewall, make sure that the **Port** and **Protocol** fields match what you entered into the rules previously. The rest of the configuration is up to you.
-
-6. Finally, click the **Attach Organization** button. Attach the organization to the server. 
 
 ## Connecting to the Server
 
-To connect to your server, you can use any OpenVPN compatible client. For Android or iOS, you can use the free **OpenVPN Connect** app available in the [Google Play](https://play.google.com/store/apps/details?id=net.openvpn.openvpn) or [iOS App Store](https://itunes.apple.com/us/app/openvpn-connect/id590379981). For Linux, there is an official client available for Ubuntu. Mac and Windows users can use any OpenVPN client.
+To connect to the server, you can use any OpenVPN compatible client. For Android or iOS, you can use the free **OpenVPN Connect** app available in the [Google Play](https://play.google.com/store/apps/details?id=net.openvpn.openvpn) or [iOS App Store](https://itunes.apple.com/us/app/openvpn-connect/id590379981). For Linux, there is an official client available for Ubuntu. Mac and Windows users can use any OpenVPN client.
 
-To get your keys, you have two options:
+To get the keys, there are two options:
 
-+ Next to your username, there is a Online/Offline indicator. Next to that, there are two buttons. One with a link icon, and another with a download icon.
+- Next to your username, there is a Online/Offline indicator. Next to that, there are two buttons. One with a link icon, and another with a download icon.
 
-+ The download icon will download the keyfiles as a **TAR** file. 
+- The download icon will download the keyfiles as a **TAR** file. 
 
-The link icon will display a link that you can give to your users to download their key. These links unique to the user as well as temporary and expire after they have been used or 24 hours. Whichever comes first.
+The link icon will display a link that you can give to your users to download their key. These links are unique to the user, and are temporary and expire after they have been used or within 24 hours, whichever comes first.
