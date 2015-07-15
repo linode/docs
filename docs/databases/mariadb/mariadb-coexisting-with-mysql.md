@@ -80,7 +80,7 @@ Installation
 
 11.Run the mysql_install_db script:
 
-	./opt/mariadb/scripts/mysql_install_db --no-defaults --basedir=. --datadir=/opt/mariadb-data
+	. /opt/mariadb/scripts/mysql_install_db --no-defaults --basedir=/opt/mariadb --datadir=/opt/mariadb-data
 
 12.Correct the permissions under /opt/mariadb-data:
 
