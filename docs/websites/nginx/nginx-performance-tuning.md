@@ -303,8 +303,25 @@ map $status $loggable {
 }
 ~~~~~~~~~~
 
+### Turning off Logging Completely
+Logging can be turned off completely if you have an alternative logging methodology or if you don't care about logging any of the requests to the server.  Turning off logging can be performed with the following server directives
+
+~~~~~~~~~~
+server {
+    listen       80;
+    server_name  example.com;
+    access_log  off;
+    error_log off;
+}
+~~~~~~~~~~
+
+
 ### Activity Monitoring
 One can also set up a Activity Monitoring to see JSON responses for real-time activity monitoring.  With the following configuration, the webpage status.html located at /usr/share/nginx/html can be requested by the URL http://127.0.0.1/status.html.
+
+You could also utilze Linode Longview https://github.com/linode/longview in order to view these collections.  Longview is a system level statistics collection and graphing service, powered by the Longview open source software agent that can be installed onto any Linux system. The Longview agent collects system statistics and sends them to Linode, where the data is stored and presented it in beautiful and meaningful ways.
+
+
 
 ## Summary
 
