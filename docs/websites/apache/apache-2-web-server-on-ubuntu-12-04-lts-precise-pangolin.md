@@ -6,7 +6,7 @@ description: 'Instructions for getting started with the Apache web server on Ubu
 keywords: 'apache,apache ubuntu 12.04,apache ubuntu precise pangolin,web server,apache on ubuntu,apache lucid'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-servers/apache/installation/ubuntu-12-04-precise-pangolin/']
-modified: Friday, January 10th, 2014
+modified: Wednesday, July 15th, 2015
 modified_by:
   name: Linode
 published: 'Wednesday, October 10th, 2012'
@@ -16,214 +16,160 @@ external_resources:
  - '[Apache Configuration](/docs/web-servers/apache/configuration/)'
 ---
 
-This tutorial explains how to install and configure the Apache web server on Ubuntu 12.04 (Precise Pangolin). All configuration will be done through the terminal; make sure you are logged in as root via SSH. If you have not followed the [getting started](/docs/getting-started/) guide, it is recommended that you do so prior to beginning this guide. Also note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guides](/docs/lamp-guides).
+Apache is an open-source web server application. This guide explains how to install and configure an Apache web server on Ubuntu 12.04 LTS.
 
-## Set the Hostname
+If instead you would like to install a full LAMP stack, please see the [LAMP on Ubuntu 12.04](/docs/websites/lamp/lamp-server-on-ubuntu-12-04-precise-pangolin) guide.
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_setting-the-hostname). Issue the following commands to make sure it is set properly:
+{: .note}
+>
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
-    hostname
-    hostname -f
 
-The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
+## Before You Begin
 
-## Install Apache 2
+1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, and the Linode's [hostname is set](/docs/getting-started#setting-the-hostname).
 
-Make sure your package repositories and installed programs are up to date by issuing the following commands:
+    To check your hostname run:
 
-    apt-get update
-    apt-get upgrade --show-upgraded
+        hostname
+        hostname -f
 
-Enter the following command to install the Apache 2 web server, its documentation and a collection of utilities.
+    The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-    apt-get install apache2 apache2-doc apache2-utils
+2.  Update your system:
 
-Edit the main Apache configuration file to adjust the resource use settings. The settings shown below are a good starting point for a **Linode 1GB**.
+        sudo apt-get update && sudo apt-get upgrade
 
-{: .file }
-/etc/apache2/apache2.conf
-:   ~~~ apache
-    KeepAlive Off
 
-    ...
+## Install Apache
 
-    <IfModule mpm_prefork_module>
-    StartServers 2
-    MinSpareServers 6
-    MaxSpareServers 12
-    MaxClients 80
-    MaxRequestsPerChild 3000
-    </IfModule>
-    ~~~
+1.  Install the Apache 2 web server, its documentation, and a collection of utilities:
 
-## Install Support for Scripting
+        sudo apt-get install apache2 apache2-doc apache2-utils
 
-The following commands are optional, and should be run if you want to have support within Apache for server-side scripting in PHP, Ruby, Python, or Perl.
+2.  Edit the main Apache configuration file to adjust the resource use settings. The settings shown below are a good starting point for a **Linode 1GB**:
 
-To install Ruby support, issue the following command:
+    {: .file }
+    /etc/apache2/apache2.conf
+    :   ~~~ conf
+        KeepAlive Off
 
-    apt-get install libapache2-mod-ruby
+        ...
 
-To install Perl support, issue the following command:
+        <IfModule mpm_prefork_module>
+            StartServers        2
+            MinSpareServers     6
+            MaxSpareServers     12
+            MaxClients          30
+            MaxRequestsPerChild 3000
+        </IfModule>
+        ~~~
 
-    apt-get install libapache2-mod-perl2 
-
-To install Python support, issue the following command:
-
-    apt-get install libapache2-mod-python 
-
-If you need support for MySQL in Python, you will also need to install Python MySQL support:
-
-    apt-get install python-mysqldb
-
-Your PHP application may require additional dependencies included in Ubuntu. To check for available PHP dependencies run `apt-cache search php`, which will provide a list of package names and descriptions. To install, issue the following command:
-
-    apt-get install libapache2-mod-php5 php5 php-pear php5-xcache
-
-Issue the following command to install the `php5-suhosin` package, which provides additional security to your PHP installation:
-
-    apt-get install php5-suhosin
-
-If you're also hoping to run PHP with MySQL, then also install MySQL support:
-
-    apt-get install php5-mysql
 
 ### Configure Name-based Virtual Hosts
 
-There are different ways to set up Virtual Hosts, however we recommend the method below. By default, Apache listens on all IP addresses available to it.
+Apache supports *name-based virtual hosting*, which allows you to host multiple domains on a single server with a single IP. Although there are different ways to set up virtual hosts, the method below is recommended.
 
-First, issue the following command to disable the default Apache virtual host.
+1.  Disable the default Apache virtual host:
 
-    a2dissite default
+        sudo a2dissite 000-default.conf
 
-Each additional virtual host needs its own file in the `/etc/apache2/sites-available/` directory. In this example, you'll create files for two **name-based** virtually hosted sites, "example.net" and "example.org".
+2.  Create an `example.com.conf` file in `/etc/apache2/sites-available` with your text editor, replacing instances of `example.com` with your own domain URL in both the configuration file and in the file name:
 
-First create example.net (`/etc/apache2/sites-available/example.net.conf`) so that it resembles the following.
+    {: .file }
+    /etc/apache2/sites-available/example.com.conf
+    :   ~~~ conf
+        <VirtualHost *:80> 
+             ServerAdmin webmaster@example.com
+             ServerName example.com
+             ServerAlias www.example.com
+             DocumentRoot /var/www/example.com/public_html/
+             ErrorLog /var/www/example.com/logs/error.log 
+             CustomLog /var/www/example.com/logs/access.log combined
+        </VirtualHost>
+        ~~~
 
-{: .file }
-/etc/apache2/sites-available/example.net.conf
-:   ~~~ apache
-    <VirtualHost *:80> 
-         ServerAdmin webmaster@example.net     
-         ServerName example.net
-         ServerAlias www.example.net
-         DocumentRoot /var/www/example.net/public_html/
-         ErrorLog /var/www/example.net/logs/error.log 
-         CustomLog /var/www/example.net/logs/access.log combined
-    </VirtualHost>
-    ~~~
+    Repeat this process for any other domains you host.
 
-If you would like to enable Perl, add the following lines to the `VirtualHost` entry above.
+    {:.note}
+    >
+    > If you would like to enable Perl support, add the following lines above the closing `</VirtualHost>` tag:
+    >
+    > {: .file-excerpt }
+      /etc/apache2/sites-available/example.com.conf
+    > :   ~~~ conf
+    >     Options ExecCGI
+    >     AddHandler cgi-script .pl
+    >     ~~~
 
-{: .file-excerpt }
-/etc/apache2/sites-available/example.net.conf
-:   ~~~ apache
-    Options ExecCGI
-    AddHandler cgi-script .pl
-    ~~~
 
-Next, create example.org (`/etc/apache2/sites-available/example.org.conf`) so that it resembles this:
+3.  Create directories for your websites and websites' logs, replacing `example.com` with your own domain information:
 
-{: .file }
-/etc/apache2/sites-available/example.org.conf
-:   ~~~ apache
-    <VirtualHost *:80> 
-         ServerAdmin admin@example.org
-         ServerName example.org
-         ServerAlias www.example.org
-         DocumentRoot /var/www/example.org/public_html/
-         ErrorLog /var/www/example.org/logs/error.log 
-         CustomLog /var/www/example.org/logs/access.log combined
-    </VirtualHost>
-    ~~~
+        sudo mkdir -p /var/www/example.com/public_html
+        sudo mkdir /var/www/example.com/logs
 
-You'll note that some basic options are specified for both sites, including where the files for the site will reside (under `/var/www/`). You can add (or remove) additional configuration options, such as the Perl support, on a site-by-site basis to these files as your needs dictate.
+6.  Enable the site:
 
-Create required directories for these sites by issuing the following commands:
+        sudo a2ensite example.com.conf
 
-    mkdir -p /var/www/example.net/public_html
-    mkdir /var/www/example.net/logs
+7.  Restart Apache:
 
-    mkdir -p /var/www/example.org/public_html
-    mkdir /var/www/example.org/logs
+        sudo systemctl restart apache2
 
-Enable the sites by issuing these commands:
 
-    a2ensite example.net.conf
-    a2ensite example.org.conf
+## Set Up Mods and Scripting
 
-Finally, restart the Apache server to initialize all the changes, with this command:
+### Install Apache Modules
 
-    service apache2 restart
+One of Apache's strengths is its ability to be customized with modules. The default installation directory for Apache modules is the `/etc/apache2/mods-available/` directory.
 
-When you create or edit any virtual host file, you'll need to reload the config, which you can do without restarting the server with the following command:
+1.  List available Apache modules:
 
-    sudo service apache2 reload
+        sudo apt-cache search libapache2* 
 
-Congratulations! You now have Apache installed on your Ubuntu Linux VPS and have configured the server for virtual hosting.
+2.  Install any desired modules:
 
-## Install Apache Modules
+        sudo apt-get install [module-name]
 
-One of Apache's prime strengths is its extreme customizability and flexibility. With its support for a large number of modules, there are few web serving tasks that Apache cannot fulfill. By default, modules and their configuration files are installed in the `/etc/apache2/mods-available/` directory. Generating a list of this directory will tell you what modules are installed. To enable a module listed in this directory, use the following command:
+3.  All mods are located in the `/etc/apache2/mods-avaiable` directory. Edit the `.conf` file of any installed module if needed, then enable the module:
 
-    a2enmod [module-name]
+        sudo a2enmod [module-name]
 
-Note that in the `/etc/apache2/mods-available/` directory, files have a `.load` and `.conf` extension. Module names do not include the extension.
+    To disable a module that is currently enabled:
 
-To disable a module that is currently enabled, use the inverse command:
+        a2dismod [module-name]
 
-    a2dismod [module-name]
 
-To get a list of available Apache modules modules in the Ubuntu repository use the following command:
+### Optional: Install Support for Scripting
 
-    apt-cache search libapache2* 
+The following commands install Apache support for server-side scripting in PHP, Ruby, Python, and Perl. Support for these languages is optional based on your server environment.
 
-To install one of these modules use the command:
+To install:
 
-    apt-get install [module-name]
+-   Ruby support:
 
-Modules should be enabled and ready to use following installation, though you may have to apply additional configuration options to have access to the modules' functionality. Consult the [Apache module documentation](http://httpd.apache.org/docs/2.0/mod/) for more information regarding the configuration of specific modules.
+        sudo apt-get install libapache2-mod-ruby
 
-## Configuration Options
+-   Perl support:
 
-One of the strengths, and obstacles, of Apache is the immense amount of flexibility offered in its configuration files. In the default installation of Apache 2 on Ubuntu, the main configuration is located in the `/etc/apache2/apache2.conf` files, but Apache configuration directives are loaded from files in a number of different locations, in a specific order. Configuration files are read in the following order, with items specified later taking precedence over earlier and potentially conflicting options:
+        sudo apt-get install libapache2-mod-perl2 
 
-1.  `/etc/apache2/apache2.conf`
-2.  Files with `.load` or `.conf` extensions in `/etc/apache2/mods-enabled/` directory.
-3.  `/etc/apache2/httpd.conf` (Blank by default.)
-4.  `/etc/apache2/ports.conf`
-5.  Files within the `/etc/apache2/conf.d/` directory.
-6.  Files within the `/etc/apache2/sites-enabled/` directory.
-7.  Per-directory `.htaccess` files in the directory.
+-   Python support:
 
-Remember, later files take precedence over earlier-cited files. Within a directory of included configuration files, files will be read in order based on the sort of their file names.
+        sudo apt-get install libapache2-mod-python 
 
-Apache will follow symbolic links to read configuration files, so you can create links in these directories and locations to files that are actually located elsewhere in your file system.
+-   MySQL in Python support:
 
-Best practices for most installations dictate that we don't recommend modifying the following default configuration files: `/etc/apache2/httpd.conf`, files in `/etc/apache2/mods-enabled/`, and in most cases `/etc/apache2/apache2.conf`. This is to avoid unnecessary confusion and unintended conflicts in the future.
+        sudo apt-get install python-mysqldb
 
-Generally, as specified in our [LAMP guides](/docs/lamp-guides) and elsewhere, files that configure virtual hosts should be located in the `/etc/apache2/sites-available/` directory (and symbolically linked to `sites-enabled/` with the `a2ensite` tool. This allows for a clear and specific per-site configuration.
+-   PHP support:
 
-In practice, the vast majority of configuration options will probably be located in site-specific virtual host configuration files. If you need to set a system-wide configuration option or aren't using virtual hosting, the best practice is to specify options in files created beneath the `conf.d/` directory.
+        sudo apt-get install libapache2-mod-php5 php5 php-pear php5-xcache
 
-## Multi-Processing Module
+-   `php5-suhosin`, for additional PHP security:
 
-The default Apache configuration uses a tool called MPM-worker, this multi-processing module can handle a large number of requests quickly by utilizing multiple threads per worker process. However, this use of multiple threads is not compatible with some PHP extensions. When PHP is installed MPM-worker is replaced with MPM-prefork, which allows Apache to handle requests without threading for greater compatibility with some software. Furthermore, using MPM-prefork allows Apache to isolate requests in separate processes so that if one request fails for some reason, other requests will be unaffected.
+        sudo apt-get install php5-suhosin
 
-For more complex setups, however, we recommend that you consider using an alternate MPM module called "ITK." `mpm-itk` is quite similar to `prefork`, but it goes one step further and runs the processes for each site under a distinct user account. This is particularly useful in situations where you're hosting a number of distinct sites that you need to isolate sites on the basis of user privileges.
+-   PHP with MySQL:
 
-Begin by installing the mpm-itk module:
-
-    apt-get install apache2-mpm-itk
-
-Now, in the `<VirtualHost >` entries for your sites (the site-specific files in `/etc/apache2/sites-available/`) add the following sub-block:
-
-{: .file-excerpt }
-Apache Virtual Host Configuration
-:   ~~~ apache
-    <IfModule mpm_itk_module>
-       AssignUserId webeditor webgroup
-    </IfModule>
-    ~~~
-
-In this example, `webeditor` is the name of the user of the specific site in question, and `webgroup` is the name of the particular group that "owns" the web server related files and processes. Remember that you must create the user accounts and groups using the `useradd` command.
+        sudo apt-get install php5-mysql
