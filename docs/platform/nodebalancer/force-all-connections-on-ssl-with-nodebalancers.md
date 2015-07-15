@@ -40,34 +40,32 @@ Prerequisites
     {: .note}
 > This guide is written, assuming that you are logged in as the root user and that you will not need to prepend commands with ``sudo``.
 
-Install OpenSSL
----------------
+## Install OpenSSL
 
-1. Issue the following commands to update the system and install the required packages for OpenSSL.
+1.  Issue the following commands to update the system and install the required packages for OpenSSL.
 
- Debian/Ubuntu users:
+    Debian/Ubuntu users:
 
         apt-get update
         apt-get upgrade
         apt-get install openssl
         mkdir /etc/ssl/localcerts
 
- CentOS/Fedora users:
+    CentOS/Fedora users:
 
         yum install openssl
         mkdir /etc/ssl/localcerts
 
-Create a Certificate Signing Request
-------------------------------------
+## Create a Certificate Signing Request
 
-1. Issue the following commands to generate a certificate signing request (CSR) for the domain that you would like to configure with SSL. Be sure to change "www.example.com" to reflect the fully qualified domain name (subdomain.domainname.com) of the site you'll be using SSL with. Leave the challenge password blank. We entered 365 for the days parameter to the command, as we would be paying for one year of SSL certificate verification from a commercial CA (certificate authority).
+1.  Issue the following commands to generate a certificate signing request (CSR) for the domain that you would like to configure with SSL. Be sure to change "www.example.com" to reflect the fully qualified domain name (subdomain.domainname.com) of the site you'll be using SSL with. Leave the challenge password blank. We entered 365 for the days parameter to the command, as we would be paying for one year of SSL certificate verification from a commercial CA (certificate authority).
 
         cd /etc/ssl/localcerts
-    
+
         openssl req -new -newkey rsa:2048 -nodes -days 365 -keyout www.example.com.key -out www.example.com.csr
 
 
- Here are the values we entered for our example certificate. Note that you can ignore the extra attributes.
+    Here are the values we entered for our example certificate. Note that you can ignore the extra attributes.
 
         Generating a 2048 bit RSA private key
         ......................................................++++++
@@ -97,7 +95,7 @@ Create a Certificate Signing Request
 
 
 
-2. A `certificate signing request` file, ending with `.csr`, file will be generated and placed in `/etc/ssl/localcerts`. An example of what this file will look like can be found below (yours will be unique):
+2.  A `certificate signing request` file, ending with `.csr`, file will be generated and placed in `/etc/ssl/localcerts`. An example of what this file will look like can be found below (yours will be unique):
 
         -----BEGIN CERTIFICATE REQUEST-----
         MIICpDCCAYwCAQAwRTELMAkGA1UEBhMCQVUxEzARBgNVBAgMClNvbWUtU3RhdGUx
@@ -110,11 +108,11 @@ Create a Certificate Signing Request
         hofUVA2XXBs=
         -----END CERTIFICATE REQUEST-----
 
-3. In addition, a key file ending with `.key`, file will be generated and placed in `/etc/ssl/localcerts`. Execute the following command to protect the key:
+3.  In addition, a key file ending with `.key`, file will be generated and placed in `/etc/ssl/localcerts`. Execute the following command to protect the key:
 
         chmod 400 /etc/ssl/localcerts/www.mydomain.com.key 
 
- An example of what this file will look like can be found below (yours will be unique):
+    An example of what this file will look like can be found below (yours will be unique):
 
         -----BEGIN PRIVATE KEY-----
         MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDhqR/0T9uiZY0s
@@ -129,18 +127,18 @@ Create a Certificate Signing Request
 
 ### Submit your CSR to a Certificate Authority
 
-4. You may now submit the contents of this file to a commercial SSL provider (Certificate Authority) for signing. Typically, they will provide you with a field to paste the contents of your CSR file into, somewhere on their website. The following is a list of well known commercial SSL vendors, provided for your convenience:
+4.  You may now submit the contents of this file to a commercial SSL provider (Certificate Authority) for signing. Typically, they will provide you with a field to paste the contents of your CSR file into, somewhere on their website. The following is a list of well known commercial SSL vendors, provided for your convenience:
 
--   [Verisign](https://www.verisign.com/)
--   [Thawte](https://www.thawte.com/)
--   [Globalsign](https://www.globalsign.com/en/)
--   [Comodo](https://www.comodo.com/)
+    - [Verisign](https://www.verisign.com/)
+    - [Thawte](https://www.thawte.com/)
+    - [Globalsign](https://www.globalsign.com/en/)
+    - [Comodo](https://www.comodo.com/)
 
- {:.note}
-> 
-> There are many vendors, including some listed above, that provide free SSL certificates. However, free SSL certificates typically have shorter expiration dates, and less features.
+      {:.note}
+     > 
+     > There are many vendors, including some listed above, that provide free SSL certificates. However, free SSL certificates typically have shorter expiration dates, and less features.
 
-5. Once this request has been submitted, you will receive a commercially signed SSL certificate file, which will look similar to the following (yours will be unique):
+5.  Once this request has been submitted, you will receive a commercially signed SSL certificate file, which will look similar to the following (yours will be unique):
 
         -----BEGIN CERTIFICATE-----
         MIIFSzCCBDOgAwIBAgIQVjCXC0bF9U8FypJOnL9cuDANBgkqhkiG9w0BAQsFADCB
@@ -153,17 +151,17 @@ Create a Certificate Signing Request
         DCQzME2NkT1ZdW8fdz+Y
         -----END CERTIFICATE-----
 
-6. Save this file as /etc/ssl/localcerts/www.mydomain.com.crt. Execute the following command to protect the signed certificate:
+6.  Save this file as /etc/ssl/localcerts/www.mydomain.com.crt. Execute the following command to protect the signed certificate:
 
         chmod 400 /etc/ssl/localcerts/www.mydomain.com.crt
 
 ### Preparing a Chained SSL Certificate
 
-7. However, you may receive several files ending with `.crt`. If this is the case, then they are collectively refereed to as a `chained SSL certificate` and must be concatenated into one file in order to provide full support with most browsers. The following example uses a chained SSL certificate that was signed by Comodo, but other vendors are perfectly reputable as well. Enter the following command to do this:
+7.  However, you may receive several files ending with `.crt`. If this is the case, then they are collectively refereed to as a `chained SSL certificate` and must be concatenated into one file in order to provide full support with most browsers. The following example uses a chained SSL certificate that was signed by Comodo, but other vendors are perfectly reputable as well. Enter the following command to do this:
 
         cat example_com.crt COMODORSADomainValidationSecureServerCA.crt  COMODORSAAddTrustCA.crt AddTrustExternalCARoot.crt > chained-ssl.crt
 
- The contents of the resulting file will appear similar to the following (yours will be unique):
+    The contents of the resulting file will appear similar to the following (yours will be unique):
 
         -----BEGIN CERTIFICATE-----
         MIIFSzCCBDOgAwIBAgIQVjCXC0bF9U8FypJOnL9cuDANBgkqhkiG9w0BAQsFADCB
@@ -206,34 +204,33 @@ Create a Certificate Signing Request
         mnkPIAou1Z5jJh5VkpTYghdae9C8x49OhgQ=
         -----END CERTIFICATE-----
 
-8. If you have concatenated a chained SSL certificate, save this file as `/etc/ssl/localcerts/www.mydomain.com.crt`. Then execute the following command to protect the signed certificate:
+8.  If you have concatenated a chained SSL certificate, save this file as `/etc/ssl/localcerts/www.mydomain.com.crt`. Then execute the following command to protect the signed certificate:
 
         chmod 400 /etc/ssl/localcerts/www.mydomain.com.crt
-        
-        
- {: .note }
- > 
- > It is an excellent choice to save all of your `.crt` and `.key` files in an offsite location, optionally in a password protected archive. By doing so, you can recover them if neccessary.
 
-Installing the SSL Certificate and Private Key on your NodeBalancer
----------------------------
+
+    {: .note }
+    > 
+    > It is an excellent choice to save all of your `.crt` and `.key` files in an offsite location, optionally in a password protected archive. By doing so, you can recover them if neccessary.
+
+## Installing the SSL Certificate and Private Key on your NodeBalancer
 
 ### Create a configuration profile for Port 443 on your Nodebalancer
 
 
 ### Certificate and Private Key
 
-1. If you select the HTTPS protocol, the **Certificate** and **Private Key** fields will appear.
+1.  If you select the HTTPS protocol, the **Certificate** and **Private Key** fields will appear.
 
- [![The NodeBalancer Certificate and Private Key fields.](/docs/assets/1354-nodebalancer_cert.png)](/docs/assets/1354-nodebalancer_cert.png)
+    [![The NodeBalancer Certificate and Private Key fields.](/docs/assets/1354-nodebalancer_cert.png)](/docs/assets/1354-nodebalancer_cert.png)
 
-2. Copy the contents of your SSL certificate into the **Certificate** field. If you have concatenated multiple segments of a chained certificate, be sure to copy all of it's contents into the text field, appearing one after the other.
+2.  Copy the contents of your SSL certificate into the **Certificate** field. If you have concatenated multiple segments of a chained certificate, be sure to copy all of it's contents into the text field, appearing one after the other.
 
-3. Copy your passphraseless private key into the **Private Key** field.
+3.  Copy your passphraseless private key into the **Private Key** field.
 
-4. On your NodeBalancer `Configurations` page, select `Create Configuration`, you will need to create one for each port/protocol that you would like to use, i.e. `80` and `443`.
+4.  On your NodeBalancer `Configurations` page, select `Create Configuration`, you will need to create one for each port/protocol that you would like to use, i.e. `80` and `443`.
 
-5. Under `Edit Configuration`  Once selected, fill out the values in the fields as shown below:
+5.  Under `Edit Configuration`  Once selected, fill out the values in the fields as shown below:
  
          **Port**                    443
          **Protocol**                HTTPS
@@ -247,96 +244,89 @@ Installing the SSL Certificate and Private Key on your NodeBalancer
          **Check Attempts**          2
          **Check HTTP Path**         /
 
-Then, select **`Save Changes`**. 
+    Then, select **`Save Changes`**. 
 
-6. Add as many nodes as you require for the port configuration by selecting **`Add Node`**. Once selected, fill out the values in the fields like so:
+6.  Add as many nodes as you require for the port configuration by selecting **`Add Node`**. Once selected, fill out the values in the fields like so:
 
          **Label**                   < Backend Linode 1 >
          **Address**                 < xxx.xxx.xxx.xxx:80 >
          **Weight**                  100
          **Mode**                    Accept
 
-{: .note }
-> 
-> In the section labelled **`Address`**,  you will need to replace `xxx.xxx.xxx.xxx` by specify the private IP address that has been provisioned for that particular Linode, followed by a colon and `80`. This is because SSL is terminating at the NodeBalancer.
+    {: .note }
+    > 
+    > In the section labelled **`Address`**,  you will need to replace `xxx.xxx.xxx.xxx` by specify the private IP address that has been provisioned for that particular Linode, followed by a colon and `80`. This is because SSL is terminating at the NodeBalancer.
 
-Then, select **`Save Changes`**.
+    Then, select **`Save Changes`**.
 
 
-Configuring your Web Server with a 301 Redirect
----------------------------
+## Configuring your Web Server with a 301 Redirect
 
 ### Configuring the Apache Webserver.
 
-1. Enable mod_rewrite so that you can redirect all traffic back to the NodeBalancer over port 443/HTTPS. Enter the following command:
+1.  Enable mod_rewrite so that you can redirect all traffic back to the NodeBalancer over port 443/HTTPS. Enter the following command:
 
         a2enmod rewrite
      
-   or, you can load the module manually by appending the following to your Apache configuration file:
+    or, you can load the module manually by appending the following to your Apache configuration file:
 
-  {:.note}
- >     LoadModule rewrite_module modules/mod_rewrite.so
+        LoadModule rewrite_module modules/mod_rewrite.so
 
-   > Depending on if you are using a Debian or a Redhat based distribution, this file will be located in one of the following locations:
-       
- >      /etc/apache2/apache2.conf
- >    
- >      /etc/httpd/httpd.conf
+    {:.note}
+    > Depending on if you are using a Debian or a Redhat based distribution, this file will be located in one of the following locations:
+    >
+    >     /etc/apache2/apache2.conf
+    >
+    >     /etc/httpd/httpd.conf
 
-2. Now edit the Apache vhost configuration file to establish the rewrite rules necessary in order to redirect all incoming traffic from port 80/HTTP, back to the NodeBalancer on port 443/HTTPS:
+2.  Now edit the Apache vhost configuration file to establish the rewrite rules necessary in order to redirect all incoming traffic from port 80/HTTP, back to the NodeBalancer on port 443/HTTPS:
 
-   {: .file-excerpt }
-   /etc/apache2/sites-available/example.com.conf
-      :   ~~~ apache
-        
-            <VirtualHost *:80>
-                ServerAdmin      admin@example.com
-	        ServerName       example.com
-	        ServerAlias      www.example.com
-	        DocumentRoot     /var/www/example.com/public_html/
-	        ErrorLog         /var/www/example.com/logs/error.log
-	        CustomLog        /var/www/example.com/logs/access.log combined
-	        RewriteEngine    On
-	        RewriteCond      %{HTTP:X-Forwarded-Proto} !https
-	        RewriteRule      ^.*$ https://%{SERVER_NAME}%{REQUEST_URI} [L,R=301,NE]
-	        RewriteLog       /var/log/apache2/rewrite.log
-	        RewriteLogLevel  5
-	    </VirtualHost>
+    {: .file-excerpt }
+    /etc/apache2/sites-available/example.com.conf
+    :   ~~~ apache
+        <VirtualHost *:80>
+             ServerAdmin      admin@example.com
+             ServerName       example.com
+             ServerAlias      www.example.com
+             DocumentRoot     /var/www/example.com/public_html/
+             ErrorLog         /var/www/example.com/logs/error.log
+             CustomLog        /var/www/example.com/logs/access.log combined
+             RewriteEngine    On
+             RewriteCond      %{HTTP:X-Forwarded-Proto} !https
+             RewriteRule      ^.*$ https://%{SERVER_NAME}%{REQUEST_URI} [L,R=301,NE]
+             RewriteLog       /var/log/apache2/rewrite.log
+             RewriteLogLevel  5
+         </VirtualHost>
+        ~~~
 
-   ~~~
-   
-   3. Create the RewriteLog as referenced from above:
+3.  Create the RewriteLog as referenced from above:
 
-            mkdir /var/log/apache2/rewrite.log
+        mkdir /var/log/apache2/rewrite.log
 
 ### Configuring your vhost file for the Nginx Webserver.
 
-   4. Now edit the Nginx vhost configuration file to establish the rewrite rules necessary in order to redirect all incoming traffic from port 80/HTTP, back to the NodeBalancer on port 443/HTTPS:
+4.  Now edit the Nginx vhost configuration file to establish the rewrite rules necessary in order to redirect all incoming traffic from port 80/HTTP, back to the NodeBalancer on port 443/HTTPS:
 
-   {: .file-excerpt }
-   /etc/nginx/sites-available/example.com.conf
-      :   ~~~ nginx
- 
-         server {
-                 listen   80;
-                 server_name example.com;
-                 access_log /var/log/nginx/access.log;
-                 error_log /var/log/nginx/error.log;
-                 proxy_set_header X-Forwarded-Proto $scheme;
-                     location / {
-                     root   /srv/www/example.com/public_html;
-                     index  index.html index.htm;
-                         if ($http_x_forwarded_proto = "http") {
-                         rewrite  ^/(.*)$  https://example.com/$1 permanent;
-                                                               }           
-                                }
+    {: .file-excerpt }
+    /etc/nginx/sites-available/example.com.conf
+    :   ~~~ nginx
+        server {
+            listen   80;
+            server_name example.com;
+            access_log /var/log/nginx/access.log;
+            error_log /var/log/nginx/error.log;
+            proxy_set_header X-Forwarded-Proto $scheme;
+            location / {
+                root   /srv/www/example.com/public_html;
+                index  index.html index.htm;
+                if ($http_x_forwarded_proto = "http") {
+                    rewrite  ^/(.*)$  https://example.com/$1 permanent;
+                    }           
                 }
+            }
+        ~~~
 
-
-   ~~~
-
-Tips for Troubleshooting
----------------------------
+## Tips for Troubleshooting
 
 - If you end up having difficulty getting the redirect to work properly or would like to see detailed information about how your SSL certificate is configured, you may wish to utilize the following tool from Qualys:
 
