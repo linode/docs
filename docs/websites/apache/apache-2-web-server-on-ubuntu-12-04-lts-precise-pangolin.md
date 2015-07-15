@@ -6,7 +6,7 @@ description: 'Instructions for getting started with the Apache web server on Ubu
 keywords: 'apache,apache ubuntu 12.04,apache ubuntu precise pangolin,web server,apache on ubuntu,apache lucid'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-servers/apache/installation/ubuntu-12-04-precise-pangolin/']
-modified: Friday, January 10th, 2014
+modified: Wednesday, July 15th, 2015
 modified_by:
   name: Linode
 published: 'Wednesday, October 10th, 2012'
