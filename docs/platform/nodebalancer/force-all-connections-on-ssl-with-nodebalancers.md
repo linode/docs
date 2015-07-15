@@ -58,7 +58,7 @@ Prerequisites
 
 ## Create a Certificate Signing Request
 
-1.  Issue the following commands to generate a certificate signing request (CSR) for the domain that you would like to configure with SSL. Be sure to change "www.example.com" to reflect the fully qualified domain name (subdomain.domainname.com) of the site you'll be using SSL with. Leave the challenge password blank. We entered 365 for the days parameter to the command, as we would be paying for one year of SSL certificate verification from a commercial CA (certificate authority).
+1.  Issue the following commands to generate a certificate signing request (CSR) for the domain that you would like to configure with SSL. Be sure to change `www.example.com` to reflect the fully qualified domain name (subdomain.domainname.com) of the site you'll be using SSL with. Leave the challenge password blank. We entered 365 for the days parameter to the command, as we would be paying for one year of SSL certificate verification from a commercial CA (certificate authority).
 
         cd /etc/ssl/localcerts
 
@@ -101,7 +101,7 @@ Prerequisites
         MIICpDCCAYwCAQAwRTELMAkGA1UEBhMCQVUxEzARBgNVBAgMClNvbWUtU3RhdGUx
         ITAfBgNVBAoMGEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZDCCASIwDQYJKoZIhvcN
         AQEBBQADggEPADCCAQoCggEBAOGpH/RP26JljSy1Dbt/R6zU5V/cWQd8CMKwzUba
-        (additional encrypted data... the cropped text is not important)
+        ................................................................
         kaYVdWJ5+BXNe5AQursBYcXoo1/cl4aSbVV2XxRtNWZmpuvNCtt0iAvWyQypTNp0
         7+eFgy625DXD7n3pScFDPb/RXaawku1EB+vpG1lpwhr+bU+8mtqa/wEPC2IVzNba
         lEObO2p9I7nZZpPXc05KA+034Rc4JFoABq0j2HuxlF2tL/U/EqjWB5ksOy96c7BL
@@ -118,7 +118,7 @@ Prerequisites
         MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDhqR/0T9uiZY0s
         tQ27f0es1OVf3FkHfAjCsM1G2uMtGadRAFQN7lsa+W0W0tzfeJGSk4tqDanOPeJU
         3jm/Udxy18DSl2xYKhJAF8YL50UPN6Yih1p+XPIEBqKjAEn+p7BgH/R7vehZQh+z
-        (additional encrypted data... the cropped text is not important)
+        ................................................................
         ZegL7vs+//1jBJy3h/dcFNl7Pgiv7UlsxXhFw7aZAoGATUW7pWP1osmMFTshW6xo
         qSdRwPnDjilI9r9SEEwlcssGIYReIUfRuXnaaPLudKDeZ3GZ0kjXfbsWFOnwLyAE
         pNaMF47bTIFES5Ytqhp4rEYe5Hxn2VePrGJp/j7tAIzTXeV3IC6ICkEueKpKS2Dl
@@ -144,14 +144,14 @@ Prerequisites
         MIIFSzCCBDOgAwIBAgIQVjCXC0bF9U8FypJOnL9cuDANBgkqhkiG9w0BAQsFADCB
         kDELMAkGA1UEBhMCR0IxGzAZBgNVBAgTEkdyZWF0ZXIgTWFuY2hlc3RlcjEQMA4G
         A1UEBxMHU2FsZm9yZDEaMBgGA1UEChMRQ09NT0RPIENBIExpbWl0ZWQxNjA0BgNV
-        (additional encrypted data... the cropped text is not important)
+        ................................................................
         RWieiEDSZqbtZRPBaGooDJ5QbdHqUanvoVzf1aB1S5RrJB5qH/UG6WbTZ07rFfsn
         age7UPo4ZwheAtpO2mhcYypBG1zln4cvxVBAcrnaa1GWwKjgwXUr5k2Pv7BXWEex
         ncHG3hwHHwhiEz6ukC2mqxA+D3KILiywgHgWcumnpeCEUQgDzy0Fz2Ip/kR/1Fkv
         DCQzME2NkT1ZdW8fdz+Y
         -----END CERTIFICATE-----
 
-6.  Save this file as /etc/ssl/localcerts/www.mydomain.com.crt. Execute the following command to protect the signed certificate:
+6.  Save this file as `/etc/ssl/localcerts/www.mydomain.com.crt`. Execute the following command to protect the signed certificate:
 
         chmod 400 /etc/ssl/localcerts/www.mydomain.com.crt
 
@@ -167,7 +167,7 @@ Prerequisites
         MIIFSzCCBDOgAwIBAgIQVjCXC0bF9U8FypJOnL9cuDANBgkqhkiG9w0BAQsFADCB
         kDELMAkGA1UEBhMCR0IxGzAZBgNVBAgTEkdyZWF0ZXIgTWFuY2hlc3RlcjEQMA4G
         A1UEBxMHU2FsZm9yZDEaMBgGA1UEChMRQ09NT0RPIENBIExpbWl0ZWQxNjA0BgNV
-        (additional encrypted data... the cropped text is not important)
+        ................................................................
         RWieiEDSZqbtZRPBaGooDJ5QbdHqUanvoVzf1aB1S5RrJB5qH/UG6WbTZ07rFfsn
         age7UPo4ZwheAtpO2mhcYypBG1zln4cvxVBAcrnaa1GWwKjgwXUr5k2Pv7BXWEex
         ncHG3hwHHwhiEz6ukC2mqxA+D3KILiywgHgWcumnpeCEUQgDzy0Fz2Ip/kR/1Fkv
@@ -177,7 +177,7 @@ Prerequisites
         MIIGCDCCA/CgAwIBAgIQKy5u6tl1NmwUim7bo3yMBzANBgkqhkiG9w0BAQwFADCB
         hTELMAkGA1UEBhMCR0IxGzAZBgNVBAgTEkdyZWF0ZXIgTWFuY2hlc3RlcjEQMA4G
         A1UEBxMHU2FsZm9yZDEaMBgGA1UEChMRQ09NT0RPIENBIExpbWl0ZWQxKzApBgNV
-        (additional encrypted data... the cropped text is not important)
+        ................................................................
         j4rBYKEMrltDR5FL1ZoXX/nUh8HCjLfn4g8wGTeGrODcQgPmlKidrv0PJFGUzpII
         0fxQ8ANAe4hZ7Q7drNJ3gjTcBpUC2JD5Leo31Rpg0Gcg19hCC0Wvgmje3WYkN5Ap
         lBlGGSW4gNfL1IYoakRwJiNiqZ+Gb7+6kHDSVneFeO/qJakXzlByjAA6quPbYzSf
@@ -187,7 +187,7 @@ Prerequisites
         MIIFdDCCBFygAwIBAgIQJ2buVutJ846r13Ci/ITeIjANBgkqhkiG9w0BAQwFADBv
         MQswCQYDVQQGEwJTRTEUMBIGA1UEChMLQWRkVHJ1c3QgQUIxJjAkBgNVBAsTHUFk
         ZFRydXN0IEV4dGVybmFsIFRUUCBOZXR3b3JrMSIwIAYDVQQDExlBZGRUcnVzdCBF
-        (additional encrypted data... the cropped text is not important)
+        ................................................................
         Uspzgb8c8+a4bmYRBbMelC1/kZWSWfFMzqORcUx8Rww7Cxn2obFshj5cqsQugsv5
         B5a6SE2Q8pTIqXOi6wZ7I53eovNNVZ96YUWYGGjHXkBrI/V5eu+MtWuLt29G9Hvx
         PUsE2JOAWVrgQSQdso8VYFhH2+9uRv0V9dlfmrPb2LjkQLPNlzmuhbsdjrzch5vR
@@ -197,7 +197,7 @@ Prerequisites
         MIIENjCCAx6gAwIBAgIBATANBgkqhkiG9w0BAQUFADBvMQswCQYDVQQGEwJTRTEU
         MBIGA1UEChMLQWRkVHJ1c3QgQUIxJjAkBgNVBAsTHUFkZFRydXN0IEV4dGVybmFs
         IFRUUCBOZXR3b3JrMSIwIAYDVQQDExlBZGRUcnVzdCBFeHRlcm5hbCBDQSBSb290
-        (additional encrypted data... the cropped text is not important)
+        ................................................................
         6wwCURQtjr0W4MHfRnXnJK3s9EK0hZNwEGe6nQY1ShjTK3rMUUKhemPR5ruhxSvC
         Nr4TDea9Y355e6cJDUCrat2PisP29owaQgVR1EX1n6diIWgVIEM8med8vSTYqZEX
         c4g/VhsxOBi0cQ+azcgOno4uG+GMmIPLHzHxREzGBHNJdmAPx/i9F4BrLunMTA5a
@@ -206,7 +206,7 @@ Prerequisites
 
 8.  If you have concatenated a chained SSL certificate, save this file as `/etc/ssl/localcerts/www.mydomain.com.crt`. Then execute the following command to protect the signed certificate:
 
-        chmod 400 /etc/ssl/localcerts/www.mydomain.com.crt
+        chmod 400 /etc/ssl/localcerts/chained-ssl.crt
 
 
     {: .note }
@@ -285,12 +285,9 @@ Prerequisites
     /etc/apache2/sites-available/example.com.conf
     :   ~~~ apache
         <VirtualHost *:80>
-             ServerAdmin      admin@example.com
-             ServerName       example.com
-             ServerAlias      www.example.com
-             DocumentRoot     /var/www/example.com/public_html/
-             ErrorLog         /var/www/example.com/logs/error.log
-             CustomLog        /var/www/example.com/logs/access.log combined
+          
+        ...
+          
              RewriteEngine    On
              RewriteCond      %{HTTP:X-Forwarded-Proto} !https
              RewriteRule      ^.*$ https://%{SERVER_NAME}%{REQUEST_URI} [L,R=301,NE]
@@ -299,13 +296,22 @@ Prerequisites
          </VirtualHost>
         ~~~
 
+    {: .caution}
+    > On RHEL based distributions, change the `Rewritelog` path to `/var/log/httpd/rewrite.log`
+
 3.  Create the RewriteLog as referenced from above:
 
-        mkdir /var/log/apache2/rewrite.log
+     - Debian / Ubuntu
+
+           touch /var/log/apache2/rewrite.log
+
+     - CentOS
+
+           touch /var/log/httpd/rewrite.log
 
 ### Configuring your vhost file for the Nginx Webserver.
 
-4.  Now edit the Nginx vhost configuration file to establish the rewrite rules necessary in order to redirect all incoming traffic from port 80/HTTP, back to the NodeBalancer on port 443/HTTPS:
+4.  Edit the Nginx vhost configuration file to establish the rewrite rules necessary in order to redirect all incoming traffic from port 80/HTTP, back to the NodeBalancer on port 443/HTTPS:
 
     {: .file-excerpt }
     /etc/nginx/sites-available/example.com.conf
