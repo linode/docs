@@ -81,7 +81,7 @@ One temporary disk will be needed for the installation media, and as many disks 
 	3. cd /mnt/system
 	4. wget http://less.cogeco.net/CentOS/6.6/isos/x86_64/CentOS-6.6-x86_64-netinstall.iso
 		> Alternate mirrors: http://www.centos.org/download/mirrors/
-	5. dd if= CentOS-6.6-x86_64-netinstall.iso of=/dev/sda
+	5. dd if=CentOS-6.6-x86_64-netinstall.iso of=/dev/sda
 	6. shutdown –Ph now
 
 	[![Lish Commands](/docs/assets/snapresize0009.png)](/docs/assets/snap0009.png)
