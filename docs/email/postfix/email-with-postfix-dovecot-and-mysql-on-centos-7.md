@@ -5,14 +5,12 @@ author:
 description: 'Installing Postfix with Dovecot and MariaDB on CentOS.'
 keywords: 'postfix centos 7,dovecot centos 7,linux mail server,email,centos 7'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Thursday, March 26th, 2015
+modified: Thursday, July 16th, 2015
 modified_by:
   name: Elle Krout
 published: 'Thursday, March 26th, 2015'
 title: 'Email with Postfix, Dovecot and MariaDB on CentOS 7'
 external_resources:
- - '[ISP-style Email Server with Debian-Lenny and Postfix 2.5 guide](http://workaround.org/ispmail/lenny)'
- - '[Groupware Server With Group-Office, Postfix, Dovecot And SpamAssassin On Debian Lenny (5.0)](http://www.howtoforge.com/groupware-server-with-group-office-postfix-dovecot-spamassassin-on-debian-lenny)'
  - '[Postfix MySQL Howto](http://www.postfix.org/MYSQL_README.html)'
  - '[Postfix SASL Howto](http://www.postfix.org/SASL_README.html)'
  - '[Dovecot Documentation Wiki](http://wiki.dovecot.org/)'
@@ -21,7 +19,7 @@ external_resources:
 
 The Postfix Mail Transfer Agent (**MTA**) is a high performance open source e-mail server system. This guide will help you get Postfix running on your CentOS 7 Linode, using Dovecot for IMAP/POP3 service, and MariaDB, a drop-in replacement for MySQL, to store information on virtual domains and users.
 
-Prior to using this guide, be sure you have followed the [getting started guide](/docs/getting-started/) and set your hostname.
+Prior to using this guide, be sure you have followed the [getting started guide](/docs/getting-started/) and set your hostname. Also ensure that the iptables [firewall](/docs/securing-your-server#creating-a-firewall) is not blocking any of the standard mail ports (25, 465, 587, 110, 995, 143, and 993). If using a different form of firewall, confirm that it is not blocking any of the needed ports either.
 
 {: .note}
 >
@@ -157,7 +155,7 @@ Next, perform additional Postfix configuration to set up communication with the 
         user = mail_admin
         password = mail_admin_password
         dbname = mail
-        query = SELECT CONCAT(SUBSTRING_INDEX(email,<'@'>,-1),'/',SUBSTRING_INDEX(email,<'@'>,1),'/') FROM users WHERE email='%s'
+        query = SELECT CONCAT(SUBSTRING_INDEX(email,'@',-1),'/',SUBSTRING_INDEX(email,'@',1),'/') FROM users WHERE email='%s'
         hosts = 127.0.0.1
         ~~~
 
@@ -204,8 +202,8 @@ Next, perform additional Postfix configuration to set up communication with the 
         postconf -e 'smtpd_sasl_authenticated_header = yes'
         postconf -e 'smtpd_recipient_restrictions = permit_mynetworks, permit_sasl_authenticated, reject_unauth_destination'
         postconf -e 'smtpd_use_tls = yes'
-        postconf -e 'smtpd_tls_cert_file = </etc/pki/dovecot/certs/dovecot.pem'
-        postconf -e 'smtpd_tls_key_file = </etc/pki/dovecot/private/dovecot.pem'
+        postconf -e 'smtpd_tls_cert_file = /etc/pki/dovecot/certs/dovecot.pem'
+        postconf -e 'smtpd_tls_key_file = /etc/pki/dovecot/private/dovecot.pem'
         postconf -e 'virtual_create_maildirsize = yes'
         postconf -e 'virtual_maildir_extended = yes'
         postconf -e 'proxy_read_maps = $local_recipient_maps $mydestination $virtual_alias_maps $virtual_alias_domains $virtual_mailbox_maps $virtual_mailbox_domains $relay_recipient_maps $relay_domains $canonical_maps $sender_canonical_maps $recipient_canonical_maps $relocated_maps $transport_maps $mynetworks $virtual_mailbox_limit_maps'
@@ -243,8 +241,8 @@ This completes the configuration for Postfix.
         log_timestamp = "%Y-%m-%d %H:%M:%S "
         mail_location = maildir:/home/vmail/%d/%n/Maildir
 
-        ssl_cert = </etc/pki/dovecot/certs/dovecot.pem
-        ssl_key = </etc/pki/dovecot/private/dovecot.pem
+        ssl_cert = /etc/pki/dovecot/certs/dovecot.pem
+        ssl_key = /etc/pki/dovecot/private/dovecot.pem
 
         namespace {
             type = private
