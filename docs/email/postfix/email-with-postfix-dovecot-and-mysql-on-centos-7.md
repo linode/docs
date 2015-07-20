@@ -184,7 +184,7 @@ Next, perform additional Postfix configuration to set up communication with the 
 7.  Complete the remaining steps required for Postfix configuration. Please be sure to replace `server.example.com` with the Linode's fully qualified domain name. If you are planning on using your own SSL certificate and key, replace `/etc/pki/dovecot/private/dovecot.pem` with the appropriate path:
 
         postconf -e 'myhostname = server.example.com'
-        postconf -e 'mydestination = $myhostname, localhost, localhost.localdomain'
+        postconf -e 'mydestination = localhost, localhost.localdomain'
         postconf -e 'mynetworks = 127.0.0.0/8'
         postconf -e 'inet_interfaces = all'
         postconf -e 'message_size_limit = 30720000'
