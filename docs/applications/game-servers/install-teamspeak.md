@@ -19,6 +19,8 @@ This guide will show you how to install TeamSpeak Server on your Linode.  What's
 
 Before you begin, ensure you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server/) guides.
 
+While Teamspeak should run on any flavor of Linux the instructions provided here are specific to Ubuntu / Debian.
+
 ## Install TeamSpeak
 
 ### Getting the Teamspeak Download
@@ -109,3 +111,12 @@ If you want Teamspeak to automatically start every time your Linode boots follow
 		~~~
 
 	Next time your Linode reboots TeamSpeak will start automatically.
+
+## Firewall Configuration
+
+If you use a firewall a couple of ports will need to be opened: 9987, 30033, 10011, and 41144.  Here's the commands to open those ports in IPtables.  Run each line as a separate command.
+
+	iptables -A INPUT -p udp --dport 9987 -j ACCEPT
+	iptables -A INPUT -p tcp --dport 30033 -j ACCEPT
+	iptables -A INPUT -p tcp --dport 10011 -j ACCEPT
+	iptables -A INPUT -p tcp --dport 41144 -j ACCEPT
