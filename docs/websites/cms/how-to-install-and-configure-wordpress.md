@@ -5,7 +5,7 @@ author:
 description: 'Install and optimize the WordPress blogging and content management system on your Linode.'
 keywords: 'install WordPress,WordPress on Linode,WordPress how-to, how to install wordpress, how to configure wordpress'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['web-applications/cms-guides/wordpress/']
+alias: ['web-applications/cms-guides/wordpress/','websites/cms/manage-web-content-with-wordpress/']
 modified: Monday, February 16, 2015
 modified_by:
   name: Elle Krout

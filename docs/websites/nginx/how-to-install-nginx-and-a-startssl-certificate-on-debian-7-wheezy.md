@@ -6,6 +6,7 @@ author:
 description: 'Learn how to install the latest stable version of Nginx on Debian 7 (Wheezy) and deploy a SSL certificate from StartSSL.'
 keywords: 'startssl, nginx, install nginx, install nginx on debian 7, ssl certificate, debian 7 (wheezy)'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+alias: ['websites/nginx/startssl-wth-latest-nginx-debian-7/']
 modified: Monday, October 20, 2014
 modified_by:
   name: Alex Fornuto

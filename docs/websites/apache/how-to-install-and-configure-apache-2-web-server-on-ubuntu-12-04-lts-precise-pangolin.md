@@ -5,7 +5,7 @@ author:
 description: 'How-to guide detailing steps needed to install Apache web server on Ubuntu 12.04 LTS (Precise Pangolin).'
 keywords: 'apache,apache ubuntu 12.04,apache ubuntu precise pangolin,web server,apache on ubuntu,apache lucid, install apache, configure apache , install apache, configure apache, how to install apache'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['web-servers/apache/installation/ubuntu-12-04-precise-pangolin/']
+alias: ['web-servers/apache/installation/ubuntu-12-04-precise-pangolin/','websites/apache/apache-2-web-server-on-ubuntu-12-04-lts-precise-pangolin/']
 modified: Friday, January 10th, 2014
 modified_by:
   name: Linode

@@ -5,7 +5,7 @@ author:
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and PHP-FastCGI on Ubuntu 12.04 LTS (Precise Pangolin).'
 keywords: 'nginx,nginx ubuntu 12.04,nginx fastcgi,nginx php'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['web-servers/nginx/php-fastcgi/ubuntu-12-04-precise-pangolin/','websites/nginx/nginx-and-phpfastcgi-on-ubuntu-12-04-lts-precise-pangolin/index.cfm/']
+alias: ['web-servers/nginx/php-fastcgi/ubuntu-12-04-precise-pangolin/','websites/nginx/nginx-and-phpfastcgi-on-ubuntu-12-04-lts-precise-pangolin/index.cfm/','websites/nginx/nginx-and-phpfastcgi-on-ubuntu-12-04-lts-precise-pangolin/']
 modified: Tuesday, October 9th, 2012
 modified_by:
   name: Linode
