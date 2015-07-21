@@ -141,7 +141,7 @@ Virtual hosting can be configured so that multiple domains (or subdomains) can b
     >
     >Should any additional changes be made to a configuration file restart Apache:
     >
-    >     sudo systemctl restart apache
+    >     sudo systemctl restart httpd.service
 
 
 ## Install and Configure MySQL
