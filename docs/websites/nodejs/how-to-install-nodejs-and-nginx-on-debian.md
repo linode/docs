@@ -1,15 +1,16 @@
 ---
 author:
-  name: Linode
-  email: docs@linode.com
-description: 'NGINX for static content and Node.js for dynamic requests.'
-keywords: 'linode guide,hosting a website,website,linode quickstart guide'
+    name: Linode
+    email: docs@linode.com
+description: 'How to install Nginx for static content and Node.js for dynamic requests.'
+keywords: 'linode guide,hosting a website,website,linode setup, install node.js, install nginx, debian, front-end requests, back-end requests'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: Wednesday, January 14th, 2015
 modified_by:
-  name: Linode
+    name: Linode
 published: 'Wednesday, January 14, 2015'
-title: Using Node.js with NGINX on Debian
+title: 'How to Install Node.js and Nginx on Debian'
+alias: ['websites/nodejs/nodejs-nginx-debian/']
 external_resources:
  - '[Node.js](http://nodejs.org)'
  - '[NGINX](http://nginx.com/)'

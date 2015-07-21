@@ -2,15 +2,15 @@
 author:
   name: Alex Fornuto
   email: afornuto@linode.com
-description: 'Understanding nginx web server configuration, from installation to setting up sites in nginx.conf.'
-keywords: 'nginx,web server,nginx.conf'
+description: 'Nginix is a high-performance web server that delivers large amounts of static content quickly. This doc will outline the basic Nginx parameters and conventions.'
+keywords: 'nginx, web server, nginx.conf, install'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['web-servers/nginx/configuration/basic/','websites/nginx/basic-nginx-configuration/index.cfm/']
+alias: ['web-servers/nginx/configuration/basic/','websites/nginx/basic-nginx-configuration/index.cfm/','websites/nginx/basic-nginx-configuration/']
 modified: Tuesday, May 20th, 2014
 modified_by:
   name: Alex Fornuto
 published: 'Monday, January 18th, 2010'
-title: Basic Nginx Configuration
+title: How to Configure Nginx
 external_resources:
  - '[Nginx guides in the Linode Library](/docs/web-servers/nginx/)'
  - '[Nginx community documentation](http://wiki.nginx.org)'

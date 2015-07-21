@@ -2,14 +2,15 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Configure a LAMP stack with Apache, MySQL, PHP and on Ubuntu 14.04'
-keywords: 'ubuntu lamp server,ubuntu 14.04 lamp,lamp,ubuntu web server,apache,mysql,php,ubuntu 14.04'
+description: 'How to install a LAMP (Linux, Apache, MySQL, PHP) stack on an Ubuntu 14.04 long term support (LTS) system.'
+keywords: 'install ubuntu lamp server,ubuntu 14.04 lamp,lamp,ubuntu web server,apache,mysql,php,ubuntu 14.04'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+alias: ['websites/lamp/lamp-server-on-ubuntu-14-04/']
 modified: Monday, June 29th, 2015
 modified_by:
   name: Elle Krout
 published: 'Wednesday, January 28th, 2015'
-title: 'LAMP Server on Ubuntu 14.04'
+title: 'How to Install a LAMP Stack on Ubuntu 14.04'
 external_resources:
  - '[Ubuntu Server Edition Homepage](http://www.ubuntu.com/server)'
  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.4/)'

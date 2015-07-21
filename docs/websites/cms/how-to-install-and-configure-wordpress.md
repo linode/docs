@@ -2,15 +2,15 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Install and optimize the WordPress blogging and content management system on your Linux VPS.'
-keywords: 'install WordPress,WordPress on Linode,WordPress howto'
+description: 'Install and optimize the WordPress blogging and content management system on your Linode.'
+keywords: 'install WordPress,WordPress on Linode,WordPress how-to, how to install wordpress, how to configure wordpress'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['web-applications/cms-guides/wordpress/']
+alias: ['web-applications/cms-guides/wordpress/','websites/cms/manage-web-content-with-wordpress/']
 modified: Monday, February 16, 2015
 modified_by:
   name: Elle Krout
 published: 'Tuesday, July 27th, 2010'
-title: Manage Web Content with WordPress
+title: How to Install and Configure Wordpress
 external_resources:
 - '[WordPress.org](http://wordpress.org)'
 - '[WordPress Codex](http://codex.wordpress.org)'
