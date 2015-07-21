@@ -3,14 +3,14 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'A detailed exploration of nginx''s HTTP proxy load balancing services.'
-keywords: 'nginx,proxy,load balancing,web server,http'
+keywords: 'nginx,proxy,load balancing,web server,http, how to use nginx as a proxy, how to use nginx as a load balancer'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['web-servers/nginx/configuration/front-end-proxy-and-software-load-balancing/', 'websites/loadbalancing/Use-Nginx-for-Proxy-Services-and-Software-Load-Balancing/']
+alias: ['web-servers/nginx/configuration/front-end-proxy-and-software-load-balancing/','websites/loadbalancing/Use-Nginx-for-Proxy-Services-and-Software-Load-Balancing/','uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing/index.cfm/','uptime/loadbalancing/use-ngingx-for-proxy-services-and-software-load-balancing/']
 modified: Friday, August 9th, 2013
 modified_by:
   name: Linode
 published: 'Tuesday, May 11th, 2010'
-title: Use Nginx for Proxy Services and Software Load Balancing
+title: 'How to Use Nginx as a Front-end Proxy Server and Software Load Balancer' 
 external_resources:
  - '[nginx Proxy Module](http://wiki.nginx.org/NginxHttpProxyModule)'
  - '[HTTP Upstream Module](http://wiki.nginx.org/NginxHttpUpstreamModule)'
