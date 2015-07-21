@@ -5,7 +5,7 @@ author:
 description: 'Nginix is a high-performance web server that delivers large amounts of static content quickly. This doc will outline the basic Nginx parameters and conventions.'
 keywords: 'nginx, web server, nginx.conf, install'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['web-servers/nginx/configuration/basic/','websites/nginx/basic-nginx-configuration/index.cfm/']
+alias: ['web-servers/nginx/configuration/basic/','websites/nginx/basic-nginx-configuration/index.cfm/','websites/nginx/basic-nginx-configuration/']
 modified: Tuesday, May 20th, 2014
 modified_by:
   name: Alex Fornuto
