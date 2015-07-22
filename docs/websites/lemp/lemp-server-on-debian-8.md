@@ -59,11 +59,11 @@ Install Nginx:
     server {
         listen   80;
         server_name www.example.com example.com;
-        access_log /srv/www/example.com/logs/access.log;
-        error_log /srv/www/example.com/logs/error.log;
+        access_log /var/www/html/example.com/logs/access.log;
+        error_log /var/www/html/example.com/logs/error.log;
 
         location / {
-            root   /srv/www/example.com/public_html;
+            root   /var/www/html/example.com/public_html;
             index  index.html index.htm;
         }
     }
@@ -72,7 +72,7 @@ Install Nginx:
 
 2.  Create the `public_html` and `log` directories referenced above:
 
-        sudo mkdir -p /srv/www/example.com/{public_html,logs}
+        sudo mkdir -p /var/www/html/example.com/{public_html,logs}
 
 3.  Enable the site and restart the web server.
 
@@ -121,7 +121,7 @@ For more information regarding Nginx configuration options, check out our [Overv
             include /etc/nginx/fastcgi_params;
             fastcgi_pass  127.0.0.1:9000;
             fastcgi_index index.php;
-            fastcgi_param SCRIPT_FILENAME /srv/www/example.com/public_html$fastcgi_script_name;
+            fastcgi_param SCRIPT_FILENAME /var/www/html/example.com/public_html$fastcgi_script_name;
         }
         ~~~
 
@@ -137,7 +137,7 @@ For more information regarding Nginx configuration options, check out our [Overv
     >    include /etc/nginx/fastcgi_params;
     >    fastcgi_pass 127.0.0.1:9000;
     >    fastcgi_index index.php;
-    >    fastcgi_param SCRIPT_FILENAME /srv/www/example.com/public_html$fastcgi_script_name;
+    >    fastcgi_param SCRIPT_FILENAME /var/www/html/example.com/public_html$fastcgi_script_name;
     >}
     >~~~
     >
@@ -150,7 +150,7 @@ For more information regarding Nginx configuration options, check out our [Overv
     >        fastcgi_pass 127.0.0.1:9000;
     >    }
     >    fastcgi_index index.php;
-    >    fastcgi_param SCRIPT_FILENAME /srv/www/example.com/public_html$fastcgi_script_name;
+    >    fastcgi_param SCRIPT_FILENAME /var/www/html/example.com/public_html$fastcgi_script_name;
     >}
     >~~~
 
