@@ -8,8 +8,8 @@ keywords: 'custom distro,custom distribution,advanced Linux,kvm'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified_by:
   name: Alex Fornuto
-modified: 'Monday, July 20th 2015'
-title: Run a Custom Distro System on a KVM Linode
+modified: 'Wednesday, July 22th 2015'
+title: Run a Custom Distro on a KVM Linode
 ---
 
 This guide entails installing a custom Linux distribution on your KVM Linode. If you're currently running a Xen Linode, you can [upgrade](https://www.linode.com/docs/platform/kvm#how-to-enable-kvm), or follow our older guide on [Running a Custom Linux Distribution on a Linode](/docs/tools-reference/custom-kernels-distros/running-a-custom-linux-distro-on-a-linode-vps).
@@ -84,9 +84,9 @@ For this guide we'll be using Ubuntu as an example, but you're welcome to apply 
 
 1.  Back at your local machine, power down the virtual image:
 
-        sudo shutdown -h now
+        shutdown -h now
 
-2.  Repeat step 4 from the [Create the Virtual Machine](#create-the-virtual-machine) section to select the Finnix ISO
+2.  Go back to your virtual machine's storage settings and select the Finnix ISO
 
     [![Select the Finnix ISO.](/docs/assets/custom-distro-finnix.png)](/docs/assets/custom-distro-finnix.png)
 
