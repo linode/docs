@@ -210,6 +210,8 @@ WildFly 8.2 installation
  echo "Configuring service..."
  echo JBOSS_HOME=\"$WILDFLY_DIR\" > $WILDFLY_SERVICE_CONF
  echo JBOSS_USER=$WILDFLY_USER >> $WILDFLY_SERVICE_CONF
+ echo JBOSS_MODE=standalone >> $WILDFLY_SERVICE_CONF
+ echo JBOSS_CONFIG=standalone.xml >> $WILDFLY_SERVICE_CONF
  echo STARTUP_WAIT=$WILDFLY_STARTUP_TIMEOUT >> $WILDFLY_SERVICE_CONF
  echo SHUTDOWN_WAIT=$WILDFLY_SHUTDOWN_TIMEOUT >> $WILDFLY_SERVICE_CONF
  fi
@@ -246,7 +248,8 @@ WildFly 8.2 installation
 
  echo "Starting Wildfly"
  service $WILDFLY_SERVICE start
- systemctl enable $WILDFLY_SERVICE
+ chkconfig --add wildfly
+ chkconfig --level 2345 wildfly on
 
  echo "Done."
  ```
@@ -434,3 +437,6 @@ There are multiple ways for setting Apache HTTP to direct calls to WildFly (mod_
  16. Try the URL: http://LINODE_WILDFLY_IP/ it should show Apache normal testing page
  17. Try the URL: http://LINODE_WILDFLY_IP/sample it should show sample application deployed in JBoss
 
+References
+---------------
+[WildFly Administration Guide](https://books.google.com.sa/books?id=rufiBAAAQBAJ)
