@@ -57,10 +57,10 @@ To start and stop firewalld, use `systemctl` commands:
 
 Use `firewall-cmd` command to get status of the firewall. It returns 0 if it is running, any other value if not.
 
-    [root@mycentos7 ~]# firewall-cmd --state
+    firewall-cmd --state
     running
-    [root@mycentos7 ~]# systemctl stop firewalld  # stop firwalld
-    [root@mycentos7 ~]# firewall-cmd --state
+    systemctl stop firewalld  # stop firwalld
+    firewall-cmd --state
     not running
 
 
@@ -116,26 +116,26 @@ For most hosts with only one interface, you won’t have to worry with that and 
 
 To get the default zone use `--get-default-zone` command. All interface that are not explicitly set to a specific zone will be attached to the default zone:
 
-    [root@mycentos7 ~]# firewall-cmd --get-default-zone
+    firewall-cmd --get-default-zone
     public
 
 
 You can change the default zone with `--set-default-zone` command:
 
-    [root@mycentos7 ~]# firewall-cmd --set-default-zone=internal
+    firewall-cmd --set-default-zone=internal
     success
 
 
 To see the zones used by your interfaces, use `--get-active-zones` command:
 
-    [root@mycentos7 ~]# firewall-cmd --get-active-zones
+    firewall-cmd --get-active-zones
     public
       interfaces: ens160
 
 
 Use `--list-all` with the `--zone=XXX` flag to get all configuration for a given zone:
 
-    [root@mycentos7 ~]# firewall-cmd --zone=public --list-all
+    firewall-cmd --zone=public --list-all
     public (default, active)
       interfaces: ens160
       sources:
@@ -149,7 +149,7 @@ Use `--list-all` with the `--zone=XXX` flag to get all configuration for a given
 
 Or use `--list-all-zones` command to get all the configuration of all zones (output truncated in the example to show only two zones):
 
-    [root@mycentos7 ~]# firewall-cmd --list-all-zones
+    firewall-cmd --list-all-zones
     internal
       interfaces:
       sources:
@@ -185,13 +185,13 @@ You can allow standard services, like HTTP, FTP or any common service, with the 
 
 Get the list of all existing services with `--get-services` command:
 
-    [root@mycentos7 ~]# firewall-cmd --get-services
+    firewall-cmd --get-services
     amanda-client bacula bacula-client dhcp dhcpv6 dhcpv6-client dns ftp high-availability http https imaps ipp ipp-client ipsec kerberos kpasswd ldap ldaps libvirt libvirt-tls mdns mountd ms-wbt mysql nfs ntp openvpn pmcd pmproxy pmwebapi pmwebapis pop3s postgresql proxy-dhcp radius rpc-bind samba samba-client smtp ssh telnet tftp tftp-client transmission-client vnc-server wbem-https
 
 
 Firewalld use the XML configuration files to know what to open for a specific service. Look at them in **/usr/lib/firewalld/services** (or **/etc/firewalld/services** if you provide yours) to know what it will really do:
 
-    [root@mycentos7 ~]# cat /usr/lib/firewalld/services/ftp.xml
+    cat /usr/lib/firewalld/services/ftp.xml
     <?xml version="1.0" encoding="utf-8"?>
     <service>
       <short>FTP</short>
@@ -217,19 +217,19 @@ If you prefer using a port/protocol notation, or need to allow traffic on a non-
 You can forward traffic from a port to another, even on another server.
 To forward a port to another on the same server, use:
 
-    [root@mycentos7 ~]# firewall-cmd --zone="public" --add-forward-port=port=80:proto=tcp:toport=12345
+    firewall-cmd --zone="public" --add-forward-port=port=80:proto=tcp:toport=12345
 
 
 To forward to another server:
 
 1. Activate masquerade on the zone
 
-        [root@mycentos7 ~]# firewall-cmd --zone=public --add-masquerade
+        firewall-cmd --zone=public --add-masquerade
         success
 
 2. Add the forward rule:
 
-        [root@mycentos7 ~]# firewall-cmd --zone="public" --add-forward-port=port=80:proto=tcp:toport=8080:toaddr=10.1.52.80
+        firewall-cmd --zone="public" --add-forward-port=port=80:proto=tcp:toport=8080:toaddr=10.1.52.80
         success
 
 
@@ -239,25 +239,25 @@ Services and ports are fine for basic configuration, but may be too limiting for
 
 Use `--add-rich-rule`, `--list-rich-rules` and `--remove-rich-rule` with firewall-cmd command to manage them:
 
-    [root@mycentos7 ~]# firewall-cmd --zone=public --add-rich-rule 'rule family="ipv4" source address=192.168.0.14 accept'
+    firewall-cmd --zone=public --add-rich-rule 'rule family="ipv4" source address=192.168.0.14 accept'
 
 Here are some common examples.
 
 1. Allow all traffic from host 192.168.0.14:
 
-        rule family="ipv4" source address="192.168.2.2" accept
+        firewall-cmd --zone=public --add-rich-rule rule family="ipv4" source address="192.168.2.2" accept
 
 2. Deny TCP traffic from host 192/160.1.10 to port 22:
 
-        rule family="ipv4" source address="192.168.1.10" port port=22 protocol=tcp reject
+        firewall-cmd --zone=public --add-rich-rule rule family="ipv4" source address="192.168.1.10" port port=22 protocol=tcp reject
 
 3. Allow TCP traffic from host 10.1.0.3 to port 80, and forward it locally to  port 6532:
 
-        rule family=ipv4 source address=10.1.0.3 forward-port port=80 protocol=tcp to-port=6532
+        firewall-cmd --zone=public --add-rich-rule rule family=ipv4 source address=10.1.0.3 forward-port port=80 protocol=tcp to-port=6532
 
 4. Forward all traffic on port 80 to port 8080 on host 172.31.4.2 (masquerade should be active on the zone):
 
-        rule family=ipv4 forward-port port=80 protocol=tcp to-port=8080 to-addr=172.31.4.2
+        firewall-cmd --zone=public --add-rich-rule rule family=ipv4 forward-port port=80 protocol=tcp to-port=8080 to-addr=172.31.4.2
 
 
 # Direct interface
