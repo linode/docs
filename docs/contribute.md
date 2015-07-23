@@ -13,7 +13,7 @@ published: 'Wednesday, May 19th, 2010'
 title: Article Submissions
 ---
 
-Get published by Linode and get paid! Earn $100 per article if it's accepted for publication.
+Get published by Linode and get paid! Earn $250 per article if it's accepted for publication.
 
 We're expanding the Linode Guides & Tutorials, and we want you to help! If you like writing, teaching people how to use Linux, and money, we want to hear from you. The guidelines are below.
 
@@ -24,15 +24,14 @@ Submit your own topic, or choose from the list of open topics we want to add to 
 -   [OpenChange](http://www.openchange.org/)
 -   [WebRTC](http://www.webrtc.org/)
 -   Gaming Servers
--   [Puppet](http://puppetlabs.com/)
 -   [Ansible](http://www.ansible.com/home)
 
-Each article is worth $100 if it is accepted for publication. In addition, we always welcome edits, suggestions, and updates to existing guides.
+Each article is worth $250 if it is accepted for publication. In addition, we always welcome edits, suggestions, and updates to existing guides.
 
 
 ## How Much Money Will I Earn?
 
-We will pay you $100 per article that is accepted for publication in cash via PayPal, or as Linode credit. Note that submitting an article is not a guarantee of publication. After you submit it, we will let you know if your article has been accepted.
+We will pay you $250 per article that is accepted for publication in cash via PayPal, or as Linode credit. Note that submitting an article is not a guarantee of publication. After you submit it, we will let you know if your article has been accepted.
 
 ## Write Your Article
 
@@ -71,7 +70,7 @@ Once you've submitted your article, here's what you can expect:
 
 ## Completed Topics
 
-These authors got their articles published and $100. You could be next.
+These authors got their articles published and $250. You could be next.
 
 -   [Varnish Cache](/docs/websites/varnish/getting-started-with-varnish-cache) - Kevin Cupp
 -   [Pflogsumm](/docs/email/postfix/pflogsumm-for-postfix-monitoring-on-centos-6) - Robert Accettura
@@ -99,4 +98,4 @@ COPYRIGHT OWNERSHIP. Writer agrees that the Work is being created by the writer 
 
 CREDIT. Nothing contained in this Agreement shall be deeded to require Linode to use the Work, or any part thereof, in connection with the Digital Library or otherwise. Credit for the Work shall read "This is a Linode Community guide by author "writer's name"."
 
-PAYMENT. Upon publication of a submission to the Linode Guides and Tutorials Repository, the writer will be paid the sum of \$100.00 either in the form of a credit to their Linode account or as an electronic payment.
+PAYMENT. Upon publication of a submission to the Linode Guides and Tutorials Repository, the writer will be paid the sum of \$250.00 either in the form of a credit to their Linode account or as an electronic payment.

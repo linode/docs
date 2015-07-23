@@ -17,7 +17,7 @@ external_resources:
  - '[Wikipedia](http://en.wikipedia.org/wiki/SOCKS)'
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $100 per published guide.*
+*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
 
 Often you may need to browse the web from a public Wi-Fi access point, such as a coffee shop or library, where you do not know the security measures taken by the administrator. Your communications could be snooped on by a malicious user or even by the network owner.
 
