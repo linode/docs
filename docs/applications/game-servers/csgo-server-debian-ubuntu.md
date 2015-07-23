@@ -1,3 +1,19 @@
+---
+author:
+    name: Linode Community
+    email: docs@linode.com
+description: 'Install a Counter Strike: Global Offensive server on Ubuntu 14.04
+keywords: 'counter strike,counter strike global offensive,csgo,game servers,games,ubuntu, ubuntu 14.04,steam'
+license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+published: 'Thursday, July 23rd, 2015'
+modified: Thursday, July 23rd, 2015
+modified_by:
+    name: James Stewart
+title: 'Install a Counter Strike: Global Offensive server on Ubuntu 14.04
+contributor:
+    name: Sam Maudlin
+---
+
 # Counter Strike: Global Offensive Server on Ubuntu 14.04
 
 CS:GO is a FPS game by Valve. We'll install SteamCMD, download the dedicated server, then launch it.
@@ -88,7 +104,7 @@ rcon_password "<password>"
 9. Go back into the main CS:GO directory.
 
 ```
-cd ../../
+cd ~/Steam/csgoserver
 ```
 
 10. Launch a Dust 2 server on the competitive gamemode. Make sure to put your public ip where it says <public ip>.
