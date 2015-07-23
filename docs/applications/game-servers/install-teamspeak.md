@@ -5,14 +5,13 @@ author:
 description: 'Set up TeamSpeak on your Linode and chat with your friends or coworkers while gaming, working, or otherwise'
 keywords: 'teamspeak,virtual intercom,chat,game server'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-published: 'Monday, July 20th, 2015'
-modified: Monday, July 20th, 2015
+published: 'Thursday, July 23th, 2015'
+modified: Thursday, July 23th, 2015
 modified_by:
-    name: Alex Fornuto
+    name: Linode
 title: 'Install a TeamSpeak Server on Linode'
 contributor:
     name: Scott Somner
-    link: 
 external_resources:
  - '[TeamSpeak KB](https://support.teamspeakusa.com/index.php?/Knowledgebase/List/Index/10/english)'
  - '[Changing the serveradmin Password](https://support.teamspeakusa.com/index.php?/Knowledgebase/Article/View/326/0/how-do-i-change-or-reset-the-password-of-the-serveradmin-server-query-account)'
@@ -23,7 +22,9 @@ This guide will show you how to install a TeamSpeak Server on your Linode. TeamS
 ## Before You Begin
 
 * We suggest following the [Getting Started](/docs/getting-started) and [Securing Your Server]() guides.
+
 * Install the [TeamSpeak](http://www.teamspeak.com/) client on your local computer.
+
 * While Teamspeak should run on any Linux distribution, the instructions provided here are tested on Ubuntu / Debian.
 
 ## Install TeamSpeak
