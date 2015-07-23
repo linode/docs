@@ -73,7 +73,7 @@ For this guide we'll be using Ubuntu as an example, but you're welcome to apply 
 
     Click on **Save Changes** once your profile is complete.
 
-4.  Return to the Linode Dashboard, and select on the **Rescue** tab. From there, click the **Reboot into Rescue Mode** button. Your Linode will now boot into the Finnix recovery image. Use the [Lish](/docs/networking/using-the-linode-shell-lish) shell to access your Linode.
+4.  Return to the Linode Dashboard, and select the **Rescue** tab. From there, click the **Reboot into Rescue Mode** button. Your Linode will now boot into the Finnix recovery image. Use the [Lish](/docs/networking/using-the-linode-shell-lish) shell to access your Linode.
 
 5.  Run the following set of commands to create a root password and enable the SSH server:
 
@@ -125,8 +125,8 @@ For this guide we'll be using Ubuntu as an example, but you're welcome to apply 
         #
         # <file system> <mount point>   <type>  <options>       <dump>  <pass>
         proc        /proc        proc    defaults                       0 0
-        /dev/xvda   /            ext4    noatime,errors=remount-ro      0 1
-        /dev/xvdb   none         swap    sw
+        /dev/sda   /            ext4    noatime,errors=remount-ro      0 1
+        /dev/sdb   none         swap    sw
         ~~~
 
 4.  Unlink the `resolv.conf` file:
