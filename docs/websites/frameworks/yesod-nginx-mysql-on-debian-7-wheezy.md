@@ -19,7 +19,7 @@ external_resources:
  - '[Yesod Quick Start Guide](http://www.yesodweb.com/page/quickstart)'
 ---
 
-*This is a Linode Community guide by author Si-Qi Liu. [Write for us](/docs/contribute) and earn $100 per published guide.*
+*This is a Linode Community guide by author Si-Qi Liu. [Write for us](/docs/contribute) and earn $250 per published guide.*
 
 <hr>
 

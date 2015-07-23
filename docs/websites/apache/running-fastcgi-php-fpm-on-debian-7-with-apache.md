@@ -19,7 +19,7 @@ published: 'Monday, June 16, 2014'
 title: 'Running mod_fastcgi and PHP-FPM on Debian 7 (Wheezy) with Apache'
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $100 per published guide.*
+*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
 
 <hr>
 
