@@ -166,9 +166,9 @@ We will now configure Apache to pass all requests for PHP files, with the _php_ 
 
         sudo service apache2 restart
 
-If you did not get the _Syntax OK_ result, check your configuration for errors.
+    If you did not get the _Syntax OK_ result, check your configuration for errors.
 
-10.  Check if the PHP is working by creating and accessing a page with `phpinfo()` displayed. The following command will create info.php in /var/www (default directory for websites in Apache):
+10. Check if the PHP is working by creating and accessing a page with `phpinfo()` displayed. The following command will create info.php in /var/www (default directory for websites in Apache):
 
         sudo echo "<?php phpinfo(); ?>" > /var/www/info.php
 
