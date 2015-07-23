@@ -2,13 +2,13 @@
 author:
   name: Alex Fornuto
   email: docs@linode.com
-published: 
+published: 'Thursday, July 23rd, 2015'
 description: 'How to run a custom Linux distribution or pre-built Linux appliance on your KVM Linode.'
 keywords: 'custom distro,custom distribution,advanced Linux,kvm'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified_by:
   name: Alex Fornuto
-modified: 'Wednesday, July 22th 2015'
+modified: 'Thursday, July 23rd, 2015'
 title: Run a Custom Distro on a KVM Linode
 ---
 
