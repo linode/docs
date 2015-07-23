@@ -32,22 +32,22 @@ For this guide we'll be using Ubuntu as an example, but you're welcome to apply 
 
     [![The VirtualBox interface.](/docs/assets/1164-vbvm1-1.png)](/docs/assets/1164-vbvm1-1.png)
 
-2.  Name your new virtual machine **Ubuntu 15.04**. VirtualBox should recognize the name and assign the correct type and version:
+2.  Name your new virtual machine based on your selected distribution.  In this example the virtual machine is named **Ubuntu 15.04**. VirtualBox should recognize the name and assign the correct type and version:
 
     [![A new virtual machine.](/docs/assets/custom-distro-new-image.png)](/docs/assets/custom-distro-new-image.png)
 
-3.  Select the RAM and hard drive size for your virtual machine. Because we need to transfer the entire filesystem to the Linode, only make your hard drive as large as it needs to be. In this example we've set the virtual machine to 512MB RAM and 2048MB of disk space.
+3.  Select the RAM and hard drive size for your virtual machine. Because we need to transfer the entire filesystem to the Linode, make your disk image as small as possible. In this example we've set the virtual machine to 512MB RAM and 2048MB of disk space.
 
-4.  After you've created your new virtual machine, right-click on it and select **Settings**. From the **Storage** tab, click on the IDE disk device, which should currently say `Empty`. Click on the disk icon to the right, and select **Choose a virtual CD/DVD disk file**. Select the Ubuntu install ISO.
+4.  After you've created your new virtual machine, right-click on it and select **Settings**. From the **Storage** tab, select the IDE disk device, which should currently say `Empty`. Click on the disk icon to the right, and select **Choose a virtual CD/DVD disk file**. Select the Ubuntu install ISO.
 
     [![Assigning an ISO to the virtual machine..](/docs/assets/custom-distro-choose-iso_small.png)](/docs/assets/custom-distro-choose-iso.png)
 
-5.  Back at the main VirtualBox window, select your new virtual machine and click on **Start**. Install the operating system as you would on any physical machine. Take note of what device and partition you install your system to.
+5.  In the main VirtualBox window, select your new virtual machine and click on **Start**. Install the operating system as you would on any physical machine. Take note of what device and partition you install your system to.
 
     {: .caution }
     > Using disk encryption and/or LVM partition schemas will interfere with our Backups service, and may inhibit the ability to resize your Linode's disk images later. The same applies for file systems other than ext3/4.
 
-    It's important when selecting packages for installation that you select the OpenSSH server. Without this you will only be able to access your Linode through the [Lish](/docs/networking/using-the-linode-shell-lish) console.
+    Ensure that the OpenSSH package is selected during the installation process. Without this package you will only be able to access your Linode through the [Lish](/docs/networking/using-the-linode-shell-lish) console.
 
     [![Select the OpenSSH package..](/docs/assets/custom-distro-select-openssh_small.png)](/docs/assets/custom-distro-select-openssh.png)
 
@@ -64,7 +64,7 @@ For this guide we'll be using Ubuntu as an example, but you're welcome to apply 
 
     Repeat these steps for any additional disk images you wish to make, such as a swap disk.
 
-3.  Back at the Linode Dashboard, click on **Create a new Configuration Profile**. Assign a label, and select your disk images under **Block Device Assignment**. Remember this configuration, as you will need to modify your `/etc/fastab` file to match. If you choose a device assignment other than `/dev/sda` for root device, be sure to update the **root / boot device** drop-down menu:
+3.  Select the **Create a new Configuration Profile** option. Assign a label, and select your disk images under **Block Device Assignment**. Remember this configuration, as you will need to modify your `/etc/fstab` file to match. If you choose a device assignment other than `/dev/sda` for root device, be sure to update the **root / boot device** drop-down menu:
 
     [![A custom configuration profile..](/docs/assets/custom-distro-config-profile_small.png)](/docs/assets/custom-distro-config-profile.png)
 
@@ -73,7 +73,7 @@ For this guide we'll be using Ubuntu as an example, but you're welcome to apply 
 
     Click on **Save Changes** once your profile is complete.
 
-4.  Back at the Linode Dashboard, click on the **Rescue** tab. From there, click the **Reboot into Rescue Mode** button. Your Linode will now boot into the Finnix recovery image. Use the [Lish](/docs/networking/using-the-linode-shell-lish) shell to access your Linode.
+4.  Return to the Linode Dashboard, and select on the **Rescue** tab. From there, click the **Reboot into Rescue Mode** button. Your Linode will now boot into the Finnix recovery image. Use the [Lish](/docs/networking/using-the-linode-shell-lish) shell to access your Linode.
 
 5.  Run the following set of commands to create a root password and enable the SSH server:
 
@@ -82,11 +82,11 @@ For this guide we'll be using Ubuntu as an example, but you're welcome to apply 
 
 ## Copy the Disk Image
 
-1.  Back at your local machine, power down the virtual image:
+1.  Power down your local virtual machine, either via the VirtualBox interface, or by issuing the following command at the virtual machine's terminal:
 
         shutdown -h now
 
-2.  Go back to your virtual machine's storage settings and select the Finnix ISO
+2.  Return to your virtual machine's storage settings and attach the Finnix ISO
 
     [![Select the Finnix ISO.](/docs/assets/custom-distro-finnix.png)](/docs/assets/custom-distro-finnix.png)
 
@@ -99,7 +99,7 @@ For this guide we'll be using Ubuntu as an example, but you're welcome to apply 
 
         dd if=/dev/sda1 | pv | ssh root@12.34.56.78 "dd of=/dev/sda"
 
-    By piping our `dd` command through `pv`, we can track the progress of the transfer and ensure that it isn't stalled. Since `dd` will transfer the entire partition including empty space, this process will take some time.
+    By piping our `dd` command through `pv`, we can track the progress of the transfer. The `dd` command will transfer the entire partition including empty space, this process will take some time.
 
 
 ## Configure the transferred image.
