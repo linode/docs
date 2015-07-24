@@ -28,15 +28,40 @@ By default, Logwatch uses Sendmail to send digests.
 
 		pacman -Syu
 
-2.	Install Logwatch and msmtp, an SMTP client with Sendmail compatibility:
+2.	Install Logwatch and Postfix, to replace the default Sendmail, which is not in Arch's repositories.
 
-		pacman -S logwatch msmtp msmtp-mta
+		pacman -S logwatch postfix
 
 	Logwatch will prompt you to select which cron provider to use. Select the default, *cronie*.
 
 	{: .note}
 	>
-	>Other SMTP clients, such as Postfix, can also be used for delivering Logwatch messages.
+	>Other SMTP clients, can also be used for delivering Logwatch messages.
+
+3.	Edit the `/etc/postfix/main.cf` file to add your domain information, and allow for send-only mail, replacing `hostname.example.com` with your own hostname and domain:
+
+	{: .file-excerpt}
+	/etc/postfix/main.cf
+	:	~~~ conf
+		myhostname = hostname.example.com
+		inet_interfaces = loopback-only
+		~~~
+
+	{: .note}
+	>
+	>Both A/AAAA, and MX records will need to be set for your domain.
+
+4.	Edit `/etc/postfix/aliases` to uncomment `root` and alias it to `root@hostname.example.com`, replacing `hostname.example.com` with your own hostname and domain:
+
+	{: .file-excerpt}
+	/etc/postfix/aliases
+	:	~~~ conf
+		root:           root@hostname.example.com
+		~~~
+
+5.	Start postfix:
+
+		systemctl start postfix
 
 ### CentOS 7
 
