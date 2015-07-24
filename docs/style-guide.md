@@ -165,17 +165,19 @@ For example:
         </IfModule>
         ~~~
 
->{: .file}
->/path/to/file
->:  ~~~ conf
->   <IfModule mpm_prefork_module>
->      StartServers     2
->      MinSpareServers  6
->      MaxSpareServers  12
->      MaxClients       80
->      MaxRequestsPerChild  3000
->   </IfModule>
->   ~~~
+{: .file}
+/path/to/file
+:  ~~~ conf
+   <IfModule mpm_prefork_module>
+      StartServers     2
+      MinSpareServers  6
+      MaxSpareServers  12
+      MaxClients       80
+      MaxRequestsPerChild  3000
+   </IfModule>
+   ~~~
+
+File Excerpt:
 
     {: .file-excerpt}
     /path/to/file
@@ -185,13 +187,13 @@ For example:
         max_input_time = 30
         ~~~
 
->{: .file-excerpt}
->/path/to/file
->:  ~~~ ini
->   error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
->   error_log = /var/log/php/error.log
->   max_input_time = 30
->   ~~~
+{: .file-excerpt}
+/path/to/file
+:  ~~~ ini
+   error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
+   error_log = /var/log/php/error.log
+   max_input_time = 30
+   ~~~
 
 #### File Paths
 
