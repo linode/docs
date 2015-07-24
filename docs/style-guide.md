@@ -122,7 +122,7 @@ For example:
 
 >Update your system:
 >
->   yum update
+>     yum update
 
 Commands that are inline should be denoted by backtics (**`**):
 
