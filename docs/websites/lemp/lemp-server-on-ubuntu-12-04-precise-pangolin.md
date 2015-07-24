@@ -13,7 +13,7 @@ published: 'Tuesday, October 9th, 2012'
 title: 'LEMP Server on Ubuntu 12.04 (Precise Pangolin)'
 external_resources:
  - '[Basic nginx Configuration](/docs/websites/nginx/basic-nginx-configuration)'
- - '[Clustered Web Servers and Software Load Balancing with nginx](/docs/uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing)'
+ - '[Clustered Web Servers and Software Load Balancing with nginx](//docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer)'
  - '[Deploy CGI and Perl Scripts with Perl-FastCGI and nginx](/docs/web-servers/nginx/perl-fastcgi/ubuntu-10.04-lucid)'
  - '[Use PostgeSQL as an Alternative to MySQL for data storage](/docs/databases/postgresql/ubuntu-10.04-lucid)'
  - '[Deploy Python Applications with uWSGI and nginx](/docs/web-servers/nginx/python-uwsgi/ubuntu-10.04-lucid)'

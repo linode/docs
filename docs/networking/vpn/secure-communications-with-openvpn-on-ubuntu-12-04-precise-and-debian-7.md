@@ -233,7 +233,7 @@ If you use OS X on a Mac, we have found that the [Tunnelblick](http://code.googl
 
 Here we will go through installing Tunneblick on OSX:
 
-1.  To download the latest version of Tunnelblick, [click here](https://code.google.com/p/tunnelblick/wiki/DownloadsEntry#Tunnelblick_Stable_Release). After opening the dmg file you can drag it into applications or open it immediately and it will copy itself.
+1.  To download the latest version of Tunnelblick, [click here](https://tunnelblick.net/downloads.html#Tunnelblick_Stable_Release). After opening the dmg file you can drag it into applications or open it immediately and it will copy itself.
 2.  After starting, you will see this splash screen:
 
     [![Splash screen for TunnelBlick.](/docs/assets/1346-tunnelblick2)](/docs/assets/1346-tunnelblick2)
