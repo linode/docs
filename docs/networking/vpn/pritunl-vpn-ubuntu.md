@@ -15,6 +15,11 @@ contributor:
     link: https://github.com/agottschling
 ---
 
+*This is a Linode Community guide. [Write for us](/docs/contribute) and
+earn $250 per published guide.*
+
+<hr>
+
 Pritunl is an open source VPN server and management panel. It gives the user the power of the OpenVPN protocol while using an intuitive web interface. This tutorial will show you how to install, configure, and connect to Pritunl VPN.
 
 {: .note }
