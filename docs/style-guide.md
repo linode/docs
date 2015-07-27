@@ -17,11 +17,11 @@ Interested in contributing to Linode's documenation? Great! Submitted articles s
 
 ## Content
 
-Guides should primarily be instruction on how to accomplish a task on or relating to a Linode or Linodes. When writing a guide think of both *what* the guide should accomplish and *why* the reader would want to use your guide. A guide should be 90% instruction with 10% explanation. Avoid going unnecessarily in-depth; short, to-the-point explainations are perfered.
+Guides should primarily be instruction on how to accomplish a task on or relating to a Linode or Linodes. When writing a guide think of both *what* the guide should accomplish and *why* the reader would want to use your guide. A guide should be 90% instruction with 10% explanation. Avoid going unnecessarily in-depth; short, to-the-point explanations are preferred.
 
 When writing a guide consider the audience and the level of technical ability needed to complete each task. A guide for beginner's will take a certain amount more of hand-holding than a guide for an advenced user.
 
-All guides should be straightfoward, technically accurate, and thoroughly tested. Considerations for security and best practices should also be considered.
+All guides should be straightfoward, technically accurate, and thoroughly tested. Considerations for security and best practices should also be made.
 
 
 ### Tone
@@ -35,7 +35,7 @@ Guides can use technical jargon related to Linode, Linux, and other related tech
 
 Guides should be written in [PHP Markdown Extra](https://michelf.ca/projects/php-markdown/extra/), with additional Linode-specific markdown noted below.
 
-Guides should be split into conhesive sections for ease-of-reading, and so the reader has a sense of what will be done in the guide while scanning the contents. Each section title should be styled with an **H2** tag, and each subsection with an **H3** tag. Each section/subsection should be split into numbered steps.
+Guides should be split into cohesive sections for ease-of-reading, and so the reader has a sense of what will be done in the guide while scanning the contents. Each section title should be styled with an **H2** tag, and each subsection with an **H3** tag. Each section/subsection should be split into numbered steps.
 
 For example:
 
@@ -149,7 +149,7 @@ This will appear as a text block with links at the bottom of the page:
 
 #### Files and File Excerpts
 
-When adding the content of a whole file to the document use the file format. If only a part of the file is being shown, use the file excerpt format. Exceptionally long files should be shown in parts and the whole file linked, if needed. Within the file formatting, next to the `:   ~~~` line a code language can be defined to set how the text is displayed.
+When adding the content of a whole file to the document use the *file* format. If only a part of the file is being shown, use the *file excerpt* format. Exceptionally long files should be shown in parts and the whole file linked, if needed. Within the file formatting, next to the `:   ~~~` line a code language can be defined to set how the text is displayed.
 
 For example:
 
