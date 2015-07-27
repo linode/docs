@@ -77,15 +77,23 @@ By default, Logwatch uses Sendmail to send digests.
 
 		systemctl start sendmail
 
-### Debian & Ubuntu
+### Debian
 
 1.	Update your system:
 
 		apt-get update && apt-get upgrade
 
-2.	Install Logwatch:
+2.	Install Logwatch and Sendmail:
 
-		apt-get install logwatch
+		apt-get install logwatch sendmail-bin sendmail
+
+3.	For Sendmail to work successfully, add your private IP (found on the **Remote Access** page of the Linode Manager) to your `/etc/hosts` file:
+
+	{: .file-excerpt}
+	/etc/hosts
+	:	~~~ conf
+		123.45.67.89 	localhost
+		~~~
 
 ### Fedora
 
@@ -101,12 +109,26 @@ By default, Logwatch uses Sendmail to send digests.
 
 		systemctl start sendmail
 
+### Ubuntu
+
+1.	Update your system:
+
+		apt-get update && apt-get upgrade
+
+2.	Install Logwatch and Sendmail:
+
+		apt-get install logwatch sendmail
+
 
 ## Configure Logwatch
 
 The default configuration file for Logwatch is located at `/usr/share/logwatch/default.conf/logwatch.conf`. This file contains information on which directories for Logwatch to track, how the digest is output, where the digest is sent to, and which services of which to keep track.
 
 The following settings are the most comment configuration changes that will need to be made. Others can be found in the `logwatch.conf` file, explained in the comments.
+
+{: .note}
+>
+>If Logwatch initially does not appear to run, within the `logwatch.conf` file, change the `Details` setting to `Med`.
 
 ### Log Directories
 
