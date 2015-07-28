@@ -2,7 +2,7 @@
 
 What's your definition of easy? And what about fast? Well, no matter what answer you have, Ansible can accomplish that! Sounds a little bit arrogant no?, but at the end of this paper I could bet that it accomplishes those goals.
 
-For those who don't know about Ansible, it's one of the most simple and efficient Configuration Manager tool. The short learning curve and the _almost_ non-dependencies on the server-side are the most attractive characteristics of Ansible. Actually, two to four hours of reading the direct and detailed [documentation](http://docs.ansible.com/ansible/index.html) and you're ready to play with your servers!
+For those who don't know about Ansible, it's one of the most simple and efficient Configuration Manager tool. The short learning curve and the _almost_ non-dependencies on the server-side are the most attractive characteristics of Ansible. Actually, two to four hours of reading the direct and detailed [documentation](http://docs.ansible.com/ansible/index.html) and you're ready to play with your servers.
 
 In this guide we will learn how to install Ansible on your desktop, write a _playbook_ that deploys a Linux, Apache, MySQL and PHP stack application and implement some security best-practises on MySQL service. The majority of Linux distributions have an Ansible package on theirs repository, so you can call your specific package manager to procedure with the installation on your desktop. In this guide, we will consider that you're playing from a Debian desktop.
 
