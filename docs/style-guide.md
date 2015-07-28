@@ -17,22 +17,22 @@ Interested in contributing to Linode's documentation? Great! Submitted articles 
 
 ## Content
 
-Guides should primarily be instruction on how to accomplish a task on or relating to a Linode or Linodes. When writing a guide think of both *what* the guide should accomplish and *why* the reader would want to use your guide. A guide should be 90% instruction with 10% explanation. Avoid going unnecessarily in-depth; short, to-the-point explanations are preferred.
+Guides should primarily be instruction on how to accomplish a task on or relating to a Linode or Linodes. When writing a guide think of both *what* the guide should accomplish and *why* the reader would want to use your guide. A guide should be 90% instruction with 10% explanation. Avoid unnecessarily in-depth details; short, to-the-point explanations are preferred.
 
-When writing a guide consider the audience and the level of technical ability needed to complete each task. A guide for a beginner's topic will take a certain amount more of explanation than a guide for an advanced user.
+When writing a guide, consider the audience and the level of technical ability needed to complete each task. A guide for a beginner's topic will require more detailed explanation than a guide for an advanced user.
 
 All guides should be straightforward, technically accurate, and thoroughly tested. Considerations for security and best practices should also be made.
 
 
 ### Tone
 
-Guides should be informational, but friendly.  Use the active voice whenever possible, and contractions and pronouns are acceptable (in particular, the use of *you* in regards to the reader).
+Guides should be informational, but friendly. Use the active voice whenever possible, and contractions and pronouns are acceptable (in particular, the use of *you* in regards to the reader).
 
-Guides can use technical jargon related to Linode, Linux, and other related tech. Use common sense -- if the jargon is related to a high-level concept that fewer people would know, then take a sentence or two to explain it.
+Guides can use technical jargon related to Linode, Linux, and other related tech. Use common sense -- if a term is related to a high-level concept that fewer people would know, then take a sentence or two to explain it.
 
 ### Don't Duplicate Information
 
-Because open-source software is always being updated, these guides are always being updated to keep up. By avoiding duplicate information, we reduce the amount of information that can become outdated. 
+Because open-source software is always being updated, our guides are constantly reviewed to ensure accuracy. By avoiding duplicate information, we reduce the amount of instructions that can become outdated. 
 
 For example, if your guide requires a system with a properly configured `hosts` file and a working LAMP stack, you can link to the [Getting Started](/docs/getting-started) and [LAMP](/docs/websites/lamp) guides instead of repeating the information.
 
@@ -60,7 +60,7 @@ For example:
     
     1. Open `apache2.conf`.
 
-Please note that the tab size is set to four, and soft tabs should be used. This can be set in most text editors.
+Please note that the tab size is set to four, and soft tabs should be used. This can be configured in the settings of most text editors.
 
 ### Header
 
@@ -103,7 +103,7 @@ Italicize new terms and concepts the first time they are used.
 
 #### Cautions
 
-Should any step in your guide cause any major issues with the user's Linode or computer, a caution note regarding the issue should be included.
+If any step in your guide can cause any major issues with the user's Linode or computer, a caution note regarding the issue should be included.
 
 For example:
 
@@ -154,7 +154,7 @@ This will appear as a text block with links at the bottom of the page:
 
 #### Files and File Excerpts
 
-When adding the content of a whole file to the document use the *file* format. If only a part of the file is being shown, use the *file excerpt* format. Exceptionally long files should be shown in parts and have the whole file linked, if needed. Within the file formatting, next to the `:   ~~~` line a code language or syntax can be defined to set how the text is displayed. A list of all available languages and examples can be found [here](http://rouge.jayferd.us/demo).
+When adding the content of a whole file to the document use the *file* format. If only a part of the file is being shown, use the *file excerpt* format. Exceptionally long files should be shown in parts and have the whole file linked, if needed. Within the file formatting, a code language or syntax can be defined next to the `:   ~~~` line to set how the text is displayed. A list of all available languages and examples can be found [here](http://rouge.jayferd.us/demo).
 
 For example:
 
@@ -222,7 +222,7 @@ Otherwise:
 
 #### Images
 
-Images should be kept under 650 pixels in width. If larger, a thumbnail of the appropriate size should be created, and the full-sized image linked. When adding an image ensure that all identifying attributes such as names and IP addresses are removed, obfuscated, or replaced with dummy text (such as **user** or **123.45.67.89**).
+Images should be kept under 650 pixels in width. If your attached images are larger, a thumbnail of appropriate size should be created, and the full-sized image linked. When adding an image ensure that all identifying attributes such as names and IP addresses are removed, obfuscated, or replaced with dummy text (such as **user** or **123.45.67.89**).
 
 To insert an image 650 pixels in width or smaller:
 
