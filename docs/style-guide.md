@@ -12,24 +12,29 @@ published: 'Wednesday, January 15th, 2014'
 title: Style Guide
 ---
 
-Interested in contributing to Linode's documenation? Great! Submitted articles should match the style of existing Linode Guides & Tutorials documents. Before you proceed, please review the following guidelines:
+Interested in contributing to Linode's documentation? Great! Submitted articles should match the style of existing Linode Guides & Tutorials documents. Before you proceed, please review the following guidelines. If you have any questions after reading, please email contribute@linode.com.
 
 
 ## Content
 
 Guides should primarily be instruction on how to accomplish a task on or relating to a Linode or Linodes. When writing a guide think of both *what* the guide should accomplish and *why* the reader would want to use your guide. A guide should be 90% instruction with 10% explanation. Avoid going unnecessarily in-depth; short, to-the-point explanations are preferred.
 
-When writing a guide consider the audience and the level of technical ability needed to complete each task. A guide for beginner's will take a certain amount more of hand-holding than a guide for an advenced user.
+When writing a guide consider the audience and the level of technical ability needed to complete each task. A guide for a beginner's topic will take a certain amount more of explanation than a guide for an advanced user.
 
-All guides should be straightfoward, technically accurate, and thoroughly tested. Considerations for security and best practices should also be made.
+All guides should be straightforward, technically accurate, and thoroughly tested. Considerations for security and best practices should also be made.
 
 
 ### Tone
 
 Guides should be informational, but friendly.  Use the active voice whenever possible, and contractions and pronouns are acceptable (in particular, the use of *you* in regards to the reader).
 
-Guides can use technical jargon related to Linode, Linux, and other related tech. Use common sense -- if the jargon is related to a high-level concept that fewer people would know, then use a sentence or two to explain it.
+Guides can use technical jargon related to Linode, Linux, and other related tech. Use common sense -- if the jargon is related to a high-level concept that fewer people would know, then take a sentence or two to explain it.
 
+### Don't Duplicate Information
+
+Because open-source software is always being updated, these guides are always being updated to keep up. By avoiding duplicate information, we reduce the amount of information that can become outdated. 
+
+For example, if your guide requires a system with a properly configured `hosts` file and a working LAMP stack, you can link to the [Getting Started](/docs/getting-started) and [LAMP](/docs/websites/lamp) guides instead of repeating the information.
 
 ## Format
 
@@ -55,7 +60,7 @@ For example:
     
     1. Open `apache2.conf`.
 
-Please note that the tab size is set to four, and soft tabs should be used. This can be set in most writing programs.
+Please note that the tab size is set to four, and soft tabs should be used. This can be set in most text editors.
 
 ### Header
 
@@ -69,7 +74,7 @@ Bounty Document
         name: Linode Community
         email: docs@linode.com
     description: 'One-sentence article descriptions'
-    keywords: 'list,of,keywords'
+    keywords: 'list,of,keywords,and key phrases'
     license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
     published: 'Weekday, Month 00th, 2015'
     modified: Weekday, Month 00th, 2015
@@ -86,7 +91,7 @@ Bounty Document
 
 #### Abbreviations and Acronyms
 
-Upon first mention in the doc, use the full name/term, then note the abbreviation or acronym in parenthesis beside it. The abbreviation/acronym can then be used in the article from that point.
+Upon first mention in the doc, use the full name/term for a new concept or software, then note the abbreviation or acronym in parenthesis beside it. The abbreviation/acronym can then be used in the article from that point.
 
 **Example:** Lightweight Resource/Provider (LWRP)
 
@@ -98,7 +103,7 @@ Italicize new terms and concepts the first time they are used.
 
 #### Cautions
 
-Should any step in your guide cause any major issues with the user's Linode or computer if performed wrong, a caution note regarding the issue should be included.
+Should any step in your guide cause any major issues with the user's Linode or computer, a caution note regarding the issue should be included.
 
 For example:
 
@@ -112,7 +117,7 @@ For example:
 
 #### Commands
 
-Commands that are not part of a sentence should be tabbed in one tab from the beginning of the copy.
+Commands that are not inline should be indented one tab from the beginning of the copy.
 
 For example:
 
@@ -132,7 +137,7 @@ Commands that are inline should be denoted by backtics (**`**):
 
 #### External Resources/More Information
 
-If you wish to provide links to external resources for the user to review after going through the guide, do so by adding the following lines to the **header**:
+If you wish to provide links to external resources for the user to review after going through the guide, do so by adding the following lines to the [**header**](#header):
 
     external_resources:
      - '[Link Title 1](http://www.example.com)'
@@ -149,7 +154,7 @@ This will appear as a text block with links at the bottom of the page:
 
 #### Files and File Excerpts
 
-When adding the content of a whole file to the document use the *file* format. If only a part of the file is being shown, use the *file excerpt* format. Exceptionally long files should be shown in parts and the whole file linked, if needed. Within the file formatting, next to the `:   ~~~` line a code language can be defined to set how the text is displayed.
+When adding the content of a whole file to the document use the *file* format. If only a part of the file is being shown, use the *file excerpt* format. Exceptionally long files should be shown in parts and have the whole file linked, if needed. Within the file formatting, next to the `:   ~~~` line a code language or syntax can be defined to set how the text is displayed. A list of all available languages and examples can be found [here](http://rouge.jayferd.us/demo).
 
 For example:
 
@@ -205,9 +210,19 @@ For example:
 
 >Navigate to `/var/www/html`.
 
+#### Links
+
+Links to other guides within the site should be relative, starting at `/docs/`:
+
+    [Getting Started](/docs/getting-started)
+
+Otherwise:
+
+    [Apache's Documentation](http://httpd.apache.org/docs/)
+
 #### Images
 
-Images should be kept under 650 pixels in width. If larger, a thumbnail of the appropriate size should be created, and the full-sized image linked. When adding an image ensure that all identifying attributes such as names and IP addresses are removed or replaced with dummy text (such as **user** or **123.45.67.89**).
+Images should be kept under 650 pixels in width. If larger, a thumbnail of the appropriate size should be created, and the full-sized image linked. When adding an image ensure that all identifying attributes such as names and IP addresses are removed, obfuscated, or replaced with dummy text (such as **user** or **123.45.67.89**).
 
 To insert an image 650 pixels in width or smaller:
 
@@ -246,7 +261,7 @@ Notes should be important text that does not necessarily fit the narrative of th
 
 #### Root vs. Non-root Users
 
-Unless circumstances call for otherwise, guides should not be written for the root user.
+Unless circumstances dictate otherwise, guides should not be written for the root user.
 
 When writing a guide for a non-root user include the following in your introduction:
 
@@ -260,6 +275,8 @@ When writing a guide as root include the following in your introduction:
     >
     >The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
+All guides should include one of these two notes, after the introduction.
+
 #### Variables
 
 Variables that need to be changed should be noted in-text and unformatted (using backtics (**`**).
@@ -269,3 +286,5 @@ For example:
     Change the `password` and `username` values.
 
 >Change the `password` and `username` values.
+
+Do not include any brackets or parenthesis when using these temporary values in examples, as the reader may include them in their final version.
