@@ -1,90 +1,290 @@
 ---
-deprecated: false
 author:
   name: Linode
   email: docs@linode.com
-description: 'The Linode Library style guide.'
+description: 'The Linode Guides & Tutorials style guide for article submissions'
 keywords: 'style guide, write for us, linode library, article submissions'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Thursday, August 25th, 2014
+modified: Wednesday, July 29th, 2015
 modified_by:
-  name: Alex Fornuto
+  name: Elle Krout
 published: 'Wednesday, January 15th, 2014'
 title: Style Guide
 ---
 
-So you're interested in writing for us — great! New articles need to match the style and tone of existing Linode Library guides. Before you put keyboard to cursor, take a look at these guidelines.
+Interested in contributing to Linode's documentation? Great! Submitted articles should match the style of existing Linode Guides & Tutorials documents. Before you proceed, please review the following guidelines. If you have any questions after reading, please email contribute@linode.com.
+
 
 ## Content
 
-The introduction for your guide should focus on two things:
+Guides should primarily be instruction on how to accomplish a task on or relating to a Linode or Linodes. When writing a guide think of both *what* the guide should accomplish and *why* the reader would want to use your guide. A guide should be 90% instruction with 10% explanation. Avoid unnecessarily in-depth details; short, to-the-point explanations are preferred.
 
--   What your reader will accomplish if they follow it
--   Why they would want to
+When writing a guide, consider the audience and the level of technical ability needed to complete each task. A guide for a beginner's topic will require more detailed explanation than a guide for an advanced user.
 
-Example use case scenarios are great introductory material. Here's an example of an article with a [great introduction](/docs/rescue-and-rebuild).
-
-After the introduction, your guide should be 90% instruction and 10% explanation. Jump into the nitty-gritty, and provide just enough "Hmm, what's this?" for people who aren't familiar with the technology. If you want to, you can add an **About Technology X** section that goes into more theory and background, but the majority of the article should be free from geeky rambling.
-
-Aim for an appropriate level of technical difficulty. For example, an article about mail clients should be beginner-friendly, while an article about load-balancing across multiple servers can assume more sysadmin experience. Still, even in a more advanced article, don't skimp on the instructions. You can always link to a different article for those who need it, so you don't end up on a rabbit trail away from your main topic.
-
-Instructions should be straightforward, technically accurate, and thoroughly tested. Skip shortcuts and err on the side of clarity, security, and best practices.
-
-## Tone
-
-The tone we use in the Library is friendly and informational — the kind of tone you would use to explain something to a friend, while still getting down to business. A little informality is encouraged, but make sure you use proper spelling and grammar. Here's an example of an article with a [beginner-friendly tone](/docs/migrate-from-shared). Here's an example of an article written for [an advanced audience](/docs/email/postfix/email-with-postfix-dovecot-and-mysql).
-
-Use short, direct sentences, especially when you're writing a single step in a set of instructions.
-
-Be concise.
-
-## Formatting
-
-First, a few housekeeping points about file types:
-
--   Use [PHP Markdown Extra](https://michelf.ca/projects/php-markdown/extra/) or plain text formatting
--   Submit your final article as a Markdown file (**.md**) or plain text file (**.txt**)
-
-Section titles should provide an at-a-glance outline of the article. Just by reading the table of contents, a reader should be able to grasp all the topics in the article, and click to jump to the most relevant section. If you use subsections, make sure you have at least two titles that belong in the lower level. Create section titles like this:
-
-    # Section 1 
-
-    Some text.
-
-    ## Subsection 1 
+All guides should be straightforward, technically accurate, and thoroughly tested. Considerations for security and best practices should also be made.
 
 
-    More text.
+### Tone
 
-    ## Subsection 2 
+Guides should be informational, but friendly. Use the active voice whenever possible, and contractions and pronouns are acceptable (in particular, the use of *you* in regards to the reader).
 
-    Final text.
+Guides can use technical jargon related to Linode, Linux, and other related tech. Use common sense -- if a term is related to a high-level concept that fewer people would know, then take a sentence or two to explain it.
 
-When you provide step-by-step instructions, list them as numbered steps. Each task, even small ones, should get its own number.
+### Don't Duplicate Information
 
-    1. First step.
-    2. Second step.
-    3. Third step.
+Because open-source software is always being updated, our guides are constantly reviewed to ensure accuracy. By avoiding duplicate information, we reduce the amount of instructions that can become outdated. 
 
-Use **bold** text for the names of links, buttons, variables, and other text you point out to the user. Use *italic* text to introduce new terms. Use `inline code blocks` for code samples.
+For example, if your guide requires a system with a properly configured `hosts` file and a working LAMP stack, you can link to the [Getting Started](/docs/getting-started) and [LAMP](/docs/websites/lamp) guides instead of repeating the information.
 
-    **bold**
-    *italic*
-    `unformatted`
+## Format
 
-If you're writing about software with a GUI (graphical user interface), please include images (**.png** or **.jpg**). The maximum width for an image is 650 pixels. If you have a larger image, send the original and the resized version. The text for including an image is as follows:
+Guides should be written in [PHP Markdown Extra](https://michelf.ca/projects/php-markdown/extra/), with additional Linode-specific markdown noted below.
 
-    [![Image description](/docs/assets/image-resized.png)](/docs/assets/image.png)
+Guides should be split into cohesive sections for ease-of-reading, and so the reader has a sense of what will be done in the guide while scanning the contents. Each section title should be styled with an **H2** tag, and each subsection with an **H3** tag. Each section/subsection should be split into numbered steps.
 
+For example:
 
-If you reference outside materials, provide a link:
+    ## Install and Configure Apache
+    
+    1. Ensure your system is up-to-date.
+    
+    2. Download Apache:
+    
+        apt-get install apache2
+    
+    3. Start Apache services:
+    
+        system apache2 start
+    
+    ### Configure Your MPM
+    
+    1. Open `apache2.conf`.
 
-    [link text](http://example.com)
+Please note that the tab size is set to four, and soft tabs should be used. This can be configured in the settings of most text editors.
 
-You can find more formatting instructions and detailed examples on the [PHP Markdown Extra](https://michelf.ca/projects/php-markdown/extra/) website, but the tips above should be enough to get you started!
+### Header
 
-## Topic List and Submission Instructions
+Linode Guides and Tutorials uses the same style of header for all guides to store metadata and other information. Use the following as an outline for your own guide:
 
-Send article submissions to <contribute@linode.com> or create a pull request on [GitHub](https://github.com/linode/docs). For more instructions, and to see a topic list, please visit the [Article Submissions](/docs/contribute) guide.
+{: .file-excerpt}
+Bounty Document
+:   ~~~
+    ---
+    author:
+        name: Linode Community
+        email: docs@linode.com
+    description: 'One-sentence article descriptions'
+    keywords: 'list,of,keywords,and key phrases'
+    license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+    published: 'Weekday, Month 00th, 2015'
+    modified: Weekday, Month 00th, 2015
+    modified_by:
+        name: Linode
+    title: 'Guide Title'
+    contributor:
+        name: Your Name
+        link: Github/Twitter Link
+    ---
+    ~~~
 
-Thanks for writing for us! We hope to hear from you soon.
+### Additional Formatting
+
+#### Abbreviations and Acronyms
+
+Upon first mention in the doc, use the full name/term for a new concept or software, then note the abbreviation or acronym in parenthesis beside it. The abbreviation/acronym can then be used in the article from that point.
+
+**Example:** Lightweight Resource/Provider (LWRP)
+
+#### Bold and Italics
+
+Bold important terms and words that require emphasis, buttons, and anything that would assist the reader if it were to stand out.
+
+Italicize new terms and concepts the first time they are used.
+
+#### Cautions
+
+If any step in your guide can cause any major issues with the user's Linode or computer, a caution note regarding the issue should be included.
+
+For example:
+
+    {: .caution}
+    >
+    >If improperly configured your Linode will not reboot.
+
+{: .caution}
+>
+>If improperly configured your Linode will not reboot.
+
+#### Commands
+
+Commands that are not inline should be indented one tab from the beginning of the copy.
+
+For example:
+
+    Update your system:
+
+        yum update
+
+>Update your system:
+>
+>     yum update
+
+Commands that are inline should be denoted by backtics (**`**):
+
+    Update your system by running `yum update`.
+
+>Update your system by running `yum update`.
+
+#### External Resources/More Information
+
+If you wish to provide links to external resources for the user to review after going through the guide, do so by adding the following lines to the [**header**](#header):
+
+    external_resources:
+     - '[Link Title 1](http://www.example.com)'
+     - '[Link Title 2](http://www.example.net)'
+
+This will appear as a text block with links at the bottom of the page:
+
+>More Information
+>
+>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
+>
+>- [Link Title 1](http://www.example.com)
+>- [Link Title 2](http://www.example.net)
+
+#### Files and File Excerpts
+
+When adding the content of a whole file to the document use the *file* format. If only a part of the file is being shown, use the *file excerpt* format. Exceptionally long files should be shown in parts and have the whole file linked, if needed. Within the file formatting, a code language or syntax can be defined next to the `:   ~~~` line to set how the text is displayed. A list of all available languages and examples can be found [here](http://rouge.jayferd.us/demo).
+
+For example:
+
+    {: .file}
+    /path/to/file
+    :   ~~~ conf
+        <IfModule mpm_prefork_module>
+            StartServers        2
+            MinSpareServers     6
+            MaxSpareServers     12
+            MaxClients      80
+            MaxRequestsPerChild     3000
+        </IfModule>
+        ~~~
+
+{: .file}
+/path/to/file
+:  ~~~ conf
+   <IfModule mpm_prefork_module>
+      StartServers     2
+      MinSpareServers  6
+      MaxSpareServers  12
+      MaxClients       80
+      MaxRequestsPerChild  3000
+   </IfModule>
+   ~~~
+
+File Excerpt:
+
+    {: .file-excerpt}
+    /path/to/file
+    :   ~~~ ini
+        error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
+        error_log = /var/log/php/error.log
+        max_input_time = 30
+        ~~~
+
+{: .file-excerpt}
+/path/to/file
+:  ~~~ ini
+   error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
+   error_log = /var/log/php/error.log
+   max_input_time = 30
+   ~~~
+
+#### File Paths
+
+All in-text file paths should be unformatted text.
+
+For example:
+
+    Navigate to `/var/www/html`.
+
+>Navigate to `/var/www/html`.
+
+#### Links
+
+Links to other guides within the site should be relative, starting at `/docs/`:
+
+    [Getting Started](/docs/getting-started)
+
+Otherwise:
+
+    [Apache's Documentation](http://httpd.apache.org/docs/)
+
+#### Images
+
+Images should be kept under 650 pixels in width. If your attached images are larger, a thumbnail of appropriate size should be created, and the full-sized image linked. When adding an image ensure that all identifying attributes such as names and IP addresses are removed, obfuscated, or replaced with dummy text (such as **user** or **123.45.67.89**).
+
+To insert an image 650 pixels in width or smaller:
+
+    ![description](/docs/assets/filename.png)
+
+To insert a larger image:
+
+    [![description](/docs/assets/filename_small.png)](/docs/assets/filename.png)
+
+#### Key Combinations
+
+When instructing the reader to use a combination of keys, bold the keys in-text:
+
+For example:
+
+    Press **CTRL+N** then **x** to exit the program
+
+>Press **CTRL+N** then **x** to exit the program
+
+#### Notes
+
+Notes should be important text that does not necessarily fit the narrative of the guide. Notes should be defined using the note format displayed below:
+
+    {: .note}
+    >
+    >This is a note!
+
+{: .note}
+>
+>This is a note!
+
+#### Numerical Values
+
+- **1-10**: Written out as text (one, two, three...)
+- **Greater than 10**: Numerical digits (11, 23, 46)
+
+#### Root vs. Non-root Users
+
+Unless circumstances dictate otherwise, guides should not be written for the root user.
+
+When writing a guide for a non-root user include the following in your introduction:
+
+    {: .note}
+    >
+    >This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+
+When writing a guide as root include the following in your introduction:
+
+    {: .note}
+    >
+    >The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+
+All guides should include one of these two notes, after the introduction.
+
+#### Variables
+
+Variables that need to be changed should be noted in-text and unformatted (using backtics (**`**).
+
+For example:
+
+    Change the `password` and `username` values.
+
+>Change the `password` and `username` values.
+
+Do not include any brackets or parenthesis when using these temporary values in examples, as the reader may include them in their final version.
