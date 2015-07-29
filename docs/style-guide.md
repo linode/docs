@@ -5,7 +5,7 @@ author:
 description: 'The Linode Guides & Tutorials style guide for article submissions'
 keywords: 'style guide, write for us, linode library, article submissions'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Monday, June 29th, 2015
+modified: Wednesday, July 29th, 2015
 modified_by:
   name: Elle Krout
 published: 'Wednesday, January 15th, 2014'
