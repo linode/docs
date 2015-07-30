@@ -50,19 +50,47 @@ In order to edit or create documents for the Linode library, you will need to fo
 
 1.  Navigate to the [Linode Docs](www.github.com/linode/docs) GitHub repository.
 
-	[![Linode Docs Github Repo](/docs/assets/github-linode-docs.png)](/docs/assets/github-linode-docs.png)
+	[![Linode Docs Github Repo](/docs/assets/github-your-repository.png)](/docs/assets/github-your-repository.png)
 
 2.  Click 'Fork' in the uppper right hand corner of your screen to create your own version of the repository
 
 3.  Once the fork process has completed, visit the 'docs' repository under your repository list on the Github homepage.
 
-	[![Github Settings](/docs/assets/github-settings.png)](/docs/assets/github-settings.png)
+	[![Your repository on Github](/docs/assets/github-your-repository.png)](/docs/assets/github-your-repository.png)
 
-4.  Clone your forked branch to your local machine by copying the clone URL, and appending it to the following command.  We recommend cloning via SSH for this particular step
+4.  Clone your forked branch to your local machine by copying the clone URL, and appending it to the following command.  We recommend cloning via SSH for this particular step.  This command will create a local copy of your cloned repository that you can work with directly, in the directory where the command is being run.
 
-	git clone <insert clone URL>
+	[![Github Clone URL](/docs/assets/github-clone-url.png)](/docs/assets/github-clone-url.png)
+
+		git clone <insert clone URL>
 
 ##Creating your branch
+
+Once you've cloned a local copy of your repository, you will need to make a branch to store your new guide in.  Branches allow you to work on multiple guide changes without creating a mess within your pull requests.
+
+1.  Move to the cloned directory that was created in the previous step.
+
+		cd docs
+
+2.  Verify that you are in the master branch by running the following command.
+
+		git status
+
+	You should receive output similar to that show below
+
+		On branch master
+		Your branch is up-to-date with 'origin/master'.
+
+		nothing to commit, working directory clean
+
+3.  Check out a new branch with a descriptive title matching the guide that you are editing or creating.
+
+		git checkout -b guide-title
+
+4.  Rerun the 'git status' command to confirm that you have been moved to the new branch.  You should receive output maching the following.
+
+		On branch guide-title
+		nothing to commit, working directory clean
 
 ##Submitting your first pull request (PR)
 
