@@ -43,13 +43,13 @@ If instead you would like to install a full LAMP stack, please see the [LAMP on 
 
 ## Install Apache
 
-1.  Install Apache 2.4 its documentation, and a collection of utilities:
+1.  Install Apache 2.4, its documentation, and a collection of utilities:
 
         sudo apt-get install apache2 apache2-doc apache2-utils
 
 2.  Edit the main Apache configuration file and turn off the `KeepAlive` setting:
 
-    {: .file}
+    {: .file-excerpt}
     /etc/apache2/apache2.conf
     :   ~~~
         KeepAlive Off
@@ -82,7 +82,7 @@ Apache 2.4 offers various multi-processing modules (MPMs) to handle connections.
         </IfModule>
         ~~~
 
-2.  On Ubuntu 14.04, the *event module* is enabled by default. This will need to be disabled, and the *prefork module* enabled:
+2.  On Ubuntu 14.04, the *event module* is enabled by default. Disable it, and enable the *prefork module* :
 
         sudo a2dismod mpm_event
         sudo a2enmod mpm_prefork
