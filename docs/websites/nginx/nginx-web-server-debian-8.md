@@ -40,7 +40,6 @@ Nginx is a lightweight, high performance web server designed with the purpose of
 
 ## Installing Nginx
 
-
 ### Install Nginx from Repositories
 
 #### Install from Debian Repositories
@@ -66,6 +65,7 @@ Since it's not a default repository, you need to import the repository's signing
         wget -qO- http://nginx.org/keys/nginx_signing.key | sudo apt-key add - 
 
 2.  Add Nginx repository:
+
     {: .file}
     /etc/apt/source.list.d/nginx.list
     :   ~~~ conf
