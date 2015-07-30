@@ -2,12 +2,12 @@
 author:
     name: Linode
     email: docs@linode.com
-description: 'A basic guide to installing nginx from source on Debian 7 (Wheezy)'
+description: 'A basic guide to installing nginx from source or from repositories on Debian 8 (Jessie)'
 keywords: 'nginx,http,web servers,debian,debian jessie,debian 8'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Thursday, July 9th, 2015
+modified: Wednesday, July 30th, 2015
 modified_by:
-    name: Elle Krout
+    name: Jonathan Zhang
 published: 'Thursday, July 9th, 2015'
 title: 'Nginx Web Server on Debian 8'
 external_resources:
@@ -43,6 +43,8 @@ Nginx is a lightweight, high performance web server designed with the purpose of
 
 ### Install Nginx from Repositories
 
+#### Install from Debian Repositories
+
 The simplest way to install Nginx on a server is by downloading it from Debian's repositories:
 
 1.  Install Nginx and start the daemon:
@@ -53,6 +55,29 @@ The simplest way to install Nginx on a server is by downloading it from Debian's
 
 2.  Nginx can be tested by navigating to your FQDN in your browser. The default Nginx page should be present.
 
+#### Install from Nginx Repositories
+
+Another simple way to install Nginx is by installing it from [the offical repositories on Nginx.org](http://nginx.org/en/linux_packages.html). This way ensures that you'll get the latest Nginx release. 
+
+Since it's not a default repository, you need to import the repository's signing key and add it to APT's source list.
+
+1.  Import Nginx's signing key:
+
+        wget -qO- http://nginx.org/keys/nginx_signing.key | sudo apt-key add - 
+
+2.  Add Nginx repository:
+    {: .file}
+    /etc/apt/source.list.d/nginx.list
+    :   ~~~ conf
+        deb http://nginx.org/packages/mainline/debian/ jessie nginx
+        deb-src http://nginx.org/packages/mainline/debian/ jessie nginx
+        ~~~
+
+3.  Update package cache and install Nginx:
+
+        sudo apt-get install nginx
+    
+    
 ### Install Nginx from a Source Distribution
 
 The Debian project does not track the latest development of Nginx server. If you require a newer version, Nginx can be downloaded and installed from a source distribution.
@@ -65,9 +90,9 @@ The Debian project does not track the latest development of Nginx server. If you
 
         cd /opt/
 
-3.  Download the [latest version](http://nginx.org/) of Nginx, which can be found on their website. At the time of publication, Nginx 1.9.2 is the mainline version:
+3.  Download the [latest version](http://nginx.org/) of Nginx, which can be found on their website. At the time of publication, Nginx 1.9.3 is the mainline version:
 
-        sudo wget http://nginx.org/download/nginx-1.9.2.tar.gz
+        sudo wget http://nginx.org/download/nginx-1.9.3.tar.gz
 
 4.  Expand the file, then navigate to the new directory:
 
