@@ -53,7 +53,6 @@ If instead you would like to install a full LAMP stack, please see the [LAMP on 
     :   ~~~ conf
         KeepAlive Off
 
-        ...
 
         <IfModule prefork.c>
             StartServers        2
@@ -66,7 +65,7 @@ If instead you would like to install a full LAMP stack, please see the [LAMP on 
 
 ### Configure Apache for Name-Based Virtual Hosting
 
-1.  Create a file under `/etc/httpd/conf.d` called `vhost.conf`. Replace instances of `example.com` with your own domain information:
+1.  Create a file under `/etc/httpd/conf.d` named `vhost.conf`. Replace instances of `example.com` with your own domain information:
 
     {: .file-excerpt }
     /etc/httpd/conf.d/vhost.conf
@@ -81,7 +80,7 @@ If instead you would like to install a full LAMP stack, please see the [LAMP on 
         </VirtualHost>
         ~~~
 
-    Additional code blocks can be added to the file for any other domains you wish to host on the Linode.
+    Additional virtual host blocks can be added to the file for any other domains you wish to host on the Linode.
 
 2.  Create the directories referenced above:
 
