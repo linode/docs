@@ -66,7 +66,7 @@ In order to edit or create documents for the Linode library, you will need to fo
 
 5.  Configure the Linode Docs repository as your upstream repository.
 
-
+		git remote add upstream https://github.com/linode/docs
 
 ##Creating your branch
 
