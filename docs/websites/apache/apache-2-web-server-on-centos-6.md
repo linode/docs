@@ -6,7 +6,7 @@ description: 'Instructions for getting started with the Apache web server on Cen
 keywords: 'Apache,web sever,CentOS 6,centos'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-servers/apache/installation/centos-6/']
-modified: Wednesday, July 1st, 2015
+modified: Friday, July 31st, 2015
 modified_by:
   name: Elle Krout
 published: 'Monday, November 11th, 2013'
