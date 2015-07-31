@@ -19,11 +19,15 @@ As part of our open-sourcing of our documentation library, we've moved to Github
 
 This guide assumes that you've signed up for a [Github Account](https://www.github.com), and that you've followed the sections for installing and configuring Git on your local machine contained within our [Git Source Control Management](https://www.linode.com/docs/applications/development/git-source-control-management) guide.
 
+{: .note}
+>
+> If you are following these instructions on a Windows system, all commands will need to be run via the Git Bash console.
+
 #Submitting new guides or changes with Git
 
 ##Placing your SSH key on Github
 
-1.  If you have not done so already, generate an SSH key on your local system
+1.  If you have not done so already, generate an SSH key on your local system.
 
 		ssh-keygen
 
