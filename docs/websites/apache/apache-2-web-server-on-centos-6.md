@@ -11,12 +11,14 @@ modified_by:
   name: Linode
 published: 'Monday, November 11th, 2013'
 title: Apache 2 Web Server on CentOS 6
+external_resources:
+ - '[Apache HTTP Server Version 2.0 Documentation](http://httpd.apache.org/docs/2.0/)'
+ - '[Apache Configuration](/docs/web-servers/apache/configuration/)'
 ---
 
 This tutorial explains how to install and configure the Apache web server on CentOS 6. All configuration will be done through the terminal; make sure you are logged in as root via SSH. If you have not followed the [getting started](/docs/getting-started/) guide, it is recommended that you do so prior to beginning this guide. Also note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guide for CentOS](/docs/lamp-guides/centos-6).
 
-Set the Hostname
-----------------
+## Set the Hostname
 
 Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
 
@@ -25,8 +27,7 @@ Before you begin installing and configuring the components described in this gui
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-Install Apache HTTP Server
---------------------------
+## Install Apache HTTP Server
 
 Make sure your system is up to date by issuing the following command:
 
@@ -62,8 +63,7 @@ To ensure that Apache starts following the next reboot cycle, issue the followin
 
     chkconfig httpd on
 
-Install Support for Scripting
------------------------------
+## Install Support for Scripting
 
 The following commands are optional, and should be run if you want to have support within Apache for server-side scripting in PHP, Ruby, Python, or Perl.
 
@@ -93,8 +93,7 @@ If you're also hoping to run PHP with MySQL, then also install MySQL support:
 
     yum install php-mysql
 
-Configure Apache
-----------------
+## Configure Apache
 
 All configuration for Apache are contained in the `httpd.conf` file, which is located at: `/etc/httpd/conf/httpd.conf`. We advise you to make a backup of this file into your home directory, like so:
 
@@ -162,8 +161,7 @@ Virtual hosting for your domain should now work -- assuming of course that you h
 
 Any time you change an option in your `vhost.conf` file, or any other Apache configuration remember to reload the configuration with the reload command form above.
 
-Configuration Options
----------------------
+## Configuration Options
 
 One of the strengths, and obstacles, of Apache is the immense amount of flexibility offered in its configuration files. In the default installation of Apache 2 on CentOS 6, the main configuration file is located at `/etc/httpd/conf/httpd.conf`, but Apache configuration is also loaded from files in a number of different locations, in a specific order. Configuration files are read in the following order, with items specified later taking precedence over earlier and potentially conflicting options:
 
@@ -178,8 +176,7 @@ In accordance with best practices, we do not recommend modifying the default con
 
     cp /etc/httpd/conf/httpd.conf /etc/httpd/conf/httpd-conf.backup-1
 
-Install Apache Modules
-----------------------
+## Install Apache Modules
 
 One of Apache's prime strengths is its extreme customizability and flexibility. With its support for a large number of modules, there are few web serving tasks that Apache cannot fulfill. By default, modules are located in the `/etc/httpd/modules/` directory. Configuration directives for the default modules are located in `/etc/httpd/conf/httpd.conf`, while configuration options for optional modules installed with yum are generally placed in `.conf` files in `/etc/httpd/conf.d/`.
 
@@ -200,8 +197,7 @@ You can then install one of these modules with the command:
 
 Modules should be enabled and ready to use following installation, though you may have to apply additional configuration options to have access to the modules' functionality. Consult the [Apache Module Documentation](http://httpd.apache.org/docs/2.0/mod/) for more information regarding the configuration of specific modules.
 
-Understanding .htaccess Configuration
--------------------------------------
+## Understanding .htaccess Configuration
 
 The `.htaccess` file is the Apache configuration interface that many webmasters and developers have the most experience with. Entering configuration options in these files allow you to control Apache's behavior on a per-directory basis. This allows you to "lock" a directory behind a password wall (for instance) to prevent general access to it. Additionally, directory specific `.htaccess` files are a common location to specify rules for rewriting URLs.
 
@@ -218,8 +214,7 @@ By Default, the httpd.conf file is restricted to not allow overrides. You Will n
     </Directory>
     ~~~
 
-Password Protecting Directories
--------------------------------
+## Password Protecting Directories
 
 In a **non** web accessible directory, we need to create a .htpasswd file. For example, if the document root for your Virtual Host is `/srv/www/example.com/public_html/`, use `/srv/www/example.com/`. Enter this directory:
 
@@ -246,8 +241,7 @@ In the .htaccess file for the directory that you want to protect, add the follow
 
 Note, that the `AuthName` is presented to the user as an explanation in the authentication dialog for what they are requesting access to on the server.
 
-Rewriting URLs with mod\_rewrite
---------------------------------
+## Rewriting URLs with mod\_rewrite
 
 The mod\_rewrite engine is very powerful, and is available for your use by default. Although the capabilities of mod\_rewrite far exceed the scope of this section, we hope to provide a brief outline and some common use cases.
 
@@ -272,14 +266,3 @@ Let's parse this rule. First, note that the first string is the pattern for matc
 The string in question rewrites all URLs that specify paths that begin with `/post-id/` and contain one or more numbers (eg. `[0-9]+`), serving a corresponding `.html` file in the `/posts/` directory. The parenthetical term or terms in the pattern specify a variable that is passed to the second string as `$1`, `$2`, `$3` and so forth.
 
 There are many other possibilities for using mod\_rewrite to allow users to see and interact with useful URLs, while maintaining a file structure that makes sense from a development or deployment perspective.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Apache HTTP Server Version 2.0 Documentation](http://httpd.apache.org/docs/2.0/)
-- [Apache Configuration](/docs/web-servers/apache/configuration/)
-
-
-

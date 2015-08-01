@@ -15,8 +15,7 @@ title: Linode Managed
 
 [Linode Managed](https://www.linode.com/managed/) is a 24/7 incident response and system maintenance service. This robust, multi-homed monitoring system distributes monitoring checks to ensure that your servers remain online and available at all times. Linode Managed can monitor any service or software stack reachable over TCP or HTTP. Once you add a service to Linode Managed, we'll monitor it for connectivity, response, and total request time. This guide shows you how to start monitoring your services with Linode Managed.
 
-Getting Started
----------------
+## Getting Started
 
 First, you'll need to [sign up for Linode Managed](https://www.linode.com/managed/). Once Linode Managed is enabled for your account, you'll see the **Managed** tab when you log in to the Linode Manager, as shown below. You'll use this interface to interact with Linode Managed and monitor your servers.
 
@@ -46,8 +45,7 @@ Once you've completed these steps, you'll have successfully configured Linode Ma
 >
 > Misconfiguration of Linode Managed could prevent us from properly monitoring your services, resolving incidents when they are detected, or contacting you when an incident is detected.
 
-Credentials
------------
+## Credentials
 
 To take full advantage of Linode Managed, you should upload *credentials* to your server and the Linode Manager website. This will allow our support staff to log in to your servers and access your services when an issue is detected.
 
@@ -160,8 +158,7 @@ Here's how to add a service credential to Linode Managed:
 
 You have successfully added the credential to Linode Managed. You'll select the credential later, when you add a new service to be monitored.
 
-Contacts
---------
+## Contacts
 
 Linode Managed allows you to specify *contacts* that will be contacted if an issue is detected with one of your services. Contacts are categorized in to groups and linked to specific services. The idea is to create separate groups for the administrators responsible for your different services and systems. For example, you could add all of your database administrators to a group called *DBAs* and then link that group to your MySQL service. That way, when Linode Managed detects an issue with MySQL, all of your database administrators will be notified at the same time.
 
@@ -188,8 +185,7 @@ Here's how to add a contact to Linode Managed:
 
 You have successfully added an contact to Linode Managed. You'll select the contact groups later, when you add a new service to be monitored.
 
-Services
---------
+## Services
 
 Linode Managed monitors the *services* running on your Linodes. Setting up services is an essential step in the configuration process - Linode Managed can't monitor anything until you add services to be monitored.
 
@@ -270,6 +266,3 @@ If you decide to remove or stop using a service on your Linode that is being mon
 2.  Find the service that you want to remove, and then select the **Remove** link.
 
 Linode Managed has stopped actively monitoring the service.
-
-
-

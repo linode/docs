@@ -1,24 +1,30 @@
 ---
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Use Puppet for configuration change management.'
 keywords: 'puppet,puppet configuration,puppet linux,configuration change management,server automation'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['application-stacks/puppet/automation/']
 modified: Monday, August 22nd, 2011
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Sunday, June 13th, 2010'
 title: Manage and Automate Systems Configuration with Puppet
+external_resources:
+ - '[Puppet Labs Home Page](http://www.puppetlabs.com/)'
+ - '[Basic Puppet Configuration](http://docs.puppetlabs.com/guides/configuring.html)'
+ - '[Puppet Manifest Language](http://docs.puppetlabs.com/guides/language_tutorial.html)'
+ - '[Puppet Dashboard Documentation](http://docs.puppetlabs.com/guides/installing_dashboard.html)'
+ - '[Puppet Recipe Directory](http://projects.puppetlabs.com/projects/puppet/wiki/Puppet_Recipes)'
+ - '[Puppet Modules](http://projects.puppetlabs.com/projects/puppet/wiki/Puppet_Modules)'
 ---
 
 Puppet is an open source "configuration change management" tool that allows users to automate and standardize the configuration of software infrastructure. Using a domain specific language for describing configuration, Puppet allows users to manage configurations in a service-oriented manner.
 
 Because of Puppet's versatility, this guide provides an overview of a number of different Puppet-based deployments. Since there is no single "right way" to integrate Puppet into your network, this document will focus on a collection of independent strategies rather than a single procedure. Before following this document, it is assumed that you have an up-to-date system, have followed our [getting started guide](/docs/getting-started/) and have installed Puppet according to our [Puppet installation guide](/docs/application-stacks/puppet/installation).
 
-Using Puppet
-------------
+## Using Puppet
 
 Puppet is a collection of tools built around a language that allows systems administrators to specify configurations, or manifests, to describe the state of a computer system. In the [Puppet installation guide](/docs/application-stacks/puppet/installation), we covered installing both the "Puppetmaster" server component and the Puppet client. This section covers a number of different methods you may use to apply Puppet manifests to your Linodes.
 
@@ -54,8 +60,7 @@ These options can then be added and modified in the `[puppetmasterd]` section of
 
 All Puppet files are stored in the `/etc/puppet/manifests/` directory, and Puppetmaster will look in this directory and apply the manifests as described therein. Commonly "classes," or chunks of configuration that may be shared between different systems, are located in the `/etc/puppet/manifests/classes/` directory. A series of system manifests drawing on these classes are placed in your manifest directory. Puppet manifests have the extension `.pp`.
 
-Puppet Manifests
-----------------
+## Puppet Manifests
 
 Consider the following class, which is an elaboration on the canonical example Puppet `sudo` class:
 
@@ -159,8 +164,7 @@ Facter is a tool that is installed as a dependency for Puppet. It provides detai
 
 This makes it possible to write Puppet manifests that are sensitive to the actual configuration of a given system, without needing to rewrite individual manifests for every unique system.
 
-Describing Resources with Puppet
---------------------------------
+## Describing Resources with Puppet
 
 ### Serving Files
 
@@ -236,8 +240,7 @@ File Path
     ~~~
 This instructs Puppet to run the specified command, in this case an `rsync` command. The `unless` parameter runs tests for the existence of a file before running the command, to avoid running a command unnecessarily.
 
-Advanced Puppet Usage
----------------------
+## Advanced Puppet Usage
 
 This guide only covers the most basic of puppet configurations options. It is certainly possible to deploy much more complex systems, including the following possibilities:
 
@@ -245,18 +248,3 @@ This guide only covers the most basic of puppet configurations options. It is ce
 -   Deploy Puppetmaster with [Passenger](/docs/frameworks/): the default Puppetmaster server is based on WEBrick, which is only capable of supporting 20 or 30 puppet nodes, depending on your configuration, according the Puppet developers.
 -   You may consider using Puppet in combination with the [Linode API](http://www.linode.com/api/) and [StackScripts](http://www.linode.com/stackscripts/) to automate provisioning, deprovisioning, and configuration of Linodes.
 -   Use [Puppet's module support](http://projects.puppetlabs.com/projects/puppet/wiki/Puppet_Modules) to more easily manage applications which require more complex configurations.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Puppet Labs Home Page](http://www.puppetlabs.com/)
-- [Basic Puppet Configuration](http://docs.puppetlabs.com/guides/configuring.html)
-- [Puppet Manifest Language](http://docs.puppetlabs.com/guides/language_tutorial.html)
-- [Puppet Dashboard Documentation](http://docs.puppetlabs.com/guides/installing_dashboard.html)
-- [Puppet Recipe Directory](http://projects.puppetlabs.com/projects/puppet/wiki/Puppet_Recipes)
-- [Puppet Modules](http://projects.puppetlabs.com/projects/puppet/wiki/Puppet_Modules)
-
-
-

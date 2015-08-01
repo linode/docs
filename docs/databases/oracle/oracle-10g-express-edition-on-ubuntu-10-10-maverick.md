@@ -119,7 +119,7 @@ Connect to the Oracle XE Home Page
 
 Oracle is managed via a web interface, which is installed with the oracle-xe package. By default, it listens on the local address `127.0.0.1` at port 8080. Since you most likely do not have a window manager or web browser installed on your Linode, you must connect to your Oracle home page remotely.
 
-You can do this by using our [Oracle SSH tunnel script](/docs/databases/oracle/ssh-tunnel). After your tunnel is started, you can connect to the admin page at the URL "<http://127.0.0.1:8080/apex>". Log in with the username "SYSTEM" and the password you specified during Oracle configuration. You'll be presented with a page similar to this one:
+You can do this by using our [Oracle SSH tunnel script](/docs/databases/oracle/ssh-tunnel). After your tunnel is started, you can connect to the admin page at the URL `http://127.0.0.1:8080/apex`. Log in with the username "SYSTEM" and the password you specified during Oracle configuration. You'll be presented with a page similar to this one:
 
 [![The Oracle XE administration home page.](/docs/assets/382-oracle-xe-admin-page.png)](/docs/assets/382-oracle-xe-admin-page.png)
 

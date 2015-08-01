@@ -15,7 +15,9 @@ published: 'Thursday, February 27th, 2014'
 title: Basic NFS Configuration on Debian 7
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $100 per published guide.*
+*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
+
+<hr>
 
 Network File System (**NFS**) is a file system that allows computer users to access files over a network in much the same way they can access files in local storage. This is useful for sharing files across several Linodes, or other computers on the Internet. For example, you might want to share the home directories for your users, or system configuration files, over NFS.
 
@@ -25,15 +27,13 @@ This guide walks you through the setup of two Linodes; one acting as the NFS ser
 >
 > This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
-Prerequisites
--------------
+## Prerequisites
 
 -   Two Debian 7 Linodes
 -   Linodes deployed in the same data center
 -   Linodes configured to use private IPs - see the [Linux Static IP Configuration](/docs/networking/linux-static-ip-configuration) guide
 
-NFS Server Setup
-----------------
+## NFS Server Setup
 
 Choose one Linode to be your NFS server. Follow the instructions below to configure it:
 
@@ -69,8 +69,7 @@ Choose one Linode to be your NFS server. Follow the instructions below to config
 
 Done! Now you have a basic NFS server on one of your Linodes, configured to serve the `/var/nfsroot` directory to your second Linode.
 
-NFS Client Setup
-----------------
+## NFS Client Setup
 
 The other Linode will be your NFS client. Follow the instructions below to configure it:
 
@@ -102,8 +101,7 @@ The other Linode will be your NFS client. Follow the instructions below to confi
 
 And you're done! Now, from the client Linode, you have access the remote filesystem hosted on your server Linode. You can add more clients by adding them to the `/etc/exports` file on the server, and repeating the client setup for each client.
 
-Advanced Configuration
-----------------------
+## Advanced Configuration
 
 NFS provides several mount options. In this guide, we are using some standard behaviors (read-write, asynchronous and interruptible hard waits), but you can configure other behaviors on your NFS shares using the following options.
 
@@ -132,6 +130,3 @@ These options can be specified in the `/etc/exports` entry:
 -   **no\_root\_squash**: The root account on the client machine will have the same privilege level as the root on the server machine. This option has security implications; do not use unless you are sure you need it.
 -   **no\_subtree\_check**: Disable file location checks on partial volume exports. This option will speed up transfers on full volume exports.
 -   **sync**: Force all transfers to operate in synchronous mode, so all clients will wait until their operations are really done. This can avoid data corruption in the event of a server crash.
-
-
-

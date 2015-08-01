@@ -22,13 +22,13 @@ PocketMine is a third party server for the MineCraft - Pocket Edition game for [
 
 ##Prerequisites
 
-1.  Your Linode should already be configured per our [Getting Started](/docs/getting-started) guide, and secured per our [Securing Your Server]() guide.
+1.  Your Linode should already be configured per our [Getting Started](/docs/getting-started) guide, and secured per our [Securing Your Server](/docs/security/securing-your-server) guide.
 
 2.  Ensure that your Linode is up to date:
 
         sudo apt-get update && sudo apt-get upgrade
 
-3.  Install dependancies:
+3.  Install dependencies:
 
         sudo apt-get install perl gcc g++ make automake libtool autoconf m4
 

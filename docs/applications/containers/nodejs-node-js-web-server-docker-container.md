@@ -1,13 +1,13 @@
 ---
 author:
-  name: Joseph Dooley
-  email: jdooley@linode.com
+  name: Linode
+  email: docs@linode.com
 description: 'Basic Node.js Server in a Docker Container.'
 keywords: 'docker, nodejs, node.js, node, debian, ubuntu, server, web server, js, javascript'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: Monday, March 23rd, 2015
 modified_by:
-  name: Joseph Dooley
+  name: Linode
 published: 'Monday, March 23rd, 2015'
 title: Basic Node.js Web Server with Docker
 ---
@@ -24,14 +24,14 @@ Use the Docker-maintained install script for Debian or Ubuntu. For other operati
 
     {: .note}
     >
-    >The current version of the docker script checks for AUFS support, and displays the warning below if support is not found:
+    >The current version of the docker script checks for AUFS support and displays the warning below if support is not found:
     >
     >     Warning: current kernel is not supported by the linux-image-extra-virtual
           package.  We have no AUFS support.  Consider installing the packages
           linux-image-virtual kernel and linux-image-extra-virtual for AUFS support.
           + sleep 10
     >
-    >This message can be safely ignored, as the script will continue the installation using DeviceMapper.  If you require AUFS support, you will need to configure a [distribution supplied](https://www.linode.com/docs/tools-reference/custom-kernels-distros/run-a-distributionsupplied-kernel-with-pvgrub) or [custom compiled](https://www.linode.com/docs/tools-reference/custom-kernels-distros/custom-compiled-kernel-with-pvgrub-debian-7-ubuntu) kernel.
+    >This message can be safely ignored, as the script will continue the installation using DeviceMapper.  If you require AUFS support, you will need to configure a [distribution supplied](https://www.linode.com/docs/tools-reference/custom-kernels-distros/run-a-distributionsupplied-kernel-with-pvgrub) or [custom compiled](/docs/tools-reference/custom-kernels-distros/custom-compiled-kernel-with-pvgrub-debian-ubuntu) kernel.
 
 2.  If necessary, add the non-root user to the "docker" group:
 

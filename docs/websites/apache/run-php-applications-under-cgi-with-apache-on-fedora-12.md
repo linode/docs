@@ -2,7 +2,7 @@
 deprecated: true
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Methods for enabling dynamic content to run as individual users with PHP on Fedora 12.'
 keywords: 'php cgi,php apache,php scripts,dynamic apache,web applications'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

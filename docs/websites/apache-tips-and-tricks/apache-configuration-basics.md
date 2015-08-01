@@ -1,16 +1,25 @@
 ---
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: An advanced overview of configuration for the Apache web server including virtual hosts and configuration file management
 keywords: 'configuration,apache,web server,virtual hosting,http'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-servers/apache/configuration/configuration-basics/']
 modified: Monday, August 22nd, 2011
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Friday, November 6th, 2009'
 title: Apache Configuration Basics
+external_resources:
+ - '[Apache Installation](/docs/web-servers/apache/)'
+ - '[LAMP stack guides](/docs/lamp-guides/)'
+ - '[Troubleshooting Common Issues with Apache](/docs/web-servers/apache/troubleshooting/)'
+ - '[Linode User Community](http://linode.com/community/)'
+ - '[Apache Virtual Host Documentation](http://httpd.apache.org/docs/2.2/vhosts/)'
+ - '[Virtual Host Directives](http://httpd.apache.org/docs/2.2/mod/core.html#virtualhost)'
+ - '[Apache Control Interface](http://httpd.apache.org/docs/2.2/programs/apachectl.html)'
+ - '[HTTP Command](http://httpd.apache.org/docs/2.2/programs/httpd.html)'
 ---
 
 The Apache HTTP web server is in many respects the *defacto* standard for general purpose HTTP services. Through its large number of modules, it provides flexible support for proxy servers, URL rewriting, and granular access control. Furthermore, web developers often choose Apache for its support of server-side scripting using CGI, FastCGI, and embedded interpreters. These capabilities facilitate the quick and efficient execution of dynamic code. While there are several prominent alternatives to Apache, even within the boundaries of open source, the breadth of Apache usage is unique.
@@ -19,8 +28,7 @@ The extraordinary degree of flexibility provided by Apache does not come without
 
 If you're interested in just getting a running web server and installing Apache for the first time, we recommend using the appropriate "[installing Apache guide](/docs/web-servers/apache/)" for your distribution of Linux. If you need a more full-featured LAMP stack, consider trying the appropriate [LAMP guide](/docs/lamp-guides/) for your distribution. This guide assumes that you have a running and up to date Linux system, have successfully installed Apache, and have logged into a shell session with root access.
 
-Apache Basics
--------------
+## Apache Basics
 
 The default configuration of Apache varies significantly between various distributions of Linux. Debian and Ubuntu distributions, as well as Gentoo, refer to Apache as "Apache2" and place the configuration files in the `/etc/apache2/` directory. Other distributions, including Fedora, CentOS, and Arch Linux refer to Apache as "httpd" and store configuration files in `/etc/httpd/`. Most configuration options do not vary between operating systems, though we encourage you to become familiar with the default configuration of your Apache server. The greatest challenges in configuring Apache are in understanding the distributions' standard configurations and their quirks and differences from the Apache upstream.
 
@@ -65,8 +73,7 @@ Typically, the "master" configuration file for Apache is located in the `httpd.c
 
 Note that the order in which these files are included can affect the behavior of the web server. If later options contradict options set in earlier files, the later options override earlier options. Familiarizing yourself with the existing default configuration can be a helpful learning experience.
 
-Configuration File Organization
--------------------------------
+## Configuration File Organization
 
 One of the most common use cases for the Apache web server is to use its "virtual hosting" capabilities, which allow a single instance of Apache to serve numerous websites and subdomains. Because most websites don't tend to use a significant amount of system resources, virtual hosting is often a great way to fully utilize a web server. As a result of this capability, configuration files for virtual hosts can be complex and difficult to organize. There are two major approaches to the solution for this problem.
 
@@ -104,20 +111,3 @@ The Debian approach of keeping a single configuration file for each virtual host
 In these cases, a single file may be the best option for keeping Apache configured properly. This is the preferred organization for virtual host configuration in some distributions, including CentOS, Fedora, and Arch Linux. While you should check the default Apache configuration for your distribution, commonly there is a `conf.d/` directory where user-created configuration can be stored. If you want to combine a number of virtual host configuration files into a single file, create a `vhosts.conf` in the `conf.d/` folder and place all of your configuration options in this file. The `conf.d/` folder is located within Apache's `/etc/` directory, either: `/etc/apache2/conf.d/` or `/etc/httpd/conf.d/` depending on your distribution.
 
 Both configuration options are functionally equivalent, but offer easier administration in different scenarios. The configuration file organization that you choose depends on the needs of your particular deployment.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Apache Installation](/docs/web-servers/apache/)
-- [LAMP stack guides](/docs/lamp-guides/)
-- [Troubleshooting Common Issues with Apache](/docs/web-servers/apache/troubleshooting/)
-- [Linode User Community](http://linode.com/community/)
-- [Apache Virtual Host Documentation](http://httpd.apache.org/docs/2.2/vhosts/)
-- [Virtual Host Directives](http://httpd.apache.org/docs/2.2/mod/core.html#virtualhost)
-- [Apache Control Interface](http://httpd.apache.org/docs/2.2/programs/apachectl.html)
-- [HTTP Command](http://httpd.apache.org/docs/2.2/programs/httpd.html)
-
-
-

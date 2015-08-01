@@ -1,8 +1,8 @@
 ---
 deprecated: true
 author:
-  name: Dave Eaton
-  email: deaton@linode.com
+  name: Linode
+  email: docs@linode.com
 description: 'Configuring a LAMP stack with Apache, MySQL, PHP and on Ubuntu Linux 11.10 (Oneiric).'
 keywords: 'ubuntu lamp server,ubuntu 11.10 lamp,oneiric lamp,ubuntu web server,ubuntu oneiric'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

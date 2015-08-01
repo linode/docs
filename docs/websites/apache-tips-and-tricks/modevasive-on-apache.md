@@ -1,7 +1,7 @@
 ---
 author:
   name: Chris Ciufo
-  email: cciufo@linode.com
+  email: docs@linode.com
 description: 'mod\_evasive'
 keywords: 'mod\_evasive, modevasive, evasive, apache'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -11,12 +11,13 @@ modified_by:
   name: Linode
 published: 'Monday, November 14th, 2011'
 title: 'mod_evasive on Apache'
+external_resources:
+ - '[mod\_evasive Home Page](http://www.zdziarski.com/blog/?page_id=442)'
 ---
 
 mod\_evasive is an evasive maneuvers module for Apache that provides evasive action in the event of an HTTP DoS attack or brute force attack. It is also designed to be a detection and network management tool, and can be easily configured to talk to ipchains, firewalls, routers, and more. mod\_evasive presently reports abuse via email and syslog facilities. This guide assumes you already have your LAMP server configured. Guides for setting up a LAMP stack can be found under our [LAMP guides](/docs/lamp-guides) section.
 
-Prerequisites
--------------
+## Prerequisites
 
 mod\_evasive has just one prerequisite beyond the standard LAMP install. To install this module, just run the following command as root in SSH:
 
@@ -28,8 +29,7 @@ CentOS / Fedora:
 
     yum install httpd-devel
 
-Installing mod\_evasive
------------------------
+## Installing mod\_evasive
 
 You'll first want to get the mod\_evasive package, uncompress it, and install it using apxs:
 
@@ -82,8 +82,7 @@ CentOS / Fedora:
 
     /etc/init.d/httpd restart
 
-mod\_evasive Configuration Options
-----------------------------------
+## mod\_evasive Configuration Options
 
 These configuration option descriptions were taken directly from the README file packaged with the mod\_evasive tarball you downloaded during installation.
 
@@ -142,13 +141,3 @@ To whitelist an address (or range) add an entry to the Apache configuration in t
     DOSWhitelist 127.0.0.*
     ~~~
 Wildcards can be used on up to the last 3 octets if necessary. Multiple DOSWhitelist commands may be used in the configuration.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [mod\_evasive Home Page](http://www.zdziarski.com/blog/?page_id=442)
-
-
-

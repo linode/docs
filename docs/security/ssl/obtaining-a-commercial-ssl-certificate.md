@@ -15,7 +15,7 @@ external_resources:
  - '[OpenSSL Documentation](http://www.openssl.org/docs/)'
 ---
 
-Follow these instructions to get a commercial SSL certificate installed on your server. Please note that commercial SSL certificates require a unique IP address for each certificate. As SSL certificates may be used by many kinds of software, these instructions are generic in nature. If you're intending to use your SSL certificate on a website powered by Apache, you should follow our [Apache SSL guides](/docs/web-servers/apache/ssl-guides/) instead.
+Follow these instructions to get a commercial SSL certificate installed on your server. Please note that commercial SSL certificates require a unique IP address for each certificate. As SSL certificates may be used by many kinds of software, these instructions are generic in nature. If you're intending to use your SSL certificate on a website powered by Apache, you should follow our Apache SSL guides for [Debian & Ubuntu](/docs/security/ssl/ssl-apache2-debian-ubuntu) or [CentOS](/docs/security/ssl/ssl-apache2-centos) instead.
 
 ## Install OpenSSL
 
@@ -38,7 +38,7 @@ CentOS/Fedora users:
 Issue these commands to create a certificate signing request (CSR) for the site which you'd like to use with SSL. Be sure to change "www.mydomain.com" to reflect the fully qualified domain name (subdomain.domainname.com) of the site you'll be using SSL with. Leave the challenge password blank. We entered 365 for the days parameter to the command, as we would be paying for one year of SSL certificate verification from a commercial CA (certificate authority).
 
     cd /etc/ssl/localcerts
-    openssl req -new -newkey rsa:2048 -nodes -days 365 -keyout www.mydomain.com.key -out www.mydomain.com.csr
+    openssl req -new -newkey rsa:2048 -nodes -sha256 -days 365 -keyout www.mydomain.com.key -out www.mydomain.com.csr
 
 Here are the values we entered for our example certificate. Note that you can ignore the extra attributes.
 

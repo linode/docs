@@ -1,14 +1,14 @@
 ---
 author:
-    name: Joseph Dooley
-    email: jdooley@linode.com
+    name: Linode
+    email: docs@linode.com
 description: 'Installing, configuring, and optimizing the Drupal content management framework on your Linode.'
 keywords: 'drupal, cms, web framework, web application, php, content management system, content management framwork'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-applications/cms-guides/drupal/']
 modified: Tuesday, May 18th, 2015
 modified_by:
-    name: Joseph Dooley
+    name: Linode
 published: 'Friday, October 31, 2014'
 title: Installing Drupal 8 (beta)
 ---

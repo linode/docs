@@ -11,12 +11,15 @@ modified_by:
   name: James Stewart
 published: 'Monday, October 13, 2014'
 title: 'Transfer Files with FileZilla'
+external_resources:
+ - '[FileZilla Documentation](http://wiki.filezilla-project.org/Documentation)'
+ - '[FileZilla SSH Key Documentation](https://wiki.filezilla-project.org/Howto#SFTP_using_SSH2:_Key_based_authentication)'
+ - '[Tools & Reference](/docs/tools-reference/)'
 ---
 
 FileZilla is a free, open source file transfer program written for Linux, MacOS X, and Windows systems. It implements several file transfer protocols, most notably SFTP via SSH. This tool allows you to securely transfer files to and from your Linode using an encrypted channel, avoiding the security problems and usability issues inherent in traditional FTP client/server systems. FileZilla can send both your login credentials and file transfers over the network securely encrypted (provided you're using SFTP), while standard FTP clients send this information as plaintext.
 
-Prerequisites
--------------
+## Prerequisites
 
 Prior to following this guide, you will need to ensure that the following steps have been taken on your Linode.
 
@@ -29,8 +32,7 @@ Prior to following this guide, you will need to ensure that the following steps 
 {: .note }
 >If you wish, you may use the `root` account on your Linode to perform file transfers, although you may need to change [file ownership and permissions](/docs/tools-reference/linux-users-and-groups) on the server after doing so.
 
-Installing FileZilla
---------------------
+## Installing FileZilla
 
 Windows and OS X users can download FileZilla [here](https://filezilla-project.org/download.php?show_all=1).
 
@@ -44,8 +46,7 @@ CentOS/Fedora
 
     sudo yum install filezilla
 
-Using FileZilla
----------------
+## Using FileZilla
 
 1.  Open FileZilla from your Windows start menu, OS X Launchpad, or the launcher provided by your Linux distribution of choice.
 
@@ -59,8 +60,6 @@ Using FileZilla
 
 4.  Click the "OK" button to proceed. You'll be presented with a split view, with your local filesystem on the left and your Linode's filesystem on the right. You may transfer files by dragging and dropping them between each side.
 
-Connecting Without a Password (SSH Keys)
-----------------------------------------
 
 If you have followed our [Securing Your Server](/docs/security/securing-your-server) guide, you won't be able to connect to your Linode using a password. If you are using Linux or OS X, the keys that you generated while following that guide will be automatically used for authentication.
 
@@ -78,12 +77,3 @@ If you are using Windows, you'll need to follow a few additional steps to enable
 4.  Navigate to the location where you stored your keys and select your private key (PPK) file. You will be prompted for your passphrase if you provided one when creating the key.
 
 5.  Launch FileZilla and connect to your server with your username and an empty password.  Your key will be used as authentication as long as the Pagent software is running.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [FileZilla Documentation](http://wiki.filezilla-project.org/Documentation)
-- [FileZilla SSH Key Documentation](https://wiki.filezilla-project.org/Howto#SFTP_using_SSH2:_Key_based_authentication)
-- [Tools & Reference](/docs/tools-reference/)

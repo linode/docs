@@ -11,12 +11,16 @@ modified_by:
   name: Alex Fornuto
 published: 'Wednesday, January 22nd, 2014'
 title: 'Using MySQL Relational Databases on CentOS 6.4'
+external_resources:
+ - '[MySQL 5.1 Reference Manual](http://dev.mysql.com/doc/refman/5.1/en/)'
+ - '[PHP MySQL Manual](http://us2.php.net/manual/en/book.mysql.php)'
+ - '[Perl DBI examples for DBD::mysql](http://sql-info.de/mysql/examples/Perl-DBI-examples.html)'
+ - '[MySQLdb User''s Guide](http://mysql-python.sourceforge.net/MySQLdb.html)'
 ---
 
 MySQL is a popular database management system, used as the data storage provider for thousands of web and server applications. This guide will help beginners get started with MySQL on a CentOS 5 Linux VPS. For purposes of this tutorial, we'll assume you've followed the steps outlined in our [getting started guide](/docs/getting-started/), that your system is up to date, and that you've logged into your Linode as root via SSH.
 
-System Configuration
---------------------
+## System Configuration
 
 Make sure your `/etc/hosts` file has proper entries, similar to the ones shown below:
 
@@ -29,8 +33,7 @@ Make sure your `/etc/hosts` file has proper entries, similar to the ones shown b
     
 Be sure to substitute your Linode's public IP address for "12.34.56.78" in the example above.
 
-Installing MySQL
-----------------
+## Installing MySQL
 
 Issue the following commands to update your system and install MySQL:
 
@@ -42,8 +45,7 @@ The MySQL server package will be installed on your server, along with dependenci
 
     service mysqld start
 
-Configuring MySQL
------------------
+## Configuring MySQL
 
 After installing MySQL, it's recommended that you run `mysql_secure_installation`, a program that helps secure MySQL. While running `mysql_secure_installation`, you will be presented with the opportunity to change the MySQL root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases. It is recommended that you answer yes to these options. If you are prompted to reload the privilege tables, select yes. Run the following command to execute the program:
 
@@ -53,8 +55,7 @@ MySQL will bind to localhost (127.0.0.1) by default. Please reference our [secur
 
 Allowing unrestricted access to MySQL on a public IP not advised, but you may change the address it listens on by modifying the `bind-address` parameter in `/etc/my.cnf`. If you decide to bind MySQL to your public IP, you should implement firewall rules that only allow connections from specific IP addresses.
 
-Using MySQL
------------
+## Using MySQL
 
 The standard tool for interacting with MySQL is the `mysql` client program. To get started, issue the following command at your prompt:
 
@@ -118,8 +119,7 @@ Now let's log back into the MySQL client as `testuser` and create a sample table
 
 This creates a table with a customer ID field of the type INT for integer (auto-incremented for new records, used as the primary key), as well as two fields for storing the customer's name. Of course, you'd probably want to store much more information than this on a customer, but it's a good example of a common case nonetheless.
 
-Resetting the MySQL Root Password
----------------------------------
+## Resetting the MySQL Root Password
 
 If you've forgotten your root MySQL password, you may recover it by issuing the following commands:
 
@@ -138,8 +138,7 @@ Last, restart MySQL by issuing:
 
     service mysqld restart
 
-Tuning MySQL
-------------
+## Tuning MySQL
 
 MySQL Tuner is a useful tool that connects to a running instance of MySQL and provides configuration recommendations based on workload. Ideally, the MySQL instance should have been operating for at least 24 hours before running the tuner. The longer the instance has been running, the better advice MySQL Tuner will provide.
 
@@ -154,16 +153,3 @@ To run MySQL Tuner simply enter:
     ./mysqltuner.pl
 
 Please note that this tool is designed to provide configuration suggestions and is an excellent starting point. It would be prudent to perform additional research for tuning configurations based on the application(s) utilizing MySQL.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [MySQL 5.1 Reference Manual](http://dev.mysql.com/doc/refman/5.1/en/)
-- [PHP MySQL Manual](http://us2.php.net/manual/en/book.mysql.php)
-- [Perl DBI examples for DBD::mysql](http://sql-info.de/mysql/examples/Perl-DBI-examples.html)
-- [MySQLdb User's Guide](http://mysql-python.sourceforge.net/MySQLdb.html)
-
-
-

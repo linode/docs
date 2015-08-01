@@ -8,7 +8,7 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['hosting-website/']
 modified: Tuesday, October 14th, 2014
 modified_by:
-  name: Joseph Dooley
+  name: Linode
 published: 'Tuesday, March 13th, 2012'
 title: Hosting a Website
 ---
@@ -23,8 +23,7 @@ Now that you've installed Linux and secured your Linode, it's time to start *doi
 >
 >This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
-Web Server
-----------
+## Web Server
 
 Hosting a website starts with installing a *web server*, an application on your Linode that delivers content through the Internet. This section will help you get started with *Apache*, the world's most popular web server. For more information about Apache and other web servers, see our [web server reference manuals](/docs/web-servers).
 
@@ -154,8 +153,7 @@ Now that Apache is optimized for performance, it's time to starting hosting one 
 
 Congratulations! You've configured Apache to host one or more websites on your Linode. After you [upload files](#uploading-files) and [add DNS records](#adding-dns-records) later in this guide, your websites will be accessible to the outside world.
 
-Database
---------
+## Database
 
 Databases store data in a structured and easily accessible manner, serving as the foundation for hundreds of web and server applications. A variety of open source database platforms exist to meet the needs of applications running on your Linux VPS. This section will help you get started with *MySQL*, one of the most popular database platforms. For more information about MySQL and other databases, see our [database reference manuals](/docs/databases).
 
@@ -247,8 +245,7 @@ If you have an existing website, you may want to import an existing database in 
 
 Your database will be imported in to MySQL.
 
-PHP
----
+## PHP
 
 PHP is a general-purpose scripting language that allows you to produce dynamic and interactive webpages. Many popular web applications and content management systems, like WordPress and Drupal, are written in PHP. To develop or host websites using PHP, you must first install the base package and a couple of modules.
 
@@ -307,8 +304,7 @@ After you install PHP, you'll need to enable logging and tune PHP for better per
 
 Congratulations! PHP is now installed on your Linode and configured for optimal performance.
 
-Uploading Files
----------------
+## Uploading Files
 
 You've successfully installed Apache, MySQL, and PHP. Now it's time to upload a website to your Linode. This is one of the last steps before you "flip the switch" and publish your website on the Internet. Here's how to upload files to your Linode:
 
@@ -322,8 +318,7 @@ You've successfully installed Apache, MySQL, and PHP. Now it's time to upload a 
 
 If you're using a content management system like WordPress or Drupal, you may need to configure the appropriate settings file to point the content management system at the MySQL database.
 
-Testing
--------
+## Testing
 
 It's a good idea to test your website(s) before you add the DNS records. This is your last chance to check everything and make sure that it looks good before it goes live. Here's how to test your website:
 
@@ -336,8 +331,7 @@ It's a good idea to test your website(s) before you add the DNS records. This is
     {: .caution}
     >Remember to remove the entries for the name-based virtual hosts from your `hosts` file when you're ready to test the DNS records.
 
-Adding DNS Records
-------------------
+## Adding DNS Records
 
 Now you need to point your domain name(s) at your Linode. This process can take a while, so please allow up to 24 hours for DNS changes to be reflected throughout the Internet. Here's how to add DNS records:
 
@@ -366,8 +360,7 @@ Now you need to point your domain name(s) at your Linode. This process can take 
 
 You've added DNS records for your website(s). Remember, DNS changes can take up to 24 hours to propagate through the Internet. Be patient! Once the DNS changes are completed, you will be able to access your website by typing the domain name in to your browser's address bar.
 
-Setting Reverse DNS
--------------------
+## Setting Reverse DNS
 
 You're almost finished! The last step is setting reverse DNS for your domain name. Here's how:
 
@@ -387,6 +380,3 @@ You're almost finished! The last step is setting reverse DNS for your domain nam
 8.  Click **Yes**.
 
 You have set up reverse DNS for your domain name.
-
-
-

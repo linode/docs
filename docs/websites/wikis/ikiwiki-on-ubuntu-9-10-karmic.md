@@ -2,7 +2,7 @@
 deprecated: true
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Using Ikiwiki on Ubuntu 9.10 (Karmic) to power a standard wiki implementation.'
 keywords: 'ikiwiki,ubuntu,wiki,perl,git,markdown,karmic'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

@@ -2,7 +2,7 @@
 deprecated: true
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: A basic guide to installing nginx from source on Fedora 13
 keywords: 'nginx fedora 13,nginx fedora,nginx,http,web servers,fedora 13'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

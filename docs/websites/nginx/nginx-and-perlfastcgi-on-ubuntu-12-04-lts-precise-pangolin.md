@@ -12,14 +12,18 @@ modified_by:
   name: Linode
 published: 'Wednesday, October 31st, 2012'
 title: 'Nginx and Perl-FastCGI on Ubuntu 12.04 LTS (Precise Pangolin)'
+external_resources:
+ - '[The nginx Homepage](http://nginx.org/)'
+ - '[FastCGI Project Homepage](http://www.fastcgi.com/)'
+ - '[Perl Documentation](http://perldoc.perl.org/)'
+ - '[Basic Ngnix Configuration](/docs/websites/nginx/basic-nginx-configuration)'
 ---
 
 The nginx web server is a fast, lightweight server designed to efficiently handle the needs of both low and high traffic websites. Although commonly used to serve static content, it's quite capable of handling dynamic pages as well. This guide will help you get nginx up and running with Perl and FastCGI on your Ubuntu 12.04 LTS (Precise Pangolin) Linux VPS.
 
 It is assumed that you've already followed the steps outlined in our [getting started guide](/docs/getting-started/). These steps should be performed via a root login to your Linode over SSH.
 
-Set the Hostname
-----------------
+## Set the Hostname
 
 Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
 
@@ -28,8 +32,7 @@ Before you begin installing and configuring the components described in this gui
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-Install Required Packages
--------------------------
+## Install Required Packages
 
 Issue the following commands to update your system and install the nginx web server, FastCGI, and `fcgiwrap` components:
 
@@ -37,13 +40,11 @@ Issue the following commands to update your system and install the nginx web ser
     apt-get upgrade
     apt-get install nginx spawn-fcgi fcgiwrap
 
-Configure DNS
--------------
+## Configure DNS
 
 Create an "A" record pointing your domain name to your Linode's IP address. If you're using the Linode DNS Manager interface, please refer to our [Linode DNS manager guide](/docs/dns-guides/configuring-dns-with-the-linode-manager) for instructions.
 
-Configure Virtual Hosting
--------------------------
+## Configure Virtual Hosting
 
 ### Create Directories
 
@@ -104,7 +105,7 @@ Alternately, you may wish to use TCP sockets instead. If so, modify your nginx v
             include /etc/nginx/fastcgi_params;
             fastcgi_pass  127.0.0.1:8999;
             fastcgi_index index.pl;
-            fastcgi_param SCRIPT_FILENAME /srv/www/www.example.com/public_html$fastcgi_script_name;
+            fastcgi_param SCRIPT_FILENAME /srv/www/www.example.com/public_html/$fastcgi_script_name;
         }
     }
     ~~~
@@ -146,8 +147,7 @@ Start nginx and fcgiwrap by issuing the following commands:
     /etc/init.d/fcgiwrap start
     /etc/init.d/nginx start
 
-Test Perl with FastCGI
-----------------------
+## Test Perl with FastCGI
 
 Create a file called "test.pl" in your site's "public\_html" directory with the following contents:
 
@@ -175,16 +175,3 @@ Make the script executable by issuing the following command:
     chmod a+x /srv/www/www.example.com/public_html/test.pl
 
 When you visit `http://www.example.com/test.pl` in your browser, your Perl environment variables should be shown. Congratulations, you've configured the nginx web server to use Perl with FastCGI for dynamic content!
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [The nginx Homepage](http://nginx.org/)
-- [FastCGI Project Homepage](http://www.fastcgi.com/)
-- [Perl Documentation](http://perldoc.perl.org/)
-- [Basic Ngnix Configuration](/docs/websites/nginx/basic-nginx-configuration)
-
-
-

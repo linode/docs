@@ -1,24 +1,26 @@
 ---
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Use CPAN Minus to install and manage Perl modules easily.'
 keywords: 'cpan,perl,cpanm'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['linux-tools/utilities/cpanm/']
 modified: Wednesday, November 16th, 2011
 modified_by:
-  name: Dave Eaton
+  name: Linode
 published: 'Monday, April 12th, 2010'
 title: Manage CPAN Modules with CPAN Minus
+external_resources:
+ - '[CPAN Minus Documentation](http://search.cpan.org/~miyagawa/App-cpanminus-0.9929/lib/App/cpanminus.pm)'
+ - '[CPAN Minus Development](http://github.com/miyagawa/cpanminus/)'
 ---
 
 CPAN, the Comprehensive Perl Archive Network, is the primary source for publishing and fetching the latest modules and libraries for the Perl programming language. The default method for installing Perl modules, using the "CPAN Shell", provides users with a great deal of power and flexibility but at the cost of a complex configuration and an inelegant default setup.
 
 The CPAN Minus, or cpanm, client attempts to make the power of CPAN accessible to all users, particularly those who aren't Perl developers with a great deal of experience with the CPAN shell. This document outlines the procedures for installing cpanm, and outlines a number of basic use cases. Before beginning this guide, we expect that you have followed our [getting started guide](/docs/getting-started/). If you're new to the world of Linux systems administration, you might like to consider our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/) and [administration basics guide](/docs/using-linux/administration-basics).
 
-Installing CPAN Minus
----------------------
+## Installing CPAN Minus
 
 ### Install Dependencies
 
@@ -53,8 +55,7 @@ Finally, run the following command to bootstrap and upgrade cpanm:
 
 This may take a few moments. You may run the above command at any point to make sure that you're running the latest version of cpanm. When it has completed you will be able to access cpanm functionality using the `cpanm` command.
 
-Using CPAN Minus
-----------------
+## Using CPAN Minus
 
 In most cases, using cpanm to install modules is as simple as issuing a command in the following form:
 
@@ -85,14 +86,3 @@ If at any subsequent point you want to check and see what modules in CPAN have b
 If you want to fetch the information regarding a package in CPAN, issue the following command:
 
     cpanm --info [Module::Name]
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [CPAN Minus Documentation](http://search.cpan.org/~miyagawa/App-cpanminus-0.9929/lib/App/cpanminus.pm)
-- [CPAN Minus Development](http://github.com/miyagawa/cpanminus/)
-
-
-

@@ -26,8 +26,7 @@ To access Longview, log in to the [Linode Manager](https://manager.linode.com) a
 
 [![Linode Longview.](/docs/assets/1371-lv_overview_network_sm.png)](/docs/assets/1372-lv_overview_network.png)
 
-Adding Systems
---------------
+## Adding Systems
 
 To add a Longview system, first add a system to the Longview interface in the Linode Manager. Then install the Longview client application on your system. At that point, the Longview client application will start transferring your system statistics to Linode's servers.
 
@@ -256,8 +255,7 @@ If you plan on monitoring multiple systems with Longview, you should create *lab
 
 You have successfully changed the system's Longview label. Repeat this process to change the labels for the other systems you're monitoring with Longview.
 
-Viewing Statistics
-------------------
+## Viewing Statistics
 
 Now that the Longview client is installed on your system, you can use Longview to monitor your system's performance. If you've just installed the client application, please note that the graphs can take a couple of minutes to appear while the Longview systems start collecting data from your system.
 
@@ -325,8 +323,7 @@ See who's connected to your system by selecting the **active connections** link,
 
 If there are updates available for your system's distribution, you can see them by selecting the **available package updates** link, as shown above. The available updates are listed by name, current version number, and new version number. To install the updates, you'll need to log in to your system and [update the installed packages](/docs/monitoring-and-maintaining#sph_updating-installed-packages).
 
-Using the Interface
--------------------
+## Using the Interface
 
 To take full advantage of Longview's features, you'll need to learn how to view more data in the graphs and narrow their focus to a specific period in time. By changing the viewing history, you'll be able to see statistics for a longer period of time. And by zooming in on a graph, you'll narrow the graph's display to a specific point in time.
 
@@ -354,8 +351,7 @@ All of the graphs will be updated to display data for the time interval you sele
 
 When you're ready to reset the zoom and restore all of the graphics to the default 30 minute time interval, select the **Reset Zoom** link in the top-right corner, as shown above.
 
-Upgrading to Longview Pro
--------------------------
+## Upgrading to Longview Pro
 
 The free version of Longview updates every 5 minutes and provides only twelve hours of performance history. Upgrade to Longview Pro to get 60-second data resolution and start saving your entire system history.
 
@@ -381,8 +377,7 @@ Longview Pro is available at a tiered pricing plan. The default level for a new 
 
 Longview will start collecting more than twelve hours of performance data after you upgrade.
 
-Troubleshooting
----------------
+## Troubleshooting
 
 If you're experiencing problems with the Longview client application, please perform the following steps:
 
@@ -416,8 +411,7 @@ If you're experiencing problems with the Longview client application, please per
 
 If you still need assistance after performing these steps, please open a [support ticket](/docs/support#sph_contacting-linode-support).
 
-Updating Longview
------------------
+## Updating Longview
 
 Periodically, you will receive notices that a Longview update is available. To update the client, run the following command on your Linode via SSH:
 
@@ -445,8 +439,7 @@ On Debian and Ubuntu systems, you may receive a request to update your `init.d` 
 
 Your Longview client will now be up to date.
 
-Disabling Longview
-------------------
+## Disabling Longview
 
 To disable Longview on a system, you'll need to remove it from the Longview interface in the Linode Manager and then uninstall the Longview client application from the system.
 
@@ -482,8 +475,7 @@ Next, you should remove the Longview client application from the system you want
 
 The Longview client application will be removed from your system. This completes the Longview removal process.
 
-Longview Apps
--------------
+## Longview Apps
 
 The Longview Apps extend Longview's statistics reporting to specific services running on your Linode.
 

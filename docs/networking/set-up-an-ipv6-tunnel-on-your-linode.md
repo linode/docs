@@ -17,8 +17,7 @@ As IPv4 exhaustion nears, many people are preparing to make the switch to IPv6. 
 
 Before beginning this guide, you should have already signed up for an IPv6 tunnel through a tunnel broker. [Wikipedia contains a list of tunnel brokers by region](http://en.wikipedia.org/wiki/List_of_IPv6_tunnel_brokers), and we encourage you to research each one before you decide which one to use. The steps outlined in this guide were performed using tunnels from HE.
 
-General Setup
--------------
+## General Setup
 
 Once you have signed up for a tunnel, you will need to issue a few commands. Users of Arch and Gentoo Linux will need to install packages before continuing. Please see the instructions at the end of this section.
 
@@ -52,8 +51,7 @@ Gentoo users will need to issue the following commands before continuing:
     emerge --sync
     emerge sys-apps/iproute2
 
-Manual Configuration
---------------------
+## Manual Configuration
 
 The following instructions will allow you to manually configure your IPv6 tunnel. Please note that in many cases, this is not the preferred method. Read the documentation for your distribution regarding IPv6 before proceeding.
 
@@ -242,6 +240,3 @@ If at any time you wish to reconfigure your tunnel, you will need to stop the se
 Once you have finished modifying the script, issue the following command to start the tunnel again:
 
     /etc/rc.d/ipv6tunnel start
-
-
-

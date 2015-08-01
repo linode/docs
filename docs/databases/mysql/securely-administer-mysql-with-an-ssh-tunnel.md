@@ -11,20 +11,22 @@ modified_by:
   name: Linode
 published: 'Wednesday, January 6th, 2010'
 title: Securely Administer MySQL with an SSH Tunnel
+external_resources:
+ - '[Using PuTTY](/docs/networking/using-putty#using_ssh_tunnels)'
+ - '[MySQL Documentation](http://dev.mysql.com/doc/)'
+ - '[autossh](http://www.harding.motd.ca/autossh/)'
 ---
 
 This guide will show you how to make a secure connection to your remote MySQL server from your local computer, using an *SSH tunnel*. This is useful if you want to use administration tools on your local computer to do work on your server.
 
 After following these instructions, you'll be able to connect to `localhost` on your workstation using your favorite MySQL management tool. The connection will be securely forwarded to your Linode over the Internet.
 
-Prerequisites
--------------
+## Prerequisites
 
 -   [MySQL](/docs/hosting-website#sph_installing-mysql) is installed.
 -   MySQL is configured to listen on `localhost` (127.0.0.1). This is enabled by default.
 
-Create a Tunnel with PuTTY on Windows
--------------------------------------
+## Create a Tunnel with PuTTY on Windows
 
 This section will show you how to create an SSH tunnel to MySQL on Windows, using the PuTTY tool.
 
@@ -60,8 +62,7 @@ First, you need to establish a basic connection to your Linode:
 
 10. Direct your local MySQL client to `localhost:3306`. Your connection to the remote MySQL server will be encrypted through SSH, allowing you to access your databases without running MySQL on a public IP.
 
-Create a Tunnel with mysql-tunnel on Mac OS X or Linux
-------------------------------------------------------
+## Create a Tunnel with mysql-tunnel on Mac OS X or Linux
 
 This section will show you how to create an SSH tunnel to MySQL on Mac OS X or Linux, using the mysql-tunnel tool.
 
@@ -83,15 +84,3 @@ This section will show you how to create an SSH tunnel to MySQL on Mac OS X or L
 ### Persistent SSH Connections
 
 If you need a persistent SSH tunnel, consider using [autossh](http://www.harding.motd.ca/autossh/). autossh starts and monitors an SSH connection, and restarts it if necessary.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Using PuTTY](/docs/networking/using-putty#using_ssh_tunnels)
-- [MySQL Documentation](http://dev.mysql.com/doc/)
-- [autossh](http://www.harding.motd.ca/autossh/)
-
-
-

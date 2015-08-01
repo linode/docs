@@ -1,7 +1,7 @@
 ---
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Learn to build and deploy websites using the PHP Fusion content management system.'
 keywords: 'cms,php fusion,content mangement system,lamp'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

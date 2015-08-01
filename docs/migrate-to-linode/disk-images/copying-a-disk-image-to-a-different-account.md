@@ -15,8 +15,7 @@ title: Copying a Disk to a Different Account
 
 You can copy a Linode's disk from one Linode account to another. This is a great way to prepare a disk for another Linode customer and transfer it from your account to the other user's account. Or if you have multiple Linode accounts, you can use this guide to consolidate all of your disks in one account.
 
-Preparing the Source Linode
----------------------------
+## Preparing the Source Linode
 
 Before initiating the transfer, you'll need to prepare the *source* Linode that contains the disk you want to copy. Start the Linode in rescue mode to transfer files to the other account. Here's how:
 
@@ -25,8 +24,7 @@ Before initiating the transfer, you'll need to prepare the *source* Linode that 
 
 Your Linode is now ready to transfer files to the other account.
 
-Preparing the Receiving Linode
-------------------------------
+## Preparing the Receiving Linode
 
 You'll also need to prepare the *receiving* Linode before initiating the transfer. First, create a new disk to hold the files from the other Linode. Then start the Linode in rescue mode to receive the files from the other account.
 
@@ -57,8 +55,7 @@ Start the receiving Linode in rescue mode. Here's how:
 
 Your Linode is now ready to receive the files from the other Linode account.
 
-Copying the disk
-----------------------
+## Copying the Disk
 
 Now it's time to start copying the files on the disk from one account to another. Here's how to initiate the file transfer:
 
@@ -87,8 +84,7 @@ Now it's time to start copying the files on the disk from one account to another
 
 Wait for the transfer to complete. Note that this process can take a while, depending on the size of your disk.
 
-Verifying the Disk
-------------------------
+## Verifying the Disk
 
 After the file transfer has completed, you should verify the disk by mounting it on the receiving Linode. Here's how:
 
@@ -111,8 +107,7 @@ After the file transfer has completed, you should verify the disk by mounting it
 
 Now that you've ready to boot from the disk.
 
-Booting from the Disk
----------------------------
+## Booting from the Disk
 
 Now it's time to boot from the disk. First, you'll create a configuration profile on the receiving Linode, and then you'll boot the receiving Linode with the disk you just transferred.
 
@@ -144,6 +139,3 @@ Now to start the receiving Linode from the transferred disk, you'll need to sele
 2.  Click **Reboot** to restart the Linode from the transferred disk.
 
 Your Linode will boot using the disk you transferred.
-
-
-

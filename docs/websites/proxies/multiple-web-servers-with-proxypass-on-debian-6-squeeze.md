@@ -1,7 +1,8 @@
 ---
+deprecated: true
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'How to use separate web servers to host sites or applications using ProxyPass with Apache.'
 keywords: 'apache,proxypass,apache on debian,multiple web servers'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

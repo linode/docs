@@ -1,7 +1,7 @@
 ---
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Use the dig utility to perform DNS queries at the command line.'
 keywords: 'dig,dns,troubleshooting,domain names'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -15,8 +15,7 @@ title: Use dig to Perform Manual DNS Queries
 
 `dig` is a command line domain name system (DNS) querying utility that allows you to diagnose issues with domain name resolution.
 
-Installing Dig
---------------
+## Installing Dig
 
 `dig` is part of a collection of DNS utilities often packaged with the DNS server "BIND". You can install these utilities by issuing the appropriate command for your Linux distribution. For users of Debian and Ubuntu systems, use the following command:
 
@@ -30,8 +29,7 @@ In Arch Linux, use the following command:
 
     pacman -S dnsutils 
 
-Using Dig
----------
+## Using Dig
 
 Consider the following basic `dig` output:
 
@@ -122,8 +120,7 @@ In this example, the query returns the status `NXDOMAIN` and the `SOA` or "Start
     ;; WHEN: Tue Aug 24 14: 2010
     ;; MSG SIZE  rcvd: 57
 
-Using Dig to Trace a DNS Query
-------------------------------
+## Using Dig to Trace a DNS Query
 
 With the `+trace` option, `dig` will provide output that allows you follow each successive hierarchical step that the query takes:
 
@@ -178,8 +175,7 @@ This example traces a DNS query for the domain `www.example.com`. This ultimatel
 
 DNS traces help you determine if DNS authority has delegated properly and if DNS "glue" records are leading to an incorrect resolution. DNS traces also provide information on how long queries take to complete and the specific servers that provide intermediate records.
 
-Using Dig to Target a Specific DNS Server
------------------------------------------
+## Using Dig to Target a Specific DNS Server
 
 Any DNS server can publish records for any domain; however, in normal use, DNS servers are only queried for records that have had authority delegated to them. You can use `dig` to query arbitrary DNS servers for records that they might not have been delegated authority, as in the following example:
 
@@ -220,8 +216,7 @@ Any DNS server can publish records for any domain; however, in normal use, DNS s
 
 Specify the name of the server that you wish to query as an argument to the `dig` command formatted as `@[server]`, where `[server]` is the name or address of the IP DNS server.
 
-Using Dig to Retrieve Different Record Types
---------------------------------------------
+## Using Dig to Retrieve Different Record Types
 
 Specify a different type of DNS record by adding that record type (e.g. AAAA, MX, TXT, or SRV) to the `dig` command. Consider the following example of a query for SRV records:
 
@@ -244,8 +239,7 @@ Specify a different type of DNS record by adding that record type (e.g. AAAA, MX
     ;; WHEN: Wed Aug 25 12:40:13 2010
     ;; MSG SIZE  rcvd: 90
 
-Using Dig to Generate Condensed Output
---------------------------------------
+## Using Dig to Generate Condensed Output
 
 Using the `+short` modifier after the dig command abbreviates the output of `dig`:
 
@@ -282,6 +276,3 @@ You can combine the `+short` modifier with other dig commands to generate output
     ns2.linode.com.
     ns3.linode.com.
     ns4.linode.com.
-
-
-

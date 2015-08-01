@@ -2,7 +2,7 @@
 deprecated: true
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Use uWSGI to deploy Python application servers in conjunction with nginx.'
 keywords: 'uwsgi,wsgi,nginx,python,arch linux'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -112,7 +112,7 @@ All requests to URLs ending in `/static` will be served directly from the `/srv/
 Additional Application Servers
 ------------------------------
 
-If the Python application you've deployed requires more application resources than a single Linode instance can provide, all of the methods for deploying a uWSGI application server are easily scaled to rely on multiple uSWGI instances that run on additional Linodes with the request load balanced using nginx's `upstream` capability. Consider our documentation of [proxy and software load balancing with nginx](/docs/uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing) for more information. For a basic example configuration, consider the following example:
+If the Python application you've deployed requires more application resources than a single Linode instance can provide, all of the methods for deploying a uWSGI application server are easily scaled to rely on multiple uSWGI instances that run on additional Linodes with the request load balanced using nginx's `upstream` capability. Consider our documentation of [proxy and software load balancing with nginx](//docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer) for more information. For a basic example configuration, consider the following example:
 
 {: .file-excerpt }
 nginx configuration
@@ -151,7 +151,7 @@ More Information
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [Deploy a LEMP Server on Arch Linux](/docs/lemp-guides/arch-linux/)
-- [Configure nginx Proxy Servers](/docs/uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing)
+- [Configure nginx Proxy Servers](//docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer)
 
 
 

@@ -1,7 +1,7 @@
 ---
 author:
   name: Linode
-  email: scampbell@linode.com
+  email: docs@linode.com
 description: Backing Up Your Linode
 keywords: 'backup,backups,rsync,cron,getting started,tutorial'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -10,12 +10,14 @@ modified_by:
   name: Linode
 published: 'Thursday, April 4th, 2013'
 title: Backing Up Your Data
+external_resources:
+ - '[rsync Man Page](http://linux.die.net/man/1/rsync)'
+ - '[WebGnuru''s rsync Tutorial](http://webgnuru.com/linux/rsync_incremental.php)'
 ---
 
 Now that you've set up your Linode and uploaded content, you'll want to start backing up your data so you don't lose your work. The data stored on your Linode can become corrupted or inaccessible for any number of reasons - accidental deletions, misconfigurations, hacking, or even software updates that don't play nicely with the rest of your configuration. Having a recent backup on hand will turn a major headache into "Oops. Undo."
 
-Assessing Your Needs
---------------------
+## Assessing Your Needs
 
 Everyone should have at least one backup on hand. Backups, however, are not necessarily one-size-fits-all. Before you jump into making your first backup (or creating a recurring backup schedule), take a minute to consider what you need to back up and how you want to do it.
 
@@ -66,8 +68,7 @@ You should also think about how many backups your storage platform can hold. Mos
 
 Finally, you should decide how long to keep your old backups and how many to store at once. While one backup is better than none, most people will want *at least two.* Why? An older backup is more reliable, and a newer backup has your recent changes. For example, if you replace your backup every day, and don't keep any of your old ones, you would be out of luck if you discovered that your website had been hacked a week ago. The safest option is to store backups as frequently as possible without overwriting them. Just make sure that you don't run out of space on your backup machine! Backup types that include compression and other efficiencies make it easier to store multiple backups.
 
-Finding the Right Backup Utility
---------------------------------
+## Finding the Right Backup Utility
 
 Now that you've learned about the importance of backing up your data, you'll need to select one or more backup utilities. This section can help you decide on a tool. At this point, you should have a good idea of the following:
 
@@ -173,8 +174,7 @@ Rdiff-backup is a utility designed to make incremental backups. As their [websit
 
 For information, see [Using Rdiff-backup with SSHFS](/docs/linux-tools/rdiff-backup).
 
-Making a Manual Backup
-----------------------
+## Making a Manual Backup
 
 Now that you've learned about the backup utilities, it's time to use one. We'll use rsync throughout this guide, but you can use any utility to back up the server. This section explains how to perform a one-time manual backup with rsync.
 
@@ -206,8 +206,7 @@ Here's how to make a manual backup of your Linode:
 
 That's it! You can double-check the folder you designated as your local storage folder to make sure everything copied over correctly. In the next sections, we'll discuss how to automate your backups.
 
-Setting Up Automatic Backups to a Linux Server
-----------------------------------------------
+## Setting Up Automatic Backups to a Linux Server
 
 In this section, you'll use rsync to automate daily snapshot-style backups and store them in separate date-stamped folders. You will need only slightly more disk space for the backups than you use on the production server, because you'll be storing identical files as hard links rather than separate files. (If you have large files that change frequently, you will need more space.)
 
@@ -277,8 +276,7 @@ Here's how to set up automatic backups of your Linode to a Linux server:
 
 Congratulations! You have now configured daily automatic snapshot-style backups. If something goes wrong with your server, you'll be able to restore from a backup at any time.
 
-Setting Up Automatic Backups to a Desktop Computer
---------------------------------------------------
+## Setting Up Automatic Backups to a Desktop Computer
 
 Now that you've learned how to back up your Linode to another Linux server, it's time to learn how to back up to your desktop computer. There are several reasons why you may want to do this. It's a cheaper option, for one thing. Rather than pay for two virtual servers, you can keep everything on your home computer. It's also useful for individuals who need to set up development environments on their desktop computers.
 
@@ -409,8 +407,7 @@ Keep in mind that these backups use your allotted transfer, so running them very
 
 Congratulations! You have now configured daily automatic snapshot-style backups. If something goes wrong with your server, you'll be able to choose a restoration from any day from here on forward.
 
-Restoring Your Rsync Backup
----------------------------
+## Restoring Your Rsync Backup
 
 If you followed the instructions listed in one of the sections above, your Linode is automatically being backed up to another server or a desktop computer. But what if something happens to your Linode, or you just want to restore your backup files to another computer? You'll use rsync to restore from a backup.
 
@@ -424,8 +421,7 @@ Here's how to restore files from an rsync backup:
 
 Congratulations! You have successfully restored your Rsync backup to your Linode.
 
-Maintaining Your Backups
-------------------------
+## Maintaining Your Backups
 
 Once you create an automated backup schedule, your backups will virtually take care of themselves. But there are some steps you can take to avoid surprises and keep your backups in good shape. Here are some of our favorite tips.
 
@@ -441,8 +437,7 @@ Once you create an automated backup schedule, your backups will virtually take c
 -   Make sure your backup server doesn't run out of disk space. You may need to delete old backups occasionally. If you're using the rsync backup presented in this article, the server will fill up faster if you have large files that change frequently. You can automate backup deletion if desired.
 -   If you're using the automatic rsync backup presented here, you may want to update your `--link-dest` folder in the cron command to a newer backup folder if you've made a lot of changes since your original backup. This will save time and disk space.
 
-Understanding the Rsync Command
--------------------------------
+## Understanding the Rsync Command
 
 It's great to have a powerful rsync command, but the half-dozen options can be pretty confusing if you're a beginner. If you need to customize the command, or if you're running into errors, it helps to have a deeper understanding of all the components. This section is here to help.
 
@@ -598,14 +593,3 @@ Local folders don't need an SSH login, while remote folders need the SSH login a
     rsync   user@remote1:/remote    user@remote2:/remote/
 
 All servers involved must have rsync installed, and any remote server must be running an SSH server as well.
-
-External Links
---------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [rsync Man Page](http://linux.die.net/man/1/rsync)
-- [WebGnuru's rsync Tutorial](http://webgnuru.com/linux/rsync_incremental.php) - The rsync tutorial portion of this article was largely built from this excellent resource
-
-
-

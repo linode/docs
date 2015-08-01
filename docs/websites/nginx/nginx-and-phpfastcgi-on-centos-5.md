@@ -11,14 +11,19 @@ modified_by:
   name: Linode
 published: 'Monday, December 14th, 2009'
 title: 'Nginx and PHP-FastCGI on CentOS 5'
+external_resources:
+ - '[The nginx Homepage](http://nginx.org/)'
+ - '[FastCGI Project Homepage](http://www.fastcgi.com/)'
+ - '[PHP Documentation](http://www.php.net/docs.php)'
+ - '[Installing Nginx on CentOS 5](/docs/web-servers/nginx/installation/centos-5)'
+ - '[Basic Ngnix Configuration](/docs/websites/nginx/basic-nginx-configuration)'
 ---
 
 The nginx web server is a fast, lightweight server designed to efficiently handle the needs of both low and high traffic websites. Although commonly used to serve static content, it's quite capable of handling dynamic pages as well. This guide will help you get nginx up and running with PHP and FastCGI on your CentOS 5 Linux VPS.
 
 It is assumed that you've already followed the steps outlined in our [getting started guide](/docs/getting-started/). These steps should be performed via a root login to your Linode VPS over SSH.
 
-Basic System Configuration
---------------------------
+## Basic System Configuration
 
 Issue the following commands to set your system hostname, substituting a unique value for "hostname." :
 
@@ -34,8 +39,7 @@ Edit your `/etc/hosts` file to resemble the following, substituting your Linode'
     12.34.56.78 hostname.example.com hostname
     ~~~
 
-Install Required Packages
--------------------------
+## Install Required Packages
 
 CentOS doesn't include nginx in their repositories, so we'll need to add support for [EPEL](http://fedoraproject.org/wiki/EPEL) (Extra Packages for Enterprise Linux) from the Fedora project. Issue the following command:
 
@@ -51,8 +55,7 @@ Issue the following commands to update your system and install the nginx web ser
 
 You'll be asked to accept the key for EPEL, as it gets imported the first time you install an EPEL package. Various additional dependency packages will be installed along with the ones we requested. Once the installation process finishes, you may wish to make sure nginx is running by browsing to your Linode's IP address (found on the "Remote Access" tab in the [Linode Manager](http://manager.linode.com//)). You should get the default ngnix page.
 
-Configure Your Site
--------------------
+## Configure Your Site
 
 In this guide, we'll be using the domain "example.com" as our example site. You should substitute your own domain name in the configuration steps that follow. First, we'll need to create directories to hold our content and log files:
 
@@ -133,8 +136,7 @@ After reviewing your configuration for potential security issues, issue the foll
 
 You may wish to create a test HTML page under `/srv/www/www.example.com/public_html/` and view it in your browser to verify that nginx is properly serving your site (PHP will not work yet). Please note that this will require an [entry in DNS](/docs/dns-guides/configuring-dns-with-the-linode-manager) pointing your domain name to your Linode's IP address.
 
-Configure spawn-fcgi
---------------------
+## Configure spawn-fcgi
 
 Issue the following command sequence to download scripts to control spawn-fcgi and php-fastcgi, set privileges, make the init script run at startup, and launch it for the first time:
 
@@ -149,8 +151,7 @@ Issue the following command sequence to download scripts to control spawn-fcgi a
     chkconfig php-fastcgi on
     /etc/init.d/php-fastcgi start
 
-Test PHP with FastCGI
----------------------
+## Test PHP with FastCGI
 
 Create a file called "test.php" in your site's "public\_html" directory with the following contents:
 
@@ -161,17 +162,3 @@ Create a file called "test.php" in your site's "public\_html" directory with the
     ~~~
 
 When you visit `http://www.example.com/test.php` in your browser, the standard "PHP info" output is shown. Congratulations, you've configured the nginx web server to use PHP-FastCGI for dynamic content!
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [The nginx Homepage](http://nginx.org/)
-- [FastCGI Project Homepage](http://www.fastcgi.com/)
-- [PHP Documentation](http://www.php.net/docs.php)
-- [Installing Nginx on CentOS 5](/docs/web-servers/nginx/installation/centos-5)
-- [Basic Ngnix Configuration](/docs/websites/nginx/basic-nginx-configuration)
-
-
-

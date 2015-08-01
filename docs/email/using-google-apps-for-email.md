@@ -18,8 +18,7 @@ The process for forwarding your email to Google's servers is a matter of redirec
 
 For more information about the [Standard Edition of Google Apps](http://www.google.com/apps/), visit their site. This is a subscription-based service that costs \$50 per year, per user. This document assumes that you are using the [Linode DNS Manager](/docs/dns-guides/configuring-dns-with-the-linode-manager) to manage the DNS records for your domain name, and that you've already signed up for a Google Apps account.
 
-Creating MX Records
--------------------
+## Creating MX Records
 
 To direct your email to Google Apps, you need to set up five MX records for your domain. When you click on "Add/Edit a MX Record," you will find a form that looks like this:
 
@@ -44,8 +43,7 @@ Create the following MX records:
 
 Please note that although the Google Apps documentation states that there must be a trailing dot after each hostname, this is not required in the Linode DNS Manager. The trailing dot will be added to our DNS records automatically, and should not be specified in the hostname.
 
-Verify Domain Ownership
------------------------
+## Verify Domain Ownership
 
 During the sign up process, Google will need you to verify that you have authority over the domain that you're setting up with their servers. They provide two ways to accomplish this.
 
@@ -56,6 +54,3 @@ The first option involves creating an HTML file with specific content at a parti
 If you don't have a web server set up, you can create a temporary CNAME record in the Linode DNS Manager by clicking on the "Add a new CNAME Record" link in the relevant domain record. Fill out the form with the information provided by the Google sign up process. The Linode DNS manager refreshes its records every quarter hour, so it may take some time for the CNAME record to be accessible to Google.
 
 At this point the configuration is complete. You may have to wait several hours; Google says that it could take 24 to 48 hours for DNS to redirect correctly. After that window, however, all of your email should be successfully directed at Google's servers.
-
-
-

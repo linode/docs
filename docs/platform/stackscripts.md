@@ -17,8 +17,7 @@ external_resources:
 
 [StackScripts](http://linode.com/stackscripts/) provide Linode users with the ability to automate the deployment of custom systems on top of our default Linux distribution images. Linodes deployed with a StackScript run the script as part of the first boot process. This guide explains how StackScripts work, and offer several examples of how to use them.
 
-Introduction
-------------
+## Introduction
 
 StackScripts are usually Bash scripts, stored in the Linode Manager, and can be accessed when you use the **Rebuild** link from the Linode Dashboard. During the first boot job of the newly created disks, the StackScript will run, using any variable you may have added, and perform the scripted commands.
 
@@ -26,8 +25,7 @@ StackScripts are usually Bash scripts, stored in the Linode Manager, and can be 
 >
 > The **Rebuild** option will destroy all existing disks and profiles.
 
-Deploying from a StackScript
-----------------------------
+## Deploying from a StackScript
 
 1.  We start by navigating to the Linode Dashboard. Before deploying a new disk, make sure you have enough storage space available. If not you may need to [resize](/docs/migrate-to-linode/disk-images/disk-images-and-configuration-profiles#resizing-a-disk#resizing-a-disk) or [remove](/docs/migrate-to-linode/disk-images/disk-images-and-configuration-profiles#removing-a-disk) a disk. Alternately you can create a new Linode for testing purposes.
 2.  Click on the **Deploy a Linux Distribution** link.
@@ -112,8 +110,7 @@ Deploying from a StackScript
 
     [![Our new StackScript is available.](/docs/assets/1527-stackscripts_new_small.png)](/docs/assets/1528-stackscripts_new.png)
 
-StackScript Use Cases
----------------------
+## StackScript Use Cases
 
 Below are several common use cases for StackScripts.
 
@@ -133,7 +130,7 @@ This will download the StackScript on the Linode as `ssinclude-[NUMBER]`. To dow
 
     source <ssinclude StackScriptID="[NUMBER]">
 
-Otherwise execute the script on a second line, as seen below:
+If you're scripting in another language, execute the script on a second line, as seen below:
 
     <ssinclude StackScriptID="[NUMBER]">
     ./ssinclude-[NUMBER]
@@ -150,8 +147,7 @@ If your deployment includes function-specific "appliance-type" instances, you ma
 
 Application clusters are similar. If your architecture includes some sort of "cluster," you may be able to automate the deployment of a new cluster-member by using StackScripts to configure the instance. Here, StackScripts, in combination with the API, provide the ability to automate cluster deployment and management with a large degree of elasticity.
 
-Developing StackScripts
------------------------
+## Developing StackScripts
 
 The only requirements to run a StackScript are that the first line of the script be a shebang (e.g. `#!/bin/bash`) and that the interpreter specified by the shebang be installed in the Linode base image you are deploying. While `Bash` may be an obvious choice for StackScripts, you may choose any language or system.
 

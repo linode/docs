@@ -1,7 +1,7 @@
 ---
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'How to identify and solve common configuration problems encountered when using Apache.'
 keywords: 'apache,webserver,httpd,troubleshooting'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -11,14 +11,16 @@ modified_by:
   name: Linode
 published: 'Friday, November 6th, 2009'
 title: Troubleshooting Common Apache Issues
+external_resources:
+ - '[Apache documentation](http://httpd.apache.org/docs/)'
+ - '[Apache user wiki](http://wiki.apache.org/httpd/)'
 ---
 
 This article provides troubleshooting guidelines for the [Apache web server](/docs/web-servers/apache/). Apache is a highly customizable tool for serving HTTP traffic. Because it allows for so many different configurations and settings in so many different places, sometimes Apache configuration can befuddle even advanced users.
 
 In this guide, you'll start with some basic troubleshooting steps and then proceed to more advanced techniques that can help you untangle conflicting directives. We recommend starting at the beginning of this guide and going through it in order. By the time you're done, you should be able to debug your Apache installation.
 
-Is Apache Running?
-------------------
+## Is Apache Running?
 
 First, check whether Apache is running. Follow the process in this [Troubleshooting Guide](/docs/quick-start-troubleshooting#sph_is-the-web-server-running).
 
@@ -26,8 +28,7 @@ If it isn't, go ahead and restart Apache, as explained in the next section.
 
 You may also want to investigate the possibility of [memory issues](/docs/troubleshooting/memory-networking#sph_diagnosing-and-fixing-memory-issues), if Apache is stopping unexpectedly.
 
-Restarting Apache
------------------
+## Restarting Apache
 
 Even if Apache is running, it can be useful to restart the server. This will let you read the Apache startup message. If you get an error, you can use the text of the error in an online search to help you find more details and solutions. Restarting the server may produce several seconds of downtime.
 
@@ -49,8 +50,7 @@ Fedora and CentOS:
 >
 >     /etc/rc.d/httpd restart
 
-Reloading Apache
-----------------
+## Reloading Apache
 
 Restarting or reloading Apache is also useful if you've recently made changes to your server, but they don't seem to be taking effect. This is true for changes made directly in the Apache configuration files, as well as for changes you've made to the configuration for a dynamic language like `mod_python`, `mod_rails` (for example, Phusion Passenger, or `mod_rack`), `mod_ruby`, etc. These interfaces cache code internally, and do not reread scripts on new requests.
 
@@ -64,8 +64,7 @@ Fedora and CentOS:
 
     /etc/init.d/httpd reload
 
-Checking the Logs
------------------
+## Checking the Logs
 
 The best place to check for Apache errors is the Apache error logs. To view the error logs, we recommend using the `tail` command with the `-f` flag, which shows you the most recent part of the log live as it's updated. Example:
 
@@ -85,8 +84,7 @@ The access logs can also help you find specific information about visitors to yo
 
 **Fedora and CentOS:** `/var/log/httpd/access_log`
 
-Enabling Verbose Logs
----------------------
+## Enabling Verbose Logs
 
 Sometimes it can be helpful to see extra information from Apache. You can increase the amount of detail shown in the logs by changing the *log level*.
 
@@ -116,8 +114,7 @@ Sometimes it can be helpful to see extra information from Apache. You can increa
 >
 > Remember to set the `LogLevel` back to `warn` when you're done troubleshooting, or your server may fill up with logs.
 
-Checking Syntax
----------------
+## Checking Syntax
 
 Apache includes a nice little syntax checking tool. Use it to make sure you aren't missing any brackets in your configuration files (and similar problems).
 
@@ -129,8 +126,7 @@ Fedora and CentOS:
 
     httpd -t
 
-Checking Virtual Host Definitions
----------------------------------
+## Checking Virtual Host Definitions
 
 Another helpful Apache tool lets you see all the virtual hosts on the server, their options, and the file names and line numbers of where they are defined. This will help you inventory all the domains that are configured on your host. It will also help you locate the correct file where you should update the configuration details for a domain, if you're not quite sure where you originally put them.
 
@@ -148,8 +144,7 @@ Make sure all your `<VirtualHost>` directives use IP addresses and port numbers 
 >
 > You can have multiple `NameVirtualHost` values, which is what you'll need to do if you're running sites on multiple IPs and ports. Just make sure the `<VirtualHost>` configurations correspond to the configured `NameVirtualHost` directives.
 
-Troubleshooting Conflicting Directives
---------------------------------------
+## Troubleshooting Conflicting Directives
 
 If you've modified a configuration option, and you're still not seeing it take effect even after [reloading the server configuration](#sph-restarting-apache), it's possible that the new option may have been overridden by a conflicting directive. The main point to remember is that later directives override conflicting earlier ones. So, the directive that is read the *latest* will always be the one that takes effect.
 
@@ -162,8 +157,7 @@ These points should help clarify the order in which directives are read:
 -   When an entire directory is included, the files from that directory are included sequentially (alphabetically) based on name.
 -   Debian and Ubuntu systems have a file called `/etc/apache2/ports.conf`, where the `NameVirtualHost` and `Listen` directives are set. These values determine the IP address or addresses to which Apache binds, and on which port(s) the web server listens for HTTP requests. This can sometimes conflict with settings in other files.
 
-Further Troubleshooting
------------------------
+## Further Troubleshooting
 
 If you're continuing to have issues with Apache, we encourage you to make contact with the [Linode user community](https://forum.linode.com/). The Apache web server is *very* widely deployed, so you'll find a large number of Linode users (and system administrators in general) with Apache experience. So, dive into the Linode [IRC channel](https://www.linode.com/chat/) and [forums](http://linode.com/forums/)! You'll more than likely find someone who can help you out.
 
@@ -171,14 +165,3 @@ You might want to look at the following Linode Library guides:
 
 -   A group of guides for various [web frameworks](/docs/frameworks/)
 -   General [Apache HTTP server](/docs/web-servers/apache) guides
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Apache documentation](http://httpd.apache.org/docs/)
-- [Apache user wiki](http://wiki.apache.org/httpd/)
-
-
-

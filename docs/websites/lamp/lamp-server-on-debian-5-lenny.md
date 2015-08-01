@@ -2,7 +2,7 @@
 deprecated: true
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'How to build a LAMP application server with Debian 5.0 (Lenny).'
 keywords: 'Debian LAMP Server,Debian LAMP guide,LAMP howto'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

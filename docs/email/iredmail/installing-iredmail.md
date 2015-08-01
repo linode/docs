@@ -16,11 +16,13 @@ published: 'Monday, October 6, 2014'
 title: 'Installing iRedMail on your Linode'
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $100 per published guide.*
+*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
+
+<hr>
 
 Running your own mail server has many benefits. It allows you to manage the size of your mailboxes and attachments, run hourly/daily email backups, view mail logs, and gives you the freedom to use any domain name available. The drawback is usually the in-depth and sometimes complicated process of installing all the necessary parts. This guide uses a streamlined process, the iRedMail install script, and should have you up and running your mail server in under 15 minutes.
 
-# Prerequisites
+## Prerequisites
 
 Before beginning this guide you should have:
 
@@ -32,11 +34,11 @@ This guide assumes you've followed the Linode [Getting Started](/docs/getting-st
 
 The steps required in this guide require root privileges. Be sure to run the steps below as ``root`` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
-## MX Record
+### MX Record
 
 A DNS MX record tells the internet where to send email directed at you domain. Before your Linode can receive email for addresses at a domain, an MX record must be created for that domain, pointing to your Linode's IP address. An example MX record can be found on the Linode [Introduction to DNS records] [a] page.
 
-# Installing iRedMail
+## Installing iRedMail
 
 1. Start by making sure your Linode is up-to-date by running the following commands:
 
@@ -125,7 +127,7 @@ A DNS MX record tells the internet where to send email directed at you domain. B
 
         rm /root/iRedMail-0.8.7/config
 
-# Adding Users
+## Adding Users
 
 iRedMail is packaged with a mail server account configuration called iRedAdmin. Below are the steps required to add a user/mailbox to your mail server.
 
@@ -141,7 +143,7 @@ iRedMail is packaged with a mail server account configuration called iRedAdmin. 
 
     ![adduser3](/docs/assets/adduser3.png)
 
-# Certificates, SPF, DKIM, and rDNS
+## Certificates, SPF, DKIM, and rDNS
 
 By default, iRedMail generates a key and self-signed certificate for the mail server, and web server. To avoid other email servers marking email from our server as spam, we're going to install a trusted certificate.
 
@@ -157,7 +159,7 @@ After first logging in to the postmaster account, you should have two emails wai
 {: .note}
 >For if your certificate issuer uses `.pem` files instead of `.crt`, be sure to replace the file extension in the instructions below.
 
-## Certificates
+### Certificates
 
 1. After moving your certificate and key onto your Linode, make a note of its location. The recommendation is to install in the same directories as the iRedMail default certificate and key. The certificate is located in `/etc/ssl/certs/` and the key is in `/etc/ssl/private/`.
 
@@ -201,11 +203,11 @@ After first logging in to the postmaster account, you should have two emails wai
 
     If you encounter error messages during these commands, go back and confirm the correct paths are in place for your certificates.
 
-## SPF, DKIM and rDNS
+### SPF, DKIM and rDNS
 
 This section covers the insertion of SPF and DKIM records in your DNS entry. SPF records allow us to specify the authority to send mail from our domain to specific IP addresses. DKIM records are another way of proving the validity of an email by allowing the receiver to check a public key, or the mail server’s DNS TXT record, against the DKIM key included in every email message sent by your mail server.
 
-### SPF
+#### SPF
 
 1. Navigate to your DNS provider, either where you purchased your domain name or Linode if you’ve transferred your DNS, and enter the following bits of information in your subdomain area to activate SPF. If you are using Linode's DNS manager, you can leave the name field blank, but other DNS providers may require you to specify @ for the hostname.
 
@@ -217,7 +219,7 @@ This section covers the insertion of SPF and DKIM records in your DNS entry. SPF
 
 2.  For more information, you can check out the [SPF website link][s] recommended by iRedMail.
 
-### DKIM
+#### DKIM
 
 1. In the same area of your DNS host records, add the following entry to enable DKIM. The IP address/url entry following the “p=“ is your public DKIM key, which can be found in your “Details of this iRedMail installation” email about halfway down under the “DNS record for DKIM support” section. Copy everything BETWEEN the double quotes and place after the “p=“ portion of the dkim._domainkey DNS entry.
 
@@ -237,11 +239,11 @@ This section covers the insertion of SPF and DKIM records in your DNS entry. SPF
 
 4. For more information on DKIM records, you can check out the [DKIM website link][d] recommended by iRedMail.
 
-### rDNS
+#### rDNS
 
 To set your rDNS, check out the [Setting Reverse DNS][r] section of the DNS Manager guide. This is optional but gives additional credibility to a mail server for certain spam filters.
 
-## Apache Authentication Fix for Cluebringer and AWStats Login
+### Apache Authentication Fix for Cluebringer and AWStats Login
 
 Cluebringer (a.k.a. PolicyD v2) is a policy server utility for our mail transfer agent, Postfix. It provides a web-based interface ([example] [p]) where you can fine tune policies applied to Postfix. For more info, see the Policy D [documentation] [d].
 
@@ -361,7 +363,7 @@ AWStats quickly analyzes and displays log files/server activity via a few web-ba
 	    service apache2 restart
 
 
-## Greylisting Recommendation
+### Greylisting Recommendation
 
 By default, Cluebringer starts with the greylisting feature enabled. While the implementation of greylisting does protect a mail server from receiving spam, there are unintended consequences to its operation. This was tested by sending a few emails from a well-known "free" email account to my new mail server. Most of the "free" email SMTP services are provided by SEVERAL SMTP servers that upon receiving the 4XX reply code from your server, since the hostname and IP of the SMTP server isn't "known", does retransmit the email. However, usually, the retransmitted email is from either another host or from the same host but from another IP address. The greylisting feature of Cluebringer either severely delayed, or completely denied, a few of the test emails. 
 
@@ -377,14 +379,14 @@ For this reason, the author recommends turning this module off. Note, since bein
 
 	    service postfix-cluebringer restart
 
-# Final Testing and Conclusion
+## Final Testing and Conclusion
 
 As a final test, you can utilize a service such as [Mail Tester][m] to ensure that your records have been configured correctly. If you have followed this guide precisely, you should receive a score of 10/10 on Mail Tester's site. If not, Mail Tester will provide you with a report indicating what portion of your configuration needs improvement.
 
  {: .note }
 >While some DNS records update almost instantaneously, updates can take up to 24 hours to propagate. You may receive a lower score on these tests if your records have not yet updated.
 
-## Conclusion
+### Conclusion
 Familiarize yourself with the various files, configs, and settings listed in the iRedMail emails and website and start adding users to your mail server. Happy Mailing!
 
 [l]:https://www.linode.com

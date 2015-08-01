@@ -2,7 +2,7 @@
 deprecated: true
 author:
   name: Linode
-  email: scampbell@linode.com
+  email: docs@linode.com
 description: Our guide to billing and payments
 keywords: 'prepaid,billing,payments,credit,referral,invoice'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -18,8 +18,7 @@ Use this guide to learn how our prepaid billing system works and how to make pay
 
 This guide applies to customers using Linode's prepaid billing system. For current information, please see [the current billing guide](/docs/billing-and-payments).
 
-Updating to Metered Billing
----------------------------
+## Updating to Metered Billing
 
 To update to the new Metered billing system, follow the instructions here:
 
@@ -63,8 +62,7 @@ You will no longer receive the annual discount when you switch to Metered billin
 
 If you want to stay on the old billing system, just don't click the final button.
 
-How Our Billing Works
----------------------
+## How Our Billing Works
 
 All services are billed automatically on the first of the month, and all fees billed to your account are prorated for the current billing cycle. This means that if you sign up or purchase extras in the middle of the billing cycle, you will be charged a prorated amount for the amount of time left in the cycle. At the beginning of the next billing cycle, your account will be billed the full cost of your Linode and any extra services.
 
@@ -72,13 +70,11 @@ All services are billed automatically on the first of the month, and all fees bi
 >
 > If you sign up after the 19th of the month, your account will be billed for the time left in the current month, plus the full amount of the next month.
 
-Payment Methods
----------------
+## Payment Methods
 
 We accept Visa, MasterCard, Discover, and American Express. For payments of a year or more, we also accept checks or money orders (which *must* be in USD) made out to "Linode, LLC" and sent to our [office address](http://www.linode.com/about/). Please [contact support](/docs/support) before paying with check or money order. Note that we do not accept bank/wire transfers, and we have no plans to support PayPal at this time.
 
-Making a Payment
-----------------
+## Making a Payment
 
 You can use the Linode Manager to pay an outstanding balance or prepay for Linode services. Here's how:
 
@@ -96,13 +92,11 @@ The payment may take a few minutes to be applied to your account. Click the **Ac
 
 Linode provides a 10% discount for annual prepayment, and a 15% discount for biennial prepayment. To prepay for a year or more of service and receive your discount, please [contact support](/docs/support).
 
-Bandwidth Overages
-------------------
+## Bandwidth Overages
 
-If you exceed your monthly bandwidth quota, your account will be billed for \$0.10/GB at the end of the current month. If you will be routinely exceeding your bandwidth quota, you may wish to purchase extra bandwidth at the rate of \$0.10/GB from the **Extras** tab in the Linode Manager.
+If you exceed your monthly bandwidth quota, your account will be billed for \$0.02/GB at the end of the current month.
 
-Accessing Billing History
--------------------------
+## Accessing Billing History
 
 All of your billing history is stored in the Linode Manager. Here's how to access it:
 
@@ -112,8 +106,7 @@ All of your billing history is stored in the Linode Manager. Here's how to acces
 
 Select an invoice to view the charges for a particular month. You can also download invoices in PDF format.
 
-Referral Credits
-----------------
+## Referral Credits
 
 You can receive service credit by referring new users to Linode. When you refer someone who maintains at least one active Linode for 90 days, your account will be issued a \$20 service credit. Here's how to find your account referral code and URL:
 
@@ -124,8 +117,7 @@ You can receive service credit by referring new users to Linode. When you refer 
 
 Referral service credits must be used to purchase Linode services, and cannot be refunded as cash.
 
-Updating Credit Card Information
---------------------------------
+## Updating Credit Card Information
 
 Keep your credit card information up to date to prevent service interruptions. Here's how:
 
@@ -141,8 +133,7 @@ Your credit card information will be updated.
 >
 > If you have an outstanding balance, you will need to make a manual payment to bring your account up to date. See the [Making a Payment](#making-a-payment) section for more information.
 
-Removing Services
------------------
+## Removing Services
 
 Our services are provided without a contract, so you're free to remove services from your account at any time. Here's how:
 
@@ -154,8 +145,7 @@ Our services are provided without a contract, so you're free to remove services 
 
 If you remove services from your account, you will be issued a prorated service credit for the time left in the current billing period. This credit may be used to purchase additional Linode services in the future. Service credit is always used before charging the credit card on file for ongoing service.
 
-Canceling Your Account
-----------------------
+## Canceling Your Account
 
 You can cancel your account and receive a refund. Here's how:
 
@@ -171,6 +161,3 @@ Your account will be canceled and all of your services will be deactivated.
  {: .note }
 >
 > You do not have to cancel your account to prevent recurring charges. Instead, you can remove all Linodes and services from your account via the **Linodes** tab in the Linode Manager. This will allow you to retain your Linode account. If you use Longview with non-Linode services, or want to keep your account name and history, you may find this to be a useful option. See the [Removing Services](#removing-services) section for more information.
-
-
-

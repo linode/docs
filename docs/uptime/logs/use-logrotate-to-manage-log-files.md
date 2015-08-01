@@ -1,8 +1,8 @@
 ---
 author:
   name: Linode
-  email: skleinman@linode.com
-description: 'Use the "logrotate" tool to manage logfiles.'
+  email: docs@linode.com
+description: 'Use the logrotate tool to manage logfiles.'
 keywords: 'logrotate,log rotation,log files,access logs,linux systems administration,basic systems administration'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['linux-tools/utilities/logrotate/']
@@ -15,8 +15,7 @@ title: Use logrotate to Manage Log Files
 
 `logrotate` is a tool for managing log files created by system processes. This tool automatically compresses and removes logs to maximize the convenience of logs and conserve system resources, and allows users extensive control over how log rotation is processed.
 
-Using Log Rotate
-----------------
+## Using Log Rotate
 
 `logrotate`'s behavior is determined by options set in a configuration file, typically located at `/etc/logrotate.conf`.
 
@@ -65,8 +64,7 @@ logrotate.conf
 
 The size and rotation of `/var/log/mail.log` is managed according to the directives instantiated between the braces. The above configuration rotates logs every week, saves the last five rotated logs, compresses all of the old log files with the `xz` compression tool, and recreates the log files with permissions of 0644\` and `postfix` as the user and group owner. These specific configuration options override global configuration options which are described below.
 
-Configure Log Rotation
-----------------------
+## Configure Log Rotation
 
 {: .file-excerpt }
 logrotate.conf
@@ -84,8 +82,7 @@ logrotate.conf
 
 Your system will need a functioning [MTA](/docs/email/) to be able to send email.
 
-Configure Rotation Intervals
-----------------------------
+## Configure Rotation Intervals
 
 To rotate logs every week, set the following configuration directive:
 
@@ -127,8 +124,7 @@ logrotate.conf
 
 The `size` directive forces log rotation when a log file grows bigger than the specified `[value]`. By default, `[value]` is assumed to be in bytes. Append a `k` to `[value]` to specify a size in kilobytes, or use `M` or `G` for megabytes or gigabytes.
 
-Configure Log Compression
--------------------------
+## Configure Log Compression
 
 {: .file-excerpt }
 logrotate.conf
@@ -146,8 +142,7 @@ logrotate.conf
 
 By default, `logrotate` compresses files using the `gzip` command. You can replace this with another compression tool such as `bzip2` or `xz` as an argument to the `compresscmd` directive.
 
-Delay Log File Compression
---------------------------
+## Delay Log File Compression
 
 {: .file-excerpt }
 logrotate.conf
@@ -157,8 +152,7 @@ logrotate.conf
 
 In some situations it is not ideal to compress a log file immediately after rotation when the log file needs additional processing. The `delaycompress` directive above postpones the compression one rotation cycle.
 
-Maintain Log File Extension
----------------------------
+## Maintain Log File Extension
 
 In typical operation, `logrotate` will append a number to a file name so the `access.log` file would be rotated to `access.log.1`. To ensure that an extension is maintained, use the following directive.
 
@@ -170,8 +164,7 @@ logrotate.conf
 
 This ensures that `access.log` will be rotated to `access.1.log`. If you enable compression, the compressed log will be located at `access.1.log.gz`.
 
-Control Log File Permissions
-----------------------------
+## Control Log File Permissions
 
 If your daemon process requires that a log file exist to function properly, `logrotate` may interfere when it rotates logs. As a result, it is possible to have `logrotate` create new empty log files after rotation. Consider the following example:
 
@@ -183,8 +176,7 @@ logrotate.conf
 
 In this example, a blank file is created with the permissions `640` (owner read/write, group read, other none) owned by the user `www-data` and in the `users` group. This directive specifies options in the form: `create [mode(octal)] [owner] [group]`.
 
-Running Commands
-----------------
+## Running Commands
 
 `logrotate` can run commands before and after rotation to ensure that routine tasks associated with log ration are run such as restarting or reloading daemons and passing other kinds of signals. To run a command before rotation begins, use a directive similar to the following:
 
@@ -207,6 +199,3 @@ logrotate.conf
     ~~~
 
 `postrotate` is operationally and functionally identical to `prerotate` except that the commands are run after log rotation.
-
-
-

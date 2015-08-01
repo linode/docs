@@ -1,16 +1,19 @@
 ---
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Using cron to run programs at specified times on your Linux server.'
 keywords: 'cron,cron tutorial,crontab,cron linux,administration,linux,systems,automation'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['linux-tools/utilities/cron/']
 modified: Tuesday, May 17th, 2011
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Tuesday, December 15th, 2009'
 title: Schedule Tasks with Cron
+external_resources:
+ - '[Wikipdia article on cron](http://en.wikipedia.org/wiki/Cron)'
+ - '[Administration Basics](/docs/using-linux/administration-basics)'
 ---
 
 `cron` is a classic utility found on Linux and UNIX systems for running tasks at predetermined intervals. Systems administrators and developers of Linux applications use `cron` for automating and managing recurring tasks.
@@ -19,8 +22,7 @@ Since `cron` is a standard component of modern Linux systems, this documentation
 
 Before we get started, there are a couple of terms associated with `cron` that are non-obvious. First, the job or **cronjob** refers to the task, script, or application that `cron` runs. Second, **crontab** refers to each user's list of cronjobs.
 
-Using crontab
--------------
+## Using crontab
 
 To see a listing of the current user's cronjobs, issue the following command:
 
@@ -44,8 +46,7 @@ We'll explore each aspect of these commands later in this document. To edit the 
 
 This will open a [text editor](/docs/using-linux/administration-basics#how_to_edit_text_interactively) and allow you to edit the `crontab`.
 
-Basic cron Use
---------------
+## Basic cron Use
 
 Entries in the `crontab` file come in a specific format. Each job is described on one and only one line. Each line begins with a specification of the interval, and ends with a command to be run at that interval.
 
@@ -117,8 +118,7 @@ crontab
 
 In the first example, the `rebuild-dns-zones` script is run every twenty minutes. In the second example, the `backup-static-files` program is run at 30 past the hour, (i.e. the "bottom of the hour") every other hour. In the final *two* examples, the `compress-static-files` script is run at the beginning of *every* hour.
 
-Advanced cron Use
------------------
+## Advanced cron Use
 
 Now that you have a more firm grasp of how to use `cron`, you may wonder how exactly to use cronjobs. As `cron` is simply a tool for scheduling jobs, it can be used in a number of different applications and situations to accomplish a wide variety of tasks. Consider the following possibilities:
 
@@ -141,14 +141,3 @@ This will only redirect output that is sent to "standard out," (e.g. `stdout`). 
     >/dev/null 2>&1
 
 While this can clean up your email box of unwanted email, redirecting all output to `/dev/null` can cause you to miss important errors if something goes wrong and a cronjob begins to generate errors.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Wikipdia article on cron](http://en.wikipedia.org/wiki/Cron)
-- [Administration Basics](/docs/using-linux/administration-basics)
-
-
-

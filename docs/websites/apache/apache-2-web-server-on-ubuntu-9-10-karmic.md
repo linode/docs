@@ -2,7 +2,7 @@
 deprecated: true
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Instructions for getting started with the Apache web server on Ubuntu 9.10 (Karmic).'
 keywords: 'apache,apache ubuntu 9.10,apache ubuntu karmic,web server,apache on ubuntu,apache karmic'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

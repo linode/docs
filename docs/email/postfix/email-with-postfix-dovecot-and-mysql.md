@@ -18,9 +18,9 @@ For a different Linux distribution or different mail server, <a href="/docs/" ta
 
 ### Prerequisites
 
-1.  Set up the Linode as specified in the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/securing-the-server) guides.
+1.  Set up the Linode as specified in the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/securing-your-server) guides.
 
-2.  Ensure that the iptables [firewall](/docs/securing-the-server#sph_creating-a-firewall) is not blocking any of the standard mail ports (25, 465, 587, 110, 995, 143, and 993). If using a different form of firewall, confirm that it is not blocking any of the needed ports either.
+2.  Ensure that the iptables [firewall](/docs/securing-your-server#creating-a-firewall) is not blocking any of the standard mail ports (25, 465, 587, 110, 995, 143, and 993). If using a different form of firewall, confirm that it is not blocking any of the needed ports either.
 
 ### Configuring DNS
 
@@ -36,6 +36,9 @@ Ensure that the MX record is changed for all domains and subdomains that might r
 
 Dovecot offers a default self-signed certificate for free. This certificate encrypts the mail connections similar to a purchased certificate. However, the email users receive warnings about the certificate when they attempt to set up their email accounts. Optionally, purchase and configure a commercial SSL certificate to avoid the warnings. For information about SSL certificates, see <a href="/docs/security/ssl/" target="_blank">Linode's SSL Certificate guides</a>.
 
+{: .note}
+>
+> Many email service providers such as Gmail will only accept commercial SSL certificates for secure IMAP/POP3 connections. To communicate with these providers, follow our guide for [Obtaining a Commercial SSL Certificate](https://www.linode.com/docs/security/ssl/obtaining-a-commercial-ssl-certificate).
 
 ## Installing Packages
 
@@ -329,7 +332,7 @@ Next, set up Postfix so the server can accept incoming messages for the domains.
 
         cp /etc/postfix/master.cf /etc/postfix/master.cf.orig
 
-11. Open the configuration file for editing and uncomment the two lines starting with `submission` and `smtps`. The first section of the `/etc/postfix/master.cf` file should resemble the following:
+11. Open the configuration file for editing and uncomment the two lines starting with `submission` and `smtps` and the block of lines starting with `-o` after each. The first section of the `/etc/postfix/master.cf` file should resemble the following:
 
     {: .file-excerpt }
 	/etc/postfix/master.cf
@@ -350,17 +353,17 @@ Next, set up Postfix so the server can accept incoming messages for the domains.
 	  #dnsblog   unix  -       -       -       -       0       dnsblog
 	  #tlsproxy  unix  -       -       -       -       0       tlsproxy
 	  submission inet n       -       -       -       -       smtpd
-	  #  -o syslog_name=postfix/submission
-	  #  -o smtpd_tls_security_level=encrypt
-	  #  -o smtpd_sasl_auth_enable=yes
-	  #  -o smtpd_client_restrictions=permit_sasl_authenticated,reject
-	  #  -o milter_macro_daemon_name=ORIGINATING
+	    -o syslog_name=postfix/submission
+	    -o smtpd_tls_security_level=encrypt
+	    -o smtpd_sasl_auth_enable=yes
+	    -o smtpd_client_restrictions=permit_sasl_authenticated,reject
+	    -o milter_macro_daemon_name=ORIGINATING
 	  smtps     inet  n       -       -       -       -       smtpd
-	  #  -o syslog_name=postfix/smtps
-	  #  -o smtpd_tls_wrappermode=yes
-	  #  -o smtpd_sasl_auth_enable=yes
-	  #  -o smtpd_client_restrictions=permit_sasl_authenticated,reject
-	  #  -o milter_macro_daemon_name=ORIGINATING
+	    -o syslog_name=postfix/smtps
+	    -o smtpd_tls_wrappermode=yes
+	    -o smtpd_sasl_auth_enable=yes
+	    -o smtpd_client_restrictions=permit_sasl_authenticated,reject
+	    -o milter_macro_daemon_name=ORIGINATING
 	  ~~~
 
 12. Restart Postfix by entering the following command:

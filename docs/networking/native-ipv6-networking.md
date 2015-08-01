@@ -23,8 +23,7 @@ It is important to note that Linode does not offer private IPv6 address allocati
 >
 > The steps provided in this guide require root privileges. It is assumed that you will run these commands as the root superuser. If you are not logged in as `root` you will need to use `sudo`. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 
-Setting up IPv6
----------------
+## Setting up IPv6
 
 The IPv6 address provided with your Linode will automatically assign itself to your Linode via SLAAC. Our system is set up to do this so that you will not need to statically configure your IPv6 address unless you have an IPv6 address pool.
 
@@ -50,8 +49,7 @@ As displayed above, you will have inet6 blocks even if you only have one IPv6 ad
 
 If your Linode does not have the correct IPv6 address or an IPv6 address at all, you should verify that you have router advertisements enabled and you have disabled privacy extensions. In order to use Linode's SLAAC, your Linode will need to accept router advertisements. These settings are properly set in our distribution templates by default.
 
-Additional IPv6 Addresses
--------------------------
+## Additional IPv6 Addresses
 
 You can request additional IPv6 addresses at any time by opening a [support ticket](/docs/platform/support). Additional addresses are allotted in pools. Each pool has a different amount of IPv6 addresses. The IPv6 pool sizes Linode provides and their respective quantity of IPv6 addresses are below.
 
@@ -73,8 +71,7 @@ Each /56 or /64 IPv6 address pool is routed to a specific Linode. If you want to
 
 Unlike the other pools available, /116 IPv6 address pools route to all of the Linodes on your account within the same data center as the Linode the pool is assigned to. This means there is no single point of failure.
 
-Adding IPv6 Addresses
----------------------
+## Adding IPv6 Addresses
 
 While default IPv6 addresses are configured automatically, you will need to statically configure each IPv6 address in the pool you request. 
 
@@ -241,5 +238,4 @@ The configuration of additional IPv6 addresses in Gentoo is simple. Append the I
     # please review /usr/share/doc/openrc*/net.example* and save your configuration
     # in /etc/conf.d/net (this file :]!).
     config_eth0="dhcp 2001:DB8:2000:aff0::1/32 2001:DB8:2000:aff0::2/32 2001:DB8:2000:aff0::3/32"
-    ~~~
-    
+    ~~~   

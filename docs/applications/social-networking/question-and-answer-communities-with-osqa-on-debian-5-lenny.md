@@ -1,7 +1,7 @@
 ---
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'OSQA provides an advanced knowledge exchange system for vibrant communities.'
 keywords: 'knowledge exchange,question and answers,q&a,debian lenny'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

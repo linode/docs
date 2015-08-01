@@ -2,7 +2,7 @@
 deprecated: true
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Install web applications with "LEMP," a LAMP-like stack using nginx, PostgreSQL/MySQL, and Perl/Python/PHP.'
 keywords: 'nginx,lemp,php,linux,web applications'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -298,7 +298,7 @@ More Information
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [Basic nginx Configuration](/docs/websites/nginx/basic-nginx-configuration)
-- [Clustered Web Servers and Software Load Balancing with nginx](/docs/uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing)
+- [Clustered Web Servers and Software Load Balancing with nginx](//docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer)
 
 
 

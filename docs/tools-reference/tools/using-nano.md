@@ -8,15 +8,14 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['linux-tools/text-editors/nano/']
 modified: Tuesday, November 8th, 2011
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Tuesday, November 8th, 2011'
 title: Using Nano
 ---
 
 GNU nano is a popular command line text editor used on many operating systems including Unix-based systems and BSD variants. It is a popular editor for users who may find `vi` or `emacs` commands to be non-intuitive.
 
-Installing Nano
----------------
+## Installing Nano
 
 Nano is included with many Linux distributions by default, but some users may need to install it through their distribution's [package management](/docs/using-linux/package-management/) tool:
 
@@ -30,8 +29,7 @@ CentOS/Fedora users can issue the following command to install nano:
 
 When using nano, control characters (CTRL) are represented by a carat (`^`). For example, if you wish to cut a line of text, you would use the "CTRL" key followed by the "K" key. This sequence of commands is represented as `^K` in nano. Some commands use the "Alt" key in order to function, which is represented by the letter "M". A command represented as `M-R` in nano would be performed by pressing the "Alt" key followed by the "R" key. Please note that Mac users may need to use the "Escape" (Esc) key instead of the "Alt" key to perform these commands.
 
-Creating and Opening Files
---------------------------
+## Creating and Opening Files
 
 There are different ways to start nano depending on what type of file you wish to edit. Please read through the options below to determine which is best for you.
 
@@ -69,8 +67,7 @@ When editing files used to configure applications or system utilities, it is imp
 
 Opening nano in this manner will prevent it from wrapping lines that are too long to fit on your screen, which can create problems if config directives are saved across multiple lines. `nano -w` is also useful for creating new files that you do not wish to word wrap.
 
-Editing Files
--------------
+## Editing Files
 
 ### Cutting and Pasting
 
@@ -113,8 +110,7 @@ CentOS/Fedora:
 
 Once you have installed spell, you may use the spell checking feature by issuing `^T` while editing a file.
 
-Saving and Exiting
-------------------
+## Saving and Exiting
 
 When you're done editing your file, you can save it and exit the program.
 
@@ -135,6 +131,3 @@ The command listed above will create a backup copy of `index.php` in the `backup
 ### Exiting
 
 Once you're ready to exit, issue `^X` to exit nano. If you have not saved your work, you will be prompted to save the changes or cancel the exit routine.
-
-
-

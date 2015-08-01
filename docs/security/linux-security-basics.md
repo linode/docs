@@ -1,7 +1,7 @@
 ---
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'A collection of security practices to help you prevent common system exploits.'
 keywords: 'security,ssh,development,hosting,network'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -21,8 +21,7 @@ It's important to remember that all of the solutions we present in this document
 
 Perhaps most importantly, it should be understood that security is a process, not a product (credit to Bruce Schneier.) There is no "magic bullet" set of guidelines that can be followed to ensure the security of any system. Threats are constantly evolving, so vigilance is required on the part of network administrators to prevent unauthorized access to systems.
 
-Keep Systems and Software Up To Date
-------------------------------------
+## Keep Systems and Software Up To Date
 
 One of the most significant sources of security vulnerabilities are systems running out of date software with known security holes. Make a point of using your system's [package management](/docs/using-linux/package-management) tools to keep your software up to date; this will greatly assist in avoiding easily preventable security intrusions.
 
@@ -34,8 +33,7 @@ The method you use to make sure that your entire system is kept up to date is a 
 
 Because of the complexity of maintaining software outside of the system's package management tools we *strongly* recommend avoiding manually installing software unless absolutely necessary. Your choice in a Linux distribution should be heavily biased by the availability of software in that distro's repositories for the systems you need to run on your server.
 
-Disable Unused Services
------------------------
+## Disable Unused Services
 
 One common avenue for attack involves exploiting unused applications. In general we recommend disabling daemons (services) that you're not actively using, developing, or testing. Using `/etc/init.d/[service] stop` or `/etc/rc.d/[service] stop`, depending on your distribution, to deactivate unused services can prevent these services from being exploited later. Please note that services that are configured to start at system boot will run again should you reboot your server, so it may be safer to disable them from automatically starting using your distribution's particular method for doing so.
 
@@ -43,8 +41,7 @@ Not only will unused services no longer consume system resources, if there are a
 
 To see what processes you're currently running, we recommend using the `htop` tool. Install with `apt-get install htop`, `yum install htop` or `pacman -Sy htop`.
 
-Lock Down SSH
--------------
+## Lock Down SSH
 
 SSH, the secure shell service, is the main avenue we use to interact with servers remotely. While SSH provides exceptional encryption and security for users, it also provides a great deal of access to your server and thus represents an appealing target for an attacker. To counteract the possibility of having your servers compromised with an SSH attack, we recommend taking the following steps.
 
@@ -75,8 +72,7 @@ If you're using PuTTY in Windows, note that it has the ability to generate keys 
 
 If you have a problem logging in you will need physical access or out-of-band console access to your server to restore SSH functionally. You can use the [Linode shell (LISH)](/docs/troubleshooting/using-lish-the-linode-shell) to access your server's console.
 
-Limit Root and System Users' Access
------------------------------------
+## Limit Root and System Users' Access
 
 In general, users and applications that do not have access to a system on your server, either by virtue of limited access rules or by limited abilities to log into the system, cannot do any harm to the system. Additionally, one common way of compromising a system is to trick the system into thinking that a user has access rights greater than what they actually have. While these "escalation attacks" are relatively uncommon and are often patched rather quickly, they are only a threat when there are accounts that can be exploited.
 
@@ -89,8 +85,7 @@ To address these possible threats we suggest the following best practices with r
 
 Limiting access to your servers and adhering to best practices with regards to administrative access and user account management won't guard against escalation attacks or all possible intrusions. However, by limiting the size of your "shadow" you decrease the likelihood of becoming the victim of many kinds of attacks.
 
-Use a Firewall to Block Unwanted Traffic
-----------------------------------------
+## Use a Firewall to Block Unwanted Traffic
 
 As the term "firewall" has fallen into common non-technical usage, the specific role of a firewall solution as part of a larger security plan has become somewhat unclear. Firewalls are simple traffic filters that can be used to limit and constrain inbound traffic to your Linode. The aim is to prevent all traffic arriving from certain IP addresses or over certain ports in situations where you know that traffic is unwanted or malicious.
 
@@ -108,8 +103,7 @@ These rules can -- and perhaps should -- be deployed to varying degrees as part 
 
 When deciding to deploy firewall rules, the decision often comes down to the following questions: "will this rule impede traffic that actually want to service?", "will this rule make it more difficult to use the server as I want to?", and finally "will this rule successfully block traffic that I don't want to serve?" The answers to these questions often vary in response to the services you're providing and the way you use your server, but we hope that the above guidelines provide a productive starting point for your firewall deployment.
 
-Use Denyhosts or Fail2Ban to Prevent Password Attacks
------------------------------------------------------
+## Use Denyhosts or Fail2Ban to Prevent Password Attacks
 
 The [DenyHosts](http://denyhosts.sourceforge.net/) and [Fail2Ban](/docs/security/fail2ban) applications (for which packages should be included in your distribution's software repository) help prevent dictionary attacks on your server. The basic concept is simple: these programs watch for attempted logins, and if your server is receiving multiple failed login attempts from the same IP address, these applications will insert firewall rules that will block traffic from the attacker's IP address.
 
@@ -117,8 +111,7 @@ The assumption is that "good" users are very likely to be able to get their pass
 
 The number of allowed attempts and the length of time the resulting ban remains in effect are configurable by the system administrator. Attempted logins can be monitored on a variety of protocols, including HTTP Auth, SMTP, and SSH. While this approach to restricting traffic won't prevent a compromised password from being used to break into a system, it can reduce the risk that a system user's weak password poses to the server as a whole.
 
-Encrypt Sensitive Data
-----------------------
+## Encrypt Sensitive Data
 
 If most "best security practices" come down to exercising a fair bit of paranoia over your data and systems, then implementing data encryption represents the most severe expression of this paranoia. Well tuned access control lists are often quite effective at preventing most casual abuse, and there is always some resource overhead for encrypting and decrypting data. Nevertheless, if you're storing truly sensitive data, it's often quite prudent to encrypt it. There are a number of different options for accomplishing this goal.
 
@@ -130,8 +123,7 @@ The final option, and perhaps the best middle ground, is to use a system like "[
 
 Again, from a holistic perspective, encrypting in this manner provides minimal benefit for most use cases and comes with a great deal of overhead. Nevertheless, there are some situations where encryption makes a lot of sense, particularly when you're managing very sensitive data on networked machines. Consider encryption as a possible tool among many options for creating a more secure environment.
 
-Best Practices with Databases
------------------------------
+## Best Practices with Databases
 
 One common class of security issues involves the applications that you develop and run on your server, as opposed to all of the system software that your application depends upon. There are some basic guidelines that you may want to follow as you develop applications.
 
@@ -147,6 +139,3 @@ One common class of security issues involves the applications that you develop a
 3.  *Authenticate all requests* for secure information, rather than passing or storing `IsAuthenticated` or `IsPrivileged` status to the user. In short, avoid storing any information in cookies or in the HTTP query string that you don't want the users to be able to edit.
 
 These tips for coding practices, and indeed all of the security tips that we present here, are simply a starting place for ensuring that your system remains protected against intrusions from malicious users. Nevertheless, from our experience even these small suggestions will help keep your system secure from many common exploits. We hope that this guide has presented a number of manageable approaches that you can deploy in order to help ensure that your system remains secure.
-
-
-

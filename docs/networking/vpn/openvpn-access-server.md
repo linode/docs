@@ -20,8 +20,7 @@ Before installing OpenVPN Access Server, you will need to follow our [Getting St
 >
 >After securing your server, ensure that TCP port 943 and UDP port 1194 are permitted through your firewall in order for the OpenVPN Access Server to function.
 
-Installing OpenVPN Access Server
---------------------------------
+## Installing OpenVPN Access Server
 
 1.  Update the Linode to ensure that you have the latest packages, using your installed package manager.
 
@@ -52,8 +51,7 @@ Installing OpenVPN Access Server
 		
 		sudo passwd openvpn
 
-Configuring OpenVPN Access Server
----------------------------------
+## Configuring OpenVPN Access Server
 
 ###Configuring Client Settings
 
@@ -106,8 +104,7 @@ If you wish to configure autologin profiles, you will need to modify your user s
 	[![OpenVPN Autologin.](/docs/assets/openvpn-autologin-resize.png)](/docs/assets/openvpn-autologin.png)
 
 
-Client Software Installation
-----------------------------
+## Client Software Installation
 
 ###Windows
 
@@ -170,7 +167,7 @@ Client Software Installation
 
 3.  Copy the downloaded profile to your `/etc/openvpn` folder, and rename it to `client.conf`.  Replace `~/Downloads/client.ovpn` with the location of your download folder, if necessary.
 
-		cp ~/Downloads/client.ovpn /etc/openvpn/client.conf
+		sudo cp ~/Downloads/client.ovpn /etc/openvpn/client.conf
 
 4.  Enter the following command to start your OpenVPN Tunnel.  Unless you have configured and downloaded an autologin profile, you will be prompted for your OpenVPN user's username and password.
 

@@ -28,8 +28,7 @@ Ubuntu 14.04 is a long-term support (LTS) release that will be supported until A
 {: .note }
 >This guide was written assuming that you have root access to your Linode. If you do not have root access, you will need to prepend each command with `sudo`. 
 
-Preparing to Upgrade
---------------------
+## Preparing to Upgrade
 
 Before upgrading, you will need to prepare your Linode to be upgraded. In order to do so, we will:
 
@@ -79,8 +78,7 @@ We recommend that you stop as many services as possible before upgrading to Ubun
 
 You are now ready to install Ubuntu 14.04 LTS on your Linode.
 
-Upgrading from Ubuntu 12.04 LTS
--------------------------------
+## Upgrading from Ubuntu 12.04 LTS
 
 Here's how to upgrade from Ubuntu 12.04 LTS to Ubuntu 14.04 LTS:
 
@@ -132,12 +130,6 @@ Here's how to upgrade from Ubuntu 12.04 LTS to Ubuntu 14.04 LTS:
 Your Linode is now running Ubuntu 14.04 LTS.
 
 
-Upgrading from Previous Ubuntu Releases
----------------------------------------
+## Upgrading from Previous Ubuntu Releases
 
 If your Linode is running an release of Ubuntu older than 12.04 LTS, use the upgrade guides in the [Upgrading](/docs/security/upgrading) section to upgrade to Ubuntu 12.04 LTS first. You may then upgrade your Linode to Ubuntu 14.04 LTS.
-
-
-
-
-

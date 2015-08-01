@@ -5,7 +5,7 @@ author:
 description: 'Our guide to deploying your first Linode.'
 keywords: 'linode guide,getting started,linode quickstart'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Monday, June 16th, 2014
+modified: Wednesday, July 1st, 2015
 modified_by:
   name: Linode
 published: 'Sunday, July 19th, 2009'
@@ -14,8 +14,7 @@ title: Getting Started
 
 Congratulations on selecting Linode as your cloud hosting provider! We're glad you've decided to join our community, and we're excited to help you get started with your first Linode server. This guide will help you sign up for an account, deploy a Linux distribution, boot your Linode, and perform some basic system administration tasks. By the time you reach the end, you'll have a Linode up and running in the data center of your choice.
 
-Signing Up
-----------
+## Signing Up
 
 If you haven't already signed up for a Linode account, do that first. Follow these steps:
 
@@ -27,8 +26,7 @@ If you haven't already signed up for a Linode account, do that first. Follow the
 
 If you don't know which data center to select, try downloading our [speed test](http://www.linode.com/speedtest) to find the location that provides the best performance for your target audience. European users may find that the London or Newark data centers offer the best performance, and many users in Asia and Australia select the Singapore or Fremont data centers. You can also generate [MTR reports](/docs/networking/diagnosing-network-issues-with-mtr/) for each of the data centers to determine which of our facilities provides the best latency from your particular location.
 
-Provisioning Your Linode
-------------------------
+## Provisioning Your Linode
 
 After your Linode is created, you'll need to prepare it for operation. In this section you'll log in to the Linode Manager and deploy a Linux distribution.
 
@@ -44,7 +42,7 @@ After creating your new Linode, select it and then click on **Deploy an Image**.
 
 Here's how to deploy a Linux distribution:
 
-1.  Select a Linux distribution from the **Image** menu. You should choose the distribution that you are most comfortable with. If you're new to the Linux operating system, consider selecting Ubuntu 12.04 LTS. Ubuntu is the most popular distribution among Linode customers, and the LTS version is a stable distribution we use as an example throughout this Library.
+1.  Select a Linux distribution from the **Image** menu. You should choose the distribution that you are most comfortable with. If you're new to the Linux operating system, consider selecting Ubuntu 14.04 LTS. Ubuntu is the most popular distribution among Linode customers, and the LTS version is a stable distribution we use as an example throughout this Library.
 2.  Enter a size for the disk in the **Deployment Disk Size** field. By default, all of the available space is allocated, but you can set a lower size if you plan on cloning a disk or creating different configuration profiles. You can always create, resize, and delete disks later.
 3.  Select a size for the swap disk from the **Swap Disk** menu. We strongly recommend using the default size.
 4.  Enter a root password for your Linode in the **Root Password** field. The password must be at least 6 characters long and contain characters from two of the following categories: lower case letters, upper case letters, numbers, and punctuation. Don't forget this credential! You'll need it to log in to your Linode via SSH.
@@ -62,8 +60,7 @@ When you click the **Deploy** button, the Linode Manager will start provisioning
 
 Your Linode's configuration profile will appear on the Linode Manager Dashboard when the provisioning process is complete.
 
-Booting Your Linode
--------------------
+## Booting Your Linode
 
 Your Linode is now fully provisioned and available in the data center you selected, but it's turned off. Here's how to boot your Linode:
 
@@ -79,8 +76,7 @@ Your Linode is now fully provisioned and available in the data center you select
 
 Now your Linode is running in the data center you selected.
 
-Connecting to Your Linode
--------------------------
+## Connecting to Your Linode
 
 It's time to connect to your Linode using the secure shell (SSH) protocol. SSH encrypts all of the data transferred between an *SSH client* on your computer and the Linode, effectively protecting your passwords and other sensitive information. There are SSH clients available for every operating system:
 
@@ -159,8 +155,7 @@ Now you can start executing commands on your Linode.
 >
 >     HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\SshHostKeys
 
-Setting the Hostname
---------------------
+## Setting the Hostname
 
 You'll need to set your system's hostname and fully qualified domain name (FQDN). Your hostname should be something unique. Some people name their servers after planets, philosophers, or animals. Note that the system's hostname has no relationship to websites or email services hosted on it, aside from providing a name for the system itself. Your hostname should *not* be "www" or anything too generic.
 
@@ -177,7 +172,13 @@ To learn more about setting your system's hostname and timezone, please watch th
 >
 > This video was created by [Treehouse](http://www.teamtreehouse.com), which is offering Linode customers a free one month trial. [Click here](http://teamtreehouse.com/join/free-month?utm_source=linode&utm_medium=partnership&utm_campaign=linode-2013&cid=1124) to start your free trial and start learning web design, web development, and more.
 
-### Ubuntu / Debian
+### Ubuntu 15.04 / Debian 8
+
+Enter the following command to set the hostname, replacing `hostname` with the hostname of your choice:
+
+    hostnamectl set-hostname hostname
+
+### Ubuntu 14.04 / Debian 7
 
 Enter following commands to set the hostname, replacing `hostname` with the hostname of your choice:
 
@@ -250,8 +251,7 @@ If you have IPv6 enabled on your Linode, you will also want to add an entry for 
 
 The value you assign as your system's FQDN should have an "A" record in DNS pointing to your Linode's IPv4 address. For Linodes with IPv6 enabled, you should also set up a "AAAA" record in DNS pointing to your Linode's IPv6 address. For more information on configuring DNS, see [Adding DNS Records](/docs/hosting-website#sph_adding-dns-records).
 
-Setting the Timezone
---------------------
+## Setting the Timezone
 
 You can change your Linode's timezone to whatever you want it to be. It may be best to set it to the same timezone of most of your users. If you're unsure which timezone would be best, consider using universal coordinated time or UTC (also known as Greenwich Mean Time).
 
@@ -297,8 +297,7 @@ Now try entering the following command to view the current date and time accordi
 
 The output should look similar to this: `Thu Feb 16 12:17:52 EST 2012`.
 
-Installing Software Updates
----------------------------
+## Installing Software Updates
 
 Now you need to install the available software updates for your Linode's Linux distribution. Doing so patches security holes in packages and helps protect your Linode against unauthorized access.
 
@@ -332,8 +331,7 @@ You should now be set to update the system
 
     pacman -Syu
 
-Next Steps
-----------
+## Next Steps
 
 Good work! Now you have an up-to-date Linode running in the data center of your choice. Next, you'll need to secure your Linode and protect it from unauthorized access. Read the [Securing Your Server](/docs/securing-your-server) quick start guide to get going!
 

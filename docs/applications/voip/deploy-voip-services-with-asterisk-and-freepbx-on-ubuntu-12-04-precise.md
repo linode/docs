@@ -11,6 +11,11 @@ modified_by:
   name: Alex Fornuto
 published: 'Tuesday, June 17th, 2014'
 title: 'Deploy VoIP Services with Asterisk and FreePBX on Ubuntu 12.04 (Precise)'
+external_resources:
+ - '[Asterisk Documentation](http://www.asterisk.org/docs)'
+ - '[Asterisk Community](http://www.asterisk.org/community)'
+ - '[FreePBX Documentation](http://www.freepbx.org/support/documentation)'
+ - '[FreePBX Community](http://www.freepbx.org/community)'
 ---
 
 Asterisk is an open-source telephone solution that runs over the internet instead of running through copper lines. It offers a variety of features such as voicemail and conference calling, much like a land line telephone can.
@@ -23,8 +28,7 @@ For this guide we will install Asterisk from source rather than from Ubuntu's re
 >
 > The steps required in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
-Terms
------
+## Terms
 
 If you're new to the idea of running a digital phone system, you may want to brush up on some of the protocols and acronyms used most frequently.
 
@@ -37,8 +41,7 @@ The diagram below shows the relationship between each of the components that all
 
 [![](/docs/assets/1748-asterisk-flowchart.png)](/docs/assets/1748-asterisk-flowchart.png)
 
-Prerequisites
--------------
+## Prerequisites
 
 Before you begin, you need to make sure a few things are in order. We assume you have followed the [Getting Started](/docs/getting-started/) guide and have set the hostname and timezone, and have configured networking for the Linode. These last steps are of particular importance for ensuring your Asterisk installation functions normally. If you plan on using Asterisk's email features, you may also wish to [add an A record](/docs/dns-guides/introduction-to-dns#a_aaaa_records) for your domain.
 
@@ -65,8 +68,7 @@ We're going to create a user to run the Asterisk process, so that we're not runn
 
 You will be prompted for a password and some details for the user such as name and phone number. You need to fill out the password, but you may safely hit `Enter` for the other entries.
 
-Install the Kernel
-------------------
+## Install the Kernel
 
 You will need to use the PV-GRUB kernel provided by Linode. This method works, but any kernel problems that arise from editing the kernel beyond the steps outlined in this document will not be supported by Linode. You'll need to prepare your Linode before updating your configuration profile by following the commands in the next section.
 
@@ -123,8 +125,7 @@ You will now need to log in to the Linode Manager in order to change your Linode
 
 It's very important that you follow the steps outlined above carefully or your system may not boot. It is highly recommended that you watch the console during the shutdown and reboot phases via [LISH](/docs/troubleshooting/using-lish-the-linode-shell). If your Linode does not boot and you get an error, change your configuration profile back to the latest Paravirt kernel and read over this guide to make sure you have not missed any steps.
 
-Install Asterisk
-----------------
+## Install Asterisk
 
 1.  The version of Asterisk in the Ubuntu repository is outdated and can't support all the features needed for this guide, so begin by downloading the current build of Asterisk 11 directly. You will also need to download the libpri library and the DAHDI module:
 
@@ -205,8 +206,7 @@ Install Asterisk
         localhost*CLI> pri show version
         libpri version: 1.4.14
 
-Install FreePBX
----------------
+## Install FreePBX
 
 FreePBX is a PHP application that allows you to control your Asterisk installation through a web interface.
 
@@ -278,7 +278,7 @@ Before you can use FreePBX, you will need to set up a LAMP stack. An basic step-
 
     {: .note }
     >
-    > This is the latest version of FreePBX at the time of this guide's publication. You can check [this page](http://www.freepbx.org/download-freepbx) for the latest build of FreePBX.
+    > This is the latest version of FreePBX at the time of this guide's publication. You can check [this page](http://www.freepbx.org/downloads/freepbx-distro/) for the latest build of FreePBX.
 
 2.  The FreePBX directory contains SQL files that you can insert into the database we created previously. Issue the following commands to insert this data:
 
@@ -318,8 +318,7 @@ You should now be able to visit your Linode's IP address or the domain you've po
 
 [![](/docs/assets/1673-asterisk-3.png)](/docs/assets/1673-asterisk-3.png)
 
-Configure FreePBX
------------------
+## Configure FreePBX
 
 Now we will use the FreePBX web interface to configure your phone server.
 
@@ -366,8 +365,7 @@ Your PBX system will need at least one defined extension to send incoming calls 
 
     [![Extension info.](/docs/assets/1681-asterisk-11.png)](/docs/assets/1681-asterisk-11.png)
 
-Configure Integration with Google Voice
----------------------------------------
+## Configure Integration with Google Voice
 
 The steps in this section will let your Asterisk server use Google Voice as a trunk for sending and receiving phone calls.
 
@@ -380,16 +378,3 @@ The steps in this section will let your Asterisk server use Google Voice as a tr
     [![](/docs/assets/1749-asterisk-12.png)](/docs/assets/1749-asterisk-12.png)
 
 3.  Now you can point your SIP client at your Linode, sign in with your extension and password, and begin making and receiving calls.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Asterisk Documentation](http://www.asterisk.org/docs)
-- [Asterisk Community](http://www.asterisk.org/community)
-- [FreePBX Documentation](http://www.freepbx.org/support/documentation)
-- [FreePBX Community](http://www.freepbx.org/community)
-
-
-

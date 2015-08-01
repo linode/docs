@@ -11,12 +11,16 @@ modified_by:
   name: Linode
 published: 'Wednesday, November 7th, 2012'
 title: 'Monitor Services with Nagios on Ubuntu 12.04 (Precise Pangolin)'
+external_resources:
+ - '[Nagios Home Page](http://www.nagios.org/)'
+ - '[Nagios IRC Bot](http://exchange.nagios.org/directory/Addons/Notifications/IRC/nagircbot/details)'
+ - '[Nagios Library](http://library.nagios.com/)'
+ - '[Nagios Security](http://nagios.sourceforge.net/docs/3_0/cgisecurity.html)'
 ---
 
 Nagios is a monitoring tool that allows you to monitor services on a single server or a pool of servers. It can keep an eye on a broad range of network services, including SMTP and POP3 (email), HTTP (web), ICMP (ping), and SSH. In addition to simple uptime monitoring, Nagios also allows administrators to create their own plugins to monitor additional services or devices.
 
-Installing Nagios
------------------
+## Installing Nagios
 
 Before installing Nagios, make sure your hostname is properly set by following the steps outlined in the [Getting Started guide](/docs/getting-started/). You also need to have a functioning [LAMP stack](/docs/lamp-guides/ubuntu-12.04-precise-pangolin) set up on your Linode.
 
@@ -37,8 +41,7 @@ Now you're ready to install Nagios. Here's how:
 >
 > If you do not already have an email server installed on your Linode, Postfix will be installed automatically. The *Internet Site* configuration will be used by default. You'll also have to enter a mail name for the system.
 
-Accessing the Nagios Web Interface
-----------------------------------
+## Accessing the Nagios Web Interface
 
 You can now access the Nagios web interface for administration and reporting by visiting `http://example.com/nagios3/`, where `example.com` refers to your Linode's default virtual host. You may also access this interface by visiting `http://12.34.56.78/nagios3/`, where `12.34.56.78` is the IP address of your Linode. You will need to authenticate with the `nagiosadmin` user you created earlier.
 
@@ -46,8 +49,7 @@ You can now access the Nagios web interface for administration and reporting by 
 >
 > The above example does not use SSL, and your password will be sent unencrypted. If you want to use encryption, you will need to generate (or purchase) and install an SSL certificate. Steps for generating and using your own certificate can be found in our [SSL guide](/docs/security/ssl/how-to-make-a-selfsigned-ssl-certificate).
 
-Configuring Notifications
--------------------------
+## Configuring Notifications
 
 A great deal of the power of Nagios is its ability to send notifications and alerts regarding the status of services and devices. While most of this fine-grained configuration is beyond the scope of this document, we have outlined some basic notifications below.
 
@@ -109,8 +111,7 @@ You can also configure Nagios to send notifications to an IRC channel through a 
 
     The `-I 900` parameter tells the bot to send a status message to the channel every 900 seconds (15 minutes). For example, the bot may send something like `Critical: 0, warning: 1, ok: 6, up: 2, down: 0, unreachable: 0, pending: 0`, which indicates that there are no critical messages and 1 warning.
 
-Accepting External Commands
----------------------------
+## Accepting External Commands
 
 Nagios can accept *external commands* so that you can acknowledge problems, add comments, and more. Here's how to enable external commands:
 
@@ -144,22 +145,8 @@ Nagios can accept *external commands* so that you can acknowledge problems, add 
 
 Congratulations! External commands are now enabled.
 
-Next Steps
-----------
+## Next Steps
 
 Nagios contains numerous features that are beyond the scope of this document. You are encouraged to explore the resources listed below and the administrative interface for more information regarding the setup and configuration of Nagios.
 
 Congratulations on your new Nagios monitoring and notification system!
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Nagios Home Page](http://www.nagios.org/)
-- [Nagios IRC Bot](http://exchange.nagios.org/directory/Addons/Notifications/IRC/nagircbot/details)
-- [Nagios Library](http://library.nagios.com/)
-- [Nagios Security](http://nagios.sourceforge.net/docs/3_0/cgisecurity.html)
-
-
-

@@ -2,7 +2,7 @@
 deprecated: true
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Creating a LAMP stack with Apache, MySQL, PHP, and Python on Fedora 15.'
 keywords: 'fedora 15 lamp,lamp server,linux lamp,fedora 15 apache'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

@@ -15,8 +15,7 @@ title: Accounts and Passwords
 
 Maintaining your accounts, passwords, and contact information in the Linode Manager is just as important as administering your Linode VPS. This guide shows you how to control access to the Linode Manager, update your contact information, and modify account passwords. Note that the information in this guide applies to the Linode Manager only, except for the section on resetting the root password.
 
-Users and Permissions
----------------------
+## Users and Permissions
 
 You can grant other users access to the Linode Manager by creating *accounts* and assigning *permissions* to restrict access to certain areas of the control panel. Adding users and configuring permissions is useful for groups that need to grant all team members access to the Linode Manager, or organizations that just want their billing department to have a separate account to receive invoices and billing information.
 
@@ -89,8 +88,7 @@ You can permanently remove a user account from the Linode Manager. Here's how:
 
 The account will be removed, and the user will no longer be able to access the Linode Manager.
 
-Email Addresses and Contact Information
----------------------------------------
+## Email Addresses and Contact Information
 
 Linode uses the contact information on file in your account to notify and bill you. Keep this information current to prevent service interruptions. It's especially important to keep your email address current.
 
@@ -122,10 +120,9 @@ Here's how to change your email address on the *My Profile* webpage:
 
 Your profile's email account will be updated.
 
-Passwords
----------
+## Passwords
 
-Creating strong passwords is essential to protecting your Linode and your Linode Manger account. If you suspect that an unauthorized user has gained access to one of your accounts, you should change the password immediately. Use the instructions in this section to change your Linode Manager password and reset the password for the `root` user on the Linode.
+Creating strong passwords is essential to protecting your Linode and your Linode Manager account. If you suspect that an unauthorized user has gained access to one of your accounts, you should change the password immediately. Use the instructions in this section to change your Linode Manager password and reset the password for the `root` user on the Linode.
 
 ### Changing Your Linode Manager Password
 
@@ -170,10 +167,6 @@ If you can't remember the password for the `root` user on a Linode, use the Lino
 
 Now you can use the new `root` user password to log in to your Linode. See [Connecting to Your Linode](/docs/getting-started#connecting-to-your-linode) for more information about connecting.
 
-Next Steps
-----------
+## Next Steps
 
 You can take additional steps to secure your Linode Manager account by enabling the two-factor authentication and IP address whitelisting features. You can also configure security event notifications and disable API access. For instructions, see the [Security](/docs/security/linode-manager-security-controls/) guide.
-
-
-
