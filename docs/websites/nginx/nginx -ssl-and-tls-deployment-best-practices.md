@@ -9,10 +9,15 @@ For example if a directory is not found Nginx will return a 404 error with its v
 [![404 With Nginx Version Number](/docs/assets/404_Not_Found.jpg)](/docs/assets/404_Not_Found.jpg)
 
 1.  To disable `server_tokens` open up your `nginx.conf` using your text editor of choice.
-        nano /etc/nginx/nginx.conf
+        
+	nano /etc/nginx/nginx.conf
+
 2.  Inside of the http block append the following line before the ending `}`. Depending on where you installed Nginx from this line may already exist but may be commented out. To make it active just remove the `#` sign in front.
+
         server_tokens       off;
+
 3.  Exit your text editor and restart Nginx.
+
         service nginx restart
 
 After restarting Nginx browse to a directory of your server that does not exist, and Nginx will no longer share its version number.
@@ -24,13 +29,21 @@ After restarting Nginx browse to a directory of your server that does not exist,
 SPDY is a open networking portocol developed primarily by Google to decrease page load time over an HTTP or HTTPS connection. Currently browsers only use SPDY when establishing s ecure encrypted HTTPS connection. SPDY decreases page load time by only utilizing a single HTTPS connection to provide all assests to load a page. Traditionally when you access a web page a separate HTTP connection is established to load each resource (ex. HTML, CSS, JavaScript, or images). The server also compresses assests before sending them to the client requiring less bandwdith. SPDY is currently be phased out in favor of HTTP/2 but is still useful until Nginx adds support for HTTP/2.
 
 1.  To enable SPDY open up your Nginx SSL virtual host configuration file. Depending on where you installed Nginx from this could be located at `/etc/nginx/sites-enabled/default` or at `/etc/nginx/conf.d/example_ssl.conf`.
+
         nano /etc/nginx/conf.d/example_ssl.conf
+
 2.  Look for the `listen` line and add `spdy` to the end before the semicolon.
+
         listen       443 ssl spdy;
+
 3.  Below the listen line append the following line telling browsers that your Linode supports SPDY.
+
         add_header   Alternate-Protocol  443:npn-spdy/3;
+
 4.  Exit your text editor and restart Nginx.
+
         service nginx restart
+
 5.  Open a web browser and navigate to [SPDYCheck.org](http://SPDYCheck.org), enter your Linode's domain name or hostname in the text box and click "Check". This free tool will check to server and let you know if SPDY is enabled and functioning correctly. 
 
 If SPDY is functioning properly, your report should look like this.
@@ -41,22 +54,29 @@ If SPDY is functioning properly, your report should look like this.
 Google is now ranking websites that accept encrypted HTTPS connections higher in search results, why not force clients to use HTTPS and increase your page rank?
 
 1.  Open up your HTTP Nginx virtual host configuration file this can be located at `/etc/nginx/conf.d/default.conf` or `/etc/nginx/sites-enabled/default` depending on where you installed Nginx from.
+
         nano /etc/nginx/conf.d/default.conf
 
 2.  Change the `server_name` to match your Linode's domain name or hostname.
+
         server_name Your Domain Name or Hostname Here.
+
 3.  Append the following line below the `server_name` line.
         rewrite        ^ https://$server_name$request_uri? permanent;
+
 4.  Comment out (place # signs in front) or delete all other lines so that your configuration looks like this.
+
         server {
             listen       80;
             server_name  Your Domain Name or Hostname Here;
             rewrite        ^ https://$server_name$request_uri? permanent;
         }
+
 5. Exit your text editor saving your changes and restart Nginx.
+
         service nginx restart
 
-Now if you run a SPDYCheck again, your report should indicate your Linode no longer accepts HTTP connections.
+Now if you run a SPDYCheck again, your report should indicate HTTP connections are no longer accepted.
 
 [![SPDY Report HTTP Redirect](/docs/assets/SPDY_Report_Redirect.jpg)](/docs/assets/SPDY_Report_Redirect.jpg)
 
@@ -71,23 +91,39 @@ When OCSP Stapling is enabled, Nginx on your Linode will make an OCSP request fo
 Before enabling OCSP Stapling you will need to create a file on your system that stores the CA certificates used to sign your server certificate. This tutorial assumes that you have a free certificate from StartSSL. If you need help with this, contact your certificate issuer.
 
 1.  Navigate to your `/etc/nginx` directory.
+
         cd /etc/nginx
+
 2.  Download the StartSSL CA Certificate.
+
         wget http://www.startssl.com/certs/ca.pem
+
 3.  Download the StartSSL Class 1 Intermediate CA Certificate.
+
         wget http://www.startssl.com/certs/sub.class1.server.ca.pem
+
 4.  Combine the two CA Certificates into a single file.
+
         cat sub.class1.server.ca.pem >> /etc/nginx/ca.pem
+
 5.  Delete the no longer needed certificate file.
+
         rm sub.class1.server.ca.pem
+
 6.  Open up your HTTPS Nginx virtual host configuration file this can be located at `/etc/nginx/conf.d/example_ssl.conf` or `/etc/nginx/sites-enabled/default` depending on where you installed Nginx from.
+
         nano /etc/nginx/conf.d/example_ssl.conf
+
 7.  Append the following lines inside of the server block.
+
         ssl_stapling on;
         ssl_stapling_verify on;
         ssl_trusted_certificate /etc/nginx/ca.pem;
+
 8.  Save your changes exiting your text editor and restart Nginx.
+
         service nginx restart
+
 9.  Navigate to the [Qualys SSL Labs SSL Server Test](https://www.ssllabs.com/ssltest/). Enter the domain name or hostname of your Linode and click "Submit". Optionally you may uncheck the checkbox to not show your results on the boards.
 
 Once the test is complete scroll down to the "Protocol Details" section. Look for the "OCSP stapling" line. If Nginx is confiugred correctly this test will return "Yes", otherwise it will return "No".
@@ -103,11 +139,17 @@ With all traffic being redirected from HTTP to HTTPS why not tell visitors brows
 **Do not follow these steps if you want users to access your site over HTTP!**
 
 1.  Open up your Nginx HTTPS virtual host configuration file. This may be located at `/etc/nginx/sites-enabled/default` or at `/etc/nginx/conf.d/example_ssl.conf`.
+
         nano /etc/nginx/conf.d/example_ssl.conf
+
 2.  Append the following line inside of your server block. This header will expire after 1 year. You can configure this to be longer or shorter by changing max-age to your desired number of seconds.
+
         add_header Strict-Transport-Security "max-age=31536000";
+
 3.  Save your changes exiting your text editor and restart Nginx.
+
         service nginx restart
+
 4.  Navigate to the [Qualys SSL Labs SSL Server Test](https://www.ssllabs.com/ssltest/). Enter the domain name or hostname of your Linode and click "Submit". Optionally you may uncheck the checkbox to not show your results on the boards.
 
 Once the test is complete scroll down to the "Protocol Details" section. Look for the "Strict Transport Security (HSTS)" line. If Nginx is confiugred correctly this test will return "Yes", otherwise it will return "No".
