@@ -26,7 +26,7 @@ After restarting Nginx browse to a directory of your server that does not exist,
 
 ### Enable SPDY Support
 
-SPDY is a open networking portocol developed primarily by Google to decrease page load time over an HTTP or HTTPS connection. Currently browsers only use SPDY when establishing s ecure encrypted HTTPS connection. SPDY decreases page load time by only utilizing a single HTTPS connection to provide all assests to load a page. Traditionally when you access a web page a separate HTTP connection is established to load each resource (ex. HTML, CSS, JavaScript, or images). The server also compresses assests before sending them to the client requiring less bandwdith. SPDY is currently be phased out in favor of HTTP/2 but is still useful until Nginx adds support for HTTP/2.
+SPDY is a open networking portocol developed primarily by Google to decrease page load time over an HTTP or HTTPS connection. Currently browsers only use SPDY when establishing s ecure encrypted HTTPS connection. SPDY decreases page load time by only utilizing a single HTTPS connection to provide all assests to load a page. Traditionally when you access a web page a separate HTTP connection is established to load each resource (ex. HTML, CSS, JavaScript, or images). The server also compresses assests before sending them to the client requiring less bandwdith. SPDY is currently being phased out in favor of HTTP/2 but is still useful until Nginx adds support for HTTP/2.
 
 1.  To enable SPDY open up your Nginx SSL virtual host configuration file. Depending on where you installed Nginx from this could be located at `/etc/nginx/sites-enabled/default` or at `/etc/nginx/conf.d/example_ssl.conf`.
 
