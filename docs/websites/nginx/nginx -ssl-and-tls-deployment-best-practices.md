@@ -62,7 +62,7 @@ Now if you run a SPDYCheck again, your report should indicate your Linode no lon
 
 ### OCSP Stapling
 
-The Online Certificate Status Protocol (OCSP) was created to speed up the process that operating systems and browsers use to check for certificate revocation. For instance when you use Internet Explorer or Google Chrome on a Windows machine, Windows is configured by default to check for certificate revocation. Prior to OCSP, your operating system or browser would download a list of revoked certificates from the certificate authorities serers know as a certificate revocation list or CRL. CRL's have grone so large now that browser vendors are creating there own CRL's and distributing them to users.
+The Online Certificate Status Protocol (OCSP) was created to speed up the process that operating systems and browsers use to check for certificate revocation. For instance, when you use Internet Explorer or Google Chrome on a Windows machine, Windows is configured by default to check for certificate revocation. Prior to OCSP, your operating system or browser would download a a certificate revocation list or CRL. CRL's have grone so large now that browser vendors are creating there own CRL's and distributing them to users.
 
 The problem with OCSP is that a certificate authority can now track user as they move from website to website with certificates provided by the same vendor or certificate authority. To prevent this you can enable OCSP Stapling.
 
@@ -96,7 +96,7 @@ Once the test is complete scroll down to the "Protocol Details" section. Look fo
 
 ### HTTP Strict Transport Security (HSTS)
 
-Google Chrome, Mozilla Firefox, Opera, and Safari currently honor an HSTS header. HSTS is used to tell web browsers to only make secure encrypted connections yo your website. When HSTS is enabled and a valid HSTS header is stored in a users browser cache, the user will be unable to access your site if presented with a self-signed, expired, or SSL certificate issued by an untrusted certificate authority. The user will also be unable to bypass any certificate warnings unless your HSTS header expires or the browser cache is cleared.
+Google Chrome, Mozilla Firefox, Opera, and Safari currently honor HSTS headers. HSTS is used to force browsers to only connect using secure encrypted connections. This means your site will no longer be accessible over HTTP. When HSTS is enabled and a valid HSTS header is stored in a users browser cache, the user will be unable to access your site if presented with a self-signed, expired, or SSL certificate issued by an untrusted certificate authority. The user will also be unable to bypass any certificate warnings unless your HSTS header expires or the browser cache is cleared.
 
 With all traffic being redirected from HTTP to HTTPS why not tell visitors browsers to only connect using HTTPS?
 
@@ -114,7 +114,7 @@ Once the test is complete scroll down to the "Protocol Details" section. Look fo
 
 [![SSL Server Test HSTS](HSTS_SSL_Test.jpg)](HSTS_SSL_Test.jpg)
 
-If you have been following along starting with my guide on installing the latest version of Nginx in Debian Wheezy and getting a StartSSL certificate your `/etc/nginx/conf.d/example_ssl.conf` should now look like this.
+If you have been following along starting with my guide on installing the latest version of Nginx for Debian Wheezy or Jessie and getting a StartSSL certificate your `/etc/nginx/conf.d/example_ssl.conf` should now look like this.
 
     # HTTPS server
     #
@@ -132,7 +132,7 @@ If you have been following along starting with my guide on installing the latest
         ssl_session_cache shared:SSL:10m;
         ssl_session_timeout  5m;
 
-        ssl_ciphers  "EECDH+ECDSA+AESGCM EECDH+aRSA+AESGCM EECDH+ECDSA+SHA384 EECDH+ECDSA+SHA256 EECDH+aRSA+SHA384 EECDH+aRSA+SHA256 EECDH+aRSA+RC4 EECDH EDH+aRSA RC4 !aNULL !eNULL !LOW !3DES !MD5 !EXP !PSK !SRP !DSS";
+        ssl_ciphers  "EECDH+ECDSA+AESGCM EECDH+aRSA+AESGCM EECDH+ECDSA+SHA384 EECDH+ECDSA+SHA256 EECDH+aRSA+SHA384 EECDH+aRSA+SHA256 EECDH+aRSA+RC4 EECDH EDH+aRSA RC4 !EXPORT !aNULL !eNULL !LOW !3DES !MD5 !EXP !PSK !SRP !DSS";
         ssl_prefer_server_ciphers   on;
 
         ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
