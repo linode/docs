@@ -10,7 +10,7 @@ For example if a directory is not found Nginx will return a 404 error with its v
 
 1.  To disable `server_tokens` open up your `nginx.conf` using your text editor of choice.
         
-	nano /etc/nginx/nginx.conf
+	  nano /etc/nginx/nginx.conf
 
 2.  Inside of the http block append the following line before the ending `}`. Depending on where you installed Nginx from this line may already exist but may be commented out. To make it active just remove the `#` sign in front.
 
