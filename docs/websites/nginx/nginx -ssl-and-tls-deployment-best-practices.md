@@ -104,8 +104,8 @@ With all traffic being redirected from HTTP to HTTPS why not tell visitors brows
 
 1.  Open up your Nginx HTTPS virtual host configuration file. This may be located at `/etc/nginx/sites-enabled/default` or at `/etc/nginx/conf.d/example_ssl.conf`.
         nano /etc/nginx/conf.d/example_ssl.conf
-2.  Append the following line inside of your server block. This header will expire after 180 days. You can configure this to be longer or shorter by changing the max-age to the desired number of seconds.
-        add_header Strict-Transport-Security "max-age=15552000";
+2.  Append the following line inside of your server block. This header will expire after 1 year. You can configure this to be longer or shorter by changing max-age to your desired number of seconds.
+        add_header Strict-Transport-Security "max-age=31536000";
 3.  Save your changes exiting your text editor and restart Nginx.
         service nginx restart
 4.  Navigate to the [Qualys SSL Labs SSL Server Test](https://www.ssllabs.com/ssltest/). Enter the domain name or hostname of your Linode and click "Submit". Optionally you may uncheck the checkbox to not show your results on the boards.
@@ -122,7 +122,7 @@ If you have been following along starting with my guide on installing the latest
         listen       443 ssl spdy;
         
         add_header   Alternate-Protocol  443:npn-spdy/3;
-        add_header Strict-Transport-Security "max-age=15552000";
+        add_header Strict-Transport-Security "max-age=31536000";
         
         server_name  Your hostname or domain here;
 
