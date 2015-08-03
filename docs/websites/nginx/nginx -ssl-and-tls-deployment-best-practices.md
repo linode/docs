@@ -62,6 +62,7 @@ Google is now ranking websites that accept encrypted HTTPS connections higher in
         server_name Your Domain Name or Hostname Here.
 
 3.  Append the following line below the `server_name` line.
+       
         rewrite        ^ https://$server_name$request_uri? permanent;
 
 4.  Comment out (place # signs in front) or delete all other lines so that your configuration looks like this.
