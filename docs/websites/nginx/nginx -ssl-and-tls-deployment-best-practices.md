@@ -6,7 +6,7 @@ By default Nginx will share its version number to anyone who connect to your ser
 
 For example if a directory is not found Nginx will return a 404 error with its version number.
 
-[![404 With Nginx Version Number](404_Not_Found.jpg)](404_Not_Found.jpg)
+[![404 With Nginx Version Number](/docs/assets/404_Not_Found.jpg)](/docs/assets/404_Not_Found.jpg)
 
 1.  To disable `server_tokens` open up your `nginx.conf` using your text editor of choice.
         nano /etc/nginx/nginx.conf
@@ -17,7 +17,7 @@ For example if a directory is not found Nginx will return a 404 error with its v
 
 After restarting Nginx browse to a directory of your server that does not exist, and Nginx will no longer share its version number.
 
-[![404 With Server Tokens Disabled](404_Not_Found_Server_Tokens_Off.jpg)](404_Not_Found_Server_Tokens_Off.jpg)
+[![404 With Server Tokens Disabled](/docs/assets/404_Not_Found_Server_Tokens_Off.jpg)](/docs/assets/404_Not_Found_Server_Tokens_Off.jpg)
 
 ### Enable SPDY Support
 
@@ -34,7 +34,7 @@ SPDY is a open networking portocol developed primarily by Google to decrease pag
 5.  Open a web browser and navigate to [SPDYCheck.org](http://SPDYCheck.org), enter your Linode's domain name or hostname in the text box and click "Check". This free tool will check to server and let you know if SPDY is enabled and functioning correctly. 
 
 If SPDY is functioning properly, your report should look like this.
-[![SPDY Report](SPDY_Report_Resized.jpg)](SPDY_Report.jpg)
+[![SPDY Report](/docs/assets/SPDY_Report_Resized.jpg)](/docs/assets/SPDY_Report.jpg)
 
 ### Redirect HTTP Traffic to HTTPS
 
@@ -58,7 +58,7 @@ Google is now ranking websites that accept encrypted HTTPS connections higher in
 
 Now if you run a SPDYCheck again, your report should indicate your Linode no longer accepts HTTP connections.
 
-[![SPDY Report HTTP Redirect](SPDY_Report_Redirect.jpg)](SPDY_Report_Redirect.jpg)
+[![SPDY Report HTTP Redirect](/docs/assets/SPDY_Report_Redirect.jpg)](/docs/assets/SPDY_Report_Redirect.jpg)
 
 ### OCSP Stapling
 
@@ -92,7 +92,7 @@ Before enabling OCSP Stapling you will need to create a file on your system that
 
 Once the test is complete scroll down to the "Protocol Details" section. Look for the "OCSP stapling" line. If Nginx is confiugred correctly this test will return "Yes", otherwise it will return "No".
 
-[![SSL Server Test OCSP](OCSP_Stapling_SSL_Test.jpg)](OCSP_Stapling_SSL_Test.jpg)
+[![SSL Server Test OCSP](/docs/assets/OCSP_Stapling_SSL_Test.jpg)](/docs/assets/OCSP_Stapling_SSL_Test.jpg)
 
 ### HTTP Strict Transport Security (HSTS)
 
@@ -112,7 +112,7 @@ With all traffic being redirected from HTTP to HTTPS why not tell visitors brows
 
 Once the test is complete scroll down to the "Protocol Details" section. Look for the "Strict Transport Security (HSTS)" line. If Nginx is confiugred correctly this test will return "Yes", otherwise it will return "No".
 
-[![SSL Server Test HSTS](HSTS_SSL_Test.jpg)](HSTS_SSL_Test.jpg)
+[![SSL Server Test HSTS](/docs/assets/HSTS_SSL_Test.jpg)](/docs/assets/HSTS_SSL_Test.jpg)
 
 If you have been following along starting with my guide on installing the latest version of Nginx for Debian Wheezy or Jessie and getting a StartSSL certificate your `/etc/nginx/conf.d/example_ssl.conf` should now look like this.
 
