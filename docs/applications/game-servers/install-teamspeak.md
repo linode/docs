@@ -17,6 +17,11 @@ external_resources:
  - '[Changing the serveradmin Password](https://support.teamspeakusa.com/index.php?/Knowledgebase/Article/View/326/0/how-do-i-change-or-reset-the-password-of-the-serveradmin-server-query-account)'
 ---
 
+*This is a Linode Community guide. [Write for us](/docs/contribute) and
+earn $250 per published guide.*
+
+<hr>
+
 This guide will show you how to install a TeamSpeak Server on your Linode. TeamSpeak is a voice server or a "virtual intercom" that lets you talk to others online. It's commonly used for gaming, but people also use it to collaborate with their work groups, hobby projects, or just to chat with friends and family.
 
 ## Before You Begin
