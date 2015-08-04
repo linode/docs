@@ -59,7 +59,9 @@ By default, Logwatch uses Sendmail to send digests.
 		root:           root@hostname.example.com
 		~~~
 
-5.	Start postfix:
+5.  Run `newaliases` after editing the aliases list.
+
+6.	Start postfix:
 
 		systemctl start postfix
 
