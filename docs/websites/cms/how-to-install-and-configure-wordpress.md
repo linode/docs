@@ -6,7 +6,7 @@ description: 'Install and optimize the WordPress blogging and content management
 keywords: 'install WordPress,WordPress on Linode,WordPress how-to, how to install wordpress, how to configure wordpress'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-applications/cms-guides/wordpress/','websites/cms/manage-web-content-with-wordpress/']
-modified: Monday, February 16, 2015
+modified: Wednesday, July 29th, 2015
 modified_by:
   name: Elle Krout
 published: 'Tuesday, July 27th, 2010'
@@ -17,49 +17,70 @@ external_resources:
 - '[WordPress Support](http://wordpress.org/support)'
 ---
 
-WordPress is popular dynamic blog-focused content management system. The software is built upon the LAMP stack and features an extensible plugin framework and extensive theme system, which allows site owners and developers to deploy easy-to-use and powerful publishing tools.
+WordPress is a popular dynamic blog-focused content management system. The software is built upon a LAMP or LEMP stack and features an extensive plugin framework and theme system, which allows site owners and developers to deploy easy-to-use and powerful publishing tools.
 
-This guide assumes you have a complete and up-to-date Debian system, and that you have completed the [Getting Started](/docs/getting-started/) guide. If you are new to Linux system administration, you may want to review our [Administration Basics](/docs/using-linux/administration-basics) guide or the [Introduction to Linux Concepts](/docs/tools-reference/introduction-to-linux-concepts/) guide.
+{: .note}
+>
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
-{: .note }
->The steps required in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+## Before You Begin
 
-##Prerequisites
+-  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, and that the Linode's [hostname is set](/docs/getting-started#setting-the-hostname).
 
-Before installing WordPress, you must ensure that your system has a fully functioning [LAMP stack](/docs/lamp-guides/). Alternatively, you may choose to deploy WordPress on top of a [LEMP stack](/docs/lemp-guides/); however, this may affect some aspects of configuration.
+    To check your hostname run:
 
-Additionally, this guide assumes that you are deploying WordPress on the domain `example.com`, where the directory `/var/www/example.com/public_html/` is the document root where all web accessible files are stored. Replace all instances of `example.com` in the code below with your own domain information.
+        hostname
+        hostname -f
 
-###Prepare WordPress
+    The first will output your short hostname, the second your fully-qualified domain name (FQDN).
 
-The WordPress installer assumes you've already created a [MySQL](/docs/websites/lamp/lamp-server-on-debian-7-wheezy#configure-mysql-and-set-up-mysql-databases) database and user that it can use. If you haven't yet, use the following steps to create one.
+-  You have a configured web stack set up. This can be a [LAMP](/docs/websites/lamp/) or [LEMP](/docs/websites/lamp/) stack.
 
-1.  Enter the MySQL command line:
 
-        mysql -u root -p
+-   MySQL has a database set up for WordPress. If you do not have a database created:
 
-2.  Create a database for WordPress. In this example the database name reflects the domain that will serve the WordPress site, but you can choose your own naming convention:
+    1.  Enter the MySQL command line:
 
-        create database example_com;
+            mysql -u root -p
 
-3.  Create a user with privileges for the new database. Replace `wordpress` with your desired user name, and `5t1ck` with a strong password:
+    2.  Create a wordpress database:
 
-        grant all on example_com.* to 'wordpress' identified by '5t1ck';
+            create database wordpress;
+
+    3.  Create and grant a user prililedges for the newly-created `wordpress` database. replacing `user` and `password` with the username and password you wish to use:
+
+            grant all on wordpress.* to 'user' identified by 'password';
+
+    4.  Exit MySQL:
+
+            quit
+
 
 ## Install WordPress
 
-As of this writing, the latest version of WordPress is 4.1. The latest version of WordPress is always available from the URL `http://wordpress.org/latest.tar.gz`. Issue the following sequence of commands to download and install the required files:
+1.  Create a `src` directory under your website's directory to store pristine copies of WordPress's source files. In this guide, the home directory `/var/www/exmaple.com/` is used as an example. Navigate to that new directory:
 
-    mkdir /var/www/example.com/src/
-    cd /var/www/example.com/src/
-    chown -R www-data:www-data /var/www/
-    wget http://wordpress.org/latest.tar.gz
-    sudo -u www-data tar -xvf latest.tar.gz
-    mv latest.tar.gz wordpress-`date "+%Y-%m-%d"`.tar.gz
-    cp -R wordpress/* ../public_html/
-    rm -rf wordpress/
+        sudo mkdir /var/www/example.com/src/
+        cd /var/www/example.com/src/
 
-These commands create a `src/` folder within the `/var/www/example.com/` directory to store and manage pristine copies of the source files that you use to deploy your WordPress site. New versions of WordPress and plug-ins can be downloaded from within the WordPress administration interface, once installed.
+2.  Set the owner of the new directory to be your web server's user. In this instance, our web server is Apache:
+
+        sudo chown -R www-data:www-data /var/www/
+
+3.  Install the latest version of WordPress, and exand it:
+
+        sudo wget http://wordpress.org/latest.tar.gz
+        sudo -u www-data tar -xvf latest.tar.gz
+
+4.  Move `latest.tar.gz` so it is renamed as `wordpress`, followed by the date to store a pristine backup of the source files:
+
+        sudo mv latest.tar.gz wordpress-`date "+%Y-%m-%d"`.tar.gz
+
+5.  Copy the WordPress files to your `public_html` folder, then remove the folder in the `src` directory:
+
+        cp -R wordpress/* ../public_html/
+        rm -rf wordpress/
+
 
 ## Configure WordPress
 
@@ -79,20 +100,22 @@ These commands create a `src/` folder within the `/var/www/example.com/` directo
 
         chown -R www-data:www-data /var/www/example.com/public_html/wp-content
 
-3.  Unless you've decided to use a web server other than Apache, issue the following commands to ensure that `mod_rewrite` is enabled:
+3.  If using Apache, issue the following commands to ensure that `mod_rewrite` is enabled:
 
         a2enmod rewrite
-        service apache2 restart
+    
+    Restart Apache.
+
+    {: .note}
+    >
+    >If using permalinks to set your posts' URLs Apache will need to be updated to allow individual sites to update the `.htaccess` file. To permit this, add the following to you WordPress website's *VirtualHosts* codeblock:
+    >
+    >     <Directory /var/www/>
+    >         Options Indexes FollowSymLinks
+    >         AllowOverride All
+    >         Require all granted
+    >     </Directory>
 
 You will now be able to log in to your new WordPress-powered website. You can continue the configuration of your WordPress site from the web-based interface.
 
 Congratulations! You have now successfully installed WordPress!
-
-## Monitor for Software Updates and Security Notices
-
-When running software compiled or installed directly from sources provided by upstream developers, you are responsible for monitoring updates, bug fixes, and security issues. After becoming aware of releases and potential issues, update your software to resolve flaws and prevent possible system compromise. Monitoring releases and maintaining up-to-date versions of all software is crucial for the security and integrity of a system.
-
-WordPress comes with update alerts, accessible within the "Updates" page of your web-based administration interface. From here you can also reinstall WordPress, and update both your WordPress version and any plug-ins you have installed, as needed.
-
-
-
