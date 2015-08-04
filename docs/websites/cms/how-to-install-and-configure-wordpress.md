@@ -17,7 +17,7 @@ external_resources:
 - '[WordPress Support](http://wordpress.org/support)'
 ---
 
-WordPress is popular dynamic blog-focused content management system. The software is built upon a LAMP stack and features an extensive plugin framework and theme system, which allows site owners and developers to deploy easy-to-use and powerful publishing tools.
+WordPress is a popular dynamic blog-focused content management system. The software is built upon a LAMP or LEMP stack and features an extensive plugin framework and theme system, which allows site owners and developers to deploy easy-to-use and powerful publishing tools.
 
 {: .note}
 >
