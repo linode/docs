@@ -89,13 +89,6 @@ By default, Logwatch uses Sendmail to send digests.
 
 		apt-get install logwatch sendmail-bin sendmail
 
-3.	For Sendmail to work successfully, add your private IP (found on the **Remote Access** page of the Linode Manager) to your `/etc/hosts` file:
-
-	{: .file-excerpt}
-	/etc/hosts
-	:	~~~ conf
-		123.45.67.89 	localhost
-		~~~
 
 ### Fedora
 
