@@ -155,7 +155,7 @@ All requests to URLs ending in `/static` will be served directly from the `/srv/
 Additional Application Servers
 ------------------------------
 
-If the Python application you've deployed requires more application resources than a single Linode instance can provide, all of the methods for deploying a uWSGI application server are easily scaled to rely on multiple uSWGI instances that run on additional Linodes with the request load balanced using nginx's `upstream` capability. Consider our documentation of [proxy and software load balancing with nginx](//docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer) for more information. For a basic example configuration, consider the following example:
+If the Python application you've deployed requires more application resources than a single Linode instance can provide, all of the methods for deploying a uWSGI application server are easily scaled to rely on multiple uSWGI instances that run on additional Linodes with the request load balanced using nginx's `upstream` capability. Consider our documentation of [proxy and software load balancing with nginx](/docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer) for more information. For a basic example configuration, consider the following example:
 
 {: .file-excerpt }
 nginx configuration
@@ -195,7 +195,7 @@ You may wish to consult the following resources for additional information on th
 
 - [Installing Nginx on Ubuntu 10.04 (Lucid)](/docs/web-servers/nginx/installation/ubuntu-10.04-lucid)
 - [Deploy a LEMP Server on Ubuntu 10.04 (Lucid)](/docs/lemp-guides/ubuntu-10.04-lucid/)
-- [Configure nginx Proxy Servers](//docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer)
+- [Configure nginx Proxy Servers](/docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer)
 
 
 
