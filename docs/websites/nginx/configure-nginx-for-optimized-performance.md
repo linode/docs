@@ -9,7 +9,7 @@ published: 'Friday, August 7th, 2015'
 modified: Friday, August 7th, 2015
 modified_by:
     name: Linode
-title: 'Nginx Performance Tuning'
+title: 'How to Configure Nginx for Optimized Performance'
 contributor:
     name: Bob Strecansky
     link: https://github.com/bobstrecansky
