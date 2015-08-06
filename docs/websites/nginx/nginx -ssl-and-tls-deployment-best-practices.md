@@ -18,7 +18,7 @@ For example if a directory is not found Nginx will return a 404 error with its v
 
 3.  Exit your text editor and restart Nginx.
 
-        service nginx restart
+        systemctl restart nginx
 
 After restarting Nginx browse to a directory of your server that does not exist, and Nginx will no longer share its version number.
 
@@ -42,7 +42,7 @@ SPDY is a open networking portocol developed primarily by Google to decrease pag
 
 4.  Exit your text editor and restart Nginx.
 
-        service nginx restart
+        systemctl restart nginx
 
 5.  Open a web browser and navigate to [SPDYCheck.org](http://SPDYCheck.org), enter your Linode's domain name or hostname in the text box and click "Check". This free tool will check to server and let you know if SPDY is enabled and functioning correctly. 
 
@@ -75,7 +75,7 @@ Google is now ranking websites that accept encrypted HTTPS connections higher in
 
 5. Exit your text editor saving your changes and restart Nginx.
 
-        service nginx restart
+        systemctl restart nginx
 
 Now if you run a SPDYCheck again, your report should indicate HTTP connections are no longer accepted.
 
@@ -123,7 +123,7 @@ Before enabling OCSP Stapling you will need to create a file on your system that
 
 8.  Save your changes exiting your text editor and restart Nginx.
 
-        service nginx restart
+        systemctl restart nginx
 
 9.  Navigate to the [Qualys SSL Labs SSL Server Test](https://www.ssllabs.com/ssltest/). Enter the domain name or hostname of your Linode and click "Submit". Optionally you may uncheck the checkbox to not show your results on the boards.
 
@@ -149,7 +149,7 @@ With all traffic being redirected from HTTP to HTTPS why not tell visitors brows
 
 3.  Save your changes exiting your text editor and restart Nginx.
 
-        service nginx restart
+        systemctl restart nginx
 
 4.  Navigate to the [Qualys SSL Labs SSL Server Test](https://www.ssllabs.com/ssltest/). Enter the domain name or hostname of your Linode and click "Submit". Optionally you may uncheck the checkbox to not show your results on the boards.
 
