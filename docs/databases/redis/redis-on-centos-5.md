@@ -14,7 +14,7 @@ title: Redis on CentOS 5
 external_resources:
  - '[Redis Project Home Page](http://redis.io/)'
  - '[Redis Configuration](http://redis.io/topics/config)'
- - '[Redis Data Durability](http://redis.io/wiki/AppendOnlyFileHowto)'
+ - '[Redis Data Durability](https://redis-docs.readthedocs.org/en/latest/AppendOnlyFileHowto.html)'
  - '[Redis Command Reference](http://redis.io/commands)'
 ---
 

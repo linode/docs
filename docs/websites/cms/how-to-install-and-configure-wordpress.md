@@ -6,7 +6,7 @@ description: 'Install and optimize the WordPress blogging and content management
 keywords: 'install WordPress,WordPress on Linode,WordPress how-to, how to install wordpress, how to configure wordpress'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-applications/cms-guides/wordpress/','websites/cms/manage-web-content-with-wordpress/']
-modified: Wednesday, July 29th, 2015
+modified: Tuesday, August 4th, 2015
 modified_by:
   name: Elle Krout
 published: 'Tuesday, July 27th, 2010'
@@ -17,7 +17,7 @@ external_resources:
 - '[WordPress Support](http://wordpress.org/support)'
 ---
 
-WordPress is popular dynamic blog-focused content management system. The software is built upon a LAMP stack and features an extensive plugin framework and theme system, which allows site owners and developers to deploy easy-to-use and powerful publishing tools.
+WordPress is a popular dynamic blog-focused content management system. The software is built upon a LAMP or LEMP stack and features an extensive plugin framework and theme system, which allows site owners and developers to deploy easy-to-use and powerful publishing tools.
 
 {: .note}
 >
