@@ -12,13 +12,19 @@ published: 'Thursday, July 2nd, 2015'
 title: Install Salt
 ---
 
-Salt is designed for server management. A single Salt Master controls many Salt Minions. The directions below will configure two Debian 8 Linodes, one as a Salt Master, and one as a Salt Minion.
+Salt is a server management platform, designed to control a number of servers from a single master server. The following directions will walk you through configuring a salt master and multiple salt minions, and deploying your first Salt Formula.  These instructions assume that you are using Debian 8, but can be adjusted to function on other distributions.
 
-##Install a Salt Master and a Salt Minion
+##Before You Begin
 
-1.  <a href="http://docs.saltstack.com/en/latest/ref/configuration/nonroot.html" target="_blank">As the root user</a> log into both Linode 1 and Linode 2, then <a href="https://www.linode.com/docs/getting-started#setting-the-hostname" target="_blank">set the hostnames</a>. Without changing the configurations in Salt, the Salt Master's ID and Salt Minions' IDs default to the hostname. 
+Prior to starting this guide, you will need to ensure that each Linode's [hostname](https://www.linode.com/docs/getting-started#setting-the-hostname) has been set. As the Linode's hostname will be used to identify it within Salt, we recommend using descriptive hostnames. You should also designate one Linode as your Salt master and name it appropriately. If your Linodes are located within the same datacenter, it's also recommended that you configure [private IP addresses](https://www.linode.com/docs/networking/remote-access#adding-private-ip-addresses) for each system.
 
-2.  On both Linodes, create and open `/etc/apt/sources.list.d/salt.list`, then add the following lines: 
+##Add the Salt Repository
+
+{: .note}
+>
+> The steps in this section will need to be run on each of your Linodes
+
+1.  Create the file `/etc/apt/sources.list.d/salt.list` and enter the following lines to add the Salt repository: 
     
 	{:.file }
 	/etc/apt/sources.list.d/salt.list
@@ -27,46 +33,57 @@ Salt is designed for server management. A single Salt Master controls many Salt 
 	   deb http://debian.saltstack.com/debian jessie-saltstack main
 	   ~~~
 
-3.  On both Linodes, use `wget` to add the repository key:
+2.  Add the repository key:
 	
 		wget -q -O- "http://debian.saltstack.com/debian-salt-team-joehealy.gpg.key" | apt-key add -
 
-4.  On both Linodes, run the update command:
+3.  Update your Linode:
 
         apt-get update
 
-###Installing and Configuring the Salt Master
+##Configure your Salt Master
 
-1.  On Linode 1, the Salt Master, install Salt:
+{: .note}
+>
+> The following steps will be run only on the Linode designated as your Salt master.
+
+1.  Install the 'salt master' package:
 
         apt-get install salt-master
 
-2.  On Linode 1, open `/etc/salt/master`, uncomment the `#interface:` line, and replace `<master's IP address>` below with the public, Salt Master's IP address:
+2.  Open the '/etc/salt/master' file, uncomment the `#interface:` line, and replace `<master's IP address>` below with the address you wish your Salt master to utilize.  If your Linodes are located in the same datacenter, you can utilize your private network address for this purpose:::
 
     {:.file }
     /etc/salt/master 
     :   ~~~  
         # The address of the interface to bind to:
-          interface: <master's IP address>
+        interface: <master's IP address>
         ~~~
 
-        {: .caution}
-    >
-    > Ensure that there are two spaces in front of "interface" and a space between the colon, in `interface:`, and the IP address. YAML formatting follows two space nesting.
+        {: .note}
+        >
+        >As part of this step, you can also configure the user you wish to utilize to issue Salt commands to your minions.  Uncomment the `#user:` line and enter your desired username to modify this setting.  You will also need to issue the following command to set the required permissions for the user in question.
+        >
+        >       chown -R user /etc/salt /var/cache/salt /var/log/salt /var/run/salt
+        >       
+        >Once this setting has been modified, you will need to issue any further Salt commands on your Salt Master while logged in as that user.
 
 
-
-3.  On Linode 1, restart Salt:
+3.  Restart Salt:
 
         systemctl restart salt-master
 
-###Installing and Configuring a Salt Minion
+##Installing and Configuring a Salt Minion
 
-1.  On Linode 2, the Salt Minion, install Salt:
+{: .note}
+>
+> The following steps will need to be run on each of your Salt minions
+
+1.  Install Salt:
 
         apt-get install salt-minion
     
-2.  On Linode 2, open `/etc/salt/minion`, uncomment the `#master: salt` line, and replace "salt" with the IP address of Linode 1, the Salt Master:
+2.  Edit the `/etc/salt/minion` file, uncomment the `#master: salt` line, and replace "salt" with the IP address of your Salt Master:
 
     {:.file }
     /etc/salt/minion 
@@ -76,49 +93,47 @@ Salt is designed for server management. A single Salt Master controls many Salt 
           master: <master's IP address>
         ~~~
 
-        {: .caution}
-    >
-    > Ensure that there are two spaces in front of "master" and a space between the colon, in `master: `, and the IP address. YAML formatting follows two space nesting.
-
-
-3.  On Linode 2, restart Salt:
+3.  Restart Salt:
 
         systemctl restart salt-minion
 
-##Using the Salt Master
+##Configure Salt
 
-1.  From Linode 1, list the known Salt Minions linked to the Salt Master:
+1.  On your salt master, issue the following command to list the known Salt Minions linked to the Salt Master:
 
         salt-key -L
 
-3.  For security purposes, verify the Minions' IDs on both the Salt Master and the Salt Minions. The Minions' IDs are most likely the hostname from their Linode.
+3.  For security purposes, verify the Minions' IDs on both the Salt Master and the Salt Minions. Each Minion will be identified by its hostname.
         
-    On the Salt Master, replace `<hostname or Minion ID>` below and run:
+    Run the following command from the salt master to query each minion's key ID:
 
-        salt-key -f <hostname or Minion ID>
+        salt-key -f <hostname>
 
     On the Salt Minions:
 
         salt-call key.finger --local
 
-
-2.  If the IDs have been verified, accept the listed Salt Minions.
+2.  Once you have verified each of your Minion's ID's, accept the listed Salt Minions.
 
     To accept all Minions:    
 
         salt-key -A
 
-    Or accept an individual Minion. Replace `<hostname or Minion ID>` below and run:
+    To accept an individual minion, run the command below, replacing the `<hostname>` value with your minion's hostname:
 
-        salt-key -a <hostname or Minion ID>
+        salt-key -a <hostname>
 
-3.  Check that the accepted Minions are up:
+3.  Check the status of each of the accepted minions:
 
         salt-run manage.up
 
 4.  Ping the Minions, using '*' for all:
 
         salt '*' test.ping
+
+##Deploy your first Salt formula
+
+
 
 For possible next steps, continue building a multi-server configuration setup and read more about [configuration management with Salt States](/docs/applications/salt/salt-states-apache-mysql-php-fail2ban).
 
