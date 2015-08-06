@@ -236,7 +236,7 @@ You should now be logged into your StartSSL account.
     
 3.  Restart Nginx to apply your changes.
 
-        service nginx restart
+        systemctl restart nginx
 
 ### Test
 
