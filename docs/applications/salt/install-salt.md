@@ -7,7 +7,7 @@ keywords: 'salt, saltstack, install, beginner, Debian 8'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: Thursday, July 2nd, 2015
 modified_by:
-    name: Linode
+    name: James Stewart
 published: 'Thursday, July 2nd, 2015'
 title: Install Salt
 ---
@@ -131,9 +131,39 @@ Prior to starting this guide, you will need to ensure that each Linode's [hostna
 
         salt '*' test.ping
 
-##Deploy your first Salt formula
+##Deploy your first Salt Formula
 
+Salt Formulas create a framework of software and configurations to be deployed to your minions.  Multiple Salt Formulas can be deployed to your Minions, and this will allow you to manage package configuration and maintenance from the Salt Master.  These steps will walk you through installing one of the premade formulas hosted on [Salt's Github](https://github.com/saltstack-formulas).
 
+###Install GitFS
+
+Salt utilizes GitFS to manage remote repositories for Salt Formulas.  These next steps will walk you through installing and configuring GitFS on your Salt Master to retrieve and store Salt Formulas
+
+1.  Install GitFS Dependencies
+
+        apt-get install python-pygit2
+
+2.  Edit `/etc/salt/master` and uncomment the following lines:
+
+    {:.file-excerpt }
+    /etc/salt/master
+    : ~~~
+      fileserver_backend:
+        - git
+      ~~~
+
+3.  In the same file, uncomment the `gitfs_remotes:` line, and add the path to the Formulas you wish to add below it.  For this example, we're adding the Apache remote.
+
+    {:.file }
+    /sample/file.html
+    : ~~~
+      gitfs_remotes:
+        - https://github.com/saltstack-formulas/apache-formula
+      ~~~
+
+4.  Restart the salt-master service.
+
+        systemctl restart salt-master
 
 For possible next steps, continue building a multi-server configuration setup and read more about [configuration management with Salt States](/docs/applications/salt/salt-states-apache-mysql-php-fail2ban).
 
