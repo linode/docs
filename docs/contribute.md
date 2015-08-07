@@ -70,7 +70,7 @@ Once you've submitted your article, here's what you can expect:
 
 ## Completed Topics
 
-These authors got their articles published and $250. You could be next.
+These authors got their articles published. You could be next.
 
 -   [Varnish Cache](/docs/websites/varnish/getting-started-with-varnish-cache) - Kevin Cupp
 -   [Pflogsumm](/docs/email/postfix/pflogsumm-for-postfix-monitoring-on-centos-6) - Robert Accettura
