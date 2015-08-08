@@ -159,7 +159,7 @@ Prerequisites
 
 7.  However, you may receive several files ending with `.crt`. If this is the case, then they are collectively refereed to as a `chained SSL certificate` and must be concatenated into one file in order to provide full support with most browsers. The following example uses a chained SSL certificate that was signed by Comodo, but other vendors are perfectly reputable as well. Enter the following command to do this:
 
-        cat example_com.crt COMODORSADomainValidationSecureServerCA.crt  COMODORSAAddTrustCA.crt AddTrustExternalCARoot.crt > chained-ssl.crt
+        cat example_com.crt COMODORSADomainValidationSecureServerCA.crt  COMODORSAAddTrustCA.crt AddTrustExternalCARoot.crt > www.mydomain.com.crt
 
     The contents of the resulting file will appear similar to the following (yours will be unique):
 
@@ -206,7 +206,7 @@ Prerequisites
 
 8.  If you have concatenated a chained SSL certificate, save this file as `/etc/ssl/localcerts/www.mydomain.com.crt`. Then execute the following command to protect the signed certificate:
 
-        chmod 400 /etc/ssl/localcerts/chained-ssl.crt
+        chmod 400 /etc/ssl/localcerts/www.mydomain.com.crt
 
 
     {: .note }
@@ -262,7 +262,7 @@ Prerequisites
 
 ## Configuring your Web Server with a 301 Redirect
 
-### Configuring the Apache Webserver.
+### Configuring your vhost file for the Apache Webserver.
 
 1.  Enable mod_rewrite so that you can redirect all traffic back to the NodeBalancer over port 443/HTTPS. Enter the following command:
 
@@ -272,7 +272,7 @@ Prerequisites
 
         LoadModule rewrite_module modules/mod_rewrite.so
 
-    {:.note}
+    {:.caution}
     > Depending on if you are using a Debian or a Redhat based distribution, this file will be located in one of the following locations:
     >
     >     /etc/apache2/apache2.conf
@@ -282,18 +282,30 @@ Prerequisites
 2.  Now edit the Apache vhost configuration file to establish the rewrite rules necessary in order to redirect all incoming traffic from port 80/HTTP, back to the NodeBalancer on port 443/HTTPS:
 
     {: .file-excerpt }
-    /etc/apache2/sites-available/example.com.conf
+        /etc/apache2/sites-available/example.com.conf
     :   ~~~ apache
         <VirtualHost *:80>
           
-        ...
+            ...
           
              RewriteEngine    On
              RewriteCond      %{HTTP:X-Forwarded-Proto} !https
              RewriteRule      ^.*$ https://%{SERVER_NAME}%{REQUEST_URI} [L,R=301,NE]
-             RewriteLog       /var/log/apache2/rewrite.log
-             RewriteLogLevel  5
+             LogLevel alert rewrite:trace4  # Adjust log verbosity as required. ex. 1-8
          </VirtualHost>
+        ~~~
+
+    {: .note}
+    >   The rewrite configuration shown above is specific to Apache 2.4 or later. This means that loggging gets recorded to Apache's `error.log` file. To view only the records specific to `mod_rewrite`, you can pipe the log file through grep: ` tail -f error_log|fgrep '[rewrite:'`. If you are using Apache 2.2 then you will need to replace the `LogLevel alert rewrite:trace` directive with the following instead:
+
+    {: .file-excerpt }
+        /etc/apache2/sites-available/example.com.conf
+    :   ~~~ apache2
+    
+            ...
+            
+             RewriteLog       /var/log/apache2/rewrite.log
+             RewriteLogLevel  5  # Adjust log verbosity as required. ex. 1-9
         ~~~
 
     {: .caution}
@@ -332,21 +344,27 @@ Prerequisites
             }
         ~~~
 
+5. Your configuration should now be complete. After reloading your web server, all requests made to your website that are not sent to port 443 should be redirected back to your Nodebalancer on a secure connection with SSL/TLS.
+
 ## Tips for Troubleshooting
-
-- If you end up having difficulty getting the redirect to work properly or would like to see detailed information about how your SSL certificate is configured, you may wish to utilize the following tool from Qualys:
-
- - [Qualys online SSL Server Test](https://www.ssllabs.com/ssltest/)
 
 - Every time that you make changes to your web server's document root file or other configuration files, be sure to reload the server:
  
+    #### For Apache:
         service apache2 reload
+        service httpd reload
         systemctl restart apache2.service
+        systemctl restart httpd.service
     
+    #### For Nginx:
         service nginx reload
         systemctl restart nginx.service
 
-- When testing behind a load balancer, using curl with the `-IL` flags can be very helpful when debugging:
-     
-        curl -IL example.com
+- If you end up having difficulty getting the redirect to work properly or would like to see detailed information about how your SSL certificate is configured, you may wish to utilize the following tool from Qualys:
 
+  [Qualys online SSL Server Test](https://www.ssllabs.com/ssltest/)
+
+- When testing behind a load balancer, using curl with the `-I` or `-L` flags can be very helpful when debugging:
+     
+        curl -I example.com
+        curl -L example.com
