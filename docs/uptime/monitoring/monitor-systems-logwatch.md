@@ -12,7 +12,7 @@ published: 'Tuesday, July 7th, 2015'
 title: Monitor System Logs with Logwatch
 ---
 
-*Logwatch* is a log parsing program that analyzes and generates daily reports on your system's log activity. Logwatch is meant to be used as an after-the-fact application and will not alert you to issues in real-time, but instead will create a digest organized by systems for ease of review. More advanced users can also pair Logwatch with custom analysis scripts to fine-tune their reports more to their liking.
+*Logwatch* is a log parsing program that analyzes and generates daily reports on your system's log activity. Logwatch does not provide real time alerts, but instead will create a digest organized by systems for ease of review. More advanced users can also pair Logwatch with custom analysis scripts to fine-tune their reports.
 
 By default, Logwatch uses Sendmail to send digests.
 
@@ -36,7 +36,7 @@ By default, Logwatch uses Sendmail to send digests.
 
 	{: .note}
 	>
-	>Other SMTP clients, can also be used for delivering Logwatch messages.
+	>Other SMTP clients can also be used for delivering Logwatch messages.
 
 3.	Edit the `/etc/postfix/main.cf` file to add your domain information, and allow for send-only mail, replacing `hostname.example.com` with your own hostname and domain:
 
@@ -127,7 +127,7 @@ The following settings are the most comment configuration changes that will need
 
 ### Log Directories
 
-The default location of the logged directories is `/var/log`. If any other directories contain logs, just as website directories, they can be added by including additional `LogDir` lines. For example:
+By default, Logwatch digests will include all logs contained within `/var/log`. If any other directories contain logs, such as website directories, they can be added by including additional `LogDir` lines. For example:
 
 {: .file-excerpt}
 /usr/share/logwatch/default.conf/logwatch.conf
@@ -143,7 +143,7 @@ The default Logwatch configuration will output the digest to your Linode's conso
 
 ### Email Logwatch Digest
 
-The Logwatch digest can be set to be mailed locally or via email, in plain text or HTML formats.
+The Logwatch digest can be sent to local users or external email addresses, in plain text or HTML formats.
 
 {: .note}
 >
@@ -202,3 +202,4 @@ Logwatch often works best when configured to run daily and send or save a report
 		30 0  * * *          /usr/sbin/logwatch
 		~~~
 		
+	For more information on adjusting your crontab scheduling, reference our guide on [Scheduling Tasks with Cron](https://www.linode.com/docs/tools-reference/tools/schedule-tasks-with-cron).
