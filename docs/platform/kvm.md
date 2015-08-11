@@ -65,14 +65,16 @@ For standard paravirtualized KVM Linodes, add the following to your kernel `.con
     CONFIG_VIRTIO_PCI_LEGACY=y
     CONFIG_SCSI_VIRTIO=y
     CONFIG_VIRTIO_NET=y
+    CONFIG_SERIAL_8250=y
+    CONFIG_SERIAL_8250_CONSOLE=y
 
 For full virtualization, use the following parameters:
 
-    CONFIG_KVM_GUEST=y
     CONFIG_E1000=y
-    CONFIG_E1000E=y
-    CONFIG_HAVE_IDE=y
-
+    CONFIG_ATA_PIIX=y
+    CONFIG_SERIAL_8250=y
+    CONFIG_SERIAL_8250_CONSOLE=y
+    
 You should also move your block device assignments to be sequential, without skipped block devices.
 
 ### Direct Disk Boot
