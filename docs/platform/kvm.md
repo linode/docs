@@ -58,6 +58,21 @@ If you want to build your own guest kernel, you must include the following modul
 * IDE support (for full virtualization)
 * e1000 support (for full virtualization)
 
+For standard paravirtualized KVM Linodes, add the following to your kernel `.config` file:
+
+    CONFIG_KVM_GUEST=y
+    CONFIG_VIRTIO_PCI=y
+    CONFIG_VIRTIO_PCI_LEGACY=y
+    CONFIG_SCSI_VIRTIO=y
+    CONFIG_VIRTIO_NET=y
+
+For full virtualization, use the following parameters:
+
+    CONFIG_KVM_GUEST=y
+    CONFIG_E1000=y
+    CONFIG_E1000E=y
+    CONFIG_HAVE_IDE=y
+
 You should also move your block device assignments to be sequential, without skipped block devices.
 
 ### Direct Disk Boot
