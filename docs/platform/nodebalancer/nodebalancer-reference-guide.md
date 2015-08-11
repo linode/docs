@@ -55,6 +55,10 @@ How initial new connections are allocated across the backend Nodes.
 -   **Least Connections** - Tracks each backend Linode's connection count, and allocates new connections to the node with the least connections.
 -   **Source IP** - Modulates the client's IP to allocate them to the same backend on subsequent requests. This works so long as the set of backend Linodes doesn't change, however Session Stickiness affects this behavior.
 
+###Cipher
+
+The legacy cipher option is provided to allow support for older browsers. The default `Recommended` cipher option provides current best practices HTTPS support.  If you do not require support for legacy browsers, we recommend utilizing the default cipher option.
+
 ### Session Stickiness
 
 NodeBalancers have the ability for Session Persistence - meaning subsequent requests from the same client will be routed to the same backend Node when possible.
