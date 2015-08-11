@@ -55,7 +55,9 @@ Now click on **Create Configuration**. A NodeBalancer is configured using ports,
 
 [![Adding a port configuration to a NodeBalancer.](/docs/assets/798-3.png)](/docs/assets/774-add-port.png)
 
-For the traditional Web application, these settings are a good start. HTTP cookie stickiness is preferred so that the same client will always land on the same backend -- for a simple Web application that keeps sessions in memory, this is necessary to avoid session errors on clients.  If you require support for older browsers, you can select the `Legacy` cypher option. For all other implementations, use the `Recommended` option, which is selected by default.
+For the traditional Web application, these settings are a good start. HTTP cookie stickiness is preferred so that the same client will always land on the same backend -- for a simple Web application that keeps sessions in memory, this is necessary to avoid session errors on clients.
+
+If you require support for older browsers, you can select the `Legacy` cipher option. For all other implementations, use the `Recommended` option, which implements best pratctices for SSL security. For more information on properly formatting your certificates, see our [Nodebalancer Reference Guide](/docs/platform/nodebalancer/nodebalancer-reference-guide#cipher).
 
  {: .note }
 >
