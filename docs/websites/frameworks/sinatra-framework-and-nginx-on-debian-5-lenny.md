@@ -2,7 +2,7 @@
 deprecated: true
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Deploy simple web applications with the Sinatra web development framework.'
 keywords: 'sinatra,ruby,web applications,development,deployment'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -108,62 +108,62 @@ To start the web server for the first time, issue the following command:
 
     /etc/init.d/nginx start
 
-Create the following directories beneath the `/srv/www` hierarchy for your application. Modify `ducklington.org` to match the domain of the site you are deploying:
+Create the following directories beneath the `/srv/www` hierarchy for your application. Modify `example.com` to match the domain of the site you are deploying:
 
-    mkdir -p /srv/www/ducklington.org/application
-    mkdir -p /srv/www/ducklington.org/application/public
-    mkdir -p /srv/www/ducklington.org/application/log
-    mkdir -p /srv/www/ducklington.org/application/tmp
-    mkdir -p /srv/www/ducklington.org/logs
-    mkdir -p /srv/www/ducklington.org/public
+    mkdir -p /srv/www/example.com/application
+    mkdir -p /srv/www/example.com/application/public
+    mkdir -p /srv/www/example.com/application/log
+    mkdir -p /srv/www/example.com/application/tmp
+    mkdir -p /srv/www/example.com/logs
+    mkdir -p /srv/www/example.com/public
 
-Insert the following line into the `/opt/nginx/conf/nginx.conf` file, modifying the path for `/srv/www/ducklington.org/nginx.conf` to match the directory created above:
+Insert the following line into the `/opt/nginx/conf/nginx.conf` file, modifying the path for `/srv/www/example.com/nginx.conf` to match the directory created above:
 
 {: .file-excerpt }
 /opt/nginx/conf/nginx.conf
 :   ~~~ nginx
     # [...]
     http {
-        include /srv/www/ducklington.org/nginx.conf; 
+        include /srv/www/example.com/nginx.conf; 
         passenger_root /opt/passenger-3.0.1;
         passenger_ruby /usr/bin/ruby1.8;
     # [...]
     ~~~
 
-This inserts the contents of `/srv/www/ducklington.org/nginx.conf` into your nginx configuration, and allows you to specify the configuration of the virtual host for the `ducklington.org` site. Consider the following example configuration, and modify this file to meet the needs of your deployment:
+This inserts the contents of `/srv/www/example.com/nginx.conf` into your nginx configuration, and allows you to specify the configuration of the virtual host for the `example.com` site. Consider the following example configuration, and modify this file to meet the needs of your deployment:
 
 {: .file }
-/srv/www/ducklington.org/nginx.conf
+/srv/www/example.com/nginx.conf
 :   ~~~ nginx
     server {
             listen 80;
-            server_name www.ducklington.org ducklington.org;
+            server_name www.example.com example.com;
 
-        access_log /srv/www/ducklington.org/logs/access.log;
-            error_log /srv/www/ducklington.org/logs/error.log;
+        access_log /srv/www/example.com/logs/access.log;
+            error_log /srv/www/example.com/logs/error.log;
 
-            root /srv/www/ducklington.org/application/public;
+            root /srv/www/example.com/application/public;
             passenger_enabled on;
 
         location /static {
-                root   /srv/www/ducklington.org/public;
+                root   /srv/www/example.com/public;
                 index  index.html index.htm index.php;
             }
 
     }
     ~~~
 
-Your Sinatra application will handle all requests for the `www.ducklington.org` and `ducklington.org` domains, except those that begin with `/static` which are handled directly by nginx. When this configuration has been created and properly modified, issue the following command to restart the web server:
+Your Sinatra application will handle all requests for the `www.example.com` and `example.com` domains, except those that begin with `/static` which are handled directly by nginx. When this configuration has been created and properly modified, issue the following command to restart the web server:
 
     /etc/init.d/nginx restart
 
 Create a Basic Sinatra Application
 ----------------------------------
 
-The following is a very basic Sinatra application. Place the following code in the `/srv/www/ducklington.org/application/app.rb` file.
+The following is a very basic Sinatra application. Place the following code in the `/srv/www/example.com/application/app.rb` file.
 
 {: .file }
-/srv/www/ducklington.org/application/app.rb
+/srv/www/example.com/application/app.rb
 :   ~~~ ruby
     require 'rubygems'
     require 'sinatra'
@@ -184,10 +184,10 @@ The following is a very basic Sinatra application. Place the following code in t
 Deploy Sinatra Applications with Rack
 -------------------------------------
 
-Create a Rack configuration file located at `/srv/www/ducklington.org/application/config.ru` to allow Passenger to run your application properly. Deploy the following `config.ru` file:
+Create a Rack configuration file located at `/srv/www/example.com/application/config.ru` to allow Passenger to run your application properly. Deploy the following `config.ru` file:
 
 {: .file }
-/srv/www/ducklington.org/application/config.ru
+/srv/www/example.com/application/config.ru
 :   ~~~ ruby
     require 'rubygems'
     require 'sinatra'
@@ -198,9 +198,9 @@ Create a Rack configuration file located at `/srv/www/ducklington.org/applicatio
 
 The `require 'app'` statement references the `app.rb` file. Modify this line to `require` your application. Any time you make changes to your Rack file or your application, issue the following command so that Passenger will restart your application:
 
-    touch /srv/www/ducklington.org/application/tmp/restart.txt
+    touch /srv/www/example.com/application/tmp/restart.txt
 
-You can now access your Sinatra application by visiting `http://ducklington.com/`in your web browser. If you used the example application above, visit "`http://ducklington.org/`, `http://ducklington.org/hi`, and `http://ducklington.org/bye` to view different messages.
+You can now access your Sinatra application by visiting `http://example.com/`in your web browser. If you used the example application above, visit "`http://example.com/`, `http://example.com/hi`, and `http://example.com/bye` to view different messages.
 
 More Information
 ----------------

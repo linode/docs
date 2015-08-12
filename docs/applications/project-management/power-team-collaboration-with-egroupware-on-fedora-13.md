@@ -2,7 +2,7 @@
 deprecated: true
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Build a groupware system with eGroupware.'
 keywords: 'groupware,email,collaboration,fedora'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -48,21 +48,21 @@ Apache Virtual Hosting Configuration
     Alias /egroupware /usr/share/egroupware
     ~~~
 
-When inserted into the virtual hosting configuration for `ducklington.org`, accessing the URL `http://ducklington.org/egroupware/` will allow you to access your eGroupware site. If you do not have virtual hosting configured, eGroupware will be accessible at `/egroupware` of the default Apache host.
+When inserted into the virtual hosting configuration for `example.com`, accessing the URL `http://example.com/egroupware/` will allow you to access your eGroupware site. If you do not have virtual hosting configured, eGroupware will be accessible at `/egroupware` of the default Apache host.
 
 Configure eGroupware
 --------------------
 
 Before you begin the configuration of eGroupware, you need to ensure that a number of directories exist for use by eGroupware. Issue the following sequence of commands:
 
-    mkdir -p /srv/www/ducklington.org/backup
-    mkdir -p /srv/www/ducklington.org/tmp
-    mkdir -p /srv/www/ducklington.org/files
-    chown apache:apache -R /srv/www/ducklington.org/backup/
-    chown apache:apache -R /srv/www/ducklington.org/tmp
-    chown apache:apache -R /srv/www/ducklington.org/files
+    mkdir -p /srv/www/example.com/backup
+    mkdir -p /srv/www/example.com/tmp
+    mkdir -p /srv/www/example.com/files
+    chown apache:apache -R /srv/www/example.com/backup/
+    chown apache:apache -R /srv/www/example.com/tmp
+    chown apache:apache -R /srv/www/example.com/files
 
-Visit `http://ducklington.org/egroupware/setup/` in your web browser to begin the setup process presented by the eGroupware application. When you have completed the initial "Header Setup" process, select the option to write the "header" file and then continue to the "Setup/Admin." Ensure that you've selected the correct "Domain" if you configured more than one. At this juncture, you must install the eGroupware applications that you will expect to use. Select the proper character set and select the button to "'Install' all applications." You can now "Recheck" your installation. In the "Configuration" setup page, supply eGroupware with paths to the `backup/` `tmp/` and `files/` directory created above. Additionally, you will need to create an admin account for your eGroupware domain, which you can accomplish from this Setup Domain page.
+Visit `http://example.com/egroupware/setup/` in your web browser to begin the setup process presented by the eGroupware application. When you have completed the initial "Header Setup" process, select the option to write the "header" file and then continue to the "Setup/Admin." Ensure that you've selected the correct "Domain" if you configured more than one. At this juncture, you must install the eGroupware applications that you will expect to use. Select the proper character set and select the button to "'Install' all applications." You can now "Recheck" your installation. In the "Configuration" setup page, supply eGroupware with paths to the `backup/` `tmp/` and `files/` directory created above. Additionally, you will need to create an admin account for your eGroupware domain, which you can accomplish from this Setup Domain page.
 
 When all applications have been installed, you will be provided with a number of options that you can use to fine-tune the operations and behavior of your eGroupware instance. If you wish to use eGroupware to help manage email, you will need to have a running email system.
 

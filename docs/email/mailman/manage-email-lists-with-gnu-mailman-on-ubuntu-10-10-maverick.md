@@ -2,7 +2,7 @@
 deprecated: true
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Use the GNU Mailman software to manage email listservs.'
 keywords: 'mailman,listserv,email,postfix'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -161,7 +161,7 @@ If you need to configure additional domains for use, ensure that you've made the
 {: .file-excerpt }
 /etc/mailman/mm\_cfg.py
 :   ~~~
-    add_virtualhost('lists.bucknell.net', 'lists.example.org')
+    add_virtualhost('lists.example.com', 'lists.example.org')
 
     # Modify the following line
     POSTFIX_STYLE_VIRTUAL_DOMAINS = ['lists.example.com', 'lists.example.org']

@@ -8,17 +8,22 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-servers/nginx/perl-fastcgi/centos-5/']
 modified: Wednesday, July 20th, 2011
 modified_by:
-  name: Peter Sandin
+  name: Linode
 published: 'Wednesday, December 16th, 2009'
 title: 'Nginx and Perl-FastCGI on CentOS 5'
+external_resources:
+ - '[The nginx Homepage](http://nginx.org/)'
+ - '[FastCGI Project Homepage](http://www.fastcgi.com/)'
+ - '[Perl Documentation](http://perldoc.perl.org/)'
+ - '[Installing Nginx on CentOS 5](/docs/web-servers/nginx/installation/centos-5)'
+ - '[Basic Ngnix Configuration](/docs/websites/nginx/basic-nginx-configuration)'
 ---
 
 The nginx web server is a fast, lightweight server designed to efficiently handle the needs of both low and high traffic websites. Although commonly used to serve static content, it's quite capable of handling dynamic pages as well. This guide will help you get nginx up and running with Perl and FastCGI on your CentOS 5 Linux VPS.
 
 It is assumed that you've already followed the steps outlined in our [getting started guide](/docs/getting-started/). These steps should be performed via a root login to your Linode VPS over SSH.
 
-Set the Hostname
-----------------
+## Set the Hostname
 
 Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
 
@@ -27,8 +32,7 @@ Before you begin installing and configuring the components described in this gui
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-Install Required Packages
--------------------------
+## Install Required Packages
 
 CentOS doesn't include nginx in their repositories, so you'll need to add support for [EPEL](http://fedoraproject.org/wiki/EPEL) (Extra Packages for Enterprise Linux) from the Fedora project. Issue the following command:
 
@@ -45,8 +49,7 @@ Issue the following commands to update your system and install the nginx web ser
 
 You'll be asked to accept the key for EPEL, as it gets imported the first time you install an EPEL package.
 
-Configure Virtual Hosting
--------------------------
+## Configure Virtual Hosting
 
 In this guide, the domain "example.com" is used as an example site. You should substitute your own domain name in the configuration steps that follow. First, create directories to hold content and log files:
 
@@ -102,8 +105,7 @@ Issue the following commands to enable the site:
 
 You may wish to create a test HTML page under `/srv/www/www.example.com/public_html/` and view it in your browser to verify that nginx is properly serving your site (Perl will not work yet). Please note that this will require an [entry in DNS](/docs/dns-guides/configuring-dns-with-the-linode-manager) pointing your domain name to your Linode's IP address (found on the "Remote Access" tab in the [Linode Manager](http://manager.linode.com//)).
 
-Configure FastCGI Wrapper
--------------------------
+## Configure FastCGI Wrapper
 
 First create the FastCGI wrapper script (credit: [Denis S. Filimonov](http://www.ruby-forum.com/topic/145858)) at `/usr/bin/fastcgi-wrapper.pl` with the following contents:
 
@@ -322,8 +324,7 @@ Next issue the following commands to make the scripts executable and set the per
     chkconfig --add perl-fastcgi
     chkconfig perl-fastcgi on
 
-Test Perl with FastCGI
-----------------------
+## Test Perl with FastCGI
 
 Create a file called "test.pl" in your site's "public\_html" directory with the following contents:
 
@@ -351,17 +352,3 @@ Make the script executable by issuing the following command:
     chmod a+x /srv/www/www.example.com/public_html/test.pl
 
 When you visit `http://www.example.com/test.pl` in your browser, your Perl environment variables should be shown. Congratulations, you've configured the nginx web server to use Perl with FastCGI for dynamic content!
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [The nginx Homepage](http://nginx.org/)
-- [FastCGI Project Homepage](http://www.fastcgi.com/)
-- [Perl Documentation](http://perldoc.perl.org/)
-- [Installing Nginx on CentOS 5](/docs/web-servers/nginx/installation/centos-5)
-- [Basic Ngnix Configuration](/docs/websites/nginx/basic-nginx-configuration)
-
-
-

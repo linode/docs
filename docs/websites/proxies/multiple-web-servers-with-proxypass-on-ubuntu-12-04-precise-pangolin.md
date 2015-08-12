@@ -11,14 +11,16 @@ modified_by:
   name: Linode
 published: 'Wednesday, November 7th, 2012'
 title: 'Multiple Web Servers with ProxyPass on Ubuntu 12.04 (Precise Pangolin)'
+external_resources:
+ - '[Apache Module mod\_proxy](http://httpd.apache.org/docs/2.2/mod/mod_proxy.html)'
+ - '[Apache HTTP Server Version 2.2 Docs](http://httpd.apache.org/docs/2.2/)'
 ---
 
 In some cases, administrators find that while Apache meets most of their general-purpose web serving needs, other web or application servers are better suited for certain tasks. Fortunately, it's easy to configure Apache to pass certain requests to other web server processes. These secondary (or tertiary) web servers may be running on the same VPS or separate nodes (perhaps via private networking). Our examples use lighttpd as a secondary web server, but they apply to any web server or application you'd like to proxy HTTP requests to.
 
 We assume you already have Apache running on your Linode. If you don't, you may wish to review our [Apache on Ubuntu 12.04 (Precise Pangolin) guide](/docs/websites/apache/apache-2-web-server-on-ubuntu-12-04-lts-precise-pangolin) before proceeding. These steps should be performed as root via a shell session.
 
-Enabling the Proxy Module
--------------------------
+## Enabling the Proxy Module
 
 We'll edit the file `/etc/apache2/mods-available/proxy.conf` as follows:
 
@@ -59,8 +61,7 @@ Next, we'll issue the following commands:
 
 Apache should restart cleanly. If you encounter any issues, you may wish to inspect the logs available under `/var/log/apache2/` for more information.
 
-Proxying a Domain to Lighttpd
------------------------------
+## Proxying a Domain to Lighttpd
 
 We already have a site called "www.firstsite.org" running under Apache as a normal virtual host. We'll use Apache to send requests for the site "www.secondsite.org" to lighttpd, which we've configured to run on port 8080 on localhost. Here's the configuration file for "www.secondsite.org":
 
@@ -92,8 +93,7 @@ Here's the site "www.secondsite.org" being served by lighttpd via ProxyPass:
 
 [![Website running under Lighttpd on Ubuntu 10.04 (Lucid).](/docs/assets/1149-proxypass-lighttpd-site.png)](/docs/assets/1149-proxypass-lighttpd-site.png)
 
-Proxying a Specific URL to Lighttpd
------------------------------------
+## Proxying a Specific URL to Lighttpd
 
 If we wanted to have `http://www.firstsite.org/myapp/` served by a web application running under lighttpd, we'd simply modify its configuration file to look like this:
 
@@ -117,14 +117,3 @@ Now the location "/myapp" will be served by lighttpd instead of Apache. After re
 [![Web application running under a directory via lighttpd on Ubuntu 10.04 (Lucid).](/docs/assets/1150-proxypass-lighttpd-directory.png)](/docs/assets/1150-proxypass-lighttpd-directory.png)
 
 This is an easy method for hosting multiple application servers (with different web server requirements) under a single domain.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Apache Module mod\_proxy](http://httpd.apache.org/docs/2.2/mod/mod_proxy.html)
-- [Apache HTTP Server Version 2.2 Docs](http://httpd.apache.org/docs/2.2/)
-
-
-

@@ -2,7 +2,7 @@
 deprecated: true
 author:
   name: Stan Schwertly
-  email: sschwertly@linode.com
+  email: docs@linode.com
 description: 'Get in-depth website visitor statistics with Piwik, a self-hosted, open source analytics solution on Fedora 13.'
 keywords: 'open source analytics,piwik fedora 13,piwik,analytics,centos,tracking,statistics'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -54,7 +54,7 @@ Configure a Dedicated Virtual Host for Piwik
 
 This phase of the installation process is optional, but recommended. Here we configure a subdomain and virtual host configuration in Apache specifically for Piwik. This makes it easy to separate the statistics package from the website or websites that Piwik monitors.
 
-To create a virtual host we need to add an "[A Record](/docs/dns-guides/introduction-to-dns#a_aaaa_records)" for the subdomain that Piwik will use; in our example this is `stats.bucknell.net`. If your DNS is hosted with Linode's DNS servers, you can configure the A record in the [DNS manager](/docs/dns-guides/configuring-dns-with-the-linode-manager). Additionally, we'll need to create a new virtual hosting file for this sub domain.
+To create a virtual host we need to add an "[A Record](/docs/dns-guides/introduction-to-dns#a_aaaa_records)" for the subdomain that Piwik will use; in our example this is `stats.example.com`. If your DNS is hosted with Linode's DNS servers, you can configure the A record in the [DNS manager](/docs/dns-guides/configuring-dns-with-the-linode-manager). Additionally, we'll need to create a new virtual hosting file for this sub domain.
 
 We'll append the following virtual host to our `vhost.conf` file, located at `/etc/httpd/conf.d/vhost.conf`:
 
@@ -100,7 +100,7 @@ Before running Piwik's installation script, we need to change the permissions of
     chmod a+w /srv/www/stats.example.net/public_html/config
     chown -R apache:apache /srv/www/stats.example.net/public_html
 
-Visit your new Piwik instance in your browser. In our example, this is located at `http://stats.bucknell.net`. Follow the instructions provided by the Piwik installation process. You will be prompted for the name of your MySQL database as well as access credentials for this database. This information was created when you installed the LAMP stack. After this step, you may see the following message:
+Visit your new Piwik instance in your browser. In our example, this is located at `http://stats.example.com`. Follow the instructions provided by the Piwik installation process. You will be prompted for the name of your MySQL database as well as access credentials for this database. This information was created when you installed the LAMP stack. After this step, you may see the following message:
 
     "Client connection to the database server is not set to UTF8 by default. 
     This is not critical issue: Piwik should work correctly. However for 

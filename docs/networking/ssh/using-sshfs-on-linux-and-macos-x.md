@@ -11,12 +11,16 @@ modified_by:
   name: Linode
 published: 'Monday, October 26th, 2009'
 title: Using SSHFS on Linux and MacOS X
+external_resources:
+ - '[SSHFS Home Page](http://fuse.sourceforge.net/sshfs.html)'
+ - '[MacFUSE Home Page](http://code.google.com/p/macfuse/)'
+ - '[Macfusion Home Page](http://www.macfusionapp.org/)'
+ - '[Linux Security Basics](/docs/security/basics)'
 ---
 
 SSHFS allows users to securely access remote filesystems over the SSH protocol. This guide will help you get started with SSHFS on Linux or MacOS X. SSHFS eliminates the need to use specialized software (such as SFTP/FTP clients) to transfer files to and from a remote server. This document assumes the server hosting the filesystem you wish to access has an SSH daemon running on it, and that you have an account on the server with sufficient privileges to access the desired filesystem locations.
 
-Using SSHFS with Linux
-----------------------
+## Using SSHFS with Linux
 
 ### Install Prerequisite Packages
 
@@ -78,8 +82,7 @@ At this point, you should be able to log into the remote server as "alex" withou
 
 This entry would mount the home directory for "alex" on the server "archimedes.example.com" locally at `/root/alex-archimedes` each time the system is booted. You may treat this entry like any other in `/etc/fstab`; please consult the man page for `fstab` for an in-depth explanation of available options.
 
-Using SSHFS with MacOS X
-------------------------
+## Using SSHFS with MacOS X
 
 With MacFUSE and Macfusion, you can mount remote filesystems over SSH in Mac OS X. You may use Finder or the terminal to access files in this manner.
 
@@ -134,16 +137,3 @@ Double-click on the icon to display the contents of your remote filesystem.
 [![A remote SSHFS filesystem in Finder on MacOS X.](/docs/assets/195-macfusion-install-08.png)](/docs/assets/195-macfusion-install-08.png)
 
 Congratulations! You've mounted a remote filesystem via SSH on MacOS X.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [SSHFS Home Page](http://fuse.sourceforge.net/sshfs.html)
-- [MacFUSE Home Page](http://code.google.com/p/macfuse/)
-- [Macfusion Home Page](http://www.macfusionapp.org/)
-- [Linux Security Basics](/docs/security/basics)
-
-
-

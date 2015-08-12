@@ -1,7 +1,7 @@
 ---
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Use unison to synchronize files between two machines.'
 keywords: 'backup,syncronize files,unison,debian,debian lenny'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -11,14 +11,15 @@ modified_by:
   name: Amanda Folson
 published: 'Tuesday, April 20th, 2010'
 title: Synchronize files with Unison
+external_resources:
+ - '[Unison Project Home Page](http://www.cis.upenn.edu/~bcpierce/unison/)'
 ---
 
 Unison is a file synchronization tool that allows users to maintain two instances of a given file set on two systems up to date and identical. The tool is designed for maximum usability in a variety of contexts and uses protocols like SSH to securely transfer data between folders. Furthermore, the system is designed to be fault tolerant in the case of interruptions and modifications to both "source" and "remote," and aims to always leave both instances of a file or directory tree in a known working state. Unison can be deployed to synchronize files between systems running disparate operating systems, to backup systems, or as part of a content deployment system, among a plethora of other use cases.
 
 Before beginning this guide, we assume you have completed the [getting started guide](/docs/getting-started/). If you're new to Linux system administration, we recommend considering the [introducing Linux concepts](/docs/tools-reference/introduction-to-linux-concepts) guide and the [administration basics](/docs/using-linux/administration-basics) guide. If you're simply looking to gain access to your Linode on your local system, you may want to consider deploying a [remote file system](/docs/networking/ssh-filesystems/). Conversely, if you need a more complex backup system, your needs may be better served by an incremental backup system.
 
-Installing Unison on a Linode
------------------------------
+## Installing Unison on a Linode
 
 ### Debian 5 (Lenny)
 
@@ -75,8 +76,7 @@ Ensure that your local copy of the package database is up to date before install
     pacman -Sy
     pacman -S unison
 
-Installing Unison on Local Machines
------------------------------------
+## Installing Unison on Local Machines
 
 In order to function properly, the major and minor version numbers of Unison used by the remote and local system must match. Test the version of Unison that was installed by the package manager on your Linode by issue the following command:
 
@@ -91,13 +91,3 @@ If you are running a Linux-based system on your local machine you can install un
 Debian 5 (Lenny) also includes a graphical user interface for Unison version 2.13, packaged as `unison2.13.16-gtk`.
 
 If you're running OS X or Windows, download an appropriate [Unison client](http://alan.petitepomme.net/unison/index.html). When successfully installed, provide the client with the resolvable address of the remote server, SSH keys or other authentication credentials, and the *absolute* paths to the local and remote folders that you want to synchronize. From now on, when you run Unison from the client app, changes to either or both of the specified file systems will be updated and reflected in both instances. Congratulations!
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Unison Project Home Page](http://www.cis.upenn.edu/~bcpierce/unison/)
-
-
-

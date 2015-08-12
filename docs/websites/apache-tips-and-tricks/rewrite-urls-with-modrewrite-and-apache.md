@@ -1,24 +1,26 @@
 ---
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'How to use the mod\_rewrite engine to generate useful and attractive URLs with the Apache HTTP server.'
 keywords: 'mod\_rewrite,REST,URLs,redirect,apache,httpd'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-servers/apache/configuration/rewriting-urls/']
 modified: Wednesday, May 4th, 2011
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Friday, November 6th, 2009'
 title: 'Rewrite URLs with mod_rewrite and Apache'
+external_resources:
+ - '[Apache Rewrite Guide](http://httpd.apache.org/docs/2.2/rewrite/)'
+ - '[Apache URL Redirection Guide](/docs/web-servers/apache/configuration/redirecting-urls)'
 ---
 
 In contemporary web development, it is common for resources to be accessible over HTTP at locations which do not map to locations and resources on the file system. While [redirect statements](/docs/web-servers/apache/configuration/redirecting-urls) can be used to address this issue to some degree, many deployments have more complicated needs for URL rewriting. Apache's mod\_rewrite provides rewrite functionality so that users can interact with clean and clear URLs while still providing administrators the ability to architect their sites as they see fit.
 
 This guide assumes you have a working installation of Apache and have proper permissions to modify configuration files. If you have not installed Apache, you might want to consider one of our [Apache installation guides](/docs/web-servers/apache/) or [LAMP stack installation guides](/docs/lamp-guides/). If you want a more thorough introduction to Apache configuration, consider our [basic Apache configuration](/docs/web-servers/apache/configuration/configuration-basics) and [Apache configuration structure](/docs/web-servers/apache/configuration/configuration-structure) documents.
 
-Rewrite URLs
-------------
+## Rewrite URLs
 
 In a `<Directory>` block or `.htaccess` file, enable mod\_rewrite with the following line:
 
@@ -65,8 +67,7 @@ The above set of rewrite rules would take a request for:
 
 This is useful when the locations of files on the file system do not correspond to the URLs as requested by the client. This is also particularly useful when all requests are generated dynamically by a single file, for example `index.php`.
 
-Rewrite URLs Under Specific Conditions
---------------------------------------
+## Rewrite URLs Under Specific Conditions
 
 With the `RewriteCond` parameter you can limit the conditions under which a `RewriteRule` will be used. Let's take the following example from the default rewrite rules for the [WordPress](/docs/web-applications/cms-guides/wordpress/) application:
 
@@ -88,8 +89,7 @@ In short, if both of are true and no file or directory exists that matches the r
 
 Implicitly, multiple `RewriteCond` are connected with logical *AND* operators so that all conditions must evaluate to true to process the `RewriteRule` for that request. You may append an `[OR]` statement to the end of a `RewriteCond` directive to join a list of conditions with a logical *OR* and create several possible conditions whereby a request would be rewritten by a single `RewriteRule`. Consult [this external document for more information about rewrite conditions](http://httpd.apache.org/docs/2.2/mod/mod_rewrite.html#rewritecond)
 
-Redirection Codes in mod\_rewrite
----------------------------------
+## Redirection Codes in mod\_rewrite
 
 Finally, there are a number of codes that you may append to a `RewriteRule` which modify the behavior of the rewrite. In the previous example `RewriteRule . /index.php [L]` we see the `[L]` option which stands for "last rule". This prevents Apache from applying any additional rewrite rules. The most prominent additional options include:
 
@@ -98,14 +98,3 @@ Finally, there are a number of codes that you may append to a `RewriteRule` whic
 -   `R` tells the client that the requested page has moved, with the HTTP code 302 for temporary redirection. To signify that the page has moved permanently, specify "`R=301`."
 
 You may specify multiple options at the end of a `RewriteRule` separating them with commas, as in: `[L,R=301]`
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
--   [Apache Rewrite Guide](http://httpd.apache.org/docs/2.2/rewrite/)
--   [Apache URL Redirection Guide](/docs/web-servers/apache/configuration/redirecting-urls)
-
-
-

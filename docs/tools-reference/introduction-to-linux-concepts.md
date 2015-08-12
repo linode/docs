@@ -1,7 +1,7 @@
 ---
 author:
   name: Linode
-  email: scampbell@linode.com
+  email: docs@linode.com
 description: 'An introduction to Linux and Unix-like systems covering history, system architecture, and distribution characteristics.'
 keywords: 'Linux,Unix-Like systems,history'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -11,6 +11,11 @@ modified_by:
   name: Linode
 published: 'Monday, August 31st, 2009'
 title: Introduction to Linux Concepts
+external_resources:
+ - '[Getting Started](/docs/getting-started/)'
+ - '[Using the Terminal](/docs/using-linux/using-the-terminal)'
+ - '[LAMP Guides](/docs/lamp-guides/)'
+ - '[Package Management](/docs/using-linux/package-management)'
 ---
 
 Linodes run **Linux**. Linux is an operating system, just like Windows and Mac OS X. As an operating system, Linux manages your Linode's hardware and provides services your other software needs to run.
@@ -23,8 +28,7 @@ This guide is intended to be very beginner-friendly. It takes a Linux 101 approa
 >
 > Everything on a Linux system is case-sensitive. That means that `photo.jpg`, `photo.JPG`, and `Photo.jpg` are all different files. Usernames and passwords are also case-sensitive.
 
-History
--------
+## History
 
 This section provides a brief overview of the history of Linux.
 
@@ -34,8 +38,7 @@ Corporations started licensing Unix in the 1980s and 1990s. By the late 1980s, t
 
 Strictly speaking, Linux is the *kernel*, not the entire operating system. The kernel provides an interface between your Linode's hardware and the input/output requests from applications. The rest of the operating system usually includes many GNU libraries, utilities, and other software, from the Free Software Foundation. The operating system as a whole is known as GNU/Linux.
 
-Getting Started
----------------
+## Getting Started
 
 Let's begin at the beginning. If some of this is a repeat for you, feel free to skip ahead!
 
@@ -81,8 +84,7 @@ Since your Linode is physically housed in either the Tokyo, London, Newark, Atla
 
 It's time to follow the next section of the **Getting Started** article, [Connecting to Your Linode](/docs/getting-started#sph_connecting-to-your-linode). You can follow along with the written instructions or watch the videos, or both. It will help you install a terminal emulator, then use it to establish an SSH connection to your Linode.
 
-So You're Staring at a Shell Prompt
------------------------------------
+## So You're Staring at a Shell Prompt
 
 Once you connect to your Linode, you should be looking at a shell prompt like this and a blinking cursor:
 
@@ -107,8 +109,7 @@ You can type any valid Linux shell command at the blinking cursor after the shel
 - If you don't know which directory you're in, you can always type `pwd`, short for *print working directory*.
 - Press the `Up Arrow` on your keyboard to see or reuse the previous command that was executed.
 
-Finding Your Way Around Files and Folders
------------------------------------------
+## Finding Your Way Around Files and Folders
 
 In this section, we'll look at the structure of a Linux server. Everything on your Linode is a file or a directory. Remember, *directory* is the Linux term for a folder. Let's find out where you are in the directory structure. Make sure your terminal application is selected and that you're still logged in to your Linode. You should see a blinking cursor where you can start typing. For your first command, let's use the `pwd` command. Short for *print working directory*, its output lets you view the full path to your current directory. Type the following command after the shell prompt (just the `pwd` part):
 
@@ -228,8 +229,7 @@ With the `pwd` command to show you where you are, the `cd` command to move to a 
 
 One of the easiest ways to upload your own files to your Linode is with a Secure FTP (**SFTP**) program. The [Migrate from Shared Hosting to Linode](/docs/migrate-from-shared) article has a great walkthrough for how to do this.
 
-Users and Permissions
----------------------
+## Users and Permissions
 
 Linux uses a powerful system of users and permissions to make sure that the right people get access to the right files. For example, as the owner of your Linode, you should to be able to view, edit, and run every file on the system. On the other hand, you want the general public to be able to view, but not change, your website files, and you don't want them to see the more structural files on your server at all. A different user, such as someone with a mailbox on your Linode, should be able to access their own files but not anyone else's. There are three permission categories:
 
@@ -256,10 +256,9 @@ To view the users and permissions for a particular file or directory, run the `l
 
     ls -l my_directory
 
-To learn about users and groups in more detail, read the [Linux Users and Groups](/docs/using-linux/users-and-groups) article.
+To learn about users and groups in more detail, read the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups) article.
 
-Software
---------
+## Software
 
 While you could just use your Linode as a big hard drive for storing files, most people will want to install software on their servers. This section shows you how to install, run, update, and uninstall software from a Linux system.
 
@@ -295,7 +294,7 @@ You want some programs, like your web server, to run constantly. These are the p
 
 **Once:**
 
-Sometimes you want to run a program on an as-needed basis. For example, you might want to run a script to rename a group of files. In that case, first use the `cd` command to move into the directory where the script is located. Make sure that your user has [execute permissions](#users-and-permissions) for the script file. If you need to modify the permissions, see the [Linux Users and Groups](/docs/using-linux/users-and-groups#sph_administering-file-permissions) guide. Then run the script with the following syntax:
+Sometimes you want to run a program on an as-needed basis. For example, you might want to run a script to rename a group of files. In that case, first use the `cd` command to move into the directory where the script is located. Make sure that your user has [execute permissions](#users-and-permissions) for the script file. If you need to modify the permissions, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups#sph_administering-file-permissions) guide. Then run the script with the following syntax:
 
     ./my_script
 
@@ -334,13 +333,11 @@ Here's the yum version for Fedora and CentOS:
 
     yum remove software
 
-Security
---------
+## Security
 
 When you run a Linux system, you are in charge of its security. The Internet is full of people who want to use your Linode's computing power for their own goals. If you neglect changing default passwords, install out-of-date software, or leave any other loophole, it's only a matter of time before your system gets hacked. You should go through the [Securing Your Server](/docs/securing-your-server) article to tighten up your server's security.
 
-Distributions
--------------
+## Distributions
 
 Let's conclude our introduction to Linux with a discussion of different distributions. Despite many differences, RedHat Linux (which includes Fedora and CentOS) and Debian Linux (which includes Ubuntu) share a large amount of code with each other; the kernels are largely the same, and most of the user utilities and applications from the GNU project are the same. The differences between distributions generally relate to the specific goals and aims of the system developers, and which bundles of software are installed by default.
 
@@ -351,16 +348,3 @@ For instance, some distributions are designed to be as simple and minimalistic a
 -   **Common Tool Sets**: Different distributions make use of different tools for common tasks like [package management](/docs/using-linux/package-management) or system configuration. As we discussed above, Debian and Ubuntu use APT to manage `.deb` packages, CentOS and Fedora use yum to manage `.rpm` packages, and OpenSUSE also uses `.rpm` packages but manages them with a tool called **yast**. In many cases your choice of distribution will come down to the one that provides the tools you need and are most comfortable with.
 
 Different distributions of Linux are right for different situations. You should experiment until you find the best fit for you. Given the similarities between different distributions, don't be afraid switch to a new one that will serve you better. If you're familiar with the concepts in this article, you're well on your way to administrating your system like a pro with any distribution of Linux.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Getting Started](/docs/getting-started/)
-- [Using the Terminal](/docs/using-linux/using-the-terminal)
-- [LAMP Guides](/docs/lamp-guides/)
-- [Package Management](/docs/using-linux/package-management)
-
-
-

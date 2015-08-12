@@ -1,7 +1,7 @@
 ---
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Use uWSGI to deploy Python application servers in conjunction with nginx.'
 keywords: 'uwsgi,wsgi,nginx,python'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -88,21 +88,21 @@ Create an `/etc/default/uwsgi` file to specify specific settings for your Python
 {: .file-excerpt }
 /etc/default/uwsgi
 :   ~~~ bash
-    PYTHONPATH=/srv/www/ducklington.org/application
+    PYTHONPATH=/srv/www/example.com/application
     MODULE=wsgi_configuration_module
     ~~~
 
-If you want to deploy a "Hello World" application, insert the following code into the `/srv/www/ducklington.org/application/wsgi_configuration_module.py` file:
+If you want to deploy a "Hello World" application, insert the following code into the `/srv/www/example.com/application/wsgi_configuration_module.py` file:
 
 {: .file }
-/srv/www/ducklington.org/application/wsgi\_configuration\_module.py
+/srv/www/example.com/application/wsgi\_configuration\_module.py
 :   ~~~ python
     import os
     import sys
 
-    sys.path.append('/srv/www/ducklington.org/application')
+    sys.path.append('/srv/www/example.com/application')
 
-    os.environ['PYTHON_EGG_CACHE'] = '/srv/www/ducklington.org/.python-egg'
+    os.environ['PYTHON_EGG_CACHE'] = '/srv/www/example.com/.python-egg'
 
     def application(environ, start_response):
         status = '200 OK'
@@ -130,9 +130,9 @@ nginx virtual host configuration
 :   ~~~ nginx
     server {
         listen   80;
-        server_name www.ducklington.org ducklington.org;
-        access_log /srv/www/ducklington.org/logs/access.log;
-        error_log /srv/www/ducklington.org/logs/error.log;
+        server_name www.example.com example.com;
+        access_log /srv/www/example.com/logs/access.log;
+        error_log /srv/www/example.com/logs/error.log;
 
         location / {
             include        uwsgi_params;
@@ -140,20 +140,20 @@ nginx virtual host configuration
         }
 
         location /static {
-            root   /srv/www/ducklington.org/public_html/static/;
+            root   /srv/www/example.com/public_html/static/;
             index  index.html index.htm;
         }
     }
     ~~~
 
-All requests to URLs ending in `/static` will be served directly from the `/srv/www/ducklington.org/public_html/static` directory. Restart the web server by issuing the following command:
+All requests to URLs ending in `/static` will be served directly from the `/srv/www/example.com/public_html/static` directory. Restart the web server by issuing the following command:
 
     /etc/init.d/nginx restart
 
 Additional Application Servers
 ------------------------------
 
-If the Python application you've deployed requires more application resources than a single Linode instance can provide, all of the methods for deploying a uWSGI application server are easily scaled to rely on multiple uSWGI instances that run on additional Linodes with the request load balanced using nginx's `upstream` capability. See our documentation of [proxy and software load balancing with nginx](/docs/uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing) for more information. For a basic example configuration, see the following example:
+If the Python application you've deployed requires more application resources than a single Linode instance can provide, all of the methods for deploying a uWSGI application server are easily scaled to rely on multiple uSWGI instances that run on additional Linodes with the request load balanced using nginx's `upstream` capability. See our documentation of [proxy and software load balancing with nginx](/docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer) for more information. For a basic example configuration, see the following example:
 
 {: .file-excerpt }
 nginx configuration
@@ -168,9 +168,9 @@ nginx configuration
 
     server {
         listen   80;
-        server_name www.ducklington.org ducklington.org;
-        access_log /srv/www/ducklington.org/logs/access.log;
-        error_log /srv/www/ducklington.org/logs/error.log;
+        server_name www.example.com example.com;
+        access_log /srv/www/example.com/logs/access.log;
+        error_log /srv/www/example.com/logs/error.log;
 
         location / {
             include        uwsgi_params;
@@ -178,7 +178,7 @@ nginx configuration
         }
 
         location /static {
-            root   /srv/www/ducklington.org/public_html/static/;
+            root   /srv/www/example.com/public_html/static/;
             index  index.html index.htm;
         }
     }
@@ -193,7 +193,7 @@ You may wish to consult the following resources for additional information on th
 
 - [Installing Nginx on Debian 5 (Lenny)](/docs/web-servers/nginx/installation/debian-5-lenny)
 - [Deploy a LEMP Server on Debian 5 (Lenny)](/docs/lemp-guides/debian-5-lenny/)
-- [Configure nginx Proxy Servers](/docs/uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing)
+- [Configure nginx Proxy Servers](/docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer)
 
 
 

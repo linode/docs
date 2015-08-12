@@ -1,22 +1,25 @@
 ---
 author:
   name: Linode
-  email: bolow@linode.com
+  email: docs@linode.com
 description: 'An introduction to the principal concepts and use of the users and groups system in Linux systems.'
 keywords: 'users,permissions,access control lists,chmod,chown,linux'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['using-linux/users-and-groups/']
+alias: ['docs/using-linux/users-and-groups/']
 modified: Wednesday, September 17, 2014
 modified_by:
-  name: Joseph Dooley
+  name: Linode
 published: 'Monday, August 31st, 2009'
 title: Linux Users and Groups
+external_resources:
+ - '[User Account and Group Management @ UWISC''s Center for Computer Aided Engineering](http://www.cae.wisc.edu/linaccounts)'
+ - '[Users and Groups Administration in Linux @ DebianAdmin](http://www.debianadmin.com/users-and-groups-administration-in-linux.html)'
+ - '[Online Chmod Calculator](http://www.onlineconversion.com/html_chmod_calculator.htm)'
 ---
 
 If you are new to Linux/Unix, then the concept of permissions may be confusing. This guide will provide you with an explanation of what permissions are, how they work, and how to manage them. A number of examples will be provided to illustrate how to set and change permissions for both users and groups.
 
-What are User and Group Permissions?
-------------------------------------
+## What are User and Group Permissions?
 
 Linux/Unix operating systems have the ability to multitask in a manner similar to other operating systems. However, Linux's major difference from other operating systems is its ability to have multiple users. Linux was designed to allow more than one user to have access to the system at the same time. In order for this multiuser design to work properly, there needs to be a method to protect users from each other. This is where permissions come in to play.
 
@@ -36,8 +39,7 @@ To view the permissions on a file or directory, issue the command `ls -l <direct
 
 The first ten characters show the access permissions. The first dash (-) indicates the type of file (d for directory, s for special file, and - for a regular file). The next three characters (**rw-**) define the owner's permission to the file. In this example, the file owner has read and write permissions only. The next three characters (**r--**) are the permissions for the members of the same group as the file owner (which in this example is read only). The last three characters (**r--**) show the permissions for all other users and in this example it is read only.
 
-Working with Users, Groups, and Directories
--------------------------------------------
+## Working with Users, Groups, and Directories
 
 The following sections will go over the commands needed to create, delete, and modify user accounts. Groups will be covered, as well as commands for creating and deleting directories. You will be provided with the commands and descriptions needed for working with users, groups, and directories.
 
@@ -304,15 +306,3 @@ In many cases, user permissions are used to provide your system with greater sec
 The best practice is to give each user their own login to your system. This protects each user's files from all other users. Furthermore, using specific accounts for users allows more accurate system logging, particularly when combined with tools like `sudo`. We recommend avoiding situations where more than one individual knows the password for a user account for maximum security.
 
 In contrast, groups are useful for allowing multiple independent user accounts to collaborate and share files. If you create groups on a machine for common tasks on a per-task basis (e.g. web editors, contributors, content submitters, support) and add relevant users to the relevant groups, these users can all edit and run the same set of files without sharing these files with the world. Use of the `chown` command with file permissions of 770 and 740 would help accomplish this goal.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [User Account and Group Management @ UWISC's Center for Computer Aided Engineering](http://www.cae.wisc.edu/linaccounts)
-- [Users and Groups Administration in Linux @ DebianAdmin](http://www.debianadmin.com/users-and-groups-administration-in-linux.html)
-- [Online Chmod Calculator](http://www.onlineconversion.com/html_chmod_calculator.htm)
-
-
-

@@ -11,12 +11,19 @@ modified_by:
   name: Linode
 published: 'Thursday, October 18th, 2012'
 title: 'Apache and mod_wsgi on Ubuntu 12.04 (Precise Pangolin)'
+external_resources:
+ - '[A Basic "Hello World" Django Application](http://runnable.com/UWRVp6lLuONCAABD/hello-world-in-django-for-python)'
+ - '[Deploy Django Applications with mod\_wsgi](/docs/websites/apache/apache-and-modwsgi-on-ubuntu-12-04-precise-pangolin)'
+ - '[Deploy Web.py Applications with mod\_wsgi](/docs/websites/frameworks/webpy-on-ubuntu-12-04-precise-pangolin/)'
+ - '[Flask Framework](http://flask.pocoo.org/)'
+ - '[Werkzug](http://werkzeug.pocoo.org/)'
+ - '[Django](http://www.djangoproject.com/)'
+ - '[Web.py](http://webpy.org/)'
 ---
 
 The WSGI specification provides a standard and efficient method for dynamic web applications to communicate with web servers. `mod_wsgi` provides a method for simply deploying WSGI applications with Apache. WSGI is used to deploy applications written with frameworks and tools like Django, Web.py, Werkzug, Chery.py, TurboGears, and Flask. These guides outline this installation and configuration process for deploying WSGI applications.
 
-Set the Hostname
-----------------
+## Set the Hostname
 
 Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
 
@@ -25,8 +32,7 @@ Before you begin installing and configuring the components described in this gui
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-Install Dependencies
---------------------
+## Install Dependencies
 
 Issue the following commands to ensure that your system's package repositories and installed programs are up to date and that all required software is installed:
 
@@ -36,24 +42,23 @@ Issue the following commands to ensure that your system's package repositories a
 
 Your application may require additional dependencies. Install these either using the Ubuntu package tools or by using the `easy_install` command included in `python-setuptools` before proceeding.
 
-Configure WSGI Handler
-----------------------
+## Configure WSGI Handler
 
 In order for `mod_wsgi` to be able to provide access to your application, you will need to create a `application.wsgi` file inside of your application directory. The application directory should be located *outside* of your `DocumentRoot`. The following three sections each present a different `application.wsgi` example file to illustrate the basic structure of this file:
 
 ### Basic Hello World WSGI Configuration
 
-In this example, the application is stored in `/var/www/ducklington.org/application` directory. Modify this example and all following examples to conform to the actual files and locations used in your deployment.
+In this example, the application is stored in `/var/www/example.com/application` directory. Modify this example and all following examples to conform to the actual files and locations used in your deployment.
 
 {: .file }
-/var/www/ducklington.org/application/application.wsgi
+/var/www/example.com/application/application.wsgi
 :   ~~~ python
     import os
     import sys
 
-    sys.path.append('/var/www/ducklington.org/application')
+    sys.path.append('/var/www/example.com/application')
 
-    os.environ['PYTHON_EGG_CACHE'] = '/var/www/ducklington.org/.python-egg'
+    os.environ['PYTHON_EGG_CACHE'] = '/var/www/example.com/.python-egg'
 
     def application(environ, start_response):
         status = '200 OK'
@@ -73,7 +78,7 @@ You must append the path of your application to the system path as above. The de
 Consider the following example Web.py *application* which is embedded in a `application.wsgi` file. The [Web.py Framework](/docs/websites/frameworks/webpy-on-ubuntu-12-04-precise-pangolin/) must be installed in order for the following application to run successfully.
 
 {: .file-excerpt }
-/var/www/ducklington.org/application/application.wsgi
+/var/www/example.com/application/application.wsgi
 :   ~~~ python
     import web
 
@@ -99,14 +104,14 @@ Consider the following example Web.py *application* which is embedded in a `appl
 Consider the following example `application.wsgi` file for Django applications:
 
 {: .file-excerpt }
-/var/www/ducklington.org/application/application.wsgi
+/var/www/example.com/application/application.wsgi
 :   ~~~ python
     import os
     import sys
 
-    sys.path.append('/var/www/ducklington.org/application')
+    sys.path.append('/var/www/example.com/application')
 
-    os.environ['PYTHON_EGG_CACHE'] = '/var/www/ducklington.org/.python-egg'
+    os.environ['PYTHON_EGG_CACHE'] = '/var/www/example.com/.python-egg'
 
     os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
 
@@ -114,10 +119,9 @@ Consider the following example `application.wsgi` file for Django applications:
     application = django.core.handlers.wsgi.WSGIHandler()
     ~~~
 
-`Django` must be installed on your system and a working Django application before this example will function. The `DJANGO_SETTINGS_MODULE` points to the "`settings.py` file for your application, which would be located in the "`/var/www/ducklington.org/application/settings.py` in the case of this example.
+`Django` must be installed on your system and a working Django application before this example will function. The `DJANGO_SETTINGS_MODULE` points to the "`settings.py` file for your application, which would be located in the "`/var/www/example.com/application/settings.py` in the case of this example.
 
-Configure Apache
-----------------
+## Configure Apache
 
 Deploy the following `VirtualHost` configuration and modify the paths and domains to reflect the requirements of your application:
 
@@ -125,21 +129,21 @@ Deploy the following `VirtualHost` configuration and modify the paths and domain
 Apache `VirtualHost` Configuration
 :   ~~~ apache
     <VirtualHost *:80>
-       ServerName ducklington.org
-       ServerAlias www.ducklington.org
-       ServerAdmin squire@ducklington.org
+       ServerName example.com
+       ServerAlias www.example.com
+       ServerAdmin squire@example.com
 
-       DocumentRoot /var/www/ducklington.org/public_html
+       DocumentRoot /var/www/example.com/public_html
 
-       ErrorLog /var/www/ducklington.org/logs/error.log 
-       CustomLog /var/www/ducklington.org/logs/access.log combined
+       ErrorLog /var/www/example.com/logs/error.log 
+       CustomLog /var/www/example.com/logs/access.log combined
 
-       WSGIScriptAlias / /var/www/ducklington.org/application/application.wsgi
+       WSGIScriptAlias / /var/www/example.com/application/application.wsgi
 
-       Alias /robots.txt /var/www/ducklington.org/public_html/robots.txt
-       Alias /favicon.ico /var/www/ducklington.org/public_html/favicon.ico
-       Alias /images /var/www/ducklington.org/public_html/images 
-       Alias /static /var/www/ducklington.org/public_html/static
+       Alias /robots.txt /var/www/example.com/public_html/robots.txt
+       Alias /favicon.ico /var/www/example.com/public_html/favicon.ico
+       Alias /images /var/www/example.com/public_html/images 
+       Alias /static /var/www/example.com/public_html/static
     </VirtualHost>
     ~~~
 
@@ -150,19 +154,3 @@ When you have configured your Apache `VirtualHost`, issue the following command 
     service apache2 restart
 
 You will need to restart the web server every time the `application.wsgi` file changes. However, all other modifications to your application do not require a web server restart. Congratulations! You have now successfully deployed a WSGI application using `mod_wsgi`.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [A Basic "Hello World" Django Application](http://runnable.com/UWRVp6lLuONCAABD/hello-world-in-django-for-python)
-- [Deploy Django Applications with mod\_wsgi](/docs/websites/apache/apache-and-modwsgi-on-ubuntu-12-04-precise-pangolin)
-- [Deploy Web.py Applications with mod\_wsgi](/docs/websites/frameworks/webpy-on-ubuntu-12-04-precise-pangolin/)
-- [Flask Framework](http://flask.pocoo.org/)
-- [Werkzug](http://werkzeug.pocoo.org/)
-- [Django](http://www.djangoproject.com/)
-- [Web.py](http://webpy.org/)
-
-
-

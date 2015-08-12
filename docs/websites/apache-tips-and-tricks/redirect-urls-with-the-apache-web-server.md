@@ -1,16 +1,21 @@
 ---
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'An introduction to redirecting existing URLs to new resources with the Apache HTTP server.'
 keywords: 'apache,redirect,mod\_alias,URLs,REST'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-servers/apache/configuration/redirecting-urls/']
 modified: Monday, August 22nd, 2011
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Tuesday, October 13th, 2009'
 title: Redirect URLs with the Apache Web Server
+external_resources:
+ - '[Installing Apache](/docs/web-servers/apache/)'
+ - '[LAMP stack guides](/docs/lamp-guides/)'
+ - '[Troubleshooting Apache](/docs/web-servers/apache/troubleshooting/)'
+ - '[Linode User Community](http://linode.com/community/)'
 ---
 
 When HTTP resources, or web pages, change locations it is often important to provide some means of alerting users that these resources have moved. HTTP provides a number of "redirection" codes that can be used to facilitate this process, by communicating with the client application without interfering on the users experience.
@@ -21,18 +26,17 @@ Redirections can tell the client that the requested page has been moved temporar
 
 This guide assumes you have a working installation of Apache and have access to modify configuration files. If you have not installed Apache, you might want to use one of our [Apache installation guides](/docs/web-servers/apache/) or [LAMP stack installaiton guides](/docs/lamp-guides/) to get up and running first. If you want a more thorough introduction to Apache configuration, consider our [basic Apache configuration](/docs/web-servers/apache/configuration/configuration-basics) and [Apache configuration structure](/docs/web-servers/apache/configuration/configuration-structure) documents.
 
-The Redirect Directive
-----------------------
+## The Redirect Directive
 
 The `Redirect` configuration directive can be located in "main" server configuration files, but we recommend that you keep them in your virtual hosting entry or directory blocks. It is also possible to assert `Redirect` statements in `.httaccess` files. Here is an example of a `Redirect` directive:
 
 {: .file-excerpt }
 Apache configuration option
 :   ~~~ apache
-    Redirect /squire http://team.ducklington.org/~squire/
+    Redirect /squire http://team.example.com/~squire/
     ~~~
 
-If no argument is given, `Redirect` sends a temporary (e.g. 302) status. In this case, the client (user agent) is informed that the resource available at `/squire` has moved temporarily to `http://team.ducklington.org/~squire/`.
+If no argument is given, `Redirect` sends a temporary (e.g. 302) status. In this case, the client (user agent) is informed that the resource available at `/squire` has moved temporarily to `http://team.example.com/~squire/`.
 
 Remember that no matter what configuration file they are located in, `Redirect` statements must specify the full path of the redirected resource following the domain name. These statements must also include the full URL of the resource's new location..
 
@@ -41,9 +45,9 @@ To specify a particular HTTP redirection status, specify one of the following st
 {: .file-excerpt }
 Apache configuration option
 :   ~~~ apache
-    Redirect permanent /squire http://team.ducklington.org/~squire/
-    Redirect temp /squire http://team.ducklington.org/~squire/
-    Redirect seeother /squire http://team.ducklington.org/~squire/
+    Redirect permanent /squire http://team.example.com/~squire/
+    Redirect temp /squire http://team.example.com/~squire/
+    Redirect seeother /squire http://team.example.com/~squire/
     Redirect gone /squire
     ~~~
 
@@ -54,9 +58,9 @@ You can also specify specific HTTP codes, as follows.
 {: .file-excerpt }
 Apache configuration option
 :   ~~~ apache
-    Redirect 301 /squire http://team.ducklington.org/~squire/
-    Redirect 302 /squire http://team.ducklington.org/~squire/
-    Redirect 303 /squire http://team.ducklington.org/~squire/
+    Redirect 301 /squire http://team.example.com/~squire/
+    Redirect 302 /squire http://team.example.com/~squire/
+    Redirect 303 /squire http://team.example.com/~squire/
     Redirect 410 /squire
     ~~~
 
@@ -65,8 +69,8 @@ Apache also provides two additional directives for permanent and temporary redir
 {: .file-excerpt }
 Apache configuration option
 :   ~~~ apache
-    RedirectPermanent /squire/bio.html http://team.ducklington.org/~squire/bio/
-    RedirectTemp /squire/bio.html http://team.ducklington.org/~squire/bio/
+    RedirectPermanent /squire/bio.html http://team.example.com/~squire/bio/
+    RedirectTemp /squire/bio.html http://team.example.com/~squire/bio/
     ~~~
 
 Additionally, Apache makes it possible to redirect a given class of requests to match a given regular expression using the `RedirectMatch` directive. For example:
@@ -74,30 +78,16 @@ Additionally, Apache makes it possible to redirect a given class of requests to 
 {: .file-excerpt }
 Apache configuration option
 :   ~~~ apache
-    RedirectMatch (.*)\.jpg$ http://static.ducklington.org$1.jpg 
+    RedirectMatch (.*)\.jpg$ http://static.example.com$1.jpg 
     ~~~
 
 This directive matches against any request for a file with a `.jpg` extension and replaces it with a location on a second domain. Therefore:
 
--   A request for `http://www.ducklington.org/avatar.jpg` will be redirected to `http://static.ducklington.org/avatar.jpg` and
--   A request for `http://www.ducklington.org/images/avatar.jpg` will be redirected to `http://static.ducklington.org/images/avatar.jpg`.
+-   A request for `http://www.example.com/avatar.jpg` will be redirected to `http://static.example.com/avatar.jpg` and
+-   A request for `http://www.example.com/images/avatar.jpg` will be redirected to `http://static.example.com/images/avatar.jpg`.
 
-Beyond URL Redirection
-----------------------
+## Beyond URL Redirection
 
 The `Redirect` directive provides basic functionality to point requests for specific resource to different URLs and can help administrators move content to different servers and locations without breaking existing links. However, many Apache users use the facility to "rewrite" URLs in Apache's `mod_rewrite` module. If you're struggling to keep your Apache configuration organized or need more control than these `Redirect` statements can provide, we encourage you to investigate `mod_rewrite`.
 
 The Linode Library contains an introduction to [rewriting URLs with mod\_rewrite and Apache](/docs/web-servers/apache/configuration/rewriting-urls), which you might find useful.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Installing Apache](/docs/web-servers/apache/)
-- [LAMP stack guides](/docs/lamp-guides/)
-- [Troubleshooting Apache](/docs/web-servers/apache/troubleshooting/)
-- [Linode User Community](http://linode.com/community/)
-
-
-

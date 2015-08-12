@@ -15,10 +15,9 @@ title: Resizing a Linode
 
 We make it easy to upgrade or downgrade your Linode VPS by changing plans and adding additional resources. If you're expecting a temporary burst of traffic to your website, or if you're not using your VPS as much as you thought, you can temporarily or permanently resize your Linode to a different plan.
 
-Resizing Your Linode
---------------------
+## Resizing Your Linode
 
-You can move your Linode from one plan to another by using the *resize* feature. To complete the resizing process, your Linode will be powered off and migrated to a different host in the same data center. Your data, configuration profiles, and IP addresses will be all be moved to the new host. Please note that the migration will take approximately 2-3 minutes per gigabyte of data.
+You can move your Linode from one plan to another by using the *resize* feature. To complete the resizing process, your Linode will be powered off and migrated to a different host in the same data center. Your data, configuration profiles, and IP addresses will be all be moved to the new host. Please note that the migration will take approximately 1 minute for every 3-5 gigabytes of data.
 
  {: .note }
 >
@@ -38,6 +37,3 @@ Here's how to resize your Linode:
 7.  Once the migration completes, your Linode will still be powered off. From the **Dashboard** tab, click **Boot** to turn it on.
 
 Your Linode has been successfully resized and migrated to the new host.
-
-
-

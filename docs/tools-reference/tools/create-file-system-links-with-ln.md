@@ -1,7 +1,7 @@
 ---
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Create hard and symbolic links with ln on Linux Systems.'
 keywords: 'linux,common commands,unix,command line,file systems'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -15,8 +15,7 @@ title: Create File System Links with ln
 
 The `ln` command creates "meta objects" in the file system that link to other objects located on the file system. Links may point to files, directories, or other links. Although improper use can lead to disorganization and confusion, links are useful for providing access to files and file system organization.
 
-File System Linking
--------------------
+## File System Linking
 
 ### The ln Command
 
@@ -50,8 +49,7 @@ If you want to save all of your custom configuration options in a version contro
 
 Symbolic links can be moved, renamed, and removed at any time. When a link is created with a relative path specified and the link is later moved, the target of the link is also expected to move. If it doesn't, the link will point to an object that doesn't exist. This can lead to potential security flaws if a symbolic link is copied or transferred to a different system, or if the link object is moved and the "target" is replaced with malicious content. Be wary of potential issues that this may create.
 
-Examples
---------
+## Examples
 
 ### Create Symbolic Links with Relative Paths
 
@@ -113,6 +111,3 @@ In most cases, symbolic links are preferable over hard links. There are some sit
     total 8.0K 
     -rw-r--r-- 2 squire squire 3 Aug 27 12:24 bar 
     -rw-r--r-- 2 squire squire 3 Aug 27 12:24 foo
-
-
-

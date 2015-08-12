@@ -1,7 +1,7 @@
 ---
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'OSQA provides an advanced knowledge exchange system for vibrant communities.'
 keywords: 'knowledge exchange,question and answers,q&a,debian lenny'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -49,7 +49,7 @@ Additionally, OSQA uses the Sphinx search engine tool, which is unfortunately no
 
 The `checkinstall` command will ask you a number of questions regarding the package you are building. `checkinstall` will allow you to modify ten possible options concerning your application. We recommend naming this package `sphinxsearch` to avoid overlapping with other packages for different software in Debian. Other modifications can be made at your discretion. When complete, `checkinstall` will generate the following output. Press enter, when you have completed this process:
 
-    0 - Maintainer: [ squire@ducklington.org ]
+    0 - Maintainer: [ squire@example.com ]
     1 - Summary: [ Sphinx is a full-text search engine. ]
     2 - Name: [ sphinxsearch2 ]
     3 - Version: [ 0.9.9 ]
@@ -84,7 +84,7 @@ Now, to upgrade to the latest version of the `django-sphinx` software, issue the
     git pull
     python setup.py install
 
-Continue reading to install the OSQA software. We will assume that your OSQA site will be located at `http://ducklington.org/` which points at an Apache virtual host, with a document root located at `/srv/www/ducklington.org/public_html/`.
+Continue reading to install the OSQA software. We will assume that your OSQA site will be located at `http://example.com/` which points at an Apache virtual host, with a document root located at `/srv/www/example.com/public_html/`.
 
 Install OSQA
 ------------
@@ -93,22 +93,22 @@ Install OSQA
 
 OSQA software is distributed by way of a subversion repository rather than a conventional release cycle. Use the following command sequence to fetch a copy of the software:
 
-    cd /srv/www/ducklington.org/
+    cd /srv/www/example.com/
     svn co http://svn.osqa.net/svnroot/osqa/trunk
     mv trunk osqa/
 
 You can update your copy of OSQA to the latest version released by developers, by issuing the following commands:
 
-    cd /srv/www/ducklington.org/osqa/
+    cd /srv/www/example.com/osqa/
     svn up 
 
 Please remember to take reasonable precautions before performing this operation on your production sites to avoid breaking the application without proper testing.
 
 ### Configure OSQA
 
-To configure OSQA, copy the `settings_local.py.dist` file inside of the `/srv/www/ducklington.org/osqa/` directory to `/srv/www/ducklington.org/osqa/settings_local.py`.
+To configure OSQA, copy the `settings_local.py.dist` file inside of the `/srv/www/example.com/osqa/` directory to `/srv/www/example.com/osqa/settings_local.py`.
 
-Edit the newly created `/srv/www/ducklington.org/osqa/settings_local.py` and set the following values to correspond to the database and database credentials that you have created.
+Edit the newly created `/srv/www/example.com/osqa/settings_local.py` and set the following values to correspond to the database and database credentials that you have created.
 
 {: .file-excerpt }
 settings\_local.py
@@ -131,7 +131,7 @@ settings\_local.py
     EMAIL_HOST_USER = ''
     EMAIL_HOST_PASSWORD = ''                # not necessary if mailserver is run on local machine
     EMAIL_SUBJECT_PREFIX = 'MORRIS '
-    EMAIL_HOST='ducklington.org'
+    EMAIL_HOST='example.com'
     EMAIL_PORT='25'
     EMAIL_USE_TLS=False
     TIME_ZONE = 'America/NewYork'
@@ -145,7 +145,7 @@ settings\_local.py
     EMAIL_VALIDATION = 'off'                # string - on|off
     MIN_USERNAME_LENGTH = 3
     EMAIL_UNIQUE = False                    # if True, email addresses must be unique in all accounts
-    APP_URL = 'http://ducklington.org'      # used by email notif system and RSS
+    APP_URL = 'http://example.com'      # used by email notif system and RSS
     WIKI_ON = True                          # if False - community wiki feature is disabled
 
     FEEDBACK_SITE_URL = None                # None or url
@@ -157,40 +157,40 @@ settings\_local.py
 
 ### Application Deployment
 
-We'll deploy OSQA using the Apache web server using the `mod_wsgi` method of executing Python code. Include the following directives in your Apache virtual hosting configuration, presumably located at `/etc/apache2/sites-available/ducklington.org`:
+We'll deploy OSQA using the Apache web server using the `mod_wsgi` method of executing Python code. Include the following directives in your Apache virtual hosting configuration, presumably located at `/etc/apache2/sites-available/example.com`:
 
 {: .file-excerpt }
 Apache Virtual Host Configuration
 :   ~~~ apache
-    WSGIScriptAlias / /srv/www/ducklington.org/osqa/django.wsgi
-    <Directory /srv/www/ducklington.org/osqa>
+    WSGIScriptAlias / /srv/www/example.com/osqa/django.wsgi
+    <Directory /srv/www/example.com/osqa>
        Order allow,deny
        Allow from all
     </Directory>
     ~~~
 
-This directive tells Apache that all requests for the top level of your virtual host should be directed to the WSGI application specified in the `/srv/www/ducklington.org/osqa/django.wsgi` file, which we'll create below. In order to allow Apache to continue to serve some static files, insert `Alias` directives in the following form:
+This directive tells Apache that all requests for the top level of your virtual host should be directed to the WSGI application specified in the `/srv/www/example.com/osqa/django.wsgi` file, which we'll create below. In order to allow Apache to continue to serve some static files, insert `Alias` directives in the following form:
 
 {: .file-excerpt }
 Apache Virtual Host Configuration
 :   ~~~ apache
-    Alias /robots.txt /srv/www/ducklington.org/public_html/robots.txt
-    Alias /favicon.ico /srv/www/ducklington.org/public_html/favicon.ico
-    Alias /images /srv/www/ducklington.org/public_html/images 
-    Alias /static /srv/www/ducklington.org/public_html/static
+    Alias /robots.txt /srv/www/example.com/public_html/robots.txt
+    Alias /favicon.ico /srv/www/example.com/public_html/favicon.ico
+    Alias /images /srv/www/example.com/public_html/images 
+    Alias /static /srv/www/example.com/public_html/static
     ~~~
 
 Now create the required `django.wsgi` file, as specified:
 
 {: .file }
-/srv/www/ducklington.org/osqa/django.wsgi
+/srv/www/example.com/osqa/django.wsgi
 :   ~~~ python
     import os
     import sys
 
-    sys.path.append('/srv/www/ducklington.org/osqa')
+    sys.path.append('/srv/www/example.com/osqa')
 
-    os.environ['PYTHON_EGG_CACHE'] = '/srv/www.ducklington.org/.python-egg'
+    os.environ['PYTHON_EGG_CACHE'] = '/srv/www.example.com/.python-egg'
     os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
 
     import django.core.handlers.wsgi
@@ -204,11 +204,11 @@ After the application has been configured, issue the following commands to prope
 
 You will need to repeat this command sequence any time you update your software or your database. The first command will prompt to ask if you would like to create a superuser account: you do not. Issue the following commands to create the required directories, set the permissions of the application's logging directory and restart the web server:
 
-    mkdir -p /srv/www/ducklington.org/osqa/cache /srv/www/ducklington.org/.python-egg
-    chown -R www-data /srv/www/ducklington.org/osqa/log/ /srv/www/ducklington.org/osqa/cache /srv/www/ducklington.org/.python-egg
+    mkdir -p /srv/www/example.com/osqa/cache /srv/www/example.com/.python-egg
+    chown -R www-data /srv/www/example.com/osqa/log/ /srv/www/example.com/osqa/cache /srv/www/example.com/.python-egg
     /etc/init.d/apache2 restart
 
-Congratulations! You will now be able to visit your new OSQA powered site located at `http://ducklington.org`.
+Congratulations! You will now be able to visit your new OSQA powered site located at `http://example.com`.
 
 Monitor for Software Updates and Security Notices
 -------------------------------------------------

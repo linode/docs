@@ -3,7 +3,7 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Setting up networking for multiple IP addresses.'
-keywords: 'static ip,linux networking,ifconfig,configure network,linux network,multiple ip'
+keywords: 'static ip,linux networking,ifconfig,configure network,linux network,multiple ip,static'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['networking/configuring-static-ip-interfaces/']
 modified: Saturday, December 27th, 2014
@@ -13,7 +13,7 @@ published: 'Thursday, July 20th, 2014'
 title: Linux Static IP Configuration
 ---
 
-By default, Linodes use DHCP to acquire their IP address, routing and DNS information. However, DHCP will only assign one IP to your Linode, so if you have multiple IPs, you'll need to use a static configuration. You can use [Network Helper](/docs/platform/network-helper) to to create static a networking configuration for you automatically, or follow the steps below.
+By default, Linodes use DHCP to acquire their IP address, routing and DNS information. However, DHCP will only assign one IP to your Linode, so if you have multiple IPs, you'll need to use a static configuration. You can use [Network Helper](/docs/platform/network-helper) to create a static networking configuration for you automatically, or follow the steps below.
 
 {:.note}
 > As errors in network configurations may cause SSH connections to be disconnected, it is advised that you use the Linode Shell (LISH) when making network configuration changes. See [Using the Linode Shell (LISH)](/docs/networking/using-the-linode-shell-lish) for more information. 
@@ -26,8 +26,7 @@ Some distributions will determine the netmask based on the block of the IP addre
   - IPv6 - /64 (unless you have another pool assigned to you, you can see this from the "Remote Access" tab of the Linode Manager)
 
 
-Obtain Network Configuration
-----------------------------
+## Obtain Network Configuration
 
 Before you edit any files, you'll need to obtain some information. Log into the [Linode Manager](https://manager.linode.com/) and click the "Remote Access" tab. You'll find your IP addresses (both public and private, if you have a private IP assigned), gateways, netmasks and DNS resolvers.
 
@@ -38,17 +37,16 @@ Please note that although your VPS may have multiple IP addresses assigned to it
 A default gateway should not be specified for private IP addresses. Additionally, the subnet mask for private IP addresses should be set to "255.255.128.0" (**not** "255.255.255.0").
 
 
-Hostname and FQDN Settings
---------------------------
+## Hostname and FQDN Settings
 
 If you haven't already done so, set your system's hostname and FQDN (fully qualified domain name). Your hostname should be something unique; some people name their systems after planets, others after philosophers, etc. Please note that the system's hostname has no relationship to websites or email services hosted on it, aside from providing a name for the system itself. Thus, your hostname should not be "www" or anything else too generic.
 
 ### Debian and Ubuntu
 
 
-Issue the following commands to set the hostname, replacing "plato" with the hostname of your choice: 
+Issue the following commands to set the hostname, replacing "hostname" with the hostname of your choice: 
 
-    echo "plato" > /etc/hostname
+    echo "hostname" > /etc/hostname
     hostname -F /etc/hostname
 
 If it exists, edit the file /etc/default/dhcpd to comment out the "SET_HOSTNAME" directive:
@@ -63,19 +61,19 @@ Proceed to the section entitled "Update /etc/hosts" to continue.
 
 ### CentOS/Fedora
 
-Issue the following commands to set the hostname, replacing "plato" with the hostname of your choice:
+Issue the following commands to set the hostname, replacing "hostname" with the hostname of your choice:
 
-    echo "HOSTNAME=plato" >> /etc/sysconfig/network
-    hostname "plato"
+    echo "HOSTNAME=hostname" >> /etc/sysconfig/network
+    hostname "hostname"
 
 Proceed to the section entitled "Update /etc/hosts" to continue.
 
 ### Slackware
 
 
-Issue the following commands to set the hostname, replacing "plato" with the hostname of your choice:
+Issue the following commands to set the hostname, replacing "hostname" with the hostname of your choice:
 
-    echo "plato" > /etc/HOSTNAME
+    echo "hostname" > /etc/HOSTNAME
     hostname -F /etc/HOSTNAME
 
 Proceed to the section entitled "Update /etc/hosts" to continue.
@@ -83,9 +81,9 @@ Proceed to the section entitled "Update /etc/hosts" to continue.
 ### Gentoo
 
 
-Issue the following commands to set the hostname, replacing "plato" with the hostname of your choice:
+Issue the following commands to set the hostname, replacing "hostname" with the hostname of your choice:
 
-    echo "HOSTNAME=\"plato\"" > /etc/conf.d/hostname
+    echo "HOSTNAME=\"hostname\"" > /etc/conf.d/hostname
     /etc/init.d/hostname restart
 
 
@@ -94,9 +92,9 @@ Proceed to the section entitled "Update /etc/hosts" to continue.
 ### Arch Linux
 
 
-Issue the following commands to set the hostname, replacing "plato" with the hostname of your choice:
+Issue the following commands to set the hostname, replacing "hostname" with the hostname of your choice:
 
-    echo "plato" > /etc/hostname
+    echo "hostname" > /etc/hostname
     hostname -F /etc/hostname
 
 Proceed to the section entitled "Update /etc/hosts" to continue.
@@ -104,20 +102,19 @@ Proceed to the section entitled "Update /etc/hosts" to continue.
 ### Update /etc/hosts
 
 
-Next, edit your `/etc/hosts` file to resemble the following example, replacing "plato" with your chosen hostname, "example.com" with your system's domain name, and "198.51.100.5" with your system's IP address. As with the hostname, the domain name part of your FQDN does not necessarily need to have any relationship to websites or other services hosted on the server (although it may if you wish). As an example, you might host "www.something.com" on your server, but the system's FQDN might be "mars.something.com."
+Next, edit your `/etc/hosts` file to resemble the following example, replacing "hostname" with your chosen hostname, "example.com" with your system's domain name, and "198.51.100.5" with your system's IP address. As with the hostname, the domain name part of your FQDN does not necessarily need to have any relationship to websites or other services hosted on the server (although it may if you wish). As an example, you might host "www.something.com" on your server, but the system's FQDN might be "mars.something.com."
 
 {: .file }
 /etc/hosts
 : ~~~
   127.0.0.1 localhost.localdomain localhost 
-  198.51.100.5 plato.example.com plato
+  198.51.100.5 hostname.example.com hostname
   ~~~
 
 The value you assign as your system's FQDN should have an "A" record in DNS pointing to your Linode's IP address.
 For more information on configuring DNS, please see our guide on [configuring DNS with the Linode Manager](/library/dns-guides/configuring-dns-with-the-linode-manager).
 
-DNS Resolver Settings
----------------------
+## DNS Resolver Settings
 
 If you've migrated to a new location, you may need to edit your `/etc/resolv.conf` file so that your Linode can resolve DNS queries. Your nameservers are listed under the "Remote Access" tab. The `search` and `domain` lines are optional, but you should definitely include the `options rotate` line.
 
@@ -133,8 +130,7 @@ In the example below, change the IP addresses to reflect the values shown under 
   options rotate
   ~~~
 
-Static IP Configuration
------------------------
+## Static IP Configuration
 
 ### Debian & Ubuntu
 
@@ -182,10 +178,10 @@ From the Linode, `ping` each of the default gateways listed on the "Remote Acces
     ping 198.51.100.1
     ping 192.0.2.1
 
-### CentOS 7 & Fedora 20
+### CentOS 7 & Fedora 22
 
 
-Note: CentOS 7/Fedora 20 no longer uses the `network` service. Instead, use the `nmcli` utility. The Network Manager in CentOS 7 also allows you to have each IP address defined in one interface file. 
+Note: CentOS 7/Fedora 22 no longer uses the `network` service. Instead, use the `nmcli` utility. The Network Manager in CentOS 7 also allows you to have each IP address defined in one interface file. 
 
 In the example below, change the IP addresses to reflect the values shown under the "Remote Access" tab of the Linode Manager.
 

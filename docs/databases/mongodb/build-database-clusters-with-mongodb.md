@@ -2,7 +2,7 @@
 deprecated: true
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Configure MongoDB for use in clustered environments.'
 keywords: 'mongodb,nosql,clusters,databases'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -164,17 +164,17 @@ rs.initiate();
 Add members by issuing commands to the `mongo` shell in the following form:
 
 ~~~ js
-rs.add("ducklington:27017");
+rs.add("example:27017");
 ~~~
 
-This operation adds a MongoDB instance with the hostname "ducklington" running on the standard MongoDB port number `27017` to the cluster `morris` defined above. You may define nodes using either hostnames, if configured, or IP addresses. Consider the following example:
+This operation adds a MongoDB instance with the hostname "example" running on the standard MongoDB port number `27017` to the cluster `morris` defined above. You may define nodes using either hostnames, if configured, or IP addresses. Consider the following example:
 
 ~~~ js
-> rs.add("ducklington:27017");
+> rs.add("example:27017");
 { "ok" : 1 }
-> rs.add("ducklington:27018");
+> rs.add("example:27018");
 { "ok" : 1 }
-> rs.add("bucknell:27017");
+> rs.add("example:27017");
 { "ok" : 1 }
 > rs.add("brackley:27017");
 { "ok" : 1 }
@@ -199,7 +199,7 @@ MongoDB clusters can leverage an "Arbiter Node" to resolve conflicts by acting a
 On the primary server use the `./opt/mongodb/bin/mongo` command to enter the `mongo` shell, and then issue the following command:
 
 ~~~ js
-rs.addArb("ducklington:27019");
+rs.addArb("example:27019");
 ~~~
 
 Modify this command with the proper IP address or hostname and port number for your arbiter node. The cluster can now use the Arbiter node to resolve conflicts as needed.

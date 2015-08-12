@@ -11,12 +11,14 @@ modified_by:
   name: Linode
 published: 'Friday, September 13th, 2013'
 title: 'Ruby on Rails with Apache on Debian 7 (Wheezy)'
+external_resources:
+ - '[Ruby on Rails Homepage](http://rubyonrails.org/)'
+ - '[mod\_rails Documentation for Apache Servers](http://www.modrails.com/documentation/Users%20guide%20Apache.html)'
 ---
 
 Ruby on Rails is a popular rapid development web framework that allows web designers and developers to implement dynamic fully featured web applications quickly that is written in the Ruby programming language. Rails enables developers to produce inventive applications on tight time scales. Examples of well known Rails-powered sites include Hulu, GitHub, and the applications provided by 37 Signals, among many others. This guide deploys Rails applications using the Phusion Passenger or `mod_rails` method. Passenger allows you to embed Rails apps directly in Apache applications without needing to worry about FastCGI or complex web server proxies.
 
-Set the Hostname
-----------------
+## Set the Hostname
 
 Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
 
@@ -25,8 +27,7 @@ Before you begin installing and configuring the components described in this gui
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-Installing Passenger and Dependencies
--------------------------------------
+## Installing Passenger and Dependencies
 
 Issue the following command to reload your system's package repositories and ensure that all installed programs are up to date:
 
@@ -75,60 +76,45 @@ To install support for the [MySQL database system](/docs/databases/mysql/debian-
 
 Additionally, the application you deploy will likely have additional dependencies. Install these dependencies before proceeding.
 
-Configuring Apache to Work with Passenger
------------------------------------------
+## Configuring Apache to Work with Passenger
 
-If you configured Apache virtual hosting as outlined in the [Debian 6 (Squeeze) Apache guide](/docs/web-servers/apache/installation/debian-6-squeeze), the public directory for your domain (e.g. `ducklington.org`) is located in `/srv/www/ducklington.org/public_html/`, and your `<VirtualHost >` configuration block contains a line that reads:
+If you configured Apache virtual hosting as outlined in the [Debian 6 (Squeeze) Apache guide](/docs/web-servers/apache/installation/debian-6-squeeze), the public directory for your domain (e.g. `example.com`) is located in `/srv/www/example.com/public_html/`, and your `<VirtualHost >` configuration block contains a line that reads:
 
 {: .file-excerpt }
 Apache Virtual Host Configuration
 :   ~~~ apache
-    DocumentRoot /srv/www/ducklington.org/public_html/ 
+    DocumentRoot /srv/www/example.com/public_html/ 
     ~~~
 
-Modify this line to point to the `public/` folder within your Rails application's root directory. For instance, if your Rail application is located within `/srv/www/ducklington.org/application/` then the `DocumentRoot` would point to `/srv/www/ducklington.org/application/public/`, as in the following example:
+Modify this line to point to the `public/` folder within your Rails application's root directory. For instance, if your Rail application is located within `/srv/www/example.com/application/` then the `DocumentRoot` would point to `/srv/www/example.com/application/public/`, as in the following example:
 
 {: .file-excerpt }
 Apache Virtual Host Configuration
 :   ~~~ apache
-    DocumentRoot /srv/www/ducklington.org/application/public
+    DocumentRoot /srv/www/example.com/application/public
     ~~~
 
 Restart Apache once to ensure all settings have been loaded using the following command:
 
     /etc/init.d/apache2 restart
 
-Deploying Multiple Rails Apps
------------------------------
+## Deploying Multiple Rails Apps
 
 There are a number of strategies for deploying more than one Rails application using Passenger. The most simple approach requires running multiple distinct virtual hosts configured as above to host a single Rails app each. Alternatively, you may host multiple Rails apps within a single virtual host. Add `RailsBaseURI` directives that specify the path to your Rails application within the VirtualHost configuration as in the following example:
 
 {: .file-excerpt }
 Apache Virtual Host Configuration
 :   ~~~ apache
-    DocumentRoot /srv/www/ducklington.org/public_html/
+    DocumentRoot /srv/www/example.com/public_html/
     RailsBaseURI /lollipop
     RailsBaseURI /frogs 
     RailsBaseURI /simon
     ~~~
 
-These directives configure Passenger to run three Rails apps on the `ducklington.org` site at the three locations specified. Rather than linking the `public/` directory of your Rails app to the `public_html/` directory as above, link the `public/` directory of the application to a directory within the `public_html/` directory. These links would be created in the following manner:
+These directives configure Passenger to run three Rails apps on the `example.com` site at the three locations specified. Rather than linking the `public/` directory of your Rails app to the `public_html/` directory as above, link the `public/` directory of the application to a directory within the `public_html/` directory. These links would be created in the following manner:
 
-    ln -s /srv/www/ducklington.org/lollipop/public/ /srv/www/ducklington.org/public_html/lollipop/
-    ln -s /srv/www/ducklington.org/lollipop/frogs/ /srv/www/ducklington.org/public_html/frogs/
-    ln -s /srv/www/ducklington.org/lollipop/simon/ /srv/www/ducklington.org/public_html/simon/
+    ln -s /srv/www/example.com/lollipop/public/ /srv/www/example.com/public_html/lollipop/
+    ln -s /srv/www/example.com/lollipop/frogs/ /srv/www/example.com/public_html/frogs/
+    ln -s /srv/www/example.com/lollipop/simon/ /srv/www/example.com/public_html/simon/
 
-The files for each Rails application are located in a `/srv/www/ducklington.org/` directory, which is inaccessible to the web server. Congratulations! You have successfully deployed Ruby On Rails applications with the Apache Web server and Passenger.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Ruby on Rails Homepage](http://rubyonrails.org/)
-- [mod\_rails Documentation for Apache Servers](http://www.modrails.com/documentation/Users%20guide%20Apache.html)
-- [Install the Apache HTTP Server on Debian 6 (Squeeze)](/docs/web-servers/apache/installation/debian-6-squeeze)
-- [Install the MySQL Database System on Debian 6 (Squeeze)](/docs/databases/mysql/debian-6-squeeze)
-
-
-
+The files for each Rails application are located in a `/srv/www/example.com/` directory, which is inaccessible to the web server. Congratulations! You have successfully deployed Ruby On Rails applications with the Apache Web server and Passenger.

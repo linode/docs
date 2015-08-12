@@ -1,7 +1,7 @@
 ---
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Install and configure a structured wiki with TWiki.'
 keywords: 'wiki,twiki,structured wiki,enterprise wiki'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -37,35 +37,35 @@ At the time of writing the most recent release of TWiki is 5.0.1. Check the [TWi
     cd /opt
     wget http://downloads.sourceforge.net/project/twiki/TWiki%20for%20all%20Platforms/TWiki-5.0.1/TWiki-5.0.1.tgz
     tar -zxvf /opt/TWiki-5.0.1.tgz 
-    mkdir -p /srv/www/ducklington.org/
-    mv /opt/twiki /srv/www/ducklington.org/twiki
-    chown -R www-data:www-data /srv/www/ducklington.org/twiki
-    cp /srv/www/ducklington.org/twiki/bin/LocalLib.cfg.txt /srv/www/ducklington.org/twiki/bin/LocalLib.cfg
+    mkdir -p /srv/www/example.com/
+    mv /opt/twiki /srv/www/example.com/twiki
+    chown -R www-data:www-data /srv/www/example.com/twiki
+    cp /srv/www/example.com/twiki/bin/LocalLib.cfg.txt /srv/www/example.com/twiki/bin/LocalLib.cfg
 
-The TWiki files are now installed in the `/srv/www/ducklington.org/` directory. This is not, and should not be, within the public `DocumentRoot` for your site.
+The TWiki files are now installed in the `/srv/www/example.com/` directory. This is not, and should not be, within the public `DocumentRoot` for your site.
 
 Configure Software
 ------------------
 
 ### Configure Apache Web Server
 
-Create a virtual host specification that resembles the following. Modify the references to `ducklington.org` and `/srv/www/ducklington.org/` to reflect the domain name and file paths for you deployment.
+Create a virtual host specification that resembles the following. Modify the references to `example.com` and `/srv/www/example.com/` to reflect the domain name and file paths for you deployment.
 
 {: .file-excerpt }
 /etc/apache2/conf.d/twiki.conf
 :   ~~~ apache
     <VirtualHost *:80>
-           ServerName ducklington.org
-           ServerAlias www.ducklington.org
+           ServerName example.com
+           ServerAlias www.example.com
 
-           DocumentRoot /srv/www/ducklington.org/public_html 
+           DocumentRoot /srv/www/example.com/public_html 
 
-           ErrorLog /srv/www/ducklington.org/logs/error.log 
-           CustomLog /srv/www/ducklington.org/logs/access.log combined
+           ErrorLog /srv/www/example.com/logs/error.log 
+           CustomLog /srv/www/example.com/logs/access.log combined
 
-           ScriptAlias /bin "/srv/www/ducklington.org/twiki/bin"
-           Alias /pub "/srv/www/ducklington.org/twiki/pub"
-           Alias / "/srv/www/ducklington.org/twiki/bin/view/"
+           ScriptAlias /bin "/srv/www/example.com/twiki/bin"
+           Alias /pub "/srv/www/example.com/twiki/pub"
+           Alias / "/srv/www/example.com/twiki/bin/view/"
            <Location "/">
               Options -Indexes +ExecCGI
            </Location>
@@ -73,7 +73,7 @@ Create a virtual host specification that resembles the following. Modify the ref
            SetEnvIf Request_URI "pub/.*\.[hH][tT][mM]?$" blockAccess
            SetEnvIf Request_URI "pub/TWiki/.*\.[hH][tT][mM]?$" !blockAccess
            BrowserMatchNoCase ^$ blockAccess
-           <Directory "/srv/www/ducklington.org/twiki/bin">
+           <Directory "/srv/www/example.com/twiki/bin">
               AllowOverride None
               Order Allow,Deny
               Allow from all
@@ -89,7 +89,7 @@ Create a virtual host specification that resembles the following. Modify the ref
                  Allow from 127.0.0.1
               </FilesMatch>
            </Directory>
-           <Directory "/srv/www/ducklington.org/twiki/bin">
+           <Directory "/srv/www/example.com/twiki/bin">
               Options None
               AllowOverride Limit
               Allow from all
@@ -98,30 +98,30 @@ Create a virtual host specification that resembles the following. Modify the ref
     </VirtualHost> 
     ~~~
 
-In this configuration your wiki will be located at the root level of the `ducklington.org` domain. Modify the following lines if you wish to deploy TWiki at a different location on your domain.
+In this configuration your wiki will be located at the root level of the `example.com` domain. Modify the following lines if you wish to deploy TWiki at a different location on your domain.
 
 {: .file-excerpt }
 /etc/apache2/conf.d/twiki.conf
 :   ~~~ apache
-    ScriptAlias /wiki/bin "/srv/www/ducklington.org/twiki/bin"
-    Alias /wiki/pub "/srv/www/ducklington.org/twiki/pub"
-    Alias /wiki/ "/srv/www/ducklington.org/twiki/bin/view/"
+    ScriptAlias /wiki/bin "/srv/www/example.com/twiki/bin"
+    Alias /wiki/pub "/srv/www/example.com/twiki/pub"
+    Alias /wiki/ "/srv/www/example.com/twiki/bin/view/"
     </VirtualHost> 
     ~~~
 
-In this example, TWiki will be accessible by at the `http://ducklington.org/wiki` location. The path you configure for TWiki need not correlate to the actual location of the files on the file system. Issue the following commands to create the required directories:
+In this example, TWiki will be accessible by at the `http://example.com/wiki` location. The path you configure for TWiki need not correlate to the actual location of the files on the file system. Issue the following commands to create the required directories:
 
-    mkdir -p /srv/www/ducklington.org/public_html
-    mkdir -p /srv/www/ducklington.org/logs
+    mkdir -p /srv/www/example.com/public_html
+    mkdir -p /srv/www/example.com/logs
 
 ### Configure TWiki
 
-Edit the `$twikiLibPath` value in the `/srv/www/ducklington.org/twiki/bin/LocalLib.cfg` file to reflect the location of the `lib` files in the TWiki directory on your system, as in the following example:
+Edit the `$twikiLibPath` value in the `/srv/www/example.com/twiki/bin/LocalLib.cfg` file to reflect the location of the `lib` files in the TWiki directory on your system, as in the following example:
 
 {: .file-excerpt }
-/srv/www/ducklington.org/twiki/bin/LocalLib.cfg
+/srv/www/example.com/twiki/bin/LocalLib.cfg
 :   ~~~ perl
-    $twikiLibPath = "/srv/www/ducklington.org/twiki/lib";
+    $twikiLibPath = "/srv/www/example.com/twiki/lib";
     ~~~
 
 Before you can proceed with the installation process, you will need to configure the access control settings in the Apache Configuration (as above) so that you will be able to access your TWiki instance. Consider the following configuration directives:
@@ -146,19 +146,19 @@ When you've completed these modifications, reload the web server configuration b
 Install TWiki
 -------------
 
-If your wiki is accessible at `http://ducklington.org`, visit `http://ducklington.org/bin/configure` to begin the configuration process. Enter an administrative password, and click the "Configure" button. Next, click on the "General path settings" option to ensure that the configuration script has properly deduced the location of all required files. Once you have confirmed these setting click on the "Next" option. On the next page select the "Save" option to save these settings.
+If your wiki is accessible at `http://example.com`, visit `http://example.com/bin/configure` to begin the configuration process. Enter an administrative password, and click the "Configure" button. Next, click on the "General path settings" option to ensure that the configuration script has properly deduced the location of all required files. Once you have confirmed these setting click on the "Next" option. On the next page select the "Save" option to save these settings.
 
-Add the following line to the `/srv/www/ducklington.org/twiki/lib/LocalSite.cfg`" file. Make sure that you do not append this line to the very end of the file.
+Add the following line to the `/srv/www/example.com/twiki/lib/LocalSite.cfg`" file. Make sure that you do not append this line to the very end of the file.
 
 {: .file-excerpt }
-/srv/www/ducklington.org/twiki/lib/LocalSite.cfg
+/srv/www/example.com/twiki/lib/LocalSite.cfg
 :   ~~~ perl
     $TWiki::cfg{ScriptUrlPaths}{view} = '';
     ~~~
 
-Log into the configuration section at `http://ducklington.org/bin/configure`, using the password configured above. In the "Store Settings" change the value of the `{StoreImpl}` value to `RcsLite`. Click "Next" and "Save" to store these values. Visit `http://ducklington.org/TWiki/TWikiRegistration`" to register new users to be able to edit the wiki. Although mail configuration is beyond the scope of this document, you will need to install a mail server and configure TWiki in the "Mail and Proxies" section of the configuration interface before TWiki will be able to successfully send email notifications and messages.
+Log into the configuration section at `http://example.com/bin/configure`, using the password configured above. In the "Store Settings" change the value of the `{StoreImpl}` value to `RcsLite`. Click "Next" and "Save" to store these values. Visit `http://example.com/TWiki/TWikiRegistration`" to register new users to be able to edit the wiki. Although mail configuration is beyond the scope of this document, you will need to install a mail server and configure TWiki in the "Mail and Proxies" section of the configuration interface before TWiki will be able to successfully send email notifications and messages.
 
-Congratulations! You have successfully installed TWiki. You can now visit your wiki at `http://ducklington.org/`
+Congratulations! You have successfully installed TWiki. You can now visit your wiki at `http://example.com/`
 
 More Information
 ----------------

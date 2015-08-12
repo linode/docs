@@ -2,7 +2,7 @@
 deprecated: true
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Instructions for getting started with the Apache web server on Ubuntu 8.04 LTS (Hardy).'
 keywords: 'apache,apache ubuntu 8.04,apache ubuntu hardy,web server,apache on ubuntu,apache hardy'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -118,7 +118,7 @@ Next, issue the following command to disable the default Apache virtual host.
 
 Each additional virtual host needs its own file in the `/etc/apache2/sites-available/` directory. In this example, you'll create files for two **name-based** virtually hosted sites, "example.com" and "example.org".
 
-First create bucknell.net (`/etc/apache2/sites-available/example.com`) so that it resembles the following. Make sure to replace "12.34.56.78" with your Linode's IP address.
+First create example.com (`/etc/apache2/sites-available/example.com`) so that it resembles the following. Make sure to replace "12.34.56.78" with your Linode's IP address.
 
 {: .file }
 /etc/apache2/sites-available/example.com

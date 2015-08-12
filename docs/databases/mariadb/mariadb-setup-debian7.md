@@ -13,26 +13,31 @@ modified_by:
   name: Linode
 published: 'Thursday, June 12th, 2014'
 title: MariaDB Setup on Debian 7
+external_resources:
+ - '[MariaDB Knowledge Base](https://mariadb.com/kb/en)'
+ - '[MariaDB FAQ](https://mariadb.com/kb/en/mariadb-mariadb-faq/)'
+ - '[MariaDB SQL commands](https://mariadb.com/kb/en/sql-commands/)'
+ - '[MySQL 5.5 Reference Manual](http://dev.mysql.com/doc/refman/5.5/en/)'
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $100 per published guide.*
+*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
+
+<hr>
 
 MariaDB is a drop-in replacement for MySQL and it strives to be the logical choice for database professionals looking for a robust, scalable, and reliable SQL Server. This guide will help beginners get started with MariaDB on a Debian 7 (Wheezy) Linode.
 
  {: .note }
 >
-> The steps required in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](https://library.linode.com/using-linux/users-and-groups) guide.
+> The steps required in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
-Prerequisites
--------------
+## Prerequisites
 
 Execute the following commands to ensure that your system's package database is up to date and that all installed software is running at the latest version:
 
     apt-get update
     apt-get upgrade
 
-Installing MariaDB
-------------------
+## Installing MariaDB
 
 In this section, you will install MariaDB and set the password for the MariaDB root user.
 
@@ -82,8 +87,7 @@ In this section, you will install MariaDB and set the password for the MariaDB r
 
 After installation, Debian will start the MariaDB server and also set the service to start automatically on reboot.
 
-Using MariaDB
--------------
+## Using MariaDB
 
 In this section you will learn how to connect to MariaDB and perform basic SQL commands.
 
@@ -188,8 +192,7 @@ Output:
 
     For server side help, type 'help contents'
 
-Configuring MariaDB
--------------------
+## Configuring MariaDB
 
 To configure MariaDB to run the way you want, edit the `/etc/mysql/my.cnf` file. This file controls most of the server system variables, which you will generally want to leave at default.
 
@@ -197,8 +200,7 @@ Whenever you make changes to `/etc/mysql/my.cnf`, restart the server by issuing 
 
     service mysql restart
 
-Securing MariaDB Server
------------------------
+## Securing MariaDB Server
 
 We recommend that you secure your MariaDB server by executing the following command:
 
@@ -279,8 +281,7 @@ You will be asked to change the root password, remove anonymous users, disable r
 >
 > In short, neither warning is a problem.
 
-Remote User Connections
------------------------
+## Remote User Connections
 
 Let's take a look at how to allow the previously created user, **testuser**, to connect to MariaDB remotely (by default, MariaDB will allow connections from only localhost).
 
@@ -319,8 +320,7 @@ Let's take a look at how to allow the previously created user, **testuser**, to 
 
 If the login is successful, you should see the MariaDB welcome message and the shell prompt.
 
-Tuning MariaDB
---------------
+## Tuning MariaDB
 
 MySQL Tuner is a useful tool that connects to a running instance of MariaDB and provides configuration recommendations based on workload. You should let your MariaDB instance run for at least 24 hours before running the tuner. The longer the instance has been running, the better advice the tuner will provide.
 
@@ -387,8 +387,7 @@ Below is some sample output:
 
 Pay attention to the output, especially the recommendations at the end. It will point you towards which variables you should adjust in the `[mysqld]` section of your `/etc/mysql/my.cnf` file.
 
-How to Reset MariaDB's root Password
-------------------------------------
+## How to Reset MariaDB's root Password
 
 If you forget your root password, you can easily reset it by following the instructions below:
 
@@ -418,16 +417,3 @@ If you forget your root password, you can easily reset it by following the instr
 6.  Connect to the MariaDB server using your new password:
 
         mysql -u root -p
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [MariaDB Knowledge Base](https://mariadb.com/kb/en)
-- [MariaDB FAQ](https://mariadb.com/kb/en/mariadb-mariadb-faq/)
-- [MariaDB SQL commands](https://mariadb.com/kb/en/sql-commands/)
-- [MySQL 5.5 Reference Manual](http://dev.mysql.com/doc/refman/5.5/en/)
-
-
-

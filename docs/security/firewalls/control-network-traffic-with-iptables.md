@@ -11,12 +11,17 @@ modified_by:
   name: Linode
 published: 'Friday, July 30th, 2010'
 title: Control Network Traffic with iptables
+external_resources:
+ - '[Security Basics](/docs/security/basics)'
+ - '[Using the Linode Shell (Lish)](/docs/troubleshooting/using-lish-the-linode-shell)'
+ - '[Save iptables permanently on Ubuntu](http://sharadchhetri.com/2014/02/16/save-iptables-permanently-on-ubuntu/)'
+ - '[iptables: Linux firewall rules for a basic Web Server](http://bencane.com/2012/09/17/iptables-linux-firewall-rules-for-a-basic-web-server/)'
+ - '[Linux Firewalls with iptables](http://bit.ly/7p9uz)'
 ---
 
 Packet filtering using network rules such as NAT (network address translation) can be accomplished by using **iptables**. Iptables utilize ports and protocols and may also be used as a firewall.
 
-Using iptables for IPv4
------------------------
+## Using iptables for IPv4
 
 By default, the iptables tool is included with your Linode supplied distribution. In order to use iptables, you will have to have root privileges to make changes. The location of the iptables files is in the `/sbin` directory. However, you will make changes to these files by invoking commands, not with a text editor.
 
@@ -99,8 +104,7 @@ There are a number of options that may be used with the `iptables` command. They
 | `-X --delete-chain <name>` | Deletes the user-defined chain specified.                                                                        |
 |:---------------------------|:-----------------------------------------------------------------------------------------------------------------|
 
-Configuring iptables
---------------------
+## Configuring iptables
 
 Iptables can be configured and used in a variety of ways. The following sections will outline how to configure rules by port and IP, as well as blacklisting/whitelisting addresses.
 
@@ -184,8 +188,7 @@ Changes made with the iptables command are temporary. These rules will disappear
 
 Now your rules are saved and should be available on your next reboot.
 
-Using iptables for IPv6
------------------------
+## Using iptables for IPv6
 
 When working with IPv6, it is important to remember that the iptables command is not compatible. However, there is an ip6tables command that is expressly for working with IPv6. The options such as append, check, etc. are the same as with iptables. The tables used by ip6tables are raw, security, mangle and filter. The parameters such as protocol, source, etc. are the same. The syntax is essentially the same as IPv4. Sample syntax is below:
 
@@ -259,8 +262,7 @@ Changes made with the ip6tables command are temporary. These rules will disappea
 
 Now your rules are saved and should be available on your next reboot.
 
-Introduction to iptables-persistent
------------------------------------
+## Introduction to iptables-persistent
 
 Debian and Ubuntu have an extra package which makes working with iptables even easier. This package will save changes that have been made to your IP rules so the will become persistent. However, you may need to install this package. After installation, there will be two files created which will allow you to edit and save all your rules in one of these files. The first file is for the rules governing IPv4, and the second is for rules pertaining to IPv6.
 
@@ -287,8 +289,7 @@ After the install is complete, you should see the iptables' subdirectory. Run th
     user@titan:~# ls /etc/iptables
     rules.v4  rules.v6
 
-Using iptables-persistent
--------------------------
+## Using iptables-persistent
 
 To view what rules are already configured on your server run the following command:
 
@@ -351,8 +352,7 @@ Or
 
     ip6tables -L
 
-Network Lock-out
-----------------
+## Network Lock-out
 
 When applying network rules, especially with two different IP versions and multiple interfaces, it is easy to lock yourself out. In the event you apply the rule and are now unable to access your server, you may gain access through the Linode Manager. The following steps will guide you through using the GUI interface of your Linode to gain access to your server.
 
@@ -365,17 +365,3 @@ When applying network rules, especially with two different IP versions and multi
 7.  Now try logging in via a regular SSH session.
 
 This Lish console will function similarly to a regular SSH terminal session.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Security Basics](/docs/security/basics)
-- [Using the Linode Shell (Lish)](/docs/troubleshooting/using-lish-the-linode-shell)
-- [Save iptables permanently on Ubuntu](http://sharadchhetri.com/2014/02/16/save-iptables-permanently-on-ubuntu/)
-- [iptables: Linux firewall rules for a basic Web Server](http://bencane.com/2012/09/17/iptables-linux-firewall-rules-for-a-basic-web-server/)
-- [Linux Firewalls with iptables](http://bit.ly/7p9uz)
-
-
-

@@ -1,7 +1,7 @@
 ---
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Use the Web.py Python framework to develop powerful and innovative web applications on Ubuntu 10.04 (Lucid).'
 keywords: 'web.py,web applications,python,web frameworks'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -100,7 +100,7 @@ code.py
         app.run()
     ~~~
 
-Save this file at `/srv/www/ducklington.org/application/code.py` or the equivalent path depending on your virtual hosting deployment, and proceed with the deployment of the application.
+Save this file at `/srv/www/example.com/application/code.py` or the equivalent path depending on your virtual hosting deployment, and proceed with the deployment of the application.
 
 Deploy Web.py Applications
 --------------------------
@@ -129,18 +129,18 @@ Consider the following Apache VirtualHost configuration for a `mod_wsgi` powered
 {: .file-excerpt }
 Apache VirtualHost Configuration
 :   ~~~ apache
-    <VirtualHost ducklington.org:80> 
-        ServerAdmin squire@ducklington.org     
-        ServerName ducklington.org
-           ServerAlias www.ducklington.org
-           DocumentRoot /srv/www/ducklington.org/public_html/
-           ErrorLog /srv/www/ducklington.org/logs/error.log 
-           CustomLog /srv/www/ducklington.org/logs/access.log combined
+    <VirtualHost example.com:80> 
+        ServerAdmin squire@example.com     
+        ServerName example.com
+           ServerAlias www.example.com
+           DocumentRoot /srv/www/example.com/public_html/
+           ErrorLog /srv/www/example.com/logs/error.log 
+           CustomLog /srv/www/example.com/logs/access.log combined
 
-        WSGIScriptAlias / /srv/www/ducklington.org/application
-        Alias /static /srv/www/ducklington.org/public_html
+        WSGIScriptAlias / /srv/www/example.com/application
+        Alias /static /srv/www/example.com/public_html
 
-        <Directory /srv/www/ducklington.org/application>
+        <Directory /srv/www/example.com/application>
           SetHandler wsgi-script
           Options ExecCGI
         </Directory>
@@ -161,7 +161,7 @@ Ensure that this virtual host has been enabled, and issue the following command 
 
     /etc/init.d/apache2 restart 
 
-In the above example, requests for the `ducklington.org` domain will be handled by WSGI, with the application files located in `/srv/www/ducklington.org/application`. All static files can be stored in `/srv/www/ducklington.org/public_html` and served directly by Apache. Furthermore, the rewrite rules convert requests so that paths beneath `ducklington.org` are handled by the Web.py application without including `code.py` in the URL. For example, the request for `http://ducklington.org/about` would be processed as `http://ducklington.org/code.py/about` but requests for `http://ducklington.org/static` would not be rewritten and content would be served from `/srv/www/ducklington.org/public_html`.
+In the above example, requests for the `example.com` domain will be handled by WSGI, with the application files located in `/srv/www/example.com/application`. All static files can be stored in `/srv/www/example.com/public_html` and served directly by Apache. Furthermore, the rewrite rules convert requests so that paths beneath `example.com` are handled by the Web.py application without including `code.py` in the URL. For example, the request for `http://example.com/about` would be processed as `http://example.com/code.py/about` but requests for `http://example.com/static` would not be rewritten and content would be served from `/srv/www/example.com/public_html`.
 
 Build a Database Driven Application with Web.py
 -----------------------------------------------

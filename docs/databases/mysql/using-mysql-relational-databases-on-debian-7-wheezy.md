@@ -1,7 +1,7 @@
 ---
 author:
   name: Mike Rosabal
-  email: mrosabal@linode.com
+  email: docs@linode.com
 description: 'Get started with MySQL for web and server applications on Debian 7 (Wheezy).'
 keywords: 'mysql debian 7,mysql debian,mysql debian squeeze,mysql linux,mysql linux vps'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -11,12 +11,17 @@ modified_by:
   name: Alex Fornuto
 published: 'Tuesday, January 14th, 2014'
 title: 'Using MySQL Relational Databases on Debian 7 (Wheezy)'
+external_resources:
+ - '[MySQL 5.1 Reference Manual](http://dev.mysql.com/doc/refman/5.1/en/)'
+ - '[PHP MySQL Manual](http://us2.php.net/manual/en/book.mysql.php)'
+ - '[Perl DBI examples for DBD::mysql](http://sql-info.de/mysql/examples/Perl-DBI-examples.html)'
+ - '[MySQLdb User''s Guide](http://mysql-python.sourceforge.net/MySQLdb.html)'
+ - '[MySQL Tuner Tutorial](http://www.debiantutorials.com/tuning-mysql-with-mysqltuner-to-increase-efficiency-and-performance/)'
 ---
 
 MySQL is a popular database management system, used as the data storage provider for thousands of web and server applications. This guide will help beginners get started with MySQL on a Debian 7 (Wheezy) Linux VPS. For purposes of this tutorial, it is assumed that you've followed the steps outlined in our [getting started guide](/docs/getting-started/), that your system is up to date, and that you've logged into your Linode as root via SSH.
 
-Install MySQL
--------------
+## Install MySQL
 
 Make sure your package repositories and installed programs are up to date by issuing the following commands:
 
@@ -35,8 +40,7 @@ The MySQL server package will be installed on your server, along with dependenci
 
     mysql_secure_installation
 
-Configuring MySQL
------------------
+## Configuring MySQL
 
 Issue the following command to restart MySQL after making configuration changes:
 
@@ -44,8 +48,7 @@ Issue the following command to restart MySQL after making configuration changes:
 
 MySQL will bind to localhost (127.0.0.1) by default. Allowing unrestricted access to MySQL on a public IP not advised, but you may change the address it listens on by modifying the `bind-address` parameter in `/etc/mysql/my.cnf`. If you decide to bind MySQL to your public IP, you should implement firewall rules that only allow connections from specific IP addresses.
 
-Using MySQL
------------
+## Using MySQL
 
 The standard tool for interacting with MySQL is the `mysql` client program. To get started, issue the following command at your prompt:
 
@@ -122,8 +125,7 @@ Now let's log back into the MySQL client as `testuser` and create a sample table
 
 This creates a table with a customer ID field of the type INT for integer (auto-incremented for new records, used as the primary key), as well as two fields for storing the customer's name. Of course, you'd probably want to store much more information than this on a customer, but it's a good example of a common case nonetheless.
 
-Tuning MySQL
-------------
+## Tuning MySQL
 
 MySQL Tuner is a useful tool that connects to a running instance of MySQL and provides configuration recommendations based on workload. Ideally, the MySQL instance should have been operating for at least 24 hours before running the tuner. The longer the instance has been running, the better advice MySQL Tuner will provide.
 
@@ -136,17 +138,3 @@ To run MySQL Tuner simply enter:
     mysqltuner
 
 Please note that this tool is designed to provide configuration suggestions and is an excellent starting point. It would be prudent to perform additional research for tuning configurations based on the application(s) utilizing MySQL.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [MySQL 5.1 Reference Manual](http://dev.mysql.com/doc/refman/5.1/en/)
-- [PHP MySQL Manual](http://us2.php.net/manual/en/book.mysql.php)
-- [Perl DBI examples for DBD::mysql](http://sql-info.de/mysql/examples/Perl-DBI-examples.html)
-- [MySQLdb User's Guide](http://mysql-python.sourceforge.net/MySQLdb.html)
-- [MySQL Tuner Tutorial](http://www.debiantutorials.com/tuning-mysql-with-mysqltuner-to-increase-efficiency-and-performance/)
-
-
-

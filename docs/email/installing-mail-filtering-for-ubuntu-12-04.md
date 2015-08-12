@@ -11,6 +11,11 @@ modified_by:
   name: Alex Fornuto
 published: 'Wednesday, March 26th, 2014'
 title: 'Installing Mail Filtering for Ubuntu 12.04'
+external_resources:
+ - '[The Official SpamAssassin Site](http://spamassassin.apache.org/)'
+ - '[The Official ClamAV Site](http://www.clamav.net/)'
+ - '[Ubuntu Community Documentation](https://help.ubuntu.com/community/PostfixAmavisNew)'
+ - '[Whitelisting and Blacklisting in Amavis](http://www.akadia.com/services/postfix_amavisd.html#Globally%20Sender%20Whitelists%20and%20Blacklists)'
 ---
 
 If you're running a mail server, it's a good idea to have spam and virus filtering. Spam can flood your users' inboxes, and those running insecure local PCs are susceptible to virus infection. Protecting your email server protects your clients and you. This guide goes through the installation and configuration of virus and spam filtering, using Amavis-new, ClamAV, and SpamAssassin.
@@ -19,13 +24,11 @@ If you're running a mail server, it's a good idea to have spam and virus filteri
 >
 > This is a generic introductory guide. You are responsible for ensuring that your virus/spam filtering system meets the needs of your environment.
 
-Prerequisites
--------------
+## Prerequisites
 
 This guide assumes you have already followed our [Email with Postfix, Dovecot, and MySQL](/docs/email/postfix/email-with-postfix-dovecot-and-mysql) guide, and are running Ubuntu 12.04 LTS. This guide is written for the root user, and all commands listed require root privileges.
 
-Installation
-------------
+## Installation
 
 Run the following commands to install all the necessary packages:
 
@@ -37,8 +40,7 @@ Run the following commands to install all the necessary packages:
 
     apt-get install arj bzip2 cabextract cpio file gzip lha nomarch pax rar unrar unzip zip zoo
 
-Configuration
--------------
+## Configuration
 
 In this section we'll configure the newly installed software to work with our existing mail server.
 
@@ -231,8 +233,7 @@ Here we'll set various options and settings for SpamAssassin.
 
         service postfix reload
 
-Testing ClamAV
---------------
+## Testing ClamAV
 
 You'll want to test that your email server is removing malicious emails from your users' inboxes. [The European Expert Group For IT-Security](http://www.eicar.org/) has files available for download that will be seen by ClamAV as a virus. You can download these test virus files [here](http://www.eicar.org/85-0-Download.html).
 
@@ -248,8 +249,7 @@ You can quickly search for these lines with the command:
 
     cat /var/log/mail.log | grep INFECTED
 
-Testing SpamAssassin
---------------------
+## Testing SpamAssassin
 
 The string below is used for testing spam filters. By sending it in an email (without whitespace or extra lines), you can test that the SpamAssassin filter is active:
 
@@ -257,8 +257,7 @@ The string below is used for testing spam filters. By sending it in an email (wi
 
 You can search for the relevant logfiles with `cat /var/log/mail.log | grep SPAM`
 
-Enabling Notifications
-----------------------
+## Enabling Notifications
 
 Depending on the amount of users and activity on your mail server, you may wish to receive notifications when ClamAV identifies and removes an incoming virus, or SpamAssassin filters an email as spam. If you want to receive emails, open the file `/etc/amavis/conf.d/21-ubuntu_defaults`. Add the desired email address to the **\$virus\_admin** and **\$spam\_admin** parameters, as shown below.
 
@@ -302,16 +301,3 @@ After changing this file, you will need to restart Amavis:
 2.  If you decide to modify these values, you will need to restart Amavis before they will take effect:
 
         service amavis restart
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [The Official SpamAssassin Site](http://spamassassin.apache.org/)
-- [The Official ClamAV Site](http://www.clamav.net/)
-- [Ubuntu Community Documentation](https://help.ubuntu.com/community/PostfixAmavisNew)
-- [Whitelisting and Blacklisting in Amavis](http://www.akadia.com/services/postfix_amavisd.html#Globally%20Sender%20Whitelists%20and%20Blacklists)
-
-
-

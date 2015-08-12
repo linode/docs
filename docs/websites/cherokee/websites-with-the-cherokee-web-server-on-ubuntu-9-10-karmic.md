@@ -85,9 +85,9 @@ Start `cherokee-admin` by issuing the following command:
 
 This instructs the administration program to bind to all IP addresses so it may be reached remotely. It will be launched in the background, so you'll still be able to use your SSH session. You should see output similar to the following:
 
-    root@plato:~# cherokee-admin -b &
+    root@hostname:~# cherokee-admin -b &
     [1] 2385
-    root@plato:~# 
+    root@hostname:~# 
     Login:
       User:              admin
       One-time Password: n6UDu7jD5jeADCcp
@@ -112,7 +112,7 @@ In a terminal window on your local workstation (MacOS X, Linux, BSD, etc) :
 
     ssh -L 9090:localhost:9090 root@12.34.56.78 -N 
 
-Replace "12.34.56.78" with your Linode's IP address. You may now [visit cherokee-admin](http://localhost:9090) in your web browser browser via the SSH tunnel. To stop the tunnel, simply press `Ctrl+C` in your local terminal window.
+Replace "12.34.56.78" with your Linode's IP address. You may now visit `http://localhost:9090` in your web browser browser via the SSH tunnel. To stop the tunnel, simply press `Ctrl+C` in your local terminal window.
 
 You'll be presented with the Cherokee administration panel, which you may use to configure websites and specify configuration options. You'll still need to log in using the username and one-time password provided when you launched `cherokee-admin`.
 

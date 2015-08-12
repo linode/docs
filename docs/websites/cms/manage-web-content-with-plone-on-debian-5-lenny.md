@@ -1,14 +1,15 @@
 ---
+deprecated: true
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Using the Plone Content Management System, built on the Zope framework, to deploy complex and content rich sites on Debian 5 (Lenny) systems.'
 keywords: 'plone,zope,python,debian,web framework,content management systems,cms'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-applications/cms-guides/plone/']
 modified: Friday, June 3rd, 2011
 modified_by:
-  name: Peter Sandin
+  name: Linode
 published: 'Friday, January 29th, 2010'
 title: 'Manage Web Content with Plone on Debian 5 (Lenny)'
 ---
@@ -39,7 +40,7 @@ The installation interface will present several questions during the installatio
 
     /etc/init.d/zope2.10 start
 
-Now, assuming that you have an [A Record](/docs/dns-guides/introduction-to-dns#a_aaaa_records) for the domain `ducklington.org` pointed to the IP address for the Linode that is running this Plone instance, you can visit the address `http://ducklington.org:8081` to visit the new Plone site. To login to the Zope administrative interface, visit `http://ducklington.org:8081/manage` and authenticate using the credentials created during the installation process.
+Now, assuming that you have an [A Record](/docs/dns-guides/introduction-to-dns#a_aaaa_records) for the domain `example.com` pointed to the IP address for the Linode that is running this Plone instance, you can visit the address `http://example.com:8081` to visit the new Plone site. To login to the Zope administrative interface, visit `http://example.com:8081/manage` and authenticate using the credentials created during the installation process.
 
 You can now proceed with the development of your Plone website!
 
@@ -91,9 +92,9 @@ Apache should restart cleanly. If you encounter any issues, you may wish to insp
 Apache Virtual Hosting Configuration
 :   ~~~ apache
     <VirtualHost *:80>
-         ServerAdmin admin@ducklington.org
-         ServerName ducklington.org
-         ServerAlias www.ducklington.org
+         ServerAdmin admin@example.com
+         ServerName example.com
+         ServerAlias www.example.com
 
         ProxyPreserveHost On
          ProxyPass / http://localhost:8081/
@@ -103,7 +104,7 @@ Apache Virtual Hosting Configuration
     </VirtualHost>
     ~~~
 
-In this configuration all requests for the `VirtualHost` named `ducklington.org` are passed back to the Plone instance. If you want to only serve dynamic content with Plone and use Apache to serve static content, use a virtual hosting configuration that resembles the following. Enable `mod_rewrite` by issuing the following command:
+In this configuration all requests for the `VirtualHost` named `example.com` are passed back to the Plone instance. If you want to only serve dynamic content with Plone and use Apache to serve static content, use a virtual hosting configuration that resembles the following. Enable `mod_rewrite` by issuing the following command:
 
     a2enmod rewrite
 
@@ -113,16 +114,16 @@ Now modify the configuration of your virtual host as follows:
 Apache Virtual Host Configuration
 :   ~~~ apache
     <VirtualHost *:80>
-        ServerName ducklington.org
-        ServerAlias www.ducklington.org
-        DocumentRoot /srv/www/ducklington.org/public_html/
+        ServerName example.com
+        ServerAlias www.example.com
+        DocumentRoot /srv/www/example.com/public_html/
 
-        ErrorLog /srv/www/ducklington.org/logs/error.log 
-        CustomLog /srv/www/ducklington.org/logs/access.log combined
+        ErrorLog /srv/www/example.com/logs/error.log 
+        CustomLog /srv/www/example.com/logs/access.log combined
 
         ProxyPreserveHost On
         RewriteEngine On
-        RewriteCond /srv/www/ducklington.org/public_html%{REQUEST_FILENAME} !-f
+        RewriteCond /srv/www/example.com/public_html%{REQUEST_FILENAME} !-f
         RewriteRule ^/(.*)$ http://localhost:8081/$1 [proxy,last]
     </VirtualHost>
     ~~~
@@ -131,7 +132,7 @@ Issue the following command to restart apache:
 
     /etc/init.d/apache2 restart      
 
-In this example, requests for content will **only** be proxied to Plone **if** resources matching these requests do not exist in the `DocumentRoot` directory (e.g. `/srv/www/ducklington.org/public_html`). This solution may be able to use system resources more effectively if you have a large Plone site with a great deal of static content.
+In this example, requests for content will **only** be proxied to Plone **if** resources matching these requests do not exist in the `DocumentRoot` directory (e.g. `/srv/www/example.com/public_html`). This solution may be able to use system resources more effectively if you have a large Plone site with a great deal of static content.
 
 ### Configuring an nginx Front End Proxy
 
@@ -142,9 +143,9 @@ Nginx Configuration Directives
 :   ~~~ nginx
     server {
             listen       21.43.65.91:80;
-            server_name  ducklington.org www.ducklington.org;
+            server_name  example.com www.example.com;
 
-            access_log  logs/ducklington.access.log combined;
+            access_log  logs/example.access.log combined;
 
             location / {
                 proxy_pass   http://localhost:8081;
@@ -158,7 +159,7 @@ Nginx Configuration Directives
     }
     ~~~
 
-In this example, nginx listens for incoming requests on port `80` of the public IP address `21.43.65.91` and the domain of `ducklington.org`. All requests are passed to the Plone instance running on the local machine on port `8081`. However, requests for locations in `/media/` will be served from the static content located in the `/srv/media` directory. Additionally, all files that terminate in a `.php` extension will be proxied to another HTTP server, presumably Apache, running on the local interface. Nginx will always fulfill the request using the most specific `Location` directive match.
+In this example, nginx listens for incoming requests on port `80` of the public IP address `21.43.65.91` and the domain of `example.com`. All requests are passed to the Plone instance running on the local machine on port `8081`. However, requests for locations in `/media/` will be served from the static content located in the `/srv/media` directory. Additionally, all files that terminate in a `.php` extension will be proxied to another HTTP server, presumably Apache, running on the local interface. Nginx will always fulfill the request using the most specific `Location` directive match.
 
 Congratulations, you now have a fully functional Plone system that is ready for deployment in a production environment.
 

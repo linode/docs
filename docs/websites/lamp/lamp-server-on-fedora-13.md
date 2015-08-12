@@ -2,7 +2,7 @@
 deprecated: true
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Creating a LAMP stack with Apache, MySQL, PHP, and Python on a Fedora 13 powered Linode VPS.'
 keywords: 'fedora 13 lamp,lamp server,linux lamp,fedora 13 apache'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -21,7 +21,7 @@ This guide provides step-by-step instructions for installing a full-featured LAM
 System Configuration
 --------------------
 
-It is important to make sure that your system is properly configured before installing Apache. In particular, you need to make sure that your system is up to date and that you have set the correct hostname, as well as set hosts in your `/etc/hosts` file. If you haven't configured these, you should follow the directions in the [getting started guide](/docs/getting-started/). Additionally, if you haven't configured your timezone yet, follow the instructions in our [administration basics](http://library.linode.com/using-linux/administration-basics#set_the_timezone) guide.
+It is important to make sure that your system is properly configured before installing Apache. In particular, you need to make sure that your system is up to date and that you have set the correct hostname, as well as set hosts in your `/etc/hosts` file. If you haven't configured these, you should follow the directions in the [getting started guide](/docs/getting-started/). Additionally, if you haven't configured your timezone yet, follow the instructions in our [administration basics](/docs/tools-reference/linux-system-administration-basics#set-the-timezone) guide.
 
 If your system is configured and up to date, you may begin by installing Apache on your Linode. This guide assumes that you are logged in as the root superuser on your Linode.
 

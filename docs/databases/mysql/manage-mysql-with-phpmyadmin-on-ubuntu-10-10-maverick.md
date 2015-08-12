@@ -2,7 +2,7 @@
 deprecated: true
 author:
   name: Brett Kaplan
-  email: bkaplan@linode.com
+  email: docs@linode.com
 description: 'Use phpMyAdmin to manage MySQL databases and users though a web interface.'
 keywords: 'mysql,phpmyadmin,sql,ubuntu'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -58,7 +58,7 @@ For each virtual host that you would like to give access to your PHPMyAdmin inst
 
 Change directory to your document root and issue the following commands to create the symbolic link (be sure to substitute the proper paths for your particular configuration):
 
-    cd /srv/www/ducklington.org/public_html
+    cd /srv/www/example.com/public_html
     ln -s /usr/share/phpmyadmin
 
 This will create a symbolic link named `phpmyadmin` in your document root.
@@ -71,7 +71,7 @@ Securing phpMyAdmin
 We recommend securing your phpMyAdmin directory using an `.htaccess file` and only allowing specified IP addresses to access it. You can do this by creating an `.htaccess` file in your `phpmyadmin` directory. Refer to the sample `.htaccess` file below. Be sure to substitute the proper paths and **IP addresses** for your particular configuration.
 
 {: .file-excerpt }
-/srv/www/ducklington.org/public\_html/phpmyadmin/.htaccess
+/srv/www/example.com/public\_html/phpmyadmin/.htaccess
 :   ~~~ apache
     order allow,deny
     allow from 12.34.56.78

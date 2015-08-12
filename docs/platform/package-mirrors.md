@@ -1,7 +1,7 @@
 ---
 author:
   name: Linode
-  email: bolow@linode.com
+  email: docs@linode.com
 description: Setting Linode Package Mirrors.
 keywords: 'package,mirrors,linode,repository,Debian,Ubuntu,CentOS,yum,apt-get'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -13,18 +13,18 @@ published: 'Tuesday, February 11th, 2014'
 title: Package Mirrors
 ---
 
-Linode offers public package mirrors for Ubuntu, Debian, and CentOS. When you install updates and new packages, you must download them from package mirrors. The primary advantage of using the Linode package mirrors versus other public package mirrors is speed. Linode package mirrors are available in all six of our datacenters. The mirrors can be found at:
+Linode offers public package mirrors for Ubuntu, Debian, and CentOS. When you install updates and new packages, you must download them from package mirrors. The primary advantage of using the Linode package mirrors versus other public package mirrors is speed. Linode package mirrors are available in all of our datacenters. The mirrors can be found at:
 
-- <http://tokyo.mirrors.linode.com/>
-- <http://london.mirrors.linode.com/>
-- <http://newark.mirrors.linode.com/>
 - <http://atlanta.mirrors.linode.com/>
 - <http://dallas.mirrors.linode.com/>
+- <http://frankfurt.mirrors.linode.com/>
 - <http://fremont.mirrors.linode.com/>
+- <http://london.mirrors.linode.com/>
+- <http://newark.mirrors.linode.com/>
 - <http://singapore.mirrors.linode.com/>
+- <http://tokyo.mirrors.linode.com/>
 
-Package Mirror Settings
------------------------
+## Package Mirror Settings
 
 For best performance, you will want to use the mirror in the same datacenter as your Linode. When using the Linode DNS resolvers, **mirrors.linode.com** will resolve to the mirror within the same datacenter. For public queries, mirrors.linode.com will return a round robin of the US locations.
 

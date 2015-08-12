@@ -1,7 +1,7 @@
 ---
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Manage email retrieval via multiple protocols with Fetchmail.'
 keywords: 'mail,fetchmail,unix,esr,mda'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -11,14 +11,17 @@ modified_by:
   name: Linode
 published: 'Thursday, January 7th, 2010'
 title: Using Fetchmail to Retrieve Email
+external_resources:
+ - '[Mailfilter MDA](http://mailfilter.sourceforge.net/)'
+ - '[Maildrop MDA](http://www.courier-mta.org/maildrop/)'
+ - '[Procmail MDA](http://www.procmail.org/)'
 ---
 
 The `fetchmail` program is a classic UNIX and Unix-like utility used to retrieve email from remote servers and deliver it to local users on a server. There are a number of different scenarios where fetchmail is used. Fetchmail is a popular tool for manually downloading email from a POP or IMAP server for personal use on a local machine. Another common application uses fetchmail to create an "email gateway," where email is collected from a number of different accounts or from a large centralized server and provided to the user in a manageable situation.
 
 If you're new to Linode we always recommend completing our [getting started guide](/docs/getting-started/) before beginning a tutorial. If you're new to Linux we also recommend considering the [beginners guide](/docs/beginners-guide/) and the many documents in the [Tools & Reference](/docs/tools-reference/) section of the Library. If you need a more full featured email stack, consider one of our other [email guides](/docs/email/).
 
-Installing Fetchmail
---------------------
+## Installing Fetchmail
 
 Fetchmail must be installed on whatever computer you need to download mail *to*. This document is applicable for users of desktop Linux who need to download email from their Linodes and users who need to download email to their Linodes from external sources. Fetchmail runs on nearly every UNIX like operating system and is even installed by default on Apple's Macintosh OS X system.
 
@@ -42,8 +45,7 @@ To install `fetchmail` on Gentoo Linux systems, issue the following command:
 
 Once installed you can begin to configure fetchmail.
 
-Introduction to .fetchmailrc Syntax
------------------------------------
+## Introduction to .fetchmailrc Syntax
 
 Fetchmail processes configuration options specified on the command line by default. More conventionally, however, administrators store settings in the `~/.fetchmailrc` file. Still, any options specified in the command line will override directives set in the configuration file.
 
@@ -72,12 +74,11 @@ In the first specification, fetchmail is told to check the `mail.example.com` se
 
 In the second example, a single account (i.e. `betty`) is retrieved from the remote server (i.e. `mail.dexample.org`) and passed to the MDA `procmail` utility. Additionally, account has the `sslproto` option is enabled to encrypt this traffic using `ssl`.
 
-Fetchmail requires that the `~/.fetchmailrc` file have the [access permissions](/docs/using-linux/users-and-groups) of 600. Permissions of 600 equate to read and writeable by the user account which "owns" the file with no permissions granted to group or other users. To achieve this, issue the following command:
+Fetchmail requires that the `~/.fetchmailrc` file have the [access permissions](/docs/tools-reference/linux-users-and-groups) of 600. Permissions of 600 equate to read and writeable by the user account which "owns" the file with no permissions granted to group or other users. To achieve this, issue the following command:
 
     chmod 600 ~/.fetchmailrc
 
-Using Special Syntaxes for Additional Clarity
----------------------------------------------
+## Using Special Syntaxes for Additional Clarity
 
 Fetchmail provides a number of syntactic niceties in an effort to make `.fetchmailrc` files easier to read. For instance, the words `and`, `with`, `has`, `wants`, and `options` are ignored by fetchmail. Additionally, the punctuation characters `:`, `;`, and `,` are ignored when `fetchmail` reads the configuration file.
 
@@ -85,8 +86,7 @@ While it is possible to specify credentials for a server on one line, more often
 
 Entries for new servers begin with the word `poll`. Fetchmail will check all "poll" entries for new mail every time it runs. You can specify server entries with the work `skip` and cause fetchmail to ignore these entries unless they are specified on the command line. This `skip` functionality is intended make it easy to disable checking mail servers that have gone off line or for testing purposes.
 
-Running Fetchmail for One User
-------------------------------
+## Running Fetchmail for One User
 
 Once the `.fetchmailrc` file is configured, fetchmail can be invoked simply by issuing the following command:
 
@@ -108,8 +108,7 @@ When fetchmail has completed this process it will quit until it is invoked again
 
 In the above example, fetchmail will poll mail sources for new mail every 300 seconds, or once every five minutes.
 
-Global Settings
----------------
+## Global Settings
 
 In addition to the configuration options described above, fetchmail provides a number of additional "global" configuration options. These allow you to configure the behavior of fetchmail with regards to all of the servers that it polls. These options are included at the beginning of the file and begin with the word `set`. Here is an example:
 
@@ -170,8 +169,7 @@ When invoked from the command line, `fetchmail` generates output regarding its a
 
 The first directive tells fetchmail to store all logging information in the system log. The location of this log may vary depending on your system configuration, but is typically located in `/var/log/mail.log`. The `logfile` directive allows the user to specify a file in which to store logging information. In this example logs are kept in the `logs/` directory and `fetchmail.log` of the user's home directory for the user account that executes fetchmail.
 
-Additional Fetchmail Functionality
-----------------------------------
+## Additional Fetchmail Functionality
 
 This document has only covered a minimal subset of fetcmhail's functionality. Indeed fetchmail is renowned for its extreme flexibility and versatility. This section will provide an overview of this functionality.
 
@@ -223,15 +221,3 @@ In this example, fetchmail will connect with the username `squire` to the server
 The deployment profile of programs like `fetchmail` has changed a great deal in recent history. Where once users needed a program like fetchmail to retrieve email from their Internet service providers, it is now very plausible to run your own fully fledged email server. Fetchmail also predates the development and proliferation of web-based email and "Email as a Service" providers like Fastmail.fm and Google's Gmail offerings.
 
 Nevertheless, programs like fetchmail remain useful in some contexts. Fetchmail is often used to retrieve email from email service providers and download this data to users' local machines. Other users deploy fetchmail as part of scripts or running in daemon mode to deliver mail to a small private IMAP service, for example. This makes it possible to access mail that is delivered to multiple addresses that are not hosted on the email gateway. Fetchmail makes it possible to centralize and collect email from a number of different sources into a single manageable archive, without needing to control the configuration and routing of mail on those remote servers. In this way, fetchmail remains a valuable and useful tool.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Mailfilter MDA](http://mailfilter.sourceforge.net/)
-- [Maildrop MDA](http://www.courier-mta.org/maildrop/)
-- [Procmail MDA](http://www.procmail.org/)
-
-
-

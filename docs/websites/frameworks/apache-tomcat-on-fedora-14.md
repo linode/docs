@@ -2,7 +2,7 @@
 deprecated: true
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Instructions for installing and using the Apache Tomcat Java Servlet engine on Fedora 14.'
 keywords: 'apache tomcat fedora 14,java,java fedora 14,java servlets fedora 14,java fedora'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -63,7 +63,7 @@ At this point, you may want to create a user to access the "Tomcat Manager" web 
 {: .file-excerpt }
 /etc/tomcat6/tomcat-users.xml
 :   ~~~ xml
-    <user name="squire" password="ducklingtonmorris" roles="manager" />
+    <user name="squire" password="examplemorris" roles="manager" />
     ~~~
 
 Once you have saved the `tomcat-users.xml` file, restart the tomcat6 service with the following command:

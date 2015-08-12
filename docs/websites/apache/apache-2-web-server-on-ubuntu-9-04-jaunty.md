@@ -2,7 +2,7 @@
 deprecated: true
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Instructions for getting started with the Apache web server on Ubuntu Jaunty.'
 keywords: 'Apache,web sever,Ubuntu Jaunty'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -64,20 +64,20 @@ Configure Apache for Named-Based Virtual Hosting
 
 Apache supports both IP-based and name-based virtual hosting, allowing you to host multiple domains on a single server.
 
-Each virtual host needs its own file in the `/etc/apache2/sites-available/` directory. In this example, you'll create files for two **name-based** virtually hosted sites, "bucknell.net" and "ducklington.org".
+Each virtual host needs its own file in the `/etc/apache2/sites-available/` directory. In this example, you'll create files for two **name-based** virtually hosted sites, "example.com" and "example.com".
 
-Create the virtual hosting file for bucknell.net, located at `/etc/apache2/sites-available/bucknell.net`, to resemble the following:
+Create the virtual hosting file for example.com, located at `/etc/apache2/sites-available/example.com`, to resemble the following:
 
 {: .file-excerpt }
-/etc/apache2/sites-available/bucknell.net
+/etc/apache2/sites-available/example.com
 :   ~~~ apache
     <VirtualHost 12.34.56.78:80> 
-         ServerAdmin squire@bucknell.net     
-         ServerName bucknell.net
-         ServerAlias www.bucknell.net
-         DocumentRoot /srv/www/bucknell.net/public_html/
-         ErrorLog /srv/www/bucknell.net/logs/error.log 
-         CustomLog /srv/www/bucknell.net/logs/access.log combined
+         ServerAdmin squire@example.com     
+         ServerName example.com
+         ServerAlias www.example.com
+         DocumentRoot /srv/www/example.com/public_html/
+         ErrorLog /srv/www/example.com/logs/error.log 
+         CustomLog /srv/www/example.com/logs/access.log combined
     </VirtualHost>
     ~~~
 
@@ -90,18 +90,18 @@ Apache Virtual Hosting File
     AddHandler cgi-script .pl
     ~~~
 
-Next, create the virtual hosting file for ducklington.org, located in `/etc/apache2/sites-available/ducklington.org`, to resemble the following:
+Next, create the virtual hosting file for example.com, located in `/etc/apache2/sites-available/example.com`, to resemble the following:
 
 {: .file-excerpt }
-/etc/apache2/sites-available/ducklington.org
+/etc/apache2/sites-available/example.com
 :   ~~~ apache
     <VirtualHost 12.34.56.78:80> 
-         ServerAdmin squire@ducklington.org
-         ServerName ducklington.org
-         ServerAlias www.ducklington.org
-         DocumentRoot /srv/www/ducklington.org/public_html/
-         ErrorLog /srv/www/ducklington.org/logs/error.log 
-         CustomLog /srv/www/ducklington.org/logs/access.log combined
+         ServerAdmin squire@example.com
+         ServerName example.com
+         ServerAlias www.example.com
+         DocumentRoot /srv/www/example.com/public_html/
+         ErrorLog /srv/www/example.com/logs/error.log 
+         CustomLog /srv/www/example.com/logs/access.log combined
     </VirtualHost>
     ~~~
 
@@ -113,10 +113,10 @@ To enable a site issue the following command:
 
 where the [sitename] is the same as the virtual host file name under `/etc/apache2/sites-available/`. To disable a site, use the `a2dissite [sitename]` command. Note before, you can use the above configuration you'll need to create the specified directories. For the above configuration, you can do this with the following commands:
 
-    mkdir -p /srv/www/ducklington.org/public_html
-    mkdir -p /srv/www/ducklington.org/logs
-    mkdir -p /srv/www/bucknell.net/public_html
-    mkdir -p /srv/www/bucknell.net/logs
+    mkdir -p /srv/www/example.com/public_html
+    mkdir -p /srv/www/example.com/logs
+    mkdir -p /srv/www/example.com/public_html
+    mkdir -p /srv/www/example.com/logs
 
 Finally, restart the Apache server to initialize all the changes, with this command:
 

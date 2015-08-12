@@ -2,7 +2,7 @@
 deprecated: true
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and Perl-FastCGI on Arch Linux.'
 keywords: 'perl fastcgi arch linux,fastcgi,nginx arch linux,nginx arch,nginx perl'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -69,29 +69,29 @@ Issue the following command to start the FastCGI wrapper for the first time:
 Configure Virtual Hosting
 -------------------------
 
-Create directories for your web content and logs by issuing the following commands. Be sure to replace "ducklington.org" with your domain name.
+Create directories for your web content and logs by issuing the following commands. Be sure to replace "example.com" with your domain name.
 
-    mkdir -p /srv/http/ducklington.org/public_html
-    mkdir /srv/http/ducklington.org/logs
+    mkdir -p /srv/http/example.com/public_html
+    mkdir /srv/http/example.com/logs
 
 Issue the following commands to create nginx virtual host directories:
 
     mkdir /etc/nginx/conf/sites-available
     mkdir /etc/nginx/conf/sites-enabled
 
-Create a virtual host configuration file for your site. Be sure to replace "ducklington.org" with your domain name in the following example configuration.
+Create a virtual host configuration file for your site. Be sure to replace "example.com" with your domain name in the following example configuration.
 
 {: .file }
-/etc/nginx/conf/sites-available/www.ducklington.org
+/etc/nginx/conf/sites-available/www.example.com
 :   ~~~ nginx
     server {
         listen   80;
-        server_name ducklington.org www.ducklington.org;
-        access_log /srv/http/ducklington.org/logs/access.log;
-        error_log /srv/http/ducklington.org/logs/error.log;
+        server_name example.com www.example.com;
+        access_log /srv/http/example.com/logs/access.log;
+        error_log /srv/http/example.com/logs/error.log;
 
         location / {
-            root   /srv/http/ducklington.org/public_html;
+            root   /srv/http/example.com/public_html;
             index  index.html index.htm;
         }
 
@@ -100,7 +100,7 @@ Create a virtual host configuration file for your site. Be sure to replace "duck
             include fastcgi_params;
             fastcgi_pass  127.0.0.1:9001;
             fastcgi_index index.cgi;
-            fastcgi_param  SCRIPT_FILENAME  /srv/http/ducklington.org/public_html$fastcgi_script_name;
+            fastcgi_param  SCRIPT_FILENAME  /srv/http/example.com/public_html$fastcgi_script_name;
         }
     }
     ~~~
@@ -110,7 +110,7 @@ This example assumes that all CGI scripts will end with the characters `.cgi`. I
 Issue the following commands to enable your new virtual host:
 
     cd /etc/nginx/conf/sites-enabled/
-    ln -s /etc/nginx/conf/sites-available/www.ducklington.org
+    ln -s /etc/nginx/conf/sites-available/www.example.com
 
 Edit the file `/etc/nginx/conf/nginx.conf`, inserting the line `include /etc/nginx/conf/sites-enabled/*;` at the start of the `http {` block, as shown in the following file excerpt:
 
@@ -132,7 +132,7 @@ Test Perl with FastCGI
 Create a file called "test.cgi" in your site's "public\_html" directory with the following contents:
 
 {: .file }
-/srv/http/ducklington.org/public\_html/test.cgi
+/srv/http/example.com/public\_html/test.cgi
 :   ~~~ perl
     #!/usr/bin/perl
 
@@ -152,9 +152,9 @@ Create a file called "test.cgi" in your site's "public\_html" directory with the
 
 Make the script executable by issuing the following command:
 
-    chmod a+x /srv/http/ducklington.org/public_html/test.cgi
+    chmod a+x /srv/http/example.com/public_html/test.cgi
 
-When you visit `http://www.ducklington.org/test.cgi` in your browser, your Perl environment variables should be shown. Congratulations, you've configured the nginx web server to use Perl with FastCGI for dynamic content!
+When you visit `http://www.example.com/test.cgi` in your browser, your Perl environment variables should be shown. Congratulations, you've configured the nginx web server to use Perl with FastCGI for dynamic content!
 
 More Information
 ----------------

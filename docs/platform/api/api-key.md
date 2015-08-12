@@ -1,7 +1,7 @@
 ---
 author:
   name: Linode
-  email: scampbell@linode.com
+  email: docs@linode.com
 description: 'Learn how to generate, update, and disable your Linode API key.'
 keywords: 'linode api, api key, key'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -15,8 +15,7 @@ title: API Key
 
 Learn how to generate and remove your Linode API keys for use with the [Linode API](https://www.linode.com/api/).
 
-Generating
-----------
+## Generating
 
 Follow the steps below to generate an API key for your Linode account. This will enable access to the Linode API for this user.
 
@@ -42,8 +41,7 @@ Now you have the API key for your Linode account. Note that this key is associat
 
 You can create as many keys as desired with different labels and expiration times.
 
-Removing
---------
+## Removing
 
  {: .caution }
 >
@@ -67,7 +65,4 @@ Follow these steps to remove an API key. If all keys are removed, the API will b
 
  {: .note }
 >
-> Using the [Linode Manager iPhone App](https://www.linode.com/iphone/) or the [Linode CLI](/docs/cli) will enable access to the API and generate a new API key, even if you have removed (or never created) all API keys for this account. If a key has been saved within the application, that key will be used in the future. If no key is saved in the application, a new key will be generated, even if your account has other existing keys.
-
-
-
+> Using the [Linode Manager iPhone App](https://www.linode.com/mobile/) or the [Linode CLI](/docs/cli) will enable access to the API and generate a new API key, even if you have removed (or never created) all API keys for this account. If a key has been saved within the application, that key will be used in the future. If no key is saved in the application, a new key will be generated, even if your account has other existing keys.

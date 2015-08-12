@@ -1,16 +1,21 @@
 ---
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'An introduction to the structure of the Apache web server configuration for maintaining granular configuration.'
 keywords: 'apache,httpd,configuration'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-servers/apache/configuration/configuration-structure/']
 modified: Monday, August 22nd, 2011
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Wednesday, February 24th, 2010'
 title: Apache Configuration Structure
+external_resources:
+ - '[Apache Installation](/docs/web-servers/apache/)'
+ - '[LAMP Stack Guides](/docs/lamp-guides/)'
+ - '[Troubleshooting Apache](/docs/web-servers/apache/troubleshooting/)'
+ - '[Linode User Community](http://linode.com/community/)'
 ---
 
 In our basic [installation guides for Apache](/docs/web-servers/apache/) and [LAMP stack tutorials](/docs/lamp-guides/), we suggest a very simple configuration based on `<VirtualHost>` configurations. This is useful for configuring a number of different websites on a single server, but this approach does not provide granular control over the behavior of resources *within* these sites.
@@ -19,15 +24,14 @@ The `<VirtualHost>` block provides administrators with the ability to modify the
 
 This document addresses a number of ways to configure the behavior of your web server on a very narrow per-directory and even per-file level. For more information about specific options, consult our other [Apache configuration guides](/docs/web-servers/apache/) or the official [Apache documentation](http://httpd.apache.org/docs/).
 
-Directory and Options
----------------------
+## Directory and Options
 
 The `<Directory>` block refers to a directory in the filesystem and specifies how Apache will behave with regards to that directory. This block is enclosed in angle braces and begins with the word "Directory" and a path to a directory in the file system. Options set in a directory block apply to the directory and its sub directories as specified. The following is an example of a directory block:
 
 {: .file-excerpt }
 Virtual Host Entry in an Apache Configuration file
 :   ~~~ apache
-    <Directory /srv/www/ducklington.org/public_html/images>
+    <Directory /srv/www/example.com/public_html/images>
         Order Allow,Deny
         Allow from all
         Deny 55.1
@@ -44,8 +48,7 @@ Additional notes about the `<Directory>` block:
 
         <Directory /srv/www/*/public_html> 
 
-File Options
-------------
+## File Options
 
 If you need further control over specific files within a directory on your server, you can use the `<Files>` directive. This controls the behavior of the web server with regards to a single file. `<Files>` directives will apply to any file with the specified name. For instance, the following example directive will match any file named `roster.htm` in the filesystem:
 
@@ -60,10 +63,9 @@ Files Directive in an Apache Configuration file
 
 If enclosed in a `<VirtualHost>` block, this will apply to all files named `roster.htm` in the `DocumentRoot` or in directories located within the `DocumentRoot` of that Host. If the `<Files>` directive is enclosed in a `<Directory>` block, the options specified will apply to all files named `roster.htm` within the directory, or within sub-directories of the directory specified.
 
-Location Options
-----------------
+## Location Options
 
-While `<Directory>` and `<Files>` blocks control Apache's behavior with regards to locations in the *filesystem*, the `<Location>` directive controls Apache's behavior with regard to a particular path requested by the client. If a user makes a request for `http://www.ducklington.org/webmail/inbox/`, the web server would look in the `webmail/inbox/` directory beneath the `DocumentRoot` such as `/srv/www/ducklington.org/public_html/webmail/inbox/`. One common use for this functionality might be to allow a script to handle requests made to a given path. For example, the following block directs all requests for the specified path to a `mod_python` script:
+While `<Directory>` and `<Files>` blocks control Apache's behavior with regards to locations in the *filesystem*, the `<Location>` directive controls Apache's behavior with regard to a particular path requested by the client. If a user makes a request for `http://www.example.com/webmail/inbox/`, the web server would look in the `webmail/inbox/` directory beneath the `DocumentRoot` such as `/srv/www/example.com/public_html/webmail/inbox/`. One common use for this functionality might be to allow a script to handle requests made to a given path. For example, the following block directs all requests for the specified path to a `mod_python` script:
 
 {: .file-excerpt }
 Location Directive in an Apache Configuration file
@@ -71,14 +73,13 @@ Location Directive in an Apache Configuration file
     <Location /webmail/inbox>
         SetHandler python-program
         PythonHandler modpython
-        PythonPath "['/srv/www/ducklington.org/application/inbox'] + sys.path"
+        PythonPath "['/srv/www/example.com/application/inbox'] + sys.path"
     </Location>
     ~~~
 
 Note that the options specified in `<Location>` directives are processed after the options specified in `<Directory>` blocks and can override any options set in these blocks.
 
-htaccess Options
-----------------
+## htaccess Options
 
 In addition to the configuration methods discussed above, default configurations of Apache will read configuration options for a directory from a file located in that directory. This file is typically called `.htaccess`. Look for the following configuration options in your `httpd.conf` and connected files:
 
@@ -117,8 +118,7 @@ Apache `<Directory >` block
 
 Note that you can specify `AllowOverride All` for a directory that falls within a directory where overrides have been disabled.
 
-"Match" Directives and Regular Expressions
-------------------------------------------
+## "Match" Directives and Regular Expressions
 
 In addition to the basic directives described above, Apache also allows server administrators some additional flexibility in how directories, files, and locations are specified. These "Match" blocks and regular expression-defined directive blocks allow administrators to define a single set of configuration options for a class of directories, files, and locations. Here is an example:
 
@@ -132,7 +132,7 @@ DirectoryMatch Block in an Apache Configuration file
     </DirectoryMatch>
     ~~~
 
-This block specifies a number of options for any directory that matches the regular expression `^.+/images`. In other words, any path which begins with a number of characters and ends with images will match these options, including the following paths: `/srv/www/ducklington.org/public_html/images/`, `/srv/www/ducklington.org/public_html/objects/images`, and `/home/squire/public/www/images`.
+This block specifies a number of options for any directory that matches the regular expression `^.+/images`. In other words, any path which begins with a number of characters and ends with images will match these options, including the following paths: `/srv/www/example.com/public_html/images/`, `/srv/www/example.com/public_html/objects/images`, and `/home/squire/public/www/images`.
 
 Apache also allows an alternate syntax for regular expression-defined directory blocks. Adding a tilde (e.g. `~`) between the `Directory` term and the specified path causes the specified path to be read as a regular expression. Regular expressions are a standard syntax for pattern matching, and Apache supports standard and Perl regular expression variants.
 
@@ -178,8 +178,7 @@ File and Location Match Directives
 
 Note that the above `<Files>` and `<FilesMatch>` directives are equivalent, as are the `<Location>` and `<LocationMatch>` directives.
 
-Order of Precedence
--------------------
+## Order of Precedence
 
 With so many possible locations for configuration options, it is possible to specify one option in one file or block only to have it be overridden by another option later. One of the chief challenges in using the Apache HTTP server is in determining how all of the disparately located configuration options combine to produce specific web server behaviors.
 
@@ -191,20 +190,6 @@ The following list provides a guide to the priority that Apache uses to "merge c
 4.  `<Files>` and `<FilesMatch>` are read after directory behaviors have been determined.
 5.  Finally, `<Location>` and `<LocationMatch>` are read.
 
-Generally, `<Directory>` options are parsed in order from shortest to longest. In other words, options set for `/srv/www/ducklington.org/public_html/objects` will be processed before options set for `/srv/www/ducklington.org/public_html/objects/images` regardless of what order they appear in the configuration file. All other directives are processed in the order that they appear in the configuration file.
+Generally, `<Directory>` options are parsed in order from shortest to longest. In other words, options set for `/srv/www/example.com/public_html/objects` will be processed before options set for `/srv/www/example.com/public_html/objects/images` regardless of what order they appear in the configuration file. All other directives are processed in the order that they appear in the configuration file.
 
 Additionally, note that `Include` directives are processed linearly. Options specified in a file included in line 20 of `httpd.conf` can be overridden by an option specified in line 30 of that file or in a file that is included at that point.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Apache Installation](/docs/web-servers/apache/)
-- [LAMP Stack Guides](/docs/lamp-guides/)
-- [Troubleshooting Apache](/docs/web-servers/apache/troubleshooting/)
-- [Linode User Community](http://linode.com/community/)
-- [Apache Configuration Settings](http://httpd.apache.org/docs/2.2/sections.html)
-
-
-

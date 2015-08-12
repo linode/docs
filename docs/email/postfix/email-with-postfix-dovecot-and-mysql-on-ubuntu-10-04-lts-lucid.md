@@ -346,7 +346,7 @@ Now check your /var/log/mail.log to make sure dovecot started without errors. Yo
 {: .file-excerpt }
 /var/log/mail.log
 
-> Jan 21 16:19:17 plato dovecot: Dovecot v1.2.9 starting up (core dumps disabled) Jan 21 16:19:17 plato dovecot: auth-worker(default): mysql: Connected to 127.0.0.1 (mail)
+> Jan 21 16:19:17 hostname dovecot: Dovecot v1.2.9 starting up (core dumps disabled) Jan 21 16:19:17 hostname dovecot: auth-worker(default): mysql: Connected to 127.0.0.1 (mail)
 
 Before testing dovecot, you must change the permissions on `/etc/dovecot/dovecot.conf` to allow the `vmail` user to access them:
 
@@ -399,9 +399,9 @@ You should see output similar to the following, with the line "250-STARTTLS" inc
     Trying 127.0.0.1...
     Connected to localhost.localdomain.
     Escape character is '^]'.
-    220 plato.example.com ESMTP Postfix (Ubuntu)
+    220 hostname.example.com ESMTP Postfix (Ubuntu)
     ehlo localhost
-    250-plato.example.com
+    250-hostname.example.com
     250-PIPELINING
     250-SIZE 30720000
     250-VRFY
@@ -445,14 +445,14 @@ After you have sent the test mail, you'll want to check your error logs to make 
 {: .file-excerpt }
 /var/log/mail.log
 
-> Jan 21 16:23:23 plato postfix/cleanup[10654]: 5410D86ED: message-id=\<<20110121162323.5410D86ED@plato.example.com>\> Jan 21 16:23:23 plato postfix/qmgr[10644]: 5410D86ED: from=\<<root@plato.example.com>\>, size=398, nrcpt=1 (queue active) Jan 21 16:23:23 plato postfix/pipe[10659]: 5410D86ED: to=\<<sales@example.com>\>, relay=dovecot, delay=0.04, delays=0.03/0.01/0/0.01, dsn=2.0.0, status=sent (delivered via dovecot service) Jan 21 16:23:23 plato postfix/qmgr[10644]: 5410D86ED: removed
+> Jan 21 16:23:23 hostname postfix/cleanup[10654]: 5410D86ED: message-id=\<<20110121162323.5410D86ED@hostname.example.com>\> Jan 21 16:23:23 hostname postfix/qmgr[10644]: 5410D86ED: from=\<<root@hostname.example.com>\>, size=398, nrcpt=1 (queue active) Jan 21 16:23:23 hostname postfix/pipe[10659]: 5410D86ED: to=\<<sales@example.com>\>, relay=dovecot, delay=0.04, delays=0.03/0.01/0/0.01, dsn=2.0.0, status=sent (delivered via dovecot service) Jan 21 16:23:23 hostname postfix/qmgr[10644]: 5410D86ED: removed
 
 Next you should check the Dovecot delivery log located in `/home/vmail/dovecot-deliver.log`. The contents should look similar to the following:
 
 {: .file-excerpt }
 /home/vmail/dovecot-deliver.log
 
-> 2011-01-21 16:23:23 deliver(<sales@example.com>): Info: msgid=\<<20110121162323.5410D86ED@plato.example.com>\>: saved mail to INBOX
+> 2011-01-21 16:23:23 deliver(<sales@example.com>): Info: msgid=\<<20110121162323.5410D86ED@hostname.example.com>\>: saved mail to INBOX
 
 Now you can test to see what the users of your email server would see with their email clients.
 

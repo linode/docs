@@ -1,8 +1,8 @@
 ---
 deprecated: true
 author:
-  name: Peter Sandin
-  email: psandin@linode.com
+  name: Linode
+  email: docs@linode.com
 description: 'Getting started with MySQL for web and server applications on Fedora 12.'
 keywords: 'mysql fedora 12,mysql linux,mysql fedora'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

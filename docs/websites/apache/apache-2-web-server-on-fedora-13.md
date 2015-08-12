@@ -2,7 +2,7 @@
 deprecated: true
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Instructions for getting started with the Apache web server on Fedora 13.'
 keywords: 'apache fedora 13,fedora web server,linux web server'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -87,27 +87,27 @@ Be sure to replace 13.34.56.78 with your own IP address.
 
 ### Configure Virtual Hosts
 
-Now you will create virtual host entries for each site that you need to host with this server. Here are two examples for sites at "ducklington.org" and "bucknell.net".
+Now you will create virtual host entries for each site that you need to host with this server. Here are two examples for sites at "example.com" and "example.com".
 
 {: .file-excerpt }
 /etc/httpd/conf.d/vhost.conf
 :   ~~~ apache
     <VirtualHost 13.34.56.78:80> 
-         ServerAdmin squire@ducklington.org
-         ServerName ducklington.org
-         ServerAlias www.ducklington.org
-         DocumentRoot /srv/www/ducklington.org/public_html/
-         ErrorLog /srv/www/ducklington.org/logs/error.log 
-         CustomLog /srv/www/ducklington.org/logs/access.log combined
+         ServerAdmin squire@example.com
+         ServerName example.com
+         ServerAlias www.example.com
+         DocumentRoot /srv/www/example.com/public_html/
+         ErrorLog /srv/www/example.com/logs/error.log 
+         CustomLog /srv/www/example.com/logs/access.log combined
     </VirtualHost>
 
     <VirtualHost 13.34.56.78:80> 
-         ServerAdmin squire@bucknell.net     
-         ServerName bucknell.net
-         ServerAlias www.bucknell.net
-         DocumentRoot /srv/www/bucknell.net/public_html/
-         ErrorLog /srv/www/bucknell.net/logs/error.log 
-         CustomLog /srv/www/bucknell.net/logs/access.log combined
+         ServerAdmin squire@example.com     
+         ServerName example.com
+         ServerAlias www.example.com
+         DocumentRoot /srv/www/example.com/public_html/
+         ErrorLog /srv/www/example.com/logs/error.log 
+         CustomLog /srv/www/example.com/logs/access.log combined
     </VirtualHost>
     ~~~
 
@@ -118,10 +118,10 @@ Notes regarding this example configuration:
 
 Before you can use the above configuration, you'll need to create the specified directories. For the above configuration, you can do this with the following commands:
 
-    mkdir -p /srv/www/ducklington.org/public_html
-    mkdir /srv/www/ducklington.org/logs
-    mkdir -p /srv/www/bucknell.net/public_html
-    mkdir /srv/www/bucknell.net/logs
+    mkdir -p /srv/www/example.com/public_html
+    mkdir /srv/www/example.com/logs
+    mkdir -p /srv/www/example.com/public_html
+    mkdir /srv/www/example.com/logs
 
 After you've set up your virtual hosts, issue the following command to run Apache for the first time:
 

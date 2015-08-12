@@ -1,7 +1,7 @@
 ---
 author:
   name: Linode
-  email: scampbell@linode.com
+  email: docs@linode.com
 description: 'How to use two-factor authentication and other security controls in the Linode Manager.'
 keywords: 'two-factor authentication,password,security,Linode Manager,token'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -15,8 +15,7 @@ title: Linode Manager Security Controls
 
 The [Linode Manager](https://manager.linode.com) is the gateway to all of your Linode products and services, and you should take steps to protect it from unauthorized access. This guide documents several Linode Manager features that can help mitigate your risk. Whether you're worried about malicious users gaining access to your username and password, or authorized users abusing their access privileges, the Linode Manager's built-in security tools can help. You'll start by enabling two-factor authentication to protect your account with a physical token, setting up an IP address whitelist, and then configuring security event notifications for your Linode Manager account. You'll also learn how to control API access, configure user accounts, and force password expirations.
 
-Two-Factor Authentication
--------------------------
+## Two-Factor Authentication
 
 Two-factor authentication increases the security of your Linode Manager account by requiring two forms of authentication — something you have, and something you know. You're already familiar with this concept if you've ever used a debit card at an ATM machine. The debit card is something you have, and the PIN access code is something you know. You need both the debit card and the PIN to access your bank account.
 
@@ -148,8 +147,7 @@ Should you need us to disable your Two-Factor Authentication, the following info
 1. An image of the front and back of the payment card on file, which clearly shows both the last 6 digits and owner of the card.
 2. An image of the front and back of the matching government-issued photo ID.
 
-IP Address Whitelisting
------------------------
+## IP Address Whitelisting
 
 The IP Address Whitelist feature protects your Linode Manager account from unauthorized access attempts by accepting connections only from the IP addresses you specify. It's easy to use. Just enable the feature, add your IP address, and log in. If you ever attempt to log in from an IP address that is not on the whitelist, you'll receive an email notification — you can click the link in the email message to add the new IP address to the whitelist.
 
@@ -195,8 +193,7 @@ You can disable the IP address whitelist feature at any time. Here's how:
 
 The IP address whitelist feature is disabled. From now on you will be able to log in to the Linode Manager from any IP address.
 
-Security Event Notifications
-----------------------------
+## Security Event Notifications
 
 By default, the Linode Manager automatically notifies you via email when any Linode jobs are added to the *Host Job Queue*. Referred to as *event notifications*, this security control can help you monitor your Linode Manager account's activity. You can also subscribe to an RSS feed, or disable email event notifications entirely. This section shows you how to configure event notifications.
 
@@ -230,16 +227,13 @@ The event notifications for your Linode Manager account are also available as an
 
 If you regenerated the URL for the RSS feed, you will need to update it in your RSS reader.
 
-API Access
-----------
+## API Access
 
 The [Linode API](https://www.linode.com/api/) is a programmatic interface for many of the features available in the Linode Manager. It's an indispensable tool for developers, but it's also a potential attack vector. For this reason, the Linode Manager provides two security controls for your account's API key. First, you can generate a new API key if you suspect that your existing key has been compromised. And if you're not using the API key, you can remove access to it altogether.
 
 For details on generating and removing API keys, please see the [API Key](/docs/api/key) article.
 
-Next Steps
-----------
-
+## Next Steps
 If you've completed this guide, you've proactively taken steps to protect your Linode Manager account. But don't stop here! There are a couple other steps that some users should take to secure their Linode Manager accounts. Take some time and work through the following action items outlined in our other guides.
 
 ### Configuring User Accounts
@@ -249,6 +243,3 @@ Organizations that have multiple individuals accessing the same Linode Manager a
 ### Forcing Password Expirations
 
 Some organizations have policies that require users to change their passwords every so often. The Linode Manager can be configured to force users to change their passwords every 1, 3, 6, or 12 months. For more information, see the documentation on [Passwords in the Linode Manager](/docs/accounts-and-passwords#sph_passwords).
-
-
-

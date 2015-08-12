@@ -2,14 +2,14 @@
 deprecated: true
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Creating a LAMP stack on a CentOS 5 Linode.'
 keywords: 'LAMP,CentOS,CentOS 5'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['lamp-guides/centos-5/']
 modified: Tuesday, July 19th, 2011
 modified_by:
-  name: Peter Sandin
+  name: Linode
 published: 'Monday, October 19th, 2009'
 title: LAMP Server on CentOS 5
 ---

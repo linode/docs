@@ -1,7 +1,7 @@
 ---
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Use the vmstat tool to monitor your system''s virtual memory usage.'
 keywords: 'virtual memory,memory,linux,ram,usage,troubleshooting.'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -11,12 +11,14 @@ modified_by:
   name: Amanda Folson
 published: 'Wednesday, October 13th, 2010'
 title: Use vmstat to Monitor System Performance
+external_resources:
+ - '[Linux Ate My Ram](http://www.linuxatemyram.com/)'
+ - '[Memory Usage on Linux](http://chrisjohnston.org/2009/why-on-linux-am-i-seeing-so-much-ram-usage)'
 ---
 
 `vmstat` is a tool that collects and reports data about your system's memory, swap, and processor resource utilization in real time. It can be used to determine the root cause of performance and issues related to memory use.
 
-Using vmstat
-------------
+## Using vmstat
 
 ### Vmstat Operation
 
@@ -125,8 +127,7 @@ In the default operation, `vmstat` displays memory statistics in kilobytes. `vms
      0  0      3    162 55   1339    0    0 0     0  200  444  2  0 98  0
      0  0      3    162 55   1339    0    0 0     0  313  771  3  1 96  0
 
-Interpreting Vmstat Output
---------------------------
+## Interpreting Vmstat Output
 
 `vmstat` reports describe the current state of a Linux system. Information regarding the running state of a system is useful when diagnosing performance related issues. Often [Linode Support](/docs/platform/support) will request `vmstat` reports in order to more conclusively diagnose some issues; however, with a little background in what all of the data represents, you can interpret this data yourself.
 
@@ -169,14 +170,3 @@ The `in` column reports the number of system interrupts per second, including in
 The `cpu` section reports on the use of the system's CPU resources. The columns in this section always add to 100 and reflect "percentage of available time".
 
 The `us` column reports the amount of time that the processor spends on userland tasks, or all non-kernel processes. The `sy` column reports the amount of time that the processor spends on kernel related tasks. The `id` column reports the amount of time that the processor spends idle. The `wa` column reports the amount of time that the processor spends waiting for IO operations to complete before being able to continue processing tasks.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Linux Ate My Ram](http://www.linuxatemyram.com/)
-- [Memory Usage on Linux](http://chrisjohnston.org/2009/why-on-linux-am-i-seeing-so-much-ram-usage)
-
-
-

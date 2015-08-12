@@ -1,7 +1,7 @@
 ---
 author:
   name: Linode
-  email: scampbell@linode.com
+  email: docs@linode.com
 description: Longview App for Nginx
 keywords: 'Longview, Nginx, statistics, HttpStubStatusModule'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -15,8 +15,7 @@ title: Longview App for Nginx
 
 Longview for Nginx is a Longview App. The Longview Nginx tab appears in the Linode Manager when Longview detects that you have Nginx installed on your Linode. With the Longview Nginx App, you'll be able to view statistics for Nginx on your Linode. It can help you keep track of Nginx's settings, workers and requests, system resource consumption, and other information.
 
-Installing
-----------
+## Installing
 
 Prerequisites:
 
@@ -106,8 +105,7 @@ To enable the Nginx Longview app manually, follow these steps on your Linode via
 
 You should now be able to see Longview data for Nginx. If that's not the case, proceed to the [Troubleshooting](#id4) section at the end of this article.
 
-Viewing Statistics
-------------------
+## Viewing Statistics
 
 To see the output for the Longview Nginx App:
 
@@ -155,8 +153,7 @@ The **Disk IO** graph shows the amount of input to and output from the disk caus
 
 The **Process Count** graph shows the total number of processes on your Linode spawned by Nginx at the selected time. If you want to see more details, and how this stacks up against the total number of processes on your Linode, see the [Process Explorer tab](/docs/longview#sph_process-explorer-tab).
 
-Troubleshooting
----------------
+## Troubleshooting
 
 If you don't see Longview data for Nginx, you'll instead get an error on the page and instructions on how to fix it. As a general tip, you can check the `/var/log/linode/longview.log` file for errors as well.
 
@@ -238,6 +235,3 @@ To resolve this issue, follow these steps:
 ### Nginx Tab is Missing
 
 If the Longview Nginx tab is missing entirely, this indicates that Nginx is either not installed, or has stopped. If you restart Nginx, you will be able to see the tab again and view all of your old data.
-
-
-

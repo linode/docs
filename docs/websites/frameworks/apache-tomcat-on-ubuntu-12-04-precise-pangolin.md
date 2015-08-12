@@ -11,14 +11,16 @@ modified_by:
   name: Linode
 published: 'Tuesday, November 13th, 2012'
 title: 'Apache Tomcat on Ubuntu 12.04 (Precise Pangolin)'
+external_resources:
+ - '[Tomcat Home Page](http://tomcat.apache.org/)'
+ - '[Tomcat FAQ](http://wiki.apache.org/tomcat/FAQ)'
 ---
 
 Apache Tomcat is an open source software implementation of the Java Servlet and Java Server Pages technologies. You'll run applications within Tomcat using the OpenJDK implementation of the Java development environment.
 
 Before following this guide, ensure that your system is up to date and that you have completed the [getting started guide](/docs/getting-started/). If you are new to Linux server administration, we recommend reviewing our [beginner's guide](/docs/beginners-guide/) and the article concerning [systems administration basics](/docs/using-linux/administration-basics).
 
-Prerequisites
--------------
+## Prerequisites
 
 Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_setting-the-hostname). Issue the following commands to make sure it is set properly:
 
@@ -32,8 +34,7 @@ You should also make sure your system is up to date. Enter the following command
     apt-get update
     apt-get upgrade
 
-Install Apache Tomcat
----------------------
+## Install Apache Tomcat
 
 To install Tomcat, issue the following command:
 
@@ -53,8 +54,7 @@ Tomcat should now be totally functional, following installation and your next sy
     /etc/init.d/tomcat6 stop
     /etc/init.d/tomcat6 restart
 
-Test and Use Tomcat
--------------------
+## Test and Use Tomcat
 
 You can test your Tomcat installation by pointing your browser at `http://[yourdomain-or-ip-address]:8080/`. By default, files are located in the `/usr/share/tomcat6` directory. To configure the admin area, you'll need to add the following lines to the end of your `tomcat-users.xml` file, substituting your own username and password. Make sure you keep the "manager" role.
 
@@ -62,7 +62,7 @@ You can test your Tomcat installation by pointing your browser at `http://[yourd
 /etc/tomcat6/tomcat-users.xml
 :   ~~~ xml
     <role rolename="manager"/>
-    <user username="squire" password="ducklingtonmorris" roles="manager"/>
+    <user username="squire" password="examplemorris" roles="manager"/>
     ~~~
 
 Issue the following command to restart the Tomcat server, which will allow this change to take effect:
@@ -70,14 +70,3 @@ Issue the following command to restart the Tomcat server, which will allow this 
     /etc/init.d/tomcat6 restart
 
 Congratulations! You know have a working Apache Tomcat installation.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Tomcat Home Page](http://tomcat.apache.org/)
-- [Tomcat FAQ](http://wiki.apache.org/tomcat/FAQ)
-
-
-

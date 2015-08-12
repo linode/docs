@@ -1,7 +1,7 @@
 ---
 author:
     name: Linode
-    email: rarlan@linode.com
+    email: docs@linode.com
 description: 'Install "LEMP," an application stack using Nginx, MariaDB, and PHP with fastcgi for CentOS 7'
 keywords: 'nginx,lemp,php,fastcgi,linux,web applications, CentOS'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

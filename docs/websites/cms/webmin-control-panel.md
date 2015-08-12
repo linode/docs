@@ -11,6 +11,12 @@ modified_by:
   name: Alex Fornuto
 published: 'Wednesday, October 8th, 2014'
 title: Webmin Control Panel
+external_resources:
+ - '[Webmin Home Page](http://www.webmin.com/)'
+ - '[Webmin Documentation](http://doxfer.com/Webmin)'
+ - '[Webmin Modules](http://doxfer.com/Webmin/Modules)'
+ - '[Webmin FAQ](http://www.webmin.com/faq.html)'
+ - '[Webmin Tutorials](http://doxfer.com/Webmin/Tutorials)'
 ---
 
 Webmin is a web interface that allows you to manage configuration files and reload programs without needing to use SSH. It is a popular alternative to administration panels such as cPanel or Plesk, and contains many of the features that make them popular. Modules and plugins expand Webmin's functionality and can be found for many popular packages like the [Apache web server](/docs/web-servers/apache/) and [Postfix](/docs/email/postfix/). Many third-party modules exist for different use cases, which contribute to the flexibility of the Webmin control panel.
@@ -18,7 +24,7 @@ Webmin is a web interface that allows you to manage configuration files and relo
 Installing Webmin is straightforward, however you may wish to consult the documentation contained at the end of this document for additional information on using Webmin to manage your system.
 
 
-# Prerequisites
+## Prerequisites
 
 - This guide is written for a Linode running Debian 7, but is also compatible with Ubuntu 14.04.
 
@@ -32,7 +38,7 @@ Installing Webmin is straightforward, however you may wish to consult the docume
         apt-get update
         apt-get upgrade
 
-## Set the Hostname
+### Set the Hostname
 
 Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#ubuntu--debian). Issue the following commands to make sure it is set properly:
 
@@ -41,7 +47,7 @@ Before you begin installing and configuring the components described in this gui
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-# Installing Webmin
+## Installing Webmin
 
 Once you have satisfied all dependencies, you will need to download the Webmin package to your Linode.
 
@@ -75,20 +81,6 @@ For security reasons, Webmin generates a self-signed SSL certificate for itself 
 
 You will be presented with a login screen; enter your root user credentials.
 
-# Configuring Webmin
+## Configuring Webmin
 
 We recommend you change the port Webmin runs on to something other than 10000. To do this, select the "Webmin" tab from the menu on the left and click "Webmin Configuration" from the submenu. Select "Ports and Addresses" from the control panel, and change the "Listen on Port" to a port that you will remember. When you click the "Save" button, Webmin will change the port it runs on and redirect you to the new page. You are now free to configure the rest of your services with Webmin!
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Webmin Home Page](http://www.webmin.com/)
-- [Webmin Documentation](http://doxfer.com/Webmin)
-- [Webmin Modules](http://doxfer.com/Webmin/Modules)
-- [Webmin FAQ](http://www.webmin.com/faq.html)
-- [Webmin Tutorials](http://doxfer.com/Webmin/Tutorials)
-
-
-

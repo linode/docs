@@ -1,7 +1,7 @@
 ---
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Use the FlatPress blogging tool to manage your blog and manage web content.'
 keywords: 'flatpress,cms,php,content management,content management systems'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -34,25 +34,25 @@ On CentOS and Fedora systems issue the following commands to ensure your system'
     /etc/init.d/httpd start 
     chkconfig --levels 235 httpd on 
 
-For the purpose of this guide we will assume that you have virtual hosting configured for the domain `ducklington.org` with all publicly accessible resources located in the document root `/srv/www/ducklington.org/public_html/`. In this document you will install FlatPress into this document root. Modify all of the instructions below to agree with the architecture of your deployment.
+For the purpose of this guide we will assume that you have virtual hosting configured for the domain `example.com` with all publicly accessible resources located in the document root `/srv/www/example.com/public_html/`. In this document you will install FlatPress into this document root. Modify all of the instructions below to agree with the architecture of your deployment.
 
 Install FlatPress
 -----------------
 
 This document contains specific instructions for installing version 0.909.1 of FlatPress. Please check the [upstream](http://www.flatpress.org/home/) source to confirm that this is the most up to date version of the software and that there are no vulnerabilities or bugs. Issue the following sequence of commands to download, extract, move the FlatPress files to your web server's document root, and properly configure file permissions:
 
-    mkdir -p /srv/www/ducklington.org/src/
-    cd /srv/www/ducklington.org/src/
+    mkdir -p /srv/www/example.com/src/
+    cd /srv/www/example.com/src/
     wget http://downloads.sourceforge.net/project/flatpress/flatpress-0.909.1-arioso.tar.bz2
     tar -xjf flatpress-0.909.1-arioso.tar.bz2 
     mv flatpress flatpress-0.909.1
-    cp -R flatpress-0.909.1/* /srv/www/ducklington.org/public_html/
-    chmod 777 /srv/www/ducklington.org/public_html/fp-content/
+    cp -R flatpress-0.909.1/* /srv/www/example.com/public_html/
+    chmod 777 /srv/www/example.com/public_html/fp-content/
 
-Now visit `http://ducklington.org/setup.php` in your web browser and follow the setup procedure provided by the FlatPress web based interface. When the setup process has completed, issue the following commands to remove the setup files:
+Now visit `http://example.com/setup.php` in your web browser and follow the setup procedure provided by the FlatPress web based interface. When the setup process has completed, issue the following commands to remove the setup files:
 
-    rm /srv/www/ducklington.org/public_html/setup.php
-    rm -rf /srv/www/ducklington.org/public_html/setup/
+    rm /srv/www/example.com/public_html/setup.php
+    rm -rf /srv/www/example.com/public_html/setup/
 
 Congratulations! You have now successfully deployed FlatPress.
 

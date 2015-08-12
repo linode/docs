@@ -1,7 +1,8 @@
 ---
+deprecated: true
 author:
   name: Stan Schwertly
-  email: sschwertly@linode.com
+  email: docs@linode.com
 description: 'How to set up an online store using the open source osCommerce system on Debian 5 (Lenny).'
 keywords: 'osCommerce,Debian,Store,Ecommerce'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -34,7 +35,7 @@ Before we begin installing osCommerce, we'll need to install some additional PHP
 
 Installing osCommerce is straightforward and simple. `cd` into your document root directory and download the latest version of osCommerce. You can find the latest version available on [the osCommerce website](http://www.oscommerce.com/solutions/downloads). Run the following commands to install osCommerce in the document root of your website:
 
-    cd /srv/www/bucknell.net/public_html
+    cd /srv/www/example.com/public_html
     wget http://www.oscommerce.com/ext/oscommerce-2.2rc2a.zip
     unzip oscommerce-2.2rc2a.zip
     mv oscommerce-2.2rc2a/catalog/* .
@@ -53,18 +54,18 @@ Lastly, change the permissions on the following two `configure.php` files to all
 
 ### Web Configuration
 
-At this point you can finish the rest of the installation process through the web. Point your browser to the domain or IP of the osCommerce install and append `/install/` to the end. In our example the URL would be `http://www.bucknell.net/install/`. You'll be prompted to fill in your database details. Use "localhost" for the address of the database server, and the credentials from the user and database we created above. The rest of the installation process is self explanatory. After the installation you'll be able to see your store as well as the administrative interface.
+At this point you can finish the rest of the installation process through the web. Point your browser to the domain or IP of the osCommerce install and append `/install/` to the end. In our example the URL would be `http://www.example.com/install/`. You'll be prompted to fill in your database details. Use "localhost" for the address of the database server, and the credentials from the user and database we created above. The rest of the installation process is self explanatory. After the installation you'll be able to see your store as well as the administrative interface.
 
 ### Post Installation
 
 After the installation, certain files need to be removed or renamed for security reasons. First, we need to remove the installation folder:
 
-    rm -rf /srv/www/bucknell.net/public_html/install
+    rm -rf /srv/www/example.com/public_html/install
 
 Change the permissions on `configure.php` to prevent security issues:
 
-    chmod 644 /srv/www/bucknell.net/public_html/includes/configure.php
-        chmod 644 /srv/www/bucknell.net/public_html/admin/includes/configure.php
+    chmod 644 /srv/www/example.com/public_html/includes/configure.php
+        chmod 644 /srv/www/example.com/public_html/admin/includes/configure.php
 
 Change the permissions of the `images` and `graphs` directory to be accessible by the server:
 
@@ -83,16 +84,16 @@ SSL Certificates
 You may want to install a commercial SSL certificate on your store to encrypt the data sent from your customer to your server. After [Obtaining a Commercial SSL Certificate](/docs/security/ssl/obtaining-a-commercial-ssl-certificate), you'll need to make a couple of changes to your `includes/configure.php` file. Below is an example section from that file that highlights the changes you need to make:
 
 {: .file-excerpt }
-/srv/www/bucknell.net/public\_html/includes/configure.php
+/srv/www/example.com/public\_html/includes/configure.php
 :   ~~~ php
     // Define the webserver and path parameters
     // * DIR_FS_* = Filesystem directories (local/physical)
     // * DIR_WS_* = Webserver directories (virtual/URL)
-    define('HTTP_SERVER', 'http://www.bucknell.net'); // eg, http://localhost - should not be empty for productive servers
-    define('HTTPS_SERVER', 'https://bucknell.net'); // eg, https://localhost - should not be empty for productive servers
+    define('HTTP_SERVER', 'http://www.example.com'); // eg, http://localhost - should not be empty for productive servers
+    define('HTTPS_SERVER', 'https://example.com'); // eg, https://localhost - should not be empty for productive servers
     define('ENABLE_SSL', true); // secure webserver for checkout procedure?
-    define('HTTP_COOKIE_DOMAIN', 'www.bucknell.net');
-    define('HTTPS_COOKIE_DOMAIN', 'bucknell.net);
+    define('HTTP_COOKIE_DOMAIN', 'www.example.com');
+    define('HTTPS_COOKIE_DOMAIN', 'example.com);
     define('HTTP_COOKIE_PATH', '/');
     define('HTTPS_COOKIE_PATH', '/');
     define('DIR_WS_HTTP_CATALOG', '/');

@@ -1,7 +1,7 @@
 ---
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: Basic setup and configuration
 keywords: 'puppet installation,puppet,configuration change management,server automation'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -11,6 +11,9 @@ modified_by:
   name: Linode
 published: 'Sunday, June 13th, 2010'
 title: Basic Puppet Setup and Configuration
+external_resources:
+ - '[Puppet Labs Home Page](http://www.puppetlabs.com/)'
+ - '[Managing and Automating Systems Configuration with Puppet](/docs/application-stacks/puppet/automation)'
 ---
 
 Puppet is an open-source tool that helps system administrators manage server configurations. Puppet makes it easy to automate and standardize configurations across multiple Linodes or other servers, for both the front end and the backend. You can update configurations on a per-domain basis, which is useful in both large and small deployments.
@@ -19,8 +22,7 @@ Puppet is also very useful if you're running a collection of servers with differ
 
 Puppet uses the client/server model. The master server runs `puppetmasterd`, which stores the configuration description and resource files for several server nodes, while the clients run `puppetd`. The client servers regularly connect to the master server to synchronize their configurations and report any local changes back to the central nodes. It's also possible to run just a single client, which checks in with the master node either at specified intervals, or with a manual *pull* operation.
 
-Getting Started
----------------
+## Getting Started
 
 Before you dive into Puppet, you should complete the [Getting Started Guide](/docs/getting-started/).
 
@@ -28,8 +30,7 @@ If you're new to Linux systems administration, we also recommend reviewing the g
 
 This document covers the installation and configuration of Puppet. Once you've finished the installation, head over to the [Manage and Automate Systems Configuration with Puppet](/docs/application-stacks/puppet/automation) article to learn how to use Puppet effectively.
 
-Installing Puppetmaster
------------------------
+## Installing Puppetmaster
 
 For most situations, we recommend that you install Puppet from the package for your operating system. If you need access to the latest features, you can install it from source instead.
 
@@ -82,8 +83,7 @@ When you install or upgrade Puppet, remember that the Puppetmaster component *mu
 
         touch /etc/puppet/manifests/site.pp     
 
-Installing the Puppet Client
-----------------------------
+## Installing the Puppet Client
 
 You can install the Puppet client on as many Linodes or other servers as you want to manage with Puppet. When you're ready to upgrade the Puppet client, make sure you upgrade Puppetmaster first.
 
@@ -122,8 +122,7 @@ You can install the Puppet client on as many Linodes or other servers as you wan
 
         yum install puppet     
 
-Configuring Puppet
-------------------
+## Configuring Puppet
 
 This section provides instructions for configuring your new Puppet installation.
 
@@ -185,14 +184,3 @@ Next, you'll need to set up the SSL certificate on the client machine. Puppet cl
 The new Puppet client node will now be able to connect to the Puppetmaster node. Congratulations! You have successfully installed and configured the Puppet configuration change management framework.
 
 To learn more about using Puppet, please review our [Managing and Automating Systems Configuration with Puppet](/docs/application-stacks/puppet/automation) guide.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Puppet Labs Home Page](http://www.puppetlabs.com/)
-- [Managing and Automating Systems Configuration with Puppet](/docs/application-stacks/puppet/automation)
-
-
-

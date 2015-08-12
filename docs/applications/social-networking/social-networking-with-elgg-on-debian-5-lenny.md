@@ -1,7 +1,7 @@
 ---
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Niche and community social networking with Elgg.'
 keywords: 'social networking,lamp,elgg,elgg debian lenny'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -44,7 +44,7 @@ Run the following command to restart the Apache Web server so that `mod_rewrite`
 
     /etc/init.d/apache2 restart
 
-You're now ready to install Elgg. For the purposes of this guide, Elgg will be installed at the root level of an Apache virtual host. The `DocumentRoot` for the virtual host will be located at `/srv/www/bucknell.com/public_html/` and the site will be located at `http://bucknell.com/`. You will need to substitute these paths with the paths that you comfigured in your Elgg virtual host.
+You're now ready to install Elgg. For the purposes of this guide, Elgg will be installed at the root level of an Apache virtual host. The `DocumentRoot` for the virtual host will be located at `/srv/www/example.com/public_html/` and the site will be located at `http://example.com/`. You will need to substitute these paths with the paths that you comfigured in your Elgg virtual host.
 
 Installing Elgg
 ---------------
@@ -53,21 +53,21 @@ This document is written against version 1.7 of the Elgg package. Consult the [E
 
 Enter the directory above your `DocumentRoot` and download the latest version of the application. Issue the following two commands:
 
-    cd /srv/www/bucknell.com/
+    cd /srv/www/example.com/
     wget http://elgg.org/getelgg.php?forward=elgg-1.7.zip
 
 You will need to decompress and extract the Elgg files from the archive, and then move them into the `DocumentRoot` root for your host. Issue the following two commands to accomplish this:
 
     unzip elgg-1.7.zip
-    mv /srv/www/bucknell.com/elgg-1.7/* /srv/www/bucknell.com/public_html/
+    mv /srv/www/example.com/elgg-1.7/* /srv/www/example.com/public_html/
 
-Elgg requires a `data/` directory that exists outside of the publicly accessible `DocumentRoot` to store user submitted content. For the purposes of this guide, this directory is located at `/srv/www/bucknell.net/data/`. To create this directory, issue the following command:
+Elgg requires a `data/` directory that exists outside of the publicly accessible `DocumentRoot` to store user submitted content. For the purposes of this guide, this directory is located at `/srv/www/example.com/data/`. To create this directory, issue the following command:
 
-    mkdir /srv/www/bucknell.com/data/
+    mkdir /srv/www/example.com/data/
 
 The web server needs to be able to write to the `data/` directory; issue the following command to allow this:
 
-    chmod 777 /srv/www/bucknell.com/data/
+    chmod 777 /srv/www/example.com/data/
 
 Before you can begin to configure Elgg, you will need to create a MySQL username and password as well as a database for Elgg. You should have created a MySQL database as part of the [LAMP setup process](/docs/lamp-guides/debian-5-lenny/), but you can also [configure additional databases and user credentials](/docs/databases/mysql/debian-5-lenny#using_mysql) at any time.
 
@@ -75,13 +75,13 @@ Before you can begin to configure Elgg, you will need to create a MySQL username
 
 Elgg has an automated installation process; however, before you begin, several values must be set in Elgg's `settings.php` file. Issue the following commands, to duplicate the example file provided by the Elgg developers:
 
-    cd /srv/www/bucknell.com/public_html/engine
+    cd /srv/www/example.com/public_html/engine
     cp settings.example.php settings.php
 
 To configure the database connections, you'll need to edit the file in your preferred text editor and configure the following section. An example of the "standard configuration" follows:
 
 {: .file-excerpt }
-/srv/www/bucknell.com/public\_html/engine/settings.php
+/srv/www/example.com/public\_html/engine/settings.php
 :   ~~~ php
     // Database username
           $CONFIG->dbuser = 'elggdbaccess';
@@ -99,20 +99,20 @@ To configure the database connections, you'll need to edit the file in your pref
     // Database table prefix
     // If you're sharing a database with other applications, 
     // you will want to use this to differentiate Elgg's tables.
-            $CONFIG->db prefix = 'elgg_bucknell_';
+            $CONFIG->db prefix = 'elgg_example_';
     ~~~
 
 Replace the relevant information in your config with the credentials for your database. The `dbhost` will be `localhost` unless you're running the database server on a [different machine](/docs/databases/mysql/standalone-mysql-server).
 
 ### Using the Elgg Installation Process
 
-Now visit the Elgg home page. In our example, this is located at `http://bucknell.com/`. You'll see an error presenting you with code needed for the `.htaccess` file. Copy this example `.htaccess` into a new `.htaccess` file in the `DocumentRoot` directory.
+Now visit the Elgg home page. In our example, this is located at `http://example.com/`. You'll see an error presenting you with code needed for the `.htaccess` file. Copy this example `.htaccess` into a new `.htaccess` file in the `DocumentRoot` directory.
 
-Edit the `/srv/www/bucknell.com/.htaccess` file, and paste the content from the Elgg installation process.
+Edit the `/srv/www/example.com/.htaccess` file, and paste the content from the Elgg installation process.
 
 When you've saved this file, refresh the page and you'll be presented with the "System Settings" page. Here you will be required to fill out several fields including the name of your site, the site's official email address, and the site URL, among other things. On this page, Elgg will also ask for the full path to the "data" folder that you created during the installation process. In our example, the path to this directory is as follows:
 
-    /srv/www/bucknell.com/data/
+    /srv/www/example.com/data/
 
 Elgg allows you to configure several additional options, including the default language, default access permissions, and an option to turn on the debugging mode. Alter any values as you see fit. When you select "Save", the process will continue and allow you to create an administrative account. When this is complete, Elgg is fully installed and you can begin to customize and develop your site. Congratulations, you now have the beginnings of your very own independent, self-hosted social networking site.
 

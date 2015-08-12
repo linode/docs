@@ -1,7 +1,7 @@
 ---
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Getting started with ejabberd, an instant messaging server written in Erlang/OTP on CentOS 5.'
 keywords: 'ejabberd,ejabberd on linux,real-time messaging,xmpp server,collaboration software,chat software,linux jabber server'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -11,40 +11,42 @@ modified_by:
   name: Amanda Folson
 published: 'Tuesday, December 8th, 2009'
 title: Instant Messaging Services with ejabberd on CentOS 5
+external_resources:
+ - '[Ejabberd Community Site](http://www.ejabberd.im/)'
+ - '[XMPP Standards Foundation](http://xmpp.org/)'
+ - '[XMPP Client Software](http://xmpp.org/software/clients.shtml)'
 ---
 
 Ejabberd, the "Erlang Jabber Daemon," is an extensible, flexible and very high performance XMPP server written in the Erlang programming language. With a web-based interface and broad support for [XMPP standards](http://xmpp.org/), ejabberd is an ideal general-use and multi-purpose XMPP server. Although ejabberd is considered "heavyweight" by some, mostly due to the requirements of the Erlang runtimes, it is incredibly robust and can scale to support heavy loads. It even includes support for hosting multiple domains virtually.
 
 This installation process assumes that you have a working installation of CentOS 5.4, that you've followed the steps in the [getting started](/docs/getting-started/) guide, and that you are connected to your Linode via SSH as the root user. Once you've completed these requirements we can begin with the installation process.
 
-XMPP/Jabber Basics
-------------------
+## XMPP/Jabber Basics
 
 Though you can successfully run an XMPP server with only a passing familiarity of the way the XMPP network and system works, understanding the following basic concepts will be helpful:
 
--   The *JID* or "Jabber ID" is the unique identifier for a user in the XMPP network. It often looks like an email address and contains the username that identifies a specific user on a server, the hostname that identifies the server, and a resource that identifies where a given user is logged in from. The resource is optional, and is often safely omitted or ignored for most users. In following example, "squire" is the username, "ducklington.org" is the hostname, and "/office" is the resource.
+-   The *JID* or "Jabber ID" is the unique identifier for a user in the XMPP network. It often looks like an email address and contains the username that identifies a specific user on a server, the hostname that identifies the server, and a resource that identifies where a given user is logged in from. The resource is optional, and is often safely omitted or ignored for most users. In following example, "squire" is the username, "example.com" is the hostname, and "/office" is the resource.
 
-        squire@ducklington.org/office
+        squire@example.com/office
 
     Again, the resource is optional; although XMPP allows a single JID to be connected to the server from multiple machines (i.e. resources), the resource adds a useful amount of specificity.
 
 -   The XMPP system is federated by nature. Users with accounts on one server--if the server administrators allow it--can communicate with users on other servers. Without a centralized server, every XMPP server maintains the accounts and serves as the communication gateway for their own users. In the XMPP system there is no single point of failure, however each server administrator can decide how their server is going to participate in the federated network. For instance, to federate with Google's "GTalk" XMPP network, server administrators need to have server-to-server (s2s) SSL/TLS encryption enabled, while other servers don't always require this.
 -   XMPP takes advantage of ["SRV" DNS Records](/docs/dns-guides/introduction-to-dns) to support the resolution of domains to the servers which provide DNS records.
 
-Set the Hostname
-----------------
+## Set the Hostname
 
 Run the following commands the set the hostname of your Linode:
 
-    echo "bucknell" > /etc/hostname
+    echo "example" > /etc/hostname
     hostname -F /etc/hostname
 
-In this case, the hostname will be set to "bucknell". Along with this, you will need to open the `/etc/sysconfig/network` file and change the `HOSTNAME` line to reflect your newly set hostname:
+In this case, the hostname will be set to "example". Along with this, you will need to open the `/etc/sysconfig/network` file and change the `HOSTNAME` line to reflect your newly set hostname:
 
 {: .file-excerpt }
 /etc/sysconfig/network
 :   ~~~
-    NETWORKING=yes NETWORKING_IPV6=no HOSTNAME=bucknell
+    NETWORKING=yes NETWORKING_IPV6=no HOSTNAME=example
     ~~~
 
 Finally, open `/etc/hosts` and put in your IP address, fully qualified domain name (FQDN), and hostname. See the example below:
@@ -52,11 +54,10 @@ Finally, open `/etc/hosts` and put in your IP address, fully qualified domain na
 {: .file-excerpt }
 /etc/hosts
 :   ~~~
-    123.123.123.123 bucknell.com bucknell
+    123.123.123.123 example.com example
     ~~~
 
-Install ejabberd
-----------------
+## Install ejabberd
 
 The packages required to install ejabberd and it's dependencies are not available in the standard CentOS repositories. As a result, in order to install ejabberd, we must install the "[EPEL](https://fedoraproject.org/wiki/EPEL)" system. EPEL, or "Extra Packages for Enterprise Linux," is a product of the Fedora Project that attempts to provide Enterprise-grade software that's more current than what is typically available in the CentOS repositories. Enable EPEL with the following command:
 
@@ -67,8 +68,7 @@ Issue the following command to install ejabberd:
     yum update
     yum install ejabberd 
 
-Configure ejabberd
-------------------
+## Configure ejabberd
 
 Ejabberd's configuration files are written in Erlang syntax, which might be difficult to comprehend. Thankfully, the modifications we need to make are relatively minor and straightforward. The primary ejabberd configuration file is located at `/etc/ejabberd/ejabberd.cfg`, for this version. We'll cover each relevant option in turn.
 
@@ -79,16 +79,16 @@ Some users will need the ability to administer the XMPP server remotely. By defa
 {: .file-excerpt }
 /etc/ejabberd/ejabberd.cfg
 :   ~~~
-    {acl, admin, {user, "admin", "bucknell.com"}}.
+    {acl, admin, {user, "admin", "example.com"}}.
     ~~~
 
-In Erlang, comments begin with the `%` character, and the access control list segment contains information in the following form: `{user, "USERNAME", "HOSTNAME"}`. The following examples correspond to the users with the JIDs of `admin@bucknell.com` and `squire@bucknell.com`. You only need to specify one administrator, but you can add more than one administrator simply by adding more lines, as shown below:
+In Erlang, comments begin with the `%` character, and the access control list segment contains information in the following form: `{user, "USERNAME", "HOSTNAME"}`. The following examples correspond to the users with the JIDs of `admin@example.com` and `squire@example.com`. You only need to specify one administrator, but you can add more than one administrator simply by adding more lines, as shown below:
 
 {: .file-excerpt }
 /etc/ejabberd/ejabberd.cfg
 :   ~~~
-    {acl, admin, {user, "admin", "bucknell.com"}}.
-    {acl, admin, {user, "squire", "bucknell.com"}}.
+    {acl, admin, {user, "admin", "example.com"}}.
+    {acl, admin, {user, "squire", "example.com"}}.
     ~~~
 
 All users specified in this manner have full administrative access to the server, through both the XMPP and web-based interfaces. You will have to create your administrative users (as described below) before they can log in.
@@ -100,15 +100,15 @@ A single ejabberd instance can provide XMPP services for multiple domains at onc
 {: .file-excerpt }
 /etc/ejabberd/ejabberd.cfg
 :   ~~~
-    {hosts, ["bucknell.com", "localhost"]}.
+    {hosts, ["example.com", "localhost"]}.
     ~~~
 
-In the following example, ejabberd has been configured to host a number of additional domains. In this case, these domains are "squire.ducklington.com," "ducklington.com," and "bampton.com"
+In the following example, ejabberd has been configured to host a number of additional domains. In this case, these domains are "squire.example.com," "example.com," and "bampton.com"
 
 {: .file-excerpt }
 /etc/ejabberd/ejabberd.cfg
 :   ~~~
-    {hosts, ["squire.ducklington.com", "ducklington.com", "bucknell.com", "localhost"]}.
+    {hosts, ["squire.example.com", "example.com", "example.com", "localhost"]}.
     ~~~
 
 You can specify any number of hostnames in the host list, but you should be careful to avoid inserting a line break as this will cause ejabberd to fail.
@@ -142,8 +142,7 @@ The `ejabberd.cfg` file is complete and well commented, and from this point forw
 
 By default, MUCs or Multi-User-Chats (chatrooms) are accessible on the "conference.[hostname]" subdomain. If you want the public to be able to access MUCs on your domain, you need to create an "A Record" pointing the `conference` hostname (eg. subdomain) to the IP address where the ejabberd instance is running.
 
-Using Ejabberd
---------------
+## Using Ejabberd
 
 Once installed, the use and configuration of ejabberd is uncomplicated. To start, stop, or restart the server, issue the appropriate command to the `/etc/init.d/ejabberd` script:
 
@@ -157,21 +156,21 @@ Issue the following command to ensure that ejabberd starts following the next bo
 
 By default, ejabberd is configured to disallow "in-band-registrations," which prevent Internet users from getting accounts on your server without your consent. To register a new user, issue a command in the following form:
 
-    ejabberdctl register lollipop ducklington.org man
+    ejabberdctl register lollipop example.com man
 
-In this example, `lollipop` is the username, `ducklington.org` is the domain, and `man` is the password. This will create a JID for `lollipop@ducklington.org` with the password of "man." Use this form to create the administrative users specified above.
+In this example, `lollipop` is the username, `example.com` is the domain, and `man` is the password. This will create a JID for `lollipop@example.com` with the password of "man." Use this form to create the administrative users specified above.
 
 To remove a user from your server, issue a command in the following form:
 
-    ejabberdctl unregister lollipop ducklington.org
+    ejabberdctl unregister lollipop example.com
 
-The above command would unregister the `lollipop@ducklington.org` account from the server.
+The above command would unregister the `lollipop@example.com` account from the server.
 
 To set or reset the password for a user, issue the following command:
 
-    ejabberdctl set-password lollipop ducklington.org morris
+    ejabberdctl set-password lollipop example.com morris
 
-This command changes the password for the `lollipop@ducklington.org` user to `morris`.
+This command changes the password for the `lollipop@example.com` user to `morris`.
 
 To back up ejabberd's database, issue the following command:
 
@@ -183,10 +182,9 @@ This command dumps the contents of the internal ejabberd database into a file lo
 
 For more information about the `ejabberdctl` command, issue `ejabberdctl help` or `man ejabberdctl`.
 
-If you would prefer to administer your ejabberd instance via the web-based interface, log in to `http://ducklington.org:5280/admin/`, where "ducklington.org" is the domain where ejabberd is running. Log in with the full JID and password of one of the administrators specified in the `/etc/ejabberd/ejabberd.cfg` file.
+If you would prefer to administer your ejabberd instance via the web-based interface, log in to `http://example.com:5280/admin/`, where "example.com" is the domain where ejabberd is running. Log in with the full JID and password of one of the administrators specified in the `/etc/ejabberd/ejabberd.cfg` file.
 
-XMPP Federation and DNS
------------------------
+## XMPP Federation and DNS
 
 To ensure that your ejabberd instance will federate properly with the rest of the XMPP network, particularly with Google's "GTalk" service (i.e. the ["@gmail.com](mailto:"@gmail.com)" chat tool) you must set the SRV records for your domain to point to the server where the ejabberd instance is running. We need three records, which can be created in the DNS management tool of your choice:
 
@@ -194,21 +192,8 @@ To ensure that your ejabberd instance will federate properly with the rest of th
 2.  Service: `_xmpp-client` Protocol: TCP Port: 5222
 3.  Service: `_jabber` Protocol: TCP Port: 5269
 
-The "target" of the SRV record should point to the publicly routable hostname for that machine (e.g. "bucknell.example.com"). The priority and weight should both be set to `0`.
+The "target" of the SRV record should point to the publicly routable hostname for that machine (e.g. "example.example.com"). The priority and weight should both be set to `0`.
 
-Troubleshooting
----------------
+## Troubleshooting
 
 If you're having problems getting ejabberd to start, or are getting obscure errors on the console, don't be discouraged; the errors generated by Erlang are often abstruse at best. The logs for ejabberd are located in the `/opt/ejabberd-2.1.0_rc2/logs/` directory. If you're getting error messages look in these files. Additionally, if ejabberd crashes, the "image dump" of Erlang will be saved in this directory. Begin your investigations for error messages in these files.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Ejabberd Community Site](http://www.ejabberd.im/)
-- [XMPP Standards Foundation](http://xmpp.org/)
-- [XMPP Client Software](http://xmpp.org/software/clients.shtml)
-
-
-

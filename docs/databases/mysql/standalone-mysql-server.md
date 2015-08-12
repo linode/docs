@@ -2,7 +2,7 @@
 deprecated: true
 author:
   name: Stan Schwertly
-  email: sschwertly@linode.com
+  email: docs@linode.com
 description: 'Deploying a standalone MySQL database server on a separate Linux VPS for increased application performance.'
 keywords: 'mysql,standalone myql,separate mysql,wordpress'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

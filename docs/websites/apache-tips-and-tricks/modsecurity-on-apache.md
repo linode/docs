@@ -1,7 +1,7 @@
 ---
 author:
   name: Chris Ciufo
-  email: cciufo@linode.com
+  email: docs@linode.com
 description: 'mod_security'
 keywords: 'apache, mod_security'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -11,14 +11,17 @@ modified_by:
   name: Linode
 published: 'Thursday, November 10th, 2011'
 title: 'mod_security on Apache'
+external_resources:
+ - '[ModSecurity Home Page](http://www.modsecurity.org)'
+ - '[OWASP Home Page](https://www.owasp.org/index.php/Main_Page)'
+ - '[OWASP ModSecurity Core Rule Set Wiki](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project#tab=Installation)'
 ---
 
 ModSecurity is a web application firewall for the Apache web server. In addition to providing logging capabilities, ModSecurity can monitor the HTTP traffic in real time in order to detect attacks. ModSecurity also operates as a web intrusion detection tool, allowing you to react to suspicious events that take place at your web systems.
 
-Installing ModSecurity
-----------------------
+## Installing ModSecurity
 
-Before you install ModSecurity, you'll want to have a LAMP stack set up on your Linode. For instructions, see the [LAMP Guides](https://library.linode.com/lamp-guides).
+Before you install ModSecurity, you'll want to have a LAMP stack set up on your Linode. For instructions, see the [LAMP Guides](/docs/websites/lamp/).
 
 ### Ubuntu / Debian
 
@@ -34,7 +37,7 @@ ModSecurity is now installed on your Linode.
 
 To install ModSecurity on a Linode running CentOS or Fedora, perform the following steps:
 
-1.  Install the GCC compiler and the dependancies by entering the following commands, one by one:
+1.  Install the GCC compiler and the dependencies by entering the following commands, one by one:
 
         sudo yum install mod_security
 
@@ -44,15 +47,13 @@ To install ModSecurity on a Linode running CentOS or Fedora, perform the followi
 
 ModSecurity is now installed on your Linode.
 
-OWASP ModSecurity Core Rule Set
--------------------------------
+## OWASP ModSecurity Core Rule Set
 
 For a base configuration, we are going to use the OWASP core rule set. Installation instructions are in the SpiderLabs GitHub project here:
 
 -   <https://github.com/SpiderLabs/owasp-modsecurity-crs/blob/master/INSTALL>
 
-Configuring ModSecurity
------------------------
+## Configuring ModSecurity
 
 You'll want to use the `modsecurity_10_crs_config`, so let's copy that from the example:
 
@@ -150,15 +151,3 @@ If you would rather symbolically link those configuration files to the activated
     >     /etc/init.d/httpd restart
 
 You have successfully configured ModSecurity.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [ModSecurity Home Page](http://www.modsecurity.org)
-- [OWASP Home Page](https://www.owasp.org/index.php/Main_Page)
-- [OWASP ModSecurity Core Rule Set Wiki](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project#tab=Installation)
-
-
-

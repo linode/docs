@@ -2,7 +2,7 @@
 deprecated: true
 author:
   name: Stan Schwertly
-  email: sschwertly@linode.com
+  email: docs@linode.com
 description: 'Configuring the phpBB system for hosting web-based discussion forums on Debian 5 (Lenny).'
 keywords: 'phpBB,forum software,web applications,PHP'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -39,9 +39,9 @@ This will allow you to decompress the file you just downloaded. Using the follow
 
     tar -jxvf phpBB-3.0.7-PL1.tar.bz2
 
-Move the newly formed `phpBB3` folder into your `public_html` folder. This will make the location on your server `http://ducklington.org/phpBB3/` in the example provided by our LAMP guides. Feel free to rename the folder after you move it:
+Move the newly formed `phpBB3` folder into your `public_html` folder. This will make the location on your server `http://example.com/phpBB3/` in the example provided by our LAMP guides. Feel free to rename the folder after you move it:
 
-    mv phpBB3/ /srv/www/ducklington.org/public_html/
+    mv phpBB3/ /srv/www/example.com/public_html/
 
 This will move the phpBB software into a directory called `phpBB3`. You can move the location of the phpBB software into the top level of your `DocumentRoot`, in this case `public_html`, but phpBB can be installed in any folder you wish.
 
@@ -55,11 +55,11 @@ We now need to create the MySQL user and database that will be used by phpBB. Th
 
 We'll also need to set the following permissions on these files and folders:
 
-    cd /srv/www/ducklington.org/public_html/phpBB3/
+    cd /srv/www/example.com/public_html/phpBB3/
     chmod 666 config.php
     chmod 777 store/ cache/ files/ images/avatars/upload/
 
-Now, visit the `phpBB3` directory in your browser: In the above example, that would be `http://ducklington.org/phpBB3/`. At this point, you will be guided through the rest of the configuration by phpBB's web-based installer.
+Now, visit the `phpBB3` directory in your browser: In the above example, that would be `http://example.com/phpBB3/`. At this point, you will be guided through the rest of the configuration by phpBB's web-based installer.
 
 Configure phpBB
 ---------------
@@ -72,7 +72,7 @@ This brings us to the "Administrator Configuration" page where you can set your 
 
 Now you should be on the "Advanced Settings" page. Modify these settings as you wish. Continue following the instructions, clicking the "Proceed to next step" button. You should reach the "Congratulations" page. After completing the phpBB installation using the web-based installer, you will need to remove or rename the `install` folder and change the permissions on the `config.php` file:
 
-    cd /srv/www/ducklington.org/public_html/phpBB3/
+    cd /srv/www/example.com/public_html/phpBB3/
     rm -rf install/
     chmod 0644 config.php
 

@@ -13,9 +13,13 @@ modified_by:
   name: Alex Fornuto
 published: 'Wednesday, February 5th, 2014'
 title: Getting Started with Varnish Cache
+external_resources:
+ - '[Official Varnish Documentation](https://www.varnish-cache.org/docs)'
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $100 per published guide.*
+*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
+
+<hr>
 
 Need to handle a lot of traffic? Caching is one of the best ways to maximize the output of your Linode. The idea is your server shouldn't have to regenerate the same dynamic content from scratch every time it's accessed. Save your Linode's resources by putting a caching proxy like Varnish Cache in front of your web service to accelerate responses to HTTP requests and reduce server workload.
 
@@ -27,8 +31,7 @@ Sound good? Let's get started setting up a basic Varnish install. The examples i
 >
 > The steps in this guide are written assuming the root user is running them. If you are not logged in as Root you will need to use 'sudo' for certain steps.
 
-Installation
-------------
+## Installation
 
 1.  First update current packages and install Varnish from apt:
 
@@ -70,8 +73,7 @@ From the configuration above, we also see that Varnish is being told to store it
 
 We'll come back and edit these daemon options more later. For now, let's start configuring Varnish to cache and present our backend.
 
-Basic Configuration
--------------------
+## Basic Configuration
 
 Varnish is configured via the [Varnish Configuration Language (VCL)](https://www.varnish-cache.org/docs/3.0/reference/vcl.html). Once the configuration file is loaded, Varnish translates and compiles the VCL code into a C program that runs along side the Varnish process.
 
@@ -145,8 +147,7 @@ If we're happy with our basic Varnish set up, it's time to tell Varnish and Apac
         $ service apache2 reload
         $ service varnish restart
 
-Advanced Configuration
-----------------------
+## Advanced Configuration
 
 The VCL provides much control over how requests are cached, and it's likely you may need to make some custom modifications for your situation. Let's go over a few common VCL modifications, as well as some tips and tricks.
 
@@ -223,7 +224,7 @@ Setting up polling is easy, we do it by adding a probe section to our backend de
         }
     }
 
-These are the default settings from Varnish's documentation, so you may want to tweak them for your website. This basically says, "Go to <http://127.0.0.1:8080/> every second, and if it takes less than 34ms to respond for at least 8 of the last 10 polls, the backend is considered healthy."
+These are the default settings from Varnish's documentation, so you may want to tweak them for your website. This basically says, "Go to `http://127.0.0.1:8080/` every second, and if it takes less than 34ms to respond for at least 8 of the last 10 polls, the backend is considered healthy."
 
 If the backend fails the test, objects are served out of the cache in accordance to their grace time setting. To set this, we need to set the grace time both for the request and for the fetched object. To set grace time for the request, add this line to `vcl_recv`:
 
@@ -282,13 +283,3 @@ For reference, here is our final VCL file with all the modifications made in thi
         set beresp.grace = 1h;
     }
     ~~~
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Official Varnish Documentation](https://www.varnish-cache.org/docs)
-
-
-

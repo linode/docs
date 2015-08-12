@@ -16,15 +16,13 @@ ownCloud is an open source platform that allows easy access to files from multip
 
 Installing ownCloud on your Linode is very simple. The steps outlined below will get you up and running with a drag and drop GUI interface.
 
-Installation Prerequisites
-==========================
+## Installation Prerequisites
 
 Before you can use your Linode with ownCloud you will need to have a working LAMP (Linux, Apache, MySQL, and PHP) stack. For more information on how to create a LAMP stack on your Linode consult our [LAMP Guides](/docs/websites/lamp).
 
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](https://library.linode.com/using-linux/users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
-Installing ownCloud
-===================
+## Installing ownCloud
 
 1.  To obtain the most recent and stable application release, add the ownCloud repository to the apt source list. begin by creating the new list file:
 
@@ -62,8 +60,7 @@ Installing ownCloud
 
         sudo service apache2 reload
 
-Configure MySQL
----------------
+## Configure MySQL
 
 Since the LAMP stack utilizes MySQL, ownCloud can be configured to use this database instead of SQLite. However, you will need to create a database for ownCloud to use.
 
@@ -91,8 +88,7 @@ Since the LAMP stack utilizes MySQL, ownCloud can be configured to use this data
     
         quit
 
-Configure ownCloud
-------------------
+## Configure ownCloud
 
 1.  Connect to ownCloud in a browser using the Linode's IP address:
 
@@ -114,8 +110,7 @@ Configure ownCloud
 
     [![Accessing ownCloud.](/docs/assets/1732-owncloud-2.png)](/docs/assets/1732-owncloud-2.png)
 
-More Information
-================
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

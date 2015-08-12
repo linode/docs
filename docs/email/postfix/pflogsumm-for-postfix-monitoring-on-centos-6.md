@@ -13,18 +13,21 @@ modified_by:
   name: Linode
 published: 'Wednesday, February 5th, 2014'
 title: Pflogsumm for Postfix Monitoring on CentOS 6
+external_resources:
+ - '[Pflogsumm](http://jimsun.linxnet.com/postfix_contrib.html)'
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $100 per published guide.*
+*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
+
+<hr>
 
 Pflogsumm is a simple Perl script that monitors your [Postfix](/docs/email/postfix) mail server's activity. This guide will show you how to install Pflogsumm on CentOS 6 and configure it to send you a daily email with your mail server stats.
 
  {: .note }
 >
-> This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](https://library.linode.com/using-linux/users-and-groups) guide.
+> This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
-Prerequisites
--------------
+## Prerequisites
 
 Make sure these prerequisites are installed:
 
@@ -38,8 +41,7 @@ Perl 5.004 will most likely be installed by default. Run this command to install
 
 Finally, you will need to locate your Postfix log. On most CentOS systems, this is `/var/log/maillog` by default.
 
-Installing Pflogsumm
---------------------
+## Installing Pflogsumm
 
 In this section, you will install and configure Pflogsumm.
 
@@ -63,8 +65,7 @@ In this section, you will install and configure Pflogsumm.
 
         sudo chmod +x pflogsumm/pflogsumm.pl
 
-Testing
--------
+## Testing
 
 Test the script by running the following command. Make sure you substitute **/var/log/maillog** with your actual Postfix log location.
 
@@ -72,8 +73,7 @@ Test the script by running the following command. Make sure you substitute **/va
 
 You will see a large amount of information regarding your mail server, which we'll go over in the next section.
 
-Reading Output
---------------
+## Reading Output
 
 Your report output will contain the following information in an easy-to-read textual format perfect for email:
 
@@ -114,8 +114,7 @@ Your report output will contain the following information in an easy-to-read tex
 
 This list was taken from the [Pflogsumm](http://jimsun.linxnet.com/postfix_contrib.html) website, where you can read additional information about the output.
 
-Scheduling Reports with Cron
-----------------------------
+## Scheduling Reports with Cron
 
 Now you'll set up a Cron job to run the Pflogsumm Perl script and send the mail server stats to you as a daily email. This is great for monitoring your mail server. The example below schedules the email for 1:01 PM every day. For details on how to customize the time the email is sent, you should read the [Cron](/docs/linux-tools/utilities/cron) article.
 
@@ -139,13 +138,3 @@ root's Crontab
     > Non-root users will not have permission to access the mail log.
 
 You will now receive daily emails with your Postfix mail server stats. It's a great way to keep track of what your server is doing.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Pflogsumm](http://jimsun.linxnet.com/postfix_contrib.html)
-
-
-

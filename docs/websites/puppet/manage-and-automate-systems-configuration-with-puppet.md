@@ -1,32 +1,38 @@
 ---
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Use Puppet for configuration change management.'
 keywords: 'puppet,puppet configuration,puppet linux,configuration change management,server automation'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['application-stacks/puppet/automation/']
 modified: Monday, August 22nd, 2011
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Sunday, June 13th, 2010'
 title: Manage and Automate Systems Configuration with Puppet
+external_resources:
+ - '[Puppet Labs Home Page](http://www.puppetlabs.com/)'
+ - '[Basic Puppet Configuration](http://docs.puppetlabs.com/guides/configuring.html)'
+ - '[Puppet Manifest Language](http://docs.puppetlabs.com/guides/language_tutorial.html)'
+ - '[Puppet Dashboard Documentation](http://docs.puppetlabs.com/guides/installing_dashboard.html)'
+ - '[Puppet Recipe Directory](http://projects.puppetlabs.com/projects/puppet/wiki/Puppet_Recipes)'
+ - '[Puppet Modules](http://projects.puppetlabs.com/projects/puppet/wiki/Puppet_Modules)'
 ---
 
 Puppet is an open source "configuration change management" tool that allows users to automate and standardize the configuration of software infrastructure. Using a domain specific language for describing configuration, Puppet allows users to manage configurations in a service-oriented manner.
 
 Because of Puppet's versatility, this guide provides an overview of a number of different Puppet-based deployments. Since there is no single "right way" to integrate Puppet into your network, this document will focus on a collection of independent strategies rather than a single procedure. Before following this document, it is assumed that you have an up-to-date system, have followed our [getting started guide](/docs/getting-started/) and have installed Puppet according to our [Puppet installation guide](/docs/application-stacks/puppet/installation).
 
-Using Puppet
-------------
+## Using Puppet
 
 Puppet is a collection of tools built around a language that allows systems administrators to specify configurations, or manifests, to describe the state of a computer system. In the [Puppet installation guide](/docs/application-stacks/puppet/installation), we covered installing both the "Puppetmaster" server component and the Puppet client. This section covers a number of different methods you may use to apply Puppet manifests to your Linodes.
 
 ### Running Puppet Manually
 
-The most common way to apply Puppet manifests to a system is to use the Puppetmaster daemon (`puppetmasterd`) and Puppet client daemon (`puppetd`). However, you may also apply Puppet manifests manually using the `puppet` tool, which operates in an interactive mode but is otherwise functionally equivalent to `puppetd`. Given a Puppet manifest on the local file system located at `~/puppet/ducklington-base.pp`, issue the following command:
+The most common way to apply Puppet manifests to a system is to use the Puppetmaster daemon (`puppetmasterd`) and Puppet client daemon (`puppetd`). However, you may also apply Puppet manifests manually using the `puppet` tool, which operates in an interactive mode but is otherwise functionally equivalent to `puppetd`. Given a Puppet manifest on the local file system located at `~/puppet/example-base.pp`, issue the following command:
 
-    puppet ~/puppet/ducklington-base.pp
+    puppet ~/puppet/example-base.pp
 
 This will apply the configuration specified in the manifest to your system.
 
@@ -54,8 +60,7 @@ These options can then be added and modified in the `[puppetmasterd]` section of
 
 All Puppet files are stored in the `/etc/puppet/manifests/` directory, and Puppetmaster will look in this directory and apply the manifests as described therein. Commonly "classes," or chunks of configuration that may be shared between different systems, are located in the `/etc/puppet/manifests/classes/` directory. A series of system manifests drawing on these classes are placed in your manifest directory. Puppet manifests have the extension `.pp`.
 
-Puppet Manifests
-----------------
+## Puppet Manifests
 
 Consider the following class, which is an elaboration on the canonical example Puppet `sudo` class:
 
@@ -69,7 +74,7 @@ Consider the following class, which is an elaboration on the canonical example P
                owner => "root",
                group => "root",
                mode  => 440,
-               source => "puppet://ducklington.org/files/sudoers"
+               source => "puppet://example.com/files/sudoers"
         }
     }
     ~~~
@@ -123,25 +128,25 @@ As above, the `default` node provides a space to specify the configuration for a
 
     ## Specific Nodes
 
-    node 'fore.ducklington.org' inherits loadbalancer {
+    node 'fore.example.com' inherits loadbalancer {
         include django
         include apacheconf
         include app
         include backups
     }
 
-    node 'lb1.ducklington.org' inherits loadbalancer {
+    node 'lb1.example.com' inherits loadbalancer {
     }
 
-    node 'lollipop.ducklington.org' inherits appserverbasic {
+    node 'lollipop.example.com' inherits appserverbasic {
         include monitoring
         include backups
     }
 
-    node 'test.lollipop.ducklington.org' inherits appserverbasic {
+    node 'test.lollipop.example.com' inherits appserverbasic {
     }
 
-    node 'monitoring1.ducklington.org', 'monitoring2.ducklington.org' {
+    node 'monitoring1.example.com', 'monitoring2.example.com' {
         include monitoring
         include monitoringhub
     }
@@ -149,7 +154,7 @@ As above, the `default` node provides a space to specify the configuration for a
 
 In this example, we create several "base nodes" which each include a number of classes from the `classes/` directory. There are four specific nodes created, which specify in single quotes the names of machines. These machines are identified by a hostname, configured when the Puppetmaster node signed the certificate of the Puppet nodes. All nodes receive the `default` node configuration, the configuration specified in their description and all of the configuration options specified in the node description of the "inherited" nodes.
 
-Therefore, `fore.ducklington.org` will receive the configuration specified by the classes `nginxlb` and `monitoring` because it inherits the `loadbalancer` node configuration, as well as the `django`, `apacheconf` and `app` configuration of its own. The configuration for the remaining four hosts provide an example of how Puppet classes and node definitions can be combined to configure a diverse group of systems in a concise manner. You may also specify multiple nodes with the same configuration as in the final example.
+Therefore, `fore.example.com` will receive the configuration specified by the classes `nginxlb` and `monitoring` because it inherits the `loadbalancer` node configuration, as well as the `django`, `apacheconf` and `app` configuration of its own. The configuration for the remaining four hosts provide an example of how Puppet classes and node definitions can be combined to configure a diverse group of systems in a concise manner. You may also specify multiple nodes with the same configuration as in the final example.
 
 ### Facter
 
@@ -159,8 +164,7 @@ Facter is a tool that is installed as a dependency for Puppet. It provides detai
 
 This makes it possible to write Puppet manifests that are sensitive to the actual configuration of a given system, without needing to rewrite individual manifests for every unique system.
 
-Describing Resources with Puppet
---------------------------------
+## Describing Resources with Puppet
 
 ### Serving Files
 
@@ -171,11 +175,11 @@ While Puppet contains powerful abstractions for specifying configurations, in so
 :   ~~~
     [files]
       path /etc/puppet/files
-      allow *.ducklington.org
+      allow *.example.com
       allow 192.168.0.0/24
     ~~~
 
-In the Puppet fileserver configuration, the order of `allow` and `deny` statements does not carry any weight. Puppet will deny access to hosts by default. In this example, the only hosts that are allowed access to the server are hosts which have certificates signed for names within the `.ducklington.org` name space, and any host accessing the Puppet server with an IP in the non-public address space beginning with `192.168.` as would be the case with access to Puppet over the LAN.
+In the Puppet fileserver configuration, the order of `allow` and `deny` statements does not carry any weight. Puppet will deny access to hosts by default. In this example, the only hosts that are allowed access to the server are hosts which have certificates signed for names within the `.example.com` name space, and any host accessing the Puppet server with an IP in the non-public address space beginning with `192.168.` as would be the case with access to Puppet over the LAN.
 
 You may specify a `source` for a file object in Puppet manifests. Consider the following example:
 
@@ -183,7 +187,7 @@ You may specify a `source` for a file object in Puppet manifests. Consider the f
 Puppet Configuration Manifest
 :   ~~~ pp
     file { "/etc/httpd/conf.d":
-        source => "puppet://ducklington.org/files/web-server/httpd/conf.d",
+        source => "puppet://example.com/files/web-server/httpd/conf.d",
         recurse => "true"
     }
     ~~~
@@ -230,14 +234,13 @@ Puppet attempts to normalize the way administrators interact with all resources,
 File Path
 :   ~~~
     exec {"rsync_config":
-        command => "/usr/bin/rsync -a squire@lollipop.ducklington.org:/srv/puppet/www-config /opt/config",
+        command => "/usr/bin/rsync -a squire@lollipop.example.com:/srv/puppet/www-config /opt/config",
         unless => "/bin/test -e /opt/config/fresh",
     }
     ~~~
 This instructs Puppet to run the specified command, in this case an `rsync` command. The `unless` parameter runs tests for the existence of a file before running the command, to avoid running a command unnecessarily.
 
-Advanced Puppet Usage
----------------------
+## Advanced Puppet Usage
 
 This guide only covers the most basic of puppet configurations options. It is certainly possible to deploy much more complex systems, including the following possibilities:
 
@@ -245,18 +248,3 @@ This guide only covers the most basic of puppet configurations options. It is ce
 -   Deploy Puppetmaster with [Passenger](/docs/frameworks/): the default Puppetmaster server is based on WEBrick, which is only capable of supporting 20 or 30 puppet nodes, depending on your configuration, according the Puppet developers.
 -   You may consider using Puppet in combination with the [Linode API](http://www.linode.com/api/) and [StackScripts](http://www.linode.com/stackscripts/) to automate provisioning, deprovisioning, and configuration of Linodes.
 -   Use [Puppet's module support](http://projects.puppetlabs.com/projects/puppet/wiki/Puppet_Modules) to more easily manage applications which require more complex configurations.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Puppet Labs Home Page](http://www.puppetlabs.com/)
-- [Basic Puppet Configuration](http://docs.puppetlabs.com/guides/configuring.html)
-- [Puppet Manifest Language](http://docs.puppetlabs.com/guides/language_tutorial.html)
-- [Puppet Dashboard Documentation](http://docs.puppetlabs.com/guides/installing_dashboard.html)
-- [Puppet Recipe Directory](http://projects.puppetlabs.com/projects/puppet/wiki/Puppet_Recipes)
-- [Puppet Modules](http://projects.puppetlabs.com/projects/puppet/wiki/Puppet_Modules)
-
-
-

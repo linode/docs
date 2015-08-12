@@ -2,7 +2,7 @@
 deprecated: true
 author:
   name: Brett Kaplan
-  email: bkaplan@linode.com
+  email: docs@linode.com
 description: 'Installing Postfix with Dovecot and MySQL on Ubuntu 9.10 (Karmic).'
 keywords: 'postfix ubuntu 9.10,postfix karmic,postfix dovecot,ubuntu mail server,linux mail server'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -25,16 +25,16 @@ It is assumed that you have followed the steps outlined in our [getting started 
 Basic System Configuration
 --------------------------
 
-Edit your `/etc/hosts` file to resemble the following example, replacing "12.34.56.78" with your Linode's IP address, "plato.example.com" with your fully qualified domain name, and "plato" with your short hostname.
+Edit your `/etc/hosts` file to resemble the following example, replacing "12.34.56.78" with your Linode's IP address, "hostname.example.com" with your fully qualified domain name, and "hostname" with your short hostname.
 
 {: .file }
 /etc/hosts
 
-> 127.0.0.1 localhost.localdomain localhost 12.34.56.78 plato.example.com plato
+> 127.0.0.1 localhost.localdomain localhost 12.34.56.78 hostname.example.com hostname
 
-Set your hostname by issuing the following commands, replacing "plato" with your short hostname.
+Set your hostname by issuing the following commands, replacing "hostname" with your short hostname.
 
-    echo "plato" > /etc/hostname
+    echo "hostname" > /etc/hostname
     hostname -F /etc/hostname
 
 Edit your `/etc/apt/sources.list` file to match the following example.
@@ -373,7 +373,7 @@ Now check your /var/log/mail.log to make sure dovecot started without errors. Yo
 {: .file-excerpt }
 /var/log/mail.log
 
-> Sep 27 17:41:10 plato dovecot: Dovecot v1.0.15 starting up Sep 27 17:41:10 plato dovecot: auth-worker(default): mysql: Connected to 127.0.0.1 (mail)
+> Sep 27 17:41:10 hostname dovecot: Dovecot v1.0.15 starting up Sep 27 17:41:10 hostname dovecot: auth-worker(default): mysql: Connected to 127.0.0.1 (mail)
 
 Before testing dovecot, you must change the permissions on `/etc/dovecot/dovecot.conf` to allow the `vmail` user to access them:
 
@@ -426,9 +426,9 @@ You should see output similar to the following, with the line "250-STARTTLS" inc
     Trying 127.0.0.1...
     Connected to localhost.localdomain.
     Escape character is '^]'.
-    220 plato.example.com ESMTP Postfix (Ubuntu)
+    220 hostname.example.com ESMTP Postfix (Ubuntu)
     ehlo localhost
-    250-plato.example.com
+    250-hostname.example.com
     250-PIPELINING
     250-SIZE 30720000
     250-VRFY
@@ -472,14 +472,14 @@ After you have sent the test mail, you'll want to check your error logs to make 
 {: .file-excerpt }
 /var/log/mail.log
 
-> Sep 27 17:46:22 plato postfix/cleanup[6108]: 544A88450: message-id=\<<20100927174622.544A88450@plato.example.com>\> Sep 27 17:46:22 plato postfix/qmgr[6032]: 544A88450: from=\<<root@plato.example.com>\>, size=368, nrcpt=1 (queue active) Sep 27 17:46:22 plato postfix/pipe[6114]: 544A88450: to=\<<pparadis@example.com>\>, relay=dovecot, delay=0.04, delays=0.03/0.01/0/0.01, dsn=2.0.0, status=sent (delivered via dovecot service) Sep 27 17:46:22 plato postfix/qmgr[6032]: 544A88450: removed
+> Sep 27 17:46:22 hostname postfix/cleanup[6108]: 544A88450: message-id=\<<20100927174622.544A88450@hostname.example.com>\> Sep 27 17:46:22 hostname postfix/qmgr[6032]: 544A88450: from=\<<root@hostname.example.com>\>, size=368, nrcpt=1 (queue active) Sep 27 17:46:22 hostname postfix/pipe[6114]: 544A88450: to=\<<pparadis@example.com>\>, relay=dovecot, delay=0.04, delays=0.03/0.01/0/0.01, dsn=2.0.0, status=sent (delivered via dovecot service) Sep 27 17:46:22 hostname postfix/qmgr[6032]: 544A88450: removed
 
 Next you should check the Dovecot delivery log located in `/home/vmail/dovecot-deliver.log`. The contents should look similar to the following:
 
 {: .file-excerpt }
 /home/vmail/dovecot-deliver.log
 
-> deliver(<pparadis@example.com>): 2010-09-27 17:46:22 Info: msgid=\<<20100927174622.544A88450@plato.example.com>\>: saved mail to INBOX
+> deliver(<pparadis@example.com>): 2010-09-27 17:46:22 Info: msgid=\<<20100927174622.544A88450@hostname.example.com>\>: saved mail to INBOX
 
 Now you can test to see what the users of your email server would see with their email clients.
 

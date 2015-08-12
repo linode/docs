@@ -1,16 +1,19 @@
 ---
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Managing source control with Subversion, an open source version control system.'
 keywords: 'svn,version control,source control management'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['linux-tools/version-control/svn/']
 modified: Tuesday, June 7th, 2011
 modified_by:
-  name: Peter Sandin
+  name: Linode
 published: 'Tuesday, December 15th, 2009'
 title: Manage Source Code Versions with Subversion
+external_resources:
+ - '[Subversion Project Homepage](http://subversion.tigris.org/)'
+ - '[The Subversion Book from O''Reilly](http://svnbook.red-bean.com/)'
 ---
 
 Subversion is a traditional centralized version control system. Used by software developers to track changes during the production and maintenance of a project, SVN is a familiar and standard component in many development tool chains. Subversion was developed as a replacement for the "CVS" version control system. SVN attempts to fix many of the major problems with the CVS system without requiring any paradigm shifts in the way software is developed.
@@ -26,8 +29,7 @@ There are a number of options for accessing and managing Subversion repositories
 
 Before installing subversion we assume that you have followed our [getting started](/docs/getting-started/) guide. If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics). Additionally, if you intended to access Subversion over HTTP, this document uses the [Apache HTTP server](/docs/web-servers/apache/), which you may want to configure beyond the scope of this document.
 
-Installing Subversion
----------------------
+## Installing Subversion
 
 Subversion is included in the software repositories of most major Linux distributions. Installing the `subversion` package installs all of the tools that you need in order to properly administer and maintain your subversion repositories. Additionally, tools needed to access subversion repositories as clients will be installed on your system.
 
@@ -47,8 +49,7 @@ On Gentoo Linux, Subversion can be installed by issuing this command:
 
     emerge dev-util/subversion
 
-Creating a Subversion Repository
---------------------------------
+## Creating a Subversion Repository
 
 We'll host our subversion repository in the directories beneath the `/srv/svn/repos/` directory on your Linode's filesystem. To create this directory, use the following command:
 
@@ -60,8 +61,7 @@ Now, using the `svnadmin` tool, create a new SVN repository using the following 
 
 In this example, we've created a single `morris` repository beneath the `/srv/svn/` directory. Because SVN allows you to only check out the specific portions of the repository you need, administrators will frequently create a single repository for a project and developers will only check out and work on the portions of the project that they need.
 
-Administering Subversion Repositories
--------------------------------------
+## Administering Subversion Repositories
 
 The `svnadmin` tool provides a number of additional commands which are useful for administering and maintaining a Subversion repository. Above, we used the `svnadmin create` command, which creates a new repository at a specified path. By default, repositories created in this manner use the "FSFS" data storage system. If you want to use the alternate "BerkleyDB" storage system, issue the following command:
 
@@ -93,8 +93,7 @@ This will create a new repository at `/srv/svn/morris-backup` with the history f
 
 If you store critical information in a Subversion repository, you may wish to create backups automatically using a [cron job](/docs/linux-tools/utilities/cron).
 
-Using Subversion for Version Control
-------------------------------------
+## Using Subversion for Version Control
 
 By default, Subversion will track the version history for all of the files in a directory tree. Furthermore, Subversion does not specify or require any particular workflow or repository layout. However, many users organize their repositories with three directories:
 
@@ -110,8 +109,7 @@ Subversion is a centralized version control system, which means that in order to
 
 Subversion also makes it possible for you to only check out portions of your repository. If you only need to work with the `trunk/` portion of the repository, you can specify the URL to only that path of the repository.
 
-Common Subversion Commands
---------------------------
+##Common Subversion Commands
 
 If you have prior experience using CVS, you will already be familiar with many of the commands used for interacting with subversion repositories. From the user's perspective, Subversion aims to be compatible with CVS workflows.
 
@@ -132,8 +130,7 @@ If you have prior experience using CVS, you will already be familiar with many o
 
     In this example, `svn log` displays the revision history of the files `roster.txt` and `lollipop.txt` in the remote repository.
 
-Accessing SVN over HTTP
------------------------
+## Accessing SVN over HTTP
 
 If you and your developers *only* need to access your repository over SSH, with the `ssh+svn://` protocols, then you can safely disregard the remainder of this guide. If you need to access your repository over the `http://` or `https://` protocols, you will want to configure Apache to host your Subversion repository.
 
@@ -186,7 +183,7 @@ In order to avoid permission conflicts with multiple users, set the "sticky" bit
 
     chmod -R +s /srv/svn/morris
 
-The sticky bit allows all users with access to the files, by virtue of their group membership, to create files that are owned by the user and group that owns the directory, rather than by their own default user and group. This also allows users to execute scripts in these directories, typically the "hooks," as the user that owns them, and thus poses a potential security risk. If you would like to learn more about [groups and UNIX permissions consult this overview](/docs/using-linux/users-and-groups).
+The sticky bit allows all users with access to the files, by virtue of their group membership, to create files that are owned by the user and group that owns the directory, rather than by their own default user and group. This also allows users to execute scripts in these directories, typically the "hooks," as the user that owns them, and thus poses a potential security risk. If you would like to learn more about [groups and UNIX permissions consult this overview](/docs/tools-reference/linux-users-and-groups).
 
 ### Configuring the Apache Web Server
 
@@ -359,14 +356,3 @@ Apache Virtual Host Configuration
        </Location>
     </VirtualHost>
     ~~~
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Subversion Project Homepage](http://subversion.tigris.org/)
-- [The Subversion Book from O'Reilly](http://svnbook.red-bean.com/)
-
-
-

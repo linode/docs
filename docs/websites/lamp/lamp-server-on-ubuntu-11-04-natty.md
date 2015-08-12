@@ -2,7 +2,7 @@
 deprecated: true
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Configuring a LAMP stack with Apache, MySQL, PHP and on Ubuntu Linux 11.04 (Natty).'
 keywords: 'ubuntu lamp server,ubuntu 11.04 lamp,natty lamp,ubuntu web server,ubuntu natty'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -190,7 +190,7 @@ More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [Ubuntu Server Edition Homepage](http://www.ubuntu.com/products/whatisubuntu/serveredition)
+- [Ubuntu Server Edition Homepage](http://www.ubuntu.com/server)
 - [Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)
 - [MySQL Documentation](http://dev.mysql.com/doc/)
 - [PHP Documentation](http://www.php.net/docs.php)

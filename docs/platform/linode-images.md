@@ -6,14 +6,18 @@ description: How to retain Disks with the Linode Images service
 keywords: 'linode Images, imagize'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['linode-images/']
-modified: Saturday, May 10th, 2014
+modified: Tuesday, June 2nd, 2015
 modified_by:
-  name: James Stewart
+  name: Linode
 published: 'Thursday, September 25th, 2014'
 title: Linode Images
 ---
 
-Linode Images allows you to take snapshots of your disks, and then deploy them to any Linode under your account. This can be useful for bootstrapping a master image for a large deployment, or retaining a disk for a configuration that you may not need running, but wish to return to in the future. Linode Images will be retained whether or not you have an active Linode on your account, which also makes them useful for long term storage of a template that you may need in the future.
+*Linode Images* allows you to take snapshots of your disks, and then deploy them to any Linode under your account. This can be useful for bootstrapping a master image for a large deployment, or retaining a disk for a configuration that you may not need running, but wish to return to in the future. Linode Images will be retained whether or not you have an active Linode on your account, which also makes them useful for long term storage of a private template that you may need in the future. There is no additional charge to store images for Linode users, with a limit of 2GB per Image, with a total of 10GB total Image storage and 100 Images per account.
+
+{: .note}
+>
+>When saving a Linode image it is the aspects of the Linode that are on the **disk** that are saved, not any additional aspects such as IP addresses, fully qualified domain names, and MAC addresses.
 
 ## Capturing Your Image
 

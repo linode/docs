@@ -2,7 +2,7 @@
 deprecated: true
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Use uWSGI to deploy Python application servers in conjunction with nginx.'
 keywords: 'uwsgi,wsgi,nginx,python,arch linux'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -63,7 +63,7 @@ Create an `/etc/conf.d/uwsgi` file to specify specific settings for your Python 
 {: .file-excerpt }
 /etc/conf.d/uwsgi
 :   ~~~ bash
-    PYTHONPATH=/srv/www/ducklington.org/application
+    PYTHONPATH=/srv/www/example.com/application
     MODULE=wsgi_configuration_module
     ~~~
 
@@ -89,9 +89,9 @@ nginx virtual host configuration
 :   ~~~ nginx
     server {
         listen   80;
-        server_name www.ducklington.org ducklington.org;
-        access_log /srv/www/ducklington.org/logs/access.log;
-        error_log /srv/www/ducklington.org/logs/error.log;
+        server_name www.example.com example.com;
+        access_log /srv/www/example.com/logs/access.log;
+        error_log /srv/www/example.com/logs/error.log;
 
         location / {
             include        uwsgi_params;
@@ -99,20 +99,20 @@ nginx virtual host configuration
         }
 
         location /static {
-            root   /srv/www/ducklington.org/public_html/static/;
+            root   /srv/www/example.com/public_html/static/;
             index  index.html index.htm;
         }
     }
     ~~~
 
-All requests to URLs ending in `/static` will be served directly from the `/srv/www/ducklington.org/public_html/static` directory. Restart the web server by issuing the following command:
+All requests to URLs ending in `/static` will be served directly from the `/srv/www/example.com/public_html/static` directory. Restart the web server by issuing the following command:
 
     /etc/rc.d/nginx restart
 
 Additional Application Servers
 ------------------------------
 
-If the Python application you've deployed requires more application resources than a single Linode instance can provide, all of the methods for deploying a uWSGI application server are easily scaled to rely on multiple uSWGI instances that run on additional Linodes with the request load balanced using nginx's `upstream` capability. Consider our documentation of [proxy and software load balancing with nginx](/docs/uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing) for more information. For a basic example configuration, consider the following example:
+If the Python application you've deployed requires more application resources than a single Linode instance can provide, all of the methods for deploying a uWSGI application server are easily scaled to rely on multiple uSWGI instances that run on additional Linodes with the request load balanced using nginx's `upstream` capability. Consider our documentation of [proxy and software load balancing with nginx](/docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer) for more information. For a basic example configuration, consider the following example:
 
 {: .file-excerpt }
 nginx configuration
@@ -127,9 +127,9 @@ nginx configuration
 
     server {
         listen   80;
-        server_name www.ducklington.org ducklington.org;
-        access_log /srv/www/ducklington.org/logs/access.log;
-        error_log /srv/www/ducklington.org/logs/error.log;
+        server_name www.example.com example.com;
+        access_log /srv/www/example.com/logs/access.log;
+        error_log /srv/www/example.com/logs/error.log;
 
         location / {
             include        uwsgi_params;
@@ -137,7 +137,7 @@ nginx configuration
         }
 
         location /static {
-            root   /srv/www/ducklington.org/public_html/static/;
+            root   /srv/www/example.com/public_html/static/;
             index  index.html index.htm;
         }
     }
@@ -151,7 +151,7 @@ More Information
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [Deploy a LEMP Server on Arch Linux](/docs/lemp-guides/arch-linux/)
-- [Configure nginx Proxy Servers](/docs/uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing)
+- [Configure nginx Proxy Servers](/docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer)
 
 
 

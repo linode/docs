@@ -1,8 +1,8 @@
 ---
 deprecated: true
 author:
-  name: Peter Sandin
-  email: psandin@linode.com
+  name: Linode
+  email: docs@linode.com
 description: 'Installing and configuring the Postfix MTA to work with Courier and MySQL for virtual domains on Fedora 12.'
 keywords: 'postfix,courier,mail server,imap,postfix on fedora 12,postfix on linux,postfix with courier,postfix with mysql,mysql virtual domains'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

@@ -2,7 +2,7 @@
 deprecated: true
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Instructions for installing the Apache Tomcat Java servlet engine on Ubuntu 10.10 (Maverick).'
 keywords: 'apache tomcat ubuntu 10.10,java,java ubuntu 10.10,java servlets ubuntu maverick,java ubuntu'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -112,7 +112,7 @@ You can test your Tomcat installation by pointing your browser at `http://[yourd
 /etc/tomcat6/tomcat-users.xml
 :   ~~~ xml
     <role rolename="manager"/>
-    <user username="squire" password="ducklingtonmorris" roles="manager"/>
+    <user username="squire" password="examplemorris" roles="manager"/>
     ~~~
 
 Issue the following command to restart the Tomcat server, which will allow this change to take effect:

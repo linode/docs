@@ -10,16 +10,17 @@ modified_by:
   name: Alex Fornuto
 published: 'Monday, March 3rd, 2014'
 title: 'Creating an HTTP Proxy Using Squid on CentOS 6.4'
+external_resources:
+ - '[Squid Official Site](http://www.squid-cache.org/)'
 ---
 
-Squid is a proxy/cache application with a variety of configurations and uses. This guide will cover using Squid as an HTTP proxy. Please note that unless you follow the last section of the guide [Anonymizing Traffic](#anonymizing-traffic), this will not anonymize your traffic to the outside world, as your originating IP address will still be sent in the X-Forwarded-For header. Additionally, the traffic is not encrypted and will still be visible on your local network. If you are looking for a solution that offers greater security, you may want to look at our guide to [Setting up an SSH Tunnel](https://library.linode.com/networking/socks-proxy) or [Deploy VPN Services with OpenVPN](https://library.linode.com/networking/openvpn).
+Squid is a proxy/cache application with a variety of configurations and uses. This guide will cover using Squid as an HTTP proxy. Please note that unless you follow the last section of the guide [Anonymizing Traffic](#anonymizing-traffic), this will not anonymize your traffic to the outside world, as your originating IP address will still be sent in the X-Forwarded-For header. Additionally, the traffic is not encrypted and will still be visible on your local network. If you are looking for a solution that offers greater security, you may want to look at our guide to [Setting up an SSH Tunnel](/docs/networking/ssh/setting-up-an-ssh-tunnel-with-your-linode-for-safe-browsing) or [Deploy VPN Services with OpenVPN](/docs/networking/vpn/secure-communications-with-openvpn-on-centos-6).
 
  {: .note }
 >
-> This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](https://library.linode.com/using-linux/users-and-groups) guide.
+> This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
-Installing Squid
-----------------
+## Installing Squid
 
 1.  Squid is available in the CentOS repositories. To ensure your system is up-to-date and install Squid run the following commands:
 
@@ -30,8 +31,7 @@ Installing Squid
 
         sudo cp /etc/squid/squid.conf /etc/squid/squid.conf.default
 
-Configuring Squid as an HTTP proxy
-----------------------------------
+## Configuring Squid as an HTTP proxy
 
 Squid Proxy can be used as an HTTP proxy to bypass local network restrictions, or mask your true location to the world.
 
@@ -108,8 +108,7 @@ The following configuration allows for authenticated access to the Squid proxy s
 
 		sudo service squid restart
 
-Anonymizing Traffic
--------------------
+## Anonymizing Traffic
 
 In order to mask your IP address from servers you connect to, you will need to add the following lines to the Squid configuration file.
 
@@ -151,13 +150,3 @@ In order to mask your IP address from servers you connect to, you will need to a
 Once you've saved and exited the file, restart Squid:
 
     sudo service squid restart
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Squid Official Site](http://www.squid-cache.org/)
-
-
-

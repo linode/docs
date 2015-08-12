@@ -15,8 +15,7 @@ title: Monitoring and Maintaining Your Server
 
 Now that your Linode is up and running, it's time to think about monitoring and maintaining your server. This guide introduces the essential tools and skills you'll need to keep your server in tip-top shape. You'll learn how to monitor the availability and performance of your system, manage your logs, and update your server's software.
 
-Availability Monitoring
------------------------
+## Availability Monitoring
 
 The *availability* of your servers, and the websites and web applications you host on them, can be critically important. If you generate income from a blog or charge subscription fees for your web application, downtime can have a severe impact on your bottom line. Using an availability monitoring tool can help you rapidly detect and resolve service disruptions, thereby mitigating the impact on your web sites and web applications.
 
@@ -34,7 +33,7 @@ There are several different availability monitoring tools available. Your decisi
 
 -   **Multiple Servers**: If you run more than one server, [Nagios](/docs/server-monitoring/nagios) makes an ideal monitoring tool. This free and flexible framework makes it possible to keep an eye on a broad range of infrastructural components and network services. After installing the Nagios server and client packages, one Linode will act as the primary server to monitor the other servers.
 -   **Single Server**: If you only run a single server, you might want to use a third-party service to monitor your Linode. (You could install Nagios, but if your server goes down, Nagios will go down with it.) You could also use a network diagnostic tool like [MTR](/docs/linux-tools/mtr) to diagnose and isolate networking errors.
--   **Linode Longview**: [Longview](https://library.linode.com/longview) is Linode's own monitoring and graphing service. It offers real time data that can be used to help identify system issues. Using [Longview](https://library.linode.com/longview) in conjunction with a notification service like Nagios can help you to identify issues faster, and get your system up and running sooner.
+-   **Linode Longview**: [Longview](/docs/platform/longview/longview) is Linode's own monitoring and graphing service. It offers real time data that can be used to help identify system issues. Using Longview in conjunction with a notification service like Nagios can help you to identify issues faster, and get your system up and running sooner.
 
 If you need an availability monitoring tool for one or more server, take a look at Nagios or MTR now.
 
@@ -56,8 +55,7 @@ Here's how to turn Lassie on and off:
 
 You have successfully configured Lassie. If you turned the feature on, your Linode will automatically reboot if it is powered off unexpectedly in the future.
 
-Performance Monitoring
-----------------------
+## Performance Monitoring
 
 *Performance* monitoring tools record vital server and service performance metrics. Similar to a vehicle's dashboard, which has gauges for things like speed and oil pressure, performance monitoring tools provide valuable insight into the inner workings of your virtual server. With practice, you'll be able to review this information and determine whether your server is in good health.
 
@@ -97,7 +95,7 @@ You have successfully configured email alerts in the Linode Manager.
 
 ### Using Linode Longview
 
-Our custom monitoring and graphing tool [Longview](https://library.linode.com/longview) can give you a detailed breakdown of system performance and resource usage. Longview can be used to monitor any virtual server or computer running Linux - including systems not hosted by Linode. On our platform, Longview, in conjunction with the Linode Manager email alerts, can help you to know quickly when your system is overloaded, and find out why.
+Our custom monitoring and graphing tool [Longview](/docs/platform/longview/longview) can give you a detailed breakdown of system performance and resource usage. Longview can be used to monitor any virtual server or computer running Linux - including systems not hosted by Linode. On our platform, Longview, in conjunction with the Linode Manager email alerts, can help you to know quickly when your system is overloaded, and find out why.
 
 ### Using Third-Party Tools
 
@@ -111,8 +109,7 @@ There are several free third-party performance monitoring tools available for yo
 
 If you need a third-party performance monitoring tool, take a look at Munin, Cacti, or Nagios now.
 
-Managing Logs
--------------
+## Managing Logs
 
 Important events that occur on your system — things like login attempts or services being restarted — are recorded in your server's *logs*. Similar to car maintenance records and completed tax forms, which provide a paper trail in the event of a problem or discrepancy, log files keep track of system events. You might review logs when troubleshooting errors, tracking usage, or investigating unusual behavior on your system. Of course, it's easy to forget about log files until you need them. Do yourself a favor by automating log rotation and implementing a log monitoring utility now!
 
@@ -128,8 +125,7 @@ It's important to keep an eye on the events recorded in your system logs. But un
 
 Use the [Logwatch guides](/docs/server-monitoring/logwatch) to get started.
 
-Updating Software
------------------
+## Updating Software
 
 Linux distributions are frequently updated to fix bugs, add new features, and patch security vulnerabilities. To take advantage of the new packages and patches, you'll need to remember to perform some simple steps every once in a while. This section shows you what to do.
 
@@ -195,6 +191,3 @@ There are two ways to upgrade a Linode running an unsupported release. You can u
  {: .note }
 >
 > Check the distribution's website to learn when support for your release will be discontinued. Ubuntu offers a *long-term support* (LTS) release that is supported for five years.
-
-
-

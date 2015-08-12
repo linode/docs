@@ -11,6 +11,9 @@ modified_by:
   name: Alex Fornuto.
 published: 
 title: Installing cPanel on CentOS
+external_resources:
+ - '[cPanel Home Page](http://cpanel.net)'
+ - '[cPanel Support](http://cpanel.net/support.html)'
 ---
 
 [cPanel](http://cpanel.net) is a commercial web-based control panel for server systems. It can help ease the burden of common system administration tasks such as website creation, database deployment and management, and more. This guide will help you get up and running with the [VPS Optimized cPanel](http://cpanel.net/products/cpanelwhm/vps-optimized.html) product on your CentOS Linode. Please note, Linode does not sell cPanel licenses; you'll need to obtain one directly from cPanel or an authorized distributor. Additionally, Linode does not provide cPanel support, although you may contact [cPanel support](http://cpanel.net/support.html) directly once you've purchased a license. This product **must** be installed on a freshly deployed, CentOS Linode. These instructions should be performed as the "root" user via SSH.
@@ -18,15 +21,15 @@ title: Installing cPanel on CentOS
 {: .note}
 >The steps required in this guide require root privileges. Be sure to run the steps below as ``root`` or with the **sudo** prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
-# DNS Prerequisites
+## DNS Prerequisites
 
 cPanel includes options for hosting your own DNS services. We generally recommend using [Linode DNS services](/docs/dns-guides/configuring-dns-with-the-linode-manager), as it provides a stable, redundant, and easily managed DNS platform. If you elect to run your own DNS services on a single Linode using cPanel, please be aware that such a setup provides no redundancy.
 
-Should you wish to provide DNS services, you'll need to add A records for your nameservers in your WHM as described in the [DNS on cPanel guide](https://library.linode.com/web-applications/control-panels/cpanel/dns-on-cpanel#sph_nameserver-records).
+Should you wish to provide DNS services, you'll need to add A records for your nameservers in your WHM as described in the [DNS on cPanel guide](/docs/websites/cms/set-up-dns-services-on-cpanel/#nameserver-selection).
 
 If you plan to use a domain name for your nameservers that you will also be hosting DNS services for, then you'll need to ask your domain name registrar to create [DNS glue records](http://en.wikipedia.org/wiki/Domain_Name_System#Circular_dependencies_and_glue_records) based on your Linode's IP addresses before proceeding.
 
-# Install cPanel
+## Install cPanel
 
 Before proceeding, make sure you've purchased a cPanel license. You may obtain a license from the [cPanel Store](https://store-koala.cpanel.net/). Next, log into your Linode as the "root" user via SSH to its IP address (found on the "Remote Access" tab in the Linode Manager). 
 
@@ -43,7 +46,7 @@ Before proceeding, make sure you've purchased a cPanel license. You may obtain a
 
 2. Log in with the username "root" and your root password.
 
-# Configure cPanel
+## Configure cPanel
 
 1. Once you're logged into the cPanel control panel, you must read and accept the license agreement to continue.
 
@@ -72,11 +75,11 @@ Before proceeding, make sure you've purchased a cPanel license. You may obtain a
 
     [![cPanel IP address configuration.](/docs/assets/272-cpanel-whm-03-setup-ip-addresses.png)](/docs/assets/272-cpanel-whm-03-setup-ip-addresses.png)
 
-## DNS Configuration
+### DNS Configuration
 
 The next page provides options for DNS configuration.
 
-### Using Linode Nameservers
+#### Using Linode Nameservers
 
 If you intend to use Linode's nameservers (or those provided by a third party) for authoritative DNS services, make sure you select "Disabled" in the "Name Server" column. You must list your desired nameservers in the fields provided.
 
@@ -84,7 +87,7 @@ If you intend to use Linode's nameservers (or those provided by a third party) f
 
 When you've finished, click on "Save & Go to Step 5".
 
-### Using Self-Managed DNS
+#### Using Self-Managed DNS
 
 If you wish to operate your own DNS servers on your Linode, you may select either "BIND" or "NSD" under the "Name Server" column. You must list the nameservers you set up in the "DNS Prerequisites" section of this document. There is a Linode guide on setting up your own nameservers in WHM using a single IP address, available [here](/docs/websites/cms/set-up-dns-services-on-cpanel).
 
@@ -92,7 +95,7 @@ If you wish to operate your own DNS servers on your Linode, you may select eithe
 
 When you've finished, click on "Save & Go to Step 5".
 
-## Services
+### Services
 
 The next page of the cPanel installation goes over configuration options for additional cPanel services.
 
@@ -116,14 +119,3 @@ The next page of the cPanel installation goes over configuration options for add
 6. Click on "Finish Setup Wizard". You will be brought to the "Feature Showcase" page, where you can enable additional features offered by cPanel. After reviewing these options, you can click on "Save Settings" to enable extra features, or "Exit to WHM".
 
 That's it! cPanel should now be properly configured on your Linode. For product support, please be sure to contact [cPanel support](http://cpanel.net/support.html) with any further questions you may have.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [cPanel Home Page](http://cpanel.net)
-- [cPanel Support](http://cpanel.net/support.html)
-
-
-

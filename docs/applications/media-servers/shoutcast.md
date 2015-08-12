@@ -1,7 +1,7 @@
 ---
 author:
   name: Chris Ciufo
-  email: cciufo@linode.com
+  email: docs@linode.com
 description: SHOUTcast
 keywords: 'shoutcast, radio, internet radio, stream, streaming, audio'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -11,6 +11,11 @@ modified_by:
   name: Linode
 published: 'Thursday, June 7th, 2012'
 title: SHOUTcast
+external_resources:
+ - '[SHOUTcast Home Page](http://www.shoutcast.com)'
+ - '[SHOUTcast Getting Started Guide](http://wiki.winamp.com/wiki/SHOUTcast_Getting_Started_Guide)'
+ - '[SHOUTcast Broadcast Tools](http://www.shoutcast.com/broadcast-tools)'
+ - '[SHOUTcast Transcoder MP3 Licensing](http://wiki.winamp.com/wiki/SHOUTcast_DNAS_Transcoder_2#Registering_for_MP3_Stream_Encoding)'
 ---
 
 SHOUTcast is software designed for streaming media over the Internet. The SHOUTcast system uses a classic client-server configuration. You can install SHOUTcast on your server and use it to broadcast a stream of music to clients connected to the server.
@@ -19,8 +24,7 @@ SHOUTcast is software designed for streaming media over the Internet. The SHOUTc
 >
 > Be sure to [check the broadcast tools download page](http://www.shoutcast.com/broadcast-tools) for the newest version of SHOUTcast.
 
-SHOUTcast DNAS Software
------------------------
+## SHOUTcast DNAS Software
 
 The SHOUTcast DNAS (Distributed Network Audio Server) software is the server version of the software that allows you to broadcast to listeners. To use SHOUTcast, you'll need to download and install SHOUTcast DNAS on your Linode.
 
@@ -154,8 +158,7 @@ Now it's time to start the SHOUTcast server. Here's how:
 
 Your SHOUTcast server is now running! You can now connect to it and begin your broadcast.
 
-SHOUTcast Transcoder
---------------------
+## SHOUTcast Transcoder
 
 The SHOUTcast Transcoder allows you to schedule DJ play times, broadcast an automatic playlist in a specific time slot, schedule time slots for relayed broadcasts, etc.
 
@@ -322,22 +325,8 @@ To shut down the transcoder, you'll just need to issue a kill command:
 
     kill -15 PID
 
-SHOUTcast Source DSP
---------------------
+## SHOUTcast Source DSP
 
 SHOUTcast's Source DSP plugin was developed for use with WinAmp version 5.5 and newer. This plugin gives you the ability to use WinAmp as a source for your sc\_serv (DNAS) or sc\_trans (Transcoder). It will also allow you to capture an audio input from your sound card and its line-in or microphone inputs. You will need a working installation of either the DNAS by itself, or the Transcoder feeding into a DNAS installation, before you can use the DSP WinAmp plugin. The download for the DSP plugin is near the bottom of the [broadcast tools page](http://www.shoutcast.com/broadcast-tools).
 
 Instructions for installation and configuration are located in the [WinAmp wiki](http://wiki.winamp.com/wiki/Source_DSP_Plug-in#Installing_the_Plug-in).
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [SHOUTcast Home Page](http://www.shoutcast.com)
-- [SHOUTcast Getting Started Guide](http://wiki.winamp.com/wiki/SHOUTcast_Getting_Started_Guide)
-- [SHOUTcast Broadcast Tools](http://www.shoutcast.com/broadcast-tools)
-- [SHOUTcast Transcoder MP3 Licensing](http://wiki.winamp.com/wiki/SHOUTcast_DNAS_Transcoder_2#Registering_for_MP3_Stream_Encoding)
-
-
-

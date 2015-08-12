@@ -1,7 +1,7 @@
 ---
 author:
   name: Quintin Riis
-  email: qriis@linode.com
+  email: docs@linode.com
 description: Full Disk Encryption.
 keywords: full disk encryption debian wheezy security cryptsetup
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -19,13 +19,11 @@ Full disk encryption protects the information stored on your Linode's disks by c
 -   Configure services and networking
 -   Boot from the encrypted images
 
-Potential Drawbacks
--------------------
+## Potential Drawbacks
 
 Full disk encryption does a great job of keeping your data secure, but there are a few caveats. To decrypt and mount the disk, you'll need to enter the encryption passphrase in the console every time your Linode boots. And some Linode Manager tools may not work as expected if your disks are encrypted. You'll need to manually resize your filesystem if you want to resize your disk. You'll also need to implement your own backup solution since the [Linode Backup Service](/docs/backup-service) can't mount encrypted disks.
 
-Getting Started
----------------
+## Getting Started
 
 Ready to encrypt your Linode's disks? Here's how to prepare a Linode for full disk encryption:
 
@@ -44,21 +42,19 @@ Ready to encrypt your Linode's disks? Here's how to prepare a Linode for full di
 
 You've successfully created the disks for your Linode.
 
-Creating a Configuration Profile
---------------------------------
+## Creating a Configuration Profile
 
 Next, you'll need to create a configuration profile for the new Linode. Here's how to do it:
 
 1.  [Create a new configuration profile](/docs/disk-images-config-profiles#sph_creating-a-configuration-profile) in the Linode Manager.
 2.  Select the `pv-grub-x86_64` kernel from the **Kernel** menu.
 3.  In the **Block Device Assignment** section, select the disks you created in the previous section of this guide.
-4.  Disable the **Automount devtmpfs** and **Xenify Distro** settings.
+4.  Disable the **Automount devtmpfs** and **Distro Helper** settings.
 5.  Save the configuration profile.
 
 Congratulations! You're now ready to set up full disk encryption on your Linode.
 
-Enabling Full Disk Encryption
------------------------------
+## Enabling Full Disk Encryption
 
 Now you're ready to enable full disk encryption on your Linode running Debian 7 (Wheezy). Here's how to do it:
 
@@ -199,6 +195,3 @@ You're almost finished! Just a couple more steps and you'll have a Linode with e
         reboot 1
 
 If everything is configured properly your Linode will boot and prompt you for the encryption passphrase. Enter the passphrase on your console to mount your encrypted disk and boot your Linode. Now you'll want to follow the steps in our [Getting Started](/docs/getting-started) guide.
-
-
-

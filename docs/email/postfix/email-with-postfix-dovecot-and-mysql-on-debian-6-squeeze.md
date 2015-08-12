@@ -1,4 +1,5 @@
 ---
+deprecated: true
 author:
   name: Linode
   email: docs@linode.com
@@ -400,9 +401,9 @@ You should see output similar to the following, with the line "250-STARTTLS" inc
     Trying 127.0.0.1...
     Connected to localhost.localdomain.
     Escape character is '^]'.
-    220 plato.example.com ESMTP Postfix (Debian/GNU)
+    220 hostname.example.com ESMTP Postfix (Debian/GNU)
     ehlo localhost
-    250-plato.example.com
+    250-hostname.example.com
     250-PIPELINING
     250-SIZE 30720000
     250-VRFY
@@ -446,14 +447,14 @@ After you have sent the test mail, you'll want to check your error logs to make 
 {: .file-excerpt }
 /var/log/mail.log
 
-> Jun 13 17:05:40 li263-140 postfix/cleanup[5435]: E7AA723FD2: message-id=\<<20110613210540.E7AA723FD2@plato.example.com>\> Jun 13 17:05:40 li263-140 postfix/qmgr[5349]: E7AA723FD2: from=\<<root@plato.example.com>\>, size=376, nrcpt=1 (queue active) Jun 13 17:05:41 li263-140 postfix/pipe[5439]: E7AA723FD2: to=\<<sales@example.com>\>, relay=dovecot, delay=0.24, delays=0.08/0.01/0/0.15, dsn=2.0.0, status=sent (delivered via dovecot service) Jun 13 17:05:41 li263-140 postfix/qmgr[5349]: E7AA723FD2: removed
+> Jun 13 17:05:40 li263-140 postfix/cleanup[5435]: E7AA723FD2: message-id=\<<20110613210540.E7AA723FD2@hostname.example.com>\> Jun 13 17:05:40 li263-140 postfix/qmgr[5349]: E7AA723FD2: from=\<<root@hostname.example.com>\>, size=376, nrcpt=1 (queue active) Jun 13 17:05:41 li263-140 postfix/pipe[5439]: E7AA723FD2: to=\<<sales@example.com>\>, relay=dovecot, delay=0.24, delays=0.08/0.01/0/0.15, dsn=2.0.0, status=sent (delivered via dovecot service) Jun 13 17:05:41 li263-140 postfix/qmgr[5349]: E7AA723FD2: removed
 
 Next you should check the Dovecot delivery log located in `/home/vmail/dovecot-deliver.log`. The contents should look similar to the following:
 
 {: .file-excerpt }
 /home/vmail/dovecot-deliver.log
 
-> 2011-06-13 17:05:41 deliver(<sales@example.com>): Info: msgid=\<<20110613210540.E7AA723FD2@plato.example.com>\>: saved mail to INBOX
+> 2011-06-13 17:05:41 deliver(<sales@example.com>): Info: msgid=\<<20110613210540.E7AA723FD2@hostname.example.com>\>: saved mail to INBOX
 
 Now you can test to see what the users of your email server would see with their email clients.
 
@@ -473,7 +474,7 @@ You should see output similar to the following:
     ./tmp
     ./dovecot-uidvalidity.4df67ba5
     ./new
-    ./new/1307999141.M4912P5440.plato,S=452,W=464
+    ./new/1307999141.M4912P5440.hostname,S=452,W=464
     ./dovecot-uidlist
 
 Now you can test using a mail client. When configuring your local email client, use the full email address for the mailbox you wish to connect to as the username. You may use `mutt` for this test. It is not installed by default so you may need to install it (`apt-get install mutt`). Type the following command to view user's mail:

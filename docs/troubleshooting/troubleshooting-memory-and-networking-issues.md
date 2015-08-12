@@ -15,8 +15,7 @@ title: Troubleshooting Memory and Networking Issues
 
 Many common issues with Linodes are caused by excessive memory consumption or networking configuration errors. This guide provides suggestions for alleviating these problems.
 
-Diagnosing and Fixing Memory Issues
------------------------------------
+## Diagnosing and Fixing Memory Issues
 
 When your VPS is running low on physical memory, it may start to "swap thrash." This means it's attempting to use your swap partition heavily instead of real RAM. We recommend you limit your swap partition size to 256 MB; heavy use of swap in a virtualized environment will cause major performance problems.
 
@@ -91,14 +90,10 @@ MaxRequestsPerChild 3000
 
 If you're filtering mail through SpamAssassin in standalone mode and running into load issues, you'll need to investigate switching to something to keep the program persistent in memory as a daemon. We suggest looking at [amavisd-new](http://www.ijs.si/software/amavisd/).
 
-Troubleshooting Network Issues
-------------------------------
+## Troubleshooting Network Issues
 
 If you've added multiple IP addresses to your Linode, you must set up static networking as described in the [Linux Static Networking Guide](/docs/networking/configuring-static-ip-interfaces). Please be sure to specify only one gateway. Using multiple gateways frequently causes problems.
 
 If you just added an IP address to your Linode, please be sure to reboot before attempting to use it. This is required to properly route the IP address on our network.
 
 If you've added a private IP address, please be sure to use the network settings shown in the "Remote Access" of the Linode Manager, paying special attention to the subnet mask. Note that private IP addresses do not require a gateway (nor should one be specified).
-
-
-

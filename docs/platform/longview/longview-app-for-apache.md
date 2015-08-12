@@ -1,7 +1,7 @@
 ---
 author:
   name: Linode
-  email: scampbell@linode.com
+  email: docs@linode.com
 description: Longview App for Apache
 keywords: 'Longview, Apache, statistics, mod\_status'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -15,8 +15,7 @@ title: Longview App for Apache
 
 Longview for Apache is a Longview App. The Longview Apache tab appears in the Linode Manager when Longview detects that you have Apache installed on your Linode. With the Longview Apache App, you'll be able to view statistics for Apache on your Linode. It can help you keep track of Apache's settings, workers and requests, system resource consumption, and other information.
 
-Installing
-----------
+## Installing
 
 Prerequisites:
 
@@ -93,8 +92,7 @@ To enable the Apache Longview app manually, follow these steps on your Linode vi
 
 You should now be able to see Longview data for Apache. If that's not the case, proceed to the [Troubleshooting](#id3) section at the end of this article.
 
-Viewing Statistics
-------------------
+## Viewing Statistics
 
 To see the output for the Longview Apache App:
 
@@ -149,8 +147,7 @@ The **Disk IO** graph shows the amount of input to and output from the disk caus
 
 The **Process Count** graph shows the total number of processes on your Linode spawned by Apache at the selected time. If you want to see more details, and how this stacks up against the total number of processes on your Linode, see the [Process Explorer tab](/docs/longview#sph_process-explorer-tab).
 
-Troubleshooting
----------------
+## Troubleshooting
 
 If you don't see Longview data for Apache, you'll instead get an error on the page and instructions on how to fix it. As a general tip, you can check the `/var/log/linode/longview.log` file for errors as well. You should also compare your mod\_status configuration file (typically `httpd.conf` or `status.conf`) to the example shown in Step 2 of the [Manual Configuration (All Distributions)](#manual-configuration-all-distributions) section of this article.
 
@@ -283,6 +280,3 @@ CentOS and Fedora:
 ### Apache Tab is Missing
 
 If the Longview Apache tab is missing entirely, this indicates that Apache is either not installed, or has stopped. If you restart Apache, you will be able to see the tab again and view all of your old data.
-
-
-

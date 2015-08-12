@@ -1,7 +1,7 @@
 ---
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'This guide provides an introduction to rsync, the incremental file transfer utility.'
 keywords: 'rsync,unix,liunx,samba,utilities,backup'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -11,6 +11,9 @@ modified_by:
   name: Chris Ciufo
 published: 'Tuesday, September 8th, 2009'
 title: Introduction to Rsync
+external_resources:
+ - '[Rsync tips at Calomel.org](https://calomel.org/rsync_tips.html)'
+ - '[Rsync Guide at Comentum.com](http://www.comentum.com/rsync.html)'
 ---
 
 [Rsync](http://www.samba.org/rsync/) is a tool created as part of the [Samba](http://www.samba.org/) project that provides quick and incremental file transfer. It serves as a replacement for the `scp` and `rcp` tools. Rsync is a great way to upload files to a remote server, particularly when you need the remote machine to maintain a current mirror of the local files using minimal transfer, because rsync is very efficient in what it transfers over the network.
@@ -19,8 +22,7 @@ There are many great tools and workflows that can be implemented using rsync. Th
 
 This document provides an introductory overview of rsync along with example applications of rsync. We assume you've already reviewed our [getting started guide](/docs/getting-started/), and that you're logged into your Linode VPS as root via SSH.
 
-Installing Rsync
-----------------
+## Installing Rsync
 
 Most contemporary Linux distributions provide packages for installing rsync from software repositories. On Debian/Ubuntu systems use `apt-get install rsync`. On CentOS and Fedroa systems, use `yum install rsync`.
 
@@ -39,8 +41,7 @@ Your SSH key will be generated with the private key in `~/.ssh/id_rsa` and the p
 
 You can use this process to create SSH keys for your servers to make it possible to rsync files between two remote machines over a secure connections, without the need to enter passwords for machines.
 
-The Rsync Command
------------------
+## The Rsync Command
 
 Once installed, the rsync command is fairly uncomplicated for basic usage. There are four major options to the `rsync` command that cover most basic usage. They are as follows:
 
@@ -63,8 +64,7 @@ You can also specify local paths for rsync commands using the format you're like
 
 For remote rsync operations, either the source **or** the destination can be remote, depending on their order. See the following example use cases to get a more clear idea of how you might use rsync.
 
-Example Rsync Commands
-----------------------
+## Example Rsync Commands
 
 To more fully understand the capabilities of rsync consider the following applied examples.
 
@@ -97,14 +97,3 @@ This command creates a backup of `/home/squire/public/wiki` on the `web.example.
 The locations in this command can be swapped in order to back up a set of local files to a remote machine for efficient off-site backups. Use the `-a` option if you want to preserve file permissions and ownership after the sync operation.
 
 You can also combine rsync commands with `cron` "jobs" to run a backup regularly to ensure that your backups remain up to date. Because rsync is incremental, once the initial operation has completed, successive backup operations complete very quickly. Only the differences between the source and the destination files are copied. This property of rsync makes it an ideal solution for automated operation.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Rsync tips at Calomel.org](https://calomel.org/rsync_tips.html)
-- [Rsync Guide at Comentum.com](http://www.comentum.com/rsync.html)
-
-
-

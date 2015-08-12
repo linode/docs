@@ -15,8 +15,7 @@ title: Linux Date Command
 
 The `date` command displays the current date and time. It can also be used to display a date in a format you specify. The super-user (root) can use it to set the system clock.
 
-Usage
------
+## Usage
 
 With no options, the `date` command displays the current system date and time, including day-of-week, month, time, timezone, and year. For example:
 
@@ -58,8 +57,7 @@ By default, `date` uses the timezone defined in `/etc/localtime`. The environmen
 
 Valid timezones are defined in `/usr/share/zoneinfo/`.
 
-Examples
---------
+## Examples
 
 The following examples illustrate how you can use the `date` command to find the date and time at various points in time.
 
@@ -108,8 +106,7 @@ Other valid date time strings include: `last-week`, `next-week`, `last-month`, `
     $ date -d "1974-01-04" +"%A"
     Friday
 
-Using date in Scripts and Commands
-----------------------------------
+## Using date in Scripts and Commands
 
 You can assign the output of `date` to a shell variable and then use it later in your scripts. For instance:
 
@@ -126,12 +123,8 @@ You can also use date to create filenames that contain the current day.
 
 This would tar and gzip the files in `/home/caker/` into a filename called `backup-2010-08-20.tar.gz`.
 
-Setting the Date
-----------------
+## Setting the Date
 
 Setting the date should not be needed if you're running ntpd to keep good time and have set your timezone correctly. However, if you find you need to set the system clock, here's an example:
 
     date --set="20101231 23:59"
-
-
-

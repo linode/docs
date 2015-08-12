@@ -11,23 +11,23 @@ use IkiWiki::Setup::Standard {
    ## that control where and how Ikiwiki's files are located. 
 
 	# name of the wiki
-	wikiname => 'ducklington.org Wiki',
+	wikiname => 'example.com Wiki',
 	# where the source of the wiki is located
 	allow_symlinks_before_srcdir => 1,
 	srcdir => '/home/squire/wiki/source',
 	# where to build the wiki
-	destdir => '/srv/www/ducklington.org/public_html',
+	destdir => '/srv/www/example.com/public_html',
 	# base url to the wiki
-	url => 'http://ducklington.org',
+	url => 'http://example.com',
 
    ## User Configuration Options. These configure which users are
    ## granted administration access to the wiki. You can also ban
    ## users from the wiki, by adding them to the `banned_users` array.
 
 	# contact email for wiki
-	adminemail => 'squire@ducklington.org',
+	adminemail => 'squire@example.com',
 	# users who are wiki admins
-	adminuser => ['http://www.ducklington.org/'],
+	adminuser => ['http://www.example.com/'],
 	# users who are banned from the wiki
 	banned_users => [],
 
@@ -39,9 +39,9 @@ use IkiWiki::Setup::Standard {
    ## away with limiting to 755. 
 
 	# url to the ikiwiki.cgi
-	cgiurl => 'http://www.ducklington.org/ikiwiki.cgi',
+	cgiurl => 'http://www.example.com/ikiwiki.cgi',
 	# filename of cgi wrapper to generate
-	cgi_wrapper => '/srv/www/ducklington.org/public_html/ikiwiki.cgi',
+	cgi_wrapper => '/srv/www/example.com/public_html/ikiwiki.cgi',
 	# mode for cgi_wrapper (can safely be made suid)
 	cgi_wrappermode => '6755',
 
@@ -73,9 +73,9 @@ use IkiWiki::Setup::Standard {
 	gitmaster_branch => 'master',
 	# GitWeb Options
 	# gitweb url to show file history ([[file]] substituted)
-	historyurl => 'http://ducklington.org/git/?p=wiki.git;a=history;f=[[file]]',
+	historyurl => 'http://example.com/git/?p=wiki.git;a=history;f=[[file]]',
 	# gitweb url to show a diff ([[file]], [[sha1_to]], [[sha1_from]], [[sha1_commit]], and [[sha1_parent]] substituted)
-	diffurl => 'http://ducklington.org/git/?p=wiki.git;a=blobdiff;f=[[file]];h=[[sha1_to]];hp=[[sha1_from]];hb=[[sha1_commit]];hpb=[[sha1_parent]]',
+	diffurl => 'http://example.com/git/?p=wiki.git;a=blobdiff;f=[[file]];h=[[sha1_to]];hp=[[sha1_from]];hb=[[sha1_commit]];hpb=[[sha1_parent]]',
 
 
   ## Adding and Disable Plugins. This section allows you to enable and
@@ -143,7 +143,7 @@ use IkiWiki::Setup::Standard {
   ## ikiwiki plugins. 
 	# repolist plugin
 	# URIs of repositories containing the wiki's source
-	repositories => [qw{http://ducklington.org/git/ciwiki.git}],
+	repositories => [qw{http://example.com/git/ciwiki.git}],
 
 	# search plugin
 	# path to the omega cgi program

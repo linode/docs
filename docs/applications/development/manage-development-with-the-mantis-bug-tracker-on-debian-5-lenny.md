@@ -1,7 +1,8 @@
 ---
+deprecated: true
 author:
   name: Stan Schwertly
-  email: sschwertly@linode.com
+  email: docs@linode.com
 description: 'Track development bugs and coordinate with team members using Mantis bug tracker on Debian 5 (Lenny).'
 keywords: 'mantis,mantis debian,mantis linux,bug tracker,development'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -40,20 +41,20 @@ Afterwards, restart Apache by running the following command:
 Installing Mantis
 -----------------
 
-For this installation, you will install Mantis to a directory under the document root (in this example the directory is named `Mantis`) for your server. To begin, change to the site directory, download the latest MantisBT package, and unpack it. When running the following commands, be sure to download the latest release. You can find the latest version of MantisBT on the [SourceForge page for MantisBT](http://sourceforge.net/projects/mantisbt/files/). Additionally, replace `bucknell.net` with the name of your site:
+For this installation, you will install Mantis to a directory under the document root (in this example the directory is named `Mantis`) for your server. To begin, change to the site directory, download the latest MantisBT package, and unpack it. When running the following commands, be sure to download the latest release. You can find the latest version of MantisBT on the [SourceForge page for MantisBT](http://sourceforge.net/projects/mantisbt/files/). Additionally, replace `example.com` with the name of your site:
 
-    cd /srv/www/bucknell.net/
+    cd /srv/www/example.com/
     wget http://downloads.sourceforge.net/project/mantisbt/mantis-stable/1.2.3/mantisbt-1.2.3.tar.gz
     tar zxvf mantisbt-1.2.3.tar.gz
 
 Next, move the `mantisbt-1.2.1` directory to the `public_html` directory under the name `mantis`. Additionally, modify the permissions and ownership of Mantis to enable the proper files to be modified and executed by the web server:
 
-    mv mantisbt-1.2.3/ /srv/www/bucknell.net/public_html/mantis
-    chown -R root:root /srv/www/bucknell.net/public_html/mantis/ 
-    chmod -R 755 /srv/www/bucknell.net/public_html/mantis/ 
-    chmod 777 /srv/www/bucknell.net/public_html/mantis/
+    mv mantisbt-1.2.3/ /srv/www/example.com/public_html/mantis
+    chown -R root:root /srv/www/example.com/public_html/mantis/ 
+    chmod -R 755 /srv/www/example.com/public_html/mantis/ 
+    chmod 777 /srv/www/example.com/public_html/mantis/
 
-Visit the location of MantisBT in your browser. In this example, the URL would be `http://bucknell.net/mantis`. Follow the installation instructions by providing the credentials to the MySQL database you created in the LAMP guide, or especially for Mantis. For additional information regarding MySQL, see the [MySQL guide](/docs/databases/mysql/debian-5-lenny). At this point Mantis is installed and ready to configure.
+Visit the location of MantisBT in your browser. In this example, the URL would be `http://example.com/mantis`. Follow the installation instructions by providing the credentials to the MySQL database you created in the LAMP guide, or especially for Mantis. For additional information regarding MySQL, see the [MySQL guide](/docs/databases/mysql/debian-5-lenny). At this point Mantis is installed and ready to configure.
 
 Configuring Mantis
 ------------------
@@ -63,7 +64,7 @@ After the installation completes, you will be redirected to the login page. The 
 Next, set the timezone in `config_inc.php`. You can find a list of supported timezones at the [List of Supported Timezones in the PHP Manual](http://php.net/manual/en/timezones.php) page. You'll need to add the `$g_default_timezone` line yourself. This section of the files should look similar to the following:
 
 {: .file }
-/srv/www/bucknell.net/public\_html/mantis/config\_inc.php
+/srv/www/example.com/public\_html/mantis/config\_inc.php
 :   ~~~ php
     <?php   
         $g_hostname = 'localhost';
@@ -79,8 +80,8 @@ Next, set the timezone in `config_inc.php`. You can find a list of supported tim
 
 Ensure that you have no whitespace at the end of this file, or Mantis will throw an error. Save and close the file. Finally, make sure to remove the `admin` folder under your MantisBT installation and reset the permissions as follows. In our example, the command would resemble the following. Note: Make sure to double-check your syntax when using the `rm -rf` command:
 
-    rm -rf /srv/www/bucknell.net/public_html/mantis/admin/
-    chmod 755 /srv/www/bucknell.net/public_html/mantis/
+    rm -rf /srv/www/example.com/public_html/mantis/admin/
+    chmod 755 /srv/www/example.com/public_html/mantis/
 
 At this point, MantisBT is ready to use for your development project! For specific Mantis help and instruction, see the [administration guide](http://www.mantisbt.org/manual/) available on the MantisBT website. You can also install a number of plugins that allow you to customize MantisBT to your needs. Each of these plugins has a specific set of instructions that come with it. You can read more about these on the plugins section of the MantisBT site, listed below.
 

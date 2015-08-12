@@ -5,15 +5,20 @@ author:
 description: 'Set up Pritunl, an open source VPN server with an intuitive web interface'
 keywords: 'pritunl,vpn,vpn server,ubuntu,ubuntu 14.04'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-published: 'Tuesday, July 14th, 2015'
-modified: Tuesday, July 14th, 2015
+published: 'Tuesday, July 27th, 2015'
+modified: Tuesday, July 27th, 2015
 modified_by:
-    name: Elle Krout
+    name: Linode
 title: 'Pritunl VPN Server and Management Panel on Ubuntu 14.04'
 contributor:
     name: Andrew Gottschling
     link: https://github.com/agottschling
 ---
+
+*This is a Linode Community guide. [Write for us](/docs/contribute) and
+earn $250 per published guide.*
+
+<hr>
 
 Pritunl is an open source VPN server and management panel. It gives the user the power of the OpenVPN protocol while using an intuitive web interface. This tutorial will show you how to install, configure, and connect to Pritunl VPN.
 

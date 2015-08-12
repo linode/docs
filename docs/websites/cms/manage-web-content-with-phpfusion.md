@@ -1,7 +1,7 @@
 ---
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Learn to build and deploy websites using the PHP Fusion content management system.'
 keywords: 'cms,php fusion,content mangement system,lamp'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -42,29 +42,29 @@ On Gentoo Linux systems, issue the following commands to update the package data
     emerge --sync
     emerge wget unzip
 
-Now we are ready to begin installing PHP Fusion. For the purposes of this document we will assume that the `DocumentRoot` for the virtual host where you will be installing PHP Fusion is located at `/srv/www/ducklington.org/public_html/` for the domain `ducklington.org`.
+Now we are ready to begin installing PHP Fusion. For the purposes of this document we will assume that the `DocumentRoot` for the virtual host where you will be installing PHP Fusion is located at `/srv/www/example.com/public_html/` for the domain `example.com`.
 
 Install PHP Fusion
 ------------------
 
 At the time of publication, the latest stable version of PHP Fusion is 7.00.07. Remember to check the [PHP Fusion upstream](http://www.php-fusion.co.uk/downloads.php?cat_id=19) to determine and install the latest version of the software so that you will be able to take advantage of any bug and security fixes that the development team has released. Alter the commands in the following procedure to reflect the specifics of your deployment:
 
-    mkdir -p /srv/www/ducklington.org/src/php-fusion/
-    cd /srv/www/ducklington.org/src/php-fusion/
+    mkdir -p /srv/www/example.com/src/php-fusion/
+    cd /srv/www/example.com/src/php-fusion/
     wget http://downloads.sourceforge.net/project/php-fusion/PHP%20Fusion%20Core%207/Core%207.00.xx%20Stable/php-fusion_7-00-07.zip
     unzip php-fusion_7-00-07.zip
-    cp -R /srv/www/ducklington.org/src/php-fusion/7-00-7/files/* /srv/www/ducklington.org/public_html/
+    cp -R /srv/www/example.com/src/php-fusion/7-00-7/files/* /srv/www/example.com/public_html/
 
 Now issue the following commands to prepare your system for the installation process:
 
-    cd /srv/www/ducklington.org/public_html/
+    cd /srv/www/example.com/public_html/
     mv _config.php config.php
     chmod 777 administration/db_backups/ images/ images/imagelist.js images/articles/ images/avatars/ images/news/ images/news_cats/ images/photoalbum/ images/photoalbum/submissions/ forum/attachments/ config.php
 
-Now visit the PHP Fusion setup page located at `http://ducklington.org/setup.php` and follow the steps outlined by the installer. Once the installation has completed successfully, issue the following commands, to secure your new installation and remove the installation script.
+Now visit the PHP Fusion setup page located at `http://example.com/setup.php` and follow the steps outlined by the installer. Once the installation has completed successfully, issue the following commands, to secure your new installation and remove the installation script.
 
-    chmod 644 /srv/www/ducklington.org/public_html/config.php
-    rm /srv/www/ducklington.org/public_html/setup.php
+    chmod 644 /srv/www/example.com/public_html/config.php
+    rm /srv/www/example.com/public_html/setup.php
 
 Congratulations! You now have a fully functional PHP Fusion instance to power your website.
 

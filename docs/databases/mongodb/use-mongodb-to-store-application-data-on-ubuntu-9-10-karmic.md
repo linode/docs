@@ -2,7 +2,7 @@
 deprecated: true
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Install MongoDB for use in application development on Ubuntu 9.10 (Karmic).'
 keywords: 'nosql,database,mognodb,key store'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

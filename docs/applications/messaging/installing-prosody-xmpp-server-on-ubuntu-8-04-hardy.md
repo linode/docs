@@ -2,7 +2,7 @@
 deprecated: true
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Installation and basic usage guide for Prosody, a lightweight XMPP server on Ubuntu 8.04 (Hardy)'
 keywords: 'prosody,prosody ubuntu hardy,prosody.im,xmpp,real time messaging,lua'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -66,9 +66,9 @@ To allow Prosody to provide XMPP/jabber services for more than one domain, inser
 {: .file-excerpt }
 /etc/prosody/prosody.cfg.lua
 :   ~~~ lua
-    Host "ducklington.org"
-    Host "bucknell.net"
-    Host "staff.bucknell.net"
+    Host "example.com"
+    Host "example.com"
+    Host "staff.example.com"
     ~~~
 
 Following a `Host` line there are generally a series of host-specific configuration options. If you want to set options for all hosts, add them below the `Host "*"` entry in your config file. For instance, to ensure that Prosody behaves like a proper Linux server daemon make sure that the `posix;` option is included in the `modules_enabled = { }` table.
@@ -124,7 +124,7 @@ To ensure that your Prosody instance will federate properly with the rest of the
 2.  Service: `_xmpp-client` Protocol: TCP Port: 5222
 3.  Service: `_jabber` Protocol: TCP Port: 5269
 
-The "target" of the SRV record should point to the publicly routable hostname for that machine (e.g. "squire.bucknell.net"). The priority and weight should both be set to `0`.
+The "target" of the SRV record should point to the publicly routable hostname for that machine (e.g. "squire.example.com"). The priority and weight should both be set to `0`.
 
 Enabling Components
 -------------------
@@ -134,17 +134,17 @@ In the XMPP world, many services are provided in components, which allows for gr
 {: .file-excerpt }
 /etc/prosody/prosody.cfg.lua
 :   ~~~ lua
-    Component "conference.bucknell.net" "muc"
+    Component "conference.example.com" "muc"
     ~~~
 
-In this example, `conference.bucknell.net` is the domain where the MUC rooms are located, and will require an "[DNS A record,](/docs/dns-guides/introduction-to-dns)" that points to the IP Address where the Prosody instance is running. MUCs will be identified as JIDs (Jabber IDs) at this hostname, so for instance the "rabbits" MUC hosted by this server would be located at `rabbits@conference.bucknell.net`.
+In this example, `conference.example.com` is the domain where the MUC rooms are located, and will require an "[DNS A record,](/docs/dns-guides/introduction-to-dns)" that points to the IP Address where the Prosody instance is running. MUCs will be identified as JIDs (Jabber IDs) at this hostname, so for instance the "rabbits" MUC hosted by this server would be located at `rabbits@conference.example.com`.
 
-MUC, in contrast to many other common components in the XMPP world, is provided internally by Prosody. Other components, like transports to other services, run on an external interface. Each external component has its own host name, and provides a secret key which allows the central server to authenticate to it. See the following "aim.bucknell.net" component as an example.
+MUC, in contrast to many other common components in the XMPP world, is provided internally by Prosody. Other components, like transports to other services, run on an external interface. Each external component has its own host name, and provides a secret key which allows the central server to authenticate to it. See the following "aim.example.com" component as an example.
 
 {: .file-excerpt }
 /etc/prosody/prosody.cfg.lua
 :   ~~~ lua
-    Component "aim.bucknell.net"
+    Component "aim.example.com"
     component_secret = "mysecretcomponentpassword"
     ~~~
 
@@ -168,17 +168,17 @@ The XMPP protocol supports "in-band" registration, where users can register for 
 
 If you're familiar with the `ejabberdctl` interface from [ejabberd,](/docs/applications/messaging/instant-messaging-services-with-ejabberd-on-ubuntu-12-04-precise-pangolin) `prosodyctl` mimics its counterpart as much as possible.
 
-To use `prosodyctl` to register a user, in this case `lollipop@ducklington.org`, issue the following command:
+To use `prosodyctl` to register a user, in this case `lollipop@example.com`, issue the following command:
 
-    prosodyctl adduser lollipop@ducklington.org
+    prosodyctl adduser lollipop@example.com
 
 To set the password for this account, issue the following command and enter the password as requested:
 
-    prosodyctl passwd lollipop@ducklington.org
+    prosodyctl passwd lollipop@example.com
 
 To remove this user, issue the following command:
 
-    prosodyctl deluser lollipop@ducklington.org
+    prosodyctl deluser lollipop@example.com
 
 Additionally, `prosodyctl` can provide a report on the status of the server in response to the following command:
 
