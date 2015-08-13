@@ -19,7 +19,9 @@ published: 'Monday, June 16, 2014'
 title: 'Running mod_fastcgi and PHP-FPM on Debian 7 (Wheezy) with Apache'
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $100 per published guide.*
+*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
+
+<hr>
 
 This article explains how to configure and install `mod_fastcgi` and `PHP-FPM` on a Debian 7 instance using Apache. Apache's default configuration, which uses `mod_php` instead of `mod_fastcgi`, uses a significant amount of system resources.
 
@@ -164,9 +166,9 @@ We will now configure Apache to pass all requests for PHP files, with the _php_ 
 
         sudo service apache2 restart
 
-If you did not get the _Syntax OK_ result, check your configuration for errors.
+    If you did not get the _Syntax OK_ result, check your configuration for errors.
 
-10.  Check if the PHP is working by creating and accessing a page with `phpinfo()` displayed. The following command will create info.php in /var/www (default directory for websites in Apache):
+10. Check if the PHP is working by creating and accessing a page with `phpinfo()` displayed. The following command will create info.php in /var/www (default directory for websites in Apache):
 
         sudo echo "<?php phpinfo(); ?>" > /var/www/info.php
 

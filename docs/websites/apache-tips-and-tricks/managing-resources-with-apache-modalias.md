@@ -1,7 +1,7 @@
 ---
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'An introduction to mod\_alias for managing file system resources with the Apache web server.'
 keywords: 'resources,http,files,management,mod\_alias,Alias,apache'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

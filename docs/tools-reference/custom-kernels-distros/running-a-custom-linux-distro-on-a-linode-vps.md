@@ -8,7 +8,7 @@ keywords: 'custom distro,custom distribution,advanced Linux'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['platform/custom-kernels-distros/running-a-custom-linux-distro-on-a-linode-vps/', 'custom-instances/custom-distro-howto/']
 modified_by:
-  name: Joe Dooley
+  name: Linode
 modified: Wednesday, October 8, 2014
 title: Running a Custom Linux Distribution on a Linode
 ---

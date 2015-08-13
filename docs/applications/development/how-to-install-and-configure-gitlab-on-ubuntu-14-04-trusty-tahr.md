@@ -2,10 +2,10 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: Hosting your own Git repositories with GitLab Community Edition
-keywords: 'version control,git,gitlab'
+description: 'How-to guide detailing steps needed to install GitLab on an Ubuntu 14.04 (Trusty Tahr).'
+keywords: 'version control, git, gitlab, install gitlab on ubuntu, how to manage repositories with gitlab'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['gitlab-with-ubuntu/']
+alias: ['gitlab-with-ubuntu/','applications/development/gitlab-on-ubuntu-14-04/']
 contributor:
     name: Nashruddin Amin
     link: https://twitter.com/bsd_noobz
@@ -13,7 +13,7 @@ modified: Thursday, September 4th, 2014
 modified_by:
   name: Alex Fornuto
 published: 'Thursday, September 4th, 2014'
-title: Manage Git Repositories with GitLab on Ubuntu 14.04 (Trusty)
+title: 'How to Install and Configure GitLab on Ubuntu 14.04 (Trusty Tahr)' 
 external_resources:
  - '[GitLab Community Edition](https://www.gitlab.com/gitlab-ce/)'
  - '[GitLab Documentation](https://www.gitlab.com/documentation/)'
@@ -22,7 +22,9 @@ external_resources:
 
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $100 per published guide.*
+*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
+
+<hr>
 
 GitLab is a free git repository management application based on Ruby on Rails. It is an interesting alternative if you want to host your own git repositories, since third-party hosting is not always the best option when writing private or closed source software.
 
@@ -417,6 +419,4 @@ You can login using **root** as the username and **5iveL!fe** for the password.
 ## Securing GitLab
 
 Now that you have GitLab running on your server, you might want to add SSL support to secure your GitLab site. Refer to the [SSL Certificates with Nginx](/docs/security/ssl/ssl-certificates-with-nginx) guide to protect your site with SSL.
-
-# More Information
 

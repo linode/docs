@@ -2,7 +2,7 @@
 deprecated: true
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Configuring the LAMP stack on Ubuntu Linux 9.04 (Jaunty).'
 keywords: 'ubuntu lamp server,ubuntu web server,ubuntu jaunty'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

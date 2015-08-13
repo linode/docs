@@ -1,7 +1,7 @@
 ---
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Install and begin using Flyspray to track project development.'
 keywords: 'bug tracking,flyspray,issue management,feature development'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

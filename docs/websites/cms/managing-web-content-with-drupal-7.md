@@ -8,7 +8,7 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-applications/cms-guides/drupal/']
 modified: Thursday, November 6th, 2014
 modified_by:
-  name: Joseph Dooley
+  name: Linode
 published: 'Tuesday, September 29th, 2009'
 title: Installing Drupal 7
 ---

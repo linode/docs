@@ -1,7 +1,7 @@
 ---
 author:
   name: Brett Kaplan
-  email: bkaplan@linode.com
+  email: docs@linode.com
 description: 'Use the Mono project''s Apache module to run ASP.NET applications.'
 keywords: 'apache,mono,.net,asp.net,mod\_mono'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

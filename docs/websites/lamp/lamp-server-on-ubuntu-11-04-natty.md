@@ -2,7 +2,7 @@
 deprecated: true
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Configuring a LAMP stack with Apache, MySQL, PHP and on Ubuntu Linux 11.04 (Natty).'
 keywords: 'ubuntu lamp server,ubuntu 11.04 lamp,natty lamp,ubuntu web server,ubuntu natty'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

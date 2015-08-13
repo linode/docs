@@ -1,7 +1,7 @@
 ---
 author:
   name: Lukas Sabota
-  email: lsabota@linode.com
+  email: docs@linode.com
 description: 'Configuring Exim to serve as a lightweight, send-only SMTP server on Ubuntu 12.04 LTS (Precise Pangolin).'
 keywords: 'exim,exim ubuntu 12.04,send email ubuntu,mail server,linux mail,smtp server,ubuntu exim'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

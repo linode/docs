@@ -2,7 +2,7 @@
 deprecated: true
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'A basic guide to installing nginx on Arch Linux.'
 keywords: 'nginx arch linux,nginx arch,nginx,http server,web server'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

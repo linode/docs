@@ -12,13 +12,13 @@ modified_by:
 published: 'Wednesday, October 3rd, 2012'
 title: 'LAMP Server on Ubuntu 12.04'
 external_resources:
- - '[Ubuntu Server Edition Homepage](http://www.ubuntu.com/products/whatisubuntu/serveredition)'
+ - '[Ubuntu Server Edition Homepage](http://www.ubuntu.com/server)'
  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)'
  - '[MySQL Documentation](http://dev.mysql.com/doc/)'
  - '[PHP Documentation](http://www.php.net/docs.php)'
 ---
 
-A LAMP (Linux, Apache, MySQL, PHP) stack is a basic web stack used to prepare servers for hosting online. This guide provides step by step instructions for installing a full featured LAMP stack on an Ubuntu 12.04 (Precise Pangolin) Linode.
+Setting up a LAMP (Linux, Apache, MySql, PHP) stack on your server will allow for the creation and hosting of websites and web applications. This guide provides step by step instructions for installing a LAMP stack on an Ubuntu 12.04 (Precise Pangolin) Linode.
 
 {: .note}
 >
@@ -51,8 +51,6 @@ A LAMP (Linux, Apache, MySQL, PHP) stack is a basic web stack used to prepare se
     /etc/apache2/apache2.conf
     :   ~~~ conf
         KeepAlive Off
-
-        ...
 
         <IfModule mpm_prefork_module>
         StartServers 2
@@ -87,7 +85,7 @@ There are different ways to set up virtual hosts; however, the method below is r
     >
     >The `ErrorLog` and `CustomLog` entries are suggested for more fine-grained logging, but are not required. If they are defined (as shown above), the `logs` directories must be created before you restart Apache.
 
-2.  Create the above-referenced directories:
+2.  Create the directories referenced above:
 
         sudo mkdir -p /var/www/example.com/public_html
         sudo mkdir /var/www/example.com/logs
@@ -129,7 +127,7 @@ There are different ways to set up virtual hosts; however, the method below is r
 
     Enter the root password. The MySQL prompt will appear.
 
-2.  Create a database and a user with permissions for it. In this example the databse is called `webdata`, the user `webuser` and password `password`:
+2.  Create a database and a user with permissions for it. In this example the database is called `webdata`, the user `webuser` and password `password`:
 
         create database webdata;
         grant all on webdata.* to 'webuser' identified by 'password';
@@ -138,7 +136,7 @@ There are different ways to set up virtual hosts; however, the method below is r
 
         quit
 
-With Apache and MySQL installed you are now ready to move on to installing PHP.
+With Apache and MySQL installed you are now ready to install PHP.
 
 
 ## Install and Configure PHP
@@ -147,7 +145,7 @@ With Apache and MySQL installed you are now ready to move on to installing PHP.
 
         sudo apt-get install php5 php-pear
 
-    If you need MySQL support also install `php5-mysql`
+    If you need MySQL support, also install `php5-mysql`
 
         sudo apt-get install php5-mysql
 

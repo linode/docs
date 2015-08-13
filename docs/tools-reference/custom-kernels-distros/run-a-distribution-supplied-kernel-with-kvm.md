@@ -12,7 +12,7 @@ published: 'Monday June 29th, 2015'
 title: 'Run a Distribution-Supplied Kernel on a KVM Linode'
 ---
 
-This guide explains how enable the kernels your OS provides for a KVM Linode. This is useful if you'd like to enable specific kernel features, or you'd prefer to handle kernel upgrades directly. These steps have been tested on:
+This guide explains how to enable the kernels your OS provides for a KVM Linode. This is useful if you'd like to enable specific kernel features, or you'd prefer to handle kernel upgrades directly. These steps have been tested on:
 
 * Arch Linux
 * CentOS 7
@@ -91,6 +91,7 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
 
     * CentOS 7
 
+          mkdir /boot/grub
           grub2-mkconfig -o /boot/grub/grub.cfg
 
     * Fedora 22 - Replace with the current kernel version

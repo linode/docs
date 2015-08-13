@@ -3,20 +3,23 @@ deprecated: false
 author:
   name: Ryan Laverdiere
   email: 
-description: 'Using StartSSL with the latest Nginx on Debian 7'
-keywords: 'startssl,nginx'
+description: 'Learn how to install the latest stable version of Nginx on Debian 7 (Wheezy) and deploy a SSL certificate from StartSSL.'
+keywords: 'startssl, nginx, install nginx, install nginx on debian 7, ssl certificate, debian 7 (wheezy)'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Monday, October 20, 2014
+alias: ['websites/nginx/startssl-wth-latest-nginx-debian-7/']
+modified: Monday, July 13, 2015
 modified_by:
-  name: Alex Fornuto
+  name: Ryan Laverdiere
 published: Monday, October 20, 2014
-title: 'Using StartSSL with the latest Nginx on Debian 7'
+title: 'How to Install Nginx and a StartSSL Certificate on Debian 7 (Wheezy)'
 contributor:
     name: Ryan Laverdiere
     link: https://github.com/capecodrailfan
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $100 per published guide.*
+*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
+
+<hr>
 
 This guide is going to show you how to install the latest stable version of Nginx on Debian Wheezy. It will also deploy a free SSL certificate from StartSSL that will get you an A on the [Qualys SSL Labs SSL Server Test](https://www.ssllabs.com/ssltest/). In order to achieve an "A" on the test, we are going to configure Nginx to prefer server ciphers, only use strong ciphers, and disable vulnerable protocols SSLv2 and SSLv3.
 
@@ -216,7 +219,7 @@ You should now be logged into your StartSSL account.
             ssl_session_cache shared:SSL:10m;
             ssl_session_timeout  5m;
 
-            ssl_ciphers  "EECDH+ECDSA+AESGCM EECDH+aRSA+AESGCM EECDH+ECDSA+SHA384 EECDH+ECDSA+SHA256 EECDH+aRSA+SHA384 EECDH+aRSA+SHA256 EECDH+aRSA+RC4 EECDH EDH+aRSA RC4 !aNULL !eNULL !LOW !3DES !MD5 !EXP !PSK !SRP !DSS";
+            ssl_ciphers  "EECDH+ECDSA+AESGCM EECDH+aRSA+AESGCM EECDH+ECDSA+SHA384 EECDH+ECDSA+SHA256 EECDH+aRSA+SHA384 EECDH+aRSA+SHA256 EECDH+aRSA+RC4 EECDH EDH+aRSA RC4 !EXPORT !aNULL !eNULL !LOW !3DES !MD5 !EXP !PSK !SRP !DSS";
             ssl_prefer_server_ciphers   on;
             
             ssl_protocols TLSv1 TLSv1.1 TLSv1.2;

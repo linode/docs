@@ -1,7 +1,7 @@
 ---
 author:
   name: Jonathan Frederickson
-  email: jfrederickson@linode.com
+  email: docs@linode.com
 description: Using the Ruby on Rails framework for Nginx web applications on Debian 7
 keywords: 'ruby on rails,ruby on nginx,rails apps'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

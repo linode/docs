@@ -15,7 +15,7 @@ external_resources:
  - '[OpenSSL Documentation](http://www.openssl.org/docs/)'
 ---
 
-Follow these instructions to get a commercial SSL certificate installed on your server. Please note that commercial SSL certificates require a unique IP address for each certificate. As SSL certificates may be used by many kinds of software, these instructions are generic in nature. If you're intending to use your SSL certificate on a website powered by Apache, you should follow our [Apache SSL guides](/docs/web-servers/apache/ssl-guides/) instead.
+Follow these instructions to get a commercial SSL certificate installed on your server. Please note that commercial SSL certificates require a unique IP address for each certificate. As SSL certificates may be used by many kinds of software, these instructions are generic in nature. If you're intending to use your SSL certificate on a website powered by Apache, you should follow our Apache SSL guides for [Debian & Ubuntu](/docs/security/ssl/ssl-apache2-debian-ubuntu) or [CentOS](/docs/security/ssl/ssl-apache2-centos) instead.
 
 ## Install OpenSSL
 

@@ -107,7 +107,7 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
 
 11. In the Linode Manager, edit your Linode's configuration profile to use either **pv-grub-x86\_32** or **pv-grub-x86\_64** as the kernel, depending on the version of Ubuntu you have deployed (32-bit or 64-bit).
 12. Make sure the root device is specified as **xvda**.
-13. In the **Filesystem/Boot Helpers** section, disable the **Xenify distro** option.
+13. In the **Filesystem/Boot Helpers** section, disable the **Distro Helper** option.
 14. Save your changes by clicking **Save Profile** at the bottom of the page.
 15. Reboot your Linode from the **Dashboard** tab.
 16. Once your Linode has rebooted, log in via SSH and issue the following command:
@@ -205,7 +205,7 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
 
 11. In the Linode Manager, edit your Linode's configuration profile to use either **pv-grub-x86\_32** or **pv-grub-x86\_64** as the kernel, depending on the version of Ubuntu you have deployed (32-bit or 64-bit).
 12. Make sure the root device is specified as **xvda**.
-13. In the **Filesystem/Boot Helpers** section, disable the **Xenify distro** option.
+13. In the **Filesystem/Boot Helpers** section, disable the **Distro Helper** option.
 14. Save your changes by clicking **Save Profile** at the bottom of the page.
 15. Reboot your Linode from the **Dashboard** tab.
 16. Once your Linode has rebooted, log in via SSH and issue the following command:
@@ -305,7 +305,7 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
 
 11. In the Linode Manager, edit your Linode's configuration profile to use either **pv-grub-x86\_32** or **pv-grub-x86\_64** as the kernel, depending on the version of Ubuntu you have deployed (32-bit or 64-bit).
 12. Make sure the root device is specified as **xvda**.
-13. In the **Filesystem/Boot Helpers** section, disable the **Xenify distro** option.
+13. In the **Filesystem/Boot Helpers** section, disable the **Distro Helper** option.
 14. Save your changes by clicking **Save Profile** at the bottom of the page.
 15. Reboot your Linode from the **Dashboard** tab.
 16. Once your Linode has rebooted, log in via SSH and issue the following command:
@@ -389,7 +389,7 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
 
 10. In the Linode Manager, edit your Linode's configuration profile to use either **pv-grub-x86\_32** or **pv-grub-x86\_64** as the kernel, depending on the version of Debian you have deployed (32-bit or 64-bit).
 11. Make sure the root device is specified as **xvda**.
-12. In the **Filesystem/Boot Helpers** section, disable the **Xenify distro** option.
+12. In the **Filesystem/Boot Helpers** section, disable the **Distro Helper** option.
 13. Save your changes by clicking **Save Profile** at the bottom of the page.
 14. Reboot your Linode from the **Dashboard** tab.
 15. Once your Linode has rebooted, log in via SSH and issue the following command:
@@ -473,7 +473,7 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
 
 10. In the Linode Manager, edit your Linode's configuration profile to use either **pv-grub-x86\_32** or **pv-grub-x86\_64** as the kernel, depending on the version of Debian you have deployed (32-bit or 64-bit).
 11. Make sure the root device is specified as **xvda**.
-12. In the **Filesystem/Boot Helpers** section, disable the **Xenify distro** option.
+12. In the **Filesystem/Boot Helpers** section, disable the **Distro Helper** option.
 13. Save your changes by clicking **Save Profile** at the bottom of the page.
 14. Reboot your Linode from the **Dashboard** tab.
 15. Once your Linode has rebooted, log in via SSH and issue the following command:
@@ -545,7 +545,7 @@ title CentOS (2.6.32-431.23.3.el6.x86_64)
         ./selinux.sh
 
 2.  Once the script has finished, edit your Linode's configuration profile. Change the **Kernel** to **pv-grub-x86\_32** or **pv-grub-x86\_64**, depending on which version of CentOS (32-bit or 64-bit) you're running.
-3.  Set the **Xenify Distro** and **Automount devtmpfs** options to **No**.
+3.  Set the **Distro Helper** and **Automount devtmpfs** options to **No**.
 4.  Click the **Save Changes** button.
 5.  Reboot your Linode from the **Dashboard** tab.
 6.  Once your Linode has rebooted, log in via SSH and issue the following command:

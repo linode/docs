@@ -1,7 +1,7 @@
 ---
 author:
   name: Linode
-  email: scampbell@linode.com
+  email: docs@linode.com
 description: 'An introduction to Linux and Unix-like systems covering history, system architecture, and distribution characteristics.'
 keywords: 'Linux,Unix-Like systems,history'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

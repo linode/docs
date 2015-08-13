@@ -49,7 +49,7 @@ Next, you'll need to create a configuration profile for the new Linode. Here's h
 1.  [Create a new configuration profile](/docs/disk-images-config-profiles#sph_creating-a-configuration-profile) in the Linode Manager.
 2.  Select the `pv-grub-x86_64` kernel from the **Kernel** menu.
 3.  In the **Block Device Assignment** section, select the disks you created in the previous section of this guide.
-4.  Disable the **Automount devtmpfs** and **Xenify Distro** settings.
+4.  Disable the **Automount devtmpfs** and **Distro Helper** settings.
 5.  Save the configuration profile.
 
 Congratulations! You're now ready to set up full disk encryption on your Linode.

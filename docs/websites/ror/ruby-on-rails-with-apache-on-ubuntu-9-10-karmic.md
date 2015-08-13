@@ -2,7 +2,7 @@
 deprecated: true
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Using the Apache web server with Ubuntu 9.10 to serve Ruby on Rails applications.'
 keywords: 'ruby on rails,rails on ubuntu,rails apps,rails and apache'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

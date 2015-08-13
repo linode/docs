@@ -178,6 +178,6 @@ If your system absolutely **cannot** afford any downtime, then scale the platfor
 > You can deploy your services to an additional Linode to enable high availability.  New Linodes will automatically be placed on known good hosts, and can ensure that vital services remain online throughout the reboot process.
 
  - [Linode NodeBalancers](/docs/platform/nodebalancer/)
- - [Using Nginx for Proxy Services and Software Load Balancing](/docs/uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing)
+ - [Using Nginx for Proxy Services and Software Load Balancing](/docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer)
  - [MySQL Master-Master Replication](/docs/databases/mysql/mysql-master-master-replication)
  - [MariaDB Clusters with Galera](/docs/databases/mariadb/clustering-with-mariadb-and-galera)

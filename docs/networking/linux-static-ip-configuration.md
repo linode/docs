@@ -13,7 +13,7 @@ published: 'Thursday, July 20th, 2014'
 title: Linux Static IP Configuration
 ---
 
-By default, Linodes use DHCP to acquire their IP address, routing and DNS information. However, DHCP will only assign one IP to your Linode, so if you have multiple IPs, you'll need to use a static configuration. You can use [Network Helper](/docs/platform/network-helper) to to create static a networking configuration for you automatically, or follow the steps below.
+By default, Linodes use DHCP to acquire their IP address, routing and DNS information. However, DHCP will only assign one IP to your Linode, so if you have multiple IPs, you'll need to use a static configuration. You can use [Network Helper](/docs/platform/network-helper) to create a static networking configuration for you automatically, or follow the steps below.
 
 {:.note}
 > As errors in network configurations may cause SSH connections to be disconnected, it is advised that you use the Linode Shell (LISH) when making network configuration changes. See [Using the Linode Shell (LISH)](/docs/networking/using-the-linode-shell-lish) for more information. 

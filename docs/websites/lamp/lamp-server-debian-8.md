@@ -37,7 +37,7 @@ Prior to installing your LAMP stack ensure that:
 
 -   Your Linode's repositories and packages are up-to-date:
 
-        sudo apt-get update && sudo apt-get upgrade -y
+        sudo apt-get update && sudo apt-get upgrade
 
 ## Apache
 
@@ -58,7 +58,7 @@ Prior to installing your LAMP stack ensure that:
 3.  Open `/etc/apache2/mods-available/mpm_prefork.conf` in your text editor and edit the values as needed. The following is optimized for a 1GB Linode:
 
     {: .file}
-    /etc/apache2/mods-available/mpm_prefork.comf
+    /etc/apache2/mods-available/mpm_prefork.conf
     :   ~~~ conf
         # prefork MPM
         # StartServers: number of server processes to start
@@ -162,7 +162,7 @@ MySQL is a *relational database management system* (RDBMS) and is a popular comp
 
         mysql_secure_installation
 
-    It is reccomended that you select yes (`y`) for all questions. If you already have a secure root password, you do not need to change it.
+    It is recommended that you select yes (`y`) for all questions. If you already have a secure root password, you do not need to change it.
 
 ### Set Up a MySQL Database
 

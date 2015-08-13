@@ -1,7 +1,7 @@
 ---
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Install the simple and lightweight Discussion forum FluxBB on your Linux VPS.'
 keywords: 'bulletin board,forum,discussion forum,fluxbb'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

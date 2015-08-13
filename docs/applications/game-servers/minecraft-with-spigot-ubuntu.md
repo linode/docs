@@ -17,7 +17,9 @@ contributor:
 ---
 
 *This is a Linode Community guide. [Write for us](/docs/contribute) and
-earn $100 per published guide.*
+earn $250 per published guide.*
+
+<hr>
 
 This guide shows you how to setup your own Minecraft server on a Linode running Ubuntu 14.04/14.10. You can play online with your friends or host a public server.
 

@@ -1,6 +1,6 @@
 ---
 author:
-  name: Dave Eaton
+  name: Linode
   email: docs@linode.com
 description: 'Cacti is a powerful server monitoring solution that uses SNMP to track resource usage on Ubuntu 12.04 (Precise).'
 keywords: 'Cacti,Ubuntu,Ubuntu Precise,Precise,SNMP'
@@ -8,7 +8,7 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['server-monitoring/cacti/ubuntu-12-04-precise-pangolin/']
 modified: Thursday, October 11th, 2012
 modified_by:
-  name: Dave Eaton
+  name: Linode
 published: 'Thursday, October 11th, 2012'
 title: 'Monitoring Resource Utilization with Cacti on Ubuntu 12.04 (Precise)'
 external_links:

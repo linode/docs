@@ -3,14 +3,14 @@ author:
   name: Alex Fornuto
   email: afornuto@linode.com
 description: 'Use uWSGI to deploy Python application servers in conjunction with nginx.'
-keywords: 'uwsgi,wsgi,nginx,python,ubuntu'
+keywords: 'uwsgi,wsgi,nginx,python,ubuntu, how to install uwsgi, how to deploy python applications with nginx'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['web-servers/nginx/python-uwsgi/ubuntu-12-04-precise-pangolin/']
+alias: ['web-servers/nginx/python-uwsgi/ubuntu-12-04-precise-pangolin/','websites/nginx/wsgi-using-uwsgi-and-nginx-on-ubuntu-12-04-precise-pangolin/index.cfm/','wsgi-using-uwsgi-and-nginx-on-ubuntu-12-04-precise-pangolin/']
 modified: Tuesday, November 13th, 2012
 modified_by:
   name: Linode
 published: 'Tuesday, November 13th, 2012'
-title: 'WSGI using uWSGI and nginx on Ubuntu 12.04 (Precise Pangolin)'
+title: 'How to Install uWSGI with Nginx on Ubuntu 12.04 (Precise Pangolin)'
 ---
 
 The uWSGI server provides a non-FastCGI method for deploying Python applications with the nginx web server. In coordination with nginx, uWSGI offers great stability, flexibility, and performance. However, to deploy applications with uWSGI and nginx, you must compile nginx manually with the included uwsgi module.
@@ -164,7 +164,7 @@ You can test by pointing a web browser to your domian. If you see `Hello World!`
 Additional Application Servers
 ------------------------------
 
-If the Python application you've deployed requires more application resources than a single Linode instance can provide, all of the methods for deploying a uWSGI application server are easily scaled to rely on multiple uSWGI instances that run on additional Linodes with the request load balanced using nginx's `upstream` capability. See our documentation of [proxy and software load balancing with nginx](/docs/uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing) for more information. For a basic example configuration, see the following example:
+If the Python application you've deployed requires more application resources than a single Linode instance can provide, all of the methods for deploying a uWSGI application server are easily scaled to rely on multiple uSWGI instances that run on additional Linodes with the request load balanced using nginx's `upstream` capability. See our documentation of [proxy and software load balancing with nginx](/docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer) for more information. For a basic example configuration, see the following example:
 
 {: .file-excerpt }
 nginx configuration
@@ -204,7 +204,7 @@ You may wish to consult the following resources for additional information on th
 
 - [Installing Nginx on Ubuntu 12.04 (Precise Pangolin)](/docs/websites/apache/apache-2-web-server-on-ubuntu-12-04-lts-precise-pangolin)
 - [Deploy a LEMP Server on Ubuntu 12.04 (Precise Pangolin)](/docs/lemp-guides/ubuntu-12.04-precise-pangolin)
-- [Configure nginx Proxy Servers](/docs/uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing)
+- [Configure nginx Proxy Servers](/docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer)
 
 
 

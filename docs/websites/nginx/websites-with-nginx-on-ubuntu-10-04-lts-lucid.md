@@ -2,7 +2,7 @@
 deprecated: true
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'A basic guide to installing nginx from source on Ubuntu 10.04 LTS (Lucid)'
 keywords: 'nginx,nginx ubuntu 10.04,http,web servers,ubuntu,ubuntu l0.04,ubuntu lucid'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

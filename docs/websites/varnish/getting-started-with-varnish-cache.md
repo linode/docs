@@ -17,7 +17,9 @@ external_resources:
  - '[Official Varnish Documentation](https://www.varnish-cache.org/docs)'
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $100 per published guide.*
+*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
+
+<hr>
 
 Need to handle a lot of traffic? Caching is one of the best ways to maximize the output of your Linode. The idea is your server shouldn't have to regenerate the same dynamic content from scratch every time it's accessed. Save your Linode's resources by putting a caching proxy like Varnish Cache in front of your web service to accelerate responses to HTTP requests and reduce server workload.
 

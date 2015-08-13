@@ -130,7 +130,7 @@ This will download the StackScript on the Linode as `ssinclude-[NUMBER]`. To dow
 
     source <ssinclude StackScriptID="[NUMBER]">
 
-Otherwise execute the script on a second line, as seen below:
+If you're scripting in another language, execute the script on a second line, as seen below:
 
     <ssinclude StackScriptID="[NUMBER]">
     ./ssinclude-[NUMBER]

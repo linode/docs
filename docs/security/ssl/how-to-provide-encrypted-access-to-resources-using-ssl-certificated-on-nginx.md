@@ -2,15 +2,15 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Use TLS/SSL to provide transport later encryption for HTTP connections with nginx.'
-keywords: 'ssl,tls,nginx,https,secure http'
+description: 'How to Use TLS/SSL to provide transport layer encryption for HTTP connections with nginx.'
+keywords: 'ssl,tls,nginx,https,secure http, encryption for HTTP, SSL certificates with Nginx'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['web-servers/nginx/configuration/ssl/','security/ssl/ssl-certificates-with-nginx/index.cfm/']
+alias: ['web-servers/nginx/configuration/ssl/','security/ssl/ssl-certificates-with-nginx/index.cfm/','websites/ssl/ssl-certificates-with-nginx.cfm/','security/ssl/ssl-certificates-with-nginx/']
 modified: Tuesday, June 10th, 2014
 modified_by:
   name: Alex Fornuto
 published: 'Monday, November 8th, 2010'
-title: SSL Certificates with Nginx
+title: 'How to Provide Encrypted Access to Resources Using SSL Certificates on Nginx'
 external_resources:
  - '[Nginx Project Home Page](http://nginx.org)'
  - '[Nginx Project SSL Documentation](http://wiki.nginx.org/NginxHttpSslModule)'

@@ -2,7 +2,7 @@
 deprecated: true
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Instructions for installing and using the Apache Tomcat Java Servlet engine on Fedora 14.'
 keywords: 'apache tomcat fedora 14,java,java fedora 14,java servlets fedora 14,java fedora'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

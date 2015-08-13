@@ -1,7 +1,7 @@
 ---
 author:
   name: Linode
-  email: scampbell@linode.com
+  email: docs@linode.com
 description: 'Our guide to running a mail server on your Linode.'
 keywords: 'mail server,linode guide,running a mail server,linode quickstart guide'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

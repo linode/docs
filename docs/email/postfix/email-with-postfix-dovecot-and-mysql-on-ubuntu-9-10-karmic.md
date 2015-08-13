@@ -2,7 +2,7 @@
 deprecated: true
 author:
   name: Brett Kaplan
-  email: bkaplan@linode.com
+  email: docs@linode.com
 description: 'Installing Postfix with Dovecot and MySQL on Ubuntu 9.10 (Karmic).'
 keywords: 'postfix ubuntu 9.10,postfix karmic,postfix dovecot,ubuntu mail server,linux mail server'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

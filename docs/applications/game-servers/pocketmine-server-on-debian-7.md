@@ -28,7 +28,7 @@ PocketMine is a third party server for the MineCraft - Pocket Edition game for [
 
         sudo apt-get update && sudo apt-get upgrade
 
-3.  Install dependancies:
+3.  Install dependencies:
 
         sudo apt-get install perl gcc g++ make automake libtool autoconf m4
 

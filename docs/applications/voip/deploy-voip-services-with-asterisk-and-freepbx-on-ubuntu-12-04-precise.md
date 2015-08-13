@@ -278,7 +278,7 @@ Before you can use FreePBX, you will need to set up a LAMP stack. An basic step-
 
     {: .note }
     >
-    > This is the latest version of FreePBX at the time of this guide's publication. You can check [this page](http://www.freepbx.org/download-freepbx) for the latest build of FreePBX.
+    > This is the latest version of FreePBX at the time of this guide's publication. You can check [this page](http://www.freepbx.org/downloads/freepbx-distro/) for the latest build of FreePBX.
 
 2.  The FreePBX directory contains SQL files that you can insert into the database we created previously. Issue the following commands to insert this data:
 

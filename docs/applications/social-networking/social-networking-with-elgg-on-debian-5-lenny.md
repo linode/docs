@@ -1,7 +1,7 @@
 ---
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Niche and community social networking with Elgg.'
 keywords: 'social networking,lamp,elgg,elgg debian lenny'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

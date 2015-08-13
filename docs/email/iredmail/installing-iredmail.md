@@ -16,7 +16,9 @@ published: 'Monday, October 6, 2014'
 title: 'Installing iRedMail on your Linode'
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $100 per published guide.*
+*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
+
+<hr>
 
 Running your own mail server has many benefits. It allows you to manage the size of your mailboxes and attachments, run hourly/daily email backups, view mail logs, and gives you the freedom to use any domain name available. The drawback is usually the in-depth and sometimes complicated process of installing all the necessary parts. This guide uses a streamlined process, the iRedMail install script, and should have you up and running your mail server in under 15 minutes.
 

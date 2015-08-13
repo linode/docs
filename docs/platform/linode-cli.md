@@ -1,7 +1,7 @@
 ---
 author:
   name: Linode
-  email: scampbell@linode.com
+  email: docs@linode.com
 description: 'An introduction to the Linode command line interface.'
 keywords: 'linode cli, command line interface, man pages, api key'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

@@ -2,15 +2,15 @@
 author:
   name: Alex Fornuto
   email: afornuto@linode.com
-description: 'Understanding nginx web server configuration, from installation to setting up sites in nginx.conf.'
-keywords: 'nginx,web server,nginx.conf'
+description: 'Nginix is a high-performance web server that delivers large amounts of static content quickly. This doc will outline the basic Nginx parameters and conventions.'
+keywords: 'nginx, web server, nginx.conf, install'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['web-servers/nginx/configuration/basic/','websites/nginx/basic-nginx-configuration/index.cfm/']
+alias: ['web-servers/nginx/configuration/basic/','websites/nginx/basic-nginx-configuration/index.cfm/','websites/nginx/basic-nginx-configuration/']
 modified: Tuesday, May 20th, 2014
 modified_by:
   name: Alex Fornuto
 published: 'Monday, January 18th, 2010'
-title: Basic Nginx Configuration
+title: How to Configure Nginx
 external_resources:
  - '[Nginx guides in the Linode Library](/docs/web-servers/nginx/)'
  - '[Nginx community documentation](http://wiki.nginx.org)'
@@ -36,7 +36,7 @@ All Nginx configuration files are located in the `/etc/nginx/` directory. The pr
 Before we begin, make sure you have completed the following:
 
 -   Follow the [Getting Started](/docs/getting-started/) guide.
--   Install the [Nginx server](/docs/websites/nginx/websites-with-nginx-on-debian-7-wheezy).
+-   Install the [Nginx server](/docs/websites/nginx/nginx-web-server-debian-8).
 -   The steps required in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
 If you're new to Linux server administration, you may also be interested in our [Beginner's Guide](/docs/beginners-guide/) and [Administration Basics Guide](/docs/using-linux/administration-basics).

@@ -55,9 +55,7 @@ The first section of the file contains the paths to the directories used by Muni
 
 > \# dbdir /var/lib/munin \# htmldir /var/cache/munin/www \# logdir /var/log/munin \# rundir /var/run/munin
 
-There are additional directives after the directory location block such as `tmpldir`, which shows Munin where to look for HTML templates, and others that allow you to configure mail to be sent when something on the server changes. These additional directives are explained more in depth on the [munin.conf page of the Munin website](`
-`
-http://munin-monitoring.org/wiki/munin.conf). You can also find quick explanations inside the file itself via hash (`#`) comments. Take note that these global directives must be defined prior to defining hosts monitored by Munin. Do not place global directives at the bottom of the `munin.conf` file.
+There are additional directives after the directory location block such as `tmpldir`, which shows Munin where to look for HTML templates, and others that allow you to configure mail to be sent when something on the server changes. These additional directives are explained more in depth on the [munin.conf page of the Munin website](http://munin-monitoring.org/wiki/munin.conf). You can also find quick explanations inside the file itself via hash (`#`) comments. Take note that these global directives must be defined prior to defining hosts monitored by Munin. Do not place global directives at the bottom of the `munin.conf` file.
 
 The last section of the `munin.conf` file defines the hosts Munin retrieves information from. For a default configuration, adding a host can be done in the form shown below:
 

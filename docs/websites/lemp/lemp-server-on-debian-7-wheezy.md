@@ -1,7 +1,7 @@
 ---
 author:
   name: Linode
-  email: bolow@linode.com
+  email: docs@linode.com
 description: 'Install web applications with "LEMP", a LAMP-like stack using nginx, MySQL, and PHP'
 keywords: 'nginx,lemp,lepp,perl,python,php,linux,web applications'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -13,7 +13,7 @@ published: 'Friday, February 7th, 2014'
 title: 'LEMP Server on Debian 7 (Wheezy)'
 external_resources:
  - '[Basic Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration)'
- - '[Clustered Web Servers and Software Load Balancing with Nginx](/docs/uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing)'
+ - '[Clustered Web Servers and Software Load Balancing with Nginx](/docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer)'
  - '[Deploy CGI and Perl Scripts with Perl-FastCGI and Nginx](/docs/web-servers/nginx/perl-fastcgi/debian-6-squeeze)'
  - '[Use PostgeSQL as an Alternative to MySQL for data storage](/docs/databases/postgresql/debian-6-squeeze)'
  - '[Deploy Python Applications with uWSGI and Nginx](/docs/web-servers/nginx/python-uwsgi/debian-6-squeeze)'

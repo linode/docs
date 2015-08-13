@@ -2,7 +2,7 @@
 deprecated: true
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Instructions for getting started with the Apache web server on Ubuntu 10.04 LTS (Lucid).'
 keywords: 'apache,apache ubuntu 10.04,apache ubuntu lucid,web server,apache on ubuntu,apache lucid'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

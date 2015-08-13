@@ -2,7 +2,7 @@
 deprecated: true
 author:
   name: Linode
-  email: skleinman@linode.com
+  email: docs@linode.com
 description: 'Using Ikiwiki on Arch Linux to power a standard wiki implementation.'
 keywords: 'ikiwiki,ubuntu,wiki,perl,git,markdown,lucid'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

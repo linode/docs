@@ -1,7 +1,7 @@
 ---
 author:
   name: Mike Rosabal
-  email: mrosabal@linode.com
+  email: docs@linode.com
 description: 'Get started with MySQL for web and server applications on Debian 7 (Wheezy).'
 keywords: 'mysql debian 7,mysql debian,mysql debian squeeze,mysql linux,mysql linux vps'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
