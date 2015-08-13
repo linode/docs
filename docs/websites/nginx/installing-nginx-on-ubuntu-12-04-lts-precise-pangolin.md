@@ -19,7 +19,7 @@ external_links:
  - '[Configure PHP and FastCGI with nginx](/docs/web-servers/nginx/php-fastcgi/ubuntu-10.04-lucid)'
 ---
 
-Nginx is a lightweight, high performance web server designed with the purpose of delivering large amounts of static content quickly and with efficient use of system resources. In contrast to the [Apache server](/docs/web-servers/apache/), Nginx uses an asynchronous event-driven model which provides more predictable performance under load.
+Nginx is a lightweight, high performance web server designed to deliver large amounts of static content quickly and with efficient use of system resources. In contrast to the [Apache server](/docs/web-servers/apache/), Nginx uses an asynchronous event-driven model which provides more predictable performance under load.
 
 {: .note}
 >
@@ -45,7 +45,7 @@ Nginx is a lightweight, high performance web server designed with the purpose of
 
 ### Install Nginx from Ubuntu Repositories
 
-Nginx is included in the Ubuntu software repositories. While using this method will leave you with a working web server *it is not the preferred method for installing Nginx.* Installing Nginx from the Ubuntu repositories ensures that Nginx has been tested and successfully runs at its best on Ubuntu. However, the Ubuntu repositories are often a few versions behind the latest Nginx release.
+Nginx is included in the Ubuntu software repositories. Installing Nginx from the Ubuntu repositories ensures that Nginx has been tested and successfully runs at its best on Ubuntu. However, the Ubuntu repositories are often a few versions behind the latest Nginx release.
 
 1.  Install the Nginx web server:
 
@@ -55,7 +55,7 @@ Nginx is included in the Ubuntu software repositories. While using this method w
 
         sudo service nginx start
 
-3.  Nginx can be tested by navigating to your FQDN in your browser. The default Nginx page should be present.
+3.  Nginx can be tested by navigating to your IP address or FQDN in your browser. The default Nginx page should be present.
 
 
 ### Install Nginx from a Source Distribution
@@ -65,13 +65,13 @@ Nginx is included in the Ubuntu software repositories. While using this method w
 
         sudo apt-get install libpcre3-dev build-essential libssl-dev
 
-2.  The source files and binaries will be downloaded in the `/opt/` directory. Navigate to `/opt/`:
+2.  Navigate to `/opt/`:
 
         cd /opt/
 
-3.  Download the [latest version](http://nginx.org/) of Nginx, which can be found on their website. At the time of publication, Nginx 1.9.2 is the mainline version:
+3.  Download the [latest version](http://nginx.org/) of Nginx, which can be found on their website. At the time of publication, Nginx 1.9.3 is the mainline version:
 
-        sudo wget http://nginx.org/download/nginx-1.9.2.tar.gz
+        sudo wget http://nginx.org/download/nginx-1.9.3.tar.gz
 
 4.  Expand the file, then navigate to the new directory:
 
@@ -115,7 +115,7 @@ Nginx is included in the Ubuntu software repositories. While using this method w
 
     Nginx is now installed in `/opt/nginx`.
 
-8.  Create a script to manage Nginx:
+8.  Create an `init` script to manage Nginx:
 
     {: .file}
     /etc/init.d/nginx
@@ -193,4 +193,4 @@ Nginx is included in the Ubuntu software repositories. While using this method w
 
         sudo service nginx start
 
-Continue reading our introduction to [Basic Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration) for more information about using and setting up a web server.
+Continue reading our introduction to [Basic Nginx Configuration](/docs/websites/nginx/how-to-configure-nginx/) for more information about using and setting up a web server.
