@@ -194,8 +194,9 @@ If you are working on multiple guide submissions or changes, you will need to ut
 
 		git branch
 
-5.  Once you have completed working with a branch, you can remove your local copy of that branch by utilizing the following command.
+5.  Once you have completed working with a branch, you can remove your local copy of that branch by switching to a different branch, such as master, and using the -d flag to remove the unused branch.
 
+		git checkout master
 		git branch -d guide-title-2
 
 {: .note}
