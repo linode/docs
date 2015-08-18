@@ -131,17 +131,38 @@ Prior to starting this guide, you will need to ensure that each Linode's [hostna
 
         salt '*' test.ping
 
+##Installing individal packages with Salt
+
+Once you have completed the previousl configuration steps, you can install packages using Salt on all of your minions.  Packages can be targed to individual minions, or installed to all minions via simple commands.  For these examples we will use Apache
+
+1.  To install a package to a specific minion:
+
+        salt 'minionid' pkg.install apache2
+
+2.  To install a package to all minions:
+
+        salt '*' pkg.install apache2
+
+3.  To control services related to the installed package:
+
+        salt '*' service.start apache2
+        salt '*' service.stop apache2
+
+4.  To remove a package from minions:
+
+        salt '*' pkg.remove apache2
+
 ##Deploy your first Salt Formula
 
 Salt Formulas create a framework of software and configurations to be deployed to your minions.  Multiple Salt Formulas can be deployed to your Minions, and this will allow you to manage package configuration and maintenance from the Salt Master.  These steps will walk you through installing one of the premade formulas hosted on [Salt's Github](https://github.com/saltstack-formulas).
 
-###Install GitFS
+###Configure GitFS
 
 Salt utilizes GitFS to manage remote repositories for Salt Formulas.  These next steps will walk you through installing and configuring GitFS on your Salt Master to retrieve and store Salt Formulas
 
-1.  Install GitFS Dependencies
+1.  Ensure that GitFS dependencies are installed
 
-        apt-get install python-pygit2
+        apt-get install python-git
 
 2.  Edit `/etc/salt/master` and uncomment the following lines:
 
@@ -165,5 +186,8 @@ Salt utilizes GitFS to manage remote repositories for Salt Formulas.  These next
 
         systemctl restart salt-master
 
-For possible next steps, continue building a multi-server configuration setup and read more about [configuration management with Salt States](/docs/applications/salt/salt-states-apache-mysql-php-fail2ban).
+###Install Salt Formula
 
+
+
+For possible next steps, continue building a multi-server configuration setup and read more about [configuration management with Salt States](/docs/applications/salt/salt-states-apache-mysql-php-fail2ban).
