@@ -57,11 +57,15 @@ Now click on **Create Configuration**. A NodeBalancer is configured using ports,
 
 For the traditional Web application, these settings are a good start. HTTP cookie stickiness is preferred so that the same client will always land on the same backend -- for a simple Web application that keeps sessions in memory, this is necessary to avoid session errors on clients.
 
+If you require support for older browsers, you can select the `Legacy` cipher option. For all other implementations, use the `Recommended` option, which implements best pratctices for SSL security. For more information on properly formatting your certificates, see our [Nodebalancer Reference Guide](/docs/platform/nodebalancer/nodebalancer-reference-guide#cipher).
+
  {: .note }
 >
 > If you select the HTTPS protocol, two new fields will appear where you can add your SSL certificate (and chained certificates) and passphraseless private key.
 
 Every ten seconds, NodeBalancer will request the root of the Web application and look for a valid response code. With the current setup, there is only one backend node (which we will add shortly); if the backend goes down, NodeBalancer will serve a plain 503 Service Unavailable error page. This is more desirable than refusing connections or making browsers wait for a timeout.
+
+##Adding a Backend
 
 [![Adding a backend node to a NodeBalancer.](/docs/assets/799-4.png)](/docs/assets/776-backend.png)
 
@@ -71,7 +75,7 @@ The configuration changes that you just made will take a few moments to be refle
 
 [![The backend node has been added, and is now status UP.](/docs/assets/800-5.png)](/docs/assets/778-backend-up.png)
 
-If the backend remains **DOWN**, check to make sure that your Web application is configured to respond on the Linode's private IP address. There might be a virtual host mismatch as well -- check the notes in the next section.
+If the backend status reports **DOWN**, check to make sure that your Web application is configured to respond on the Linode's private IP address. There might be a virtual host mismatch as well -- check the notes in the next section.
 
 Now that the backend is up, go directly to your NodeBalancer's IP address in a browser; you should see your Web application as the NodeBalancer proxies the traffic through.
 
@@ -107,7 +111,7 @@ Once the DNS changes propagate, traffic will begin flowing through the NodeBalan
 
 Congratulations! You have now configured a NodeBalancer and transitioned traffic over to it. All of the benefits of NodeBalancer are now available to you, such as adding backends to accommodate load.
 
-On another Linode, make an exact copy of your current Web server. The Linode backups service can be instrumental for doing so, as a snapshot can be restored to any other Linode. Once you have another backend ready, simply [repeat the earlier process](#configuring-a-nodebalancer) to add it to the NodeBalancer configuration.
+On another Linode, make an exact copy of your current Web server. The Linode backups service can be instrumental for doing so, as a snapshot can be restored to any other Linode. Once you have another backend ready, simply repeat the steps for [Adding a Backend](/docs/platform/nodebalancer/getting-started-with-nodebalancers#adding-a-backend) to add it to the NodeBalancer configuration.
 
 [![Adding another backend to the NodeBalancer's configuration.](/docs/assets/805-10.png)](/docs/assets/788-another-backend.png)
 
