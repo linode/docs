@@ -55,20 +55,6 @@ How initial new connections are allocated across the backend Nodes.
 -   **Least Connections** - Tracks each backend Linode's connection count, and allocates new connections to the node with the least connections.
 -   **Source IP** - Modulates the client's IP to allocate them to the same backend on subsequent requests. This works so long as the set of backend Linodes doesn't change, however Session Stickiness affects this behavior.
 
-###Cipher
-
-The legacy cipher option is provided to allow support for older browsers. The default `Recommended` cipher option provides current best practices HTTPS support.  If you do not require support for legacy browsers, we recommend utilizing the default cipher option.
-
-{: .note}
->
-> In order to get an A+ for most SSL tests, in addition to setting the `Recommended` cypher option, you will need to combine your SSL certs into a single file.  You can generate the combined certificate using the following commands when generating your certificates.
->
->	openssl dhparm -in cert.pem out dhcert.pem 2048
->	cat cert.pem dhcert.pem > combined.pem
->
-> Once you have generated the `combined.pem` file, you can insert the contents of that file when setting up your Nodebalancer.
-
-
 ### Session Stickiness
 
 NodeBalancers have the ability for Session Persistence - meaning subsequent requests from the same client will be routed to the same backend Node when possible.
