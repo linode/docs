@@ -57,11 +57,13 @@ Now click on **Create Configuration**. A NodeBalancer is configured using ports,
 
 For the traditional Web application, these settings are a good start. HTTP cookie stickiness is preferred so that the same client will always land on the same backend -- for a simple Web application that keeps sessions in memory, this is necessary to avoid session errors on clients.
 
-If you require support for older browsers, you can select the `Legacy` cipher option. For all other implementations, use the `Recommended` option, which implements best pratctices for SSL security. For more information on properly formatting your certificates, see our [Nodebalancer Reference Guide](/docs/platform/nodebalancer/nodebalancer-reference-guide#cipher).
-
  {: .note }
 >
-> If you select the HTTPS protocol, two new fields will appear where you can add your SSL certificate (and chained certificates) and passphraseless private key.
+> If you select the HTTPS protocol, two new fields will appear where you can add your SSL certificate (and chained certificates) and passphraseless private key. Once you have configured your certificates, if you require support for older browsers, you can select the `Legacy` cipher option. For all other implementations, the default `Recommended` option should be used. This implements best pratctices for SSL security.
+>
+>[![SSL Cipher Suite](/docs/assets/ssl-cipher-suite-resized.png)](/docs/assets/ssl-cipher-suite.png)
+
+
 
 Every ten seconds, NodeBalancer will request the root of the Web application and look for a valid response code. With the current setup, there is only one backend node (which we will add shortly); if the backend goes down, NodeBalancer will serve a plain 503 Service Unavailable error page. This is more desirable than refusing connections or making browsers wait for a timeout.
 
