@@ -11,6 +11,9 @@ modified_by:
   name: Alex Fornuto
 published: 'Wednesday, May 19th, 2010'
 title: Article Submissions
+external_resources:
+ - '[Linode Style Guide](/docs/style-guide)'
+ - '[GitHub Beginners Guide ](/docs/github-guide)'
 ---
 
 Get published by Linode and get paid! Earn $250 per article if it's accepted for publication.
@@ -46,7 +49,7 @@ Want to make sure you don't waste time writing a long article we can't use? Subm
 
 ## Submit Your Article
 
-Submit your article as a [pull request on GitHub](http://www.github.com/linode/docs), or by emailing it to <contribute@linode.com> as a plain text or Markdown file attachment. Writing samples are welcome as well.
+Submit your article as a [pull request on GitHub](/docs/github-guide), or by emailing it to <contribute@linode.com> as a plain text or Markdown file attachment. Writing samples are welcome as well. Ensure that final submissions follow the [Linode Style Guide](/docs/style-guide) guidelines.
 
 Got images? Attach them as **.png** or **.jpg** files. If an image is over 650 pixels wide, please send both the original and a 650-pixel-wide version.
 
