@@ -2,15 +2,15 @@
 author:
   name: Alex Fornuto
   email: afornuto@linode.com
-description: 'Getting started with MySQL for web and server applications on Ubuntu 14.04 LTS (Trusty Tahr).'
+description: 'Getting started with MySQL on Ubuntu 14.04.'
 keywords: 'mysql ubuntu 14.04,mysql ubuntu,mysql on linux,mysql vps'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['databases/mysql/ubuntu-14.04-trusty-pangolin/']
-modified: Saturday, September 13th, 2014 
+modified: Thursday, August 20, 2015 
 modified_by:
   name: Linode 
 published: 'Monday, October 8th, 2012'
-title: 'Using MySQL Relational Databases on Ubuntu 14.04 LTS (Trusty Tahr)'
+title: 'Getting Started with MySQL on Ubuntu 14.04'
 external_resources:
  - '[MySQL 5.5 Reference Manual](http://dev.mysql.com/doc/refman/5.5/en/)'
  - '[PHP MySQL Manual](http://us2.php.net/manual/en/book.mysql.php)'
@@ -18,156 +18,167 @@ external_resources:
  - '[MySQLdb User''s Guide](http://mysql-python.sourceforge.net/MySQLdb.html)'
 ---
 
-MySQL is a popular database management system, used as the data storage provider for thousands of web and server applications. This guide will help beginners get started with MySQL on an Ubuntu 14.04 LTS (Trusty Tahr) Linux VPS. For purposes of this tutorial, we'll assume you've followed the steps outlined in our [getting started guide](/docs/getting-started/), and that your system is up to date. The commands listed will need to be run with root permissions. You can elevate your login session to your root user by using the "su" command, and then entering your root password when prompted. If you're performing these steps as a standard user with sudo privileges, remember to prepend "sudo" to the commands shown below.
+MySQL is a popular database management system used for web and server applications. This guide will introduce how to install, configure and manage MySQL on a Linode running Ubuntu 14.04 LTS (Trusty Tahr).
 
-## Basic System Configuration
+{: .note}
+>
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
-Make sure your `/etc/hosts` file contains sensible values. In the example file below, you would replace "12.34.56.78" with your Linode's IP address, and "servername.example.com" with your Linode's fully qualified domain name (FQDN). It is advisable to use something unique and memorable for "servername" in this file.
+## Before You Begin
 
-{: .file }
-/etc/hosts
-:   ~~~
-    127.0.0.1 localhost.localdomain localhost
-    12.34.56.78 servername.example.com servername
-    ~~~
+1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, and the Linode's [hostname is set](/docs/getting-started#setting-the-hostname).
 
-Next, make sure your Linode's hostname is set to the short value you specified in `/etc/hosts`:
+    To check your hostname run:
 
-    echo "servername" > /etc/hostname
-    hostname -F /etc/hostname
+        hostname
+        hostname -f
 
-To make sure `universe` repositories are enabled, modify your `/etc/apt/sources.list` file to mirror the example file below.
+    The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-{: .file }
-/etc/apt/sources.list
-:   ~~~
-    ## main & restricted repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ trusty main restricted
-    deb-src http://us.archive.ubuntu.com/ubuntu/ trusty main restricted
+2.  Update your system:
 
-    deb http://security.ubuntu.com/ubuntu trusty-security main restricted
-    deb-src http://security.ubuntu.com/ubuntu trusty-security main restricted
+        sudo apt-get update
+        sudo apt-get upgrade
 
-    ## universe repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ trusty universe
-    deb-src http://us.archive.ubuntu.com/ubuntu/ trusty universe
-    deb http://us.archive.ubuntu.com/ubuntu/ trusty-updates universe
-    deb-src http://us.archive.ubuntu.com/ubuntu/ trusty-updates universe
 
-    deb http://security.ubuntu.com/ubuntu trusty-security universe
-    deb-src http://security.ubuntu.com/ubuntu trusty-security universe
-    ~~~
+## Install MySQL
 
-## Installing MySQL
+1.  Issue the following command to install MySQL:
 
-Make sure your package repositories and installed programs are up to date by issuing the following commands:
+        sudo apt-get install mysql-server
 
-    apt-get update
-    apt-get upgrade --show-upgraded
+During the installation process, you will be prompted to set a password for the MySQL root user as shown below. Choose a strong password and keep it in a safe place for future reference.
 
-Begin by issuing the following command in your terminal:
+[![Setting the MySQL root password in Ubuntu 14.04 LTS (Trusty Tahr).](/docs/assets/mysql-root-pw.png)](/docs/assets/mysql-root-pw.png)
 
-    apt-get install mysql-server
+## Harden MySQL Server
 
-You will be prompted to set a password for the MySQL root user. Choose a strong password and keep it in a safe place for future reference.
+Run the [mysql_secure_installation](https://dev.mysql.com/doc/refman/5.0/en/mysql-secure-installation.html) script to address several security concerns in a default MySQL installation. You will be given the choices to change the MySQL root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases. It is recommended that you answer `yes` to these options. If you are prompted to reload the privilege tables, select `yes`.
 
-[![Setting the MySQL root password in Ubuntu 14.04 LTS (Trusty Tahr).](/docs/assets/1130-tahr-01-mysql-root-password.png)](/docs/assets/1130-tahr-01-mysql-root-password.png)
+1. To run the script:
 
-The MySQL server package will be installed on your server, along with dependencies and client libraries. After installing MySQL, it's recommended that you run `mysql_secure_installation` in order to help secure MySQL. While running `mysql_secure_installation`, you will be presented with the opportunity to change the MySQL root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases. It is recommended that you answer yes to these options. If you are prompted to reload the privilege tables, select yes. Run the following command to execute the program:
+        sudo mysql_secure_installation
 
-    mysql_secure_installation
+{: .note}
+>
+>MySQL will bind to localhost (127.0.0.1) by default. Please reference our [secure MySQL remote access guide](/docs/databases/mysql/mysql-ssh-tunnel) for information on connecting to your databases with local clients.
 
-After running `mysql_secure_installation`, MySQL is secure and ready to be configured.
+{: .note}
+>
+>Allowing unrestricted access to MySQL on a public IP not advised, but you may change the address it listens on by modifying the `bind-address` parameter in `/etc/my.cnf`. If you decide to bind MySQL to your public IP, you should implement firewall rules that only allow connections from specific IP addresses.
 
-## Configuring MySQL
-
-Issue the following command to restart MySQL after making configuration changes:
-
-    /etc/init.d/mysql restart
-
-MySQL will bind to localhost (127.0.0.1) by default. Allowing unrestricted access to MySQL on a public IP not advised, but you may change the address it listens on by modifying the `bind-address` parameter in `/etc/mysql/my.cnf`. If you decide to bind MySQL to your public IP, you should implement firewall rules that only allow connections from specific IP addresses.
 
 ## Using MySQL
 
-The standard tool for interacting with MySQL is the `mysql` client program. To get started, issue the following command at your prompt:
+The standard tool for interacting with MySQL is the `mysql` client which installs with the `mysql-server` package. The MySQL client is used through a terminal.
 
-    mysql -u root -p
+###Root Login
 
-You will be prompted to enter the root MySQL user's password. Enter the password you assigned when you installed MySQL, and you'll be presented with the MySQL monitor display:
+1.  To log in to MySQL as the root user:
 
-    Welcome to the MySQL monitor.  Commands end with ; or \g.
-    Your MySQL connection id is 42
-    Server version: 5.5.38-0ubuntu0.14.04.1 (Ubuntu)
+        mysql -u root -p
 
-    Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+2. When prompted, enter the root password you assigned when the mysql_secure_installation script was ran.
 
-    mysql>
+    You'll then be presented with the MySQL monitor display:
 
-If you've forgotten your root password, use the package reconfiguration tool to change that password:
+        Welcome to the MySQL monitor.  Commands end with ; or \g.
+        Your MySQL connection id is 1
+        Server version: 5.0.45 Source distribution
 
-    dpkg-reconfigure mysql-server-5.5
+        Type 'help;' or '\h' for help. Type '\c' to clear the buffer.
 
-To generate a list of commands for the MySQL prompt type `\h`:
+        mysql>
 
-    List of all MySQL commands:
-    Note that all text commands must be first on line and end with ';'
-    ?         (\?) Synonym for `help'.
-    clear     (\c) Clear the current input statement.
-    connect   (\r) Reconnect to the server. Optional arguments are db and host.
-    delimiter (\d) Set statement delimiter.
-    edit      (\e) Edit command with $EDITOR.
-    ego       (\G) Send command to mysql server, display result vertically.
-    exit      (\q) Exit mysql. Same as quit.
-    go        (\g) Send command to mysql server.
-    help      (\h) Display this help.
-    nopager   (\n) Disable pager, print to stdout.
-    notee     (\t) Don't write into outfile.
-    pager     (\P) Set PAGER [to_pager]. Print the query results via PAGER.
-    print     (\p) Print current command.
-    prompt    (\R) Change your mysql prompt.
-    quit      (\q) Quit mysql.
-    rehash    (\#) Rebuild completion hash.
-    source    (\.) Execute an SQL script file. Takes a file name as an argument.
-    status    (\s) Get status information from the server.
-    system    (\!) Execute a system shell command.
-    tee       (\T) Set outfile [to_outfile]. Append everything into given outfile.
-    use       (\u) Use another database. Takes database name as argument.
-    charset   (\C) Switch to another charset. Might be needed for processing binlog with multi-byte charsets.
-    warnings  (\W) Show warnings after every statement.
-    nowarning (\w) Don't show warnings after every statement.
+3. To generate a list of commands for the MySQL prompt, enter `\h`. You'll then see:
 
-    For server side help, type 'help contents'
+        List of all MySQL commands:
+        Note that all text commands must be first on line and end with ';'
+        ?         (\?) Synonym for `help'.
+        clear     (\c) Clear command.
+        connect   (\r) Reconnect to the server. Optional arguments are db and host.
+        delimiter (\d) Set statement delimiter. NOTE: Takes the rest of the line as new delimiter.
+        edit      (\e) Edit command with $EDITOR.
+        ego       (\G) Send command to mysql server, display result vertically.
+        exit      (\q) Exit mysql. Same as quit.
+        go        (\g) Send command to mysql server.
+        help      (\h) Display this help.
+        nopager   (\n) Disable pager, print to stdout.
+        notee     (\t) Don't write into outfile.
+        pager     (\P) Set PAGER [to_pager]. Print the query results via PAGER.
+        print     (\p) Print current command.
+        prompt    (\R) Change your mysql prompt.
+        quit      (\q) Quit mysql.
+        rehash    (\#) Rebuild completion hash.
+        source    (\.) Execute an SQL script file. Takes a file name as an argument.
+        status    (\s) Get status information from the server.
+        system    (\!) Execute a system shell command.
+        tee       (\T) Set outfile [to_outfile]. Append everything into given outfile.
+        use       (\u) Use another database. Takes database name as argument.
+        charset   (\C) Switch to another charset. Might be needed for processing binlog with multi-byte charsets.
+        warnings  (\W) Show warnings after every statement.
+        nowarning (\w) Don't show warnings after every statement.
 
-    mysql>
+        For server side help, type 'help contents'
 
-Let's create a database and assign a user to it. Issue the following commands at the MySQL prompt:
+        mysql>
 
-    CREATE DATABASE testdb;
-    CREATE USER 'testuser'@localhost IDENTIFIED BY 'changeme';
-    GRANT ALL PRIVILEGES ON testdb.* TO 'testuser'@localhost;
-    exit
+### Create a New MySQL User and Database
+1. In the example below, `testdb` is the name of the database, `testuser` is the user, and `password` is the user's password.
 
-Now let's log back into the MySQL client as `testuser` and create a sample table called "customers." Issue the following commands:
+        create database testdb;
+        create user 'testuser'@localhost identified by x'password';
+        grant all on testdb.* to 'testuser' identified by 'password';
+    
+2.  Then exit MySQL.
+    
+        exit
 
-    mysql -u testuser -p
+### Create a Sample Table
 
-    USE testdb;
-    CREATE TABLE customers (customer_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, first_name TEXT, last_name TEXT);
+1.  Log back in as `testuser`.
 
-This creates a table with a customer ID field of the type INT for integer (auto-incremented for new records and used as the primary key), as well as two fields for storing the customer's name.
+        mysql -u testuser -p
 
-By default, access to databases will be limited to connections from localhost. To securely administer your databases from a remote location, please follow our guide for [securely administering mysql with an SSH tunnel](/docs/databases/mysql/mysql-ssh-tunnel). It is *not* a good practice to run MySQL on your public IP address, unless you have a very good reason for doing so.
+2.  Create a sample table called *customers*. This creates a table with a customer ID field of the type INT for integer (auto-incremented for new records, used as the primary key), as well as two fields for storing the customer's name.
 
-## Tuning MySQL
+        use testdb;
+        create table customers (customer_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, first_name TEXT, last_name TEXT);
 
-MySQL Tuner is a useful tool that connects to a running instance of MySQL and provides configuration recommendations based on workload. Ideally, the MySQL instance should have been operating for at least 24 hours before running the tuner. The longer the instance has been running, the better advice MySQL Tuner will provide.
+3.  Then exit MySQL.
+    
+        exit
 
-To install MySQL Tuner issue the following command:
+## Reset the MySQL Root Password
 
-    sudo apt-get install mysqltuner
+If you forget your root MySQL password, it can be reset.
 
-To run MySQL Tuner simply enter:
+1. Stop the current MySQL server instance.
 
-    mysqltuner
+        sudo service mysql stop
 
-Please note that this tool is designed to provide configuration suggestions and is an excellent starting point. It would be prudent to perform additional research for tuning configurations based on the application(s) utilizing MySQL.
+2. Use dpkg to re-run the configuration process MySQL goes through on first installation. You will again be asked to set a root password.
+
+        sudo dpkg-reconfigure mysql-server-5.5
+
+3. Then start MySQL.
+
+        sudo service mysql start
+
+You'll now be able to log in again using `mysql -u root -p`.
+
+## Tune MySQL
+
+[MySQL Tuner](https://github.com/major/MySQLTuner-perl) is a Perl script that connects to a running instance of MySQL and provides configuration recommendations based on workload. Ideally, the MySQL instance should have been operating for at least 24 hours before running the tuner. The longer the instance has been running, the better advice MySQL Tuner will give.
+
+1. Install MySQL Tuner from Ubuntu's repositories.
+
+        sudo apt-get install mysqltuner
+
+2. To run it:
+
+        mysqltuner
+
+    You will be asked for the MySQL root user's name and password. The output will show two areas of interest: General recommendations and Variables to adjust.
+
+MySQL Tuner is an excellent starting point to optimize a MySQL server but it would be prudent to perform additional research for configurations tailored to the application(s) utilizing MySQL on your Linode.
