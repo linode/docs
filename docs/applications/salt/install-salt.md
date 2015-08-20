@@ -156,38 +156,25 @@ Once you have completed the previousl configuration steps, you can install packa
 
 Salt Formulas create a framework of software and configurations to be deployed to your minions.  Multiple Salt Formulas can be deployed to your Minions, and this will allow you to manage package configuration and maintenance from the Salt Master.  These steps will walk you through installing one of the premade formulas hosted on [Salt's Github](https://github.com/saltstack-formulas).
 
-###Configure GitFS
+1.  Create the directory for storing your Salt states.
 
-Salt utilizes GitFS to manage remote repositories for Salt Formulas.  These next steps will walk you through installing and configuring GitFS on your Salt Master to retrieve and store Salt Formulas
+        mkdir /srv/salt
 
-1.  Ensure that GitFS dependencies are installed
+2.  Create a state file to store your configuration.  For this example, we'll create a simple Apache state.
 
-        apt-get install python-git
+        {:.file }
+        /srv/salt/apache.sls
+        : ~~~
+          apache2:
+          pkg:
+            - installed
+          ~~~
 
-2.  Edit `/etc/salt/master` and uncomment the following lines:
+3.  To install the packages containted within the SLS file and enable the state, execute the following command.  You can replace `*` with the ID of a specific minion.
 
-    {:.file-excerpt }
-    /etc/salt/master
-    : ~~~
-      fileserver_backend:
-        - git
-      ~~~
+        salt '*' state.apply apache
 
-3.  In the same file, uncomment the `gitfs_remotes:` line, and add the path to the Formulas you wish to add below it.  For this example, we're adding the Apache remote.
+4.  To disable or re-enable states installed on your Minions, run the following command.
 
-    {:.file }
-    /sample/file.html
-    : ~~~
-      gitfs_remotes:
-        - https://github.com/saltstack-formulas/apache-formula
-      ~~~
-
-4.  Restart the salt-master service.
-
-        systemctl restart salt-master
-
-###Install Salt Formula
-
-
-
-For possible next steps, continue building a multi-server configuration setup and read more about [configuration management with Salt States](/docs/applications/salt/salt-states-apache-mysql-php-fail2ban).
+        salt '*' state.disable apache
+        salt '*' state.enable apache
