@@ -8,7 +8,7 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['using-linux/administration-basics/']
 modified: Wednesday, February 18, 2015
 modified_by:
-  name: Dave Russell
+  name: Linode
 published: 'Sunday, December 13th, 2009'
 title: Linux System Administration Basics
 ---

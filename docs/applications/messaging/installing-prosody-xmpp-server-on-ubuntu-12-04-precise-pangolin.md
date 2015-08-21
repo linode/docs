@@ -168,17 +168,17 @@ The XMPP protocol supports "in-band" registration, where users can register for 
 
 If you're familiar with the `ejabberdctl` interface from [ejabberd,](/docs/applications/messaging/instant-messaging-services-with-ejabberd-on-ubuntu-12-04-precise-pangolin/) `prosodyctl` mimics its counterpart as much as possible.
 
-To use `prosodyctl` to register a user, in this case `lollipop@example.com`, issue the following command:
+To use `prosodyctl` to register a user, in this case `username@example.com`, issue the following command:
 
-    prosodyctl adduser lollipop@example.com
+    prosodyctl adduser username@example.com
 
 To set the password for this account, issue the following command and enter the password as requested:
 
-    prosodyctl passwd lollipop@example.com
+    prosodyctl passwd username@example.com
 
 To remove this user, issue the following command:
 
-    prosodyctl deluser lollipop@example.com
+    prosodyctl deluser username@example.com
 
 Additionally, `prosodyctl` can provide a report on the status of the server in response to the following command:
 

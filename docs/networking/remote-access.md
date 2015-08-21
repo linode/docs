@@ -8,7 +8,7 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['remote-access/']
 modified: Saturday, September 6th, 2014
 modified_by:
-  name: Dave Russell Jr
+  name: Linode
 published: 'Tuesday, April 24th, 2012'
 title: Remote Access
 ---

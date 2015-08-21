@@ -8,7 +8,7 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['databases/mongodb/ubuntu-12/']
 modified: Wednesday, August 13, 2014
 modified_by:
-  name: Dave Russell Jr
+  name: Linode
 published: 'Wednesday, April 9th, 2014'
 title: 'Creating a MongoDB Replication Set on Ubuntu 12.04 (Precise)'
 external_resources:

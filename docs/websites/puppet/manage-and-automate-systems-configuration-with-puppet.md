@@ -138,12 +138,12 @@ As above, the `default` node provides a space to specify the configuration for a
     node 'lb1.example.com' inherits loadbalancer {
     }
 
-    node 'lollipop.example.com' inherits appserverbasic {
+    node 'hostname.example.com' inherits appserverbasic {
         include monitoring
         include backups
     }
 
-    node 'test.lollipop.example.com' inherits appserverbasic {
+    node 'test.hostname.example.com' inherits appserverbasic {
     }
 
     node 'monitoring1.example.com', 'monitoring2.example.com' {
@@ -234,7 +234,7 @@ Puppet attempts to normalize the way administrators interact with all resources,
 File Path
 :   ~~~
     exec {"rsync_config":
-        command => "/usr/bin/rsync -a squire@lollipop.example.com:/srv/puppet/www-config /opt/config",
+        command => "/usr/bin/rsync -a squire@hostname.example.com:/srv/puppet/www-config /opt/config",
         unless => "/bin/test -e /opt/config/fresh",
     }
     ~~~

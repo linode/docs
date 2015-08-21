@@ -12,6 +12,11 @@ modified_by:
   name: Alex Fornuto
 published: 'Thursday, October 24th, 2013'
 title: LAMP Server on Gentoo
+external_resources:
+  - '[Gentoo Documentation](http://www.gentoo.org/doc/en/index.xml)'
+  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)'
+  - '[MySQL Documentation](http://dev.mysql.com/doc/)'
+  - '[PHP Documentation](http://www.php.net/docs.php)'
 ---
 
 This guide provides step-by-step instructions for installing a full-featured LAMP stack on a Gentoo Linux system.
@@ -22,8 +27,7 @@ In this guide, you will be instructed on setting up Apache, MySQL, and PHP. If y
 >
 > Throughout this guide we will offer several suggested values for specific configuration settings. Some of these values will be set by default. These settings are shown in the guide as a reference, in the event that you change these settings to suit your needs and then need to change them back.
 
-Set the Hostname and Configure /etc/hosts
------------------------------------------
+## Set the Hostname and Configure /etc/hosts
 
 Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_setting-the-hostname) and [configuring /etc/hosts](/docs/getting-started#sph_update-etc-hosts). Issue the following commands to make sure it is set properly:
 
@@ -32,8 +36,7 @@ Before you begin installing and configuring the components described in this gui
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-Install and Configure the Apache Web Server
--------------------------------------------
+## Install and Configure the Apache Web Server
 
 Begin by making sure that your package repositories and installed programs are up to date by issuing the following commands:
 
@@ -143,8 +146,7 @@ Any time you change an option in any of your Apache configuration files, remembe
 
     /etc/init.d/apache2 reload
 
-Install and Configure the MySQL Database Server
------------------------------------------------
+## Install and Configure the MySQL Database Server
 
 MySQL is a relational database management system (RDBMS) and is a popular component in contemporary web development tool-chains. It is used to store data for many popular applications, including WordPress and Drupal.
 
@@ -186,10 +188,10 @@ Enter MySQL's root password, and you'll be presented with a prompt where you can
 
 To create a database and grant your users permissions on it, issue the following command. Note, the semi-colons (`;`) at the end of the lines are crucial for ending the commands. Your command should look like this:
 
-    create database lollipop;
-    grant all on lollipop.* to 'foreman' identified by '5t1ck';
+    create database webdata;
+    grant all on webdata.* to 'username' identified by 'password';
 
-In the example above, `lollipop` is the name of the database, `foreman` is the username, and `5t1ck` password. Note that database user names and passwords are only used by scripts connecting to the database, and that database user account names need not (and perhaps should not) represent actual user accounts on the system.
+In the example above, `webdata` is the name of the database, `username` is the username, and `password` password. Note that database user names and passwords are only used by scripts connecting to the database, and that database user account names need not (and perhaps should not) represent actual user accounts on the system.
 
 With that completed, you've successfully configured MySQL and you may now pass these database credentials on to your users. To exit the MySQL database administration utility issue the following command:
 
@@ -197,8 +199,7 @@ With that completed, you've successfully configured MySQL and you may now pass t
 
 With Apache and MySQL installed you are now ready to move on to installing PHP to provide scripting support for your web pages.
 
-Install and Configure PHP
--------------------------
+## Install and Configure PHP
 
 PHP makes it possible to produce dynamic and interactive pages using your own scripts and popular web development frameworks. Furthermore, many popular web applications like WordPress are written in PHP. If you want to be able to develop your websites using PHP, you must first install it.
 
@@ -241,16 +242,3 @@ You will need to create the log directory for PHP and give the Apache user owner
     chown apache /var/log/php
 
 If you decide to use PHP via the CGI interface later, you'll need to edit the `/etc/php/cgi-php5/php.ini` file.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Gentoo Documentation](http://www.gentoo.org/doc/en/index.xml)
-- [Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)
-- [MySQL Documentation](http://dev.mysql.com/doc/)
-- [PHP Documentation](http://www.php.net/docs.php)
-
-
-

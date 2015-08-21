@@ -131,21 +131,21 @@ Once installed, the use and configuration of ejabberd is uncomplicated. To start
 
 By default, ejabberd is configured to disallow "in-band-registrations," which prevents Internet users from getting accounts on your server without your consent. To register a new user, issue a command in the following form:
 
-    ejabberdctl register lollipop example.com man
+    ejabberdctl register username example.com man
 
-In this example, `lollipop` is the username, `example.com` is the domain, and `man` is the password. This will create a JID for `lollipop@example.com` with the password of "man." Use this form to create the administrative users specified above.
+In this example, `username` is the username, `example.com` is the domain, and `man` is the password. This will create a JID for `username@example.com` with the password of "man." Use this form to create the administrative users specified above.
 
 To remove a user from your server, issue a command in the following form:
 
-    ejabberdctl unregister lollipop example.com
+    ejabberdctl unregister username example.com
 
-The above command would unregister the `lollipop@example.com` account from the server.
+The above command would unregister the `username@example.com` account from the server.
 
 To set or reset the password for a user, issue the following command:
 
-    ejabberdctl set-password lollipop example.com morris
+    ejabberdctl set-password username example.com morris
 
-This command changes the password for the `lollipop@example.com` user to `morris`.
+This command changes the password for the `username@example.com` user to `morris`.
 
 To back up ejabberd's database, issue the following command:
 

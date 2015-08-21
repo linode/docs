@@ -14,7 +14,7 @@ external_resources:
  - '[mod_fastcgi configuration directives](http://www.fastcgi.com/mod_fastcgi/docs/mod_fastcgi.html)'
 modified: Saturday, August 16, 2014
 modified_by:
-  name: Dave Russell Jr
+  name: Linode
 published: 'Monday, June 16, 2014'
 title: 'Running mod_fastcgi and PHP-FPM on Debian 7 (Wheezy) with Apache'
 ---

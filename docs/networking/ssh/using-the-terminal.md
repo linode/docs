@@ -8,7 +8,7 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['using-linux/using-the-terminal/']
 modified: Monday, July 28, 2014
 modified_by:
-  name: Dave Russell Jr
+  name: Linode
 published: 'Sunday, August 2nd, 2009'
 title: Using the Terminal
 external_resources:

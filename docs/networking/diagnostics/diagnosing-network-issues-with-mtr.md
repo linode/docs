@@ -8,7 +8,7 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['linux-tools/mtr/','networking/diagnosing-network-issues-with-mtr/']
 modified: Monday, December 15, 2014
 modified_by:
-  name: Dave Russell Jr
+  name: Linode
 published: 'Wednesday, April 28th, 2010'
 title: Diagnosing Network Issues with MTR
 external_resources:

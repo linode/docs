@@ -8,7 +8,7 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['linux-tools/common-commands/dig/']
 modified: Tuesday, May 17th, 2011
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Wednesday, October 13th, 2010'
 title: Use dig to Perform Manual DNS Queries
 ---
@@ -232,7 +232,7 @@ Specify a different type of DNS record by adding that record type (e.g. AAAA, MX
     ;_jabber._tcp.example.com.      IN      SRV
 
     ;; ANSWER SECTION:
-    _jabber._tcp.example.com. 300   IN      SRV     0 0 5269 lollipop.example.com
+    _jabber._tcp.example.com. 300   IN      SRV     0 0 5269 hostname.example.com
 
     ;; Query time: 53 msec
     ;; SERVER: 192.168.1.1#53(192.168.1.1)

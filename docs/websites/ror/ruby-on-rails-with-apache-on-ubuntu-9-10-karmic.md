@@ -9,17 +9,21 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['frameworks/ruby-on-rails-apache/ubuntu-9-10-karmic/']
 modified: Tuesday, May 17th, 2011
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Thursday, July 29th, 2010'
 title: 'Ruby on Rails with Apache on Ubuntu 9.10 (Karmic)'
+external_links:
+    - '[Ruby on Rails Homepage](http://rubyonrails.org/)'
+    - '[mod\_rails Documentation for Apache Servers](http://www.modrails.com/documentation/Users%20guide%20Apache.html)'
+    - '[Install the Apache HTTP Server on Ubuntu 9.10 (Karmic)](/docs/web-servers/apache/installation/ubuntu-9.10-karmic)'
+    - '[Install the MySQL Database System on Ubuntu 9.10 (Karmic)](/docs/databases/mysql/ubuntu-9.10-karmic)'
 ---
 
 
 
 Ruby on Rails is a popular rapid development web framework that allows web designers and developers to implement dynamic fully featured web applications quickly that is written in the Ruby programming language. Rails enables developers to produce inventive applications on tight time scales. Examples of well known Rails-powered sites include Hulu, GitHub, and the applications provided by 37 Signals, among many others. This guide deploys Rails applications using the Phusion Passenger or `mod_rails` method. Passenger allows you to embed Rails apps directly in Apache applications without needing to worry about FastCGI or complex web server proxies.
 
-Installing Passenger and Dependencies
--------------------------------------
+## Installing Passenger and Dependencies
 
 Before updating your system and installing the required software, edit the `/etc/apt/sources.list` file to enable the Ubuntu's "universe" repository, so that it resembles the following:
 
@@ -78,8 +82,7 @@ This should install the appropriate versions of all required packages, including
 
 Additionally, the application you deploy will likely have additional dependencies. Install these dependencies before proceeding.
 
-Configuring Apache to Work with Passenger
------------------------------------------
+## Configuring Apache to Work with Passenger
 
 If you configured Apache virtual hosting as outlined in the [Ubuntu 9.10 (Karmic) Apache guide](/docs/web-servers/apache/installation/ubuntu-9.10-karmic), the public directory for your domain (e.g. `example.com`) is located in `/srv/www/example.com/public_html/`, and your `<VirtualHost >` configuration block contains a line that reads:
 
@@ -94,16 +97,15 @@ In typical Passenger-based Rails deployments, the application directory would be
     rmdir /srv/www/example.com/public_html/
     ln -s /srv/www/example.com/my-app/public/ /srv/www/example.com/public_html 
 
-Passenger requires that the log files within your application be world writable (eg. `chmod 666`) and will produce an "HTTP 500 Internal Server Error" if the log files are not writable. Issue the following command to change the permissions of the files in the log directory of the "lollipop" application:
+Passenger requires that the log files within your application be world writable (eg. `chmod 666`) and will produce an "HTTP 500 Internal Server Error" if the log files are not writable. Issue the following command to change the permissions of the files in the log directory of the "my-app" application:
 
-    chmod 666 /srv/www/example.com/lollipop/log/
+    chmod 666 /srv/www/example.com/my-app/log/
 
 Restart Apache once to ensure all settings have been loaded using the following command:
 
     /etc/init.d/apache2 restart
 
-Modify Rails Applications to Work With Passenger
-------------------------------------------------
+## Modify Rails Applications to Work With Passenger
 
 The version of Passenger distributed with Ubuntu 9.10 (Karmic) may have a minor compatibility issue with your Ruby on Rails application. To correct this, change directories to the `app/controllers/` folder of your application and issue the following command to create a symbolic link:
 
@@ -111,8 +113,7 @@ The version of Passenger distributed with Ubuntu 9.10 (Karmic) may have a minor 
 
 If your application requires additional configuration including database migrations, configurations, or updates, you may wish to perform those operations at this point.
 
-Deploying Multiple Rails Apps
------------------------------
+## Deploying Multiple Rails Apps
 
 There are a number of strategies for deploying more than one Rails application using Passenger. The most simple approach requires running multiple distinct virtual hosts configured as above to host a single Rails app each. Alternatively you may host multiple Rails apps within a single virtual host. Add `RailsBaseURI` directives that specify the path to your Rails application within the VirtualHost configuration, as in the following example:
 
@@ -120,28 +121,15 @@ There are a number of strategies for deploying more than one Rails application u
 Apache Virtual Host Configuration
 :   ~~~ apache
     DocumentRoot /srv/www/example.com/public_html/
-    RailsBaseURI /lollipop
+    RailsBaseURI /my-app
     RailsBaseURI /frogs
     RailsBaseURI /simon
     ~~~
 
 These directives configure Passenger to run three Rails apps on the `example.com` site at the three locations specified. Rather than linking the `public/` directory of your Rails app to the `public_html/` directory as above, link the `public/` directory of the application to a directory within the `public_html/` directory. These links would be created in the following manner:
 
-    ln -s /srv/www/example.com/lollipop/public/ /srv/www/example.com/public_html/lollipop/
-    ln -s /srv/www/example.com/lollipop/frogs/ /srv/www/example.com/public_html/frogs/
-    ln -s /srv/www/example.com/lollipop/simon/ /srv/www/example.com/public_html/simon/
+    ln -s /srv/www/example.com/my-app/public/ /srv/www/example.com/public_html/my-app/
+    ln -s /srv/www/example.com/my-app/frogs/ /srv/www/example.com/public_html/frogs/
+    ln -s /srv/www/example.com/my-app/simon/ /srv/www/example.com/public_html/simon/
 
 The files for each Rails application are located in a `/srv/www/example.com/` directory, which is inaccessible to the web server. Congratulations! You have successfully deployed Ruby On Rails applications with the Apache Web server and Passenger.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Ruby on Rails Homepage](http://rubyonrails.org/)
-- [mod\_rails Documentation for Apache Servers](http://www.modrails.com/documentation/Users%20guide%20Apache.html)
-- [Install the Apache HTTP Server on Ubuntu 9.10 (Karmic)](/docs/web-servers/apache/installation/ubuntu-9.10-karmic)
-- [Install the MySQL Database System on Ubuntu 9.10 (Karmic)](/docs/databases/mysql/ubuntu-9.10-karmic)
-
-
-
