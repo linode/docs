@@ -25,9 +25,9 @@ XMPP/Jabber Basics
 
 Though you can successfully run an XMPP server with only a passing familiarity of the way the XMPP network and system works, understanding the following basic concepts will be helpful:
 
--   The *JID* or "Jabber ID" is the unique identifier for a user in the XMPP network. It often looks like an email address and contains the username that identifies a specific user on a server, the hostname that identifies the server, and a resource that identifies where a given user is logged in from. The resource is optional, and is often safely omitted or ignored for most users. In following example, "squire" is the username, "example.com" is the hostname, and "/office" is the resource.
+-   The *JID* or "Jabber ID" is the unique identifier for a user in the XMPP network. It often looks like an email address and contains the username that identifies a specific user on a server, the hostname that identifies the server, and a resource that identifies where a given user is logged in from. The resource is optional, and is often safely omitted or ignored for most users. In following example, "username" is the username, "example.com" is the hostname, and "/office" is the resource.
 
-        squire@example.com/office
+        username@example.com/office
 
     Again, the resource is optional; although XMPP allows a single JID to be connected to the server from multiple machines (i.e. resources), the resource adds a useful amount of specificity.
 
@@ -81,13 +81,13 @@ Some users will need the ability to administer the XMPP server remotely. By defa
     {acl, admin, {user, "admin", "example.com"}}.
     ~~~
 
-In Erlang, comments begin with the `%` character, and the access control list segment contains information in the following form: `{user, "USERNAME", "HOSTNAME"}`. The following examples correspond to the users with the JIDs of `admin@example.com` and `squire@example.com`. You only need to specify one administrator, but you can add more than one administrator simply by adding more lines, as shown below:
+In Erlang, comments begin with the `%` character, and the access control list segment contains information in the following form: `{user, "USERNAME", "HOSTNAME"}`. The following examples correspond to the users with the JIDs of `admin@example.com` and `username@example.com`. You only need to specify one administrator, but you can add more than one administrator simply by adding more lines, as shown below:
 
 {: .file-excerpt }
 /etc/ejabberd/ejabberd.cfg
 :   ~~~
     {acl, admin, {user, "admin", "example.com"}}.
-    {acl, admin, {user, "squire", "example.com"}}.
+    {acl, admin, {user, "username", "example.com"}}.
     ~~~
 
 All users specified in this manner have full administrative access to the server through both the XMPP and web-based interfaces. You will have to create your administrative users (as described below) before they can log in.
@@ -102,12 +102,12 @@ A single ejabberd instance can provide XMPP services for multiple domains at onc
     {hosts, ["example.com", "localhost"]}.
     ~~~
 
-In the following example, ejabberd has been configured to host a number of additional domains. In this case, these domains are "squire.example.com," "example.com," and "bampton.com"
+In the following example, ejabberd has been configured to host a number of additional domains. In this case, these domains are "username.example.com," "example.com," and "bampton.com"
 
 {: .file-excerpt }
 /etc/ejabberd/ejabberd.cfg
 :   ~~~
-    {hosts, ["squire.example.com", "example.com", example.com", "localhost"]}.
+    {hosts, ["username.example.com", "example.com", example.com", "localhost"]}.
     ~~~
 
 You can specify any number of hostnames in the host list, but you should be careful to avoid inserting a line break as this will cause ejabberd to fail.

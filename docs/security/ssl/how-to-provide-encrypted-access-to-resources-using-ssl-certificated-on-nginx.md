@@ -70,8 +70,8 @@ This produces a self-signed certificate that is valid for 365 days. You you may 
     Locality Name (eg, city) []:Absecon
     Organization Name (eg, company) [Internet Widgits Pty Ltd]:SoftwareDev, LLC
     Organizational Unit Name (eg, section) []:Web Services
-    Common Name (eg, YOUR name) []:squire.example.com
-    Email Address []:squire@example.com
+    Common Name (eg, YOUR name) []:username.example.com
+    Email Address []:username@example.com
 
 The `Common Name` for your certificate must match the host name that you want to generate a valid certificate for. Continue to configure nginx to serve SSL content.
 
@@ -103,7 +103,7 @@ The following output of the `openssl` command demonstrates the creation of a cer
     Organization Name (eg, company) [Internet Widgits Pty Ltd]:example Morris
     Organizational Unit Name (eg, section) []:Web Services
     Common Name (eg, YOUR name) []:example.com
-    Email Address []:squire@example.com
+    Email Address []:username@example.com
 
     Please enter the following 'extra' attributes
     to be sent with your certificate request

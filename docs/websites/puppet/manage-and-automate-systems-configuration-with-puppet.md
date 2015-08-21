@@ -234,7 +234,7 @@ Puppet attempts to normalize the way administrators interact with all resources,
 File Path
 :   ~~~
     exec {"rsync_config":
-        command => "/usr/bin/rsync -a squire@hostname.example.com:/srv/puppet/www-config /opt/config",
+        command => "/usr/bin/rsync -a username@hostname.example.com:/srv/puppet/www-config /opt/config",
         unless => "/bin/test -e /opt/config/fresh",
     }
     ~~~

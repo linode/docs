@@ -132,7 +132,7 @@ DirectoryMatch Block in an Apache Configuration file
     </DirectoryMatch>
     ~~~
 
-This block specifies a number of options for any directory that matches the regular expression `^.+/images`. In other words, any path which begins with a number of characters and ends with images will match these options, including the following paths: `/srv/www/example.com/public_html/images/`, `/srv/www/example.com/public_html/objects/images`, and `/home/squire/public/www/images`.
+This block specifies a number of options for any directory that matches the regular expression `^.+/images`. In other words, any path which begins with a number of characters and ends with images will match these options, including the following paths: `/srv/www/example.com/public_html/images/`, `/srv/www/example.com/public_html/objects/images`, and `/home/username/public/www/images`.
 
 Apache also allows an alternate syntax for regular expression-defined directory blocks. Adding a tilde (e.g. `~`) between the `Directory` term and the specified path causes the specified path to be read as a regular expression. Regular expressions are a standard syntax for pattern matching, and Apache supports standard and Perl regular expression variants.
 

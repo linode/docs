@@ -126,9 +126,9 @@ If you have prior experience using CVS, you will already be familiar with many o
 -   `svn diff` displays the differences between two revisions in the repository. Without any arguments it displays the differences between the current status of the working copy (i.e. checkout) and the latest version of the repository.
 -   `svn log` generates and displays the revision history of an the current directory in the filesystem. You may also specify a specific file name, for instance `svn log roster.txt` produces the revision history for the `roster.txt` file. You may also use `svn log` to access the revision history of a remote repository. These commands take the form of:
 
-        svn log http://example.com/repos/morris/files/txt/ roster.txt lollipop.txt
+        svn log http://example.com/repos/morris/files/txt/ roster.txt data.txt
 
-    In this example, `svn log` displays the revision history of the files `roster.txt` and `lollipop.txt` in the remote repository.
+    In this example, `svn log` displays the revision history of the files `roster.txt` and `data.txt` in the remote repository.
 
 ## Accessing SVN over HTTP
 
@@ -169,9 +169,9 @@ If you need to access the repository with local system accounts, you will want t
 
     groupadd svnuser
 
-In this case we're adding the users `squire`, `foreman`, and `hobby` to the user group `svnuser`. Issue the following commands, modified to reflect the names of your group and users:
+In this case we're adding the users `username`, `foreman`, and `hobby` to the user group `svnuser`. Issue the following commands, modified to reflect the names of your group and users:
 
-    usermod -G svnuser squire
+    usermod -G svnuser username
     usermod -G svnuser foreman
     usermod -G svnuser hobby
 

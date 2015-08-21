@@ -62,7 +62,7 @@ You can test your Tomcat installation by pointing your browser at `http://[yourd
 /etc/tomcat6/tomcat-users.xml
 :   ~~~ xml
     <role rolename="manager"/>
-    <user username="squire" password="examplemorris" roles="manager"/>
+    <user username="username" password="examplemorris" roles="manager"/>
     ~~~
 
 Issue the following command to restart the Tomcat server, which will allow this change to take effect:

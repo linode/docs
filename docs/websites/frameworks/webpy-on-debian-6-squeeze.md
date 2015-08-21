@@ -132,7 +132,7 @@ Consider the following Apache VirtualHost configuration for a `mod_wsgi` powered
 /etc/apache2/sites-available/example.com
 :   ~~~ apache
     <VirtualHost *:80> 
-        ServerAdmin squire@example.com     
+        ServerAdmin username@example.com     
         ServerName example.com
         ServerAlias www.example.com
         DocumentRoot /srv/www/example.com/public_html/

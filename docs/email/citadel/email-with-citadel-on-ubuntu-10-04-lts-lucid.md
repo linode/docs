@@ -56,7 +56,7 @@ Edit the `/etc/mailname` file to reflect your system's domain name:
 {: .file }
 /etc/mailname
 :   ~~~
-    squire.example.com
+    username.example.com
     ~~~
 
 You'll need to edit the SpamAssassin configuration file to enable spamd:
@@ -91,7 +91,7 @@ Use the following startup script to initialize Citadel.
 
 Visit the web interface in your Web browser. Using our preceding example, the Web address to visit would look like:
 
-    https://squire.example.com
+    https://username.example.com
 
 The SSL certificate for your Citadel web interface will be self-signed; accept it to continue. If you don't get a login page in your web browser, you may need to start "webcit" with the following command:
 

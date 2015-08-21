@@ -112,7 +112,7 @@ If you need to access a resource that requires HTTP authentication, use the foll
 
 In practice this may resemble:
 
-    wget --http-user=squire --http-password=iwLcis4TMOgn3PTy http://example.com/backups/database.1285770344
+    wget --http-user=username --http-password=iwLcis4TMOgn3PTy http://example.com/backups/database.1285770344
 
 `wget` will not send the authentication information unless prompted by the web server. Use the `--auth-no-challenge` option to force `wget` to send the authentication credentials under every circumstance.
 

@@ -1,0 +1,2150 @@
+Searching 1004 files for "squire"
+
+/Users/ellekrout/docsmith/source/docs/applications/development/git-based-development-networks-with-girocco-on-debian-5-lenny.md:
+  256      <VirtualHost repo.example.com:80>
+  257              ServerName repo.example.com
+  258:             ServerAdmin squire@example.com
+  259  
+  260              ErrorLog /srv/www/repo.example.com/logs/error.log
+
+/Users/ellekrout/docsmith/source/docs/applications/development/manage-distributed-source-branches-with-bazaar.md:
+   99      ------------------------------------------------------------
+  100      revno: 1
+  101:     committer: squire <squire@example.com>
+  102      branch nick: caper
+  103      timestamp: Fri 2010-01-08 21:45:31 +0000
+  ...
+  121  Bazaar also includes the ability to use more "centralized" workflows, which allows contributors to a project to have a single shared repository that the entire team can use to publish changes. Shared repositories allow for a more fluid method of sharing changes between developers making it feasible for team members to always have the most up to date iteration of a document, without impacting individual workflows. To create a shared remote Bazaar project issue a command in the following form:
+  122  
+  123:     bzr init-repo --no-trees sftp://squire@example.com/srv/bzr/morris-shared
+  124  
+  125: In this command, the `init-repo` command with the `--no-trees` option, creates a new empty repository on the remote machine without a working copy. In this example `squire` would be replaced with your username, `example.com` would correspond with the domain name of your server, and `/svn/bzr/morris-shared` would be the path for the new repository on the remote server. To publish changes to the remote repository issue the following command:
+  126  
+  127:     bzr push sftp://squire@example.com/srv/bzr/morris-shared
+  128  
+  129  The `push` command sends local updates to the remote Bazaar project. If the remote project *does* have a working copy (i.e. it was created without the `--no-trees` option.), `push` will not update the working copy of the receiving project. Bazaar uses the `sftp` protocol, which is included by default with OpenSSH and is in turn active by default on all Linode systems. If your repository does not have a default remote, Bazaar will set the first location that you successfully push to as the default. Append the option `--remember` to `push` operations change the default remote location of your local repository.
+
+/Users/ellekrout/docsmith/source/docs/applications/development/manage-distributed-version-control-with-mercurial.md:
+  107      changeset:   0:dcf111b16118
+  108      tag:         tip
+  109:     user:        squire@example.com
+  110      date:        Thu Apr 22 18:51:21 2010 +0000
+  111      summary:     hello mercurial world
+  ...
+  179  Additionally, you can specify remote Mercurial repositories using SSH paths as in the following example:
+  180  
+  181:     hg clone ssh://squire@example.com//srv/hg/lolipop
+  182  
+  183: In this example, the user `squire` logs into the server located at `example.com` and clones the Mercurial repository located at the path `/srv/hg/lolipop`. By default, `ssh` presumes that the specified path is in the users home directory. Use the double slash (e.g. `//`) to specify absolute paths when the Mercurial repository is located outside of the users home directory. You may use the SSH protocol to push and pull content. To create a Mercurial repository that you can use to push changes to, issue the following commands:
+  184  
+  185      mkdir -p /srv/hg/
+
+/Users/ellekrout/docsmith/source/docs/applications/development/manage-source-code-versions-with-subversion.md:
+  170      groupadd svnuser
+  171  
+  172: In this case we're adding the users `squire`, `foreman`, and `hobby` to the user group `svnuser`. Issue the following commands, modified to reflect the names of your group and users:
+  173  
+  174:     usermod -G svnuser squire
+  175      usermod -G svnuser foreman
+  176      usermod -G svnuser hobby
+
+/Users/ellekrout/docsmith/source/docs/applications/messaging/installing-prosody-xmpp-server-on-debian-5-lenny.md:
+  123  3.  Service: `_jabber` Protocol: TCP Port: 5269
+  124  
+  125: The "target" of the SRV record should point to the publicly routable hostname for that machine (e.g. "squire.example.com"). The priority and weight should both be set to `0`.
+  126  
+  127  Enabling Components
+
+/Users/ellekrout/docsmith/source/docs/applications/messaging/installing-prosody-xmpp-server-on-ubuntu-10-04-lucid.md:
+  131  3.  Service: `_jabber` Protocol: TCP Port: 5269
+  132  
+  133: The "target" of the SRV record should point to the publicly routable hostname for that machine (e.g. "squire.example.com"). The priority and weight should both be set to `0`.
+  134  
+  135  Enabling Components
+
+/Users/ellekrout/docsmith/source/docs/applications/messaging/installing-prosody-xmpp-server-on-ubuntu-10-10-maverick.md:
+  129  3.  Service: `_jabber` Protocol: TCP Port: 5269
+  130  
+  131: The "target" of the SRV record should point to the publicly routable hostname for that machine (e.g. "squire.example.com"). The priority and weight should both be set to `0`.
+  132  
+  133  Enabling Components
+
+/Users/ellekrout/docsmith/source/docs/applications/messaging/installing-prosody-xmpp-server-on-ubuntu-12-04-precise-pangolin.md:
+  129  3.  Service: `_jabber` Protocol: TCP Port: 5269
+  130  
+  131: The "target" of the SRV record should point to the publicly routable hostname for that machine (e.g. "squire.example.com"). The priority and weight should both be set to `0`.
+  132  
+  133  ## Enabling Components
+
+/Users/ellekrout/docsmith/source/docs/applications/messaging/installing-prosody-xmpp-server-on-ubuntu-8-04-hardy.md:
+  125  3.  Service: `_jabber` Protocol: TCP Port: 5269
+  126  
+  127: The "target" of the SRV record should point to the publicly routable hostname for that machine (e.g. "squire.example.com"). The priority and weight should both be set to `0`.
+  128  
+  129  Enabling Components
+
+/Users/ellekrout/docsmith/source/docs/applications/messaging/installing-prosody-xmpp-server-on-ubuntu-9-04-jaunty.md:
+  147  3.  Service: `_jabber` Protocol: TCP Port: 5269
+  148  
+  149: The "target" of the SRV record should point to the publicly routable hostname for that machine (e.g. "squire.example.com"). The priority and weight should both be set to `0`.
+  150  
+  151  Enabling Components
+
+/Users/ellekrout/docsmith/source/docs/applications/messaging/installing-prosody-xmpp-server-on-ubuntu-9-10-karmic.md:
+  153  3.  Service: `_jabber` Protocol: TCP Port: 5269
+  154  
+  155: The "target" of the SRV record should point to the publicly routable hostname for that machine (e.g. "squire.example.com"). The priority and weight should both be set to `0`.
+  156  
+  157  Enabling Components
+
+/Users/ellekrout/docsmith/source/docs/applications/messaging/instant-messaging-services-with-ejabberd-on-centos-5.md:
+   26  Though you can successfully run an XMPP server with only a passing familiarity of the way the XMPP network and system works, understanding the following basic concepts will be helpful:
+   27  
+   28: -   The *JID* or "Jabber ID" is the unique identifier for a user in the XMPP network. It often looks like an email address and contains the username that identifies a specific user on a server, the hostname that identifies the server, and a resource that identifies where a given user is logged in from. The resource is optional, and is often safely omitted or ignored for most users. In following example, "squire" is the username, "example.com" is the hostname, and "/office" is the resource.
+   29  
+   30:         squire@example.com/office
+   31  
+   32      Again, the resource is optional; although XMPP allows a single JID to be connected to the server from multiple machines (i.e. resources), the resource adds a useful amount of specificity.
+   ..
+   83      ~~~
+   84  
+   85: In Erlang, comments begin with the `%` character, and the access control list segment contains information in the following form: `{user, "USERNAME", "HOSTNAME"}`. The following examples correspond to the users with the JIDs of `admin@example.com` and `squire@example.com`. You only need to specify one administrator, but you can add more than one administrator simply by adding more lines, as shown below:
+   86  
+   87  {: .file-excerpt }
+   ..
+   89  :   ~~~
+   90      {acl, admin, {user, "admin", "example.com"}}.
+   91:     {acl, admin, {user, "squire", "example.com"}}.
+   92      ~~~
+   93  
+   ..
+  104      ~~~
+  105  
+  106: In the following example, ejabberd has been configured to host a number of additional domains. In this case, these domains are "squire.example.com," "example.com," and "bampton.com"
+  107  
+  108  {: .file-excerpt }
+  109  /etc/ejabberd/ejabberd.cfg
+  110  :   ~~~
+  111:     {hosts, ["squire.example.com", "example.com", "example.com", "localhost"]}.
+  112      ~~~
+  113  
+
+/Users/ellekrout/docsmith/source/docs/applications/messaging/instant-messaging-services-with-ejabberd-on-debian-5-lenny.md:
+   24  Though you can successfully run an XMPP server with only a passing familiarity of the way the XMPP network and system works, understanding the following basic concepts will be helpful:
+   25  
+   26: -   The *JID* or "Jabber ID" is the unique identifier for a user in the XMPP network. It often looks like an email address and contains the username that identifies a specific user on a server, the hostname that identifies the server, and a resource that identifies where a given user is logged in from. The resource is optional, and is often safely omitted or ignored for most users. In following example, "squire" is the username, "example.com" is the hostname, and "/office" is the resource.
+   27  
+   28:         squire@example/office
+   29  
+   30      Again, the resource is optional; although XMPP allows a single JID to be connected to the server from multiple machines (i.e. resources), the resource adds a useful amount of specificity.
+   ..
+   53  :   ~~~
+   54      127.0.0.1    localhost.localdomain   localhost
+   55:     12.34.56.78  squire.example.com  squire
+   56      ~~~
+   57  
+   ..
+   73      ~~~
+   74  
+   75: In Erlang, comments begin with the `%` character, and the access control list segment contains information in the following form: `{user, "USERNAME", "HOSTNAME"}`. The following examples correspond to the users with the JIDs of `admin@example.com` and `squire@example.com`. You only need to specify one administrator, but you can add more than one administrator simply by adding more lines, as shown below:
+   76  
+   77  {: .file-excerpt }
+   ..
+   79  :   ~~~
+   80      {acl, admin, {user, "admin", "example.com"}}.
+   81:     {acl, admin, {user, "squire", "example.com"}}.
+   82      ~~~
+   83  
+   ..
+   94      ~~~
+   95  
+   96: In the following example, ejabberd has been configured to host a number of additional domains. In this case, these domains are "squire.example.com," "example.com," and "example.com."
+   97  
+   98  {: .file-excerpt }
+   99  /etc/ejabberd/ejabberd.cfg
+  100  :   ~~~
+  101:     {hosts, ["squire.example.com", "example.com", "example.com"]}.
+  102      ~~~
+  103  
+  ...
+  175  3.  Service: `_jabber` Protocol: TCP Port: 5269
+  176  
+  177: The "target" of the SRV record should point to the publicly routable hostname for that machine (e.g. "squire.example.com"). The priority and weight should both be set to `0`.
+  178  
+  179  Troubleshooting
+
+/Users/ellekrout/docsmith/source/docs/applications/messaging/instant-messaging-services-with-ejabberd-on-fedora-13.md:
+   26  Though you can successfully run an XMPP server with only a passing familiarity of the way the XMPP network and system works, understanding the following basic concepts will be helpful:
+   27  
+   28: -   The *JID* or "Jabber ID" is the unique identifier for a user in the XMPP network. It often looks like an email address and contains the username that identifies a specific user on a server, the hostname that identifies the server, and a resource that identifies where a given user is logged in from. The resource is optional, and is often safely omitted or ignored for most users. In following example, "squire" is the username, "example.com" is the hostname, and "/office" is the resource.
+   29  
+   30:         squire@example.com/office
+   31  
+   32      Again, the resource is optional; although XMPP allows a single JID to be connected to the server from multiple machines (i.e. resources), the resource adds a useful amount of specificity.
+   ..
+   82      ~~~
+   83  
+   84: In Erlang, comments begin with the `%` character, and the access control list segment contains information in the following form: `{user, "USERNAME", "HOSTNAME"}`. The following examples correspond to the users with the JIDs of `admin@example.com` and `squire@example.com`. You only need to specify one administrator, but you can add more than one administrator simply by adding more lines, as shown below:
+   85  
+   86  {: .file-excerpt }
+   ..
+   88  :   ~~~
+   89      {acl, admin, {user, "admin", "example.com"}}.
+   90:     {acl, admin, {user, "squire", "example.com"}}.
+   91      ~~~
+   92  
+   ..
+  103      ~~~
+  104  
+  105: In the following example, ejabberd has been configured to host a number of additional domains. In this case, these domains are "squire.example.com," "example.com," and "bampton.com"
+  106  
+  107  {: .file-excerpt }
+  108  /etc/ejabberd/ejabberd.cfg
+  109  :   ~~~
+  110:     {hosts, ["squire.example.com", "example.com", example.com", "localhost"]}.
+  111      ~~~
+  112  
+
+/Users/ellekrout/docsmith/source/docs/applications/messaging/instant-messaging-services-with-ejabberd-on-ubuntu-12-04-precise-pangolin.md:
+   26  Though you can successfully run an XMPP server with only a passing familiarity of the way the XMPP network and system works, understanding the following basic concepts will be helpful:
+   27  
+   28: -   The *JID* or "Jabber ID," is the unique identifier for a user in the XMPP network. It often looks like an email and contains the username that identifies a specific user on a server, the hostname that identifies the server, and a resource that identifies where a given user is logged in from. The resource is optional, and is often safely omitted or ignored for most users. In following example, "squire" is the username, "example.com" is the hostname, and "/office" is the resource.
+   29  
+   30:         squire@example/office
+   31  
+   32      Again, the resource is optional; although XMPP allows a single JID to be connected to the server from multiple machines (i.e. resources), the resource adds a useful amount of specificity.
+   ..
+   49  :   ~~~
+   50      127.0.0.1    localhost.localdomain   localhost
+   51:     12.34.56.78  squire.example.com  squire
+   52      ~~~
+   53  
+   ..
+   68      ~~~
+   69  
+   70: In Erlang, comments begin with the `%` sign, and the Access Control list segment contains information in the following form: `{user, "USERNAME", "HOSTNAME"}`. The following examples correspond to the users with the JIDs of `admin@example.com` and `squire@example.com`. You only need to specify one administrator, but you can add more than one administrator simply by adding more lines, as shown below:
+   71  
+   72  {: .file-excerpt }
+   ..
+   74  :   ~~~
+   75      {acl, admin, {user, "admin", "example.com"}}.
+   76:     {acl, admin, {user, "squire", "example.com"}}.
+   77      ~~~
+   78  
+   ..
+   89      ~~~
+   90  
+   91: In the following example, ejabberd has been configured to host a number of additional domains. In this case "squire.example.com," "example.com," and "example.com."
+   92  
+   93  {: .file-excerpt }
+   94  /etc/ejabberd/ejabberd.cfg
+   95  :   ~~~
+   96:     {hosts, ["squire.example.com", "example.com", "example.com"]}.
+   97      ~~~
+   98  
+   ..
+  168  3.  Service: `_jabber` Protocol: TCP Port: 5269
+  169  
+  170: The "target" of the SRV record should point to the publicly routable hostname for that machine (e.g. "squire.example.com"). The priority and weight should both be set to `0`.
+  171  
+  172  ## Troubleshooting
+
+/Users/ellekrout/docsmith/source/docs/applications/messaging/instant-messaging-services-with-ejabberd-on-ubuntu-8-04-hardy.md:
+   26  Though you can successfully run an XMPP server with only a passing familiarity of the way the XMPP network and system works, understanding the following basic concepts will be helpful:
+   27  
+   28: -   The *JID* or "Jabber ID," is the unique identifier for a user in the XMPP network. It often looks like an email and contains the username that identifies a specific user on a server, the hostname that identifies the server, and a resource that identifies where a given user is logged in from. The resource is optional, and is often safely omitted or ignored for most users. In following example, "squire" is the username, "example.com" is the hostname, and "/office" is the resource.
+   29  
+   30:         squire@example/office
+   31  
+   32      Again, the resource is optional; although XMPP allows a single JID to be connected to the server from multiple machines (i.e. resources), the resource adds a useful amount of specificity.
+   ..
+   55  :   ~~~
+   56      127.0.0.1    localhost.localdomain   localhost
+   57:     12.34.56.78  squire.example.com  squire
+   58      ~~~
+   59  
+   ..
+   75      ~~~
+   76  
+   77: In Erlang, comments begin with the `%` sign, and the access control list segment contains information in the following form: `{user, "USERNAME", "HOSTNAME"}`. The following examples correspond to the users with the JIDs of `admin@example.com` and `squire@example.com`. You only need to specify one administrator, but you can add more than one administrator simply by adding more lines, as shown below:
+   78  
+   79  {: .file-excerpt }
+   ..
+   81  :   ~~~
+   82      {acl, admin, {user, "admin", "example.com"}}.
+   83:     {acl, admin, {user, "squire", "example.com"}}.
+   84      ~~~
+   85  
+   ..
+   96      ~~~
+   97  
+   98: In the following example, ejabberd has been configured to host a number of additional domains. In this case, these domains are "squire.example.com," "example.com," and "example.com."
+   99  
+  100  {: .file-excerpt }
+  101  /etc/ejabberd/ejabberd.cfg
+  102  :   ~~~
+  103:     {hosts, ["squire.example.com", "example.com", "example.com"]}.
+  104      ~~~
+  105  
+  ...
+  176  3.  Service: `_jabber` Protocol: TCP Port: 5269
+  177  
+  178: The "target" of the SRV record should point to the publicly routable hostname for that machine (e.g. "squire.example.com"). The priority and weight should both be set to `0`.
+  179  
+  180  Troubleshooting
+
+/Users/ellekrout/docsmith/source/docs/applications/messaging/instant-messaging-services-with-ejabberd-on-ubuntu-9-04-jaunty.md:
+   26  Though you can successfully run an XMPP server with only a passing familiarity of the way the XMPP network and system works, understanding the following basic concepts will be helpful:
+   27  
+   28: -   The *JID* or "Jabber ID," is the unique identifier for a user in the XMPP network. It often looks like an email and contains the username that identifies a specific user on a server, the hostname that identifies the server, and a resource that identifies where a given user is logged in from. The resource is optional, and is often safely omitted or ignored for most users. In following example, "squire" is the username, "example.com" is the hostname, and "/office" is the resource.
+   29  
+   30:         squire@example/office
+   31  
+   32      Again, the resource is optional; although XMPP allows a single JID to be connected to the server from multiple machines (i.e. resources), the resource adds a useful amount of specificity.
+   ..
+   66  :   ~~~
+   67      127.0.0.1    localhost.localdomain   localhost
+   68:     12.34.56.78  squire.example.com  squire
+   69      ~~~
+   70  
+   ..
+   86      ~~~
+   87  
+   88: In Erlang, comments begin with the `%` sign, and the Access Control list segment contains information in the following form: `{user, "USERNAME", "HOSTNAME"}`. The following examples correspond to the users with the JIDs of `admin@example.com` and `squire@example.com`. You only need to specify one administrator, but you can add more than one administrator simply by adding more lines, as shown below:
+   89  
+   90  {: .file-excerpt }
+   ..
+   92  :   ~~~
+   93      {acl, admin, {user, "admin", "example.com"}}.
+   94:     {acl, admin, {user, "squire", "example.com"}}.
+   95      ~~~
+   96  
+   ..
+  107      ~~~
+  108  
+  109: In the following example, ejabberd has been configured to host a number of additional domains. In this case "squire.example.com," "example.com," and "example.com."
+  110  
+  111  {: .file-excerpt }
+  112  /etc/ejabberd/ejabberd.cfg
+  113  :   ~~~
+  114:     {hosts, ["squire.example.com", "example.com", "example.com"]}.
+  115      ~~~
+  116  
+  ...
+  188  3.  Service: `_jabber` Protocol: TCP Port: 5269
+  189  
+  190: The "target" of the SRV record should point to the publicly routable hostname for that machine (e.g. "squire.example.com"). The priority and weight should both be set to `0`.
+  191  
+  192  Troubleshooting
+
+/Users/ellekrout/docsmith/source/docs/applications/messaging/instant-messaging-services-with-ejabberd-on-ubuntu-9-10-karmic.md:
+   26  Though you can successfully run an XMPP server with only a passing familiarity of the way the XMPP network and system works, understanding the following basic concepts will be helpful:
+   27  
+   28: -   The *JID* or "Jabber ID," is the unique identifier for a user in the XMPP network. It often looks like an email and contains the username that identifies a specific user on a server, the hostname that identifies the server, and a resource that identifies where a given user is logged in from. The resource is optional, and is often safely omitted or ignored for most users. In following example, "squire" is the username, "example.com" is the hostname, and "/office" is the resource.
+   29  
+   30:         squire@example/office
+   31  
+   32      Again, the resource is optional; although XMPP allows a single JID to be connected to the server from multiple machines (i.e. resources), the resource adds a useful amount of specificity.
+   ..
+   73  :   ~~~
+   74      127.0.0.1    localhost.localdomain   localhost
+   75:     12.34.56.78  squire.example.com  squire
+   76      ~~~
+   77  
+   ..
+   93      ~~~
+   94  
+   95: In Erlang, comments begin with the `%` sign, and the Access Control list segment contains information in the following form: `{user, "USERNAME", "HOSTNAME"}`. The following examples correspond to the users with the JIDs of `admin@example.com` and `squire@example.com`. You only need to specify one administrator, but you can add more than one administrator simply by adding more lines, as shown below:
+   96  
+   97  {: .file-excerpt }
+   ..
+   99  :   ~~~
+  100      {acl, admin, {user, "admin", "example.com"}}.
+  101:     {acl, admin, {user, "squire", "example.com"}}.
+  102      ~~~
+  103  
+  ...
+  114      ~~~
+  115  
+  116: In the following example, ejabberd has been configured to host a number of additional domains. In this case "squire.example.com," "example.com," and "example.com."
+  117  
+  118  {: .file-excerpt }
+  119  /etc/ejabberd/ejabberd.cfg
+  120  :   ~~~
+  121:     {hosts, ["squire.example.com", "example.com", "example.com"]}.
+  122      ~~~
+  123  
+  ...
+  195  3.  Service: `_jabber` Protocol: TCP Port: 5269
+  196  
+  197: The "target" of the SRV record should point to the publicly routable hostname for that machine (e.g. "squire.example.com"). The priority and weight should both be set to `0`.
+  198  
+  199  Troubleshooting
+
+/Users/ellekrout/docsmith/source/docs/applications/social-networking/create-an-aggregate-blog-using-planet-on-debian-5-lenny.md:
+   51      name=example link=http://example.com
+   52  
+   53:     owner_name=squire <owner_email=squire@example.com>
+   54  
+   55      cache_dir = /srv/www/example.com/planet_cache
+
+/Users/ellekrout/docsmith/source/docs/applications/social-networking/create-an-aggregate-blog-using-planet-on-ubuntu-9-10-karmic.md:
+   71      name=example link=http://example.com
+   72  
+   73:     owner_name=squire <owner_email=squire@example.com>
+   74  
+   75      cache_dir = /srv/www/example.com/planet_cache
+
+/Users/ellekrout/docsmith/source/docs/applications/social-networking/create-an-aggregate-blog-using-planet-venus-on-ubuntu-10-04-lucid.md:
+   64      name = Planet example link = <http://example.com/>
+   65      owner_name = example Square
+   66:     owner_email = <squire@example.com>
+   67      output_theme = /srv/www/example.com/planet-theme
+   68      cache_directory = /srv/www/example.com/planet-cache
+
+/Users/ellekrout/docsmith/source/docs/applications/social-networking/create-an-aggregate-blog-using-planet-venus-on-ubuntu-12-04-precise-pangolin.md:
+   62      name = Planet example link = <http://example.com/>
+   63      owner_name = example Square
+   64:     owner_email = <squire@example.com>
+   65      output_theme = /var/www/example.com/planet-theme
+   66      cache_directory = /var/www/example.com/planet-cache
+
+/Users/ellekrout/docsmith/source/docs/applications/social-networking/question-and-answer-communities-with-osqa-on-debian-5-lenny.md:
+   50  The `checkinstall` command will ask you a number of questions regarding the package you are building. `checkinstall` will allow you to modify ten possible options concerning your application. We recommend naming this package `sphinxsearch` to avoid overlapping with other packages for different software in Debian. Other modifications can be made at your discretion. When complete, `checkinstall` will generate the following output. Press enter, when you have completed this process:
+   51  
+   52:     0 - Maintainer: [ squire@example.com ]
+   53      1 - Summary: [ Sphinx is a full-text search engine. ]
+   54      2 - Name: [ sphinxsearch2 ]
+   ..
+  115  :   ~~~ python
+  116      DATABASE_NAME = 'osqa'                  # Or path to database file if using sqlite3.
+  117:     DATABASE_USER = 'squire'                # Not used with sqlite3.
+  118      DATABASE_PASSWORD = '5t1ck'             # Not used with sqlite3.
+  119      DATABASE_ENGINE = 'mysql'               # mysql, ext.
+
+/Users/ellekrout/docsmith/source/docs/assets/655-ikiwiki.setup:
+   15  	# where the source of the wiki is located
+   16  	allow_symlinks_before_srcdir => 1,
+   17: 	srcdir => '/home/squire/wiki/source',
+   18  	# where to build the wiki
+   19  	destdir => '/srv/www/example.com/public_html',
+   ..
+   26  
+   27  	# contact email for wiki
+   28: 	adminemail => 'squire@example.com',
+   29  	# users who are wiki admins
+   30  	adminuser => ['http://www.example.com/'],
+
+/Users/ellekrout/docsmith/source/docs/assets/656-ikiwiki.setup:
+   15  	# where the source of the wiki is located
+   16  	allow_symlinks_before_srcdir => 1,
+   17: 	srcdir => '/home/squire/wiki/source',
+   18  	# where to build the wiki
+   19  	destdir => '/srv/www/example.com/public_html',
+   ..
+   26  
+   27  	# contact email for wiki
+   28: 	adminemail => 'squire@example.com',
+   29  	# users who are wiki admins
+   30  	adminuser => ['http://www.example.com/'],
+
+/Users/ellekrout/docsmith/source/docs/assets/657-ikiwiki.setup:
+   15  	# where the source of the wiki is located
+   16  	allow_symlinks_before_srcdir => 1,
+   17: 	srcdir => '/home/squire/wiki/source',
+   18  	# where to build the wiki
+   19  	destdir => '/srv/www/example.com/public_html',
+   ..
+   26  
+   27  	# contact email for wiki
+   28: 	adminemail => 'squire@example.com',
+   29  	# users who are wiki admins
+   30  	adminuser => ['http://www.example.com/'],
+
+/Users/ellekrout/docsmith/source/docs/assets/690-ikiwiki.yaml:
+   18  wikiname: example wiki
+   19  # contact email for wiki
+   20: adminemail: squire@example.com
+   21  # users who are banned from the wiki
+   22  banned_users: []
+   ..
+   25    - 
+   26  # where the source of the wiki is located
+   27: srcdir: /home/squire/wiki/source
+   28  # where to build the wiki
+   29  destdir: /srv/www/example.com/public_html/
+   ..
+   54    - cammelcase 
+   55  # additional directory to search for template files
+   56: templatedir: /home/squire/wiki/templates/
+   57  # base wiki source location
+   58: underlaydir: /home/squire/wiki/basewiki/
+   59  # display verbose messages?
+   60  verbose: 1
+   ..
+   90  umask: 18
+   91  # group for wrappers to run in
+   92: wrappergroup: squire
+   93  # extra library and plugin directory
+   94: libdir: /home/squire/wiki/source/.ikiwiki/
+   95  # environment variables
+   96  ENV: {}
+
+/Users/ellekrout/docsmith/source/docs/assets/691-ikiwiki.yaml:
+   18  wikiname: example wiki
+   19  # contact email for wiki
+   20: adminemail: squire@example.com
+   21  # users who are banned from the wiki
+   22  banned_users: []
+   ..
+   25    - 
+   26  # where the source of the wiki is located
+   27: srcdir: /home/squire/wiki/source
+   28  # where to build the wiki
+   29  destdir: /srv/www/example.com/public_html/
+   ..
+   54    - cammelcase 
+   55  # additional directory to search for template files
+   56: templatedir: /home/squire/wiki/templates/
+   57  # base wiki source location
+   58: underlaydir: /home/squire/wiki/basewiki/
+   59  # display verbose messages?
+   60  verbose: 1
+   ..
+   90  umask: 18
+   91  # group for wrappers to run in
+   92: wrappergroup: squire
+   93  # extra library and plugin directory
+   94: libdir: /home/squire/wiki/source/.ikiwiki/
+   95  # environment variables
+   96  ENV: {}
+
+/Users/ellekrout/docsmith/source/docs/assets/692-ikiwiki.setup:
+   15  	# where the source of the wiki is located
+   16  	allow_symlinks_before_srcdir => 1,
+   17: 	srcdir => '/home/squire/wiki/source',
+   18  	# where to build the wiki
+   19  	destdir => '/srv/www/example.com/public_html',
+   ..
+   26  
+   27  	# contact email for wiki
+   28: 	adminemail => 'squire@example.com',
+   29  	# users who are wiki admins
+   30  	adminuser => ['http://www.example.com/'],
+
+/Users/ellekrout/docsmith/source/docs/assets/693-ikiwiki.yaml:
+   18  wikiname: example wiki
+   19  # contact email for wiki
+   20: adminemail: squire@example.com
+   21  # users who are banned from the wiki
+   22  banned_users: []
+   ..
+   25    - 
+   26  # where the source of the wiki is located
+   27: srcdir: /home/squire/wiki/source
+   28  # where to build the wiki
+   29  destdir: /srv/www/example.com/public_html/
+   ..
+   54    - cammelcase 
+   55  # additional directory to search for template files
+   56: templatedir: /home/squire/wiki/templates/
+   57  # base wiki source location
+   58: underlaydir: /home/squire/wiki/basewiki/
+   59  # display verbose messages?
+   60  verbose: 1
+   ..
+   90  umask: 18
+   91  # group for wrappers to run in
+   92: wrappergroup: squire
+   93  # extra library and plugin directory
+   94: libdir: /home/squire/wiki/source/.ikiwiki/
+   95  # environment variables
+   96  ENV: {}
+
+/Users/ellekrout/docsmith/source/docs/assets/694-ikiwiki.yaml:
+   18  wikiname: example wiki
+   19  # contact email for wiki
+   20: adminemail: squire@example.com
+   21  # users who are banned from the wiki
+   22  banned_users: []
+   ..
+   25    - 
+   26  # where the source of the wiki is located
+   27: srcdir: /home/squire/wiki/source
+   28  # where to build the wiki
+   29  destdir: /srv/www/example.com/public_html/
+   ..
+   54    - cammelcase 
+   55  # additional directory to search for template files
+   56: templatedir: /home/squire/wiki/templates/
+   57  # base wiki source location
+   58: underlaydir: /home/squire/wiki/basewiki/
+   59  # display verbose messages?
+   60  verbose: 1
+   ..
+   90  umask: 18
+   91  # group for wrappers to run in
+   92: wrappergroup: squire
+   93  # extra library and plugin directory
+   94: libdir: /home/squire/wiki/source/.ikiwiki/
+   95  # environment variables
+   96  ENV: {}
+
+/Users/ellekrout/docsmith/source/docs/databases/mysql/back-up-your-mysql-databases.md:
+   90  When possible, use the `mysqldump` tool to export a "dump" of a single database. This command will resemble the following:
+   91  
+   92:     mysqldump -u squire -ps3cr1t -h localhost danceLeaders > 1266861650-danceLeaders.sql
+   93  
+   94  The above example is like the example in the previous section, except rather than using the `--all-databases` option, this example specifies a particular database name. In this case we create a back up of the `danceLeaders` database. The form of this command, in a more plain notation is as follows:
+   ..
+  106  ### Option 1: Create Backups of a Single Table Using the mysqldump Utility
+  107  
+  108: This operation, like previous uses of the `mysqldump` utility in this document, allows you to create a backup of a single database table. Continuing our earlier examples the following example allows you to back up the table `squireRecords` in the `danceLeaders` database.
+  109  
+  110:      mysqldump -u squire -ps3cr1t -h localhost danceLeaders squireRecords \> 1266861650-danceLeaders-squireRecords.sql
+  111  
+  112  The above example is like the example in the previous section, except that we've added a table name specification to the command to specify the name of the table that we want to back up. The form of this command in a more plain notation is as follows:
+
+/Users/ellekrout/docsmith/source/docs/email/citadel/email-with-citadel-on-debian-5-lenny.md:
+   57  /etc/mailname
+   58  :   ~~~
+   59:     squire.example.com
+   60      ~~~
+   61  
+   ..
+   92  Visit the web interface in your Web browser. Using our preceding example, the Web address to visit would look like:
+   93  
+   94:     https://squire.example.com
+   95  
+   96  The SSL certificate for your Citadel web interface will be self-signed; accept it to continue. If you don't get a login page in your web browser, you may need to start "webcit" with the following command:
+
+/Users/ellekrout/docsmith/source/docs/email/citadel/email-with-citadel-on-ubuntu-10-04-lts-lucid.md:
+   57  /etc/mailname
+   58  :   ~~~
+   59:     squire.example.com
+   60      ~~~
+   61  
+   ..
+   92  Visit the web interface in your Web browser. Using our preceding example, the Web address to visit would look like:
+   93  
+   94:     https://squire.example.com
+   95  
+   96  The SSL certificate for your Citadel web interface will be self-signed; accept it to continue. If you don't get a login page in your web browser, you may need to start "webcit" with the following command:
+
+/Users/ellekrout/docsmith/source/docs/email/citadel/email-with-citadel-on-ubuntu-9-04-jaunty.md:
+   59  ### Set the Hostname
+   60  
+   61: You'll also need to set the hostname for your system. This can be any name you like, but it should be something that you will remember. In this example, the machine will be named "squire".
+   62  
+   63:     echo "squire" > /etc/hostname
+   64      hostname -F /etc/hostname
+   65  
+   66: Now you will need to configure your Linode so that it associates its hostname with its public IP address. Edit the `/etc/hosts` file so that the first section resembles the following example. Replace `12.34.56.78` and `squire.example.com` with your Linode's public IP and FQDN (name.domain.com).
+   67  
+   68  {: .file }
+   ..
+   70  :   ~~~
+   71      127.0.0.1 localhost.localdomain localhost
+   72:     12.34.56.78 squire.example.com squire
+   73      ~~~
+   74  
+   ..
+   94  /etc/mailname
+   95  :   ~~~
+   96:     squire.example.com
+   97      ~~~
+   98  You'll need to edit the SpamAssassin configuration file to enable spamd:
+   ..
+  128  Visit the web interface in your Web browser. Using our preceding example, the Web address to visit would look like:
+  129  
+  130:     https://squire.example.com
+  131  
+  132  The SSL certificate for your Citadel web interface will be self-signed; accept it to continue. If you don't get a login page in your web browser, you may need to start "webcit" with the following command:
+
+/Users/ellekrout/docsmith/source/docs/email/citadel/email-with-citadel-on-ubuntu-9-10-karmic.md:
+   60  ### Set the Hostname
+   61  
+   62: You'll also need to set the hostname for your system. This can be any name you like, but it should be something that you will remember. In this example, the machine will be named "squire".
+   63  
+   64:     echo "squire" > /etc/hostname
+   65      hostname -F /etc/hostname
+   66  
+   67: Now you will need to configure your Linode so that it associates its hostname with its public IP address. Edit the `/etc/hosts` file so that the first section resembles the following example. Replace `12.34.56.78` and `squire.example.com` with your Linode's public IP and FQDN (name.domain.com).
+   68  
+   69  {: .file }
+   ..
+   71  :   ~~~
+   72      127.0.0.1 localhost.localdomain localhost
+   73:     12.34.56.78 squire.example.com squire
+   74      ~~~
+   75  You're now ready to begin installing Citadel!
+   ..
+   94  /etc/mailname
+   95  :   ~~~
+   96:     squire.example.com
+   97      ~~~
+   98  
+   ..
+  129  Visit the web interface in your Web browser. Using our preceding example, the Web address to visit would look like:
+  130  
+  131:     https://squire.example.com
+  132  
+  133  The SSL certificate for your Citadel web interface will be self-signed; accept it to continue. If you don't get a login page in your web browser, you may need to start "webcit" with the following command:
+
+/Users/ellekrout/docsmith/source/docs/email/clients/using-fetchmail-to-retrieve-email.md:
+   55  .fetchmailrc
+   56  : ~~~
+   57: 	poll example.com protocol pop3 username "squire" password "XXX"
+   58  ~~~
+   59  
+   60: This assumes that the username on the remote pop3 server is the same as the local user. In this case, mail will be delivered to the default system mail spool using in an `mbox` format and located at `/var/mail/squire`. Allow us to consider the following example:
+   61  
+   62  {: .file-excerpt }
+   ..
+   64  : ~~~
+   65  	poll mail.example.com protocol pop3:
+   66: 	     username "admin" password "dir3cti0n" is "squire" here;
+   67  	     username "fore" password "0rd3r" is "foreman" here;
+   68  
+   ..
+   71  ~~~
+   72  
+   73: In the first specification, fetchmail is told to check the `mail.example.com` server, using the POP3 protocol, for the users `admin` and `fore`." Also, the "`is "[username]" here;` directive is used to clarify the relationship between a remote user (i.e. `admin` and `fore`) and users on the local machine (i.e. `squire` and `foreman`).
+   74  
+   75  In the second example, a single account (i.e. `betty`) is retrieved from the remote server (i.e. `mail.dexample.org`) and passed to the MDA `procmail` utility. Additionally, account has the `sslproto` option is enabled to encrypt this traffic using `ssl`.
+   ..
+  116  .fetchmailrc
+  117  : ~~~
+  118: 	set daemon [seconds] set postmaster "squire"
+  119  	
+  120  	set logfile "\~/logs/fetchmail.log" set syslog
+  ...
+  148  .fetchmailrc
+  149  : ~~~
+  150: 	set postmaster "squire"
+  151  
+  152  	poll email.example.com protocol pop3:
+  153: 	     username "squire" password "dir3cti0n";
+  154  	     username "fore" password "0rd3r";
+  155  	     username "gigs" password "p@rty";
+  156  ~~~
+  157  
+  158: Assuming that there are system user accounts for `squire` and `fore`, mail downloaded from these accounts will be deposited in `/var/mail/squire` and `/var/mail/fore` respectively. However, if there is no system account for a `gigs` user this mail would be deposited in the `squire` user's mail spool (i.e. `/var/mail/squire`) because the `squire` user is set as the postmaster for this fetchmail session.
+  159  
+  160  ### Logging
+  ...
+  182  : ~~~
+  183  	poll email.example.com protocol imap:
+  184: 	     username "squire" password "dir3cti0n";
+  185  	poll mail.example.org protocol kpop:
+  186  	     username "fore" password "0rd3r";
+  ...
+  201  : ~~~
+  202  	machine email.example.com
+  203: 	        login squire
+  204  	        password d1r3ct1on
+  205  	machine mail.example.org
+  ...
+  213  The `ftp` UNIX utility also uses the `.netrc` file, so you can use this feature to avoid duplicating. If usernames are not provided in a `.netrc` file or in `.fetchmailrc`, fetchmail will try to connect to the remote server using the current user's username on the local system to connect to the remote server. The fetchmail program accepts alternate usernames with the `-u` option. This command takes the following syntax:
+  214  
+  215:     fetchmail -u squire example.com
+  216  
+  217: In this example, fetchmail will connect with the username `squire` to the server at `example.com`. All of these authentication options, including specifying credentials in the `.fetchmailrc` will allow fetchmail to successfully retrieve email. However, in contemporary deployments, specifying usernames and passwords in the `.fetchmailrc` file is the most popular and efficient option by far.
+  218  
+  219  ### Workflows with Fetchmail
+
+/Users/ellekrout/docsmith/source/docs/email/postfix/basic-postfix-email-gateway-on-debian-5-lenny.md:
+   73      ~~~
+   74  
+   75: Furthermore, this ensures that the domains listed in `mydestination` do not conflict with the address that you will receive or forward email with. The `home_mailbox` value determines the name of the folder where email messages are delivered when local delivery is configured. For the user `squire` with a home directory of `/home/squire/` new mail would be delivered in a `Maildir` directory located at `/home/squire/mail/`. When you've completed this configuration, issue the following command to reload the mail server:
+   76  
+   77      /etc/init.d/postfix reload 
+   ..
+   96      foreman@example.com example
+   97  
+   98:     squire@example.com squire
+   99:     squire@example.net squire
+  100:     squire@example.com squire
+  101  
+  102      jim@example.com jim@chartercast.net
+  ...
+  104      jay@example.com jay@chartercast.net
+  105  
+  106:     lollipop@example.com stacy@morris.net, squire
+  107:     jockey@example.com squire, example
+  108  
+  109      @oddington.com oddington
+  110      ~~~
+  111  
+  112: In this example there are a number of addresses in the `example.com` domain forwarded to the `example` system user account. In the next group, a collection of emails at different domains beginning with the `squire` name, are all forwarded to the `squire` system user group. Finally, a number of email addresses at the `example.com` domain are forwarded to external addresses at the fictitious `chartercast.net` domain. The next two email addresses are directed to multiple sources: `lollipop@example.com` mail is delivered to the local `squire` user as well as the external email address `stacy@morris.net`, while `jockey@example.com` is delivered to the local system users `squire` and `example`. Finally all messages sent to addresses within the `oddington.com` domain are forwarded to the mailbox for the `oddington` user.
+  113  
+  114  When you've successfully edited your `/etc/postfix/virtual` file to ensure the proper delivery of your email, issue the following command to rebuild the virtual alias database:
+  ...
+  226      account default
+  227      host localhost
+  228:     from squire@example.com
+  229      port 25
+  230  
+
+/Users/ellekrout/docsmith/source/docs/email/postfix/basic-postfix-email-gateway-on-debian-6-squeeze.md:
+   71      ~~~
+   72  
+   73: Furthermore, this ensures that the domains listed in `mydestination` do not conflict with the address that you will receive or forward email with. The `home_mailbox` value determines the name of the folder where email messages are delivered when local delivery is configured. For the user `squire` with a home directory of `/home/squire/` new mail would be delivered in a `Maildir` directory located at `/home/squire/mail/`. When you've completed this configuration, issue the following command to reload the mail server:
+   74  
+   75      /etc/init.d/postfix reload 
+   ..
+   94      foreman@example.org example
+   95  
+   96:     squire@example.com squire
+   97:     squire@example.com squire
+   98:     squire@example.com squire
+   99  
+  100      jim@example.com jim@chartercast.net
+  ...
+  102      jay@example.com jay@chartercast.net
+  103  
+  104:     lollipop@example.com stacy@morris.net, squire
+  105:     jockey@example.org squire, example
+  106  
+  107      @oddington.com oddington
+  108      ~~~
+  109  
+  110: In this example there are a number of addresses in the `example.org` domain forwarded to the `example` system user account. In the next group, a collection of emails at different domains beginning with the `squire` name, are all forwarded to the `squire` system user group. Finally, a number of email addresses at the `example.com` domain are forwarded to external addresses at the fictitious `chartercast.net` domain. The next two email addresses are directed to multiple sources: `lollipop@example.com` mail is delivered to the local `squire` user as well as the external email address `stacy@morris.net`, while `jockey@example.org` is delivered to the local system users `squire` and `example`. Finally all messages sent to addresses within the `oddington.com` domain are forwarded to the mailbox for the `oddington` user.
+  111  
+  112  When you've successfully edited your `/etc/postfix/virtual` file to ensure the proper delivery of your email, issue the following command to rebuild the virtual alias database:
+  ...
+  224      account default
+  225      host localhost
+  226:     from squire@example.com
+  227      port 25
+  228  
+
+/Users/ellekrout/docsmith/source/docs/email/postfix/basic-postfix-email-gateway-on-ubuntu-10-04-lucid.md:
+   73      ~~~
+   74  
+   75: Furthermore, this ensures that the domains listed in `mydestination` do not conflict with the address that you will receive or forward email with. The `home_mailbox` value determines the name of the folder where email messages are delivered when local delivery is configured. For the user `squire` with a home directory of `/home/squire/`, new mail would be delivered in a `Maildir` directory located at `/home/squire/mail/`. When you've completed this configuration, issue the following command to reload the mail server:
+   76  
+   77      /etc/init.d/postfix reload 
+   ..
+   96      foreman@example.com example
+   97  
+   98:     squire@example.com squire
+   99:     squire@example.net squire
+  100:     squire@example.com squire
+  101  
+  102      jim@example.com jim@chartercast.net
+  ...
+  104      jay@example.com jay@chartercast.net
+  105  
+  106:     lollipop@example.com stacy@morris.net, squire
+  107:     jockey@example.com squire, example
+  108  
+  109      @oddington.com oddington
+  110      ~~~
+  111  
+  112: In this example there are a number of addresses in the `example.com` domain forwarded to the `example` system user account. In the next group, a collection of emails at different domains beginning with the `squire` name, are all forwarded to the `squire` system user group. Finally, a number of email addresses at the `example.com` domain are forwarded to external addresses at the fictitious `chartercast.net` domain. The next two email addresses are directed to multiple sources: `lollipop@example.com` mail is delivered to the local `squire` user as well as the external email address `stacy@morris.net`, while `jockey@example.com` is delivered to the local system users `squire` and `example`. Finally all messages sent to addresses within the `oddington.com` domain are forwarded to the mailbox for the `oddington` user.
+  113  
+  114  When you've successfully edited your `/etc/postfix/virtual` file to ensure the proper delivery of your email, issue the following command to rebuild the virtual alias database:
+  ...
+  226      account default
+  227      host localhost
+  228:     from squire@example.com
+  229      port 25
+  230  
+
+/Users/ellekrout/docsmith/source/docs/email/postfix/basic-postfix-email-gateway-on-ubuntu-10-10-maverick.md:
+   71      ~~~
+   72  
+   73: Furthermore, this ensures that the domains listed in `mydestination` do not conflict with the address that you will receive or forward email with. The `home_mailbox` value determines the name of the folder where email messages are delivered when local delivery is configured. For the user `squire` with a home directory of `/home/squire/` new mail would be delivered in a `Maildir` directory located at `/home/squire/mail/`. When you've completed this configuration, issue the following command to reload the mail server:
+   74  
+   75      /etc/init.d/postfix reload 
+   ..
+   94      foreman@example.com example
+   95  
+   96:     squire@example.com squire
+   97:     squire@example.net squire
+   98:     squire@example.com squire
+   99  
+  100      jim@example.com jim@chartercast.net
+  ...
+  102      jay@example.com jay@chartercast.net
+  103  
+  104:     lollipop@example.com stacy@morris.net, squire
+  105:     jockey@example.com squire, example
+  106  
+  107      @oddington.com oddington
+  108      ~~~
+  109  
+  110: In this example there are a number of addresses in the `example.com` domain forwarded to the `example` system user account. In the next group, a collection of emails at different domains beginning with the `squire` name, are all forwarded to the `squire` system user group. Finally, a number of email addresses at the `example.com` domain are forwarded to external addresses at the fictitious `chartercast.net` domain. The next two email addresses are directed to multiple sources: `lollipop@example.com` mail is delivered to the local `squire` user as well as the external email address `stacy@morris.net`, while `jockey@example.com` is delivered to the local system users `squire` and `example`. Finally all messages sent to addresses within the `oddington.com` domain are forwarded to the mailbox for the `oddington` user.
+  111  
+  112  When you've successfully edited your `/etc/postfix/virtual` file to ensure the proper delivery of your email, issue the following command to rebuild the virtual alias database:
+  ...
+  224      account default
+  225      host localhost
+  226:     from squire@example.com
+  227      port 25
+  228  
+
+/Users/ellekrout/docsmith/source/docs/email/postfix/postfix-dovecot-and-system-user-accounts-on-debian-5-lenny.md:
+  154  /etc/postfix/virtual
+  155  
+  156: > <squire@example.com> squire <squire@example.net> squire <squire@example.com> squire
+  157  >
+  158  > <fore@example.com> <foreman@example.com> <fore@example.net> <foreman@example.com> <fore@example.com> <foreman@example.com>
+  159  >
+  160: > <team@example.com> squire, <foreman@example.com> <team@example.net> squire, <foreman@example.com> <team@example.com> squire, <foreman@example.com>
+  161  
+  162: Here, all mail sent to the three addresses beginning with the characters `squire@` are delivered to the local user "squire" and deposited to a Maildir in the `/home/squire/mail/` directory. The three addresses that begin with the characters `fore@` are delivered to the email address `foreman@example.com`. The final set of three email addresses beginning with `team@` are both delivered locally and sent to the `foreman@example.com` email address.
+  163  
+  164  You can add additional lines in the same format as the above to control how all incoming email is delivered to local or external destinations. Remember that incoming email has no firm relationship to the name of the user account.
+  165  
+  166: Edit the `/etc/alias` file to add the following line. This will to reroute all local mail delivered to the root user to another user account. In the following example, all mail delivered to `root` will be delivered to the `squire` user's mail box.
+  167  
+  168  {: .file-excerpt }
+  169  /etc/aliases
+  170  
+  171: > root: squire
+  172  
+  173  When you have configured mail delivery issue the following command to recreate the aliases database, rebuild the virtual alias database, and restart the mail server:
+
+/Users/ellekrout/docsmith/source/docs/email/postfix/postfix-dovecot-and-system-user-accounts-on-debian-6-squeeze.md:
+  150  /etc/postfix/virtual
+  151  
+  152: > <squire@example.com> squire <squire@example.net> squire <squire@example.com> squire
+  153  >
+  154  > <fore@example.com> <foreman@example.com> <fore@example.net> <foreman@example.com> <fore@example.com> <foreman@example.com>
+  155  >
+  156: > <team@example.com> squire, <foreman@example.com> <team@example.net> squire, <foreman@example.com> <team@example.com> squire, <foreman@example.com>
+  157  
+  158: Here, all mail sent to the three addresses beginning with the characters `squire@` are delivered to the local user "squire" and deposited to a Maildir in the `/home/squire/mail/` directory. The three addresses that begin with the characters `fore@` are delivered to the email address `foreman@example.com`. The final set of three email addresses beginning with `team@` are both delivered locally and sent to the `foreman@example.com` email address.
+  159  
+  160  You can add additional lines in the same format as the above to control how all incoming email is delivered to local or external destinations. Remember that incoming email has no firm relationship to the name of the user account.
+  161  
+  162: Edit the `/etc/alias` file to add the following line. This will to reroute all local mail delivered to the root user to another user account. In the following example, all mail delivered to `root` will be delivered to the `squire` user's mail box.
+  163  
+  164  {: .file-excerpt }
+  165  /etc/aliases
+  166  
+  167: > root: squire
+  168  
+  169  When you have configured mail delivery issue the following command to recreate the aliases database, rebuild the virtual alias database, and restart the mail server:
+
+/Users/ellekrout/docsmith/source/docs/email/postfix/postfix-dovecot-and-system-user-accounts-on-ubuntu-10-04-lucid.md:
+  120  /etc/postfix/virtual
+  121  
+  122: > <squire@example.com> squire <squire@example.net> squire <squire@example.com> squire
+  123  >
+  124  > <fore@example.com> <foreman@example.com> <fore@example.net> <foreman@example.com> <fore@example.com> <foreman@example.com>
+  125  >
+  126: > <team@example.com> squire, <foreman@example.com> <team@example.net> squire, <foreman@example.com> <team@example.com> squire, <foreman@example.com>
+  127  
+  128: Here, all mail sent to the three addresses beginning with the characters `squire@` are delivered to the local user "squire" and deposited to a Maildir in the `/home/squire/mail/` directory. The three addresses that begin with the characters `fore@` are delivered to the email address `foreman@example.com`. The final set of three email addresses beginning with `team@` are both delivered locally and sent to the `foreman@example.com` email address.
+  129  
+  130  You can add additional lines in the same format as the above to control how all incoming email is delivered to local or external destinations. Remember that incoming email has no firm relationship to the name of the user account.
+  131  
+  132: Edit the `/etc/alias` file to add the following line. This will to reroute all local mail delivered to the root user to another user account. In the following example, all mail delivered to `root` will be delivered to the `squire` user's mail box.
+  133  
+  134  {: .file-excerpt }
+  135  /etc/aliases
+  136  
+  137: > root: squire
+  138  
+  139  When you have configured mail delivery issue the following command to recreate the aliases database, rebuild the virtual alias database, and restart the mail server:
+
+/Users/ellekrout/docsmith/source/docs/email/postfix/postfix-dovecot-and-system-user-accounts-on-ubuntu-10-10-maverick.md:
+  136  /etc/postfix/virtual
+  137  
+  138: > <squire@example.com> squire <squire@example.net> squire <squire@example.com> squire
+  139  >
+  140  > <fore@example.com> <foreman@example.com> <fore@example.net> <foreman@example.com> <fore@example.com> <foreman@example.com>
+  141  >
+  142: > <team@example.com> squire, <foreman@example.com> <team@example.net> squire, <foreman@example.com> <team@example.com> squire, <foreman@example.com>
+  143  
+  144: Here, all mail sent to the three addresses beginning with the characters `squire@` are delivered to the local user "squire" and deposited to a Maildir in the `/home/squire/mail/` directory. The three addresses that begin with the characters `fore@` are delivered to the email address `foreman@example.com`. The final set of three email addresses beginning with `team@` are both delivered locally and sent to the `foreman@example.com` email address.
+  145  
+  146  You can add additional lines in the same format as the above to control how all incoming email is delivered to local or external destinations. Remember that incoming email has no firm relationship to the name of the user account.
+  147  
+  148: Edit the `/etc/alias` file to add the following line. This will to reroute all local mail delivered to the root user to another user account. In the following example, all mail delivered to `root` will be delivered to the `squire` user's mail box.
+  149  
+  150  {: .file-excerpt }
+  151  /etc/aliases
+  152  
+  153: > root: squire
+  154  
+  155  When you have configured mail delivery issue the following command to recreate the aliases database, rebuild the virtual alias database, and restart the mail server:
+
+/Users/ellekrout/docsmith/source/docs/networking/dns/use-dig-to-perform-manual-dns-queries.md:
+   91  
+   92      ;; AUTHORITY SECTION:
+   93:     example.com. 10800  IN      SOA     ns1.linode.com. squire.example.com. 2010051349 14400 14400 1209600 86400
+   94  
+   95      ;; Query time: 91 msec
+   ..
+  269  
+  270      $ dig soa +short example.com
+  271:     ns1.linode.com. squire.example.com. 2010051349 14400 14400 1209600 86400
+  272  
+  273      $ dig @ns2.linode.com ns +short example.com
+
+/Users/ellekrout/docsmith/source/docs/networking/vpn/secure-communications-with-openvpn-on-centos-6.md:
+   60      export KEY_CITY="Oxford"
+   61      export KEY_ORG="My Company"
+   62:     export KEY_EMAIL="squire@example.com"
+   63      ~~~
+   64  
+
+/Users/ellekrout/docsmith/source/docs/networking/vpn/secure-communications-with-openvpn-on-debian-5-lenny.md:
+   52      export KEY_CITY="Oxford"
+   53      export KEY_ORG="My Company"
+   54:     export KEY_EMAIL="squire@example.com"
+   55      ~~~
+   56  
+
+/Users/ellekrout/docsmith/source/docs/networking/vpn/secure-communications-with-openvpn-on-debian-6-squeeze.md:
+   50      export KEY_CITY="Oxford"
+   51      export KEY_ORG="My Company"
+   52:     export KEY_EMAIL="squire@example.com"
+   53      ~~~
+   54  
+
+/Users/ellekrout/docsmith/source/docs/networking/vpn/secure-communications-with-openvpn-on-ubuntu-10-04-lucid.md:
+   52      export KEY_CITY="Oxford"
+   53      export KEY_ORG="My Company"
+   54:     export KEY_EMAIL="squire@example.com"
+   55      ~~~
+   56  
+
+/Users/ellekrout/docsmith/source/docs/networking/vpn/secure-communications-with-openvpn-on-ubuntu-10-10-maverick.md:
+   52      export KEY_CITY="Oxford"
+   53      export KEY_ORG="My Company"
+   54:     export KEY_EMAIL="squire@example.com"
+   55      ~~~
+   56  
+
+/Users/ellekrout/docsmith/source/docs/networking/vpn/secure-communications-with-openvpn-on-ubuntu-9-10-karmic.md:
+   52      export KEY_CITY="Oxford"
+   53      export KEY_ORG="My Company"
+   54:     export KEY_EMAIL="squire@example.com"
+   55      ~~~
+   56  
+
+/Users/ellekrout/docsmith/source/docs/security/backups/back-up-your-mysql-databases.md:
+   90  When possible, use the `mysqldump` tool to export a "dump" of a single database. This command will resemble the following:
+   91  
+   92:     mysqldump -u squire -ps3cr1t -h localhost danceLeaders > 1266861650-danceLeaders.sql
+   93  
+   94  The above example is like the example in the previous section, except rather than using the `--all-databases` option, this example specifies a particular database name. In this case we create a back up of the `danceLeaders` database. The form of this command, in a more plain notation is as follows:
+   ..
+  106  ### Option 1: Create Backups of a Single Table Using the mysqldump Utility
+  107  
+  108: This operation, like previous uses of the `mysqldump` utility in this document, allows you to create a backup of a single database table. Continuing our earlier examples the following example allows you to back up the table `squireRecords` in the `danceLeaders` database.
+  109  
+  110:      mysqldump -u squire -ps3cr1t -h localhost danceLeaders squireRecords \> 1266861650-danceLeaders-squireRecords.sql
+  111  
+  112  The above example is like the example in the previous section, except that we've added a table name specification to the command to specify the name of the table that we want to back up. The form of this command in a more plain notation is as follows:
+
+/Users/ellekrout/docsmith/source/docs/security/ssl/how-to-provide-encrypted-access-to-resources-using-ssl-certificated-on-nginx.md:
+   71      Organization Name (eg, company) [Internet Widgits Pty Ltd]:SoftwareDev, LLC
+   72      Organizational Unit Name (eg, section) []:Web Services
+   73:     Common Name (eg, YOUR name) []:squire.example.com
+   74:     Email Address []:squire@example.com
+   75  
+   76  The `Common Name` for your certificate must match the host name that you want to generate a valid certificate for. Continue to configure nginx to serve SSL content.
+   ..
+  104      Organizational Unit Name (eg, section) []:Web Services
+  105      Common Name (eg, YOUR name) []:example.com
+  106:     Email Address []:squire@example.com
+  107  
+  108      Please enter the following 'extra' attributes
+
+/Users/ellekrout/docsmith/source/docs/tools-reference/modify-file-permissions-with-chmod.md:
+   29  All file system objects on Unix-like systems have three main types of permissions: read, write, and execute access. Furthermore, permissions are bestowed upon three possible classes: the user that owns the file system object, the user group that owns the file system object, and all system users. To view the file permissions of a set of files, use the `ls -lha` command. The output will resemble the following:
+   30  
+   31:     drwxr-xr-x 2 squire squire       4.0K 2009-08-13 10:16 docs
+   32:     -rw-r--r-- 1 squire squire       8.1K 2009-07-09 16:23 roster.py
+   33:     lrwxrwxrwx 2 squire squire       4.0K 2009-08-13 10:16 team.docs
+   34  
+   35  The first block of data contains information regarding the file permissions and settings, and we'll focus on that in this section. The first column specifies the type of file system object. `d` indicates that the object is a directory. `-` indicates that the object is a normal file. `l` indicates that the object is a symbolic link.
+
+/Users/ellekrout/docsmith/source/docs/tools-reference/tools/create-file-system-links-with-ln.md:
+   30  If you want to create a symbolic link in a directory other than your current directory, you can specify a full path in the final argument of the command:
+   31  
+   32:     ln -s /srv/www/example.com/public_html /home/squire/public/example
+   33  
+   34  ### Symbolic and Hard Links
+   ..
+   58      $ ls -l
+   59      total 0
+   60:     -rw-r--r-- 1 squire squire 0 Aug 27 10:35 foo
+   61  
+   62      $ ln -s foo bar
+   ..
+   64      $ ls -l
+   65      total 0
+   66:     lrwxrwxrwx 1 squire squire 3 Aug 27 10:35 bar -> foo
+   67:     -rw-r--r-- 1 squire squire 0 Aug 27 10:35 fooh
+   68  
+   69  The first column of meta data on the `bar` object is `l`, which indicates that `bar` is a link. Additionally, `ls` prints the location of the symbolic link. The above link is relative: `bar` is linked to the object `foo` in the same directory. Consider the following relative link:
+   ..
+   72  
+   73      $ ls -l 
+   74:     lrwxrwxrwx 1 squire squire 6 Aug 27 10:54 example.txt -> ../example.txt
+   75  
+   76  The `ln -s` command will succeed as long as a there are no files in the target directory that would conflict with the name of the link to be created. While the target file must exist when the link is created, the link or the target may be moved resulting in a broken link.
+   ..
+   80  To avoid the pitfalls of specifying relative symbolic link targets, you may create symbolic links that point to absolute paths. Consider the following example:
+   81  
+   82:     $ ln -s /srv/www/example.com/public_html /home/squire/public
+   83  
+   84:     $ ls -l /home/squire 
+   85      total 0
+   86:     lrwxrwxrwx 1 squire squire 3 Aug 27 11:43 public -> /srv/www/example.com/public_html
+   87  
+   88:     $ ls -l /home/squire/public 
+   89      total 48K
+   90:     -rw-r--r-- 1 squire squire 355 2010-06-10 14:50 index.htm
+   91:     -rw-r--r-- 1 squire squire 38K 2010-06-10 12:37 logo.png
+   92  
+   93  ### Create a Hard Link
+   ..
+   97      $ ls -l 
+   98      total 4.0K 
+   99:     -rw-r--r-- 1 squire squire 3 Aug 27 12:23 foo
+  100      
+  101      $ ln foo bar
+  ...
+  103      $ ls -l
+  104      total 8.0K
+  105:     -rw-r--r-- 2 squire squire 3 Aug 27 12:23 bar 
+  106:     -rw-r--r-- 2 squire squire 3 Aug 27 12:23 foo
+  107      
+  108      $ touch foo
+  ...
+  110      $ ls -l
+  111      total 8.0K 
+  112:     -rw-r--r-- 2 squire squire 3 Aug 27 12:24 bar 
+  113:     -rw-r--r-- 2 squire squire 3 Aug 27 12:24 foo
+
+/Users/ellekrout/docsmith/source/docs/tools-reference/tools/download-resources-from-the-command-line-with-wget.md:
+  113  In practice this may resemble:
+  114  
+  115:     wget --http-user=squire --http-password=iwLcis4TMOgn3PTy http://example.com/backups/database.1285770344
+  116  
+  117  `wget` will not send the authentication information unless prompted by the web server. Use the `--auth-no-challenge` option to force `wget` to send the authentication credentials under every circumstance.
+
+/Users/ellekrout/docsmith/source/docs/tools-reference/tools/filter-file-systems-with-the-find-command.md:
+   42      find / -name "*.err"
+   43  
+   44:     find /home/squire/ -name "*.el*" 
+   45  
+   46: In the first command, the list of all readable objects on the file system is filtered for all items that end with the characters `.err`. The second command returns all items beneath the `/home/squire/` directory that end with "`.el`.
+   47  
+   48  ## Filter Files by Modification Time
+   ..
+   52      find / -name "*conf" -mtime 7 
+   53  
+   54:     find /home/squire/ -name "*conf" -mtime 3
+   55  
+   56: The first command returns a list of all files in entire file system that end with the characters `conf` and have been modified in the last 7 days. The second command filters `squire` user's home directory for files with names that end with the characters `conf` and have been modified in the last 3 days.
+   57  
+   58  ## Delete Matching Files
+
+/Users/ellekrout/docsmith/source/docs/tools-reference/tools/manage-processes-with-killall-and-kill.md:
+  102  
+  103      $ ps aux | grep "emacs" 
+  104:     squire  3896  0.0  2.2  56600 44468 ?        Ss   Sep30   4:29 emacs
+  105:     squire 22843  0.0  0.0   3900   840 pts/11   S+   08:49   0:00 grep emacs
+  106  
+  107  This command filters the list of all processes that are currently running for the string `emacs` using [grep](/docs/tools-reference/search-and-filter-text-with-grep). The number listed in the second column is the PID, which is `3896` in the case of the `emacs` process. The `grep` process will always match itself for a simple search, as in the second result. To view a hierarchical tree of all running processes, issue the following command:
+
+/Users/ellekrout/docsmith/source/docs/tools-reference/tools/schedule-tasks-with-cron.md:
+   31  This will produce, as standard output, something that resembles the following:
+   32  
+   33:     */20 * * * * /home/squire/bin/rebuild-dns-zones
+   34:     */40 * * * * /home/squire/bin/delete-session-files >/dev/null 2>&1
+   35      */10 * * * * rm /srv/example.com/app/session/*
+   36  
+   ..
+  115  crontab
+  116  
+  117: > */20* \* \* \* /home/squire/bin/rebuild-dns-zones 30 */2* \* \* /opt/bin/backup-static-files 0 \* \* \* \* /opt/bin/compress-static-files @hourly /opt/bin/compress-static-files
+  118  
+  119  In the first example, the `rebuild-dns-zones` script is run every twenty minutes. In the second example, the `backup-static-files` program is run at 30 past the hour, (i.e. the "bottom of the hour") every other hour. In the final *two* examples, the `compress-static-files` script is run at the beginning of *every* hour.
+
+/Users/ellekrout/docsmith/source/docs/uptime/logs/use-logrotate-to-manage-log-files.md:
+   78  logrotate.conf
+   79  :   ~~~
+   80:     mail <squire@example.com>
+   81      ~~~
+   82  
+
+/Users/ellekrout/docsmith/source/docs/websites/authbased-access-control-with-apache.md:
+   52  To create a new file with a single user, issue the following command:
+   53  
+   54:     htpasswd -c /srv/auth/.htpasswd squire
+   55  
+   56: In this example, we instruct the program to create a new `AuthUserFile` with the `-c` option. The file is to be located at `/srv/auth/.htpasswd` and the user name is `squire`. `htpasswd` will prompt you to enter a password and then confirm the password.
+   57  
+   58  If you have an existing file, omit the `-c` option. The `-b` option allows you to enter the password as the last parameter of the command, as in this example :
+   59  
+   60:     htpasswd -b /srv/auth/.htpasswd squire 5t1ck6
+   61  
+   62  The `AuthUserFile` will, when populated look something like this:
+   ..
+   65  /srv/auth/.htpasswd
+   66  
+   67: > hobby:isiA3Q4djD/.Q fore:{SHA}x9VvwHI6dmgk9VTE0A8o6hbCw2s= squire:\$apr1\$vVzQJxvX\$6EyHww61nnZr6IdQv0pVx/
+   68  
+   69  Each user is specified on their own line. Each line follows the form `[username]:[hash]`, where the `[hash]` is a cryptographic hash of the users' password. This provides one-way encryption and some small measure of additional security.
+   ..
+   87  Apache configuration option
+   88  
+   89: > Require user squire fore
+   90  
+   91: Given this directive, the users `squire` and `fore` will be able to log into the resource. Any subset of users can be specified on the `Require` line. Apache also provides the ability to organize users into groups, and then permit access to resources based on group membership. The configuration directives for this setup would look like this:
+   92  
+   93  {: .file-excerpt }
+   ..
+  105  /srv/auth/.htgroup
+  106  :   ~~~
+  107:     Authorized: squire betty Team: fore hobby
+  108      ~~~
+  109  
+  110: Given this `htgroup` file, only the users `squire` and `betty` will have access to the above listed resource. The syntax of the group file follows a simple `[groupname]: [username 1] [username 2] [...]`. You can put as many usernames from your `AuthUserFile` into a group entry as you need for the particular resource.
+  111  
+  112  ## The Caveats of HTTP Authentication
+
+/Users/ellekrout/docsmith/source/docs/websites/apache/apache-2-web-server-on-fedora-12.md:
+   94  :   ~~~ apache
+   95      <VirtualHost 12.34.56.78:80> 
+   96:          ServerAdmin squire@example.com
+   97           ServerName example.com
+   98           ServerAlias www.example.com
+   ..
+  103  
+  104      <VirtualHost 12.34.56.78:80> 
+  105:          ServerAdmin squire@example.com     
+  106           ServerName example.com
+  107           ServerAlias www.example.com
+
+/Users/ellekrout/docsmith/source/docs/websites/apache/apache-2-web-server-on-fedora-13.md:
+   94  :   ~~~ apache
+   95      <VirtualHost 13.34.56.78:80> 
+   96:          ServerAdmin squire@example.com
+   97           ServerName example.com
+   98           ServerAlias www.example.com
+   ..
+  103  
+  104      <VirtualHost 13.34.56.78:80> 
+  105:          ServerAdmin squire@example.com     
+  106           ServerName example.com
+  107           ServerAlias www.example.com
+
+/Users/ellekrout/docsmith/source/docs/websites/apache/apache-2-web-server-on-ubuntu-9-04-jaunty.md:
+   73  :   ~~~ apache
+   74      <VirtualHost 12.34.56.78:80> 
+   75:          ServerAdmin squire@example.com     
+   76           ServerName example.com
+   77           ServerAlias www.example.com
+   ..
+   97  :   ~~~ apache
+   98      <VirtualHost 12.34.56.78:80> 
+   99:          ServerAdmin squire@example.com
+  100           ServerName example.com
+  101           ServerAlias www.example.com
+
+/Users/ellekrout/docsmith/source/docs/websites/apache/apache-2-web-server-on-ubuntu-9-10-karmic.md:
+  125  :   ~~~ apache
+  126      <VirtualHost 12.34.56.78:80> 
+  127:              ServerAdmin squire@example.com     
+  128           ServerName example.com
+  129           ServerAlias www.example.com
+  ...
+  149  :   ~~~ apache
+  150      <VirtualHost 12.34.56.78:80> 
+  151:          ServerAdmin squire@example.com
+  152           ServerName example.com
+  153           ServerAlias www.example.com
+
+/Users/ellekrout/docsmith/source/docs/websites/apache/apache-and-mod-wsgi-on-ubuntu-10-10-maverick.md:
+  129         ServerName example.com
+  130         ServerAlias www.example.com
+  131:        ServerAdmin squire@example.com
+  132  
+  133         DocumentRoot /srv/www/example.com/public_html
+
+/Users/ellekrout/docsmith/source/docs/websites/apache/apache-and-modwsgi-on-debian-5-lenny.md:
+  131         ServerName example.com
+  132         ServerAlias www.example.com
+  133:        ServerAdmin squire@example.com
+  134  
+  135         DocumentRoot /srv/www/example.com/public_html
+
+/Users/ellekrout/docsmith/source/docs/websites/apache/apache-and-modwsgi-on-debian-6-squeeze.md:
+  129         ServerName example.com
+  130         ServerAlias www.example.com
+  131:        ServerAdmin squire@example.com
+  132  
+  133         DocumentRoot /srv/www/example.com/public_html
+
+/Users/ellekrout/docsmith/source/docs/websites/apache/apache-and-modwsgi-on-fedora-14.md:
+  130         ServerName example.com
+  131         ServerAlias www.example.com
+  132:        ServerAdmin squire@example.com
+  133  
+  134         DocumentRoot /srv/www/example.com/public_html
+
+/Users/ellekrout/docsmith/source/docs/websites/apache/apache-and-modwsgi-on-ubuntu-10-04-lucid.md:
+  131         ServerName example.com
+  132         ServerAlias www.example.com
+  133:        ServerAdmin squire@example.com
+  134  
+  135         DocumentRoot /srv/www/example.com/public_html
+
+/Users/ellekrout/docsmith/source/docs/websites/apache/apache-and-modwsgi-on-ubuntu-12-04-precise-pangolin.md:
+  132         ServerName example.com
+  133         ServerAlias www.example.com
+  134:        ServerAdmin squire@example.com
+  135  
+  136         DocumentRoot /var/www/example.com/public_html
+
+/Users/ellekrout/docsmith/source/docs/websites/apache/authbased-access-control-with-apache.md:
+   52  To create a new file with a single user, issue the following command:
+   53  
+   54:     htpasswd -c /srv/auth/.htpasswd squire
+   55  
+   56: In this example, we instruct the program to create a new `AuthUserFile` with the `-c` option. The file is to be located at `/srv/auth/.htpasswd` and the user name is `squire`. `htpasswd` will prompt you to enter a password and then confirm the password.
+   57  
+   58  If you have an existing file, omit the `-c` option. The `-b` option allows you to enter the password as the last parameter of the command, as in this example :
+   59  
+   60:     htpasswd -b /srv/auth/.htpasswd squire 5t1ck6
+   61  
+   62  The `AuthUserFile` will, when populated look something like this:
+   ..
+   67      hobby:isiA3Q4djD/.Q
+   68      fore:{SHA}x9VvwHI6dmgk9VTE0A8o6hbCw2s=
+   69:     squire:\$apr1\$vVzQJxvX\$6EyHww61nnZr6IdQv0pVx/
+   70      ~~~
+   71  
+   ..
+   90  Apache configuration option
+   91  :   ~~~
+   92:     Require user squire fore
+   93      ~~~
+   94  
+   95: Given this directive, the users `squire` and `fore` will be able to log into the resource. Any subset of users can be specified on the `Require` line. Apache also provides the ability to organize users into groups, and then permit access to resources based on group membership. The configuration directives for this setup would look like this:
+   96  
+   97  {: .file-excerpt }
+   ..
+  109  /srv/auth/.htgroup
+  110  :   ~~~
+  111:     Authorized: squire betty
+  112      Team: fore hobby
+  113      ~~~
+  114  
+  115: Given this `htgroup` file, only the users `squire` and `betty` will have access to the above listed resource. The syntax of the group file follows a simple `[groupname]: [username 1] [username 2] [...]`. You can put as many usernames from your `AuthUserFile` into a group entry as you need for the particular resource.
+  116  
+  117  ## The Caveats of HTTP Authentication
+
+/Users/ellekrout/docsmith/source/docs/websites/apache-tips-and-tricks/apache-configuration-structure.md:
+  133      ~~~
+  134  
+  135: This block specifies a number of options for any directory that matches the regular expression `^.+/images`. In other words, any path which begins with a number of characters and ends with images will match these options, including the following paths: `/srv/www/example.com/public_html/images/`, `/srv/www/example.com/public_html/objects/images`, and `/home/squire/public/www/images`.
+  136  
+  137  Apache also allows an alternate syntax for regular expression-defined directory blocks. Adding a tilde (e.g. `~`) between the `Directory` term and the specified path causes the specified path to be read as a regular expression. Regular expressions are a standard syntax for pattern matching, and Apache supports standard and Perl regular expression variants.
+
+/Users/ellekrout/docsmith/source/docs/websites/apache-tips-and-tricks/redirect-urls-with-the-apache-web-server.md:
+   34  Apache configuration option
+   35  :   ~~~ apache
+   36:     Redirect /squire http://team.example.com/~squire/
+   37      ~~~
+   38  
+   39: If no argument is given, `Redirect` sends a temporary (e.g. 302) status. In this case, the client (user agent) is informed that the resource available at `/squire` has moved temporarily to `http://team.example.com/~squire/`.
+   40  
+   41  Remember that no matter what configuration file they are located in, `Redirect` statements must specify the full path of the redirected resource following the domain name. These statements must also include the full URL of the resource's new location..
+   ..
+   46  Apache configuration option
+   47  :   ~~~ apache
+   48:     Redirect permanent /squire http://team.example.com/~squire/
+   49:     Redirect temp /squire http://team.example.com/~squire/
+   50:     Redirect seeother /squire http://team.example.com/~squire/
+   51:     Redirect gone /squire
+   52      ~~~
+   53  
+   ..
+   59  Apache configuration option
+   60  :   ~~~ apache
+   61:     Redirect 301 /squire http://team.example.com/~squire/
+   62:     Redirect 302 /squire http://team.example.com/~squire/
+   63:     Redirect 303 /squire http://team.example.com/~squire/
+   64:     Redirect 410 /squire
+   65      ~~~
+   66  
+   ..
+   70  Apache configuration option
+   71  :   ~~~ apache
+   72:     RedirectPermanent /squire/bio.html http://team.example.com/~squire/bio/
+   73:     RedirectTemp /squire/bio.html http://team.example.com/~squire/bio/
+   74      ~~~
+   75  
+
+/Users/ellekrout/docsmith/source/docs/websites/cms/manage-content-with-markdown-and-mango-on-debian-5-lenny.md:
+  124         ServerName example.com
+  125         ServerAlias www.example.com
+  126:        ServerAdmin squire@example.com
+  127  
+  128         DocumentRoot /srv/www/example.com/public_html
+
+/Users/ellekrout/docsmith/source/docs/websites/cms/manage-content-with-markdown-and-mango-on-debian-6-squeeze.md:
+  122         ServerName example.com
+  123         ServerAlias www.example.com
+  124:        ServerAdmin squire@example.com
+  125  
+  126         DocumentRoot /srv/www/example.com/public_html
+
+/Users/ellekrout/docsmith/source/docs/websites/cms/manage-content-with-markdown-and-mango-on-fedora-14.md:
+  123         ServerName example.com
+  124         ServerAlias www.example.com
+  125:        ServerAdmin squire@example.com
+  126  
+  127         DocumentRoot /srv/www/example.com/public_html
+
+/Users/ellekrout/docsmith/source/docs/websites/cms/manage-content-with-markdown-and-mango-on-ubuntu-10-10-maverick.md:
+  122         ServerName example.com
+  123         ServerAlias www.example.com
+  124:        ServerAdmin squire@example.com
+  125  
+  126         DocumentRoot /srv/www/example.com/public_html
+
+/Users/ellekrout/docsmith/source/docs/websites/frameworks/apache-tomcat-on-debian-6-squeeze.md:
+   85  :   ~~~ xml
+   86      <role rolename="manager"/>
+   87:     <user username="squire" password="examplemorris" roles="manager"/>
+   88      ~~~
+   89  
+
+/Users/ellekrout/docsmith/source/docs/websites/frameworks/apache-tomcat-on-fedora-12.md:
+   50  /etc/tomcat6/tomcat-users.xml
+   51  :   ~~~ xml
+   52:     <user name="squire" password="examplemorris" roles="manager" />
+   53      ~~~
+   54  
+
+/Users/ellekrout/docsmith/source/docs/websites/frameworks/apache-tomcat-on-fedora-13.md:
+   54  /etc/tomcat6/tomcat-users.xml
+   55  :   ~~~ xml
+   56:     <user name="squire" password="examplemorris" roles="manager" />
+   57      ~~~
+   58  
+
+/Users/ellekrout/docsmith/source/docs/websites/frameworks/apache-tomcat-on-fedora-14.md:
+   64  /etc/tomcat6/tomcat-users.xml
+   65  :   ~~~ xml
+   66:     <user name="squire" password="examplemorris" roles="manager" />
+   67      ~~~
+   68  
+
+/Users/ellekrout/docsmith/source/docs/websites/frameworks/apache-tomcat-on-ubuntu-10-04-lucid.md:
+  113  :   ~~~ xml
+  114      <role rolename="manager"/>
+  115:     <user username="squire" password="examplemorris" roles="manager"/>
+  116      ~~~
+  117  
+
+/Users/ellekrout/docsmith/source/docs/websites/frameworks/apache-tomcat-on-ubuntu-10-10-maverick.md:
+  113  :   ~~~ xml
+  114      <role rolename="manager"/>
+  115:     <user username="squire" password="examplemorris" roles="manager"/>
+  116      ~~~
+  117  
+
+/Users/ellekrout/docsmith/source/docs/websites/frameworks/apache-tomcat-on-ubuntu-12-04-precise-pangolin.md:
+   63  :   ~~~ xml
+   64      <role rolename="manager"/>
+   65:     <user username="squire" password="examplemorris" roles="manager"/>
+   66      ~~~
+   67  
+
+/Users/ellekrout/docsmith/source/docs/websites/frameworks/cakephp-on-debian-5-lenny.md:
+   42  :   ~~~ apache
+   43      <VirtualHost *:80>
+   44:          ServerAdmin squire@example.com
+   45           ServerName example.com
+   46           ServerAlias www.example.com
+
+/Users/ellekrout/docsmith/source/docs/websites/frameworks/django-apache-and-modpython-on-centos-5.md:
+  114      <VirtualHost example.com:80>
+  115          ServerName example.com
+  116:         ServerAdmin squire@example.com
+  117          DocumentRoot /srv/www/example.com/public_html
+  118  
+
+/Users/ellekrout/docsmith/source/docs/websites/frameworks/django-apache-and-modpython-on-debian-5-lenny.md:
+   87      <VirtualHost example.com:80>
+   88          ServerName example.com
+   89:         ServerAdmin squire@example.com
+   90          DocumentRoot /srv/www/example.com/public_html
+   91  
+
+/Users/ellekrout/docsmith/source/docs/websites/frameworks/django-apache-and-modpython-on-ubuntu-10-04-lucid.md:
+   90      <VirtualHost example.com:80>
+   91          ServerName example.com
+   92:         ServerAdmin squire@example.com
+   93          DocumentRoot /srv/www/example.com/public_html
+   94  
+
+/Users/ellekrout/docsmith/source/docs/websites/frameworks/django-apache-and-modwsgi-on-centos-5.md:
+  111         ServerName example.com
+  112         ServerAlias www.example.com
+  113:        ServerAdmin squire@example.com
+  114  
+  115         DocumentRoot /srv/www/example.com/public_html
+
+/Users/ellekrout/docsmith/source/docs/websites/frameworks/django-apache-and-modwsgi-on-debian-5-lenny.md:
+  100         ServerName example.com
+  101         ServerAlias www.example.com
+  102:        ServerAdmin squire@example.com
+  103  
+  104         DocumentRoot /srv/www/example.com/public_html
+
+/Users/ellekrout/docsmith/source/docs/websites/frameworks/django-apache-and-modwsgi-on-debian-6-squeeze.md:
+   98         ServerName example.com
+   99         ServerAlias www.example.com
+  100:        ServerAdmin squire@example.com
+  101  
+  102         DocumentRoot /srv/www/example.com/public_html
+
+/Users/ellekrout/docsmith/source/docs/websites/frameworks/django-apache-and-modwsgi-on-fedora-14.md:
+  108         ServerName example.com
+  109         ServerAlias www.example.com
+  110:        ServerAdmin squire@example.com
+  111  
+  112         DocumentRoot /srv/www/example.com/public_html
+
+/Users/ellekrout/docsmith/source/docs/websites/frameworks/django-apache-and-modwsgi-on-ubuntu-10-04-lucid.md:
+   98         ServerName example.com
+   99         ServerAlias www.example.com
+  100:        ServerAdmin squire@example.com
+  101  
+  102         DocumentRoot /srv/www/example.com/public_html
+
+/Users/ellekrout/docsmith/source/docs/websites/frameworks/django-apache-and-modwsgi-on-ubuntu-10-10-maverick.md:
+   98         ServerName example.com
+   99         ServerAlias www.example.com
+  100:        ServerAdmin squire@example.com
+  101  
+  102         DocumentRoot /srv/www/example.com/public_html
+
+/Users/ellekrout/docsmith/source/docs/websites/frameworks/webpy-on-debian-5-lenny.md:
+  133  :   ~~~ apache
+  134      <VirtualHost example.com:80> 
+  135:         ServerAdmin squire@example.com     
+  136          ServerName example.com
+  137             ServerAlias www.example.com
+
+/Users/ellekrout/docsmith/source/docs/websites/frameworks/webpy-on-debian-6-squeeze.md:
+  133  :   ~~~ apache
+  134      <VirtualHost *:80> 
+  135:         ServerAdmin squire@example.com     
+  136          ServerName example.com
+  137          ServerAlias www.example.com
+
+/Users/ellekrout/docsmith/source/docs/websites/frameworks/webpy-on-ubuntu-10-04-lucid.md:
+  131  :   ~~~ apache
+  132      <VirtualHost example.com:80> 
+  133:         ServerAdmin squire@example.com     
+  134          ServerName example.com
+  135             ServerAlias www.example.com
+
+/Users/ellekrout/docsmith/source/docs/websites/frameworks/webpy-on-ubuntu-10-10-maverick.md:
+  112  :   ~~~ apache
+  113      <VirtualHost example.com:80> 
+  114:         ServerAdmin squire@example.com     
+  115          ServerName example.com
+  116             ServerAlias www.example.com
+
+/Users/ellekrout/docsmith/source/docs/websites/frameworks/webpy-on-ubuntu-12-04-precise-pangolin.md:
+  131  :   ~~~ apache
+  132      <VirtualHost example.com:80> 
+  133:         ServerAdmin squire@example.com    
+  134          ServerName example.com
+  135             ServerAlias www.example.com
+
+/Users/ellekrout/docsmith/source/docs/websites/lamp/lamp-server-on-gentoo.md:
+  108  :   ~~~ apache
+  109      <VirtualHost 12.34.56.78:80> 
+  110:          ServerAdmin squire@example.com
+  111           ServerName example.com
+  112           ServerAlias www.example.com
+
+/Users/ellekrout/docsmith/source/docs/websites/lamp/set-up-a-lamp-server-on-gentoo.md:
+   96  :   ~~~ apache
+   97      <VirtualHost 12.34.56.78:80> 
+   98:          ServerAdmin squire@example.com
+   99           ServerName example.com
+  100           ServerAlias www.example.com
+
+/Users/ellekrout/docsmith/source/docs/websites/lemp/lemp-server-on-arch-linux.md:
+  201      mysql -u root -p
+  202  
+  203: Enter the root password created above and then issue the following sequence of commands to create the `example` and `squire` database users, grant the `squire` user access to the `example` database, and exit from the database:
+  204  
+  205      CREATE DATABASE example;
+  206:     CREATE USER 'squire' IDENTIFIED BY 's8723hk2';
+  207:     GRANT ALL PRIVILEGES ON example.* TO 'squire';
+  208      exit
+  209  
+
+/Users/ellekrout/docsmith/source/docs/websites/lemp/lemp-server-on-centos-5.md:
+  280      mysql -u root -p
+  281  
+  282: Enter the root password created above and then issue the following sequence of commands to create the `example` and `squire` database users, grant the `squire` user access to the `example` database, and exit from the database:
+  283  
+  284      CREATE DATABASE example;
+  285:     CREATE USER 'squire' IDENTIFIED BY 's8723hk2';
+  286:     GRANT ALL PRIVILEGES ON example.* TO 'squire';
+  287      exit
+  288  
+
+/Users/ellekrout/docsmith/source/docs/websites/lemp/lemp-server-on-centos-6.md:
+  473      mysql -u root -p
+  474  
+  475: Enter the root password created above and then issue the following sequence of commands to create the `example` and `squire` database users, grant the `squire` user access to the `example` database, and exit from the database:
+  476  
+  477      CREATE DATABASE example;
+  478:     CREATE USER 'squire' IDENTIFIED BY 's8723hk2';
+  479:     GRANT ALL PRIVILEGES ON example.* TO 'squire';
+  480      exit
+  481  
+
+/Users/ellekrout/docsmith/source/docs/websites/lemp/lemp-server-on-debian-5-lenny.md:
+  315      mysql -u root -p
+  316  
+  317: Enter the root password created above and then issue the following sequence of commands to create the `example` and `squire` database users, grant the `squire` user access to the `example` database, and exit from the database:
+  318  
+  319      CREATE DATABASE example;
+  320:     CREATE USER 'squire' IDENTIFIED BY 's8723hk2';
+  321:     GRANT ALL PRIVILEGES ON example.* TO 'squire';
+  322      exit
+  323  
+
+/Users/ellekrout/docsmith/source/docs/websites/lemp/lemp-server-on-debian-6-squeeze.md:
+  291      mysql -u root -p
+  292  
+  293: Enter the root password created above and then issue the following sequence of commands to create the `example` and `squire` database users, grant the `squire` user access to the `example` database, and exit from the database:
+  294  
+  295      CREATE DATABASE example;
+  296:     CREATE USER 'squire' IDENTIFIED BY 's8723hk2';
+  297:     GRANT ALL PRIVILEGES ON example.* TO 'squire';
+  298      exit
+  299  
+
+/Users/ellekrout/docsmith/source/docs/websites/lemp/lemp-server-on-fedora-13.md:
+  258      mysql -u root -p
+  259  
+  260: Enter the root password created above and then issue the following sequence of commands to create the `example` and `squire` database users, grant the `squire` user access to the `example` database, and exit from the database:
+  261  
+  262      CREATE DATABASE example;
+  263:     CREATE USER 'squire' IDENTIFIED BY 's8723hk2';
+  264:     GRANT ALL PRIVILEGES ON example.* TO 'squire';
+  265      exit
+  266  
+
+/Users/ellekrout/docsmith/source/docs/websites/lemp/lemp-server-on-fedora-14.md:
+  268      mysql -u root -p
+  269  
+  270: Enter the root password created above and then issue the following sequence of commands to create the `example` and `squire` database users, grant the `squire` user access to the `example` database, and exit from the database:
+  271  
+  272      CREATE DATABASE example;
+  273:     CREATE USER 'squire' IDENTIFIED BY 's8723hk2';
+  274:     GRANT ALL PRIVILEGES ON example.* TO 'squire';
+  275      exit
+  276  
+
+/Users/ellekrout/docsmith/source/docs/websites/lemp/lemp-server-on-ubuntu-10-04-lucid.md:
+  279      mysql -u root -p
+  280  
+  281: Enter the root password created above and then issue the following sequence of commands to create the `example` and `squire` database users, grant the `squire` user access to the `example` database, and exit from the database:
+  282  
+  283      CREATE DATABASE example;
+  284:     CREATE USER 'squire' IDENTIFIED BY 's8723hk2';
+  285:     GRANT ALL PRIVILEGES ON example.* TO 'squire';
+  286      exit
+  287  
+
+/Users/ellekrout/docsmith/source/docs/websites/lemp/lemp-server-on-ubuntu-10-10-maverick.md:
+  279      mysql -u root -p
+  280  
+  281: Enter the root password created above and then issue the following sequence of commands to create the `example` and `squire` database users, grant the `squire` user access to the `example` database, and exit from the database:
+  282  
+  283      CREATE DATABASE example;
+  284:     CREATE USER 'squire' IDENTIFIED BY 's8723hk2';
+  285:     GRANT ALL PRIVILEGES ON example.* TO 'squire';
+  286      exit
+  287  
+
+/Users/ellekrout/docsmith/source/docs/websites/lemp/lemp-server-on-ubuntu-11-10-oneiric.md:
+  277      mysql -u root -p
+  278  
+  279: Enter the root password created above and then issue the following sequence of commands to create the `example` and `squire` database users, grant the `squire` user access to the `example` database, and exit from the database:
+  280  
+  281      CREATE DATABASE example;
+  282:     CREATE USER 'squire' IDENTIFIED BY 's8723hk2';
+  283:     GRANT ALL PRIVILEGES ON example.* TO 'squire';
+  284      exit
+  285  
+
+/Users/ellekrout/docsmith/source/docs/websites/lemp/lemp-server-on-ubuntu-12-04-precise-pangolin.md:
+  265      mysql -u root -p
+  266  
+  267: Enter the root password created above and then issue the following sequence of commands to create the `example` and `squire` database users, grant the `squire` user access to the `example` database, and exit from the database:
+  268  
+  269      CREATE DATABASE example;
+  270:     CREATE USER 'squire' IDENTIFIED BY 's8723hk2';
+  271:     GRANT ALL PRIVILEGES ON example.* TO 'squire';
+  272      exit
+  273  
+  274: You may now provide the credentials for the `example` database and the `squire` user to your application, which will now be able to use the database for its purposes. To ensure that PHP will be able to access the MySQL connector your just installed, restart the PHP service by issue the following command:
+  275  
+  276      service php5-fpm restart
+
+/Users/ellekrout/docsmith/source/docs/websites/lemp/lemp-server-on-ubuntu-9-10-karmic.md:
+  295      mysql -u root -p
+  296  
+  297: Enter the root password created above and then issue the following sequence of commands to create the `example` and `squire` database users, grant the `squire` user access to the `example` database, and exit from the database:
+  298  
+  299      CREATE DATABASE example;
+  300:     CREATE USER 'squire' IDENTIFIED BY 's8723hk2';
+  301:     GRANT ALL PRIVILEGES ON example.* TO 'squire';
+  302      exit
+  303  
+
+/Users/ellekrout/docsmith/source/docs/websites/nginx/how-to-configure-nginx.md:
+  543  **Returns:** Nginx will use the FastCGI handler to execute the file located at `/srv/www/example.com/public_html/tasks.pl` and return the result.
+  544  
+  545: **Request:** `http://example.com/squire/roster.pl`
+  546  
+  547: **Returns:** Nginx will use the FastCGI handler to execute the file located at `/srv/www/example.com/public_html/squire/roster.pl` and return the result.
+  548  
+  549  ## Best Practices
+
+/Users/ellekrout/docsmith/source/docs/websites/puppet/manage-and-automate-systems-configuration-with-puppet.md:
+  235  :   ~~~
+  236      exec {"rsync_config":
+  237:         command => "/usr/bin/rsync -a squire@hostname.example.com:/srv/puppet/www-config /opt/config",
+  238          unless => "/bin/test -e /opt/config/fresh",
+  239      }
+
+/Users/ellekrout/docsmith/source/docs/websites/ssl/how-to-provide-encrypted-access-to-resources-using-ssl-certificated-on-nginx.md:
+   71      Organization Name (eg, company) [Internet Widgits Pty Ltd]:SoftwareDev, LLC
+   72      Organizational Unit Name (eg, section) []:Web Services
+   73:     Common Name (eg, YOUR name) []:squire.example.com
+   74:     Email Address []:squire@example.com
+   75  
+   76  The `Common Name` for your certificate must match the host name that you want to generate a valid certificate for. Continue to configure nginx to serve SSL content.
+   ..
+  104      Organizational Unit Name (eg, section) []:Web Services
+  105      Common Name (eg, YOUR name) []:example.com
+  106:     Email Address []:squire@example.com
+  107  
+  108      Please enter the following 'extra' attributes
+
+/Users/ellekrout/docsmith/source/docs/websites/wikis/ikiwiki-on-arch-linux.md:
+   69      makepkg -sfi --asroot
+   70  
+   71: If you haven't already added an unprivileged system user, create one now. This will be the user that manages your ikiwiki content. Issue the following command, substituting a unique username for "squire":
+   72  
+   73:     useradd -m  squire
+   74  
+   75: Set the `squire` user's password with the following command:
+   76  
+   77:     passwd squire 
+   78  
+   79  Install a Web Server
+   ..
+  104  :   ~~~ apache
+  105      <VirtualHost *:80>
+  106:             ServerAdmin squire@example.com
+  107              ServerName example.com
+  108              ServerAlias www.example.com
+  ...
+  123      mkdir -p /srv/http/example.com/public_html 
+  124      mkdir -p /srv/http/example.com/logs
+  125:     chown -R squire:squire /srv/http/example.com
+  126          /etc/rc.d/http start
+  127  
+  ...
+  186      mkdir -p /srv/http/example.com/public_html 
+  187      mkdir -p /srv/http/example.com/logs
+  188:     chown -R squire:squire /srv/http/example.com
+  189      /etc/rc.d/nginx start
+  190  
+  ...
+  194  -----------------
+  195  
+  196: Issue the following commands to create a `~/wiki/` directory as a git repository. All files related to your wiki will be located here, including the source files for the wiki, all templates, and the configuration file. Substitute the username you created at the beginning of this guide for "squire." :
+  197  
+  198      mkdir -p /srv/git/wiki.git
+  199:     chown squire:users /srv/git/wiki.git
+  200:     su - squire
+  201      mkdir -p ~/wiki ~/wiki/source/ ~/wiki/.ikiwiki/
+  202      cd ~/wiki
+  ...
+  219      ~~~
+  220  
+  221: Configure the `squire` user's identity within git. Modify the following model for your user:
+  222  
+  223:     git config --global user.email "squire@example.com" 
+  224:     git config --global user.name "Squire example" 
+  225  
+  226  Issue the following commands to copy the default `basewiki` and `templates` to the `~/wiki` directory, download a [sample ikiwiki configuration file](/docs/assets/694-ikiwiki.yaml), and create an initial commit in the `~/wiki` repository:
+  ...
+  234      git push origin master
+  235  
+  236: Edit the `~/wiki/ikiwiki.yaml` file to suit the needs of your deployment, paying particular attention to example directory paths and URLs. You should take care to replace all instances of "example.com" with your domain name, and all instances of "squire" with the username you created at the beginning of this guide. You may wish to review the [ikiwiki documentation](http://ikiwiki.info) for more information regarding specific configuration directives. Issue the following commands to commit your changes and push them:
+  237  
+  238      git commit ~/wiki/ikiwiki.yaml -m "edited ikiwiki yaml config"
+
+/Users/ellekrout/docsmith/source/docs/websites/wikis/ikiwiki-on-debian-5-lenny.md:
+   36      ~~~
+   37  
+   38: If you haven't already added an unprivileged system user, create one now. This will be the user that manages your ikiwiki content. Issue the following command, substituting a unique username for "squire":
+   39  
+   40:     adduser squire
+   41  
+   42  As with all user accounts, be sure assign a strong password consisting of letters, numbers, and other characters.
+   ..
+   98  :   ~~~ apache
+   99      <VirtualHost *:80>
+  100:         ServerAdmin squire@example.com
+  101          ServerName example.com
+  102          ServerAlias www.example.com
+  ...
+  111      ~~~
+  112  
+  113: Issue the following commands to create the required directories, enable the site, and restart the web server. Replace "example.com" with your own domain name, and "squire" with the username you created at the beginning of this guide:
+  114  
+  115      mkdir -p /srv/www/example.com/public_html 
+  116      mkdir /srv/www/example.com/logs
+  117:     chown -R squire:squire /srv/www/example.com
+  118      a2ensite www.example.com
+  119      /etc/init.d/apache2 restart
+  ...
+  269      /etc/init.d/perl-fastcgi start
+  270  
+  271: In this guide, the domain "example.com" is used as an example site. You should substitute your own domain name in the configuration steps that follow, along with substituting the username you created at the beginning of this guide for "squire". First, create directories to hold content and log files:
+  272  
+  273      mkdir -p /srv/www/example.com/public_html
+  274      mkdir /srv/www/example.com/logs
+  275:     chown -R squire:squire /srv/www/example.com
+  276  
+  277  Next, you'll need to define your site's virtual host file:
+  ...
+  310  -----------------
+  311  
+  312: Issue the following commands to create a `~/wiki/` directory as a git repository. All files related to your wiki will be located here, including the source files for the wiki, all templates, and the configuration file. Substitute the username you created at the beginning of this guide for "squire." :
+  313  
+  314      mkdir -p /srv/git/wiki.git
+  315:     chown squire:squire /srv/git/wiki.git
+  316:     su - squire
+  317      mkdir -p ~/wiki ~/wiki/source/ ~/wiki/.ikiwiki/
+  318      cd ~/wiki
+  ...
+  343      git push origin master
+  344  
+  345: Edit the `~/wiki/ikiwiki.yaml` file to suit the needs of your deployment, paying particular attention to example directory paths and URLs. You should take care to replace all instances of "example.com" with your domain name, and all instances of "squire" with the username you created at the beginning of this guide. You may wish to review the [ikiwiki documentation](http://ikiwiki.info) for more information regarding specific configuration directives. Issue the following commands to commit your changes and push them:
+  346  
+  347      git commit ~/wiki/ikiwiki.yaml -m "edited ikiwiki yaml config"
+
+/Users/ellekrout/docsmith/source/docs/websites/wikis/ikiwiki-on-debian-6-squeeze.md:
+   34      ~~~
+   35  
+   36: If you haven't already added an unprivileged system user, create one now. This will be the user that manages your ikiwiki content. Issue the following command, substituting a unique username for "squire":
+   37  
+   38:     adduser squire
+   39  
+   40  As with all user accounts, be sure assign a strong password consisting of letters, numbers, and other characters.
+   ..
+   69  :   ~~~ apache
+   70      <VirtualHost *:80>
+   71:         ServerAdmin squire@example.com
+   72          ServerName example.com
+   73          ServerAlias www.example.com
+   ..
+   82      ~~~
+   83  
+   84: Issue the following commands to create the required directories, enable the site, and restart the web server. Replace "example.com" with your own domain name, and "squire" with the username you created at the beginning of this guide:
+   85  
+   86      mkdir -p /srv/www/example.com/public_html 
+   87      mkdir /srv/www/example.com/logs
+   88:     chown -R squire:squire /srv/www/example.com
+   89      a2ensite www.example.com
+   90      /etc/init.d/apache2 restart
+   ..
+  240      /etc/init.d/perl-fastcgi start
+  241  
+  242: In this guide, the domain "example.com" is used as an example site. You should substitute your own domain name in the configuration steps that follow, along with substituting the username you created at the beginning of this guide for "squire". First, create directories to hold content and log files:
+  243  
+  244      mkdir -p /srv/www/example.com/public_html
+  245      mkdir /srv/www/example.com/logs
+  246:     chown -R squire:squire /srv/www/example.com
+  247  
+  248  Next, you'll need to define your site's virtual host file:
+  ...
+  281  -----------------
+  282  
+  283: Issue the following commands to create a `~/wiki/` directory as a git repository. All files related to your wiki will be located here, including the source files for the wiki, all templates, and the configuration file. Substitute the username you created at the beginning of this guide for "squire." :
+  284  
+  285      mkdir -p /srv/git/wiki.git
+  286:     chown squire:squire /srv/git/wiki.git
+  287:     su - squire
+  288      mkdir -p ~/wiki ~/wiki/source/ ~/wiki/.ikiwiki/
+  289      cd ~/wiki
+  ...
+  316      git push origin master
+  317  
+  318: Edit the `~/wiki/ikiwiki.yaml` file to suit the needs of your deployment, paying particular attention to example directory paths and URLs. You should take care to replace all instances of "example.com" with your domain name, and all instances of "squire" with the username you created at the beginning of this guide. You may wish to review the [ikiwiki documentation](http://ikiwiki.info) for more information regarding specific configuration directives. Issue the following commands to commit your changes and push them:
+  319  
+  320      git commit ~/wiki/ikiwiki.yaml -m "edited ikiwiki yaml config"
+
+/Users/ellekrout/docsmith/source/docs/websites/wikis/ikiwiki-on-fedora-12.md:
+   44  
+   45      Successfully set up foo:
+   46:         url:         http://example.com/~squire/wiki
+   47          srcdir:      ~/wiki
+   48          destdir:     ~/public_html/wiki
+   ..
+   51          ikiwiki -setup ~/wiki.setup
+   52  
+   53: In this example, `example` is the machine's hostname, `squire` is the admin user specified in the setup process, and `wiki` is the name of the wiki you specified during setup. You will need to configure your web server to serve files in `~/public_html/wiki` before this wiki will be accessible. No matter how you configure your web server, you will need to issue the following commands to start the web server for the first time and ensure that it will return following the next reboot cycle:
+   54  
+   55      chkconfig httpd on
+   ..
+  110  If you have git installed, you can now clone the repository that stores the content for your wiki to your local machine. Use the following command:
+  111  
+  112:     git clone ssh://squire@colab.example.com/srv/git/wiki.git
+  113  
+  114: In this example, `squire` is the username, `colab.example.com` is the name of the host where the repository resides, and `/srv/git/wiki.git` is the location of the "bare" repository.
+  115  
+  116  If Ikiwiki is configured correctly, when you do a `git push` to the remote repository a "`post-update` hook" will trigger Ikiwiki to refresh the wiki with the content contained in your commit.
+  ...
+  166  You can clone the `wiki-admin` repository to your local machine with the following command (issued locally):
+  167  
+  168:     git clone ssh://squire@colab.example.com/srv/git/wiki-admin.git
+  169  
+  170: In this example, `squire` is the username, `colab.example.com` is the name of the host where the repository resides, and `/srv/git/wiki-admin.git` is the location of the "bare" repository. When you push to this repository, you'll need to issue a `git pull` from within `~/wiki-admin/` on your server so that Ikiwiki will be able to see the changes you've made. You may set up a `post-update` hook at `/srv/git/wiki-admin.git/hooks/post-update` to make sure that `~/wiki-admin` stays up to date.
+  171  
+  172  The `wiki-admin` repository is totally optional, however it will simplify backup and mirroring down the road and allow you to version the templates. If you think any of these features will be helpful in your use case, we encourage you to consider storing your files in this manner. If you have not yet started the Apache for the first time, you will need to issue the following commands to start the web server and ensure that it will return if the system reboots:
+
+/Users/ellekrout/docsmith/source/docs/websites/wikis/ikiwiki-on-fedora-13.md:
+   44  
+   45      Successfully set up foo:
+   46:         url:         http://example.com/~squire/wiki
+   47          srcdir:      ~/wiki
+   48          destdir:     ~/public_html/wiki
+   ..
+   51          ikiwiki -setup ~/wiki.setup
+   52  
+   53: In this example, `example` is the machine's hostname, `squire` is the admin user specified in the setup process, and `wiki` is the name of the wiki you specified during setup. You will need to configure your web server to serve files in `~/public_html/wiki` before this wiki will be accessible. No matter how you configure your web server, you will need to issue the following commands to start the web server for the first time and ensure that it will return following the next reboot cycle:
+   54  
+   55      chkconfig httpd on
+   ..
+  110  If you have git installed, you can now clone the repository that stores the content for your wiki to your local machine. Use the following command:
+  111  
+  112:     git clone ssh://squire@colab.example.com/srv/git/wiki.git
+  113  
+  114: In this example, `squire` is the username, `colab.example.com` is the name of the host where the repository resides, and `/srv/git/wiki.git` is the location of the "bare" repository.
+  115  
+  116  If Ikiwiki is configured correctly, when you do a `git push` to the remote repository, a "`post-update` hook" will trigger Ikiwiki to refresh the wiki with the content contained in your commit.
+  ...
+  166  You can clone the `wiki-admin` repository to your local machine with the following command (issued locally):
+  167  
+  168:     git clone ssh://squire@colab.example.com/srv/git/wiki-admin.git
+  169  
+  170: In this example, `squire` is the username, `colab.example.com` is the name of the host where the repository resides, and `/srv/git/wiki-admin.git` is the location of the "bare" repository. When you push to this repository, you'll need to issue a `git pull` from within `~/wiki-admin/` on your server so that Ikiwiki will be able to see the changes you've made. You may set up a `post-update` hook at `/srv/git/wiki-admin.git/hooks/post-update` to make sure that `~/wiki-admin` stays up to date.
+  171  
+  172  The `wiki-admin` repository is totally optional, however it will simplify backup and mirroring down the road and allow you to version the templates. If you think any of these features will be helpful in your setup, you are encouraged to consider storing your files in this manner. If you have not yet started Apache for the first time, you will need to issue the following commands to start the web server and ensure that it will return if the system reboots:
+
+/Users/ellekrout/docsmith/source/docs/websites/wikis/ikiwiki-on-ubuntu-10-04-lucid.md:
+   36      ~~~
+   37  
+   38: If you haven't already added an unprivileged system user, create one now. This will be the user that manages your ikiwiki content. Issue the following command, substituting a unique username for "squire":
+   39  
+   40:     adduser squire
+   41  
+   42  As with all user accounts, be sure assign a strong password consisting of letters, numbers, and other characters.
+   ..
+   71  :   ~~~ apache
+   72      <VirtualHost *:80>
+   73:         ServerAdmin squire@example.com
+   74          ServerName example.com
+   75          ServerAlias www.example.com
+   ..
+   84      ~~~
+   85  
+   86: Issue the following commands to create the required directories, enable the site, disable the default virtual host, and restart the web server. Replace "example.com" with your own domain name, and "squire" with the username you created at the beginning of this guide:
+   87  
+   88      mkdir -p /srv/www/example.com/public_html 
+   89      mkdir /srv/www/example.com/logs
+   90:     chown -R squire:squire /srv/www/example.com
+   91      a2ensite example.com
+   92      a2dissite default
+   ..
+  243      /etc/init.d/perl-fastcgi start
+  244  
+  245: In this guide, the domain "example.com" is used as an example site. You should substitute your own domain name in the configuration steps that follow, along with substituting the username you created at the beginning of this guide for "squire". First, create directories to hold content and log files:
+  246  
+  247      mkdir -p /srv/www/example.com/public_html
+  248      mkdir /srv/www/example.com/logs
+  249:     chown -R squire:squire /srv/www/example.com
+  250  
+  251  Next, you'll need to define your site's virtual host file:
+  ...
+  284  -----------------
+  285  
+  286: Issue the following commands to create a `~/wiki/` directory as a git repository. All files related to your wiki will be located here, including the source files for the wiki, all templates, and the configuration file. Substitute the username you created at the beginning of this guide for "squire." :
+  287  
+  288      mkdir -p /srv/git/wiki.git
+  289:     chown squire:squire /srv/git/wiki.git
+  290:     su - squire
+  291      mkdir -p ~/wiki ~/wiki/source/ ~/wiki/.ikiwiki/
+  292      cd ~/wiki
+  ...
+  319      git push origin master
+  320  
+  321: Edit the `~/wiki/ikiwiki.setup` file to suit the needs of your deployment, paying particular attention to example directory paths and URLs. You should take care to replace all instances of "example.com" with your domain name, and all instances of "squire" with the username you created at the beginning of this guide. You may wish to review the [ikiwiki documentation](http://ikiwiki.info) for more information regarding specific configuration directives. Issue the following commands to commit your changes and push them:
+  322  
+  323      git commit ~/wiki/ikiwiki.setup -m "edited ikiwiki config"
+
+/Users/ellekrout/docsmith/source/docs/websites/wikis/ikiwiki-on-ubuntu-10-10-maverick.md:
+   36      ~~~
+   37  
+   38: If you haven't already added an unprivileged system user, create one now. This will be the user that manages your ikiwiki content. Issue the following command, substituting a unique username for "squire":
+   39  
+   40:     adduser squire
+   41  
+   42  As with all user accounts, be sure assign a strong password consisting of letters, numbers, and other characters.
+   ..
+   71  :   ~~~ apache
+   72      <VirtualHost *:80>
+   73:         ServerAdmin squire@example.com
+   74          ServerName example.com
+   75          ServerAlias www.example.com
+   ..
+   84      ~~~
+   85  
+   86: Issue the following commands to create the required directories, enable the site, disable the default virtual host, and restart the web server. Replace "example.com" with your own domain name, and "squire" with the username you created at the beginning of this guide:
+   87  
+   88      mkdir -p /srv/www/example.com/public_html 
+   89      mkdir /srv/www/example.com/logs
+   90:     chown -R squire:squire /srv/www/example.com
+   91      a2ensite example.com
+   92      a2dissite default
+   ..
+  243      /etc/init.d/perl-fastcgi start
+  244  
+  245: In this guide, the domain "example.com" is used as an example site. You should substitute your own domain name in the configuration steps that follow, along with substituting the username you created at the beginning of this guide for "squire". First, create directories to hold content and log files:
+  246  
+  247      mkdir -p /srv/www/example.com/public_html
+  248      mkdir /srv/www/example.com/logs
+  249:     chown -R squire:squire /srv/www/example.com
+  250  
+  251  Next, you'll need to define your site's virtual host file:
+  ...
+  284  -----------------
+  285  
+  286: Issue the following commands to create a `~/wiki/` directory as a git repository. All files related to your wiki will be located here, including the source files for the wiki, all templates, and the configuration file. Substitute the username you created at the beginning of this guide for "squire." :
+  287  
+  288      mkdir -p /srv/git/wiki.git
+  289:     chown squire:squire /srv/git/wiki.git
+  290:     su - squire
+  291      mkdir -p ~/wiki ~/wiki/source/ ~/wiki/.ikiwiki/
+  292      cd ~/wiki
+  ...
+  316      git push origin master
+  317  
+  318: Edit the `~/wiki/ikiwiki.yaml` file to suit the needs of your deployment, paying particular attention to example directory paths and URLs. You should take care to replace all instances of "example.com" with your domain name, and all instances of "squire" with the username you created at the beginning of this guide. You may wish to review the [ikiwiki documentation](http://ikiwiki.info) for more information regarding specific configuration directives. Issue the following commands to commit your changes and push them:
+  319  
+  320      git commit ~/wiki/ikiwiki.yaml -m "edited ikiwiki config"
+
+/Users/ellekrout/docsmith/source/docs/websites/wikis/ikiwiki-on-ubuntu-12-04-precise-pangolin.md:
+   34      ~~~
+   35  
+   36: If you haven't already added an unprivileged system user, create one now. This will be the user that manages your ikiwiki content. Issue the following command, substituting a unique username for "squire":
+   37  
+   38:     adduser squire
+   39  
+   40  As with all user accounts, be sure assign a strong password consisting of letters, numbers, and other characters.
+   ..
+   69  :   ~~~ apache
+   70      <VirtualHost *:80>
+   71:         ServerAdmin squire@example.com
+   72          ServerName example.com
+   73          ServerAlias www.example.com
+   ..
+   82      ~~~
+   83  
+   84: Issue the following commands to create the required directories, enable the site, disable the default virtual host, and restart the web server. Replace "example.com" with your own domain name, and "squire" with the username you created at the beginning of this guide:
+   85  
+   86      mkdir -p /srv/www/example.com/public_html 
+   87      mkdir /srv/www/example.com/logs
+   88:     chown -R squire:squire /srv/www/example.com
+   89      a2ensite example.com
+   90      a2dissite default
+   ..
+  241      /etc/init.d/perl-fastcgi start
+  242  
+  243: In this guide, the domain "example.com" is used as an example site. You should substitute your own domain name in the configuration steps that follow, along with substituting the username you created at the beginning of this guide for "squire". First, create directories to hold content and log files:
+  244  
+  245      mkdir -p /srv/www/example.com/public_html
+  246      mkdir /srv/www/example.com/logs
+  247:     chown -R squire:squire /srv/www/example.com
+  248  
+  249  Next, you'll need to define your site's virtual host file:
+  ...
+  282  -----------------
+  283  
+  284: Issue the following commands to create a `~/wiki/` directory as a git repository. All files related to your wiki will be located here, including the source files for the wiki, all templates, and the configuration file. Substitute the username you created at the beginning of this guide for "squire." :
+  285  
+  286      mkdir -p /srv/git/wiki.git
+  287:     chown squire:squire /srv/git/wiki.git
+  288:     su - squire
+  289      mkdir -p ~/wiki ~/wiki/source/ ~/wiki/.ikiwiki/
+  290      cd ~/wiki
+  ...
+  318      git push origin master
+  319  
+  320: Edit the `~/wiki/ikiwiki.setup` file to suit the needs of your deployment, paying particular attention to example directory paths and URLs. You should take care to replace all instances of "example.com" with your domain name, and all instances of "squire" with the username you created at the beginning of this guide. You may wish to review the [ikiwiki documentation](http://ikiwiki.info) for more information regarding specific configuration directives. Issue the following commands to commit your changes and push them:
+  321  
+  322      git commit ~/wiki/ikiwiki.setup -m "edited ikiwiki config"
+
+/Users/ellekrout/docsmith/source/docs/websites/wikis/ikiwiki-on-ubuntu-9-10-karmic.md:
+   67  
+   68      Successfully set up foo:
+   69:         url:         http://example.com/~squire/wiki
+   70          srcdir:      ~/wiki
+   71          destdir:     ~/public_html/wiki
+   ..
+   74          ikiwiki -setup ~/wiki.setup
+   75  
+   76: In this example, `example` is the machine's hostname, `squire` is the admin user specified in the setup process, and `wiki` is the name of the wiki you specified during setup. You will need to configure your web server to serve files in `~/public_html/wiki` before this wiki will be accessible.
+   77  
+   78  While the auto-setup script is great for getting up and running in a matter of moments, you are encouraged to examine and edit the the config file `~/wiki.setup` as needed. If the automatic wiki setup is not ideal for your use case, we recommend manual configuration.
+   ..
+  130  If you have git installed, you can now clone the repository that stores the content for your wiki to your local machine. Use the following command:
+  131  
+  132:     git clone ssh://squire@colab.example.com/srv/git/wiki.git
+  133  
+  134: In this example, `squire` is the username, `colab.example.com` is the name of the host where the repository resides, and `/srv/git/wiki.git` is the location of the "bare" repository.
+  135  
+  136  If Ikiwiki is configured correctly, when you do a `git push` to the remote repository a "`post-update` hook" will trigger Ikiwiki to refresh the wiki with the content contained in your commit.
+  ...
+  181  You can clone the `wiki-admin` repository to your local machine with the following command (issued locally):
+  182  
+  183:     git clone ssh://squire@colab.example.com/srv/git/wiki-admin.git
+  184  
+  185: In this example, `squire` is the username, `colab.example.com` is the name of the host where the repository resides, and `/srv/git/wiki-admin.git` is the location of the "bare" repository. When you push to this repository, you'll need to issue a `git pull` from within `~/wiki-admin/` on your server so that Ikiwiki will be able to see the changes you've made. You may set up a `post-update` hook at `/srv/git/wiki-admin.git/hooks/post-update` to make sure that `~/wiki-admin` stays up to date.
+  186  
+  187  The `wiki-admin` repository is totally optional, however it will simplify backup and mirroring down the road and allow you to version the templates. If you think any of these features will be helpful in your use case, we encourage you to consider storing your files in this manner.
+
+575 matches across 127 files

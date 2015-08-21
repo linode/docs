@@ -90,7 +90,7 @@ If you attempt to query a domain that doesn't exist, as is the case with `nonext
     ;nonextant.example.com. IN    A
 
     ;; AUTHORITY SECTION:
-    example.com. 10800  IN      SOA     ns1.linode.com. squire.example.com. 2010051349 14400 14400 1209600 86400
+    example.com. 10800  IN      SOA     ns1.linode.com. username.example.com. 2010051349 14400 14400 1209600 86400
 
     ;; Query time: 91 msec
     ;; SERVER: 192.168.1.1#53(192.168.1.1)
@@ -268,7 +268,7 @@ You can combine the `+short` modifier with other dig commands to generate output
     A 107.92.2.7 from server ns2.linode.com in 94 ms.
 
     $ dig soa +short example.com
-    ns1.linode.com. squire.example.com. 2010051349 14400 14400 1209600 86400
+    ns1.linode.com. username.example.com. 2010051349 14400 14400 1209600 86400
 
     $ dig @ns2.linode.com ns +short example.com
     ns5.linode.com.

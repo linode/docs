@@ -107,7 +107,7 @@ Now we will create virtual host entries for each site being hosted on this serve
 /etc/apache2/vhosts.d/example.conf
 :   ~~~ apache
     <VirtualHost 12.34.56.78:80> 
-         ServerAdmin squire@example.com
+         ServerAdmin username@example.com
          ServerName example.com
          ServerAlias www.example.com
          DocumentRoot /srv/www/example.com/public_html/
