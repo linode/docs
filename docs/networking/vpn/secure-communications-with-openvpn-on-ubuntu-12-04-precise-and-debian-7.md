@@ -76,7 +76,7 @@ In this section, you will initialize the certificate authority and the public ke
 
 3.  Source the `vars` script:
 
-        . /etc/openvpn/easy-rsa/vars
+        source /etc/openvpn/easy-rsa/vars
 
 	This will return `NOTE: If you run ./clean-all, I will be doing a rm -rf on /etc/openvpn/easy-rsa/keys`
 
@@ -153,7 +153,7 @@ If you need to remove a user's access to the VPN server, follow these instructio
 
 1.  Run the `vars` script. Note that for this script to function properly your working (current) directory must be /etc/openvpn/easy-rsa/ :
 
-        . /etc/openvpn/easy-rsa/vars
+        source /etc/openvpn/easy-rsa/vars
 
 2.  Run the `revoke-full` script, substituting **client1** with the name of the certificate you want to revoke:
 
