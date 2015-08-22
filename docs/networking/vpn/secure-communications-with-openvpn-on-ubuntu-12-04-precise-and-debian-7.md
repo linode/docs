@@ -76,17 +76,17 @@ In this section, you will initialize the certificate authority and the public ke
 
 3.  Source the `vars` script:
 
-        source /etc/openvpn/easy-rsa/vars
+        source ./vars
 
 	This will return `NOTE: If you run ./clean-all, I will be doing a rm -rf on /etc/openvpn/easy-rsa/keys`
 
 4.  Execute the `clean-all` script.
 
-        . /etc/openvpn/easy-rsa/clean-all
+        ./clean-all
 
 5.  Execute the `build-ca` script. At each prompt, fill out the information to be used in your certificate.
 
-        . /etc/openvpn/easy-rsa/build-ca
+        ./build-ca
 
 After doing this, your PKI should be configured properly.
 
@@ -96,13 +96,13 @@ With the certificate authority generated, you can generate the private key for t
 
 1.  Create the key with the following command:
 
-        . /etc/openvpn/easy-rsa/build-key-server server
+        ./build-key-server server
 
 2.  You will be prompted for additional information. Change the default values as necessary. By default, the `Common Name` for this key will be **server**. The challenge password and company names are optional and can be left blank.
 3.  When you've completed the question section, confirm the signing of the certificate and the `certificate requests certified` by answering **yes** to these questions.
 4.  With the private keys generated, create certificates for all of your VPN clients. Issue the following command:
 
-        . /etc/openvpn/easy-rsa/build-key client1
+        ./build-key client1
 
 5.  Repeat the previous step for each client, replacing `client1` with an appropriate identifier.
 
@@ -114,7 +114,7 @@ The **Diffie Hellman Parameters** govern the method of key exchange used by the 
 
 Issue the following command to generate the `.pem` file:
 
-    . /etc/openvpn/easy-rsa/build-dh
+    ./build-dh
 
 This should produce the following output:
 
@@ -153,11 +153,11 @@ If you need to remove a user's access to the VPN server, follow these instructio
 
 1.  Run the `vars` script. Note that for this script to function properly your working (current) directory must be /etc/openvpn/easy-rsa/ :
 
-        source /etc/openvpn/easy-rsa/vars
+        source ./vars
 
 2.  Run the `revoke-full` script, substituting **client1** with the name of the certificate you want to revoke:
 
-        . /etc/openvpn/easy-rsa/revoke-full client1
+        ./revoke-full client1
 
 This will revoke the ability of all users using the `client1` certificate to access the VPN. Make sure you don't accidentally revoke access for someone who still needs it, and who uses that certificate.
 
