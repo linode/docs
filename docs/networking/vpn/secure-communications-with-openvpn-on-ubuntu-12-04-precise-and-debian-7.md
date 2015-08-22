@@ -104,6 +104,10 @@ With the certificate authority generated, you can generate the private key for t
 
         ./build-key client1
 
+    {:.note}
+    >
+    > Anyone with access to `client1.key` will be able to access your VPN. To better protect against this scenario, you can issue `./build-key-pass client1` instead to build a client key which is encrypted with a passphrase.
+
 5.  Repeat the previous step for each client, replacing `client1` with an appropriate identifier.
 
 You should generate a unique key for every user of the VPN. Each key should have its own unique identifier, but all other information can remain the same. If you need to add users to your OpenVPN at any time, repeat step 4 to create additional keys.
