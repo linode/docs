@@ -169,27 +169,19 @@ This will revoke the ability of all users using the `client1` certificate to acc
 
 In this section, you'll create two important configuration files. One is for the server and defines the scope and settings for the VPN. The other is for your local computer, and defines the settings you will pass on to your VPN client. For each client connecting to the VPN you will need to generate a separate configuration file.
 
-1.  Configure your server file. There's an example file in `/usr/share/doc/openvpn/examples/sample-config-files` which you'll use as a starting point. First, move to the `/usr/share/doc/openvpn/examples/sample-config-files` directory:
+1.  Configure your server file. There's an example file in `/usr/share/doc/openvpn/examples/sample-config-files` which you'll use as a starting point. First, extract and copy the file to the `/etc/openvpn/` directory:
 
-        cd /usr/share/doc/openvpn/examples/sample-config-files
+        gunzip -c /usr/share/doc/openvpn/examples/sample-config-files/server.conf.gz >/etc/openvpn/server.conf
 
-2.  Unarchive the file:
-
-        gunzip -d server.conf.gz
-
-3.  Copy it to the `/etc/openvpn/` directory:
-
-        cp server.conf /etc/openvpn/
-
-4.  Copy the `client.conf` file to your home directory:
+2.  Copy the `client.conf` file to your home directory:
 
         cp client.conf ~/
 
-5.  Move to your home directory:
+3.  Move to your home directory:
 
         cd ~
 
-6.  Open your `~/client.conf` file for editing, and update the `remote` line to reflect the OpenVPN server's name:
+4.  Open your `~/client.conf` file for editing, and update the `remote` line to reflect the OpenVPN server's name:
 
         nano ~/client.conf
 
@@ -203,7 +195,7 @@ In this section, you'll create two important configuration files. One is for the
         remote example.com 1194
         ~~~
 
-7.  In the same file, `client.conf`, edit the `cert` and `key` lines to reflect the name of your key. In this example we use `client1` for the file name.
+5.  In the same file, `client.conf`, edit the `cert` and `key` lines to reflect the name of your key. In this example we use `client1` for the file name.
 
     {: .file }
     ~/client.conf
@@ -219,9 +211,9 @@ In this section, you'll create two important configuration files. One is for the
         key client1.key
         ~~~
 
-8.  Copy the `~/client.conf` file to your client system.
-9.  Repeat the entire key generation and distribution process for every user and every key that will connect to your network.
-10. To start the OpenVPN server, run the following command:
+6.  Copy the `~/client.conf` file to your client system.
+7.  Repeat the entire key generation and distribution process for every user and every key that will connect to your network.
+8. To start the OpenVPN server, run the following command:
 
         service openvpn start
 
