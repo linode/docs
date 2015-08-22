@@ -74,7 +74,7 @@ In this section, you will initialize the certificate authority and the public ke
 
         ln -s openssl-1.0.0.cnf openssl.cnf
 
-3.  Execute the `vars` script:
+3.  Source the `vars` script:
 
         . /etc/openvpn/easy-rsa/vars
 
