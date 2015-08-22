@@ -187,7 +187,7 @@ In this section, you'll create two important configuration files. One is for the
 
 5.  Move to your home directory:
 
-        cd ~/
+        cd ~
 
 6.  Open your `~/client.conf` file for editing, and update the `remote` line to reflect the OpenVPN server's name:
 
