@@ -354,7 +354,7 @@ By deploying the following configuration, you will be able to forward *all* traf
     {: .file-excerpt }
     /etc/dnsmasq.conf
     :   ~~~
-        listen-address=127.0.0.1,10.8.0.1
+        listen-address=10.8.0.1
 
         bind-interfaces
         ~~~
