@@ -213,6 +213,7 @@ The chart below breaks this down a bit more clearly:
 | Intermediate Certificate 2 | COMODORSADomainValidationSecureServerCA | COMODORSAAddTrustCA                     |
 | Root certificate           | COMODORSAAddTrustCA                     | AddTrustExternalCARoot                  |
 
+
 8.  If you have concatenated a chained SSL certificate, save this file as `/etc/ssl/localcerts/www.mydomain.com.crt`. Then execute the following command to protect the signed certificate:
 
         chmod 400 /etc/ssl/localcerts/www.mydomain.com.crt
@@ -357,7 +358,7 @@ The chart below breaks this down a bit more clearly:
 
 ## Tips for Troubleshooting
 
-- Every time that you make changes to your web server's document root file or other configuration files, be sure to reload the server:
+- Every time that you make changes to your web server's virtual host configuration file or other configuration files, be sure to reload the server:
  
     #### For Apache:
         service apache2 reload
