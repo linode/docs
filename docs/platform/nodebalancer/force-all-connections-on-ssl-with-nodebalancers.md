@@ -157,9 +157,9 @@ Prerequisites
 
 ### Preparing a Chained SSL Certificate
 
-7.  However, you may receive several files ending with `.crt`. If this is the case, then they are collectively refereed to as a `chained SSL certificate` and must be concatenated into one file in order to provide full support with most browsers. The following example uses a chained SSL certificate that was signed by Comodo, but other vendors are perfectly reputable as well. Enter the following command to do this:
+7.  In some cases, CAs have not submitted a Trusted Root CA certificate to all or some browsers vendors. As a result of this, the end user will need to *chain* their roots for their certificates to be trusted by web browsers. If you receive several files from your CA ending with `.crt`, They are collectively referred to as a `chained SSL certificate` and must be concatenated into one file, in a specific order, to provide full support with most browsers. The following example uses a chained SSL certificate that was signed by Comodo, but other vendors are reputable as well. Enter the following command to do this:
 
-        cat example_com.crt COMODORSADomainValidationSecureServerCA.crt  COMODORSAAddTrustCA.crt AddTrustExternalCARoot.crt > www.mydomain.com.crt
+        cat example_com.crt COMODORSADomainValidationSecureServerCA.crt  COMODORSAAddTrustCA.crt AddTrustExternalCARoot.crt > www.mydomain.com.crt 
 
     The contents of the resulting file will appear similar to the following (yours will be unique):
 
@@ -204,6 +204,15 @@ Prerequisites
         mnkPIAou1Z5jJh5VkpTYghdae9C8x49OhgQ=
         -----END CERTIFICATE-----
 
+The chart below breaks this down a bit more clearly:
+  
+| Certificate Type:          | Issued to:                              | Issued by:                              |
+|----------------------------|-----------------------------------------|-----------------------------------------|
+| End-user Certificate       | example.com                             | Comodo LLC                              |
+| Intermediate Certificate 1 | Comodo LLC                              | COMODORSADomainValidationSecureServerCA |
+| Intermediate Certificate 2 | COMODORSADomainValidationSecureServerCA | COMODORSAAddTrustCA                     |
+| Root certificate           | COMODORSAAddTrustCA                     | AddTrustExternalCARoot                  |
+
 8.  If you have concatenated a chained SSL certificate, save this file as `/etc/ssl/localcerts/www.mydomain.com.crt`. Then execute the following command to protect the signed certificate:
 
         chmod 400 /etc/ssl/localcerts/www.mydomain.com.crt
@@ -211,7 +220,7 @@ Prerequisites
 
     {: .note }
     > 
-    > It is an excellent choice to save all of your `.crt` and `.key` files in an offsite location, optionally in a password protected archive. By doing so, you can recover them if neccessary.
+    > It is an excellent choice to save all of your `.crt` and `.key` files in a secure, offsite location; optionally in a password protected archive file. By doing so, you can recover them later if neccessary.
 
 ## Installing the SSL Certificate and Private Key on your NodeBalancer
 
