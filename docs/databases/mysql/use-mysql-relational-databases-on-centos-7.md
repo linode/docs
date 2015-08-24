@@ -55,7 +55,7 @@ MySQL must be installed from the [community repository](https://dev.mysql.com/do
         sudo yum install mysql-server
         sudo systemctl start mysqld
 
-MySQL will bind to localhost (127.0.0.1) by default. Please reference our [MySQL remote access guide](/docs/databases/mysql/mysql-ssh-tunnel) for information on connecting to your databases using SSH.
+MySQL will bind to localhost (127.0.0.1) by default. Please reference our [MySQL remote access guide](https://www.linode.com/docs/databases/mysql/securely-administer-mysql-with-an-ssh-tunnel) for information on connecting to your databases using SSH.
 
 {: .note}
 >
