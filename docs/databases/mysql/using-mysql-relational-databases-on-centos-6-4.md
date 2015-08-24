@@ -41,7 +41,7 @@ MySQL is a popular database management system used for web and server applicatio
 
 ## Install and Start MySQL
 
-1.  Issue the following commands to install MySQL and tell it which runlevels to start on:
+1.  Install MySQL and tell it which runlevels to start on:
 
         sudo yum install mysql-server
         sudo /sbin/chkconfig --levels 235 mysqld on 
@@ -50,21 +50,19 @@ MySQL is a popular database management system used for web and server applicatio
 
         sudo service mysqld start
 
-## Harden MySQL Server
-
-Run the [mysql_secure_installation](https://dev.mysql.com/doc/refman/5.0/en/mysql-secure-installation.html) script to address several security concerns in a default MySQL installation. You will be given the choices to change the MySQL root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases. It is recommended that you answer `yes` to these options. If you are prompted to reload the privilege tables, select `yes`.
-
-1. To run the script:
-
-        sudo mysql_secure_installation
-
-{: .note}
->
->MySQL will bind to localhost (127.0.0.1) by default. Please reference our [secure MySQL remote access guide](/docs/databases/mysql/mysql-ssh-tunnel) for information on connecting to your databases with local clients.
+    MySQL will bind to localhost (127.0.0.1) by default. Please reference our MySQL remote access guide for information on connecting to your databases using SSH.
 
 {: .note}
 >
 >Allowing unrestricted access to MySQL on a public IP not advised, but you may change the address it listens on by modifying the `bind-address` parameter in `/etc/my.cnf`. If you decide to bind MySQL to your public IP, you should implement firewall rules that only allow connections from specific IP addresses.
+
+## Harden MySQL Server
+
+1. Run the `mysql_secure_installation` script to address several security concerns in a default MySQL installation.
+
+        sudo mysql_secure_installation
+
+You will be given the choice to change the MySQL root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases. It is recommended that you answer yes to these options. You can read more about the script in in  [MySQL Reference Manual](https://dev.mysql.com/doc/refman/5.0/en/mysql-secure-installation.html).
 
 ## Using MySQL
 
@@ -76,7 +74,7 @@ The standard tool for interacting with MySQL is the `mysql` client which install
 
         mysql -u root -p
 
-2. When prompted, enter the root password you assigned when the mysql_secure_installation script was ran.
+2. When prompted, enter the root password you assigned when the mysql_secure_installation script was run.
 
     You'll then be presented with the MySQL monitor display:
 
@@ -134,11 +132,11 @@ The standard tool for interacting with MySQL is the `mysql` client which install
 
 ### Create a Sample Table
 
-1.  Log back in as `testuser`
+1.  Log back in as `testuser`.
 
         mysql -u testuser -p
 
-2.  Create a sample table called "customers." This creates a table with a customer ID field of the type INT for integer (auto-incremented for new records, used as the primary key), as well as two fields for storing the customer's name.
+2.  Create a sample table called `customers`. This creates a table with a customer ID field of the type `INT` for integer (auto-incremented for new records, used as the primary key), as well as two fields for storing the customer's name.
 
         use testdb;
         create table customers (customer_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, first_name TEXT, last_name TEXT);
@@ -160,7 +158,7 @@ If you forget your root MySQL password, it can be flushed and then reset.
 
         mysql -u root
 
-3. Use the following commands to reset root's password. Replace "password" with something of your choice. 
+3. Use the following commands to reset root's password. Replace `password` with a strong password. 
 
         use mysql;
         update user SET PASSWORD=PASSWORD("password") WHERE USER='root';
@@ -177,7 +175,7 @@ You'll now be able to log in again using `mysql -u root -p`.
 
 [MySQL Tuner](https://github.com/major/MySQLTuner-perl) is a Perl script that connects to a running instance of MySQL and provides configuration recommendations based on workload. Ideally, the MySQL instance should have been operating for at least 24 hours before running the tuner. The longer the instance has been running, the better advice MySQL Tuner will give.
 
-1. Download MySQL Tuner to your Linode user's home directory.
+1. Download MySQL Tuner to your home directory.
 
         wget https://raw.githubusercontent.com/major/MySQLTuner-perl/master/mysqltuner.pl
 
