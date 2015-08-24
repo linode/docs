@@ -8,7 +8,7 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: Tuesday, July 7th, 2015
 modified_by:
   name: Elle Krout
-published: 'Tuesday, July 7th, 2015'
+published: 'Tuesday, July 8th, 2015'
 title: 'Installing Nginx on Ubuntu 14.04 LTS'
 external_links:
  - '[Linode Library nginx Documentation](/docs/web-servers/nginx/)'
