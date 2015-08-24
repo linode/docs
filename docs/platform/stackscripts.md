@@ -234,7 +234,7 @@ The [Linode API](http://www.linode.com/api/index.cfm) contains support for manag
 -   [stackscript.create](https://www.linode.com/api/stackscript/stackscript.create)
 -   [stackscript.list](https://www.linode.com/api/stackscript/stackscript.list)
 -   [stackscript.update](https://www.linode.com/api/stackscript/stackscript.update)
--   [linode.disk.createfromstackscript](https://www.linode.com/api/linode/linode.disk.createfromstackscript)
+-   [linode.disk.createfromestackscript](https://www.linode.com/api/linode/linode.disk.createfromstackscript)
 
     {: .note }
     >
