@@ -43,13 +43,13 @@ MySQL is a popular database management system used for web and server applicatio
 
 ## Install MySQL
 
-1.  sudo apt-get install mysql-server
+    sudo apt-get install mysql-server
 
-    During the installation process, you will be prompted to set a password for the MySQL root user as shown below. Choose a strong password and keep it in a safe place for future reference.
+During the installation process, you will be prompted to set a password for the MySQL root user as shown below. Choose a strong password and keep it in a safe place for future reference.
 
-    [![Setting the MySQL root password in Debian.](/docs/assets/mysql-rootpw-debian.png)](/docs/assets/mysql-rootpw-debian.png)
+[![Setting the MySQL root password in Debian.](/docs/assets/mysql-rootpw-debian.png)](/docs/assets/mysql-rootpw-debian.png)
 
-    MySQL will bind to localhost (127.0.0.1) by default. Please reference our MySQL remote access guide for information on connecting to your databases using SSH.
+MySQL will bind to localhost (127.0.0.1) by default. Please reference our [MySQL remote access guide](https://bits.linode.com/Linode/docs/blob/centos7mysql/docs/databases/mysql/mysql-ssh-tunnel) for information on connecting to your databases using SSH.
 
 {: .note}
 >
@@ -57,9 +57,9 @@ MySQL is a popular database management system used for web and server applicatio
 
 ## Harden MySQL Server
 
-1. Run the mysql_secure_installation script to address several security concerns in a default MySQL installation.
+Run the mysql_secure_installation script to address several security concerns in a default MySQL installation.
 
-        sudo mysql_secure_installation
+    sudo mysql_secure_installation
 
 You will be given the choice to change the MySQL root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases. It is recommended that you answer yes to these options. You can read more about the script in in the [MySQL Reference Manual](https://dev.mysql.com/doc/refman/5.0/en/mysql-secure-installation.html).
 
