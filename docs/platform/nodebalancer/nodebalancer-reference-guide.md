@@ -139,7 +139,7 @@ You'll need to configure your web server software to use the XFF header.
 
 ### Apache
 
-If you're using the Apache web server, you can use the [mod\_rpaf module](http://www.stderr.net/apache/rpaf/) to replace `REMOTE_ADDR` with the clent's IP address in the XFF header. After you install the module, you'll need to specify 192.168.255.0/24 as a proxy in `httpd.conf`.
+If you're using the Apache web server, you can use the mod_rpaf to replace `REMOTE_ADDR` with the clent's IP address in the XFF header. After you install the module, you'll need to specify 192.168.255.0/24 as a proxy in `httpd.conf`.
 
 ### Nginx
 
