@@ -74,7 +74,7 @@ The standard tool for interacting with MySQL is the `mysql` client which install
 
         mysql -u root -p
 
-2. When prompted, enter the root password you assigned when the mysql_secure_installation script was run.
+2. When prompted, enter the root password you assigned when the `mysql_secure_installation` script was run.
 
     You'll then be presented with the MySQL monitor display:
 
