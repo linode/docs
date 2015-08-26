@@ -47,9 +47,9 @@ MySQL is a popular database management system used for web and server applicatio
 
 During the installation process, you will be prompted to set a password for the MySQL root user as shown below. Choose a strong password and keep it in a safe place for future reference.
 
-[![Setting the MySQL root password in Debian.](/docs/assets/mysql-rootpw-debian.png)](/docs/assets/mysql-rootpw-debian.png)
+![Setting the MySQL root password in Debian.](/docs/assets/mysql-rootpw-debian.png)
 
-MySQL will bind to localhost (127.0.0.1) by default. Please reference our [MySQL remote access guide](https://bits.linode.com/Linode/docs/blob/centos7mysql/docs/databases/mysql/mysql-ssh-tunnel) for information on connecting to your databases using SSH.
+MySQL will bind to localhost (127.0.0.1) by default. Please reference our [MySQL remote access guide](mysql-ssh-tunnel) for information on connecting to your databases using SSH.
 
 {: .note}
 >
@@ -57,7 +57,7 @@ MySQL will bind to localhost (127.0.0.1) by default. Please reference our [MySQL
 
 ## Harden MySQL Server
 
-Run the mysql_secure_installation script to address several security concerns in a default MySQL installation.
+Run the `mysql_secure_installation` script to address several security concerns in a default MySQL installation.
 
     sudo mysql_secure_installation
 
@@ -73,13 +73,13 @@ The standard tool for interacting with MySQL is the `mysql` client which install
 
         mysql -u root -p
 
-2. When prompted, enter the root password you assigned when the mysql_secure_installation script was run.
+2.  When prompted, enter the root password.
 
     You'll then be presented with a welcome header and the MySQL prompt as shown below:
 
         mysql>
 
-3. To generate a list of commands for the MySQL prompt, enter `\h`. You'll then see:
+3.  To generate a list of commands for the MySQL prompt, enter `\h`. You'll then see:
 
         List of all MySQL commands:
         Note that all text commands must be first on line and end with ';'
@@ -113,10 +113,15 @@ The standard tool for interacting with MySQL is the `mysql` client which install
         mysql>
 
 ### Create a New MySQL User and Database
-1. In the example below, `testdb` is the name of the database, `testuser` is the user, and `password` is the user's password.
+1.  In the example below, `testdb` is the name of the database, `testuser` is the user, and `password` is the user's password.
 
         create database testdb;
         create user 'testuser'@localhost identified by 'password';
+        grant all on testdb.* to 'testuser';
+
+    You can shorten this process by creating the user *while* assigning database permissions:
+
+        create database testdb;
         grant all on testdb.* to 'testuser' identified by 'password';
     
 2.  Then exit MySQL.
@@ -142,25 +147,25 @@ The standard tool for interacting with MySQL is the `mysql` client which install
 
 If you forget your root MySQL password, it can be reset.
 
-1. Stop the current MySQL server instance.
+1.  Stop the current MySQL server instance.
 
         sudo systemctl stop mysql.serivce
 
-2. Use dpkg to re-run the configuration process MySQL goes through on first installation. You will again be asked to set a root password.
+2.  Use dpkg to re-run the configuration process MySQL goes through on first installation. You will again be asked to set a root password.
 
         sudo dpkg-reconfigure mysql-server-5.5
 
-dpkg will restart MySQL automatically and you'll now be able to log in again using `mysql -u root -p`.
+`dpkg` will restart MySQL automatically and you'll now be able to log in again using `mysql -u root -p`.
 
 ## Tune MySQL
 
 [MySQL Tuner](https://github.com/major/MySQLTuner-perl) is a Perl script that connects to a running instance of MySQL and provides configuration recommendations based on workload. Ideally, the MySQL instance should have been operating for at least 24 hours before running the tuner. The longer the instance has been running, the better advice MySQL Tuner will give.
 
-1. Install MySQL Tuner from Ubuntu's repositories.
+1.  Install MySQL Tuner from Ubuntu's repositories.
 
         sudo apt-get install mysqltuner
 
-2. To run it:
+2.  To run it:
 
         mysqltuner
 
