@@ -25,6 +25,10 @@ The drudge work of administering Linodes: setting up a server, and especially mu
 
 In this guide you will be introduced to the basics of Ansible, and will get it installed and up and running. By the end of this guide, you'll have the tools needed to turn a brand new Linode VPS into a simple web server (Apache, MySQL, PHP), easily replicatable and adjustable. (And why not go ahead and try it? With Linode's hourly billing you can experiment with this guide for just a few cents.)
 
+{: .note}
+>
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide. Some systems may require you to run Ansible commands as root. If so, prefix the `ansible` commands in this guide with `sudo`.
+
 
 ## Installation
 
