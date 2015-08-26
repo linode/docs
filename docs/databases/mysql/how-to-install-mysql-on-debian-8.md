@@ -3,13 +3,13 @@ author:
   name: Mike Rosabal
   email: docs@linode.com
 description: 'Getting started with MySQL on Debian 8'
-keywords: 'mysql debian 8,mysql debian,mysql linux,mysql linux vps,mysql,debian,databases,debian 8'
+keywords: 'MySQL on Linux,Debian 8,Debian,cloud,cloud hosting,Linux,MySQL,database,MariaDB,install MySQL,secure MySQL,mysqltuner'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Thursday, August 20th 2015
+modified: Wednesday, August 26th 2015
 modified_by:
   name: Linode
 published: 'Friday, June 12th, 2015'
-title: 'Getting Started with MySQL on Debian 8'
+title: 'How to Install MySQL on Debian 8'
 external_resources:
  - '[MySQL 5.5 Reference Manual](https://dev.mysql.com/doc/refman/5.5/en/index.html)'
  - '[PHP MySQL Manual](http://us2.php.net/manual/en/book.mysql.php)'
