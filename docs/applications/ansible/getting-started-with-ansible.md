@@ -12,7 +12,7 @@ modified_by:
 title: 'Getting Started with Ansible'
 contributor:
     name: Joshua Lyman
-    link: [Twitter: @jlyman](https://twitter.com/jlyman)
+    link: https://twitter.com/jlyman
 external_resources:
  - '[Ansible Home Page](http://www.ansible.com/home)'
  - '[Ansible Documentation](http://docs.ansible.com/ansible/index.html)'
@@ -21,14 +21,14 @@ external_resources:
 
 ## About Ansible
 
-The drudge work of administering Lindoes: setting up a server, and especially multiple servers, keeping them all updated, pushing changes out to them, copying files, etc. Things can get complicated and time consuming very quickly, but it doesn't have to be that way. _[Ansible](http://www.ansible.com/home)_ is a very helpful tool that allows you to create groups of machines, describe how those machines should be configured or what actions should be taken on them, and issue all of these commands from a central location. It uses simple SSH, and so nothing is required to be installed on the machines you are targeting, needing only Ansible's installed files on your main control machine (can even be your laptop!). It is a simple solution to a complicated problem.
+The drudge work of administering Linodes: setting up a server, and especially multiple servers, keeping them all updated, pushing changes out to them, copying files, etc. Things can get complicated and time consuming very quickly, but it doesn't have to be that way. *[Ansible](http://www.ansible.com/home)* is a very helpful tool that allows you to create groups of machines, describe how those machines should be configured or what actions should be taken on them, and issue all of these commands from a central location. It uses simple SSH, and so nothing is required to be installed on the machines you are targeting, needing only Ansible's installed files on your main control machine (can even be your laptop!). It is a simple solution to a complicated problem.
 
-In this guide you will be introduced to the basic of Ansible, and will get it installed and up and running. By the end of this guide, you'll have the tools needed to turn a brand new Linode VPS into a simple web server (Apache, MySQL, PHP), easily replicatable and adjustable. (And why not go ahead and try it? With Linode's hourly billing you can experiment with this guide for just a few cents.)
+In this guide you will be introduced to the basics of Ansible, and will get it installed and up and running. By the end of this guide, you'll have the tools needed to turn a brand new Linode VPS into a simple web server (Apache, MySQL, PHP), easily replicatable and adjustable. (And why not go ahead and try it? With Linode's hourly billing you can experiment with this guide for just a few cents.)
 
 
 ## Installation
 
-Ansible only needs to be installed on the _control machine_, or the machine from which you will be running commands. This will likely be your laptop or other computer from which you frequently access your server, or it may be a centralized server in more complicated setups.
+Ansible only needs to be installed on the *control machine*, or the machine from which you will be running commands. This will likely be your laptop or other computer from which you frequently access your server, or it may be a centralized server in more complicated setups.
 
 Make sure that you have Python 2.x available on the control machine (Ansible is not compatible with Python 3, nor can you use Windows as the control machine). You can easily [build Ansible from source](https://github.com/ansible/ansible) as is frequently done, or you can install the latest stable packages using the proper command below.
 
@@ -37,9 +37,13 @@ Make sure that you have Python 2.x available on the control machine (Ansible is 
 	sudo easy_install pip
 	sudo pip install ansible
 
-*CentOS/Fedora: install the epel-release RPM if needed on CentOS, RHEL, or Scientific Linux*
+*CentOS/Fedora:*
 
 	sudo yum install ansible
+    
+{: .note}
+>
+>The EPEL-Release repository may need to be added on certain versions of CentOS, RHEL, and Scientific Linux
 
 *Ubuntu:*
 
@@ -74,16 +78,16 @@ If you are successful you should see output similar to the following:
 	    "ping": "pong"
 	}
 
-Hooray! You were just able to get a valid connection to your server via Ansible! Now let's talk briefly about your _Inventory_ file and then move on to configuring the server via Ansible _Playbooks_.
+Hooray! You were just able to get a valid connection to your server via Ansible! Now let's talk briefly about your *Inventory* file and then move on to configuring the server via Ansible *Playbooks*.
 
 
 ## Inventory File
 
 You executed an Ansible command against your server, but it would be a pain to have to type the host's address every single time, and what if you had several servers you wanted to apply the same configuration to? This is where Ansible's [Inventory file](http://docs.ansible.com/ansible/intro_inventory.html) comes into play. By default, this file is expected to be located at `/etc/ansible/hosts`. Create that path and file if it does not already exist. If you are running OS X, you may want to create your own Ansible directory elsewhere and then set the path in an Ansible configuration file, as in the following:
 
-	# The ~/Code/ path below is up to you
-	mkdir ~/Code/ansible
-	touch ~/Code/ansible/hosts
+	# The ~/Path/To/ path below is up to you
+	mkdir ~/Path/To/ansible
+	touch ~/Path/To/ansible/hosts
 	touch ~/.ansible.cfg
 
 Open that new `~/.ansible.cfg` file and add the following lines:
@@ -92,13 +96,13 @@ Open that new `~/.ansible.cfg` file and add the following lines:
 ~/.ansible.cfg
 :   ~~~ ini
     [default] 
-	inventory = ~/Code/ansible/hosts 
-~~~
+	inventory = ~/Path/To/ansible/hosts 
+    ~~~
 
 Add an entry to your new hosts file, pointing to a server that you connected to in the previous section.  You can include multiple servers in this file, using either domains or IP addresses, and can even group them. Example:
 
 {: .file-excerpt}
-~/Code/ansible/hosts
+~/Path/To/ansible/hosts
 :   ~~~ ini
     mainserver.com
 	myserver.net:2222
@@ -106,7 +110,7 @@ Add an entry to your new hosts file, pointing to a server that you connected to 
 	[mailservers]
 	mail1.mainserver.com
 	mail2.mainserver.com 
-~~~
+    ~~~
 
 For now, just add one entry, save, and run the following command, very similar to before, to try and ping your server via Ansible.
 
@@ -117,7 +121,7 @@ You should receive the same output as previously. Note that this time you used `
 
 ## Configuration via Playbooks
 
-_Playbooks_ in Ansible define a series of actions to run, and address particular sets of servers. It's important to note that, unlike some other configuration tools, a playbook does not describe a state of the machine, with Ansible determining all the changes that need to be made on its own. However, playbooks should be designed to be idempotent, meaning that they can be run more than once without negative effects. For example, a playbook might have a task that sets up a configuration file for a server and injects a few variables. The playbook should be written such that Ansible can take the template config file, compare it to the actual file, and create/update it only if necessary. Luckily, many Ansible modules take care of the heavy lifting for that.
+*Playbooks* in Ansible define a series of actions to run, and address particular sets of servers. It's important to note that, unlike some other configuration tools, a playbook does not describe a state of the machine, with Ansible determining all the changes that need to be made on its own. However, playbooks should be designed to be idempotent, meaning that they can be run more than once without negative effects. For example, a playbook might have a task that sets up a configuration file for a server and injects a few variables. The playbook should be written such that Ansible can take the template configuration file, compare it to the actual file, and create/update it only if necessary. Luckily, many Ansible modules take care of the heavy lifting for that.
 
 You can write playbooks to perform initial server configurations, add users and directories, ensure certain software packages are installed or uninstalled, move files, etc. A playbook can also run a few commands on one set of machines, switch to a different set to run some different commands, and then even switch back to the original or different set of machines. It is procedural, and tasks are run in order, top to bottom.
 
@@ -132,7 +136,7 @@ Sample Playbook YAML file
 	  tasks:
 	    - [task 1]
 	    - [task 2] 
-~~~
+    ~~~
 
 For example, the following playbook would log in to all web servers and ensure Apache was started.
 
@@ -147,15 +151,19 @@ Sample service check playbook
 	      service: name=httpd state=started
 	      become: yes
 	      become_method: sudo 
-~~~      
+    ~~~      
 
 You see an example of a task in that playbook:
 
-	  tasks:
+{: .file-excerpt}
+Playbook task
+:   ~~~ yaml	  
+      tasks:
 	    - name: Ensure the Apache daemon has started
 	      service: name=httpd state=started
 	      become: yes
 	      become_method: sudo
+    ~~~
 
 Every task should have a name which gets logged and can help you track progress. Following the name line is the module that will be run (in this case, the [service module](http://docs.ansible.com/ansible/service_module.html)), and the other attributes provide more options, in this case instructing Ansible to become the root user.
 
@@ -165,13 +173,13 @@ Executing a playbook is even easier than running ad-hoc commands like we did ear
 
 	ansible-playbook myplaybook.yml
 
-Done! If you want to see what hosts this playbook will affect without having to open up the YAML file, you can run 
+Done! If you want to see what hosts this playbook will affect without having to open up the YAML file, you can run:
 
 	ansible-playbook myplaybook.yml --list-hosts
 
 ### Types of Tasks You Can Run
 
-Ansible ships with a large collection of modules that you can run as tasks or via ad-hoc commands. To see a listing of all available modules, run
+Ansible ships with a large collection of modules that you can run as tasks or via ad-hoc commands. To see a listing of all available modules, run:
 
 	ansible-docs -l
 
@@ -211,9 +219,9 @@ First, add your new server's IP to your Ansible `hosts` file so that we can addr
 :   ~~~ ini
 	[linode]
 	123.123.123.123 
-~~~
+    ~~~
 
-Let's write a playbook that creates a new normal user, adds in our public key, and adds the new user to the sudoers file so that we can use such a connection in the future. We're introducing a new aspect of Ansible here: _variables_. See the `vars:` entry and the `NORMAL_USER_NAME` line? You'll notice that it is reused twice in the file so that we only have to change it once. 
+Let's write a playbook that creates a new normal user, adds in our public key, and adds the new user to the sudoers file so that we can use such a connection in the future. We're introducing a new aspect of Ansible here: *variables*. See the `vars:` entry and the `NORMAL_USER_NAME` line? You'll notice that it is reused twice in the file so that we only have to change it once. Replace `username` with your choosen username.
 
 {: .file}
 initialize_basic_user.yml
@@ -222,7 +230,7 @@ initialize_basic_user.yml
 	- hosts: linode
 	  remote_user: root
 	  vars:
-	    NORMAL_USER_NAME: 'josh'
+	    NORMAL_USER_NAME: 'username'
 	  tasks:
 	    - name: "Create a secondary, non-root user"
 	      user: name={{ NORMAL_USER_NAME }} 
@@ -235,7 +243,7 @@ initialize_basic_user.yml
 	                  regexp="{{ NORMAL_USER_NAME }} ALL"
 	                  line="{{ NORMAL_USER_NAME }} ALL=(ALL) ALL"
 	                  state=present 
-~~~
+    ~~~
 
 Save that file as `initialize_basic_user.yml` and run the playbook with the following command. Note how we specify the use of a particular user (`-u root`) and force Ansible to prompt us for the password (`-ask-pass`) since we don't have key authentication set up yet.
 
@@ -250,7 +258,7 @@ common_server_setup.yml
 :   ~~~ yaml
 	---
 	- hosts: linode
-	  remote_user: josh
+	  remote_user: username
 	  become: yes
 	  become_method: sudo
 	  vars: 
@@ -270,7 +278,7 @@ common_server_setup.yml
 	      with_items: groups['linode']
 	    - name: Update packages
 	      apt: update_cache=yes upgrade=dist 
-~~~
+    ~~~
 
 Run the command with a few less arguments:
 
@@ -283,11 +291,11 @@ At any time now you can SSH into the server directly and verify that things are 
 Finally, let's get a very basic server set up with Apache and PHP, and a test MySQL databases to use. The following playbook downloads the appropriate packages, turns on the Apache and MySQL services, and creates a basic database and user.
 
 {: .file}
-common_server_setup.yml
+setup_webserver.yml
 :   ~~~ yaml
 	---
 	- hosts: linode
-	  remote_user: josh
+	  remote_user: username
 	  become: yes
 	  become_method: sudo
 	  tasks:
@@ -315,7 +323,7 @@ common_server_setup.yml
 	      mysql_user: name=webapp 
 	                  password=mypassword 
 	                  priv=*.*:ALL state=present 
-~~~
+    ~~~
 
 And as before, run the playbook from your control machine with the following command.
 
