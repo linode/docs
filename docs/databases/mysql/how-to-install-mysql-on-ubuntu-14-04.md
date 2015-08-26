@@ -3,14 +3,14 @@ author:
   name: Alex Fornuto
   email: afornuto@linode.com
 description: 'Getting started with MySQL on Ubuntu 14.04.'
-keywords: 'mysql ubuntu 14.04,mysql ubuntu,mysql on linux,mysql vps'
+keywords: 'MySQL on Linux,Ubuntu,Ubuntu 14.04,Ubuntu Trusty,Ubuntu Trusty Tahr,Ubuntu 14.04 Trusty Tahr,cloud,cloud hosting,Linux,MySQL,database,MariaDB,install MySQL,secure MySQL,mysqltuner'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['databases/mysql/ubuntu-14.04-trusty-pangolin/']
-modified: Thursday, August 20, 2015 
+modified: Wednesday, August 26, 2015 
 modified_by:
-  name: Linode 
+  name: Linode
 published: 'Monday, October 8th, 2012'
-title: 'Getting Started with MySQL on Ubuntu 14.04'
+title: 'How to Install MySQL on Ubuntu 14.04'
 external_resources:
  - '[MySQL 5.5 Reference Manual](http://dev.mysql.com/doc/refman/5.5/en/)'
  - '[PHP MySQL Manual](http://us2.php.net/manual/en/book.mysql.php)'
