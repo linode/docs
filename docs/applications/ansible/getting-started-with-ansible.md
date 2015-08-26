@@ -221,7 +221,7 @@ First, add your new server's IP to your Ansible `hosts` file so that we can addr
 	123.123.123.123 
     ~~~
 
-Let's write a playbook that creates a new normal user, adds in our public key, and adds the new user to the sudoers file so that we can use such a connection in the future. We're introducing a new aspect of Ansible here: *variables*. See the `vars:` entry and the `NORMAL_USER_NAME` line? You'll notice that it is reused twice in the file so that we only have to change it once. Replace `username` with your choosen username.
+Let's write a playbook that creates a new normal user, adds in our public key, and adds the new user to the sudoers file so that we can use such a connection in the future. We're introducing a new aspect of Ansible here: *variables*. See the `vars:` entry and the `NORMAL_USER_NAME` line? You'll notice that it is reused twice in the file so that we only have to change it once. Replace `yourusername` with your choosen username, and `[localusername]` in the path for the `authorized_key`.
 
 {: .file}
 initialize_basic_user.yml
@@ -230,14 +230,14 @@ initialize_basic_user.yml
 	- hosts: linode
 	  remote_user: root
 	  vars:
-	    NORMAL_USER_NAME: 'username'
+	    NORMAL_USER_NAME: 'yourusername'
 	  tasks:
 	    - name: "Create a secondary, non-root user"
 	      user: name={{ NORMAL_USER_NAME }} 
-	            password='$6$rounds=656000$Yg/VcJ619xNdKIZt$WdyWI7EY.7k4nXNiXixSFPtGeDVUeVoP3PtDV7uDtXYrzg4qCGb45E2CzxLwuiMPJqGxV8wQI.LpEhaPcX9oW1' 
+	            password='$6$rounds=656000$W.dSlhtSxE2HdSc1$4WbCFM6zQV1hTQYTCqmcddnKrSXIZ9LfWRAjJBervBFG.rH953lTa7rMeZNrN65zPzEONntMtYt9Bw74PvAei0' 
 	            shell=/bin/bash
 	    - name: Add remote authorized key to allow future passwordless logins
-	      authorized_key: user={{ NORMAL_USER_NAME }} key="{{ lookup('file', '/Users/joshua/.ssh/id_rsa.pub') }}"
+	      authorized_key: user={{ NORMAL_USER_NAME }} key="{{ lookup('file', '/Users/[localusername]/.ssh/id_rsa.pub') }}"
 	    - name: Add normal user to sudoers
 	      lineinfile: dest=/etc/sudoers
 	                  regexp="{{ NORMAL_USER_NAME }} ALL"
@@ -245,7 +245,11 @@ initialize_basic_user.yml
 	                  state=present 
     ~~~
 
-Save that file as `initialize_basic_user.yml` and run the playbook with the following command. Note how we specify the use of a particular user (`-u root`) and force Ansible to prompt us for the password (`-ask-pass`) since we don't have key authentication set up yet.
+Let's quickly talk about the password supplied in the playbook. You may recognize it as a has (specifically SHA512), and for reference it is the hash of the actual password `irc7Pv4n`. Because Ansible playbooks are idempotent and can be run repeatedly without error, what the `user` task is actually doing is checking that a user exists and that the password on file (which the system stores hashed) matches the hash you are supplying. Therefore you cannot (and should not) just put in a plaintext password, you must prehash it. An easy way to do so is using Python's PassLib library, which can be installed with `sudo pip install passlib`, and then run the following command, replacing <plaintextpassword> with your actual password:
+
+    python -c "from passlib.hash import sha512_crypt; print sha512_crypt.encrypt('<plaintextpassword>')"
+
+Save the playbook file as `initialize_basic_user.yml` and run the playbook with the following command. Note how we specify the use of a particular user (`-u root`) and force Ansible to prompt us for the password (`-ask-pass`) since we don't have key authentication set up yet.
 
 	ansible-playbook --ask-pass -u root initialize_basic_user.yml
 
@@ -258,7 +262,7 @@ common_server_setup.yml
 :   ~~~ yaml
 	---
 	- hosts: linode
-	  remote_user: username
+	  remote_user: yourusername
 	  become: yes
 	  become_method: sudo
 	  vars: 
@@ -295,7 +299,7 @@ setup_webserver.yml
 :   ~~~ yaml
 	---
 	- hosts: linode
-	  remote_user: username
+	  remote_user: yourusername
 	  become: yes
 	  become_method: sudo
 	  tasks:
