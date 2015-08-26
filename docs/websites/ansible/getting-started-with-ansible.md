@@ -60,13 +60,16 @@ We'll get to groups in just a moment, but for now, let's try to make a simple co
 {: .note}
 > If you really don't want to use SSH keys or can't for some reason, you can add the `--ask-pass` switch to the following command.
 
-Your command should look like this:
+In order to try an Ansible command without any additional setup, we'll add a few extra arguments for now. Format your command like the following:
 
-	ansible myserver.com -m ping
+	ansible all -i myserver.com, -m ping
+
+{: .note}
+> The extra bits are the "all -i" and the comma after your server name. This is temporary, and is only there to tell Ansible to try connecting directly to the server without an inventory file, which we'll learn about later.
 
 If you are successful you should see output similar to the following:
 
-	mainserver.com | success >> {
+	myserver.com | success >> {
 	    "changed": false,
 	    "ping": "pong"
 	}
