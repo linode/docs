@@ -380,4 +380,4 @@ The chart below breaks this down a bit more clearly:
         curl -L example.com
 
 {: .note}
-    >   The -I (or, --head) option will fetch the HTTP-header only. The -L (or, --location) option will detect and display if the server indicates that the requested page has moved to a different location. This option will make curl repeat the request for the new location. If used together with -i/--include or -I/--head, headers from all requested pages will be displayed. This is particularly useful if your rewrite rules have managed to create an infinite loop and your web page does not load. Check out the man pages for curl for more info.
+    >   The `-I` (or `--head`) option will fetch the HTTP-header only. The `-L` (or `--location`) option will detect and display if the server indicates that the requested page has moved to a different location. This option will make curl repeat the request at the new location. If used together with `-I`, headers from all requested pages will be displayed. This is particularly useful if your rewrite rules have managed to create an infinite loop and your web page does not load. Check out the man pages for curl for more info.
