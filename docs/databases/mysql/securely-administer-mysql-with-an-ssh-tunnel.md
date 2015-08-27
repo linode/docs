@@ -14,12 +14,17 @@ title: Securely Administer MySQL with an SSH Tunnel
 external_resources:
  - '[Using PuTTY](/docs/networking/using-putty#using_ssh_tunnels)'
  - '[MySQL Documentation](http://dev.mysql.com/doc/)'
+ - '[MariaDB Documentation](https://mariadb.com/kb/en/mariadb/documentation/)'
  - '[autossh](http://www.harding.motd.ca/autossh/)'
 ---
 
-This guide will show you how to make a secure connection to your remote MySQL server from your local computer, using an *SSH tunnel*. This is useful if you want to use administration tools on your local computer to do work on your server.
+This guide will show you how to make a secure connection to your remote MySQL or MariaDB server from your local computer, using an *SSH tunnel*. This is useful if you want to use administration tools on your local computer to do work on your server.
 
 After following these instructions, you'll be able to connect to `localhost` on your workstation using your favorite MySQL management tool. The connection will be securely forwarded to your Linode over the Internet.
+
+{:.note}
+>
+>[MariaDB](https://mariadb.com/) is a fork of MySQL and considered a [drop-in replacement](https://mariadb.com/kb/en/mariadb/mariadb-vs-mysql-compatibility/). Although this guide refers to MySQL, it applies equally to MariaDB as well.
 
 ## Prerequisites
 
