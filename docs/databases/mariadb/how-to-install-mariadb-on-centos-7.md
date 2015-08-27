@@ -120,7 +120,12 @@ The standard tool for interacting with MariaDB is the `mariadb` client which ins
         create database testdb;
         create user 'testuser'@localhost identified by 'password';
         grant all on testdb.* to 'testuser' identified by 'password';
-    
+
+    You can shorten this process by creating the user *while* assigning database permissions:
+
+        create database testdb;
+        grant all on testdb.* to 'testuser' identified by 'password';
+        
 2.  Then exit MariaDB.
     
         exit
