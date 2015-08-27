@@ -46,13 +46,13 @@ After creating a new Linode, select it and you'll be taken to the Linode Manager
 
     [![Deploy a Linux Image](/docs/assets/linode-manager-deploy-an-image_small.png)](/docs/assets/linode-manager-deploy-an-image.png)
 
-2.  Select a Linux distribution from the **Image** menu. You can choose from [Arch Linux](http://www.archlinux.org/), [CentOS](http://www.centos.org/), [Debian](http://www.debian.org/), [Fedora](http://fedoraproject.org/), [Gentoo](http://www.gentoo.org/), [openSUSE](http://www.opensuse.org/en/), [Slackware](http://www.slackware.com/), and [Ubuntu](http://www.ubuntu.com/) to install on your Linode. If you're new to the Linux operating system, consider selecting Ubuntu 14.04 LTS. Ubuntu is the most popular distribution among Linode customers and one of the most well supported by online communities so resolving any issues you may have should be simple.
+2.  Select a Linux distribution from the **Image** menu. You can choose from [Arch Linux](http://www.archlinux.org/), [CentOS](http://www.centos.org/), [Debian](http://www.debian.org/), [Fedora](http://fedoraproject.org/), [Gentoo](http://www.gentoo.org/), [openSUSE](http://www.opensuse.org/en/), [Slackware](http://www.slackware.com/), and [Ubuntu](http://www.ubuntu.com/) to install on your Linode. If you're new to the Linux operating system, consider selecting Ubuntu 14.04 LTS. Ubuntu is the most popular distribution among Linode customers and one of the most well supported by online communities, so resolving any issues you may have should be simple.
 
-3.  Enter a size for the disk in the **Deployment Disk Size** field. By default, all of the available space is allocated but you can set a lower size if you plan on cloning a disk or creating different configuration profiles. You can always create, resize, and delete disks later.
+3.  Enter a size for the disk in the **Deployment Disk Size** field. By default, all of the available space is allocated but you can set a lower size if you plan on cloning a disk or creating multiple configuration profiles. You can always create, resize, and delete disks later.
 
-4.  Select a swap disk size from the **Swap Disk** menu. We strongly recommend using the default size.
+4.  Select a swap disk size from the **Swap Disk** menu.
 
-5. Enter a root password for your Linode in the **Root Password** field. This password must be provide when you log in to your Linode via SSH and must be at least 6 characters long and contain characters from two of the following categories:
+5. Enter a root password for your Linode in the **Root Password** field. This password must be provided when you log in to your Linode via SSH and must be at least 6 characters long and contain characters from two of the following categories:
 
     -   lowercase and uppercase case letters
     -   numbers
@@ -60,17 +60,17 @@ After creating a new Linode, select it and you'll be taken to the Linode Manager
 
 6.  Click **Deploy**.
 
-From here, it can take several minutes to complete provisioning your server. You can use the Linode Manager's Dashboard to monitor the progress in real time as shown below.
+    You can use the Linode Manager's Dashboard to monitor the progress in real time as shown below.
 
-[![Provisioning Status](/docs/assets/linode-manager-provisioning-status_small.png)](/docs/assets/linode-manager-provisioning-status.png)
+    [![Provisioning Status](/docs/assets/linode-manager-provisioning-status_small.png)](/docs/assets/linode-manager-provisioning-status.png)
 
-When the deployment process is completed, your Linode's configuration profile will appear on the Dashboard.
+    When the deployment process is completed, your Linode's configuration profile will appear on the Dashboard.
 
-[![Configuration Profile](/docs/assets/linode-manager-configuration-profile_small.png)](/docs/assets/linode-manager-configuration-profile.png)
+    [![Configuration Profile](/docs/assets/linode-manager-configuration-profile_small.png)](/docs/assets/linode-manager-configuration-profile.png)
 
- {: .note }
->
-> Use a [StackScript](http://www.linode.com/stackscripts) to quickly deploy a customized Linux distribution. Some of the most popular StackScripts do things like install the Apache web server, configure a firewall, and set up the WordPress content management system. They're easy to use. Just find a StackScript, complete the form, and deploy.
+    {: .note }
+    >
+    > Use a [StackScript](http://www.linode.com/stackscripts) to quickly deploy a customized Linux distribution. Some of the most popular StackScripts do things like install the Apache web server, configure a firewall, and set up the WordPress content management system. They're easy to use. Just find a StackScript, complete the form, and deploy.
 
 ## Booting Your Linode
 
