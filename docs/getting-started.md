@@ -28,7 +28,7 @@ If you're unsure of which data center to select, see our [speed test](http://www
 
 ## Provisioning Your Linode
 
-After your Linode is created, you'll need to prepare it for operation by deploying a Linux distribution, or several.
+After your Linode is created, you'll need to prepare it for operation by deploying a Linux distribution.
 
 ### Logging in to the Linode Manager
 
@@ -74,9 +74,7 @@ After creating a new Linode, select it and you'll be taken to the Linode Manager
 
 ## Booting Your Linode
 
-Your Linode is now provisioned with the distro or distros of your choice but it's turned off, as inidcated in the Dashboard.
-
-### Booting a Linode with a Single Configuration Profile
+Your Linode is now provisioned with the distro of your choice but it's turned off, as inidcated in the Dashboard.
 
 Click **Boot** to turn on your Linode.
 
@@ -85,16 +83,6 @@ Click **Boot** to turn on your Linode.
 When booted, the **Server Status** will change from **Powered Off** to **Running** and there will be a successfully completed **System Boot** job in the **Host Job Queue**.
 
 [![Linode Booted](/docs/assets/linode-manager-linode-booted_small.png)](/docs/assets/linode-manager-linode-booted.png)
-
-### Booting a Linode with Multiple Configuration Profiles
-
-A Linode can hold as many configuration profiles as it has the storage capacity for. To deploy additional distro images, follow the [Deploying an Image](#deploying-an-image) instructions above for each image. To boot into a specific configuration profile:
-
-1.  Select the radio button of the configuration profile you want to boot from.
-2.  Click **Reboot**. 
-
-[![Boot with multiple config profiles](/docs/assets/linode-manager-reboot-with-multiple-profiles_small.png)](/docs/assets/linode-manager-reboot-with-multiple-profiles.png)
-
 
 ## Connecting to Your Linode
 
@@ -138,7 +126,7 @@ Once you have the IP address and an SSH client, you can log in via SSH. The foll
 
         ssh root@123.456.78.90
 
-2.  If this is the first time connecting to your Linode or a new configuration profile you'll see the authenticity warning below. This is because your SSH client has never encountered the server's key fingerprint before. Type `yes` and press **Enter** to continue connecting.
+2.  If this is the first time connecting to your Linode, you'll see the authenticity warning below. This is because your SSH client has never encountered the server's key fingerprint before. Type `yes` and press **Enter** to continue connecting.
 
         The authenticity of host '123.456.78.90 (123.456.78.90)' can't be established.
         RSA key fingerprint is 11:eb:57:f3:a5:c3:e0:77:47:c4:15:3a:3c:df:6c:d2.
