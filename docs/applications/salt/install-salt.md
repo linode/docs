@@ -14,15 +14,21 @@ title: Install Salt
 
 Salt is a server management platform, designed to control a number of servers from a single master server. The following directions will walk you through configuring a salt master and multiple salt minions, and deploying your first Salt Formula.  These instructions assume that you are using Debian 8, but can be adjusted to function on other distributions.
 
+{: .note}
+>
+>The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+
 ##Before You Begin
 
-Prior to starting this guide, you will need to ensure that each Linode's [hostname](https://www.linode.com/docs/getting-started#setting-the-hostname) has been set. As the Linode's hostname will be used to identify it within Salt, we recommend using descriptive hostnames. You should also designate one Linode as your Salt master and name it appropriately. If your Linodes are located within the same datacenter, it's also recommended that you configure [private IP addresses](https://www.linode.com/docs/networking/remote-access#adding-private-ip-addresses) for each system.
+1.  You will need at least three Linodes: One Salt master, and at two least Salt minions.
+
+2.  Ensure that each Linode's [hostname](https://www.linode.com/docs/getting-started#setting-the-hostname) has been set. As the Linode's hostname will be used to identify it within Salt, we recommend using descriptive hostnames. You should also designate one Linode as your Salt master and name it appropriately. If your Linodes are located within the same datacenter, it's also recommended that you configure [private IP addresses](https://www.linode.com/docs/networking/remote-access#adding-private-ip-addresses) for each system.
 
 ##Add the Salt Repository
 
 {: .note}
 >
-> The steps in this section will need to be run on each of your Linodes
+> The steps in this section will need to be run on each of your Linodes.
 
 1.  Create the file `/etc/apt/sources.list.d/salt.list` and enter the following lines to add the Salt repository: 
     
@@ -51,7 +57,7 @@ Prior to starting this guide, you will need to ensure that each Linode's [hostna
 
         apt-get install salt-master
 
-2.  Open the '/etc/salt/master' file, uncomment the `#interface:` line, and replace `<master's IP address>` below with the address you wish your Salt master to utilize.  If your Linodes are located in the same datacenter, you can utilize your private network address for this purpose:::
+2.  Open the `/etc/salt/master` file, uncomment the `#interface:` line, and replace `<master's IP address>` below with the address you wish your Salt master to utilize.  If your Linodes are located in the same datacenter, you can utilize your private network address for this purpose:
 
     {:.file }
     /etc/salt/master 
@@ -64,7 +70,7 @@ Prior to starting this guide, you will need to ensure that each Linode's [hostna
         >
         >As part of this step, you can also configure the user you wish to utilize to issue Salt commands to your minions.  Uncomment the `#user:` line and enter your desired username to modify this setting.  You will also need to issue the following command to set the required permissions for the user in question.
         >
-        >       chown -R user /etc/salt /var/cache/salt /var/log/salt /var/run/salt
+        >     chown -R user /etc/salt /var/cache/salt /var/log/salt /var/run/salt
         >       
         >Once this setting has been modified, you will need to issue any further Salt commands on your Salt Master while logged in as that user.
 
@@ -130,10 +136,12 @@ Prior to starting this guide, you will need to ensure that each Linode's [hostna
 4.  Ping the Minions, using '*' for all:
 
         salt '*' test.ping
+        
+    It should return the value `True` for each minion.
 
 ##Installing individal packages with Salt
 
-Once you have completed the previousl configuration steps, you can install packages using Salt on all of your minions.  Packages can be targed to individual minions, or installed to all minions via simple commands.  For these examples we will use Apache
+Once you have completed the previously configuration steps, you can install packages using Salt on all of your minions.  Packages can be targed to individual minions, or installed to all minions via simple commands.  For these examples we will use Apache
 
 1.  To install a package to a specific minion:
 
@@ -156,19 +164,20 @@ Once you have completed the previousl configuration steps, you can install packa
 
 Salt Formulas create a framework of software and configurations to be deployed to your minions.  Multiple Salt Formulas can be deployed to your Minions, and this will allow you to manage package configuration and maintenance from the Salt Master.  These steps will walk you through installing one of the premade formulas hosted on [Salt's Github](https://github.com/saltstack-formulas).
 
-1.  Create the directory for storing your Salt states.
+1.  Create the directory for storing your Salt states, and navigate to that directory:
 
         mkdir /srv/salt
+        cd /srv/salt
 
-2.  Create a state file to store your configuration.  For this example, we'll create a simple Apache state.
+2.  Create a state file to store your configuration.  For this example, we'll create a simple Apache state:
 
-        {:.file }
-        /srv/salt/apache.sls
-        : ~~~
-          apache2:
+    {:.file }
+    /srv/salt/apache.sls
+    :   ~~~ yaml
+        apache2:
           pkg:
             - installed
-          ~~~
+        ~~~
 
 3.  To install the packages containted within the SLS file and enable the state, execute the following command.  You can replace `*` with the ID of a specific minion.
 
