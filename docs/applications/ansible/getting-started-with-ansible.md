@@ -210,9 +210,6 @@ Let's get down to the business of turning a freshly created Linode server into a
 
 This guide will assume a brand new Ubuntu 14.04 LTS server, without any additional configuration already done to the box. The very first order of business will be to add in our public encryption keys so that we can connect without supplying passwords.
 
-{: .note}
-> You may want to SSH into your server just once so that your local machine records the Lindode's key fingerprint. Even if you don't, however, Ansible will prompt you to record it.
-
 {: .caution}
 > The following playbooks are for learning purposes only, and will NOT result in a hardened or secure server. Use them to learn from, but do not use them for production instances!
 
