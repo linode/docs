@@ -5,7 +5,7 @@ author:
 description: 'Getting started with MySQL on Ubuntu 14.04.'
 keywords: 'MySQL on Linux,Ubuntu,Ubuntu 14.04,Ubuntu Trusty,Ubuntu Trusty Tahr,Ubuntu 14.04 Trusty Tahr,cloud,cloud hosting,Linux,MySQL,database,MariaDB,install MySQL,secure MySQL,mysqltuner'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['databases/mysql/ubuntu-14.04-trusty-pangolin/']
+alias: ['databases/mysql/ubuntu-14.04-trusty-pangolin/', 'databases/mysql/using-mysql-relational-databases-on-ubuntu-14-04-lts-trusty-tahr/']
 modified: Wednesday, August 26, 2015 
 modified_by:
   name: Linode
