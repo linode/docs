@@ -12,6 +12,7 @@ published: 'Thursday, July 16th, 2009'
 title: IPs, Networking & Domains
 featured:
  - using-the-linode-shell-lish.md
+ - using-the-graphic-shell-glish.md
  - linux-static-ip-configuration.md
  - remote-access.md
  - native-ipv6-networking.md
