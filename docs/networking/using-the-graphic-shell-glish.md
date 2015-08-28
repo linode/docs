@@ -5,10 +5,10 @@ author:
 description: 'Learn how to use Glish as a shell for managing graphic environments on your Linode.'
 keywords: 'Console,Shell,glish,graphic'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Wednesday, August 19th, 2015
+modified: Friday, August 28th, 2015
 modified_by:
   name: Alex Fornuto
-published: 'Wednesday, August 19th, 2015'
+published: 'Friday, August 28th, 2015'
 title: 'Using the Graphic Shell (Glish) - BETA'
 ---
 
