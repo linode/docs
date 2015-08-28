@@ -74,13 +74,11 @@ The standard tool for interacting with MySQL is the `mysql` client which install
 
         mysql -u root -p
 
-2. When prompted, enter the root password you assigned when the mysql_secure_installation script was run.
-
-    You'll then be presented with a welcome header and the MySQL prompt as shown below:
+2.  When prompted, enter the root password. You'll then be presented with a welcome header and the MySQL prompt as shown below:
 
         mysql>
 
-3. To generate a list of commands for the MySQL prompt, enter `\h`. You'll then see:
+3.  To generate a list of commands for the MySQL prompt, enter `\h`. You'll then see:
 
         List of all MySQL commands:
         Note that all text commands must be first on line and end with ';'
@@ -151,17 +149,17 @@ If you forget your root MySQL password, it can be reset.
 
         sudo dpkg-reconfigure mysql-server-5.5
 
-dpkg will restart MySQL automatically and you'll now be able to log in again using `mysql -u root -p`.
+dpkg will restart MySQL automatically and you'll be able to log in using `mysql -u root -p`.
 
 ## Tune MySQL
 
 [MySQL Tuner](https://github.com/major/MySQLTuner-perl) is a Perl script that connects to a running instance of MySQL and provides configuration recommendations based on workload. Ideally, the MySQL instance should have been operating for at least 24 hours before running the tuner. The longer the instance has been running, the better advice MySQL Tuner will give.
 
-1. Install MySQL Tuner from Ubuntu's repositories.
+1.  Install MySQL Tuner from Ubuntu's repositories.
 
         sudo apt-get install mysqltuner
 
-2. To run it:
+2.  To run it:
 
         mysqltuner
 
