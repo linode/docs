@@ -12,12 +12,12 @@ published: Monday, August 31st, 2015
 title: Forcing SSL connections with Nodebalancers
 ---
 
-The following guide will help you  obtain a valid, commercially signed SSL certificate, and install it on your NodeBalancer. This guide provides step-by-step instructions for configuring a NodeBalancer to redirect all web connections, using SSL, over port 443/HTTPS. Instructions will be provided to configure this with both the Apache and Nginx servers on Debian and Redhat based distributions.
+The following guide will help you  obtain a valid, commercially signed SSL certificate, and install it on your NodeBalancer. This guide provides step-by-step instructions for configuring a NodeBalancer to redirect all web connections, using SSL, over port 443/HTTPS. Instructions will be provided to configure this with both the Apache and Nginx servers on Debian- and Redhat-based distributions.
 
 
 {: .note }
 > 
-> Throughout this guide we will offer several suggested values for specific configuration settings, some of these values will be set by default. These settings are shown in the guide as a reference and you may need to modify them to suit your application accordingly.
+> Throughout this guide we will offer several suggested values for specific configuration settings; some of these values will be set by default. These settings are shown in the guide as a reference and you may need to modify them to suit your application accordingly.
 
 ## Prerequisites
 
@@ -54,7 +54,7 @@ The following guide will help you  obtain a valid, commercially signed SSL certi
 
 ## Create a Certificate Signing Request (CSR)
 
-1.  Issue the following commands to generate a CSR for the domain that you would like to configure with SSL. Be sure to change `www.example.com` to reflect the fully qualified domain name (subdomain.domainname.com) of the site you'll be using SSL with. Leave the challenge password blank. We entered 365 for the days parameter to the command, as we would be paying for one year of SSL certificate verification from a commercial certificate authority (CA).
+1.  Issue the following commands to generate a CSR for the domain that you would like to configure with SSL. Be sure to change `www.example.com` to reflect the fully qualified domain name (subdomain.domainname.com) of the site you'll be using SSL with. Leave the challenge password blank. We entered 365 for the days parameter to the command, because we would be paying for one year of SSL certificate verification from a commercial certificate authority (CA).
 
         cd /etc/ssl/localcerts
 
@@ -104,7 +104,7 @@ The following guide will help you  obtain a valid, commercially signed SSL certi
         hofUVA2XXBs=
         -----END CERTIFICATE REQUEST-----
 
-3.  In addition, a key file ending with `.key`, will be generated and placed in `/etc/ssl/localcerts`. Execute the following command to protect the key:
+3.  In addition, a key file ending with `.key` will be generated and placed in `/etc/ssl/localcerts`. Execute the following command to protect the key:
 
         chmod 400 /etc/ssl/localcerts/www.mydomain.com.key 
 
@@ -123,7 +123,7 @@ The following guide will help you  obtain a valid, commercially signed SSL certi
 
 ### Submit your CSR to a Certificate Authority
 
-1.  You may now submit the contents of this file to a commercial SSL provider (Certificate Authority) for signing. Typically, they will provide you with a field to paste the contents of your CSR file into, somewhere on their website. The following is a list of well known commercial SSL vendors, provided for your convenience:
+1.  You may now submit the contents of this file to a commercial SSL provider (Certificate Authority) for signing. Typically, somewhere on its website, an SSL provider will provide you with a field in which to paste the contents of your CSR file. The following is a list of well known commercial SSL vendors, provided for your convenience:
 
     - [Verisign](https://www.verisign.com/)
     - [Thawte](https://www.thawte.com/)
@@ -132,7 +132,7 @@ The following guide will help you  obtain a valid, commercially signed SSL certi
 
       {:.note}
      > 
-     > There are many vendors, including some listed above, that provide free SSL certificates. However, free SSL certificates typically have shorter expiration dates and less features.
+     > Many vendors, including some listed above, provide free SSL certificates. However, free SSL certificates typically have shorter expiration dates and fewer features.
 
 2.  Once this request has been submitted, you will receive a commercially signed SSL certificate file, which will look similar to the following (yours will be unique):
 
@@ -201,7 +201,7 @@ The following guide will help you  obtain a valid, commercially signed SSL certi
 
     {: .note }
     > 
-    > We recommend saving all of your `.crt` and `.key` files in an offsite location, optionally in a password protected archive.
+    > We recommend saving all your `.crt` and `.key` files in an offsite location, optionally in a password protected archive.
 
 ## Installing the SSL Certificate and Private Key on your NodeBalancer
 
@@ -220,7 +220,7 @@ The following guide will help you  obtain a valid, commercially signed SSL certi
 
 4.  On your NodeBalancer `Configurations` page, select `Create Configuration` to configure each port/protocol that you would like to use, i.e. `80` and `443`.
 
-5.  Under `Edit Configuration,`  Once selected, fill out the values in the fields as shown below:
+5.  Under `Edit Configuration,`  once selected, fill out the values in the fields as shown below:
  
     - **Port**                    443
     - **Protocol**                HTTPS
@@ -236,7 +236,7 @@ The following guide will help you  obtain a valid, commercially signed SSL certi
 
     Then, select **`Save Changes`**. 
 
-6.  Add as many nodes as you require for the port configuration by selecting **`Add Node`**. Once selected, fill out the values in the fields as exampled below, replacing `xxx.xxx.xxx.xxx` with the Linode's private IP address:
+6.  Add as many nodes as you require for the port configuration by selecting **`Add Node`**. Once selected, fill out the values in the fields as shown below, replacing `xxx.xxx.xxx.xxx` with your Linode's private IP address:
 
     - **Label**                   Backend Linode 1
     - **Address**                 xxx.xxx.xxx.xxx:80
@@ -248,7 +248,7 @@ The following guide will help you  obtain a valid, commercially signed SSL certi
 
 ## Configuring your Web Server with a 301 Redirect
 
-### Configuring your vhost file for the Apache Webserver.
+### Configuring your vhost file for the Apache Webserver
 
 1.  Enable `mod_rewrite` so that you can redirect all traffic back to the NodeBalancer over port 443/HTTPS:
 
@@ -265,7 +265,7 @@ The following guide will help you  obtain a valid, commercially signed SSL certi
     >
     >     /etc/httpd/httpd.conf
 
-2.  Edit the Apache virtual host configuration file to establish the rewrite rules necessary to redirect all incoming traffic from port 80/HTTP, back to the NodeBalancer on port 443/HTTPS:
+2.  Edit the Apache virtual host configuration file to establish the rewrite rules necessary to redirect all incoming traffic from port 80/HTTP back to the NodeBalancer on port 443/HTTPS:
 
     {: .file-excerpt }
     /etc/apache2/sites-available/example.com.conf
@@ -312,7 +312,7 @@ The following guide will help you  obtain a valid, commercially signed SSL certi
 
 ### Configuring the Nginx Webserver.
 
-1.  Edit the Nginx server block configuration file to establish the rewrite rules to redirect all incoming traffic from port 80/HTTP, back to the NodeBalancer on port 443/HTTPS:
+1.  Edit the Nginx server block configuration file to establish the rewrite rules to redirect all incoming traffic from port 80/HTTP back to the NodeBalancer on port 443/HTTPS:
 
     {: .file-excerpt }
     /etc/nginx/sites-available/example.com.conf
@@ -339,7 +339,7 @@ The following guide will help you  obtain a valid, commercially signed SSL certi
 
 - If you have difficulty getting the redirect to work properly or would like to see detailed information about how your SSL certificate is configured, you may wish to utilize the [Qualys online SSL Server Test](https://www.ssllabs.com/ssltest/)
 
-- Every time that you make changes to your web server's document root file or other configuration files, be sure to reload the server:
+- Every time you make changes to your web server's document root file or other configuration files, be sure to reload the server:
  
 - For Apache:
 
