@@ -153,7 +153,7 @@ The following guide will help you  obtain a valid, commercially signed SSL certi
 
 ### Preparing a Chained SSL Certificate
 
-1.  In some cases, CAs have not submitted a Trusted Root CA Certificate to some or all browser vendors. As a result of this, an end-user will need to *chain* his roots for certificates to be trusted by web browsers. If you receive several files from your CA ending with `.crt`(collectively referred to as a `chained SSL certificate`), they must be linked into one file, in a specific order, to provide full support with most browsers. The following example uses a chained SSL certificate that was signed by Comodo (other vendors are reputable as well). Enter the following command to prepare your chained SSL certificate:
+1.  In some cases, CAs have not submitted a Trusted Root CA Certificate to some or all browser vendors. Because of this, you can choose to *chain* roots for certificates to be trusted by web browsers. If you receive several files from your CA ending with `.crt`(collectively referred to as a `chained SSL certificate`), they must be linked into one file, in a specific order, to provide full support with most browsers. The following example uses a chained SSL certificate that was signed by Comodo (other vendors are reputable as well). Enter the following command to prepare your chained SSL certificate:
 
         cat example_com.crt COMODORSADomainValidationSecureServerCA.crt  COMODORSAAddTrustCA.crt AddTrustExternalCARoot.crt > www.mydomain.com.crt 
 
@@ -226,8 +226,8 @@ The following guide will help you  obtain a valid, commercially signed SSL certi
     - **Protocol**                HTTPS
     - **Algorithm**               Round Robin
     - **Session Stickiness**      None
-    - **Certificate**             < Insert your signed SSL Certificate >
-    - **Private Key**             < Insert your Private Key >
+    - **Certificate**             Insert your signed SSL Certificate
+    - **Private Key**             Insert your Private Key
     - **Health Check Type**       HTTP Valid Status
     - **Check Interval**          5
     - **Check Timeout**           3
@@ -236,18 +236,14 @@ The following guide will help you  obtain a valid, commercially signed SSL certi
 
     Then, select **`Save Changes`**. 
 
-6.  Add as many nodes as you require for the port configuration by selecting **`Add Node`**. Once selected, fill out the values in the fields, like so:
+6.  Add as many nodes as you require for the port configuration by selecting **`Add Node`**. Once selected, fill out the values in the fields as exampled below, replacing `xxx.xxx.xxx.xxx` with the Linode's private IP address:
 
-    - **Label**                   < Backend Linode 1 >
-    - **Address**                 < xxx.xxx.xxx.xxx:80 >
+    - **Label**                   Backend Linode 1
+    - **Address**                 xxx.xxx.xxx.xxx:80
     - **Weight**                  100
     - **Mode**                    Accept
 
-    {: .note }
-    > 
-    > In the section labelled **`Address`**,  you will need to replace `xxx.xxx.xxx.xxx` with the specific private IP address that has been provisioned for that particular Linode, followed by a colon (:) and `80`. This is because SSL terminates at the NodeBalancer.
-
-    Then, select **`Save Changes`**.
+    Then, click on **Save Changes**.
 
 
 ## Configuring your Web Server with a 301 Redirect
