@@ -5,10 +5,10 @@ author:
 description: 'Forcing all connections to use SSL with NodeBalancers.'
 keywords: 'Linode,NodeBalancer,SSL,redirect'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Monday, May 18th, 2015
+modified: Monday, August 31st, 2015
 modified_by:
   name: Joel Kruger
-published: 'Monday, May 25th, 2015'
+published: Monday, August 31st, 2015
 title: Forcing SSL connections with Nodebalancers
 ---
 
@@ -19,23 +19,22 @@ The following guide will help you  obtain a valid, commercially signed SSL certi
 > 
 > Throughout this guide we will offer several suggested values for specific configuration settings, some of these values will be set by default. These settings are shown in the guide as a reference and you may need to modify them to suit your application accordingly.
 
-Prerequisites
----------------
+## Prerequisites
 
-- When first configuring your back-end Linodes, they should be set up according to the instructions in our [Getting Started](/docs/getting-started) guide, and it is suggested that security precautions be implemented. For assistance with this, please see our documentation: [Securing Your Server](https://linode.com/docs/security/securing-your-server)
+- When first configuring back-end Linodes, you should set them up according to the instructions in our [Getting Started](/docs/getting-started) guide. In addition, we recommend that you implement security precautions. For assistance with this, please see our documentation: [Securing Your Server](https://linode.com/docs/security/securing-your-server)
 
-- This guide assumes that you have already deployed two or more backend Linodes and configured them with either a LAMP stack, or a LEMP Stack. If you have not, please review the following supportive documentation for assistance with configuring one:
+- This guide assumes that you have already deployed two or more back-end Linodes and configured them with either a LAMP stack or a LEMP stack. If you have not, please review the following documentation for assistance with configuring your respective stack:
 
     - [LAMP Stack](/docs/websites/lamp/)
     - [LEMP Stack](/docs/websites/lemp/)
 
-- In addition, this guide assumes that you have already deployed a NodeBalancer and have configured it with two or more 'Back-end' Linodes that make connections on port 80/HTTP. It is recommended that you first verify that this is configured correctly, prior to introducing the complexities of an encrypted connection over SSL. If you would like assistance with setting up a basic NodeBalancer configuration, please review the following supportive documentation:
+- In addition, this guide assumes that you have already deployed a NodeBalancer and have configured it with two or more back-end Linodes that make connections on port 80/HTTP. We recommend that you first verify that your NodeBalancer is configured correctly, prior to introducing the complexities of an encrypted connection over SSL. If you would like assistance with setting up a basic NodeBalancer configuration, please review the following documentation:
 
    - [Getting Started with NodeBalancers](/docs/platform/nodebalancer/getting-started-with-nodebalancers)
    - [NodeBalancer Reference Guide](/docs/platform/nodebalancer/nodebalancer-reference-guide)
 
     {: .note}
-> This guide is written, assuming that you are logged in as the root user and that you will not need to prepend commands with ``sudo``.
+> This guide has been written with the assumption that you are logged in as the root user and that you will not need to prepend commands with ``sudo``.
 
 ## Install OpenSSL
 
@@ -53,16 +52,16 @@ Prerequisites
         yum install openssl
         mkdir /etc/ssl/localcerts
 
-## Create a Certificate Signing Request
+## Create a Certificate Signing Request (CSR)
 
-1.  Issue the following commands to generate a certificate signing request (CSR) for the domain that you would like to configure with SSL. Be sure to change `www.example.com` to reflect the fully qualified domain name (subdomain.domainname.com) of the site you'll be using SSL with. Leave the challenge password blank. We entered 365 for the days parameter to the command, as we would be paying for one year of SSL certificate verification from a commercial CA (certificate authority).
+1.  Issue the following commands to generate a CSR for the domain that you would like to configure with SSL. Be sure to change `www.example.com` to reflect the fully qualified domain name (subdomain.domainname.com) of the site you'll be using SSL with. Leave the challenge password blank. We entered 365 for the days parameter to the command, as we would be paying for one year of SSL certificate verification from a commercial certificate authority (CA).
 
         cd /etc/ssl/localcerts
 
         openssl req -new -newkey rsa:2048 -nodes -days 365 -keyout www.example.com.key -out www.example.com.csr
 
 
-    Here are the values we entered for our example certificate. Note that you can ignore the extra attributes.
+    The following are the values we entered for our example certificate. Note that you can ignore the extra attributes.
 
         Generating a 2048 bit RSA private key
         ......................................................++++++
@@ -72,27 +71,27 @@ Prerequisites
         You are about to be asked to enter information that will be incorporated
         into your certificate request.
         What you are about to enter is what is called a Distinguished Name or a DN.
-        There are quite a few fields but you can leave some blank
-        For some fields there will be a default value,
-        If you enter '.', the field will be left blank.
+        While many fields await input, you can leave some blank.
+        For some fields there will be a default value.
+        If you enter '.', the selected field will be left blank.
         -----
-        Country Name (2 letter code) [AU]:US
-        State or Province Name (full name) [Some-State]:New Jersey
-        Locality Name (eg, city) []:Absecon
-        Organization Name (eg, company) [Internet Widgits Pty Ltd]:MyDomain, LLC
-        Organizational Unit Name (eg, section) []:Web Services
-        Common Name (eg, YOUR name) []:www.example.com
-        Email Address []:support@mydomain.com
+        Country name (2 letter code) [AU]: US
+        State or Province name (full name) [Some-State]: New Jersey
+        Locality name (eg, city) []: Absecon
+        Organization name (eg, company) [Internet Widgits Pty Ltd]: MyDomain, LLC
+        Organizational unit name (eg, section) []: Web Services
+        Common name (eg, YOUR name) []: www.example.com
+        Email address []: support@mydomain.com
 
         Please enter the following 'extra' attributes
-        to be sent with your certificate request
+        that will be sent with your certificate request:
         A challenge password []:
         An optional company name []:
 
 
 
 
-2.  A `certificate signing request` file, ending with `.csr`, file will be generated and placed in `/etc/ssl/localcerts`. An example of what this file will look like can be found below (yours will be unique):
+2.  A `certificate signing request` file, ending with `.csr`, will be generated and placed in `/etc/ssl/localcerts`. An example of what this file will look like can be found below (yours will be unique):
 
         -----BEGIN CERTIFICATE REQUEST-----
         MIICpDCCAYwCAQAwRTELMAkGA1UEBhMCQVUxEzARBgNVBAgMClNvbWUtU3RhdGUx
@@ -105,7 +104,7 @@ Prerequisites
         hofUVA2XXBs=
         -----END CERTIFICATE REQUEST-----
 
-3.  In addition, a key file ending with `.key`, file will be generated and placed in `/etc/ssl/localcerts`. Execute the following command to protect the key:
+3.  In addition, a key file ending with `.key`, will be generated and placed in `/etc/ssl/localcerts`. Execute the following command to protect the key:
 
         chmod 400 /etc/ssl/localcerts/www.mydomain.com.key 
 
@@ -133,7 +132,7 @@ Prerequisites
 
       {:.note}
      > 
-     > There are many vendors, including some listed above, that provide free SSL certificates. However, free SSL certificates typically have shorter expiration dates, and less features.
+     > There are many vendors, including some listed above, that provide free SSL certificates. However, free SSL certificates typically have shorter expiration dates and less features.
 
 2.  Once this request has been submitted, you will receive a commercially signed SSL certificate file, which will look similar to the following (yours will be unique):
 
@@ -154,9 +153,9 @@ Prerequisites
 
 ### Preparing a Chained SSL Certificate
 
-1.  You may receive several files ending with `.crt`. In this case, they are collectively refereed to as a `chained SSL certificate` and must be concatenated into one file in order to provide full support with most browsers. The following example uses a chained SSL certificate that was signed by Comodo, but other vendors are perfectly reputable as well. Enter the following command to do this:
+1.  In some cases, CAs have not submitted a Trusted Root CA Certificate to some or all browser vendors. As a result of this, an end-user will need to *chain* his roots for certificates to be trusted by web browsers. If you receive several files from your CA ending with `.crt`(collectively referred to as a `chained SSL certificate`), they must be linked into one file, in a specific order, to provide full support with most browsers. The following example uses a chained SSL certificate that was signed by Comodo (other vendors are reputable as well). Enter the following command to prepare your chained SSL certificate:
 
-        cat example_com.crt COMODORSADomainValidationSecureServerCA.crt  COMODORSAAddTrustCA.crt AddTrustExternalCARoot.crt > chained-ssl.crt
+        cat example_com.crt COMODORSADomainValidationSecureServerCA.crt  COMODORSAAddTrustCA.crt AddTrustExternalCARoot.crt > www.mydomain.com.crt 
 
     The contents of the resulting file will appear similar to the following (yours will be unique):
 
@@ -182,14 +181,27 @@ Prerequisites
         6wwCURQtjr0W4MHfRnXnJK3s9EK0hZNwEGe6nQY1ShjTK3rMUUKhemPR5ruhxSvC
         -----END CERTIFICATE-----
 
-2.  If you have concatenated a chained SSL certificate, save this file as `/etc/ssl/localcerts/www.mydomain.com.crt`. Restrict permission on the file:
 
-        chmod 400 /etc/ssl/localcerts/chained-ssl.crt
+    The chart below breaks this down a bit more clearly:
+
+    {: .table .table-striped }
+    | Certificate Type:          | Issued to:                              | Issued by:                              |
+    |----------------------------|:----------------------------------------|:----------------------------------------|
+    | End-user Certificate       | example.com                             | Comodo LLC                              |
+    | Intermediate Certificate 1 | Comodo LLC                              | COMODORSADomainValidationSecureServerCA |
+    | Intermediate Certificate 2 | COMODORSADomainValidationSecureServerCA | COMODORSAAddTrustCA                     |
+    | Root certificate           | COMODORSAAddTrustCA                     | AddTrustExternalCARoot                  |
+
+
+
+2.  Restrict permissions on the chained certificate file:
+
+        chmod 400 /etc/ssl/localcerts/www.mydomain.com.crt
 
 
     {: .note }
     > 
-    > It recommended to save all of your `.crt` and `.key` files in an offsite location, optionally in a password protected archive.
+    > We recommend saving all of your `.crt` and `.key` files in an offsite location, optionally in a password protected archive.
 
 ## Installing the SSL Certificate and Private Key on your NodeBalancer
 
@@ -202,13 +214,13 @@ Prerequisites
 
     [![The NodeBalancer SSL Certificate Fields.](/docs/assets/nodebalancer-ssl-cert.png)](/docs/assets/nodebalancer-ssl-cert.png)
 
-2.  Copy the contents of your SSL certificate into the **Certificate** field. If you have concatenated multiple segments of a chained certificate, be sure to copy all of it's contents into the text field, appearing one after the other.
+2.  Copy the contents of your SSL certificate into the **Certificate** field. If you have linked multiple segments of a chained certificate, be sure to copy all of its contents into the text field, appearing one after another.
 
 3.  Copy your unpassphrased private key into the **Private Key** field.
 
-4.  On your NodeBalancer `Configurations` page, select `Create Configuration`, you will need to create one for each port/protocol that you would like to use, i.e. `80` and `443`.
+4.  On your NodeBalancer `Configurations` page, select `Create Configuration` to configure each port/protocol that you would like to use, i.e. `80` and `443`.
 
-5.  Under `Edit Configuration`  Once selected, fill out the values in the fields as shown below:
+5.  Under `Edit Configuration,`  Once selected, fill out the values in the fields as shown below:
  
     - **Port**                    443
     - **Protocol**                HTTPS
@@ -224,7 +236,7 @@ Prerequisites
 
     Then, select **`Save Changes`**. 
 
-6.  Add as many nodes as you require for the port configuration by selecting **`Add Node`**. Once selected, fill out the values in the fields like so:
+6.  Add as many nodes as you require for the port configuration by selecting **`Add Node`**. Once selected, fill out the values in the fields, like so:
 
     - **Label**                   < Backend Linode 1 >
     - **Address**                 < xxx.xxx.xxx.xxx:80 >
@@ -233,14 +245,14 @@ Prerequisites
 
     {: .note }
     > 
-    > In the section labelled **`Address`**,  you will need to replace `xxx.xxx.xxx.xxx` by specify the private IP address that has been provisioned for that particular Linode, followed by a colon and `80`. This is because SSL is terminating at the NodeBalancer.
+    > In the section labelled **`Address`**,  you will need to replace `xxx.xxx.xxx.xxx` with the specific private IP address that has been provisioned for that particular Linode, followed by a colon (:) and `80`. This is because SSL terminates at the NodeBalancer.
 
     Then, select **`Save Changes`**.
 
 
 ## Configuring your Web Server with a 301 Redirect
 
-### Configuring the Apache Webserver.
+### Configuring your vhost file for the Apache Webserver.
 
 1.  Enable `mod_rewrite` so that you can redirect all traffic back to the NodeBalancer over port 443/HTTPS:
 
@@ -250,8 +262,8 @@ Prerequisites
 
         LoadModule rewrite_module modules/mod_rewrite.so
 
-    {:.note}
-    > Depending on if you are using a Debian or a Redhat based distribution, this file will be located in one of the following locations:
+    {:.caution}
+    > Depending on selected distro, Debian or a Redhat, this file will be located in one of the following locations:
     >
     >     /etc/apache2/apache2.conf
     >
@@ -264,14 +276,29 @@ Prerequisites
     :   ~~~ apache
         <VirtualHost *:80>
           
-        ...
+            ...
           
              RewriteEngine    On
              RewriteCond      %{HTTP:X-Forwarded-Proto} !https
              RewriteRule      ^.*$ https://%{SERVER_NAME}%{REQUEST_URI} [L,R=301,NE]
-             RewriteLog       /var/log/apache2/rewrite.log
-             RewriteLogLevel  5
+             LogLevel alert rewrite:trace4  # Adjust log verbosity as required. ex. 1-8
          </VirtualHost>
+        ~~~
+
+    The rewrite configuration shown above is specific to Apache 2.4 or later. This means that logging gets recorded to Apache's `error.log` file. To view only the records specific to `mod_rewrite`, you can pipe the log file through grep:
+    
+        tail -f error_log|fgrep '[rewrite:'
+
+    If you are using Apache 2.2, then you will need to replace the `LogLevel alert rewrite:trace` directive with the following:
+
+    {: .file-excerpt }
+    /etc/apache2/sites-available/example.com.conf
+    :   ~~~ apache2
+    
+            ...
+            
+             RewriteLog       /var/log/apache2/rewrite.log
+             RewriteLogLevel  5  # Adjust log verbosity as required. ex. 1-9
         ~~~
 
     {: .caution}
@@ -289,7 +316,7 @@ Prerequisites
 
 ### Configuring the Nginx Webserver.
 
-4.  Edit the Nginx server block configuration file to establish the rewrite rules to redirect all incoming traffic from port 80/HTTP, back to the NodeBalancer on port 443/HTTPS:
+1.  Edit the Nginx server block configuration file to establish the rewrite rules to redirect all incoming traffic from port 80/HTTP, back to the NodeBalancer on port 443/HTTPS:
 
     {: .file-excerpt }
     /etc/nginx/sites-available/example.com.conf
@@ -310,13 +337,31 @@ Prerequisites
             }
         ~~~
 
+2. Your configuration should now be complete. After reloading your web server, all requests made to your website that are not sent to port 443 should be redirected back to your Nodebalancer on a secure connection with SSL/TLS.
+
 ## Tips for Troubleshooting
 
 - If you have difficulty getting the redirect to work properly or would like to see detailed information about how your SSL certificate is configured, you may wish to utilize the [Qualys online SSL Server Test](https://www.ssllabs.com/ssltest/)
 
 - Every time that you make changes to your web server's document root file or other configuration files, be sure to reload the server:
+ 
+- For Apache:
 
-- When testing behind a load balancer, using curl with the `-IL` flags can be very helpful when debugging:
+      service apache2 reload
+      service httpd reload
+      systemctl restart httpd.service
+    
+- For Nginx:
+
+      service nginx reload
+      systemctl restart nginx.service
+
+
+
+
+- When testing behind a load balancer, using curl with the `-I` or `-L` flags can be very helpful when debugging:
      
-        curl -IL example.com
+        curl -I example.com
+        curl -L example.com
 
+  The `-I` or `--head` options will fetch the HTTP-header only. The `-L` or `--location` option will detect and display if the server indicates that the requested page has moved to a different location. This option will make curl repeat the request at the new location. If used together with `-I`, headers from all requested pages will be displayed. This is particularly useful if your rewrite rules have managed to create an infinite loop and your web page does not load. Check out the man pages for curl for more info.
