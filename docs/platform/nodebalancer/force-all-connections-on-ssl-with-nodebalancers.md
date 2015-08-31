@@ -5,25 +5,21 @@ author:
 description: 'Forcing all connections to use SSL with NodeBalancers.'
 keywords: 'Linode,NodeBalancer,SSL,redirect'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Monday, May 18th, 2015
+modified: Monday, August 31st, 2015
 modified_by:
   name: Joel Kruger
-published: 'Monday, May 25th, 2015'
+published: Monday, August 31st, 2015
 title: Forcing SSL connections with Nodebalancers
 ---
 
-The following documentation will assist you with obtaining a valid, commercially signed SSL certificate and then installing it on your NodeBalancer. This guide provides step-by-step instructions for configuring a NodeBalancer that will redirect all web connections, using SSL, over port 443/HTTPS. Instructions will be provided to configure this with both the Apache and Nginx servers on Debian and Redhat based distributions.
+The following guide will help you  obtain a valid, commercially signed SSL certificate, and install it on your NodeBalancer. This guide provides step-by-step instructions for configuring a NodeBalancer to redirect all web connections, using SSL, over port 443/HTTPS. Instructions will be provided to configure this with both the Apache and Nginx servers on Debian and Redhat based distributions.
+
 
 {: .note }
 > 
-> Please note that commercial SSL certificates require a unique IP address for each certificate. As a result, you will only be able to host one SSL-enabled website per NodeBalancer.
-
- {: .note }
- > 
 > Throughout this guide we will offer several suggested values for specific configuration settings, some of these values will be set by default. These settings are shown in the guide as a reference and you may need to modify them to suit your application accordingly.
 
-Prerequisites
----------------
+## Prerequisites
 
 - When first configuring back-end Linodes, you should set them up according to the instructions in our [Getting Started](/docs/getting-started) guide. In addition, we recommend that you implement security precautions. For assistance with this, please see our documentation: [Securing Your Server](https://linode.com/docs/security/securing-your-server)
 
@@ -127,7 +123,7 @@ Prerequisites
 
 ### Submit your CSR to a Certificate Authority
 
-4.  You may now submit the contents of this file to a commercial SSL provider (CA) for signing. Typically, a CA will provide you with a field in which to paste the contents of your CSR file somewhere on their website. The following is a list of well-known commercial SSL vendors, provided for your convenience:
+1.  You may now submit the contents of this file to a commercial SSL provider (Certificate Authority) for signing. Typically, they will provide you with a field to paste the contents of your CSR file into, somewhere on their website. The following is a list of well known commercial SSL vendors, provided for your convenience:
 
     - [Verisign](https://www.verisign.com/)
     - [Thawte](https://www.thawte.com/)
@@ -138,7 +134,7 @@ Prerequisites
      > 
      > There are many vendors, including some listed above, that provide free SSL certificates. However, free SSL certificates typically have shorter expiration dates and less features.
 
-5.  Once this request has been submitted, you will receive a commercially signed SSL certificate file, which will look similar to the following (yours will be unique):
+2.  Once this request has been submitted, you will receive a commercially signed SSL certificate file, which will look similar to the following (yours will be unique):
 
         -----BEGIN CERTIFICATE-----
         MIIFSzCCBDOgAwIBAgIQVjCXC0bF9U8FypJOnL9cuDANBgkqhkiG9w0BAQsFADCB
@@ -151,13 +147,13 @@ Prerequisites
         DCQzME2NkT1ZdW8fdz+Y
         -----END CERTIFICATE-----
 
-6.  Save this file as `/etc/ssl/localcerts/www.mydomain.com.crt`. Execute the following command to protect the signed certificate:
+3.  Save this file as `/etc/ssl/localcerts/www.mydomain.com.crt`. Restrict permissions on file:
 
         chmod 400 /etc/ssl/localcerts/www.mydomain.com.crt
 
 ### Preparing a Chained SSL Certificate
 
-7.  In some cases, CAs have not submitted a Trusted Root CA Certificate to some or all browser vendors. As a result of this, an end-user will need to *chain* his roots for certificates to be trusted by web browsers. If you receive several files from your CA ending with `.crt`(collectively referred to as a `chained SSL certificate`), they must be linked into one file, in a specific order, to provide full support with most browsers. The following example uses a chained SSL certificate that was signed by Comodo (other vendors are reputable as well). Enter the following command to prepare you chained SSL certificate:
+1.  In some cases, CAs have not submitted a Trusted Root CA Certificate to some or all browser vendors. Because of this, you can choose to *chain* roots for certificates to be trusted by web browsers. If you receive several files from your CA ending with `.crt`(collectively referred to as a `chained SSL certificate`), they must be linked into one file, in a specific order, to provide full support with most browsers. The following example uses a chained SSL certificate that was signed by Comodo (other vendors are reputable as well). Enter the following command to prepare your chained SSL certificate:
 
         cat example_com.crt COMODORSADomainValidationSecureServerCA.crt  COMODORSAAddTrustCA.crt AddTrustExternalCARoot.crt > www.mydomain.com.crt 
 
@@ -165,63 +161,47 @@ Prerequisites
 
         -----BEGIN CERTIFICATE-----
         MIIFSzCCBDOgAwIBAgIQVjCXC0bF9U8FypJOnL9cuDANBgkqhkiG9w0BAQsFADCB
-        kDELMAkGA1UEBhMCR0IxGzAZBgNVBAgTEkdyZWF0ZXIgTWFuY2hlc3RlcjEQMA4G
-        A1UEBxMHU2FsZm9yZDEaMBgGA1UEChMRQ09NT0RPIENBIExpbWl0ZWQxNjA0BgNV
         ................................................................
-        RWieiEDSZqbtZRPBaGooDJ5QbdHqUanvoVzf1aB1S5RrJB5qH/UG6WbTZ07rFfsn
-        age7UPo4ZwheAtpO2mhcYypBG1zln4cvxVBAcrnaa1GWwKjgwXUr5k2Pv7BXWEex
         ncHG3hwHHwhiEz6ukC2mqxA+D3KILiywgHgWcumnpeCEUQgDzy0Fz2Ip/kR/1Fkv
         DCQzME2NkT1ZdW8fdz+Y
         -----END CERTIFICATE-----
         -----BEGIN CERTIFICATE-----
         MIIGCDCCA/CgAwIBAgIQKy5u6tl1NmwUim7bo3yMBzANBgkqhkiG9w0BAQwFADCB
-        hTELMAkGA1UEBhMCR0IxGzAZBgNVBAgTEkdyZWF0ZXIgTWFuY2hlc3RlcjEQMA4G
-        A1UEBxMHU2FsZm9yZDEaMBgGA1UEChMRQ09NT0RPIENBIExpbWl0ZWQxKzApBgNV
         ................................................................
         j4rBYKEMrltDR5FL1ZoXX/nUh8HCjLfn4g8wGTeGrODcQgPmlKidrv0PJFGUzpII
-        0fxQ8ANAe4hZ7Q7drNJ3gjTcBpUC2JD5Leo31Rpg0Gcg19hCC0Wvgmje3WYkN5Ap
-        lBlGGSW4gNfL1IYoakRwJiNiqZ+Gb7+6kHDSVneFeO/qJakXzlByjAA6quPbYzSf
-        +AZxAeKCINT+b72x
         -----END CERTIFICATE-----
         -----BEGIN CERTIFICATE-----
-        MIIFdDCCBFygAwIBAgIQJ2buVutJ846r13Ci/ITeIjANBgkqhkiG9w0BAQwFADBv
-        MQswCQYDVQQGEwJTRTEUMBIGA1UEChMLQWRkVHJ1c3QgQUIxJjAkBgNVBAsTHUFk
         ZFRydXN0IEV4dGVybmFsIFRUUCBOZXR3b3JrMSIwIAYDVQQDExlBZGRUcnVzdCBF
         ................................................................
         Uspzgb8c8+a4bmYRBbMelC1/kZWSWfFMzqORcUx8Rww7Cxn2obFshj5cqsQugsv5
-        B5a6SE2Q8pTIqXOi6wZ7I53eovNNVZ96YUWYGGjHXkBrI/V5eu+MtWuLt29G9Hvx
-        PUsE2JOAWVrgQSQdso8VYFhH2+9uRv0V9dlfmrPb2LjkQLPNlzmuhbsdjrzch5vR
-        pu/xO28QOG8=
         -----END CERTIFICATE-----
         -----BEGIN CERTIFICATE-----
         MIIENjCCAx6gAwIBAgIBATANBgkqhkiG9w0BAQUFADBvMQswCQYDVQQGEwJTRTEU
-        MBIGA1UEChMLQWRkVHJ1c3QgQUIxJjAkBgNVBAsTHUFkZFRydXN0IEV4dGVybmFs
-        IFRUUCBOZXR3b3JrMSIwIAYDVQQDExlBZGRUcnVzdCBFeHRlcm5hbCBDQSBSb290
         ................................................................
         6wwCURQtjr0W4MHfRnXnJK3s9EK0hZNwEGe6nQY1ShjTK3rMUUKhemPR5ruhxSvC
-        Nr4TDea9Y355e6cJDUCrat2PisP29owaQgVR1EX1n6diIWgVIEM8med8vSTYqZEX
-        c4g/VhsxOBi0cQ+azcgOno4uG+GMmIPLHzHxREzGBHNJdmAPx/i9F4BrLunMTA5a
-        mnkPIAou1Z5jJh5VkpTYghdae9C8x49OhgQ=
         -----END CERTIFICATE-----
 
-The chart below breaks this down a bit more clearly:
-  
-| Certificate Type:          | Issued to:                              | Issued by:                              |
-|----------------------------|-----------------------------------------|-----------------------------------------|
-| End-user Certificate       | example.com                             | Comodo LLC                              |
-| Intermediate Certificate 1 | Comodo LLC                              | COMODORSADomainValidationSecureServerCA |
-| Intermediate Certificate 2 | COMODORSADomainValidationSecureServerCA | COMODORSAAddTrustCA                     |
-| Root certificate           | COMODORSAAddTrustCA                     | AddTrustExternalCARoot                  |
+
+    The chart below breaks this down a bit more clearly:
+
+    {: .table .table-striped }
+    | Certificate Type:          | Issued to:                              | Issued by:                              |
+    |----------------------------|:----------------------------------------|:----------------------------------------|
+    | End-user Certificate       | example.com                             | Comodo LLC                              |
+    | Intermediate Certificate 1 | Comodo LLC                              | COMODORSADomainValidationSecureServerCA |
+    | Intermediate Certificate 2 | COMODORSADomainValidationSecureServerCA | COMODORSAAddTrustCA                     |
+    | Root certificate           | COMODORSAAddTrustCA                     | AddTrustExternalCARoot                  |
 
 
-8.  If you sequence a chained SSL certificate, save this file as `/etc/ssl/localcerts/www.mydomain.com.crt`. Then execute the following command to protect the signed certificate:
+
+2.  Restrict permissions on the chained certificate file:
 
         chmod 400 /etc/ssl/localcerts/www.mydomain.com.crt
 
 
     {: .note }
     > 
-    > Saving all  your `.crt` and `.key` files in a secure, offsite archive file with password-protected access is a prudent idea. By doing so, you can recover them later if neccessary.
+    > We recommend saving all of your `.crt` and `.key` files in an offsite location, optionally in a password protected archive.
 
 ## Installing the SSL Certificate and Private Key on your NodeBalancer
 
@@ -230,55 +210,51 @@ The chart below breaks this down a bit more clearly:
 
 ### Certificate and Private Key
 
-1.  If you select the HTTPS protocol, the **Certificate** and **Private Key** fields will appear.
+1.  Go to your NodeBalancer's configuration page. If you select the HTTPS protocol, the **Certificate** and **Private Key** fields will appear.
 
-    [![The NodeBalancer Certificate and Private Key fields.](/docs/assets/1354-nodebalancer_cert.png)](/docs/assets/1354-nodebalancer_cert.png)
+    [![The NodeBalancer SSL Certificate Fields.](/docs/assets/nodebalancer-ssl-cert.png)](/docs/assets/nodebalancer-ssl-cert.png)
 
 2.  Copy the contents of your SSL certificate into the **Certificate** field. If you have linked multiple segments of a chained certificate, be sure to copy all of its contents into the text field, appearing one after another.
 
-3.  Copy your passphraseless private key into the **Private Key** field.
+3.  Copy your unpassphrased private key into the **Private Key** field.
 
 4.  On your NodeBalancer `Configurations` page, select `Create Configuration` to configure each port/protocol that you would like to use, i.e. `80` and `443`.
 
 5.  Under `Edit Configuration,`  Once selected, fill out the values in the fields as shown below:
  
-         **Port**                    443
-         **Protocol**                HTTPS
-         **Algorithm**               Round Robin
-         **Session Stickiness**      None
-         **Certificate**             < Insert your signed SSL Certificate >
-         **Private Key**             < Insert your Private Key >
-         **Health Check Type**       HTTP Valid Status
-         **Check Interval**          5
-         **Check Timeout**           3
-         **Check Attempts**          2
-         **Check HTTP Path**         /
+    - **Port**                    443
+    - **Protocol**                HTTPS
+    - **Algorithm**               Round Robin
+    - **Session Stickiness**      None
+    - **Certificate**             Insert your signed SSL Certificate
+    - **Private Key**             Insert your Private Key
+    - **Health Check Type**       HTTP Valid Status
+    - **Check Interval**          5
+    - **Check Timeout**           3
+    - **Check Attempts**          2
+    - **Check HTTP Path**         /
 
     Then, select **`Save Changes`**. 
 
-6.  Add as many nodes as you require for the port configuration by selecting **`Add Node`**. Once selected, fill out the values in the fields, like so:
+6.  Add as many nodes as you require for the port configuration by selecting **`Add Node`**. Once selected, fill out the values in the fields as exampled below, replacing `xxx.xxx.xxx.xxx` with the Linode's private IP address:
 
-         **Label**                   < Backend Linode 1 >
-         **Address**                 < xxx.xxx.xxx.xxx:80 >
-         **Weight**                  100
-         **Mode**                    Accept
+    - **Label**                   Backend Linode 1
+    - **Address**                 xxx.xxx.xxx.xxx:80
+    - **Weight**                  100
+    - **Mode**                    Accept
 
-    {: .note }
-    > 
-    > In the section labelled **`Address`**,  you will need to replace `xxx.xxx.xxx.xxx` with the specific private IP address that has been provisioned for that particular Linode, followed by a colon (:) and `80`. This is because SSL terminates at the NodeBalancer.
-
-    Then, select **`Save Changes`**.
+    Then, click on **Save Changes**.
 
 
 ## Configuring your Web Server with a 301 Redirect
 
 ### Configuring your vhost file for the Apache Webserver.
 
-1.  Enable mod_rewrite so that you can redirect all traffic back to the NodeBalancer over port 443/HTTPS. Enter the following command:
+1.  Enable `mod_rewrite` so that you can redirect all traffic back to the NodeBalancer over port 443/HTTPS:
 
         a2enmod rewrite
      
-    or, you can load the module manually by appending the following to your Apache configuration file:
+    Or, you can load the module manually by appending the following to your Apache configuration file:
 
         LoadModule rewrite_module modules/mod_rewrite.so
 
@@ -289,10 +265,10 @@ The chart below breaks this down a bit more clearly:
     >
     >     /etc/httpd/httpd.conf
 
-2.  Next, edit the Apache vhost configuration file to establish the rewrite rules necessary to redirect all incoming traffic from port 80/HTTP back to the NodeBalancer on port 443/HTTPS:
+2.  Edit the Apache virtual host configuration file to establish the rewrite rules necessary to redirect all incoming traffic from port 80/HTTP, back to the NodeBalancer on port 443/HTTPS:
 
     {: .file-excerpt }
-        /etc/apache2/sites-available/example.com.conf
+    /etc/apache2/sites-available/example.com.conf
     :   ~~~ apache
         <VirtualHost *:80>
           
@@ -305,11 +281,14 @@ The chart below breaks this down a bit more clearly:
          </VirtualHost>
         ~~~
 
-    {: .note}
-    >   The rewrite configuration shown above is specific to Apache 2.4 or later. This means that logging gets recorded to Apache's `error.log` file. To view only the records specific to `mod_rewrite`, you can pipe the log file through grep: ` tail -f error_log|fgrep '[rewrite:'`. If you are using Apache 2.2, then you will need to replace the `LogLevel alert rewrite:trace` directive with the following command:
+    The rewrite configuration shown above is specific to Apache 2.4 or later. This means that logging gets recorded to Apache's `error.log` file. To view only the records specific to `mod_rewrite`, you can pipe the log file through grep:
+    
+        tail -f error_log|fgrep '[rewrite:'
+
+    If you are using Apache 2.2, then you will need to replace the `LogLevel alert rewrite:trace` directive with the following:
 
     {: .file-excerpt }
-        /etc/apache2/sites-available/example.com.conf
+    /etc/apache2/sites-available/example.com.conf
     :   ~~~ apache2
     
             ...
@@ -331,9 +310,9 @@ The chart below breaks this down a bit more clearly:
 
            touch /var/log/httpd/rewrite.log
 
-### Configuring your vhost file for the Nginx Webserver.
+### Configuring the Nginx Webserver.
 
-4.  Edit the Nginx vhost configuration file to establish the rewrite rules necessary in order to redirect all incoming traffic from port 80/HTTP back to the NodeBalancer on port 443/HTTPS:
+1.  Edit the Nginx server block configuration file to establish the rewrite rules to redirect all incoming traffic from port 80/HTTP, back to the NodeBalancer on port 443/HTTPS:
 
     {: .file-excerpt }
     /etc/nginx/sites-available/example.com.conf
@@ -354,30 +333,31 @@ The chart below breaks this down a bit more clearly:
             }
         ~~~
 
-5. Your configuration should now be complete. After reloading your web server, all requests made to your website that are not sent to port 443 should be redirected back to your Nodebalancer on a secure connection with SSL/TLS.
+2. Your configuration should now be complete. After reloading your web server, all requests made to your website that are not sent to port 443 should be redirected back to your Nodebalancer on a secure connection with SSL/TLS.
 
 ## Tips for Troubleshooting
 
-- Every time you make changes to your webserver's virtual host configuration file or other configuration files, be sure to reload the server:
+- If you have difficulty getting the redirect to work properly or would like to see detailed information about how your SSL certificate is configured, you may wish to utilize the [Qualys online SSL Server Test](https://www.ssllabs.com/ssltest/)
+
+- Every time that you make changes to your web server's document root file or other configuration files, be sure to reload the server:
  
-    #### For Apache:
-        service apache2 reload
-        service httpd reload
-        systemctl restart apache2.service
-        systemctl restart httpd.service
+- For Apache:
+
+      service apache2 reload
+      service httpd reload
+      systemctl restart httpd.service
     
-    #### For Nginx:
-        service nginx reload
-        systemctl restart nginx.service
+- For Nginx:
 
-- If you end up having difficulty getting the redirect to work properly or would like to see detailed information about how your SSL certificate is configured, you can use the following tool from Qualys:
+      service nginx reload
+      systemctl restart nginx.service
 
-  [Qualys online SSL Server Test](https://www.ssllabs.com/ssltest/)
+
+
 
 - When testing behind a load balancer, using curl with the `-I` or `-L` flags can be very helpful when debugging:
      
         curl -I example.com
         curl -L example.com
 
-{: .note}
-    >   The `-I` (or `--head`) option will fetch the HTTP-header only. The `-L` (or `--location`) option will detect and display if the server indicates that the requested page has moved to a different location. This option will make curl repeat the request at the new location. If used together with `-I`, headers from all requested pages will be displayed. This is particularly useful if your rewrite rules have managed to create an infinite loop and your web page does not load. Check out the man pages for curl for more info.
+  The `-I` or `--head` options will fetch the HTTP-header only. The `-L` or `--location` option will detect and display if the server indicates that the requested page has moved to a different location. This option will make curl repeat the request at the new location. If used together with `-I`, headers from all requested pages will be displayed. This is particularly useful if your rewrite rules have managed to create an infinite loop and your web page does not load. Check out the man pages for curl for more info.

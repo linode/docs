@@ -104,7 +104,7 @@ Alternately, you may wish to use TCP sockets instead. If so, modify your nginx v
             include /etc/nginx/fastcgi_params;
             fastcgi_pass  127.0.0.1:8999;
             fastcgi_index index.pl;
-            fastcgi_param SCRIPT_FILENAME /srv/www/www.example.com/public_html$fastcgi_script_name;
+            fastcgi_param SCRIPT_FILENAME /srv/www/www.example.com/public_html/$fastcgi_script_name;
         }
     }
     ~~~

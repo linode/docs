@@ -6,10 +6,10 @@ author:
 description: 'Markdown Reference Guide'
 keywords: 'style guide, write for us, linode library, article submissions, markdown,'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Friday, January 2nd, 2014
+modified: Friday, January 2nd, 2015
 modified_by:
   name: Joseph Dooley
-published: 'Friday, January 2nd, 2014'
+published: 'Friday, January 2nd, 2015'
 title: Markdown Quick Reference
 ---
 

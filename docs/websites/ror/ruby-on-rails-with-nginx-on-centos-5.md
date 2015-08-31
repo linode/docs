@@ -48,7 +48,7 @@ The version of Ruby in the CentOS repositories is fairly old; we'll need to down
     make -j3
     make install
 
-Now we'll need to install gems. Issue the following series of commands to download and install a fresh version. You may wish to check the [RubyForge files page](http://http://rubygems.org/gems/rubyforge) for the most recent version.
+Now we'll need to install gems. Issue the following series of commands to download and install a fresh version. You may wish to check the [RubyForge files page](http://rubygems.org/gems/rubyforge) for the most recent version.
 
     cd /opt
     wget http://production.cf.rubygems.org/rubygems/rubygems-1.5.1.tgz

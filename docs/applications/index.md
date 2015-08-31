@@ -6,6 +6,7 @@ modified_by:
   name: Alex Fornuto
 categories:
  - remote-desktop
+ - chef
  - voip
  - cloud-storage
  - containers
