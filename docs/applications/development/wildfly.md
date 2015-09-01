@@ -150,7 +150,7 @@ After full installation of above stack it was consuming around 650 MB of RAM wit
 
 ## WildFly 8.2 installation
 
-1.  **This script is based on great article & code mentioned in "Dmitriy Sukharev. IT Blog", the original article & original script can be found [here](http://sukharevd.net/wildfly-8-installation.html) I have done few modification to do the following:**
+1.  This script is based on great article & code mentioned in "Dmitriy Sukharev. IT Blog", the original article & original script can be found [here](http://sukharevd.net/wildfly-8-installation.html) I have done few modification to do the following:
 
     1.  Add backup to some important files before modification.
 
@@ -280,28 +280,28 @@ After full installation of above stack it was consuming around 650 MB of RAM wit
         echo "Done."
         ~~~
 
-2.  **Make the script executable:**
+2.  Make the script executable:
 
         sudo chmod +x /opt/wildfly-install.sh
 
-3.  **Run the script:**
+3.  Run the script:
 
         cd /opt
         sudo ./wildfly-install.sh
  
-4.  **You will need to add to add management user (Web and/or CLI) to be able to access the management console, this can be simply done by running the command simply run the shell script in `/opt/wildfly/bin/add-user.sh`:**
+4.  You will need to add to add management user (Web and/or CLI) to be able to access the management console, this can be simply done by running the command simply run the shell script in `/opt/wildfly/bin/add-user.sh`:
 
-    1.  Select option a for Management user.
-    2.  Username: type_the_username 
-    3.  Password: type_the_password
-    4.  What groups do you want this user to belong to? Leave empty and click Enter
-    5.  About to add user ... Is this correct? yes
-    6.  Is this new user going to be used for one AS process to connect to another AS process? yes (Just in-case, we need this in the future, i.e. domain setup).
-    7.  You will get this message: To represent the user add the following to the server-identities definition, this is just to be used in domain installation just keep it if you needed to switch to domain installation later.
+    1.  **Select option a for Management user.**
+    2.  **Username: type_the_username**
+    3.  **Password: type_the_password**
+    4.  **What groups do you want this user to belong to? Leave empty and click Enter**
+    5.  **About to add user ... Is this correct? yes**
+    6.  **Is this new user going to be used for one AS process to connect to another AS process? yes (Just in-case, we need this in the future, i.e. domain setup).**
+    7.  **You will get this message: To represent the user add the following to the server-identities definition, this is just to be used in domain installation just keep it if you needed to switch to domain installation later.**
 
     You should be able to test the wildfly by using the URL `http://123.45.67.89:8080`, and the WildFly Admin console using the URL `http://123.45.67.89:9990/console`, replacing `123.45.67.89` with your Linode's IP address.
  
-5. **I prefer that you install any sample application (Use your own, or simply get the [default sample from Tomcat](https://tomcat.apache.org/tomcat-6.0-doc/appdev/sample/) and make sure it is working using the port 8080, as it will be used when testing after adding Apache HTTP. The sample application can be deployed from the WildFly admin console.**
+5. I prefer that you install any sample application (Use your own, or simply get the [default sample from Tomcat](https://tomcat.apache.org/tomcat-6.0-doc/appdev/sample/) and make sure it is working using the port 8080, as it will be used when testing after adding Apache HTTP. The sample application can be deployed from the WildFly admin console.
 
 ### Configure MySQL Driver in WildFly & Add DataSource
 
