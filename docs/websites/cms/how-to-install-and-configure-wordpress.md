@@ -10,7 +10,7 @@ modified: Tuesday, August 4th, 2015
 modified_by:
   name: Elle Krout
 published: 'Tuesday, July 27th, 2010'
-title: How to Install and Configure Wordpress
+title: How to Install and Configure WordPress
 external_resources:
 - '[WordPress.org](http://wordpress.org)'
 - '[WordPress Codex](http://codex.wordpress.org)'
