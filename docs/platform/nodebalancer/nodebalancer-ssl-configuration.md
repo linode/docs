@@ -9,7 +9,7 @@ modified: Monday, August 31st, 2015
 modified_by:
   name: Joel Kruger
 published: Monday, August 31st, 2015
-title: Forcing SSL connections with Nodebalancers
+title: NodeBalancer SSL Configuration
 ---
 
 The following guide will help you  obtain a valid, commercially signed SSL certificate, and install it on your NodeBalancer. This guide provides step-by-step instructions for configuring a NodeBalancer to redirect all web connections, using SSL, over port 443/HTTPS. Instructions will be provided to configure this with both the Apache and Nginx servers on Debian- and Redhat-based distributions.
