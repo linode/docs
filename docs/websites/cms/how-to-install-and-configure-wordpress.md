@@ -34,7 +34,7 @@ WordPress is a popular dynamic blog-focused content management system. The softw
 
     The first will output your short hostname, the second your fully-qualified domain name (FQDN).
 
--  You have a configured web stack set up. This can be a [LAMP](/docs/websites/lamp/) or [LEMP](/docs/websites/lamp/) stack.
+-  You have a configured web stack set up. This can be a [LAMP](/docs/websites/lamp/) or [LEMP](/docs/websites/lemp/) stack.
 
 
 -   MySQL has a database set up for WordPress. If you do not have a database created:
