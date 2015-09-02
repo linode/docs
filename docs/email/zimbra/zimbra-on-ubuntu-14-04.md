@@ -4,7 +4,7 @@ author:
     name: Linode Community
     email: docs@linode.com
 description: 'Install Zimbra OSE 8.6 on Ubuntu 14.04 LTS'
-keywords: 'zimbra,mailserver,postfix,webmail'
+keywords: 'zimbra,mailserver,postfix,webmail,install'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 external_resources:
  - '[Zimbra OSE Documentation](https://www.zimbra.com/documentation/zimbra-collaboration-open-source)'
