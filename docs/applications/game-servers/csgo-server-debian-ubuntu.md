@@ -113,12 +113,17 @@ You may need to open UDP port 27015 in your firewall to connect.
 ```
 ./srcds_run -game csgo -console -usercon +net_public_adr <public ip> -port 27015 +game_type 0 +game_mode 1 +mapgroup mg_bomb +map de_dust2 -autoupdate 
 ```
+##Joining game
 
-Now try joining. Open your console in CS:GO using whatever key you use, usually, `.
+1. You'll need to launch Counter-Strike: Global Offensive by clicking the item on the game on the left menu and clicking the blue "PLAY" button.
 
-```
-connect <public ip>
-```
+2. Once inside, go to "Play" and then click "Browse Community Servers"
+
+3. Click on the "Favorites" tab and then click "Add a Server" at the bottom
+
+4. Type in the ip address of your Linode and click "Add this address to favorites"
+
+5. You'll see your new Counter-Strike: Global Offensive server. Click "Connect" at the bottom right and start fragging awa
 
 ## Game Modes and Types
 
