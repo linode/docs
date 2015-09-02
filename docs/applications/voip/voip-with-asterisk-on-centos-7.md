@@ -221,8 +221,9 @@ It should show an empty rule table which looks like:
     #
     -A INPUT -p tcp -m state --state NEW --dport 8050 -j ACCEPT
 
-    # SIP on UDP port 5060. Used for signals such as "hang up"
+    # SIP on UDP port 5060, 5061 for secure signaling. Used for signals such as "hang up"
     -A INPUT -p udp -m udp --dport 5060 -j ACCEPT
+    -A INPUT -p udp -m udp --dport 5061 -j ACCEPT
 
     # IAX2- the IAX protocol - comment out if you don't plan to use IAX
     # -A INPUT -p udp -m udp --dport 4569 -j ACCEPT
@@ -562,7 +563,7 @@ Followed by:
 
 
 
-##Installing Asterisk
+<h2 id="InstallingAsterisk">Installing Asterisk
 
 
 We're now ready to install Asterisk 13, the current Long Term Support Release of Asterisk at the time of this writing.
@@ -671,6 +672,7 @@ Once disconnected, Asterisk continues to run in the background.
 Now that you have an Asterisk server running on your Linode, it's time to connect some phones, add extensions, and configure the various options that are available with Asterisk. For detailed instructions, check out
 the Asterisk Project's guide to [Configuring Asterisk](https://wiki.asterisk.org/wiki/display/AST/Basic+PBX+Functionality).
 
-
-
-
+{: .caution}
+>
+> When running a phone system on a remote server such as a Linode, it's always good practice to secure the signaling data with TLS and the audio portion of calls using SRTP to prevent eavesdropping. Once you have a working dial-plan, be sure to
+> follow the [Secure Calling Guide](https://wiki.asterisk.org/wiki/display/AST/Secure+Calling) to encrypt your communications.
