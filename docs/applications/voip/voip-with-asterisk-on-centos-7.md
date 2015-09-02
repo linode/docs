@@ -199,7 +199,7 @@ CentOS 7 does not come with the iptables-services pre-installed. You will need t
        ssh exampleuser@xx.xx.xx.xxx
 
 
-##Final Preparations
+###Final Preparations
 
 First, lets check that selinux is disabled. It should be disabled by default on CentOS 7, but since Asterisk installation will fail if its on, let's double check to be sure.
 
@@ -325,71 +325,11 @@ If you don't want conferencing, you can skip ahead to the [Installing Asterisk](
 Since DAHDI is a Kernel module it needs Kernel headers in order to compile.
 Unfortunately, the Linode supplied Kernel is a different version than the headers supplied in the CentOS repository, so we'll need to tell our Linode to use the vanilla CentOS Kernel instead of the Linode version.
 
-Since detailed instruction on [Running a Distribution-Supplied Kernel](/docs/tools-reference/custom-kernels-distros/run-a-distributionsupplied-kernel-with-pvgrub) are already available, we'll just briefly cover the required steps.
+You'll need to follow our instructions on [Running a Distribution-Supplied Kernel](/docs/tools-reference/custom-kernels-distros/run-a-distributionsupplied-kernel-with-pvgrub) before continuing with the next steps.
 
 {: .caution}
 >
 >You should not attempt to replace the Kernel on a system that is currently in production!
-
-1. Install the latest Kernel on your Linode with:
-
-       yum install kernel.x86_64 -y
-
-It should tell you what version its installing, such as:
-
-       kernel-3.10.0-229.11.1.el7.x86_64
-
-2. When installation is done, run:
-
-       ls  -lah /boot
-
-In the output, find the files that looks like:
-
-       vmlinuz-3.10.0-229.11.1.el7.x86_64
-
-and
-
-       initramfs-3.10.0-229.11.1.el7.x86_64.img
-
-
-The numbers may be slightly different. Copy these names to your clipboard or write them down.
-
-3. Next, create a file named `/boot/grub/menu.lst` using your preferred text editor.  Paste in the following, adjusting the title, kernel, and initrd lines to reflect the actual file name you wrote down above:
-
-       timeout 5
-       title CentOS (3.10.0-229.11.1.el7.x86_64)
-       root (hd0)
-       kernel /boot/vmlinuz-3.10.0-229.11.1.el7.x86_64 root=/dev/xvda
-       initrd /boot/initramfs-3.10.0-229.11.1.el7.x86_64.img
-
-
-4. Save the changes by pressing **CTRL+X**, then **Y**, then **ENTER** to save and exit.
-
-5. Now, login to your Linode dashboard. Click `Linodes` then select your Linode from the list. Select the link to `Create a new Configuration Profile`.
-
-6. Give your profile a name, in this case we'll call it `Asterisk Kernel`.
-
-7. In the `Kernel` drop down, choose `pv-grub-x86_64`.
-
-8. Under `Block Device Assignment`, for `xvda`, select `CentOS 7`. For `xvdb`, select `swap`.
-
-9. Down below, make sure the chosen root device is `xvda`.
-
-10. Leave all other settings as they are, and click `save`.
-
-You should return to the configuration page and will have a new profile.
-
-11. Click the radio button next to `Asterisk Kernel` then click `reboot`.
-
-12. Once your Linode has rebooted, login via SSH and issue the following command:
-
-    uname -a
-
-You should see output similar to the following, indicating that you're running the native kernel:
-
-    Linux li1241-19 3.10.0-229.11.1.el7.x86_64 #1 SMP Thu Aug 6 01:06:18 UTC 2015 x86_64 x86_64 x86_64 GNU/Linux
-
-
 
 ###Build DAHDI
 
@@ -397,37 +337,37 @@ With the new Kernel in place, you're now ready to build DAHDI.
 
 1. Switch back to your build directory:
 
-    cd /home/username/build
+       cd /home/username/build
 
 2. Then download the latest DAHDI (version 2.10.2 at the time of this writing):
 
-    wget http://downloads.asterisk.org/pub/telephony/dahdi-linux-complete/dahdi-linux-complete-current.tar.gz
+       wget http://downloads.asterisk.org/pub/telephony/dahdi-linux-complete/dahdi-linux-complete-current.tar.gz
 
 3. Untar the file:
 
-    tar -zxvf dahdi-linux-complete-current.tar.gz
+       tar -zxvf dahdi-linux-complete-current.tar.gz
 
 4. Then switch to the new directory:
 
-    cd dahdi-linux-complete-2.10.2+2.10.2/
+       cd dahdi-linux-complete-2.10.2+2.10.2/
 
 
-{: .note}
->
->Your version may be different, so substitute `2.10.2` with the version that was extracted.
+    {: .note}
+    >
+    >Your version may be different, so substitute `2.10.2` with the version that was extracted.
 
 
 5. Build DAHDI with:
 
-    make
+       make
 
 6. Then install it by entering:
 
-    sudo make install
+       sudo make install
 
-Followed by:
+   Followed by:
 
-    sudo make config
+       sudo make config
 
 
 
@@ -440,19 +380,19 @@ We're now ready to install Asterisk 13, the current Long Term Support Release of
 
 1. Switch back to your build directory:
 
-    cd /home/username/build
+       cd /home/username/build
 
 2. Then download the latest version of Asterisk 13 using the command:
 
-    wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-13-current.tar.gz
+       wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-13-current.tar.gz
 
 3. Untar the file:
 
-    tar -zxvf asterisk-13-current.tar.gz
+       tar -zxvf asterisk-13-current.tar.gz
 
 4. Then switch to the directory (substitute `13.5.0` for the actual version number)
 
-    cd asterisk-13.5.0
+       cd asterisk-13.5.0
 
 
 ###Enable MP3 Support
@@ -461,11 +401,11 @@ If you want to be able to use MP3 files with asterisk for Music on Hold, you'll 
 
 1. Install subversion with:
 
-    sudo yum install svn
+       sudo yum install svn
 
 2. Then run:
 
-    contrib/scripts/get_mp3_source.sh
+       contrib/scripts/get_mp3_source.sh
 
 
 ###Configure and Build Asterisk
@@ -474,15 +414,15 @@ We're now ready to build Asterisk
 
 1. Run the `configure` script to prepare the Asterisk source code for compiling:
 
-    ./configure --libdir=/usr/lib64
+       ./configure --libdir=/usr/lib64
 
-Keep an eye out for any missing dependences. There shouldn't be any though, since we've installed all of the prerequisites we needed.
+   Keep an eye out for any missing dependences. There shouldn't be any though, since we've installed all of the prerequisites we needed.
 
 2. Start the build process with the command:
 
-    make menuselect
+       make menuselect
 
-After a short while, you should get a menu on screen that allows you to configure the features you want to build asterisk with.
+   After a short while, you should get a menu on screen that allows you to configure the features you want to build asterisk with.
 
 3. If you want to use the MP3 format with Music on Hold, you should select `Add-Ons`, then use the right arrow to move to the right-hand list. Navigate to `format_mp3` and press enter to select it.
 
@@ -492,21 +432,21 @@ After a short while, you should get a menu on screen that allows you to configur
 
 6. Finally, let's compile Asterisk! Run the command:
 
-    make
+       make
 
 ... Then grab yourself a cup of coffee. This could take a while. When it's done, you should get a message that says, "Asterisk Build Complete".
 
 7. Install Asterisk on the system by running:
 
-    sudo make install
+       sudo make install
 
 8. Install sample configuration files with:
 
-    sudo make samples
+       sudo make samples
 
 9. Configure Asterisk to start itself automatically on boot. This can be done by running the command:
 
-    sudo make config
+       sudo make config
 
 
 ###Try it Out
@@ -515,25 +455,25 @@ Congratulations! You now have a working Asterisk phone server. Let's fire up Ast
 
 1. Start Asterisk by typing:
 
-    sudo service asterisk start
+       sudo service asterisk start
 
 2. Once Asterisk is running you can connect to it by running the command:
 
-    asterisk -rvv
+       asterisk -rvv
 
-You should get a prompt with the current version number.
+   You should get a prompt with the current version number.
 
 3. Type the command:
 
-    core show help
+       core show help
 
-To see a list of possible commands.
+   To see a list of possible commands.
 
 4. To disconnect type:
 
-    exit
+       exit
 
-Once disconnected, Asterisk continues to run in the background.
+   Once disconnected, Asterisk continues to run in the background.
 
 ##Next Steps
 
