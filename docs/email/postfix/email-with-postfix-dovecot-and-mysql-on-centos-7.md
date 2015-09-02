@@ -241,8 +241,8 @@ This completes the configuration for Postfix.
         log_timestamp = "%Y-%m-%d %H:%M:%S "
         mail_location = maildir:/home/vmail/%d/%n/Maildir
 
-        ssl_cert_file = /etc/pki/dovecot/certs/dovecot.pem
-        ssl_key_file = /etc/pki/dovecot/private/dovecot.pem
+        ssl_cert = </etc/pki/dovecot/certs/dovecot.pem
+        ssl_key = </etc/pki/dovecot/private/dovecot.pem
 
         namespace {
             type = private
