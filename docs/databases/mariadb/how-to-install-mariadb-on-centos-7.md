@@ -20,7 +20,7 @@ external_resources:
 
 MariaDB is a fork of the popular cross-platform MySQL database management system and is considered a full [drop-in replacement](https://mariadb.com/kb/en/mariadb/mariadb-vs-mysql-features/) for MySQL. MariaDB was created by one of MySQL's originial developers in 2009 after MySQL was acquired by Oracle during the Sun Microsystems merger. Today MariaDB is maintained and developed by the [MariaDB Foundation](https://mariadb.org/en/foundation/) and community contributors with the intention of it remaining GNU GPL software.
 
-MariaDB replaced MySQL as the default database system in the CentOS 7 repositories. Though installing MySQL into CentOS 7 is not difficult (see our [MySQL CentOS 7 guide](https://linode.com/docs/databases/mysql/how-to-install-mysql-on-centos-7) for instructions), if you simply need a database system in CentOS 7, then MariaDB would be sufficient. That would be recommended for official support and a minimal chance of incompatibilities with other repository software. This guide will introduce how to install, configure and manage MariaDB on a Linode running CentOS 7.
+MariaDB replaced MySQL as the default database system in the CentOS 7 repositories. Though installing MySQL into CentOS 7 is not difficult (see our [MySQL CentOS 7 guide](https://linode.com/docs/databases/mysql/how-to-install-mysql-on-centos-7) for instructions), if you simply need a database MariaDB is recommended for official support and a minimal chance of incompatibilities with other repository software.
 
 {: .note}
 >
@@ -37,7 +37,7 @@ MariaDB replaced MySQL as the default database system in the CentOS 7 repositori
 
     The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-2.  Update your system.
+2.  Update your system:
 
         sudo yum update
 
@@ -46,12 +46,12 @@ MariaDB replaced MySQL as the default database system in the CentOS 7 repositori
 
     sudo yum install mariadb-server
 
-Enable MariaDB to start on boot and then start the server.
+Enable MariaDB to start on boot and then start the service:
 
     sudo systemctl enable mariadb
     sudo systemctl start mariadb
 
-MariaDB will bind to localhost (127.0.0.1) by default. For information on connecting to a remote database using SSH, see our [MySQL remote access guide](https://www.linode.com/docs/databases/mysql/securely-administer-mysql-with-an-ssh-tunnel) which also applies to MariaDB.
+MariaDB will bind to localhost (127.0.0.1) by default. For information on connecting to a remote database using SSH, see our [MySQL remote access guide](https://www.linode.com/docs/databases/mysql/securely-administer-mysql-with-an-ssh-tunnel), which also applies to MariaDB.
 
 {: .note}
 >
@@ -59,7 +59,7 @@ MariaDB will bind to localhost (127.0.0.1) by default. For information on connec
 
 ## Harden MariaDB Server
 
-1.  Run the `mysql_secure_installation` script to address several security concerns in a default MariaDB installation.
+1.  Run the `mysql_secure_installation` script to address several security concerns in a default MariaDB installation:
 
         sudo mysql_secure_installation
 
@@ -67,7 +67,7 @@ You will be given the choice to change the MariaDB root password, remove anonymo
 
 ## Using MariaDB
 
-The standard tool for interacting with MariaDB is the `mariadb` client which installs with the `mariadb-server` package. The MariaDB client is used through a terminal.
+The standard tool for interacting with MariaDB is the `mariadb` client, which installs with the `mariadb-server` package. The MariaDB client is used through a terminal.
 
 ###Root Login
 
@@ -115,7 +115,7 @@ The standard tool for interacting with MariaDB is the `mariadb` client which ins
         MariaDB [(none)]>
 
 ### Create a New MariaDB User and Database
-1. In the example below, `testdb` is the name of the database, `testuser` is the user, and `password` is the user's password.
+1. In the example below, `testdb` is the name of the database, `testuser` is the user, and `password` is the user's password:
 
         create database testdb;
         create user 'testuser'@localhost identified by 'password';
@@ -126,17 +126,17 @@ The standard tool for interacting with MariaDB is the `mariadb` client which ins
         create database testdb;
         grant all on testdb.* to 'testuser' identified by 'password';
         
-2.  Then exit MariaDB.
+2.  Then exit MariaDB:
     
         exit
 
 ### Create a Sample Table
 
-1.  Log back in as `testuser`.
+1.  Log back in as `testuser`:
 
         mysql -u testuser -p
 
-2.  Create a sample table called `customers`. This creates a table with a customer ID field of the type `INT` for integer (auto-incremented for new records, used as the primary key), as well as two fields for storing the customer's name.
+2.  Create a sample table called `customers`. This creates a table with a customer ID field of the type `INT` for integer (auto-incremented for new records, used as the primary key), as well as two fields for storing the customer's name:
 
         use testdb;
         create table customers (customer_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, first_name TEXT, last_name TEXT);
@@ -145,7 +145,7 @@ The standard tool for interacting with MariaDB is the `mariadb` client which ins
 
         show tables;
 
-3.  Then exit MariaDB.
+3.  Then exit MariaDB:
     
         exit
 
@@ -153,37 +153,37 @@ The standard tool for interacting with MariaDB is the `mariadb` client which ins
 
 If you forget your root MariaDB password, it can be reset.
 
-1.  Stop the current MariaDB server instance, then restart it with an option to not ask for a password.
+1.  Stop the current MariaDB server instance, then restart it with an option to not ask for a password:
 
         sudo systemctl stop mariadb
         sudo mysqld_safe --skip-grant-tables &
 
-2.  Reconnect to the MariaDB server with the MariaDB root account.
+2.  Reconnect to the MariaDB server with the MariaDB root account:
 
         mysql -u root
 
 
-3.  Use the following commands to reset root's password. Replace `password` with a strong password.
+3.  Use the following commands to reset root's password. Replace `password` with a strong password:
 
         use mysql;
         update user SET PASSWORD=PASSWORD("password") WHERE USER='root';
         flush privileges;
         exit
 
-4.  Then restart MariaDB.
+4.  Then restart MariaDB:
 
         sudo systemctl start mariadb
 
 
 ## Tune MariaDB
 
-CentOS offers MariaDB 5.5 which isn't supported by [MySQL Tuner](http://mysqltuner.com/) but [MySQL Tuning Primer](http://www.day32.com/MySQL/) can be used to optimize your MariaDB server. Ideally, the MariaDB instance should have been operating for at least 24 hours before running the tuner. The longer the instance has been running, the better advice MySQL Tuner will give.
+[MySQL Tuning Primer](http://www.day32.com/MySQL/) can be used to optimize your MariaDB server. Ideally, the MariaDB instance should have been operating for at least 24 hours before running the tuner. The longer the instance has been running, the better advice MySQL Tuner will give.
 
-1.  The script needs the [bc language](https://www.gnu.org/software/bc/) installed.
+1.  The script needs the [bc language](https://www.gnu.org/software/bc/) installed:
 
         sudo yum install bc
 
-2.  Download MySQL Tuner to your home directory and make it executable.
+2.  Download MySQL Tuner to your home directory and make it executable:
 
         wget http://www.day32.com/MySQL/tuning-primer.sh
         chmod u+x tuning-primer.sh
@@ -192,6 +192,6 @@ CentOS offers MariaDB 5.5 which isn't supported by [MySQL Tuner](http://mysqltun
 
         sudo ./tuning-primer.sh
 
-    You will be asked if you would like to run the script against a different MySQL socket than `/var/lib/mysql/mysql.sock`. Select `N`. You will then be asked if you have your login. Enter `y`, then the actual credentials when asked.
+    You will be asked if you would like to run the script against a different MySQL socket than `/var/lib/mysql/mysql.sock`. Select `N`. You will then be asked if you have your login. Enter `y`, then the credentials when asked.
 
 MySQL Tuning Primer is an excellent starting point to optimize a MariaDB server but it would be prudent to perform additional research for configurations tailored to the application(s) utilizing MariaDB on your Linode.
