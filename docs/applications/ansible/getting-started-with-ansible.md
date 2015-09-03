@@ -5,8 +5,8 @@ author:
 description: 'A quick getting started guide to Ansible, with a demo of how to provision a basic web server with Ansible'
 keywords: 'ansible,ansible configuration,provisioning,infrastructure,automation,configuration,configuration change management,server automation'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-published: 'Thursday, August 6th, 2015'
-modified: Thursday, August 6th, 2015
+published: ''
+modified: Thursday, September 3rd, 2015
 modified_by:
     name: Linode
 title: 'Getting Started with Ansible'
@@ -21,7 +21,7 @@ external_resources:
 
 ## About Ansible
 
-Consider the drudge work of administering a server fleet:  keeping them all updated, pushing changes out to them, copying files, etc. Things can get complicated and time consuming very quickly, but it doesn't have to be that way.
+Consider the monotany of administering a server fleet; keeping them all updated, pushing changes out to them, copying files, etc. Things can get complicated and time consuming very quickly, but it doesn't have to be that way.
 
 *[Ansible](http://www.ansible.com/home)* is a helpful tool that allows you to create groups of machines, describe how those machines should be configured or what actions should be taken on them, and issue all of these commands from a central location. It uses SSH, so nothing needs to be installed on the machines you are targeting. Ansible only runs on your main control machine, which can even be your laptop! It is a simple solution to a complicated problem.
 
@@ -36,7 +36,7 @@ This guide will introduce you to the basics of Ansible. By the end of this guide
 
 Ansible only needs to be installed on the *control machine*, or the machine from which you will be running commands. This will likely be your laptop or other computer from which you frequently access your server, or it may be a centralized server in more complicated setups.
 
-Make sure that you have Python 2.x available on the control machine (Ansible is not compatible with Python 3, nor can you use Windows as the control machine). You can easily [build Ansible from source](https://github.com/ansible/ansible), or install the latest stable packages using the proper command below.
+Make sure that you have Python 2.x available on the control machine. Ansible is not compatible with Python 3, nor can you use Windows as the control machine. You can [build Ansible from source](https://github.com/ansible/ansible), or install the latest stable packages using the proper command below.
 
 - Mac OS X:
 
@@ -72,12 +72,12 @@ By default Ansible will use the same username as your current machine's username
 {: .note}
 > If you don't want to use SSH keys, you can add the `--ask-pass` switch.
 
-In order to try an Ansible command without any additional setup, we'll add a few extra arguments for now. Format a test command like the following:
+To try an Ansible command without any additional setup, we'll add a few extra arguments for now. Format a test command like the following:
 
     ansible all -i myserver.com, -m ping
 
 {: .note}
-> The extra bits are the `all -i` and the comma after your server name. This is temporary, and is only there to tell Ansible to try connecting directly to the server without an inventory file, which we'll learn about later.
+> The extra directives are the `all -i` and the comma after your server name. This is temporary, and is only there to tell Ansible to try connecting directly to the server without an inventory file, which we'll learn about later.
 
 If you are successful you should see output similar to the following:
 
@@ -91,43 +91,45 @@ You were just able to get a valid connection to your server via Ansible!
 
 ## Inventory File
 
-You executed an Ansible command against your server, but it would be a cumbersome to have to type the host's address every single time, and what if you had several servers you wanted to apply the same configuration to? This is where Ansible's [Inventory file](http://docs.ansible.com/ansible/intro_inventory.html) comes into play.
+You executed an Ansible command against one client, but it would be cumbersome to have to type the host's address every single time, and what if you had several servers you wanted to apply the same configuration to? This is where Ansible's [inventory file](http://docs.ansible.com/ansible/intro_inventory.html) comes into play.
 
-By default, the inventory file is expected to be `/etc/ansible/hosts`. Create that path and file if it does not already exist. 
+1.  By default, the inventory file is expected to be `/etc/ansible/hosts`. Create that path and file if it does not already exist. 
 
-If you are running OS X, you may want to create your own Ansible directory elsewhere and then set the path in an Ansible configuration file, as in the following:
 
-    mkdir ~/Path/To/ansible
-    touch ~/Path/To/ansible/hosts
-    touch ~/.ansible.cfg
+    {: .note }
+    > If you are running OS X, you may want to create your own Ansible directory elsewhere and then set the path in an Ansible configuration file:
+    >
+    >     mkdir ~/Path/To/ansible
+    >     touch ~/Path/To/ansible/hosts
+    >     touch ~/.ansible.cfg
+    >
+    >Open `~/.ansible.cfg` file and add the following lines:
+    >
+    > {: .file-excerpt}
+    > ~/.ansible.cfg
+    > :   ~~~ ini
+    >     [defaults] 
+    >     inventory = ~/Path/To/ansible/hosts 
+    >     ~~~
 
-Open `~/.ansible.cfg` file and add the following lines:
+2.  Add an entry to your hosts file, pointing to a server that you connected to in the previous section.  You can include multiple servers in this file, using either domains or IP addresses, and can even group them:
 
-{: .file-excerpt}
-~/.ansible.cfg
-:   ~~~ ini
-    [defaults] 
-    inventory = ~/Path/To/ansible/hosts 
-    ~~~
+    {: .file-excerpt}
+    ~/Path/To/ansible/hosts
+    :   ~~~ ini
+        mainserver.com
+        myserver.net:2222
 
-Add an entry to your hosts file, pointing to a server that you connected to in the previous section.  You can include multiple servers in this file, using either domains or IP addresses, and can even group them. Example:
+        [mailservers]
+        mail1.mainserver.com
+        mail2.mainserver.com 
+        ~~~
 
-{: .file-excerpt}
-~/Path/To/ansible/hosts
-:   ~~~ ini
-    mainserver.com
-    myserver.net:2222
+3.  Use the `all` directive to ping all servers in your `hosts` file via Ansible:
 
-    [mailservers]
-    mail1.mainserver.com
-    mail2.mainserver.com 
-    ~~~
+        ansible all -m ping
 
-Add an entry, save, and run the following command to try and ping your server via Ansible:
-
-    ansible all -m ping
-
-You should receive the same output as before. Note that this time you used `all` in place of your server name. This will run the command on all entries in your hosts Inventory file. You could likewise have substituted `mailservers` from the example file, and it would run just against those servers.
+You should receive the same output as before, for each server in your `hosts` file. Note that instead of `all`, you could have substituted `mailservers` from the example file, and it would run just against those servers.
 
 You can heavily customize the Inventory file, so [check out the docs for it](http://docs.ansible.com/ansible/intro_inventory.html) if you're interested.
 
@@ -182,11 +184,11 @@ Every task should have a name, which is logged and can help you track progress. 
 
 ### Running Playbooks
 
-Executing a playbook is even easier than running ad-hoc commands like we did earlier! Assuming you are in the same directory as a playbook file, you run the following command:
+Executing a playbook is even easier than running ad-hoc commands like we did earlier. Assuming you are in the same directory as a playbook file, you run the following command:
 
     ansible-playbook myplaybook.yml
 
-Done! If you want to see what hosts this playbook will affect without having to open up the YAML file, you can run:
+If you want to see what hosts this playbook will affect without having to open up the YAML file, you can run:
 
     ansible-playbook myplaybook.yml --list-hosts
 
@@ -196,7 +198,7 @@ Ansible ships with a large collection of modules that you can run as tasks or vi
 
     ansible-doc -l
 
-A few common core modules you might be interested in learning off the bat include:
+A few common core modules you might be interested in learning fist include:
 
 * [command - Executes a command on a remote node](http://docs.ansible.com/ansible/command_module.html)
 * [script - Runs a local script on a remote node after transferring it](http://docs.ansible.com/ansible/script_module.html)
@@ -367,14 +369,14 @@ Finally, let's get a very basic server set up with Apache and PHP, and a test My
          mysql -u root -p
          show databases;
 
-    You can even create a sample PHP page and place it in `/var/www/html` to test that PHP is active on the server. Ansible has done as we instructed it to, installing the appropriate packages and setting things up as we want. Way to go Ansible!
+    You can even create a sample PHP page and place it in `/var/www/html` to test that PHP is active on the server. Ansible has done as we instructed it to, installing the appropriate packages and setting things up as we want.
 
 
 ## Exploring Further
 
 This is just the start of learning Ansible, and as you continue to learn and explore you will find it a truly powerful and flexible tool. Take a look at some of the example Ansible playbooks provided by the company itself.
 
-Also below are a few topics to explore that become important as you create playbooks of any complexity, and that you will see frequently in others' playbooks.
+Below are a few topics to explore that become important as you create playbooks of any complexity, and that you will see frequently in others' playbooks.
 
 * [Ansible Example Playbooks (GitHub)](https://github.com/ansible/ansible-examples)
   * [WordPress + nginx + PHP-FPM](https://github.com/ansible/ansible-examples/tree/master/wordpress-nginx)
