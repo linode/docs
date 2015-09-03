@@ -201,11 +201,11 @@ First, lets create a directory that we can work in while we compile software. Ma
 
 1. Run this command, substituting in your username, to create a directory that we can work in:
 
-       mkdir /home/username/build
+       mkdir ~/build
 
 2. Switch to that directory:
 
-       cd /home/username/build
+       cd ~/build
 
 3. Use wget to fetch the pj sip fdriver source code:
 
@@ -239,7 +239,7 @@ First, lets create a directory that we can work in while we compile software. Ma
 
 9. Finally, check for proper installation of the libraries with:
 
-      sudo ldconfig -p | grep pj
+       sudo ldconfig -p | grep pj
 
    You should get output that looks like:
 
@@ -300,7 +300,7 @@ With the new Kernel in place, you're now ready to build DAHDI.
 
 1. Switch back to your build directory:
 
-       cd /home/username/build
+       cd ~/build
 
 2. Then download the latest DAHDI (version 2.10.2 at the time of this writing):
 
@@ -343,7 +343,7 @@ We're now ready to install Asterisk 13, the current Long Term Support Release of
 
 1. Switch back to your build directory:
 
-       cd /home/username/build
+       cd ~/build
 
 2. Then download the latest version of Asterisk 13 using the command:
 
