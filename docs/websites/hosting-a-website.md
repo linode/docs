@@ -115,27 +115,27 @@ Now that Apache is optimized for performance, it's time to starting hosting one 
 
 6.  Now it's time to create a configuration for your virtual host. We've created some basic settings to get your started. Copy and paste the settings shown below in to the virtual host file you just created. Replace `example.com` with your domain name.
 
-{: .file-excerpt}
-/etc/apache2/sites-available/example.com.conf
-:   ~~~ apache
-    # domain: example.com
-    # public: /var/www/example.com/public_html/
+    {: .file-excerpt}
+    /etc/apache2/sites-available/example.com.conf
+    :   ~~~ apache
+        # domain: example.com
+        # public: /var/www/example.com/public_html/
 
-    <VirtualHost *:80>
-      # Admin email, Server Name (domain name), and any aliases
-      ServerAdmin webmaster@example.com
-      ServerName  www.example.com
-      ServerAlias example.com
+        <VirtualHost *:80>
+          # Admin email, Server Name (domain name), and any aliases
+          ServerAdmin webmaster@example.com
+          ServerName  www.example.com
+          ServerAlias example.com
 
-      # Index file and Document Root (where the public files are located)
-      DirectoryIndex index.html index.php
-      DocumentRoot /var/www/example.com/public_html
-      # Log file locations
-      LogLevel warn
-      ErrorLog  /var/www/example.com/log/error.log
-      CustomLog /var/www/example.com/log/access.log combined
-    </VirtualHost>
-    ~~~
+          # Index file and Document Root (where the public files are located)
+          DirectoryIndex index.html index.php
+          DocumentRoot /var/www/example.com/public_html
+          # Log file locations
+          LogLevel warn
+          ErrorLog  /var/www/example.com/log/error.log
+          CustomLog /var/www/example.com/log/access.log combined
+        </VirtualHost>
+        ~~~
 
 7.  Save the changes to the virtual host configuration file by pressing `Control + x` and then pressing `y`. Press `Enter` to confirm.
 
