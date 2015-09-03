@@ -98,7 +98,7 @@ To see Bazaar's log of your commit issue the `bzr log` command. The output will 
     $ bzr log
     ------------------------------------------------------------
     revno: 1
-    committer: squire <squire@example.com>
+    committer: username <username@example.com>
     branch nick: caper
     timestamp: Fri 2010-01-08 21:45:31 +0000
     message:
@@ -120,11 +120,11 @@ This creates a file named `new-feature.r20.patch` that you can distribute to you
 
 Bazaar also includes the ability to use more "centralized" workflows, which allows contributors to a project to have a single shared repository that the entire team can use to publish changes. Shared repositories allow for a more fluid method of sharing changes between developers making it feasible for team members to always have the most up to date iteration of a document, without impacting individual workflows. To create a shared remote Bazaar project issue a command in the following form:
 
-    bzr init-repo --no-trees sftp://squire@example.com/srv/bzr/morris-shared
+    bzr init-repo --no-trees sftp://username@example.com/srv/bzr/morris-shared
 
-In this command, the `init-repo` command with the `--no-trees` option, creates a new empty repository on the remote machine without a working copy. In this example `squire` would be replaced with your username, `example.com` would correspond with the domain name of your server, and `/svn/bzr/morris-shared` would be the path for the new repository on the remote server. To publish changes to the remote repository issue the following command:
+In this command, the `init-repo` command with the `--no-trees` option, creates a new empty repository on the remote machine without a working copy. In this example `username` would be replaced with your username, `example.com` would correspond with the domain name of your server, and `/svn/bzr/morris-shared` would be the path for the new repository on the remote server. To publish changes to the remote repository issue the following command:
 
-    bzr push sftp://squire@example.com/srv/bzr/morris-shared
+    bzr push sftp://username@example.com/srv/bzr/morris-shared
 
 The `push` command sends local updates to the remote Bazaar project. If the remote project *does* have a working copy (i.e. it was created without the `--no-trees` option.), `push` will not update the working copy of the receiving project. Bazaar uses the `sftp` protocol, which is included by default with OpenSSH and is in turn active by default on all Linode systems. If your repository does not have a default remote, Bazaar will set the first location that you successfully push to as the default. Append the option `--remember` to `push` operations change the default remote location of your local repository.
 

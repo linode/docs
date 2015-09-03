@@ -542,9 +542,9 @@ Let's analyze what happens during a few requests:
 
 **Returns:** Nginx will use the FastCGI handler to execute the file located at `/srv/www/example.com/public_html/tasks.pl` and return the result.
 
-**Request:** `http://example.com/squire/roster.pl`
+**Request:** `http://example.com/username/roster.pl`
 
-**Returns:** Nginx will use the FastCGI handler to execute the file located at `/srv/www/example.com/public_html/squire/roster.pl` and return the result.
+**Returns:** Nginx will use the FastCGI handler to execute the file located at `/srv/www/example.com/public_html/username/roster.pl` and return the result.
 
 ## Best Practices
 

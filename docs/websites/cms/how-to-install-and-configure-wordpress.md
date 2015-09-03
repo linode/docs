@@ -10,7 +10,7 @@ modified: Tuesday, August 4th, 2015
 modified_by:
   name: Elle Krout
 published: 'Tuesday, July 27th, 2010'
-title: How to Install and Configure Wordpress
+title: How to Install and Configure WordPress
 external_resources:
 - '[WordPress.org](http://wordpress.org)'
 - '[WordPress Codex](http://codex.wordpress.org)'
@@ -34,7 +34,7 @@ WordPress is a popular dynamic blog-focused content management system. The softw
 
     The first will output your short hostname, the second your fully-qualified domain name (FQDN).
 
--  You have a configured web stack set up. This can be a [LAMP](/docs/websites/lamp/) or [LEMP](/docs/websites/lamp/) stack.
+-  You have a configured web stack set up. This can be a [LAMP](/docs/websites/lamp/) or [LEMP](/docs/websites/lemp/) stack.
 
 
 -   MySQL has a database set up for WordPress. If you do not have a database created:

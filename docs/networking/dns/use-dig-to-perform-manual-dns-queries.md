@@ -8,7 +8,7 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['linux-tools/common-commands/dig/']
 modified: Tuesday, May 17th, 2011
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Wednesday, October 13th, 2010'
 title: Use dig to Perform Manual DNS Queries
 ---
@@ -90,7 +90,7 @@ If you attempt to query a domain that doesn't exist, as is the case with `nonext
     ;nonextant.example.com. IN    A
 
     ;; AUTHORITY SECTION:
-    example.com. 10800  IN      SOA     ns1.linode.com. squire.example.com. 2010051349 14400 14400 1209600 86400
+    example.com. 10800  IN      SOA     ns1.linode.com. username.example.com. 2010051349 14400 14400 1209600 86400
 
     ;; Query time: 91 msec
     ;; SERVER: 192.168.1.1#53(192.168.1.1)
@@ -232,7 +232,7 @@ Specify a different type of DNS record by adding that record type (e.g. AAAA, MX
     ;_jabber._tcp.example.com.      IN      SRV
 
     ;; ANSWER SECTION:
-    _jabber._tcp.example.com. 300   IN      SRV     0 0 5269 lollipop.example.com
+    _jabber._tcp.example.com. 300   IN      SRV     0 0 5269 hostname.example.com
 
     ;; Query time: 53 msec
     ;; SERVER: 192.168.1.1#53(192.168.1.1)
@@ -268,7 +268,7 @@ You can combine the `+short` modifier with other dig commands to generate output
     A 107.92.2.7 from server ns2.linode.com in 94 ms.
 
     $ dig soa +short example.com
-    ns1.linode.com. squire.example.com. 2010051349 14400 14400 1209600 86400
+    ns1.linode.com. username.example.com. 2010051349 14400 14400 1209600 86400
 
     $ dig @ns2.linode.com ns +short example.com
     ns5.linode.com.

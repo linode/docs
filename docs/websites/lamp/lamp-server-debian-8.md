@@ -174,10 +174,10 @@ Next, you can create a database and grant your users permissions to use database
 
     Enter MySQL's root password when prompted.
 
-2.  Create a database and grant your users permissions on it. Change the database name (`lollipop`) and username (`foreman`). Change the password (`5t1ck`):
+2.  Create a database and grant your users permissions on it. Change the database name (`webdata`) and username (`username`). Change the password (`password`):
 
-        create database lollipop;
-        grant all on lollipop.* to 'foreman' identified by '5t1ck';
+        create database webdata;
+        grant all on webdata.* to 'username' identified by 'password';
 
 3.  Exit MySQL:
 

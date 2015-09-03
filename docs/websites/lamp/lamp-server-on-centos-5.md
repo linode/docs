@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 'Monday, October 19th, 2009'
 title: LAMP Server on CentOS 5
+external_resources:
+  - '[CentOS Linux Home Page](http://www.centos.org/)'
+  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)'
+  - '[MySQL Documentation](http://dev.mysql.com/doc/)'
+  - '[PHP Documentation](http://www.php.net/docs.php)'
 ---
 
 
@@ -20,8 +25,7 @@ This guide provides step-by-step instructions for installing a full-featured LAM
 
 In this guide, you will be instructed on setting up Apache, MySQL, and PHP. If you don't feel that you will need MySQL or PHP, please don't feel obligated to install them.
 
-Set the Hostname
-----------------
+## Set the Hostname
 
 Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
 
@@ -30,8 +34,7 @@ Before you begin installing and configuring the components described in this gui
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-Install and Configure the Apache Web Server
--------------------------------------------
+## Install and Configure the Apache Web Server
 
 The Apache Web Server is a very popular choice for serving web pages. While many alternatives have appeared in the last few years, Apache remains a powerful option that we recommend for most uses.
 
@@ -107,8 +110,7 @@ Anytime you change an option in your `vhost.conf` file, or any other Apache conf
 
     /etc/init.d/httpd reload 
 
-Install and Configure MySQL Database Server
--------------------------------------------
+## Install and Configure MySQL Database Server
 
 MySQL is a relational database management system (RDBMS) and is a popular component in contemporary web development tool-chains. It is used to store data for many popular applications, including Wordpress and Drupal.
 
@@ -155,8 +157,7 @@ With that completed you've successfully configured MySQL and you may now pass th
 
 With Apache and MySQL installed you are now ready to move on to installing PHP to provide scripting support for your web pages.
 
-Installing and Configuring PHP
-------------------------------
+## Installing and Configuring PHP
 
 PHP makes it possible to produce dynamic and interactive pages using your own scripts and popular web development frameworks. Furthermore, many popular web applications like WordPress are written in PHP. If you want to be able to develop your websites using PHP, you must first install it.
 
@@ -183,16 +184,3 @@ Make sure that the following values are set, and relevant lines are uncommented 
 If you need support for MySQL in PHP, then you must install the php5-mysql package with the following command:
 
     yum install php-mysql
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [CentOS Linux Home Page](http://www.centos.org/)
-- [Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)
-- [MySQL Documentation](http://dev.mysql.com/doc/)
-- [PHP Documentation](http://www.php.net/docs.php)
-
-
-

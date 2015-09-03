@@ -176,10 +176,10 @@ MySQL database engine may be the leading open source relational database engine,
 
     You will be prompted to enter the MySQL root user password.
 
-3.  Create a database and grant your users permissions on it. Change the database name (`lollipop`) and username (`foreman`). Change the password (`5t1ck`):
+3.  Create a database and grant your users permissions on it. Change the database name (`webdata`) and username (`username`). Change the password (`password`):
 
-        create database lollipop;
-        grant all on lollipop.* to 'foreman' identified by '5t1ck';
+        create database webdata;
+        grant all on webdata.* to 'username' identified by 'password';
 
 4.  Exit MySQL:
 

@@ -12,6 +12,11 @@ modified_by:
   name: Alex Fornuto
 published: 'Friday, April 11th, 2014'
 title: LAMP Server on Fedora 20
+external_resources:
+  - '[Fedora Home Page](http://www.fedoraproject.org/)'
+  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)'
+  - '[MySQL Documentation](http://dev.mysql.com/doc/)'
+  - '[PHP Documentation](http://www.php.net/docs.php)'
 ---
 
 This guide provides step-by-step instructions for installing a full-featured LAMP stack on a Fedora 20 system. In this guide, you will be instructed on setting up Apache, MySQL, and PHP. If you don't feel that you will need MySQL or PHP, please don't feel obligated to install them.
@@ -22,8 +27,7 @@ This guide provides step-by-step instructions for installing a full-featured LAM
 
 Throughout this guide we will offer several suggested values for specific configuration settings. Some of these values will be set by default. These settings are shown in the guide as a reference, in the event that you change these settings to suit your needs and then need to change them back.
 
-Set the Hostname
-----------------
+## Set the Hostname
 
 Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_setting-the-hostname).
 
@@ -34,8 +38,7 @@ Issue the following commands to make sure it is set properly:
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-Install and Configure the Apache Web Server
--------------------------------------------
+## Install and Configure the Apache Web Server
 
 The Apache Web Server is a very popular choice for serving web pages. While many alternatives have appeared in the last few years, Apache remains a powerful option that we recommend for most uses.
 
@@ -127,8 +130,7 @@ Any time you change an option in your `vhost.conf` file, or any other Apache con
 
     systemctl reload httpd.service
 
-Install and Configure MySQL Database Server
--------------------------------------------
+## Install and Configure MySQL Database Server
 
 MySQL is a relational database management system (RDBMS) and is a popular component in contemporary web development tool chains. It is used to store data for many popular applications, including WordPress and Drupal.
 
@@ -175,8 +177,7 @@ With that completed, you've successfully configured MySQL and you may now pass t
 
 With Apache and MySQL installed you are now ready to move on to installing PHP to provide scripting support for your web pages.
 
-Installing and Configuring PHP
-------------------------------
+## Installing and Configuring PHP
 
 PHP makes it possible to produce dynamic and interactive pages using your own scripts and popular web development frameworks. Furthermore, many popular web applications like WordPress are written in PHP. If you want to be able to develop your websites using PHP, you must first install it.
 
@@ -223,16 +224,3 @@ You will need to restart Apache before php scripts will work:
     systemctl restart httpd.service
 
 When you view this page in your browser, you should be presented with detailed PHP configuration information.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Fedora Home Page](http://www.fedoraproject.org/)
-- [Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)
-- [MySQL Documentation](http://dev.mysql.com/doc/)
-- [PHP Documentation](http://www.php.net/docs.php)
-
-
-

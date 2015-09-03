@@ -190,9 +190,9 @@ In this section, you'll configure Apache to listen on an alternate port so it ca
 
     Here, the rewrite rule (`^(.*)$`) captures the entire request string and appends it (`$1`) to the path on the new server (`/teams/~example/`). Here's how this would play out:
 
-    **Request:** `http://example.com/images/lollipop_man.png`
+    **Request:** `http://example.com/images/images.png`
 
-    **Response:** `http://192.168.3.105/teams/~example/images/lollipop_man.png`
+    **Response:** `http://192.168.3.105/teams/~example/images/images.png`
 
     **Request:** `http://example.com/wiki/PracticeSchedule/`
 

@@ -17,14 +17,14 @@
 # name of the wiki
 wikiname: example wiki
 # contact email for wiki
-adminemail: squire@example.com
+adminemail: username@example.com
 # users who are banned from the wiki
 banned_users: []
 # users who are wiki admins (openid or usernames)
 adminuser:
   - 
 # where the source of the wiki is located
-srcdir: /home/squire/wiki/source
+srcdir: /home/username/wiki/source
 # where to build the wiki
 destdir: /srv/www/example.com/public_html/
 # base url to the wiki
@@ -53,9 +53,9 @@ disable_plugins:
   - anonk
   - cammelcase 
 # additional directory to search for template files
-templatedir: /home/squire/wiki/templates/
+templatedir: /home/username/wiki/templates/
 # base wiki source location
-underlaydir: /home/squire/wiki/basewiki/
+underlaydir: /home/username/wiki/basewiki/
 # display verbose messages?
 verbose: 1
 # create output files named page/index.html?
@@ -89,9 +89,9 @@ hardlink: 0
 # force ikiwiki to use a particular umask
 umask: 18
 # group for wrappers to run in
-wrappergroup: squire
+wrappergroup: username
 # extra library and plugin directory
-libdir: /home/squire/wiki/source/.ikiwiki/
+libdir: /home/username/wiki/source/.ikiwiki/
 # environment variables
 ENV: {}
 # regexp of normally excluded files to include

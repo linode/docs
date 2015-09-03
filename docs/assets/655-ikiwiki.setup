@@ -14,7 +14,7 @@ use IkiWiki::Setup::Standard {
 	wikiname => 'example.com Wiki',
 	# where the source of the wiki is located
 	allow_symlinks_before_srcdir => 1,
-	srcdir => '/home/squire/wiki/source',
+	srcdir => '/home/username/wiki/source',
 	# where to build the wiki
 	destdir => '/srv/www/example.com/public_html',
 	# base url to the wiki
@@ -25,7 +25,7 @@ use IkiWiki::Setup::Standard {
    ## users from the wiki, by adding them to the `banned_users` array.
 
 	# contact email for wiki
-	adminemail => 'squire@example.com',
+	adminemail => 'username@example.com',
 	# users who are wiki admins
 	adminuser => ['http://www.example.com/'],
 	# users who are banned from the wiki

@@ -98,10 +98,10 @@ Apache Configuration File
 :   ~~~ apache
     Order Deny,Allow
     Deny from all
-    Allow from lollipop.example.com
+    Allow from hostname.example.com
     ~~~
 
-Apache only allows requests from the machine with valid rDNS of `lollipop.example.com` to access the resource in this configuration.
+Apache only allows requests from the machine with valid rDNS of `hostname.example.com` to access the resource in this configuration.
 
 Secondly, it's possible to build access rules around environment variables in the HTTP session. This allows you to allow and deny access to resources on the basis of variables such as browser (user agent) and referrer. Let us take the following example:
 

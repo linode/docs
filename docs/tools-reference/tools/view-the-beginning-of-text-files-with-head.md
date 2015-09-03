@@ -46,7 +46,7 @@ If a file is smaller than the specified number of lines, `head` will print the e
 
     $ head * 
     ==> example <==
-    Lollipop
+    lollipop
     The Joke
     Jockey to the Fair
     Simon's Fancy

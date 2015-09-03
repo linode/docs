@@ -101,8 +101,8 @@ You may use a utility like htop \</using-linux/administration-basics\#monitor\_p
 or top\` to view a real time list of process and their consumption of system resources. You may also use the `ps` command to view processes that are currently running and their PIDs.
 
     $ ps aux | grep "emacs" 
-    squire  3896  0.0  2.2  56600 44468 ?        Ss   Sep30   4:29 emacs
-    squire 22843  0.0  0.0   3900   840 pts/11   S+   08:49   0:00 grep emacs
+    username  3896  0.0  2.2  56600 44468 ?        Ss   Sep30   4:29 emacs
+    username 22843  0.0  0.0   3900   840 pts/11   S+   08:49   0:00 grep emacs
 
 This command filters the list of all processes that are currently running for the string `emacs` using [grep](/docs/tools-reference/search-and-filter-text-with-grep). The number listed in the second column is the PID, which is `3896` in the case of the `emacs` process. The `grep` process will always match itself for a simple search, as in the second result. To view a hierarchical tree of all running processes, issue the following command:
 

@@ -97,7 +97,7 @@ Apache Virtual Host Configuration
     <VirtualHost *:80>
        ServerName example.com
        ServerAlias www.example.com
-       ServerAdmin squire@example.com
+       ServerAdmin username@example.com
 
        DocumentRoot /srv/www/example.com/public_html
 
