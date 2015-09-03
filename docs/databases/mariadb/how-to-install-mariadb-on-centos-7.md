@@ -141,6 +141,10 @@ The standard tool for interacting with MariaDB is the `mariadb` client which ins
         use testdb;
         create table customers (customer_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, first_name TEXT, last_name TEXT);
 
+3.  View the new table:
+
+        show tables;
+
 3.  Then exit MariaDB.
     
         exit
@@ -177,7 +181,7 @@ CentOS offers MariaDB 5.5 which isn't supported by [MySQL Tuner](http://mysqltun
 
 1.  The script needs the [bc language](https://www.gnu.org/software/bc/) installed.
 
-    suo yum install bc
+        sudo yum install bc
 
 2.  Download MySQL Tuner to your home directory and make it executable.
 
