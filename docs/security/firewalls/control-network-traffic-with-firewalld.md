@@ -1,141 +1,132 @@
 ---
 author:
-  name: Florent Houbart
-  email: --
+    name: Linode Community
+    email: docs@linode.com
 description: 'Securing CentOS with FirewallD'
-keywords: 'firewall,firewalld,security,firewall,acl,access control'
+keywords: 'Linux,Linode,cloud,firewall,firewalld,Fedora,CentOS,iptables,security'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 published: 'Monday, July 13, 2015'
-modified: Monday, July 13, 2015
+modified: Wednesday, September 2nd, 2015
 modified_by:
-  name: James Stewart
-title: Control Network Traffic With FirewallD
+    name: Linode
+title: Introduction to FirewallD
 contributor:
     name: Florent Houbart
+external_resources:
+ - '[FirewallD Official Site](http://www.firewalld.org/)'
+ - '[RHEL 7 Security Guide: Introduction to FirewallD](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Security_Guide/sec-Using_Firewalls.html#sec-Introduction_to_firewalld)'
+ - '[Fedora Wiki: FirewallD](https://fedoraproject.org/wiki/FirewallD)'
 ---
 
-Starting with CentOS7, iptables is replaced with **Firewalld**. That may be confusing when used to iptables service, especially since iptables commands are still available. Firewalld is, however, easier to configure for most use cases. This guide will introduce you to firewalld notions of zone and services, and show you how to configure it.
+[FirewallD](http://www.firewalld.org/) is frontend controller for iptables used to implement persistent network traffic rules. It provides command line and graphical interfaces and is available in the repositories of most Linux distributions. Working with FirewallD has two main differences compared to directly controlling iptables:
+
+1.  FirewallD uses *zones* and *services* instead of chain and rules.
+2.  It manages rulesets dynamically, allowing updates without breaking existing sessions and connections.
+
+{: .note}
+>
+>FirewallD is a wrapper for iptables to allow easier management of iptables rules--it is **not** an iptables replacement. While iptables commands are still available to FirewallD, it's recommended to use only FirewallD commands with FirewallD.
+
+ This guide will introduce you to FirewallD, its notions of zones and services, and show you some basic configuration steps.
+
+# Installing and Managing FirewallD
+
+FirewallD is included by default with CentOS 7 and Fedora 20+ but it's inactive. To start the service and enable it on boot:
+
+    sudo systemctl start firewalld
+    sudo systemctl enable firewalld
 
 
-# About firewalld
+To stop and disable the FirewallD service:
 
-firewalld deamon is used in place of the well-known iptables service. It provides a command line interface (**firewall-cmd**) to manage configuration, and translates it in iptables commands to netfilter kernel module. It has two main differences with plain old iptables:
+    sudo systemctl stop firewalld
+    sudo systemctl disable firewalld
 
-1. It works with zone and services instead of chain and rules.
-2. It manage the ruleset dynamically, allowing updates without breaking existing sessions and connections
+{: .note}
+>
+>While available in the repositories of other Linux distributions, FirewallD was created primarily for use with Red Hat Enterprise Linux and is most compatible with the Fedora Linux family.
 
+Check the firewall status. The output should say either `running` or `not running`.
 
-Iptables commands are used by firewalld and are still available, like `iptables -L`. Don’t update the rules with them, you may mess up everything !
+    sudo firewall-cmd --state
 
+To view the status of the FirewallD daemon:
 
-Before going into detail, let’s see how easy it is to manage firewalld rules:
+    sudo systemctl status firewalld
 
-    # Allow FTP traffic to public zone.
-    # Firewalld will manage automagically connection tracking
-    firewall-cmd --zone=public --add-service=ftp
-    # Prevent SSH traffic in public zone
-    firewall-cmd --zone=public --remove-service=ssh
+Example output:
 
+~~~
+firewalld.service - firewalld - dynamic firewall daemon
+   Loaded: loaded (/usr/lib/systemd/system/firewalld.service; disabled)
+   Active: active (running) since Wed 2015-09-02 18:03:22 UTC; 1min 12s ago
+ Main PID: 11954 (firewalld)
+   CGroup: /system.slice/firewalld.service
+           └─11954 /usr/bin/python -Es /usr/sbin/firewalld --nofork --nopid
+~~~
 
+To reload a FirewallD configuration:
 
-# Installation
+    sudo firewall-cmd --reload
 
-firewalld is installed by default in CentOS7. If not, you can install it with a single yum command:
+# Configuring FirewallD
 
-    yum install firewalld
-
-
-# Starting and stopping firewalld
-
-To start and stop firewalld, use `systemctl` commands:
-
-    # Start firewalld
-    systemctl start firewalld
-    # Stop firewalld
-    systemctl stop firewalld
-
-
-Use `firewall-cmd` command to get status of the firewall. It returns 0 if it is running, any other value if not.
-
-    firewall-cmd --state
-    running
-    systemctl stop firewalld  # stop firwalld
-    firewall-cmd --state
-    not running
-
-
-
-
-# Firewalld configuration
-
-## Runtime and permanent configuration
-
-Firewalld use 2 configuration sets: *runtime* and *permanent*. Changes on runtime configuration are not persisted on firewalld restart. Changes on permanent configuration are not applied to live configuration. By default, firewall-cmd commands apply on runtime configuration. Use the *--permanent* flag to firewall-cmd command to update permanent configuration.
-
-To add an active and persistant rule, you can use two methods:
-
-1. Add the rule both to runtime and permanent set. Example:
-
-        firewall-cmd --zone=public --add-service=http --permanent
-        firewall-cmd --zone=public --add-service=http
-
-2. Add the rule to permanent set and reload configuration
-
-        firewall-cmd --zone=public --add-service=http --permanent
-        firewall-cmd --reload
-
-Note that reloading configuration does not break any live session or connection.
-
-
-## Firewalld configuration files
-
-Firewalld is configured with XML files. Except for very specific configuration, you won’t have to deal with them but use **firewall-cmd** commands.
+Firewalld is configured with XML files. Except for very specific configurations, you won’t have to deal with them and **firewall-cmd** should be used instead.
 
 Configuration files are located in two directories:
 
-* **/usr/lib/firewalld**: default configuration, like defaults zones and common services. Don’t update them as those files will be overwritten by each firewalld package update
-* **/etc/firewalld**: system configuration. Those files will overwrite default configuration
+* `/usr/lib/FirewallD` holds default configurations like default zones and common services. Avoid updating them because those files will be overwritten by each firewalld package update.
+* `/etc/firewalld` holds system configuration files. These files will overwrite a default configuration.
+
+## Configuration Sets
+
+Firewalld uses two *configuration sets*: runtime and permanent. Changes on runtime configuration are not retained upon restarting FirewallD; changes on permanent configuration are not applied to a live configuration.
+
+By default, `firewall-cmd` commands apply to runtime configuration but using the `--permanent` flag will establish a persistent configuration. To add and activate a permanent rule, you can use one of two methods.
+
+1.  Add the rule to both the permanent and runtime sets.
+
+        sudo firewall-cmd --zone=public --add-service=http --permanent
+        sudo firewall-cmd --zone=public --add-service=http
+
+2.  Add the rule to the permanent set and reload FirewallD.
+
+        sudo firewall-cmd --zone=public --add-service=http --permanent
+        sudo firewall-cmd --reload
+
+      {: .note}
+      >
+      >The reload command drops all runtime configurations and applies a permanent configuration. Because firewalld manages the ruleset dynamically, it won’t break an existing connection and session.
+
+## Firewall Zones
+
+Zones allow you to add different sets of rules to different network interfaces. For example, with seperate interfaces for both an internal network and the Internet, you can allow DHCP on an internal zone but only HTTP and SSH on external zone. Any interface not explicitly set to a specific zone will be attached to the default zone.
+
+To view the default zone:
+
+    sudo firewall-cmd --get-default-zone
 
 
-## Reloading configuration
+To change the default zone:
 
-To reload firewalld configuration, use the following command:
-
-    firewall-cmd --reload
+    sudo firewall-cmd --set-default-zone=internal
 
 
-It will drop all runtime configuration that have not been persisted and apply permanent configuration. As firewalld manage the ruleset dynamically, it won’t break existing connection and session.
+To see the zones used by your network interface(s):
+
+    sudo firewall-cmd --get-active-zones
+
+Example output:
+
+    public interfaces: ens160
 
 
-# Managing zones and getting zone configuration
+To get all configurations for a specific zone:
 
-Zones allow you to add different set of rules to different interfaces. For example, with two interfaces on internal network and internet, you may allow dhcp query to internal  zone but only http and ssh on external zone.
+    sudo firewall-cmd --zone=public --list-all
 
-For most hosts with only one interface, you won’t have to worry with that and use only the default zone.
+Example output:
 
-
-To get the default zone use `--get-default-zone` command. All interface that are not explicitly set to a specific zone will be attached to the default zone:
-
-    firewall-cmd --get-default-zone
-    public
-
-
-You can change the default zone with `--set-default-zone` command:
-
-    firewall-cmd --set-default-zone=internal
-    success
-
-
-To see the zones used by your interfaces, use `--get-active-zones` command:
-
-    firewall-cmd --get-active-zones
-    public
-      interfaces: ens160
-
-
-Use `--list-all` with the `--zone=XXX` flag to get all configuration for a given zone:
-
-    firewall-cmd --zone=public --list-all
     public (default, active)
       interfaces: ens160
       sources:
@@ -147,9 +138,12 @@ Use `--list-all` with the `--zone=XXX` flag to get all configuration for a given
       rich rules:
 
 
-Or use `--list-all-zones` command to get all the configuration of all zones (output truncated in the example to show only two zones):
+To get all configurations for all zones:
 
     firewall-cmd --list-all-zones
+
+Example output:
+
     internal
       interfaces:
       sources:
@@ -161,132 +155,87 @@ Or use `--list-all-zones` command to get all the configuration of all zones (out
       rich rules:
     
     public (default, active)
-      interfaces: ens160  <-- interface ens160 is on public zone
+      interfaces: ens160
       sources:
-      services: dhcpv6-client http ssh  <-- those services are allowed
-      ports: 12345/tcp  <-- this tcp port is allowed
+      services: dhcpv6-client http ssh
+      ports: 12345/tcp
       masquerade: no
       forward-ports:
       icmp-blocks:
       rich rules:
 
+## Working with Services
+
+FirewallD can allow traffic based on lists of predefined rules for specific network services. The configuration files for the default supported services are located at `/usr/lib/firewalld/services` and custom-made service files would be created in `/etc/firewalld/services`.
+
+To view the default available services:
+
+    sudo firewall-cmd --get-services
+
+As an example, to enable the HTTP service:
+
+    sudo firewall-cmd --zone=public --add-service=http --permanent
+
+## Allowing an Arbitrary Port/Protocol
+
+As an example: Allow TCP traffic on port 12345.
+
+    sudo firewall-cmd --zone=public --add-port=12345/tcp --permanent
 
 
-# Allowing traffic in a zone
+## Port Forwarding
 
-All commands in this paragraph can optionally use the `--permanent` flag: if set, the rule will be added to the permanent ruleset and not to the live ruleset. By default rules are added to live configuration and lost at the next firewalld reload.
+The example rule below forwards traffic from port 80 to port 12345 on **the same server**.
 
-## Allowing a standard service
+    sudo firewall-cmd --zone="public" --add-forward-port=port=80:proto=tcp:toport=12345
 
-You can allow standard services, like HTTP, FTP or any common service, with the `--add-service` command:
+To forward a port to **a different server**:
 
-    # Allow http service to public zone
-    firewall-cmd --zone=public --add-service=http --permanent
+1.  Activate masquerade in the desired zone.
 
-Get the list of all existing services with `--get-services` command:
+        sudo firewall-cmd --zone=public --add-masquerade
 
-    firewall-cmd --get-services
-    amanda-client bacula bacula-client dhcp dhcpv6 dhcpv6-client dns ftp high-availability http https imaps ipp ipp-client ipsec kerberos kpasswd ldap ldaps libvirt libvirt-tls mdns mountd ms-wbt mysql nfs ntp openvpn pmcd pmproxy pmwebapi pmwebapis pop3s postgresql proxy-dhcp radius rpc-bind samba samba-client smtp ssh telnet tftp tftp-client transmission-client vnc-server wbem-https
+2.  Add the forward rule. This example forwards traffic from local port 80 to port 8080 on *a remote server* located at the IP address: 123.456.78.9.
 
+        sudo firewall-cmd --zone="public" --add-forward-port=port=80:proto=tcp:toport=8080:toaddr=123.456.78.9
 
-Firewalld use the XML configuration files to know what to open for a specific service. Look at them in **/usr/lib/firewalld/services** (or **/etc/firewalld/services** if you provide yours) to know what it will really do:
+# Advanced Configuration
 
-    cat /usr/lib/firewalld/services/ftp.xml
-    <?xml version="1.0" encoding="utf-8"?>
-    <service>
-      <short>FTP</short>
-      <description>FTP is a protocol used for remote file transfer. If you plan to make your FTP server publicly available, enable this option. You need the vsftpd package installed for this option to be useful.</description>
-	  <!-- Allow TCP on port 21 -->
-      <port protocol="tcp" port="21"/>
-	  <!-- Use nf_conntrack_ftp netfilter module -->
-      <module name="nf_conntrack_ftp"/>
-    </service>
+Services and ports are fine for basic configuration but may be too limiting for advanced scenarios. Rich Rules and Direct Interface allow you to add fully custom firewall rules to any zone for any port, protocol, address and action.
 
+## Rich Rules
 
+Rich rules syntax is extensive but fully documented in the [firewalld.richlanguage(5)](https://jpopelka.fedorapeople.org/firewalld/doc/firewalld.richlanguage.html) man page (or see `man firewalld.richlanguage` in your terminal). Use `--add-rich-rule`, `--list-rich-rules` and `--remove-rich-rule` with firewall-cmd command to manage them.
 
-## Allowing an arbitrary protocol/port
+Here are some common examples:
 
-If you prefer using a port/protocol notation, or need to allow traffic on a non-standard service, you can use `--add-port` command:
+Allow all IPv4 traffic from host 192.168.0.14.
 
-    # Allow TCP traffic on port 12345
-    firewall-cmd --zone=public --add-port=12345/tcp --permanent
+    sudo firewall-cmd --zone=public --add-rich-rule 'rule family="ipv4" source address=192.168.0.14 accept'
 
+Deny IPv4 traffic over TCP from host 192.168.1.10 to port 22.
 
-# Port forwarding
+    sudo firewall-cmd --zone=public --add-rich-rule rule family="ipv4" source address="192.168.1.10" port port=22 protocol=tcp reject
 
-You can forward traffic from a port to another, even on another server.
-To forward a port to another on the same server, use:
+Allow IPv4 traffic over TCP from host 10.1.0.3 to port 80, and forward it locally to port 6532.
 
-    firewall-cmd --zone="public" --add-forward-port=port=80:proto=tcp:toport=12345
+    sudo firewall-cmd --zone=public --add-rich-rule rule family=ipv4 source address=10.1.0.3 forward-port port=80 protocol=tcp to-port=6532
 
+Forward all IPv4 traffic on port 80 to port 8080 on host 172.31.4.2 (masquerade should be active on the zone).
 
-To forward to another server:
+    sudo firewall-cmd --zone=public --add-rich-rule rule family=ipv4 forward-port port=80 protocol=tcp to-port=8080 to-addr=172.31.4.2
 
-1. Activate masquerade on the zone
+To list your current Rich Rules:
 
-        firewall-cmd --zone=public --add-masquerade
-        success
+    sudo firewall-cmd --list-rich-rules
 
-2. Add the forward rule:
+## iptables Direct Interface
 
-        firewall-cmd --zone="public" --add-forward-port=port=80:proto=tcp:toport=8080:toaddr=10.1.52.80
-        success
+For the most advanced usage, or for iptables experts, FirewallD provides a direct interface that allows you to pass raw iptables commands to it. Direct Interface rules are not persistent unless the `--permanent` is used.
 
+To see all custom chains or rules added to FirewallD:
 
-# Advanced configuration with Rich Rules
-
-Services and ports are fine for basic configuration, but may be too limiting for advanced scenario. Use Rich Rules to have more control. Rich rules syntax is extensive, and is documented in man page **firewalld.richlanguage(5)** (`man firewalld.richlanguage`). We will see here most common use cases.
-
-Use `--add-rich-rule`, `--list-rich-rules` and `--remove-rich-rule` with firewall-cmd command to manage them:
-
-    firewall-cmd --zone=public --add-rich-rule 'rule family="ipv4" source address=192.168.0.14 accept'
-
-Here are some common examples.
-
-1. Allow all traffic from host 192.168.0.14:
-
-        firewall-cmd --zone=public --add-rich-rule rule family="ipv4" source address="192.168.2.2" accept
-
-2. Deny TCP traffic from host 192/160.1.10 to port 22:
-
-        firewall-cmd --zone=public --add-rich-rule rule family="ipv4" source address="192.168.1.10" port port=22 protocol=tcp reject
-
-3. Allow TCP traffic from host 10.1.0.3 to port 80, and forward it locally to  port 6532:
-
-        firewall-cmd --zone=public --add-rich-rule rule family=ipv4 source address=10.1.0.3 forward-port port=80 protocol=tcp to-port=6532
-
-4. Forward all traffic on port 80 to port 8080 on host 172.31.4.2 (masquerade should be active on the zone):
-
-        firewall-cmd --zone=public --add-rich-rule rule family=ipv4 forward-port port=80 protocol=tcp to-port=8080 to-addr=172.31.4.2
-
-
-# Direct interface
-
-For more advanced usage, or for iptables gurus, firewalld provide a direct interface that allow you to pass raw iptables chains and rules to firewalld. Like for services configuration, use the `--permanent` flag to update permanent configuration.
-
-
-To see all custom chains and rules added to firewalld, use:
-
-    # Show custom chains
     firewall-cmd --direct --get-all-chains
-    # Show custom rules
     firewall-cmd --direct --get-all-rules
 
-
-To add custom chains and rules, use:
-
-
-    # Add a custom chain
-    firewall-cmd --direct --add-chain table chain
-    # Remove a custom chain
-    firewall-cmd --direct --add-rule table chain priority args
-
-We won't get into more details here, iptables syntaxe being a whole topic on its own. You can have a look at the [ipTable guide](https://www.linode.com/docs/networking/firewalls/control-network-traffic-with-iptables) to get more information.
-
-You can remove chains or rules with `--remove-chain` and `--remove-rule` commands.
-
-# More information
-
-To get more deeper into Firewalld, you can read the man pages `firewalld`, `firewall-cmd`, `firewalld.richlanguage`, they are well written and easy to read.
-
-You may also want to read [Fedora's Security Guide](http://docs.fedoraproject.org/en-US/Fedora/19/html/Security_Guide/index.html) section about Firewalld ([3.8](http://docs.fedoraproject.org/en-US/Fedora/19/html/Security_Guide/sect-Security_Guide-Using_Firewalls.html))
+Discussing iptables syntax details goes beyond the scope of this guide. If you want to learn more, you can review our [iptables guide](https://www.linode.com/docs/networking/firewalls/control-network-traffic-with-iptables).
