@@ -42,10 +42,6 @@ To stop and disable the FirewallD service:
     sudo systemctl stop firewalld
     sudo systemctl disable firewalld
 
-{: .note}
->
->While available in the repositories of other Linux distributions, FirewallD was created primarily for use with Red Hat Enterprise Linux and is most compatible with the Fedora Linux family.
-
 Check the firewall status. The output should say either `running` or `not running`.
 
     sudo firewall-cmd --state
