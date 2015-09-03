@@ -52,40 +52,11 @@ With the additional configuration we will set up at the end of this guide, all t
 >
 >Please note that only one public IP address is required to use OpenVPN
 
-## Install OpenVPN
+## Configure the OpenVPN Server
+
+### Install OpenVPN and Create a Firewall Ruleset
 
     sudo apt-get install openvpn
-
-### Prepare the Working Directory
-
-1.  The OpenVPN client and server configuration files will be created in `/etc/openvpn/easy-rsa/`. Change to that location and run `make-cadir` script to ***.
-
-    sudo make-cadir /etc/openvpn/easy-rsa
-    cd /etc/openvpn/easy-rsa/
-
-In this section, you will initialize the certificate authority and the public key infrastructure:
-
-2.  Create a symbolic link from `openssl-1.0.0.cnf` to `openssl.cnf`:
-
-        ln -s openssl-1.0.0.cnf openssl.cnf
-
-3.  Source the `vars` script:
-
-        source ./vars
-
-	This will return `NOTE: If you run ./clean-all, I will be doing a rm -rf on /etc/openvpn/easy-rsa/keys`
-
-4.  Execute the `clean-all` script.
-
-        ./clean-all
-
-5.  Execute the `build-ca` script. At each prompt, fill out the information to be used in your certificate.
-
-        ./build-ca
-
-After doing this, your PKI should be configured properly.
-
-### Create a Firewall Ruleset
 
 The ruleset given below allows SSH access over port 22 and incoming traffic to OpenVPN on port 1194.
 
@@ -110,17 +81,44 @@ iptables -A INPUT -j DROP
 iptables -A OUTPUT -o tun+ -j ACCEPT
 ~~~
 
+### Prepare the OpenVPN Working Directory
+
+1.  The OpenVPN client and server configuration files will be created in `/etc/openvpn/easy-rsa/`. Change to that location and run `make-cadir` script to ***.
+
+        sudo make-cadir /etc/openvpn/easy-rsa
+        cd /etc/openvpn/easy-rsa/
+
+2.  Create a symbolic link from `openssl-1.0.0.cnf` to `openssl.cnf`.
+
+        ln -s openssl-1.0.0.cnf openssl.cnf
+
+3.  Source the `vars` script.
+
+        source ./vars
+
+	This will return: `NOTE: If you run ./clean-all, I will be doing a rm -rf on /etc/openvpn/easy-rsa/keys`
+
+4.  Execute the `clean-all` script to be sure you're starting with an empty keys directory.
+
+        ./clean-all
+
+5.  Execute the `build-ca` script. At each prompt, fill out the information to be used in your certificate.
+
+        ./build-ca
+
+After doing this, your PKI should be configured properly.
+
 ### Generating Diffie Hellman Parameters
 
 The **Diffie Hellman Parameters** govern the method of key exchange used by the OpenVPN server. By creating a .pem file, you create the parameters by which the OpenVPN server will initiate secured connections with the clients.
 
-Issue the following command to generate the `.pem` file:
+Generate the `.pem` file.
 
     ./build-dh
 
 This should produce the following output:
 
-    Generating DH parameters, 1024 bit long safe prime, generator 2
+    Generating DH parameters, 2048 bit long safe prime, generator 2
     This is going to take a long time
 
 This will be followed by a quantity of seemingly random output. Once it brings you back to a command prompt, the task has succeeded. In the `keys` subdirectory it's created a file called `dh1024.pem` which will be used to generate secure connections to the VPN server's clients.
