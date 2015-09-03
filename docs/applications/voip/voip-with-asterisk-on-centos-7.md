@@ -15,50 +15,13 @@ contributor:
 ---
 
 Asterisk is an open source Private Branch Exchange (PBX) server that uses Session Initiation Protocol (SIP) to route and manage telephone calls. Notable features include customer service queues, music on hold, conference calling and call recording, among many others.
-For more information on Asterisk and what it can do, check out the Asterisk website, listed in the addition resources block at the end of this article.
 
 This guide covers the steps necessary to provision a new Linode as a dedicated Asterisk server for your home or office.
-
-
-##Add a new Linode
-
-Creating a new Linode is covered in the [Getting Started Guide](/docs/getting-started), but there are a few things to consider when deploying a Linode for use with Asterisk.
-
-###Choosing a Data Center
-
-For best call quality, you'll want to select the data center that is geographically closest to your home or office. You should *not* select the Atlanta center, however, as the Atlanta DC blocks ports which are required to run a SIP server.
-The port blocking in Atlanta is unfortunately beyond Linode's control. This guide was written using the Newark, NJ data center, and calls are working correctly.
-
-###How big of a Linode do I need?
-
-Asterisk is very efficient when it comes to system resources, but it is unfortunately very difficult to say exactly what your specific hardware requirements will be in a general purpose installation guide.
-Some setups will require CPU intensive processes on each line such as echo cancellation or data compression, while other systems, may just pass-thru the audio data without any modification at all.
-
-As a point of reference, a 1GB Linode should be able to handle an office with 10-20 concurrent calls using a non-compressed codec and depending on the type of processing required on each channel.
-Using a Linode to host Asterisk gives you the ability to scale up hardware as your demands grow, so you may want to start with a 1GB Linode, then check your system resource usage once you have a few phone configured.
-
-
-###Why CentOS?
-
-The last decision you'll need to make is which OS to install on your Linode.
-We're using CentOS because it's the officially recommended OS of the Asterisk project, and is required if you want official Asterisk support. This guide is based on CentOS 7.5.
-
-###Deploy It!
-
-With these things in mind, follow the steps in the [Getting Started Guide](/docs/getting-started) to deploy a new Linode with CentOS 7. Don't forget to boot it up, then set a hostname and a timezone.
-
-
-##Secure your Linode (Asterisk Style)
-
-Now that you've got your new Linode created in a nearby data center and pre-installed with CentOS, it's time to make your Linode more secure and to prepare it for Asterisk installation.
-This guide assumes that you have a clean Linode and have not done anything on it yet, aside from setting a hostname and timezone.
-The basic steps for securing a Linode are covered in the [Security Guide](/docs/security/securing-your-server). Since there's a few things different for an Asterisk server, we'll cover all of the steps with their Asterisk
-variation here very briefly. If you'd like to know more about these basic security steps or need additional clarification, you can review the official [Linode Security Guide](/docs/security/securing-your-server).
-
 
 {: .note}
 >
 >This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+
 
 ###Firewall for Asterisk
 
