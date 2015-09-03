@@ -143,7 +143,7 @@ The standard tool for interacting with MariaDB is the `mariadb` client which ins
 
 3.  View the new table:
 
-	show tables;
+        show tables;
 
 3.  Then exit MariaDB.
     
