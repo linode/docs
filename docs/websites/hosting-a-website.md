@@ -145,11 +145,11 @@ Now that Apache is optimized for performance, it's time to starting hosting one 
 
     This creates a symbolic link to your `example.com.conf` file in the appropriate directory for active virtual hosts.
 
-11. The previous command will alert you that you need to restart Apache to save the changes. Enter the following command to apply your new configuration:
+09. The previous command will alert you that you need to restart Apache to save the changes. Enter the following command to apply your new configuration:
 
         sudo service apache2 restart
 
-12. Repeat steps 1-11 for every other website you want to host on your Linode.
+10. Repeat steps 1-9 for every other website you want to host on your Linode.
 
 Congratulations! You've configured Apache to host one or more websites on your Linode. After you [upload files](#uploading-files) and [add DNS records](#adding-dns-records) later in this guide, your websites will be accessible to the outside world.
 
