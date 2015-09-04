@@ -21,7 +21,7 @@ external_resources:
 
 ## About Ansible
 
-Consider the monotany of administering a server fleet; keeping them all updated, pushing changes out to them, copying files, etc. Things can get complicated and time consuming very quickly, but it doesn't have to be that way.
+Consider the monotony of administering a server fleet; keeping them all updated, pushing changes out to them, copying files, etc. Things can get complicated and time consuming very quickly, but it doesn't have to be that way.
 
 *[Ansible](http://www.ansible.com/home)* is a helpful tool that allows you to create groups of machines, describe how those machines should be configured or what actions should be taken on them, and issue all of these commands from a central location. It uses SSH, so nothing needs to be installed on the machines you are targeting. Ansible only runs on your main control machine, which can even be your laptop! It is a simple solution to a complicated problem.
 
