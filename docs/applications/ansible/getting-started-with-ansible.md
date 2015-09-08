@@ -3,7 +3,7 @@ author:
     name: Linode Community
     email: docs@linode.com
 description: 'A quick getting started guide to Ansible, with a demo of how to provision a basic web server with Ansible'
-keywords: 'ansible,ansible configuration,provisioning,infrastructure,automation,configuration,configuration change management,server automation'
+keywords: 'ansible,ansible configuration,ansible provisioning,ansible infrastructure,ansible automation,ansible configuration,ansible configuration change management,ansible server automation'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 published: ''
 modified: Thursday, September 3rd, 2015
@@ -19,7 +19,7 @@ external_resources:
  - '[Ansible Example Playbooks (GitHub)](https://github.com/ansible/ansible-examples)'
 ---
 
-## About Ansible
+## About
 
 Consider the monotony of administering a server fleet; keeping them all updated, pushing changes out to them, copying files, etc. Things can get complicated and time consuming very quickly, but it doesn't have to be that way.
 
@@ -32,7 +32,7 @@ This guide will introduce you to the basics of Ansible. By the end of this guide
 >This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide. Some systems may require you to run Ansible commands as root. If so, prefix the `ansible` commands in this guide with `sudo`.
 
 
-## Installation
+## Installing Ansible
 
 Ansible only needs to be installed on the *control machine*, or the machine from which you will be running commands. This will likely be your laptop or other computer from which you frequently access your server, or it may be a centralized server in more complicated setups.
 
@@ -59,7 +59,7 @@ Make sure that you have Python 2.x available on the control machine. Ansible is 
       sudo apt-get install ansible
 
 
-## First Steps
+## First Steps to Configuring Ansible
 
 Now that you have Ansible installed, let's test it out on a known server. All Ansible commands are executed via the command line (or batched in scripts), and follow the pattern:
 
@@ -89,7 +89,7 @@ If you are successful you should see output similar to the following:
 You were just able to get a valid connection to your server via Ansible!
 
 
-## Inventory File
+## Using Ansible's Inventory File
 
 You executed an Ansible command against one client, but it would be cumbersome to have to type the host's address every single time, and what if you had several servers you wanted to apply the same configuration to? This is where Ansible's [inventory file](http://docs.ansible.com/ansible/intro_inventory.html) comes into play.
 
@@ -134,7 +134,7 @@ You should receive the same output as before, for each server in your `hosts` fi
 You can heavily customize the Inventory file, so [check out the docs for it](http://docs.ansible.com/ansible/intro_inventory.html) if you're interested.
 
 
-## Configuration via Playbooks
+## Ansible Configuration via Playbooks
 
 *Playbooks* in Ansible define a series of actions to run, and address particular sets of servers. It's important to note that, unlike some other configuration tools, a playbook does not describe a state of the machine, with Ansible determining all the changes that need to be made on its own. However, playbooks should be designed to be idempotent, meaning that they can be run more than once without negative effects. For example, a playbook might have a task that sets up a configuration file for a server and injects a few variables. The playbook should be written such that Ansible can take the template configuration file, compare it to the actual file, and create/update it only if necessary. Luckily, many Ansible modules take care of the heavy lifting for that.
 
@@ -215,7 +215,7 @@ A few common core modules you might be interested in learning fist include:
 * [service - Manage services](http://docs.ansible.com/ansible/service_module.html)
 
 
-## Basic Web Server Setup via Playbooks
+## Basic Web Server Setup via Ansible Playbooks
 
 As an example, we'll use Ansible to turn a freshly created Linode server into a web server, configured with Apache, MySQL, and PHP, ready to serve up dynamic sites and configured with the proper users and permissions. For brevity we won't handle all of the features and configuration that might normally be involved, but will cover enough to get you started.
 
@@ -371,7 +371,7 @@ Finally, let's get a very basic server set up with Apache and PHP, and a test My
     You can even create a sample PHP page and place it in `/var/www/html` to test that PHP is active on the server. Ansible has done as we instructed it to, installing the appropriate packages and setting things up as we want.
 
 
-## Exploring Further
+## Exploring Ansible Further
 
 This is just the start of learning Ansible, and as you continue to learn and explore you will find it a truly powerful and flexible tool. Take a look at some of the example Ansible playbooks provided by the company itself.
 
