@@ -222,7 +222,7 @@ To fix this, follow these steps:
     {: .file }
     /etc/linode/longview.d/Apache.conf
     :   ~~~
-        location <http://127.0.0.1/url-goes-here>
+        location http://127.0.0.1/custom/location/path
         ~~~
 6.  Restart Longview:
 
