@@ -72,7 +72,7 @@ To enable the Apache Longview app manually, follow these steps on your Linode vi
     {: .file }
     /etc/linode/longview.d/Apache.conf
     :   ~~~
-        location <http://127.0.0.1/server-status?auto>
+        location http://127.0.0.1/server-status?auto
         ~~~
 4.  Restart Apache:
 
