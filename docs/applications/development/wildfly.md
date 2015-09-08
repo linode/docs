@@ -292,12 +292,12 @@ After full installation of above stack it was consuming around 650 MB of RAM wit
 4.  You will need to add to add management user (Web and/or CLI) to be able to access the management console, this can be simply done by running the command simply run the shell script in `/opt/wildfly/bin/add-user.sh`:
 
     1.  **Select option a for Management user.**
-    2.  **Username: type_the_username**
-    3.  **Password: type_the_password**
-    4.  **What groups do you want this user to belong to? Leave empty and click Enter**
-    5.  **About to add user ... Is this correct? yes**
-    6.  **Is this new user going to be used for one AS process to connect to another AS process? yes (Just in-case, we need this in the future, i.e. domain setup).**
-    7.  **You will get this message: To represent the user add the following to the server-identities definition, this is just to be used in domain installation just keep it if you needed to switch to domain installation later.**
+    2.  **Username:** type_the_username
+    3.  **Password:** type_the_password
+    4.  **What groups do you want this user to belong to?:** Leave empty and click Enter
+    5.  **About to add user ... Is this correct?:** yes
+    6.  **Is this new user going to be used for one AS process to connect to another AS process:** yes (Just in-case, we need this in the future, i.e. domain setup).
+    7.  You will get this message: **To represent the user add the following to the server-identities definition**. This is just to be used in domain installation. Keep it if you needed to switch to domain installation later.**
 
     You should be able to test the wildfly by using the URL `http://123.45.67.89:8080`, and the WildFly Admin console using the URL `http://123.45.67.89:9990/console`, replacing `123.45.67.89` with your Linode's IP address.
  
