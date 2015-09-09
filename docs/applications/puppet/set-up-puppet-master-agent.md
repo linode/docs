@@ -21,6 +21,10 @@ Puppet is written in its own Puppet language, meant to be accessible to system a
 
 Puppet can be used to manage multiple servers across various infrastructures, and for the purpose of this guide we will be working with an Ubuntu 14.04 LTS master server, and two agent nodes -- one Ubuntu 14.04, and one CentOS 7.
 
+{: .note}
+>
+>Begin this guide as the `root` user. A super user will be configured in later steps.
+
 ## Before You Begin
 
 1.  Have three available Linodes, one of which has at least four cores, and 4GB of RAM for the Puppet master. A [Linode 4GB](/pricing) plan is recommended. The two other nodes can be of any plan.
@@ -42,7 +46,7 @@ Puppet can be used to manage multiple servers across various infrastructures, an
 
 ## Set Up the Puppet Master
 
-1.  Enable the `puppetlabs-release` repository on Ubuntu 14.04, unpackage it, and update your system:
+1.  Enable the `puppetlabs-release` repository on Ubuntu 14.04, unpackage it, and update your system. This process downloads a `.deb` file which in turn will configure the repositories for you:
 
         wget https://apt.puppetlabs.com/puppetlabs-release-trusty.deb
         dpkg -i puppetlabs-release-trusty.deb
@@ -141,8 +145,10 @@ For each of the agent nodes:
 1.  Run the puppet agent to generate a certificate for the puppet master to sign:
 
         puppet agent -t
+        
+    It will appear to output an error, stating that no certificate is found. This is because the generated certificate needs to approved by the Puppet master.
 
-2.  Log into to your **puppet master** and list the certifications that need approval:
+2.  Log into to your **Puppet master** and list the certifications that need approval:
 
         puppet cert list
 
@@ -179,7 +185,7 @@ Both the Puppet master and nodes configured above are functional, but not fully 
 4.  Within the `init.pp` file, define a superuser to use instead of `root`, replacing all instances of `username` with your choosen username:
 
     {: .file}
-    /etc/puppet/modules/accounts/manifests
+    /etc/puppet/modules/accounts/manifests/init.pp
     :   ~~~ pp
         class accounts {
 
@@ -188,14 +194,41 @@ Both the Puppet master and nodes configured above are functional, but not fully 
             home        => '/home/username',
             shell       => '/bin/bash',
             managehome  => true,
+            gid         => 'username',
             }
 
         }
         ~~~
 
-    The `init.pp` file initially defines the *class*, accounts. It then calls to the `user` resource, where a `username` is defined. The `ensure` value is set to ensure that the user is present. The `home` value should be set to the user's home directory path. `shell` defines the shell type, in this instance the bash shell. Finally, `managehome` notes that the home directory should be created.
+    The `init.pp` file initially defines the *class*, accounts. It then calls to the `user` resource, where a `username` is defined. The `ensure` value is set to ensure that the user is present. The `home` value should be set to the user's home directory path. `shell` defines the shell type, in this instance the bash shell. `managehome` notes that the home directory should be created, and, finally, `gid` sets the primary group for the user.
     
-5.  This user should be an administrative user. Because we have agent nodes on both Debian- and RedHat-based systems, the new user needs to be in the `sudo` group on Debian systems, and the `wheel` group on RedHat systems. This value can be set dynamically through the use of a selector and *facter*, a program incuded in Puppet that keeps tracks of information, or *facts*, about every server. Add a selector statement to the top of the `init.pp` file within the accounts class brackets, defining the two options:
+5.  Although the primary group is set to share the username, the group itself has not been created. Save and exit `init.pp` and then open a new file called `groups.pp`. This file will be used to create the user's group:
+
+    {: .file}
+    /etc/puppet/modules/accounts/manifests/groups.pp
+    :   ~~~ pp
+        class accounts::groups {
+        
+          group { 'username':
+            ensure  => present,
+          }
+          
+        }
+        ~~~
+        
+     Include this file by adding `include groups` to the `init.pp` file:
+     
+     {: .file-excerpt}
+     /etc/puppet/modules/accounts/manifests/init.pp
+     :  ~~~ pp
+        class accounts {
+        
+          include groups
+          
+        ...
+        ~~~
+    
+6.  This user should be an administrative user. Because we have agent nodes on both Debian- and RedHat-based systems, the new user needs to be in the `sudo` group on Debian systems, and the `wheel` group on RedHat systems. This value can be set dynamically through the use of a selector and *facter*, a program incuded in Puppet that keeps tracks of information, or *facts*, about every server. Add a selector statement to the top of the `init.pp` file within the accounts class brackets, defining the two options:
 
     {: .file-excerpt}
     /etc/puppet/modules/accounts/manifests/init.pp
@@ -215,7 +248,7 @@ Both the Puppet master and nodes configured above are functional, but not fully 
         
     This reads that, within the *accounts* module, the variable `$rootgroup` should evaluate, using facter, the operating system family (`$osfamily`), and if the value returned is `Debian`, to set the $rootgroup value to `sudo`; if the value returned is `RedHat` this same value should be set to `wheel`, otherwise, the `default` value will output a warning stating that the distribution selected is not supported by this module.
     
-6.  Add the `gid` value to the user resource, calling to the `$rootgroup` variable defined in the previous step:
+7.  Add the `groups` value to the user resource, calling to the `$rootgroup` variable defined in the previous step:
 
     {: .file-excerpt}
     /etc/puppet/modules/accounts/manifests/init.pp
@@ -225,13 +258,14 @@ Both the Puppet master and nodes configured above are functional, but not fully 
             home        => '/home/username',
             shell       => '/bin/bash',
             managehome  => true,
-            gid         => "$rootgroup",
+            gid         => 'username',
+            groups      => "$rootgroup",
           }
         ~~~
         
     The value, `"$rootgroup"`, is encased in double quotes (") instead of single quotes (') because it is a variable -- any value encased within single quotes will be added exactly as typed in your module, anything in double quotes can accept variables -- with the notable exception being hashed passwords.  
 
-7.  A final value that needs to be added is the `password` value: But since we do not want to use plain text, it should be fed to Puppet through SHA1 encryption, which is supported by default. Set a password:
+8.  A final value that needs to be added is the `password` value: But since we do not want to use plain text, it should be fed to Puppet through SHA1 encryption, which is supported by default. Set a password:
 
         openssl passwd -1
 
@@ -248,8 +282,9 @@ Both the Puppet master and nodes configured above are functional, but not fully 
             home        => '/home/username',
             shell       => '/bin/bash',
             managehome  => true,
-            gid         => "$rootgroup",
-            password    => '$1$07JUIM15$NWm8.NJOqsP.blweQ..3L0',
+            gid         => 'username',
+            groups      => "$rootgroup",
+            password    => '$1$07JUIM1HJKDSWm8.NJOqsP.blweQ..3L0',
             }
 
         }
@@ -259,13 +294,13 @@ Both the Puppet master and nodes configured above are functional, but not fully 
     >
     >The hashed password **must** be included in single quotes (').
 
-6.  Use the puppet parser to ensure that the code is correct:
+9.  Use the puppet parser to ensure that the code is correct:
 
         puppet parser validate init.pp
 
     If nothing is returned, your code is correct; otherwise, any errors that need to be addressed with be output.
 
-7.  Before the module can be tested further, navigate to the `examples` directory and create another `init.pp` file, this time to call to the `accounts` module:
+10. Before the module can be tested further, navigate to the `examples` directory and create another `init.pp` file, this time to call to the `accounts` module:
 
     {: .file}
     /etc/puppet/modules/accounts/examples/init.pp
@@ -273,7 +308,7 @@ Both the Puppet master and nodes configured above are functional, but not fully 
         include accounts
         ~~~
 
-7.  Test the module without making changes:
+11. Test the module without making changes:
 
         puppet apply --noop init.pp
         
@@ -289,11 +324,11 @@ Both the Puppet master and nodes configured above are functional, but not fully 
         Notice: Stage[main]: Would have triggered 'refresh' from 1 events
         Notice: Finished catalog run in 0.01 seconds
 
-8.  Run `puppet apply` to make these changes to the Puppet master server:
+12. Run `puppet apply` to make these changes to the Puppet master server:
 
         puppet apply init.pp
 
-9.  Logout as `root` and log in to the Puppet master as your new superuser. The rest of this guide will be run through this user.
+13. Logout as `root` and log in to the Puppet master as your new superuser. The rest of this guide will be run through this user.
 
 
 
@@ -368,8 +403,7 @@ Although a new user has successfully been added to the Puppet master, the accoun
     :   ~~~ pp
         class account {
         
-        ...
-        
+          include groups        
           include ssh
           
         }
@@ -443,14 +477,14 @@ Although a new user has successfully been added to the Puppet master, the accoun
 
            #Allow SSH connections
           firewall { '005 Allow SSH':
-            port    => '22',
+            dport    => '22',
             proto   => 'tcp',
             action  => 'accept',
           }->
 
            #Allow HTTP/HTTPS connections
           firewall { '006 HTTP/HTTPS connections':
-            port    => ['80', '443'],
+            dport    => ['80', '443'],
             proto   => 'tcp',
             action  => 'accept',
           }
@@ -480,8 +514,8 @@ Although a new user has successfully been added to the Puppet master, the accoun
 
 5.  Run the Puppet parser on both files to ensure the code does not bring back any errors:
 
-        puppet parser validate pre.pp
-        puppet parser validate post.pp
+        sudo puppet parser validate pre.pp
+        sudo puppet parser validate post.pp
 
 6.  Move up a directory, create an `example` directory, and navigate to it:
 
@@ -506,7 +540,7 @@ Although a new user has successfully been added to the Puppet master, the accoun
         class { ['firewall::pre', 'firewall::post']: }
 
         firewall { '200 Allow Puppet Master':
-          port          => '8140',
+          dport          => '8140',
           proto         => 'tcp',
           action        => 'accept',
         }
@@ -516,7 +550,7 @@ Although a new user has successfully been added to the Puppet master, the accoun
 
 8.  Run the `init.pp` file through the Puppet parser, and then test to see if it will run:
 
-        puppet parser validate init.pp
+        sudo puppet parser validate init.pp
         sudo puppet apply --noop init.pp
 
     If successful, run the `puppet apply` without the `--noop`:
