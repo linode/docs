@@ -38,7 +38,7 @@ To add a Longview system, first add a system to the Longview interface in the Li
 
 Before adding your system to Longview, you should verify that your Linux distribution is supported. Longview is currently supported on the following distributions:
 
--   Ubuntu 10.04 and 12.04+
+-   Ubuntu 10.04 and 12.04
 -   Debian 6 and 7
 -   Fedora 17, 18, and 19
 -   CentOS 5 and 6
