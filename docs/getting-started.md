@@ -16,7 +16,7 @@ Congratulations on selecting Linode as your cloud hosting provider! This guide w
 
 ## Signing Up
 
-If you haven't already signed up for a Linode account, do that first.
+If you haven't already signed up for a Linode account, start here.
 
 1.  Create a new account at the [Sign Up page](https://manager.linode.com/signup).
 2.  Sign in and enter your billing and account information. Most accounts are activated instantly but some require manual review prior to activation. If your account is not immediately activated, you will receive an email with additional instructions.
@@ -32,7 +32,12 @@ After your Linode is created, you'll need to prepare it for operation by deployi
 
 ### Logging in to the Linode Manager
 
-The [Linode Manager](https://manager.linode.com) is a web-based control panel that allows you to manage your Linode virtual servers and services. Log in with the `username` and `password` you created when you signed up. After you've created your first Linode, you can use the Linode Manager to boot and shut down your virtual server, access monitoring statistics, update your billing and account information, request support and perform other administrative tasks.
+The [Linode Manager](https://manager.linode.com) is a web-based control panel that allows you to manage your Linode virtual servers and services. Log in with the `username` and `password` you created when you signed up. After you've created your first Linode, you can use the Linode Manager to:
+
+* Boot and shut down your virtual server,
+* Access monitoring statistics, 
+* Update your billing and account information, 
+* Request support and perform other administrative tasks.
 
 ### Deploying an Image
 
@@ -48,7 +53,7 @@ After creating a new Linode, select it and you'll be taken to the Linode Manager
 
 2.  Select a Linux distribution from the **Image** menu. You can choose from [Arch Linux](http://www.archlinux.org/), [CentOS](http://www.centos.org/), [Debian](http://www.debian.org/), [Fedora](http://fedoraproject.org/), [Gentoo](http://www.gentoo.org/), [openSUSE](http://www.opensuse.org/en/), [Slackware](http://www.slackware.com/), and [Ubuntu](http://www.ubuntu.com/) to install on your Linode. If you're new to the Linux operating system, consider selecting Ubuntu 14.04 LTS. Ubuntu is the most popular distribution among Linode customers and one of the most well supported by online communities, so resolving any issues you may have should be simple.
 
-3.  Enter a size for the disk in the **Deployment Disk Size** field. By default, all of the available space is allocated but you can set a lower size if you plan on cloning a disk or creating multiple configuration profiles. You can always create, resize, and delete disks later.
+3.  Enter a size for the disk in the **Deployment Disk Size** field. By default all of the available space is allocated, but you can set a lower size if you plan on cloning a disk or creating multiple configuration profiles. You can always create, resize, and delete disks later.
 
 4.  Select a swap disk size from the **Swap Disk** menu.
 
@@ -86,7 +91,7 @@ When booted, the **Server Status** will change from **Powered Off** to **Running
 
 ## Connecting to Your Linode
 
-This is done using the secure shell (SSH) protocol. SSH encrypts all of the data transferred between the SSH client application on your computer and the Linode, including passwords and other sensitive information. There are SSH clients available for every operating system.
+Communicating with your Linode is usually done using the secure shell (SSH) protocol. SSH encrypts all of the data transferred between the SSH client application on your computer and the Linode, including passwords and other sensitive information. There are SSH clients available for every operating system.
 
 ### SSH Overview
 
