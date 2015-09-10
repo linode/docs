@@ -320,6 +320,12 @@ Enter the following commands to check for and install software updates:
 
 ### Arch Linux
 
+{:.caution }
+>
+>Due to upstream changes in the OpenSSH package used by Arch, the OpenSSH package defaults to disallowing password based root SSH login.  Ensure that you have followed the steps for [Using SSH Key Pair Authentication](/docs/security/securing-your-server/#using-ssh-key-pair-authentication) prior to upgrading your system.  If you have been locked out of your system after upgrading, you can connect to your Linode via [Lish](https://www.linode.com/docs/networking/remote-access/#console-access) and modify the following value in your `/etc/ssh/sshd_conf'
+>
+>     PermitRootLogin yes
+
 Before you can update the system, you need to create entropy, initiate pacman-key and populate the keyring.
 
     haveged -w 1024
@@ -330,7 +336,7 @@ Before you can update the system, you need to create entropy, initiate pacman-ke
 You should now be set to update the system
 
     pacman -Syu
-
+ 
 ## Next Steps
 
 Good work! Now you have an up-to-date Linode running in the data center of your choice. Next, you'll need to secure your Linode and protect it from unauthorized access. Read the [Securing Your Server](/docs/securing-your-server) quick start guide to get going!
