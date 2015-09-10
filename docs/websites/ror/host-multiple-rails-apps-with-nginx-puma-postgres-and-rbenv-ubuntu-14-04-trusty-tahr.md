@@ -25,8 +25,9 @@ Before you begin ensure that you have followed the [Getting Started](https://www
 
 This guide assumes that you have created, and are logged in as, a non-root user with sudo privileges. This guide uses the name rick, but update your commands appropriately.
 
+##Configuring your first Rails app
 
-##install Postgres
+### Install Postgres
 
 1.  Update the system and install essentials
 
@@ -47,7 +48,7 @@ As this guide assumes you will be using a local Postgres database you may wish t
         \q
 
 
-## Install rbenv
+### Install rbenv
 
 1.  Install rbenv as user
 
@@ -80,7 +81,7 @@ As this guide assumes you will be using a local Postgres database you may wish t
         ruby -v
         ruby 2.2.3p173 (2015-08-18 revision 51636) [x86_64-linux]
 
-## Setting up Rails
+### Set up Rails
 
 1.  Install the rails gem.
 
@@ -147,7 +148,7 @@ As this guide assumes you will be using a local Postgres database you may wish t
     >    
     >       rbenv vars
 
-## Configure Puma
+### Configure Puma
 
 Optimal configuration of Puma is dependent upon your Linode choice. The following config is based on the Linode 1GB plan. Just scale up your workers as your CPU count increases.
 
@@ -235,7 +236,7 @@ Now your application is configured to start at boot time.
 
 Your application is not yet accessible to the outside world. For that lets install nginx.
 
-## Setup nginx
+### Setup nginx
 
 We already installed nginx when we setup our server. Lets configure it now.
 
@@ -407,69 +408,71 @@ It is going to get repetitive here for a bit.
 
 Your application is not yet accessible to the outside world. For that lets add another virtual host to nginx.
 
-##Add the second virtual host
+### Nginx configuration for the second app
 
-    sudo vim /etc/nginx/sites-available/stocks_app
+1.  Add the second virtual host
 
-and paste in the following (updated to suit your variables, stocks_app occurs in 4 places).
+        sudo vim /etc/nginx/sites-available/stocks_app
 
-    upstream stocks_app {
-        # Path to Puma SOCK file, as defined previously
-        server unix:/home/rick/www/stocks_app/shared/sockets/puma.sock fail_timeout=0;
-    }
+    and paste in the following (updated to suit your variables, stocks_app occurs in 4 places).
 
-    server {
-        listen 80;
-        server_name stocks.example.com;
-
-        root /home/rick/www/stocks_app/public;
-
-        try_files $uri/index.html $uri @stocks_app;
-
-        location @stocks_app {
-            proxy_pass http://stocks_app;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_set_header Host $http_host;
-            proxy_redirect off;
+        upstream stocks_app {
+            # Path to Puma SOCK file, as defined previously
+            server unix:/home/rick/www/stocks_app/shared/sockets/puma.sock fail_timeout=0;
         }
 
-        error_page 500 502 503 504 /500.html;
-        client_max_body_size 4G;
-        keepalive_timeout 10;
-    }
+        server {
+            listen 80;
+            server_name stocks.example.com;
 
-### Symlink the stocks_app host file into the sites-enabled folder
+            root /home/rick/www/stocks_app/public;
+
+            try_files $uri/index.html $uri @stocks_app;
+
+            location @stocks_app {
+                proxy_pass http://stocks_app;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header Host $http_host;
+                proxy_redirect off;
+            }
+
+            error_page 500 502 503 504 /500.html;
+            client_max_body_size 4G;
+            keepalive_timeout 10;
+        }
+
+2.  Symlink the stocks_app host file into the sites-enabled folder
 
     sudo ln -s /etc/nginx/sites-available/stocks_app /etc/nginx/sites-enabled/stocks_app
 
-### Restart nginx
+3.  Restart nginx
 
-    sudo service nginx restart
+        sudo service nginx restart
 
-### You should be up and running!
+You should be up and running!
 
-Again if you are using a blank app and want a quick fix to make sure a page renders...
+4.  Configure the routes for the second site
 
-    vim config/routes.rb
+        vim config/routes.rb
 
-And uncomment
+    And uncomment
 
-    root 'welcome#index'
+        root 'welcome#index'
 
-Make a controller
+5.  Make a controller
 
-    vim app/controller/welcome_controller.rb
+        vim app/controller/welcome_controller.rb
 
-Toss in some code
+    Toss in some code
 
-    class WelcomeController < ApplicationController
-      def index
-        render inline: "Welcome to the stocks app!"
-      end
-    end
+        class WelcomeController < ApplicationController
+          def index
+            render inline: "Welcome to the stocks app!"
+          end
+        end
 
-And restart Puma
+    And restart Puma
 
-    sudo restart puma-manager
+        sudo restart puma-manager
 
-### Just rinse and repeat to keep adding apps!
+Repeat these steps to add additional apps.  
