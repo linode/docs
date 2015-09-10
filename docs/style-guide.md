@@ -232,6 +232,10 @@ To insert a larger image:
 
     [![description](/docs/assets/filename_small.png)](/docs/assets/filename.png)
 
+{:.note }
+>
+>Image filenames cannot contain spaces.  Utilize an underscore to separate words in image filenames if required for clarity.
+
 #### Key Combinations
 
 When instructing the reader to use a combination of keys, bold the keys in-text:
