@@ -114,10 +114,6 @@ Then you need to add the following code to the server block where you want to en
     location ~ “^/ngx_pagespeed_beacon$” { }
     ~~~
 
-{: .caution}
->
-> If improperly configured pagespeed module will not work.
-
 ##Starting Nginx
 Now we have everything configured correctly, we need to start our web server.
 
