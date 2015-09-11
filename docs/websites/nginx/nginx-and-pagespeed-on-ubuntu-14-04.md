@@ -38,13 +38,13 @@ This ensures that all software is up to date and running the latest version.
 
 ##Installing required packages
 
-Pagespeed module requires some extra packages which you should install to make it run properly, issue the following command in terminal.
+Pagespeed module requires some extra packages which you should install to make it run properly, issue the following command in the terminal.
 
     sudo apt-get install build-essential zlib1g-dev libpcre3 libpcre3-dev unzip
 
 ##Download ngx_pagespeed module
 
-After installing necessary packages, you need to download ngx_pagespeed. Issue the following command in the terminal one by one.
+After installing necessary packages, you need to download ngx_pagespeed module source. Issue the following command in the terminal one by one.
 
     cd
     NPS_VERSION=1.9.32.6
@@ -54,16 +54,16 @@ After installing necessary packages, you need to download ngx_pagespeed. Issue t
     wget https://dl.google.com/dl/page-speed/psol/${NPS_VERSION}.tar.gz
     tar -xzvf ${NPS_VERSION}.tar.gz
 
-You need to run the above commands one by one. In this example, we will be installing ngx_pagespeed version 1.9.32.6.
+In this example, we will be installing ngx_pagespeed version 1.9.32.6.
 
 ##Download and build Nginx
 
-Now we have downloaded ngx_pagespeed we need to compile Nginx with the ngx_pagespeed module. Issue the following command in the terminal one by one.
+Now we have downloaded ngx_pagespeed we need to compile Nginx with the ngx_pagespeed module. Issue the following command in the terminal.
 
 We now need to move back to our home directory.
     cd
 
-In the command, we are defining the version of Nginx we will be using so that we won't have to write it again and again. At the time of writing current stable version of Nginx is 1.8.0
+In the command, we are defining the version of Nginx we will be using so that we won't have to write it again and again. At the time of writing current stable version of Nginx is 1.8.0.
 
     NGINX_VERSION=1.8.0
 
@@ -92,11 +92,15 @@ Now issue the following command and it will install Nginx with Pagespeed module.
 
 ##Configuring Nginx with ngx_pagespeed
 
-Pagespeed requires and new directory where it can store the cache of minified CSS and javascript.
+Pagespeed requires a new directory where it can store the cache of minified CSS and javascript.
 
-    mkdir /var/ngx_pagespeed_cache
+    sudo mkdir /var/ngx_pagespeed_cache
 
-Now that we have successfully compiled Nginx with Pagespeed module. We need to add some new code in Nginx config file in order to use the module.
+You need to change the ownership of the folder so that webserver can write to this directory.
+
+    sudo chown www-data:www-data /var/ngx_pagespeed_cache
+
+We need to add some new code in Nginx config file in order to use the module.
 
     sudo nano /usr/local/nginx/conf/nginx.conf
 
@@ -113,6 +117,8 @@ Then you need to add the following code to the server block where you want to en
     location ~ “^/pagespeed_static/” { }
     location ~ “^/ngx_pagespeed_beacon$” { }
     ~~~
+
+Also make sure that Nginx is running as `www-data`. In the top of the `conf` file uncomment `user` and replace `nobody` with `www-data`.
 
 ##Starting Nginx
 Now we have everything configured correctly, we need to start our web server.
