@@ -5,7 +5,7 @@ author:
 description: 'Learn how you can install Nginx with the ngx_pagespeed module on Ubuntu 14.04.'
 keywords: 'install ngx_pagespeed, install Nginx from source'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-published: 'Weekday, Month 00th, 2015'
+published: 'Friday, September 11th, 2015'
 modified: Friday, September 11th, 2015
 modified_by:
     name: Linode
