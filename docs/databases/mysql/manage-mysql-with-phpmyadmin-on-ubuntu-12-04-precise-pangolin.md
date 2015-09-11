@@ -1,81 +1,89 @@
 ---
 author:
-  name: James Stewart
-  email: jstewart@linode.com
+    name: James Stewart
+    email: jstewart@linode.com
 description: 'Use phpMyAdmin to manage MySQL databases and users though a web interface.'
-keywords: 'mysql,phpmyadmin,sql,ubuntu'
+keywords: 'mysql,phpmyadmin,sql,ubuntu,precise,ubuntu 12.04,lts,ubuntu lts'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['databases/mysql/phpmyadmin-ubuntu-12-04-precise/']
 modified: Thursday, September 12th, 2013
 modified_by:
-  name: Linode
+    name: Linode
 published: 'Thursday, September 12th, 2013'
-title: 'Manage MySQL with phpMyAdmin on Ubuntu 12.04 (Precise Pangolin)'
+title: 'Manage MySQL with phpMyAdmin on Ubuntu 12.04'
 external_resources:
- - '[phpMyAdmin Home page](http://www.phpmyadmin.net/home_page/index.php)'
- - '[phpMyAdmin Documentation Page](http://www.phpmyadmin.net/home_page/docs.php)'
+    - '[phpMyAdmin Home page](http://www.phpmyadmin.net/home_page/index.php)'
+    - '[phpMyAdmin Documentation Page](http://www.phpmyadmin.net/home_page/docs.php)'
 ---
 
-phpMyAdmin is an open source web application written in PHP that provides a GUI to aid in MySQL database administration. It supports multiple MySQL servers and is a robust and easy alternative to using the MySQL command line client.
+phpMyAdmin is a web application that provides a GUI to aid in MySQL database administration. It supports multiple MySQL servers and is a robust and easy alternative to using the MySQL command line client.
 
-We assume you've followed the steps outlined in our [getting started guide](/docs/getting-started/). All configuration will be performed in a terminal session; make sure you're logged into your Linode as root via SSH. We also assume that you have installed a working LAMP stack. For guides on installing a LAMP stack for your distribution, please visit the [LAMP guides](/docs/lamp-guides/) section of our Linode Library.
+{: .note}
+>
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
-Be aware, if you have opted to install the `php-suhosin` package, there are some known issues when using phpMyAdmin. Please visit the [Suhosin phpMyAdmin Compatibility Issues page](http://www.hardened-php.net/hphp/troubleshooting.html) for more information about tuning and workarounds.
+## Before You Begin
 
-## Preparing Your Apache Configuration
+1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, and the Linode's [hostname is set](/docs/getting-started#setting-the-hostname).
 
-Make sure your package repositories and installed programs are up to date by issuing the following commands:
+    To check your hostname run:
 
-    apt-get update
-    apt-get upgrade --show-upgraded
+        hostname
+        hostname -f
 
-In order to provide better security, this guide will install phpMyAdmin to an SSL secured apache virtual host. While you can use http to access your phpMyAdmin instance, it will send your passwords in plain text over the internet. Since you will most likely be logging in to phpMyAdmin using your MySQL root user, http is definitely not recommended.
+    The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-If you need to set up SSL for your host, please refer to our [using Apache with SSL guide](/docs/web-servers/apache/ssl-guides/). Please ensure SSL is enabled for your virtual host before proceeding.
+2.  Update your system:
 
-phpMyAdmin requires the `mcrypt` PHP module. You can install it using the following command:
+        sudo apt-get update && sudo apt-get upgrade -y
+        
+3.  Set up a working LAMP stack. Please see the [LAMP on Ubuntu 12.04](/docs/websites/lamp/lamp-server-on-ubuntu-12-04-precise-pangolin) guide if needed.
 
-    apt-get install php5-mcrypt
+    {: .note}
+    >
+    >If you have installed the `php-suhosin` package, there are some known issues when using phpMyAdmin. Please visit the [Suhosin phpMyAdmin Compatibility Issues page](http://www.hardened-php.net/hphp/troubleshooting.html) for more information about tuning and workarounds.
+    
+4.  Set up Apache with SSL, so your passwords will not be sent over plain text. To do so, go trough the [SSL Certificates with Apache on Debian & Ubuntu](/docs/security/ssl/ssl-apache2-debian-ubuntu) guide.
 
-You may need to restart your Apache server daemon for the changes to take effect:
+5.  Install the `mcrypt` PHP module:
 
-    /etc/init.d/apache2 restart
+        sudo apt-get install mcrypt
+        
+6.  Restart Apache:
 
-## Installing phpMyAdmin
+        sudo service apache2 restart
 
-To install the current version of phpMyAdmin on an Ubuntu system use the following command:
 
-    apt-get install phpmyadmin
+## Setting Up phpMyAdmin
 
-You will be asked which server to automatically configure phpMyAdmin for. Select the web server that you have installed. If you have more than one web server installed, select the best option for your deployment.
+1.  Install the current version of phpMyAdmin:
 
-## Configuring phpMyAdmin
+        sudo apt-get install phpmyadmin
 
-For each virtual host that you would like to give access to your PHPMyAdmin installation, you must create a symbolic link from the document root to the phpMyAdmin installation location (`/usr/share/phpmyadmin`)
+    You will be asked which server to automatically configure phpMyAdmin for. Select the web server that you have installed. If you have more than one web server installed, select the best option for your deployment. Follow through the rest of the guided installer to set passwords.
 
-Change directory to your document root and issue the following commands to create the symbolic link (be sure to substitute the proper paths for your particular configuration):
+2.  For each virtual host that you would like to give access to your PHPMyAdmin installation, create a symbolic link from the document root to the phpMyAdmin installation location (`/usr/share/phpmyadmin`):
 
-    cd /srv/www/example.com/public_html
-    ln -s /usr/share/phpmyadmin
+        cd /var/www/example.com/public_html
+        sudo ln -s /usr/share/phpmyadmin
 
-This will create a symbolic link named `phpmyadmin` in your document root.
+    This will create a symbolic link named `phpmyadmin` in your document root.
+
 
 ## Securing phpMyAdmin
 
 ### .htaccess File
 
-We recommend securing your phpMyAdmin directory using an `.htaccess file` and only allowing specified IP addresses to access it. You can do this by creating an `.htaccess` file in your `phpmyadmin` directory. Refer to the sample `.htaccess` file below. Be sure to substitute the proper paths and **IP addresses** for your particular configuration.
+Secure your phpMyAdmin directory using an `.htaccess file` to only allowing specified IP addresses to access it. You can do this by creating an `.htaccess` file in your `phpmyadmin` directory. Substitute the proper paths and **IP addresses** for your particular configuration:
 
 {: .file-excerpt }
-/srv/www/example.com/public\_html/phpmyadmin/.htaccess
+/var/www/example.com/public_html/phpmyadmin/.htaccess
 :   ~~~ apache
     order allow,deny
     allow from 12.34.56.78
     ~~~
 
 ### Force SSL
-
-Since you are required to enter your MySQL credentials when using phpMyAdmin, we recommend that you use SSL to secure HTTP traffic to your phpMyAdmin installation. For more information on using SSL with your websites, please consult the guides that address [SSL certificates](/docs/security/ssl//).
 
 You can force phpMyAdmin to use SSL in the phpMyAdmin configuration file `/etc/phpmyadmin/config.inc.php` by adding the following lines under the `Server(s) configuration` section:
 
