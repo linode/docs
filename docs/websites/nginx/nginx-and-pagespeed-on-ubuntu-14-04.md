@@ -106,17 +106,17 @@ We need to add some new code in Nginx config file in order to use the module.
 
 Then you need to add the following code to the server block where you want to enable Pagepeed module.
 
-{: .file }
-/usr/local/nginx/conf/nginx.conf
-:   ~~~ conf
-    pagespeed on;
-    pagespeed FileCachePath /var/ngx_pagespeed_cache;
-    location ~ “\.pagespeed\.([a-z]\.)?[a-z]{2}\.[^.]{10}\.[^.]+” {
-    add_header “” “”;
-    }
-    location ~ “^/pagespeed_static/” { }
-    location ~ “^/ngx_pagespeed_beacon$” { }
-    ~~~
+    {: .file-excerpt}
+    /usr/local/nginx/conf/nginx.conf
+    :   ~~~ conf
+        pagespeed on;
+        pagespeed FileCachePath /var/ngx_pagespeed_cache;
+        location ~ “\.pagespeed\.([a-z]\.)?[a-z]{2}\.[^.]{10}\.[^.]+” {
+        add_header “” “”;
+        }
+        location ~ “^/pagespeed_static/” { }
+        location ~ “^/ngx_pagespeed_beacon$” { }
+        ~~~
 
 Also make sure that Nginx is running as `www-data`. In the top of the `conf` file uncomment `user` and replace `nobody` with `www-data`.
 
