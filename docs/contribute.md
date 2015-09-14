@@ -27,7 +27,6 @@ Submit your own topic, or choose from the list of open topics we want to add to 
 -   [OpenChange](http://www.openchange.org/)
 -   [WebRTC](http://www.webrtc.org/)
 -   Gaming Servers
--   [Ansible](http://www.ansible.com/home)
 
 Each article is worth $250 if it is accepted for publication. In addition, we always welcome edits, suggestions, and updates to existing guides.
 
