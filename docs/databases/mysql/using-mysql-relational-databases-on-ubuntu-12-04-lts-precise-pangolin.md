@@ -48,7 +48,7 @@ During the installation process, you will be prompted to set a password for the 
 
 [![Setting the MySQL root password in Ubuntu 14.04 LTS (Trusty Tahr).](/docs/assets/mysql-root-pw.png)](/docs/assets/mysql-root-pw.png)
 
-MySQL will bind to localhost (127.0.0.1) by default. Please reference our [MySQL remote access guide](securely-administer-mysql-with-an-ssh-tunnel) for information on connecting to your databases using SSH.
+MySQL will bind to localhost (127.0.0.1) by default. Please reference our [MySQL remote access guide](securely-administer-mysql-with-an-ssh-tunnel) for information on connecting to your databases using an SSH tunnel.
 
 {: .note}
 >
@@ -61,7 +61,7 @@ Run the mysql_secure_installation script to address several security concerns in
 
     sudo mysql_secure_installation
 
-You will be given the choice to change the MySQL root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases. It is recommended that you answer yes to these options. You can read more about the script in in the [MySQL Reference Manual](https://dev.mysql.com/doc/refman/5.5/en/mysql-secure-installation.html).
+You will be given the choice to change the MySQL root password, remove anonymous user accounts, disable root database login outside of localhost, and remove test databases. It is recommended that you answer yes to these options. You can read more about the script in in the [MySQL Reference Manual](https://dev.mysql.com/doc/refman/5.5/en/mysql-secure-installation.html).
 
 
 ## Using MySQL
@@ -124,7 +124,7 @@ The standard tool for interacting with MySQL is the `mysql` client, which instal
 1.  In the example below, `testdb` is the name of the database, `testuser` is the user, and `password` is the user's password.
 
         create database testdb;
-        create user 'testuser'@localhost identified by x'password';
+        create user 'testuser'@localhost identified by 'password';
         grant all on testdb.* to 'testuser';
 
     You can shorten this process by creating the user *while* assigning database permissions:
@@ -167,7 +167,7 @@ You'll now be able to log in again using `mysql -u root -p`.
 
 ## Tune MySQL
 
-[MySQL Tuner](https://github.com/major/MySQLTuner-perl) is a Perl script that connects to a running instance of MySQL and provides configuration recommendations based on workload. Ideally, the MySQL instance should have been operating for at least 24 hours before running the tuner. The longer the instance has been running, the better advice MySQL Tuner will give.
+[MySQL Tuner](https://github.com/major/MySQLTuner-perl) is a Perl script that connects to a running instance of MySQL and provides configuration recommendations based on workload. Ideally, the MySQL instance should have been operating for at least 24 hours before running the tuner. MySQL Tuner recommendations will be more precise the longer the instance has been running.
 
 1.  Install MySQL Tuner from Ubuntu's repositories.
 
@@ -179,4 +179,4 @@ You'll now be able to log in again using `mysql -u root -p`.
 
     You will be asked for the MySQL root user's name and password. The output will show two areas of interest: General recommendations and Variables to adjust.
 
-MySQL Tuner is an excellent starting point to optimize a MySQL server but it would be prudent to perform additional research for configurations tailored to the application(s) utilizing MySQL on your Linode.
+MySQL Tuner is an excellent starting point to optimize a MySQL server, but additional research is recommended for configurations tailored to the application(s) utilizing MySQL on your Linode.
