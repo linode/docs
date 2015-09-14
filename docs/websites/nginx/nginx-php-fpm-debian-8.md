@@ -1,4 +1,4 @@
-High performance Nginx and PHP over Debian 8
+ performance Nginx and PHP over Debian 8
 19th May 2015 by Javier Briz
 
 
@@ -20,39 +20,53 @@ Run the following as root to install nginx, PHP and MySQL connector:
 
 Make sure nginx and PHP-FPM are running
 
-        ps aux|grep -e nginx -e php
+        systemctl status nginx
+        systemctl status php5-fpm
         
 #Nginx setup
 Now we have to setup nginx server to relay on PHP-FPM for PHP requests. 
 By default, PHP-FPM on debian listens on a socket. We are putting everything in one single server so this is ok.
 To find the path for the socket run:
 
-        cat /etc/php5/fpm/pool.d/www.conf |grep 'listen ='
+        grep 'listen =' /etc/php5/fpm/pool.d/www.conf
 
 Probably, it is located in `/var/run/php5-fpm.sock`
 
 We will tell nginx where is this socket in a *server* context in the nginx setup.
-In other words, add following lines to `/etc/nginx/sites-enabled/default`, below start of *server* section:
+It is done by modifying your default host file content. Edit `/etc/nginx/sites-enabled/default` and replace the default content with this:
 
-        location ~ [^/]\.php(/|$) {
-          fastcgi_param REQUEST_METHOD $request_method;
-          fastcgi_pass unix:/var/run/php5-fpm.sock;
-          fastcgi_index index.php;
-          include fastcgi_params;
+        server {
+                server_name _;
+                listen 80 default_server;
+                listen [::]:80 default_server;
+                
+                root /var/www/html;
+                index index.php index.html index.htm;
+
+                location / {
+                        try_files $uri $uri/ =404;
+                }
+
+                location ~ \.php$ {
+                        try_files $uri =404;
+                        fastcgi_pass unix:/var/run/php5-fpm.sock;
+                        fastcgi_index index.php;
+                        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+                        include fastcgi_params;
+                }
         }
 
 Restart nginx by running:
 
-        /etc/init.d/nginx reload
+        systemctl restart nginx
         
 #Test
 Done! Let's test the web server. Just write the following content in /var/www/html/index.php:
 
         <?php
         phpinfo();
-        ?>
 
-And now go to http://example.com/index.php and, if everything is ok, you will see the phpinfo for the installed version.
+And now go to http://[your_linode_node_ip]/index.php and, if everything is ok, you will see the phpinfo for the installed version.
       
 {: .note}
 >
@@ -143,7 +157,7 @@ This is not always possible since some pages may allocate higher amounts of memo
 
 After modifying PHP-FPM setup, just restart it.
 
-        /etc/init.d/php5-fpm restart
+        systemctl restart php5-fpm
 
 #Next steps
 
@@ -162,4 +176,5 @@ A few good tools to do this are iotop, htop, zabbix (for the long term), ps, fre
 - `zabbix` is (imho) the best open source monitoring tool, altough it is a bit complex to install. You can get more information [on zabbix.com](http://www.zabbix.com/).
 
 Other tools, like `ps`, `free` and much others, are usefull when you need a particular data, because its performance is higher than that of the previous tools, but will not offer you a more complete overview of your system.
+
 
