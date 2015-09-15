@@ -38,10 +38,13 @@ This guide assumes that you have created, and are logged in as, a non-root user 
 2.  Setup a postgres user with the same name as the current user
 
         sudo -u postgres createuser --superuser $USER
-        sudo -u postgres psql
-        \password $USER
 
-As this guide assumes you will be using a local Postgres database you may wish to leave the password blank
+    Log into postgres and set the password for your user, if you wish
+
+        sudo -u postgres psql
+        \password username
+
+    As this guide assumes you will be using a local Postgres database you may wish to leave the password blank
 
 3.  To exit Postgres
 
@@ -279,7 +282,7 @@ Sweet! The production environment of your Rails app should now be available via 
 
 If you want to fix that quick.
 
-    vim config/routes.rb
+    vim ~/www/default_app/config/routes.rb
 
 And uncomment
 
@@ -287,7 +290,7 @@ And uncomment
 
 Make a controller
 
-    vim app/controller/welcome_controller.rb
+    vim ~/www/default_app/app/controllers/welcome_controller.rb
 
 Toss in some code
 
@@ -394,15 +397,11 @@ It is going to get repetitive here for a bit.
 
         mkdir -p shared/pids shared/sockets shared/log
 
-10.  Update the Puma.conf script
-
-        sudo vim /etc/puma.conf
-
-    and add the following to the end of the file.
+10. Update the /etc/puma.conf script, adding the following at the end
 
         /home/rick/www/stocks_app
 
-11.  Restart Puma
+11. Restart Puma
 
         sudo restart puma-manager
 
@@ -443,7 +442,7 @@ Your application is not yet accessible to the outside world. For that lets add a
 
 2.  Symlink the stocks_app host file into the sites-enabled folder
 
-    sudo ln -s /etc/nginx/sites-available/stocks_app /etc/nginx/sites-enabled/stocks_app
+        sudo ln -s /etc/nginx/sites-available/stocks_app /etc/nginx/sites-enabled/stocks_app
 
 3.  Restart nginx
 
