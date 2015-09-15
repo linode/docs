@@ -1,26 +1,27 @@
 ---
----
 author:
     name: Linode Community
     email: docs@linode.com
-description: 'Install Zimbra OSE 8.6 on Ubuntu 14.04 LTS'
-keywords: 'zimbra,mailserver,postfix,webmail,install'
+description: 'Install Zimbra OSE 8.6 on Ubuntu 14.04 LTS Linode'
+keywords: 'Zimbra,mail server,postfix,web mail'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+published: 'Friday, September 4th, 2015'
+modified: Weekday, Month 00th, 2015
+modified_by:
+    name: Linode
+title: 'Install Zimbra OSE 8.6 on Ubuntu 14.04 LTS Linode'
+contributor:
+    name: Bill Bardon
+    link: 
 external_resources:
  - '[Zimbra OSE Documentation](https://www.zimbra.com/documentation/zimbra-collaboration-open-source)'
  - '[Running a Mail Server](/docs/email/running-a-mail-server)'
-published: 'Tuesday, August 18th, 2015'
-modified: Tuesday, August 18th, 2015
-modified_by:
-    name: Linode
-title: 'Zimbra OSE on Ubuntu 14.04'
-contributor:
-    name: Bill Bardon
 ---
 
 #Install Zimbra OSE 8.6 on Ubuntu 14.04 LTS Linode
 
-##Intro
+
+##Introduction
 
 Zimbra is a complete mail server that provides a configured postfix with opendkim, amavis, clam-av, and ngnix, ready to handle mail for one or more domains. Zimbra on a Linode is one of the quickest paths to an up-and-running mail server that you will find. This guide will take you through the Zimbra installation procedure.
 
@@ -30,45 +31,45 @@ Zimbra is a complete mail server that provides a configured postfix with opendki
 
 ##Get your Linode set up
 
-1. Create your Linode
+1.  Create your Linode
 
-Use a minimum of 4 GB of RAM, Zimbra will not perform well on less.
+    Use a minimum of 4 GB of RAM, Zimbra will not perform well on less.
 
-See [Getting Started](https://www.linode.com/docs/getting-started) for help setting up your host.
+    See [Getting Started](https://www.linode.com/docs/getting-started) for help setting up your host.
 
-2. Deploy an Ubuntu 14.04 LTS image to your Linode. 
+2.  Deploy an Ubuntu 14.04 LTS image to your Linode. 
 
-I use slightly less than half the available disk space for the first image, keeping the other half for taking a backup image before updates. Your partition size will depend on the number of accounts and volume of mail you expect to handle. Once deployed, boot your new host, and SSH in to the terminal using the command shown on your Remote Access page in Linode Manager, and the password you entered when you created the node.
+    I use slightly less than half the available disk space for the first image, keeping the other half for taking a backup image before updates. Your partition size will depend on the number of accounts and volume of mail you expect to handle. Once deployed, boot your new host, and SSH in to the terminal using the command shown on your Remote Access page in Linode Manager, and the password you entered when you created the node.
 
-The base Ubuntu install provides most of the requirements for installing Zimbra 8.6. I needed to install a few that were missing. We will cover that a little further on.
+    The base Ubuntu install provides most of the requirements for installing Zimbra 8.6. I needed to install a few that were missing. We will cover that a little further on.
 
-3. Set the hostname.
+3.  Set the hostname.
 
-You must [set the hostname](https://www.linode.com/docs/getting-started#ubuntu-1404--debian-7) and [update /etc/hosts](https://www.linode.com/docs/getting-started#update-etchosts) prior to installing Zimbra. 
+    You must [set the hostname](https://www.linode.com/docs/getting-started#ubuntu-1404--debian-7) and fully qualified domain name (FQDN), and [update /etc/hosts](https://www.linode.com/docs/getting-started#update-etchosts) prior to installing Zimbra. 
 
-4. Configure DNS.
+4.  Configure DNS.
 
-Configure your DNS entries at your DNS provider to provide an A record for the host, and point the domain MX record to your new server. A reverse DNS pointer is highly recommended to prevent mail from your server being rejected. See the Linode Guide on running a mail server in the External Resources for details on setting up DNS.
+    Configure your DNS entries at your DNS provider to provide an A record for the host, and point the domain MX record to your new server. A reverse DNS pointer is highly recommended to prevent mail from your server being rejected. See the Linode Guide on running a mail server in the External Resources for details on setting up DNS.
 
 ##Install Zimbra
 
-1. Download the Zimbra install file to your Linode.
+1.  Download the Zimbra install file to your Linode.
 
-Get Zimbra OSE 8.6 from here: [Zimbra Open Source Edition Downloads](https://www.zimbra.com/downloads/zimbra-collaboration-open-source). It's a good idea to read the Release Notes and understand the requirements and caveats before installing. Choose the Ubuntu 14.04 LTS 64-bit release and download it to your Linode with wget. To do this, right-click the _64bit x86_ link in your browser and Copy the link from the Zimbra page. Paste it into your shell command and execute it:
+    Get Zimbra OSE 8.6 from here: [Zimbra Open Source Edition Downloads](https://www.zimbra.com/downloads/zimbra-collaboration-open-source). It's a good idea to read the Release Notes and understand the requirements and caveats before installing. Choose the Ubuntu 14.04 LTS 64-bit release and download it to your Linode with wget. To do this, right-click the _64bit x86_ link in your browser and Copy the link from the Zimbra page. Paste it into your shell command and execute it:
 
     wget https://files.zimbra.com/downloads/8.6.0_GA/zcs-8.6.0_GA_1153.UBUNTU14_64.20141215151116.tgz
 
-2. Extract the file to your Linode root user directory or a temp directory with sufficient space.
+2.  Extract the file to your Linode root user directory or a temp directory with sufficient space.
 
     tar xzf zcs-8.6.0_GA_1153.UBUNTU14_64.20141215151116.tgz
 
-3. Change to the new zcs-8.6.0* directory. Easy way to do this: type
+3.  Change to the new zcs-8.6.0* directory. Easy way to do this: type
 
     cd zcs-8
 
-and then press the **Tab** key. Bash will auto-complete the directory name for you. Press **Enter** to complete the command.
+    and then press the **Tab** key. Bash will auto-complete the directory name for you. Press **Enter** to complete the command.
 
-4. Run the install.sh file
+4.  Run the install.sh file
  
     ./install.sh
 
@@ -140,9 +141,12 @@ Answering **Y**, the installer checks for installed software and reports any dis
     Do you wish to continue? [N] 
 
 
-If any _MISSING_ packages are found, answer No and fix the problems. You may need to [install missing packages using apt-get](https://www.linode.com/docs/tools-reference/linux-package-management#debian-and-ubuntu-package-management), for example:
+If any _MISSING_ packages are found, answer No to quit the installer and fix the problems. You may need to [install missing packages using apt-get](https://www.linode.com/docs/tools-reference/linux-package-management#debian-and-ubuntu-package-management), for example:
 
     apt-get install libgmp10 libperl5.18 libaio1 pax sqlite3
+
+{:.note}
+>This Guide is about setting up a new Zimbra Linode, but if you are upgrading an existing Zimbra installation, it is very important that you read the Release Notes that Zimbra provides! The notes are found on the Download page where you found the software. There may be steps that are required to be performed before or after you upgrade.
 
 Once missing packages are installed, start the installer again. Zimbra will continue with package installation. Accept all the defaults, with the possible exception of the SNMP package if you've no use for SNMP monitoring.
 
@@ -212,7 +216,7 @@ At this point you are ready to allow the install, so answer **Y**. The packages 
 
 If you receive an error about a missing MX record, it means your domain DNS records are not matching what Zimbra expects to find, based on the hostname you configured earlier. Check your /etc/hostname file and your [DNS records](https://www.linode.com/docs/networking/dns/introduction-to-dns-records#mx) to resolve the problem.
 
-In this case I am setting up a test server that will not serve an actual domain, so I continue by answering **N** to skip changing the domain name.
+If you are only testing Zimbra and not deploying, continue by answering **N** to skip changing the domain name.
 
 Next you are presented the Main menu. The installer displays the current settings for Zimbra and allows you to change them. Enter the number of the main section you want to change, and the submenu for that section will be displayed. Enter the number of the item in the section that you want to change, and enter your preferred value.
 
@@ -298,5 +302,48 @@ The installer will begin the final steps to complete the Zimbra install. It will
 
 Visit the hostname with your browser, using https and port 7071. For example, https:// `mail.example.com` :7071/. This will open the login page for the admin console. Log in using the admin account and password created during install. From this console you can configure default settings for new accounts (Zimbra calls this a Class Of Service, or COS), add and manage accounts, change passwords, and generally manage your mail server.
 
-{: caution}
+{: .caution}
 >since you haven't installed a trusted cert yet, you will likely get a browser warning about an untrusted site. Bypass the warning for now. Later you can either add Zimbra's self-signed cert to your browser or install a trusted cert in Zimbra.
+
+##Install SSL Certificate
+
+Zimbra creates and uses a self-signed SSL security certificate upon installation. If you are planning to offer your email service to others, you will want to install a trusted cert from a third-party Certificate Authority (CA).
+
+To create the Certificate Signing Request (CSR),
+
+1.  Log in to the Zimbra admin console
+
+2.  Click the Configure menu, then Certificates.
+
+3.  Click the gear icon in the toolbar and select Install Certificate.
+
+4.  The Zimbra Certificate Installation Wizard will open. Choose your primary domain and click Next.
+
+5.  Select the option to generate the Certificate Signing Request (CSR) and click Next.
+
+6.  For details on how to properly fill the form, I suggest visiting the CA where you are planning to purchase the cert, and following their recommendations. Generally, you will enter your FQDN as the common name, the appropriate country, state/province, city and your own organization name. Leave the Alternative name blank if your cert will only be used for the primary domain, or enter the other forms of your domain (different hosts, subdomains) if you will be getting a wildcard or multi-domain cert. For purposes of email, your cert only needs to authenticate your server's FQDN.
+
+7.  Copy the CSR text and Finish the Zimbra wizard, switch to your third-party CA's web site and follow through their process to purchase your SSL certificate.
+
+Once you have received your cert files from the CA, install it in Zimbra.
+
+1.  In the Zimbra admin console, click the Configure menu, then Certificates.
+
+2.  Click the gear icon in the toolbar and select Install Certificate.
+
+3.  The Zimbra Certificate Installation Wizard will open. Choose your primary domain and click Next.
+
+4.  Select the option to install the commercially signed certificate and click Next.
+
+5.  Review the information in your CSR one more time, then click Next.
+
+6.  Upload the files received from your CA. Various CAs deliver the certificate, the intermediate CA and root CA files in different ways. You may receive a ZIP file containing everything you need, or you may need to download the root and intermediate CA files from their web site. Again, consult your CA's web site for the correct handling of these files. Once you have all the needed pieces, upload each component using the Browse buttons in the Certificate Installation Wizard. Then click Next.
+
+7.  The wizard will install the new cert. Once finished, you can confirm the install in two ways. In the admin console, go to Configure, Certificates, and double-click your server name. The certificate information will be displayed. Or, visit your server's Zimbra web mail page and display the cert info in your browser.
+
+
+##Further reading
+
+[Zimbra OSE Documentation](https://www.zimbra.com/documentation/zimbra-collaboration-open-source)
+
+[Running a Mail Server](https://www.linode.com/docs/email/running-a-mail-server)
