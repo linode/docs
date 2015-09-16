@@ -54,7 +54,7 @@ Start by installing OpenVPN:
 
         sudo iptables -F && sudo iptables -X
 
-2.  Create a temporary file and paste in the ruleset below. The `TUN` virtual interface is how the OpenVPN daemon communicates with your Linode's `eth0` hardware interface.
+2.  Create a temporary file and paste in the ruleset below. The `TUN` virtual interface is how the OpenVPN daemon communicates with your Linode's `eth0` hardware interface. `TUN` is actually what receives the VPN traffic from clients, not the bare-metal ethernet hardware.
 
     {:. file}
     /tmp/myiptables
@@ -73,13 +73,13 @@ Start by installing OpenVPN:
 
         #Allow pings.
         -A INPUT -p icmp --icmp-type echo-request -j ACCEPT
-        -A OUTPUT -p icmp --icmp-type echo-reply -j ACCEPT
+        -A OUTPUT -p icmp -j ACCEPT
 
         #Allow SSH.
         -A INPUT -i eth0 -p tcp -m state --state NEW,ESTABLISHED --dport 22 -j ACCEPT
         -A OUTPUT -o eth0 -p tcp -m state --state ESTABLISHED --sport 22 -j ACCEPT
 
-        #Allow limited DNS resolution and HTTP/S.
+        #Allow limited DNS resolution and HTTP/S on eth0.
         #Necessary for updating the server and keeping time.
         -A INPUT -i eth0 -p udp -m state --state ESTABLISHED --sport 53 -j ACCEPT
         -A OUTPUT -o eth0 -p udp -m state --state NEW,ESTABLISHED --dport 53 -j ACCEPT
@@ -146,13 +146,50 @@ Then go into `/etc/hosts` and comment out the line for IPv6 resolution over loca
 
         sudo ip6tables -F && sudo ip6tables -X
 
-2.  Create a temporary rule list. The rules above work equally for both v4 and v6, but only choose those you would need. For example: You likely won't SSH into the server over IPv6, but you would want to accept the incoming traffic to port 1194 for OpenVPN.
+2.  Create a temporary rule list. The rules above work equally for both v4 and v6, but only choose those you would need. For example: You likely won't be updating the server over IPv6 but you would want to accept incoming IPv6 traffic to OpenVPN on port 1194.
+
+    Such a ruleset could look like this:
+
+    {:. file}
+    /tmp/myip6tables
+    :   ~~~ conf
+
+        *filter
+
+        #Set all default policies to drop anything not specified below.
+        -P INPUT ACCEPT
+        -P FORWARD DROP
+        -P OUTPUT DROP
+
+        #Allow loopback interface to only ::1.
+        -A INPUT -s ::1 -j ACCEPT
+        -A OUTPUT -s 0:0:0:0:0:0:0:1 -j ACCEPT
+
+        #Allow pings.
+        -A INPUT -p icmpv6 --icmpv6 -j ACCEPT
+        -A OUTPUT -p icmpv6 --icmpv6 -j ACCEPT
+
+        #Allow UDP traffic to port 1194.
+        -A INPUT -i eth0 -p udp -m state --state NEW --dport 1194 -j ACCEPT
+        -A OUTPUT -o eth0 -p udp -m state --state ESTABLISHED --sport 1194 -j ACCEPT
+
+        #Allow traffic on the TUN interface.
+        -A INPUT -i tun+ -j ACCEPT
+        -A OUTPUT -o tun+ -j ACCEPT
+
+        #Log and reject any packets which
+        #don't fit the rules above.
+        -A INPUT -m limit --limit 5/min -j LOG --log-prefix "ip6tables denied: " --log-level 4
+        -A INPUT -j REJECT
+
+        COMMIT
+        ~~~
 
 3.  Import your rule list.
 
         sudo ip6tables-restore < /tmp/myip6tables
 
-4.  Run `sudo iptables-persistent` again. Select `no` to save the current IPv4 rules and `yes` for IPv6 rules.
+4.  Run `sudo iptables-persistent` again. Select `no` to save the current IPv4 rules (because they were not changed) and `yes` for IPv6 rules.
 
 ### Remove Unnecessary Network Services
 
@@ -341,8 +378,56 @@ Each client device connecting to the VPN should have its own unique key. Further
 >
 >Anyone with access to `client1.key` will be able to access your VPN. To better protect against this scenario, you can issue `./build-key-pass client1` instead to build a client key which is encrypted with a passphrase.
 
+## Client Configuration File
+
+Each client computer or device which will connect to the VPN needs a configuration file which defines the settings you will pass on to your VPN client. Each client connecting to the VPN will need its own configuration file.
+
+2.  Copy the `client.conf` ftemplate file to your home directory and `cd` to there.
+
+        cp /usr/share/doc/openvpn/examples/sample-config-files/client.conf ~/ && cd ~
+
+3.  Update the `remote` line with the OpenVPN server's IP address:
+
+    {: .file }
+    ~/client.conf
+    :   ~~~ conf
+        # The hostname/IP and port of the server.
+        # You can have multiple remote entries
+        # to load balance between the servers.
+
+        remote 123.456.78.9 1194
+        ~~~
+
+    {: .note }
+    >
+    >A hostname would work just as well here but since this a security-minded OpenVPN guide and Linodes all have static public IP addresses, it's preferable here to connect by IP and bypass DNS the lookup.
+
+5.  Further down in the file, edit the `cert` and `key` lines to reflect the name of your key. In this example we use `client1` for the file name.
+
+    {: .file }
+    ~/client.conf
+    :   ~~~ conf
+        # SSL/TLS parms.
+        # See the server config file for more
+        # description.  It's best to use
+        # a separate .crt/.key file pair
+        # for each client.  A single ca
+        # file can be used for all clients.
+        ca ca.crt
+        cert client1.crt
+        key client1.key
+        ~~~
+
+## Initial Startup
+
+Start the OpenVPN daemon and enable it on reboot.
+
+    sudo systemctl enable openvpn && sudo systemctl start openvpn
+
+This will scan the `/etc/openvpn` directory on the server for files with a `.conf` extension. For every file that it finds, it will create and run a VPN daemon (server).
+
 ## Next Steps
 
-At this point, you should have a operational*** OpenVPN server and a set of certificat/key pairs for your intended client devices. If you want your client devices to have internet access from behind the VPN, see part two of this series.
+At this point, you should have a operational OpenVPN server and a set of certificat/key pairs for your intended client devices. If you want your clients to have internet access from behind the VPN, see part two of this series: [How to Set up a VPN Tunnel with Debian 8](***).
 
-If you only intend to use your OpenVPN server as an extension of your local network, move on to part three to get the client credentials uploaded and software installed.
+If you only intend to use your OpenVPN server as an extension of your local network, move on to part three: [How to Configure OpenVPN Client Devices](***)
