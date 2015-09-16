@@ -182,7 +182,7 @@ Both the Puppet master and nodes configured above are functional, but not fully 
 
 3.  Move to the `manifests` directory and create your first class, called `init.pp`. All modules require an `init.pp` file to be used as the main definition file of a module.
 
-4.  Within the `init.pp` file, define a superuser to use instead of `root`, replacing all instances of `username` with your choosen username:
+4.  Within the `init.pp` file, define a superuser to use instead of `root`, replacing all instances of `username` with your chosen username:
 
     {: .file}
     /etc/puppet/modules/accounts/manifests/init.pp
@@ -202,7 +202,7 @@ Both the Puppet master and nodes configured above are functional, but not fully 
 
     The `init.pp` file initially defines the *class*, accounts. It then calls to the `user` resource, where a `username` is defined. The `ensure` value is set to ensure that the user is present. The `home` value should be set to the user's home directory path. `shell` defines the shell type, in this instance the bash shell. `managehome` notes that the home directory should be created, and, finally, `gid` sets the primary group for the user.
     
-5.  Although the primary group is set to share the username, the group itself has not been created. Save and exit `init.pp` and then open a new file called `groups.pp`. This file will be used to create the user's group:
+5.  Although the primary group is set to share the username, the group itself has not been created. Save and exit `init.pp` and then open a new file called `groups.pp`. This file will be used to create the user's group. Again replace `username` with your chosen username:
 
     {: .file}
     /etc/puppet/modules/accounts/manifests/groups.pp
@@ -405,8 +405,8 @@ Although a new user has successfully been added to the Puppet master, the accoun
         
           include groups        
           include ssh
-          
-        }
+        
+        ...
         ~~~
         
 6.  Run the Puppet parser, then navigate to the `examples` directory to test and run `puppet apply`:
@@ -433,7 +433,7 @@ Although a new user has successfully been added to the Puppet master, the accoun
 3.  Create a file titled `pre.pp`, which will contain all basic networking rules that should be run first:
 
     {: .file}
-    pre.pp
+    /etc/puppet/modules/firewall/manifests/pre.pp
     :   ~~~ pp
         class firewall::pre {
 
