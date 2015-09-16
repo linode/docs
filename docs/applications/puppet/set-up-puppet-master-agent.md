@@ -5,6 +5,7 @@ author:
 description: 'Basic setup and configuration of a Puppet master and agents. Puppet is a configuration automation platform that allows users to efficiently manage servers'
 keywords: 'puppet,puppet installation,configuration change management,server automation,puppet master,puppet agent'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+alias: ['/docs/websites/puppet/basic-puppet-setup-and-configuration/']['/docs/websites/puppet/manage-and-automate-systems-configuration-with-puppet/']
 modified: Friday, July 17th, 2015
 modified_by:
     name: Elle Krout
@@ -159,6 +160,10 @@ For each of the agent nodes:
 ## Add Modules to Configure Nodes (Optional)
 
 Both the Puppet master and nodes configured above are functional, but not fully secure. Based off concepts from the [Securing Your Server](/docs/security/securing-your-server/) guide, a superuser and a firewall should be configured. This can be done on all nodes through the creation of basic Puppet modules, shown below.
+
+{: .note}
+>
+>This is meant to provide as basis for a fully-hardened server, and is intended as learning resource. Alter and add firewall and other configuration options as needed.
 
 ### Add a Superuser
 
