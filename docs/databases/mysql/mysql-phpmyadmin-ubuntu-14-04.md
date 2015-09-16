@@ -24,7 +24,7 @@ phpMyAdmin is a web application that provides a GUI to aid in MySQL database adm
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, and the Linode's [hostname is set](/docs/getting-started#setting-the-hostname).
+1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides and the Linode's [hostname is set](/docs/getting-started#setting-the-hostname).
 
     To check your hostname run:
 
@@ -74,7 +74,7 @@ phpMyAdmin is a web application that provides a GUI to aid in MySQL database adm
 
 ### .htaccess File
 
-Secure your phpMyAdmin directory using an `.htaccess file` to only allowing specified IP addresses to access it. You can do this by creating an `.htaccess` file in your `phpmyadmin` directory. Substitute the proper paths and **IP addresses** for your particular configuration:
+Secure your phpMyAdmin directory using an `.htaccess file` that only allows specified IP addresses to access it. You can do this by creating an `.htaccess` file in your `phpmyadmin` directory. Substitute the proper paths and **IP addresses** for your particular configuration:
 
 {: .file-excerpt }
 /var/www/example.com/public_html/phpmyadmin/.htaccess
