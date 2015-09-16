@@ -3,14 +3,14 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Use phpMyAdmin to manage MySQL databases and users though a web interface.'
-keywords: 'mysql,phpmyadmin,sql,debian,debian 8,php,mysql management'
+keywords: 'mysql,phpmyadmin,localhost phpmyadmin,php mysql,http localhost phpmyadmin,sql,debian,debian 8,php,mysql management'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['databases/mysql/phpmyadmin-debian-7-wheezy/']
 modified: Wednesday, January 15th, 2014
 modified_by:
   name: Linode
 published: 'Thursday, January 2nd, 2014'
-title: 'Managing MySQL with phpMyAdmin on Debian 8'
+title: 'How to Install MySQL with phpMyAdmin on Debian 8'
 ---
 
 phpMyAdmin is a web application that provides a GUI to aid in MySQL database administration. It supports multiple MySQL servers and is a robust and easy alternative to using the MySQL command line client.
