@@ -1,26 +1,23 @@
 ---
 author:
-  name: Linode
-  email: docs@linode.com
-description: 'A basic guide to installing NGINX Open Source from source on Ubuntu 14.04 LTS (Trusty Tahr)'
-keywords: 'nginx,NGINX ubuntu 14.04,http,web servers,ubuntu,ubuntu 14.04,ubuntu'
+    name: Linode
+    email: docs@linode.com
+description: 'A basic guide to installing Nginx Open Source from source on Ubuntu 14.04 LTS (Trusty Tahr)'
+keywords: 'nginx,nginx ubuntu 14.04,http,web servers,ubuntu,ubuntu 14.04,ubuntu'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: Tuesday, July 7th, 2015
 modified_by:
-  name: Elle Krout
-<<<<<<< HEAD
+    name: Elle Krout
 published: 'Tuesday, July 8th, 2015'
 title: 'Installing Nginx on Ubuntu 14.04 LTS'
-=======
 published: 'Tuesday, July 7th, 2015'
-title: 'Installing NGINX on Ubuntu 14.04 LTS'
->>>>>>> 21bf0e2b22674963d791337bba38941360abfb42
+title: 'Installing Nginx on Ubuntu 14.04 LTS'
 external_links:
- - '[Linode Library nginx Documentation](/docs/web-servers/nginx/)'
- - '[nginx Community Documentation](https://www.nginx.com/resources/more/)'
+    - '[Linode Library nginx Documentation](/docs/web-servers/nginx/)'
+    - '[nginx Community Documentation](https://www.nginx.com/resources/more/)'
 ---
 
-NGINX is a lightweight, high performance web server designed with the purpose of delivering large amounts of static content quickly and with efficient use of system resources. In contrast to the [Apache server](/docs/web-servers/apache/), NGINX uses an asynchronous event-driven model which provides more predictable performance under load.
+Nginx is a lightweight, high performance web server designed with the purpose of delivering large amounts of static content quickly and with efficient use of system resources. In contrast to the [Apache server](/docs/web-servers/apache/), NGINX uses an asynchronous event-driven model which provides more predictable performance under load.
 
 {: .note}
 >
@@ -37,93 +34,93 @@ NGINX is a lightweight, high performance web server designed with the purpose of
 
     The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-2.  Update your system.
+2.  Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
 
-## Installing NGINX
+## Installing Nginx
 
-There are [two branches](https://www.nginx.com/products/feature-matrix/) of NGINX. *NGINX Open Source* will be the focus of this guide and there are two sources from which you can install it on your Linode: Either from a distro's repositories or from [NGINX Inc.](https://www.nginx.com/), the company which formed behind the software to provide commercial features and support. Each way has its benefits and drawbacks.
+There are [two branches](https://www.nginx.com/products/feature-matrix/) of Nginx. *Nginx Open Source* will be the focus of this guide and there are two sources from which you can install it on your Linode: Either from a distro's repositories or from [NGINX Inc.](https://www.nginx.com/), the company which formed behind the software to provide commercial features and support. Each way has its benefits and drawbacks.
 
-### Option 1: Install from Ubuntu's Repositories
+### Installing from Ubuntu's Repositories
 
-This method is the easiest and it ensures that NGINX has been tested to run at its best on Ubuntu. The Ubuntu repositories are often a few versions behind the latest NGINX stable release though, so while NGINX will still receive security patches, it can be lacking features and bug fixes in comparison.
+This method is the easiest and it ensures that Nginx has been tested to run at its best on Ubuntu. The Ubuntu repositories are often a few versions behind the latest Nginx stable release, so while Nginx will still receive security patches, it can be lacking features and bug fixes in comparison.
 
-
-1.  Install the NGINX web server.
+1.  Install the Nginx web server:
 
         sudo apt-get install nginx
 
     The server will automatically start after the installation completes.
 
-2. Go to the [Testing NGINX](#testing-nginx) section of this guide to ensure your server is accessible.
+2.  Go to the [Testing Nginx](#testing-nginx) section of this guide to ensure your server is accessible.
 
 
-### Option 2: Install from NGINX Inc.
+### Installing from NGINX
 
-NGINX's [downloads page](https://www.nginx.com/download-oss-information/) has two more ways to install the web server: Using pre-built packages from the official NGINX repository or by building from source code. Either method will give you a more current version than what's available in Trusty Tahr but with a slightly higher chance of encountering unforseen issues because of newly introduced bugs, and the fact that these releases are not tested exclusively for a specific Linux distribution.
+Nginx's [downloads page](https://www.nginx.com/download-oss-information/) has two more ways to install the web server: Using pre-built packages from the official Nginx repository or by building from source code. Either method will give you a more current version than what's available in Trusty Tahr but with a slightly higher chance of encountering unforseen issues because of newly-introduced bugs, and that these releases are not tested exclusively for a specific Linux distribution.
 
-#### Option 2a: Install from the Offcial NGINX Repository
+#### Installing from the Offcial Nginx Repository
 
-The binary packages from NGINX's repo will update you to new versions of the web server when available. You can choose the [stable](http://nginx.org/en/linux_packages.html#stable) or [mainline](http://nginx.org/en/linux_packages.html#mainline) versions. If unsure, choose stable, which will be the example used for the remainder of this guide.
+The binary packages from Nginx's repo will update you to new versions of the web server when available. You can choose the [stable](http://nginx.org/en/linux_packages.html#stable) or [mainline](http://nginx.org/en/linux_packages.html#mainline) versions. If unsure, choose stable, which will be the example used for the remainder of this guide.
 
-1.  Add the NGINX repository to Ubuntu's `sources.list` file.
+1.  Add the Nginx repository to Ubuntu's `sources.list` file:
 
     {: .file-excerpt}
     /etc/apt/sources.list
-    : ~~~ ini
-    deb http://nginx.org/packages/ubuntu/ trusty nginx
-    deb-src http://nginx.org/packages/ubuntu/ trusty nginx
-    ~~~
+    :   ~~~
+        deb http://nginx.org/packages/ubuntu/ trusty nginx
+        deb-src http://nginx.org/packages/ubuntu/ trusty nginx
+        ~~~
 
     {: .note}
     >
-    >The `deb-src` line is only needed if you want repository access to NGINX's source code.
+    >The `deb-src` line is only needed if you want repository access to Nginx's source code.
 
-2. Download and add NGINX's repository key to your GPG keyring.
+2.  Download and add Nginx's repository key to your GPG keyring:
 
         sudo wget http://nginx.org/keys/nginx_signing.key
         sudo apt-key add nginx_signing.key
 
-3. Update the repository lists and install NGINX.
+3.  Update the repository lists and install Nginx:
 
         sudo apt-get update && sudo apt-get install nginx
 
     The server will automatically start after the installation completes.
 
-4. Go to the [Testing NGINX](#testing-nginx) section of this guide to ensure your server is accessible.
+4. Go to the [Testing Nginx](#testing-nginx) section of this guide to ensure your server is accessible.
 
-#### Option 2b: Install from Source Distribution
 
-Compiling from source gives you the most flexibility and choice for optimization with [compiling options](http://wiki.nginx.org/InstallOptionsz) and [third-party modules](http://wiki.nginx.org/Nginx3rdPartyModules). You can also verify the PGP signature of the distributed tarball before compiling. The major drawback here is that it is the longest and most difficult option, and this method will not add a repository so the process must be redone each time you want to upgrade NGINX.
+#### Installing from Source Distribution
 
-1.  Install the needed dependencies to build NGINX.
+Compiling from source gives you the most flexibility and choice for optimization with [compiling options](http://wiki.nginx.org/InstallOptionsz) and [third-party modules](http://wiki.nginx.org/Nginx3rdPartyModules). You can also verify the PGP signature of the distributed tarball before compiling.
+
+1.  Install the needed dependencies to build Nginx:
 
         sudo apt-get install libpcre3-dev build-essential libssl-dev
 
-2.  You can use any location you prefer to build from. Here, `/opt` will be used. Navigate to it.
+2.  You can use any location you prefer to build from. Here, `/opt` will be used. Navigate to it:
 
         cd /opt
 
-3.  [Download](https://www.nginx.com/) the latest version of NGINX Open Source and its PGP signature. You will have the choice of mainline, stable or legacy versions. Again, stable (1.8.0 at the time of this writing) is used as an example. 
+3.  [Download](https://www.nginx.com/) the latest version of Nginx Open Source and its PGP signature. You will have the choice of mainline, stable or legacy versions. Again, stable (1.8.0 at the time of this writing) is used as an example. 
 
         sudo wget http://nginx.org/download/nginx-1.8.0.tar.gz
         sudo wget http://nginx.org/download/nginx-1.8.0.tar.gz.asc
 
-4. Attempt to verify the tarball's signature.
+4.  Attempt to verify the tarball's signature:
 
         gpg nginx-1.8.0.tar.gz.asc
 
-    **The check will fail** because you don't yet have the public RSA key of the signer, and to get it you first need the RSA key ID from the output. Example:
+    **The check will fail** because you don't yet have the public RSA key of the signer, and to get it you first need the RSA key ID from the output:
 
         gpg: Signature made Tue 21 Apr 2015 02:14:01 PM UTC using RSA key ID A1C052F8
         gpg: Can't check signature: public key not found
 
-    Use the RSA key ID to download the public key from MIT's PGP key server. Then import it.
+    Use the RSA key ID to download the public key from MIT's PGP key server. Then import it:
 
         gpg --keyserver pgpkeys.mit.edu --recv-key A1C052F8
 
-    Run the key check again.
+    Run the key check again:
 
         gpg nginx-1.8.0.tar.gz.asc
 
@@ -135,21 +132,12 @@ Compiling from source gives you the most flexibility and choice for optimization
         gpg: Total number processed: 1
         gpg:               imported: 1  (RSA: 1)
 
-
-     With version 1.8.0, it is Maxim Dounin who [authored](http://hg.nginx.org/nginx/shortlog/6235?revcount=120) this tarball. While the signatures match, the key is still considered untrusted. You can either leave this as is, or if you want to ultimately trust Maxim's PGP key, `gpg --edit-key mdounin@mdounin.ru` will run the interactive process to do that.
-
-
-      {: .note}
-      >
-      >As an alternative to the MIT keyserver, you could [check Mercurial](http://hg.nginx.org/nginx/shortlog/6235?revcount=120) for who on the NGINX team packaged the tarball you just downloaded. Then `wget` that person's key from [here](http://nginx.org/en/pgp_keys.html), import it and use that for the signature check.
-
-
-5.  Expand the source code and change to the new directory.
+5.  Expand the source code and change to the new directory:
 
         sudo tar -zxvf nginx*.tar.gz
         cd /opt/nginx-*
 
-5.  Configure the build options.
+5.  Configure the build options:
 
         sudo ./configure --prefix=/opt/nginx --user=nginx --group=nginx --with-http_ssl_module --with-ipv6
 
@@ -175,18 +163,18 @@ Compiling from source gives you the most flexibility and choice for optimization
           nginx http uwsgi temporary files: "uwsgi_temp"
           nginx http scgi temporary files: "scgi_temp"
 
-6.  Build and install NGINX with the above configuration.
+6.  Build and install Nginx with the above configuration:
 
         sudo make
         sudo make install
 
-7.  As the root user, create a separate user and group for NGINX.
+7.  As the root user, create a separate user and group for Nginx:
 
         sudo adduser --system --no-create-home --disabled-login --disabled-password --group nginx 
 
     NGINX is now installed in `/opt/nginx`.
 
-8.  Installing from source doesn't include an init file to control when NGINX starts and stops during boot and shutdown. You can either extract that file from the *[nginx-common](http://packages.ubuntu.com/trusty/nginx-common)* package at packages.ubuntu.com, or create an SysV script to manage NGINX as shown below.
+8.  Installing from source doesn't include an init file to control when Nginx starts and stops during boot and shutdown. You can either extract that file from the *[nginx-common](http://packages.ubuntu.com/trusty/nginx-common)* package at packages.ubuntu.com, or create an SysV script to manage NGINX as shown below:
 
     {: .file}
     /etc/init.d/nginx
@@ -255,18 +243,18 @@ Compiling from source gives you the most flexibility and choice for optimization
             exit 0
         ~~~
 
-9.  Make the file executable and add it to the default run levels.
+9.  Make the file executable and add it to the default run levels:
 
         sudo chmod +x /etc/init.d/nginx
         sudo /usr/sbin/update-rc.d -f nginx defaults 
 
-10. Start NGINX.
+10. Start Nginx:
 
         sudo service nginx start
 
-##Testing NGINX
+## Testing Nginx
 
-Regardless of installation source or method, NGINX can be tested by navigating to your Linode's IP address or FQDN in your browser. You should see the NGINX welcome banner shown below.
+Regardless of installation source or method, Nginx can be tested by navigating to your Linode's IP address or FQDN in your browser. You should see the NGINX welcome banner shown below.
 
 ![Nginx welcome](/docs/assets/nginx-welcome.png)
 
