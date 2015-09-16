@@ -51,13 +51,13 @@ To generate passwords, we need the `htpasswd` tool. For many distributions, this
 
 To create a new file with a single user, issue the following command:
 
-    htpasswd -c /srv/auth/.htpasswd squire
+    htpasswd -c /srv/auth/.htpasswd username
 
-In this example, we instruct the program to create a new `AuthUserFile` with the `-c` option. The file is to be located at `/srv/auth/.htpasswd` and the user name is `squire`. `htpasswd` will prompt you to enter a password and then confirm the password.
+In this example, we instruct the program to create a new `AuthUserFile` with the `-c` option. The file is to be located at `/srv/auth/.htpasswd` and the user name is `username`. `htpasswd` will prompt you to enter a password and then confirm the password.
 
 If you have an existing file, omit the `-c` option. The `-b` option allows you to enter the password as the last parameter of the command, as in this example :
 
-    htpasswd -b /srv/auth/.htpasswd squire 5t1ck6
+    htpasswd -b /srv/auth/.htpasswd username 5t1ck6
 
 The `AuthUserFile` will, when populated look something like this:
 
@@ -66,7 +66,7 @@ The `AuthUserFile` will, when populated look something like this:
 :   ~~~
     hobby:isiA3Q4djD/.Q
     fore:{SHA}x9VvwHI6dmgk9VTE0A8o6hbCw2s=
-    squire:\$apr1\$vVzQJxvX\$6EyHww61nnZr6IdQv0pVx/
+    username:\$apr1\$vVzQJxvX\$6EyHww61nnZr6IdQv0pVx/
     ~~~
 
 Each user is specified on their own line. Each line follows the form `[username]:[hash]`, where the `[hash]` is a cryptographic hash of the users' password. This provides one-way encryption and some small measure of additional security.
@@ -89,10 +89,10 @@ To address this need, Apache allows you to use a single `UserAuthFile`, containi
 {: .file-excerpt }
 Apache configuration option
 :   ~~~
-    Require user squire fore
+    Require user username fore
     ~~~
 
-Given this directive, the users `squire` and `fore` will be able to log into the resource. Any subset of users can be specified on the `Require` line. Apache also provides the ability to organize users into groups, and then permit access to resources based on group membership. The configuration directives for this setup would look like this:
+Given this directive, the users `username` and `fore` will be able to log into the resource. Any subset of users can be specified on the `Require` line. Apache also provides the ability to organize users into groups, and then permit access to resources based on group membership. The configuration directives for this setup would look like this:
 
 {: .file-excerpt }
 Apache configuration file
@@ -108,11 +108,11 @@ In this example, we cite the same `AuthUserFile`, but we add an `AuthGroupFile` 
 {: .file-excerpt }
 /srv/auth/.htgroup
 :   ~~~
-    Authorized: squire betty
+    Authorized: username betty
     Team: fore hobby
     ~~~
 
-Given this `htgroup` file, only the users `squire` and `betty` will have access to the above listed resource. The syntax of the group file follows a simple `[groupname]: [username 1] [username 2] [...]`. You can put as many usernames from your `AuthUserFile` into a group entry as you need for the particular resource.
+Given this `htgroup` file, only the users `username` and `betty` will have access to the above listed resource. The syntax of the group file follows a simple `[groupname]: [username 1] [username 2] [...]`. You can put as many usernames from your `AuthUserFile` into a group entry as you need for the particular resource.
 
 ## The Caveats of HTTP Authentication
 

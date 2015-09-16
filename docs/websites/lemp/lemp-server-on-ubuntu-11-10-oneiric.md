@@ -276,11 +276,11 @@ Issue the following command to get a root prompt for the MySQL server:
 
     mysql -u root -p
 
-Enter the root password created above and then issue the following sequence of commands to create the `example` and `squire` database users, grant the `squire` user access to the `example` database, and exit from the database:
+Enter the root password created above and then issue the following sequence of commands to create the `example` and `username` database users, grant the `username` user access to the `example` database, and exit from the database:
 
     CREATE DATABASE example;
-    CREATE USER 'squire' IDENTIFIED BY 's8723hk2';
-    GRANT ALL PRIVILEGES ON example.* TO 'squire';
+    CREATE USER 'username' IDENTIFIED BY 's8723hk2';
+    GRANT ALL PRIVILEGES ON example.* TO 'username';
     exit
 
 You may now provide the credentials for the `example` database and the `bagman` user to your application, which will now be able to use the database for its purposes. To ensure that PHP will be able to access the MySQL connector your just installed, restart the PHP service by issue the following command:
@@ -308,7 +308,7 @@ More Information
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [Basic nginx Configuration](/docs/websites/nginx/basic-nginx-configuration)
-- [Clustered Web Servers and Software Load Balancing with nginx](/docs/uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing)
+- [Clustered Web Servers and Software Load Balancing with nginx](/docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer)
 - [Deploy CGI and Perl Scripts with Perl-FastCGI and nginx](/docs/web-servers/nginx/perl-fastcgi/ubuntu-11.10-natty)
 - [Use PostgeSQL as an Alternative to MySQL for data storage](/docs/databases/postgresql/ubuntu-11.10-maverick)
 - [Deploy Python Applications with uWSGI and nginx](/docs/web-servers/nginx/python-uwsgi/ubuntu-11.10-maverick)

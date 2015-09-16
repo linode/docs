@@ -33,10 +33,10 @@ The `Redirect` configuration directive can be located in "main" server configura
 {: .file-excerpt }
 Apache configuration option
 :   ~~~ apache
-    Redirect /squire http://team.example.com/~squire/
+    Redirect /username http://team.example.com/~username/
     ~~~
 
-If no argument is given, `Redirect` sends a temporary (e.g. 302) status. In this case, the client (user agent) is informed that the resource available at `/squire` has moved temporarily to `http://team.example.com/~squire/`.
+If no argument is given, `Redirect` sends a temporary (e.g. 302) status. In this case, the client (user agent) is informed that the resource available at `/username` has moved temporarily to `http://team.example.com/~username/`.
 
 Remember that no matter what configuration file they are located in, `Redirect` statements must specify the full path of the redirected resource following the domain name. These statements must also include the full URL of the resource's new location..
 
@@ -45,10 +45,10 @@ To specify a particular HTTP redirection status, specify one of the following st
 {: .file-excerpt }
 Apache configuration option
 :   ~~~ apache
-    Redirect permanent /squire http://team.example.com/~squire/
-    Redirect temp /squire http://team.example.com/~squire/
-    Redirect seeother /squire http://team.example.com/~squire/
-    Redirect gone /squire
+    Redirect permanent /username http://team.example.com/~username/
+    Redirect temp /username http://team.example.com/~username/
+    Redirect seeother /username http://team.example.com/~username/
+    Redirect gone /username
     ~~~
 
 This redirection tells the client that the resource has moved permanently, which corresponds to HTTP status 301. The "temp" status is the default behavior, specifying that the redirection is only temporary; this corresponds to HTTP status 302. The "seeother" status sends a signal (HTTP status 303) that says the requested resource has been replaced by another resource. Finally, the "gone" status tells the client that the resource has been removed (permanently); this sends the HTTP status 410, as an alternative to the unavailable "404" status. In the case of the "gone" redirection, omit the final URL.
@@ -58,10 +58,10 @@ You can also specify specific HTTP codes, as follows.
 {: .file-excerpt }
 Apache configuration option
 :   ~~~ apache
-    Redirect 301 /squire http://team.example.com/~squire/
-    Redirect 302 /squire http://team.example.com/~squire/
-    Redirect 303 /squire http://team.example.com/~squire/
-    Redirect 410 /squire
+    Redirect 301 /username http://team.example.com/~username/
+    Redirect 302 /username http://team.example.com/~username/
+    Redirect 303 /username http://team.example.com/~username/
+    Redirect 410 /username
     ~~~
 
 Apache also provides two additional directives for permanent and temporary redirections that are a bit more clear. They are as follows:
@@ -69,8 +69,8 @@ Apache also provides two additional directives for permanent and temporary redir
 {: .file-excerpt }
 Apache configuration option
 :   ~~~ apache
-    RedirectPermanent /squire/bio.html http://team.example.com/~squire/bio/
-    RedirectTemp /squire/bio.html http://team.example.com/~squire/bio/
+    RedirectPermanent /username/bio.html http://team.example.com/~username/bio/
+    RedirectTemp /username/bio.html http://team.example.com/~username/bio/
     ~~~
 
 Additionally, Apache makes it possible to redirect a given class of requests to match a given regular expression using the `RedirectMatch` directive. For example:

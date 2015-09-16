@@ -41,7 +41,7 @@ The transition from a development installation of CakePHP to a production instal
 /etc/apache2/sites-available/example.com
 :   ~~~ apache
     <VirtualHost *:80>
-         ServerAdmin squire@example.com
+         ServerAdmin username@example.com
          ServerName example.com
          ServerAlias www.example.com
          DocumentRoot /srv/www/example.com/public_html/cake_1_2/app/webroot/

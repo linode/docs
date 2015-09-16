@@ -131,7 +131,7 @@ Apache `VirtualHost` Configuration
     <VirtualHost *:80>
        ServerName example.com
        ServerAlias www.example.com
-       ServerAdmin squire@example.com
+       ServerAdmin username@example.com
 
        DocumentRoot /var/www/example.com/public_html
 

@@ -62,6 +62,6 @@ Apache Configuration
     </Directory>
     ~~~
 
-In this example, requests for URLs such as `http://example.com/code/projects/lollipop` and `http://example.com/code/projects/glorishears` will be served resources in `/srv/git/projects/lollipop` and `/srv/git/projects/glorishears` respectively. However, `http://example.com/code/projects` would be served from `/srv/www/example.com/public_html/code/projects/` rather than `/srv/git/projects/`, because of the trailing slash in the alias to `/code/projects/(.+)`.
+In this example, requests for URLs such as `http://example.com/code/projects/my_app` and `http://example.com/code/projects/my_app2` will be served resources in `/srv/git/projects/my_app` and `/srv/git/projects/my_app2` respectively. However, `http://example.com/code/projects` would be served from `/srv/www/example.com/public_html/code/projects/` rather than `/srv/git/projects/`, because of the trailing slash in the alias to `/code/projects/(.+)`.
 
 Although the potential use case for `Alias` is somewhat narrow, the functionality is very powerful for maintaining a secure and well organized web server.

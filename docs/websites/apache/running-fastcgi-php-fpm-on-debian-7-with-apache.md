@@ -14,12 +14,12 @@ external_resources:
  - '[mod_fastcgi configuration directives](http://www.fastcgi.com/mod_fastcgi/docs/mod_fastcgi.html)'
 modified: Saturday, August 16, 2014
 modified_by:
-  name: Dave Russell Jr
+  name: Linode
 published: 'Monday, June 16, 2014'
 title: 'Running mod_fastcgi and PHP-FPM on Debian 7 (Wheezy) with Apache'
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $100 per published guide.*
+*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
 
 <hr>
 
@@ -166,9 +166,9 @@ We will now configure Apache to pass all requests for PHP files, with the _php_ 
 
         sudo service apache2 restart
 
-If you did not get the _Syntax OK_ result, check your configuration for errors.
+    If you did not get the _Syntax OK_ result, check your configuration for errors.
 
-10.  Check if the PHP is working by creating and accessing a page with `phpinfo()` displayed. The following command will create info.php in /var/www (default directory for websites in Apache):
+10. Check if the PHP is working by creating and accessing a page with `phpinfo()` displayed. The following command will create info.php in /var/www (default directory for websites in Apache):
 
         sudo echo "<?php phpinfo(); ?>" > /var/www/info.php
 

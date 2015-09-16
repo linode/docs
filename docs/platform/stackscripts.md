@@ -130,7 +130,7 @@ This will download the StackScript on the Linode as `ssinclude-[NUMBER]`. To dow
 
     source <ssinclude StackScriptID="[NUMBER]">
 
-Otherwise execute the script on a second line, as seen below:
+If you're scripting in another language, execute the script on a second line, as seen below:
 
     <ssinclude StackScriptID="[NUMBER]">
     ./ssinclude-[NUMBER]
@@ -234,7 +234,7 @@ The [Linode API](http://www.linode.com/api/index.cfm) contains support for manag
 -   [stackscript.create](https://www.linode.com/api/stackscript/stackscript.create)
 -   [stackscript.list](https://www.linode.com/api/stackscript/stackscript.list)
 -   [stackscript.update](https://www.linode.com/api/stackscript/stackscript.update)
--   [linode.disk.createfromestackscript](https://www.linode.com/api/linode/linode.disk.createfromstackscript)
+-   [linode.disk.createfromstackscript](https://www.linode.com/api/linode/linode.disk.createfromstackscript)
 
     {: .note }
     >

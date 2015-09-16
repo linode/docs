@@ -12,7 +12,7 @@ published: 'Friday, February 7th, 2014'
 title: 'LEMP Server on Debian 8'
 external_resources:
     - '[Basic Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration)'
-    - '[Clustered Web Servers and Software Load Balancing with Nginx](/docs/uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing)'
+    - '[Clustered Web Servers and Software Load Balancing with Nginx](/docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer)'
     - '[Deploy CGI and Perl Scripts with Perl-FastCGI and Nginx](/docs/web-servers/nginx/perl-fastcgi/debian-6-squeeze)'
     - '[Use PostgeSQL as an Alternative to MySQL for data storage](/docs/databases/postgresql/debian-6-squeeze)'
     - '[Deploy Python Applications with uWSGI and Nginx](/docs/web-servers/nginx/python-uwsgi/debian-6-squeeze)'
@@ -59,11 +59,11 @@ Install Nginx:
     server {
         listen   80;
         server_name www.example.com example.com;
-        access_log /srv/www/example.com/logs/access.log;
-        error_log /srv/www/example.com/logs/error.log;
+        access_log /var/www/html/example.com/logs/access.log;
+        error_log /var/www/html/example.com/logs/error.log;
 
         location / {
-            root   /srv/www/example.com/public_html;
+            root   /var/www/html/example.com/public_html;
             index  index.html index.htm;
         }
     }
@@ -72,7 +72,7 @@ Install Nginx:
 
 2.  Create the `public_html` and `log` directories referenced above:
 
-        sudo mkdir -p /srv/www/example.com/{public_html,logs}
+        sudo mkdir -p /var/www/html/example.com/{public_html,logs}
 
 3.  Enable the site and restart the web server.
 
@@ -121,7 +121,7 @@ For more information regarding Nginx configuration options, check out our [Overv
             include /etc/nginx/fastcgi_params;
             fastcgi_pass  127.0.0.1:9000;
             fastcgi_index index.php;
-            fastcgi_param SCRIPT_FILENAME /srv/www/example.com/public_html$fastcgi_script_name;
+            fastcgi_param SCRIPT_FILENAME /var/www/html/example.com/public_html$fastcgi_script_name;
         }
         ~~~
 
@@ -137,7 +137,7 @@ For more information regarding Nginx configuration options, check out our [Overv
     >    include /etc/nginx/fastcgi_params;
     >    fastcgi_pass 127.0.0.1:9000;
     >    fastcgi_index index.php;
-    >    fastcgi_param SCRIPT_FILENAME /srv/www/example.com/public_html$fastcgi_script_name;
+    >    fastcgi_param SCRIPT_FILENAME /var/www/html/example.com/public_html$fastcgi_script_name;
     >}
     >~~~
     >
@@ -150,7 +150,7 @@ For more information regarding Nginx configuration options, check out our [Overv
     >        fastcgi_pass 127.0.0.1:9000;
     >    }
     >    fastcgi_index index.php;
-    >    fastcgi_param SCRIPT_FILENAME /srv/www/example.com/public_html$fastcgi_script_name;
+    >    fastcgi_param SCRIPT_FILENAME /var/www/html/example.com/public_html$fastcgi_script_name;
     >}
     >~~~
 
@@ -176,10 +176,10 @@ MySQL database engine may be the leading open source relational database engine,
 
     You will be prompted to enter the MySQL root user password.
 
-3.  Create a database and grant your users permissions on it. Change the database name (`lollipop`) and username (`foreman`). Change the password (`5t1ck`):
+3.  Create a database and grant your users permissions on it. Change the database name (`webdata`) and username (`username`). Change the password (`password`):
 
-        create database lollipop;
-        grant all on lollipop.* to 'foreman' identified by '5t1ck';
+        create database webdata;
+        grant all on webdata.* to 'username' identified by 'password';
 
 4.  Exit MySQL:
 

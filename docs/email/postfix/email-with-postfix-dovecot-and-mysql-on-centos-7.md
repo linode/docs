@@ -184,7 +184,7 @@ Next, perform additional Postfix configuration to set up communication with the 
 7.  Complete the remaining steps required for Postfix configuration. Please be sure to replace `server.example.com` with the Linode's fully qualified domain name. If you are planning on using your own SSL certificate and key, replace `/etc/pki/dovecot/private/dovecot.pem` with the appropriate path:
 
         postconf -e 'myhostname = server.example.com'
-        postconf -e 'mydestination = $myhostname, localhost, localhost.localdomain'
+        postconf -e 'mydestination = localhost, localhost.localdomain'
         postconf -e 'mynetworks = 127.0.0.0/8'
         postconf -e 'inet_interfaces = all'
         postconf -e 'message_size_limit = 30720000'
@@ -241,8 +241,8 @@ This completes the configuration for Postfix.
         log_timestamp = "%Y-%m-%d %H:%M:%S "
         mail_location = maildir:/home/vmail/%d/%n/Maildir
 
-        ssl_cert = /etc/pki/dovecot/certs/dovecot.pem
-        ssl_key = /etc/pki/dovecot/private/dovecot.pem
+        ssl_cert_file = /etc/pki/dovecot/certs/dovecot.pem
+        ssl_key_file = /etc/pki/dovecot/private/dovecot.pem
 
         namespace {
             type = private

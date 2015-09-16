@@ -124,7 +124,7 @@ First create example.com (`/etc/apache2/sites-available/example.com`) so that it
 /etc/apache2/sites-available/example.com
 :   ~~~ apache
     <VirtualHost 12.34.56.78:80> 
-             ServerAdmin squire@example.com     
+             ServerAdmin username@example.com     
          ServerName example.com
          ServerAlias www.example.com
          DocumentRoot /srv/www/example.com/public_html/
@@ -148,7 +148,7 @@ Next, create example.com (`/etc/apache2/sites-available/example.com`) so that it
 /etc/apache2/sites-available/example.com
 :   ~~~ apache
     <VirtualHost 12.34.56.78:80> 
-         ServerAdmin squire@example.com
+         ServerAdmin username@example.com
          ServerName example.com
          ServerAlias www.example.com
          DocumentRoot /srv/www/example.com/public_html/

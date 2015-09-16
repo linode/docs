@@ -146,7 +146,7 @@ Making a new configuration profile allows you to create a new and separate boot 
 3.  Select a Linode. The Linode's dashboard appears.
 4.  Select the **Create a new Configuration Profile** link. The *Configuration Profile* webpage appears, as shown below.
 
-	[![Creating a configuration profile](/docs/assets/989-disk6-small.png)](/docs/assets/988-disk6.png)
+	[![Creating a configuration profile](/docs/assets/createconfprofile-small.png)](/docs/assets/createconfprofile.png)
 
 5.  Enter a descriptive name for the configuration profile in the **Label** field. This name appears on the dashboard and will help you differentiate it from other configuration profiles.
 6.  You can enter comments or notes about this configuration profile in the **Notes** field.

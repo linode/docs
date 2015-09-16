@@ -61,7 +61,7 @@ planet.conf
 
     name = Planet example link = <http://example.com/>
     owner_name = example Square
-    owner_email = <squire@example.com>
+    owner_email = <username@example.com>
     output_theme = /var/www/example.com/planet-theme
     cache_directory = /var/www/example.com/planet-cache
     output_dir = /var/www/example.com/public_html

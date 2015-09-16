@@ -21,7 +21,7 @@ contributor:
 ---
 
 *This is a Linode Community guide. [Write for us](/docs/contribute) and
-earn $100 per published guide.*
+earn $250 per published guide.*
 
 <hr>
 

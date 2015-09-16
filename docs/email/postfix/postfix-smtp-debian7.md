@@ -15,7 +15,7 @@ published: 'Friday, May 30th, 2014'
 title: Configure Postfix to Send Mail Using an External SMTP Server
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $100 per published guide.*
+*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
 
 There are many reasons why you would want to configure Postfix to send email using an external SMTP provider such as Google Apps (Gmail), Mandrill, SendGrid, Amazon SES, or any other SMTP server. One reason is to avoid getting your mail flagged as spam if your current server's IP has been added to a spam list.
 

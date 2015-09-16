@@ -50,7 +50,7 @@ planet.conf
 :   ~~~
     name=example link=http://example.com
 
-    owner_name=squire <owner_email=squire@example.com>
+    owner_name=username <owner_email=username@example.com>
 
     cache_dir = /srv/www/example.com/planet_cache
 

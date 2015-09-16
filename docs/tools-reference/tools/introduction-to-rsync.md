@@ -8,7 +8,7 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['linux-tools/utilities/rsync/']
 modified: Friday, August 31st, 2012
 modified_by:
-  name: Chris Ciufo
+  name: Linode
 published: 'Tuesday, September 8th, 2009'
 title: Introduction to Rsync
 external_resources:
@@ -54,13 +54,13 @@ There are many other options that allow you to constrain the behavior of the rsy
 
 Once options are specified, provide the source followed by the destination for transfer. You can use rsync to synchronize two directories locally to perform efficient local backups. Locations may also be specified using the following SSH/SCP syntax:
 
-    squire@example.com:/home/squire/lollipop/
+    username@example.com:/home/username/dir/
 
-In this example, `squire` represents the username, `example.com` represents the location of the remote source, and finally `/home/squire/lollipop/` is the path to the source files.
+In this example, `username` represents the username, `example.com` represents the location of the remote source, and finally `/home/username/dir/` is the path to the source files.
 
 By default rsync uses SSH; if you're using the `rsync` daemon rather than SSH, by prefixing the location with `rsync://`.
 
-You can also specify local paths for rsync commands using the format you're likely already familiar with, using either absolute paths (e.g. `/home/squire/photos/bells.png`) or relative paths with the `-R` option (e.g. `../../photos/bells.png`).
+You can also specify local paths for rsync commands using the format you're likely already familiar with, using either absolute paths (e.g. `/home/username/photos/bells.png`) or relative paths with the `-R` option (e.g. `../../photos/bells.png`).
 
 For remote rsync operations, either the source **or** the destination can be remote, depending on their order. See the following example use cases to get a more clear idea of how you might use rsync.
 
@@ -72,9 +72,9 @@ To more fully understand the capabilities of rsync consider the following applie
 
 If you develop your content or applications locally before publishing it to the network, you may benefit from using rsync as a deployment tool. Because rsync is efficient and incremental, once you've done the initial deployment, minor changes can be pushed out very quickly. Here is an example of what this might look like:
 
-    rsync -zr /home/squire/wiki/ squire@web.example.com:/home/squire/public/wiki
+    rsync -zr /home/username/wiki/ username@web.example.com:/home/username/public/wiki
 
-The `-z` and `-r` options were enabled to recursively copy files from the `wiki/` directory and compress the files during transfer. Local files were copied from the `/home/squire/wiki` directory to the `/home/squire/public/wiki` directory on the `web.example.com` machine. You might combine this command with other commands, including `sed`, to further automate deployment processes.
+The `-z` and `-r` options were enabled to recursively copy files from the `wiki/` directory and compress the files during transfer. Local files were copied from the `/home/username/wiki` directory to the `/home/username/public/wiki` directory on the `web.example.com` machine. You might combine this command with other commands, including `sed`, to further automate deployment processes.
 
 ### Use Rsync to Back Up Production Environments
 
@@ -82,17 +82,17 @@ Rsync is a great tool for maintaining a backup copy of a production environment.
 
 Note: rsync commands copy files to or from local filesystems to local or remote filesystems. To copy files between two remote servers you would have to execute rsync commands on one of the remote machines over SSH.
 
-    ssh squire@web.example.com rsync -a /home/squire/public/wiki \ 
+    ssh username@web.example.com rsync -a /home/username/public/wiki \ 
         fore@web-backup.example.com:/home/fore/public/wiki
 
-This command, issued on the local machine, copies the `/home/squire/public/wiki` directory (with the `-a` option enabled for archive mode) on the `web.example.com` server to the `/home/fore/public/wiki` folder on the `web-backup.example.com` server.
+This command, issued on the local machine, copies the `/home/username/public/wiki` directory (with the `-a` option enabled for archive mode) on the `web.example.com` server to the `/home/fore/public/wiki` folder on the `web-backup.example.com` server.
 
 You could also back up a production environment to the local filesystem with the following command:
 
-    rsync -rz squire@web.example.com:/home/squire/public/wiki \ 
+    rsync -rz username@web.example.com:/home/username/public/wiki \ 
         /home/robin/web-backups/duck-wiki
 
-This command creates a backup of `/home/squire/public/wiki` on the `web.example.com` server in the local directory `/home/robin/web-backups/duck-wiki`.
+This command creates a backup of `/home/username/public/wiki` on the `web.example.com` server in the local directory `/home/robin/web-backups/duck-wiki`.
 
 The locations in this command can be swapped in order to back up a set of local files to a remote machine for efficient off-site backups. Use the `-a` option if you want to preserve file permissions and ownership after the sync operation.
 

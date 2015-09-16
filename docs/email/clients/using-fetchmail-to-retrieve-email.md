@@ -54,23 +54,23 @@ You can specify a number of different accounts in your `~/.fetchmailrc` and even
 {: .file-excerpt }
 .fetchmailrc
 : ~~~
-	poll example.com protocol pop3 username "squire" password "XXX"
+	poll example.com protocol pop3 username "username" password "XXX"
 ~~~
 
-This assumes that the username on the remote pop3 server is the same as the local user. In this case, mail will be delivered to the default system mail spool using in an `mbox` format and located at `/var/mail/squire`. Allow us to consider the following example:
+This assumes that the username on the remote pop3 server is the same as the local user. In this case, mail will be delivered to the default system mail spool using in an `mbox` format and located at `/var/mail/username`. Allow us to consider the following example:
 
 {: .file-excerpt }
 .fetchmailrc
 : ~~~
 	poll mail.example.com protocol pop3:
-	     username "admin" password "dir3cti0n" is "squire" here;
+	     username "admin" password "dir3cti0n" is "username" here;
 	     username "fore" password "0rd3r" is "foreman" here;
 
 	poll mail.example.org protocol pop3 with option sslproto '':
 	     user "betty" password "p1nk" mda "/usr/bin/procmail -d %T":   user "betty" password "p1nk" mda "/usr/bin/procmail -d %T"
 ~~~
 
-In the first specification, fetchmail is told to check the `mail.example.com` server, using the POP3 protocol, for the users `admin` and `fore`." Also, the "`is "[username]" here;` directive is used to clarify the relationship between a remote user (i.e. `admin` and `fore`) and users on the local machine (i.e. `squire` and `foreman`).
+In the first specification, fetchmail is told to check the `mail.example.com` server, using the POP3 protocol, for the users `admin` and `fore`." Also, the "`is "[username]" here;` directive is used to clarify the relationship between a remote user (i.e. `admin` and `fore`) and users on the local machine (i.e. `username` and `foreman`).
 
 In the second example, a single account (i.e. `betty`) is retrieved from the remote server (i.e. `mail.dexample.org`) and passed to the MDA `procmail` utility. Additionally, account has the `sslproto` option is enabled to encrypt this traffic using `ssl`.
 
@@ -115,7 +115,7 @@ In addition to the configuration options described above, fetchmail provides a n
 {: .file-excerpt }
 .fetchmailrc
 : ~~~
-	set daemon [seconds] set postmaster "squire"
+	set daemon [seconds] set postmaster "username"
 	
 	set logfile "\~/logs/fetchmail.log" set syslog
 ~~~
@@ -147,15 +147,15 @@ The `set postmaster` option allows you to configure where otherwise undeliverabl
 {: .file-excerpt }
 .fetchmailrc
 : ~~~
-	set postmaster "squire"
+	set postmaster "username"
 
 	poll email.example.com protocol pop3:
-	     username "squire" password "dir3cti0n";
+	     username "username" password "dir3cti0n";
 	     username "fore" password "0rd3r";
 	     username "gigs" password "p@rty";
 ~~~
 
-Assuming that there are system user accounts for `squire` and `fore`, mail downloaded from these accounts will be deposited in `/var/mail/squire` and `/var/mail/fore` respectively. However, if there is no system account for a `gigs` user this mail would be deposited in the `squire` user's mail spool (i.e. `/var/mail/squire`) because the `squire` user is set as the postmaster for this fetchmail session.
+Assuming that there are system user accounts for `username` and `fore`, mail downloaded from these accounts will be deposited in `/var/mail/username` and `/var/mail/fore` respectively. However, if there is no system account for a `gigs` user this mail would be deposited in the `username` user's mail spool (i.e. `/var/mail/username`) because the `username` user is set as the postmaster for this fetchmail session.
 
 ### Logging
 
@@ -181,7 +181,7 @@ Typically, fetchmail is used to retrieve email from POP3 mailboxes; however, it 
 .fetchmailrc
 : ~~~
 	poll email.example.com protocol imap:
-	     username "squire" password "dir3cti0n";
+	     username "username" password "dir3cti0n";
 	poll mail.example.org protocol kpop:
 	     username "fore" password "0rd3r";
 	poll email.example.net protocol etrn:
@@ -200,7 +200,7 @@ Fetchmail provides a number of alternate options for authenticating to your mail
 .netrc
 : ~~~
 	machine email.example.com
-	        login squire
+	        login username
 	        password d1r3ct1on
 	machine mail.example.org
 	        login jeff
@@ -212,9 +212,9 @@ Fetchmail provides a number of alternate options for authenticating to your mail
 
 The `ftp` UNIX utility also uses the `.netrc` file, so you can use this feature to avoid duplicating. If usernames are not provided in a `.netrc` file or in `.fetchmailrc`, fetchmail will try to connect to the remote server using the current user's username on the local system to connect to the remote server. The fetchmail program accepts alternate usernames with the `-u` option. This command takes the following syntax:
 
-    fetchmail -u squire example.com
+    fetchmail -u username example.com
 
-In this example, fetchmail will connect with the username `squire` to the server at `example.com`. All of these authentication options, including specifying credentials in the `.fetchmailrc` will allow fetchmail to successfully retrieve email. However, in contemporary deployments, specifying usernames and passwords in the `.fetchmailrc` file is the most popular and efficient option by far.
+In this example, fetchmail will connect with the username `username` to the server at `example.com`. All of these authentication options, including specifying credentials in the `.fetchmailrc` will allow fetchmail to successfully retrieve email. However, in contemporary deployments, specifying usernames and passwords in the `.fetchmailrc` file is the most popular and efficient option by far.
 
 ### Workflows with Fetchmail
 
