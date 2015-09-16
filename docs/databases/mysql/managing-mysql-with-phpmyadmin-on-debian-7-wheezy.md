@@ -24,7 +24,7 @@ phpMyAdmin is a web application that provides a GUI to aid in MySQL database adm
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, and the Linode's [hostname is set](/docs/getting-started#setting-the-hostname).
+1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides and the Linode's [hostname is set](/docs/getting-started#setting-the-hostname).
 
     To check your hostname run:
 
@@ -60,7 +60,7 @@ phpMyAdmin is a web application that provides a GUI to aid in MySQL database adm
 
         sudo apt-get install phpmyadmin
 
-    You will be asked which server to automatically configure phpMyAdmin for. Select "apache2". When asked to configure database for phpmyadmin with dbconfig-common select yes.
+    You will be asked which server to automatically configure phpMyAdmin for. Select "apache2." When asked to configure database for phpmyadmin with dbconfig-common select yes.
 
 2.  For each virtual host that you would like to give access to your PHPMyAdmin installation, create a symbolic link from the document root to the phpMyAdmin installation location (`/usr/share/phpmyadmin`):
 
@@ -74,7 +74,7 @@ phpMyAdmin is a web application that provides a GUI to aid in MySQL database adm
 
 ### .htaccess File
 
-Secure your phpMyAdmin directory using an `.htaccess file` to only allowing specified IP addresses to access it. You can do this by creating an `.htaccess` file in your `phpmyadmin` directory. Substitute the proper paths and **IP addresses** for your particular configuration:
+Secure your phpMyAdmin directory using an `.htaccess file` that only allows specified IP addresses to access it. You can do this by creating an `.htaccess` file in your `phpmyadmin` directory. Substitute the proper paths and **IP addresses** for your particular configuration:
 
 
 {: .file-excerpt }
