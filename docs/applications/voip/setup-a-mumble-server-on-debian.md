@@ -6,7 +6,9 @@ This guide requires nothing to be done on the system beforehand.
 
 All commands are ran as root in this guide.  If you are not root, you can use sudo for this.  Just prepend sudo to all the commands.
 
-## Install and Simple Setup
+## Server Side
+
+### Install and Simple Setup
 
 1. Since murmur is in the official Debian repositories, we can just use apt-get to install it.  Be careful though, the package is `mumble-server` and not `murmur`.
 
@@ -30,7 +32,7 @@ Now it will ask you to set a SuperUser password.  Murmur has a SuperUser account
 
 You now have a working mumble server.  Now it's time to configure it.
 
-## More Configuration
+### More Configuration
 
 If you need more configuration, such as port numbers and maximum users, murmur has a settings file at `/etc/mumble-server.ini`.  Here's a list of settings that are included.  There are more settings than listed and are further explained in the settings file.
 
@@ -58,7 +60,7 @@ For Debian 7 or earlier:
 service mumble-server restart
 ```
 
-## Extra Information
+### Extra Information
 
 If you wish to disable the server starting at boot, you can use your init system to disable it.
 
@@ -75,3 +77,80 @@ service mumble-server disable
 ```
 
 For more information on mumble and murmur, you can visit the [Mumble Wiki](http://wiki.mumble.info/wiki/Main_Page).
+
+## Client Side
+
+### Installation
+
+On Windows, go to (link) and download and install the installer.
+On Mac, go to (link) and download and install the installer.
+
+On Ubuntu/Debian, install the package `mumble`.
+
+```
+sudo apt-get install mumble
+```
+
+On Fedora, install the package `mumble`.
+
+```
+sudo yum install mumble
+```
+
+On Arch Linux, install the package `mumble`.
+
+```
+sudo pacman -Sy mumble
+```
+
+### Connecting As SuperUser
+
+After you install the client and server, if you want to grant permissions to other users or make changes to the server, you must connect as 
+SuperUser.  SuperUser cannot be used to speak on the server, only to make changes.
+
+To connect, open the client, then click Server then Connect.  This opens the Mumble Server Connect dialog.
+
+[![Image description](/docs/assets/mumble-server-list.png)](/docs/assets/mumble-server-list.png)
+
+There click Add New at the bottom, them type in the following.
+
+- **Label** - Anything you want.
+- **Address** - The IP address or domain name of the server.
+- **Port** - Leave default (64738) unless you changed in the server's configuration.
+- **Username** - SuperUser
+- **Password** - Whatever you set the SuperUser password to in the server's setup.
+
+[![Image description](/docs/assets/mumble-superuser-info.png)](/docs/assets/mumble-superuser-info.png)
+
+Then once it's added to your server list, select it and click Connect.
+
+[![Image description](/docs/assets/mumble-server-list-with-favorite.png)](/docs/assets/mumble-server-list-with-favorite.png)
+
+Mumble may then ask you if you want to accept a self-signed certificate.  Since in this guide, we never set up an SSL certificate, just select "Yes" on this dialog.
+
+[![Image description](/docs/assets/mumble-accept-certificate.png)](/docs/assets/mumble-accept-certificate.png)
+
+You should now be connected as SuperUser.  You can make changes to the server by right-clicking the Root channel and selecting edit.  Please refer to the [Mumble Wiki](http://wiki.mumble.info/wiki/Main_Page) for more information on how to configure channels.
+
+[![Image description](/docs/assets/mumble-connected-as-superuser-resized.png)](/docs/assets/mumble-connected-as-superuser.png)
+
+### Connecting As Normal User
+
+When a normal user connects, it's relatively the same process as connecting as SuperUser, just without a password (unless you set one) and you can use it to communicate.
+
+To connect, open the client, then click Server then Connect.  This opens the Mumble Server Connect dialog.
+
+[![Image description](/docs/assets/mumble-server-list.png)](/docs/assets/mumble-server-list.png)
+
+There click Add New at the bottom, them type in the following.
+
+- **Label** - Anything you want.
+- **Address** - The IP address or domain name of the server.
+- **Port** - Leave default (64738) unless you changed in the server's configuration.
+- **Username** - Anything you want to be named on the server.
+
+[![Image description](/docs/assets/mumble-connect-as-normal-user.png)](/docs/assets/mumble-connect-as-normal-user.png)
+
+You should now be logged in as a normal user and can use the server normally.
+
+[![Image description](/docs/assets/mumble-connected-as-normal-user-resized.png)](/docs/assets/mumble-connected-as-normal-user.png)
