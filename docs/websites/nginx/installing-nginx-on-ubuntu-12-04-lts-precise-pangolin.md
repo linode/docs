@@ -1,14 +1,22 @@
 ---
 deprecated: false
 author:
+<<<<<<< HEAD:docs/websites/nginx/installing-nginx-on-ubuntu-12-04-lts-precise-pangolin.md
   name: Linode
   email: docs@linode.com
 description: 'A basic guide to installing nginx from source on Ubuntu 12.04 LTS (Precise Pangolin)'
 keywords: 'nginx,nginx ubuntu 12.04,http,web servers,ubuntu,ubuntu l2.04,ubuntu precise pangolin'
+=======
+    name: Linode
+    email: docs@linode.com
+description: 'A basic guide to installing Nginx Open Source from source on Ubuntu 14.04 LTS (Trusty Tahr)'
+keywords: 'nginx,nginx ubuntu 14.04,http,web servers,ubuntu,ubuntu 14.04,ubuntu'
+>>>>>>> 55f809c9d99212149e0cda10810cba4325daa5d8:docs/websites/nginx/install-nginx-ubuntu-14-04.md
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-servers/nginx/installation/ubuntu-12-04-precise-pangolin','websites/nginx/websites-with-nginx-on-ubuntu-12-04-lts-precise-pangolin/','websites/nginx/websites-with-nginx-on-ubuntu-12-04-lts-precise-pangolin/index.cfm/','websites/nginx/install-nginx-ubuntu-12-04/']
 modified: Friday, August 14th, 2015
 modified_by:
+<<<<<<< HEAD:docs/websites/nginx/installing-nginx-on-ubuntu-12-04-lts-precise-pangolin.md
   name: Elle Krout
 published: 'Wednesday, October 24th, 2012'
 title: 'Installing Nginx on Ubuntu 12.04 LTS (Precise Pangolin)'
@@ -20,6 +28,19 @@ external_links:
 ---
 
 Nginx is a lightweight, high performance web server designed to deliver large amounts of static content quickly and with efficient use of system resources. In contrast to the [Apache server](/docs/web-servers/apache/), Nginx uses an asynchronous event-driven model which provides more predictable performance under load.
+=======
+    name: Elle Krout
+published: 'Tuesday, July 8th, 2015'
+title: 'Installing Nginx on Ubuntu 14.04 LTS'
+published: 'Tuesday, July 7th, 2015'
+title: 'Installing Nginx on Ubuntu 14.04 LTS'
+external_links:
+    - '[Linode Library nginx Documentation](/docs/web-servers/nginx/)'
+    - '[nginx Community Documentation](https://www.nginx.com/resources/more/)'
+---
+
+Nginx is a lightweight, high performance web server designed with the purpose of delivering large amounts of static content quickly and with efficient use of system resources. In contrast to the [Apache server](/docs/web-servers/apache/), NGINX uses an asynchronous event-driven model which provides more predictable performance under load.
+>>>>>>> 55f809c9d99212149e0cda10810cba4325daa5d8:docs/websites/nginx/install-nginx-ubuntu-14-04.md
 
 {: .note}
 >
@@ -42,38 +63,117 @@ Nginx is a lightweight, high performance web server designed to deliver large am
 
 ## Installing Nginx
 
+There are [two branches](https://www.nginx.com/products/feature-matrix/) of Nginx. *Nginx Open Source* will be the focus of this guide and there are two sources from which you can install it on your Linode: Either from a distro's repositories or from [NGINX Inc.](https://www.nginx.com/), the company which formed behind the software to provide commercial features and support. Each way has its benefits and drawbacks.
 
-### Install Nginx from Ubuntu Repositories
+### Installing from Ubuntu's Repositories
 
+<<<<<<< HEAD:docs/websites/nginx/installing-nginx-on-ubuntu-12-04-lts-precise-pangolin.md
 Nginx is included in the Ubuntu software repositories. Installing Nginx from the Ubuntu repositories ensures that Nginx has been tested and successfully runs at its best on Ubuntu. However, the Ubuntu repositories are often a few versions behind the latest Nginx release.
+=======
+This method is the easiest and it ensures that Nginx has been tested to run at its best on Ubuntu. The Ubuntu repositories are often a few versions behind the latest Nginx stable release, so while Nginx will still receive security patches, it can be lacking features and bug fixes in comparison.
+>>>>>>> 55f809c9d99212149e0cda10810cba4325daa5d8:docs/websites/nginx/install-nginx-ubuntu-14-04.md
 
 1.  Install the Nginx web server:
 
         sudo apt-get install nginx
 
-2.  Start the server:
+    The server will automatically start after the installation completes.
 
-        sudo service nginx start
+2.  Go to the [Testing Nginx](#testing-nginx) section of this guide to ensure your server is accessible.
 
+
+### Installing from NGINX
+
+Nginx's [downloads page](https://www.nginx.com/download-oss-information/) has two more ways to install the web server: Using pre-built packages from the official Nginx repository or by building from source code. Either method will give you a more current version than what's available in Trusty Tahr but with a slightly higher chance of encountering unforseen issues because of newly-introduced bugs, and that these releases are not tested exclusively for a specific Linux distribution.
+
+#### Installing from the Offcial Nginx Repository
+
+The binary packages from Nginx's repo will update you to new versions of the web server when available. You can choose the [stable](http://nginx.org/en/linux_packages.html#stable) or [mainline](http://nginx.org/en/linux_packages.html#mainline) versions. If unsure, choose stable, which will be the example used for the remainder of this guide.
+
+1.  Add the Nginx repository to Ubuntu's `sources.list` file:
+
+    {: .file-excerpt}
+    /etc/apt/sources.list
+    :   ~~~
+        deb http://nginx.org/packages/ubuntu/ trusty nginx
+        deb-src http://nginx.org/packages/ubuntu/ trusty nginx
+        ~~~
+
+    {: .note}
+    >
+    >The `deb-src` line is only needed if you want repository access to Nginx's source code.
+
+2.  Download and add Nginx's repository key to your GPG keyring:
+
+        sudo wget http://nginx.org/keys/nginx_signing.key
+        sudo apt-key add nginx_signing.key
+
+3.  Update the repository lists and install Nginx:
+
+<<<<<<< HEAD:docs/websites/nginx/installing-nginx-on-ubuntu-12-04-lts-precise-pangolin.md
 3.  Nginx can be tested by navigating to your IP address or FQDN in your browser. The default Nginx page should be present.
+=======
+        sudo apt-get update && sudo apt-get install nginx
+>>>>>>> 55f809c9d99212149e0cda10810cba4325daa5d8:docs/websites/nginx/install-nginx-ubuntu-14-04.md
+
+    The server will automatically start after the installation completes.
+
+4. Go to the [Testing Nginx](#testing-nginx) section of this guide to ensure your server is accessible.
 
 
-### Install Nginx from a Source Distribution
+#### Installing from Source Distribution
 
+Compiling from source gives you the most flexibility and choice for optimization with [compiling options](http://wiki.nginx.org/InstallOptionsz) and [third-party modules](http://wiki.nginx.org/Nginx3rdPartyModules). You can also verify the PGP signature of the distributed tarball before compiling.
 
-1.  Install Nginx's dependencies:
+1.  Install the needed dependencies to build Nginx:
 
         sudo apt-get install libpcre3-dev build-essential libssl-dev
 
+<<<<<<< HEAD:docs/websites/nginx/installing-nginx-on-ubuntu-12-04-lts-precise-pangolin.md
 2.  Navigate to `/opt/`:
+=======
+2.  You can use any location you prefer to build from. Here, `/opt` will be used. Navigate to it:
 
-        cd /opt/
+        cd /opt
 
+3.  [Download](https://www.nginx.com/) the latest version of Nginx Open Source and its PGP signature. You will have the choice of mainline, stable or legacy versions. Again, stable (1.8.0 at the time of this writing) is used as an example. 
+
+        sudo wget http://nginx.org/download/nginx-1.8.0.tar.gz
+        sudo wget http://nginx.org/download/nginx-1.8.0.tar.gz.asc
+
+4.  Attempt to verify the tarball's signature:
+
+        gpg nginx-1.8.0.tar.gz.asc
+
+    **The check will fail** because you don't yet have the public RSA key of the signer, and to get it you first need the RSA key ID from the output:
+>>>>>>> 55f809c9d99212149e0cda10810cba4325daa5d8:docs/websites/nginx/install-nginx-ubuntu-14-04.md
+
+        gpg: Signature made Tue 21 Apr 2015 02:14:01 PM UTC using RSA key ID A1C052F8
+        gpg: Can't check signature: public key not found
+
+<<<<<<< HEAD:docs/websites/nginx/installing-nginx-on-ubuntu-12-04-lts-precise-pangolin.md
 3.  Download the [latest version](http://nginx.org/) of Nginx, which can be found on their website. At the time of publication, Nginx 1.9.3 is the mainline version:
 
         sudo wget http://nginx.org/download/nginx-1.9.3.tar.gz
+=======
+    Use the RSA key ID to download the public key from MIT's PGP key server. Then import it:
 
-4.  Expand the file, then navigate to the new directory:
+        gpg --keyserver pgpkeys.mit.edu --recv-key A1C052F8
+>>>>>>> 55f809c9d99212149e0cda10810cba4325daa5d8:docs/websites/nginx/install-nginx-ubuntu-14-04.md
+
+    Run the key check again:
+
+        gpg nginx-1.8.0.tar.gz.asc
+
+    The output should include:
+
+        gpg: Good signature from "Maxim Dounin <mdounin@mdounin.ru>"
+        gpg: key A1C052F8: public key "Maxim Dounin <mdounin@mdounin.ru>" imported
+        gpg: no ultimately trusted keys found
+        gpg: Total number processed: 1
+        gpg:               imported: 1  (RSA: 1)
+
+5.  Expand the source code and change to the new directory:
 
         sudo tar -zxvf nginx*.tar.gz
         cd /opt/nginx-*
@@ -109,13 +209,17 @@ Nginx is included in the Ubuntu software repositories. Installing Nginx from the
         sudo make
         sudo make install
 
-7.  As the root user create a user and group for Nginx:
+7.  As the root user, create a separate user and group for Nginx:
 
         sudo adduser --system --no-create-home --disabled-login --disabled-password --group nginx 
 
-    Nginx is now installed in `/opt/nginx`.
+    NGINX is now installed in `/opt/nginx`.
 
+<<<<<<< HEAD:docs/websites/nginx/installing-nginx-on-ubuntu-12-04-lts-precise-pangolin.md
 8.  Create an `init` script to manage Nginx:
+=======
+8.  Installing from source doesn't include an init file to control when Nginx starts and stops during boot and shutdown. You can either extract that file from the *[nginx-common](http://packages.ubuntu.com/trusty/nginx-common)* package at packages.ubuntu.com, or create an SysV script to manage NGINX as shown below:
+>>>>>>> 55f809c9d99212149e0cda10810cba4325daa5d8:docs/websites/nginx/install-nginx-ubuntu-14-04.md
 
     {: .file}
     /etc/init.d/nginx
@@ -187,10 +291,20 @@ Nginx is included in the Ubuntu software repositories. Installing Nginx from the
 9.  Make the file executable and add it to the default run levels:
 
         sudo chmod +x /etc/init.d/nginx
-        /usr/sbin/update-rc.d -f nginx defaults 
+        sudo /usr/sbin/update-rc.d -f nginx defaults 
 
 10. Start Nginx:
 
         sudo service nginx start
 
+<<<<<<< HEAD:docs/websites/nginx/installing-nginx-on-ubuntu-12-04-lts-precise-pangolin.md
 Continue reading our introduction to [Basic Nginx Configuration](/docs/websites/nginx/how-to-configure-nginx/) for more information about using and setting up a web server.
+=======
+## Testing Nginx
+
+Regardless of installation source or method, Nginx can be tested by navigating to your Linode's IP address or FQDN in your browser. You should see the NGINX welcome banner shown below.
+
+![Nginx welcome](/docs/assets/nginx-welcome.png)
+
+Continue reading our introduction to [Basic NGINX Configuration](/docs/websites/nginx/basic-nginx-configuration) for more information about using and setting up a web server.
+>>>>>>> 55f809c9d99212149e0cda10810cba4325daa5d8:docs/websites/nginx/install-nginx-ubuntu-14-04.md
