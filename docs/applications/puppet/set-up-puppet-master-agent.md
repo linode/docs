@@ -3,7 +3,7 @@ author:
     name: Elle Krout
     email: ekrout@linode.com
 description: 'Basic setup and configuration of a Puppet master and agents. Puppet is a configuration automation platform that allows users to efficiently manage servers'
-keywords: 'puppet,puppet installation,install puppet, configuration change management,server automation,puppet master,puppet agent, puppet tutorial,open-source configuration management,configuration management'
+keywords: 'puppet,puppet installation,install puppet,configuration change management,server automation,puppet master,puppet agent,puppet tutorial,open-source configuration management,configuration management'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['/docs/websites/puppet/basic-puppet-setup-and-configuration/']['/docs/websites/puppet/manage-and-automate-systems-configuration-with-puppet/']
 modified: Friday, July 17th, 2015
