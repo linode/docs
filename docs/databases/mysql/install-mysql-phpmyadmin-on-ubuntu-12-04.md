@@ -5,7 +5,7 @@ author:
 description: 'Use phpMyAdmin to manage MySQL databases and users though a web interface.'
 keywords: 'mysql,phpmyadmin,sql,ubuntu,precise,ubuntu 12.04,lts,ubuntu lts,localhost phpmyadmin,php mysql,http localhost phpmyadmin'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['databases/mysql/phpmyadmin-ubuntu-12-04-precise/'],['/docs/databases/mysql/manage-mysql-with-phpmyadmin-on-ubuntu-12-04-precise-pangolin/']
+alias: ['databases/mysql/phpmyadmin-ubuntu-12-04-precise/'],['docs/databases/mysql/manage-mysql-with-phpmyadmin-on-ubuntu-12-04-precise-pangolin/']
 modified: Thursday, September 16th, 2015
 modified_by:
     name: Linode
