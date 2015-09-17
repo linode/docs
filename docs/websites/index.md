@@ -25,7 +25,6 @@ categories:
  - frameworks
  - proxies
  - varnish
- - puppet
  - forums
  - ror
  - cms
