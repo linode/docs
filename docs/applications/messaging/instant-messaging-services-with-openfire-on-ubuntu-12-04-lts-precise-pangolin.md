@@ -55,7 +55,7 @@ Additional ports may need to be opened later to support more advanced XMPP servi
 
 Installing Openfire is relatively easy and can be completed in just a couple of steps. Here's how to install Openfire:
 
-1.  Visit the download page for the [Openfire RTC server](http://www.igniterealtime.org/downloads/index.jsp#openfire) and click the link for the `.tar.gz` file. You will be taken to another page, which will start the download to your workstation. You may cancel this download, as a manual download link will be presented that you may copy to your clipboard and paste in to the `wget` command in the next step.
+1.  Visit the download page for the [Openfire RTC server](http://www.igniterealtime.org/downloads/index.jsp#openfire), and click the link for the `.tar.gz` file. You will be taken to another page, which will start the download to your workstation. You may cancel this download, because a manual download link will be presented that you may copy to your clipboard and paste into the `wget` command in the next step.
 2.  Use `wget` on your Linode to retrieve the package (substitute the link for the current version in the command below).
 
         wget http://www.igniterealtime.org/downloadServlet?filename=openfire/openfire_3_7_1.tar.gz
@@ -72,7 +72,7 @@ Installing Openfire is relatively easy and can be completed in just a couple of 
 
         mv openfire /opt/
 
-6.  Edit the configuration file `/opt/openfire/conf/openfire.xml`, inserting your Linode's public IP address in the `<interface>` section, and removing the `<!-- -->` comment markers that surround the \<network\> section. While not required, this action is helpful if your Linode has multiple IP addresses, and you wish to limit access to a single address.
+6.  Edit the configuration file `/opt/openfire/conf/openfire.xml`, inserting your Linode's public IP address in the `<interface>` section and removing the `<!-- -->` comment markers that surround the \<network\> section. While not required, this action is helpful if your Linode has multiple IP addresses, and you wish to limit access to a single address.
 
     {: .file-excerpt }
     /opt/openfire/conf/openfire.xml
@@ -96,11 +96,11 @@ Configuring Openfire is relatively easy and can be completed in just a couple of
 
 1.  Direct your browser to your Linode's IP address or FQDN (fully qualified domain name, if an entry in DNS points to your Linode's IP) on port 9090. As an example, if your Linode's IP address were `12.34.56.78`, you would visit `http://12.34.56.78:9090` in your web browser.
 
-2.  Configure your domain and ports for administration. Use the fully qualified domain name you have assigned to your Linode in DNS. For more information: [configuring DNS with the Linode Manager](/docs/dns-guides/configuring-dns-with-the-linode-manager)).
+2.  Configure your domain and ports for administration. Use the FQDN (fully qualified domain name) you have assigned to your Linode in DNS. For more information: [configuring DNS with the Linode Manager](/docs/dns-guides/configuring-dns-with-the-linode-manager)).
 
 3.  You may choose to use Openfire's internal database for account management, or you may connect to an external database. Most users will want to choose the built-in option.
 
-4.  User profiles may be stored in the server database, or they may be pulled from LDAP or Clearspace. Most users will want to choose the default option.
+4.  User profiles may be stored in the server database or they may be pulled from LDAP or Clearspace. Most users will want to choose the default option.
 
 5.  Enter the email address of the default administrative user and select a strong password.
 
@@ -109,4 +109,6 @@ Configuring Openfire is relatively easy and can be completed in just a couple of
         service openfire stop
         service openfire start
 
-If you're experiencing difficulty using the credentials you just created to log in, please use "admin/admin" as the username/password. You'll need to update your credentials immediately afterward for security purposes. Congratulations! You've successfully installed the Openfire RTC server on Ubuntu 12.04 LTS.
+If you're experiencing difficulty using the credentials you just created to log in, please use "admin/admin" as the username/password. You'll need to update your credentials immediately afterward for security purposes. 
+
+Congratulations! You've successfully installed the Openfire RTC server on Ubuntu 12.04 LTS.
