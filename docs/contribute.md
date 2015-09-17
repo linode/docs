@@ -5,17 +5,26 @@ author:
 description: 'Information on submitting articles to Linode Guides & Tutorials, including benefits and procedures.'
 keywords: 'writing,open source software,contribute linode library, submissions'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Thursday, April 30th, 2015
+modified: Thursday, September 17th, 2015
 modified_by:
   name: Elle Krout
 published: 'Wednesday, May 19th, 2010'
 title: Article Submissions
 external_resources:
  - '[Linode Style Guide](/docs/style-guide)'
- - '[GitHub Beginners Guide ](/docs/github-guide)'
+ - '[GitHub Beginners Guide](/docs/github-guide)'
 ---
 
 Get published by Linode and get paid! Earn $250 per article accepted for publication. If you like writing, teaching people how to use Linux, and money, we want to hear from you!
+
+
+## Topics List
+
+We are always looking for guides on popular, up-and-coming hot topics, and updates to existing guides. We are also looking for:
+
+-   Socket.io
+-   [Game Servers](/docs/applications/game-servers/)
+-   NoSQL Databases
 
 ## The Submissions Process
 
@@ -61,16 +70,6 @@ Once you've submitted your article, here's what you can expect:
 
 
 ## Contributed Guides
-
-We suggest reviewing the following contributed guides to see how a complete guide should look:
-
-- Guide
-- Guide
-- Guide
-
-A complete list of submitted guides can be found [here]().
-
-These authors got their articles published -- you could be next!
 
 Guide                                                                         | Author
 ----------------------------------------------------------------------------- | ------
