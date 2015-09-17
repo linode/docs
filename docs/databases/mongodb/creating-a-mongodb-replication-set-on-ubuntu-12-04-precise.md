@@ -20,7 +20,7 @@ external_resources:
 
 MongoDB is an open-source, non-SQL database engine. MongoDB is scalable and an alternative to the standard relational database management system (RDBMS). A replication set is used for redundancy and to provide access to your data in the event of a node failure.
 
-Before installing MongoDB, it is assumed that you have followed our getting started guide. If you are new to Linux server administration, you may want to consult our using Linux document series including the [Introduction to Linux Concepts guide](/docs/tools-reference/introduction-to-linux-concepts) and [Administration Basics guide](/docs/using-linux/administration-basics).
+Before installing MongoDB, it is assumed that you have followed our getting started guide. If you are new to Linux server administration, you may want to consult our Using Linux document series including the [Introduction to Linux Concepts guide](/docs/tools-reference/introduction-to-linux-concepts) and [Administration Basics guide](/docs/using-linux/administration-basics).
 
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo command`, you can review our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
@@ -62,7 +62,7 @@ The MongoDB repository provides the latest stable release (currently mongodb-10g
 
 It is imperative that the networking configurations are set and working properly, or you will not be able to add members to the replication set. This section will detail how to configure three (3) Linodes as a MongoDB replication set.
 
-Before you begin, you will need to obtain all the private IP addresses for each of your Linodes. This information can be found by logging into the Linode Manager. Under the **Remote Access** tab there is a section called, "Private/LAN Network". Click on the "Add a Private IP" link to assign a private IP address to your Linode. Again, we are working with a three member replication set so you will need to acquire this information for each member.
+Before you begin, you will need to obtain all the private IP addresses for each of your Linodes. This information can be found by logging into the Linode Manager. Under the **Remote Access** tab there is a section called "Private/LAN Network". Click on the "Add a Private IP" link to assign a private IP address to your Linode. Again, we are working with a three-member replication set so you will need to acquire this information for each member.
 
 [![Finding your private IP address.](/docs/assets/1698-private_ip-v2.png)](/docs/assets/1698-private_ip-v2.png)
 
@@ -124,7 +124,7 @@ Use your own IP addresses in place of the addresses in the above example. The na
 
     Enter the private IP address of the server you are logged onto in the bind ip section. If the bind_ip variable is not present, you will need to add it. Uncomment the default port number **27017**.
 
-2.  While still in the `mongodb.conf` file scroll to the bottom and add the following information:
+2.  While still in the `mongodb.conf` file, scroll to the bottom and add the following information:
 
     {: .file-excerpt }
     /etc/mongodb.conf
@@ -139,13 +139,13 @@ Use your own IP addresses in place of the addresses in the above example. The na
 
 A replication set will allow your data to be "copied over" or propagated to all other members in the set. It provides redundancy in the event of system failure. It is recommended that an odd number of members be used in a set since it will make elections easier.
 
-Elections are to select which set member will become the primary. Elections take place after the replication set is initiated and when the primary is not available. The primary member is the only one that can accept write operations. In the event the primary is not available, elections take place to select a new primary. This election action allows the set to resume normal operations without manual intervention.
+Elections are used to select which set member will become the primary. Elections take place after the replication set is initiated and when the primary is not available. The primary member is the only one that can accept write operations. In the event the primary is not available, elections take place to select a new primary. This election action allows the set to resume normal operations without manual intervention.
 
 ### Creating the Replication Set
 
 A `mongodb.conf` file was created during the installation. You will use this configuration file to start the daemon on **every** member of the replication set.
 
-1.  Before starting the daemon check the status of the mongo service with the command:
+1.  Before starting the daemon, check the status of the mongo service with the command:
 
         sudo service mongodb status
 
@@ -157,7 +157,7 @@ A `mongodb.conf` file was created during the installation. You will use this con
 
         sudo mongod --config /etc/mongodb.conf
 
-    Your output should look similar once the daemon has started.
+    Your output should look similar, once the daemon has started.
 
         [user@hana mongo]# mongod --config /etc/mongodb.conf
         about to fork child process, waiting until server is ready for connections.
@@ -177,7 +177,7 @@ A `mongodb.conf` file was created during the installation. You will use this con
 
     You should see the message `switched to db admin`.
 
-6.  Run the `rs.initiate()` command which will begin creating the replication set with the current member. The output should look similar to the following:
+6.  Run the `rs.initiate()` command, which will begin creating the replication set with the current member. The output should look similar to the following:
 
         {
             "info2" : "no configuration explicitly specified -- making one",
@@ -185,7 +185,7 @@ A `mongodb.conf` file was created during the installation. You will use this con
             "info" : "Config now saved locally.  Should come online in about a minute.",
             "ok" : 1
 
-7.  To see the current configuration run the command:
+7.  To see the current configuration, run the command:
 
         rs.conf()
 
@@ -204,7 +204,7 @@ A `mongodb.conf` file was created during the installation. You will use this con
             ]
         }
 
-8.  Now you are ready to add additional members:
+8.  Now, you are ready to add additional members:
 
         rs.add("mongo2:27017")
 
@@ -213,7 +213,7 @@ A `mongodb.conf` file was created during the installation. You will use this con
         rs1:PRIMARY> rs.add("mongo2:27017")
         { "ok" : 1 }
 
-9.  To verify that the members have been added correctly run the `rs.conf()` command again. The output should look similar to the following:
+9.  To verify that the members have been added correctly, run the `rs.conf()` command again. The output should look similar to the following:
 
         rs.conf()
         {
@@ -257,13 +257,13 @@ The best way to verify that replication is working and the members are all commu
 
 ### Adding New Members to an Existing ReplSet
 
-Before you add a new member, its data directory must be empty. Once the new member is added it will copy over all the data from an existing member in the replication set.
+Before you add a new member, an existing RelpSet's data directory must be empty. Once the new member is added, it will copy over all the data from an existing member in the replication set.
 
 Members can be added to the replication set at any time. In order to re-add a removed member or to add a totally new member, you must be connected to the primary member of the replication set. Before you issue the "add" command, you must switch to admin. At the MongoDB prompt issue the command:
 
     use admin
 
-Then use the following command to add a member:
+Then, use the following command to add a member:
 
     rs.add("mongodb3:27017")
 
@@ -324,4 +324,4 @@ In the event you need to restart, stop or check the status of the MongoDB servic
 
 ## Other Considerations
 
-A replication set can only have seven (7) voting members maximum. In order to add another member to a replset with seven voting members, the eighth member will have to be added as either a non-voting member or an existing voting member will need to be removed.
+A replication set can only have seven (7) voting members maximum. In order to add another member to a replset with seven voting members, the eighth member will have to be added only after a non-voting member or an existing voting member has been removed.
