@@ -22,10 +22,11 @@ Get published by Linode and get paid! Earn $250 per article accepted for publica
 
 We are always looking for guides on popular, up-and-coming hot topics, and updates to existing guides. We are also looking for:
 
--   Socket.io
+-   [Socket.io](http://socket.io/)
 -   [Game Servers](/docs/applications/game-servers/)
 -   NoSQL Databases
-
+-   [OpenChange](http://www.openchange.org/)
+-   [WebWTC](http://www.webrtc.org/)
 
 ## The Submissions Process
 
