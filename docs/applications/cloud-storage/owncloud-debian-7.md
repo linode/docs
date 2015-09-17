@@ -12,7 +12,7 @@ published: Tuesday, June 10th, 2014
 title: 'Installing and Configuring ownCloud on Debian 7.4'
 ---
 
-ownCloud is an open source platform that allows easy access to files from multiple locations and platforms. It's compatible with most major operating systems and mobile devices. With ownCloud you can store files on your Linode and them access them wherever you go.
+ownCloud is an open source platform that allows easy access to files from multiple locations and platforms. It's compatible with most major operating systems and mobile devices. With ownCloud you can store files on your Linode and then access them wherever you go.
 
 Installing ownCloud on your Linode is very simple. The steps outlined below will get you up and running with a drag and drop GUI interface.
 
@@ -24,7 +24,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Installing ownCloud
 
-1.  To obtain the most recent and stable application release, add the ownCloud repository to the apt source list. begin by creating the new list file:
+1.  To obtain the most recent and stable application release, add the ownCloud repository to the apt source list. Begin by creating the new list file:
 
         sudo touch /etc/apt/sources.list.d/owncloud.list
 
