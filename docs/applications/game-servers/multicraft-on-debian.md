@@ -15,7 +15,7 @@ published: ''
 title: 'Installing Multicraft on Debian'
 ---
 
-[Multicraft](http://www.multicraft.org/) is a control panel for single or multiple Minecraft servers, with free and paid versions available. This guide will help you install Multicraft on a Linode running Debian 7.
+[Multicraft](http://www.multicraft.org/) is a control panel for single or multiple Minecraft servers Free and paid versions are available. This guide will help you install Multicraft on a Linode running Debian 7.
 
 {: .note }
 >The steps required in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
@@ -32,7 +32,7 @@ Multicraft for Linux depends on several software packages in order to run.
 
         apt-get install -y apache2 sqlite php5 php5-sqlite php5-gd openjdk-7-jre-headless
 
-3.  In Apache's default virtual host file, under the `<Directory /var/www/>` section, change the `AllowOverride` value to `all`.
+3.  In Apache's default virtual host file under the `<Directory /var/www/>` section, change the `AllowOverride` value to `all`.
 
     {: .file-excerpt}
     /etc/apache2/sites-enabled/000-default
@@ -81,7 +81,7 @@ Multicraft for Linux depends on several software packages in order to run.
 
     [![Multicraft Installer.](/docs/assets/multicraft-init_small.png)](/docs/assets/multicraft-init.png)
 
-2.  Multicraft will check your requirements. If you completed the steps above without issue, your page should reflect the results show below:
+2.  Multicraft will check your requirements. If you completed the steps above without issue, your page should reflect the results shown below:
 
     [![Multicraft Requirements Check.](/docs/assets/multicraft-reqs_small.png)](/docs/assets/multicraft-reqs.png)
 
