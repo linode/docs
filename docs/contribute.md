@@ -22,15 +22,10 @@ Get published by Linode and get paid! Earn $250 per article accepted for publica
 
 We are always looking for guides on popular, up-and-coming hot topics, and updates to existing guides. We are also looking for:
 
-<<<<<<< HEAD
--   [OpenChange](http://www.openchange.org/)
--   [WebRTC](http://www.webrtc.org/)
--   Gaming Servers
-=======
 -   Socket.io
 -   [Game Servers](/docs/applications/game-servers/)
 -   NoSQL Databases
->>>>>>> ac3fd52a6b0efdb3658cf9ae68f5203011367333
+
 
 ## The Submissions Process
 
@@ -109,4 +104,4 @@ COPYRIGHT OWNERSHIP. Writer agrees that the Work is being created by the writer 
 
 CREDIT. Nothing contained in this Agreement shall be deeded to require Linode to use the Work, or any part thereof, in connection with the Digital Library or otherwise. Credit for the Work shall read "This is a Linode Community guide by author "writer's name"."
 
-PAYMENT. Upon publication of a submission to the Linode Guides and Tutorials Repository, the writer will be paid the sum of \$250.00 either in the form of a credit to their Linode account or as an electronic payment.
+PAYMENT. Upon publication of a submission to the Linode Guides and Tutorials Repository, the writer will be paid the sum of $250.00 either in the form of a credit to their Linode account or as an electronic payment.
