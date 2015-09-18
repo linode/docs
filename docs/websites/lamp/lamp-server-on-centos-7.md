@@ -170,7 +170,7 @@ With Apache and MariaDB installed, you are now ready to move on to installing PH
         sudo yum install php-mysql
 
 
-2.  Edit `/etc/php/php.ini` for better error messages and logs, and upgraded performance. These modifications provide a good starting point for a **Linode 1GB**:
+2.  Edit `/etc/php.ini` for better error messages and logs, and upgraded performance. These modifications provide a good starting point for a **Linode 1GB**:
 
     {: .file-excerpt }
     /etc/php.ini
