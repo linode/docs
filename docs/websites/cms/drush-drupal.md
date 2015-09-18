@@ -14,9 +14,9 @@ external_resources:
  - '[SSL Certificates](/docs/security/ssl/)'
 ---
 
-Drush is a command line tool for creating, maintaining, and modifying Drupal websites. Command line tools, like Drush, add functionality through additional command packages. Once installed, Drush is as easy to use as any of the basic Linux commands. Drush is pronounced like rush or crush. The name comes from combining the words Drupal and shell. Drush is designed only for Drupal, and cannot be used with other content management systems.
+Drush is a command line tool for creating, maintaining, and modifying Drupal websites. Command line tools, like Drush, add functionality through additional command packages. Once installed, Drush is as easy to use as any of the basic Linux commands. Drush rhymes with rush or crush. The name comes from combining the words Drupal and shell. Drush is designed only for Drupal and cannot be used with other content management systems.
 
-Both new and experienced Drupal users can benefit from learning Drush. Users that have worked with a command line interface before have an advantage, but Drush is an excellent application for beginners too.
+Both new and experienced Drupal users can benefit from learning Drush. Users that have worked with a command line interface before have an advantage, but Drush is an excellent application for beginners, too.
 
 ##Prerequisites
 
@@ -51,13 +51,13 @@ The developers of Drush recommend installation through Composer, a PHP dependenc
 
 ##Install Drush for All Users on the Server
 
-Composer is designed to install PHP dependencies on a per project basis, but the steps below will install a global Drush for all projects.
+Composer is designed to install PHP dependencies on a per-project basis, but the steps below will install a global Drush for all projects.
 
 1. Create a symbolic link between Composer's local bin directory, `/usr/local/bin/composer`, and the system's bin directory, `/usr/bin/`:
 
        sudo ln -s /usr/local/bin/composer /usr/bin/composer
 
-2. Use Git to download, or clone, the GitHub Drush project into a new directory:
+2. Use Git to download - or clone - the GitHub Drush project into a new directory:
 
        sudo git clone https://github.com/drush-ops/drush.git /usr/local/src/drush
 
@@ -95,7 +95,7 @@ Drush has dozens of commands with hundreds of options. Drush can interface with 
 
        drush
 
-2. View more detailed documentation for a specific command by typing `drush help`, and then the command, for example:
+2. View more detailed documentation for a specific command by typing `drush help` and then the command, for example:
 
        drush help site-install
 
@@ -123,7 +123,7 @@ Drush can create a Drupal site with half the steps of a normal installation. The
        sudo service apache2 reload
 
 
-4. Change the working directory to the location of the new website. The previous guides created a **/var/www/`example.com`/public_html** directory, replacing **`example.com`**, and made **`public_html`** the document root, or the publicly viewable directory.
+4. Change the working directory to the location of the new website. The previous guides created a **/var/www/`example.com`/public_html** directory, replacing **`example.com`**, and made **`public_html`** the document root or the publicly viewable directory.
 
        cd  /var/www/example.com/public_html
 
@@ -139,7 +139,7 @@ Drush can create a Drupal site with half the steps of a normal installation. The
        cd drupal
 
 
-7. Now the server is ready for the installation of a Drupal site. Below, provide a MySQL username, password, and database in the mysql://`username`:`password`@localhost/`databasename` link option, and the site's name in the --site-name=`example.com` option:
+7. Now the server is ready for the installation of a Drupal site. Below, provide a MySQL username, password, and database in the mysql://`username`:`password`@localhost/`databasename` link option and the site's name in the --site-name=`example.com` option:
 
        sudo drush si standard --db-url=mysql://username:password@localhost/databasename --site-name=example.com
 
@@ -189,9 +189,9 @@ To create a new user for the site owner position, review the [Securing Your Serv
     {: .caution }
     >File permissions are a constant concern for the system owner or root user. When installing new files, like a module or theme, make sure the Apache user www-data has access rights. Use the command `ls -al` to list the file permissions within a directory.
 
-Your site is now available at **`example.com`/drupal** or **`ipaddress`/drupal**. Sign-in with the generated username and password, and start delivering content to the world!
+Your site is now available at **`example.com`/drupal** or **`ipaddress`/drupal**. Sign-in with the generated username and password and start delivering content to the world!
 
-When you're ready for the Drupal site to appear as your homepage, move the site to the **/var/www/`example.com`/** directory and double-check the document root listing in the virtual host file. See step 5 in the [Configuring Name Based Virtual Hosts](/docs/websites/hosting-a-website#configuring-name-based-virtual-hosts) section of the [Hosting a Website](/docs/websites/hosting-
+When you're ready for the Drupal site to appear as your homepage, move the site to the **/var/www/`example.com`/** directory and double-check the document root listing in the virtual host file. See Step 5 in the [Configuring Name Based Virtual Hosts](/docs/websites/hosting-a-website#configuring-name-based-virtual-hosts) section of the [Hosting a Website](/docs/websites/hosting-
 a-website) guide.
 
 ##Additional Options
@@ -213,7 +213,7 @@ To start, add a virtual host file with Apache. Next, build another site includin
 
 ###Install Drush for the Active User Only
 
-You may want to install Drush for only certain users, maybe the **site owner**, **root**, and **www-data**. This may be optimal for a shared hosting environment. Also, individual users can install their different versions of Drush, and even install versions specific to a single project. The below commands should be run as the user in question, without `sudo`.
+You may want to install Drush for only certain users, for example, the **site owner**, **root**, and **www-data**. This may be optimal for a shared-hosting environment. Also, individual users can install their different versions of Drush and even install versions specific to a single project. The commands below should be run as the user in question, without `sudo`.
 
 1. Modify the user's `.bashrc` file to add the composer directory to it's path:
 
