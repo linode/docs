@@ -12,12 +12,14 @@ modified_by:
 published: 'Tuesday, July 10th, 2012'
 title: Dolphin
 deprecated: true
+    - '[Boonex Home Page](http://www.boonex.com)'
+    - '[Boonex Plug-in Market](http://www.boonex.com/market)'
+    - '[Boonex Forums](http://www.boonex.com/forums/)'
 ---
 
 [Dolphin](http://www.boonex.com/dolphin) is an open-source software package for building social networks, dating sites and niche communities. Dolphin's features include video chat, video messenger, iPhone app, Android App, Adobe AIR desktop app, groups, events, blogs, files, media sharing, a store, and more. Dolphin also allows developers to create plugins to add additional functionality or features. You can use the [Dolphin Market](http://www.boonex.com/market) to find extensions, design templates, mods, plugins, language packs and third party software integrations.
 
-Dolphin Prerequisites
----------------------
+## Dolphin Prerequisites
 
 Dolphin requires a standard LAMP (Linux, Apache, MySQL, and PHP) server. If haven't already created a LAMP server, or just want to make sure that you have everything installed, [take a look at our Hosting a Website guide](/docs/hosting-website). After you have a LAMP server running, read through the rest of this section to verify that you have the other prerequisites installed.
 
@@ -84,8 +86,7 @@ If you'd like to run the Boonex RMS (Ray Media Server), which is a required comp
 
 You have successfully installed JRE on your Linode.
 
-Installing Dolphin
-------------------
+## Installing Dolphin
 
 Now that you've installed the necessary prerequisites, we can start installing Dolphin. We'll walk you through the process of downloading Dolphin, adding a new MySQL user and database, configuring permissions, running the install script, removing the installation directory, and finally logging in to the Dolphin admin panel.
 
@@ -252,8 +253,7 @@ You have successfully installed Dolphin and removed the installation directory f
 
 You can now log into your admin panel at <http://example.com/dolphin/administration/>. Replace `example.com` with your domain name or IP address. Try logging in now.
 
-Installing Dolphin Modules
---------------------------
+## Installing Dolphin Modules
 
 Now you can install any of Dolphin's modules in the **Tools** \> **Modules** section. Take a look!
 
@@ -276,8 +276,7 @@ To update permissions, enter the following commands, one by one:
     chmod 666 modules/boonex/profiler/log/profiler.log
     chmod 777 modules/boonex/smtpmailer/data/logs
 
-Media Server (RMS) Installation
--------------------------------
+## Media Server (RMS) Installation
 
 Dolphin comes with a free Media Server software (formerly Ray Media Server - RMS), based on open-source Red 5. Media Server is required for some of the media streaming features of some Dolphin modules. Here's how to install media server on your Linode:
 
@@ -371,15 +370,3 @@ Dolphin comes with a free Media Server software (formerly Ray Media Server - RMS
         sudo ./run_daemon.sh
 
 You have successfully installed RMS on your Linode.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Boonex Home Page](http://www.boonex.com)
-- [Boonex Plug-in Market](http://www.boonex.com/market)
-- [Boonex Forums](http://www.boonex.com/forums/)
-
-
-

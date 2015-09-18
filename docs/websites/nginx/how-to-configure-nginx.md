@@ -12,9 +12,9 @@ modified_by:
 published: 'Monday, January 18th, 2010'
 title: How to Configure Nginx
 external_resources:
- - '[Nginx guides in the Linode Library](/docs/web-servers/nginx/)'
+ - '[Linode Nginx guides](/docs/web-servers/nginx/)'
  - '[Nginx community documentation](http://wiki.nginx.org)'
- - '[LEMP Application Stack guides in the Linode Library](/docs/lemp-guides/)'
+ - '[Linode LEMP Application Stack guides](/docs/lemp-guides/)'
  - '[Nginx Website](http://wiki.nginx.org/Main)'
  - '[Nginx log module documentation](http://nginx.org/en/docs/http/ngx_http_log_module.html)'
 ---

@@ -160,7 +160,7 @@ You can specify as many `rcfiles` as you like on the command line in this format
 
 ### Checking Email Regularly Using Cron
 
-If you would like your system to check for email regularly, you can run the `getmail` command regularly with cron. For a more detailed explanation of cron, you may consider the Linode Library's [introduction to cron](/docs/linux-tools/utilities/cron). To add the "cron job", issue the following command to edit your cronjobs:
+If you would like your system to check for email regularly, you can run the `getmail` command regularly with cron. For a more detailed explanation of cron, you may consider the [introduction to cron](/docs/linux-tools/utilities/cron) guide. To add the "cron job", issue the following command to edit your cronjobs:
 
     crontab -e
 

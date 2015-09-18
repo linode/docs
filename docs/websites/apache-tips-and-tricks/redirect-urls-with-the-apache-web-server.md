@@ -90,4 +90,4 @@ This directive matches against any request for a file with a `.jpg` extension an
 
 The `Redirect` directive provides basic functionality to point requests for specific resource to different URLs and can help administrators move content to different servers and locations without breaking existing links. However, many Apache users use the facility to "rewrite" URLs in Apache's `mod_rewrite` module. If you're struggling to keep your Apache configuration organized or need more control than these `Redirect` statements can provide, we encourage you to investigate `mod_rewrite`.
 
-The Linode Library contains an introduction to [rewriting URLs with mod\_rewrite and Apache](/docs/web-servers/apache/configuration/rewriting-urls), which you might find useful.
+Linode Guides & Tutorials contains an introduction to [rewriting URLs with mod\_rewrite and Apache](/docs/web-servers/apache/configuration/rewriting-urls), which you might find useful.
