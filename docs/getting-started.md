@@ -340,10 +340,3 @@ You should now be set to update the system
 ## Next Steps
 
 Good work! Now you have an up-to-date Linode running in the data center of your choice. Next, you'll need to secure your Linode and protect it from unauthorized access. Read the [Securing Your Server](/docs/securing-your-server) quick start guide to get going!
-
- {: .note }
->
-> From this point forward, all of the guides in the Linode Library are written for the Ubuntu and Debian distributions. If you're using a different distribution, keep in mind that the procedures and commands might not be exactly the same.
-
-
-

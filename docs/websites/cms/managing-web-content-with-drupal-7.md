@@ -19,7 +19,7 @@ As the system's functionality is highly modular, one might even be inclined to t
 
 ##Prerequisites
 
-Before we begin with the Drupal installation, there are few other guides in the Linode Library that provide instructions for installing the necessary prerequisites.
+Before we begin with the Drupal installation, there are few other guides that provide instructions for installing the necessary prerequisites.
 
 - If you're new to Linux system administration, consider our [Linux System Administration Basics](/docs/tools-reference/linux-system-administration-basics/) guides.
 - Before you can install Drupal, please complete our [Getting Started](/docs/getting-started/) guide to get a fully updated and running system.

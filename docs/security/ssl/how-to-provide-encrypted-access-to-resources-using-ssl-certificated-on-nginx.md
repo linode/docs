@@ -24,7 +24,7 @@ This document assumes that you have completed the [getting started guide](/docs/
 
 ## Install Nginx With SSL Support
 
-Before proceeding, ensure that you've compiled nginx with support for SSL. The [nginx installation guides](/docs/websites/nginx/) in the Linode Library provide a more comprehensive explanation on compiling nginx. Follow the appropriate guide for the Linux distribution you deployed and be aware of the following considerations:
+Before proceeding, ensure that you've compiled nginx with support for SSL. The [nginx installation guides](/docs/websites/nginx/) provide a more comprehensive explanation on compiling nginx. Follow the appropriate guide for the Linux distribution you deployed and be aware of the following considerations:
 
 -   If you compiled nginx from source code obtained from the upstream, ensure that the `--with-http_ssl_module` argument is added to the `./configure` command as specified in these documents.
 -   If you installed nginx using your system's package management tools, make sure that the package is built with SSL support.

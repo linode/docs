@@ -17,7 +17,7 @@ Nearly all applications that are built using Linodes can benefit from load balan
 
 NodeBalancers are built for high availability and designed to be "set and forgotten". The most difficult part of transitioning to a NodeBalancer, in fact, is simply making sure your application works well with the new environment. In this guide, we will examine a common use case: using a NodeBalancer to load balance a Web site and prepare it for scaling to thousands of users.
 
-This guide attempts to give a high-level overview of transitioning to a NodeBalancer, but makes no attempt to document or explain the underlying parts of the application NodeBalancer will be balancing; for more information on various applications that might be useful behind NodeBalancer review the rest of the Linode Library.
+This guide attempts to give a high-level overview of transitioning to a NodeBalancer, but makes no attempt to document or explain the underlying parts of the application NodeBalancer will be balancing; for more information on various applications that might be useful behind NodeBalancer review the rest of Linode Guides & Tutorials.
 
 ## Overview
 
