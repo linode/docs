@@ -36,7 +36,7 @@ The [Linode Manager](https://manager.linode.com) is a web-based control panel th
 
 ### Deploying an Image
 
-After creating your new Linode, select it and then click on **Deploy an Image**. You'll be prompted to deploy a *Linux distribution*, as shown below. This is the operating system that will be installed on your Linode. You can choose from [Arch Linux](http://www.archlinux.org/), [CentOS](http://www.centos.org/), [Debian](http://www.debian.org/), [Fedora](http://fedoraproject.org/), [Gentoo](http://www.gentoo.org/), [openSUSE](http://www.opensuse.org/en/), [Slackware](http://www.slackware.com/), and [Ubuntu](http://www.ubuntu.com/).
+After creating your new Linode, select it and then click on **Deploy an Image**. You'll be prompted to deploy a *Linux distribution*, as shown below. This is the operating system that will be installed on your Linode. You can choose from [Arch Linux](http://www.archlinux.org/), [CentOS](http://www.centos.org/), [Debian](http://www.debian.org/), [Fedora](http://fedoraproject.org/), [Gentoo](http://www.gentoo.org/), [openSUSE](http://www.opensuse.org), [Slackware](http://www.slackware.com/), and [Ubuntu](http://www.ubuntu.com/).
 
 [![Select a data center.](/docs/assets/902-linode-manager-2-2-small.png)](/docs/assets/896-linode-manager-2.png)
 

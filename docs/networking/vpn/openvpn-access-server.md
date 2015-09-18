@@ -8,7 +8,7 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: Thursday, April 30th, 2015
 modified_by:
     name: James Stewart
-published: ''
+published: 'Thursday, April 30th, 2015'
 title: Secure Communications with OpenVPN Access Server
 ---
 
@@ -117,8 +117,6 @@ If you wish to configure autologin profiles, you will need to modify your user s
 	[![Windows Client UI.](/docs/assets/openvpn-windows-installer-1-resize.png)](/docs/assets/openvpn-windows-installer-1.png)
 
 3.  Once the installation has completed, you should be presented with the OpenVPN login window.  Your server's IP address should be pre-filled in.  You will need to enter the username and password of your OpenVPN user.
-
-	[![Windows Client UI.](/docs/assets/openvpn-connect-windows-2-resize.png)](/docs/assets/openvpn-connect-windows-2.png)
 
 4.  You can utilize the OpenVPN icon located in your Windows taskbar to view the status of your VPN connection, and disconnect or reconnect to the VPN.
 
