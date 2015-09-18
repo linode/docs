@@ -14,7 +14,7 @@ contributor:
     name: Scott Sumner
 ---
 
-If you've discovered Google Drive then you know that it can be an indispensible tool for moving files around.  While one of the standard counter-arguments is "just carry a flash drive" that works great until you need to add a file to your Linode.  Here's how to install and configure a great and free piece of software to access your Google Drive from your Linode!
+If you've discovered Google Drive then you know that it can be an indispensible tool for moving files around.  While one of the standard counter-arguments is "just carry a flash drive" that works great until you need to add a file to your Linode.  Here's how to install and configure a great free piece of software to access your Google Drive from your Linode!
 
 **Google-drive-ocamlfuse (ocamlfuse)** uses the Drive API to scan and access your Google Drive contents.  A majority of the steps are authorizing its use and applying that authorization to the copy running on your Linode.  Let's get started, I'll explain a little more along the way.
 
@@ -37,7 +37,7 @@ First we have to add the repository where ocamlfuse lives to our Linode.  Once t
 
 ## Setup access to the Google Drive API
 
-Now we're going to turn on API access to Google Drive and create a set of credentials.  Do these steps from a web browser on your regular computer.
+Now we're going to enable API access to Google Drive and create a set of credentials.  These steps require a web browser on your local computer.
 
 1.  Visit the API developer's console on your desktop at https://console.developers.google.com/project
 
@@ -81,7 +81,7 @@ Now we're going to turn on API access to Google Drive and create a set of creden
 
 ## Adding the Authorization to google-drive-ocamlfuse
 
-Now that you've created a set of credentials we'll give them to ocamlfuse so Google knows it has authorization to access your Google Drive.  These steps start out back in the SSH session to your Linode:
+Next, we'll provide the credentials to ocamlfuse, authorizing it to access your Google Drive.  Follow these steps in the SSH session to your Linode:
 
 1.  Authorize your Google Drive link:
 
@@ -101,7 +101,7 @@ Now that you've created a set of credentials we'll give them to ocamlfuse so Goo
 
 ## Choose Where Google Drive Will Show Up
 
-Just in case you're not familiar with the Linux file system everything is mapped into the directory tree.  Most of these are actual files and directories on disk but network locations and virtual entities can be added as well.  Here we create an empty directory where Google Drive will live.  All of your Google Drive files and folders will appear here.
+The following steps will create an empty directory where Google Drive will live.  All of your Google Drive files and folders will appear here.
 
 1.  Create a mount point:
 
@@ -114,12 +114,12 @@ Just in case you're not familiar with the Linux file system everything is mapped
 
 ## Wrapping Up
 
-And you're done!  The directory **googleDrive** will now reflect your Google Drive contents!  The first time you access the folder it may take a few minutes for the contents to appear.  After that folder access is almost immediate.
+And you're done!  The directory **googleDrive** will now reflect your Google Drive contents!  The first time you access the folder it may take a few minutes for the contents to syncronize.  After that folder access is almost immediate.
 
 
 ## Resetting the connection
 
-If Google Drive disappears then the most likely problem is that the credentials you've created have expired.  In that case...
+If Google Drive disappears,its likely that the credentials you've created have expired.  If this does occur:
 
 1.  On your desktop visit **http://console.developers.google.com**
 
