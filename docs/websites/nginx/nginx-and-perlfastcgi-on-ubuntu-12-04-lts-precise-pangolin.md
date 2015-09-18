@@ -42,7 +42,7 @@ Issue the following commands to update your system and install the nginx web ser
 
 ## Configure DNS
 
-Create an "A" record pointing your domain name to your Linode's IP address. If you're using the Linode DNS Manager interface, please refer to our [Linode DNS manager guide](/docs/dns-guides/configuring-dns-with-the-linode-manager) for instructions.
+Create an "A" record that points your domain name to your Linode's IP address. If you're using the Linode DNS Manager interface, please refer to our [Linode DNS manager guide](/docs/dns-guides/configuring-dns-with-the-linode-manager) for instructions.
 
 ## Configure Virtual Hosting
 
@@ -174,4 +174,6 @@ Make the script executable by issuing the following command:
 
     chmod a+x /srv/www/www.example.com/public_html/test.pl
 
-When you visit `http://www.example.com/test.pl` in your browser, your Perl environment variables should be shown. Congratulations, you've configured the nginx web server to use Perl with FastCGI for dynamic content!
+When you visit `http://www.example.com/test.pl` in your browser, your Perl environment variables should be shown.
+
+Congratulations, you've configured the nginx web server to use Perl with FastCGI for dynamic content!
