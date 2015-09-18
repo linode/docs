@@ -19,21 +19,21 @@ external_resources:
  - '[Webmin Tutorials](http://doxfer.com/Webmin/Tutorials)'
 ---
 
-Webmin is a web interface that allows you to manage configuration files and reload programs without needing to use SSH. It is a popular alternative to administration panels such as cPanel or Plesk, and contains many of the features that make them popular. Modules and plugins expand Webmin's functionality and can be found for many popular packages like the [Apache web server](/docs/web-servers/apache/) and [Postfix](/docs/email/postfix/). Many third-party modules exist for different use cases, which contribute to the flexibility of the Webmin control panel.
+Webmin is a web interface that allows you to manage configuration files and reload programs without needing to use SSH. It is a popular alternative to administration panels such as cPanel or Plesk and contains many of the features that make them popular. Modules and plugins expand Webmin's functionality and can be found for many popular packages like the [Apache web server](/docs/web-servers/apache/) and [Postfix](/docs/email/postfix/). Many third-party modules exist for different use cases, which contribute to the flexibility of the Webmin control panel.
 
-Installing Webmin is straightforward, however you may wish to consult the documentation contained at the end of this document for additional information on using Webmin to manage your system.
+Installing Webmin is straightforward; however, you may wish to consult the documentation contained at the end of this document for additional information on using Webmin to manage your system.
 
 
 ## Prerequisites
 
-- This guide is written for a Linode running Debian 7, but is also compatible with Ubuntu 14.04.
+- This guide is written for a Linode running Debian 7 but is also compatible with Ubuntu 14.04.
 
 - The steps required in this guide require root privileges. Be sure to run the steps below as ``root`` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
 - Before installing Webmin, we assume that you've completed the [Getting Started](/docs/getting-started/) guide.
 - If you are new to Linux server administration, we recommend the [Linode Beginner's Guide](/docs/beginners-guide/) and the article concerning [Systems Administration Basics](/docs/using-linux/administration-basics).
 
-- Issue the following commands to refresh your system's package database and ensure that you're running the most up to date software:
+- Issue the following commands to refresh your system's package database and ensure that you're running the most up-to-date software:
 
         apt-get update
         apt-get upgrade
@@ -75,7 +75,7 @@ Once you have satisfied all dependencies, you will need to download the Webmin p
        apt-get install webmin
 
 
-After the installation has completed, Webmin will give you a URL to visit to in order to access the web panel. This URL will be in the form of `https://hostname:10000`, where `hostname` is the host name of your Linode. If your Linode does not have a Fully Qualified Domain Name (FQDN) such as `myserver.mydomain.com`, you should use your Linode's IP or a domain pointed at your Linode to access Webmin .
+After the installation has completed, Webmin will give you a URL to visit to access the web panel. This URL will be in the form of `https://hostname:10000`, where `hostname` is the host name of your Linode. If your Linode does not have a Fully Qualified Domain Name (FQDN) such as `myserver.mydomain.com`, you should use your Linode's IP or a domain pointed at your Linode to access Webmin.
 
 For security reasons, Webmin generates a self-signed SSL certificate for itself when you install it. If you get a warning about an SSL certificate from your browser, you may wish to verify the details of the certificate and accept it.
 
@@ -83,4 +83,4 @@ You will be presented with a login screen; enter your root user credentials.
 
 ## Configuring Webmin
 
-We recommend you change the port Webmin runs on to something other than 10000. To do this, select the "Webmin" tab from the menu on the left and click "Webmin Configuration" from the submenu. Select "Ports and Addresses" from the control panel, and change the "Listen on Port" to a port that you will remember. When you click the "Save" button, Webmin will change the port it runs on and redirect you to the new page. You are now free to configure the rest of your services with Webmin!
+We recommend you change the port Webmin runs on to something other than 10000. To do this, select the "Webmin" tab from the menu on the left and click "Webmin Configuration" from the submenu. Select "Ports and Addresses" from the control panel and change the "Listen on Port" to a port that you will remember. When you click the "Save" button, Webmin will change the port it runs on and redirect you to the new page. You are now free to configure the rest of your services with Webmin.
