@@ -21,15 +21,15 @@ external_links:
 
 ## Nameserver Selection
 
-In your root WHM, under the Service Configuration section, click on "Nameserver Selection". You will be presented with this screen:
+In your root WHM, under the Service Configuration section, click on "Nameserver Selection." You will be presented with this screen:
 
 [![cPanel Nameserver selection screen.](/docs/assets/829-NSSelect.png)](/docs/assets/829-NSSelect.png)
 
-You can choose from BIND, MyDNS or NSD; the advantages and disadvantages for each are displayed. If you are unfamiliar with either of them, BIND will be the easiest to work with.
+You can choose from BIND, MyDNS or NSD; the advantages and disadvantages for each are displayed. If you are unfamiliar with any of them, select BIND, which will be the easiest to work with.
 
 ## Nameserver Records
 
-To use your own nameservers (e.g. ns1.mydomain.com, ns2.mydomain.com), you'll need to create those entries at your registrar first. The process for adding those can vary based on which registrar you are using, so if you are unsure as to how to go about getting these entries set up, you should contact your registrar's support and ask them how to do so. You'll also need to add A records for your nameservers on your Linode within WHM. To do that, you'll want to log into your WHM as root then navigate to the DNS Functions section and click on Edit DNS Zone, which will present you with this page:
+To use your own nameservers (e.g. ns1.mydomain.com, ns2.mydomain.com), you'll need to create those entries at your registrar first. The process for adding those can vary based on which registrar you are using, so if you are unsure as to how to go about getting these entries set up, you should contact your registrar's support and ask them how to do so. You'll also need to add A records for your nameservers on your Linode through WHM. To do that, you'll want to log into your WHM as root, then navigate to the DNS Functions section and click on Edit DNS Zone, which will present you with this page:
 
 [![cPanel Edit DNS screen.](/docs/assets/830-EditDNS.png)](/docs/assets/830-EditDNS.png)
 
@@ -107,11 +107,11 @@ Check that the configuration file is usable by issuing the command :
 
     named-checkconf /etc/named.conf
 
-If everything was done correctly, you should see no output. No output means everything is OK. If you get any errors, open the file and fix the reported issue. The errors are self explanatory and point to the exact issue.
+If everything was done correctly, you should see no output. No output means everything is OK. If you get any errors, open the file and fix the reported issue. The errors are self-explanatory and point to the exact issue.
 
 Once the check is OK, the BIND service will need to be restarted in order for the changes to be picked up.
 
-On the Left side in WHM under "Restart Services" Click DNS Server (BIND/NSD/My).
+On the left side in WHM under "Restart Services," click DNS Server (BIND/NSD/My).
 
 Click Yes to restart the service. Allow a few minutes for the service to restart. 
 
