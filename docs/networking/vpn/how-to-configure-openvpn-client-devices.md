@@ -30,8 +30,8 @@ Each client needs a copy of the Certificiate Authority, its own certificate and 
 *  `/etc/openvpn/easy-rsa/keys/ca.crt`
 *  `/etc/openvpn/easy-rsa/keys/client1.crt`
 *  `/etc/openvpn/easy-rsa/keys/client1.key`
+*  `/etc/openvpn/client.conf`
 *  `/etc/openvpn/ta.key`
-*  `~/client.conf`
 
 These files must be copied to the client device using an encrypted transfer protocol like [SCP or SFTP](/docs/tools-reference/linux-system-administration-basics#how-to-upload-files-to-a-remote-server). FTP or telnet should *not* be used because these protocols do not encrypt traffic at all--even authentication with the FTP and telnet daemon.
 
@@ -75,6 +75,18 @@ Most network management tools provide some facility for managing connections to 
 Depending on your distro, you'll need either the package `network-manager-openvpn` or `networkmanager-openvpn` which will bring in the necessary dependencies with it, if not at least tell you what they are (re: Pacman).
 
     sudo apt-get install network-manager-openvpn
+
+
+    sudo mkdir /etc/openvpn/keys && sudo chmod -r 700 /etc/openvpn/keys
+
+    
+
+2. Move the client.conf file into `/etc/openvpn` and start the OpenVPN service.
+
+    sudo mv ~/client1/client.conf /etc/openvpn
+
+    sudo service openvpn start
+    sudo systemctl openvpn enable && sudo systemctl openvpn start
 
 2.  Add an OpenVPN type VPN connection.
 
@@ -120,6 +132,8 @@ Click **Save** to close the VPN connection edit window.
 ##  Revoking a Client Certificate
 
 To remove a user's access to the VPN server:
+
+SSH into your OpenVPN server and change to the root user with `sudo su`.
 
 1.  Run the `vars` script.
 
