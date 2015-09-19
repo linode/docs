@@ -12,7 +12,7 @@ published: 'Sunday, July 19th, 2009'
 title: Getting Started
 ---
 
-Hi, welcome to on selecting Linode as your cloud hosting provider! We're glad you've decided to join our community, and we're excited to help you get started with your first Linode server. This guide will help you sign up for an account, deploy a Linux distribution, boot your Linode, and perform some basic system administration tasks. By the time you reach the end, you'll have a Linode up and running in the data center of your choice.
+Hello, welcome to on selecting Linode as your cloud hosting provider! We're glad you've decided to join our community, and we're excited to help you get started with your first Linode server. This guide will help you sign up for an account, deploy a Linux distribution, boot your Linode, and perform some basic system administration tasks. By the time you reach the end, you'll have a Linode up and running in the data center of your choice.
 
 ## Signing Up
 
