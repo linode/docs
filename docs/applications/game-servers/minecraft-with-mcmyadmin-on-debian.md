@@ -23,75 +23,130 @@ external_resources:
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, and the Linode's [hostname is set](/docs/getting-started#setting-the-hostname).
+1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides Do **not** complete the *Creating a Firewall* section of Securing Your Server. This guide has a step specifcally for firewall rules for a Minecraft server.
 
-    To check your hostname run:
-
-        hostname
-        hostname -f
-
-    The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
-
-2.  Update your system.
+2.  Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
 
-##Install Prerequisite Software
+## Remove Unnecessary Network Services
 
-1.  Java Runtime Environment
+By default, Debian installs with listening services for [Exim4](https://en.wikipedia.org/wiki/Exim), [NFS](https://en.wikipedia.org/wiki/Network_File_System) components, SSH and time synchronization (see `sudo netstat -tulpn`). SSH is necessary to adminster your server and timekeeping is important, but if Exim and NFS are not needed, they should be uninstalled to eliminate listening network services and reduce attack surface.
 
-		sudo apt-get install openjdk-7-jre
+1.  Exim.
+    
+        sudo systemctl stop exim4.service
+        sudo systemctl disable exim4.service
 
-2.  [Mono](http://www.mono-project.com/). CubeCoders Limited, the company behind McMyAdmin, packages their own minimal installation of Mono with some necessary source and configuration files. This must be used instead of a generic Mono packages from Debian's repositories.
+2.  `rpc-bind` and `rpc.statd` are needed for NFS. Reboot after disabling `rpcbind`.
+    
+        sudo systemctl stop rpcbind.service
+        sudo systemctl disable rpcbind.service
 
-		cd /usr/local
-		sudo wget http://mcmyadmin.com/Downloads/etc.zip
-		sudo unzip etc.zip; sudo rm etc.zip
+    {: .note }
+    >
+    >If you do plan to use NFS on your Linode, see [our NFS guide](https://www.linode.com/docs/networking/basic-nfs-configuration-on-debian-7) to get started.
 
-## Configure Firewall
+Run `sudo netstat -tulpn` again. You should now only see listening services for SSH (sshd) and NTP (ntpdate, network time protocol).
 
-This section assumes that you have followed our [Securing Your Server](/docs/security/securing-your-server) guide, so you already have those iptables rules in place and have the package `iptables-persistent` installed.
+{: .note }
+>
+>NTPdate can be replaced with [OpenNTPD](https://en.wikipedia.org/wiki/OpenNTPD) (`sudo apt-get install openntpd`) if you prefer a time synchronization daemon which does not listen on all interfaces and you do not require nanosecond accuracy.
 
-Your Linode now also needs to allow *incoming* TCP connections on port 8080 so McMyAdmin can be accessed. The rule must be inserted among those already in the `rules.v4` file.
+If you want to later re-enable either service:
 
-1.  Take a look at your current iptables rules. Bear in mind that the order in which they're applied to incoming traffic is from the top to the bottom of the INPUT, FORWARD or OUTPUT chain. For this rule addition, only INPUT is of concern here.
+    sudo systemctl enable service_name.service
+    sudo systemctl start service_name.service
 
-		sudo iptables -L
+To remove either package:
 
-	Again assuming you've followed the Securing Your Server guide, you should see this returned:
+	sudo apt-get purge service_name
+
+## Configure the Firewall
+
+1.  See our [Securing Your Server](docs/security/securing-your-server/) guide and complete the section on iptables for Debian **using the below ruleset**:
 
 	~~~
-	stuff
-	~~~
+    *filter
 
-2. To insert the rule for McMyAdmin as the 6th rule in the INPUT chain:
+    # Allow all loopback (lo0) traffic
+    # and drop all traffic to 127/8 that doesn't use lo0
+    -A INPUT -i lo -j ACCEPT
+    -A INPUT -d 127.0.0.0/8 -j REJECT
 
-		sudo iptables -I INPUT 6 -p tcp --dport 8080 -j ACCEPT
+    # Allow SSH connections
+    -A INPUT -p tcp -m state --state NEW --dport 22 -j ACCEPT
 
-3.  Once the rule is in place, run `iptables-persistent` again to add it to its ruleset.
+    # Allow pings
+    -A INPUT -p icmp --icmp-type echo-request -j ACCEPT
+
+    # Allow connections from other Minecraft clients
+	-A INPUT -p tcp --dport 25565 -j ACCEPT
+	
+    # Allow web access to McMyAdmin
+    -A INPUT -p tcp -m tcp --dport 8080 -j ACCEPT
+
+    # Accept all established inbound connections
+    -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+
+    # Log iptables denied calls
+    -A INPUT -m limit --limit 5/min -j LOG --log-prefix "iptables denied: " --log-level 7
+
+    # Deny all other inbound traffic.
+    -A INPUT -j REJECT
+    -A FORWARD -j DROP
+
+    COMMIT
+    ~~~
+
+2.  By default, both McMyAdmin and Minecraft operate on IPv4 but unlike a default Minecraft server installation, McMyAdmin does not listen for incoming IPv6 traffic. Since Minecraft can not use both protocols simultaneously, IPv4 is usually chosen over IPv6 because of its much greater availablity, thus not excluding players whose ISPs or hardware don't support IPv6.
+
+	If you choose not to use IPv6 on your Minecraft server, you should disable it by adding the following lines to `/etc/sysctl.d/99-sysctl.conf`:
+
+    	net.ipv6.conf.all.disable_ipv6 = 1
+    	net.ipv6.conf.default.disable_ipv6 = 1
+    	net.ipv6.conf.lo.disable_ipv6 = 1
+    	net.ipv6.conf.eth0.disable_ipv6 = 1
+
+	To activate the changes immediately:
+
+    	sudo sysctl -p
+
+	Then go into `/etc/hosts` and comment out the line for IPv6 resolution over localhost.
+
+	{: .file-excerpt}
+	/etc/hosts
+	:   ~~~ conf
+	    #::1 localhost.localdomain localhost
+	    ~~~
+
+3.  Though we just disabled IPv6 in the kernel, we'll tell iptables to drop IPv6 traffic as an additional security layer.
+
+		sudo ip6tables -F INPUT DROP
+		sudo ip6tables -F FORWARD DROP
+		sudo ip6tables -F OUTPUT DROP
+
+3.  Run `iptables-persistent` to save the iptables rulesets.
 
 		sudo dpkg-reconfigure iptables-persistent
 
-	When asked to save current IPv4 rules, choose `yes`. When asked about IPv6, choose `no`.
+	When asked to save current rules, choose `yes` for both IPv4 and IPv6.
 
+##Install Prerequisite Software
 
-3.  Then install `iptables-persistent` this is a package in Debian and Ubuntu repositories to automatically save and restore iptables rules on shutdown and boot for both IPv4 and IPv6.
+1.  Java Runtime Environment:
 
-		sudo apt-get install iptables-persistent
-##Install Mono
+		sudo apt-get install openjdk-7-jre
 
-1.  Change to the installation directory.
+2.  [Mono](http://www.mono-project.com/). CubeCoders Limited, the company behind McMyAdmin, packages their own minimal installation of Mono with some necessary source and configuration files. This must be used instead of the generic Mono packages from Debian's repositories.
 
 		cd /usr/local
-
-2.  Download and extract the extra required files from McMyAdmin's website.
-
 		sudo wget http://mcmyadmin.com/Downloads/etc.zip
 		sudo unzip etc.zip; sudo rm etc.zip
 
 ##Install and Start McMyAdmin
 
-This section should be completed as your standard user, *not* root. McMyAdmin will then install to `/home/username`.
+This section should be completed as your standard user, **not** as root. McMyAdmin will then install to `/home/username`.
 
 1.  Create the installation directory and change location to it.
 
@@ -109,6 +164,15 @@ This section should be completed as your standard user, *not* root. McMyAdmin wi
 
 		./MCMA2_Linux_x86_64 -setpass [PASSWORD] -configonly
 
+	This will return the output:
+
+		The updater will download and install McMyAdmin to the current directory:
+		/home/your_user/mcmyadmin).
+
+		Continue? [y/n] :
+
+	Answer `y`. The installer will run and return you to the command prompt. If everything is as it should be, the only warning you'll see will be for a missing configuration file. As the output says, that would be normal since McMyAdmin was just started for the first time.
+
 5.  Install screen, if it is not already installed.
 
 		sudo apt-get install screen
@@ -120,15 +184,6 @@ This section should be completed as your standard user, *not* root. McMyAdmin wi
 7.  Check the current working directory, then execute the McMyAdmin server.
 
 		cd ~/McMyAdmin; ./MCMA2_Linux_x86_64
-
-	This will return the output:
-
-		The updater will download and install McMyAdmin to the current directory:
-		/home/your_user/mcmyadmin).
-
-		Continue? [y/n] :
-
-	Answer `y`. The installer will run and return you to the command prompt. If everything is as it should be, the only warning you'll see will be for a missing configuration file. As the output says, that would be normal since McMyAdmin was just started for the first time.
 
 8.  Change into the McMyAdmin installation directory and start the program.
 
@@ -148,19 +203,18 @@ This section should be completed as your standard user, *not* root. McMyAdmin wi
 
 1.  Browse to the McMyAdmin web interface by visiting `http://YourLinodeIP:8080`.
 
-	![McMyAdmin Login Page](/docs/assets/mcmyadmin-login-page.png)
-
 2.  Log in with the username `admin` and the password that you provided in the installation step.
-	
-	![McMyAdmin Configuration Page](/docs/assets/mcmyadmin-config-page.png)
 
-3.  Once the initial configuration steps are completed,  select your settings, then switch to the status page.
+	![McMyAdmin Login Page](/docs/assets/mcmyadmin-login-page.png)
 	
+3.  Once the initial configuration steps are completed,  select your settings, then switch to the status page.
+
+	![McMyAdmin Configuration Page](/docs/assets/mcmyadmin-config-page.png)
+	
+4.  Select *Start Server* and accept the Minecraft Server EULA
+
 	![McMyAdmin Status Page](/docs/assets/mymyadmin-status-page.png)
 
-4.  Select "Start Server" and accept the Minecraft Server EULA
-
 	![McMyAdmin Server Started](/docs/assets/mcmyadmin-server-running.png)
-
 
 Congratulations, you have now set up a new Minecraft server using McMyAdmin.
