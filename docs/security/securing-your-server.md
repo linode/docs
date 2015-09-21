@@ -154,22 +154,23 @@ After the SSH service restarts, the SSH configuration changes will be applied.
 
 ## Configuring a Firewall
 
-Using a *firewall* to block unwanted inbound traffic to your Linode is a highly effective security layer. By being very specific with the traffic you allow in, you can prevent intrusions and ***. A good rule of thumb is to allow only the traffic you need, and deny everything else. 
+Using a *firewall* to block unwanted inbound traffic to your Linode is a highly effective security layer. By being very specific with the traffic you allow in, you can prevent intrusions and network mapping from outside your LAN. A good rule of thumb is to allow only the traffic you need, and deny everything else. 
 
-[iptables](http://www.netfilter.org/projects/iptables/index.html) is the controller for netfilter, the Linux kernel's packet filtering framework. iptables is included in most Linux distros by default.
+[iptables](http://www.netfilter.org/projects/iptables/index.html) is the controller for netfilter, the Linux kernel's packet filtering framework. iptables is included in most Linux distros by default but is considered an advanced method of firewall control, so several projects exist to in turn control iptables in a more user friendly way.
 
-{: .note }
->
->From CentOS 7 and Fedora 18, [firewalld](http://www.firewalld.org/) is included as a firewall controller. The firewalld package adds some additional enterprise-focused functionality to iptables that will not be covered in this guide. For reference, documentation for configuring firewalld can be found at [Red Hat's Customer Portal](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Security_Guide/sec-Using_Firewalls.html).
+[firewalld](http://www.firewalld.org/) for the Fedora distro family, and [ufw](https://help.ubuntu.com/community/UFW) for the Debian family are two examples of iptables controllers. This section will focus on iptables but you can see our guides on firewalld and ufw if you feel they may be a better choice for you.
 
-### Viewing Your Current iptables Rules
+### View Your Current iptables Rules
 
-To view your Linode's current firewall rules:
+IPv4 rules:
 
     sudo iptables -L
+
+IPv6 rules:
+
     sudo ip6tables -L
 
-By default, iptables has no rules configured for both IPv4 and IPv6 so on a new Linode, you will see as shown below--three empty chains without any firewall rules. This means that all incoming, forwarded and outgoing traffic is *allowed*. It's important to limit inbound and forwarded traffic to only what's necessary.
+By default, iptables has no rules set for both IPv4 and IPv6 so on a new Linode, you will see as shown below--three empty chains without any firewall rules. This means that all incoming, forwarded and outgoing traffic is *allowed*. It's important to limit inbound and forwarded traffic to only what's necessary.
 
     Chain INPUT (policy ACCEPT)
     target     prot opt source               destination
@@ -181,45 +182,47 @@ By default, iptables has no rules configured for both IPv4 and IPv6 so on a new 
     target     prot opt source               destination
 
 
-### Basic iptables Rule Sets for IPv4 and IPv6
+### Basic iptables Rulesets for IPv4 and IPv6
 
-Appropriate firewall rules heavily depend on the services being run. Below is an iptables ruleset to secure your Linode if you're running a web server. This is given as *an example*. A real production web server may want or require more or less configuration and these rules would not be appropriate for a file or database server, Minecraft or VPN server, etc.
+Appropriate firewall rules heavily depend on the services being run. Below is an iptables ruleset to secure your Linode if you're running a web server. *This is given as an example!* A real production web server may want or require more or less configuration and these rules would not be appropriate for a file or database server, Minecraft or VPN server, etc.
 
-iptables rules can always be modified or reset later, but this basic ruleset serves only as a beginning demonstration. In it, outbound traffic is unregulated. Forwarding traffic is rejected and Inbound traffic is limited to SSH, HTTP, HTTPS and ICMP type 8 (pings).
+iptables rules can always be modified or reset later, but this basic ruleset serves only as a beginning demonstration. Outbound traffic is unregulated. All forwarding traffic is rejected and inbound traffic is limited to SSH, HTTP, HTTPS and ICMP type 8 (pings). Denied packets are logged.
 
     *filter
 
-    # Allow all loopback (lo0) traffic and drop all traffic to 127/8 that doesn't use lo0.
+    # Allow all loopback (lo0) traffic and reject traffic to 127/8 that doesn't use lo0.
     -A INPUT -i lo -j ACCEPT
     -A INPUT -d 127.0.0.0/8 -j REJECT
 
-    # Accept all established inbound connections
+    # Accept inbound traffic from established connections.
     -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
 
-    #  Allow HTTP and HTTPS connections from anywhere (the normal ports for websites and SSL).
+    # Allow HTTP and HTTPS connections from anywhere (the normal ports for websites).
     -A INPUT -p tcp --dport 80 -j ACCEPT
     -A INPUT -p tcp --dport 443 -j ACCEPT
 
-    # Allow SSH connections
+    # Allow SSH connections.
     # The -dport number should be the same port number you set in sshd_config.
     -A INPUT -p tcp -m state --state NEW --dport 22 -j ACCEPT
 
-    # Allow ping
+    # Allow ping.
     -A INPUT -p icmp --icmp-type echo-request -j ACCEPT
 
-    # Log iptables denied calls
+    # Log what was incoming but denied.
     -A INPUT -m limit --limit 5/min -j LOG --log-prefix "iptables denied: " --log-level 7
 
-    # Drop all other inbound - default deny unless explicitly allowed policy.
-    -A INPUT -j DROP
+    # Reject all other inbound.
+    -A INPUT -j REJECT
+
+    # Set a forwarding policy of DROP.
     -P FORWARD DROP
 
-    # Allow all outbound traffic - you can modify this to only allow certain traffic.
+    # Allow all outbound traffic.
     -A OUTPUT -j ACCEPT
 
     COMMIT
 
-**Optional:**  If you plan on using the Linode Longview service, add these additional lines above the `#  Drop all other inbound` section:
+**Optional:**  If you plan on using the Linode Longview service, add these additional lines above the `# Log what was incoming but denied` section:
 
     # Allow incoming Longview connections 
     -A INPUT -s longview.linode.com -j ACCEPT
@@ -227,7 +230,7 @@ iptables rules can always be modified or reset later, but this basic ruleset ser
     # llow metrics to be provided Longview
     -A OUTPUT -d longview.linode.com -j ACCEPT
 
-The above rules applies *only to IPv4*. Now we need a rule set for IPv6. Since it's not usually used on a webserver, we'll deny all of it. If your server has an IPv6 address, you would not want to do this.
+The above rules can be used for both IPv4 and IPv6 (though IPv6 generally meeds more ICMP capabilities than what's given). However, since IPv6 is not usually used on a webserver, we'll deny all of it. If your server has an IPv6 address, you would not want to do this.
 
     *filter
 
@@ -243,24 +246,23 @@ How these IPv4 and IPv6 rules are deployed differs among the various Linux distr
 
 1.  Create the files `/etc/iptables/iptables.rules` and `/etc/iptables/ip6tables.rules`. Paste the above rulesets into their respective files.
 
-2.  iptables is not running by default in Arch. Add the rules and start the unit.
+2.  Import the rulesets into immediate use.
 
         sudo iptables-restore < /etc/iptables/iptables.rules
         sudo ip6tables-restore < /etc/iptables/ip6tables.rules
 
-        sudo systemctl start iptables
-        sudo systemctl start ip6tables
+3.  iptables is not running by default in Arch. Enable and start the systemd units.
 
-3.  Enable the iptables systemd unit to start automatically on each boot. This happens before the network interface is up.
+        sudo systemctl start iptables && sudo systemctl start ip6tables
+        sudo systemctl enable iptables && sudo systemctl enable ip6tables
 
-        sudo systemctl enable iptables
-        sudo systemctl enable ip6tables
+4.  Apply the `pre-network.conf` fix from the [ArchWiki](https://wiki.archlinux.org/index.php/Iptables#Configuration_and_usage) so iptables starts before the nework is up.
 
-For more info on using iptables in Arch, see its wiki entries for [iptables](https://wiki.archlinux.org/index.php/Iptables) and a [Simple Stateful Firewall](https://wiki.archlinux.org/index.php/Simple_stateful_firewall).
+For more info on using iptables in Arch, see its Wiki entries for [iptables](https://wiki.archlinux.org/index.php/Iptables) and a [Simple Stateful Firewall](https://wiki.archlinux.org/index.php/Simple_stateful_firewall).
 
 ### CentOS / Fedora
 
-For CentOS 6 or Fedora 19 and below:
+**CentOS 6 or Fedora 19 and below**
 
 1.  Create the files `/tmp/ipv4` and `/tmp/ipv6`. Paste the above rulesets into their respective files.
 
@@ -269,7 +271,6 @@ For CentOS 6 or Fedora 19 and below:
         sudo /sbin/iptables-restore < /tmp/ipv4
         sudo /sbin/ip6tables-restore < /tmp/ipv6
 
-
 3.  Save the rules.
 
         sudo /sbin/service iptables save
@@ -277,80 +278,86 @@ For CentOS 6 or Fedora 19 and below:
 
     {: .note }
     >
-    >Firewall rules are saved to `/etc/sysconfig/iptables` and /etc/sysconfig/ip6tables`.
+    >Firewall rules are saved to `/etc/sysconfig/iptables` and `/etc/sysconfig/ip6tables`.
 
-*** I more or less left off here***
+**CentOS 7 or Fedora 20 and above**
 
-For CentOS 7 or Fedora 20 and above, firewalld is used to implement firewall rules instead of controlling iptables directly.
+In these distros, Firewalld is used to implement firewall rules instead of controlling iptables directly. If you would prefer to use it over iptables, see our guide for getting Firewalld up and running.
 
+1.  If you would prefer to use iptables, Firewalld must first be stopped and disabled.
 
-1.  Install iptables-services.
+        sudo systemctl stop firewalld.service && sudo systemctl disable firewalld.service
 
-        yum install -y iptables-services
-        systemctl enable iptables
-        systemctl start iptables
+2.  Install iptables-services and enable iptables.
 
-To save your current rule set use the following command
+        sudo yum install iptables-services
+        sudo systemctl enable iptables && systemctl enable ip6tables
+        sudo systemctl start iptables && systemctl start ip6tables
 
-    /usr/libexec/iptables/iptables.init save
+3.  Create the files `/tmp/ipv4` and `/tmp/ipv6`. Paste the above rulesets into their respective files.
 
-For more info on using iptables and firewalld in CentOS, see the distro's wiki entries for [iptables](https://wiki.centos.org/HowTos/Network/IPTables) and 
+4.  Import the rulesets into immediate use.
+
+        sudo iptables-restore < /tmp/ipv4
+        sudo ip6tables-restore < /tmp/ipv6
+
+5.  Save each ruleset.
+
+        sudo /sbin/service iptables save
+        sudo /sbin/service ip6tables save
+
+For more info on using iptables and firewalld in CentOS and Fedora, see these pages:
+
+CentOS Wiki: [iptables](https://wiki.centos.org/HowTos/Network/IPTables)
+
+Fedora Project Wiki: [FirewallD](https://fedoraproject.org/wiki/FirewallD?rd=FirewallD/)
+
+Fedora Project Wiki: [How to Edit iptables Ruels](https://fedoraproject.org/wiki/How_to_edit_iptables_rules)
+
+Red Hat Security Guide: [Using Firewalls](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Security_Guide/sec-Using_Firewalls.html)
 
 ### Debian / Ubuntu
 
-[iptables-persistent](https://github.com/zertrin/iptables-persistent) automates loading iptables rules on boot for Debian and Ubuntu.
+ufw is the iptables controller included with Ubuntu but is also available in Debian's repositories. If you would prefer to use ufw instead of ipables, see our ufw guide to get a ruleset up and running.
 
 1.  Create the files `/tmp/ipv4` and `/tmp/ipv6`. Paste the above rulesets into their respective files.
 
-2.  Install `iptables-persistent` from the distro repositories.
+2.  [iptables-persistent](https://github.com/zertrin/iptables-persistent) automates loading iptables rules on boot for Debian and Ubuntu. Install it from the distro repositories.
 
         sudo apt-get install iptables-persistent
 
-    {: .note }
-    >
-    >For Debian-based distros using systemd, `netfilter-persistent` will be installed as a dependency.
-
 3. You'll be asked if you want to save the current IPv4 and IPv6 rules. Answer `yes` to each prompt.
 
-### Gentoo
+### Verify iptables Rulesets
 
-### openSUSE
-
-### Slackware
-
-
-
-
-
-
-Recheck your Linode's firewall rules by entering the following command:
+Recheck your Linode's firewall rules:
 
     sudo iptables -L
     sudo ip6tables -L
 
-10.  Examine the output. The new ruleset should look like the one shown below:
+The output should show:
 
     Chain INPUT (policy ACCEPT)
-    target     prot opt source               destination
     ACCEPT     all  --  anywhere             anywhere
-    REJECT     all  --  anywhere             127.0.0.0/8          reject-with icmp-port-unreachable
+    REJECT     all  --  anywhere             loopback/8           reject-with icmp-port-unreachable
     ACCEPT     all  --  anywhere             anywhere             state RELATED,ESTABLISHED
     ACCEPT     tcp  --  anywhere             anywhere             tcp dpt:http
     ACCEPT     tcp  --  anywhere             anywhere             tcp dpt:https
     ACCEPT     tcp  --  anywhere             anywhere             state NEW tcp dpt:ssh
-    ACCEPT     icmp --  anywhere             anywhere
+    ACCEPT     icmp --  anywhere             anywhere             icmp echo-request
     LOG        all  --  anywhere             anywhere             limit: avg 5/min burst 5 LOG level debug prefix "iptables denied: "
-    DROP       all  --  anywhere             anywhere
+    REJECT     all  --  anywhere             anywhere             reject-with icmp-port-unreachable
 
     Chain FORWARD (policy ACCEPT)
     target     prot opt source               destination
-    DROP       all  --  anywhere             anywhere
+    LOG        all  --  anywhere             anywhere             limit: avg 5/min burst 5 LOG level debug prefix "iptables denied: "
+    REJECT       all  --  anywhere             anywhere
 
     Chain OUTPUT (policy ACCEPT)
     target     prot opt source               destination
-    ACCEPT     all  --  anywhere             anywhere  
+    ACCEPT     all  --  anywhere             anywhere
 
-That's it! Your firewall rules are in place and protecting your Linode. Remember, you'll need to edit the firewall rules later if you install other software or services.
+That's it! Your firewall rules are in place and protecting your Linode. Remember, you may need to edit these rules later if you install other packages which require network access.
 
 ## Installing and Configuring Fail2Ban
 
