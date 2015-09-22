@@ -13,7 +13,7 @@ published: 'Wednesday, April 7th, 2010'
 title: 'Create an Aggregate Blog using Planet on Debian 5 (Lenny)'
 deprecated: true
 external_resources:
-    - '[The Planet's Project's Home Page](http://www.planetplanet.org)'
+    - '[The Planet''s Project''s Home Page](http://www.planetplanet.org)'
     - '[Using Cron to Schedule Tasks](/docs/linux-tools/utilities/cron)'
 ---
 

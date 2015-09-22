@@ -13,7 +13,7 @@ published: 'Monday, October 22nd, 2012'
 title: 'Create an Aggregate Blog using Planet Venus on Ubuntu 12.04 (Precise Pangolin)'
 deprecated: true
 external_resources:
-    - '[The Planet's Project's Home Page](http://www.planetplanet.org)'
+    - '[The Planet''s Project''s Home Page](http://www.planetplanet.org)'
     - '[Using Cron to Schedule Tasks](/docs/linux-tools/utilities/cron)'
 ---
 
