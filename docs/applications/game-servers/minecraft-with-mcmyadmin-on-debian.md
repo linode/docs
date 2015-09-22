@@ -29,23 +29,23 @@ external_resources:
 
         sudo apt-get update && sudo apt-get upgrade
 
-## Remove Unnecessary Network Services
+### Remove Unnecessary Network Services
 
 By default, Debian installs with listening services for [Exim4](https://en.wikipedia.org/wiki/Exim), [NFS](https://en.wikipedia.org/wiki/Network_File_System) components, SSH and time synchronization (see `sudo netstat -tulpn`). SSH is necessary to adminster your server and timekeeping is important, but if Exim and NFS are not needed, they should be uninstalled to eliminate listening network services and reduce attack surface.
 
-1.  Exim.
+1.  Exim:
     
         sudo systemctl stop exim4.service
         sudo systemctl disable exim4.service
 
-2.  `rpc-bind` and `rpc.statd` are needed for NFS. Reboot after disabling `rpcbind`.
+2.  `rpc-bind` and `rpc.statd` are needed for NFS. Reboot after disabling `rpcbind`:
     
         sudo systemctl stop rpcbind.service
         sudo systemctl disable rpcbind.service
 
     {: .note }
     >
-    >If you do plan to use NFS on your Linode, see [our NFS guide](https://www.linode.com/docs/networking/basic-nfs-configuration-on-debian-7) to get started.
+    >If you do plan to use NFS on your Linode, see [our NFS guide](/docs/networking/basic-nfs-configuration-on-debian-7) to get started.
 
 Run `sudo netstat -tulpn` again. You should now only see listening services for SSH (sshd) and NTP (ntpdate, network time protocol).
 
@@ -62,51 +62,57 @@ To remove either package:
 
 	sudo apt-get purge service_name
 
-## Configure the Firewall
+### Configure the Firewall
 
-1.  See our [Securing Your Server](docs/security/securing-your-server/) guide and complete the section on iptables for Debian **using the below ruleset**:
+1.  See our [Securing Your Server](/docs/security/securing-your-server/) guide and complete the section on iptables for Debian **using the below ruleset**:
 
-	~~~
-    *filter
-
-    # Allow all loopback (lo0) traffic
-    # and drop all traffic to 127/8 that doesn't use lo0
-    -A INPUT -i lo -j ACCEPT
-    -A INPUT -d 127.0.0.0/8 -j REJECT
-
-    # Allow SSH connections
-    -A INPUT -p tcp -m state --state NEW --dport 22 -j ACCEPT
-
-    # Allow pings
-    -A INPUT -p icmp --icmp-type echo-request -j ACCEPT
-
-    # Allow connections from other Minecraft clients
-	-A INPUT -p tcp --dport 25565 -j ACCEPT
-	
-    # Allow web access to McMyAdmin
-    -A INPUT -p tcp -m tcp --dport 8080 -j ACCEPT
-
-    # Accept all established inbound connections
-    -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
-
-    # Log iptables denied calls
-    -A INPUT -m limit --limit 5/min -j LOG --log-prefix "iptables denied: " --log-level 7
-
-    # Deny all other inbound traffic.
-    -A INPUT -j REJECT
-    -A FORWARD -j DROP
-
-    COMMIT
-    ~~~
+    {: .file}
+    Firewall Rules
+    :   ~~~
+        *filter
+    
+        # Allow all loopback (lo0) traffic
+        # and drop all traffic to 127/8 that doesn't use lo0
+        -A INPUT -i lo -j ACCEPT
+        -A INPUT -d 127.0.0.0/8 -j REJECT
+    
+        # Allow SSH connections
+        -A INPUT -p tcp -m state --state NEW --dport 22 -j ACCEPT
+    
+        # Allow pings
+        -A INPUT -p icmp --icmp-type echo-request -j ACCEPT
+    
+        # Allow connections from other Minecraft clients
+        -A INPUT -p tcp --dport 25565 -j ACCEPT
+        
+        # Allow web access to McMyAdmin
+        -A INPUT -p tcp -m tcp --dport 8080 -j ACCEPT
+    
+        # Accept all established inbound connections
+        -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+    
+        # Log iptables denied calls
+        -A INPUT -m limit --limit 5/min -j LOG --log-prefix "iptables denied: " --log-level 7
+    
+        # Deny all other inbound traffic.
+        -A INPUT -j REJECT
+        -A FORWARD -j DROP
+    
+        COMMIT
+        ~~~
 
 2.  By default, both McMyAdmin and Minecraft operate on IPv4 but unlike a default Minecraft server installation, McMyAdmin does not listen for incoming IPv6 traffic. Since Minecraft can not use both protocols simultaneously, IPv4 is usually chosen over IPv6 because of its much greater availablity, thus not excluding players whose ISPs or hardware don't support IPv6.
 
 	If you choose not to use IPv6 on your Minecraft server, you should disable it by adding the following lines to `/etc/sysctl.d/99-sysctl.conf`:
-
+    
+    {: .file-excerpt}
+    /etc/sysctl.d/99-sysctl.conf
+    :   ~~~
     	net.ipv6.conf.all.disable_ipv6 = 1
     	net.ipv6.conf.default.disable_ipv6 = 1
     	net.ipv6.conf.lo.disable_ipv6 = 1
     	net.ipv6.conf.eth0.disable_ipv6 = 1
+        ~~~
 
 	To activate the changes immediately:
 
@@ -134,7 +140,7 @@ To remove either package:
 
 ##Install Prerequisite Software
 
-1.  Java Runtime Environment:
+1.  Install the Java Runtime Environment, OpenJDK:
 
 		sudo apt-get install openjdk-7-jre
 
@@ -162,7 +168,7 @@ This section should be completed as your standard user, **not** as root. McMyAdm
 
 4.  Start the initial configuration of McMyAdmin. Replace `PASSWORD` with a strong password which you want for admin access to McMyAdmin's web interface.
 
-		./MCMA2_Linux_x86_64 -setpass [PASSWORD] -configonly
+		./MCMA2_Linux_x86_64 -setpass PASSWORD -configonly
 
 	This will return the output:
 
@@ -181,11 +187,7 @@ This section should be completed as your standard user, **not** as root. McMyAdm
 
 		screen -S mcma
 
-7.  Check the current working directory, then execute the McMyAdmin server.
-
-		cd ~/McMyAdmin; ./MCMA2_Linux_x86_64
-
-8.  Change into the McMyAdmin installation directory and start the program.
+7.  Change into the McMyAdmin installation directory and start the program.
 
 		cd ~/mcmyadmin; ./MCMA2_Linux_x86_64
 
