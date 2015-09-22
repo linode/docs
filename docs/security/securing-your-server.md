@@ -154,19 +154,19 @@ After the SSH service restarts, the SSH configuration changes will be applied.
 
 ## Configuring a Firewall
 
-Using a *firewall* to block unwanted inbound traffic to your Linode is a highly effective security layer. By being very specific with the traffic you allow in, you can prevent intrusions and network mapping from outside your LAN. A good rule of thumb is to allow only the traffic you need, and deny everything else. 
+Using a *firewall* to block unwanted inbound traffic to your Linode is a highly effective security layer. By being very specific with the traffic you allow in, you can prevent intrusions and network mapping from outside your LAN. A best practice is to allow only the traffic you need, and deny everything else. 
 
 [iptables](http://www.netfilter.org/projects/iptables/index.html) is the controller for netfilter, the Linux kernel's packet filtering framework. iptables is included in most Linux distros by default but is considered an advanced method of firewall control, so several projects exist to in turn control iptables in a more user friendly way.
 
-[firewalld](http://www.firewalld.org/) for the Fedora distro family, and [ufw](https://help.ubuntu.com/community/UFW) for the Debian family are two examples of iptables controllers. This section will focus on iptables but you can see our guides on firewalld and ufw if you feel they may be a better choice for you.
+[FirewallD](http://www.firewalld.org/) for the Fedora distro family, and [ufw](https://help.ubuntu.com/community/UFW) for the Debian family are the two common iptables controllers. This section will focus on iptables but you can see our guides on firewalld and ufw if you feel they may be a better choice for you.
 
 ### View Your Current iptables Rules
 
-IPv4 rules:
+IPv4:
 
     sudo iptables -L
 
-IPv6 rules:
+IPv6:
 
     sudo ip6tables -L
 
