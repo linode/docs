@@ -163,9 +163,9 @@ Once you have the IP address and an SSH client, you can log in via SSH. The foll
 
 ## Installing Software Updates
 
-The first thing you should do when connecting to your Linode is to update the Linux distribution(s) software. This applies the latest security patches and bug fixes to help protect your Linode against unauthorized access.
+The first thing you should do when connecting to your Linode is update the Linux distribution's software. This applies the latest security patches and bug fixes to help protect your Linode against unauthorized access.
 
-Installing software updates will need to be performed *regularly*. If you need help remembering, try creating a monthly alert with the calendar application on your desktop computer.
+Installing software updates should be performed *regularly*. If you need help remembering, try creating a monthly alert with the calendar application on your desktop computer.
 
 ### Ubuntu / Debian
 
@@ -176,15 +176,6 @@ Installing software updates will need to be performed *regularly*. If you need h
     yum update
 
 ### Arch Linux
-
-Before you can update the system, you need to create entropy, initiate `pacman-key` and populate the keyring.
-
-    haveged -w 1024
-    pacman-key --init
-    pkill haveged
-    pacman-key --populate archlinux
-
-Then to update the system
 
     pacman -Syu
 
