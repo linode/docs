@@ -186,65 +186,79 @@ By default, iptables has no rules set for both IPv4 and IPv6 so on a new Linode,
 
 Appropriate firewall rules heavily depend on the services being run. Below is an iptables ruleset to secure your Linode if you're running a web server. *This is given as an example!* A real production web server may want or require more or less configuration and these rules would not be appropriate for a file or database server, Minecraft or VPN server, etc.
 
-iptables rules can always be modified or reset later, but this basic ruleset serves only as a beginning demonstration. Outbound traffic is unregulated. All forwarding traffic is rejected and inbound traffic is limited to SSH, HTTP, HTTPS and ICMP type 8 (pings). Denied packets are logged.
+iptables rules can always be modified or reset later, but this basic ruleset serves only as a beginning demonstration. Outbound traffic is unregulated. All traffic forwarding is rejected and inbound traffic is limited to SSH, HTTP, HTTPS and ICMP type 8 (pings). Rejected packets are logged.
 
+{:. file}
+/tmp/ipv4
+:   ~~~ conf
     *filter
 
-    # Allow all loopback (lo0) traffic and reject traffic to 127/8 that doesn't use lo0.
+    # Allow all loopback (lo0) traffic
+    # and reject traffic to 127/8 that doesn't use lo0.
     -A INPUT -i lo -j ACCEPT
     -A INPUT -d 127.0.0.0/8 -j REJECT
 
-    # Accept inbound traffic from established connections.
-    -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
-
-    # Allow HTTP and HTTPS connections from anywhere (the normal ports for websites).
-    -A INPUT -p tcp --dport 80 -j ACCEPT
-    -A INPUT -p tcp --dport 443 -j ACCEPT
+    # Allow ping.
+    -A INPUT -p icmp --icmp-type echo-request -j ACCEPT
 
     # Allow SSH connections.
     # The -dport number should be the same port number you set in sshd_config.
     -A INPUT -p tcp -m state --state NEW --dport 22 -j ACCEPT
 
-    # Allow ping.
-    -A INPUT -p icmp --icmp-type echo-request -j ACCEPT
+    # Allow HTTP and HTTPS connections from anywhere
+    # (the normal ports for websites).
+    -A INPUT -p tcp --dport 80 -j ACCEPT
+    -A INPUT -p tcp --dport 443 -j ACCEPT
 
-    # Log what was incoming but denied.
-    -A INPUT -m limit --limit 5/min -j LOG --log-prefix "iptables denied: " --log-level 7
+    # Accept inbound traffic from established connections.
+    -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+
+    # Log what was incoming but denied (optional but useful).
+    -A INPUT -m limit --limit 5/min -j LOG --log-prefix "iptables_INPUT_denied: " --log-level 7
 
     # Reject all other inbound.
     -A INPUT -j REJECT
 
-    # Set a forwarding policy of DROP.
-    -P FORWARD DROP
+    # Log any traffic which was sent to you
+    # for forwarding (optional but useful).
+    -A FORWARD -m limit --limit 5/min -j LOG --log-prefix "iptables_FORWARD_denied: " --log-level 7
+
+    # Reject all traffic forwarding.
+    -A FORWARD -j REJECT
 
     # Allow all outbound traffic.
     -A OUTPUT -j ACCEPT
 
     COMMIT
+    ~~~
 
-**Optional:**  If you plan on using the Linode Longview service, add these additional lines above the `# Log what was incoming but denied` section:
+**Optional:**  If you plan on using the Linode Longview service, add this additional rule above the `# Log what was incoming but denied` section:
 
     # Allow incoming Longview connections 
     -A INPUT -s longview.linode.com -j ACCEPT
 
-    # llow metrics to be provided Longview
-    -A OUTPUT -d longview.linode.com -j ACCEPT
+The rules above in `/tmp/ipv4` can be used for IPv6 too, though IPv6 generally needs more ICMP capabilities than just echo requests. However, since IPv6 is not usually used on a webserver, we'll reject all of it. If you intend to use your Linode's IPv6 address, you would not want to do this.
 
-The above rules can be used for both IPv4 and IPv6 (though IPv6 generally meeds more ICMP capabilities than what's given). However, since IPv6 is not usually used on a webserver, we'll deny all of it. If your server has an IPv6 address, you would not want to do this.
+Create a separate file for your IPv6 rules:
 
+{:. file}
+/tmp/ipv6
+:   ~~~ conf
     *filter
 
-    -P INPUT DROP
-    -P FORWARD DROP
-    -P OUTPUT DROP
+    # Reject all ipv6 traffic on all chains.
+    -A INPUT -j REJECT
+    -A FORWARD -j REJECT
+    -A OUTPUT -j REJECT
 
     COMMIT
+    ~~~
 
 How these IPv4 and IPv6 rules are deployed differs among the various Linux distros.
 
 ### Arch Linux
 
-1.  Create the files `/etc/iptables/iptables.rules` and `/etc/iptables/ip6tables.rules`. Paste the above rulesets into their respective files.
+1.  Create the files `/etc/iptables/iptables.rules` and `/etc/iptables/ip6tables.rules`. Paste the [above rulesets](#basic-iptables-rulesets-for-ipv4-and-ipv6) into their respective files.
 
 2.  Import the rulesets into immediate use.
 
@@ -264,7 +278,7 @@ For more info on using iptables in Arch, see its Wiki entries for [iptables](htt
 
 **CentOS 6 or Fedora 19 and below**
 
-1.  Create the files `/tmp/ipv4` and `/tmp/ipv6`. Paste the above rulesets into their respective files.
+1.  Create the files `/tmp/ipv4` and `/tmp/ipv6`. Paste the [above rulesets](#basic-iptables-rulesets-for-ipv4-and-ipv6) into their respective files.
 
 2.  Import the rules from the temporary files.
 
@@ -280,6 +294,10 @@ For more info on using iptables in Arch, see its Wiki entries for [iptables](htt
     >
     >Firewall rules are saved to `/etc/sysconfig/iptables` and `/etc/sysconfig/ip6tables`.
 
+4.  Remove the temporary rule files.
+
+        sudo rm /tmp/{ipv4,ipv6}
+
 **CentOS 7 or Fedora 20 and above**
 
 In these distros, Firewalld is used to implement firewall rules instead of controlling iptables directly. If you would prefer to use it over iptables, see our guide for getting Firewalld up and running.
@@ -294,7 +312,7 @@ In these distros, Firewalld is used to implement firewall rules instead of contr
         sudo systemctl enable iptables && systemctl enable ip6tables
         sudo systemctl start iptables && systemctl start ip6tables
 
-3.  Create the files `/tmp/ipv4` and `/tmp/ipv6`. Paste the above rulesets into their respective files.
+3.  Create the files `/tmp/ipv4` and `/tmp/ipv6`. Paste the [above rulesets](#basic-iptables-rulesets-for-ipv4-and-ipv6) into their respective files.
 
 4.  Import the rulesets into immediate use.
 
@@ -305,6 +323,10 @@ In these distros, Firewalld is used to implement firewall rules instead of contr
 
         sudo /sbin/service iptables save
         sudo /sbin/service ip6tables save
+
+6.  Remove the temporary rule files.
+
+        sudo rm /tmp/{ipv4,ipv6}
 
 For more info on using iptables and firewalld in CentOS and Fedora, see these pages:
 
@@ -320,13 +342,17 @@ Red Hat Security Guide: [Using Firewalls](https://access.redhat.com/documentatio
 
 ufw is the iptables controller included with Ubuntu but is also available in Debian's repositories. If you would prefer to use ufw instead of ipables, see our ufw guide to get a ruleset up and running.
 
-1.  Create the files `/tmp/ipv4` and `/tmp/ipv6`. Paste the above rulesets into their respective files.
+1.  Create the files `/tmp/ipv4` and `/tmp/ipv6`. Paste the [above rulesets](#basic-iptables-rulesets-for-ipv4-and-ipv6) into their respective files.
 
 2.  [iptables-persistent](https://github.com/zertrin/iptables-persistent) automates loading iptables rules on boot for Debian and Ubuntu. Install it from the distro repositories.
 
         sudo apt-get install iptables-persistent
 
 3. You'll be asked if you want to save the current IPv4 and IPv6 rules. Answer `yes` to each prompt.
+
+4.  Remove the temporary rule files.
+
+        sudo rm /tmp/{ipv4,ipv6}
 
 ### Verify iptables Rulesets
 
