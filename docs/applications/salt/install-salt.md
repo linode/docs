@@ -8,7 +8,7 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: Thursday, July 2nd, 2015
 modified_by:
     name: James Stewart
-published: 'Thursday, July 2nd, 2015'
+published: 'Tuesday, September 22nd, 2015'
 title: Install Salt
 ---
 
