@@ -12,7 +12,7 @@ published: 'Monday, September 14th, 2015'
 title: How to Configure a Firewall with UFW
 ---
 
-UFW, or *uncomplicated firewall*, is a frontend firewall solution for running iptables on your Ubuntu, Debian, or Arch servers. UFW is used through the command line (although has GUIs available), and aims to make firewall configuration easy (or uncomplicated).
+UFW, or *uncomplicated firewall*, is a frontend for managing firewall rules on your Ubuntu, Debian, or Arch servers. UFW is used through the command line (although has GUIs available), and aims to make firewall configuration easy (or uncomplicated).
 
 ## Setting Up UFW
 
@@ -66,6 +66,9 @@ In general, most systems will need a certain amount of ports open for connection
         
 The `ufw default` command also allows for the use of the `reject` parameter.
 
+{:.caution}
+>Configuring a default reject or deny rule can lock you out of your Linode unless explicit allow rules are in place.  Ensure that you have configured allow rules for SSH and other critical services as per the section below before applying default deny or reject rules.
+
 ### Adding Rules
 
 Rules can be added in two ways: By denoting the **port number** or by using the **service name**.
@@ -94,7 +97,7 @@ Whereas this will allow UDP packets on 1725:
     
 ### Advenced Rules
 
-Outside of allowing or denying based solely on port, UFW also allows you to allow/block by IP addresses, subnets, and a IP address/subnet/port combinations.
+Along with allowing or denying based solely on port, UFW also allows you to allow/block by IP addresses, subnets, and a IP address/subnet/port combinations.
 
 To allow connections from an IP address:
 
