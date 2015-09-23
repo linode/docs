@@ -17,7 +17,7 @@ In the [Getting Started](/docs/getting-started) guide, you learned how to deploy
 
 ## Adding a New User
 
-In the [Getting Started](/docs/getting-started) guide, we asked you to log in to your Linode as the `root` user, the most powerful user of all. The problem with logging in as `root` is that you can execute *any* command - even a command that could accidentally break your server. For this reason and others, we recommend creating another user account and using that at all times. After you log in with the new account, you'll still be able to execute superuser commands with the `sudo` command.
+In the [Getting Started](/docs/getting-started) guide, we asked you to login to your Linode as the `root` user, the most powerful user of all. The problem with logging in as `root` is that you can execute *any* command - even a command that could accidentally break your server. For this reason and others, we recommend creating another user account and using that at all times. After you log in with the new account, you'll still be able to execute superuser commands with the `sudo` command.
 
 Here's how to add a new user:
 
@@ -63,7 +63,7 @@ Here's how to add a new user:
         root    ALL=(ALL)       ALL
         exampleuser        ALL=(ALL)       ALL
 
-6.  Press 'Esc' to leave insert mode and enter the following command to save the file and quit visudo:
+6.  Press 'Esc' to leave insert mode, and enter the following command to save the file and quit visudo:
 
         :wq
 
@@ -71,7 +71,7 @@ Here's how to add a new user:
 
         logout
 
-8.  Log in to your Linode as the new user by entering the following command. Replace *exampleuser* with your username, and the example IP address with your Linode's IP address:
+8.  Login to your Linode as the new user by entering the following command. Replace *exampleuser* with your username, and the example IP address with your Linode's IP address:
 
         ssh exampleuser@123.456.78.90
 
@@ -79,7 +79,7 @@ Now you can administer your Linode with the new user account instead of `root`. 
 
 ## Using SSH Key Pair Authentication
 
-You've used password authentication to connect to your Linode via SSH, but there's a more secure method available: *key pair authentication*. In this section, you'll generate a public and private key pair using your desktop computer and then upload the public key to your Linode. SSH connections will be authenticated by matching the public key with the private key stored on your desktop computer - you won't need to type your account password. When combined with the steps outlined later in this guide that disable password authentication entirely, key pair authentication can protect against brute-force password cracking attacks.
+You've used password authentication to connect to your Linode via SSH, but there's a more secure method available: *key pair authentication*. In this section, you'll generate a public and private key pair using your desktop computer and then upload the public key to your Linode. SSH connections will be authenticated by matching the public key with the private key stored on your desktop computer - you won't need to type your account password. When combined with the steps outlined later in this guide that disable password authentication entirely, key pair authentication can protect against brute-force password-cracking attacks.
 
 Here's how to use SSH key pair authentication to connect to your Linode:
 
@@ -111,15 +111,15 @@ Here's how to use SSH key pair authentication to connect to your Linode:
         chmod 700 .ssh
         chmod 600 .ssh/authorized_keys
 
-The SSH keys have been generated, and the public key has been installed on your Linode. You're ready to use SSH key pair authentication! To try it, log out of your terminal session and then log back in. The new session will be authenticated with the SSH keys and you won't have to enter your account password. (You'll still need to enter the passphrase for the key, if you specified one.)
+The SSH keys have been generated and the public key has been installed on your Linode. You're ready to use SSH key pair authentication! To try it, log out of your terminal session and then log back in. The new session will be authenticated with the SSH keys and you won't have to enter your account password. (You'll still need to enter the passphrase for the key, if you specified one.)
 
 ## Disabling SSH Password Authentication and Root Login
 
-You just strengthened the security of your Linode by adding a new user and generating SSH keys. Now it's time to make some changes to the default SSH configuration. First, you'll disable *password authentication* to require all users connecting via SSH to use key authentication. Next, you'll disable *root login* to prevent the `root` user from logging in via SSH. These steps are optional, but are strongly recommended.
+You just strengthened the security of your Linode by adding a new user and generating SSH keys. Now it's time to make some changes to the default SSH configuration. First, you'll disable *password authentication* to require all users connecting via SSH to use key authentication. Next, you'll disable *root login* to prevent the `root` user from logging in via SSH. While these steps are optional, they are strongly recommended.
 
  {: .note }
 >
-> You may want to leave password authentication enabled if you connect to your Linode from many different desktop computers. That will allow you to authenticate with a password instead of copying the private key to every computer.
+> You may want to leave password authentication enabled if you connect to your Linode from many different desktop computers. This will allow you to authenticate with a password instead of copying the private key to every computer.
 
 Here's how to disable SSH password authentication and root login:
 
@@ -129,9 +129,9 @@ Here's how to disable SSH password authentication and root login:
 
     {: .note }
     >
-    > If you see a message similar to *-bash: sudo: command not found*, you'll need to install `sudo` on your Linode. To do so, log in as root by entering the `su` command, and type the `root` password when prompted. Next, install `sudo` by entering the following command: `apt-get install sudo`. After `sudo` has been installed, log out as the `root` user by entering the `exit` command.
+    > If you see a message similar to *-bash: sudo: command not found*, you'll need to install `sudo` on your Linode. To do so, login as root by entering the `su` command, and type the `root` password when prompted. Next, install `sudo` by entering the following command: `apt-get install sudo`. After `sudo` has been installed, logout as the `root` user by entering the `exit` command.
 
-2.  Change the `PasswordAuthentication` setting to `no` as shown below. Verify that the line is uncommented by removing the \# in front of the line, if there is one.:
+2.  Change the `PasswordAuthentication` setting to `no` as shown below. Verify that the line is uncommented by removing the \# in front of the line, if there is one:
 
         PasswordAuthentication no
 
@@ -139,7 +139,7 @@ Here's how to disable SSH password authentication and root login:
 
         PermitRootLogin no
 
-4.  Save the changes to the SSH configuration file by pressing **Control-X**, and then **Y**.
+4.  Save the changes to the SSH configuration file by pressing **Control-X** and then **Y**.
 5.  Restart the SSH service to load the new configuration. Enter the following command:
 
     **Debian/Ubuntu Users:**
@@ -154,11 +154,11 @@ After the SSH service restarts, the SSH configuration changes will be applied.
 
 ## Configuring a Firewall
 
-Using a *firewall* to block unwanted inbound traffic to your Linode is a highly effective security layer. By being very specific with the traffic you allow in, you can prevent intrusions and network mapping from outside your LAN. A best practice is to allow only the traffic you need, and deny everything else. 
+Using a *firewall* to block unwanted inbound traffic to your Linode is a highly effective security layer. By specifying clearly the traffic you will allow access, you can prevent intrusions and network mapping from outside your LAN. A best practice is to allow only the traffic you need, and deny everything else. 
 
-[iptables](http://www.netfilter.org/projects/iptables/index.html) is the controller for netfilter, the Linux kernel's packet filtering framework. iptables is included in most Linux distros by default but is considered an advanced method of firewall control, so several projects exist to in turn control iptables in a more user friendly way.
+[iptables](http://www.netfilter.org/projects/iptables/index.html) is the controller for netfilter, the Linux kernel's packet filtering framework. iptables is included in most Linux distros by default but is considered an advanced method of firewall control; consequently, several projects exist in turn to control iptables in a more user friendly way.
 
-[FirewallD](http://www.firewalld.org/) for the Fedora distro family, and [ufw](https://help.ubuntu.com/community/UFW) for the Debian family are the two common iptables controllers. This section will focus on iptables but you can see our guides on firewalld and ufw if you feel they may be a better choice for you.
+[FirewallD](http://www.firewalld.org/) for the Fedora distro family and [ufw](https://help.ubuntu.com/community/UFW) for the Debian family are the two common iptables controllers. This section will focus on iptables but you can see our guides on firewalld and ufw if you feel they may be a better choice for you.
 
 ### View Your Current iptables Rules
 
@@ -170,7 +170,7 @@ IPv6:
 
     sudo ip6tables -L
 
-By default, iptables has no rules set for both IPv4 and IPv6 so on a new Linode, you will see as shown below--three empty chains without any firewall rules. This means that all incoming, forwarded and outgoing traffic is *allowed*. It's important to limit inbound and forwarded traffic to only what's necessary.
+By default, iptables has no rules set for both IPv4 and IPv6. As a result, on a newly created Linode you will see what is shown below--three empty chains without any firewall rules. This means that all incoming, forwarded and outgoing traffic is *allowed*. It's important to limit inbound and forwarded traffic to only what's necessary.
 
     Chain INPUT (policy ACCEPT)
     target     prot opt source               destination
@@ -226,10 +226,7 @@ iptables rules can always be modified or reset later, but this basic ruleset ser
     # Reject all traffic forwarding.
     -A FORWARD -j REJECT
 
-    # Allow all outbound traffic.
-    -A OUTPUT -j ACCEPT
-
-    COMMIT
+   COMMIT
     ~~~
 
 **Optional:**  If you plan on using the Linode Longview service, add this additional rule above the `# Log what was incoming but denied` section:
@@ -237,7 +234,7 @@ iptables rules can always be modified or reset later, but this basic ruleset ser
     # Allow incoming Longview connections 
     -A INPUT -s longview.linode.com -j ACCEPT
 
-The rules above in `/tmp/ipv4` can be used for IPv6 too, though IPv6 generally needs more ICMP capabilities than just echo requests. However, since IPv6 is not usually used on a webserver, we'll reject all of it. If you intend to use your Linode's IPv6 address, you would not want to do this.
+The rules above in `/tmp/ipv4` can be used for IPv6, too; although IPv6 generally needs more ICMP capabilities than just echo requests. However, since IPv6 is not usually used on a webserver, we'll reject all of it. If you intend to use your Linode's IPv6 address, you would not want to do this.
 
 Create a separate file for your IPv6 rules:
 
@@ -270,7 +267,7 @@ How these IPv4 and IPv6 rules are deployed differs among the various Linux distr
         sudo systemctl start iptables && sudo systemctl start ip6tables
         sudo systemctl enable iptables && sudo systemctl enable ip6tables
 
-4.  Apply the `pre-network.conf` fix from the [ArchWiki](https://wiki.archlinux.org/index.php/Iptables#Configuration_and_usage) so iptables starts before the nework is up.
+4.  Apply the `pre-network.conf` fix from the [ArchWiki](https://wiki.archlinux.org/index.php/Iptables#Configuration_and_usage), so iptables starts before the network is up.
 
 For more info on using iptables in Arch, see its Wiki entries for [iptables](https://wiki.archlinux.org/index.php/Iptables) and a [Simple Stateful Firewall](https://wiki.archlinux.org/index.php/Simple_stateful_firewall).
 
