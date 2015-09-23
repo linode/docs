@@ -20,9 +20,7 @@ contributor:
     link: https://github.com/twemyss
 ---
 
-## Introduction
-
-After you’ve got a Minecraft server up and running with [Spigot on Debian and Ubuntu](/docs/applications/game-servers/minecraft-with-spigot-ubuntu), you will likely want to connect different servers with different collections of plugins. BungeeCord acts as a proxy between the Minecraft Client and the server, and allows for simple and easy switching between your Spigot Servers. It allows for players to connect to one address, yet also access a wider variety of activities than can be easily set up on a single Minecraft server instance.
+After you’ve got a Minecraft server up and running with [Spigot on Debian and Ubuntu](/docs/applications/game-servers/minecraft-with-spigot-ubuntu), you may want to connect different servers with different collections of plugins. BungeeCord acts as a proxy between the Minecraft client and the server, and allows for simple and easy switching between your Spigot servers. It allows for players to connect to one address, yet also access a wider variety of activities than can be easily set up on a single Minecraft server instance.
 
 {: .note}
 >
@@ -30,9 +28,10 @@ After you’ve got a Minecraft server up and running with [Spigot on Debian and 
 
 ## Setting Up Your Linode
 
-For the purposes of this tutorial, you'll be creating another Linode to run BungeeCord. This helps to keep it separate from your other servers, and allows you to hide the IP of any back-end services.
+For the purposes of this tutorial, you will be creating another Debian or Ubuntu Linode to run BungeeCord. This helps to keep it separate from your other servers, and allows you to hide the IP of any back-end services.
 
 We will assume that the IP of the Linode you're going to install BungeeCord on is `203.0.113.0`, and there are two Spigot servers, with the IP addresses `203.0.113.112` and `203.0.113.198`.
+
 
 ### Updating and Installing Prerequisite Software
 
@@ -46,11 +45,11 @@ On the Linode that is going to host BungeeCord:
 
         sudo apt-get install openjdk-7-jre-headless
 
-3.  Install GNU Screen. This allows BungeeCord to run in the background, even when you're not connected to SSH:
+3.  Install GNU Screen. This allows BungeeCord to run in the background, even when you're not connected to SSH.
 
         sudo apt-get install screen
 
-4.  Create another user for the BungeeCord proxy, so that it doesn't have the same privileges as your user. You'll need to keep this password for future reference:
+4.  Create another user for the BungeeCord proxy, so that it doesn't have the same privileges as your user. You'll need to keep this password for future reference.
 
 	    sudo adduser bungeecord
 
@@ -60,13 +59,10 @@ If you're using iptables or ufw to act as a firewall, you'll need to make a rule
 
 	sudo iptables -A INPUT -p tcp --dport 25565 -j ACCEPT
 
-{: .caution}
->
->If improperly configured, you may lose SSH access to your Linode. If you don't save your iptables rules, then restarting the Linode from Linode manager should allow access; however, if you use `iptables-persistent` or save the rules in accordance with our [Securing Your Server](/docs/security/securing-your-server/) guide, you may not regain access. In this case, you can revert the saved rules by booting into [rescue mode](/docs/troubleshooting/rescue-and-rebuild) and deleting the iptables rules by running `rm /etc/iptables.firewall.rules`.
 
 ### Configuring the Firewall on the Spigot Server Linodes
 
-For BungeeCord, the Spigot servers need to be in offline mode, as the BungeeCord proxy handles the authentication. This can make the servers vulnerable to people connecting directly, as they can connect with any username, potentially allowing for connection as a user with adminsitrative permissions. To prevent this, you can set up `iptables` to limit connections to only the BungeeCord server.
+For BungeeCord, the Spigot servers need to be in offline mode, as the BungeeCord proxy handles the authentication. This can make the servers vulnerable to people connecting directly, as they can connect with any username, potentially allowing for connection as a user with adminsitrative permissions. To prevent this, you can set up iptables to limit connections to only the BungeeCord server.
 
 {: .note}
 >
@@ -102,7 +98,7 @@ For BungeeCord, the Spigot servers need to be in offline mode, as the BungeeCord
 
 ## Installing BungeeCord
 
-Log into the BungeeCord Linode as the `bungeecord` user created earlier, and download BungeeCord with the following command:
+Log into the BungeeCord Linode as the `bungeecord` user created earlier, and download BungeeCord:
 
 	wget -O BungeeCord.jar http://ci.md-5.net/job/BungeeCord/lastSuccessfulBuild/artifact/bootstrap/target/BungeeCord.jar
 
@@ -122,7 +118,7 @@ Log into the BungeeCord Linode as the `bungeecord` user created earlier, and dow
 
 2.  Edit `config.yml` by replacing the section of the configuration that says `host: 0.0.0.0:25577` to `host: 0.0.0.0:25565` as this is the default port that the Minecraft Client attempts to connect to. 
 
-    The next stage is to edit the following block of the configuration, in order to add our existing Spigot servers:
+3.  Edit the following block of the configuration, in order to add our existing Spigot servers:
 
 	{: .file-excerpt}
     config.yml
@@ -131,7 +127,7 @@ Log into the BungeeCord Linode as the `bungeecord` user created earlier, and dow
           lobby:
             address: localhost:25565
             restricted: false
-            motd: '&1Just another BungeeCord - Forced Host'
+            motd: 'Just another BungeeCord - Forced Host'
         ~~~
 
     For the servers that are specified as examples in the introduction, it would look like:
@@ -143,16 +139,16 @@ Log into the BungeeCord Linode as the `bungeecord` user created earlier, and dow
           lobby:
             address: 203.0.113.112:25565
             restricted: false
-            motd: '&1Just another BungeeCord - Forced Host'
+            motd: 'Just another BungeeCord - Forced Host'
 	      games:
 	        address: 203.0.113.198:25565
 	        restricted: false
-	        motd: '&1Just another BungeeCord - Forced Host'
+	        motd: 'Just another BungeeCord - Forced Host'
         ~~~
 
     Each server block has a label: In the case of the example, `lobby` or `games`. These can be any word you want, but it's important that they are descriptive, as they will be used by the players to change servers.
     
-    So that players can recognise your server more easily in their server list, you can set a custom message. Change the line that says `motd: '&1Another Bungee server'` and put your custom message between the quotes. You can use Minecraft color codes here.
+    So that players can recognise your server more easily in their server list, you can set a custom message. Change the line that says `motd: 'Just another Bungeecord - Forced Host'` and put your custom message between the quotes. You can use Minecraft color codes here.
     
     To allow for UUIDs to be correct in the Spigot servers, you should also ensure that you set `ip_forward` to `true`.
     
@@ -176,16 +172,16 @@ Log into the BungeeCord Linode as the `bungeecord` user created earlier, and dow
 
 3.  When you want to start your server, run `./bungeestart.sh`.
 
-    To connect to the server console, you run the following:
+    To connect to the server console, run:
 
         screen -r bungeecord
 
-    Whenever you want to detach from the console, press `Control-A` followed by `Control-D`
+    Whenever you want to detach from the console, press `Control-a` followed by `d`
 
 
 ## Configuring your Spigot servers for BungeeCord
 
-1.  In the directory where you've got your Spigot server, open `spigot.yml`.
+1.  On your Spigot servers, navigate to the Spigot directory and open `spigot.yml`.
 
 2.  Change `bungeecord: false` to `bungeecord: true`. Save and exit.
 
@@ -193,7 +189,7 @@ Log into the BungeeCord Linode as the `bungeecord` user created earlier, and dow
 
 4.  Change `online-mode=true` to `online-mode=false`. Save and exit.
 
-5.  Restart the servers.
+5.  Restart the Spigot servers.
 
 
 ## Switching Between Servers Without Reconnecting
@@ -242,7 +238,7 @@ In other cases, the server won't even show a response in the server list:
 
 If this happens, you should check that BungeeCord is actually running, and that you're attempting to connect to the correct IP address. In our example, it would be `203.0.113.0`.
 
-Assuming that the issue is not solved, the issue is likely to be the firewall. You can flush your firewall walls with:
+Assuming that the issue is not solved, the issue is likely to be the firewall. You can flush your firewalls with:
 
 	iptables -F
 
