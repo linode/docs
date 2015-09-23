@@ -23,7 +23,7 @@ external_resources:
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides Do **not** complete the *Creating a Firewall* section of Securing Your Server. This guide has a step specifcally for firewall rules for a Minecraft server.
+1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides. Do **not** complete the *Creating a Firewall* section of Securing Your Server. This guide has a step specifically for firewall rules for a Minecraft server.
 
 2.  Update your system:
 
@@ -101,7 +101,7 @@ To remove either package:
         COMMIT
         ~~~
 
-2.  By default, both McMyAdmin and Minecraft operate on IPv4 but unlike a default Minecraft server installation, McMyAdmin does not listen for incoming IPv6 traffic. Since Minecraft can not use both protocols simultaneously, IPv4 is usually chosen over IPv6 because of its much greater availablity, thus not excluding players whose ISPs or hardware don't support IPv6.
+2.  By default, both McMyAdmin and Minecraft operate on IPv4, but unlike a default Minecraft server installation, McMyAdmin does not listen for incoming IPv6 traffic. Since Minecraft can not use both protocols simultaneously, IPv4 is usually chosen over IPv6 because of its much greater availablity; thus, including players whose ISPs or hardware don't support IPv6.
 
 	If you choose not to use IPv6 on your Minecraft server, you should disable it by adding the following lines to `/etc/sysctl.d/99-sysctl.conf`:
     
@@ -118,7 +118,7 @@ To remove either package:
 
     	sudo sysctl -p
 
-	Then go into `/etc/hosts` and comment out the line for IPv6 resolution over localhost.
+	Then, go into `/etc/hosts` and comment out the line for IPv6 resolution over localhost:
 
 	{: .file-excerpt}
 	/etc/hosts
@@ -126,13 +126,13 @@ To remove either package:
 	    #::1 localhost.localdomain localhost
 	    ~~~
 
-3.  Though we just disabled IPv6 in the kernel, we'll tell iptables to drop IPv6 traffic as an additional security layer.
+3.  Although we just disabled IPv6 in the kernel, we'll tell iptables to drop IPv6 traffic as an additional security layer:
 
 		sudo ip6tables -F INPUT DROP
 		sudo ip6tables -F FORWARD DROP
 		sudo ip6tables -F OUTPUT DROP
 
-3.  Run `iptables-persistent` to save the iptables rulesets.
+3.  Run `iptables-persistent` to save the iptables rulesets:
 
 		sudo dpkg-reconfigure iptables-persistent
 
@@ -144,7 +144,7 @@ To remove either package:
 
 		sudo apt-get install openjdk-7-jre
 
-2.  [Mono](http://www.mono-project.com/). CubeCoders Limited, the company behind McMyAdmin, packages their own minimal installation of Mono with some necessary source and configuration files. This must be used instead of the generic Mono packages from Debian's repositories.
+2.  [Mono](http://www.mono-project.com/). CubeCoders Limited, the company behind McMyAdmin, packages its own minimal installation of Mono with some necessary source and configuration files. This must be used instead of the generic Mono packages from Debian's repositories.
 
 		cd /usr/local
 		sudo wget http://mcmyadmin.com/Downloads/etc.zip
@@ -209,11 +209,11 @@ This section should be completed as your standard user, **not** as root. McMyAdm
 
 	![McMyAdmin Login Page](/docs/assets/mcmyadmin-login-page.png)
 	
-3.  Once the initial configuration steps are completed,  select your settings, then switch to the status page.
+3.  Once the initial configuration steps are completed, select your settings and then, switch to the status page.
 
 	![McMyAdmin Configuration Page](/docs/assets/mcmyadmin-config-page.png)
 	
-4.  Select *Start Server* and accept the Minecraft Server EULA
+4.  Select *Start Server* and accept the Minecraft Server EULA.
 
 	![McMyAdmin Status Page](/docs/assets/mymyadmin-status-page.png)
 
