@@ -49,7 +49,7 @@ phpMyAdmin is a web application that provides a GUI to aid in MySQL database adm
         wget http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
         sudo rpm -ivh epel-release*
         
-5.  Set up Apache with SSL, so your passwords will not be sent over plain text. To do so, go trough the [SSL Certificates with Apache on CentOS](/docs/security/ssl/ssl-apache2-centos) guide.
+5.  Set up Apache with SSL, so your passwords will not be sent over plain text. To do so, go through the [SSL Certificates with Apache on CentOS](/docs/security/ssl/ssl-apache2-centos) guide.
 
 6.  Install the `mycrypt` PHP module:
 
