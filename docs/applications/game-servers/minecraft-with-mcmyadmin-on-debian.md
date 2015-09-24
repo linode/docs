@@ -3,11 +3,11 @@ author:
   name: James Stewart
   email: jstewart@linode.com
 description: 'Installing McMyAdmin for Minecraft on Debian.'
-keywords: 'minecraft,mcmyadmin,debian,debian jessie,debian wheezy,jessie,wheezy'
+keywords: 'minecraft,mcmyadmin,debian,debian jessie,debian wheezy,jessie,wheezy,debian 7,debian 8'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Friday August 28th, 2015
+modified: Thursday September 24th, 2015
 modified_by:
-  name: James Stewart
+  name: Linode
 published: 'Thursday, February 5th, 2015'
 title: Installing McMyAdmin for Minecraft on Debian
 external_resources:
@@ -31,7 +31,7 @@ external_resources:
 
 ### Remove Unnecessary Network Services
 
-By default, Debian installs with listening services for [Exim4](https://en.wikipedia.org/wiki/Exim), [NFS](https://en.wikipedia.org/wiki/Network_File_System) components, SSH and time synchronization (see `sudo netstat -tulpn`). SSH is necessary to adminster your server and timekeeping is important, but if Exim and NFS are not needed, they should be uninstalled to eliminate listening network services and reduce attack surface.
+By default, Debian installs with listening services for [Exim](http://www.exim.org/), [NFS](https://en.wikipedia.org/wiki/Network_File_System) components, [SSH](https://en.wikipedia.org/wiki/Secure_Shell) and time synchronization (see `sudo netstat -tulpn`). SSH is necessary to adminster your server and timekeeping is important, but if Exim and NFS are not needed, they should be uninstalled to eliminate listening network services and reduce attack surface.
 
 1.  Exim:
     
@@ -209,7 +209,7 @@ This section should be completed as your standard user, **not** as root. McMyAdm
 
 	![McMyAdmin Login Page](/docs/assets/mcmyadmin-login-page.png)
 	
-3.  Once the initial configuration steps are completed, select your settings and then, switch to the status page.
+3.  Once the initial configuration steps are completed, select your settings and then switch to the status page.
 
 	![McMyAdmin Configuration Page](/docs/assets/mcmyadmin-config-page.png)
 	
@@ -219,4 +219,4 @@ This section should be completed as your standard user, **not** as root. McMyAdm
 
 	![McMyAdmin Server Started](/docs/assets/mcmyadmin-server-running.png)
 
-Congratulations, you have now set up a new Minecraft server using McMyAdmin.
+Congratulations, you now have McMyAdmin running on your Minecraft server!
