@@ -1,3 +1,20 @@
+---
+author:
+    name: Linode Community
+    email: docs@linode.com
+description: 'Setting up Mumble on Debian'
+keywords: 'mumble, debian, murmur, open source, gaming, VOIP, voice chat'
+license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+published: 'Thursday, September 24th, 2015'
+modified: Thursday, September 24th, 2015
+modified_by:
+    name: Linode
+title: 'Mumble on Debian'
+contributor:
+    name: Your Name
+    link: Github/Twitter Link
+---
+
 # Setup A Mumble Server On Debian
 
 Mumble is an open source VoIP client that is designed for gamers.  Mumble requires use of a server for all of the clients to connect to and this guide shows how to install and configure the Mumble server (also called Murmur) on Debian 8.
