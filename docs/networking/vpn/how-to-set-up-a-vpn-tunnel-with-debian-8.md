@@ -17,13 +17,13 @@ external_resources:
  - '[Network Manager GNOME Configuration Management Tool](https://wiki.gnome.org/Projects/NetworkManager)'
 ---
 
-This gude will show you how to configure an OpenVPN server to forward out to the interent all traffic it recieves from client devices, then route the responses back appropriately.
+This gude will show you how to configure an OpenVPN server to forward out to the interent all traffic it recieves from client devices, then route the responses back appropriately. This will take place over IPv4 but options for IPv6 are given.
 
 A common use case for a VPN tunnel is to access the internet from behind it to evade censorship or geolocation while masking your computer's public IP address to your ISP, and sites and services you connect to. Another common use is to access restricted areas of corporate networks which are not accessible outside of the company LAN. Businesses often make VPN access available to their employees for this reason.
 
 ## Before you Begin
 
-This guide is the second of a three part series to configure a hardened OpenVPN server and client devices. Before moving further in this page, you *must* have completed part one of this series: [How to Set Up a VPN Tunnel with Debian 8](/docs/networking/vpn/***). If you found this page but are looking for part three for client device configuration, see ***
+This guide is the second of a three part series to configure a hardened OpenVPN server and client devices. Before moving further in this page, complete part one of this series: [How to Set Up a VPN Tunnel with Debian 8](/docs/networking/vpn/***). If you found this page but are looking for part three for client device configuration, see ***.
 
 ## OpenVPN Configuration
 
@@ -33,7 +33,7 @@ OpenVPN's server-side configuration file is `/etc/openvpn/server.conf` and it re
 
     {: .file-exceprt}
     /etc/openvpn/server.conf
-    :   ~~~ ini
+    :   ~~~ conf
         # If enabled, this directive will configure
         # all clients to redirect their default
         # network gateway through the VPN, causing
@@ -49,7 +49,7 @@ OpenVPN's server-side configuration file is `/etc/openvpn/server.conf` and it re
 
     {: .file-exceprt}
     /etc/openvpn/server.conf
-    :   ~~~ ini
+    :   ~~~ conf
         # Certain Windows-specific network settings
         # can be pushed to clients, such as DNS
         # or WINS server addresses.  CAVEAT:
@@ -64,9 +64,21 @@ OpenVPN's server-side configuration file is `/etc/openvpn/server.conf` and it re
     >
     >Specifying DNS resolver IP addresses in the client's operating system will override this setting.
 
+3.  If you want to route IPv6 traffic to OpenVPN in addition IPv4, add these lines to `server.conf`.
+
+        tun-ipv6
+        push tun-ipv6
+        ifconfig-ipv6 2001:db8:0:123::1 2001:db8:0:123::2
+        server-ipv6 2001:412:abcd:2::/64
+        push "route-ipv6 2000::/3"
+
+    {: .note }
+    >
+    >If you instead want to tunnel IPv6 traffic to IPv4 on the clients, or leave IPv6 entirely disabled, do not add these lines; 6 to 4 tunneling will be covered later.
+
 ## Append Networking Rules
 
-In part one, we set iptables rules so the OpenVPN server can accept client connections, SSH and make system updates, but nothing more. Since now we want the server to forward traffic out to the internet from clients, accept the responses and forward them back to client machines, we must adjust the ruleset.
+In part one, we set iptables rules so the OpenVPN server can only accept client connections, SSH and make system updates, but nothing more. Since now we want the server to forward traffic out to the internet from clients, accept the responses and forward them back to client machines, we must adjust the ruleset.
 
 {: .caution }
 >
