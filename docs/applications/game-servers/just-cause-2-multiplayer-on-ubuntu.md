@@ -146,4 +146,4 @@ If you have a firewall running on your Linode, add exceptions for SteamCMD:
 
 [![JC2-MP Server with users on it](/docs/assets/JC2running_resized.png)](/docs/assets/JC2running.png)
 
-Now that you have installed and configured Just Cause 2-Multiplayer, you have your very own Just Cause 2 server for you and your friends to play on. Your users can access the server by opening the server list and finding your server’s name, clicking **Connect**, and entering a password if you choose to set one.
+Now that you have installed and configured Just Cause 2-Multiplayer, you have your very own Just Cause 2 server for you and your friends to play on. Your users can access the server by opening the server list and finding your server’s name, clicking **Connect**, and entering a password if you choose to set one, and then, promptly zip-lining off the nearest cliff.
