@@ -1,13 +1,13 @@
 ---
 author:
-  name: Linode
-  email: docs@linode.com
+  name: Elle Krout
+  email: ekrout@linode.com
 description: 'Use UFW (Ucomplicated Firewall) to manage your firewall on Ubuntu, Debian, or Arch Linux; this guide contains instructions for setting up default rules, adding/removing rules, setting up logging, and some advanced features.'
 keywords: 'ufw,uncomplicated firewall,ubuntu ufw,linux ufw,ufw tutorial,ubuntu firewall,iptables,networking,firewalls,filtering,firewall setup,ubuntu,debian,arch'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: Monday, September 25th, 2015
 modified_by:
-  name: Linode
+  name: Elle Krout
 published: 'Monday, September 25th, 2015'
 title: How to Configure a Firewall with UFW
 ---
