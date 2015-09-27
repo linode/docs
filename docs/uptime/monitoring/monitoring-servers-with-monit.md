@@ -1,4 +1,3 @@
-
 ---
 author:
     name: Linode Community
@@ -7,10 +6,10 @@ description: 'Improve server uptime with Monit'
 keywords: 'Monit,monitoring,error handling,process restart'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 published: 'Friday, September 18th, 2015'
-modified: Tuesday, September 8th, 2015
+modified: 'Tuesday, September 18th, 2015'
 modified_by:
     name: Linode
-title: 'Monitoring servers with Monit'
+title: 'Monitoring Servers with Monit'
 contributor:
     name: Bill Bardon
     link: 
@@ -19,11 +18,9 @@ external_resources:
  - '[Email-to-SMS gateways - Wikipedia](https://en.wikipedia.org/wiki/SMS_gateway)'
 ---
 
-#Monitoring servers with Monit
-
 Keeping tabs on your servers can be time-consuming. You need to make sure connectivity is good, processes are running but not running away, resources are available, and system health is good. Whether you have one server or many, it's something you may not do as often as you should. 
 
-Monit can watch your servers for you. You can tell Monit exactly what you would do if a program stops running, or begins using too much RAM, or another host becomes unreachable. Monit will watch around the clock, and respond to out-of-the-norm events by following your instructions.
+[Monit](https://mmonit.com/) can watch your servers for you. You can tell Monit exactly what you would do if a program stops running, or begins using too much RAM, or another host becomes unreachable. Monit will watch around the clock, and respond to out-of-the-norm events by following your instructions.
 
 Automatic process maintenance in a lightweight package
 Can act on out-of-bounds values for CPU, RAM, disk, file size, age, more
@@ -38,22 +35,59 @@ Available from main package repositories
 
 ##Install
 
-Use your OS's package manager to fetch the monit package and install it. On Debian derivatives (Ubuntu, Debian itself), type `apt-get install monit`. On RedHat and CentOS, type `yum install monit`.
+Update your system and install Monit. Some distros require Monit be manually enabled and started.
 
-If you choose to implement the web interface, be sure the port Monit uses (default 2812) is exposed to the devices on which you'll be viewing it. You may need to configure your firewall package or iptables if you have a default deny policy. See [Securing Your Server - Creating a Firewall](https://www.linode.com/docs/security/securing-your-server#creating-a-firewall). 
+### Arch
 
+    sudo pacman -Syu && sudo pacman -S monit
+    sudo systemctl enable monit && sudo systemctl start monit
 
-##Configure
+### CentOS
+
+Monit is available in the [EPEL repository](https://fedoraproject.org/wiki/EPEL).
+
+    sudo yum update && sudo yum install epel-release
+    sudo yum update && sudo yum install monit
+
+To enable and start the daemon in Centos 7:
+
+    sudo systemctl enable monit && sudo systemctl start monit
+
+To enable and start the daemon in Centos 6:r
+
+    sudo chkconfig monit on && sudo service start monit
+
+### Debian / Ubuntu
+
+Debian and Ubuntu automatically start and enable Monit after installation.
+
+    sudo apt-get update && sudo apt-get upgrade
+    sudo apt-get install monit
+
+### Fedora
+
+    sudo dnf update && sudo dnf install monit
+    sudo systemctl enable monit && sudo systemctl start monit
+
+### Restarting Monit
+
+ If you're using a Linux distro with systemd:
+
+    sudo systemctl restart monit
+
+If your distro has System V (CentOS 6, Debian 7) or Upstart (Ubuntu 14.04):
+
+    sudo service monit restart
+
+##Configure the Monit Daemon
 
 Monit's configuration is in the file `/etc/monit/monitrc`. Open this file now in your favorite text editor. We'll start by setting up the monit process itself. Most of these settings (except where `anonymized`) are currently in use on my own Linode mail server.
 
-###Monit behavior
-
-####Startup
+### Polling Frequency
 
     set daemon 300
 
-This is the interval (in seconds) at which Monit runs its tests. The value you choose will depend on how many tests you define, how quickly you need Monit to act on events, and how much load the tests themselves add to your server. Run Monit at the default two minutes and evaluate its performance. If you change this value, you will need to restart Monit: `service monit restart` on Debian 7, `systemctl restart monit` on Debian 8 running _systemd_.
+This is the interval (in seconds) at which Monit runs its tests. The value you choose will depend on how many tests you define, how quickly you need Monit to act on events, and how much load the tests themselves add to your server. Run Monit at the default two minutes and evaluate its performance. If you change this value, you will need to [restart Monit](#restarting-monit).
 
 I set the interval at 5 minutes, because minimizing the load on my server is more important to me than instant alerts and responses.
 
@@ -64,7 +98,7 @@ Include the delay line
 
 to have Monit delay starting on system boot. Other processes may take some time to complete their own startup, and this will prevent Monit from alerting that all services are down every time you boot the server.
 
-####Alerting
+###Alerting
 
 Monit can optionally alert you by email when it triggers on an event. It can use a Mail Transfer Agent (MTA) on the local host if you have one configured, or an outside mail server that will accept incoming SMTP traffic from your host. See [Linux System Administration Basics - Sending Email From Your Server](https://www.linode.com/docs/tools-reference/linux-system-administration-basics#sending-email-from-your-server) for help with configuring this.
 
@@ -92,7 +126,7 @@ Enter the email address to which Monit should deliver its alerts:
 
 If you prefer to receive alerts as text messages, use your cell provider's email-to-text gateway if they provide one. Wikipedia has a list of providers here: [Email-to-SMS gateways](https://en.wikipedia.org/wiki/SMS_gateway#Use_with_email_clients).
 
-####Web service
+###Web service
 
 Finally, as far as configuring Monit itself, you can enable the embedded web server to display all your system tests as a web page.
 
@@ -104,8 +138,14 @@ You can optionally restrict access to the web interface to just your IP address.
 
     set httpd port 2812
         allow 10.0.0.1 (your ip address)
-    
-###Checking system values
+
+{: .note}
+>
+>If you choose to implement the web interface, be sure the port Monit uses (default 2812) is exposed to the devices on which you'll be viewing it. You may need to configure your firewall package or iptables if you have a default deny policy. See [Securing Your Server - Creating a Firewall](https://www.linode.com/docs/security/securing-your-server#creating-a-firewall). 
+
+##Configure Monit's Checking Actions
+
+###System Values
 
 Monit can watch server resource utilization and alert when your server is under unusual load.
 
@@ -118,7 +158,7 @@ Here I have asked Monit to alert if the load average, total system memory use or
 
 A good way to determine the alert thresholds is to set them low (you will receive frequent alerts) and then adjust them higher if alerts are more frequent than the situation requires. The actual tested values which triggered the alert will be included in the alert message, and you can use these to gauge what is a good threshold limit for your server.
 
-###Checking processes
+###Processes
 
 Most servers are running a set of critical services that are their reason for existing. If those services are not running and reachable, the server is down for all practical purposes. Monit can check on running processes and stop, start or restart them as needed.
 
@@ -133,8 +173,6 @@ You can test more than one parameter in a single check statement. The apache pro
         if children > 255 for 5 cycles then alert
         if cpu usage > 95% for 3 cycles then alert
 
-
-
 Monit can do more than simply check the resource utilization of a process. It supports a number of protocols for testing the actual connectivity of a service. Among them are DNS, HTTP, IMAP, SMTP, LDAP, and SSH. So we can ask our apache server for a response and act on the result.
 
     check process apache-server with pidfile /run/apache2.pid
@@ -146,12 +184,12 @@ Monit can do more than simply check the resource utilization of a process. It su
 
 OK, a lot is happening in the newly added lines of this check statement, including the best feature of Monit, automated process management. First, I told Monit how to start and stop the process I am checking. Then I've asked Monit to use HTTP on port 80 to send a GET request to this running instance of apache. By default it will send a normal 'GET "/"' request. If apache returns an HTTP status code of 400 or greater, Monit will alert _and_ restart the process using the commands given. 
 
-The commands shown above are systemd compatible for Debian 8. If your server is Debian 7, use these instead:
+The commands shown above are systemd compatible for a distribution using systemd (for example, Debian 8). If your server instead uses SysV or Upstart (ex. Debian 7 or Ubuntu 14.04), use these instead:
 
         start program = "service apache2 start" with timeout 40 seconds
         stop program  = "service apache2 stop"
 
-###Checking the filesystem
+###Filesystem
 
 Monit can check filesystem properties such as whether a file exists, if its size is larger or smaller than specified, and what permissions it is assigned. A useful application is to test the timestamp of log files that should be updating. 
 
@@ -173,7 +211,7 @@ Then in monitrc I have:
 
 If the backup does not complete, then the next morning I will have an alert message waiting for me, and the server's Monit web page will show nightly-backup with a red status of "Timestamp failed".
 
-###Checking other hosts
+###Remote Hosts
 
 Perhaps you are not a system admin at all, you are a web designer who works with many client sites on different hosts. It would be nice to proactively respond to site outages even before the client calls, wouldn't it? Configure Monit to check all your client sites' status and alert you immediately if they are down:
 
