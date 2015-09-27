@@ -6,7 +6,7 @@ description: 'Improve server uptime with Monit'
 keywords: 'Monit,monitoring,error handling,process restart'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 published: 'Friday, September 18th, 2015'
-modified: 'Tuesday, September 18th, 2015'
+modified: 'Saturday, September 26th, 2015'
 modified_by:
     name: Linode
 title: 'Monitoring Servers with Monit'
@@ -22,12 +22,12 @@ Keeping tabs on your servers can be time-consuming. You need to make sure connec
 
 [Monit](https://mmonit.com/) can watch your servers for you. You can tell Monit exactly what you would do if a program stops running, or begins using too much RAM, or another host becomes unreachable. Monit will watch around the clock, and respond to out-of-the-norm events by following your instructions.
 
-Automatic process maintenance in a lightweight package
-Can act on out-of-bounds values for CPU, RAM, disk, file size, age, more
-Watches running services, can start, kill or restart
-Sends alerts by email on event triggers
-Web interface for status monitoring
-Available from main package repositories
+- Automatic process maintenance in a lightweight package
+- Can act on out-of-bounds values for CPU, RAM, disk, file size, age, more
+- Watches running services, can start, kill or restart
+- Sends alerts by email on event triggers
+- Web interface for status monitoring
+- Available from main package repositories
 
 {: .note}
 >
