@@ -27,7 +27,7 @@ This guide covers the steps necessary to provision a new CentOS 7 Linode as a de
 
 1.  Create a CentOS 7 Linode in your closest datacenter (barring Atlanta, which does not currently support SIP servers). A 1GB Linode is enough to handle 10-20 concurrent calls using a non-compressed codec, depending on the processing required on each channel.
 
-2.  Ensure you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides to prepare your server. **Do not** following the sections to set up a firewall.
+2.  Ensure you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides to prepare your server. **Do not** following the section to set up a firewall.
 
 3.  Edit `/etc/selinux/config` to ensure SELinux is disabled:
 
@@ -125,7 +125,7 @@ iptables will be used to secure the Linode against unwanted traffic. The Linode 
 
     {:.note}
     >
-    >Leave IAX commented out unless you know you need it. IAX is "Inter Asteresk Exchange" and was meant to allow multiple Asterisk servers to communicate with one another. Some VOIP trunking providers use this, but most use SIP. Unless your VOIP provider requires it or you are running multiple Asterisk servers, you probably won't need IAX or IAX2.
+    >Leave IAX commented out unless you know you need it. IAX is "Inter-Asterisk Exchange" and was meant to allow multiple Asterisk servers to communicate with one another. Some VOIP trunking providers use this, but most use SIP. Unless your VOIP provider requires it or you are running multiple Asterisk servers, you probably won't need IAX or IAX2.
 
 ### Start Firewall at Boot
 
@@ -173,7 +173,7 @@ CentOS 7 does not come with the `iptables-services` pre-installed, it will have 
 
         /usr/libexec/iptables/iptables.init save
 
-5.  In a new terminal, make sure you can login:
+5.  In a new terminal, make sure you can log in:
 
         ssh exampleuser@xx.xx.xx.xxx
 
@@ -313,7 +313,7 @@ With the new Kernel in place, you're now ready to build DAHDI.
 
 ## Installing Asterisk
 
-We're now ready to install Asterisk 13, the current Long Term Support Release of Asterisk.
+We're now ready to install Asterisk 13, the current long-term support release of Asterisk.
 
 ### Installing Asterisk from Source
 
@@ -338,7 +338,7 @@ We're now ready to install Asterisk 13, the current Long Term Support Release of
 
 To use MP3 files for Music on Hold, some dependencies will need to be installed.
 
-1.  Install subversion:
+1.  Install Subversion:
 
         sudo yum install svn
 
