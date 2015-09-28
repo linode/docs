@@ -16,7 +16,7 @@ contributor:
 
 Asterisk is an open source *private branch exchange* (PBX) server that uses *Session Initiation Protocol* (SIP) to route and manage telephone calls. Notable features include customer service queues, music on hold, conference calling, and call recording, among others.
 
-This guide covers the steps necessary to provision a new Linode as a dedicated Asterisk server for your home or office.
+This guide covers the steps necessary to provision a new CentOS 7 Linode as a dedicated Asterisk server for your home or office.
 
 {: .note}
 >
@@ -25,9 +25,11 @@ This guide covers the steps necessary to provision a new Linode as a dedicated A
 
 ## Before You Begin
 
-1.  Ensure you have followed the [Getting Started](/docs/getting-started) guide to prepare your server. Also ensure you have a non-root super user to log in as.
+1.  Create a CentOS 7 Linode in your closest datacenter (barring Atlanta, which does not currently support SIP servers). A 1GB Linode is enough to handle 10-20 concurrent calls using a non-compressed codec, depending on the processing required on each channel.
 
-2.  Edit `/etc/selinux/config` to ensure SELinux is disabled:
+2.  Ensure you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides to prepare your server. **Do not** following the section to set up a firewall.
+
+3.  Edit `/etc/selinux/config` to ensure SELinux is disabled:
 
     {: .file-excerpt}
     /etc/selinux/config
@@ -35,11 +37,11 @@ This guide covers the steps necessary to provision a new Linode as a dedicated A
         SELINUX=disabled
         ~~~
         
-3.  Update your packages:
+4.  Update your packages:
 
         sudo yum update
         
-4.  Reboot your Linode:
+5.  Reboot your Linode:
 
         reboot
         
@@ -123,7 +125,7 @@ iptables will be used to secure the Linode against unwanted traffic. The Linode 
 
     {:.note}
     >
-    >Leave IAX commented out unless you know you need it. IAX is "Inter Asteresk Exchange" and was meant to allow multiple Asterisk servers to communicate with one another. Some VOIP trunking providers use this, but most use SIP. Unless your VOIP provider requires it or you are running multiple Asterisk servers, you probably won't need IAX or IAX2.
+    >Leave IAX commented out unless you know you need it. IAX is "Inter-Asterisk Exchange" and was meant to allow multiple Asterisk servers to communicate with one another. Some VOIP trunking providers use this, but most use SIP. Unless your VOIP provider requires it or you are running multiple Asterisk servers, you probably won't need IAX or IAX2.
 
 ### Start Firewall at Boot
 
@@ -171,7 +173,7 @@ CentOS 7 does not come with the `iptables-services` pre-installed, it will have 
 
         /usr/libexec/iptables/iptables.init save
 
-5.  In a new terminal, make sure you can login:
+5.  In a new terminal, make sure you can log in:
 
         ssh exampleuser@xx.xx.xx.xxx
 
@@ -265,14 +267,14 @@ There is one exception: If you plan to host conference calls on your Asterisk bo
 
 #### Install the Vanilla CentOS Kernel
 
-Since DAHDI is a kernel module it needs kernel headers in order to compile.
-Unfortunately, the Linode-supplied kernel is a different version than the headers supplied in the CentOS repository, so we'll need to switch to the distribution-supplied kernel.
+Since DAHDI is a kernel module it needs kernel headers in order to compile. The Linode-supplied kernel is a different version than the headers supplied in the CentOS repository, so we'll need to switch to the distribution-supplied kernel.
 
-Follow the instructions at [Running a Distribution-Supplied Kernel](/docs/tools-reference/custom-kernels-distros/run-a-distributionsupplied-kernel-with-pvgrub) before continuing with the next steps.
+Follow the instructions at [Run a Distribution-Supplied Kernel on a XEN Linode](/docs/tools-reference/custom-kernels-distros/run-a-distributionsupplied-kernel-with-pvgrub) or [Run a Distribution-Supplied Kernel on a KVM Linode](/docs/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel-with-kvm) before continuing with the next steps.
 
 {: .caution}
 >
->You should not attempt to replace the Kernel on a system that is currently in production!
+>You should not attempt to replace the Kernel on a system that is currently in production.
+
 
 #### Build DAHDI
 
@@ -305,13 +307,13 @@ With the new Kernel in place, you're now ready to build DAHDI.
 
 6.  Install DAHDI:
 
-       sudo make install
-       sudo make config
+        sudo make install
+        sudo make config
 
 
 ## Installing Asterisk
 
-We're now ready to install Asterisk 13, the current Long Term Support Release of Asterisk.
+We're now ready to install Asterisk 13, the current long-term support release of Asterisk.
 
 ### Installing Asterisk from Source
 
@@ -336,7 +338,7 @@ We're now ready to install Asterisk 13, the current Long Term Support Release of
 
 To use MP3 files for Music on Hold, some dependencies will need to be installed.
 
-1.  Install subversion:
+1.  Install Subversion:
 
         sudo yum install svn
 
@@ -413,5 +415,4 @@ the Asterisk Project's guide to [Configuring Asterisk](https://wiki.asterisk.org
 
 {: .caution}
 >
-> When running a phone system on a remote server such as a Linode, it's always good practice to secure the signaling data with TLS and the audio portion of calls using SRTP to prevent eavesdropping. Once you have a working dial-plan, be sure to
-> follow the [Secure Calling Guide](https://wiki.asterisk.org/wiki/display/AST/Secure+Calling) to encrypt your communications.
+> When running a phone system on a remote server such as a Linode, it's always good practice to secure the signaling data with TLS and the audio portion of calls using SRTP to prevent eavesdropping. Once you have a working dial-plan, be sure to follow the [Secure Calling Guide](https://wiki.asterisk.org/wiki/display/AST/Secure+Calling) to encrypt your communications.
