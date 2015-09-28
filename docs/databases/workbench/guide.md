@@ -77,13 +77,11 @@ Here's the settings you'll need
 
 2.  Once you've configured everything click **Test Connection**.  If you didn't save your passwords then Workbench will prompt for them.
 
-{: .note }
-
 > Pay attention to **Service** in each dialog.  Use the appropriate password (SSH or MySQL) or else the connection will fail!
 
-![The **SSH** password dialog](/docs/assets/workbenchPassword.png)
+	![The **SSH** password dialog](/docs/assets/workbenchPassword.png)
 
-![The **MySQL** password dialog](/docs/assets/workbenchDBpassword.png)
+	![The **MySQL** password dialog](/docs/assets/workbenchDBpassword.png)
 
 3.  If all is well then you should get a **Connection Successful** message.
 
