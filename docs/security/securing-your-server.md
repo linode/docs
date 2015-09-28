@@ -6,7 +6,7 @@ description: 'Our guide to securing your first Linode.'
 keywords: 'security,secure server,email secure server,login secure server,linode quickstart,getting started,iptables,firewall,firewalld,ssh,ssh for linux,ssh key,ssh command,new user,fail2ban'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['securing-your-server/']
-modified: 'Thursday, September 24, 2015'
+modified: 'Friday, September 28th, 2015'
 modified_by:
   name: Linode
 published: 'Friday, February 17th, 2012'
