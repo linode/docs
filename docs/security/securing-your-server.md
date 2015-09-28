@@ -3,7 +3,7 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Our guide to securing your first Linode.'
-keywords: 'security,linode quickstart,getting started,iptables,firewall,firewalld,ssh,new user,fail2ban'
+keywords: 'security,secure server,email secure server,login secure server,linode quickstart,getting started,iptables,firewall,firewalld,ssh,ssh for linux,ssh key,ssh command,new user,fail2ban'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['securing-your-server/']
 modified: 'Thursday, September 24, 2015'
