@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 'Friday, December 2nd, 2011'
 title: Set Up a LAMP Server on Gentoo
+external_resources:
+  - '[Gentoo Documentation](http://www.gentoo.org/doc/en/index.xml)'
+  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)'
+  - '[MySQL Documentation](http://dev.mysql.com/doc/)'
+  - '[PHP Documentation](http://www.php.net/docs.php)'
 ---
 
 
@@ -20,8 +25,7 @@ This guide provides step-by-step instructions for installing a full-featured LAM
 
 In this guide, you will be instructed on setting up Apache, MySQL, and PHP. If you don't feel that you will need MySQL or PHP, please don't feel obligated to install them.
 
-Set the Hostname and Configure /etc/hosts
------------------------------------------
+## Set the Hostname and Configure /etc/hosts
 
 Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_setting-the-hostname) and [configuring /etc/hosts](/docs/getting-started#sph_update-etc-hosts). Issue the following commands to make sure it is set properly:
 
@@ -46,8 +50,7 @@ If you have IPv6 enabled on your Linode, you will also want to add an entry for 
 
 The value you assign as your system's FQDN should have an "A" record in DNS pointing to your Linode's IPv4 address. For Linodes with IPv6 enabled, you should also set up a "AAAA" record in DNS pointing to your Linode's IPv6 address. For more information on configuring DNS, please see our guide on [configuring DNS with the Linode Manager](/docs/dns-guides/configuring-dns-with-the-linode-manager).
 
-Install and Configure the Apache Web Server
--------------------------------------------
+## Install and Configure the Apache Web Server
 
 Begin by making sure that your package repositories and installed programs are up to date by issuing the following commands:
 
@@ -92,7 +95,7 @@ Now we will create virtual host entries for each site that we need to host with 
 /etc/apache2/vhosts.d/example.conf
 :   ~~~ apache
     <VirtualHost 12.34.56.78:80> 
-         ServerAdmin squire@example.com
+         ServerAdmin username@example.com
          ServerName example.com
          ServerAlias www.example.com
          DocumentRoot /srv/www/example.com/public_html/
@@ -118,8 +121,7 @@ Any time that you change an option in any of your Apache configuration files, re
 
     /etc/init.d/apache2 reload
 
-Install and Configure the MySQL Database Server
------------------------------------------------
+## Install and Configure the MySQL Database Server
 
 MySQL is a relational database management system (RDBMS) and is a popular component in contemporary web development tool-chains. It is used to store data for many popular applications, including Wordpress and Drupal.
 
@@ -168,8 +170,7 @@ With that completed, you've successfully configured MySQL and you may now pass t
 
 With Apache and MySQL installed you are now ready to move on to installing PHP to provide scripting support for your web pages.
 
-Install and Configure PHP
--------------------------
+## Install and Configure PHP
 
 PHP makes it possible to produce dynamic and interactive pages using your own scripts and popular web development frameworks. Furthermore, many popular web applications like WordPress are written in PHP. If you want to be able to develop your websites using PHP, you must first install it.
 
@@ -202,16 +203,3 @@ Make sure that the following values are set, and relevant lines are uncommented 
     register_globals = Off
 
 If you decide to use PHP via the CGI interface later, you'll need to edit the `/etc/php/cgi-php5/php.ini` file.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Gentoo Documentation](http://www.gentoo.org/doc/en/index.xml)
-- [Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)
-- [MySQL Documentation](http://dev.mysql.com/doc/)
-- [PHP Documentation](http://www.php.net/docs.php)
-
-
-

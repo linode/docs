@@ -255,7 +255,7 @@ Apache Virtual Host Configuration
 :   ~~~ apache
     <VirtualHost repo.example.com:80>
             ServerName repo.example.com
-            ServerAdmin squire@example.com
+            ServerAdmin username@example.com
 
             ErrorLog /srv/www/repo.example.com/logs/error.log
             CustomLog /srv/www/repo.example.com/logs/access.log combined

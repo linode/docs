@@ -20,7 +20,7 @@ In most cases, we recommend using the `mod_php` module to run PHP scripts with t
 
 Additionally, in our experience, `mod_php` is incompatible with the `mod_rails` or Phusion Passenger method of running [Ruby On Rails](/docs/frameworks/). In these cases, if you want to run PHP and Rails applications within a single instance of Apache, you must run PHP scripts as CGI processes using the method outlined below.
 
-Before beginning this guide we assume that you've completed the [getting started guide](/docs/getting-started/). If you are new to Linux server administration, we recommend considering the [beginner's guide](/docs/beginners-guide/), and the article concerning [systems administration basics](/docs/using-linux/administration-basics). If you're interested in learning more about the Apache HTTP server, we encourage you to consider our extensive documentation on [Apache configuration](/docs/web-servers/apache/).
+Before beginning this guide we assume that you've completed the [getting started guide](/docs/getting-started/). If you are new to Linux server administration, we recommend considering the [beginner's guide](/docs/beginners-guide/) and the article concerning [systems administration basics](/docs/using-linux/administration-basics). If you're interested in learning more about the Apache HTTP server, we encourage you to consider our extensive documentation on [Apache configuration](/docs/web-servers/apache/).
 
 ## Set the Hostname
 
@@ -87,9 +87,9 @@ When `php-cgi` is configured, you can now safely enable the `itk` message passin
 
 ## Enabling the "itk" Message Passing Module
 
-The default Apache configuration uses a message passing module called `worker` which uses a threaded approach to efficiently handling HTTP requests. An alternative MPM is `prefork` which does not use threads and is compatible with non-thread-safe libraries. Both the `worker` and `prefork` modules require that all requests be handled by a process running under a user with particular permissions. On Ubuntu systems, Apache processes run under the `www-data` user.
+The default Apache configuration uses a message passing module called `worker` which uses a threaded approach to efficiently handle HTTP requests. An alternative MPM is `prefork` which does not use threads and is compatible with non-thread-safe libraries. Both the `worker` and `prefork` modules require that all requests be handled by a process running under a user with particular permissions. On Ubuntu systems, Apache processes run under the `www-data` user.
 
-This may not be ideal if you have multiple users running publicly accessible scripts on your server. In some of these cases it is prudent to isolate virtual hosts under specific user accounts using an alternative message passing module, known as `itk` or `mpm-itk`. Functionally, `mpm-itk` is quite similar to `prefork` however `itk` can processes requests for each virtual host or each site under a specified user account. This useful in situations where you're hosting a number of distinct sites and you need to isolate sites on the basis of user privileges.
+This may not be ideal if you have multiple users running publicly accessible scripts on your server. In some of these cases, it is prudent to isolate virtual hosts under specific user accounts using an alternative message passing module, known as `itk` or `mpm-itk`. Functionally, `mpm-itk` is quite similar to `prefork`; however, `itk` can process requests for each virtual host or each site under a specified user account. This is useful in situations where you're hosting a number of distinct sites and you need to isolate sites on the basis of user privileges.
 
 Begin by installing the mpm-itk module:
 

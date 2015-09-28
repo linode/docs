@@ -128,7 +128,7 @@ There are different ways to set up virtual hosts; however, the method below is r
         sudo service mysqld start
         sudo /sbin/chkconfig --levels 235 mysqld on 
 
-3.  Run `musql_secure_installation` to secure MySQL. You will be given the option to change the root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases and reload privileges. It is recommended that you answer yes to these options:
+3.  Run `mysql_secure_installation` to secure MySQL. You will be given the option to change the root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases and reload privileges. It is recommended that you answer yes to these options:
 
         mysql_secure_installation
 

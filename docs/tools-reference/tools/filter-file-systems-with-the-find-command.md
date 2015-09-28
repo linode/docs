@@ -41,9 +41,9 @@ The simplest use of `find` is for crawling a directory hierarchy in search file 
 
     find / -name "*.err"
 
-    find /home/squire/ -name "*.el*" 
+    find /home/username/ -name "*.el*" 
 
-In the first command, the list of all readable objects on the file system is filtered for all items that end with the characters `.err`. The second command returns all items beneath the `/home/squire/` directory that end with "`.el`.
+In the first command, the list of all readable objects on the file system is filtered for all items that end with the characters `.err`. The second command returns all items beneath the `/home/username/` directory that end with "`.el`.
 
 ## Filter Files by Modification Time
 
@@ -51,9 +51,9 @@ In the first command, the list of all readable objects on the file system is fil
 
     find / -name "*conf" -mtime 7 
 
-    find /home/squire/ -name "*conf" -mtime 3
+    find /home/username/ -name "*conf" -mtime 3
 
-The first command returns a list of all files in entire file system that end with the characters `conf` and have been modified in the last 7 days. The second command filters `squire` user's home directory for files with names that end with the characters `conf` and have been modified in the last 3 days.
+The first command returns a list of all files in entire file system that end with the characters `conf` and have been modified in the last 7 days. The second command filters `username` user's home directory for files with names that end with the characters `conf` and have been modified in the last 3 days.
 
 ## Delete Matching Files
 

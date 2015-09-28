@@ -68,13 +68,13 @@ Issue the following command sequence to download Ikiwiki:
     cd /opt/ikiwiki/
     makepkg -sfi --asroot
 
-If you haven't already added an unprivileged system user, create one now. This will be the user that manages your ikiwiki content. Issue the following command, substituting a unique username for "squire":
+If you haven't already added an unprivileged system user, create one now. This will be the user that manages your ikiwiki content. Issue the following command, substituting a unique username for "username":
 
-    useradd -m  squire
+    useradd -m  username
 
-Set the `squire` user's password with the following command:
+Set the `username` user's password with the following command:
 
-    passwd squire 
+    passwd username 
 
 Install a Web Server
 --------------------
@@ -103,7 +103,7 @@ Replace the existing example `VirtualHost` configuration examples with one that 
 /etc/httpd/conf/extra/httpd-vhosts.conf
 :   ~~~ apache
     <VirtualHost *:80>
-            ServerAdmin squire@example.com
+            ServerAdmin username@example.com
             ServerName example.com
             ServerAlias www.example.com
 
@@ -122,7 +122,7 @@ Issue the following commands to create the required directories and to restart t
 
     mkdir -p /srv/http/example.com/public_html 
     mkdir -p /srv/http/example.com/logs
-    chown -R squire:squire /srv/http/example.com
+    chown -R username:username /srv/http/example.com
         /etc/rc.d/http start
 
 You will want to add the `http` daemon to the `DAEMONS=()` array at the end of the `/etc/rc.conf` file to ensure that the FastCGI daemon starts following then next reboot cycle.
@@ -185,7 +185,7 @@ Issue the following commands to create the required directories and to restart t
 
     mkdir -p /srv/http/example.com/public_html 
     mkdir -p /srv/http/example.com/logs
-    chown -R squire:squire /srv/http/example.com
+    chown -R username:username /srv/http/example.com
     /etc/rc.d/nginx start
 
 You will want to add the `nginx` daemon to the `DAEMONS=()` array at the end of the `/etc/rc.conf` file to ensure that the nginx process starts following then next reboot cycle.
@@ -193,11 +193,11 @@ You will want to add the `nginx` daemon to the `DAEMONS=()` array at the end of 
 Configure Ikiwiki
 -----------------
 
-Issue the following commands to create a `~/wiki/` directory as a git repository. All files related to your wiki will be located here, including the source files for the wiki, all templates, and the configuration file. Substitute the username you created at the beginning of this guide for "squire." :
+Issue the following commands to create a `~/wiki/` directory as a git repository. All files related to your wiki will be located here, including the source files for the wiki, all templates, and the configuration file. Substitute the username you created at the beginning of this guide for "username." :
 
     mkdir -p /srv/git/wiki.git
-    chown squire:users /srv/git/wiki.git
-    su - squire
+    chown username:users /srv/git/wiki.git
+    su - username
     mkdir -p ~/wiki ~/wiki/source/ ~/wiki/.ikiwiki/
     cd ~/wiki
     git init
@@ -218,10 +218,10 @@ Add the following excerpt to `~/wiki/.git/config`:
         merge = refs/heads/master
     ~~~
 
-Configure the `squire` user's identity within git. Modify the following model for your user:
+Configure the `username` user's identity within git. Modify the following model for your user:
 
-    git config --global user.email "squire@example.com" 
-    git config --global user.name "Squire example" 
+    git config --global user.email "username@example.com" 
+    git config --global user.name "username example" 
 
 Issue the following commands to copy the default `basewiki` and `templates` to the `~/wiki` directory, download a [sample ikiwiki configuration file](/docs/assets/694-ikiwiki.yaml), and create an initial commit in the `~/wiki` repository:
 
@@ -233,7 +233,7 @@ Issue the following commands to copy the default `basewiki` and `templates` to t
     git commit -m "initial ikiwiki commit" 
     git push origin master
 
-Edit the `~/wiki/ikiwiki.yaml` file to suit the needs of your deployment, paying particular attention to example directory paths and URLs. You should take care to replace all instances of "example.com" with your domain name, and all instances of "squire" with the username you created at the beginning of this guide. You may wish to review the [ikiwiki documentation](http://ikiwiki.info) for more information regarding specific configuration directives. Issue the following commands to commit your changes and push them:
+Edit the `~/wiki/ikiwiki.yaml` file to suit the needs of your deployment, paying particular attention to example directory paths and URLs. You should take care to replace all instances of "example.com" with your domain name, and all instances of "username" with the username you created at the beginning of this guide. You may wish to review the [ikiwiki documentation](http://ikiwiki.info) for more information regarding specific configuration directives. Issue the following commands to commit your changes and push them:
 
     git commit ~/wiki/ikiwiki.yaml -m "edited ikiwiki yaml config"
     git push origin master

@@ -61,11 +61,11 @@ Downloading, enabling, and setting the theme is extremely easy with Drupal Drush
 
        drush vset theme_default corporateclean
 
-   Check the homepage of your site and the new them should appear.
+   Check the homepage of your site and the new theme should appear.
 
 ##Installing Modules with Drush
 
-Downloading and enabling a module is similar to working with a theme. However, modules can be used for almost any purpose. From enhancing public facing functionality to providing a better administrative UI, there are thousands of Drupal modules. Try to find modules with clear documentation. Once installed, the browser interface can still be challenging.
+Downloading and enabling a module is similar to working with a theme. However, modules can be used for almost any purpose. From enhancing public-facing functionality to providing a better administrative UI, there are thousands of Drupal modules. Try to find modules with clear documentation. Once installed, the browser interface can still be challenging.
 
 1. To download a popular module called Commerce, first install the supporting modules. There are several:
 
@@ -83,7 +83,7 @@ Downloading and enabling a module is similar to working with a theme. However, m
 
     [![Drupal Modules Selection.](/docs/assets/drupal-modules-selection.png)](/docs/assets/drupal-modules-selection.png)
 
-4. Next, scroll down to the the "Commerce" module set, pictured below. Start checking or turning on the different Commerce sub-modules. Finally, select the "Save configuration" button at the very bottom of the page.
+4. Next, scroll down to the "Commerce" module set, pictured below. Start checking or turning on the different Commerce sub-modules. Finally, select the "Save configuration" button at the very bottom of the page.
 
     [![Drupal Modules Page.](/docs/assets/drupal-modules-page.png)](/docs/assets/drupal-modules-page.png)
 
@@ -91,13 +91,13 @@ You have successfully installed and turned on a new module. The module is now ru
 
 ##Backup a Drupal Site with Drush
 
-It's always important to keep regular backups of a website. Backups protect you from losing data due to configuration changes, vulnerabilites, or system failures. Backups should be stored on a separate system whenever possible. Drush has tools built in to help create backups of your site.
+It's always important to keep regular backups of a website. Backups protect you from losing data due to configuration changes, vulnerabilites, or system failures. Backups should be stored on a separate system whenever possible. Drush has built-in tools to help create backups of your site.
 
 1. While in the `/drupal` directory, create a .tar.gz back-up file containing the site database and site files with:
 
        drush archive-dump
 
-    *The site has been backed up locally.* Notice the backup has been created and placed in the the `/home/user/drush-backups/archive-dump/` directory, in a folder time stamped with its creation time. Drush saves your data into a .tar.gz archive file, containing the Drupal site folder and a copy of the MySql database.
+    *The site has been backed up locally.* Notice the backup has been created and placed in the the `/home/user/drush-backups/archive-dump/` directory in a folder time stamped with its creation time. Drush saves your data into a .tar.gz archive file, containing the Drupal site folder and a copy of the MySql database.
 
 2. To copy the file to a remote backup location, use the rsync command. Replace the `date-time-stamp`, `examplesitename.date-time-stamp.tar.gz`, `user`, `ip-address`, and `/user/` with the appropriate inputs:
 
@@ -150,9 +150,9 @@ The backup process above can be automated. You must create an SHH Pair Key, a Ba
          1 0   *   *   1    ~/drupal-backup.sh
       ~~~
 
-   This back up configuration creates a saved version once a week. The Cron timer is set for 12:01 AM on every Sunday. There are many ways to configure a back up with additional options to consider. Check out our [Cron](/docs/tools-reference/tools/schedule-tasks-with-cron) guide for more information.
+   This back up configuration creates a saved version once a week. The Cron timer is set for 12:01 a.m. every Sunday. There are many ways to configure a back up with additional options to consider. Check our [Cron](/docs/tools-reference/tools/schedule-tasks-with-cron) guide for more information.
 
-   This back up system leaves saved versions of the site and database on both the local and remote Linodes. Depending on the disk size of your Linode, you may want to occasionally delete older back up versions. The deletion task could be automated within the Bash script above. Since the Cron timer is only set for once a week, disk usage is probably not a large concern. There are many configuration options to consider.
+   This backup system leaves saved versions of the site and database on both the local and remote Linodes. Depending on the disk size of your Linode, you may want to occasionally delete older backup versions. The deletion task could be automated within the Bash script above. Since the Cron timer is only set for once a week, disk usage is probably not a large concern. There are many configuration options to consider.
 
 ##Next Steps
 

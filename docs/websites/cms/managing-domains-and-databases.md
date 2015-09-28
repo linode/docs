@@ -56,7 +56,7 @@ After you add a parked domain, you can click the **Go Back** button to manage yo
 
 [![cPanel parked domain screen.](/docs/assets/879-ParkMod.png)](/docs/assets/879-ParkMod.png)
 
-In the above example, the parked domain 'mynewdomain.com' is serving the content of your primary cPanel domain. You can modify this to serve whatever domain content you like. To instead serve the content of your addon domain "example2.com", click the **Manage Redirection** button and enter example2.com into the field shown below.
+In the above example, the parked domain 'mynewdomain.com' is serving the content of your primary cPanel domain. You can modify this to serve whatever domain content you like. To instead serve the content of your addon domain "example2.com," click the **Manage Redirection** button and enter example2.com into the field shown below.
 
 [![cPanel parked domain screen.](/docs/assets/880-ParkOther.png)](/docs/assets/880-ParkOther.png)
 
@@ -82,7 +82,7 @@ Once you select which users to add to the database, click the **Add** button. On
 
 Now that you've set up your database and user, you can start managing your database. cPanel includes phpMyAdmin for database management. Here's how to access phpMyAdmin:
 
-1.  Click the **Home** button at the top of the page then scroll back down to the Databases section of cPanel.
+1.  Click the **Home** button at the top of the page, then scroll back down to the Databases section of cPanel.
 2.  Click the phpMyAdmin icon to open the phpMyAdmin interface in a new window.
 3.  On the left side, you'll see a list of your databases. Select the database you want to open, as shown below.
 

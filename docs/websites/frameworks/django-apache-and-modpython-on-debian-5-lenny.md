@@ -86,7 +86,7 @@ Apache Virtual Host Configuration
 :   ~~~ apache
     <VirtualHost example.com:80>
         ServerName example.com
-        ServerAdmin squire@example.com
+        ServerAdmin username@example.com
         DocumentRoot /srv/www/example.com/public_html
 
         PythonPath "['/srv/www/example.com/application'] + sys.path"

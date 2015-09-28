@@ -1,105 +1,108 @@
 ---
-deprecated: true
 author:
-  name: Mike Rosabal
-  email: docs@linode.com
+    name: Linode
+    email: docs@linode.com
 description: 'Use phpMyAdmin to manage MySQL databases and users though a web interface.'
 keywords: 'mysql,phpmyadmin,sql,centos'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['databases/mysql/phpmyadmin-centos-6/']
 modified: Tuesday, February 4th, 2014
 modified_by:
-  name: Alex Fornuto
+    name: Linode
 published: 'Tuesday, February 4th, 2014'
-title: 'Managing MySQL with phpMyAdmin on CentOS 6.4'
+title: 'How to Install and Configure phpMyAdmin on CentOS 6'
+external_resources:
+    - '[phpMyAdmin Home page](http://www.phpmyadmin.net/home_page/index.php)'
+    - '[phpMyAdmin Documentation Page](http://www.phpmyadmin.net/home_page/docs.php)'
 ---
 
-phpMyAdmin is an open source web application written in PHP that provides a GUI to aid in MySQL database administration. It supports multiple MySQL servers, and is a robust and easy alternative to using the MySQL command line client.
+phpMyAdmin is a web application that provides a GUI to aid in MySQL database administration. It supports multiple MySQL servers and is a robust and easy alternative to using the MySQL command line client.
 
-We assume you've followed the steps outlined in our [getting started guide](/docs/getting-started/). All configuration will be performed in a terminal session; make sure you're logged into your Linode as root via SSH. We also assume that you have installed a working LAMP stack. For guides on installing a LAMP stack for your distribution, please visit the [LAMP guides](/docs/lamp-guides/) section of our Linode Library.
+{: .note}
+>
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
-Be aware, if you have opted to install the `php-suhosin` package, there are some known issues when using phpMyAdmin. Please visit the [Suhosin phpMyAdmin Compatibility Issues page](http://www.hardened-php.net/hphp/troubleshooting.html) for more information about tuning and workarounds.
+## Before You Begin
 
-Preparing Your Apache Configuration
------------------------------------
+1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides and the Linode's [hostname is set](/docs/getting-started#setting-the-hostname).
 
-Make sure your package repositories and installed programs are up to date by issuing the following commands:
+    To check your hostname run:
 
-    yum update
+        hostname
+        hostname -f
 
-Installing phpMyAdmin also requires access to the Fedora Projects EPEL Repositories. You can add it to your YUM source list by running the following commands:
+    The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-    cd ~
-    wget http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
-    sudo rpm -ivh epel-release*
+2.  Update your system:
 
-In order to provide better security, this guide will install phpMyAdmin to an SSL secured apache virtual host. While you can use http to access your phpMyAdmin instance, it will send your passwords in plain text over the internet. Since you will most likely be logging in to phpMyAdmin using your MySQL root user, http is definitely not recommended.
+        sudo yum update
+        
+3.  Set up a working LAMP stack. Please see the [LAMP on CentOS 6](/docs/websites/lamp/lamp-server-on-centos-6) guide if needed.
 
-If you need to set up SSL for your host, please refer to our [using Apache with SSL guide](/docs/web-servers/apache/ssl-guides/centos). Please ensure SSL is enabled for your virtual host before proceeding.
+    {: .note}
+    >
+    >If you have installed the `php-suhosin` package, there are some known issues when using phpMyAdmin. Please visit the [Suhosin phpMyAdmin Compatibility Issues page](http://www.hardened-php.net/hphp/troubleshooting.html) for more information about tuning and workarounds.
+    
+4.  Enable the EPEL Repository:
 
-phpMyAdmin requires the `mcrypt` PHP module. You can install it using the following command:
+        cd ~
+        wget http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+        sudo rpm -ivh epel-release*
+        
+5.  Set up Apache with SSL, so your passwords will not be sent over plain text. To do so, go through the [SSL Certificates with Apache on CentOS](/docs/security/ssl/ssl-apache2-centos) guide.
 
-    yum install php-mcrypt*
+6.  Install the `mycrypt` PHP module:
 
-You may need to restart your Apache server daemon for the changes to take effect:
+        sudo yum install php-mcrypt
+        
+7.  Restart Apache:
 
-    service httpd restart
+        sudo service httpd restart
 
-Installing phpMyAdmin
----------------------
 
-To install the current version of phpMyAdmin on a CentOS system use the following command:
+## Installing phpMyAdmin
 
-    yum install phpmyadmin
+1.  Install phpMyAdmin:
 
-Configuring phpMyAdmin
-----------------------
+        sudo yum install phpmyadmin
+        
+2.  For each virtual host that you would like to give access to your PHPMyAdmin installation, you must create a symbolic link from the document root to the phpMyAdmin installation location (`/usr/share/phpmyadmin`):
 
-Before you can proceed, you will need to make note of the external IP address being used by your home or work computer. This can be found by visiting the following website:
+        cd /var/www/example.com/public_html
+        sudo ln -s /usr/share/phpmyadmin
+        
+    This will create a symbolic link named `phpmyadmin` in your document root.
 
-    http://www.whatismyip.com
 
-By default, phpMyAdmin is configured to only permit access from the localhost (127.0.0.1). You will need to edit the configuration file and add the IP Address of your home and work computer in order to access it. Edit the configuration file by entering the following command:
+## Configuring phpMyAdmin
 
-    sudo nano /etc/httpd/conf.d/phpMyAdmin.conf
+By default, phpMyAdmin is configured to only permit access from the localhost (127.0.0.1). You will want to add the IP address of your computer in order to access it.
 
-Replace the 4 instances of 127.0.0.1 with the IP address of your home or work computer.
+1.  Make note of the external IP address being used by your home or work computer. This can be found by visiting the following website:
 
-For each virtual host that you would like to give access to your PHPMyAdmin installation, you must create a symbolic link from the document root to the phpMyAdmin installation location (`/usr/share/phpmyadmin`)
+        http://www.whatismyip.com
 
-Change directory to your document root and issue the following commands to create the symbolic link (be sure to substitute the proper paths for your particular configuration):
-
-    cd /srv/www/example.org/public_html
-    ln -s /usr/share/phpmyadmin
-
-This will create a symbolic link named `phpmyadmin` in your document root.
+2.  Edit the configuration file located at `/etc/httpd/conf.d/phpMyAdmin.conf`, replacing the four instances of `127.0.0.1` with the IP address of your home or work computer.
 
 ### Force SSL
 
 Since you are required to enter your MySQL credentials when using phpMyAdmin, we recommend that you use SSL to secure HTTP traffic to your phpMyAdmin installation. For more information on using SSL with your websites, please consult the guides that address [SSL certificates](/docs/security/ssl//).
 
-You can force phpMyAdmin to use SSL in the phpMyAdmin configuration file `/etc/phpmyadmin/config.inc.php` by adding the following lines under the `Server(s) configuration` section:
+1.  Force phpMyAdmin to use SSL in the phpMyAdmin configuration file `/etc/phpmyadmin/config.inc.php` by adding the following lines under the `Server(s) configuration` section:
 
-{: .file-excerpt }
-/etc/phpmyadmin/config.inc.php
-:   ~~~ php
-    $cfg['ForceSSL'] = 'true';
-    ~~~
+    {: .file-excerpt }
+    /etc/phpmyadmin/config.inc.php
+    :   ~~~ php
+        $cfg['ForceSSL'] = 'true';
+        ~~~
+    
+2.  Restart Apache:
 
-Testing Your phpMyAdmin Installation
-------------------------------------
+        sudo service httpd restart
+        
+
+## Testing Your phpMyAdmin Installation
 
 To test phpMyAdmin, open your favorite browser and navigate to `https://example.com/phpmyadmin`. You will be prompted for a username and password. Use the username "root" and the password you specified when you installed MySQL. Alternatively, you can log in using any MySQL user and retain their permissions.
 
 If you can successfully log in, phpMyAdmin has been installed properly.
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [phpMyAdmin Home page](http://www.phpmyadmin.net/home_page/index.php)
-- [phpMyAdmin Documentation Page](http://www.phpmyadmin.net/home_page/docs.php)
-
-
-

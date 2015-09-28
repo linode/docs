@@ -1,136 +1,256 @@
 ---
-deprecated: false
 author:
-  name: Linode
-  email: docs@linode.com
+    name: Linode
+    email: docs@linode.com
 description: 'A basic guide to installing nginx from source on Ubuntu 12.04 LTS (Precise Pangolin)'
 keywords: 'nginx,nginx ubuntu 12.04,http,web servers,ubuntu,ubuntu l2.04,ubuntu precise pangolin'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-servers/nginx/installation/ubuntu-12-04-precise-pangolin','websites/nginx/websites-with-nginx-on-ubuntu-12-04-lts-precise-pangolin/','websites/nginx/websites-with-nginx-on-ubuntu-12-04-lts-precise-pangolin/index.cfm/','websites/nginx/install-nginx-ubuntu-12-04/']
-modified: Thursday, March 27th, 2014
+modified: Wednesday, September 16th, 2015
 modified_by:
-  name: Alex Fornuto
+  name: Elle Krout
 published: 'Wednesday, October 24th, 2012'
 title: 'Installing Nginx on Ubuntu 12.04 LTS (Precise Pangolin)'
 external_links:
- - '[Linode Library nginx Documentation](/docs/web-servers/nginx/)'
+ - '[Linode nginx Documentation](/docs/web-servers/nginx/)'
  - '[nginx Community Documentation](http://wiki.nginx.org)'
  - '[Configure Perl and FastCGI with nginx](/docs/web-servers/nginx/perl-fastcgi/ubuntu-10.04-lucid)'
  - '[Configure PHP and FastCGI with nginx](/docs/web-servers/nginx/php-fastcgi/ubuntu-10.04-lucid)'
 ---
 
-Nginx is a lightweight and high performance web server designed with the purpose of delivering large amounts of static content quickly and with efficient use of system resources. In contrast to the [Apache HTTP server](/docs/web-servers/apache/) that uses a threaded or process-oriented approach to handling requests, nginx uses an asynchronous event-driven model which provides more predictable performance under load. This guide will help you get nginx up and running on your Ubuntu 12.04 LTS (Precise Pangolin) Linux VPS.
+Nginx is a lightweight, high performance web server designed to deliver large amounts of static content quickly and with efficient use of system resources. In contrast to the [Apache server](/docs/web-servers/apache/), Nginx uses an asynchronous event-driven model which provides more predictable performance under load.
 
-Before we begin installing the nginx web server, we assume that you have followed our [getting started guide](/docs/getting-started/). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
+{: .note}
+>
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
-## Set the Hostname
+## Before You Begin
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
+1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, and the Linode's [hostname is set](/docs/getting-started#setting-the-hostname).
 
-    hostname
-    hostname -f
+    To check your hostname run:
 
-The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
+        hostname
+        hostname -f
 
-## Installing Nginx from Ubuntu Packages
+    The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-Nginx is included in the Ubuntu software repositories. While using this method will leave you with a working web server *it is not the preferred method for installing nginx.* Nevertheless, if you want to install in this manner, the following sequence of commands ensure that your system's package databases and installed programs are up to date:
+2.  Update your system:
 
-    add-apt-repository ppa:nginx/stable
-    apt-get update
-    apt-get upgrade --show-upgraded
+        sudo apt-get update && sudo apt-get upgrade
 
-Install the nginx web server by issuing the following command:
+## Installing Nginx
 
-    apt-get install nginx
+There are [two branches](https://www.nginx.com/products/feature-matrix/) of Nginx. *Nginx Open Source* will be the focus of this guide and there are two sources from which you can install it on your Linode: Either from a distro's repositories or from [NGINX Inc.](https://www.nginx.com/), the company which formed behind the software to provide commercial features and support. Each way has its benefits and drawbacks.
 
-To start the server for the first time use the following command:
+### Installing from Ubuntu's Repositories
 
-    /etc/init.d/nginx start
+This method is the easiest and it ensures that Nginx has been tested to run at its best on Ubuntu. The Ubuntu repositories are often a few versions behind the latest Nginx stable release, so while Nginx will still receive security patches, it can be lacking features and bug fixes in comparison.
 
-Installing nginx in this manner will allow you to rely on your distribution's quality control, testing, and security teams to ensure that you're running the best possible version of the server. However, the packages provided by the Ubuntu project do not track the latest development of the nginx server. Given the rapid development of nginx, and variances between recent versions this is not ideal for many users. Continue to the next section to install nginx directly from source.
+1.  Install the Nginx web server:
 
-## Installing Nginx from the Source Distribution
+        sudo apt-get install nginx
 
-Because of the rapid development of the nginx web server and recent changes to the interface, many users of nginx compile their version of the software from sources provided by the nginx developers. Additional benefits include the ability to configure nginx to support additional third party modules and options which much be set at compile time.
+    The server will automatically start after the installation completes.
 
-### Install Prerequisites
+2.  Go to the [Testing Nginx](#testing-nginx) section of this guide to ensure your server is accessible.
 
-Begin by ensuring that your system's package database and installed programs are up to date by issuing the following commands:
 
-    apt-get update
-    apt-get upgrade --show-upgraded
+### Installing from NGINX
 
-You will also need to install several dependent packages before proceeding with nginx installation. Issue the following command:
+Nginx's [downloads page](https://www.nginx.com/download-oss-information/) has two more ways to install the web server: Using pre-built packages from the official Nginx repository or by building from source code. Either method will give you a more current version than what's available in Trusty Tahr but with a slightly higher chance of encountering unforseen issues because of newly-introduced bugs, and that these releases are not tested exclusively for a specific Linux distribution.
 
-    apt-get install libpcre3-dev build-essential libssl-dev
+#### Installing from the Offcial Nginx Repository
 
-### Download and Compile nginx
+The binary packages from Nginx's repo will update you to new versions of the web server when available. You can choose the [stable](http://nginx.org/en/linux_packages.html#stable) or [mainline](http://nginx.org/en/linux_packages.html#mainline) versions. If unsure, choose stable, which will be the example used for the remainder of this guide.
 
-The source files and binaries will be downloaded in the `/opt/` directory of the file system in this example. Check the [nginx download page](http://nginx.org/en/download.html#stable_versions) for the URL of the latest stable release, and then issue the following commands to obtain it (substituting a newer link if necessary):
+1.  Add the Nginx repository to Ubuntu's `sources.list` file:
 
-    cd /opt/
-    wget http://nginx.org/download/nginx-1.3.7.tar.gz
-    tar -zxvf nginx*
-    cd /opt/nginx*/
+    {: .file-excerpt}
+    /etc/apt/sources.list
+    :   ~~~
+        deb http://nginx.org/packages/ubuntu/ trusty nginx
+        deb-src http://nginx.org/packages/ubuntu/ trusty nginx
+        ~~~
 
-Now we can compile the nginx server. If you want to enable [third-party modules](http://wiki.nginx.org/Nginx3rdPartyModules), append options to `./configure` at this juncture. Issue the following command to configure the build options:
+    {: .note}
+    >
+    >The `deb-src` line is only needed if you want repository access to Nginx's source code.
 
-    ./configure --prefix=/opt/nginx --user=nginx --group=nginx --with-http_ssl_module
+2.  Download and add Nginx's repository key to your GPG keyring:
 
-When the configuration process completes successfully, you will see the following output:
+        sudo wget http://nginx.org/keys/nginx_signing.key
+        sudo apt-key add nginx_signing.key
 
-    Configuration summary
-         + using system PCRE library
-         + using system OpenSSL library
-         + md5: using OpenSSL library
-         + sha1 library is not used
-         + using system zlib library
+3.  Update the repository lists and install Nginx:
 
-      nginx path prefix: "/opt/nginx"
-      nginx binary file: "/opt/nginx/sbin/nginx"
-      nginx configuration prefix: "/opt/nginx/conf"
-      nginx configuration file: "/opt/nginx/conf/nginx.conf"
-      nginx pid file: "/opt/nginx/logs/nginx.pid"
-      nginx error log file: "/opt/nginx/logs/error.log"
-      nginx http access log file: "/opt/nginx/logs/access.log"
-      nginx http client request body temporary files: "client_body_temp"
-      nginx http proxy temporary files: "proxy_temp"
-      nginx http fastcgi temporary files: "fastcgi_temp"
+    The server will automatically start after the installation completes.
 
-To build and install nginx with the above configuration, use the following command sequence:
+4. Go to the [Testing Nginx](#testing-nginx) section of this guide to ensure your server is accessible.
 
-    make
-    make install
 
-You will also need to create a user and group for nginx. Issue the following command to do so:
+#### Installing from Source Distribution
 
-    adduser --system --no-create-home --disabled-login --disabled-password --group nginx 
+Compiling from source gives you the most flexibility and choice for optimization with [compiling options](http://wiki.nginx.org/InstallOptionsz) and [third-party modules](http://wiki.nginx.org/Nginx3rdPartyModules). You can also verify the PGP signature of the distributed tarball before compiling.
 
-Nginx is now installed in `/opt/nginx`.
+1.  Install the needed dependencies to build Nginx:
 
-### Monitor for Software Updates and Security Notices
+        sudo apt-get install libpcre3-dev build-essential libssl-dev
 
-When running software compiled or installed directly from sources provided by upstream developers, you are responsible for monitoring updates, bug fixes, and security issues. After becoming aware of releases and potential issues, update your software to resolve flaws and prevent possible system compromise. Monitoring releases and maintaining up to date versions of all software is crucial for the security and integrity of a system.
+2.  You can use any location you prefer to build from. Here, `/opt` will be used. Navigate to it:
 
-Please follow the announcements, lists, and RSS feeds on the following pages to ensure that you are aware of all updates to the software and can upgrade appropriately or apply patches and recompile as needed:
+        cd /opt
 
--   [nginx Security Advisories](http://nginx.org/en/security_advisories.html)
--   [nginx Announcements](http://nginx.org/)
+3.  [Download](https://www.nginx.com/) the latest version of Nginx Open Source and its PGP signature. You will have the choice of mainline, stable or legacy versions. Again, stable (1.8.0 at the time of this writing) is used as an example. 
 
-When upstream sources offer new releases, repeat the instructions for installing nginx, spawn-fcgi, and uWSGI, and recompile your software when needed. These practices are crucial for the ongoing security and functioning of your system.
+        sudo wget http://nginx.org/download/nginx-1.8.0.tar.gz
+        sudo wget http://nginx.org/download/nginx-1.8.0.tar.gz.asc
 
-### Create an Init Script to Manage nginx
+4.  Attempt to verify the tarball's signature:
 
-Before we can begin to use the nginx server, we must create a means of controlling the daemon process. You can use our [nginx init script](/docs/assets/1139-init-deb.sh) to start, stop, or restart nginx. Issue the following commands to download the file, change the execution mode, and set the system to initialize nginx on boot:
+        gpg nginx-1.8.0.tar.gz.asc
 
-    wget -O init-deb.sh http://www.linode.com/docs/assets/1139-init-deb.sh
-    mv init-deb.sh /etc/init.d/nginx
-    chmod +x /etc/init.d/nginx
-    /usr/sbin/update-rc.d -f nginx defaults 
+    **The check will fail** because you don't yet have the public RSA key of the signer, and to get it you first need the RSA key ID from the output:
 
-You can now start, stop, and restart nginx just like any other server daemon. For example, to start the server, issue the following command:
+        gpg: Signature made Tue 21 Apr 2015 02:14:01 PM UTC using RSA key ID A1C052F8
+        gpg: Can't check signature: public key not found
 
-    /etc/init.d/nginx start
+    Run the key check again:
 
-Congratulations! You now have a running and fully functional HTTP server powered by nginx. Continue reading our introduction to [basic nginx configuration](/docs/websites/nginx/basic-nginx-configuration) for more information about using and setting up the web server.
+        gpg nginx-1.8.0.tar.gz.asc
+
+    The output should include:
+
+        gpg: Good signature from "Maxim Dounin <mdounin@mdounin.ru>"
+        gpg: key A1C052F8: public key "Maxim Dounin <mdounin@mdounin.ru>" imported
+        gpg: no ultimately trusted keys found
+        gpg: Total number processed: 1
+        gpg:               imported: 1  (RSA: 1)
+
+5.  Expand the source code and change to the new directory:
+
+        sudo tar -zxvf nginx*.tar.gz
+        cd /opt/nginx-*
+
+5.  Configure the build options:
+
+        sudo ./configure --prefix=/opt/nginx --user=nginx --group=nginx --with-http_ssl_module
+
+    When the configuration process completes successfully, you will see the following output:
+
+        Configuration summary
+          + using system PCRE library
+          + using system OpenSSL library
+          + md5: using OpenSSL library
+          + sha1: using OpenSSL library
+          + using system zlib library
+
+          nginx path prefix: "/opt/nginx"
+          nginx binary file: "/opt/nginx/sbin/nginx"
+          nginx configuration prefix: "/opt/nginx/conf"
+          nginx configuration file: "/opt/nginx/conf/nginx.conf"
+          nginx pid file: "/opt/nginx/logs/nginx.pid"
+          nginx error log file: "/opt/nginx/logs/error.log"
+          nginx http access log file: "/opt/nginx/logs/access.log"
+          nginx http client request body temporary files: "client_body_temp"
+          nginx http proxy temporary files: "proxy_temp"
+          nginx http fastcgi temporary files: "fastcgi_temp"
+          nginx http uwsgi temporary files: "uwsgi_temp"
+          nginx http scgi temporary files: "scgi_temp"
+
+6.  Build and install Nginx with the above configuration:
+
+        sudo make
+        sudo make install
+
+7.  As the root user, create a separate user and group for Nginx:
+
+        sudo adduser --system --no-create-home --disabled-login --disabled-password --group nginx 
+
+    NGINX is now installed in `/opt/nginx`.
+
+8.  Installing from source doesn't include an init file to control when Nginx starts and stops during boot and shutdown. You can either extract that file from the *[nginx-common](http://packages.ubuntu.com/trusty/nginx-common)* package at packages.ubuntu.com, or create an SysV script to manage NGINX as shown below:
+
+    {: .file}
+    /etc/init.d/nginx
+    :   ~~~
+        #! /bin/sh
+
+        ### BEGIN INIT INFO
+        # Provides:          nginx
+        # Required-Start:    $all
+        # Required-Stop:     $all
+        # Default-Start:     2 3 4 5
+        # Default-Stop:      0 1 6
+        # Short-Description: starts the nginx web server
+        # Description:       starts nginx using start-stop-daemon
+        ### END INIT INFO
+
+        PATH=/opt/nginx/sbin:/sbin:/bin:/usr/sbin:/usr/bin
+        DAEMON=/opt/nginx/sbin/nginx
+        NAME=nginx
+        DESC=nginx
+
+        test -x $DAEMON || exit 0
+
+        # Include nginx defaults if available
+        if [ -f /etc/default/nginx ] ; then
+                . /etc/default/nginx
+        fi
+
+        set -e
+
+        case "$1" in
+          start)
+                echo -n "Starting $DESC: "
+                start-stop-daemon --start --quiet --pidfile /opt/nginx/logs/$NAME.pid \
+                        --exec $DAEMON -- $DAEMON_OPTS
+                echo "$NAME."
+                ;;
+          stop)
+                echo -n "Stopping $DESC: "
+                start-stop-daemon --stop --quiet --pidfile /opt/nginx/logs/$NAME.pid \
+                        --exec $DAEMON
+                echo "$NAME."
+                ;;
+          restart|force-reload)
+                echo -n "Restarting $DESC: "
+                start-stop-daemon --stop --quiet --pidfile \
+                        /opt/nginx/logs/$NAME.pid --exec $DAEMON
+                sleep 1
+                start-stop-daemon --start --quiet --pidfile \
+                        /opt/nginx/logs/$NAME.pid --exec $DAEMON -- $DAEMON_OPTS
+                echo "$NAME."
+                ;;
+          reload)
+                  echo -n "Reloading $DESC configuration: "
+                  start-stop-daemon --stop --signal HUP --quiet --pidfile     /opt/nginx/logs/$NAME.pid \
+                      --exec $DAEMON
+                  echo "$NAME."
+                  ;;
+              *)
+                    N=/etc/init.d/$NAME
+                    echo "Usage: $N {start|stop|restart|reload|force-reload}" >&2
+                    exit 1
+                    ;;
+            esac
+
+            exit 0
+        ~~~
+
+9.  Make the file executable and add it to the default run levels:
+
+        sudo chmod +x /etc/init.d/nginx
+        sudo /usr/sbin/update-rc.d -f nginx defaults 
+
+10. Start Nginx:
+
+        sudo service nginx start
+
+## Testing Nginx
+
+Regardless of installation source or method, Nginx can be tested by navigating to your Linode's IP address or FQDN in your browser. You should see the NGINX welcome banner shown below.
+
+![Nginx welcome](/docs/assets/nginx-welcome.png)
+
+Continue reading our introduction to [Basic NGINX Configuration](/docs/websites/nginx/basic-nginx-configuration) for more information about using and setting up a web server.

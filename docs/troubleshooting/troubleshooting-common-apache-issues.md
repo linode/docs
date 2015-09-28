@@ -161,7 +161,7 @@ These points should help clarify the order in which directives are read:
 
 If you're continuing to have issues with Apache, we encourage you to make contact with the [Linode user community](https://forum.linode.com/). The Apache web server is *very* widely deployed, so you'll find a large number of Linode users (and system administrators in general) with Apache experience. So, dive into the Linode [IRC channel](https://www.linode.com/chat/) and [forums](http://linode.com/forums/)! You'll more than likely find someone who can help you out.
 
-You might want to look at the following Linode Library guides:
+You might want to look at the following Linode guides:
 
 -   A group of guides for various [web frameworks](/docs/frameworks/)
 -   General [Apache HTTP server](/docs/web-servers/apache) guides

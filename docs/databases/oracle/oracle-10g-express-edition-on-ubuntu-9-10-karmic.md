@@ -9,7 +9,7 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['databases/oracle/10g-ubuntu-9-10-karmic/']
 modified: Wednesday, August 13, 2014
 modified_by:
-  name: Dave Russell Jr
+  name: Linode
 published: 'Sunday, May 9th, 2010'
 title: 'Oracle 10g Express Edition on Ubuntu 9.10 (Karmic)'
 ---

@@ -8,7 +8,7 @@ keywords: 'citadel,citadel ubuntu 14.04,ubuntu 14.04 mail server,groupware,email
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: Saturday, September 20, 2014
 modified_by:
-  name: Dave Russell Jr
+  name: Linode
 published: 'Monday, November 5th, 2012'
 title: 'Email with Citadel on Ubuntu 14.04 LTS (Truly Tahr)'
 external_resources:

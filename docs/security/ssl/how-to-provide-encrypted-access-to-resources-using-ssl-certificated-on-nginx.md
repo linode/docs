@@ -5,7 +5,7 @@ author:
 description: 'How to Use TLS/SSL to provide transport layer encryption for HTTP connections with nginx.'
 keywords: 'ssl,tls,nginx,https,secure http, encryption for HTTP, SSL certificates with Nginx'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['web-servers/nginx/configuration/ssl/','security/ssl/ssl-certificates-with-nginx/index.cfm/','websites/ssl/ssl-certificates-with-nginx.cfm/','security/ssl/ssl-certificates-with-nginx/']
+alias: ['web-servers/nginx/configuration/ssl/','security/ssl/ssl-certificates-with-nginx/index.cfm/','websites/ssl/ssl-certificates-with-nginx.cfm/','security/ssl/ssl-certificates-with-nginx/','security/ssl/how-to-provide-encrypted-access-to-resources-using-ssl-certificated-on-nginx/index.cfm/']
 modified: Tuesday, June 10th, 2014
 modified_by:
   name: Alex Fornuto
@@ -24,7 +24,7 @@ This document assumes that you have completed the [getting started guide](/docs/
 
 ## Install Nginx With SSL Support
 
-Before proceeding, ensure that you've compiled nginx with support for SSL. The [nginx installation guides](/docs/websites/nginx/) in the Linode Library provide a more comprehensive explanation on compiling nginx. Follow the appropriate guide for the Linux distribution you deployed and be aware of the following considerations:
+Before proceeding, ensure that you've compiled nginx with support for SSL. The [nginx installation guides](/docs/websites/nginx/) provide a more comprehensive explanation on compiling nginx. Follow the appropriate guide for the Linux distribution you deployed and be aware of the following considerations:
 
 -   If you compiled nginx from source code obtained from the upstream, ensure that the `--with-http_ssl_module` argument is added to the `./configure` command as specified in these documents.
 -   If you installed nginx using your system's package management tools, make sure that the package is built with SSL support.
@@ -70,8 +70,8 @@ This produces a self-signed certificate that is valid for 365 days. You you may 
     Locality Name (eg, city) []:Absecon
     Organization Name (eg, company) [Internet Widgits Pty Ltd]:SoftwareDev, LLC
     Organizational Unit Name (eg, section) []:Web Services
-    Common Name (eg, YOUR name) []:squire.example.com
-    Email Address []:squire@example.com
+    Common Name (eg, YOUR name) []:username.example.com
+    Email Address []:username@example.com
 
 The `Common Name` for your certificate must match the host name that you want to generate a valid certificate for. Continue to configure nginx to serve SSL content.
 
@@ -103,7 +103,7 @@ The following output of the `openssl` command demonstrates the creation of a cer
     Organization Name (eg, company) [Internet Widgits Pty Ltd]:example Morris
     Organizational Unit Name (eg, section) []:Web Services
     Common Name (eg, YOUR name) []:example.com
-    Email Address []:squire@example.com
+    Email Address []:username@example.com
 
     Please enter the following 'extra' attributes
     to be sent with your certificate request

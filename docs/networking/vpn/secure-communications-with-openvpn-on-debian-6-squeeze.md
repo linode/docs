@@ -49,7 +49,7 @@ Before you can generate the public key infrastructure for OpenVPN, you must conf
     export KEY_PROVINCE="OH"
     export KEY_CITY="Oxford"
     export KEY_ORG="My Company"
-    export KEY_EMAIL="squire@example.com"
+    export KEY_EMAIL="username@example.com"
     ~~~
 
 Alter the examples to reflect your configuration. This information will be included in certificates you create and it is important that the information be accurate, particularly the `KEY_ORG` and `KEY_EMAIL` values.

@@ -26,7 +26,7 @@ If you're running a mail server, it's a good idea to have spam and virus filteri
 
 ## Prerequisites
 
-This guide assumes you have already followed our [Email with Postfix, Dovecot, and MySQL](/docs/email/postfix/email-with-postfix-dovecot-and-mysql) guide, and are running Ubuntu 12.04 LTS. This guide is written for the root user, and all commands listed require root privileges.
+This guide assumes you have already followed our [Email with Postfix, Dovecot, and MySQL](/docs/email/postfix/email-with-postfix-dovecot-and-mysql) guides and are running Ubuntu 12.04 LTS. This guide is written for the root user, and all commands listed require root privileges.
 
 ## Installation
 
@@ -42,11 +42,11 @@ Run the following commands to install all the necessary packages:
 
 ## Configuration
 
-In this section we'll configure the newly installed software to work with our existing mail server.
+In this section, we'll configure the newly installed software to work with our existing mail server.
 
 ### ClamAV
 
-Here we'll make sure ClamAV stays updated with the latest virus definitions.
+Here, we'll make sure ClamAV stays updated with the latest virus definitions.
 
 1.  We will configure ClamAV to update its database regularly, but it's a good idea to perform a manual update after installation:
 
@@ -57,7 +57,7 @@ Here we'll make sure ClamAV stays updated with the latest virus definitions.
         adduser clamav amavis
         adduser amavis clamav
 
-3.  To make sure that virus definitions are updated regularly, we will add a cron job. Make sure you run this as root, or with the `sudo` prefix. You may be asked to choose an editor. If you're unsure, choose `nano`:
+3.  To make sure that virus definitions are updated regularly, we will add a cron job. Make sure you run this as root or with the `sudo` prefix. You may be asked to choose an editor. If you're unsure, choose `nano`:
 
         crontab -e
 
@@ -91,9 +91,9 @@ crontab
 
 ### SpamAssassin
 
-Here we'll set various options and settings for SpamAssassin.
+Here, we'll set various options and settings for SpamAssassin.
 
-1.  Before you can start SpamAssassin for the first, time you need to edit the `/etc/default/spamassassin` file by changing the value of the `ENABLED` variable to **1**. Here you can also edit the `CRON` variable to make sure that SpamAssassin updates its rules regularly:
+1.  Before you can start SpamAssassin for the first time, you need to edit the `/etc/default/spamassassin` file by changing the value of the `ENABLED` variable to **1**. Here, you can also edit the `CRON` variable to make sure that SpamAssassin updates its rules regularly:
 
     {: .file }
     /etc/default/spamassassin
@@ -115,7 +115,7 @@ Here we'll set various options and settings for SpamAssassin.
 
         cp /etc/spamassassin/local.cf /etc/spamassassin/local.cf.orig
 
-3.  SpamAssassin scores incoming messages and assigns a score based on its spam characteristics. A score of 0 is considered safe, and a score of 10 or higher is usually spam. You need to adjust its configuration file to determine what score threshold will be allowed through the filter. We're going to use 8, but this can be adjusted later. Locate and uncomment the line `# required_score 5.0` by removing the **\#** symbol, and adjust the value to 8:
+3.  SpamAssassin scores incoming messages and assigns a score based on its spam characteristics. A score of 0 is considered safe, while a score of 10 or higher is usually spam. You need to adjust its configuration file to determine what score threshold will be allowed through the filter. We're going to use 8, but this can be adjusted later. Locate and uncomment the line `# required_score 5.0` by removing the **\#** symbol, and adjust the value to 8:
 
     {: .file }
     /etc/spamassassin/local.cf
@@ -125,14 +125,14 @@ Here we'll set various options and settings for SpamAssassin.
         required_score 8
         ~~~
 
-4.  Once finished, save and exit the file. If you're using Nano the command is Control + x
+4.  Once finished, save and exit the file. If you're using Nano the command is Control + x.
 5.  Start the SpamAssassin daemon:
 
         service spamassassin start
 
 ### Amavis
 
-1.  On Debian-based systems like Ubuntu, Amavis splits its configuration amongst several files. Enable spam and antivirus filtering by opening the `/etc/amavis/conf.d/15-content_filter_mode` file, and removing the comment symbols (**\#**) from the two bypass blocks, as shown below:
+1.  On Debian-based systems like Ubuntu, Amavis splits its configuration among several files. Enable spam and antivirus filtering by opening the `/etc/amavis/conf.d/15-content_filter_mode` file and removing the comment symbols (**\#**) from the two bypass blocks, as shown below:
 
     {: .file }
     /etc/amavis/conf.d/15-content\_filter\_mode
@@ -296,7 +296,7 @@ After changing this file, you will need to restart Amavis:
         @whitelist_sender_maps = (['docs@linode.com']);
         @blacklist_sender_maps = (['.gmail.com', 'scammer@junk.org']);
 
-    In the example above all email from `docs@linode.com` will be passed through regardless of its spam score. All emails from any Gmail address, as well as `scammer@junk.org` will be flagged as spam. Please note that spammers often spoof the sender address, so whitelisting an entire domain may or may not be a good idea in your situation. When you are done, save and exit this file.
+    In the example above all email from `docs@linode.com` will be passed through regardless of its spam score. All emails from any Gmail address, as well as `scammer@junk.org`, will be flagged as spam. Please note that spammers often spoof the sender address, so whitelisting an entire domain may or may not be a good idea in your situation. When you are done, save and exit this file.
 
 2.  If you decide to modify these values, you will need to restart Amavis before they will take effect:
 
