@@ -137,7 +137,7 @@ Only a name is required to create the new database but there's a big area for co
 
 Once you click **Apply** at the bottom of the form then you'll get an **Apply SQL Script to Database** dialog.  This shows you what commands are actually being sent to MySQL to perform the requested actions.
 
-	![The Apply dialog shows you the commands actually being sent to MySQL](/docs/assets/workbenchSQL.png)
+![The Apply dialog shows you the commands actually being sent to MySQL](/docs/assets/workbenchSQL.png)
 
 3.  Click **Apply** again and then you should get a **SQL Succesful** message.  Then click **Close**.
 
