@@ -99,11 +99,11 @@ If you have more than one Linode or other servers your administer you can repeat
 
 Click on the shortcut to your Linode.  You'll see connection details, then click **Connect**.
 
-	![Connection details just before connecting](/docs/assets/workbenchInfoConnect.png)
+![Connection details just before connecting](/docs/assets/workbenchInfoConnect.png)
 
 Workbench will prompt for passwords again as needed, then you'll arrive at the database screen.  This is where you'll do most of your work.
 
-	![The database screen](/docs/assets/workbenchDataScreen.png)
+![The database screen](/docs/assets/workbenchDataScreen.png)
 
 ## Setting Preferences
 
