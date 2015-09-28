@@ -6,7 +6,7 @@ description: 'Our guide to securing your first Linode.'
 keywords: 'security,linode quickstart,getting started,iptables,firewall,firewalld,ssh,new user,fail2ban'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['securing-your-server/']
-modified: 'Thursday, September 24, 2015'
+modified: 'Monday, September 28th, 2015'
 modified_by:
   name: Linode
 published: 'Friday, February 17th, 2012'
@@ -297,7 +297,7 @@ For more info on using iptables in Arch, see its Wiki entries for [iptables](htt
 
 **CentOS 7 or Fedora 20 and above**
 
-In these distros, Firewalld is used to implement firewall rules instead of controlling iptables directly. If you would prefer to use it over iptables, [see our FirewallD guide](/docs/security/firewalls/control-network-traffic-with-firewalld) for getting it up and running.
+In these distros, Firewalld is used to implement firewall rules instead of controlling iptables directly. If you would prefer to use it over iptables, [see our FirewallD guide](/docs/security/firewalls/introduction-to-firewalld-on-centos) for getting it up and running.
 
 1.  If you would prefer to use iptables, Firewalld must first be stopped and disabled.
 
