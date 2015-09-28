@@ -5,8 +5,8 @@ author:
 description: 'Access Google Drive from your Linode console'
 keywords: 'google,drive,console,fuse,apt,ubuntu'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-published: 'Thursday, September 10th, 2015'
-modified: Thursday, September 10th, 2015
+published: 'Monday, September 28th, 2015'
+modified: Monday, September 28th, 2015
 modified_by:
     name: Linode
 title: 'Access Google Drive from Linode'
