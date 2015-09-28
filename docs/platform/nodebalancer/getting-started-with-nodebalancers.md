@@ -1,6 +1,6 @@
 ---
 author:
-  name: Jed Smith
+  name: Linode
   email: docs@linode.com
 description: 'Using a NodeBalancer to begin managing a simple Web application.'
 keywords: 'nodebalancers,nodebalancer,load balancers,load balancer,load balancing,high availability,ha'
