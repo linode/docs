@@ -123,7 +123,7 @@ If you have a firewall running on your Linode, add exceptions for SteamCMD:
 
 ##Using the Server
 
-1. Before starting up the server for the first time, it is good to symlink a library file to avoid a possible error:
+1.  Before starting up the server for the first time, it is good to symlink a library file to avoid a possible error:
 
         cd ~/jc2mp-server
         ln -s ~/steamcmd/linux32/libstdc++.so.6 libstdc++.so.6
@@ -140,7 +140,7 @@ If you have a firewall running on your Linode, add exceptions for SteamCMD:
 
         screen -r
 
-5.  To stop the server, bring back the console and press **CONTROL + C**.
+5.  To stop the server, either bring back the console and type **quit**.
 
 ## Entering The Server
 
