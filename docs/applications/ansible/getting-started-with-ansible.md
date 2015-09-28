@@ -198,7 +198,7 @@ Ansible ships with a large collection of modules that you can run as tasks or vi
 
     ansible-doc -l
 
-A few common core modules you might be interested in learning fist include:
+A few common core modules you might be interested in learning first include:
 
 * [command - Executes a command on a remote node](http://docs.ansible.com/ansible/command_module.html)
 * [script - Runs a local script on a remote node after transferring it](http://docs.ansible.com/ansible/script_module.html)
