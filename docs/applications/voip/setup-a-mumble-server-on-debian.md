@@ -15,7 +15,7 @@ contributor:
     link: Github/Twitter Link
 ---
 
-Mumble is an open-source VoIP client, designed for gamers, that requires a server for all clients to connect to. This guide instructs you on how to install and configure the Mumble server (also called Murmur) on Debian 8.
+Mumble is an open-source VoIP client, designed for gamers, that requires a server for all clients to connect to. This guide instructs you on how to install and configure the Mumble server (also called Murmur) on Debian.
 
 No changes need to be made to the system beforehand if you follow this guide. 
 
