@@ -6,7 +6,7 @@ description: 'Our guide to hosting a website on your Linode.'
 keywords: 'linode guide,hosting a website,website,linode quickstart guide'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['hosting-website/']
-modified: Tuesday, October 14th, 2014
+modified: Monday, September 28th, 2015
 modified_by:
   name: Linode
 published: 'Tuesday, March 13th, 2012'
@@ -180,26 +180,40 @@ MySQL consumes a lot of memory when using the default configuration. To set reso
 
  {: .note }
 >
-> These guidelines are designed to optimize MySQL for a Linode 1GB, but you can use this information for any size Linode. If you have a larger Linode, start with these values and modify them while carefully watching for memory and performance issues.
+> These guidelines are designed to optimize MySQL 5.5 and up for a Linode 1GB, but you can use this information for any size Linode. If you have a larger Linode, start with these values and modify them while carefully watching for memory and performance issues.
 
 1.  Open the MySQL configuration file for editing by entering the following command:
 
         sudo nano /etc/mysql/my.cnf
 
-2.  Make sure that the following values are set:
+2.  Comment out all lines beginning with `key_buffer`. This is a deprecated setting and we'll use the correct option instead.
 
-	{: .file-excerpt}
+3.  Edit following values:
+
+    {: .file-excerpt}
     /etc/mysql/my.cnf
-    :   ~~~ ini
+    :   ~~~ conf
         max_connections = 75
-        key_buffer = 32M
         max_allowed_packet = 1M
         thread_stack = 128K
-        table_cache = 32
         ~~~
 
-3.  Save the changes to MySQL's configuration file by pressing `Control + x` and then pressing `y`.
-4.  Restart MySQL to save the changes. Enter the following command:
+    {: .note }
+    >
+    >In MySQL 5.6, you may need to add these lines as one block with `[mysql]` at the top. In earlier MySQL versions, there may be multiple entries for a single option so be sure to edit both lines.
+
+4.  Add the following lines to the end of `my.cnf`:
+
+    {: .file-excerpt}
+    /etc/mysql/my.cnf
+    :   ~~~ conf
+        table_open_cache = 32M
+        key_buffer_size = 32M
+        ~~~
+
+5.  Save the changes to MySQL's configuration file by pressing `Control + x` and then pressing `y`.
+
+6.  Restart MySQL to save the changes. Enter the following command:
 
         sudo service mysql restart
 
