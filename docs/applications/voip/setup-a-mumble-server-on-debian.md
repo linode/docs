@@ -31,7 +31,7 @@ The steps required in this guide require root privileges. Be sure to run the ste
 
 2. After installation, you can use `dpkg-reconfigure` to configure the initial setup.
 
-The first question asked during system config will be whether or not you want the server to run at boot.  This is identical to using the command `systemctl enable mumble-server`.
+The first question asked during system config will be whether or not you want the server to run at boot.  This is identical to using the command `systemctl enable mumble-server` on Debian 8.
 
 	[![Image description](/docs/assets/murmur-debian-auto-start-resized.png)](/docs/assets/murmur-debian-auto-start.png)
 
