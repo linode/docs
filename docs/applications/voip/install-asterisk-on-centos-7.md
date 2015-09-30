@@ -5,14 +5,18 @@ author:
 description: 'Installing Asterisk 13 on CentOS 7'
 keywords: 'asterisk 13,centos 7,centos,open source,private branch exchange,pbx,asterisk pbx,sip,session initiation protocol,sip protocol,IP PBX systems,VoIP gateways'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-published: 'Tuesday, August 18th, 2015'
-modified: Tuesday, August 18th, 2015
+published: 'Wednesday, September 30th, 2015'
+modified: Wednesday, September 30th, 2015
 modified_by:
     name: Linode
 title: 'How to Install Asterisk on CentOS 7'
 contributor:
     name: Nick Rahl
 ---
+
+*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
+
+<hr>
 
 Asterisk is an open source *private branch exchange* (PBX) server that uses *Session Initiation Protocol* (SIP) to route and manage telephone calls. Notable features include customer service queues, music on hold, conference calling, and call recording, among others.
 
