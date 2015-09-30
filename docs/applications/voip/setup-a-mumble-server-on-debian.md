@@ -19,13 +19,13 @@ Mumble is an open-source VoIP client, designed for gamers, that requires a serve
 
 No changes need to be made to the system beforehand if you follow this guide. 
 
-Througout this guide, all commands are run as root.  If you are not root user, you can prepend each command with "sudo." 
+The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
 ## Server Side
 
 ### Install and Simple Setup
 
-1. Since Murmur is in the official Debian repositories, you can just use apt-get to install it.  Be careful though, the package is `mumble-server` and not `murmur`. Enter the following command (remember to prepend with sudo if needed):
+1. Since Murmur is in the official Debian repositories, you can just use apt-get to install it.  Be careful though, the package is `mumble-server` and not `murmur`.
 
 	apt-get install mumble-server
 
