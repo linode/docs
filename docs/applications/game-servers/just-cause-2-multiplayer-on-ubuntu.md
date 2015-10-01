@@ -1,8 +1,8 @@
-Just Cause 2 is a single player game published by Square Enix. As it has no multiplayer mode, the modding community has created a multiplayer mod for the game and is quite popular. This guide will explain how to prepare your VPS, install SteamCMD, and install, then configure, Just Cause 2's Multiplayer Mod.
+Just Cause 2 is a single-player game published by Square Enix. Because it has no multiplayer mode, the modding community has created a multiplayer mod for the game that is quite popular. This guide will explain how to prepare your VPS, install SteamCMD and then install and configure Just Cause 2's multiplayer mod.
 
 ## Prerequisites
 
-Have the following items before you begin:
+Have the following items available before you begin:
 
 - A [Steam](http://store.steampowered.com) account.
 - A copy of [Just Cause 2](http://store.steampowered.com/app/8190/) that you have purchased on Steam.
@@ -14,7 +14,7 @@ Have the following items before you begin:
 
 ## Preparing your Linode
 
-Just Cause 2 is sold on Steam, as is its multiplayer mod. Therefore, we will use SteamCMD to download and maintain servers for games sold on steam.
+Just Cause 2 is sold on Steam, along with its multiplayer mod. To download and maintain servers for the game, we will use SteamCMD.
 
 Because current generation Linodes run a 64-bit operating system, we need to download a few extra libraries in order to run SteamCMD.
 
@@ -31,7 +31,7 @@ Because current generation Linodes run a 64-bit operating system, we need to dow
         sudo apt-get install lib32gcc1 lib32stdc++6 libc6-i386 libcurl4-gnutls-dev:i386 screen
 
     {: .note }
-    > If you're running a legacy Linode on a 32 bit kernel, install these packages instead:
+    > If you're running a legacy Linode on a 32-bit kernel, install these packages instead:
     >
     >     sudo apt-get install libcurl4-gnutls-dev:i386 libc6-i386 libgcc1 screen
 
@@ -57,7 +57,7 @@ If you have a firewall running on your Linode, add exceptions for SteamCMD:
         tar -xvzf steamcmd_linux.tar.gz
         rm steamcmd_linux.tar.gz
 
-4.  Run the SteamCMD Installer.
+4.  Run the SteamCMD Installer:
 
         ./steamcmd.sh
 
@@ -90,7 +90,7 @@ If you have a firewall running on your Linode, add exceptions for SteamCMD:
 
         Steam>
 
-    The `Steam>` prompt is similar to the linux command prompt, with the exception of not being able to execute normal linux commands. 
+    The `Steam>` prompt is similar to the Linux command prompt, with the exception of its not being able to execute normal Linux commands. 
 
 4.  Install JC2-MP from the SteamCMD prompt:
 
@@ -104,18 +104,18 @@ If you have a firewall running on your Linode, add exceptions for SteamCMD:
 
         Steam>
 
-5.  Finally, exit SteamCMD.
+5.  Finally, exit SteamCMD:
 
         quit
 
-##Configuring Just Cause 2-Multiplayer
+##Configuring Just Cause 2 - Multiplayer (JC2-MP)
 
 1.  Before you configure JC2-MP, make a copy of the default configuration file:
 
         cd ~/jc2mp-server
         cp default_config.lua config.lua
 
-2.  Open the configuration file with `nano` to edit the configuration. Every possible server option is explained in the configuration file. Simply follow the instructions.:
+2.  Open the configuration file with `nano` to edit the configuration. Every possible server option is explained in the configuration file. Simply follow the instructions:
 
         nano config.lua
 
@@ -128,10 +128,10 @@ If you have a firewall running on your Linode, add exceptions for SteamCMD:
         cd ~/jc2mp-server
         ln -s ~/steamcmd/linux32/libstdc++.so.6 libstdc++.so.6
 
-2.  To start the server, simply run the executable. 
+2.  To start the server, simply run the executable: 
         screen ./Jcmp-server
         
-3.  To detach from the screen session running the server console, press these two key combinations in succession:
+3.  To detach from the screen session running the server console, press these two key-combinations in succession:
 
     **CONTROL + A**<br>
     **CONTROL + D**
@@ -140,10 +140,10 @@ If you have a firewall running on your Linode, add exceptions for SteamCMD:
 
         screen -r
 
-5.  To stop the server, either bring back the console and type **quit**.
+5.  To stop the server, either bring back the console or type **quit**.
 
 ## Entering The Server
 
 [![JC2-MP Server with users on it](/docs/assets/JC2running_resized.png)](/docs/assets/JC2running.png)
 
-Now that you have installed and configured Just Cause 2-Multiplayer, you have your very own Just Cause 2 server for you and your friends to play on. Your users can access the server by opening the server list and finding your server’s name, clicking **Connect**, and entering a password if you choose to set one.
+Now that you have installed and configured Just Cause 2 - Multiplayer, you have your very own Just Cause 2 server for you and your friends to play on. Your users can access the server by opening the server list, finding your server’s name, clicking **Connect**, and then entering a password - if you choose to set one.
