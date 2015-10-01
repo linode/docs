@@ -5,8 +5,8 @@ author:
 description: 'Install Zimbra OSE 8.6 on Ubuntu 14.04 LTS Linode'
 keywords: 'zimbra,install zimbra,mail server,zimbra email,zimbra email server,mail zimbra,open source guide,zimbra open source,postfix,web mail,opendkim,amavis,ubuntu tahr,ubuntu 14.04,ubuntu'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-published: 'Friday, September 4th, 2015'
-modified: Friday, September 4th, 2015
+published: 'Thursday, October 1st, 2015'
+modified: Thursday, October 1st, 2015
 modified_by:
     name: Linode
 title: 'Install Zimbra Open Source Edition on Ubuntu 14.04'
@@ -14,8 +14,11 @@ contributor:
     name: Bill Bardon
 external_resources:
  - '[Zimbra OSE Documentation](https://www.zimbra.com/documentation/zimbra-collaboration-open-source)'
- 
 ---
+
+*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
+
+<hr>
 
 [Zimbra](https://www.zimbra.com/) is a complete mail server that provides a configured Postfix with OpenDKIM, Amavis, ClamAV, and Nginx, ready to handle mail for one or more domains. Zimbra on a Linode is one of the quickest paths to an up-and-running mail server that you will find. This guide will take you through the Zimbra installation procedure.
  
