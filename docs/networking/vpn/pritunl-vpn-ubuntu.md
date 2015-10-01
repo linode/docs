@@ -36,7 +36,8 @@ Pritunl is an open source VPN server and management panel. It gives the user the
 
 3.  Add Pritunl’s APT repository and update the package lists:
 
-        sudo add-apt-repository -y ppa:pritunl && sudo apt-get update
+        echo "deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.0 multiverse" > /etc/apt/sources.list.d/mongodb-org-3.0.list
+	echo "deb http://repo.pritunl.com/stable/apt trusty main" > /etc/apt/sources.list.d/pritunl.list
 
 4.	If you have a firewall running on the Linode, add exceptions for Pritunl’s Web UI and server:
 
