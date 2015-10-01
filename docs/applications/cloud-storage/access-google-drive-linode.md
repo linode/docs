@@ -14,6 +14,10 @@ contributor:
     name: Scott Sumner
 ---
 
+*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
+
+<hr>
+
 If you've discovered Google Drive then you know that it can be an indispensible tool for moving files around.  While one of the standard counter-arguments is "just carry a flash drive" that works great until you need to add a file to your Linode.  Here's how to install and configure a great free piece of software to access your Google Drive from your Linode!
 
 **Google-drive-ocamlfuse (ocamlfuse)** uses the Drive API to scan and access your Google Drive contents.  A majority of the steps are authorizing its use and applying that authorization to the copy running on your Linode.  Let's get started, I'll explain a little more along the way.
