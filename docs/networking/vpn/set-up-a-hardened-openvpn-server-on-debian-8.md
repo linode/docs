@@ -2,19 +2,16 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Use OpenVPN to securely connect separate networks on an Ubuntu 12.04 (Precise) or Debian 7 Linux VPS.'
-keywords: 'openvpn,vpn,debian 7,debian 8,debian jessie,debian wheezy'
+description: 'Use OpenVPN to securely connect separate networks on Debian or Ubuntu.'
+keywords: 'openvpn,open vpn,vpn,debian 7,debian 8,debian jessie,debian wheezy'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: 'Thursday, September 3, 2015'
 modified_by:
   name: Linode
 published: 'Thursday, September 3, 2015'
-title: 'How to Set up a Hardened OpenVPN Server on Debian 8'
+title: 'Set up a Hardened OpenVPN Server on Debian 8'
 external_resources:
  - '[Official OpenVPN Documentation](https://openvpn.net/index.php/open-source/documentation/howto.html)'
- - '[Tunnelblick OS X OpenVPN Client](http://code.google.com/p/tunnelblick/)'
- - '[OpenVPN GUI for Windows](https://tunnelblick.net/)'
- - '[Network Manager GNOME Configuration Management Tool](https://wiki.gnome.org/Projects/NetworkManager)'
 ---
 
 [OpenVPN](https://openvpn.net/) is a tool for creating networking tunnels between and among groups of computers that are not on the same local network. This is useful if you want to remotely access services on a local network without making them publicly accessible. When integrated with OpenSSL, OpenVPN can encrypt all VPN traffic to provide a secure connection between machines.
@@ -29,7 +26,7 @@ This guide the first of a three part series. Part one will set you up with a har
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  Complete the beginning of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account and harden SSH access; this guide will use `sudo` wherever possible. Do **not** follow the Creating a Firewall section--this guide has instructions specifcally for firewall rules for an OpenVPN server.
+2.  Complete the beginning of our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account and harden SSH access; this guide will use `sudo` wherever possible. Do **not** follow the *Creating a Firewall* section--this guide has instructions specifcally for firewall rules for an OpenVPN server.
 
 3.  Update your system.
 
@@ -47,7 +44,7 @@ Two basic but significant steps in hardening a server are to set up restrictive 
 
         sudo iptables -F && sudo iptables -X
 
-2.  See our [Securing Your Server](/docs/security/securing-your-server/#creating-a-firewall) guide and complete the section on iptables for Debian **using the ruleset below**:
+2.  See our [Securing Your Server](/docs/security/securing-your-server/#configuring-a-firewall) guide and complete the section on iptables for Debian **using the ruleset below**:
 
     {: .file}
     /tmp/ipv4
@@ -61,19 +58,21 @@ Two basic but significant steps in hardening a server are to set up restrictive 
         -A INPUT ! -i lo -d 127.0.0.0/8 -j REJECT
         -A OUTPUT -o lo -j ACCEPT
 
-        # Allow pings.
-        -A INPUT -p icmp --icmp-type echo-request -j ACCEPT
+        # Allow ping and traceroute.
+        -A INPUT -p icmp --icmp-type 3 -j ACCEPT
+        -A INPUT -p icmp --icmp-type 8 -j ACCEPT
+        -A INPUT -p icmp --icmp-type 11 -j ACCEPT
         -A OUTPUT -p icmp -j ACCEPT
 
         # Allow SSH.
         -A INPUT -i eth0 -p tcp -m state --state NEW,ESTABLISHED --dport 22 -j ACCEPT
         -A OUTPUT -o eth0 -p tcp -m state --state ESTABLISHED --sport 22 -j ACCEPT
 
-        # Allow UDP traffic to port 1194.
+        # Allow UDP traffic on port 1194.
         -A INPUT -i eth0 -p udp -m state --state NEW,ESTABLISHED --dport 1194 -j ACCEPT
         -A OUTPUT -o eth0 -p udp -m state --state ESTABLISHED --sport 1194 -j ACCEPT
 
-        # Allow limited DNS resolution and HTTP/S on eth0.
+        # Allow DNS resolution and limited HTTP/S on eth0.
         # Necessary for updating the server and keeping time.
         -A INPUT -i eth0 -p udp -m state --state ESTABLISHED --sport 53 -j ACCEPT
         -A OUTPUT -o eth0 -p udp -m state --state NEW,ESTABLISHED --dport 53 -j ACCEPT
@@ -89,9 +88,9 @@ Two basic but significant steps in hardening a server are to set up restrictive 
 
         # Log any packets which don't fit the rules above...
         # (optional but useful)
-        -A INPUT -m limit --limit 5/min -j LOG --log-prefix "iptables_INPUT_denied: " --log-level 4
-        -A INPUT -m limit --limit 5/min -j LOG --log-prefix "iptables_FORWARD_denied: " --log-level 4
-        -A INPUT -m limit --limit 5/min -j LOG --log-prefix "iptables_OUTPUT_denied: " --log-level 4
+        -A INPUT -m limit --limit 3/min -j LOG --log-prefix "iptables_INPUT_denied: " --log-level 4
+        -A INPUT -m limit --limit 3/min -j LOG --log-prefix "iptables_FORWARD_denied: " --log-level 4
+        -A INPUT -m limit --limit 3/min -j LOG --log-prefix "iptables_OUTPUT_denied: " --log-level 4
 
         # then reject them.
         -A INPUT -j REJECT
@@ -105,32 +104,30 @@ Two basic but significant steps in hardening a server are to set up restrictive 
     >
     >The `TUN` virtual interface is how the OpenVPN daemon communicates with your Linode's `eth0` hardware interface. `TUN` is actually what receives the VPN traffic from clients, not the bare-metal ethernet hardware.
 
-    {: .note }
-    >
-    >For more specialized firewall rules, see: `/usr/share/doc/openvpn/examples/sample-config-files/firewall.sh`.
-
-    You can see your loaded rule list with `sudo iptables -S`.
+    You can see your loaded rule list with `sudo iptables -S`. For more specialized firewall rules, see: `/usr/share/doc/openvpn/examples/sample-config-files/firewall.sh`.
 
 #### IPv6
 
-**If you do not want IPv6 access** to your OpenVPN server, disable it by adding the following lines to `/etc/sysctl.d/99-sysctl.conf`:
+**If you do not want IPv6 access** to your OpenVPN server, disable it.
 
-    net.ipv6.conf.all.disable_ipv6 = 1
-    net.ipv6.conf.default.disable_ipv6 = 1
-    net.ipv6.conf.lo.disable_ipv6 = 1
-    net.ipv6.conf.eth0.disable_ipv6 = 1
+1.  Add the following lines to `/etc/sysctl.d/99-sysctl.conf`:
 
-To activate the sysctl changes immediately:
+        net.ipv6.conf.all.disable_ipv6 = 1
+        net.ipv6.conf.default.disable_ipv6 = 1
+        net.ipv6.conf.lo.disable_ipv6 = 1
+        net.ipv6.conf.eth0.disable_ipv6 = 1
 
-    sudo sysctl -p
+2.  Ativate the sysctl changes immediately:
 
-Then go into `/etc/hosts` and comment out the line for IPv6 resolution over localhost.
+        sudo sysctl -p
 
-{: .file-excerpt}
-/etc/hosts
-:   ~~~ conf
-    #::1 localhost.localdomain localhost
-    ~~~
+3.  Go into `/etc/hosts` and comment out the line for IPv6 resolution over localhost.
+
+    {: .file-excerpt}
+    /etc/hosts
+    :   ~~~ conf
+        #::1 localhost.localdomain localhost
+        ~~~
 
 **If you do want IPv6 access**, the process is the same as was for IPv4 above, but subtitute the command `ip6tables` for `iptables`.
 
@@ -150,18 +147,18 @@ Then go into `/etc/hosts` and comment out the line for IPv6 resolution over loca
 
         #Set all default policies to drop anything not specified below.
         -P INPUT ACCEPT
-        -P FORWARD DROP
-        -P OUTPUT DROP
+        -P FORWARD ACCEPT
+        -P OUTPUT ACCEPT
 
         #Allow loopback interface to only ::1.
         -A INPUT -s ::1 -j ACCEPT
         -A OUTPUT -s 0:0:0:0:0:0:0:1 -j ACCEPT
 
-        #Allow pings.
-        -A INPUT -p icmpv6 --icmpv6 -j ACCEPT
-        -A OUTPUT -p icmpv6 --icmpv6 -j ACCEPT
+        #Allow ICMP.
+        -A INPUT -p icmpv6 -j ACCEPT
+        -A OUTPUT -p icmpv6 -j ACCEPT
 
-        #Allow UDP traffic to port 1194.
+        #Allow UDP traffic on port 1194.
         -A INPUT -i eth0 -p udp -m state --state NEW --dport 1194 -j ACCEPT
         -A OUTPUT -o eth0 -p udp -m state --state ESTABLISHED --sport 1194 -j ACCEPT
 
@@ -169,12 +166,16 @@ Then go into `/etc/hosts` and comment out the line for IPv6 resolution over loca
         -A INPUT -i tun+ -j ACCEPT
         -A OUTPUT -o tun+ -j ACCEPT
 
-        #Log and reject any packets which
-        #don't fit the rules above.
-        -A INPUT -m limit --limit 5/min -j LOG --log-prefix "ip6tables denied: " --log-level 4
-        -A INPUT -j REJECT
+        # Log any packets which don't fit the rules above...
+        # (optional but useful)
+        -A INPUT -m limit --limit 3/min -j LOG --log-prefix "ip6tables_INPUT_denied: " --log-level 4
+        -A INPUT -m limit --limit 3/min -j LOG --log-prefix "ip6tables_FORWARD_denied: " --log-level 4
+        -A INPUT -m limit --limit 3/min -j LOG --log-prefix "ip6tables_OUTPUT_denied: " --log-level 4
 
-        COMMIT
+        # then reject them.
+        -A INPUT -j REJECT
+        -A FORWARD -j REJECT
+        -A OUTPUT -j REJECT
         ~~~
 
 3.  Import your rule list.
@@ -233,7 +234,7 @@ For these next sections, you need to be the root user.
 
         ln -s openssl-1.0.0.cnf openssl.cnf
 
-5.  The permissions of `/etc/openvpn/easy-rsa/keys` are 0700, which recursively do not allow for group or world access to the key and certificate files. This is in contrast to most directories in the filesystem which are a `0755`, allowing group read and execution, and are world readable.
+5.  The permissions of `/etc/openvpn/easy-rsa/keys` are `0700`, which recursively do not allow for group or world access to the key and certificate files. This is in contrast to most directories in the filesystem which are a `0755`, allowing group read and execution, and are world readable.
 
     For this reason, we'll keep `keys` as the storage location for server credentials but to do so, we must specify the absolute paths for OpenVPN in `server.conf`.
 
@@ -255,18 +256,7 @@ For these next sections, you need to be the root user.
         dh /etc/openvpn/dh2048.pem
         ~~~
 
-6.  The `vars` file in `/etc/openvpn/easy-rsa` contains presets for the [easy-rsa scripts](https://github.com/OpenVPN/easy-rsa). One of the most important parameters in `vars` is `export KEY_NAME`. This is used during the [server certificate verification](https://openvpn.net/index.php/open-source/documentation/howto.html#secnotes) process by each client and is a security precaution against MITM attacks where a malicious client could pose as a server to other VPN clients during a new connection's TLS handshake.
-
-    By default, it's set to *EASY_RSA*; change it to `server`.
-
-    {: .file-exceprt}
-    /etc/openvpn/easy-rsa/vars
-    :   ~~~ conf
-        # X509 Subject Field
-        export KEY_NAME="server"
-        ~~~
-
-7.  In `vars` you can also specify identification information for your OpenVPN server's certificate authority which then will be passed to client certificates. Changing these fields is optional but recommended for anything more than personal use.
+6.  The `vars` file in `/etc/openvpn/easy-rsa` contains presets used by the [easy-rsa scripts](https://github.com/OpenVPN/easy-rsa). Here you can specify identification information for your OpenVPN server's certificate authority which then will be passed to client certificates. Changing these fields is optional, and you can alwasy input them manually during certificate creation, but setting them here creates less work during client cert creation.
 
     {: .file-exceprt}
     /etc/openvpn/easy-rsa/vars
@@ -282,7 +272,7 @@ For these next sections, you need to be the root user.
         export KEY_OU="MyOrganizationalUnit"
         ~~~
 
-8.  Be sure you're in the `easy-rsa`directory and [source](http://stackoverflow.com/a/9326746) the `vars` script.
+7.  Be sure you're in the `easy-rsa`directory and [source](http://stackoverflow.com/a/9326746) the `vars` script.
 
         cd /etc/openvpn/easy-rsa && source ./vars
 
@@ -290,7 +280,7 @@ For these next sections, you need to be the root user.
 
         NOTE: If you run ./clean-all, I will be doing a rm -rf on /etc/openvpn/easy-rsa/keys
 
-9.  Run the `clean-all` script to be sure you're starting with no samples or templates in your `keys` directory.
+8.  Run the `clean-all` script to be sure you're starting with no samples or templates in your `keys` folder.
 
         ./clean-all
 
@@ -337,7 +327,7 @@ We'll make some further changes and additions to `server.conf` to strengthen the
     # a copy of this key.
     # The second parameter should be '0'
     # on the server and '1' on the clients.
-    tls-auth ta.key 0 # This file is secret
+    tls-auth /etc/openvpn/easy-rsa/keys/ta.key 0 # This file is secret
     ~~~
 
 2.  Uncomment the `user` and `group` lines so OpenVPN drops root priviledges after startup.
@@ -370,27 +360,27 @@ We'll make some further changes and additions to `server.conf` to strengthen the
 
         openvpn --genkey --secret /etc/openvpn/easy-rsa/keys/ta.key
 
-6.  Force the control channel to use a minimum of TLS 1.2 specification (see `openssl ciphers -s 'TLSv1.2'`).
+6.  Restrict the VPN's control channel to a strong cipher suite or list of suites. [It is recommended](https://community.openvpn.net/openvpn/wiki/Hardening#Useof--tls-cipher) to be as restrictive as possible here, but not all cipher suites can be used with all versions of OpenVPN.
 
-    {: .caution }
-    >
-    >This option can only be used if both server **and** clients are using OpenVPN 2.3.3 or above. See `openvpn --version`.
+    Below are two cipher suite options. These are secure choices, but exemplary. You may want to be more less strict depending on client-side cipher suite support.
 
-     The setting below limits the cipher suites used to only those which support forward secrecy.
+    **Option 1**
 
-        echo 'tls-version-min 1.2' >> /etc/openvpn/server.conf
+    If your clients are using OpenVPN 2.3.3 or above, you can force the control channel to use several TLS 1.2 cipher suites (or even just one) to ensure connections using forward secrecy, TLS 1.2, AES in [GCM mode](https://en.wikipedia.org/wiki/Galois/Counter_Mode) and SHA 2.
 
-    Alternatively, use a specifc cipher suite or list of cipher suites. This is more specific than limiting by TLS version so *there is no reason to use both methods*. [It is recommended](https://community.openvpn.net/openvpn/wiki/Hardening#Useof--tls-cipher) to limit this as much as possible.
+        echo 'tls-cipher TLS-DHE-RSA-WITH-AES-256-GCM-SHA384:TLS-DHE-RSA-WITH-AES-128-GCM-SHA256' >> /etc/openvpn/server.conf
 
-    Chosen below is TLS 1.2 using RSA keys exchanged with a Diffie-Hellman agreement, AES 256 as a block cipher in GCM mode, and SHA512 for the message digest.
+    **Option 2**
 
-        echo 'tls-cipher TLS-DHE-RSA-WITH-AES-256-GCM-SHA512' >> /etc/openvpn/server.conf
+    OpenVPN 2.3.2 or below does not support a Control Channel using TLS 1.2 cipher suites, so TLS 1.0 suites must be used. Since there are many insecure and otherwise undesirable suites available in TLS 1.0, we'll limt our pool to AES and Camellia in CBC mode using SHA 1. These suites still enforce forward secrecy.
 
-    The default selection is a cipher suite agreed on by both server and client during the TLS handshake. The agreement is based on what is supported by their respective OpenSSL versions. See `openvpn --show-tls` for a list of supported ciphers in their order of preference.
+        echo 'tls-cipher TLS-DHE-RSA-WITH-AES-256-CBC-SHA:TLS-DHE-RSA-WITH-CAMELLIA-256-CBC-SHA:TLS-DHE-RSA-WITH-AES-128-CBC-SHA:TLS-DHE-RSA-WITH-CAMELLIA-128-CBC-SHA' >> /etc/openvpn/server.conf
+
+    The default cipher suite used for the control channel is one agreed on by both server and client during the TLS handshake. The agreement is based on what is supported by their respective OpenSSL versions. See `openvpn --show-tls` for a list of supported ciphers in their order of preference.
 
 ## Certificate and Key Pairs
 
-From here, we'll be working out of the `easy-rsa` directory so change location.
+We'll again be working out of the `easy-rsa` directory so be sure you're in that location.
 
     cd /etc/openvpn/easy-rsa
 
@@ -400,7 +390,7 @@ From here, we'll be working out of the `easy-rsa` directory so change location.
 
         ./build-ca
 
- s2.  Then create the server's private key and again fill in the information prompts.
+2.  Then create the server's private key and again fill in the information prompts.
 
         ./build-key-server server
 
@@ -408,9 +398,9 @@ From here, we'll be working out of the `easy-rsa` directory so change location.
 
 ### Client Credentials
 
-Each client device connecting to the VPN should have its own unique key. Further, each key should have its own identifier (client1, client2, etc.) but all other information can remain the same. If you need to add users at any later time, repeat this step.
+Each client device connecting to the VPN should have its own unique key. Further, each key should have its own identifier (client1, client2, etc.) but all other certificate information can remain the same. If you need to add users at any later time, just source vars again and repeat this step.
 
-    ./build-key client1
+    source ./vars && ./build-key client1
 
 {: .note}
 >
@@ -418,11 +408,15 @@ Each client device connecting to the VPN should have its own unique key. Further
 
 ## Client Configuration File
 
-Each client also needs a configuration file defining the server-side settings for the client. One `client.conf` can be used for all client devices or you can configure some clients differently than others. Here we'll assume one client config file for all devices.
+Each client also needs a configuration file defining the OpenVPN server's settings for the client. One `client.conf` can be used for all clients or you can configure some differently than others. Here we'll assume one client config file for all devices.
 
-1.  Copy the `client.conf` template file to /tmp and open it for editing.
+1.  Copy the `client.conf` template file to `/tmp` and open it for editing.
 
         cp /usr/share/doc/openvpn/examples/sample-config-files/client.conf /tmp
+
+    {: .note }
+    >
+    >We will keep a copy of our `client.conf` on the server as a backup and in case more clients are added to the VPN in the future. It can **not** be located in `/etc/openvpn` because then the OpenVPN daemon won't know whether to load `client.conf` or `server.conf`. For this reason, we'll store it in the `keys` folder even though `client.conf` does not need to be kept secret.
 
 2.  Update the `remote` line with the OpenVPN server's IP address:
 
@@ -438,7 +432,7 @@ Each client also needs a configuration file defining the server-side settings fo
 
     {: .note }
     >
-    >A hostname would work just as well but since this a security-minded OpenVPN guide and Linodes all have static public IP addresses, it's preferable here to connect by IP and bypass the DNS lookup.
+    >A hostname would work too but since all Linodes have static public IP addresses, it's preferable for security reasons to connect by IP and bypass the DNS lookup.
 
 3.  Tell the client-side OpenVPN service to drop root priviledges.
 
@@ -476,39 +470,28 @@ Each client also needs a configuration file defining the server-side settings fo
         tls-auth /etc/openvpn/keys/ta.key 1
         ~~~
 
-6.  Enable checking for nsCertType within the client-supplied certificate. This is the server and deny a connection if it's not the `server` attribute we specified in `vars` earlier.
+6.  Since we're forcing certain cryptographic settings on the OpenVPN server, the clients should have the same settings. Add these lines to the end of `client.conf`:
 
-    {: .file-excerpt}
-    /etc/openvpn/client.conf
-    :   ~~~ conf
-    # Verify server certificate by checking
-    # that the certicate has the nsCertType
-    # field set to "server".  This is an
-    # important precaution to protect against
-    # a potential attack discussed here:
-    #  http://openvpn.net/howto.html#mitm
-    #
-    # To use this feature, you will need to generate
-    # your server certificates with the nsCertType
-    # field set to "server".  The build-key-server
-    # script in the easy-rsa folder will do this.
-    ns-cert-type server
-        ~~~
-
-7.  Since we're forcing certain cryptographic settings on the OpenVPN server, make sure the clients have the same settings. Add these lines to the end of `client.conf`:
-
-        tls-version-min 1.2
-        tls-cipher TLS-DHE-RSA-WITH-AES-256-GCM-SHA512
         cipher AES-256-CBC
         auth SHA512
+        
+    {: .note }
+    >
+    >If you added any lines for Control Channel cipher suites to the server above ([step 6](/docs/networking/vpn/how-to-install-and-configure-an-openvpn-server-on-debian-8#harden-openvpn) of Harden OpenVPN, add those lines to client.conf too.
 
-8.  Pack all the necessary client files into a tarball ready for transferring.
+7.  Pack all the necessary client files into a tarball ready for transferring. The specific pecifically we want:
 
-        cd /etc/openvpn
+    *  `/etc/openvpn/easy-rsa/keys/ca.crt`
+    *  `/etc/openvpn/easy-rsa/keys/client1.crt`
+    *  `/etc/openvpn/easy-rsa/keys/client1.key`
+    *  `/etc/openvpn/easy-rsa/keys/client.conf`
+    *  `/etc/openvpn/easy-rsa/keys/ta.key`
 
-        tar -cvzf client1.tar.gz client.conf /etc/openvpn/easy-rsa/keys/{ca.crt,client1.crt,client1.key,ta.key}
+    ~~~
+    tar -cvzf /etc/openvpn/client1.tar.gz /etc/openvpn/easy-rsa/keys/{ca.crt,client1.crt,client1.key,client.conf,ta.key}
+    ~~~
 
-9.  We no longer need to be `root` so change back to your standard user:
+8.  We no longer need to be `root` so change back to your standard user:
 
         exit
 
@@ -518,9 +501,11 @@ Start the OpenVPN daemon and enable it on reboot.
 
     sudo systemctl enable openvpn.service && sudo systemctl start openvpn.service
 
-This will scan the `/etc/openvpn` directory on the server for files with a `.conf` extension. For every file that it finds, it will create and run a VPN daemon (server).
+{: .note }
+>
+>This will scan the `/etc/openvpn` directory on the server for files with a `.conf` extension. For every file that it finds, it will create and run a VPN daemon (server) so make sure you don't have a `client.conf` file in there.
 
-Running:
+The command:
 
     sudo systemctl status openvpn.service
 
@@ -532,13 +517,10 @@ should then return:
       Process: 3309 ExecReload=/bin/true (code=exited, status=0/SUCCESS)
      Main PID: 2850 (code=exited, status=0/SUCCESS)
 
+Use `journalctl | grep vpn` or `tail -f /var/log/syslog` to monitor OpenVPN's logs in realtime
+
 ## Next Steps
 
 At this point, you should have a operational OpenVPN server and a set of certificat/key pairs for your intended client devices. If you want your clients to have internet access from behind the VPN, see part two of this series: [How to Set up a VPN Tunnel with Debian 8](/docs/networking/vpn/how-to-set-up-a-vpn-tunnel-with-debian-8).
 
 If you only intend to use your OpenVPN server as an extension of your local network, move on to part three: [How to Configure OpenVPN Client Devices](/docs/networking/vpn/how-to-configure-openvpn-client-devices).
-
-## Troubleshooting
-
-
-    journalctl | grep vpn
