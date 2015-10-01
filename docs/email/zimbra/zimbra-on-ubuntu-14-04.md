@@ -49,11 +49,11 @@ external_resources:
 
 2.  Download the SHA256 checksum in the same way you just downloaded the Zimbra tarball.
 
-3.  Hash the tarball.
+3.  Test the checksum.
 
-        sha256sum zcs-8.6.0_GA_1153.UBUNTU14_64.20141215151116.tgz
+        sha256sum -c zcs-8.6.0_GA_1153.UBUNTU14_64.20141215151116.tgz.sha256
 
-    Compare the terminal readout to the checksum in the `tgz.sha256` file. They should match. If not, download them again and re-check.
+    If the checksum matches, this command will output 'OK'. If not, you probably have a corrupt download. Download them again and re-check.
 
 4.  Extract the Zimbra application files to your Linode root user directory.
  
@@ -134,7 +134,7 @@ external_resources:
 
     If you receive an error about a missing MX record as shown below, it means your domain DNS records are not matching what Zimbra expects to find, based on the hostname you configured earlier. Check your `/etc/hostname` file and your [DNS records](/docs/networking/dns/introduction-to-dns-records#mx) to resolve the problem.
 
-        DNS ERROR resolving MX for linodemail.computassist.net
+        DNS ERROR resolving MX for linodemail.example.com
         It is suggested that the domain name have an MX record configured in DNS
         Change domain name? [Yes]
 
@@ -177,16 +177,16 @@ external_resources:
         Saving config in /opt/zimbra/config.13935...done.
         The system will be modified - continue? [No] y
  
-    The installer will begin the final steps to complete the Zimbra install and inform you of its progress at each step. You will asked if you wish to share notification of your new installation with the folks at the Zimbra home office.
+    The installer will begin the final steps to complete the Zimbra install and inform you of its progress at each step. You will be asked if you wish to share notification of your new installation with the folks at the Zimbra home office.
  
         You have the option of notifying Zimbra of your installation.
         This helps us to track the uptake of the Zimbra Collaboration Server.
         The only information that will be transmitted is:
             The VERSION of zcs installed (8.6.0_GA_1153_UBUNTU14_64)
-            The ADMIN EMAIL ADDRESS created (admin@linodemail.computassist.net)
+            The ADMIN EMAIL ADDRESS created (admin@linodemail.example.com)
     
         Notify Zimbra of your installation? [Yes] 
-        Notifying Zimbra of installation via http://www.zimbra.com/cgi-bin/notify.cgi?VER=8.6.0_GA_1153_UBUNTU14_64&MAIL=admin@linodemail.computassist.net
+        Notifying Zimbra of installation via http://www.zimbra.com/cgi-bin/notify.cgi?VER=8.6.0_GA_1153_UBUNTU14_64&MAIL=admin@linodemail.example.com
     
     When the installation is finished, you'll see the output: 
  
