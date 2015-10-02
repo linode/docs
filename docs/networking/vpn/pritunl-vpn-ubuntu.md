@@ -36,9 +36,22 @@ Pritunl is an open source VPN server and management panel. It gives the user the
 
 3.  Add Pritunl’s APT repository and update the package lists:
 
-        sudo add-apt-repository -y ppa:pritunl && sudo apt-get update
+		echo "deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.0 multiverse" > /etc/apt/sources.list.d/mongodb-org-3.0.list
+		echo "deb http://repo.pritunl.com/stable/apt trusty main" > /etc/apt/sources.list.d/pritunl.list
+		
+4. Add repo keys for apt to validate against
 
-4.	If you have a firewall running on the Linode, add exceptions for Pritunl’s Web UI and server:
+		apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv 7F0CEB10
+		apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv CF8E292A
+		
+5. Update the repo cache and optionally run upgrade
+
+		apt-get --assume-yes update
+		apt-get --assume-yes upgrade
+
+
+6.	If you have a firewall running on the Linode, add exceptions for Pritunl’s Web UI and server:
+
 
         sudo iptables -A INPUT -p udp- m udp --sport 9700 --dport 1025:65355 -j ACCEPT
         sudo iptables -A INPUT -p tcp m tcp --sport 9700 --dport 1025:65355 -j ACCEPT
@@ -52,7 +65,7 @@ Pritunl is an open source VPN server and management panel. It gives the user the
 
 1.  Install `python-software-properties` and Pritunl:
 
-        sudo apt-get install python-software-properties pritunl
+        sudo apt-get install python-software-properties pritunl mongodb-org
 
 2.  Open a web browser on your computer, and navigate to `https://123.45.67.89:9700`, replacing `123.45.67.89` with your Linode's IP address. You will see a screen similar to this:
 
