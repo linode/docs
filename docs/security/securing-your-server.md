@@ -168,19 +168,21 @@ By default, iptables has no rules set for both IPv4 and IPv6. As a result, on a 
 
 ### Basic iptables Rulesets for IPv4 and IPv6
 
-Appropriate firewall rules heavily depend on the services being run. Below is an iptables ruleset to secure your Linode if you're running a web server. *This is given as an example!* A real production web server may want or require more or less configuration and these rules would not be appropriate for a file or database server, Minecraft or VPN server, etc.
+Appropriate firewall rules heavily depend on the services being run. Below are iptables rulesets to secure your Linode if you're running a web server. *These are given as an example!* A real production web server may want or require more or less configuration and these rules would not be appropriate for a file or database server, Minecraft or VPN server, etc.
 
-iptables rules can always be modified or reset later, but this basic ruleset serves only as a beginning demonstration. Outbound traffic is unregulated. All traffic forwarding is rejected and inbound traffic is limited to SSH, HTTP, HTTPS and ICMP type 8 (pings). Rejected packets are logged.
+iptables rules can always be modified or reset later, but these basic rulesets serve only as a beginning demonstration.
+
+**IPv4**
 
 {:. file}
-/tmp/ipv4
+/tmp/v4
 :   ~~~ conf
     *filter
 
-    # Allow all loopback (lo0) traffic
-    # and reject traffic to 127/8 that doesn't use lo0.
+    # Allow all loopback (lo0) traffic and reject traffic
+    # to localhost that does not originate from lo0.
     -A INPUT -i lo -j ACCEPT
-    -A INPUT -d 127.0.0.0/8 -j REJECT
+    -A INPUT ! -i lo -s 127.0.0.0/8 -j REJECT
 
     # Allow ping and traceroute.
     -A INPUT -p icmp --icmp-type 3 -j ACCEPT
@@ -188,7 +190,6 @@ iptables rules can always be modified or reset later, but this basic ruleset ser
     -A INPUT -p icmp --icmp-type 11 -j ACCEPT
 
     # Allow SSH connections.
-    # The -dport number should be the same port number you set in sshd_config.
     -A INPUT -p tcp -m state --state NEW --dport 22 -j ACCEPT
 
     # Allow HTTP and HTTPS connections from anywhere
@@ -215,27 +216,72 @@ iptables rules can always be modified or reset later, but this basic ruleset ser
     COMMIT
     ~~~
 
-**Optional:**  If you plan on using the Linode Longview service, add this additional rule above the `# Log what was incoming but denied` section:
+**Optional:** If you plan to use [Linode Longview](https://www.linode.com/docs/platform/longview/longview), add this additional rule below the section for allowing HTTP and HTTPS connections:
 
     # Allow incoming Longview connections 
-    -A INPUT -s longview.linode.com -j ACCEPT
+    -A INPUT -s longview.linode.com -m state --state NEW -j ACCEPT
 
-The rules above in `/tmp/ipv4` can be used for IPv6, too; although IPv6 generally needs more ICMP capabilities than just echo requests. However, since IPv6 is not usually used on a webserver, we'll reject all of it. If you intend to use your Linode's IPv6 address, you would not want to do this.
+**IPv6**
 
-Create a separate file for your IPv6 rules:
+If you would like to supplement your web server's IPv4 rules with IPv6 too, this ruleset will allow HTTP(S) access and all ICMP functions.
 
 {:. file}
-/tmp/ipv6
+/tmp/v6
 :   ~~~ conf
     *filter
 
-    # Reject all ipv6 traffic on all chains.
+    # Allow all loopback (lo0) traffic and reject traffic
+    # to localhost that does not originate from lo0.
+    -A INPUT -i lo -j ACCEPT
+    -A INPUT ! -i lo -s ::1/128 -j REJECT
+
+    # Allow ICMP
+    -A INPUT  -p icmpv6 -j ACCEPT
+
+    # Allow HTTP and HTTPS connections from anywhere
+    # (the normal ports for web servers).
+    -A INPUT -p tcp --dport 80 -j ACCEPT
+    -A INPUT -p tcp --dport 443 -j ACCEPT
+
+    # Accept inbound traffic from established connections.
+    -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+
+    # Log what was incoming but denied (optional but useful).
+    -A INPUT -m limit --limit 5/min -j LOG --log-prefix "ip6tables_INPUT_denied: " --log-level 7
+
+    # Reject all other inbound.
+    -A INPUT -j REJECT
+
+    # Log any traffic which was sent to you
+    # for forwarding (optional but useful).
+    -A FORWARD -m limit --limit 5/min -j LOG --log-prefix "ip6tables_FORWARD_denied: " --log-level 7
+
+    # Reject all traffic forwarding.
+    -A FORWARD -j REJECT
+
+    COMMIT
+    ~~~
+
+Alternatively, the ruleset below should be used if you want to reject all IPv6 traffic:
+
+{:. file}
+/tmp/v6
+:   ~~~ conf
+    *filter
+
+    # Reject all IPv6 on all chains
     -A INPUT -j REJECT
     -A FORWARD -j REJECT
     -A OUTPUT -j REJECT
 
     COMMIT
     ~~~
+
+{: .note}
+>
+>[APT](http://linux.die.net/man/8/apt) attempts to resolve mirror domains to IPv6 as a result of `apt-get update`. If you choose to deny IPv6 entirely, this greatly slows down the update process for Debian and Ubuntu because APT waits for each resolution to time out before moving on.
+>
+>To remedy this, uncomment the line `precedence ::ffff:0:0/96  100` in `/etc/gai.conf`. This is not necessary for Pacman, DNF or Yum.
 
 How these IPv4 and IPv6 rules are deployed differs among the various Linux distros.
 
@@ -261,17 +307,17 @@ For more info on using iptables in Arch, see its Wiki entries for [iptables](htt
 
 **CentOS 6 or Fedora 19 and below**
 
-1.  Create the files `/tmp/ipv4` and `/tmp/ipv6`. Paste the [above rulesets](#basic-iptables-rulesets-for-ipv4-and-ipv6) into their respective files.
+1.  Create the files `/tmp/v4` and `/tmp/v6`. Paste the [above rulesets](#basic-iptables-rulesets-for-ipv4-and-ipv6) into their respective files.
 
 2.  Import the rules from the temporary files.
 
-        sudo /sbin/iptables-restore < /tmp/ipv4
-        sudo /sbin/ip6tables-restore < /tmp/ipv6
+        sudo iptables-restore < /tmp/v4
+        sudo ip6tables-restore < /tmp/v6
 
 3.  Save the rules.
 
-        sudo /sbin/service iptables save
-        sudo /sbin/service ip6tables save
+        sudo service iptables save
+        sudo service ip6tables save
 
     {: .note }
     >
@@ -279,7 +325,7 @@ For more info on using iptables in Arch, see its Wiki entries for [iptables](htt
 
 4.  Remove the temporary rule files.
 
-        sudo rm /tmp/{ipv4,ipv6}
+        sudo rm /tmp/{v4,v6}
 
 **CentOS 7 or Fedora 20 and above**
 
@@ -292,24 +338,24 @@ In these distros, Firewalld is used to implement firewall rules instead of contr
 2.  Install iptables-services and enable iptables.
 
         sudo yum install iptables-services
-        sudo systemctl enable iptables && systemctl enable ip6tables
-        sudo systemctl start iptables && systemctl start ip6tables
+        sudo systemctl enable iptables && sudo systemctl enable ip6tables
+        sudo systemctl start iptables && sudo systemctl start ip6tables
 
-3.  Create the files `/tmp/ipv4` and `/tmp/ipv6`. Paste the [above rulesets](#basic-iptables-rulesets-for-ipv4-and-ipv6) into their respective files.
+3.  Create the files `/tmp/v4` and `/tmp/v6`. Paste the [above rulesets](#basic-iptables-rulesets-for-ipv4-and-ipv6) into their respective files.
 
 4.  Import the rulesets into immediate use.
 
-        sudo iptables-restore < /tmp/ipv4
-        sudo ip6tables-restore < /tmp/ipv6
+        sudo iptables-restore < /tmp/v4
+        sudo ip6tables-restore < /tmp/v6
 
 5.  Save each ruleset.
 
-        sudo /sbin/service iptables save
-        sudo /sbin/service ip6tables save
+        sudo service iptables save
+        sudo service ip6tables save
 
 6.  Remove the temporary rule files.
 
-        sudo rm /tmp/{ipv4,ipv6}
+        sudo rm /tmp/{v4,v6}
 
 For more info on using iptables and FirewallD in CentOS and Fedora, see these pages:
 
@@ -325,12 +371,12 @@ Red Hat Security Guide: [Using Firewalls](https://access.redhat.com/documentatio
 
 ufw is the iptables controller included with Ubuntu but is also available in Debian's repositories. If you would prefer to use ufw instead of ipables, see [our ufw guide](/docs/security/firewalls/configure-firewall-with-ufw) to get a ruleset up and running.
 
-1.  Create the files `/tmp/ipv4` and `/tmp/ipv6`. Paste the [above rulesets](#basic-iptables-rulesets-for-ipv4-and-ipv6) into their respective files.
+1.  Create the files `/tmp/v4` and `/tmp/v6`. Paste the [above rulesets](#basic-iptables-rulesets-for-ipv4-and-ipv6) into their respective files.
 
 2.  Import the rulesets into immediate use.
 
-        sudo iptables-restore < /tmp/ipv4
-        sudo ip6tables-restore < /tmp/ipv6
+        sudo iptables-restore < /tmp/v4
+        sudo ip6tables-restore < /tmp/v6
 
 3.  [iptables-persistent](https://github.com/zertrin/iptables-persistent) automates loading iptables rules on boot for Debian and Ubuntu. Install it from the distro repositories.
 
@@ -340,7 +386,7 @@ ufw is the iptables controller included with Ubuntu but is also available in Deb
 
 5.  Remove the temporary rule files.
 
-        sudo rm /tmp/{ipv4,ipv6}
+        sudo rm /tmp/{v4,v6}
 
 ### Verify iptables Rulesets
 
@@ -388,6 +434,38 @@ Output for IPv6 rules will look like this:
     REJECT     all      anywhere             anywhere             reject-with icmp6-port-unreachable
 
 Your firewall rules are now in place and protecting your Linode. Remember, you may need to edit these rules later if you install other packages which require network access.
+
+### Inserting, Replacing or Deleting iptables Rules
+
+iptables rules are enforced in a top-down fashion, so the first rule in the ruleset is applied to traffic in the chain first, then the second, third and so on. This means that rules can not necessarily be added to a ruleset with `iptables -A` or `ip6tables -A`. Instead, we must *insert* a rule with `iptables -I` or `ip6tables -I`.
+
+**Insert**
+
+Inserted rules need to be placed in the correct order with respect other rules in the chain. To get a numerical list of your iptables rules:
+
+    sudo iptables -L --line-numbers
+
+For example, let's say we want to insert a rule into [the ruleset above](#basic-iptables-rulesets-for-ipv4-and-ipv6) which accepts incoming [Linode Longview](https://www.linode.com/docs/platform/longview/longview) connections. We'll add it as rule 9 to the INPUT chain, following the web traffic rules.
+
+    sudo iptables -I INPUT 9 -p tcp --dport 8080 -j ACCEPT
+
+If you now run `sudo iptables -L` again, you'll see the new rule in the output.
+
+**Replace**
+
+Replacing a rule is similar to inserting but instead uses `iptables -R`. For example, let's say you want to reduce the logging of denided entires to only 3 per minute, down from 5 in the original ruleset. The LOG rule is the 11th in the INPUT chain:
+
+    sudo iptables -R INPUT 11 -m limit --limit 3/min -j LOG --log-prefix "iptables_INPUT_denied: " --log-level 7
+
+**Delete**
+
+Deleting a rule is also done with the rule number. For example, to delete the rule we just inserted for Linode Longview:
+
+    sudo iptables -D INPUT 9
+
+{: .caution }
+>
+>Editing rules does not automatically save them! To this, see the area above for your distro and save your iptables edits so they're loaded on reboots.
 
 ## Installing and Configuring Fail2Ban
 
