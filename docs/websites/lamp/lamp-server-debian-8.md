@@ -160,7 +160,7 @@ MySQL is a *relational database management system* (RDBMS) and is a popular comp
 
 2.  Run `mysql_secure_installation` to remove the test database and any extraneous user permissions added during the initial installation process:
 
-        mysql_secure_installation
+        sudo mysql_secure_installation
 
     It is recommended that you select yes (`y`) for all questions. If you already have a secure root password, you do not need to change it.
 
