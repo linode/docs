@@ -6,7 +6,7 @@ description: 'Install and optimize the WordPress blogging and content management
 keywords: 'install WordPress,WordPress on Linode,WordPress how-to, how to install wordpress, how to configure wordpress'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-applications/cms-guides/wordpress/','websites/cms/manage-web-content-with-wordpress/']
-modified: Tuesday, August 4th, 2015
+modified: Monday, October 5th, 2015
 modified_by:
   name: Elle Krout
 published: 'Tuesday, July 27th, 2010'
@@ -78,8 +78,8 @@ WordPress is a popular, dynamic, blog-focused content management system. The sof
 
 5.  Copy the WordPress files to your `public_html` folder, then remove the folder in the `src` directory:
 
-        cp -R wordpress/* ../public_html/
-        rm -rf wordpress/
+        sudo cp -R wordpress/* ../public_html/
+        sudo rm -rf wordpress/
 
 
 ## Configure WordPress
@@ -92,17 +92,18 @@ WordPress is a popular, dynamic, blog-focused content management system. The sof
 
     {: .file-excerpt}
     /var/www/example.com/public_html/wp-config.php
-    :   ~~~
+    :   ~~~ php
+        /** Bypass FTP */
         define('FS_METHOD', 'direct');
         ~~~
 
-    Next, give WordPress permission to add and edit files in the `wp_content` folder:
+    Next, give WordPress permission to add and edit files in the `public_html` folder:
 
-        chown -R www-data:www-data /var/www/example.com/public_html/wp-content
+        sudo chown -R www-data:www-data /var/www/example.com/public_html
 
 3.  If using Apache, issue the following commands to ensure that `mod_rewrite` is enabled:
 
-        a2enmod rewrite
+        sudo a2enmod rewrite
     
     Restart Apache.
 
