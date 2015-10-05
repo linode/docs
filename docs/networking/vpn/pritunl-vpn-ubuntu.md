@@ -32,28 +32,28 @@ Pritunl is an open source VPN server and management panel. It gives the user the
 
 2.  Ensure the Linode is up-to-date:
 
-		sudo apt-get update && sudo apt-get upgrade
+	sudo apt-get update && sudo apt-get upgrade
 
 3.  Add Pritunl’s APT repository and update the package lists:
 
-		echo "deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.0 multiverse" > /etc/apt/sources.list.d/mongodb-org-3.0.list
-		echo "deb http://repo.pritunl.com/stable/apt trusty main" > /etc/apt/sources.list.d/pritunl.list
+	echo "deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.0 multiverse" > /etc/apt/sources.list.d/mongodb-org-3.0.list
+	echo "deb http://repo.pritunl.com/stable/apt trusty main" > /etc/apt/sources.list.d/pritunl.list
 		
 4.  Add repo keys for apt to validate against
 
-		apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv 7F0CEB10
-		apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv CF8E292A
+	apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv 7F0CEB10
+	apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv CF8E292A
 		
 5.  Update the package cache
 
-		sudo apt-get update
+	sudo apt-get update
 
 6.  If you have a firewall running on the Linode, add exceptions for Pritunl’s Web UI and server:
 
 
-        sudo iptables -A INPUT -p udp- m udp --sport 9700 --dport 1025:65355 -j ACCEPT
-        sudo iptables -A INPUT -p tcp m tcp --sport 9700 --dport 1025:65355 -j ACCEPT
-        sudo iptables -A INPUT -p `your protocol here` -m `your protocol here` --sport `your_port_here` --dport 1025:65355 -j ACCEPT
+    sudo iptables -A INPUT -p udp- m udp --sport 9700 --dport 1025:65355 -j ACCEPT
+    sudo iptables -A INPUT -p tcp m tcp --sport 9700 --dport 1025:65355 -j ACCEPT
+    sudo iptables -A INPUT -p `your protocol here` -m `your protocol here` --sport `your_port_here` --dport 1025:65355 -j ACCEPT
 
 	{: .note }
 	>
@@ -63,11 +63,11 @@ Pritunl is an open source VPN server and management panel. It gives the user the
 
 1.  Install Pritunl and its required dependencies:
 
-        sudo apt-get install python-software-properties pritunl mongodb-org
+    sudo apt-get install python-software-properties pritunl mongodb-org
 
 2.  Start the Pritunl service:
 
-		sudo service pritunl start
+	sudo service pritunl start
 
 2.  Open a web browser on your computer, and navigate to `https://123.45.67.89:9700`, replacing `123.45.67.89` with your Linode's IP address. You will see a screen similar to this:
 
