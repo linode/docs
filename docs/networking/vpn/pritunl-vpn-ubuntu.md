@@ -32,79 +32,78 @@ Pritunl is an open source VPN server and management panel. It gives the user the
 
 2.  Ensure the Linode is up-to-date:
 
-	sudo apt-get update && sudo apt-get upgrade
+        sudo apt-get update && sudo apt-get upgrade
 
 3.  Add Pritunl’s APT repository and update the package lists:
 
-	echo "deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.0 multiverse" > /etc/apt/sources.list.d/mongodb-org-3.0.list
-	echo "deb http://repo.pritunl.com/stable/apt trusty main" > /etc/apt/sources.list.d/pritunl.list
-		
+        echo "deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.0 multiverse" > /etc/apt/sources.list.d/mongodb-org-3.0.list
+        echo "deb http://repo.pritunl.com/stable/apt trusty main" > /etc/apt/sources.list.d/pritunl.list
+
 4.  Add repo keys for apt to validate against
 
-	apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv 7F0CEB10
-	apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv CF8E292A
-		
+        apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv 7F0CEB10
+        apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv CF8E292A
+
 5.  Update the package cache
 
-	sudo apt-get update
+        sudo apt-get update
 
 6.  If you have a firewall running on the Linode, add exceptions for Pritunl’s Web UI and server:
 
+        sudo iptables -A INPUT -p udp- m udp --sport 9700 --dport 1025:65355 -j ACCEPT
+        sudo iptables -A INPUT -p tcp m tcp --sport 9700 --dport 1025:65355 -j ACCEPT
+        sudo iptables -A INPUT -p `your protocol here` -m `your protocol here` --sport `your_port_here` --dport 1025:65355 -j ACCEPT
 
-    sudo iptables -A INPUT -p udp- m udp --sport 9700 --dport 1025:65355 -j ACCEPT
-    sudo iptables -A INPUT -p tcp m tcp --sport 9700 --dport 1025:65355 -j ACCEPT
-    sudo iptables -A INPUT -p `your protocol here` -m `your protocol here` --sport `your_port_here` --dport 1025:65355 -j ACCEPT
-
-	{: .note }
-	>
-	> If you've configured the firewall according to the [Securing Your Server](/docs/security/securing-your-server) guide, be sure to add these port ranges to the `/etc/iptables.firewall.rules` file.
+    {: .note }
+    >
+    > If you've configured the firewall according to the [Securing Your Server](/docs/security/securing-your-server) guide, be sure to add these port ranges to the `/etc/iptables.firewall.rules` file.
 
 ## Install Pritunl
 
 1.  Install Pritunl and its required dependencies:
 
-    sudo apt-get install python-software-properties pritunl mongodb-org
+        sudo apt-get install python-software-properties pritunl mongodb-org
 
 2.  Start the Pritunl service:
 
-	sudo service pritunl start
+        sudo service pritunl start
 
 2.  Open a web browser on your computer, and navigate to `https://123.45.67.89:9700`, replacing `123.45.67.89` with your Linode's IP address. You will see a screen similar to this:
 
-	[![Pritunl DB setup screen](/docs/assets/pritunl-db-setup-resized.png)](/docs/assets/pritunl-db-setup.png)
+    [![Pritunl DB setup screen](/docs/assets/pritunl-db-setup-resized.png)](/docs/assets/pritunl-db-setup.png)
 
 3.  Connect to the database. The installer has already populated the mongoDB URI. If it looks correct, click **Save**.
 
-	Alternatively, you may enter any valid MongoDB URI to use as the database for Pritunl.
+    Alternatively, you may enter any valid MongoDB URI to use as the database for Pritunl.
 
 ## Configuring Pritunl
 
 1.  Login with the following information:
 
-	- **Username:** *pritunl*
-	- **Password:** *pritunl*
+    - **Username:** *pritunl*
+    - **Password:** *pritunl*
 
 2.  The Inital Setup form will appear:
 
-	![Pritunl setup screen](/docs/assets/pritunl-setup.png)
+    ![Pritunl setup screen](/docs/assets/pritunl-setup.png)
 
-	Fill out the form, and press **Save**.
+    Fill out the form, and press **Save**.
 
-	{: .note }
-	>
-	> The SMTP settings are not required and will not do anything without a license.
-	>
-	> If you have a license, Click on the **Upgrade to Premium** button on the upper right, and use the form to enter your license.
+    {: .note }
+    >
+    > The SMTP settings are not required and will not do anything without a license.
+    >
+    > If you have a license, Click on the **Upgrade to Premium** button on the upper right, and use the form to enter your license.
 
 3.  Go to the **Users** tab. Here, you will create your organizations and users. Begin by clicking **Add Organization** and entering a name. Next, click **Add User** and add a user to the organization you just created.
 
-4. 	Go to the **Servers** tab. Click **Add server**. You will see a screen like the following:
+4.  Go to the **Servers** tab. Click **Add server**. You will see a screen like the following:
 
-	![Pritunl server setup screen](/docs/assets/pritunl-server-conf.png)
+    ![Pritunl server setup screen](/docs/assets/pritunl-server-conf.png)
 
-	If a firewall is set up, make sure that the **Port** and **Protocol** fields match the firewall exceptions added earlier.
+    If a firewall is set up, make sure that the **Port** and **Protocol** fields match the firewall exceptions added earlier.
 
-5. 	Click the **Attach Organization** button. Attach the organization to the server.
+5.  Click the **Attach Organization** button. Attach the organization to the server.
 
 
 ## Connecting to the Server
