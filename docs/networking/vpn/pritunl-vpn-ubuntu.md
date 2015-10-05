@@ -28,9 +28,9 @@ Pritunl is an open source VPN server and management panel. It gives the user the
 
 ## Before You Begin
 
-1.	Have a Linode running Ubuntu 14.04. Follow the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides for help configuring the Linode.
+1.  Have a Linode running Ubuntu 14.04. Follow the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides for help configuring the Linode.
 
-2.	Ensure the Linode is up-to-date:
+2.  Ensure the Linode is up-to-date:
 
 		sudo apt-get update && sudo apt-get upgrade
 
@@ -39,16 +39,16 @@ Pritunl is an open source VPN server and management panel. It gives the user the
 		echo "deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.0 multiverse" > /etc/apt/sources.list.d/mongodb-org-3.0.list
 		echo "deb http://repo.pritunl.com/stable/apt trusty main" > /etc/apt/sources.list.d/pritunl.list
 		
-4. Add repo keys for apt to validate against
+4.  Add repo keys for apt to validate against
 
 		apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv 7F0CEB10
 		apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv CF8E292A
 		
-5. Update the package cache
+5.  Update the package cache
 
 		sudo apt-get update
 
-6.	If you have a firewall running on the Linode, add exceptions for Pritunl’s Web UI and server:
+6.  If you have a firewall running on the Linode, add exceptions for Pritunl’s Web UI and server:
 
 
         sudo iptables -A INPUT -p udp- m udp --sport 9700 --dport 1025:65355 -j ACCEPT
@@ -96,15 +96,15 @@ Pritunl is an open source VPN server and management panel. It gives the user the
 	>
 	> If you have a license, Click on the **Upgrade to Premium** button on the upper right, and use the form to enter your license.
 
-4.	Go to the **Users** tab. Here, you will create your organizations and users. Begin by clicking **Add Organization** and entering a name. Next, click **Add User** and add a user to the organization you just created.
+3.  Go to the **Users** tab. Here, you will create your organizations and users. Begin by clicking **Add Organization** and entering a name. Next, click **Add User** and add a user to the organization you just created.
 
-5. 	Go to the **Servers** tab. Click **Add server**. You will see a screen like the following:
+4. 	Go to the **Servers** tab. Click **Add server**. You will see a screen like the following:
 
 	![Pritunl server setup screen](/docs/assets/pritunl-server-conf.png)
 
 	If a firewall is set up, make sure that the **Port** and **Protocol** fields match the firewall exceptions added earlier.
 
-6. 	Click the **Attach Organization** button. Attach the organization to the server.
+5. 	Click the **Attach Organization** button. Attach the organization to the server.
 
 
 ## Connecting to the Server
