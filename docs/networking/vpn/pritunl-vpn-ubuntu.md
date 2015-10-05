@@ -44,11 +44,9 @@ Pritunl is an open source VPN server and management panel. It gives the user the
 		apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv 7F0CEB10
 		apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv CF8E292A
 		
-5. Update the repo cache and optionally run upgrade
+5. Update the package cache
 
-		apt-get --assume-yes update
-		apt-get --assume-yes upgrade
-
+		sudo apt-get update
 
 6.	If you have a firewall running on the Linode, add exceptions for Pritunl’s Web UI and server:
 
@@ -63,9 +61,13 @@ Pritunl is an open source VPN server and management panel. It gives the user the
 
 ## Install Pritunl
 
-1.  Install `python-software-properties` and Pritunl:
+1.  Install Pritunl and its required dependencies:
 
         sudo apt-get install python-software-properties pritunl mongodb-org
+
+2.  Start the Pritunl service:
+
+		sudo service pritunl start
 
 2.  Open a web browser on your computer, and navigate to `https://123.45.67.89:9700`, replacing `123.45.67.89` with your Linode's IP address. You will see a screen similar to this:
 
