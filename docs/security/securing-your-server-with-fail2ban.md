@@ -27,8 +27,35 @@ Fail2ban is primarily focused on SSH attached, although can be farther canfigure
 ## Installing Fail2ban
 
 Follow the [Getting Started](/docs/getting-started) guide to configure your basic server. You may also want to review the [Securing Your Server](/docs/security/securing-your-server) guide before begining.
+        
+        
+### CentOS 7
 
-### Debian/Ubuntu
+1.  Ensure your system is up to date:
+
+        yum update
+        
+2.  Enable the EPEL reposity:
+
+        wget http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm
+        rpm -ivh epel-release-7-5.noarch.rpm
+        
+3.  Install Fail2ban:
+
+        yum install fail2ban
+        
+4.  (Optional) For email support, install Sendmail:
+
+        yum install sendmail
+        
+5.  Start and enable Fail2ban and, if needed, Sendmail:
+
+        systemctl start fail2ban
+        systemctl enable fail2ban
+        systemctl start sendmail
+        systemctl enable sendmail
+
+### Debian
 
 1.  Ensure your system is up to date:
 
@@ -40,9 +67,53 @@ Follow the [Getting Started](/docs/getting-started) guide to configure your basi
         
     The service will automatically start.
     
-3.  (Optional) If you wish for email support, install sendmail:
+3.  (Optional) If you wish for email support, install Sendmail:
 
         apt-get install sendmail-bin sendmail
+        
+        
+### Fedora
+
+1.  Update your system:
+
+        dnf update
+        
+2.  Install Fail2ban:
+
+        dnf install fail2ban
+        
+3.  (Optional) If you wish for email support, install Sendmail:
+
+        dnf install sendmail
+        
+4.  Start and enable Fail2ban and, if needed, Sendmail:
+
+        systemctl start fail2ban
+        systemctl enable fail2ban
+        systemctl start sendmail
+        systemctl enable sendmail
+        
+
+### Ubuntu
+
+1.  Ensure your system is up to date:
+
+        apt-get update && apt-get upgrade -y
+        
+2.  Install Fail2ban:
+
+        apt-get install fail2ban
+        
+    The service will automatically start.
+    
+3.  (Optional) If you wish for email support, install Sendmail:
+
+        apt-get install sendmail
+        
+4.  Ensure UFW is enabled, and you have SSH access to the server:
+
+        ufw enable
+        ufw allow ssh
     
 ## Configuring Fail2ban
 
@@ -67,9 +138,17 @@ Fail2ban reads its configuration files so that all `.conf` files are read first,
 
 ### jail.local Basic Configuration
 
-Return to `/etc/fail2ban` directory, and copy the `fail.conf` file to `jail.local`:
+1.  Return to `/etc/fail2ban` directory, and copy the `fail.conf` file to `jail.local`:
 
     cp jail.conf jail.local
+    
+2.  **If using Arch, CentOS, or Fedora** open `jail.local` and set the `backend` to `systemd`. This is not nessicary on Debian 8, even though it is a SystemD system.
+
+    {: .file-excerpt}
+    /etc/fail2ban/jail.local
+    :   ~~~
+        backend = systemd
+        ~~~
         
 #### IP Whitelisting        
 
@@ -154,6 +233,10 @@ An average jail configuration will resemble the following:
 -   `logpath`: The location of the service's logs.
 -   `maxretry`: Will override the global `maxretry` for the defined service. `findtime` and `bantime` can also be added
 -   `action`: This can be added as an additional setting, if the default action is not suitable for the jail. Additional actions can be found in the `action.d` folder.
+
+{: .note}
+>
+>Jails can also be configured as individual `.conf` files placed in the `jail.d` directory. The format will remain the same.
 
 
 ## Failregexs
