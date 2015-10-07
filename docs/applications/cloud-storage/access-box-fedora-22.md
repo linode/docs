@@ -57,8 +57,8 @@ The WebDAV share exported by Box.com does not support file locks. Thus you need 
 
 1.  Create a davfs2 configuration file and open it.
 
-      mkdir ~/.davfs2
-      vi ~/.davfs2/davfs2.conf
+        mkdir ~/.davfs2
+        vi ~/.davfs2/davfs2.conf
 
 2.  Add the following to the configuration file.
 
