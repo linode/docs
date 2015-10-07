@@ -150,3 +150,4 @@ Now we have everything configured correctly, we need to start our web server.
 2. To stop the web server. Issue the following command.
  
         sudo /usr/local/nginx/sbin/nginx -s stop
+
