@@ -47,7 +47,7 @@ Install davfs2
 
 ## Give A User Permission To Use davfs2
 
-Replace `username` with your username.
+This will give a user permission to mount using davfs2. Replace `username` with your username.
 
       sudo /sbin/usermod -a -G davfs2 "username"
 
@@ -84,7 +84,7 @@ In order to login to box as a non-root user you must store your login credential
 
         vi ~/.davfs2/secrets
 
-2.  Add the following to the secrets file, replacing `email` with your email and `password` with your password.
+2.  Add the following to the secrets file, replacing `email` with your Box email and `password` with your Box password.
 
         https://dav.box.com/dav  email  password
 
@@ -106,4 +106,4 @@ Run the following, replacing `username` with your username or replacing `/home/u
 
 ## Wrapping Up
 
-And you're done!  The directory **box** will now reflect your box contents!  The first time you access the folder it may take a few minutes for the contents to synchronize.  After that folder access is almost immediate.
+And you're done!  The directory **box** will now reflect your Box contents!  The first time you access the folder it may take a few minutes for the contents to synchronize.  After that folder access is almost immediate.
