@@ -18,7 +18,7 @@ contributor:
 
 <hr>
 
-If you've discovered Google Drive then you know that it can be an indispensible tool for moving files around.  While one of the standard counter-arguments is "just carry a flash drive" that works great until you need to add a file to your Linode.  Here's how to install and configure a great free piece of software to access your Google Drive from your Linode!
+If you've discovered Google Drive then you know that it can be an indispensable tool for moving files around.  While one of the standard counter-arguments is "just carry a flash drive" that works great until you need to add a file to your Linode.  Here's how to install and configure a great free piece of software to access your Google Drive from your Linode!
 
 **Google-drive-ocamlfuse (ocamlfuse)** uses the Drive API to scan and access your Google Drive contents.  A majority of the steps are authorizing its use and applying that authorization to the copy running on your Linode.  Let's get started, I'll explain a little more along the way.
 
@@ -92,7 +92,7 @@ Next, we'll provide the credentials to ocamlfuse, authorizing it to access your 
         google-drive-ocamlfuse -headless -label me -id `client ID from above` -secret `client secret from above`
 
     The output from this command will give you a long URL.  Copy it and paste it for use in step 2:
-    
+
         Please, open the following URL in a web browser: https://accounts.google.com/o/oauth2/auth?client_id=URL_SNIPPED
         Please enter the verification code:
 
@@ -118,7 +118,7 @@ The following steps will create an empty directory where Google Drive will live.
 
 ## Wrapping Up
 
-And you're done!  The directory **googleDrive** will now reflect your Google Drive contents!  The first time you access the folder it may take a few minutes for the contents to syncronize.  After that folder access is almost immediate.
+And you're done!  The directory **googleDrive** will now reflect your Google Drive contents!  The first time you access the folder it may take a few minutes for the contents to synchronize.  After that folder access is almost immediate.
 
 
 ## Resetting the connection
