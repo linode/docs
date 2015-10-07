@@ -35,17 +35,19 @@ If you've discovered Box then you know that it can be a great tool for moving fi
 
 The following step will create an empty directory where Box will live.  All of your Box files and folders will appear here.
 
-1.  Create a mount point:
+Create a mount point:
 
         mkdir ~/box
 
-## Install davfs2
+## Install
 
-    sudo dnf install davfs2
+Install davfs2
+
+      sudo dnf install davfs2
 
 ## Give A User Permission To Use davfs2
 
-1. Replace `username` with your username.
+Replace `username` with your username.
 
       sudo /sbin/usermod -a -G davfs2 "username"
 
@@ -86,19 +88,19 @@ In order to login to box as a non-root user you must store your login credential
 
         https://dav.box.com/dav  email  password
 
-3. Secure login credentials. Replace `username` with your username
+3. Secure login credentials.
 
         chmod 600 ~/.davfs2/secrets
 
 ## Mount Your Box Drive:
 
-1. Run the following, replacing `username` with your username or replacing `/home/username/box` with your mount point.
+Run the following, replacing `username` with your username or replacing `/home/username/box` with your mount point.
 
         mount /home/username/box
 
 ## Unmount Your Box Drive:
 
-1. Run the following, replacing `username` with your username or replacing `/home/username/box` with your mount point.
+Run the following, replacing `username` with your username or replacing `/home/username/box` with your mount point.
 
         umount /home/username/box
 
