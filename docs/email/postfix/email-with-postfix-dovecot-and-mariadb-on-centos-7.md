@@ -61,7 +61,7 @@ Next, set up a MariaDB database to handle virtual domains and users.
 1.  Configure MariaDB to start on boot, then start MariaDB:
 
         systemctl enable mariadb.service
-        /bin/systemctl start  mariadb.service
+        systemctl start mariadb.service
 
 2.  Run `mysql_secure_installation`. You will be presented with the opportunity to change the MariaDB root password, remove anonymous user accounts, disable root logins outside of localhost, remove test databases, and reload privilege tables. It is recommended that you answer yes to these options:
 
@@ -114,7 +114,7 @@ Next, set up a MariaDB database to handle virtual domains and users.
 
 12. Restart the database server:
 
-        /bin/systemctl restart  mariadb.service
+        systemctl restart  mariadb.service
 
 Next, perform additional Postfix configuration to set up communication with the database.
 
@@ -223,7 +223,7 @@ Next, perform additional Postfix configuration to set up communication with the 
 9.  Configure Postfix to start on boot and start the service for the first time:
 
         systemctl enable postfix.service
-        /bin/systemctl start  postfix.service
+        systemctl start  postfix.service
 
 This completes the configuration for Postfix.
 
@@ -233,7 +233,7 @@ This completes the configuration for Postfix.
 
         mv /etc/dovecot/dovecot.conf /etc/dovecot/dovecot.conf-backup
 
-2.  Copy the following into the now-empty `dovecot.conf` file, substituting your system's domain name for `example.com` in line 37:
+2.  Copy the following into the now-empty `dovecot.conf` file. Substitute your system's domain name for `example.com` in line 37, and your ssl key and certificate, if any, on lines 5 and 6:
 
     {: .file }
     /etc/dovecot/dovecot.conf
@@ -311,7 +311,7 @@ This completes the configuration for Postfix.
 5.  Configure Dovecot to start on boot, and start it for the first time:
 
         systemctl enable dovecot.service
-        /bin/systemctl start  dovecot.service
+        systemctl start  dovecot.service
 
 6.  Now check `/var/log/maillog` to make sure Dovecot started without errors. Your log should have lines similar to the following:
 
@@ -351,7 +351,7 @@ This completes the configuration for Postfix.
 2.  Update aliases and restart Postfix:
 
         newaliases
-        /bin/systemctl restart  postfix.service
+        systemctl restart  postfix.service
 
 This completes alias configuration. Next, test Postfix to make sure it's operating properly.
 
@@ -407,11 +407,11 @@ In the following example, the MariaDB shell is used to add support for the domai
         yum install mailx
         mailx sales@example.com
 
-    Press `Ctrl+D` to complete the message. You can safely leave the field for `Cc:` blank. This completes the configuration for a new domain and email user.
+    Press `Ctrl+D` to complete the message. This completes the configuration for a new domain and email user.
 
 {: .note}
 >
->Given the possibility for virtual hosting a large number of virtual domains on a single mail system, the username portion of an email address (i.e. before the `@` sign) is not sufficient to authenticate to the mail server. When email users authenticate to the server, they must supply their email clients with the *entire* email address created above as their username.
+>Given the possibility of hosting a large number of virtual domains on a single mail system, the username portion of an email address (i.e. before the `@` sign) is not sufficient to authenticate to the mail server. When email users authenticate to the server, they must supply their email clients with the *entire* email address created above as their username.
 
 ###Check Your Logs
 
@@ -442,7 +442,6 @@ Now you can test to see what the users of your email server would see with their
 
 1.  To test the `sales@example.com` mailbox, navigate to the mailbox directory `/home/vmail/example.com/sales/Maildir` and issue the following command:
 
-        cd /home/vmail/example.com/sales/Maildir
         find
 
 2.  You should see output similar to the following:
@@ -465,3 +464,4 @@ Now you can test to see what the users of your email server would see with their
 4.  If there is an email in the inbox, Postfix, Dovecot, and MySQL have been successfully configured! To quit mutt press `q`.
 
     [![/docs/assets/postfixcentos-mutt.png](/docs/assets/postfixcentos-mutt.png)](/docs/assets/postfixcentos-mutt.png)
+
