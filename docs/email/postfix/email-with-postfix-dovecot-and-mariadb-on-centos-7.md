@@ -220,7 +220,41 @@ Next, perform additional Postfix configuration to set up communication with the 
             flags=DRhu user=vmail:vmail argv=/usr/libexec/dovecot/deliver -f ${sender} -d ${recipient}
         ~~~
 
-9.  Configure Postfix to start on boot and start the service for the first time:
+9.  Uncomment the two lines starting with `submission` and `smtps` and the block of lines starting with `-o` after each. The first section of the `/etc/postfix/master.cf` file should resemble the following:
+
+    {: .file-excerpt }
+    /etc/postfix/master.cf
+    :   ~~~
+        #
+        # Postfix master process configuration file.  For details on the format
+        # of the file, see the master(5) manual page (command: "man 5 master").
+        #
+        # Do not forget to execute "postfix reload" after editing this file.
+        #
+        # ==========================================================================
+        # service type  private unpriv  chroot  wakeup  maxproc command + args
+        #               (yes)   (yes)   (yes)   (never) (100)
+        # ==========================================================================
+        smtp      inet  n       -       -       -       -       smtpd
+        #smtp      inet  n       -       -       -       1       postscreen
+        #smtpd     pass  -       -       -       -       -       smtpd
+        #dnsblog   unix  -       -       -       -       0       dnsblog
+        #tlsproxy  unix  -       -       -       -       0       tlsproxy
+        submission inet n       -       -       -       -       smtpd
+          -o syslog_name=postfix/submission
+          -o smtpd_tls_security_level=encrypt
+          -o smtpd_sasl_auth_enable=yes
+          -o smtpd_client_restrictions=permit_sasl_authenticated,reject
+          -o milter_macro_daemon_name=ORIGINATING
+        smtps     inet  n       -       -       -       -       smtpd
+          -o syslog_name=postfix/smtps
+          -o smtpd_tls_wrappermode=yes
+          -o smtpd_sasl_auth_enable=yes
+          -o smtpd_client_restrictions=permit_sasl_authenticated,reject
+          -o milter_macro_daemon_name=ORIGINATING
+        ~~~
+
+10. Configure Postfix to start on boot and start the service for the first time:
 
         systemctl enable postfix.service
         systemctl start  postfix.service
