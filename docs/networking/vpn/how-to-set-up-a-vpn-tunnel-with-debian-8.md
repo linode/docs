@@ -14,13 +14,13 @@ external_resources:
  - '[Official OpenVPN Documentation](https://openvpn.net/index.php/open-source/documentation/howto.html)'
 ---
 
-This gude will show you how to configure an OpenVPN server to forward out to the interent all traffic it recieves from client devices, then route the responses back appropriately. This will take place primarily over IPv4 but options for IPv6 are given.
+This gude will show you how to configure an OpenVPN server to forward out to the interent all traffic it recieves from client devices, then route the responses back appropriately.
 
-A common use case for a VPN tunnel is to access the internet from behind it to evade censorship or geolocation while shielding your computer's public IP address to your ISP, and sites and services you connect to.
+A common use case for a VPN tunnel is to access the internet from behind it to evade censorship or geolocation while shielding your computer's public IP address to internet service providers, untrusted WiFi hotspots, and sites and services you connect to.
 
 ## Before you Begin
 
-This guide is the second of a three part series to set up a hardened OpenVPN server and client devices. It assumes that you already have the OpenVPN server up and running so before moving further in this page, complete part one of the series: [Set Up a VPN Tunnel with Debian 8](/docs/networking/vpn/***). If you found this page but are looking for part three for client device configuration, see Part 3: [Configuring OpenVPN Client Devices](/docs/networking/vpn/***).
+This guide is the second of a three part series to set up a hardened OpenVPN environment. It assumes that you already have the OpenVPN server up and running so before moving further in this page, complete part one of the series: [Set Up a Hardened OpenVPN Server with Debian 8](/docs/networking/vpn/set-up-a-hardened-openvpn-server-on-debian-8). If you found this page but are looking for part three for client device configuration, see [Configuring OpenVPN Client Devices](/docs/networking/vpn/***).
 
 ## OpenVPN Configuration
 
@@ -69,13 +69,9 @@ OpenVPN's server-side configuration file is `/etc/openvpn/server.conf` and it re
         server-ipv6 2001:412:abcd:2::/64
         push "route-ipv6 2600::/3"
 
-    {: .note }
-    >
-    >If you instead want to tunnel IPv6 traffic to IPv4 on the clients, or leave IPv6 entirely disabled, do not add these lines; 6 to 4 tunneling will be covered later.
-
 ## Append Networking Rules
 
-In Part One,[***]() of this series, we set iptables rules so the OpenVPN server can only accept client connections, SSH and make system updates, but nothing more. Since now we want the server to forward traffic out to the internet from clients, accept the responses and route them back to client machines, we must adjust the rulesets.
+In [part one](/docs/networking/vpn/set-up-a-hardened-openvpn-server-on-debian-8) of this series, we set iptables rules so the OpenVPN server can only accept client connections, SSH and make system updates, but nothing more. Since now we want the server to forward traffic out to the internet from clients, accept the responses and route them back to client machines, we must adjust the rulesets.
 
 {: .caution }
 >
@@ -87,7 +83,7 @@ In Part One,[***]() of this series, we set iptables rules so the OpenVPN server 
 
         sudo rm /etc/iptables/{rules.v4,rules.v6}
 
-2.  Create a new IPv4 rule file **using the ruleset below** The path `/etc/iptables/rules.v4` assumes Debian or Ubuntu with `iptables-persistent` installed.
+2.  Create a new IPv4 rule file **using the ruleset below**. The path `/etc/iptables/rules.v4` assumes Debian or Ubuntu with `iptables-persistent` installed.
 
     {: .file}
     /etc/iptables/rules.v4
@@ -95,10 +91,10 @@ In Part One,[***]() of this series, we set iptables rules so the OpenVPN server 
 
         *filter
 
-        # Allow all loopback (lo0) traffic
-        # and reject traffic to 127/8 that doesn't use lo0.
+        # Allow all loopback (lo) traffic and reject traffic
+        # to localhost that does not originate from lo.
         -A INPUT -i lo -j ACCEPT
-        -A INPUT ! -i lo -d 127.0.0.0/8 -j REJECT
+        -A INPUT ! -i lo -s 127.0.0.0/8 -j REJECT
         -A OUTPUT -o lo -j ACCEPT
 
         # Allow ping and traceroute.
@@ -126,12 +122,12 @@ In Part One,[***]() of this series, we set iptables rules so the OpenVPN server 
         -A OUTPUT -o eth0 -p tcp -m state --state NEW,ESTABLISHED --dport 443 -j ACCEPT
 
         # Allow traffic on the TUN interface.
-        -A INPUT -i tun+ -j ACCEPT
-        -A FORWARD -i tun+ -j ACCEPT
-        -A OUTPUT -o tun+ -j ACCEPT
+        -A INPUT -i tun0 -j ACCEPT
+        -A FORWARD -i tun0 -j ACCEPT
+        -A OUTPUT -o tun0 -j ACCEPT
 
-        # Allow forwarding traffic only from the VPN
-        -A FORWARD -s 10.8.0.0/24 -j ACCEPT
+        # Allow forwarding traffic only from the VPN.
+        -A FORWARD -i tun0 -o eth0 -s 10.8.0.0/24 -j ACCEPT
         -A FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT
 
         # Log any packets which don't fit the rules above...
@@ -162,7 +158,7 @@ In Part One,[***]() of this series, we set iptables rules so the OpenVPN server 
 
 ### IPv6
 
-In Part One,[***](), the option was given to disable IPv6. If you choose to keep that setup, then these steps can be skipped.
+In [part one](/docs/networking/vpn/set-up-a-hardened-openvpn-server-on-debian-8), the option was given to disable IPv6. If you choose to keep that setup, then these steps can be skipped.
 
 {: .caution }
 >
@@ -176,9 +172,11 @@ In Part One,[***](), the option was given to disable IPv6. If you choose to keep
 
         *filter
 
-        #Allow loopback interface to only localhost.
-        -A INPUT -s ::1 -j ACCEPT
-        -A OUTPUT -s ::1 -j ACCEPT
+        # Allow all loopback (lo) traffic and reject traffic
+        # to localhost that does not originate from lo.
+        -A INPUT -i lo -j ACCEPT
+        -A INPUT ! -i lo -s ::1 -j REJECT
+        -A OUTPUT -o lo -j ACCEPT
 
         #Allow pings.
         -A INPUT -p icmpv6 -j ACCEPT
@@ -193,12 +191,12 @@ In Part One,[***](), the option was given to disable IPv6. If you choose to keep
         -A OUTPUT -o eth0 -p udp -m state --state ESTABLISHED --sport 1194 -j ACCEPT
 
         #Allow traffic on the TUN interface.
-        -A INPUT -i tun+ -j ACCEPT
-        -A FORWARD -i tun+ -j ACCEPT
-        -A OUTPUT -o tun+ -j ACCEPT
+        -A INPUT -i tun0 -j ACCEPT
+        -A FORWARD -i tun0 -j ACCEPT
+        -A OUTPUT -o tun0 -j ACCEPT
 
-        # Allow forwarding traffic only from the VPN
-        #-A FORWARD -m state --state NEW -i tun+ -o eth0 -s ROUTED/64 -j ACCEPT
+        # Allow forwarding traffic only from the VPN.
+        -A FORWARD -i tun0 -o eth0 -m state --state NEW -s 2600:3c03::/64 -j ACCEPT
         -A FORWARD -m state --state ESTABLISHED,RELATED -j ACCEPT
 
         # Log any packets which don't fit the rules above...
@@ -239,4 +237,4 @@ Restart the OpenVPN daemon
 
 ## Next Steps
 
-Server-side configuration is complete but now the VPN clients need to be set up. Move on to [Part Three: Configuring OpenVPN Client Devices](/docs/networking/vpn/configure-openvpn-client-devices).
+Server-side configuration is complete but now the VPN clients need to be set up. Move on to Part Three: [Configuring OpenVPN Client Devices](/docs/networking/vpn/configure-openvpn-client-devices).
