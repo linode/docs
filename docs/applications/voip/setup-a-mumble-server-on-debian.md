@@ -120,7 +120,7 @@ Next, click Add New at the bottom and enter the following.
 
 [![Image description](/docs/assets/mumble-superuser-info.png)](/docs/assets/mumble-superuser-info.png)
 
-Oonce these addition have been made to your server list, select it and click Connect.
+Once these additions have been made to your server list, select it and click Connect.
 
 [![Image description](/docs/assets/mumble-server-list-with-favorite.png)](/docs/assets/mumble-server-list-with-favorite.png)
 
@@ -134,7 +134,7 @@ You should now be connected as SuperUser.  You can make changes to the server by
 
 ### Connecting As Normal User
 
-When a normal user connects, you follow the same relative process as you did to connect as the SuperUser; however, a password is not necessary (unless you set one, which you can then use it to communicate).
+When a normal user connects, you follow the same relative process as you did to connect as the SuperUser; however, a password is not necessary (unless you set one, with which you can then use to communicate).
 
 To open the Mumble Server Connect dialog, first open the client, then click Server, and then Connect.  The following appears on your screen:
 
