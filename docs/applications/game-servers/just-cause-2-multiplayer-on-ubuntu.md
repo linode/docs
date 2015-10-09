@@ -65,7 +65,7 @@ If you have a firewall running on your Linode, add exceptions for SteamCMD:
 {: .note }
 > If you've configured your firewall according to our [Securing Your Server](/docs/security/securing-your-server) guide, be sure to add these port ranges to your `/etc/iptables.firewall.rules` file.
 
-## Install SteamCMD and Don’t Starve Together
+## Install SteamCMD and Just Cause 2
 
 1.  From your user's home folder, download SteamCMD into its own directory:
 
