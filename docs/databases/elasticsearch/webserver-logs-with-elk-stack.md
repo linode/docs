@@ -5,18 +5,17 @@ author:
 description: 'Storing and visualizing Apache webserver logs in the ELK stack.'
 keywords: 'webserver,apache,elasticsearch,logstash,kibana,dashboard,logs,visualization'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-published: TODO: Update
+published: Tuesday, September 22th, 2015
 modified: Tuesday, September 22th, 2015
 modified_by:
     name: Tyler Langlois
-title: Visualizing Apache Webserver Logs in the ELK Stack
+title: Visualizing Apache Webserver Logs in the ELK Stack on Debian 8
 contributor:
   name: Tyler Langlois
   link: https://github.com/tylerjl
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and
-earn $250 per published guide.*
+*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
 
 <hr>
 
@@ -28,8 +27,13 @@ At the end of this guide you'll have an end-to-end system that collects your web
 
 Before beginning, note that we will setting up several services on our server, so the normal best practices for setting up a stable, secure Linux system still apply. In particular you should follow the advice in the following guides:
 
-- [Getting Started](/docs/getting-started) with your Linux server.
-- [Securing Your Server](/docs/security/securing-your-server), which is critical to ensure your services are properly protected.
+-   [Getting Started](/docs/getting-started) with your Linux server.
+-   [Securing Your Server](/docs/security/securing-your-server), which is critical to ensure your services are properly protected.
+    
+If using a firewall, add additional rules to allow for the use of port 5601:
+
+    sudo iptables -I INPUT 9 -p tcp --dport 9200 -j ACCEPT
+    sudo ip6tables -I INPUT 9 -p tcp --dport 9200 -j ACCEPT
 
 ### Overview
 
@@ -48,13 +52,17 @@ Before setting up Elasticsearch, Logstash, and Kibana, a webserver and Java 8 ne
 
 ### Apache
 
-In order to have log files to process, you should follow the [Setting Up an Apache Web Server on Debian 8](docs/websites/apache/apache-web-server-debian-8) guide to easily install and configure Apache on Debian. Once Apache is running, issue an empty request to your webserver:
+In order to have log files to process, you should follow the [Set Up an Apache Web Server on Debian 8](/docs/websites/apache/apache-web-server-debian-8) guide to easily install and configure Apache on Debian. Once Apache is running, issue an empty request to your webserver:
 
 	curl localhost
 
 Then confirm logs are being generated in the default Apache log file:
 
 	sudo tail /var/log/apache2/access.log
+    
+{: .note}
+>
+>If your Apache server was set up using the above-referenced Apache Web Server on Debian 8 guide, the access log will be located at `/var/www/example.com/logs/access.log`, with `example.com` being your domain name. Amend the above code if needed.
 
 You should see one or more lines that look like this:
 
@@ -112,23 +120,27 @@ Next, we'll create a simple logstash configuration file - create a file named `a
 
 {: .file}
 /etc/logstash/conf.d/apache.conf
-: ~~~
-input {
-	file {
-		path => '/var/log/apache2/access.log'
-	}
-}
-
-filter {
-	grok {
-		match => { "message" => "%{COMBINEDAPACHELOG}" }
-	}
-}
-
-output {
-	stdout { codec => rubydebug }
-}
-~~~
+:   ~~~
+    input {
+        file {
+            path => '/var/log/apache2/access.log'
+        }
+    }
+    
+    filter {
+        grok {
+            match => { "message" => "%{COMBINEDAPACHELOG}" }
+        }
+    }
+    
+    output {
+        stdout { codec => rubydebug }
+    }
+    ~~~
+    
+{: .note}
+>
+>If your log file is located at `/var/www/example.com/logs/access.log` or another non-traditional location, adjust the third line, `path => '/var/log/apache2/access.log'`, accordingly.
 
 The config file simply watches the apache log file for events, parses them with a grok pattern (a simplified predefined regular expression) called `COMBINEDAPACHELOG`, and will print those events to standard output (the [Logstash documentation](https://www.elastic.co/guide/en/logstash/current/index.html) has additional information.)
 
@@ -141,6 +153,14 @@ Wait until `Logstash startup completed` appears, then in another window, issue s
 	curl localhost
 
 You should see logstash print parsed fields such as `verb`, `response`, and `bytes`. Hit **CTRL-C** to exit Logstash.
+
+{: .note}
+>
+>If you receive a `NotImplementedError: stat.st_gid unsupported or native support failed to load` error when first attempted to run Logstash, run:
+>
+>     sudo ln -s /lib/x86_64-linux-gnu/libcrypt.so.1 /usr/lib/x86_64-linux-gnu/libcrypt.so
+>    
+>Then repeat the above instructions to start and test Logstash again.
 
 One more step needs to be taken in order for the `logstash` user that the daemon runs as to be able to read Apache log files. Our Apache logs are readable by users in the `adm` group, so add the `logstash` user to that group:
 
@@ -159,11 +179,11 @@ With Elasticsearch installed, a few steps should be taken to configure it proper
 
 {: .file}
 /etc/elasticsearch/elasticsearch.yaml
-: ~~~ yaml
-cluster.name: <choose something unique>
-discovery.zen.ping.multicast.enabled: false
-index.number_of_replicas: 0
-~~~
+:   ~~~ yaml
+    cluster.name: <choose something unique>
+    discovery.zen.ping.multicast.enabled: false
+    index.number_of_replicas: 0
+    ~~~
 
 These configuration lines:
 
@@ -193,14 +213,14 @@ Because Debian 8 ships with systemd, we can easily create a unit file to run Kib
 
 {: .file}
 /etc/systemd/system/kibana.service
-: ~~~ ini
-[Unit]
-Description=open source browser based analytics and search dashboard for Elasticsearch
-
-[Service]
-Type=simple
-ExecStart=/opt/kibana-4.1.2-linux-x64/bin/kibana  -c /opt/kibana-4.1.2-linux-x64/config/kibana.yml
-~~~
+:   ~~~ ini
+    [Unit]
+    Description=open source browser based analytics and search dashboard for Elasticsearch
+    
+    [Service]
+    Type=simple
+    ExecStart=/opt/kibana-4.1.2-linux-x64/bin/kibana  -c /opt/kibana-4.1.2-linux-x64/config/kibana.yml
+    ~~~
 
 Now simply start the service to run Kibana as a daemon:
 
@@ -210,10 +230,14 @@ Now simply start the service to run Kibana as a daemon:
 
 Now that each component of the ELK stack is installed, we can start streaming data into our setup. The previous Logstash configuration we created simply outputs parsed Apache logs to our terminal, but to send them to Elasticsearch we can simply change the output line to use Elasticsearch output like this instead of using the `stdout` plugin:
 
+{: .file}
+/etc/logstah/conf.d/apache.conf
+:   ~~~
 	output {
 		elasticsearch { protocol => "http" }
 	}
-
+    ~~~
+    
 Here the protocol is set to `http`, which talks to Elasticsearch over the standard JSON API. We can now start the Logstash daemon and let it funnel logs into elasticsearch:
 
 	sudo systemctl start logstash
@@ -228,7 +252,7 @@ Then look at an Elasticsearch API to see that a new index has been created (it w
 
 There should be an index with the current date appended with documents inserted by Logstash. Now, with Kibana running in the background from our systemd unit, just browse to the machine's address under port 5601 to start using Kibana's interface:
 
-![The initial setup screen for Kibana](docs/assets/elk-kibana-setup.png)
+![The initial setup screen for Kibana](/docs/assets/elk-kibana-setup.png)
 
 Kibana makes an educated guess at your index and time field names, so just selecting "Create" here will get you started. Click on the "Discover" tab at the top and you'll see a timeline of Apache log events.
 
