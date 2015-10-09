@@ -82,7 +82,7 @@ If your distro has System V (CentOS 6, Debian 7) or Upstart (Ubuntu 14.04):
 
 ##Configure the Monit Daemon
 
-Monit's configuration is in the file `/etc/monit/monitrc`. Open this file now in your favorite text editor. We'll start by setting up the monit process itself. Most of these settings (except where `anonymized`) are currently in use on my own Linode mail server.
+Monit's configuration is in the file `/etc/monit/monitrc`. Open this file now in your favorite text editor. We'll start by setting up the monit process itself. 
 
 ### Polling Frequency
 
@@ -90,7 +90,7 @@ Monit's configuration is in the file `/etc/monit/monitrc`. Open this file now in
 
 This is the interval (in seconds) at which Monit runs its tests. The value you choose will depend on how many tests you define, how quickly you need Monit to act on events, and how much load the tests themselves add to your server. Run Monit at the default for two minutes and evaluate its performance. If you change this value, you will need to [restart Monit](#restarting-monit).
 
-I set the interval at 5 minutes, because minimizing the load on my server is more important to me than instant alerts and responses.
+Consider setting the testing interval at up to 5 minutes if minimizing a load on your server is more important than instant alerts and responses.
 
 Include the delay line
 
@@ -155,7 +155,7 @@ Monit can monitor server resource utilization and alert you when your server is 
         if memory usage > 85% then alert
         if cpu usage (user) > 60% then alert
 
-Here I have asked Monit to alert when the load average, total system memory use or CPU usage exceeds the specified limits. You should set these limits based on your server's normal operating values. 
+Here, Monit has been instructed to alert when the load average, total system memory use or CPU usage exceeds the specified limits. You should set these limits based on your server's normal operating values. 
 
 A good way to determine the alert thresholds is to set them low (you will receive frequent alerts) and then adjust them higher if alerts are more frequent than the situation requires. The actual tested values which triggered the alert will be included in the alert message, and you can use these to gauge what is a good threshold limit for your server.
 
@@ -166,7 +166,7 @@ Most servers are running a set of critical services that are their reason for ex
     check process apache-server with pidfile /run/apache2.pid
         if cpu > 95% for 3 cycles then alert
 
-For the `check process` statement, Monit requires an associated .pid file. Many common Linux server programs put a .pid file within the `/run` directory (`/var/run` on earlier Debian versions.) You can look for the location of the .pid file in your program's documentation, man page, or init script. In this example, the apache2 process uses a file named apache2.pid in the `/run` directory. I have asked Monit to alert if this Apache process starts to use too much CPU for a minimum of 3 cycles. With `set daemon 300` defined in the global configuration, if apache uses more than 95% CPU for 3 x 300 seconds, or 15 minutes, then Monit will trigger.
+For the `check process` statement, Monit requires an associated .pid file. Many common Linux server programs put a .pid file within the `/run` directory (`/var/run` on earlier Debian versions.) You can look for the location of the .pid file in your program's documentation, man page, or init script. In this example, the apache2 process uses a file named apache2.pid in the `/run` directory. The result of this command sequence is that Monit will alert if this Apache process starts to use too much CPU for a minimum of three cycles. With `set daemon 300` defined in the global configuration, if apache uses more than 95% CPU for 3 x 300 seconds, or 15 minutes, then Monit will trigger.
 
 You can test more than one parameter in a single check statement. The Apache program spawns children as needed to serve requests. If a large number of requests come in and continue unabated for 25 minutes, the test added here will alert on it.
 
@@ -183,7 +183,7 @@ Monit can do more than simply check the resource utilization of a process. It su
         if cpu usage > 95% for 3 cycles then alert
         if failed port 80 protocol http then restart
 
-OK, plenty is happening in the newly added lines of this check statement, including the best feature of Monit: automated process management. First, I told Monit how to start and stop the process I am checking. Then I've asked Monit to use HTTP on port 80 to send a GET request to this running instance of Apache. By default it will send a normal 'GET "/"' request. If Apache returns an HTTP status code of 400 or greater, Monit will alert _and_ restart the process using the commands given. 
+Plenty is happening in the newly added lines of this check statement, including the best feature of Monit: automated process management. In lines 2 and 3, Monit has been programmed on how to start and stop the process being checked. In line 6, Monit has been programmed to use HTTP on port 80 to send a GET request to this running instance of Apache. By default it will send a normal 'GET "/"' request. If Apache returns an HTTP status code of 400 or greater, Monit will alert _and_ restart the process using the commands given. 
 
 The commands shown above are systemd compatible for a distribution using systemd (for example, Debian 8). If your server instead uses SysV or Upstart (ex. Debian 7 or Ubuntu 14.04), use these instead:
 
@@ -197,20 +197,20 @@ Monit can check filesystem properties such as whether a file exists, if its size
     check file mail.log with path /var/log/mail.log
         if timestamp > 10 minutes then alert
 
-This mail server is normally busy around the clock. If the mail.log file has not been touched for ten minutes, something is probably wrong and I want to know about it.
+This mail server is normally busy around the clock. If the mail.log file has not been touched for ten minutes, something is probably wrong and you should be alerted.
 
 You can also use the filesystem monitor to confirm that cron jobs have completed correctly. Add a line in your job script (that will only be reached upon success) to `touch <filename>`, then have Monit check the file's timestamp age. If it's an hourly job, use a value "> 65 minutes". If it's an overnight job, use "> 25 hours". The extra margin allows for some variability in job time-to-complete.
 
-So for example, I have a nightly backup script that cron runs in the wee hours. In that script is a line that only executes on a successful backup:
+So for example, consider a nightly backup script that cron can run in the wee hours. In that script should be a line that only executes after a successful backup:
 
     touch /tmp/backup-ok
 
-Then, in monitrc I have:
+Then, in monitrc you'd have:
 
     check file nightly-backup with path /tmp/backup-ok
         if timestamp > 25 hours then alert
 
-If the backup does not complete, then the next morning I will have an alert message waiting for me, and the server's Monit web page will show nightly-backup with a red status of "Timestamp failed."
+If the backup does not complete, then the next morning an alert message will be waiting, and the server's Monit web page will show nightly-backup with a red status of "Timestamp failed."
 
 ###Remote Hosts
 
