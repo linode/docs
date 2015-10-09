@@ -142,7 +142,7 @@ Fail2ban reads its configuration files so that all `.conf` files are read first 
 
     cp jail.conf jail.local
     
-2.  **If using Arch, CentOS or Fedora** open `jail.local` and set the `backend` to `systemd`. This is not necessary on Debian 8, even though it is a SystemD system.
+2.  **If using CentOS or Fedora** open `jail.local` and set the `backend` to `systemd`. This is not necessary on Debian 8, even though it is a SystemD system.
 
     {: .file-excerpt}
     /etc/fail2ban/jail.local
@@ -282,7 +282,7 @@ The best way to understand how failregex works is to write one. Although we do n
     
         <HOST> - - \[(\d{2})/\w{3}/\d{4}:
         
-4.  The next sequence is a series of two-digit numbers that make up the time. Because we defined the day of the month as a two-digit number in a capture group (the parentheses), we can back-reference it using `\1` (since it is the *first* capture group). Again, the colons will be literals:
+4.  The next sequence is a series of two-digit numbers that make up the time. Because we defined the day of the month as a two-digit number in a capture group (the parentheses), we can backreference it using `\1` (since it is the *first* capture group). Again, the colons will be literals:
 
         <HOST> - - \[(\d{2})/\w{3}/\d{4}:\1:\1:\1 
     
