@@ -256,7 +256,39 @@ There should be an index with the current date appended with documents inserted 
 
 Kibana makes an educated guess at your index and time field names, so just selecting "Create" here will get you started. Click on the "Discover" tab at the top and you'll see a timeline of Apache log events.
 
-## Dashboarding Events
+### Custom Dashboards
+
+First, in order to generate a steady stream of web traffic to visualize, issue the following command in another terminal window:
+
+	while sleep 1 ; do for n in {0..$(((RANDOM % 10) + 1))} ; do curl -s -A $n localhost &>/dev/null ; done ; done
+
+This command issues between 1 to 10 `curl` request to Apache every second to generate sample traffic with a custom user agent. Let this command run for a few minutes, then click on the magnifying glass in Kibana to issue a new search and draw a timeline graph of the requests we're issuing:
+
+![Timeline of basic requests to Apache](/docs/assets/elk-kibana-discovery.png)
+
+The "Discovery" tab simply plots the count of documents within the logstash index (Y axis) against the timestamp of those events (X axis.)
+
+We can create additional types of graphs as well. The `curl` generating sample traffic sets the user agent to an integer. Kibana can create a summary of the most common user agents by asking Elasticsearch for a terms aggregation. The following steps outline how to do so:
+
+- Click the "Visualize" tab at the top of the Kibana interface
+- Scroll down to find "Pie chart" and click on it to start creating the chart
+- Select "From a new search" to create a graph from a generic search query
+- You'll see a large pie chart that is simply displaying the document count for the selected time period
+- Click "Split Slices" on the left sidebar
+- In the "Aggregation" dropdown, select "Terms"
+- Under the "Field" section, select `agent.raw`
+- Change the "Size" option to 10
+- Click on the green play button on the left sidebar
+
+You should see a pie chart similar to the one below:
+
+![Pie chart displaying most common user agents](/docs/assets/elk-kibana-pie-chart.png)
+
+This simple example just summarizes the dummy user agent strings we set in the `curl` command. In a real-world scenario, this same type of aggregation could be used to visualize the values in the `response` field to see how often 500 or 404 errors occur.
+
+To get a feel for Kibana, try creating a similar graph, but using a bar chart this time. The X axis should be a date histogram, and you can split the bars by adding sub-buckets to aggregate on the `agent.raw` field. Explore different possibilities!
+
+## Further Reading
 
 From here on out, the [official Kibana documentation](https://www.elastic.co/guide/en/kibana/current/index.html) can help you learn how to graph log to create charts, graphs, and lots of other helpful visualizations. Remember that the `filter` section of the Logstash configuration file we wrote includes a `grok` directive to parse log fields, so you now have the ability to do things like:
 
