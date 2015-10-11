@@ -88,7 +88,7 @@ Monit's configuration is in the file `/etc/monit/monitrc`. Open this file now in
 
     set daemon 300
 
-This is the interval (in seconds) at which Monit runs its tests. The value you choose will depend on how many tests you define, how quickly you need Monit to act on events, and how much load the tests themselves add to your server. Run Monit at the default for two minutes and evaluate its performance. If you change this value, you will need to [restart Monit](#restarting-monit).
+This is the interval (in seconds) at which Monit runs its tests. The value you choose will depend on how many tests you define, how quickly you need Monit to act on events, and how much load the tests themselves add to your server. Begin by running Monit at the default setting of two minutes and evaluate its performance. If you change this value, you will need to [restart Monit](#restarting-monit).
 
 Consider setting the testing interval at up to 5 minutes if minimizing a load on your server is more important than instant alerts and responses.
 
