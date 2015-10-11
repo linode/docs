@@ -19,6 +19,8 @@ contributor:
 
 <hr>
 
+![An example of the types of charts you can create](/docs/assets/elk-kibana-cover.png)
+
 The [ELK Stack](https://www.elastic.co/products) is an open-source platform that makes structured and unstructured data easy to collect, store, and visualize. In this guide, we'll collect Apache logs with [Logstash](https://www.elastic.co/products/logstash), store parsed documents in [Elasticsearch](https://www.elastic.co/products/elasticsearch), and create dashboards in [Kibana](https://www.elastic.co/products/kibana) to make webserver logs easy to search and see in real-time.
 
 At the end of this guide you'll have an end-to-end system that collects your webserver logs and presents them in a beautiful, shareable format. Let's get started!
