@@ -1,4 +1,4 @@
- performance Nginx and PHP over Debian 8
+High performance Nginx and PHP over Debian 8
 19th May 2015 by Javier Briz
 
 
@@ -104,21 +104,6 @@ We can lower latency on our nginx server by allowing processes to accept several
 
         multi_accept on;
 
-### Logging
-
-Another way to improve performance is to reduce I/O. This can be done in several ways. One of them is reduce or even disable logging: if you don't need access log, disable them.
-It is done by adding the following directives to "/etc/nginx/nginx.conf":
-
-          access_log off;
-          log_not_found off; 
-
-Another less dramatic solution, is to keep logs in memory until a certain buffer is filled, and then flush them to disk. They can also be compressed, which will cause an small cpu overhead but will result in less disk writing.
-You can add "flush=#m" to the "access_log" directive in the following way:
-
-        access_log /var/log/nginx/access.log combined gzip flush=5m;
-
-It is also helpfull to keep logs in a ram-disk, the problem is that if the server reboots, the logs will be lost, so use this with caution.
-
 ### Caching
 
 To avoid reading files from disk every time a client makes a request, we should enable caching. Only do this on production servers, not on development servers.
@@ -176,5 +161,3 @@ A few good tools to do this are iotop, htop, zabbix (for the long term), ps, fre
 - `zabbix` is (imho) the best open source monitoring tool, altough it is a bit complex to install. You can get more information [on zabbix.com](http://www.zabbix.com/).
 
 Other tools, like `ps`, `free` and much others, are usefull when you need a particular data, because its performance is higher than that of the previous tools, but will not offer you a more complete overview of your system.
-
-
