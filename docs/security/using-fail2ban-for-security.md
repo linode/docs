@@ -5,10 +5,10 @@ author:
 description: 'Use Fail2ban to block automated system attacks and further harden your server. Fail2ban monitors system logs for symptoms of an automated attack, bans the IP and alerts you of the attach through email.'
 keywords: 'fail2ban'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Wednesday, September 23rd, 2015
+modified: Monday, October 12th, 2015
 modified_by:
   name: Elle Krout
-published: 'Wednesday, September 23rd, 2015'
+published: 'Monday, October 12th, 2015'
 title: Using Fail2ban to Secure Your Server
 ---
 
