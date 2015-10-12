@@ -16,6 +16,8 @@ external_resources:
  - '[Fail2ban Manual Page](http://linux.die.net/man/8/fail2ban)'
 ---
 
+**Going to kill this & alias the URL to the new guide when done.**
+
 Internet servers are routinely exposed to a barrage of attempts to gain unauthorized access to server resources. Common targets include SSH, SMTP, HTTP authentication, and FTP services. This guide will help you use [Fail2ban](http://www.fail2ban.org) on your Linux VPS to block automated attempts to compromise the system.
 
 Please note that Fail2ban should not be relied upon as your sole means of preventing unauthorized access to services. It is useful in scenarios where you are required to allow password logins to services like SSH; it reduces the likelihood of an account being compromised, but does not eliminate it due to the highly distributed nature of botnet attacks.
