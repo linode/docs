@@ -13,134 +13,212 @@ published: 'Friday, February 17th, 2012'
 title: Securing Your Server
 ---
 
-In the [Getting Started](/docs/getting-started) guide, you learned how to deploy Linux, boot your Linode, and perform some basic system administration tasks. Now it's time to secure your Linode and protect it from unauthorized access. You'll learn how to implement a firewall, SSH key pair authentication, and an automatic blocking mechanism called *Fail2Ban*. By the time you reach the end of this guide, your Linode will be protected from attackers.
+In the [Getting Started](/docs/getting-started) guide, you learned how to deploy Linux, boot your Linode, and perform some basic system administration tasks. Now it's time to secure your Linode and protect it from unauthorized access. You'll learn how to implement a firewall, SSH key pair authentication, and an automatic blocking mechanism called *Fail2Ban*.
 
-## Adding a New User
+## Add a Limited User Account
 
-In the [Getting Started](/docs/getting-started) guide, we asked you to login to your Linode as the `root` user, the most powerful user of all. The problem with logging in as `root` is that you can execute *any* command - even a command that could accidentally break your server. For this reason and others, we recommend creating another user account and using that at all times. After you log in with the new account, you'll still be able to execute superuser commands with the `sudo` command.
+Up to this point, you have been logging in to Linode as the `root` user. The problem with this is that root has unlimited privileges and can execute *any* command - even one that could accidentally break your server. For this reason and others, we recommend creating a limited user account and using that at all times. Administrative tasks will be done using `sudo` to temporarily elevate your limited user's privliges.
 
-To add a new user, [log in to your Linode](/docs/getting-started#sph_logging-in-for-the-first-time)  via SSH.
+To add a new user, [log in to your Linode](/docs/getting-started#sph_logging-in-for-the-first-time) via SSH.
 
 ### CentOS / Fedora
 
-1.  Create the user by entering the following command. Replace *exampleuser* with your desired username:
+1.  Create the user, replacing *example_user* with your desired username, and assign a password:
 
-        adduser exampleuser
+        adduser example_user && passwd example_user
 
-2.  Set the password for your new user by entering the following command.  Replace *exampleuser* with your desired username:
-
-        passwd exampleuser
-
-3.  Add the user to the *wheel* group for sudo privileges:
+2.  Add the user to the *wheel* group for sudo privileges:
 
     **CentOS 7 / Fedora**
 
-        usermod exampleuser -a -G wheel
+        usermod example_user -aG wheel
 
     **CentOS 6**
 
-        usermod -a -G wheel exampleuser
+        usermod -aG wheel example_user
 
 ### Debian / Ubuntu
 
-1.  Create the user with the following command. Replace *exampleuser* with your desired username:
+1.  Create the user, replacing *example_user* with your desired username. You'll then be asked to assign the user a password.
 
-        adduser exampleuser
+        adduser example_user
 
-2.  Add the user to the sudo group so you'll have administrative privileges:
+2.  Add the user to the *sudo* group so you'll have administrative privileges:
 
-        usermod -a -G sudo exampleuser
+        usermod -aG sudo example_user
 
 With your new user assigned, log out of your Linode as root:
 
     logout
 
-Log back in to your Linode as your new user. Replace *exampleuser* with your username, and the example IP address with your Linode's IP address:
+Log back in to your Linode as your new user. Replace *example_user* with your username, and the example IP address with your Linode's IP address:
 
-    ssh exampleuser@123.456.78.90
+    ssh example_user@123.456.78.9
 
-Now you can administer your Linode with the new user account instead of `root`. When you need to execute superuser commands in the future, preface them with `sudo`. For example, later in this guide you'll execute `sudo iptables -L` while logged in with your new account. Nearly all superuser commands can be executed with `sudo`, and all commands executed with `sudo` will be logged to `/var/log/auth.log`.
+Now you can administer your Linode with the new user account instead of `root`. Superuser commands can now be prefaced with `sudo`; for example, `sudo iptables -L`. Nearly all superuser commands can be executed with `sudo`, and all commands executed with `sudo` will be logged to `/var/log/auth.log`.
 
-## Using SSH Key Pair Authentication
+## Harden SSH Access
 
-You've used password authentication to connect to your Linode via SSH, but there's a more secure method available: *key pair authentication*. In this section, you'll generate a public and private key pair using your desktop computer and then upload the public key to your Linode. SSH connections will be authenticated by matching the public key with the private key stored on your desktop computer - you won't need to type your account password. When combined with the steps outlined later in this guide that disable password authentication entirely, key pair authentication can protect against brute-force password-cracking attacks.
+By default, password authentication is used to connect to your Linode via SSH, but this should be changed so that your connection requires a cryptographic keypair. A keypair is more secure because a private key takes the place of a password, which is generally much more difficult to bruteforce.
 
-Here's how to use SSH key pair authentication to connect to your Linode:
+### Create an Authentication Keypair
 
-1.  Generate the SSH keys on a desktop computer running Linux or Mac OS X by entering the following command in a terminal window *on your desktop computer*. PuTTY users can generate the SSH keys by following the windows specific instructions in the [Use Public Key Authentication with SSH Guide](/docs/security/use-public-key-authentication-with-ssh#windows-operating-system).
+1.  This is done on your local computer, **not** your Linode. The `ssh-keygen` default settings create a 2048-bit RSA keypair. During creation, you will be given the option to protect the keypair with a passphrase. This means that the key cannot be used without entering the passphrase. If unwanted, leave the fields blank and press **Enter** to finish.
+
+    **Linux / OS X**
+
+    This creates the key files `id_rsa` and `id_rsa.pub` in `/home/your_username/.ssh`.
 
         ssh-keygen
 
-2.  The *SSH keygen* utility appears. Follow the on-screen instructions to create the SSH keys on your desktop computer. To use key pair authentication without a passphrase, press Enter when prompted for a passphrase.
+    **Windows**
 
-    {: .note }
+    This can be done using PuTTY as outlined in our guide: [Use Public Key Authentication with SSH](/docs/security/use-public-key-authentication-with-ssh#windows-operating-system).
+
+2.  Upload the public key to your Linode. The `linde_user` should be the user you plan to administer the server as.
+
+    **Linux**
+
+    From your local computer:
+
+        ssh-copy-id linode_user@123.456.78.0
+
+    **OS X**
+
+    On your Linode:
+
+        sudo mkdir ~/.ssh && sudo chmod -R 700
+
+    From your local computer:
+
+        scp ~/.ssh/id_rsa.pub linode_user@123.456.78.9:~/.ssh/authorized_keys
+
+    {: .note}
     >
-    > Two files will be created in your \~/.ssh directory: `id_rsa` and `id_rsa.pub`. The public key is `id_rsa.pub` - this file will be uploaded to your Linode. The other file is your private key. Do not share this file with anyone!
+    >`ssh-copy-id` is available in Homebrew if you prefer it over direct SCP. Install with `brew ssh-copy-id`.
 
-3.  Upload the public key to your Linode with the *secure copy* command (`scp`) by entering the following command in a terminal window *on your desktop computer*. Replace `example_user` with your username, and `123.456.78.90` with your Linode's IP address. If you have a Windows desktop, you can use a third-party client like [WinSCP](http://winscp.net/) to upload the file to your home directory.
+    **Windows**
 
-        scp ~/.ssh/id_rsa.pub example_user@123.456.78.90:
+    This can be done using [WinSCP](http://winscp.net/).
 
-4.  Create a directory for the public key in your home directory (`/home/yourusername`) by entering the following command *on your Linode*:
+### SSH Daemon Options
 
-        mkdir .ssh
+1.  Now log back into your Linode. If you specified a passphrase for your RSA key, you'll need to enter it.
 
-5.  Move the public key in to the directory you just created by entering the following command *on your Linode*:
+2.  Disable SSH password authentication. This requires all users connecting via SSH to use key authentication.
 
-        mv id_rsa.pub .ssh/authorized_keys
-
-6.  Modify the permissions on the public key by entering the following commands, one by one, *on your Linode*. Replace `example_user` with your username.
-
-        chown -R example_user:example_user .ssh
-        chmod 700 .ssh
-        chmod 600 .ssh/authorized_keys
-
-The SSH keys have been generated and the public key has been installed on your Linode. You're ready to use SSH key pair authentication! To try it, log out of your terminal session and then log back in. The new session will be authenticated with the SSH keys and you won't have to enter your account password. (You'll still need to enter the passphrase for the key, if you specified one.)
-
-## Disabling SSH Password Authentication and Root Login
-
-You just strengthened the security of your Linode by adding a new user and generating SSH keys. Now it's time to make some changes to the default SSH configuration. First, you'll disable *password authentication* to require all users connecting via SSH to use key authentication. Next, you'll disable *root login* to prevent the `root` user from logging in via SSH. While these steps are optional, they are strongly recommended.
-
- {: .note }
->
-> You may want to leave password authentication enabled if you connect to your Linode from many different desktop computers. This will allow you to authenticate with a password instead of copying the private key to every computer.
-
-Here's how to disable SSH password authentication and root login:
-
-1.  Open the SSH configuration file for editing by entering the following command:
-
-        sudo nano /etc/ssh/sshd_config
-
-    {: .note }
-    >
-    > If you see a message similar to *-bash: sudo: command not found*, you'll need to install `sudo` on your Linode. To do so, login as root by entering the `su` command, and type the `root` password when prompted. Next, install `sudo` by entering the following command: `apt-get install sudo`. After `sudo` has been installed, logout as the `root` user by entering the `exit` command.
-
-2.  Change the `PasswordAuthentication` setting to `no` as shown below. Verify that the line is uncommented by removing the \# in front of the line, if there is one:
-
-        PasswordAuthentication no
-
-3.  Change the `PermitRootLogin` setting to `no` as shown below:
-
+    {: .file-exceprt}
+    /etc/ssh/sshd_config
+    :   ~~~ conf
+        # Authentication:
+        ...
         PermitRootLogin no
+        ~~~
 
-4.  Save the changes to the SSH configuration file by pressing **Control-X** and then **Y**.
-5.  Restart the SSH service to load the new configuration. Enter the following command:
+    {: .caution }
+    >
+    >You may want to leave password authentication enabled if you connect to your Linode from many different computers. This will allow you to authenticate with a password instead of copying the private key to every device.
 
-    **Debian/Ubuntu Users:**
+3.  Disallow root logins over SSH. This means that you must first SSH into your Linode as a limited user and then either run administrative commands with `sudo`, or change user to root using `su -`.
 
-        sudo service ssh restart
+    {: .file-exceprt}
+    /etc/ssh/sshd_config
+    :   ~~~ conf
+        # Change to no to disable tunnelled clear text passwords
+        PasswordAuthentication no
+        ~~~
 
-    **Fedora/CentOS:**
+        {: .note}
+        >
+        >Depending on the version of SSH your distro is using, the line `PasswordAuthentication` may need to be uncommented.
+
+4.  Restart the SSH service to load the new configuration.
+
+    If your Linux distribution uses systemd:
 
         sudo systemctl restart sshd
 
-After the SSH service restarts, the SSH configuration changes will be applied.
+    If your distro uses System V or Upstart:
 
-## Configuring a Firewall
+        sudo service ssh restart
+
+### Use Fail2Ban for SSH Login Protection
+
+[*Fail2Ban*](http://www.fail2ban.org/wiki/index.php/Main_Page) is an application which bans IP addresses from logging into your server after too many failed login attempts. Since legitimate logins usually take no more than 3 tries to happen (and with SSH keys, no more than 1), a server being spammed with unsuccessful logins indicates malicious attempts to access your Linode.
+
+Fail2Ban can monitor a variety of protocols including SSH, HTTP, and SMTP. By default, Fail2Ban monitors SSH only, and is a helpful security deterrant for any server because the SSH daemon is usually configured to run constantly and listen for connections from any remote IP address.
+
+For complete instructions on installing and configuring Fail2Ban, see our gudie: [Securing Your Server with Fail2ban]( /docs/security/securing-your-server-with-fail2ban).
+
+## Remove Unused Network-Facing Services
+
+Most Linux distributions install with runnng network services which listen for incoming connections from the internet, the loopback interface, or a combination of both. Network-facing services which are not needed should be removed from the system to reduce the attack surface of both running process and installed packages.
+
+### Determine Running Services
+
+To see your Linode's running network services:
+
+    sudo netstat -tulpn
+
+Using Debian 8 as an example, the output should look similar to this:
+
+~~~
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
+tcp        0      0 0.0.0.0:111             0.0.0.0:*               LISTEN      7315/rpcbind
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      3277/sshd
+tcp        0      0 127.0.0.1:25            0.0.0.0:*               LISTEN      3179/exim4
+tcp        0      0 0.0.0.0:42526           0.0.0.0:*               LISTEN      2845/rpc.statd
+tcp6       0      0 :::48745                :::*                    LISTEN      2845/rpc.statd
+tcp6       0      0 :::111                  :::*                    LISTEN      7315/rpcbind
+tcp6       0      0 :::22                   :::*                    LISTEN      3277/sshd
+tcp6       0      0 ::1:25                  :::*                    LISTEN      3179/exim4
+udp        0      0 127.0.0.1:901           0.0.0.0:*                           2845/rpc.statd
+udp        0      0 0.0.0.0:47663           0.0.0.0:*                           2845/rpc.statd
+udp        0      0 0.0.0.0:111             0.0.0.0:*                           7315/rpcbind
+udp        0      0 123.45.67.89:123        0.0.0.0:*                           3327/ntpd
+udp        0      0 127.0.0.1:123           0.0.0.0:*                           3327/ntpd
+udp        0      0 0.0.0.0:123             0.0.0.0:*                           3327/ntpd
+udp        0      0 0.0.0.0:705             0.0.0.0:*                           7315/rpcbind
+udp6       0      0 :::111                  :::*                                7315/rpcbind
+udp6       0      0 fe80::f03c:91ff:fec:123 :::*                                3327/ntpd
+udp6       0      0 2600:3c03::123 :::*                                3327/ntpd
+udp6       0      0 ::1:123                 :::*                                3327/ntpd
+udp6       0      0 :::123                  :::*                                3327/ntpd
+udp6       0      0 :::705                  :::*                                7315/rpcbind
+udp6       0      0 :::60671                :::*                                2845/rpc.statd
+~~~
+
+netstat tells us that services are running for [Remote Procedure Call](https://en.wikipedia.org/wiki/Open_Network_Computing_Remote_Procedure_Call) (rpc.statd and rpcbind), SSH (sshd), [NTPdate](http://support.ntp.org/bin/view/Main/SoftwareDownloads) (ntpd) and [Exim](http://www.exim.org/) (exim4).
+
+#### TCP
+
+See the **Local Addres** column of the netstat readout. The process `rpcbind` is listening on `0.0.0.0:111` and `:::111` for a foreign address of `0.0.0.0:*` or `:::*`. This means that it's accepting incoming TCP connections from other RPC clients on any external address, both IPV4 and IPv6, from any port and over any network interface. We see similar for SSH, and that Exim is listening locally for traffic from the loopback interface, as shown by the `127.0.0.1` address.
+
+#### UDP
+
+RPC use UDP too, as does NTPdate. UDP sockets are *[stateless](https://en.wikipedia.org/wiki/Stateless_protocol)*, meaning they are either open or closed and every process's connection is independent of those which occurred before and after. This is in contrast to TCP connection states such as *LISTEN*, *ESTABLISHED* and *CLOSE_WAIT*. 
+
+Our netstat output shows that NTPdate is: 1) accepting incoming connections on your Linode's public IP address; 2) communicates over localhost; and 3) accepts connections from external sources. These are over port 123, and both IPv4 and IPv6. We also see more sockets open for RPC.
+
+### Determine Which Services to Remove
+
+If you were to do a basic TCP and UDP [nmap](https://nmap.org/) scan of your Linode without a firewall enabled, SSH, RPC and NTPdate would be present in the result with ports open. These are security vulnerabilities which must be addressed. [Configuring a firewall](#configure-a-firewall) will filter those ports, with exception to SSH because it must allow your incoming connections. Ideally, however, the unused services should be removed from the operating system.
+
+* You will likely be administering your server primarily through an SSH connection, so that service needs to stay. As mentioned above, [RSA keys](/docs/security/securing-your-server/#create-an-authentication-keypair) and [Fail2Ban](/docs/security/securing-your-server/#use-fail2ban-for-ssh-login-protection) can help secure your use of SSH.
+
+* NTP is necessary for your server's timekeeping but there are alternatives to NTPdate. If you prefer a time synchronization method which does not open network ports, and you do not need nanosecond accuracy, then you may be interested in replacing NTPdate with [OpenNTPD](https://en.wikipedia.org/wiki/OpenNTPD).
+
+* Exim and RPC, however, are unnecessary unless you have a specific use for them, and should be removed.
+
+{: .note }
+>
+>This section focused on Debian 8. Different Linux distributions have different services enabled by default. If you are unsure of what a service does, do an internet search to understand what it is before attempting to remove or disable it.
+
+## Configure a Firewall
 
 Using a *firewall* to block unwanted inbound traffic to your Linode is a highly effective security layer. By being very specific about the traffic you allow in, you can prevent intrusions and network mapping from outside your LAN. A best practice is to allow only the traffic you need, and deny everything else. 
 
-[iptables](http://www.netfilter.org/projects/iptables/index.html) is the controller for netfilter, the Linux kernel's packet filtering framework. iptables is included in most Linux distros by default but is considered an advanced method of firewall control. Consequently, several projects exist to control iptables in a more user friendly way.
+[iptables](http://www.netfilter.org/projects/iptables/index.html) is the controller for netfilter, the Linux kernel's packet filtering framework. iptables is included in most Linux distros by default but is considered an advanced method of firewall control. Consequently, several projects exist to control iptables in a more user-friendly way.
 
 [FirewallD](http://www.firewalld.org/) for the Fedora distro family and [ufw](https://help.ubuntu.com/community/UFW) for the Debian family are the two common iptables controllers. This section will focus on iptables but you can see our guides on [FirewallD](/docs/security/firewalls/introduction-to-firewalld-on-centos) and [ufw](/docs/security/firewalls/configure-firewall-with-ufw) if you feel they may be a better choice for you.
 
@@ -168,13 +246,13 @@ By default, iptables has no rules set for both IPv4 and IPv6. As a result, on a 
 
 ### Basic iptables Rulesets for IPv4 and IPv6
 
-Appropriate firewall rules heavily depend on the services being run. Below are iptables rulesets to secure your Linode if you're running a web server. *These are given as an example!* A real production web server may want or require more or less configuration and these rules would not be appropriate for a file or database server, Minecraft or VPN server, etc.
+Appropriate firewall rules depend almost entirely on the services being run. Below are iptables rulesets to secure your Linode if you're running a web server. *These are given as an example!* A real production web server may want or require more or less configuration and these rules would not be appropriate for a file or database server, Minecraft or VPN server, etc.
 
 iptables rules can always be modified or reset later, but these basic rulesets serve only as a beginning demonstration.
 
 **IPv4**
 
-{:. file}
+{: .file}
 /tmp/v4
 :   ~~~ conf
     *filter
@@ -190,14 +268,14 @@ iptables rules can always be modified or reset later, but these basic rulesets s
     -A INPUT -p icmp --icmp-type 11 -j ACCEPT
 
     # Allow SSH connections.
-    -A INPUT -p tcp -m state --state NEW --dport 22 -j ACCEPT
+    -A INPUT -p tcp --dport 22 -m state --state NEW -j ACCEPT
 
     # Allow HTTP and HTTPS connections from anywhere
     # (the normal ports for web servers).
-    -A INPUT -p tcp --dport 80 -j ACCEPT
-    -A INPUT -p tcp --dport 443 -j ACCEPT
+    -A INPUT -p tcp --dport 80 -m state --state NEW -j ACCEPT
+    -A INPUT -p tcp --dport 443 -m state --state NEW -j ACCEPT
 
-    # Accept inbound traffic from established connections.
+    # Allow inbound traffic from established connections.
     -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
 
     # Log what was incoming but denied (optional but useful).
@@ -216,16 +294,23 @@ iptables rules can always be modified or reset later, but these basic rulesets s
     COMMIT
     ~~~
 
-**Optional:** If you plan to use [Linode Longview](https://www.linode.com/docs/platform/longview/longview), add this additional rule below the section for allowing HTTP and HTTPS connections:
+**Optional:** If you plan to use [Linode Longview](/docs/platform/longview/longview) or [Linode's NodeBalancers](/docs/platform/nodebalancer/getting-started-with-nodebalancers) add the respective rule below the section for allowing HTTP and HTTPS connections:
 
-    # Allow incoming Longview connections 
-    -A INPUT -s longview.linode.com -m state --state NEW -j ACCEPT
+~~~
+# Allow incoming Longview connections.
+-A INPUT -s longview.linode.com -m state --state NEW -j ACCEPT
+~~~
+
+~~~
+# Allow incoming NodeBalancer connections.
+-A INPUT -s 192.168.255.0/24 -m state --state NEW -j ACCEPT
+~~~
 
 **IPv6**
 
-If you would like to supplement your web server's IPv4 rules with IPv6 too, this ruleset will allow HTTP(S) access and all ICMP functions.
+If you would like to supplement your web server's IPv4 rules with IPv6 too, this ruleset will allow HTTP/S access and all ICMP functions.
 
-{:. file}
+{: .file}
 /tmp/v6
 :   ~~~ conf
     *filter
@@ -236,14 +321,14 @@ If you would like to supplement your web server's IPv4 rules with IPv6 too, this
     -A INPUT ! -i lo -s ::1/128 -j REJECT
 
     # Allow ICMP
-    -A INPUT  -p icmpv6 -j ACCEPT
+    -A INPUT -p icmpv6 -j ACCEPT
 
     # Allow HTTP and HTTPS connections from anywhere
     # (the normal ports for web servers).
-    -A INPUT -p tcp --dport 80 -j ACCEPT
-    -A INPUT -p tcp --dport 443 -j ACCEPT
+    -A INPUT -p tcp --dport 80 -m state --state NEW -j ACCEPT
+    -A INPUT -p tcp --dport 443 -m state --state NEW -j ACCEPT
 
-    # Accept inbound traffic from established connections.
+    # Allow inbound traffic from established connections.
     -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
 
     # Log what was incoming but denied (optional but useful).
@@ -264,7 +349,7 @@ If you would like to supplement your web server's IPv4 rules with IPv6 too, this
 
 Alternatively, the ruleset below should be used if you want to reject all IPv6 traffic:
 
-{:. file}
+{: .file}
 /tmp/v6
 :   ~~~ conf
     *filter
@@ -390,52 +475,63 @@ ufw is the iptables controller included with Ubuntu but is also available in Deb
 
 ### Verify iptables Rulesets
 
-Recheck your Linode's firewall rules:
+Recheck your Linode's firewall rules with the `v` option for a verbose output:
 
-    sudo iptables -L
-    sudo ip6tables -L
+    sudo iptables -vL
+    sudo ip6tables -vL
 
 The output should show for IPv4 rules:
 
-    Chain INPUT (policy ACCEPT)
-    target     prot opt source               destination
-    ACCEPT     all  --  anywhere             anywhere
-    REJECT     all  --  anywhere             loopback/8           reject-with icmp-port-unreachable
-    ACCEPT     icmp --  anywhere             anywhere             icmp destination-unreachable
-    ACCEPT     icmp --  anywhere             anywhere             icmp echo-request
-    ACCEPT     icmp --  anywhere             anywhere             icmp time-exceeded
-    ACCEPT     tcp  --  anywhere             anywhere             state NEW tcp dpt:ssh
-    ACCEPT     tcp  --  anywhere             anywhere             tcp dpt:http
-    ACCEPT     tcp  --  anywhere             anywhere             tcp dpt:https
-    ACCEPT     all  --  anywhere             anywhere             state RELATED,ESTABLISHED
-    LOG        all  --  anywhere             anywhere             limit: avg 5/min burst 5 LOG level debug prefix "iptables_INPUT_denied: "
-    REJECT     all  --  anywhere             anywhere             reject-with icmp-port-unreachable
+~~~
+Chain INPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination
+    0     0 ACCEPT     all  --  lo     any     anywhere             anywhere
+    0     0 REJECT     all  --  !lo    any     loopback/8           anywhere             reject-with icmp-port-unreachable
+    0     0 ACCEPT     icmp --  any    any     anywhere             anywhere             icmp destination-unreachable
+    0     0 ACCEPT     icmp --  any    any     anywhere             anywhere             icmp echo-request
+    0     0 ACCEPT     icmp --  any    any     anywhere             anywhere             icmp time-exceeded
+    0     0 ACCEPT     tcp  --  any    any     anywhere             anywhere             tcp dpt:ssh state NEW
+    0     0 ACCEPT     tcp  --  any    any     anywhere             anywhere             tcp dpt:http state NEW
+    0     0 ACCEPT     tcp  --  any    any     anywhere             anywhere             tcp dpt:https state NEW
+    0     0 ACCEPT     all  --  any    any     anywhere             anywhere             state RELATED,ESTABLISHED
+    0     0 LOG        all  --  any    any     anywhere             anywhere             limit: avg 5/min burst 5 LOG level debug prefix "iptables_INPUT_denied: "
+    0     0 REJECT     all  --  any    any     anywhere             anywhere             reject-with icmp-port-unreachable
 
-    Chain FORWARD (policy ACCEPT)
-    target     prot opt source               destination
-    LOG        all  --  anywhere             anywhere             limit: avg 5/min burst 5 LOG level debug prefix "iptables_FORWARD_denied: "
-    REJECT     all  --  anywhere             anywhere             reject-with icmp-port-unreachable
+Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination
+    0     0 LOG        all  --  any    any     anywhere             anywhere             limit: avg 5/min burst 5 LOG level debug prefix "iptables_FORWARD_denied: "
+    0     0 REJECT     all  --  any    any     anywhere             anywhere             reject-with icmp-port-unreachable
 
-    Chain OUTPUT (policy ACCEPT)
-    target     prot opt source               destination
+Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination
+~~~
 
 Output for IPv6 rules will look like this:
 
-    Chain INPUT (policy ACCEPT)
-    target     prot opt source               destination
-    REJECT     all      anywhere             anywhere             reject-with icmp6-port-unreachable
+~~~
+Chain INPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination
+    0     0 ACCEPT     all      lo     any     anywhere             anywhere
+    0     0 REJECT     all      !lo    any     localhost            anywhere             reject-with icmp6-port-unreachable
+    0     0 ACCEPT     ipv6-icmp    any    any     anywhere             anywhere
+    0     0 ACCEPT     tcp      any    any     anywhere             anywhere             tcp dpt:http state NEW
+    0     0 ACCEPT     tcp      any    any     anywhere             anywhere             tcp dpt:https state NEW
+    0     0 ACCEPT     all      any    any     anywhere             anywhere             state RELATED,ESTABLISHED
+    0     0 LOG        all      any    any     anywhere             anywhere             limit: avg 5/min burst 5 LOG level debug prefix "ip6tables_INPUT_denied: "
+    0     0 REJECT     all      any    any     anywhere             anywhere             reject-with icmp6-port-unreachable
 
-    Chain FORWARD (policy ACCEPT)
-    target     prot opt source               destination
-    REJECT     all      anywhere             anywhere             reject-with icmp6-port-unreachable
+Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination
+    0     0 LOG        all      any    any     anywhere             anywhere             limit: avg 5/min burst 5 LOG level debug prefix "ip6tables_FORWARD_denied: "
+    0     0 REJECT     all      any    any     anywhere             anywhere             reject-with icmp6-port-unreachable
 
-    Chain OUTPUT (policy ACCEPT)
-    target     prot opt source               destination
-    REJECT     all      anywhere             anywhere             reject-with icmp6-port-unreachable
+Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination
+~~~
 
 Your firewall rules are now in place and protecting your Linode. Remember, you may need to edit these rules later if you install other packages which require network access.
 
-### Inserting, Replacing or Deleting iptables Rules
+### Insert, Replace or Delete iptables Rules
 
 iptables rules are enforced in a top-down fashion, so the first rule in the ruleset is applied to traffic in the chain first, then the second, third and so on. This means that rules can not necessarily be added to a ruleset with `iptables -A` or `ip6tables -A`. Instead, we must *insert* a rule with `iptables -I` or `ip6tables -I`.
 
@@ -467,50 +563,10 @@ Deleting a rule is also done with the rule number. For example, to delete the ru
 >
 >Editing rules does not automatically save them! To accomplish this, see the area above for your distro and save your iptables edits so they're loaded on reboots.
 
-## Installing and Configuring Fail2Ban
-
-*Fail2Ban* is an application that prevents dictionary attacks on your server. When Fail2Ban detects multiple failed login attempts from the same IP address, it creates temporary firewall rules that block traffic from the attacker's IP address. Attempted logins can be monitored on a variety of protocols, including SSH, HTTP, and SMTP. By default, Fail2Ban monitors SSH only.
-
-Here's how to install and configure Fail2Ban:
-
-1.  Install Fail2Ban by entering the following command:
-
-    **Debian/Ubuntu**
-
-        sudo apt-get install fail2ban
-
-    **Fedora**
-
-        sudo dnf install fail2ban
-
-    **CentOS**
-
-        sudo yum install epel-release && sudo yum install fail2ban
-
-
-2.  Optionally, you can override the default Fail2Ban configuration by creating a new `jail.local` file. Enter the following command to create the file:
-
-        sudo nano /etc/fail2ban/jail.local
-
-    {: .note }
-    >
-    > To learn more about Fail2Ban configuration options, see [this article](http://www.fail2ban.org/wiki/index.php/MANUAL_0_8#Configuration) on the Fail2Ban website.
-
-3.  Set the `bantime` variable to specify how long (in seconds) bans should last.
-4.  Set the `maxretry` variable to specify the default number of tries a connection may be attempted before an attacker's IP address is banned.
-5.  Press `Control-x` and then press `y` to save the changes to the Fail2Ban configuration file.
-6.  Then restart Fail2Ban:
-
-    If you're using a distribution which uses systemd:
-
-        sudo systemctl restart fail2ban
-
-    If your init system is SystemV or Upstart:
-
-        sudo service fail2ban restart
-
-Fail2Ban is now installed and running on your Linode. It will monitor your log files for failed login attempts. After an IP address has exceeded the maximum number of authentication attempts, it will be blocked at the network level and the event will be logged in `/var/log/fail2ban.log`.
-
 ## Next Steps
 
-Good work! You have secured your Linode to harden it against unauthorized access. Next, you'll learn how to host a website. Start reading the [Hosting a Website](/docs/hosting-website) quick start guide to get going!
+These are the most basic steps to harden any Linux server, but further security layers will depend more heavily on its intended use. Additional techniques could be application configurations, using [intrusion detection](https://linode.com/docs/security/ossec-ids-debian-7) and installing a form of [access control](https://en.wikipedia.org/wiki/Access_control#Access_Control).
+
+Now you can begin setting up your Linode for any purpose you choose. We have a library of documentation to assist you with a variety of topics ranging from [migration from shared hosting](/docs/migrate-to-linode/migrate-from-shared-hosting) to [enabling two-factor authentication](/docs/security/linode-manager-security-controls) to [hosting a website](/docs/hosting-website).
+
+[Linode Guides & Tutorials](/docs/)
