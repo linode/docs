@@ -6,7 +6,7 @@ description: 'This guide will introduce you to FirewallD, its notions of zones a
 keywords: 'centos firewall,centos firewall config,centos firewall gui,centos configure firewall,Linux,Linode,cloud,firewall,firewalld,Fedora,CentOS,iptables,security'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 published: 'Monday, September 28th, 2015'
-modified: Monday, September 28th, 2015
+modified: Monday, October 12th, 2015
 modified_by:
     name: Linode
 title: Introduction to FirewallD on CentOS
@@ -143,7 +143,7 @@ Example output:
 
 To get all configurations for all zones:
 
-    firewall-cmd --list-all-zones
+    sudo firewall-cmd --list-all-zones
 
 Example output:
 
