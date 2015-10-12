@@ -261,15 +261,15 @@ Allow all IPv4 traffic from host 192.168.0.14.
 
 Deny IPv4 traffic over TCP from host 192.168.1.10 to port 22.
 
-    sudo firewall-cmd --zone=public --add-rich-rule rule family="ipv4" source address="192.168.1.10" port port=22 protocol=tcp reject
+    sudo firewall-cmd --zone=public --add-rich-rule 'rule family="ipv4" source address="192.168.1.10" port port=22 protocol=tcp reject'
 
 Allow IPv4 traffic over TCP from host 10.1.0.3 to port 80, and forward it locally to port 6532.
 
-    sudo firewall-cmd --zone=public --add-rich-rule rule family=ipv4 source address=10.1.0.3 forward-port port=80 protocol=tcp to-port=6532
+    sudo firewall-cmd --zone=public --add-rich-rule 'rule family=ipv4 source address=10.1.0.3 forward-port port=80 protocol=tcp to-port=6532'
 
 Forward all IPv4 traffic on port 80 to port 8080 on host 172.31.4.2 (masquerade should be active on the zone).
 
-    sudo firewall-cmd --zone=public --add-rich-rule rule family=ipv4 forward-port port=80 protocol=tcp to-port=8080 to-addr=172.31.4.2
+    sudo firewall-cmd --zone=public --add-rich-rule 'rule family=ipv4 forward-port port=80 protocol=tcp to-port=8080 to-addr=172.31.4.2'
 
 To list your current Rich Rules:
 
