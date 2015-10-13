@@ -5,8 +5,8 @@ author:
 description: 'Improve server uptime with Monit'
 keywords: 'Monit,monitoring,error handling,process restart'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-published: 'Friday, September 18th, 2015'
-modified: 'Saturday, September 26th, 2015'
+published: 'Tuesday October 13th, 2015'
+modified: 'Tuesday October 13th, 2015'
 modified_by:
     name: Linode
 title: 'Monitoring Servers with Monit'
@@ -18,21 +18,26 @@ external_resources:
  - '[Email-to-SMS gateways - Wikipedia](https://en.wikipedia.org/wiki/SMS_gateway)'
 ---
 
+*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
+
+<hr>
+
 Keeping tabs on your servers can be time-consuming. You need to make sure connectivity is good, processes are running but not running away, resources are available, and system health is good. Whether you have one server or many, it's something you may not do as often as you should. 
 
 [Monit](https://mmonit.com/) can watch your servers for you. You can tell Monit exactly what you would do if a program stops running, or begins using too much RAM, or another host becomes unreachable. Monit will watch around the clock, and respond to out-of-the-norm events by following your instructions.
 
 With Monit you get:
-- Automatic process maintenance in a lightweight package.
-- Capability to act on out-of-bounds values for CPU, RAM, disk, file size, age and more.
-- Monitoring of running services, and the ability to start, kill or restart.
-- Automatic email alerts sent at event triggers.
-- Web interface for status monitoring.
-- Availability from main package repositories.
+
+* Automatic process maintenance in a lightweight package.
+* Capability to act on out-of-bounds values for CPU, RAM, disk, file size, age and more.
+* Monitoring of running services, and the ability to start, kill or restart.
+* Automatic email alerts sent at event triggers.
+* Web interface for status monitoring.
+* Availability from main package repositories.
 
 {: .note}
 >
->The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+>The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
 ##Install
 
@@ -72,7 +77,7 @@ Debian and Ubuntu automatically start and enable Monit after installation.
 
 ### Restarting Monit
 
- If you're using a Linux distro with systemd:
+ If you're using a Linux distro with systemd (CentOS 7, Debian 8, Fedora 22):
 
     sudo systemctl restart monit
 
@@ -92,16 +97,16 @@ This is the interval (in seconds) at which Monit runs its tests. The value you c
 
 Consider setting the testing interval at up to 5 minutes if minimizing a load on your server is more important than instant alerts and responses.
 
-Include the delay line
+To have Monit delay starting on system boot, include the delay line:
 
     set daemon 300
         with start delay 240
 
-to have Monit delay starting on system boot. Other processes may take some time to complete their own startup. Including the delay line will prevent Monit from sending alerts that all services are down every time you boot the server.
+Other processes may take some time to complete their own startup. Including the delay line will prevent Monit from sending alerts that all services are down every time you boot the server.
 
 ###Alerting
 
-Monit can optionally alert you by email when it triggers on an event. It can use a Mail Transfer Agent (MTA) on the local host if you have one configured, or an outside mail server that will accept incoming SMTP traffic from your host. See [Linux System Administration Basics - Sending Email From Your Server](https://www.linode.com/docs/tools-reference/linux-system-administration-basics#sending-email-from-your-server) for help with configuring this.
+Monit can optionally alert you by email when it triggers on an event. It can use a Mail Transfer Agent (MTA) on the local host if you have one configured, or an outside mail server that will accept incoming SMTP traffic from your host. See [Linux System Administration Basics - Sending Email From Your Server](/docs/tools-reference/linux-system-administration-basics#sending-email-from-your-server) for help with configuring this.
 
 Specify what server you will send mail through on this line:
 
@@ -142,7 +147,7 @@ You can optionally restrict web interface access to just your IP address.
 
 {: .note}
 >
->If you choose to implement the web interface, be sure the port Monit uses (default 2812) is exposed to the devices on which you'll be viewing it. You may need to configure your firewall package or iptables if you have a default deny policy. See [Securing Your Server - Creating a Firewall](https://www.linode.com/docs/security/securing-your-server#creating-a-firewall). 
+>If you choose to implement the web interface, be sure the port Monit uses (default 2812) is exposed to the devices on which you'll be viewing it. You may need to configure your firewall package or iptables if you have a default deny policy. See [Securing Your Server - Configuring a Firewall](/docs/security/securing-your-server#configuring-a-firewall). 
 
 ##Configure Monit's Checking Actions
 
@@ -166,7 +171,7 @@ Most servers are running a set of critical services that are their reason for ex
     check process apache-server with pidfile /run/apache2.pid
         if cpu > 95% for 3 cycles then alert
 
-For the `check process` statement, Monit requires an associated .pid file. Many common Linux server programs put a .pid file within the `/run` directory (`/var/run` on earlier Debian versions.) You can look for the location of the .pid file in your program's documentation, man page, or init script. In this example, the apache2 process uses a file named apache2.pid in the `/run` directory. The result of this command sequence is that Monit will alert if this Apache process starts to use too much CPU for a minimum of three cycles. With `set daemon 300` defined in the global configuration, if apache uses more than 95% CPU for 3 x 300 seconds, or 15 minutes, then Monit will trigger.
+For the `check process` statement, Monit requires an associated .pid file. Many common Linux server programs put a `.pid` file within the `/run` directory (`/var/run` on earlier Debian versions.) You can look for the location of the `.pid` file in your program's documentation, man page, or init script. In this example, the `apache2` process uses a file named `apache2.pid` in the `/run` directory. The result of this command sequence is that Monit will alert if this Apache process starts to use too much CPU for a minimum of three cycles. With `set daemon 300` defined in the global configuration, if Apache uses more than 95% CPU for 3 x 300 seconds, or 15 minutes, then Monit will trigger.
 
 You can test more than one parameter in a single check statement. The Apache program spawns children as needed to serve requests. If a large number of requests come in and continue unabated for 25 minutes, the test added here will alert on it.
 
@@ -183,7 +188,7 @@ Monit can do more than simply check the resource utilization of a process. It su
         if cpu usage > 95% for 3 cycles then alert
         if failed port 80 protocol http then restart
 
-Plenty is happening in the newly added lines of this check statement, including the best feature of Monit: automated process management. In lines 2 and 3, Monit has been programmed on how to start and stop the process being checked. In line 6, Monit has been programmed to use HTTP on port 80 to send a GET request to this running instance of Apache. By default it will send a normal 'GET "/"' request. If Apache returns an HTTP status code of 400 or greater, Monit will alert _and_ restart the process using the commands given. 
+Plenty is happening in the newly added lines of this check statement, including the best feature of Monit: automated process management. In lines 2 and 3, Monit has been programmed on how to start and stop the process being checked. In line 6, Monit has been programmed to use HTTP on port 80 to send a GET request to this running instance of Apache. By default it will send a normal `GET "/"` request. If Apache returns an HTTP status code of 400 or greater, Monit will alert _and_ restart the process using the commands given. 
 
 The commands shown above are systemd compatible for a distribution using systemd (for example, Debian 8). If your server instead uses SysV or Upstart (ex. Debian 7 or Ubuntu 14.04), use these instead:
 
@@ -199,13 +204,13 @@ Monit can check filesystem properties such as whether a file exists, if its size
 
 This mail server is normally busy around the clock. If the mail.log file has not been touched for ten minutes, something is probably wrong and you should be alerted.
 
-You can also use the filesystem monitor to confirm that cron jobs have completed correctly. Add a line in your job script (that will only be reached upon success) to `touch <filename>`, then have Monit check the file's timestamp age. If it's an hourly job, use a value "> 65 minutes". If it's an overnight job, use "> 25 hours". The extra margin allows for some variability in job time-to-complete.
+You can also use the filesystem monitor to confirm that cron jobs have completed correctly. Add a line in your job script (that will only be reached upon success) to `touch <filename>`, then have Monit check the file's timestamp age. If it's an hourly job, use a value `> 65 minutes`. If it's an overnight job, use `> 25 hours`. The extra margin allows for some variability in job time-to-complete.
 
 So for example, consider a nightly backup script that cron can run in the wee hours. In that script should be a line that only executes after a successful backup:
 
     touch /tmp/backup-ok
 
-Then, in monitrc you'd have:
+Then, in `/etc/monit/monitrc` you'd have:
 
     check file nightly-backup with path /tmp/backup-ok
         if timestamp > 25 hours then alert
