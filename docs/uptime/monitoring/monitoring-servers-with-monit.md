@@ -2,14 +2,14 @@
 author:
     name: Linode Community
     email: docs@linode.com
-description: 'Improve server uptime with Monit'
-keywords: 'Monit,monitoring,error handling,process restart'
+description: 'Improve uptime with Monit Server Monitoring. Monit will watch you system around the clock, and respond to out-of-the-norm events by following your instructions.'
+keywords: 'installing Monit for server monitoring'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-published: 'Tuesday October 13th, 2015'
-modified: 'Tuesday October 13th, 2015'
+published: 'Thursday October 15th, 2015'
+modified: 'Thursday October 15th, 2015'
 modified_by:
     name: Linode
-title: 'Monitoring Servers with Monit'
+title: 'Installing Monit for Server Monitoring'
 contributor:
     name: Bill Bardon
     link: 
@@ -39,7 +39,7 @@ With Monit you get:
 >
 >The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
-##Install
+##Installing Monit
 
 Update your system and install Monit. Some distros require that Monit be manually enabled and started.
 
