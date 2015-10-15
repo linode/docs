@@ -26,18 +26,18 @@ In this guide, Apache and PHP modules will be created from scratch, and a MySQL 
 
         cd /etc/puppet/modules
         sudo mkdir apache
-        
+
 2.  From within the `apache` directory, create `manifests`, `templates`, `files`, and `examples` directories:
 
         cd apache
         sudo mkdir {manifests,templates,files,examples}
-        
+
 3.  Navigate to the `manifests` directory:
 
         cd manifests
         
     From here, the module will be seperated into classes, based upon the goals of that particular section of code. In this instance, there will be an `init.pp` class for downloading the Apache package, a `params.pp` file to define any variables and parameters, `config.pp` to managed any configuration files for the Apache service itself, and a `vhosts.pp` file to define the virtual hosts. This module will also make use of [Hiera](http://docs.puppetlabs.com/hiera/latest/) data to store variables for each node.
-    
+
 ### Create the Initial Apache Class and Parameters
 
 1.  From within the `manifests` directory, an `init.pp` class needs to be created. This class should share it's name with the module name:
@@ -72,7 +72,7 @@ In this guide, Apache and PHP modules will be created from scratch, and a MySQL 
     The `exec` command seen is used to execute a line of code -- in this instance, it will update the system. `$updatesys`, meanwhile, is the variable used to reference how the system will be update. This will be defined in the next step, when we make the `params.pp` class.
     
     The `package` resource allows for the management of a package. Generally, this is used to add, remove, or ensure a package is present. In most cases the name of the resource (`'apache'`, above) should be the name of the package being managed. Because of the difference in naming conventions, however, this resource is simply called `apache`, while the actual *name* of the package is called upon with the `name` reference. `name`, in this instance, calls for the yet-undefined variable `$apachename`. The `ensure` reference ensures that the package is `present`.
-    
+
 2.  Now that there are two variables that need to be defined, the `params.pp` class will come into play. While these variables could be defined within the `init.pp` code, because more variables will need to be used outside of the resource type itself, using a `params.pp` class allows for variables to be defined in if statements and used across multiple classes.
 
     Create and open `params.pp`:
@@ -86,7 +86,7 @@ In this guide, Apache and PHP modules will be created from scratch, and a MySQL 
         ~~~
         
     Outside of the original `init.pp` class, each class name needs to branch off of `apache`. As such, this class is called `apache::params`. The name after the double colon should share a name with the file.
-    
+
 3.  The parameters should now be defined. To do this, an `if` statement will be used, pulling from information provided by [Facter](https://puppetlabs.com/facter), which is already installed on the Puppet master. In this case, Facter will be used to pull down the operating system family (`osfamily`), to decern if it is Red Hat or Debian-based.
 
     The skeleton of the `if` statement should resemble the following:
@@ -130,7 +130,7 @@ In this guide, Apache and PHP modules will be created from scratch, and a MySQL 
     {: .note}
     >
     >For the duration of this guide, when something needs to be added to the parameter list the variables needed for Red Hat and Debian will be provided, but the expanding code will not be shown. A complete copy of `params.pp` can be viewed [here](/docs/assets/params.pp).
-    
+
 4.  With the parameters finally defined, we need to call the `params.pp` file and the parameters into `init.pp`. To do this, the parameters need to be added after the class name, but before the opening curly bracket (`{`):
 
     {: .file-excerpt}
@@ -143,7 +143,7 @@ In this guide, Apache and PHP modules will be created from scratch, and a MySQL 
         ~~~
         
     The value string `$::apache::params::value` tells Puppet to pull the values from the `apache` modules, `params` class, followed by the parameter name. The fragment `inherits ::apache::params` allows for `init.pp` to inherit these values.
-    
+
 
 ### Manage Configuration Files
 
@@ -159,7 +159,7 @@ Apache has two different configuration files, depending on whether you are worki
     :   ~~~ conf
         # This file is managed by Puppet
         ~~~
-        
+
 3.  These files now need to be added to the `init.pp` file, so Puppet will know where they are located on both the master server and agent nodes. To do this, the `file` resource is used:
 
     {: .file-excerpt}
@@ -173,7 +173,7 @@ Apache has two different configuration files, depending on whether you are worki
         ~~~
         
     Because the configuation file is in two different located the resource is given the generic name `configuration-file`, with the file path defined as a parameter with the `path` attribute. `ensure` ensures that it is file, and `source` is another parameter, which will call to where the master files created above are located on the Puppet master.
-    
+
 4.  Open the `params.pp` file. The `$conffile` and `$confsource` variables need to be defined within the `if` statement:
 
     {: .file-excerpt}
@@ -197,7 +197,7 @@ Apache has two different configuration files, depending on whether you are worki
         ~~~
         
     These parameters will also need to be added to the `init.pp` file, following the example of the additional parameters. A complete copy of the `init.pp` file can be seen [here](/docs/assets/puppet_apacheinit.pp).
-    
+
 5.  When the configuration file is changed, Apache needs to restart. To automate this, the `service` resource can be used, in combination with the `notify` attribute, which will call the resource to run whenever the configuration file is changed:
 
     {: .file-excerpt}
@@ -217,6 +217,7 @@ Apache has two different configuration files, depending on whether you are worki
         ~~~
         
     The `service` resource uses the already-created parameter that defined the Apache name on RedHat and Debian systems. The `hasrestart` attribute will trigger a restart of the defined service.
+
 
 ### Create the Virtual Hosts Files
 
@@ -241,7 +242,7 @@ The Virtual Hosts files will be managed differently depending on if the server i
         
         }
         ~~~
-        
+
 3.  On our CentOS 7 server the location of the virtual hosts file is `/etc/httpd/conf.d/vhost.conf`. This file will need to be created as a template on the Puppet master. The same needs to be done for the Ubuntu virtual hosts file, which is located at `/etc/apache2/sites-available/example.com.conf`, replacing `example.com` with the server's FQDN. The template for this file also needed to be created on the Puppet master. Navigate to the `templates` file within the `apache` module, and then create two files for your virtual hosts:
 
     For RedHat systems:
@@ -278,7 +279,7 @@ The Virtual Hosts files will be managed differently depending on if the server i
         ~~~
         
     Only two variables are used in these files: `adminemail` and `servername`. These will be defined on a node-by-node basis, within the `site.pp` file.
-    
+
 4.  Return to the `vhosts.pp` file. The templates created can now be referenced in the code:
 
     {: .file}
@@ -308,7 +309,7 @@ The Virtual Hosts files will be managed differently depending on if the server i
         {: .note}
         >
         >Values containing variables, such as the name of Debian file resource above, need to be wrapped in double quotes (`"`). Any variables in single quotes (`'`) are parsed exactly as written, and will not pull in a variable.
-        
+
 5.  Both virtual hosts file reference two directories that are not on the distributions by default. These can be created through the use of the `file` resource, each located within the `if` statement. The complete `vhosts.conf` file should resemble:
 
     {: .file}
@@ -351,8 +352,8 @@ The Virtual Hosts files will be managed differently depending on if the server i
         
         }
         ~~~
-         
-        
+
+
 ### Test and Run the Module
 
 1.  From within the `apache/manifests/` directory, run the `puppet parser` on all files to ensure the Puppet coding is without error:
@@ -372,13 +373,13 @@ The Virtual Hosts files will be managed differently depending on if the server i
         include apache
         include apache::vhosts
         ~~~
-        
+
 3.  Test the module by running `puppet apply` with the `--noop` tag:
 
         sudo puppet apply --noop init.pp
         
     It should return no errors, and output that it will trigger refreshes from events. If desired, this can be run again without `--noop` to install and configure apache on the Puppet master.
-    
+
 4.  Navigate back to the main Puppet directory, and then to the `manifests` folder (**not** the one located in the Apache module). If you are continuing this guide from the [Puppet Setup]() guide, you should have a `site.pp` file already created. If not, create one now.
 
 5.  Open `site.pp` and include the Apache module for each agent node. Also input the variables for the `adminemail` and `servername` parameters. If having followed the [Puppet Configuration]() guide, a single node configuration within `site.pp` will resemble the following:
@@ -407,11 +408,11 @@ The Virtual Hosts files will be managed differently depending on if the server i
         
           }
         ~~~
-        
+
 6.  To run the new module on your agent nodes, log into the nodes and run:
 
         sudo puppet agent -t
-        
+
 
 ## Using the MySQL Module
 
@@ -422,7 +423,7 @@ Install the [Puppet Forge's MySQL module](https://forge.puppetlabs.com/puppetlab
     sudo puppet module install puppetlabs-mysql
 
 It will also install any prerequisite modules.
-        
+
 ### Use Hiera to Create Databases
 
 Before we begin with creating the configuration files for the MySQL module, it should be addressed that we may not want the same values to be used across all agent nodes. To supply Puppet with the correct data per node, Hiera is used. In this instance, we will be using a different root password per node, and different MySQL databases will be created.
@@ -442,20 +443,20 @@ Before we begin with creating the configuration files for the MySQL module, it s
         ~~~
         
     The value under `:backends:` defines that we are writing our data in YAML, whereas `:datadir:` calls to the directory where the Hiera data will be stored. The `:hierarchy:` section denotes that our data will be saved in files under the `node` directory, then a file named after the node's FQDN. A `common` file will also contain default variables.
-    
+
 2.  Ensure you are in the `/etc/puppet/` directory, then create a directory for `hieradata` and `nodes`:
 
         sudo mkdir -p hieradata/nodes
-        
+
 3.  Navigate to the `nodes` directory:
 
         cd hieradata/node
-        
+
 4.  Use the `puppet cert` command to list what nodes are available, then create a YAML file for each, using the FQDN as the file's name:
 
         sudo puppet cert list --all
         sudo touch {hostname1.example.com.yaml,hostname2.example.com.yaml}
-        
+
 5.  Open the first node's configuration file to define the first database. In this example the database is called `webdata1`, with `username` and `password` self-defined. The `grant` value is granting the user all access to the webdata1 database:
 
     {: .file}
@@ -481,7 +482,7 @@ Before we begin with creating the configuration files for the MySQL module, it s
         ~~~
         
     Save and close the files.
-    
+
 6.  Return to the `hieradata` directory, and create the file `common.yaml`. It will be used to define the default `root` password for MySQL:
 
     {: .file}
@@ -491,7 +492,7 @@ Before we begin with creating the configuration files for the MySQL module, it s
         ~~~
         
     The `common.yaml` file is used when a variable is not defined elsewhere. This means all servers will share the same MySQL root password. These passwords can also be hashed to increase security.
-    
+
 7.  Puppet now needs to know to use the information input in Hiera to cerate the defined databased. Move to the `mysql` module directory, and within the `manifests` directory create `database.pp`. Here we call define a class that will link the `mysql::db` resource to the Hiera data. It will also call the `mysql::server` class, so it will not have to be included later:
 
     {: .file}
@@ -504,7 +505,7 @@ Before we begin with creating the configuration files for the MySQL module, it s
           create_resources('mysql::db', hiera_hash('databases'))
         }
         ~~~
-        
+
 8.  Include `include mysql::database` within your `site.pp` file for both nodes.
 
 
@@ -515,7 +516,7 @@ Before we begin with creating the configuration files for the MySQL module, it s
         sudo mkdir php
         cd php
         sudo mkdir {files,manifests,examples,templates}
-        
+
 2.  Create and open `init.pp`. Because all that needs to be done is install and ensure the PHP service is on and able to start on boot, all code will be contained in this file.
 
 3.  Two packages will be installed: The PHP package, and the PHP Extension and Application Repository. Use the `package` resource for this:
@@ -561,7 +562,7 @@ Before we begin with creating the configuration files for the MySQL module, it s
         
         }
         ~~~
-        
+
 4.  Use the `service` resource to ensure that PHP is on and set to start at boot:
 
     {: .file}
