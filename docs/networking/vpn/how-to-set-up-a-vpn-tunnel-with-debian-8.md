@@ -159,77 +159,13 @@ In [part one](/docs/networking/vpn/set-up-a-hardened-openvpn-server-on-debian-8)
 
 In [part one](/docs/networking/vpn/set-up-a-hardened-openvpn-server-on-debian-8), the option was given to disable IPv6. If you choose to keep that setup, then these steps can be skipped.
 
-{: .caution }
->
->IPv6 can leak your public IP address if improperly configured. Many commercial VPN providers stop this by disabling IPv6 altogether. If you choose to use IPv6 on your VPN, care must be taken with its setup.
-
-1.  Create a new IPv6 rule file **using the ruleset below**. Again `iptables-persistent` is assumed to be present on either a Debian or Ubuntu system.
-
-    {: .file}
-    /etc/iptables/rules.v6
-    :   ~~~ conf
-
-        *filter
-
-        # Allow all loopback (lo) traffic and reject traffic
-        # to localhost that does not originate from lo.
-        -A INPUT -i lo -j ACCEPT
-        -A INPUT ! -i lo -s ::1 -j REJECT
-        -A OUTPUT -o lo -j ACCEPT
-
-        #Allow pings.
-        -A INPUT -p icmpv6 -j ACCEPT
-        -A OUTPUT -p icmpv6 -j ACCEPT
-
-        # Allow DNS resolution.
-        -A INPUT -i eth0 -p udp -m state --state ESTABLISHED --sport 53 -j ACCEPT
-        -A OUTPUT -o eth0 -p udp -m state --state NEW,ESTABLISHED --dport 53 -j ACCEPT
-
-        #Allow UDP traffic on port 1194.
-        -A INPUT -i eth0 -p udp -m state --state NEW --dport 1194 -j ACCEPT
-        -A OUTPUT -o eth0 -p udp -m state --state ESTABLISHED --sport 1194 -j ACCEPT
-
-        #Allow traffic on the TUN interface.
-        -A INPUT -i tun0 -j ACCEPT
-        -A FORWARD -i tun0 -j ACCEPT
-        -A OUTPUT -o tun0 -j ACCEPT
-
-        # Allow forwarding traffic only from the VPN.
-        -A FORWARD -i tun0 -o eth0 -m state --state NEW -j ACCEPT
-        -A FORWARD -m state --state ESTABLISHED,RELATED -j ACCEPT
-
-        # Log any packets which don't fit the rules above...
-        # (optional but useful)
-        -A INPUT -m limit --limit 3/min -j LOG --log-prefix "ip6tables_INPUT_denied: " --log-level 4
-        -A INPUT -m limit --limit 3/min -j LOG --log-prefix "ip6tables_FORWARD_denied: " --log-level 4
-        -A INPUT -m limit --limit 3/min -j LOG --log-prefix "ip6tables_OUTPUT_denied: " --log-level 4
-
-        # then reject them.
-        -A INPUT -j REJECT
-        -A FORWARD -j REJECT
-        -A OUTPUT -j REJECT
-
-        COMMIT
-        ~~~
-
-3.  Import the ruleset:
-
-        sudo ip6tables-restore < /etc/iptables/rules.v6
-
-    {: .note }
-    >
-    >IPv6 does not use NAT, so a routing rule similar to as was done above for IPv4 is not needed.
-    >
-    >We also don't need to run `iptables-persistent` again because we're modifying both the current rules, and the `rules.v*` file which the package reads from on boot.
-
 ### sysctl
 
-1.  The kernel must then be told it can forward incoming IPv4 and iPv6 traffic.
+1.  The kernel must then be told it can forward incoming IPv4 traffic.
 
         echo 'net.ipv4.ip_forward=1' >> /etc/sysctl.d/99-sysctl.conf
-        echo 'net.ipv6.conf.all.forwarding=1' >> /etc/sysctl.d/99-sysctl.conf
-
-2.  Apply the sysctl changes and restart the OpenVPN daemon:
+        
+2.  Apply the change and restart the OpenVPN daemon:
 
         sudo sysctl -p && sudo systemctl restart openvpn
 

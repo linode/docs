@@ -36,7 +36,7 @@ There are [two ways to do this](https://openvpn.net/index.php/access-server/sect
 
 The second menthod is using [OpenVPN Access Server](https://openvpn.net/index.php/access-server/overview.html), a server-side application which lets you configure these things through a GUI in your web browser. Client machines access a private URL to download their credential packages.
 
-For small applications, OpenVPN Access Server is the more streamlined and user-friendly method. The free version allows up to two simultaneous administrators (OpenVPN Access calls them "users") and more can be added by buying licensing. For more advanced configurations than what the GUI offers though, you would still need to resort to editing config files.
+For small applications, OpenVPN Access Server is the more streamlined and user-friendly method. The free version allows up to two simultaneous users and though each user can have as many client devices as they like, a user's clients will all have the same keys and certificates; more can be added by buying licensing. For more advanced configurations than what the GUI offers though, you would still need to resort to editing config files.
 
 If you are interested getting OpenVPN Access Server running on your Linode, see our guide: [Secure Communications with OpenVPN Access Server](docs/networking/vpn/openvpn-access-server). **The remainder of *this* guide will focus on the manual configuration method using OpenVPN Community Edition.**
 
@@ -396,7 +396,7 @@ We'll again be working out of the `easy-rsa` directory so be sure you're in that
 
 ### Client Credentials
 
-Each client device connecting to the VPN should have its own unique key. Further, each key should have its own identifier (client1, client2, etc.) but all other certificate information can remain the same. **If you need to add users at any later time, just repeat this step.**
+Each client device connecting to the VPN should have its own unique key. Further, each key should have its own identifier (client1, client2, etc.) but all other certificate information can remain the same. **If you need to add users at any later time, just repeat this step** from the `/etc/openvpn/easy-rsa` folder.
 
     source ./vars && ./build-key client1
 
@@ -430,7 +430,7 @@ Each client also needs a configuration file defining the OpenVPN server's settin
     >
     >A hostname would work too but since all Linodes have static public IP addresses, it's preferable for security reasons to connect by IP and bypass the DNS lookup.
 
-3.  Tell the client-side OpenVPN service to drop root priviledges.
+3.  Tell the client-side OpenVPN service to drop root priviledges. For non-Windows machines only. If you want to give the client-side OpenVPN daemon its own user as was done on the server, be sure to specify the user name here.
 
     {: .file }
     /etc/openvpn/easy-rsa/keys/client.ovpn
@@ -440,7 +440,7 @@ Each client also needs a configuration file defining the OpenVPN server's settin
         group nogroup
         ~~~
 
-4.  Further down in the file, edit the `cert` and `key` lines to reflect the name of your key and their location *on the client device*. If you intend to add Android or iOS devices to your VPN, in Part 3 of this series for client devices we'll handle keys and certificates a little differently. That means that these three lines can be commened out.
+4.  Further down in the file, edit the `crt` and `key` lines to reflect the names and locations **on the client device**. Specify the path to the file if these and `client.ovpn` will not be stored in the same folder.
 
     {: .file-excerpt}
     /etc/openvpn/easy-rsa/keys/client.ovpn
@@ -451,31 +451,29 @@ Each client also needs a configuration file defining the OpenVPN server's settin
         # a separate .crt/.key file pair
         # for each client.  A single ca
         # file can be used for all clients.
-        /etc/openvpn/keys ca.crt
-        /etc/openvpn/keys client1.crt
-        /etc/openvpn/keys client1.key
+        ca ca.crt
+        cert client1.crt
+        key client1.key
         ~~~
 
-5.  Tell the client to use the HMAC key we generated earlier above; again specify the absolute path.
+5.  Tell the client to use the HMAC key we generated earlier above; again specify the path if necessary.
 
     {: .file-excerpt}
     /etc/openvpn/easy-rsa/keys/client.ovpn
     :   ~~~ conf
         # If a tls-auth key is used on the server
         # then every client must also have the key.
-        tls-auth /etc/openvpn/keys/ta.key 1
+        tls-auth /path/to/file/ta.key 1
         ~~~
 
-6.  Since we're forcing certain cryptographic settings on the VPN server, the clients should have the same settings. Add these lines to the end of `client.ovpn`:
+6.  Since we're forcing certain cryptographic settings on the VPN server, the clients must have the same settings. Add these lines to the end of `client.ovpn`:
 
         cipher AES-256-CBC
         auth SHA512
         
-    {: .note }
-    >
-    >If you added any lines for Control Channel cipher suites to the server above ([step 6](/docs/networking/vpn/how-to-install-and-configure-an-openvpn-server-on-debian-8#harden-openvpn) of Harden OpenVPN, add those lines to `client.ovpn` too.
+    If you added any lines for Control Channel cipher suites to the server above ([step 6](/docs/networking/vpn/how-to-install-and-configure-an-openvpn-server-on-debian-8#harden-openvpn) of Harden OpenVPN, add those lines to `client.ovpn` too.
 
-7.  Pack all the necessary client files into a tarball ready for transferring. The specific pecifically we want:
+7.  Pack all the necessary client files into a tarball ready for transferring. The specific files we want are:
 
     *  `/etc/openvpn/easy-rsa/keys/ca.crt`
     *  `/etc/openvpn/easy-rsa/keys/client1.crt`
@@ -486,6 +484,10 @@ Each client also needs a configuration file defining the OpenVPN server's settin
     ~~~
     tar -C /etc/openvpn/easy-rsa/keys -cvzf /etc/openvpn/client1.tar.gz {ca.crt,client1.crt,client1.key,client.ovpn,ta.key}
     ~~~
+
+    {: .note}
+    >
+    >Windows will need [7zip](http://www.7-zip.org/) to extract `.tar` files.
 
 8.  We no longer need to be `root` so change back to your standard user:
 

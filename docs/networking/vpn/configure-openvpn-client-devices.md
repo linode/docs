@@ -83,7 +83,7 @@ Android uses OpenVPN Connect to manage OpenVPN connections. If you have a Linux 
 
 ### IaaS
 
-There are situations where you could want to access your Linode's OpenVPN server from another Linode or server. Many of the steps to do this are similar with the intitial OpenVPN server setup in ***
+This scenario is one where you have several Linodes or remote severs you want to include in your VPN, with one additional acting as an edge or gateway device for them all, which your local machine would then be able to access them through.
 
 1.  Install OpenVPN:
 
@@ -210,9 +210,7 @@ It is ideal for VPN clients to store their own DNS resolver addresses. This can 
 
 ### OS X
 
-Apple OS X does not natively support the OpenVPN protocol and there is no community project to release pre-built OpenVPN binaries; to use OpenVPN on OS X you must compile from source.
-
-Instead, [Tunnelblick](https://tunnelblick.net/) is a free and open source application that lets you control OpenVPN connections on OS X. Tey have an excellent installation guide [here](https://www.tunnelblick.net/cInstall.html).
+Apple OS X does not natively support the OpenVPN protocol. [Tunnelblick](https://tunnelblick.net/) is a free and open source application that lets you control OpenVPN connections on OS X. They have an excellent installation guide [here](https://www.tunnelblick.net/cInstall.html).
 
 {: .note }
 >
