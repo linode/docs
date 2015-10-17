@@ -151,3 +151,11 @@ Now we have everything configured correctly, we need to start our web server.
  
         sudo /usr/local/nginx/sbin/nginx -s stop
 
+##Check module is working or not
+
+Now, you have compiled and configured the module. You may want to check if the module is working or not before deploying the application. Issue the following command at the terminal of your local machine (ie. your computer).
+
+    curl -I website_url_or_IP_adress
+    
+You will see something like this `X-Page-Speed: 1.9.32.6` in the response.
+
