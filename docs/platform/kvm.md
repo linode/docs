@@ -94,3 +94,28 @@ There are two ways to enable KVM mode for your Linodes:
 * **Future Linodes:** You can configure your user account to automatically create new Linodes using KVM. To do this, go to your [Linode Manager](https://manager.linode.com), then the **Account** tab, and then click on the **Account Settings** link. On the Account Settings page is a section called **Hypervisor Preference**. Set the preference to *KVM* and submit the form.
 
   [![Setting the account settings for the KVM hypervisor.](/docs/assets/kvm_account_setting_small.png)](/docs/assets/kvm_account_setting.png)
+
+## Troubleshooting
+
+There have been a few minor issues reported when upgrading to KVM. If you're using any of the Linux distributions listed below and encounter an issue, please read on. If you are running a different distribution, or encounter an issue not listed here, please contact [Support](/docs/platform/support).
+
+### CentOS 6
+
+There are some reported cases of Linodes running CentOS 6.X that lose network connectivity after upgrading. To resolve this issue, open the [LISH Console](/docs/networking/using-the-linode-shell-lish) and run:
+
+    rm -f /etc/udev/rules.d/70-persistent-net.rules
+
+Then reboot the Linode. 
+
+### Arch Linux
+
+Current versions of Arch are being affected by a SystemD issue on KVM hosts. The latest version of systemd (226-1+) uses "Predicatble Network Interface Names", which prevent the network interface on our platform from being brought online at boot.
+
+You can disable the use of Predictable Network Interface Names with the command below. 
+
+    ln -s /dev/null /etc/udev/rules.d/80-net-setup-link.rules
+
+If have already upgraded and lost connectivity to your Linode, you will need to use the [LISH Console](/docs/networking/using-the-linode-shell-lish) to regain access to your Linode to run this command. Once you've done so, manually restart the DHCP client daemon:
+
+     systemctl restart dhcpcd.service
+
