@@ -109,13 +109,10 @@ Then reboot the Linode.
 
 ### Arch Linux
 
-Current versions of Arch are being affected by a SystemD issue on KVM hosts. The latest version of systemd (226-1+) uses "Predicatble Network Interface Names", which prevent the network interface on our platform from being brought online at boot.
+Current versions of Arch are being affected by a SystemD issue on KVM hosts. The latest version of systemd (226-1+) uses "Predictable Network Interface Names", which prevent the network interface on our platform from being brought online at boot.
 
 You can disable the use of Predictable Network Interface Names with the command below. 
 
     ln -s /dev/null /etc/udev/rules.d/80-net-setup-link.rules
 
-If have already upgraded and lost connectivity to your Linode, you will need to use the [LISH Console](/docs/networking/using-the-linode-shell-lish) to regain access to your Linode to run this command. Once you've done so, manually restart the DHCP client daemon:
-
-     systemctl restart dhcpcd.service
-
+If have already upgraded and lost connectivity to your Linode, you will need to use the [LISH Console](/docs/networking/using-the-linode-shell-lish) to regain access to your Linode to run this command. Once you've done so, reboot your system.
