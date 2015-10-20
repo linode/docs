@@ -296,6 +296,6 @@ From here on out, the [official Kibana documentation](https://www.elastic.co/gui
 
 - Calculate the average or sum of total bytes sent over the web server over a period of time.
 - Aggregate (rank occurrences) of the top response code sent by your webserver (i.e., 200, 404, etc.).
-- Search with fast, freetext across all your logs using Elasticsearch.
+- Perform fast freetext search across all your logs using Elasticsearch.
 
 In addition, you can reference the list of [Logstash filters](https://www.elastic.co/guide/en/logstash/current/filter-plugins.html) to find ways to enrich your data with filters, like `geoip` to create maps, `useragent` to analyze user traffic, or [create your own](https://www.elastic.co/guide/en/logstash/current/contributing-to-logstash.html)!
