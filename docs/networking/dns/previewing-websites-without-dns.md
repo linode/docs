@@ -6,9 +6,9 @@ description: 'A guide to testing a website for a domain before the DNS records a
 keywords: 'dns, website, preview'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['dns-guides/preview-websites/']
-modified: Thursday, January 16th, 2014
+modified: Monday, June 22, 2015
 modified_by:
-  name: Alex Fornuto
+  name: Steve Piercy
 published: 'Thursday, January 16th, 2014'
 title: Previewing Websites Without DNS
 external_resources:
@@ -85,8 +85,13 @@ Add a new line to your hosts file. It should contain the IP address of your Lino
 
 Please note that on some systems pressing tab will align to the previous lines, and may not appear as a full tabbed whitespace. This is OK.
 
-On OS X systems, you will need to flush the DNS cache if you've already visited or looked up the domain before. You should run the following command from a Terminal prompt:
+On OS X systems, you will need to flush the DNS cache if you've already visited or looked up the domain before. The [command to do so varies according to your version of Mac OS X](https://support.apple.com/en-us/HT202516). In Terminal from a shell prompt:
 
+    # Yosemite (10.10)
+    discoveryutil mdnsflushcache
+    # Mavericks, Mountain Lion, and Lion (10.7 - 10.9)
+    killall -HUP mDNSResponder
+    # Snow Leopard (10.6 and older)
     dscacheutil -flushcache
 
 On Linux systems the need to flush local DNS cache will vary.
