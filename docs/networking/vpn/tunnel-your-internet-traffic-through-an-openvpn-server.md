@@ -147,6 +147,14 @@ Since now we want the server to forward traffic out to the internet from clients
 
         sudo iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -o eth0 -j MASQUERADE
 
+5.  The kernel must then be told it can forward incoming IPv4 traffic.
+
+        echo 'net.ipv4.ip_forward=1' >> /etc/sysctl.d/99-sysctl.conf
+
+6.  Restart OpenVPN with:
+
+sudo systemctl restart openvpn*.service
+
 ## Next Steps
 
 Server-side configuration is complete but now the VPN clients need to be set up. Move on to part three: [Configuring OpenVPN Client Devices](/docs/networking/vpn/configuring-openvpn-client-devices).
