@@ -3,14 +3,14 @@ deprecated: false
 author:
   name: Ryan Laverdiere
   email: 
-description: 'Learn how to install the latest stable version of Nginx on Debian 8 (Jessie) and deploy a SSL certificate from StartSSL.'
-keywords: 'startssl, nginx, install nginx, install nginx on debian 8, ssl certificate, debian 8 (jessie)'
+description: 'Learn how to install the latest stable version of Nginx on Debian 8 (Jessie) and deploy an SSL certificate from StartSSL.'
+keywords: 'startssl, nginx, debian 8, ssl certificate, debian 8 (jessie)'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['websites/nginx/startssl-wth-latest-nginx-debian-7/']
-modified: Friday, October 16th, 2015
+modified: Friday, October 21st, 2015
 modified_by:
   name: Ryan Laverdiere
-published: Friday, October 16, 2015
+published: Friday, October 21st, 2015
 title: 'How to Install Nginx and a StartSSL Certificate on Debian 8 (Jessie)'
 contributor:
     name: Ryan Laverdiere
