@@ -9,40 +9,44 @@ published: 'Weekday, Month 00th, 2015'
 modified: Weekday, Month 00th, 2015
 modified_by:
 	name: Linode
-title: 'How To Install Odoo 9 ERP on CentOS 7.x'
+title: 'Install Odoo 9 ERP on CentOS 7.x'
 contributor:
 	name: Damaso Sanoja
-	link: Github/Twitter Link
+	link: https://github.com/damasosanoja
+external_resources:
+ - '[Odoo User Documentation](https://doc.odoo.com/book/)'
 ---
 
-#How To Install Odoo 9 ERP on CentOS 7.x
+*This is a Linode Community guide. Write for us and earn $250 per published guide.*
+<hr>
 
-Odoo (formerly known as OpenERP) is an open-source suite of business applications including: Customer Relationship Management, Sales Pipeline, Project Management, Manufacturing, Invoicing , Accounting, eCommerce and Inventory just to name a few. There are 31 main applications created by Odoo team and over 4,500+ developed by community members covering a wide range of business needs.
+[Odoo](https://www.odoo.com/) (formerly known as OpenERP) is an open-source suite of business applications including: Customer Relationship Management, Sales Pipeline, Project Management, Manufacturing, Invoicing , Accounting, eCommerce and Inventory just to name a few. There are 31 main applications created by Odoo team and over 4,500+ developed by community members covering a wide range of business needs.
 
 Once deployed, Odoo flexibility allows the administrator to install any module combination and configure/customize them at will to satisfy business needs ranging from a small shop to a Enterprise Level Corporation.
 
-This Guide covers how to install and configure Odoo in just 30 minutes using Git source so it will be easy to upgrade, maintain and customize. 
+This Guide covers how to install and configure Odoo in just 30 minutes using Git source so it will be easy to upgrade, maintain and customize.
 
-{: .note}
->
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+## Before You Begin
 
-##Prerequisites
-1. Complete the [Getting Started](/docs/getting-started) guide. 
-2. Follow the [Securing Your Server](/docs/security/securing-your-server/) guide. It's especially important to create and enable the firewall if you plan to deploy Odoo on a production site.
-3. This Guide assumes a CentOS 7 "clean installation" in a Linode with a minimum of 1Gb of RAM and 4Gb swap space.
+1.  Complete the [Getting Started](/docs/getting-started) guide.
 
-##System preparation
+2.  Follow the [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services; this guide will use `sudo` wherever possible. Do **not** follow the *Configuring a Firewall* section--this guide has instructions specifcally for an Odoo production server.
 
-1. Log in to your Linode via SSH.
-2. Install Epel Repository using `yum` package manager and then update your server.
+3.  Log in to your Linode via SSH and install Epel Repository using `yum` package manager and then update your server.
 
-		sudo yum install epel-release
-		sudo yum update
+		sudo yum install epel-release && sudo yum update
+
+##Open Corresponding Firewall Ports
+
+In this case we're using Odoo's default port 8069, but this could be any port you specify later in the configuration file.
+
+	sudo firewall-cmd --zone=public --permanent --add-service=ssh
+	sudo firewall-cmd --zone=public --permanent --add-port=8069/tcp
+	sudo firewall-cmd --reload
 
 ###Install Database and server dependencies
 
-1. Now we're going to install the PostgreSQL database and other necesary server libraries using `yum` 
+1. Now we're going to install the PostgreSQL database and other necesary server libraries using `yum`
 
 		sudo yum install postgresql-server postgresql-devel python-devel python-pip bzr bzrtools libevent-devel libxslt-devel libxml2-devel cyrus-sasl-devel openldap-devel openjpeg xorg-x11-fonts-75dpi xorg-x11-fonts-Type1 libXext zlib-devel bzip2-devel openssl-devel tk-devel libjpeg-turbo-devel openjpeg-devel libtiff-devel libpng12 libyaml-devel
 
@@ -86,7 +90,7 @@ This Guide covers how to install and configure Odoo in just 30 minutes using Git
 >
 >Using git brings a great flexibility because any time a new upgrade is available you only need to pull that branch, you can even install a different one alongside the production version, just change the destination directory and the  `--branch X.x` flag. Before doing any operation remember to make a full backup of your database and custom files.
 
-###Prepare PostgreSQL database and user 
+###Prepare PostgreSQL database and user
 
 1. First we need to initialize the database:
 
@@ -104,24 +108,25 @@ This Guide covers how to install and configure Odoo in just 30 minutes using Git
 
 		sudo su - postgres
 
-5. In the scenario of a testing or development environment you could create a user with no password. 
-
-		createuser odoo -U postgres -dRS
-
-6. But, if you're deploying a Production server you may want to set a strong password for the database user.
+5. If you're deploying a Production server you may want to set a strong password for the database user.
 
 		createuser odoo -U postgres -dRSP
 
-7. You'll be prompted for a password, **save it**, we'll need it shortly.
-8. Press **CTRL+D** to exit from `postgres` user session.
+6. You'll be prompted for a password, **save it**, we'll need it shortly.
+
+	{: .note}
+	>
+	>In the scenario of a testing or development environment you could create a user with no password using `createuser odoo -U postgres -dRS`.
+
+7. Press **CTRL+D** to exit from `postgres` user session.
 
 {: .note}
 >
 >If you want to run multiple Odoo instances on the same Linode remember to check pg_hba.conf and change it according your needs.
 
-##Specific dependencies for Odoo applications 
+##Specific dependencies for Odoo applications
 
-Using `pip` instead of `yum` will guarantee that your installation has the correct versions needed. We'll also abstain of using CentOS's packaged versions of Wkhtmltopdf and Less CSS.
+Using `pip` instead of `yum` will guarantee that your installation has the correct versions needed. We'll also abstain of using CentOS's packaged versions of [Wkhtmltopdf](http://wkhtmltopdf.org/) and [nodejs-less](http://lesscss.org/).
 
 ###Install Python dependencies
 
@@ -170,68 +175,34 @@ Install Python libraries using the following commands:
 
 		sudo cp /opt/odoo/debian/openerp-server.conf /etc/odoo-server.conf
 
-2. Next we need to modify the configuration file using `vi` or any other editor of your choice.
+2.  Next we need to modify the configuration file. The finished file should look similar to this depending on your deploying needs:
 
-		sudo vi /etc/odoo-server.conf
+	{: .file}
+	/etc/odoo-server.conf
+	:   ~~~ conf
+		[options]
+		admin_passwd = admin
+		db_host = False
+		db_port = False
+		db_user = odoo
+		db_password = <PostgreSQL_user_password>
+		addons_path = /opt/odoo/addons
+		logfile = /var/log/odoo/odoo-server.log
+		xmlrpc_port = 8069
+			~~~
 
-3. The file will show the default options. 
-
-{: .file}
-/etc/odoo-server.conf
-:   ~~~ conf
-[options]
-; This is the password that allows database operations:
-; admin_passwd = admin
-db_host = False
-db_port = False
-db_user = odoo
-db_password = False
-addons_path = /usr/lib/python2.7/dist-packages/openerp/addons
-    ~~~
-
-4. Start the editing mode pressing the **INSERT** key.
-5. `; admin_passwd = admin` Uncomment this line.
-6. `db_host = False` Unless you plan to connect to a different database server leave this line untouched.
-7. `db_port = False` Odoo uses PostgreSQL default port 5432, change only if necessary.
-8. `db_user = odoo` Database user, in this case we used the default name.
-9. `db_password = False` Replace `False` with the previously created PostgreSQL user password.
-10. `addons_path = /usr/lib/python2.7/dist-packages/openerp/addons` We need to modify this line to read: `addons_path = /opt/odoo/addons`
-11. We need to include the path to log files adding a new line:  `logfile = /var/log/odoo/odoo-server.log`
-12. Optionally we could include a new line specifying the Odoo Frontend port used for connection `xmlrpc_port = 8069` this only makes sense if you're planning to run multiple Odoo instances (or versions) on the same server. For normal installation you could skip this line and Odoo will connect by default to port 8069.
-
-The finished file should look similar to this depending on your deploying needs:
-
-{: .file}
-/etc/odoo-server.conf
-:   ~~~ conf
-[options]
-; This is the password that allows database operations:
-admin_passwd = admin
-; Change db_host = <server_address> if needed, default is False
-db_host = False 
-; Change db_port = <PostgreSQL_port> if needed, default is False
-db_port = False
-; Change db_user = <PostgreSQL_user> default is odoo
-db_user = odoo
-; Change db_password = <PostgreSQL_user_password> entered previously, default is False
-db_password = <PostgreSQL_user_password>
-; Change addons_path = </path/to/official/modules, /path/to/custom/modules> if needed
-addons_path = /opt/odoo/addons
-; Include this line with the location of log file.
-logfile = /var/log/odoo/odoo-server.log
-; Add the following line if you need to set a different xml-rpc port (default is 8069) 
-xmlrpc_port = 8069
-    ~~~
-
-When you're done editing the file press the **ESC** key and then exit saving all changes typing **:x** and hitting **ENTER** key.
+	*  `admin_passwd = admin` This is the password that allows database operations.
+	*  `db_host = False` Unless you plan to connect to a different database server address, leave this line untouched.
+	*  `db_port = False` Odoo uses PostgreSQL default port 5432, change only if necessary.
+	*  `db_user = odoo` Database user, in this case we used the default name.
+	*  `db_password =` The previously created PostgreSQL user password.
+	*  `addons_path =` We need to modify this line to read: `addons_path = /opt/odoo/addons`. Add `</path/to/custom/modules>` if needed.
+	*  We need to include the path to log files adding a new line: `logfile = /var/log/odoo/odoo-server.log`
+	*  Optionally we could include a new line specifying the Odoo Frontend port used for connection: `xmlrpc_port = 8069`. This only makes sense if you're planning to run multiple Odoo instances (or versions) on the same server. For normal installation you could skip this line and Odoo will connect by default to port 8069.
 
 ###Systemd Odoo Service
 
-1. Next step is creating a unit `odoo.service` to gain control over Odoo behavior and use it as a service which starts with the server.
-
-		sudo vi /lib/systemd/system/odoo.service
-
-2. Press **INSERT** key to start editing and paste the following:
+Next step is creating a unit `odoo.service` to gain control over Odoo behavior and use it as a service which starts with the server.
 
 {: .file}
 /lib/systemd/system/odoo.service
@@ -253,8 +224,6 @@ ExecStart=/opt/odoo/openerp-server --config=/etc/odoo-server.conf --addons-path=
 WantedBy=multi-user.target
     ~~~
 
-Press the **ESC** key and then exit saving all changes typing **:x** and hitting **ENTER** key.
-
 ##Odoo files ownership and permissions
 
 1. Change the `odoo.service` file permissions and ownership so only root can write to it, while odoo user will only be able to read and execute it.
@@ -274,13 +243,6 @@ Press the **ESC** key and then exit saving all changes typing **:x** and hitting
 
 		sudo chown odoo: /etc/odoo-server.conf
 		sudo chmod 640 /etc/odoo-server.conf
-
-##Opening corresponding port on Firewall
-
-In our case we're using the default port 8069, but could be any port specified in the configuration file.
-
-		sudo firewall-cmd --zone=public --add-port=8069/tcp --permanent
-		sudo firewall-cmd --reload
 
 ##Testing the server
 
@@ -324,12 +286,6 @@ In our case we're using the default port 8069, but could be any port specified i
 
 [![Odoo Db creation](/docs/assets/odoo_db_creation.png)](/docs/assets/odoo_db_creation.png)
 
-3. Congratulations, now you can create your first database and start using Odoo! 
+3. Congratulations, now you can create your first database and start using Odoo!
 
 [![Odoo applications](/docs/assets/odoo_applications.png)](/docs/assets/odoo_applications.png)
-
-
-
-
-
-
