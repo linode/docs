@@ -247,6 +247,6 @@ Launch a web browser and navigate to https://yourdomainorsubdomainhere and you s
 
   [![Up and Running](/docs/assets/1768-Up-And-Running.jpg)](/docs/assets/1768-Up-And-Running.jpg)
 
-You have successfully installed the latest version of Nginx and configured your free StartSSL SSL Certificate. You can now run an [SSL test](https://www.ssllabs.com/ssltest/) on your server and get an A! Now you can place any files you would like Nginx to make available in the `/usr/share/nginx/html` folder.
+You have successfully installed the latest version of Nginx and configured your free StartSSL SSL Certificate. You can now run an [SSL test](https://www.ssllabs.com/ssltest/) on your server and get an A! Next we suggest you follow our guide [How to Configure Nginx](/docs/websites/nginx/how-to-configure-nginx) for further configuration options.
 
 
