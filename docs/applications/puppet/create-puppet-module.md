@@ -9,16 +9,16 @@ modified: Wednesday, June 10th, 2015
 modified_by:
     name: Elle Krout
 published: 'Wednesday, June 10th, 2015'
-title: Creating a LAMP Stack with Puppet Modules
+title: Using Puppet Modules to Create a LAMP Stack
 ---
 
-Within Puppet, modules are the building blocks of your servers' configurations. It is through modules that packages are installed and configured, directories are created, and any other server changes are made. A Puppet module aims to perform all parts of a certain task, such as downloading the Apache package, configuring all files, changing the MPM data, and setting up virtual hosts. Modules are, in turn, broken down into classes which are `.pp` files meant to simplify the module into various tasks, and improve the module's readability for any future users.
+Within Puppet, modules are the building blocks of your servers' configurations. Modules install and configure packages, create directories, and generate any other server changesthat the user includes in the module. A Puppet module aims to perform all parts of a certain task, such as downloading the Apache package, configuring all files, changing the MPM data, and setting up virtual hosts. Modules are, in turn, broken down into classes that are `.pp` files meant to simplify the module into various tasks, and improve the module's readability for any future users.
 
-In this guide, Apache and PHP modules will be created from scratch, and a MySQL module will be adapted from the Puppet Lab's own MySQL module found on the Puppet Forge, creating a full LAMP stack for your server and providing an overview of the various ways modules can be utilized.
+In this guide, Apache and PHP modules will be created from scratch, and a MySQL module will be adapted from the Puppet Lab's MySQL module found on the [Puppet Forge](https://forge.puppetlabs.com/), creating a full LAMP stack on your server and providing an overview of the various ways modules can be utilized.
 
 {: .note}
 >
->This guide assumes that you are working from an Ubuntu 14.04 LTS Puppet master, and CentOS 7 and Ubuntu 14.04 nodes, configured in the [Puppet Setup]() guide. If using a different setup, please adapt the guide accordingly.
+>This guide assumes that you are working from an Ubuntu 14.04 LTS Puppet master, and CentOS 7 and Ubuntu 14.04 nodes, configured in the [Puppet Setup](/docs/applications/puppet/set-up-puppet-master-agent) guide. If using a different setup, please adapt the guide accordingly.
 
 ## Creating the Apache Module
 
