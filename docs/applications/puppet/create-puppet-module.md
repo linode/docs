@@ -20,7 +20,7 @@ In this guide, Apache and PHP modules will be created from scratch, and a MySQL 
 >
 >This guide assumes that you are working from an Ubuntu 14.04 LTS Puppet master, and CentOS 7 and Ubuntu 14.04 nodes, configured in the [Puppet Setup](/docs/applications/puppet/set-up-puppet-master-agent) guide. If using a different setup, please adapt the guide accordingly.
 
-## Creating the Apache Module
+## Create the Apache Module
 
 1.  From the Puppet Master, navigate to Puppet's module directory, and create the `apache` directory:
 
@@ -36,11 +36,11 @@ In this guide, Apache and PHP modules will be created from scratch, and a MySQL 
 
         cd manifests
         
-    From here, the module will be seperated into classes, based upon the goals of that particular section of code. In this instance, there will be an `init.pp` class for downloading the Apache package, a `params.pp` file to define any variables and parameters, `config.pp` to managed any configuration files for the Apache service itself, and a `vhosts.pp` file to define the virtual hosts. This module will also make use of [Hiera](http://docs.puppetlabs.com/hiera/latest/) data to store variables for each node.
+    From here, the module will be separated into classes, based upon the goals of that particular section of code. In this instance, there will be an `init.pp` class for downloading the Apache package, a `params.pp` file to define any variables and parameters, `config.pp` to managed any configuration files for the Apache service itself, and a `vhosts.pp` file to define the virtual hosts. This module will also make use of [Hiera](http://docs.puppetlabs.com/hiera/latest/) data to store variables for each node.
 
 ### Create the Initial Apache Class and Parameters
 
-1.  From within the `manifests` directory, an `init.pp` class needs to be created. This class should share it's name with the module name:
+1.  From within the `manifests` directory, an `init.pp` class needs to be created. This class should share its name with the module name:
 
     {: .file}
     /etc/puppet/modules/apache/manifests/init.pp
@@ -50,16 +50,12 @@ In this guide, Apache and PHP modules will be created from scratch, and a MySQL 
         }
         ~~~
         
-    This file will be used to install the Apache package, and update our system. Ubuntu 14.04 and CentOS 7 have different package names for Apache, however. Because of this, a variable will be used:
+    This file will be used to install the Apache package. Ubuntu 14.04 and CentOS 7 have different package names for Apache, however. Because of this, a variable will be used:
     
     {: .file}
     /etc/puppet/modules/apache/manifests/init.pp
     :   ~~~ pp
         class apache {
-        
-          exec { 'sysupdate':
-            command  => $updatesys,
-          }
           
           package { 'apache':
             name    => $apachename,
@@ -68,12 +64,10 @@ In this guide, Apache and PHP modules will be created from scratch, and a MySQL 
         
         }
         ~~~
-        
-    The `exec` command seen is used to execute a line of code -- in this instance, it will update the system. `$updatesys`, meanwhile, is the variable used to reference how the system will be update. This will be defined in the next step, when we make the `params.pp` class.
     
-    The `package` resource allows for the management of a package. Generally, this is used to add, remove, or ensure a package is present. In most cases the name of the resource (`'apache'`, above) should be the name of the package being managed. Because of the difference in naming conventions, however, this resource is simply called `apache`, while the actual *name* of the package is called upon with the `name` reference. `name`, in this instance, calls for the yet-undefined variable `$apachename`. The `ensure` reference ensures that the package is `present`.
+    The `package` resource allows for the management of a package. This is used to add, remove, or ensure a package is present. In most cases, the name of the resource (`'apache'`, above) should be the name of the package being managed. Because of the difference in naming conventions, however, this resource is simply called `apache`, while the actual *name* of the package is called upon with the `name` reference. `name`, in this instance, calls for the yet-undefined variable `$apachename`. The `ensure` reference ensures that the package is `present`.
 
-2.  Now that there are two variables that need to be defined, the `params.pp` class will come into play. While these variables could be defined within the `init.pp` code, because more variables will need to be used outside of the resource type itself, using a `params.pp` class allows for variables to be defined in if statements and used across multiple classes.
+2.  Now that there are variables that need to be defined, the `params.pp` class will come into play. While these variables could be defined within the `init.pp` code, because more variables will need to be used outside of the resource type itself, using a `params.pp` class allows for variables to be defined in if statements and used across multiple classes.
 
     Create and open `params.pp`:
     
@@ -115,10 +109,8 @@ In this guide, Apache and PHP modules will be created from scratch, and a MySQL 
         class apache::params {
         
           if $::osfamily == 'RedHat' {
-            $upsatesys      = 'yum update -y'
             $apachename     = 'httpd'        
           } elseif $::osfamily == 'Debian' {
-            $updatesys      = 'apt-get update && apt-get upgrade -y'
             $apachename     = 'apache2'
           } else {
             print "This is not a supported distro."
@@ -137,7 +129,6 @@ In this guide, Apache and PHP modules will be created from scratch, and a MySQL 
     /etc/puppet/modules/apache/manifests/init.pp
     :   ~~~ pp
         class apache (
-          $updatesys    = $::apache::params::updatesys,
           $apachename   = $::apache::params::apachename,
         ) inherits ::apache::params {
         ~~~
@@ -147,7 +138,7 @@ In this guide, Apache and PHP modules will be created from scratch, and a MySQL 
 
 ### Manage Configuration Files
 
-Apache has two different configuration files, depending on whether you are working on a RedHat or Debian-based system. These can be pulled off a server, or viewed here: [httpd.conf (RedHat)](/docs/assets/httpd.conf), [apache2.conf (Debian)](/docs/assets/apache2.conf).
+Apache has two different configuration files, depending on whether you are working on a Red Hat- or Debian-based system. These can be pulled off a server, or viewed here: [httpd.conf (Red Hat)](/docs/assets/httpd.conf), [apache2.conf (Debian)](/docs/assets/apache2.conf).
 
 1.  Copy the `httpd.conf` and `apache2.conf` files to the `files` directory located at `/etc/puppet/modules/apache/files/`.
 
@@ -172,7 +163,7 @@ Apache has two different configuration files, depending on whether you are worki
           }
         ~~~
         
-    Because the configuation file is in two different located the resource is given the generic name `configuration-file`, with the file path defined as a parameter with the `path` attribute. `ensure` ensures that it is file, and `source` is another parameter, which will call to where the master files created above are located on the Puppet master.
+    Because the configuration file is in two different located the resource is given the generic name `configuration-file`, with the file path defined as a parameter with the `path` attribute. `ensure` ensures that it is file, and `source` is another parameter, which will call to where the master files created above are located on the Puppet master.
 
 4.  Open the `params.pp` file. The `$conffile` and `$confsource` variables need to be defined within the `if` statement:
 
@@ -216,14 +207,14 @@ Apache has two different configuration files, depending on whether you are worki
           }
         ~~~
         
-    The `service` resource uses the already-created parameter that defined the Apache name on RedHat and Debian systems. The `hasrestart` attribute will trigger a restart of the defined service.
+    The `service` resource uses the already-created parameter that defined the Apache name on Red Hat and Debian systems. The `hasrestart` attribute will trigger a restart of the defined service.
 
 
 ### Create the Virtual Hosts Files
 
 The Virtual Hosts files will be managed differently depending on if the server is based on Red Hat or Debian distributions. Because of this, the code for virtual hosts will be encased in an `if` statement, similar to the one used in the `params.pp` class, but containing actual Puppet resources. This will provide an example of an alternate use of `if` statement within Puppet's code.
 
-1.  From wihin the `apache/manifests/` directory, create and open a `vhosts.pp` file.
+1.  From within the `apache/manifests/` directory, create and open a `vhosts.pp` file.
 
 2.  Create the skeleton of the `if` statement:
 
@@ -245,7 +236,7 @@ The Virtual Hosts files will be managed differently depending on if the server i
 
 3.  On our CentOS 7 server the location of the virtual hosts file is `/etc/httpd/conf.d/vhost.conf`. This file will need to be created as a template on the Puppet master. The same needs to be done for the Ubuntu virtual hosts file, which is located at `/etc/apache2/sites-available/example.com.conf`, replacing `example.com` with the server's FQDN. The template for this file also needed to be created on the Puppet master. Navigate to the `templates` file within the `apache` module, and then create two files for your virtual hosts:
 
-    For RedHat systems:
+    For Red Hat systems:
     
     {: .file}
     /etc/puppet/modules/apache/templates/vhosts-rh.conf.erb
@@ -304,7 +295,7 @@ The Virtual Hosts files will be managed differently depending on if the server i
         }
         ~~~
         
-        Both distribution families call to the `file` resource, and take on the title of the virtual hosts location on their respective ditributions. For Debian, this means once more referencing the `$servername` value. The `content` attribute calls to the respective templates.
+        Both distribution families call to the `file` resource and take on the title of the virtual hosts location on their respective distributions. For Debian, this means once more referencing the `$servername` value. The `content` attribute calls to the respective templates.
         
         {: .note}
         >
@@ -318,7 +309,7 @@ The Virtual Hosts files will be managed differently depending on if the server i
         class apache::vhosts {
         
           if $::osfamily == 'RedHat' {
-            file { '~/etc/httpd/conf.d/vhost.conf':
+            file { '/etc/httpd/conf.d/vhost.conf':
               ensure    => file,
               content   => template('apache/vhosts-rh.conf.erb'),
             }
@@ -380,14 +371,35 @@ The Virtual Hosts files will be managed differently depending on if the server i
         
     It should return no errors, and output that it will trigger refreshes from events. If desired, this can be run again without `--noop` to install and configure apache on the Puppet master.
 
-4.  Navigate back to the main Puppet directory, and then to the `manifests` folder (**not** the one located in the Apache module). If you are continuing this guide from the [Puppet Setup]() guide, you should have a `site.pp` file already created. If not, create one now.
+4.  Navigate back to the main Puppet directory, and then to the `manifests` folder (**not** the one located in the Apache module). If you are continuing this guide from the [Puppet Setup](/docs/applications/puppet/set-up-puppet-master-agent) guide, you should have a `site.pp` file already created. If not, create one now.
 
-5.  Open `site.pp` and include the Apache module for each agent node. Also input the variables for the `adminemail` and `servername` parameters. If having followed the [Puppet Configuration]() guide, a single node configuration within `site.pp` will resemble the following:
+5.  Open `site.pp` and include the Apache module for each agent node. Also input the variables for the `adminemail` and `servername` parameters. If having followed the [Puppet Setup](/docs/applications/puppet/set-up-puppet-master-agent) guide, a single node configuration within `site.pp` will resemble the following:
 
     {: .file-excerpt}
     /etc/puppet/manifests/site.pp
     :   ~~~ pp
         node 'hostname.example.com' {
+          $adminemail = 'webmaster@example.com'
+          $servername = 'hostname.example.com'
+        
+          include accounts
+          include apache
+          include apache::vhosts
+        
+          resources { 'firewall':
+            purge => true,
+          }
+        
+          Firewall {
+            before        => Class['firewall::post'],
+            require       => Class['firewall::pre'],
+          }
+        
+          class { ['firewall::pre', 'firewall::post']: }
+        
+          }
+
+        node 'hostname2.example.com' {
           $adminemail = 'webmaster@example.com'
           $servername = 'hostname.example.com'
         
