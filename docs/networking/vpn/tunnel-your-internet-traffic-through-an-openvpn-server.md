@@ -2,14 +2,14 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Use OpenVPN to securely connect separate networks on an Ubuntu 12.04 (Precise) or Debian 7 Linux VPS.'
-keywords: 'openvpn,vpn,debian,tunnel,open vpn'
+description: 'Use OpenVPN to access the internet from behind a Linode.'
+keywords: 'openvpn,vpn,debian,tunnel,vpn tunnel,open vpn'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: 'Friday, September 11, 2015'
+modified: 'Wednesday, October 21st, 2015'
 modified_by:
   name: Linode
-published: 'Friday, September 11, 2015'
-title: 'Tunnel Your Internet Trafic Through an OpenVPN Server on Debian 8'
+published: 'Wednesday, October 21st, 2015'
+title: 'Tunnel Your Internet Trafic Through an OpenVPN Server'
 external_resources:
  - '[Official OpenVPN Documentation](https://openvpn.net/index.php/open-source/documentation/howto.html)'
 ---
@@ -18,9 +18,9 @@ This gude will show you how to configure an OpenVPN server to forward out to the
 
 A common use case for a VPN tunnel is to access the internet from behind it to evade censorship or geolocation while shielding your computer's public IP address to internet service providers, untrusted WiFi hotspots, and sites and services you connect to.
 
-## Before you Begin
+## Before You Begin
 
-This guide is the second of a three part series to set up a hardened OpenVPN environment. It assumes that you already have the OpenVPN server running so before moving further in this page, complete part one of the series: [Set Up a Hardened OpenVPN Server with Debian 8](/docs/networking/vpn/set-up-a-hardened-openvpn-server-on-debian-8). If you found this page but are looking for part three for client device configuration, see [Configuring OpenVPN Client Devices](/docs/networking/vpn/***).
+This guide is the second of a three part series to set up a hardened OpenVPN environment. It assumes that you already have the OpenVPN server running so before moving further in this page, complete part one of the series: [Set Up a Hardened OpenVPN Server with Debian 8](/docs/networking/vpn/set-up-a-hardened-openvpn-server). If you found this page but are looking for part three for client device configuration, see [Configuring OpenVPN Client Devices](/docs/networking/vpn/configuring-openvpn-client-devices).
 
 ## OpenVPN Configuration
 
@@ -44,7 +44,7 @@ OpenVPN's server-side configuration file is `/etc/openvpn/server.conf` and it re
 
 2.  Push DNS resolvers to client devices.
 
-    Client-side DNS settings are ideal for preventing DNS leaks and will override those pushed by the OpenVPN server. Google DNS is what's provided by the OpenVPN client software and while this can be disabled, it can not be changed within the client if you prefer a different resolver. Desktop Linux*** is the only platform which allows specifying DNS IPs of your choice for VPN connections.
+    Client-side DNS settings are ideal for preventing DNS leaks and will override those pushed by the OpenVPN server in this step. Google DNS is what's provided by the OpenVPN client software for Android, iOS, OS X and Windows, and while this can be disabled, Desktop Linux and Windows are the only platforms which allows you to change this if you prefer a different resolver. 
 
     If using the options below to push DNS resolvers to VPN clients, you can disable the Google DNS fallback on your clients (or leave it enabled as the fallback it was intended to be). [OpenDNS](https://www.opendns.com/) is provided by default but you can change this to whatever your preference.
 
@@ -61,26 +61,19 @@ OpenVPN's server-side configuration file is `/etc/openvpn/server.conf` and it re
         push "dhcp-option DNS 208.67.220.220"
         ~~~
 
-3.  To route IPv6 traffic to OpenVPN in addition IPv4, add these lines to `server.conf`.
-
-        tun-ipv6
-        push tun-ipv6
-        ifconfig-ipv6 2001:db8:0:123::1 2001:db8:0:123::2
-        push "route-ipv6 2600::/3"
-
-4.  Restart OpenVPN
+3.  Restart OpenVPN
 
         sudo systemctl restart openvpn
 
 ## Append Networking Rules
 
-In [part one](/docs/networking/vpn/set-up-a-hardened-openvpn-server-on-debian-8) of this series, we set iptables rules so the OpenVPN server can only accept client connections, SSH and make system updates, but nothing more. Since now we want the server to forward traffic out to the internet from clients, accept the responses and route them back to client machines, we must adjust the rulesets.
+In [part one](/docs/networking/vpn/set-up-a-hardened-openvpn-server) of this series, we set iptables rules so the OpenVPN server can only accept client connections, SSH and make system updates--all over IPv6; IPv6 was disabled since OpenVPN does not support both transport layers simultaneously. Leaving IPv6 disabled here prevents leaking v6 traffic which would otherwise be sent outside of your IPv4 VPN tunnel.
+
+Since now we want the server to forward traffic out to the internet from clients, accept the responses and route them back to client machines, we must adjust the rulesets.
 
 {: .caution }
 >
 >The steps below will overwrite any custom firewall rules you may have!
-
-### IPv4
 
 1.  Remove the ruleset files for iptables which you created on the previous page.
 
@@ -100,10 +93,9 @@ In [part one](/docs/networking/vpn/set-up-a-hardened-openvpn-server-on-debian-8)
         -A INPUT ! -i lo -s 127.0.0.0/8 -j REJECT
         -A OUTPUT -o lo -j ACCEPT
 
-        # Allow ping and traceroute.
-        -A INPUT -p icmp --icmp-type 3 -j ACCEPT
-        -A INPUT -p icmp --icmp-type 8 -j ACCEPT
-        -A INPUT -p icmp --icmp-type 11 -j ACCEPT
+        # Allow ping and ICMP error returns.
+        -A INPUT -p icmp -m state --state NEW --icmp-type 8 -j ACCEPT
+        -A INPUT -p icmp -m state --state ESTABLISHED,RELATED -j ACCEPT
         -A OUTPUT -p icmp -j ACCEPT
 
         # Allow SSH.
@@ -131,7 +123,7 @@ In [part one](/docs/networking/vpn/set-up-a-hardened-openvpn-server-on-debian-8)
 
         # Allow forwarding traffic only from the VPN.
         -A FORWARD -i tun0 -o eth0 -s 10.8.0.0/24 -j ACCEPT
-        -A FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT
+        -A FORWARD -m state --state ESTABLISHED,RELATED -j ACCEPT
 
         # Log any packets which don't fit the rules above...
         # (optional but useful)
@@ -155,20 +147,6 @@ In [part one](/docs/networking/vpn/set-up-a-hardened-openvpn-server-on-debian-8)
 
         sudo iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -o eth0 -j MASQUERADE
 
-### IPv6
-
-In [part one](/docs/networking/vpn/set-up-a-hardened-openvpn-server-on-debian-8), the option was given to disable IPv6. If you choose to keep that setup, then these steps can be skipped.
-
-### sysctl
-
-1.  The kernel must then be told it can forward incoming IPv4 traffic.
-
-        echo 'net.ipv4.ip_forward=1' >> /etc/sysctl.d/99-sysctl.conf
-        
-2.  Apply the change and restart the OpenVPN daemon:
-
-        sudo sysctl -p && sudo systemctl restart openvpn
-
 ## Next Steps
 
-Server-side configuration is complete but now the VPN clients need to be set up. Move on to part three: [Configuring OpenVPN Client Devices](/docs/networking/vpn/configure-openvpn-client-devices).
+Server-side configuration is complete but now the VPN clients need to be set up. Move on to part three: [Configuring OpenVPN Client Devices](/docs/networking/vpn/configuring-openvpn-client-devices).
