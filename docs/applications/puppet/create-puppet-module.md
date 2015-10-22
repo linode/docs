@@ -550,7 +550,7 @@ Before we begin with creating the configuration files for the MySQL module, it s
         }
         ~~~
         
-    Because the `php` package has different names on Ubuntu and CentOS this will once again need to be defined with a parameter. However, because this is the only parameter we will be needing, it will be added directly to the `init.pp` file:
+    Because the `php` package has different names on Ubuntu and CentOS, this will once again need to be defined with a parameter. However, because this is the only parameter we will be needing, it will be added directly to the `init.pp` file:
     
     {: .file}
     /etc/puppet/modules/php/manifests/init.pp
@@ -605,3 +605,5 @@ Before we begin with creating the configuration files for the MySQL module, it s
         
         }
         ~~~
+
+5.  Add `include php` to the hosts in your `sites.pp` file, and run `puppet agent -t` on your agent nodes to pull in any changes to your servers.
