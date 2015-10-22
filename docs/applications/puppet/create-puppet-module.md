@@ -12,7 +12,7 @@ published: 'Wednesday, June 10th, 2015'
 title: Using Puppet Modules to Create a LAMP Stack
 ---
 
-Within Puppet, modules are the building blocks of your servers' configurations. Modules install and configure packages, create directories, and generate any other server changesthat the user includes in the module. A Puppet module aims to perform all parts of a certain task, such as downloading the Apache package, configuring all files, changing the MPM data, and setting up virtual hosts. Modules are, in turn, broken down into classes that are `.pp` files meant to simplify the module into various tasks, and improve the module's readability for any future users.
+Within Puppet, modules are the building blocks of your servers' configurations. Modules install and configure packages, create directories, and generate any other server changes that the user includes in the module. A Puppet module aims to perform all parts of a certain task, such as downloading the Apache package, configuring all files, changing the MPM data, and setting up virtual hosts. Modules are, in turn, broken down into classes that are `.pp` files meant to simplify the module into various tasks, and improve the module's readability for any future users.
 
 In this guide, Apache and PHP modules will be created from scratch, and a MySQL module will be adapted from the Puppet Lab's MySQL module found on the [Puppet Forge](https://forge.puppetlabs.com/), creating a full LAMP stack on your server and providing an overview of the various ways modules can be utilized.
 
@@ -378,7 +378,7 @@ The Virtual Hosts files will be managed differently depending on if the server i
     {: .file-excerpt}
     /etc/puppet/manifests/site.pp
     :   ~~~ pp
-        node 'hostname.example.com' {
+        node 'ubuntuhost.example.com' {
           $adminemail = 'webmaster@example.com'
           $servername = 'hostname.example.com'
         
@@ -399,7 +399,7 @@ The Virtual Hosts files will be managed differently depending on if the server i
         
           }
 
-        node 'hostname2.example.com' {
+        node 'centoshost.example.com' {
           $adminemail = 'webmaster@example.com'
           $servername = 'hostname.example.com'
         
@@ -428,7 +428,7 @@ The Virtual Hosts files will be managed differently depending on if the server i
 
 ## Using the MySQL Module
 
-Many modules needed to run a server already exist within Puppet Lab's [Puppet Forge](https://forge.puppetlabs.com). These can be configured just as extensively as a module created yourself, and can save time since the module need not be created by scratch.
+Many modules needed to run a server already exist within Puppet Lab's [Puppet Forge](https://forge.puppetlabs.com). These can be configured just as extensively as a module created yourself, and can save time since the module need not be created from scratch.
 
 Install the [Puppet Forge's MySQL module](https://forge.puppetlabs.com/puppetlabs/mysql) by PuppetLabs:
 
@@ -462,35 +462,35 @@ Before we begin with creating the configuration files for the MySQL module, it s
 
 3.  Navigate to the `nodes` directory:
 
-        cd hieradata/node
+        cd hieradata/nodes
 
 4.  Use the `puppet cert` command to list what nodes are available, then create a YAML file for each, using the FQDN as the file's name:
 
         sudo puppet cert list --all
-        sudo touch {hostname1.example.com.yaml,hostname2.example.com.yaml}
+        sudo touch {ubuntuhost.example.com.yaml,centoshost.example.com.yaml}
 
-5.  Open the first node's configuration file to define the first database. In this example the database is called `webdata1`, with `username` and `password` self-defined. The `grant` value is granting the user all access to the webdata1 database:
+5.  Open the first node's configuration file to define the first database. In this example, the database is called `webdata1`, with `username` and `password` self-defined. The `grant` value is granting the user all access to the webdata1 database:
 
     {: .file}
-    /etc/puppet/hieradata/nodes/hostname1.example.com.yaml
+    /etc/puppet/hieradata/nodes/ubuntuhost.example.com.yaml
     :   ~~~ yaml
         databases:
           webdata1:
            user: 'username'
-            password: 'password'
-            grant: 'ALL'
+           password: 'password'
+           grant: 'ALL'
         ~~~
         
-    Repeat with the second server. In this example the database is called `webdata2`:
+    Repeat with the second server. In this example, the database is called `webdata2`:
     
     {: .file}
-    /etc/puppet/hieradata/nodes/hostname1.example.com.yaml
+    /etc/puppet/hieradata/nodes/centoshost.example.com.yaml
     :   ~~~ yaml
         databases:
           webdata2:
            user: 'username'
-            password: 'password'
-            grant: 'ALL'
+           password: 'password'
+           grant: 'ALL'
         ~~~
         
     Save and close the files.
@@ -505,7 +505,7 @@ Before we begin with creating the configuration files for the MySQL module, it s
         
     The `common.yaml` file is used when a variable is not defined elsewhere. This means all servers will share the same MySQL root password. These passwords can also be hashed to increase security.
 
-7.  Puppet now needs to know to use the information input in Hiera to cerate the defined databased. Move to the `mysql` module directory, and within the `manifests` directory create `database.pp`. Here we call define a class that will link the `mysql::db` resource to the Hiera data. It will also call the `mysql::server` class, so it will not have to be included later:
+7.  Puppet now needs to know to use the information input in Hiera to create the defined database. Move to the `mysql` module directory, and within the `manifests` directory create `database.pp`. Here we call define a class that will link the `mysql::db` resource to the Hiera data. It will also call the `mysql::server` class, so it will not have to be included later:
 
     {: .file}
     /etc/puppet/modules/mysql/manifests/database.pp
