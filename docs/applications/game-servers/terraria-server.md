@@ -2,7 +2,7 @@
 author:
     name: Linode Community
     email: docs@linode.com
-description: 'Guide for running a Terraria gaming server on Linux.'
+description: 'Guide for running a Terraria gaming server on different Linux distributions.'
 keywords: 'terraria,gaming,server,steam'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 published: Wednesday, October 18th, 2015
@@ -31,7 +31,7 @@ These steps will outline everything required in order to run a Terraria server f
 >
 >Take note of the system requirements for running a Terraria server when checking the Terraria site for latest download information. If your machine does not meet the minimum requirements, your server may be prohibitively slow or may crash intermittently.
 
-## Preflight Checklist
+## Before You Begin
 
 Running a game server entails opening services to the outside world, so before getting started, become familiar with the following guides:
 
@@ -42,8 +42,8 @@ Doing so will ensure your server is in good shape and secure against threats whe
 
 Also note that if you are using a firewall, you will need to open the port used to access Terraria, which by default is port 7777:
 
-    sudo iptables -I INPUT 9 -p tcp --dport 7777 -j ACCEPT
-    sudo ip6tables -I INPUT 9 -p tcp --dport 7777 -j ACCEPT
+	sudo iptables -I INPUT 9 -p tcp --dport 7777 -j ACCEPT
+	sudo ip6tables -I INPUT 9 -p tcp --dport 7777 -j ACCEPT
 
 ## Installing Terraria
 
@@ -137,10 +137,10 @@ Create the following text file, which will be used the systemd service created e
 {: .file}
 /srv/terraria/config.txt
 :   ~~~ ini
-    autocreate=1
-    worldname=MyWorld
-    world=/srv/terraria/Worlds/MyWorld.wld
-    worldpath=/srv/terraria/Worlds
+	autocreate=1
+	worldname=MyWorld
+	world=/srv/terraria/Worlds/MyWorld.wld
+	worldpath=/srv/terraria/Worlds
 	~~~
 
 {: .note}
