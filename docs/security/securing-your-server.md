@@ -17,11 +17,11 @@ In the [Getting Started](/docs/getting-started) guide, you learned how to deploy
 
 ## Update Your System--Frequently
 
-Keeping your software up to date is the single biggest security precaution you can take for any operating system--be it desktop, mobile or server. Software updates frequently contain patches ranging from critical security vulnerabilities to minor bug , and many software vulnerabilities are actually patched by the time they become publicized. It is important that you ***
+Keeping your software up to date is the single biggest security precaution you can take for any operating system--be it desktop, mobile or server. Software updates frequently contain patches ranging from critical vulnerabilities to minor bug fixes, and many software vulnerabilities are actually patched by the time they become publicized.
 
 ### Automatic Security Updates
 
-Automatic updates for any operating system is a controvertial topic, especially on servers. Nonetheless, CentOS, Debian, Fedora and Ubuntu can be automatically updated to various extents. [Fedora's Wiki](https://fedoraproject.org/wiki/AutoUpdates#Why_use_Automatic_updates.3F) has a good breakdown of the pros and cons, but if you limit updates to those for security issues, the risk of using automatic updates will be minimal.
+Automatic updates for any operating system is a controversial topic, especially on servers. Nonetheless, CentOS, Debian, Fedora and Ubuntu can be automatically updated to various extents. [Fedora's Wiki](https://fedoraproject.org/wiki/AutoUpdates#Why_use_Automatic_updates.3F) has a good breakdown of the pros and cons, but if you limit updates to those for security issues, the risk of using automatic updates will be minimal.
 
 The practicality of automatic updates must be something which you judge for yourself because it comes down to what *you* do with your Linode, and bear in mind that automatic updates apply only to packages sourced from repositories, not self-compiled applications. You may find it worthwhile to have a test environment which replicates your production server. Updates can be applied there and reviewed for issues before being applied to the live environment.
 
@@ -45,11 +45,7 @@ To add a new user, [log in to your Linode](/docs/getting-started#sph_logging-in-
 
 2.  Add the user to the `wheel` group for sudo privileges:
 
-    **CentOS 7 / Fedora**
-
-        usermod example_user -aG wheel
-
-    **CentOS 6**
+    **CentOS / Fedora**
 
         usermod -aG wheel example_user
 
@@ -146,7 +142,7 @@ By default, password authentication is used to connect to your Linode via SSH, b
 
         {: .note}
         >
-        >Depending on the version of SSH your distro is using, the line `PasswordAuthentication` may need to be uncommented.
+        >Depending on the version of SSH your distro is using, the line `PasswordAuthentication` may need to be uncommented by removing the leading #.
 
 4.  Restart the SSH service to load the new configuration.
 
@@ -262,7 +258,7 @@ Using a *firewall* to block unwanted inbound traffic to your Linode is a highly 
 
 [iptables](http://www.netfilter.org/projects/iptables/index.html) is the controller for netfilter, the Linux kernel's packet filtering framework. iptables is included in most Linux distros by default but is considered an advanced method of firewall control. Consequently, several projects exist to control iptables in a more user-friendly way.
 
-[FirewallD](http://www.firewalld.org/) for the Fedora distro family and [ufw](https://help.ubuntu.com/community/UFW) for the Debian family are the two common iptables controllers. This section will focus on iptables but you can see our guides on [FirewallD](/docs/security/firewalls/introduction-to-firewalld-on-centos) and [ufw](/docs/security/firewalls/configure-firewall-with-ufw) if you feel they may be a better choice for you.
+[FirewallD](http://www.firewalld.org/) for the Fedora distro family and [UFW](https://help.ubuntu.com/community/UFW) for the Debian family are the two common iptables controllers. This section will focus on iptables but you can see our guides on [FirewallD](/docs/security/firewalls/introduction-to-firewalld-on-centos) and [UFW](/docs/security/firewalls/configure-firewall-with-ufw) if you feel they may be a better choice for you.
 
 ### View Your Current iptables Rules
 
@@ -288,7 +284,7 @@ By default, iptables has no rules set for both IPv4 and IPv6. As a result, on a 
 
 ### Basic iptables Rulesets for IPv4 and IPv6
 
-Appropriate firewall rules depend almost entirely on the services being run. Below are iptables rulesets to secure your Linode if you're running a web server. *These are given as an example!* A real production web server may want or require more or less configuration and these rules would not be appropriate for a file or database server, Minecraft or VPN server, etc.
+Appropriate firewall rules depend almost entirely on the services being run. Below are iptables rulesets to secure your Linode if you're running a web server. *These are given as an example!* A real production web server may require more or less configuration and these rules would not be appropriate for a file or database server, Minecraft or VPN server, etc.
 
 iptables rules can always be modified or reset later, but these basic rulesets serve only as a beginning demonstration.
 
@@ -495,7 +491,7 @@ Red Hat Security Guide: [Using Firewalls](https://access.redhat.com/documentatio
 
 ### Debian / Ubuntu
 
-ufw is the iptables controller included with Ubuntu but is also available in Debian's repositories. If you would prefer to use ufw instead of ipables, see [our ufw guide](/docs/security/firewalls/configure-firewall-with-ufw) to get a ruleset up and running.
+UFW is the iptables controller included with Ubuntu but is also available in Debian's repositories. If you would prefer to use UFW instead of ipables, see [our UFW guide](/docs/security/firewalls/configure-firewall-with-ufw) to get a ruleset up and running.
 
 1.  Create the files `/tmp/v4` and `/tmp/v6`. Paste the [above rulesets](#basic-iptables-rulesets-for-ipv4-and-ipv6) into their respective files.
 
