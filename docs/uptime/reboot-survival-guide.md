@@ -22,13 +22,17 @@ The best way to know what occurs during a server reboot is to test for it. Durin
 
 ## When to Reboot
 
-When upgrading or changing Linux kernels, your Linode will need to be rebooted **through the Linode Manager**. If you have your Linode configured to use the *Latest* kernel, you don't need to do anything more--the newest kernel will automatically be used on reboot.
+When upgrading or changing Linux kernels, you have two reboot options:
+
+* Reboot through the Linode Manager. If you have your Linode's configuration profile set to use the latest kernel, you don't need to do anything more; the newest kernel will automatically be used on reboot.
+
+* Issue a shutdown command from within an SSH session on your Linode. From there, [Lassie](https://www.linode.com/docs/uptime/monitoring-and-maintaining-your-server#configuring-shutdown-watchdog) will restart your Linode and select the newest kernel.
 
 Updating certain packages will occasionally require a system reboot too. This does not happen often, but when necessary, the terminal output will inform you that a reboot is needed.
 
 {: .note}
 >
->It's not uncommon to see *[fsck](http://linux.die.net/man/8/fsck)* run a filesystem scan on reboot. This does not mean anything is broken--fsck is a regularly scheduled process for optimal system health. Some Linux distros run fsck on every boot, others run the tool after a certain duration, while most distros perfom a filesystem check after unclean shutdowns.
+>It's not uncommon to see *[fsck](http://linux.die.net/man/8/fsck)* run a filesystem scan on reboot. This does not mean anything is broken--fsck is a regularly scheduled process for optimal system health. Some Linux distros run fsck on every boot, others run the tool after a certain duration, and most distros perfom a filesystem check after unclean shutdowns.
 
 ## Backups
 
@@ -49,7 +53,7 @@ If you aren't implementing a system wide backups solution like Linode Backups, y
 
 ## Notice of Kernel Availability
 
-Linode maintains an RSS feed and HTML page for cataloging current and deprecated Linux kernels. When the support status of a kernel changes, that change will always be recorded and be pushed out to RSS subscribers. See [Available Kernels](https://www.linode.com/kernels).
+Linode maintains an RSS feed and web page for cataloging current and deprecated Linux kernels. When the support status of a kernel changes, that change will always be recorded and be pushed out to RSS subscribers. See [Available Kernels](https://www.linode.com/kernels).
 
 ## Autostart Services
 
