@@ -5,9 +5,9 @@ author:
 description: Best practices in preparation for a server reboot.
 keywords: 'uptime,reboot,downtime,fault tolerance'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Friday, February 27, 2015
+modified: Friday, October 23, 2015
 modified_by:
-  name: Alex Fornuto
+  name: Linode
 published: 'Friday, February 27, 2015'
 title: Reboot Survival Guide
 ---
@@ -19,6 +19,16 @@ This guide covers best practices to ensure that your server is prepared to handl
 ## Testing for Reboot Issues
 
 The best way to know what occurs during a server reboot is to test for it. During your development process, or whenever you make significant changes to your stack, reboot your system and test to ensure that your stack is fully operational afterwards. By conducting scheduled reboot tests, you can be sure that your system is prepared for the unexpected.
+
+## When to Reboot
+
+When upgrading or changing Linux kernels, your Linode will need to be rebooted **through the Linode Manager**. If you have your Linode configured to use the *Latest* kernel, you don't need to do anything more--the newest kernel will automatically be used on reboot.
+
+Updating certain packages will occasionally require a system reboot too. This does not happen often, but when necessary, the terminal output will inform you that a reboot is needed.
+
+{: .note}
+>
+>It's not uncommon to see *[fsck](http://linux.die.net/man/8/fsck)* run a filesystem scan on reboot. This does not mean anything is broken--fsck is a regularly scheduled process for optimal system health. Some Linux distros run fsck on every boot, others run the tool after a certain duration, while most distros perfom a filesystem check after unclean shutdowns.
 
 ## Backups
 
@@ -36,6 +46,10 @@ If you aren't implementing a system wide backups solution like Linode Backups, y
  * `/root/` - Your root user's home directory.
  * `/etc/` - The common area for software configuration files.
  * `/var/www` - The common location for web server files. On some systems this may be `/srv/www/`.
+
+## Notice of Kernel Availability
+
+Linode maintains an RSS feed and HTML page for cataloging current and deprecated Linux kernels. When the support status of a kernel changes, that change will always be recorded and be pushed out to RSS subscribers. See [Available Kernels](https://www.linode.com/kernels).
 
 ## Autostart Services
 
