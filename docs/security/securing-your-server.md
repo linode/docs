@@ -135,7 +135,7 @@ By default, password authentication is used to connect to your Linode via SSH, b
     >
     >You may want to leave password authentication enabled if you connect to your Linode from many different computers. This will allow you to authenticate with a password instead of generating and uploading a keypair for every device.
 
-3.  Disallow root logins over SSH. This means that you must first SSH into your Linode as a limited user and then either run administrative commands with `sudo`, or change user to root using `su -`.
+3.  Disallow root logins over SSH. This means that you must first SSH into your Linode as a limited user and then either run administrative commands with `sudo`, or change user to root using `su`.
 
     {: .file-exceprt}
     /etc/ssh/sshd_config
