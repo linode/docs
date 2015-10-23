@@ -2,18 +2,34 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Our guide to securing your first Linode.'
-keywords: 'security,secure server,email secure server,login secure server,linode quickstart,getting started,iptables,firewall,firewalld,ssh,ssh for linux,ssh key,ssh command,new user,fail2ban'
+description: 'A basic list of best practices for hardening a production server.'
+keywords: 'security,secure,firewall,ssh,add user,quick start'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['securing-your-server/']
-modified: 'Thursday, October 1st, 2015'
+modified: 'Friday, October 23rd, 2015'
 modified_by:
   name: Linode
 published: 'Friday, February 17th, 2012'
 title: Securing Your Server
 ---
 
-In the [Getting Started](/docs/getting-started) guide, you learned how to deploy Linux, boot your Linode, and perform some basic system administration tasks. Now it's time to secure your Linode and protect it from unauthorized access. You'll learn how to implement a firewall, SSH key pair authentication, and an automatic blocking mechanism called *Fail2Ban*.
+In the [Getting Started](/docs/getting-started) guide, you learned how to deploy Linux, boot your Linode and perform some basic administrative tasks. Now it's time to harden your Linode to protect it from unauthorized access.
+
+## Update Your System--Frequently
+
+Keeping your software up to date is the single biggest security precaution you can take for any operating system--be it desktop, mobile or server. Software updates frequently contain patches ranging from critical security vulnerabilities to minor bug , and many software vulnerabilities are actually patched by the time they become publicized. It is important that you ***
+
+### Automatic Security Updates
+
+Automatic updates for any operating system is a controvertial topic, especially on servers. Nonetheless, CentOS, Debian, Fedora and Ubuntu can be automatically updated to various extents. [Fedora's Wiki](https://fedoraproject.org/wiki/AutoUpdates#Why_use_Automatic_updates.3F) has a good breakdown of the pros and cons, but if you limit updates to those for security issues, the risk of using automatic updates will be minimal.
+
+The practicality of automatic updates must be something which you judge for yourself because it comes down to what *you* do with your Linode, and bear in mind that automatic updates apply only to packages sourced from repositories, not self-compiled applications. You may find it worthwhile to have a test environment which replicates your production server. Updates can be applied there and reviewed for issues before being applied to the live environment.
+
+* CentOS uses *[yum-cron](https://fedoraproject.org/wiki/AutoUpdates#Fedora_21_or_earlier_versions)* for automatic updates.
+
+* Debian and Ubuntu use *[unattended upgrades](https://help.ubuntu.com/lts/serverguide/automatic-updates.html)*.
+
+* Fedora uses *[dnf-automatic](https://dnf.readthedocs.org/en/latest/automatic.html)*.
 
 ## Add a Limited User Account
 
@@ -23,11 +39,11 @@ To add a new user, [log in to your Linode](/docs/getting-started#sph_logging-in-
 
 ### CentOS / Fedora
 
-1.  Create the user, replacing *example_user* with your desired username, and assign a password:
+1.  Create the user, replacing `example_user` with your desired username, and assign a password:
 
         adduser example_user && passwd example_user
 
-2.  Add the user to the *wheel* group for sudo privileges:
+2.  Add the user to the `wheel` group for sudo privileges:
 
     **CentOS 7 / Fedora**
 
@@ -39,7 +55,7 @@ To add a new user, [log in to your Linode](/docs/getting-started#sph_logging-in-
 
 ### Debian / Ubuntu
 
-1.  Create the user, replacing *example_user* with your desired username. You'll then be asked to assign the user a password.
+1.  Create the user, replacing `example_user` with your desired username. You'll then be asked to assign the user a password.
 
         adduser example_user
 
@@ -51,7 +67,7 @@ With your new user assigned, log out of your Linode as root:
 
     logout
 
-Log back in to your Linode as your new user. Replace *example_user* with your username, and the example IP address with your Linode's IP address:
+Log back in to your Linode as your new user. Replace `example_user` with your username, and the example IP address with your Linode's IP address:
 
     ssh example_user@123.456.78.9
 
@@ -107,7 +123,7 @@ By default, password authentication is used to connect to your Linode via SSH, b
 
 2.  Disable SSH password authentication. This requires all users connecting via SSH to use key authentication.
 
-    {: .file-exceprt}
+    {: .file-excerpt}
     /etc/ssh/sshd_config
     :   ~~~ conf
         # Authentication:
@@ -117,7 +133,7 @@ By default, password authentication is used to connect to your Linode via SSH, b
 
     {: .caution }
     >
-    >You may want to leave password authentication enabled if you connect to your Linode from many different computers. This will allow you to authenticate with a password instead of copying the private key to every device.
+    >You may want to leave password authentication enabled if you connect to your Linode from many different computers. This will allow you to authenticate with a password instead of generating and uploading a keypair for every device.
 
 3.  Disallow root logins over SSH. This means that you must first SSH into your Linode as a limited user and then either run administrative commands with `sudo`, or change user to root using `su -`.
 
@@ -148,7 +164,7 @@ By default, password authentication is used to connect to your Linode via SSH, b
 
 Fail2Ban can monitor a variety of protocols including SSH, HTTP, and SMTP. By default, Fail2Ban monitors SSH only, and is a helpful security deterrant for any server because the SSH daemon is usually configured to run constantly and listen for connections from any remote IP address.
 
-For complete instructions on installing and configuring Fail2Ban, see our gudie: [Securing Your Server with Fail2ban]( /docs/security/securing-your-server-with-fail2ban).
+For complete instructions on installing and configuring Fail2Ban, see our gudie: [Securing Your Server with Fail2ban]( /docs/security/security/using-fail2ban-for-security).
 
 ## Remove Unused Network-Facing Services
 
@@ -159,6 +175,10 @@ Most Linux distributions install with runnng network services which listen for i
 To see your Linode's running network services:
 
     sudo netstat -tulpn
+
+{: .note}
+>
+>If netstat isn't included in your distro by default, install the package `net-tools`.
 
 Using Debian 8 as an example, the output should look similar to this:
 
@@ -204,15 +224,37 @@ Our netstat output shows that NTPdate is: 1) accepting incoming connections on y
 
 If you were to do a basic TCP and UDP [nmap](https://nmap.org/) scan of your Linode without a firewall enabled, SSH, RPC and NTPdate would be present in the result with ports open. These are security vulnerabilities which must be addressed. [Configuring a firewall](#configure-a-firewall) will filter those ports, with exception to SSH because it must allow your incoming connections. Ideally, however, the unused services should be removed from the operating system.
 
-* You will likely be administering your server primarily through an SSH connection, so that service needs to stay. As mentioned above, [RSA keys](/docs/security/securing-your-server/#create-an-authentication-keypair) and [Fail2Ban](/docs/security/securing-your-server/#use-fail2ban-for-ssh-login-protection) can help secure your use of SSH.
+* You will likely be administering your server primarily through an SSH connection, so that service needs to stay. As mentioned above, [RSA keys](/docs/security/securing-your-server/#create-an-authentication-keypair) and [Fail2Ban](/docs/security/securing-your-server/#use-fail2ban-for-ssh-login-protection) can help protect SSH.
 
-* NTP is necessary for your server's timekeeping but there are alternatives to NTPdate. If you prefer a time synchronization method which does not open network ports, and you do not need nanosecond accuracy, then you may be interested in replacing NTPdate with [OpenNTPD](https://en.wikipedia.org/wiki/OpenNTPD).
+* NTP is necessary for your server's timekeeping but there are alternatives to NTPdate. If you prefer a time synchronization method which does not hold open network ports, and you do not need nanosecond accuracy, then you may be interested in replacing NTPdate with [OpenNTPD](https://en.wikipedia.org/wiki/OpenNTPD).
 
 * Exim and RPC, however, are unnecessary unless you have a specific use for them, and should be removed.
 
 {: .note }
 >
 >This section focused on Debian 8. Different Linux distributions have different services enabled by default. If you are unsure of what a service does, do an internet search to understand what it is before attempting to remove or disable it.
+
+### Uninstall the Listening Services
+
+How to remove the offending packages will differ depending on your distribution's package manager.
+
+**Arch**
+
+    sudo pacman -Rs package_name
+
+**CentOS**
+
+    sudo yum remove package_name
+
+**Debian / Ubuntu**
+
+    sudo apt-get purge package_name
+
+**Fedora**
+
+    sudo dnf remove package_name
+
+Run `sudo netstat -tulpn` again. You should now only see listening services for SSH (sshd) and NTP (ntpdate, network time protocol).
 
 ## Configure a Firewall
 
@@ -262,10 +304,8 @@ iptables rules can always be modified or reset later, but these basic rulesets s
     -A INPUT -i lo -j ACCEPT
     -A INPUT ! -i lo -s 127.0.0.0/8 -j REJECT
 
-    # Allow ping and traceroute.
-    -A INPUT -p icmp --icmp-type 3 -j ACCEPT
-    -A INPUT -p icmp --icmp-type 8 -j ACCEPT
-    -A INPUT -p icmp --icmp-type 11 -j ACCEPT
+    # Allow ping.
+    -A INPUT -p icmp -m state --state NEW --icmp-type 8 -j ACCEPT
 
     # Allow SSH connections.
     -A INPUT -p tcp --dport 22 -m state --state NEW -j ACCEPT
@@ -276,6 +316,7 @@ iptables rules can always be modified or reset later, but these basic rulesets s
     -A INPUT -p tcp --dport 443 -m state --state NEW -j ACCEPT
 
     # Allow inbound traffic from established connections.
+    # This includes ICMP error returns.
     -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
 
     # Log what was incoming but denied (optional but useful).
@@ -321,7 +362,7 @@ If you would like to supplement your web server's IPv4 rules with IPv6 too, this
     -A INPUT ! -i lo -s ::1/128 -j REJECT
 
     # Allow ICMP
-    -A INPUT -p icmpv6 -j ACCEPT
+    -A INPUT -p icmpv6 -m state --state NEW -j ACCEPT
 
     # Allow HTTP and HTTPS connections from anywhere
     # (the normal ports for web servers).
@@ -354,7 +395,7 @@ Alternatively, the ruleset below should be used if you want to reject all IPv6 t
 :   ~~~ conf
     *filter
 
-    # Reject all IPv6 on all chains
+    # Reject all IPv6 on all chains.
     -A INPUT -j REJECT
     -A FORWARD -j REJECT
     -A OUTPUT -j REJECT
