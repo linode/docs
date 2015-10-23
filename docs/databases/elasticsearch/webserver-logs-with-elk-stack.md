@@ -5,8 +5,8 @@ author:
 description: 'Using Elastisearch, Logstash, and Kibana to store and visualize Apache webserver logs. An ELK stack provides an easy-to-understand, visual reference for viewing Apache logs.'
 keywords: 'webserver,apache,elasticsearch,logstash,kibana,dashboard,logs,visualization'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-published: Tuesday, September 22th, 2015
-modified: Tuesday, September 22th, 2015
+published: Friday, October 23rd, 2015
+modified: 'Friday, October 23rd, 2015'
 modified_by:
     name: Tyler Langlois
 title: Visualizing Apache Webserver Logs in the ELK Stack on Debian 8
