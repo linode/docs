@@ -25,7 +25,7 @@ These steps will outline everything required in order to run a Terraria server f
 
 {: .note}
 >
->This guide is compatible with any Linux distribution that uses systemd as an init system, including recent versions of Debian and Ubuntu, Arch Linux, or recent RHEL-based distributions.
+>This guide is compatible with any Linux distribution that uses systemd as an init system. This includes recent versions of Debian and Ubuntu, Arch Linux, or current releases of RHEL-based distributions.
 
 {: .caution }
 >
@@ -40,7 +40,7 @@ Running a game server entails opening services to the outside world, so before g
 
 Doing so will ensure your server is in good shape and secure against threats when operating on the open internet.
 
-Also note that if you are using a firewall, you will need to open the port used to access Terraria, which by default is port 7777:
+Also note that if you are using a firewall, you will need to open the port used to access Terraria, which by default is port 7777. For example, if you are using iptables:
 
 	sudo iptables -I INPUT 9 -p tcp --dport 7777 -j ACCEPT
 	sudo ip6tables -I INPUT 9 -p tcp --dport 7777 -j ACCEPT
@@ -63,11 +63,11 @@ Finally, running daemons under discrete users is a good practice, so create a `t
 
 	sudo useradd -r -m -d /srv/terraria terraria
 
-With the server files installed, we need an automated way to start, stop, and automatically bring up our server - this is important if the machine Terraria is running on is rebooted. This guide will use systemd to manage the service, which is rapidly becoming common on most distributions.
+With the server files installed, we need an automated way to start, stop, and bring up our server on boot - this is important if the machine Terraria is running on restarts unexpectedly. This guide will manage the service using systemd, which is rapidly becoming the service manager of choice on most distributions.
 
 ### Creating a Terraria Service
 
-Terraria, like many other game servers, runs an interactive console as part of its server process. While useful, this can be challenging to use when operating servers under service managers. This can be solved by running Terraria under a [screen](https://www.gnu.org/software/screen/) session to enable us to send arbitrary commands to the listening admin console within screen.
+Terraria, like many other game servers, runs an interactive console as part of its server process. While useful, this can be challenging to use when operating game servers under service managers. This can be solved by running Terraria under a [screen](https://www.gnu.org/software/screen/) session to enable us to send arbitrary commands to the listening admin console within screen.
 
 First install screen with the system package manager. In a Debian-based distribution:
 
@@ -95,7 +95,7 @@ Now make a systemd service file to define how to start and stop the server. Crea
 
 The `ExecStart` line instructs systemd to spawn a screen session containing `TerrariaServer` which starts the daemon, and sets `KillMode=none` to ensure that systemd does not prematurely kill the server before it has had a chance to cleanly save and close down the server.
 
-The `ExecStop` line calls a script to send arbitrary commands to the running `TerrariaServer` instance, which will be written next.
+The `ExecStop` line calls a script to send the "exit" command to Terraria, which the server will recognize and ensure that the world is saved before shutting down. To do this, we need a script to send arbitrary commands to the running `TerrariaServer` instance, which will be written next.
 
 ### Writing Scripts to Run Terraria
 
@@ -126,13 +126,13 @@ Ensure this script can be run as an executable:
 
 	sudo chmod +x /usr/local/bin/terrariad
 
-This script will permit you to attach to the console or send it commands like `save` or `exit` when it's running. Before starting the server, `TerrariaServer` needs a configuration file.
+This script will permit you to attach to the console or send it commands like `save` or `exit` when it's running without needing to attach at all (useful when services like systemd need to send server commands.) Before starting the server, `TerrariaServer` needs a configuration file.
 
 ## Configuring Terraria
 
 Terraria can be configured at run-time by a configuration file, which can automatically create a world and start the server without any manual intervention.
 
-Create the following text file, which will be used the systemd service created earlier. Note that you should change "MyWorld" to be a world name of your own choice:
+Create the following text file, which will be used by the systemd service created earlier. Note that you should change "MyWorld" to be a world name of your own choice:
 
 {: .file}
 /srv/terraria/config.txt
@@ -145,9 +145,9 @@ Create the following text file, which will be used the systemd service created e
 
 {: .note}
 >
->There are several server options that you can customize to configure settings such as difficulty, server passwords, and so on. See the [list of config file options](http://terraria.gamepedia.com/Server#Server_config_file) if you need to customize your server.
+>There are several server options that you can use to customize settings such as difficulty, server passwords, and so on. See the [list of config file options](http://terraria.gamepedia.com/Server#Server_config_file) if you need to customize your server further.
 
-These options will automatically create and select a world to serve.
+These options will automatically create and select "MyWorld" to serve when the game server starts up.
 
 ## Running Terraria
 
@@ -155,11 +155,11 @@ With the game server installed, scripts written, and the service ready, the serv
 
 	sudo systemctl start terraria
 
-That's it! To check if the server is running, use:
+To check if the server is running, use the command:
 
 	sudo systemctl status terraria
 
-Which should have several lines of information, including a line that says `active (running)`. The first run of the server must generate the world we defined earlier, so give it time if you want to connect to it right away (use `sudo terrariad attach` if you need to check whether the world has been generated or not.)
+Which should return several lines of information, including a line that says `active (running)`. The first run of the server must generate the world we defined earlier, so give it time if you want to connect to it right away. If the server takes some time to start for the first time, use `sudo terrariad attach` to watch the world generation happen and see when the server finishes and is ready to connect to.
 
 In the course of running your server, you may need to attach to the console to do things like kick players or change the message of the day. To do so, use the `terrariad` script:
 
