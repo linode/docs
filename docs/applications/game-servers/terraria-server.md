@@ -175,3 +175,11 @@ If you ever need to shut down Terraria, run the command:
     sudo systemctl stop terraria
 
 Which will save the world and shut down the game server.
+
+### Automatic Server Startup
+
+In addition to starting and stopping the `terraria` service, the systemd service can also automatically start Terraria on boot. To enable the service at startup, use the command:
+
+    sudo systemctl enable terraria
+
+If your server is restarted for any reason, Terraria will launch itself when the machine is powered on again.
