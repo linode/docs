@@ -131,6 +131,10 @@ Ensure this script can be run as an executable:
 
 This script will permit you to attach to the console or send it commands like `save` or `exit` when it's running without needing to attach at all (useful when services like systemd need to send server commands.) Before starting the server, `TerrariaServer` needs a configuration file.
 
+{: .caution }
+>
+>You may encounter "command not found" errors when running the `terrariad` command throughout the rest of this guide. If that's the case, the directory `/usr/local/bin/` may not be in the `$PATH` when running sudo commands - this may occur on some Linux distributions. If so, you can work around this problem by calling the script with the full path. For example, instead of running `sudo terrariad attach`, use `sudo /usr/local/bin/terrariad attach`.
+
 ## Configuring Terraria
 
 Terraria can be configured at run-time by a configuration file, which can automatically create a world and start the server without any manual intervention.
