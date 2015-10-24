@@ -26,7 +26,7 @@ We are always looking for guides on popular, up-and-coming hot topics, and updat
 -   [Game Servers](/docs/applications/game-servers/)
 -   NoSQL Databases
 -   [OpenChange](http://www.openchange.org/)
--   [WebWTC](http://www.webrtc.org/)
+-   [WebRTC](http://www.webrtc.org/)
 
 ## The Submissions Process
 

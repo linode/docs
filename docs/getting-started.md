@@ -310,4 +310,5 @@ The output should look similar to: `Thu Feb 16 12:17:52 EST 2012`.
 
 ## Next Steps
 
-Now that you have an up-to-date Linode, you'll need to secure your Linode and protect it from unauthorized access. Read the [Securing Your Server](/docs/securing-your-server) quick start guide to get going.
+Now that you have an up-to-date Linode, you'll need to secure your Linode and protect it from unauthorized access. Read the [Securing Your Server](/docs/security/securing-your-server) quick start guide to get going.
+
