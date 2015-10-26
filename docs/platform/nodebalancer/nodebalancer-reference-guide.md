@@ -6,9 +6,9 @@ description: NodeBalancer Reference Guide
 keywords: 'load balancing,nodebalancer'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['nodebalancers/reference/']
-modified: Wednesday, March 26th, 2014
+modified: 'Tuesday, October 27th, 2015'
 modified_by:
-  name: Alex Fornuto
+  name: Linode
 published: 'Friday, July 8th, 2011'
 title: NodeBalancer Reference Guide
 ---
@@ -77,6 +77,12 @@ Copy your passphraseless private key into the **Private Key** field.
 
 You can [purchase an SSL certificate](/docs/security/ssl/obtaining-a-commercial-ssl-certificate) or [create your own](/docs/security/ssl/how-to-make-a-selfsigned-ssl-certificate).
 
+### TLS Cipher Suite Strength
+
+If your NodeBalancer must support users accessing your application with older browsers such as Internet Explorer 6-8, you should select the **Legacy** option. However, bear in mind that by gaining backwards compatibility, your NodeBalancer will use weaker SSL/TLS cipher suites.
+
+For all other implementations, the default **Recommended** cipher suite option should be used.
+
 ## Health Checks
 
 NodeBalancers perform both passive and active health checks against the backend nodes. Nodes that are no longer responding are taken out of rotation.
@@ -84,6 +90,13 @@ NodeBalancers perform both passive and active health checks against the backend 
 ### Passive
 
 When servicing an incoming request, if a backend node fails to connect, times out, or returns a 5xx response code (excluding 501 and 505), it will be considered unhealthy and taken out of rotation.
+
+Passive health checks can be disabled if you choose:
+
+1.  From the Liode Manager, click the **NodeBalancers** tab.
+2.  Select your NodeBalancer and choose **Edit**.
+3.  Under the **Configurations** section at the top of the page, choose **Edit**.
+4.  Scroll down and uncheck the **Enabled** box under **Passive Checks**. Then click **Save Changes**.
 
 ### Active
 
