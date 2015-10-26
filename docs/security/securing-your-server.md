@@ -33,7 +33,7 @@ The practicality of automatic updates must be something which you judge for your
 
 ## Add a Limited User Account
 
-Up to this point, you have been logging in to Linode as the `root` user. The problem with this is that root has unlimited privileges and can execute *any* command - even one that could accidentally break your server. For this reason and others, we recommend creating a limited user account and using that at all times. Administrative tasks will be done using `sudo` to temporarily elevate your limited user's privliges.
+Up to this point, you have been logging in to Linode as the `root` user. The problem with this is that root has unlimited privileges and can execute *any* command--even one that could accidentally break your server. For this reason and others, we recommend creating a limited user account and using that at all times. Administrative tasks will be done using `sudo` to temporarily elevate your limited user's privliges.
 
 To add a new user, [log in to your Linode](/docs/getting-started#sph_logging-in-for-the-first-time) via SSH.
 
@@ -41,7 +41,7 @@ To add a new user, [log in to your Linode](/docs/getting-started#sph_logging-in-
 
 1.  Create the user, replacing `example_user` with your desired username, and assign a password:
 
-        adduser example_user && passwd example_user
+        useradd example_user && passwd example_user
 
 2.  Add the user to the `wheel` group for sudo privileges:
 
@@ -57,7 +57,7 @@ To add a new user, [log in to your Linode](/docs/getting-started#sph_logging-in-
 
 2.  Add the user to the *sudo* group so you'll have administrative privileges:
 
-        usermod -aG sudo example_user
+        adduser example_user sudo
 
 With your new user assigned, log out of your Linode as root:
 
@@ -75,13 +75,13 @@ By default, password authentication is used to connect to your Linode via SSH, b
 
 ### Create an Authentication Keypair
 
-1.  This is done on your local computer, **not** your Linode. The `ssh-keygen` default settings create a 2048-bit RSA keypair. During creation, you will be given the option to protect the keypair with a passphrase. This means that the key cannot be used without entering the passphrase. If unwanted, leave the fields blank and press **Enter** to finish.
+1.  This is done on your local computer, **not** your Linode, and will create a 4096-bit RSA keypair. During creation, you will be given the option to protect the keypair with a passphrase. This means that the key cannot be used without entering the passphrase. If unwanted, leave the fields blank and press **Enter** to finish.
 
     **Linux / OS X**
 
     This creates the key files `id_rsa` and `id_rsa.pub` in `/home/your_username/.ssh`.
 
-        ssh-keygen
+        ssh-keygen -b 4096
 
     **Windows**
 
@@ -93,7 +93,7 @@ By default, password authentication is used to connect to your Linode via SSH, b
 
     From your local computer:
 
-        ssh-copy-id linode_user@123.456.78.0
+        ssh-copy-id example_user@123.456.78.0
 
     **OS X**
 
@@ -103,7 +103,7 @@ By default, password authentication is used to connect to your Linode via SSH, b
 
     From your local computer:
 
-        scp ~/.ssh/id_rsa.pub linode_user@123.456.78.9:~/.ssh/authorized_keys
+        scp ~/.ssh/id_rsa.pub example_user@123.456.78.9:~/.ssh/authorized_keys
 
     {: .note}
     >
@@ -133,7 +133,7 @@ By default, password authentication is used to connect to your Linode via SSH, b
 
 3.  Disallow root logins over SSH. This means that you must first SSH into your Linode as a limited user and then either run administrative commands with `sudo`, or change user to root using `su`.
 
-    {: .file-exceprt}
+    {: .file-excerpt}
     /etc/ssh/sshd_config
     :   ~~~ conf
         # Change to no to disable tunnelled clear text passwords
@@ -142,15 +142,15 @@ By default, password authentication is used to connect to your Linode via SSH, b
 
         {: .note}
         >
-        >Depending on the version of SSH your distro is using, the line `PasswordAuthentication` may need to be uncommented by removing the leading #.
+        >Depending on the version of SSH your distro is using, the line `PasswordAuthentication` may need to be added or uncommented by removing the leading #.
 
 4.  Restart the SSH service to load the new configuration.
 
-    If your Linux distribution uses systemd:
+    If your Linux distribution uses systemd (CentOS 7, Debian 8, Fedora):
 
         sudo systemctl restart sshd
 
-    If your distro uses System V or Upstart:
+    If your distro uses System V or Upstart (CentOS 6, Debian 7, Ubuntu 14.04):
 
         sudo service ssh restart
 
