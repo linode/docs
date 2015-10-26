@@ -6,9 +6,9 @@ description: Our guide to using the Linode backup service.
 keywords: 'backup,linode platform,linode backup service'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['backup-service/']
-modified: Wednesday, September 17th, 2014
+modified: 'Monday, October 26th, 2015'
 modified_by:
-  name: James Stewart
+  name: Linode
 published: 'Wednesday, March 14th, 2012'
 title: Backup Service
 ---
@@ -136,7 +136,7 @@ The Linode will start from the backup disks. Watch the *Host Job Queue* to monit
 
 ##Disabling Backups
 
-You can cancel the Backup Service at any time. Please open a [support ticket](https://manager.linode.com/support) to do so. A Linode support representative will turn off the service, remove your backups from our servers, and issue a prorated service credit for the time left in the current billing period. This credit may be used to purchase additional Linode services in the future.
+You can cancel the Backup Service at any time. From your Linode's dashboard, choose the **Backups** tab and click the **Cancel Backups** link under at the bottom of the page.  This will turn off the service, remove your backups from our servers, and issue a prorated service credit for the time left in the current billing period. This credit may be used to purchase additional Linode services in the future.
 
 ##Limitations
 
