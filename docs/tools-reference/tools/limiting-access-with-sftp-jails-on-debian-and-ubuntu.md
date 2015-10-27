@@ -42,7 +42,7 @@ First, you need to configure OpenSSH.
        {: .file-excerpt }
        /etc/ssh/sshd\_config
        :    ~~~
-            Match group filetransfer
+            Match Group filetransfer
                 ChrootDirectory %h
                 X11Forwarding no
                 AllowTcpForwarding no
