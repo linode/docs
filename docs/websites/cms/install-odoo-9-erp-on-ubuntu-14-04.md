@@ -2,8 +2,8 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Manually install Odoo 9 on Ubuntu.'
-keywords: 'Odoo,Ubuntu,How To,ERP,CRM,OpenERP'
+description: 'Odoo is an open-source suite of over 4,500 business applications. Odoo allows administrators to install, configure and customize any application to satisfy their needs. This guide covers how to install and configure Odoo using Git source so it will be easy to upgrade and maintain.'
+keywords: 'Odoo,Odoo ERP,CMS,Ubuntu,CRM,OpenERP'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 published: 'Tuesday, October 20th, 2015'
 modified: 'Tuesday, October 20th, 2015'
@@ -23,7 +23,7 @@ external_resources:
 
 Once deployed, Odoo flexibility allows the administrator to install any module combination and configure/customize them at will to satisfy business needs ranging from a small shop to a Enterprise Level Corporation.
 
-This Guide covers how to install and configure Odoo in just 35 minutes using Git source so it will be easy to upgrade, maintain and customize. 
+This guide covers how to install and configure Odoo in just 35 minutes using Git source so it will be easy to upgrade, maintain and customize. 
 
 ## Before You Begin
 
