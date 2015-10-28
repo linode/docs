@@ -38,6 +38,8 @@ Dovecot offers a default self-signed certificate for free. This certificate encr
 
 {: .note}
 >
+> As of version 2.2.13-7, Dovecot no longer provides a default SSL certificate. This affects Debian 8 users, and means that if you wish to use SSL encryption (reccomended), you must generate your own self-signed certificate or use a trusted certificate from a Certificate Authority.
+>
 > Many email service providers such as Gmail will only accept commercial SSL certificates for secure IMAP/POP3 connections. To communicate with these providers, follow our guide for [Obtaining a Commercial SSL Certificate](https://www.linode.com/docs/security/ssl/obtaining-a-commercial-ssl-certificate).
 
 ## Installing Packages
@@ -323,7 +325,7 @@ Next, set up Postfix so the server can accept incoming messages for the domains.
         query = SELECT email FROM virtual_users WHERE email='%s'
         ~~~
 
-7.  Save the changes you've made to the `/etc/postfix/mysql-virtual-email2email.cf` file, and restart Postfix with the following command.
+7.  Save the changes you've made to the `/etc/postfix/mysql-virtual-email2email.cf` file, and restart Postfix: 
 
         sudo service postfix restart
 
@@ -763,6 +765,8 @@ Dovecot allows users to log in and check their email using POP3 and IMAP. In thi
 
     {:.note}
     >
+    > As noted above, these files are not provided in Dovecot 2.2.13-7 and above, and will not be present on Debian 8 systems.
+    >
     > If using a different SSL certificate, upload the certificate to the server and make a note of its location and the key's location.
 
 18. Open `/etc/dovecot/conf.d/10-ssl.conf`.
@@ -921,7 +925,7 @@ You have successfully added the new email address to the Postfix and Dovecot set
     >
     > Ensure that the correct number is entered for the `domain_id` value. Use the `id` of the domain for this email address. For an explanation of `id` us, see the email users section above.
 
-You can also add a "catch-all" alias which will forward all emails sent to a domain which do not have matching aliases or users by specifying `@newdomain.com` as the source of the alias.
+    You can also add a "catch-all" alias which will forward all emails sent to a domain which do not have matching aliases or users by specifying `@newdomain.com` as the source of the alias.
 
         INSERT INTO `mailserver`.`virtual_aliases`
           (`domain_id`, `source`, `destination`)
