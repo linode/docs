@@ -6,9 +6,9 @@ description: 'Using a NodeBalancer to begin managing a simple web application.'
 keywords: 'nodebalancers,nodebalancer,load balancers,load balancer,load balancing,high availability,ha'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['nodebalancers/getting-started/']
-modified: 'Tuesday, October 27th 2015'
+modified: 'Tuesday, October 28th 2015'
 modified_by:
-  name: Alex Fornuto
+  name: Linode
 published: 'Thursday, February 12, 2015'
 title: Getting Started with NodeBalancers
 ---
@@ -65,7 +65,7 @@ Sticking with the simple web application example above, the backend Linode curre
 
 	Once you have configured your certificates, you must then choose a general security and compatibility level for your NodeBalancer's TLS cipher suite pools. If you must support users accessing your application with older browsers such as Internet Explorer 6-8, you can select the **Legacy** option. However, bear in mind that by gaining backwards compatibility, your NodeBalancer will use weaker SSL/TLS cipher suites.
 
-	For all other implementations, the default **Recommended** cipher suite option should be used.
+	For all other implementations, the default **Recommended** cipher suite option should be used. You can see the cipher suites available with each option in our [NodeBalancer Reference Guide](http://localhost:4567/docs/platform/nodebalancer/nodebalancer-reference-guide#tls-cipher-suites).
 
 	[![SSL Cipher Suite](/docs/assets/ssl-cipher-suite-resized.png)](/docs/assets/ssl-cipher-suite.png)
 
