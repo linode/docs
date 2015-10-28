@@ -38,6 +38,8 @@ Dovecot offers a default self-signed certificate for free. This certificate encr
 
 {: .note}
 >
+> As of version 2.2.13-7, Dovecot no longer provides a default SSL certificate. This affects Debian 8 users, and means that if you wish to use SSL encryption (reccomended), you must generate your own self-signed certificate or use a trusted certificate from a Certificate Authority.
+>
 > Many email service providers such as Gmail will only accept commercial SSL certificates for secure IMAP/POP3 connections. To communicate with these providers, follow our guide for [Obtaining a Commercial SSL Certificate](https://www.linode.com/docs/security/ssl/obtaining-a-commercial-ssl-certificate).
 
 ## Installing Packages
@@ -271,7 +273,8 @@ Next, set up Postfix so the server can accept incoming messages for the domains.
       #Virtual domains, users, and aliases
       virtual_mailbox_domains = mysql:/etc/postfix/mysql-virtual-mailbox-domains.cf
       virtual_mailbox_maps = mysql:/etc/postfix/mysql-virtual-mailbox-maps.cf
-      virtual_alias_maps = mysql:/etc/postfix/mysql-virtual-alias-maps.cf
+      virtual_alias_maps = mysql:/etc/postfix/mysql-virtual-alias-maps.cf,
+              mysql:/etc/postfix/mysql-virtual-email2email.cf
       ~~~
 
 3.  Create the file for virtual domains. Ensure that you change the password for the `mailuser` account. If you used a different user, database name, or table name, customize those settings as well.
@@ -286,7 +289,7 @@ Next, set up Postfix so the server can accept incoming messages for the domains.
       query = SELECT 1 FROM virtual_domains WHERE name='%s'
       ~~~
 
-4.  Create the `/etc/postfix/mysql-virtual-domains.cf` file, and enter the following values. Make sure you use the `mailuser`'s password and make any other changes as needed.
+4.  Create the `/etc/postfix/mysql-virtual-mailbox-maps.cf` file, and enter the following values. Make sure you use the `mailuser`'s password and make any other changes as needed.
 
     {: .file }
     /etc/postfix/mysql-virtual-mailbox-maps.cf
@@ -310,29 +313,41 @@ Next, set up Postfix so the server can accept incoming messages for the domains.
         query = SELECT destination FROM virtual_aliases WHERE source='%s'
         ~~~
 
-6.  Save the changes you've made to the `/etc/postfix/mysql-virtual-alias-maps.cf` file, and restart Postfix with the following command.
+6.  Create the `/etc/postfix/mysql-virtual-email2email.cf` file and enter the following values. Again, make sure you use the mailuser's password, and make any other changes as necessary.
+
+      {: .file }
+      /etc/postfix/mysql-virtual-email2email.cf
+      : ~~~
+        user = mailuser
+        password = mailuserpass
+        hosts = 127.0.0.1
+        dbname = mailserver
+        query = SELECT email FROM virtual_users WHERE email='%s'
+        ~~~
+
+7.  Save the changes you've made to the `/etc/postfix/mysql-virtual-email2email.cf` file, and restart Postfix: 
 
         sudo service postfix restart
 
-7.  Enter the following command to ensure that Postfix can find the first domain. Be sure to replace `example.com` with the first virtual domain. The command should return `1` if it is successful.
+8.  Enter the following command to ensure that Postfix can find the first domain. Be sure to replace `example.com` with the first virtual domain. The command should return `1` if it is successful.
 
         postmap -q example.com mysql:/etc/postfix/mysql-virtual-mailbox-domains.cf
 
-8.  Test Postfix to verify that it can find the first email address in the MySQL table. Enter the following command, replacing `email1@example.com` with the first email address in the MySQL table. You should again receive `1` as the output:
+9.  Test Postfix to verify that it can find the first email address in the MySQL table. Enter the following command, replacing `email1@example.com` with the first email address in the MySQL table. You should again receive `1` as the output:
 
         postmap -q email1@example.com mysql:/etc/postfix/mysql-virtual-mailbox-maps.cf
 
-9. Test Postfix to verify that it can find the aliases by entering the following command. Be sure to replace `alias@example.com` with the actual alias you entered:
+10. Test Postfix to verify that it can find the aliases by entering the following command. Be sure to replace `alias@example.com` with the actual alias you entered:
 
         postmap -q alias@example.com mysql:/etc/postfix/mysql-virtual-alias-maps.cf
 
     This should return the email address to which the alias forwards, which is `email1@example.com` in this example.
 
-10. Make a copy of the `/etc/postfix/master.cf` file:
+11. Make a copy of the `/etc/postfix/master.cf` file:
 
         cp /etc/postfix/master.cf /etc/postfix/master.cf.orig
 
-11. Open the configuration file for editing and uncomment the two lines starting with `submission` and `smtps` and the block of lines starting with `-o` after each. The first section of the `/etc/postfix/master.cf` file should resemble the following:
+12. Open the configuration file for editing and uncomment the two lines starting with `submission` and `smtps` and the block of lines starting with `-o` after each. The first section of the `/etc/postfix/master.cf` file should resemble the following:
 
     {: .file-excerpt }
 	/etc/postfix/master.cf
@@ -366,7 +381,7 @@ Next, set up Postfix so the server can accept incoming messages for the domains.
 	    -o milter_macro_daemon_name=ORIGINATING
 	  ~~~
 
-12. Restart Postfix by entering the following command:
+13. Restart Postfix by entering the following command:
 
         service postfix restart
 
@@ -750,6 +765,8 @@ Dovecot allows users to log in and check their email using POP3 and IMAP. In thi
 
     {:.note}
     >
+    > As noted above, these files are not provided in Dovecot 2.2.13-7 and above, and will not be present on Debian 8 systems.
+    >
     > If using a different SSL certificate, upload the certificate to the server and make a note of its location and the key's location.
 
 18. Open `/etc/dovecot/conf.d/10-ssl.conf`.
@@ -907,6 +924,13 @@ You have successfully added the new email address to the Postfix and Dovecot set
     {: .note }
     >
     > Ensure that the correct number is entered for the `domain_id` value. Use the `id` of the domain for this email address. For an explanation of `id` us, see the email users section above.
+
+    You can also add a "catch-all" alias which will forward all emails sent to a domain which do not have matching aliases or users by specifying `@newdomain.com` as the source of the alias.
+
+        INSERT INTO `mailserver`.`virtual_aliases`
+          (`domain_id`, `source`, `destination`)
+        VALUES
+          ('5', '@newdomain.com', 'myemail@gmail.com');
 
 2.  Verify that the new alias has been added. The new alias will be displayed in the output.
 
