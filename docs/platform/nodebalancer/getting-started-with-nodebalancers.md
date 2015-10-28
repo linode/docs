@@ -29,7 +29,7 @@ As an example, this guide will start with a typical, simple web application.
 
 ![The web application when the guide starts.](/docs/assets/806-starting-point.png)
 
-There are a few drawbacks to making this application scale, namely that any modifications require updating DNS (which takes time) or inflicting users with downtime. NodeBalancer can bring administrative ease to this application by becoming its front face.
+There are a few drawbacks to making this application scale, namely that any modifications require updating DNS (which takes time) or inflicting users with downtime. NodeBalancers can bring administrative ease to this application by becoming its front face.
 
 ![Diagram after putting NodeBalancer in charge of the web application.](/docs/assets/807-first-step.png)
 
@@ -65,7 +65,7 @@ Sticking with the simple web application example above, the backend Linode curre
 
 	Once you have configured your certificates, you must then choose a general security and compatibility level for your NodeBalancer's TLS cipher suite pools. If you must support users accessing your application with older browsers such as Internet Explorer 6-8, you can select the **Legacy** option. However, bear in mind that by gaining backwards compatibility, your NodeBalancer will use weaker SSL/TLS cipher suites.
 
-	For all other implementations, the default **Recommended** cipher suite option should be used. You can see the cipher suites available with each option in our [NodeBalancer Reference Guide](http://localhost:4567/docs/platform/nodebalancer/nodebalancer-reference-guide#tls-cipher-suites).
+	For all other implementations, the default **Recommended** cipher suite option should be used. You can see the cipher suites available with each option in our [NodeBalancer Reference Guide](/docs/platform/nodebalancer/nodebalancer-reference-guide#tls-cipher-suites).
 
 	[![SSL Cipher Suite](/docs/assets/ssl-cipher-suite-resized.png)](/docs/assets/ssl-cipher-suite.png)
 
