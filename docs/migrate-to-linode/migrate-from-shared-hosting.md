@@ -43,71 +43,32 @@ When changing servers, however, you want a low TTL to makes sure that when you u
 
 For more information on domain TTL, see our [DNS guide](/docs/networking/dns/dns-manager#setting-the-time-to-live-or-ttl).
 
-## Back Up Your Old Site
+## Back Up Your Website
 
-The next step is to download all of your website files and other unique files (like photos, videos, and configuration files) from your old server to your desktop.
+The next step is to back up your site from your old server to your desktop. There are multiple ways to do this, though you may find the easiest method to be working directly through your host's control panel from your web browser. The location of your website on the server will vary among hosting providers, though it should be something along the lines of `/home/account_name/public_html`.
 
-You may want to see whether the application you use for your website already has its own backup instructions (like [WordPress](https://codex.wordpress.org/WordPress_Backups), for example). Ultimately, whether you have a special backup method or not, every website is made from files and databases. You can use the instructions in this section to back up every type of website.
+You may want to explore whether the application you use for your website already has its own backup instructions, such as the combination of [WordPress](https://codex.wordpress.org/WordPress_Backups) and phpMyAdmin, for example). Ultimately, whether you have a special backup method or not, every website is made from files and databases. You can use the instructions in this section to back up every type of website.
+
+**Shared Host's Control Panel**
+
+[CPanel](https://documentation.cpanel.net/display/ALD/Backup%20Wizard) and [Plesk](http://docs.plesk.com/en-US/12.5/administrator-guide/website-management/backing-up-and-recovering-websites/) have their own backup methods, in addition to being able to create a single *.tar.gz* or *.zip* file from within their file managers to download.
+
+**Terminal (Linux / OS X)**
+
+Linux and OS X can use [SCP](https://en.wikipedia.org/wiki/Secure_copy) natively from the command line. To download your client's tarball to your local user's Home directory using SCP:
+
+    scp account's_user_name@server_ip_address:/home/account_name/public_html ~/
+
+**FileZilla (Linux / OS X / Windows)**
+
+See [our Filezilla guide](/docs/tools-reference/file-transfer/filezilla) to use it for transferring the backup.
+
+
 
 {: .caution }
 >
 >If your old host has an automatic backup option, it may or may not be useful to you, depending on the type of backup that gets created. Ask your old host whether the backup is good for a *server migration* if you're not sure.
 
-One of the easiest ways to download files from a server is by file transfer protocol (FTP). For these instructions we'll use FileZilla, a free, open source, cross-platform FTP client.
-
-1.  Download the **FileZilla client** from [FileZilla's website](https://filezilla-project.org/) (not the server installaer). FileZilla should automatically detect whether your operating system before downloading. If not, choose the appropriate file for your operating system.
-
-2.  Extract or un-archive the download if necessary and run the installer.
-
-3.  When FileZilla installs, it will launch itself. Click the **Site Manager** icon at the upper left.
-
-    [![Site Manager.](/docs/assets/1417-filezilla_site_manager.png)](/docs/assets/1417-filezilla_site_manager.png)
-
-4.  Click the **New Site** button.
-
-    [![FileZilla server settings.](/docs/assets/1426-filezilla_old_server_markup.png)](/docs/assets/1426-filezilla_old_server_markup.png)
-
-    *  Choose **New Site** and enter a name for the folder.
-
-    *  The **Host** can be your site's domain name or shared hosting server's IP address. If you don't have a dedicated IP address, you probably have an alternate domain name supplied by your old hosting company. Contact them to get it.
-
-    *  Enter **22** for the **Port**. Alternately, use **21** if your provider doesn't support Secure FTP.
-
-    *  Select **SFTP - SSH File Transfer Protocol** as the **Protocol**. (Alternately, select **FTP - File Transfer Protocol** if your provider doesn't support Secure FTP.)
-
-    *  For **Logon Type**, select **Normal**.
-
-    *  The **User** should be either the general user name or the FTP user name of your shared hosting plan. Contact your old hosting provider if you're not sure what it is.
-
-    *  The **Password** should be that of the user mentioned above.
-
-5.  Click the **Connect** button.
-
-    [![Connect button.](/docs/assets/1427-filezilla_old_server_connect.png)](/docs/assets/1427-filezilla_old_server_connect.png)
-
-6.  If this is your first time connecting, you may get a warning about the server's SSH key. Check the box to **Always trust this host**, then click **OK**.
-
-    [![Unknown key warning.](/docs/assets/1450-filezilla_unknown_key.png)](/docs/assets/1450-filezilla_unknown_key.png)
-
-7.  You should now see the connection dialog in FileZilla's top window. You'll know the connection was successful when the dialog stops and final line reads **Directory listing successful**.
-
-    [![FileZilla is connected.](/docs/assets/1433-filezilla_connected_successful_sm.png)](/docs/assets/1428-filezilla_connected_successful.png)
-
-8.  The left FileZilla window labeled **Local site** is your *local filesystem*. This panel shows all the files and folders on your desktop computer. Navigate to the location where you want to save a copy of your website. Here we'll use the *Destkop* folder as an example.
-
-    [![FileZilla files.](/docs/assets/1432-filezilla_connected_desktop_markup_sm.png)](/docs/assets/1429-filezilla_connected_desktop_markup.png)
-
-9.  The FileZilla window on the right is the **Remote site**. This shows the filesystem of the server you're connected to. Find your website folder in the Remote site window. It might be called something like **www**, **httpdocs**, or **public**. If you're not sure where your website folder is located, contact your old hosting provider.
-
-10.  Select your website's root folder so it's highlighted in blue. Then right-click on it and choose **Download**.
-
-        [![Download option.](/docs/assets/1434-filezilla_download_from_server_markup_sm.png)](/docs/assets/1430-filezilla_download_from_server_markup.png)
-
-        You should see the progress in the bottom window as shown below:
-
-        [![Download progress.](/docs/assets/1435-filezilla_download_inprogress_cropped_sm.png)](/docs/assets/1431-filezilla_download_inprogress_cropped.png)
-
-11. Repeat Step 10 for the desired folders until you have downloaded all of your unique content from your old host. When finished, check your local download location to verify all of your site's content is there. To make things easier
 
 {: .caution}
 >
