@@ -15,27 +15,33 @@ title: Migrate from Shared Hosting to Linode
 
 This guide will walk you through migrating your website from a shared hosting provider to Linode. Linode gives you a lot more flexibility and power than a shared host, but those benefits come with a bit more complexity and responsibility, so you will learn several new concepts along the way.
 
-## Prepare Your Domain Name
+## Before You Begin
 
-The first step we'll do is to get your domain name (a domain name is something like **example.com**) ready to move. This first step may seem out of order, but doing it now will save a lot of headaches later on. We're not actually moving it yet--that's the last step--we're just setting it up so that when you are ready to move, it'll go smoothly.
+This guide will assume you already have a Linode account and know how to sign in to the [Linode Manager](https://manager.linode.com/).
 
-What we're doing right now is *lowering the TTL* for your domain. Time to Live, or TTL, tells Internet servers how long to save information about your domain. Usually your domain doesn't move around to different servers, so it's okay to have a high TTL. But, when you're about to move servers, you want to have a low TTL. This makes sure that when you update the server information for your domain, it takes effect quickly. Otherwise, the internet will send your traffic to the old location for a while, which is not ideal. Taking care of your domain is like updating your street address with the post office when you move.
+## Prepare Your Domain Name to Move
 
-1.  Locate your domain's current *nameservers*. Most people can find their nameservers on the website of your *registrar* (the place you bought the domain) or your shared hosting provider. If you're not sure what your nameservers are, you can find out with this [Whois Search tool](http://www.internic.net/whois.html). You will see nameservers listed, probably all at the same company.
+We will start by lowering the *Time to Live* (TTL) for your domain so the migration won't have negative impact on your site's visitors. TTL tells DNS caching servers how long to save information about your domain, and since DNS addresses don't often change server IP addresses, TTL is normally about 24 hours.
+
+When changing servers, however, you want a low TTL to makes sure that when you update your domain information, it takes effect quickly. Otherwise, your domain will resolve to your old server's IP for up to 24 hours. Changing TTL is not a universal guarantee, however, because caching DNS servers ignore TTL, but does the most to make sure that your site ***.
+
+1.  Locate your current *nameservers* in your shared hosting provider's account control panel. If you're not sure what your nameservers are, you can find out with this [Whois Search tool](http://www.internic.net/whois.html). You will see several nameservers listed, probably all at the same company.
 
     [![Version control overview.](/docs/assets/1424-internic_whois_nameserver-3.png)](/docs/assets/1424-internic_whois_nameserver-3.png)
 
-2.  Contact your domain registrar or shared host for details on how to lower the TTL for your domain. Every nameserver host is a little different, so you will have to ask them for instructions.
-3.  Make a note of your current TTL. It will be listed in seconds, so you need to divide by 3600 to get the number of hours. For example, 86400 seconds = 24 hours. This is the amount of time that you need to wait between now and when you actually move your domain.
+2.  Contact your domain registrar for details on how to lower the TTL for your domain. Every provider is a little different, so you will have to ask for their instructions.
+
+3.  Make a note of your current TTL. It will be listed in seconds, so you need to divide by 3600 to get the number of hours (ex: 86,400 seconds = 24 hours). This is the amount of time that you need to wait between now and when you actually move your domain.
+
 4.  Lower your TTL as low as it will go. 300 seconds = 5 minutes, so that's a good choice if it's available.
-5.  Save your changes.
-6.  Make sure you wait out the original TTL from Step 3 before you actually move your domain. You can do all of the other steps, like backing up your data, deploying your Linode, and uploading your website, in the meantime.
 
- {: .note }
+5.  Make sure you wait out the original TTL from Step 3 before you actually move your domain. In the meantime, you can do all of the other steps, like backing up your data, deploying your Linode, and uploading your website.
+
+{: .note }
 >
-> If you can't lower your TTL, it's not the end of the world. The first day or two of your transition to Linode may be a little bumpy, but your updated and correct domain information will eventually spread throughout the internet, and in less than a week you won't notice the difference.
+> If you can't lower your TTL, it's not the end of the world. The first day or two of your transition to Linode may be a little bumpy, but your updated domain information will eventually spread throughout the internet, and in less than a week you won't notice the difference.
 
-For more information on the TTL concept, see our [DNS guide](/docs/networking/dns/dns-manager#setting-the-time-to-live-or-ttl).
+For more information on domain TTL, see our [DNS guide](/docs/networking/dns/dns-manager#setting-the-time-to-live-or-ttl).
 
 ## Back Up Your Old Site
 
