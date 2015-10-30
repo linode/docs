@@ -361,7 +361,7 @@ More information
 
 You can find additional information about SPF, DKIM and OpenDKIM on these web sites:
 
-1. [Sender Policy Framework](http://www.openspf.org/)
-2. [DomainKeys Identified Mail](http://www.dkim.org/)
-3. [OpenDKIM](http://www.opendkim.org/)
+1. [Sender Policy Framework](http://www.openspf.org/) official site
+2. [DomainKeys Identified Mail](http://www.dkim.org/) official site
+3. [OpenDKIM](http://www.opendkim.org/) official site
 4. The [Sender Policy Framework](https://en.wikipedia.org/wiki/Sender_Policy_Framework) and [DomainKeys Identified Mail](https://en.wikipedia.org/wiki/DomainKeys_Identified_Mail) Wikipedia pages, which should not be considered authoritative but provide helpful discusson and additional references.
