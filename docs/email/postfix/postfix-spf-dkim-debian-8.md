@@ -168,7 +168,7 @@ When creating the file, change `myhostname` to the name of your server and repla
 
     opendkim-genkey -b 2048 -r -s YYYYMM
 
-replacing YYYYMM with the current year and month as in the key table. This will give you two files, `YYYYMM.private` containing the key and `YYYYMM.txt` containing the TXT record you'll need to set up DNS. Rename the files so they have names matching the third section of the second field of the key table for the domain:
+replacing YYYYMM with the current year and month as in the key table. The YYYYMM value is called the selector, it'll be used to select the actual key when looking data up in DNS. This will give you two files, `YYYYMM.private` containing the key and `YYYYMM.txt` containing the TXT record you'll need to set up DNS. Rename the files so they have names matching the third section of the second field of the key table for the domain:
 
     mv YYYYMM.private keyentry.private
     mv YYYYMM.txt keyentry.txt
@@ -275,6 +275,8 @@ You can put this anywhere in the file. I usually put it after the `smtpd_recipie
 
     systemctl restart postfix
 
+6. Exit the root shell and return to your normal user shell with the `exit` command.
+
 ## Verify that everything's fully operational ##
 
 The easiest way to verify that everything's working is to send a test e-mail to `check-auth@verifier.port25.com` using an e-mail client configured to submit mail to the submission port on your mail server. It will analyze your message and mail you a report indicating whether your e-mail was signed correctly or not. It also reports on a number of other things such as SPF configuration and SpamAssassin flagging of your domain. If there's a problem, it'll report what the problem was.
@@ -286,3 +288,44 @@ As a final item, you can add an ADSP policy to your domain saying that all e-mai
 ![Linode DNS manager add TXT record](/docs/assets/9904_ADSP_TXT_record.png)
 
 You don't need to set this up, but it makes it harder for anyone to forge mail from your domains because receiving mail servers will see the lack of a DKIM signature and reject the message.
+
+## Key rotation ##
+
+The reason I used the YYYYMM format for the selector is that best practice calls for changing the DKIM signing keys every so often (monthly is recommended, I wouldn't let it go longer than every 6 months). To do that without disrupting messages in transit you generate the new keys using a new selector. The process is:
+
+1. Change to root by doing `su -` or `sudo -s`.
+
+2. Generate new keys as in step 6 of "Configuring OpenDKIM". Do this in a scratch directory, not directly in `/etc/opendkim/keys`. Use the current year and month for the YYYYMM selector value, so it's different from the selector currently in use.
+
+3. Use the newly-generated `.txt` files to add the new keys to DNS as in the DKIM "Setting Up DNS" section, using the new YYYYMM selector in the host names. Don't remove or alter the existing DKIM TXT records.
+
+4. Stop Postfix and OpenDKIM by doing a `systemctl stop postfix opendkim` so that they won't be processing mail while you're changing out keys.
+
+5. Copy the newly-generated `.private` files into place and make sure their ownership and permissions are correct by running these commands from the directory you generated the key files in:
+
+    cp *.private /etc/opendkim/keys/
+    chown opendkim:opendkim /etc/opendkim/keys/*
+    chmod go-rw /etc/opendkim/keys/*
+
+6. Edit `/etc/opendkim/key.table` and change the old YYYYMM values to the new selector reflecting the current year and month. Save the file.
+
+7. Restart OpenDKIM and Postfix by:
+
+    systemctl start opendkim
+    systemctl start postfix
+
+Make sure they both start without any errors.
+
+8. Exit the root shell and return to your normal user shell.
+
+9. After a couple of weeks all mail in transit should either have been delivered or bounced (you may think it ought to be faster, but trust me mail can hang around in transit in badly-configured mail systems a lot longer than you think) and the old DKIM key information in DNS won't be needed anymore. Go in and delete the old `YYYYMM._domainkey` TXT records in each of your domains, leaving just the newest ones (most recent year and month). Don't worry overmuch if you forget and leave the old keys around longer than planned. There's no security issue, removing the obsolete records is more a matter of keeping things neat and tidy than anything else.
+
+More information
+----------------
+
+You can find additional information about SPF, DKIM and OpenDKIM on these web sites:
+
+1. [Sender Policy Framework](http://www.openspf.org/)
+2. [DomainKeys Identified Mail](http://www.dkim.org/)
+3. [OpenDKIM](http://www.opendkim.org/)
+4. The [Sender Policy Framework](https://en.wikipedia.org/wiki/Sender_Policy_Framework) and [DomainKeys Identified Mail](https://en.wikipedia.org/wiki/DomainKeys_Identified_Mail) Wikipedia pages, which should not be considered authoritative but provide helpful discusson and additional references.
