@@ -126,6 +126,81 @@ If everything installed successfully it should give you the help text for the co
 
 Edit `/etc/opendkim.conf` and replace it's contents with the above, or download [a copy of opendkim.conf](/doc/assets/9902_opendkim.conf), upload it to your server and copy it over top of `/etc/opendkim.conf`. Do a `chmod u=rw,go=r /etc/opendkim.conf` to make sure it's permissions are set correctly.
 
+2. Create the directories to hold OpenDKIM's data files:
+
+    mkdir /etc/opendkim
+    mkdir /etc/opendkim/keys
+    chown -R opendkim:opendkim /etc/opendkim
+    chmod go-rw /etc/opendkim/keys
+
+3. Create the signing table `/etc/opendkim/signing.table`. It needs to have one line per domain you handle mail for, with each line looking like:
+
+    *@example.com   keyentry
+
+Replace `example.com` with your domain and `keyentry` with a short name for the domain. The first field is a pattern that matches e-mail addresses, and the second field is a name for the key table entry that should be used to sign mail from that address. For simplicity we're just going to set up one key for all addresses in a domain.
+
+4. Create the key table `/etc/opendkim/key.table`. It needs to have one line per `keyentry` value in the signing table. Each line will look like:
+
+    keyentry    example.com:YYYYMM:/etc/opendkim/keys/keyentry.private
+
+Replace `keyentry` with the `keyentry` value you used for the domain in the signing table (make sure to catch the second occurrence at the end where it's followed by `.private`), replace `example.com` with your domain name, and replace the `YYYYMM` with the current 4-digit year and 2-digit month. The first field connects the signing and key tables. The second field is broken down into 3 sections separated by colons. The first section is the domain name the key is for, the second section is a selector used when looking up key records in DNS, and the third section names the file containing the signing key for the domain.
+
+5. Create the trusted hosts file `/etc/opendkim/trusted.hosts`. It's contents need to be:
+
+{: .file}
+:   ~~~ conf
+    127.0.0.1
+    ::1
+    localhost
+    myhostname
+    myhostname.example.com
+    example.com
+    ~~~
+
+When creating the file, change `myhostname` to the name of your server and replace `example.com` with your own domain name. We're identifying the hosts that users will be submitting mail through and that should have their outgoing mail signed, which for basic configurations will just be your own mail server.
+
+6. Generate keys for each domain. First do a `cd /etc/opendkim/keys`. Then issue the following command:
+
+    opendkim-genkey -b 2048 -r -s YYYYMM
+
+replacing YYYYMM with the current year and month as in the key table. This will give you two files, `YYYYMM.private` containing the key and `YYYYMM.txt` containing the TXT record you'll need to set up DNS. Rename the files so they have names matching the third section of the second field of the key table for the domain:
+
+    mv YYYYMM.private keyentry.private
+    mv YYYYMM.txt keyentry.txt
+
+Repeat the commands in this step for every entry in the key table. The `-b 2048` indicates the number of bits in the RSA key pair used for signing and verification. 1024 bits is the minimum, but with modern hardware 2048 bits is safer and it's possible 4096 bits will be required at some point.
+
+7. Make sure the ownership and permissions on `/etc/opendkim` and it's contents are correct by running the following commands:
+
+    cd /etc
+    chown -R opendkim:opendkim /etc/opendkim
+    chmod -R go-rw /etc/opendkim/keys
+
+8. Check that OpenDKIM starts correctly by:
+
+    systemctl restart opendkim
+
+You should get no error messages from it. If you get errors, use:
+
+    systemctl status -l opendkim
+
+to get the status and untruncated error messages.
+
+## Setting up DNS ##
+
+1.
+
+## Test your configuration ##
+
+1.
+
+## Hooking OpenDKIM into Postfix ##
+
+1. Create the OpenDKIM socket directory in Postfix's work area and make sure it has the correct ownership:
+
+    mkdir /var/spool/postfix/opendkim
+    chown opendkim:postfix /var/spool/postfix/opendkim
+
 2. Set the correct socket for Postfix in the OpenDKIM defaults file `/etc/defaults/opendkim`:
 
 {: .file}
@@ -144,9 +219,12 @@ Edit `/etc/opendkim.conf` and replace it's contents with the above, or download 
 
 Uncomment the first SOCKET line and edit it so it matches the uncommented line in the above file. The path to the socket is different from the default because on Debian 8 the Postfix process that handles mail runs in a chroot jail and can't access the normal location.
 
-3. Create the directories to hold OpenDKIM's data files:
+3. Restart the OpenDKIM daemon so it sets up the correct socket for Postfix:
 
-    mkdir /etc/opendkim
-    mkdir /etc/opendkim/keys
-    chown -R opendkim:opendkim /etc/opendkim
-    chmod go-rw /etc/opendkim/keys
+    systemctl restart opendkim
+
+4.
+
+## Verify that everything's operational ##
+
+1.
