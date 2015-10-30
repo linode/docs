@@ -2,13 +2,13 @@
 author:
   name: Todd Knarr
   email: tknarr@silverglass.org
-description: 'Setting up SPF and DKIM for Postfix on Debian 8.'
+description: 'Configuring SPF and DKIM in Postfix on Debian 8.'
 keywords: 'email,mail,postfix,spf,dkim'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Thursday, October 29th 2015
+modified: Friday, October 30th 2015
 modified_by:
   name: Todd Knarr
-published: 'Thursday, October 29th, 2015'
+published: 'Friday, October 30th, 2015'
 title: 'Configuring Postfix for SPF and DKIM'
 ---
 
@@ -21,16 +21,39 @@ DKIM (DomainKeys Identified Mail) is a system to let your official mailservers a
 
 The instructions for SPF will work for any Linux distribution and any mail server software. The instructions for setting up DKIM should work for any Linux distribution that uses the OpenDKIM package, as long as you configure the right repositories for that distribution to get the latest packages. The instructions for hooking OpenDKIM into Postfix work in principle for any system using Postfix and OpenDKIM, but the details are fairly specific to how Postfix is configured to work on Debian 8 (Jessie).
 
+{: .note}
+>
+>The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+
+Installing required packages
+----------------------------
+
+You'll need to switch to a root shell using `su -` or `sudo -s` to install packages.
+
+1. Install the required packages with this command:
+
+    apt-get install opendkim opendkim-tools postfix-policyd-spf-python
+
+Tell it "Y" when it asks whether to download and install the listed packages. It won't take long and won't prompt for anything.
+
+2. Add user `postfix` to the `opendkim` group so that Postfix can access OpenDKIM's socket when it needs to:
+
+    adduser postfix opendkim
+
+ Remember to exit your root shell when you're done.
+
 Setting up SPF
 --------------
 
-SPF only needs records added to DNS. The string will look something like the following examples. The full syntax is at [the SPF record syntax page](http://www.openspf.org/SPF_Record_Syntax).
+## Adding SPF records to DNS ##
 
-Allow mail from all hosts listed in the MX records for the domain:
+The value in an SPF DNS record will look something like the following examples. The full syntax is at [the SPF record syntax page](http://www.openspf.org/SPF_Record_Syntax).
+
+1. Allow mail from all hosts listed in the MX records for the domain:
 
     "v=spf1 mx -all"
 
-Allow mail from a specific host:
+2. Allow mail from a specific host:
 
     "v=spf1 a:mail.example.com -all"
 
@@ -48,38 +71,47 @@ If you're using Linode's DNS Manager, go to the domain zone page for the domain 
 
 If your DNS provider allows it (DNS Manager doesn't) you should also add a record of type SPF, filling it in the same way as you did the TXT record.
 
-That's all that's needed to set up SPF for your domain.
+## Adding the SPF policy agent to Postfix ##
+
+The Python SPF policy agent adds SPF policy checking to Postfix. The SPF record for the sender's domain for incoming mail will be checked and if it exists mail will be handled accordingly. I selected the Python version because it's more capable and more up-to-date than the rather basic variant written in Perl.
+
+You'll need to switch to a root shell using `su -` or `sudo -s` for this.
+
+1. If you are using SpamAssassin to do spam filtering, you may want to edit `/etc/postfix-policyd-spf-python/policyd-spf.conf` to change the `HELO_reject` and `Mail_From_reject` settings to `False`. That will cause the SPF policy agent to run it's tests and and add a message header with the results in it but _not_ reject any messages. You may also want to make this change if you want to see the results of the checks but not actual apply them to mail processing. Otherwise, just go with the standard settings.
+
+2. Edit `/etc/postfix/master.cf` and add the following entry at the end:
+
+    policyd-spf  unix  -       n       n       -       0       spawn
+        user=policyd-spf argv=/usr/bin/policyd-spf
+
+3. Edit `/etc/postfix/main.cf` as follows:
+
+    1. Add this entry to increase the timeout Postfix uses with the policy agent to prevent Postfix from aborting the agent if transactions are running a bit slowly:
+
+        policy_time_limit = 3600
+
+    2. Edit the `smtpd_recipient_restrictions` entry to add a `check_policy_service` entry thusly:
+
+        smtpd_recipient_restrictions =
+            ...
+            reject_unauth_destination,
+            check_policy_service unix:private/policyd-spf,
+            ...
+
+    Make sure to add the `check_policy_service` entry **after** the `reject_unauth_destination` entry to avoid having your system become an open relay.
+
+4. Restart Postfix with:
+
+    systemctl restart postfix
+
+Remember to exit your root shell when you're done.
+
+You can check the operation of the policy agent by looking at raw headers on incoming mail messages for the SPF results header. You'll find errors logged in `/var/log/mail.log`.
 
 Setting up DKIM
 ---------------
 
-DKIM involves setting up the OpenDKIM package and hooking it into Postfix as well as adding DNS records.
-
-First, switch to a root shell by doing:
-
-    sudo -s
-
-or
-
-    su -
-
-You'll need root privilegs for almost all of the setup.
-
-## Installing the packages ##
-
-1. Install the required `opendkim` and `opendkim-tools` packages by running this command:
-
-    apt-get install opendkim opendkim-tools
-
-Tell it "Y" when it asks whether to download and install the listed packages. It won't take long and won't prompt for anything. Once it's finished, check by doing:
-
-    opendkim-testkey
-
-If everything installed successfully it should give you the help text for the command. At this point OpenDKIM is up and running, but it's not hooked into anything so it's harmless to just leave it if you get interrupted.
-
-2. Add user `postfix` to the `opendkim` group so that Postfix can access OpenDKIM's socket when it needs to:
-
-    adduser postfix opendkim
+DKIM involves setting up the OpenDKIM package and hooking it into Postfix as well as adding DNS records. You'll need to switch to a root shell using `su -` or `sudo -s` for of the work.
 
 ## Configuring OpenDKIM ##
 
@@ -139,15 +171,19 @@ Edit `/etc/opendkim.conf` and replace it's contents with the above, or download 
 
 3. Create the signing table `/etc/opendkim/signing.table`. It needs to have one line per domain you handle mail for, with each line looking like:
 
-    *@example.com   keyentry
+    *@example.com   example
 
-Replace `example.com` with your domain and `keyentry` with a short name for the domain. The first field is a pattern that matches e-mail addresses, and the second field is a name for the key table entry that should be used to sign mail from that address. For simplicity we're just going to set up one key for all addresses in a domain.
+Replace `example.com` with your domain and `example` with a short name for the domain. The first field is a pattern that matches e-mail addresses, and the second field is a name for the key table entry that should be used to sign mail from that address. For simplicity we're just going to set up one key for all addresses in a domain.
 
-4. Create the key table `/etc/opendkim/key.table`. It needs to have one line per `keyentry` value in the signing table. Each line will look like:
+4. Create the key table `/etc/opendkim/key.table`. It needs to have one line per short domain name in the signing table. Each line will look like:
 
-    keyentry    example.com:YYYYMM:/etc/opendkim/keys/keyentry.private
+    example     example.com:YYYYMM:/etc/opendkim/keys/example.private
 
-Replace `keyentry` with the `keyentry` value you used for the domain in the signing table (make sure to catch the second occurrence at the end where it's followed by `.private`), replace `example.com` with your domain name, and replace the `YYYYMM` with the current 4-digit year and 2-digit month. The first field connects the signing and key tables. The second field is broken down into 3 sections separated by colons. The first section is the domain name the key is for, the second section is a selector used when looking up key records in DNS, and the third section names the file containing the signing key for the domain.
+Replace `example` with the `example` value you used for the domain in the signing table (make sure to catch the second occurrence at the end where it's followed by `.private`), replace `example.com` with your domain name, and replace the `YYYYMM` with the current 4-digit year and 2-digit month (this is referred to as the selector). The first field connects the signing and key tables. The second field is broken down into 3 sections separated by colons. The first section is the domain name the key is for, the second section is a selector used when looking up key records in DNS, and the third section names the file containing the signing key for the domain.
+
+{: .note}
+>
+> The flow for DKIM lookup starts with the sender's address. The signing table is scanned until an entry whose pattern (first item) matches the address is found, then the second item's value is used to locate the entry in the key table whose key information will be used. For incoming mail the domain and selector are then used to find the public key TXT record in DNS and that public key is used to validate the signature. For outgoing mail the private key is read from the named file and used to generate the signature on the message.
 
 5. Create the trusted hosts file `/etc/opendkim/trusted.hosts`. It's contents need to be:
 
@@ -168,10 +204,10 @@ When creating the file, change `myhostname` to the name of your server and repla
 
     opendkim-genkey -b 2048 -r -s YYYYMM
 
-replacing YYYYMM with the current year and month as in the key table. The YYYYMM value is called the selector, it'll be used to select the actual key when looking data up in DNS. This will give you two files, `YYYYMM.private` containing the key and `YYYYMM.txt` containing the TXT record you'll need to set up DNS. Rename the files so they have names matching the third section of the second field of the key table for the domain:
+replacing YYYYMM with the current year and month as in the key table. This will give you two files, `YYYYMM.private` containing the key and `YYYYMM.txt` containing the TXT record you'll need to set up DNS. Rename the files so they have names matching the third section of the second field of the key table for the domain:
 
-    mv YYYYMM.private keyentry.private
-    mv YYYYMM.txt keyentry.txt
+    mv YYYYMM.private example.private
+    mv YYYYMM.txt example.txt
 
 Repeat the commands in this step for every entry in the key table. The `-b 2048` indicates the number of bits in the RSA key pair used for signing and verification. 1024 bits is the minimum, but with modern hardware 2048 bits is safer and it's possible 4096 bits will be required at some point.
 
@@ -193,10 +229,10 @@ to get the status and untruncated error messages.
 
 ## Setting up DNS ##
 
-As with SPF, DKIM uses TXT records to hold information about the signing key for each domain. Using YYYYMM as above, you need to make a TXT record for the host `YYYYMM._domainkey` for each domain you handle mail for. It's value can be found in the `keyentry.txt` file for the domain. Those files look like this:
+As with SPF, DKIM uses TXT records to hold information about the signing key for each domain. Using YYYYMM as above, you need to make a TXT record for the host `YYYYMM._domainkey` for each domain you handle mail for. It's value can be found in the `example.txt` file for the domain. Those files look like this:
 
 {: .file}
-keyentry.txt
+example.txt
 :   ~~~ text
     201510.\_domainkey	IN	TXT	( "v=DKIM1; k=rsa; s=email; "
 	    "p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAu5oIUrFDWZK7F4thFxpZa2or6jBEX3cSL6b2TJdPkO5iNn9vHNXhNX31nOefN8FksX94YbLJ8NHcFPbaZTW8R2HthYxRaCyqodxlLHibg8aHdfa+bxKeiI/xABRuAM0WG0JEDSyakMFqIO40ghj/h7DUc/4OXNdeQhrKDTlgf2bd+FjpJ3bNAFcMYa3Oeju33b2Tp+PdtqIwXR"
@@ -216,7 +252,7 @@ If you're using Linode's DNS manager, this is what the add TXT record screen wil
 
 ![Linode DNS manager add TXT record](/docs/assets/9903_DKIM_TXT_record.png)
 
-Repeat this for every domain you handle mail for, using the `.txt` file for the key entry for that domain.
+Repeat this for every domain you handle mail for, using the `.txt` file for that domain.
 
 ## Test your configuration ##
 
@@ -275,7 +311,7 @@ You can put this anywhere in the file. I usually put it after the `smtpd_recipie
 
     systemctl restart postfix
 
-6. Exit the root shell and return to your normal user shell with the `exit` command.
+Remember to exit your root shell when you're done.
 
 ## Verify that everything's fully operational ##
 
