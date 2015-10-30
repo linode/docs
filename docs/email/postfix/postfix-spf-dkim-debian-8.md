@@ -2,14 +2,14 @@
 author:
   name: Todd Knarr
   email: tknarr@silverglass.org
-description: 'Configuring SPF and DKIM in Postfix on Debian 8.'
+description: 'Configuring Postfix on Debian 8 to use SPF and DKIM.'
 keywords: 'email,mail,postfix,spf,dkim'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: Friday, October 30th 2015
 modified_by:
   name: Todd Knarr
 published: 'Friday, October 30th, 2015'
-title: 'Configuring Postfix for SPF and DKIM'
+title: 'Configuring SPF and DKIM in Postfix on Debian 8'
 ---
 
 Getting Started
