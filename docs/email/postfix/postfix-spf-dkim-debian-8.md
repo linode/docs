@@ -67,7 +67,7 @@ You'll need root privilegs for almost all of the setup.
 
 ## Installing the packages ##
 
-Install the required `opendkim` and `opendkim-tools` packages by running this command:
+1. Install the required `opendkim` and `opendkim-tools` packages by running this command:
 
     apt-get install opendkim opendkim-tools
 
@@ -76,6 +76,10 @@ Tell it "Y" when it asks whether to download and install the listed packages. It
     opendkim-testkey
 
 If everything installed successfully it should give you the help text for the command. At this point OpenDKIM is up and running, but it's not hooked into anything so it's harmless to just leave it if you get interrupted.
+
+2. Add user `postfix` to the `opendkim` group so that Postfix can access OpenDKIM's socket when it needs to:
+
+    adduser postfix opendkim
 
 ## Configuring OpenDKIM ##
 
@@ -148,6 +152,7 @@ Replace `keyentry` with the `keyentry` value you used for the domain in the sign
 5. Create the trusted hosts file `/etc/opendkim/trusted.hosts`. It's contents need to be:
 
 {: .file}
+/etc/opendkim/trusted.hosts
 :   ~~~ conf
     127.0.0.1
     ::1
@@ -188,11 +193,38 @@ to get the status and untruncated error messages.
 
 ## Setting up DNS ##
 
-1.
+As with SPF, DKIM uses TXT records to hold information about the signing key for each domain. Using YYYYMM as above, you need to make a TXT record for the host `YYYYMM._domainkey` for each domain you handle mail for. It's value can be found in the `keyentry.txt` file for the domain. Those files look like this:
+
+{: .file}
+keyentry.txt
+:   ~~~ text
+    201510.\_domainkey	IN	TXT	( "v=DKIM1; k=rsa; s=email; "
+	    "p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAu5oIUrFDWZK7F4thFxpZa2or6jBEX3cSL6b2TJdPkO5iNn9vHNXhNX31nOefN8FksX94YbLJ8NHcFPbaZTW8R2HthYxRaCyqodxlLHibg8aHdfa+bxKeiI/xABRuAM0WG0JEDSyakMFqIO40ghj/h7DUc/4OXNdeQhrKDTlgf2bd+FjpJ3bNAFcMYa3Oeju33b2Tp+PdtqIwXR"
+        "ZksfuXh7m30kuyavp3Uaso145DRBaJZA55lNxmHWMgMjO+YjNeuR6j4oQqyGwzPaVcSdOG8Js2mXt+J3Hr+nNmJGxZUUW4Uw5ws08wT9opRgSpn+ThX2d1AgQePpGrWOamC3PdcwIDAQAB" )  ; ----- DKIM key 201510 for example.com
+
+    ~~~
+
+The value inside the parentheses is what you want. Select the entire region from the double-quote before `v=DKIM1` on to the final double-quote before the closing parentheses. From the above file that would be:
+
+    "v=DKIM1; k=rsa; s=email; "
+    "p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAu5oIUrFDWZK7F4thFxpZa2or6jBEX3cSL6b2TJdPkO5iNn9vHNXhNX31nOefN8FksX94YbLJ8NHcFPbaZTW8R2HthYxRaCyqodxlLHibg8aHdfa+bxKeiI/xABRuAM0WG0JEDSyakMFqIO40ghj/h7DUc/4OXNdeQhrKDTlgf2bd+FjpJ3bNAFcMYa3Oeju33b2Tp+PdtqIwXR"
+    "ZksfuXh7m30kuyavp3Uaso145DRBaJZA55lNxmHWMgMjO+YjNeuR6j4oQqyGwzPaVcSdOG8Js2mXt+J3Hr+nNmJGxZUUW4Uw5ws08wT9opRgSpn+ThX2d1AgQePpGrWOamC3PdcwIDAQAB"
+
+It's broken into chunks because of limitations in Bind (one of the most popular DNS server packages) and because of size limitations in the UDP protocol that's usually used for DNS requests and responses. Copy that region and paste it into the value for the TXT record.
+
+If you're using Linode's DNS manager, this is what the add TXT record screen will look like when you have it filled out:
+
+![Linode DNS manager add TXT record](/docs/assets/9903_DKIM_TXT_record.png)
+
+Repeat this for every domain you handle mail for, using the `.txt` file for the key entry for that domain.
 
 ## Test your configuration ##
 
-1.
+Test the keys for correct signing and verification using the `opendkim-testkey` command:
+
+    opendkim-testkey -d example.com -s YYYYMM
+
+If everything is OK you shouldn't get any output. If you want to see more information, add `-vvv` to the end of the command. That produces verbose debugging output. The last message should be "key OK". Just before that you may see a "key not secure" message. That's normal and doesn't signal an error, it just means your domain isn't set up for DNSSEC yet.
 
 ## Hooking OpenDKIM into Postfix ##
 
@@ -204,6 +236,7 @@ to get the status and untruncated error messages.
 2. Set the correct socket for Postfix in the OpenDKIM defaults file `/etc/defaults/opendkim`:
 
 {: .file}
+/etc/defaults/opendkim
 :   ~~~ conf
     # Command-line options specified here will override the contents of
     # /etc/opendkim.conf. See opendkim(8) for a complete list of options.
@@ -219,12 +252,37 @@ to get the status and untruncated error messages.
 
 Uncomment the first SOCKET line and edit it so it matches the uncommented line in the above file. The path to the socket is different from the default because on Debian 8 the Postfix process that handles mail runs in a chroot jail and can't access the normal location.
 
-3. Restart the OpenDKIM daemon so it sets up the correct socket for Postfix:
+3. Edit `/etc/postfix/main.cf` and add a section to activate processing of e-mail through the OpenDKIM daemon:
+
+{: .file-excerpt}
+/etc/postfix/main.cf
+:   ~~~ conf
+    # Milter configuration
+    # OpenDKIM
+    milter_default_action = accept
+    milter_protocol = 2
+    smtpd_milters = local:/opendkim/opendkim.sock
+    non_smtpd_milters = local:/opendkim/opendkim.sock
+    ~~~
+
+You can put this anywhere in the file. I usually put it after the `smtpd_recipient_restrictions` entry. You'll notice the path to the socket isn't the same here as it was in the `/etc/defaults/opendkim` file. That's because of Postfix's chroot jail, the path here is the path within that restricted view of the filesystem instead of within the actual filesystem.
+
+4. Restart the OpenDKIM daemon so it sets up the correct socket for Postfix:
 
     systemctl restart opendkim
 
-4.
+5. Restart Postfix so it starts using OpenDKIM when processing mail:
 
-## Verify that everything's operational ##
+    systemctl restart postfix
 
-1.
+## Verify that everything's fully operational ##
+
+The easiest way to verify that everything's working is to send a test e-mail to `check-auth@verifier.port25.com` using an e-mail client configured to submit mail to the submission port on your mail server. It will analyze your message and mail you a report indicating whether your e-mail was signed correctly or not. It also reports on a number of other things such as SPF configuration and SpamAssassin flagging of your domain. If there's a problem, it'll report what the problem was.
+
+## Setting up Author Domain Signing Practices (ADSP) (optional) ##
+
+As a final item, you can add an ADSP policy to your domain saying that all e-mails from your domain should be DKIM-signed. As usual it's done with a TXT record for host `_adsp._domainkey` in your domain with a value of `"dkim=all"`. If you're using Linode's DNS Manager the screen for the new text record will look like:
+
+![Linode DNS manager add TXT record](/docs/assets/9904_ADSP_TXT_record.png)
+
+You don't need to set this up, but it makes it harder for anyone to forge mail from your domains because receiving mail servers will see the lack of a DKIM signature and reject the message.
