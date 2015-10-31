@@ -67,7 +67,7 @@ To add the record, go to your DNS management interface and add a record of type 
 
 If you're using Linode's DNS Manager, go to the domain zone page for the domain you want to set SPF up for and add a new TXT record. The screen will look something like this when you've got it filled out:
 
-![Linode DNS manager add TXT record](/docs/assets/9901_SPF_TXT_record.png)
+![Linode DNS manager add TXT record](/docs/assets/Postfix_SPF_TXT_record.png)
 
 If your DNS provider allows it (DNS Manager doesn't) you should also add a record of type SPF, filling it in the same way as you did the TXT record.
 
@@ -160,7 +160,7 @@ DKIM involves setting up the OpenDKIM package and hooking it into Postfix as wel
     OversignHeaders		From
     ~~~
 
-Edit `/etc/opendkim.conf` and replace it's contents with the above, or download [a copy of opendkim.conf](/doc/assets/9902_opendkim.conf), upload it to your server and copy it over top of `/etc/opendkim.conf`. Do a `chmod u=rw,go=r /etc/opendkim.conf` to make sure it's permissions are set correctly.
+Edit `/etc/opendkim.conf` and replace it's contents with the above, or download [a copy of opendkim.conf](/doc/assets/Postfix_opendkim.conf), upload it to your server and copy it over top of `/etc/opendkim.conf`. Do a `chmod u=rw,go=r /etc/opendkim.conf` to make sure it's permissions are set correctly.
 
 2. Create the directories to hold OpenDKIM's data files:
 
@@ -250,7 +250,7 @@ It's broken into chunks because of limitations in Bind (one of the most popular 
 
 If you're using Linode's DNS manager, this is what the add TXT record screen will look like when you have it filled out:
 
-![Linode DNS manager add TXT record](/docs/assets/9903_DKIM_TXT_record.png)
+![Linode DNS manager add TXT record](/docs/assets/Postfix_DKIM_TXT_record.png)
 
 Repeat this for every domain you handle mail for, using the `.txt` file for that domain.
 
@@ -321,7 +321,7 @@ The easiest way to verify that everything's working is to send a test e-mail to 
 
 As a final item, you can add an ADSP policy to your domain saying that all e-mails from your domain should be DKIM-signed. As usual it's done with a TXT record for host `_adsp._domainkey` in your domain with a value of `"dkim=all"`. If you're using Linode's DNS Manager the screen for the new text record will look like:
 
-![Linode DNS manager add TXT record](/docs/assets/9904_ADSP_TXT_record.png)
+![Linode DNS manager add TXT record](/docs/assets/Postfix_ADSP_TXT_record.png)
 
 You don't need to set this up, but it makes it harder for anyone to forge mail from your domains because receiving mail servers will see the lack of a DKIM signature and reject the message.
 
