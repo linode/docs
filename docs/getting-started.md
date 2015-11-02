@@ -284,7 +284,7 @@ Use the `Up`, `Down`, `Page Up` and `Page Down` keys to navigate. Find the time 
 
 To set the time zone:
 
-    timedatectl set-timezone `America/New_York`
+    timedatectl set-timezone 'America/New_York'
 
 ### All Other Distributions
 
