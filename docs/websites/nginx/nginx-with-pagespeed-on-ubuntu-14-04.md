@@ -2,14 +2,14 @@
 author:
     name: Linode Community
     email: docs@linode.com
-description: 'Nginx with the ngx_pagespeed module installed on Ubuntu 14.04: a Linode how-to guide.'
-keywords: 'nginx, ngx_pagespeed installation, Ubuntu 14.04, Linode, tutorial'
+description: 'PageSpeed is an open source Google project created to optimize website performance using modules for Apache and nginx. PageSpeed is available as .deb or .rpm binaries, or can be compiled from source. This guide will walk you through setting up the ngx_pagespeed module for nginx on Ubuntu 14.04.'
+keywords: 'nginx,PageSpeed,ngx_pagespeed,pagespeed,ubuntu,Ubuntu 14.04,'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-published: 'Friday, September 11th, 2015'
-modified: Friday, September 11th, 2015
+published: 'Tuesday, November 3rd, 2015'
+modified: Tuesday, November 3rd, 2015
 modified_by:
     name: Linode
-title: 'Nginx with the ngx_pagespeed module installed on Ubuntu 14.04'
+title: 'Nginx with PageSpeed on Ubuntu 14.04'
 contributor:
     name: Vaibhav Rajput
     link: https://twitter.com/rootaux
@@ -17,9 +17,12 @@ external_resources:
  - '[Google PageSpeed Filter Docs](https://developers.google.com/speed/pagespeed/module/config_filters)'
 ---
 
-This document describes how you can install Nginx (pronounced engine-x) with the ngx_pagespeed module. PageSpeed helps you minify CSS, javascript and images, remove whitespaces from HTML, and perform many other tasks.
+*This is a Linode Community guide. Write for us and earn $250 per published guide.*
+<hr>
 
-Before starting this guide, make sure that  you have read through and completed our [Getting Started](/docs/getting-started#debian-7--slackware--ubuntu-1404) guide.
+This document describes how you can install nginx (pronounced engine-x) with the [ngx_pagespeed](https://developers.google.com/speed/pagespeed/module/) module. PageSpeed helps you minify CSS, JavaScript and images, remove whitespaces from HTML, and perform many other tasks.
+
+Before starting this guide, make sure that  you have read through and completed our [Getting Started](/docs/getting-started#debian-7--slackware--ubuntu-1404) and [Securing Your Server](/docs/security/securing-your-server/) guides.
 
 ##Set the hostname
 
@@ -157,5 +160,4 @@ You have compiled and configured the module. You may want to check if the module
 
     curl -I website_url_or_IP_adress
     
-You will see something like this `X-Page-Speed: 1.9.32.6` in the response.
-
+You will see something like `X-Page-Speed: 1.9.32.6` in the response. This means that you have successfully installed ngx_pagespeed on your Linode.
