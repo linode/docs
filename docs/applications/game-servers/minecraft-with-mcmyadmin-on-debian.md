@@ -2,10 +2,10 @@
 author:
   name: James Stewart
   email: jstewart@linode.com
-description: 'This guide will teach you how to install and configure McMyAdmin for Minecraft on Debian 7. McMyAdmin is a leading control panel for Minecraft servers.'
+description: 'McMyAdmin is one of the most popular Minecraft server control panels available. It boasts compatibility with third party mods, heavy focus on security and a sleek web interface for managing your server. This guide covers the installation and configuration of a new McMyAdmin server on a Linode running Debian 7 or 8.'
 keywords: 'minecraft,mcmyadmin,debian,debian jessie,debian wheezy,jessie,wheezy,debian 7,debian 8'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Thursday, October 8th, 2015
+modified: Tuesday, November 3rd, 2015
 modified_by:
   name: Linode
 published: 'Thursday, February 5th, 2015'
@@ -17,49 +17,17 @@ external_resources:
 
 [McMyAdmin](https://mcmyadmin.com/) is one of the most popular Minecraft server control panels available. It boasts compatibility with third party mods, heavy focus on security and a sleek web interface for managing your server. This guide covers the installation and configuration of a new McMyAdmin server on a Linode running Debian 7 or 8. Be aware that to actually play on a Minecraft server you must also have the game client from [minecraft.net](https://minecraft.net/).
 
-{: .note}
->
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
-
 ## Before You Begin
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  Complete the beginning of our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account and harden SSH access; this guide will use `sudo` wherever possible. Do **not** follow the *Creating a Firewall* section--this guide has instructions specifcally for firewall rules for a Minecraft server.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the *Creating a Firewall* section--this guide has instructions specifcally for firewall rules for a Minecraft server.
 
 3.  Update your system.
 
         sudo apt-get update && sudo apt-get upgrade
 
-## Disable Unnecessary Network Services
-
-By default, Debian installs with services listening on localhost for [Exim](https://en.wikipedia.org/wiki/Exim), [NFS](https://en.wikipedia.org/wiki/Network_File_System) components, [SSH](https://en.wikipedia.org/wiki/Secure_Shell) and time synchronization (see `sudo netstat -tulpn`).
-
-SSH is necessary to adminster your server and timekeeping is important, but **if** Exim and NFS are not needed, they should be disabled (or removed completely) to reduce attack surface.
-
-1.  Exim.
-    
-        sudo systemctl stop exim4.service && sudo systemctl disable exim4.service
-
-2.  `rpc-bind` and `rpc.statd` are needed for NFS. Reboot after disabling `rpcbind`.
-    
-        sudo systemctl stop rpcbind.service && sudo systemctl disable rpcbind.service
-
-    {: .note }
-    >
-    >If you will be using NFS on your Linode's VPN, see [our NFS guide](https://www.linode.com/docs/networking/basic-nfs-configuration-on-debian-7) to get started.
-
-Run `sudo netstat -tulpn` again. You should now only see listening services for SSH (sshd) and NTP (ntpdate, network time protocol).
-
-{: .note }
->
->NTPdate can be replaced with [OpenNTPD](https://en.wikipedia.org/wiki/OpenNTPD) (`sudo apt-get install openntpd`) if you prefer a time synchronization daemon which does not listen on all interfaces and you do not require nanosecond accuracy.
-
-If you want to later re-enable Exim or rpcbind:
-
-    sudo systemctl enable service_name.service && sudo systemctl start service_name.service
-
-## Configure the Firewall
+## Configure a Firewall
 
 1.  See our [Securing Your Server](/docs/security/securing-your-server/) guide and complete the section on iptables for Debian **using the ruleset below**:
 
@@ -68,15 +36,13 @@ If you want to later re-enable Exim or rpcbind:
     :   ~~~
         *filter
     
-        # Allow all loopback (lo0) traffic
-        # and drop all traffic to 127/8 that doesn't use lo0
+        # Allow all loopback (lo0) traffic and reject traffic
+        # to localhost that does not originate from lo0.
         -A INPUT -i lo -j ACCEPT
         -A INPUT ! -i lo -s 127.0.0.0/8 -j REJECT
     
-        # Allow ping and traceroute.
-        -A INPUT -p icmp --icmp-type 3 -j ACCEPT
-        -A INPUT -p icmp --icmp-type 8 -j ACCEPT
-        -A INPUT -p icmp --icmp-type 11 -j ACCEPT
+        # Allow ping.
+        -A INPUT -p icmp -m state --state NEW --icmp-type 8 -j ACCEPT
 
         # Allow SSH connections.
         -A INPUT -p tcp -m state --state NEW --dport 22 -j ACCEPT
@@ -87,14 +53,14 @@ If you want to later re-enable Exim or rpcbind:
         # Allow web access to McMyAdmin.
         -A INPUT -p tcp -m state --state NEW --dport 8080 -j ACCEPT
     
-        # Accept all established inbound connections.
+        # Allow inbound traffic from established connections.
+        # This includes ICMP error returns.
         -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
     
-        # Log any packets which don't fit the rules above...
-        # (optional but useful)
-        -A INPUT -m limit --limit 3/min -j LOG --log-prefix "iptables_INPUT_denied: " --log-level 4
+        # Log what was incoming but denied (optional but useful).
+        -A INPUT -m limit --limit 3/min -j LOG --log-prefix "iptables_INPUT_denied: " --log-level 7
     
-        # then reject them.
+        # Reject all other inbound.
         -A INPUT -j REJECT
         -A FORWARD -j REJECT
     
@@ -103,7 +69,7 @@ If you want to later re-enable Exim or rpcbind:
 
 2.  By default, both McMyAdmin and Minecraft operate on IPv4, but unlike a default Minecraft server installation, McMyAdmin does not listen for incoming IPv6 traffic. Since Minecraft can not use both protocols simultaneously, IPv4 is usually chosen over IPv6 because of its much greater availablity, thus including players whose ISPs or hardware don't support IPv6.
 
-	If you choose not to use IPv6 on your Minecraft server, you should disable it by adding the following lines to `/etc/sysctl.d/99-sysctl.conf`:
+	If you choose **not** to use IPv6 on your Minecraft server, you should disable it by adding the following lines to `/etc/sysctl.d/99-sysctl.conf`:
     
     {: .file-excerpt}
     /etc/sysctl.d/99-sysctl.conf
@@ -126,14 +92,24 @@ If you want to later re-enable Exim or rpcbind:
 	    #::1 localhost.localdomain localhost
 	    ~~~
 
-3.  Although we just disabled IPv6 in the kernel, we'll tell iptables to drop incoming IPv6 traffic as an additional security layer:
+    Add an ip6tables ruleset to reject all v6 traffic:
 
-		sudo ip6tables -F INPUT DROP
-		sudo ip6tables -F FORWARD DROP
+    {: .file}
+    /etc/iptables/rules.v6
+    :   ~~~ conf
 
-3.  Run `iptables-persistent` to save the iptables rulesets:
+        *filter
 
-		sudo dpkg-reconfigure iptables-persistent
+        -A INPUT -j REJECT
+        -A FORWARD -j REJECT
+        -A OUTPUT -j REJECT
+
+        COMMIT
+        ~~~
+
+    Enforce the ruleset immeditately:
+
+        sudo ip6tables-restore < /etc/iptables/rules.v6
 
 	When asked to save current rules, choose `yes` for both IPv4 and IPv6.
 
