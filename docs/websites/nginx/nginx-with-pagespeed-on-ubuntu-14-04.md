@@ -9,7 +9,7 @@ published: 'Tuesday, November 3rd, 2015'
 modified: Tuesday, November 3rd, 2015
 modified_by:
     name: Linode
-title: 'Nginx with PageSpeed on Ubuntu 14.04'
+title: 'nginx with PageSpeed on Ubuntu 14.04'
 contributor:
     name: Vaibhav Rajput
     link: https://twitter.com/rootaux
