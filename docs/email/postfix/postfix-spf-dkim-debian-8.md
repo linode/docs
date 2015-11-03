@@ -17,13 +17,21 @@ Getting Started
 
 [SPF (Sender Policy Framework)](http://www.openspf.org/) is a system to advertise to mail servers what hosts are allowed to send e-mail for a given domain. Setting it up helps in keeping your mail from being classified as spam.
 
-DKIM (DomainKeys Identified Mail) is a system to let your official mailservers add a signature to the headers of outgoing e-mail and advertise your domain's public key so other mailservers can verify the signature. As with SPF, it helps keep your mail from being considered spam. It also lets mailservers detect when your mail's been tampered with in transit.
+[DKIM (DomainKeys Identified Mail)](http://www.dkim.org/) is a system to let your official mailservers add a signature to the headers of outgoing e-mail and advertise your domain's public key so other mailservers can verify the signature. As with SPF, it helps keep your mail from being considered spam. It also lets mailservers detect when your mail's been tampered with in transit.
 
-The instructions for SPF will work for any Linux distribution and any mail server software. The instructions for setting up DKIM should work for any Linux distribution that uses the OpenDKIM package, as long as you configure the right repositories for that distribution to get the latest packages. The instructions for hooking OpenDKIM into Postfix work in principle for any system using Postfix and OpenDKIM, but the details are fairly specific to how Postfix is configured to work on Debian 8 (Jessie).
+The instructions for setting up DNS for SPF and DKIM are generic. The instructions for configuring hooking the SPF policy agent and OpenDKIM into Postfix should work on any distribution with adjustments for the package tool and the exact path to OpenDKIM's socket file in Postfix.
 
 {: .note}
 >
 >The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+
+{: .note}
+>
+>You must already have Postfix installed, configured and working. Refer to the [Linode Postfix Guides](https://www.linode.com/docs/email/postfix/) for assistance.
+
+{: .caution}
+>
+>Publishing an SPF DNS record without having the SPF policy agent configured within Postfix is safe, however publishing DKIM DNS records without having OpenDKIM working correctly within Postfix can result in your mail being discarded by the receiver's mail server.
 
 Installing required packages
 ----------------------------
