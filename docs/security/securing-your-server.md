@@ -465,7 +465,7 @@ Deleting a rule is also done with the rule number. For example, to delete the ru
 
 {: .caution }
 >
->Editing rules does not automatically save them! To this, see the area above for your distro and save your iptables edits so they're loaded on reboots.
+>Editing rules does not automatically save them! To accomplish this, see the area above for your distro and save your iptables edits so they're loaded on reboots.
 
 ## Installing and Configuring Fail2Ban
 
