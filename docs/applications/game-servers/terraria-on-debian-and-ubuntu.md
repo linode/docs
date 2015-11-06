@@ -71,18 +71,18 @@ This guide will show you how to set up your own [Terraria](https://terraria.org/
 
 		#-config <config file>				            Specifies the configuration file to use.
 		#-port <port number>				            Specifies the port to listen on.
-		#-players <number> / -maxplayers <number>	            Sets the max number of players
-		#-pass <password> / -password <password>	            Sets the server password
+		#-players <number> / -maxplayers <number>	    Sets the max number of players
+		#-pass <password> / -password <password>	    Sets the server password
 		#-world <world file>				            Load a world and automatically start the server.
 		#-autocreate <#>			                    Creates a world if none is found in the path specified by -world. World size is specified by: 1(small), 2(medium), and 3(large).
 		#-banlist <path>			                    Specifies the location of the banlist. Defaults to "banlist.txt" in the working directory.
-		#-worldname <world name>             			    Sets the name of the world when using -autocreate.
+		#-worldname <world name>             			Sets the name of the world when using -autocreate.
 		#-secure			                            Adds addition cheat protection to the server.
-		#-noupnp				                    Disables automatic port forwarding
+		#-noupnp				                        Disables automatic port forwarding
 		#-steam                         			    Enables Steam Support
-		#-lobby <friends> or <private>                              Allows friends to join the server or sets it to private if Steam is enabled
-		#-ip <ip address>	                                    Sets the IP address for the server to listen on
-		#-forcepriority <priority>	                            Sets the process priority for this task. If this is used the "priority" setting below will be ignored.
+		#-lobby <friends> or <private>                  Allows friends to join the server or sets it to private if Steam is enabled
+		#-ip <ip address>	                            Sets the IP address for the server to listen on
+		#-forcepriority <priority>	                    Sets the process priority for this task. If this is used the "priority" setting below will be ignored.
 
 		#remove the # in front of commands to enable them.
 
