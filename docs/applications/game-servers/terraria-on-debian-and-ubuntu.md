@@ -169,6 +169,8 @@ Your server is now available to connect to.
 
     [![Enter port.](/docs/assets/terraria-enter-port_small.png)](/docs/assets/terraria-enter-port.png)
 	
-	[![Enjoy.](/docs/assets/terraria-gameplay_small.png)](/docs/assets/terraria-gameplay.png)
+5.  Play:
+	
+    [![Enjoy.](/docs/assets/terraria-gameplay_small.png)](/docs/assets/terraria-gameplay.png)
 
-Congratulations! You can now play Terraria together with your friends.
+You can now play Terraria together with your friends. Enjoy!
