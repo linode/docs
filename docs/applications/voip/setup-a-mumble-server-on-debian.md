@@ -2,14 +2,14 @@
 author:
     name: Linode Community
     email: docs@linode.com
-description: 'Mumble is an open-source, encrypted VoIP software. This guide instructs you on how to install and configure the Mumble server (also called Murmur) on Debian.'
-keywords: 'mumble, debian, murmur, open source, gaming, VOIP, voice chat'
+description: 'Mumble is an open-source, encrypted VoIP software. This guide instructs how to install and configure the Mumble server (also called Murmur) on Debian.'
+keywords: 'mumble, debian, murmur, gaming, voip, voice chat'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 published: 'Friday, November 6th, 2015'
 modified: Friday, November 6th, 2015
 modified_by:
     name: Linode
-title: 'Mumble on Debian'
+title: 'Install and Configure Mumble on Debian'
 contributor:
     name: Your Name
     link: Github/Twitter Link
@@ -18,7 +18,7 @@ contributor:
 *This is a Linode Community guide. Write for us and earn $250 per published guide.*
 <hr>
 
-[Mumble](http://wiki.mumble.info/wiki/Main_Page) is an open-source VoIP client, designed for gamers, that requires a server for all clients to connect to. This guide instructs you on how to install and configure the Mumble server (also called Murmur) on Debian 8.
+[Mumble](http://wiki.mumble.info/wiki/Main_Page) is an open-source VoIP client, designed for gamers, that requires a server for all clients to connect to. This guide instructs how to install and configure the Mumble server (also called Murmur) on Debian.
 
 ## Before You Begin
 
@@ -34,39 +34,41 @@ contributor:
 
 ### Install and Simple Setup
 
-1.  Since Murmur is in the official Debian repositories, you can just use apt-get to install it.  Be careful though, the package is `mumble-server` and not `murmur`.
+1.  Since Murmur is in the official Debian repositories, you can just use *apt-get* to install it.  Be careful though, the package is `mumble-server` and not `murmur`.
 
-		apt-get install mumble-server
+		sudo apt-get install mumble-server
 
-2.  After installation, you can use `dpkg-reconfigure` to configure the initial setup.
+2.  After installation, set up the initial configuration:
 
-The first question asked during system config will be whether or not you want the server to run at boot.  This is identical to using the command `systemctl enable mumble-server` on Debian 8.
+		sudo dpkg-reconfigure mumble-server
+
+	The first question asked during system config will be whether or not you want the server to run at boot. Select `Yes` unless you would prefer to manually start Mumble after a server reboot.
 
 	[![Image description](/docs/assets/murmur-debian-auto-start-resized.png)](/docs/assets/murmur-debian-auto-start.png)
 
-If you want Murmur to have a highter priority over other applications on the server, you can answer yes to this question.
+	If you want Murmur to have a highter CPU and network priority over other applications on the server, you can answer yes to this question.
 
 	[![Image description](/docs/assets/murmur-debian-priority-resized.png)](/docs/assets/murmur-debian-priority.png)
 
-Next, you will be asked to set a SuperUser password.  Murmur has a modifiable SuperUser account that lets you change server settings in Mumble on the client.  You may set it to whatever password you want.
+	Next, you will be asked to set a *SuperUser* password. Murmur has a modifiable SuperUser account that lets you change server settings in Mumble on the client. You may set it to whatever password you want.
 
 	[![Image description](/docs/assets/murmur-debian-super-user-resized.png)](/docs/assets/murmur-debian-super-user.png)
 
-You now have a working Mumble server.  It's time to configure it.
+	You now have a working Mumble server.  It's time to configure it further.
 
 ### More Configuration
 
 If you need to address more exacting configuration specs, such as assigning port numbers and/or maximum users, Murmur has a settings file at `/etc/mumble-server.ini` that can be modified. Below is a partial list of settings included; more settings exist and are further explained in the settings file.
 
-	- **autobanAttempts** - Set how many times someone can fail to connect to the server within a given timeframe.
-	- **autobanTimeframe** - Set the given timeframe for attempts to login to the server. 
-	- **autobanTime** - Set the amount of time that the login ban lasts.
-	- **logfile** - Set the location of the log file, if you want it to reside in a different location.
-	- **welcometext** - Set the text that shows in the text chat log when you login.
-	- **port** - Set the port you wish to bind to and have your users connect to.
-	- **serverpassword** - Set a password that users will have to use to login.  This is not the same as the SuperUser password and therefore, should be different.
-	- **bandwidth** - Set the maximum bandwith (in bits per second) each user can use.
-	- **users** - Set the maximum number of users that can connect to the server at once.
++ **autobanAttempts** - Set how many times someone can fail to connect to the server within a given timeframe.
++ **autobanTimeframe** - Set the given timeframe for attempts to login to the server. 
++ **autobanTime** - Set the amount of time that the login ban lasts.
++ **logfile** - Set the location of the log file, if you want it to reside in a different location.
++ **welcometext** - Set the text that shows in the text chat log when you login.
++ **port** - Set the port you wish to bind to and have your users connect to.
++ **serverpassword** - Set a password that users will have to use to login.  This is not the same as the SuperUser password and therefore, should be different.
++ **bandwidth** - Set the maximum bandwith (in bits per second) each user can use.
++ **users** - Set the maximum number of users that can connect to the server at once.
 
 Once you are done configuring the settings in that file, save it and restart Murmur.
 
@@ -84,11 +86,11 @@ If you wish to disable the server starting at boot, you can use your init system
 
 For Debian 8, enter:
 
-	systemctl disable mumble-server
+	sudo systemctl disable mumble-server
 
 For Debian 7 or earlier, enter:
 
-	service mumble-server disable
+	sudo service mumble-server disable
 
 For more information on Murmur and Mumble, you can visit the [Mumble Wiki](http://wiki.mumble.info/wiki/Main_Page).
 
@@ -96,8 +98,9 @@ For more information on Murmur and Mumble, you can visit the [Mumble Wiki](http:
 
 ### Installation
 
-On Windows, go to (link) and download and install the installer.
-On Mac, go to (link) and download and install the installer.
+**OS X or Windows**
+
+Go to [Mumble's Wiki](http://wiki.mumble.info/wiki/Main_Page); download and run the installer.
 
 On Ubuntu/Debian, install the package `mumble`, enter:
 
