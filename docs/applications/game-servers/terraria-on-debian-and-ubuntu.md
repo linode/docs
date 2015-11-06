@@ -61,8 +61,8 @@ This guide will show you how to set up your own [Terraria](https://terraria.org/
 1.  Open the `serverconfig.txt` file to change the values if you want to:
 
     {: .file }
-    /home/terraria/terraria-server-linux-1308/serverconfig.txt:
-        ~~~ sh
+    /home/terraria/terraria-server-linux-1308/serverconfig.txt :
+    
         #this is an example config file for TerrariaServer.exe
 		#use the command 'TerrariaServer.exe -config serverconfig.txt' to use this configuration or run start-server.bat
 		#please report crashes by emailing crashlog.txt to support@terraria.org
@@ -130,7 +130,6 @@ This guide will show you how to set up your own [Terraria](https://terraria.org/
 
 		#Default system priority 0:Realtime, 1:High, 2:AboveNormal, 3:Normal, 4:BelowNormal, 5:Idle
 		priority=1
-		~~~
 
 2.  Terraria Server will ask you to select a world:
 
