@@ -2,11 +2,11 @@
 author:
     name: Linode Community
     email: docs@linode.com
-description: 'Setting up Mumble on Debian'
+description: 'Mumble is an open-source, encrypted VoIP software. This guide instructs you on how to install and configure the Mumble server (also called Murmur) on Debian.'
 keywords: 'mumble, debian, murmur, open source, gaming, VOIP, voice chat'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-published: 'Thursday, September 24th, 2015'
-modified: Thursday, September 24th, 2015
+published: 'Friday, November 6th, 2015'
+modified: Friday, November 6th, 2015
 modified_by:
     name: Linode
 title: 'Mumble on Debian'
@@ -15,21 +15,30 @@ contributor:
     link: Github/Twitter Link
 ---
 
-Mumble is an open-source VoIP client, designed for gamers, that requires a server for all clients to connect to. This guide instructs you on how to install and configure the Mumble server (also called Murmur) on Debian.
+*This is a Linode Community guide. Write for us and earn $250 per published guide.*
+<hr>
 
-No changes need to be made to the system beforehand if you follow this guide. 
+[Mumble](http://wiki.mumble.info/wiki/Main_Page) is an open-source VoIP client, designed for gamers, that requires a server for all clients to connect to. This guide instructs you on how to install and configure the Mumble server (also called Murmur) on Debian 8.
 
-The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+## Before You Begin
+
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the Creating a Firewall section--this guide has instructions specifcally for firewall rules for an OpenVPN server.**************************
+
+3.  Update your system.
+
+        sudo apt-get update && sudo apt-get upgrade
 
 ## Server Side
 
 ### Install and Simple Setup
 
-1. Since Murmur is in the official Debian repositories, you can just use apt-get to install it.  Be careful though, the package is `mumble-server` and not `murmur`.
+1.  Since Murmur is in the official Debian repositories, you can just use apt-get to install it.  Be careful though, the package is `mumble-server` and not `murmur`.
 
-	apt-get install mumble-server
+		apt-get install mumble-server
 
-2. After installation, you can use `dpkg-reconfigure` to configure the initial setup.
+2.  After installation, you can use `dpkg-reconfigure` to configure the initial setup.
 
 The first question asked during system config will be whether or not you want the server to run at boot.  This is identical to using the command `systemctl enable mumble-server` on Debian 8.
 
