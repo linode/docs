@@ -91,7 +91,7 @@ The following step will create an empty directory where Box will live and all of
 
     {: .note}
     >
-    >If your password contains quotation characters (`'` or `"`), you'll need to open edit the secrets file in a text editor.
+    >If your password contains quotation characters (`'` or `"`), you'll need to edit the secrets file directly in a text editor.
 
 7. Make the `secrets` file readable to only its owner:
 
