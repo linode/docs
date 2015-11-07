@@ -1,7 +1,7 @@
 ---
 author:
-  name: Linode Community
-  email: docs@linode.com
+   name: Linode Community
+   email: docs@linode.com
 description: 'A basic Terraria server installation guide for Debian and Ubuntu'
 keywords: 'terraria,server,ubuntu,debian'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
@@ -10,12 +10,12 @@ external_resources:
  - '[The Official Terraria Wiki](http://terraria.gamepedia.com/Server)'
 modified: Friday, November 06, 2015
 modified_by:
-  name: Linode
+   name: Linode
 published: 'Friday, November 06, 2015'
 title: 'Terraria Server on Debian and Ubuntu'
-  contributor:
-  name: Davide Beatrici
-  link: https://github.com/davidebeatrici
+contributor:
+   name: Davide Beatrici
+   link: https://github.com/davidebeatrici
 ---
 
 This guide will show you how to set up your own [Terraria](https://terraria.org/) server on a Linode running Debian or Ubuntu.
