@@ -26,7 +26,7 @@ This guide will show you how to set up your own [Terraria](https://terraria.org/
 
         sudo apt-get update && sudo apt-get upgrade
 
-2.  Create a new user for Terraria to run as. Never run as root, for security.
+2.  Create a new user for Terraria to run as. Never run as root, for security:
         
         useradd -m terraria
 
@@ -37,7 +37,7 @@ This guide will show you how to set up your own [Terraria](https://terraria.org/
 
 ##Download Terraria Server
 
-1.  Switch to your newly created account.
+1.  Switch to your newly created account:
 
         sudo -u terraria -i
 
