@@ -19,7 +19,8 @@ external_resources:
 
 ##How to Install Open Web Analytics on CentOS 6.5 and 7 (with MySQL back-end)
 
-Open Web Analytics (OWA) is open source web analytics software that you can use to track and analyze how people use your websites and applications. OWA is licensed under GPL and provides website owners and developers with easy ways to add web analytics to their sites using simple Javascript, PHP, or REST based APIs. OWA also comes with built-in support for tracking websites made with popular content management frameworks such as WordPress and MediaWiki.
+Open Web Analytics (OWA) is an open source alternative to commerical web analytics software. Use it to track and analyze traffic on your websites and applications. OWA analytics can easily be added to pages with simple Javascript, PHP, or REST based APIs. OWA also comes with built-in support for tracking websites made with popular content management frameworks such as WordPress and MediaWiki.
+
 
 This guide assume that you have your Linode already set up and running and that you are familiar with the concept of the command line interface (CLI). Since this guide concerns the installation and configuration of software packages all commands are to be run as the root user.
 
