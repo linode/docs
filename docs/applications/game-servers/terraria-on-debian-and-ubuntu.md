@@ -8,10 +8,10 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 external_resources:
  - '[Terraria.org](https://terraria.org/)'
  - '[The Official Terraria Wiki](http://terraria.gamepedia.com/Server)'
-modified: Friday, November 06, 2015
+modified: Saturday, November 07, 2015
 modified_by:
    name: Linode
-published: 'Friday, November 06, 2015'
+published: '-'
 title: 'Terraria Server on Debian and Ubuntu'
 contributor:
    name: Davide Beatrici
