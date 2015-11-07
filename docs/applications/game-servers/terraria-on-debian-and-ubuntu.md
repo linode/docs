@@ -27,7 +27,8 @@ This guide will show you how to set up your own [Terraria](https://terraria.org/
         sudo apt-get update && sudo apt-get upgrade
 
 2.  Create a new user for Terraria to run as. Never run as root, for security.
-        useradd -m terraria
+        
+	useradd -m terraria
 
 {: .note }
 > If you have a firewall configured according to our [Securing Your Server](/docs/security/securing-your-server) guide, you will need to add an exception for port 7777. The line to add to your `iptables.firewall.rules` file is:
