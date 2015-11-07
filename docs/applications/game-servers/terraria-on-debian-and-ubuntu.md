@@ -132,7 +132,11 @@ This guide will show you how to set up your own [Terraria](https://terraria.org/
 		#Default system priority 0:Realtime, 1:High, 2:AboveNormal, 3:Normal, 4:BelowNormal, 5:Idle
 		priority=1
 
-2.  Terraria Server will ask you to select a world:
+2.  Run Terraria Server:
+
+        ./TerrariaServer
+
+3.  It will ask you to select a world:
 
         $ ./TerrariaServer
         Terraria Server v1.3.0.8
@@ -142,7 +146,7 @@ This guide will show you how to set up your own [Terraria](https://terraria.org/
 
         Choose World:
 
-3.  To ensure that Terraria server keeps running, dependent of an SSH connection, execute `TerrariaServer` from within a [GNU Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions) session:
+4.  To ensure that Terraria server keeps running, dependent of an SSH connection, execute `TerrariaServer` from within a [GNU Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions) session:
 
         screen /home/terraria/terraria-server-linux-1308/TerrariaServer.sh
 
