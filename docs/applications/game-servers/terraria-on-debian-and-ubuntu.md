@@ -41,7 +41,7 @@ This guide will show you how to set up your own [Terraria](https://terraria.org/
 
         sudo -u terraria -i
 
-2.  Download the latest version of the Terraria Server from [Terraria.gamepedia.com](http://terraria.gamepedia.com/Server). Refer to the linked page to download the latest version. The current version as of this publication is 1.3.0.8:
+2.  Download the latest version of Terraria Server from [Terraria.gamepedia.com](http://terraria.gamepedia.com/Server). Refer to the linked page to download the latest version. The current version as of this publication is 1.3.0.8:
 
         wget http://terraria.org/server/terraria-server-linux-1308.tar.gz
 
