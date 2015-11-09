@@ -18,6 +18,10 @@ contributor:
    link: https://github.com/davidebeatrici
 ---
 
+*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
+
+<hr>
+
 This guide will show you how to set up your own [Terraria](https://terraria.org/) server on a Linode running Debian or Ubuntu.
 
 ##Prerequisites
@@ -35,7 +39,13 @@ This guide will show you how to set up your own [Terraria](https://terraria.org/
 >
 >     -A INPUT -p tcp --dport 7777 -j ACCEPT
 
-##Download Terraria Server
+{: .caution }
+
+>The CPU and RAM usage of Terraria Server 1.3.0.8 has been monitored for one hour with two players on a Linode 1GB.
+>It has been found out that it uses about 50% of CPU and 80% of RAM.
+>It is recommended to have at least a Linode 2GB if you're going to have more players or other servers running on the same VPS.
+
+##Downloading Terraria Server
 
 1.  Switch to your newly created account:
 
@@ -57,7 +67,7 @@ This guide will show you how to set up your own [Terraria](https://terraria.org/
 
         cd terraria-server-linux-1308
 
-##Run Terraria Server
+##Running Terraria Server
 
 1.  Open the `serverconfig.txt` file to change the values if you want to:
 
