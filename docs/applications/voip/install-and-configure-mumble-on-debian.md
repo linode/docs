@@ -5,8 +5,8 @@ author:
 description: 'Mumble is an open-source, encrypted VoIP software. This guide instructs how to install the Mumble server on Debian and gives general guidelines for configuring the Mumble client.'
 keywords: 'mumble, debian, murmur, gaming, voip, voice chat'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-published: 'Friday, November 6th, 2015'
-modified: Friday, November 6th, 2015
+published: 'Tuesday, November 9th, 2015'
+modified: Tuesday, November 9th, 2015
 modified_by:
     name: Linode
 title: 'Install and Configure Mumble on Debian'
@@ -48,7 +48,7 @@ external_resources:
 
 	[![Image description](/docs/assets/murmur-debian-auto-start-resized.png)](/docs/assets/murmur-debian-auto-start.png)
 
-	If you want Murmur to have a highter CPU and network priority over other applications on the server, you can answer **Yes** to this question.
+	If you want Murmur to have a higher CPU and network priority over other applications on the server, you can answer **Yes** to this question.
 
 	[![Image description](/docs/assets/murmur-debian-priority-resized.png)](/docs/assets/murmur-debian-priority.png)
 
@@ -74,11 +74,11 @@ external_resources:
 
 	For Debian 8:
 
-		systemctl restart mumble-server
+		sudo systemctl restart mumble-server
 
 	For Debian 7 or earlier:
 
-		service mumble-server restart
+		sudo service mumble-server restart
 
 	{: .note}
 	>
@@ -102,7 +102,7 @@ Installer available at [Mumble's Wiki](http://wiki.mumble.info/wiki/Main_Page).
 
 **Linux**
 
-The package `mumble` is available in most distribution's repositories. See [Mumble's Wiki](http://wiki.mumble.info/wiki/Installing_Mumble) for more distr-specific information.
+The package `mumble` is available in most distribution's repositories. See [Mumble's Wiki](http://wiki.mumble.info/wiki/Installing_Mumble) for more distro-specific information.
 
 ### Connecting As SuperUser
 
@@ -151,6 +151,6 @@ When a normal user connects, you follow the same relative process as you did to 
 
 	[![Normal User Info.](/docs/assets/mumble-connect-as-normal-user.png)](/docs/assets/mumble-connect-as-normal-user.png)
 
-	You should now be logged in as a normal user and can use the server normally.
+	You should now be logged in as a normal user and can use the server as a user with limited privileges.
 
 	[![Connected as Normal User.](/docs/assets/mumble-connected-as-normal-user-resized.png)](/docs/assets/mumble-connected-as-normal-user.png)
