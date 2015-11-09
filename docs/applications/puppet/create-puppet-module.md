@@ -349,7 +349,7 @@ The Virtual Hosts files will be managed differently depending on if the server i
 
 1.  From within the `apache/manifests/` directory, run the `puppet parser` on all files to ensure the Puppet coding is without error:
 
-        sudo puppet parser init.pp params.pp vhosts.pp
+        sudo puppet parser validate init.pp params.pp vhosts.pp
         
     It should return empty, barring any issues.
 
