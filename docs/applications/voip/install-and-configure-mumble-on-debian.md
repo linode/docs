@@ -11,8 +11,8 @@ modified_by:
     name: Linode
 title: 'Install and Configure Mumble on Debian'
 contributor:
-    name: Your Name
-    link: Github/Twitter Link
+    name: Mark Weiman
+    link: https://twitter.com/markzz989/
 external_resources:
  - '[Mumble Wiki](http://wiki.mumble.info/wiki/Main_Page)'
 ---
