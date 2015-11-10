@@ -30,8 +30,6 @@ Pricing is per Linode and varies depending on the size of your virtual private s
 -   Linode 16GB: $40.00/month
 -   Linode 32GB: $80.00/month
 
-Annual and biennial discounts are not available for this service.
-
 ### Enabling Backups
 
 Use the Linode Manager to enable the Backup Service on a Linode. Here's how:
@@ -40,7 +38,7 @@ Use the Linode Manager to enable the Backup Service on a Linode. Here's how:
 2.  From the **Linodes** tab, select the Linode you want to back up.
 3.  Click the **Backups** tab.
 4.  Click **Enable backups for this Linode**. The *Complete Your Order* webpage appears.
-5.  Review the pro-rated total, and then click **Complete Order**. Your credit card will immediately be billed for the prorated amount.
+5.  Review the pro-rated total, and then click **Complete Order**.
 
 The Linode Backup Service is now enabled for the selected Linode.
 
