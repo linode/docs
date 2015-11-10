@@ -26,7 +26,7 @@ external_resources:
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  Update your system.
 
@@ -70,7 +70,7 @@ external_resources:
     
     If you want Murmur to have priority over other applications on the server, you can answer **Yes** to this question.
 
-5.  Next, you will be asked to set a *SuperUser* password. Murmur has a modifiable SuperUser account that lets you change server settings in Mumble on the client. You may set it to whatever password you want.
+5.  Next, you will be asked to set a *SuperUser* password. Murmur has a SuperUser account that lets you change server settings from the Mumble client. You may set it to whatever password you want.
 
     [![Image description](/docs/assets/murmur-debian-super-user-resized.png)](/docs/assets/murmur-debian-super-user.png)
 
