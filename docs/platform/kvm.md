@@ -109,7 +109,7 @@ Then reboot the Linode.
 
 ### Arch Linux
 
-Current versions of Arch are being affected by a SystemD issue on KVM hosts. The latest version of systemd (226-1+) uses "Predictable Network Interface Names", which prevent the network interface on our platform from being brought online at boot.
+Current versions of Arch are being affected by a systemd issue on KVM hosts. The latest version of systemd (226-1+) uses "Predictable Network Interface Names", which prevent the network interface on our platform from being brought online at boot.
 
 You can disable the use of Predictable Network Interface Names with the command below. 
 
