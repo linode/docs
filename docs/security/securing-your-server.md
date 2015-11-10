@@ -2,11 +2,11 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'A basic list of best practices for hardening a production server.'
+description: 'This is a starting point of best practices for hardening a production server. Topics include user accounts, firewall, SSH and disabling unused network services.'
 keywords: 'security,secure,firewall,ssh,add user,quick start'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['securing-your-server/']
-modified: 'Friday, October 23rd, 2015'
+modified: 'Tuesday, November 10th, 2015'
 modified_by:
   name: Linode
 published: 'Friday, February 17th, 2012'
