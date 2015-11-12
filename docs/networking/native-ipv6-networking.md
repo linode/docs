@@ -106,6 +106,9 @@ While default IPv6 addresses are configured automatically, you will need to stat
         address 2001:DB8:2000:aff0::2/64
       ~~~
 
+{: .note}
+>On Debian Jessie, your default IPv6 address provided by SLAAC will no longer be automatically assigned after you request /64 pool. You will need to manually add it as a static address or IPv6 routing will not work.
+
 2.  Restart networking. As this will break an SSH connection, this command should be performed in [LISH](/docs/networking/using-the-linode-shell-lish)
 
         ifdown -a && ifup -a
