@@ -160,7 +160,7 @@ By default, password authentication is used to connect to your Linode via SSH. A
 
 Fail2Ban can monitor a variety of protocols including SSH, HTTP, and SMTP. By default, Fail2Ban monitors SSH only, and is a helpful security deterrent for any server since the SSH daemon is usually configured to run constantly and listen for connections from any remote IP address.
 
-For complete instructions on installing and configuring Fail2Ban, see our guide: [Securing Your Server with Fail2ban]( /docs/security/security/using-fail2ban-for-security).
+For complete instructions on installing and configuring Fail2Ban, see our guide: [Securing Your Server with Fail2ban](/docs/security/using-fail2ban-for-security).
 
 ## Remove Unused Network-Facing Services
 

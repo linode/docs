@@ -54,15 +54,15 @@ external_resources:
 
     {: .note}
     >
-    >If you wish to disable the server starting at boot, you can use your init system to disable it.
+    > If you wish to disable the server starting at boot, you can use your init system to disable it.
     >
-    >For Debian 8:
+    > For Debian 8:
     >
-    >    sudo systemctl disable mumble-server
+    >     sudo systemctl disable mumble-server
     >
-    >For Debian 7 or earlier:
+    > For Debian 7 or earlier:
     >
-    >	sudo service mumble-server disable
+    >     sudo service mumble-server disable
 
 4.  Mumble will then ask if you want to reduce latency by setting a higher CPU and network priority.
 
@@ -124,7 +124,7 @@ After installing the client and server, if you want to grant permissions to othe
 
 	[![Server List](/docs/assets/mumble-server-list.png)](/docs/assets/mumble-server-list.png)
 
-	Next, click Add New at the bottom and enter the following.
+	Next, click **Add New** at the bottom and enter the following.
 
     - **Label** - Name this anything you want.
     - **Address** - Enter the IP address or domain name of the server.
