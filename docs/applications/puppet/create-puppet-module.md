@@ -5,11 +5,11 @@ author:
 description: 'Learn how to efficiently use Puppet modules to manage files and services, create templates, and store data in Hiera. This guide walks users through the creation of a LAMP stack to learn various techniques for building a working Puppet configuration.'
 keywords: 'puppet,automation,puppet master,puppet agent,modules,server automation,configuration management'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Wednesday, June 10th, 2015
+modified: Thursday, November 12th, 2015
 modified_by:
     name: Elle Krout
-published: 'Wednesday, June 10th, 2015'
-title: Create a LAMP Stack Using Puppet 
+published: 'Thursday, November 12th, 2015'
+title: Using Puppet Modules to Create a LAMP Stack
 ---
 
 Within Puppet, modules are the building blocks of your servers' configurations. Modules install and configure packages, create directories, and generate any other server changes that the user includes in the module. A Puppet module aims to perform all parts of a certain task, such as downloading the Apache package, configuring all files, changing the MPM data, and setting up virtual hosts. Modules are, in turn, broken down into classes that are `.pp` files meant to simplify the module into various tasks and improve the module's readability for any future users.
@@ -454,7 +454,7 @@ Before you begin to create the configuration files for the MySQL module, conside
           - common
         ~~~
         
-    The value under `:backends:` defines that you are writing data in YAML, whereas `:datadir:` calls to the directory where the Hiera data will be stored. The `:hierarchy:` section denotes that your data will be saved in files under the `node` directory, then a file named after the node's FQDN. A `common` file will also contain default variables.
+    The value under `:backends:` defines that you are writing data in YAML, whereas `:datadir:` calls to the directory where the Hiera data will be stored. The `:hierarchy:` section denotes that your data will be saved in files under the `node` directory, as a file named after the node's FQDN. A `common` file will also contain default variables.
 
 2.  Ensure you are in the `/etc/puppet/` directory, then create a directory for `hieradata` and `nodes`:
 
@@ -505,7 +505,7 @@ Before you begin to create the configuration files for the MySQL module, conside
         
     The `common.yaml` file is used when a variable is not defined elsewhere. This means all servers will share the same MySQL root password. These passwords can also be hashed to increase security.
 
-7.  Puppet now needs to know to use the information input in Hiera to create the defined database. Move to the `mysql` module directory and within the `manifests` directory create `database.pp`. Here you call "define a class" that will link the `mysql::db` resource to the Hiera data. It will also call the `mysql::server` class, so it will not have to be included later:
+7.  Puppet now needs to know to use the information input in Hiera to create the defined database. Move to the `mysql` module directory and within the `manifests` directory create `database.pp`. Here you will define a class that will link the `mysql::db` resource to the Hiera data. It will also call the `mysql::server` class, so it will not have to be included later:
 
     {: .file}
     /etc/puppet/modules/mysql/manifests/database.pp
