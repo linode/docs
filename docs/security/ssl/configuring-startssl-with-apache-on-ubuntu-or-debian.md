@@ -6,7 +6,7 @@ description: 'Configuring StartSSL with Apache on Ubuntu/Debian'
 keywords: 'SSL,StartSSL,Certificate,Apache,Ubuntu,Debian,HTTPS'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 published: 'Weekday, August 23rd, 2015'
-modified: Weekday, October 2nd, 2015
+modified: Weekday, November 13rd, 2015
 modified_by:
     name: Yang Liu
 title: 'Configuring StartSSL with Apache on Ubuntu/Debian'
@@ -34,7 +34,7 @@ This guide assumes you are running Apache 2.4 or higher on Ubuntu 14.04 or Debia
 
 ## Obtaining a free StartSSL Certificate
 
-1. Visit [StartSSL Control Panel](https://www.startssl.com/?app=12) in your browser and click `Express Lane`.
+1. Visit [StartSSL Control Panel](https://www.startssl.com/?app=12) in your browser and click `Express Lane`(Express Lane only provides free certificate application. So if you only want to get a free certificate, there are no major differences between clicking `Express Lane` and `Sign-up`).
 
     ![description](/docs/assets/startssl-1-Control-Panel.png)
     
