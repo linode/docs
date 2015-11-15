@@ -21,8 +21,7 @@ external_resources:
 
 Open Web Analytics (OWA) is an open source alternative to commerical web analytics software. Use it to track and analyze traffic on your websites and applications. OWA analytics can easily be added to pages with simple Javascript, PHP, or REST based APIs. OWA also comes with built-in support for tracking websites made with popular content management frameworks such as WordPress and MediaWiki.
 
-
-This guide assume that you have your Linode already set up and running and that you are familiar with the concept of the command line interface (CLI). Since this guide concerns the installation and configuration of software packages all commands are to be run as the root user.
+This guide assumes that you have your Linode already set up and running, that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, that the Linode's [hostname is set](/docs/getting-started#setting-the-hostname), and that you are familiar with the concept of the command line interface (CLI). Since this guide concerns the installation and configuration of software packages all commands are to be run as the root user.
 
 ##1. Install supporting software
 
@@ -38,11 +37,17 @@ This guide assume that you have your Linode already set up and running and that 
 
     yum update
 
+3. CentOS 7 users run the following commands (if you are on CentOS 6.5 skip to the next command):
+
+    systemctl enable mariadb
+    systemctl enable httpd
+
+4. CentOS 6.5 users run:
+
+    chkconfig mysql on
+    chkconfig httpd on
+
 ##2. Set up MySQL
-
-1. Run the following (if you are on CentOS 6.5 skip to the next command):
-
-    chkconfig mariadb on
 
 2. Then (if you already have mysql installed you can skip this step):
 
@@ -100,6 +105,9 @@ Answer yes to all questions -- make sure to set a strong password for root (pres
 1. Now navigate to the installation in your webbrowser. (Replace `your.domain` with the domain of your Linode):
 
     http://your.domain/owa/install.php
+{: .note}
+>
+>Your server must be configured with a fully qualified domain name and not just an IP address.
 
 2. You should see a configuration page for your OWA installation. The first field will be filled in by OWA with the path to your OWA installation. The other fields on the page should be filled in as follows:
  
