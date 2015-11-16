@@ -7,102 +7,100 @@ keywords: 'writing,open source software,contribute linode library, submissions,l
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: Thursday, September 17th, 2015
 modified_by:
-  name: Elle Krout
+  name: Lionde
 published: 'Wednesday, May 19th, 2010'
-title: Article Submissions
+title: Linode Writer's Guide
 external_resources:
  - '[Linode Style Guide](/docs/style-guide)'
  - '[GitHub Beginners Guide](/docs/github-guide)'
 ---
 
-Get published by Linode and get paid! Earn $250 per article accepted for publication. If you like writing, teaching people how to use Linux, and money, we want to hear from you!
+Linode has a thriving community of authors who contribute to Linode Guides & Tutorials. We are always looking for guides on popular, trending topics, and updates to existing guides. If you're interested in writing for Linode, this page describes the process for submitting your work. If your guide is published, you'll receive $250 per article by PayPal or in Linode credit.
 
+## Content Guidelines
 
-## Topics List
+Guides should instruct how to accomplish a task on, or relating to, a Linode or Linodes. When writing, think of both *what* the guide should accomplish and *why* the reader would want to use your guide. A guide should consist of about 90% instruction with 10% explanation.
 
-We are always looking for guides on popular, up-and-coming hot topics, and updates to existing guides. We are also looking for:
+Guides should be informational but friendly. Use the active voice whenever possible, and the pronouns *you* or *we* instead of *I*. Avoid unnecessary information. Brief, to-the-point explanations are preferred, but also consider the audience and the level of technical ability needed to complete each task. A a beginner's topic usually will require more detailed explanations than one for an advanced user.
 
--   [Socket.io](http://socket.io/)
--   [Game Servers](/docs/applications/game-servers/)
--   NoSQL Databases
--   [OpenChange](http://www.openchange.org/)
--   [WebRTC](http://www.webrtc.org/)
+To be considered, submissions must adhere to the formatting decribed in our [Writer's Guide](/docs/writers-guide). The primary qualities we look for in a guide are:
 
-## The Submissions Process
+*   **Accuracy:** Instructions should be straightforward, technically correct and thoroughly tested. Include explanations of each step to familiarize readers with the purpose of each action. Guides can use technical jargon pertinent to Linode, Linux, and related topics, but use common sense--if a term implies a high-level concept that fewer people would know, then take a sentence or two to explain it, or link to a description on a wiki or manual page.
 
-### Write Your Article
+*   **Completeness:** A guide should leave readers with a finished, working configuration and give them an idea of where to go from there. Considerations for security and best practices must also be made.
 
-Review the [Style Guide](/docs/style-guide) before submission. We reccomend referencing it while writing to ensure that all formatting is correct. While writing, also make sure your content is:
+*   **Originality:** Content should be original material written for Linode. We will not accept submissions which are duplicated from other sources, including personal blogs.
 
--   **Accurate:** Your instructions should be straightforward and technically correct.
--   **Detailed:** Your content should include explanations of each step, to familiarize readers with the purpose behind each action.
--   **Formatted:** Your style should use [PHP Markdown Extra](https://michelf.ca/projects/php-markdown/extra/) formatting and match the Linode Guides & Tutorials [style guide](/docs/style-guide).
--   **Original:** Your content should be original material written for Linode. We will not accept submissions that have been copied from other sources.
+If you would like to see whether your work is in line with our requirements before taking the time to write a full guide, writing samples can be submitted to <contribute@linode.com>.
 
-We will also review writing samples prior to full submissions, if you would like to see if your guide is in line with our requirements before taking the time to write a full guide. Writing samples can be submitted to <contribute@linode.com>.
+## The Submission Process
 
+**GitHub**
 
-### Submit Your Article
+Submit your article as a pull request to [Linode/Docs](https://github.com/linode/docs/). If you are new to GitHub, see our [GitHub Beginners Guide](/docs/github-guide) which will walk you through the process.
 
-Submit your article as a [pull request on GitHub](/docs/github-guide), or by emailing it to <contribute@linode.com> as a plain text or Markdown file attachment. Ensure that final submissions follow the [Linode Style Guide](/docs/style-guide) guidelines. If unsure about to use GitHub to submit, please review our [GitHub Guide](/docs/github-guide), meant specifically to walk users through the GitHub submission process.
+**Email**
 
-Got images and submitting through email? Attach them as **.png** or **.jpg** files. If an image is over 650 pixels wide, please send both the original and a 650-pixel-wide version.
+Send your guide to <contribute@linode.com>. Be sure to include the following:
 
-Submission checklist:
+*   Your name, as you want it to appear on the finished guide.
+*   PayPal account information **or** Linode account information for Linode credit.
+*   If submitting by email, include the title of the article in the email subject.
 
--   Article in **.txt** or **.md** format
--   Images
--   Your name, as you want it to appear on the finished guide
--   PayPal account information, or Linode account information for Linode credit
--   *If emailing* include the title of the article in the email subject
+If you have any questions, contact <contribute@linode.com>. Do not open a pull request or issue unless you are submitting guide content.
 
+## The Review Process
 
-### Post-Submission Process
+All guides will remain on GitHub for up to 2 weeks for the Linode community to comment on or submit pull requests of their own. If you submitted your article through email, it will be added to GitHub by Linode. After the initial review period, your article will be accepted or rejected.
 
-Once you've submitted your article, here's what you can expect:
+If accepted, we will do an internal technical review of your material which can take from a few days to about a week. Following the technical review is a copy edit of the article; this will take a few days further. Along the process, you may receive questions or comments from us, or a request for a resubmission with changes.
 
-1.  You'll receive a brief response acknowledging your submission.
-2.	If not already submitted through GitHub, most articles will be added for community review for a period of one to two weeks.
-3.	After the initial one to two week period of review, your article will be accepted or rejected.
-4.  If accepted, we will do a technical review of your material. This will take a few days, and you may be contacted to explain or rework steps.
-5.  We will do a copy edit of the article. This will take a few days.
-6.  You may receive questions or comments from us, or a request for a resubmission with a few changes.
-7.  We will then send you the final version of the article before publication. You will have 36 hours to respond and approve our publication of the final version.
-8.  If you respond positively (non-response will be taken as a go-ahead to publish), we will publish the article and give you the cash or Linode credit. You will be notified once the guide is live.
+Depending on your submission method, we will submit the final version to your GitHub fork as a pull request or email it to you. You will have 36 hours to respond and approve our publication of the final version. If you respond positively, we will publish the article and you'll receive payment. Non-response will be taken as a go-ahead to publish.
 
+### Reasons Your Guide May Be Rejected
+
+As much as we would like to support all writers, we just can not accept every guide we receive. Here are some negatives you can eliminate in your own work to ensure a strong submission:
+
+*   Not enough original content (meaning, it either is, or too closesly resembles, current guides either by Linode or another source).
+
+*   It is a duplicate of your own content from your personal blog, wiki submissions or forum posts.
+
+*   Inappropriate topic for the Linode Community.
+
+*   Topic is already well documented in official wikis, manual pages, etc.
+
+*   We already have plenty of guides on the topic. Examples: LAMP & LEMP stacks, MySQL.
+
+*   [Content](#content_guidelines) and [formatting](/docs/style-guide#lists) guidelines were clearly not followed.
+
+### Tips
+
+**Use other Linode guides as building blocks.**
+
+For example, if your guide requires a system with a properly configured `hosts` file and a working LAMP stack, you can link to the [Getting Started](/docs/getting-started) and [LAMP](/docs/websites/lamp) guides instead of duplicating the information.
+
+**Link to your guide from your own site or social media posts.**
+
+This actually improves your page rankings of your own site because of an SEO aspect called *link authority*.
 
 ## Contributed Guides
 
-Guide                                                                         | Author
------------------------------------------------------------------------------ | ------
-[Varnish Cache](/docs/websites/varnish/getting-started-with-varnish-cache)    | Kevin Cupp
-[Pflogsumm](/docs/email/postfix/pflogsumm-for-postfix-monitoring-on-centos-6) | Robert Accettura
-[SSH Tunnel with SOCKS Proxy](/docs/networking/ssh/setting-up-an-ssh-tunnel-with-your-linode-for-safe-browsing) | Arnaldo Ariel Arrieta
-[Basic NFS Configuration on Debian 7](/docs/networking/basic-nfs-configuration-on-debian-7) | Juan Traverso
-[Configure Postfix to Send Mail Using an External SMTP Server](/docs/email/postfix/postfix-smtp-debian7) | Santiago Ti
-[MariaDB Setup on Debian 7](/docs/databases/mariadb/mariadb-setup-debian7)    | Nashruddin Amin
-[Running Apache with PHP-FPM on Debian and Ubuntu](/docs/websites/apache/running-fastcgi-php-fpm-on-debian-7-with-apache) | Jesin A.
-[Using WeeChat for Internet Relay Chat](/docs/applications/messaging/using-weechat-for-irc) | Samuel Damashek
-[Manage Git Repositories with GitLab on Ubuntu 14.04 (Trusty)](/docs/applications/development/gitlab-on-ubuntu-14-04) | Nashruddin Amin
-[Yesod, Nginx, and MySQL on Debian 7 (Wheezy)](/docs/websites/frameworks/yesod-nginx-mysql-on-debian-7-wheezy) | Si-Qi Liu
-[Installing iRedMail on your Linode](/docs/email/iredmail/installing-iredmail) | Nick Reichley
-[Using StartSSL with the latest Nginx on Debian 7](/docs/websites/nginx/startssl-wth-latest-nginx-debian-7) | Ryan Laverdiere
-[Garry's Mod on CentOS 7](/docs/applications/game-servers/garrys-mod-server-on-centos-7) | Julian Meyer
-[OSSEC IDS on Debian 7](/docs/security/ossec-ids-debian-7)                     | Sunday Ogwu-Chinuwa
-[Turbocharge Your WordPress Search Using Solr](/docs/websites/cms/turbocharge-wordpress-search-with-solr) | Karthik Shiraly
-[Install and Configure Don't Starve Together Server on Ubuntu 14.04](/docs/applications/game-servers/dont-starve-together-on-ubuntu)  | Andrew Gottschling
-[Running a Spigot Minecraft Server on Ubuntu 14.04 and 14.10](/docs/applications/game-servers/minecraft-with-spigot-ubuntu) | Sam Mauldin
-[Protecting Your Linode with TCP Wrappers](/docs/security/firewalls/protecting-your-linode-using-tcp-wrappers) | Francis McNamee
-[How to Configure Nginx for Optimized Performance](/docs/websites/nginx/configure-nginx-for-optimized-performance) | Bob Strecansky
-[Getting Started with Ansible](/docs/applications/ansible/getting-started-with-ansible) | Joshua Lyman
-[Install a TeamSpeak Server on Linode](/docs/applications/game-servers/install-teamspeak) | Scott Somner
-[How to Set Up BungeeCord to Link Spigot Servers](/docs/applications/game-servers/minecraft-with-bungee-cord) | Thomas Wemyss
+Here are some examples of exceptional community-contributed guides. Use these as gudielines for your own submission.
 
+[Install Odoo 9 ERP on Ubuntu 14.04](https://linode.com/docs/websites/cms/install-odoo-9-erp-on-ubuntu-14-04) by Damaso Sanoja.
+
+[Install and Configure OSSEC on Debian 7](https://linode.com/docs/security/ossec-ids-debian-7) by Sunday Ogwu-Chinuwa.
+
+[How to Install and Configure GitLab on Ubuntu 14.04 (Trusty Tahr)](http://localhost:4567/docs/applications/development/how-to-install-and-configure-gitlab-on-ubuntu-14-04-trusty-tahr/) by Nashruddin Amin.
+
+[Turbocharge Your WordPress Search Using Solr](http://localhost:4567/docs/websites/cms/turbocharge-wordpress-search-with-solr) by  Karthik Shiraly.
+
+[How to Configure Nginx for Optimized Performance](http://localhost:4567/docs/websites/nginx/configure-nginx-for-optimized-performance) by Bob Strecansky.
 
 ## Legal Information
 
-COPYRIGHT OWNERSHIP. Writer agrees that the Work is being created by the writer for the Linode Guides and Tutorials Repository and that each form of Work is being created by the writer as a “work made for hire” under the United States Copyright Act and, at all stages of development, the Work shall be and remain the sole and exclusive property of Linode. At Linode's sole, absolute and unfettered discretion, Linode may make any changes in, deletions from, or additions to the Work.
+COPYRIGHT OWNERSHIP. Writer agrees that the Work is being created by the writer for the Linode Guides and Tutorials Repository and that each form of Work is being created by the writer as a “work made for hire” under the United States Copyright Act and, at all stages of development, the Work shall be and remain the sole and exclusive property of Linode. At Linode's sole, absolute and unfettered discretion, Linode may make any alterations to the Work.
 
-CREDIT. Nothing contained in this Agreement shall be deeded to require Linode to use the Work, or any part thereof, in connection with the Digital Library or otherwise. Credit for the Work shall read "This is a Linode Community guide by author "writer's name"."
+CREDIT. Nothing contained in this Agreement shall be deeded to require Linode to use the Work, or any part thereof, in connection with Linode Guides and Tutorials or otherwise. Credit for the Work shall read, "Contributed by *writer's name*."
 
-PAYMENT. Upon publication of a submission to the Linode Guides and Tutorials Repository, the writer will be paid the sum of $250.00 either in the form of a credit to their Linode account or as an electronic payment.
+PAYMENT. Upon publication of a submission to the Linode Guides and Tutorials Repository, the writer will be paid the sum of USD $250.00 either in the form of a credit to their Linode account or as an electronic payment.
