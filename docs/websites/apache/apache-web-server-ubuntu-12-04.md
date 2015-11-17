@@ -2,23 +2,23 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'How-to guide detailing steps needed to install Apache web server on Ubuntu 12.04 LTS (Precise Pangolin).'
-keywords: 'apache,apache ubuntu 12.04,apache ubuntu precise pangolin,web server,apache on ubuntu,apache lucid, install apache, configure apache , install apache, configure apache, how to install apache'
+description: 'Install Apache on your Ubuntu 12.04 Server, configure virtual hosting, and set up module and scripting support.'
+keywords: 'apache,ubuntu,ubuntu 12.04,precise,pengolin,apache web server,web server,'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: Wednesday, July 15th, 2015
-alias: ['web-servers/apache/installation/ubuntu-12-04-precise-pangolin/','websites/apache/apache-2-web-server-on-ubuntu-12-04-lts-precise-pangolin/']
+alias: ['web-servers/apache/installation/ubuntu-12-04-precise-pangolin/','websites/apache/apache-2-web-server-on-ubuntu-12-04-lts-precise-pangolin/','websites/apache/how-to-install-and-configure-apache-2-web-server-on-ubuntu-12-04-lts-precise-pangolin/']
 modified_by:
   name: Linode
 published: 'Wednesday, October 10th, 2012'
-title: 'How to Install and Configure Apache 2 Web Server on Ubuntu 12.04 LTS (Precise Pangolin)'
+title: 'Apache Web Server on Ubuntu 12.04 LTS (Precise Pangolin)'
 external_resources:
  - '[Apache HTTP Server Version 2.2 Documentation](http://httpd.apache.org/docs/2.2/)'
  - '[Apache Configuration](/docs/web-servers/apache/configuration/)'
 ---
 
-Apache is an open-source web server application. This guide explains how to install and configure an Apache web server on Ubuntu 12.04 LTS.
+The *Apache HTTP Web Sever* (Apache) is an open source web application for running web servers.  This guide explains how to install and configure an Apache web server on Ubuntu 12.04 LTS.
 
-If instead you would like to install a full LAMP stack, please see the [LAMP on Ubuntu 12.04](/docs/websites/lamp/lamp-server-on-ubuntu-12-04-precise-pangolin) guide.
+If instead you would like to install a full LAMP (Linux, Apache, MySQL and PHP) stack, please see the [LAMP on Ubuntu 12.04](/docs/websites/lamp/lamp-server-on-ubuntu-12-04-precise-pangolin) guide.
 
 {: .note}
 >
@@ -66,7 +66,7 @@ If instead you would like to install a full LAMP stack, please see the [LAMP on 
         ~~~
 
 
-### Configure Name-based Virtual Hosts
+### Configure Virtual Hosting
 
 Apache supports *name-based virtual hosting*, which allows you to host multiple domains on a single server with a single IP. Although there are different ways to set up virtual hosts, the method below is recommended.
 
@@ -117,7 +117,7 @@ Apache supports *name-based virtual hosting*, which allows you to host multiple 
         sudo systemctl restart apache2
 
 
-## Set Up Mods and Scripting
+## Apache Mods and Scripting
 
 ### Install Apache Modules
 
@@ -140,7 +140,7 @@ One of Apache's strengths is its ability to be customized with modules. The defa
         a2dismod [module-name]
 
 
-### Optional: Install Support for Scripting
+### Install Support for Scripting
 
 The following commands install Apache support for server-side scripting in PHP, Ruby, Python, and Perl. Support for these languages is optional based on your server environment.
 
