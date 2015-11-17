@@ -6,20 +6,20 @@ description: 'Drupal 8 is the lastest version of the popular Drupal content mana
 keywords: 'drupal,cms,web framework,web application,apache,apache2,php,content management system, content management framwork'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-applications/cms-guides/drupal/']
-modified: Friday, November 13, 2015
+modified: Friday, November 20, 2015
 modified_by:
     name: Linode
-published: 'Friday, November 13, 2015'
+published: 'Friday, November 20, 2015'
 title: Install and Configure Drupal 8
 ---
 
-Drupal 8 is the lastest version of the popular [Drupal](https://www.drupal.org/) content management system. This how-to article demonstrates all of the necessary steps to install Drupal 8 on your Linode which runs CentOS, Debian or Ubuntu.
+Drupal 8 is the lastest version of the popular [Drupal](https://www.drupal.org/) content management system. This how-to article demonstrates all of the necessary steps to install Drupal 8 on your Linode running CentOS, Debian or Ubuntu.
 
 ## Before You Begin
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access, remove unnecessary network services and create firewall rules for your web server; you may need to make addional firewall exceptions for your specific application.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account, harden SSH access, remove unnecessary network services and create firewall rules for your web server; you may need to make addional firewall exceptions for your specific application.
 
 3.  Update your system.
 
@@ -35,7 +35,7 @@ Drupal 8 is the lastest version of the popular [Drupal](https://www.drupal.org/)
 
 1.  See Drupal's [download page](https://www.drupal.org/project/drupal) for the exact URL of Drupal 8's core tarball.
 
-    If you installed and configured your Apache server using one of the methods above, the publicly accessible DocumentRoot should be located in `/var/www/example.com/public_html/`. Change directories to there and download Drupal with wget:
+    If you installed and configured your Apache server using one of the methods above, the publicly accessible DocumentRoot should be located at `/var/www/example.com/public_html/`. Change directories to there and download Drupal with wget:
 
         cd /var/www/example.com
         sudo wget http://ftp.drupal.org/files/projects/drupal-8.0.0.tar.gz
@@ -44,27 +44,21 @@ Drupal 8 is the lastest version of the popular [Drupal](https://www.drupal.org/)
     >
     >Ensure that the version number matches the Drupal version you wish to download.
 
-2.  Extract the downloaded tarball into `/tmp` and copy its contents into `/var/www/example.com/public_html/`:
+2.  Extract the downloaded tarball's contents into Apache's DocumentRoot:
 
-        tar -zxvf drupal-8.*.tar.gz -C /tmp
-        sudo cp -r /tmp/drupal-8.*/* /var/www/example.com/public_html
+        tar -zxvf drupal-8.*.tar.gz --strip-components=1 -C public_html
 
-3.  Move the `.htaccess` file to the same directory and remove the extracted Drupal directory from `/tmp` when finished:
-
-        sudo cp /tmp/drupal-8.*/.htaccess public_html
-        rm -r /tmp/drupal-8.*
-
-4.  Drupal depends on a PHP5 graphics library called GD. Install GD with:
+3.  Drupal depends on a PHP5 graphics library called GD. Install GD with:
 
         sudo apt-get install php5-gd
 
-5.  Drupal's `settings.php` and `services.yml` files are configured when the first start configuration is ran. The files must be created from the default templates and permissions changed so that Drupal can write to them.
+4.  Drupal's `settings.php` and `services.yml` files are configured when the first start configuration is run. The files must be created from the default templates and permissions changed so that Drupal can write to them.
         
         cd /var/www/example.com/public_html/sites/default
         sudo cp default.settings.php settings.php && sudo cp default.services.yml services.yml
         sudo chmod 666 {services.yml,settings.php}
 
-6.  Enforce [trusted hostnames](https://www.drupal.org/node/2410395) with those that your site will be accessed by:
+5.  Enforce [trusted hostnames](https://www.drupal.org/node/2410395) with those that your site will be accessed by:
 
     {: .file-excerpt}
     /var/www/example.com/public_html/sites/default/settings.php
@@ -77,7 +71,7 @@ Drupal 8 is the lastest version of the popular [Drupal](https://www.drupal.org/)
 
     {: .note}
     >
-    >*trusted_host_patterns* also accepts IP addresses or localhost.
+    >*trusted_shost_patterns* also accepts IP addresses or localhost.
 
 ## Configure Apache 2.4
 
@@ -147,4 +141,4 @@ Drupal 8 is the lastest version of the popular [Drupal](https://www.drupal.org/)
 
 ## Where to Go From Here
 
-Drupal has a significant amount of documentation for [security best practices](https://www.drupal.org/security/secure-configuration) to consider when hardening a Drupal server. There is also extennsive [community documentation](https://www.drupal.org/documentation) and there are multiple ways of [participating in the Drupal community](https://www.drupal.org/community).
+Drupal has a significant amount of documentation for [security best practices](https://www.drupal.org/security/secure-configuration) to consider when hardening a Drupal server. There is also extensive [community documentation](https://www.drupal.org/documentation) and there are multiple ways of [participating in the Drupal community](https://www.drupal.org/community).
