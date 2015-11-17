@@ -3,7 +3,7 @@ author:
     name: Linode Community
     email: docs@linode.com
 description: 'Setting up Graphite with Grafana on Ubuntu 14.04'
-keywords: 'graphite,grafana'
+keywords: 'graphite,grafana,monitor,monitoring,analytics'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: 'Tuesday, November 3rd, 2015'
 modified_by:
@@ -22,23 +22,13 @@ external_resources:
 
 [Graphite](http://graphite.readthedocs.org/en/latest/index.html) is an enterprise-scale monitoring tool that runs well on cheap hardware. It stores numeric time-series data and renders graphs of this data on demand. This guide provides an introduction to installation and basic setup of Graphite together with [Grafana](http://grafana.org/) - leading open source application for visualizing large-scale measurement data - on Ubuntu 14.04 LTS.
 
-{: .note}
->
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+## Before You Begin
 
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-## Prerequisites
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the Creating a Firewall section--this guide has instructions specifcally for firewall rules for a Graphite server.
 
-1.  Follow the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, and [set the Linode's hostname](/docs/getting-started#setting-the-hostname).
-
-    To check the hostname run:
-
-        hostname
-        hostname -f
-
-    The first command should show the short hostname, and the second should show the fully qualified domain name (FQDN).
-
-2.  Update the system:
+3.  Update your system.
 
         sudo apt-get update && sudo apt-get upgrade
 
