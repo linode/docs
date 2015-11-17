@@ -14,9 +14,9 @@ external_resources:
  - '[Official OpenVPN Documentation](https://openvpn.net/index.php/open-source/documentation/howto.html)'
 ---
 
-This gude will show you how to configure an OpenVPN server to forward out to the interent all traffic it recieves from client devices, then route the responses back appropriately.
+This gude will show you how to configure an OpenVPN server to forward out to the interent all traffic it receives from client devices, then route the responses back appropriately.
 
-A common use case for a VPN tunnel is to access the internet from behind it to evade censorship or geolocation while shielding your computer's public IP address to internet service providers, untrusted WiFi hotspots, and sites and services you connect to.
+A common use case for a VPN tunnel is to access the internet from behind it to evade censorship or geolocation while shielding your computer's web traffic to internet service providers, untrusted WiFi hotspots, and sites and services you connect to.
 
 ## Before You Begin
 
@@ -28,7 +28,7 @@ OpenVPN's server-side configuration file is `/etc/openvpn/server.conf` and it re
 
 1.  Tell OpenVPN that it should make all clients send internet traffic through it.
 
-    {: .file-exceprt}
+    {: .file-excerpt}
     /etc/openvpn/server.conf
     :   ~~~ conf
         # If enabled, this directive will configure
@@ -44,11 +44,11 @@ OpenVPN's server-side configuration file is `/etc/openvpn/server.conf` and it re
 
 2.  Push DNS resolvers to client devices.
 
-    Client-side DNS settings are ideal for preventing DNS leaks and will override those pushed by the OpenVPN server in this step. Google DNS is what's provided by the OpenVPN client software for Android, iOS, OS X and Windows, and while this can be disabled, Desktop Linux and Windows are the only platforms which allows you to change this if you prefer a different resolver. 
+    Client-side DNS settings are ideal for preventing DNS leaks and will override those pushed by the OpenVPN server in this step. Google DNS is provided by the OpenVPN client software for Android, iOS, OS X and Windows, and while this can be disabled, Desktop Linux and Windows are the only platforms which allows you to change this if you prefer a different resolver. 
 
     If using the options below to push DNS resolvers to VPN clients, you can disable the Google DNS fallback on your clients (or leave it enabled as the fallback it was intended to be). [OpenDNS](https://www.opendns.com/) is provided by default but you can change this to whatever your preference.
 
-    {: .file-exceprt}
+    {: .file-excerpt}
     /etc/openvpn/server.conf
     :   ~~~ conf
         # Certain Windows-specific network settings
@@ -67,7 +67,7 @@ OpenVPN's server-side configuration file is `/etc/openvpn/server.conf` and it re
 
 ## Append Networking Rules
 
-In [part one](/docs/networking/vpn/set-up-a-hardened-openvpn-server) of this series, we set iptables rules so the OpenVPN server can only accept client connections, SSH and make system updates--all over IPv6; IPv6 was disabled since OpenVPN does not support both transport layers simultaneously. Leaving IPv6 disabled here prevents leaking v6 traffic which would otherwise be sent outside of your IPv4 VPN tunnel.
+In [part one](/docs/networking/vpn/set-up-a-hardened-openvpn-server) of this series, we set iptables rules so the OpenVPN server can only accept client connections, SSH and make system updates--all over IPv4; IPv6 was disabled since OpenVPN does not support both transport layers simultaneously. Leaving IPv6 disabled here prevents leaking v6 traffic which would otherwise be sent outside of your IPv4 VPN tunnel.
 
 Since now we want the server to forward traffic out to the internet from clients, accept the responses and route them back to client machines, we must adjust the rulesets.
 
@@ -151,9 +151,9 @@ Since now we want the server to forward traffic out to the internet from clients
 
         echo 'net.ipv4.ip_forward=1' >> /etc/sysctl.d/99-sysctl.conf
 
-6.  Restart OpenVPN with:
+6.  Restart OpenVPN:
 
-sudo systemctl restart openvpn*.service
+        sudo systemctl restart openvpn*.service
 
 ## Next Steps
 
