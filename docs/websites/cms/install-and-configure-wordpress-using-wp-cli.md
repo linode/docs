@@ -18,22 +18,22 @@ external_resources:
    - '[WP-CLI Community Commands](https://github.com/wp-cli/wp-cli/wiki/List-of-community-commands)'
 ---
 
-{: .note}
->
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
-
 ## Introduction
 
 Everyone is probably familiar with WordPress and its famous 5 minute install routine. Its simple and works without fuss. But when you have multiple sites to manage, going over the same routine can take up lot of time which you could have used elsewhere.
 
-This is where WP-CLI comes in. It is a commandline tool which comes with lots of powerful features with which you can install, manage, update and do lots more with WordPress. This tutorial will cover how to install WP-CLI and how to perform some common tasks using it.
+This is where WP-CLI comes in. It is a command line tool which comes with lots of powerful features with which you can install, manage, update and do lots more with WordPress. This tutorial will cover how to install WP-CLI and how to perform some common tasks using it.
 
 ## Prerequisites
-Before me move ahead, make sure you have a VPS configured with Ubuntu 14.04 and have installed Apache, PHP and MySQL(LAMP stack) on it. You would also need to setup a non-root user first which would be used to work with WP-CLI. If you haven't done that yet, then you can do so by taking help from the following guides.
+Before we move ahead, make sure you have completed the following guides:
 
 * [Getting Started with Linode](/docs/getting-started)
 * [How to Install a LAMP Stack on Ubuntu 14.04](/docs/websites/lamp/how-to-install-a-lamp-stack-on-ubuntu-14-04)
 * [Securing your Server](/docs/security/securing-your-server)
+
+{: .note}
+>
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
 ## Installing WP-CLI
 
@@ -49,7 +49,15 @@ The following command will check whether the downloaded copy is working correctl
 
 	php wp-cli.phar --info
 
-You would get an output mentioning the version of WP-CLI installed and some basic information. That means, we can move ahead.
+You should see a similar output like the one below which means we can move ahead.
+
+  PHP binary:	/usr/bin/php5
+  PHP version:	5.6.11-1ubuntu3.1
+  php.ini used:	/etc/php5/cli/php.ini
+  WP-CLI root dir:	phar://wp-cli.phar
+  WP-CLI global config:
+  WP-CLI project config:
+  WP-CLI version:	0.21.0
 
 Now wp-cli.phar is still not executable and that's why we had to use php command to run it. You need to make it executable and move it to `/usr/local/bin` so that it can be run directly.
 
@@ -64,28 +72,22 @@ If you see the script version then it means your WP-CLI script has been installe
 
 ### Activating Bash-Completion
 
-Now it is difficult all commands at once and you might want a quick reference on the command you need. While you can always type `wp` and press enter to see the complete list. But wouldn't it be better if you can point to specific command. Like if you want to know what all sub commands are under the `core` parameter. Bash completion script of WP-CLI can help here. To install the script, make sure you are in the home directory of the user you are using.
+Now it is difficult all commands at once and you might want a quick reference on the command you need. While you can always type `wp` and press enter to see the complete list. But wouldn't it be better if you can point to specific command. Like if you want to know what all sub commands are under the `core` parameter. Bash completion script of WP-CLI can help here. To install the script, make sure you are in the home directory of the user(`username` in this case) you are using.
 
-	cd /home/user
+	cd /home/username
 	wget https://github.com/wp-cli/wp-cli/raw/master/utils/wp-completion.bash
 
-Now edit the .bash_profile so that it is loaded by the shell everytime you login.
+Now edit the .bashrc so that it is loaded by the shell every time you login. Open the file and add the following line in the editor assuming you downloaded the file in the home directory.
 
-	nano ~/.bash_profile
-
-Add the following line in the editor.
-
-	source /<fullpath>/wp-completion.bash
-
-Assuming you downloaded the wp-completion.bash file in the home directory, the line to be added would become
-
-	source /home/user/wp-completion.bash
-
-Press **Ctrl+X** and then **Y** to save the changes.
+  {: .file-excerpt}
+  /home/username/.bashrc
+  :   ~~~ bash
+	    source /home/username/wp-completion.bash
+      ~~~
 
 Now run the following command to reload the Bash profile.
 
-	source ~/.bash_profile
+	source ~/.bashrc
 
 That's it. Bash Completion is enabled.
 
@@ -97,7 +99,7 @@ So far we have seen WP-CLI is accessed through the keyword `wp`. What follows th
 WP-CLI also comes with a pretty detailed help section which will allow you to keep tab on all the commands you would need. You can access it by typing
 
 	wp help
-	
+
 Doing that and you will see a screen similar to
 
 	wp
@@ -122,8 +124,8 @@ Doing that and you will see a screen similar to
 	eval                Execute arbitrary PHP code after loading WordPress.
 	eval-file           Load and execute a PHP file after loading WordPress.
 	:
-	
-	
+
+
 `:` is a prompt where you need to enter few commands to navigate through this help menu. Up and down arrow keys will take you through the complete help. And pressing q will exit the help menu. That's all you need to know for now. For complete detail on how to navigate through the complete help section, you can always type h at the above prompt.
 
 In our last step, we enabled Bash Completion feature for WP-CLI. To use that type `wp` and press tab twice. You would see the list of available commands. You can repeat the same by typing 'wp core' and then pressing tab twice. Now you will see a list of commands that can be used with `core`.
@@ -132,7 +134,7 @@ In our last step, we enabled Bash Completion feature for WP-CLI. To use that typ
 
 ### Seting up Database
 
-Before you proceed, you need to setup a database first. For that, login to the MySQL server first.
+Before you proceed, you need to setup a database first. For that, login to the MySQL server first. Replace `user` with your MySQL user.
 
 	mysql -u user -p
 
@@ -148,10 +150,10 @@ Type `quit` to exit the MySQL commandline.
 
 First of all, move to the user directory where you would be installing the blog. Traditionally it should be in `/var/www/html` directory. Create a new user directory for your user if it doesn't exist already. Also proper group and ownership permissions need to be given to the user.
 
-	cd /var/wwww/html
+	cd /var/www/html
 	sudo mkdir wpblog
 	sudo chown -R user:user wpblog
-	cd user
+	cd wpblog
 
 {: .note}
 >
@@ -160,7 +162,7 @@ First of all, move to the user directory where you would be installing the blog.
 Next, download the WordPress files.
 
 	wp core download
-	
+
 Next step is to create a wp-config.php file.
 
 	wp core config --dbname=Database --dbuser=user --dbpass=password --dbhost=localhost --dbprefix=wp_
@@ -221,8 +223,8 @@ Or if you want to update all, then
 To list all the installed plugins on your blog, use
 
 	wp plugin list
-	
-To uninstall a plugin, use 
+
+To uninstall a plugin, use
 
 	wp plugin uninstall wordpress-seo
 
@@ -238,7 +240,7 @@ To install and activate, you need to use
 
 	wp theme install twentytwelve
 	wp theme activate twentytwelve
-	
+
 And to update one or all themes, you can use
 
 	wp theme update twentytwelve
@@ -247,7 +249,7 @@ And to update one or all themes, you can use
 To list all the themes in a tabular form, you can use the command `list`.
 
 	wp theme list
-	
+
 To uninstall a theme, use
 
 	wp theme uninstall twentytwelve
@@ -263,4 +265,4 @@ First command updates the files and second one completes the database upgrade.
 
 ## Conclusion
 
-This wraps up our tutorial on WP-CLI. These commands are just tip of the iceberg of what you can do with it. You can write or edit posts, perform database queries, manage user capabilties, manage cron events, import or export content, manage attachments and even manage multisites. 
+This wraps up our tutorial on WP-CLI. These commands are just tip of the iceberg of what you can do with it. You can write or edit posts, perform database queries, manage user capabilties, manage cron events, import or export content, manage attachments and even manage multisites.
