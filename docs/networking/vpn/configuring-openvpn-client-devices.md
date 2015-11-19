@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Configuring client software to connect to an OpenVPN server.'
+description: 'OpenVPN has client packages for Android, iOS, Linux, OS X and Windows. This guide will show you how to install, configure and fine-tune OpenVPN clients on these platforms.'
 keywords: 'openvpn,vpn,debian,tunnel,vpn tunnel,open vpn,ubuntu,security,ios,os x,osx,mac,mobile,windows,android'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: 'Wednesday, October 21st, 2015'
@@ -19,7 +19,7 @@ external_resources:
 
 This guide is the third of a three part series to set up a hardened OpenVPN environment. Though it's recommended that you have first completed parts one and two of the series, [Set up a Hardend OpenVPN Server on Debian 8](/docs/networking/vpn/set-up-a-hardened-openvpn-server) and [Tunnel Your Internet Traffic Through an OpenVPN Server](/docs/networking/vpn/tunnel-your-internet-traffic-through-an-openvpn-server), this guide can stand on its own as a general tutorial for configuring OpenVPN clients on various operating systems, including mobile.
 
-## Before you Begin
+## Before You Begin
 
 You must already have have the client files on your OpenVPN server. These are:
 
@@ -29,7 +29,7 @@ You must already have have the client files on your OpenVPN server. These are:
 *  HMAC secret key: `ta.key`.
 *  Client configuration file: `client.ovpn`.
 
-In part one of this series, they were packaged into a tarball located at `/etc/openvpn/client1.tar.gz`. **Each client** will need its own credentials archive with its own unique key. If you still need your client credentials, see [Part One, Step 7](/docs/networking/vpn/set-up-a-hardened-openvpn-server#client-configuration-file) of the client configuration area to create them.
+In part one of this series, they were packaged into a tarball located at `/etc/openvpn/client1.tar.gz` on your OpenVPN server. **Each client** will need its own credentials archive with its own unique key. If you still need your client credentials, see [Part One, Step 7](/docs/networking/vpn/set-up-a-hardened-openvpn-server#client-configuration-file) of the client configuration area to create them.
 
 ## Transfer Client Credentials
 
@@ -39,17 +39,21 @@ The credentials must be moved to the client device using an encrypted transfer p
 
 There are many apps in both platform's app stores for SCP and SFTP support. If you don't already have one and don't want to install new software or take the time to find something you prefer, the best option is to transfer the VPN client files to a desktop computer, and then import them into Android or iOS over a USB connection.
 
-The import process is explained further down this page under *Installing Client-Side Software* for [Android](#android) and [iOS](#ios).
+The import process is explained further down this page for [Android](#android) and [iOS](#ios).
 
 ### Linux / OS X
 
 Linux and OS X can use SCP natively from the command line. To download your client's tarball to your local user's Home directory using SCP:
 
-    scp server's_user_name@server_ip_address:/etc/openvpn/client1.tar.gz ~/
+    scp example_user@server_ip_address:/etc/openvpn/client1.tar.gz ~/
+
+{: .note}
+>
+>`example_user` is the VPN server's user account you want to log in as.
 
 ### Windows
 
-Windows has no native SCP or SFTP support. See [our Filezilla guide](/docs/tools-reference/file-transfer/filezilla) to use it for transferring the files. Windows will also need [7zip](http://www.7-zip.org/) to extract the tarball.
+Windows has no native SCP or SFTP support. See [our Filezilla guide](/docs/tools-reference/file-transfer/filezilla) to use it for transferring the files. Windows will also need [7zip](http://www.7-zip.org/) to extract a tarball.
 
 ## Client-Side Configurations
 
@@ -65,13 +69,13 @@ Android uses OpenVPN Connect to manage OpenVPN connections. If you have a Linux 
 
     ![Google Play Store OpenVPN Connect](/docs/assets/google-play-openvpn-connect.png)
 
-2.  Ensure that [Media Transfer Protocol](https://en.wikipedia.org/wiki/Media_Transfer_Protocol) is enabled. In **Settings** > **Storage** > **overflow menu** > **USB computer connection**, **Media device (MTP)** should be checked. Connect your Android device by USB to your computer.
+2.  Ensure that [Media Transfer Protocol](https://en.wikipedia.org/wiki/Media_Transfer_Protocol) is enabled. In **Settings** > **Storage** > **overflow menu** > **USB computer connection**, **Media device (MTP)** should be checked. Connect your Android device by USB to your computer and copy over the folder containing the client credentials.
 
 3.  Import the VPN profile; **Menu** > **Import** > **Import Profile from SD card**. Navigate to the profile location, tap it and then tap **SELECT**.
 
-    ![OpenVPN Connect profile imported](/docs/assets/openvpn-connect-android-profiile-imported.png)
-
 4.  Tap **Connect** to connect to the VPN server, and **OK** at the Connection request prompt for OpenVPN. Shortly after, Android will be connected.
+
+    ![OpenVPN Connect profile imported](/docs/assets/openvpn-connect-android-profiile-imported.png)
 
     ![OpenVPN Connect profile imported](/docs/assets/openvpn-connect-android-connected.png)
 
@@ -93,7 +97,7 @@ Apple's iOS for iPhones and iPads uses OpenVPN Connect to manage OpenVPN connect
 
     ![iTunes App Store OpenVPN Connect](/docs/assets/itunes-appstore-openvpn-connect.png)
 
-2.  Connect your iOS device by USB to your computer running OS X or Windows, and open iTunes.
+2.  Connect your iOS device by USB to your computer running OS X or Windows. Open iTunes.
 
 3.  Select the icon for iPad or iPhone near the top-left of the menu bar.
 
@@ -103,7 +107,7 @@ Apple's iOS for iPhones and iPads uses OpenVPN Connect to manage OpenVPN connect
     >
     >If this is the first time connecting your iOS device to iTunes, you'll need to click the overflow menu (the three vertical dots) and choose **Apps**, then click **Get Started**.
 
-4.  In the left sidebar, choose **Apps** and scroll down to the **File Sharing** category in the main window. You will see the icon for OpenVPN Connect. Click it, then click **Add** in the **OpenVPN Documents** box. Navigate to your `ta.key` file and `.opvn` client profile. **Add them in that order**, drag them into the window from Finder. Otherwise, OpenVPN Connect on the iOS device will say it can't find the key.
+4.  In the left sidebar, choose **Apps** and scroll down to the **File Sharing** category in the main window. You will see the icon for OpenVPN Connect. Click it, then click **Add** in the **OpenVPN Documents** box. Navigate to your `ta.key` file and `.opvn` client profile and drag them into the window from Finder. If you add them individually, add the key before the client profile. Otherwise, OpenVPN Connect will say it can't find the key.
 
     [![iTunes File Sharing](/docs/assets/itunes-file-sharing-small.png)](/docs/assets/itunes-file-sharing.png)
 
@@ -127,6 +131,10 @@ Apple's iOS for iPhones and iPads uses OpenVPN Connect to manage OpenVPN connect
 
 ### Linux
 
+{: .note }
+>
+>This example walkthrough was done with OpenVPN 2.3.2-7ubuntu3.1 and `network-manager-openvpn` 0.9.8.2-1ubuntu4 in Ubuntu 14.04.
+
 #### VPN
 
 Configure connections to your OpenVPN through the same interface where you might configure wireless or ethernet connections. These steps will assume using Network Manager to configure VPN connections.
@@ -135,15 +143,15 @@ Configure connections to your OpenVPN through the same interface where you might
 
 2.  Some Linux distributions start services automatically after installation and on reboot (Debian, Ubuntu) but if yours does not, start and enable the OpenVPN Service.
 
-    For distros with systemd:
+    For distros with systemd (CentOS 7, Debian 8, Fedora, Ubuntu 15.10+):
 
         sudo systemctl enable openvpn*.service && sudo systemctl start openvpn**.service
 
-    For distros with System V or Upstart:
+    For distros with System V or Upstart (CentOS 6, Debian 7, Ubuntu 14.04):
 
         sudo service openvpn start
 
-3. This step will assume you transferred the client credentials to your Home folder. As was done on the VPN server, we'll create a `keys` directory to store the client's credentials in but the `.ovpn` file must be located in `/etc/openvpn`. Create the directory, extract the credentials tarball into it and move the `client.ovpn` file into the necessary folder.
+3. This step will assume you transferred the client credentials to your local user's Home folder. As was done on the VPN server, we'll create a `keys` directory to store the client's credentials in but the `.ovpn` file must be located in `/etc/openvpn`. Create the directory, extract the credentials tarball into it and move the `client.ovpn` file into the necessary folder.
 
         sudo mkdir /etc/openvpn/keys
         sudo tar -C /etc/openvpn/keys -xzf ~/client1.tar.gz && sudo mv /etc/openvpn/keys/client.ovpn /etc/openvpn
@@ -158,13 +166,13 @@ Configure connections to your OpenVPN through the same interface where you might
 
     ![NetworkManager VPN tab](/docs/assets/networkmanager-openvpn-vpn.png)
 
-5.  In the **Advanced Options** window, check the box for **Use LZO data compression**, then choose the **Security** tab. Set the **Cipher** to AES-256-CBC and **HMAC Authentication** to SHA512. Choose the *TLS Authentication* tab.
+5.  In the **Advanced Options** window, check the box for **Use LZO data compression**, then choose the **Security** tab. Set the **Cipher** to AES-256-CBC and **HMAC Authentication** to SHA512. Choose the **TLS Authentication** tab.
 
     ![OpenVPN Advanced Options Security tab](/docs/assets/networkmanager-openvpn-vpn-advanced-security.png)
 
     If you set the OpenVPN server's Common Name when generating the certificates in part one, it can be used in the **Subject Match** field here. Check the box to verify certificate usage signature and make sure the dropdown menu is set to **Server**.
 
-    Check the box for additional TLS authentication--this is the HMAC signature checking from [Part One, step 1](/docs/networking/vpn/set-up-a-hardened-openvpn-server-on-debian-8#harden-openvpn) of the *Harden OpenVPN* area. Locate your key file and make sure the **Key Direction** is set to **1**. Click **OK** to exit the window.
+    Check the box for additional TLS authentication. This is the HMAC signature checking from [Part One, step 1](/docs/networking/vpn/set-up-a-hardened-openvpn-server-on-debian-8#harden-openvpn) of the *Harden OpenVPN* area. Locate your key file and make sure the **Key Direction** is set to **1**. Click **OK** to exit the window.
 
     ![OpenVPN Advanced Options TLS Authentication tab](/docs/assets/networkmanager-openvpn-vpn-advanced-tlsauthentication.png)
 
@@ -180,7 +188,7 @@ Configure connections to your OpenVPN through the same interface where you might
 
 #### Static DNS
 
-It is ideal for VPN clients to store their own DNS resolver addresses. This can prevent DNS leaks and allows you more flexibility in choosing DNS addresses over IPv4 or DNSCrypt, compared to the choices pushed by the VPN server.
+It is ideal for VPN clients to store their own DNS resolver addresses. This can prevent DNS leaks and allows you more flexibility in choosing DNS addresses (including using [DNSCrypt](https://dnscrypt.org/)) compared to the choices pushed by the VPN server.
 
 1.  From NetworkManager's VPN connection menu, choose the **IPv4 Settings** tab.
 
@@ -197,6 +205,10 @@ Apple OS X does not natively support the OpenVPN protocol. [Tunnelblick](https:/
 ![Tunnelblick spash](/docs/assets/1346-tunnelblick2.png)
 
 ### Windows
+
+{: .note }
+>
+>This example walkthrough was done with OpenVPN 2.3.8-I601 in Windows 7 Service Pack 1.
 
 #### VPN
 
@@ -218,7 +230,7 @@ Apple OS X does not natively support the OpenVPN protocol. [Tunnelblick](https:/
 
     **Option 2**
 
-    Configure the shortcut to automatically run with admin privileges. *This will apply to all users on the system.* Right-click on the OpenVPN GUI shortcut, select **Properties**. Go to the **Compatibility** tab and select **Change settings for all users**. Select **Run this program as an administrator**, then **OK** to exit the menus.
+    Configure the shortcut to automatically run with admin privileges. *This will apply to all users on the system!* Right-click on the OpenVPN GUI shortcut, select **Properties**. Go to the **Compatibility** tab and select **Change settings for all users**. Select **Run this program as an administrator**, then **OK** to exit the menus.
 
 4.  When you launch the OpenVPN GUI, its icon will appear in the Taskbar. Right-click on it and select **Connect**. The OpenVPN Taskbar icon will turn yellow and a dialog box will appear showing the verbose output of the connection process. When successfully connected, the icon will turn green and show a confirmation.
 
@@ -228,7 +240,7 @@ Apple OS X does not natively support the OpenVPN protocol. [Tunnelblick](https:/
 
 #### Static DNS
 
-It is ideal for VPN clients to store their own DNS resolver addresses. This can prevent DNS leaks and allows you more flexibility in choosing DNS addresses over IPv4 or DNSCrypt, compared to the choices pushed by the VPN server.
+It is ideal for VPN clients to store their own DNS resolver addresses. This can prevent DNS leaks and allows you more flexibility in choosing DNS addresses (including using [DNSCrypt](https://dnscrypt.org/)) compared to the choices pushed by the VPN server.
 
 1.  Open the **Control Panel** and go to **Network and Sharing Center**.
 
@@ -254,12 +266,11 @@ It is ideal for VPN clients to store their own DNS resolver addresses. This can 
 
 ##  Revoking a Client Certificate
 
-To remove a user's access to the VPN, SSH into your OpenVPN server and change to the root user with `sudo su`.
+To remove a client device's access to the VPN, SSH into your OpenVPN server and change to a root shell with `sudo su -`.
 
 1.  Change to the `easy-rsa` folder and source `vars`:
 
-        cd /etc/openvpn/easy-rsa/
-        source ./vars
+        cd /etc/openvpn/easy-rsa/ && source ./vars
 
 2.  Run the `revoke-full` script, substituting **client1** with the name of the client whose certificate you want to revoke:
 
@@ -267,17 +278,13 @@ To remove a user's access to the VPN, SSH into your OpenVPN server and change to
 
 ## Connection Testing
 
-1.  With your VPN connection enabled, visit the following site in a web browser from your VPN client:
-
-[https://dnsleaktest.com/](https://dnsleaktest.com/)
-
-The IP address shown should be that of your Linode's public IPv4 address.
+1.  With your VPN connection enabled, go to [https://dnsleaktest.com/](https://dnsleaktest.com/) in a web browser from your VPN client. The IP address shown should be that of your Linode's public IPv4 address.
 
 2.  Choose **Extended test** and wait for it to complete. The IP addresses shown should be for either: 1) The DNS resolvers you chose in `server.conf`; or 2) The DNS resolvers you chose for your client device (if possible).
 
     If the client device you're testing is using OpenVPN Connect with Google DNS fallback enabled, you may see Google in the results as well.
 
-3.  To ensure that no IPv6 traffic can be detected, visit [http://test-ipv6.com/](http://test-ipv6.com/). Wait for the test to finish. Your public IP address should again be that of your Linode VPN, and the results should show that no IPv6 address was detected.
+3.  To ensure that no IPv6 traffic can be detected, run the test at [http://test-ipv6.com/](http://test-ipv6.com/). Your public IP address should again be that of your Linode VPN, and the results should show that no IPv6 address was detected.
 
 {: .caution}
 >
