@@ -117,7 +117,11 @@ By default MySQL Workbench is in safe mode.  This will not allow certain types o
 
 	![The SQL Queries configuration page](/docs/assets/workbenchSQLqueries.png)
 
-3. Uncheck **Safe Updates**
+3. Uncheck **Safe Updates**.
+
+    {: .note}
+    >
+    >In some instances this may instead be found under **SQL Editor**.
 
 4. Click **OK**
 
