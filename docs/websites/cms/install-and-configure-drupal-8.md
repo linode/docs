@@ -13,7 +13,7 @@ published: 'Thursday, November 19, 2015'
 title: Install and Configure Drupal 8
 ---
 
-Drupal 8 is the lastest version of the popular [Drupal](https://www.drupal.org/) content management system. This guide demonstrates how to install Drupal 8 on your Linode running CentOS, Debian or Ubuntu.
+Drupal 8 is the lastest version of the popular [Drupal](https://www.drupal.org/) content management system. This guide demonstrates how to install Drupal 8 on your Linode running Debian or Ubuntu.
 
 ## Before You Begin
 
@@ -46,7 +46,7 @@ Drupal 8 is the lastest version of the popular [Drupal](https://www.drupal.org/)
 
 2.  Extract the downloaded tarball's contents into Apache's DocumentRoot:
 
-        tar -zxvf drupal-8.*.tar.gz --strip-components=1 -C public_html
+        sudo tar -zxvf drupal-8.*.tar.gz --strip-components=1 -C public_html
 
 3.  Drupal depends on a PHP graphics library called GD. Install GD with:
 
@@ -63,10 +63,10 @@ Drupal 8 is the lastest version of the popular [Drupal](https://www.drupal.org/)
     {: .file-excerpt}
     /var/www/example.com/public_html/sites/default/settings.php
     :   ~~~ conf
-    $settings['trusted_host_patterns'] = array(
-      '^www\.example\.com$',
-      '^example\.com$',
-    );
+        $settings['trusted_host_patterns'] = array(
+          '^www\.example\.com$',
+          '^example\.com$',
+          );
         ~~~
 
     {: .note}
