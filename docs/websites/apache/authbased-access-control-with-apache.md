@@ -22,7 +22,21 @@ In many situations, HTTP services are public and intended to be accessed by anyo
 
 This guide provides an overview of both credential-based and rule-based access control tools for the Apache HTTP server. We assume that you have a working installation of Apache and have access to modify configuration files. If you have not installed Apache, you might want to follow one of our [Apache installation guides](/docs/web-servers/apache/) or [LAMP stack installation guides](/docs/lamp-guides/). If you want a more thorough introduction to Apache configuration, please reference our [Apache HTTP server configuration basics](/docs/web-servers/apache/configuration/configuration-basics) and [Apache configuration structure](/docs/web-servers/apache/configuration/configuration-structure) guides.
 
-## Configuring HTTP Authentication
+1.  Ensure that you have followed the Getting Started and Securing Your Server guides, and the Linode’s hostname is set.
+
+2.  Have a working installation of Apache. If you have not installed Apache, you might want to follow one of our [Apache installation guides](/docs/websites/apache/) or [LAMP stack installation guides](/docs/websites/lamp).
+
+3.  Update your system:
+
+        sudo apt-get update && sudo apt-get upgrade
+
+{: .note}
+>
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+>
+>This guide uses the same example file paths as our Debian 8 guide on Apache. Be sure to adjust for your distribution.
+
+## Apache Access Control
 
 To enable passwords for a directory, insert the following lines into the appropriate `<Directory>` section of an Apache configuration file. You may also insert authentication information in an `.htaccess` file or in a virtual host configuration section. The required directives are:
 
@@ -35,11 +49,13 @@ Apache Configuration File
     Require valid-user
     ~~~
 
-The `AuthType` directive specifies which authentication method Apache should use when connecting with clients. `Basic` requires that passwords be sent as **clear text** over the network. As a result we don't recommend using this to protect sensitive resources.
+* The `AuthType` directive specifies which authentication method Apache should use when connecting with clients. `Basic` requires that passwords be sent as **clear text** over the network. As a result we don't recommend using this to protect sensitive resources.
 
-The `AuthUserFile` specifies the path (in full) to the password file where the passwords are stored. The `AuthName` directive contains the message which the browser uses to inform the user of what resource they're authenticating to. The value is arbitrary. The `Require valid-user` setting simply tells Apache that any valid user can authenticate.
+* The `AuthUserFile` specifies the path (in full) to the password file where the passwords are stored. 
 
-At this point we need to create a password file. While this file can be located anywhere on the filesystem, we **strongly** recommend that you not place them in a web accessible directory. By default, all files beginning with `.ht` are not web-accessible in most default configurations of Apache, but this should not be assumed.
+* The `AuthName` directive contains the message which the browser uses to inform the user of what resource they're authenticating to. The value is arbitrary. The `Require valid-user` setting simply tells Apache that any valid user can authenticate.
+
+* At this point we need to create a password file. While this file can be located anywhere on the filesystem, we **strongly** recommend that you not place them in a web accessible directory. By default, all files beginning with `.ht` are not web-accessible in most default configurations of Apache, but this should not be assumed.
 
 ## Generating HTTP AUTH Passwords
 
