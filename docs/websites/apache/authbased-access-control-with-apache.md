@@ -3,10 +3,10 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Using HTTP AUTH to limit and control access to resources hosted on websites.'
-keywords: 'access control,http auth,mod\_auth,http,apache,web server,security'
+keywords: 'access control,http auth,mod_auth,http,apache,web server,security'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-servers/apache/configuration/http-authentication/']
-modified: Monday, August 22nd, 2011
+modified: Thursday, November 19th, 2015
 modified_by:
   name: Linode
 published: 'Monday, December 7th, 2009'
@@ -18,11 +18,13 @@ external_resources:
  - '[Basic Authentication Module](http://httpd.apache.org/docs/2.2/mod/mod_auth_basic.html)'
 ---
 
-In many situations, HTTP services are public and intended to be accessed by anyone with the ability to connect to the server. However, there are a number of cases where site administrators need to have some additional control over which users can access the server. In these contexts, it is useful to require users to submit authentication credentials (e.g. usernames and passwords) to a site before gaining access to a resource.
+While most web server content is created to be available to the public, you may want to restrict some or all of a website to specific users or groups. **HTTP Auth** lets you easily create these restrictions.
 
-This guide provides an overview of both credential-based and rule-based access control tools for the Apache HTTP server. We assume that you have a working installation of Apache and have access to modify configuration files. If you have not installed Apache, you might want to follow one of our [Apache installation guides](/docs/web-servers/apache/) or [LAMP stack installation guides](/docs/lamp-guides/). If you want a more thorough introduction to Apache configuration, please reference our [Apache HTTP server configuration basics](/docs/web-servers/apache/configuration/configuration-basics) and [Apache configuration structure](/docs/web-servers/apache/configuration/configuration-structure) guides.
+This guide provides an overview of both credential-based and rule-based access control tools for Apache.
 
-1.  Ensure that you have followed the Getting Started and Securing Your Server guides, and the Linode’s hostname is set.
+## Before You Begin
+
+1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, and the Linode’s hostname is set.
 
 2.  Have a working installation of Apache. If you have not installed Apache, you might want to follow one of our [Apache installation guides](/docs/websites/apache/) or [LAMP stack installation guides](/docs/websites/lamp).
 
@@ -34,7 +36,7 @@ This guide provides an overview of both credential-based and rule-based access c
 >
 >This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 >
->This guide uses the same example file paths as our Debian 8 guide on Apache. Be sure to adjust for your distribution.
+>This guide uses the same example file paths as our [Apache on Debian 8](/docs/websites/apache/apache-web-server-debian-8) guide. Be sure to adjust for your distribution.
 
 ## Apache Access Control
 
@@ -44,41 +46,42 @@ To enable passwords for a directory, insert the following lines into the appropr
 Apache Configuration File
 :   ~~~ apache
     AuthType Basic
-    AuthUserFile /srv/auth/.htpasswd
+    AuthUserFile /var/www/example.com/.htpasswd
     AuthName "Sign In Here To Gain Access To the Site"
     Require valid-user
     ~~~
 
 * The `AuthType` directive specifies which authentication method Apache should use when connecting with clients. `Basic` requires that passwords be sent as **clear text** over the network. As a result we don't recommend using this to protect sensitive resources.
 
-* The `AuthUserFile` specifies the path (in full) to the password file where the passwords are stored. 
+* The `AuthUserFile` specifies the path (in full) to the password file where the passwords are stored. In this example we're using the path `/var/www/example.com/.htpassword`. This is one directory above the `public_html` folder, preventing accidental exposure of the file. By default, all files beginning with `.ht` are not web-accessible in most default configurations of Apache, but this should not be assumed.
 
-* The `AuthName` directive contains the message which the browser uses to inform the user of what resource they're authenticating to. The value is arbitrary. The `Require valid-user` setting simply tells Apache that any valid user can authenticate.
 
-* At this point we need to create a password file. While this file can be located anywhere on the filesystem, we **strongly** recommend that you not place them in a web accessible directory. By default, all files beginning with `.ht` are not web-accessible in most default configurations of Apache, but this should not be assumed.
+* The `AuthName` directive contains the message browser uses to inform the user of what resource they're authenticating to. The value is arbitrary.
+
+* The `Require valid-user` setting simply tells Apache that any valid user can authenticate.
+
+At this point we need to create a password file.
 
 ## Generating HTTP AUTH Passwords
 
-To generate passwords, we need the `htpasswd` tool. For many distributions, this tool may have been installed when you installed Apache itself. Debian and Ubuntu users will have to update their system and install the `apache2-utils` package with the following commands:
+To generate passwords, we need the `htpasswd` tool. For many distributions, this tool may have been installed when you installed Apache itself. Debian and Ubuntu users will have to install the `apache2-utils` package with the following commands:
 
-    apt-get update
-    apt-get upgrade
-    apt-get install apache2-utils 
+    sudo apt-get install apache2-utils 
 
 To create a new file with a single user, issue the following command:
 
-    htpasswd -c /srv/auth/.htpasswd username
+    htpasswd -c /var/www/example.com/.htpasswd username
 
-In this example, we instruct the program to create a new `AuthUserFile` with the `-c` option. The file is to be located at `/srv/auth/.htpasswd` and the user name is `username`. `htpasswd` will prompt you to enter a password and then confirm the password.
+In this example, we create a new `AuthUserFile` with the `-c` option. The file is located at `/var/www/example.com/.htpasswd` and the user name is `username`. `htpasswd` will prompt you to enter a password and then confirm the password. If you have an existing file, omit the `-c` option.
 
-If you have an existing file, omit the `-c` option. The `-b` option allows you to enter the password as the last parameter of the command, as in this example :
+The `-b` option allows you to enter the password as the last parameter of the command, as in this example :
 
     htpasswd -b /srv/auth/.htpasswd username 5t1ck6
 
 The `AuthUserFile` will, when populated look something like this:
 
 {: .file-excerpt }
-/srv/auth/.htpasswd
+/var/www/example.com/.htpasswd
 :   ~~~
     hobby:isiA3Q4djD/.Q
     fore:{SHA}x9VvwHI6dmgk9VTE0A8o6hbCw2s=
@@ -91,16 +94,16 @@ In the above example, the first `hobby` user's password is hashed using the "CRY
 
 Additionally, if you would prefer to organize and maintain the `AuthUserFile` yourself, you can still use the `htpasswd` tool to generate the user entries. By specifying the `-n` option the program will output the appropriate line in the terminal. In the following example, the `htpasswd` entry is followed by the output of the command:
 
-    $ htpasswd -nbs betty pr3ty1np1nk
-    betty:{SHA}5PPXgshSpwiyJHxbz1i1LVijfKo=
+    htpasswd -nbs user2 strongpassword
+    user2:{SHA}KuhoB50pPgoYXGcce82sUd8244U=
 
-You can now append the `betty:{SHA}5PPXgshSpwiyJHxbz1i1LVijfKo=` line to your `AuthUserFile` manually. Once this line is in the password file, the `betty` user credentials will be able to authenticate the HTTP server.
+You can now append the `user2:{SHA}KuhoB50pPgoYXGcce82sUd8244U=` line to your `AuthUserFile` manually. Once this line is in the password file, the `betty` user credentials will be able to authenticate the HTTP server.
 
 ## Access Control Lists with Groups
 
-In the `Require` directive above we specified the `valid-user`. This told Apache that any user who could authenticate against one of the users specified in the `UserAuthFile` could gain access to the site. While you can maintain separate password files for different resources, this is difficult to maintain for deployments with even mildly complex authentication needs.
+In the `Require` directive above we specified the `valid-user`. This told Apache that any user who could authenticate against one of the users specified in the `AuthUserFile` could gain access to the site. While you can maintain separate password files for different resources, this is difficult to maintain for deployments with complex authentication needs.
 
-To address this need, Apache allows you to use a single `UserAuthFile`, containing all users that will need to authenticate to the server. To limit the set of valid credentials to a specific subset of the users listed in the `.htpasswd` file, we must specify users in the `Require` directive. Only users specified after the `Require user` directive will be permitted to access the specified resource. For example:
+To address this need, Apache allows you to use a single `AuthUserFile`, containing all users that will need to authenticate to the server. To limit the set of valid credentials to a specific subset of the users listed in the `.htpasswd` file, we must specify users in the `Require` directive. Only users specified after the `Require user` directive will be permitted to access the specified resource. For example:
 
 {: .file-excerpt }
 Apache configuration option
