@@ -6,7 +6,7 @@ description: 'Using HTTP AUTH to limit and control access to resources hosted on
 keywords: 'access control,http auth,mod_auth,http,apache,web server,security'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-servers/apache/configuration/http-authentication/','websites/apache/authbased-access-control-with-apache/']
-modified: Thursday, November 19th, 2015
+modified: Friday, November 20th, 2015
 modified_by:
   name: Linode
 published: 'Monday, December 7th, 2009'
@@ -84,7 +84,7 @@ The `AuthUserFile` will, when populated look something like this:
 /var/www/example.com/.htpasswd
 :   ~~~
     hobby:isiA3Q4djD/.Q
-    fore:{SHA}x9VvwHI6dmgk9VTE0A8o6hbCw2s=
+    admin:{SHA}x9VvwHI6dmgk9VTE0A8o6hbCw2s=
     username:\$apr1\$vVzQJxvX\$6EyHww61nnZr6IdQv0pVx/
     ~~~
 
@@ -108,10 +108,10 @@ To address this need, Apache allows you to use a single `AuthUserFile`, containi
 {: .file-excerpt }
 Apache configuration option
 :   ~~~
-    Require user username fore
+    Require user username admin
     ~~~
 
-Given this directive, the users `username` and `fore` will be able to log into the resource. Any subset of users can be specified on the `Require` line. Apache also provides the ability to organize users into groups, and then permit access to resources based on group membership. The configuration directives for this setup would look like this:
+Given this directive, the users `username` and `admin` will be able to log into the resource. Any subset of users can be specified on the `Require` line. Apache also provides the ability to organize users into groups, and then permit access to resources based on group membership. The configuration directives for this setup would look like this:
 
 {: .file-excerpt }
 Apache configuration file
@@ -125,16 +125,18 @@ Apache configuration file
 In this example, we cite the same `AuthUserFile`, but we add an `AuthGroupFile` that specifies user groups. The group file contains a list of user groups and the usernames associated with each group. The `htgroup` file, like the `htpasswd` file, can be located anywhere on the file system. For clarity's sake, we recommend that `htgroup` be in the same directory as the `htpasswd` file. Here is an example of an `htgroup` file:
 
 {: .file-excerpt }
-/srv/auth/.htgroup
+/var/www/example.com/.htgroup
 :   ~~~
-    Authorized: username betty
-    Team: fore hobby
+    Authorized: username username2
+    Team: admin hobby
     ~~~
 
-Given this `htgroup` file, only the users `username` and `betty` will have access to the above listed resource. The syntax of the group file follows a simple `[groupname]: [username 1] [username 2] [...]`. You can put as many usernames from your `AuthUserFile` into a group entry as you need for the particular resource.
+Given this `htgroup` file, only the users `username` and `username2` will have access to the above listed resource. The syntax of the group file follows a simple `[groupname]: [username 1] [username 2] [...]`. You can put as many usernames from your `AuthUserFile` into a group entry as you need for the particular resource.
 
 ## The Caveats of HTTP Authentication
 
--   In "Basic" HTTP AUTH credentials are sent unencrypted over the wire, which makes HTTP AUTH particularly subject to so called "man-in-the-middle" attacks. As a result, this authentication method shouldn't be used for protecting sensitive information.
+-   The `AuthType Basic` directive means credentials are sent unencrypted, which makes HTTP AUTH particularly subject to "man-in-the-middle" attacks. As a result, this authentication method shouldn't be used for protecting sensitive information without first encrypting the traffic over SSL.
+
 -   In HTTP AUTH session authentication credentials must be exchanged between the client and the server for every request. While most client software can cache this information so that the user only has to enter the username and password once, the authentication credentials must be passed for every request. This can add additional network overhead.
+
 -   When Apache processes an HTTP AUTH request it must parse through the entire `htpasswd` file. When the file only stores a few passwords the processing time is negligible, but when password files grow, requests can longer to process.
