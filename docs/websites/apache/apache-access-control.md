@@ -5,12 +5,12 @@ author:
 description: 'Using HTTP AUTH to limit and control access to resources hosted on websites.'
 keywords: 'access control,http auth,mod_auth,http,apache,web server,security'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['web-servers/apache/configuration/http-authentication/']
+alias: ['web-servers/apache/configuration/http-authentication/','websites/apache/authbased-access-control-with-apache/']
 modified: Thursday, November 19th, 2015
 modified_by:
   name: Linode
 published: 'Monday, December 7th, 2009'
-title: 'Auth-based Access Control with Apache'
+title: 'Apache Access Control'
 external_resources:
  - '[Installation of the Apache web server](/docs/web-servers/apache/)'
  - '[LAMP stack guides](/docs/lamp-guides/)'
