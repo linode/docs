@@ -199,9 +199,9 @@ Now you should be able to access `http://<your_server_name_or_ip>:8080` in brows
 
 ## Feed sample data
 
-1.  Send some test metrics by executing the following command several times with 5-6 second intervals:
+1.  Send some test metrics by executing the following command:
 
-		echo "test.count 4 `date +%s`" | nc -q0 127.0.0.1 2003
+		for i in 4 6 8 16 2; do echo "test.count $i `date +%s`" | nc -q0 127.0.0.1 2003; sleep 6; done
 
 	Now refresh Graphite home page and you should see new `test.count` metric in the tree on the left:
 
@@ -301,23 +301,32 @@ Now you should be able to access `http://<your_server_name_or_ip>:8080` in brows
 
 ![Add Data Source dialog](/docs/assets/graphite_grafana_data_source.png)
 
-Click `Save` to create new Data Source.
+Click `Add` to create new Data Source.
 
-3.  Create new dashboard by clicking at the `Home` button and then at `+ New`:
+3.  Now, before creating a graph, add more test data for `test.count` metric by running
+
+		for i in 4 6 8 16 2; do echo "test.count $i `date +%s`" | nc -q0 127.0.0.1 2003; sleep 6; done
+
+4.  Create new dashboard by clicking at the `Home` button and then at `+ New`:
 
 ![Create new dashboard](/docs/assets/graphite_grafana_new_dashboard.png)
 
-4.  Add Graph panel to the newly created dashboard:
+5.  Add Graph panel to the newly created dashboard:
 
 ![Create new graph panel](/docs/assets/graphite_grafana_new_graph.png)
 
-5.  Edit Graph panel properties:
+6.  Edit Graph panel properties - click at `no title (click here)` and then click `Edit`:
 
 ![Edit graph panel](/docs/assets/graphite_grafana_edit_graph.png)
 
+7.  In the Graph panel properties dialog do the following:
 
-6.  In the Graph panel properties dialog click on `select metric` and choose `test` and then `count` to add test metric:
+  1. Make sure than `graphite` data source you've created is chosen in combobox at the bottom right (marked 1 at the picture below).
+  2. Click at time period chooser at the top right corner (marked as 2) and choose `Last 15 minutes`.
+  3. Click on `select metric` and choose `test` and then `count` (marked as 3) to add test metric you've added data for previously. At this point visualisation of the sample data should appear on the graph.
+  4. And finally, click `Save` button (marked 4 at the picture) to save dashboard you've created.
 
-![Add test metric to the panel](/docs/assets/graphite_grafana_edit_graph_add_metric.png)
+[![Add test metric to the panel](/docs/assets/graphite_grafana_edit_graph_add_metric_small.png)](/docs/assets/graphite_grafana_edit_graph_add_metric.png)
+
 
 
