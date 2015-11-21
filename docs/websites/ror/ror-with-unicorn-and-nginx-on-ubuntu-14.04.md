@@ -189,6 +189,10 @@ Replace the content of the server block with the following code:
 2.  For production environment, issue the following command:
 
 	    sudo unicorn -c config/unicorn.rb -E production -D
+	    
+{: .note}
+>
+>Make sure you is in project directory else you need to type the whole path	
 
 3.  To stop the Unicorn, issue the following command:
 
