@@ -17,9 +17,9 @@ external_resources:
  - '[Ruby on Rails](http://rubyonrails.org/)'
 ---
 
-Ruby on Rails is a web-application framework that allows developers to create a dynamic web application. Once application is ready you need to deply it on a production server. This guide describes how to deploy Rails applications on a production server using PostgreSQL, Unicorn and Nginx on Ubuntu 14.04.
+Ruby on Rails is a popular web-application framework that allows developers to create a dynamic web application. This guide describes how to deploy Rails applications on server using Unicorn and Nginx on Ubuntu 14.04.
 
-Unicorn is an HTTP server, just like Passenger or Puma. Since Unicorn cannot be accessed by users directly we will be using Nginx as reverse proxy that will buffer requests and response between users and Rails application.
+Unicorn is an HTTP server, just like Passenger or Puma. Since Unicorn cannot be accessed by users directly we will be using Nginx as the reverse proxy that will buffer requests and response between users and Rails application.
 
 Before starting this guide, make sure that  you have read through and completed our [Getting Started](/docs/getting-started#debian-7--slackware--ubuntu-1404) and [Securing Your Server](/docs/security/securing-your-server/) guides.
 
@@ -64,7 +64,7 @@ This ensures that all software is up to date and running the latest version.
 
 		make
 
-7.	Issue the following command and it wil install Ruby:
+7.	Issue the following command and it will install Ruby:
 
 		sudo make install
 
@@ -128,14 +128,14 @@ Now create directories which we mentioned in the Unicorn config file:
 
 ##Install Nginx
 
-Download nginx from using APT:
+Download and install Nginx using APT:
 
 	sudo apt-get install nginx
 
 
 ##Configure Nginx
 
-We need to configure Nginx to work as reverse proxy. Issue the following command and paste the configuration in HTTP block:
+We need to configure Nginx to work as the reverse proxy. Issue the following command and paste the configuration in HTTP block:
 
 	sudo nano /etc/nginx/nginx.conf
 
@@ -147,10 +147,11 @@ We need to configure Nginx to work as reverse proxy. Issue the following command
 		}
 	~~~
 
-Now we will add the configurtaion to the server block. Our server block looks like:
+Now we will add the configuration to the server block:
 
-	sudo nano /etc/nginx/sites-available/default.conf
+	sudo nano /etc/nginx/sites-available/default
 
+Replace the content of the server block with the following code:
 
 {: .file-excerpt}
 /etc/nginx/sites-available/default
@@ -181,14 +182,14 @@ Now we will add the configurtaion to the server block. Our server block looks li
 
 ##Starting Unicorn
 
-1.  If you want to start Unicorn in the development envicornment, issue the following command:
+1.  If you want to start Unicorn in the development environment, issue the following command:
 
 	    sudo unicorn -c config/unicorn.rb -E development -D
 
-2.  For production envicornment, issue the following command:
+2.  For production environment, issue the following command:
 
 	    sudo unicorn -c config/unicorn.rb -E production -D
 
-3.  To stop the Unicorn, issue the following comamnd:
+3.  To stop the Unicorn, issue the following command:
 
 	    sudo pkill unicorn
