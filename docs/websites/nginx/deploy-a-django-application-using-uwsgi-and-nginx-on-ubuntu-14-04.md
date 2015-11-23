@@ -2,14 +2,14 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Django and uWSGI with Nginx on Ubuntu 14.04'
+description: 'Django is a Python Web framework that encourages rapid development and clean, pragmatic design. This guide provides an introduction to deploying Django applications using uWSGI and nginx on Ubuntu 14.04'
 keywords: 'django,uwsgi,nginx,django apps'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: 'Monday, October 12th, 2015'
+modified: 'Monday, November 23rd, 2015'
 modified_by:
   name: Sergey Pariev
-published: 'Friday, October 9th, 2015'
-title: 'Django and uWSGI with nginx on Ubuntu 14.04'
+published: 'Monday, November 23rd, 2015'
+title: 'Deploy a Django Application Using uWSGI and nginx on Ubuntu 14.04'
 contributor:
   name: Sergey Pariev
   link: https://twitter.com/spariev
@@ -20,26 +20,25 @@ external_resources:
   - '[nginx Configuration](/docs/websites/nginx/how-to-configure-nginx)'
 ---
 
-[Django](https://www.djangoproject.com/) is a high-level Python Web framework that encourages rapid development and clean, pragmatic design. This guide provides an introduction to deploying Django applications using [uWSGI](https://uwsgi-docs.readthedocs.org/) and [nginx](https://www.nginx.com/) on Ubuntu 14.04.
+*This is a Linode Community guide. Write for us and earn $250 per published guide.*
+<hr>
 
-{: .note}
->
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+[Django](https://www.djangoproject.com/) is a high-level Python Web framework that encourages rapid development and clean, pragmatic design. This guide provides an introduction to deploying Django applications using [uWSGI](https://uwsgi-docs.readthedocs.org/) and [nginx](https://www.nginx.com/) on Ubuntu 14.04.
 
 ## Before You Begin
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible from an example account named `django`. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create the `django` user, harden SSH access and remove unnecessary network services. You may need to create additional firewall rules for your specific application.
+2.  This guide will use `sudo` wherever possible from an example account named `django`. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to create the `django` user, harden SSH access and remove unnecessary network services. You may need to create additional firewall rules for your specific application.
 
-3.  Update your system.
+3.  Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
 
 
 ## Install nginx, Python Tools and uWSGI
 
-1.  Install the system packages required for nginx, the SQLite Python bindings, and installing and using Python tools:
+1.  Install the system packages required for nginx, the SQLite Python bindings, and managing Python Tools:
 
         sudo apt-get install build-essential nginx python-dev python-pip python-sqlite sqlite
 
@@ -64,19 +63,19 @@ external_resources:
 
 		sudo pip install uwsgi
 
-## Set up Sample Django Application
+## Set up a Sample Django Application
 
-1.  Be sure that you're in the django user's home directory and create the virtual environment for the application:
+1.  Be sure that you're in the `django` user's home directory and create the virtual environment for the application:
 
 		cd /home/django && mkvirtualenv sample
 
-	After executing this command your prompt will change to something like `(sample)django@example.com:~$` indicating that you are using the sample virtual environment. To quit virtual environment, enter `deactivate`.
+	After executing this command your prompt will change to something like `(sample)django@example.com:~$` indicating that you are using the sample virtual environment. To quit the virtual environment, enter `deactivate`.
 
 2.  Install the Django framework:
 
         pip install Django
 
-3.  Create the new Django application *sample*. This will create `/home/django/sample`.
+3.  Create the new Django application *sample*, located at `/home/django/sample`.
 
         django-admin.py startproject sample
 
@@ -96,7 +95,7 @@ external_resources:
 
 		./manage.py runserver 0.0.0.0:8080
 
-	Visit `http://example.com:8080` in your browser to confirm that application is set up correctly and working. You should see the Django test page:
+	Visit `http://example.com:8080` in your browser to confirm that the sample application is set up correctly and working. You should see the Django test page:
 
 	[![Django test page.](/docs/assets/django-test-page-small.png)](/docs/assets/django-test-page.png)
 
@@ -145,7 +144,7 @@ external_resources:
 		exec $UWSGI --master --emperor /etc/uwsgi/sites --die-on-term --uid django --gid www-data --logto $LOGTO
     	~~~
 
-	This job will start uWSGI in "Emperor" mode, meaning that it will monitor `/etc/uwsgi/site` directory and will spawn instances (vassals) for each configuration file it finds. Whenever a config file is changed, the emperor will automatically restart the vassal.
+	This job will start uWSGI in *Emperor* mode, meaning that it will monitor `/etc/uwsgi/site` directory and will spawn instances (*vassals*) for each configuration file it finds. Whenever a config file is changed, the emperor will automatically restart its vassals.
 
 4. Start the `uwsgi` service:
 
@@ -157,7 +156,7 @@ external_resources:
 
 		sudo rm /etc/nginx/sites-enabled/default
 
-2.  Create an nginx site configuration file for your Django applicaiton:
+2.  Create an nginx site configuration file for your Django application:
 
 	{: .file}
 	/etc/nginx/sites-available/sample
