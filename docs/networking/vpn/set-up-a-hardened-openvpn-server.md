@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Use OpenVPN to securely connect separate networks on Debian 8.'
+description: 'OpenVPN is used to creating network tunnels between computers that are not on the same local network. When integrated with OpenSSL, OpenVPN can encrypt all VPN traffic to provide a secure connection between machines.'
 keywords: 'openvpn,vpn,debian,tunnel,vpn tunnel,open vpn'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: 'Wednesday, October 21st, 2015'
@@ -16,15 +16,15 @@ external_resources:
 
 [OpenVPN](https://openvpn.net/) is a tool for creating networking tunnels between and among groups of computers that are not on the same local network. This is useful if you want to remotely access services on a network or computer without making those services publicly accessible. When integrated with OpenSSL, OpenVPN can encrypt all VPN traffic to provide a secure connection between machines.
 
-This guide the first of a three part series. Part one will set you up with a hardened VPN server in Debian and prepare the certificate and key pairs for connecting client devices. This VPN can be used to host internal services such as websites, game servers or file servers.
+This guide is the first of a three part series. Part one will set you up with a hardened VPN server in Debian and prepare the certificate and key pairs for connecting client devices. This VPN can be used to host internal services such as websites, game servers or file servers.
 
-Part two will show you how to set up a classic routed VPN, where all traffic from client devices is tunneled through your Linode's VPN and out to the internet. Part three walks through setting up the client-side credentials and software for various operating systems, including mobile platforms.
+Part two will show you how to set up a classic routed VPN, where all traffic from client devices is tunneled through your Linode and out to the internet. Part three walks through setting up the client-side credentials and software for various operating systems, including mobile platforms.
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's timezone.
 
-2.  Complete the beginning of our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account, harden SSH access and remove unnecessary network services; this guide will use `sudo` wherever possible. Do **not** follow the *Configuring a Firewall* section--this guide has instructions specifcally for an OpenVPN server.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the Creating a Firewall section--this guide has instructions specifcally for firewall rules for an OpenVPN server.
 
 3.  Update your system.
 
@@ -32,9 +32,9 @@ Part two will show you how to set up a classic routed VPN, where all traffic fro
 
 ## Managing the OpenVPN Environment
 
-There are [two ways to do this](https://openvpn.net/index.php/access-server/section-faq-openvpn-as/32-general/225-compare-openvpn-community-and-enterprise-editions-.html): The first is using [OpenVPN Community Edition](https://openvpn.net/index.php/open-source.html), where server and client configuration files are manually edited and client credentials are copied to their respective devices using SCP or SFTP. If you don't already have an application for this on your mobile device, you would need to install one. Alternatively, credentials would need to be copied to a desktop computer, edited and then imported into Android or iOS.
+There are [two ways to do this](https://openvpn.net/index.php/access-server/section-faq-openvpn-as/32-general/225-compare-openvpn-community-and-enterprise-editions-.html): The first is using [OpenVPN Community Edition](https://openvpn.net/index.php/open-source.html), where server and client configuration files are manually edited and client credentials are copied to their respective devices using SCP or SFTP. If you don't already have an application for remote file transfers on your device, you would need to install one. Alternatively, credentials would need to be copied to a desktop computer, edited and then transferred by USB.
 
-The second menthod is using [OpenVPN Access Server](https://openvpn.net/index.php/access-server/overview.html), a server-side application which lets you configure these things through a GUI in your web browser. Client machines access a private URL to download their credential packages.
+The second menthod uses [OpenVPN Access Server](https://openvpn.net/index.php/access-server/overview.html), a server-side application which lets you configure these things through a GUI in your web browser. Client machines access a private URL to download their credential packages.
 
 For small applications, OpenVPN Access Server is the more streamlined and user-friendly method. The free version allows up to two simultaneous users and though each user can have as many client devices as they like, a user's clients will all have the same keys and certificates; more can be added by buying licensing. For more advanced configurations than what the GUI offers though, you would still need to resort to editing config files.
 
@@ -42,11 +42,11 @@ If you are interested getting OpenVPN Access Server running on your Linode, see 
 
 ## Networking Rules
 
-OpenVPN currently does not support a dual-stack configuration from a single instance where clients can connect to a server simultaneously using IPv4 and IPv6--one transport layer must be chosen or the other.
+OpenVPN currently does not support a dual-stack configuration from a single instance where clients can connect to a server simultaneously using IPv4 and IPv6; one transport layer must be chosen or the other.
 
 Adding this feature is planned for OpenVPN 2.4, but it will still be some time before that is released. Furthermore, only OpenVPN version 2.3 and above support [IPv6 over TUN devices](https://openvpn.net/index.php/open-source/faq/77-server/287-is-ipv6-support-plannedin-the-works.html). Below version 2.3, IPv6 can only be used with TAP devices, so some clients can be further limited.
 
-For these reasons, this series will assume your VPN will operate over IPv4. If you instead wish to use IPv6, see [OpenVPN's documentation](https://community.openvpn.net/openvpn/wiki/IPv6) for more information.
+For these reasons, this series will assume your VPN will operate over IPv4 only. If you instead wish to use IPv6, see [OpenVPN's documentation](https://community.openvpn.net/openvpn/wiki/IPv6) for more information.
 
 ### IPv4 Firewall
 
@@ -85,7 +85,6 @@ For these reasons, this series will assume your VPN will operate over IPv4. If y
         # Necessary for updating the server and keeping time.
         -A INPUT -i eth0 -p udp -m state --state ESTABLISHED --sport 53 -j ACCEPT
         -A OUTPUT -o eth0 -p udp -m state --state NEW,ESTABLISHED --dport 53 -j ACCEPT
-
         -A INPUT -i eth0 -p tcp -m state --state ESTABLISHED --sport 80 -j ACCEPT
         -A INPUT -i eth0 -p tcp -m state --state ESTABLISHED --sport 443 -j ACCEPT
         -A OUTPUT -o eth0 -p tcp -m state --state NEW,ESTABLISHED --dport 80 -j ACCEPT
@@ -111,7 +110,7 @@ For these reasons, this series will assume your VPN will operate over IPv4. If y
 
     {: .note }
     >
-    >The `TUN` virtual interface is how the OpenVPN daemon communicates with your Linode's `eth0` hardware interface. `TUN` is actually what receives the VPN traffic from clients, not the bare-metal ethernet hardware.
+    >The `TUN` virtual interface is how the OpenVPN daemon communicates with your Linode's `eth0` hardware interface.
 
     You can see your loaded rule list with `sudo iptables -S`. For more specialized firewall rules, see: `/usr/share/doc/openvpn/examples/sample-config-files/firewall.sh`.
 
@@ -135,10 +134,10 @@ If you are exclusively using IPv4 on your VPN, IPv6 should be disabled unless yo
     {: .file-excerpt}
     /etc/hosts
     :   ~~~ conf
-        #::1 localhost.localdomain localhost
+        #::1     localhost ip6-localhost ip6-loopback
         ~~~
 
-4.  Add an ip6tables ruleset to reject all v6 traffic:
+4.  Add an ip6tables ruleset to reject all v6 traffic. Your `rules.v6` file should look as below:
 
     {: .file}
     /etc/iptables/rules.v6
@@ -159,7 +158,7 @@ If you are exclusively using IPv4 on your VPN, IPv6 should be disabled unless yo
 
 ## Install and Configure OpenVPN
 
-For these next sections, you need to be the root user.
+For these next sections, you need a root shell.
 
     sudo su -
 
@@ -179,9 +178,7 @@ For these next sections, you need to be the root user.
 
         ln -s openssl-1.0.0.cnf openssl.cnf
 
-5.  The permissions of `/etc/openvpn/easy-rsa/keys` are `0700`, which do not allow for group or world access to the key and certificate files. This is in contrast to most directories in the filesystem which are a `0755`, allowing group read and execution, and are world readable.
-
-    For this reason, we'll keep `keys` as the storage location for server credentials but to do so, we must specify the absolute paths for OpenVPN in `server.conf`.
+5.  The permissions of `/etc/openvpn/easy-rsa/keys` are `0700`, which do not allow for group or world access to the key and certificate files. For this reason, we'll keep `keys` as the storage location for server credentials but to do so, we must specify the absolute paths in OpenVPN's `server.conf`.
 
     {: .file-excerpt}
     /etc/openvpn/server.conf
@@ -200,14 +197,6 @@ For these next sections, you need to be the root user.
         # 2048 bit keys.
         dh /etc/openvpn/dh4096.pem
         ~~~
-
-6.  Enable IPv6 addressing for OpenVPN. Skip this step if you chose to disable IPv6. Run `ifconfig` in a terminal to see your ethernet interface's IPv6 address. The relevant line in the output under the `eth0` block will look similar to this:
-
-        net6 addr: 2600:3c03::4f6u:0pje:4444:1dsx/64 Scope:Global
-
-    Add that address to `server.conf`:
-
-        echo 'server-ipv6 your_ipv6_address/64' >> /etc/openvpn/server.conf
 
 6.  The `vars` file in `/etc/openvpn/easy-rsa` contains presets used by the [easy-rsa scripts](https://github.com/OpenVPN/easy-rsa). Here you can specify identification information for your OpenVPN server's certificate authority which then will be passed to client certificates. Changing these fields is optional and you can always input them manually during certificate creation, but setting them here creates less work during client cert creation.
 
@@ -239,24 +228,25 @@ For these next sections, you need to be the root user.
 
 ### Generate Diffie-Hellman PEM
 
-The *Diffie-Hellman parameter* is a chunk of randomly generated data used to create a client's session key upon connection so [Perfect Forward Secrecy](https://en.wikipedia.org/wiki/Forward_secrecy#Perfect_forward_secrecy_.28PFS.29) is used. We'll create the file at `/etc/openvpn/dh*.pem`, where `*` indicates the bit length of the Diffie-Hellman key. 2048 bits is the default.
+The *Diffie-Hellman parameter* is a chunk of randomly generated data used to create a client's session key upon connection so [Perfect Forward Secrecy](https://en.wikipedia.org/wiki/Forward_secrecy#Perfect_forward_secrecy_.28PFS.29) is used. We'll create the file at `/etc/openvpn/dh*.pem`, where `*` indicates the bit length of the Diffie-Hellman key. 2048 bits is the default, but here we'll use a 4096 bit key.
 
 Create the file with:
 
-    openssl dhparam 2048 > /etc/openvpn/dh2048.pem
+    openssl dhparam 4096 > /etc/openvpn/dh4096.pem
 
 This should produce the following output:
 
-    Generating DH parameters, 2048 bit long safe prime, generator 2
+    Generating DH parameters, 4096 bit long safe prime, generator 2
     This is going to take a long time
 
-This can take several minutes to complete. When finished, it will return you to the command prompt.
+Depending on the size of your Linode, this will take about 5 minutes to complete. When finished, it will return you to the command prompt.
 
 {: .note }
 >
 >If you would prefer a stronger 4096 bit PEM, it will take longer to generate but otherwise incur unnoticeable overhead during connections on modern equipment. Replace `2048` in the command above with `4096`.
 >
 >To permanently change the default DH PEM size, edit the bit lengths in `vars` and `server.conf`. Then recreate the file. The DH PEM file can be arbitrarily deleted and regenerated with no changes needed to server or client settings.
+
 
 ### Harden OpenVPN
 
@@ -287,9 +277,10 @@ We'll make some further changes and additions to `server.conf` to strengthen the
 
         openvpn --genkey --secret /etc/openvpn/easy-rsa/keys/ta.key
 
-2.  Create a new limited user account for the OpenVPN daemon to run as. As an example, the name *ovpn_server* is used.
 
-        adduser --system --shell /usr/sbin/nologin --no-create-home ovpn_server
+2.  Create a new limited user account for the OpenVPN daemon to run as and tell it to drop privileges to that account after startup. As an example, the name *openvpn_server* is used.
+
+        adduser --system --shell /usr/sbin/nologin --no-create-home openvpn_server
 
     Uncomment the `user` and `group` lines, and edit `user` with the username above  This tells the daemon to drop root privileges and switch to the `openvpn_server` user after startup.
 
@@ -309,37 +300,19 @@ We'll make some further changes and additions to `server.conf` to strengthen the
 
     Forcing OpenVPN to run under its own account is a good way of isolating it from the rest of the system, especially if you will also be hosting a web or file server on your VPN.
 
-3.  Change the VPN's data channel to use AES with a 256 bit key in CBC mode. Blowfish-128 is the default, but AES_CBC is generally considered the most secure cipher/mode combination of those supported by OpenVPN (see `openvpn --show-ciphers`) and can take advantage of [AES-NI](https://en.wikipedia.org/wiki/AES_instruction_set) for increased performance.
+3.  Change the VPN's data channel to use AES with a 256 bit key in CBC mode. Blowfish-128 is the default, but AES_CBC is generally considered the most secure cipher/mode combination of those supported by OpenVPN (see `openvpn --show-ciphers`), and can take advantage of [AES-NI](https://en.wikipedia.org/wiki/AES_instruction_set) for increased performance.
 
         echo 'cipher AES-256-CBC' >> /etc/openvpn/server.conf
 
-4.  Change the data channel's authentication digest to SHA512, a [SHA-2](https://en.wikipedia.org/wiki/SHA-2) hash function. SHA-1 is the default; see `openvpn --show-digests` for all supported digests.
+4.  Change the data channel's authentication digest to SHA-512, a [SHA-2](https://en.wikipedia.org/wiki/SHA-2) hash function. SHA-1 is the default; see `openvpn --show-digests` for all supported digests.
 
         echo 'auth SHA512' >> /etc/openvpn/server.conf
 
-5.  Restrict the VPN's control channel to a strong cipher suite or list of suites. [It is recommended](https://community.openvpn.net/openvpn/wiki/Hardening#Useof--tls-cipher) to be as restrictive as possible here, but not all cipher suites can be used with all versions of OpenVPN.
+5.  Restrict the VPN's control channel to strong cipher suites. [It is recommended](https://community.openvpn.net/openvpn/wiki/Hardening#Useof--tls-cipher) to be as restrictive as possible here, but not all cipher suites can be used with all versions of OpenVPN. We'll limit our pool to AES in GCM mode over TLS 1.2 using SHA 2, and both AES and Camellia in CBC mode using SHA 1 over TLS 1.0.
 
-    Below are three pools of cipher suite options. These are secure choices, but exemplary. You may want to be more less strict depending on client-side support.
+        echo 'tls-cipher TLS-DHE-RSA-WITH-AES-256-GCM-SHA384:TLS-DHE-RSA-WITH-AES-128-GCM-SHA256:TLS-DHE-RSA-WITH-AES-256-CBC-SHA:TLS-DHE-RSA-WITH-CAMELLIA-256-CBC-SHA:TLS-DHE-RSA-WITH-AES-128-CBC-SHA:TLS-DHE-RSA-WITH-CAMELLIA-128-CBC-SHA' >> /etc/openvpn/server.conf        
 
-    **Option 1**
-
-    If your clients are using **OpenVPN 2.3.3 or above**, you can force the control channel to use several TLS 1.2 cipher suites (or even just one) to ensure connections using forward secrecy, TLS 1.2, AES in [GCM mode](https://en.wikipedia.org/wiki/Galois/Counter_Mode) and SHA 2.
-
-        echo 'tls-cipher TLS-DHE-RSA-WITH-AES-256-GCM-SHA384:TLS-DHE-RSA-WITH-AES-128-GCM-SHA256' >> /etc/openvpn/server.conf
-
-    **Option 2**
-
-    **OpenVPN 2.3.2 or below** does not support a Control Channel using TLS 1.2 cipher suites, so TLS 1.0 suites must be used. Since there are many insecure and otherwise undesirable suites available in TLS 1.0, we'll limit our pool to AES and Camellia in CBC mode using SHA 1. These suites still enforce forward secrecy.
-
-        echo 'tls-cipher TLS-DHE-RSA-WITH-AES-256-CBC-SHA:TLS-DHE-RSA-WITH-CAMELLIA-256-CBC-SHA:TLS-DHE-RSA-WITH-AES-128-CBC-SHA:TLS-DHE-RSA-WITH-CAMELLIA-128-CBC-SHA' >> /etc/openvpn/server.conf
-
-    **Option 3**
-
-    If your VPN clients will be divided among **both OpenVPN versions**, combine the two cipher suite pools.
-
-        echo 'tls-cipher TLS-DHE-RSA-WITH-AES-256-GCM-SHA384:TLS-DHE-RSA-WITH-AES-128-GCM-SHA256:TLS-DHE-RSA-WITH-AES-256-CBC-SHA:TLS-DHE-RSA-WITH-CAMELLIA-256-CBC-SHA:TLS-DHE-RSA-WITH-AES-128-CBC-SHA:TLS-DHE-RSA-WITH-CAMELLIA-128-CBC-SHA' >> /etc/openvpn/server.conf
-
-    The default cipher suite used for the control channel is one agreed on by both server and client during the TLS handshake. The agreement is based on what is supported by their respective OpenSSL versions. See `openvpn --show-tls` for a list of supported ciphers in their order of preference.
+    The default cipher suite used for the control channel is one agreed on by both server and client during the TLS handshake; usually this will be AES-CBC-SHA 1 over TLS 1. The agreement is based on what is supported by their respective OpenSSL versions. See `openvpn --show-tls` for a list of supported ciphers in their order of preference.
 
 ## Certificate and Key Pairs
 
@@ -371,11 +344,9 @@ Each client device connecting to the VPN should have its own unique key. Further
 
 ## Client Configuration File
 
-Each client also needs a configuration file defining the OpenVPN server's settings for the client. A signle copy of `client.conf` can be used for all clients or you can configure some differently than others. Here we'll assume one client config file for all devices.
+Each client needs a configuration file defining the OpenVPN server's settings for it. We will keep a copy of our client config file on the server as a template in case more clients are added in the future. It can **not** be located in `/etc/openvpn` because then the OpenVPN daemon won't know whether to load `client.conf` or `server.conf`. For this reason, we'll store it in the `keys` folder with the other client files, even though the file does not need to be kept secret.
 
-1.  Copy the `client.conf` template file to `/tmp` and open it for editing. Most clients require a `.ovpn` file format instead of .conf so we'll change the extension during extraction.
-
-    We will keep a copy of our configured `client.ovpn` on the server as a backup and in case more clients are added in the future. It can **not** be located in `/etc/openvpn` because then the OpenVPN daemon won't know whether to load `client.conf` or `server.conf`. For this reason, we'll store it in the `keys` folder with the other client files, even though `client.ovpn` does not need to be kept secret.
+1.  Copy the `client.conf` template file and open it for editing. Most clients require a `.ovpn` file format instead of .conf so we'll change the extension during extraction.
 
         cp /usr/share/doc/openvpn/examples/sample-config-files/client.conf /etc/openvpn/easy-rsa/keys/client.ovpn
 
@@ -388,7 +359,7 @@ Each client also needs a configuration file defining the OpenVPN server's settin
         # You can have multiple remote entries
         # to load balance between the servers.
 
-        remote 123.456.78.9 1194
+        remote 192.0.2.0 1194
         ~~~
 
     {: .note }
@@ -405,7 +376,7 @@ Each client also needs a configuration file defining the OpenVPN server's settin
         group nogroup
         ~~~
 
-4.  Further down in the file, edit the `crt` and `key` lines to reflect the names and locations **on the client device**. Specify the path to the files if these and `client.ovpn` will not be stored in the same folder.
+4.  Further down in the file, edit the `crt` and `key` lines to reflect the names and locations **on the client device**. Specify the path to the files if they, and `client.ovpn`, will not be stored in the same folder.
 
     {: .file-excerpt}
     /etc/openvpn/easy-rsa/keys/client.ovpn
@@ -421,7 +392,7 @@ Each client also needs a configuration file defining the OpenVPN server's settin
         key /path/to/client1.key
         ~~~
 
-5.  Tell the client to use the HMAC key we generated earlier above; again specify the path if necessary.
+5.  Tell the client to use the HMAC key we generated earlier above. Again specify the path if necessary.
 
     {: .file-excerpt}
     /etc/openvpn/easy-rsa/keys/client.ovpn
@@ -435,16 +406,18 @@ Each client also needs a configuration file defining the OpenVPN server's settin
 
         cipher AES-256-CBC
         auth SHA512
-        
-    If you added any lines for Control Channel cipher suites to the server above (step 5 of [Harden OpenVPN](#harden-openvpn)), add those lines to `client.ovpn` too.
+
+    If you added any lines for Control Channel cipher suites to the server above (step 5 of [Harden OpenVPN](#harden-openvpn)), add those lines to `client.ovpn` too:
+
+    tls-cipher TLS-DHE-RSA-WITH-AES-256-GCM-SHA384:TLS-DHE-RSA-WITH-AES-128-GCM-SHA256:TLS-DHE-RSA-WITH-AES-256-CBC-SHA:TLS-DHE-RSA-WITH-CAMELLIA-256-CBC-SHA:TLS-DHE-RSA-WITH-AES-128-CBC-SHA:TLS-DHE-RSA-WITH-CAMELLIA-128-CBC-SHA
 
 7.  Pack all the necessary client files into a tarball ready for transferring. The specific files we want are:
 
-    *  `/etc/openvpn/easy-rsa/keys/ca.crt`
-    *  `/etc/openvpn/easy-rsa/keys/client1.crt`
-    *  `/etc/openvpn/easy-rsa/keys/client1.key`
-    *  `/etc/openvpn/easy-rsa/keys/client.ovpn`
-    *  `/etc/openvpn/easy-rsa/keys/ta.key`
+    *   `/etc/openvpn/easy-rsa/keys/ca.crt`
+    *   `/etc/openvpn/easy-rsa/keys/client1.crt`
+    *   `/etc/openvpn/easy-rsa/keys/client1.key`
+    *   `/etc/openvpn/easy-rsa/keys/client.ovpn`
+    *   `/etc/openvpn/easy-rsa/keys/ta.key`
 
     ~~~
     tar -C /etc/openvpn/easy-rsa/keys -cvzf /etc/openvpn/client1.tar.gz {ca.crt,client1.crt,client1.key,client.ovpn,ta.key}
@@ -452,7 +425,7 @@ Each client also needs a configuration file defining the OpenVPN server's settin
 
     {: .note}
     >
-    >Windows will need [7zip](http://www.7-zip.org/) to extract `.tar` files.
+    >Windows will need [7zip](http://www.7-zip.org/) to extract `.tar` files, or you can use the package [zip](http://linux.die.net/man/1/zip) to create a `.zip` archive.
 
 8.  We no longer need to be `root`, so exit back to your standard user:
 
@@ -466,11 +439,11 @@ Start the OpenVPN daemon and enable it on reboot.
 
 {: .note }
 >
->This will scan the `/etc/openvpn` directory on the server for files with a `.conf` extension. For every file that it finds, it will create and run a VPN daemon (server) so make sure you don't have a `client.conf` or `client.ovpn` file in there.
+>This will scan the `/etc/openvpn` directory on the server for files with a `.conf` extension. For every file that it finds, it will spawn a VPN daemon (server instance) so make sure you don't have a `client.conf` or `client.ovpn` file in there.
 
 ### Monitoring OpenVPN for Issues
 
-The logs of both the OpenVPN client and servers will contain all the information you need to confirm connection specifications, view client address assignments and debug connection issues. Even if the connection takes places with seemingly no problems, the logs can contain alerts and messages for how to better configure your setup.
+The logs of both the OpenVPN client and servers will contain all the information you need to confirm connection specifications, view client address assignments and debug connection issues. Even if the connection completes seemingly with no problems, the logs can contain alerts and messages for how to better configure your setup.
 
 To check the status of the OpenVPN process:
 
@@ -497,7 +470,8 @@ That should return:
       CGroup: /system.slice/system-openvpn.slice/openvpn@server.service
            └─5725 /usr/sbin/openvpn --daemon ovpn-server --status /run/openvpn/server.status 10 --cd /etc/openvpn --config ...
 
-Use `journalctl -f | grep vpn` to monitor the logs of your OpenVPN server in realtime; press **Control+C** to stop monitoring.
+
+Use `sudo journalctl -f | grep vpn` to monitor the logs of your OpenVPN server in realtime; press **Control+C** to stop monitoring.
 
 ## Next Steps
 
@@ -505,5 +479,5 @@ At this point, you should have a operational OpenVPN server and a set of certifi
 
 If you want your server to forward and receive traffic to/from the internet on behalf of VPN clients, see part two of this series: [Tunnel Your Internet Trafic Through an OpenVPN Server](/docs/networking/vpn/tunnel-your-internet-traffic-through-an-openvpn-server).
 
-If you intend to use your OpenVPN server as an extension of your local network or host services you want to access from your LAN, you would need to configure the specific applications for your use. To set up the connecting client devices, then see part three: [Configuring OpenVPN Client Devices](/docs/networking/vpn/configuring-openvpn-client-devices).
+If you intend to use your OpenVPN server as an extension of your local network or host services you want to access from your LAN, you would need to configure the specific applications for your use. To set up the connecting client devices, see part three: [Configuring OpenVPN Client Devices](/docs/networking/vpn/configuring-openvpn-client-devices).
 
