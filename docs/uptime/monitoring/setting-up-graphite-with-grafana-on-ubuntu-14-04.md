@@ -2,7 +2,7 @@
 author:
     name: Linode Community
     email: docs@linode.com
-description: 'Setting up Graphite with Grafana on Ubuntu 14.04'
+description: 'Graphite is an enterprise-level monitoring tool reknown for running well on systems with limited resources. It stores numeric time-series data and renders graphs of this data on demand. This guide provides an introduction to installation and basic setup of Graphite together with Grafana.'
 keywords: 'graphite,grafana,monitor,monitoring,analytics'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: 'Tuesday, November 3rd, 2015'
@@ -20,103 +20,97 @@ external_resources:
   - '[Adding Graphite data source to Grafana](http://docs.grafana.org/datasources/graphite/)'
 ---
 
-[Graphite](http://graphite.readthedocs.org/en/latest/index.html) is an enterprise-scale monitoring tool that runs well on cheap hardware. It stores numeric time-series data and renders graphs of this data on demand. This guide provides an introduction to installation and basic setup of Graphite together with [Grafana](http://grafana.org/) - leading open source application for visualizing large-scale measurement data - on Ubuntu 14.04 LTS.
+[Graphite](http://graphite.readthedocs.org/en/latest/index.html) is an enterprise-level monitoring tool reknown for running well on systems with limited resources. It stores numeric time-series data and renders graphs of this data on demand. This guide provides an introduction to installation and basic setup of Graphite together with [Grafana](http://grafana.org/), a popular open source application for visualizing large-scale measurement data, on Ubuntu 14.04.
 
 ## Before You Begin
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the Creating a Firewall section--this guide has instructions specifcally for firewall rules for a Graphite server.
+2.  This guide will use `sudo` wherever possible from an example account named `graphite`. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to create the `graphite` user, harden SSH access, remove unnecessary network services and set up a firewall. You may need to create additional firewall rules for your specific application.
 
-3.  Update your system.
+3.  Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
 
-{: .note}
->
->In this guide `example.com` will be used as a domain name, and `graphite` as a name of non-root user. Substitute your own FQDN and username accordingly.
 
+## Install Apache, Python Tools and Graphite
 
-## Install Apache, Python tools and Graphite
+1.  Install the system packages required for working with Graphite:
 
-1.  Install the system packages required for installing and using Graphite:
+        sudo apt-get install build-essential graphite-web graphite-carbon python-dev apache2 libapache2-mod-wsgi libpq-dev python-psycopg2
 
-        sudo apt-get install build-essential python-dev apache2 libapache2-mod-wsgi libpq-dev python-psycopg2
-
-2.  Install system packages for Graphite:
-
-        sudo apt-get install graphite-web graphite-carbon
-
-	You will be asked by installer should Carbon database files be removed on uninstall. It's better to answer 'No' here, you can always remove the files later (they are located in `/var/lib/graphite/whisper`).
+	During installation of `graphit-carbon`, you will be asked if you want to keep the database files on uninstall. Answer **No** here. You can always remove the files later (which are located in `/var/lib/graphite/whisper`).
 
 ## Configure Carbon
 
-1.  Configure storage settings for test metrics: using `sudo` and your favorite text editor add the following lines to file `/etc/carbon/storage-schemas.conf` after `[carbon]` section but before `[default_1min_for_1day]` section:
+1.  Configure the retention rate for test metrics by adding a `[test]` block to Carbon's `storage-schemas.conf` file. This step is given for testing purposes only and can be safely skipped if you have no use to generate test metrics.
 
-{: .file-excerpt}
-/etc/carbon/storage-schemas.conf
-:   ~~~ conf
-	[test]
-	pattern = ^test\.
-	retentions = 5s:3h,1m:1d
-    ~~~
+	The retention times given below will save data every 5 seconds for 3 hours, and a separate set of data from that aggregated sample every 1 minute for 1 day.
 
-	This file describes retention policies which Graphite will use for configured metrics. `pattern` is the regular expression to match against metric name, and `retentions` is comma-separated list of `frequency`:`history` value pairs.
+	{: .file-excerpt}
+	/etc/carbon/storage-schemas.conf
+	:   ~~~ conf
+		[carbon]
+		pattern = ^carbon\.
+		retentions = 60:90d
 
-	Section `[test]` you've just added will match all metrics starting with `test` and will save data with 5 second frequency for 3 hours, and data with 1 minute frequency for 1 day.
+		[test]
+		pattern = ^test\.
+		retentions = 5s:3h,1m:1d
 
-{: .note}
->
->`[test]` section is for testing purposes only and can be safely skipped.
+		[default_1min_for_1day]
+		pattern = .*
+		retentions = 60s:1d
+    	~~~
 
-	Also, `[carbon]` section describes policies for internal Carbon metrics, and `[default_1min_for_1day]` section contains default settings, which will be used if none of previous patterns are matched.
+	For more information on how to configure Carbon storage see [storage-schemas.conf](http://graphite.readthedocs.org/en/latest/config-carbon.html#storage-schemas-conf) in Graphite's documentation.
 
-	For more information on how to configure Carbon storage see [relevant section of Graphite documentation](http://graphite.readthedocs.org/en/latest/config-carbon.html#storage-schemas-conf).
-
-2.  Configure aggregation settings by copying defaut aggregation configuration to `/etc/carbon`:
+2.  Copy the defaut aggregation configuration to `/etc/carbon` so we can configure our own settings:
 
 		sudo cp /usr/share/doc/graphite-carbon/examples/storage-aggregation.conf.example /etc/carbon/storage-aggregation.conf
 
-	`storage-aggregation.conf` describes aggregation policies Carbon uses to produce less detailed metrics, such as `1m:1d` retention in `[test]` section added on previous step. By default, only average of metric values is taken, which will result in data loss, if, for example, maximum and minimum values are needed. For this reason `[min]`,`[max]` and `[sum]` sections are added in the configuration file.
+	`storage-aggregation.conf` describes aggregation policies Carbon uses to produce less detailed metrics, such as the 1m:1d retention in the [test] block added above. By default, only the average metric value is taken which will result in data loss if, for example, maximum and minimum values are needed. For this reason, `[min]`,`[max]` and `[sum]` sections are added in the configuration file.
 
-	For more information on how to configure Carbon aggregation see [relevant section of Graphite documentation](http://graphite.readthedocs.org/en/latest/config-carbon.html#storage-aggregation-conf).
+3.  Enable carbon-cache to run on boot:
 
-3.  Enable carbon-cache to run on boot: edit file `/etc/default/graphite-carbon` and change value for `CARBON_CACHE_ENABLED` to `true`
+	{: .file-excerpt}
+	/etc/default/graphite-carbon
+	:   ~~~ conf
+		CARBON_CACHE_ENABLED=true
+    	~~~
 
-{: .file-excerpt}
-/etc/default/graphite-carbon
-:   ~~~ conf
-	CARBON_CACHE_ENABLED=true
-    ~~~
-
-4. Start carbon-cache service:
+4. Start the carbon-cache service:
 
 		sudo service carbon-cache start
 
 
-## Install PostgreSQL and prepare databases for graphite-web and Grafana
+## Install and Configure PostgreSQL
 
-1.  Install PostgreSQL database for graphite-web application using [PostgreSQL installation guide](docs/databases/postgresql/ubuntu-12-04-precise-pangolin).
+1.  Install PostgreSQL for the graphite-web application
 
-2.  As `postgres` user create database user for graphite-web app:
+		sudo apt-get install postgresql
 
+2.  Change users to the `postgres` user and create a database user for graphite-web application:
+
+		su - postgres
 		createuser graphite --pwprompt
 
-	You will be asked to provide password for the new user. After that, create databases `graphite` and `grafana` with `graphite` user as owner:
+	You will be asked to provide password for the new database user. After that, create databases `graphite` and `grafana` with the system's `graphite` user as the owner:
 
 		createdb -O graphite graphite
 		createdb -O graphite grafana
 
+3.  When finished configuring the PostgreSQL databases, change back to the `graphite` user:
 
-## Set up graphite-web application
+		su - graphite
 
-1.  Open graphite-web configuration file `/etc/graphite/local_settings.py` with `sudo` and make the changes described below.
+## Configure Graphite
 
-2.	Find the `DATABASES` dictionary definition and update it with settings for PostgreSQL database created earlier:
+1.  Update Graphite's `DATABASES` dictionary definition with the settings for PostgreSQL database created earlier:
 
-{: .file-excerpt}
-/etc/graphite/local_settings.py
-:   ~~~ py
+	{: .file-excerpt}
+	/etc/graphite/local_settings.py
+	:   ~~~ py
 	DATABASES = {
 		'default': {
 			'NAME': 'graphite',
@@ -125,148 +119,143 @@ external_resources:
 			'PASSWORD': 'graphiteuserpassword',
 			'HOST': '127.0.0.1',
 			'PORT': ''
+			}
 		}
-	}
-    ~~~
+    	~~~
 
-3.	Add the following lines to the end of the file:
+2.	Add the following lines to the end of the file:
 
-{: .file-excerpt}
-/etc/graphite/local_settings.py
-:   ~~~ py
-	USE_REMOTE_USER_AUTHENTICATION = True
-	TIME_ZONE = 'Your/Timezone'
-	SECRET_KEY = 'somelonganduniquesecretstring'
-    ~~~
+	{: .file-excerpt}
+	/etc/graphite/local_settings.py
+	:   ~~~ py
+		USE_REMOTE_USER_AUTHENTICATION = True
+		TIME_ZONE = 'Your/Timezone'
+		SECRET_KEY = 'somelonganduniquesecretstring'
+    	~~~
 
-where TIME_ZONE is your time zone, which will be used in graphs (for possible values see TZ column value in [this timezones list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)), and SECRET_KEY is an long and unique string used as salt when hashing passwords.
+	*   TIME_ZONE is your Linode's time zone, which will be used in graphs. For possible values, run `timedatectl` or see the *TZ* column in [Wikipedia's timezone database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)).
 
-4.	Save your changes.
+	*   SECRET_KEY is an long and unique string used as a salt when hashing passwords.
 
-5.  Initialize graphite-web database with command
+3.  Initialize graphite-web database with:
 
 		sudo graphite-manage syncdb
 
-	You will be asked to create superuser account, which will be used to access graphite-web interface.
+	You will be asked to create a superuser account which will be used to access Graphite's web interface.
 
 
-## Configure Apache for graphite-web application
+## Configure Apache for Graphite
 
-1.  Copy graphite-web apache config file into apache `sites-available` directory:
+1.  Copy Graphite's Apache config template into Apache's `sites-available` directory:
 
 		sudo cp /usr/share/graphite-web/apache2-graphite.conf /etc/apache2/sites-available
 
-2.  Change graphite-web port from 80 to 8080 (port 80 will be used for Grafana later on). To do this, open file `/etc/apache2/sites-available/apache2-graphite.conf` and change line
+2.  Change Graphite's port from 80 to 8080 (port 80 will be used for Grafana later on).
 
-		<VirtualHost *:80>
-to
+	{: .file}
+	/etc/apache2/sites-available/apache2-graphite.conf
+	:   ~~~ conf
+		<VirtualHost *:8080>		
+    	~~~
 
-		<VirtualHost *:8080>
+3.  Then make sure Apache is listening on port 8080. Add `Listen 8080` after `Listen 80` in `ports.conf`:
 
-3.  Make sure Apache listens on port 8080 - edit file `/etc/apache2/ports.conf` and add line `Listen 8080` after `Listen 80`.
+	{: .file-excerpt}
+	/etc/apache2/ports.conf
+	:   ~~~ conf
+		Listen 80
+		Listen 8080
+    	~~~
 
-{: .file-excerpt}
-/etc/apache2/ports.conf
-:   ~~~ conf
-	Listen 80
-	Listen 8080
-    ~~~
-
-4.  Disable default apache site to avoid conflicts:
+4.  Disable the default Apache site to avoid conflicts:
 
 		sudo a2dissite 000-default
 
-5.  Enable graphite-web virtual site:
+5.  Enable Graphite's virtual site:
 
 		sudo a2ensite apache2-graphite
 
-6.  Apply changes with command
+6.  Reload Apache to apply the changes:
 
 		sudo service apache2 reload
 
-Now you should be able to access `http://<your_server_name_or_ip>:8080` in browser and see Graphite home page.
+	Now you should be able to access `http://<your_server_name_or_ip>:8080` in browser and see Graphite home page.
 
+	![Graphite landing page](/docs/assets/graphite_landing_page.png)
 
-## Feed sample data
+## Create Sample Data
 
-1.  Send some test metrics by executing the following command several times with 5-6 second intervals:
+1.  Generate some test metrics with the following command:
 
-		echo "test.count 4 `date +%s`" | nc -q0 127.0.0.1 2003
+		for i in 4 6 8 16 2; do echo "test.count $i `date +%s`" | nc -q0 127.0.0.1 2003; sleep 6; done
 
-	Now refresh Graphite home page and you should see new `test.count` metric in the tree on the left:
+	Wait for the command prompt to be returned and then refresh Graphite home page and you should see new `test.count` metric in the tree on the left:
 
-![Graphite test metric](/docs/assets/graphite_test_metric.png)
+	![Graphite test metric](/docs/assets/graphite_test_metric.png)
 
-## Install and configure Grafana
+## Install and Configure Grafana
 
-1.  With `sudo` edit file `/etc/apt/sources.list` and add the following line:
+1.  Add Grafana's repository to `sources.list`:
 
-{: .file-excerpt}
-/etc/apt/sources.list
-:   ~~~ conf
-	deb https://packagecloud.io/grafana/stable/debian/ wheezy main
-    ~~~
+		echo 'deb https://packagecloud.io/grafana/stable/debian/ wheezy main' |  sudo tee -a /etc/apt/sources.list
 
 2.  Add the [Package Cloud](https://packagecloud.io/grafana) key to install signed packages.
 
 		curl https://packagecloud.io/gpg.key | sudo apt-key add -
 
-3.  Update apt settings and install Grafana:
+3.  Update apt and install Grafana:
 
-		sudo apt-get update
-		sudo apt-get install grafana
+		sudo apt-get update && sudo apt-get install grafana
 
-4.  Now configure Grafana to use PostgreSQL database created earlier. With `sudo` edit file `/etc/grafana/grafana.ini` and fill in proper database configuration in `[database]` section:
+4.  Now configure Grafana to use PostgreSQL database created earlier. Edit `grafana.ini` with the proper database configuration:
 
-{: .file-excerpt}
-/etc/grafana/grafana.ini
-:   ~~~ conf
-	[database]
-    # Either "mysql", "postgres" or "sqlite3", it's your choice
-	type = postgres
-	host = 127.0.0.1:5432
-	name = grafana
-	user = graphite
-	password = graphiteuserpassword
-    ~~~
+	{: .file-excerpt}
+	/etc/grafana/grafana.ini
+	:   ~~~ conf
+		[database]
+    	# Either "mysql", "postgres" or "sqlite3", it's your choice
+		type = postgres
+		host = 127.0.0.1:5432
+		name = grafana
+		user = graphite
+		password = graphiteuserpassword
+    	~~~
 
-5.  Also in `/etc/grafana/grafana.ini` configure domain and root_url, and set more secure admin password and secret key:
+5.  Also in `/etc/grafana/grafana.ini`, configure the domain and root_url, and set a strong admin password and secret key:
 
-{: .file-excerpt}
-/etc/grafana/grafana.ini
-:   ~~~ conf
-	[server]
-    protocol = http
-	http_addr = 127.0.0.1
-	http_port = 3000
-	domain = example.com
-	enforce_domain = true
-	root_url = %(protocol)s://%(domain)s/
+	{: .file-excerpt}
+	/etc/grafana/grafana.ini
+	:   ~~~ conf
+		[server]
+    	protocol = http
+		http_addr = 127.0.0.1
+		http_port = 3000
+		domain = example.com
+		enforce_domain = true
+		root_url = %(protocol)s://%(domain)s/
 
-	[security]
-	admin_user = admin
-	admin_password = SecureAdminPass
-	secret_key = somelongrandomstringkey
-    ~~~
+		[security]
+		admin_user = admin
+		admin_password = SecureAdminPass
+		secret_key = somelongrandomstringkey
+    	~~~
 
 6.  Enable proxy modules for Apache reverse proxying to work:
 
-		sudo a2enmod proxy
-		sudo a2enmod proxy_http
-		sudo a2enmod xml2enc
+		sudo a2enmod proxy proxy_http xml2enc
 
-7.  Create apache site configuration file `/etc/apache2/sites-available/apache2-grafana.conf` to proxy requests to Grafana, with the following content (remember to change `example.com` to your own domain name):
+7.  Create apache site configuration file to proxy requests to Grafana. Remember to change `example.com` to your own domain.
 
-{: .file}
-/etc/apache2/sites-available/apache2-grafana.conf
-:   ~~~ conf
-	<VirtualHost *:80>
-	 ProxyPreserveHost On
-	 ProxyPass / http://127.0.0.1:3000/
-	 ProxyPassReverse / http://127.0.0.1:3000/
-	 ServerName example.com
-	</VirtualHost>
-	~~~
+	{: .file}
+	/etc/apache2/sites-available/apache2-grafana.conf
+	:   ~~~ conf
+		<VirtualHost *:80>
+	 	ProxyPreserveHost On
+	 	ProxyPass / http://127.0.0.1:3000/
+	 	ProxyPassReverse / http://127.0.0.1:3000/
+	 	ServerName example.com
+		</VirtualHost>
+		~~~
 
 7.  Enable grafana site configuration with
 
@@ -277,37 +266,43 @@ Now you should be able to access `http://<your_server_name_or_ip>:8080` in brows
 		sudo update-rc.d grafana-server defaults 95 10
 		sudo service grafana-server start
 
-9.  Restart apache2 to pick up new modules and configuration changes.
+9.  Restart Apache to pick up new modules and configuration changes.
 
 		sudo service apache2 restart
 
-	At this point, you should be able to open `http://<your_domain>/` in browser and see Grafana login page.
+	At this point, you should be able to open your Linode's domain or IP address in a browser to see Grafana's login page.
+
 
 ## Add Graphite data source to Grafana
 
-1.  Log in into Grafana using `admin` credentials you specified in configuration file.
+1.  Log in into Grafana using the `admin` credentials you specified in the configuration file.
 
-2.  Click on `Data Sources` and select `Add new`. Fill in all the fields as shown in the picture below:
+2.  Click on **Data Sources** and select **Add new**. Fill in all the fields as shown in the picture below:
 
-![Add Data Source dialog](/docs/assets/graphite_grafana_data_source.png)
+	![Add Data Source dialog](/docs/assets/graphite_grafana_data_source.png)
 
-Click `Save` to create new Data Source.
+	Click **Save** to create the new Data Source.
 
-3.  Create new dashboard by clicking at the `Home` button and then at `+ New`:
+3.  Now, before creating a graph, add more test data for the `test.count` metric by running again:
 
-![Create new dashboard](/docs/assets/graphite_grafana_new_dashboard.png)
+		for i in 4 6 8 16 2; do echo "test.count $i `date +%s`" | nc -q0 127.0.0.1 2003; sleep 6; done
 
-4.  Add Graph panel to the newly created dashboard:
+4.  Create a new dashboard by clicking the **Home** button and then **+ New**:
 
-![Create new graph panel](/docs/assets/graphite_grafana_new_graph.png)
+	![Create new dashboard](/docs/assets/graphite_grafana_new_dashboard.png)
 
-5.  Edit Graph panel properties:
+5.  Add a Graph panel to the newly created dashboard:
 
-![Edit graph panel](/docs/assets/graphite_grafana_edit_graph.png)
+	![Create new graph panel](/docs/assets/graphite_grafana_new_graph.png)
 
+6.  Edit the Graph panel properties by clicking the tab with the words **no title (click here)**. Then click **Edit**:
 
-6.  In the Graph panel properties dialog click on `select metric` and choose `test` and then `count` to add test metric:
+	![Edit graph panel](/docs/assets/graphite_grafana_edit_graph.png)
 
-![Add test metric to the panel](/docs/assets/graphite_grafana_edit_graph_add_metric.png)
+7.  Make sure the **graphite** data source you've created is chosen in in the combobox at the bottom right (marked as 1 in the screenshot below). In the dropdown bar at the top right corner (marked as 2), choose **Last 15 minutes**.
 
+	Click **select metric**; choose **test** and then **count** (marked as 3) to add the test metric you previously created. At this point, visualisation of the sample data should appear on the graph.
 
+	Finally, click the **Save** button (marked as 4) to save dashboard you've created.
+
+	![Add test metric to the panel](/docs/assets/graphite_grafana_edit_graph_add_metric.png)
