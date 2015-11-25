@@ -2,23 +2,23 @@
 author:
   name: Alex Fornuto
   email: afornuto@linode.com
-description: 'Instructions for getting started with the Apache web server on CentOS 6.'
-keywords: 'Apache,web sever,CentOS 6,centos'
+description: 'Install Apache on your CentOS 6 server, configure virtual hosting, and set up mod and scripting support.'
+keywords: 'Apache,web sever,CentOS 6,centos,apache 2,httpd'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['web-servers/apache/installation/centos-6/']
+alias: ['web-servers/apache/installation/centos-6/','websites/apache/apache-2-web-server-on-centos-6/']
 modified: Friday, July 31st, 2015
 modified_by:
   name: Elle Krout
 published: 'Monday, November 11th, 2013'
-title: Apache 2 Web Server on CentOS 6
+title: Apache Web Server on CentOS 6
 external_resources:
  - '[Apache HTTP Server Version 2.2 Documentation](http://httpd.apache.org/docs/2.2/)'
  - '[Apache Configuration](/docs/web-servers/apache/configuration/)'
 ---
 
-Apache is an open-source web server application. This guide explains how to install and configure an Apache web server on CentOS 6.
+The *Apache HTTP Server* (Apache) is an open-source web server application. This guide explains how to install and configure an Apache web server on CentOS 6.
 
-If instead you would like to install a full LAMP stack, please see the [LAMP on Debian 8](/docs/websites/lamp/lamp-server-on-centos-6) guide.
+If instead you would like to install a full LAMP (Linux, Apache, MySQL, and PHP) stack, please see the [LAMP on CentOS 6](/docs/websites/lamp/lamp-server-on-centos-6) guide.
 
 {: .note}
 >
@@ -63,7 +63,7 @@ If instead you would like to install a full LAMP stack, please see the [LAMP on 
         </IfModule>
         ~~~
 
-### Configure Apache for Name-Based Virtual Hosting
+### Configure Apache for Virtual Hosting
 
 1.  Create a file under `/etc/httpd/conf.d` named `vhost.conf`. Replace instances of `example.com` with your own domain information:
 
@@ -96,7 +96,7 @@ If instead you would like to install a full LAMP stack, please see the [LAMP on 
         sudo chkconfig httpd on
 
 
-## Set Up Mods and Scripting
+## Apache Mods and Scripting
 
 ### Install Apache Modules
 
@@ -113,7 +113,7 @@ By default, modules are located in the `/etc/httpd/modules/` directory. Configur
     Modules should be enabled and ready to use following installation
 
 
-### Optional: Install Support for Scripting
+### Install Support for Scripting
 
 The following commands install Apache support for server-side scripting in PHP, Python, and Perl. Support for these languages is optional based on your server environment.
 
