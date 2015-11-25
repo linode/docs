@@ -5,10 +5,10 @@ author:
 description: 'Django is a Python Web framework that encourages rapid development and clean, pragmatic design. This guide provides an introduction to deploying Django applications using uWSGI and nginx on Ubuntu 14.04'
 keywords: 'django,uwsgi,nginx,django apps'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: 'Monday, November 23rd, 2015'
+modified: 'Wednesday, November 25th, 2015'
 modified_by:
   name: Sergey Pariev
-published: 'Monday, November 23rd, 2015'
+published: 'Wednesday, November 25th, 2015'
 title: 'Deploy a Django Application Using uWSGI and nginx on Ubuntu 14.04'
 contributor:
   name: Sergey Pariev
