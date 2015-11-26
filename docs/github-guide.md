@@ -158,7 +158,7 @@ Once you have submitted your first pull request, you will likely receive communi
 
 [![GitHub - Pull Request Comment](/docs/assets/github-pr-comments.png)](/docs/assets/github-pr-comments.png)
 
-If you need to edit your PR, you can make changes to your locally saved branch, then upload the changes by following steps 5-9 of the [Creating Your Branch](/docs/github-guide#creating-your-branch) section of this guide.
+If you need to edit your PR, you can make changes to your locally saved branch, then upload the changes by following steps 5-8 of the [Creating Your Branch](/docs/github-guide#creating-your-branch) section of this guide.
 
 
 ### Managing Multiple Branches
