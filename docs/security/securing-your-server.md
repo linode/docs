@@ -122,10 +122,13 @@ By default, password authentication is used to connect to your Linode via SSH. A
     {: .file-excerpt}
     /etc/ssh/sshd_config
     :   ~~~ conf
-        # Authentication:
-        ...
-        PermitRootLogin no
+        # Change to no to disable tunnelled clear text passwords
+        PasswordAuthentication no
         ~~~
+
+        {: .note}
+        >
+        >Depending on the Linux distribution the line `PasswordAuthentication` may need to be added, or uncommented by removing the leading #.
 
     {: .caution }
     >
@@ -136,13 +139,10 @@ By default, password authentication is used to connect to your Linode via SSH. A
     {: .file-excerpt}
     /etc/ssh/sshd_config
     :   ~~~ conf
-        # Change to no to disable tunnelled clear text passwords
-        PasswordAuthentication no
+        # Authentication:
+        ...
+        PermitRootLogin no
         ~~~
-
-        {: .note}
-        >
-        >Depending on the Linux distribution the line `PasswordAuthentication` may need to be added, or uncommented by removing the leading #.
 
 4.  Restart the SSH service to load the new configuration.
 
@@ -212,7 +212,7 @@ See the **Local Address** column of the netstat readout. The process `rpcbind` i
 
 #### UDP
 
-RPC use UDP too, as does NTPdate. UDP sockets are *[stateless](https://en.wikipedia.org/wiki/Stateless_protocol)*, meaning they are either open or closed and every process's connection is independent of those which occurred before and after. This is in contrast to TCP connection states such as *LISTEN*, *ESTABLISHED* and *CLOSE_WAIT*. 
+RPC use UDP too, as does NTPdate. UDP sockets are *[stateless](https://en.wikipedia.org/wiki/Stateless_protocol)*, meaning they are either open or closed and every process's connection is independent of those which occurred before and after. This is in contrast to TCP connection states such as *LISTEN*, *ESTABLISHED* and *CLOSE_WAIT*.
 
 Our netstat output shows that NTPdate is: 1) accepting incoming connections on your Linode's public IP address; 2) communicates over localhost; and 3) accepts connections from external sources. These are over port 123, and both IPv4 and IPv6. We also see more sockets open for RPC.
 
@@ -254,7 +254,7 @@ Run `sudo netstat -tulpn` again. You should now only see listening services for 
 
 ## Configure a Firewall
 
-Using a *firewall* to block unwanted inbound traffic to your Linode is a highly effective security layer. By being very specific about the traffic you allow in, you can prevent intrusions and network mapping from outside your LAN. A best practice is to allow only the traffic you need, and deny everything else. 
+Using a *firewall* to block unwanted inbound traffic to your Linode is a highly effective security layer. By being very specific about the traffic you allow in, you can prevent intrusions and network mapping from outside your LAN. A best practice is to allow only the traffic you need, and deny everything else.
 
 [iptables](http://www.netfilter.org/projects/iptables/index.html) is the controller for netfilter, the Linux kernel's packet filtering framework. iptables is included in most Linux distros by default but is considered an advanced method of firewall control. Consequently, several projects exist to control iptables in a more user-friendly way.
 
