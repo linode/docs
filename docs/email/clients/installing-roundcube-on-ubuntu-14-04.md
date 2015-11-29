@@ -1,18 +1,16 @@
 ---
 author:
-    name: Sean Webber
-    email: swebber@yazzielabs.com
+    name: 'Sean Webber'
+    email: 'swebber@yazzielabs.com'
 description: 'Installing Roundcube and its dependencies on Ubuntu 14.04 LTS'
-keywords: 'IMAP,Roundcube,webmail'
+keywords: '14.04,IMAP,LTS,Roundcube,Ubuntu,webmail'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 published: 'N/A'
-modified: Sunday, November 30th, 2015
-modified_by:
-    name: Sean Webber
+modified: 'Sunday, November 30th, 2015'
 title: 'Installing Roundcube on Ubuntu 14.04'
 contributor:
-    name: Sean Webber
-    link: http://seanthewebber.com
+    name: 'Sean Webber'
+    link: 'https://github.com/seanthewebber'
 ---
 
 ## Introduction
