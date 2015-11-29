@@ -104,7 +104,7 @@ The following command will download Roundcube version `1.1.3`. Our editors are b
 
 [![Roundcube download webpage](/docs/assets/roundcube-download-webpage.png)]
 
-If the versions are different, right click on the **Download** button for the **Stable > Complete** package, click on **Copy link address** (Or something similar to that depending on your web browser). Replace any occurrences of `1.1.3` in the URL below with the newer version number on Roundcube’s download page.
+If the versions are different, right click on the **Download** button for the **Stable > Complete** package, click on **Copy link address** (or something similar to that depending on your web browser). Replace any occurrences of `1.1.3` in the URL below with the newer version number on Roundcube’s download page.
 
         wget http://downloads.sourceforge.net/project/roundcubemail/roundcubemail/1.1.3/roundcubemail-1.1.3.tar.gz
 
