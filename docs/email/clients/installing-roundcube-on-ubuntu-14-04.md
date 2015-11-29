@@ -1,8 +1,23 @@
-# Installing Roundcube on Ubuntu 14.04
+---
+author:
+    name: Sean Webber
+    email: swebber@yazzielabs.com
+description: 'Installing Roundcube and its dependencies on Ubuntu 14.04 LTS'
+keywords: 'IMAP,Roundcube,webmail'
+license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+published: 'N/A'
+modified: Sunday, November 30th, 2015
+modified_by:
+    name: Sean Webber
+title: 'Installing Roundcube on Ubuntu 14.04'
+contributor:
+    name: Sean Webber
+    link: http://seanthewebber.com
+---
 
 ## Introduction
 
-Roundcube is a web-based IMAP email client that offers an user interface similar to Google’s Gmail or Microsoft’s Hotmail. It is a server-side application written in PHP and is meant to access only one email server or service. Email users interact with Roundcube over the internet using a web browser.
+Roundcube is a web-based IMAP email client that offers an user interface similar to Google’s Gmail or Microsoft’s Hotmail. It is a server-side application written in PHP designed to access only one email server or service. Email users interact with Roundcube over the internet using a web browser.
 
 ## Prerequisites
 
@@ -49,39 +64,61 @@ Log out of the MySQL command prompt and return to a regular linux shell prompt.
 
         exit
 
-## Downloading and Installing Roundcube
+## Preparing for Roundcube
 
-Before you download Roundcube, you need to install and enable the packages `php5-intl` and `php5-mcrypt`.
+Before you download Roundcube, install and enable the packages `php-pear`, `php5-intl`, and `php5-mcrypt`.
 
-        sudo apt-get install php5-intl php5-mcrypt && sudo php5enmod intl mcrypt
+        sudo apt-get install php-pear php5-intl php5-mcrypt && sudo php5enmod intl mcrypt
 
-You will also need to enable the Apache modules `deflates`, `expires`, `headers` and `rewrite`.
+Next, enable the Apache modules `deflates`, `expires`, `headers` and `rewrite`.
 
         sudo a2enmod deflates expires headers rewrite
 
-Lastly, before you download Roundcube, make sure your linux shell prompt is operating in your UNIX user’s Downloads directory.
+You also need to install the PHP PEAR packages `Auth_SASL`, `Net_SMTP`, `Net_IDNA2-0.1.1`, `Mail_mime`, and `Mail_mimeDecode`.
 
-        cd ~
+        sudo pear install Auth_SASL Net_SMTP Net_IDNA2-0.1.1 Mail_mime Mail_mimeDecode
 
-The command below will download Roundcube version `1.1.1`. Our editors are busy, so that may not download the latest version of Roundcube. To check for a later version, go to [Roundcube’s download page](https://roundcube.net/download/) and compare the **Stable > Complete** package’s version to the one listed here.
+: .note }
+>
+> PEAR is an acronym for "PHP Extension and Application Repository". Common PHP code libraries, written officially or by third parties, can be easily installed and referenced using the `pear` command.
+
+PEAR will print an **install ok** confirmation message for each package that it successfully installs. In this case, a complete installation will look similar to this:
+
+{: .file-excerpt}
+/dev/stdout
+:   ~~~ ini
+    install ok: channel://pear.php.net/Auth_SASL-1.0.6
+    install ok: channel://pear.php.net/Net_SMTP-1.7.1
+    install ok: channel://pear.php.net/Net_IDNA2-0.1.1
+    install ok: channel://pear.php.net/Mail_mime-1.10.0
+    install ok: channel://pear.php.net/Mail_mimeDecode-1.5.5
+    ~~~
+
+Lastly, make sure your linux shell prompt is operating inside your UNIX user's home directory. The `~/Downloads` folder is preferable, but `~/` is also acceptable. We won't judge.
+
+        cd ~/Downloads
+
+## Downloading and Installing Roundcube
+
+The following command will download Roundcube version `1.1.3`. Our editors are busy, so that may not download the latest version of Roundcube. To check for a later version, go to [Roundcube’s download page](https://roundcube.net/download/) and compare the **Stable > Complete** package’s version to the one listed here.
 
 [![Roundcube download webpage](/docs/assets/roundcube-download-webpage.png)]
 
-If the versions are different, right click on the **Download** button for the **Stable > Complete** package, click on **Copy link address** (Or something similar to that depending on your web browser). Replace any occurrences of `1.1.1` in the URL below with the newer version number on Roundcube’s download page.
+If the versions are different, right click on the **Download** button for the **Stable > Complete** package, click on **Copy link address** (Or something similar to that depending on your web browser). Replace any occurrences of `1.1.3` in the URL below with the newer version number on Roundcube’s download page.
 
-        wget http://downloads.sourceforge.net/project/roundcubemail/roundcubemail/1.1.1/roundcubemail-1.1.1.tar.gz
+        wget http://downloads.sourceforge.net/project/roundcubemail/roundcubemail/1.1.3/roundcubemail-1.1.3.tar.gz
 
 {: .note }
 >
 > The `.tar.gz` file extension means that Roundcube downloads as a *compressed tarball*. Tarballs are used to package many files as one, similar to Windows ZIP folders, but without the compression. In this case, the tarball was compressed using `gzip`, which makes up for the lack of compression.
 
-To decompress and copy Roundcube to the `/var/www/html/example.com/public_html` directory, execute the command below. Again, replace any occurrences of `1.1.1` in the filename with the newer version number.
+To decompress and copy Roundcube to the `/var/www/html/example.com/public_html` directory, execute the command below. Again, replace any occurrences of `1.1.3` in the filename with the newer version number.
 
-        sudo tar -zxvf roundcubemail-1.1.1.tar.gz -C /var/www/html/example.com/public_html
+        sudo tar -zxvf roundcubemail-1.1.3.tar.gz -C /var/www/html/example.com/public_html
 
-To make Roundcube’s URL on your Linode version-neutral, execute the following command. It will change Roundcube’s directory name from `roundcubemail-1.1.1` to `roundcube`. Doing so also makes the URL shorter for your users to type into their web browsers.
+To make Roundcube’s URL on your Linode version-neutral, execute the following command. It will change Roundcube’s directory name from `roundcubemail-1.1.3` to `roundcube`. Doing so also makes the URL shorter for your users to type into their web browsers.
 
-        sudo mv /var/www/html/example.com/public_html/roundcube-1.1.1 /var/www/html/example.com/public_html/roundcube
+        sudo mv /var/www/html/example.com/public_html/roundcube-1.1.3 /var/www/html/example.com/public_html/roundcube
 
 Next, grant Apache write access to Roundcube’s directory. This will allow Roundcube to save its own configuration file, instead of you having to download it and manually upload it to your Linode later in this tutorial.
 
@@ -105,7 +142,7 @@ Restart Apache to apply your PHP timezone addition.
 
         sudo service apache2 restart
 
-To begin configuring Roundcube, use your favorite web browser and navigate to `http://example.com/roundcube/installer`. Make sure to replace `example.com` with the domain name or IP address of your Linode. You will be met with a page that looks like this:
+To begin configuring Roundcube, use your favorite web browser and navigate to `http://example.com/roundcube/installer`. Make sure to replace `example.com` with the domain name or IP address of your Linode.
 
 The first step of Roundcube’s graphical configuration is an *environment check*. Since you have already installed everything it needs, you will only see five **NOT AVAILABLE** warnings under the **Checking available databases** section. That is because Roundcube supports six different SQL engines, but only needs one. Click on the **NEXT** button at the bottom of the page to continue.
 
@@ -161,7 +198,7 @@ Highlight the text below, right click on it and select **Copy**.
 : ~~~
         <IfModule mod_rewrite.c>
         RewriteEngine On
-        RewriteCond %{SERVER_PORT} 80 
+        RewriteCond %{SERVER_PORT} 80
         RewriteCond %{REQUEST_URI} roundcube
         RewriteRule ^(.*)$ https://www.example.com/roundcube/$1 [R,L]
         </IfModule>
@@ -196,7 +233,7 @@ If your configuration is functional, Roundcube will allow you to receive, read, 
 
 ## Knowing How to Update Roundcube
 
-As new versions of Roundcube are released in the future, you will want to update it to gain new features and receive security patches.
+As new versions of Roundcube are released in the future, you should update it to gain new features and receive security patches.
 
 {: .note }
 >
@@ -204,22 +241,22 @@ As new versions of Roundcube are released in the future, you will want to update
 
 Roundcube is not installed from a Debian software repository, so you cannot use the `sudo apt-get upgrade` command to update it. You have to use the `/var/www/html/example.com/public_html/roundcube/bin/installto.sh` PHP script that is included with Roundcube instead.
 
-To check if an update for Roundcube is available, go to [Roundcube’s download page](http://roundcube.net/download/) and compare the **Stable > Complete** package’s version to the version of Roundcube that is currently installed on your server. If the version listed is newer than the version on your server, right click on the **Download** button for the **Stable > Complete** package and click on **Copy link address**. Again, replace any occurrences of `1.1.1` in the filename with the newer version number.
+To check if an update for Roundcube is available, go to [Roundcube’s download page](http://roundcube.net/download/) and compare the **Stable > Complete** package’s version to the version of Roundcube that is currently installed on your server. If the version listed is newer than the version on your server, right click on the **Download** button for the **Stable > Complete** package and click on **Copy link address**. Again, replace any occurrences of `1.1.3` in the filename with the newer version number.
 
-        cd ~ && wget http://downloads.sourceforge.net/project/roundcubemail/roundcubemail/1.1.1/roundcubemail-1.1.1.tar.gz
+        cd ~ && wget http://downloads.sourceforge.net/project/roundcubemail/roundcubemail/1.1.3/roundcubemail-1.1.3.tar.gz
 
 Extract and unzip the tarball. Unlike the initial installation, you can extract Roundcube to your UNIX user’s home directory and not the `/var/www/html/example.com/public_html` directory. Make sure to replace the file name with the name of the file you downloaded.
 
-        tar -zxvf roundcubemail-1.1.1.tar.gz
+        tar -zxvf roundcubemail-1.1.3.tar.gz
 
 Execute the `/var/www/html/example.com/public_html/roundcube/bin/installto.sh` PHP script to update Roundcube. If you did not install Roundcube in the `/var/www/html/example.com/public_html/roundcube` directory, replace the trailing directory with the location of Roundcube on your server.
 
-        cd roundcubemail-1.1.1
+        cd roundcubemail-1.1.3
         sudo php bin/installto.sh /var/www/html/example.com/public_html/roundcube
 
 The script will ask you if you are *really* sure you want to upgrade Roundcube before it begins. You need to type the letter `y` followed by the `ENTER` or `RETURN` key to start the upgrade process. A successful upgrade will show something similar to this in your Terminal:
 
-        Upgrading from 1.1.1. Do you want to continue? (y/N)
+        Upgrading from 1.1.3. Do you want to continue? (y/N)
         y
         Copying files to target location...sending incremental file list
 
@@ -233,7 +270,7 @@ The script will ask you if you are *really* sure you want to upgrade Roundcube b
 
 Once **All done.** is printed to your Terminal, the update process is complete, and you can delete the Roundcube directory and tarball from your home directory.
 
-        rm -rfd roundcubemail-1.1.1 roundcubemail-1.1.1.tar.gz
+        rm -rfd roundcubemail-1.1.3 roundcubemail-1.1.3.tar.gz
 
 ## Conclusion
 
