@@ -2,11 +2,11 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'This is a starting point of best practices for hardening a production server. Topics include user accounts, firewall, SSH and disabling unused network services.'
+description: 'This is a starting point of best practices for hardening a production server. Topics include user accounts, an iptables firewall, SSH and disabling unused network services.'
 keywords: 'security,secure,firewall,ssh,add user,quick start'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['securing-your-server/']
-modified: 'Tuesday, November 10th, 2015'
+modified: 'Monday, November 30th, 2015'
 modified_by:
   name: Linode
 published: 'Friday, February 17th, 2012'
@@ -21,7 +21,7 @@ Keeping your software up to date is the single biggest security precaution you c
 
 ### Automatic Security Updates
 
-There are many opposing arguments for and against automatic updates for servers. Nonetheless, CentOS, Debian, Fedora and Ubuntu can be automatically updated to various extents. [Fedora's Wiki](https://fedoraproject.org/wiki/AutoUpdates#Why_use_Automatic_updates.3F) has a good breakdown of the pros and cons, but if you limit updates to those for security issues, the risk of using automatic updates will be minimal.
+There are opposing arguments for and against automatic updates on servers. Nonetheless, CentOS, Debian, Fedora and Ubuntu can be automatically updated to various extents. [Fedora's Wiki](https://fedoraproject.org/wiki/AutoUpdates#Why_use_Automatic_updates.3F) has a good breakdown of the pros and cons, but if you limit updates to those for security issues, the risk of using automatic updates will be minimal.
 
 The practicality of automatic updates must be something which you judge for yourself because it comes down to what *you* do with your Linode. Bear in mind that automatic updates apply only to packages sourced from repositories, not self-compiled applications. You may find it worthwhile to have a test environment which replicates your production server. Updates can be applied there and reviewed for issues before being applied to the live environment.
 
@@ -33,7 +33,7 @@ The practicality of automatic updates must be something which you judge for your
 
 ## Add a Limited User Account
 
-Up to this point, you have been logging in to the Linode as the `root` user. The concern here is that root has unlimited privileges and can execute *any* command--even one that could accidentally break your server. For this reason and others, we recommend creating a limited user account and using that at all times. Administrative tasks will be done using `sudo` to temporarily elevate your limited user's privileges.
+Up to this point, you have been logging in to your Linode as the `root` user. The concern here is that `root` has unlimited privileges and can execute *any* command--even one that could accidentally break your server. For this reason and others, we recommend creating a limited user account and using that at all times. Administrative tasks will be done using `sudo` to temporarily elevate your limited user's privileges so you can administer your server without logging in as root.
 
 To add a new user, [log in to your Linode](/docs/getting-started#sph_logging-in-for-the-first-time) via SSH.
 
@@ -67,11 +67,11 @@ Log back in to your Linode as your new user. Replace `example_user` with your us
 
     ssh example_user@123.456.78.9
 
-Now you can administer your Linode with the new user account instead of `root`. Superuser commands can now be prefaced with `sudo`; for example, `sudo iptables -L`. Nearly all superuser commands can be executed with `sudo`, and all commands executed with `sudo` will be logged to `/var/log/auth.log`.
+Now you can administer your Linode from your new user account instead of `root`. Superuser commands can now be prefaced with `sudo`; for example, `sudo iptables -L`. Nearly all superuser commands can be executed with `sudo`, and all commands executed with `sudo` will be logged to `/var/log/auth.log`.
 
 ## Harden SSH Access
 
-By default, password authentication is used to connect to your Linode via SSH. A cryptographic key pair is more secure because a private key takes the place of a password, which is generally much more difficult to brute-force. In this section we'll create a key pair and configure the Linode to stop accepting passwords.
+By default, password authentication is used to connect to your Linode via SSH. A cryptographic key pair is more secure because a private key takes the place of a password, which is generally much more difficult to brute-force. In this section we'll create a key pair and configure the Linode to not accept passwords for SSH logins.
 
 ### Create an Authentication Key-pair
 
@@ -117,7 +117,8 @@ By default, password authentication is used to connect to your Linode via SSH. A
 
 1.  Now log back into your Linode. If you specified a passphrase for your RSA key, you'll need to enter it.
 
-2.  Disable SSH password authentication. This requires all users connecting via SSH to use key authentication.
+2.  Disallow root logins over SSH. This requires all SSH connections be by non-root users. Once a limited user account is connected, administrative privileges are accessible either by using `sudo` or changing to a root shell using `su -`.
+
 
     {: .file-excerpt}
     /etc/ssh/sshd_config
@@ -127,11 +128,7 @@ By default, password authentication is used to connect to your Linode via SSH. A
         PermitRootLogin no
         ~~~
 
-    {: .caution }
-    >
-    >You may want to leave password authentication enabled if you connect to your Linode from many different computers. This will allow you to authenticate with a password instead of generating and uploading a key pair for every device.
-
-3.  Disallow root logins over SSH. This means that you must first SSH into your Linode as a limited user and then either run administrative commands with `sudo`, or change user to root using `su`.
+3.  Disable SSH password authentication. This requires all users connecting via SSH to use key authentication. Depending on the Linux distribution, the line `PasswordAuthentication` may need to be added, or uncommented by removing the leading #.
 
     {: .file-excerpt}
     /etc/ssh/sshd_config
@@ -140,17 +137,17 @@ By default, password authentication is used to connect to your Linode via SSH. A
         PasswordAuthentication no
         ~~~
 
-        {: .note}
-        >
-        >Depending on the Linux distribution the line `PasswordAuthentication` may need to be added, or uncommented by removing the leading #.
+    {: .note}
+    >
+    >You may want to leave password authentication enabled if you connect to your Linode from many different computers. This will allow you to authenticate with a password instead of generating and uploading a key pair for every device.
 
 4.  Restart the SSH service to load the new configuration.
 
-    If your Linux distribution uses systemd (CentOS 7, Debian 8, Fedora):
+    If you’re using a Linux distribution which uses systemd (CentOS 7, Debian 8, Fedora, Ubuntu 15.10+)
 
         sudo systemctl restart sshd
 
-    If your distro uses System V or Upstart (CentOS 6, Debian 7, Ubuntu 14.04):
+    If your init system is SystemV or Upstart (CentOS 6, Debian 7, Ubuntu 14.04):
 
         sudo service ssh restart
 
