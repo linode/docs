@@ -6,7 +6,7 @@ description: 'Installing Roundcube and its dependencies on Ubuntu 14.04 LTS'
 keywords: '14.04,IMAP,LTS,Roundcube,Ubuntu,webmail'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 published: 'N/A'
-modified: 'Sunday, November 30th, 2015'
+modified: 'Sunday, November 29th, 2015'
 title: 'Installing Roundcube on Ubuntu 14.04'
 contributor:
     name: 'Sean Webber'
@@ -204,13 +204,13 @@ Highlight the text below, right click on it and select **Copy**.
 
 Within your Terminal window, use the arrow keys on your keyboard to move your cursor to the end of the file. Right click on the Terminal and select **Paste**. The text above will appear inside of nano. Replace `example.com` to match your configuration.
 
-Press the `CONTROL + X` keys simultaneously for a moment. The bottom of nano will ask you this:
+Press the **CTRL+X** keys simultaneously for a moment. The bottom of nano will ask you this:
 
         Save modified buffer (ANSWERING "No" WILL DESTROY CHANGES) ?                    
         Y Yes
         N No           ^C Cancel
 
-Press the `Y` key on your keyboard to save your changes and force.
+Press the **Y** key on your keyboard to save your changes and force.
 
 ## Testing Roundcube’s Installation
 
@@ -252,7 +252,7 @@ Execute the `/var/www/html/example.com/public_html/roundcube/bin/installto.sh` P
         cd roundcubemail-1.1.3
         sudo php bin/installto.sh /var/www/html/example.com/public_html/roundcube
 
-The script will ask you if you are *really* sure you want to upgrade Roundcube before it begins. You need to type the letter `y` followed by the `ENTER` or `RETURN` key to start the upgrade process. A successful upgrade will show something similar to this in your Terminal:
+The script will ask you if you are *really* sure you want to upgrade Roundcube before it begins. You need to press the **Y** key followed by **ENTER** or **RETURN** to start the upgrade process. A successful upgrade will show something similar to this in your Terminal:
 
         Upgrading from 1.1.3. Do you want to continue? (y/N)
         y
