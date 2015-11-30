@@ -89,6 +89,10 @@ When a Ubiquiti UniFi device powers up for the first time (or when it's unconfig
 
 If not, flush your DNS cache, and reboot your routers and workstation. Still no dice? Double check your configuration options and check for typos.
 
+{: .caution}
+>
+> If any outbound ports are blacklisted or blocked by your firewall, make sure ports 3478, 8080, 8081, 8443, and 8843 to your Linode are whitelisted and accessible. Any of those ports being blocked will render your UniFi Controller unreachable from UniFi devices.
+
 ## Setting Up UniFi Controller
 
 ### Plug in your UniFi devices
