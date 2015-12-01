@@ -21,30 +21,30 @@ UFW, or *uncomplicated firewall*, is a frontend for managing firewall rules on y
 1.  Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
-        
+
 2.  Install UFW:
 
         sudo apt-get install ufw
-        
+
 3.  Start and enable UFW:
 
     -   On Debian 8/Ubuntu 15.04:
-    
+
             sudo systemctl start ufw
-            sudo systemctl enable ufw
-            
+            sudo ufw enable
+
     -   On Debian 7/Ubuntu 14.04:
-    
+
             sudo service ufw start
-            sudo service ufw enable
-            
+            sudo ufw enable
+
 
 ### Arch Linux
 
 1.  Update your system:
 
         sudo pacman -Syu
-        
+
 2.  Install UFW:
 
         sudo pacman -S ufw
@@ -63,7 +63,7 @@ In general, most systems will need a certain amount of ports open for connection
 
     sudo ufw default allow outgoing
     sudo ufw default deny incoming
-        
+
 The `ufw default` command also allows for the use of the `reject` parameter.
 
 {:.caution}
@@ -76,25 +76,25 @@ Rules can be added in two ways: By denoting the **port number** or by using the 
 For example, to allow both incoming and outgoing connections on port 22 for SSH, you can run:
 
     sudo ufw allow ssh
-    
+
 You can also run:
 
     sudo ufw allow 22
-    
+
 Similarly, to **deny** traffic on a certain port (in this example, 111) you would only have to run:
 
     sudo ufw deny 111
-    
+
 To farther fine-tune your rules, you can also allow packets based on TCP or UDP. The following will allow TCP packets on port 80:
 
     sudo ufw allow 80/tcp
     sudo ufw allow http/tcp
-    
+
 Whereas this will allow UDP packets on 1725:
 
     sudo ufw allow 1725/udp
-    
-    
+
+
 ### Advanced Rules
 
 Along with allowing or denying based solely on port, UFW also allows you to allow/block by IP addresses, subnets, and a IP address/subnet/port combinations.
@@ -102,24 +102,24 @@ Along with allowing or denying based solely on port, UFW also allows you to allo
 To allow connections from an IP address:
 
     sudo ufw allow from 123.45.67.89
-    
+
 To allow connections from a specific subnet:
 
     sudo ufw allow from 123.45.67.89/24
-    
+
 To allow a specific IP address/port combination:
 
     sudo ufw allow from 123.45.67.89 to any port 22 proto tcp
-    
+
 `proto tcp` can be removed or switched to `proto udp` depending upon your needs, and all instances of `allow` can be changed to `deny` as needed.
 
-    
+
 ### Removing Rules
 
 To remove a rule, add `delete` before the rule implementation. If you no longer wished to allow HTTP traffic, you could run:
 
     sudo ufw delete allow 22
-    
+
 Deleting also allows the use of service names.
 
 
@@ -137,7 +137,7 @@ An additional configuration file is located at `/etc/default/ufw`. From here IPv
 You can check the status of UFW at any time with the command: `sudo ufw status`. This will show a list of all rules, and whether or not UFW is active:
 
     Status: active
-    
+
     To                         Action      From
     --                         ------      ----
     22                         ALLOW       Anywhere
@@ -153,23 +153,23 @@ You can check the status of UFW at any time with the command: `sudo ufw status`.
 With your chosen rules in place, your initial run of `ufw status` will probably output `Status: inactive`. To enable UFW and start your firewall, run:
 
     sudo ufw enable
-    
+
 Similarly, to disable the firewall, run:
 
     sudo ufw disable
-    
+
 ## Logging
 
 You can enable logging with the command:
 
     sudo ufw logging on
-    
+
 Log levels can be set by running `sudo ufw logging low|medium|high`, selecting either `low`, `medium`, or `high` from the list. The default setting is `low`.
-    
+
 A normal log entry will resemble the following, and will be located at `/var/logs/ufw`:
 
     Sep 16 15:08:14 <hostname> kernel: [UFW BLOCK] IN=eth0 OUT= MAC=00:00:00:00:00:00:00:00:00:00:00:00:00:00 SRC=123.45.67.89 DST=987.65.43.21 LEN=40 TOS=0x00 PREC=0x00 TTL=249 ID=8475 PROTO=TCP SPT=48247 DPT=22 WINDOW=1024 RES=0x00 SYN URGP=0
-    
+
 The initial values list the date, time, and hostname of your Linode. Additional important values include:
 
 -   **[UFW BLOCK]:** This location is where the description of the logged event will be located. In this instance, it blocked a connection.
