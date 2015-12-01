@@ -5,20 +5,20 @@ author:
 description: 'Use UFW (Ucomplicated Firewall) to manage your firewall on Ubuntu, Debian, or Arch Linux; this guide contains instructions for setting up default rules, adding/removing rules, setting up logging, and some advanced features.'
 keywords: 'ufw,uncomplicated firewall,ubuntu ufw,linux ufw,ufw tutorial,ubuntu firewall,iptables,networking,firewalls,filtering,firewall setup,ubuntu,debian,arch'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Tuesday, November 17th, 2015
+modified: Tuesday, December 1st, 2015
 modified_by:
   name: Linode
 published: 'Tuesday, November 17th, 2015'
 title: How to Configure a Firewall with UFW
 ---
 
-UFW, or *uncomplicated firewall*, is a frontend for managing firewall rules on your Ubuntu, Debian, or Arch servers. UFW is used through the command line (although has GUIs available), and aims to make firewall configuration easy (or uncomplicated).
+UFW, or *uncomplicated firewall*, is a frontend for managing firewall rules Arch Linux, Debian or Ubuntu. UFW is used through the command line (although has GUIs available), and aims to make firewall configuration easy (or, uncomplicated).
 
 ## Before You Begin
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the Creating a Firewall section--this guide is an introduction to using UFW, which is a separate method of controlling a firewall than iptables.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the Creating a Firewall section--this guide is an introduction to using UFW, which is a separate method of controlling a firewall than iptables commands.
 
 3.  Update your system.
 
@@ -33,15 +33,9 @@ UFW, or *uncomplicated firewall*, is a frontend for managing firewall rules on y
 
 ## Installing UFW
 
-UFW is included in Ubuntu by default but must be installed in Arch and Debian. Debian will start UFW's systemd unit automatically and enable it to start on reboots, but Arch will not. This is not the same as telling UFW to enable the firewall rules, as enabling UFW with systemd or upstart only tells the init system to switch on the UFW daemon.
+UFW is included in Ubuntu by default but must be installed in Arch and Debian. Debian will start UFW's systemd unit automatically and enable it to start on reboots, but Arch will not. *This is not the same as telling UFW to enable the firewall rules*, as enabling UFW with systemd or upstart only tells the init system to switch on the UFW daemon.
 
 By default, UFW's rulesets are blank so it is not enforcing any firewall rules--even when the daemon is running. Enforcing your firewall ruleset is covered [further down the page](http://localhost:4567/docs/security/firewalls/configure-firewall-with-ufw#enable-the-firewall).
-
-### Debian / Ubuntu
-        
-1.  Install UFW
-
-        sudo apt-get install ufw
 
 ### Arch Linux
 
@@ -54,12 +48,18 @@ By default, UFW's rulesets are blank so it is not enforcing any firewall rules--
         sudo systemctl start ufw
         sudo systemctl enable ufw
 
+### Debian / Ubuntu
+        
+1.  Install UFW
+
+        sudo apt-get install ufw
+
 
 ## Using UFW
 
 ### Set Default Rules
 
-In general, most systems will need a certain amount of ports open for connections, and a vast majority of ports closed. To start with an easy basis of rules, the `ufw default` command can be used to set the default response to incoming and outgoing connections. To deny all incoming and allow all outgoing connections, run:
+Most systems will need a only a small amount of ports open for incoming connections, and all remaining ports closed. To start with an easy basis of rules, the `ufw default` command can be used to set the default response to incoming and outgoing connections. To deny all incoming and allow all outgoing connections, run:
 
     sudo ufw default allow outgoing
     sudo ufw default deny incoming
