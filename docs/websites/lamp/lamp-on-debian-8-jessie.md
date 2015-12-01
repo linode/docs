@@ -1,15 +1,16 @@
 ---
 author:
-  name: Elle Krout
-  email: ekrout@linode.com
-description: 'Get your website or web application on the web by setting up Apache, MySQL, and PHP'
-keywords: 'debian 8 LAMP server,debian LAMP guide,LAMP howto,lamp,debian,debian 8,websites,apache,mysql,php,apache 2.4,hosting a website'
+  name: Linode
+  email: docs@linode.com
+description: 'Get your website or web application online by setting up Apache, MySQL, and PHP'
+keywords: 'debian 8 LAMP server,debian LAMP,LAMP howto,lamp,debian,debian 8,websites,apache,mysql,php,apache 2.4,lamp debian'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Monday, June 29th, 2015
+modified: Tuesday, December 1st, 2015
 modified_by:
-  name: Elle Krout
-published: ''
-title: 'LAMP Server on Debian 8 (Jessie)'
+  name: Alex Fornuto
+published: 'Monday, June 29th, 2015'
+title: 'LAMP on Debian 8 (Jessie)'
+alias: ['websites/lamp/lamp-server-debian-8/']
 external_resources:
  - '[Debian Linux Home Page](http://www.debian.org/)'
  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.4/)'
@@ -17,7 +18,7 @@ external_resources:
  - '[PHP Documentation](http://www.php.net/docs.php)'
 ---
 
-Setting up a LAMP (Linux, Apache, MySql, PHP) stack on your server will allow for the creation and hosting of websites and web applications. This guide will provide set-up and configuration instructions to create a full-featured LAMP Stack on Debian 8 (Jessie).
+Setting up a LAMP (Linux, Apache, MySql, PHP) stack on your server will allow for the creation and hosting of websites and web applications. This guide shows you how to install a LAMP stack on Debian 8 (Jessie).
 
 {: .note }
 >
@@ -106,7 +107,7 @@ There can be as many virtual hosts files as needed to support the amount of doma
 
     {: .file }
     /etc/apache2/sites-available/example.com.conf
-    :   ~~~ apache
+    :   ~~~ conf
         <VirtualHost *:80> 
              ServerAdmin webmaster@example.com
              ServerName example.com
@@ -121,7 +122,7 @@ There can be as many virtual hosts files as needed to support the amount of doma
 
     {: .file }
     /etc/apache2/sites-available/example.org.conf
-    :   ~~~ apache
+    :   ~~~ conf
         <VirtualHost *:80> 
              ServerAdmin webmaster@example.org     
              ServerName example.org

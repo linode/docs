@@ -2,14 +2,15 @@
 author:
     name: Joel Kruger
     email: docs@linode.com
-description: 'Creating a LAMP stack on a CentOS 7 Linode.'
-keywords: 'LAMP,CentOS,CentOS 7,apache,mysql,php'
+description: 'Create a LAMP stack on a CentOS 7 Linode.'
+keywords: 'LAMP,CentOS,CentOS 7,apache,mysql,php,centos lamp'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: Monday, June 29th, 2015
 modified_by:
-    name: Elle Krout
-published: 'Tuesday, January 13th, 2015'
-title: LAMP Server on CentOS 7
+    name: Alex Fornuto
+published: 'Tuesday, December 1st, 2015'
+title: LAMP on CentOS 7
+alias: ['websites/lamp/lamp-server-on-centos-7/']
 external_resources:
  - '[CentOS Linux Home Page](http://www.centos.org/)'
  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)'
@@ -17,7 +18,7 @@ external_resources:
  - '[PHP Documentation](http://www.php.net/docs.php)'
 ---
 
-A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used to prepare servers for hosting web content. This guide provides step-by-step instructions for installing a full-featured LAMP stack on a CentOS 7 system.
+A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used for hosting web content. This guide shows you how to install a LAMP stack on a CentOS 7 server.
 
 {: .note}
 >
@@ -39,7 +40,9 @@ A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used to prepare s
         sudo yum update
 
 
-## Install and Configure Apache
+## Apache
+
+### Install and Configure
 
 1.  Install Apache 2.4:
 
@@ -58,7 +61,6 @@ A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used to prepare s
     :   ~~~ conf
         KeepAlive Off
 
-        ...
 
         <IfModule prefork.c>
             StartServers        2
@@ -112,7 +114,9 @@ There are different ways to set up virtual hosts; however, the method below is r
     You can now visit your domain to test the Apache server; a default Apache page will be visible.
 
 
-## Install and Configure MySQL/MariaDB
+## MySQL / MariaDB
+
+### Install and Configure
 
 MySQL is replaced with MariaDB in CentOS 7. MariaDB is a popular drop-in replacement for MySQL.
 
@@ -159,7 +163,9 @@ MySQL is replaced with MariaDB in CentOS 7. MariaDB is a popular drop-in replace
 With Apache and MariaDB installed, you are now ready to move on to installing PHP to provide scripting support for your web pages.
 
 
-## Installing and Configuring PHP
+## PHP
+
+###  Install and Configure
 
 1.  Install PHP:
 
