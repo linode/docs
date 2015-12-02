@@ -68,7 +68,7 @@ external_resources:
 
 	For more information on how to configure Carbon storage, see the section [storage-schemas.conf](http://graphite.readthedocs.org/en/latest/config-carbon.html#storage-schemas-conf) in Graphite's documentation.
 
-2.  Copy the defaut aggregation configuration to `/etc/carbon` so we can configure our own settings:
+2.  Copy the default aggregation configuration to `/etc/carbon` so we can configure our own settings:
 
 		sudo cp /usr/share/doc/graphite-carbon/examples/storage-aggregation.conf.example /etc/carbon/storage-aggregation.conf
 
@@ -260,7 +260,7 @@ external_resources:
 		</VirtualHost>
 		~~~
 
-7.  Enable grafana site configuration with:
+7.  Enable Grafana's site configuration with:
 
 		sudo a2ensite apache2-grafana
 
