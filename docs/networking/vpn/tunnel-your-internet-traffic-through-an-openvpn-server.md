@@ -14,9 +14,10 @@ external_resources:
  - '[Official OpenVPN Documentation](https://openvpn.net/index.php/open-source/documentation/howto.html)'
 ---
 
-This gude will show you how to configure an OpenVPN server to forward out to the interent all traffic it recieves from client devices, then route the responses back appropriately. A common use case for a VPN tunnel is to access the internet from behind it to evade censorship or geolocation by shielding your computer's public IP address to sites and services you connect to.
 
-Additionally, a VPN tunnel can protect your traffic from untrusted internet service providers, WiFi hotspots and other vulnerable points for packet injection and traffic shaping.
+This gude will show you how to configure an OpenVPN server to forward out to the interent all traffic it receives from client devices, then route the responses back appropriately.
+
+A common use case for a VPN tunnel is to access the internet from behind it to evade censorship or geolocation while shielding your computer's web traffic to internet service providers, untrusted WiFi hotspots, and sites and services you connect to.
 
 ## Before You Begin
 
@@ -30,7 +31,7 @@ OpenVPN's server-side configuration file is `/etc/openvpn/server.conf` and it re
 
 1.  Tell OpenVPN that it should make all clients send internet traffic through it.
 
-    {: .file-exceprt}
+    {: .file-excerpt}
     /etc/openvpn/server.conf
     :   ~~~ conf
         # If enabled, this directive will configure
@@ -46,11 +47,13 @@ OpenVPN's server-side configuration file is `/etc/openvpn/server.conf` and it re
 
 2.  Push DNS resolvers to client devices.
 
-    Client-side DNS settings are ideal for preventing DNS leaks and will override those pushed by the OpenVPN server in this step. Google DNS is what's provided by the OpenVPN client software for Android, iOS, OS X and Windows. Google DNS can be disabled in all platforms, but desktop Linux, OS X and Windows also allow you to specify DNS resolvers of your choice.
+
+    Client-side DNS settings are ideal for preventing DNS leaks and will override those pushed by the OpenVPN server in this step. Google DNS is provided by the OpenVPN client software for Android, iOS, OS X and Windows, and while this can be disabled, Desktop Linux and Windows are the only platforms which allows you to change this if you prefer a different resolver. 
+
 
     If using the options below to push DNS resolvers to VPN clients, you can disable the Google DNS fallback on your clients (or leave it enabled as the fallback it was intended to be). [OpenDNS](https://www.opendns.com/) is provided by default but you can change this to whatever your preference.
 
-    {: .file-exceprt}
+    {: .file-excerpt}
     /etc/openvpn/server.conf
     :   ~~~ conf
         # Certain Windows-specific network settings
@@ -69,7 +72,8 @@ OpenVPN's server-side configuration file is `/etc/openvpn/server.conf` and it re
 
 ## Append Networking Rules
 
-In [part one](/docs/networking/vpn/set-up-a-hardened-openvpn-server) of this series, we set iptables rules so the OpenVPN server can only accept client connections, SSH and make system updates--all over IPv4, and [IPv6 was disabled](http://localhost:4567/docs/networking/vpn/set-up-a-hardened-openvpn-server#disable-ipv6) since OpenVPN does not support usung both transport layers simultaneously. Leaving IPv6 disabled here prevents leaking v6 traffic which would otherwise be sent separately from your VPN's v4 tunnel.
+
+In [part one](/docs/networking/vpn/set-up-a-hardened-openvpn-server) of this series, we set iptables rules so the OpenVPN server can only accept client connections, SSH and make system updates--all over IPv4, and [IPv6 was disabled](/docs/networking/vpn/set-up-a-hardened-openvpn-server#disable-ipv6) since OpenVPN does not support using both transport layers simultaneously. Leaving IPv6 disabled here prevents leaking v6 traffic which would otherwise be sent separately from your VPN's v4 tunnel.
 
 Since now we want the server to forward traffic out to the internet from clients, accept the responses and route them back to client machines, we must adjust the v4 firewall rules.
 

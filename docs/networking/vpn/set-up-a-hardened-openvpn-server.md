@@ -152,7 +152,7 @@ If you are exclusively using IPv4 on your VPN, IPv6 should be disabled unless yo
         COMMIT
         ~~~
 
-5.  Enforce the ruleset immeditately:
+5.  Enforce the ruleset immediately:
 
         sudo ip6tables-restore < /etc/iptables/rules.v6
 
@@ -180,7 +180,7 @@ For these next sections, you need a root shell.
 
 5.  The permissions of `/etc/openvpn/easy-rsa/keys` are `0700`, which do not allow for group or world access to the key and certificate files. For this reason, we'll keep `keys` as the storage location for server credentials but to do so, we must specify the absolute paths in OpenVPN's `server.conf`.
 
-    {: .file-exceprt}
+    {: .file-excerpt}
     /etc/openvpn/server.conf
     :   ~~~ conf
         # Any X509 key management system can be used.
@@ -200,7 +200,7 @@ For these next sections, you need a root shell.
 
 6.  The `vars` file in `/etc/openvpn/easy-rsa` contains presets used by the [easy-rsa scripts](https://github.com/OpenVPN/easy-rsa). Here you can specify identification information for your OpenVPN server's certificate authority which then will be passed to client certificates. Changing these fields is optional and you can always input them manually during certificate creation, but setting them here creates less work during client cert creation.
 
-    {: .file-exceprt}
+    {: .file-excerpt}
     /etc/openvpn/easy-rsa/vars
     :   ~~~ conf
         # These are the default values for fields
@@ -243,17 +243,20 @@ Depending on the size of your Linode, this will take about 5 minutes to complete
 
 {: .note }
 >
->To permanently change the default DH PEM size, edit the bit lengths in `vars` and `server.conf`. Then recreate the file. The DH PEM file can be arbitrily deleted and regenerated with no changes needed to server or client settings.
+>If you would prefer a stronger 4096 bit PEM, it will take longer to generate but otherwise incur unnoticeable overhead during connections on modern equipment. Replace `2048` in the command above with `4096`.
+>
+>To permanently change the default DH PEM size, edit the bit lengths in `vars` and `server.conf`. Then recreate the file. The DH PEM file can be arbitrarily deleted and regenerated with no changes needed to server or client settings.
+
 
 ### Harden OpenVPN
 
 An OpenVPN connection consists of two flow channels between the server and clients: the *Control Channel* and the *Data Channel*. A client connects to the server by initiating a TLS session over the control channel, in which credentials are exchanged between server and clients to establish the data channel. The data channel is the encrypted pipeline in which all traffic between server and clients is then transmitted.
 
-We'll make some further changes and additions to `server.conf` to strengthen the cryptography used in both channels and restrict the OpenVPN's daemon's priviledges. These settings can be applied independently of each other, so if you feel that a certain step adds unnecessary complexity, feel free to skip it.
+We'll make some further changes and additions to `server.conf` to strengthen the cryptography used in both channels and restrict the OpenVPN's daemon's privileges. With exception to steps 1 and 5 which go together, these settings can be applied independently of each other. If you feel that a certain step adds unnecessary complexity, feel free to skip it.
 
-1.  Require a matching HMAC signature for all packets involved in the TLS handshake between the server and connecting clients. Packets without this signature are dropped. Uncomment and edit the line: `tls-auth ta.key 0 # This file is secret`.
+1.  Require a matching HMAC signature for all packets involved in the TLS handshake between the server and connecting clients. Packets without this signature are dropped. Uncomment (by removing the `;`) and edit the line: `tls-auth ta.key 0 # This file is secret`.
 
-    {: .file-exceprt}
+    {: .file-excerpt}
     /etc/openvpn/server.conf
     :   ~~~ conf
     # For extra security beyond that provided
@@ -274,13 +277,14 @@ We'll make some further changes and additions to `server.conf` to strengthen the
 
         openvpn --genkey --secret /etc/openvpn/easy-rsa/keys/ta.key
 
+
 2.  Create a new limited user account for the OpenVPN daemon to run as and tell it to drop privileges to that account after startup. As an example, the name *openvpn_server* is used.
 
         adduser --system --shell /usr/sbin/nologin --no-create-home openvpn_server
 
-    Uncomment the `user` and `group` lines, and edit `user` with the username above.
+    Uncomment the `user` and `group` lines, and edit `user` with the username above  This tells the daemon to drop root privileges and switch to the `openvpn_server` user after startup.
 
-    {: .file-exceprt}
+    {: .file-excerpt}
     /etc/openvpn/server.conf
     :   ~~~ conf
     # It's a good idea to reduce the OpenVPN
@@ -402,7 +406,10 @@ Each client needs a configuration file defining the OpenVPN server's settings fo
 
         cipher AES-256-CBC
         auth SHA512
-        tls-cipher TLS-DHE-RSA-WITH-AES-256-GCM-SHA384:TLS-DHE-RSA-WITH-AES-128-GCM-SHA256:TLS-DHE-RSA-WITH-AES-256-CBC-SHA:TLS-DHE-RSA-WITH-CAMELLIA-256-CBC-SHA:TLS-DHE-RSA-WITH-AES-128-CBC-SHA:TLS-DHE-RSA-WITH-CAMELLIA-128-CBC-SHA
+
+    If you added any lines for Control Channel cipher suites to the server above (step 5 of [Harden OpenVPN](#harden-openvpn)), add those lines to `client.ovpn` too:
+
+    tls-cipher TLS-DHE-RSA-WITH-AES-256-GCM-SHA384:TLS-DHE-RSA-WITH-AES-128-GCM-SHA256:TLS-DHE-RSA-WITH-AES-256-CBC-SHA:TLS-DHE-RSA-WITH-CAMELLIA-256-CBC-SHA:TLS-DHE-RSA-WITH-AES-128-CBC-SHA:TLS-DHE-RSA-WITH-CAMELLIA-128-CBC-SHA
 
 7.  Pack all the necessary client files into a tarball ready for transferring. The specific files we want are:
 
@@ -420,7 +427,7 @@ Each client needs a configuration file defining the OpenVPN server's settings fo
     >
     >Windows will need [7zip](http://www.7-zip.org/) to extract `.tar` files, or you can use the package [zip](http://linux.die.net/man/1/zip) to create a `.zip` archive.
 
-8.  We no longer need to be the root user so change back to your standard user:
+8.  We no longer need to be `root`, so exit back to your standard user:
 
         exit
 
@@ -463,7 +470,8 @@ That should return:
       CGroup: /system.slice/system-openvpn.slice/openvpn@server.service
            └─5725 /usr/sbin/openvpn --daemon ovpn-server --status /run/openvpn/server.status 10 --cd /etc/openvpn --config ...
 
-Use `sudo journalctl -f | grep vpn` to monitor the logs of your OpenVPN server in realtime; press **Control+X** to stop monitoring.
+
+Use `sudo journalctl -f | grep vpn` to monitor the logs of your OpenVPN server in realtime; press **Control+C** to stop monitoring.
 
 ## Next Steps
 
