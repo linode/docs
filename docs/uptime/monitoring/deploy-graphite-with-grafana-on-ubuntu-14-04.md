@@ -2,13 +2,13 @@
 author:
     name: Linode Community
     email: docs@linode.com
-description: 'Graphite is an enterprise-level monitoring tool reknown for its performance on systems with limited resources. It stores numeric time-series data and renders graphs of this data on demand. This guide provides an introduction to installation and basic setup of Graphite together with Grafana.'
-keywords: 'graphite,grafana,monitor,monitoring,analytics'
+description: 'Graphite is an enterprise-level monitoring tool renowned for its performance on systems with limited resources. It stores numeric time-series data and renders graphs of this data on demand. This guide provides an introduction to the installation and basic setup of Graphite together with Grafana.'
+keywords: 'graphite,grafana,monitor,monitoring,monitoring tool,analytics'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: 'Tuesday, December 1st, 2015'
+modified: 'Wednesday, December 2nd, 2015'
 modified_by:
   name: Sergey Pariev
-published: 'Tuesday, December 1st, 2015'
+published: 'Wednesday, December 2nd, 2015'
 title: 'Deploy Graphite with Grafana on Ubuntu 14.04'
 contributor:
   name: Sergey Pariev
@@ -20,10 +20,10 @@ external_resources:
   - '[Adding Graphite data source to Grafana](http://docs.grafana.org/datasources/graphite/)'
 ---
 
-*This is a Linode Community guide. Write for us and earn $250 per published guide.*
+*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
 <hr>
 
-[Graphite](http://graphite.readthedocs.org/en/latest/index.html) is an enterprise-level monitoring tool reknown for performing well on systems with limited resources. It stores numeric time-series data and renders graphs of this data on demand. This guide provides an introduction to installation and basic setup of Graphite together with [Grafana](http://grafana.org/), a popular open source application for visualizing large-scale measurement data, on Ubuntu 14.04.
+[Graphite](http://graphite.readthedocs.org/en/latest/index.html) is an enterprise-level monitoring tool renowned for performing well on systems with limited resources. It stores numeric time-series data and renders graphs of this data on demand. This guide provides an introduction to the installation and basic setup of Graphite together with [Grafana](http://grafana.org/), a popular open source application for visualizing large-scale measurement data, on Ubuntu 14.04.
 
 ## Before You Begin
 
@@ -42,7 +42,7 @@ external_resources:
 
         sudo apt-get install build-essential graphite-web graphite-carbon python-dev apache2 libapache2-mod-wsgi libpq-dev python-psycopg2
 
-	During the installation of `graphite-carbon`, you will be asked if you want to remove the whisper database files if you were ever to uninstall Graphite. Answer **No** here. You can always remove the files later (which are located in `/var/lib/graphite/whisper`).
+	During the installation of `graphite-carbon`, you will be asked if you want to remove the whisper database files should you ever uninstall Graphite. Answer **No** to this prompt. You can always remove the files later (which are located in `/var/lib/graphite/whisper`).
 
 ## Configure Carbon
 
@@ -153,7 +153,7 @@ external_resources:
 
 		sudo cp /usr/share/graphite-web/apache2-graphite.conf /etc/apache2/sites-available
 
-2.  Change Graphite's port from 80 to 8080 (port 80 will be used for Grafana later on).
+2.  Change Graphite's port from 80 to 8080 (port 80 will be used for Grafana later).
 
 	{: .file}
 	/etc/apache2/sites-available/apache2-graphite.conf
@@ -161,7 +161,7 @@ external_resources:
 		<VirtualHost *:8080>		
     	~~~
 
-3.  Then make sure Apache is listening on port 8080. Add `Listen 8080` after `Listen 80` in `ports.conf`:
+3.  Make sure Apache is listening on port 8080. Add `Listen 8080` after `Listen 80` in `ports.conf`:
 
 	{: .file-excerpt}
 	/etc/apache2/ports.conf
@@ -182,7 +182,7 @@ external_resources:
 
 		sudo service apache2 reload
 
-	Now you should be able to access Graphite by going to your Linode's hostname or IP address in a web browser. You'll see the Graphite landing page as shown below:
+	Now you should be able to access Graphite by going to your Linode's hostname or IP address using port 8080 in a web browser (ex: `example_domain.com:8080`). You'll see the Graphite landing page as shown below:
 
 	![Graphite landing page](/docs/assets/graphite_landing_page.png)
 
@@ -192,7 +192,7 @@ external_resources:
 
 		for i in 4 6 8 16 2; do echo "test.count $i `date +%s`" | nc -q0 127.0.0.1 2003; sleep 6; done
 
-	Wait for the command prompt to be returned; refresh the page and you should see a new `test.count` metric in the tree on the left:
+2.  Wait for the command prompt to be returned. Refresh the page and you should see a new `test.count` metric in the tree on the left:
 
 	![Graphite test metric](/docs/assets/graphite_test_metric.png)
 
@@ -202,7 +202,7 @@ external_resources:
 
 		echo 'deb https://packagecloud.io/grafana/stable/debian/ wheezy main' |  sudo tee -a /etc/apt/sources.list
 
-2.  Add the [Package Cloud](https://packagecloud.io/grafana) key to install signed packages.
+2.  Add the [Package Cloud](https://packagecloud.io/grafana) key to install signed packages:
 
 		curl https://packagecloud.io/gpg.key | sudo apt-key add -
 
@@ -210,7 +210,7 @@ external_resources:
 
 		sudo apt-get update && sudo apt-get install grafana
 
-4.  Now configure Grafana to use the PostgreSQL database created earlier:
+4.  Configure Grafana to use the PostgreSQL database created earlier:
 
 	{: .file-excerpt}
 	/etc/grafana/grafana.ini
@@ -302,9 +302,9 @@ external_resources:
 
 	![Edit graph panel](/docs/assets/graphite_grafana_edit_graph.png)
 
-7.  Make sure the **graphite** data source you've created is chosen in in the dropdown box at the bottom right (marked as 1 in the screenshot below). In the dropdown at the top right corner (marked as 2), choose **Last 15 minutes**.
+7.  Make sure the **graphite** data source you've created is chosen in the dropdown box at the bottom right (marked as 1 in the screenshot below). In the dropdown at the top right corner (marked as 2), choose **Last 15 minutes**.
 
-	Click **select metric**. Choose **test** and then **count** (marked as 3) to add the test metric you previously created. At this point, visualisation of the sample data should appear on the graph.
+	Click **select metric**. Choose **test** and then **count** (marked as 3) to add the test metric you previously created. At this point, the sample data should appear on the graph.
 
 	Finally, click the **Save** button (marked as 4) to save the dashboard you just created.
 
