@@ -2,8 +2,8 @@
 author:
     name: Linode Community
     email: docs@linode.com
-description: 'Install MySQL Workbench without Phpmyadmin to Administer Databases on a Linode'
-keywords: 'MySQL,phpmyadmin,MySQL workbench,administer database,Install MySQL'
+description: 'MySQL Workbench is a graphical tool for working with MySQL databases in a client/server model. As you explore and manipulate your data using Workbench, you will discover many more features and shortcuts that can make managing your databases easier.'
+keywords: 'MySQL,MySQL Workbench,workbench,administer database'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 published: 'Friday, December 4th, 2015'
 modified: Friday, December 4th, 2015
@@ -13,8 +13,8 @@ title: 'Deploy MySQL Workbench for Database Administion'
 contributor:
     name: Scott Somner
 external_resources:
- - '[Download MySQL Workbench](https://www.mysql.com/products/workbench/)'
- - '[Resetting MySQL Root Password](https://dev.mysql.com/doc/refman/5.0/en/resetting-permissions.html)'
+  - '[MySQL Workbench Documentation](https://dev.mysql.com/doc/workbench/en/)'
+  - '[Resetting MySQL Root Password](https://dev.mysql.com/doc/refman/5.0/en/resetting-permissions.html)'
 ---
 
 *This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
@@ -22,7 +22,7 @@ external_resources:
 
 This guide will show you how to get started using [MySQL Workbench](https://www.mysql.com/products/workbench/), a graphical tool for working with MySQL databases. Workbench is available for Linux, OS X and Windows, and runs directly on your desktop in a client/server model with your MySQL backend.
 
-MySQL Workbench is a very handy tool for database administration. This guide is only a start to its capabilities.  As you explore and manipulate your data using this tool, you'll discover many more features and shortcuts that can make managing your databases that much easier.
+MySQL Workbench is a very handy tool for database administration. This guide is only a start to its capabilities. As you explore and manipulate your data using this tool, you'll discover many more features and shortcuts that can make managing your databases that much easier.
 
 
 ## Before You Begin
