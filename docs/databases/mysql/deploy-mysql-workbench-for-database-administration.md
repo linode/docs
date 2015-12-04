@@ -9,7 +9,7 @@ published: 'Friday, December 4th, 2015'
 modified: Friday, December 4th, 2015
 modified_by:
     name: Linode
-title: 'Deploy MySQL Workbench for Database Administion'
+title: 'Deploy MySQL Workbench for Database Administration'
 contributor:
     name: Scott Somner
 external_resources:
