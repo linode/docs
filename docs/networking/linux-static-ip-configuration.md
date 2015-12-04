@@ -201,7 +201,7 @@ You must create the `/etc/sysconfig/network-scripts/ifcfg-eth0` file.
   PREFIX0=24
 
   # Specifying the gateway
-  GATEWAY0=198.51.100.1
+  GATEWAY=198.51.100.1
 
   # Adding a second public IP address.
   IPADDR1=192.0.2.6
