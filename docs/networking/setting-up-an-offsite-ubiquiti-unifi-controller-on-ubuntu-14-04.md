@@ -32,7 +32,7 @@ Pros:
 - VPN tunnels between multiple locations not necessary
 
 Cons:
-- Requires Enterprise-grade edge routers that support custom DHCP and DNS options
+- Requires Enterprise-grade edge router(s) that support custom DHCP and DNS options
 - When the internet is down, the controller becomes unreachable
 
 ## Prerequisites
@@ -82,7 +82,7 @@ To make up for this, we will use a DNS host override and DHCP option #43 to expl
 
 1. If you are unsure how to create a DNS host override on your routing devices, refer to your vendor's documentation (or Google search) to find out how. This feature is also called **DNS Sticky** or a **glue record** depending upon the device firmware and manufacturer.
 
-2. Create a DNS host override so that the hostname `unifi` *resolves* (forwards to) the FQDN or IP address of your Linode. In pfSense, this option can be found under the **Services >> DNS Resolver** menu in the **Host Overrides** section. Make sure to apply your changes.
+2. Create a DNS host override so that the hostname `unifi` *resolves* (forwards to) the FQDN or IP address of your Linode. In pfSense, this option can be found under the **Services > DNS Resolver** menu in the **Host Overrides** section. Make sure to apply your changes.
 
 ![Adding a DNS Host Override in pfSense](/docs/assets/unifi-controller-adding-dns-host-override-in-pfsense.png)
 
@@ -131,7 +131,7 @@ In pfSense, this option can be found under the **Services > DHCP Server** menu i
 
 ## Setting Up UniFi Controller
 
-### Plug in your UniFi devices
+### Plug in your UniFi Devices
 
 1. If you have not done so already, power up your devices and connect them to your LAN. Grab a beverage and take a few sips of it while they go through their boot processes.
 
