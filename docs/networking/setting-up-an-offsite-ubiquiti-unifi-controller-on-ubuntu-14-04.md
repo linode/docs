@@ -42,6 +42,10 @@ Cons:
 - The latest version of the Java Runtime Environment, since the UniFi Controller is written in Java. Follow our [Installing Java](/docs/applications/java/installing-java-on-ubuntu-14-04) guide to start sipping on some ~~coffee~~ Java
 - The `syslinux` package. If it is not installed on your Linode, execute the `sudo apt-get install syslinux` command to install it
 
+{: .note}
+>
+> You do **not** need a UniFi device to successfully complete this tutorial. If you do not own any, ignore any instructions referring to the devices themselves.
+
 ## Downloading and Installing UniFi Controller
 
 1. Get started by adding Ubiquiti's Debian (parent project of Ubuntu) software repository to your system.
