@@ -6,7 +6,7 @@ description: 'Installing the Java Runtime Environment + Developer Kit on Ubuntu 
 keywords: '14.04,Java,JAVA_HOME,OpenJDK,OpenJRE,LTS,Ubuntu'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 published: 'N/A'
-modified: 'Sunday, November 29th, 2015'
+modified: 'Sunday, December 6th, 2015'
 title: 'Installing Java on Ubuntu 14.04'
 contributor:
     name: 'Sean Webber'
@@ -57,9 +57,7 @@ This tutorial will guide you through installing the Java Runtime Environment and
 
         echo 'JAVA_HOME="`/usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java`"' | sudo tee --append /etc/environment
 
-4. Reload your environment variables.
-
-        sudo source /etc/environment
+4. Close the Terminal session with your Linode and restart it. This will reload your environment variables and apply the changes you just made in step three.
 
 5. Verify that your variable change took effect.
 
