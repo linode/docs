@@ -6,7 +6,7 @@ description: 'Installing and configuring an Offsite Ubiquiti UniFi Controller on
 keywords: '14.04,LTS,Management,Networking,Ubiquiti,Ubuntu,UniFi'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 published: 'N/A'
-modified: 'Saturday, December 5th, 2015'
+modified: 'Saturday, December 6th, 2015'
 title: 'Setting Up an Offsite Ubiquiti UniFi Controller on Ubuntu 14.04'
 contributor:
     name: 'Sean Webber'
