@@ -141,7 +141,7 @@ Fail2ban reads its configuration files so that all `.conf` files are read first 
 
 1.  Return to `/etc/fail2ban` directory and copy the `fail.conf` file to `jail.local`:
 
-    cp jail.conf jail.local
+        cp jail.conf jail.local
     
 2.  **If using CentOS or Fedora** open `jail.local` and set the `backend` to `systemd`. This is not necessary on Debian 8, even though it is a SystemD system.
 
