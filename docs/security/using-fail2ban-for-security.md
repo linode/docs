@@ -245,6 +245,7 @@ An average jail configuration will resemble the following:
 Although Fail2ban comes with a number of filters for use, you may want to further customize these filters or create your own to suit your needs. Fail2ban uses *regular expressions* (*regex*) to parse log files, looking for instances of attempted break-ins and password failures. Fail2ban uses Python's regex extensions.
 
 The best way to understand how failregex works is to write one. Although we do not advise having Fail2ban monitor your Wordpress' `access.log` on heavily-trafficked websites due to CPU concerns, it provides an instance of an easy-to-understand log file that you can use to learn about the creation of any failregex.
+
 ### Writing the Regex
 
 1.  Navigate to your website's `access.log` (generally located at `/var/www/example.com/logs/access.log`) and find a failed login attempt. It will resemble:
