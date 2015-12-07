@@ -13,9 +13,9 @@ published: 'Thursday, December 3rd, 2015'
 title: Linux Static IP Configuration
 ---
 
-Computer networks frequently use [DHCP](https://en.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol) to provide IP addresses, routing and DNS information to systems which join the network. Linodes use this protocol as well, however, DHCP can only assign one IP address per DHCP lease request.
+Computer networks, including Linode's, frequently use [DHCP](https://en.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol) to provide IP addresses, routing and DNS information to systems which join the network. DHCP can only assign one IP address per DHCP lease request.
 
-Additional IPs for your Linode can be assigned either by using [Network Helper](/docs/platform/network-helper) to automatically create a static networking configuration, or by configuring manually using the steps in this guide. Be aware that errors in network configurations may disconnect SSH sessions, so it is advised that you use the [Linode Shell (LISH)](/docs/networking/using-the-linode-shell-lish) when making such changes.
+Additional IP addresses can be assigned either by using [Network Helper](/docs/platform/network-helper) to automatically create a static networking configuration, or by configuring manually using the steps in this guide. Be aware that errors in network configurations may disconnect SSH sessions, so it is advised that you use the [Linode Shell (LISH)](/docs/networking/using-the-linode-shell-lish) when making such changes.
 
 
 ## General Network Configuration
@@ -24,9 +24,9 @@ You'll first need some information from the [Linode Manager](https://manager.lin
 
 [![Linode Manager / Remote Access](/docs/assets/1711-remote_access_ips_small.png)](/docs/assets/1710-remote_access_ips.png)
 
-Keep this information handy, because you'll need it as you configure your Linode's network settings. Since Linodes only have one virtual ethernet interface (**eth0**), you'll need to assign additional IPs to aliases on that interface (or example, **eth0:1**, **etho0:2**, etc.).
+Keep this information handy, because you'll need it as you configure your Linode's network settings. Since Linodes only have one virtual ethernet interface (**eth0**), you'll need to assign additional IPs to aliases on that interface (for example, **eth0:1**, **etho0:2**, etc.).
 
-TMost outbound connections will still originate from the IP assigned to the **eth0** interface but if you need server daemons to bind to a particular IP address, you'll need to specify the correct IP in their configuration files.
+Most outbound connections will still originate from the IP assigned to the **eth0** interface. If you need server daemons to bind to a particular IP address, specify the correct IP in their configuration files.
 
 
 ## Hostname and FQDN Settings
@@ -47,8 +47,8 @@ If you've migrated your Linode to a new datacenter, you may need to edit your `r
   ~~~
 
 *   **domain**: Sets the system's short hostname. The *search* domain also defaults to this domain as well since one is not explicity specified in the file.
-*   **nameserver**: The IPv4 or IPv6 address of those DNS resolvers from the Linode Manager you wish your system to use. You can specify as many nameservers as you like and use resolvers other than Linode's if you choose.
-*   **options rotate**: The *rotate* option spreads DNS queries among the listed nameservers instead of always using the first available.
+*   **nameserver**: The IPv4 or IPv6 address of those DNS resolvers from the Linode Manager. You can specify as many nameservers as you like and use resolvers other than Linode's if you choose.
+*   **options rotate**: The *rotate* option spreads DNS queries among the listed nameservers instead of always using the first available This option is useful in case any one DNS resolver experiences an outage.
 
 For more info on `resolv.conf`, see [its manual page](http://linux.die.net/man/5/resolv.conf).
 
@@ -231,7 +231,7 @@ Networking in Gentoo utilizes the `netifrc` utility.
 
 ## Disable Network Helper
 
-When assigning static IP addresses, [Network Helper](/docs/platform/network-helper) (not to be confused with [NetworkManager](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Deployment_Guide/ch-NetworkManager.html)) should be disabled to avoid it overwriting your `interfaces` file in the future.
+When assigning static IP addresses, [Network Helper](/docs/platform/network-helper) (not to be confused with [NetworkManager](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Deployment_Guide/ch-NetworkManager.html)) should be disabled to avoid overwriting your `interfaces` file in the future.
 
 1.  From the Linode Manager's **Dashboard**, choose **Edit** for the desired configuration profile.
 
