@@ -3,30 +3,28 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Computer networks frequently use DHCP to assign IP addresses, routing and DNS information to systems which join the network. Additional IPs can be assigned to virtual network interfaces for a fully static IP address configuration, including multiple static addresses.'
-keywords: 'static ip,linux networking,ifconfig,configure network,linux network,multiple ip,static'
+keywords: 'multiple ip addresses,linux static ip,DHCP,change ip address,network configuration'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['networking/configuring-static-ip-interfaces/ networking/linux-static-ip-configuration']
-modified: Thursday, December 3rd, 2015
+alias: ['networking/configuring-static-ip-interfaces/']
+modified: Tuesday, December 8th, 2015
 modified_by:
   name: Linode
-published: 'Thursday, December 3rd, 2015'
+published: 'Thursday, July 20th, 2014'
 title: Linux Static IP Configuration
 ---
 
 Computer networks frequently use [DHCP](https://en.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol) to provide IP addresses, routing and DNS information to systems which join the network. Linodes use this protocol as well, however, DHCP can only assign one IP address per DHCP lease request.
 
-Additional IPs for your Linode can be assigned either by using [Network Helper](/docs/platform/network-helper) to automatically create a static networking configuration, or by configuring manually using the steps in this guide. Be aware that errors in network configurations may disconnect SSH sessions, so it is advised that you use the [Linode Shell (LISH)](/docs/networking/using-the-linode-shell-lish) when making such changes.
+Additional IPs for your Linode can be assigned using either [Network Helper](/docs/platform/network-helper) to automatically create a static network, or manual configuration by following this guide. Be aware that errors in network configurations may disconnect SSH sessions, so it is advised that you use the [Linode Shell (LISH)](/docs/networking/using-the-linode-shell-lish) when making such changes.
 
 
 ## General Network Configuration
 
-You'll first need some information from the [Linode Manager](https://manager.linode.com/). Log in and click the **Remote Access** tab. There you'll find your Linode's **IPv4 and IPv6 addresses** (both public and private, if you assigned a private IP), **default gateways**, **netmasks** and **DNS resolvers**.
+You'll first need some information from the [Linode Manager](https://manager.linode.com/). Log in and go to the **Remote Access** tab. There you'll find your Linode's **IPv4 and IPv6 addresses** (both public and private, if you assigned a private IP), **default gateways**, **netmasks** and **DNS resolvers**.
 
 [![Linode Manager / Remote Access](/docs/assets/1711-remote_access_ips_small.png)](/docs/assets/1710-remote_access_ips.png)
 
-Keep this information handy, because you'll need it as you configure your Linode's network settings. Since Linodes only have one virtual ethernet interface (**eth0**), you'll need to assign additional IPs to aliases on that interface (or example, **eth0:1**, **etho0:2**, etc.).
-
-TMost outbound connections will still originate from the IP assigned to the **eth0** interface but if you need server daemons to bind to a particular IP address, you'll need to specify the correct IP in their configuration files.
+Keep this information handy, because you'll need it as you configure your Linode's network settings. Bear in mind that each Linode has only one virtual ethernet interface, *eth0*. Most outbound connections will still originate from the IP assigned to *eth0*, but if you need server daemons to bind to a particular IP address, you'll need to specify the correct IP in their configuration files.
 
 
 ## Hostname and FQDN Settings
@@ -47,8 +45,8 @@ If you've migrated your Linode to a new datacenter, you may need to edit your `r
   ~~~
 
 *   **domain**: Sets the system's short hostname. The *search* domain also defaults to this domain as well since one is not explicity specified in the file.
-*   **nameserver**: The IPv4 or IPv6 address of those DNS resolvers from the Linode Manager you wish your system to use. You can specify as many nameservers as you like and use resolvers other than Linode's if you choose.
-*   **options rotate**: The *rotate* option spreads DNS queries among the listed nameservers instead of always using the first available.
+*   **nameserver**: The IPv4 or IPv6 address of a DNS resolver from the Linode Manager you wish your system to use. You can specify as many nameservers as you like and use resolvers other than Linode's if you choose.
+*   **options rotate**: The *rotate* option spreads DNS queries among the listed nameservers instead of always using the first available. This is useful in case any one DNS resolver experiences an outage.
 
 For more info on `resolv.conf`, see [its manual page](http://linux.die.net/man/5/resolv.conf).
 
@@ -81,66 +79,59 @@ A default gateway should not be specified for private IP addresses. Additionally
 
 There are multiple ways to configure static IP addresses in Arch. See the [Static IP Address](https://wiki.archlinux.org/index.php/Network_Configuration#Static_IP_address) section of Arch's Network Configuration Wiki page.
 
-### CentOS 7 / Fedora 22
+### CentOS 7 / Fedora 22+
 
 Edit the interface's config file:
 
-{: .file }
+{: .file-excerpt }
 /etc/sysconfig/network-scripts/ifcfg-eth0
 :   ~~~ conf
-    # Configuration for eth0
-    DEVICE=eth0
-    BOOTPROTO=none
-    ONBOOT=yes
+    . . .
 
-    # Adding a public IP address.
-    # The netmask is taken from the PREFIX (where 24 is Public IP, 17 is Private IP)
-    IPADDR0=198.51.100.5
-    PREFIX0=24
-
-    # Specifying the gateway
     GATEWAY=198.51.100.1
 
-    # Add a second public IP address.
-    IPADDR1=192.0.2.6
-    PREFIX1=24
+    # Your primary public IP address.
+    # The netmask is taken from the PREFIX (where 24 is Public IP, 17 is Private IP).
+    IPADDR0=198.51.100.5
+    PREFIX0="24"
 
-    # Add a private IP address.
-    IPADDR2=192.168.133.234
-    PREFIX2=17
+    # To add a second public IP address:
+    IPADDR=198.51.100.10
+    PREFIX1="24"
+
+    # To add a private IP address:
+    IPADDR2=192.0.2.6
+    PREFIX2="17"
     ~~~
 
-### CentOS 6.5
+### CentOS 6
 
-CentOS 6.5 keeps the information for each interface in a separate file named `/etc/sysconfig/network-scripts/ifcfg-<interface_alias_name>` so you'll need to create one for eth0, *and* one for each alias (eth0:0, eth0:1, etc.).
+CentOS 6 needs interface aliases specified in its config files. This means that additional IPs are assigned to an alias you create for *eth0* (for example, *eth0:1*, *etho0:2*, etc.). CentOS 6 keeps each interface configuration in a separate file at `/etc/sysconfig/network-scripts/ifcfg-<interface_alias_name>` so you'll need to create one for *eth0*, **and** one for each alias you would like.
  
 {: .file }
 /etc/sysconfig/network-scripts/ifcfg-eth0
 :   ~~~ conf
-    # Configuration for eth0
+    # eth0
     DEVICE=eth0
     BOOTPROTO=none
-
-    # This line ensures that the interface will be brought up during boot.
     ONBOOT=yes
-    # eth0 - This is the main IP address that will be used for most outbound connections.
+    
+    # Your primary public IP address.
     IPADDR=198.51.100.5
     NETMASK=255.255.255.0
     GATEWAY=198.51.100.1
     ~~~
 
 {: .file }
-/etc/sysconfig/network-scripts/ifcfg-eth0:0
+/etc/sysconfig/network-scripts/ifcfg-eth0:1
 :   ~~~ conf
-    # Configuration for eth0:0
-    DEVICE=eth0:0
+    # eth0:1
+    DEVICE=eth0
     BOOTPROTO=none
-
-    # This line ensures that the interface will be brought up during boot.
     ONBOOT=yes
 
-    # eth0:0
-    IPADDR=192.0.2.6
+    # To add a second public IP address:
+    IPADDR=198.51.100.10
     NETMASK=255.255.255.0
     ~~~
 
@@ -148,75 +139,60 @@ CentOS 6.5 keeps the information for each interface in a separate file named `/e
 
 Edit the interface's config file:
 
-{: .file }
+{: .file-excerpt }
 /etc/network/interfaces
 :   ~~~ conf
-    # The loopback interface
-    auto lo
-    iface lo inet loopback
-
-    # We no longer need to use aliases (eg. eth0:0 eth0:1 eth0:2)
-    # This line ensures that the interface will be brought up during boot
-    auto eth0
-    allow-hotplug eth0
+    . . .
 
     # Your primary public IP address.
     iface eth0 inet static
-        address 198.51.100.5
-        netmask 255.255.255.0
+        address 198.51.100.5/24
         gateway 198.51.100.1
 
-    # Add a second public IP address.
+    # To add a second public IP address:
     iface eth0 inet static
-        address 192.0.2.6
-        netmask 255.255.255.0
+        address 198.51.100.10/24
 
-    # Add a private IP address.
+    # To add a private IP address:
     iface eth0 inet static
-        address 192.168.133.234
-        netmask 255.255.128.0
+        address 192.0.2.6/17
     ~~~
 
 ### Gentoo
 
-Networking in Gentoo utilizes the `netifrc` utility.
+Networking in Gentoo utilizes the `netifrc` utility. Addresses are specified in the `config_eth0` line and separated by spaces.
 
-{: .file }
+{: .file-excerpt }
 /etc/conf.d/net
 :   ~~~ conf
-    # Configuration for eth0 on multiple IP addresses
-    # Each IP address is separated by a space
-    config_eth0="198.51.100.5/24 192.0.2.6/24 192.168.133.234/17"
+    config_eth0="198.51.100.5/24 198.51.100.10/24 192.0.2.6/17"
     routes_eth0="default gw 198.51.100.1"
+    . . .
     ~~~
 
 ### OpenSUSE
 
 1.  Edit the interface's config file:
 
-    {: .file }
+    {: .file-excerpt }
     /etc/sysconfig/network/ifcfg-eth0
     : ~~~ conf
-      BOOTPROTO='static'
-      STARTMODE='onboot'
+      . . .
 
-      # This is the main IP address that will be used for most outbound connections
-      # The address, netmask and gateway are all necessary. The metric is not necessary, but
-      # ensures you always talk to the same gateway if you have multiple public IPs from
-      # different subnets.
+      # Your primary public IP address.
       IPADDR='198.51.100.5'
       NETMASK='255.255.255.0'
       GATEWAY="198.51.100.1"
 
-      # Add a second public IP address.
-      IPADDR1='192.0.2.6'
+      # Add a second public IP address:
+      IPADDR1='198.51.100.10'
       NETMASK1='255.255.255.0'
-      LABEL1='0'
+      LABEL1='1'
 
-      # Add a private IP address.
-      IPADDR2='192.168.133.234'
+      # Add a private IP address:
+      IPADDR2='192.0.2.6'
       NETMASK2='255.255.128.0'
-      LABEL2='1'
+      LABEL2='2'
       ~~~
 
 2.  You will also need to add your gateway to the network routes file:
@@ -244,12 +220,12 @@ When assigning static IP addresses, [Network Helper](/docs/platform/network-help
 
 ## Reboot your Linode
 
-It's best to **reboot your Linode from the Dashboard of the Linode Manager** rather than using `ifconfig` or an init system to restart the interfaces or distro's network services. This ensures that the new settings take effect without issues and that the networking services reliably start in full from the boot-up.
+It's best to **reboot your Linode from the Dashboard of the Linode Manager** rather than use `ifconfig` or an init system to restart the interfaces or distro's network services. This ensures that the new settings take effect without issues and that the networking services reliably start in full from the boot-up.
 
 
 ## Test Connectivity
 
-1.  Log back into your Linode over SSH.
+1.  Log back into your Linode through SSH.
 
 2.  Confirm that your `/etc/resolv.conf` exists and is correct.
 
