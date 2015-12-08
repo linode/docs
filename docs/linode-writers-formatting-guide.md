@@ -6,9 +6,9 @@ description: 'The Linode Guides & Tutorials style guide for article submissions'
 keywords: 'style guide,format,formatting,how to write,write for us,write for linode,linode library,submissions'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['style-guide/']
-modified: Wednesday, July 29th, 2015
+modified: Tuesday, December 8th, 2015
 modified_by:
-  name: Lionde
+  name: Linode
 published: 'Wednesday, January 15th, 2014'
 title: Linode Writer's Formatting Guide
 ---
@@ -52,6 +52,10 @@ Author Submission
     <hr>
     ~~~
 
+### Introduction
+
+Introductions should be concise; explain what the goal of the guide is and why. If you're introducing new software to the system, a brief description is advised.
+
 ### Before You Begin
 
 The *Before You Begin* section is a basic area of prerequisites a reader should have completed before proceeding further in your guide. Use the template below and edit or add as needed.
@@ -74,7 +78,7 @@ Author Submission
 
 Guides should be split into cohesive sections which flow from one sequence of events to the next. Each section title should be styled with an *H2* heading element, and each subsection with an *H3* heading. Capitalize each noun, adjective, verb and adverb in the article title, H2 and H3 headers.
 
-Each section/subsection should be split into numbered steps as needed, and scanning the *In This Guide* left sidebar should give the reader an overview of what will be done in the guide.
+Each section/subsection should be split into numbered steps as needed. Scanning the *In This Guide* left sidebar should give the reader an overview of what will be done in the guide.
 
 For example:
 
@@ -98,7 +102,7 @@ For example:
 
 {: .note}
 >
->The tab size is set to four, and soft tabs should be used. This can be configured in the settings of most text editors.
+>The tab size is set to four, and **only** soft tabs should be used. This can be configured in the settings of most text editors.
 
 ## Linode-Specific Formatting
 
@@ -171,9 +175,9 @@ If you wish to provide links to external sites for the user to review after goin
 
 Use the *file* format when adding the content of a whole file to a guide. If only a part of the file is being shown, use the *file excerpt* format. Exceptionally long files should be shown in parts and have the whole file linked, if needed.
 
-Within the file formatting, a code language or syntax should be defined next to the `:   ~~~` line to set how the text is displayed. A list of supported languages with examples can be found [here](http://rouge.jayferd.us/demo).
+Within the file formatting, a code language or syntax should be defined at the end of the `:   ~~~` line to set how the text is displayed. A list of supported languages with examples can be found [here](http://rouge.jayferd.us/demo).
 
-Example: File format
+**Example: File format**
 
     {: .file}
     /path/to/file
@@ -199,7 +203,7 @@ Example: File format
    </IfModule>
    ~~~
 
-Example: File Excerpt format
+**Example: File Excerpt format**
 
     {: .file-excerpt}
     /path/to/file
@@ -229,7 +233,7 @@ For example:
 
 ### Images
 
-Images should be in *.png* or *.jpeg* format. If an image is over 650 pixels wide, include both the original *and* one which is scaled down to 650 px. Image filenames cannot contain spaces and should use hyphens (-) to separate words instead of underscores (_).
+Images should be in *.png* or *.jpg* format. If an image is over 650 pixels wide, include both the original *and* one which is scaled down to 650 px. Image filenames cannot contain spaces and should use hyphens (-) to separate words instead of underscores (_).
 
 When adding an image, ensure that all identifying attributes such as names and IP addresses are removed, obfuscated, or replaced with dummy text, such as **example_user** or **192.0.2.0**. Be mindful of metadata in images taken from mobile devices.
 
