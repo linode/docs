@@ -13,9 +13,9 @@ published: 'Thursday, July 20th, 2014'
 title: Linux Static IP Configuration
 ---
 
-Computer networks frequently use [DHCP](https://en.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol) to provide IP addresses, routing and DNS information to systems which join the network. Linodes use this protocol as well, however, DHCP can only assign one IP address per DHCP lease request.
+Computer networks, including Linode's, frequently use [DHCP](https://en.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol) to provide IP addresses, routing and DNS information to systems which join the network. DHCP can only assign one IP address per DHCP lease request.
 
-Additional IPs for your Linode can be assigned using either [Network Helper](/docs/platform/network-helper) to automatically create a static network, or manual configuration by following this guide. Be aware that errors in network configurations may disconnect SSH sessions, so it is advised that you use the [Linode Shell (LISH)](/docs/networking/using-the-linode-shell-lish) when making such changes.
+Additional IP addresses can be assigned using either [Network Helper](/docs/platform/network-helper) to automatically create a static network, or manual configuration by following this guide. Be aware that errors in network configurations may disconnect SSH sessions, so it is advised that you use the [Linode Shell (LISH)](/docs/networking/using-the-linode-shell-lish) when making such changes.
 
 
 ## General Network Configuration
