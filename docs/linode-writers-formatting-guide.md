@@ -13,7 +13,7 @@ published: 'Wednesday, January 15th, 2014'
 title: Linode Writer's Formatting Guide
 ---
 
-Submitted articles should match the style and formatting of existing [Linode Guides & Tutorials](https://linode.com/docs/) documents. Submissions which adhere to the Linode Writer's Guide are more likely to be accepted than guides which do not, so review this page carefully.
+Submitted articles should match the style and formatting of existing [Linode Guides and Tutorials](https://linode.com/docs/) documents. Submissions which adhere to the Linode Writer's Guide are more likely to be accepted than guides which do not, so review this page carefully.
 
 If you have any questions, email <contribute@linode.com>.
 
@@ -23,7 +23,7 @@ Linode Guides and Tutorials are written in [PHP Markdown Extra](https://michelf.
 
 ### Header
 
-Linode Guides and Tutorials store metadata and other information in a header at the top of every page. Use the following as an outline for your own guide:
+Linode Guides and Tutorials store metadata and other information in a header at the top of every page. Use the following as a template for your own guide:
 
 {: .file-excerpt}
 Author Submission
@@ -32,7 +32,7 @@ Author Submission
     author:
       name: Linode Community
       email: docs@linode.com
-    description: 'Two to three sentences describing your article.'
+    description: 'Two to three sentences describing your guide.'
     keywords: 'list,of,keywords,and key phrases,'
     license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
     published: 'Weekday, Month 00th, 2015'
@@ -54,7 +54,7 @@ Author Submission
 
 ### Before You Begin
 
-The *Before You Begin* section is a basic area of prerequisites a reader should have completed before beginning your guide. Use the template below and edit or add as needed.
+The *Before You Begin* section is a basic area of prerequisites a reader should have completed before proceeding further in your guide. Use the template below and edit or add as needed.
 
 {: .file-excerpt}
 Author Submission
@@ -72,7 +72,7 @@ Author Submission
 
 ### Paragraph Structure
 
-Guides should be split into cohesive sections which flow from one sequence of events to the next. Each section title should be styled with an **H2** tag (two `#` symbols), and each subsection with an **H3** tag (three `#` symbols). Capitalize each noun, adjective, verb and adverb in article title, h2 and h3 headers.
+Guides should be split into cohesive sections which flow from one sequence of events to the next. Each section title should be styled with an *H2* heading element, and each subsection with an *H3* heading. Capitalize each noun, adjective, verb and adverb in the article title, H2 and H3 headers.
 
 Each section/subsection should be split into numbered steps as needed, and scanning the *In This Guide* left sidebar should give the reader an overview of what will be done in the guide.
 
@@ -110,13 +110,13 @@ For example: Lightweight Resource/Provider (LWRP)
 
 ### Bold and Italics
 
-Bold important terms and words that require emphasis, buttons, menu selections, and anything that you want to stand out to the reader.
+**Bold** buttons, menu selections, important terms and words that require emphasis and anything that you want to stand out to the reader.
 
-Italicize new terms and concepts the first time they are used.
+*Italicize* new terms and concepts the first time they are used.
 
 ### Cautions
 
-If a step in your guide can cause any major issues with the user's Linode or computer, a caution note regarding the issue should be included.
+If a step in your guide can cause any major issues with the user's Linode or computer, a caution note should be included.
 
 For example:
 
@@ -150,7 +150,7 @@ Inline commands should be denoted by backtics (**`**):
 
 ### Example IP Addresses
 
-Example IPs should use the documentation address blocks given in IETF [RFC 5737](https://tools.ietf.org/html/rfc5737):
+Example IPs should use the documentation address blocks given in IETF [RFC 5737](https://tools.ietf.org/html/rfc5737). These are:
 
 * 192.0.2.0/24
 * 198.51.100.0/24
@@ -171,7 +171,7 @@ If you wish to provide links to external sites for the user to review after goin
 
 Use the *file* format when adding the content of a whole file to a guide. If only a part of the file is being shown, use the *file excerpt* format. Exceptionally long files should be shown in parts and have the whole file linked, if needed.
 
-Within the file formatting, a code language or syntax can be defined next to the `:   ~~~` line to set how the text is displayed. A list of all available languages and examples can be found [here](http://rouge.jayferd.us/demo).
+Within the file formatting, a code language or syntax should be defined next to the `:   ~~~` line to set how the text is displayed. A list of supported languages with examples can be found [here](http://rouge.jayferd.us/demo).
 
 Example: File format
 
@@ -229,15 +229,15 @@ For example:
 
 ### Images
 
-Images should be in *.png* or *.jpeg* format. If an image is over 650 pixels wide, please send both the original and one which is scaled down to 650px. Image filenames cannot contain spaces, and should use an underscore to separate words.
+Images should be in *.png* or *.jpeg* format. If an image is over 650 pixels wide, include both the original *and* one which is scaled down to 650 px. Image filenames cannot contain spaces and should use hyphens (-) to separate words instead of underscores (_).
 
-When adding an image, ensure that all identifying attributes such as names and IP addresses are removed, obfuscated, or replaced with dummy text (such as **example_user** or **192.0.2.0**). Be mindful of image metadata in images taken from mobile devices.
+When adding an image, ensure that all identifying attributes such as names and IP addresses are removed, obfuscated, or replaced with dummy text, such as **example_user** or **192.0.2.0**. Be mindful of metadata in images taken from mobile devices.
 
-To insert an image up to 650px wide:
+To insert an image up to 650 px wide:
 
     ![description](/docs/assets/filename.png)
 
-To link a 650px wide image to its original size:
+To link a 650 px wide image to its original size:
 
     [![description](/docs/assets/filename_small.png)](/docs/assets/filename.png)
 
@@ -249,7 +249,7 @@ For example:
 
     Press **CTRL+N** then **X** to exit the program
 
->Press **CTRL+N** then **X** to exit the program
+>Press **CTRL+N**, then **X** to exit the program
 
 ### Links
 
@@ -257,13 +257,9 @@ Internal links to other Linode guides should be relative, starting at `/docs/`:
 
     [Getting Started](/docs/getting-started)
 
-External links should be formatted as:
+External links should be formatted as shown below and use HTTPS URLs whenever possible:
 
-    [Apache's Documentation](http://httpd.apache.org/docs/)
-
-{: .note}
->
->Try to use HTTPS URLs for external links whenever possible.
+    [Apache's Documentation](https://httpd.apache.org/docs/)
 
 ### Lists
 
@@ -289,7 +285,7 @@ Examples:
 
 ### Notes
 
-Notes should be important text that does not necessarily fit the narrative of the preceeding step or paragraph. Notes should be defined using the *note* format:
+Notes should be important text that does not necessarily fit the narrative of the preceeding step or paragraph.
 
     {: .note}
     >
@@ -301,21 +297,19 @@ Notes should be important text that does not necessarily fit the narrative of th
 
 ### Numerical Values
 
-- **1-10**: Written out as text (one, two, three...)
+- **1-10**: Written out as text (one, two, three, etc.)
 - **Greater than 10**: Numerical digits (11, 23, 46)
 
 ### Sentence Spacing
 
-Use single spaces between sentences--do not double-space.
+Use single spaces between sentences; do not double-space.
 
 ### Variables
 
-Variables that the reader will need to change for their system or preference should be formatted using backtics.
+Variables that the reader will need to change for their system or preference should be formatted using backtics. Do not include any brackets or parenthesis when using these temporary values in examples, as the reader may include them in their final version.
 
 For example:
 
     Change the `password` and `username` values.
 
 >Change the `password` and `username` values.
-
-Do not include any brackets or parenthesis when using these temporary values in examples, as the reader may include them in their final version.
