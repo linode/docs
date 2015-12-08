@@ -2,8 +2,8 @@
 author:
     name: Nashruddin Amin
     email: nashruddin.amin@gmail.com
-description: 'Gogs is a self-hosted Git service written in Go'
-keywords: 'gogs, go git service, golang, git'
+description: 'Install Gogs, a Self-hosted Git Service Written in Go, on Your Debian 8 (Jessie) Server, Using This Linode Guide.'
+keywords: 'gogs, go git service,golang,git,debian 8, nginx, postgresql'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 published: 'Friday, October 9th, 2015'
 modified: Friday, October 9th, 2015
@@ -23,17 +23,17 @@ external_resources:
 
 <hr>
 
-[Gogs](http://gogs.io) is a self-hosted Git service, similar with GitLab. It is written in [Go](http://golang.org) and aims to be the easiest and most painless way to set up self-hosted Git service. Gogs is one of the best choices if you need to set up a private Git repositories, but you don't want to pay for the private plans on other Git services.
+[Gogs](http://gogs.io) is a self-hosted Git service, similar to GitLab. It is written in [Go](http://golang.org) and aims to be the easiest and most painless way to set up self-hosted Git service. Gogs is one of the best choices if you need to set up a private Git repository, but don't want to pay for the private plans on other Git services.
 
-This tutorial shows how to install and setup Gogs using PostgreSQL for the database server and Nginx for the reverse proxy server. We will use `example.com` as the domain name for our site.
+This tutorial shows you how to install and configure Gogs, using PostgreSQL for the database server and Nginx for the reverse proxy server. You will use `example.com` as the domain name for your site.
 
 {: .note}
 >
 >This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
-## Before You Begin
+## Before Installing Gogs
 
-1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) and the Linode's [hostname is set](/docs/getting-started#setting-the-hostname).
+1.  Ensure that you have followed the [Getting Started](/docs/getting-started), [Securing Your Server](/docs/security/securing-your-server), and Linode's [hostname is set](/docs/getting-started#setting-the-hostname) guides.
 
 2.  Update your system:
 
@@ -43,7 +43,7 @@ This tutorial shows how to install and setup Gogs using PostgreSQL for the datab
 
         sudo apt-get install -y git
 
-4.  We will install Go and Gogs under the user `git`. Create the user:
+4.  When you install Go and Gogs, it will be under the user `git`. So, create that user:
 
         sudo adduser --disabled-login --gecos 'Gogs' git
 
@@ -61,7 +61,7 @@ In this section we will download the latest version of Go (version 1.5.1 at the 
         wget https://storage.googleapis.com/golang/go1.5.1.linux-amd64.tar.gz
         tar -C /home/git/local -xvzf go1.5.1.linux-amd64.tar.gz
 
-3.  Set the `GOPATH` environment variable to specify the location of our workspace. We will set the variables in our `.bashrc` file so they will be available everytime we enter the shell.
+3.  Set the `GOPATH` environment variable to specify the location of our workspace. We will set the variables in our `.bashrc` file, so they will be available everytime we enter the shell:
 
         echo 'export GOROOT=$HOME/local/go' >> $HOME/.bashrc
         echo 'export GOPATH=$HOME/go' >> $HOME/.bashrc
@@ -72,11 +72,11 @@ In this section we will download the latest version of Go (version 1.5.1 at the 
     >
     > We need to specify the `GOROOT` environment variable since we are installing Go to a custom location.
 
-4.  Check that Go is properly installed by typing:
+4.  Check that Go is properly installed:
 
         go version
 
-    You'll see the output like the following:
+    You'll see output that resembles the following:
 
         go version go1.5.1 linux/amd64
 
@@ -86,7 +86,7 @@ In this section we will download the latest version of Go (version 1.5.1 at the 
 
         go get -u github.com/gogits/gogs
 
-    This may take a few minutes, during which your console will appear unresponsive. 
+    This may take a few minutes during which your console will appear unresponsive. 
 
 2.  Build the Gogs binary:
 
@@ -97,7 +97,7 @@ In this section we will download the latest version of Go (version 1.5.1 at the 
 
         ./gogs web
 
-    It will start the web server and listen for HTTP connections on port 3000. Sample output:
+    It will start the web server and listen for HTTP connections on port 3000 while outputting something like this:
 
         2015/10/09 15:41:41 [W] Custom config (/home/git/go/src/github.com/gogits/gogs/custom/conf/app.ini) not found, ignore this if you're running first time
         2015/10/09 15:41:41 [T] Custom path: /home/git/go/src/github.com/gogits/gogs/custom
@@ -109,7 +109,7 @@ In this section we will download the latest version of Go (version 1.5.1 at the 
         2015/10/09 15:41:41 [I] Run Mode: Development
         2015/10/09 15:41:41 [I] Listen: http://0.0.0.0:3000
 
-    Open `http://youripaddress:3000` using your browser. Gogs will redirect the browser to the installation page. Since we haven't installed the database server yet, close the browser and stop the web server by pressing CTRL+C. We will return to this installation page after installing PostgreSQL and Nginx.
+    Open `http://youripaddress:3000` using your browser. Gogs will redirect the browser to the installation page. Since you haven't installed the database server yet, close the browser and stop the web server by pressing CTRL+C. You will return to this installation page after installing PostgreSQL and Nginx.
 
 4.  Exit from user `git`:
 
@@ -124,7 +124,7 @@ Using a database server for Gogs is completely optional. Feel free to skip this 
 
         sudo apt-get install -y postgresql postgresql-client libpq-dev
 
-2.  Open the PostgreSQL interactive terminal to create new database and user for Gogs:
+2.  Open the PostgreSQL interactive terminal to create a new database and user for Gogs:
 
         sudo -u postgres psql -d template1
 
@@ -143,7 +143,7 @@ Using a database server for Gogs is completely optional. Feel free to skip this 
 
         \password gogs
 
-    It will prompt you for the password and password confirmation. Take a note of this password, we will need it later when configuring Gogs.
+    It will prompt you for the password and password confirmation. Take note of this password, you will need it later when configuring Gogs.
 
 5.  Create new database for Gogs:
 
@@ -156,7 +156,7 @@ Using a database server for Gogs is completely optional. Feel free to skip this 
 
 ## Install Nginx
 
-We will use Nginx as the reverse proxy for Gogs so we can access Gogs using our domain name rather than using our host's IP address. In addition, we will let Nginx to handle the HTTPS for our Gogs site.
+We will use Nginx as the reverse proxy for Gogs, so we can access Gogs using our domain name rather than using our host's IP address. In addition, we will let Nginx handle the HTTPS for our Gogs site.
 
 1.  Create a [self-signed SSL certificate](/docs/security/ssl/how-to-make-a-selfsigned-ssl-certificate) or buy a [commercial SSL certificate](/docs/security/ssl/obtaining-a-commercial-ssl-certificate) from a certificate authority (CA).
 
@@ -164,7 +164,7 @@ We will use Nginx as the reverse proxy for Gogs so we can access Gogs using our 
 
         sudo apt-get install -y nginx
 
-3.  Set Nginx as the reverse proxy for Gogs. Using `sudo`, create new file named `/etc/nginx/sites-available/gogs`, and set the content as shown below:
+3.  Set Nginx as the reverse proxy for Gogs. Using `sudo`, create a new file named `/etc/nginx/sites-available/gogs`, and set the content as shown below:
 
     {: .file }
     /etc/nginx/sites-available/gogs
@@ -274,7 +274,7 @@ Set your domain and URL under the General Settings section:
 - **Domain** = `example.com`
 - **Application URL** = `https://example.com`
 
-Also you might want to setup an admin account at the bottom of the installation page. Click the **Install Gogs** button when you're ready to start the installation. When it finished, you will see the login page:
+Also, you might want to setup an admin account at the bottom of the installation page. Click the **Install Gogs** button when you're ready to start the installation. When it's finished, you will see the login page:
 
 ![Gogs Login Page](/docs/assets/gogs_debian_jessie_login_page.png)
 
@@ -282,7 +282,7 @@ Congratulations! You have successfully installed Gogs on your server.
 
 ## Disable the access to non-SSL version of Gogs
 
-If you notice, our Gogs site is still accessible using the plain HTTP via `http://example.com:3000` since the Gogs web server listens to all network interfaces on port 3000. Since we want our Gogs site to be secure, we need to configure Gogs to listen *only* to our loopback interface.
+If you notice, the Gogs site is still accessible using the plain HTTP via `http://example.com:3000`. This is because the Gogs web server listens to all network interfaces on port 3000. If you want your Gogs site to be secure, you need to configure Gogs to listen *only* to your loopback interface.
 
 1.  Login as user `git` and go to the Gogs installation directory:
 
@@ -314,5 +314,5 @@ If you notice, our Gogs site is still accessible using the plain HTTP via `http:
 
         sudo systemctl restart gogs
 
-6.  Open your browser and confirm that `https://example.com` is still working but `http://example.com:3000` is not working anymore.
+6.  Open your browser. Confirm that `https://example.com` is still running and `http://example.com:3000` is not.
         
