@@ -1,49 +1,43 @@
 ---
 author:
-    name: Linode Community
-    email: docs@linode.com
+  name: Linode Community
+  email: docs@linode.com
 description: 'Guide for running a Terraria gaming server on different Linux distributions.'
 keywords: 'terraria,gaming,server,steam'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-published: Wednesday, October 18th, 2015
-modified: Wednesday, October 18th, 2015
+published: 'Friday, August 21st, 2015'
+modified: Friday, August 21st 2015
 modified_by:
-    name: Tyler Langlois
-title: Installing Terraria Server
+  name: Linode
+title: 'Run a Terraria Server on Your Linode'
 contributor:
   name: Tyler Langlois
   link: https://github.com/tylerjl
+external_resources:
+ - '[MariaDB Documentation](https://mariadb.com/kb/en/mariadb/documentation/)'
+ - '[MySQL Reference Manuals](https://dev.mysql.com/doc/)'
 ---
 
 *This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
-
 <hr>
 
-[Terraria](http://terraria.org/) is a two-dimensional sandbox game similar to Minecraft that allows players to explore, build, and battle in an open world. The Terraria developers recently [announced support for Linux](http://terraria.org/news/terraria-1-3-0-8-now-for-mac-linux-too), which means that players can host their own standalone Terraria servers as well.
+[Terraria](https://terraria.org/) is a two-dimensional sandbox game similar to [Minecraft](https://minecraft.net/) that allows players to explore, build, and battle in an open world. The Terraria developers recently [announced support for Linux](http://terraria.org/news/terraria-1-3-0-8-now-for-mac-linux-too), which means that players can host their own standalone Terraria servers as well.
 
-These steps will outline everything required in order to run a Terraria server for yourself or others to play on.
-
-{: .note}
->
->This guide is compatible with any Linux distribution that uses systemd as an init system. This includes recent versions of Debian and Ubuntu, Arch Linux, or current releases of RHEL-based distributions.
+These steps will outline everything required in order to run a Terraria server for yourself or others to play on. This guide is compatible with any Linux distribution that uses systemd as an init system. This includes recent versions of Debian and Ubuntu, Arch Linux, or current releases of RHEL-based distributions.
 
 {: .caution }
 >
 >Take note of the system requirements for running a Terraria server when checking the Terraria site for latest download information. If your machine does not meet the minimum requirements, your server may be prohibitively slow or may crash intermittently.
 
+
 ## Before You Begin
 
-Running a game server entails opening services to the outside world, so before getting started, become familiar with the following guides:
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
--   [Getting Started](/docs/getting-started)
--   [Securing Your Server](/docs/security/securing-your-server)
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the *Creating a Firewall* section--this guide has instructions specifcally for firewall rules for a Terraria server.
 
-Doing so will ensure your server is in good shape and secure against threats when operating on the open internet.
+3.  Update your operating system's packages.
 
-Also note that if you are using a firewall, you will need to open the port used to access Terraria, which by default is port 7777. For example, if you are using iptables:
-
-    sudo iptables -I INPUT 9 -p tcp --dport 7777 -j ACCEPT
-    sudo ip6tables -I INPUT 9 -p tcp --dport 7777 -j ACCEPT
 
 ## Installing Terraria
 
