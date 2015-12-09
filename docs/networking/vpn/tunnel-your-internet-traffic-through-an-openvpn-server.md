@@ -3,33 +3,32 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'A common use case for a VPN tunnel is to access the internet from behind it to evade censorship or geolocation and protect your connection from untrusted internet service providers, WiFi hotspots, and sites and services you connect to.'
-keywords: 'openvpn,vpn,debian,tunnel,vpn tunnel,open vpn'
+keywords: 'openvpn,vpn,vpn tunnel,openssl'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: 'Wednesday, October 21st, 2015'
+modified: 'Wednesday, December 9th, 2015'
 modified_by:
   name: Linode
-published: 'Wednesday, October 21st, 2015'
-title: 'Tunnel Your Internet Trafic Through an OpenVPN Server'
+published: 'Wednesday, December 9th, 2015'
+title: 'Tunnel Your Internet Traffic Through an OpenVPN Server'
 external_resources:
  - '[Official OpenVPN Documentation](https://openvpn.net/index.php/open-source/documentation/howto.html)'
 ---
 
+This gude will show you how to configure an OpenVPN server to forward all traffic it receives out to the interent, then route the responses back appropriately to client devices.
 
-This gude will show you how to configure an OpenVPN server to forward out to the interent all traffic it receives from client devices, then route the responses back appropriately.
-
-A common use case for a VPN tunnel is to access the internet from behind it to evade censorship or geolocation while shielding your computer's web traffic to internet service providers, untrusted WiFi hotspots, and sites and services you connect to.
+A common use case for a VPN tunnel is to access the internet from behind it to evade censorship or geolocation, while shielding your computer's web traffic to internet service providers and untrusted WiFi or cellular hotspots.
 
 ## Before You Begin
 
-This guide is the second of a three part series to set up a hardened OpenVPN environment. It assumes that you already have a limited user account with `sudo` privileges, and the OpenVPN server running.
+This guide is the second of a three-part series to set up a hardened OpenVPN environment. It assumes that you already have a limited user account with `sudo` privileges, and the OpenVPN server running.
 
-Before moving further in this page, complete part one of the series: [Set Up a Hardened OpenVPN Server with Debian 8](/docs/networking/vpn/set-up-a-hardened-openvpn-server). If you found this page but are looking for part three for client device configuration, see [Configuring OpenVPN Client Devices](/docs/networking/vpn/configuring-openvpn-client-devices).
+Before moving further in this page, complete Part One of the series: [Set Up a Hardened OpenVPN Server with Debian 8](/docs/networking/vpn/set-up-a-hardened-openvpn-server). If you found this page but are looking for information about VPN client device configuration, see Part Three: [Configuring OpenVPN Client Devices](/docs/networking/vpn/configuring-openvpn-client-devices).
 
 ## OpenVPN Configuration
 
-OpenVPN's server-side configuration file is `/etc/openvpn/server.conf` and it requires several edits.
+OpenVPN's server-side configuration file is `/etc/openvpn/server.conf`, and it requires several edits.
 
-1.  Tell OpenVPN that it should make all clients send internet traffic through it.
+1.  Set OpenVPN to push a gateway configuration so all clients send internet traffic through it.
 
     {: .file-excerpt}
     /etc/openvpn/server.conf
@@ -47,11 +46,9 @@ OpenVPN's server-side configuration file is `/etc/openvpn/server.conf` and it re
 
 2.  Push DNS resolvers to client devices.
 
+    Client-side DNS settings are ideal for preventing DNS leaks and will override those pushed by the OpenVPN server in this step. Google DNS is provided by the OpenVPN client software for Android, iOS, OS X and Windows, and while this can be disabled, Desktop Linux and Windows are the only platforms which allow you to change this if you prefer a different resolver. 
 
-    Client-side DNS settings are ideal for preventing DNS leaks and will override those pushed by the OpenVPN server in this step. Google DNS is provided by the OpenVPN client software for Android, iOS, OS X and Windows, and while this can be disabled, Desktop Linux and Windows are the only platforms which allows you to change this if you prefer a different resolver. 
-
-
-    If using the options below to push DNS resolvers to VPN clients, you can disable the Google DNS fallback on your clients (or leave it enabled as the fallback it was intended to be). [OpenDNS](https://www.opendns.com/) is provided by default but you can change this to whatever your preference.
+    If using the options below to push DNS resolvers to VPN clients, you can disable the Google DNS fallback on your clients (or leave it enabled as the fallback it was intended to be). [OpenDNS](https://www.opendns.com/) is provided by default but you can change this to your preference.
 
     {: .file-excerpt}
     /etc/openvpn/server.conf
@@ -72,16 +69,15 @@ OpenVPN's server-side configuration file is `/etc/openvpn/server.conf` and it re
 
 ## Append Networking Rules
 
+In [Part One](/docs/networking/vpn/set-up-a-hardened-openvpn-server) of this series, we set iptables rules so the OpenVPN server can only accept client connections, SSH and make system updates--all over IPv4, and [IPv6 was disabled](/docs/networking/vpn/set-up-a-hardened-openvpn-server#disable-ipv6) since OpenVPN does not support using both transport layers simultaneously. Leaving IPv6 disabled here prevents leaking v6 traffic which would otherwise be sent separately from your VPN's v4 tunnel.
 
-In [part one](/docs/networking/vpn/set-up-a-hardened-openvpn-server) of this series, we set iptables rules so the OpenVPN server can only accept client connections, SSH and make system updates--all over IPv4, and [IPv6 was disabled](/docs/networking/vpn/set-up-a-hardened-openvpn-server#disable-ipv6) since OpenVPN does not support using both transport layers simultaneously. Leaving IPv6 disabled here prevents leaking v6 traffic which would otherwise be sent separately from your VPN's v4 tunnel.
-
-Since now we want the server to forward traffic out to the internet from clients, accept the responses and route them back to client machines, we must adjust the v4 firewall rules.
+Since now the server should forward traffic out to the internet from clients, accept the responses and route them back to client machines, the firewall rules must be adjusted.
 
 {: .caution }
 >
->The steps below will overwrite any custom IPv4 firewall rules you may have!
+>The steps below will overwrite any custom IPv4 firewall rules you may have.
 
-1.  Remove the v4 ruleset which you created in part one of this series.
+1.  Remove the v4 ruleset that you created in Part One of this series.
 
         sudo rm /etc/iptables/rules.v4
 
@@ -148,7 +144,7 @@ Since now we want the server to forward traffic out to the internet from clients
 
         sudo iptables-restore < /etc/iptables/rules.v4
 
-4.  Apply the routing rule so that traffic can leave the VPN. This must be done after `iptables-restore` because that command can't take a table option.
+4.  Apply the routing rule so that traffic can leave the VPN. This must be done after `iptables-restore` because that command can't take a table option:
 
         sudo iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -o eth0 -j MASQUERADE
 
@@ -156,7 +152,7 @@ Since now we want the server to forward traffic out to the internet from clients
 
         sudo dpkg-reconfigure iptables-persistent
 
-6.  The kernel must then be told it can forward incoming IPv4 traffic.
+6.  The kernel must then be told it can forward incoming IPv4 traffic:
 
         echo 'net.ipv4.ip_forward=1' | sudo tee -a /etc/sysctl.d/99-sysctl.conf
 
