@@ -2,7 +2,7 @@
 author:
     name: Nashruddin Amin
     email: nashruddin.amin@gmail.com
-description: 'Install Gogs, a Self-hosted Git Service Written in Go, on Your Debian 8 (Jessie) Server, Using This Linode Guide.'
+description: 'Install Gogs, a Self-hosted Git Service Written in Go, on Your Debian 8 (Jessie) Server.'
 keywords: 'gogs, go git service,golang,git,debian 8, nginx, postgresql'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 published: 'Friday, October 9th, 2015'
@@ -25,7 +25,7 @@ external_resources:
 
 [Gogs](http://gogs.io) is a self-hosted Git service, similar to GitLab. It is written in [Go](http://golang.org) and aims to be the easiest and most painless way to set up self-hosted Git service. Gogs is one of the best choices if you need to set up a private Git repository, but don't want to pay for the private plans on other Git services.
 
-This tutorial shows you how to install and configure Gogs, using PostgreSQL for the database server and Nginx for the reverse proxy server. You will use `example.com` as the domain name for your site.
+This tutorial shows you how to install and configure Gogs, using PostgreSQL for the database server and Nginx for the reverse proxy server. We will use `example.com` as the domain name for the site.
 
 {: .note}
 >
@@ -33,7 +33,7 @@ This tutorial shows you how to install and configure Gogs, using PostgreSQL for 
 
 ## Before Installing Gogs
 
-1.  Ensure that you have followed the [Getting Started](/docs/getting-started), [Securing Your Server](/docs/security/securing-your-server), and Linode's [hostname is set](/docs/getting-started#setting-the-hostname) guides.
+1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, and your Linode's [hostname is set](/docs/getting-started#setting-the-hostname).
 
 2.  Update your system:
 
