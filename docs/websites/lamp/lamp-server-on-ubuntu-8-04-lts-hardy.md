@@ -9,9 +9,14 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['lamp-guides/ubuntu-8-04-hardy/']
 modified: Monday, May 2nd, 2011
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Thursday, July 16th, 2009'
 title: 'LAMP Server on Ubuntu 8.04 LTS (Hardy)'
+external_resources:
+- '[Ubuntu Linux Home Page](http://www.ubuntu.com/)'
+- '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.0/)'
+- '[MySQL Documentation](http://dev.mysql.com/doc/)'
+- '[PHP Documentation](http://www.php.net/docs.php)'
 ---
 
 
@@ -20,13 +25,11 @@ This guide provides step-by-step instructions for installing a full-featured LAM
 
 In this guide, you will be instructed on setting up Apache, MySQL, and PHP. If you don't feel that you will need MySQL or PHP, please don't feel obligated to install them.
 
-System Configuration
---------------------
+## System Configuration
 
 It is important to make sure that your system is properly configured before installing Apache. In particular, you need to make sure that your system is up to date and that you have set the correct timezone, hostname, and hosts in your hosts file. If you haven't configured these, you should follow the directions in the [getting started guide](/docs/getting-started/). This guide assumes that you are logged in as the root superuser on your Linode.
 
-Install and Configure the Apache Web Server
--------------------------------------------
+## Install and Configure the Apache Web Server
 
 The Apache Web Server is a very popular choice for serving web pages. While many alternatives have appeared in the last few years, Apache remains a powerful option that we recommend for most uses.
 
@@ -127,8 +130,7 @@ If you wanted to disable the `example.com` site, for example issue the following
 
 The `a2dissite` command is the inverse of `a2ensite`. After enabling, disabling, or modifying any part of your Apache configuration you will need to reload the Apache configuration again with the `/etc/init.d/apache2 reload` command. You can create as many virtual hosting files as you need to support the domains that you want to host with your Linode.
 
-Install and Configure MySQL Database Server
--------------------------------------------
+## Install and Configure MySQL Database Server
 
 MySQL is a relational database management system (RDBMS) and is a popular component in contemporary web development tool-chains. It is used to store data for many popular applications, including Wordpress and Drupal.
 
@@ -156,10 +158,10 @@ Enter MySQL's root password, and you'll be presented with a MySQL prompt where y
 
 To create a database and grant your users permissions on it, issue the following command. Note, the semi-colons (`;`) at the end of the lines are crucial for ending the commands. Your command should look like this:
 
-    create database lollipop;
-    grant all on lollipop.* to 'foreman' identified by '5t1ck';
+    create database webdata;
+    grant all on webdata.* to 'username' identified by 'password';
 
-In the example above, `lollipop` is the name of the database, `foreman` is the username, and `5t1ck` password. Note that database user names and passwords are only used by scripts connecting to the database, and that database user account names need not (and perhaps should not) represent actual user accounts on the system.
+In the example above, `webdata` is the name of the database, `username` is the username, and `password` password. Note that database user names and passwords are only used by scripts connecting to the database, and that database user account names need not (and perhaps should not) represent actual user accounts on the system.
 
 With that completed you've successfully configured MySQL and you may now pass these database credentials on to your users. To exit the MySQL database administration utility issue the following command:
 
@@ -167,8 +169,7 @@ With that completed you've successfully configured MySQL and you may now pass th
 
 With Apache and MySQL installed you are now ready to move on to installing PHP to provide scripting support for your web pages.
 
-Installing and Configuring PHP
-------------------------------
+## Installing and Configuring PHP
 
 PHP makes it possible to produce dynamic and interactive pages using your own scripts and popular web development frameworks. Furthermore, many popular web applications like WordPress are written in PHP. If you want to be able to develop your websites using PHP, you must first install it.
 
@@ -195,16 +196,3 @@ Make sure that the following values are set, and relevant lines are uncommented 
 If you need support for MySQL in PHP, then you must install the php5-mysql package with the following command:
 
     apt-get install php5-mysql
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Ubuntu Linux Home Page](http://www.ubuntu.com/)
-- [Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.0/)
-- [MySQL Documentation](http://dev.mysql.com/doc/)
-- [PHP Documentation](http://www.php.net/docs.php)
-
-
-

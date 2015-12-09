@@ -7,6 +7,8 @@ modified_by:
 categories:
  - remote-desktop
  - chef
+ - puppet
+ - ansible
  - voip
  - cloud-storage
  - containers

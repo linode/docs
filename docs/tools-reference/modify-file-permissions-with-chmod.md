@@ -28,9 +28,9 @@ In this guide, `chmod` refers to recent versions of `chmod` such as those provid
 
 All file system objects on Unix-like systems have three main types of permissions: read, write, and execute access. Furthermore, permissions are bestowed upon three possible classes: the user that owns the file system object, the user group that owns the file system object, and all system users. To view the file permissions of a set of files, use the `ls -lha` command. The output will resemble the following:
 
-    drwxr-xr-x 2 squire squire       4.0K 2009-08-13 10:16 docs
-    -rw-r--r-- 1 squire squire       8.1K 2009-07-09 16:23 roster.py
-    lrwxrwxrwx 2 squire squire       4.0K 2009-08-13 10:16 team.docs
+    drwxr-xr-x 2 username username       4.0K 2009-08-13 10:16 docs
+    -rw-r--r-- 1 username username       8.1K 2009-07-09 16:23 roster.py
+    lrwxrwxrwx 2 username username       4.0K 2009-08-13 10:16 team.docs
 
 The first block of data contains information regarding the file permissions and settings, and we'll focus on that in this section. The first column specifies the type of file system object. `d` indicates that the object is a directory. `-` indicates that the object is a normal file. `l` indicates that the object is a symbolic link.
 

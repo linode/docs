@@ -6,7 +6,7 @@ description: 'Our guide to hosting a website on your Linode.'
 keywords: 'linode guide,hosting a website,website,linode quickstart guide'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['hosting-website/']
-modified: Tuesday, October 14th, 2014
+modified: Monday, September 28th, 2015
 modified_by:
   name: Linode
 published: 'Tuesday, March 13th, 2012'
@@ -115,27 +115,27 @@ Now that Apache is optimized for performance, it's time to starting hosting one 
 
 6.  Now it's time to create a configuration for your virtual host. We've created some basic settings to get your started. Copy and paste the settings shown below in to the virtual host file you just created. Replace `example.com` with your domain name.
 
-{: .file-excerpt}
-/etc/apache2/sites-available/example.com.conf
-:   ~~~ apache
-    # domain: example.com
-    # public: /var/www/example.com/public_html/
+    {: .file-excerpt}
+    /etc/apache2/sites-available/example.com.conf
+    :   ~~~ apache
+        # domain: example.com
+        # public: /var/www/example.com/public_html/
 
-    <VirtualHost *:80>
-      # Admin email, Server Name (domain name), and any aliases
-      ServerAdmin webmaster@example.com
-      ServerName  www.example.com
-      ServerAlias example.com
+        <VirtualHost *:80>
+          # Admin email, Server Name (domain name), and any aliases
+          ServerAdmin webmaster@example.com
+          ServerName  www.example.com
+          ServerAlias example.com
 
-      # Index file and Document Root (where the public files are located)
-      DirectoryIndex index.html index.php
-      DocumentRoot /var/www/example.com/public_html
-      # Log file locations
-      LogLevel warn
-      ErrorLog  /var/www/example.com/log/error.log
-      CustomLog /var/www/example.com/log/access.log combined
-    </VirtualHost>
-    ~~~
+          # Index file and Document Root (where the public files are located)
+          DirectoryIndex index.html index.php
+          DocumentRoot /var/www/example.com/public_html
+          # Log file locations
+          LogLevel warn
+          ErrorLog  /var/www/example.com/log/error.log
+          CustomLog /var/www/example.com/log/access.log combined
+        </VirtualHost>
+        ~~~
 
 7.  Save the changes to the virtual host configuration file by pressing `Control + x` and then pressing `y`. Press `Enter` to confirm.
 
@@ -145,11 +145,11 @@ Now that Apache is optimized for performance, it's time to starting hosting one 
 
     This creates a symbolic link to your `example.com.conf` file in the appropriate directory for active virtual hosts.
 
-11. The previous command will alert you that you need to restart Apache to save the changes. Enter the following command to apply your new configuration:
+09. The previous command will alert you that you need to restart Apache to save the changes. Enter the following command to apply your new configuration:
 
         sudo service apache2 restart
 
-12. Repeat steps 1-11 for every other website you want to host on your Linode.
+10. Repeat steps 1-9 for every other website you want to host on your Linode.
 
 Congratulations! You've configured Apache to host one or more websites on your Linode. After you [upload files](#uploading-files) and [add DNS records](#adding-dns-records) later in this guide, your websites will be accessible to the outside world.
 
@@ -180,26 +180,40 @@ MySQL consumes a lot of memory when using the default configuration. To set reso
 
  {: .note }
 >
-> These guidelines are designed to optimize MySQL for a Linode 1GB, but you can use this information for any size Linode. If you have a larger Linode, start with these values and modify them while carefully watching for memory and performance issues.
+> These guidelines are designed to optimize MySQL 5.5 and up for a Linode 1GB, but you can use this information for any size Linode. If you have a larger Linode, start with these values and modify them while carefully watching for memory and performance issues.
 
 1.  Open the MySQL configuration file for editing by entering the following command:
 
         sudo nano /etc/mysql/my.cnf
 
-2.  Make sure that the following values are set:
+2.  Comment out all lines beginning with `key_buffer`. This is a deprecated setting and we'll use the correct option instead.
 
-	{: .file-excerpt}
+3.  Edit following values:
+
+    {: .file-excerpt}
     /etc/mysql/my.cnf
-    :   ~~~ ini
+    :   ~~~ conf
         max_connections = 75
-        key_buffer = 32M
         max_allowed_packet = 1M
         thread_stack = 128K
-        table_cache = 32
         ~~~
 
-3.  Save the changes to MySQL's configuration file by pressing `Control + x` and then pressing `y`.
-4.  Restart MySQL to save the changes. Enter the following command:
+    {: .note }
+    >
+    >In MySQL 5.6, you may need to add these lines as one block with `[mysql]` at the top. In earlier MySQL versions, there may be multiple entries for a single option so be sure to edit both lines.
+
+4.  Add the following lines to the end of `my.cnf`:
+
+    {: .file-excerpt}
+    /etc/mysql/my.cnf
+    :   ~~~ conf
+        table_open_cache = 32M
+        key_buffer_size = 32M
+        ~~~
+
+5.  Save the changes to MySQL's configuration file by pressing `Control + x` and then pressing `y`.
+
+6.  Restart MySQL to save the changes. Enter the following command:
 
         sudo service mysql restart
 

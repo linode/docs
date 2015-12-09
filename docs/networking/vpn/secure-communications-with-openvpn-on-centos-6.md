@@ -50,7 +50,7 @@ Most of the relevant configuration for the OpenVPN public key infrastructure is 
 
 ### Configure Public Key Infrastructure Variables
 
-Before we can generate the public key infrastructure for OpenVPN we must configure a few variables that the easy-rsa scripts will use to generate the scripts. These variables are set near the end of the `/etc/openvpn/easy-rsa/2.0/vars` file. Here is an example of the relevant values:
+Before we can generate the public key infrastructure for OpenVPN, we must configure a few variables that the easy-rsa scripts will use to generate the scripts. These variables are set near the end of the `/etc/openvpn/easy-rsa/2.0/vars` file. Here is an example of the relevant values:
 
 {: .file }
 /etc/openvpn/easy-rsa/2.0/vars
@@ -59,10 +59,10 @@ Before we can generate the public key infrastructure for OpenVPN we must configu
     export KEY_PROVINCE="OH"
     export KEY_CITY="Oxford"
     export KEY_ORG="My Company"
-    export KEY_EMAIL="squire@example.com"
+    export KEY_EMAIL="username@example.com"
     ~~~
 
-Alter the examples to reflect your configuration. This information will be included in certificates you create and it is important that the information be accurate, particularly the `KEY_ORG` and `KEY_EMAIL` values.
+Alter the examples to reflect your configuration. This information will be included in certificates you create. It is important that the information be accurate, particularly the `KEY_ORG` and `KEY_EMAIL` values.
 
 ### Initialize the Public Key Infrastructure (PKI)
 
@@ -73,15 +73,15 @@ Issue the following three commands in sequence to initialize the certificate aut
     . /etc/openvpn/easy-rsa/2.0/clean-all
     . /etc/openvpn/easy-rsa/2.0/build-ca
 
-These scripts will prompt you to enter a number of values. By configuring the `vars` you can be sure that your PKI is configured properly. If you set the correct values in `vars`, you will be able to press return at each prompt.
+These scripts will prompt you to enter a number of values. By configuring the `vars`, you can be sure that your PKI is configured properly. If you set the correct values in `vars`, you will be able to press return at each prompt.
 
 ### Generate Certificates and Private Keys
 
-With the certificate authority generated you can generate the private key for the server. To accomplish this, issue the following command:
+With the certificate authority generated, you can generate the private key for the server. To accomplish this, issue the following command:
 
     . /etc/openvpn/easy-rsa/2.0/build-key-server server
 
-This script will also prompt you for additional information. By default, the `Common Name` for this key will be "server". You can change these values in cases where it makes sense to use alternate values. The challenge password and company names are optional and can be left blank. When you've completed the question section you can confirm the signing of the certificate and the "certificate requests certified" by answering "yes" to these questions.
+This script will also prompt you for additional information. By default, the `Common Name` for this key will be "server." You can change these values in cases where it makes sense to use alternate values. The challenge password and company names are optional and can be left blank. When you've completed the question section you can confirm the signing of the certificate and the "certificate requests certified" by answering "yes" to these questions.
 
 With the private keys generated, we can create certificates for all of the VPN clients. Issue the following command:
 
@@ -112,7 +112,7 @@ In order to authenticate to the VPN, you'll need to copy a number of certificate
 -   `client1.crt`
 -   `client1.key`
 
-You can use the `scp` tool, or any [other means of transferring](/docs/using-linux/administration-basics#how_to_upload_files_to_a_remote_server). Be advised, these keys should transferred with the utmost attention to security. Anyone who has the key or is able to intercept an unencrypted copy of the key will be able to gain full access to your virtual private network.
+You can use the `scp` tool or any [other means of transferring](/docs/using-linux/administration-basics#how_to_upload_files_to_a_remote_server). Be advised, these keys should be transferred with the utmost attention to security. Anyone who has the key or is able to intercept an unencrypted copy of the key will be able to gain full access to your virtual private network.
 
 Typically we recommend that you encrypt the keys for transfer, either by using a protocol like SSH, or by encrypting them with the PGP tool.
 
@@ -129,11 +129,11 @@ Issue the following commands:
     cd /etc/openvpn/easy-rsa/2.0/keys
     cp ca.crt ca.key dh1024.pem server.crt server.key /etc/openvpn
 
-These files need not leave your server. Maintaining integrity and control over these files is of the utmost importance to the integrity of your server. If you ever need to move or back up these keys, ensure that they're encrypted and secured. If these files are compromised, they will need to be recreated along with all client keys.
+These files need not leave your server. Maintaining integrity and control over these files is of the utmost importance to the integrity of your server. If you ever need to move or backup these keys, ensure that they're encrypted and secured. If these files are compromised, they will need to be recreated along with all client keys.
 
 ### Revoking Client Certificates
 
-If you need to remove a user's access to the VPN server, issue the following command sequence.
+If you need to remove a user's access to the VPN server, issue the following command sequence:
 
     . /etc/openvpn/easy-rsa/2.0/vars
     . /etc/openvpn/easy-rsa/2.0/revoke-full client1
@@ -183,25 +183,25 @@ To initialize the OpenVPN server process, run the following command:
 
     /etc/init.d/openvpn start
 
-This will scan the `/etc/openvpn` directory on the server for files with a `.conf` extension. For every file that it finds, it will create and run a VPN daemon (server). Enable OpenVPN to start on the following boot, issue the following command:
+This will scan the `/etc/openvpn` directory on the server for files with a `.conf` extension. For every file that it finds, it will create and run a VPN daemon (server). To enable OpenVPN to start on the following boot, issue the following command:
 
     chkconfig openvpn on
 
 The process for connecting to the VPN varies depending on your specific operating system and distribution running on the *client* machine. You will need to install the OpenVPN package for your operating system if you have not already done so.
 
-Most network management tools provide some facility for managing connections to a VPN. Configure connections to your OpenVPN through the same interface where you might configure wireless or ethernet connections. If you choose to install and manage OpenVPN manually, you will need to place the the `client1.conf` file and the requisite certificate files in the *local* machine's `/etc/openvpn` directory, or equivalent location.
+Most network management tools provide some facility for managing connections to a VPN. Configure connections to your OpenVPN through the same interface where you might configure wireless or ethernet connections. If you choose to install and manage OpenVPN manually, you will need to place the the `client1.conf` file and the requisite certificate files in the *local* machine's `/etc/openvpn` directory or equivalent location.
 
-If you use OS X on a Mac, we have found that the [Tunnelblick](http://code.google.com/p/tunnelblick/) tool provides an easy method for managing OpenVPN connections. If you use Windows, the [OpenVPN GUI](http://openvpn.se/) tool may be an effective tool for managing your connections too. Linux desktop users can install the OpenVPN package and use the network management tools that come with your desktop environment.
+If you use OS X on a Mac, we have found that the [Tunnelblick](http://code.google.com/p/tunnelblick/) tool provides an easy method for managing OpenVPN connections. If you use Windows, the [OpenVPN GUI](http://openvpn.se/) tool may be an effective tool for managing your connections, too. Linux desktop users can install the OpenVPN package and use the network management tools that come with your desktop environment.
 
 ## Using OpenVPN
 
 ### Connect Remote Networks Securely With the VPN
 
-Once configured, the OpenVPN server allows you to encrypt traffic between your local computer and your Linode's local network. While all other traffic is handled in the conventional manner, the VPN allows traffic on non-public interfaces to be securely passed through your Linode. This will also allow you to connect to the local area network in your Linode's data center if you are using the LAN to connect to multiple Linodes in the same datacenter. Using OpenVPN in this manner is supported by the default configuration, and if you connect to the OpenVPN you have configured at this point, you will have access to this functionality.
+Once configured, the OpenVPN server allows you to encrypt traffic between your local computer and your Linode's local network. While all other traffic is handled in the conventional manner, the VPN allows traffic on nonpublic interfaces to be securely passed through your Linode. This will also allow you to connect to the local area network in your Linode's datacenter if you are using the LAN to connect to multiple Linodes in the same datacenter. Using OpenVPN in this manner is supported by the default configuration. If you connect to the OpenVPN you have configured at this point, you will have access to this functionality.
 
 ### Tunnel All Connections through the VPN
 
-By deploying the following configuration, you will be able to forward *all* traffic from client machines through your Linode, and encrypt it with transport layer security (TLS/SSL) between the client machine and the Linode. Begin by adding the following parameter to the `/etc/openvpn/server.conf` file to enable "full tunneling":
+By deploying the following configuration, you will be able to forward *all* traffic from client machines through your Linode and encrypt it with transport layer security (TLS/SSL) between the client machine and the Linode. Begin by adding the following parameter to the `/etc/openvpn/server.conf` file to enable "full tunneling":
 
 {: .file-excerpt }
 /etc/openvpn/server.conf
@@ -209,7 +209,7 @@ By deploying the following configuration, you will be able to forward *all* traf
     push "redirect-gateway def1"
     ~~~
 
-Now edit the `/etc/sysctl.conf` file to modify the following line to ensure that your system is able to forward IPv4 traffic:
+Now, edit the `/etc/sysctl.conf` file to modify the following line to ensure that your system is able to forward IPv4 traffic:
 
 {: .file-excerpt }
 /etc/sysctl.conf
@@ -228,7 +228,7 @@ Issue the following commands to configure `iptables` to properly forward traffic
     iptables -A FORWARD -j REJECT
     iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -o eth0 -j MASQUERADE
 
-Before continuing, insert these `iptables` rules into your system's `/etc/rc.local` file to ensure that theses `iptables` rules will be recreated following your next reboot cycle:
+Before continuing, insert these `iptables` rules into your system's `/etc/rc.local` file to ensure that these `iptables` rules will be recreated following your next reboot cycle:
 
 {: .file-excerpt }
 /etc/rc.local
@@ -243,11 +243,11 @@ Before continuing, insert these `iptables` rules into your system's `/etc/rc.loc
     touch /var/lock/subsys/local
     ~~~
 
-This will enable all client traffic *except* DNS queries to be forwarded through the VPN. To forward DNS traffic through the VPN you will need to install the `dnsmasq` package and modify the `/etc/openvpn/server.conf` package. Begin by issuing the following command to install the service:
+This will enable all client traffic *except* DNS queries to be forwarded through the VPN. To forward DNS traffic through the VPN, you will need to install the `dnsmasq` package and modify the `/etc/openvpn/server.conf` package. Begin by issuing the following command to install the service:
 
     yum install dnsmasq
 
-After completing the installation the configuration will need to be modified so that dnsmasq is not listening on a public interface. You will need to find the following lines in the configuration file and make sure the lines are uncommented and have the appropriate values:
+After completing the installation, you will need to modify the configuration so that dnsmasq is not listening on a public interface. You will need to find the following lines in the configuration file and make sure the lines are uncommented and have the appropriate values:
 
 {: .file-excerpt }
 /etc/dnsmasq.conf
@@ -283,4 +283,4 @@ Finally, before attempting to connect to the VPN in any configuration, restart t
     /etc/init.d/dnsmasq restart
     chkconfig dnsmasq on
 
-Once these configuration options have been implemented, you can test the VPN connection by connecting to the VPN from your local machine, and access one of the many websites that will display your IP address. If the IP address displayed matches the IP address of your Linode, all network traffic from your local machine will be filtered through your Linode and encrypted over the VPN between your Linode and your local machine. If, however, your apparent public IP address is different from your Linode's IP address, your traffic is not being filtered through your Linode or encrypted by the VPN.
+Once these configuration options have been implemented, you can test the VPN connection by connecting to the VPN from your local machine and access one of the many websites that will display your IP address. If the IP address displayed matches the IP address of your Linode, all network traffic from your local machine will be filtered through your Linode and encrypted over the VPN between your Linode and your local machine. If, however, your apparent public IP address is different from your Linode's IP address, your traffic is not being filtered through your Linode or encrypted by the VPN.

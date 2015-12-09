@@ -72,7 +72,7 @@ Create the virtual hosting file for example.com, located at `/etc/apache2/sites-
 /etc/apache2/sites-available/example.com
 :   ~~~ apache
     <VirtualHost 12.34.56.78:80> 
-         ServerAdmin squire@example.com     
+         ServerAdmin username@example.com     
          ServerName example.com
          ServerAlias www.example.com
          DocumentRoot /srv/www/example.com/public_html/
@@ -96,7 +96,7 @@ Next, create the virtual hosting file for example.com, located in `/etc/apache2/
 /etc/apache2/sites-available/example.com
 :   ~~~ apache
     <VirtualHost 12.34.56.78:80> 
-         ServerAdmin squire@example.com
+         ServerAdmin username@example.com
          ServerName example.com
          ServerAlias www.example.com
          DocumentRoot /srv/www/example.com/public_html/

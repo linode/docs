@@ -5,7 +5,7 @@ author:
 description: 'A detailed exploration of nginx''s HTTP proxy load balancing services.'
 keywords: 'nginx,proxy,load balancing,web server,http, how to use nginx as a proxy, how to use nginx as a load balancer'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['web-servers/nginx/configuration/front-end-proxy-and-software-load-balancing/','websites/loadbalancing/Use-Nginx-for-Proxy-Services-and-Software-Load-Balancing/','uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing/index.cfm/','uptime/loadbalancing/use-ngingx-for-proxy-services-and-software-load-balancing/']
+alias: ['web-servers/nginx/configuration/front-end-proxy-and-software-load-balancing/','websites/loadbalancing/Use-Nginx-for-Proxy-Services-and-Software-Load-Balancing/','uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing/index.cfm/','uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing/']
 modified: Friday, August 9th, 2013
 modified_by:
   name: Linode
@@ -190,9 +190,9 @@ In this section, you'll configure Apache to listen on an alternate port so it ca
 
     Here, the rewrite rule (`^(.*)$`) captures the entire request string and appends it (`$1`) to the path on the new server (`/teams/~example/`). Here's how this would play out:
 
-    **Request:** `http://example.com/images/lollipop_man.png`
+    **Request:** `http://example.com/images/images.png`
 
-    **Response:** `http://192.168.3.105/teams/~example/images/lollipop_man.png`
+    **Response:** `http://192.168.3.105/teams/~example/images/images.png`
 
     **Request:** `http://example.com/wiki/PracticeSchedule/`
 

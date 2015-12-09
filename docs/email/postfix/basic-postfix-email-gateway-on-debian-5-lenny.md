@@ -72,7 +72,7 @@ Add the following lines to your configuration file. This configures postfix for 
     home_mailbox = mail/
     ~~~
 
-Furthermore, this ensures that the domains listed in `mydestination` do not conflict with the address that you will receive or forward email with. The `home_mailbox` value determines the name of the folder where email messages are delivered when local delivery is configured. For the user `squire` with a home directory of `/home/squire/` new mail would be delivered in a `Maildir` directory located at `/home/squire/mail/`. When you've completed this configuration, issue the following command to reload the mail server:
+Furthermore, this ensures that the domains listed in `mydestination` do not conflict with the address that you will receive or forward email with. The `home_mailbox` value determines the name of the folder where email messages are delivered when local delivery is configured. For the user `username` with a home directory of `/home/username/` new mail would be delivered in a `Maildir` directory located at `/home/username/mail/`. When you've completed this configuration, issue the following command to reload the mail server:
 
     /etc/init.d/postfix reload 
 
@@ -95,21 +95,21 @@ Once Postfix is properly configured, edit the `/etc/postfix/virtual` file to con
     admin@example.com example
     foreman@example.com example
 
-    squire@example.com squire
-    squire@example.net squire
-    squire@example.com squire
+    username@example.com username
+    username@example.net username
+    username@example.com username
 
     jim@example.com jim@chartercast.net
     ted@example.com ted@chartercast.net
     jay@example.com jay@chartercast.net
 
-    lollipop@example.com stacy@morris.net, squire
-    jockey@example.com squire, example
+    lollipop@example.com stacy@morris.net, username
+    jockey@example.com username, example
 
     @oddington.com oddington
     ~~~
 
-In this example there are a number of addresses in the `example.com` domain forwarded to the `example` system user account. In the next group, a collection of emails at different domains beginning with the `squire` name, are all forwarded to the `squire` system user group. Finally, a number of email addresses at the `example.com` domain are forwarded to external addresses at the fictitious `chartercast.net` domain. The next two email addresses are directed to multiple sources: `lollipop@example.com` mail is delivered to the local `squire` user as well as the external email address `stacy@morris.net`, while `jockey@example.com` is delivered to the local system users `squire` and `example`. Finally all messages sent to addresses within the `oddington.com` domain are forwarded to the mailbox for the `oddington` user.
+In this example there are a number of addresses in the `example.com` domain forwarded to the `example` system user account. In the next group, a collection of emails at different domains beginning with the `username` name, are all forwarded to the `username` system user group. Finally, a number of email addresses at the `example.com` domain are forwarded to external addresses at the fictitious `chartercast.net` domain. The next two email addresses are directed to multiple sources: `lollipop@example.com` mail is delivered to the local `username` user as well as the external email address `stacy@morris.net`, while `jockey@example.com` is delivered to the local system users `username` and `example`. Finally all messages sent to addresses within the `oddington.com` domain are forwarded to the mailbox for the `oddington` user.
 
 When you've successfully edited your `/etc/postfix/virtual` file to ensure the proper delivery of your email, issue the following command to rebuild the virtual alias database:
 
@@ -225,7 +225,7 @@ When the tunnel is active, you will be able to configure your local mail sending
 :   ~~~
     account default
     host localhost
-    from squire@example.com
+    from username@example.com
     port 25
 
     account alternate

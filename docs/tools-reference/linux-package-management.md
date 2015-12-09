@@ -8,12 +8,12 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['using-linux/package-management/']
 modified: Thursday, September 8th, 2011
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Thursday, July 16th, 2009'
 title: Linux Package Management
 ---
 
-Many Linode Library tutorials reference "package managers" and "package management tools." If you are new to the Linux world and don't understand the purpose of these technologies, or if you are familiar with one package management tool but need to learn how to use another, this guide will provide a comparative introduction to the major package management tools.
+Many tutorials reference "package managers" and "package management tools." If you are new to the Linux world and don't understand the purpose of these technologies, or if you are familiar with one package management tool but need to learn how to use another, this guide will provide a comparative introduction to the major package management tools.
 
 ## Package Management Concepts
 

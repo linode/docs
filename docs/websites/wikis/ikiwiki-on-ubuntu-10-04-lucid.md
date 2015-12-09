@@ -35,9 +35,9 @@ Edit your `/etc/hosts` file to resemble the following, substituting your Linode'
     12.34.56.78 hostname.example.com hostname
     ~~~
 
-If you haven't already added an unprivileged system user, create one now. This will be the user that manages your ikiwiki content. Issue the following command, substituting a unique username for "squire":
+If you haven't already added an unprivileged system user, create one now. This will be the user that manages your ikiwiki content. Issue the following command, substituting a unique username for "username":
 
-    adduser squire
+    adduser username
 
 As with all user accounts, be sure assign a strong password consisting of letters, numbers, and other characters.
 
@@ -70,7 +70,7 @@ Create a virtual host that resembles the following example. Be sure to substitut
 /etc/apache2/sites-available/example.com
 :   ~~~ apache
     <VirtualHost *:80>
-        ServerAdmin squire@example.com
+        ServerAdmin username@example.com
         ServerName example.com
         ServerAlias www.example.com
 
@@ -83,11 +83,11 @@ Create a virtual host that resembles the following example. Be sure to substitut
     </VirtualHost>
     ~~~
 
-Issue the following commands to create the required directories, enable the site, disable the default virtual host, and restart the web server. Replace "example.com" with your own domain name, and "squire" with the username you created at the beginning of this guide:
+Issue the following commands to create the required directories, enable the site, disable the default virtual host, and restart the web server. Replace "example.com" with your own domain name, and "username" with the username you created at the beginning of this guide:
 
     mkdir -p /srv/www/example.com/public_html 
     mkdir /srv/www/example.com/logs
-    chown -R squire:squire /srv/www/example.com
+    chown -R username:username /srv/www/example.com
     a2ensite example.com
     a2dissite default
     /etc/init.d/apache2 restart
@@ -242,11 +242,11 @@ Issue the following commands to make the scripts executable and start Perl-FastC
     update-rc.d perl-fastcgi defaults
     /etc/init.d/perl-fastcgi start
 
-In this guide, the domain "example.com" is used as an example site. You should substitute your own domain name in the configuration steps that follow, along with substituting the username you created at the beginning of this guide for "squire". First, create directories to hold content and log files:
+In this guide, the domain "example.com" is used as an example site. You should substitute your own domain name in the configuration steps that follow, along with substituting the username you created at the beginning of this guide for "username". First, create directories to hold content and log files:
 
     mkdir -p /srv/www/example.com/public_html
     mkdir /srv/www/example.com/logs
-    chown -R squire:squire /srv/www/example.com
+    chown -R username:username /srv/www/example.com
 
 Next, you'll need to define your site's virtual host file:
 
@@ -283,11 +283,11 @@ Issue the following commands to enable the site:
 Configure Ikiwiki
 -----------------
 
-Issue the following commands to create a `~/wiki/` directory as a git repository. All files related to your wiki will be located here, including the source files for the wiki, all templates, and the configuration file. Substitute the username you created at the beginning of this guide for "squire." :
+Issue the following commands to create a `~/wiki/` directory as a git repository. All files related to your wiki will be located here, including the source files for the wiki, all templates, and the configuration file. Substitute the username you created at the beginning of this guide for "username." :
 
     mkdir -p /srv/git/wiki.git
-    chown squire:squire /srv/git/wiki.git
-    su - squire
+    chown username:username /srv/git/wiki.git
+    su - username
     mkdir -p ~/wiki ~/wiki/source/ ~/wiki/.ikiwiki/
     cd ~/wiki
     git init
@@ -318,7 +318,7 @@ Issue the following commands to copy the default `basewiki` and `templates` to t
     git commit -m "initial ikiwiki commit" 
     git push origin master
 
-Edit the `~/wiki/ikiwiki.setup` file to suit the needs of your deployment, paying particular attention to example directory paths and URLs. You should take care to replace all instances of "example.com" with your domain name, and all instances of "squire" with the username you created at the beginning of this guide. You may wish to review the [ikiwiki documentation](http://ikiwiki.info) for more information regarding specific configuration directives. Issue the following commands to commit your changes and push them:
+Edit the `~/wiki/ikiwiki.setup` file to suit the needs of your deployment, paying particular attention to example directory paths and URLs. You should take care to replace all instances of "example.com" with your domain name, and all instances of "username" with the username you created at the beginning of this guide. You may wish to review the [ikiwiki documentation](http://ikiwiki.info) for more information regarding specific configuration directives. Issue the following commands to commit your changes and push them:
 
     git commit ~/wiki/ikiwiki.setup -m "edited ikiwiki config"
     git push origin master

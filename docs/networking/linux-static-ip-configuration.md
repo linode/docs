@@ -171,7 +171,7 @@ In the example below, change the IP addresses to reflect the values shown under 
 
 Restart networking:
 
-    ifdown -a && ifup -a
+    ip addr flush dev eth0 && ifdown -a && ifup -a
 
 From the Linode, `ping` each of the default gateways listed on the "Remote Access" tab of the Linode Manager:
 

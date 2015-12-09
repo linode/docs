@@ -41,9 +41,9 @@ This guide shows you how to set up a personal [Minecraft](https://minecraft.net/
 
 ##Install Minecraft
 
-1.  Exit your SSH session, and log back in to your Linode as the `minecraft` user:
+1.  Exit your SSH session and log back in to your Linode as the `minecraft` user.
 
-2.  Download the latest version of the Minecraft Multiplayer Server from [Minecraft.net](https://minecraft.net/). The current version as of publcation is 1.8.1. Refer to the linked page to download the latest version:
+2.  Download the latest version of the Minecraft Multiplayer Server from [Minecraft.net](https://minecraft.net/). The current version as of this publication is 1.8.1. Refer to the linked page to download the latest version:
 
         wget https://s3.amazonaws.com/Minecraft.Download/versions/1.8.1/minecraft_server.1.8.1.jar
 
@@ -94,7 +94,7 @@ This guide shows you how to set up a personal [Minecraft](https://minecraft.net/
 
         screen /home/minecraft/run.sh
 
-    The time, the Minecraft server console will generate a lot of output as it creates required text files, and generates the Minecraft world:
+    This time the Minecraft server console will generate a lot of output as it creates required text files and generates the Minecraft world:
 
         [22:00:06] [Server thread/INFO]: Starting minecraft server version 1.8.1
         [22:00:06] [Server thread/INFO]: Loading properties
@@ -119,7 +119,7 @@ This guide shows you how to set up a personal [Minecraft](https://minecraft.net/
 
     [![Minecraft Launch Menu.](/docs/assets/minecraft-select-multiplayer_small.png)](/docs/assets/minecraft-select-multiplayer.png)
 
-2.  Click on **Add server** and enter your Linode's IP address or domain name. When you're finished click **Done**
+2.  Click on **Add server** and enter your Linode's IP address or domain name. When you're finished click **Done**.
 
     [![Edit Server Info.](/docs/assets/minecraft-server-info_small.png)](/docs/assets/minecraft-server-info.png)
 
@@ -129,6 +129,6 @@ This guide shows you how to set up a personal [Minecraft](https://minecraft.net/
 
     [![Minecraft Players.](/docs/assets/minecraft-gameplay_small.png)](/docs/assets/minecraft-gameplay.png)
 
-Congratulations! You can now play Minecraft in a persistent world with your friends!
+Congratulations! You can now play Minecraft in a persistent world with your friends.
 
 

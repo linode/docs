@@ -128,7 +128,7 @@ To ensure that your Prosody instance will federate properly with the rest of the
 2.  Service: `_xmpp-client` Protocol: TCP Port: 5222
 3.  Service: `_jabber` Protocol: TCP Port: 5269
 
-The "target" of the SRV record should point to the publicly routable hostname for that machine (e.g. "squire.example.com"). The priority and weight should both be set to `0`.
+The "target" of the SRV record should point to the publicly routable hostname for that machine (e.g. "username.example.com"). The priority and weight should both be set to `0`.
 
 ## Enabling Components
 
@@ -168,17 +168,17 @@ The XMPP protocol supports "in-band" registration, where users can register for 
 
 If you're familiar with the `ejabberdctl` interface from [ejabberd,](/docs/applications/messaging/instant-messaging-services-with-ejabberd-on-ubuntu-12-04-precise-pangolin/) `prosodyctl` mimics its counterpart as much as possible.
 
-To use `prosodyctl` to register a user, in this case `lollipop@example.com`, issue the following command:
+To use `prosodyctl` to register a user, in this case `username@example.com`, issue the following command:
 
-    prosodyctl adduser lollipop@example.com
+    prosodyctl adduser username@example.com
 
 To set the password for this account, issue the following command and enter the password as requested:
 
-    prosodyctl passwd lollipop@example.com
+    prosodyctl passwd username@example.com
 
 To remove this user, issue the following command:
 
-    prosodyctl deluser lollipop@example.com
+    prosodyctl deluser username@example.com
 
 Additionally, `prosodyctl` can provide a report on the status of the server in response to the following command:
 

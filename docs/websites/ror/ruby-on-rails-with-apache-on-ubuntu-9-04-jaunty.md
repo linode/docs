@@ -12,6 +12,8 @@ modified_by:
   name: Amanda Folson
 published: 'Thursday, August 13th, 2009'
 title: 'Ruby on Rails with Apache on Ubuntu 9.04 (Jaunty)'
+external_resources:
+  - '[Ruby on Rails Homepage](http://rubyonrails.org/)'
 ---
 
 
@@ -26,8 +28,7 @@ Our goal is to provide instructions that are accessible and will have you up and
 
 In addition to updating your system before beginning this guide, we recommend you review other guides in the Linode Library so that you have a functioning installation of the [Apache web server](/docs/web-servers/apache/installation/ubuntu-9.04-jaunty) and a working installation of the [MySQL database server](/docs/databases/mysql/ubuntu-9.04-jaunty). With those prerequisites out of the way, we can get started with Rails. We will assume that you're logged in to your Linode via SSH and have a root prompt for the purpose of this tutorial.
 
-Installing Passenger and Dependencies
--------------------------------------
+## Installing Passenger and Dependencies
 
 Make sure your package repositories and installed programs are up to date by issuing the following commands:
 
@@ -67,8 +68,7 @@ This should install the latest versions of all packages, including ruby, rake, r
 
 -   other dependencies required by the application you wish to deploy.
 
-Configuring Apache to Work with Passenger
------------------------------------------
+## Configuring Apache to Work with Passenger
 
 Passenger should be installed by default following the installation using `apt-get`, you can verify this by checking the contents of the `/etc/apache2/mods-enabled` directory with the following command:
 
@@ -98,14 +98,13 @@ We'll want to restart Apache once to make sure all of our settings and configura
 
     /etc/init.d/apache2 restart
 
-**Note:** Passenger requires that the log files in your application be world writable (eg. chmod 666) and will produce an HTTP 500 Internal Server Error if the log files are not writable. Issue the following command to change the permissions of the files in the log directory of the "lollipop" application in the setup above.
+**Note:** Passenger requires that the log files in your application be world writable (eg. chmod 666) and will produce an HTTP 500 Internal Server Error if the log files are not writable. Issue the following command to change the permissions of the files in the log directory of the "my-app" application in the setup above.
 
-    chmod 666 /srv/www/example.com/lollipop/log/* 
+    chmod 666 /srv/www/example.com/my-app/log/* 
 
 You now have a functioning environment for your Ruby on Rails application.
 
-Deploying Multiple Rails Apps
------------------------------
+## Deploying Multiple Rails Apps
 
 If you need to install multiple Rails applications the easiest way to accomplish this is by installing each application in its own virtual host. Create multiple virtual hosts, as described in [Apache guide](/docs/web-servers/apache/installation/ubuntu-9.04-jaunty) and link the `public/` directory of your application to the DocumentRoot (e.g. `public_html/`) of the virtual host, as described above.
 
@@ -117,33 +116,22 @@ Passenger also supports deploying more than one Rails application within a singl
 Apache Virtual Host Configuration
 :   ~~~ apache
     DocumentRoot /srv/www/example.com/public_html/
-    RailsBaseURI /lollipop
+    RailsBaseURI /my-app
     RailsBaseURI /frogs
     RailsBaseURI /simon
     ~~~
 
 These lines, taken from a fictitious `<VirtualHost >` tell Passenger about three Rails apps in the `example.com` host. Rather than linking the `public/` directory of your Rails app to the `public_html/` directory of the Host, we'll link the public directory of the application to a folder below the `public_html/` directory. In this example the following commands will create the necessary symbolic links:
 
-    ln -s /srv/www/example.com/lollipop/public/ /srv/www/example.com/public_html/lollipop/
-    ln -s /srv/www/example.com/lollipop/frogs/ /srv/www/example.com/public_html/frogs/
-    ln -s /srv/www/example.com/lollipop/simon/ /srv/www/example.com/public_html/simon/
+    ln -s /srv/www/example.com/my-app/public/ /srv/www/example.com/public_html/my-app/
+    ln -s /srv/www/example.com/my-app/frogs/ /srv/www/example.com/public_html/frogs/
+    ln -s /srv/www/example.com/my-app/simon/ /srv/www/example.com/public_html/simon/
 
 In this setup the directories for each Rails application are located in the `/srv/www/example.com/` directory, which is not accessible to the web server. In practice, the application directories could be located wherever you like.
 
-Additional Tools
-----------------
+## Additional Tools
 
 If you're new to Linux systems administration or Debian/Ubuntu based systems, we've collected some additional tips which you might find helpful.
 
 -   Consider reading the Debian/Ubuntu section of our [package management guide](/docs/using-linux/package-management) to learn how to get the most out of the `apt` and `dpkg` tools.
 -   Note that if you want to use the [Git Version Control System](http://www.git-scm.com/), the package name in Ubuntu is "git-core", not "git".
-
-More Information
-----------------
-
-You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
-
-- [Ruby on Rails Homepage](http://rubyonrails.org/)
-
-
-

@@ -77,7 +77,7 @@ The `rotate` directive controls how many times a log is rotated before old logs 
 {: .file-excerpt }
 logrotate.conf
 :   ~~~
-    mail <squire@example.com>
+    mail <username@example.com>
     ~~~
 
 Your system will need a functioning [MTA](/docs/email/) to be able to send email.

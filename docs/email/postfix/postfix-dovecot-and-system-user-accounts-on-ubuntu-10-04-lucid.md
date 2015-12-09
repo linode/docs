@@ -119,22 +119,22 @@ Create a `/etc/postfix/virtual` file to map incoming email addresses to their de
 {: .file }
 /etc/postfix/virtual
 
-> <squire@example.com> squire <squire@example.net> squire <squire@example.com> squire
+> <username@example.com> username <username@example.net> username <username@example.com> username
 >
 > <fore@example.com> <foreman@example.com> <fore@example.net> <foreman@example.com> <fore@example.com> <foreman@example.com>
 >
-> <team@example.com> squire, <foreman@example.com> <team@example.net> squire, <foreman@example.com> <team@example.com> squire, <foreman@example.com>
+> <team@example.com> username, <foreman@example.com> <team@example.net> username, <foreman@example.com> <team@example.com> username, <foreman@example.com>
 
-Here, all mail sent to the three addresses beginning with the characters `squire@` are delivered to the local user "squire" and deposited to a Maildir in the `/home/squire/mail/` directory. The three addresses that begin with the characters `fore@` are delivered to the email address `foreman@example.com`. The final set of three email addresses beginning with `team@` are both delivered locally and sent to the `foreman@example.com` email address.
+Here, all mail sent to the three addresses beginning with the characters `username@` are delivered to the local user "username" and deposited to a Maildir in the `/home/username/mail/` directory. The three addresses that begin with the characters `fore@` are delivered to the email address `foreman@example.com`. The final set of three email addresses beginning with `team@` are both delivered locally and sent to the `foreman@example.com` email address.
 
 You can add additional lines in the same format as the above to control how all incoming email is delivered to local or external destinations. Remember that incoming email has no firm relationship to the name of the user account.
 
-Edit the `/etc/alias` file to add the following line. This will to reroute all local mail delivered to the root user to another user account. In the following example, all mail delivered to `root` will be delivered to the `squire` user's mail box.
+Edit the `/etc/alias` file to add the following line. This will to reroute all local mail delivered to the root user to another user account. In the following example, all mail delivered to `root` will be delivered to the `username` user's mail box.
 
 {: .file-excerpt }
 /etc/aliases
 
-> root: squire
+> root: username
 
 When you have configured mail delivery issue the following command to recreate the aliases database, rebuild the virtual alias database, and restart the mail server:
 

@@ -26,8 +26,8 @@ When issued at the command line without options, `wget` will download the file s
 
     $ wget http://www.linode.com/docs/assets/695-wget-example.txt
     --2010-10-01 12:01:22--   http://www.linode.com/docs/assets/695-wget-example.txt
-    Resolving library.linode.com... 74.207.233.254
-    Connecting to library.linode.com|74.207.233.254|:80... connected.
+    Resolving linode.com/docs... 74.207.233.254
+    Connecting to linode.com/docs|74.207.233.254|:80... connected.
     HTTP request sent, awaiting response... 200 OK
     Length: 477 [text/plain]
     Saving to: `wget-example.txt'
@@ -74,8 +74,8 @@ To view the HTTP header information attached to the resource, use the `-S` flag.
 
     $ wget -S http://www.linode.com/docs/assets/695-wget-example.txt
     --2010-10-01 12:03:50--   http://www.linode.com/docs/assets/695-wget-example.txt
-    Resolving library.linode.com... 74.207.233.254
-    Connecting to library.linode.com|74.207.233.254|:80... connected.
+    Resolving linode.com/docs... 74.207.233.254
+    Connecting to linode.com/docs|74.207.233.254|:80... connected.
     HTTP request sent, awaiting response... 
       HTTP/1.1 200 OK
       Server: nginx
@@ -112,7 +112,7 @@ If you need to access a resource that requires HTTP authentication, use the foll
 
 In practice this may resemble:
 
-    wget --http-user=squire --http-password=iwLcis4TMOgn3PTy http://example.com/backups/database.1285770344
+    wget --http-user=username --http-password=iwLcis4TMOgn3PTy http://example.com/backups/database.1285770344
 
 `wget` will not send the authentication information unless prompted by the web server. Use the `--auth-no-challenge` option to force `wget` to send the authentication credentials under every circumstance.
 
@@ -150,8 +150,8 @@ Use the `-b` option to background the download process if you do not want `wget`
 
     $ cat wget-log
     --2010-10-01 12:06:55--  http://www.linode.com/docs/assets/695-wget-example.txt
-    Resolving library.linode.com... 74.207.233.254
-    Connecting to library.linode.com|74.207.233.254|:80... connected.
+    Resolving linode.com/docs... 74.207.233.254
+    Connecting to linode.com/docs|74.207.233.254|:80... connected.
     HTTP request sent, awaiting response... 200 OK
     Length: 477 [text/plain]
     Saving to: `wget-example.txt'

@@ -106,7 +106,7 @@ This will produce output that resembles the following for each commit stored in 
 
     changeset:   0:dcf111b16118
     tag:         tip
-    user:        squire@example.com
+    user:        username@example.com
     date:        Thu Apr 22 18:51:21 2010 +0000
     summary:     hello mercurial world
 
@@ -178,9 +178,9 @@ Now navigate to `http://localhost:8000` in your web browser. Replace `localhost`
 
 Additionally, you can specify remote Mercurial repositories using SSH paths as in the following example:
 
-    hg clone ssh://squire@example.com//srv/hg/lolipop
+    hg clone ssh://username@example.com//srv/hg/lolipop
 
-In this example, the user `squire` logs into the server located at `example.com` and clones the Mercurial repository located at the path `/srv/hg/lolipop`. By default, `ssh` presumes that the specified path is in the users home directory. Use the double slash (e.g. `//`) to specify absolute paths when the Mercurial repository is located outside of the users home directory. You may use the SSH protocol to push and pull content. To create a Mercurial repository that you can use to push changes to, issue the following commands:
+In this example, the user `username` logs into the server located at `example.com` and clones the Mercurial repository located at the path `/srv/hg/lolipop`. By default, `ssh` presumes that the specified path is in the users home directory. Use the double slash (e.g. `//`) to specify absolute paths when the Mercurial repository is located outside of the users home directory. You may use the SSH protocol to push and pull content. To create a Mercurial repository that you can use to push changes to, issue the following commands:
 
     mkdir -p /srv/hg/
     hg init lolipop

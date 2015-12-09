@@ -7,7 +7,7 @@ keywords: 'networking,diagnostic,speed,iperf'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: Monday, January 12, 2015
 modified_by:
-  name: Dave Russell Jr
+  name: Linode
 published: 'Monday, January 12, 2015'
 title: Diagnosing Network Speed with Iperf
 external_resources:
