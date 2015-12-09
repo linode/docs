@@ -1,11 +1,12 @@
 ---
 author:
-    name: Nashruddin Amin
-    email: nashruddin.amin@gmail.com
+    name: Linode Community
+    email: docs@linode.com
 description: 'Install Gogs, a Self-hosted Git Service Written in Go, on Your Debian 8 (Jessie) Server.'
 keywords: 'gogs, go git service,golang,git,debian 8, nginx, postgresql'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 published: 'Friday, October 9th, 2015'
+alias: ['applications/development/install-gogs-on-debian-jessie/']
 modified: Friday, October 9th, 2015
 modified_by:
     name: Linode
