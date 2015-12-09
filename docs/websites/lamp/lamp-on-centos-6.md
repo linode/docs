@@ -2,15 +2,15 @@
 author:
   name: Alex Fornuto
   email: afornuto@linode.com
-description: 'Creating a LAMP stack on a CentOS 6 Linode.'
-keywords: 'LAMP,CentOS,CentOS 6,apache,mysql,php'
+description: 'Create a LAMP stack on a CentOS 6 Linode.'
+keywords: 'LAMP,CentOS,CentOS 6,apache,mysql,php,centos lamp'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['lamp-guides/centos-6/']
-modified: Monday, June 29th, 2015
+alias: ['lamp-guides/centos-6/','websites/lamp/lamp-server-on-centos-6/']
+modified: Tuesday, December 1st, 2015
 modified_by:
-  name: Elle Krout
+  name: Alex Fornuto
 published: 'Tuesday, July 19th, 2011'
-title: LAMP Server on CentOS 6
+title: LAMP on CentOS 6
 external_resources:
  - '[CentOS Linux Home Page](http://www.centos.org/)'
  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)'
@@ -19,7 +19,7 @@ external_resources:
 ---
 
 
-A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used to prepare servers for hosting web content. This guide provides step-by-step instructions for installing a full-featured LAMP stack on a CentOS 6 system.
+A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used to prepare servers for hosting web content. This guide shows you how to install a LAMP stack on a CentOS 6 system.
 
 {: .note}
 >
@@ -41,9 +41,11 @@ A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used to prepare s
         sudo yum update
 
 
-## Install and Configure the Apache Web Server
+## Apache Web
 
-1.  Install Apache 2.2:
+###  Install and Configure
+
+1.  Install Apache 2:
 
         sudo yum install httpd
 
@@ -117,7 +119,9 @@ There are different ways to set up virtual hosts; however, the method below is r
     >     sudo service httpd reload 
 
 
-## Install and Configure MySQL
+## MySQL
+
+###  Install and Configure
 
 1.  Install the MySQL package:
 
@@ -154,7 +158,9 @@ There are different ways to set up virtual hosts; however, the method below is r
 With Apache and MySQL installed you are ready to move on to installing PHP.
 
 
-## Install and Configure PHP
+## PHP
+
+### Install and Configure
 
 1.  Install PHP:
 

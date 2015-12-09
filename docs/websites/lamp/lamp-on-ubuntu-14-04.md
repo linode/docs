@@ -3,14 +3,14 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'How to install a LAMP (Linux, Apache, MySQL, PHP) stack on an Ubuntu 14.04 long term support (LTS) system.'
-keywords: 'install ubuntu lamp server,ubuntu 14.04 lamp,lamp,ubuntu web server,apache,mysql,php,ubuntu 14.04'
+keywords: 'ubuntu lamp,ubuntu 14.04 lamp,lamp install,ubuntu web server,apache,mysql,php,ubuntu 14.04'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['websites/lamp/lamp-server-on-ubuntu-14-04/']
-modified: Monday, June 29th, 2015
+alias: ['websites/lamp/lamp-server-on-ubuntu-14-04/','websites/lamp/how-to-install-a-lamp-stack-on-ubuntu-14-04/']
+modified: Monday, December 7th, 2015
 modified_by:
-  name: Elle Krout
+  name: Alex Fornuto
 published: 'Wednesday, January 28th, 2015'
-title: 'How to Install a LAMP Stack on Ubuntu 14.04'
+title: 'LAMP on Ubuntu 14.04'
 external_resources:
  - '[Ubuntu Server Edition Homepage](http://www.ubuntu.com/server)'
  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.4/)'
@@ -18,9 +18,7 @@ external_resources:
  - '[PHP Documentation](http://www.php.net/docs.php)'
 ---
 
-A LAMP (Linux, Apache, MySQL, PHP) stack is a basic web stack used to prepare servers for hosting online. This guide provides step-by-step instructions for installing a full-featured LAMP stack on an Ubuntu 14.04 long term support (LTS) system.
-
-Before beginning this guide, we suggest you first read through [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server/).
+A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used for hosting web content. This guide shows you hot to install a LAMP stack on an Ubuntu 14.04 (LTS) server.
 
 {: .note}
 >
@@ -30,18 +28,13 @@ Before beginning this guide, we suggest you first read through [Getting Started]
 
 1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, and the Linode's [hostname is set](/docs/getting-started#setting-the-hostname).
 
-    To check your hostname run:
-
-        hostname
-        hostname -f
-
-    The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
-
 2.  Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
 
-## Install and Configure Apache
+## Apache
+
+### Install and Configure
 
 1.  Install Apache 2.4:
 
@@ -129,7 +122,9 @@ There are several different ways to set up virtual hosts; however, below is the 
     If there are additional websites you wish to add to your Linode repeat the above steps to add them.
 
 
-## Install and Configure MySQL
+## MySQL
+
+### Install and Configure
 
 1.  Install the `mysql-server` package:
 
@@ -158,7 +153,7 @@ There are several different ways to set up virtual hosts; however, below is the 
 
         quit 
 
-##Install and Configure PHP
+## PHP
 
 1.  Install PHP, and the PHP Extension and Application Repository:
 
