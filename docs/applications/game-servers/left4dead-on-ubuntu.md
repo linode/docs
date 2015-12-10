@@ -133,7 +133,7 @@ If you have a firewall running on your Linode, add exceptions for SteamCMD:
 		
 	Choose one of the following example files:
 	    * wget https://www.gottnt.com/l4d2/basic-server.cfg
-		* wget https://www.gottnt.com/l4d2/detailed-server.cfg
+	    * wget https://www.gottnt.com/l4d2/detailed-server.cfg
 		
     Make sure to rename the file to `server.cfg` before launching the server:
 	
@@ -174,13 +174,13 @@ If you have a firewall running on your Linode, add exceptions for SteamCMD:
 
 ## Entering The Server
 In order to connect to the server, a lobby needs to be created:
-1.  Choose a game mode you would like to play. Click on the icon that coresponds to the game type you want. Select the `Play With Friends` option.
+1.  Choose a game mode you would like to play. Click on the icon that coresponds to the game type you want. Select the **Play With Friends** option.
 
-2.  On the next window, click `Create Versus Lobby`. In the next screen, select a campaign you want. For the `Server Type` select `Best Available Dedicated`, then click `Create Lobby`. After you click that the lobby will be created. 
+2.  On the next window, click **Create Versus Lobby**. In the next screen, select a campaign you want. For the **Server Type** select **Best Available Dedicated**, then click **Create Lobby**. After you click that the lobby will be created. 
 
 At this point you will need to enter one of the commands to make your lobby connect to your dedicated server.
 
-Make sure you have the developer console enabled - Under `Options--Keyboard/Mouse` make sure that `Allow Developer Console` is checked.
+Make sure you have the developer console enabled - Under **Options--Keyboard/Mouse** make sure that **Allow Developer Console** is checked.
 
 3. Press the `~` key to open the developer console and enter the following commands, making sure to replace 123.456.789.012 with your Linode's external or public IP address:
         
