@@ -8,7 +8,7 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['contribute/']
 modified: Thursday, December 10th, 2015
 modified_by:
-  name: Lionde
+  name: Linode
 published: 'Wednesday, May 19th, 2014'
 title: Linode Writer's Guide
 external_resources:
