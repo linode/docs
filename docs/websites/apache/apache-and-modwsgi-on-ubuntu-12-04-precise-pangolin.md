@@ -2,11 +2,11 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Deploy Python WSGI Applications with Apache and mod\_wsgi.'
-keywords: 'python,apache,mod\_wsgi'
+description: 'Deploy Python WSGI Applications with Apache and mod_wsgi.'
+keywords: 'python,apache,mod_wsgi,django'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-servers/apache/mod-wsgi/ubuntu-12-04-precise-pangolin/']
-modified: Thursday, October 18th, 2012
+modified: Wednesday, November 18th, 2015
 modified_by:
   name: Linode
 published: 'Thursday, October 18th, 2012'
@@ -21,23 +21,27 @@ external_resources:
  - '[Web.py](http://webpy.org/)'
 ---
 
-The WSGI specification provides a standard and efficient method for dynamic web applications to communicate with web servers. `mod_wsgi` provides a method for simply deploying WSGI applications with Apache. WSGI is used to deploy applications written with frameworks and tools like Django, Web.py, Werkzug, Chery.py, TurboGears, and Flask. These guides outline this installation and configuration process for deploying WSGI applications.
+The WSGI specification provides a standard and efficient method for dynamic web applications to communicate with web servers. `mod_wsgi` provides a method for simply deploying WSGI applications with Apache. WSGI is used to deploy applications written with frameworks and tools like Django, Web.py, Werkzug, Chery.py, TurboGears, and Flask. This guides outline this installation and configuration process for WSGI with Apache on Ubuntu 12.04.
 
-## Set the Hostname
+## Before You Begin
+ 
+1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, and the Linode's [hostname is set](/docs/getting-started#setting-the-hostname).
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
+2.  We recommend that you are already familiar with [Apache](/docs/websites/apache/how-to-install-and-configure-apache-2-web-server-on-ubuntu-12-04-lts-precise-pangolin) before beginning this guide.
 
-    hostname
-    hostname -f
+3.  Update your system:
 
-The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
+        sudo apt-get update
+        sudo apt-get upgrade
+
+{: .note}
+>
+>The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
 ## Install Dependencies
 
 Issue the following commands to ensure that your system's package repositories and installed programs are up to date and that all required software is installed:
 
-    apt-get update
-    apt-get upgrade
     apt-get install apache2 python-setuptools libapache2-mod-wsgi
 
 Your application may require additional dependencies. Install these either using the Ubuntu package tools or by using the `easy_install` command included in `python-setuptools` before proceeding.
@@ -75,7 +79,7 @@ You must append the path of your application to the system path as above. The de
 
 ### Web.py WSGI Configuration
 
-Consider the following example Web.py *application* which is embedded in a `application.wsgi` file. The [Web.py Framework](/docs/websites/frameworks/webpy-on-ubuntu-12-04-precise-pangolin/) must be installed in order for the following application to run successfully.
+In this example the Web.py *application* is embedded in a `application.wsgi` file. The [Web.py Framework](/docs/websites/frameworks/webpy-on-ubuntu-12-04-precise-pangolin/) must be installed in order for the following application to run successfully.
 
 {: .file-excerpt }
 /var/www/example.com/application/application.wsgi
@@ -101,7 +105,7 @@ Consider the following example Web.py *application* which is embedded in a `appl
 
 ### Django WSGI Configuration
 
-Consider the following example `application.wsgi` file for Django applications:
+The following example `application.wsgi` file is configured for Django applications:
 
 {: .file-excerpt }
 /var/www/example.com/application/application.wsgi
@@ -119,7 +123,7 @@ Consider the following example `application.wsgi` file for Django applications:
     application = django.core.handlers.wsgi.WSGIHandler()
     ~~~
 
-`Django` must be installed on your system and a working Django application before this example will function. The `DJANGO_SETTINGS_MODULE` points to the "`settings.py` file for your application, which would be located in the "`/var/www/example.com/application/settings.py` in the case of this example.
+`Django` must be installed on your system along with a working Django application before this example will function. The `DJANGO_SETTINGS_MODULE` points to the "`settings.py` file for your application, which would be located at `/var/www/example.com/application/settings.py` in the case of this example.
 
 ## Configure Apache
 

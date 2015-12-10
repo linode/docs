@@ -1,14 +1,14 @@
 ---
 author:
-  name: Lee Matos
+  name: Linode
   email: docs@linode.com
 description: 'Host websites and web applications with a LAMP server on Debian 7.0 (Wheezy).'
-keywords: 'debian 7 LAMP server,debian LAMP guide,LAMP howto,debian,debian 7,lamp,apache,mysql,php'
+keywords: 'debian 7 LAMP server,debian LAMP guide,LAMP howto,debian,debian 7,lamp server,lamp,apache,mysql,php,linux web'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['lamp-guides/debian-7-wheezy/']
-modified: Tuesday, June 30th, 2015
+modified: Tuesday, December 1st, 2015
 modified_by:
-  name: Elle Krout
+  name: Alex Fornuto
 published: 'Wednesday, October 9th, 2013'
 title: 'LAMP Server on Debian 7 (Wheezy)'
 external_resources:
@@ -18,7 +18,7 @@ external_resources:
  - '[PHP Documentation](http://www.php.net/docs.php)'
 ---
 
-A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used to prepare servers for hosting web content. This guide provides step-by-step instructions for installing a full-featured LAMP stack on a Debian 7.0 (Wheezy) Linode.
+A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used to prepare servers for hosting web content. This guide guide shows you how to install a LAMP stack on a Debian 7 (Wheezy) Linode.
 
 {: .note}
 >
@@ -40,7 +40,9 @@ A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used to prepare s
         sudo apt-get update && sudo apt-get upgrade
 
 
-## Install and Configure Apache
+## Apache
+
+### Install and Configure
 
 1.  Install Apache 2.2:
 
@@ -52,8 +54,6 @@ A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used to prepare s
     /etc/apache2/apache2.conf
     :   ~~~ conf
         KeepAlive Off
-
-        ...
 
         <IfModule mpm_prefork_module>
         StartServers 2
@@ -109,7 +109,9 @@ There are different ways to set up virtual hosts; however, the method below is r
 Assuming that you have configured the DNS for your domain to point to your Linode's IP address, virtual hosting for your domain should now work.
 
 
-## Install and Configure MySQL
+## MySQL
+
+### Install and Configure
 
 1.  Install MySQL:
 
@@ -142,7 +144,7 @@ Assuming that you have configured the DNS for your domain to point to your Linod
 With Apache and MySQL installed, you are now ready to move on to installing PHP.
 
 
-## Install and Configure PHP
+## PHP
 
 1.  Install PHP, and the PHP Extension and Application Repository:
 
