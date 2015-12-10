@@ -32,13 +32,13 @@ Pros:
 - VPN tunnels between multiple locations not necessary
 
 Cons:
-- Requires Enterprise-grade edge router(s) that support custom DHCP and DNS options
+- Requires an edge router(s) that supports custom DHCP and DNS options (see details in the **Prerequisites** section)
 - When the internet is down, the controller becomes unreachable
 
 ## Prerequisites
 
 - A 1GB, **dedicated** Linode server running Ubuntu 14.04. Dedicating an entire Linode to the UniFi Controller is important as it shares many common TCP ports used by other packages, which could otherwise lead to problems down the road. We recommend following our [Getting started](/docs/getting-started) guide if you need help setting up your Linode
-- LAN-facing edge routers that support DHCP option parameters and DNS host overrides. Refer to your router vendor's documentation to determine whether your device(s) support this feature
+- LAN-facing edge router(s) that support DHCP option parameters and DNS host overrides. Almost all business and enterprise grade router brands (like Cisco, HP, Juniper, pfSense, and Ubiquiti edgeMAX) include these features, but most consumer grade equipment does not. In some cases, custom firmwares like [DD-WRT](https://www.dd-wrt.com/site/) and [OpenWRT](https://openwrt.org/)) can be installed on customer grade hardware to add these functionalities
 - The latest version of the Java Runtime Environment, since the UniFi Controller is written in Java. Follow our [Installing Java](/docs/applications/java/installing-java-on-ubuntu-14-04) guide to start sipping on some ~~coffee~~ Java
 - The `syslinux` package. If it is not installed on your Linode, execute the `sudo apt-get install syslinux` command to install it
 
