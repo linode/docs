@@ -6,7 +6,7 @@ description: 'Information on submitting articles to Linode Guides & Tutorials, i
 keywords: 'writing,open source software,contribute linode library, submissions,linode guides and tutorials,guides,tutorials'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['contribute/']
-modified: Tuesday, December 8th, 2015
+modified: Thursday, December 10th, 2015
 modified_by:
   name: Lionde
 published: 'Wednesday, May 19th, 2014'
@@ -16,7 +16,7 @@ external_resources:
  - '[GitHub Beginners Guide](/docs/github-guide)'
 ---
 
-Linode has a thriving community of authors who contribute to Linode Guides and Tutorials. We are always looking for guides on popular, trending topics, and updates to existing guides. If you're interested in writing for Linode, this page describes the process for submitting your work. If your guide is published, you'll receive $250 per article by PayPal or in Linode credit.
+Linode has a thriving community of authors who contribute to Linode Guides & Tutorials. We are always looking for guides on popular, trending topics, and updates to existing guides. If you're interested in writing for Linode, this page describes the process for submitting your work. If your guide is published, you'll receive $250 per article by PayPal or in Linode credit.
 
 ## Content Guidelines
 
@@ -24,7 +24,7 @@ Guides should instruct readers how to accomplish a task on, or relating to, a Li
 
 Guides should be informational but friendly. Use the active voice whenever possible, and the pronouns *you* or *we* instead of *I*. Avoid unnecessary information. Brief, to-the-point explanations are preferred, but also consider the audience and the level of technical ability needed to complete each task. A beginner's topic usually will require more detailed explanations than one for an advanced user.
 
-To be considered, submissions must adhere to the formatting described in our [Writer's Formatting Guide](/docs/linode-writers-formatting-guide). The primary qualities we look for in a guide are:
+To be considered, submissions must be written in English and adhere to the formatting described in our [Writer's Formatting Guide](/docs/linode-writers-formatting-guide). The primary qualities we look for in a guide are:
 
 *   **Accuracy:** Instructions should be straightforward, technically correct and thoroughly tested. Include brief explanations of each step to explain the purpose of each action. Guides can use technical jargon pertinent to Linode, Linux, and related topics, but use common sense--if a term implies an advanced concept that fewer people would know, take a sentence or two to explain it, or link to a wiki or manual page.
 
@@ -40,7 +40,7 @@ Submit your article as a pull request to [Linode/Docs](https://github.com/linode
 
 We also accept guides sent to <contribute@linode.com>, though they are assigned a lower priority than GitHub submissions. If submitting by email, be sure to include the **guide title** in the subject line, and your PayPal **or** Linode account information in the message body so we can properly compensate you for your work.
 
-If you have any questions about either submission method, contact <contribute@linode.com>. Do not open a pull request or issue unless you are submitting guide content.
+If you have any questions about either submission method, contact <contribute@linode.com>.
 
 ## The Review Process
 
@@ -53,7 +53,7 @@ Depending on your submission method, we will either submit the final version to 
 
 ### General Tips to Consider
 
-*   Choose topics on relevant technology: guides on emerging tech that is not yet well-documented is preferred.
+*   Choose topics on relevant technology; guides on emerging tech that is not yet well-documented is preferred.
 
 *   Use other Linode guides as building blocks.	For example, if your guide requires a system with a properly configured `hosts` file and a working LAMP stack, you can link to the [Getting Started](/docs/getting-started) and [LAMP](/docs/websites/lamp) guides instead of duplicating that information in your own writing.
 
@@ -61,9 +61,9 @@ Depending on your submission method, we will either submit the final version to 
 
 *   Avoid 3rd-party PPAs and repositories.
 
-*   Unless there is a major advantage, use repositories over installation from source code.
+*   Unless there is a major advantage, use distro repositories rather than installing from source code.
 
-*   Use proper capitalization for software. For example, nginx is the software, NGINX is the company, and Nginx is only used at the start of a sentence or in title case.
+*   Use proper capitalization for software. For example, nginx is the web server, NGINX Inc. is the company behind it, and Nginx would only be used to start a sentence, title or heading.
 
 ### Reasons Your Guide May Be Rejected
 
@@ -98,8 +98,8 @@ Here are some examples of exceptional community-contributed guides. Use these as
 
 ## Legal Information
 
-COPYRIGHT OWNERSHIP. Writer agrees that the Work is being created by the writer for the Linode Guides and Tutorials Repository and that each form of Work is being created by the writer as a “work made for hire” under the United States Copyright Act and, at all stages of development, the Work shall be and remain the sole and exclusive property of Linode. At Linode's sole, absolute and unfettered discretion, Linode may make any alterations to the Work.
+COPYRIGHT OWNERSHIP. Writer agrees that the Work is being created by the writer for the Linode Guides & Tutorials repository and that each form of Work is being created by the writer as a “work made for hire” under the United States Copyright Act and, at all stages of development, the Work shall be and remain the sole and exclusive property of Linode. At Linode's sole, absolute and unfettered discretion, Linode may make any alterations to the Work.
 
-CREDIT. Nothing contained in this Agreement shall be deeded to require Linode to use the Work, or any part thereof, in connection with Linode Guides and Tutorials or otherwise. Credit for the Work shall read, "Contributed by *writer's name*."
+CREDIT. Nothing contained in this Agreement shall be deeded to require Linode to use the Work, or any part thereof, in connection with Linode Guides & Tutorials or otherwise. Credit for the Work shall read, "Contributed by *writer's name*."
 
-PAYMENT. Upon publication of a submission to the Linode Guides and Tutorials Repository, the writer will be paid the sum of USD $250.00 either in the form of a credit to their Linode account or as an electronic payment.
+PAYMENT. Upon publication of a submission to the Linode Guides & Tutorials Repository, the writer will be paid the sum of USD $250.00 either in the form of a credit to their Linode account or as an electronic payment.

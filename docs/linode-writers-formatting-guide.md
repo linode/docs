@@ -6,24 +6,22 @@ description: 'The Linode Guides & Tutorials style guide for article submissions'
 keywords: 'style guide,format,formatting,how to write,write for us,write for linode,linode library,submissions'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['style-guide/']
-modified: Tuesday, December 8th, 2015
+modified: Thursday, December 10th, 2015
 modified_by:
   name: Linode
 published: 'Wednesday, January 15th, 2014'
 title: Linode Writer's Formatting Guide
 ---
 
-Submitted articles should match the style and formatting of existing [Linode Guides and Tutorials](https://linode.com/docs/) documents. Submissions which adhere to the Linode Writer's Guide are more likely to be accepted than guides which do not, so review this page carefully.
-
-If you have any questions, email <contribute@linode.com>.
+Submissions which adhere to the following formatting guidelines are more likely to be accepted than those which do not, so review this page carefully. If you have any questions, contact <contribute@linode.com>.
 
 ## General Layout
 
-Linode Guides and Tutorials are written in [PHP Markdown Extra](https://michelf.ca/projects/php-markdown/extra/) and submissions should be a `.md` file. Additional Linode-specific markdown formatting notes are given [further below](#linode-specific-formatting).
+Linode Guides & Tutorials are written in [PHP Markdown Extra](https://michelf.ca/projects/php-markdown/extra/). Additional Linode-specific markdown formatting notes are given [further below](#linode-specific-formatting), and submissions should be a `.md` file.
 
 ### Header
 
-Linode Guides and Tutorials store metadata and other information in a header at the top of every page. Use the following as a template for your own guide:
+Linode Guides & Tutorials store metadata and other information in a header at the top of every page. Use the template below for your own guide.
 
 {: .file-excerpt}
 Author Submission
@@ -54,11 +52,11 @@ Author Submission
 
 ### Introduction
 
-Introductions should be concise; explain what the goal of the guide is and why. If you're introducing new software to the system, a brief description is advised.
+Introductions should be concise; explain what the goal of the guide is and why. If you're introducing new software to the system, include a brief description and link to its official website whenever possible.
 
 ### Before You Begin
 
-The *Before You Begin* section is a basic area of prerequisites a reader should have completed before proceeding further in your guide. Use the template below and edit or add as needed.
+The *Before You Begin* section is a basic area of prerequisites a reader should have completed before proceeding further in your guide. Use the template below and edit as needed.
 
 {: .file-excerpt}
 Author Submission
@@ -83,21 +81,29 @@ Each section/subsection should be split into numbered steps as needed. Scanning 
 For example:
 
 ~~~
-## Install and Configure Apache
-    
-1.  Ensure your system is up-to-date.
-    
-2.  Download Apache:
-    
-        sudo apt-get install apache2
-    
-3.  Start Apache services:
-    
-        sudo system apache2 start
-    
-### Configure Your MPM
-    
-1.  Open `apache2.conf`.
+## Using MySQL
+
+1.  Log in to MySQL as the root user:
+        mysql -u root -p
+
+2.  When prompted, enter the root password.
+
+### Create a New MySQL User and Database
+
+1.  In the example below, `testdb` is the name of the database, `testuser` is the user, and `password` is the user’s password.
+
+        create database testdb;
+        grant all on testdb.* to 'testuser' identified by 'password';
+
+2.  Exit MySQL.
+
+        exit
+
+### Create a Sample Table
+
+1.  Log back in as `testuser`:
+
+        mysql -u testuser -p
 ~~~
 
 {: .note}
@@ -108,15 +114,11 @@ For example:
 
 ### Abbreviations and Acronyms
 
-Upon first mention of a new concept or software, use the full name or term, then note the abbreviation or acronym in parenthesis beside it. The abbreviation/acronym can then be used in the article from that point.
-
-For example: Lightweight Resource/Provider (LWRP)
+Upon first mention of a new concept or software, use the full name or term, then note the abbreviation or acronym in parenthesis beside it. The abbreviation/acronym can then be used in the article from that point. For example: Lightweight Resource/Provider (LWRP).
 
 ### Bold and Italics
 
-**Bold** buttons, menu selections, important terms and words that require emphasis and anything that you want to stand out to the reader.
-
-*Italicize* new terms and concepts the first time they are used.
+Use a **Bold** font weight for buttons, menu selections, important terms and words that require emphasis and anything that you want to stand out to the reader. *Italicize* new terms and concepts the first time they are used.
 
 ### Cautions
 
@@ -130,7 +132,7 @@ For example:
 
 {: .caution}
 >
->If improperly configured your Linode will not reboot.
+>If improperly configured, your Linode will not reboot.
 
 ### Commands
 
@@ -162,7 +164,7 @@ Example IPs should use the documentation address blocks given in IETF [RFC 5737]
 
 ### External Resources/More Information
 
-If you wish to provide links to external sites for the user to review after going through the guide, do so using the *extenral_resources* field in the [page header](#header). This will appear as a text block with links at the bottom of the page:
+If you wish to provide links to external sites for the user to review after going through your guide, do so using the *extenral_resources* field in the [page header](#header). This will appear as a text block with links at the bottom of the page.
 
 >More Information
 >
@@ -177,7 +179,7 @@ Use the *file* format when adding the content of a whole file to a guide. If onl
 
 Within the file formatting, a code language or syntax should be defined at the end of the `:   ~~~` line to set how the text is displayed. A list of supported languages with examples can be found [here](http://rouge.jayferd.us/demo).
 
-**Example: File format**
+Example: File format
 
     {: .file}
     /path/to/file
@@ -203,7 +205,7 @@ Within the file formatting, a code language or syntax should be defined at the e
    </IfModule>
    ~~~
 
-**Example: File Excerpt format**
+Example: File Excerpt format
 
     {: .file-excerpt}
     /path/to/file
@@ -233,9 +235,9 @@ For example:
 
 ### Images
 
-Images should be in *.png* or *.jpg* format. If an image is over 650 pixels wide, include both the original *and* one which is scaled down to 650 px. Image filenames cannot contain spaces and should use hyphens (-) to separate words instead of underscores (_).
+Images should be in *.png* or *.jpg* format. If an image is over 650 pixels wide, include both the original **and** one which is scaled down to 650 px. Image filenames cannot contain spaces and should use hyphens (-) to separate words instead of underscores (_).
 
-When adding an image, ensure that all identifying attributes such as names and IP addresses are removed, obfuscated, or replaced with dummy text, such as **example_user** or **192.0.2.0**. Be mindful of metadata in images taken from mobile devices.
+When adding an image, ensure that all identifying attributes such as names and IP addresses are removed, obfuscated, or replaced with dummy text, such as **example_user** or **192.0.2.0**. Be mindful of metadata in images taken with mobile devices.
 
 To insert an image up to 650 px wide:
 
@@ -247,13 +249,13 @@ To link a 650 px wide image to its original size:
 
 ### Key Combinations
 
-When instructing the reader to use a combination of keys, format them in bold:
+When instructing to use a combination of keys, format them in bold.
 
 For example:
 
-    Press **CTRL+N** then **X** to exit the program
+    Press **CTRL+N** then **X** to exit the program.
 
->Press **CTRL+N**, then **X** to exit the program
+>Press **CTRL+N**, then **X** to exit the program.
 
 ### Links
 
@@ -263,11 +265,11 @@ Internal links to other Linode guides should be relative, starting at `/docs/`:
 
 External links should be formatted as shown below and use HTTPS URLs whenever possible:
 
-    [Apache's Documentation](https://httpd.apache.org/docs/)
+    [Apache HTTP Server Documentation](https://httpd.apache.org/docs/)
 
 ### Lists
 
-Be sure that lists have the proper horizontal spacing (two spaces for ordered lists, three for unordered).
+Be sure that lists have the proper horizontal spacing. This should be two spaces for ordered lists, three for unordered.
 
 Examples:
 
@@ -293,11 +295,11 @@ Notes should be important text that does not necessarily fit the narrative of th
 
     {: .note}
     >
-    >This is a note!
+    >This is a note.
 
 {: .note}
 >
->This is a note!
+>This is a note.
 
 ### Numerical Values
 
@@ -310,7 +312,7 @@ Use single spaces between sentences; do not double-space.
 
 ### Variables
 
-Variables that the reader will need to change for their system or preference should be formatted using backtics. Do not include any brackets or parenthesis when using these temporary values in examples, as the reader may include them in their final version.
+Variables that the reader will need to change for their system or preference should be formatted using backtics. Do not include any brackets or parentheses when using these temporary values in examples, as the reader may include them in their final version.
 
 For example:
 
