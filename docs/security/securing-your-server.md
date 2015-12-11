@@ -354,6 +354,12 @@ If you would like to supplement your web server's IPv4 rules with IPv6 too, this
     -A INPUT -i lo -j ACCEPT
     -A INPUT ! -i lo -s ::1/128 -j REJECT
 
+    # Below are the rules which are required for your IPv6 address to be properly allocated
+    -A INPUT -p icmpv6 --icmpv6-type router-advertisement -m hl --hl-eq 255 -j ACCEPT
+    -A INPUT -p icmpv6 --icmpv6-type neighbor-solicitation -m hl --hl-eq 255 -j ACCEPT
+    -A INPUT -p icmpv6 --icmpv6-type neighbor-advertisement -m hl --hl-eq 255 -j ACCEPT
+    -A INPUT -p icmpv6 --icmpv6-type redirect -m hl --hl-eq 255 -j ACCEPT
+
     # Allow ICMP
     -A INPUT -p icmpv6 -m state --state NEW -j ACCEPT
 
