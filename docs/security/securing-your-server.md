@@ -99,7 +99,7 @@ By default, password authentication is used to connect to your Linode via SSH. A
 
     On your Linode:
 
-        sudo mkdir ~/.ssh && sudo chmod -R 700
+        sudo mkdir -p ~/.ssh && sudo chmod -R 700 ~/.ssh
 
     From your local computer:
 
