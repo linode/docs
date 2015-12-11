@@ -5,7 +5,7 @@ author:
 description: 'OpenVPN is used to creating network tunnels between computers that are not on the same local network. When integrated with OpenSSL, OpenVPN can encrypt all VPN traffic to provide a secure connection between machines.'
 keywords: 'openvpn,vpn,vpn tunnel,openssl'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: 'Wednesday, December 9th, 2015'
+modified: 'Friday, December 11th, 2015'
 modified_by:
   name: Linode
 published: 'Wednesday, December 9th, 2015'
@@ -61,7 +61,6 @@ For these reasons, this series assumes your VPN will operate over IPv4 only. If 
     {: .file}
     /tmp/v4
     :   ~~~ conf
-
         *filter
 
         # Allow all loopback (lo) traffic and reject anything
@@ -87,14 +86,12 @@ For these reasons, this series assumes your VPN will operate over IPv4 only. If 
         # Necessary for updating the server and keeping time.
         -A INPUT -i eth0 -p udp -m state --state ESTABLISHED --sport 53 -j ACCEPT
         -A OUTPUT -o eth0 -p udp -m state --state NEW,ESTABLISHED --dport 53 -j ACCEPT
-
         -A INPUT -i eth0 -p tcp -m state --state ESTABLISHED --sport 53 -j ACCEPT
         -A OUTPUT -o eth0 -p tcp -m state --state NEW,ESTABLISHED --dport 53 -j ACCEPT
 
         -A INPUT -i eth0 -p tcp -m state --state ESTABLISHED --sport 80 -j ACCEPT
-        -A INPUT -i eth0 -p tcp -m state --state ESTABLISHED --sport 443 -j ACCEPT
-        
         -A OUTPUT -o eth0 -p tcp -m state --state NEW,ESTABLISHED --dport 80 -j ACCEPT
+        -A INPUT -i eth0 -p tcp -m state --state ESTABLISHED --sport 443 -j ACCEPT
         -A OUTPUT -o eth0 -p tcp -m state --state NEW,ESTABLISHED --dport 443 -j ACCEPT
 
         # Allow traffic on the TUN interface.
@@ -149,13 +146,12 @@ If you are exclusively using IPv4 on your VPN, IPv6 should be disabled unless yo
     {: .file}
     /etc/iptables/rules.v6
     :   ~~~ conf
-
         *filter
 
         -A INPUT -j REJECT
         -A FORWARD -j REJECT
         -A OUTPUT -j REJECT
-
+        
         COMMIT
         ~~~
 
