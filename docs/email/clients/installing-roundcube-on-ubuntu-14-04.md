@@ -6,7 +6,7 @@ description: 'Installing Roundcube and its dependencies on Ubuntu 14.04 LTS'
 keywords: '14.04,IMAP,LTS,Roundcube,Ubuntu,webmail'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 published: 'N/A'
-modified: 'Sunday, November 30th, 2015'
+modified: 'Friday, December 11th, 2015'
 title: 'Installing Roundcube on Ubuntu 14.04'
 contributor:
     name: 'Sean Webber'
@@ -26,19 +26,19 @@ Roundcube is a web-based IMAP email client that offers an user interface similar
 
 ## Creating a MySQL Database and User
 
-Roundcube needs a SQL database to store session information about active users. Since you already installed MySQL as a prerequisite, you can use it for Roundcube as well. Log into the MySQL command prompt as the root user.
+1. Log into the MySQL command prompt as the root user.
 
         mysql -u root -p
 
-Enter the password for your root MySQL user. It will not be shown on your screen as you type it. This is a security feature built into most linux programs to protect your password from people standing behind you; it is not a programming glitch.
+2. Enter the password for your root MySQL user.
 
-        Password: (Your invisible password)
+        Password: `<your invisible password>`
 
-Once you are logged in, you will see this:
+{: .note }
+>
+> Your password will not be shown on your screen as you type it. This is a security feature built into most linux programs to protect your password from people standing behind you; it is not a programming glitch.
 
-        mysql>
-
-This is a MySQL command prompt. It is similar to a typical `somebody@your_server:~$` linux shell prompt, but for MySQL instead. First, create the database.
+3. Once you are logged in and see a `mysql>` prompt, create a new MySQL database called `roundcube`.
 
         CREATE DATABASE roundcubemail;
 
@@ -46,33 +46,37 @@ This is a MySQL command prompt. It is similar to a typical `somebody@your_server
 >
 > The trailing semicolon (`;`) after the command tells MySQL where one command ends and the next begins.
 
-Before you create a MySQL user, head over to the [Secure Password Generator](http://passwordsgenerator.net) and generate a 15 character randomized password making sure to check the **Exclude Ambiguous Characters** checkbox. This will help secure your MySQL database against *brute-force* attacks, where the attacking computer keeps guessing passwords until it guesses the right one. Brute-force attacks usually guess passwords that contain common words, phrases or numbering sequences (e.g. newark123). Replace the password `3ENDqKF4jX6fNQh9` below with the password you have generated.
+4. Before you create a MySQL user, head over to the [Secure Password Generator](http://passwordsgenerator.net) and generate a 15 character randomized password making sure to check the **Exclude Ambiguous Characters** checkbox. This will help secure your MySQL database against *brute-force* attacks, where the attacking computer keeps guessing passwords until it guesses the right one. Brute-force attacks usually guess passwords that contain common words, phrases or numbering sequences (e.g. newark123).
+
+5. Replace the password `3ENDqKF4jX6fNQh9` below with the password you just generated in step four.
 
         CREATE USER 'roundcube'@'localhost' IDENTIFIED BY '3ENDqKF4jX6fNQh9';
 
-Grant the new user `roundcube` full access to Roundcube’s database `roundcubemail`.
+6. Grant the new user `roundcube` full access to Roundcube’s database `roundcubemail`.
 
         GRANT ALL PRIVILEGES ON roundcubemail.* TO 'roundcube'@'localhost';
 
-You need to flush your MySQL privileges. MySQL stores its privilege tables in your server’s memory, so it needs to re-fetch the updated privilege tables from your Linode’s storage and reload it the memory.
+7. Flush your MySQL privileges.
 
         FLUSH PRIVILEGES;
 
-Log out of the MySQL command prompt and return to a regular linux shell prompt.
+MySQL stores its privilege tables in your server’s memory, so it needs to re-fetch the updated privilege tables from your Linode’s storage and reload it the memory.
+
+8. Log out of the MySQL command prompt and return to a regular linux shell prompt.
 
         exit
 
 ## Preparing for Roundcube
 
-Before you download Roundcube, install and enable the packages `php-pear`, `php5-intl`, and `php5-mcrypt`.
+1. Install and enable the packages `php-pear`, `php5-intl`, and `php5-mcrypt`.
 
         sudo apt-get install php-pear php5-intl php5-mcrypt && sudo php5enmod intl mcrypt
 
-Next, enable the Apache modules `deflates`, `expires`, `headers` and `rewrite`.
+2. Enable the Apache modules `deflates`, `expires`, `headers` and `rewrite`.
 
         sudo a2enmod deflates expires headers rewrite
 
-You also need to install the PHP PEAR packages `Auth_SASL`, `Net_SMTP`, `Net_IDNA2-0.1.1`, `Mail_mime`, and `Mail_mimeDecode`.
+3. Additionally, install the PHP PEAR packages `Auth_SASL`, `Net_SMTP`, `Net_IDNA2-0.1.1`, `Mail_mime`, and `Mail_mimeDecode`.
 
         sudo pear install Auth_SASL Net_SMTP Net_IDNA2-0.1.1 Mail_mime Mail_mimeDecode
 
@@ -82,53 +86,45 @@ You also need to install the PHP PEAR packages `Auth_SASL`, `Net_SMTP`, `Net_IDN
 
 PEAR will print an **install ok** confirmation message for each package that it successfully installs. In this case, a complete installation will look similar to this:
 
-{: .file-excerpt}
-/dev/stdout
-:   ~~~ ini
-    install ok: channel://pear.php.net/Auth_SASL-1.0.6
-    install ok: channel://pear.php.net/Net_SMTP-1.7.1
-    install ok: channel://pear.php.net/Net_IDNA2-0.1.1
-    install ok: channel://pear.php.net/Mail_mime-1.10.0
-    install ok: channel://pear.php.net/Mail_mimeDecode-1.5.5
-    ~~~
+        install ok: channel://pear.php.net/Auth_SASL-1.0.6
+        install ok: channel://pear.php.net/Net_SMTP-1.7.1
+        install ok: channel://pear.php.net/Net_IDNA2-0.1.1
+        install ok: channel://pear.php.net/Mail_mime-1.10.0
+        install ok: channel://pear.php.net/Mail_mimeDecode-1.5.5
 
-Lastly, make sure your linux shell prompt is operating inside your UNIX user's home directory. The `~/Downloads` folder is preferable, but `~/` is also acceptable. We won't judge.
+4. Lastly, make sure your linux shell prompt is operating inside your UNIX user's home directory. The `~/Downloads` folder is preferable, but `~/` is also acceptable. We won't judge.
 
         cd ~/Downloads
 
 ## Downloading and Installing Roundcube
 
-The following command will download Roundcube version `1.1.3`. Our editors are busy, so that may not download the latest version of Roundcube. To check for a later version, go to [Roundcube’s download page](https://roundcube.net/download/) and compare the **Stable > Complete** package’s version to the one listed here.
+1. Download Roundcube version 1.1.3.
 
-[![Roundcube download webpage](/docs/assets/roundcube-download-webpage.png)]
+        wget http://downloads.sourceforge.net/project/roundcubemail/roundcubemail/`1.1.3`/roundcubemail-`1.1.3`.tar.gz
 
-If the versions are different, right click on the **Download** button for the **Stable > Complete** package, click on **Copy link address** (or something similar to that depending on your web browser). Replace any occurrences of `1.1.3` in the URL below with the newer version number on Roundcube’s download page.
-
-        wget http://downloads.sourceforge.net/project/roundcubemail/roundcubemail/1.1.3/roundcubemail-1.1.3.tar.gz
+If the **Stable > Complete** package listed at [Roundcube’s download page](https://roundcube.net/download/) is newer than `1.1.3`, replace any occurances of the older version number with the newer one in the command below.
 
 {: .note }
 >
 > The `.tar.gz` file extension means that Roundcube downloads as a *compressed tarball*. Tarballs are used to package many files as one, similar to Windows ZIP folders, but without the compression. In this case, the tarball was compressed using `gzip`, which makes up for the lack of compression.
 
-To decompress and copy Roundcube to the `/var/www/html/example.com/public_html` directory, execute the command below. Again, replace any occurrences of `1.1.3` in the filename with the newer version number.
+2. Decompress and copy Roundcube to the `/var/www/html/example.com/public_html` directory. Again, replace any occurrences of `1.1.3` in the filename with the newer version number.
 
         sudo tar -zxvf roundcubemail-1.1.3.tar.gz -C /var/www/html/example.com/public_html
 
-To make Roundcube’s URL on your Linode version-neutral, execute the following command. It will change Roundcube’s directory name from `roundcubemail-1.1.3` to `roundcube`. Doing so also makes the URL shorter for your users to type into their web browsers.
+3. Eliminate the version number from Roundcube's directory name. This will shorten your Linode's Roundcube URL and make updating easier later on down the road.
 
         sudo mv /var/www/html/example.com/public_html/roundcube-1.1.3 /var/www/html/example.com/public_html/roundcube
 
-Next, grant Apache write access to Roundcube’s directory. This will allow Roundcube to save its own configuration file, instead of you having to download it and manually upload it to your Linode later in this tutorial.
+4. Grant Apache write access to Roundcube’s directory. This will allow Roundcube to save its own configuration file, instead of you having to download it and manually upload it to your Linode later in this tutorial.
 
         sudo chown -R www-data:www-data /var/www/html/example.com/public_html/roundcube
 
-Lastly, you should add Roundcube’s `cleandb.sh` shell script as a *Cron job* on your Linode. In this case, the `cleandb.sh` shell script located in the `/var/www/html/example.com/public_html/roundcube/bin` directory will run every 24 hours at midnight. According to Roundcube’s developers, the script removes no longer needed temporary data from Roundcube’s MySQL database.
-
-{: .note }
->
-> A Cron job is a task scheduled in advance by a system administrator (you) and executed using the `cron` program. It allows system administrators to schedule commands to be run on their servers at set times, dates and intervals in the future automatically.
+5. Lastly, you should enable Roundcube's automatic cache cleaning shell script.
 
         sudo echo '0 0 * * * root bash /var/www/html/example.com/public_html/roundcube/bin/cleandb.sh > /dev/null' >> /etc/crontab
+
+The command above utilizes a *cron job* to run the `cleandb.sh` shell script included with Roundcube once per day at midnight. Read our [Scheduling Tasks with Cron](/docs/tools-reference/tools/schedule-tasks-with-cron) guide to learn about Cron.
 
 ## Configuring Roundcube
 
