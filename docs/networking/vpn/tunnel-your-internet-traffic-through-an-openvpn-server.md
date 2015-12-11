@@ -5,7 +5,7 @@ author:
 description: 'A common use case for a VPN tunnel is to access the internet from behind it to evade censorship or geolocation and protect your connection from untrusted internet service providers, WiFi hotspots, and sites and services you connect to.'
 keywords: 'openvpn,vpn,vpn tunnel,openssl'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: 'Wednesday, December 9th, 2015'
+modified: 'Friday, December 11th, 2015'
 modified_by:
   name: Linode
 published: 'Wednesday, December 9th, 2015'
@@ -86,7 +86,6 @@ Since now the server should forward traffic out to the internet from clients, ac
     {: .file}
     /etc/iptables/rules.v4
     :   ~~~ conf
-
         *filter
 
         # Allow all loopback (lo) traffic and reject traffic
@@ -112,14 +111,12 @@ Since now the server should forward traffic out to the internet from clients, ac
         # Necessary for updating the server and keeping time.
         -A INPUT -i eth0 -p udp -m state --state ESTABLISHED --sport 53 -j ACCEPT
         -A OUTPUT -o eth0 -p udp -m state --state NEW,ESTABLISHED --dport 53 -j ACCEPT
-
         -A INPUT -i eth0 -p tcp -m state --state ESTABLISHED --sport 53 -j ACCEPT
         -A OUTPUT -o eth0 -p tcp -m state --state NEW,ESTABLISHED --dport 53 -j ACCEPT
 
         -A INPUT -i eth0 -p tcp -m state --state ESTABLISHED --sport 80 -j ACCEPT
-        -A INPUT -i eth0 -p tcp -m state --state ESTABLISHED --sport 443 -j ACCEPT
-        
         -A OUTPUT -o eth0 -p tcp -m state --state NEW,ESTABLISHED --dport 80 -j ACCEPT
+        -A INPUT -i eth0 -p tcp -m state --state ESTABLISHED --sport 443 -j ACCEPT
         -A OUTPUT -o eth0 -p tcp -m state --state NEW,ESTABLISHED --dport 443 -j ACCEPT
 
         # Allow traffic on the TUN interface.
@@ -141,7 +138,7 @@ Since now the server should forward traffic out to the internet from clients, ac
         -A INPUT -j REJECT
         -A FORWARD -j REJECT
         -A OUTPUT -j REJECT
-
+        
         COMMIT
         ~~~
 
