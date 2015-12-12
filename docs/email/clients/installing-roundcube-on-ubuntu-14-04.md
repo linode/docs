@@ -214,7 +214,7 @@ The second, and perhaps most important, thing you can do to secure your Roundcub
 
 {: .note }
 >
-> If your email address is `**somebody**@example.com`, you only have to enter `**somebody**` as your username. Roundcube assumes that all users exist at `example.com`.
+> If your email address is `somebody@example.com`, you only have to enter **somebody** as your username. Roundcube assumes that all users exist at `example.com`.
 
 2. If your configuration is functional, Roundcube will allow you to receive, read, and send emails from inside and outside of your domain name.
 
@@ -255,9 +255,9 @@ The second, and perhaps most important, thing you can do to secure your Roundcub
 
 **All done** means the update was successful; unless you don't see this message, proceed to step six.
 
-6. Delete the Roundcube directory and tarball from `~/Downloads`.
+6. Delete the Roundcube directory and gzipped tarball from `~/Downloads`.
 
-        rm -rfd roundcubemail-1.1.3 roundcubemail-1.1.3.tar.gz
+        cd ~/Downloads && rm -rfd roundcubemail-1.1.3 roundcubemail-1.1.3.tar.gz
 
 ## Conclusion
 
