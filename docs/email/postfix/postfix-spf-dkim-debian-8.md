@@ -1,19 +1,18 @@
 ---
 author:
-  name: Todd Knarr
-  email: tknarr@silverglass.org
+    name: Todd Knarr
+    email: tknarr@silverglass.org
 description: 'Configuring Postfix on Debian 8 to use SPF and DKIM.'
 keywords: 'email,mail,postfix,spf,dkim'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: Friday, October 30th 2015
 modified_by:
-  name: Todd Knarr
+    name: Todd Knarr
 published: 'Friday, October 30th, 2015'
 title: 'Configuring SPF and DKIM in Postfix on Debian 8'
 ---
 
-Getting Started
----------------
+
 
 [SPF (Sender Policy Framework)](http://www.openspf.org/) is a system to advertise to mail servers what hosts are allowed to send e-mail for a given domain. Setting it up helps in keeping your mail from being classified as spam.
 
@@ -33,39 +32,31 @@ The instructions for setting up DNS for SPF and DKIM are generic. The instructio
 >
 >Publishing an SPF DNS record without having the SPF policy agent configured within Postfix is safe, however publishing DKIM DNS records without having OpenDKIM working correctly within Postfix can result in your mail being discarded by the receiver's mail server.
 
-Installing required packages
-----------------------------
+## Installing required packages
 
-You'll need to switch to a root shell using `su -` or `sudo -s` to install packages.
+1.  Install the required packages with this command:
 
-1. Install the required packages with this command:
+        apt-get install opendkim opendkim-tools postfix-policyd-spf-python
 
-    apt-get install opendkim opendkim-tools postfix-policyd-spf-python
+2.  Add user `postfix` to the `opendkim` group so that Postfix can access OpenDKIM's socket when it needs to:
 
-Tell it "Y" when it asks whether to download and install the listed packages. It won't take long and won't prompt for anything.
+        adduser postfix opendkim
 
-2. Add user `postfix` to the `opendkim` group so that Postfix can access OpenDKIM's socket when it needs to:
+## Setting up SPF
 
-    adduser postfix opendkim
-
- Remember to exit your root shell when you're done.
-
-Setting up SPF
---------------
-
-## Adding SPF records to DNS ##
+### Adding SPF records to DNS
 
 The value in an SPF DNS record will look something like the following examples. The full syntax is at [the SPF record syntax page](http://www.openspf.org/SPF_Record_Syntax).
 
-1. Allow mail from all hosts listed in the MX records for the domain:
+1.  Allow mail from all hosts listed in the MX records for the domain:
 
-    "v=spf1 mx -all"
+        "v=spf1 mx -all"
 
-2. Allow mail from a specific host:
+2.  Allow mail from a specific host:
 
-    "v=spf1 a:mail.example.com -all"
+        "v=spf1 a:mail.example.com -all"
 
-The "v=spf1" tag is required and has to be the first tag. The last tag, "-all", indicates that mail from your domain should only come from servers identified in the SPF string, anything coming from any other source is forging your domain. An alternative is "~all", indicating the same thing but also indicating that mailservers should accept the message and flag it as forged instead of rejecting it outright. I prefer "-all" to make it harder for spammers to forge my domain successfully, but if you're nervous you might want to use "~all" so no mail gets lost because of errors.
+The `"v=spf1"` tag is required and has to be the first tag. The last tag, `"-all"`, indicates that mail from your domain should only come from servers identified in the SPF string, anything coming from any other source is forging your domain. An alternative is `"~all"`, indicating the same thing but also indicating that mailservers should accept the message and flag it as forged instead of rejecting it outright. I prefer "-all" to make it harder for spammers to forge my domain successfully, but if you're nervous you might want to use "~all" so no mail gets lost because of errors.
 
 The tags in between identify the servers mail for your domain can come from. "mx" is a shorthand for all the hosts listed in MX records for your domain. If you've got just one mail server, it's probably the best option. If you've got a backup mail server (a second MX record) using "mx" won't cause any problems, your backup mail server will be advertised as an authorized source for mail and it just won't ever send any. The "a" tag lets you identify a specific host by name or IP address, letting you be specific about exactly which hosts are authorized. You'd use it if you wanted to be pedantic about the backup mail server not being allowed to send outgoing mail, or if you wanted to identify hosts other than your own mail server that could send mail from your domain (eg. putting your ISP's outgoing mail servers in the list so they'd be recognized when you had to send mail through them). For now we're going to stick with the "mx" version, it's simpler and is correct for most basic configurations including ones that handle multiple domains.
 
@@ -79,7 +70,7 @@ If you're using Linode's DNS Manager, go to the domain zone page for the domain 
 
 If your DNS provider allows it (DNS Manager doesn't) you should also add a record of type SPF, filling it in the same way as you did the TXT record.
 
-## Adding the SPF policy agent to Postfix ##
+### Adding the SPF policy agent to Postfix
 
 The Python SPF policy agent adds SPF policy checking to Postfix. The SPF record for the sender's domain for incoming mail will be checked and if it exists mail will be handled accordingly. I selected the Python version because it's more capable and more up-to-date than the rather basic variant written in Perl.
 
@@ -116,12 +107,11 @@ Remember to exit your root shell when you're done.
 
 You can check the operation of the policy agent by looking at raw headers on incoming mail messages for the SPF results header. You'll find errors logged in `/var/log/mail.log`.
 
-Setting up DKIM
----------------
+## Setting up DKIM
 
 DKIM involves setting up the OpenDKIM package and hooking it into Postfix as well as adding DNS records. You'll need to switch to a root shell using `su -` or `sudo -s` for of the work.
 
-## Configuring OpenDKIM ##
+### Configuring OpenDKIM
 
 1. The main OpenDKIM configuration file `/etc/opendkim.conf` needs to look like this:
 
@@ -133,39 +123,39 @@ DKIM involves setting up the OpenDKIM package and hooking it into Postfix as wel
     # /usr/share/doc/opendkim/examples/opendkim.conf.sample.
 
     # Log to syslog
-    Syslog			yes
+    Syslog          yes
     # Required to use local socket with MTAs that access the socket as a non-
     # privileged user (e.g. Postfix)
-    UMask			002
+    UMask           002
     # OpenDKIM user
     # Remember to add user postfix to group opendkim
-    UserID			opendkim
+    UserID          opendkim
 
     # Map domains in From addresses to keys used to sign messages
-    KeyTable		/etc/opendkim/key.table
-    SigningTable		refile:/etc/opendkim/signing.table
+    KeyTable        /etc/opendkim/key.table
+    SigningTable        refile:/etc/opendkim/signing.table
 
     # Hosts to ignore when verifying signatures
-    ExternalIgnoreList	/etc/opendkim/trusted.hosts
-    InternalHosts		/etc/opendkim/trusted.hosts
+    ExternalIgnoreList  /etc/opendkim/trusted.hosts
+    InternalHosts       /etc/opendkim/trusted.hosts
 
     # Commonly-used options; the commented-out versions show the defaults.
-    Canonicalization	relaxed/simple
-    Mode			sv
-    SubDomains		no
-    #ADSPAction		continue
-    AutoRestart		yes
-    AutoRestartRate		10/1M
-    Background		yes
-    DNSTimeout		5
-    SignatureAlgorithm	rsa-sha256
+    Canonicalization    relaxed/simple
+    Mode            sv
+    SubDomains      no
+    #ADSPAction     continue
+    AutoRestart     yes
+    AutoRestartRate     10/1M
+    Background      yes
+    DNSTimeout      5
+    SignatureAlgorithm  rsa-sha256
 
     # Always oversign From (sign using actual From and a null From to prevent
     # malicious signatures header fields (From and/or others) between the signer
     # and the verifier.  From is oversigned by default in the Debian pacakge
     # because it is often the identity key used by reputation systems and thus
     # somewhat security sensitive.
-    OversignHeaders		From
+    OversignHeaders     From
     ~~~
 
 Edit `/etc/opendkim.conf` and replace it's contents with the above, or download [a copy of opendkim.conf](/doc/assets/Postfix_opendkim.conf), upload it to your server and copy it over top of `/etc/opendkim.conf`. Do a `chmod u=rw,go=r /etc/opendkim.conf` to make sure it's permissions are set correctly.
@@ -242,8 +232,8 @@ As with SPF, DKIM uses TXT records to hold information about the signing key for
 {: .file}
 example.txt
 :   ~~~ text
-    201510.\_domainkey	IN	TXT	( "v=DKIM1; k=rsa; s=email; "
-	    "p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAu5oIUrFDWZK7F4thFxpZa2or6jBEX3cSL6b2TJdPkO5iNn9vHNXhNX31nOefN8FksX94YbLJ8NHcFPbaZTW8R2HthYxRaCyqodxlLHibg8aHdfa+bxKeiI/xABRuAM0WG0JEDSyakMFqIO40ghj/h7DUc/4OXNdeQhrKDTlgf2bd+FjpJ3bNAFcMYa3Oeju33b2Tp+PdtqIwXR"
+    201510.\_domainkey  IN  TXT ( "v=DKIM1; k=rsa; s=email; "
+        "p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAu5oIUrFDWZK7F4thFxpZa2or6jBEX3cSL6b2TJdPkO5iNn9vHNXhNX31nOefN8FksX94YbLJ8NHcFPbaZTW8R2HthYxRaCyqodxlLHibg8aHdfa+bxKeiI/xABRuAM0WG0JEDSyakMFqIO40ghj/h7DUc/4OXNdeQhrKDTlgf2bd+FjpJ3bNAFcMYa3Oeju33b2Tp+PdtqIwXR"
         "ZksfuXh7m30kuyavp3Uaso145DRBaJZA55lNxmHWMgMjO+YjNeuR6j4oQqyGwzPaVcSdOG8Js2mXt+J3Hr+nNmJGxZUUW4Uw5ws08wT9opRgSpn+ThX2d1AgQePpGrWOamC3PdcwIDAQAB" )  ; ----- DKIM key 201510 for example.com
 
     ~~~
