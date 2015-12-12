@@ -150,7 +150,7 @@ The command above utilizes a *cron job* to run the `cleandb.sh` shell script inc
 - **Database setup > db_dsnw > Database password:** Password for the **roundcube** MySQL user you created in step one (e.g. `3ENDqKF4jX6fNQh9`).
 - **IMAP Settings > default_host:** Hostname of your IMAP server. Use `ssl://localhost` to access the local server (i.e. your server) using OpenSSL
 - **IMAP Settings > default_port:** TCP port for incoming IMAP connections to your server. Use port `993` to ensure OpenSSL is used
-- **IMAP Settings > username_domain:** What domain name should Roundcube assume all users are part of? This allows users to only have to type in their email username (e.g. `**somebody**`) instead of their full email address (e.g. `**somebody**@example.com`)
+- **IMAP Settings > username_domain:** What domain name should Roundcube assume all users are part of? This allows users to only have to type in their email username (e.g. **somebody**) instead of their full email address (e.g. `somebody@example.com`)
 - **SMTP Settings > smtp_server:** Hostname of your SMTP server. Use `ssl://localhost` to access the local server (i.e. your server) using OpenSSL
 - **SMTP Settings > smtp_port:** TCP port for incoming SMTP connections to your server. Use port `587` to ensure OpenSSL is used
 - **SMTP Settings > smtp_user/smtp_pass:** Click and check the **Use the current IMAP username and password for SMTP authentication** checkbox so that users can send mail without re-typing their user credentials
