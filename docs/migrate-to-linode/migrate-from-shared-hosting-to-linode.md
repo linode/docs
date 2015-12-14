@@ -6,7 +6,7 @@ description: 'A Linode server gives you a lot more power and flexibility than a 
 keywords: 'shared hosting,vps,shared,host,migrate,migration,website'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['migrate-from-shared/']
-modified: 'Friday, October 30th, 2015'
+modified: 'Monday, November 16th, 2015'
 modified_by:
   name: Linode
 published: 'Friday, October 18th, 2013'
@@ -23,17 +23,17 @@ This guide will assume three things:
 
 *  You already have a Linode account.
 *  You know how to sign in to the [Linode Manager](https://manager.linode.com/).
-*  You have at least basic knowledge of how to use SSH to access your Linode.
+*  You have at least basic knowledge of how to use SSH.
 
 See our [Getting Started](/docs/getting-started) guide for more information on signing up and setting up your Linode.
 
 ## Prepare Your Domain Name to Move
 
-We will start by lowering the *Time to Live* (TTL) for your domain so the migration won't have negative impact on your site's visitors. TTL tells DNS caching servers how long to save information about your domain, and since DNS addresses don't often change server IP addresses, TTL is normally about 24 hours.
+We will start by lowering the *Time to Live* (TTL) for your domain so the migration won't have a negative impact on your site's visitors. TTL tells DNS caching servers how long to save information about your domain. Since DNS addresses don't often change server IP addresses, TTL is normally about 24 hours.
 
-When changing servers, however, you want a low TTL to makes sure that when you update your domain information, it takes effect quickly. Otherwise, your domain will resolve to your old server's IP for up to 24 hours. Changing TTL is not a universal guarantee, however, because caching DNS servers ignore TTL, but does the most to make sure that your site ***.
+When changing servers, however, you want a low TTL to makes sure that when you update your domain information, it takes effect quickly. Otherwise, your domain will resolve to your old server's IP for up to 24 hours. Changing TTL is not a universal guarantee, however, because caching DNS servers ignore TTL, but does the most to make sure that your site has a smooth transition.
 
-1.  Locate your current *nameservers* in your shared hosting provider's account control panel. If you're not sure what your nameservers are, you can find out with this [Whois Search tool](http://www.internic.net/whois.html). You will see several nameservers listed, probably all at the same company.
+1.  Locate your current *nameservers* in your shared hosting provider's account control panel. If you're not sure what your nameservers are, you can find out with a [Whois Search tool](http://www.internic.net/whois.html). You will see several nameservers listed, probably all at the same company.
 
     [![Version control overview.](/docs/assets/1424-internic_whois_nameserver-3.png)](/docs/assets/1424-internic_whois_nameserver-3.png)
 
@@ -43,21 +43,19 @@ When changing servers, however, you want a low TTL to makes sure that when you u
 
 4.  Lower your TTL as low as it will go. 300 seconds = 5 minutes, so that's a good choice if it's available.
 
-5.  Make sure you wait out the original TTL from Step 3 before you actually move your domain. In the meantime, you can do all of the other steps, like backing up your data, deploying your Linode, and uploading your website.
+5.  Make sure you wait out the original TTL from Step 3 before you actually move your domain. In the meantime, you can do all of the other steps, like backing up your data, deploying your Linode, and uploading your website. For more information on domain TTL, see our [DNS guide](/docs/networking/dns/dns-manager#setting-the-time-to-live-or-ttl).
 
 {: .note }
 >
 > If you can't lower your TTL, it's not the end of the world. The first day or two of your transition to Linode may be a little bumpy, but your updated domain information will eventually spread throughout the internet, and in less than a week you won't notice the difference.
 
-For more information on domain TTL, see our [DNS guide](/docs/networking/dns/dns-manager#setting-the-time-to-live-or-ttl).
-
 ## Back Up Your Website
 
 The next step is to back up your site from your old server to your desktop. There are multiple ways to do this, though you may find the easiest method to be working directly through your host's control panel from your web browser. The location of your website on the server will vary among hosting providers, though it should be something along the lines of `/home/account_name/public_html`.
 
-You may want to explore whether the application you use for your website already has its own backup instructions, such as the combination of [WordPress](https://codex.wordpress.org/WordPress_Backups) and phpMyAdmin, for example. Regardless of backup method, every website is up of files and databases so you can use the instructions in this section to back up every type of website.
+You may want to explore whether the application you use for your website has its own backup instructions, such as the combination of [WordPress](https://codex.wordpress.org/WordPress_Backups) and [phpMyAdmin](http://docs.phpmyadmin.net/en/latest/faq.html?highlight=backup#how-can-i-backup-my-database-or-table), for example. Regardless of backup method, every website is up of files and databases so you can use the instructions in this section to back up every type of website.
 
-If you have a MySQL database on your old server--and if you run WordPress or Drupal, you do--you also need to make a backup of your database. Your old host probably has a control panel that will allow you to make an easy backup of your database. Contact them for instructions. If not, you can follow our instructions to [Back Up Your MySQL Databases](/docs/databases/mysql/backup-options) using the command line.
+If you have a MySQL or MariaDB database on your old server, you need to back it up too. Your old host probably has a control panel that will allow you to make an easy backup of your database. Contact them for instructions. If not, you can follow our instructions to [Back Up Your MySQL Databases](/docs/databases/mysql/backup-options) using the command line.
 
 **Shared Host's Control Panel**
 
@@ -69,13 +67,9 @@ Linux and OS X can use [SCP](https://en.wikipedia.org/wiki/Secure_copy) natively
 
     scp example_user@server_ip_address:/home/account_name/public_html ~/
 
-{: .note}
->
->`example_user` should be the user on your Linode you want to log in as.
-
 **FileZilla (Linux / OS X / Windows)**
 
-See [our Filezilla guide](/docs/tools-reference/file-transfer/filezilla) to use it for transferring the backup.
+See [our Filezilla guide](/docs/tools-reference/file-transfer/filezilla) to use it for your site backups.
 
 ## Install a Basic Web Server on Your Linode
 
@@ -129,11 +123,11 @@ The next step is to build the software environment needed for your site to funct
 
 8.  Install Additional Software
 
-If you need to install more software such as Drupal, Cpanel or Ruby support, you have two options:
+    If you need to install more software such as Drupal, Cpanel or Ruby support, you have two options:
 
-*  Search through our database of [StackScripts](https://www.linode.com/stackscripts/) for the combination of software you're looking for.
+    *  Search through our database of [StackScripts](https://www.linode.com/stackscripts/) for the combination of software you're looking for.
 
-*  Install the software manually using pages from [Linode Guides & Tutorials](/docs/) or the general internet as references.
+    *  Install the software manually using pages from [Linode Guides & Tutorials](/docs/) or the general internet as references.
 
 ## Get Your Website Live
 
