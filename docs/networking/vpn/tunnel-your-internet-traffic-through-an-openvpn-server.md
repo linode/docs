@@ -138,7 +138,7 @@ Since now the server should forward traffic out to the internet from clients, ac
         -A INPUT -j REJECT
         -A FORWARD -j REJECT
         -A OUTPUT -j REJECT
-        
+
         COMMIT
         ~~~
 
