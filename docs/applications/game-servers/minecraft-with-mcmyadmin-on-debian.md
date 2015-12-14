@@ -35,7 +35,7 @@ external_resources:
     /etc/iptables/rules.v4
     :   ~~~
         *filter
-        
+
         # Allow all loopback (lo0) traffic and reject traffic
         # to localhost that does not originate from lo0.
         -A INPUT -i lo -j ACCEPT
