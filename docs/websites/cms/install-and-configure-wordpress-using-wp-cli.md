@@ -39,34 +39,34 @@ Before we move ahead, make sure you have completed the following guides:
 
 WP-CLI is available as a PHP Archive file(phar). You can download it using either wget or curl commands.
 
-  curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+    curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 
 Or
 
-  wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+    wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 
 The following command will check whether the downloaded copy is working correctly or not.
 
-  php wp-cli.phar --info
+    php wp-cli.phar --info
 
 You should see a similar output like the one below which means we can move ahead.
 
-  PHP binary:	/usr/bin/php5
-  PHP version:	5.6.11-1ubuntu3.1
-  php.ini used:	/etc/php5/cli/php.ini
-  WP-CLI root dir:	phar://wp-cli.phar
-  WP-CLI global config:
-  WP-CLI project config:
-  WP-CLI version:	0.21.0
+    PHP binary:	/usr/bin/php5
+    PHP version:	5.6.11-1ubuntu3.1
+    php.ini used:	/etc/php5/cli/php.ini
+    WP-CLI root dir:	phar://wp-cli.phar
+    WP-CLI global config:
+    WP-CLI project config:
+    WP-CLI version:	0.21.0
 
 Now wp-cli.phar is still not executable and that's why we had to use php command to run it. You need to make it executable and move it to `/usr/local/bin` so that it can be run directly.
 
-  chmod +x wp-cli.phar
-  sudo mv wp-cli.phar /usr/local/bin/wp
+    chmod +x wp-cli.phar
+    sudo mv wp-cli.phar /usr/local/bin/wp
 
 Check if it is working properly.
 
-  wp --info
+    wp --info
 
 If you see the script version then it means your WP-CLI script has been installed successfully.
 
@@ -74,20 +74,20 @@ If you see the script version then it means your WP-CLI script has been installe
 
 Now it is difficult all commands at once and you might want a quick reference on the command you need. While you can always type `wp` and press enter to see the complete list. But wouldn't it be better if you can point to specific command. Like if you want to know what all sub commands are under the `core` parameter. Bash completion script of WP-CLI can help here. To install the script, make sure you are in the home directory of the user(`username` in this case) you are using.
 
-  cd /home/username
-  wget https://github.com/wp-cli/wp-cli/raw/master/utils/wp-completion.bash
+    cd /home/username
+    wget https://github.com/wp-cli/wp-cli/raw/master/utils/wp-completion.bash
 
 Now edit the .bashrc so that it is loaded by the shell every time you login. Open the file and add the following line in the editor assuming you downloaded the file in the home directory.
 
-  {: .file-excerpt}
-  /home/username/.bashrc
-  :   ~~~ bash
-      source /home/username/wp-completion.bash
-      ~~~
+    {: .file-excerpt}
+    /home/username/.bashrc
+    :   ~~~ bash
+        source /home/username/wp-completion.bash
+        ~~~
 
 Now run the following command to reload the Bash profile.
 
-  source ~/.bashrc
+    source ~/.bashrc
 
 That's it. Bash Completion is enabled.
 
@@ -98,32 +98,32 @@ So far we have seen WP-CLI is accessed through the keyword `wp`. What follows th
 
 WP-CLI also comes with a pretty detailed help section which will allow you to keep tab on all the commands you would need. You can access it by typing
 
-  wp help
+    wp help
 
 Doing that and you will see a screen similar to
 
-  wp
+    wp
 
-  DESCRIPTION
+    DESCRIPTION
 
-  Manage WordPress through the command-line.
+    Manage WordPress through the command-line.
 
-  SYNOPSIS
+    SYNOPSIS
 
-  wp <command>
+    wp <command>
 
-  SUBCOMMANDS
+    SUBCOMMANDS
 
-  cache               Manage the object cache.
-  cap                 Manage user capabilities.
-  cli                 Get information about WP-CLI itself.
-  comment             Manage comments.
-  core                Download, install, update and otherwise manage WordPress proper.
-  cron                Manage WP-Cron events and schedules.
-  db                  Perform basic database operations.
-  eval                Execute arbitrary PHP code after loading WordPress.
-  eval-file           Load and execute a PHP file after loading WordPress.
-  :
+    cache               Manage the object cache.
+    cap                 Manage user capabilities.
+    cli                 Get information about WP-CLI itself.
+    comment             Manage comments.
+    core                Download, install, update and otherwise manage WordPress proper.
+    cron                Manage WP-Cron events and schedules.
+    db                  Perform basic database operations.
+    eval                Execute arbitrary PHP code after loading WordPress.
+    eval-file           Load and execute a PHP file after loading WordPress.
+    :
 
 
 `:` is a prompt where you need to enter few commands to navigate through this help menu. Up and down arrow keys will take you through the complete help. And pressing q will exit the help menu. That's all you need to know for now. For complete detail on how to navigate through the complete help section, you can always type h at the above prompt.
@@ -136,24 +136,24 @@ In our last step, we enabled Bash Completion feature for WP-CLI. To use that typ
 
 Before you proceed, you need to setup a database first. For that, login to the MySQL server first. Replace `user` with your MySQL user.
 
-  mysql -u user -p
+    mysql -u user -p
 
 Next step is to create a database.
 
-  create database wordpress;
+    create database wordpress;
 
 Now we need to grant all the required priviges for the database to the mysql user.
 
-  grant all on wordpress.* to 'user' identified by 'password';
+    grant all on wordpress.* to 'user' identified by 'password';
 
 Type `quit` to exit the MySQL commandline.
 
 First of all, move to the user directory where you would be installing the blog. Traditionally it should be in `/var/www/html` directory. Create a new user directory for your user if it doesn't exist already. Also proper group and ownership permissions need to be given to the user.
 
-  cd /var/www/html
-  sudo mkdir wpblog
-  sudo chown -R user:user wpblog
-  cd wpblog
+    cd /var/www/html
+    sudo mkdir wpblog
+    sudo chown -R user:user wpblog
+    cd wpblog
 
 {: .note}
 >
@@ -161,15 +161,15 @@ First of all, move to the user directory where you would be installing the blog.
 
 Next, download the WordPress files.
 
-  wp core download
+    wp core download
 
 Next step is to create a wp-config.php file.
 
-  wp core config --dbname=Database --dbuser=user --dbpass=password --dbhost=localhost --dbprefix=wp_
+    wp core config --dbname=Database --dbuser=user --dbpass=password --dbhost=localhost --dbprefix=wp_
 
 dbhost and dbprefix are entirely optional and can be ommitted unless you need to change their default values. Next step is to install the blog.
 
-  wp core install --url="<yourdomain>" --title="Blog Title" --admin_user="adminusername" --admin_password="password" --admin_email="emailid"
+    wp core install --url="<yourdomain>" --title="Blog Title" --admin_user="adminusername" --admin_password="password" --admin_email="emailid"
 
 Your WordPress blog is ready for use.
 
@@ -179,54 +179,54 @@ Your WordPress blog is ready for use.
 
 Let's say we need to install Yoast SEO plugin. First step is to search for it to find the slug.
 
-  wp plugin search yoast
+    wp plugin search yoast
 
 You will get an output similar to this.
 
-  Success: Showing 10 of 259 plugins.
-  +---------------------------------+----------------------------------+--------+
-  | name                            | slug                             | rating |
-  +---------------------------------+----------------------------------+--------+
-  | Yoast SEO                       | wordpress-seo                    | 90     |
-  | SO Clean Up Yoast SEO           | so-clean-up-wp-seo               | 96     |
-  | All Meta Stats Yoast SEO Addon  | all-meta-stats-yoast-seo-addon   | 100    |
-  | Google Analytics by Yoast       | google-analytics-for-wordpress   | 80     |
-  | Import Settings into WordPress  | yoast-seo-settings-xml-csv-impor | 0      |
-  | SEO by Yoast                    | t                                |        |
-  | Surbma - Yoast Breadcrumb Short | surbma-yoast-breadcrumb-shortcod | 84     |
-  | code                            | e                                |        |
-  | Meta Box Yoast SEO              | meta-box-yoast-seo               | 0      |
-  | Keyword Stats Addon for Yoast S | keyword-stats-addon-for-yoast-se | 100    |
-  | EO                              | o                                |        |
-  | Meta Description Stats Addon fo | meta-description-stats-addon-for | 100    |
-  | r Yoast SEO                     | -yoast-seo                       |        |
-  | Title Stats Addon for Yoast SEO | title-stats-addon-for-yoast-seo  | 100    |
-  +---------------------------------+----------------------------------+--------+
+    Success: Showing 10 of 259 plugins.
+    +---------------------------------+----------------------------------+--------+
+    | name                            | slug                             | rating |
+    +---------------------------------+----------------------------------+--------+
+    | Yoast SEO                       | wordpress-seo                    | 90     |
+    | SO Clean Up Yoast SEO           | so-clean-up-wp-seo               | 96     |
+    | All Meta Stats Yoast SEO Addon  | all-meta-stats-yoast-seo-addon   | 100    |
+    | Google Analytics by Yoast       | google-analytics-for-wordpress   | 80     |
+    | Import Settings into WordPress  | yoast-seo-settings-xml-csv-impor | 0      |
+    | SEO by Yoast                    | t                                |        |
+    | Surbma - Yoast Breadcrumb Short | surbma-yoast-breadcrumb-shortcod | 84     |
+    | code                            | e                                |        |
+    | Meta Box Yoast SEO              | meta-box-yoast-seo               | 0      |
+    | Keyword Stats Addon for Yoast S | keyword-stats-addon-for-yoast-se | 100    |
+    | EO                              | o                                |        |
+    | Meta Description Stats Addon fo | meta-description-stats-addon-for | 100    |
+    | r Yoast SEO                     | -yoast-seo                       |        |
+    | Title Stats Addon for Yoast SEO | title-stats-addon-for-yoast-seo  | 100    |
+    +---------------------------------+----------------------------------+--------+
 
 You can see more than 10 per page by modifying the command as
 
-  wp plugin search yoast --per-page=20
+    wp plugin search yoast --per-page=20
 
 Now that you know the slug of the plugin we want to install, install and activate it.
 
-  wp plugin install wordpress-seo
-  wp plugin activate wordpress-seo
+    wp plugin install wordpress-seo
+    wp plugin activate wordpress-seo
 
 If you want to update any plugin, you can use
 
-  wp plugin update wordpress-seo
+    wp plugin update wordpress-seo
 
 Or if you want to update all, then
 
-  wp plugin update --all
+    wp plugin update --all
 
 To list all the installed plugins on your blog, use
 
-  wp plugin list
+    wp plugin list
 
 To uninstall a plugin, use
 
-  wp plugin uninstall wordpress-seo
+    wp plugin uninstall wordpress-seo
 
 ### Installing and Updating Themes
 
@@ -234,32 +234,32 @@ The procedure for installing and activating a theme is quite similar to that of 
 
 So to search for the theme, you would use
 
-  wp theme search twentytwelve
+    wp theme search twentytwelve
 
 To install and activate, you need to use
 
-  wp theme install twentytwelve
-  wp theme activate twentytwelve
+    wp theme install twentytwelve
+    wp theme activate twentytwelve
 
 And to update one or all themes, you can use
 
-  wp theme update twentytwelve
-  wp theme update --all
+    wp theme update twentytwelve
+    wp theme update --all
 
 To list all the themes in a tabular form, you can use the command `list`.
 
-  wp theme list
+    wp theme list
 
 To uninstall a theme, use
 
-  wp theme uninstall twentytwelve
+    wp theme uninstall twentytwelve
 
 ### Update WordPress
 
 You can update your blog via following commands.
 
-  wp core update
-  wp core update-db
+    wp core update
+    wp core update-db
 
 First command updates the files and second one completes the database upgrade.
 
