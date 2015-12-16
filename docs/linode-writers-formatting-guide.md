@@ -78,9 +78,9 @@ Author Submission
 
 ### Paragraph Structure
 
-Guides should be split into cohesive sections which flow from one sequence of events to the next. Each section title should be styled with an *H2* heading element, and each subsection with an *H3* heading. Capitalize each noun, adjective, verb and adverb in the article title, H2 and H3 headers.
+Guides should be split into cohesive **sections** which flow from one sequence of events to the next. Each section title should be styled with an *H2* heading element, and each subsection with an *H3* heading so that scanning the *In This Guide* left sidebar should give the reader an overview of what will be done in the guide. Capitalize each noun, adjective, verb and adverb in the article title, H2 and H3 headers.
 
-Each section/subsection should be split into numbered steps as needed. Scanning the *In This Guide* left sidebar should give the reader an overview of what will be done in the guide.
+Each **subsection** should be split into numbered steps as shown below.
 
 For example:
 
@@ -168,7 +168,7 @@ Example IPs should use the documentation address blocks given in IETF [RFC 5737]
 
 ### External Resources/More Information
 
-If you wish to provide links to external sites for the user to review after going through your guide, do so using the *extenral_resources* field in the [page header](#header). This will appear as a text block with links at the bottom of the page.
+If you wish to provide links to external sites for the user to review after going through your guide, do so using the *external_resources* field in the [page header](#header). This will appear as a text block with links at the bottom of the page.
 
 >More Information
 >
