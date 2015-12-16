@@ -70,6 +70,10 @@ Author Submission
     3.  Update your system.
 
             sudo apt-get update && sudo apt-get upgrade
+
+{: .note}
+>
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with sudo. If you’re not familiar with the sudo command, you can check our Users and Groups guide.
     ~~~
 
 ### Paragraph Structure
