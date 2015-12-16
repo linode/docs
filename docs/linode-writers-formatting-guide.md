@@ -6,7 +6,7 @@ description: 'The Linode Guides & Tutorials style guide for article submissions'
 keywords: 'style guide,format,formatting,how to write,write for us,write for linode,linode library,submissions'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['style-guide/']
-modified: Monday, December 14th, 2015
+modified: Wednesday, December 16th, 2015
 modified_by:
   name: Linode
 published: 'Wednesday, January 15th, 2014'
@@ -56,7 +56,7 @@ Introductions should be concise; explain what the goal of the guide is and why. 
 
 ### Before You Begin
 
-The *Before You Begin* section is a basic area of prerequisites a reader should have completed before proceeding further in your guide. Use the template below and edit as needed.
+The *Before You Begin* section is a basic area of prerequisites a reader should know or have completed before proceeding further in your guide. Use the template below and edit as needed.
 
 {: .file-excerpt}
 Author Submission
@@ -71,9 +71,9 @@ Author Submission
 
             sudo apt-get update && sudo apt-get upgrade
 
-{: .note}
->
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with sudo. If you’re not familiar with the sudo command, you can check our Users and Groups guide.
+    {: .note}
+    >
+    >This guide is written for a non-root user. Commands that require elevated privileges are prefixed with sudo. If you’re not familiar with the sudo command, you can check our Users and Groups guide.
     ~~~
 
 ### Paragraph Structure
