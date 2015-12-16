@@ -14,11 +14,14 @@ contributor:
     name: Navjot Singh
     link: https://github.com/navjotjsingh
 external_resources:
-   - '[WP-CLI Commands](http://wp-cli.org/commands/)'
-   - '[WP-CLI Community Commands](https://github.com/wp-cli/wp-cli/wiki/List-of-community-commands)'
+ - '[WP-CLI Commands](http://wp-cli.org/commands/)'
+ - '[WP-CLI Community Commands](https://github.com/wp-cli/wp-cli/wiki/List-of-community-commands)'
 ---
 
-## Introduction
+*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
+
+<hr>
+
 
 Everyone is probably familiar with WordPress and its famous 5 minute install routine. Its simple and works without fuss. But when you have multiple sites to manage, going over the same routine can take up lot of time which you could have used elsewhere.
 
@@ -79,11 +82,11 @@ Now it is difficult all commands at once and you might want a quick reference on
 
 Now edit the .bashrc so that it is loaded by the shell every time you login. Open the file and add the following line in the editor assuming you downloaded the file in the home directory.
 
-    {: .file-excerpt}
-    /home/username/.bashrc
-    :   ~~~ bash
-        source /home/username/wp-completion.bash
-        ~~~
+{: .file-excerpt}
+/home/username/.bashrc
+:   ~~~ bash
+    source /home/username/wp-completion.bash
+~~~
 
 Now run the following command to reload the Bash profile.
 
