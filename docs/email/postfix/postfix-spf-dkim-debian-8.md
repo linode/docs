@@ -83,9 +83,7 @@ The Python SPF policy agent adds SPF policy checking to Postfix. The SPF record 
             user=policyd-spf argv=/usr/bin/policyd-spf
         ~~~
 
-3.  Edit `/etc/postfix/main.cf` as follows:
-
-    1.  Add this entry to increase the timeout Postfix uses with the policy agent to prevent Postfix from aborting the agent if transactions are running a bit slowly:
+3.  Open `/etc/postfix/main.cf` and add this entry to increase the Postfix policy agent timeout, to prevent Postfix from aborting the agent if transactions are running a bit slowly:
 
     {: .file-excerpt}
     /etc/postfix/main.cf
@@ -164,14 +162,14 @@ DKIM involves setting up the OpenDKIM package and hooking it into Postfix as wel
         OversignHeaders     From
         ~~~
 
-    Edit `/etc/opendkim.conf` and replace it's contents with the above, or download [a copy of opendkim.conf](/doc/assets/Postfix_opendkim.conf), upload it to your server and copy it over top of `/etc/opendkim.conf`. Do a `chmod u=rw,go=r /etc/opendkim.conf` to make sure it's permissions are set correctly.
+    Edit `/etc/opendkim.conf` and replace it's contents with the above, or download [a copy of opendkim.conf](/doc/assets/postfix-opendkim-conf.txt), upload it to your server and copy it over top of `/etc/opendkim.conf`. Do a `chmod u=rw,go=r /etc/opendkim.conf` to make sure it's permissions are set correctly.
 
 2.  Create the directories to hold OpenDKIM's data files:
 
-    mkdir /etc/opendkim
-    mkdir /etc/opendkim/keys
-    chown -R opendkim:opendkim /etc/opendkim
-    chmod go-rw /etc/opendkim/keys
+        mkdir /etc/opendkim
+        mkdir /etc/opendkim/keys
+        chown -R opendkim:opendkim /etc/opendkim
+        chmod go-rw /etc/opendkim/keys
 
 3.  Create the signing table `/etc/opendkim/signing.table`. It needs to have one line per domain you handle mail for, with each line looking like:
 
@@ -276,7 +274,7 @@ Test the keys for correct signing and verification using the `opendkim-testkey` 
 
     opendkim-testkey -d example.com -s YYYYMM
 
-If everything is OK you shouldn't get any output. If you want to see more information, add `-vvv` to the end of the command. That produces verbose debugging output. The last message should be "key OK". Just before that you may see a "key not secure" message. That's normal and doesn't signal an error, it just means your domain isn't set up for DNSSEC yet.
+If everything is OK you shouldn't get any output. If you want to see more information, add `-vv` to the end of the command. That produces verbose debugging output. The last message should be "key OK". Just before that you may see a "key not secure" message. That's normal and doesn't signal an error, it just means your domain isn't set up for DNSSEC yet.
 
 ### Hooking OpenDKIM into Postfix
 
