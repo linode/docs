@@ -74,6 +74,10 @@ This ensures that all software is up to date and running the latest version.
 
 ##Create Rails application
 
+Before creating our project, we should move to the home directory:
+
+	cd
+
 1.	Create a new rails project. We will be using `example` as our project name:
 
 		rails new example
@@ -88,11 +92,7 @@ This ensures that all software is up to date and running the latest version.
 
 ##Configure Unicorn
 
-We need to add Unicorn configuration to `config/unicorn.rb`. Issue the following command:
-
-	nano config/unicorn.rb
-
-Copy and Paste the following configuration in the file.
+Create the file `config/unicorn.rb` which contains unicorn configuration and paste the following configuration in the file.
 
 {: .file}
 /home/username/example/config/unicorn.rb
@@ -135,9 +135,7 @@ Download and install Nginx using APT:
 
 ##Configure Nginx
 
-We need to configure Nginx to work as the reverse proxy. Issue the following command and paste the configuration in HTTP block:
-
-	sudo nano /etc/nginx/nginx.conf
+1. We need to configure Nginx to work as the reverse proxy. Edit the config file `/etc/nginx/nginx.conf`and paste the configuration in HTTP block:
 
 {: .file-excerpt}
 /etc/nginx/nginx.conf
@@ -147,19 +145,23 @@ We need to configure Nginx to work as the reverse proxy. Issue the following com
 		}
 	~~~
 
-Now we will add the configuration to the server block:
+{: .note}
+>
+> Edit username and example with appropriate values. 
 
-	sudo nano /etc/nginx/sites-available/default
+2. Remove the default nginx site configuration:
 
-Replace the content of the server block with the following code:
+	sudo rm /etc/nginx/sites-enabled/default
 
-{: .file-excerpt}
-/etc/nginx/sites-available/default
+3. Create new nginx site configuration file for Rails application:
+
+{: .file}
+/etc/nginx/sites-available/example
 :	~~~	server {
  	    listen 80;
 	    server_name localhost;
 
- 	    root /home/deploy/appname;
+ 	    root /home/username/example;
 
 	    try_files $uri/index.html $uri @rails;
 
@@ -179,6 +181,14 @@ Replace the content of the server block with the following code:
 {: .note}
 >
 >Make sure you change the username and example with the appropriate values.
+
+4. Create a symlink to nginx’s `sites-enabled` directory to enable your site configuration file:
+
+	sudo ln -s /etc/nginx/sites-available/example /etc/nginx/sites-enabled
+	
+5. Restart Nginx
+
+	sudo service nginx restart
 
 ##Starting Unicorn
 
