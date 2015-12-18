@@ -100,7 +100,7 @@ If not, flush your DNS cache, and reboot your routers and workstation. Still no 
 
 {: .caution}
 >
-> If any outbound ports are blacklisted or blocked by your firewall, make sure ports 3478, 8080, 8081, 8443, and 8843 to your Linode are whitelisted and accessible. Any of those ports being blocked will render your controller unreachable.
+> If any outbound ports are blacklisted or blocked by your firewall, make sure ports `3478`, `8080`, `8081`, `8443`, and `8843` to your Linode are whitelisted and accessible. Any of those ports being blocked will render your controller unreachable.
 
 ### DHCP Option #43
 
@@ -108,11 +108,11 @@ If not, flush your DNS cache, and reboot your routers and workstation. Still no 
 
 2. Convert your Linode's IP address into hexadecimal format and prefix "0104" in front of the hexadecimal.
 
-        printf '0104'; gethostip `45.79.138.150` -x
+        printf '0104'; gethostip 45.79.138.150 -x
 
 Output example:
 
-        `01042D4F8A96`
+        01042D4F8A96
 
 {: .note}
 >
