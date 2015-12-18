@@ -27,46 +27,46 @@ Before starting this guide, make sure that  you have read through and completed 
 
 1.  Before you install any package, ensure that your hostname is correct by completing the [Setting Your Hostname](/docs/getting-started#sph_setting-the-hostname) section of the Getting Started guide. Issue the following commands to verify that hostname:
 
-        hostname
-        hostname -f
+    hostname
+    hostname -f
 
 ##System Setup
 
 2.  Make sure your system is up to date using apt:
 
-        sudo apt-get update && apt-get upgrade
+    sudo apt-get update && apt-get upgrade
 
 This ensures that all software is up to date and running the latest version.
 
 ##Install Ruby
 
-1.	Install Ruby dependencies using APT:
+1. Install Ruby dependencies using APT:
 
-		sudo apt-get install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev nodejs
+    sudo apt-get install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev nodejs
 
-2.	Download the latest version of Ruby. At the time of writing this article, current latest and stable version is 2.2.3:
+2. Download the latest version of Ruby. At the time of writing this article, current latest and stable version is 2.2.3:
 
-		wget https://cache.ruby-lang.org/pub/ruby/2.2/ruby-2.2.3.tar.gz
+	wget https://cache.ruby-lang.org/pub/ruby/2.2/ruby-2.2.3.tar.gz
 
-3.	Unpack the tarball:	
+3. Unpack the tarball:	
 
-		tar -xzvf ruby-2.2.3.tar.gz
+	tar -xzvf ruby-2.2.3.tar.gz
 
-4.	Move to the extracted directory:
+4. Move to the extracted directory:
 
-		cd ruby-2.2.3.tar.gz
+	cd ruby-2.2.3.tar.gz
 
-5.	Compile the Ruby:	
+5. Compile the Ruby:	
 
-		./configure
+	./configure
 
-6.	Getting ready for the installation:
+6. Getting ready for the installation:
 
-		make
+	make
 
-7.	Issue the following command and it will install Ruby:
+7. Issue the following command and it will install Ruby:
 
-		sudo make install
+	sudo make install
 
 ##Install Rails
 
@@ -78,13 +78,13 @@ Before creating our project, we should move to the home directory:
 
 	cd
 
-1.	Create a new rails project. We will be using `example` as our project name:
+1. Create a new rails project. We will be using `example` as our project name:
 
-		rails new example
+	rails new example
 
-2.	Move to the project directory:
+2. Move to the project directory:
 
-		cd example
+	cd example
 
 ##Install Unicorn
 
@@ -96,27 +96,27 @@ Create the file `config/unicorn.rb` which contains unicorn configuration and pas
 
 {: .file}
 /home/username/example/config/unicorn.rb
-:	~~~ # set path to the application
-	app_dir = File.expand_path("../..", __FILE__)
-	shared_dir = "#{app_dir}/shared"
-	working_directory app_dir
+:   ~~~
+    # set path to the application
+    app_dir = File.expand_path("../..", __FILE__)
+    shared_dir = "#{app_dir}/shared"
+    working_directory app_dir
 
+    # Set unicorn options
+    worker_processes 2
+    preload_app true
+    timeout 30
 
-	# Set unicorn options
-	worker_processes 2
-	preload_app true
-	timeout 30
+    # Path for the Unicorn socket
+    listen "#{shared_dir}/sockets/unicorn.sock", :backlog => 64
 
-	# Path for the Unicorn socket
-	listen "#{shared_dir}/sockets/unicorn.sock", :backlog => 64
+    # Set path for logging
+    stderr_path "#{shared_dir}/log/unicorn.stderr.log"
+    stdout_path "#{shared_dir}/log/unicorn.stdout.log"
 
-	# Set path for logging
-	stderr_path "#{shared_dir}/log/unicorn.stderr.log"
-	stdout_path "#{shared_dir}/log/unicorn.stdout.log"
-
-	# Set proccess id path
-	pid "#{shared_dir}/pids/unicorn.pid"
-	~~~
+    # Set proccess id path
+    pid "#{shared_dir}/pids/unicorn.pid"
+    ~~~
 
 Now create directories which we mentioned in the Unicorn config file:
 
@@ -139,11 +139,12 @@ Download and install Nginx using APT:
 
 {: .file-excerpt}
 /etc/nginx/nginx.conf
-:	~~~ upstream rails {
-	    # Path to Unicorn socket file
-	    server unix:/home/username/example/shared/sockets/unicorn.sock fail_timeout=0;
-		}
-	~~~
+:   ~~~
+    upstream rails {
+    # Path to Unicorn socket file
+    server unix:/home/username/example/shared/sockets/unicorn.sock fail_timeout=0;
+    }
+    ~~~
 
 {: .note}
 >
@@ -157,26 +158,27 @@ Download and install Nginx using APT:
 
 {: .file}
 /etc/nginx/sites-available/example
-:	~~~	server {
- 	    listen 80;
-	    server_name localhost;
+:	~~~ 
+    server {
+    listen 80;
+    server_name localhost;
 
- 	    root /home/username/example;
+    root /home/deploy/appname;
 
-	    try_files $uri/index.html $uri @rails;
+    try_files $uri/index.html $uri @rails;
 
- 	    location @rails {
- 	       proxy_pass http://rails;
- 	       proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-	        proxy_set_header Host $http_host;
- 	       proxy_redirect off;
-	    }
+    location @rails {
+       proxy_pass http://rails;
+       proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $http_host;
+       proxy_redirect off;
+    }
 
- 	    error_page 500 502 503 504 /500.html;
- 	    client_max_body_size 4G;
-  	    keepalive_timeout 10;
-	    }
-    ~~~
+    error_page 500 502 503 504 /500.html;
+    client_max_body_size 4G;
+    keepalive_timeout 10;
+    }
+     ~~~
 
 {: .note}
 >
@@ -192,18 +194,18 @@ Download and install Nginx using APT:
 
 ##Starting Unicorn
 
-1.  If you want to start Unicorn in the development environment, issue the following command:
+1. If you want to start Unicorn in the development environment, issue the following command:
 
-	    sudo unicorn -c config/unicorn.rb -E development -D
+        sudo unicorn -c config/unicorn.rb -E development -D
 
-2.  For production environment, issue the following command:
+2. For production environment, issue the following command:
 
-	    sudo unicorn -c config/unicorn.rb -E production -D
+	sudo unicorn -c config/unicorn.rb -E production -D
 	    
 {: .note}
 >
 >Make sure you is in project directory else you need to type the whole path	
 
-3.  To stop the Unicorn, issue the following command:
+3. To stop the Unicorn, issue the following command:
 
-	    sudo pkill unicorn
+	sudo pkill unicorn
