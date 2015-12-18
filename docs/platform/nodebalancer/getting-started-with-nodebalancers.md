@@ -6,7 +6,7 @@ description: 'Using a NodeBalancer to begin managing a simple web application.'
 keywords: 'nodebalancers,nodebalancer,load balancers,load balancer,load balancing,high availability,ha'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['nodebalancers/getting-started/']
-modified: 'Tuesday, October 28th 2015'
+modified: 'Friday, December 18th, 2015'
 modified_by:
   name: Linode
 published: 'Thursday, February 12, 2015'
