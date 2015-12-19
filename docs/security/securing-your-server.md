@@ -105,7 +105,7 @@ By default, password authentication is used to connect to your Linode via SSH. A
 
     {: .note}
     >
-    >`ssh-copy-id` is available in [Homebrew](http://brew.sh/) if you prefer it over SCP. Install with `brew ssh-copy-id`.
+    >`ssh-copy-id` is available in [Homebrew](http://brew.sh/) if you prefer it over SCP. Install with `brew install ssh-copy-id`.
 
     **Windows**
 
