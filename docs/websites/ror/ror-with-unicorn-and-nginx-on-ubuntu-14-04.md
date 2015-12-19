@@ -5,8 +5,8 @@ author:
 description: 'Setup Ruby on Rails stack on Ubuntu 14.04 using Nginx and Unicorn'
 keywords: 'ruby on rails,unicorn rails,ruby on rails ubuntu 14.04'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-published: 'Tuesday, November 20rd, 2015'
-modified: Tuesday, November 20rd, 2015
+published: 'Saturday, December 19th, 2015'
+modified: Saturday, December 19th, 2015
 modified_by:
     name: Linode
 title: 'How to deploy Ruby on Rails applications with Unicorn and Nginx on Ubuntu 14.04'
@@ -163,7 +163,7 @@ Download and install Nginx using APT:
     listen 80;
     server_name localhost;
 
-    root /home/deploy/appname;
+    root /home/username/example;
 
     try_files $uri/index.html $uri @rails;
 
