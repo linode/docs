@@ -41,7 +41,7 @@ This guide will show you how to set up your own [Terraria](https://terraria.org/
 
 {: .caution }
 
->The CPU and RAM usage of Terraria Server 1.3.0.8 has been monitored for one hour with two players on a Linode 1GB.
+>The CPU and RAM usage of Terraria Server 1.3.0.8 has been monitored for one hour with four players on a Linode 1GB.
 >It has been found out that it uses about 50% of CPU and 80% of RAM.
 >It is recommended to have at least a Linode 2GB if you're going to have more players or other servers running on the same VPS.
 
@@ -142,9 +142,14 @@ This guide will show you how to set up your own [Terraria](https://terraria.org/
 		#Default system priority 0:Realtime, 1:High, 2:AboveNormal, 3:Normal, 4:BelowNormal, 5:Idle
 		priority=1
 
+{: .caution }
+
+>It's recommended to set **priority=0** and increase **npcstream** to avoid potential lag when encountering enemies.
+>Terraria Server has been tested on a Linode 1GB with 4 players, **priority=0** and **npcstream=500**; it works flawlessly.
+
 2.  Run Terraria Server:
 
-        ./TerrariaServer
+        ./TerrariaServer -config serverconfig.txt
 
 3.  It will ask you to select a world:
 
