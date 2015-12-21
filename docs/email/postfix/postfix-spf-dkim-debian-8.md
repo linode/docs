@@ -111,9 +111,11 @@ The Python SPF policy agent adds SPF policy checking to Postfix. The SPF record 
 
     systemctl restart postfix
 
-You can check the operation of the policy agent by looking at raw headers on incoming mail messages for the SPF results header. You'll find errors logged in `/var/log/mail.log`.
+You can check the operation of the policy agent by looking at raw headers on incoming mail messages for the SPF results header. You'll find errors logged in `/var/log/mail.log`. The header the policy agent adds should look something like this (asterisks are used to block identifying information):
 
-TODO show headers
+    Received-SPF: Pass (sender SPF authorized) identity=mailfrom; client-ip=***.*.*.**; helo=mail178-24.suw51.mandrillapp.com; envelope-from=********************@mandrillapp.com; receiver=******@***********.***
+
+This header indicates a successful check against the SPF policy of the sending domain. If you changed the policy agent settings in step 1 to not reject mail that fails the SPF check you may see Fail results in this header. You won't see this header on outgoing mail or local mail.
 
 ## Setting up DKIM
 
@@ -180,7 +182,7 @@ Edit `/etc/opendkim.conf` and replace it's contents with the above, or download 
 {: .file-excerpt}
 /etc/opendkim/signing.table
 :   ~~~ text
-    *@example.com   example
+    \*@example.com   example
     ~~~
 
 Replace `example.com` with your domain and `example` with a short name for the domain. The first field is a pattern that matches e-mail addresses, and the second field is a name for the key table entry that should be used to sign mail from that address. For simplicity we're just going to set up one key for all addresses in a domain.
@@ -248,7 +250,7 @@ As with SPF, DKIM uses TXT records to hold information about the signing key for
 {: .file}
 example.txt
 :   ~~~ text
-    201510.\_domainkey  IN  TXT ( **"v=DKIM1; k=rsa; s=email; "
+    201510._domainkey  IN  TXT ( **"v=DKIM1; k=rsa; s=email; "
         "p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAu5oIUrFDWZK7F4thFxpZa2or6jBEX3cSL6b2TJdPkO5iNn9vHNXhNX31nOefN8FksX94YbLJ8NHcFPbaZTW8R2HthYxRaCyqodxlLHibg8aHdfa+bxKeiI/xABRuAM0WG0JEDSyakMFqIO40ghj/h7DUc/4OXNdeQhrKDTlgf2bd+FjpJ3bNAFcMYa3Oeju33b2Tp+PdtqIwXR"
         "ZksfuXh7m30kuyavp3Uaso145DRBaJZA55lNxmHWMgMjO+YjNeuR6j4oQqyGwzPaVcSdOG8Js2mXt+J3Hr+nNmJGxZUUW4Uw5ws08wT9opRgSpn+ThX2d1AgQePpGrWOamC3PdcwIDAQAB"** )  ; ----- DKIM key 201510 for example.com
 
@@ -353,9 +355,9 @@ The reason the YYYYMM format is used for the selector is that best practice call
 
 4.  Copy the newly-generated `.private` files into place and make sure their ownership and permissions are correct by running these commands from the directory you generated the key files in:
 
-    cp *.private /etc/opendkim/keys/
-    chown opendkim:opendkim /etc/opendkim/keys/*
-    chmod go-rw /etc/opendkim/keys/*
+    cp \*.private /etc/opendkim/keys/
+    chown opendkim:opendkim /etc/opendkim/keys/\*
+    chmod go-rw /etc/opendkim/keys/\*
 
 5.  Edit `/etc/opendkim/key.table` and change the old YYYYMM values to the new selector reflecting the current year and month. Save the file.
 
