@@ -5,7 +5,7 @@ author:
 description: 'Installing and setting up Riak cluster on Ubuntu 14.04'
 keywords: 'riak, nosql, cluster, riak control'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: 'Wednesday, December 2nd, 2015'
+modified: 'Wednesday, December 21st, 2015'
 modified_by:
   name: Sergey Pariev
 published: 'Wednesday, December 2nd, 2015'
@@ -26,27 +26,25 @@ This guide uses two separate Linodes with private IPv4 addresses to configure Ri
 
 {: .note}
 >
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
-
-{: .note}
->
 >This guide assumes that your Linodes are each configured with a [Private IP Address](/docs/networking/remote-access#adding-private-ip-addresses).
 
+## Before You Begin
 
-## Prerequisites
+    1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-The following steps should be executed on both Linodes.
+    2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
 
-1.  Follow the [Getting Started](/docs/getting-started) guide for the basic server setup.
+    3.  Update your system.
 
-2.  Update the system:
+            sudo apt-get update && sudo apt-get upgrade
 
-		sudo apt-get update && sudo apt-get upgrade
-
+    {: .note}
+    >
+    >This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
 ## Install Riak
 
-You need to install Riak on both Linodes.
+You will need to install Riak on both Linodes.
 
 1.  Add the GPG key from packagecloud.io
 
@@ -74,7 +72,7 @@ You need to install Riak on both Linodes.
 		sudo apt-get install riak
 
 
-## Basic system tuning
+## Basic System Tuning
 
 Using `sudo` make the following changes in system configuration files on both linodes:
 
@@ -122,7 +120,7 @@ Using `sudo` make the following changes in system configuration files on both li
 	~~~
 
 
-## Verify Riak installation
+## Verify Riak Installation
 
 On both linodes, do the following to ensure everything is working properly.
 
@@ -134,7 +132,7 @@ On both linodes, do the following to ensure everything is working properly.
 
 		sudo riak-admin test
 
-Output should look like the following:
+	Output should look like the following:
 
      	Attempting to restart script through sudo -H -u riak
 		Successfully completed 1 read/write cycle to 'riak@<linode_private_ip>'
@@ -144,11 +142,11 @@ Output should look like the following:
 		sudo riak stop
 
 
-## Cluster setup
+## Cluster Setup
 
 {: .note}
 >
->The important parameter of the Riak cluster is the ring size - number of partitions that make up your cluster. It must be set before cluster creation. For test purposes default value of 64 is good enough, but for production deployment please consult Riak docs [on choosing the ring size](http://docs.basho.com/riak/latest/ops/building/planning/cluster/#Ring-Size-Number-of-Partitions).
+>The important parameter of the Riak cluster is the *ring size* - number of partitions that make up your cluster. It must be set before cluster creation. For test purposes default value of 64 is good enough, but for production deployment please consult Riak docs [on choosing the ring size](http://docs.basho.com/riak/latest/ops/building/planning/cluster/#Ring-Size-Number-of-Partitions).
 
 1.  On one of the linodes, edit `/etc/riak/riak.conf` and change protobuf listener address to the linode's private IP:
 
@@ -170,7 +168,6 @@ Output should look like the following:
 	listener.protobuf.internal = <linode_private_ip>:8087
 	~~~
 
-
 4.  Start the other node with
 
 		sudo riak start
@@ -188,14 +185,13 @@ Output should look like the following:
 
 		sudo riak-admin status | grep ring_members
 
-which should output
+	which should output
 
 	    ring_members : ['riak@<first_linode_private_ip>','riak@<second_linode_private_ip>']
 
-
 ## Install Riak Control
 
-On one of the linodes, enable Riak Control on linode public IP. Riak Control is a web-based administrative console for inspecting and manipulating Riak clusters.
+On one of the linodes, enable **Riak Control** on linode public IP. Riak Control is a web-based administrative console for inspecting and manipulating Riak clusters.
 
 {: .note}
 >
@@ -214,7 +210,7 @@ On one of the linodes, enable Riak Control on linode public IP. Riak Control is 
 
 		sudo riak restart
 
-3.  Riak Control application will be accessible at http://<linode_public_ip>:8098/admin URL.
+3.  Riak Control application will be accessible at http://&lt;linode_public_ip&gt;:8098/admin URL.
 
 [![Riak Control main page](/docs/assets/riak_riak_control_small.png)](/docs/assets/riak_riak_control.png)
 
