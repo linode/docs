@@ -1,15 +1,15 @@
 ---
 author:
-    name: Douglas Colby
-    email: admin@mulps.pw
+    name: Linode Community
+    email: contribute@linode.com
 description: ‘How to Install Open Web Analytics on CentOS 6.5 and 7’
 keywords: ‘open, web, analytics,’
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 published: 
-modified: 
+modified: Monday, December 14, 2015
 modified_by:
-    name: 
-title: 'Open Web Analytics (OWA) on CentOS 6.5 and 7'
+    name: Alex Fornuto
+title: 'Open Web Analytics (OWA)'
 contributor:
     name: Douglas Colby
 external_resources:
@@ -17,133 +17,171 @@ external_resources:
  - '[OWA Forum](http://www.openwebanalytics.com/?page_id=4)'
 ---
 
-##How to Install Open Web Analytics on CentOS 6.5 and 7 (with MySQL back-end)
+Open Web Analytics (OWA) is an open source alternative to commercial web analytics software. Use it to track and analyze traffic on your websites and applications. OWA analytics can easily be added to pages with simple Javascript, PHP, or REST based APIs. OWA also comes with built-in support for tracking websites made with popular content management frameworks such as WordPress and MediaWiki.
 
-Open Web Analytics (OWA) is an open source alternative to commerical web analytics software. Use it to track and analyze traffic on your websites and applications. OWA analytics can easily be added to pages with simple Javascript, PHP, or REST based APIs. OWA also comes with built-in support for tracking websites made with popular content management frameworks such as WordPress and MediaWiki.
+## Before you Begin
 
-This guide assumes that you have your Linode already set up and running, that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, that the Linode's [hostname is set](/docs/getting-started#setting-the-hostname), and that you are familiar with the concept of the command line interface (CLI). Since this guide concerns the installation and configuration of software packages all commands are to be run as the root user.
+1.  This guide assumes that you have your Linode already set up and running, that you have followed:
 
-##1. Install supporting software
+     - The [Getting Started](/docs/getting-started) guide.
+     - The [Securing Your Server](/docs/security/securing-your-server) guides.
+     - That the Linode's [hostname is set](/docs/getting-started#setting-the-hostname) and has a FQDN.
 
-1. Install the supporting software packages by running the following command:
 
-    yum install httpd php php-mysql mysql mariadb-server
+     
+    {: .note}
+    >
+    >The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+    >
+    >Your server must be configured with a fully qualified domain name and not just an IP address. If needed, you can use the address provided in the Remote Access Tab next to your public IP address.
 
-{: .note}
->
->`yum` will not reinstall packages that already exist on the system. Therefore this command is safe to run even if you have some of the software installed already. 
+2.  Make sure your system is up-to-date:
 
-2. Always a good idea to make sure your system is up-to-date:
+    - **CentOS**
 
-    yum update
+          yum update
 
-3. CentOS 7 users run the following commands (if you are on CentOS 6.5 skip to the next command):
+    - **Debian & Ubuntu**
 
-    systemctl enable mariadb
-    systemctl enable httpd
+          apt-get update && apt-get upgrade
 
-4. CentOS 6.5 users run:
+3.  Install the supporting software packages:
 
-    chkconfig mysql on
-    chkconfig httpd on
+    - **CentOS**
 
-##2. Set up MySQL
+          yum install httpd php php-mysql mysql-server mariadb-server
 
-2. Then (if you already have mysql installed you can skip this step):
+      {: .note}
+      >
+      >This command is designed to work with CentOS 6, which uses MySQL as the default database and CentOS 7 which uses MariaDB. You will get a notice when installing that the other package is not available. 
 
-    mysql_secure_installation
+    - **Debian & Ubuntu**
 
-Answer yes to all questions -- make sure to set a strong password for root (press enter when prompted for current root password since it is initially blank). This is the root user for mysql and is not related the systems root user.
+          apt-get install apache2 php5 php5-mysql mysql-server
 
-3. Next run the following. Enter your mysql root password when asked:
+4.  CentOS users will need to enable and activate the `httpd` and `mariadb` services:
+
+    - **CentOS 7**
+
+          systemctl enable mariadb
+          systemctl start mariadb
+          systemctl enable httpd
+          systemctl start httpd
+
+    - **CentOS 6**
+
+          chkconfig mysqld on
+          service mysqld start
+          chkconfig httpd on
+          service httpd start
+
+    Debian and Ubuntu users will need to restart the Apache2 daemon:
+
+        service apache2 restart
+
+## Set up MySQL
+
+1.  Run `mysql_secure_installation` to secure your database:
+
+        mysql_secure_installation
+
+    You should answer yes to most of the prompts. CentOS users, make sure to set a strong password for the root user since it is initially blank. This is the root user for `mysql` and is not related the systems root user.
+
+2.  Enter the MySQL CLI:
  
-    mysql -u root -p
+        mysql -u root -p
 
-4. The following SQL commands will create a database named `owadb` with a user named `owadbuser` and with the password `owadbpassword`. Be sure to change the password to something better of your own choice. This information will be needed later to configure OWA.
+    You'll need to enter the password you set in the step above, or when you installed `mysql-server`.
 
-    CREATE DATABASE owadb;
-    GRANT ALL PRIVILEGES ON owadb.* TO owadbuser@localhost IDENTIFIED BY 'owadbpassword';
-    FLUSH PRIVILEGES;
-    quit
+3.  Create a database named `owadb`: 
 
-5. Now you need to restart your Linode:
+        CREATE DATABASE owadb;
 
-    reboot
+4.  Create a user named `owadbuser`. Replace the example password, `owadbpassword`, with a strong password of your choice. This information will be needed later to configure OWA.
 
-##3. Install OWA
+        GRANT ALL PRIVILEGES ON owadb.* TO owadbuser@localhost IDENTIFIED BY 'owadbpassword';
 
-1. Once your Linode comes back up, navigate to your document root folder for your webserver, usually `/var/html/www`:
+5.  Exit the MySQL CLI:
 
-    cd /var/www/html
+        FLUSH PRIVILEGES;
+        quit
 
-2. Now download the OWA package:
+## OWA
 
-    wget https://github.com/padams/Open-Web-Analytics/archive/1.5.7.tar.gz
+### Install
 
-{: .note}
->
->The number 1.5.7 is the current version and may be different by the time you read this. Please check http://www.openwebanalytics.com/ for the latest information.
+1.  Navigate to your document root folder for your webserver, usually `/var/www/html` by default.:
 
-3. Unpack it:
+        cd /var/www/html
 
-    tar xf 1.5.7.tar.gz
+2.  Download the OWA package:
 
-4. Delete tar file (you may want to wait until everything is finished and working before you do this just in case you need to a fresh version of the OWA files):
+        wget https://github.com/padams/Open-Web-Analytics/archive/1.5.7.tar.gz
 
-    rm -rf 1.5.7.tar.gz
+    {: .note}
+    >
+    >Version 1.5.7 is the current version and may be different by the time you read this. Please check [The Open Web Analytics](http://www.openwebanalytics.com/) site for the latest information.
 
-5. Change ownership of the `owa` folder to apache (assuming you are running Apache, if not change it to your httpd’s user).
+3.  Unpack the downloaded file:
 
-    chown -R apache:apache Open*
+        tar xf 1.*.tar.gz
 
-6. Rename the OWA folder to something reasonable:
+4.  Change ownership of the `owa` folder to the Apache daemon user:
 
-    mv Open-Web-Analytics-1.5.7 owa
+    - **CentOS**
 
-##4. Configure OWA
+          chown -R apache:apache Open*
 
-1. Now navigate to the installation in your webbrowser. (Replace `your.domain` with the domain of your Linode):
+    - **Debian & Ubuntu**
 
-    http://your.domain/owa/install.php
-{: .note}
->
->Your server must be configured with a fully qualified domain name and not just an IP address.
+          chown -R www-data:www-data Open*
 
-2. You should see a configuration page for your OWA installation. The first field will be filled in by OWA with the path to your OWA installation. The other fields on the page should be filled in as follows:
+5.  **Recommended:** Rename the OWA folder:
+
+        mv Open-Web-Analytics-1.5.7 owa
+
+6.  Delete the tar file:
+
+        rm -rf 1.*.tar.gz
+
+### Configure
+
+1.  Navigate to the OWA installation page in your webbrowser. Replace `your.domain` with your Linode's IP address or FQDN:
+
+        http://your.domain/owa/
+
+
+
+2.  After clicking on **Let's Get Started**, you should see a configuration page for your OWA installation. The first field will be filled in by OWA with the path to your OWA installation. The other fields on the page should be filled in with the information you set in the MySQL CLI:
  
-	Database Host: localhost
+    [![Open Web Analytics set up screen.](/docs/assets/owa-install_small.png)](/docs/assets/owa-install.png)
 
-	Database Name: owadb
+3.  Click **Continue...**. 
 
-	Database User: owadbuser
+4.  Create a user account and define a domain to track. This user account will be how you log in to see your OWA statistics.
 
-	Database Password: owadbpassword
+    {: .caution}
+    > This process will display your password in plaintext once complete. Be careful if performing these steps in a public location.
 
-Of course, `owadbpassword` should be the password with which you created your SQL database in step 2.4.
-
-![Screen shot of OWA set up screen.](/docs/assets/OWA.png)
-
-3. Click "Continue..." and create a user account on the next page. This user account will be how you log in to see your OWA statistics.
-
-##5. Using OWA
+## Using OWA
 
 You will need to create site profiles and add JavaScript or PHP code to your website pages to use OWA.
 
-1. Log in to your OWA installation. In your browser go to
+1.  Log in to your OWA installation. In your browser go to
 
-    http://your.domain/owa/index.php
+        http://your.domain/owa/index.php
 	
-2. This will take you to the Sites Roster page. Click "Add New" at the top left of the page.
+2.  This will take you to the Sites Roster page. Click "Add New" at the top left of the page.
 
-3. On the resulting page you will see, near the top, a section named "Add a New Tracked Site Profile". Enter the domain name of the site you want to track and click Save Profile. The other two fields are for your information only and are therefore optional.
+3.  On the resulting page you will see, near the top, a section named "Add a New Tracked Site Profile". Enter the domain name of the site you want to track and click Save Profile. The other two fields are for your information only and are therefore optional.
 
-{: .caution}
->
->You must click "Save Profile" before trying to enter any of the settings below this button. Failure to do so will result in a blank white page and your new site not being added. Recovery simply requires a click of the back button in your browser.
+    {: .caution}
+    >
+    >You must click "Save Profile" before trying to enter any of the settings below this button. Failure to do so will result in a  blank white page and your new site not being added. Recovery simply requires a click of the back button in your browser.
 
-4. Click on "Reporting" in the top left corner to return to the Sites Roster page. In the list of tracked sites find your new site and click "Get Tracking Code".
+4.  Click on "Reporting" in the top left corner to return to the Sites Roster page. In the list of tracked sites find your new site and click "Get Tracking Code".
 
-5. Copy the tracking code in the language of your choice (JavaScript or PHP) and paste the code into your websites' pages. Now whenever someone loads a page with the tracking code OWA will know about it and the data will show up in the reports.
+5.  Copy the tracking code in the language of your choice (JavaScript or PHP) and paste the code into your websites' pages. Now whenever someone loads a page with the tracking code OWA will know about it and the data will show up in the reports.
 
 6.  Click "View Reports" in the Sites Roster page and happy analysing! 
 
