@@ -5,8 +5,8 @@ author:
 description: 'Terraria is a two-dimensional sandbox game similar to Minecraft that allows players to explore, build, and battle in an open world. This guide will outline everything required to run a Terraria server for yourself or others to play on'
 keywords: 'terraria,steam,minecraft,gaming'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-published: 'Friday, December 17th, 2015'
-modified: Friday, December 17th, 2015
+published: 'Monday, December 21st, 2015'
+modified: Monday, December 21st, 2015
 modified_by:
   name: Linode
 title: 'Host a Terraria Server on Your Linode'
