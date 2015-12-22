@@ -40,57 +40,55 @@ Before we move ahead, make sure you have completed the following guides:
 
 ## Installing WP-CLI
 
-WP-CLI is available as a PHP Archive file(phar). You can download it using either wget or curl commands.
+1.  WP-CLI is available as a PHP Archive file(phar). You can download it using either wget or curl commands.
 
-    curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+        curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 
-Or
+    Or
 
-    wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+        wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 
-The following command will check whether the downloaded copy is working correctly or not.
+2.  You need to make this .phar file executable and move it to `/usr/local/bin` so that it can be run directly.
 
-    php wp-cli.phar --info
+        chmod +x wp-cli.phar
+        sudo mv wp-cli.phar /usr/local/bin/wp
 
-You should see a similar output like the one below which means we can move ahead.
+3.  Check if it is installed properly.
 
-    PHP binary:	/usr/bin/php5
-    PHP version:	5.6.11-1ubuntu3.1
-    php.ini used:	/etc/php5/cli/php.ini
-    WP-CLI root dir:	phar://wp-cli.phar
-    WP-CLI global config:
-    WP-CLI project config:
-    WP-CLI version:	0.21.0
+        wp --info
 
-Now wp-cli.phar is still not executable and that's why we had to use php command to run it. You need to make it executable and move it to `/usr/local/bin` so that it can be run directly.
+    You should see a similar output like the one below which means we can move ahead.
 
-    chmod +x wp-cli.phar
-    sudo mv wp-cli.phar /usr/local/bin/wp
+        PHP binary:	/usr/bin/php5
+        PHP version:	5.6.11-1ubuntu3.1
+        php.ini used:	/etc/php5/cli/php.ini
+        WP-CLI root dir:	phar://wp-cli.phar
+        WP-CLI global config:
+        WP-CLI project config:
+        WP-CLI version:	0.21.1
 
-Check if it is working properly.
-
-    wp --info
-
-If you see the script version then it means your WP-CLI script has been installed successfully.
+You can use the above procedure for upgrading WP-CLI as well.
 
 ### Activating Bash-Completion
 
-Now it is difficult all commands at once and you might want a quick reference on the command you need. While you can always type `wp` and press enter to see the complete list. But wouldn't it be better if you can point to specific command. Like if you want to know what all sub commands are under the `core` parameter. Bash completion script of WP-CLI can help here. To install the script, make sure you are in the home directory of the user(`username` in this case) you are using.
+Now it is difficult all commands at once and you might want a quick reference on the command you need. While you can always type `wp` and press enter to see the complete list. But wouldn't it be better if you can point to specific command. Like if you want to know what all sub commands are under the `core` parameter. Bash completion script of WP-CLI can help here.
 
-    cd /home/username
-    wget https://github.com/wp-cli/wp-cli/raw/master/utils/wp-completion.bash
+1.  To install the script, make sure you are in the home directory of the user(`username` in this case) you are using.
 
-Now edit the .bashrc so that it is loaded by the shell every time you login. Open the file and add the following line in the editor assuming you downloaded the file in the home directory.
+        cd /home/username
+        wget https://github.com/wp-cli/wp-cli/raw/master/utils/wp-completion.bash
 
-{: .file-excerpt}
-/home/username/.bashrc
-:   ~~~ bash
-    source /home/username/wp-completion.bash
-~~~
+2.  Now edit the .bashrc so that it is loaded by the shell every time you login. Open the file and add the following line in the editor assuming you downloaded the file in the home directory.
 
-Now run the following command to reload the Bash profile.
+        {: .file-excerpt}
+        /home/username/.bashrc
+        :   ~~~ bash
+        source /home/username/wp-completion.bash
+        ~~~
 
-    source ~/.bashrc
+3.  Now run the following command to reload the Bash profile.
+
+        source ~/.bashrc
 
 That's it. Bash Completion is enabled.
 
@@ -103,7 +101,7 @@ WP-CLI also comes with a pretty detailed help section which will allow you to ke
 
     wp help
 
-Doing that and you will see a screen similar to
+Do that and you will get a screen similar to
 
     wp
 
@@ -129,50 +127,54 @@ Doing that and you will see a screen similar to
     :
 
 
-`:` is a prompt where you need to enter few commands to navigate through this help menu. Up and down arrow keys will take you through the complete help. And pressing q will exit the help menu. That's all you need to know for now. For complete detail on how to navigate through the complete help section, you can always type h at the above prompt.
+`:` is a prompt where you need to enter few commands to navigate through this help menu. Up and down arrow keys will take you through the complete help. And pressing q will exit the help menu. That's all you need to know for now. For complete detail on how to navigate through the complete help section, you can always type `h` at the above prompt.
 
-In our last step, we enabled Bash Completion feature for WP-CLI. To use that type `wp` and press tab twice. You would see the list of available commands. You can repeat the same by typing 'wp core' and then pressing tab twice. Now you will see a list of commands that can be used with `core`.
+In our last step, we enabled Bash Completion feature for WP-CLI. To use that type `wp` and press tab twice. You would see the list of available commands. You can repeat the same by typing `wp core` and then pressing tab twice. Now you will see a list of commands that can be used with `core`.
 
 ## Installing WordPress
 
-### Seting up Database
+### Setting up Database
 
-Before you proceed, you need to setup a database first. For that, login to the MySQL server first. Replace `user` with your MySQL user.
+1.  Before you proceed, you need to setup a database first. For that, login to the MySQL server first. Replace `user` with your MySQL user.
 
-    mysql -u user -p
+        mysql -u user -p
 
-Next step is to create a database.
+2.  Next step is to create a database.
 
-    create database wordpress;
+        create database wordpress;
 
-Now we need to grant all the required priviges for the database to the mysql user.
+3.  Now we need to grant all the required privileges for the database to the mysql user.
 
-    grant all on wordpress.* to 'user' identified by 'password';
+        grant all on wordpress.* to 'user' identified by 'password';
 
-Type `quit` to exit the MySQL commandline.
+4.  Type `quit` to exit the MySQL command line.
 
-First of all, move to the user directory where you would be installing the blog. Traditionally it should be in `/var/www/html` directory. Create a new user directory for your user if it doesn't exist already. Also proper group and ownership permissions need to be given to the user.
+### Main Install
 
-    cd /var/www/html
-    sudo mkdir wpblog
-    sudo chown -R user:user wpblog
-    cd wpblog
+1.  Move to the user directory where you would be installing the blog. Traditionally it should be in `/var/www/html` directory. Create a new user directory for your user if it doesn't exist already. Also proper group and ownership permissions need to be given to the user.
 
-{: .note}
->
->This guide for the sake of simplicity assumes that you will be hosting only 1 site i.e. the blog on your VPS and therefore doesn't go into the detail of setting up a virtual host file. Should you need to host multiple sites, you will need to refer to our [guide on Apache Virtual hosts](/docs/websites/apache/apache-web-server-on-ubuntu-14-04#configure-name-based-virtual-hosts) for the same.
+        cd /var/www/html
+        sudo mkdir wpblog
+        sudo chown -R user:user wpblog
+        cd wpblog
 
-Next, download the WordPress files.
+    {: .note}
+    >
+    >This guide for the sake of simplicity assumes that you will be hosting only one site i.e. the blog on your VPS and therefore doesn't go into the detail of setting up a virtual host file. Should you need to host multiple sites, you will need to refer to our [guide on Apache Virtual hosts](/docs/websites/apache/apache-web-server-on-ubuntu-14-04#configure-name-based-virtual-hosts) for the same.
 
-    wp core download
+2.  Next, download the WordPress files.
 
-Next step is to create a wp-config.php file.
+        wp core download
 
-    wp core config --dbname=Database --dbuser=user --dbpass=password --dbhost=localhost --dbprefix=wp_
+3.  Create a wp-config.php file.
 
-dbhost and dbprefix are entirely optional and can be ommitted unless you need to change their default values. Next step is to install the blog.
+        wp core config --dbname=Database --dbuser=user --dbpass=password --dbhost=localhost --dbprefix=wp_
 
-    wp core install --url="<yourdomain>" --title="Blog Title" --admin_user="adminusername" --admin_password="password" --admin_email="emailid"
+    dbhost and dbprefix are entirely optional and can be omitted unless you need to change their default values.
+
+4.  Run the installation.
+
+        wp core install --url="<yourdomain>" --title="Blog Title" --admin_user="adminusername" --admin_password="password" --admin_email="emailid"
 
 Your WordPress blog is ready for use.
 
@@ -268,4 +270,4 @@ First command updates the files and second one completes the database upgrade.
 
 ## Conclusion
 
-This wraps up our tutorial on WP-CLI. These commands are just tip of the iceberg of what you can do with it. You can write or edit posts, perform database queries, manage user capabilties, manage cron events, import or export content, manage attachments and even manage multisites.
+This wraps up our tutorial on WP-CLI. These commands are just tip of the iceberg of what you can do with it. You can write or edit posts, perform database queries, manage user capabilities, manage cron events, import or export content, manage attachments and even manage multi-site installations.
