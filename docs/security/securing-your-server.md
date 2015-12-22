@@ -85,7 +85,7 @@ By default, password authentication is used to connect to your Linode via SSH. A
 
     This can be done using PuTTY as outlined in our guide: [Use Public Key Authentication with SSH](/docs/security/use-public-key-authentication-with-ssh#windows-operating-system).
 
-2.  Upload the public key to your Linode. The `linde_user` should be the user you plan to administer the server as.
+2.  Upload the public key to your Linode. Replace `example_user` with the name of the user you plan to administer the server as.
 
     **Linux**
 
