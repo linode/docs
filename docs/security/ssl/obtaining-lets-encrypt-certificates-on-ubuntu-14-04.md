@@ -2,7 +2,7 @@
 author:
     name: 'Sean Webber'
     email: 'swebber@yazzielabs.com'
-description: 'Installing Let's Encrypt and obtaining SSL certificates on Ubuntu 14.04 LTS'
+description: 'Installing Let\'s Encrypt and obtaining SSL certificates on Ubuntu 14.04 LTS'
 keywords: '14.04,ACME,free,HTTPS,Let's Encrypt,LTS,SSL,Ubuntu'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 published: 'N/A'
@@ -48,7 +48,7 @@ Let's Encrypt performs automatic Domain Validation (DV) using a series of *chall
 
 1. Run Let's Encrypt with the `--standalone` parameter. Add `-d example.com` to the end of the command for each additional domain name requiring a certificate.
 
-        sudo ./letsencrypt-auto --standalone -d example.com -d www.example.com
+        sudo ./letsencrypt-auto certonly --standalone -d example.com -d www.example.com
 
 {: .note}
 >
@@ -92,7 +92,7 @@ Output excerpt:
 
         File: ‘live/example.com/cert.pem’ -> ‘../../archive/example.com/cert1.pem’
 
-Notice how this file points to a different file. All four of the files in step three do. They are *symbolic links* to the "real" files located in the `/etc/letsencrypt/archive` directory.
+Notice how this file points to a different file. All four of the files in step three do. They are *symbolic links* to the actual certificate files located in the `/etc/letsencrypt/archive` directory.
 
 5. If you forget to renew a domain name's certificate, Let's Encrypt will remove its directory (and symbolic links) from `/etc/letsencrypt/live`. However, they will be retained in the `/etc/letsencrypt/archive` and `/etc/letsencrypt/keys` directories for your future reference.
 
@@ -104,11 +104,11 @@ Notice how this file points to a different file. All four of the files in step t
 
         cd /opt/letsencrypt
 
-2. Execute the same command you used to obtain your certificate in the **Obtaining SSL Certificates** section with the `certonly` parameter.
+2. Execute the same command you used to obtain your certificate in the **Obtaining SSL Certificates** section.
 
         sudo ./letsencrypt-auto certonly --standalone --renew-by-default -d example.com -d www.example.com
 
-3.
+3. <Add certificate confirmation here>
 
 {: .note}
 >
@@ -132,7 +132,7 @@ Since it's easy to forget about logging into a remote server, we also recommend 
 
 {: .note}
 >
-> Once Let's Encrypt leaves public beta and supports auto-renewal natively, you need to open the /etc/crontab file and manually remove this entry.
+> Once Let's Encrypt leaves public beta and supports auto-renewal natively, open the `/etc/crontab` file and manually remove this entry to avoid future renewal conflicts.
 
 ## Updating Let's Encrypt
 
@@ -148,6 +148,6 @@ Since it's easy to forget about logging into a remote server, we also recommend 
 
 Now that you installed Let's Encrypt and obtained SSL certificates, you can configure any package that supports commercial or self-signed SSL certificates to use them.
 
--[Email with Postfix, Dovecot, and MySQL](https://www.linode.com/docs/email/postfix/email-with-postfix-dovecot-and-mysql)
+- [Email with Postfix, Dovecot, and MySQL](https://www.linode.com/docs/email/postfix/email-with-postfix-dovecot-and-mysql)
 - [How to Provide Encrypted Access to Resources Using SSL Certificates on Nginx](https://www.linode.com/docs/security/ssl/how-to-provide-encrypted-access-to-resources-using-ssl-certificated-on-nginx)
 - [SSL Certificates with Apache on Debian & Ubuntu](https://www.linode.com/docs/security/ssl/ssl-apache2-debian-ubuntu)
