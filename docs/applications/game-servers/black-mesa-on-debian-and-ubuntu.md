@@ -360,7 +360,7 @@ The map rotation list is in **mapcycle.txt**:
     
 To put a custom map in the rotation, simply write its name; for example: if you have the map **dm_custom.bsp**, you need to write **dm_custom** inside **mapcycle.txt**.
 
-###Connecting to your server
+##Connecting to your server
 
 1. Open Black Mesa and click on the **PLAY ONLINE** option:
 
