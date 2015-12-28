@@ -150,7 +150,7 @@ Now rJava is available to everyone in system. You can try to go the linode manag
 
 9. Go to `linode` and create a new folder called `core`:
 
-	cd linode && mkdir core
+        cd linode && mkdir core
 
 10. Go to `core` and create a new Java file called `ForeCastTest.java`:
 
