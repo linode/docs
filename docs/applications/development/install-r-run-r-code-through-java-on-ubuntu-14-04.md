@@ -196,7 +196,7 @@ Now rJava is available to everyone in system. You can try to go the linode manag
 
 Press key `Esc` and enter `:wq!` then you saved the code file in the path `/tmp/rJava/src/com/linode/core`
 
-12. Go back to path /tmp/rJava
+12. Go back to path `/tmp/rJava`
 
 13. Run javac to complie the code and run java to execute the code:
 
