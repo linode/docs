@@ -30,6 +30,7 @@ This guide walks through you how to install R on Ubuntu 14.04 by linode server a
 ## Before You Begin
 
 1. Make sure you login with a **sudo user**, otherwise you should use **root** in case. 
+
 2. Ensure you are already have installed Java, try `java -version` and `javac -version`, you can find the below result for sure.
 	root@localhost:/# java -version
 	java version "1.8.0_45"
@@ -38,27 +39,28 @@ This guide walks through you how to install R on Ubuntu 14.04 by linode server a
 	root@localhost:/# javac -version
 	javac 1.8.0_45
 
+3. Update your system:
+
+	sudo apt-get update
+
 {: .note}
 >
 > The above that mentioned `1.8.0_45` may be different from your Java version.
 
-3. Update your system:
-	sudo apt-get update
-
 
 ## Install the R
 
-1. sudo apt-get install r-base
+1. Enter the following command at the terminal
+
+	sudo apt-get install r-base
+
+2. Type `R` on the shell and if you can see R console over there, then R has been installed successfully on your machine.
 
 {: .note}
 >
 >If you are still looking for the detailed information about installing R with Ubuntu, please see [official website](https://cran.r-project.org/bin/linux/ubuntu/)
 
-2. Type `R` on the shell and if you can see R console over there, then R has been installed successfully on your machine.
-
-
 ## Install rJava and set up the environment variable
-
 
 1. Enter `R` in the terminal, then
 
