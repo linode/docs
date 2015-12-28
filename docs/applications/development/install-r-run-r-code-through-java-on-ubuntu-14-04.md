@@ -224,12 +224,13 @@ Then you should get the result like:
 
 ## More Information
 
-This is really a general start for using Java for R on linux. You may wish to consult the following resources for additional information on this topic. Also, please explore more and let me know if you want to run R code through Java on linux to create dynamic application.
+This is really a general start for using Java for R on linux. You may wish to consult the following resources for additional information on this topic. Also, please explore more about R time series coding and let me know if you want to run R code through Java on linux to create dynamic application.
 
 1. [Install R on other linux machines](http://www.jason-french.com/blog/2013/03/11/installing-r-in-linux/)
 
 2. [Using R to Power Analytics In Java Apps](https://vizbuzz.wordpress.com/2015/01/27/using-r-to-power-analytics-in-java-apps/)
 
+3. [Time Series Analysis using R-Forecast package](http://www.analyticbridge.com/profiles/blogs/time-series-analysis-using-r-forecast-package)
 
 #### Just a by the way, please don't include this for currrent topic.
 It looks like from this https://www.linode.com/docs/applications/development/java-development-wildfly-centos-7, I don't think these 4 commands can work out very well, since I assumed that
