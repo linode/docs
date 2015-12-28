@@ -22,7 +22,7 @@ The instructions for setting up DNS for SPF and DKIM are generic. The instructio
 >
 >The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
-{: .note}
+{: .caution}
 >
 >You must already have Postfix installed, configured and working. Refer to the [Linode Postfix Guides](https://www.linode.com/docs/email/postfix/) for assistance.
 
@@ -103,13 +103,17 @@ The Python SPF policy agent adds SPF policy checking to Postfix. The SPF record 
             ...
         ~~~
 
-    Make sure to add the `check_policy_service` entry **after** the `reject_unauth_destination` entry to avoid having your system become an open relay.
+    Make sure to add the `check_policy_service` entry **after** the `reject_unauth_destination` entry to avoid having your system become an open relay. If `reject_unauth_destination` is the last item in your restrictions list, add the comma after it and omit the comma at the end of the `check_policy_service` item above.
 
 5.  Restart Postfix with:
 
         systemctl restart postfix
 
-You can check the operation of the policy agent by looking at raw headers on incoming mail messages for the SPF results header. You'll find errors logged in `/var/log/mail.log`.
+You can check the operation of the policy agent by looking at raw headers on incoming mail messages for the SPF results header. You'll find errors logged in `/var/log/mail.log`. The header the policy agent adds should look something like this (asterisks are used to block identifying information):
+
+    Received-SPF: Pass (sender SPF authorized) identity=mailfrom; client-ip=***.*.*.**; helo=mail178-24.suw51.mandrillapp.com; envelope-from=********************@mandrillapp.com; receiver=******@***********.***
+
+This header indicates a successful check against the SPF policy of the sending domain. If you changed the policy agent settings in step 1 to not reject mail that fails the SPF check you may see Fail results in this header. You won't see this header on outgoing mail or local mail.
 
 ## Setting up DKIM
 
@@ -175,7 +179,7 @@ DKIM involves setting up the OpenDKIM package and hooking it into Postfix as wel
 
     {: .file-excerpt}
     /etc/opendkim/signing.table
-    :   ~~~ text
+    :   ~~~
         *@example.com   example
         ~~~
 
@@ -244,13 +248,13 @@ As with SPF, DKIM uses TXT records to hold information about the signing key for
 {: .file}
 example.txt
 :   ~~~ text
-    201510.\_domainkey  IN  TXT ( "v=DKIM1; k=rsa; s=email; "
+    201510._domainkey  IN  TXT ( **"v=DKIM1; k=rsa; s=email; "
         "p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAu5oIUrFDWZK7F4thFxpZa2or6jBEX3cSL6b2TJdPkO5iNn9vHNXhNX31nOefN8FksX94YbLJ8NHcFPbaZTW8R2HthYxRaCyqodxlLHibg8aHdfa+bxKeiI/xABRuAM0WG0JEDSyakMFqIO40ghj/h7DUc/4OXNdeQhrKDTlgf2bd+FjpJ3bNAFcMYa3Oeju33b2Tp+PdtqIwXR"
-        "ZksfuXh7m30kuyavp3Uaso145DRBaJZA55lNxmHWMgMjO+YjNeuR6j4oQqyGwzPaVcSdOG8Js2mXt+J3Hr+nNmJGxZUUW4Uw5ws08wT9opRgSpn+ThX2d1AgQePpGrWOamC3PdcwIDAQAB" )  ; ----- DKIM key 201510 for example.com
+        "ZksfuXh7m30kuyavp3Uaso145DRBaJZA55lNxmHWMgMjO+YjNeuR6j4oQqyGwzPaVcSdOG8Js2mXt+J3Hr+nNmJGxZUUW4Uw5ws08wT9opRgSpn+ThX2d1AgQePpGrWOamC3PdcwIDAQAB"** )  ; ----- DKIM key 201510 for example.com
 
     ~~~
 
-The value inside the parentheses is what you want. Select the entire region from the double-quote before `v=DKIM1` on to the final double-quote before the closing parentheses. From the above file that would be:
+The value inside the parentheses (emphasized above) is what you want. Select the entire region from the double-quote before `v=DKIM1` on to the final double-quote before the closing parentheses. From the above file that would be:
 
 {: .file-excerpt}
 record.txt
