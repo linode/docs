@@ -25,8 +25,6 @@ The instructions for setting up DNS for SPF and DKIM are generic. The instructio
 {: .caution}
 >
 >You must already have Postfix installed, configured and working. Refer to the [Linode Postfix Guides](https://www.linode.com/docs/email/postfix/) for assistance.
-
-{: .caution}
 >
 >Publishing an SPF DNS record without having the SPF policy agent configured within Postfix is safe, however publishing DKIM DNS records without having OpenDKIM working correctly within Postfix can result in your mail being discarded by the receiver's mail server.
 
@@ -166,16 +164,20 @@ DKIM involves setting up the OpenDKIM package and hooking it into Postfix as wel
         OversignHeaders     From
         ~~~
 
-    Edit `/etc/opendkim.conf` and replace it's contents with the above, or download [a copy of opendkim.conf](/doc/assets/postfix-opendkim-conf.txt), upload it to your server and copy it over top of `/etc/opendkim.conf`. Do a `chmod u=rw,go=r /etc/opendkim.conf` to make sure it's permissions are set correctly.
+    Edit `/etc/opendkim.conf` and replace it's contents with the above, or download [a copy of opendkim.conf](/doc/assets/postfix-opendkim-conf.txt), upload it to your server and copy it over top of `/etc/opendkim.conf`.
 
-2.  Create the directories to hold OpenDKIM's data files:
+2.  Ensure that file permissions are set correctly:
+
+        chmod u=rw,go=r /etc/opendkim.conf
+
+3.  Create the directories to hold OpenDKIM's data files, assign ownership to the `opendkim` user, and restrict the file permissions:
 
         mkdir /etc/opendkim
         mkdir /etc/opendkim/keys
         chown -R opendkim:opendkim /etc/opendkim
         chmod go-rw /etc/opendkim/keys
 
-3.  Create the signing table `/etc/opendkim/signing.table`. It needs to have one line per domain you handle mail for, with each line looking like:
+4.  Create the signing table `/etc/opendkim/signing.table`. It needs to have one line per domain you handle mail for, with each line looking like:
 
     {: .file-excerpt}
     /etc/opendkim/signing.table
@@ -185,7 +187,7 @@ DKIM involves setting up the OpenDKIM package and hooking it into Postfix as wel
 
     Replace `example.com` with your domain and `example` with a short name for the domain. The first field is a pattern that matches e-mail addresses, and the second field is a name for the key table entry that should be used to sign mail from that address. For simplicity we're just going to set up one key for all addresses in a domain.
 
-4.  Create the key table `/etc/opendkim/key.table`. It needs to have one line per short domain name in the signing table. Each line will look like:
+5.  Create the key table `/etc/opendkim/key.table`. It needs to have one line per short domain name in the signing table. Each line will look like:
 
     {: .file-excerpt}
     /etc/opendkim/key.table
@@ -193,13 +195,19 @@ DKIM involves setting up the OpenDKIM package and hooking it into Postfix as wel
         example     example.com:YYYYMM:/etc/opendkim/keys/example.private
         ~~~
 
-    Replace `example` with the `example` value you used for the domain in the signing table (make sure to catch the second occurrence at the end where it's followed by `.private`), replace `example.com` with your domain name, and replace the `YYYYMM` with the current 4-digit year and 2-digit month (this is referred to as the selector). The first field connects the signing and key tables. The second field is broken down into 3 sections separated by colons. The first section is the domain name the key is for, the second section is a selector used when looking up key records in DNS, and the third section names the file containing the signing key for the domain.
+    Replace `example` with the `example` value you used for the domain in the signing table (make sure to catch the second occurrence at the end where it's followed by `.private`), replace `example.com` with your domain name, and replace the `YYYYMM` with the current 4-digit year and 2-digit month (this is referred to as the selector). The first field connects the signing and key tables.
+
+    The second field is broken down into 3 sections separated by colons.
+
+    - The first section is the domain name the key is for
+    - The second section is a selector used when looking up key records in DNS
+    - The third section names the file containing the signing key for the domain.
 
     {: .note}
     >
     > The flow for DKIM lookup starts with the sender's address. The signing table is scanned until an entry whose pattern (first item) matches the address is found, then the second item's value is used to locate the entry in the key table whose key information will be used. For incoming mail the domain and selector are then used to find the public key TXT record in DNS and that public key is used to validate the signature. For outgoing mail the private key is read from the named file and used to generate the signature on the message.
 
-5.  Create the trusted hosts file `/etc/opendkim/trusted.hosts`. It's contents need to be:
+6.  Create the trusted hosts file `/etc/opendkim/trusted.hosts`. Its contents need to be:
 
     {: .file}
     /etc/opendkim/trusted.hosts
@@ -214,24 +222,28 @@ DKIM involves setting up the OpenDKIM package and hooking it into Postfix as wel
 
     When creating the file, change `myhostname` to the name of your server and replace `example.com` with your own domain name. We're identifying the hosts that users will be submitting mail through and that should have their outgoing mail signed, which for basic configurations will just be your own mail server.
 
-6.  Generate keys for each domain. First do a `cd /etc/opendkim/keys`. Then issue the following command:
+7.  Navigate to the `keys` directory:
+
+        cd /etc/opendkim/keys
+
+8.  Generate keys for each domain:
 
         opendkim-genkey -b 2048 -r -s YYYYMM
 
-    replacing YYYYMM with the current year and month as in the key table. This will give you two files, `YYYYMM.private` containing the key and `YYYYMM.txt` containing the TXT record you'll need to set up DNS. Rename the files so they have names matching the third section of the second field of the key table for the domain:
+    Replace `YYYYMM` with the current year and month as in the key table. This will give you two files, `YYYYMM.private` containing the key and `YYYYMM.txt` containing the TXT record you'll need to set up DNS. Rename the files so they have names matching the third section of the second field of the key table for the domain:
 
         mv YYYYMM.private example.private
         mv YYYYMM.txt example.txt
 
     Repeat the commands in this step for every entry in the key table. The `-b 2048` indicates the number of bits in the RSA key pair used for signing and verification. 1024 bits is the minimum, but with modern hardware 2048 bits is safer and it's possible 4096 bits will be required at some point.
 
-7.  Make sure the ownership and permissions on `/etc/opendkim` and it's contents are correct by running the following commands:
+9.  Make sure the ownership and permissions on `/etc/opendkim` and it's contents are correct by running the following commands:
 
         cd /etc
         chown -R opendkim:opendkim /etc/opendkim
         chmod -R go-rw /etc/opendkim/keys
 
-8.  Check that OpenDKIM starts correctly by:
+10. Check that OpenDKIM starts correctly:
 
         systemctl restart opendkim
 
@@ -243,18 +255,18 @@ DKIM involves setting up the OpenDKIM package and hooking it into Postfix as wel
 
 ### Setting up DNS
 
-As with SPF, DKIM uses TXT records to hold information about the signing key for each domain. Using YYYYMM as above, you need to make a TXT record for the host `YYYYMM._domainkey` for each domain you handle mail for. It's value can be found in the `example.txt` file for the domain. Those files look like this:
+As with SPF, DKIM uses TXT records to hold information about the signing key for each domain. Using YYYYMM as above, you need to make a TXT record for the host `YYYYMM._domainkey` for each domain you handle mail for. Its value can be found in the `example.txt` file for the domain. Those files look like this:
 
 {: .file}
 example.txt
 :   ~~~ text
-    201510._domainkey  IN  TXT ( **"v=DKIM1; k=rsa; s=email; "
+    201510._domainkey  IN  TXT ( "v=DKIM1; k=rsa; s=email; "
         "p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAu5oIUrFDWZK7F4thFxpZa2or6jBEX3cSL6b2TJdPkO5iNn9vHNXhNX31nOefN8FksX94YbLJ8NHcFPbaZTW8R2HthYxRaCyqodxlLHibg8aHdfa+bxKeiI/xABRuAM0WG0JEDSyakMFqIO40ghj/h7DUc/4OXNdeQhrKDTlgf2bd+FjpJ3bNAFcMYa3Oeju33b2Tp+PdtqIwXR"
-        "ZksfuXh7m30kuyavp3Uaso145DRBaJZA55lNxmHWMgMjO+YjNeuR6j4oQqyGwzPaVcSdOG8Js2mXt+J3Hr+nNmJGxZUUW4Uw5ws08wT9opRgSpn+ThX2d1AgQePpGrWOamC3PdcwIDAQAB"** )  ; ----- DKIM key 201510 for example.com
+        "ZksfuXh7m30kuyavp3Uaso145DRBaJZA55lNxmHWMgMjO+YjNeuR6j4oQqyGwzPaVcSdOG8Js2mXt+J3Hr+nNmJGxZUUW4Uw5ws08wT9opRgSpn+ThX2d1AgQePpGrWOamC3PdcwIDAQAB" )  ; ----- DKIM key 201510 for example.com
 
     ~~~
 
-The value inside the parentheses (emphasized above) is what you want. Select the entire region from the double-quote before `v=DKIM1` on to the final double-quote before the closing parentheses. From the above file that would be:
+The value inside the parentheses is what you want. Select the entire region from (and including) the double-quote before `v=DKIM1` on to the final double-quote before the closing parentheses. From the above file that would be:
 
 {: .file-excerpt}
 record.txt
@@ -264,7 +276,7 @@ record.txt
     "ZksfuXh7m30kuyavp3Uaso145DRBaJZA55lNxmHWMgMjO+YjNeuR6j4oQqyGwzPaVcSdOG8Js2mXt+J3Hr+nNmJGxZUUW4Uw5ws08wT9opRgSpn+ThX2d1AgQePpGrWOamC3PdcwIDAQAB"
     ~~~
 
-It's broken into chunks because of limitations in Bind (one of the most popular DNS server packages) and because of size limitations in the UDP protocol that's usually used for DNS requests and responses. Copy that region and paste it into the value for the TXT record.
+It's broken into chunks because of limitations in BIND (one of the most popular DNS server packages) and because of size limitations in the UDP protocol that's usually used for DNS requests and responses. Copy that region and paste it into the value for the TXT record.
 
 If you're using Linode's DNS manager, this is what the add TXT record screen will look like when you have it filled out:
 
