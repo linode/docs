@@ -9,7 +9,7 @@ published: 'Sunday, December 27th, 2015'
 modified: Friday, September 18th, 2015
 modified_by:
     name: Shilog Zhuang
-title: 'How to install R and run R code throigh Java on Ubuntu 14.04'
+title: 'How to install R and run R code through Java on Ubuntu 14.04'
 contributor:
     name: Shilong Zhuang
     link: https://github.com/huojianxixi
