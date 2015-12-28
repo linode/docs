@@ -32,12 +32,12 @@ This guide walks through you how to install R on Ubuntu 14.04 by linode server a
 1. Make sure you login with a **sudo user**, otherwise you should use **root** in case. 
 
 2. Ensure you are already have installed Java, try `java -version` and `javac -version`, you can find the below result for sure.
-	root@localhost:/# java -version
-	java version "1.8.0_45"
-	Java(TM) SE Runtime Environment (build 1.8.0_45-b14)
-	Java HotSpot(TM) 64-Bit Server VM (build 25.45-b02, mixed mode)
-	root@localhost:/# javac -version
-	javac 1.8.0_45
+        root@localhost:/# java -version
+        java version "1.8.0_45"
+        Java(TM) SE Runtime Environment (build 1.8.0_45-b14)
+        Java HotSpot(TM) 64-Bit Server VM (build 25.45-b02, mixed mode)
+        root@localhost:/# javac -version
+        javac 1.8.0_45
 
 3. Update your system:
 
