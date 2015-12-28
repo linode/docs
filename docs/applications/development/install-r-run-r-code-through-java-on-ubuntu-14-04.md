@@ -8,7 +8,7 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 published: 'Sunday, December 27th, 2015'
 modified: Friday, September 18th, 2015
 modified_by:
-    name: 
+    name: Shilog Zhuang
 title: 'How to install R and run R code throigh Java on Ubuntu 14.04'
 contributor:
     name: Shilong Zhuang
@@ -62,15 +62,17 @@ This guide walks through you how to install R on Ubuntu 14.04 by linode server a
 
 1. Enter `R` in the terminal, then
 
-2. Enter 
+2. Enter:
+
 	install.packages("rJava",contriburl="http://cran.rstudio.com/src/contrib/")
 
 3. If you found there show you the message that said the install failed and you probably should type `R CMD javareconf` as well
 
 4. Then re-enter the below command, then everything should be done.
+
 	install.packages("rJava",contriburl="http://cran.rstudio.com/src/contrib/")
 
-5. Configure environment variables
+5. Configure environment variables:
 
 	export PATH=$JAVA_HOME/bin:/usr/lib/R/bin:/usr/lib/R/site-library/rJava/jri:$PATH
 	export R_HOME=/usr/lib/R
@@ -100,7 +102,8 @@ Now rJava is available to everyone in system. You can try to go the linode manag
 
 1. Enter `R` in the terminal, then
 
-2. Enter 
+2. Enter
+
 	install.packages("forecast",contriburl="http://cran.rstudio.com/src/contrib/")
 
 {: .note}
@@ -112,6 +115,7 @@ Now rJava is available to everyone in system. You can try to go the linode manag
 ## Create Java code and test running java to execute R code
 
 1. Switch to tmp folder:
+
 	cd /tmp
 
 2. Create a destination folder called 'rJava`:
@@ -121,37 +125,43 @@ Now rJava is available to everyone in system. You can try to go the linode manag
 	cd rJava
 
 4. Create a new folder called `lib` and go to there:
+
 	mkdir lib && cd lib
 
 5. Use curl commond to download three necessary jar from the given web urls:
+
 	curl -O https://www.rforge.net/JRI/files/JRI.jar
 	curl -O https://www.rforge.net/JRI/files/JRIEngine.jar
 	curl -O https://www.rforge.net/JRI/files/REngine.jar
 
 6. Switch to `/tmp/rJava` and create a new folder called `src`:
+
 	cd .. & mkdir src 
 
 7. Go to `src` and create a new folder called `com`:
+
 	cd src && mkdir com
 
 8. Go to `com` and create a new folder called `linode`:
+
 	cd com && mkdir linode
 
 9. Go to `linode` and create a new folder called `core`:
+
 	cd linode && mkdir core
 
 10. Go to `core` and create a new Java file called `ForeCastTest.java`:
+
 	cd core && touch ForeCastTest.java
 
 11. Edit `ForeCastTest.java` and add the following code:
+
 	vi ForeCastTest.java && press key `i`
 
   
 	package com.linode.core;
-
     	import org.rosuda.JRI.REXP;
     	import org.rosuda.JRI.Rengine;
-
    	 public class ForeCastTest {
 		public static void main(String[] args) {
 		   	Rengine re = new  Rengine(new      String[] { "--linode" }, false, null);
@@ -189,14 +199,14 @@ Press key `Esc` and enter `:wq!` then you saved the code file in the path `/tmp/
 
 12. Go back to path /tmp/rJava
 
-13. Run javac to complie the code and run java to execute the code
+13. Run javac to complie the code and run java to execute the code:
+
 	javac -Djava.ext.dirs=./lib -d bin ./src/com/linode/core/ForeCastTest.java
 	java -Djava.ext.dirs=./lib/ -cp ./bin/ com.linode.core.ForeCastTest
 
 Then you should get the result like:
 
 	WARNING: unknown option '--linode'
-
 	Rengine created, waiting for R
 	80.6096339671016
 	84.89743519227414
