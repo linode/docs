@@ -86,17 +86,16 @@ The above command will work for this session only, but you will need to be added
 {: .file-excerpt}
 /etc/profile.d/r.sh
 :   ~~~ ini
-
-	if ! echo ${PATH} | grep -q /usr/lib/R/bin ; then
-   	export PATH=/usr/lib/R/bin:${PATH}
-	fi
-	if ! echo ${PATH} | grep -q /usr/lib/R/site-library/rJava/jri ; then
-	   export PATH=/usr/lib/R/site-library/rJava/jri:${PATH}
-	fi
-	export R_HOME=/usr/lib/R
-	export LD_LIBRARY_PATH=/usr/lib/R/lib:/usr/lib/R/site-library/rJava/jri
-	export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:/usr/lib/R/site-library/rJava/jri/
-	~~~
+        if ! echo ${PATH} | grep -q /usr/lib/R/bin ; then
+            export PATH=/usr/lib/R/bin:${PATH}
+        fi
+        if ! echo ${PATH} | grep -q /usr/lib/R/site-library/rJava/jri ; then
+            export PATH=/usr/lib/R/site-library/rJava/jri:${PATH}
+        fi
+        export R_HOME=/usr/lib/R
+        export LD_LIBRARY_PATH=/usr/lib/R/lib:/usr/lib/R/site-library/rJava/jri
+        export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:/usr/lib/R/site-library/rJava/jri/
+        ~~~
 
 Now rJava is available to everyone in system. You can try to go the linode manager and click the reboot button if needed.
 
@@ -156,13 +155,10 @@ Now rJava is available to everyone in system. You can try to go the linode manag
 
 10. Go to `core` and create a new Java file called `ForeCastTest.java`:
 
-	cd core && touch ForeCastTest.java
+        cd core && touch ForeCastTest.java
 
-11. Edit `ForeCastTest.java` and add the following code:
+11. NOw it is time to edit `ForeCastTest.java`, so type `vi ForeCastTest.java && press key `i` `and add the following code:
 
-        vi ForeCastTest.java && press key `i`
-
-  
         package com.linode.core;
         import org.rosuda.JRI.REXP;
         import org.rosuda.JRI.Rengine;
