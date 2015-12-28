@@ -6,7 +6,7 @@ description: 'Set up and configure R software at your linode Server(i.e. Ubuntu 
 keywords: 'R,rjava,forecast'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 published: 'Sunday, December 27th, 2015'
-modified: Friday, September 18th, 2015
+modified: Monday, December 28th, 2015
 modified_by:
     name: Shilog Zhuang
 title: 'How to install R and run R code through Java on Ubuntu 14.04'
