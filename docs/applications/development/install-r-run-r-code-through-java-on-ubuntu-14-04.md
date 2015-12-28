@@ -41,7 +41,7 @@ This guide walks through you how to install R on Ubuntu 14.04 by linode server a
 
 3. Update your system:
 
-	sudo apt-get update
+        sudo apt-get update
 
 {: .note}
 >
@@ -52,7 +52,7 @@ This guide walks through you how to install R on Ubuntu 14.04 by linode server a
 
 1. Enter the following command at the terminal
 
-	sudo apt-get install r-base
+        sudo apt-get install r-base
 
 2. Type `R` on the shell and if you can see R console over there, then R has been installed successfully on your machine.
 
@@ -66,20 +66,20 @@ This guide walks through you how to install R on Ubuntu 14.04 by linode server a
 
 2. Enter:
 
-	install.packages("rJava",contriburl="http://cran.rstudio.com/src/contrib/")
+        install.packages("rJava",contriburl="http://cran.rstudio.com/src/contrib/")
 
 3. If you found there show you the message that said the install failed and you probably should type `R CMD javareconf` as well
 
 4. Then re-enter the below command, then everything should be done.
 
-	install.packages("rJava",contriburl="http://cran.rstudio.com/src/contrib/")
+        install.packages("rJava",contriburl="http://cran.rstudio.com/src/contrib/")
 
 5. Configure environment variables:
 
-	export PATH=$JAVA_HOME/bin:/usr/lib/R/bin:/usr/lib/R/site-library/rJava/jri:$PATH
-	export R_HOME=/usr/lib/R
-	export LD_LIBRARY_PATH=/usr/lib/R/lib:$LD_LIBRARY_PATH
-	export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:/usr/lib/R/site-library/rJava/jri/:$CLASSPATH
+        export PATH=$JAVA_HOME/bin:/usr/lib/R/bin:/usr/lib/R/site-library/rJava/jri:$PATH
+        export R_HOME=/usr/lib/R
+        export LD_LIBRARY_PATH=/usr/lib/R/lib:$LD_LIBRARY_PATH
+        export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:/usr/lib/R/site-library/rJava/jri/:$CLASSPATH
 
 The above command will work for this session only, but you will need to be added to all system users especially when server reboots, so for the **Bourne shell**, create a new file called `/etc/profile.d/r.sh`
 
@@ -106,7 +106,7 @@ Now rJava is available to everyone in system. You can try to go the linode manag
 
 2. Enter
 
-	install.packages("forecast",contriburl="http://cran.rstudio.com/src/contrib/")
+        install.packages("forecast",contriburl="http://cran.rstudio.com/src/contrib/")
 
 {: .note}
 >
@@ -118,35 +118,37 @@ Now rJava is available to everyone in system. You can try to go the linode manag
 
 1. Switch to tmp folder:
 
-	cd /tmp
+        cd /tmp
 
 2. Create a destination folder called 'rJava`:
-	mkdir rJava
+
+        mkdir rJava
 
 3. Switch to destination folder:
-	cd rJava
+
+        cd rJava
 
 4. Create a new folder called `lib` and go to there:
 
-	mkdir lib && cd lib
+        mkdir lib && cd lib
 
 5. Use curl commond to download three necessary jar from the given web urls:
 
-	curl -O https://www.rforge.net/JRI/files/JRI.jar
-	curl -O https://www.rforge.net/JRI/files/JRIEngine.jar
-	curl -O https://www.rforge.net/JRI/files/REngine.jar
+        curl -O https://www.rforge.net/JRI/files/JRI.jar
+        curl -O https://www.rforge.net/JRI/files/JRIEngine.jar
+        curl -O https://www.rforge.net/JRI/files/REngine.jar
 
 6. Switch to `/tmp/rJava` and create a new folder called `src`:
 
-	cd .. & mkdir src 
+        cd .. & mkdir src 
 
 7. Go to `src` and create a new folder called `com`:
 
-	cd src && mkdir com
+        cd src && mkdir com
 
 8. Go to `com` and create a new folder called `linode`:
 
-	cd com && mkdir linode
+        cd com && mkdir linode
 
 9. Go to `linode` and create a new folder called `core`:
 
@@ -158,15 +160,15 @@ Now rJava is available to everyone in system. You can try to go the linode manag
 
 11. Edit `ForeCastTest.java` and add the following code:
 
-	vi ForeCastTest.java && press key `i`
+        vi ForeCastTest.java && press key `i`
 
   
-	package com.linode.core;
-    	import org.rosuda.JRI.REXP;
-    	import org.rosuda.JRI.Rengine;
-   	 public class ForeCastTest {
+        package com.linode.core;
+        import org.rosuda.JRI.REXP;
+        import org.rosuda.JRI.Rengine;
+        public class ForeCastTest {
 		public static void main(String[] args) {
-		   	Rengine re = new  Rengine(new      String[] { "--linode" }, false, null);
+                        Rengine re = new  Rengine(new String[] { "--linode" }, false, null);
 			System.out.println("Rengine created, waiting for R");
 			if (!re.waitForR()) {
 				System.out.println("Cannot load R");
@@ -185,12 +187,11 @@ Now rJava is available to everyone in system. You can try to go the linode manag
 			REXP fs = re.eval("search_forecast_mean <- search_forecast$mean");
 			double[] forecast = fs.asDoubleArray();
 			for (int i = 0; i < forecast.length; i++) {
-				    System.out.println(forecast[i]);
+                               System.out.println(forecast[i]);
 			}
 			re.end();
-	   	}
-      
-       	}
+                 }
+            }
 
 
 {: .note}
@@ -203,8 +204,8 @@ Press key `Esc` and enter `:wq!` then you saved the code file in the path `/tmp/
 
 13. Run javac to complie the code and run java to execute the code:
 
-	javac -Djava.ext.dirs=./lib -d bin ./src/com/linode/core/ForeCastTest.java
-	java -Djava.ext.dirs=./lib/ -cp ./bin/ com.linode.core.ForeCastTest
+        javac -Djava.ext.dirs=./lib -d bin ./src/com/linode/core/ForeCastTest.java
+        java -Djava.ext.dirs=./lib/ -cp ./bin/ com.linode.core.ForeCastTest
 
 Then you should get the result like:
 
