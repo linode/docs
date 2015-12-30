@@ -3,15 +3,15 @@ deprecated: false
 author:
   name: Ryan Laverdiere
   email: 
-description: 'Learn how to install the latest stable version of Nginx on Debian 7 (Wheezy) and deploy a SSL certificate from StartSSL.'
-keywords: 'startssl, nginx, install nginx, install nginx on debian 7, ssl certificate, debian 7 (wheezy)'
+description: 'Install Nginx and Deploy a StartSSL Certificate on Debian 7 (Wheezy).'
+keywords: 'startssl,nginx,install nginx,ssl certificate,debian 7,wheezy,nginx repositories,certificate signing request, CSR,domain name)'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['websites/nginx/startssl-wth-latest-nginx-debian-7/']
 modified: Monday, July 13, 2015
 modified_by:
   name: Ryan Laverdiere
 published: Monday, October 20, 2014
-title: 'How to Install Nginx and a StartSSL Certificate on Debian 7 (Wheezy)'
+title: 'Install Nginx and a StartSSL Certificate on Debian 7 (Wheezy)'
 contributor:
     name: Ryan Laverdiere
     link: https://github.com/capecodrailfan
