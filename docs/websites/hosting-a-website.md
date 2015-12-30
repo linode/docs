@@ -13,7 +13,7 @@ published: 'Tuesday, March 13th, 2012'
 title: Hosting a Website
 ---
 
-Now that you've installed Linux and secured your Linode, it's time to start *doing* stuff with it. In this guide, you'll learn how to host a website. Start by installing a web server, database, and PHP - a popular combination which is commonly referred to a LAMP stack (Linux, Apache, MySQL, and PHP). Then create or import a database, upload files, and add DNS records. By the time you reach the end of this guide, your Linode will be hosting one or more websites!
+Now that you've installed Linux and secured your Linode, it's time to start *doing* stuff with it. In this guide, you'll learn how to host a website. Start by installing a web server, database, and PHP - a popular combination which is commonly referred to as the LAMP stack (Linux, Apache, MySQL, and PHP). Then create or import a database, upload files, and add DNS records. By the time you reach the end of this guide, your Linode will be hosting one or more websites!
 
  {: .note }
 >

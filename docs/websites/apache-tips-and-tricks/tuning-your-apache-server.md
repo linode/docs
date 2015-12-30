@@ -177,7 +177,7 @@ To receive a fuller view of the resources Apache is using, use the `top` command
 
 ####MaxRequestsPerChild
 
-This limits the number of requests a child server handles during its life. Once the limit has been hit, the child server dies. If set to 0, the child servers are set to never expire. The suggested value for this is a few thousand, to percent of memory leakage. Be aware that setting this too low can slow down the system, since creating new processes does take up resources.
+This limits the number of requests a child server handles during its life. Once the limit has been hit, the child server dies. If set to 0, the child servers are set to never expire. The suggested value for this is a few thousand, to prevent memory leakage. Be aware that setting this too low can slow down the system, since creating new processes does take up resources.
 
 ####ServerLimit
 

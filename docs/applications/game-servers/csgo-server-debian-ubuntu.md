@@ -11,7 +11,7 @@ modified_by:
     name: Linode
 title: 'Install a Counter Strike: Global Offensive (CS:GO) server on Ubuntu 14.04'
 contributor:
-    name: Scott Foster
+    name: Sam Mauldin
 ---
 
 *This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
