@@ -2,15 +2,15 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Configuring the phpBB system for hosting web-based discussion forums on Ubuntu 12.04 (Precise Pangolin).'
-keywords: 'phpBB,forum software,web applications,PHP'
+description: 'Configure the PhpBB System for Hosting Web-based Discussion Forums on Ubuntu 12.04 (Precise Pangolin).'
+keywords: 'phpBB,forum software,web applications,PHP,Ubuntu 12.04,precise pangolin'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-applications/bulletin-boards/phpbb/ubuntu-12-04-precise-pangolin/']
 modified: Thursday, November 8th, 2012
 modified_by:
   name: Linode
 published: 'Thursday, November 8th, 2012'
-title: 'Discussion Forums with phpBB on Ubuntu 12.04 (Precise Pangolin)'
+title: 'Launch Discussion Forums with PhpBB on Ubuntu 12.04 (Precise Pangolin)'
 external_resources:
  - '[phpBB Styles Database](http://www.phpbb.com/styles)'
  - '[Styles Forum](http://www.phpbb.com/community/viewforum.php?f=80)'
@@ -29,11 +29,11 @@ Before installing phpBB, make sure your system is up to date. Enter the followin
     apt-get update
     apt-get upgrade
 
-## Deciding How to Install phpBB
+## Decide How to Install phpBB
 
 There are two ways to install phpBB. You can install the phpBB packages from the Ubuntu repository, or you can compile and install phpBB from source. Installing the packages is faster and makes things easier to maintain, but compiling from source is a good option for users who need to customize the install.
 
-## Installing Packages
+## Install phpBB Packages
 
 Here's how to install the phpBB packages from the Ubuntu repository:
 
@@ -47,7 +47,7 @@ Here's how to install the phpBB packages from the Ubuntu repository:
 
 The phpBB packages are now installed on your computer.
 
-### Accessing phpBB
+### Access phpBB
 
 Now that phpBB is installed on your Linode, you can use a web browser to access the administration console to finish the configuration. Replace `example.com` with the domain name of your primary virtual host or the IP address of your Linode:
 
@@ -55,7 +55,7 @@ Now that phpBB is installed on your Linode, you can use a web browser to access 
 
 You can log in with `admin` username and the password you created during in the installation process.
 
-## Compiling and Installing from Source
+## Compile and Install phpBB from Source
 
 If you decide to compiling and install phpBB from source, get started by installing the `php5-gd` and `imagemagick` packages. Enter the following command:
 
@@ -67,7 +67,7 @@ After you have installed the packages above, you will need to restart Apache. Is
 
 You are now ready to install phpBB!
 
-### Downloading and Unpacking
+### Download and Unpack latest phpBB version
 
 Next, we'll download the latest release of phpBB. As of this writing, the latest stable release of phpBB is version 3.0.11. You can find the download for the latest link by visiting the [phpBB downloads](http://www.phpbb.com/downloads/) section of their website.
 
@@ -109,7 +109,7 @@ You should now be done configuring your phpBB setup!
 
 ### Monitor for Software Updates and Security Notices
 
-When running software compiled or installed directly from sources provided by upstream developers, you are responsible for monitoring updates, bug fixes, and security issues. After becoming aware of releases and potential issues, update your software to resolve flaws and prevent possible system compromise. Monitoring releases and maintaining up to date versions of all software is crucial for the security and integrity of a system.
+When running software compiled or installed directly from sources provided by upstream developers, you are responsible for monitoring updates, bug fixes, and security issues. After becoming aware of releases and potential issues, update your software to resolve flaws and prevent possible system compromise. Monitoring releases and maintaining up-to-date versions of all software is crucial for the security and integrity of a system.
 
 Please monitor the phpBB security announcement posts and community forums to ensure that you are aware of all updates to the software and can upgrade appropriately or apply patches and recompile as needed:
 
