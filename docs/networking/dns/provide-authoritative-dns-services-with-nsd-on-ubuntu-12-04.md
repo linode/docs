@@ -2,21 +2,21 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Install and configure NSD to handle DNS queries.'
-keywords: 'NSD,DNS,resolving,Ubuntu,networking'
+description: 'Configure NSD to Handle DNS Queries on Ubuntu 12.04 (Precise Pangolin).'
+keywords: 'NSD,DNS,Ubuntu,networking,zone file,name server daemon'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['dns-guides/nsd-authoritative-dns-ubuntu-12-04-precise-pangolin/']
 modified: Tuesday, October 9th, 2012
 modified_by:
   name: Linode
 published: 'Tuesday, October 9th, 2012'
-title: 'Provide Authoritative DNS Services with NSD on Ubuntu 12.04 (Precise Pangolin)'
+title: 'Provide Authoritative DNS Services with NSD on Ubuntu 12.04'
 external_resources:
  - '[NSD Homepage](http://nlnetlabs.nl/projects/nsd/)'
  - '[NSD Memory Usage Calculator](http://nlnetlabs.nl/projects/nsd/nsd-memsize.html)'
 ---
 
-NSD is a lightweight yet full-featured open source name server daemon created to provide an alternative to BIND.
+NSD is a lightweight yet full-featured open-source name server daemon created to provide an alternative to BIND.
 
 Before beginning, you should be familiar with basic [DNS terminology and records](/docs/dns-guides/introduction-to-dns). You will also need to ensure that your current Linode plan has enough memory to run the NSD daemon. Use the developer's [memory usage calculator](http://www.nlnetlabs.nl/projects/nsd/nsd-memsize.html) to determine the memory requirement for your NSD deployment.
 
@@ -34,7 +34,7 @@ Ensure that your package repositories are up to date and that you've installed a
     apt-get update
     apt-get upgrade --show-upgraded
 
-Install NSD with the following commands:
+Install the Name Server Daemon with the following commands:
 
     mkdir /etc/nsd3/
     touch /etc/nsd3/nsd.conf
@@ -74,7 +74,7 @@ You must specify at least one zone in the `/etc/nsd3/nsd.conf` file before NSD w
 
 Once zones are added to the `nsd.conf` file, proceed to create a zone file for each DNS zone.
 
-## Creating Zone Files
+## Create Zone Files
 
 Each domain has a zone file specified in the `nsd.conf` file. The syntax of an NSD zone file is similar BIND zone files. Refer to the example zone files that follow for syntax, and modify domain names and IP addresses to reflect the needs of your deployment.
 
@@ -173,9 +173,9 @@ The output should resemble the following:
 
     ;; Query time: 18 msec
 
-Congratulations, you have successfully installed NSD!
+Congratulations, you have successfully installed the Name Server Daemon!
 
-## Adjusting NSD for Low-Memory Situations
+## Adjust NSD for Low-Memory Situations
 
 If you are running NSD in a low-memory environment, amending the values of the following directives in your `/etc/nsd3/nsd.conf` file will lower your memory and system resource usage.
 
