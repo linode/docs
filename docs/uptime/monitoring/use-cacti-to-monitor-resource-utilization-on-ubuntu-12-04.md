@@ -2,15 +2,15 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Cacti is a powerful server monitoring solution that uses SNMP to track resource usage on Ubuntu 12.04 (Precise).'
-keywords: 'Cacti,Ubuntu,Ubuntu Precise,Precise,SNMP'
+description: 'Deploy Cacti, a Powerful Server-monitoring Solution That Uses SNMP to Track Resource Usage on Ubuntu 12.04.'
+keywords: 'Cacti,Ubuntu, Ubuntu 12.04,SNMP,spine,client machine'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['server-monitoring/cacti/ubuntu-12-04-precise-pangolin/']
 modified: Thursday, October 11th, 2012
 modified_by:
   name: Linode
 published: 'Thursday, October 11th, 2012'
-title: 'Monitoring Resource Utilization with Cacti on Ubuntu 12.04 (Precise)'
+title: 'Use Cacti to Monitor Resource Utilization on Ubuntu 12.04'
 external_links:
  - '[Cacti Website](http://www.cacti.net/index.php)'
  - '[Cacti Users Plugin Community](http://cactiusers.org/index.php)'
@@ -52,7 +52,7 @@ If you had to enable new repositories, issue the following command to update you
     apt-get update
     apt-get upgrade
 
-### Installing Dependencies
+### Install Dependencies
 
   Before installing Cacti we must install a few basic dependencies that are critical to the installation of Cacti. Cacti uses the Simple Network Management Protocol (SNMP) to poll the devices it tracks. We'll need to install the `snmpd` and `snmp` packages to allow Cacti to use SNMP. Cacti's web interface requires a database, web server, and PHP to be installed. Issue the following command to install these prerequisites:
 
@@ -63,7 +63,7 @@ You will need to create a password for the `root` user of your MySQL database du
 
 The above command will additionally install the Apache web server. Consider our documentation on [installing the Apache HTTP server](/docs/websites/apache/apache-2-web-server-on-ubuntu-12-04-lts-precise-pangolin) for more information regarding this server. Additionally Cacti can function with alternate web server configurations, including [Apache with PHP running as a CGI process](/docs/websites/apache/run-php-applications-under-cgi-with-apache-on-ubuntu-12-04-lts-precise-pangolin) and with [nginx](/docs/websites/nginx/nginx-and-phpfastcgi-on-ubuntu-12-04-lts-precise-pangolin) running PHP as a FastCGI process.
 
-### Installing Cacti
+### Install Cacti
 
 To install the Cacti package from the distribution software repositories, issue the following command:
 
@@ -71,17 +71,17 @@ To install the Cacti package from the distribution software repositories, issue 
 
 You will be presented with several prompts during this installation. On the "libphp-adodb" prompt you can safely select "Ok". During the "Configuring Cacti" prompt, make sure to select "Apache2". You will be presented with an additional "Configuring cacti" prompt that will ask if you'd like to configure your database with dbconfig-common. Select "Yes" and continue. On the MySQL prompt, enter the root password you created earlier. On the next screen, either create your own password for cacti's database access, or leave it blank for it to automatically generate one for you.
 
-From here we'll continue configuring Cacti through the browser. Visit the domain you have pointed at your Linode or your Linode's IP address, and add `/cacti`. Follow the instructions shown on each page. The default values for each prompt should work for this installation, including the selection of "New Installation", "NET-SNMP 5.X" for the SNMP Utility Version, and "RRDTool 1.4.x" for the RRDTool Utility Version.
+From here, we'll continue configuring Cacti through the browser. Visit the domain you have pointed at your Linode or your Linode's IP address, and add `/cacti`. Follow the instructions shown on each page. The default values for each prompt should work for this installation, including the selection of "New Installation", "NET-SNMP 5.X" for the SNMP Utility Version, and "RRDTool 1.4.x" for the RRDTool Utility Version.
 
 At the login screen, enter `admin/admin` for the username/password combination. You'll be prompted to change your password on the next screen. Cacti is now installed and ready to be configured.
 
-### Configuring Cacti
+### Configure Cacti
 
 At this point Cacti will contain an entry for `localhost`, which we'll need to modify. Click the "Console" tab in the top left corner, and select "Create Devices for network". Click the "Localhost" entry to begin making the needed changes. Select the Host Template drop-down and pick the "ucd/net SNMP Host". Scroll down to SNMP Options and click the drop down box for SNMP Version, picking "Version 2". The default values for SNMP Community, Port, Timeout and Max OIDs should be suitable for now. The "Associated Graph Templates" section allows you to add additional graphs. Hit "Save" to keep the changes.
 
 Click "Settings" under "Configuration" and set your "SNMP Version" to "Version 2" in the drop down box.
 
-## Configuring Client Machines
+## Configure Client Machines
 
 This section is optional and for those looking to use Cacti to monitor additional devices. These steps are written for Debian-based distributions, but with modification, they will work on any flavor of Linux. You will need to follow these instructions for each client machine you'd like to monitor with Cacti. Client machines need an SNMP daemon in order to serve Cacti information. First, install `snmp` and `snmpd` on the client:
 
@@ -101,7 +101,7 @@ After saving your changes to the configuration file, you'll need to r
 
 At this point your machine is ready for polling. Go into the Cacti interface to add the new "Device". Under the "Console" tab, select "New Graphs" and then "Create New Host". Enter the pertinent information in the fields required. Make sure to select "Ping" for "Downed Device Detection". Click the "create" button to save your configuration. On the "save successful" screen, select your newly created device and from the drop down next to "Choose an Action" select "Place on a Tree" and then click "go". Hit "yes" on the next screen. On the "New Graphs" screen, you'll be able to create several different types of graphs of your choice. Follow the on-screen instructions to add these graphs to your tree.
 
-## Using the Spine Polling Daemon
+## Use the Spine Polling Daemon
 
 By default, Cacti uses a PHP script to poll the devices it tracks. "Spine" is a faster replacement for the default polling script written in C++. Installing Spine is relatively easy and a good idea if you plan on keeping track of many hosts. Begin the Spine installation by running the following command :
 
