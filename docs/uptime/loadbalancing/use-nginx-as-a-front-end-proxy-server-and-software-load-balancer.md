@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'A detailed exploration of nginx''s HTTP proxy load balancing services.'
+description: 'Deploy nginx's HTTP proxy load balancing services.'
 keywords: 'nginx,proxy,load balancer,load balancing,port listening,web server,http,front-end proxy,clustering'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-servers/nginx/configuration/front-end-proxy-and-software-load-balancing/','websites/loadbalancing/Use-Nginx-for-Proxy-Services-and-Software-Load-Balancing/','uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing/index.cfm/','uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing/']
