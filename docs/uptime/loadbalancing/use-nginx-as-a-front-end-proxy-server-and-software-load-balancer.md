@@ -3,14 +3,14 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'A detailed exploration of nginx''s HTTP proxy load balancing services.'
-keywords: 'nginx,proxy,load balancing,web server,http, how to use nginx as a proxy, how to use nginx as a load balancer'
+keywords: 'nginx,proxy,load balancer,load balancing,port listening,web server,http,front-end proxy,clustering'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-servers/nginx/configuration/front-end-proxy-and-software-load-balancing/','websites/loadbalancing/Use-Nginx-for-Proxy-Services-and-Software-Load-Balancing/','uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing/index.cfm/','uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing/']
 modified: Friday, August 9th, 2013
 modified_by:
   name: Linode
 published: 'Tuesday, May 11th, 2010'
-title: 'How to Use Nginx as a Front-end Proxy Server and Software Load Balancer' 
+title: 'Use Nginx as a Front-end Proxy Server and Software Load Balancer' 
 external_resources:
  - '[nginx Proxy Module](http://wiki.nginx.org/NginxHttpProxyModule)'
  - '[HTTP Upstream Module](http://wiki.nginx.org/NginxHttpUpstreamModule)'
@@ -33,7 +33,7 @@ Before we begin, make sure you have completed the following:
 
 If you're new to Linux server administration, you may be interested in our [introduction to Linux basics](/docs/tools-reference/introduction-to-linux-concepts) guide, [Beginner's Guide](/docs/beginners-guide/) and [Administration Basics](/docs/using-linux/administration-basics) guide.
 
-## How It Works: Front-End Proxy Services with Nginx
+## Front-End Proxy Services with Nginx
 
 When a request reaches the nginx front-end proxy server, here's an overview of the process that occurs:
 
@@ -41,7 +41,7 @@ When a request reaches the nginx front-end proxy server, here's an overview of t
 2.  nginx sends a second *proxied* request to a specified server, and gets a response.
 3.  nginx returns the result of that request to the original requester.
 
-## Configuring Apache for Port Listening
+## Configure Apache for Port Listening
 
 In this section, you'll configure Apache to listen on an alternate port so it can respond to the nginx front end.
 
