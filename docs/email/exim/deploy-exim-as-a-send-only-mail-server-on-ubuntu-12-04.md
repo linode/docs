@@ -2,15 +2,15 @@
 author:
   name: Lukas Sabota
   email: docs@linode.com
-description: 'Configuring Exim to serve as a lightweight, send-only SMTP server on Ubuntu 12.04 LTS (Precise Pangolin).'
-keywords: 'exim,exim ubuntu 12.04,send email ubuntu,mail server,linux mail,smtp server,ubuntu exim'
+description: 'Configure Exim to Serve as a Lightweight, Send-only SMTP Server on Ubuntu 12.04 LTS (Precise Pangolin).'
+keywords: 'exim,ubuntu 12.04,send-only email,mail server,linux mail,smtp server'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['email/exim/send-only-mta-ubuntu-12-04-precise-pangolin/']
 modified: Tuesday, January 21st, 2014
 modified_by:
   name: Alex Fornuto
 published: 'Monday, November 12th, 2012'
-title: 'Send-only Mail Server with Exim on Ubuntu 12.04 LTS (Precise Pangolin)'
+title: 'Deploy Exim as a Send-only Mail Server on Ubuntu 12.04 '
 external_resources:
  - '[Exim Homepage](http://www.exim.org/)'
  - '[Email Guides](/docs/email/)'
@@ -18,7 +18,7 @@ external_resources:
 
 Many Linux server applications need to send email. Cron jobs use mail services to deliver reports on jobs that have run, web applications require mail support for user registration functions, and other applications may need to send alerts via SMTP. This guide will help you install and configure the lightweight Exim MTA (Mail Transfer Agent) on your Ubuntu 12.04 LTS (Precise Pangolin) Linux VPS.
 
-You'll gain the ability to send mail from `localhost` through either a traditional "sendmail" style interface, or via port 25 locally. As this guide is not intended to provide a full send/receive mail solution, please refer to our other [email guides](/docs/email/) for ways to implement such configurations.
+You'll gain the ability to send mail from `localhost` through either a traditional "sendmail" style interface or via port 25 locally. As this guide is not intended to provide a full send/receive mail solution, please refer to our other [email guides](/docs/email/) for ways to implement such configurations.
 
 We assume that you've already followed the steps outlined in our [getting started](/docs/getting-started/) guide. If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics). Make sure you're logged into your Linode as "root" via SSH before proceeding.
 
