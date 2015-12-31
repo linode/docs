@@ -2,15 +2,15 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Instructions for getting started with the Cherokee web server on Ubuntu 12.04 LTS (Precise Pangolin).'
-keywords: 'cherokee,web sever,cherokee ubuntu 12.04,cherokee ubuntu precise pangolin,ubuntu precise pangolin'
+description: 'Deploy a Cherokee web server on Ubuntu 12.04 LTS (Precise Pangolin).'
+keywords: 'cherokee,web sever,ubuntu 12.04,precise pangolin,cherokee-admin'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-servers/cherokee/installing-cherokee-ubuntu-12-04-precise-pangolin/']
 modified: Wednesday, October 10th, 2012
 modified_by:
   name: Linode
 published: 'Wednesday, October 10th, 2012'
-title: 'Websites with the Cherokee Web Server on Ubuntu 12.04 LTS (Precise Pangolin)'
+title: 'Deploy Websites with a Cherokee Web Server on Ubuntu 12.04'
 external_resources:
  - '[Cherokee Web Server Documentation](http://www.cherokee-project.com/doc/)'
  - '[Host Web Apps with Cherokee and PHP-FastCGI on Ubuntu 10.04 LTS (Lucid)](/docs/web-servers/cherokee/php-fastcgi-ubuntu-10.04-lucid)'
@@ -18,9 +18,9 @@ external_resources:
 
 Cherokee is a fast, flexible web server for POSIX compliant operating systems such as Linux. It's designed to be easy to administer, and includes support for a wide range of common web server functions.
 
-This tutorial explains how to install and configure the Cherokee web server on Ubuntu 12.04 LTS (Precise Pangolin). We will be performing the installation through the terminal; please make sure you are logged into your Linode as root via SSH.
+This tutorial explains how to install and configure the Cherokee web server on Ubuntu 12.04 LTS (Precise Pangolin). You will be performing the installation through the terminal; please make sure you are logged into your Linode as root via SSH.
 
-This document assumes that you already have a working and up to date Ubuntu 12.04 system. If you have not followed our [getting started](/docs/getting-started/) guide, we recommend that you do so prior to following these instructions.
+This document assumes that you already have a working and up-to-date Ubuntu 12.04 system. If you have not followed our [getting started](/docs/getting-started/) guide, we recommend that you do so prior to following these instructions.
 
 ## Set the Hostname
 
@@ -29,7 +29,7 @@ Before you begin installing and configuring the components described in this gui
     hostname
     hostname -f
 
-The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
+The first command should show your short hostname, and the second command should show your fully qualified domain name (FQDN).
 
 ## Check Package Sources
 
@@ -71,7 +71,7 @@ Enter the following command to install the Cherokee web server, its documentatio
 
 Several packages will be installed in addition to the main server package. You may visit your Linode's IP address (or domain name, if you have it pointed to the IP) in a web browser to verify that Cherokee is running. You should see the default Cherokee test page.
 
-## Configuring Cherokee
+## Configure Cherokee
 
 The Cherokee web server includes an easy to use, comprehensive administration interface. This interface, known as `cherokee-admin`, is the recommended means of administering your web server.
 
@@ -79,7 +79,7 @@ Start `cherokee-admin` by issuing the following command:
 
     cherokee-admin -b & 
 
-This instructs the administration program to bind to all IP addresses so it may be reached remotely. It will be launched in the background, so you'll still be able to use your SSH session. You should see output similar to the following:
+This instructs the administration program to bind to all IP addresses, so it may be reached remotely. It will be launched in the background, so you'll still be able to use your SSH session. You should see output similar to the following:
 
     root@hostname:~# cherokee-admin -b &
     [1] 2154
