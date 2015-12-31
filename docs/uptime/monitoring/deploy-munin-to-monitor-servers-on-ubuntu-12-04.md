@@ -2,15 +2,15 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Keep track of vital system statistics and troubleshoot performance problems with Munin on Ubuntu 12.04 (Precise Pangolin).'
-keywords: 'munin,monitoring'
+description: 'Use Munin on Ubuntu 12.04 to Keep Track of Vital System Statistics and Troubleshoot Performance Problems'
+keywords: 'munin,monitoring,ubuntu 12.04,munin node,munin master'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['server-monitoring/munin/ubuntu-12-04-precise-pangolin/']
 modified: Tuesday, October 9th, 2012
 modified_by:
   name: Linode
 published: 'Tuesday, October 9th, 2012'
-title: 'Monitoring Servers with Munin on Ubuntu 12.04 (Precise Pangolin)'
+title: 'Deploy Munin to Monitor Servers on Ubuntu 12.04'
 external_resources:
  - '[Munin Homepage](http://munin-monitoring.org/)'
  - '[Munin Exchange](https://github.com/munin-monitoring/contrib//)'
@@ -25,7 +25,7 @@ Munin is a system and network monitoring tool that uses RRDTool to generate usef
 
 Before installing Munin, we assume that you have followed our [getting started guide](/docs/getting-started/). If you're new to Linux server administration you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts), the [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics). Additionally, you'll need to install a web server, such as [Apache](/docs/web-servers/apache/installation/ubuntu-10.04-lucid), in order to use the web interface.
 
-## Installing Munin
+## Install Munin
 
 Make sure your package repositories and installed programs are up to date by issuing the following commands:
 
@@ -42,7 +42,7 @@ On all of the additional machines you administer that you would like to monitor 
 
 The machines that you wish to monitor with Munin do not need to run Ubuntu. The Munin project supports monitoring for a large number of operating systems. Consult the Munin project's [installation guide](http://munin-monitoring.org/wiki/MuninInstallationLinux) for more information installing nodes on additional operating systems.
 
-## Configuring Munin
+## Configure Munin
 
 ### Munin Master Configuration
 
