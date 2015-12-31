@@ -2,15 +2,15 @@
 author:
     name: Alex Fornuto
     email: afornuto@linode.com
-description: 'Getting started with MySQL for web and server applications on Ubuntu 12.04 LTS (Precise Pangolin).'
-keywords: 'mysql ubuntu 12.04,mysql ubuntu,mysql on linux,mysql vps'
+description: 'Get Started with MySQL for Web and Server Applications on Ubuntu 12.04 LTS (Precise Pangolin).'
+keywords: 'mysql,ubuntu 12.04,mysql ubuntu,mysql on linux,mysql vps'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['databases/mysql/ubuntu-12-04-precise-pangolin/']
 modified: Friday, September 11th, 2015
 modified_by:
     name: Linode
 published: 'Monday, October 8th, 2012'
-title: 'Using MySQL Relational Databases on Ubuntu 12.04 LTS (Precise Pangolin)'
+title: 'Deploy MySQL Relational Databases on Ubuntu 12.04 (Precise Pangolin)'
 external_resources:
     - '[MySQL 5.1 Reference Manual](http://dev.mysql.com/doc/refman/5.1/en/)'
     - '[PHP MySQL Manual](http://us2.php.net/manual/en/book.mysql.php)'
@@ -24,7 +24,7 @@ MySQL is a popular database management system used for web and server applicatio
 >
 >This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
-## Before You Begin
+## Prerequisites
 
 1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, and the Linode's [hostname is set](/docs/getting-started#setting-the-hostname).
 
@@ -61,10 +61,10 @@ Run the mysql_secure_installation script to address several security concerns in
 
     sudo mysql_secure_installation
 
-You will be given the choice to change the MySQL root password, remove anonymous user accounts, disable root database login outside of localhost, and remove test databases. It is recommended that you answer yes to these options. You can read more about the script in in the [MySQL Reference Manual](https://dev.mysql.com/doc/refman/5.5/en/mysql-secure-installation.html).
+You will be given the choice to change the MySQL root password, remove anonymous user accounts, disable root database login outside of localhost, and remove test databases. It is recommended that you answer yes to these options. You can read more about the script in the [MySQL Reference Manual](https://dev.mysql.com/doc/refman/5.5/en/mysql-secure-installation.html).
 
 
-## Using MySQL
+## Deploy MySQL
 
 The standard tool for interacting with MySQL is the `mysql` client, which installs with the `mysql-server` package.
 
