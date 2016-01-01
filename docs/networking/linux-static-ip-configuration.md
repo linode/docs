@@ -96,7 +96,7 @@ Edit the interface's config file:
     PREFIX0="24"
 
     # To add a second public IP address:
-    IPADDR=198.51.100.10
+    IPADDR1=198.51.100.10
     PREFIX1="24"
 
     # To add a private IP address:
