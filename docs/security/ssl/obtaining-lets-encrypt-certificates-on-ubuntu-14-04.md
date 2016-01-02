@@ -3,11 +3,11 @@ author:
     name: 'Sean Webber'
     email: 'swebber@yazzielabs.com'
 description: 'Installing Let\'s Encrypt and obtaining SSL certificates on Ubuntu 14.04 LTS'
-keywords: '14.04,ACME,free,HTTPS,Let's Encrypt,LTS,SSL,Ubuntu'
+keywords: '14.04,ACME,free,HTTPS,Let\'s Encrypt,LTS,SSL,Ubuntu'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 published: 'N/A'
-modified: 'Tuesday, December 22nd, 2015'
-title: 'Obtaining Let's Encrypt Certificates on Ubuntu 14.04'
+modified: 'Friday, January 1st, 2016'
+title: 'Obtaining Let\'s Encrypt Certificates on Ubuntu 14.04'
 contributor:
     name: 'Sean Webber'
     link: 'https://github.com/seanthewebber'
@@ -25,11 +25,11 @@ This tutorial will cover the following on Ubuntu 14.04:
 
 {: .caution}
 >
-> As of 2015-12-19, Let's Encrypt is still in *public beta*. Although most users have reported success with Ubuntu 14.04, the ACME client is still being debugged and developed. **Do not deploy Let's Encrypt Public Beta in a production environment without testing it beforehand.**
+> As of 2016-01-01, Let's Encrypt is still in *public beta*. Although most users have reported success with Ubuntu 14.04, the ACME client is still being debugged and developed. **Do not deploy Let's Encrypt Public Beta in a production environment without testing it beforehand.**
 
 ## Prerequisites
 
-- A Linode server running Ubuntu 14.04. We recommend following our [Getting started](/docs/getting-started) guide if you need help setting up your Linode
+- A Linode server running Ubuntu 14.04 with < 2GB of RAM. On a **Linode 1024** server, add 1GB of SWAP to meet this requirement. We recommend following our [Getting started](/docs/getting-started) guide if you need help setting up your Linode
 - The `git` package. If it is not installed on your Linode, execute the `sudo apt-get install git` command to install it
 
 ## Downloading and Installing Let's Encrypt
@@ -44,21 +44,44 @@ This tutorial will cover the following on Ubuntu 14.04:
 
 ## Obtaining SSL Certificates
 
-Let's Encrypt performs automatic Domain Validation (DV) using a series of *challenges*. The Certificate Authority (CA) uses challenges to prove your server is telling the truth. Once your Linode's truth is proven, the CA will issue you SSL certificates.
+Let's Encrypt performs automatic Domain Validation (DV) using a series of *challenges*. The Certificate Authority (CA) uses challenges to prove your server is telling the truth. Once your Linode's honesty is proven, the CA will issue you SSL certificates.
 
 1. Run Let's Encrypt with the `--standalone` parameter. Add `-d example.com` to the end of the command for each additional domain name requiring a certificate.
 
-        sudo ./letsencrypt-auto certonly --standalone -d example.com -d www.example.com
+        sudo -H ./letsencrypt-auto certonly --standalone -d example.com -d www.example.com
 
 {: .note}
 >
 > Let's Encrypt **does not** deploy wildcard certificates. Each subdomain requires its own certificate.
 
-2. Agree to the Terms of Service by positioning your cursor over the **YES** prompt and pressing the **ENTER** key.
+2. Specify an administrative email address. This will allow you to regain control of a lost certificate and receive urgent security notices. Press **TAB** followed by **ENTER** or **RETURN** to save.
 
-3. (?) Confirm HTTPS activation for the domain names you specified in step two. Use your **ENTER** key to check the checkboxes and select **OK**.
+[![Let's Encrypt admin email prompt](/docs/assets/lets-encrypt-recovery-email-prompt.png)]
 
-4. <Add certificate confirmation here>
+2. Agree to the Terms of Service.
+
+[![Let's Encrypt Terms of Service prompt](/docs/assets/lets-encrypt-agree-tos-prompt.png)]
+
+3. If all goes well, a message similar to the one below will appear. It means Let's Encrypt has approved and issued your certificates. Congrats!
+
+~~~
+IMPORTANT NOTES:
+ - If you lose your account credentials, you can recover through
+   e-mails sent to somebody@example.com.
+ - Congratulations! Your certificate and chain have been saved at
+   /etc/letsencrypt/live/example.com/fullchain.pem. Your
+   cert will expire on 2016-03-31. To obtain a new version of the
+   certificate in the future, simply run Let's Encrypt again.
+ - Your account credentials have been saved in your Let's Encrypt
+   configuration directory at /etc/letsencrypt. You should make a
+   secure backup of this folder now. This configuration directory will
+   also contain certificates and private keys obtained by Let's
+   Encrypt so making regular backups of this folder is ideal.
+ - If you like Let's Encrypt, please consider supporting our work by:
+
+   Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+   Donating to EFF:                    https://eff.org/donate-le
+~~~
 
 ## Exploring Let's Encrypt Certificate Directory Structure
 
@@ -104,15 +127,29 @@ Notice how this file points to a different file. All four of the files in step t
 
         cd /opt/letsencrypt
 
-2. Execute the same command you used to obtain your certificate in the **Obtaining SSL Certificates** section.
+2. Execute the command we used to obtain your certificates in the **Obtaining SSL Certificates** section, adding the `--renew-by-default` parameter.
 
-        sudo ./letsencrypt-auto certonly --standalone --renew-by-default -d example.com -d www.example.com
+        sudo -H ./letsencrypt-auto certonly --standalone --renew-by-default -d example.com -d www.example.com
 
-3. <Add certificate confirmation here>
+3. After a few moments, a confirmation similar to the one below should appear:
+
+~~~
+IMPORTANT NOTES:
+ - Congratulations! Your certificate and chain have been saved at
+   /etc/letsencrypt/live/example.com/fullchain.pem. Your
+   cert will expire on 2016-03-31. To obtain a new version of the
+   certificate in the future, simply run Let's Encrypt again.
+ - If you like Let's Encrypt, please consider supporting our work by:
+
+   Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+   Donating to EFF:                    https://eff.org/donate-le
+~~~
+
+Let's Encrypt has refreshed the lifespan of your certificates; in this case, March 31st, 2016 is the new expiration date.
 
 {: .note}
 >
-> Let's Encrypt certificates have a 90 day lifespan before they expire. According to Let's Encrypt, this encourages automation and minimizes damage from key compromises. We recommend that you renew your certificates every 60 days.
+> Let's Encrypt certificates have a 90 day lifespan before they expire. According to Let's Encrypt, this encourages automation and minimizes damage from key compromises. You can renew your certificates anytime during their lifespan.
 
 ### Automating SSL Certificate Renewal (Optional)
 
