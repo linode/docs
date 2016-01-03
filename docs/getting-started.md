@@ -79,7 +79,7 @@ After creating a new Linode, select it and you'll be taken to the Linode Manager
 
 ## Booting Your Linode
 
-Your Linode is now provisioned with the distro of your choice but it's turned off, as inidcated in the Dashboard.
+Your Linode is now provisioned with the distro of your choice but it's turned off, as indicated in the Dashboard.
 
 Click **Boot** to turn on your Linode.
 
