@@ -171,18 +171,22 @@ You will need to create site profiles and add JavaScript or PHP code to your web
 
         http://your.domain/owa/index.php
 	
-2.  This will take you to the Sites Roster page. Click "Add New" at the top left of the page.
+2. The first time you login OWA will present you with a tracking tag (a code snippet) for the domain you defined when you created your user account. This code should be added to the html pages of the site you wish to track.
 
-3.  On the resulting page you will see, near the top, a section named "Add a New Tracked Site Profile". Enter the domain name of the site you want to track and click Save Profile. The other two fields are for your information only and are therefore optional.
+3. Once the tracking tag has been added to your website pages, analysis data can be viewed under the "Reporting" section (click the button at the top of the page) which will take you to the Sites Roster page.
+
+4. To add more sites to track click "Add New" at the top left of the page.
+
+5.  On the resulting page you will see, near the top, a section named "Add a New Tracked Site Profile". Enter the domain name of the site you want to track and click Save Profile. The other two fields are for your information only and are therefore optional.
 
     {: .caution}
     >
     >You must click "Save Profile" before trying to enter any of the settings below this button. Failure to do so will result in a  blank white page and your new site not being added. Recovery simply requires a click of the back button in your browser.
 
-4.  Click on "Reporting" in the top left corner to return to the Sites Roster page. In the list of tracked sites find your new site and click "Get Tracking Code".
+6.  Click on "Reporting" in the top left corner to return to the Sites Roster page. In the list of tracked sites find your new site and click "Get Tracking Code".
 
-5.  Copy the tracking code in the language of your choice (JavaScript or PHP) and paste the code into your websites' pages. Now whenever someone loads a page with the tracking code OWA will know about it and the data will show up in the reports.
+7.  Copy the tracking code in the language of your choice (JavaScript or PHP) and paste the code into your websites' pages. Now whenever someone loads a page with the tracking code OWA will know about it and the data will show up in the reports.
 
-6.  Click "View Reports" in the Sites Roster page and happy analysing! 
+8.  Click "View Reports" in the Sites Roster page and happy analysing! 
 
 
