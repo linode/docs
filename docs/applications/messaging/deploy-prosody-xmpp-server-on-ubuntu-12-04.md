@@ -2,15 +2,15 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Installation and basic usage guide for Prosody, a lightweight XMPP server on Ubuntu 12.04 (Lucid).'
-keywords: 'prosody,prosody ubuntu,prosody.im,xmpp,real time messaging,lua'
+description: 'Deploy Prosody, a Lghtweight XMPP Server, on Ubuntu 12.04.'
+keywords: 'prosody,real time messaging,xmpp,wget,lua,ubuntu 12.04'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['communications/xmpp/prosody/ubuntu-12-04-precise-pangolin/']
 modified: Wednesday, October 3rd, 2012
 modified_by:
   name: Linode
 published: 'Wednesday, October 3rd, 2012'
-title: 'Installing Prosody XMPP Server on Ubuntu 12.04 (Precise Pangolin)'
+title: 'Deploy Prosody, XMPP Server, on Ubuntu 12.04'
 external_resources:
  - '[The official Prosody server website](http://prosody.im/)'
  - '[Prosody Configuration Overview](http://prosody.im/doc/configure#overview)'
@@ -22,7 +22,7 @@ Prosody is a XMPP/Jabber server programmed in Lua that is simple and lightweight
 
 Before we begin with the installation and configuration of Prosody, we assume that you have a running and up-to-date installation of Ubuntu 12.04 (Precise Pangolin), have completed our [Getting Started](/docs/getting-started/) guide, and have logged in via SSH as root.
 
-## Adding Software Repositories
+## Add Software Repositories
 
 The developers of Prosody provide software repositories for Debian and Ubuntu to more effectively distribute current versions of the software to users. In order to make these repositories accessible to your system we must append the following line to the `/etc/apt/sources.list` file:
 
@@ -130,7 +130,7 @@ To ensure that your Prosody instance will federate properly with the rest of the
 
 The "target" of the SRV record should point to the publicly routable hostname for that machine (e.g. "username.example.com"). The priority and weight should both be set to `0`.
 
-## Enabling Components
+## Enable Components
 
 In the XMPP world, many services are provided in components, which allows for greater ease of customization within a basic framework. A common example of this is the MUC or multi-user chat functionality. To enable MUC services in Prosody you need to add a line like the following to your `/etc/prosody/prosody.cfg.lua` file.
 
@@ -162,7 +162,7 @@ Typically, Prosody listens for connections from components on the localhost inte
     component_ports = { 8888, 8887 }
     ~~~
 
-## Using prosodyctl
+## Use prosodyctl
 
 The XMPP protocol supports "in-band" registration, where users can register for accounts with your server via the XMPP interface. However, this is often an undesirable function as it doesn't permit the server administrator the ability to moderate the creation of new accounts and can lead to spam-related problems. As a result, Prosody has this functionality disabled by default. While you can enable in-band registration, we recommend using the `prosodyctl` interface at the terminal prompt.
 
