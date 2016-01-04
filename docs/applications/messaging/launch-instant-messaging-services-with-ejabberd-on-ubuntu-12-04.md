@@ -3,7 +3,7 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Deploy ejabberd, an Instant Messaging Server Written in Erlang/OTP on Ubuntu 12.04 (Precise Pangolin).'
-keywords: 'ejabberd,ubuntu 12.04,real-time messaging,xmpp,jabber id,linux jabber server'
+keywords: 'ejabberd,ubuntu 12.04,real-time messaging,xmpp,jabber,erlang,DNS'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['communications/xmpp/ejabberd/ubuntu-12-04-precise-pangolin/']
 modified: Wednesday, October 31st, 2012
@@ -121,7 +121,7 @@ The `ejabberd.cfg` file is complete and well commented; from this point forward 
 
 By default, MUCs or Multi-User-Chats (chatrooms) are accessible on the "conference.[hostname]" sub-domain. If you want the public to be able to access MUCs on your domain, you need to create an "A Record" pointing the `conference` hostname (eg. subdomain) to the IP address where the ejabberd instance is running.
 
-## Using Ejabberd
+## Use Ejabberd
 
 Once installed, the use and configuration of ejabberd is uncomplicated. To start, stop or restart the server, issue the appropriate command from the following:
 
