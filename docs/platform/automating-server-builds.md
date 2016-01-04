@@ -14,7 +14,7 @@ title: Automating Server Builds
 
 If you run a large website that requires multiple servers, or have a general interest in server automation, you may want to automate your server builds. You can rapidly spin up multiple servers with exactly the same configuration by creating a *golden image* that can be cloned to multiple Linodes with the intention of eliminating server discrepancies.
 
-Server configuration can also be automated through [Stackcripts](https://www.linode.com/stackscripts). View the [Stackscripts](/docs/platform/stackscripts/) guide for more information.
+Server configuration can also be automated through [Stackscripts](https://www.linode.com/stackscripts). View the [Stackscripts](/docs/platform/stackscripts/) guide for more information.
 
 ##Why You Should Automate Server Builds
 
