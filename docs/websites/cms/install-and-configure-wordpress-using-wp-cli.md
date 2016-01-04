@@ -31,8 +31,8 @@ This is where WP-CLI comes in. It is a command line tool which comes with lots o
 Before we move ahead, make sure you have completed the following guides:
 
 * [Getting Started with Linode](/docs/getting-started)
-* [How to Install a LAMP Stack on Ubuntu 14.04](/docs/websites/lamp/how-to-install-a-lamp-stack-on-ubuntu-14-04)
 * [Securing your Server](/docs/security/securing-your-server)
+* [How to Install a LAMP Stack on Ubuntu 14.04](/docs/websites/lamp/lamp-on-ubuntu-14-04)
 
 {: .note}
 >
@@ -71,29 +71,29 @@ You can use the above procedure for upgrading WP-CLI as well.
 
 ### Activating Bash-Completion
 
-Now it is difficult all commands at once and you might want a quick reference on the command you need. While you can always type `wp` and press enter to see the complete list. But wouldn't it be better if you can point to specific command. Like if you want to know what all sub commands are under the `core` parameter. Bash completion script of WP-CLI can help here.
+Bash completion feature of WP-CLI will allow you to see all the available commands on the fly.
 
-1.  To install the script, make sure you are in the home directory of the user(`username` in this case) you are using.
+1.  Download the bash script in your home directory.
 
         cd /home/username
         wget https://github.com/wp-cli/wp-cli/raw/master/utils/wp-completion.bash
 
-2.  Now edit the .bashrc so that it is loaded by the shell every time you login. Open the file and add the following line in the editor assuming you downloaded the file in the home directory.
+2.  Edit the `.bashrc` file so that it is loaded by the shell every time you login. Open the file and add the following line in the editor assuming you downloaded the file in the home directory.
 
         {: .file-excerpt}
-        /home/username/.bashrc
+        ~/.bashrc
         :   ~~~ bash
         source /home/username/wp-completion.bash
         ~~~
 
-3.  Now run the following command to reload the Bash profile.
+3.  Run the following command to reload the Bash profile.
 
         source ~/.bashrc
 
-That's it. Bash Completion is enabled.
+That's it. Bash Completion is enabled. To test it type `wp theme` and press **Tab**. You will see the list of available commands with `wp theme` again on the prompt.
 
 ## Basics of WP-CLI
-Before we get into the helm of the things, let us learn some essential basics of how exactly WP-CLI works. This would help you feel comfortable with what is going to follow next.
+Before getting to the main part, let us learn some essential basics of how exactly WP-CLI works. This would help you feel comfortable with what is going to follow next.
 
 So far we have seen WP-CLI is accessed through the keyword `wp`. What follows that is a set of commands and their own sub commands. For example we have a command to download WordPress which goes like `wp core download`. Here wp is the main command while core and download are its sub-commands. There can be several sub-commands for each sub-command as well.
 
@@ -127,7 +127,7 @@ Do that and you will get a screen similar to
     :
 
 
-`:` is a prompt where you need to enter few commands to navigate through this help menu. Up and down arrow keys will take you through the complete help. And pressing q will exit the help menu. That's all you need to know for now. For complete detail on how to navigate through the complete help section, you can always type `h` at the above prompt.
+`:` is a prompt where you need to enter few commands to navigate through this help menu. Up and down arrow keys will take you through the complete help. And typing `q` will exit the help menu. That's all you need to know for now. For complete detail on how to navigate through the complete help section, you can always type `h` at the above prompt.
 
 In our last step, we enabled Bash Completion feature for WP-CLI. To use that type `wp` and press tab twice. You would see the list of available commands. You can repeat the same by typing `wp core` and then pressing tab twice. Now you will see a list of commands that can be used with `core`.
 
@@ -135,7 +135,7 @@ In our last step, we enabled Bash Completion feature for WP-CLI. To use that typ
 
 ### Setting up Database
 
-1.  Before you proceed, you need to setup a database first. For that, login to the MySQL server first. Replace `user` with your MySQL user.
+1.  Before you proceed, you need to setup a database first. For that, login to the MySQL server first. Replace `user` with your MySQL username.
 
         mysql -u user -p
 
@@ -151,16 +151,10 @@ In our last step, we enabled Bash Completion feature for WP-CLI. To use that typ
 
 ### Main Install
 
-1.  Move to the user directory where you would be installing the blog. Traditionally it should be in `/var/www/html` directory. Create a new user directory for your user if it doesn't exist already. Also proper group and ownership permissions need to be given to the user.
-
-        cd /var/www/html
-        sudo mkdir wpblog
-        sudo chown -R user:user wpblog
-        cd wpblog
-
-    {: .note}
-    >
-    >This guide for the sake of simplicity assumes that you will be hosting only one site i.e. the blog on your VPS and therefore doesn't go into the detail of setting up a virtual host file. Should you need to host multiple sites, you will need to refer to our [guide on Apache Virtual hosts](/docs/websites/apache/apache-web-server-on-ubuntu-14-04#configure-name-based-virtual-hosts) for the same.
+1.  Move to the Apache document root directory and give appropriate ownership to the public_html directory.
+        cd /var/www/html/example.com
+        sudo chown username public_html
+        cd public_html
 
 2.  Next, download the WordPress files.
 
@@ -168,13 +162,18 @@ In our last step, we enabled Bash Completion feature for WP-CLI. To use that typ
 
 3.  Create a wp-config.php file.
 
-        wp core config --dbname=Database --dbuser=user --dbpass=password --dbhost=localhost --dbprefix=wp_
+        wp core config --dbname=wordpress --dbuser=user --dbpass=password --dbhost=localhost --dbprefix=wp_
 
     dbhost and dbprefix are entirely optional and can be omitted unless you need to change their default values.
 
 4.  Run the installation.
 
-        wp core install --url="<yourdomain>" --title="Blog Title" --admin_user="adminusername" --admin_password="password" --admin_email="emailid"
+        wp core install --url="http://example.com" --title="Blog Title" --admin_user="adminuser" --admin_password="password" --admin_email="emailid"
+
+5.  Change the ownership of wp-content/uploads directory so that media uploads can work properly.
+
+        cd wp-content
+        sudo chown www-data uploads -R
 
 Your WordPress blog is ready for use.
 
@@ -182,7 +181,7 @@ Your WordPress blog is ready for use.
 
 ### Installing and Updating Plugins
 
-Let's say we need to install Yoast SEO plugin. First step is to search for it to find the slug.
+Let's say we need to install Yoast SEO plugin. First step is to find the plugin slug. Slug is the last part of a permalink url which describes the plugin directory in this case. For example a plugin is available at http://wordpress.org/plugins/plugin-dir/. Here `plugin-dir` is the slug of the plugin. When you install it, it is installed under the same directory on your blog at http://example.com/wp-content/plugins/plugin-dir/ Since this slug is unique to every plugin, we can search for the slug of any plugin using WP-CLI and install it.
 
     wp plugin search yoast
 
