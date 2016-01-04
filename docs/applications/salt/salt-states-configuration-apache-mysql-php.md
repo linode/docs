@@ -2,14 +2,14 @@
 author:
     name: Linode
     email: docs@linode.com
-description: 'Use Salt States with a LAMP Stack and Fail2ban.'
-keywords: 'salt, saltstack, states, apache, mysql, php, fail2ban, debian 8'
+description: 'Use Salt States to Create a LAMP Stack on Debian 8.'
+keywords: 'salt,salt states,linux,apache,mysql,php,debian 8'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: Thursday, July 2nd, 2015
 modified_by:
     name: Linode
 published: 'Thursday, July 2nd, 2015'
-title: Salt States for Configuration of Apache, MySQL, and PHP (LAMP)
+title: Use Salt States to Configure a LAMP Stack on Debian 8.
 ---
 
 After Salt is <a href="/docs/applications/salt/install-salt" target="_blank">installed</a> and <a href="/docs/applications/salt/salt-states-configuration-apache-mysql-php" target="_blank">Salt States</a> are created, the Minion will need to be configured. This tutorial will configure a Minion's LAMP stack with further use of Salt States. This tutorial is written for Debian 8 but can easily be adjusted for other Linux Distributions.
