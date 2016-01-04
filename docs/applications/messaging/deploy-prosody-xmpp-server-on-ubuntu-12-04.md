@@ -3,7 +3,7 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Deploy Prosody, a Lghtweight XMPP Server, on Ubuntu 12.04.'
-keywords: 'prosody,real time messaging,xmpp,wget,lua,ubuntu 12.04'
+keywords: 'prosody,srv record,real time messaging,xmpp,wget,lua,ubuntu 12.04'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['communications/xmpp/prosody/ubuntu-12-04-precise-pangolin/']
 modified: Wednesday, October 3rd, 2012
