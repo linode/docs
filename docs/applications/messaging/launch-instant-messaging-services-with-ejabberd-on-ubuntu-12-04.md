@@ -2,15 +2,15 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Getting started with ejabberd, an instant messaging server written in Erlang/OTP on Ubuntu 12.04 (Precise Pangolin).'
-keywords: 'ejabberd,ejabberd ubuntu precise pangolin,ejabberd ubuntu 12.04,ejabberd on linux,real-time messaging,xmpp server,collaboration software,chat software,linux jabber server'
+description: 'Deploy ejabberd, an Instant Messaging Server Written in Erlang/OTP on Ubuntu 12.04 (Precise Pangolin).'
+keywords: 'ejabberd,ubuntu 12.04,real-time messaging,xmpp,jabber id,linux jabber server'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['communications/xmpp/ejabberd/ubuntu-12-04-precise-pangolin/']
 modified: Wednesday, October 31st, 2012
 modified_by:
   name: Linode
 published: 'Wednesday, October 31st, 2012'
-title: 'Instant Messaging Services with ejabberd on Ubuntu 12.04 (Precise Pangolin)'
+title: 'Launch Instant Messaging Services with Ejabberd on Ubuntu 12.04'
 external_resources:
  - '[Ejabberd Community Site](http://www.ejabberd.im/)'
  - '[XMPP Standards Foundation](http://xmpp.org/)'
@@ -169,7 +169,7 @@ To ensure that your ejabberd instance will federate properly with the rest of th
 
 The "target" of the SRV record should point to the publicly routable hostname for that machine (e.g. "username.example.com"). The priority and weight should both be set to `0`.
 
-## Troubleshooting
+## Troubleshoot
 
 The logs for ejabberd are located in the `/var/log/ejabberd/` directory. If you're getting error messages look in these files, particularly `ejabberd.log` and `sasl.log`. Additionally, if ejabberd crashes, the "image dump" of Erlang will be saved in this directory. Begin your investigations for error messages in these files.
 
