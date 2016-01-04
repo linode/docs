@@ -2,14 +2,14 @@
 author:
     name: Linode Community
     email: docs@linode.com
-description: 'Install and configure a Just Causew 2 Multiplayer server on Ubuntu 14.04.'
-keywords: 'just cause,just cause 2,game servers,games,ubuntu, ubuntu 14.04,steam'
+description: 'Install and Configure a Just Cause 2 Multiplayer Server on Ubuntu 14.04.'
+keywords: 'just cause 2,game servers,ubuntu,ubuntu 14.04,steamcmd,steam,multiplayer game server'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 published: 'Friday, October 9th, 2015'
 modified: Friday, October 9th, 2015
 modified_by:
     name: Linode
-title: 'Install and Configure a Just Cause 2 Multiplayer Server on Ubuntu 14.04'
+title: 'Deploy a Just Cause 2 Multiplayer Game Server on Ubuntu 14.04'
 contributor:
     name: Andrew Gottschling
     link: https://github.com/agottschling
@@ -33,7 +33,7 @@ Have the following items available:
 {: .note }
 >This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the sudo command, reference the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
-## Preparing your Linode
+## Prepare your Linode
 
 Just Cause 2 is sold on Steam, along with its multiplayer mod. To download and maintain servers for the game, we will use SteamCMD.
 
@@ -119,7 +119,7 @@ If you have a firewall running on your Linode, add exceptions for SteamCMD:
         force_install_dir ../jc2mp-server
         app_update 261140 validate
 
-    This can take some time. If the download looks as if it has frozen, be patient; it may take about 10 minutes. Once the download is complete, you should see this output:
+    Installation can take some time. If the download looks as if it has frozen, be patient; it may take about 10 minutes. Once the download is complete, you should see this output:
 
         Success! App '261140' fully installed.
 
@@ -129,7 +129,7 @@ If you have a firewall running on your Linode, add exceptions for SteamCMD:
 
         quit
 
-##Configuring Just Cause 2 - Multiplayer (JC2-MP)
+##Configure Just Cause 2 - Multiplayer (JC2-MP)
 
 1.  Before you configure JC2-MP, make a copy of the default configuration file:
 
@@ -142,7 +142,7 @@ If you have a firewall running on your Linode, add exceptions for SteamCMD:
 
 3.  When you are finished, exit `nano` and save your changes.
 
-##Using the Server
+##Use the Server
 
 1.  Before starting up the server for the first time, it is good to symlink a library file to avoid a possible error:
 
@@ -163,7 +163,7 @@ If you have a firewall running on your Linode, add exceptions for SteamCMD:
 
 5.  To stop the server, either bring back the console or type **quit**.
 
-## Entering The Server
+## Enter The Server
 
 [![JC2-MP Server with users on it](/docs/assets/JC2running_resized.png)](/docs/assets/JC2running.png)
 
