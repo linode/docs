@@ -152,6 +152,7 @@ In our last step, we enabled Bash Completion feature for WP-CLI. To use that typ
 ### Main Install
 
 1.  Move to the Apache document root directory and give appropriate ownership to the public_html directory.
+
         cd /var/www/html/example.com
         sudo chown username public_html
         cd public_html
