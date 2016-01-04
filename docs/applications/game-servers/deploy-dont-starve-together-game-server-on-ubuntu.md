@@ -2,14 +2,14 @@
 author:
     name: Linode Community
     email: docs@linode.com
-description: 'Install and configure a Don''t Starve Together server for Ubuntu 14.04'
-keywords: 'don''t starve,don''t starve together,game servers,games,ubuntu, ubuntu 14.04,steam'
+description: 'Install and Configure a Don't Starve Together Multi-player Game Server for Ubuntu 14.04'
+keywords: 'don't starve together,game server,ubuntu, ubuntu 14.04,steam cmd,steamcmd,token'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 published: 'Tuesday, April 14, 2015'
 modified: Tuesday, April 14, 2015
 modified_by:
     name: Alex Fornuto
-title: 'Install and Configure Don''t Starve Together Server on Ubuntu 14.04'
+title: 'Deploy Don't Starve Together Game Server on Ubuntu 14.04'
 contributor:
     name: Andrew Gottschling
     link: https://github.com/agottschling
@@ -20,7 +20,7 @@ earn $250 per published guide.*
 
 <hr>
 
-Don’t Starve Together is a multiplayer game written and published by Klei Entertainment, and is a multiplayer add on to their single-player game Don’t Starve. This guide will explain how to prepare your Linode, install SteamCMD, and install, then configure, Don’t Starve Together.
+Don’t Starve Together is a multiplayer game written and published by Klei Entertainment, and is a multiplayer add on to their single-player game Don’t Starve. This guide will explain how to prepare your Linode, install SteamCMD and install, then configure, Don’t Starve Together.
 
 ## Prerequisites
 
@@ -111,7 +111,7 @@ If you have a firewall running on your Linode, add exceptions for SteamCMD:
 
         Steam>
 
-    The `Steam>` prompt is similar to the linux command prompt, with the exception of not being able to execute normal linux commands. 
+    The `Steam>` prompt is similar to the Linux command prompt, with the exception of its not being able to execute normal Linux commands. 
 
 4.  Install Don’t Starve Together from the SteamCMD prompt:
 
@@ -119,7 +119,7 @@ If you have a firewall running on your Linode, add exceptions for SteamCMD:
         force_install_dir ../dstserver
         app_update 343050 validate
 
-    This can take some time. If the download looks as if it has frozen, be patient; it may take about 10 minutes. Once the download is complete, you should see this output:
+    Installation can take some time. If the download looks as if it has frozen, be patient; it may take about 10 minutes. Once the download is complete, you should see this output:
 
         Success! App '343050' fully installed.
 
@@ -129,7 +129,7 @@ If you have a firewall running on your Linode, add exceptions for SteamCMD:
 
         quit
 
-##Configuring Don’t Starve Together
+##Configure Don’t Starve Together
 
 1.  Before you configure Don’t Starve Together, you should launch it at least once so that it can generate its configuration files:
 
@@ -201,7 +201,7 @@ If you have a firewall running on your Linode, add exceptions for SteamCMD:
 
         chmod +x ~/dstserver/bin/start_dst.sh
 
-## Getting your Authentication Token
+## Get your Authentication Token
 
 You will need Don’t Starve Together installed on your personal computer to get your token.
 
@@ -239,7 +239,7 @@ You will need Don’t Starve Together installed on your personal computer to get
 
          scp ~/Documents/Klei/DoNotStarveTogether/server_token.txt user@12.34.56.78:~/.klei/DoNotStarveTogether/
 
-##Using the Server
+##Use the Server
 
 1.  Now that your server is installed and configured, it can be launched by running the `start_dst.sh` script from the `~/dstserver/bin/` directory. Please note that if your current working directory is not `~/dstserver/bin/` the game will fail to start:
 
@@ -260,7 +260,7 @@ You will need Don’t Starve Together installed on your personal computer to get
 
 4.  To stop the server, bring back the console and press **CONTROL + C**.
 
-## Entering The Server
+## Enter The Server
 
 [![DST Server with users on it](/docs/assets/DSTrunning_resized.png)](/docs/assets/DSTrunning.png)
 
