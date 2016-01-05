@@ -5,8 +5,8 @@ author:
 description: ‘Install Open Web Analytics (OWA) on CentOS 6.5, 7, Debian or Ubuntu with this guide.’
 keywords: ‘open web analytics,owa,Centos,mysql,debian,ubuntu’
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-published: 
-modified: Monday, December 14, 2015
+published: Tuesday, January 5th, 2016
+modified: Tuesday, January 5th, 2016
 modified_by:
     name: Alex Fornuto
 title: 'Open Web Analytics (OWA): Install & Launch on Your Server'
@@ -16,6 +16,9 @@ external_resources:
  - '[OWA Website](http://www.openwebanalytics.com)'
  - '[OWA Forum](http://www.openwebanalytics.com/?page_id=4)'
 ---
+
+*This is a Linode Community guide. Write for us and earn $250 per published guide.*
+<hr>
 
 Open Web Analytics (OWA) is an open-source alternative to commercial web analytics software. Use it to track and analyze traffic on your websites and applications. OWA analytics can easily be added to pages with simple Javascript, PHP, or REST based APIs. OWA also comes with built-in support for tracking websites made with popular content management frameworks such as WordPress and MediaWiki.
 
