@@ -29,7 +29,7 @@ This tutorial will cover the following on Ubuntu 14.04:
 
 ## Prerequisites
 
-- A Linode server running Ubuntu 14.04 with < 2GB of RAM. On a **Linode 1024** server, add 1GB of SWAP to meet this requirement. We recommend following our [Getting started](/docs/getting-started) guide if you need help setting up your Linode
+- A Linode server running Ubuntu 14.04 with at least 2GB of RAM. On a **Linode 1024** server, add 1GB of SWAP to meet this requirement. We recommend following our [Getting started](/docs/getting-started) guide if you need help setting up your Linode
 - The `git` package. If it is not installed on your Linode, execute the `sudo apt-get install git` command to install it
 
 ## Downloading and Installing Let's Encrypt
