@@ -170,7 +170,7 @@ COMMIT
 
 		Steam>
 
-2.  Valve allows most game servers to be downloaded without the need for a Steam account.
+2.  Most Linux Steam game servers allow anonymous logins. You can verify with Valve's list of [dedicated Linux servers](https://developer.valvesoftware.com/wiki/Dedicated_Servers_List#Linux_Dedicated_Servers).
 
 	To log in anonymously if you don't have an account:
 
@@ -182,7 +182,15 @@ COMMIT
 
 ## Next Steps
 
-At this point, you're ready to install your first Steam game. The very next step is to specify the install directory path for the title you have in mind, which will usually just be `/home/steam/game_title`. Our [game server guides](/docs/applications/game-servers/) contain various Steam tutorials which will pick you up exactly where this page leaves off.
+At this point, you're ready to install your first Steam game server. The very next steps are:
+
+	force_install_dir /home/steam/game_title
+	app_update server_id validate
+
+The Steam server ID can be found in Steam's list of [avilable Linux servers](https://developer.valvesoftware.com/wiki/Dedicated_Servers_List#Linux_Dedicated_Servers).
+
+From there, our [game server guides](/docs/applications/game-servers/) contain various Steam tutorials which will pick you up exactly where this page leaves off.
+
 
 {: .note}
 >
