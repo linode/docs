@@ -209,6 +209,7 @@ The map rotation list is in **mapcycle.txt**:
    dm_stalkyard
    dm_subtransit
    dm_undertow
+   dm_custom
     ~~~
     
 To put a custom map in the rotation, simply write its name; for example: if you have the map **dm_custom.bsp**, you need to write **dm_custom** inside **mapcycle.txt**.
@@ -229,6 +230,39 @@ To put a custom map in the rotation, simply write its name; for example: if you 
 
 ##Extra
 
+###MetaMod
+
+**MetaMod** is an addon for servers using Source Engine that works as a "base" for other plugins like **SourceMod**.
+
+1. Go into the **bms** folder:
+
+         cd "/home/steam/Steam/steamapps/common/Black Mesa Dedicated Server/bms/"
+   
+2. Download **MetaMod**:
+
+         wget http://www.metamodsource.net/mmsdrop/1.10/mmsource-1.10.7-git951-linux.tar.gz
+
+      {:.note}
+      >
+      > This URL costantly changes as MetaMod is updated. Please check the downloads [page](http://www.metamodsource.net/snapshots) for the current URL.
+
+3. Extract the downloaded archive:
+
+         tar -zxvf mmsource-1.10.7-git951-linux.tar.gz
+
+4. Cleanup:
+
+         rm mmsource-1.10.7-git951-linux.tar.gz
+
+5. Run the server and enter the command **meta list** in the console:
+
+	 meta list<br/>
+	 No plugins loaded.<br/>
+
+If you get the same output, it means that MetaMod is working.
+
+###SourceMod
+
 It is recommended to install the **SourceMod** addon. It provides useful functions, such as **votemap**, **random map cycle**, **bans**, **reserved slots**, **admin system**, **player commands** and you can customize it as you want.
 
 1. Go into the **bms** folder:
@@ -237,24 +271,34 @@ It is recommended to install the **SourceMod** addon. It provides useful functio
    
 2. Download **SourceMod**:
 
-         wget https://www.sourcemod.net/smdrop/1.7/sourcemod-1.7.3-git5286-linux.tar.gz
+         wget https://www.sourcemod.net/smdrop/1.8/sourcemod-1.8.0-git5829-linux.tar.gz
 
       {:.note}
       >
-      > This URL costantly changes as SourceMod is updated. Please check the downloads [page](https://www.sourcemod.net/downloads.php?branch=stable) for the current URL.
+      > This URL costantly changes as SourceMod is updated. Please check the downloads [page](https://www.sourcemod.net/downloads.php) for the current URL.
 
 3. Extract the downloaded archive:
 
-         tar -zxvf sourcemod-1.7.3-git5286-linux.tar.gz
+         tar -zxvf sourcemod-1.8.0-git5829-linux.tar.gz
 
 4. Cleanup:
 
-         rm sourcemod-1.7.3-git5286-linux.tar.gz
+         rm sourcemod-1.8.0-git5829-linux.tar.gz
 
-Now SourceMod will automatically load when you start Black Mesa Dedicated Server.
+5. Run the server and enter the command **meta list** in the console:
+
+	 meta list<br/>
+         Listing 2 plugins:<br/>
+          [01] SourceMod (1.8.0.5829) by AlliedModders LLC<br/>
+          [02] SDK Tools (1.8.0.5829) by AlliedModders LLC<br/>
+
+If you get similar output, it means that MetaMod and SourceMod are working.
+
+Now SourceMod will be automatically loaded by MetaMod when starting Black Mesa Dedicated Server.
 
 {:.note}
 >
-> Read the [Official Wiki](https://wiki.alliedmods.net/index.php/Category:SourceMod_Documentation) for info about configuration, plugins, etc.
+> Read the [MetaMod Official Wiki](https://wiki.alliedmods.net/Category:Metamod:Source_Documentation) and the [SourceMod Official Wiki](https://wiki.alliedmods.net/index.php/Category:SourceMod_Documentation) for info about configuration, plugins, etc.
+
 
 Enjoy!
