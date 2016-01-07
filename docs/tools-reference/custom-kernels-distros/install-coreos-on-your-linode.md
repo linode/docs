@@ -21,9 +21,13 @@ contributor:
 
 <hr>
 
-[CoreOS](https://coreos.com/) is a container-centric Linux distribution designed for clustered systems running in the cloud. With user applications running inside containers, the host system itself provides minimal functionality.
+CoreOS](https://coreos.com/) is a container-centric Linux distribution designed for clustered systems running in the cloud. With user applications running inside containers, the host system itself provides minimal functionality. This guide details installing CoreOS on a **KVM** Linode. If you're running a Xen Linode, you can [upgrade](/docs/platform/kvm#how-to-enable-kvm), but it is currently not possible to install CoreOS on a Xen Linode.
 
-This guide details installing CoreOS on a **KVM** Linode. If you're running a Xen Linode, you can [upgrade](/docs/platform/kvm#how-to-enable-kvm), but it is currently not possible to install CoreOS on a Xen Linode. CoreOS is not officially supported by Linode, so there are some limitations to using it in comparision to the Linux images provided in the Linode Manager. See [Caveats](#caveats) for more details.
+CoreOS is not officially supported by Linode so there are limitations to using it in comparision to the Linux images provided in the Linode Manager.
+
+*   The CoreOS installer will create a partition table on the disk image which will interfere with the [Linode Backup](/docs/platform/backup-service) service because the disk image will not be directly mountable.
+
+*   Unlike the case with most partitioned images, you *will* be able to resize the disk image holding a CoreOS system; however, it can only grow, not shrink. CoreOS will resize its root partition to fill the disk on next boot.
 
 {: .caution}
 >These instructions perform **destructive** operations on your Linode! You should not attempt to install CoreOS on a Linode with data you want to preserve. You may wish to [use a second Linode](/docs/security/recovering-from-a-system-compromise#using-a-second-linode) and transfer your data after installation.
@@ -130,7 +134,3 @@ The easiest way to copy your cloud-config file to your Linode is to simply `cat 
         li1010-4 login: 
 
 2.  You should now be able to access your Linode via SSH. If you did not specify a user in the cloud-config file, CoreOS's default user is `core`. You should confirm that the host keys match the first time you log in, to reduce your risk from MITM attack.
-
-## Caveats
-
-When using this method, the CoreOS installer creates a partition table on the disk image, which will interfere with the Backups service because the disk image will not be directly mountable. Unlike the case with most partitioned images, you *will* be able to resize the disk image holding a CoreOS system; however, it can only grow, not shrink. CoreOS will resize its root partition to fill the disk on next boot.
