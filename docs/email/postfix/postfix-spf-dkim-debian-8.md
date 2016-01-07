@@ -117,6 +117,8 @@ You can check the operation of the policy agent by looking at raw headers on inc
 
 This header indicates a successful check against the SPF policy of the sending domain. If you changed the policy agent settings in step 1 to not reject mail that fails the SPF check you may see Fail results in this header. You won't see this header on outgoing mail or local mail.
 
+TODO explanation of log messages
+
 ## Setting up DKIM
 
 DKIM involves setting up the OpenDKIM package and hooking it into Postfix as well as adding DNS records.
@@ -227,11 +229,10 @@ replacing YYYYMM with the current year and month as in the key table. This will 
 
 Repeat the commands in this step for every entry in the key table. The `-b 2048` indicates the number of bits in the RSA key pair used for signing and verification. 1024 bits is the minimum, but with modern hardware 2048 bits is safer and it's possible 4096 bits will be required at some point.
 
-7.  Make sure the ownership and permissions on `/etc/opendkim` and it's contents are correct by running the following commands:
+7.  Make sure the ownership and permissions on `/etc/opendkim` and it's contents are correct (`opendkim` should own everything, the `keys` directory should only be accessible by the owner) by running the following commands:
 
-    cd /etc
     chown -R opendkim:opendkim /etc/opendkim
-    chmod -R go-rw /etc/opendkim/keys
+    chmod -R go-rwx /etc/opendkim/keys
 
 8.  Check that OpenDKIM starts correctly by:
 
