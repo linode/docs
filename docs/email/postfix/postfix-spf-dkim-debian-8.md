@@ -46,25 +46,29 @@ The value in an SPF DNS record will look something like the following examples. 
 
 1.  Allow mail from all hosts listed in the MX records for the domain:
 
-        "v=spf1 mx -all"
+        v=spf1 mx -all
 
 2.  Allow mail from a specific host:
 
-        "v=spf1 a:mail.example.com -all"
+        v=spf1 a:mail.example.com -all
 
-The `"v=spf1"` tag is required and has to be the first tag. The last tag, `"-all"`, indicates that mail from your domain should only come from servers identified in the SPF string, anything coming from any other source is forging your domain. An alternative is `"~all"`, indicating the same thing but also indicating that mailservers should accept the message and flag it as forged instead of rejecting it outright. "-all" makes it harder for spammers to forge your domain successfully and is the recommended setting, while "~all" reduces the chances of mail getting lost due to using an incorrect mail server to send mail and can be used if you don't want to take chances.
+The `v=spf1` tag is required and has to be the first tag. The last tag, `-all`, indicates that mail from your domain should only come from servers identified in the SPF string, anything coming from any other source is forging your domain. An alternative is `~all`, indicating the same thing but also indicating that mailservers should accept the message and flag it as forged instead of rejecting it outright. `-all` makes it harder for spammers to forge your domain successfully and is the recommended setting, while `~all` reduces the chances of mail getting lost due to using an incorrect mail server to send mail and can be used if you don't want to take chances.
 
-The tags in between identify the servers mail for your domain can come from. "mx" is a shorthand for all the hosts listed in MX records for your domain. If you've got just one mail server, it's probably the best option. If you've got a backup mail server (a second MX record) using "mx" won't cause any problems, your backup mail server will be advertised as an authorized source for mail and it just won't ever send any. The "a" tag lets you identify a specific host by name or IP address, letting you be specific about exactly which hosts are authorized. You'd use it if you wanted to be pedantic about the backup mail server not being allowed to send outgoing mail, or if you wanted to identify hosts other than your own mail server that could send mail from your domain (eg. putting your ISP's outgoing mail servers in the list so they'd be recognized when you had to send mail through them). For now we're going to stick with the "mx" version, it's simpler and is correct for most basic configurations including ones that handle multiple domains.
+The tags in between identify the servers mail for your domain can come from. `mx` is a shorthand for all the hosts listed in MX records for your domain. If you've got just one mail server, it's probably the best option. If you've got a backup mail server (a second MX record) using `mx` won't cause any problems, your backup mail server will be advertised as an authorized source for mail and it just won't ever send any. The `a` tag lets you identify a specific host by name or IP address, letting you be specific about exactly which hosts are authorized. You'd use it if you wanted to be pedantic about the backup mail server not being allowed to send outgoing mail, or if you wanted to identify hosts other than your own mail server that could send mail from your domain (eg. putting your ISP's outgoing mail servers in the list so they'd be recognized when you had to send mail through them). For now we're going to stick with the `mx` version, it's simpler and is correct for most basic configurations including ones that handle multiple domains.
 
 To add the record, go to your DNS management interface and add a record of type TXT for your domain itself (ie. a blank hostname) containing this string:
 
-    "v=spf1 mx -all"
+    v=spf1 mx -all
 
 If you're using Linode's DNS Manager, go to the domain zone page for the domain you want to set SPF up for and add a new TXT record. The screen will look something like this when you've got it filled out:
 
 ![Linode DNS manager add TXT record](/docs/assets/Postfix_SPF_TXT_record.png)
 
 If your DNS provider allows it (DNS Manager doesn't) you should also add a record of type SPF, filling it in the same way as you did the TXT record.
+
+{: .note}
+>
+>The values for the DNS records above, and for the rest of this guide, are done in the style Linode's DNS Manager needs them to be in. If you're using another provider, their system may require the values in a different style. For example freedns.afraid.org requires the values to be written the way they'd be in BIND zonefiles, so the above SPF record's value would need to be wrapped in double-quotes like this: `"v=spf1 mx -all"`. You'll need to consult the documentation for your DNS provider for the exact style they require.
 
 ### Adding the SPF policy agent to Postfix
 
@@ -107,13 +111,18 @@ The Python SPF policy agent adds SPF policy checking to Postfix. The SPF record 
 
         systemctl restart postfix
 
-You can check the operation of the policy agent by looking at raw headers on incoming mail messages for the SPF results header. You'll find errors logged in `/var/log/mail.log`. The header the policy agent adds should look something like this (asterisks are used to block identifying information):
+You can check the operation of the policy agent by looking at raw headers on incoming mail messages for the SPF results header. You'll find errors logged in `/var/log/mail.log`. The header the policy agent adds to messages should look something like this:
 
-    Received-SPF: Pass (sender SPF authorized) identity=mailfrom; client-ip=***.*.*.**; helo=mail178-24.suw51.mandrillapp.com; envelope-from=********************@mandrillapp.com; receiver=******@***********.***
+    Received-SPF: Pass (sender SPF authorized) identity=mailfrom; client-ip=127.0.0.1; helo=mail.example.com; envelope-from=text@example.com; receiver=tknarr@silverglass.org
 
 This header indicates a successful check against the SPF policy of the sending domain. If you changed the policy agent settings in step 1 to not reject mail that fails the SPF check you may see Fail results in this header. You won't see this header on outgoing mail or local mail.
 
-TODO explanation of log messages
+In the `mail.log` file you'll see messages like this from the policy agent:
+
+    Jan  7 06:24:44 arachnae policyd-spf[21065]: None; identity=helo; client-ip=127.0.0.1; helo=mail.example.com; envelope-from=test@example.com; receiver=tknarr@silverglass.org
+    Jan  7 06:24:44 arachnae policyd-spf[21065]: Pass; identity=mailfrom; client-ip=127.0.0.1; helo=mail.example.com; envelope-from=test@example.com; receiver=tknarr@silverglass.org
+
+The first one is the check of the HELO command, in this case indicating that there wasn't any SPF information matching the HELO (which is perfectly OK). The second is the check against the envelope From address, and indicates the address passed the check and is coming from one of the outgoing mail servers the sender's domain has said should be sending mail for that domain. There may be other statuses in the first field after the colon indicating failure, temporary or permanent errors and so on.
 
 ## Setting up DKIM
 
@@ -263,23 +272,21 @@ As with SPF, DKIM uses TXT records to hold information about the signing key for
 {: .file}
 example.txt
 :   ~~~ text
-    201510._domainkey  IN  TXT ( "v=DKIM1; k=rsa; s=email; "
+    201510._domainkey  IN  TXT ( "**v=DKIM1; k=rsa; s=email; "
         "p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAu5oIUrFDWZK7F4thFxpZa2or6jBEX3cSL6b2TJdPkO5iNn9vHNXhNX31nOefN8FksX94YbLJ8NHcFPbaZTW8R2HthYxRaCyqodxlLHibg8aHdfa+bxKeiI/xABRuAM0WG0JEDSyakMFqIO40ghj/h7DUc/4OXNdeQhrKDTlgf2bd+FjpJ3bNAFcMYa3Oeju33b2Tp+PdtqIwXR"
-        "ZksfuXh7m30kuyavp3Uaso145DRBaJZA55lNxmHWMgMjO+YjNeuR6j4oQqyGwzPaVcSdOG8Js2mXt+J3Hr+nNmJGxZUUW4Uw5ws08wT9opRgSpn+ThX2d1AgQePpGrWOamC3PdcwIDAQAB" )  ; ----- DKIM key 201510 for example.com
+        "ZksfuXh7m30kuyavp3Uaso145DRBaJZA55lNxmHWMgMjO+YjNeuR6j4oQqyGwzPaVcSdOG8Js2mXt+J3Hr+nNmJGxZUUW4Uw5ws08wT9opRgSpn+ThX2d1AgQePpGrWOamC3PdcwIDAQAB**" )  ; ----- DKIM key 201510 for example.com
 
     ~~~
 
-The value inside the parentheses is what you want. Select the entire region from (and including) the double-quote before `v=DKIM1` on to the final double-quote before the closing parentheses. From the above file that would be:
+The value inside the parentheses is what you want. Select and copy the entire region from (but not including) the double-quote before `v=DKIM1` on up to (but not including) the final double-quote before the closing parentheses. Then edit out the double-quotes within the copied text and the whitespace between them. From the above file the result would be:
 
 {: .file-excerpt}
-record.txt
+example-copied.txt
 :   ~~~ text
-    "v=DKIM1; k=rsa; s=email; "
-    "p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAu5oIUrFDWZK7F4thFxpZa2or6jBEX3cSL6b2TJdPkO5iNn9vHNXhNX31nOefN8FksX94YbLJ8NHcFPbaZTW8R2HthYxRaCyqodxlLHibg8aHdfa+bxKeiI/xABRuAM0WG0JEDSyakMFqIO40ghj/h7DUc/4OXNdeQhrKDTlgf2bd+FjpJ3bNAFcMYa3Oeju33b2Tp+PdtqIwXR"
-    "ZksfuXh7m30kuyavp3Uaso145DRBaJZA55lNxmHWMgMjO+YjNeuR6j4oQqyGwzPaVcSdOG8Js2mXt+J3Hr+nNmJGxZUUW4Uw5ws08wT9opRgSpn+ThX2d1AgQePpGrWOamC3PdcwIDAQAB"
+    v=DKIM1; k=rsa; s=email; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAu5oIUrFDWZK7F4thFxpZa2or6jBEX3cSL6b2TJdPkO5iNn9vHNXhNX31nOefN8FksX94YbLJ8NHcFPbaZTW8R2HthYxRaCyqodxlLHibg8aHdfa+bxKeiI/xABRuAM0WG0JEDSyakMFqIO40ghj/h7DUc/4OXNdeQhrKDTlgf2bd+FjpJ3bNAFcMYa3Oeju33b2Tp+PdtqIwXRZksfuXh7m30kuyavp3Uaso145DRBaJZA55lNxmHWMgMjO+YjNeuR6j4oQqyGwzPaVcSdOG8Js2mXt+J3Hr+nNmJGxZUUW4Uw5ws08wT9opRgSpn+ThX2d1AgQePpGrWOamC3PdcwIDAQAB
     ~~~
 
-It's broken into chunks because of limitations in BIND (one of the most popular DNS server packages) and because of size limitations in the UDP protocol that's usually used for DNS requests and responses. Copy that region and paste it into the value for the TXT record.
+Paste that into the value for the TXT record.
 
 If you're using Linode's DNS manager, this is what the add TXT record screen will look like when you have it filled out:
 
@@ -351,7 +358,7 @@ The easiest way to verify that everything's working is to send a test e-mail to 
 
 ### Setting up Author Domain Signing Practices (ADSP) (optional)
 
-As a final item, you can add an ADSP policy to your domain saying that all e-mails from your domain should be DKIM-signed. As usual it's done with a TXT record for host `_adsp._domainkey` in your domain with a value of `"dkim=all"`. If you're using Linode's DNS Manager the screen for the new text record will look like:
+As a final item, you can add an ADSP policy to your domain saying that all e-mails from your domain should be DKIM-signed. As usual it's done with a TXT record for host `_adsp._domainkey` in your domain with a value of `dkim=all`. If you're using Linode's DNS Manager the screen for the new text record will look like:
 
 ![Linode DNS manager add TXT record](/docs/assets/Postfix_ADSP_TXT_record.png)
 
