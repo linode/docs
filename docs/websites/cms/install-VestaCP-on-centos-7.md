@@ -7,8 +7,6 @@ keywords: 'vestacp,vps control panel, linux,cpanel centos'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-applications/control-panels/cpanel/centos-7/','websites/cms/vestacp-on-centos-7/']
 modified: Wednesday, January 6, 2016
-modified_by:
-  name: Alex Fornuto.
 published: 
 title: VestaCP on CentOS7
 external_resources:
