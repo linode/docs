@@ -8,6 +8,7 @@ modified: 'Monday, August 4, 2014'
 modified_by: 'Alex Fornuto'
 title: MySQL
 featured:
+ - deploy-mysql-workbench-for-database-administration.md
  - securely-administer-mysql-with-an-ssh-tunnel.md
  - back-up-your-mysql-databases.md
  - tuning-your-mysql-database.md

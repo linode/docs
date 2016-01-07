@@ -43,9 +43,9 @@ This guide shows you how to set up a personal [Minecraft](https://minecraft.net/
 
 1.  Exit your SSH session and log back in to your Linode as the `minecraft` user.
 
-2.  Download the latest version of the Minecraft Multiplayer Server from [Minecraft.net](https://minecraft.net/). The current version as of this publication is 1.8.1. Refer to the linked page to download the latest version:
+2.  Download the latest version of the Minecraft Multiplayer Server from [Minecraft.net](https://minecraft.net/). The current version as of this publication is 1.8.8. Refer to the linked page to download the latest version:
 
-        wget https://s3.amazonaws.com/Minecraft.Download/versions/1.8.1/minecraft_server.1.8.1.jar
+        wget https://s3.amazonaws.com/Minecraft.Download/versions/1.8.8/minecraft_server.1.8.8.jar
 
 3.  Create a script to run the Minecraft server:
 
@@ -56,7 +56,7 @@ This guide shows you how to set up a personal [Minecraft](https://minecraft.net/
         BINDIR=$(dirname "$(readlink -fn "$0")")
         cd "$BINDIR"
 
-        java -Xms512M -Xmx1000M -jar minecraft_server.1.8.1.jar -o true
+        java -Xms512M -Xmx1000M -jar minecraft_server.1.8.8.jar -o true
         ~~~
 
     {: .note }
@@ -71,7 +71,7 @@ This guide shows you how to set up a personal [Minecraft](https://minecraft.net/
 1.  The first time you run the Minecraft server it will create an EULA file and then exit:
 
         $ ./run.sh
-        [21:39:43] [Server thread/INFO]: Starting minecraft server version 1.8.1
+        [21:39:43] [Server thread/INFO]: Starting minecraft server version 1.8.8
         [21:39:43] [Server thread/INFO]: Loading properties
         [21:39:43] [Server thread/WARN]: server.properties does not exist
         [21:39:43] [Server thread/INFO]: Generating new properties file
@@ -96,7 +96,7 @@ This guide shows you how to set up a personal [Minecraft](https://minecraft.net/
 
     This time the Minecraft server console will generate a lot of output as it creates required text files and generates the Minecraft world:
 
-        [22:00:06] [Server thread/INFO]: Starting minecraft server version 1.8.1
+        [22:00:06] [Server thread/INFO]: Starting minecraft server version 1.8.8
         [22:00:06] [Server thread/INFO]: Loading properties
         [22:00:06] [Server thread/INFO]: Default game type: SURVIVAL
         [22:00:06] [Server thread/INFO]: Generating keypair
