@@ -1,15 +1,20 @@
 ---
 author:
-  email: muh.muhten@gmail.com
-  name: Michael Zuo
+  name: Linode Community
+  email: docs@linode.com
 description: 'CoreOS is a container-centric Linux distribution designed for clustered systems running in the cloud. This guide details installing CoreOS on a KVM Linode.'
 keywords: 'coreos,custom,finnix,lish,kvm'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: 'Monday, November 9th, 2015'
+published: 'Thursday, January 7th, 2016'
+modified: Thursday, January 7th, 2016
 modified_by:
-  name: Michael Zuo
-published: 'Monday, November 9th, 2015'
+  name: Linode
 title: Install CoreOS on Your Linode
+contributor:
+  name: Michael Zuo
+  link:
+  external_resources:
+  - '[CoreOS official documentation pages](https://coreos.com/docs/)'
 ---
 
 *This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
