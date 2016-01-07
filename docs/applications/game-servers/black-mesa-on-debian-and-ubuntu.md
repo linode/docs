@@ -56,7 +56,7 @@ This guide will show you how to set up your own [Black Mesa](https://blackmesaso
 
 1.  Switch to your newly created account:
 
-        sudo -u steam -i
+        su steam
 
 2. Create a folder for SteamCMD files:
 
