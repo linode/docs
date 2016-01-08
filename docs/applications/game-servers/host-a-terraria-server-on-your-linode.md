@@ -6,7 +6,7 @@ description: 'Terraria is a two-dimensional sandbox game similar to Minecraft th
 keywords: 'terraria,steam,minecraft,gaming'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 published: 'Monday, December 21st, 2015'
-modified: Monday, December 21st, 2015
+modified: Wednesday, January 6th, 2016
 modified_by:
   name: Linode
 title: 'Host a Terraria Server on Your Linode'
@@ -50,7 +50,7 @@ Due to Terraria's system requirements, **a Linode 2048 plan is the minimum requi
 
 Now see our [Securing Your Server](/docs/security/securing-your-server) guide again and complete the section on iptables for your Linux distribution **using the rulesets below**:
 
-### IPv4
+**IPv4**
 
 ~~~
 *filter
@@ -84,7 +84,7 @@ Now see our [Securing Your Server](/docs/security/securing-your-server) guide ag
 COMMIT
 ~~~
 
-###IPv6
+**IPv6**
 
 Terraria currently supports multiplayer only over IPv4, so a Terraria server needs only basic IPv6 firewall rules.
 
@@ -98,6 +98,9 @@ Terraria currently supports multiplayer only over IPv4, so a Terraria server nee
 
 # Allow ICMP
 -A INPUT -p icmpv6 -m state --state NEW -j ACCEPT
+
+# Allow inbound traffic from established connections.
+-A INPUT -m state --state ESTABLISHED -j ACCEPT
 
 # Reject all other inbound.
 -A INPUT -j REJECT
