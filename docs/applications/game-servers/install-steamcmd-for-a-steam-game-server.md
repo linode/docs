@@ -5,10 +5,10 @@ author:
 description: 'SteamCMD is a command-line version of the Steam client which works with games that use SteamPipe. If you intend to host a Steam title on your own game server, installing SteamCMD is a prerequisite.'
 keywords: 'steam,steamcmd,games,game server'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: 'Thursday, January 7th, 2016'
+modified: 'Monday, January 11th, 2016'
 modified_by:
   name: Linode
-published: 'Thursday, January 7th, 2016'
+published: 'Monday, January 11th, 2016'
 title: 'Install SteamCMD for a Steam Game Server'
 external_resources:
  - '[Valve Developer Community: SteamCMD](https://developer.valvesoftware.com/wiki/SteamCMD)'
@@ -26,11 +26,9 @@ This guide is intended to get you quickly up and running with SteamCMD on your L
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone. See our Securing Your Server guide to [create a limited user acount](/docs/security/securing-your-server#add-a-limited-user-account) which you will use to adminster your Steam server.
 
-2.   See our Securing Your Server guide to [create a limited user acount](/docs/security/securing-your-server#add-a-limited-user-account). **Make the account name** `steam`**!** This will coincide with the rest of [Linode's Steam guides](/docs/applications/game-servers/), as well as Valve's official documentation. Do not add `steam` to the `sudo` or `wheel` group.
-
-3.  Update Your Operating System:
+2.  Update Your Operating System:
 
     **CentOS**
 
@@ -44,6 +42,8 @@ This guide is intended to get you quickly up and running with SteamCMD on your L
 ## Secure Your Game Server
 
 Game servers and clients are an especially ripe target for attack. Use our [Securing Your Server](/docs/security/securing-your-server) guide to:
+
+*   [Add a Steam system account](/docs/security/securing-your-server#add-a-limited-user-account). Make the username `steam` to coincide with the rest of [Linode's Steam guides](/docs/applications/game-servers/), as well as Valve's official documentation. Do not add the `steam` user to the `sudo` or `wheel` groups. This is so your Steam installation is contained in a user account with absolutely no administrative privileges. The `steam` user's purpose is to run SteamCMD and your hosted games, nothing more.
 
 *   [Harden SSH access](/docs/security/securing-your-server#harden-ssh-access)
 
@@ -190,17 +190,19 @@ Game servers and clients are an especially ripe target for attack. Use our [Secu
 
         login example_user
 
-    {: .note}
+    {: .caution}
     >
     > Be aware that the Steam CLI does **not** obfuscate passwords. If signing in with your Steam account, be aware of the security of your local screen.
 
-    Exit the `Steam>` prompt at any time by typing `quit`.
+    {: .note}
+    >
+    >You can exit the `Steam>` prompt at any time by typing `quit`.
 
 ## Next Steps
 
 You're ready to install your first Steam game server and you should again be at the `Steam>` prompt.
 
-1.  Set an installation directory for the geame:
+1.  Set an installation directory for the game:
 
         force_install_dir /home/steam/game_title
 
