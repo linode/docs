@@ -249,11 +249,11 @@ This script automatically starts Black Mesa Dedicated Server into a **Screen ses
 		{: .file}
 		/home/steam/Steam/steamapps/common/Black Mesa Dedicated Server/run.sh
 		: ~~~ sh
-		#!/bin/sh
-		cd "$HOME/Steam/steamapps/common/Black Mesa Dedicated Server"
-		screen -S "BMDS" -d -m
-		screen -r "BMDS" -X stuff "./srcds_run -game bms +map gasworks +maxplayers 24\n"
-		~~~
+		  #!/bin/sh
+		  cd "$HOME/Steam/steamapps/common/Black Mesa Dedicated Server"
+		  screen -S "BMDS" -d -m
+		  screen -r "BMDS" -X stuff "./srcds_run -game bms +map gasworks +maxplayers 24\n"
+		  ~~~
 
 3. Run the script:
 
@@ -321,7 +321,7 @@ It is recommended to install the **SourceMod** addon. It provides useful functio
 
 4. Cleanup:
 
-    	rm sourcemod-1.8.0-git5829-linux.tar.gz
+		rm sourcemod-1.8.0-git5829-linux.tar.gz
 
 5. Run the server and enter the command **meta list** in the console:
 
@@ -336,7 +336,7 @@ Now SourceMod will be automatically loaded by MetaMod when starting Black Mesa D
 
 {:.note}
 >
-> Read the [MetaMod Official Wiki](https://wiki.alliedmods.net/Category:Metamod:Source_Documentation) and the [SourceMod Official Wiki](https://wiki.alliedmods.net/index.php/Category:SourceMod_Documentation) for info about configuration, plugins, etc.
+> Read the [MetaMod Official Wiki](https://wiki.alliedmods.net/Category:Metamod:Source_Documentation) and the [SourceMod Official Wiki](https://wiki.alliedmods.net/index.php/Category:SourceMod_Documentation) for info about configurations, plugins, files, etc.
 
 
 Enjoy!
