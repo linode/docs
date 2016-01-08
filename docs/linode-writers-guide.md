@@ -6,7 +6,7 @@ description: 'Information on submitting articles to Linode Guides & Tutorials, i
 keywords: 'writing,open source software,contribute linode library, submissions,linode guides and tutorials,guides,tutorials'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['contribute/']
-modified: Thursday, December 10th, 2015
+modified: Friday, January 8th, 2016
 modified_by:
   name: Linode
 published: 'Wednesday, May 19th, 2014'
@@ -16,7 +16,7 @@ external_resources:
  - '[GitHub Beginners Guide](/docs/github-guide)'
 ---
 
-Linode has a thriving community of authors who contribute to Linode Guides & Tutorials. We are always looking for guides on popular, trending topics, and updates to existing guides. If you're interested in writing for Linode, this page describes the process for submitting your work. If your guide is published, you'll receive $250 per article by PayPal or in Linode credit.
+Linode has a thriving community of authors who contribute to Linode Guides and Tutorials. We are always looking for guides on popular, trending topics, and updates to existing guides. If you're interested in writing for Linode, this page describes the process for submitting your work. If your guide is published, you'll receive $250 per article by PayPal or in Linode credit.
 
 ## Content Guidelines
 
@@ -53,15 +53,15 @@ Depending on your submission method, we will either submit the final version to 
 
 ### General Tips to Consider
 
-*   Choose topics on relevant technology; guides on emerging tech that is not yet well-documented is preferred.
+*   Choose topics on relevant technology; guides on emerging tech that is not yet well-documented are preferred.
 
-*   Use other Linode guides as building blocks.	For example, if your guide requires a system with a properly configured `hosts` file and a working LAMP stack, you can link to the [Getting Started](/docs/getting-started) and [LAMP](/docs/websites/lamp) guides instead of duplicating that information in your own writing.
+*   Use other Linode guides as building blocks.	For example, if your guide requires a system with a working LAMP stack, you can link to our [LAMP guides](/docs/websites/lamp) instead of duplicating that information in your own writing.
 
-*   Link to your guide from your own site or social media posts. This actually improves the page rankings of your own site because of an SEO aspect called *link authority*.
+*   Link to your guide from your own website or social media posts. This actually improves the page rankings of your own site because of an SEO aspect called *link authority*.
 
 *   Avoid 3rd-party PPAs and repositories.
 
-*   Unless there is a major advantage, use distro repositories rather than installing from source code.
+*   Unless there is a major advantage, use distro repositories rather than compiling and installing from source code.
 
 *   Use proper capitalization for software. For example, nginx is the web server, NGINX Inc. is the company behind it, and Nginx would only be used to start a sentence, title or heading.
 
@@ -69,7 +69,7 @@ Depending on your submission method, we will either submit the final version to 
 
 As much as we would like to support all writers, we can not accept every guide we receive. Here are some negatives you can eliminate in your own work to ensure a strong submission:
 
-*   Not enough content, or lacking original content. For example, if the guide is, or too closely resembles, a current guide either by Linode or on another source.
+*   Not enough content, or lacking original content. For example, if the guide too closely resembles a current guide either by Linode or on another source.
 
 *   Guide is a duplicate of your own content from your personal blog, wiki submissions or forum posts.
 
@@ -77,7 +77,7 @@ As much as we would like to support all writers, we can not accept every guide w
 
 *   [Content](#content-guidelines) and [formatting](/docs/linode-writers-formatting-guide/) guidelines were clearly not followed.
 
-*   We already have plenty of guides on the topic. Examples: LAMP & LEMP stacks; MySQL.
+*   We already have plenty of guides on the topic. Examples: LAMP & LEMP stacks, MySQL.
 
 *   Inappropriate topic for the Linode Community.
 
@@ -88,13 +88,13 @@ Here are some examples of exceptional community-contributed guides. Use these as
 
 [Install Odoo 9 ERP on Ubuntu 14.04](/docs/websites/cms/install-odoo-9-erp-on-ubuntu-14-04) by Damaso Sanoja.
 
-[Visualizing Apache Webserver Logs in the ELK Stack on Debian 8](/docs/databases/elasticsearch/webserver-logs-with-elk-stack) by Tyler Langlois.
+[How to Install and Configure GitLab on Ubuntu 14.04 (Trusty Tahr)](/docs/applications/development/how-to-install-and-configure-gitlab-on-ubuntu-14-04-trusty-tahr/) by Nashruddin Amin.
+
+[Host a Terraria Server on Your Linode](https://www.linode.com/docs/applications/game-servers/host-a-terraria-server-on-your-linode) by Tyler Langlois.
 
 [Install and Configure OSSEC on Debian 7](/docs/security/ossec-ids-debian-7) by Sunday Ogwu-Chinuwa.
 
-[How to Install and Configure GitLab on Ubuntu 14.04 (Trusty Tahr)](/docs/applications/development/how-to-install-and-configure-gitlab-on-ubuntu-14-04-trusty-tahr/) by Nashruddin Amin.
-
-[Turbocharge Your WordPress Search Using Solr](/docs/websites/cms/turbocharge-wordpress-search-with-solr) by  Karthik Shiraly.
+[Turbocharge Your WordPress Search Using Solr](/docs/websites/cms/turbocharge-wordpress-search-with-solr) by Karthik Shiraly.
 
 ## Legal Information
 
