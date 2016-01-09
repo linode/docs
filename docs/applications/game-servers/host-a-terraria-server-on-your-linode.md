@@ -50,7 +50,7 @@ Due to Terraria's system requirements, **a Linode 2048 plan is the minimum requi
 
 Now see our [Securing Your Server](/docs/security/securing-your-server) guide again and complete the section on iptables for your Linux distribution **using the rulesets below**:
 
-### IPv4
+**IPv4**
 
 ~~~
 *filter
@@ -84,7 +84,7 @@ Now see our [Securing Your Server](/docs/security/securing-your-server) guide ag
 COMMIT
 ~~~
 
-###IPv6
+**IPv6**
 
 Terraria currently supports multiplayer only over IPv4, so a Terraria server needs only basic IPv6 firewall rules.
 
