@@ -90,6 +90,18 @@ Here you will create your first server using only a few lines of code.
     server.listen(PORT); // tell the script to listen on port PORT(8080)
     ~~~
     
+    {: .file}
+/path/to/file
+:   ~~~ conf
+    <IfModule mpm_prefork_module>
+        StartServers        2
+        MinSpareServers     6
+        MaxSpareServers     12
+        MaxClients      80
+        MaxRequestsPerChild     3000
+    </IfModule>
+    ~~~
+    
 4.  Start up your server
 
         node server.js
