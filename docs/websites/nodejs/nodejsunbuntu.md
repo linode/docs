@@ -1,7 +1,5 @@
 ---
 title: Node.js on Ubuntu
----
----
 author:
   name: Steven Kaspar
   email: me@stevenkaspar.com
