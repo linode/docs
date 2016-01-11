@@ -50,6 +50,7 @@ At the end of the long stream of processes and links you will see
 2.  Follow those instructions
     
         sudo apt-get install nodejs
+        ...
         Do you want to continue? [Y/n] y
     
 3.  Confirm it worked
@@ -66,28 +67,28 @@ Here you will create your first server using only a few lines of code.
 
 1.  Navigate to your public web pages area most likely `/var/www/example.com/public_html`
 
-    cd /var/www/example.com/public_html
+        cd /var/www/example.com/public_html
     
 2.  Create your server.js file
 
-    touch server.js
+        touch server.js
 
 3.  Add the following code to `server.js`
 
-{: .file}
-/var/www/example.com/public_html/server.js
-:   ~~~ ini
-    var http = require('http');
-    const PORT = 8080;
-    
-    var server = http.createServer(function(request, response) {
-        console.log('Starting node.js server on port ' + PORT);
-        response.writeHead(200);    // write 200 to the header response telling it was a success
-        response.end('Hello Http'); // send 'Hello Http' as the response
-    });
-    
-    server.listen(PORT); // tell the script to listen on port PORT(8080)
-    ~~~
+    {: .file}
+    /var/www/example.com/public_html/server.js
+    :   ~~~ ini
+        var http = require('http');
+        const PORT = 8080;
+
+        var server = http.createServer(function(request, response) {
+            console.log('Starting node.js server on port ' + PORT);
+            response.writeHead(200);    // write 200 to the header response telling it was a success
+            response.end('Hello Http'); // send 'Hello Http' as the response
+        });
+
+        server.listen(PORT); // tell the script to listen on port PORT(8080)
+        ~~~
     
 4.  Start up your server
 
