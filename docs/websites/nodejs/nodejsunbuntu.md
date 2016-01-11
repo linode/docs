@@ -75,20 +75,20 @@ Here you will create your first server using only a few lines of code.
 
 3.  Add the following code to `server.js`
 
-        {: .file}
-        /var/www/example.com/public_html/server.js
-        :   ~~~ ini
-            var http = require('http');
-            const PORT = 8080;
+    {: .file}
+    /var/www/example.com/public_html/server.js
+    :   ~~~ ini
+        var http = require('http');
+        const PORT = 8080;
 
-            var server = http.createServer(function(request, response) {
-                console.log('Starting node.js server on port ' + PORT);
-                response.writeHead(200);    // write 200 to the header response telling it was a success
-                response.end('Hello Http'); // send 'Hello Http' as the response
-            });
+        var server = http.createServer(function(request, response) {
+            console.log('Starting node.js server on port ' + PORT);
+            response.writeHead(200);    // write 200 to the header response telling it was a success
+            response.end('Hello Http'); // send 'Hello Http' as the response
+        });
 
-            server.listen(PORT); // tell the script to listen on port PORT(8080)
-            ~~~
+        server.listen(PORT); // tell the script to listen on port PORT(8080)
+        ~~~
     
 4.  Start up your server
 
@@ -98,16 +98,16 @@ This command runs the server.js script and it will keep running until you end it
 
 5.  Test the server. To test that your server is running properly you can either
 
-        1.    open a new CLI and do `curl localhost:8080`
-        
-        2.    navigate to http://localhost:8080/
-        
-        {: .note}
-        >
-        >If you have a domain name, then you can use that. ie `example.com` and change the `PORT` const to 80
-        {: .note}
-        >
-        >If you have another server or service setup, such as an apache server, listening on the port you try and listen to, you will get an error.
+    1.    open a new CLI and do `curl localhost:8080`
+
+    2.    navigate to http://localhost:8080/
+
+    {: .note}
+    >
+    >If you have a domain name, then you can use that. ie `example.com` and change the `PORT` const to 80
+    {: .note}
+    >
+    >If you have another server or service setup, such as an apache server, listening on the port you try and listen to, you will get an error.
          
 
 
