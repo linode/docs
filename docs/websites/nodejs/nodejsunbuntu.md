@@ -45,7 +45,7 @@ This will do all of the installing and updating to the system needed to for [Nod
 
 At the end of the long stream of processes and links you will see
 
-    ## Run `apt-get install nodejs` (as root) to install Node.js 5.x and npm
+        ## Run `apt-get install nodejs` (as root) to install Node.js 5.x and npm
     
 2.  Follow those instructions
     
