@@ -48,16 +48,16 @@ At the end of the long stream of processes and links you will see
     ## Run `apt-get install nodejs` (as root) to install Node.js 5.x and npm
     
 2.  Follow those instructions
-
-    sudo apt-get install nodejs
-    Do you want to continue? [Y/n] y
+    
+        sudo apt-get install nodejs
+        Do you want to continue? [Y/n] y
     
 3.  Confirm it worked
 
-    root@servername:/# node -v
-    v5.4.0
-    root@servername:/# npm -v
-    3.3.12
+        root@servername:/# node -v
+        v5.4.0
+        root@servername:/# npm -v
+        3.3.12
     
 Now you have Node.js and NPM installed and ready to rock.
 
