@@ -75,20 +75,20 @@ Here you will create your first server using only a few lines of code.
 
 3.  Add the following code to `server.js`
 
-    {: .js}
-    /var/www/example.com/public_html/server.js
-    :   ~~~ js
-        var http = require('http');
-        const PORT = 8080;
+{: .js}
+/var/www/example.com/public_html/server.js
+:   ~~~ js
+    var http = require('http');
+    const PORT = 8080;
 
-        var server = http.createServer(function(request, response) {
-            console.log('Starting node.js server on port ' + PORT);
-            response.writeHead(200);    // write 200 to the header response telling it was a success
-            response.end('Hello Http'); // send 'Hello Http' as the response
-        });
+    var server = http.createServer(function(request, response) {
+        console.log('Starting node.js server on port ' + PORT);
+        response.writeHead(200);    // write 200 to the header response telling it was a success
+        response.end('Hello Http'); // send 'Hello Http' as the response
+    });
 
-        server.listen(PORT); // tell the script to listen on port PORT(8080)
-        ~~~
+    server.listen(PORT); // tell the script to listen on port PORT(8080)
+    ~~~
     
 4.  Start up your server
 
