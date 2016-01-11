@@ -75,7 +75,7 @@ Here you will create your first server using only a few lines of code.
 
 3.  Add the following code to `server.js`
 
-    {: .file}
+    {: .js}
     /var/www/example.com/public_html/server.js
     :   ~~~ ini
         var http = require('http');
@@ -102,10 +102,8 @@ Here you will create your first server using only a few lines of code.
 
     2.    navigate to http://localhost:8080/
 
-    >
     >If you have a domain name, then you can use that. ie `example.com` and change the `PORT` const to 80
-    {: .note}
-    >
+    
     >If you have another server or service setup, such as an apache server, listening on the port you try and listen to, you will get an error.
          
 
