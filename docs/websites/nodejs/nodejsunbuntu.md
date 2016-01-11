@@ -77,7 +77,7 @@ Here you will create your first server using only a few lines of code.
 
     {: .js}
     /var/www/example.com/public_html/server.js
-    :   ~~~ ini
+    :   ~~~ js
         var http = require('http');
         const PORT = 8080;
 
