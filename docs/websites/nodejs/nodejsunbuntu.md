@@ -94,7 +94,7 @@ Here you will create your first server using only a few lines of code.
 
         node server.js
     
-This command runs the server.js script and it will keep running until you end it with **CTRL+C**.
+    This command runs the server.js script and it will keep running until you end it with **CTRL+C**.
 
 5.  Test the server. To test that your server is running properly you can either
 
