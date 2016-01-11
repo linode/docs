@@ -102,7 +102,6 @@ Here you will create your first server using only a few lines of code.
 
     2.    navigate to http://localhost:8080/
 
-    {: .note}
     >
     >If you have a domain name, then you can use that. ie `example.com` and change the `PORT` const to 80
     {: .note}
