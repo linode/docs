@@ -90,7 +90,7 @@ Here you will create your first server using only a few lines of code.
     server.listen(PORT); // tell the script to listen on port PORT(8080)
     ~~~
     
-    {: .file}
+{: .file}
 /path/to/file
 :   ~~~ conf
     <IfModule mpm_prefork_module>
