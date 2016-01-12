@@ -3,13 +3,14 @@ author:
     name: Linode Community
     email: docs@linode.com
 description: 'This Counter Strike: Global Offensive (CS:GO) server guide contains instructions on how to install SteamCMD, download the dedicated server, and launch the game server.'
-keywords: 'counter strike,counter strike global offensive,csgo,cs:go,csgo server,csgo server hosting, steam servers,game servers,games,ubuntu,ubuntu 14.04,steam,cs,cs:go'
+keywords: 'counter strike,counter strike global offensive,csgo,cs:go,csgo server,csgo server hosting, steam servers,game servers,games,ubuntu,ubuntu 14.04'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 published: 'Tuesday, September 29th, 2015'
 modified: Tuesday, September 29th, 2015
 modified_by:
     name: Linode
-title: 'Install a Counter Strike: Global Offensive (CS:GO) server on Ubuntu 14.04'
+title: 'Launch a Counter Strike: Global Offensive (CS:GO) server on Ubuntu 14.04'
+alias: ['applications/game-servers/csgo-server-debian-ubuntu.md']
 contributor:
     name: Sam Mauldin
 ---
@@ -51,7 +52,7 @@ If you already have SteamCMD installed, skip this section.
         rm steamcmd_linux.tar.gz
 
 
-## Installing Counter Strike: Global Offense
+## Install Counter Strike: Global Offense
 
 1.  Start SteamCMD:
 
@@ -68,7 +69,7 @@ If you already have SteamCMD installed, skip this section.
     Note that this is a large download and may take awhile.
 
 
-## Configuring the Server
+## Configure the Server
 
 1.  Exit SteamCMD once the download is complete:
 
@@ -89,7 +90,7 @@ If you already have SteamCMD installed, skip this section.
         rcon_password "<password>"
         ~~~
 
-## Launching the Server
+## Launch the Server
 
 1.  Go back into the main CS:GO directory:
 
@@ -100,7 +101,7 @@ You may need to open UDP port 27015 in your firewall to connect:
 
         ./srcds_run -game csgo -console -usercon +net_public_adr <public ip> -port 27015 +game_type 0 +game_mode 1 +mapgroup mg_bomb +map de_dust2 -autoupdate
         
-### Running the Server in the Background
+### Run the Server in the Background
 
 {: .note}
 >
@@ -121,7 +122,7 @@ You may need to open UDP port 27015 in your firewall to connect:
         screen -r csgo
 
 
-## Joining the Game
+## Join the Game
 
 1.  Launch Counter-Strike: Global Offensive.
 
