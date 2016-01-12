@@ -1,8 +1,8 @@
 ---
 deprecated: false
 author:
-  name: Ryan Laverdiere
-  email: 
+  name: Linode Community
+  email: contribute@linode.com
 description: 'Install Nginx and a StartSSL Certificate on Debian 8 (Jessie)'
 keywords: 'startssl,nginx,debian 8,ssl certificate,jessie,nginx repositories,certificate signing request,generate CSR, domain name'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
