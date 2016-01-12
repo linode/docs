@@ -3,7 +3,7 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Directing domains to your Linode.'
-keywords: 'linode dns,linode manager dns,dns configuration'
+keywords: 'dns manager,linode dns,linode manager dns,dns configuration'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['dns-manager/','dns-guides/configuring-dns-with-the-linode-manager/']
 modified: Tuesday, January 20, 2015
