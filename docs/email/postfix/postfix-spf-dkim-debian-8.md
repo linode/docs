@@ -90,7 +90,7 @@ The Python SPF policy agent adds SPF policy checking to Postfix. The SPF record 
     {: .file-excerpt}
     /etc/postfix/main.cf
     :   ~~~ conf
-        policy_time_limit = 3600
+        policyd-spf_time_limit = 3600
         ~~~
 
 4.  Edit the `smtpd_recipient_restrictions` entry to add a `check_policy_service` entry thusly:
