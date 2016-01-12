@@ -10,7 +10,7 @@ modified: Tuesday, June 17th, 2014
 modified_by:
   name: Alex Fornuto
 published: 'Tuesday, June 17th, 2014'
-title: 'Deploy Voip Services with Asterisk and Freepbx on Ubuntu 12.04'
+title: 'Deploy VoIP Services with Asterisk and Freepbx on Ubuntu 12.04'
 external_resources:
  - '[Asterisk Documentation](http://www.asterisk.org/docs)'
  - '[Asterisk Community](http://www.asterisk.org/community)'
