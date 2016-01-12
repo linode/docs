@@ -300,7 +300,7 @@ Test the keys for correct signing and verification using the `opendkim-testkey` 
 
     opendkim-testkey -d example.com -s YYYYMM
 
-If everything is OK you shouldn't get any output. If you want to see more information, add `-vv` to the end of the command. That produces verbose debugging output. The last message should be "key OK". Just before that you may see a "key not secure" message. That's normal and doesn't signal an error, it just means your domain isn't set up for DNSSEC yet.
+If everything is OK you shouldn't get any output. If you want to see more information, add `-vvv` to the end of the command. That produces verbose debugging output. The last message should be "key OK". Just before that you may see a "key not secure" message. That's normal and doesn't signal an error, it just means your domain isn't set up for DNSSEC yet.
 
 ### Hooking OpenDKIM into Postfix
 
