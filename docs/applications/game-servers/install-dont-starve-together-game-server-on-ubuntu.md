@@ -9,7 +9,8 @@ published: 'Tuesday, April 14, 2015'
 modified: Tuesday, April 14, 2015
 modified_by:
     name: Alex Fornuto
-title: 'Deploy Don't Starve Together Game Server on Ubuntu 14.04'
+title: 'Install Don''t Starve Together Game Server on Ubuntu 14.04'
+alias: ['applications/game-servers/dont-starve-together-on-ubuntu']
 contributor:
     name: Andrew Gottschling
     link: https://github.com/agottschling
@@ -239,7 +240,7 @@ You will need Don’t Starve Together installed on your personal computer to get
 
          scp ~/Documents/Klei/DoNotStarveTogether/server_token.txt user@12.34.56.78:~/.klei/DoNotStarveTogether/
 
-##Use the Server
+## Start the Server
 
 1.  Now that your server is installed and configured, it can be launched by running the `start_dst.sh` script from the `~/dstserver/bin/` directory. Please note that if your current working directory is not `~/dstserver/bin/` the game will fail to start:
 
