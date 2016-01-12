@@ -9,7 +9,8 @@ published: 'Friday, October 9th, 2015'
 modified: Friday, October 9th, 2015
 modified_by:
     name: Linode
-title: 'Deploy a Just Cause 2 Multiplayer Game Server on Ubuntu 14.04'
+title: 'Deploy a Just Cause 2 Multiplayer Server on Ubuntu 14.04'
+alias: ['applications/game-servers/just-cause-2-multiplayer-on-ubuntu']
 contributor:
     name: Andrew Gottschling
     link: https://github.com/agottschling
@@ -142,7 +143,7 @@ If you have a firewall running on your Linode, add exceptions for SteamCMD:
 
 3.  When you are finished, exit `nano` and save your changes.
 
-##Use the Server
+## Start the Server
 
 1.  Before starting up the server for the first time, it is good to symlink a library file to avoid a possible error:
 
