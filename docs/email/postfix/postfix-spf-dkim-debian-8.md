@@ -44,19 +44,25 @@ The instructions for setting up DNS for SPF and DKIM are generic. The instructio
 
 The value in an SPF DNS record will look something like the following examples. The full syntax is at [the SPF record syntax page](http://www.openspf.org/SPF_Record_Syntax).
 
-1.  Allow mail from all hosts listed in the MX records for the domain:
+**Example 1**  Allow mail from all hosts listed in the MX records for the domain:
 
         v=spf1 mx -all
 
-2.  Allow mail from a specific host:
+**Example 2**  Allow mail from a specific host:
 
         v=spf1 a:mail.example.com -all
 
-The `v=spf1` tag is required and has to be the first tag. The last tag, `-all`, indicates that mail from your domain should only come from servers identified in the SPF string, anything coming from any other source is forging your domain. An alternative is `~all`, indicating the same thing but also indicating that mailservers should accept the message and flag it as forged instead of rejecting it outright. `-all` makes it harder for spammers to forge your domain successfully and is the recommended setting, while `~all` reduces the chances of mail getting lost due to using an incorrect mail server to send mail and can be used if you don't want to take chances.
+- The `v=spf1` tag is required and has to be the first tag. 
 
-The tags in between identify the servers mail for your domain can come from. `mx` is a shorthand for all the hosts listed in MX records for your domain. If you've got just one mail server, it's probably the best option. If you've got a backup mail server (a second MX record) using `mx` won't cause any problems, your backup mail server will be advertised as an authorized source for mail and it just won't ever send any. The `a` tag lets you identify a specific host by name or IP address, letting you be specific about exactly which hosts are authorized. You'd use it if you wanted to be pedantic about the backup mail server not being allowed to send outgoing mail, or if you wanted to identify hosts other than your own mail server that could send mail from your domain (eg. putting your ISP's outgoing mail servers in the list so they'd be recognized when you had to send mail through them). For now we're going to stick with the `mx` version, it's simpler and is correct for most basic configurations including ones that handle multiple domains.
+- The last tag, `-all`, indicates that mail from your domain should only come from servers identified in the SPF string, anything coming from any other source is forging your domain. An alternative is `~all`, indicating the same thing but also indicating that mailservers should accept the message and flag it as forged instead of rejecting it outright. `-all` makes it harder for spammers to forge your domain successfully and is the recommended setting, while `~all` reduces the chances of mail getting lost due to using an incorrect mail server to send mail and can be used if you don't want to take chances.
 
-To add the record, go to your DNS management interface and add a record of type TXT for your domain itself (ie. a blank hostname) containing this string:
+The tags in between identify the servers mail for your domain can come from. 
+
+- `mx` is a shorthand for all the hosts listed in MX records for your domain. If you've got just one mail server, it's probably the best option. If you've got a backup mail server (a second MX record) using `mx` won't cause any problems, your backup mail server will be advertised as an authorized source for mail and it just won't ever send any.
+
+- The `a` tag lets you identify a specific host by name or IP address, letting you be specific about exactly which hosts are authorized. You'd use it if you wanted to be pedantic about the backup mail server not being allowed to send outgoing mail, or if you wanted to identify hosts other than your own mail server that could send mail from your domain (eg. putting your ISP's outgoing mail servers in the list so they'd be recognized when you had to send mail through them).
+
+For now we're going to stick with the `mx` version, it's simpler and is correct for most basic configurations including ones that handle multiple domains. To add the record, go to your DNS management interface and add a record of type TXT for your domain itself (ie. a blank hostname) containing this string:
 
     v=spf1 mx -all
 
@@ -90,7 +96,7 @@ The Python SPF policy agent adds SPF policy checking to Postfix. The SPF record 
     {: .file-excerpt}
     /etc/postfix/main.cf
     :   ~~~ conf
-        policy_time_limit = 3600
+        policyd-spf_time_limit = 3600
         ~~~
 
 4.  Edit the `smtpd_recipient_restrictions` entry to add a `check_policy_service` entry thusly:
@@ -111,13 +117,13 @@ The Python SPF policy agent adds SPF policy checking to Postfix. The SPF record 
 
         systemctl restart postfix
 
-You can check the operation of the policy agent by looking at raw headers on incoming mail messages for the SPF results header. You'll find errors logged in `/var/log/mail.log`. The header the policy agent adds to messages should look something like this:
+You can check the operation of the policy agent by looking at raw headers on incoming mail messages for the SPF results header. The header the policy agent adds to messages should look something like this:
 
     Received-SPF: Pass (sender SPF authorized) identity=mailfrom; client-ip=127.0.0.1; helo=mail.example.com; envelope-from=text@example.com; receiver=tknarr@silverglass.org
 
 This header indicates a successful check against the SPF policy of the sending domain. If you changed the policy agent settings in step 1 to not reject mail that fails the SPF check you may see Fail results in this header. You won't see this header on outgoing mail or local mail.
 
-In the `mail.log` file you'll see messages like this from the policy agent:
+The SPF policy agent also logs to `/var/log/mail.log`. In the `mail.log` file you'll see messages like this from the policy agent:
 
     Jan  7 06:24:44 arachnae policyd-spf[21065]: None; identity=helo; client-ip=127.0.0.1; helo=mail.example.com; envelope-from=test@example.com; receiver=tknarr@silverglass.org
     Jan  7 06:24:44 arachnae policyd-spf[21065]: Pass; identity=mailfrom; client-ip=127.0.0.1; helo=mail.example.com; envelope-from=test@example.com; receiver=tknarr@silverglass.org
