@@ -6,7 +6,7 @@ description: 'Information on submitting articles to Linode Guides & Tutorials, i
 keywords: 'writing,open source software,contribute linode library, submissions,linode guides and tutorials,guides,tutorials'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['contribute/']
-modified: Friday, January 8th, 2016
+modified: Wednesday, January 13th, 2016
 modified_by:
   name: Linode
 published: 'Wednesday, May 19th, 2014'
@@ -62,6 +62,8 @@ Depending on your submission method, we will either submit the final version to 
 *   Avoid 3rd-party PPAs and repositories.
 
 *   Unless there is a major advantage, use distro repositories rather than compiling and installing from source code.
+
+*   We generally decline guides on tweaking or performance tuning. For a guide of this theme to be considered, it must first designate a use scenario. The changes *must* show a measurable, reliably reproducible improvement between a control group and an experiment group, both operating in the given scenario.
 
 *   Use proper capitalization for software. For example, nginx is the web server, NGINX Inc. is the company behind it, and Nginx would only be used to start a sentence, title or heading.
 
