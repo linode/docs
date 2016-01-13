@@ -171,11 +171,55 @@ The command above utilizes a *cron job* to run the `cleandb.sh` shell script inc
 
 ### Removing the Installer Directory
 
-1. Delete the `/var/www/html/example.com/public_html/roundcube/installer` directory, which contains the web page files you just used to configure Roundcube.
+1. Delete the `/var/www/html/example.com/public_html/roundcube/installer` directory, which contains the web page files we just used to configure Roundcube.
 
         sudo rm -rf /var/www/html/example.com/public_html/roundcube/installer
 
 While Roundcube automatically disabled the installer functionality within its configuration file, deleting the installer directory adds another layer of protection against hackers.
+
+### Configuring Apache Directory Permissions
+
+1. Create a new configuration file called `roundcube.conf` in the `/etc/apache2/conf-available` directory.
+
+        sudo touch /etc/apache2/conf-available/roundcube.conf
+
+2. Open your new configuration file in `nano`.
+
+        sudo nano /etc/apache2/conf-available/roundcube.conf
+
+3. Copy the directory permission rules below and paste them into your configuration file. Use **CTRL + SHIFT + V** to paste into the Linux Terminal and Windows Command Prompt, or use **COMMAND + V** to paste into the Mac OS X Terminal.
+
+~~~
+<Directory /var/www/html/example.com/public_html/roundcube>
+	Options -Indexes
+	AllowOverride All
+</Directory>
+
+<Directory /var/www/html/example.com/public_html/roundcube/config>
+	Order Deny,Allow
+	Deny from All
+</Directory>
+
+<Directory /var/www/html/example.com/public_html/roundcube/temp>
+	Order Deny,Allow
+	Deny from All
+</Directory>
+
+<Directory /var/www/html/example.com/public_html/roundcube/logs>
+	Order Deny,Allow
+	Deny from All
+</Directory>
+~~~
+
+4. Save your changes (**CTRL + X** followed by **Y**, then **ENTER** or **RETURN**) and exit `nano`.
+
+5. Create a symbolic link of `/etc/apache2/conf-available/roundcube.conf` in the `../conf-enabled` directory.
+
+        sudo ln -s /etc/apache2/conf-available/roundcube.conf /etc/apache2/conf-enabled/roundcube.conf
+
+6. Restart Apache to apply your directory permission changes.
+
+        sudo service apache2 restart
 
 ### Forcing HTTPS
 
@@ -185,26 +229,20 @@ The second, and perhaps most important, thing you can do to secure your Roundcub
 
         sudo nano /var/www/html/example.com/public_html/roundcube/.htaccess
 
-2. Highlight the Apache URL rewriting rule below, right click on it, and select **Copy**.
+2. Copy the Apache URL rewriting rule below and paste it into `nano`.
 
+        ~~~
         <IfModule mod_rewrite.c>
         RewriteEngine On
         RewriteCond %{SERVER_PORT} 80
         RewriteCond %{REQUEST_URI} roundcube
         RewriteRule ^(.*)$ https://www.example.com/roundcube/$1 [R,L]
         </IfModule>
+        ~~~
 
-3. Within your Terminal session, use the arrow keys to move your cursor to the end of the file. Right click on the Terminal and select **Paste**. The text excerpt above will appear inside of nano.
+3. Replace `example.com` with the FQDN or IP address of your Linode.
 
-4. Replace `example.com` with the FQDN or IP address of your Linode.
-
-5. Press the **CTRL+X** keys momentarily and release them. The following prompt will be shown:
-
-        Save modified buffer (ANSWERING "No" WILL DESTROY CHANGES) ?
-        Y Yes
-        N No           ^C Cancel
-
-6. Press the **Y** key followed by **ENTER** on your keyboard to save and apply your changes and force.
+4. Save you changes and exit `nano`.
 
 ## Testing Roundcube’s Installation
 
