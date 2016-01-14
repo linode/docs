@@ -1,6 +1,6 @@
 ---
 author:
-  name: Linode
+  name: Chris Walsh
   email: docs@linode.com
 description: 'OpenVPN is used to creating network tunnels between computers that are not on the same local network. When integrated with OpenSSL, OpenVPN can encrypt all VPN traffic to provide a secure connection between machines.'
 keywords: 'openvpn,vpn,vpn tunnel,openssl'

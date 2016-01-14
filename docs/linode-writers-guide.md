@@ -1,6 +1,6 @@
 ---
 author:
-  name: Linode
+  name: Chris Walsh
   email: docs@linode.com
 description: 'Information on submitting articles to Linode Guides & Tutorials, including benefits and procedures.'
 keywords: 'writing,open source software,contribute linode library, submissions,linode guides and tutorials,guides,tutorials'
