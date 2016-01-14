@@ -184,13 +184,14 @@ Mesa Dedicated Server/bms/maps/`.
 *   Custom maps downloaded from the Workshop need to be put in the **workshop** folder:  `/home/steam/Steam/steamapps/common/Black Mesa Dedicated Server/bms/addons/workshop`
 
 The addons to be loaded need to be specified in the **addonlist.txt** file.
-For example, I'm going to add the map **dm_shipping** downloaded from Workshop to the list:
+For example, I'm going to add the maps **dm_boom** and **dm_shipping** downloaded from Workshop to the list:
 
 		{: .file}
 		/home/steam/Steam/steamapps/common/Black Mesa Dedicated Server/bms/addonlist.txt
 		: ~~~
 		    "AddonList"
 		  {
+		    "workshop\432070352.vpk"		"1"
 		    "workshop\432074065.vpk"		"1"
 		  }
 		  ~~~
