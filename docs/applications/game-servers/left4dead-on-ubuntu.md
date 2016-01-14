@@ -147,7 +147,7 @@ If you have a firewall running on your Linode, add exceptions for SteamCMD:
     {: .file }
     ~/L4D2-server/start_L4D2.sh
     :   ~~~
-        screen srcds -console -game left4dead2 +port 27020 +maxplayers 8 +exec server.cfg +map c2m1_highway
+        screen ./srcds_run -console -game left4dead2 +port 27020 +maxplayers 8 +exec server.cfg +map c2m1_highway
         ~~~
 
 	This script, when run, will execute the Don't Starve Together server in a [Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions) session.
