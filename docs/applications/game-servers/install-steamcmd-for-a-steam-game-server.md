@@ -1,14 +1,14 @@
 ---
 author:
-  name: Linode
+  name: Chris Walsh
   email: docs@linode.com
-description: 'SteamCMD is a command-line version of the Steam client which works with games that use SteamPipe. If you intend to host a Steam title on your own game server, installing SteamCMD is a prerequisite.'
-keywords: 'steam,steamcmd,games,game server'
+description: 'Install SteamCMD, a command-line version of the Steam client, which works with games that use SteamPipe. Installing SteamCMD is a prerequisite before hosting a Steam title on your own game server.'
+keywords: 'steam,steamcmd,steam cmd,games,game server,steam server,steampipe'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: 'Monday, January 11th, 2016'
+modified: 'Tuesday, January 19th, 2016'
 modified_by:
   name: Linode
-published: 'Monday, January 11th, 2016'
+published: 'Tuesday, January 19th, 2016'
 title: 'Install SteamCMD for a Steam Game Server'
 external_resources:
  - '[Valve Developer Community: SteamCMD](https://developer.valvesoftware.com/wiki/SteamCMD)'
@@ -24,9 +24,9 @@ This guide is intended to get you quickly up and running with SteamCMD on your L
 >
 >This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
-## Before You Begin
+## Before You Install
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone. See our Securing Your Server guide to [create a limited user acount](/docs/security/securing-your-server#add-a-limited-user-account) which you will use to adminster your Steam server.
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone. See our Securing Your Server guide to [create a limited user acount](/docs/security/securing-your-server#add-a-limited-user-account) which you will use to administer your Steam server.
 
 2.  Update Your Operating System:
 
@@ -43,7 +43,7 @@ This guide is intended to get you quickly up and running with SteamCMD on your L
 
 Game servers and clients are an especially ripe target for attack. Use our [Securing Your Server](/docs/security/securing-your-server) guide to:
 
-*   [Add a Steam system account](/docs/security/securing-your-server#add-a-limited-user-account). Make the username `steam` to coincide with the rest of [Linode's Steam guides](/docs/applications/game-servers/), as well as Valve's official documentation. Do not add the `steam` user to the `sudo` or `wheel` groups. This is so your Steam installation is contained in a user account with absolutely no administrative privileges. The `steam` user's purpose is to run SteamCMD and your hosted games, nothing more.
+*   [Add a Steam system account](/docs/security/securing-your-server#add-a-limited-user-account). Make the username `steam` to coincide with the rest of [Linode's Steam guides](/docs/applications/game-servers/), as well as Valve's official documentation. Do not add the `steam` user to the `sudo` or `wheel` groups. This is so your Steam installation is contained in a user account with absolutely no administrative privileges. The `steam` user's sole purpose is to run SteamCMD and your hosted games, nothing else.
 
 *   [Harden SSH access](/docs/security/securing-your-server#harden-ssh-access)
 
@@ -88,11 +88,11 @@ Game servers and clients are an especially ripe target for attack. Use our [Secu
 
     {: .note}
     >
-    >Some Steam games require a few additional rules which can be found in our [Steam game guides](/docs/applications/game-servers/). Steam can also use multiple port ranges for various purposes but they should only be allowed if your game(s) make use of those services. See [this](https://support.steampowered.com/kb_article.php?ref=8571-GLVN-8711) Steam Support page for more information.
+    >Some Steam games require a few additional rules which can be found in our [Steam game guides](/docs/applications/game-servers/). Steam can also use multiple port ranges for various purposes, but they should only be allowed if your game(s) make use of those services. See [this](https://support.steampowered.com/kb_article.php?ref=8571-GLVN-8711) Steam Support page for more information.
 
     **IPv6**
 
-    Steam currently supports multiplayer only over IPv4, so a Steam server only needs basic IPv6 firewall rules as shown below.
+    Steam currently supports multiplayer play over IPv4 only, so a Steam server only needs basic IPv6 firewall rules, shown below.
 
     ~~~
     *filter
@@ -149,7 +149,7 @@ Game servers and clients are an especially ripe target for attack. Use our [Secu
         tar -xvzf steamcmd_linux.tar.gz
 
 
-## Running SteamCMD
+## Run SteamCMD
 
 1.  Run the installer:
 
@@ -214,6 +214,6 @@ You're ready to install your first Steam game server and you should again be at 
 
     The `server_id` can be found in Valve's list of [dedicated Linux servers](https://developer.valvesoftware.com/wiki/Dedicated_Servers_List#Linux_Dedicated_Servers).
 
-3.  From there, certain games may need a few more i386 libraries or firewall rules and most will need their configuration settings edited. The game server should allow easy administrative access with as little interruption to players as possible, its software should frequently be updated, and players' progress should be saved when the server is properly shut down. 
+3.  From there, certain games may need a few more i386 libraries or firewall rules, and most will need their configuration settings edited. The game server should allow easy administrative access with as little interruption to players as possible. Its software should frequently be updated, and players' progress should be saved when the server is properly shut down. 
 
     Our [game server guides](/docs/applications/game-servers/) cover these requirements and contain various Steam tutorials which will pick you up exactly where this page leaves off.
