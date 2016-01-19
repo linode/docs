@@ -10,7 +10,7 @@ modified: 'Friday, October 23rd, 2015'
 modified_by:
     name: Tyler Langlois
 title: Visualizing Apache Webserver Logs in the ELK Stack on Debian 8
-alias: ['databases/webserver-logs-with-elk-stack']
+alias: ['databases/webserver-logs-with-elk-stack/']
 contributor:
   name: Tyler Langlois
   link: https://github.com/tylerjl

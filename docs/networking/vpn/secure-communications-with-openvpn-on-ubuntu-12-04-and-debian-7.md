@@ -5,7 +5,7 @@ author:
 description: 'Use OpenVPN to Securely Connect Separate Networks on an Ubuntu 12.04 or Debian 7 Linux VPS.'
 keywords: 'openvpn,networking,vpn,ubuntu,ubuntu 12.04,debian 7,debian,tunnelblick,encryption,encrypted,iptable,pki,private keys,ip address'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['networking/openvpn/ubuntu-12-04-precise/', 'networking/vpn/create-secure-communications-with-openvpn-on-ubuntu-12-04-and-debian-7.md']
+alias: ['networking/openvpn/ubuntu-12-04-precise/', 'networking/vpn/create-secure-communications-with-openvpn-on-ubuntu-12-04-and-debian-7/']
 modified: Monday, February 17th, 2014
 modified_by:
   name: Alex Fornuto
