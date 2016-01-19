@@ -3,11 +3,11 @@ author:
   name: Alex Fornuto
   email: docs@linode.com
 description: 'Instructions for configuring your Linode to run a native distribution-supplied kernel on KVM hosts. Written for distributions using systemd'
-keywords: 'kvm,custom linux, kernel,custom linode,systemd,debian 8,centos,fedora'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Monday, June 29th, 2015
+keywords: 'kvm,custom linux, kernel,custom linode,systemd,debian 8,centos,fedora,gentoo'
+modified: Tuesday, January 19, 2016
 modified_by:
-  name: Alex Fornuto
+  name: Kent Davis
 published: 'Monday June 29th, 2015'
 title: 'Run a Distribution-Supplied Kernel on a KVM Linode'
 ---
@@ -19,6 +19,7 @@ This guide explains how to enable the kernels your OS provides for a KVM Linode.
 * Debian
 * Fedora 22
 * Ubuntu
+* Gentoo
 
 Before you get started, make sure you follow the steps outlined in our [Getting Started](/docs/getting-started) guide. Your Linode needs to be in a functional state. These steps should be performed as `root` on your Linode, via an SSH session.
 
@@ -57,6 +58,11 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
     * Ubuntu
 
           apt-get install linux-image-virtual grub2
+    
+    * Gentoo
+    
+	  echo "GRUB_PLATFORMS=\"coreboot pc\"" >> /etc/portage/make.conf
+	  emerge --ask sys-boot/grub
 
     {: .note }
     > During the installation of `grub` you may be asked which disk image to install to. Since Linode provides the grub bootloader, the system need only provide the `grub.cfg` file, and you don't need to install `grub` to your MBR.
@@ -101,6 +107,10 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
           mkdir /boot/grub
           grub2-mkconfig -o /boot/grub/grub.cfg
 
+    * Gentoo
+
+	  grub2-mkconfig -o /boot/grub/grub.cfg
+	  
 Note that if you later install an updated kernel, you'll need to run this command again to update your GRUB menu. By default, the first kernel in the list will be booted.
 
 ## Rebooting into Grub2 Mode
