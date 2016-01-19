@@ -11,6 +11,7 @@ modified_by:
     name: Linode
 published: 'Monday, October 8th, 2012'
 title: 'Deploy MySQL Relational Databases on Ubuntu 12.04 (Precise Pangolin)'
+alias: ['databases/mysql/using-mysql-relational-databases-on-ubuntu-12-04-lts-precise-pangolin']
 external_resources:
     - '[MySQL 5.1 Reference Manual](http://dev.mysql.com/doc/refman/5.1/en/)'
     - '[PHP MySQL Manual](http://us2.php.net/manual/en/book.mysql.php)'

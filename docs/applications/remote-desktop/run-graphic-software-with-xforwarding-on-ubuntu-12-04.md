@@ -10,7 +10,8 @@ modified: Friday, April 25th, 2014
 modified_by:
   name: Alex Fornuto
 published: 'Thursday, April 10th, 2014'
-title: 'Run Graphic Software on your Linode with X-Forwarding on Ubuntu 12.04'
+title: 'Run Graphic Software with X-Forwarding on Ubuntu 12.04'
+alias: ['applications/remote-desktop/running-graphic-software-on-your-linode-with-xforwarding-on-ubuntu-12-04']
 external_resources:
  - '[Xming](http://www.straightrunning.com/XmingNotes/)'
  - '[Cygwin/X](http://x.cygwin.com/)'

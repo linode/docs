@@ -10,7 +10,8 @@ modified: Friday, April 25th, 2014
 modified_by:
   name: Alex Fornuto
 published: 'Thursday, April 10th, 2014'
-title: 'Run Graphic Software on Your Linode with X-Forwarding on Debian'
+title: 'Run Graphic Software with X-Forwarding on Debian'
+alias: ['applications/remote-desktop/running-graphic-software-xforwarding-debian']
 external_resources:
  - '[Xming](http://www.straightrunning.com/XmingNotes/)'
  - '[Cygwin/X](http://x.cygwin.com/)'

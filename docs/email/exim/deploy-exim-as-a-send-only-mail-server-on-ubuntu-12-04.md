@@ -5,7 +5,7 @@ author:
 description: 'Configure Exim to Serve as a Lightweight, Send-only SMTP Server on Ubuntu 12.04 LTS (Precise Pangolin).'
 keywords: 'exim,ubuntu 12.04,send-only email,mail server,linux mail,smtp server'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['email/exim/send-only-mta-ubuntu-12-04-precise-pangolin/']
+alias: ['email/exim/send-only-mta-ubuntu-12-04-precise-pangolin/','email/sendonly-mail-server-with-exim-on-ubuntu-12-04-lts-precise-pangolin/']
 modified: Tuesday, January 21st, 2014
 modified_by:
   name: Alex Fornuto
