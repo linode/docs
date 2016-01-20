@@ -155,25 +155,23 @@ In our last step, we enabled Bash Completion feature for WP-CLI. To use that typ
 
 ### Main Install
 
-1.  Move to the Apache document root directory and give appropriate ownership to the `public_html` directory.
+1.  Move to the Apache `public_html` directory.
 
-        cd /var/www/html/example.com
-        sudo chown username public_html
-        cd public_html
+        cd /var/www/html/example.com/public_html
 
-2.  Next, download the WordPress files.
+2.  Next, download the WordPress files. Here we need to use the `-allow-root` parameter for running WP-CLI under root user. You would need to use this parameter every time you run a command which requires WP-CLI to write to the directory like installing or upgrading.
 
-        wp core download
+        sudo wp core download --allow-root
 
 3.  Create a wp-config.php file.
 
-        wp core config --dbname=wordpress --dbuser=user --dbpass=password --dbhost=localhost --dbprefix=wp_
+        sudo wp core config --dbname=wordpress --dbuser=user --dbpass=password --dbhost=localhost --dbprefix=wp_ --allow-root
 
     dbhost and dbprefix are entirely optional and can be omitted unless you need to change their default values.
 
 4.  Run the installation.
 
-        wp core install --url="http://example.com" --title="Blog Title" --admin_user="adminuser" --admin_password="password" --admin_email="emailid"
+        sudo wp core install --url="http://example.com" --title="Blog Title" --admin_user="adminuser" --admin_password="password" --admin_email="emailid" --allow-root
 
 5.  Change the ownership of wp-content/uploads directory so that media uploads can work properly.
 
@@ -218,16 +216,16 @@ You can see more than 10 per page by modifying the command as
 
 Now that you know the slug of the plugin we want to install, install and activate it.
 
-    wp plugin install wordpress-seo
+    sudo wp plugin install wordpress-seo --allow-root
     wp plugin activate wordpress-seo
 
 If you want to update any plugin, you can use
 
-    wp plugin update wordpress-seo
+    sudo wp plugin update wordpress-seo --allow-root
 
 Or if you want to update all, then
 
-    wp plugin update --all
+    sudo wp plugin update --all --allow-root
 
 To list all the installed plugins on your blog, use
 
@@ -235,7 +233,7 @@ To list all the installed plugins on your blog, use
 
 To uninstall a plugin, use
 
-    wp plugin uninstall wordpress-seo
+    sudo wp plugin uninstall wordpress-seo --allow-root
 
 ### Installing and Updating Themes
 
@@ -247,13 +245,13 @@ So to search for the theme, you would use
 
 To install and activate, you need to use
 
-    wp theme install twentytwelve
+    sudo wp theme install twentytwelve --allow-root
     wp theme activate twentytwelve
 
 And to update one or all themes, you can use
 
-    wp theme update twentytwelve
-    wp theme update --all
+    sudo wp theme update twentytwelve --allow-root
+    sudo wp theme update --all --allow-root
 
 To list all the themes in a tabular form, you can use the command `list`.
 
@@ -261,13 +259,13 @@ To list all the themes in a tabular form, you can use the command `list`.
 
 To uninstall a theme, use
 
-    wp theme uninstall twentytwelve
+    sudo wp theme uninstall twentytwelve  --allow-root
 
 ### Update WordPress
 
 You can update your blog via following commands.
 
-    wp core update
+    sudo wp core update  --allow-root
     wp core update-db
 
 First command updates the files and second one completes the database upgrade.
