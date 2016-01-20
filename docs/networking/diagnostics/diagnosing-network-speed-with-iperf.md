@@ -93,7 +93,7 @@ Iperf must be installed on both computers you are testing the connection between
 
 Iperf requires two systems because one system must act as a server, while the other acts as a client. The client connects to the server you're testing the speed of. 
 
-1.  On the Linode you wish to test,launch Iperf in server mode:
+1.  On the Linode you wish to test, launch Iperf in server mode:
 
         iperf -s
 

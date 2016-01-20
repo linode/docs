@@ -28,7 +28,7 @@ Linode Images captures an exact copy of your disk at the moment when the process
 
 1.  Navigate to your Linode Dashboard and select the disk that you wish to freeze from the **Disks** list.
 
-2.  On the **Edit Disk** page, click the **Imagize Image** button.
+2.  On the **Edit Disk** page, click the **Create Image** button.
 
 	[![Edit Disk](/docs/assets/edit-disk-image.png)](/docs/assets/edit-disk-image.png)
 
@@ -36,7 +36,7 @@ Linode Images captures an exact copy of your disk at the moment when the process
 
 	[![Imagize Image](/docs/assets/imagize-image.png)](/docs/assets/imagize-image.png)
 
-4.  Once you click the Imagize button, your image will be frozen for later use. You can view the progress on the Dashboard under the Host Job Queue.
+4.  Once you click the Create Image button, your image will be frozen for later use. You can view the progress on the Dashboard under the Host Job Queue.
 
 	[![Host Job Queue](/docs/assets/host-job-queue.png)](/docs/assets/host-job-queue.png)
 

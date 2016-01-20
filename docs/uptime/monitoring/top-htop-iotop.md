@@ -166,7 +166,7 @@ To install:
 
 -	For Debian/Ubuntu:
 
-		apt-get install iptop
+		apt-get install iotop
 
 - 	For CentOS/Fedora:
 

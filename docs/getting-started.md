@@ -79,7 +79,7 @@ After creating a new Linode, select it and you'll be taken to the Linode Manager
 
 ## Booting Your Linode
 
-Your Linode is now provisioned with the distro of your choice but it's turned off, as inidcated in the Dashboard.
+Your Linode is now provisioned with the distro of your choice but it's turned off, as indicated in the Dashboard.
 
 Click **Boot** to turn on your Linode.
 
@@ -284,7 +284,7 @@ Use the `Up`, `Down`, `Page Up` and `Page Down` keys to navigate. Find the time 
 
 To set the time zone:
 
-    timedatectl set-timezone `America/New_York`
+    timedatectl set-timezone 'America/New_York'
 
 ### All Other Distributions
 
@@ -310,4 +310,5 @@ The output should look similar to: `Thu Feb 16 12:17:52 EST 2012`.
 
 ## Next Steps
 
-Now that you have an up-to-date Linode, you'll need to secure your Linode and protect it from unauthorized access. Read the [Securing Your Server](/docs/securing-your-server) quick start guide to get going.
+Now that you have an up-to-date Linode, you'll need to secure your Linode and protect it from unauthorized access. Read the [Securing Your Server](/docs/security/securing-your-server) quick start guide to get going.
+
