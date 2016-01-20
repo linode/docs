@@ -8,7 +8,7 @@ featured:
  - openvpn-access-server.md
  - pritunl-vpn-ubuntu.md
  - secure-communications-with-openvpn-on-centos-6.md
- - secure-communications-with-openvpn-on-ubuntu-12-04-and-debian-7.md
+ - secure-communications-with-openvpn-on-ubuntu-12-04-precise-and-debian-7.md
 
 ---
 
