@@ -10,7 +10,7 @@ modified: Friday, October 9th, 2015
 modified_by:
     name: Linode
 title: 'Deploy a Just Cause 2 Multiplayer Server on Ubuntu 14.04'
-alias: ['applications/game-servers/just-cause-2-multiplayer-on-ubuntu/']
+alias: ['applications/game-servers/just-cause-2-multiplayer-on-ubuntu']
 contributor:
     name: Andrew Gottschling
     link: https://github.com/agottschling

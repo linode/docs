@@ -5,12 +5,13 @@ author:
 description: Forward the X11 Server Through SSH to Run GUI Applications from Your Linode
 keywords: 'x11,x-forwarding,ssh,x over ssh,ubuntu, ubuntu 12.04'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+alias: ['remote-desktops/x-forwarding-ubuntu-12-04/']
 modified: Friday, April 25th, 2014
 modified_by:
   name: Alex Fornuto
 published: 'Thursday, April 10th, 2014'
 title: 'Run Graphic Software with X-Forwarding on Ubuntu 12.04'
-alias: ['remote-desktops/x-forwarding-ubuntu-12-04/','applications/remote-desktop/running-graphic-software-on-your-linode-with-xforwarding-on-ubuntu-12-04']
+alias: ['applications/remote-desktop/running-graphic-software-on-your-linode-with-xforwarding-on-ubuntu-12-04']
 external_resources:
  - '[Xming](http://www.straightrunning.com/XmingNotes/)'
  - '[Cygwin/X](http://x.cygwin.com/)'

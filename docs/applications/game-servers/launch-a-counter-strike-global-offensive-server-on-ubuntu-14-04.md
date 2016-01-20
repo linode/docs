@@ -10,7 +10,7 @@ modified: Tuesday, September 29th, 2015
 modified_by:
     name: Linode
 title: 'Launch a Counter Strike: Global Offensive (CS:GO) server on Ubuntu 14.04'
-alias: ['applications/game-servers/csgo-server-debian-ubuntu/']
+alias: ['applications/game-servers/csgo-server-debian-ubuntu.md']
 contributor:
     name: Sam Mauldin
 ---
