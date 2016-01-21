@@ -6,7 +6,7 @@ description: 'Installing Roundcube and its dependencies on Ubuntu 14.04 LTS'
 keywords: '14.04,IMAP,LTS,Roundcube,Ubuntu,webmail'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 published: 'N/A'
-modified: 'Monday, January 18th, 2016'
+modified: 'Thursday, January 21st, 2016'
 title: 'Installing Roundcube on Ubuntu 14.04'
 contributor:
     name: 'Sean Webber'
@@ -25,7 +25,7 @@ Roundcube is a web-based IMAP email client that offers an user interface similar
 
 ## Linux, Apache, MySQL, and PHP (LAMP) Stack
 
-This section will cover installing Apache, MySQL, PHP, and SSL on your Linode from scratch. If you already have a functioning LAMP stack, skip ahead to the **Creating a New Apache Virtual Host with SSL** section.
+This section will cover installing Apache, MySQL, PHP, and SSL on your Linode from scratch. If you already have a functioning LAMP stack, skip ahead to the **Creating an Apache Virtual Host with SSL** section.
 
 ### Installing LAMP Stack Packages
 
@@ -33,93 +33,81 @@ This section will cover installing Apache, MySQL, PHP, and SSL on your Linode fr
 
         sudo apt-get update && sudo apt-get upgrade
 
-2. Install the `lamp-server^` *metapackage*, which installs Apache, MySQL, and PHP.
+2. Install the `lamp-server^` *metapackage*, which installs Apache, MySQL, and PHP as dependencies:
 
         sudo apt-get install lamp-server^
 
-### Optimization, Preference, and Security Changes
+3. <create a root password>
 
-1. The default *multi-processing module* (MPM) for Apache is the *event* module, but by default PHP uses the *prefork* module. Open the `mpm_prefork.conf` file located in `/etc/apache2/mods-available` and edit the configuration. Below is the suggested values for a **1GB Linode**:
-
-        sudo nano /etc/apache2/mods-available/mpm_prefork.conf
-
-{: .file}
-/etc/apache2/mods-available/mpm_prefork.conf
-:   ~~~ conf
-    <IfModule mpm_prefork_module>
-        StartServers          2
-        MinSpareServers       6
-        MaxSpareServers       12
-        MaxClients            39
-        MaxRequestsPerChild   3000
-    </IfModule>
-    /~~~
-
-2. Specify your Linode's time zone in the `/etc/php5/apache2/php.ini` PHP configuration file. If your server is not using `UTC`, replace it with your [local timezone listed on PHP.net](http://nl1.php.net/manual/en/timezones.php).
+3. Specify your Linode's time zone in the `/etc/php5/apache2/php.ini` PHP configuration file. If your server is not using `UTC`, replace it with your [local timezone listed on PHP.net](http://nl1.php.net/manual/en/timezones.php):
 
         sudo sed -i -e "s/^;date\.timezone =.*$/date\.timezone = 'UTC'/" /etc/php5/apache2/php.ini
 
-3. Secure your new MySQL installation:
+4. Secure your new MySQL installation:
 
         sudo mysql_secure_installation
 
-### Creating a New Apache Virtual Host with SSL
+### Creating an Apache Virtual Host with SSL
 
-We will create a brand new *virtual host* for Roundcube in this section. This will create a new webroot for Roundcube, separating it from any other webroots on your Linode. Replace `webmail.example.com` with the desired subdomain and domain name of your installation.
+We will construct a brand new *virtual host* for Roundcube in this section. This creates a new webroot for Roundcube, separating it from any other webroots on your Linode. Replace `webmail.example.com` with the desired domain name or subdomain of your installation.
 
-1. Position your Linode's shell prompt within the `/etc/apache2/sites-available` directory.
+1. Position your Linode's shell prompt within the `/etc/apache2/sites-available` directory:
 
         cd /etc/apache2/sites-available
 
-2. Download a copy of our `apache2-roundcube.sample.conf` virtual host configuration file.
+2. Download a copy of our `apache2-roundcube.sample.conf` virtual host configuration file:
 
         sudo wget https://linode.com/docs/assets/apache2-roundcube.sample.conf
 
-3. Transfer the file's ownership to **root**.
+3. Transfer the file's ownership to **root**:
 
         sudo chown root:root apache2-roundcube.sample.conf
 
-4. Next, change the file's access permissions to `644`.
+4. Next, change the file's access permissions to `644`:
 
         sudo chmod 644 apache2-roundcube.sample.conf
 
-5. Open `apache2-roundcube.sample.conf` and update the following (parameters?) to match your desired configuration:
+5. Open `apache2-roundcube.sample.conf` and update the following options to match your desired configuration:
 
         sudo nano apache2-roundcube.sample.conf
 
 - **ServerAdmin:** administrative email address for your Linode (e.x. `admin@example.com` or `webmaster@example.com`)
-- **ServerName:** domain name of the virtual host (e.x. `webmail.example.com`)
-- **ErrorLog:** location of the error log file (e.x. `/var/log/apache2/webmail.example.com/error.log`)
-- **CustomLog:** location of the access log file (e.x. `/var/log/apache2/webmail.example.com/access.log`)
+- **ServerName:** full domain name of the virtual host (e.x. `webmail.example.com`)
+- **ErrorLog (optional):** path to the custom error log file (e.x. `/var/log/apache2/webmail.example.com/error.log`; uncomment by removing `# `)
+- **CustomLog (optional):** path to the custom access log file (e.x. `/var/log/apache2/webmail.example.com/access.log`; again, uncomment by removing `# `)
+
+{: .caution }
+>
+> Make sure the custom directory and desired `.log` files exist **before** specifying it in your virtual host configuration. Failure to do so will prevent Apache from starting. The files should be owned by the `www-data` user with `644` permissions.
 
 6. Determine what type of Secure Socket Layer (SSL) certificate is best for your Roundcube deployment. A [self-signed SSL certificate](/docs/security/ssl/how-to-make-a-selfsigned-ssl-certificate) is easy and free, but triggers a **your connection is not private** error message in most modern browsers. [Let's Encrypt offers browser trusted, free SSL certificates](/docs/security/ssl/obtaining-lets-encrypt-certificates-on-ubuntu-14-04), but does not support Extended Validated (EV) or multi-domain (wildcard) certificates. To gain those features, use a [commercially purchased SSL certificate](/docs/security/ssl/obtaining-a-commercial-ssl-certificate).
 
-: .note }
+{: .note }
 >
 > Since Roundcube is a web-based *email* client, enabling and enforcing SSL is **very important**. It will encrypt *all* of the data moving between your Linode and your users (interacting with Roundcube), which is otherwise vulnerable traveling over the public internet.
 
 7. Once you have obtained a SSL certificate, update the following options to match it:
 
-- **SSLCertificateFile:** SSL certificate information (`.crt`) file
-- **SSLCertificateKeyFile:** SSL certificate private key (`.key`) file
+- **SSLCertificateFile:** path to the SSL certificate information (`.crt`) file
+- **SSLCertificateKeyFile:** path to the SSL certificate private key (`.key`) file
 
 8. Save your file changes and exit the text editor.
 
-: .note }
+{: .note }
 >
 > Saving the configuration file does not affect Apache... until we explicitly enable it in the **Enabling Roundcube's Apache Virtual Host** section.
 
-9. Lastly, rename your configuration file to match its full domain name.
+9. Lastly, rename your configuration file to match its full domain name:
 
         sudo mv apache2-roundcube.sample.conf webmail.example.com.conf
 
 ### Creating a MySQL Database and User
 
-1. Log into the MySQL command prompt as the **root** user.
+1. Log into the MySQL command prompt as the **root** user:
 
         mysql -u root -p
 
-2. Enter the password for your root MySQL user.
+2. Enter the password for your root MySQL user:
 
         Password: <your invisible password>
 
@@ -127,25 +115,17 @@ We will create a brand new *virtual host* for Roundcube in this section. This wi
 >
 > Your password will not be shown on screen as you type it. This is a security feature built into most linux programs to protect your password from people standing behind you; it is not a programming glitch.
 
-3. Once logged in and a `mysql>` prompt is shown, create a new MySQL database called `roundcubemail`.
+3. Once logged in and a `mysql>` prompt is shown, create a new MySQL database called `roundcubemail`:
 
         CREATE DATABASE roundcubemail;
 
-{: .note }
->
-> The trailing semicolon (`;`) tells MySQL where one command ends and the next begins.
-
 4. Visit [Secure Password Generator](http://passwordsgenerator.net) and generate a 15 character randomized password, making sure to check the **Exclude Ambiguous Characters** checkbox.
 
-{: .note }
->
-> This will help secure your MySQL database against *brute-force* attacks, where the attacking computer keeps guessing passwords until it guesses the right one. Brute-force attacks usually guess passwords that contain common words, phrases, or numbering sequences (e.g. "newark123").
-
-5. Create a new MySQL user called `roundcube` and replace `3ENDqKF4jX6fNQh9` with the password you just generated in step four.
+5. Create a new MySQL user called `roundcube` and replace `3ENDqKF4jX6fNQh9` with the password you just generated in step four:
 
         CREATE USER 'roundcube'@'localhost' IDENTIFIED BY '3ENDqKF4jX6fNQh9';
 
-6. Grant the new user `roundcube` full access to Roundcube’s database `roundcubemail`.
+6. Grant the new user `roundcube` full access to Roundcube’s database `roundcubemail`:
 
         GRANT ALL PRIVILEGES ON roundcubemail.* TO 'roundcube'@'localhost';
 
@@ -153,29 +133,25 @@ We will create a brand new *virtual host* for Roundcube in this section. This wi
 
         FLUSH PRIVILEGES;
 
-8. Log out of the MySQL command prompt and return to a regular Linux shell prompt.
+8. Log out of the MySQL command prompt and return to a regular Linux shell prompt:
 
         exit
 
 ## Making Final Preparations for Roundcube
 
-1. Install and enable the packages `php-pear`, `php5-intl`, and `php5-mcrypt`.
+1. Install and enable the packages `php-pear`, `php5-intl`, and `php5-mcrypt`:
 
         sudo apt-get install php-pear php5-intl php5-mcrypt && sudo php5enmod intl mcrypt
 
-2. Disable the Apache `mpm_event` module.
+2. Enable the Apache modules `deflates`, `expires`, `headers`, `rewrite`, and `ssl`:
 
-        sudo a2dismod mpm_event
+        sudo a2enmod deflates expires headers rewrite ssl
 
-3. Enable the Apache modules `deflates`, `expires`, `headers`, `mpm_prefork`, `rewrite`, and `ssl`.
-
-        sudo a2enmod deflates expires headers mpm_prefork rewrite ssl
-
-4. Additionally, install the PHP PEAR packages `Auth_SASL`, `Net_SMTP`, `Net_IDNA2-0.1.1`, `Mail_mime`, and `Mail_mimeDecode`.
+3. Additionally, install the PHP PEAR packages `Auth_SASL`, `Net_SMTP`, `Net_IDNA2-0.1.1`, `Mail_mime`, and `Mail_mimeDecode`:
 
         sudo pear install Auth_SASL Net_SMTP Net_IDNA2-0.1.1 Mail_mime Mail_mimeDecode
 
-: .note }
+{: .note }
 >
 > PEAR is an acronym for "PHP Extension and Application Repository". Common PHP code libraries, written officially or by third parties, can be easily installed and referenced using the `pear` command.
 
@@ -189,62 +165,64 @@ PEAR will print an **install ok** confirmation message for each package that it 
 
 ## Downloading and Installing Roundcube
 
-1. Make sure your Linode's shell prompt is operating inside your user's home directory. The `~/Downloads` folder is preferable, but `~/` is also acceptable. We won't judge.
+1. Make sure your Linode's shell prompt is operating inside your user's home directory. The `~/Downloads` folder is preferable, but `~/` is also acceptable. We won't judge:
 
         cd ~/Downloads
 
-2. Download Roundcube version 1.1.4.
+2. Download Roundcube version 1.1.4:
 
         wget http://downloads.sourceforge.net/project/roundcubemail/roundcubemail/1.1.4/roundcubemail-1.1.4.tar.gz
 
 If the **Stable > Complete** package listed at [Roundcube’s download page](https://roundcube.net/download/) is newer than `1.1.4`, replace any occurrences of the older version number with the newer one in the command below.
 
-3. Decompress and copy Roundcube to the `/var/www` directory. Again, replace any occurrences of `1.1.4` in the filename with the newer version number.
+3. Decompress and copy Roundcube to the `/var/www` directory. Again, replace any occurrences of `1.1.4` in the filename with the newer version number:
 
         sudo tar -zxvf roundcubemail-1.1.4.tar.gz -C /var/www
 
-4. Eliminate the version number from Roundcube's directory name. This will make updating easier later on down the road.
+4. Eliminate the version number from Roundcube's directory name. This will make updating easier later on down the road:
 
-        sudo mv /var/www/roundcube-1.1.4 /var/www/roundcube
+        sudo mv /var/www/roundcubemail-1.1.4 /var/www/roundcube
 
-5. Grant Apache write access to Roundcube’s directory. This will allow Roundcube to save its own configuration file, instead of you having to download it and manually upload it to your Linode later in this tutorial.
+5. Transfer ownership of the `/var/www/roundcube` directory to the `www-data` user. This will allow Roundcube to save its own configuration file, instead of you having to download it and manually upload it to your Linode:
 
         sudo chown -R www-data:www-data /var/www/roundcube
 
-6. Lastly, you should enable Roundcube's automatic cache cleaning shell script.
+6. Lastly, you should enable Roundcube's automatic cache cleaning shell script:
 
         echo '0 0 * * * root bash /var/www/roundcube/bin/cleandb.sh >> /dev/null' | sudo tee --append /etc/crontab
 
-The command above utilizes a *cron job* to run the `cleandb.sh` shell script included with Roundcube once per day at midnight. Read our [Scheduling Tasks with Cron](/docs/tools-reference/tools/schedule-tasks-with-cron) guide to learn about Cron.
+This utilizes a *cron job* to run the `cleandb.sh` shell script included with Roundcube once per day at midnight. Read our [Scheduling Tasks with Cron](/docs/tools-reference/tools/schedule-tasks-with-cron) guide to learn about Cron.
 
 ## Enabling Roundcube's Apache Virtual Host
 
-1. Enable the `webmail.example.com` virtual host you just wrote in the **Creating a New Apache Virtual Host with SSL** section.
+1. Enable the `webmail.example.com` virtual host you just wrote in the **Creating an Apache Virtual Host with SSL** section:
 
         sudo a2ensite webmail.example.com.conf
 
-2. Restart Apache to apply *all* previous configuration changes and enable your new virtual host.
+2. Restart Apache to apply *all* configuration changes and enable your new virtual host:
 
         sudo service apache2 restart
 
-If `* Restarting web server apache2 ... [ OK ]` appears in your Terminal without any errors, rock on! Your new virtual host is live. Move on to the next section.
+If `* Restarting web server apache2 ... [ OK ]` appears in your Terminal without any errors, rock on! Your new virtual host is live and you can move on to the next section.
+
+Otherwise, use the error messages to troubleshoot your configuration. Missing files, incorrect permissions, and typos are well-known enemies to Apache.
 
 ## Configuring Roundcube
 
-1. Launch your favorite web browser and navigate to `http://webmail.example.com/installer`. Again, make sure to replace `webmail.example.com` with the  or IP address of your Linode.
+1. Launch your favorite web browser and navigate to `http://webmail.example.com/installer`. Again, make sure to replace `webmail.example.com` with your chosen domain name.
 
 2. Begin configuring Roundcube. The first step of Roundcube’s graphical configuration is an *environment check*. Click on the **NEXT** button at the bottom of the page to continue.
 
 {: .note }
 >
-> Since Roundcube supports six different SQL engines, five **NOT AVAILABLE** warnings will appear under the **Checking available databases** section. You just installed MySQL, so you can ignore those warnings.
+> Since Roundcube supports six different SQL engines, five **NOT AVAILABLE** warnings will appear under the **Checking available databases** section. You just installed MySQL, so you can ignore these warnings.
 
 3. Specify your Roundcube configuration options. The list of options below will get you a proper, working configuration, but you can adjust any unmentioned options as you see fit.
 
 - **General configuration > product_name:** Name of your email service (e.g. **Linode Webmail** or **University of Michigan Webmail**)
 - **General configuration > support_url:** Where should your users go if they need help? A URL to a web-based contact form or an email address should be used. (e.g. `http://example.com/support` or `mailto:support@example.com`)
 - **General configuration > skin_logo:** Replaces the default Roundcube logo with an image of your choice. The image must be located within the `/var/www/roundcube` directory and be linked relatively (e.g. `skins/larry/linode.png`). Recommended image resolution is `177px` by `49px`
-- **Database setup > db_dsnw > Database password:** Password for the **roundcube** MySQL user you created in step one (e.g. `3ENDqKF4jX6fNQh9`).
+- **Database setup > db_dsnw > Database password:** Password for the **roundcube** MySQL user you created (e.g. `3ENDqKF4jX6fNQh9`).
 - **IMAP Settings > default_host:** Hostname of your IMAP server. Use `ssl://localhost` to access the local server (i.e. your server) using OpenSSL
 - **IMAP Settings > default_port:** TCP port for incoming IMAP connections to your server. Use port `993` to ensure OpenSSL is used
 - **IMAP Settings > username_domain:** What domain name should Roundcube assume all users are part of? This allows users to only have to type in their email username (e.g. **somebody**) instead of their full email address (e.g. `somebody@example.com`)
@@ -258,7 +236,7 @@ If `* Restarting web server apache2 ... [ OK ]` appears in your Terminal without
 
 5. Complete the configuration by clicking **CONTINUE**.
 
-[![Roundcube configuration saved successfully](/docs/assets/roundcube-configuration-saved-successfully.png)]
+[![Roundcube configuration saved successfully](/docs/assets/roundcube-configuration-saved-successfully_small.png)](/docs/assets/roundcube-configuration-saved-successfully.png)
 
 6. Lastly, import Roundcube’s MySQL database structure by clicking on the **Initialize database** button.
 
@@ -266,13 +244,13 @@ If `* Restarting web server apache2 ... [ OK ]` appears in your Terminal without
 
 # Removing the Installer Directory
 
-1. Delete the `/var/www/roundcube/installer` directory, which contains the web page files we just used to configure Roundcube.
+1. Delete the `/var/www/roundcube/installer` directory, which contains the web page files we just used to configure Roundcube:
 
         sudo rm -rf /var/www/roundcube/installer
 
 While Roundcube automatically disabled the installer functionality within its configuration file, deleting the installer directory adds another layer of protection against intruders.
 
-## Taking Roundcube for a Test Drive
+## Verifying your Roundcube Installation
 
 1. Navigate to `https://webmail.example.com` and log in using the your email account's username and password.
 
@@ -284,19 +262,19 @@ While Roundcube automatically disabled the installer functionality within its co
 
 2. If your configuration is functional, Roundcube will allow you to receive, read, and send emails from inside and outside of your domain name.
 
-## Knowing How to Update Roundcube
+## Updating Roundcube (In the Future)
 
 1. Compare the **Stable > Complete** package version listed on [Roundcube's download page](http://roundcube.net/download/) to the version currently installed on your Linode.
 
-2. If a newer version is available, replace any occurrences of `1.1.4` with the newest version in the command below. This will download Roundcube to your `~/Downloads` directory.
+2. If a newer version is available, replace any occurrences of `1.1.4` with the newest version in the command below. This will download Roundcube to your `~/Downloads` directory:
 
         cd ~/Downloads && wget http://downloads.sourceforge.net/project/roundcubemail/roundcubemail/1.1.4/roundcubemail-1.1.4.tar.gz
 
-3. Extract and unzip the *gzipped tarball* (`.tar.gz`) to `~/Downloads`.
+3. Extract and unzip the *gzipped tarball* (`.tar.gz`) to `~/Downloads`:
 
         tar -zxvf roundcubemail-1.1.4.tar.gz
 
-4. Begin updating Roundcube by executing the `/var/www/roundcube/bin/installto.sh` PHP script. If you did not install Roundcube in the `/var/www/roundcube` directory, replace the trailing directory with that of Roundcube's on your server.
+4. Begin updating Roundcube by executing the `/var/www/roundcube/bin/installto.sh` PHP script. If you did not install Roundcube in the `/var/www/roundcube` directory, replace the trailing directory with that of Roundcube's on your server:
 
         cd roundcubemail-1.1.4
         sudo php bin/installto.sh /var/www/roundcube
@@ -321,7 +299,7 @@ While Roundcube automatically disabled the installer functionality within its co
 
 **All done** means the update was successful; unless you don't see this message, proceed to step six.
 
-6. Delete the Roundcube directory and gzipped tarball from `~/Downloads`.
+6. Delete the Roundcube directory and gzipped tarball from `~/Downloads`:
 
         cd ~/Downloads && rm -rfd roundcubemail-1.1.4 roundcubemail-1.1.4.tar.gz
 
