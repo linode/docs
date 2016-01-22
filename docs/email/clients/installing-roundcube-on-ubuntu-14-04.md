@@ -37,15 +37,15 @@ This section will cover installing Apache, MySQL, PHP, and SSL on your Linode fr
 
         sudo apt-get install lamp-server^
 
-3. <create a root password>
-
-3. Specify your Linode's time zone in the `/etc/php5/apache2/php.ini` PHP configuration file. If your server is not using `UTC`, replace it with your [local timezone listed on PHP.net](http://nl1.php.net/manual/en/timezones.php):
-
-        sudo sed -i -e "s/^;date\.timezone =.*$/date\.timezone = 'UTC'/" /etc/php5/apache2/php.ini
+3. Choose a password for the **root** MySQL user. For simplicity, use the same password as your Linode's **root** UNIX user.
 
 4. Secure your new MySQL installation:
 
         sudo mysql_secure_installation
+        
+5. Specify your Linode's time zone in the `/etc/php5/apache2/php.ini` PHP configuration file. If your server is not using `UTC`, replace it with your [local timezone listed on PHP.net](http://nl1.php.net/manual/en/timezones.php):
+
+        sudo sed -i -e "s/^;date\.timezone =.*$/date\.timezone = 'UTC'/" /etc/php5/apache2/php.ini
 
 ### Creating an Apache Virtual Host with SSL
 
@@ -80,11 +80,7 @@ We will construct a brand new *virtual host* for Roundcube in this section. This
 >
 > Make sure the custom directory and desired `.log` files exist **before** specifying it in your virtual host configuration. Failure to do so will prevent Apache from starting. The files should be owned by the `www-data` user with `644` permissions.
 
-6. Determine what type of Secure Socket Layer (SSL) certificate is best for your Roundcube deployment. A [self-signed SSL certificate](/docs/security/ssl/how-to-make-a-selfsigned-ssl-certificate) is easy and free, but triggers a **your connection is not private** error message in most modern browsers. [Let's Encrypt offers browser trusted, free SSL certificates](/docs/security/ssl/obtaining-lets-encrypt-certificates-on-ubuntu-14-04), but does not support Extended Validated (EV) or multi-domain (wildcard) certificates. To gain those features, use a [commercially purchased SSL certificate](/docs/security/ssl/obtaining-a-commercial-ssl-certificate).
-
-{: .note }
->
-> Since Roundcube is a web-based *email* client, enabling and enforcing SSL is **very important**. It will encrypt *all* of the data moving between your Linode and your users (interacting with Roundcube), which is otherwise vulnerable traveling over the public internet.
+6. Determine what type of Secure Socket Layer (SSL) encryption certificate is best for your Roundcube deployment. A [self-signed SSL certificate](/docs/security/ssl/how-to-make-a-selfsigned-ssl-certificate) is easy and free, but triggers a **your connection is not private** error message in most modern browsers. [Let's Encrypt offers browser trusted, free SSL certificates](/docs/security/ssl/obtaining-lets-encrypt-certificates-on-ubuntu-14-04), but does not support Extended Validated (EV) or multi-domain (wildcard) certificates. To gain those features, use a [commercially purchased SSL certificate](/docs/security/ssl/obtaining-a-commercial-ssl-certificate).
 
 7. Once you have obtained a SSL certificate, update the following options to match it:
 
