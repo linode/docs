@@ -114,10 +114,10 @@ Since now the server should forward traffic out to the internet from clients, ac
         -A INPUT -i eth0 -p tcp -m state --state ESTABLISHED --sport 53 -j ACCEPT
         -A OUTPUT -o eth0 -p tcp -m state --state NEW,ESTABLISHED --dport 53 -j ACCEPT
 
-        -A INPUT -i eth0 -p tcp -m state --state ESTABLISHED --sport 80 -j ACCEPT
-        -A OUTPUT -o eth0 -p tcp -m state --state NEW,ESTABLISHED --dport 80 -j ACCEPT
-        -A INPUT -i eth0 -p tcp -m state --state ESTABLISHED --sport 443 -j ACCEPT
-        -A OUTPUT -o eth0 -p tcp -m state --state NEW,ESTABLISHED --dport 443 -j ACCEPT
+        -A INPUT -i eth0 -p tcp -m state --state NEW,ESTABLISHED --dport 80 -j ACCEPT
+        -A OUTPUT -o eth0 -p tcp -m state --state ESTABLISHED --sport 80 -j ACCEPT
+        -A INPUT -i eth0 -p tcp -m state --state NEW,ESTABLISHED --dport 443 -j ACCEPT
+        -A OUTPUT -o eth0 -p tcp -m state --state ESTABLISHED --sport 443 -j ACCEPT
 
         # Allow traffic on the TUN interface.
         -A INPUT -i tun0 -j ACCEPT
@@ -131,8 +131,8 @@ Since now the server should forward traffic out to the internet from clients, ac
         # Log any packets which don't fit the rules above...
         # (optional but useful)
         -A INPUT -m limit --limit 3/min -j LOG --log-prefix "iptables_INPUT_denied: " --log-level 4
-        -A INPUT -m limit --limit 3/min -j LOG --log-prefix "iptables_FORWARD_denied: " --log-level 4
-        -A INPUT -m limit --limit 3/min -j LOG --log-prefix "iptables_OUTPUT_denied: " --log-level 4
+        -A FORWARD -m limit --limit 3/min -j LOG --log-prefix "iptables_FORWARD_denied: " --log-level 4
+        -A OUTPUT -m limit --limit 3/min -j LOG --log-prefix "iptables_OUTPUT_denied: " --log-level 4
 
         # then reject them.
         -A INPUT -j REJECT
