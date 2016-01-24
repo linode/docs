@@ -1,19 +1,17 @@
 ---
 author:
   name: Linode Community
-  email: docs@linide.com
-description: 'Install and Running Hadoop on Ubuntu 14.04 (Single-Node-Cluster)''
+  email: docs@linode.com
+description: 'Install and Running Hadoop on Ubuntu 14.04 (Single-Node-Cluster).'
 keywords: 'hadoop, ubuntu, bigdata, database'
-license: '[CC BY-ND 3.0](http://creativecommons.org/lincese/by-nd/3.0/us/)'
-title: 'Install and Running Hadoop on Ubuntu 14.04 (Single-node-Cluster)'
+license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+title: Install and Running Hadoop on Ubuntu 14.04 (Single-node-Cluster)
 contributer:
   name: 'Manikandan'
   link: 'https://github.com/mani90'
-externel_resources: 
-  - [Apache Hadoop](https://hadoop.apache.org/)
+external_resources:
+- '[Apache Hadoop](https://hadoop.apache.org/)'
 ---
-
-
 
 *This is a Linode Community guide. Write for us and earn $250 per published guide.*
 
