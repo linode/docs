@@ -119,6 +119,12 @@ Since now the server should forward traffic out to the internet from clients, ac
         -A INPUT -i eth0 -p tcp -m state --state ESTABLISHED --sport 443 -j ACCEPT
         -A OUTPUT -o eth0 -p tcp -m state --state NEW,ESTABLISHED --dport 443 -j ACCEPT
 
+        # Allow http/s server traffic
+        #-A INPUT -i eth0 -p tcp -m state --state NEW,ESTABLISHED --dport 80 -j ACCEPT
+        #-A OUTPUT -o eth0 -p tcp -m state --state ESTABLISHED --sport 80 -j ACCEPT
+        #-A INPUT -i eth0 -p tcp -m state --state NEW,ESTABLISHED --dport 443 -j ACCEPT
+        #-A OUTPUT -o eth0 -p tcp -m state --state ESTABLISHED --sport 443 -j ACCEPT
+
         # Allow traffic on the TUN interface.
         -A INPUT -i tun0 -j ACCEPT
         -A FORWARD -i tun0 -j ACCEPT
