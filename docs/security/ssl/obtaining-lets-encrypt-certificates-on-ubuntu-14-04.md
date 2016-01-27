@@ -13,6 +13,8 @@ title: "Obtaining Let's Encrypt Certificates on Ubuntu 14.04"
 contributor:
   name: 'Sean Webber'
   link: 'https://github.com/seanthewebber'
+  external_resources:
+    "[Let's Encrypt Homepage](https://letsencrypt.org/)"
 ---
 
 ## Introduction
