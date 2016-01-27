@@ -1,6 +1,6 @@
 ---
 author:
-  name: Linode
+  name: Joe D. 
   email: docs@linode.com
 description: 'Basic Node.js Server in a Docker Container.'
 keywords: 'docker, nodejs, node.js, node, debian, ubuntu, server, web server, js, javascript'

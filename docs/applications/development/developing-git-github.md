@@ -1,6 +1,6 @@
 ---
 author:
-  name: Linode
+  name: Joe D. 
   email: docs@linode.com
 description: 'Using Git and Github start to finish.'
 keywords: 'git,dvcs,vcs,scm,gitweb,github'

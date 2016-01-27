@@ -1,7 +1,7 @@
 ---
 deprecated: false
 author:
-  name: Linode
+  name: Joe D. 
   email: docs@linode.com
 description: 'Markdown Reference Guide'
 keywords: 'style guide, write for us, linode library, article submissions, markdown,'
