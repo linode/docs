@@ -1,26 +1,43 @@
 ---
 author:
-    name: 'Sean Webber'
-    email: 'swebber@yazzielabs.com'
+  name: 'Linode Community'
+  email: 'docs@linode.com'
 description: 'Installing Pydio on Ubuntu 14.04 LTS'
 keywords: '14.04,cloud,LTS,Pydio,storage,Ubuntu'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 published: 'N/A'
-modified: 'Monday, January 25th, 2016'
+modified: 'Tuesday, January 26th, 2016'
+modified_by:
+  name: 'Linode'
 title: 'Installing Pydio on Ubuntu 14.04'
 contributor:
-    name: 'Sean Webber'
-    link: 'https://github.com/seanthewebber'
+  name: 'Sean Webber'
+  link: 'https://github.com/seanthewebber'
+  external_resources:
+    '[Pydio Homepage](https://pydio.com/)'
 ---
 
 ## Introduction
 
 Pydio is a web-based file storage solution that allows you to build your own cloud. Instead of depending upon someone else's infrastructure and policies, Pydio allows you to deploy your own private, secure cloud that runs on your rules. In this guide, we will install and configure Pydio on a Linode virtual private server.
 
-## Prerequisites
+## Before You Begin
 
-- A Linode server running Ubuntu 14.04. We recommend following our [Getting started](/docs/getting-started) guide if you need help setting up your Linode
-- An **A HOST** or **CNAME** DNS record named `storage` pointed at your Linode. Refer to our [Introduction to DNS Records](docs/networking/dns/introduction-to-dns-records) guide if you need help creating this record
+1. Familiarize yourself with our [Getting Started](/docs/getting-started) guide and deploy an **Ubuntu 14.04 LTS** image to your Linode. Complete the hostname and timezone sections.
+
+2. Complete our [Securing Your Server](/docs/security/securing-your-server) tutorial to create a standard user account, harden SSH access, and remove unnecessary network services.
+
+{: .note}
+>
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+
+3. Configure an **A HOST** or **CNAME** DNS record ("subdomain") named `storage` to point at your Linode. Refer to our [Introduction to DNS Records](docs/networking/dns/introduction-to-dns-records) guide if you need help creating this record.
+
+4. Understand that `example.com` is that: an *example* used in this tutorial. This needs to be replace this with **your** domain name. The `storage` subdomain can also be customized, but make sure to replicate your replacement name throughout the guide.
+
+5. Update your server's software packages:
+
+        sudo apt-get update && sudo apt-get upgrade
 
 ## Linux, Apache, MySQL, and PHP (LAMP) Stack
 
@@ -28,17 +45,13 @@ This section will cover installing Apache, MySQL, PHP, and SSL on your Linode fr
 
 ### Installing LAMP Stack Packages
 
-1. Update your Linode's software packages:
-
-        sudo apt-get update && sudo apt-get upgrade
-
-2. Install the `lamp-server^` *metapackage*, which installs Apache, MySQL, and PHP as dependencies:
+1. Install the `lamp-server^` *metapackage*, which installs Apache, MySQL, and PHP as dependencies:
 
         sudo apt-get install lamp-server^
 
-3. Choose a password for the **root** MySQL user. For simplicity, use the same password as your Linode's **root** UNIX user.
+2. Choose a password for the **root** MySQL user. For simplicity, use the same password as your Linode's **root** UNIX user.
 
-4. Secure your new MySQL installation:
+3. Secure your new MySQL installation:
 
         sudo mysql_secure_installation
 
