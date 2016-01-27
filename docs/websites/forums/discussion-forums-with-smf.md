@@ -13,7 +13,7 @@ published: 'Thursday, March 18th, 2010'
 title: Discussion Forums with SMF
 deprecated: false
 external_resources:
- - '[SMF Documentation](http://docs.simplemachines.org/)'
+ - '[SMF Documentation](http://wiki.simplemachines.org/)'
  - '[Modifications, Styles, and Upgrades](http://custom.simplemachines.org/)'
  - '[Functions Database](http://support.simplemachines.org/function_db/)'
  - '[SMF Community Forum](http://www.simplemachines.org/community/index.php)'
