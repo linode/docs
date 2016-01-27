@@ -1,27 +1,45 @@
 ---
 author:
-    name: 'Sean Webber'
-    email: 'swebber@yazzielabs.com'
+  name: 'Linode Community'
+  email: 'docs@linode.com'
 description: 'Installing Roundcube and its dependencies on Ubuntu 14.04 LTS'
 keywords: '14.04,IMAP,LTS,Roundcube,Ubuntu,webmail'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 published: 'N/A'
-modified: 'Thursday, January 21st, 2016'
+modified: 'Tuesday, January 26th, 2016'
+modified_by:
+  name: 'Linode'
 title: 'Installing Roundcube on Ubuntu 14.04'
 contributor:
-    name: 'Sean Webber'
-    link: 'https://github.com/seanthewebber'
+  name: 'Sean Webber'
+  link: 'https://github.com/seanthewebber'
+  external_resources:
+    '[Roundcube Homepage](https://roundcube.net/)'
 ---
 
 ## Introduction
 
 Roundcube is a web-based IMAP email client that offers an user interface similar to Google’s Gmail or Microsoft’s Hotmail. It is a server-side application written in PHP designed to access **one** email server or service. Email users interact with Roundcube over the internet using a web browser.
 
-## Prerequisites
+## Before You Begin
 
-- A Linode server running Ubuntu 14.04. We recommend following our [Getting started](/docs/getting-started) guide if you need help setting up your Linode
-- A functional email server. This guide is designed to work with our [Installing Postfix, Dovecot, and MySQL](/docs/email/postfix/email-with-postfix-dovecot-and-mysql) tutorial, but you **can** use a different mail server. Replace `localhost` with the Fully Qualified Domain Name (FQDN) or IP address of your email server if its hosted elsewhere
-- An **A HOST** or **CNAME** DNS record named `webmail` pointed at your Linode. Refer to our [Introduction to DNS Records](docs/networking/dns/introduction-to-dns-records) guide if you need help creating this record
+1. Familiarize yourself with our [Getting Started](/docs/getting-started) guide and deploy an **Ubuntu 14.04 LTS** image to your Linode. Complete the hostname and timezone sections.
+
+2. Complete our [Securing Your Server](/docs/security/securing-your-server) tutorial to create a standard user account, harden SSH access, and remove unnecessary network services.
+
+{: .note}
+>
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+
+3. Possess an operational electronic email (email) server. This guide is designed to work with our [Installing Postfix, Dovecot, and MySQL](/docs/email/postfix/email-with-postfix-dovecot-and-mysql) tutorial, but you **can** use a different mail server. Replace `localhost` with the Fully Qualified Domain Name (FQDN) or IP address of your email server if its hosted elsewhere.
+
+4. Configure an **A HOST** or **CNAME** DNS record ("subdomain") named `webmail` to point at your Linode. Refer to our [Introduction to DNS Records](docs/networking/dns/introduction-to-dns-records) guide if you need help creating this record.
+
+5. Understand that `example.com` is that: an *example* used in this tutorial. This needs to be replace this with **your** domain name. The `webmail` subdomain can also be customized, but make sure to replicate your replacement name throughout the guide.
+
+6. Update your server's software packages:
+
+        sudo apt-get update && sudo apt-get upgrade
 
 ## Linux, Apache, MySQL, and PHP (LAMP) Stack
 
@@ -29,21 +47,17 @@ This section will cover installing Apache, MySQL, PHP, and SSL on your Linode fr
 
 ### Installing LAMP Stack Packages
 
-1. Update your Linode's software packages:
-
-        sudo apt-get update && sudo apt-get upgrade
-
-2. Install the `lamp-server^` *metapackage*, which installs Apache, MySQL, and PHP as dependencies:
+1. Install the `lamp-server^` *metapackage*, which installs Apache, MySQL, and PHP as dependencies:
 
         sudo apt-get install lamp-server^
 
-3. Choose a password for the **root** MySQL user. For simplicity, use the same password as your Linode's **root** UNIX user.
+2. Choose a password for the **root** MySQL user. For simplicity, use the same password as your Linode's **root** UNIX user.
 
-4. Secure your new MySQL installation:
+3. Secure your new MySQL installation:
 
         sudo mysql_secure_installation
-        
-5. Specify your Linode's time zone in the `/etc/php5/apache2/php.ini` PHP configuration file. If your server is not using `UTC`, replace it with your [local timezone listed on PHP.net](http://nl1.php.net/manual/en/timezones.php):
+
+4. Specify your Linode's time zone in the `/etc/php5/apache2/php.ini` PHP configuration file. If your server is not using `UTC`, replace it with your [local timezone listed on PHP.net](http://nl1.php.net/manual/en/timezones.php):
 
         sudo sed -i -e "s/^;date\.timezone =.*$/date\.timezone = 'UTC'/" /etc/php5/apache2/php.ini
 
@@ -93,9 +107,13 @@ We will construct a brand new *virtual host* for Roundcube in this section. This
 >
 > Saving the configuration file does not affect Apache... until we explicitly enable it in the **Enabling Roundcube's Apache Virtual Host** section.
 
-9. Lastly, rename your configuration file to match its full domain name:
+9. Rename your configuration file to match its full domain name:
 
         sudo mv apache2-roundcube.sample.conf webmail.example.com.conf
+
+10. Lastly, disable the default Apache virtual host *unless* you plan to use it.
+
+        sudo a2dissite 000-default.conf default-ssl.conf
 
 ### Creating a MySQL Database and User
 
