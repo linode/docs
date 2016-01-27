@@ -35,13 +35,19 @@ This tutorial will cover the following on Ubuntu 14.04:
 
 1. Familiarize yourself with our [Getting Started](/docs/getting-started) guide and deploy an **Ubuntu 14.04 LTS** image. Complete the hostname and timezone sections.
 
-2. Make sure your Linode has at least 2GB of total RAM. If you are running a **Linode 1024** server, add 1GB of SWAP memory to meet this requirement.
+2. Complete our [Securing Your Server](/docs/security/securing-your-server) tutorial to create a standard user account, harden SSH access, and remove unnecessary network services.
 
-3. Update your server's software packages:
+{: .note}
+>
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+
+3. Make sure your Linode has at least 2GB of total RAM. If you are running a **Linode 1024** server, add 1GB of SWAP memory to meet this requirement.
+
+4. Update your server's software packages:
 
         sudo apt-get update && sudo apt-get upgrade
 
-4. Install the `git` package:
+5. Install the `git` package:
 
         sudo apt-get install git
 
