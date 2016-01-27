@@ -355,7 +355,7 @@ If you would like to supplement your web server's IPv4 rules with IPv6 too, this
     -A INPUT ! -i lo -s ::1/128 -j REJECT
 
     # Allow ICMP
-    -A INPUT -p icmpv6 -m state --state NEW -j ACCEPT
+    -A INPUT -p icmpv6 -j ACCEPT
 
     # Allow HTTP and HTTPS connections from anywhere
     # (the normal ports for web servers).
