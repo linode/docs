@@ -1,16 +1,18 @@
 ---
 author:
-    name: 'Sean Webber'
-    email: 'swebber@yazzielabs.com'
-description: 'Installing Let\'s Encrypt and obtaining SSL certificates on Ubuntu 14.04 LTS'
-keywords: '14.04,ACME,free,HTTPS,Let\'s Encrypt,LTS,SSL,Ubuntu'
+  name: 'Linode Community'
+  email: 'docs@linode.com'
+description: "Installing Let's Encrypt and obtaining SSL certificates on Ubuntu 14.04"
+keywords: "14.04,ACME,HTTPS,Let's Encrypt,LTS,SSL,Ubuntu"
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 published: 'N/A'
-modified: 'Friday, January 1st, 2016'
-title: 'Obtaining Let\'s Encrypt Certificates on Ubuntu 14.04'
+modified: 'Tuesday, January 26th, 2016'
+modified_by:
+  name: 'Linode'
+title: "Obtaining Let's Encrypt Certificates on Ubuntu 14.04"
 contributor:
-    name: 'Sean Webber'
-    link: 'https://github.com/seanthewebber'
+  name: 'Sean Webber'
+  link: 'https://github.com/seanthewebber'
 ---
 
 ## Introduction
@@ -27,10 +29,19 @@ This tutorial will cover the following on Ubuntu 14.04:
 >
 > As of 2016-01-01, Let's Encrypt is still in *public beta*. Although most users have reported success with Ubuntu 14.04, the ACME client is still being debugged and developed. **Do not deploy Let's Encrypt Public Beta in a production environment without testing it beforehand.**
 
-## Prerequisites
+## Before you Begin
 
-- A Linode server running Ubuntu 14.04 with at least 2GB of RAM. On a **Linode 1024** server, add 1GB of SWAP to meet this requirement. We recommend following our [Getting started](/docs/getting-started) guide if you need help setting up your Linode
-- The `git` package. If it is not installed on your Linode, execute the `sudo apt-get install git` command to install it
+1. Familiarize yourself with our [Getting Started](/docs/getting-started) guide and deploy an **Ubuntu 14.04 LTS** image. Complete the hostname and timezone sections.
+
+2. Make sure your Linode has at least 2GB of total RAM. If you are running a **Linode 1024** server, add 1GB of SWAP memory to meet this requirement.
+
+3. Update your server's software packages:
+
+        sudo apt-get update && sudo apt-get upgrade
+
+4. Install the `git` package:
+
+        sudo apt-get install git
 
 ## Downloading and Installing Let's Encrypt
 
