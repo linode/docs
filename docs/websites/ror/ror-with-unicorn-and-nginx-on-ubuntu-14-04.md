@@ -68,31 +68,31 @@ This ensures that all software is up to date and running the latest version.
 
         sudo make install
 
-##Install Rails
+##Install and create Rails application
+
+1.  Install rails on the server using `gem`:
 
         sudo gem install rails
 
-##Create Rails application
-
-Before creating our project, we should move to the home directory:
+2.  Before creating our project, we should move to the home directory:
 
         cd
 
-1.  Create a new rails project. We will be using `example` as our project name:
+3.  Create a new rails project. We will be using `example` as our project name:
 
         rails new example
 
-2. Move to the project directory:
+4. Move to the project directory:
 
         cd example
 
-##Install Unicorn
+##Install and configure Unicorn
+
+1.  Install Unicorn on the server using `gem`:
 
         sudo gem install unicorn
 
-##Configure Unicorn
-
-Create the file `config/unicorn.rb` which contains unicorn configuration and paste the following configuration in the file.
+2.  Create the file `config/unicorn.rb` which contains unicorn configuration and paste the following configuration in the file.
 
 {: .file}
 /home/username/example/config/unicorn.rb
@@ -118,7 +118,7 @@ Create the file `config/unicorn.rb` which contains unicorn configuration and pas
     pid "#{shared_dir}/pids/unicorn.pid"
     ~~~
 
-Now create directories which we mentioned in the Unicorn config file:
+3.  Now create directories which we mentioned in the Unicorn config file:
 
         mkdir -p shared/pids shared/sockets shared/log
 
@@ -126,16 +126,13 @@ Now create directories which we mentioned in the Unicorn config file:
 >
 >Please note that we are still in the Rails application directory
 
-##Install Nginx
+##Install and configure Nginx
 
-Download and install Nginx using APT:
+1.  Download and install Nginx using APT:
 
         sudo apt-get install nginx
 
-
-##Configure Nginx
-
-1.  We need to configure Nginx to work as the reverse proxy. Edit the config file `/etc/nginx/nginx.conf`and paste the configuration in HTTP block:
+2.  We need to configure Nginx to work as the reverse proxy. Edit the config file `/etc/nginx/nginx.conf`and paste the configuration in HTTP block:
 
     {: .file-excerpt}
     /etc/nginx/nginx.conf
@@ -150,11 +147,11 @@ Download and install Nginx using APT:
     >
     > Edit username and example with appropriate values.
 
-2.  Remove the default nginx site configuration:
+3.  Remove the default nginx site configuration:
 
         sudo rm /etc/nginx/sites-enabled/default
 
-3.  Create new nginx site configuration file for Rails application:
+4.  Create new nginx site configuration file for Rails application:
 
     {: .file}
     /etc/nginx/sites-available/example
@@ -184,11 +181,11 @@ Download and install Nginx using APT:
     >
     >Make sure you change the username and example with the appropriate values.
 
-4.  Create a symlink to nginx’s `sites-enabled` directory to enable your site configuration file:
+5.  Create a symlink to nginx’s `sites-enabled` directory to enable your site configuration file:
 
         sudo ln -s /etc/nginx/sites-available/example /etc/nginx/sites-enabled
 
-5.  Restart Nginx
+6.  Restart Nginx
 
         sudo service nginx restart
 
@@ -204,7 +201,7 @@ Download and install Nginx using APT:
 
     {: .note}
     >
-    >Make sure you is in project directory else you need to type the whole path	
+    >Make sure you is in application directory else you need to type the whole path	
 
 3.  To stop the Unicorn, issue the following command:
 
