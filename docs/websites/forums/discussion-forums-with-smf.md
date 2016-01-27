@@ -59,8 +59,8 @@ The following instructions will download the latest stable release, which is 2.0
 
 2.  Download and extract the package:
 
-        sudo -u www-data wget http://mirror.ord.simplemachines.org/downloads/smf_2-0-9_install.tar.gz
-        sudo -u www-data tar -zxvf smf_2-0-9_install.tar.gz
+        sudo -u www-data wget http://download.simplemachines.org/index.php/latest/install -O smf_latest_install.tar.gz
+        sudo -u www-data tar -zxvf smf_latest_install.tar.gz
 
 3.  Follow the instructions on the web interface to finish the installation; then, in your terminal, remove the installation script:
 
