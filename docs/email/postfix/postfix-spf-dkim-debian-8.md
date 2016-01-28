@@ -175,7 +175,7 @@ DKIM involves setting up the OpenDKIM package and hooking it into Postfix as wel
         OversignHeaders     From
         ~~~
 
-    Edit `/etc/opendkim.conf` and replace it's contents with the above, or download [a copy of opendkim.conf](/doc/assets/postfix-opendkim.conf.txt), upload it to your server and copy it over top of `/etc/opendkim.conf`.
+    Edit `/etc/opendkim.conf` and replace it's contents with the above, or download [a copy of opendkim.conf](/docs/assets/postfix-opendkim.conf.txt), upload it to your server and copy it over top of `/etc/opendkim.conf`.
 
 2.  Ensure that file permissions are set correctly:
 
