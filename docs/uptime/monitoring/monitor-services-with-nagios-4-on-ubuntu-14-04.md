@@ -86,10 +86,13 @@ Now that Nagios is installed, we may setup the web interface. In order to use th
 1. Make sure Apache has mod_rewrite and mod_cgi enabled:
 
     sudo a2enmod rewrite && sudo a2enmod cgi
+If mod_rewrite and/or mod_cgi were not already enabled, you'll have to restart Apache with `sudo service apache2 restart`.
 
-2. Install the web interface config file in Apache's conf.d directory using the following command. Remember to run this command from Nagios source code directory:
+2. Install the web interface config file in Apache's "sites-available" directory using the following commands. We will be copying a sample configuration file to Apache, setting permissions to 644 and enabling the site on Apache. Remember to run this command from Nagios source code directory:
 
-    sudo make install-webconf
+    sudo cp sample-config/httpd.conf /etc/apache2/sites-available/nagios4.conf
+    sudo chmod 644 /etc/apache2/sites-available/nagios4.conf
+    sudo a2ensite nagios4.conf
 
 4. For safety, the web interface requires login. Create a nagiosadmin account and note down the password assigned.
 
@@ -97,7 +100,7 @@ Now that Nagios is installed, we may setup the web interface. In order to use th
 
 5. Restart Apache in order to reload settings:
 
-    /etc/init.d/apache2 reload
+    sudo service apache2 reload
 
 ## Installing Nagios Plugins
 
@@ -127,6 +130,15 @@ We finally can access Nagios Web Interface! But first, we need to start Nagios i
 The interface can be accessed from your domain or Public IP (change example.com with your Linode IP address). When prompted for login, insert nagiosadmin as user and the assigned password:
 
     http://example.com/nagios
+
+You will be greeted with a screen like this one:
+
+![Nagios 4 Greeting](/docs/assets/greeting_nagios4.png)
+
+If you click Hosts on the left menu, you can see that localhost (your Nagios server) is already being monitored:
+
+![Nagios 4 Hosts](/docs/assets/hosts_nagios4.png)
+
 
 ## Next Steps
 
