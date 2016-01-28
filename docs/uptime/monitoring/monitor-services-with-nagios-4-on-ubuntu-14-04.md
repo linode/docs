@@ -38,18 +38,18 @@ Nagios is a very popular monitoring tool, providing monitoring and alerting serv
 
 1.  As always, make sure that your package repository and packages are updated. In order to do that, simply enter the following commands:
 
-    sudo apt-get update && sudo apt-get upgrade
+        sudo apt-get update && sudo apt-get upgrade
 
 2.  Nagios requires a separate user and group to run its process. We will create a user `nagios` and a group `nagioscmd`, and insert the user into the group. We are also going to add the Apache user `www-data` to the `nagcmd` group in order to run external commands on Nagios using the web interface:
 
-    sudo useradd nagios
-    sudo groupadd nagcmd
-    sudo usermod -a -G nagcmd nagios
-    sudo usermod -G nagcmd www-data
+        sudo useradd nagios
+        sudo groupadd nagcmd
+        sudo usermod -a -G nagcmd nagios
+        sudo usermod -G nagcmd www-data
 
 3. Next we will install the latest stable version of Nagios, which we'll have to download and build from source code. In order to fulfill the dependencies to build Nagios, install the following packages:
 
-    sudo apt-get install build-essential unzip openssl libssl-dev libgd2-xpm-dev xinetd apache2-utils
+        sudo apt-get install build-essential unzip openssl libssl-dev libgd2-xpm-dev xinetd apache2-utils
 
 ### Building Nagios
 
@@ -59,21 +59,21 @@ We are now ready to build Nagios 4 from source code. The following steps will gu
 
 2. Download and extract Nagios to your Linode using `wget` and `tar`, pasting the link from step 4:
 
-    wget https://assets.nagios.com/downloads/nagioscore/releases/nagios-4.1.1.tar.gz
-    tar -xvf nagios-4.1.1.tar.gz
+        wget https://assets.nagios.com/downloads/nagioscore/releases/nagios-4.1.1.tar.gz
+        tar -xvf nagios-4.1.1.tar.gz
 
 3. We are now ready to build Nagios. Change to the newly created directory:
 
-    cd nagios-4.1.1
+        cd nagios-4.1.1
 
 4. Now we need to configure it, compile it and install it:
 
-    ./configure --with-nagios-group=nagios --with-command-group=nagcmd
-    make all
-    sudo make install
-    sudo make install-init
-    sudo make install-config
-    sudo make install-commandmode
+        ./configure --with-nagios-group=nagios --with-command-group=nagcmd
+        make all
+        sudo make install
+        sudo make install-init
+        sudo make install-config
+        sudo make install-commandmode
 
 {: .note}
 >
@@ -85,22 +85,22 @@ Now that Nagios is installed, we may setup the web interface. In order to use th
 
 1. Make sure Apache has mod_rewrite and mod_cgi enabled:
 
-    sudo a2enmod rewrite && sudo a2enmod cgi
+        sudo a2enmod rewrite && sudo a2enmod cgi
 If mod_rewrite and/or mod_cgi were not already enabled, you'll have to restart Apache with `sudo service apache2 restart`.
 
 2. Install the web interface config file in Apache's "sites-available" directory using the following commands. We will be copying a sample configuration file to Apache, setting permissions to 644 and enabling the site on Apache. Remember to run this command from Nagios source code directory:
 
-    sudo cp sample-config/httpd.conf /etc/apache2/sites-available/nagios4.conf
-    sudo chmod 644 /etc/apache2/sites-available/nagios4.conf
-    sudo a2ensite nagios4.conf
+        sudo cp sample-config/httpd.conf /etc/apache2/sites-available/nagios4.conf
+        sudo chmod 644 /etc/apache2/sites-available/nagios4.conf
+        sudo a2ensite nagios4.conf
 
 4. For safety, the web interface requires login. Create a nagiosadmin account and note down the password assigned.
 
-    sudo htpasswd -c /usr/local/nagios/etc/htpasswd.users nagiosadmin
+        sudo htpasswd -c /usr/local/nagios/etc/htpasswd.users nagiosadmin
 
 5. Restart Apache in order to reload settings:
 
-    sudo service apache2 reload
+        sudo service apache2 reload
 
 ## Installing Nagios Plugins
 
@@ -108,28 +108,28 @@ Nagios Plugins is a pack of well-written checking scripts, which will allow you 
 
 1. Download and extract Nagios Plugins to your Linode using wget and tar, pasting the link you copied:
 
-    wget http://www.nagios-plugins.org/download/nagios-plugins-2.1.1.tar.gz
-    tar -xvf nagios-plugins-2.1.1.tar.gz
+        wget http://www.nagios-plugins.org/download/nagios-plugins-2.1.1.tar.gz
+        tar -xvf nagios-plugins-2.1.1.tar.gz
 
 6. Just like we did with Nagios, we need to build Nagios Plugins. Change to the newly created directory:
 
-    cd nagios-plugins-2.1.1
+        cd nagios-plugins-2.1.1
 
 7. Now we need to configure it, compile it and install it:
 
-    ./configure --with-nagios-user=nagios --with-nagios-group=nagios --with-openssl
-    make
-    sudo make install
+        ./configure --with-nagios-user=nagios --with-nagios-group=nagios --with-openssl
+        make
+        sudo make install
 
 ## Accessing the Nagios Web Interface
 
 We finally can access Nagios Web Interface! But first, we need to start Nagios itself:
 
-    sudo service nagios start
+        sudo service nagios start
 
 The interface can be accessed from your domain or Public IP (change example.com with your Linode IP address). When prompted for login, insert nagiosadmin as user and the assigned password:
 
-    http://example.com/nagios
+        http://example.com/nagios
 
 You will be greeted with a screen like this one:
 
@@ -147,4 +147,5 @@ Nagios contains numerous features that are beyond the scope of this document. Yo
 Congratulations on your new Nagios monitoring and notification system!
 
 [Nagios Website](http://www.nagios.org/)
+
 [Nagios Library](http://library.nagios.com/)
