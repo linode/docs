@@ -10,6 +10,11 @@ modified_by:
     name: Todd Knarr
 published: 'Friday, December 11th, 2015'
 title: 'Configure SPF and DKIM in Postfix on Debian 8'
+external_resources:
+ - '[Sender Policy Framework](http://www.openspf.org/)'
+ - '[DomainKeys Identified Mail](http://www.dkim.org/)'
+ - '[OpenDKIM](http://www.opendkim.org/)'
+ - 'The [Sender Policy Framework](https://en.wikipedia.org/wiki/Sender_Policy_Framework) and [DomainKeys Identified Mail](https://en.wikipedia.org/wiki/DomainKeys_Identified_Mail) Wikipedia pages should not be considered authoritative but do provide helpful discusson and additional references.'
 ---
 
 [SPF (Sender Policy Framework)](http://www.openspf.org/) is a system that identifies to mail servers what hosts are allowed to send email for a given domain. Setting up SPF helps to prevent your email from being classified as spam.
@@ -66,7 +71,7 @@ For now, we're going to stick with the `mx` version. It's simpler and correct fo
 
     v=spf1 mx -all
 
-If you're using Linode's DNS Manager, go to the domain zone page for the SPF-selected domain and add a new TXT record. The screen will look something like this once you've got it filled out:
+If you're using Linode's DNS Manager, go to the domain zone page for the selected domain and add a new TXT record. The screen will look something like this once you've got it filled out:
 
 ![Linode DNS manager add TXT record](/docs/assets/Postfix_SPF_TXT_record.png)
 
@@ -181,7 +186,7 @@ DKIM involves setting up the OpenDKIM package, hooking it into Postfix, and addi
         OversignHeaders     From
         ~~~
 
-    Edit `/etc/opendkim.conf` and replace it's contents with the above, or download [a copy of opendkim.conf](/docs/assets/postfix-opendkim.conf.txt), upload it to your server and copy it over top of `/etc/opendkim.conf`.
+    Edit `/etc/opendkim.conf` and replace it's contents with the above, or download [a copy of opendkim.conf](/docs/assets/postfix-opendkim.conf.txt), upload it to your server and copy it over `/etc/opendkim.conf`.
 
 2.  Ensure that file permissions are set correctly:
 
@@ -194,7 +199,7 @@ DKIM involves setting up the OpenDKIM package, hooking it into Postfix, and addi
         chown -R opendkim:opendkim /etc/opendkim
         chmod go-rw /etc/opendkim/keys
 
-4.  Create the signing table `/etc/opendkim/signing.table`. It needs to have one line per each domain that handles email. Each line should look like this:
+4.  Create the signing table `/etc/opendkim/signing.table`. It needs to have one line per domain that you handle email for. Each line should look like this:
 
     {: .file-excerpt}
     /etc/opendkim/signing.table
@@ -273,7 +278,7 @@ DKIM involves setting up the OpenDKIM package, hooking it into Postfix, and addi
 
 ### Set up DNS
 
-As with SPF, DKIM uses TXT records to hold information about the signing key for each domain. Using YYYYMM as above, you need to make a TXT record for the host `YYYYMM._domainkey` for each mail-handling domain you're using. Its value can be found in the `example.txt` file for the domain. Those files look like this:
+As with SPF, DKIM uses TXT records to hold information about the signing key for each domain. Using YYYYMM as above, you need to make a TXT record for the host `YYYYMM._domainkey` for each domain you handle mail for. Its value can be found in the `example.txt` file for the domain. Those files look like this:
 
 {: .file}
 example.txt
@@ -298,7 +303,7 @@ If you're using Linode's DNS manager, this is what the add TXT record screen wil
 
 ![Linode DNS manager add TXT record](/docs/assets/Postfix_DKIM_TXT_record.png)
 
-Repeat this for every mail-handling domain you created, using the `.txt` file for that domain.
+Repeat this for every domain you handle mail for, using the `.txt` file for that domain.
 
 ### Test your configuration
 
@@ -348,7 +353,7 @@ If everything is OK you shouldn't get any output. If you want to see more inform
         non_smtpd_milters = local:/opendkim/opendkim.sock
         ~~~
 
-    You can put this anywhere in the file. The usual practice is to put it after the `smtpd_recipient_restrictions` entry. You'll notice the path to the socket isn't the same here as it was in the `/etc/defaults/opendkim` file. That's because the path of Postfix's chroot jail restricts the view of the recipient's filesystem instead of within the actual filesystem.
+    You can put this anywhere in the file. The usual practice is to put it after the `smtpd_recipient_restrictions` entry. You'll notice the path to the socket isn't the same here as it was in the `/etc/defaults/opendkim` file. That's because of Postfix's chroot jail, the path here is the path within that restricted view of the filesystem instead of within the actual filesystem.
 
 4.  Restart the OpenDKIM daemon so it sets up the correct socket for Postfix:
 
@@ -396,12 +401,3 @@ The reason the YYYYMM format is used for the selector is that best practice call
     Make sure they both start without any errors.
 
 7.  After a couple of weeks, all email in transit should either have been delivered or bounced and the old DKIM key information in DNS won't be needed anymore. Delete the old `YYYYMM._domainkey` TXT records in each of your domains, leaving just the newest ones (most recent year and month). Don't worry if you forget and leave the old keys around longer than planned. There's no security issue. Removing the obsolete records is more a matter of keeping things neat and tidy than anything else.
-
-## More information
-
-You can find additional information about SPF, DKIM and OpenDKIM on these web sites:
-
-1.  [Sender Policy Framework](http://www.openspf.org/) official site
-2.  [DomainKeys Identified Mail](http://www.dkim.org/) official site
-3.  [OpenDKIM](http://www.opendkim.org/) official site
-4.  The [Sender Policy Framework](https://en.wikipedia.org/wiki/Sender_Policy_Framework) and [DomainKeys Identified Mail](https://en.wikipedia.org/wiki/DomainKeys_Identified_Mail) Wikipedia pages should not be considered authoritative but do provide helpful discusson and additional references.
