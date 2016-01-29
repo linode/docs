@@ -150,6 +150,9 @@ If you have a firewall running on your Linode, add exceptions for SteamCMD:
         screen ./srcds_run -console -game left4dead2 +port 27020 +maxplayers 8 +exec server.cfg +map c2m1_highway
         ~~~
 
+{: .note }
+>The `+port 27020` parameter is not required, but is recomended so that your server always starts on the same port. The port number may be changed to whichever one you wish, so long as it is not a privileged port.
+
         You can change the map to whichever one you wish.
 	This script, when run, will execute the L4D2 server in a [Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions) session.
 	
@@ -180,5 +183,9 @@ In order to connect to the server, there are 3 easy methods to use:
 2.  A slightly easier method is to install the following addon before launching the game [Link](https://steamcommunity.com/sharedfiles/filedetails/?id=214945910). After doing this, launch the game, click the new `Console` button on the main menu, and type the command in method one.
 
 3.  A final method is to install the following addon: [Link](https://steamcommunity.com/sharedfiles/filedetails/?id=121088946) and then launching the game. Next, click on the new `Server Browser` option on the main menu and find your server in the long list of servers. This method only works if you have set the `hostname`, `sv_search_key`, and `sv_tags` options in the config file. 
+
+{: .note }
+>The server will only show up in the `Custom` list of servers. It is also recomended to add it to your favorites to avoid having to look for it again.
+
 
 Finally, invite friends to the game using the Steam Overlay (`SHIFT + TAB`) and then begin the game. 
