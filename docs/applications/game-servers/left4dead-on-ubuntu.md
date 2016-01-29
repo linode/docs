@@ -21,8 +21,8 @@ Left 4 Dead 2 is a single player game developed and published by Valve Inc. Asid
 Have the following items before you begin:
 
 - A [Steam](http://store.steampowered.com) account.
-- A copy of [Left 4 Dead 2](http://store.steampowered.com/app/550/) that you have purchased on Steam.
-- A Linode with at least 2GB of RAM and 15GB of free disk space.
+- OPTIONAL (needed to test the server): A copy of [Left 4 Dead 2](http://store.steampowered.com/app/550/).
+- A Linode with at least 1GB of RAM and 10GB of free disk space.
 - An up-to-date Linode running Ubuntu 14.04. We suggest you follow our [Getting Started](/docs/getting-started) guide for help configuring your Linode.
 
 {: .note }
