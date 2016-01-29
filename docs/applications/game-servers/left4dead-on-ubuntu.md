@@ -56,7 +56,7 @@ If you have a firewall running on your Linode, add exceptions for SteamCMD:
     sudo iptables -A INPUT -p udp- m udp --sport 4380 --dport 1025:65355 -j ACCEPT
     sudo iptables -A INPUT -p udp -m udp --sport 10999 --dport 1025:65355 -j ACCEPT
     sudo iptables -A INPUT -p udp -m udp --sport 7777 --dport 1025:65355 -j ACCEPT
-	sudo iptables -A INPUT -p udp -m udp --sport 27015 --dport 1025:65355 -j ACCEPT
+    sudo iptables -A INPUT -p udp -m udp --sport 27015 --dport 1025:65355 -j ACCEPT
 
 {: .note }
 > If you've configured your firewall according to our [Securing Your Server](/docs/security/securing-your-server) guide, be sure to add these port ranges to your `/etc/iptables.firewall.rules` file.
@@ -150,6 +150,7 @@ If you have a firewall running on your Linode, add exceptions for SteamCMD:
         screen ./srcds_run -console -game left4dead2 +port 27020 +maxplayers 8 +exec server.cfg +map c2m1_highway
         ~~~
 
+        You can change the map to whichever one you wish.
 	This script, when run, will execute the L4D2 server in a [Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions) session.
 	
 5.  Make the script executable:
@@ -173,17 +174,11 @@ If you have a firewall running on your Linode, add exceptions for SteamCMD:
 4.  To stop the server, bring back the console and type `exit`.
 
 ## Entering The Server
-In order to connect to the server, a lobby needs to be created:
-1.  Choose a game mode you would like to play. Click on the icon that coresponds to the game type you want. Select the **Play With Friends** option.
+In order to connect to the server, there are 3 easy methods to use:
+1.  Ensure that the developer console is enabled. On the main menu, press the tilde (`~`) key to open the console. Next, type the following: `connect 12.34.56.78:27015` where 12.34.56.78 is your Linode's ip, and 27015 is your port. 
 
-2.  On the next window, click **Create Versus Lobby**. In the next screen, select a campaign you want. For the **Server Type** select **Best Available Dedicated**, then click **Create Lobby**. After you click that the lobby will be created. 
+2.  A slightly easier method is to install the following addon before launching the game [Link](https://steamcommunity.com/sharedfiles/filedetails/?id=214945910). After doing this, launch the game, click the new `Console` button on the main menu, and type the command in method one.
 
-At this point you will need to enter one of the commands to make your lobby connect to your dedicated server.
+3.  A final method is to install the following addon: [Link](https://steamcommunity.com/sharedfiles/filedetails/?id=121088946) and then launching the game. Next, click on the new `Server Browser` option on the main menu and find your server in the long list of servers. This method only works if you have set the `hostname` option in the config file. 
 
-Make sure you have the developer console enabled - Under **Options--Keyboard/Mouse** make sure that **Allow Developer Console** is checked.
-
-3. Press the `~` key to open the developer console and enter the following commands, making sure to replace 123.456.789.012 with your Linode's external or public IP address:
-        
-		mm_dedicated_force_servers 123.456.789.012
-	
-4. Finally, invite friends to the game using the Steam Overlay (`SHIFT + TAB`) and then begin the game. 
+Finally, invite friends to the game using the Steam Overlay (`SHIFT + TAB`) and then begin the game. 
