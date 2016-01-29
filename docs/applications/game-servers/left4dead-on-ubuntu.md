@@ -179,6 +179,6 @@ In order to connect to the server, there are 3 easy methods to use:
 
 2.  A slightly easier method is to install the following addon before launching the game [Link](https://steamcommunity.com/sharedfiles/filedetails/?id=214945910). After doing this, launch the game, click the new `Console` button on the main menu, and type the command in method one.
 
-3.  A final method is to install the following addon: [Link](https://steamcommunity.com/sharedfiles/filedetails/?id=121088946) and then launching the game. Next, click on the new `Server Browser` option on the main menu and find your server in the long list of servers. This method only works if you have set the `hostname` option in the config file. 
+3.  A final method is to install the following addon: [Link](https://steamcommunity.com/sharedfiles/filedetails/?id=121088946) and then launching the game. Next, click on the new `Server Browser` option on the main menu and find your server in the long list of servers. This method only works if you have set the `hostname`, `sv_search_key`, and `sv_tags` options in the config file. 
 
 Finally, invite friends to the game using the Steam Overlay (`SHIFT + TAB`) and then begin the game. 
