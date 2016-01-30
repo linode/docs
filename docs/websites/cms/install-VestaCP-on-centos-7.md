@@ -118,7 +118,7 @@ Log into your Linode as the "root" user via SSH to its IP address (found on the 
 {: .note}
 >If your not sure what Cron or Cronjobs are, I suggest reading through [Linodes Guide Schedule Tasks with Cron](https://www.linode.com/docs/tools-reference/tools/schedule-tasks-with-cron)
 
-1.Click on Cron
+1. Click on Cron
 2. Fill out the Minute, Hour, Day, Month, and Day of week
 3. Input your command
 4. Click add
