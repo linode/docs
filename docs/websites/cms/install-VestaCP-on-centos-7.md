@@ -118,18 +118,14 @@ Log into your Linode as the "root" user via SSH to its IP address (found on the 
 {: .note}
 >If your not sure what Cron or Cronjobs are, I suggest reading through [Linodes Guide Schedule Tasks with Cron](https://www.linode.com/docs/tools-reference/tools/schedule-tasks-with-cron)
 
-1. Click on Cron
-2. Fill out the Minute, Hour, Day, Month, and Day of week
-3. Input your command
-4. Click add
+1. Click on Cron  
+2. Fill out the Minute, Hour, Day, Month, and Day of week  
+3. Input your command  
+4. Click add  
 
-For example if we wanted to run a php script everyday:
-1. Minute would be *
-2. Hour would be *
-3. Day would be 1
-4. Month would be *
-5. Day of week would be *
-6. Command would be for example /home/user/public_html/file.php
+For example if we wanted to run a php script everyday:  
+ * * 1 * * /home/user/public_html/file.php    
+ 
 
 {: .note}
 >VestaCP automatically emails the output of the cronjobs to the address setup for the admin account
