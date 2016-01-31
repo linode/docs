@@ -9,7 +9,7 @@ published: 'TBA'
 modified: Wednesday, December 9th, 2015
 modified_by:
     name: Linode
-title: 'Install and Configure a Left 4 Dead 2 Multiplayer Server on Ubuntu 14.04'
+title: 'Install and Configure a Left 4 Dead 2 Multiplayer Server on Ubuntu'
 contributor:
     name: Andrew Gottschling
     link: https://github.com/agottschling
@@ -23,7 +23,7 @@ Have the following items before you begin:
 - A [Steam](http://store.steampowered.com) account.
 - OPTIONAL (needed to test the server): A copy of [Left 4 Dead 2](http://store.steampowered.com/app/550/).
 - A Linode with at least 1GB of RAM and 10GB of free disk space.
-- An up-to-date Linode running Ubuntu 14.04. We suggest you follow our [Getting Started](/docs/getting-started) guide for help configuring your Linode.
+- An up-to-date Linode running Ubuntu. We suggest you follow our [Getting Started](/docs/getting-started) guide for help configuring your Linode.
 
 {: .note }
 >This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the sudo command, reference the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
