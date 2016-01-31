@@ -2,7 +2,7 @@
 author:
     name: Linode Community
     email: docs@linode.com
-description: 'Install and configure a Left 4 Dead 2 multiplayer server on Ubuntu 14.04.'
+description: 'Install and Configure a Left 4 Dead 2 multiplayer server on Ubuntu.'
 keywords: 'left 4 dead,l4d2,game servers,games,ubuntu, ubuntu 14.04,steam'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 published: 'TBA'
