@@ -2,14 +2,14 @@
 author:
     name: Linode Community
     email: docs@linode.com
-description: 'Install and Configure a Left 4 Dead 2 multiplayer server on Ubuntu.'
-keywords: 'left 4 dead,l4d2,game servers,games,ubuntu, ubuntu 14.04,steam'
+description: 'Install and Configure a Left 4 Dead 2 Multiplayer Server.'
+keywords: 'left 4 dead,l4d2,game servers,games,ubuntu,debian,steam'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 published: 'TBA'
 modified: Wednesday, December 9th, 2015
 modified_by:
     name: Linode
-title: 'Install and Configure a Left 4 Dead 2 Multiplayer Server on Ubuntu'
+title: 'Install and Configure a Left 4 Dead 2 Multiplayer Server'
 contributor:
     name: Andrew Gottschling
     link: https://github.com/agottschling
@@ -23,7 +23,7 @@ Have the following items before you begin:
 - A [Steam](http://store.steampowered.com) account.
 - OPTIONAL (needed to test the server): A copy of [Left 4 Dead 2](http://store.steampowered.com/app/550/).
 - A Linode with at least 1GB of RAM and 10GB of free disk space.
-- An up-to-date Linode running Ubuntu. We suggest you follow our [Getting Started](/docs/getting-started) guide for help configuring your Linode.
+- An up-to-date Linode running Ubuntu or Debian. We suggest you follow our [Getting Started](/docs/getting-started) guide for help configuring your Linode.
 
 {: .note }
 >This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the sudo command, reference the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
@@ -178,7 +178,7 @@ If you have a firewall running on your Linode, add exceptions for SteamCMD:
 
 ## Entering The Server
 In order to connect to the server, there are 3 easy methods to use:
-1.  Ensure that the developer console is enabled. On the main menu, press the tilde (`~`) key to open the console. Next, type the following: `connect 12.34.56.78:27015` where 12.34.56.78 is your Linode's ip, and 27015 is your port. 
+1.  Ensure that the developer console is enabled. On the main menu, press the tilde (`~`) key to open the console. Next, type the following: `connect 12.34.56.78:27020` where 12.34.56.78 is your Linode's ip, and 27020 is your port. 
 
 2.  A slightly easier method is to install the following addon before launching the game [Link](https://steamcommunity.com/sharedfiles/filedetails/?id=214945910). After doing this, launch the game, click the new `Console` button on the main menu, and type the command in method one.
 
