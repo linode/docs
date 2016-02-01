@@ -178,7 +178,7 @@ If you have a firewall running on your Linode, add exceptions for SteamCMD:
 
 ## Entering The Server
 In order to connect to the server, there are 3 easy methods to use:
-1.  Ensure that the developer console is enabled. On the main menu, press the tilde (`~`) key to open the console. Next, type the following: `connect 12.34.56.78:27015` where 12.34.56.78 is your Linode's ip, and 27015 is your port. 
+1.  Ensure that the developer console is enabled. On the main menu, press the tilde (`~`) key to open the console. Next, type the following: `connect 12.34.56.78:27020` where 12.34.56.78 is your Linode's ip, and 27020 is your port. 
 
 2.  A slightly easier method is to install the following addon before launching the game [Link](https://steamcommunity.com/sharedfiles/filedetails/?id=214945910). After doing this, launch the game, click the new `Console` button on the main menu, and type the command in method one.
 
