@@ -12,6 +12,7 @@ published: 'Wednesday, February 3rd, 2016'
 title: 'Configure SPF and DKIM in Postfix on Debian 8'
 contributor:
     name: Todd Knarr
+    link: https://github.com/tknarr
 external_resources:
  - '[Sender Policy Framework](http://www.openspf.org/)'
  - '[DomainKeys Identified Mail](http://www.dkim.org/)'
