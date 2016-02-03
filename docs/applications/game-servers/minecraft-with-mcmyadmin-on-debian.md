@@ -5,7 +5,7 @@ author:
 description: 'McMyAdmin is one of the most popular Minecraft server control panels available. It boasts compatibility with third party mods, heavy focus on security and a sleek web interface for managing your server. This guide covers the installation and configuration of a new McMyAdmin server on a Linode running Debian 7 or 8.'
 keywords: 'minecraft,mcmyadmin,debian,debian jessie,debian wheezy,jessie,wheezy,debian 7,debian 8'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Friday, January 8th, 2016
+modified: Wednesday, February 3rd, 2016
 modified_by:
   name: Linode
 published: 'Thursday, February 5th, 2015'
@@ -82,7 +82,7 @@ If you choose *not* to use IPv6 on your Minecraft server, then it needs only bas
 -A INPUT ! -i lo -s ::1/128 -j REJECT
 
 # Allow ICMP
--A INPUT -p icmpv6 -m state --state NEW -j ACCEPT
+-A INPUT -p icmpv6 -j ACCEPT
 
 # Allow inbound traffic from established connections.
 -A INPUT -m state --state ESTABLISHED -j ACCEPT
