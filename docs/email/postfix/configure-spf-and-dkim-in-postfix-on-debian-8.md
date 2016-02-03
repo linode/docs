@@ -397,6 +397,8 @@ The reason the YYYYMM format is used for the selector is that best practice call
         chown opendkim:opendkim /etc/opendkim/keys/*
         chmod go-rw /etc/opendkim/keys/*
 
+    Use the `opendkim-testkey` command as described above to ensure that your new record is propogated before you continue.
+
 5.  Edit `/etc/opendkim/key.table` and change the old YYYYMM values to the new selector, reflecting the current year and month. Save the file.
 
 6.  Restart OpenDKIM and Postfix by:
