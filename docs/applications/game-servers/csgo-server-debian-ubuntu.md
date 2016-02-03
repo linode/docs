@@ -12,114 +12,124 @@ modified_by:
 title: 'Install a Counter Strike: Global Offensive (CS:GO) server on Ubuntu 14.04'
 contributor:
     name: Sam Mauldin
+external_resources:
+ - '[Valve Developer Community - Counter-Strike: Global Offensive Dedicated Servers](https://developer.valvesoftware.com/wiki/Counter-Strike:_Global_Offensive_Dedicated_Servers)'
 ---
 
 *This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
 
 <hr>
 
-Counter Strike: Global Offensive (CS:GO) is a first-person shooter by Valve. By hosting your own server, you will have full control over your game and game modes, so you can play exactly the flavor the CS:GO you want. This guide contains instructions on how to install SteamCMD, download the dedicated server, and launch the game server.
+Counter Strike: Global Offensive (CS:GO) is a first-person shooter by Valve. Hosting your own server gives you full control over your game and game modes, so you can play the exact flavor of CS:GO you want. This guide contains instructions on how to download the dedicated server and launch the game server.
 
 ## Before You Begin
 
 1.  Ensure you own a copy of CS:GO on Steam.
 
-2.  Configure your Ubuntu 14.04 Linode by following the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides.
+2.  Complete our guide: [Install SteamCMD for a Steam Game Server](/docs/applications/game-servers/install-steamcmd-for-a-steam-game-server.md). This will get SteamCMD installed and running on your Linode and this guide will pick up where the SteamCMD page leaves off.
 
-3.  Add firewall exceptions. If using iptables, use the following:
+{: .note}
+>
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
-        iptables -A INPUT -p udp -m udp --sport 27000:27030 --dport 1025:65355 -j ACCEPT
-        iptables -A INPUT -p udp -m udp --sport 4380 --dport 1025:65355 -j ACCEPT
-        
-4.  Update your system:
+## Install Counter Strike: Global Offense
 
-        sudo apt-get update && sudo apt-get upgrade
+1.  Be sure you are in the directory `~/steamcmd`, then access the `Steam>` prompt.
 
-## Install SteamCMD
+        cd ~/steamcmd && ./steamcmd.sh
 
-If you already have SteamCMD installed, skip this section.
-
-1.  SteamCMD is 32 bit. Install needed 32-bit libraries and screen:
-
-        sudo apt-get install lib32gcc1 lib32stdc++6 libcurl4-gnutls-dev:i386 screen
-
-2.  Download SteamCMD:
-
-        mkdir steamcmd; cd steamcmd
-        wget http://media.steampowered.com/installer/steamcmd_linux.tar.gz
-        tar xvzf steamcmd_linux.tar.gz
-        rm steamcmd_linux.tar.gz
-
-
-## Installing Counter Strike: Global Offense
-
-1.  Start SteamCMD:
-
-        ./steamcmd.sh
-
-    SteamCMD will update and then present you with a prompt.
-
-2.  Login, set an install directory, and download CS:GO:
+2.  Log in anonymously:
 
         login anonymous
-        force_install_dir ./csgoserver
+
+    Or log in with your Steam username:
+
+        login example_user
+
+3.  Install CS:GO to the `Steam` user's home directory:
+
+        force_install_dir ./csgo-ds
         app_update 740 validate
 
-    Note that this is a large download and may take awhile.
+    This can take some time. If the download looks as if it has frozen, be patient. Once the download is complete, you should see this output:
 
+        Success! App '740' fully installed.
 
-## Configuring the Server
+        Steam>
 
-1.  Exit SteamCMD once the download is complete:
+4.  Exit SteamCMD.
 
-        exit
+        quit
 
-2.  Move into the server directory:
+## Configure and Launch the Server
 
-        cd csgoserver/csgo/cfg
-
-3.  Create and open a file called `server.cfg` using your prefered text editor.
-
-4.  Choose a hostname and a secure password. You should use a unique password that you don't use elsewhere.
+1.  Create a file called `server.cfg` using your prefered text editor. Choose a hostname and a unique RCON password that you don't use elsewhere.
 
     {: .file}
-    csgoserver/csgo/cfg
+    ~/steamcmd/csgo-ds/csgo/cfg/server.cfg
     :   ~~~ config
         hostname "<hostname>"
         rcon_password "<password>"
         ~~~
 
-## Launching the Server
+    For a complete list of available `server.cfg` options, see [this page](http://csgodev.com/csgodev-server-cfg-for-csgo/).
 
-1.  Go back into the main CS:GO directory:
+2.  Using [GNU Screen](https://www.gnu.org/software/screen/), you can launch your CS:GO server and keep it running without needing an SSH connection open. Launching Screen and CS:GO with the necessary options can be easily done with a script. **Be sure to replace `<public ip>` in the script's command with your Linode's IP addres**.
 
-        cd ~/Steam/csgoserver
+    {: .file }
+    ~/start_csgo.sh
+    :   ~~~
+        screen -S "CS:GO Server" ./steamcmd/csgo-ds/srcds_run -game csgo -console -usercon +net_public_adr <public ip> -port 27015 +game_type 0 +game_mode 1 +mapgroup mg_bomb +map de_dust2 -autoupdate
+        ~~~
 
-2.  Launch a Dust 2 server on the competitive gamemode. Make sure to put your public IP where it says `<public ip>`.
-You may need to open UDP port 27015 in your firewall to connect:
+    {: .note}
+    >
+    >The above example command launches a Dust 2 server in the competitive gamemode; change the command as you like for your own server. You may need to open UDP port 27015 in your firewall for clients to connect.
 
-        ./srcds_run -game csgo -console -usercon +net_public_adr <public ip> -port 27015 +game_type 0 +game_mode 1 +mapgroup mg_bomb +map de_dust2 -autoupdate
-        
-### Running the Server in the Background
+4.  Make the script executable:
 
-{: .note}
->
->Close the connect to your current CS:GO server before proceeding with the next steps.
+        chmod +x ~/start_csgo.sh
 
-1.  Using screen, you can keep the server open without having an SSH connection open:
+5.  Launch the server by running the `start_csgo.sh` script from the `steam` user's home directory. Please note that if your current working directory is not `~/`, the game will fail to start.
 
-        screen -S csgo
+        cd ~/
+        ./start_csgo.sh
 
-2.  Launch the server like normal:
+    The end of the resulting output is shown below. Your CS:GO server is now running and ready for players to join.
 
-        ./srcds_run -game csgo -console -usercon +net_public_adr <public ip> -port 27015 +game_type 0 +game_mode 1 +mapgroup mg_bomb +map de_dust2 -autoupdate 
+    ~~~
+****************************************************
+*                                                  *
+*  No Steam account token was specified.           *
+*  Logging into anonymous game server account.     *
+*  Connections will be restricted to LAN only.     *
+*                                                  *
+*  To create a game server account go to           *
+*  http://steamcommunity.com/dev/managegameservers *
+*                                                  *
+****************************************************
+Connection to Steam servers successful.
+   Public IP is 203.0.113.0.
+Assigned anonymous gameserver Steam ID [A:1:4034621959(6342)].
+VAC secure mode is activated.
+GC Connection established for server version 262, instance idx 1
+    ~~~
 
-3.  Detach screen by pressing **Control-a**, then **d**. You can now exit the SSH session like normal while keeping the server running.
+    {: .caution}
+    >Do not press **Control+C** while in the console unless you want to stop the server.
 
-4.  To re-attach to the screen session:
-    
-        screen -r csgo
+## Using Screen
 
+1.  To detach from the screen session running the server console, press these two key combinations in succession:
+
+    **Control+A**<br>
+    **Control+D**
+
+3.  To bring the console back, type:
+
+        screen -r
+
+4.  To stop CS:GO, bring back the Screen console and press **CONTROL + C**.
 
 ## Joining the Game
 

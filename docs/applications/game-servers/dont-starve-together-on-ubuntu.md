@@ -57,9 +57,9 @@ From the SteamCMD guide, two additional steps are needed specifically for DST.
 
 ## Install Don’t Starve Together
 
-1.  Return to the `Steam>` prompt.
+1.  Be sure you are in the directory `~/steamcmd`, then access the `Steam>` prompt.
 
-        ./steamcmd.sh
+        cd ~/steamcmd && ./steamcmd.sh
 
 2.  Log in anonymously:
 
