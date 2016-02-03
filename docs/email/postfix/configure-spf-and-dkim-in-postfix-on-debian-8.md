@@ -1,15 +1,17 @@
 ---
 author:
-    name: Todd Knarr
-    email: tknarr@silverglass.org
+    name: Linode Community 
+    email: contribute@linode.com
 description: 'Configure SPF and DKIM in Postfix on Debian 8.'
 keywords: 'email,postfix,spf,dkim,debian 8,opendkim,dns'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Friday, December 11th 2015
+modified: Wednesday, February 3rd, 2016
 modified_by:
     name: Todd Knarr
-published: 'Friday, December 11th, 2015'
+published: 'Wednesday, February 3rd, 2016'
 title: 'Configure SPF and DKIM in Postfix on Debian 8'
+contributor:
+    name: Todd Knarr
 external_resources:
  - '[Sender Policy Framework](http://www.openspf.org/)'
  - '[DomainKeys Identified Mail](http://www.dkim.org/)'
