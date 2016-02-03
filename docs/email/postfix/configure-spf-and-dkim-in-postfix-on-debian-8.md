@@ -252,8 +252,8 @@ DKIM involves setting up the OpenDKIM package, hooking it into Postfix, and addi
 
 7.  Make sure the ownership and permissions on `/etc/opendkim` and it's contents are correct (`opendkim` should own everything, the `keys` directory should only be accessible by the owner) by running the following commands:
 
-    chown -R opendkim:opendkim /etc/opendkim
-    chmod -R go-rwx /etc/opendkim/keys
+        chown -R opendkim:opendkim /etc/opendkim
+        chmod -R go-rwx /etc/opendkim/keys
 
 8.  Generate keys for each domain:
 
