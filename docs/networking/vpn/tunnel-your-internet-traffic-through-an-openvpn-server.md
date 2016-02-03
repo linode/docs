@@ -14,7 +14,7 @@ external_resources:
  - '[Official OpenVPN Documentation](https://openvpn.net/index.php/open-source/documentation/howto.html)'
 ---
 
-This gude will show you how to configure an OpenVPN server to forward all traffic it receives out to the interent, then route the responses back appropriately to client devices.
+This guide will show you how to configure an OpenVPN server to forward all traffic it receives out to the Internet, then route the responses back appropriately to client devices.
 
 A common use case for a VPN tunnel is to access the internet from behind it to evade censorship or geolocation, while shielding your computer's web traffic to internet service providers and untrusted WiFi or cellular hotspots.
 
