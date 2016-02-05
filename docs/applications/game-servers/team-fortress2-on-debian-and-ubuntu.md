@@ -14,117 +14,60 @@ title: 'Team Fortress 2 on Debian and Ubuntu'
 
 Team Fortress 2 is a team-based, first-person shooter, where you and a team of fellow players can play a variety of game modes. From capture the flag, to a battle pitting your team against a robotic horde, there are numerous options to choose. Setting up a personal game server puts you in control of what game modes and maps you use, as well as a variety of other settings to customize your experience.
 
-##Prerequisites
+## Before You Begin
 
-Prior to installing Team Fortress 2, create a user for Steam and set up the Steam Console Client, SteamCMD, which allows you to use a command line version of Steam. You may also need to update your firewall permissions.
+1.  You will need a [Steam](http://store.steampowered.com) account and a copy of [Team Fortress 2](http://store.steampowered.com/app/440/).
 
-###Prepare Your Server
+2.  Complete our guide: [Install SteamCMD for a Steam Game Server](/docs/applications/game-servers/install-steamcmd-for-a-steam-game-server.md). This will get SteamCMD installed and running on your Linode and this guide will pick up where the SteamCMD page leaves off.
 
-1.  Update your Linode:
+{: .note}
+>
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
-		sudo apt-get update && sudo apt-get upgrade --show-upgraded
+## Prerequisites for Team Fortress 2
 
-2.  Install the dependencies needed to run SteamCMD on 64-bit systems:
+From the SteamCMD guide, an additional firewall rule is needed specifically for TF2. 
 
-		sudo apt-get install lib32gcc1
+1.  Add an iptables firewall rule. This command assumes that you have **only** the iptables rules in place from the SteamCMD guide. This inserts a rule after the pre-existing iptables rules for SteamCMD.
 
-3. 	If your server runs a firewall, you will need to add exceptions for several port ranges for Steam. If you’ve configured iptables according to our [Securing Your Server](/docs/security/securing-your-server) guide, add the following lines to your `iptables.firewall.rules`:
+        sudo iptables -I INPUT 7 -p udp -m udp --dport 26900:27030 -j ACCEPT
 
-	{: .file-excerpt}
-	/etc/iptables.firewall.rules
-	:	~~~
-		# Allow SteamCMD
-		-A INPUT -p udp -m udp --sport 26900:27030 --dport 1025:65355 -j ACCEPT
-		-A INPUT -p udp -m udp --sport 4380 --dport 1025:65355 -j ACCEPT
-		-A INPUT -p udp -m udp --dport 26900:27030 -j ACCEPT
-		~~~
+2.  After entering the above rule, run iptables-persistent again. You’ll be asked if you want to save the current IPv4 and IPv6 rules. Answer `yes` for IPv4 and `no` for IPv6.
 
-	Refresh the firewall, replacing `/etc/iptables.firewall.rules` with the location of your iptables rules if needed:
+        sudo dpkg-reconfigure iptables-persistent
 
-		sudo iptables-restore < /etc/iptables.firewall.rules
+3.  Install an additonal 32-bit package:
 
-###Install SteamCMD
+        sudo apt-get install lib32tinfo5
 
-1.  Create a separate user for Steam and switch to that user:
+## Install Team Fortress 2
 
-		sudo adduser steam
-		su - steam
+1.  Be sure you are in the directory `~/steamcmd`, then access the `Steam>` prompt.
 
-2.  From your home directory, create and switch to a new directory for SteamCMD:
+        cd ~/steamcmd && ./steamcmd.sh
 
-		cd ~
-		mkdir steamcmd
-		cd steamcmd
-
-3.  Download SteamCMD:
-
-		wget http://media.steampowered.com/installer/steamcmd_linux.tar.gz
-
-4.  Expand the file:
-
-		tar -xvzf steamcmd_linux.tar.gz
-
-5.  Remove the `steamcmd_linux.tar.qz` file:
-
-		rm steamcmd_linux.tar.gz
-
-6.  To start SteamCMD run:
-
-		./steamcmd.sh
-
-	{: .note}
-	>
-	>You must be in the `steamcmd` directory to boot SteamCMD.
-
-
-##Install Team Fortress 2
-
-With SteamCMD set up, Team Fortress 2 can now be installed.
-
-1.  From the SteamCMD prompt, login anonymously:
+2.  From the SteamCMD prompt, login anonymously:
 
 		login anonymous
 
-2.  Create a directory for Team Fortress 2 and install the game:
+3.  Create a directory for Team Fortress 2 and install the game:
 
-		force_install_dir ./tf2/
+		force_install_dir ./tf2
 		app_update 232250
 
-3.  Quit SteamCMD:
+    This can take some time. If the download looks as if it has frozen, be patient; it may take about 10 minutes. Once the download is complete, you should see this output:
+
+        Success! App '232250' fully installed.
+
+        Steam>
+
+4.  Quit SteamCMD:
 
 		quit
 
 	{: .note}
 	>
 	>To update Team Fortress 2, run the above commands again.
-
-##Start Your Server
-
-If you would like to set up your server with custom settings see [Configure Team Fortress 2](#configure-team-fortress-2).
-
-1. Switch to your `tf2` directory:
-
-		cd tf2
-
-	{: .note}
-	>
-	>You must be in the `steamcmd/tf2` directory to launch the server.
-
-2.  If logged in through the `su - steam` command, transfer ownership of the shell to steam:
-
-		script /dev/null
-
-3.  To have the server continuously running, use the screen command in conjunction with the start up command.
-
-	- 	If you're running the server with a `server.cfg`, file use:
-
-			screen ./srcds_run -game tf +map ctf_2fort.bsp
-
-	- 	Otherwise, use:
-
-			screen ./srcds_run -game tf +map ctf_2fort.bsp +maxplayers 24
-
-	Optionally, replace `cft_2fort.bsp` with the name of your chosen map's file, or replace `+map ctf_2fort.bsp` with `+randommap` for a randomized map select.
 
 ##Configure Team Fortress 2
 
@@ -272,6 +215,30 @@ The `server.cfg` file is what contains all of the settings you need to customize
 	writeid
 	writeip
 	~~~
+
+##Start Your Server
+
+If you would like to set up your server with custom settings see [Configure Team Fortress 2](#configure-team-fortress-2).
+
+1. Switch to your `tf2` directory:
+
+		cd ~/steamcmd/tf2
+
+2.  If logged in through the `su - steam` command, transfer ownership of the shell to steam:
+
+		script /dev/null
+
+3.  To have the server continuously running, use the screen command in conjunction with the start up command.
+
+	- 	If you're running the server with a `server.cfg`, file use:
+
+			screen ./srcds_run -game tf +randommap
+
+	- 	Otherwise, use:
+
+			screen ./srcds_run -game tf +randommap +maxplayers 24
+
+	Optionally, replace `cft_2fort.bsp` with the name of your chosen map's file, or replace `+map ctf_2fort.bsp` with `+randommap` for a randomized map select.
 
 ##RCON
 

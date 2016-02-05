@@ -25,7 +25,7 @@ earn $250 per published guide.*
 
 ## Before You Begin
 
-1.  You will need a [Steam](http://store.steampowered.com) account and a copy of [Don’t Starve Together](http://store.steampowered.com/app/322330/) that you have purchased on Steam.
+1.  You will need a [Steam](http://store.steampowered.com) account and a copy of [Don’t Starve Together](http://store.steampowered.com/app/322330/).
 
 2.  Complete our guide: [Install SteamCMD for a Steam Game Server](/docs/applications/game-servers/install-steamcmd-for-a-steam-game-server.md). This will get SteamCMD installed and running on your Linode and this guide will pick up where the SteamCMD page leaves off.
 
@@ -38,13 +38,9 @@ earn $250 per published guide.*
 
 From the SteamCMD guide, two additional steps are needed specifically for DST.
 
-1.  Add an iptables firewall rule:
+1.  Add an iptables firewall rule. This command assumes that you have **only** the iptables rules in place from the SteamCMD guide. This inserts a rule for port 10999 after the pre-existing iptables rules for SteamCMD.
 
         sudo iptables -I INPUT 7 -p udp --sport 10999 --dport 1025:65355 -j ACCEPT
-
-    {: .note}
-    >
-    >The above command assumes that you have **only** the iptables rules in place from the SteamCMD guide. It inserts the rule for port 10999 after the pre-existing iptables rules for SteamCMD.
 
 2.  After entering the above rule, run iptables-persistent again. You’ll be asked if you want to save the current IPv4 and IPv6 rules. Answer `yes` for IPv4 and `no` for IPv6.
 
@@ -83,6 +79,10 @@ From the SteamCMD guide, two additional steps are needed specifically for DST.
 4.  Exit SteamCMD.
 
         quit
+
+    {: .note}
+    >
+    >To update DST, run the above commands again.
 
 ##Configure Don’t Starve Together
 
