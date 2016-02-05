@@ -84,9 +84,9 @@ You can make a manual backup of your Linode by taking a *snapshot*. Here's how:
 2.  Click the **Backups** tab.
 3.  Click **Take a New Snapshot Now**.
 
- {: .note }
->
-> Taking a new snapshot will overwrite a saved snapshot.
+    {: .note }
+    >
+    > Taking a new snapshot will overwrite a saved snapshot.
 
 4.  A warning appears asking if you would like to overwrite the previous snapsnot. Click **OK**.
 
