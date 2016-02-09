@@ -23,99 +23,52 @@ Just Cause 2 is a single-player game published by Square Enix. Because it has no
 
 ## Before You Begin
 
-Have the following items available:
+1.  You will need a [Steam](http://store.steampowered.com) account, a copy of [Just Cause 2](http://store.steampowered.com/app/8190/) and the [Just Cause 2 Multiplayer Mod](http://store.steampowered.com/app/259080/).
 
-- A [Steam](http://store.steampowered.com) account.
-- A copy of [Just Cause 2](http://store.steampowered.com/app/8190/) that you have purchased on Steam.
-- A copy of the [Just Cause 2 Multiplayer Mod](http://store.steampowered.com/app/259080/) that has been added to your steam library.
-- An up-to-date Linode running Ubuntu 14.04. We suggest you follow our [Getting Started](/docs/getting-started) guide for help configuring your Linode.
+2.  Complete our guide: [Install SteamCMD for a Steam Game Server](/docs/applications/game-servers/install-steamcmd-for-a-steam-game-server.md). This will get SteamCMD installed and running on your Linode and this guide will pick up where the SteamCMD page leaves off.
 
-{: .note }
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the sudo command, reference the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{: .note}
+>
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
-## Preparing your Linode
+## Prerequisites for Just Cause 2
 
-Just Cause 2 is sold on Steam, along with its multiplayer mod. To download and maintain servers for the game, we will use SteamCMD.
+From the SteamCMD guide, two additional steps are needed specifically for JC2.
 
-Because current generation Linodes run a 64-bit operating system, we need to download a few extra libraries in order to run SteamCMD.
+1.  Add two iptables firewall rules. These commands assume that you have **only** the iptables rules in place from the SteamCMD guide. These insert a rules after the pre-existing iptables rules for SteamCMD.
 
-1.  Configure the package manager to include packages for i386 architecture:
+        sudo iptables -I INPUT 7 -p udp -m udp --sport 10999 --dport 1025:65355 -j ACCEPT
+        sudo iptables -I INPUT 8 -p udp -m udp --sport 7777 --dport 1025:65355 -j ACCEPT
 
-        sudo dpkg --add-architecture i386
+2.  After entering the above rule, run iptables-persistent again. You’ll be asked if you want to save the current IPv4 and IPv6 rules. Answer `yes` for IPv4 and `no` for IPv6.
 
-2.  Update the system:
+        sudo dpkg-reconfigure iptables-persistent
 
-        sudo apt-get update && sudo apt-get upgrade
+3.  Install some additonal 32-bit packages:
 
-3.  Install the 32-bit libraries required:
-
-        sudo apt-get install lib32gcc1 lib32stdc++6 libc6-i386 libcurl4-gnutls-dev:i386 screen
+        sudo apt-get install lib32stdc++6 libcurl4-gnutls-dev:i386
 
     {: .note }
     > If you're running a legacy Linode on a 32-bit kernel, install these packages instead:
     >
     >     sudo apt-get install libcurl4-gnutls-dev:i386 libc6-i386 libgcc1 screen
 
-If you have a firewall running on your Linode, add exceptions for SteamCMD:
+## Install Just Cause 2
 
-    sudo iptables -A INPUT -p udp- m udp --sport 4380 --dport 1025:65355 -j ACCEPT
-    sudo iptables -A INPUT -p udp -m udp --sport 10999 --dport 1025:65355 -j ACCEPT
-    sudo iptables -A INPUT -p udp -m udp --sport 7777 --dport 1025:65355 -j ACCEPT
+1.  Be sure you are in the directory `~/steamcmd`, then access the `Steam>` prompt.
 
-{: .note }
-> If you've configured your firewall according to our [Securing Your Server](/docs/security/securing-your-server) guide, be sure to add these port ranges to your `/etc/iptables.firewall.rules` file.
+        cd ~/steamcmd && ./steamcmd.sh
 
-## Install SteamCMD and Just Cause 2
-
-1.  From your user's home folder, download SteamCMD into its own directory:
-
-        mkdir steamcmd
-        cd steamcmd
-        wget http://media.steampowered.com/installer/steamcmd_linux.tar.gz
-
-3.  Extract the package and remove the archive file:
-
-        tar -xvzf steamcmd_linux.tar.gz
-        rm steamcmd_linux.tar.gz
-
-4.  Run the SteamCMD Installer:
-
-        ./steamcmd.sh
-
-    This command will display output similar to this:
-
-        Redirecting stderr to '/home/linode/Steam/logs/stderr.txt'
-        [  0%] Checking for available updates...
-        [----] Downloading update (0 of 7,013 KB)...
-        [  0%] Downloading update (1,300 of 7,013 KB)...
-        [ 18%] Downloading update (3,412 of 7,013 KB)...
-        [ 48%] Downloading update (5,131 of 7,013 KB)...
-        [ 73%] Downloading update (6,397 of 7,013 KB)...
-        [ 91%] Downloading update (7,013 of 7,013 KB)...
-        [100%] Download complete.
-        [----] Installing update...
-        [----] Extracting package...
-        [----] Extracting package...
-        [----] Extracting package...
-        [----] Installing update...
-        [----] Installing update...
-        [----] Installing update...
-        [----] Cleaning up...
-        [----] Update complete, launching Steam...
-        Redirecting stderr to '/home/linode/Steam/logs/stderr.txt'
-        [  0%] Checking for available updates...
-        [----] Verifying installation...
-        Steam Console Client (c) Valve Corporation
-        -- type 'quit' to exit --
-        Loading Steam API...OK.
-
-        Steam>
-
-    The `Steam>` prompt is similar to the Linux command prompt, with the exception of its not being able to execute normal Linux commands. 
-
-4.  Install JC2-MP from the SteamCMD prompt:
+2.  Log in anonymously:
 
         login anonymous
+
+    Or log in with your Steam username:
+
+        login example_user
+
+3.  Install JC2 to the `Steam` user's home directory:
+
         force_install_dir ../jc2mp-server
         app_update 261140 validate
 
@@ -125,9 +78,13 @@ If you have a firewall running on your Linode, add exceptions for SteamCMD:
 
         Steam>
 
-5.  Finally, exit SteamCMD:
+4.  Quit SteamCMD:
 
         quit
+
+    {: .note}
+    >
+    >To update JC2, run the above commands again.
 
 ##Configuring Just Cause 2 - Multiplayer (JC2-MP)
 
@@ -154,7 +111,7 @@ If you have a firewall running on your Linode, add exceptions for SteamCMD:
         
 3.  To detach from the screen session running the server console, press these two key-combinations in succession:
 
-    **CONTROL + A**<br>
+    **CONTROL + A**
     **CONTROL + D**
 
 4.  To bring the console back, type the following command:
