@@ -57,7 +57,7 @@ From the SteamCMD guide, two additional steps are needed specifically for DST.
 
         cd ~/steamcmd && ./steamcmd.sh
 
-2.  Log in anonymously:
+2.  From the SteamCMD prompt, login anonymously:
 
         login anonymous
 
@@ -67,10 +67,10 @@ From the SteamCMD guide, two additional steps are needed specifically for DST.
 
 3.  Install Don't Starve Together to the `Steam` user's home directory:
 
-        force_install_dir ../dstserver
+        force_install_dir ./dstserver
         app_update 343050 validate
 
-    This can take some time. If the download looks as if it has frozen, be patient; it may take about 10 minutes. Once the download is complete, you should see this output:
+    This can take some time. If the download looks as if it has frozen, be patient. Once the download is complete, you should see this output:
 
         Success! App '343050' fully installed.
 
@@ -82,7 +82,7 @@ From the SteamCMD guide, two additional steps are needed specifically for DST.
 
     {: .note}
     >
-    >To update DST, run the above commands again.
+    >To update DST, run the above 4 commands again.
 
 ##Configure Don’t Starve Together
 
@@ -142,19 +142,21 @@ From the SteamCMD guide, two additional steps are needed specifically for DST.
         autocompiler_enabled = true
         ~~~
 
-5.  Create a start script, `start_dst.sh` with the following contents:
+4.  Create a startup script for DST with the following contents:
 
     {: .file }
-    ~/dstserver/bin/start_dst.sh
+    ~/startdst.sh
     :   ~~~
-        screen -S "DST Server" ./dontstarve_dedicated_server_nullrenderer
+        #!/bin/sh
+
+        cd ./dstserver/bin
+        screen -S "Don't Starve Together Server" ./dontstarve_dedicated_server_nullrenderer
         ~~~
+    When run, the script will change directories to `~/dstserver/bin` and execute DST in a [Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions) session.
 
-    When run, the script will execute the DST server in a [Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions) session.
+5.  Make the script executable:
 
-6.  Make the script executable:
-
-        chmod +x ~/dstserver/bin/start_dst.sh
+        chmod +x ~/startdst.sh
 
 ## Getting your Authentication Token
 
@@ -196,13 +198,12 @@ You will need Don’t Starve Together installed on your personal computer to get
 
 ##Using the Server
 
-1.  Now that your server is installed and configured, it can be launched by running the `start_dst.sh` script from the `~/dstserver/bin/` directory. Please note that if your current working directory is not `~/dstserver/bin/` the game will fail to start.
+1.  Now that your server is installed and configured, it can be launched by running the `startdst.sh` script from your `steam` user's home directory.
 
-        cd ~/dstserver/bin/
-        ./start_dst.sh
+        cd ~/ && ./startdst.sh
 
     {: .caution}
-    >Do not press the **Control+C** keys while in the console unless you want to stop the server.
+    >From this point, do not press the **Control+C** keys while in the console unless you want to stop DST.
 
 2.  To detach from the screen session running the server console, press these two key combinations in succession:
 
@@ -213,7 +214,7 @@ You will need Don’t Starve Together installed on your personal computer to get
 
         screen -r
 
-4.  To stop the server, bring back the console and press **CONTROL + C**.
+4.  To stop the server, bring back the DST console and press **CONTROL + C**.
 
 ## Entering The Server
 

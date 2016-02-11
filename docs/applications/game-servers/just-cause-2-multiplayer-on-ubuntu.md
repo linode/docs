@@ -3,7 +3,7 @@ author:
     name: Linode Community
     email: docs@linode.com
 description: 'Install and configure a Just Causew 2 Multiplayer server on Ubuntu 14.04.'
-keywords: 'just cause,just cause 2,game servers,games,ubuntu, ubuntu 14.04,steam'
+keywords: 'just cause,just cause 2,game servers,games,ubuntu,ubuntu 14.04,steam'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 published: 'Friday, October 9th, 2015'
 modified: Friday, October 9th, 2015
@@ -19,7 +19,7 @@ contributor:
 
 <hr>
 
-Just Cause 2 is a single-player game published by Square Enix. Because it has no multiplayer mode, the modding community has created a multiplayer mod for the game that is quite popular. This guide will explain how to prepare your VPS, install SteamCMD and then install and configure Just Cause 2's multiplayer mod.
+[Just Cause 2](http://www.justcause2.com/) is a single-player game published by Square Enix. Because it has no multiplayer mode, the modding community has created a multiplayer mod for the game that is quite popular. This guide will explain how to prepare your Linode, install SteamCMD and then install and configure Just Cause 2's multiplayer mod.
 
 ## Before You Begin
 
@@ -40,18 +40,9 @@ From the SteamCMD guide, two additional steps are needed specifically for JC2.
         sudo iptables -I INPUT 7 -p udp -m udp --sport 10999 --dport 1025:65355 -j ACCEPT
         sudo iptables -I INPUT 8 -p udp -m udp --sport 7777 --dport 1025:65355 -j ACCEPT
 
-2.  After entering the above rule, run iptables-persistent again. You’ll be asked if you want to save the current IPv4 and IPv6 rules. Answer `yes` for IPv4 and `no` for IPv6.
+2.  After entering the above rules, run iptables-persistent again. You’ll be asked if you want to save the current IPv4 and IPv6 rules. Answer `yes` for IPv4 and `no` for IPv6.
 
         sudo dpkg-reconfigure iptables-persistent
-
-3.  Install some additonal 32-bit packages:
-
-        sudo apt-get install lib32stdc++6 libcurl4-gnutls-dev:i386
-
-    {: .note }
-    > If you're running a legacy Linode on a 32-bit kernel, install these packages instead:
-    >
-    >     sudo apt-get install libcurl4-gnutls-dev:i386 libc6-i386 libgcc1 screen
 
 ## Install Just Cause 2
 
@@ -59,7 +50,7 @@ From the SteamCMD guide, two additional steps are needed specifically for JC2.
 
         cd ~/steamcmd && ./steamcmd.sh
 
-2.  Log in anonymously:
+2.  From the SteamCMD prompt, login anonymously:
 
         login anonymous
 
@@ -72,7 +63,7 @@ From the SteamCMD guide, two additional steps are needed specifically for JC2.
         force_install_dir ../jc2mp-server
         app_update 261140 validate
 
-    This can take some time. If the download looks as if it has frozen, be patient; it may take about 10 minutes. Once the download is complete, you should see this output:
+    This can take some time. If the download looks as if it has frozen, be patient. Once the download is complete, you should see this output:
 
         Success! App '261140' fully installed.
 
@@ -84,7 +75,7 @@ From the SteamCMD guide, two additional steps are needed specifically for JC2.
 
     {: .note}
     >
-    >To update JC2, run the above commands again.
+    >To update JC2, run the above 4 commands again.
 
 ##Configuring Just Cause 2 - Multiplayer (JC2-MP)
 
@@ -93,32 +84,48 @@ From the SteamCMD guide, two additional steps are needed specifically for JC2.
         cd ~/jc2mp-server
         cp default_config.lua config.lua
 
-2.  Open the configuration file with `nano` to edit the configuration. Every possible server option is explained in the configuration file. Simply follow the instructions:
+2.  Open `config.lua` with your preferred text editor. Every possible server option is explained in the configuration file. Simply follow the instructions and when finished, be sure to save your changes.
 
-        nano config.lua
+3.  Before starting up the server for the first time, it is good to symlink a library file to avoid a possible error:
 
-3.  When you are finished, exit `nano` and save your changes.
+        ln -s ~/steamcmd/linux32/libstdc++.so.6 libstdc++.so.6
+
+4.  Create a startup script for JC2 with the following contents:
+
+    {: .file }
+    ~/startjc2.sh
+    :   ~~~
+        #!/bin/sh
+
+        cd ./jc2mp-server
+        screen -S "Just Cause 2 Muliplayer Server" ./Jcmp-Server
+        ~~~
+
+    When run, the script will change directories to `~/jc2mp-server` and execute JC2 in a [Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions) session.
+
+5.  Make the script executable:
+
+        chmod +x ~/startjc2.sh
 
 ##Using the Server
 
-1.  Before starting up the server for the first time, it is good to symlink a library file to avoid a possible error:
+1.  Now that your server is installed and configured, it can be launched by running the `startjc2.sh` script from your `steam` user's home directory.
 
-        cd ~/jc2mp-server
-        ln -s ~/steamcmd/linux32/libstdc++.so.6 libstdc++.so.6
+        cd ~/ && ./startjc2.sh
 
-2.  To start the server, simply run the executable: 
-        screen ./Jcmp-server
-        
-3.  To detach from the screen session running the server console, press these two key-combinations in succession:
+    {: .caution}
+    >From this point, do not press the **Control+C** keys while in the console unless you want to stop JC2.
 
-    **CONTROL + A**
-    **CONTROL + D**
+2.  To detach from the screen session running the server console, press these two key combinations in succession:
 
-4.  To bring the console back, type the following command:
+    **Control+A**<br>
+    **Control+D**
+
+3.  To bring the console back, type the following command:
 
         screen -r
 
-5.  To stop the server, either bring back the console or type **quit**.
+4.  To stop the server, bring back the JC2 console and press **CONTROL + C**.
 
 ## Entering The Server
 
