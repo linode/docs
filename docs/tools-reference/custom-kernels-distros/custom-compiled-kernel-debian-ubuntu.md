@@ -105,6 +105,9 @@ Once your configuration options are set, exit the configuration interface and an
 
         update-grub
 
+    Note that if you install an updated kernel, you will need to update grub again.
+    
+
 ## Configure The Linode
 
 1.  In the Linode Dashboard, click **Edit** next to your Configuration Profile (Normally named after the version of Linux installed).
@@ -113,11 +116,12 @@ Once your configuration options are set, exit the configuration interface and an
 
     ![The GRUB2 Option.](/docs/assets/custom-kernel-grub2.png)
 
-3.  Click **Save Changes**. You can now reboot the Linode. We suggest opening a [LISH](/docs/networking/using-the-linode-shell-lish) or [GLISH](/docs/networking/using-the-graphic-shell-glish) session first, so you can monitor the boot process and troubleshoot if necessary. 
+3.  Click **Save Changes**. You can now reboot the Linode. We suggest opening a [LISH](/docs/networking/using-the-linode-shell-lish) or [GLISH](/docs/networking/using-the-graphic-shell-glish) session first, so you can monitor the boot process and troubleshoot if necessary.
+
+    {: .note}
+    > You may need to run `cp /boot/grub/unicode.pf2 /boot/grub/fonts/` for the boot menu to properly display in GLISH. Your Linode will still boot, assuming there are no configuration issues, without this command.
+
+Congratulations, you've booted your Linode using a custom-compiled kernel!
 
 
-Note that if you install an updated kernel, you need to add an entry for it to your `menu.lst` file. By default, the first kernel in the list is booted. If you have multiple kernels installed, you can choose which kernel your Linode uses to boot by watching for the kernel list in the Lish console (see the "Console" tab in the Linode Manager). Congratulations, you've booted your Linode using a custom-compiled kernel!
 
-
-{: .note}
-> You may need to run `cp /boot/grub/unicode.pf2 /boot/grub/fonts/` for the boot menu to properly display in GLISH. Your Linode will still boot, assuming there are no configuration issues, without this command.

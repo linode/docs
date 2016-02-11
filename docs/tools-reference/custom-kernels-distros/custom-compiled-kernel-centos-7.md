@@ -9,7 +9,7 @@ modified: Wednesday, Febryary 10th, 2016
 modified_by:
   name: Alex Fornuto
 published: ''
-title: 'Custom Compiled Kernel on CentOS'
+title: 'Custom Compiled Kernel on CentOS 7'
 ---
 
 Running a custom-compiled Linux kernel is useful if you need to enable or disable certain kernel features that are unavailable in Linode-supplied or distribution-supplied kernels. For example, some users desire [SELinux](http://en.wikipedia.org/wiki/Security-Enhanced_Linux) support, which is not enabled in stock Linode kernels, and may not be enabled in some distribution-supplied kernels.
@@ -104,3 +104,23 @@ Once your configuration options are set, exit the configuration interface and an
 
         mkdir /boot/grub
         grub2-mkconfig -o /boot/grub/grub.cfg
+
+## Configure The Linode
+
+1.  In the Linode Dashboard, click **Edit** next to your Configuration Profile (Normally named after the version of Linux installed).
+
+2.  Under **Boot Settings** Click on the **Kernel** drop-down meny, and select **GRUB2**
+
+    ![The GRUB2 Option.](/docs/assets/custom-kernel-grub2.png)
+
+3.  Click **Save Changes**. You can now reboot the Linode. We suggest opening a [LISH](/docs/networking/using-the-linode-shell-lish) or [GLISH](/docs/networking/using-the-graphic-shell-glish) session first, so you can monitor the boot process and troubleshoot if necessary.
+
+
+Note that if you install an updated kernel, you need to create a new `initrd` file, and update GRUB.
+
+Congratulations, you've booted your Linode using a custom-compiled kernel!
+
+
+{: .note}
+> You may need to run `cp /boot/grub/unicode.pf2 /boot/grub/fonts/` for the boot menu to properly display in GLISH. Your Linode will still boot, assuming there are no configuration issues, without this command.
+
