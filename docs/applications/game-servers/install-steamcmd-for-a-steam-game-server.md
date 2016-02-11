@@ -5,10 +5,10 @@ author:
 description: 'Install SteamCMD, a command-line version of the Steam client, which works with games that use SteamPipe. Installing SteamCMD is a prerequisite before hosting a Steam title on your own game server.'
 keywords: 'steam,steamcmd,steam cmd,games,game server,steam server,steampipe'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: 'Tuesday, January 19th, 2016'
+modified: 'Friday, February 12th, 2016'
 modified_by:
   name: Linode
-published: 'Tuesday, January 19th, 2016'
+published: 'Friday, February 12th, 2016''
 title: 'Install SteamCMD for a Steam Game Server'
 external_resources:
  - '[Valve Developer Community: SteamCMD](https://developer.valvesoftware.com/wiki/SteamCMD)'
@@ -26,7 +26,7 @@ This guide is intended to get you quickly up and running with SteamCMD on your L
 
 ## Before You Install
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone. See our Securing Your Server guide to [create a limited user acount](/docs/security/securing-your-server#add-a-limited-user-account) which you will use to administer your Steam server.
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
 2.  Update Your Operating System:
 
@@ -43,15 +43,15 @@ This guide is intended to get you quickly up and running with SteamCMD on your L
 
 Game servers and clients are an especially ripe target for attack. Use our [Securing Your Server](/docs/security/securing-your-server) guide to:
 
-*   [Add a Steam system account](/docs/security/securing-your-server#add-a-limited-user-account). Make the username `steam` to coincide with the rest of [Linode's Steam guides](/docs/applications/game-servers/), as well as Valve's official documentation. Do not add the `steam` user to the `sudo` or `wheel` groups. This is so your Steam installation is contained in a user account with absolutely no administrative privileges. The `steam` user's sole purpose is to run SteamCMD and your hosted games, nothing else.
+1.  [Add a Steam user account](/docs/security/securing-your-server#add-a-limited-user-account). Make the username `steam` to coincide with the rest of [Linode's Steam guides](/docs/applications/game-servers/), as well as Valve's official documentation. Be sure to give the `steam` user `sudo` privileges.
 
-*   [Harden SSH access](/docs/security/securing-your-server#harden-ssh-access)
+2.  [Harden SSH access](/docs/security/securing-your-server#harden-ssh-access).
 
-*   [Remove unused network-facing services](/docs/security/securing-your-server#remove-unused-network-facing-services)
+3.  [Remove unused network-facing services](/docs/security/securing-your-server#remove-unused-network-facing-services).
 
-*   [Configure a firewall](/docs/security/securing-your-server#configure-a-firewall) for IPv4 and IPv6 **using the rulesets below**:
+4.  If you are using iptables, complete the [Configure a firewall](/docs/security/securing-your-server#configure-a-firewall) steps **using the rulesets below**. If instead you are using **firewalld**, skip ahead to step 5.
 
-    **IPv4**
+    *IPv4*
 
     ~~~
     *filter
@@ -90,7 +90,7 @@ Game servers and clients are an especially ripe target for attack. Use our [Secu
     >
     >Some Steam games require a few additional rules which can be found in our [Steam game guides](/docs/applications/game-servers/). Steam can also use multiple port ranges for various purposes, but they should only be allowed if your game(s) make use of those services. See [this](https://support.steampowered.com/kb_article.php?ref=8571-GLVN-8711) Steam Support page for more information.
 
-    **IPv6**
+    *IPv6*
 
     Steam currently supports multiplayer play over IPv4 only, so a Steam server only needs basic IPv6 firewall rules, shown below.
 
@@ -115,6 +115,21 @@ Game servers and clients are an especially ripe target for attack. Use our [Secu
     COMMIT
     ~~~
 
+5.  If you are using **firewalld** (CentOS 7, Fedora) instead of iptables, **use these rules**. If you are using iptables, do skip this step.
+
+    ~~~
+    sudo firewall-cmd --zone="public" --add-service=ssh --permanent
+    sudo firewall-cmd --zone="public" --add-forward-port=port=27000-27030:proto=udp:toport=1025-65355 --permanent
+    sudo firewall-cmd --zone="public" --add-forward-port=port=4380:proto=udp:toport=1025-65355 --permanent
+    sudo firewall-cmd --reload
+    ~~~
+
+    Switch on firewalld and verify your ruleset:
+
+        sudo systemctl start firewalld
+        sudo systemctl enable firewalld
+        sudo firewall-cmd --zone="public" --list-all
+
 
 ## Install SteamCMD
 
@@ -132,22 +147,28 @@ Game servers and clients are an especially ripe target for attack. Use our [Secu
     >
     >Running `dpkg --add-architecture i386` is not necessary at this point. Our Steam game guides add [multiarch support](https://wiki.debian.org/Multiarch/HOWTO) only when a game requires it.
 
-2.  Switch to the `steam` user:
-
-        sudo -u steam -i
-
-3.  Create the directory for SteamCMD and change to it:
+2.  Create the directory for SteamCMD and change to it:
 
         mkdir ~/steamcmd && cd ~/steamcmd
 
-4.  Download the SteamCMD tarball:
+3.  Download the SteamCMD tarball:
 
         wget https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz
 
-5.  Extract the installation and runtime files:
+4.  Extract the installation and runtime files:
 
         tar -xvzf steamcmd_linux.tar.gz
 
+## Add an Error Fix
+
+When running a Steam game, the following error is common to encounter:
+
+    /home/steam/.steam/sdk32/libsteam.so: cannot open shared object file: No such file or directory
+
+The game server will still operate without this step and it should be something fixed in a later release of SteamCMD, but this temp fix of creating the directory and symlinking to `libsteam.so` will get rid of the error.
+
+    mkdir -p ~/.steam/sdk32/
+    ln -s ~/steamcmd/linux32/steamclient.so ~/.steam/sdk32/steamclient.so
 
 ## Run SteamCMD
 
@@ -192,7 +213,7 @@ Game servers and clients are an especially ripe target for attack. Use our [Secu
 
     {: .caution}
     >
-    > Be aware that the Steam CLI does **not** obfuscate passwords. If signing in with your Steam account, be aware of the security of your local screen.
+    > Be aware that the Steam CLI does **not** obfuscate passwords. If signing in with your Steam account, be aware of your local screen's security.
 
     {: .note}
     >
@@ -200,20 +221,6 @@ Game servers and clients are an especially ripe target for attack. Use our [Secu
 
 ## Next Steps
 
-You're ready to install your first Steam game server and you should again be at the `Steam>` prompt.
+You're ready to install your first Steam game server. From here, certain games may need a few more i386 libraries or firewall rules, and most will need their configuration settings edited. The game server should allow easy administrative access with as little interruption to players as possible. Its software should frequently be updated, and players' progress should be saved when the server is properly shut down. 
 
-1.  Set an installation directory for the game:
-
-        force_install_dir /home/steam/game_title
-
-    The `game-title` should be the name of the Steam game you're installing.
-
-2.  Install the game from Steam's library:
-
-        app_update server_id validate
-
-    The `server_id` can be found in Valve's list of [dedicated Linux servers](https://developer.valvesoftware.com/wiki/Dedicated_Servers_List#Linux_Dedicated_Servers).
-
-3.  From there, certain games may need a few more i386 libraries or firewall rules, and most will need their configuration settings edited. The game server should allow easy administrative access with as little interruption to players as possible. Its software should frequently be updated, and players' progress should be saved when the server is properly shut down. 
-
-    Our [game server guides](/docs/applications/game-servers/) cover these requirements and contain various Steam tutorials which will pick you up exactly where this page leaves off.
+Our [game server guides](/docs/applications/game-servers/) cover these requirements and contain various Steam tutorials which will pick you up exactly where this page leaves off.
