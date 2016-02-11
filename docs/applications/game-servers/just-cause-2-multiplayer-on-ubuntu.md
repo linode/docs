@@ -6,7 +6,7 @@ description: 'Install and configure a Just Causew 2 Multiplayer server on Ubuntu
 keywords: 'just cause,just cause 2,game servers,games,ubuntu,ubuntu 14.04,steam'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 published: 'Friday, October 9th, 2015'
-modified: Friday, October 9th, 2015
+modified: Thursday, February 11, 2016
 modified_by:
     name: Linode
 title: 'Install and Configure a Just Cause 2 Multiplayer Server on Ubuntu 14.04'
@@ -38,7 +38,8 @@ From the SteamCMD guide, two additional steps are needed specifically for JC2.
 1.  Add two iptables firewall rules. These commands assume that you have **only** the iptables rules in place from the SteamCMD guide. These insert a rules after the pre-existing iptables rules for SteamCMD.
 
         sudo iptables -I INPUT 7 -p udp -m udp --sport 10999 --dport 1025:65355 -j ACCEPT
-        sudo iptables -I INPUT 8 -p udp -m udp --sport 7777 --dport 1025:65355 -j ACCEPT
+        sudo iptables -I INPUT 8 -p udp -m udp --dport 7777 -j ACCEPT
+        sudo iptables -I INPUT 9 -p udp -m udp --dport 7778 -j ACCEPT
 
 2.  After entering the above rules, run iptables-persistent again. You’ll be asked if you want to save the current IPv4 and IPv6 rules. Answer `yes` for IPv4 and `no` for IPv6.
 
@@ -84,7 +85,7 @@ From the SteamCMD guide, two additional steps are needed specifically for JC2.
         cd ~/jc2mp-server
         cp default_config.lua config.lua
 
-2.  Open `config.lua` with your preferred text editor. Every possible server option is explained in the configuration file. Simply follow the instructions and when finished, be sure to save your changes.
+2.  Open `config.lua` with your preferred text editor. Every possible server option is explained in the configuration file. Simply follow the instructions and when finished, be sure to save your changes. At minimum, you'll want to set a server name and access password.
 
 3.  Before starting up the server for the first time, it is good to symlink a library file to avoid a possible error:
 

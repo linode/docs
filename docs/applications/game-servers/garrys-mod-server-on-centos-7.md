@@ -7,7 +7,7 @@ keywords: 'garry''s mod,centos,centos 7'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-applications/game-servers/minecraft-ubuntu12-04/']
 published: 'Wednesday, January 21, 2015'
-modified: Monday, January 26, 2015
+modified: Thursday, February 11, 2016
 modified_by:
   name: Linode
 title: 'Garry''s Mod on CentOS 7'
@@ -49,7 +49,7 @@ From the SteamCMD guide, two additional steps are needed specifically for Gmod.
 
 2.  Install an additonal 32-bit package:
 
-        sudo apt-get install ncurses-libs.i686
+        sudo yum install ncurses-libs.i686
 
 ## Install Garry's Mod
 
@@ -121,7 +121,7 @@ This will automatically restart Garry's Mod when your server reboots.
 
 2.  Enter the startup command. **Be sure that the binary flags are the same as in your startup script.**
 
-        @reboot /home/steam/gmod/srcds_run +maxplayers 20 +gamemode terrortown +map cs_office
+        @reboot /home/steam/gmod/srcds_run -game garrysmod +maxplayers 20 +map gm_flatgrass
 
 3.  To exit `vim`, press **Esc**, then type **:x** and hit **Enter**.
 
