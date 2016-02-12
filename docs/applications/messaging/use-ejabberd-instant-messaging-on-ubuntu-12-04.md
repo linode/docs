@@ -2,15 +2,15 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Getting started with ejabberd, an instant messaging server written in Erlang/OTP on Ubuntu 12.04 (Precise Pangolin).'
-keywords: 'ejabberd,ejabberd ubuntu precise pangolin,ejabberd ubuntu 12.04,ejabberd on linux,real-time messaging,xmpp server,collaboration software,chat software,linux jabber server'
+description: 'Use ejabberd Instant Messaging on Ubuntu 12.04.'
+keywords: 'ejabberd,ejabberd ubuntu,ejabberd ubuntu 12.04,real-time messaging,xmpp server,collaboration software,chat software,linux jabber server,jabber,jid'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['communications/xmpp/ejabberd/ubuntu-12-04-precise-pangolin/']
+alias: ['communications/xmpp/ejabberd/ubuntu-12-04-precise-pangolin/','applications/messaging/instant-messaging-services-with-ejabberd-on-ubuntu-12-04-precise-pangolin]
 modified: Wednesday, October 31st, 2012
 modified_by:
   name: Linode
 published: 'Wednesday, October 31st, 2012'
-title: 'Instant Messaging Services with ejabberd on Ubuntu 12.04 (Precise Pangolin)'
+title: 'Use ejabberd Instant Messaging on Ubuntu 12.04'
 external_resources:
  - '[Ejabberd Community Site](http://www.ejabberd.im/)'
  - '[XMPP Standards Foundation](http://xmpp.org/)'
@@ -19,7 +19,7 @@ external_resources:
 
 Ejabberd is a Jabber daemon written in the Erlang programming language. It is extensible, flexible and very high performance. With a web-based interface and broad support for [XMPP standards](http://xmpp.org/), ejabberd is a great choice for a multi-purpose XMPP server. Ejabberd can be considered "heavyweight" by critics because of the requirements of the Erlang run-times. However, it is incredibly robust and can scale to support incredibly heavy loads. Ejabberd servers are believed to be the backbone for some of the largest Jabber servers running now.
 
-This installation process assumes that you have a working installation of Ubuntu 12.04 (Precise Pangolin), have followed the steps in the [getting started](/docs/getting-started/) guide, and now have an up-to-date instance of the Ubuntu Precise Pangolin operating system. We also assume you are connected to your Linode via SSH as root. Once you've completed these requirements, we can begin with the installation process.
+This installation process assumes that you have a working installation of Ubuntu 12.04 (Precise Pangolin), have followed the steps in the [getting started](/docs/getting-started/) guide, and now have an up-to-date instance of the Ubuntu 12.04 operating system. We also assume you are connected to your Linode via SSH as root. Once you've completed these requirements, we can begin with the installation process.
 
 ## XMPP/Jabber Basics
 
