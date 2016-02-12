@@ -165,7 +165,7 @@ When running a Steam game, the following error is common to encounter:
 
     /home/steam/.steam/sdk32/libsteam.so: cannot open shared object file: No such file or directory
 
-The game server will still operate without this step and it should be something fixed in a later release of SteamCMD, but this temp fix of creating the directory and symlinking to `libsteam.so` will get rid of the error.
+The game server will still operate despite this error, and it should be something fixed in a later release of SteamCMD. The temporary fix is to create the directory and symlink to `libsteam.so`.
 
     mkdir -p ~/.steam/sdk32/
     ln -s ~/steamcmd/linux32/steamclient.so ~/.steam/sdk32/steamclient.so
