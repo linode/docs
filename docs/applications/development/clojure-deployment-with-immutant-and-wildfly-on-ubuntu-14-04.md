@@ -56,7 +56,7 @@ This guide will show how to deploy a Clojure application to WildFly - the popula
 		sudo apt-get update
 		sudo apt-get install oracle-java8-installer
 
-	You will be asked twice on screen to agree with "Oracle Binary Code License Agreement for the Java SE Platform Products and JavaFX." Press &lt;Ok&gt; button to agree the first time, and &lt;Yes&gt; button the second time.
+	You will be asked twice on screen to agree with "Oracle Binary Code License Agreement for the Java SE Platform Products and JavaFX." Press **Ok** button to agree the first time, and **Yes** button the second time.
 
 3.  Make Oracle Java default:
 
@@ -106,7 +106,7 @@ Now, you will create a sample Clojure web application based on *Luminus* framewo
 		cd clj-app
 		lein run
 
-	Now, open http://&lt;public_linode_ip&gt;:3000/ in your browser, and you will see the sample application main page.
+	Now, open http://192.51.100.1:3000/ in your browser (be sure to replace `192.51.100.1` with your Linode's public IP), and you will see the sample application main page.
 
 ![Luminus application main page](/docs/assets/clj-luminus-main-page.png)
 
@@ -231,7 +231,7 @@ To deploy Clojure application with WildFly you will need to install the Immutant
 	}
 	~~~
 
-	This sets the destination folder into which the WAR file, context path and WAR file name are copied - which should be ROOT for root context path.
+	This sets three parameters for Immutant installation: 1. the destination folder for the WAR file, 2. the context path, and 3. the WAR file name - which should be ROOT when the context path is `/`.
 
 3.  Switch to the `clj-app` directory and deploy the application with:
 
