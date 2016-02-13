@@ -2,14 +2,14 @@
 author:
     name: Linode Community
     email: docs@linode.com
-description: 'Clojure application deployment with Immutant and WildFly on Ubuntu 14.04 LTS'
-keywords: 'clojure,luminus,leiningen,immutant,jvm,wildfly,jboss'
+description: 'Clojure Deployment with Immutant and WildFly on Ubuntu 14.04'
+keywords: 'clojure,luminus,leiningen,immutant,jvm,wildfly,jboss,oracle jdk 8'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: 'Monday, December 21st, 2015'
 modified_by:
   name: Sergey Pariev
 published: 'Monday, December 14th, 2015'
-title: 'Clojure Application Deployment with Immutant and WildFly on Ubuntu 14.04 LTS'
+title: 'Clojure Deployment with Immutant and WildFly on Ubuntu 14.04'
 contributor:
   name: Sergey Pariev
   link: https://twitter.com/spariev
@@ -24,7 +24,7 @@ external_resources:
 
 Clojure is a general-purpose programming language with an emphasis on functional programming. It is a dialect of the Lisp programming language running on the Java Virtual Machine (JVM). While Clojure allows you to write elegant and concise code, its ability to make use of the existing JVM infrastructure, such as libraries, tools and application servers, makes it also a very practical choice.
 
-This guide will show how to deploy Clojure application to WildFly - widely used open-source Java application server, developed by RedHat. To simplify the deployment process, suite of libraries, called *Immutant*, will be used.
+This guide will show how to deploy a Clojure application to WildFly - the popular open-source Java application server developed by RedHat. To simplify the deployment process, a suite of libraries called *Immutant* will be used.
 
 ## Before You Begin
 
@@ -32,7 +32,7 @@ This guide will show how to deploy Clojure application to WildFly - widely used 
 
 2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
 
-3.  Update your system.
+3.  Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
 
@@ -56,13 +56,13 @@ This guide will show how to deploy Clojure application to WildFly - widely used 
 		sudo apt-get update
 		sudo apt-get install oracle-java8-installer
 
-	You will be asked twice to agree with "Oracle Binary Code License Agreement for the Java SE Platform Products and JavaFX" by installer. Press &lt;Ok&gt; button to agree the first time, and &lt;Yes&gt; button the second time.
+	You will be asked twice on screen to agree with "Oracle Binary Code License Agreement for the Java SE Platform Products and JavaFX." Press &lt;Ok&gt; button to agree the first time, and &lt;Yes&gt; button the second time.
 
 3.  Make Oracle Java default:
 
 		sudo apt-get install oracle-java8-set-default
 
-4.  Check installation by running
+4.  Check installation by running:
 
 		java -version
 
@@ -78,12 +78,12 @@ This guide will show how to deploy Clojure application to WildFly - widely used 
 
 ## Install Leiningen
 
-1. *Leiningen* is a Clojure project build tool. Install it system-wide:
+1. *Leiningen* is a Clojure project-build tool. Install it system-wide:
 
 		sudo wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein -O /usr/local/bin/lein
 		sudo chmod a+x /usr/local/bin/lein
 
-2.  To check installation has been successful, run
+2.  To check that installation has been successful, run:
 
 		lein -v
 
@@ -93,20 +93,20 @@ This guide will show how to deploy Clojure application to WildFly - widely used 
 
 ## Create Sample Application
 
-Now you will create sample Clojure web application based on *Luminus* framework.
+Now, you will create a sample Clojure web application based on *Luminus* framework.
 
-1.  In your home directory run
+1.  In your home directory run:
 
 		lein new luminus clj-app
 
-	This will create new web application using Luminus framework application template. It will use `immutant` as a web server, which is the default option.
+	This will create new web application using the Luminus framework application template. It will use `immutant` as a web server, which is the default option.
 
-2.  To check everything went smoothly, run newly created application in development mode:
+2.  To check that everything went smoothly, run the newly created application in development mode:
 
 		cd clj-app
 		lein run
 
-	Now open http://&lt;public_linode_ip&gt;:3000/ in your browser and you will see the sample application main page.
+	Now, open http://&lt;public_linode_ip&gt;:3000/ in your browser, and you will see the sample application main page.
 
 ![Luminus application main page](/docs/assets/clj-luminus-main-page.png)
 
@@ -118,7 +118,7 @@ Now you will create sample Clojure web application based on *Luminus* framework.
 
 ## Install JBoss WildFly Application Server
 
-1.  Download and unpack application server archive into `/opt/wildfly` directory:
+1.  Download and unpack the application server archive into `/opt/wildfly` directory:
 
 		export VERSION=9.0.2.Final # Current stable version at the time of writing
 		cd /opt
@@ -127,7 +127,7 @@ Now you will create sample Clojure web application based on *Luminus* framework.
 		sudo mv wildfly-$VERSION wildfly #Get rid of version suffix
 		sudo rm wildfly-$VERSION.tar.gz
 
-2.  Create `wildfly` user and make him the owner of `/opt/wildfly`:
+2.  Create a `wildfly` user and make him the owner of `/opt/wildfly`:
 
 		sudo adduser --system --group --no-create-home --home /opt/wildfly --disabled-login wildfly
 		sudo chown wildfly -R /opt/wildfly
@@ -137,7 +137,7 @@ Now you will create sample Clojure web application based on *Luminus* framework.
 		sudo cp /opt/wildfly/bin/init.d/wildfly-init-debian.sh /etc/init.d/wildfly
 		sudo update-rc.d wildfly defaults
 
-4.  Start wildfly service with
+4.  Start wildfly service with:
 
 		sudo service wildfly start
 
@@ -147,11 +147,11 @@ Now you will create sample Clojure web application based on *Luminus* framework.
 
 			sudo usermod linode-user -a -G wildfly
 
-	*   Run `newgrp wildfly` as `linode-user` to log in into the new group without logging out.
+	*   Run `newgrp wildfly` as `linode-user` to log in into the new group without logging out:
 
 			newgrp wildfly
 
-	*   Make sure `/opt/wildfly/standalone/deployments` belongs to `wildfly` group and is writable by the group:
+	*   Make sure `/opt/wildfly/standalone/deployments` belongs to a `wildfly` group and is writable by the group:
 
 			sudo chown wildfly.wildfly /opt/wildfly/standalone/deployments/
 			sudo chmod g+w /opt/wildfly/standalone/deployments
@@ -195,18 +195,18 @@ Now you will create sample Clojure web application based on *Luminus* framework.
 
 	Do not forget to substitute `example.com` with your Linode domain name or public IP address.
 
-2.  Enable newly created `wildfly` site and remove `default` site to avoid conflicts:
+2.  Enable your newly created `wildfly` site and remove the `default` site to avoid conflicts:
 
 		sudo ln -s /etc/nginx/sites-available/wildfly /etc/nginx/sites-enabled
 		sudo rm /etc/nginx/sites-enabled/default
 
-3.  Restart nginx for changes to take effect.
+3.  Restart nginx for changes to take effect:
 
 		sudo service nginx restart
 
 ## Deploy Sample Application with Immutant
 
-To deploy Clojure application with WildFly you will need to install Immutant leiningen plugin and configure it for the deployment.
+To deploy Clojure application with WildFly you will need to install the Immutant leiningen plugin and configure it for the deployment.
 
 1.  Open `project.clj` file in `clj-app` derectory and add `[lein-immutant "2.1.0"]` to the `:plugins` section of configuration:
 
@@ -217,7 +217,7 @@ To deploy Clojure application with WildFly you will need to install Immutant lei
               [lein-immutant "2.1.0"]]
 	~~~
 
-2.  In `project.clj` add new `:immutant` section after `:plugins` with the following content:
+2.  In `project.clj` and after `:plugins`, add a new `:immutant` section with the following content :
 
 {: .file-excerpt}
 /home/linode-user/clj-app/project.clj
@@ -231,9 +231,9 @@ To deploy Clojure application with WildFly you will need to install Immutant lei
 	}
 	~~~
 
-	This sets the destination folder to copy the WAR file into, context path and WAR file name - which should be ROOT for root context path.
+	This sets the destination folder into which the WAR file, context path and WAR file name are copied - which should be ROOT for root context path.
 
-3.  Switch to `clj-app` directory and deploy the application with
+3.  Switch to the `clj-app` directory and deploy the application with:
 
 		cd ~/clj-app
 		lein immutant war
