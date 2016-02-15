@@ -155,28 +155,28 @@ In our last step, we enabled Bash Completion feature for WP-CLI. To use that typ
 
 ### Main Install
 
-1.  Move to the Apache `public_html` directory.
+1.  Move to the Apache `example.com` directory.
 
-        cd /var/www/html/example.com/public_html
+        cd /var/www/html/example.com
 
-2.  Next, download the WordPress files. Here we need to use the `-allow-root` parameter for running WP-CLI under root user. You would need to use this parameter every time you run a command which requires WP-CLI to write to the directory like installing or upgrading.
+2. Change the ownership of the `public_html` directory. Apache comes with its own usergroup `www-data`. As a recommended practice, you should change the ownership of your installation directory to this group. You would also need to add your `username` to the group so as to perform any commands in the directory.
 
-        sudo wp core download --allow-root
+        sudo chown -R www-data public_html
+        sudo usermod -a -G www-data username
+
+3.  Next, download the WordPress files. Here we need to use the prefix `sudo -u www-data` for running WP-CLI commands under `www-data` group. You would need to use this every time you run a command which requires WP-CLI to write to the directory like installing or upgrading.
+
+        sudo -u www-data wp core download
 
 3.  Create a wp-config.php file.
 
-        sudo wp core config --dbname=wordpress --dbuser=user --dbpass=password --dbhost=localhost --dbprefix=wp_ --allow-root
+        sudo -u www-data wp core config --dbname=wordpress --dbuser=user --dbpass=password --dbhost=localhost --dbprefix=wp_
 
     dbhost and dbprefix are entirely optional and can be omitted unless you need to change their default values.
 
 4.  Run the installation.
 
-        sudo wp core install --url="http://example.com" --title="Blog Title" --admin_user="adminuser" --admin_password="password" --admin_email="emailid" --allow-root
-
-5.  Change the ownership of wp-content/uploads directory so that media uploads can work properly.
-
-        cd wp-content
-        sudo chown www-data uploads -R
+        sudo -u www-data wp core install --url="http://example.com" --title="Blog Title" --admin_user="adminuser" --admin_password="password" --admin_email="email@domain.com" --allow-root
 
 Your WordPress blog is ready for use.
 
@@ -216,16 +216,16 @@ You can see more than 10 per page by modifying the command as
 
 Now that you know the slug of the plugin we want to install, install and activate it.
 
-    sudo wp plugin install wordpress-seo --allow-root
+    sudo -u www-data wp plugin install wordpress-seo
     wp plugin activate wordpress-seo
 
 If you want to update any plugin, you can use
 
-    sudo wp plugin update wordpress-seo --allow-root
+    sudo -u www-data wp plugin update wordpress-seo
 
 Or if you want to update all, then
 
-    sudo wp plugin update --all --allow-root
+    sudo -u www-data wp plugin update --all
 
 To list all the installed plugins on your blog, use
 
@@ -233,7 +233,7 @@ To list all the installed plugins on your blog, use
 
 To uninstall a plugin, use
 
-    sudo wp plugin uninstall wordpress-seo --allow-root
+    sudo -u www-data wp plugin uninstall wordpress-seo
 
 ### Installing and Updating Themes
 
@@ -245,13 +245,13 @@ So to search for the theme, you would use
 
 To install and activate, you need to use
 
-    sudo wp theme install twentytwelve --allow-root
+    sudo -u www-data wp theme install twentytwelve
     wp theme activate twentytwelve
 
 And to update one or all themes, you can use
 
-    sudo wp theme update twentytwelve --allow-root
-    sudo wp theme update --all --allow-root
+    sudo -u www-data wp theme update twentytwelve
+    sudo -u www-data wp theme update --all
 
 To list all the themes in a tabular form, you can use the command `list`.
 
@@ -259,13 +259,13 @@ To list all the themes in a tabular form, you can use the command `list`.
 
 To uninstall a theme, use
 
-    sudo wp theme uninstall twentytwelve  --allow-root
+    sudo -u www-data wp theme uninstall twentytwelve
 
 ### Update WordPress
 
 You can update your blog via following commands.
 
-    sudo wp core update  --allow-root
+    sudo -u www-data wp core update
     wp core update-db
 
 First command updates the files and second one completes the database upgrade.
