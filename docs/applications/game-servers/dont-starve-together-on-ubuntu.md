@@ -6,7 +6,7 @@ description: 'Install and configure a Don''t Starve Together server for Ubuntu 1
 keywords: 'don''t starve,don''t starve together,game servers,games,ubuntu, ubuntu 14.04,steam'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 published: 'Tuesday, April 14, 2015'
-modified: Friday, February 12th, 2016'
+modified: Monday, February 15th, 2016'
 modified_by:
     name: Lindoe
 title: 'Install and Configure Don''t Starve Together Server on Ubuntu 14.04'
