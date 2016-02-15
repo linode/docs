@@ -162,7 +162,7 @@ In our last step, we enabled Bash Completion feature for WP-CLI. To use that typ
 2. Change the ownership of the `public_html` directory. Apache comes with its own usergroup `www-data`. As a recommended practice, you should change the ownership of your installation directory to this group. You would also need to add your `username` to the group so as to perform any commands in the directory.
 
         sudo chown -R www-data public_html
-        sudo usermod -a -G www-data username
+        sudo usermod -aG www-data username
 
 3.  Next, download the WordPress files. Here we need to use the prefix `sudo -u www-data` for running WP-CLI commands under `www-data` group. You would need to use this every time you run a command which requires WP-CLI to write to the directory like installing or upgrading.
 
