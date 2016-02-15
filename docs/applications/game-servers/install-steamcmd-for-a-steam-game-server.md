@@ -5,10 +5,10 @@ author:
 description: 'Install SteamCMD, a command-line version of the Steam client, which works with games that use SteamPipe. Installing SteamCMD is a prerequisite before hosting a Steam title on your own game server.'
 keywords: 'steam,steamcmd,steam cmd,games,game server,steam server,steampipe'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: 'Friday, February 12th, 2016'
+modified: 'Monday, February 15th, 2016'
 modified_by:
   name: Linode
-published: 'Friday, February 12th, 2016'
+published: 'Monday, February 15th, 2016'
 title: 'Install SteamCMD for a Steam Game Server'
 external_resources:
  - '[Valve Developer Community: SteamCMD](https://developer.valvesoftware.com/wiki/SteamCMD)'
@@ -103,7 +103,7 @@ Game servers and clients are an especially ripe target for attack. Use our [Secu
     -A INPUT ! -i lo -s ::1/128 -j REJECT
 
     # Allow ICMP.
-    -A INPUT -p icmpv6 -m state --state NEW -j ACCEPT
+    -A INPUT -p icmpv6 -j ACCEPT
 
     # Allow inbound traffic from established connections.
     -A INPUT -m state --state ESTABLISHED -j ACCEPT
