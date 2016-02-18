@@ -2,14 +2,15 @@
 author:
   name: Joe D. 
   email: docs@linode.com
-description: 'Basic Node.js Server in a Docker Container.'
-keywords: 'docker, nodejs, node.js, node, debian, ubuntu, server, web server, js, javascript'
+description: 'Deploy a Node.js Server in a Docker Container.'
+keywords: 'docker,node.js,node,debian,ubuntu,web server,javascript,container'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: Monday, March 23rd, 2015
 modified_by:
   name: Linode
 published: 'Monday, March 23rd, 2015'
-title: Basic Node.js Web Server with Docker
+title: 'Node.js Web Server deployed within Docker'
+alias: ['applications/containers/nodejs-node-js-web-server-docker-container']
 ---
 
 
@@ -24,7 +25,7 @@ Use the Docker-maintained install script for Debian or Ubuntu. For other operati
 
     {: .note}
     >
-    >The current version of the docker script checks for AUFS support and displays the warning below if support is not found:
+    >The current version of the Docker script checks for AUFS support and displays the warning below if support is not found:
     >
     >     Warning: current kernel is not supported by the linux-image-extra-virtual
           package.  We have no AUFS support.  Consider installing the packages
@@ -42,7 +43,7 @@ The Docker Hub user page for Linode can be accessed [here](https://hub.docker.co
 
 {: .note}
 >
->Docker images made for one operating system can be used on servers running a different OS. The **server-node-js** Ubuntu 14.04 image was tested on Debian 7, Ubuntu 14.04, Centos 7, and Fedora 21. On Centos and Fedora after Docker installation, run the `sudo service docker start` command.
+>Docker images made for one operating system can be used on servers running a different OS. The **server-node-js** Ubuntu 14.04 image was tested on Debian 7, Ubuntu 14.04, Centos 7 and Fedora 21. After Docker installation on Centos and Fedora, run the `sudo service docker start` command.
 
 1.  Search for **linode** images:
 
@@ -53,9 +54,9 @@ The Docker Hub user page for Linode can be accessed [here](https://hub.docker.co
         sudo docker pull linode/server-node-js
 
 ##Run the Docker Container, Node.js, and the Web Server
-When an image downloads, there are no image containers running. 
+Note that when an image downloads, no image containers run. 
 
-1.  Run, create, or turn on a new container. Forward the Linode's port 80 to port 3000 of the container:
+1.  Run, create or activate a new container. Forward the Linode's port 80 to port 3000 of the container:
 
         sudo docker run -p 80:3000 -t -i linode/server-node-js /bin/bash 
 
@@ -77,7 +78,7 @@ When an image downloads, there are no image containers running.
 
         forever start server.js
 
-5.  To exit the container while leaving it running, press `ctrl + p` then `ctrl + q`.
+5.  To exit the container while leaving it running, press `ctrl + p` and then `ctrl + q`.
 
 6. Test the server at `123.45.67.89/test.htm`, replacing `123.45.67.89` with your Linode's IP address. A page with "Test File" should appear.
 
