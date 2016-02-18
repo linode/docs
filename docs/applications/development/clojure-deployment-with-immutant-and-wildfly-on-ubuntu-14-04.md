@@ -39,8 +39,6 @@ This guide will show how to deploy a Clojure application to WildFly - the popula
 {: .note}
 >
 >This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
-
-{: .note}
 >
 >In this guide `example.com` will be used as a domain name, and `linode-user` as a name of non-root user. Substitute your own FQDN and username accordingly.
 
@@ -108,7 +106,7 @@ Now, you will create a sample Clojure web application based on *Luminus* framewo
 
     Now, open http://192.51.100.1:3000/ in your browser (be sure to replace `192.51.100.1` with your Linode's public IP), and you will see the sample application main page.
 
-![Luminus application main page](/docs/assets/clj-luminus-main-page.png)
+    ![Luminus application main page](/docs/assets/clj-luminus-main-page.png)
 
     {: .note}
     >
@@ -132,12 +130,12 @@ Now, you will create a sample Clojure web application based on *Luminus* framewo
         sudo adduser --system --group --no-create-home --home /opt/wildfly --disabled-login wildfly
         sudo chown wildfly -R /opt/wildfly
 
-3.  Copy WildFly init script to `/etc/init.d/` and make `wildfly` service start on boot:
+3.  Copy the WildFly init script to `/etc/init.d/` and make `wildfly` service start on boot:
 
         sudo cp /opt/wildfly/bin/init.d/wildfly-init-debian.sh /etc/init.d/wildfly
         sudo update-rc.d wildfly defaults
 
-4.  Start wildfly service with:
+4.  Start the WildFly service with:
 
         sudo service wildfly start
 
@@ -164,34 +162,34 @@ Now, you will create a sample Clojure web application based on *Luminus* framewo
 
 2.  Create file `/etc/nginx/sites-available/wildfly` with the following content:
 
-{: .file}
-/etc/nginx/sites-available/wildfly
-:   ~~~ conf
-    upstream http_backend {
-        server 127.0.0.1:8080;
-    }
-
-    server {
-        listen 80;
-        server_name example.com;
-
-        location = /favicon.ico { access_log off; log_not_found off; }
-
-
-        location / {
-            proxy_pass http://http_backend;
-
-            proxy_http_version 1.1;
-            proxy_set_header Connection "";
-
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_set_header Host $http_host;
-
-            access_log /var/log/nginx/wildfly.access.log;
-            error_log /var/log/nginx/wildfly.error.log;
+    {: .file}
+    /etc/nginx/sites-available/wildfly
+    :   ~~~ conf
+        upstream http_backend {
+            server 127.0.0.1:8080;
         }
-    }
-    ~~~
+
+        server {
+            listen 80;
+            server_name example.com;
+
+            location = /favicon.ico { access_log off; log_not_found off; }
+
+
+            location / {
+                proxy_pass http://http_backend;
+
+                proxy_http_version 1.1;
+                proxy_set_header Connection "";
+
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header Host $http_host;
+
+                access_log /var/log/nginx/wildfly.access.log;
+                error_log /var/log/nginx/wildfly.error.log;
+            }
+        }
+        ~~~
 
     Do not forget to substitute `example.com` with your Linode domain name or public IP address.
 
@@ -208,30 +206,34 @@ Now, you will create a sample Clojure web application based on *Luminus* framewo
 
 To deploy Clojure application with WildFly you will need to install the Immutant leiningen plugin and configure it for the deployment.
 
-1.  Open `project.clj` file in `clj-app` derectory and add `[lein-immutant "2.1.0"]` to the `:plugins` section of configuration:
+1.  Open `project.clj` file in `clj-app` directory and add `[lein-immutant "2.1.0"]` to the `:plugins` section of configuration:
 
-{: .file-excerpt}
-/home/linode-user/clj-app/project.clj
-:   ~~~ clj
-    :plugins [[lein-environ "1.0.1"]
-              [lein-immutant "2.1.0"]]
-    ~~~
+    {: .file-excerpt}
+    /home/linode-user/clj-app/project.clj
+    :   ~~~ clj
+        :plugins [[lein-environ "1.0.1"]
+                  [lein-immutant "2.1.0"]]
+        ~~~
 
 2.  In `project.clj` and after `:plugins`, add a new `:immutant` section with the following content :
 
-{: .file-excerpt}
-/home/linode-user/clj-app/project.clj
-:   ~~~ clj
-    :immutant {
-        :war {
-            :name "ROOT"
-            :destination "/opt/wildfly/standalone/deployments"
-            :context-path "/"
+    {: .file-excerpt}
+    /home/linode-user/clj-app/project.clj
+    :   ~~~ clj
+        :immutant {
+            :war {
+                :name "ROOT"
+                :destination "/opt/wildfly/standalone/deployments"
+                :context-path "/"
+            }
         }
-    }
-    ~~~
+        ~~~
 
-    This sets three parameters for Immutant installation: 1. the destination folder for the WAR file, 2. the context path, and 3. the WAR file name - which should be ROOT when the context path is `/`.
+    This sets three parameters for Immutant installation: 
+
+    1. The destination folder for the WAR file
+    2. The context path
+    3. The WAR file name, which should be ROOT when the context path is `/`.
 
 3.  Switch to the `clj-app` directory and deploy the application with:
 
