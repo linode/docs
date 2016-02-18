@@ -8,7 +8,7 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: 'Monday, December 21st, 2015'
 modified_by:
   name: Sergey Pariev
-published: 'Monday, December 14th, 2015'
+published: 'Thursday, February 18th, 2016'
 title: 'Clojure Deployment with Immutant and WildFly on Ubuntu 14.04'
 contributor:
   name: Sergey Pariev
@@ -49,28 +49,28 @@ This guide will show how to deploy a Clojure application to WildFly - the popula
 
 1.  Add Oracle Java 8 Installer PPA repository to the system:
 
-		sudo add-apt-repository ppa:webupd8team/java
+        sudo add-apt-repository ppa:webupd8team/java
 
 2.  Update package list and install Oracle JDK 8:
 
-		sudo apt-get update
-		sudo apt-get install oracle-java8-installer
+        sudo apt-get update
+        sudo apt-get install oracle-java8-installer
 
-	You will be asked twice on screen to agree with "Oracle Binary Code License Agreement for the Java SE Platform Products and JavaFX." Press **Ok** button to agree the first time, and **Yes** button the second time.
+    You will be asked twice on screen to agree with "Oracle Binary Code License Agreement for the Java SE Platform Products and JavaFX." Press **Ok** button to agree the first time, and **Yes** button the second time.
 
 3.  Make Oracle Java default:
 
-		sudo apt-get install oracle-java8-set-default
+        sudo apt-get install oracle-java8-set-default
 
 4.  Check installation by running:
 
-		java -version
+        java -version
 
-	Output should resemble the following:
+    Output should resemble the following:
 
-	    java version "1.8.0_66"
-		Java(TM) SE Runtime Environment (build 1.8.0_66-b17)
-		Java HotSpot(TM) 64-Bit Server VM (build 25.66-b17, mixed mode)
+        java version "1.8.0_66"
+        Java(TM) SE Runtime Environment (build 1.8.0_66-b17)
+        Java HotSpot(TM) 64-Bit Server VM (build 25.66-b17, mixed mode)
 
 {: .note}
 >
@@ -80,16 +80,16 @@ This guide will show how to deploy a Clojure application to WildFly - the popula
 
 1. *Leiningen* is a Clojure project-build tool. Install it system-wide:
 
-		sudo wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein -O /usr/local/bin/lein
-		sudo chmod a+x /usr/local/bin/lein
+        sudo wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein -O /usr/local/bin/lein
+        sudo chmod a+x /usr/local/bin/lein
 
 2.  To check that installation has been successful, run:
 
-		lein -v
+        lein -v
 
-	Leiningen will update itself and then will output the version info, which should look similar to the following:
+    Leiningen will update itself and then will output the version info, which should look similar to the following:
 
-		Leiningen 2.5.3 on Java 1.8.0_66 Java HotSpot(TM) 64-Bit Server VM
+        Leiningen 2.5.3 on Java 1.8.0_66 Java HotSpot(TM) 64-Bit Server VM
 
 ## Create Sample Application
 
@@ -97,22 +97,22 @@ Now, you will create a sample Clojure web application based on *Luminus* framewo
 
 1.  In your home directory run:
 
-		lein new luminus clj-app
+        lein new luminus clj-app
 
-	This will create new web application using the Luminus framework application template. It will use `immutant` as a web server, which is the default option.
+    This will create new web application using the Luminus framework application template. It will use `immutant` as a web server, which is the default option.
 
 2.  To check that everything went smoothly, run the newly created application in development mode:
 
-		cd clj-app
-		lein run
+        cd clj-app
+        lein run
 
-	Now, open http://192.51.100.1:3000/ in your browser (be sure to replace `192.51.100.1` with your Linode's public IP), and you will see the sample application main page.
+    Now, open http://192.51.100.1:3000/ in your browser (be sure to replace `192.51.100.1` with your Linode's public IP), and you will see the sample application main page.
 
 ![Luminus application main page](/docs/assets/clj-luminus-main-page.png)
 
-	{: .note}
-	>
-	>Make sure port 3000 is open in firewall for this to work.
+    {: .note}
+    >
+    >Make sure port 3000 is open in firewall for this to work.
 
 3.  Stop the development server by pressing **Ctrl-C** in console.
 
@@ -120,56 +120,56 @@ Now, you will create a sample Clojure web application based on *Luminus* framewo
 
 1.  Download and unpack the application server archive into `/opt/wildfly` directory:
 
-		export VERSION=9.0.2.Final # Current stable version at the time of writing
-		cd /opt
-		sudo wget http://download.jboss.org/wildfly/$VERSION/wildfly-$VERSION.tar.gz
-		sudo tar xvzf wildfly-$VERSION.tar.gz
-		sudo mv wildfly-$VERSION wildfly #Get rid of version suffix
-		sudo rm wildfly-$VERSION.tar.gz
+        export VERSION=9.0.2.Final # Current stable version at the time of writing
+        cd /opt
+        sudo wget http://download.jboss.org/wildfly/$VERSION/wildfly-$VERSION.tar.gz
+        sudo tar xvzf wildfly-$VERSION.tar.gz
+        sudo mv wildfly-$VERSION wildfly #Get rid of version suffix
+        sudo rm wildfly-$VERSION.tar.gz
 
 2.  Create a `wildfly` user and make him the owner of `/opt/wildfly`:
 
-		sudo adduser --system --group --no-create-home --home /opt/wildfly --disabled-login wildfly
-		sudo chown wildfly -R /opt/wildfly
+        sudo adduser --system --group --no-create-home --home /opt/wildfly --disabled-login wildfly
+        sudo chown wildfly -R /opt/wildfly
 
 3.  Copy WildFly init script to `/etc/init.d/` and make `wildfly` service start on boot:
 
-		sudo cp /opt/wildfly/bin/init.d/wildfly-init-debian.sh /etc/init.d/wildfly
-		sudo update-rc.d wildfly defaults
+        sudo cp /opt/wildfly/bin/init.d/wildfly-init-debian.sh /etc/init.d/wildfly
+        sudo update-rc.d wildfly defaults
 
 4.  Start wildfly service with:
 
-		sudo service wildfly start
+        sudo service wildfly start
 
 5.  Allow `linode-user` to copy war file into `/opt/wildfly/standalone/deployments`, which is needed for deployment:
 
-	*   Add `linode-user` to `wildfly` group:
+    *   Add `linode-user` to `wildfly` group:
 
-			sudo usermod linode-user -a -G wildfly
+            sudo usermod linode-user -a -G wildfly
 
-	*   Run `newgrp wildfly` as `linode-user` to log in into the new group without logging out:
+    *   Run `newgrp wildfly` as `linode-user` to log in into the new group without logging out:
 
-			newgrp wildfly
+            newgrp wildfly
 
-	*   Make sure `/opt/wildfly/standalone/deployments` belongs to a `wildfly` group and is writable by the group:
+    *   Make sure `/opt/wildfly/standalone/deployments` belongs to a `wildfly` group and is writable by the group:
 
-			sudo chown wildfly.wildfly /opt/wildfly/standalone/deployments/
-			sudo chmod g+w /opt/wildfly/standalone/deployments
+            sudo chown wildfly.wildfly /opt/wildfly/standalone/deployments/
+            sudo chmod g+w /opt/wildfly/standalone/deployments
 
 ## Proxy WildFly with Nginx
 
 1.  Install packages for nginx:
 
-		sudo apt-get install nginx
+        sudo apt-get install nginx
 
 2.  Create file `/etc/nginx/sites-available/wildfly` with the following content:
 
 {: .file}
 /etc/nginx/sites-available/wildfly
 :   ~~~ conf
-	upstream http_backend {
-		server 127.0.0.1:8080;
-	}
+    upstream http_backend {
+        server 127.0.0.1:8080;
+    }
 
     server {
         listen 80;
@@ -178,31 +178,31 @@ Now, you will create a sample Clojure web application based on *Luminus* framewo
         location = /favicon.ico { access_log off; log_not_found off; }
 
 
-	    location / {
-			proxy_pass http://http_backend;
+        location / {
+            proxy_pass http://http_backend;
 
-	        proxy_http_version 1.1;
-			proxy_set_header Connection "";
+            proxy_http_version 1.1;
+            proxy_set_header Connection "";
 
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-			proxy_set_header Host $http_host;
+            proxy_set_header Host $http_host;
 
             access_log /var/log/nginx/wildfly.access.log;
-			error_log /var/log/nginx/wildfly.error.log;
-		}
-	}
+            error_log /var/log/nginx/wildfly.error.log;
+        }
+    }
     ~~~
 
-	Do not forget to substitute `example.com` with your Linode domain name or public IP address.
+    Do not forget to substitute `example.com` with your Linode domain name or public IP address.
 
 2.  Enable your newly created `wildfly` site and remove the `default` site to avoid conflicts:
 
-		sudo ln -s /etc/nginx/sites-available/wildfly /etc/nginx/sites-enabled
-		sudo rm /etc/nginx/sites-enabled/default
+        sudo ln -s /etc/nginx/sites-available/wildfly /etc/nginx/sites-enabled
+        sudo rm /etc/nginx/sites-enabled/default
 
 3.  Restart nginx for changes to take effect:
 
-		sudo service nginx restart
+        sudo service nginx restart
 
 ## Deploy Sample Application with Immutant
 
@@ -213,29 +213,29 @@ To deploy Clojure application with WildFly you will need to install the Immutant
 {: .file-excerpt}
 /home/linode-user/clj-app/project.clj
 :   ~~~ clj
-	:plugins [[lein-environ "1.0.1"]
+    :plugins [[lein-environ "1.0.1"]
               [lein-immutant "2.1.0"]]
-	~~~
+    ~~~
 
 2.  In `project.clj` and after `:plugins`, add a new `:immutant` section with the following content :
 
 {: .file-excerpt}
 /home/linode-user/clj-app/project.clj
 :   ~~~ clj
-	:immutant {
-		:war {
-			:name "ROOT"
-			:destination "/opt/wildfly/standalone/deployments"
-			:context-path "/"
-		}
-	}
-	~~~
+    :immutant {
+        :war {
+            :name "ROOT"
+            :destination "/opt/wildfly/standalone/deployments"
+            :context-path "/"
+        }
+    }
+    ~~~
 
-	This sets three parameters for Immutant installation: 1. the destination folder for the WAR file, 2. the context path, and 3. the WAR file name - which should be ROOT when the context path is `/`.
+    This sets three parameters for Immutant installation: 1. the destination folder for the WAR file, 2. the context path, and 3. the WAR file name - which should be ROOT when the context path is `/`.
 
 3.  Switch to the `clj-app` directory and deploy the application with:
 
-		cd ~/clj-app
-		lein immutant war
+        cd ~/clj-app
+        lein immutant war
 
 At this point, you should be able to open your Linode's domain or IP address in a browser and see the sample application's main page.
