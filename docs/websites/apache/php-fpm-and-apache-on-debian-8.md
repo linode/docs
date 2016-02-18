@@ -116,7 +116,7 @@ PHP-FPM also offers more security, since scripts are not run as the Apache user.
 
 ## Configure PHP Pools
 
-This is a separate and optional configuration scenario from above where specific unix users are created to execute PHP code and control system resources per site. Instead of the `www-data` user owning all of Apache's processes and sites, the configuration below allows a single site to be run by Apache under its own system user (site1 under user1, site2 under user2, etc.).
+This is a separate and optional configuration scenario from above where specific unix users are created to execute PHP code and control system resources per site. Instead of the `www-data` user owning all of Apache's processes and sites, the configuration below allows each site to be run by Apache under its own system user (`site1` under `user1`, `site2` under `user2`, etc.).
 
 This is particularly useful when running multiple client sites, as you can give each customer write permissions in their web directory without affecting the security of the web server as a whole. The example below assumes two websites, each with its own Apache virtual host, and one system user for each website you wish to assign a PHP pool to. For more information see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
