@@ -7,9 +7,9 @@ keywords: 'weechat,irc,oftc,real time,chat'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 contributor:
   name: Samuel Damashek
-modified: Wednesday, August 27, 2014
+modified: Monday, February 18, 2016
 modified_by: 
-    name: 'Alex Fornuto'
+    name: 'Linodes'
 published: 'Wednesday, August 27, 2014'
 title: 'Using WeeChat for Internet Relay Chat'
 external_resources:
@@ -22,11 +22,11 @@ external_resources:
 
 <hr>
 
-**WeeChat** is a terminal-based Internet Relay Chat (IRC) client. WeeChat is written in C, and is intended to be very flexible and extensible. WeeChat has all sorts of plugins written in different languages including Python, Perl, and Ruby.  
+[WeeChat](https://weechat.org/) is a multi-platform, terminal-based Internet Relay Chat (IRC) client written in C. Weechat is intended to be flexible and extensible, and thus has all sorts of plugins written in different languages including Python, Perl, and Ruby.  
 
-Because WeeChat is written in C, it runs on many different platforms including Linux, Unix, BSD, Mac OS X and Windows (in Cygwin). Many users prefer WeeChat over other graphical and terminal-based clients because of its many features and its customizability. One advantage of terminal-based clients over graphical IRC clients is the ability to detach from your WeeChat instance and come back later, locally or remotely, using a terminal multiplexer such as screen or tmux.
+Many users prefer WeeChat over other graphical and terminal-based clients because of its many features and its customizability. One advantage of terminal-based clients over graphical IRC clients is the ability to detach from your WeeChat instance and come back later, locally or remotely, using a terminal multiplexer such as [Screen](https://www.gnu.org/software/screen/) or [tmux](https://tmux.github.io/).
 
-WeeChat is usually run in a Linux terminal. It may be ran either on your computer, a Linode instance, or any computer running a supported platform. If you run WeeChat on your Linode, you can access WeeChat at any time from any system simply by connecting via SSH and attaching to your screen or tmux instance. This guide assumes you have read [Using The Terminal](/docs/networking/ssh/using-the-terminal) and [Linux System Administration Basics](/docs/tools-reference/linux-system-administration-basics), along with the [Getting Started Guide](/docs/getting-started/). 
+WeeChat is usually run in a terminal. It may be ran either on your computer, a Linode instance, or any computer running a supported platform. If you run WeeChat on your Linode, you can access WeeChat at any time from any system simply by connecting via SSH and attaching to your Screen or tmux instance. This guide assumes you have read [Using The Terminal](/docs/networking/ssh/using-the-terminal) and [Linux System Administration Basics](/docs/tools-reference/linux-system-administration-basics), along with the [Getting Started Guide](/docs/getting-started/). 
 
 
 ## What is IRC?
@@ -44,46 +44,50 @@ On IRC, users are classified by four things:
 
 A user is often represented as ``nickname!username@host``.
 
-## WeeChat Prerequisites
+## Before You Begin
 
-Before installing WeeChat, we suggest:
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-  * Completing the instructions in the [Getting Started](/docs/getting-started/) guide.
-  * Completing the **Adding a New User** section in the [Securing Your Server](/docs/security/securing-your-server#adding-a-new-user) guide.
-  * This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services. Also follow the section to create a firewall, but omit the lines for ports 80 and 443, these are not needed for a WeeChat server.
+
+3.  Update your system:
+
+    **CentOS**
+
+        sudo yum update
+
+    **Debian / Ubuntu**
+
+        sudo apt-get update && sudo apt-get upgrade
+
+{: .note}
+>
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+
 
 ## Using GNU Screen
 
-GNU Screen allows you to start WeeChat and leave it running, even if you disconnect from your Linode. We recommend running WeeChat in Screen, so our instructions include Screen-specific commands. For more information, see [Using GNU Screen to Manage Persistent Terminal Sessions](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions)
+GNU Screen allows you to start WeeChat and leave it running, even if you disconnect from your Linode. We recommend running WeeChat in Screen, so our instructions include Screen-specific commands. For more information, see [Using GNU Screen to Manage Persistent Terminal Sessions](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions).
 
 ## Installing WeeChat
 
 Below are instructions for installing WeeChat and Screen on different Operating Systems. Find your Operating System and follow the instructions there.
 
-### Debian 7
+### Arch Linux
 
-1. Add the repository maintained by WeeChat decelopers to ensure the most up-to-date version of WeeChat:
+    sudo pacman -S weechat screen
 
-        sudo touch /etc/apt/sources.list.d/weechat.list
-        echo "deb http://debian.weechat.org wheezy main" | sudo tee  /etc/apt/sources.list.d/weechat.list
+### CentOS
 
+    sudo yum install weechat screen
 
-2. Update `apt` and install Weechat:
- 
-        apt-get update
-        pt-get install screen weechat
+### Debian / Ubuntu
 
-### Ubuntu:
+WeeChat provides repositories for various Debian and Ubuntu releases. See [their downloads page](https://weechat.org/download/debian/) for the repo addresses. Debain and Ubuntu both include Screen by default.
 
-    apt-get install screen weechat
+### Fedora
 
-### Fedora/CentOS: :
-
-    yum install screen weechat
-
-### Arch Linux: :
-
-    pacman -S screen weechat
+    sudo dnf install weechat screen
 
 ### Mac OS X (HomeBrew):
 
@@ -98,7 +102,7 @@ Below are instructions for installing WeeChat and Screen on different Operating 
 
 ### Windows (Cygwin)
 
-1. Install Cygwin.  Ensure that subversion and wget are marked to be included during the installation process
+1. Install Cygwin. Ensure that subversion and wget are marked to be included during the installation process
 
 2. Install apt-cyg with the following commands
 
@@ -150,7 +154,7 @@ To join a channel, run:
 
 For example, ``/join #linode``.
 
-Make sure to run join/part commands in the proper server window. You can use ``Alt+x`` to switch server windows.
+Make sure to run join/part commands in the proper server window. You can use **Alt+X** to switch server windows.
 
 To part a channel, run:
 
@@ -160,10 +164,10 @@ For example, ``/part #linode``.
 
 ### Switching Channels/Buffers
 
-If you have mouse support enabled and also have installed buffers.pl (see the WeeChat Commands section below), then you can simply click on buffers you have joined then type messages in the bottom bar. ``Return`` will submit your message.
+If you have mouse support enabled and also have installed buffers.pl (see the WeeChat Commands section below), then you can simply click on buffers you have joined then type messages in the bottom bar. Pressing **Enter** will submit your message.
 
 Otherwise, you can use ``/buffer x`` to switch between buffers by number or name. ``/buffer 1`` will switch to buffer 1, while ``/buffer #linode`` will switch to the #linode buffer.
-You can also press ``Alt-x`` (``Esc-x`` on a Mac), where x is 1-9, to switch to that buffer number. ``Alt 4`` (``Esc-4`` on a Mac) will switch to buffer 4.
+You can also press **Alt-x** (**Esc-`x`** on a Mac), where x is 1-9, to switch to that buffer number. **Alt 4** (**Esc-4** on a Mac) will switch to buffer 4.
 
 <!--- My friend tells me that you have to use Esc instead of Alt. For example, Option-4 would give him ¢.
 Pressing ``Ctrl-N`` will switch to the next buffer, and ``Ctrl-P`` will switch to the previous buffer. You can also use ``/buffer +1`` to go to the next buffer, or ``/buffer -1`` to go to the previous buffer. 
@@ -262,4 +266,4 @@ Setting the default real name:
 
 ## Accessing your WeeChat instance
 
-If you ran WeeChat in a screen as specified above, you have the ability to detach from your WeeChat instance and to reattach later. To detach from the screen, press ``Ctrl-A D``. To reattach to your screen, run ``screen -x``. You can reattach to your screen even if you have logged out from your Linode instance and connected later.
+If you ran WeeChat in a screen as specified above, you have the ability to detach from your WeeChat instance and to reattach later. To detach from the screen, press **Control+A**, then **Control+D**. To reattach to your screen, run **screen -r**. You can reattach to your screen even if you have logged out from your Linode instance and connected later.
