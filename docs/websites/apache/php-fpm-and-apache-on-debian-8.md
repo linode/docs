@@ -41,7 +41,7 @@ PHP-FPM also offers more security, since scripts are not run as the Apache user.
 
 1.  Due to the PHP-FPM's licensing, it's not available in Debian's main repository. Open the `sources.list` file and add `contrib` and `non-free` to each source line:
 
-    {: .file-excerpt}
+    {: .file}
     /etc/apt/sources.list
     :   ~~~
         deb http://mirrors.linode.com/debian/ jessie main contrib non-free
@@ -78,7 +78,7 @@ PHP-FPM also offers more security, since scripts are not run as the Apache user.
 
 3.  Replace the contents of `fastcgi.conf` with the following:
 
-    {: .file-excerpt}
+    {: .file}
     /etc/apache2/mods-enabled/fastcgi.conf
     :   ~~~ conf
         <IfModule mod_fastcgi.c>
@@ -104,8 +104,8 @@ PHP-FPM also offers more security, since scripts are not run as the Apache user.
 
 6.  To confirm that PHP is working, create an `info.php` file in one of your web directories:
 
-    {: .file-excerpt}
-    /var/www/html/example.com/public_html/info.php
+    {: .file}
+    /var/www/example.com/public_html/info.php
     :   ~~~ php
         <?php phpinfo(); ?>
         ~~~
@@ -116,36 +116,32 @@ PHP-FPM also offers more security, since scripts are not run as the Apache user.
 
 ## Configure PHP Pools
 
-This is an optional configuration step that lets you assign specific unix users to execute PHP code and control system resources per site. This is particularly useful when running multiple client sites, as you can give each customer write permissions in their web directory without affecting the security of the web server as a whole.
+This is a separate and optional configuration scenario from above where specific unix users are created to execute PHP code and control system resources per site. Instead of the `www-data` user owning all of Apache's processes and sites, the configuration below allows a single site to be run by Apache under its own system user (site1 under user1, site2 under user2, etc.).
 
-For the example below, we have two sites, `jamesplace.net` and `chrisworld.com`, and their respective users `james` and `chris`.
-
-{: .note}
-> You will need an existing unix user for each user you wish to assign a pool to. For more information see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+This is particularly useful when running multiple client sites, as you can give each customer write permissions in their web directory without affecting the security of the web server as a whole. The example below assumes two websites, each with its own Apache virtual host, and one system user for each website you wish to assign a PHP pool to. For more information see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
 1.  Make a copy of `www.conf` for each pool:
 
         cd /etc/php5/fpm/pool.d/
-        sudo cp www.conf chris.conf
-        sudo cp www.conf james.conf
+        sudo cp www.conf {site1.conf,site2.conf}
 
 2.  For each pool, adjust the pool name, user and group, and socket name:
 
     {: .file-excerpt}
-    /etc/php5/fpm/pool.d/james.conf
+    /etc/php5/fpm/pool.d/site1.conf
     :   ~~~ conf
         ; Start a new pool named 'www'.
         ; the variable $pool can we used in any directive and will be replaced by the
         ; pool name ('www' here)
-        [jamesplace.net]
+        [site1.com]
         
         ...
         
         ; Unix user/group of processes
         ; Note: The user is mandatory. If the group is not set, the default user's group
         ;       will be used.
-        user = james
-        group = james
+        user = site1
+        group = site1
         
         ...
         
@@ -161,7 +157,7 @@ For the example below, we have two sites, `jamesplace.net` and `chrisworld.com`,
         ;                            (IPv6 and IPv4-mapped) on a specific port;
         ;   '/path/to/unix/socket' - to listen on a unix socket.
         ; Note: This value is mandatory.
-        listen = /var/run/php5-fpm-jamesplace.net.sock
+        listen = /var/run/php5-fpm-site1.com.sock
         ~~~
 
     {: .note}
@@ -169,7 +165,7 @@ For the example below, we have two sites, `jamesplace.net` and `chrisworld.com`,
 
 3.  Restart the PHP-FPM service:
 
-        systemctl status php5-fpm.service
+        systemctl restart php5-fpm.service
 
     If this is not succesfull, ensure that you've created a linux system user for each one defined in your pools. If succesfull, you should see a similar output for `sudo systemctl status php5-fpm.service`:
 
@@ -181,17 +177,17 @@ For the example below, we have two sites, `jamesplace.net` and `chrisworld.com`,
            Status: "Ready to handle connections"
            CGroup: /system.slice/php5-fpm.service
                    ├─28428 php-fpm: master process (/etc/php5/fpm/php-fpm.conf)
-                   ├─28432 php-fpm: pool chrisworld.com
-                   ├─28433 php-fpm: pool chrisworld.com
-                   ├─28434 php-fpm: pool jamesplace.net
-                   ├─28435 php-fpm: pool jamesplace.net
+                   ├─28432 php-fpm: pool site2.com
+                   ├─28433 php-fpm: pool site2.com
+                   ├─28434 php-fpm: pool site1.com
+                   ├─28435 php-fpm: pool site1.com
                    ├─28436 php-fpm: pool www
                    └─28437 php-fpm: pool www
 
 4.  Add the `<IfModule mod_fastcgi.c>` block to each virtual host block:
 
     {: .file-excerpt}
-    /etc/apache2/sites-available/jamesplace.net.conf
+    /etc/apache2/sites-available/site1.com.conf
     :   ~~~ conf
         <VirtualHost *:80>
 
@@ -200,8 +196,8 @@ For the example below, we have two sites, `jamesplace.net` and `chrisworld.com`,
         <IfModule mod_fastcgi.c>
             AddType application/x-httpd-fastphp5 .php
             Action application/x-httpd-fastphp5 /php5-fcgi
-            Alias /php5-fcgi /usr/lib/cgi-bin/php5-fcgi-jamesplace.net
-            FastCgiExternalServer /usr/lib/cgi-bin/php5-fcgi-jamesplace.net -socket /var/run/php5-fpm-jamesplace.net.sock -pass-header Authorization
+            Alias /php5-fcgi /usr/lib/cgi-bin/php5-fcgi-site1.net
+            FastCgiExternalServer /usr/lib/cgi-bin/php5-fcgi-site1.com -socket /var/run/php5-fpm-site1.com.sock -pass-header Authorization
         </IfModule>
 
         ...
