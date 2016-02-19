@@ -9,7 +9,6 @@ modified: Wednesday, January 27th, 2016
 modified_by:
   name: Alex Fornuto
 published: 'never'
-alias: ['websites/apache/php-fpm-and-apache-on-debian-8']
 title: 'Install PHP-FPM and Apache on Debian 8 (Jessie)'
 external_resources:
  - '[The PHP Homepage](http://php.net/)'
