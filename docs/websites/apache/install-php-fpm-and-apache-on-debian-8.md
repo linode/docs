@@ -2,14 +2,15 @@
 author:
   name: Alex Fornuto
   email: docs@linode.com
-description: ''
-keywords: ''
+description: 'Install PHP-FPM and Apache on Debian 8 for Improved Website Agility and Security'
+keywords: 'php-fpm,apache,debian 8,php5-mysql,fastcgi,php,cgi,mod_php,php pool'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: Wednesday, January 27th, 2016
 modified_by:
   name: Alex Fornuto
 published: 'never'
-title: 'PHP-FPM and Apache on Debian 8 (Jessie)'
+alias: ['websites/apache/php-fpm-and-apache-on-debian-8']
+title: 'Install PHP-FPM and Apache on Debian 8 (Jessie)'
 external_resources:
  - '[The PHP Homepage](http://php.net/)'
  - '[mod_fastcgi](http://www.fastcgi.com/mod_fastcgi/docs/mod_fastcgi.html)'
@@ -64,7 +65,7 @@ PHP-FPM also offers more security, since scripts are not run as the Apache user.
 
         sudo apt-get install php5-mysql
 
-4.  You can now [configure virtual hosting](/docs/websites/apache/apache-web-server-debian-8/#configure-apache-for-virtual-hosting) in accordance with the needs of your server. Once your site(s) are configured, we can configure Apache to pass PHP scripts to the CGI process.
+4.  You can now [configure virtual hosting](/docs/websites/apache/apache-web-server-debian-8/#configure-apache-for-virtual-hosting) in accordance with the needs of your server. Once your site(s) is set up, you can configure Apache to pass PHP scripts to the CGI process.
 
 ## Configure PHP-FPM
 
@@ -96,9 +97,9 @@ PHP-FPM also offers more security, since scripts are not run as the Apache user.
 
         sudo apache2ctl configtest
 
-    Ignoring other output, if you see `Syntax OK` you can proceed.
+    Disregard other output; if you see `Syntax OK`, you can proceed.
 
-5.  Restart the Apache daemon to enable our new configuration:
+5.  Restart the Apache daemon to enable your new configuration:
 
         sudo systemctl restart apache2
 
@@ -116,9 +117,9 @@ PHP-FPM also offers more security, since scripts are not run as the Apache user.
 
 ## Configure PHP Pools
 
-This is a separate and optional configuration scenario from above where specific unix users are created to execute PHP code and control system resources per site. Instead of the `www-data` user owning all of Apache's processes and sites, the configuration below allows each site to be run by Apache under its own system user (`site1` under `user1`, `site2` under `user2`, etc.).
+This is a separate and optional configuration scenario from that described above where specific Unix users are created to execute PHP code and to control system resources per site. Instead of the `www-data` user owning all of Apache's processes and sites, the configuration below allows each site to be run by Apache under its own system user (`site1` under `user1`, `site2` under `user2`, etc.).
 
-This is particularly useful when running multiple client sites, as you can give each customer write permissions in their web directory without affecting the security of the web server as a whole. The example below assumes two websites, each with its own Apache virtual host, and one system user for each website you wish to assign a PHP pool to. For more information see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+This is particularly useful when running multiple client sites because you can give each customer write permissions in a respective web directory without affecting the security of the web server as a whole. The example below assumes two websites, each with its own Apache virtual host, and one system user for each website to which you want to assign a PHP pool. For more information see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
 1.  Make a copy of `www.conf` for each pool:
 
@@ -161,13 +162,13 @@ This is particularly useful when running multiple client sites, as you can give 
         ~~~
 
     {: .note}
-    > In the file excerpt above, we use `...` to denote that there is more in this file than is represented. Is is not a literal section to be copied.
+    > In the file excerpt above, three sequential dots - `...`  - denote that there is more in this file than is being shown. The three sequential dots are not a literal section to be copied.
 
 3.  Restart the PHP-FPM service:
 
         systemctl restart php5-fpm.service
 
-    If this is not succesfull, ensure that you've created a linux system user for each one defined in your pools. If succesfull, you should see a similar output for `sudo systemctl status php5-fpm.service`:
+    If this is not successful, ensure that you've created a Linux system user for each one defined in your pools. If successful, you should see a similar output for `sudo systemctl status php5-fpm.service`:
 
         ● php5-fpm.service - The PHP FastCGI Process Manager
            Loaded: loaded (/lib/systemd/system/php5-fpm.service; enabled)
@@ -204,10 +205,10 @@ This is particularly useful when running multiple client sites, as you can give 
 
         ~~~
 
-5.  Test the new configuration with `sudo apache2ctl configtest`, and if there are no errors reload Apache:
+5.  Test the new configuration with `sudo apache2ctl configtest`. If there are no errors, reload Apache:
 
         sudo systemctl reload apache2
 
-6.  We can confirm the user with the `info.php` file described above, by checking the **Environment** section:
+6.  You can confirm the user with the `info.php` file described above, by checking the **Environment** section:
 
     ![The PHP Environment Variable](/docs/assets/php-fpm-env.png)
