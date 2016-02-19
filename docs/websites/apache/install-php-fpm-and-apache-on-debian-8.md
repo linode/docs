@@ -5,10 +5,10 @@ author:
 description: 'Install PHP-FPM and Apache on Debian 8 for Improved Website Agility and Security'
 keywords: 'php-fpm,apache,debian 8,php5-mysql,fastcgi,php,cgi,mod_php,php pool'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Wednesday, January 27th, 2016
+modified: Friday, February 19th, 2016
 modified_by:
   name: Alex Fornuto
-published: 'never'
+published: 'Friday, February 19th, 2016'
 title: 'Install PHP-FPM and Apache on Debian 8 (Jessie)'
 external_resources:
  - '[The PHP Homepage](http://php.net/)'
