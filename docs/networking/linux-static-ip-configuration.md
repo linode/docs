@@ -6,16 +6,21 @@ description: 'Computer networks frequently use DHCP to assign IP addresses, rout
 keywords: 'multiple ip addresses,linux static ip,DHCP,change ip address,network configuration'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['networking/configuring-static-ip-interfaces/']
-modified: Tuesday, December 8th, 2015
+modified: Friday, February 20th, 2016
 modified_by:
   name: Linode
 published: 'Thursday, July 20th, 2014'
 title: Linux Static IP Configuration
 ---
 
-Computer networks, including Linode's, frequently use [DHCP](https://en.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol) to provide IP addresses, routing and DNS information to systems which join the network. DHCP can only assign one IP address per DHCP lease request.
+Computer networks frequently use [DHCP](https://en.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol) to provide IP addresses, routing and DNS information to systems which join the network. Linodes are assigned an IP address by DHCP upon their creation and while this is sufficient for many purposes, DHCP has its limitations, one of which is that it can only assign one IP address per DHCP lease request.
 
-Additional IP addresses can be assigned using either [Network Helper](/docs/platform/network-helper) to automatically create a static network, or manual configuration by following this guide. Be aware that errors in network configurations may disconnect SSH sessions, so it is advised that you use the [Linode Shell (LISH)](/docs/networking/using-the-linode-shell-lish) when making such changes.
+Therefore, if you wish to add *additional* IPv4 or IPv6 addresses to your Linode, you must assign it static addresses. There are two ways to do this:
+
+1.  Configure a static IP in the Linux distribution deployed to your Linode.
+2.  Using [Network Helper](https://www.linode.com/docs/platform/network-helper) from within the Linode Manager.
+
+Network Helper is enabled by default, and this is what enforces your Linode's IP assigned by DHCP. This guide explains the first method, how to manually configure a static IP (or multiple IPs) from within the Linux distro of your choice. **Be aware that errors in network configurations can disconnect SSH sessions**, so it is advised that you use the [Linode Shell (LISH)](/docs/networking/using-the-linode-shell-lish) when making the changes below.
 
 
 ## General Network Configuration
