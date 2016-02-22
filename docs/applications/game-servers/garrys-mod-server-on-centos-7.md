@@ -33,7 +33,7 @@ This guide shows how to create, maintain, and secure a Garry's Mod server.
 
 1.  You will need a [Steam](http://store.steampowered.com) account and a copy of [Garry's Mod](http://store.steampowered.com/app/4000/).
 
-2.  Complete our guide: [Install SteamCMD for a Steam Game Server](/docs/applications/game-servers/install-steamcmd-for-a-steam-game-server.md). This will get SteamCMD installed and running on your Linode and this guide will pick up where the SteamCMD page leaves off.
+2.  Complete our guide: [Install SteamCMD for a Steam Game Server](/docs/applications/game-servers/install-steamcmd-for-a-steam-game-server). This will get SteamCMD installed and running on your Linode and this guide will pick up where the SteamCMD page leaves off.
 
 {: .note}
 >
