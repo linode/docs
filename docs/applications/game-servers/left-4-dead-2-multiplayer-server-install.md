@@ -64,6 +64,9 @@ If you have a firewall running on your Linode, add exceptions for SteamCMD:
 
 ## Install SteamCMD and Left 4 Dead 2
 
+{: .note}
+>This guide requires additional libraries which are not included in our standard [SteamCMD Guide](/docs/applications/game-servers/install-steamcmd-for-a-steam-game-server).  This guide includes standalone configuration instructions for SteamCMD.  If you have already followed our SteamCMD installation guide, you can skip to step 5. 
+
 1.  From your user's home folder, download SteamCMD into its own directory:
 
         mkdir steamcmd
@@ -110,7 +113,7 @@ If you have a firewall running on your Linode, add exceptions for SteamCMD:
 
     The `Steam>` prompt is similar to the Linux command prompt - with the exception of not being able to execute normal Linux commands. 
 
-4.  Install Left 4 Dead 2 from the SteamCMD prompt:
+5.  Install Left 4 Dead 2 from the SteamCMD prompt:
 
         login anonymous
         force_install_dir ../L4D2-server
