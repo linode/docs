@@ -26,64 +26,32 @@ contributor:
 
 This guide will show you how to set up your own [Black Mesa](https://blackmesasource.com/) server on a Linode running Debian or Ubuntu.
 
-##Prerequisites
 
-1.  Check for updates:
+## Before You Begin
 
-		sudo apt-get update && sudo apt-get upgrade
+1.  You will need a [Steam](http://store.steampowered.com) account and a copy of [Black Mesa](http://store.steampowered.com/app/362890/).
 
-2. Install the dependencies needed to run SteamCMD on 64-bit machines:
+2.  Complete our guide: [Install SteamCMD for a Steam Game Server](/docs/applications/game-servers/install-steamcmd-for-a-steam-game-server). This will get SteamCMD installed and running on your Linode and this guide will pick up where the SteamCMD page leaves off.
 
-		sudo apt-get install lib32gcc1
-        
-3. Install the dependencies needed to run Source Dedicated Server on 64-bit machines:
-
-		sudo apt-get install lib32tinfo5
-
-4.  Create a new user for Steam to run as. Never run as root, for security:
-        
-		useradd -m steam
-
-{: .note }
+{: .note}
 >
-> If you have a firewall configured according to our [Securing Your Server](/docs/security/securing-your-server) guide, you will need to add an exception for the ports used by SteamCMD. The lines to add to your `iptables.firewall.rules` file are:
->
->		-A INPUT -p udp -m udp --sport 26900:27030 --dport 1025:65355 -j ACCEPT
->		-A INPUT -p udp -m udp --sport 4380 --dport 1025:65355 -j ACCEPT
->		-A INPUT -p udp -m udp --dport 26900:27030 -j ACCEPT
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
-##Installing SteamCMD
+##Prerequisites for Black Mesa
 
-1.  Switch to your newly created account:
+If you have a firewall configured according to our [Securing Your Server](/docs/security/securing-your-server) guide, you will need to add an exception for the ports used by SteamCMD. The lines to add to your `iptables.firewall.rules` file are:
 
-		sudo -u steam -i
+		-A INPUT -p udp -m udp --sport 26900:27030 --dport 1025:65355 -j ACCEPT
+		-A INPUT -p udp -m udp --sport 4380 --dport 1025:65355 -j ACCEPT
+		-A INPUT -p udp -m udp --dport 26900:27030 -j ACCEPT
 
-2. Create a folder for SteamCMD files:
-
-		mkdir Steam
-
-3.  Go into your newly created folder:
-
-		cd Steam
-
-4.  Download the latest version of SteamCMD:
-
-		wget http://media.steampowered.com/installer/steamcmd_linux.tar.gz
-
-5.  Extract the archive:
-
-		tar -zxvf steamcmd_linux.tar.gz
-
-6.  Cleanup:
-
-		rm steamcmd_linux.tar.gz
 
 ##Installing Black Mesa Dedicated Server
 
 1.  Execute SteamCMD:
 
-		./steamcmd.sh
-
+        cd ~/steamcmd && ./steamcmd.sh
+        
 2.  Login as anonymous:
 
 		login anonymous
