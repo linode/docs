@@ -6,7 +6,7 @@ description: "Installing Let's Encrypt and obtaining SSL certificates on Linux"
 keywords: "ACME,HTTPS,Let's Encrypt,LTS,SSL"
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 published: 'N/A'
-modified: 'Wednesday, February 26th, 2016'
+modified: 'Wednesday, February 24th, 2016'
 modified_by:
   name: 'Linode'
 title: "Obtaining Let's Encrypt Certificates"
