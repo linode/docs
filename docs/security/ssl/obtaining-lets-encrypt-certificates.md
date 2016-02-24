@@ -2,14 +2,14 @@
 author:
   name: 'Linode Community'
   email: 'docs@linode.com'
-description: "Installing Let's Encrypt and obtaining SSL certificates on Ubuntu 14.04"
-keywords: "14.04,ACME,HTTPS,Let's Encrypt,LTS,SSL,Ubuntu"
+description: "Installing Let's Encrypt and obtaining SSL certificates on Linux"
+keywords: "ACME,HTTPS,Let's Encrypt,LTS,SSL"
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 published: 'N/A'
-modified: 'Tuesday, January 26th, 2016'
+modified: 'Wednesday, February 26th, 2016'
 modified_by:
   name: 'Linode'
-title: "Obtaining Let's Encrypt Certificates on Ubuntu 14.04"
+title: "Obtaining Let's Encrypt Certificates"
 contributor:
   name: 'Sean Webber'
   link: 'https://github.com/seanthewebber'
@@ -21,7 +21,7 @@ contributor:
 
 Let's Encrypt is an SSL certificate authority managed by the Internet Security Research Group (ISRG). It utilizes the Automated Certificate Management Environment (ACME) to automatically deploy browser-trusted SSL certificates to anyone for free.
 
-This tutorial will cover the following on Ubuntu 14.04:
+This tutorial will cover the following:
 - Installing the Let's Encrypt ACME client
 - Obtaining Let's Encrypt certificates
 - Required attention and maintenance
@@ -29,11 +29,11 @@ This tutorial will cover the following on Ubuntu 14.04:
 
 {: .caution}
 >
-> As of 2016-01-01, Let's Encrypt is still in *public beta*. Although most users have reported success with Ubuntu 14.04, the ACME client is still being debugged and developed. **Do not deploy Let's Encrypt Public Beta in a production environment without testing it beforehand.**
+> As of 2016-01-01, Let's Encrypt is still in *public beta*. Although most users have reported success, the ACME client is still being debugged and developed. **Do not deploy Let's Encrypt Public Beta in a production environment without testing it beforehand.**
 
 ## Before you Begin
 
-1. Familiarize yourself with our [Getting Started](/docs/getting-started) guide and deploy an **Ubuntu 14.04 LTS** image. Complete the hostname and timezone sections.
+1. Familiarize yourself with our [Getting Started](/docs/getting-started) guide and deploy a system image. Complete the hostname and timezone sections.
 
 2. Complete our [Securing Your Server](/docs/security/securing-your-server) tutorial to create a standard user account, harden SSH access, and remove unnecessary network services.
 
@@ -43,13 +43,41 @@ This tutorial will cover the following on Ubuntu 14.04:
 
 3. Make sure your Linode has at least 2GB of total RAM. If you are running a **Linode 1024** server, add 1GB of SWAP memory to meet this requirement.
 
-4. Update your server's software packages:
+4. Update your server's software packages.
+
+**Arch**
+
+        sudo pacman -Syy && sudo pacman -Su
+
+**CentOS**
+
+        sudo yum update && sudo yum upgrade
+
+**Debian (like Ubuntu)**
 
         sudo apt-get update && sudo apt-get upgrade
 
-5. Install the `git` package:
+**Fedora**
+
+        sudo dnf update && sudo dnf upgrade
+
+5. Install the `git` package.
+
+**Arch**
+
+        sudo pacman -S git
+
+**CentOS**
+
+        sudo yum install git
+
+**Debian (like Ubuntu)**
 
         sudo apt-get install git
+
+**Fedora**
+
+        sudo dnf install git
 
 ## Downloading and Installing Let's Encrypt
 
@@ -106,11 +134,11 @@ IMPORTANT NOTES:
 
 1. List the `/etc/letsencrypt/live` directory.
 
-        ls /etc/letsencrypt/live
+        sudo ls /etc/letsencrypt/live
 
 2. Each domain name you specified in step one of the **Obtaining SSL Certificates** section has its own directory. List any one of these domain name directories.
 
-        ls /etc/letsencrypt/live/example.com
+        sudo ls /etc/letsencrypt/live/example.com
 
 Output:
 
@@ -128,7 +156,7 @@ Output:
 
 4. For good measure, display the file status of `fullchain.pem`.
 
-        stat /etc/letsencrypt/live/example.com/fullchain.pem
+        sudo stat /etc/letsencrypt/live/example.com/fullchain.pem
 
 Output excerpt:
 
@@ -199,6 +227,14 @@ Since it's easy to forget about logging into a remote server, we also recommend 
 2. Download any changes made to Let's Encrypt since you last cloned (or pull'd) the repository, effectively updating it.
 
         sudo git pull
+
+## Automating Let's Encrypt Updates (Optional)
+
+You can also use `cron` to keep the `letsencrypt-auto` client up to date. The `@weekly` parameter will issue a `git pull` command in the `/opt/letsencrypt` directory every Sunday at midnight.
+
+        echo '@weekly root cd /opt/letsencrypt && git pull >> /var/log/letsencrypt/letsencrypt-auto-update.log' | sudo tee --append /etc/crontab
+
+To change the update frequency, choose a different parameter like `@hourly`, `@daily`, or `@monthly`.
 
 ## More Information
 
