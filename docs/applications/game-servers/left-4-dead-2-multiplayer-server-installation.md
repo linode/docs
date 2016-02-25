@@ -18,7 +18,7 @@ contributor:
 *This is a Linode Community guide. Write for us and earn $250 per published guide.*
 <hr>
 
-[Left 4 Dead 2](http://www.l4d.com/game.html) is a single-player game developed and published by Valve Inc. Besides its fantastic single-player mode, Left 4 Dead 2 also offers a great multiplayer mode so you can blast zombies with your friends. This guide will explain how to prepare your Linode, install SteamCMD, and then install and configure Left 4 Dead 2.
+[Left 4 Dead 2](http://www.l4d.com/game.html) is a single-player game developed and published by Valve Inc. Besides its fantastic single-player mode, Left 4 Dead 2 also offers a great multiplayer mode so you can blast zombies with your friends. This guide will explain how to prepare your Linode, install SteamCMD, and then install and configure Left 4 Dead 2 on Debian or Ubuntu.
 
 ## Before You Begin
 
@@ -120,7 +120,7 @@ Because a current Linode runs on a 64-bit operating system, you need to download
 4.  Install Left 4 Dead 2 from the SteamCMD prompt:
 
         login anonymous
-        force_install_dir ../L4D2-server
+        force_install_dir ./L4D2-server
         app_update 222860 validate
 
     If the download looks like it has frozen, be patient. This can take some time. Once the download is complete, you should see this output:
@@ -137,7 +137,7 @@ Because a current Linode runs on a 64-bit operating system, you need to download
 
 1.  Before you configure the server, you should download an example config file:
 
-        cd ~/L4D2-server/left4dead2/cfg
+        cd ~/Steam/L4D2-server/left4dead2/cfg
 		
 	Choose one of the following example files:
 
@@ -155,7 +155,7 @@ Because a current Linode runs on a 64-bit operating system, you need to download
 4.  Next, it is a good idea to write a custom startup script that will execute your custom config files. 
 
     {: .file}
-    ~/L4D2-server/start_L4D2.sh
+    ~/Steam/L4D2-server/start_L4D2.sh
     :   ~~~
         screen ./srcds_run -console -game left4dead2 +port 27020 +maxplayers 8 +exec server.cfg +map c2m1_highway
         ~~~
@@ -169,13 +169,13 @@ Because a current Linode runs on a 64-bit operating system, you need to download
 	
 5.  Make the script executable:
 
-        chmod +x ~/L4D2-server/start_L4D2.sh
+        chmod +x ~/Steam/L4D2-server/start_L4D2.sh
 
 ##Use the Server
 
 1.  To start the server, simply input and run:
 
-        ./start-L4D2
+        ./start_L4D2
         
 2.  To detach from the screen session which runs the server console, press these two key combinations in succession:
 
