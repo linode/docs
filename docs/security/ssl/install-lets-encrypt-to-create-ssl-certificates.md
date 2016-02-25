@@ -31,7 +31,7 @@ This tutorial will cover the following:
 
 {: .caution}
 >
-> As of 2016-01-01, Let's Encrypt is still in *public beta*. Although most users have reported success, the ACME client is still being debugged and developed. **Do not deploy Let's Encrypt Public Beta in a production environment without testing it beforehand.**
+> As of Feb. 25, 2016, Let's Encrypt is still in *public beta*. Although most users have reported success, the ACME client is still being debugged and developed. **Do not deploy Let's Encrypt Public Beta in a production environment without testing it beforehand.**
 
 ## Before you Begin
 
@@ -211,7 +211,7 @@ Since it's easy to forget about logging into a remote server, we also recommend 
 
         cd /opt/letsencrypt
 
-2.  Download any changes made to Let's Encrypt since you last cloned (or pull'd) the repository, effectively updating it:
+2.  Download any changes made to Let's Encrypt since you last cloned or pulled the repository, effectively updating it:
 
         sudo git pull
 
