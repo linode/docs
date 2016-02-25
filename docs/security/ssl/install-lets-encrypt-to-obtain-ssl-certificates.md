@@ -2,14 +2,14 @@
 author:
   name: 'Linode Community'
   email: 'docs@linode.com'
-description: "Installing Let's Encrypt and obtaining SSL certificates on Linux"
-keywords: "ACME,HTTPS,Let's Encrypt,LTS,SSL"
+description: "Install Let's Encrypt to Obtain SSL Certificates on Linux"
+keywords: "ACME,HTTPS,Let's Encrypt,LTS,SSL,SSL certificates,install lets encrypt"
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 published: 'N/A'
 modified: 'Wednesday, February 24th, 2016'
 modified_by:
   name: 'Linode'
-title: "Obtaining Let's Encrypt Certificates"
+title: "Install Let's Encrypt to Obtain SSL Certificates"
 contributor:
   name: 'Sean Webber'
   link: 'https://github.com/seanthewebber'
@@ -45,55 +45,55 @@ This tutorial will cover the following:
 
 4. Update your server's software packages.
 
-**Arch**
+**Arch**:
 
         sudo pacman -Syy && sudo pacman -Su
 
-**CentOS**
+**CentOS**:
 
         sudo yum update && sudo yum upgrade
 
-**Debian (like Ubuntu)**
+**Debian (like Ubuntu)**:
 
         sudo apt-get update && sudo apt-get upgrade
 
-**Fedora**
+**Fedora**:
 
         sudo dnf update && sudo dnf upgrade
 
-5. Install the `git` package.
+5. Install the `git` package:
 
-**Arch**
+**Arch**:
 
         sudo pacman -S git
 
-**CentOS**
+**CentOS**:
 
         sudo yum install git
 
-**Debian (like Ubuntu)**
+**Debian (like Ubuntu)**:
 
         sudo apt-get install git
 
-**Fedora**
+**Fedora**:
 
         sudo dnf install git
 
-## Downloading and Installing Let's Encrypt
+## Download and Install Let's Encrypt
 
-1. Download a clone of Let's Encrypt from the [official GitHub repository](https://github.com/letsencrypt/letsencrypt). `/opt` is a common installation directory for third party packages, so we will install the clone to `/opt/letsencrypt`.
+1. Download a clone of Let's Encrypt from the [official GitHub repository](https://github.com/letsencrypt/letsencrypt). `/opt` is a common installation directory for third-party packages, so let's install the clone to `/opt/letsencrypt`:
 
         sudo git clone https://github.com/letsencrypt/letsencrypt /opt/letsencrypt
 
-2. Position your Bash prompt in the new `/opt/letsencrypt` directory.
+2. Position your Bash prompt in the new `/opt/letsencrypt` directory:
 
         cd /opt/letsencrypt
 
-## Obtaining SSL Certificates
+## Obtain SSL Certificates
 
-Let's Encrypt performs automatic Domain Validation (DV) using a series of *challenges*. The Certificate Authority (CA) uses challenges to prove your server is telling the truth. Once your Linode's honesty is proven, the CA will issue you SSL certificates.
+Let's Encrypt automatically performs Domain Validation (DV) using a series of *challenges*. The Certificate Authority (CA) uses challenges to verify the authenticity of your computer's domain. Once your Linode is validated, the CA will issue SSL certificates to you.
 
-1. Run Let's Encrypt with the `--standalone` parameter. Add `-d example.com` to the end of the command for each additional domain name requiring a certificate.
+1. Run Let's Encrypt with the `--standalone` parameter. For each additional domain name requiring a certificate, add `-d example.com` to the end of the command.
 
         sudo -H ./letsencrypt-auto certonly --standalone -d example.com -d www.example.com
 
@@ -101,7 +101,7 @@ Let's Encrypt performs automatic Domain Validation (DV) using a series of *chall
 >
 > Let's Encrypt **does not** deploy wildcard certificates. Each subdomain requires its own certificate.
 
-2. Specify an administrative email address. This will allow you to regain control of a lost certificate and receive urgent security notices. Press **TAB** followed by **ENTER** or **RETURN** to save.
+2. Specify an administrative email address. This will allow you to regain control of a lost certificate and receive urgent security notices if necessary. Press **TAB** followed by **ENTER** or **RETURN** to save.
 
 [![Let's Encrypt admin email prompt](/docs/assets/lets-encrypt-recovery-email-prompt.png)]
 
@@ -109,11 +109,11 @@ Let's Encrypt performs automatic Domain Validation (DV) using a series of *chall
 
 [![Let's Encrypt Terms of Service prompt](/docs/assets/lets-encrypt-agree-tos-prompt.png)]
 
-3. If all goes well, a message similar to the one below will appear. It means Let's Encrypt has approved and issued your certificates. Congrats!
+3. If all goes well, a message similar to the one below will appear. Its appearance means Let's Encrypt has approved and issued your certificates. Congrats!
 
 ~~~
 IMPORTANT NOTES:
- - If you lose your account credentials, you can recover through
+ - If you lose your account credentials, you can recover them through
    e-mails sent to somebody@example.com.
  - Congratulations! Your certificate and chain have been saved at
    /etc/letsencrypt/live/example.com/fullchain.pem. Your
@@ -123,20 +123,20 @@ IMPORTANT NOTES:
    configuration directory at /etc/letsencrypt. You should make a
    secure backup of this folder now. This configuration directory will
    also contain certificates and private keys obtained by Let's
-   Encrypt so making regular backups of this folder is ideal.
+   Encrypt, so making regular backups of this folder is ideal.
  - If you like Let's Encrypt, please consider supporting our work by:
 
    Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
    Donating to EFF:                    https://eff.org/donate-le
 ~~~
 
-## Exploring Let's Encrypt Certificate Directory Structure
+## Explore Let's Encrypt Certificate Directory Structure
 
-1. List the `/etc/letsencrypt/live` directory.
+1. List the `/etc/letsencrypt/live` directory:
 
         sudo ls /etc/letsencrypt/live
 
-2. Each domain name you specified in step one of the **Obtaining SSL Certificates** section has its own directory. List any one of these domain name directories.
+2. Each domain name you specified in Step 1 of the **Obtaining SSL Certificates** section has its own directory. List any one of these domain name directories:
 
         sudo ls /etc/letsencrypt/live/example.com
 
@@ -151,10 +151,10 @@ Output:
 
 - **cert.pem**: server certificate only
 - **chain.pem**: root and intermediate certificates only
-- **fullchain.pem**: combination of server, root, and intermediate certificates (replaces `cert.pem` and `chain.pem`)
+- **fullchain.pem**: combination of server, root and intermediate certificates (replaces `cert.pem` and `chain.pem`)
 - **privkey.pem**: private key (**do not** share this with anyone!)
 
-4. For good measure, display the file status of `fullchain.pem`.
+4. For good measure, display the file status of `fullchain.pem`:
 
         sudo stat /etc/letsencrypt/live/example.com/fullchain.pem
 
@@ -162,19 +162,19 @@ Output excerpt:
 
         File: ‘live/example.com/cert.pem’ -> ‘../../archive/example.com/cert1.pem’
 
-Notice how this file points to a different file. All four of the files in step three do. They are *symbolic links* to the actual certificate files located in the `/etc/letsencrypt/archive` directory.
+Notice how this file points to a different file. All four of the files in Step 3 do. They are *symbolic links* to the actual certificate files located in the `/etc/letsencrypt/archive` directory.
 
-5. If you forget to renew a domain name's certificate, Let's Encrypt will remove its directory (and symbolic links) from `/etc/letsencrypt/live`. However, they will be retained in the `/etc/letsencrypt/archive` and `/etc/letsencrypt/keys` directories for your future reference.
+5. If you forget to renew a domain name's certificate, Let's Encrypt will remove its directory (and symbolic links) from `/etc/letsencrypt/live`. However, the directory (and symbolic links) will be retained in the `/etc/letsencrypt/archive` and `/etc/letsencrypt/keys` directories for your future reference.
 
 ## Maintenance
 
-### Renewing SSL Certificates
+### Renew SSL Certificates
 
-1. Return your Bash prompt to the `/opt/letsencrypt` directory.
+1. Return your Bash prompt to the `/opt/letsencrypt` directory:
 
         cd /opt/letsencrypt
 
-2. Execute the command we used to obtain your certificates in the **Obtaining SSL Certificates** section, adding the `--renew-by-default` parameter.
+2. Execute the command you used to obtain your certificates in the **Obtaining SSL Certificates** section, adding the `--renew-by-default` parameter:
 
         sudo -H ./letsencrypt-auto certonly --standalone --renew-by-default -d example.com -d www.example.com
 
@@ -196,9 +196,9 @@ Let's Encrypt has refreshed the lifespan of your certificates; in this case, Mar
 
 {: .note}
 >
-> Let's Encrypt certificates have a 90 day lifespan before they expire. According to Let's Encrypt, this encourages automation and minimizes damage from key compromises. You can renew your certificates anytime during their lifespan.
+> Let's Encrypt certificates have a 90-day lifespan before they expire. According to Let's Encrypt, this encourages automation and minimizes damage from key compromises. You can renew your certificates anytime during their lifespan.
 
-### Automating SSL Certificate Renewal (Optional)
+### Automate SSL Certificate Renewal (Optional)
 
 Since it's easy to forget about logging into a remote server, we also recommend automating your certificate renewal. This will prevent your certificates from expiring and can be accomplished with `cron`.
 
@@ -218,27 +218,27 @@ Since it's easy to forget about logging into a remote server, we also recommend 
 >
 > Once Let's Encrypt leaves public beta and supports auto-renewal natively, open the `/etc/crontab` file and manually remove this entry to avoid future renewal conflicts.
 
-## Updating Let's Encrypt
+## Update Let's Encrypt
 
-1. Return your Bash prompt to the `/opt/letsencrypt` directory.
+1. Return your Bash prompt to the `/opt/letsencrypt` directory:
 
         cd /opt/letsencrypt
 
-2. Download any changes made to Let's Encrypt since you last cloned (or pull'd) the repository, effectively updating it.
+2. Download any changes made to Let's Encrypt since you last cloned (or pull'd) the repository, effectively updating it:
 
         sudo git pull
 
-## Automating Let's Encrypt Updates (Optional)
+## Automate Let's Encrypt Updates (Optional)
 
 You can also use `cron` to keep the `letsencrypt-auto` client up to date. The `@weekly` parameter will issue a `git pull` command in the `/opt/letsencrypt` directory every Sunday at midnight.
 
         echo '@weekly root cd /opt/letsencrypt && git pull >> /var/log/letsencrypt/letsencrypt-auto-update.log' | sudo tee --append /etc/crontab
 
-To change the update frequency, choose a different parameter like `@hourly`, `@daily`, or `@monthly`.
+To change the update frequency, choose a different parameter, for example, `@hourly`, `@daily`, or `@monthly`.
 
 ## More Information
 
-Now that you installed Let's Encrypt and obtained SSL certificates, you can configure any package that supports commercial or self-signed SSL certificates to use them.
+Now that you have installed Let's Encrypt and obtained SSL certificates, you can configure any package that supports commercial or self-signed SSL certificates to use them.
 
 - [Email with Postfix, Dovecot, and MySQL](https://www.linode.com/docs/email/postfix/email-with-postfix-dovecot-and-mysql)
 - [How to Provide Encrypted Access to Resources Using SSL Certificates on Nginx](https://www.linode.com/docs/security/ssl/how-to-provide-encrypted-access-to-resources-using-ssl-certificated-on-nginx)
