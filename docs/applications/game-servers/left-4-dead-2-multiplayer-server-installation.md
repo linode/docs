@@ -2,20 +2,23 @@
 author:
     name: Linode Community
     email: docs@linode.com
-description: 'Left 4 Dead 2 Multiplayer Server Installation and Configuration.'
-keywords: 'left 4 dead,l4d2,game server,single-player,multiplayer,steamCMD'
+description: 'Left 4 Dead 2 is a single-player game developed and published by Valve Inc. Left 4 Dead 2 also offers a great multiplayer mode. This guide will explain how to prepare your Linode, install SteamCMD, and then install and configure Left 4 Dead 2.'
+keywords: 'left 4 dead,l4d2,game server,steamCMD'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-published: 'TBA'
-modified: Wednesday, December 9th, 2015
+published: 'Thursday, February 25th 2016'
+modified: Thursday, February 25th 2016
 modified_by:
     name: Linode
-alias: 'applications/game-servers/eft4dead-debian-ubuntu.md
 title: 'Left 4 Dead 2 Multiplayer Server Installation'
 contributor:
     name: Andrew Gottschling
     link: https://github.com/agottschling
 ---
-Left 4 Dead 2 is a single-player game developed and published by Valve Inc. Besides its fantastic single-player mode, Left 4 Dead 2 also offers a great multiplayer mode, so you can blast zombies with your friends. This guide will explain how to prepare your VPS, install SteamCMD, and then install and configure Left 4 Dead 2.
+
+*This is a Linode Community guide. Write for us and earn $250 per published guide.*
+<hr>
+
+[Left 4 Dead 2](http://www.l4d.com/game.html) is a single-player game developed and published by Valve Inc. Besides its fantastic single-player mode, Left 4 Dead 2 also offers a great multiplayer mode so you can blast zombies with your friends. This guide will explain how to prepare your Linode, install SteamCMD, and then install and configure Left 4 Dead 2.
 
 ## Before You Begin
 
@@ -52,15 +55,16 @@ Because a current Linode runs on a 64-bit operating system, you need to download
     >
     >     sudo apt-get install libcurl4-gnutls-dev:i386 libc6-i386 libgcc1 screen
 
-If you have a firewall running on your Linode, add exceptions for SteamCMD:
+4.  If you have a firewall running on your Linode, add exceptions for SteamCMD:
 
-    sudo iptables -A INPUT -p udp- m udp --sport 4380 --dport 1025:65355 -j ACCEPT
-    sudo iptables -A INPUT -p udp -m udp --sport 10999 --dport 1025:65355 -j ACCEPT
-    sudo iptables -A INPUT -p udp -m udp --sport 7777 --dport 1025:65355 -j ACCEPT
-    sudo iptables -A INPUT -p udp -m udp --sport 27015 --dport 1025:65355 -j ACCEPT
+        sudo iptables -A INPUT -p udp- m udp --sport 4380 --dport 1025:65355 -j ACCEPT
+        sudo iptables -A INPUT -p udp -m udp --sport 10999 --dport 1025:65355 -j ACCEPT
+        sudo iptables -A INPUT -p udp -m udp --sport 7777 --dport 1025:65355 -j ACCEPT
+        sudo iptables -A INPUT -p udp -m udp --sport 27015 --dport 1025:65355 -j ACCEPT
 
-{: .note }
-> If you've configured your firewall according to our [Securing Your Server](/docs/security/securing-your-server) guide, be sure to add these port ranges to your `/etc/iptables.firewall.rules` file.
+    {: .note }
+    >
+    >If you've configured your firewall according to our [Securing Your Server](/docs/security/securing-your-server) guide, be sure to add these port ranges to your `/etc/iptables.firewall.rules` file.
 
 ## Install SteamCMD and Left 4 Dead 2
 
@@ -136,8 +140,9 @@ If you have a firewall running on your Linode, add exceptions for SteamCMD:
         cd ~/L4D2-server/left4dead2/cfg
 		
 	Choose one of the following example files:
-	    * wget https://www.gottnt.com/l4d2/basic-server.cfg
-	    * wget https://www.gottnt.com/l4d2/detailed-server.cfg
+
+        wget https://www.gottnt.com/l4d2/basic-server.cfg
+        wget https://www.gottnt.com/l4d2/detailed-server.cfg
 		
     Make sure to rename the file to `server.cfg` before launching the server:
 	
@@ -148,16 +153,18 @@ If you have a firewall running on your Linode, add exceptions for SteamCMD:
 3.  When you are finished, exit `nano` and save your changes.
 
 4.  Next, it is a good idea to write a custom startup script that will execute your custom config files. 
-    {: .file }
+
+    {: .file}
     ~/L4D2-server/start_L4D2.sh
     :   ~~~
         screen ./srcds_run -console -game left4dead2 +port 27020 +maxplayers 8 +exec server.cfg +map c2m1_highway
         ~~~
 
-{: .note }
->The `+port 27020` parameter is not required but is recommended so that your server always starts on the same port. The port number may be changed to whichever one you prefer, so long as it is not a privileged port.
+    {: .note }
+    >
+    >The `+port 27020` parameter is not required but is recommended so that your server always starts on the same port. The port number may be changed to whichever one you prefer, so long as it is not a privileged port.
 
-        You can change the map to whichever one you prefer.
+    You can change the map to whichever one you prefer.
 	This script, when run, will execute the L4D2 server in a [Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions) session.
 	
 5.  Make the script executable:
@@ -166,7 +173,8 @@ If you have a firewall running on your Linode, add exceptions for SteamCMD:
 
 ##Use the Server
 
-1.  To start the server, simply input and run: 
+1.  To start the server, simply input and run:
+
         ./start-L4D2
         
 2.  To detach from the screen session which runs the server console, press these two key combinations in succession:
@@ -181,15 +189,17 @@ If you have a firewall running on your Linode, add exceptions for SteamCMD:
 4.  To stop the server, bring back the console and type `exit`.
 
 ## Entering The Server
+
 You can connect to the server in any one of three easy methods:
+
 1.  Ensure that the developer console is enabled. On the main menu, press the tilde (`~`) key to open the console. Next, type the following: `connect 12.34.56.78:27020` where 12.34.56.78 is your Linode's ip, and 27020 is your port. 
 
 2.  A slightly easier method is to install the following add-on before launching the game: [Link](https://steamcommunity.com/sharedfiles/filedetails/?id=214945910). After doing this, launch the game, click the new `Console` button on the main menu, and type the command found in method 1, above.
 
 3.  A third method is to install the following add-on: [Link](https://steamcommunity.com/sharedfiles/filedetails/?id=121088946) and then launch the game. Next, click on the new `Server Browser` option on the main menu and find your server in the long list of servers. This method only works if you have set the `hostname`, `sv_search_key`, and `sv_tags` options in the config file. 
 
-{: .note }
->Your L4D2 server will only show up in the `Custom` list of servers. Therefore, we recomend that you add it to your favorites to avoid having to look for it again.
-
+    {: .note }
+    >
+    >Your L4D2 server will only show up in the `Custom` list of servers. Therefore, we recomend that you add it to your favorites to avoid having to look for it again.
 
 Finally, invite friends to the game using the Steam Overlay (`SHIFT + TAB`). Let the playing begin! 
