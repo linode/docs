@@ -69,26 +69,26 @@ Because a current Linode runs on a 64-bit operating system, you need to download
 ## Install SteamCMD and Left 4 Dead 2
 
 {: .note}
->This guide requires additional libraries which are not included in our standard [SteamCMD Guide](/docs/applications/game-servers/install-steamcmd-for-a-steam-game-server).  This guide includes standalone configuration instructions for SteamCMD.  If you have already followed our SteamCMD installation guide, you can skip to step 5. 
+>This guide requires additional libraries which are not included in our standard [SteamCMD Guide](/docs/applications/game-servers/install-steamcmd-for-a-steam-game-server).  This guide includes standalone configuration instructions for SteamCMD.  If you have already followed our SteamCMD installation guide, you can skip to step 4. 
 
 1.  From your user's home folder, download SteamCMD into its own directory:
 
-        mkdir steamcmd
-        cd steamcmd
+        mkdir Steam
+        cd Steam
         wget http://media.steampowered.com/installer/steamcmd_linux.tar.gz
 
-3.  Extract the package and remove the archive file:
+2.  Extract the package and remove the archive file:
 
         tar -xvzf steamcmd_linux.tar.gz
         rm steamcmd_linux.tar.gz
 
-4.  Run the SteamCMD installer:
+3.  Run the SteamCMD installer:
 
         ./steamcmd.sh
 
     This command will display output similar to this:
 
-        Redirecting stderr to '/home/linode/Steam/logs/stderr.txt'
+        Redirecting stderr to '/home/steam/Steam/logs/stderr.txt'
         [  0%] Checking for available updates...
         [----] Downloading update (0 of 7,013 KB)...
         [  0%] Downloading update (1,300 of 7,013 KB)...
@@ -106,7 +106,7 @@ Because a current Linode runs on a 64-bit operating system, you need to download
         [----] Installing update...
         [----] Cleaning up...
         [----] Update complete, launching Steam...
-        Redirecting stderr to '/home/linode/Steam/logs/stderr.txt'
+        Redirecting stderr to '/home/steam/Steam/logs/stderr.txt'
         [  0%] Checking for available updates...
         [----] Verifying installation...
         Steam Console Client (c) Valve Corporation
@@ -117,7 +117,7 @@ Because a current Linode runs on a 64-bit operating system, you need to download
 
     The `Steam>` prompt is similar to the Linux command prompt - with the exception of not being able to execute normal Linux commands. 
 
-5.  Install Left 4 Dead 2 from the SteamCMD prompt:
+4.  Install Left 4 Dead 2 from the SteamCMD prompt:
 
         login anonymous
         force_install_dir ../L4D2-server
