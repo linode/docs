@@ -2,8 +2,8 @@
 author:
    name: Linode Community
    email: docs@linode.com
-description: 'A basic Black Mesa Dedicated Server installation guide for Debian and Ubuntu'
-keywords: 'black,mesa,dedicated,server,ubuntu,debian'
+description: 'Install Black Mesa on Debian or Ubuntu'
+keywords: 'black mesa,server,ubuntu,debian,steam,steamcmd,sourcemod,metamod,server.cfg,deathmatch.cfg'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 external_resources:
  - '[BlackMesaSource.com](http://www.blackmesasource.com/)'
@@ -14,7 +14,7 @@ modified: '-'
 modified_by:
    name: Linode
 published: '-'
-title: 'Black Mesa Dedicated Server on Debian and Ubuntu'
+title: 'Install Black Mesa on Debian or Ubuntu'
 contributor:
    name: Davide Beatrici
    link: https://github.com/davidebeatrici
@@ -46,7 +46,7 @@ If you have a firewall configured according to our [Securing Your Server](/docs/
 		-A INPUT -p udp -m udp --dport 26900:27030 -j ACCEPT
 
 
-##Installing Black Mesa Dedicated Server
+##Install Black Mesa, Dedicated Server
 
 1.  Execute SteamCMD:
 
@@ -64,7 +64,7 @@ If you have a firewall configured according to our [Securing Your Server](/docs/
 
 		quit
 
-##Running Black Mesa Dedicated Server
+##Run Black Mesa, Dedicated Server
 
 1.  Go into the Black Mesa Dedicated Server folder:
 
@@ -76,9 +76,9 @@ If you have a firewall configured according to our [Securing Your Server](/docs/
 
 {: .note}
 >
-> The **game** parameter specifies the game's files directory, don't change it. This is the only parameter you can't write in server.cfg, because it specifies the game folder, where the server.cfg file itself is.<br />
+> The **game** parameter specifies the game's files directory; don't change it. This is the only parameter you can't write in server.cfg because it specifies the game folder, where the server.cfg file itself is.<br />
 > The **hostname** parameter specifies your server's name in the browser list. By default it's specified in server.cfg, so the +hostname parameter is overridden by it.<br />
-> The **map** parameter specifies which map the server needs to start with. You must write the name of the map file without the prefix.<br />
+> The **map** parameter specifies the map with which the server needs to start. You must write the name of the map file without the prefix.<br />
 > The **maxplayers** parameter specifies the maximum number of players allowed to play on the server.<br />
 >
 > You can read the entire list of parameters on the [Valve Wiki](https://developer.valvesoftware.com/wiki/Command_Line_Options).
@@ -89,14 +89,14 @@ If you have a firewall configured according to our [Securing Your Server](/docs/
 >        
 >		screen ./srcds_run -game bms +map gasworks +maxplayers 24
 
-##Configuring Black Mesa Dedicated Server
+##Configure a Black Mesa Dedicated Server
 
 {: .note}
 >
-> There isn't any official documentation regarding configurations yet.
+> At the time of writing this guide, Black Mesa has yet to share with customers any official documentation regarding configurations.
 
 ###Server.cfg
-The **server.cfg** file contains the settings of your server. It is not needed, because you can start the server specifying every time your desidered values using parameters.
+The **server.cfg** file contains the settings of your server. It is not needed because you can start the server every time by specifying desidered values using parameters.
 
 		{: .file-excerpt}
 		/home/steam/Steam/steamapps/common/Black Mesa Dedicated Server/bms/cfg/server.cfg
@@ -109,7 +109,7 @@ The **server.cfg** file contains the settings of your server. It is not needed, 
 		  // rcon_password                  --> The RCON password to login as admin to send commands to your server while you're in-game.
 		  // mp_flashlight 1                --> Flashlight allowed. (0 = disabled|1 = enabled).
 		  // mp_forcerespawn 0              --> Forced respawn, without the player prompt. (0 = disabled|1 = enabled).
-		  // mp_friendlyfire 0              --> When enabled, a player can shoot to another one of his own team. (0 = disabled|1 = enabled).
+		  // mp_friendlyfire 0              --> When enabled, a player can shoot another one of his own team. (0 = disabled|1 = enabled).
 		  // mp_fraglimit 45                --> The number of kills needed to end the match.
 		  // sv_logecho 1                   --> Prints logs in the console (0 = disabled|1 = enabled).
 		  // sv_logfile 1                   --> Saves the logs to a file (0 = disabled|1 = enabled).
@@ -117,10 +117,10 @@ The **server.cfg** file contains the settings of your server. It is not needed, 
 
 {: .caution}
 >
-> The settings in **server.cfg** will override the ones that you specify using parameters when you start the server.
+> The settings in **server.cfg** will override the ones that you specify (using parameters) when you start the server.
 
 ###Config_deathmatch.cfg
-The **config_deathmatch.cfg** file contains the settings of the gamemode. You can edit almost everything.
+The **config_deathmatch.cfg** file contains the settings of the gamemode. You can edit almost everything in this file.
 It's located at: `/home/steam/Steam/steamapps/common/Black Mesa Dedicated Server/bms/cfg/config_deathmatch.cfg`
 
 ###Maps
@@ -142,17 +142,17 @@ Three additional official maps are available in the Steam Workshop:
 *   [dm_rail](http://steamcommunity.com/sharedfiles/filedetails/?id=432072942)
 *   [dm_shipping](http://steamcommunity.com/sharedfiles/filedetails/?id=432074065)
 
-###Custom maps
+###Custom Maps
 
-*   Custom maps in **BSP** format need to be put in the same folder of the official ones: `/home/steam/Steam/steamapps/common/Black
+*   Custom maps in **BSP** format need to be put in the same folder as the official ones: `/home/steam/Steam/steamapps/common/Black
 Mesa Dedicated Server/bms/maps/`.
 
 *   Custom maps in **VPK** format need to be put in the **addons** folder: `/home/steam/Steam/steamapps/common/Black Mesa Dedicated Server/bms/addons/`
 
-*   Custom maps downloaded from the Workshop need to be put in the **workshop** folder:  `/home/steam/Steam/steamapps/common/Black Mesa Dedicated Server/bms/addons/workshop`
+*   Custom maps downloaded from the workshop need to be put in the **workshop** folder:  `/home/steam/Steam/steamapps/common/Black Mesa Dedicated Server/bms/addons/workshop`
 
-The addons to be loaded need to be specified in the **addonlist.txt** file.
-For example, I'm going to add the maps **dm_boom** and **dm_shipping** downloaded from Workshop to the list:
+The add-ons to be loaded need to be specified in the **addonlist.txt** file.
+In the following example, maps that were downloaded from workshop to the list are added to **dm_boom** and **dm_shipping**:
 
 		{: .file}
 		/home/steam/Steam/steamapps/common/Black Mesa Dedicated Server/bms/addonlist.txt
@@ -168,9 +168,9 @@ For example, I'm going to add the maps **dm_boom** and **dm_shipping** downloade
 > 
 > You can find more maps in the [Steam Workshop](http://steamcommunity.com/workshop/browse/?appid=362890&requiredtags[]=Multiplayer).
 
-###Maps rotation
+###Maps Rotation
 
-When a match is ended, the server starts a new one with the next map in the rotation list.
+When a match ends, the server starts a new one with the next map in the rotation list.
 The map rotation list is in **mapcycle.txt**:
 
 		{: .file-excerpt}
@@ -187,9 +187,9 @@ The map rotation list is in **mapcycle.txt**:
     
 To put a custom map in the rotation, simply write its name; for example: if you have the map **dm_custom.bsp**, you need to write **dm_custom** inside **mapcycle.txt**.
 
-##Connecting to your server
+##Connect to Your Server
 
-1. Open Black Mesa and click on the **PLAY ONLINE** option:
+1. Open Black Mesa, and click on the **PLAY ONLINE** option:
 
    [![Black Mesa Main Menu.](/docs/assets/black_mesa_menu_small.png)](/docs/assets/black_mesa_menu.png)
    
@@ -205,7 +205,7 @@ To put a custom map in the rotation, simply write its name; for example: if you 
 
 ###Autostart with screen script
 
-This script automatically starts Black Mesa Dedicated Server into a **Screen session**.
+This script automatically starts a Black Mesa Dedicated Server into a **Screen session**.
 
 1. Go into the **Black Mesa Dedicated Server** folder:
 
@@ -230,16 +230,16 @@ This script automatically starts Black Mesa Dedicated Server into a **Screen ses
 
 {: .note}
 >
-> The **game** parameter specifies the game's files directory, don't change it. This is the only parameter you can't write in server.cfg, because it specifies the game folder, where the server.cfg file itself is.<br />
+> The **game** parameter specifies the game's files directory, don't change it. This is the only parameter you can't write in server.cfg because it specifies the game folder, where the server.cfg file itself is.<br />
 > The **hostname** parameter specifies your server's name in the browser list. By default it's specified in server.cfg, so the +hostname parameter is overridden by it.<br />
-> The **map** parameter specifies which map the server needs to start with. You must write the name of the map file without the prefix.<br />
+> The **map** parameter specifies with which map the server needs to start. You must write the name of the map file without the prefix.<br />
 > The **maxplayers** parameter specifies the maximum number of players allowed to play on the server.<br />
 >
 > You can read the entire list of parameters on the [Valve Wiki](https://developer.valvesoftware.com/wiki/Command_Line_Options).
 
 ###MetaMod
 
-**MetaMod** is an addon for servers using Source Engine that works as a "base" for other plugins like **SourceMod**.
+**MetaMod** is an add-on for servers using Source Engine that works as a "base" for other plug-ins like **SourceMod**.
 
 1. Go into the **bms** folder:
 
@@ -270,7 +270,7 @@ If you get the same output, it means that MetaMod is working.
 
 ###SourceMod
 
-It is recommended to install the **SourceMod** addon. It provides useful functions, such as **votemap**, **random map cycle**, **bans**, **reserved slots**, **admin system**, **player commands** and you can customize it as you want.
+It is recommended that you install the **SourceMod** add-on. It provides useful functions, such as **votemap**, **random map cycle**, **bans**, **reserved slots**, **admin system**, and **player commands**; you can customize it as you want.
 
 1. Go into the **bms** folder:
 
@@ -282,7 +282,7 @@ It is recommended to install the **SourceMod** addon. It provides useful functio
 
       {:.note}
       >
-      > This URL costantly changes as SourceMod is updated. Please check the downloads [page](https://www.sourcemod.net/downloads.php) for the current URL.
+      > This URL constantly changes as SourceMod is updated. Please check the downloads [page](https://www.sourcemod.net/downloads.php) for the current URL.
 
 3. Extract the downloaded archive:
 
@@ -301,11 +301,11 @@ It is recommended to install the **SourceMod** addon. It provides useful functio
 
 If you get similar output, it means that MetaMod and SourceMod are working.
 
-Now SourceMod will be automatically loaded by MetaMod when starting Black Mesa Dedicated Server.
+Now, SourceMod will be automatically loaded by MetaMod when starting the Black Mesa Dedicated Server.
 
 {:.note}
 >
-> Read the [MetaMod Official Wiki](https://wiki.alliedmods.net/Category:Metamod:Source_Documentation) and the [SourceMod Official Wiki](https://wiki.alliedmods.net/index.php/Category:SourceMod_Documentation) for info about configurations, plugins, files, etc.
+> Read the [MetaMod Official Wiki](https://wiki.alliedmods.net/Category:Metamod:Source_Documentation) and the [SourceMod Official Wiki](https://wiki.alliedmods.net/index.php/Category:SourceMod_Documentation) for info about configurations, plug-ins, files, etc.
 
 
 Enjoy!
