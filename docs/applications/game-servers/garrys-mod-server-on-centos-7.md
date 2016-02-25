@@ -7,7 +7,7 @@ keywords: 'garry''s mod,centos,centos 7'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-applications/game-servers/minecraft-ubuntu12-04/']
 published: 'Wednesday, January 21, 2015'
-modified: Monday, February 15th, 2016'
+modified: Thursday, February 25th, 2016
 modified_by:
   name: Linode
 title: 'Garry''s Mod on CentOS 7'
@@ -53,9 +53,9 @@ From the SteamCMD guide, two additional steps are needed specifically for Gmod.
 
 ## Install Garry's Mod
 
-1.  Be sure you are in the directory `~/steamcmd`, then access the `Steam>` prompt.
+1.  Be sure you are in the directory `~/Steam`, then access the `Steam>` prompt.
 
-        cd ~/steamcmd && ./steamcmd.sh
+        cd ~/Steam && ./steamcmd.sh
 
 2.  From the SteamCMD prompt, login anonymously:
 
@@ -67,7 +67,7 @@ From the SteamCMD guide, two additional steps are needed specifically for Gmod.
 
 3.  Install Gmod to the `Steam` user's home directory:
 
-        force_install_dir ../gmod
+        force_install_dir ./gmod
         app_update 4020 validate
 
     This can take some time. If the download looks as if it has frozen, be patient. Once the download is complete, you should see this output:
@@ -97,11 +97,11 @@ This section configures different aspects of the server, including gamemode and 
     :   ~~~
         #!/bin/sh
 
-        cd ./gmod
+        cd ./Steam/gmod
         screen -S "Garry's Mod Server" ./srcds_run -game garrysmod +maxplayers 20 +map gm_flatgrass
         ~~~
 
-    When run, the script will change directories to `~/gmod` and execute Garry's Mod in a [Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions) session. The `srcds_run` binary can take many more arguments which you can see at [Valve's Developer wiki](https://developer.valvesoftware.com/wiki/Command_Line_Options#Source_Dedicated_Server).
+    When run, the script will change directories to `~/Steam/gmod` and execute Garry's Mod in a [Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions) session. The `srcds_run` binary can take many more arguments which you can see at [Valve's Developer wiki](https://developer.valvesoftware.com/wiki/Command_Line_Options#Source_Dedicated_Server).
 
 2.  Make the script executable:
 
@@ -121,7 +121,7 @@ This will automatically restart Garry's Mod when your server reboots.
 
 2.  Enter the startup command. **Be sure that the binary flags are the same as in your startup script.**
 
-        @reboot /home/steam/gmod/srcds_run -game garrysmod +maxplayers 20 +map gm_flatgrass
+        @reboot /home/steam/Steam/gmod/srcds_run -game garrysmod +maxplayers 20 +map gm_flatgrass
 
 3.  To exit `vim`, press **Esc**, then type **:x** and hit **Enter**.
 
@@ -130,7 +130,7 @@ This will automatically restart Garry's Mod when your server reboots.
 The default `server.cfg` file is blank, and any configuration options you want to specify for the server must be added. This are optional, but below is a sane starting point.
 
 {: .file }
-~/gmod/garrysmod/cfg/server.cfg
+~/Steam/gmod/garrysmod/cfg/server.cfg
 :   ~~~
     hostname "server_hostname"
     sv_password "server_password"

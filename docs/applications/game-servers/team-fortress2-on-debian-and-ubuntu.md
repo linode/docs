@@ -5,7 +5,7 @@ author:
 description: 'A basic Team Fortress 2 server installation guide for Debian and Ubuntu'
 keywords: 'team fortress 2,team fortress,steam,ubuntu,debian'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Monday, February 15th, 2016'
+modified: Thursday, February 25th, 2016'
 modified_by:
   name: Linode
 published: 'Thursday, March 12th, 2015'
@@ -42,9 +42,9 @@ From the SteamCMD guide, two additional steps are needed specifically for TF2.
 
 ## Install Team Fortress 2
 
-1.  Be sure you are in the directory `~/steamcmd`, then access the `Steam>` prompt.
+1.  Be sure you are in the directory `~/Steam`, then access the `Steam>` prompt.
 
-        cd ~/steamcmd && ./steamcmd.sh
+        cd ~/Steam && ./steamcmd.sh
 
 2.  From the SteamCMD prompt, login anonymously:
 
@@ -81,9 +81,9 @@ You can select from a variety of maps on which you can play Team Fortress 2, a n
 
 In order to create a custom list of maps for your server, create `mapcycle.txt` within the `tf2/tf/cfg` directory. The best way to do this is to copy the example file and edit it to include your chosen maps.
 
-1.  Navigate to `steamcmd/tf2/tf/cfg`:
+1.  Navigate to `Steam/tf2/tf/cfg`:
 
-		cd ~/steamcmd/tf2/tf/cfg
+		cd ~/Steam/tf2/tf/cfg
 
 2.  Copy `mapcycle_default.txt`:
 
@@ -95,14 +95,14 @@ In order to create a custom list of maps for your server, create `mapcycle.txt` 
 
 The "Message of the Day" appears when joining a server. This can be a message to your normal group of players, a statement about the server's settings, or anything else. Configure this by editing the files:
 
-*   `~/steamcmd/tf2/tf/cfg/motd_default.txt`
-*   `~/steamcmd/tf2/tf/cfg/motd_text_default.txt`
+*   `~/Steam/tf2/tf/cfg/motd_default.txt`
+*   `~/Steam/tf2/tf/cfg/motd_text_default.txt`
 
 The `motd_default.txt` file can contain HTML and is displayed as a website upon loading the server in-game. The `modt_text_default.txt` file should be the text copy, with no additional code.
 
 ###Server.cfg
 
-The file `~/steamcmd/tf2/tf/cfg/server.cfg` is what contains all of the settings you need to customize the loadout of your game. A `server.cfg` file is not needed to run the game but we have a sample config file [here](/docs/assets/team_fortress_2_server_config) which you can edit for your own use.
+The file `~/Steam/tf2/tf/cfg/server.cfg` is what contains all of the settings you need to customize the loadout of your game. A `server.cfg` file is not needed to run the game but we have a sample config file [here](/docs/assets/team_fortress_2_server_config) which you can edit for your own use.
 
 {: .note}
 >
@@ -117,11 +117,11 @@ The file `~/steamcmd/tf2/tf/cfg/server.cfg` is what contains all of the settings
     :   ~~~
         #!/bin/sh
 
-        cd ./steamcmd/tf2
+        cd ./Steam/tf2
         screen -S "Team Fortress 2 Server" ./srcds_run -game tf +map ctf_2fort.bsp
         ~~~
 
-    When run, the script will change directories to `~/tf2` and execute TF2 in a [Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions) session.
+    When run, the script will change directories to `~/Steam/tf2` and execute TF2 in a [Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions) session.
 
 	Optionally, replace `cft_2fort.bsp` with the name of your chosen map’s file, or replace `+map ctf_2fort.bsp` with `+randommap` for a randomized map selection.
 

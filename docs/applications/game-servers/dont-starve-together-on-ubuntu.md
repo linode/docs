@@ -6,7 +6,7 @@ description: 'Install and configure a Don''t Starve Together server for Ubuntu 1
 keywords: 'don''t starve,don''t starve together,game servers,games,ubuntu, ubuntu 14.04,steam'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 published: 'Tuesday, April 14, 2015'
-modified: Monday, February 15th, 2016'
+modified: Thursday, February 25th, 2016
 modified_by:
     name: Lindoe
 title: 'Install and Configure Don''t Starve Together Server on Ubuntu 14.04'
@@ -53,9 +53,9 @@ From the SteamCMD guide, two additional steps are needed specifically for DST.
 
 ## Install Don’t Starve Together
 
-1.  Be sure you are in the directory `~/steamcmd`, then access the `Steam>` prompt.
+1.  Be sure you are in the directory `~/Steam`, then access the `Steam>` prompt.
 
-        cd ~/steamcmd && ./steamcmd.sh
+        cd ~/Steam && ./steamcmd.sh
 
 2.  From the SteamCMD prompt, login anonymously:
 
@@ -88,7 +88,7 @@ From the SteamCMD guide, two additional steps are needed specifically for DST.
 
 1.  Before you configure DST, you should launch it at least once to generate its configuration files:
 
-        cd ~/dstserver/bin
+        cd ~/Steam/dstserver/bin
         ./dontstarve_dedicated_server_nullrenderer
 
 2.  Once you see this output, the server has been successfully launched:
@@ -149,10 +149,10 @@ From the SteamCMD guide, two additional steps are needed specifically for DST.
     :   ~~~
         #!/bin/sh
 
-        cd ./dstserver/bin
+        cd ./Steam/dstserver/bin
         screen -S "Don't Starve Together Server" ./dontstarve_dedicated_server_nullrenderer
         ~~~
-    When run, the script will change directories to `~/dstserver/bin` and execute DST in a [Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions) session.
+    When run, the script will change directories to `~/Steam/dstserver/bin` and execute DST in a [Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions) session.
 
 5.  Make the script executable:
 

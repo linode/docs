@@ -5,8 +5,8 @@ author:
 description: 'This Counter Strike: Global Offensive (CS:GO) server guide contains instructions on how to install SteamCMD, download the dedicated server, and launch the game server.'
 keywords: 'counter strike,counter strike global offensive,csgo,cs:go,csgo server,csgo server hosting, steam servers,game servers,games,ubuntu,ubuntu 14.04,steam,cs,cs:go'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-published: 'Tuesday, September 29th, 2015'
-modified: Monday, February 15th, 2016'
+published: 'Thursday, February 25th, 2016'
+modified: Thursday, February 25th, 2016
 modified_by:
     name: Linode
 title: 'Install a Counter Strike: Global Offensive (CS:GO) server on Ubuntu 14.04'
@@ -42,9 +42,9 @@ From the SteamCMD guide, one additional step are needed specifically for CS:GO.
 
 ## Install Counter Strike: Global Offense
 
-1.  Be sure you are in the directory `~/steamcmd`, then access the `Steam>` prompt.
+1.  Be sure you are in the directory `~/Steam`, then access the `Steam>` prompt.
 
-        cd ~/steamcmd && ./steamcmd.sh
+        cd ~/Steam && ./steamcmd.sh
 
 2.  From the SteamCMD prompt, login anonymously:
 
@@ -82,7 +82,7 @@ CS:GO requires a server token unless you want to limit players to only clients c
 1.  Create a file called `server.cfg` using your prefered text editor. Choose a hostname and a unique RCON password that you don't use elsewhere.
 
     {: .file}
-    ~/steamcmd/csgo-ds/csgo/cfg/server.cfg
+    ~/Steam/csgo-ds/csgo/cfg/server.cfg
     :   ~~~ config
         hostname "server_hostname"
         sv_password "server_password"
@@ -99,15 +99,15 @@ CS:GO requires a server token unless you want to limit players to only clients c
 2.  Create a startup script for CS:GO with the contents given below. **Be sure to replace `YOUR_GSLT` in the script's command with your game server login token**.
 
     {: .file }
-    ~/startcsgo.sh
+    ~/Steam/startcsgo.sh
     :   ~~~
         #!/bin/sh
 
-        cd ./steamcmd/csgo-ds
+        cd ./Steam/csgo-ds
         screen -S "Counter-Strike: Global Offensive Server" ./srcds_run -game csgo -usercon +game_type 0 +game_mode 1 +mapgroup mg_bomb +map de_dust2 +sv_setsteamaccount YOUR_GSLT -net_port_try 1
         ~~~
 
-    When run, the script will change directories to `~/steamcmd/csgo-ds` and execute a Dust2 server in competitive game mode in a [Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions) session. For more startup modes and game options, see Valve's [CS:GO wiki](https://developer.valvesoftware.com/wiki/Counter-Strike:_Global_Offensive_Dedicated_Servers#Starting_the_Server).
+    When run, the script will change directories to `~/Steam/csgo-ds` and execute a Dust2 server in competitive game mode in a [Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions) session. For more startup modes and game options, see Valve's [CS:GO wiki](https://developer.valvesoftware.com/wiki/Counter-Strike:_Global_Offensive_Dedicated_Servers#Starting_the_Server).
 
 3.  Make the script executable:
 

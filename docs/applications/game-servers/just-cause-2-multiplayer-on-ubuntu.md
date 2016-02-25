@@ -6,7 +6,7 @@ description: 'Install and configure a Just Cause 2 Multiplayer server on Ubuntu 
 keywords: 'just cause,just cause 2,game servers,games,ubuntu,ubuntu 14.04,steam'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 published: 'Friday, October 9th, 2015'
-modified: Monday, February 15th, 2016'
+modified: Thursday, February 25th, 2016
 modified_by:
     name: Linode
 title: 'Install and Configure a Just Cause 2 Multiplayer Server on Ubuntu 14.04'
@@ -47,9 +47,9 @@ From the SteamCMD guide, two additional steps are needed specifically for JC2.
 
 ## Install Just Cause 2
 
-1.  Be sure you are in the directory `~/steamcmd`, then access the `Steam>` prompt.
+1.  Be sure you are in the directory `~/Steam`, then access the `Steam>` prompt.
 
-        cd ~/steamcmd && ./steamcmd.sh
+        cd ~/Steam && ./steamcmd.sh
 
 2.  From the SteamCMD prompt, login anonymously:
 
@@ -61,7 +61,7 @@ From the SteamCMD guide, two additional steps are needed specifically for JC2.
 
 3.  Install JC2 to the `Steam` user's home directory:
 
-        force_install_dir ../jc2mp-server
+        force_install_dir ./jc2mp-server
         app_update 261140 validate
 
     This can take some time. If the download looks as if it has frozen, be patient. Once the download is complete, you should see this output:
@@ -82,14 +82,14 @@ From the SteamCMD guide, two additional steps are needed specifically for JC2.
 
 1.  Before you configure JC2-MP, make a copy of the default configuration file:
 
-        cd ~/jc2mp-server
+        cd ~/Steam/jc2mp-server
         cp default_config.lua config.lua
 
 2.  Open `config.lua` with your preferred text editor. Every possible server option is explained in the configuration file. Simply follow the instructions and when finished, be sure to save your changes. At minimum, you'll want to set a server name and access password.
 
 3.  Before starting up the server for the first time, it is good to symlink a library file to avoid a possible error:
 
-        ln -s ~/steamcmd/linux32/libstdc++.so.6 libstdc++.so.6
+        ln -s ~/Steam/linux32/libstdc++.so.6 libstdc++.so.6
 
 4.  Create a startup script for JC2 with the following contents:
 
@@ -98,11 +98,11 @@ From the SteamCMD guide, two additional steps are needed specifically for JC2.
     :   ~~~
         #!/bin/sh
 
-        cd ./jc2mp-server
+        cd ./Steam/jc2mp-server
         screen -S "Just Cause 2 Muliplayer Server" ./Jcmp-Server
         ~~~
 
-    When run, the script will change directories to `~/jc2mp-server` and execute JC2 in a [Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions) session.
+    When run, the script will change directories to `~/Steam/jc2mp-server` and execute JC2 in a [Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions) session.
 
 5.  Make the script executable:
 
