@@ -192,15 +192,15 @@ To put a custom map in the rotation, simply write its name; for example: if you 
 
 1.  Open Black Mesa, and click on the **PLAY ONLINE** option:
 
-   [![Black Mesa Main Menu.](/docs/assets/black_mesa_menu_small.png)](/docs/assets/black_mesa_menu.png)
+	[![Black Mesa Main Menu.](/docs/assets/black_mesa_menu_small.png)](/docs/assets/black_mesa_menu.png)
    
 2.  Find your server in the server list:
 
-   [![Black Mesa Server Browser.](/docs/assets/black_mesa_server_browser_small.png)](/docs/assets/black_mesa_server_browser.png)
+	[![Black Mesa Server Browser.](/docs/assets/black_mesa_server_browser_small.png)](/docs/assets/black_mesa_server_browser.png)
 
 3.  Double click on it to connect:
 
-   [![Black Mesa In-Game.](/docs/assets/black_mesa_ingame_small.png)](/docs/assets/black_mesa_ingame.png)
+	[![Black Mesa In-Game.](/docs/assets/black_mesa_ingame_small.png)](/docs/assets/black_mesa_ingame.png)
 
 ##Extra
 
