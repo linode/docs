@@ -34,9 +34,9 @@ external_resources:
 
 ## Prerequisites for Counter-Strike: Global Offensive
 
-From the SteamCMD guide, one additional step are needed specifically for CS:GO.
+From the SteamCMD guide, one additional step is needed specifically for CS:GO.
 
-1.  Replace a firewall rule to slightly extend the port range available to the game. This command assumes that you have **only** the firewalld rules in place from the SteamCMD guide:
+1.  Replace a firewall rule to slightly extend the port range available to the game. This command assumes that you have **only** the iptables rules in place from the SteamCMD guide:
 
         sudo iptables -R INPUT 5 -p udp -m udp --sport 26900:27030 --dport 1025:65355 -j ACCEPT
 
