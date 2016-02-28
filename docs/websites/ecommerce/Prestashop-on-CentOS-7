@@ -1,1 +1,12 @@
+---
+deprecated: false
+author:
+  name: Matei Cezar 
+  email: cezarmatei004@yahoo.co.uk
+description: 'Installing Prestashop on CentOS7'
+keywords: 'Presashop,CentOS,ecommerce,Store'
+license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+alias: ['web-applications/e-commerce/presashop/']
 
+title: 'Prestashop on CentOS 7'
+---
