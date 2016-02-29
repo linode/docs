@@ -57,11 +57,11 @@ From the SteamCMD guide, one additional step is needed specifically for CS:GO.
 3.  Install CS:GO to the `Steam` user's home directory:
 
         force_install_dir ./csgo-ds
-        app_update 730 validate
+        app_update 740 validate
 
     This can take some time. If the download looks as if it has frozen, be patient. Once the download is complete, you should see this output:
 
-        Success! App '730' fully installed.
+        Success! App '740' fully installed.
 
         Steam>
 
