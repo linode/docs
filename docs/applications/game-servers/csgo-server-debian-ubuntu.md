@@ -6,7 +6,7 @@ description: 'This Counter Strike: Global Offensive (CS:GO) server guide contain
 keywords: 'counter strike,counter strike global offensive,csgo,cs:go,csgo server,csgo server hosting, steam servers,game servers,games,ubuntu,ubuntu 14.04,steam,cs,cs:go'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 published: 'Thursday, February 25th, 2016'
-modified: Thursday, February 25th, 2016
+modified: Monday, February 29th, 2016
 modified_by:
     name: Linode
 title: 'Install a Counter Strike: Global Offensive (CS:GO) server on Ubuntu 14.04'
@@ -99,7 +99,7 @@ CS:GO requires a server token unless you want to limit players to only clients c
 2.  Create a startup script for CS:GO with the contents given below. **Be sure to replace `YOUR_GSLT` in the script's command with your game server login token**.
 
     {: .file }
-    ~/Steam/startcsgo.sh
+    ~/startcsgo.sh
     :   ~~~
         #!/bin/sh
 
