@@ -249,7 +249,7 @@ After adding the files you wish to track, use the command:
 
     git commit
 
-Enter the commit message using your favorite file editor, then save and quit to finish writing the commit.
+Enter the commit message using your favorite text editor, then save and quit to finish writing the commit. Alternatively, you can use `git commit -m "commit_message"` and hit enter, substituting your intended commit message for `commit_message`.
 
 To copy an existing Git repository use the command:
 
