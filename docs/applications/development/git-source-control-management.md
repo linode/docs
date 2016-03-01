@@ -440,6 +440,3 @@ You may wish to consult the following resources for additional information on th
 - [Refspec Information](http://git-scm.com/book/ch9-5.html)
 - [Gitolite](http://gitolite.com/gitolite/glssh.html)
 - [Gitolite Quick Install](http://gitolite.com/gitolite/qi.html)
-
-
-
