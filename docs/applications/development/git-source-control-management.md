@@ -6,9 +6,9 @@ description: 'An introduction to using git, managing git repositories, and gitol
 keywords: 'git,dvcs,vcs,scm,gitweb,gitolite,ubuntu,debian,arch,gentoo'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['linux-tools/version-control/git/']
-modified: Friday, February 28th, 2014
+modified: Tuesday, March 1, 2016
 modified_by:
-  name: Linode
+  name: Phil Zona
 published: 'Friday, September 4th, 2009'
 title: Git Source Control Management
 ---
