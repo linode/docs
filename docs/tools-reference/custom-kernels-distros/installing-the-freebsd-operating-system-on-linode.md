@@ -21,7 +21,7 @@ external_resources:
 
 ## Introduction (What is FreeBSD?)
 
-FreeBSD is a Free and Open-Source Operating System originally developed at Berkeley CSRG back in the 80's.
+FreeBSD is a Free and Open-Source Operating System based on the original BSD code originally developed at Berkeley CSRG back in the 80's.
 
 BSD originally started as a series of addon programs and tweaks to Bell Labs UNIX®, implementing features
 and new programs (like the venerable vi editor's first release).
@@ -39,7 +39,7 @@ As such, we'll need to begin by creating the Linode, and making some changes bef
 2.  [Create two Disk Images](https://www.linode.com/docs/migrate-to-linode/disk-images/disk-images-and-configuration-profiles#creating-a-blank-disk)
 . Both images should be in the RAW format.
 
-    - 800 MB titled Installer
+    - 1024 MB titled Installer
     - Remaining space - title this disk FreeBSD
 
 3.  Create two configuration profiles with the following settings:
@@ -131,7 +131,7 @@ You will need to disable all of the options under Filesystem/Boot Helpers in bot
 
      [![FreeBSD Manual Configuration](/docs/assets/freebsd-manual-config.png)](/docs/assets/freebsd-manual-config.png)
 
-11.  Use your favorite editor and insert the following text in the bottem of /boot/loader.conf. (FreeBSD ships with ee and vi)
+11.  Use your favorite editor and insert the following text in the bottem of /boot/loader.conf. (FreeBSD ships with ee and nvi, linked as vi)
 
      {:.file }
      /boot/loader.conf
