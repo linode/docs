@@ -6,9 +6,9 @@ description: 'Directing domains to your Linode.'
 keywords: 'dns manager,linode dns,linode manager dns,dns configuration'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['dns-manager/','dns-guides/configuring-dns-with-the-linode-manager/']
-modified: Tuesday, January 20, 2015
+modified: Wednesday, March 2, 2016
 modified_by:
-  name: Elle Krout
+  name: Phil Zona
 published: 'Thursday, July 16th, 2009'
 title: DNS Manager
 ---
@@ -17,7 +17,7 @@ The *DNS Manager* is a comprehensive DNS management interface available within t
 
 ##Getting Started
 
-The Domain Name System (DNS) attaches human-usable domain names to machine-usable IP addresses. In many ways, it is the phone book of the Internet. Just like a phone book can help you find the phone number of a business, DNS can take a domain name like `google.com` and translate it into an IP address like `74.125.19.147`, the IP address for Google's homepage. This global system allows users to remember the names of websites instead of their IP addresses.
+The Domain Name System (DNS) attaches human-readable domain names to machine-usable IP addresses. In many ways, it is the phone book of the Internet. Just like a phone book can help you find the phone number of a business, DNS can take a domain name like `google.com` and translate it into an IP address like `74.125.19.147`, the IP address for Google's homepage. This global system allows users to remember the names of websites instead of their IP addresses.
 
 {: .note}
 >All steps within this guide are done within the **[DNS Manager](https://manager.linode.com/dns)** tab of your Linode Manager.
@@ -38,7 +38,7 @@ Ready to add or edit DNS records? Log in to the [Linode Manager](https://manager
 
 [![1. All of the domain zones are listed in the Domain Zone column. 2. The "Import a zone" link lets you import zone files. 3. The "Clone an existing zone" link lets you duplicate another zone you already have set up in the Linode Manager. 4. The "Add a domain zone" link lets you create a new zone file for a domain. 5. In the Options column for each domain, you have the following links: "Edit," "Remove," "Check," and "Zone file."](/docs/assets/1112-dns1-2.png)](/docs/assets/1112-dns1-2.png)
 
-1.  All of your domain zones are listed here. A *domain zone*, essentially synonymous for the term "domain," is a collection of DNS records for a single domain name. Click the name of a domain zone to add or edit DNS records within that zone.
+1.  All of your domain zones are listed here. A *domain zone*, essentially synonymous with the term "domain," is a collection of DNS records for a single domain name. Click the name of a domain zone to add or edit DNS records within that zone.
 2.  If you have a zone that can be exported from a server or another hosting provider, click **Import a zone** to import it.
 3.  Click **Clone an existing zone** to duplicate an existing zone that you've already set up in the Linode Manager.
 4.  Click **Add a domain zone** to create a new domain zone.
@@ -92,7 +92,7 @@ Here's how to add a new domain zone:
     [![This page lets you add a domain zone.](/docs/assets/1120-dns8.png)](/docs/assets/1332-hosting-1.png)
 
 2.  Enter the domain name in the **Domain** field. An example is shown above.
-3.  Enter an administer's email address in the **SOA Email** field.
+3.  Enter an administrator's email address in the **SOA Email** field.
 4.  If you are unfamiliar with DNS, the DNS Manager can automatically create some basic DNS records to get you started. To have it insert these records, select **Yes, insert a few records to get me started**, then select the Linode you want this domain zone associated with from the drop-down menu.
 
     Alternatively, to keep the domain zone empty and prevent the DNS Manager from creating DNS records, select **No, I want the zone empty**.
