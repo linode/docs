@@ -2,15 +2,15 @@
 author:
   name: Alex Fornuto
   email: afornuto@linode.com
-description: Forward the X11 server through SSH to run GUI applications from your Linode
-keywords: 'x11,x-forwarding,ssh,x over ssh,ubuntu,12.04'
+description: 'Run Graphic Software with X-Forwarding on Ubuntu 12.04'
+keywords: 'x11,x-forwarding,ssh,x over ssh,ubuntu,12.04,install x11'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['remote-desktops/x-forwarding-ubuntu-12-04/']
+alias: ['remote-desktops/x-forwarding-ubuntu-12-04/','applications/remote-desktop/running-graphic-software-on-your-linode-with-xforwarding-on-ubuntu-12-04']
 modified: Friday, April 25th, 2014
 modified_by:
   name: Alex Fornuto
 published: 'Thursday, April 10th, 2014'
-title: 'Running Graphic Software on your Linode with X-Forwarding on Ubuntu 12.04'
+title: 'Run Graphic Software with X-Forwarding on Ubuntu 12.04'
 external_resources:
  - '[Xming](http://www.straightrunning.com/XmingNotes/)'
  - '[Cygwin/X](http://x.cygwin.com/)'
@@ -24,7 +24,7 @@ There may come a time when you want to run an application that requires a graphi
 >
 > This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
-## Installing X11 on your Linode
+## Install X11 on your Linode
 
 1.  Before we begin, make sure your Linode's software is up to date:
 
@@ -35,7 +35,7 @@ There may come a time when you want to run an application that requires a graphi
 
         sudo apt-get install xauth
 
-## Installing X11 on the Client
+## Install X11 on the Client
 
 ### Linux
 
@@ -55,7 +55,7 @@ There are several pieces of software available that can provide an X server on W
 
 It's up to you to choose the software that best suits your needs.
 
-## Connecting
+## Connect
 
 Connecting from a Linux or OS X client requires adding one extra parameter to your SSH command, the `-X` flag:
 
@@ -63,9 +63,9 @@ Connecting from a Linux or OS X client requires adding one extra parameter to yo
 
 Connecting from a Windows machine will depend on what software you have chosen. Please refer to the software documentation for instructions on initiating an SSH connection with X forwarding.
 
-## Testing
+## Test
 
-1.  First lets install a simple graphic application to test with:
+1.  Let's install a simple graphic application to test with:
 
         sudo apt-get install x11-apps
 
@@ -73,7 +73,7 @@ Connecting from a Windows machine will depend on what software you have chosen. 
 
         xeyes
 
-3.  Now let's try something a bit bigger. The following commands will install and launch Mozilla's Firefox web browser from your Linode:
+3.  Now, let's try something a bit bigger. The following commands will install and launch Mozilla's Firefox web browser from your Linode:
 
         sudo apt-get install firefox
         firefox &
@@ -82,4 +82,4 @@ Connecting from a Windows machine will depend on what software you have chosen. 
 
  {: .note }
 >
-> More intense graphic software may lag when running in this fashion. Using a Linode in a data center geographically close to you can help reduce latency.
+> More intense graphic software may lag when running in this fashion. Using a Linode in a datacenter geographically close to you can help reduce latency.
