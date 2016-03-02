@@ -2,15 +2,15 @@
 author:
   name: Alex Fornuto
   email: afornuto@linode.com
-description: 'Install Asterisk and FreePBX on your Linux VPS to use and manage a telephone exchange.'
+description: 'Install Asterisk & FreePBX to Manage VoIP on Ubuntu 12.04.'
 keywords: 'asterisk ubuntu 12.04,asterisk,asterisk linux,freepbx,freepbx ubuntu,pbx,voip,google voice'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: [ 'communications/voip-services-ubuntu-12-04/' ]
+alias: ['communications/voip-services-ubuntu-12-04/','applications/voip/deploy-voip-services-with-asterisk-and-freepbx-on-ubuntu-12-04-precise']
 modified: Tuesday, June 17th, 2014
 modified_by:
   name: Alex Fornuto
 published: 'Tuesday, June 17th, 2014'
-title: 'Deploy VoIP Services with Asterisk and FreePBX on Ubuntu 12.04 (Precise)'
+title: 'Install Asterisk & FreePBX to Manage VoIP on Ubuntu 12.04'
 external_resources:
  - '[Asterisk Documentation](http://www.asterisk.org/docs)'
  - '[Asterisk Community](http://www.asterisk.org/community)'
@@ -18,7 +18,7 @@ external_resources:
  - '[FreePBX Community](http://www.freepbx.org/community)'
 ---
 
-Asterisk is an open-source telephone solution that runs over the internet instead of running through copper lines. It offers a variety of features such as voicemail and conference calling, much like a land line telephone can.
+Asterisk is an open-source telephone solution that runs over the Internet instead of running through copper lines. It offers a variety of features such as voicemail and conference calling, much like a landline telephone can.
 
 For this guide we will install Asterisk from source rather than from Ubuntu's repositories. The newer version offers several additional features, including the ability to integrate a Google Voice account as a trunk. We will use FreePBX as a web interface for our Asterisk configuration.
 
