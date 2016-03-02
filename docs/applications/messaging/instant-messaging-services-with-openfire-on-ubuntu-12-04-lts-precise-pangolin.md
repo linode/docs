@@ -2,15 +2,15 @@
 author:
   name: Alex Fornuto
   email: afornuto@linode.com
-description: 'Deploy Openfire, an Open Source Instant Messaging Server Built on the XMPP/Jabber Protocol, on Ubuntu 12.04 LTS (Precise Pangolin).'
-keywords: 'openfire,ubuntu 12.04,instant messaging,real-time messaging,xmpp server,collaboration software,chat software,linux jabber server'
+description: 'Getting started with Openfire, an open source instant messaging server built on the XMPP/Jabber protocol for Ubuntu 12.04 LTS (Precise Pangolin).'
+keywords: 'openfire,openfire ubuntu 12.04,openfire linux,instant messaging,real-time messaging,xmpp server,collaboration software,chat software,linux jabber server'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['communications/xmpp/openfire/ubuntu-12-04-precise-pangolin/']
 modified: Wednesday, January 23rd, 2013
 modified_by:
   name: Doug Freed
 published: 'Tuesday, November 13th, 2012'
-title: 'Deploy Instant Messaging Services with Openfire on Ubuntu 12.04'
+title: 'Instant Messaging Services with Openfire on Ubuntu 12.04 LTS (Precise Pangolin)'
 external_resources:
  - '[Openfire Documentation](http://www.igniterealtime.org/projects/openfire/documentation.jsp)'
  - '[XMPP Standards Foundation](http://xmpp.org/)'
@@ -34,7 +34,7 @@ Openfire requires a Java runtime engine (JRE). This tutorial uses the OpenJDK pr
 
 OpenJDK will be installed, along with a series of dependencies it requires.
 
-## Adjust Firewall Settings
+## Adjusting Firewall Settings
 
 If you employ a firewall to specify what ports can be accessed on your VPS, verify that you have the following ports open:
 
@@ -51,7 +51,7 @@ If you employ a firewall to specify what ports can be accessed on your VPS, veri
 
 Additional ports may need to be opened later to support more advanced XMPP services, but these are the ports that Openfire will use by default.
 
-## Install Openfire
+## Installing Openfire
 
 Installing Openfire is relatively easy and can be completed in just a couple of steps. Here's how to install Openfire:
 
@@ -90,7 +90,7 @@ Installing Openfire is relatively easy and can be completed in just a couple of 
 
 This completes the initial installation steps for Openfire. Next, we'll continue with configuration through a web browser.
 
-## Configure Openfire
+## Configuring Openfire
 
 Configuring Openfire is relatively easy and can be completed in just a couple of steps. Here's how to configure Openfire:
 
@@ -111,4 +111,4 @@ Configuring Openfire is relatively easy and can be completed in just a couple of
 
 If you're experiencing difficulty using the credentials you just created to log in, please use "admin/admin" as the username/password. You'll need to update your credentials immediately afterward for security purposes. 
 
-Congratulations! You've successfully installed the Openfire RTC server on Ubuntu 12.04.
+Congratulations! You've successfully installed the Openfire RTC server on Ubuntu 12.04 LTS.

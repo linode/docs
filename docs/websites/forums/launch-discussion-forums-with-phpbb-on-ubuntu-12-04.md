@@ -5,12 +5,12 @@ author:
 description: 'Configure the PhpBB System for Hosting Web-based Discussion Forums on Ubuntu 12.04 (Precise Pangolin).'
 keywords: 'phpBB,forum software,web applications,PHP,Ubuntu 12.04,precise pangolin'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['web-applications/bulletin-boards/phpbb/ubuntu-12-04-precise-pangolin/']
+alias: ['web-applications/bulletin-boards/phpbb/ubuntu-12-04-precise-pangolin/','websites/forums/discussion-forums-with-phpbb-on-ubuntu-12-04-precise-pangolin/']
 modified: Thursday, November 8th, 2012
 modified_by:
   name: Linode
 published: 'Thursday, November 8th, 2012'
-title: 'Launch Discussion Forums with PhpBB on Ubuntu 12.04 (Precise Pangolin)'
+title: 'Launch Discussion Forums with phpBB on Ubuntu 12.04 (Precise Pangolin)'
 external_resources:
  - '[phpBB Styles Database](http://www.phpbb.com/styles)'
  - '[Styles Forum](http://www.phpbb.com/community/viewforum.php?f=80)'

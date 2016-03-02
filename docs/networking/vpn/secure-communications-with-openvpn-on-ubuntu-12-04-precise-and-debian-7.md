@@ -2,15 +2,15 @@
 author:
   name: Alex Fornuto
   email: afornuto@linode.com
-description: 'Use OpenVPN to Securely Connect Separate Networks on an Ubuntu 12.04 or Debian 7 Linux VPS.'
-keywords: 'openvpn,networking,vpn,ubuntu,ubuntu 12.04,debian 7,debian,tunnelblick,encryption,encrypted,iptable,pki,private keys,ip address'
+description: 'Use OpenVPN to securely connect separate networks on an Ubuntu 12.04 (Precise) or Debian 7 Linux VPS.'
+keywords: 'openvpn,networking,vpn,ubuntu,ubuntu precise,12.04,debian 7,debian'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['networking/openvpn/ubuntu-12-04-precise/', 'networking/vpn/create-secure-communications-with-openvpn-on-ubuntu-12-04-and-debian-7.md']
+alias: ['networking/openvpn/ubuntu-12-04-precise/']
 modified: Monday, February 17th, 2014
 modified_by:
   name: Alex Fornuto
 published: 'Thursday, August 22nd, 2013'
-title: 'Secure Communications with OpenVPN on Ubuntu 12.04 and Debian 7'
+title: 'Secure Communications with OpenVPN on Ubuntu 12.04 (Precise) and Debian 7'
 external_resources:
  - '[Official OpenVPN Documentation](http://openvpn.net/index.php/open-source/documentation/howto.html)'
  - '[Tunnelblick OS X OpenVPN Client](http://code.google.com/p/tunnelblick/)'
@@ -40,7 +40,7 @@ With the additional configuration we will set up at the end of this guide, all t
 >
 > Please note that only one public IP address is required to use OpenVPN
 
-## Install OpenVPN
+## Installing OpenVPN
 
 Follow these instructions to install OpenVPN:
 
@@ -62,7 +62,7 @@ Follow these instructions to install OpenVPN:
 
 	Most of the relevant configuration for the OpenVPN public key infrastructure is contained in `/etc/openvpn/easy-rsa/`. We will create several files in this directory used to define the OpenVPN server and client security.
 
-### Initialize Public Key Infrastructure (PKI)
+### Initializing the Public Key Infrastructure (PKI)
 
 In this section, you will initialize the certificate authority and the public key infrastructure:
 
@@ -90,7 +90,7 @@ In this section, you will initialize the certificate authority and the public ke
 
 After doing this, your PKI should be configured properly.
 
-### Generate Certificates and Private Keys
+### Generating Certificates and Private Keys
 
 With the certificate authority generated, you can generate the private key for the server and certificates for all the VPN clients.
 
@@ -112,7 +112,7 @@ With the certificate authority generated, you can generate the private key for t
 
 You should generate a unique key for every user of the VPN. Each key should have its own unique identifier, but all other information can remain the same. If you need to add users to your OpenVPN at any time, repeat step 4 to create additional keys.
 
-### Generate Diffie Hellman Parameters
+### Generating Diffie Hellman Parameters
 
 The **Diffie Hellman Parameters** govern the method of key exchange used by the OpenVPN server. By creating a .pem file, you create the parameters by which the OpenVPN server will initiate secured connections with the clients.
 
@@ -127,7 +127,7 @@ This should produce the following output:
 
 This will be followed by a quantity of seemingly random output. Once it brings you back to a command prompt, the task has succeeded. In the `keys` subdirectory it's created a file called `dh1024.pem` which will be used to generate secure connections to the VPN server's clients.
 
-### Relocate Secure Keys
+### Relocating Secure Keys
 
 Move all of the secure keys to their proper locations by following these instructions:
 
@@ -151,7 +151,7 @@ Move all of the secure keys to their proper locations by following these instruc
 
 Keeping control of these files is of the utmost importance to the integrity of your server. If you ever need to move or back up these keys, ensure that they're encrypted and secured. If these files become compromised, they must be recreated along with all client keys.
 
-### Revoke Client Certificates
+### Revoking Client Certificates
 
 If you need to remove a user's access to the VPN server, follow these instructions:
 
@@ -165,7 +165,7 @@ If you need to remove a user's access to the VPN server, follow these instructio
 
 This will revoke the ability of all users using the `client1` certificate to access the VPN. Make sure you don't accidentally revoke access for someone who still needs it, and who uses that certificate.
 
-### Configure Server and Client Settings
+### Configuring Server and Client Settings
 
 In this section, you'll create two important configuration files. One is for the server and defines the scope and settings for the VPN. The other is for your local computer, and defines the settings you will pass on to your VPN client. For each client connecting to the VPN you will need to generate a separate configuration file.
 
@@ -219,7 +219,7 @@ In this section, you'll create two important configuration files. One is for the
 
 This will scan the `/etc/openvpn` directory on the server for files with a `.conf` extension. For every file that it finds, it will create and run a VPN daemon (server).
 
-## Install Client-Side Software
+## Installing Client-Side Software
 
 The process for connecting to the VPN varies depending on the specific operating system and distribution running on the *client* machine. You will need to install the right OpenVPN package for your client operating system.
 
@@ -227,16 +227,16 @@ Most network management tools provide some facility for managing connections to 
 
 If you use OS X on a Mac, we have found that the [Tunnelblick](http://code.google.com/p/tunnelblick/) tool provides an easy method for managing OpenVPN connections. If you use Windows, the [OpenVPN GUI](http://openvpn.se/) tool may be an effective tool for managing your connections too. Linux desktop users can install the OpenVPN package and use the network management tools that come with the desktop environment.
 
-Here you will install Tunnelblick on OSX:
+Here we will go through installing Tunneblick on OSX:
 
 1.  To download the latest version of Tunnelblick, [click here](https://tunnelblick.net/downloads.html#Tunnelblick_Stable_Release). After opening the dmg file you can drag it into applications or open it immediately and it will copy itself.
 2.  After starting, you will see this splash screen:
 
-    [![Splash screen for TunnelBlick.](/docs/assets/1346-tunnelblick2)](/docs/assets/1346-tunnelblick2)
+    ![Splash screen for TunnelBlick.](/docs/assets/1346-tunnelblick2.png)
    
 	At the next screen click the **I have configuration files** button.
    
-    [![Splash screen for TunnelBlick.](/docs/assets/1342-tunnelblick1)](/docs/assets/1342-tunnelblick1)
+    ![Splash screen for TunnelBlick.](/docs/assets/1342-tunnelblick1.png)
 
 3.  At the next screen, click **OpenVPN Configuration(s)**:
 
@@ -244,7 +244,7 @@ Here you will install Tunnelblick on OSX:
 
 4.  Tunnelblick will open a Finder window into which you can copy the client.conf and client1 ca, crt, and key files you created on the Linode and copied to this client machine. Follow the rest of the instructions shown in Tunnelblick to create and install your Tunnelblick configuration file.
 
-## Connect to the VPN
+## Connecting to the VPN
 
 If you are using Tunnelblick, click on the tray icon to initiate the connection:
 
@@ -254,11 +254,11 @@ A notification will show you the status as it connects:
 
 [![Splash screen for TunnelBlick.](/docs/assets/1353-tunnelblick9.png)](/docs/assets/1353-tunnelblick9.png)
 
-### Access your Linode over the VPN
+### Accessing your Linode over the VPN
 
 Once you're connected to your VPN, you can SSH to another Linode over the private network. If you want to access files directly from your Linode, you will need to install a compatible network file sharing protocol, like [Samba](https://help.ubuntu.com/community/Samba/SambaServerGuide), [NFS](https://help.ubuntu.com/community/SettingUpNFSHowTo), or [Appletalk](https://help.ubuntu.com/community/AppleTalk).
 
-### Tunnel All Connections through the VPN
+### Tunneling All Connections through the VPN
 
 By deploying the following configuration, you will be able to forward *all* traffic from client machines through your Linode, and encrypt it with transport layer security (TLS/SSL) between the client machine and the Linode.
 

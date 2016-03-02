@@ -10,6 +10,7 @@ modified_by:
   name: Linode
 published: 'Monday, October 8th, 2012'
 title: 'Use PostgreSQL Relational Databases on Ubuntu 12.04'
+alias: ['databases/postgresql/ubuntu-12-04-precise-pangolin/']
 external_resources:
  - '[PostgreSQL Online Documentation](http://www.postgresql.org/docs/)'
  - '[psql manual page](http://www.rootr.net/man/man/psql/1)'

@@ -10,6 +10,7 @@ modified_by:
   name: Linode
 published: 'Wednesday, April 28th, 2010'
 title: Securely Manage Remote PostgreSQL Servers with pgAdmin on Windows
+alias: ['databases/postgresql/pgadmin-windows/']
 external_resources:
  - '[pgAdmin Documentation](http://www.pgadmin.org/docs/)'
  - '[PostgreSQL Documentation](http://www.postgresql.org/docs/)'

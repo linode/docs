@@ -3,21 +3,21 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Use the PostgreSQL relational database server on Ubuntu 10.04 LTS (Lucid).'
-keywords: 'postgresql,ubuntu 10.04,rdbms,open source database,relational database'
+description: 'Using the PostgreSQL relational database server with Ubuntu 10.04 LTS (Lucid).'
+keywords: 'postgresql,postgresql ubuntu 10.04,postgreql lucid,postgresql database,open source database,relational database'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: Tuesday, September 24th, 2013
 modified_by:
   name: Linode
 published: 'Thursday, April 29th, 2010'
-title: 'Use PostgreSQL Relational Databases on Ubuntu 10.04 (Lucid)'
+title: 'Use PostgreSQL Relational Databases on Ubuntu 10.04 LTS (Lucid)'
 ---
 
 
 
-The [PostgreSQL](http://www.postgresql.org/) relational database system is a fast, scalable, and standards-compliant open-source database platform. This guide will help you install and configure PostgreSQL on your Ubuntu 10.04 LTS (Lucid VPS). We assume you've followed the steps detailed in our [getting started guide](/docs/getting-started/), and that you're logged into your Linode VPS as root via SSH.
+The [PostgreSQL](http://www.postgresql.org/) relational database system is a fast, scalable, and standards-compliant open source database platform. This guide will help you install and configure PostgreSQL on your Ubuntu 10.04 LTS (Lucid VPS. We assume you've followed the steps detailed in our [getting started guide](/docs/getting-started/), and that you're logged into your Linode VPS as root via SSH.
 
-Install PostgreSQL
+Installing PostgreSQL
 ---------------------
 
 Make sure your package repositories and installed programs are up to date by issuing the following commands:
@@ -34,7 +34,7 @@ The current version of the database server will be installed, along with several
 Configuring PostgreSQL
 ----------------------
 
-### Install the adminpack
+### Installing the adminpack
 
 This step is optional. Issue the following command to install the PostgreSQL `adminpack`, which provides additional functionality pertaining to remote management via tools like pgAdmin:
 
@@ -63,7 +63,7 @@ Issue the following commands to set a password for the `postgres` administrative
     su - postgres
     psql -d template1 -c "ALTER USER postgres WITH PASSWORD 'changeme';"
 
-### Create a Database
+### Creating a Database
 
 Create a database by issuing the following command:
 
@@ -86,7 +86,7 @@ This is the PostgreSQL client shell; you may use it to issue SQL statements. To 
 
 You may find more information on a specific command by adding it after the `\h` command.
 
-### Create Tables
+### Creating Tables
 
 To create a table in your test database called "employees", issue the following command:
 
@@ -112,7 +112,7 @@ To exit the `psql` shell, issue this command:
 
     \q 
 
-### Create PostgreSQL Users (Roles)
+### Creating PostgreSQL Users (Roles)
 
 PostgreSQL refers to users as "roles", which may have different privileges on your databases. If a user is classified as a "superuser" it will have administrative access to the database system. To add a new user to PostgreSQL, issue the following command as the "postgres" user:
 
