@@ -2,22 +2,22 @@
 author:
   name: Alex Fornuto
   email: afornuto@linode.com
-description: 'Getting started with Openfire, an open source instant messaging server built on the XMPP/Jabber protocol for Ubuntu 12.04 LTS (Precise Pangolin).'
-keywords: 'openfire,openfire ubuntu 12.04,openfire linux,instant messaging,real-time messaging,xmpp server,collaboration software,chat software,linux jabber server'
+description: 'Install Openfire on Ubuntu 12.04 for Instant Messaging.'
+keywords: 'openfire,ubuntu 12.04,instant messaging,xmpp server,collaboration software,chat software,linux jabber server,JRE,configure openfire,'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['communications/xmpp/openfire/ubuntu-12-04-precise-pangolin/']
+alias: ['communications/xmpp/openfire/ubuntu-12-04-precise-pangolin/','applications/messaging/instant-messaging-services-with-openfire-on-ubuntu-12-04-lts-precise-pangolin']
 modified: Wednesday, January 23rd, 2013
 modified_by:
   name: Doug Freed
 published: 'Tuesday, November 13th, 2012'
-title: 'Instant Messaging Services with Openfire on Ubuntu 12.04 LTS (Precise Pangolin)'
+title: 'Install Openfire on Ubuntu 12.04 for Instant Messaging'
 external_resources:
  - '[Openfire Documentation](http://www.igniterealtime.org/projects/openfire/documentation.jsp)'
  - '[XMPP Standards Foundation](http://xmpp.org/)'
  - '[XMPP Software Clients](http://xmpp.org/software/clients.shtml)'
 ---
 
-[Openfire](http://www.igniterealtime.org/projects/openfire/) is an open source real-time collaboration (instant messaging) server, built on the [XMPP protocol](http://en.wikipedia.org/wiki/Extensible_Messaging_and_Presence_Protocol) and available for multiple platforms. This guide will help you get started with Openfire on your Ubuntu 12.04 LTS (Precise Pangolin) Linux VPS.
+[Openfire](http://www.igniterealtime.org/projects/openfire/) is an open-source real-time collaboration (instant messaging) server, built on the [XMPP protocol](http://en.wikipedia.org/wiki/Extensible_Messaging_and_Presence_Protocol) and available for multiple platforms. This guide will help you get started with Openfire on your Ubuntu 12.04 LTS (Precise Pangolin) Linux VPS.
 
 If you haven't done so already, please follow the steps outlined in our [getting started](/docs/getting-started/) guide before following these instructions, and make sure your system is fully updated. Initial configuration steps will be performed through the terminal; please make sure you're logged into your Linode as root via SSH.
 
@@ -51,9 +51,9 @@ If you employ a firewall to specify what ports can be accessed on your VPS, veri
 
 Additional ports may need to be opened later to support more advanced XMPP services, but these are the ports that Openfire will use by default.
 
-## Installing Openfire
+## Install Openfire
 
-Installing Openfire is relatively easy and can be completed in just a couple of steps. Here's how to install Openfire:
+Installing Openfire is relatively easy and can be completed in just a few steps. Here's how:
 
 1.  Visit the download page for the [Openfire RTC server](http://www.igniterealtime.org/downloads/index.jsp#openfire), and click the link for the `.tar.gz` file. You will be taken to another page, which will start the download to your workstation. You may cancel this download, because a manual download link will be presented that you may copy to your clipboard and paste into the `wget` command in the next step.
 2.  Use `wget` on your Linode to retrieve the package (substitute the link for the current version in the command below).
@@ -90,9 +90,9 @@ Installing Openfire is relatively easy and can be completed in just a couple of 
 
 This completes the initial installation steps for Openfire. Next, we'll continue with configuration through a web browser.
 
-## Configuring Openfire
+## Configure Openfire
 
-Configuring Openfire is relatively easy and can be completed in just a couple of steps. Here's how to configure Openfire:
+To configure Openfire is relatively easy and can be completed in just a few steps. Here's how:
 
 1.  Direct your browser to your Linode's IP address or FQDN (fully qualified domain name, if an entry in DNS points to your Linode's IP) on port 9090. As an example, if your Linode's IP address were `12.34.56.78`, you would visit `http://12.34.56.78:9090` in your web browser.
 
