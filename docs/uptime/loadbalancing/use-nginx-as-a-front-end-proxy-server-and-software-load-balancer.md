@@ -2,22 +2,22 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'A detailed exploration of nginx''s HTTP proxy load balancing services.'
-keywords: 'nginx,proxy,load balancing,web server,http, how to use nginx as a proxy, how to use nginx as a load balancer'
+description: 'Use Nginx as a Front-end Proxy Server and Software Load Balancer.'
+keywords: 'nginx,proxy,load balancing,nginx as a load balancer,nginx load,nginx plus,http load balancer,front-end proxy'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['web-servers/nginx/configuration/front-end-proxy-and-software-load-balancing/','websites/loadbalancing/Use-Nginx-for-Proxy-Services-and-Software-Load-Balancing/','uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing/index.cfm/','uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing/']
+alias: ['web-servers/nginx/configuration/front-end-proxy-and-software-load-balancing/','websites/loadbalancing/Use-Nginx-for-Proxy-Services-and-Software-Load-Balancing/','uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing/index.cfm/','uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing/','uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer']
 modified: Friday, August 9th, 2013
 modified_by:
   name: Linode
 published: 'Tuesday, May 11th, 2010'
-title: 'How to Use Nginx as a Front-end Proxy Server and Software Load Balancer' 
+title: 'Use Nginx as a Front-end Proxy Server and Software Load Balancer' 
 external_resources:
  - '[nginx Proxy Module](http://wiki.nginx.org/NginxHttpProxyModule)'
  - '[HTTP Upstream Module](http://wiki.nginx.org/NginxHttpUpstreamModule)'
  - '[nginx Configuration](/docs/websites/nginx/basic-nginx-configuration)'
 ---
 
-The nginx web server can act as a very capable software load-balancer, in addition to its more traditional roles serving static content over HTTP and dynamic content using FastCGI handlers for scripts. Because ngnix uses a non-threaded, event-driven architecture, nginx is able to outperform web servers like Apache. This is particularly true in deployments that receive heavy loads.
+The nginx web server can act as a very capable software load balancer, in addition to its more traditional roles serving static content over HTTP and dynamic content using FastCGI handlers for scripts. Because ngnix uses a non-threaded, event-driven architecture, nginx is able to outperform web servers like Apache. This is particularly true in deployments that receive heavy loads.
 
 Using a proxy is helpful when the demands of serving a single website outgrow the capabilities of a single machine. Additionally, there are some web frameworks, like [Seaside](/docs/frameworks/seaside/) and Ruby On Rails's Mongrel server, that deploy applications on framework-specific web servers. While these single-purpose servers provide powerful application services, they are not suitable for hosting entire applications. In these cases, using nginx as a front-end proxy to pass only the essential requests to the application server is a viable means of unifying dynamic content with static content and providing a stable production environment.
 
@@ -33,7 +33,7 @@ Before we begin, make sure you have completed the following:
 
 If you're new to Linux server administration, you may be interested in our [introduction to Linux basics](/docs/tools-reference/introduction-to-linux-concepts) guide, [Beginner's Guide](/docs/beginners-guide/) and [Administration Basics](/docs/using-linux/administration-basics) guide.
 
-## How It Works: Front-End Proxy Services with Nginx
+## Front-End Proxy Services with Nginx: How It Works
 
 When a request reaches the nginx front-end proxy server, here's an overview of the process that occurs:
 
@@ -41,7 +41,7 @@ When a request reaches the nginx front-end proxy server, here's an overview of t
 2.  nginx sends a second *proxied* request to a specified server, and gets a response.
 3.  nginx returns the result of that request to the original requester.
 
-## Configuring Apache for Port Listening
+## Configure Apache for Port Listening
 
 In this section, you'll configure Apache to listen on an alternate port so it can respond to the nginx front end.
 
@@ -106,11 +106,11 @@ In this section, you'll configure Apache to listen on an alternate port so it ca
         LogFormat "%{X-Forwarded-For}i %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\"" combined
         ~~~
 
-4.  Install the Apache module `libapache2-mod-rpaf`, which takes care of logging the correct IP address.
+4.  Install the Apache module `libapache2-mod-rpaf`, which takes care of logging the correct IP address:
 
         sudo apt-get install libapache2-mod-rpaf
 
-5.  Restart Apache.
+5.  Restart Apache:
 
         service apache restart
 
@@ -213,7 +213,7 @@ In this section, you'll configure Apache to listen on an alternate port so it ca
 
 ## Software Load Balancing
 
-In addition to using nginx as a front end proxy to pass requests to other web servers, nginx can also serve as the front end for clusters of servers, and even as a software load balancer.
+In addition to using nginx as a front-end proxy to pass requests to other web servers, nginx can also serve as the front-end for clusters of servers, and even as a software load balancer.
 
 ### Basic HTTP Clustering
 
@@ -250,7 +250,7 @@ In this example, we'll show you how to build a cluster named `appcluster` with a
 
 In this example, in the `server` directive block, nginx is configured to listen for requests on a specific IP address and port (e.g. `21.43.65.87` and `80`), and respond to requests for the domains `example.com` and `www.example.com`. All requests for resources at this domain (e.g. `/`) will be passed to the `http://appcluster` server established in the `upstream` directive.
 
-The `upstream` directive establishes the round-robin load balancer. Within this block eight servers are listed, each running on a distinct hostname and port combination.
+The `upstream` directive establishes the round-robin load balancer. Eight servers are listed within this block, each running on a distinct hostname and port combination.
 
 -   The `upstream` configuration must occur in the top level of the `http` block of the `/etc/nginx/sites-available/example.com` file.
 -   The servers running on ports `8801` through `8804` of the servers `linode.example.com` and `galloway.example.com` will receive equal portions of the requests made of the upstream `appcluster`.
