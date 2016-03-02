@@ -2,10 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Use Nginx as a Front-end Proxy Server and Software Load Balancer.'
-keywords: 'nginx,proxy,load balancing,nginx as a load balancer,nginx load,nginx plus,http load balancer,front-end proxy'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['web-servers/nginx/configuration/front-end-proxy-and-software-load-balancing/','websites/loadbalancing/Use-Nginx-for-Proxy-Services-and-Software-Load-Balancing/','uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing/index.cfm/','uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing/','uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer/']
+alias: ['web-servers/nginx/configuration/front-end-proxy-and-software-load-balancing/','websites/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing/','uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing/index.cfm/','uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing/','uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer/']
 modified: Friday, August 9th, 2013
 modified_by:
   name: Linode
@@ -33,7 +30,7 @@ Before we begin, make sure you have completed the following:
 
 If you're new to Linux server administration, you may be interested in our [introduction to Linux basics](/docs/tools-reference/introduction-to-linux-concepts) guide, [Beginner's Guide](/docs/beginners-guide/) and [Administration Basics](/docs/using-linux/administration-basics) guide.
 
-## Front-End Proxy Services with Nginx: How It Works
+## Front-End Proxy Services with Nginx
 
 When a request reaches the nginx front-end proxy server, here's an overview of the process that occurs:
 

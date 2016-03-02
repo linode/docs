@@ -2,14 +2,15 @@
 author:
   name: Elle Krout
   email: ekrout@linode.com
-description: Basic setup and configuration of a Chef Server, Workstation, and Node
-keywords: 'chef,chef installation,configuration change management,server automation,chef server,chef workstation,chef-client,knife'
+description: Deploy a Chef Server, Workstation and Node
+keywords: 'chef,chef installation,configuration change management,server automation,chef server,chef workstation,chef-client,knife.rb,version control'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: Wednesday, June 10th, 2015
 modified_by:
   name: Elle Krout
 published: 'Wednesday, June 10th, 2015'
-title: Setting Up a Chef Server, Workstation, and Node on Ubuntu 14.04
+title: Deploy a Chef Server, Workstation and Node on Ubuntu 14.04
+alias: ['applications/chef/setting-up-chef-ubuntu-14-04/']
 external_resources:
  - '[Chef](http://www.chef.io)'
 ---

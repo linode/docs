@@ -2,14 +2,15 @@
 author:
     name: Linode Community
     email: docs@linode.com
-description: 'Install and configure a Don''t Starve Together server for Ubuntu 14.04'
-keywords: 'don''t starve,don''t starve together,game servers,games,ubuntu, ubuntu 14.04,steam'
+description: 'Install and Configure a Don''t Starve Together Multi-player Game Server for Ubuntu 14.04'
+keywords: 'don''t starve,don''t starve together,game servers,games,ubuntu, ubuntu 14.04,steam cmd,steamcmd,token'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 published: 'Tuesday, April 14, 2015'
 modified: Thursday, February 25th, 2016
 modified_by:
-    name: Lindoe
-title: 'Install and Configure Don''t Starve Together Server on Ubuntu 14.04'
+    name: Linode
+title: 'Install Don''t Starve Together Game Server on Ubuntu 14.04'
+alias: ['applications/game-servers/just-cause-2-multiplayer-on-ubuntu/']
 contributor:
     name: Andrew Gottschling
     link: https://github.com/agottschling
@@ -84,7 +85,7 @@ From the SteamCMD guide, two additional steps are needed specifically for DST.
     >
     >To update DST, run the above 4 commands again.
 
-##Configure Don’t Starve Together
+## Configure Don’t Starve Together
 
 1.  Before you configure DST, you should launch it at least once to generate its configuration files:
 
@@ -158,7 +159,7 @@ From the SteamCMD guide, two additional steps are needed specifically for DST.
 
         chmod +x ~/startdst.sh
 
-## Getting your Authentication Token
+## Get your Authentication Token
 
 You will need Don’t Starve Together installed on your personal computer to get your token.
 
@@ -196,7 +197,7 @@ You will need Don’t Starve Together installed on your personal computer to get
 
          scp ~/Documents/Klei/DoNotStarveTogether/server_token.txt user@12.34.56.78:~/.klei/DoNotStarveTogether/
 
-##Using the Server
+## Start the Server
 
 1.  Now that your server is installed and configured, it can be launched by running the `startdst.sh` script from your `steam` user's home directory.
 
@@ -216,7 +217,7 @@ You will need Don’t Starve Together installed on your personal computer to get
 
 4.  To stop the server, bring back the DST console and press **CONTROL + C**.
 
-## Entering The Server
+## Enter The Server
 
 [![DST Server with users on it](/docs/assets/DSTrunning_resized.png)](/docs/assets/DSTrunning.png)
 

@@ -2,8 +2,8 @@
 author:
     name: Linode
     email: docs@linode.com
-description: 'Use Salt States with a LAMP Stack and Fail2ban.'
-keywords: 'salt, saltstack, states, apache, mysql, php, fail2ban, debian 8'
+description: 'Use Salt States to Create a LAMP Stack on Debian 8.'
+keywords: 'salt,salt states,linux,apache,mysql,php,debian 8'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: Thursday, July 2nd, 2015
 modified_by:

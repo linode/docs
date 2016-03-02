@@ -2,8 +2,8 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'How-to guide detailing steps needed to install GitLab on an Ubuntu 14.04 (Trusty Tahr).'
-keywords: 'version control, git, gitlab, install gitlab on ubuntu, how to manage repositories with gitlab'
+description: 'Install GitLab on an Ubuntu 14.04 (Trusty Tahr).'
+keywords: 'version control,git,gitlab,ruby, ruby on rails,mysql,postgresql,nginx'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['gitlab-with-ubuntu/','applications/development/gitlab-on-ubuntu-14-04/']
 contributor:
@@ -13,7 +13,8 @@ modified: Thursday, September 4th, 2014
 modified_by:
   name: Alex Fornuto
 published: 'Thursday, September 4th, 2014'
-title: 'How to Install and Configure GitLab on Ubuntu 14.04 (Trusty Tahr)' 
+title: 'Install GitLab on Ubuntu 14.04 (Trusty Tahr)'
+alias: ['applications/development/how-to-install-and-configure-gitlab-on-ubuntu-14-04-trusty-tahr/']
 external_resources:
  - '[GitLab Community Edition](https://www.gitlab.com/gitlab-ce/)'
  - '[GitLab Documentation](https://www.gitlab.com/documentation/)'
@@ -26,11 +27,11 @@ external_resources:
 
 <hr>
 
-GitLab is a free git repository management application based on Ruby on Rails. It is an interesting alternative if you want to host your own git repositories, since third-party hosting is not always the best option when writing private or closed source software.
+GitLab is a free git repository management application based on Ruby on Rails. It is an interesting alternative if you want to host your own git repositories, since third-party hosting is not always the best option when writing private or closed-source software.
 
-GitLab provides a [.deb package](https://www.gitlab.com/downloads/) which contains GitLab Community Edition and all its dependencies (Ruby, PostgreSQL, Redis, Nginx, Unicorn and other gems) already compiled. Installing this package is [straightforward](https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/README.md#installation). But since it will install its own package dependencies (Nginx, PostgreSQL, etc), this installation method is suitable if the server is dedicated only to manage git repositories. If you want GitLab to use your existing resources (i.e: you already have Nginx and PostgreSQL installed), you need to install GitLab manually.
+GitLab provides a [.deb package](https://www.gitlab.com/downloads/) which contains GitLab Community Edition and all its dependencies (Ruby, PostgreSQL, Redis, Nginx, Unicorn and other gems) already compiled. Installing this package is [straightforward](https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/README.md#installation). But since it will install its own package dependencies (Nginx, PostgreSQL, etc), this installation method is suitable if the server is dedicated only to managing git repositories. If you want GitLab to use your existing resources (i.e: you already have Nginx and PostgreSQL installed), you need to install GitLab manually.
 
-This guide will help you install and configure GitLab on your Ubuntu 14.04 (Precise Pangolin) Linode. We will be using the latest Ruby and GitLab as of this writing, check for the latest version. We will assume that you want to install GitLab on `git.example.com` and you have configured the DNS properly. If you are new to Linux system administration, you might want to consider the [Introduction to Linux Concepts guide](/docs/tools-reference/introduction-to-linux-concepts) and [Linux Administration Basics guide](/docs/tools-reference/linux-system-administration-basics).
+This guide will help you install and configure GitLab on your Ubuntu 14.04 (Trusty Tahr) Linode. We will be using the latest Ruby and GitLab as of this writing, so check for the latest version. We will assume that you want to install GitLab on `git.example.com` and you have configured the DNS properly. If you are new to Linux system administration, you might want to consider the [Introduction to Linux Concepts guide](/docs/tools-reference/introduction-to-linux-concepts) and [Linux Administration Basics guide](/docs/tools-reference/linux-system-administration-basics) guides.
 
  {: .note }
 >
@@ -56,7 +57,7 @@ Before beginning with the GitLab installation, make sure that your system's pack
 
         sudo adduser --disabled-login --gecos 'GitLab' git
 
-### Installing Package Dependencies
+### Install Package Dependencies
 
 In this section you will install the development tools and the required packages for GitLab.
 
@@ -74,7 +75,7 @@ In this section you will install the development tools and the required packages
 
    Select `Internet site` and enter your hostname to complete the installation. If you need to set up a complete SMTP/IMAP/POP3 server, refer to the [Email with Postfix, Dovecot, and MySQL](/docs/email/postfix/email-with-postfix-dovecot-and-mysql) guide. 
 
-### Installing Ruby
+### Install Ruby
 
 While GitLab is a Ruby on Rails application, using ruby version managers such as [RVM](http://rvm.io/) and [rbenv](https://github.com/sstephenson/rbenv) is not supported. For example, GitLab shell is called from OpenSSH and having a version manager can prevent pushing and pulling over SSH. Thus GitLab can only work with system-wide Ruby installation. In addition, GitLab requires Ruby 2.0 or higher while the default version on Ubuntu 14.04 is 1.9.3.
 
@@ -120,7 +121,7 @@ GitLab supports both MySQL and PostgreSQL for the database backend, but the latt
          PostgreSQL 9.3.4 on x86_64-unknown-linux-gnu, compiled by gcc (Ubuntu 4.8.2-16ubuntu6) 4.8.2, 64-bit
         (1 row)
 
-## Installing GitLab
+## Install GitLab
 
 In this section you will install GitLab and make some configuration changes.
 

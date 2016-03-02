@@ -2,14 +2,15 @@
 author:
     name: Linode Community
     email: docs@linode.com
-description: 'Using Elastisearch, Logstash, and Kibana to store and visualize Apache webserver logs. An ELK stack provides an easy-to-understand, visual reference for viewing Apache logs.'
-keywords: 'webserver,apache,elasticsearch,logstash,kibana,dashboard,logs,visualization'
+description: 'Use Elastisearch, Logstash, and Kibana to Store and Visualize Apache Webserver Logs.'
+keywords: 'webserver,apache,elasticsearch,logstash,kibana,dashboard,visualization'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 published: Friday, October 23rd, 2015
 modified: 'Friday, October 23rd, 2015'
 modified_by:
     name: Tyler Langlois
 title: Visualizing Apache Webserver Logs in the ELK Stack on Debian 8
+alias: ['databases/elasticsearch/webserver-logs-with-elk-stack/']
 contributor:
   name: Tyler Langlois
   link: https://github.com/tylerjl
@@ -19,7 +20,7 @@ contributor:
 
 <hr>
 
-The [ELK Stack](https://www.elastic.co/products) is an open-source platform that makes structured and unstructured data easy to collect, store, and visualize. In this guide, we'll collect Apache logs with [Logstash](https://www.elastic.co/products/logstash), store parsed documents in [Elasticsearch](https://www.elastic.co/products/elasticsearch), and create dashboards in [Kibana](https://www.elastic.co/products/kibana) to make webserver logs easy to search and see in real-time.
+The [ELK Stack](https://www.elastic.co/products) is an open-source platform that makes structured and unstructured data easy to collect, store and visualize. In this guide, we'll collect Apache logs with [Logstash](https://www.elastic.co/products/logstash), store parsed documents in [Elasticsearch](https://www.elastic.co/products/elasticsearch), and create dashboards in [Kibana](https://www.elastic.co/products/kibana) to make webserver logs easy to search and see in real-time.
 
 ![An example of the types of charts you can create](/docs/assets/elk-kibana-cover.png)
 
@@ -228,7 +229,7 @@ Now simply start the service to run Kibana as a daemon:
 
     sudo systemctl start kibana
 
-## Putting It All Together
+## Put It All Together
 
 Now that each component of the ELK stack is installed, we can start streaming data into our setup. The previous Logstash configuration we created will output parsed Apache logs to our terminal. To instead send them to Elasticsearch, we can change the output line by replacing the `stdout` plugin with the Elasticsearch output, like this:
 

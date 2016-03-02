@@ -3,15 +3,16 @@ author:
     name: Linode Community
     email: docs@linode.com
 description: 'This Counter Strike: Global Offensive (CS:GO) server guide contains instructions on how to install SteamCMD, download the dedicated server, and launch the game server.'
-keywords: 'counter strike,counter strike global offensive,csgo,cs:go,csgo server,csgo server hosting, steam servers,game servers,games,ubuntu,ubuntu 14.04,steam,cs,cs:go'
+keywords: 'counter strike,counter strike global offensive,csgo,cs:go,csgo server,csgo server hosting, steam servers,game servers,games,ubuntu,ubuntu 14.04'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 published: 'Thursday, February 25th, 2016'
 modified: Monday, February 29th, 2016
 modified_by:
     name: Linode
-title: 'Install a Counter Strike: Global Offensive (CS:GO) server on Ubuntu 14.04'
+title: 'Launch a Counter Strike: Global Offensive (CS:GO) server on Ubuntu 14.04'
 contributor:
     name: Sam Mauldin
+alias: ['applications/game-servers/csgo-server-debian-ubuntu/']
 external_resources:
  - '[Valve Developer Community - Counter-Strike: Global Offensive Dedicated Servers](https://developer.valvesoftware.com/wiki/Counter-Strike:_Global_Offensive_Dedicated_Servers)'
 ---
@@ -113,7 +114,7 @@ CS:GO requires a server token unless you want to limit players to only clients c
 
         chmod +x ~/startcsgo.sh
 
-##Using the Server
+## Start the Server
 
 1.  Now that your server is installed and configured, it can be launched by running the `startcsgo.sh` script from your `steam` user's home directory.
 
@@ -133,7 +134,7 @@ CS:GO requires a server token unless you want to limit players to only clients c
 
 4.  To stop the server, bring back the CS:GO console and press **CONTROL + C**.
 
-## Joining the Game
+## Join the Game
 
 1.  Launch Counter-Strike: Global Offensive.
 
