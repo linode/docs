@@ -2,15 +2,15 @@
 author:
     name: Alex Fornuto
     email: afornuto@linode.com
-description: 'Getting started with MySQL for web and server applications on Ubuntu 12.04 LTS (Precise Pangolin).'
-keywords: 'mysql ubuntu 12.04,mysql ubuntu,mysql on linux,mysql vps'
+description: 'Use MySQL Relational Databases on Ubuntu 12.04.'
+keywords: 'mysql ubuntu 12.04,mysql ubuntu,mysql on linux,relational database,rdbms,mysql'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['databases/mysql/ubuntu-12-04-precise-pangolin/']
+alias: ['databases/mysql/ubuntu-12-04-precise-pangolin/','databases/mysql/using-mysql-relational-databases-on-ubuntu-12-04-lts-precise-pangolin']
 modified: Friday, September 11th, 2015
 modified_by:
     name: Linode
 published: 'Monday, October 8th, 2012'
-title: 'Using MySQL Relational Databases on Ubuntu 12.04 LTS (Precise Pangolin)'
+title: 'Use MySQL Relational Databases on Ubuntu 12.04'
 external_resources:
     - '[MySQL 5.1 Reference Manual](http://dev.mysql.com/doc/refman/5.1/en/)'
     - '[PHP MySQL Manual](http://us2.php.net/manual/en/book.mysql.php)'
@@ -52,7 +52,7 @@ MySQL will bind to localhost (127.0.0.1) by default. Please reference our [MySQL
 
 {: .note}
 >
->Allowing unrestricted access to MySQL on a public IP not advised, but you may change the address it listens on by modifying the `bind-address` parameter in `/etc/my.cnf`. If you decide to bind MySQL to your public IP, you should implement firewall rules that only allow connections from specific IP addresses.
+>Allowing unrestricted access to MySQL on a public IP is not advised, but you may change the address it listens on by modifying the `bind-address` parameter in `/etc/my.cnf`. If you decide to bind MySQL to your public IP, you should implement firewall rules that only allow connections from specific IP addresses.
 
 
 ## Harden MySQL Server
@@ -61,10 +61,10 @@ Run the mysql_secure_installation script to address several security concerns in
 
     sudo mysql_secure_installation
 
-You will be given the choice to change the MySQL root password, remove anonymous user accounts, disable root database login outside of localhost, and remove test databases. It is recommended that you answer yes to these options. You can read more about the script in in the [MySQL Reference Manual](https://dev.mysql.com/doc/refman/5.5/en/mysql-secure-installation.html).
+You will be given the choice to change the MySQL root password, remove anonymous user accounts, disable root database login outside of localhost, and remove test databases. It is recommended that you answer yes to these options. You can read more about the script in the [MySQL Reference Manual](https://dev.mysql.com/doc/refman/5.5/en/mysql-secure-installation.html).
 
 
-## Using MySQL
+## Use MySQL
 
 The standard tool for interacting with MySQL is the `mysql` client, which installs with the `mysql-server` package.
 
@@ -121,7 +121,7 @@ The standard tool for interacting with MySQL is the `mysql` client, which instal
 
 ### Create a New MySQL User and Database
 
-1.  In the example below, `testdb` is the name of the database, `testuser` is the user, and `password` is the user's password.
+1.  In the example below, `testdb` is the name of the database, `testuser` is the user, and `password` is the user's password:
 
         create database testdb;
         create user 'testuser'@localhost identified by 'password';
@@ -132,22 +132,22 @@ The standard tool for interacting with MySQL is the `mysql` client, which instal
         create database testdb;
         grant all on testdb.* to 'testuser' identified by 'password';
 
-2.  Exit MySQL.
+2.  Exit MySQL:
     
         exit
 
 ### Create a Sample Table
 
-1.  Log back in as `testuser`.
+1.  Log back in as `testuser`:
 
         mysql -u testuser -p
 
-2.  Create a sample table called `customers`. This creates a table with a customer ID field of the type `INT` for integer (auto-incremented for new records, used as the primary key), as well as two fields for storing the customer's name.
+2.  Create a sample table called `customers`. This creates a table with a customer ID field of the type `INT` for integer (auto-incremented for new records, used as the primary key), as well as two fields for storing the customer's name:
 
         use testdb;
         create table customers (customer_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, first_name TEXT, last_name TEXT);
 
-3.  Then exit MySQL.
+3.  Then exit MySQL:
     
         exit
 
@@ -155,11 +155,11 @@ The standard tool for interacting with MySQL is the `mysql` client, which instal
 
 If you forget your root MySQL password, it can be reset.
 
-1.  Stop the current MySQL server instance.
+1.  Stop the current MySQL server instance:
 
         sudo service mysql stop
 
-2.  Use dpkg to re-run the configuration process MySQL goes through on first installation. You will again be asked to set a root password.
+2.  Use dpkg to re-run the configuration process MySQL goes through on first installation. You will again be asked to set a root password:
 
         sudo dpkg-reconfigure mysql-server-5.5
 
@@ -169,7 +169,7 @@ You'll now be able to log in again using `mysql -u root -p`.
 
 [MySQL Tuner](https://github.com/major/MySQLTuner-perl) is a Perl script that connects to a running instance of MySQL and provides configuration recommendations based on workload. Ideally, the MySQL instance should have been operating for at least 24 hours before running the tuner. MySQL Tuner recommendations will be more precise the longer the instance has been running.
 
-1.  Install MySQL Tuner from Ubuntu's repositories.
+1.  Install MySQL Tuner from Ubuntu's repositories:
 
         sudo apt-get install mysqltuner
 
