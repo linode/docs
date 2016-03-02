@@ -3,15 +3,15 @@ deprecated: false
 author:
   name: Alex Fornuto
   email: afornuto@linode.com
-description: 'How to employ the 64-bit Linux kernel with your existing distribution.'
-keywords: 'kernel,64 bit,'
+description: 'Switch to a 64-bit Linux Kernel with Your Existing Distribution.'
+keywords: 'kernel,64 bit,switch to a 64-bit linux kernel,64-bit distribution,ubuntu,centos,fedora,debian,arch linux,gentoo,32-bit,migrate,disk'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['switching-kernels/']
+alias: ['switching-kernels/','migrate-to-linode/disk-images/switching-to-a-64bit-kernel/']
 modified: Wednesday, May 14th, 2014
 modified_by:
   name: Alex Fornuto
 published: 'Monday, April 14th, 2014'
-title: 'Switching to a 64-bit Kernel'
+title: 'Switch to a 64-bit Linux Kernel'
 external_resources:
  - '[AMD Developer Central](http://developer.amd.com/community/blog/2008/03/06/myths-and-facts-about-64-bit-linux/)'
  - '[AskUbuntu](http://askubuntu.com/questions/81824/how-can-i-switch-a-32-bit-installation-to-a-64-bit-one)'
@@ -19,7 +19,7 @@ external_resources:
 
 Before an existing Linode can be migrated to a new SSD host, you'll need to ensure that all configuration profiles on that Linode are configured to use the 64-bit kernel. This guide will show you how to make that switch, and warn about some of the more common issues to look out for when making this change.
 
-## Switching your Kernel to 64-bit
+## Switch to a 64-bit Kernel
 
 1.  Next to your Configuration Profile, click **Edit**.
 
