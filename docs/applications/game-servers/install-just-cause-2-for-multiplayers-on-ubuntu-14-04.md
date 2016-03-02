@@ -2,14 +2,15 @@
 author:
     name: Linode Community
     email: docs@linode.com
-description: 'Install and configure a Just Cause 2 Multiplayer server on Ubuntu 14.04.'
-keywords: 'just cause,just cause 2,game servers,games,ubuntu,ubuntu 14.04,steam'
+description: 'Install Just Cause 2 for Multiplayers on Ubuntu 14.04.'
+keywords: 'just cause,just cause 2,game servers,games,ubuntu,ubuntu 14.04,steam,multiplayer,steamcmd,jc2'
+alias: ['applications/game-servers/just-cause-2-multiplayer-on-ubuntu']
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 published: 'Friday, October 9th, 2015'
 modified: Thursday, February 25th, 2016
 modified_by:
     name: Linode
-title: 'Install and Configure a Just Cause 2 Multiplayer Server on Ubuntu 14.04'
+title: 'Install Just Cause 2 for Multiplayers on Ubuntu 14.04'
 contributor:
     name: Andrew Gottschling
     link: https://github.com/agottschling
@@ -19,7 +20,7 @@ contributor:
 
 <hr>
 
-[Just Cause 2](http://www.justcause2.com/) is a single-player game published by Square Enix. Because it has no multiplayer mode, the modding community has created a multiplayer mod for the game that is quite popular. This guide will explain how to prepare your Linode, install SteamCMD and then install and configure Just Cause 2's multiplayer mod.
+[Just Cause 2](http://www.justcause2.com/) is a single-player game published by Square Enix. Because it has no multiplayer mode, the modding community has created a multiplayer mod for the game that is quite popular. This guide will explain how to prepare your Linode, install SteamCMD, and then install and configure Just Cause 2's multiplayer mod.
 
 ## Before You Begin
 
@@ -78,7 +79,7 @@ From the SteamCMD guide, two additional steps are needed specifically for JC2.
     >
     >To update JC2, run the above 4 commands again.
 
-##Configuring Just Cause 2 - Multiplayer (JC2-MP)
+##Configure Just Cause 2 - Multiplayer (JC2-MP)
 
 1.  Before you configure JC2-MP, make a copy of the default configuration file:
 
@@ -102,13 +103,13 @@ From the SteamCMD guide, two additional steps are needed specifically for JC2.
         screen -S "Just Cause 2 Muliplayer Server" ./Jcmp-Server
         ~~~
 
-    When run, the script will change directories to `~/Steam/jc2mp-server` and execute JC2 in a [Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions) session.
+    When its run, the script will change directories to `~/Steam/jc2mp-server` and execute JC2 in a [Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions) session.
 
 5.  Make the script executable:
 
         chmod +x ~/startjc2.sh
 
-##Using the Server
+##Use the Server
 
 1.  Now that your server is installed and configured, it can be launched by running the `startjc2.sh` script from your `steam` user's home directory.
 
@@ -128,7 +129,7 @@ From the SteamCMD guide, two additional steps are needed specifically for JC2.
 
 4.  To stop the server, bring back the JC2 console and press **CONTROL + C**.
 
-## Entering The Server
+## Enter the Server
 
 [![JC2-MP Server with users on it](/docs/assets/JC2running_resized.png)](/docs/assets/JC2running.png)
 
