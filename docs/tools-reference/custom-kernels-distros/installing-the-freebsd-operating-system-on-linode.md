@@ -50,12 +50,15 @@ As such, we'll need to begin by creating the Linode, and making some changes bef
 	- Kernel: Direct Disk
 	- /dev/sda: FreeBSD
 	- /dev/sdb: Installer
+	- root / boot device: Standard /dev/sdb
 
     Boot Profile
 	
     - Label: FreeBSD
 	- Kernel: Direct Disk
 	- /dev/sda: FreeBSD
+	- root / boot device: Standard /dev/sda
+
 
 You will need to disable all of the options under Filesystem/Boot Helpers in both profiles.
 
