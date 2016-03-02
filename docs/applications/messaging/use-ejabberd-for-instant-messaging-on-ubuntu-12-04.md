@@ -2,15 +2,15 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Getting started with ejabberd, an instant messaging server written in Erlang/OTP on Ubuntu 12.04 (Precise Pangolin).'
-keywords: 'ejabberd,ejabberd ubuntu precise pangolin,ejabberd ubuntu 12.04,ejabberd on linux,real-time messaging,xmpp server,collaboration software,chat software,linux jabber server'
+description: 'Use ejabberd for Instant Messaging on Ubuntu-12-04.'
+keywords: 'ejabberd,ejabberd ubuntu,ejabberd ubuntu 12.04,ejabberd on linux,real-time messaging,xmpp,collaboration software,chat software,linux jabber server,instant messaging,jabber daemon,erlang'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['communications/xmpp/ejabberd/ubuntu-12-04-precise-pangolin/']
+alias: ['communications/xmpp/ejabberd/ubuntu-12-04-precise-pangolin/','applications/messaging/instant-messaging-services-with-ejabberd-on-ubuntu-12-04-precise-pangolin']
 modified: Wednesday, October 31st, 2012
 modified_by:
   name: Linode
 published: 'Wednesday, October 31st, 2012'
-title: 'Instant Messaging Services with ejabberd on Ubuntu 12.04 (Precise Pangolin)'
+title: 'Use ejabberd for Instant Messaging on Ubuntu-12-04'
 external_resources:
  - '[Ejabberd Community Site](http://www.ejabberd.im/)'
  - '[XMPP Standards Foundation](http://xmpp.org/)'
