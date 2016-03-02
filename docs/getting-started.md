@@ -257,15 +257,15 @@ Update the `/etc/hosts` file. This file creates static associations between IP a
 
     Some distributions may also ship with a line for `127.0.1.1` in their `hosts file`. This is the loopback domain, and can be ignored in most cases.
 
-2.  Add a line for your Linode's public IP address. You can associate this address with your Linoode's **Fully Qualified Domain Name** (FQDN) if you have one, and with the local hostname you set in the steps above. In the example below, `12.34.56.78` is our public IP address, `hostname` is our local hostname, and `hostname.example.com` is our FQDN.
+2.  Add a line for your Linode's public IP address. You can associate this address with your Linoode's **Fully Qualified Domain Name** (FQDN) if you have one, and with the local hostname you set in the steps above. In the example below, `203.0.113.10` is our public IP address, `hostname` is our local hostname, and `hostname.example.com` is our FQDN.
 
 As with the hostname, the domain name part of your FQDN does not necessarily need to have any relationship to websites or other services hosted on the server (although it may if you wish). As an example, you might host "www.something.com" on your server, but the system's FQDN might be "mars.somethingelse.com."
 
 {:.file }
 /etc/hosts
 : ~~~ 
-  127.0.0.1 localhost.localdomain localhost 
-  12.34.56.78 hostname.example.com hostname
+  127.0.0.1 localhost.localdomain localhost
+  203.0.113.10 hostname.example.com hostname
   ~~~
 
 If you have IPv6 enabled on your Linode, you may also want to add an entry for your IPv6 address, as shown in this example:
@@ -273,8 +273,8 @@ If you have IPv6 enabled on your Linode, you may also want to add an entry for y
 {:.file }
 /etc/hosts
 : ~~~
-  127.0.0.1 localhost.localdomain localhost 
-  12.34.56.78 hostname.example.com hostname 
+  127.0.0.1 localhost.localdomain localhost
+  203.0.113.10 hostname.example.com hostname
   2600:3c01::a123:b456:c789:d012 hostname.example.com hostname
   ~~~
 
