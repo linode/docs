@@ -23,7 +23,7 @@ This installation process assumes that you have a working installation of Ubuntu
 
 ## XMPP/Jabber Basics
 
-Though you can successfully run an XMPP server with only a passing familiarity of the way the XMPP network and system works, understanding the following basic concepts will be helpful:
+Although you can successfully run an XMPP server with only a passing familiarity of the way the XMPP network and system works, understanding the following basic concepts will be helpful:
 
 -   The *JID* (or "Jabber ID"), is the unique identifier for a user in the XMPP network. It often looks like an email and contains the username that identifies a specific user on a server, the hostname that identifies the server, and a resource that identifies from where a given user is logged in. The resource is optional and is often safely omitted or ignored by most users. In the following example, "username" is the username, "example.com" is the hostname, and "/office" is the resource.
 
@@ -169,7 +169,7 @@ To ensure that your ejabberd instance will federate properly with the rest of th
 
 The "target" of the SRV record should point to the publicly routable hostname for that machine (e.g. "username.example.com"). The priority and weight should both be set to `0`.
 
-## Troubleshooting
+## Troubleshoot
 
 The logs for ejabberd are located in the `/var/log/ejabberd/` directory. If you're getting error messages look in these files, particularly `ejabberd.log` and `sasl.log`. Additionally, if ejabberd crashes, the "image dump" of Erlang will be saved in this directory. Begin your investigations for error messages in these files.
 
