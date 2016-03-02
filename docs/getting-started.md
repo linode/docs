@@ -192,10 +192,6 @@ Slackpkg is the easiest way to update Slackware installations. See the [Slackpkg
 
 You'll need to set your system's hostname and fully qualified domain name (FQDN). Your hostname should be something unique. Some people name their servers after planets, philosophers, or animals. Note that the system's hostname has no relationship to websites or email services hosted on it, aside from providing a name for the system itself. Your hostname should *not* be "www" or anything too generic.
 
- {: .note }
->
-> If you're unfamiliar with Linux, one of the first things you'll need to learn is how to use [nano](/docs/linux-tools/text-editors/nano), a text editor included with most distributions. To open a file for editing, type `nano file.txt` where "file.txt" is the name of the file you want to create or edit. When you're finished editing, press `Control-X`, then `Y` to save the changes and `Enter` to confirm.
-
 For a walkthrough of setting system's hostname and timezone, see the following video:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/KFd66g4k4i8" frameborder="0" allowfullscreen></iframe>
@@ -245,7 +241,23 @@ Enter the following commands to set the hostname, replacing `hostname` with the 
 
 ### Update /etc/hosts
 
-Next, edit your `/etc/hosts` file to resemble the following example, replacing `hostname` with your chosen hostname, `example.com` with your system's domain name, and `12.34.56.78` with your system's IP address. As with the hostname, the domain name part of your FQDN does not necessarily need to have any relationship to websites or other services hosted on the server (although it may if you wish). As an example, you might host "www.something.com" on your server, but the system's FQDN might be "mars.somethingelse.com."
+Update the `/etc/hosts` file. This file creates static associations between IP addresses and hostnames, with higher priority than DNS. 
+
+1.  Every `hosts` file should begin with the line `127.0.0.1 localhost.localdomain localhost`, although the naming may be slightly different between Linux distributions. `127.0.0.1` is the [**loopback address**](https://en.wikipedia.org/wiki/Loopback#Virtual_loopback_interface), and is used to send IP traffic internally on the system. You can leave this line alone.
+
+    Some distributions may also ship with a line for `127.0.1.1` in their `hosts file`. This is the loopback domain, and can be ignored in most cases.
+
+2.  Add a line for your Linode's public IP address. You can associate this address with your Linoode's **Fully Qualified Domain Name** (FQDN) if you have one, and with the local hostname you set in the steps above. In the example below, `12.34.56.78` is our public IP address, `hostname` is our local hostname, and `hostname.example.com` is our FQDN.
+
+As with the hostname, the domain name part of your FQDN does not necessarily need to have any relationship to websites or other services hosted on the server (although it may if you wish). As an example, you might host "www.something.com" on your server, but the system's FQDN might be "mars.somethingelse.com."
+
+{: .note }
+>
+> If you're unfamiliar with Linux, one of the first things you'll need to learn is how to use [nano](/docs/linux-tools/text-editors/nano), a text editor included with most distributions. To open a file for editing, type `nano file.txt` where "file.txt" is the name of the file you want to create or edit. If the file is not in your current working directory, specify the entire file path. For example, open the `hosts` file with:
+>
+>     nano /etc/hosts
+>
+>When you're finished editing, press `Control-X`, then `Y` to save the changes and `Enter` to confirm.
 
 {:.file }
 /etc/hosts
@@ -254,7 +266,7 @@ Next, edit your `/etc/hosts` file to resemble the following example, replacing `
   12.34.56.78 hostname.example.com hostname
   ~~~
 
-If you have IPv6 enabled on your Linode, you will also want to add an entry for your IPv6 address, as shown in this example:
+If you have IPv6 enabled on your Linode, you may also want to add an entry for your IPv6 address, as shown in this example:
 
 {:.file }
 /etc/hosts
