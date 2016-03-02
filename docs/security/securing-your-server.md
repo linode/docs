@@ -111,11 +111,11 @@ By default, password authentication is used to connect to your Linode via SSH. A
 
     This can be done using [WinSCP](http://winscp.net/).
 
+3.  Now exit and log back into your Linode. If you specified a passphrase for your RSA key, you'll need to enter it.
+
 ### SSH Daemon Options
 
-1.  Now log back into your Linode. If you specified a passphrase for your RSA key, you'll need to enter it.
-
-2.  **Disallow root logins over SSH.** This requires all SSH connections be by non-root users. Once a limited user account is connected, administrative privileges are accessible either by using `sudo` or changing to a root shell using `su -`.
+1.  **Disallow root logins over SSH.** This requires all SSH connections be by non-root users. Once a limited user account is connected, administrative privileges are accessible either by using `sudo` or changing to a root shell using `su -`.
 
 
     {: .file-excerpt}
@@ -126,7 +126,7 @@ By default, password authentication is used to connect to your Linode via SSH. A
         PermitRootLogin no
         ~~~
 
-3.  **Disable SSH password authentication.** This requires all users connecting via SSH to use key authentication. Depending on the Linux distribution, the line `PasswordAuthentication` may need to be added, or uncommented by removing the leading `#`.
+2.  **Disable SSH password authentication.** This requires all users connecting via SSH to use key authentication. Depending on the Linux distribution, the line `PasswordAuthentication` may need to be added, or uncommented by removing the leading `#`.
 
     {: .file-excerpt}
     /etc/ssh/sshd_config
@@ -139,7 +139,7 @@ By default, password authentication is used to connect to your Linode via SSH. A
     >
     >You may want to leave password authentication enabled if you connect to your Linode from many different computers. This will allow you to authenticate with a password instead of generating and uploading a key pair for every device.
 
-4.  **Listen on only one internet protocol.** The SSH daemon listens for incoming connections over both IPv4 and IPv6 by default. Unless you need to SSH into your Linode using both protocols, disable whichever you do not need. *This does not disable the protocol system-wide, it is only for the SSH daemon.*
+3.  **Listen on only one internet protocol.** The SSH daemon listens for incoming connections over both IPv4 and IPv6 by default. Unless you need to SSH into your Linode using both protocols, disable whichever you do not need. *This does not disable the protocol system-wide, it is only for the SSH daemon.*
 
     Use the option:
 
@@ -150,7 +150,7 @@ By default, password authentication is used to connect to your Linode via SSH. A
 
         echo 'AddressFamily inet' | sudo tee -a /etc/ssh/sshd_config
 
-5.  Restart the SSH service to load the new configuration.
+4.  Restart the SSH service to load the new configuration.
 
     If you’re using a Linux distribution which uses systemd (CentOS 7, Debian 8, Fedora, Ubuntu 15.10+)
 
