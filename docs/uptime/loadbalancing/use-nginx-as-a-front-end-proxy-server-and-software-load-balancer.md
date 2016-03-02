@@ -5,7 +5,7 @@ author:
 description: 'Use Nginx as a Front-end Proxy Server and Software Load Balancer.'
 keywords: 'nginx,proxy,load balancing,nginx as a load balancer,nginx load,nginx plus,http load balancer,front-end proxy'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['web-servers/nginx/configuration/front-end-proxy-and-software-load-balancing/','websites/loadbalancing/Use-Nginx-for-Proxy-Services-and-Software-Load-Balancing/','uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing/index.cfm/','uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing/', [how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer']
+alias: ['web-servers/nginx/configuration/front-end-proxy-and-software-load-balancing/','websites/loadbalancing/Use-Nginx-for-Proxy-Services-and-Software-Load-Balancing/','uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing/index.cfm/','uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing/','uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer']
 modified: Friday, August 9th, 2013
 modified_by:
   name: Linode
@@ -41,7 +41,7 @@ When a request reaches the nginx front-end proxy server, here's an overview of t
 2.  nginx sends a second *proxied* request to a specified server, and gets a response.
 3.  nginx returns the result of that request to the original requester.
 
-## Configurde Apache for Port Listening
+## Configure Apache for Port Listening
 
 In this section, you'll configure Apache to listen on an alternate port so it can respond to the nginx front end.
 
@@ -308,4 +308,4 @@ Here is a more advanced configuration, where seven server components running on 
 
 -   The `ip_hash` directive cannot be combined with the additional arguments shown in the example above.
 
-Using these arguments, you can use nginx to manage the behavior and distribution of loads across a cluster of servers.
+Using these arguments, you can use nginx to manage the behavior and distribution of load across a cluster of servers.
