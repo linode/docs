@@ -95,9 +95,9 @@ By default, password authentication is used to connect to your Linode via SSH. A
 
     **OS X**
 
-    On your Linode:
+    On your Linode (while signed in as your limited user):
 
-        sudo mkdir -p ~/.ssh && sudo chmod -R 700 ~/.ssh
+        mkdir -p ~/.ssh && sudo chmod -R 700 ~/.ssh
 
     From your local computer:
 

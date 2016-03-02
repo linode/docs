@@ -192,6 +192,16 @@ Slackpkg is the easiest way to update Slackware installations. See the [Slackpkg
 
 You'll need to set your system's hostname and fully qualified domain name (FQDN). Your hostname should be something unique. Some people name their servers after planets, philosophers, or animals. Note that the system's hostname has no relationship to websites or email services hosted on it, aside from providing a name for the system itself. Your hostname should *not* be "www" or anything too generic.
 
+Once you're done, you can verify by running the command `hostname`.
+
+{: .note }
+>
+> If you're unfamiliar with Linux, one of the first things you'll need to learn is how to use [nano](/docs/linux-tools/text-editors/nano), a text editor included with most distributions. To open a file for editing, type `nano file.txt` where "file.txt" is the name of the file you want to create or edit. If the file is not in your current working directory, specify the entire file path. For example, open the `hosts` file with:
+>
+>     nano /etc/hosts
+>
+>When you're finished editing, press `Control-X`, then `Y` to save the changes and `Enter` to confirm.
+
 For a walkthrough of setting system's hostname and timezone, see the following video:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/KFd66g4k4i8" frameborder="0" allowfullscreen></iframe>
@@ -213,11 +223,11 @@ Replace `hostname` with one of your choice.
     echo "hostname" > /etc/hostname
     hostname -F /etc/hostname
 
-Check if the file `/etc/default/dhcpcd` exists.
+Check if the file `/etc/default/dhcpcd` exists, and it's contents.
 
-    ls /etc/default
+    cat /etc/default/dhcpcd | grep SET_HOSTNAME
 
-If so, edit it and comment out the `SET_HOSTNAME` directive:
+If the returned value is `SET_HOSTNAME='yes'`, edit `/etc/default/dhcpcd` and comment out the `SET_HOSTNAME` directive:
 
 {: .file-excerpt }
 /etc/default/dhcpcd
@@ -250,14 +260,6 @@ Update the `/etc/hosts` file. This file creates static associations between IP a
 2.  Add a line for your Linode's public IP address. You can associate this address with your Linoode's **Fully Qualified Domain Name** (FQDN) if you have one, and with the local hostname you set in the steps above. In the example below, `12.34.56.78` is our public IP address, `hostname` is our local hostname, and `hostname.example.com` is our FQDN.
 
 As with the hostname, the domain name part of your FQDN does not necessarily need to have any relationship to websites or other services hosted on the server (although it may if you wish). As an example, you might host "www.something.com" on your server, but the system's FQDN might be "mars.somethingelse.com."
-
-{: .note }
->
-> If you're unfamiliar with Linux, one of the first things you'll need to learn is how to use [nano](/docs/linux-tools/text-editors/nano), a text editor included with most distributions. To open a file for editing, type `nano file.txt` where "file.txt" is the name of the file you want to create or edit. If the file is not in your current working directory, specify the entire file path. For example, open the `hosts` file with:
->
->     nano /etc/hosts
->
->When you're finished editing, press `Control-X`, then `Y` to save the changes and `Enter` to confirm.
 
 {:.file }
 /etc/hosts
