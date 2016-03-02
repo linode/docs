@@ -2,15 +2,15 @@
 author:
   name: Alex Fornuto
   email: afornuto@linode.com
-description: 'Use OpenVPN to securely connect separate networks on an Ubuntu 12.04 (Precise) or Debian 7 Linux VPS.'
-keywords: 'openvpn,networking,vpn,ubuntu,ubuntu precise,12.04,debian 7,debian'
+description: 'Secure Communications with OpenVPN on Ubuntu 12.04 & Debian 7.'
+keywords: 'openvpn,networking,vpn,ubuntu,ubuntu 12.04,debian 7,debian,open virtual private network,pki,private keys,tunnelblick,ssh,dnsmsq'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['networking/openvpn/ubuntu-12-04-precise/']
+alias: ['networking/openvpn/ubuntu-12-04-precise/','networking/vpn/secure-communications-with-openvpn-on-ubuntu-12-04-precise-and-debian-7']
 modified: Monday, February 17th, 2014
 modified_by:
   name: Alex Fornuto
 published: 'Thursday, August 22nd, 2013'
-title: 'Secure Communications with OpenVPN on Ubuntu 12.04 (Precise) and Debian 7'
+title: 'Secure Communications with OpenVPN on Ubuntu 12.04 & Debian 7'
 external_resources:
  - '[Official OpenVPN Documentation](http://openvpn.net/index.php/open-source/documentation/howto.html)'
  - '[Tunnelblick OS X OpenVPN Client](http://code.google.com/p/tunnelblick/)'
@@ -40,7 +40,7 @@ With the additional configuration we will set up at the end of this guide, all t
 >
 > Please note that only one public IP address is required to use OpenVPN
 
-## Installing OpenVPN
+## Install OpenVPN
 
 Follow these instructions to install OpenVPN:
 
@@ -62,7 +62,7 @@ Follow these instructions to install OpenVPN:
 
 	Most of the relevant configuration for the OpenVPN public key infrastructure is contained in `/etc/openvpn/easy-rsa/`. We will create several files in this directory used to define the OpenVPN server and client security.
 
-### Initializing the Public Key Infrastructure (PKI)
+### Initialize the Public Key Infrastructure (PKI)
 
 In this section, you will initialize the certificate authority and the public key infrastructure:
 
@@ -90,7 +90,7 @@ In this section, you will initialize the certificate authority and the public ke
 
 After doing this, your PKI should be configured properly.
 
-### Generating Certificates and Private Keys
+### Generate Certificates and Private Keys
 
 With the certificate authority generated, you can generate the private key for the server and certificates for all the VPN clients.
 
@@ -112,7 +112,7 @@ With the certificate authority generated, you can generate the private key for t
 
 You should generate a unique key for every user of the VPN. Each key should have its own unique identifier, but all other information can remain the same. If you need to add users to your OpenVPN at any time, repeat step 4 to create additional keys.
 
-### Generating Diffie Hellman Parameters
+### Generate Diffie Hellman Parameters
 
 The **Diffie Hellman Parameters** govern the method of key exchange used by the OpenVPN server. By creating a .pem file, you create the parameters by which the OpenVPN server will initiate secured connections with the clients.
 
@@ -127,7 +127,7 @@ This should produce the following output:
 
 This will be followed by a quantity of seemingly random output. Once it brings you back to a command prompt, the task has succeeded. In the `keys` subdirectory it's created a file called `dh1024.pem` which will be used to generate secure connections to the VPN server's clients.
 
-### Relocating Secure Keys
+### Relocate Secure Keys
 
 Move all of the secure keys to their proper locations by following these instructions:
 
@@ -151,7 +151,7 @@ Move all of the secure keys to their proper locations by following these instruc
 
 Keeping control of these files is of the utmost importance to the integrity of your server. If you ever need to move or back up these keys, ensure that they're encrypted and secured. If these files become compromised, they must be recreated along with all client keys.
 
-### Revoking Client Certificates
+### Revoke Client Certificates
 
 If you need to remove a user's access to the VPN server, follow these instructions:
 
@@ -165,7 +165,7 @@ If you need to remove a user's access to the VPN server, follow these instructio
 
 This will revoke the ability of all users using the `client1` certificate to access the VPN. Make sure you don't accidentally revoke access for someone who still needs it, and who uses that certificate.
 
-### Configuring Server and Client Settings
+### Configure Server and Client Settings
 
 In this section, you'll create two important configuration files. One is for the server and defines the scope and settings for the VPN. The other is for your local computer, and defines the settings you will pass on to your VPN client. For each client connecting to the VPN you will need to generate a separate configuration file.
 
@@ -195,7 +195,7 @@ In this section, you'll create two important configuration files. One is for the
         remote example.com 1194
         ~~~
 
-5.  In the same file, `client.conf`, edit the `cert` and `key` lines to reflect the name of your key. In this example we use `client1` for the file name.
+5.  In the same file, `client.conf`, edit the `cert` and `key` lines to reflect the name of your key. In this example we use `client1` for the file name:
 
     {: .file }
     ~/client.conf
@@ -219,7 +219,7 @@ In this section, you'll create two important configuration files. One is for the
 
 This will scan the `/etc/openvpn` directory on the server for files with a `.conf` extension. For every file that it finds, it will create and run a VPN daemon (server).
 
-## Installing Client-Side Software
+## Install Client-Side Software
 
 The process for connecting to the VPN varies depending on the specific operating system and distribution running on the *client* machine. You will need to install the right OpenVPN package for your client operating system.
 
