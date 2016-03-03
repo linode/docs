@@ -2,14 +2,15 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Using the open source pgAdmin program to securely manage remote PostgreSQL databases from a Windows workstation.'
-keywords: 'pgadmin,pgadmin windows,postgresql gui,postgresql windows,manage postgresql databases'
+description: 'Use the open-source pgAdmin program to securely manage remote PostgreSQL databases from a Windows workstation.'
+keywords: 'pgadmin,pgadmin windows,postgresql gui,postgresql windows,manage postgresql databases,ssh tunnel'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: Friday, April 29th, 2011
 modified_by:
   name: Linode
 published: 'Wednesday, April 28th, 2010'
 title: Securely Manage Remote PostgreSQL Servers with pgAdmin on Windows
+alias: ['databases/postgresql/pgadmin-windows/']
 external_resources:
  - '[pgAdmin Documentation](http://www.pgadmin.org/docs/)'
  - '[PostgreSQL Documentation](http://www.postgresql.org/docs/)'
@@ -17,7 +18,7 @@ external_resources:
 
 pgAdmin is a free, open source PostgreSQL database administration GUI for Microsoft Windows, Apple MacOS X and Linux systems. It offers excellent capabilities with regard to database server information retrieval, development, testing, and ongoing maintenance. This guide will help you get up and running with pgAdmin on Windows, providing secure access to remote PostgreSQL databases. It is assumed that you have already installed PostgreSQL on your Linode VPS in accordance with our [PostgreSQL installation guides](/docs/databases/postgresql/).
 
-## Installing pgAdmin
+## Install pgAdmin
 
 Visit the [pgAdmin download page](http://www.pgadmin.org/download/windows.php) to obtain the most recent version of the program. Save the installer to your desktop and launch it. You'll be greeted with the following screen; click "Next" to continue.
 
@@ -37,7 +38,7 @@ If you're running Windows Vista or Windows 7, you may receive the following warn
 
 The program will finish installation tasks. Next, you'll configure an SSH tunnel to securely connect to your remote database server.
 
-## SSH Tunnel Configuration
+## Configure SSH Tunnel 
 
 While PostgreSQL supports SSL connections, it is not advisable to instruct it to listen on public IP addresses unless absolutely necessary. For this reason, you'll be using PuTTY (a free SSH client) to create a secure SSH tunnel to your VPS. Obtain the program by visiting the [PuTTY download page](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html). Save it to your desktop and launch it. You'll be greeted with the "Session" dialog shown below; enter your Linode's IP address or FQDN in the "Host Name" field.
 
@@ -63,7 +64,7 @@ The key fingerprints should match; click "Yes" to accept the warning and cache t
 
 You may log into your VPS with any user account you have configured on it. Next, you'll use pgAdmin to connect to PostgreSQL through the tunnel.
 
-## Using pgAdmin
+## Use pgAdmin
 
 Launch pgAdmin and you'll be presented with a default view containing no servers. Click "File -\> Add Server" as shown below.
 

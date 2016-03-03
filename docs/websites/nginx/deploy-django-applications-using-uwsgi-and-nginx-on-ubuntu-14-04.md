@@ -2,17 +2,18 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Django is a Python Web framework that encourages rapid development and clean, pragmatic design. This guide provides an introduction to deploying Django applications using uWSGI and nginx on Ubuntu 14.04'
-keywords: 'django,uwsgi,nginx,django apps'
+description: 'Deploy Django Applications Using uWSGI and Nginx on Ubuntu 14.04'
+keywords: 'django,uwsgi,nginx,python'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: 'Wednesday, November 25th, 2015'
 modified_by:
   name: Sergey Pariev
 published: 'Wednesday, November 25th, 2015'
-title: 'Deploy a Django Application Using uWSGI and nginx on Ubuntu 14.04'
+title: 'Deploy Django Applications Using uWSGI and Nginx on Ubuntu 14.04'
 contributor:
   name: Sergey Pariev
   link: https://twitter.com/spariev
+alias: ['websites/nginx/deploy-a-django-application-using-uwsgi-and-nginx-on-ubuntu-14-04/']
 external_resources:
   - '[Writing your first Django app Tutorial](https://docs.djangoproject.com/en/dev/intro/tutorial01/#intro-tutorial01)'
   - '[virtualenvwrapper Documentation](https://virtualenvwrapper.readthedocs.org/en/latest/)'

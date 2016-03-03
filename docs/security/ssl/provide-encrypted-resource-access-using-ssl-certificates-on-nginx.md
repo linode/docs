@@ -2,15 +2,15 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'How to Use TLS/SSL to provide transport layer encryption for HTTP connections with nginx.'
-keywords: 'ssl,tls,nginx,https,secure http, encryption for HTTP, SSL certificates with Nginx'
+description: 'Use TLS/SSL to Provide Transport Layer Encryption for HTTP Connections with Nginx.'
+keywords: 'ssl,tls,nginx,https,secure http,encryption for HTTP,SSL certificates with Nginx,certificate signing request'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['web-servers/nginx/configuration/ssl/','security/ssl/ssl-certificates-with-nginx/index.cfm/','websites/ssl/ssl-certificates-with-nginx.cfm/','security/ssl/ssl-certificates-with-nginx/','security/ssl/how-to-provide-encrypted-access-to-resources-using-ssl-certificated-on-nginx/index.cfm/']
+alias: ['web-servers/nginx/configuration/ssl/','security/ssl/ssl-certificates-with-nginx/index.cfm/','websites/ssl/ssl-certificates-with-nginx.cfm/','security/ssl/ssl-certificates-with-nginx/','security/ssl/how-to-provide-encrypted-access-to-resources-using-ssl-certificates-on-nginx/index.cfm/','security/ssl/how-to-provide-encrypted-access-to-resources-using-ssl-certificated-on-nginx/']
 modified: Tuesday, June 10th, 2014
 modified_by:
   name: Alex Fornuto
 published: 'Monday, November 8th, 2010'
-title: 'How to Provide Encrypted Access to Resources Using SSL Certificates on Nginx'
+title: 'Provide Encrypted Resource Access Using SSL Certificates on Nginx'
 external_resources:
  - '[Nginx Project Home Page](http://nginx.org)'
  - '[Nginx Project SSL Documentation](http://wiki.nginx.org/NginxHttpSslModule)'
@@ -39,7 +39,7 @@ SSL certificates are only valid for a single domain or host name unless you gene
 
 These examples store the SSL certificate in the `/srv/ssl/` directory. You may choose to store your SSL certificates and related files in whatever directory makes the most sense for the needs and organization of your deployment.
 
-### Generate a Self Signed Certificate
+### Generate a Self-Signed Certificate
 
 The following procedure generates a single self-signed SSL certificate. These certificates do not verify the identity of a server like commercially-signed certificates, but they are useful for encryption purposes. With the `-days 365` argument, the certificate generated will be valid for a full year. Issue the following sequence of commands:
 
@@ -134,7 +134,7 @@ nginx.conf
 
 You can append as many chain certificates as you require. Make sure that the certificate you generate for your site is at the beginning of the file.
 
-## Optimizing Nginx For SSL
+## Optimize Nginx For SSL
 
 Compared to conventional HTTP, HTTPS (or HTTP with SSL) requires additional overhead and server resources. To manage this load, the developers of nginx recommend the following optimizations to your `nginx.conf` configuration.
 
@@ -167,7 +167,7 @@ You may now continue to configure virtual hosts for your server.
 
 HTTPS operates on port 443 instead of port 80. Take note of the version of nginx running on your system with the output of `nginx -V` and model your configuration based on the appropriate example.
 
-### Using SSL with Versions of Nginx Prior to 0.7.14
+### Use SSL with Versions of Nginx Prior to 0.7.14
 
 In addition to basic [nginx virtual host configuration](/docs/websites/nginx/basic-nginx-configuration), using SSL with nginx requires a modification to the `listen` directive and three ssl-related directives as shown in the following examples:
 
@@ -221,7 +221,7 @@ nginx.conf
     }
     ~~~
 
-### Using SSL with Versions of Nginx After 0.7.14
+### Use SSL with Versions of Nginx After 0.7.14
 
 Following version 0.7.14 of nginx, you may omit the `ssl` directive and include these declarations as arguments to the `listen` directive. This modification is optional, but is the preferred syntax. The following example illustrates the preferred usage of SSL declarations:
 
