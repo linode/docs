@@ -8,7 +8,7 @@ alias: ['tools-reference/tools/using-fail2ban-to-block-network-probes/']
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: Thursday, March 3rd, 2016
 modified_by:
-  name: Elle Krout
+  name: Linode
 published: 'Monday, October 12th, 2015'
 title: Using Fail2ban to Secure Your Server
 ---
