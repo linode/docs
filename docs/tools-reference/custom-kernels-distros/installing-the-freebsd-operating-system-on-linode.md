@@ -9,7 +9,7 @@ modified: Wednesday, September 16, 2015
 modified_by:
   name: Rainbow
 published: 'never'
-title: 'Installing the FreeBSD Operating System on Linode'
+title: 'Install FreeBSD on Your Linode'
 external_resources:
  - '[The FreeBSD Handbook](https://www.freebsd.org/doc/handbook/)'
  - '[Using the Linode Shell (Lish)](/docs/troubleshooting/using-lish-the-linode-shell)'
@@ -21,12 +21,17 @@ external_resources:
 
 ## Introduction (What is FreeBSD?)
 
-FreeBSD is a Free and Open-Source Operating System based on the original BSD code originally developed at Berkeley CSRG back in the 80's.
+[FreeBSD](https://www.freebsd.org/) is a Free and Open-Source Operating System based on the [Berkeley Software Distribution](https://en.wikipedia.org/wiki/Berkeley_Software_Distribution) originally developed at Berkeley Computer Systems Research Group from the late 1970's. BSD originally started as a series of addon programs and tweaks to Bell Labs UNIX®, implementing features and new programs (like the venerable vi editor's first release). Today, FreeBSD is used all over the world, including in some major video game consoles!
 
-BSD originally started as a series of addon programs and tweaks to Bell Labs UNIX®, implementing features
-and new programs (like the venerable vi editor's first release).
+## FreeBSD Vs. Linux
 
-Today, FreeBSD is used all over the world, including in some major video game consoles!
+FreeBSD is often compared to Linux, another well known Unix-like Operating System, and until recently, the only OS you could use on Linode, without lots of tweaks or workarounds. 
+
+So what's the difference? Briefly, Linux is a term used for a group of operating systems that all use the Linux® kernel, GNU coreutils, and various distribution-specific tools. Common Linux distributions are Debian, CentOS, and Slackware. Many various flavors of Linux, also known as Distros, are offered by Linode officially. All of these are usually released under the GNU General Public License.
+
+FreeBSD, as previously mentioned, grew out of various groups and movements originally involved with the original UNIX® codebase, however no UNIX® code currently remains. Every part of FreeBSD is developed in the same source tree, and code is released under the FreeBSD License, which is a permissive license, as opposed to the GNU GPL's copyleft stance. 
+
+More information on the differences between these Operating Systems is available at the links included at the end of this article!
 
 ## Downloading your installation image
 
@@ -148,14 +153,3 @@ You will need to disable all of the options under Filesystem/Boot Helpers in bot
      These final steps are required to enable Lish, Glish, and make a few other changes.
 
 12.  Reboot into the FreeBSD profile!
-
-
-## FreeBSD Vs. Linux
-
-FreeBSD is often compared to Linux, another well known Unix-like Operating System, and until recently, the only OS you could use on Linode, without lots of tweaks or workarounds. 
-
-So what's the difference? Briefly, Linux is a term used for a group of operating systems that all use the Linux® kernel, GNU coreutils, and various distribution-specific tools. Common Linux distributions are Debian, CentOS, and Slackware. Many various flavors of Linux, also known as Distros, are offered by Linode officially. All of these are usually released under the GNU General Public License.
-
-FreeBSD, as previously mentioned, grew out of various groups and movements originally involved with the original UNIX® codebase, however no UNIX® code currently remains. Every part of FreeBSD is developed in the same source tree, and code is released under the FreeBSD License, which is a permissive license, as opposed to the GNU GPL's copyleft stance. 
-
-More information on the differences between these Operating Systems is available at the links included at the end of this article!
