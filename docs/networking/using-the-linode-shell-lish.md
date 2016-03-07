@@ -13,9 +13,9 @@ published: 'Tuesday, August 4th, 2009'
 title: 'Using the Linode Shell (Lish)'
 ---
 
-The Linode Shell (*Lish*) provides console access to all of your Linodes. It also allows you to perform actions like rebooting a Linode or switching to a different configuration profile without having to open the Linode Manager. Lish is also a good rescue tool. The console provides out-of-band access to your Linode, which means you can use Lish to access your Linode even when you are unable to connect directly via SSH. This is useful if firewall settings or a bad network configuration prevent you from accessing your Linode using SSH.
+The Linode Shell (*Lish*) provides console access to all of your Linodes. It also allows you to perform actions like rebooting a Linode or switching to a different configuration profile without having to open the Linode Manager. Lish is also a good rescue tool. The console provides out-of-band access to your Linode, which means you can use Lish to access your Linode even when you are unable to connect directly via SSH. This is useful if firewall settings or a bad network configuration prevent you from accessing your Linode using SSH. Lish can also be useful if you need to access your SSH-secured Linode from a local machine without a private key.
 
-##Connecting to Lish
+##Connect to Lish
 
 There are two ways to access Lish. You can use a terminal application to connect to a *Lish SSH gateway*, or you can log in to the [Linode Manager](https://manager.linode.com) and use the Ajax console in your web browser. This section explains both methods.
 
@@ -23,9 +23,9 @@ There are two ways to access Lish. You can use a terminal application to connect
 >
 > Lish used to be accessible via a direct SSH connection to your Linode's host machine, but as of May 10, 2013, all users must connect to a Lish SSH gateway to access Lish. For more information, please see [this blog post](https://blog.linode.com/2013/04/30/lish-ssh-gateway/).
 
-### Using a Terminal Application
+### Use a Terminal Application
 
-You can connect to Lish with the SSH client of your choice. For example, you can use the Terminal application in Mac OS X, PuTTY in Windows, or your favorite X11 terminal. Here's how to use a terminal application to connect to Lish:
+You can connect to Lish with the SSH client of your choice. For example, you can use the Terminal application in Mac OS X, PuTTY in Windows, or your favorite X11 terminal. H
 
 1.  Select a Lish SSH gateway. There's one in every data center. You can use any gateway to access your Linodes, but we recommend using one close to your Linode's data center. The gateway boxes are available over IPv4 and IPv6.
     -   lish-atlanta.linode.com
@@ -37,9 +37,13 @@ You can connect to Lish with the SSH client of your choice. For example, you can
     -   lish-singapore.linode.com
     -   lish-tokyo.linode.com
 
-2.  Open a terminal window and enter the following command, replacing *[manager-username]* with your Linode Manager username, and *[location]* with your preferred Lish SSH gateway. Lish listens for connections on ports 22, 443, and 2200.
+2.  Open a terminal window and enter the following command, replacing `username` with your Linode Manager username, and `location` with your preferred Lish SSH gateway. Lish listens for connections on ports 22, 443, and 2200.
 
-        ssh [manager-username]@lish-[location].linode.com 
+        ssh username@location
+
+    For example, logging in as `user` via the Newark gateway would look like:
+
+        ssh user@lish-newark.linode.com
 
 	{: .note }
 	>
@@ -64,9 +68,9 @@ You can connect to Lish with the SSH client of your choice. For example, you can
 
 After you log in, you'll have console access to your Linode. You'll be able to restart services like `sshd`, edit firewall settings, and make other changes to your Linode. To exit your Linode's console, press **Control-A-D** to return to the host machine, and then press **Control-D** to return to the Lish menu. If you'd like to see the list of your Linodes again, type `list` from the gateway.
 
-### Using a Web Browser
+### Use a Web Browser
 
-You can also connect to Lish using a web browser. This is useful when you don't have access to a terminal application, or if you just need quick and easy console access from the Linode Manager. Here's how to access Lish using a web browser:
+You can also connect to Lish using a web browser. This is useful when you don't have access to a terminal application, or if you just need quick and easy console access from the Linode Manager. 
 
 1.  Log in to the Linode Manager.
 2.  Select a Linode.
@@ -83,9 +87,9 @@ You can also connect to Lish using a web browser. This is useful when you don't 
 
 Now you can use the console, or exit to the Lish prompt by pressing `Control-a-d`. You cannot exit to a Lish gateway box using your web browser. To exit the session entirely, just close the Lish Web Console window.
 
-### Adding Your Public Key
+### Add Your Public Key
 
-If you don't want to enter your password every time you connect to Lish, you can add your public SSH key to the Linode Manager. If you haven't yet created SSH keys, please see our [Public Key Authentication with SSH](/docs/networking/ssh/use-public-key-authentication-with-ssh/) guide for more information. Here's how to add your public SSH key to the Linode Manager:
+If you don't want to enter your password every time you connect to Lish, you can add your public SSH key to the Linode Manager. If you haven't yet created SSH keys, please see our [Public Key Authentication with SSH](/docs/networking/ssh/use-public-key-authentication-with-ssh/) guide for more information. 
 
 1.  Log in to the [Linode Manager](https://manager.linode.com).
 2.  Select the **my profile** link.
@@ -134,7 +138,7 @@ There are two ways to run these commands for a specific Linode. If you are at th
 
     linode123456 logview
 
-You can also bring up the Linode's console, then type **Control + A** then **D** to drop back to the host for that Linode. Now all of the commands above will be run for that Linode specifically. To exit back to the main Lish menu, type `exit`.
+You can also bring up the Linode's console, then type **Control-A-D** to drop back to the host for that Linode. Now all of the commands above will be run for that Linode specifically. To exit back to the main Lish menu, type `exit`.
 
 ## Advanced Lish Tricks
 
