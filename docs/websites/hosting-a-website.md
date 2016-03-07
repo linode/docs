@@ -29,7 +29,7 @@ Hosting a website starts with installing a *web server*, an application on your 
 
 ### Install Apache
 
-Install Apache on your Linode by entering the following command:
+Install Apache on your Linode:
 
     sudo apt-get install apache2
 
@@ -41,13 +41,13 @@ Installing Apache is easy, but if you leave it running with the default settings
 
  {: .note }
 >
-> These guidelines are designed to optimize Apache for a Linode 1GB, but you can use this information for any size Linode. The values are based on the amount of memory available, so if you have a Linode 2GB, multiply all of the values by 2 and use those numbers for your settings.
+> These guidelines are designed to optimize Apache for a **Linode 1GB**, but you can use this information for any size Linode. The values are based on the amount of memory available, so if you have a Linode 2GB, multiply all of the values by 2 and use those numbers for your settings.
 
-1.  Just to be safe, make a copy of Apache's configuration file by entering the following command. You can restore the duplicate (`apache2.backup.conf`) if anything happens to the configuration file.
+1.  Just to be safe, make a copy of Apache's configuration file. You can restore the duplicate (`apache2.backup.conf`) if anything happens to the configuration file.
 
         sudo cp /etc/apache2/apache2.conf /etc/apache2/apache2.backup.conf
 
-2.  Open Apache's configuration file for editing by entering the following command:
+2.  Open Apache's configuration file for editing:
 
         sudo nano /etc/apache2/apache2.conf
 
@@ -73,8 +73,8 @@ Installing Apache is easy, but if you leave it running with the default settings
 	</IfModule>
 	~~~
 
-4.  Save the changes to Apache's configuration file by pressing `Control` + `x` and then pressing `y`. Press `Enter` to confirm.
-5.  Restart Apache to incorporate the new settings. Enter the following command:
+4.  Save the changes to Apache's configuration file by pressing **CTRL+X** and then pressing **Y**. Press **ENTER** to confirm.
+5.  Restart Apache to incorporate the new settings:
 
         sudo service apache2 restart
 
@@ -88,7 +88,7 @@ Now that Apache is optimized for performance, it's time to starting hosting one 
 >
 > You should *not* be logged in as `root` while executing these commands. To learn how to create a new user account and log in as that user, see [Adding a New User](/docs/securing-your-server#sph_adding-a-new-user).
 
-1.  Disable the default Apache virtual host by entering the following command:
+1.  Disable the default Apache virtual host:
 
         sudo a2dissite *default
 
@@ -96,18 +96,18 @@ Now that Apache is optimized for performance, it's time to starting hosting one 
 
         cd /var/www/html
 
-3.  Create a folder to hold your website by entering the following command, replacing 'example.com' with your domain name:
+3.  Create a folder to hold your website, replacing 'example.com' with your domain name:
 
         sudo mkdir example.com
 
-4.  Create a set of folders inside the folder you've just created to store your website's files, logs, and backups. Enter the following command, replacing `example.com` with your domain name:
+4.  Create a set of folders inside the folder you've just created to store your website's files, logs, and backups. Enter the following commands, replacing `example.com` with your domain name:
 
         sudo mkdir -p example.com/public_html
 		sudo mkdir -p example.com/log
 		sudo mkdir -p example.com/backups
 
 
-5.  Create the virtual host file for your website by entering the following command. Replace the `example.com` in `example.com.conf` with your domain name:
+5.  Create the virtual host file for your website. Replace the `example.com` in `example.com.conf` with your domain name:
 
         sudo nano /etc/apache2/sites-available/example.com.conf
 
@@ -138,15 +138,15 @@ Now that Apache is optimized for performance, it's time to starting hosting one 
         </VirtualHost>
         ~~~
 
-7.  Save the changes to the virtual host configuration file by pressing `Control + x` and then pressing `y`. Press `Enter` to confirm.
+7.  Save the changes to the virtual host configuration file by pressing **CTRL+X** and then pressing **Y**. Press **ENTER** to confirm.
 
-8. Enable your new website by entering the following command. Replace `example.com` with your domain name:
+8. Enable your new website, replacing `example.com` with your domain name:
 
         sudo a2ensite example.com.conf
 
     This creates a symbolic link to your `example.com.conf` file in the appropriate directory for active virtual hosts.
 
-09. The previous command will alert you that you need to restart Apache to save the changes. Enter the following command to apply your new configuration:
+9. The previous command will alert you that you need to restart Apache to save the changes. Restart to apply your new configuration:
 
         sudo service apache2 restart
 
@@ -156,16 +156,16 @@ Congratulations! You've configured Apache to host one or more websites on your L
 
 ## Database
 
-Databases store data in a structured and easily accessible manner, serving as the foundation for web and server applications. A variety of open source database platforms exist to meet the needs of applications running on your Linux VPS. This section will help you get started with *MySQL*, one of the most popular database platforms. For more information about MySQL and other databases, see our [database reference manuals](/docs/databases).
+Databases store data in a structured and easily accessible manner, serving as the foundation for hundreds of web and server applications. A variety of open source database platforms exist to meet the needs of applications running on your Linode. This section will help you get started with *MySQL*, one of the most popular database platforms. For more information about MySQL and other databases, see our [database reference manuals](/docs/databases).
 
 ### Install MySQL
 
-1.  Install MySQL by entering the following command. Your Linode will download, install, and start the MySQL database server.
+1.  Install MySQL. Your Linode will download, install, and start the MySQL database server.
 
         sudo apt-get install mysql-server
 
 2.  You will be prompted to enter a password for the MySQL root user. This is not related to the root user for your Linode, so be sure to choose a different password for security purposes.
-3.  Secure MySQL by entering the following command to open `mysql_secure_installation` utility:
+3.  Secure MySQL using the `mysql_secure_installation` utility:
 
         sudo mysql_secure_installation
 
@@ -179,9 +179,9 @@ MySQL consumes a lot of memory when using the default configuration. To set reso
 
  {: .note }
 >
-> These guidelines are designed to optimize MySQL 5.5 and up for a Linode 1GB, but you can use this information for any size Linode. If you have a larger Linode, start with these values and modify them while carefully watching for memory and performance issues.
+> These guidelines are designed to optimize MySQL 5.5 and up for a **Linode 1GB**, but you can use this information for any size Linode. If you have a larger Linode, start with these values and modify them while carefully watching for memory and performance issues.
 
-1.  Open the MySQL configuration file for editing by entering the following command:
+1.  Open the MySQL configuration file for editing:
 
         sudo nano /etc/mysql/my.cnf
 
@@ -211,9 +211,9 @@ MySQL consumes a lot of memory when using the default configuration. To set reso
         key_buffer_size = 32M
         ~~~
 
-5.  Save the changes to MySQL's configuration file by pressing `Control + x` and then pressing `y` and hitting `Enter`.
+5.  Save the changes to MySQL's configuration file by pressing **CTRL+X** and then pressing **Y** and hitting **ENTER** to save.
 
-6.  Restart MySQL to save the changes. Enter the following command:
+6.  Restart MySQL to save the changes:
 
         sudo service mysql restart
 
@@ -223,26 +223,26 @@ Now that you've edited the MySQL configuration file, you're ready to start creat
 
 The first thing you'll need to do in MySQL is create a *database*. (If you already have a database that you'd like to import, skip to the section [Import a Database](#import-a-database).) 
 
-1.  Log in to MySQL by entering the following command and then entering the MySQL root password:
+1.  Log in using the MySQL root password:
 
         mysql -u root -p
 
-2.  Create a database by entering the following command. Replace `exampleDB` with your own database name:
+2.  Create a database, replacing `exampleDB` with your own database name:
 
         create database exampleDB;
 
-3.  Create a new user in MySQL and then grant that user permission to access the new database by issuing the following command. Replace `example_user` with your username, and `password` with your password:
+3.  Create a new user in MySQL and then grant that user permission to access the new database, replacing `example_user` with your username, and `password` with your password:
 
         grant all on exampleDB.* to 'example_user' identified by 'password';
 
     {: .note }
     > MySQL usernames and passwords are only used by scripts connecting to the database. They do not need to represent actual user accounts on the system.
 
-4.  Tell MySQL to reload the grant tables by issuing the following command:
+4.  Tell MySQL to reload the grant tables:
 
         flush privileges;
 
-5.  Now that you've created the database and granted a user permissions to the database, you can exit MySQL by entering the following command:
+5.  Now that you've created the database and granted a user permissions to the database, you can exit MySQL:
 
         quit
 
@@ -253,7 +253,7 @@ Now you have a new database that you can use for your website. If you don't need
 If you have an existing website, you may want to import an existing database in to MySQL. It's easy, and it allows you to have an established website up and running on your Linode in a matter of minutes. 
 
 1.  Upload the database file to your Linode. See the instructions in the section [Upload Files](#upload-files).
-2.  Import the database by entering the following command. Replace `username` with your MySQL username and `database_name` with the database name you want to import to. You will be prompted for your MySQL password:
+2.  Import the database, replacing `username` with your MySQL username and `database_name` with the database name you want to import to. You will be prompted for your MySQL password:
 
         mysql -u username -p database_name < FILE.sql
 
@@ -265,11 +265,11 @@ PHP is a general-purpose scripting language that allows you to produce dynamic a
 
 ### Install PHP
 
-1.  Install the base PHP package by entering the following command:
+1.  Install the base PHP package:
 
         sudo apt-get install php5 php-pear
 
-2.  Add the MySQL support extension for PHP by entering the following command:
+2.  Add the MySQL support extension for PHP:
 
         sudo apt-get install php5-mysql
 
@@ -280,7 +280,7 @@ After you install PHP, you'll need to enable logging and tune PHP for better per
 {: .note }
 > These guidelines are designed to optimize PHP for a Linode 1GB, but you can use this information as a starting point for any size Linode. If you have a larger Linode, you could increase the memory limit to a larger value, like 256M.
 
-1.  Open the PHP configuration files by entering the following command:
+1.  Open the PHP configuration files:
 
         sudo nano /etc/php5/apache2/php.ini
 
@@ -301,8 +301,8 @@ After you install PHP, you'll need to enable logging and tune PHP for better per
     {: .note }
     > The 128M setting for `memory_limit` is a general guideline. While this value should be sufficient for most websites, larger websites and some web applications may require 256 megabytes or more.
 
-3.  Save the changes by pressing `Control` + `x` and then pressing `y`.
-4.  Create the `/var/log/php/` directory for the PHP error log with the following command:
+3.  Save the changes by pressing `Control-x` and then pressing `y`. Hit `Enter` to confirm the changes.
+4.  Create the `/var/log/php/` directory for the PHP error log:
 
         sudo mkdir -p /var/log/php
 
@@ -310,7 +310,7 @@ After you install PHP, you'll need to enable logging and tune PHP for better per
 
         sudo chown www-data /var/log/php
 
-6.  Restart Apache to load the PHP module by entering the following command:
+6.  Restart Apache to load the PHP module:
 
         sudo service apache2 restart
 
