@@ -360,7 +360,7 @@ Now you need to point your domain name(s) at your Linode. This process can take 
 
     [![The DNS records created for the domain.](/docs/assets/911-hosting-2-small.png)](/docs/assets/912-hosting-2.png)
 
-8. Over at your domain registrar (where you bought the domain), make sure that your domain name is set to use our DNS server. Use your domain name registrar's interface to set the name servers for your domain to the following:
+8. Through your domain registrar (where you bought the domain), make sure that your domain name is set to use our DNS server. Use your domain name registrar's interface to set the name servers for your domain to the following:
 
     - `ns1.linode.com`
     - `ns2.linode.com`
@@ -374,7 +374,7 @@ You've added DNS records for your website(s). Remember, DNS changes can take up 
 
 ## Setting Reverse DNS
 
-You're almost finished! The last step is setting reverse DNS for your domain name. Here's how:
+You're almost finished! The last step is setting reverse DNS for your domain name. 
 
 1.  Log in to the [Linode Manager](https://manager.linode.com).
 2.  Click the **Linodes** tab.
