@@ -6,9 +6,9 @@ description: 'Our guide to hosting a website on your Linode.'
 keywords: 'linode guide,hosting a website,website,linode quickstart guide'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['hosting-website/']
-modified: Monday, September 28th, 2015
+modified: Monday, March 7th, 2016
 modified_by:
-  name: Linode
+  name: Phil Zona
 published: 'Tuesday, March 13th, 2012'
 title: Hosting a Website
 ---
