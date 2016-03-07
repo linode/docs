@@ -84,7 +84,7 @@ We'll need to begin by creating the Linode and making some changes before we get
 
 2.  Follow through the prompts to start the installer, choose your keymap and set a hostname if you want one.
 
-3.  For beginners, we suggest selecting to install 32-bit libraries (lib32) and source code (src). Deselect *games* if you have no use for them, and *ports* if you plan to install software only from binary builds.
+3.  For beginners, we suggest selecting to install 32-bit libraries (lib32) and source code (src). Deselect *games* if you have no use for them.
 
     [![Choose your packages.](/docs/assets/freebsd-optional-components-small.png)](/docs/assets/freebsd-optional-components.png)
 
@@ -96,11 +96,11 @@ We'll need to begin by creating the Linode and making some changes before we get
 
     [![FreeBSD partition confirmation](/docs/assets/freebsd-zfs-configuration1-small.png)](/docs/assets/freebsd-zfs-configuration1.png)
 
-    Select the *striped* disk type to have access to use all of your Linode's free space.
+    Select the *striped* disk type, as we're only using a single disk.
 
     [![FreeBSD partition confirmation](/docs/assets/freebsd-zfs-configuration2-small.png)](/docs/assets/freebsd-zfs-configuration2.png)
 
-    Select the `da01` virtual disk and then confirm that you do want to destroy its contents.
+    Select the `da0` virtual disk and then confirm that you do want to destroy its contents.
 
     [![FreeBSD partition confirmation](/docs/assets/freebsd-zfs-configuration3-small.png)](/docs/assets/freebsd-zfs-configuration3.png)
 
