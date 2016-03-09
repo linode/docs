@@ -2,15 +2,15 @@
 author:
   name: Alex Fornuto
   email: afornuto@linode.com
-description: 'Getting started with MySQL on Ubuntu 14.04.'
-keywords: 'MySQL on Linux,Ubuntu,Ubuntu 14.04,Ubuntu Trusty,Ubuntu Trusty Tahr,Ubuntu 14.04 Trusty Tahr,cloud,cloud hosting,Linux,MySQL,database,MariaDB,install MySQL,secure MySQL,mysqltuner'
+description: 'Install MySQL on Ubuntu 14.04. - a getting-started guide.'
+keywords: 'MySQL on Linux,Ubuntu,Ubuntu 14.04,Linux,MySQL,install MySQL,install MySQL on ubuntu,mysqltuner,MySQL tuner,harden mysql,root password,sample table'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['databases/mysql/ubuntu-14.04-trusty-pangolin/', 'databases/mysql/using-mysql-relational-databases-on-ubuntu-14-04-lts-trusty-tahr/']
+alias: ['databases/mysql/ubuntu-14.04-trusty-pangolin/','databases/mysql/using-mysql-relational-databases-on-ubuntu-14-04-lts-trusty-tahr/','databases/mysql/how-to-install-mysql-on-ubuntu-14-04/']
 modified: Wednesday, August 26, 2015 
 modified_by:
   name: Linode
 published: 'Monday, October 8th, 2012'
-title: 'How to Install MySQL on Ubuntu 14.04'
+title: 'Install MySQL on Ubuntu 14.04'
 external_resources:
  - '[MySQL 5.5 Reference Manual](http://dev.mysql.com/doc/refman/5.5/en/)'
  - '[PHP MySQL Manual](http://us2.php.net/manual/en/book.mysql.php)'
@@ -53,20 +53,20 @@ MySQL will bind to localhost (127.0.0.1) by default. Please reference our [MySQL
 
 {: .note}
 >
->Allowing unrestricted access to MySQL on a public IP not advised, but you may change the address it listens on by modifying the `bind-address` parameter in `/etc/my.cnf`. If you decide to bind MySQL to your public IP, you should implement firewall rules that only allow connections from specific IP addresses.
+>Allowing unrestricted access to MySQL on a public IP is not advised, but you may change the address it listens on by modifying the `bind-address` parameter in `/etc/my.cnf`. If you decide to bind MySQL to your public IP, you should implement firewall rules that only allow connections from specific IP addresses.
 
 ## Harden MySQL Server
 
-Run the mysql_secure_installation script to address several security concerns in a default MySQL installation.
+Run the mysql_secure_installation script to address several security concerns in a default MySQL installation:
 
     sudo mysql_secure_installation
 
-You will be given the choice to change the MySQL root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases. It is recommended that you answer yes to these options. You can read more about the script in in the [MySQL Reference Manual](https://dev.mysql.com/doc/refman/5.5/en/mysql-secure-installation.html).
+You will be given the choice to change the MySQL root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases. It is recommended that you answer yes to these options. You can read more about the script in the [MySQL Reference Manual](https://dev.mysql.com/doc/refman/5.5/en/mysql-secure-installation.html).
 
 
-## Using MySQL
+## Use MySQL
 
-The standard tool for interacting with MySQL is the `mysql` client which installs with the `mysql-server` package. The MySQL client is accessed through a terminal.
+The standard tool for interacting with MySQL is the `mysql` client, which installs with the `mysql-server` package. The MySQL client is accessed through a terminal.
 
 ###Root Login
 
@@ -152,17 +152,17 @@ The standard tool for interacting with MySQL is the `mysql` client which install
 
 ## Reset the MySQL Root Password
 
-If you forget your root MySQL password, it can be reset.
+If you forget your MySQL root password, it can be reset.
 
-1.  Stop the current MySQL server instance.
+1.  Stop the current MySQL server instance:
 
         sudo service mysql stop
 
-2.  Use dpkg to re-run the configuration process MySQL goes through on first installation. You will again be asked to set a root password.
+2.  Use dpkg to re-run the configuration process that MySQL goes through on first installation. You will again be asked to set a root password.
 
         sudo dpkg-reconfigure mysql-server-5.5
 
-3.  Then start MySQL.
+3.  Then start MySQL:
 
         sudo service mysql start
 
@@ -172,7 +172,7 @@ You'll now be able to log in again using `mysql -u root -p`.
 
 [MySQL Tuner](https://github.com/major/MySQLTuner-perl) is a Perl script that connects to a running instance of MySQL and provides configuration recommendations based on workload. Ideally, the MySQL instance should have been operating for at least 24 hours before running the tuner. The longer the instance has been running, the better advice MySQL Tuner will give.
 
-1.  Install MySQL Tuner from Ubuntu's repositories.
+1.  Install MySQL Tuner from Ubuntu's repositories:
 
         sudo apt-get install mysqltuner
 
@@ -182,4 +182,4 @@ You'll now be able to log in again using `mysql -u root -p`.
 
     You will be asked for the MySQL root user's name and password. The output will show two areas of interest: General recommendations and Variables to adjust.
 
-MySQL Tuner is an excellent starting point to optimize a MySQL server but it would be prudent to perform additional research for configurations tailored to the application(s) utilizing MySQL on your Linode.
+MySQL Tuner is an excellent starting point to optimize a MySQL server, but it would be prudent to perform additional research for configurations tailored to the application(s) utilizing MySQL on your Linode.
