@@ -17,7 +17,7 @@ external_resources:
  - '[XMPP Client Software](http://xmpp.org/software/clients.shtml)'
 ---
 
-[ejabberd](https://www.ejabberd.im/) is a Jabber daemon written in the Erlang programming language. It is extensible, flexible and very high performance. With a web-based interface and broad support for [XMPP standards](http://xmpp.org/), ejabberd is a great choice for a multi-purpose XMPP server. It can be considered "heavyweight" by critics because of the requirements of the Erlang runtimes. However, it is incredibly robust and can scale to support incredibly heavy loads. Its servers are believed to be the backbone for some of the largest Jabber servers currently running.
+[Ejabberd](https://www.ejabberd.im/) is a Jabber daemon written in the Erlang programming language. It is extensible, flexible and very high performance. With a web-based interface and broad support for [XMPP standards](http://xmpp.org/), ejabberd is a great choice for a multi-purpose XMPP server. It can be considered "heavyweight" by critics because of the requirements of the Erlang runtimes. However, it is incredibly robust and can scale to support incredibly heavy loads. Its servers are believed to be the backbone for some of the largest Jabber servers currently running.
 
 This installation process assumes that you have a working installation of Ubuntu 12.04 (Precise Pangolin), have followed the steps in the [getting started](/docs/getting-started/) guide, and now have an up-to-date instance of the Ubuntu 12.04 operating system. We also assume you are connected to your Linode via SSH as a non-root user, so be sure to use `sudo` when editing configuration files.
 
@@ -42,18 +42,7 @@ To install ejabberd and its required dependencies, run:
 
 The default installation is complete and functional. The installation process creates a self-signed SSL certificate. If you want to use a commercially signed certificate, place the certificate file at `/etc/ejabberd/ejabberd.pem`. Most of the time a self-signed certificate is sufficient.
 
-If you have not already configured your `/etc/hosts` as follows, please do so before you continue.
-
-    sudo nano /etc/hosts
-
-This will allow your Linode to associate its hostname with the public IP. Your file should have an excerpt that looks something like this (use your Linode's public IP address instead of 203.0.113.0):
-
-{: .file-excerpt }
-/etc/hosts
-:   ~~~
-    127.0.0.1    localhost.localdomain   localhost
-    203.0.113.0  hostname.example.com    hostname
-    ~~~
+If you have not already configured your `/etc/hosts` as follows, please do so before you continue. Please see our [getting started guide](/docs/getting-started/) for more information on this.
 
 With the hostname configured, you're ready to begin configuring ejabberd.
 
