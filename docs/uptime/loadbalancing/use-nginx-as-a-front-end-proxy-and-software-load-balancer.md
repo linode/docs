@@ -5,19 +5,19 @@ author:
 description: 'Use Nginx as a Front-end Proxy and Software Load-Balancer.'
 keywords: 'apache,nginx,proxy,load balancer,load balancing,web server,http,use nginx as proxy,use nginx as load-balancer,front-end proxy,cluster'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['web-servers/nginx/configuration/front-end-proxy-and-software-load-balancing/','websites/loadbalancing/Use-Nginx-for-Proxy-Services-and-Software-Load-Balancing/','uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing/index.cfm/','uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing/', 'uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer']
+alias: ['web-servers/nginx/configuration/front-end-proxy-and-software-load-balancing/','websites/loadbalancing/Use-Nginx-for-Proxy-Services-and-Software-Load-Balancing/','uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing/index.cfm/','uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing/', 'uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer/']
 modified: Friday, August 9th, 2013
 modified_by:
   name: Linode
 published: 'Tuesday, May 11th, 2010'
-title: 'Use Nginx as a Front-end Proxy and Software Load-Balancer' 
+title: 'Use Nginx as a Front-end Proxy and Software Load Balancer' 
 external_resources:
  - '[nginx Proxy Module](http://wiki.nginx.org/NginxHttpProxyModule)'
  - '[HTTP Upstream Module](http://wiki.nginx.org/NginxHttpUpstreamModule)'
  - '[nginx Configuration](/docs/websites/nginx/basic-nginx-configuration)'
 ---
 
-The nginx web server can act as a very capable software load-balancer, in addition to its more traditional roles serving static content over HTTP and dynamic content using FastCGI handlers for scripts. Because ngnix uses a non-threaded, event-driven architecture, it is able to outperform web servers like Apache. This is particularly true in deployments that receive heavy loads.
+The nginx web server can act as a very capable software load balancer, in addition to its more traditional roles serving static content over HTTP and dynamic content using FastCGI handlers for scripts. Because ngnix uses a non-threaded, event-driven architecture, it is able to outperform web servers like Apache. This is particularly true in deployments that receive heavy loads.
 
 Using a proxy is helpful when the demands of serving a single website outgrow the capabilities of a single machine. Additionally, there are some web frameworks, like [Seaside](/docs/frameworks/seaside/) and Ruby On Rails's Mongrel server, that deploy applications on framework-specific web servers. While these single-purpose servers provide powerful application services, they are not suitable for hosting entire applications. In these cases, using nginx as a front-end proxy to pass only the essential requests to the application server is a viable means of unifying dynamic content with static content and providing a stable production environment.
 
@@ -43,9 +43,12 @@ When a request reaches the nginx front-end proxy server, here's an overview of t
 
 ## Configure Apache for Port Listening
 
-In this section, you'll configure Apache to listen on an alternate port so it can respond to the nginx front end.
+In this section, you'll configure Apache to listen on an alternate port so it can respond to the nginx front end. 
 
-1.  The first thing you will configure is the port on which Apache listens. This needs to be a port other than 80, so that you can proxy requests to Apache on the alternate port. This has the added benefit of preventing conflicts between Apache and Nginx listening on the same port. First, open up the `/etc/apache2/ports.conf` file for editing, and configure it as shown below:
+{: .note}
+> This guide assumes you are using Apache 2.4. Some path names will be slightly different if you are using an older version.
+
+1.  The first thing you will configure is the port on which Apache listens. This needs to be a port other than 80, so that you can proxy requests to Apache on the alternate port. This has the added benefit of preventing conflicts between Apache and nginx listening on the same port. First, open up the `/etc/apache2/ports.conf` file for editing, and configure it as shown below:
 
         sudo nano /etc/apache2/ports.conf
 
@@ -69,24 +72,24 @@ In this section, you'll configure Apache to listen on an alternate port so it ca
         </IfModule>
         ~~~
 
-2.  Next, in the virtual host configuration file, edit the port to match the new default port set in the previous step. More specifically, edit the `<VirtualHost>` line to use port 8000.
+2.  Next, in the virtual host configuration file, edit the port to match the new default port set in the previous step. More specifically, edit the `<VirtualHost *:>` line to use port 8000.
 
-        sudo nano /etc/apache2/sites-available/example.com
+        sudo nano /etc/apache2/sites-available/example.com.conf
 
       {: .file-excerpt }
-      /etc/apache2/sites-available/example.com
+      /etc/apache2/sites-available/example.com.conf
       :  ~~~ httpd
          <VirtualHost *:8000>
           ServerAdmin webmaster@example.com
           ServerName  www.example.com
-          DocumentRoot /var/www/example.com
+          DocumentRoot /var/www/html/example.com
  
           <Directory />
             Options FollowSymLink
             AllowOverride None
           </Directory>
  
-          <Directory /var/www/example.com>
+          <Directory /var/www/html/example.com>
             Options Indexes FollowSymLinks MultiViews
             AllowOverride None
             Order allow,deny
@@ -114,7 +117,7 @@ In this section, you'll configure Apache to listen on an alternate port so it ca
 
         service apache restart
 
-6.  Edit the `/etc/nginx/proxy_params` file so all the parameters look like the following. These settings are a good starting point for optimal forwarding of proxy requests from Nginx to Apache:
+6.  Edit the `/etc/nginx/proxy_params` file. These settings are a good starting point for optimal forwarding of proxy requests from Nginx to Apache:
 
         sudo nano /etc/nginx/proxy_params
 
@@ -137,7 +140,7 @@ In this section, you'll configure Apache to listen on an alternate port so it ca
         proxy_read_timeout 300;
         ~~~
 
-7.  Create the nginx example.com virtual host file at `/etc/nginx/sites-available/example.com`. Make sure you specify the same document root here that you did for Apache (for example, /var/www/example.com). This will ensure that nginx can deliver static files directly without passing the request to Apache. Nginx is much faster than Apache at delivering static files (like JavaScript, CSS, images, PDF files, static HTML files, etc.).
+7.  Create the nginx `example.com` virtual host file at `/etc/nginx/sites-available/example.com`. Make sure you specify the same document root here that you did for Apache (for example, `/var/www/html/example.com`). This will ensure that nginx can deliver static files directly without passing the request to Apache. Static files (like JavaScript, CSS, images, PDF files, static HTML files, etc.) can be delivered much faster with nginx than Apache.
 
         sudo nano /etc/nginx/sites-available/example.com
 
@@ -147,7 +150,7 @@ In this section, you'll configure Apache to listen on an alternate port so it ca
         server {
             listen 80;
             server_name www.example.com example.com;
-            root /var/www/example.com;
+            root /var/www/html/example.com;
 
             if ($http_host != "www.example.com") {
                 rewrite ^ www.example.com$request_uri permanent;
@@ -168,7 +171,8 @@ In this section, you'll configure Apache to listen on an alternate port so it ca
 
     There are some additional `location` directives to add in the `server` section of the `/etc/nginx/sites-available/example.com` file. You will probably need these directives, but it's possible that you may not, depending on your nginx and Apache configuration.
 
-8.  Add a this `location` directive to make nginx refuse all requests for files beginning with the characters `.ht`. There's a similar directive in nearly every default Apache configuration. This directive is useful if your Apache deployment relies on settings from `.htaccess` and `.htpasswd`.
+8.  Add a `location` directive to make nginx refuse all requests for files beginning with the characters `.ht`. There's a similar directive in nearly every default Apache configuration. This directive is useful if your Apache deployment relies on settings from `.htaccess` and `.htpasswd`.
+    
     {: .file-excerpt }
 /etc/nginx/sites-available/example.com
     :   ~~~ nginx
@@ -198,7 +202,7 @@ In this section, you'll configure Apache to listen on an alternate port so it ca
 
     **Response:** `http://192.168.3.105/teams/~example/wiki/PracticeSchedule/`
 
-10. For most conventional proxy setups, you will also want to add a `proxy_redirect` specification to your `location` directive blocks. This directive rewrites the HTTP headers that nginx receives from the proxied server to make them appear as if they were generated by the nginx server. Here's the `location` block:
+10. For most conventional proxy setups, you will also want to add a `proxy_redirect` specification to your `location` directive blocks. This directive rewrites the HTTP headers that nginx receives from the proxy server to make them appear as if they were generated by the nginx server.
 
     {: .file-excerpt }
     example.com.vhost proxy location directive
@@ -213,7 +217,7 @@ In this section, you'll configure Apache to listen on an alternate port so it ca
 
 ## Software Load Balancing
 
-In addition to using nginx as a front-end proxy to pass requests to other web servers, nginx can also serve as the front-end for clusters of servers, and even as a software load balancer.
+In addition to using nginx as a front-end proxy to pass requests to other web servers, nginx can also serve as the front end for clusters of servers, and even as a software load balancer.
 
 ### Basic HTTP Clustering
 
@@ -248,7 +252,7 @@ In this example, we'll show you how to build a cluster named `appcluster` with a
     # [...]
     ~~~
 
-In this example, in the `server` directive block, nginx is configured to listen for requests on a specific IP address and port (e.g. `21.43.65.87` and `80`), and respond to requests for the domains `example.com` and `www.example.com`. All requests for resources at this domain (e.g. `/`) will be passed to the `http://appcluster` server established in the `upstream` directive.
+In this example, in the `server` directive block, nginx is configured to listen for requests on a specific IP address and port (e.g. `192.0.2.0` and `80`), and respond to requests for the domains `example.com` and `www.example.com`. All requests for resources at this domain (e.g. `/`) will be passed to the `http://appcluster` server established in the `upstream` directive.
 
 The `upstream` directive establishes the round-robin load balancer. Within this block eight servers are listed, each running on a distinct hostname and port combination.
 
@@ -294,6 +298,8 @@ Here is a more advanced configuration, where seven server components running on 
     }
     ~~~
 
+Using these arguments, you can use nginx to manage the behavior and distribution of load across a cluster of servers:
+
 -   By default, each server listed in an upstream cluster has a weight of `1`. The argument `weight=[number]` sets a specific weight. Higher numbers receive more weight.
 
     In the example above, the components running on ports `8801` and `8802` are treated identically by nginx, as the default value for `weight` is `1`. The components running on `8803`, `8804`, and `8807` will receive twice as much traffic as the first two components. The components running on `8805` and `8806` will receive four times as much traffic as the ones on `8801` and `8802` and twice much traffic as the components on `8803`, `8804`, and `8807`.
@@ -307,5 +313,3 @@ Here is a more advanced configuration, where seven server components running on 
     By default, all components have their fail counter reset every 10 seconds, which covers components `8801`, `8802`, `8803`, and `8805`. In the example above, the components running on `8804` and `8807` have their fail counters reset every 20 seconds, while `8806` has its counter reset every 4 seconds.
 
 -   The `ip_hash` directive cannot be combined with the additional arguments shown in the example above.
-
-Using these arguments, you can use nginx to manage the behavior and distribution of load across a cluster of servers.
