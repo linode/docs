@@ -7,10 +7,10 @@ keywords: 'weechat,irc,oftc,real time,chat'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 contributor:
   name: Samuel Damashek
-modified: Wednesday, March 9, 2016
+modified: Thursday, March 10th, 2016
 modified_by: 
-    name: 'Linodes'
-published: 'Wednesday, August 27, 2014'
+    name: 'Linode'
+published: 'Wednesday, August 27th, 2014'
 title: 'Using WeeChat for Internet Relay Chat'
 external_resources:
  - '[WeeChat Home Page](http://www.weechat.org/)'
@@ -207,7 +207,7 @@ You usually will not have to directly edit any WeeChat configuration files. Most
 
 ### Installing Plugins
 
-WeeChat has a plugins system, which allows you to install different modifications to WeeChat for different use-cases and user preference. In WeeChat versions 0.3.9 and above, a script management system is included. `/script` will open up a list of available and installed scripts. From there, you can follow the instructions to install scripts interactively, or install a script using `/script install` followed by the script name.
+WeeChat has a plugins system which allows you to install different modifications to WeeChat for different use-cases and user preference. In WeeChat versions 0.3.9 and above, a script management system is included. `/script` will open up a list of available and installed scripts. From there, you can follow the instructions to install scripts interactively, or install a script using `/script install` followed by the script name.
 
 ### WeeChat Commands
 
