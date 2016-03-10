@@ -29,7 +29,8 @@ Everyone is probably familiar with WordPress and its renowned 5-minute install r
 This is where WP-CLI, a powerful command line tool with which you can manage WordPress, can help. This tutorial covers how to install WP-CLI and how to perform some common, practical tasks using it.
 
 ## Prerequisites
-Before moving ahead, make sure you have completed the following guides:
+
+This guide is written for Ubuntu 14.04. Before moving ahead, make sure you have completed the following guides:
 
 * [Getting Started with Linode](/docs/getting-started)
 * [Securing your Server](/docs/security/securing-your-server)
@@ -41,7 +42,7 @@ Before moving ahead, make sure you have completed the following guides:
 
 ## Install WP-CLI
 
-1.  WP-CLI is available as a PHP Archive file (.phar). You can download it using either wget or curl commands:
+1.  WP-CLI is available as a PHP Archive file (.phar). You can download it using either `wget` or `curl` commands:
 
         curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 
@@ -79,13 +80,13 @@ The bash completion feature of WP-CLI allows you to see all the available comman
         cd ~/
         wget https://github.com/wp-cli/wp-cli/raw/master/utils/wp-completion.bash
 
-2.  Edit the `.bashrc` file so that it is loaded by the shell every time you login. Open the file and add the following line in the editor, replacing `username` with your username:
+2.  Edit the `.bashrc` file so that it is loaded by the shell every time you login. Open the file and add the following line in the editor:
 
-        {: .file-excerpt}
-        ~/.bashrc
-        :   ~~~ bash
-        source /home/username/wp-completion.bash
-        ~~~
+    {: .file-excerpt}
+    ~/.bashrc
+    :   ~~~ bash
+    source /home/$USER/wp-completion.bash
+    ~~~
 
 3.  Run the following command to reload the bash profile:
 
@@ -152,7 +153,7 @@ You can use the enabled bash completion to demonstrate WP-CLI's readily availabl
 
         grant all on wordpress.* to 'user' identified by 'password';
 
-4.  Type `quit` to exit the mysql command line.
+4.  Type `quit` to exit the MySQL command line.
 
 ### Main Install
 
@@ -160,24 +161,25 @@ You can use the enabled bash completion to demonstrate WP-CLI's readily availabl
 
         cd /var/www/html/example.com
 
-2. Change the ownership of the `public_html` directory. Apache comes with its own usergroup `www-data`. As a recommended practice, you should change the ownership of your installation directory to this group. You would also need to add your `username` to the group so as to perform any commands in the directory:
+2. Change the ownership of the `public_html` directory. Apache comes with its own usergroup `www-data`. As a recommended practice, you should change the ownership of your installation directory to this group. You also need to add your `username` to the group, and enable group write permissions to perform any commands in the directory:
 
         sudo chown -R www-data public_html
         sudo usermod -aG www-data username
+        sudo chmod -R g+w public_html
 
 3.  Next, download the WordPress files. Here, you need to use the prefix `sudo -u www-data` for running WP-CLI commands under `www-data` group. You would need to use this every time you run a command which requires WP-CLI to write to the directory, like installing or upgrading:
 
-        sudo -u www-data wp core download
+        wp core download
 
 3.  Create a wp-config.php file:
 
-        sudo -u www-data wp core config --dbname=wordpress --dbuser=user --dbpass=password --dbhost=localhost --dbprefix=wp_
+        wp core config --dbname=wordpress --dbuser=user --dbpass=password --dbhost=localhost --dbprefix=wp_
 
-    dbhost and dbprefix are entirely optional and can be omitted unless you need to change their default values.
+    `dbhost` and `dbprefix` are entirely optional and can be omitted unless you need to change their default values.
 
 4.  Run the installation:
 
-        sudo -u www-data wp core install --url="http://example.com" --title="Blog Title" --admin_user="adminuser" --admin_password="password" --admin_email="email@domain.com" --allow-root
+        wp core install --url="http://example.com" --title="Blog Title" --admin_user="adminuser" --admin_password="password" --admin_email="email@domain.com"
 
 Your WordPress blog is now ready for use.
 
@@ -217,16 +219,16 @@ You can see more than 10 plugins per page by modifying the command:
 
 Now that you know the slug of the plugin you want to install (wordpress-seo), copy it to your command and activate it:
 
-    sudo -u www-data wp plugin install wordpress-seo
+    www-data wp plugin install wordpress-seo
     wp plugin activate wordpress-seo
 
 To update any plugin, you can use:
 
-    sudo -u www-data wp plugin update wordpress-seo
+    wp plugin update wordpress-seo
 
 Or, to update all plugins, you can use:
 
-    sudo -u www-data wp plugin update --all
+    wp plugin update --all
 
 Or, to list all the installed plugins on your blog, you can use:
 
@@ -234,7 +236,7 @@ Or, to list all the installed plugins on your blog, you can use:
 
 To uninstall a plugin, you use:
 
-    sudo -u www-data wp plugin uninstall wordpress-seo
+    wp plugin uninstall wordpress-seo
 
 ### Install and Update Themes
 
@@ -246,13 +248,13 @@ So, to search for the theme, you can use:
 
 To install and activate, you can use:
 
-    sudo -u www-data wp theme install twentytwelve
+    wp theme install twentytwelve
     wp theme activate twentytwelve
 
 To update one or all themes, you can use:
 
-    sudo -u www-data wp theme update twentytwelve
-    sudo -u www-data wp theme update --all
+    wp theme update twentytwelve
+    wp theme update --all
 
 To list all the themes in a tabular form, you can use:
 
@@ -260,13 +262,13 @@ To list all the themes in a tabular form, you can use:
 
 To uninstall a theme, you can use:
 
-    sudo -u www-data wp theme uninstall twentytwelve
+    wp theme uninstall twentytwelve
 
 ### Update WordPress
 
 You can update your blog through the following commands:
 
-    sudo -u www-data wp core update
+    www-data wp core update
     wp core update-db
 
 The first command updates the files. The second one completes the database upgrade.
