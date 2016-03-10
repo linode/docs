@@ -71,7 +71,7 @@ Some users will need the ability to administer the XMPP server remotely. By defa
     %% Admin user {acl, admin, {user, "", "localhost"}}.
     ~~~
 
-In Erlang, comments begin with the `%` sign, and the Access Control list segment contains information in the following form: `{user, "username", "hostname"}`. The following examples correspond to the users with the JIDs of `admin@example.com` and `username@example.com`. You only need to specify one administrator, but you can add more than one administrator simply by adding additional lines, as shown below:
+In Erlang, comments begin with the `%` sign, and the Access Control list segment contains information in the following form: `{user, "username", "hostname"}`. The following examples correspond to the users with the JIDs of `admin@example.com` and `username@example.com`. You only need to specify one administrator, but you can add more than one simply by adding additional lines, as shown below:
 
 {: .file-excerpt }
 /etc/ejabberd/ejabberd.cfg
