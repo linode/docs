@@ -3,14 +3,14 @@ author:
   name: Alex Fornuto
   email: afornuto@linode.com
 description: Forward the X11 Server Through SSH to Run GUI Applications from Your Linode
-keywords: 'x11,debian,debain 7, debian 8,x-forwarding,ssh,x over ssh'
+keywords: 'x11,x-forwarding,ssh,x over ssh,ubuntu, ubuntu 12.04'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['remote-desktops/x-forwarding-debian-7/','remote-desktops/running-graphic-software-on-your-linode-with-xforwarding-on-debian-7']
+alias: ['remote-desktops/x-forwarding-ubuntu-12-04/','applications/remote-desktop./running-graphic-software-on-your-linode-with-xforwarding-on-ubuntu-12-04']
 modified: Friday, April 25th, 2014
 modified_by:
   name: Alex Fornuto
 published: 'Thursday, April 10th, 2014'
-title: 'Run Graphic Software on Your Linode with X-Forwarding on Debian'
+title: 'Run Graphic Software on your Linode with X-Forwarding on Ubuntu 12.04'
 external_resources:
  - '[Xming](http://www.straightrunning.com/XmingNotes/)'
  - '[Cygwin/X](http://x.cygwin.com/)'
@@ -65,7 +65,7 @@ Connecting from a Windows machine will depend on what software you have chosen. 
 
 ## Test
 
-1.  First lets install a simple graphic application to test with:
+1.  First, lets install a simple graphic application to test with:
 
         sudo apt-get install x11-apps
 
@@ -73,12 +73,12 @@ Connecting from a Windows machine will depend on what software you have chosen. 
 
         xeyes
 
-3.  Now, let's try something a bit bigger. Iceweasel is the name given to Debian's version of Mozilla's Firefox browser. The following commands will install and launch Iceweasel from your Linode:
+3.  Now, let's try something a bit bigger. The following commands will install and launch Mozilla's Firefox web browser from your Linode:
 
-        sudo apt-get install iceweasel
-        iceweasel &
+        sudo apt-get install firefox
+        firefox &
 
-    [![Iceweasel, running on a Linode](/docs/assets/1632-xforwarding3_small.png)](/docs/assets/1633-xforwarding_3.png)
+    [![Firefox, running on a Linode](/docs/assets/1653-xforwarding_3-ubuntu_small.png)](/docs/assets/1651-xforwarding_3-ubuntu.png)
 
  {: .note }
 >
