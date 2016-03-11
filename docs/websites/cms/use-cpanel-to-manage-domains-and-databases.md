@@ -1,6 +1,6 @@
 ---
 author:
-  name: Chris Ciufo
+  name: Chris C.
   email: docs@linode.com
 description: Use cPanel to Manage Domains and Databases
 keywords: 'cpanel,database,managing domain,subdomain,add-on domain,parked domain,phpmyadmin,mysql,create database,manage database'
