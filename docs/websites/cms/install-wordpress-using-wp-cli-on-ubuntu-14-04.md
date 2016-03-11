@@ -219,7 +219,7 @@ You can see more than 10 plugins per page by modifying the command:
 
 Now that you know the slug of the plugin you want to install (wordpress-seo), copy it to your command and activate it:
 
-    www-data wp plugin install wordpress-seo
+    wp plugin install wordpress-seo
     wp plugin activate wordpress-seo
 
 To update any plugin, you can use:
