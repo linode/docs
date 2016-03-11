@@ -1,16 +1,16 @@
 ---
 author:
-  name: Chris Ciufo
+  name: Chris C.
   email: docs@linode.com
-description: Managing Domains and Databases
-keywords: 'domains, database, cpanel'
+description: Use cPanel to Manage Domains and Databases
+keywords: 'cpanel,database,managing domain,subdomain,add-on domain,parked domain,phpmyadmin,mysql,create database,manage database'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['web-applications/control-panels/cpanel/managing-domains-and-databases/']
+alias: ['web-applications/control-panels/cpanel/managing-domains-and-databases/','websites/cms/managing-domains-and-databases/']
 modified: Friday, June 8th, 2012
 modified_by:
   name: Linode
 published: 'Friday, June 8th, 2012'
-title: Managing Domains and Databases
+title: Use cPanel to Manage Domains and Databases
 external_resources:
  - '[cPanel Home Page](http://cpanel.net)'
  - '[cPanel Support](http://cpanel.net/support.html)'
@@ -20,11 +20,11 @@ external_resources:
 
 ## Managing Domains
 
-There are three types of domains associated with your cPanel account: main domains, addon domains, and parked domains. Your main domain cannot be changed except by the reseller that owns your account or by root itself. Subdomains, addon domains, and parked domains can be managed in the Domains section.
+Three types of domains can be associated with your cPanel account: main domains, add-on domains, and parked domains. Your main domain cannot be changed except by the reseller that owns your account or by root itself. Subdomains, add-on domains, and parked domains can be managed in the Domains section.
 
  {: .note }
 >
-> The Domains section also allows you to add or delete A or CNAME records to your domain. Any of the default entries would need to be modified by someone with the appropriate access (e.g., the reseller that owns your account or the root user).
+> The Domains section also allows you to add or delete A or CNAME records to or from your domain. Any of the default entries would need to be modified by someone with the appropriate access (e.g., the reseller that owns your account or the root user).
 
 ### Subdomains
 
@@ -36,13 +36,13 @@ After you add the subdomain, you can click the **Go Back** button to manage your
 
 [![cPanel subdomain screen.](/docs/assets/875-SubMod.png)](/docs/assets/875-SubMod.png)
 
-### Addon Domains
+### Add-on Domains
 
-If you have the ability to use addon domains, you can manage those through the cPanel \> Domains \> Addon Domains section. Addon domains allow you to host other domains on your single cPanel account login and serve different content than what is served for your account's main domain. The interface is similar to the subdomains screen with a few extra fields, as shown below. A new FTP account is created for each addon domain as well.
+If you have the ability to use add-on domains, you can manage those through the cPanel \> Domains \> Addon Domains section. Add-on domains allow you to host other domains on your single cPanel account login and serve different content than what is served for your account's main domain. The interface is similar to the subdomains screen with a few extra fields, as shown below. A new FTP account is created for each add-on domain as well.
 
 [![cPanel addon domain screen.](/docs/assets/876-AddAdd.png)](/docs/assets/876-AddAdd.png)
 
-After you add the addon domain, you can click the **Go Back** button to manage your addon domain's redirection or remove it entirely, as shown below.
+After you add the add-on domain, you can click the **Go Back** button to manage your add-on domain's redirection or remove it entirely, as shown below.
 
 [![cPanel addon domain screen.](/docs/assets/877-AddMod.png)](/docs/assets/877-AddMod.png)
 
@@ -56,11 +56,11 @@ After you add a parked domain, you can click the **Go Back** button to manage yo
 
 [![cPanel parked domain screen.](/docs/assets/879-ParkMod.png)](/docs/assets/879-ParkMod.png)
 
-In the above example, the parked domain 'mynewdomain.com' is serving the content of your primary cPanel domain. You can modify this to serve whatever domain content you like. To instead serve the content of your addon domain "example2.com," click the **Manage Redirection** button and enter example2.com into the field shown below.
+In the above example, the parked domain 'mynewdomain.com' is serving the content of your primary cPanel domain. You can modify this to serve whatever domain content you like. To instead serve the content of your add-on domain "example2.com," click the **Manage Redirection** button and enter example2.com into the field shown below.
 
 [![cPanel parked domain screen.](/docs/assets/880-ParkOther.png)](/docs/assets/880-ParkOther.png)
 
-## Creating Databases and MySQL Users
+## Create Databases and MySQL Users
 
 The **Manage Databases** icon under the Databases section of your cPanel will allow you to create databases, create users for those databases, add users to databases, and specify the permissions each user should have. Let's start by creating a database.
 
@@ -74,16 +74,16 @@ After you've created the user, you can add the user to the database at the botto
 
 [![cPanel manage databases screen.](/docs/assets/884-User2DB.png)](/docs/assets/884-User2DB.png)
 
-Once you select which users to add to the database, click the **Add** button. On the next screen you will be able to select what privileges the user will have to the database. You can select them individually, or select the **All Privileges** checkbox at the top, as shown below.
+Once you select which users to add to the database, click the **Add** button. On the next screen you will be able to select what privileges the user will have to the database. You can select them individually or select the **All Privileges** checkbox at the top, as shown below.
 
 [![cPanel manage databases screen.](/docs/assets/881-DBPrivs.png)](/docs/assets/881-DBPrivs.png)
 
-## Managing Databases
+## Manage Databases
 
 Now that you've set up your database and user, you can start managing your database. cPanel includes phpMyAdmin for database management. Here's how to access phpMyAdmin:
 
 1.  Click the **Home** button at the top of the page, then scroll back down to the Databases section of cPanel.
-2.  Click the phpMyAdmin icon to open the phpMyAdmin interface in a new window.
+2.  Click the phpMyAdmin icon to open its interface in a new window.
 3.  On the left side, you'll see a list of your databases. Select the database you want to open, as shown below.
 
 [![cPanel phpMyAdmin screen.](/docs/assets/885-phpmaside.png)](/docs/assets/885-phpmaside.png)
