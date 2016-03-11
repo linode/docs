@@ -27,7 +27,7 @@ The Domain Name System (DNS) attaches human-readable domain names to machine-usa
 When setting up any domain name on your Linode, make sure you perform the following steps:
 
 1.  Register (purchase) a domain name, if you haven't already.
-2.  [Set your domain name to use Linode's name servers](#setting-domain-names-to-use-linodes-name-servers). You'll need to do this on your domain registrar's website and then wait up to 24 hours for the change to take effect.
+2.  [Set your domain name to use Linode's name servers](#set-domain-names-to-use-linodes-name-servers). You'll need to do this on your domain registrar's website and then wait up to 24 hours for the change to take effect.
 3.  Use the DNS Manager to [Add a domain zone](#add-a-domain-zone), and then start [adding some basic DNS records](#add-records).
 4.  [Set reverse DNS](/docs/networking/dns/setting-reverse-dns).
 5.  If you have any special DNS needs, such as using a third-party email server, add additional DNS records to [create a custom configuration](/docs/networking/dns/common-dns-configurations).
@@ -166,7 +166,7 @@ In order to check the status of your domain zone, from within the DNS Manager, c
 
 If you see a message stating that your zone looks good, then everything is working correctly; otherwise, check that all of the DNS records in your domain zone are properly configured.
 
-### View Domaain Zones
+### View Domain Zones
 
 The DNS Manager allows you to view the contents of a domain zone file. This is especially useful should you need to import the zone to a different server, or if you wish to inspect the file.
 
@@ -192,7 +192,7 @@ Having problems with your DNS records? We recommend reviewing this section to he
 
 ### Wait for Propagation
 
-If you've just made a DNS change and aren't seeing it reflected yet, try waiting 48 hours. DNS updates will take effect, or *propagate*, within the time period set by your zone file's [TTL](#setting-the-time-to-live-or-ttl). In some cases the new information may not be reflected for up to 48 hours.
+If you've just made a DNS change and aren't seeing it reflected yet, try waiting 48 hours. DNS updates will take effect, or *propagate*, within the time period set by your zone file's [TTL](#set-the-time-to-live-or-ttl). In some cases the new information may not be reflected for up to 48 hours.
 
 While you can't control DNS caching at every point on the Internet, you do have control over your web browser. Try holding down the *Shift* key or the *Control* key (depending on your browser) while you refresh the page to bypass your browser's cache of the old DNS data. You can also try bringing up your site in an alternate browser, or [Previewing Your Website Without DNS](/docs/networking/dns/previewing-websites-without-dns).
 
@@ -208,7 +208,7 @@ The solution is to lower your TTL before making a DNS change. You'll want to low
 >TTL is always written out in seconds, so 24 hours = 86400 seconds.
 
 1.  Check the TTL on your current zone file. Typically, this will be 24 or 48 hours.
-2.  Update your current zone file 48 (for a 24-hour record) to 96 (for a 48 hour record) hours early, taking into account any intermediate DNS servers. Lower the TTL to five minutes (300 seconds, or the lowest allowed value). Do not make any other changes at this time. If you're using Linode's DNS Manager, lower the TTL to 5 minutes for each entry you're going to change.
+2.  Update your current zone file 48 (for a 24-hour record) to 96 (for a 48-hour record) hours early, taking into account any intermediate DNS servers. Lower the TTL to five minutes (300 seconds, or the lowest allowed value). Do not make any other changes at this time. If you're using Linode's DNS Manager, lower the TTL to 5 minutes for each entry you're going to change.
 3.  Wait out the original 48 to 96 hours.
 4.  Visit your zone file again to make all of your IP address - and other - updates.
 5.  DNS changes should propagate within 30 minutes.
@@ -218,7 +218,7 @@ The solution is to lower your TTL before making a DNS change. You'll want to low
 Sometimes you may need to find the current DNS information for a domain. There are two great tools for doing this:
 
 -   **dig**: Look up individual DNS entries. For example, you can find the IP address where your domain resolves.
--   **WHOIS**: Find your registrar and nameserver information for your domain.
+-   **whois**: Find your registrar and nameserver information for your domain.
 
 If you're using a computer that runs Mac OS X or Linux, you can use these tools from the command line. To find your domain's IP (the primary A record), run:
 
