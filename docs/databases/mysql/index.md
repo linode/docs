@@ -14,7 +14,7 @@ featured:
  - tuning-your-mysql-database.md
  - how-to-install-mysql-on-debian-8.md
  - how-to-install-mysql-on-centos-7.md
- - how-to-install-mysql-on-ubuntu-14-04.md
+ - install-mysql-on-ubuntu-14-04.md
  - how-to-install-mysql-on-debian-7.md
  - deploy-mysql-relational-databases-on-ubuntu-12-04-precise-pangolin.md
  - how-to-install-mysql-on-centos-6.md
