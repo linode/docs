@@ -3,10 +3,10 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Use Cherokee Web Server on Ubuntu 12.04.'
-keywords: 'cherokee,web sever,ubuntu 12.04,posix,precise pangolin,ssh,ssh tunnel,cherokee admin,puTTY'
+keywords: 'cherokee,web sever,ubuntu 12.04,posix,precise pangolin,ssh,ssh tunnel,cherokee admin,PuTTY'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['web-servers/cherokee/installing-cherokee-ubuntu-12-04-precise-pangolin/', 'web-servers/cherokee/websites-with-the-cherokee-web-server-on-ubuntu-12-04-lts-precise-pangolin']
-modified: Wednesday, October 10th, 2012
+alias: ['web-servers/cherokee/installing-cherokee-ubuntu-12-04-precise-pangolin/', 'web-servers/cherokee/websites-with-the-cherokee-web-server-on-ubuntu-12-04-lts-precise-pangolin/']
+modified: Friday, March 11th, 2016
 modified_by:
   name: Linode
 published: 'Wednesday, October 10th, 2012'
@@ -16,9 +16,9 @@ external_resources:
  - '[Host Web Apps with Cherokee and PHP-FastCGI on Ubuntu 10.04 LTS (Lucid)](/docs/web-servers/cherokee/php-fastcgi-ubuntu-10.04-lucid)'
 ---
 
-Cherokee is a fast, flexible web server for POSIX compliant operating systems such as Linux. It's designed to be easy to administer, and includes support for a wide range of common web server functions.
+Cherokee is a fast, flexible web server for POSIX-compliant operating systems such as Linux. It's designed to be easy to administer, and includes support for a wide range of common web server functions.
 
-This tutorial explains how to install and configure the Cherokee web server on Ubuntu 12.04 LTS (Precise Pangolin). We will be performing the installation through the terminal; please make sure you are logged into your Linode as root via SSH.
+This tutorial explains how to install and configure the Cherokee web server on Ubuntu 12.04 LTS (Precise Pangolin). We will be performing the installation through a terminal emulator; please make sure you are logged into your Linode as a non-root user via SSH.
 
 This document assumes that you already have a working and up to date Ubuntu 12.04 system. If you have not followed our [getting started](/docs/getting-started/) guide, we recommend that you do so prior to following these instructions.
 
@@ -29,7 +29,7 @@ Before you begin installing and configuring the components described in this gui
     hostname
     hostname -f
 
-The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
+The first command will show your short hostname, and the second will show your fully qualified domain name (FQDN).
 
 ## Check Package Sources
 
@@ -56,18 +56,17 @@ First, make sure you have the `universe` repositories enabled on your system. Yo
     deb-src http://security.ubuntu.com/ubuntu lucid-security universe
     ~~~
 
-If you had to enable new repositories, issue the following commands to update your package lists:
+If you had to enable new repositories, update your package lists:
 
-    apt-get update
-    apt-get upgrade
+    sudo apt-get update && apt-get upgrade
 
 Next, we'll get Cherokee installed and configured.
 
 ## Install Cherokee
 
-Enter the following command to install the Cherokee web server, its documentation and some useful modules (including support for SSL).
+Install the Cherokee web server, its documentation and some useful modules (including support for SSL):
 
-    apt-get install cherokee cherokee-doc libcherokee-mod-libssl libcherokee-mod-streaming libcherokee-mod-rrd
+    sudo apt-get install cherokee cherokee-doc libcherokee-mod-libssl libcherokee-mod-streaming libcherokee-mod-rrd
 
 Several packages will be installed in addition to the main server package. You may visit your Linode's IP address (or domain name, if you have it pointed to the IP) in a web browser to verify that Cherokee is running. You should see the default Cherokee test page.
 
@@ -81,9 +80,9 @@ Start `cherokee-admin` by issuing the following command:
 
 This instructs the administration program to bind to all IP addresses so it may be reached remotely. It will be launched in the background, so you'll still be able to use your SSH session. You should see output similar to the following:
 
-    root@hostname:~# cherokee-admin -b &
+    user@hostname:~# cherokee-admin -b &
     [1] 2154
-    root@hostname:~# 
+    user@hostname:~# 
     Login:
       User:              admin
       One-time Password: eFxccWtngt75ALZg
@@ -97,18 +96,18 @@ This instructs the administration program to bind to all IP addresses so it may 
 
 ### Secure Admin Panel Access
 
-Instead of binding to all interfaces on your Linode, you may wish to bind to localhost and use SSH port forwarding to securely reach the administration system from your workstation. To do so, issue the following commands to launch `cherokee-admin` and set up an SSH tunnel. The first command is not required if you haven't already launched `cherokee-admin`. You may need to install the `killall` command first by issuing `apt-get install psmisc` on your VPS.
+Instead of binding to all interfaces on your Linode, you may wish to bind to localhost and use SSH port forwarding to securely reach the administration system from your workstation. To do so, issue the following commands to launch `cherokee-admin` and set up an SSH tunnel. The first command is not required if you haven't already launched `cherokee-admin`. You may need to install the `killall` command first by running `sudo apt-get install psmisc`.
 
 On your Linode:
 
     killall cherokee-admin 
     cherokee-admin & 
 
-In a terminal window on your local workstation (MacOS X, Linux, BSD, etc) :
+In a terminal window on your local workstation (MacOS X, Linux, BSD, etc):
 
-    ssh -L 9090:localhost:9090 root@12.34.56.78 -N 
+    ssh -L 9090:localhost:9090 root@198.51.100.0 -N 
 
-Replace "12.34.56.78" with your Linode's IP address. You may now visit `http://localhost:9090` in your web browser browser via the SSH tunnel. To stop the tunnel, simply press `Ctrl+C` in your local terminal window.
+Replace "198.51.100.0" with your Linode's IP address. You may now visit `http://localhost:9090` in your web browser browser via the SSH tunnel. To stop the tunnel, simply press **CTRL+C** in your local terminal window.
 
 You'll be presented with the Cherokee administration panel, which you may use to configure websites and specify configuration options. You'll still need to log in using the username and one-time password provided when you launched `cherokee-admin`.
 
@@ -120,7 +119,7 @@ You can use [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/) to set u
 
 [![Session information for PuTTY.](/docs/assets/1134-cherokee-putty-01-session.png)](/docs/assets/1134-cherokee-putty-01-session.png)
 
-Expand the "Connection -\> SSH" menus to select the "Tunnel" configuration page. Enter the values shown here:
+Expand the "Connection -> SSH" menus to select the "Tunnels" configuration page. Enter the values shown here:
 
 [![Configuring an SSH tunnel for Cherokee administration in PuTTY.](/docs/assets/1135-cherokee-putty-02-tunnel.png)](/docs/assets/1135-cherokee-putty-02-tunnel.png)
 
@@ -136,4 +135,4 @@ Click "Yes" to continue, and log into your Linode as you normally would. As long
 
 ## Conclusion
 
-Be sure to stop `cherokee-admin` using the `killall` command shown above once you're done configuring your system. Congratulations, you've successfully installed the Cherokee web server on your Linux VPS!
+Be sure to stop `cherokee-admin` using the `killall` command shown above once you're done configuring your system. Congratulations, you've successfully installed the Cherokee web server on your Linode!
