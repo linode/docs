@@ -117,9 +117,12 @@ When PuTTYgen has finished downloading, it may now be installed.
 
     ![The public key has now been created.](/docs/assets/1466-new-public-key.PNG)
 
-6.  Before you continue, you will need to copy the newly-created public key to either WordPad or Notepad. Just select the text and copy it to a new Notepad or WordPad text file. Be sure the file is saved in a location you remember, as you will need it later.
+6.  Before you continue, you will need to copy the newly-created public key to either WordPad or Notepad. Just select the text and copy it to a new  text file. Be sure the file is saved in a location you remember, as you will need it later.
 
     ![Copy the public key to a text file.](/docs/assets/1476-key-txt-file.png)
+
+    {: .caution}
+    >When saving the public key, make sure you save it in a plaintext format such as .txt. Other file formats such as .rtf and .doc may add extra characters to the key through encoding, which may prevent your keypair from matching. The public key should be a single line, with no breaks.
 
 7.  Enter a passphrase in the **Key passphrase** text field, and enter it again to confirm. The passphrase can be any string of letters and numbers. The passphrase should be something unique and not easily recognized. Important: make a note of your passphrase, as you will need it later.
 
@@ -155,7 +158,7 @@ Now it is time to connect to your Linode with the SSH connection you just create
 5.  Click the **Open** button to establish a connection. You will be prompted to enter your login name and password.
 6.  The combination of commands shown below will create a `.ssh` directory in your home directory on your Linode, create a blank `authorized_keys` file inside, and set the access permissions. Enter the following commands at the prompt and press *Enter*:
 
-        mkdir ~/.ssh; touch ~/.ssh/authorized_keys; chmod 700 ~/.ssh
+        mkdir ~/.ssh; touch ~/.ssh/authorized_keys; chmod 600 ~/.ssh
 
 7.  Edit the newly-created file by using a text editor such as nano:
 
@@ -163,5 +166,16 @@ Now it is time to connect to your Linode with the SSH connection you just create
 
 8.  Copy the contents of the public key from your workstation to the `authorized_keys` file. Be sure you save the file on exit. Exit PuTTY.
 9.  Reconnect to PuTTY and **Load** your saved session. (Or, follow Steps 3 and 4 again to start a new SSH session.) You will be prompted to enter your login name as before. However, this time you will be prompted for your SSH key's passphrase, rather then your Linode user's password. Enter your passphrase and press *Enter*.
+
+Uploading the public key in Windows can also be done using [WinSCP](http://winscp.net/). In the login window, enter your Linode's public IP address as the hostname, and your non-root username and password. Click *Login* to connect.
+
+Once WinSCP has connected, you'll see two main sections. The section on the left shows files on your local computer and the section on the right shows files on your Linode. Using the file explorer on the left, navigate to the file where you've saved your public key, select the public key file, and click *Upload* in the toolbar above. 
+
+You'll be prompted to enter a path where you'd like to place the file on your Linode. Upload the file to `/home/user/.ssh/authorized_keys`, replacing `user` with your username.
+
+{: .caution}
+> When uploading a public key with WinSCP, make sure you are using a .txt file. If your public key is saved in a different format, such as .rtf or .doc, extra formatting characters will be added and your private key will not work properly.
+>
+>When you create the .txt file, make sure the public key is a single line of text, exactly as it appears in the PuTTY key generator.
 
 You should now be connected to your Linode using the SSH key.
