@@ -6,9 +6,9 @@ description: Our guide to using the Linode backup service.
 keywords: 'backup,linode platform,linode backup service'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['backup-service/']
-modified: Wednesday, September 17th, 2014
+modified: 'Monday, October 26th, 2015'
 modified_by:
-  name: James Stewart
+  name: Linode
 published: 'Wednesday, March 14th, 2012'
 title: Backup Service
 ---
@@ -30,8 +30,6 @@ Pricing is per Linode and varies depending on the size of your virtual private s
 -   Linode 16GB: $40.00/month
 -   Linode 32GB: $80.00/month
 
-Annual and biennial discounts are not available for this service.
-
 ### Enabling Backups
 
 Use the Linode Manager to enable the Backup Service on a Linode. Here's how:
@@ -40,7 +38,7 @@ Use the Linode Manager to enable the Backup Service on a Linode. Here's how:
 2.  From the **Linodes** tab, select the Linode you want to back up.
 3.  Click the **Backups** tab.
 4.  Click **Enable backups for this Linode**. The *Complete Your Order* webpage appears.
-5.  Review the pro-rated total, and then click **Complete Order**. Your credit card will immediately be billed for the prorated amount.
+5.  Review the pro-rated total, and then click **Complete Order**.
 
 The Linode Backup Service is now enabled for the selected Linode.
 
@@ -86,9 +84,9 @@ You can make a manual backup of your Linode by taking a *snapshot*. Here's how:
 2.  Click the **Backups** tab.
 3.  Click **Take a New Snapshot Now**.
 
- {: .note }
->
-> Taking a new snapshot will overwrite a saved snapshot.
+    {: .note }
+    >
+    > Taking a new snapshot will overwrite a saved snapshot.
 
 4.  A warning appears asking if you would like to overwrite the previous snapsnot. Click **OK**.
 
@@ -136,7 +134,7 @@ The Linode will start from the backup disks. Watch the *Host Job Queue* to monit
 
 ##Disabling Backups
 
-You can cancel the Backup Service at any time. Please open a [support ticket](https://manager.linode.com/support) to do so. A Linode support representative will turn off the service, remove your backups from our servers, and issue a prorated service credit for the time left in the current billing period. This credit may be used to purchase additional Linode services in the future.
+You can cancel the Backup Service at any time. From your Linode's dashboard, choose the **Backups** tab and click the **Cancel Backups** link at the bottom of the page.  This will turn off the service, remove your backups from our servers, and issue a prorated service credit for the time left in the current billing period. This credit may be used to purchase additional Linode services in the future.
 
 ##Limitations
 

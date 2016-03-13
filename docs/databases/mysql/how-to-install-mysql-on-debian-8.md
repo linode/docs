@@ -6,7 +6,7 @@ description: 'Getting started with MySQL on Debian 8'
 keywords: 'MySQL on Linux,Debian 8,Debian,cloud,cloud hosting,Linux,MySQL,database,MariaDB,install MySQL,secure MySQL,mysqltuner'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['databases/mysql/debian-7-wheezy/','databases/mysql/mysql-relational-databases-debian-8/']
-modified: Wednesday, August 26th 2015
+modified: Wednesday, August 26th, 2015
 modified_by:
   name: Linode
 published: 'Friday, June 12th, 2015'
@@ -117,7 +117,7 @@ The standard tool for interacting with MySQL is the `mysql` client which install
 1.  In the example below, `testdb` is the name of the database, `testuser` is the user, and `password` is the user's password.
 
         create database testdb;
-        create user 'testuser'@localhost identified by 'password';
+        create user 'testuser'@'localhost' identified by 'password';
         grant all on testdb.* to 'testuser';
 
     You can shorten this process by creating the user *while* assigning database permissions:

@@ -102,7 +102,7 @@ For this guide we'll be using Ubuntu as an example, but you're welcome to apply 
     By piping our `dd` command through `pv`, we can track the progress of the transfer. The `dd` command will transfer the entire partition including empty space, this process will take some time.
 
 
-## Configure the transferred image.
+## Configure the transferred image
 
 1.  While still booted into Finnix on your Linode, mount the newly transferred disk:
 

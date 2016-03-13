@@ -19,7 +19,7 @@ title: 'Turbocharge Your WordPress Search Using Solr'
 
 <hr>
 
-The standard search that is built into WordPress does not provide the best search experience you can offer your visitors, given its inability to suggest search phrases, catch typos, understand word variations, organize and filter results, and index documents for search results. *Full text search engines* often offer these features, and **Apache Solr** is a free, open-source option that does.
+The standard search that is built into WordPress does not provide the best search experience you can offer your visitors, given its inability to suggest search phrases, catch typos, understand word variations, organize and filter results, and index documents for search results. *Full text search engines* often offer these features and **Apache Solr** is a free, open-source option that does.
 
 In this guide, you will learn how to install Java, install and configure Solr on Ubuntu 14.x or Debian 7.x, and integrate it into your WordPress blog using the WPSolr plugin.
 
@@ -43,7 +43,7 @@ Since Solr is a Java web application, it requires a *Java Runtime Environment (J
         whereis java
         java -version
 
-    If Java is already installed it will output the path of the Java executable and the version of Java that is being run. Skip to the [next step](#install-unzip-curl-and-php5-curl).
+    If Java is already installed, it will output the path of the executable Java file and the Java version that is being run. Skip to the [next step](#install-unzip-curl-and-php5-curl).
 
 2.  Install the `openjdk-7-jre-headless` package:
 
@@ -84,11 +84,11 @@ Since Solr is a Java web application, it requires a *Java Runtime Environment (J
 
     [![List of Solr releases](/docs/assets/wpsolr_mirror_directory_listing_resized.png)](/docs/assets/wpsolr_mirror_directory_listing.png)
 
-4.  Click on the highest available 4.x version, to see the files in that release:
+4.  Click on the highest available 4.x version to see the files in that release:
     
     {: .note}
     >
-    > Since Solr 5.x is still in beta, its configuration procedures are different from 4.x and WPSolr is not yet compatible with the 5.x release.
+    > Since Solr 5.x is still in beta, its configuration procedures are different from 4.x, and WPSolr is not yet compatible with the 5.x release.
 
     ![Solr release directory listing](/docs/assets/wpsolr_directory_files.png)
 
@@ -138,7 +138,7 @@ Visit the [WPSolr website](http://wpsolr.com/releases/) and get the link address
 
 By default, Solr listens for search requests on all IP addresses at port 8983. For security reasons, you may wish to change the IP address and/or port it listens on. It is also recommended that only WordPress be able to query Solr. 
 
-1.  First, make a back up of `/opt/solr-4.10.4/example/etc/jetty.xml`. Then open the file in a text editor: 
+1.  First, make a back up of `/opt/solr-4.10.4/example/etc/jetty.xml`. Then, open the file in a text editor: 
 
         sudo cp /opt/solr-4.10.4/example/etc/jetty.xml /opt/solr-4.10.4/example/etc/jetty.xml.backup
 
@@ -171,7 +171,7 @@ By default, Solr listens for search requests on all IP addresses at port 8983. F
 	
             <Set name="host">localhost</Set>
 
-    -   If Solr is on a **different** server from WordPress replace `<Set name="host"><SystemProperty name="jetty.host" /></Set>` with:
+    -   If Solr is on a **different** server from WordPress, replace `<Set name="host"><SystemProperty name="jetty.host" /></Set>` with:
 	
             <Set name="host">123.45.67.89</Set>
 
@@ -215,7 +215,7 @@ For security purposes, Solr should run with its own user account and group.
 
     {: .note}
     >
-    >If using a different version of Solr change the `JETTY_HOME=/opt/solr-4.10.4/example` line to match the installed version.
+    >If using a different version of Solr, change the `JETTY_HOME=/opt/solr-4.10.4/example` line to match the installed version.
 
     {:.file }
     /etc/init.d/solr
@@ -428,7 +428,7 @@ If Solr is installed on a different server from WordPress, repeat the test from 
 
 ### Install the WPSolr Plugin 
 
-1.  Install the [WPSolr](https://wordpress.org/plugins/wpsolr-search-engine/) WordPress plugin, either through your WordPress admin console, or by downloading the files into your `plugins/` directory.
+1.  Install the [WPSolr](https://wordpress.org/plugins/wpsolr-search-engine/) WordPress plugin, either through your WordPress admin console or by downloading the files into your `plugins/` directory.
 
 
 2.  On the **Plugins** page, activate the plugin named **Enterprise Search in seconds**:
@@ -473,7 +473,7 @@ If Solr is installed on a different server from WordPress, repeat the test from 
 
     -   **Post types to be indexed**: Selecting all of them is recommended. **Post** indexes all blog posts, **page** all pages (such as about pages), and **attachment** all documents (such as PDFs and DOC files).
 
-    -   **Custom taxonomies to be indexed**: Generally there is no need to enter anything here; however, if Wordpress has been customized to organize blog posts in ways other than categories and tags, then enter the name of the taxonomy here.
+    -   **Custom taxonomies to be indexed**: Generally there is no need to enter anything here; however, if Wordpress has been customized to organize blog posts in ways other than categories and tags, enter the name of the taxonomy here.
 
     -   **Custom fields to be indexed**: Generally there is no need to select anything here. 
 
@@ -534,7 +534,7 @@ The following steps will be completed while on your blog.
 
     [![Search Results](/docs/assets/wpsolr_search_results_resized.png)](/docs/assets/wpsolr_search_results.png)
 
-3.  Test **autocorrection suggestions** by entering a word with some spelling mistakes, or a word that does not occur in any of your blog posts. It should show *Did you mean* suggestions:
+3.  Test **autocorrection suggestions** by entering a word with some spelling mistakes or a word that does not occur in any of your blog posts. It should show *Did you mean* suggestions:
 
     [![Did you mean suggestions](/docs/assets/wpsolr_search_results_did_you_mean_resized.png)](/docs/assets/wpsolr_search_results_did_you_mean.png)
 
@@ -552,7 +552,7 @@ Search engine data is stored in the `/opt/solr-4.10.4/example/solr/collection1/d
 
 If you have a data backup procedure for your server, you can back up search data by including the `/opt/solr-4.10.4/example/solr/collection1/data` directory in the backup. 
 
-The backing up of search data is not critical, since it can always be recreated from the WordPress database; however, for very large blogs with thousands of posts and attachments, backing up and restoring search data will be much faster than recreating it. Overall, when migrating or merging a blog from another WordPress server, the recommended approach is to *recreate* the search data.
+The backing up of search data is not critical, since it can always be recreated from the WordPress database. However, for very large blogs with thousands of posts and attachments, backing up and restoring search data will be much faster than recreating it. Overall, when migrating or merging a blog from another WordPress server, the recommended approach is to *recreate* the search data.
 
 After a migration or merger, go to the **Solr Operations** option located at the WPSOLR plugin section of your administration panel and press the **Synchronize Wordpress with my Solr index** to recreate the search data.
 

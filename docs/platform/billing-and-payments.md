@@ -29,7 +29,7 @@ All services are billed automatically at the end of the month. If you used a ser
 | Linode 4GB  | $0.06/hr    | $40/mo  | $0.016/hr           | $10/mo
 | Linode 8GB  | $0.12/hr    | $80/mo  | $0.03/hr            | $20/mo
 | Linode 16GB | $0.24/hr    | $160/mo | $0.06/hr            | $40/mo
-| Linode 32Gb | $0.48/hr    | $320/mo | $0.12/hr            | $80/mo
+| Linode 32GB | $0.48/hr    | $320/mo | $0.12/hr            | $80/mo
 | Linode 48GB | $0.72/hr    | $480/mo | $0.18/hr            | $120/mo
 | Linode 64GB | $0.96/hr    | $640/mo | $0.24/hr            | $160/mo
 | Linode 96GB | $1.44/hr    | $960/mo | $0.36/hr            | $240/mo
@@ -79,7 +79,7 @@ If you want to stop being billed for a particular Linode service, you need to [r
 
 ## Payment Methods
 
-We accept Visa, MasterCard, Discover, and American Express. We also accept checks and money orders (which *must* be in USD) made out to "Linode, LLC" and sent to our [office address](http://www.linode.com/about/). Please [contact support](/docs/support) before paying with check or money order. Note that we do not accept bank/wire transfers, and we have no plans to support PayPal at this time.
+We accept Visa, MasterCard, Discover, and American Express. We also accept checks and money orders (which *must* be in USD) made out to "Linode, LLC" and sent to our [office address](http://www.linode.com/contact#contact-address). Please [contact support](/docs/support) before paying with check or money order. Note that we do not accept bank/wire transfers, and we have no plans to support PayPal at this time.
 
 If you overpay, credit will be applied to your account; this allows you to prepay if desired. Service credit is always used before charging the credit card on file for ongoing service.
 

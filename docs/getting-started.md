@@ -3,189 +3,231 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Our guide to deploying your first Linode.'
-keywords: 'linode guide,getting started,linode quickstart'
+keywords: 'linode guide,getting started,linode quickstart,quick start,boot,configuration profile,update,hostname,timezone,SSH'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Wednesday, July 1st, 2015
+modified: Monday August 24th, 2015
 modified_by:
   name: Linode
 published: 'Sunday, July 19th, 2009'
-title: Getting Started
+title: Getting Started with Linode
 ---
 
-Congratulations on selecting Linode as your cloud hosting provider! We're glad you've decided to join our community, and we're excited to help you get started with your first Linode server. This guide will help you sign up for an account, deploy a Linux distribution, boot your Linode, and perform some basic system administration tasks. By the time you reach the end, you'll have a Linode up and running in the data center of your choice.
+Congratulations on selecting Linode as your cloud hosting provider! This guide will help you sign up for an account, deploy a Linux distribution, boot your Linode, and perform some basic system administration tasks.
 
 ## Signing Up
 
-If you haven't already signed up for a Linode account, do that first. Follow these steps:
+If you haven't already signed up for a Linode account, start here.
 
-1.  Visit the [Sign Up webpage](https://manager.linode.com/signup) and create a new account.
-2.  Once you've signed in, enter your billing and account information. Most accounts are activated instantly, but some accounts require manual review prior to activation. If your account is not immediately activated, please check your email for additional instructions.
-3.  Select a Linode plan and data center, as shown below.
+1.  Create a new account at the [Sign Up page](https://manager.linode.com/signup).
+2.  Sign in and enter your billing and account information. Most accounts are activated instantly but some require manual review prior to activation. If your account is not immediately activated, you will receive an email with additional instructions.
+3.  Select a Linode plan and data center location
 
-    [![Available Linode plans.](/docs/assets/1744-getting-started1_small.png)](/docs/assets/1743-getting-started1.png)
+    [![Available Linode plans](/docs/assets/linode-manager-select-plan_small.png)](/docs/assets/linode-manager-select-plan.png)
 
-If you don't know which data center to select, try downloading our [speed test](http://www.linode.com/speedtest) to find the location that provides the best performance for your target audience. European users may find that the London or Frankfurt data centers offer the best performance, and many users in Asia and Australia select the Singapore or Fremont data centers. You can also generate [MTR reports](/docs/networking/diagnosing-network-issues-with-mtr/) for each of the data centers to determine which of our facilities provides the best latency from your particular location.
+If you're unsure of which data center to select, see our [speed test](http://www.linode.com/speedtest) to determine which location provides the best performance for your target audience. You can also generate [MTR reports](/docs/networking/diagnosing-network-issues-with-mtr/) for each of the data centers to determine which of our facilities provides the best latency from your particular location.
 
 ## Provisioning Your Linode
 
-After your Linode is created, you'll need to prepare it for operation. In this section you'll log in to the Linode Manager and deploy a Linux distribution.
+After your Linode is created, you'll need to prepare it for operation by deploying a Linux distribution.
 
 ### Logging in to the Linode Manager
 
-The [Linode Manager](https://manager.linode.com) is a web-based control panel that allows you to manage your Linode virtual servers and services. Log in now by entering the username and password you created when you signed up. After you've created your first Linode, you can use the Linode Manager to boot and shut down your virtual server, access monitoring statistics, update your billing and account information, request support, and perform other administrative tasks.
+The [Linode Manager](https://manager.linode.com) is a web-based control panel that allows you to manage your Linode virtual servers and services. Log in with the `username` and `password` you created when you signed up. After you've created your first Linode, you can use the Linode Manager to:
+
+* Boot and shut down your virtual server,
+* Access monitoring statistics, 
+* Update your billing and account information, 
+* Request support and perform other administrative tasks.
 
 ### Deploying an Image
 
-After creating your new Linode, select it and then click on **Deploy an Image**. You'll be prompted to deploy a *Linux distribution*, as shown below. This is the operating system that will be installed on your Linode. You can choose from [Arch Linux](http://www.archlinux.org/), [CentOS](http://www.centos.org/), [Debian](http://www.debian.org/), [Fedora](http://fedoraproject.org/), [Gentoo](http://www.gentoo.org/), [openSUSE](http://www.opensuse.org/en/), [Slackware](http://www.slackware.com/), and [Ubuntu](http://www.ubuntu.com/).
+After creating a new Linode, select it and you'll be taken to the Linode Manager Dashboard.
 
-[![Select a data center.](/docs/assets/902-linode-manager-2-2-small.png)](/docs/assets/896-linode-manager-2.png)
+1.  Click on **Deploy an Image**.
 
-Here's how to deploy a Linux distribution:
+    [![Linux Dashboard](/docs/assets/linode-manager-dashboard-newacct_small.png)](/docs/assets/linode-manager-dashboard-newacct.png)
 
-1.  Select a Linux distribution from the **Image** menu. You should choose the distribution that you are most comfortable with. If you're new to the Linux operating system, consider selecting Ubuntu 14.04 LTS. Ubuntu is the most popular distribution among Linode customers, and the LTS version is a stable distribution we use as an example throughout this Library.
-2.  Enter a size for the disk in the **Deployment Disk Size** field. By default, all of the available space is allocated, but you can set a lower size if you plan on cloning a disk or creating different configuration profiles. You can always create, resize, and delete disks later.
-3.  Select a size for the swap disk from the **Swap Disk** menu. We strongly recommend using the default size.
-4.  Enter a root password for your Linode in the **Root Password** field. The password must be at least 6 characters long and contain characters from two of the following categories: lower case letters, upper case letters, numbers, and punctuation. Don't forget this credential! You'll need it to log in to your Linode via SSH.
-5.  Click **Deploy**.
+    You'll be taken to the *Deploy* page.
 
- {: .note }
->
-> Need to create a fully-functional Linode fast? Use a [StackScript](http://www.linode.com/stackscripts) to deploy a customized Linux distribution in a matter of minutes. Some of the most popular StackScripts do things like install the Apache web server, configure a firewall, and set up the WordPress content management system. They're easy to use. Just find a StackScript, complete the form, and deploy.
+    [![Deploy a Linux Image](/docs/assets/linode-manager-deploy-an-image_small.png)](/docs/assets/linode-manager-deploy-an-image.png)
 
-### Monitoring the Provisioning Status
+2.  Select a Linux distribution from the **Image** menu. You can choose from [Arch Linux](http://www.archlinux.org/), [CentOS](http://www.centos.org/), [Debian](http://www.debian.org/), [Fedora](http://fedoraproject.org/), [Gentoo](http://www.gentoo.org/), [openSUSE](http://www.opensuse.org/), [Slackware](http://www.slackware.com/), and [Ubuntu](http://www.ubuntu.com/) to install on your Linode. If you're new to the Linux operating system, consider selecting Ubuntu 14.04 LTS. Ubuntu is the most popular distribution among Linode customers and one of the most well supported by online communities, so resolving any issues you may have should be simple.
 
-When you click the **Deploy** button, the Linode Manager will start provisioning your server in the data center you selected, a process that can take several minutes to complete. You can use the Linode Manager's Dashboard to monitor the progress in real time, as shown below.
+3.  Enter a size for the disk in the **Deployment Disk Size** field. By default all of the available space is allocated, but you can set a lower size if you plan on cloning a disk or creating multiple configuration profiles. You can always create, resize, and delete disks later.
 
-[![Select a data center.](/docs/assets/900-linode-manager-3-2-small.png)](/docs/assets/898-linode-manager-3.png)
+4.  Select a swap disk size from the **Swap Disk** menu.
 
-Your Linode's configuration profile will appear on the Linode Manager Dashboard when the provisioning process is complete.
+5. Enter a root password for your Linode in the **Root Password** field. This password must be provided when you log in to your Linode via SSH and must be at least 6 characters long and contain characters from two of the following categories:
+
+    -   lowercase and uppercase case letters
+    -   numbers
+    -   punctuation characters
+
+6.  Click **Deploy**.
+
+    You can use the Linode Manager's Dashboard to monitor the progress in real time as shown below.
+
+    [![Provisioning Status](/docs/assets/linode-manager-provisioning-status_small.png)](/docs/assets/linode-manager-provisioning-status.png)
+
+    When the deployment process is completed, your Linode's configuration profile will appear on the Dashboard.
+
+    [![Configuration Profile](/docs/assets/linode-manager-configuration-profile_small.png)](/docs/assets/linode-manager-configuration-profile.png)
+
+    {: .note }
+    >
+    > Use a [StackScript](http://www.linode.com/stackscripts) to quickly deploy a customized Linux distribution. Some of the most popular StackScripts do things like install the Apache web server, configure a firewall, and set up the WordPress content management system. They're easy to use. Just find a StackScript, complete the form, and deploy.
 
 ## Booting Your Linode
 
-Your Linode is now fully provisioned and available in the data center you selected, but it's turned off. Here's how to boot your Linode:
+Your Linode is now provisioned with the distro of your choice but it's turned off, as indicated in the Dashboard.
 
-1.  Log in to the [Linode Manager](https://manager.linode.com).
-2.  Click the **Linodes** tab.
-3.  Select your Linode. The dashboard appears, as shown below.
+Click **Boot** to turn on your Linode.
 
-    [![Select a data center.](/docs/assets/945-linode-manager-4-1-small.png)](/docs/assets/946-linode-manager-4-1.png)
+[![Boot your Linode](/docs/assets/linode-manager-power-on-linode_small.png)](/docs/assets/linode-manager-power-on-linode.png)
 
-4.  Click **Boot** to turn on your Linode. Notice how the boot job appears in the **Host Job Queue**, as shown below.
+When booted, the **Server Status** will change from **Powered Off** to **Running** and there will be a successfully completed **System Boot** job in the **Host Job Queue**.
 
-    [![Select a data center.](/docs/assets/1199-linode-manager-5-2-small.png)](/docs/assets/1200-linode-manager-5-2.png)
-
-Now your Linode is running in the data center you selected.
+[![Linode Booted](/docs/assets/linode-manager-linode-booted_small.png)](/docs/assets/linode-manager-linode-booted.png)
 
 ## Connecting to Your Linode
 
-It's time to connect to your Linode using the secure shell (SSH) protocol. SSH encrypts all of the data transferred between an *SSH client* on your computer and the Linode, effectively protecting your passwords and other sensitive information. There are SSH clients available for every operating system:
+Communicating with your Linode is usually done using the secure shell (SSH) protocol. SSH encrypts all of the data transferred between the SSH client application on your computer and the Linode, including passwords and other sensitive information. There are SSH clients available for every operating system.
 
--   **Linux:** You can use a terminal window, no matter what GUI is installed.
--   **Mac:** Use the Terminal application that comes installed on every Mac. You can find it in the *Utilities* folder. You can also use the free [iTerm 2 application](http://www.iterm2.com/).
--   **Windows:** There is no native SSH client available, but you can use a free, open source application called [PuTTY](/docs/networking/using-putty).
+### SSH Overview
 
-To learn more about connecting to your Linode for the first time **with Windows**, please watch the following video.
+-   **Linux:** You can use a terminal window, regardless of desktop environment or window manager.
+-   **Mac:** The *Terminal* application comes pre-installed with OS X and you can launch it from *Finder* > *Applications* > *Utilities*. You could also use the free [iTerm 2 application](http://www.iterm2.com/). For a walkthrough of connecting to your Linode for the first time **with OS X** (which also directly applies to Linux), see the following video:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/eEsCD7n17mk?rel=0" frameborder="0" allowfullscreen></iframe>
-To learn more about connecting to your Linode for the first time **with OS X**, please watch the following video.
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/VVs9Ed-HkjE" frameborder="0" allowfullscreen></iframe>
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/VVs9Ed-HkjE" frameborder="0" allowfullscreen></iframe>
+-   **Windows:** There is no native SSH client but you can use a free, open source application called [PuTTY](/docs/networking/using-putty). For a walkthrough of connecting to your Linode in Windows using PuTTY, see the following video:
 
- {: .note }
->
-> These videos were created by [Treehouse](http://www.teamtreehouse.com), which is offering Linode customers a free one month trial. [Click here](http://teamtreehouse.com/join/free-month?utm_source=linode&utm_medium=partnership&utm_campaign=linode-2013&cid=1124) to start your free trial and start learning web design, web development, and more.
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/eEsCD7n17mk" frameborder="0" allowfullscreen></iframe>
+
+    {: .note }
+    >
+    > These videos were created by [Treehouse](http://www.teamtreehouse.com), which is offering Linode customers a free one month trial. [Click here](http://teamtreehouse.com/join/free-month?utm_source=linode&utm_medium=partnership&utm_campaign=linode-2013&cid=1124) to start your free trial and start learning web design, web development, and more.
 
 ### Finding the IP Address
 
 Your Linode has a unique *IP address* that identifies it to other devices and users on the Internet. For the time being, you'll use the IP address to connect to your server. After you perform some of these initial configuration steps outlined in the Linode Quick Start Guides, you can use [DNS records](/docs/hosting-website#sph_adding-dns-records) to point a domain name at your server and give it a more recognizable and memorable identifier.
 
-Here's how to find your Linode's IP address:
+Here's how to find your Linode's IP address from the [Linode Manager](https://manager.linode.com).
 
-1.  Log in to the [Linode Manager](https://manager.linode.com).
-2.  Click the **Linodes** tab.
-3.  Select your Linode.
-4.  Click the **Remote Access** tab. The webpage shown below appears.
+1.  Click the **Linodes** tab.
+2.  Select your Linode.
+3.  Click the **Remote Access** tab.
+4.  Copy the addresses in the Public IPs section.
 
-[![Public IPs.](/docs/assets/1711-remote_access_ips_small.png)](/docs/assets/1710-remote_access_ips.png)
-
-5.  Copy the addresses in the Public IPs section.
+    [![Public IPs.](/docs/assets/1711-remote_access_ips_small.png)](/docs/assets/1710-remote_access_ips.png)
 
 In this example, the Linode's IPv4 address is *96.126.109.54* and its IPv6 address is *2600:3c03::f03c:91ff:fe70:cabd*. Unless your Internet service provider supports IPv6, you'll want to the use the IPv4 address.
 
 ### Logging in for the First Time
 
-Once you have the IP address and an SSH client, you're ready to log in via SSH. Here's how:
+Once you have the IP address and an SSH client, you can log in via SSH. The following instructions are written for Linux and Mac OS X. If you're using PuTTY as your SSH client in Windows, follow [these instructions](/docs/networking/using-putty).
 
- {: .note }
->
-> The following instructions are written for Linux and Mac OS X users. If you're using PuTTY as your SSH client, follow [these instructions](/docs/networking/using-putty).
-
-1.  Open the terminal window or application, type the following command, and then press Enter. Be sure to replace the example IP address with your Linode's IP address.
+1.  Enter the following into your terminal window or application. Be sure to replace the example IP address with your Linode's IP address.
 
         ssh root@123.456.78.90
 
-2.  If the warning shown below appears, type `yes` and press Enter to continue connecting.
+2.  If this is the first time connecting to your Linode, you'll see the authenticity warning below. This is because your SSH client has never encountered the server's key fingerprint before. Type `yes` and press **Enter** to continue connecting.
 
         The authenticity of host '123.456.78.90 (123.456.78.90)' can't be established.
         RSA key fingerprint is 11:eb:57:f3:a5:c3:e0:77:47:c4:15:3a:3c:df:6c:d2.
         Are you sure you want to continue connecting (yes/no)?
 
-3.  The log in prompt appears, as shown below. Enter the password you created for the `root` user.
+3.  The login prompt appears for you to enter the password you created for the `root` user above.
 
         root@123.456.78.90's password:
 
-4.  The SSH client initiates the connection. You know you are logged in when the following prompt appears:
+4.  The SSH client initiates the connection. You'll know you're logged in when the following prompt appears:
 
         Warning: Permanently added '123.456.78.90' (RSA) to the list of known hosts.
         root@li123-456:~# 
 
-Now you can start executing commands on your Linode.
-
  {: .note }
 >
 > If you recently rebuilt an existing Linode, you might receive an error message when you try to
-> :   reconnect via SSH. That's because SSH clients try to match the remote host with the known keys on your desktop computer. When you rebuild your Linode, the remote host key changes. To fix this problem, edit the SSH known\_hosts file on your desktop computer and remove the entries for your Linode's IP address. Linux and Mac OS X users can edit the SSH `known_hosts` file by entering this command in a terminal window:
+> reconnect via SSH. SSH clients try to match the remote host with the known keys on your desktop computer, so when you rebuild your Linode, the remote host key changes.
+>
+>Revoking the key for that IP address will fix the problem. For Linux and Mac OS X:
 >
 > ~~~
-> nano ~/.ssh/known_hosts
+> ssh-keygen -R 123.456.789
 > ~~~
-
-{:.note}
-> PuTTY users can find the known hosts in this registry entry:
+>
+> PuTTY users must remove the old host IP addresses manually. PuTTY's known hosts are in the registry entry:
 >
 >     HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\SshHostKeys
+
+## Installing Software Updates
+
+The first thing you should do when connecting to your Linode is update the Linux distribution's software. This applies the latest security patches and bug fixes to help protect your Linode against unauthorized access.
+
+Installing software updates should be performed *regularly*. If you need help remembering, try creating a monthly alert with the calendar application on your desktop computer.
+
+### Ubuntu / Debian
+
+    apt-get update && apt-get upgrade
+
+### CentOS / Fedora
+
+    yum update
+
+### Arch Linux
+
+    pacman -Syu
+
+### Gentoo
+
+    emerge --sync
+    emerge-webrsync
+
+### Slackware
+
+Slackpkg is the easiest way to update Slackware installations. See the [Slackpkg documentation](http://slackpkg.org/documentation.html) for installation and upgrade instructions.
 
 ## Setting the Hostname
 
 You'll need to set your system's hostname and fully qualified domain name (FQDN). Your hostname should be something unique. Some people name their servers after planets, philosophers, or animals. Note that the system's hostname has no relationship to websites or email services hosted on it, aside from providing a name for the system itself. Your hostname should *not* be "www" or anything too generic.
 
- {: .note }
->
-> If you're unfamiliar with Linux, one of the first things you'll need to learn is how to use [nano](/docs/linux-tools/text-editors/nano), a text editor included with most distributions. To open a file for editing, type `nano file.txt` where "file.txt" is the name of the file you want to create or edit. When you're finished editing, press `Control-X` and then `Y` to save the changes.
+Once you're done, you can verify by running the command `hostname`.
 
-To learn more about setting your system's hostname and timezone, please watch the following video.
+{: .note }
+>
+> If you're unfamiliar with Linux, one of the first things you'll need to learn is how to use [nano](/docs/linux-tools/text-editors/nano), a text editor included with most distributions. To open a file for editing, type `nano file.txt` where "file.txt" is the name of the file you want to create or edit. If the file is not in your current working directory, specify the entire file path. For example, open the `hosts` file with:
+>
+>     nano /etc/hosts
+>
+>When you're finished editing, press `Control-X`, then `Y` to save the changes and `Enter` to confirm.
+
+For a walkthrough of setting system's hostname and timezone, see the following video:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/KFd66g4k4i8" frameborder="0" allowfullscreen></iframe>
-
 
 {: .note }
 >
 > This video was created by [Treehouse](http://www.teamtreehouse.com), which is offering Linode customers a free one month trial. [Click here](http://teamtreehouse.com/join/free-month?utm_source=linode&utm_medium=partnership&utm_campaign=linode-2013&cid=1124) to start your free trial and start learning web design, web development, and more.
 
-### Ubuntu 15.04 / Debian 8
+### Arch / CentOS 7 / Debian 8 / Fedora version 18 and above / Ubuntu 15.04 
 
-Enter the following command to set the hostname, replacing `hostname` with the hostname of your choice:
+Replace `hostname` with one of your choice.
 
     hostnamectl set-hostname hostname
 
-### Ubuntu 14.04 / Debian 7
+### Debian 7 / Slackware / Ubuntu 14.04
 
-Enter following commands to set the hostname, replacing `hostname` with the hostname of your choice:
+Replace `hostname` with one of your choice.
 
     echo "hostname" > /etc/hostname
     hostname -F /etc/hostname
 
-If it exists, edit the file `/etc/default/dhcpcd` to comment out the `SET_HOSTNAME` directive:
+Check if the file `/etc/default/dhcpcd` exists, and it's contents.
+
+    cat /etc/default/dhcpcd | grep SET_HOSTNAME
+
+If the returned value is `SET_HOSTNAME='yes'`, edit `/etc/default/dhcpcd` and comment out the `SET_HOSTNAME` directive:
 
 {: .file-excerpt }
 /etc/default/dhcpcd
@@ -193,27 +235,12 @@ If it exists, edit the file `/etc/default/dhcpcd` to comment out the `SET_HOSTNA
   #SET_HOSTNAME='yes'
   ~~~
 
-### CentOS 7 / Fedora version 18 and above
-
-
-Enter the following command to set the hostname, replacing `hostname` with the hostname of your choice:
-
-    hostnamectl set-hostname hostname
-
-
 ### CentOS 6 / Fedora version 17 and below
 
-Enter the following commands to set the hostname, replacing `hostname` with the hostname of your choice:
+Replace `hostname` with one of your choice.
 
     echo "HOSTNAME=hostname" >> /etc/sysconfig/network
     hostname "hostname"
-
-### Slackware
-
-Enter the following commands to set the hostname, replacing `hostname` with the hostname of your choice:
-
-    echo "hostname" > /etc/HOSTNAME
-    hostname -F /etc/HOSTNAME
 
 ### Gentoo
 
@@ -222,30 +249,32 @@ Enter the following commands to set the hostname, replacing `hostname` with the 
     echo "HOSTNAME=\"hostname\"" > /etc/conf.d/hostname
     /etc/init.d/hostname restart
 
-### Arch Linux
-
-Enter the following command to set the hostname, replacing `hostname` with the hostname of your choice:
-
-    hostnamectl set-hostname hostname
-
 ### Update /etc/hosts
 
-Next, edit your `/etc/hosts` file to resemble the following example, replacing `hostname` with your chosen hostname, `example.com` with your system's domain name, and `12.34.56.78` with your system's IP address. As with the hostname, the domain name part of your FQDN does not necessarily need to have any relationship to websites or other services hosted on the server (although it may if you wish). As an example, you might host "www.something.com" on your server, but the system's FQDN might be "mars.somethingelse.com."
+Update the `/etc/hosts` file. This file creates static associations between IP addresses and hostnames, with higher priority than DNS. 
+
+1.  Every `hosts` file should begin with the line `127.0.0.1 localhost.localdomain localhost`, although the naming may be slightly different between Linux distributions. `127.0.0.1` is the [**loopback address**](https://en.wikipedia.org/wiki/Loopback#Virtual_loopback_interface), and is used to send IP traffic internally on the system. You can leave this line alone.
+
+    Some distributions may also ship with a line for `127.0.1.1` in their `hosts file`. This is the loopback domain, and can be ignored in most cases.
+
+2.  Add a line for your Linode's public IP address. You can associate this address with your Linoode's **Fully Qualified Domain Name** (FQDN) if you have one, and with the local hostname you set in the steps above. In the example below, `203.0.113.10` is our public IP address, `hostname` is our local hostname, and `hostname.example.com` is our FQDN.
+
+As with the hostname, the domain name part of your FQDN does not necessarily need to have any relationship to websites or other services hosted on the server (although it may if you wish). As an example, you might host "www.something.com" on your server, but the system's FQDN might be "mars.somethingelse.com."
 
 {:.file }
 /etc/hosts
 : ~~~ 
-  127.0.0.1 localhost.localdomain localhost 
-  12.34.56.78 hostname.example.com hostname
+  127.0.0.1 localhost.localdomain localhost
+  203.0.113.10 hostname.example.com hostname
   ~~~
 
-If you have IPv6 enabled on your Linode, you will also want to add an entry for your IPv6 address, as shown in this example:
+If you have IPv6 enabled on your Linode, you may also want to add an entry for your IPv6 address, as shown in this example:
 
 {:.file }
 /etc/hosts
 : ~~~
-  127.0.0.1 localhost.localdomain localhost 
-  12.34.56.78 hostname.example.com hostname 
+  127.0.0.1 localhost.localdomain localhost
+  203.0.113.10 hostname.example.com hostname
   2600:3c01::a123:b456:c789:d012 hostname.example.com hostname
   ~~~
 
@@ -253,97 +282,47 @@ The value you assign as your system's FQDN should have an "A" record in DNS poin
 
 ## Setting the Timezone
 
-You can change your Linode's timezone to whatever you want it to be. It may be best to set it to the same timezone of most of your users. If you're unsure which timezone would be best, consider using universal coordinated time or UTC (also known as Greenwich Mean Time).
+By default, a Linode's Linux image will be set to UTC time (also known as Greenwich Mean Time) but this can be changed. It may be better to use the same timezone which a majority of your users are located in, or that you live in to make log file timestamps more sensible.
 
-### Ubuntu / Debian
-
-Enter the following command to access the timezone utility:
+### Debian / Ubuntu
 
     dpkg-reconfigure tzdata
 
 ### Arch Linux and CentOS 7
 
-Enter the following command to view a list of available time zones:
+View the list of available time zones.
 
     timedatectl list-timezones
 
-Use the up and down arrows to view all the available time zones. Then, press **CTRL-C** to exit the list of time zones.
+Use the `Up`, `Down`, `Page Up` and `Page Down` keys to navigate. Find the time zone which you want. Remember it, write it down or copy it as a mouse selection. Then press **q** to exit the list.
 
-Enter the following command to set the time zone:
+To set the time zone:
 
-    timedatectl set-timezone America/New_York
+    timedatectl set-timezone 'America/New_York'
 
 ### All Other Distributions
 
-Manually create a link from a zone file in `/usr/share/zoneinfo` to `/etc/localtime`. You must find the zone file for your timezone. See the examples below for common possibilities.
+Manually symlink a zone file in `/usr/share/zoneinfo` to `/etc/localtime`.
 
- {: .note }
->
-> Use only one command (e.g. `ln -sf /usr/share/zoneinfo/UTC /etc/localtime`) to set the timezone. Do not paste the comment (e.g. `## for Universal Coordinated Time`) in to your terminal window.
+1.  View the list of available zone files.
 
-    ln -sf /usr/share/zoneinfo/UTC /etc/localtime ## for Universal Coordinated Time
+        ls /usr/share/zoneinfo
 
-    ln -sf /usr/share/zoneinfo/EST /etc/localtime ## for Eastern Standard Time
+2.  Then create the link using the zone file you want.
 
-    ln -sf /usr/share/zoneinfo/US/Central /etc/localtime ## for American Central
+    *Example*:
 
-    ln -sf /usr/share/zoneinfo/US/Eastern /etc/localtime ## for American Eastern
+        ln -sf /usr/share/zoneinfo/EST /etc/localtime ## for Eastern Standard Time
 
 ### Checking the Time
 
-Now try entering the following command to view the current date and time according to your server:
+View the current date and time according to your server.
 
     date
 
-The output should look similar to this: `Thu Feb 16 12:17:52 EST 2012`.
+The output should look similar to: `Thu Feb 16 12:17:52 EST 2012`.
 
-## Installing Software Updates
-
-Now you need to install the available software updates for your Linode's Linux distribution. Doing so patches security holes in packages and helps protect your Linode against unauthorized access.
-
- {: .note }
->
-> Installing software updates on your Linode is a task that you will need to perform regularly in future. If you need help remembering, try creating a monthly alert with the calendar application on your desktop computer.
-
-### Ubuntu / Debian
-
-Enter the following commands to check for and install software updates:
-
-    apt-get update
-    apt-get upgrade --show-upgraded
-
-### CentOS / Fedora
-
-Enter the following commands to check for and install software updates:
-
-    yum update
-
-### Arch Linux
-
-{:.caution }
->
->Due to upstream changes in the OpenSSH package used by Arch, the OpenSSH package defaults to disallowing password based root SSH login.  Ensure that you have followed the steps for [Using SSH Key Pair Authentication](/docs/security/securing-your-server/#using-ssh-key-pair-authentication) prior to upgrading your system.  If you have been locked out of your system after upgrading, you can connect to your Linode via [Lish](https://www.linode.com/docs/networking/remote-access/#console-access) and modify the following value in your `/etc/ssh/sshd_conf'
->
->     PermitRootLogin yes
-
-Before you can update the system, you need to create entropy, initiate pacman-key and populate the keyring.
-
-    haveged -w 1024
-    pacman-key --init
-    pkill haveged
-    pacman-key --populate archlinux
-
-You should now be set to update the system
-
-    pacman -Syu
- 
 ## Next Steps
 
-Good work! Now you have an up-to-date Linode running in the data center of your choice. Next, you'll need to secure your Linode and protect it from unauthorized access. Read the [Securing Your Server](/docs/securing-your-server) quick start guide to get going!
-
- {: .note }
->
-> From this point forward, all of the guides in the Linode Library are written for the Ubuntu and Debian distributions. If you're using a different distribution, keep in mind that the procedures and commands might not be exactly the same.
-
-
+Now that you have an up-to-date Linode, you'll need to secure your Linode and protect it from unauthorized access. Read the [Securing Your Server](/docs/security/securing-your-server) quick start guide to get going.
 

@@ -12,7 +12,7 @@ published: 'Friday, January 9, 2015'
 title: High Availability WordPress Hosting
 ---
 
-This guide configures a high availability WordPress site with a two Linode cluster, using MySQL Master-Master replication and a Linode NodeBalancer frontend.
+This guide configures a high availability WordPress site with a two-Linode cluster, using MySQL Master-Master replication and a Linode NodeBalancer front-end.
 
 ##Prerequisites
 
@@ -86,7 +86,7 @@ Use the following commands to install Apache, PHP, and MySQL on each of the Lino
 
         mysql -u root -p
 
-2.  Configure the replication users on each Linode. Replace `x.x.x.x` with the private IP address of the opposing Linode, and `password` with a strong password:
+2.  Configure the replication users on each Linode. Replace `x.x.x.x` with the private IP address of the opposing Linode and `password` with a strong password:
 
         GRANT REPLICATION SLAVE ON *.* TO 'replication'@'x.x.x.x' IDENTIFIED BY 'password';
 
@@ -226,7 +226,7 @@ The steps in this section will need to be performed on **both** of your Linodes.
 
     {: .note}
     >
-    >After completing your WordPress installation steps and logging in for the first time, you should reset  permissions on your Document Root directory to ensure additional security. You can do so with the following command.
+    >After completing your WordPress installation steps and logging in for the first time, you should reset permissions on your Document Root directory to ensure additional security. You can do so with the following command:
     >
     >
     >     chmod 755 /var/www/example.com/public_html/
@@ -277,7 +277,7 @@ The steps in this section will need to be performed on **both** of your Linodes.
         }
         ~~~
 
-3.  Start the Lsyncd daemon.
+3.  Start the Lsyncd daemon:
 
         service lsyncd start
 
@@ -285,7 +285,7 @@ The steps in this section will need to be performed on **both** of your Linodes.
 
         service lsyncd status
 
-    If this command returns something other than `lsyncd is running.`, double-check your `lsyncd.conf.lua` file and ensure that the RSA public key is in the right location on the secondary server. 
+    If this command returns something other than `lsyncd is running`, double-check your `lsyncd.conf.lua` file and ensure that the RSA public key is in the right location on the secondary server. 
 
 5.  Test replication by creating a file in your primary Linode's `/var/www` folder.  You should be able to see that same file in that location on the second Linode within a few seconds.
 
@@ -293,9 +293,9 @@ The steps in this section will need to be performed on **both** of your Linodes.
 
 1.  Visit the NodeBalancers tab in the Linode Manager.
 
-2.  If you have not done so already, add a NodeBalancer, ensuring that it is in the same datacenter as your backend Linodes.
+2.  If you have not done so already, add a NodeBalancer, ensuring that it is in the same datacenter as your back-end Linodes.
 
-3.  Select your new NodeBalancer, and click "Create Configuration." Edit your configuration settings as follows:
+3.  Select your new NodeBalancer and click "Create Configuration." Edit your configuration settings as follows:
 
         Port: 80
         Protocol: HTTP
@@ -307,6 +307,6 @@ The steps in this section will need to be performed on **both** of your Linodes.
 
 5.  When you have added both of your nodes, ensure that the health checks mark them as up. Once both nodes are showing as up, return to the NodeBalancer's main page and note the IP address listed. You should now be able to navigate to that IP address and view your webpage.
 
-In order to test the high availability functionality, either stop the Apache2/MySQL services on one of your nodes, or power them down one at a time. The website should continue to be served without issue even when one of the nodes is marked as down.
+In order to test the high-availability functionality, either stop the Apache2/MySQL services on one of your nodes or power them down one at a time. The website should continue to be served without issue even when one of the nodes is marked as down.
 
-Congratulations, you have now configured your high availability WordPress site!
+Congratulations, you have now configured your high-availability WordPress site!

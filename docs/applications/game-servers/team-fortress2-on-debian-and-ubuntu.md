@@ -5,126 +5,73 @@ author:
 description: 'A basic Team Fortress 2 server installation guide for Debian and Ubuntu'
 keywords: 'team fortress 2,team fortress,steam,ubuntu,debian'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Thursday, March 12th, 2015
+modified: Thursday, February 25th, 2016
 modified_by:
-  name: Elle Krout
+  name: Linode
 published: 'Thursday, March 12th, 2015'
 title: 'Team Fortress 2 on Debian and Ubuntu'
 ---
 
-Team Fortress 2 is a team-based, first-person shooter, where you and a team of fellow players can play a variety of game modes. From capture the flag, to a battle pitting your team against a robotic horde, there are numerous options to choose. Setting up a personal game server puts you in control of what game modes and maps you use, as well as a variety of other settings to customize your experience.
+[Team Fortress 2](http://teamfortress.com/) is a team-based, first-person shooter, where you and a team of fellow players can play a variety of game modes. From capture the flag, to a battle pitting your team against a robotic horde, there are numerous options to choose. Setting up a personal game server puts you in control of what game modes and maps you use, as well as a variety of other settings to customize your experience.
 
-##Prerequisites
+## Before You Begin
 
-Prior to installing Team Fortress 2, create a user for Steam and set up the Steam Console Client, SteamCMD, which allows you to use a command line version of Steam. You may also need to update your firewall permissions.
+1.  You will need a [Steam](http://store.steampowered.com) account and a copy of [Team Fortress 2](http://store.steampowered.com/app/440/).
 
-###Prepare Your Server
+2.  Complete our guide: [Install SteamCMD for a Steam Game Server](/docs/applications/game-servers/install-steamcmd-for-a-steam-game-server). This will get SteamCMD installed and running on your Linode and this guide will pick up where the SteamCMD page leaves off.
 
-1.  Update your Linode:
+{: .note}
+>
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
-		sudo apt-get update && sudo apt-get upgrade --show-upgraded
+## Prerequisites for Team Fortress 2
 
-2.  Install the dependencies needed to run SteamCMD on 64-bit systems:
+From the SteamCMD guide, two additional steps are needed specifically for TF2. 
 
-		sudo apt-get install lib32gcc1
+1.  Add an iptables firewall rule. This command assumes that you have **only** the iptables rules in place from the SteamCMD guide. This inserts a rule after the pre-existing iptables rules for SteamCMD.
 
-3. 	If your server runs a firewall, you will need to add exceptions for several port ranges for Steam. If you’ve configured iptables according to our [Securing Your Server](/docs/security/securing-your-server) guide, add the following lines to your `iptables.firewall.rules`:
+        sudo iptables -I INPUT 7 -p udp -m udp --dport 26900:27030 -j ACCEPT
 
-	{: .file-excerpt}
-	/etc/iptables.firewall.rules
-	:	~~~
-		# Allow SteamCMD
-		-A INPUT -p udp -m udp --sport 26900:27030 --dport 1025:65355 -j ACCEPT
-		-A INPUT -p udp -m udp --sport 4380 --dport 1025:65355 -j ACCEPT
-		-A INPUT -p udp -m udp --dport 26900:27030 -j ACCEPT
-		~~~
+2.  After entering the above rule, run iptables-persistent again. You’ll be asked if you want to save the current IPv4 and IPv6 rules. Answer `yes` for IPv4 and `no` for IPv6.
 
-	Refresh the firewall, replacing `/etc/iptables.firewall.rules` with the location of your iptables rules if needed:
+        sudo dpkg-reconfigure iptables-persistent
 
-		sudo iptables-restore < /etc/iptables.firewall.rules
+3.  Install an additonal 32-bit package:
 
-###Install SteamCMD
+        sudo apt-get install lib32tinfo5
 
-1.  Create a separate user for Steam and switch to that user:
+## Install Team Fortress 2
 
-		sudo adduser steam
-		su - steam
+1.  Be sure you are in the directory `~/Steam`, then access the `Steam>` prompt.
 
-2.  From your home directory, create and switch to a new directory for SteamCMD:
+        cd ~/Steam && ./steamcmd.sh
 
-		cd ~
-		mkdir steamcmd
-		cd steamcmd
-
-3.  Download SteamCMD:
-
-		wget http://media.steampowered.com/installer/steamcmd_linux.tar.gz
-
-4.  Expand the file:
-
-		tar -xvzf steamcmd_linux.tar.gz
-
-5.  Remove the `steamcmd_linux.tar.qz` file:
-
-		rm steamcmd_linux.tar.gz
-
-6.  To start SteamCMD run:
-
-		./steamcmd.sh
-
-	{: .note}
-	>
-	>You must be in the `steamcmd` directory to boot SteamCMD.
-
-
-##Install Team Fortress 2
-
-With SteamCMD set up, Team Fortress 2 can now be installed.
-
-1.  From the SteamCMD prompt, login anonymously:
+2.  From the SteamCMD prompt, login anonymously:
 
 		login anonymous
 
-2.  Create a directory for Team Fortress 2 and install the game:
+    Or log in with your Steam username:
 
-		force_install_dir ./tf2/
+        login example_user
+
+3.  Install TF2 to the `Steam` user's home directory:
+
+		force_install_dir ./tf2
 		app_update 232250
 
-3.  Quit SteamCMD:
+    This can take some time. If the download looks as if it has frozen, be patient. Once the download is complete, you should see this output:
+
+        Success! App '232250' fully installed.
+
+        Steam>
+
+4.  Quit SteamCMD:
 
 		quit
 
 	{: .note}
 	>
-	>To update Team Fortress 2, run the above commands again.
-
-##Start Your Server
-
-If you would like to set up your server with custom settings see [Configure Team Fortress 2](#configure-team-fortress-2).
-
-1. Switch to your `tf2` directory:
-
-		cd tf2
-
-	{: .note}
-	>
-	>You must be in the `steamcmd/tf2` directory to launch the server.
-
-2.  If logged in through the `su - steam` command, transfer ownership of the shell to steam:
-
-		script /dev/null
-
-3.  To have the server continuously running, use the screen command in conjunction with the start up command.
-
-	- 	If you're running the server with a `server.cfg`, file use:
-
-			screen ./srcds_run -game tf +map ctf_2fort.bsp
-
-	- 	Otherwise, use:
-
-			screen ./srcds_run -game tf +map ctf_2fort.bsp +maxplayers 24
-
-	Optionally, replace `cft_2fort.bsp` with the name of your chosen map's file, or replace `+map ctf_2fort.bsp` with `+randommap` for a randomized map select.
+	>To update TF2, run the above 4 commands again.
 
 ##Configure Team Fortress 2
 
@@ -134,9 +81,9 @@ You can select from a variety of maps on which you can play Team Fortress 2, a n
 
 In order to create a custom list of maps for your server, create `mapcycle.txt` within the `tf2/tf/cfg` directory. The best way to do this is to copy the example file and edit it to include your chosen maps.
 
-1.  Navigate to `steamcmd/tf2/tf/cfg`:
+1.  Navigate to `Steam/tf2/tf/cfg`:
 
-		cd ~/steamcmd/tf2/tf/cfg
+		cd ~/Steam/tf2/tf/cfg
 
 2.  Copy `mapcycle_default.txt`:
 
@@ -146,132 +93,61 @@ In order to create a custom list of maps for your server, create `mapcycle.txt` 
 
 ###Message of the Day
 
-The "Message of the Day" appears when joining a server. This can be a message to your normal group of players, a statement about the server's settings, or anything else. Configure this by editing the `motd_default.txt` and `motd_text_default.txt` file.
+The "Message of the Day" appears when joining a server. This can be a message to your normal group of players, a statement about the server's settings, or anything else. Configure this by editing the files:
+
+*   `~/Steam/tf2/tf/cfg/motd_default.txt`
+*   `~/Steam/tf2/tf/cfg/motd_text_default.txt`
 
 The `motd_default.txt` file can contain HTML and is displayed as a website upon loading the server in-game. The `modt_text_default.txt` file should be the text copy, with no additional code.
 
 ###Server.cfg
 
-The `server.cfg` file is what contains all of the settings you need to customize the loadout of your game. A `server.cfg` file is not needed to run the game.
+The file `~/Steam/tf2/tf/cfg/server.cfg` is what contains all of the settings you need to customize the loadout of your game. A `server.cfg` file is not needed to run the game but we have a sample config file [here](/docs/assets/team_fortress_2_server_config) which you can edit for your own use.
 
 {: .note}
 >
->For the configuration of this file, `0` means "off" and `1` means "on".
+>For the configuration of this file, `0` means *off* and `1` means *on*.
 
-{: .file}
-~/steamcmd/tf2/tf/cfg/server.cfg
-:	~~~
-	// General Settings //
+### Startup Script
 
-	hostname Your Hostname
-	sv_contact user@example.com
-	sv_lan 0			// Server type; 0 = Internet; 1 = LAN
-	sv_region -1 			// Region: -1 = World; 0 = USA East; 1 = USA West; 2 = S. America;
-									// 3 = Europe; 4 = Asia; 5 = Australia; 6 = Middle East; 7 = Africa
+1.  Create a startup script for TF2 with the following contents:
 
-	// Passwords //
+    {: .file }
+    ~/starttf2.sh
+    :   ~~~
+        #!/bin/sh
 
-	rcon_password adminpass		// Password for administrator access
-	sv_password			// Server password
+        cd ./Steam/tf2
+        screen -S "Team Fortress 2 Server" ./srcds_run -game tf +map ctf_2fort.bsp
+        ~~~
 
+    When run, the script will change directories to `~/Steam/tf2` and execute TF2 in a [Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions) session.
 
-	// Server Logs //
+	Optionally, replace `cft_2fort.bsp` with the name of your chosen map’s file, or replace `+map ctf_2fort.bsp` with `+randommap` for a randomized map selection.
 
-	log on
-	sv_logecho 1			// Echo log information into your console
-	sv_logfile 1			// Add log file
-	sv_log_onefile 0 		// Log to a single file
-	sv_stats 1 			// Collect CPU usage states
+2.  Make the script executable:
 
+        chmod +x ~/starttf2.sh
 
-	// Bans and Ban Logs //
+##Using the Server
 
-	sv_rcon_maxfailures 5 		// Max amount of failed RCON logins before ban (between 1 - 20)
-	sv_rcon_banpenalty 60 		// Ban time for RCON failed login in minutes
-	sv_logbans 1			// Turn on ban logging
+1.  Now that your server is installed and configured, it can be launched by running the `starttf2.sh` script from your `steam` user's home directory.
 
+        cd ~/ && ./starttf2.sh
 
-	// Server Downloads/Uploads //
+    {: .caution}
+    >From this point, do not press the **Control+C** keys while in the console unless you want to stop TF2.
 
-	sv_allowdownload 1
-	sv_allowupload 1
-	sv_consistency 1 		// File consistency check
-	net_maxfilesize 15		// Max file size for uploading in MB
+2.  To detach from the screen session running the server console, press these two key combinations in succession:
 
+    **Control+A**<br>
+    **Control+D**
 
-	// Pure Server //
-	// Pure Servers force all clients to use content that matches the server
+3.  To bring the console back, type the following command:
 
-	sv_pure 2 			// 0 = Off; 1 = Enforce via pure_server_whitelist.txt
-									// 2 = Steam official content
-	sv_pure_kick_clients 1 		// Kick clients in violation
-	sv_pure_trace 1 		// Display violation message
+        screen -r
 
-
-	// Bandwidth & Frame Rates //
-
-	sv_maxrate 50000		// Max bandwidth rate; 0 = Unlimited
-	sv_minrate 0 			// Min bandwidth rate; 0 = Unlimited
-	sv_maxupdaterate 66 		// Max updates per second
-	sv_minupdaterate 10		// Min updates per second
-	fps_max 600 			// Frame Rates; 0 = Unlimited
-
-
-	// Server Variables //
-
-	mp_allowspectators 1
-	sv_cheats 0
-	sv_pausable 0
-	mp_footsteps 1
-	sv_allow_votes 1 		// Vote on maps
-	mp_forcecamera 1 		// Camera restriction for dead players
-	mp_idlemaxtime 3 		// Max idle time for players (in minutes)
-	mp_idledealmethod 1 		// Idle player kick method; 0 = Off; 1 = Move to spectate; 2 = Boot
-
-
-	// Game Variables //
-
-	sv_visiblemaxplayers 24 	//Max players
-	mp_friendlyfire 1
-	mp_flashlight 1
-	mp_falldamage 0
-	tf_weapon_criticals 1 		// Allows crits
-	tf_damage_disablespread 0 	// Random damage spread (±10%)
-	tf_use_fixed_weaponspreads 0 	// Consistent spread for weapons
-
-
-	// Team Autobalance //
-
-	mp_autoteambalance 1
-	mp_teams_unbalance_limit 2 	// Amount of additional players on team before unbalanced
-
-
-	// Round Variables //
-
-	mp_enableroundwaittime 1 	// Enables timers between rounds (setting this to 0 causes a known bug)
-	mp_bonusroundtime 15 		// Time after win until restart
-	mp_restartround 0 		// Round restart in seconds
-	mp_stalemate_enable 0 		// Enable sudden death
-	mp_stalemate_timelimit 240	// Timelimit of stalemate round
-	mp_maxrounds 0 			// Max rounds before map change
-	mp_winlimit 0 			// Max wins before map change
-	mp_timelimit 0 			// Max time before map change
-
-
-	// Communication //
-
-	sv_voiceenable 1
-	sv_alltalk 0 			// Players can hear all other players
-	mp_chattime 10 			// Post-game chat in seconds
-
-
-	// Execute ban files //
-
-	exec banned_user.cfg
-	exec banned_ip.cfg
-	writeid
-	writeip
-	~~~
+4.  To stop the server, bring back the TF2 console and press **CONTROL + C**.
 
 ##RCON
 

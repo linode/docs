@@ -2,13 +2,13 @@
 author:
     name: Linode
     email: docs@linode.com
-description: 'The Linode Library GitHub guide.'
-keywords: 'GitHub guide, write for us, linode library, article submissions'
+description: 'The Linode Guides & Tutorials GitHub guide.'
+keywords: 'GitHub guide, write for us, article submissions,linode guides and tutorials'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Tuesday, July 28th, 2015
+modified: Wednesday, December 2nd, 2015
 modified_by:
-    name: James Stewart
-published: 'Tuesday, July 28th, 2015'
+    name: Linode
+published: 'Wednesday, December 2nd, 2015'
 title: GitHub Beginners Guide
 ---
 
@@ -158,7 +158,7 @@ Once you have submitted your first pull request, you will likely receive communi
 
 [![GitHub - Pull Request Comment](/docs/assets/github-pr-comments.png)](/docs/assets/github-pr-comments.png)
 
-If you need to edit your PR, you can make changes to your locally saved branch, then upload the changes by following steps 5-9 of the [Creating Your Branch](/docs/github-guide#creating-your-branch) section of this guide.
+If you need to edit your PR, you can make changes to your locally saved branch, then upload the changes by following steps 5-8 of the [Creating Your Branch](/docs/github-guide#creating-your-branch) section of this guide.
 
 
 ### Managing Multiple Branches
@@ -198,4 +198,4 @@ If you are working on multiple guide submissions or changes, you will need to ut
 
 ## Reporting Issues with Existing Guides
 
-If you wish to report an issue with an existing guide, you can do so by navigating to the Linode Docs repository, and clicking on the **Issues** link.  You can then open a new issue and provide descriptions of the problems you are encountering so that our team can address it.  However, if you've already found a fix we encourage you to submit the fix yourself!
+If you wish to report an issue with an existing guide, you can do so by navigating to the Linode Docs repository, and clicking on the **Issues** link.  You can then open a new issue and provide descriptions of the problems you are encountering so that our team can address it. When opening a new issue, be sure to include a link to the guide where the problem is located. However, if you've already found a fix we encourage you to submit the fix to [our GitHub repository](https://github.com/linode/docs).

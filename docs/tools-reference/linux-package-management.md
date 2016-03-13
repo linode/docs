@@ -8,12 +8,12 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['using-linux/package-management/']
 modified: Thursday, September 8th, 2011
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Thursday, July 16th, 2009'
 title: Linux Package Management
 ---
 
-Many Linode Library tutorials reference "package managers" and "package management tools." If you are new to the Linux world and don't understand the purpose of these technologies, or if you are familiar with one package management tool but need to learn how to use another, this guide will provide a comparative introduction to the major package management tools.
+Many tutorials reference "package managers" and "package management tools." If you are new to the Linux world and don't understand the purpose of these technologies, or if you are familiar with one package management tool but need to learn how to use another, this guide will provide a comparative introduction to the major package management tools.
 
 ## Package Management Concepts
 
@@ -30,7 +30,7 @@ Package management systems attempt to solve these problems, and are the tools th
 -   **Additional system-related configuration and functionality**: Occasionally, operating system developers will develop patches and helper scripts for their software which get distributed in the packages. These modifications range from minimal to more substantive and can have a great impact on usability and user experience.
 -   **Quality control**. Operating system developers use the packaging process to test and ensure that the software is stable and free of bugs that might encroach upon product quality, and that the software doesn't cause the system to become unstable. The subjective judgments and community standards that guide packaging and package management to a great extent guide the "feel" and "stability" of a given system.
 
-In general we recommend, when installing new software, that you install the versions of software available in your distribution's repository and packaged for your operating system. If packages for the application or software that you need to install isn't available, we recommend that you find packages for your operating system or package the software rather than installing it manually.
+In general we recommend, when installing new software, that you install the versions of software available in your distribution's repository and packaged for your operating system. If packages for the application or software that you need to install aren't available, we recommend that you find packages for your operating system or package the software rather than installing it manually.
 
 The remainder of this guide will cover how to use specific package management systems, including how to compile and package software yourself.
 

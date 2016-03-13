@@ -3,28 +3,28 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Directing domains to your Linode.'
-keywords: 'linode dns,linode manager dns,dns configuration'
+keywords: 'dns manager,linode dns,linode manager dns,dns configuration'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['dns-manager/','dns-guides/configuring-dns-with-the-linode-manager/']
-modified: Tuesday, January 20, 2015
+modified: Wednesday, March 2, 2016
 modified_by:
-  name: Elle Krout
+  name: Phil Zona
 published: 'Thursday, July 16th, 2009'
 title: DNS Manager
 ---
 
 The *DNS Manager* is a comprehensive DNS management interface available within the [Linode Manager](https://manager.linode.com) that allows you to add DNS records for all of your domain names. This guide covers the use of Linode's DNS Manager and basic domain zone set-up. For an introduction to DNS in general, please see our [Introduction to DNS Records](/docs/networking/dns/introduction-to-dns-records) guide.
 
-##Getting Started
+## Getting Started
 
-The Domain Name System (DNS) attaches human-usable domain names to machine-usable IP addresses. In many ways, it is the phone book of the Internet. Just like a phone book can help you find the phone number of a business, DNS can take a domain name like `google.com` and translate it into an IP address like `74.125.19.147`, the IP address for Google's homepage. This global system allows users to remember the names of websites instead of their IP addresses.
+The Domain Name System (DNS) attaches human-readable domain names to machine-usable IP addresses. In many ways, it is the phone book of the Internet. Just like a phone book can help you find the phone number of a business, DNS can take a domain name like `google.com` and translate it into an IP address like `74.125.19.147`, the IP address for Google's homepage. This global system allows users to remember the names of websites instead of their IP addresses.
 
 {: .note}
 >All steps within this guide are done within the **[DNS Manager](https://manager.linode.com/dns)** tab of your Linode Manager.
 
 ### DNS Set-Up Checklist
 
-When setting up any domain name on your Linode, you'll need to perform the following steps to make it accessible to the world:
+When setting up any domain name on your Linode, make sure you've performed the following steps:
 
 1.  Register (purchase) a domain name, if you haven't already.
 2.  [Set your domain name to use Linode's name servers](#setting-domain-names-to-use-linodes-name-servers). You'll need to do this on your domain registrar's website and then wait up to 24 hours for the change to take effect.
@@ -32,36 +32,7 @@ When setting up any domain name on your Linode, you'll need to perform the follo
 4.  [Set reverse DNS](/docs/networking/dns/setting-reverse-dns).
 5.  If you have any special DNS needs, such as using a third-party email server, add additional DNS records to [create a custom configuration](/docs/networking/dns/common-dns-configurations).
 
-### The DNS Manager Page
-
-Ready to add or edit DNS records? Log in to the [Linode Manager](https://manager.linode.com) and click the **DNS Manager** tab. The Domain Manager contains all of the DNS records for your Linode's domain names. When you open the DNS Manager, you'll see a webpage like the one below:
-
-[![1. All of the domain zones are listed in the Domain Zone column. 2. The "Import a zone" link lets you import zone files. 3. The "Clone an existing zone" link lets you duplicate another zone you already have set up in the Linode Manager. 4. The "Add a domain zone" link lets you create a new zone file for a domain. 5. In the Options column for each domain, you have the following links: "Edit," "Remove," "Check," and "Zone file."](/docs/assets/1112-dns1-2.png)](/docs/assets/1112-dns1-2.png)
-
-1.  All of your domain zones are listed here. A *domain zone*, essentially synonymous for the term "domain," is a collection of DNS records for a single domain name. Click the name of a domain zone to add or edit DNS records within that zone.
-2.  If you have a zone that can be exported from a server or another hosting provider, click **Import a zone** to import it.
-3.  Click **Clone an existing zone** to duplicate an existing zone that you've already set up in the Linode Manager.
-4.  Click **Add a domain zone** to create a new domain zone.
-5.  Use the links to the far right of the domain zone link to edit DNS records within a zone, delete a zone, check a zone, or view a zone's file.
-
-### The Domain Zones Page
-
-When you select the name of a domain zone, or select the **Edit** link next to a domain zone in your DNS Manager, a webpage like the one below will appear:
-
-[![1. The "Settings" link lets you edit the SOA record. 2. The "Add a new record" links in each section let you create new records of the appropriate type. 3. The "Edit" and "Remove" links next to each record let you edit and remove specific records.](/docs/assets/1114-dns2-2.png)](/docs/assets/1114-dns2-2.png)
-
-1.  Click **Settings** to edit the Start of Authority (SOA) record. This record contains the primary domain or name server, the email address of the domain administrator, and several settings relating to the refreshing of the zone.
-2.  To add a new DNS record, click the **Add...** link under the type of DNS record you want to create.
-
-    {: .note}
-    >
-    >You can add NS (name server), A/AAAA, MX (mail exchange), TXT (text), SRV (service record), and CNAME (Canonical Name) records in Linode's DNS Manager. To learn about these types of DNS records and more please see our [Introduction to DNS Records](/docs/networking/dns/introduction-to-dns-records) guide.
-    >
-    >Please note that NS and A/AAAA records are necessary for every domain.
-
-3.  Use the links at the right columns to edit or remove DNS records.
-
-##Setting Domain Names to Use Linode's Name Servers
+## Setting Domain Names to Use Linode's Name Servers
 
 After you purchase a domain, the next step is setting your domain registrar to use our name servers. Use your domain name registrar's interface to set the name servers for your domain name to the following entries:
 
@@ -77,7 +48,7 @@ See the instructions on your domain name registrar's website for more informatio
 >
 > DNS changes can take up to 24 hours to propagate throughout the Internet, although the changes are usually visible within a couple hours.
 
-##Domain Zones
+## Domain Zones
 
 Before you can add any DNS records, you must create a domain zone — a container for DNS records associated with a single domain name. The Linode Manager allows you to add new domain zones, import domain zones from other DNS servers, clone existing zones that you've already created in the DNS Manager, check to make sure that a zone is correctly loaded, view the raw output of a zone file, and permanently remove a zone and all associated DNS records.
 
@@ -92,7 +63,7 @@ Here's how to add a new domain zone:
     [![This page lets you add a domain zone.](/docs/assets/1120-dns8.png)](/docs/assets/1332-hosting-1.png)
 
 2.  Enter the domain name in the **Domain** field. An example is shown above.
-3.  Enter an administer's email address in the **SOA Email** field.
+3.  Enter an administrator's email address in the **SOA Email** field.
 4.  If you are unfamiliar with DNS, the DNS Manager can automatically create some basic DNS records to get you started. To have it insert these records, select **Yes, insert a few records to get me started**, then select the Linode you want this domain zone associated with from the drop-down menu.
 
     Alternatively, to keep the domain zone empty and prevent the DNS Manager from creating DNS records, select **No, I want the zone empty**.
@@ -169,7 +140,36 @@ Click **Yes, delete this sucker** to permanently delete the zone.
 
 The domain zone and all of its associated records has now been removed.
 
-##DNS Records
+## The DNS Manager
+
+Ready to add or edit DNS records? Log in to the [Linode Manager](https://manager.linode.com) and click the **DNS Manager** tab. The Domain Manager contains all of the DNS records for your Linode's domain names. When you open the DNS Manager, you'll see a webpage like the one below:
+
+[![1. All of the domain zones are listed in the Domain Zone column. 2. The "Import a zone" link lets you import zone files. 3. The "Clone an existing zone" link lets you duplicate another zone you already have set up in the Linode Manager. 4. The "Add a domain zone" link lets you create a new zone file for a domain. 5. In the Options column for each domain, you have the following links: "Edit," "Remove," "Check," and "Zone file."](/docs/assets/1112-dns1-2.png)](/docs/assets/1112-dns1-2.png)
+
+1.  All of your domain zones are listed here. A *domain zone*, essentially synonymous with the term "domain," is a collection of DNS records for a single domain name. Click the name of a domain zone to add or edit DNS records within that zone.
+2.  If you have a zone that can be exported from a server or another hosting provider, click **Import a zone** to import it.
+3.  Click **Clone an existing zone** to duplicate an existing zone that you've already set up in the Linode Manager.
+4.  Click **Add a domain zone** to create a new domain zone.
+5.  Use the links to the far right of the domain zone link to edit DNS records within a zone, delete a zone, check a zone, or view a zone's file.
+
+### The Domain Zones Page
+
+When you select the name of a domain zone, or select the **Edit** link next to a domain zone in your DNS Manager, a webpage like the one below will appear:
+
+[![1. The "Settings" link lets you edit the SOA record. 2. The "Add a new record" links in each section let you create new records of the appropriate type. 3. The "Edit" and "Remove" links next to each record let you edit and remove specific records.](/docs/assets/1114-dns2-2.png)](/docs/assets/1114-dns2-2.png)
+
+1.  Click **Settings** to edit the Start of Authority (SOA) record. This record contains the primary domain or name server, the email address of the domain administrator, and several settings relating to the refreshing of the zone.
+2.  To add a new DNS record, click the **Add...** link under the type of DNS record you want to create.
+
+    {: .note}
+    >
+    >You can add NS (name server), A/AAAA, MX (mail exchange), TXT (text), SRV (service record), and CNAME (Canonical Name) records in Linode's DNS Manager. To learn about these types of DNS records and more please see our [Introduction to DNS Records](/docs/networking/dns/introduction-to-dns-records) guide.
+    >
+    >Please note that NS and A/AAAA records are necessary for every domain.
+
+3.  Use the links at the right columns to edit or remove DNS records.
+
+### DNS Records
 
 Once you've created a domain zone, you can start filling it with DNS records. DNS records are the link between your domain and your virtual private server. This section shows you how to add, edit, and remove DNS records.
 
@@ -223,7 +223,7 @@ If you no longer need an existing DNS record, you can remove it from the DNS man
 
 You have successfully removed the DNS record. It can take up to 30 minutes for the changes to be removed.
 
-##Troubleshooting
+## Troubleshooting
 
 Having problems with your DNS records? We recommend reviewing this section to help get your DNS settings back on track. Follow these tips to troubleshoot DNS issues.
 

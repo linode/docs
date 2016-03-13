@@ -6,7 +6,7 @@ description: 'Install and optimize the WordPress blogging and content management
 keywords: 'install WordPress,WordPress on Linode,WordPress how-to, how to install wordpress, how to configure wordpress'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-applications/cms-guides/wordpress/','websites/cms/manage-web-content-with-wordpress/']
-modified: Tuesday, August 4th, 2015
+modified: Monday, October 5th, 2015
 modified_by:
   name: Elle Krout
 published: 'Tuesday, July 27th, 2010'
@@ -17,7 +17,7 @@ external_resources:
 - '[WordPress Support](http://wordpress.org/support)'
 ---
 
-WordPress is a popular dynamic blog-focused content management system. The software is built upon a LAMP or LEMP stack and features an extensive plugin framework and theme system, which allows site owners and developers to deploy easy-to-use and powerful publishing tools.
+WordPress is a popular, dynamic, blog-focused content management system. The software is built upon a LAMP or LEMP stack and features an extensive plugin framework and theme system, which allows site owners and developers to deploy easy-to-use and powerful publishing tools.
 
 {: .note}
 >
@@ -32,22 +32,22 @@ WordPress is a popular dynamic blog-focused content management system. The softw
         hostname
         hostname -f
 
-    The first will output your short hostname, the second your fully-qualified domain name (FQDN).
+    The first command will output your short hostname; the second, your fully-qualified domain name (FQDN).
 
 -  You have a configured web stack set up. This can be a [LAMP](/docs/websites/lamp/) or [LEMP](/docs/websites/lemp/) stack.
 
 
--   MySQL has a database set up for WordPress. If you do not have a database created:
+-   MySQL has a database set up for WordPress. If you do not have a database, create it:
 
     1.  Enter the MySQL command line:
 
             mysql -u root -p
 
-    2.  Create a wordpress database:
+    2.  Create a WordPress database:
 
             create database wordpress;
 
-    3.  Create and grant a user prililedges for the newly-created `wordpress` database. replacing `user` and `password` with the username and password you wish to use:
+    3.  Create and grant a user privileges for the newly-created `wordpress` database, replacing `user` and `password` with the username and password you wish to use:
 
             grant all on wordpress.* to 'user' identified by 'password';
 
@@ -58,7 +58,7 @@ WordPress is a popular dynamic blog-focused content management system. The softw
 
 ## Install WordPress
 
-1.  Create a `src` directory under your website's directory to store pristine copies of WordPress's source files. In this guide, the home directory `/var/www/exmaple.com/` is used as an example. Navigate to that new directory:
+1.  Create an `src` directory under your website's directory to store pristine copies of WordPress's source files. In this guide, the home directory `/var/www/exmaple.com/` is used as an example. Navigate to that new directory:
 
         sudo mkdir /var/www/example.com/src/
         cd /var/www/example.com/src/
@@ -67,48 +67,49 @@ WordPress is a popular dynamic blog-focused content management system. The softw
 
         sudo chown -R www-data:www-data /var/www/
 
-3.  Install the latest version of WordPress, and exand it:
+3.  Install the latest version of WordPress and exand it:
 
         sudo wget http://wordpress.org/latest.tar.gz
         sudo -u www-data tar -xvf latest.tar.gz
 
-4.  Move `latest.tar.gz` so it is renamed as `wordpress`, followed by the date to store a pristine backup of the source files:
+4.  Move `latest.tar.gz`, so it is renamed as `wordpress`, followed by the date to store a pristine backup of the source files:
 
         sudo mv latest.tar.gz wordpress-`date "+%Y-%m-%d"`.tar.gz
 
 5.  Copy the WordPress files to your `public_html` folder, then remove the folder in the `src` directory:
 
-        cp -R wordpress/* ../public_html/
-        rm -rf wordpress/
+        sudo cp -R wordpress/* ../public_html/
+        sudo rm -rf wordpress/
 
 
 ## Configure WordPress
 
-1.  Visit your domain in your web browser, and follow the steps outlined by the configuration process. Begin by reviewing the informational page and clicking the "Let's go!" button. Supply WordPress with the database credentials established when you installed the database server. Finally, select "Run the install" and supply the required values as prompted:
+1.  Visit your domain in your web browser and follow the steps outlined by the configuration process. Begin by reviewing the informational page and clicking the "Let's go!" button. Supply WordPress with the database credentials established when you installed the database server. Finally, select "Run the install" and supply the required values as prompted:
 
     [![WordPress Installer.](/docs/assets/wordpress-setup_small.png)](/docs/assets/wordpress-setup.png)
 
-2.  As it stands, should you try to update WordPress or install new themes or plugins, you will be asked to input your FTP information. To bypass this you must alter your `wp-config.php` file by adding the following line:
+2.  As it stands, should you try to update WordPress or install new themes or plugins, you will be asked to input your FTP information. To bypass this, you must alter your `wp-config.php` file by adding the following line:
 
     {: .file-excerpt}
     /var/www/example.com/public_html/wp-config.php
-    :   ~~~
+    :   ~~~ php
+        /** Bypass FTP */
         define('FS_METHOD', 'direct');
         ~~~
 
-    Next, give WordPress permission to add and edit files in the `wp_content` folder:
+    Next, give WordPress permission to add and edit files in the `public_html` folder:
 
-        chown -R www-data:www-data /var/www/example.com/public_html/wp-content
+        sudo chown -R www-data:www-data /var/www/example.com/public_html
 
 3.  If using Apache, issue the following commands to ensure that `mod_rewrite` is enabled:
 
-        a2enmod rewrite
+        sudo a2enmod rewrite
     
     Restart Apache.
 
     {: .note}
     >
-    >If using permalinks to set your posts' URLs Apache will need to be updated to allow individual sites to update the `.htaccess` file. To permit this, add the following to you WordPress website's *VirtualHosts* codeblock:
+    >If using permalinks to set your posts' URLs, Apache will need to be updated to allow individual sites to update the `.htaccess` file. To permit this, add the following to you WordPress website's *VirtualHosts* codeblock:
     >
     >     <Directory /var/www/>
     >         Options Indexes FollowSymLinks
@@ -116,6 +117,6 @@ WordPress is a popular dynamic blog-focused content management system. The softw
     >         Require all granted
     >     </Directory>
 
-You will now be able to log in to your new WordPress-powered website. You can continue the configuration of your WordPress site from the web-based interface.
+You will now be able to login to your new WordPress-powered website. You can continue the configuration of your WordPress site from the web-based interface.
 
-Congratulations! You have now successfully installed WordPress!
+Congratulations! You have now successfully installed WordPress.

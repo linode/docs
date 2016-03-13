@@ -11,7 +11,7 @@ modified_by:
 published: 'Thursday, July 9th, 2015'
 title: 'Nginx Web Server on Debian 8'
 external_resources:
- - '[Linode Library Nginx Documentation](/docs/web-servers/nginx/)'
+ - '[Linode Nginx Documentation](/docs/web-servers/nginx/)'
  - '[Nginx Community Documentation](http://wiki.nginx.org)'
 ---
 

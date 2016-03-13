@@ -10,7 +10,7 @@ modified: Wednesday, April 27th, 2011
 modified_by:
   name: Linode
 published: 'Wednesday, December 23rd, 2009'
-title: 'iwik on Ubuntu 9.04 (Jaunty)'
+title: 'Piwik on Ubuntu 9.04 (Jaunty)'
 deprecated: true
 ---
 
@@ -116,7 +116,7 @@ When running software compiled or installed directly from sources provided by up
 Please monitor the Piwik security announcement posts, and development mailing lists to ensure that you are aware of all updates to the software and can upgrade appropriately or apply patches and recompile as needed:
 
 -   [Piwik Security Announcements](http://piwik.org/blog/category/security/)
--   [Piwik Mailing Lists](http://dev.piwik.org/trac#Mailinglists)
+-   [Piwik Mailing Lists](http://lists.piwik.org/mailman/listinfo)
 
 When upstream sources offer new releases, repeat the instructions for installing the Piwik software as needed. These practices are crucial for the ongoing security and functioning of your system.
 

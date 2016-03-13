@@ -213,7 +213,7 @@ The memory and swap columns provide the same kind of information provided by the
 
 If this number is consistently and considerably higher than 0, you might consider taking measures to address your IO usage. However, if the `vmstat` output resembles the above, you can be sure in the knowledge that you're not experiencing an IO-related issues.
 
-If you are experiencing an intermittent issue, you will need to run `vmstat` *when* you experience the issue in order to properly diagnose or rule out an IO issue. `vmsat` output can sometimes help [support](/docs/platform/support/) diagnose problems.
+If you are experiencing an intermittent issue, you will need to run `vmstat` *when* you experience the issue in order to properly diagnose or rule out an IO issue. `vmstat` output can sometimes help [support](/docs/platform/support/) diagnose problems.
 
 ### Monitor Processes, Memory, and CPU Usage with htop
 
@@ -551,7 +551,7 @@ Once again, `sed` is a very powerful and useful tool; however, if you are unfami
 
 ### How to Edit Text Interactively
 
-In many Linode Library documents, you may be instructed to edit the contents of a file. To do this, you need to use a text editor. Most of the distribution templates that Linode provides come with an implementation of the vi/vim text editor and the nano text editor. These are small, lightweight, and very powerful text editors that allow you manipulate the text of a file from the terminal environment.
+In many Linode documents, you may be instructed to edit the contents of a file. To do this, you need to use a text editor. Most of the distribution templates that Linode provides come with an implementation of the vi/vim text editor and the nano text editor. These are small, lightweight, and very powerful text editors that allow you manipulate the text of a file from the terminal environment.
 
 There are other options for text editors, notably emacs and "zile." Feel free to install these programs using your operating system's package manager. Make sure you [search your package database](#how_to_discover_package_names_and_information) so that you can install a version compiled without GUI components (i.e. X11).
 
@@ -570,7 +570,7 @@ This provides only the most basic outline of how to use these text editors, and 
 
 ## Web Servers and HTTP Issues
 
-Linodes do not come with any particular web server installed by default. You have the choice and power to install and configure your web server as you see fit. This allows you to deploy a configuration in a way that makes sense for your application and desired use case. The [Linode Library](/) contains a number of documents regarding the installation and maintenance of various [web servers](/docs/web-servers/).
+Linodes do not come with any particular web server installed by default. You have the choice and power to install and configure your web server as you see fit. This allows you to deploy a configuration in a way that makes sense for your application and desired use case. [Linode Guides & Tutorials](/) contains a number of documents regarding the installation and maintenance of various [web servers](/docs/web-servers/).
 
 The following tips cover a number of basic web serving tasks and functions, as well as some guidance for users new to the world of web servers.
 
