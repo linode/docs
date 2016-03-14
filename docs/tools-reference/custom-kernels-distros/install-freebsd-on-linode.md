@@ -5,10 +5,10 @@ author:
 description: 'Install FreeBSD on Linode'
 keywords: 'freebsd,linode,memstick,installation image,,dhcp,slaac,install freebsd'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Wednesday, September 16, 2015
+modified: Monday, March 14, 2016
 modified_by:
   name: Rainbow
-published: 'never'
+published: 'Monday, March 14, 2016'
 title: 'Install FreeBSD on Linode'
 external_resources:
  - '[The FreeBSD Handbook](https://www.freebsd.org/doc/handbook/)'
