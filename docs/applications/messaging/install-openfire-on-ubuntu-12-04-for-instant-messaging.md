@@ -19,17 +19,17 @@ external_resources:
 
 [Openfire](http://www.igniterealtime.org/projects/openfire/) is an open-source real-time collaboration (instant messaging) server, built on the [XMPP protocol](http://en.wikipedia.org/wiki/Extensible_Messaging_and_Presence_Protocol) and available for multiple platforms. This guide will help you get started with Openfire on your Ubuntu 12.04 LTS (Precise Pangolin) Linode.
 
-If you haven't done so already, please follow the steps outlined in our [getting started](/docs/getting-started/) guide before following these instructions, and make sure your system is fully updated. Initial configuration steps will be performed through the terminal; please make sure you're logged into your Linode as a non-root user via SSH.
+If you haven't done so already, please follow the steps outlined in our [getting started](/docs/getting-started/) guide before following these instructions, and make sure your system is fully updated. Initial configuration steps will be performed through the terminal; please make sure you're logged into your Linode as a root user via SSH.
 
 ## Prerequisites
 
 Before installing Openfire, make sure your system is up to date:
 
-    sudo apt-get update && apt-get upgrade
+    apt-get update && apt-get upgrade
 
 Openfire requires a Java runtime engine (JRE). This tutorial uses the OpenJDK provided by the Ubuntu repository. Please note that although alternate Java runtime engines are available, Openfire may not work with them. Enter the following command to install the OpenJDK:
 
-    sudo apt-get install openjdk-7-jre
+    apt-get install openjdk-7-jre
 
 OpenJDK will be installed, along with a series of dependencies it requires.
 
@@ -71,12 +71,12 @@ Installing Openfire is relatively easy and can be completed in just a few steps.
 
         mv openfire /opt/
 
-6.  Edit the configuration file `/opt/openfire/conf/openfire.xml`, inserting your Linode's public IP address in the `<interface>` section and removing the `<!-- -->` comment markers that surround the \<network\> section. While not required, this action is helpful if your Linode has multiple IP addresses, and you wish to limit access to a single address.
+6.  Edit the configuration file `/opt/openfire/conf/openfire.xml`, substituting your Linode's public IP address for `198.51.100.0` in the `<interface>` section and removing the `<!-- -->` comment markers that surround the `<network>` section. While not required, this action is helpful if your Linode has multiple IP addresses, and you wish to limit access to a single address.
 
     {: .file-excerpt }
     /opt/openfire/conf/openfire.xml
     :   ~~~ xml
-        <interface>12.34.56.78</interface>
+        <interface>198.51.100.0</interface>
         ~~~
 
 7.  Add a symbolic link for the daemon script to `/etc/init.d` so that you can start the daemon with a call to service:
@@ -85,7 +85,7 @@ Installing Openfire is relatively easy and can be completed in just a few steps.
 
 8.  Start Openfire:
 
-        sudo service openfire start
+        service openfire start
 
 This completes the initial installation steps for Openfire. Next, we'll continue with configuration through a web browser.
 
@@ -105,8 +105,8 @@ To configure Openfire is relatively easy and can be completed in just a few step
 
 6.  After the initial web-based configuration is complete, restart the Openfire server before attempting to log in with the default "**admin**" user account. Enter the following commands, one by one:
 
-        sudo service openfire stop
-        sudo service openfire start
+        service openfire stop
+        service openfire start
 
 If you're experiencing difficulty using the credentials you just created to log in, please use "admin/admin" as the username/password. You'll need to update your credentials immediately afterward for security purposes. 
 
