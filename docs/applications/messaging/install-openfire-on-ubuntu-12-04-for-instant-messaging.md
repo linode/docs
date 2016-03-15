@@ -91,8 +91,6 @@ This completes the initial installation steps for Openfire. Next, we'll continue
 
 ## Configure Openfire
 
-To configure Openfire is relatively easy and can be completed in just a few steps. 
-
 1.  Direct your browser to your Linode's IP address, or FQDN (fully qualified domain name) if an entry in DNS points to your Linode's IP, on port 9090. As an example, if your Linode's IP address were `198.51.100.0`, you would visit `http://198.51.100.0:9090` in your web browser.
 
 2.  Configure your domain and ports for administration. Use the FQDN you have assigned to your Linode in DNS. For more information: [configuring DNS with the Linode Manager](/docs/dns-guides/configuring-dns-with-the-linode-manager)).
