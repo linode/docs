@@ -6,7 +6,7 @@ description: 'Access your Linode via SSH using Public Key Authentication.'
 keywords: 'ssh,pki,ssh keys,secure shell,vpn,tunneling'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['security/ssh-keys/']
-modified: Thursday, December 5th, 2013
+modified: 'Wednesday, March 16, 2016'
 modified_by:
   name: Linode
 published: 'Tuesday, April 5th, 2011'

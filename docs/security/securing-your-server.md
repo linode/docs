@@ -6,7 +6,7 @@ description: 'This is a starting point of best practices for hardening a product
 keywords: 'security,secure,firewall,ssh,add user,quick start'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['securing-your-server/']
-modified: Friday, March 11th, 2016
+modified: 'Wednesday, March 16, 2016'
 modified_by:
   name: Phil Zona
 published: 'Friday, February 17th, 2012'
@@ -126,7 +126,7 @@ By default, password authentication is used to connect to your Linode via SSH. A
 
     Finally, you'll want to set permissions for the public key directory and the key file itself:
 
-        sudo chmod 700 -R ~/.ssh && chmod 600 -R ~/.ssh/authorized_keys
+        sudo chmod 700 -R ~/.ssh && chmod 600 ~/.ssh/authorized_keys
 
     These commands provide an extra layer of security by preventing other users from accessing the public key directory as well as the file itself. For more information on how this works, see our guide on [how to modify file permissions](/docs/tools-reference/modify-file-permissions-with-chmod). 
 
