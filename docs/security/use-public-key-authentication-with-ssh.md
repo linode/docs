@@ -172,8 +172,11 @@ Now it is time to connect to your Linode with the SSH connection you just create
 
         nano ~/.ssh/authorized_keys
 
-8.  Copy the contents of the public key from your workstation to the `authorized_keys` file. Be sure you save the file on exit. Exit PuTTY.
-9.  Reconnect to PuTTY and **Load** your saved session. (Or, follow Steps 3 and 4 again to start a new SSH session.) You will be prompted to enter your login name as before. However, this time you will be prompted for your SSH key's passphrase, rather then your Linode user's password. Enter your passphrase and press *Enter*.
+8.  Copy the contents of the public key from your workstation to the `authorized_keys` file. Be sure you save the file on exit. For an additional layer of security, modify the file permissions:
+    
+        chmod 600 ~/.ssh/authorized_keys
+
+9.  Exit PuTTY, then reconnect and **Load** your saved session. (Or, follow Steps 3 and 4 again to start a new SSH session.) You will be prompted to enter your login name as before. However, this time you will be prompted for your SSH key's passphrase, rather then your Linode user's password. Enter your passphrase and press *Enter*.
 
 Uploading the public key in Windows can also be done using [WinSCP](http://winscp.net/). In the login window, enter your Linode's public IP address as the hostname, and your non-root username and password. Click *Login* to connect.
 
