@@ -39,7 +39,7 @@ The process for creating keys with a recent version of the OpenSSH package is th
 
         ssh-keygen
 
-	**Optional:** to increase the security of your key, increase the size with the `-b` flag. We reccomend a 4096 byte key:
+	**Optional:** to increase the security of your key, increase the size with the `-b` flag. The minimum value is 768 bytes and the default, if you do not use the flag, is 2048 bytes. We recommend a 4096 byte key:
 
 		ssh-keygen -b 4096
 
