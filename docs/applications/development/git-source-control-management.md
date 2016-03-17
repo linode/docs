@@ -59,8 +59,8 @@ There are different ways to install Git on OS X. This may be achieved by install
 
 To install Git by Homebrew do the following:
 
-1.  Go to [Homebrew](http://brew.sh/) website.
-2.  Copy and paste the command listed under **Install Homebrew** into a terminal window.
+1.  Go to the [Homebrew](http://brew.sh/) website.
+2.  Copy and paste the command on that page, under **Install Homebrew** into a terminal window.
 
     ![Enter the install command.](/docs/assets/1624-Homebrew-01-resized.png)
 
@@ -231,17 +231,17 @@ After installing Git make sure your username and email address are set correctly
 
     git config --list
 
-If your name and email are not listed in the output, you may set them manually. Use the following command to set your name:
+If your name and email are not listed in the output, you may set them manually. Use the following command to set your `name`:
 
-    git config --global user.name <name> 
+    git config --global user.name name 
 
-Use the following command to set your email address:
+Use the following command to set your email address, replacing `user@email.com`:
 
-    git config --global user.email <user@email.com>
+    git config --global user.email user@email.com
 
-Set your default text editor with the command:
+Set your default text editor with this command, replacing `editor-name`:
 
-    git config --global core.editor <editor-name>
+    git config --global core.editor editor-name
 
 Below is a sample gitconfig file with the username and email address:
 
@@ -253,9 +253,9 @@ There are two ways to obtain a Git repository, either by importing or copying. I
 
     git init
 
-This will create a new subdirectory called `.git`. In order to start tracking changes made to this project, you will first want to add files to be tracked by using the following command:
+This will create a new subdirectory called `.git`. In order to start tracking changes made to this project, you will first want to add files to be tracked by using the following command, replacing `filename`:
 
-    git add <filename>
+    git add filename
 
 After adding the files you wish to track, use the command:
 
@@ -267,9 +267,9 @@ To copy an existing Git repository use the command:
 
     git clone
 
-Just remember that every file will be copied when the git clone command is used. When using a URL, the command is:
+Just remember that every file will be copied when the git clone command is used. When using a URL, replace `URL` in the following command:
 
-    git clone <url>
+    git clone URL
 
 To check the status of your files use the command:
 
@@ -283,9 +283,9 @@ A bare repository contains no files but the .git folder. It is used to configure
 
     git init --bare practice.git
 
-If you already have a repository on your local machine and want to push it to your new Git server, use the command:
+If you already have a repository on your local machine and want to push it to your new Git server, replace `203.0.113.2` and use the command:
 
-    git remote set-url origin git@<IP address>:practice.git
+    git remote set-url origin git@203.0.113.2:practice.git
 
 Now you should be able to push and pull files from your local PC to your Linode.
 
@@ -296,21 +296,21 @@ The most basic commands you will need to know to start using Git are in the tabl
 {: .table .table-striped }
 | Command              | Description                                                                           | Example                        |
 |:---------------------|:--------------------------------------------------------------------------------------|:-------------------------------|
-| `git add`            | adds a file to a repository                                                           | `git add <filename>`           |
-| `git rm`             | removes a file from a repository                                                      | `git rm <filename>`            |
-| `git mv`             | moves or renames a tracked file, directory, or symlink                                | `git mv <file_from> <file_to>` |
-| `git branch`         | lists all the local and remote branches                                               | `git branch <branch name>`     |
+| `git add`            | adds a file to a repository                                                           | `git add filename`           |
+| `git rm`             | removes a file from a repository                                                      | `git rm filename`            |
+| `git mv`             | moves or renames a tracked file, directory, or symlink                                | `git mv file_from file_to` |
+| `git branch`         | lists all the local and remote branches                                               | `git branch branchname`     |
 | `git commit`         | commits all staged objects                                                            | N/A                            |
-| `git pull`           | downloads all changes from the remote repo and merges them in a specified repo file   | `git pull <repo> <refspec>`    |
-| `git push`           | publishes the changes to the remote repo                                              | `git push <repo>`              |
+| `git pull`           | downloads all changes from the remote repo and merges them in a specified repo file   | `git pull repo refspec`    |
+| `git push`           | publishes the changes to the remote repo                                              | `git push repo`              |
 | `git log`            | creates a log of all commits, includes: person, commit, date, time, and msg           | N/A                            |
 | `gitk`               | displays a visual commit history in a graphical tool                                  | N/A                            |
 | `git commit --amend` | replaces the latest commit in the current branch with a new commit, rewriting history | N/A                            |
 |----------------------|---------------------------------------------------------------------------------------|--------------------------------|
 
-Note: Refspec is used to configure which remote branch or branches should be used, and the local branch or branches should be named. The syntax for refspec is as follows:
+Note: Refspec is used to configure which remote branch or branches should be used, and the local branch or branches should be named. Using the variables `name`, `source-branch`, and `destination-branch`, the syntax for refspec is as follows:
 
-    git pull <name> <source-branch>:<destiantion-branch>
+    git pull name source-branch:destiantion-branch
 
 ### Branches
 
@@ -364,19 +364,19 @@ Below are some basic commands for working with remote repositories:
 
         sudo adduser --system --group --disabled-password git
 
-### Create a SSH Keys
+### Create SSH Keys
 
 1.  If you have not already created SSH keys, you will need to do this now. The keys must be created on your local machine. In a terminal window enter the command:
 
         ssh-keygen -t rsa
 
-2.  Accept the defaults and do not enter a password. The public key will need to be copied up to your Git server. Use the command:
+2.  Accept the defaults and do not enter a password. The public key will need to be copied up to your Git server. Replace `username`, `203.0.113.2`, `location`, and `key-name`, then use the command:
 
-        scp ~/.ssh/id_rsa.pub <username>@<git-server-IP>:/<location><key-name>
+        scp ~/.ssh/id_rsa.pub username@203.0.113.2:/location key-name
 
 The location is where you copied your key. For example:
 
-    scp ~/.ssh/id_rsa.pub <git@192.168.0.1>:/tmp/git.pub
+    scp ~/.ssh/id_rsa.pub git@203.0.113.2:/tmp/git.pub
 
 The private key remains on your system and should not be copied anywhere else.
 
@@ -384,9 +384,9 @@ For Windows users consult the [Windows Operating System](/docs/security/ssh-keys
 
 ### Configure Gitolite
 
-1.  Log in to your Git server with you normal user account. Enter the command:
+1.  Log in to your Git server with your normal user account. Replace `key-location` and enter the command:
 
-        gl-setup /<key-location>/ 
+        gl-setup /key-location/ 
 
 2.  Then hit **enter**. Depending on your distribution you may see a warning about the `gitolite.rc` file hit **enter** to continue.
 
@@ -402,39 +402,39 @@ For Windows users consult the [Windows Operating System](/docs/security/ssh-keys
 
 ### Adding Users Prerequisites
 
-Before users may be added to any of your projects, you will need to clone the Gitolite information from your server to your local machine. Enter the following command on your Git server:
+Before users may be added to any of your projects, you will need to clone the Gitolite information from your server to your local machine. Replace both `example-user` and `203.0.113.2` and enter the following command on your Git server:
 
-    git clone <user>@<IP address>:gitolite-admin
+    git clone example-user@203.0.113.2:gitolite-admin
 
 This will create a new directory called `gitolite-admin`. Navigate to the newly created directory and if you run a `ls` command you will see two files inside `conf` and `keydir`. The keydir is the directory where the user keys are stored.
 
 #### Adding Users
 
-In order to add a new user, you will need their name, email, and public key. For this example, the name `lmartin` will be used. The procedure is as follows:
+In order to add a new user, you will need their name, email, and public key. For this example, the name `example-user` will be used. Replace each instance of `example-user` with your user name. The procedure is as follows:
 
 1.  Copy the user's public key:
 
-        cp /path/<user>/public/key.pub ~/gitolite-admin/keydir/<lmartin>.pub
+        cp /path/example-user/public/key.pub ~/gitolite-admin/keydir/example-user.pub
 
 2.  Configure the user's name:
 
-        git config --global user.name <lmartin>
+        git config --global user.name example-user
 
 3.  Configure the user's email:
 
-        git config --global user.email <lmartin@email.com>
+        git config --global user.email example-user@email.com
 
 4.  Configure the text editor:
 
-        git config --global core-editor <editor-name>
+        git config --global core-editor editor-name
 
 5.  Now add the user's public key:
 
-        git add keydir/<lmartin>.pub
+        git add keydir/example-user.pub
 
 6.  Commit the change:
 
-        git commit -a -m "New user lmartin added"
+        git commit -a -m "New user example-user added"
 
 7.  Finally push the changes up to the server:
 
