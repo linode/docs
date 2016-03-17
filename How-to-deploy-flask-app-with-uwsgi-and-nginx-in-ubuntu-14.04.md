@@ -39,7 +39,7 @@ title: How to deploy a flask app with uWSGI and Nginx in Ubuntu 14.04
 
 ### Setting Up Our Environment
 
-1. Lets install `pip` to be able to download install python package easily and install vim too. We also need to install `python-dev` because its need by uwsgi when compiling:
+1. Lets install `pip` to be able to download install python package easily and install vim too. We also need to install `python-dev` because its needed by uwsgi when compiling:
 	sudo apt-get install python-dev python-pip vim
 
 2. We are going to install `virtualenv` with pip and then create a virtual environment to hold our flask app
