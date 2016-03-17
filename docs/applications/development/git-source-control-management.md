@@ -300,7 +300,7 @@ The most basic commands you will need to know to start using Git are in the tabl
 | `git rm`             | removes a file from a repository                                                      | `git rm filename`            |
 | `git mv`             | moves or renames a tracked file, directory, or symlink                                | `git mv file_from file_to` |
 | `git branch`         | lists all the local and remote branches                                               | `git branch branchname`     |
-| `git commit`         | commits all staged objects                                                            | N/A                            |
+| `git commit`         | commits all staged objects                                                            | `git commit -m "updates"`     |
 | `git pull`           | downloads all changes from the remote repo and merges them in a specified repo file   | `git pull repo refspec`    |
 | `git push`           | publishes the changes to the remote repo                                              | `git push repo`              |
 | `git log`            | creates a log of all commits, includes: person, commit, date, time, and msg           | N/A                            |
