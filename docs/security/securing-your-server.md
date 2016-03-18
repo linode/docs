@@ -6,9 +6,9 @@ description: 'This is a starting point of best practices for hardening a product
 keywords: 'security,secure,firewall,ssh,add user,quick start'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['securing-your-server/']
-modified: 'Thursday, February 25th, 2016'
+modified: 'Wednesday, March 16, 2016'
 modified_by:
-  name: Linode
+  name: Phil Zona
 published: 'Friday, February 17th, 2012'
 title: Securing Your Server
 ---
@@ -63,7 +63,7 @@ With your new user assigned, disconnect from your Linode as `root`:
 
 Log back in as your new user. Replace `example_user` with your username, and the example IP address with your Linode's IP address:
 
-    ssh example_user@203.0.113.0
+    ssh example_user@203.0.113.10
 
 Now you can administer your Linode from your new user account instead of `root`. Nearly all superuser commands can be executed with `sudo` (example: `sudo iptables -L`) and those commands will be logged to `/var/log/auth.log`.
 
@@ -71,11 +71,14 @@ Now you can administer your Linode from your new user account instead of `root`.
 
 By default, password authentication is used to connect to your Linode via SSH. A cryptographic key pair is more secure because a private key takes the place of a password, which is generally much more difficult to brute-force. In this section we'll create a key pair and configure the Linode to not accept passwords for SSH logins.
 
-### Create an Authentication Keypair
+### Create an Authentication Key-pair
 
-1.  This is done on your local computer, **not** your Linode, and will create a 4096-bit RSA keypair. During creation, you will be given the option to protect the keypair with a passphrase. This means that the it cannot be used without entering the passphrase. We suggest you do use the keypair with a passphrase, but if unwanted, leave the fields blank and press **Enter** to finish.
+1.  This is done on your local computer, **not** your Linode, and will create a 4096-bit RSA key pair. During creation, you will be given the option to encrypt the private key with a passphrase. This means that the it cannot be used without entering the passphrase, unless you save it to your local desktop's keychain manager. We suggest you do use the key pair with a passphrase, but if unwanted, leave the field blank when prompted.
 
     **Linux / OS X**
+
+	{: .caution}
+	> If you've already created an RSA keypair, this command will overwrite it, potentially locking you out of other systems. If you've already created a key pair, skip this step. To check for existing keys, run `ls ~/.ssh/id_rsa*`.
 
         ssh-keygen -b 4096
 
@@ -85,23 +88,23 @@ By default, password authentication is used to connect to your Linode via SSH. A
 
     This can be done using PuTTY as outlined in our guide: [Use Public Key Authentication with SSH](/docs/security/use-public-key-authentication-with-ssh#windows-operating-system).
 
-2.  Upload the public key to your Linode. Replace `example_user` with the name of the user you plan to administer the server as.
+2.  Upload the public key to your Linode. Replace `example_user` with the name of the user you plan to administer the server as, and `203.0.113.10` with your Linode's IP address.
 
     **Linux**
 
     From your local computer:
 
-        ssh-copy-id example_user@203.0.113.0
+        ssh-copy-id example_user@203.0.113.10
 
     **OS X**
 
     On your Linode (while signed in as your limited user):
 
-        mkdir -p ~/.ssh && sudo chmod -R 700 ~/.ssh
+        mkdir -p ~/.ssh && sudo chmod -R 700 ~/.ssh/ 
 
     From your local computer:
 
-        scp ~/.ssh/id_rsa.pub example_user@203.0.113.0:~/.ssh/authorized_keys
+        scp ~/.ssh/id_rsa.pub example_user@203.0.113.10:~/.ssh/authorized_keys
 
     {: .note}
     >
@@ -109,9 +112,25 @@ By default, password authentication is used to connect to your Linode via SSH. A
 
     **Windows**
 
-    This can be done using [WinSCP](http://winscp.net/).
+    - **Option 1**: This can be done using [WinSCP](http://winscp.net/). In the login window, enter your Linode's public IP address as the hostname, and your non-root username and password. Click *Login* to connect.
 
-3.  Now exit and log back into your Linode. If you specified a passphrase for your RSA key, you'll need to enter it.
+      Once WinSCP has connected, you'll see two main sections. The section on the left shows files on your local computer and the section on the right shows files on your Linode. Using the file explorer on the left, navigate to the file where you've saved your public key, select the public key file, and click *Upload* in the toolbar above. 
+
+      You'll be prompted to enter a path where you'd like to place the file on your Linode. Upload the file to `/home/example_user/.ssh/authorized_keys`, replacing `example_user` with your username.
+
+    - **Option 2:** Copy the public key directly from the PuTTY key generator into the terminal emulator connected to your Linode (as a non-root user):
+
+          mkdir ~/.ssh; nano ~/.ssh/authorized_keys
+
+      The above command will open a blank file called `authorized_keys` in a text editor. Copy the public key into the text file, making sure it is copied as a single line exactly as it was generated by PuTTY. Press **CTRL+X**, then **Y**, then **Enter** to save the file. 
+
+    Finally, you'll want to set permissions for the public key directory and the key file itself:
+
+        sudo chmod 700 -R ~/.ssh && chmod 600 ~/.ssh/authorized_keys
+
+    These commands provide an extra layer of security by preventing other users from accessing the public key directory as well as the file itself. For more information on how this works, see our guide on [how to modify file permissions](/docs/tools-reference/modify-file-permissions-with-chmod). 
+
+3.  Now exit and log back into your Linode. If you specified a passphrase for your private key, you'll need to enter it.
 
 ### SSH Daemon Options
 

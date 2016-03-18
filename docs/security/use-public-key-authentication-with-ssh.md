@@ -6,24 +6,24 @@ description: 'Access your Linode via SSH using Public Key Authentication.'
 keywords: 'ssh,pki,ssh keys,secure shell,vpn,tunneling'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['security/ssh-keys/']
-modified: Thursday, December 5th, 2013
+modified: 'Wednesday, March 16, 2016'
 modified_by:
   name: Linode
 published: 'Tuesday, April 5th, 2011'
 title: Use Public Key Authentication with SSH
 ---
 
-Public key authentication provides SSH users with the convenience of logging in to their Linodes without entering their passwords. SSH keys are also more secure than passwords, because private keys are *encrypted*, or scrambled, so their contents can't be read as easily. While SSH passwords are not required once keys are set up, passwords for *decrypting*, or unscrambling, the private keys locally are still required. For added convenience, depending on your local workstation's security, you can add the new password to your local keychain so it's saved after the first login.
+Public key authentication provides SSH users with the convenience of logging in to their Linodes without entering their passwords. SSH keys are also more secure than passwords, because the private key used to secure the connection is never shared. Private keys can also be *encrypted* so their contents can't be read as easily. While SSH passwords are not required once keys are set up, passwords for *decrypting* the private keys locally are still required. For added convenience, depending on your local workstation's security, you can add the new password to your local keychain so it's saved after the first login.
 
 ## Intro to SSH Keys Authentication
 
 SSH keys come in pairs; a private and a public key. Usually the private key is saved as `~/.ssh/id_<type>` and the public key is `~/.ssh/id_<type>.pub`. The type of encryption most often used by default is RSA, so your keys should be named `id_rsa` and `id_rsa.pub`. The public key is meant to be handed out freely, and added to servers you wish to connect to in the `~/.ssh/authorized_keys` file. The private key should be secured on your local machine with strict access rules.
 
-It might be easier to think of SSH keys in terms of a lock and key. The public part is the lock, which can be copied to multiple locations as long as the private component, or key, is not compromised. Since the private key is password-protected, it is analogous to keeping a physical key in a lockbox. With this example in mind, using an SSH key works as follows. First, the lockbox/passphrase is opened to obtain the key/private key, which is then used to open the lock/public key and grant access to your Linode.
+It might be easier to think of SSH keys in terms of a lock and key. The public part is the lock, which can be copied to multiple locations as long as the private component, or key, is not compromised. Since the private key is password-protected when encrypted, it is analogous to keeping a physical key in a lockbox. With this example in mind, using an SSH key works as follows. First, the lockbox/passphrase is opened to obtain the key/private key, which is then used to open the lock/public key and grant access to your Linode.
 
 ### Intro to Local Encryption
 
-Since private keys need to be kept secret to prevent unauthorized access to your Linode, it is recommended that they be encrypted on your local system. This helps guarantee that only individuals with the encryption passphrase will be able to use the private keys, even if the key itself becomes compromised. A passphrase is only used to unlock the private key *locally* and is not transmitted in any form to the remote host. Therefore, using unencrypted private keys is not recommended.
+Since private keys need to be kept secret to prevent unauthorized access to your Linode, it is recommended that they be encrypted on your local system. This helps guarantee that only individuals with the encryption passphrase will be able to use the private keys, even if the key itself becomes compromised. A passphrase is only used to unlock the private key *locally* and is not transmitted in any form to the remote host.
 
 When you create your private key, be sure to make a note of your passphrase, as you will need it for the first login to the remote server.
 
@@ -39,9 +39,17 @@ The process for creating keys with a recent version of the OpenSSH package is th
 
         ssh-keygen
 
-2.  Answer all questions when prompted. You can accept the defaults for everything except the passphrase. When you get to the passphrase question, enter a series of letters and numbers for the passphrase twice; once to enter the new passphrase and once to confirm. Important: make a note of your passphrase, as you will need it later. You may accept the defaults for the other questions by pressing *Return* when prompted:
+	**Optional:** to increase the security of your key, increase the size with the `-b` flag. The minimum value is 768 bytes and the default, if you do not use the flag, is 2048 bytes. We recommend a 4096 byte key:
 
-        user@linode: ssh-keygen
+		ssh-keygen -b 4096
+
+2.  Answer all questions when prompted. You can accept the defaults for everything except the passphrase. When you get to the passphrase question, enter a series of letters and numbers for the passphrase twice; once to enter the new passphrase and once to confirm. 
+
+	**Important:** make a note of your passphrase, as you will need it later.
+	
+	You may accept the defaults for the other questions by pressing *Return* when prompted:
+
+        user@linode: ssh-keygen -b 4096
         Generating public/private rsa key pair.
         Enter file in which to save the key (/home/user/.ssh/id_rsa):
         Enter passphrase (empty for no passphrase):
@@ -57,7 +65,7 @@ The newly-generated SSH keys are located in the `~/.ssh/` directory. You will fi
 
 Please note that the following steps are performed on your remote location/Linode.
 
-1.  Before you upload the keys, verify that your .ssh directory exists by using the following command from your home directory (the default directory when you log in):
+1.  Before you upload the keys, verify that your `.ssh` directory exists by using the following command from your home directory (the default directory when you log in):
 
         ls -al
 
@@ -80,7 +88,7 @@ Please note that the following steps are performed on your remote location/Linod
 The final part in the SSH key process is to access your Linode with your new private key.
 
 1.  Connect to the remote server.
-2.  A window will appear prompting you for a password. This password is the passphrase you created for the private key encryption.
+2.  Depending on your desktop environment, a window may appear prompting you for a password. Otherwise, you will be prompted in your terminal. This password is the passphrase you created for the private key encryption.
 
     ![Enter your passphrase in the password field.](/docs/assets/1461-SSH-Passphrase.png)
 
@@ -91,21 +99,21 @@ You should now be connected to your Linode using the SSH key.
 
 ## Windows Operating System
 
-Before you can generate an SSH key, you will need to download and install PuTTYgen (puttygen.exe) and PuTTY (putty.exe). These two programs are available for download from this link: [PuTTY Installer](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
+Before you can generate an SSH key, you will need to download and install PuTTYgen (puttygen.exe) and PuTTY (putty.exe). These two programs are available for download [here](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
 
-### Installing PuTTY Key Generating
+### PuTTY Key Generation
 
-When PuTTYgen has finished downloading, it may now be installed.
+When PuTTYgen has finished downloading, it can be run immediately, without installation.
 
-1.  Double-click on the downloaded executable program and select **Run** to begin the installation.
+1.  Double-click on the downloaded executable program and select **Run**.
 
     ![Beginning the PuTTY key gen install.](/docs/assets/1463-begin-install.PNG)
 
-2.  Read the warning, and then select **Run** to continue the installation.
+2.  Read the warning, and then select **Run** to continue.
 
     ![Ignore installation warning.](/docs/assets/1468-warning.PNG)
 
-3. After the installation is complete, you will be taken directly to the key generating screen. You do not have to change the SSH selection or the number of bits. The default selections are recommended. Click on the **Generate** button to create the new public/private key pair.
+3. You will be taken directly to the key generating screen. You can choose at this point to increase the number of bits to `4096`. Click on the **Generate** button to create the new public/private key pair.
 
     ![Generating the new public/private key pair.](/docs/assets/1464-generate-key.PNG)
 
@@ -117,11 +125,14 @@ When PuTTYgen has finished downloading, it may now be installed.
 
     ![The public key has now been created.](/docs/assets/1466-new-public-key.PNG)
 
-6.  Before you continue, you will need to copy the newly-created public key to either WordPad or Notepad. Just select the text and copy it to a new Notepad or WordPad text file. Be sure the file is saved in a location you remember, as you will need it later.
+6.  Before you continue, you will need to copy the newly-created public key to Notepad. Just select the text and copy it to a new  text file. Be sure the file is saved in a location you remember, as you will need it later.
 
     ![Copy the public key to a text file.](/docs/assets/1476-key-txt-file.png)
 
-7.  Enter a passphrase in the **Key passphrase** text field, and enter it again to confirm. The passphrase can be any string of letters and numbers. The passphrase should be something unique and not easily recognized. Important: make a note of your passphrase, as you will need it later.
+    {: .caution}
+    >When saving the public key, make sure you save it in a plaintext format such as .txt. Other file formats such as .rtf and .doc may add extra characters to the key through encoding, which may prevent your keypair from matching. The public key should be a single line, with no breaks.
+
+7.  Enter a passphrase in the **Key passphrase** text field, and enter it again to confirm. The passphrase can be any string of letters and numbers. The passphrase should be something unique and not easily recognized. **Important:** make a note of your passphrase, as you will need it later.
 
     ![Enter a new passphrase.](/docs/assets/1465-new-passphrase.PNG)
 
@@ -148,7 +159,7 @@ Now it is time to connect to your Linode with the SSH connection you just create
 
 4.  To establish a session, click on **Session** under the **Category** list. Enter the hostname or IP address of your Linode. Note: the SSH radio button is selected by default and the **Port** number field is already filled in.
 
-    You can either save this connection as the default by clicking on the **Save** button, or by entering a name in the **Saved Sessions** text field, and clicking on the **Save** button.
+    **Optional:**You can either save this connection as the default by clicking on the **Save** button, or by entering a name in the **Saved Sessions** text field, and clicking on the **Save** button.
 
     ![Saving your connection information.](/docs/assets/1475-saved-session.PNG)
 
@@ -161,7 +172,21 @@ Now it is time to connect to your Linode with the SSH connection you just create
 
         nano ~/.ssh/authorized_keys
 
-8.  Copy the contents of the public key from your workstation to the `authorized_keys` file. Be sure you save the file on exit. Exit PuTTY.
-9.  Reconnect to PuTTY and **Load** your saved session. (Or, follow Steps 3 and 4 again to start a new SSH session.) You will be prompted to enter your login name as before. However, this time you will be prompted for your SSH key's passphrase, rather then your Linode user's password. Enter your passphrase and press *Enter*.
+8.  Copy the contents of the public key from your workstation to the `authorized_keys` file. Be sure you save the file on exit. For an additional layer of security, modify the file permissions:
+    
+        chmod 600 ~/.ssh/authorized_keys
+
+9.  Exit PuTTY, then reconnect and **Load** your saved session. (Or, follow Steps 3 and 4 again to start a new SSH session.) You will be prompted to enter your login name as before. However, this time you will be prompted for your SSH key's passphrase, rather then your Linode user's password. Enter your passphrase and press *Enter*.
+
+Uploading the public key in Windows can also be done using [WinSCP](http://winscp.net/). In the login window, enter your Linode's public IP address as the hostname, and your non-root username and password. Click *Login* to connect.
+
+Once WinSCP has connected, you'll see two main sections. The section on the left shows files on your local computer and the section on the right shows files on your Linode. Using the file explorer on the left, navigate to the file where you've saved your public key, select the public key file, and click *Upload* in the toolbar above. 
+
+You'll be prompted to enter a path where you'd like to place the file on your Linode. Upload the file to `/home/user/.ssh/authorized_keys`, replacing `user` with your username.
+
+{: .caution}
+> When uploading a public key with WinSCP, make sure you are using a txt formatted file. If your public key is saved in a different format, such as .rtf or .doc, extra formatting characters will be added and your private key will not work properly.
+>
+>When you create the text file, make sure the public key is a single line of text, exactly as it appears in the PuTTY key generator.
 
 You should now be connected to your Linode using the SSH key.
