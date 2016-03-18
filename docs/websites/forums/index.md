@@ -5,9 +5,6 @@ author:
 keywords: 'bulletin board,boards,forums,phpbb,smf'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['web-applications/bulletin-boards/']
-modified: Tuesday, April 19th, 2011
-modified_by:
-  name: Linode
 published: 'Monday, March 1st, 2010'
 title: Forums
 ---

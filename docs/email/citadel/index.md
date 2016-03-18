@@ -5,9 +5,6 @@ author:
 description: 'How to install and run Citadel, the combined SMTP/POP3/IMAP server on your Linode.'
 keywords: 'citadel,linux mail server,groupware,email server,email howto'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Tuesday, April 19th, 2011
-modified_by:
-  name: Linode
 published: 'Thursday, July 16th, 2009'
 title: Citadel Guides
 ---
