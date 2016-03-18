@@ -6,14 +6,14 @@ description: 'An introduction to using git, managing git repositories, and gitol
 keywords: 'git,dvcs,vcs,scm,gitweb,gitolite,ubuntu,debian,arch,gentoo'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['linux-tools/version-control/git/']
-modified: Friday, February 28th, 2014
+modified: Tuesday, March 1, 2016
 modified_by:
-  name: Linode
+  name: Phil Zona
 published: 'Friday, September 4th, 2009'
 title: Git Source Control Management
 ---
 
-Git is version control software. Version control is used to keep track of changes to a file or group of files. Version control is usually associated with source code, but can be used on any file type. For example, a technical document may be placed in version control in order to keep track of changes made to the document. Version control can also be applied to graphics. You can rollback to a previous version to keep track of the changes made on a particular file.
+Git is version control software, which is used to keep track of changes to a file or group of files. Version control is usually associated with source code, but can be used on any file type. For example, a technical document may be placed in version control in order to keep track of changes made to the document. Version control can also be applied to graphics. You can rollback to a previous version to keep track of the changes made on a particular file.
 
 This document will provide rudimentary installation instructions as well as some basics for getting started. However, the way you use Git is entirely up to you.
 
@@ -23,7 +23,7 @@ Git can be installed on a variety of operating systems. It can also be downloade
 
  {: .note }
 >
-> The steps in this guide are written using a non-root user. If you are logged in as Root you will not need `sudo` for certain steps.
+> The steps in this guide are written using a non-root user. If you are logged in as root you will not need `sudo` for certain steps.
 
 ### Linux Installation
 
@@ -49,15 +49,13 @@ For a Gentoo system, the command is as follows:
 
 ### Local System Installation
 
-Git may be installed on a local system running either Mac OS X or Windows. The installation procedure for both types of operating systems is outlined below.
+Git may also be installed on a local machine. The installation procedure for both Mac OS X and Windows operating systems is outlined below.
 
 #### Mac OS X
 
-There are different ways to install Git on OS X. This may be achieved by installing Homebrew or MacPorts before Git or by downloading the Git installer package. Regardless of which method you choose, make sure you verify what operating system version you are currently running.
+There are different ways to install Git on OS X. This may be achieved by installing Homebrew or MacPorts before Git or by downloading the Git installer package. Regardless of the method you choose, make sure you verify which operating system version you are currently running.
 
-##### Installing Homebrew and Git
-
-To install Git by Homebrew do the following:
+##### Installing Git via Homebrew
 
 1.  Go to the [Homebrew](http://brew.sh/) website.
 2.  Copy and paste the command on that page, under **Install Homebrew** into a terminal window.
@@ -72,21 +70,21 @@ To install Git by Homebrew do the following:
 
     ![Enter your password.](/docs/assets/1626-Homebrew-03-resized.png)
 
-5.  It is recommended that you install Brew Doctor to fix any errors before installing Git. Enter **brew doctor** at the prompt to install. If any errors appear, they will be fixed, and you will see a message stating what was repaired.
+5.  It is recommended that you install *Brew Doctor* to fix any errors before installing Git, using the command `brew doctor`. If any errors appear, they will be fixed, and you will see a message stating what was repaired.
 
     ![Install brew doctor.](/docs/assets/1627-Homebrew-04-resized.png)
 
-6.  To update Homebrew run **brew update** at the command prompt.
+6.  To update Homebrew, enter the following command:
+
+        brew update
 
     ![Update Homebrew.](/docs/assets/1628-Homebrew-05-resized.png)
 
-7.  To install Git with Homebrew the command is as follows:
+7.  To install Git with Homebrew, enter the following command:
 
         brew install git
 
-##### Installing MacPorts and Git
-
-To install Git by MacPorts do the following:
+##### Installing Git via MacPorts
 
 1.  Go to [MacPorts](http://www.macports.org/) website.
 2.  Click on the link for your operating system.
@@ -116,9 +114,7 @@ To install Git by MacPorts do the following:
 
         $ sudo port install git +svn +doc +bash_completion +gitweb
 
-##### Installing Git by Package Installer
-
-To install Git by the package installer you will need to do the following:
+##### Installing Git via Package Installer
 
 1.  Go to the [Git](http://git-scm.com/downloads) website and download the current installer for your operating system.
 2.  Double click on the downloaded file to begin the install.
@@ -126,7 +122,7 @@ To install Git by the package installer you will need to do the following:
 
     ![Click on continue.](/docs/assets/1581-MacGit_1.png)
 
-4.  Click on the large **Install for all users of this computer** button and click on **Continue** to begin the installation.
+4.  Select **Install for all users of this computer** button and click **Continue** to begin the installation.
 
     ![Click on install for all users of this computer.](/docs/assets/1582-MacGit_2.png)
 
@@ -142,17 +138,6 @@ To install Git by the package installer you will need to do the following:
 
     ![Click close to exit.](/docs/assets/1585-MacGit_5.png)
 
-8.  Check your settings by issuing the command:
-
-        git config --list
-
-Your output should show at least your username and email address. Sample output is below:
-
-    MacBook-Pro:~ user$ git config --list
-    user.name=user
-    user.email=user@email.com
-    MacBook-Pro:~ user$
-
 #### Windows
 
 To install Git on Windows you will need to download the installer from the [Git](http://git-scm.com/downloads) website:
@@ -165,7 +150,7 @@ To install Git on Windows you will need to download the installer from the [Git]
 
     ![Click Run to start the installer.](/docs/assets/1596-Git-Win-02.png)
 
-3.  Click on **Yes** to continue.
+3.  Click **Yes** to continue.
 
     ![Click Yes to continue.](/docs/assets/1597-Git-Win-03.png)
 
@@ -181,15 +166,15 @@ To install Git on Windows you will need to download the installer from the [Git]
 
     ![Click Next for default or Browse to change.](/docs/assets/1600-Git-Win-06.png)
 
-7.  To accept the default components to be installed click **Next**. Otherwise, click on the additional components to be installed before clicking the **Next** button.
+7.  To accept the default components to be installed click **Next**. Otherwise, select the additional components to be installed before clicking the **Next** button.
 
     ![Accept the default or select additional components.](/docs/assets/1601-Git-Win-07.png)
 
-8.  Accept the default start menu folder by clicking on **Next** or use **Browse** to select a new folder location.
+8.  Accept the default start menu folder by clicking **Next** or use **Browse** to select a new folder location.
 
     ![Select the start menu folder.](/docs/assets/1602-Git-Win-08.png)
 
-9.  Keep the default line ending conversion by clicking **Next**. To change the default, choose one of the two other choices before clicking on **Next**.
+9.  Keep the default line ending conversion by clicking **Next**. To change the default, choose one of the two other choices before clicking **Next**.
 
     ![Select line ending conversions.](/docs/assets/1603-Git-Win-09.png)
 
@@ -219,33 +204,36 @@ To install Git on Windows you will need to download the installer from the [Git]
 
 ## Configuring Git
 
-After the installation is complete, you will need to configure Git for first time use. There is a built-in tool called **git config** that obtains and sets configuration variables for how Git functions and appears. These configuration variables are located in three different places on a Linux system:
+After the installation is complete, you will need to configure Git for first time use. There is a built-in tool called `git config` that obtains and sets configuration variables for how Git functions and appears. These configuration variables are located in three different places on a Linux system:
 
 -   /etc/gitconfig file - stores the information for all system users and their respective repositories
 -   ~/.gitconfig file - pertains to your user
 -   .git/config - this is the configuration file of your current working repository.
 
-For a Windows system, the `.gitconfig` is located in the `$HOME` directory of the user's profile. The full path is `C:\Document and Settings\$USER` or `C:\Users\$USER`
+For a Windows system, the `.gitconfig` file is located in the `$HOME` directory of the user's profile. The full path is `C:\Document and Settings\$USER` or `C:\Users\$USER`
 
-After installing Git make sure your username and email address are set correctly. To verify use the command:
+After installing Git make sure your username and email address are set correctly. To verify, use the command:
 
     git config --list
 
-If your name and email are not listed in the output, you may set them manually. Use the following command to set your `name`:
+If your name and email are not listed in the output, you may set them manually. Use the following command to set your name, replacing `name` with your name:
 
-    git config --global user.name name 
+    git config --global user.name name
 
-Use the following command to set your email address, replacing `user@email.com`:
+Use the following command to set your email address, replacing `user@example.com`:
 
-    git config --global user.email user@email.com
+    git config --global user.email user@example.com
 
 Set your default text editor with this command, replacing `editor-name`:
 
     git config --global core.editor editor-name
 
-Below is a sample gitconfig file with the username and email address:
+Your output should show the information you entered. Sample output is below:
 
-![Sample gitconfig.](/docs/assets/1594-gitconfig.png)
+    MacBook-Pro:~ user$ git config --list
+    user.name=user
+    user.email=user@email.com
+    core.editor=editor-name
 
 ## Working with the Repository
 
@@ -253,7 +241,7 @@ There are two ways to obtain a Git repository, either by importing or copying. I
 
     git init
 
-This will create a new subdirectory called `.git`. In order to start tracking changes made to this project, you will first want to add files to be tracked by using the following command, replacing `filename`:
+This will create a new subdirectory called `.git`. In order to start tracking changes made to this project, first add files to be tracked using the following command, replacing `filename`:
 
     git add filename
 
@@ -261,17 +249,17 @@ After adding the files you wish to track, use the command:
 
     git commit
 
-Enter the commit message using your favorite file editor, then save and quit to finish writing the commit.
+Enter the commit message using your favorite text editor, then save and quit to finish writing the commit. Alternatively, you can use `git commit -m "commit_message"` and hit enter, substituting your intended commit message for `commit_message`.
 
 To copy an existing Git repository use the command:
 
     git clone
 
-Just remember that every file will be copied when the git clone command is used. When using a URL, replace `URL` in the following command:
+Remember that every file will be copied when the git clone command is used. When using a URL, use the following command, replacing `url` with the URL you wish to clone from:
 
-    git clone URL
+    git clone url
 
-To check the status of your files use the command:
+To check the status of the files within your repository use the command:
 
     git status
 
@@ -279,9 +267,9 @@ The status command will also display the status of your submodules. When this co
 
 ### Setup a Local Empty Repository
 
-A bare repository contains no files but the .git folder. It is used to configure an initial Git server so you can export your repository into a new bare repository. For this example, we will use a repository named `practice`. Keep the naming convention simple e.g. lowercase, short names, etc. To create a bare or empty repository use the command:
+A newly created repository contains only the .git folder. For this example, we will use a repository named `practice`. Keep the naming convention simple e.g. lowercase, short names, etc. To create a new repository use the command:
 
-    git init --bare practice.git
+    git init practice.git
 
 If you already have a repository on your local machine and want to push it to your new Git server, replace `203.0.113.2` and use the command:
 
@@ -308,13 +296,18 @@ The most basic commands you will need to know to start using Git are in the tabl
 | `git commit --amend` | replaces the latest commit in the current branch with a new commit, rewriting history | N/A                            |
 |----------------------|---------------------------------------------------------------------------------------|--------------------------------|
 
-Note: Refspec is used to configure which remote branch or branches should be used, and the local branch or branches should be named. Using the variables `name`, `source-branch`, and `destination-branch`, the syntax for refspec is as follows:
 
-    git pull name source-branch:destiantion-branch
+{:.note}
+>
+> When using the `git pull` command, `refspec` is used to configure which remote branch or branches should be used, and how the local branch or branches should be named. The syntax for refspec is:
+>
+>     git pull name source-branch:destination-branch
+>
+> Remember to replace `name`, `source-branch`, and `destination-branch` with their respective values.
 
 ### Branches
 
-Branches are made up of individual code changes. For example, by default the main branch is called "master". The core idea is that branches are created for each feature, implementation, or bug fix. So to use an overly simplified example, the first or master branch is the truck of the tree and each branch is a new iteration. In this example, there might be branches broken out by new feature names or specific bug fixes. Git can also be used to track document changes, as well as code.
+Branches are made up of individual code changes. For example, by default the main branch is called "master". The core idea is that branches are created for each feature, implementation, or bug fix. So to use a simplified example, the first or master branch is the trunk of the tree and each branch is a new iteration. In this example, there might be branches broken out by new feature names or specific bug fixes. Git can also be used to track document changes, as well as code.
 
 The basic options used with the `git branch` command are listed below:
 
@@ -336,7 +329,7 @@ To view which remote servers are configured, use the command:
 
     git remote
 
-This will display the short names of your remote repositories. If your repository was cloned, you would see a repository called "origin". The default name origin comes from the cloned repository. To view more information about the remote repositories, use the command:
+This will display the short names of your remote repositories. If your repository was cloned, you will see a repository called `origin`. The default name origin comes from the cloned repository. To view more information about the remote repositories, use the command:
 
     git remote -v
 
@@ -378,7 +371,7 @@ The location is where you copied your key. For example:
 
     scp ~/.ssh/id_rsa.pub git@203.0.113.2:/tmp/git.pub
 
-The private key remains on your system and should not be copied anywhere else.
+The private key remains on your local system and should not be copied anywhere else.
 
 For Windows users consult the [Windows Operating System](/docs/security/ssh-keys#sph_id8) section in our Public Key guide.
 
@@ -386,29 +379,32 @@ For Windows users consult the [Windows Operating System](/docs/security/ssh-keys
 
 1.  Log in to your Git server with your normal user account. Replace `key-location` and enter the command:
 
-        gl-setup /key-location/ 
+        gl-setup key-location
 
-2.  Then hit **enter**. Depending on your distribution you may see a warning about the `gitolite.rc` file hit **enter** to continue.
+2.  Depending on your distribution you may see a warning about the `gitolite.rc` file. Press **enter** to continue.
 
     ![Enable SSH key.](/docs/assets/1609-gitolite-gl-setup.png)
 
-3.  You will be prompted to enter a number to select a text editor. Select the editor you prefer. In this example, number 2 was selected which is **Nano**.
+3.  You will be prompted to enter a number to select a text editor. In this example option 2 was selected, which corresponds with **Nano**.
 
     ![Select a text editor.](/docs/assets/1611-select-txt-editor.png)
 
-4.  The gitolite.rc file will now open in your preferred text editor. The default settings should be used, so exit the file to continue.
+4.  The `gitolite.rc` file will now open in your preferred text editor. The default settings should be used, so exit the file to continue.
 
     ![Viewing the gitolite.rc file.](/docs/assets/1610-gitolite.rc.png)
 
-### Adding Users Prerequisites
+### Adding Users 
+
+#### Prerequisites
 
 Before users may be added to any of your projects, you will need to clone the Gitolite information from your server to your local machine. Replace both `example-user` and `203.0.113.2` and enter the following command on your Git server:
 
     git clone example-user@203.0.113.2:gitolite-admin
 
-This will create a new directory called `gitolite-admin`. Navigate to the newly created directory and if you run a `ls` command you will see two files inside `conf` and `keydir`. The keydir is the directory where the user keys are stored.
+This will create a new directory called `gitolite-admin`. Navigate to the newly created directory; if you run `ls` you will see two files inside `conf` and `keydir`. The keydir is the directory where the user keys are stored.
 
-#### Adding Users
+#### How to Add Users
+
 
 In order to add a new user, you will need their name, email, and public key. For this example, the name `example-user` will be used. Replace each instance of `example-user` with your user name. The procedure is as follows:
 
@@ -448,6 +444,3 @@ You may wish to consult the following resources for additional information on th
 - [Refspec Information](http://git-scm.com/book/ch9-5.html)
 - [Gitolite](http://gitolite.com/gitolite/glssh.html)
 - [Gitolite Quick Install](http://gitolite.com/gitolite/qi.html)
-
-
-
