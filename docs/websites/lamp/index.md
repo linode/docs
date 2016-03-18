@@ -5,9 +5,6 @@ author:
 keywords: 'LAMP,LAMP stack,LAMP server'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['lamp-guides/']
-modified: Tuesday, June 11th, 2013
-modified_by:
-  name: Linode
 published: 'Thursday, July 16th, 2009'
 title: LAMP Guides
 ---
