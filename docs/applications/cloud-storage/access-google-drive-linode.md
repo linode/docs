@@ -18,13 +18,15 @@ contributor:
 
 <hr>
 
-If you've used Google Drive, you know that it can be an indispensable tool for moving and accessing files. While one of the standard counter-arguments is "just carry a flash drive," that only works until you need to add a file to your Linode. This guide will show you how to install and configure a great piece of free software to access your Google Drive from your Linode running Ubuntu version 14.04 or newer.
+If you've used Google Drive, you know that it can be an indispensable tool for remote file access. While one of the standard counter-arguments to remote storage is "just carry a flash drive," that only works until you need to add a file to your Linode. This guide will show you how to install and configure a great piece of free software to access your Google Drive from your Linode running Ubuntu version 14.04 or newer.
 
-**Google-drive-ocamlfuse (OCamlfuse)** uses the Drive API to scan and access your Google Drive contents. A majority of the following steps involve authorizing its use and applying that authorization to the copy running on your Linode. 
+**Google-drive-ocamlfuse (OCamlfuse)** uses the Drive API to scan and access your Google Drive contents. A majority of the following steps involve authorizing its use and applying that authorization to the copy running on your Linode. Once it has been installed and authorized, you will have real-time access to your Google Drive via Linode.
+
+Before beginning, you should be familiar with our guides on [getting started](/docs/getting-started) and [securing your server](/docs/security/securing-your-server), particularly if your Google Drive contains sensitive personal information. This guide is intended to be run as a non-root user, with sudo privileges required for some steps.
 
 ## Install Software
 
-First we have to add the repository where OCamlfuse lives in our Linode. Once that's done we update so the changes are visible to us and then install like normal.
+First, we will add the repository where OCamlfuse lives in our Linode. Once that's done, we update so the changes are visible to us and then install normally.
 
 1.  Add the repository:
 
@@ -40,7 +42,7 @@ First we have to add the repository where OCamlfuse lives in our Linode. Once th
 
 ## Access the Google Drive API
 
-Next we're going to enable API access to Google Drive and create a set of credentials. These steps require a web browser on your local computer.
+Next, we're going to enable API access to Google Drive and create a set of credentials. These steps require a web browser on your local computer, and access to the Google account with which your Drive is associated.
 
 1.  Visit the Google API developer's console on your desktop at https://console.developers.google.com/project
 
@@ -50,19 +52,19 @@ Next we're going to enable API access to Google Drive and create a set of creden
 
     ![The new project window. I called my project Google Drive Linode](/docs/assets/API_console_new_project.png)
 
-    It will take a moment to create the project, when its complete you'll arrive at the dashboard:
+    Google will take a moment to create the project, and when it's complete you'll arrive at the dashboard:
 
     [![The project "dashboard"](/docs/assets/API-dashboard-small.png)](/docs/assets/API_dashboard.png)
 
-3.  Enable the Google Drive API. Click APIs & auth, then APIs when the menu expands. You'll see a list like this. Then click on **Drive API**:
+3.  Enable the Google Drive API. Click **APIs & auth**, then **APIs** when the menu expands. You'll see a list like the one below. Click on **Drive API**:
 
     [![The API list.](/docs/assets/google_API_screen-small.png)](/docs/assets/google_API_screen.png)
 
-    If you don't see it on the list as pictured, try searching for "Drive API" in the search bar. Once you've selected it, click the blue **Enable** button at the top of the page. 
+    If you don't see the **Drive API** on the list as pictured, you may need to search for it. After you've selected it, click the blue **Enable** button at the top of the page. 
 
     ![The Google Drive API description.](/docs/assets/drive_enable_API.png)
 
-4.  Click **Credentials** in the menu on the left side of the page. Then click **Add New Credential**
+4.  Click **Credentials** in the menu on the left side of the page. Then click **Add New Credential**.
 
     ![The credentials screen.](/docs/assets/new_oauth2.jpg)
 
@@ -70,11 +72,11 @@ Next we're going to enable API access to Google Drive and create a set of creden
 
     [![Creating a client ID.](/docs/assets/new_configure_screen_small.jpg)](/docs/assets/new_configure_screen.jpg)
 
-    The product name field is required, you can leave everything else blank. Then click **Save** at the bottom of the screen.
+    The product name field is required, but you can leave everything else blank. Then click **Save** at the bottom of the page.
 
     ![Configuring the Google Drive API project. I named mine "Google Drive Linode link"](/docs/assets/new_product_name.jpg)
 
-    Now click **Other** for the application type. Google will ask for a name again, I used the default. Then click **Create**.
+    Now click **Other** for the application type. Google will ask for a name again - you may use the default or choose a name you'll easily associate with this project. Then click **Create**.
 
     ![Selecting where this API key will be used](/docs/assets/new_other_application.jpg)
 
@@ -84,7 +86,7 @@ Next we're going to enable API access to Google Drive and create a set of creden
 
 ## Authorize OCamlfuse Access
 
-Next, we'll provide the credentials for your Drive API to OCamlfuse in your Linode, authorizing it to access your Google Drive.
+Next, we'll provide the credentials for your Drive API to OCamlfuse in your Linode, authorizing it to access your Google Drive. 
 
 1.  Authorize your Google Drive link, replacing `client-ID` and `client-secret` with those you received from the Google API Manager in the steps above:
 
@@ -95,18 +97,17 @@ Next, we'll provide the credentials for your Drive API to OCamlfuse in your Lino
         Please, open the following URL in a web browser: https://accounts.google.com/o/oauth2/auth?client_id=URL_SNIPPED
         Please enter the verification code:
 
-2.  Google will ask for permission to allow this new application (ocamlfuse) to access your Google Drive. Click **Accept** to receive the verification code:
+2.  Google will ask for permission to allow this new application (OCamlfuse) to access your Google Drive. Click **Accept** to receive the verification code:
 
     ![The permission request screen from google.](/docs/assets/google_authorization.png)
 
-3.  Copy/paste the verification code back to ocamlfuse.
-
+3.  Copy/paste the verification code back to OCamlfuse in your Linode.
 
 ## Choose Where Google Drive Will Mount
 
 The following steps will create an empty directory where Google Drive will live. All of your Google Drive files and folders will appear here.
 
-1.  Create a mount point. The following will create it in your home folder, but you may choose a different filepath:
+1.  Create a mount point. The following will create it in your home folder, but you may choose a different path:
 
         mkdir ~/google-drive
 
@@ -114,7 +115,7 @@ The following steps will create an empty directory where Google Drive will live.
 
         google-drive-ocamlfuse -label me google-drive
 
-And you're done! The directory `google-drive` will now reflect the contents of your Google Drive! The first time you access the folder it may take a few minutes to synchronize, depending on the amount of content. However, after the initial sync, folder access is almost immediate.
+And you're done! The directory `google-drive` will now reflect the contents of your Google Drive! The first time you access the folder it may take a few minutes to synchronize, depending on the content on your drive. However, after the initial sync, access is almost immediate.
 
 ## Troubleshooting
 
@@ -128,7 +129,7 @@ If the contents of your Google Drive do not load automatically, it's likely that
 
 4.  Click **Reset secret**.
 
-5.  Repeat the steps to [authorize OCamlfuse access on your Linode](#authorize-ocamlfuse-access-on-your-linode).
+5.  Repeat the steps to [authorize OCamlfuse access on your Linode](#authorize-ocamlfuse-access).
 
 6.  Remount your Google Drive:
 
