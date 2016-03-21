@@ -131,7 +131,6 @@ The Lish shell provides access to many functions which are otherwise only access
     configs         - view the configuration profiles for your Linode
     config N        - view configuration profile details for profile N
     status          - view the status of your Linode
-    keysview        - view contents of authorized_keys2
     logview         - view contents of console log
 
 There are two ways to run these commands for a specific Linode. If you are at the main Lish gateway, you can prefix the command with a Linode ID, like this:
