@@ -5,19 +5,19 @@ author:
 description: 'Beginner''s Guide to Linode''s Platform answers common configuration questions about the Linode cloud.'
 keywords: 'linode beginners guide,linux beginner,linode beginner,vps guide'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['beginners-guide/','linode-beginners-guide/']
+alias: ['beginners-guide/']
 modified: Tuesday, March 22, 2016
 modified_by:
   name: K. Craig
 published: 'Monday, November 16th, 2009'
-title: 'Beginner''s Guide to Linode's Platform'
+title: 'Linode Beginner''s guide'
 ---
 
-If you're relatively new to Linux system administration, or just new to our platform, this guide will help address some of the most common questions we receive. If you've just created your first Linode account, please first refer to our [getting started guide](/docs/getting-started/) and return here once your Linode has been deployed.
+If you're relatively new to Linux system administration, or just new to our platform, this guide will help address some of the most common questions we receive. If you've just created your first Linode account, please first refer to our [Getting Started](/docs/getting-started/) Guide and return here once your Linode has been deployed.
 
 ## How do I log into my Linode?
 
-By default, all Linodes are deployed with SSH enabled. This allows command line access through the shell. You can learn more about connecting to your Linode for the first time in the [connecting to your Linode with SSH](/docs/getting-started/#connecting_to_your_linode_with_ssh) section of our [getting started guide](/docs/getting-started/).
+By default, all Linodes are deployed with SSH enabled. This allows command line access through the shell. You can learn more about connecting to your Linode for the first time in the [connecting to your Linode with SSH](/docs/getting-started/#connecting_to_your_linode_with_ssh) section of our [Getting Started](/docs/getting-started/) guide.
 
 ## How do I host websites on my Linode?
 
