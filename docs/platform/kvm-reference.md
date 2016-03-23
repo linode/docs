@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: KVM Reference explains the differences when going from Xen to KVM virtualization.
 keywords: 'kvm,kvm reference,virtual machine mode,kvm linode,xen'
-alisa: ['platform/kvm/]
+alias: ['platform/kvm/']
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: Monday, June 15th, 2015
 modified_by:
