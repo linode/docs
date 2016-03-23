@@ -42,7 +42,7 @@ Use the Linode Manager to enable the Backup Service on a Linode. Here's how:
 
 The Linode Backup Service is now enabled for the selected Linode.
 
-### Manage a Backup
+### Manage Backup Services
 
 You'll manage your backups with a simple web interface in the Linode Manager. There's no software to install, and there are no commands to run. Just log in to the Linode Manager, click the **Linodes** tab, select a Linode, and then click the **Backups** tab. The backups interface is shown below.
 
