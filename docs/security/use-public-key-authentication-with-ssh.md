@@ -35,6 +35,11 @@ The process for generating SSH keys and connecting to a remote server from a Lin
 
 The process for creating keys with a recent version of the OpenSSH package is the same across many different Unix-like operating systems. This includes all Linux distributions provided by Linode, workstations running Linux, and Apple's OS X.
 
+{: .caution}
+> Be careful when running `ssh-keygen` if you've already created and saved keys to the default path, `/home/user/.ssh/id_rsa`. If you run the command again and do not specify a different path, you may overwrite the private key on your local system. If you overwrite the local private key after using the matching public key to secure your server, you may lose your ability to access your server via SSH.
+>
+> If you accidentally lock yourself out of your Linode this way, you can use [Lish](/docs/networking/using-the-linode-shell-lish) to update your `authorized_keys` file and regain SSH access.
+
 1.  To generate SSH keys for your host, issue the following command on your *local system*:
 
         ssh-keygen
