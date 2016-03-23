@@ -2,8 +2,9 @@
 author:
   name: Josh Sager
   email: docs@linode.com
-description: What changes when you switch from Xen to KVM virtualization.
-keywords: 'xen,kvm,linode,virtualization'
+description: KVM Reference explains the differences when going from Xen to KVM virtualization.
+keywords: 'kvm,kvm reference,virtual machine mode,kvm linode,xen'
+alias: ['platform/kvm/']
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: Monday, June 15th, 2015
 modified_by:
@@ -105,14 +106,14 @@ There are some reported cases of Linodes running CentOS 6.X that lose network co
 
     rm -f /etc/udev/rules.d/70-persistent-net.rules
 
-Then reboot the Linode. 
+Then, reboot the Linode. 
 
 ### Arch Linux
 
-An upstream change to persistent device naming in systemd has resulted in broken connectivity for Linodes running Arch Linux on KVM hosts. The latest version of systemd (226-1+) uses "Predictable Network Interface Names", which prevent the network interface on our platform from being brought online at boot.
+An upstream change to persistent device naming in systemd has resulted in broken connectivity for any Linode running Arch Linux on a KVM host. The latest version of systemd (226-1+) uses "Predictable Network Interface Names," which prevent the network interface on our platform from being brought online at boot.
 
 You can disable the use of Predictable Network Interface Names with the command below. 
 
     ln -s /dev/null /etc/udev/rules.d/80-net-setup-link.rules
 
-If have already upgraded and lost connectivity to your Linode, you will need to use the [LISH Console](/docs/networking/using-the-linode-shell-lish) to regain access to your Linode to run this command. Once you've done so, reboot your system.
+If you have already upgraded and lost connectivity to your Linode, you will need to use the [LISH Console](/docs/networking/using-the-linode-shell-lish) to regain access to your Linode to run this command. Once you've done so, reboot your system.
