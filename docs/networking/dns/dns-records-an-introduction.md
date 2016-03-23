@@ -5,12 +5,12 @@ author:
 description: 'Learn about DNS records and system structure.'
 keywords: 'dns records,domain names,dns record types,dns resolution'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['dns-guides/introduction-to-dns-records/','dns-guides/introduction-to-dns/','introduction-to-dns-records/']
+alias: ['dns-guides/introduction-to-dns-records/','dns-guides/introduction-to-dns/','networking/dns/introduction-to-dns-records/']
 modified: Tuesday, January 20, 2015
 modified_by:
   name: Elle Krout
 published: 'Wednesday, July 29th, 2009'
-title: DNS Records: an Introduction
+title: "DNS Records: an Introduction"
 external_resources:
 - '[DNS Manager](/docs/networking/dns/dns-manager)'
 - '[Reverse DNS](/docs/networking/dns/setting-reverse-dns)'
