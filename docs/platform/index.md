@@ -10,7 +10,7 @@ featured:
  - linode-cli.md
  - linode-images.md
  - linode-managed.md
- - kvm.md
+ - kvm-reference.md
  - package-mirrors.md
  - automating-server-builds.md
  - stackscripts.md
