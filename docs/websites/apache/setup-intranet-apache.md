@@ -24,7 +24,7 @@ Many users sometimes just want a private website isolated from the internet to w
 
 ## Before You Begin
 
-1. Copy /etc/hosts.conf to /etc/hosts.bkup incase you mess up!
+1. Copy /etc/hosts to /etc/hosts.bkup incase you mess up!
 
 2. Update your system by issuing:
 
@@ -44,9 +44,9 @@ Many users sometimes just want a private website isolated from the internet to w
 
 2. Navigate to `/etc`
 
-3. Using your favorite text editor, edit `/etc/hosts.conf` and add the following line under a line which says `127.0.0.1 <your hostname> <your hostname again>`.
+3. Using your favorite text editor, edit `/etc/hosts` and add the following line under a line which says `127.0.0.1 <your hostname> <your hostname again>`.
 
-{: .file } /etc/hosts.conf
+{: .file } /etc/hosts
 :   ~~~ ini
     127.0.0.2	<custom domain name>.<non existant domain extension such as .local>	<Repeat the same domain name>
 
