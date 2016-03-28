@@ -3,19 +3,19 @@ author:
   name: Alex Fornuto
   email: afornuto@linode.com
 description: Our guide to using the Linode backup service.
-keywords: 'backup,linode platform,linode backup service'
+keywords: 'backup,linode platform,linode backup service,enable a backup,manage a backup,schedule a backup,disable a backup,restore from a backup,boot from a backup'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['backup-service/']
 modified: 'Monday, October 26th, 2015'
 modified_by:
   name: Linode
 published: 'Wednesday, March 14th, 2012'
-title: Backup Service
+title: Linode Backup Service
 ---
 
-The *Linode Backup Service* is a subscription service that automatically performs daily and weekly backups of your Linode. It's affordable, easy to use, and provides peace of mind. This guide explains how to enable backups, schedule backups, make a manual backup, restore from backup, and disable the Backup Service.
+The *Linode Backup Service* is a subscription service that automatically performs daily and weekly backups of your Linode. It's affordable, easy to use and provides peace of mind. This guide explains how to enable and schedule a backup, make a manual backup, restore from backup, and disable the Backup Service.
 
-##Getting Started
+##Get Started
 
 Ready to start protecting your data? Let us help you sign up and get going with the Linode Backup Service.
 
@@ -30,7 +30,7 @@ Pricing is per Linode and varies depending on the size of your virtual private s
 -   Linode 16GB: $40.00/month
 -   Linode 32GB: $80.00/month
 
-### Enabling Backups
+### Enable a Backup
 
 Use the Linode Manager to enable the Backup Service on a Linode. Here's how:
 
@@ -42,7 +42,7 @@ Use the Linode Manager to enable the Backup Service on a Linode. Here's how:
 
 The Linode Backup Service is now enabled for the selected Linode.
 
-### Finding Your Way Around
+### Manage Backup Services
 
 You'll manage your backups with a simple web interface in the Linode Manager. There's no software to install, and there are no commands to run. Just log in to the Linode Manager, click the **Linodes** tab, select a Linode, and then click the **Backups** tab. The backups interface is shown below.
 
@@ -62,9 +62,9 @@ Backups are stored on a separate systems in the same datacenter as your Linode. 
 -   **Last week's backup:** Automatically initiated weekly within the backup window, on the day you select. Between 8 and 14 days old.
 -   **Manual Snapshot:** A user-initiated snapshot that stays the same until another snapshot is initiated.
 
-The daily and weekly backups are automatically erased when a new backup is performed. The Linode Backup Service does not keep automated backups older than 8-14 days.
+The daily and weekly backups are automatically erased when a new backup is performed. The Linode Backup Service does not keep automated backups older than 8 - 14 days.
 
-##Scheduling Backups
+##Schedule a Backup
 
 You can configure when automatic backups are initiated. Here's how:
 
@@ -76,7 +76,7 @@ You can configure when automatic backups are initiated. Here's how:
 
 The Linode Backup Service will backup your Linode according to the schedule you specified.
 
-##Taking a Manual Snapshot
+##Take a Manual Snapshot
 
 You can make a manual backup of your Linode by taking a *snapshot*. Here's how:
 
@@ -84,15 +84,15 @@ You can make a manual backup of your Linode by taking a *snapshot*. Here's how:
 2.  Click the **Backups** tab.
 3.  Click **Take a New Snapshot Now**.
 
- {: .note }
->
-> Taking a new snapshot will overwrite a saved snapshot.
+    {: .note }
+    >
+    > Taking a new snapshot will overwrite a saved snapshot.
 
 4.  A warning appears asking if you would like to overwrite the previous snapsnot. Click **OK**.
 
-The Linode Backup Service initiates the manual snapshot. Be patient! Creating the manual snapshot can take several minutes depending on the size of your Linode and the amount of data you have stored on it. Other Linode Manager jobs for this Linode will not run until the snapshot job has been completed.
+The Linode Backup Service initiates the manual snapshot. Be patient. Creating the manual snapshot can take several minutes depending on the size of your Linode and the amount of data you have stored on it. Other Linode Manager jobs for this Linode will not run until the snapshot job has been completed.
 
-##Restoring from a Backup
+##Restore from a Backup
 
 You can restore a backup to any Linode located in the same data center, even if it does not have the Backup Service enabled. Here's how:
 
@@ -119,7 +119,7 @@ The backup disks and configuration profiles will be restored to the Linode you s
 >
 > The size of of the disk(s) created by the restore process will be slightly larger than the total size of the files restored. You may want to resize your disk(s) after the restore process is completed.
 
-### Booting from the Backup
+### Boot from a Backup
 
 After the backup has been restored, the disks and configuration profiles will be available to the Linode you selected. Select the restored configuration profile and reboot your Linode to start up from the restored disks. Here's how:
 
@@ -132,7 +132,7 @@ After the backup has been restored, the disks and configuration profiles will be
 
 The Linode will start from the backup disks. Watch the *Host Job Queue* to monitor the progress.
 
-##Disabling Backups
+##Disable a Backup
 
 You can cancel the Backup Service at any time. From your Linode's dashboard, choose the **Backups** tab and click the **Cancel Backups** link at the bottom of the page.  This will turn off the service, remove your backups from our servers, and issue a prorated service credit for the time left in the current billing period. This credit may be used to purchase additional Linode services in the future.
 
@@ -141,6 +141,7 @@ You can cancel the Backup Service at any time. From your Linode's dashboard, cho
 There are some limitations to what the Linode Backup Service can back up. Here are some things you should be aware of:
 
 -   The Backup Service must be able to mount your disks. If you've created partitions, configured full disk encryption, or made other changes that prevent us from mounting the disk as a filesystem, you will likely not be able to use the Linode Backup Service. The backup system operates at the file level, not at the block level.
+-    Because the Backup Service is file-based, the number of files stored on disk will impact both the time it takes for backups and restores to complete, and your ability to successfully take and restore backups. Customers who need to permenatly store a large number of files may want to archive bundles of smaller files into a single file, or consider other backup services.
 -   Backups taken of ext4 or ext3 filesystems will be restored as ext3. Backups taken of other mountable filesystem types will have their contents restored using ext3.
 -   Files that have been modified but have the same size and modify time will not be considered "changed" during a subsequent backup. ACLs and extended attributes are *not* tracked.
 -   The Backup Service uses a snapshot of your disks to take consistent backups while your Linode is running. This method is very reliable, but can fail to properly back up the data files for database services like MySQL. If the snapshot occurs during a transaction, the database's files may be backed up in an unclean state. We recommend scheduling routine dumps of your database to a file on the filesystem. The resulting file will then be backed up, allowing you to restore the contents of the database if you need to restore from a backup.

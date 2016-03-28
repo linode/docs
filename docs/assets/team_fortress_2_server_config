@@ -1,0 +1,110 @@
+// General Settings //
+
+hostname Your Hostname
+sv_contact user@example.com
+sv_lan 0			// Server type; 0 = Internet; 1 = LAN
+sv_region -1 			// Region: -1 = World; 0 = USA East; 1 = USA West; 2 = S. America;
+                                // 3 = Europe; 4 = Asia; 5 = Australia; 6 = Middle East; 7 = Africa
+
+// Passwords //
+
+rcon_password adminpass		// Password for administrator access
+sv_password			// Server password
+
+
+// Server Logs //
+
+log on
+sv_logecho 1			// Echo log information into your console
+sv_logfile 1			// Add log file
+sv_log_onefile 0 		// Log to a single file
+sv_stats 1 			// Collect CPU usage states
+
+
+// Bans and Ban Logs //
+
+sv_rcon_maxfailures 5 		// Max amount of failed RCON logins before ban (between 1 - 20)
+sv_rcon_banpenalty 60 		// Ban time for RCON failed login in minutes
+sv_logbans 1			// Turn on ban logging
+
+
+// Server Downloads/Uploads //
+
+sv_allowdownload 1
+sv_allowupload 1
+sv_consistency 1 		// File consistency check
+net_maxfilesize 15		// Max file size for uploading in MB
+
+
+// Pure Server //
+// Pure Servers force all clients to use content that matches the server
+
+sv_pure 2 			// 0 = Off; 1 = Enforce via pure_server_whitelist.txt
+                                // 2 = Steam official content
+sv_pure_kick_clients 1 		// Kick clients in violation
+sv_pure_trace 1 		// Display violation message
+
+
+// Bandwidth & Frame Rates //
+
+sv_maxrate 50000		// Max bandwidth rate; 0 = Unlimited
+sv_minrate 0 			// Min bandwidth rate; 0 = Unlimited
+sv_maxupdaterate 66 		// Max updates per second
+sv_minupdaterate 10		// Min updates per second
+fps_max 600 			// Frame Rates; 0 = Unlimited
+
+
+// Server Variables //
+
+mp_allowspectators 1
+sv_cheats 0
+sv_pausable 0
+mp_footsteps 1
+sv_allow_votes 1 		// Vote on maps
+mp_forcecamera 1 		// Camera restriction for dead players
+mp_idlemaxtime 3 		// Max idle time for players (in minutes)
+mp_idledealmethod 1 		// Idle player kick method; 0 = Off; 1 = Move to spectate; 2 = Boot
+
+
+// Game Variables //
+
+sv_visiblemaxplayers 24 	//Max players
+mp_friendlyfire 1
+mp_flashlight 1
+mp_falldamage 0
+tf_weapon_criticals 1 		// Allows crits
+tf_damage_disablespread 0 	// Random damage spread (±10%)
+tf_use_fixed_weaponspreads 0 	// Consistent spread for weapons
+
+
+// Team Autobalance //
+
+mp_autoteambalance 1
+mp_teams_unbalance_limit 2 	// Amount of additional players on team before unbalanced
+
+
+// Round Variables //
+
+mp_enableroundwaittime 1 	// Enables timers between rounds (setting this to 0 causes a known bug)
+mp_bonusroundtime 15 		// Time after win until restart
+mp_restartround 0 		// Round restart in seconds
+mp_stalemate_enable 0 		// Enable sudden death
+mp_stalemate_timelimit 240	// Timelimit of stalemate round
+mp_maxrounds 0 			// Max rounds before map change
+mp_winlimit 0 			// Max wins before map change
+mp_timelimit 0 			// Max time before map change
+
+
+// Communication //
+
+sv_voiceenable 1
+sv_alltalk 0 			// Players can hear all other players
+mp_chattime 10 			// Post-game chat in seconds
+
+
+// Execute ban files //
+
+exec banned_user.cfg
+exec banned_ip.cfg
+writeid
+writeip

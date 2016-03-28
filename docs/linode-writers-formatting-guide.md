@@ -6,7 +6,7 @@ description: 'The Linode Guides & Tutorials style guide for article submissions'
 keywords: 'style guide,format,formatting,how to write,write for us,write for linode,linode library,submissions'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['style-guide/']
-modified: Wednesday, December 16th, 2015
+modified: Tuesday, February 16th, 2016
 modified_by:
   name: Linode
 published: 'Wednesday, January 15th, 2014'
@@ -114,7 +114,7 @@ For example:
 >
 >The tab size is set to four, and **only** soft tabs should be used. This can be configured in the settings of most text editors.
 
-## Linode-Specific Formatting
+## Markdown Formatting
 
 ### Abbreviations and Acronyms
 
@@ -122,21 +122,14 @@ Upon first mention of a new concept or software, use the full name or term, then
 
 ### Bold and Italics
 
-Use a **Bold** font weight for buttons, menu selections, important terms and words that require emphasis and anything that you want to stand out to the reader. *Italicize* new terms and concepts the first time they are used.
+Use a **Bold** font weight for buttons, menu selections and anything that requires emphasis or that you want to stand out to the reader. *Italicize* new terms and concepts the first time they are used.
 
-### Cautions
-
-If a step in your guide can cause any major issues with the user's Linode or computer, a caution note should be included.
-
-For example:
-
-    {: .caution}
-    >
-    >If improperly configured, your Linode will not reboot.
-
-{: .caution}
->
->If improperly configured, your Linode will not reboot.
+{: .table .table-striped .table-bordered }
+| Formatting | Example |
+|:--------------|:------------|
+| \*\*bold\*\* | **bold** |
+| \*italics\* | *italics* |
+|:--------------|:------------|
 
 ### Commands
 
@@ -152,11 +145,13 @@ For example:
 >
 >     yum update
 
-Inline commands should be denoted by backtics (**`**):
+Inline commands should be denoted by backtics.
 
-    Update your system by running `yum update`.
-
->Update your system by running `yum update`.
+{: .table .table-striped .table-bordered }
+| Formatting | Example |
+|:--------------|:------------|
+| Update your system by running \`yum update\`. | Update your system by running `yum update`. |
+|:--------------|:------------|
 
 ### Example IP Addresses
 
@@ -185,57 +180,35 @@ Within the file formatting, a code language or syntax should be defined at the e
 
 Example: File format
 
-    {: .file}
-    /path/to/file
-    :   ~~~ conf
-        <IfModule mpm_prefork_module>
-            StartServers        2
-            MinSpareServers     6
-            MaxSpareServers     12
-            MaxClients      80
-            MaxRequestsPerChild     3000
-        </IfModule>
-        ~~~
-
-{: .file}
-/path/to/file
-:  ~~~ conf
-   <IfModule mpm_prefork_module>
-      StartServers     2
-      MinSpareServers  6
-      MaxSpareServers  12
-      MaxClients       80
-      MaxRequestsPerChild  3000
-   </IfModule>
-   ~~~
+{: .table .table-striped .table-bordered }
+| Formatting | Example |
+|:--------------------------|:----------------------------------------------|
+| {: .file }<br>/path/to/file.html<br>:&nbsp;&nbsp;&nbsp;~~~ conf<br>&nbsp;&nbsp;&nbsp;&nbsp;#Sample file text<br>&nbsp;&nbsp;&nbsp;&nbsp;Sample file syntax<br>&nbsp;&nbsp;&nbsp;&nbsp;~~~ | <img src="/docs/assets/example_file_file.png"> |
 
 Example: File Excerpt format
 
-    {: .file-excerpt}
-    /path/to/file
-    :   ~~~ ini
-        error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
-        error_log = /var/log/php/error.log
-        max_input_time = 30
-        ~~~
-
-{: .file-excerpt}
-/path/to/file
-:  ~~~ ini
-   error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
-   error_log = /var/log/php/error.log
-   max_input_time = 30
-   ~~~
+{: .table .table-striped .table-bordered }
+| Formatting | Example |
+|:--------------------------|:----------------------------------------------|
+| {: .file-excerpt }<br>/path/to/file.html<br>:&nbsp;&nbsp;&nbsp;~~~ ini<br>&nbsp;&nbsp;&nbsp;&nbsp;#Sample file excerpt text<br>&nbsp;&nbsp;&nbsp;&nbsp;Sample file excerpt syntax<br>&nbsp;&nbsp;&nbsp;&nbsp;~~~ | <img src="/docs/assets/example_file_excerpt.png"> |
 
 ### File Paths
 
 Inline file paths should be unformatted text.
 
-For example:
+{: .table .table-striped .table-bordered }
+| Formatting | Example |
+|:--------------|:------------|
+| Navigate to \`/var/www/html\`. | Navigate to `/var/www/html`. |
+|:--------------|:------------|
 
-    Navigate to `/var/www/html`.
+### Headings
 
->Navigate to `/var/www/html`.
+{: .table .table-striped .table-bordered }
+| Formatting | Example |
+|:--------------------------|:----------------------------------------------|
+| \#\# Section title (h2) | <font size="5">Section title (h2)</font> |
+| \#\#\# Subsection (h3)   | <font size="4">Subsection (h3)</font> |
 
 ### Images
 
@@ -243,83 +216,93 @@ Images should be in *.png* or *.jpg* format. If an image is over 650 pixels wide
 
 When adding an image, ensure that all identifying attributes such as names and IP addresses are removed, obfuscated, or replaced with dummy text, such as **example_user** or **192.0.2.0**. Be mindful of metadata in images taken with mobile devices.
 
-To insert an image up to 650 px wide:
 
-    ![description](/docs/assets/filename.png)
-
-To link a 650 px wide image to its original size:
-
-    [![description](/docs/assets/filename_small.png)](/docs/assets/filename.png)
+{: .table .table-striped .table-bordered }
+| Up to 650 px wide. | Over 650 px wide. |
+|:--------------------------|:----------------------------------------------|
+| \!\[description\](/docs/assets/filename.png) | \[!\[description\](/docs/assets/filename_small.png)](/docs/assets/filename.png) |
 
 ### Key Combinations
 
 When instructing to use a combination of keys, format them in bold.
 
-For example:
-
-    Press **CTRL+N** then **X** to exit the program.
-
->Press **CTRL+N**, then **X** to exit the program.
+{: .table .table-striped .table-bordered }
+| Formatting | Example |
+|:--------------|:------------|
+| Press \*\*CTRL+N\*\* then \*\*X\*\* to exit the program.  | Press **CTRL+N** then **X** to exit the program. |
+|:--------------|:------------|
 
 ### Links
 
-Internal links to other Linode guides should be relative, starting at `/docs/`:
+Internal links to other Linode guides should be relative, starting at `/docs/`, and external links should be formatted as shown below and use HTTPS URLs whenever possible.
 
-    [Getting Started](/docs/getting-started)
-
-External links should be formatted as shown below and use HTTPS URLs whenever possible:
-
-    [Apache HTTP Server Documentation](https://httpd.apache.org/docs/)
+{: .table .table-striped .table-bordered }
+| Internal | External |
+|:--------------------------|:----------------------------------------------|
+| \[Getting Started\](/docs/getting-started) | \[Apache HTTP Server Documentation\](https://httpd.apache.org/docs/)] |
 
 ### Lists
 
-Be sure that lists have the proper horizontal spacing. This should be two spaces for ordered lists, three for unordered.
+Be sure that lists have the proper horizontal spacing. This should be *two* spaces for ordered lists and *three* for unordered. This is to keep the lists aligned properly with the four-space soft tabs used in the guides.
 
-Examples:
+{: .table .table-striped .table-bordered }
+| Ordered |  Unordered |
+|:--------------------------|:----------------------------------------------|
+| 1&nbsp;&nbsp;Step 1.<br><br>2&nbsp;&nbsp;Step 2.<br><br>3&nbsp;&nbsp;Step 3. | \*&nbsp;&nbsp;&nbsp;Item 1.<br><br>\*&nbsp;&nbsp;&nbsp;Item 2.<br><br>\*&nbsp;&nbsp;&nbsp;Item 3. |
 
-~~~
-1.  Step 1.
+### Notes and Cautions
 
-2.  Step 2.
+Notes should be important text that does not necessarily fit the narrative of the preceeding step or paragraph. If a step in your guide can cause any major issues with the user's Linode or computer, a caution note should be included.
 
-3.  Step 3.
-~~~
-
-~~~
-*   Item 1.
-
-*   Item 2.
-
-*   Item 3.
-~~~
-
-### Notes
-
-Notes should be important text that does not necessarily fit the narrative of the preceeding step or paragraph.
-
-    {: .note}
-    >
-    >This is a note.
-
-{: .note}
->
->This is a note.
+{: .table .table-striped .table-bordered }
+| Formatting | Example |
+|:--------------------------|:----------------------------------------------|
+| {: .note}<br>><br>> This is a sample note.<br> | <img src="/docs/assets/example-note.png"> |
+| {: .caution}<br>><br>> This is a sample caution.<br> | <img src="/docs/assets/example-caution.png"> |
 
 ### Numerical Values
 
-- **1-10**: Written out as text (one, two, three, etc.)
-- **Greater than 10**: Numerical digits (11, 23, 46)
+{: .table .table-striped .table-bordered }
+| 1-10 | Greater than 10 |
+|:--------------|:------------|
+| Use words (one, two, three, etc.)  | Use numerical digits (11, 22, 33). |
+|:--------------|:------------|
 
 ### Sentence Spacing
 
 Use single spaces between sentences; do not double-space.
 
+### Tables
+
+<table class="table table-striped table-bordered">
+  <thead><th>Formatting</th><th>Example</th></thead>
+  </tr>
+  <tr>
+    <td>
+{: .table .table-striped}
+<br>
+| Left-Aligned | Centered     | Right-Aligned |
+<br>
+| ---------------- |:-------------:| -----------------:|
+<br>
+| Columns,&nbsp;&nbsp;&nbsp;&nbsp; | both&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| headers &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+<br>
+| and &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | line items, | are aligned &nbsp;&nbsp;|
+<br>
+| by the hypens | and colons | above. &nbsp;&nbsp;&nbsp; |
+    </td>
+    <td>
+    <img src="/docs/assets/example-blue-stripe-table.png">
+    </td>
+  </tr>
+</table>   
+
 ### Variables
 
 Variables that the reader will need to change for their system or preference should be formatted using backtics. Do not include any brackets or parentheses when using these temporary values in examples, as the reader may include them in their final version.
 
-For example:
-
-    Change the `password` and `username` values.
-
->Change the `password` and `username` values.
+{: .table .table-striped .table-bordered }
+| Formatting | Example |
+|:--------------|:------------|
+| Change the \`password\` and \`username\` values. | Change the `password` and `username` values. |
+|:--------------|:------------|

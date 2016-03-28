@@ -5,23 +5,23 @@ author:
 description: 'How to install Nagios monitoring tool in a Ubuntu 14.04 Linode'
 keywords: 'nagios,ubuntu,monitoring'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-published: 'Weekday, Month 00th, 2015'
-modified: Weekday, Month 00th, 2015
+published: ''
+modified: Monday, March 28th, 2016
 modified_by:
   name: Linode
 title: 'Monitor Services with Nagios 4 on Ubuntu 14.04'
 contributor:
   name: Paulo Telles
   link: http://github.com/paulotfilho
-  external_resources:
-- '[Nagios Website](http://www.nagios.org/)'
-- '[Nagios Library](http://library.nagios.com/)'
+external_resources:
+ - '[Nagios Website](http://www.nagios.org/)'
+ - '[Nagios Library](http://library.nagios.com/)'
 ---
 
 *This is a Linode Community guide. Write for us and earn $250 per published guide.*
 <hr>
 
-Nagios is a very popular monitoring tool, providing monitoring and alerting services for your servers, applications and services. Using a wide variety of available plugins, you can keep track of the status of your critical services like HTTP, SSH, SMTP. A monitoring tool is a key application in a production server. In this guide, you'll learn how to setup a Nagios instance on your Linode.
+Nagios is a popular monitoring tool, providing monitoring and alerting services for your servers, applications and services. Using a wide variety of available plugins, you can keep track of the status of your critical services like HTTP, SSH, SMTP. A monitoring tool is a key application in a production server. In this guide, you'll learn how to setup a Nagios instance on your Linode.
 
 ## Before You Begin
 
@@ -36,7 +36,7 @@ Nagios is a very popular monitoring tool, providing monitoring and alerting serv
 
 ### Steps before installation
 
-1.  As always, make sure that your package repository and packages are updated. In order to do that, simply enter the following commands:
+1.  As always, make sure that your package repository and packages are updated. To do that, enter the following commands:
 
         sudo apt-get update && sudo apt-get upgrade
 
@@ -51,13 +51,17 @@ Nagios is a very popular monitoring tool, providing monitoring and alerting serv
 
         sudo apt-get install build-essential unzip openssl libssl-dev libgd2-xpm-dev xinetd apache2-utils
 
+{: .note}
+>
+>The latest stable version of Nagios 4 is not available in default repositories. The following steps will walk you through building it from source code. 
+
 ### Building Nagios
 
 We are now ready to build Nagios 4 from source code. The following steps will guide you through this process.
 
-1. In order to download Nagios 4 source code, go to [this page](https://www.nagios.org/downloads/core-stay-informed/). Click "Skip to download" in case you don't want to fill in the form. Under "Nagios Core", find the release that says "Latest stable release" in "Notes" and copy the download link (e.g. https://assets.nagios.com/downloads/nagioscore/releases/nagios-4.1.1.tar.gz)
+1. In order to download Nagios 4 source code, go to [the Nagios Core DIY download page](https://www.nagios.org/downloads/core-stay-informed/). If you prefer not to register for updates, click "Skip to download". Under "Nagios Core", find the release that says "Latest stable release" in "Notes" and copy the download link (e.g. https://assets.nagios.com/downloads/nagioscore/releases/nagios-4.1.1.tar.gz)
 
-2. Download and extract Nagios to your Linode using `wget` and `tar`, pasting the link from step 4:
+2. Download and extract Nagios to your Linode using `wget` and `tar`, pasting the link from step 4 and specifying the version number when expanding the archive in the `tar -xvf` line:
 
         wget https://assets.nagios.com/downloads/nagioscore/releases/nagios-4.1.1.tar.gz
         tar -xvf nagios-4.1.1.tar.gz
@@ -66,7 +70,7 @@ We are now ready to build Nagios 4 from source code. The following steps will gu
 
         cd nagios-4.1.1
 
-4. Now we need to configure it, compile it and install it:
+4. Now we need to configure, compile, and install it:
 
         ./configure --with-nagios-group=nagios --with-command-group=nagcmd
         make all
@@ -75,9 +79,6 @@ We are now ready to build Nagios 4 from source code. The following steps will gu
         sudo make install-config
         sudo make install-commandmode
 
-{: .note}
->
->The latest stable version of Nagios 4 is not available in default repositories, that's why we cover how to build it from source code in this guide. 
 
 ## Configuring Nagios Web Interface
 
@@ -104,18 +105,18 @@ If mod_rewrite and/or mod_cgi were not already enabled, you'll have to restart A
 
 ## Installing Nagios Plugins
 
-Nagios Plugins is a pack of well-written checking scripts, which will allow you to monitor services like DHCP, FTP, HTTP, NTP. In order to use Nagios Plugins, go to [this link](https://nagios-plugins.org/downloads/) and copy the download link for the current stable release (e.g. http://www.nagios-plugins.org/download/nagios-plugins-2.1.1.tar.gz)
+Nagios Plugins is a pack of well-written checking scripts, which will allow you to monitor services like DHCP, FTP, HTTP, NTP. In order to use Nagios Plugins, go to [the Nagios Plugins downloads page](https://nagios-plugins.org/downloads/) and copy the download link for the current stable release (e.g. http://www.nagios-plugins.org/download/nagios-plugins-2.1.1.tar.gz)
 
 1. Download and extract Nagios Plugins to your Linode using wget and tar, pasting the link you copied:
 
         wget http://www.nagios-plugins.org/download/nagios-plugins-2.1.1.tar.gz
         tar -xvf nagios-plugins-2.1.1.tar.gz
 
-6. Just like we did with Nagios, we need to build Nagios Plugins. Change to the newly created directory:
+6. As we did with Nagios, we need to build Nagios Plugins. Change to the newly created directory:
 
         cd nagios-plugins-2.1.1
 
-7. Now we need to configure it, compile it and install it:
+7. Now we need to configure, compile, and install it:
 
         ./configure --with-nagios-user=nagios --with-nagios-group=nagios --with-openssl
         make
@@ -123,7 +124,7 @@ Nagios Plugins is a pack of well-written checking scripts, which will allow you 
 
 ## Accessing the Nagios Web Interface
 
-We finally can access Nagios Web Interface! But first, we need to start Nagios itself:
+Before we can access the Nagios Web Interface, we need to start Nagios itself:
 
         sudo service nagios start
 
@@ -145,7 +146,3 @@ If you click Hosts on the left menu, you can see that localhost (your Nagios ser
 Nagios contains numerous features that are beyond the scope of this document. You are encouraged to explore the resources listed below and the administrative interface for more information regarding the setup and configuration of Nagios.
 
 Congratulations on your new Nagios monitoring and notification system!
-
-[Nagios Website](http://www.nagios.org/)
-
-[Nagios Library](http://library.nagios.com/)

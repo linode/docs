@@ -4,9 +4,6 @@ author:
   email: afornuto@linode.com
 keywords: 'networking,sqiud,proxy,cache'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Friday, June 20th, 2014
-modified_by:
-  name: Alex Fornuto
 published: 'Friday, June 20th, 2014'
 title: 'Squid Proxy/Cache'
 ---

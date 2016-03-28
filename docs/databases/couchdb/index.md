@@ -4,9 +4,6 @@ author:
   email: docs@linode.com
 keywords: 'CouchDB,CouchDB server,Linux CouchDB HOWTO,CouchDB guide'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: 'Monday, August 4, 2014'
-modified_by:
-  name: 'Alex Fornuto'
 title: CouchDB
 ---
 

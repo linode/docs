@@ -181,7 +181,7 @@ This limits the number of requests a child server handles during its life. Once 
 
 ####ServerLimit
 
-If you need to increase the `MaxClients` above `256`, then increase your `SeverLimit` to match. To do this, add the `SeverLimit` line to your MPM code and alter the value:
+If you need to increase the `MaxClients` above `256`, then increase your `ServerLimit` to match. To do this, add the `ServerLimit` line to your MPM code and alter the value:
 
 	ServerLimit          256
 
