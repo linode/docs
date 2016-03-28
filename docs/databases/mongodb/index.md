@@ -4,8 +4,6 @@ author:
   email: docs@linode.com
 keywords: 'MongoBD,MongoDB server,Linux MongoDB HOWTO,MongoDB guide,NoSQL'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: 'Monday, August 4, 2014'
-modified_by: 'Alex Fornuto'
 title: MongoDB
 ---
 
