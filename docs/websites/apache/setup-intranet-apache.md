@@ -8,7 +8,7 @@ published: 'Monday, March 28, 2016'
 modified: 
 modified_by:
   name:
-  title: 'How to setup an website on an intranet'
+  title: 'How to setup a website on an intranet'
 contributor:
   name: Isai Castro
   link: https://twitter.com/Agent_Isai
@@ -16,7 +16,7 @@ contributor:
 *This is a Linode Community guide. Write for us and earn $250 per published guide.*
 <hr>
 
-Do you want to have a private space where you and your buisness can communicate confidentially? An intranet is the solution! An intranet is a private interal space, sperated from the internet, meaning you can communicate with your colleagues securely without having to panic about web security and if someone figures out the password to the private company website and leak ideas. To further explain how an intranet works, visit the [Wikipedia page](https://en.wikipedia.org/wiki/Intranet) for Intranet
+Do you want to have a private space where you and your buisness can communicate confidentially? An intranet is the solution! An intranet is a private interal space, sperated from the internet, meaning you can communicate with your colleagues securely without having to panic about web security and if someone figures out the password to the private company website and leak ideas. To further explain how an intranet works, visit the [Wikipedia page](https://en.wikipedia.org/wiki/Intranet) for Intranet.
 
 {: .note}
 >
