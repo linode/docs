@@ -2,14 +2,15 @@
 author:
     name: Linode Community
     email: docs@linode.com
-description: 'Setup Ruby on Rails stack on Ubuntu 14.04 using Nginx and Unicorn'
-keywords: 'ruby on rails,unicorn rails,ruby on rails ubuntu 14.04'
+description: 'Use Unicorn and Nginx to Configure a Ruby on Rails Stack on Ubuntu 14.04 '
+alias: ['websites/ror/ror-with-unicorn-and-nginx-on-ubuntu-14-04']
+keywords: 'ruby on rails,unicorn rails,ruby on rails ubuntu 14.04, nginx,reverse proxy,ubuntu 14.04'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 published: 'Saturday, December 19th, 2015'
 modified: Monday, March 14, 2016
 modified_by:
     name: Linode
-title: 'How to Deploy Ruby on Rails Applications with Unicorn and Nginx on Ubuntu 14.04'
+title: 'Use Unicorn and Nginx to Configure Ruby on Rails Applications on Ubuntu 14.04'
 contributor:
     name: Vaibhav Rajput
     link: https://twitter.com/rootaux
@@ -17,9 +18,9 @@ external_resources:
  - '[Ruby on Rails](http://rubyonrails.org/)'
 ---
 
-Ruby on Rails is a popular web-application framework that allows developers to create a dynamic web applications. This guide describes how to deploy Rails applications on servers using Unicorn and Nginx on Ubuntu 14.04.
+Ruby on Rails is a popular web-application framework that allows developers to create dynamic web applications. This guide describes how to deploy Rails applications on servers using Unicorn and nginx on Ubuntu 14.04.
 
-Unicorn is an HTTP server, just like Passenger or Puma. Since Unicorn cannot be accessed by users directly we will be using Nginx as the reverse proxy that will buffer requests and response between users and Rails application.
+Unicorn is an HTTP server, just like Passenger or Puma. Since Unicorn cannot be accessed by users directly we will be using nginx as the reverse proxy that will buffer requests and response between users and Rails application.
 
 Before starting this guide, make sure that  you have read through and completed our [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server/) guides. Be sure you are logged into your Linode as a non-root user when following this guide, making sure to use `sudo` when editing configuration files.
 
@@ -32,7 +33,7 @@ Before starting this guide, make sure that  you have read through and completed 
 
 ## System Setup
 
-2.  Make sure your system is up to date:
+1.  Make sure your system is up to date:
 
         sudo apt-get update && apt-get upgrade
 
@@ -42,7 +43,7 @@ Before starting this guide, make sure that  you have read through and completed 
 
         sudo apt-get install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev nodejs
 
-2.  Download the latest version of Ruby. At the time of writing this article, current latest and stable version is 2.3, but you can check for the latest version [here](https://www.ruby-lang.org/en/downloads/).
+2.  Download the latest version of Ruby. At the time of writing this article, the current, most recent and stable version is 2.3, but you can check for the latest version [here](https://www.ruby-lang.org/en/downloads/).
 
         wget https://cache.ruby-lang.org/pub/ruby/2.3/ruby-2.3.0.tar.gz
 
@@ -72,11 +73,11 @@ Before starting this guide, make sure that  you have read through and completed 
 
         sudo gem install rails
 
-2.  Before creating our project, we should move to the home directory:
+2.  Before creating your project, move to the home directory:
 
         cd
 
-3.  Create a new Rails project. We will be using `example` as our project name:
+3.  Create a new Rails project. You will be using `example` as your project name:
 
         rails new example
 
@@ -90,7 +91,7 @@ Before starting this guide, make sure that  you have read through and completed 
 
         sudo gem install unicorn
 
-2.  Create the file `config/unicorn.rb` which contains unicorn configuration and paste the following configuration in the file.
+2.  Create the file `config/unicorn.rb` which contains the unicorn configuration and paste the following configuration in the file.
 
 {: .file}
 /home/username/example/config/unicorn.rb
@@ -116,21 +117,21 @@ Before starting this guide, make sure that  you have read through and completed 
     pid "#{shared_dir}/pids/unicorn.pid"
     ~~~
 
-3.  Now create directories which we mentioned in the Unicorn config file:
+3.  Now, create directories which we mentioned in the Unicorn config file:
 
         mkdir -p shared/pids shared/sockets shared/log
 
 {: .note}
 >
->Please note that we are still in the Rails application directory
+>Please note that we are still in the Rails application directory.
 
 ## Install and Configure Nginx
 
-1.  Download and install Nginx using APT:
+1.  Download and install nginx using APT:
 
         sudo apt-get install nginx
 
-2.  We need to configure Nginx to work as the reverse proxy. Edit the config file `/etc/nginx/nginx.conf`and paste the configuration in the HTTP block:
+2.  We need to configure nginx to work as the reverse proxy. Edit the config file `/etc/nginx/nginx.conf`and paste the configuration in the HTTP block:
 
     {: .file-excerpt}
     /etc/nginx/nginx.conf
@@ -183,7 +184,7 @@ Before starting this guide, make sure that  you have read through and completed 
 
         sudo ln -s /etc/nginx/sites-available/example /etc/nginx/sites-enabled
 
-6.  Restart Nginx
+6.  Restart nginx:
 
         sudo service nginx restart
 
@@ -193,14 +194,14 @@ To start Unicorn in the development environment:
 
     sudo unicorn -c config/unicorn.rb -E development -D
 
-For production environment:
+To start Unicorn in the production environment:
 
     sudo unicorn -c config/unicorn.rb -E production -D
 
     {: .note}
     >
-    >Make sure you is in application directory else you need to type the whole path	
+    >Make sure you are in the application directory; otherwise, you will need to type in the whole path	name.
 
-3.  To stop the Unicorn, issue the following command:
+3.  To stop Unicorn, issue the following command:
 
         sudo pkill unicorn
