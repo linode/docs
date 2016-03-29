@@ -8,7 +8,7 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: 'Thursday, February 25th, 2016'
 modified_by:
   name: Linode
-published: 'Monday, February 15th, 2016'
+published: 'Tuesday, March 29th, 2016'
 title: 'Install SteamCMD for a Steam Game Server'
 external_resources:
  - '[Valve Developer Community: SteamCMD](https://developer.valvesoftware.com/wiki/SteamCMD)'
@@ -133,15 +133,15 @@ Game servers and clients are an especially ripe target for attack. Use our [Secu
 
 ## Install SteamCMD
 
-1.  Newly created Linodes use 64-bit Linux operating systems. Since Steam is compiled for i386, install the appropriate libraries:
+1.  Newly created Linodes use 64-bit Linux operating systems. Since Steam is compiled for i386, install the appropriate libraries. Screen we'll also use when running Steam games.
 
     **CentOS 7**
 
-        sudo yum install glibc.i686 libstdc++.i686
+        sudo yum install glibc.i686 libstdc++.i686 screen
 
     **Debian / Ubuntu**
 
-        sudo apt-get install lib32gcc1
+        sudo apt-get install lib32gcc1 screen
 
     {: .note}
     >
