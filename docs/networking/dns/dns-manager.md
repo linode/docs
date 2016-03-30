@@ -90,7 +90,7 @@ Here's how to import a zone file:
 
 	{: .note }
 	>
-	> The name server must allow zone transfers (AXFR) from: 69.164.199.240 and 198.58.123.173
+	> The name server must allow zone transfers (AXFR) from: 96.126.114.97, 96.126.114.98, 2600:3c00::5e, and 2600:3c00::5f
 
 4.  Click **Import Zone**.
 
