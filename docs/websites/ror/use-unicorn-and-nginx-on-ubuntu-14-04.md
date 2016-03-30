@@ -3,7 +3,6 @@ author:
     name: Linode Community
     email: docs@linode.com
 description: 'Use Unicorn and Nginx to Configure a Ruby on Rails Stack on Ubuntu 14.04 '
-alias: ['websites/ror/ror-with-unicorn-and-nginx-on-ubuntu-14-04']
 keywords: 'ruby on rails,unicorn rails,ruby on rails ubuntu 14.04, nginx,reverse proxy,ubuntu 14.04'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 published: 'Saturday, December 19th, 2015'
@@ -22,28 +21,30 @@ Ruby on Rails is a popular web-application framework that allows developers to c
 
 Unicorn is an HTTP server, just like Passenger or Puma. Since Unicorn cannot be accessed by users directly we will be using nginx as the reverse proxy that will buffer requests and response between users and Rails application.
 
-Before starting this guide, make sure that  you have read through and completed our [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server/) guides. Be sure you are logged into your Linode as a non-root user when following this guide, making sure to use `sudo` when editing configuration files.
+## Before You Begin
 
-## Set the Hostname
+Before starting this guide, make sure that  you have read through and completed our [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server/) guides. 
 
-1.  Before you install any package, ensure that your hostname is correct by completing the [Setting Your Hostname](/docs/getting-started#setting-the-hostname) section of the Getting Started guide. Issue the following commands to verify that hostname:
+{: .note}
+>
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+
+1.  Before you install any package, ensure that your hostname is correct:
 
         hostname
         hostname -f
 
-## System Setup
-
-1.  Make sure your system is up to date:
+2.  Make sure your system is up to date:
 
         sudo apt-get update && apt-get upgrade
 
 ## Install Ruby
 
-1.  Install Ruby dependencies using APT:
+1.  Install Ruby dependencies:
 
         sudo apt-get install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev nodejs
 
-2.  Download the latest version of Ruby. At the time of writing this article, the current, most recent and stable version is 2.3, but you can check for the latest version [here](https://www.ruby-lang.org/en/downloads/).
+2.  Download the latest version of Ruby. At the time of writing this article, the current, most recent and stable version is 2.3, but you can check for the latest version [here](https://www.ruby-lang.org/en/downloads/):
 
         wget https://cache.ruby-lang.org/pub/ruby/2.3/ruby-2.3.0.tar.gz
 
@@ -55,16 +56,10 @@ Before starting this guide, make sure that  you have read through and completed 
 
         cd ruby-2.3.0
 
-5.  Compile Ruby:	
+5.  Configure and install Ruby from source:	
 
         ./configure
-
-6.  Getting ready for the installation:
-
         make
-
-7.  Install Ruby:
-
         sudo make install
 
 ## Install and Create a Rails Application
@@ -93,49 +88,49 @@ Before starting this guide, make sure that  you have read through and completed 
 
 2.  Create the file `config/unicorn.rb` which contains the unicorn configuration and paste the following configuration in the file.
 
-{: .file}
-/home/username/example/config/unicorn.rb
-:   ~~~config
-    # set path to the application
-    app_dir git File.expand_path("../..", __FILE__)
-    shared_dir = "#{app_dir}/shared"
-    working_directory app_dir
+    {: .file}
+    /home/username/example/config/unicorn.rb
+    :   ~~~config
+        # set path to the application
+        app_dir git File.expand_path("../..", __FILE__)
+        shared_dir = "#{app_dir}/shared"
+        working_directory app_dir
 
-    # Set unicorn options
-    worker_processes 2
-    preload_app true
-    timeout 30
+        # Set unicorn options
+        worker_processes 2
+        preload_app true
+        timeout 30
 
-    # Path for the Unicorn socket
-    listen "#{shared_dir}/sockets/unicorn.sock", :backlog => 64
+        # Path for the Unicorn socket
+        listen "#{shared_dir}/sockets/unicorn.sock", :backlog => 64
 
-    # Set path for logging
-    stderr_path "#{shared_dir}/log/unicorn.stderr.log"
-    stdout_path "#{shared_dir}/log/unicorn.stdout.log"
+        # Set path for logging
+        stderr_path "#{shared_dir}/log/unicorn.stderr.log"
+        stdout_path "#{shared_dir}/log/unicorn.stdout.log"
 
-    # Set proccess id path
-    pid "#{shared_dir}/pids/unicorn.pid"
-    ~~~
+        # Set proccess id path
+        pid "#{shared_dir}/pids/unicorn.pid"
+        ~~~
 
-3.  Now, create directories which we mentioned in the Unicorn config file:
+3.  Now, create the directories mentioned in the Unicorn config file:
 
         mkdir -p shared/pids shared/sockets shared/log
 
-{: .note}
->
->Please note that we are still in the Rails application directory.
+    {: .note}
+    >
+    >Please note that we are still in the Rails application directory.
 
 ## Install and Configure Nginx
 
-1.  Download and install nginx using APT:
+1.  Install nginx:
 
         sudo apt-get install nginx
 
-2.  We need to configure nginx to work as the reverse proxy. Edit the config file `/etc/nginx/nginx.conf`and paste the configuration in the HTTP block:
+2.  We need to configure nginx to work as the reverse proxy. Edit the config file `/etc/nginx/nginx.conf` and paste the following configuration in the HTTP block:
 
     {: .file-excerpt}
     /etc/nginx/nginx.conf
-    :   ~~~
+    :   ~~~ nginx
         upstream rails {
         # Path to Unicorn socket file
         server unix:/home/username/example/shared/sockets/unicorn.sock fail_timeout=0;
@@ -154,7 +149,7 @@ Before starting this guide, make sure that  you have read through and completed 
 
     {: .file}
     /etc/nginx/sites-available/example
-    :   ~~~ 
+    :   ~~~ nginx
         server {
         listen 80;
         server_name localhost;
@@ -190,18 +185,18 @@ Before starting this guide, make sure that  you have read through and completed 
 
 ## Start Unicorn
 
-To start Unicorn in the development environment:
+- To start Unicorn in the development environment:
 
-    sudo unicorn -c config/unicorn.rb -E development -D
+      sudo unicorn -c config/unicorn.rb -E development -D
 
-To start Unicorn in the production environment:
+- To start Unicorn in the production environment:
 
-    sudo unicorn -c config/unicorn.rb -E production -D
+      sudo unicorn -c config/unicorn.rb -E production -D
 
     {: .note}
     >
     >Make sure you are in the application directory; otherwise, you will need to type in the whole path	name.
 
-3.  To stop Unicorn, issue the following command:
+- To stop Unicorn, issue the following command:
 
-        sudo pkill unicorn
+      sudo pkill unicorn
