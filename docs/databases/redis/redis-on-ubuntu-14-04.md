@@ -20,7 +20,7 @@ external_resources:
  - '[Redis Security](http://redis.io/security)'
 ---
 
-Redis is an open source in-memory data structure store, with optional disk writes for persistence, which can be used as key-value database, cache and message broker. Redis features built-it transactions, replication, and support for a variety of data structures such as strings, hashes, lists, sets and others. Redis can be made highly available with Redis Sentinel and supports automatic partitioning with Redis Cluster. This document provides both instructions for deploying the Redis server and an overview of best practices for maintaining Redis instances.
+Redis is an open source in-memory data structure store, with optional disk writes for persistence, which can be used as key-value database, cache and message broker. Redis features built-in transactions, replication, and support for a variety of data structures such as strings, hashes, lists, sets and others. Redis can be made highly available with Redis Sentinel and supports automatic partitioning with Redis Cluster. This document provides both instructions for deploying the Redis server and an overview of best practices for maintaining Redis instances.
 
 ## Before You Begin
 
@@ -72,7 +72,7 @@ Redis provides two options for disk persistence:
 Each option has it's own pros and cons, which are described in great detail in Redis documentation. For most possible data safety it is advised to use both persistence methods.
 
 As the point-in-time snapshot persistence is enabled by default, the only thing you will need to do is to setup AOF persistence.
-For this, add the following lines to `redis.conf` file:
+For this, make sure that the following values are set for `appendonly` and `appendfsync` settings in `redis.conf`:
 
 {: .file-excerpt }
 /etc/redis/redis.conf
@@ -88,11 +88,11 @@ After this, restart Redis with
 
 ### Basic System Tuning
 
-To improve Redis performance, make the following adjustments to the Linux system settings.
+To improve Redis performance, make the following adjustment to the Linux system settings.
 
-1.  Set the Linux kernel overcommit memory setting to 1. Run command
+Set the Linux kernel overcommit memory setting to 1. Run command
 
-		sudo sysctl vm.overcommit_memory=1
+	    sudo sysctl vm.overcommit_memory=1
 
 to change overcommit memory setting immediately. To make the change permanent, add line `vm.overcommit_memory = 1` to `/etc/sysctl.conf` -
 
@@ -102,27 +102,6 @@ to change overcommit memory setting immediately. To make the change permanent, a
     vm.overcommit_memory = 1
     ~~~
 
-2.  Disable Linux kernel feature transparent huge pages, as this feature will affect Redis performance in a negative way. Run
-
-		sudo echo never > /sys/kernel/mm/transparent_hugepage/enabled
-
-to disable it immediately. To make this a permanent change add the following lines to `/etc/rc.local` before `exit 0` line:
-
-{: .file-excerpt }
-/etc/rc.local
-:   ~~~
-	if test -f /sys/kernel/mm/transparent_hugepage/enabled; then
-		echo never > /sys/kernel/mm/transparent_hugepage/enabled
-	fi
-    ~~~
-
-
-You can confirm that it worked with command
-
-		cat /sys/kernel/mm/transparent_hugepage/enabled
-
-which should output `always madvise [never]`.
-
 ## Distributed Redis
 
 Redis provides several options for setting up distributed data stores. The simplest one is the *master-slave replication*, which allows you to have a real-time copy (or multiple copies) of master server data. It will also allow to distribute reads among group of slave copies, as long as all write operations are handled by master server.
@@ -131,7 +110,7 @@ Master-slave setup described above can be made highly available with *Redis Sent
 
 Starting from version 3.0, there is also a *Redis Cluster*, which is a data sharding solution with automatic management, handling failover and replication. With Redis Cluster you are able to automatically split your dataset among multiple nodes, which is useful when your dataset is larger than a single server RAM. It also gives you an ability to continue operations when a subset of the nodes are experiencing failures or are unable to communicate with the rest of the cluster.
 
-In this guide you will set up master slave replication as it is the simplest option.
+In this guide you will set up master slave replication with the read-only slaves as it is the simplest option.
 
 
 ## Setting Up Master Slave Replication
