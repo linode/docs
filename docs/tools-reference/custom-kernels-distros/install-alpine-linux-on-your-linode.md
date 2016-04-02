@@ -2,8 +2,8 @@
 author:
   name: Andrew Leap
   email: andyleap@gmail.com
-description: 'Alpine Linux is a small, security oriented linux distro.  This guide details installing and configuring Alpine Linux on a KVM Linode'
-keywords: 'alpine,custom,finnix,lish,kvm'
+description: 'Alpine Linux is a small, security oriented Linux distro.  This guide details installing and configuring Alpine Linux on a Linode'
+keywords: 'alpine,custom'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 published: 'Thursday, March 31st, 2016'
 modified: Thursday, March 31st, 2016
@@ -13,53 +13,61 @@ title: 'Install Alpine Linux on your Linode'
 contributor:
   name: Andrew Leap
   link: [github.com/andyleap](http://github.com/andyleap)
-  external_resources:
-- '[Alpine Linux](http://www.alpinelinux.org/)'
+external_resources:
+  - '[Alpine Linux](http://www.alpinelinux.org/)'
 ---
 
 *This is a Linode Community guide. Write for us and earn $250 per published guide.*
 <hr>
 
-[Alpine Linux](http://www.alpinelinux.org/) is a small, security oriented linux distro.
-It is regularly updated with security patches, and runs on the grsec kernel.  All binaries are staticly linked and built against musl libc.
+[Alpine Linux](http://www.alpinelinux.org/) is a small, security oriented Linux distro.
+It is regularly updated with security patches, and runs on the [grsecurity](https://grsecurity.net/) kernel.  All binaries are staticly linked and built against [musl libc](http://www.musl-libc.org/intro.html).
 
 
 ## Before You Begin
 
-1.  Familiarize yourself with Lish, as most of this guide will use Lish.
+1.  Familiarize yourself with [Lish](https://www.linode.com/docs/networking/using-the-linode-shell-lish), as most of this guide will use Lish.
 
-2.  Understand that installing Alpine in this manner will destroy all existing data on the drives you install it on.  Backup all your data first.
+2.  Understand that installing Alpine in this manner will destroy all existing data on the disk images you install it on.  Back up all your data first.
 
-3.  The initial portion of this guide will involve creating the drives, so you may need to delete existing drives to have enough free space.
+3.  The initial portion of this guide will involve creating the disk images, so you may need to delete existing disk images to have enough free space.
+
+4.  This guide assumes a consistent present working directory.  In most cases, it will be /alpine or a chroot of said directory.
 
 ## Setting up the Linode
 
 ### Drives
 
-1.  Logon to the (Linode Manager)[https://manager.linode.com/linodes/] and select the linode you will be installing Alpine Linux on.
+1.  Log in to the (Linode Manager)[https://manager.linode.com/linodes/] and select the Linode you will be installing Alpine Linux on.
 
-2.  Create your boot drive, this should be 128~256mb, and the type should be ext4
+2.  Create your boot disk image, this should be 128~256 MB, and the type should be ext4
+{: .note}
+>
+> Boot drives will need to store your kernel and your initramfs.  Currently, Alpine will need about 21 MB for each kernel/initramfs combo, so even 128 MB will be enough for several kernel versions, just remember to keep an eye on `/boot` when you perform upgrades of the kernel.
 
-3.  Create your root drive, with as much space as you need, though if you want a swap partition, make sure you leave room for it.  This drive should be ext4 as well.
+3.  Create your root disk image, with as much space as you need, though if you want a swap disk image, make sure you leave room for it.  This disk image should be ext4 as well.
 
-4.  (Optionally) Create your swap partition with type swap. (512mb is a good amount of swap)
+4.  (Optionally) Create your swap disk image with type swap. 
+{: .note}
+>
+> 256~512 MB of swap is a good rough estimate.  You don't need as much swap as many guides might recommend.  A clean install of Alpine will wind up using less then 50 MB of ram when fully booted.
 
 ### Configuration
 
-1. Create a new configuration for your Linode.  Alpine will need to be booted via the Grub 2 kernel, with all the helpers turned off, and boot, root, and swap assigned to /dev/sda, /dev/sdb, and /dev/sdc.
+1. Create a new configuration profile for your Linode.  Choose Grub 2 in the kernel menu, which will use grub 2 to boot Alpine's kernel from your disk image, with all the helpers turned off, and your boot disk image as /dev/sda, your root disk image as /dev/sdb, and your swap as /dev/sdc.
 [![Linode Config](/docs/assets/install-alpine-linux-config_small.png)](/docs/assets/install-alpine-linux-config.png)
 
 ## Initial Install of Alpine
 
 ### Boot into Recovery
 
-1.  From the Linode Manager, reboot your linode into recovery mode, with your boot drive as /dev/sda, your root drive as /dev/sdb, and your swap as /dev/sdc.
+1.  From the Linode Manager, reboot your linode into recovery mode, with your boot disk image as /dev/sda, your root disk image as /dev/sdb, and your swap as /dev/sdc.
 
 2.  Using Lish, connect to the linode.  (If you are not familiar with Lish, there is a simple web interface for it located under Remote Access)
 
 ### Mount Drives
 
-1.  Create a mount point for the root drive
+1.  Create a mount point for the root disk image
         mkdir /alpine
 
 2.  Mount and enter the root partition
@@ -68,7 +76,7 @@ It is regularly updated with security patches, and runs on the grsec kernel.  Al
 
 3.  Create and mount the boot directory
         mkdir boot
-        mount /dev/sda boot
+        mount /dev/sda /alpine/boot
 
 ### Download initial APK tools
 
@@ -157,8 +165,11 @@ It is regularly updated with security patches, and runs on the grsec kernel.  Al
 4.  Update packages
         apk update
 
-5.  Setup your hostname.
+5.  Set your hostname.
         setup-hostname -n `hostname`
+{: .note}
+>
+> A good hostname should make it easy for you to identify which server you are on when you are connected to it.
 
 6.  Configure important services to start automatically.
         rc-update add networking boot
@@ -178,7 +189,7 @@ It is regularly updated with security patches, and runs on the grsec kernel.  Al
 
 1.  Reboot into the Alpine Linux configuration you made earlier.  If it's the only one, this can be accomplished from Lish via `boot 1`
 
-2.  Login as root.  By default there is no password for root.
+2.  Log in as root.  By default there is no password for root.
 
 ### Configuration
 
@@ -200,7 +211,7 @@ It is regularly updated with security patches, and runs on the grsec kernel.  Al
         addgroup sudo
         adduser `username` sudo
         
-6.  Setup sshd.  Alpine has a simple setup script to handle this.  I recommend the `openssh` server if you want sftp access, though `dropbear` is lighter if you just need ssh access
+6.  Install and configure sshd.  Alpine has a simple setup script to handle this.  I recommend the `openssh` server if you want sftp access, though `dropbear` is lighter if you just need ssh access
         setup-sshd
 
 ## Finished
@@ -209,3 +220,12 @@ It is regularly updated with security patches, and runs on the grsec kernel.  Al
 
 At this point, you should be able to ssh into your server.  Alpine is very lightweight, and doesn't install very much unless you ask it to.
 For instance, you won't have a text editor to start off, and the only service running is your sshd.
+
+Alpine has a decent browser for their package listings at (https://pkgs.alpinelinux.org/packages)[https://pkgs.alpinelinux.org/packages].
+A few of the things to consider installing:
+1.  Text editor: `nano` or `vim`
+2.  Web server: `lighttpd`, `apache2`, or `nginx`
+3.  Scripting languages: `php`, `perl`, or `python`
+4.  Database servers: `mysql` or `postgresql`
+
+Note that some of these combinations may require additional packages to interoperate.  Any of them can be installed via `apk add`, i.e. `apk add apache2 php mysql`.
