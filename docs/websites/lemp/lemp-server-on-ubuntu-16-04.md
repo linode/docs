@@ -255,62 +255,50 @@ This document describes a compatible alternative to the "LAMP" (Linux, Apache, M
 
 Prior to beginning this guide, please complete the [getting started guide](/docs/getting-started/), specifically [setting your hostname](/docs/getting-started#sph_setting-the-hostname). If you are new to Linux systems administration, you may want to consider the [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts) and the [Linux administration basics guide](/docs/using-linux/administration-basics).
 
-## Set the Hostname
-
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_setting-the-hostname). Issue the following commands to make sure it is set properly:
-
-    hostname
-    hostname -f
-
-The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
-
-## Prepare System For Deployment
-
-Before beginning with the installation of this web application stack, issue the following commands to ensure that your system's package database is up to date and that all installed software is running at the latest version:
-
-    apt-get update
-    apt-get upgrade
+This guide is for a non-root user, although many commands will require root privileges (using the `sudo` prefix). Be sure your system and all packages are fully up-to-date before beginning.
 
 ## Install the Nginx Web Server
 
-There are several viable and popular options for installing the nginx software. The first option retrieves packages from the Ubuntu Project's software repository and provides a stable and tested version of the web server.
+There are two options for installing the nginx software. The first option retrieves packages from the Ubuntu Project's software repository and provides a stable and tested version of the web server.
 
-The second option requires downloading the source for nginx from the upstream provider and compiling the software manually. Manual compilation makes it possible to run the most current version of the software at the expense of the testing and automatic updates from the Ubuntu project. All options are compatible, but in most cases we recommend using the packages from the Ubuntu repositories unless your needs require a version newer than the one available in the Ubuntu repositories. Possible reasons for compiling nginx yourself include access to optional compile-time modules and features added in more recent versions.
+The second option requires downloading the source for nginx from the upstream provider and compiling the software manually. Manual compilation makes it possible to run the most current version of the software at the expense of the testing and automatic updates from the Ubuntu project. 
 
-<!---For more in-depth installation instructions consider our [guide to installing nginx](/docs/web-servers/nginx/installation/ubuntu-10.04-lucid).
-
-We might want to consider updating the above for 
--->
+Both options are compatible, but we recommend using the packages from the Ubuntu repositories unless you require a newer version. Possible reasons for compiling nginx yourself include access to optional compile-time modules and features added in more recent versions.
 
 ### Deploy from Ubuntu Project Packages
 
 If you choose to install nginx from the Ubuntu repository, issue the following command:
 
-    apt-get install nginx
+    sudo apt-get install nginx
 
-This will install version 1.9.13 of the nginx server.
+This will install version 1.9.13 of the nginx server. 
 
 ### Compile nginx from Source
 
 If you want to compile and install nginx from source, issue the following commands to install the prerequisites:
 
-    apt-get install libpcre3-dev build-essential libssl-dev sudo
+    sudo apt-get install libpcre3-dev build-essential libssl-dev sudo
 
-Check the [nginx download page](http://nginx.org/en/download.html) and ensure that version 1.2.3 is the most recent "stable" version. If not, replace the version specified in the following command sequence with the latest stable version. Issue the following commands to download and install the nginx web server:
+Check the [nginx download page](http://nginx.org/en/download.html) and ensure that version 1.9.13 is the most recent "mainline" version. If not, replace the version specified in the following command sequence with the latest mainline or stable version. Issue the following commands to download and install the nginx web server:
 
     cd /opt/
-    wget http://nginx.org/download/nginx-1.2.3.tar.gz
-    tar -zxvf nginx-1.2.3.tar.gz
-    cd /opt/nginx-1.2.3/
+    sudo wget http://nginx.org/download/nginx-1.9.13.tar.gz
+    sudo tar -zxvf nginx-1.9.13.tar.gz
+    cd /opt/nginx-1.9.13/
+
+Ubuntu 16.04 does not include the GNU Compiler Collection, which will be required to compile nginx, by default. There are also several other dependencies that will need to be manually installed. These packages are available in the Ubuntu repository, and you will need to install them before continuing:
+
+    sudo apt-get install gcc libpcre3 libpcre3-dev libssl-dev make
 
 The following `./configure` command will prepare nginx for compilation:
 
-    ./configure --prefix=/opt/nginx --user=nginx --group=nginx --with-http_ssl_module
+    sudo ./configure --prefix=/opt/nginx --user=nginx --group=nginx --with-http_ssl_module
 
 When the `./configure` command completes it will display the following information regarding the location of important nginx-related files after the installation is completed.
 
     nginx path prefix: "/opt/nginx"
     nginx binary file: "/opt/nginx/sbin/nginx"
+    nginx modules path: "/opt/nginx/modules"
     nginx configuration prefix: "/opt/nginx/conf"
     nginx configuration file: "/opt/nginx/conf/nginx.conf"
     nginx pid file: "/opt/nginx/logs/nginx.pid"
@@ -319,17 +307,22 @@ When the `./configure` command completes it will display the following informati
     nginx http client request body temporary files: "client_body_temp"
     nginx http proxy temporary files: "proxy_temp"
     nginx http fastcgi temporary files: "fastcgi_temp"
+    nginx http uwsgi temporary files: "uwsgi_temp"
+    nginx http scgi temporary files: "scgi_temp"
+
+{: .note}
+> The configuration section of this guide assumes that you installed nginx from the repository package, not source. If you are installing from source, make note of these file paths and be aware that they will be slightly different from the defaults when installing from the repository package.
 
 Issue the following commands to compile and then install the software as specified above:
 
-    make
-    make install
+    sudo make
+    sudo make install
 
 Create a dedicated system user to run the nginx process under by issuing the following command:
 
-    adduser --system --no-create-home --disabled-login --disabled-password --group nginx 
+    sudo adduser --system --no-create-home --disabled-login --disabled-password --group nginx 
 
-Now install and configure the [init script](/docs/assets/1131-init-deb.sh) to make it possible to start and stop the web server more easily. Issue the following command sequence:
+Now install and configure the [init script](/docs/assets/1131-init-deb.sh) to make it possible to start and stop the web server more easily. Issue the following command sequence, prefixing all with `sudo`:
 
     wget -O init-deb.sh http://www.linode.com/docs/assets/1131-init-deb.sh
     mv init-deb.sh /etc/init.d/nginx
@@ -338,7 +331,7 @@ Now install and configure the [init script](/docs/assets/1131-init-deb.sh) to ma
 
 Now, issue the following command to start the web-server:
 
-    /etc/init.d/nginx start
+    sudo /etc/init.d/nginx start
 
 ## Configure nginx Virtual Hosting
 
@@ -360,6 +353,13 @@ Regardless of the method you use to install nginx, you will need to configure `s
     }
     ~~~
 
+{: .note}
+> If you installed nginx from source, the filepath for the configuration file will be different from the one above. For version 1.9.13, the virtual hosts configuration will be done in `/opt/nginx/conf/nginx.conf` and the default configuration may look a bit different.
+>
+> Rather than showing full file paths, the configuration will begin with directories within `/opt/nginx` and do not need to be manually created as in the next step. 
+>
+> For example, the document root will be set to `html` which simply means `/opt/nginx/html`.
+
 Create the directories referenced in this configuration by issuing the following commands:
 
     mkdir -p /srv/www/example.com/public_html
@@ -375,7 +375,7 @@ To deactivate a site, simply delete the symbolic link by issuing the following c
     rm /etc/nginx/sites-enabled/example.com
     /etc/init.d/nginx restart
 
-The source file is saved, and the site can be re-enabled at any time.
+The source file is saved, and the site can be re-enabled at any time by recreating the symbolic link.
 
 If you installed the web server after compiling it from source you have a number of options. You may insert the server directives directly into the `http` section of the `/opt/nginx/conf/nginx.conf` or `/etc/nginx/nginx.conf` file, although this may be difficult to manage. You may also replicate the management system created by the Ubuntu packages by creating `sites-available/` and `sites-enabled/` directories and inserting the following line into your `nginx.conf` file:
 
@@ -385,7 +385,7 @@ nginx.conf
     http {
     # [...]
 
-    include /opt/etc/nginx/sites-enabled/*;
+    include /opt/nginx/sites-enabled/*;
 
     # [...]       
     }
@@ -415,9 +415,9 @@ Make sure that the directories referenced in your configuration exist on your fi
 
 ## Deploy PHP with FastCGI
 
-In order to deploy PHP applications, you will need to implement the following "PHP-FastCGI" solution to allow nginx to properly handle and serve pages that contain PHP code. For a more complete introduction to this subject, consider our dedicated guide to [PHP FastCGI with Nginx](/docs/web-servers/nginx/php-fastcgi/ubuntu-10.04-lucid). Begin the deployment process by issuing the following command to install the required dependencies:
+In order to deploy PHP applications, you will need to implement the following "PHP-FastCGI" solution to allow nginx to properly handle and serve pages that contain PHP code. Begin the deployment process by issuing the following command to install the required dependencies:
 
-    apt-get install php5-cli php5-cgi php5-fpm
+    sudo apt-get install php5-cli php5-cgi php5-fpm
 
 Consider the following nginx virtual host configuration. Modify your configuration to resemble the one below, and ensure that the `location ~ \.php$ { }` resembles the one in this example:
 
@@ -472,7 +472,7 @@ location ~ \.php$ {
 
 When you've completed the modifications to the configuration, make sure that the virtual host is enabled and issue the following command to restart the web server:
 
-    service php5-fpm restart
+    sudo service php5-fpm restart
     /etc/init.d/nginx restart
 
 Congratulations! You can now deploy PHP scripts with with your LEMP stack.
@@ -481,15 +481,18 @@ Congratulations! You can now deploy PHP scripts with with your LEMP stack.
 
 The MySQL database engine may be the leading open source relational database engine, and is a popular database solution for web-based applications. Issue the following command to install the MySQL server packages and required PHP support for MySQL:
 
-    apt-get install mysql-server php5-mysql
+    sudo apt-get install mysql-server php5-mysql
 
-During the installation process you will be prompted to set a password for the MySQL root user. Choose a strong password and keep it in a safe place for future reference.
+During the installation process you will be prompted to set a password for the MySQL root user via a graphical interface. Choose a strong password and keep it in a safe place for future reference.
 
-[![Setting the MySQL root password in Ubuntu 10.04 Lucid.](/docs/assets/1129-66-lucid-01-mysql-root-password.png)](/docs/assets/1129-66-lucid-01-mysql-root-password.png)
+<!---[![Setting the MySQL root password in Ubuntu 10.04 Lucid.](/docs/assets/1129-66-lucid-01-mysql-root-password.png)](/docs/assets/1129-66-lucid-01-mysql-root-password.png)
+
+Commenting this section out - the screenshot is outdated and needs to be either removed or updated. MySQL is version 5.6 now and has a different interface.
+-->
 
 Issue the following command to secure the MySQL instance:
 
-    mysql_secure_installation
+    sudo mysql_secure_installation
 
 Answer all questions prompted during this process. If at any point you need to reset the root password for the *MySQL* server, issue the following command:
 
@@ -508,7 +511,7 @@ Enter the root password created above and then issue the following sequence of c
 
 You may now provide the credentials for the `example` database and the `username` user to your application, which will now be able to use the database for its purposes. To ensure that PHP will be able to access the MySQL connector your just installed, restart the PHP service by issue the following command:
 
-    service php5-fpm restart
+    sudo service php5-fpm restart
 
 Congratulations! You now have a fully functional and fully featured LEMP stack for application deployment.
 
