@@ -179,7 +179,7 @@ Networking in Gentoo utilizes the `netifrc` utility. Addresses are specified in 
 /etc/conf.d/net
 :   ~~~ conf
     config_eth0="198.51.100.5/24 198.51.100.10/24 192.0.2.6/17"
-    routes_eth0="default gw 198.51.100.1"
+    routes_eth0="default via 198.51.100.1"
     . . .
     ~~~
 
