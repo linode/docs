@@ -110,10 +110,10 @@ There are different ways to set up virtual hosts; however, the method below is r
     You can now visit your domain to test the Apache server; a default Apache page will be visible.
 
     {: .note}
-        >
-        >Anytime you change an option in your `vhost.conf` file, or any other Apache configuration file, remember to reload the configuration with the following command:
-        >
-        >     sudo service apache2 reload
+    >
+    >Anytime you change an option in your `vhost.conf` file, or any other Apache configuration file, remember to reload the configuration with the following command:
+    >
+    >     sudo service apache2 reload
 
 ## MySQL / MariaDB
 
