@@ -58,7 +58,7 @@ Tomcat should now be totally functional, following installation and your next sy
 
 ## Test and Use Tomcat
 
-You can test your Tomcat installation by pointing your browser at `http://[yourdomain-or-ip-address]:8080/`. By default, files are located in the `/usr/share/tomcat8` directory. To configure the admin area, you'll need to add the following lines to the end of your `tomcat-users.xml` file, substituting your own username and password. Make sure you keep the "manager" role.
+You can test your Tomcat installation by pointing your browser at `http://[yourdomain-or-ip-address]:8080/`. By default, files are located in the `/usr/share/tomcat8` directory. To configure the admin area, you'll need to add the following lines to the end of your `tomcat-users.xml` file before the ``</tomcat-users>`` line, substituting your own username and password. Make sure you keep the "manager" role.
 
 {: .file-excerpt }
 /etc/tomcat8/tomcat-users.xml
