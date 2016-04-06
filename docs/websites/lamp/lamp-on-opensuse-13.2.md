@@ -5,7 +5,7 @@ author:
 description: 'Create a LAMP stack on a OpenSUSE 13.2.'
 keywords: 'LAMP,OpenSUSE,OpenSUSE 13.2,apache,mysql,php,opensuse lamp'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-title: LAMP on CentOS 7
+title: LAMP on OpenSUSE 13.2
 alias: ['websites/lamp/lamp-on-opensuse-13.2/']
 external_resources:
  - '[OpenSUSE Linux Home Page](https://www.opensuse.org/)'
