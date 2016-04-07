@@ -12,110 +12,119 @@ published: 'Friday, April 1, 2016'
 title: Update and Secure Drupal 8 on Ubuntu or Debian
 ---
 
-Drupal 8 is the lastest version of the popular [Drupal](https://www.drupal.org/) content management system. This guide demonstrates how to manually install an incremental Drupal 8 update on your Linode. This guide assumes you have a functional Drupal 8 installation running on Apache and Debian or Ubuntu.
+Drupal 8 is the lastest version of the popular [Drupal](https://www.drupal.org/) content management system. While an incremental update feature is planned for version 8.1, manual updates are currently required. This guide demonstrates how to manually install an incremental Drupal 8 update on your Linode. This guide assumes you have a functional Drupal 8 installation running on Apache and Debian or Ubuntu.
 
 ## Before You Begin
 
-Ensure that you have followed the following guides:
+1.  Ensure that you have followed the following guides:
 
-1.  [Getting Started](/docs/getting-started)
-2.  [Securing Your Server](/docs/security/securing-your-server)
-3.  [Install a LAMP stack](/docs/websites/lamp/lamp-on-ubuntu-14-04) 
-4.  [Install and Configure Drupal 8](/docs/websites/cms/install-and-configure-drupal-8)
+    -   [Getting Started](/docs/getting-started)
+    -   [Securing Your Server](/docs/security/securing-your-server)
+    -   [Install a LAMP stack](/docs/websites/lamp/lamp-on-ubuntu-14-04) 
+    -   [Install and Configure Drupal 8](/docs/websites/cms/install-and-configure-drupal-8)
 
-Confirm the name of your site's folder by running the following command on your Linode: ``ls /var/www/html``
+2.  Confirm the name of your site's folder by running the following command on your Linode: ``ls /var/www/html``
+
+3.  Update your system:
+
+        sudo apt-get update && sudo apt-get upgrade
 
 {: .note}
 >
 >  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account, harden SSH access, remove unnecessary network services and create firewall rules for your web server; you may need to make addional firewall exceptions for your specific application.
->   Replace each instance of ``examplesite`` and ``exampleuser`` with the names appropriate to your site.
+>
+>Replace each instance of ``example.com`` and ``user`` with the names appropriate to your site, and `203.0.113.52` with your Liode's IP address or domain name.
 
-## Backing up and Updating 
+## Create Backups
 
-1.  Update your system:
+Backup existing files and move the archive into the backups directory. This process can also be moved in to a script and run on a regular basis using [cron](docs/tools-reference/tools/schedule-tasks-with-cron).
 
-        sudo apt-get update && sudo apt-get upgrade
+    cd public_html
+    sudo tar -cvzf example.com-BCKP-$(date +%Y%m%d).tar.gz ./
+    sudo mv -v example.com-BCKP-*.tar.gz ../backups
 
-2.  Using a browser on your local machine, navigate to your Drupal site /?q=exampleuser/login
+## Download Updates 
 
-        www.examplesite.com/?q=exampleuser/login
+1.  Log in to your Drupal site, and navigate to the Admin Toolbar. Click Reports, then Available updates:
 
-3.  In the Drupal Admin Toolbar, click Reports then Available updates
+2.  Right click "Download" to the right of the desired version and copy the link address
 
-4.  Right click "Download" to the right of the desired version and copy the link address
+    [![A Drupal Update](/docs/assets/drupal-updates-download-small.png)](/docs/assets/drupal-updates-download.png)
 
-5.  ssh to your Linode
+3.  Connect to your Linode over ssh:
 
-6.  Navigate to the Apache DocumentRoot directory and download the new file:
+        ssh user@203.0.113.52
 
-        cd /var/www/html/examplesite
+4.  Navigate to the Apache DocumentRoot directory and download the new file, using `wget` and pasting the link address you copied from step 2:
+
+        cd /var/www/html/example.com
         wget https://ftp.drupal.org/files/projects/drupal-8.0.5.tar.gz
 
-7.  Backup existing files and move the archive into the backups directory
+## Upgrade Your Site
 
-        cd public_html
-        tar -cvzf examplesite-BCKP-$(date +%Y%m%d).tar.gz ./
-        mv -v example-file-name.tar.gz ../backups
+###  Put site into Maintenance Mode
 
-8.  Put site into Maintenance Mode
-    1.  Navigate to your browser /admin/config/development/maintenance
-    2.  Check the box next to "Put site into maintenance mode"
-    3.  Enter a message if desired
-    4.  Click *Save Configuration*
+1.  Back in you browserm navigate to **Config**, **Development**, then **Maintenance mode**:
 
-9.  From the Linode, while still in the site's ``public_html`` folder, remove existing files and folders except "sites" and "profiles":
+    ![Maintenance Mode](/docs/assets/drupal-updates-maintenance.png)
+
+2.  Check the box next to "Put site into maintenance mode". Enter a message if desired, and click **Save Configuration**.
+
+    [![Title](/docs/assets/drupal-updates-maintenance2-small.png)](/docs/assets/drupal-updates-maintenance2.png)
+
+### Replace System Files
+
+1.  From the Linode, while still in the site's `public_html` folder, remove existing files and folders except `sites` and `profiles`:
 
         sudo rm -ifr autoload.php composer.* example.gitignore index.php LICENSE.txt README.txt robots.txt update.php web.config && sudo rm -ifr core/ modules/ vendor/ themes/
 
-10. Expand the update into your Drupal folder
+2.  Go up one directory, then expand the update into your `public_html` folder. Replace `drupal-8.0.6.tar.gz` with the current update:
 
-        cd /var/www/html/examplesite
-        tar -zxvf drupal-8.*.tar.gz --strip-components=1 -C public_html
+        cd ..
+        sudo tar -zxvf drupal-8.0.6.tar.gz --strip-components=1 -C public_html
 
-11. From a browser on your local machine, navigate to your site /update.php
+3.  From a browser on your local machine, navigate to your `example.com/update.php`.
 
-        www.examplesite.com/update.php
+    {: .note}
+    >If update.php does not load or returns a 403 Forbidden error, you can try to change the ownership and permissions of the newly expanded files:
+    >
+    >~~~
+    >chgrp www-data /var/www/html/examplesite/public_html/sites/default/files
+    >chmod 775 /var/www/html/examplesite/public_html/sites/default/files
+    >chmod 757 /var/www/html/examplesite/public_html/sites/default/settings.php
+    >~~~
 
-    *  If update.php does not load or returns a 403 Forbidden error:
-        1. Confirm Apache's user group: ``ps aux | egrep '(apache|httpd)`` (The user group is the beginning of the result. E.g. ``www-data``)
-        2. Allow the Apache and Drupal installations to access, write, and read settings files:
+4.  Follow the prompts to continue the update
 
-~~~
-            chgrp exampleuser /var/www/html/examplesite/public_html/sites/default/files
-            chmod 775 /var/www/html/examplesite/public_html/sites/default/files
-            chmod 757 /var/www/html/examplesite/public_html/sites/default/settings.php
-~~~
+5.  If installing additional modules or configuring additional security settings as shown in the *Additional Security* section below. Proceed to Step 14 once those configurations are complete.
 
-12.  Follow the prompts to continue the update
+6.  Rebuild the site's cache in ``/admin/config/development/performance``
 
-13.  If installing additional modules or configuring additional security settings as shown in the *Additional Security* section below. Proceed to Step 14 once those configurations are complete.
+        www.examplesite.com/admin/config/development/performance
 
-14.  Rebuild the site's cache in ``/admin/config/development/performance``
+7.  Navigate to your site /admin/reports/status to check and deal with messages
 
-    www.examplesite.com/admin/config/development/performance
+        www.examplesite.com/admin/reports/status
 
-15.  Navigate to your site /admin/reports/status to check and deal with messages
+8.  Confirm that ``$update_free_access = FALSE`` in ``/var/www/html/examplesite/public_html/sites/default/settings.php``
 
-    www.examplesite.com/admin/reports/status
+9.  If everything looks good, take the site out of maintenance mode by navigating to your site's ``/admin/config/development/maintenance``
 
-16.  Confirm that ``$update_free_access = FALSE`` in ``/var/www/html/examplesite/public_html/sites/default/settings.php``
-
-17.  If everything looks good, take the site out of maintenance mode by navigating to your site's ``/admin/config/development/maintenance``
-
-    www.examplesite.com/admin/config/development/maintenance
+        .examplesite.com/admin/config/development/maintenance
 
 ## Additional Security 
 
-1. Increase password security by adding the following to ``/var/www/html/examplesite/public_html/sites/default/services.yml``:
-    {: .file-excerpt}
-~~~
+1.  Increase password security by adding the following to `services.yml`:
 
-    # Increase the number of password hash iterations. Minimum = 7; Maximum = 30; Default = 16
-    services:
-      password:
+    {: .file-excerpt}
+    /var/www/html/examplesite/public_html/sites/default/services.yml
+    : ~~~ yml
+      # Increase the number of password hash iterations. Minimum = 7; Maximum = 30; Default = 16
+        services:
+        password:
         class: Drupal\Core\Password\PhpassHashedPassword
         arguments: [19]
-~~~
+      ~~~
 
 2. Consider installing additional security modules from ``https://www.drupal.org/project/project_module``:
     * [Secure Login](https://www.drupal.org/project/securelogin) enforces secure authenticated session cookies
