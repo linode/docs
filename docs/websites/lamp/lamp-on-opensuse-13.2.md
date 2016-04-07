@@ -85,9 +85,9 @@ There are different ways to set up virtual hosts; however, the method below is r
             ServerAdmin webmaster@example.com
             ServerName example.com
             ServerAlias www.example.com
-            DocumentRoot /var/www/example.com/public_html/
-            ErrorLog /var/www/example.com/logs/error.log
-            CustomLog /var/www/example.com/logs/access.log combined
+            DocumentRoot /srv/www/example.com/public_html/
+            ErrorLog /srv/www/example.com/logs/error.log
+            CustomLog /srv/www/example.com/logs/access.log combined
         </VirtualHost>
         ~~~
 
