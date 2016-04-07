@@ -25,7 +25,7 @@ Now that you've installed Linux and secured your Linode, it's time to start *doi
 
 ## Web Server
 
-Hosting a website starts with installing a *web server*, an application on your Linode that delivers content through the Internet. This section will help you get started with *Apache*, the world's most popular web server. For more information about Apache and other web servers, see our [web server reference manuals](/docs/web-servers).
+Hosting a website starts with installing a *web server*, an application on your Linode that delivers content through the Internet. This section:"" will help you get started with *Apache*, the world's most popular web server. For more information about Apache and other web servers, see our [web server reference manuals](/docs/web-servers).
 
 ### Install Apache
 
@@ -53,25 +53,25 @@ Installing Apache is easy, but if you leave it running with the default settings
 
 3.  Make sure that the following values are set.
 
- {: .note }
->
-> In Ubuntu 14.04 LTS, you will need to append the module section noted below to the end of your apache2.conf file:
+    {: .note }
+    >
+    > In Ubuntu 14.04 LTS, you will need to append the module section noted below to the end of your apache2.conf file:
 
-{: .file-excerpt}
-/etc/apache2/apache2.conf
-:	~~~ apache
-	KeepAlive Off
+    {: .file-excerpt}
+    /etc/apache2/apache2.conf
+    :	~~~ conf
+    	KeepAlive Off
 
-	...
+    	...
 
-	<IfModule mpm_prefork_module>
-	StartServers 2
-	MinSpareServers 6
-	MaxSpareServers 12
-	MaxClients 30
-	MaxRequestsPerChild 3000
-	</IfModule>
-	~~~
+    	<IfModule mpm_prefork_module>
+    	StartServers 2
+    	MinSpareServers 6
+    	MaxSpareServers 12
+    	MaxClients 30
+    	MaxRequestsPerChild 3000
+    	</IfModule>
+    	~~~
 
 4.  Save the changes to Apache's configuration file by pressing **CTRL+X** and then pressing **Y**. Press **ENTER** to confirm.
 5.  Restart Apache to incorporate the new settings:
@@ -96,25 +96,15 @@ Now that Apache is optimized for performance, it's time to starting hosting one 
 
         cd /var/www/html
 
-3.  Create a folder to hold your website, replacing 'example.com' with your domain name:
+3.  Create a folder to hold your website, and subfolders for its logs, backups, and public data. Replace `example.com` with your domain name:
 
-        sudo mkdir example.com
+        mkdir -p example.com/{public_html,log,backups}
 
-4.  Create a set of folders inside the folder you've just created to store your website's files, logs, and backups. Enter the following commands, replacing `example.com` with your domain name:
-
-        sudo mkdir -p example.com/public_html
-		sudo mkdir -p example.com/log
-		sudo mkdir -p example.com/backups
-
-
-5.  Create the virtual host file for your website. Replace the `example.com` in `example.com.conf` with your domain name:
+4.  Create the virtual host file for your website. Replace the `example.com` in `example.com.conf` with your domain name:
 
         sudo nano /etc/apache2/sites-available/example.com.conf
 
-    {:.caution}
-    > The file name *must* end with `.conf` in Apache versions 2.4 and later, which Ubuntu 14.04 uses. The `.conf` extension is backwards-compatible with earlier versions.
-
-6.  Now it's time to create a configuration for your virtual host. We've created some basic settings to get your started. Copy and paste the settings shown below in to the virtual host file you just created. Replace `example.com` with your domain name.
+5.  Now it's time to create a configuration for your virtual host. We've created some basic settings to get your started. Copy and paste the settings shown below in to the virtual host file you just created. Replace `example.com` with your domain name.
 
     {: .file-excerpt}
     /etc/apache2/sites-available/example.com.conf
@@ -138,19 +128,19 @@ Now that Apache is optimized for performance, it's time to starting hosting one 
         </VirtualHost>
         ~~~
 
-7.  Save the changes to the virtual host configuration file by pressing **CTRL+X** and then pressing **Y**. Press **ENTER** to confirm.
+6.  Save the changes to the virtual host configuration file by pressing **CTRL+X** and then pressing **Y**. Press **ENTER** to confirm.
 
-8. Enable your new website, replacing `example.com` with your domain name:
+7.  Enable your new website, replacing `example.com` with your domain name:
 
         sudo a2ensite example.com.conf
 
     This creates a symbolic link to your `example.com.conf` file in the appropriate directory for active virtual hosts.
 
-9. The previous command will alert you that you need to restart Apache to save the changes. Restart to apply your new configuration:
+8.  The previous command will alert you that you need to restart Apache to save the changes. Restart to apply your new configuration:
 
         sudo service apache2 restart
 
-10. Repeat steps 1-9 for any other websites you want to host on your Linode.
+9.  Repeat steps 1-8 for any other websites you want to host on your Linode.
 
 Congratulations! You've configured Apache to host one or more websites on your Linode. After you [upload files](#upload-files) and [add DNS records](#add-dns-records) later in this guide, your websites will be accessible to the outside world.
 
