@@ -47,7 +47,7 @@ Backup existing files and move the archive into the backups directory. This proc
 
 1.  Log in to your Drupal site, and navigate to the Admin Toolbar. Click Reports, then Available updates.
 
-2.  Right click "Download" to the right of the desired version and copy the link address.
+2.  Right click "Download" to the right of the desired version and copy the link address
 
     [![A Drupal Update](/docs/assets/drupal-updates-download-small.png)](/docs/assets/drupal-updates-download.png)
 
