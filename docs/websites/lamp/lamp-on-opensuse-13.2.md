@@ -88,6 +88,11 @@ There are different ways to set up virtual hosts; however, the method below is r
             DocumentRoot /srv/www/example.com/public_html/
             ErrorLog /srv/www/example.com/logs/error.log
             CustomLog /srv/www/example.com/logs/access.log combined
+            <Directory /srv/www/example.com/public_html>
+                Options Indexes FollowSymLinks
+                AllowOverride All
+                Require all granted
+            </Directory>
         </VirtualHost>
         ~~~
 
