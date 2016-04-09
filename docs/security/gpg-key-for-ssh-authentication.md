@@ -10,7 +10,8 @@ contributor:
   name: Huw Evans
   link: github.com/huw
   external_resources:
-- '[Link Title 1](http://www.example.com)'
+- '[Securely set up smartcard](https://gist.github.com/abeluck/3383449)'
+- '[Instructions for GPG 2.1](https://incenp.org/notes/2015/gnupg-for-ssh-authentication.html)'
 ---
 
 *This is a Linode Community guide. Write for us and earn $250 per published guide.*
