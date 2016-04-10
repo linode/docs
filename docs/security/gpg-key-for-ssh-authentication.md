@@ -400,7 +400,7 @@ At this point you should return to your main (still local) machine and import al
     
 3. Restart the GPG agent:
         sudo killall gpg-agent
- 		gpg-agent --daemon --write-env-file ~/.gpg-agent-info
+    gpg-agent --daemon --write-env-file ~/.gpg-agent-info
 4. Quit and reopen your shell.
 
 ## Add the New Key to Your Linode
@@ -408,13 +408,13 @@ At this point you should return to your main (still local) machine and import al
 The steps taken so far will take your GPG keys, and pipe them through SSH's services so they can be used for authentication. The steps above this make that connection between GPG and SSH work properly. The result of this process is that you've created a shiny new RSA public key for use with SSH.
 
 1. Assuming you're still on your local machine, extract the public key:
-		ssh-add -L
+    ssh-add -L
 2. The output of this process may differ, but you should only have a single usable line if you've started from scratch. Copy the whole line, including `ssh-rsa`. It might look like this:
-		ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDxAZn1IQ2cBxIbgwksWOfkAMKKLa3cUYMkbQBaR9Nw4CfoLs8xiu0Kb8oN4JH6p+E4C1MrlmFQuMZbVzs9JseV2pe6kw0xKQgLINopyF6letzCOEzPH7THicxyQc35vMIa8JTAMU6X3hpzzSUVSQGKDljj+c4XayTZCVQVg2Yqc67Vdm+4q4OQCU7Fns73KWmqwsdYtuyk74yPWjAvKkEaW7I9d3TLKVI8LLdzC6FoP2jJyGEoqxWEf2yL0eWelmJi/ikLJFSdXvdVCzvyI3dTeNqEdaisKQ0SJ7W0ysH1Os2hYyxBazWonMYI/T8Sh9J21xcWGmBumFTIcsbLEP17tojR4ttFq69ebtJIMkbPo0e+u4gWdvM44MyWsDm8jkKDuqNcduGIhF0dFY57niq4TEv5+Yvya2gwqBS4ttq/NlUAseL4zAcaP+kpDae4GMiRXwpFAiKA3ctn6/gf5QLvcAHMz62ASHeo9gG9t6n0eGUzBD/lv0qMsaYgmxfgIpqoU6Sr1w2EVp8TYjIVAaO/96Kljb2v9mB+0/BTO7gxJicxUNYQLOhEYdMnbr0bFNAG93hlUiq5eGTTG7nn1mre2OHWyGB8fZN9EukbMeFicgFTxgl3ddQawjn1Qb6u//ZpSCD++IH4HQCjz1fI9r+yZ+6CqfUrM0PI+dwAfcL4pw== cardno:000500001BDE
+    ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDxAZn1IQ2cBxIbgwksWOfkAMKKLa3cUYMkbQBaR9Nw4CfoLs8xiu0Kb8oN4JH6p+E4C1MrlmFQuMZbVzs9JseV2pe6kw0xKQgLINopyF6letzCOEzPH7THicxyQc35vMIa8JTAMU6X3hpzzSUVSQGKDljj+c4XayTZCVQVg2Yqc67Vdm+4q4OQCU7Fns73KWmqwsdYtuyk74yPWjAvKkEaW7I9d3TLKVI8LLdzC6FoP2jJyGEoqxWEf2yL0eWelmJi/ikLJFSdXvdVCzvyI3dTeNqEdaisKQ0SJ7W0ysH1Os2hYyxBazWonMYI/T8Sh9J21xcWGmBumFTIcsbLEP17tojR4ttFq69ebtJIMkbPo0e+u4gWdvM44MyWsDm8jkKDuqNcduGIhF0dFY57niq4TEv5+Yvya2gwqBS4ttq/NlUAseL4zAcaP+kpDae4GMiRXwpFAiKA3ctn6/gf5QLvcAHMz62ASHeo9gG9t6n0eGUzBD/lv0qMsaYgmxfgIpqoU6Sr1w2EVp8TYjIVAaO/96Kljb2v9mB+0/BTO7gxJicxUNYQLOhEYdMnbr0bFNAG93hlUiq5eGTTG7nn1mre2OHWyGB8fZN9EukbMeFicgFTxgl3ddQawjn1Qb6u//ZpSCD++IH4HQCjz1fI9r+yZ+6CqfUrM0PI+dwAfcL4pw== cardno:000500001BDE
 3. Paste this line into a new file (for example, `~/gpg-key.pub`) and save it.
 4. Copy it over to your Linode:
-		scp ~/gpg-key.pub you@yoursite.net:/home/you/.ssh/gpg-key.pub
+    scp ~/gpg-key.pub you@yoursite.net:/home/you/.ssh/gpg-key.pub
 5. Log into your Linode and move the key into the `authorized_hosts` file:
-		ssh you@yoursite.net "echo `cat ~/.ssh/gpg-key.pub` >> ~/.ssh/authorized_keys"
+    ssh you@yoursite.net "echo `cat ~/.ssh/gpg-key.pub` >> ~/.ssh/authorized_keys"
 
 You're done! Disconnect, and all new logins should now use your GPG key instead of a passphrase. This SSH key can also be used with GitHub, Bitbucket, or any other SSH-based Version Control System—or anywhere else that accepts SSH keys.
