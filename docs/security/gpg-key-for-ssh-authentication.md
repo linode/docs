@@ -42,21 +42,29 @@ You don't necessarily need to be familiar with [SSH authentication](/docs/securi
 All of these steps should be taken on a local machine, *not* your Linode.
 
 1. Install GPG:
+
     On Debian & derivatives:
+
         sudo apt-get install gnupg2
     
     On OS X:
+
     [GPGTools](https://gpgtools.org) provides the simplest implementation of GPG for OS X. Otherwise, you could `brew install gnupg2` if you have [Homebrew](https://brew.sh).
     
     In other operating systems, this process should be fairly clear. GPG is likely already installed.
     
 2. Open a command prompt and type:
+
         gpg2 --gen-key
         
 3. When prompted to select the kind of key you want, select `(1) RSA and DSA`.
+
 4. When asked for a keysize, type `4096`. If you want to store your key on a YubiKey Neo or certain smartcards, you may be restricted to a 2048-bit key size, so ensure that you have the right number.
+
 5. Choose an expiry that you think will be suitable for this key. **After that date, the key will no longer work, so choose carefully.**
+
 6. Enter your full name, email address, and a comment (if you want). Select `O` for 'Okay'.
+
 7. After looking over your shoulders for secret agents, enter a long and secure passphrase that will be used to encrypt your key in local storage. Write this down somewhere you know to be physically secure while your computer generates the keypair.
 
 Once this is done, your screen should display the following:
@@ -106,20 +114,29 @@ This process has created a master GPG key and a subkey for encrypting messages a
 ### Generating the Authentication Subkey
 
 1. In a command prompt or terminal, type:
+
         gpg2 --expert --edit-key <key id>
         
     Where you replace `<key id>` with the 8-letter string output from the key generation process. In the example above, it's `71735D23`.
     
 2. At the new `gpg> ` prompt, enter:
+
         addkey
         
 3. When prompted, enter your passphrase (if any)
+
 4. When asked for the type of key you want, select: `(8) RSA (set your own capabilities)`
+
 5. Enter `S` to toggle the 'Sign' action off.
+
 6. Enter `E` to toggle the 'Encrypt' action off.
+
 7. Enter `A` to toggle the 'Authenticate' action on. The screen should now read `Current allowed actions: Authenticate`, with nothing else on the line.
+
 8. Enter `Q` to continue.
+
 9. When asked for a keysize, choose `4096`. The same limitation from Step 4 in the first section applies—ensure your card/YubiKey can support this key size.
+
 10. Enter an expiry date, just as before. You should probably keep this the same as the first one. If you choose a lower expiry date, your main private key will continue to function but your SSH authentication will break on this date.
 
 Your terminal should now look like this:
@@ -218,12 +235,17 @@ Your terminal should now look like this:
 You should always have a backup of your private key in case something goes wrong and you end up locked out of everything. This private key, along with the instructions in this guide, will be enough to get your setup working again if you need to start afresh on a new computer.
 
 1. Backup your `~/.gnupg` folder by typing:
+
         mv ~/.gnupg/ /Volumes/USB_DEVICE/.gnupg/
+
     (Assuming you have a storage device mounted at `/Volumes/USB_DEVICE/`)
 
 2. Backup your private key by typing:
+
         gpg2 -a --export-secret-key <key id> >> /Volumes/USB_DEVICE/<key id>.master.key
+
 3. Backup your subkeys by typing:
+
         gpg2 -a --export-secret-subkeys <key id> >> /Volumes/USB_DEVICE/<key id>.sub.key
         
 If something bad happens, you can re-import your keys by overwriting the `~/.gnupg` directory with your copy, and using:
@@ -233,7 +255,9 @@ If something bad happens, you can re-import your keys by overwriting the `~/.gnu
 Where `<key file>` is replaced with the location of each of your files.
 
 ### Export Your Public Key
+
 If you're working on a VM/offline machine, you'll also need to export your public key to be reimported later:
+
     gpg2 -a --export <key id> >> /Volumes/USB_DEVICE/<key id>.public.key
     
 You can reimport it with the ever-handy `gpg2 --import <key file>` command.
@@ -252,13 +276,21 @@ It is assumed that you have configured your card/YubiKey's (herein referred to a
 > Some of these commands may ask for a PIN or Admin PIN. The default PIN is usually `123456`, and the default Admin PIN is usually `12345678`. If these don't work, contact the manufacturer or ask around.
 
 1. Plug in the device and type:
+
         gpg2 --card-edit
+
 2. Enable admin commands by:
+
         admin
+
 3. Enter the password change menu:
+
         passwd
+
 4. Change the password to your device by selecting `1 - change PIN`. This will be required every time you want to access your GPG key (i.e. every time you authenticate with SSH).
+
 5. Change the admin PIN by selecting `3 - change Admin PIN`. This PIN is required to make administrative changes, like in step 2.
+
 6. Exit these menus by selecting `Q` and then typing `quit`.
 
 For reference, your window should show (abbreviated):
@@ -285,20 +317,33 @@ For reference, your window should show (abbreviated):
     gpg/card> quit
 
 ### Transfer Your Subkey
+
 1. Enter the key edit menu from a normal command prompt:
+
         gpg2 --edit-key <key id>
+
 2. Switch to the private key editor:
+
         toggle
+
 3. Select the authentication subkey:
+
         key 2
+
     Remember, if you have more subkeys this command should be changed as appropriate.
+
 4. Transfer the key:
+
         keytocard
         
 5. Select `(3) Authentication key` to store your key on the third slot of the device. If this is not an option, ensure that you've selected the appropriate subkey.
+
 6. Enter your passphrase.
+
 7. Type `save` to exit this menu.
+
 8. If you're working on a VM/offline machine, export the subkey stubs (pointers so GPG knows your subkeys are on the device):
+
         gpg -a --export-secret-subkeys <key id> >> /Volumes/USB_DEVICE/<key id>.stubs.gpg
     
     You can reimport these with an ordinary `gpg2 --import <stub file>` on your private machine.
@@ -354,7 +399,7 @@ At this point you should return to your main (still local) machine and import al
 
     On Linux:
 
-    {: .file-excerpt }
+    {: .file-excerpt}
     ~/.profile
     :   ~~~
         if [ -f "${HOME}/.gpg-agent-info" ]; then
@@ -367,7 +412,7 @@ At this point you should return to your main (still local) machine and import al
     
     On OS X:
     
-    {: .file-excerpt }
+    {: .file-excerpt}
     ~/.profile
     :   ~~~
         [ -f ~/.gpg-agent-info ] && source ~/.gpg-agent-info
@@ -384,7 +429,7 @@ At this point you should return to your main (still local) machine and import al
     
 2. Edit or create `~/.gnupg/gpg-agent.conf`:
     
-    {: .file-excerpt }
+    {: .file-excerpt}
     ~/.profile
     :   ~~~
         default-cache-ttl 600
@@ -394,13 +439,17 @@ At this point you should return to your main (still local) machine and import al
         ~~~
         
     If you're on OS X and installed GPGTools, you can also add
+
         pinentry-program /usr/local/MacGPG2/libexec/pinentry-mac.app/Contents/MacOS/pinentry-mac
     
     To use the PIN entry program provided by GPGTools.
     
 3. Restart the GPG agent:
+
         sudo killall gpg-agent
+
     gpg-agent --daemon --write-env-file ~/.gpg-agent-info
+
 4. Quit and reopen your shell.
 
 ## Add the New Key to Your Linode
@@ -408,13 +457,21 @@ At this point you should return to your main (still local) machine and import al
 The steps taken so far will take your GPG keys, and pipe them through SSH's services so they can be used for authentication. The steps above this make that connection between GPG and SSH work properly. The result of this process is that you've created a shiny new RSA public key for use with SSH.
 
 1. Assuming you're still on your local machine, extract the public key:
+
     ssh-add -L
+
 2. The output of this process may differ, but you should only have a single usable line if you've started from scratch. Copy the whole line, including `ssh-rsa`. It might look like this:
+
     ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDxAZn1IQ2cBxIbgwksWOfkAMKKLa3cUYMkbQBaR9Nw4CfoLs8xiu0Kb8oN4JH6p+E4C1MrlmFQuMZbVzs9JseV2pe6kw0xKQgLINopyF6letzCOEzPH7THicxyQc35vMIa8JTAMU6X3hpzzSUVSQGKDljj+c4XayTZCVQVg2Yqc67Vdm+4q4OQCU7Fns73KWmqwsdYtuyk74yPWjAvKkEaW7I9d3TLKVI8LLdzC6FoP2jJyGEoqxWEf2yL0eWelmJi/ikLJFSdXvdVCzvyI3dTeNqEdaisKQ0SJ7W0ysH1Os2hYyxBazWonMYI/T8Sh9J21xcWGmBumFTIcsbLEP17tojR4ttFq69ebtJIMkbPo0e+u4gWdvM44MyWsDm8jkKDuqNcduGIhF0dFY57niq4TEv5+Yvya2gwqBS4ttq/NlUAseL4zAcaP+kpDae4GMiRXwpFAiKA3ctn6/gf5QLvcAHMz62ASHeo9gG9t6n0eGUzBD/lv0qMsaYgmxfgIpqoU6Sr1w2EVp8TYjIVAaO/96Kljb2v9mB+0/BTO7gxJicxUNYQLOhEYdMnbr0bFNAG93hlUiq5eGTTG7nn1mre2OHWyGB8fZN9EukbMeFicgFTxgl3ddQawjn1Qb6u//ZpSCD++IH4HQCjz1fI9r+yZ+6CqfUrM0PI+dwAfcL4pw== cardno:000500001BDE
+
 3. Paste this line into a new file (for example, `~/gpg-key.pub`) and save it.
+
 4. Copy it over to your Linode:
+
     scp ~/gpg-key.pub you@yoursite.net:/home/you/.ssh/gpg-key.pub
+
 5. Log into your Linode and move the key into the `authorized_hosts` file:
+
     ssh you@yoursite.net "echo `cat ~/.ssh/gpg-key.pub` >> ~/.ssh/authorized_keys"
 
 You're done! Disconnect, and all new logins should now use your GPG key instead of a passphrase. This SSH key can also be used with GitHub, Bitbucket, or any other SSH-based Version Control System—or anywhere else that accepts SSH keys.
