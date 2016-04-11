@@ -46,7 +46,7 @@ A monitoring tool is a key application in a production server. Nagios is a popul
         sudo useradd nagios
         sudo groupadd nagcmd
         sudo usermod -a -G nagcmd nagios
-        sudo usermod -G nagcmd www-data
+        sudo usermod -a -G nagcmd www-data
 
 3.  Next, we will install the latest stable version of Nagios, which we'll have to download and build from source code. In order to fulfill the dependencies to build Nagios, install the following packages:
 
