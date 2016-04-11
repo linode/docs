@@ -41,7 +41,7 @@ A monitoring tool is a key application in a production server. Nagios is a popul
 
         sudo apt-get update && sudo apt-get upgrade
 
-2.  To run Nagios, you will need to create both a separate user, `nagios,` and a distinct group, `nagcmd` before inserting the user into the group. You are also going to add the Apache user, `www-data`, to the `nagcmd` group in order to run external commands on Nagios through the web interface:
+2.  To run Nagios, you will need to create both a separate user, `nagios`, and a distinct group, `nagcmd` before inserting the user into the group. You are also going to add the Apache user, `www-data`, to the `nagcmd` group in order to run external commands on Nagios through the web interface:
 
         sudo useradd nagios
         sudo groupadd nagcmd
@@ -97,7 +97,7 @@ If mod_rewrite and/or mod_cgi were not already enabled, you'll have to restart A
         sudo chmod 644 /etc/apache2/sites-available/nagios4.conf
         sudo a2ensite nagios4.conf
 
-4. For safety, the web interface requires login. Create a nagiosadmin account and record the password assigned:
+4. For safety, the web interface requires login. Create a `nagiosadmin` account and record the password assigned:
 
         sudo htpasswd -c /usr/local/nagios/etc/htpasswd.users nagiosadmin
 
@@ -130,7 +130,7 @@ Before you can access the Nagios Web Interface, you need to start Nagios, itself
 
         sudo service nagios start
 
-The interface can be accessed from your domain or Public IP (swap example.com with your Linode IP address). When prompted at login, insert nagiosadmin as user and the assigned password:
+The interface can be accessed from your domain or Public IP (swap example.com with your Linode IP address). When prompted at login, insert `nagiosadmin` as user and the assigned password:
 
         http://example.com/nagios
 
