@@ -39,13 +39,16 @@ Drupal 8 is the lastest version of the popular [Drupal](https://www.drupal.org/)
 
 Backup existing files and move the archive into the backups directory. This process can also be moved into a script and run on a regular basis using [cron](docs/tools-reference/tools/schedule-tasks-with-cron):
 
-    cd public_html
+    cd /var/www/html/example.com/public_html
     sudo tar -cvzf example.com-BCKP-$(date +%Y%m%d).tar.gz ./
     sudo mv -v example.com-BCKP-*.tar.gz ../backups
 
 ## Download Updates 
 
-1.  Log in to your Drupal site, and navigate to the Admin Toolbar. Click Reports, then Available updates.
+1.  Log in to your Drupal site, and navigate to the Admin Toolbar. Click **Reports**, then **Available updates**.
+
+    {: .note}
+    > If **Available updates** is not listed, enable the Update Manager plugin under **Extend**.
 
 2.  Right click "Download" to the right of the desired version and copy the link address
 
@@ -74,7 +77,7 @@ Backup existing files and move the archive into the backups directory. This proc
 
 ### Replace System Files
 
-1.  From the Linode, while still in the site's `public_html` folder, remove existing files and folders except `sites` and `profiles`:
+1.  From the Linode, while in the site's `public_html` folder, remove existing files and folders except `sites` and `profiles`:
 
         sudo rm -ifr autoload.php composer.* example.gitignore index.php LICENSE.txt README.txt robots.txt update.php web.config && sudo rm -ifr core/ modules/ vendor/ themes/
 
@@ -119,6 +122,11 @@ Backup existing files and move the archive into the backups directory. This proc
         class: Drupal\Core\Password\PhpassHashedPassword
         arguments: [19]
       ~~~
+
+      {: .note}
+      > You may need to add write permission to this file before you can edit it:
+      >
+      >     chmod u+w /var/www/html/afornuto-1.fornuto.com/public_html/sites/default/services.yml
 
 2. Consider installing additional security modules from ``https://www.drupal.org/project/project_module``:
     * [Secure Login](https://www.drupal.org/project/securelogin) enforces secure authenticated session cookies
