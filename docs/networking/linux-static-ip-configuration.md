@@ -90,7 +90,24 @@ A default gateway should not be specified for private IP addresses. Additionally
 
 ### Arch
 
-There are multiple ways to configure static IP addresses in Arch. See the [Static IP Address](https://wiki.archlinux.org/index.php/Network_Configuration#Static_IP_address) section of Arch's Network Configuration Wiki page.
+Edit the interface's config file:
+
+{: .file-excerpt }
+/etc/systemd/network/05-eth0.network
+:   ~~~ conf
+    . . .
+
+    [Match]
+    Name=eth0
+
+    [Network]
+    Gateway=45.79.131.1
+    Address=45.79.131.10/24
+    Address=192.168.133.234/17
+
+    ~~~
+
+There are multiple ways to configure static IP addresses in Arch. See the [Static IP Address](https://wiki.archlinux.org/index.php/Network_Configuration#Static_IP_address) section of Arch's Network Configuration Wiki page for other options such as using Netctl.
 
 ### CentOS 7 / Fedora 22+
 

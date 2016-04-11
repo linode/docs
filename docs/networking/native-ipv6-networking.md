@@ -153,6 +153,33 @@ If you are using CentOS 7, you will need to reload your configuration using `nmc
     nmcli con down "System eth0"
     nmcli con up "System eth0"
 
+### Arch Linux/Fedora 21 (systemd-networkd)
+
+If you are using `systemd-networkd` on Arch Linux or Fedora 21, you can statically configure IPv6 pools by editing `/etc/systemd/network/50-static.network`.
+
+1.  Set up [Static IP Networking](/docs/networking/linux-static-ip-configuration/#arch-linux--fedora-21) for your IPv4 address.
+
+2.  Edit your current static IP networking configuration to allow for your IPv6 addresses. You will need to include your default IPv6 address as well.
+
+    {: .file }
+    /etc/systemd/network/50-static.network
+    :   ~~~
+        [Match]
+        Name=eth0
+
+        [Network]
+        Address=198.51.100.2/24
+        Address=192.168.133.234/17
+        Gateway=198.51.100.1
+        Address=2001:DB8:2000:aff0::/32
+        Address=2001:DB8:2000:aff0::1/32
+        Address=2001:DB8:2000:aff0::2/32
+        ~~~
+
+3.  Restart `systemd-networkd`
+
+        systemctl restart systemd-networkd
+
 ### Arch Linux (netctl)
 
 If you are still using `netctl` in Arch Linux, you can statically configure your IPv6 pools by editing the `/etc/netctl/examples/ethernet-static` file and copying it to `/etc/netctl`.
@@ -198,33 +225,6 @@ If you are still using `netctl` in Arch Linux, you can statically configure your
 5.  Enable your new network profile:
 
         netctl enable ethernet-static
-
-### Arch Linux/Fedora 21 (systemd-networkd)
-
-If you are using `systemd-networkd` on Arch Linux or Fedora 21, you can statically configure IPv6 pools by editing `/etc/systemd/network/50-static.network`.
-
-1.  Set up [Static IP Networking](/docs/networking/linux-static-ip-configuration/#arch-linux--fedora-21) for your IPv4 address.
-
-2.  Edit your current static IP networking configuration to allow for your IPv6 addresses. You will need to include your default IPv6 address as well.
-
-    {: .file }
-    /etc/systemd/network/50-static.network
-    :   ~~~
-        [Match]
-        Name=eth0
-
-        [Network]
-        Address=198.51.100.2/24
-        Address=192.168.133.234/17
-        Gateway=198.51.100.1
-        Address=2001:DB8:2000:aff0::/32
-        Address=2001:DB8:2000:aff0::1/32
-        Address=2001:DB8:2000:aff0::2/32
-        ~~~
-
-3.  Restart `systemd-networkd`
-
-        systemctl restart systemd-networkd
 
 ### Gentoo
 
