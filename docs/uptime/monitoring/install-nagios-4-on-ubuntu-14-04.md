@@ -60,7 +60,7 @@ The latest stable version of Nagios 4 is not available in default repositories a
 
 1.  In your web browser, go to [the Nagios Core DIY download page](https://www.nagios.org/downloads/core-stay-informed/). If you prefer not to register for updates, click **Skip to download.**
 
-2.  Under **Nagios Core**, find the release that says "Latest stable release" under **Notes,** then copy the download link (e.g., `https://assets.nagios.com/downloads/nagioscore/releases/nagios-4.1.1.tar.gz`) to your clipboad.
+2.  Under **Nagios Core**, find the release that says "Latest stable release" under **Notes,** then copy the download link (e.g., `https://assets.nagios.com/downloads/nagioscore/releases/nagios-4.1.1.tar.gz`) to your clipboard.
 
 3.  Download and extract Nagios to your Linode using `wget` and `tar`, pasting the link from step 2:
 
