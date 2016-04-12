@@ -2,15 +2,15 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Install Nagios 4 on Ubuntu 14.04'
+description: 'Nagios is a widely used tool for monitoring systems and services.'
 keywords: 'nagios,ubuntu,monitoring,install nagios,nagios 4 ubuntu 14.04'
 alias: ['uptime/monitoring/monitor-services-with-nagios-4-on-ubuntu-14-04/']
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-published: ''
-modified: Monday, March 28th, 2016
+published: 'Tuesday, April 12th, 2016'
+modified: Tuesday, April 12th, 2016
 modified_by:
-  name: Linode
-title: 'Install Nagios 4 on Ubuntu 14.04'
+  name: Edward Angert
+title: 'Install Nagios 4 on Ubuntu 14.04 and Debian 8'
 contributor:
   name: Paulo Telles
   link: http://github.com/paulotfilho
@@ -28,7 +28,7 @@ A monitoring tool is a key application in a production server. Nagios is a popul
 
 1.  In order to run Nagios on your Linode, follow the configuration steps for Ubuntu 14.04 from our [Getting Started guide](/docs/getting-started/).
 
-2.  Install and configure a LAMP stack (Linux, Apache, MySQL and PHP stack). Follow the [LAMP on Ubuntu 14.04](docs/websites/lamp/lamp-on-ubuntu-14-04) guide for instructions.
+2.  Install and configure a LAMP stack (Linux, Apache, MySQL and PHP stack). Follow the [LAMP on Ubuntu 14.04](/docs/websites/lamp/lamp-on-ubuntu-14-04) guide for instructions.
 
 3.  Install Ubuntu updates:
 
@@ -68,7 +68,7 @@ The latest stable version of Nagios 4 is not available in Ubuntu's default repos
 
 5.  Move to the newly created directory:
 
-        cd nagios-4.1.1
+        cd nagios-4.*
 
 6.  Configure, compile and install Nagios:
 
@@ -122,14 +122,14 @@ Nagios Plugins allow you to monitor services like DHCP, FTP, HTTP and NTP. To us
 
 2.  Change to the newly created directory, then configure, compile, and install Plugins:
 
-        cd nagios-plugins-2.1.1
+        cd nagios-plugins-2.*
         ./configure --with-nagios-user=nagios --with-nagios-group=nagios --with-openssl
         make
         sudo make install
 
 ## Access the Nagios Web Interface
 
-1.  Before you can access the Nagios Web Interface, you need to start the Nagios service:
+1.  Before accessing the Nagios Web Interface, start the Nagios service:
 
         sudo service nagios start
 
