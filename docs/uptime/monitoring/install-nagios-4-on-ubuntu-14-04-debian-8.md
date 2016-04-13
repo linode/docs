@@ -3,7 +3,7 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'Nagios is a widely used tool for monitoring systems and services.'
-keywords: 'nagios,ubuntu,monitoring,install nagios,nagios 4 ubuntu 14.04'
+keywords: 'nagios,ubuntu,monitoring,install nagios,nagios 4 ubuntu 14.04,debian 8'
 alias: ['uptime/monitoring/monitor-services-with-nagios-4-on-ubuntu-14-04/']
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 published: 'Tuesday, April 12th, 2016'
@@ -26,11 +26,11 @@ A monitoring tool is a key application in a production server. Nagios is a popul
 
 ## Before You Begin
 
-1.  In order to run Nagios on your Linode, follow the configuration steps for Ubuntu 14.04 from our [Getting Started guide](/docs/getting-started/).
+1.  In order to run Nagios on your Linode, follow the configuration steps for Ubuntu 14.04 or Debian 8 from our [Getting Started guide](/docs/getting-started/).
 
-2.  Install and configure a LAMP stack (Linux, Apache, MySQL and PHP stack). Follow the [LAMP on Ubuntu 14.04](/docs/websites/lamp/lamp-on-ubuntu-14-04) guide for instructions.
+2.  Install and configure a LAMP stack (Linux, Apache, MySQL and PHP stack). Follow the [LAMP on Ubuntu 14.04](/docs/websites/lamp/lamp-on-ubuntu-14-04) or [LAMP on Debian 8](/docs/websites/lamp/lamp-on-debian-8-jessie) guide for instructions.
 
-3.  Install Ubuntu updates:
+3.  Install updates:
 
         sudo apt-get update && sudo apt-get upgrade
 
@@ -51,7 +51,7 @@ Create a user, `nagios`, and a distinct group, `nagcmd`. Add `nagios` and the Ap
 
 ### Build Nagios 4 from Source Code
 
-The latest stable version of Nagios 4 is not available in Ubuntu's default repositories as of this writing. To install Nagios, download and install it from the source code:
+The latest stable version of Nagios 4 is not available in Ubuntu or Debian's default repositories as of this writing. To install Nagios, download and install it from the source code:
 
 1.  Install dependencies:
 
