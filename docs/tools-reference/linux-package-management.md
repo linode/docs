@@ -26,17 +26,17 @@ Package management systems attempt to solve these problems, and are the tools th
 -   **Package downloading**: Operating system projects provide repositories of packages which allow users to download their packages from a single, trusted provider. When you download from a package manager, the software can be authenticated and will remain in the repository even if the original source becomes unreliable.
 -   **Dependency resolution**: Packages contain meta-data which provides information about what other packages are required by the package in question. This allows applications and their dependencies to be installed with one command, and for programs to rely on common shared libraries, reducing bulk and allowing the operating system to manage updates to the packages.
 -   **A standard binary package format**: Packages are prepared in a uniform way across the system in order to make installation easier. While some distributions share formats, there can be compatibility issues between similarly formatted packages for different operating systems.
--   **Common installation and configuration locations**: System developers often have conventions for how applications are configured and the layout of files in the `/etc/` and `/etc/init.d/` directories; by using packages, systems are able to enforce a single standard.
+-   **Common installation and configuration locations**: Linux distribution developers often have conventions for how applications are configured and the layout of files in the `/etc/` and `/etc/init.d/` directories; by using packages, distrubutions are able to enforce a single standard.
 -   **Additional system-related configuration and functionality**: Occasionally, operating system developers will develop patches and helper scripts for their software which get distributed in the packages. These modifications can have a significant impact on user experience.
 -   **Quality control**: Operating system developers use the packaging process to test and ensure that the software is stable and free of bugs that might affect product quality, and that the software doesn't cause the system to become unstable. The subjective judgments and community standards that guide packaging and package management guide the "feel" and "stability" of a given system.
 
-In general, we recommend that you install the versions of software available in your distribution's repository and packaged for your operating system. If packages for the application or software that you need to install aren't available, we recommend that you find packages for your operating system or package the software rather than installing it manually.
+In general, we recommend that you install the versions of software available in your distribution's repository and packaged for your operating system. If packages for the application or software that you need to install aren't available, we recommend that you find packages for your operating system, when available, before installing from source code.
 
 The remainder of this guide will cover how to use specific package management systems and how to compile and package software yourself.
 
 ## Debian and Ubuntu Package Management
 
-The Debian package management system, based on a tool called `dpkg` with the very popular `apt` system is a powerful, popular, and useful method of package management. In addition to Debian 5 (known as "Lenny") a number of other prominent distributions of GNU/Linux are derived from the Debian system, most notably the Ubuntu family of distributions.
+The Debian package management system, based on a tool called `dpkg` with the very popular `apt` system is a powerful, popular, and useful method of package management. In addition to Debian, a number of other prominent distributions of GNU/Linux are derived from the Debian system, most notably the Ubuntu family of distributions.
 
 As a result, these instructions are applicable for Debian and Ubuntu systems. While Debian and derived systems are not necessarily binary-compatible, .debs packaged for Debian are often compatible with Ubuntu (though this is not a supported workflow). 
 
@@ -44,21 +44,21 @@ As a result, these instructions are applicable for Debian and Ubuntu systems. Wh
 
 You may already be familiar with `apt-get`, a command which uses the advanced packaging tool to interact with the operating system's package system. The most relevant and useful commands are (to be run with root privileges):
 
--   `apt-get install [package-name(s)]` - Installs the package(s) specified, along with any dependencies
--   `apt-get remove [package-name(s)]` - Removes the package(s) specified, but does not remove dependencies
+-   `apt-get install package-name(s)` - Installs the package(s) specified, along with any dependencies
+-   `apt-get remove package-name(s)` - Removes the package(s) specified, but does not remove dependencies
 -   `apt-get autoremove` - Removes any *orphaned* dependencies, meaning those that remain installed but are no longer required
 -   `apt-get clean` - Removes downloaded package files (.deb) for software that is already installed
--   `apt-get purge [optional]` - Combines the functions of `remove` and `clean` for a specific package, as well as configuration files
+-   `apt-get purge package-name(s)` - Combines the functions of `remove` and `clean` for a specific package, as well as configuration files
 -   `apt-get update` - Reads the `/etc/apt/sources.list` file and updates the system's database of packages available for installation. Run this after changing `sources.list`
 -   `apt-get upgrade` - Upgrades all packages if there are updates available. Run this after running `apt-get update`
 
 While `apt-get` provides the most often used functionality, APT provides additional information that you may find useful in the `apt-cache` command.
 
--   `apt-cache search [package-name]` - If you know the name of a piece of software but `apt-get install` fails or points to the wrong software, this looks for other possible names
--   `apt-cache show [package-name]` - Shows dependency information, version numbers and a basic description of the package
--   `apt-cache depends [package-name]` - Lists the packages that the specified packages depends upon in a tree. These are the packages that will be installed with the `apt-get install` command
--   `apt-cache rdepends [package-name]` - Outputs a list of packages that that depend upon the specified package. This list can often be rather long, so it is best to pipe its output through a command like `less`
--   `apt-cache pkgnames` - Generates a list of the currently installed packages on your system. This list is often rather long, so it is best to pipe its output through a command like `less`
+-   `apt-cache search package-name` - If you know the name of a piece of software but `apt-get install` fails or points to the wrong software, this looks for other possible names
+-   `apt-cache show package-name` - Shows dependency information, version numbers and a basic description of the package
+-   `apt-cache depends package-name` - Lists the packages that the specified packages depends upon in a tree. These are the packages that will be installed with the `apt-get install` command
+-   `apt-cache rdepends package-name` - Outputs a list of packages that that depend upon the specified package. This list can often be rather long, so it is best to pipe its output through a command like `less`
+-   `apt-cache pkgnames` - Generates a list of the currently installed packages on your system. This list is often rather long, so it is best to pipe its output through a command like `less`, or direct the output to a text file.
 
 Combining most of these commands with `apt-cache show` can provide you with a lot of useful information about your system, the software that you might want to install, and the software that you have already installed. If you're overwhelmed by `apt-cache` check out the following resources for easy-to-read lists of available packages:
 
@@ -75,28 +75,28 @@ Aptitude is another front-end interface for APT. In addition to a graphical inte
 
 Aptitude also includes *safe upgrading*, meaning it doesn't remove existing packages, as well as *holding*, which prevents the system from upgrading specific packages. 
 
-### Introducing /etc/apt/sources.list
+### /etc/apt/sources.list
 
 The file `/etc/apt/sources.list` controls repositories from which APT constructs its database. This file contains lines in the following format:
 
-    deb [location-of-resources] [distribution] [component(s)]
+    deb location-of-resources distribution component(s)
 
 Here are some examples:
 
-    deb http://mirror.cc.columbia.edu/pub/linux/debian/debian/ lenny main contrib
-    deb http://emacs.orebokech.com lenny main
+    deb http://mirrors.linode.com/debian/ jessie main contrib
+    deb http://www.deb-multimedia.org jessie main non-free
 
-The first line specifies the Columbia University mirror for the the Lenny distribution (Debian 5.0, Stable Release 14 February 2009), as well as the main and contributed components. The next line specifies the emacs.orebokech.com repository for Lenny, which provides regularly updated packages for emacs-snapshot (versions of emacs23, built from the current CVS tree), and its main component.
+The first line specifies the Linode mirror for the the Debian 8 (code named Jessie) Linux distribution, as well as the main and contributed components. The next line specifies the deb-multimedia.org repository for Jessie, which provides some multimedia packages unavailable in the main repositories for licensing reasons, and its main and non-free components.
 
 In general, one does not want to add new entries to `sources.list` without a lot of scrutiny and diligence, as updating the package cache with additional repositories and running upgrades can sometimes result in the installation of broken packages, unmet dependencies, and system instability. In Debian systems, downgrading is often difficult.
 
-For Debian systems, the repository names can either refer to the distribution code name (version specific; e.g. lenny for current-stable, squeeze for testing, sid for unstable, etch for old-stable) or to a specific branch (e.g. oldstable, stable, testing, unstable). For more information about Debian versions and choosing a Debian version or branch, read the [Debian releases and branches page](http://www.us.debian.org/releases/).
+For Debian systems, the repository names can either refer to the distribution code name ( e.g. jessie for current-stable, stretch for testing, sid for unstable, wheezy for old-stable) or to a specific branch (e.g. oldstable, stable, testing, unstable). For more information about Debian versions and choosing a Debian version or branch, read the [Debian releases and branches page](http://www.us.debian.org/releases/).
 
 The component section of the line divides the repository based on how much support the developers of the operating system are able to offer for the contained packages (e.g. main vs. contrib), or if the software is considered "free-software" or simply freely-distributable (e.g. non-free).
 
 The layout of `sources.list` is a bit different in Ubuntu systems. The lines are in the same format but the names of the distributions and components are different:
 
--   Ubuntu versions have a different naming scheme. Version 8.10 is named "hardy" in `sources.list`, 9.04 is "jaunty," and 9.10 is "karmic."" These names follow an alphabetical pattern.
+-   Ubuntu versions have a different naming scheme. Version 14.04 is named "trusty" in `sources.list`, 15.10 is "wily," and 16.04 is "xenial." These names follow an alphabetical pattern.
 -   Ubuntu components are: "main" and "restricted" for supported free and non-free packages; "universe" and "multiverse" for unsupported free and non-free software.
 
 ### Using dpkg
@@ -108,7 +108,7 @@ The layout of `sources.list` is a bit different in Ubuntu systems. The lines are
 -   `dpkg --configure` - Runs a configuration interface to set a package up.
 -   `dpkg-reconfigure` - Runs a configuration interface on an already installed package.
 
-For more information about building your own packages, refer to the [Debian New Maintainers Guide](http://www.debian.org/doc/maint-guide/)
+For information about building your own packages, refer to the [Debian New Maintainers Guide](http://www.debian.org/doc/maint-guide/)
 
 ## Fedora and CentOS Package Management
 
