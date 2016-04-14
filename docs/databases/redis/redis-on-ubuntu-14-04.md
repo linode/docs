@@ -5,10 +5,10 @@ author:
 description: 'Deploy applications that depend on the high performance key-value store Redis.'
 keywords: 'redis ubuntu 14.04,redis trusty tahr,nosql,database,key-value store'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Monday, January 11th, 2016
+modified: Wednesday, April 13th, 2016
 modified_by:
-  name: Sergey Pariev
-published: 'Monday, January 11th, 2016'
+  name: Edward Angert
+published: ''
 title: 'Redis on Ubuntu 14.04 LTS (Trusty Tahr)'
 contributor:
   name: Sergey Pariev
@@ -26,38 +26,45 @@ Redis is an open source in-memory data structure store, with optional disk write
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  Update your system.
 
-		sudo apt-get update && sudo apt-get upgrade
+        sudo apt-get update && sudo apt-get upgrade
 
+4.  Install the `software-properties-common` package:
+
+        sudo apt-get install software-properties-common
 
 {: .note}
 >
 >This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
-
+>
+> To utilize the replication steps in the second half of this guide, you will need at least two Linodes. 
 
 ## Redis Installation
 
-Redis package in Ubuntu 14.04 repository is outdated and misses several security patches, so in this case it is better to use third-party PPA.
+The Redis package in Ubuntu 14.04 repository is outdated and misses several security patches, so in this case it we'll use a third-party PPA.
 
 1.  Add Redis PPA repository to install the latest version:
 
-		sudo add-apt-repository ppa:chris-lea/redis-server
+        sudo add-apt-repository ppa:chris-lea/redis-server
 
 2.  Update packages and install `redis-server` package:
 
-		sudo apt-get update
-		sudo apt-get install redis-server
+        sudo apt-get update
+        sudo apt-get install redis-server
 
-3.  Verify Redis is up by running `redis-cli` and executing `ping` command:
+3.  Verify Redis is up by running `redis-cli`:
 
-		redis-cli
-		127.0.0.1:6379> ping
-		PONG
+        redis-cli
 
-Enter ``exit`` or press **Ctrl-C** to exit from `redis-cli` prompt.
+4.  Your prompt will change to `127.0.0.1:6379>`. Run the command `ping`, which should return a `PONG`:
+
+        127.0.0.1:6379>ping
+        PONG
+
+Enter ``exit`` or press **Ctrl-C** to exit from the `redis-cli` prompt.
 
 
 ## Redis Configuration
@@ -69,38 +76,39 @@ Redis provides two options for disk persistence:
 * Point-in-time snapshots of the dataset, made at specified intervals (RDB)
 * Append only logs of all the write operations performed by the server (AOF).
 
-Each option has it's own pros and cons, which are described in great detail in Redis documentation. For most possible data safety it is advised to use both persistence methods.
+Each option has it's own pros and cons, which are described in great detail in the Redis documentation. For the most possible data safety it is advised to use both persistence methods.
 
-As the point-in-time snapshot persistence is enabled by default, the only thing you will need to do is to setup AOF persistence.
-For this, make sure that the following values are set for `appendonly` and `appendfsync` settings in `redis.conf`:
+As the point-in-time snapshot persistence is enabled by default, you only need to setup AOF persistence.
 
-{: .file-excerpt }
-/etc/redis/redis.conf
-:   ~~~
-    appendonly yes
-    appendfsync everysec
-    ~~~
+1.  Make sure that the following values are set for `appendonly` and `appendfsync` settings in `redis.conf`:
 
-After this, restart Redis with:
+    {: .file-excerpt }
+    /etc/redis/redis.conf
+    :   ~~~
+        appendonly yes
+        appendfsync everysec
+        ~~~
 
-    sudo service redis-server restart
+2.  Restart Redis with:
+
+        sudo service redis-server restart
 
 
 ### Basic System Tuning
 
 To improve Redis performance, make the following adjustment to the Linux system settings.
 
-Set the Linux kernel overcommit memory setting to 1. Run command:
+1.  Set the Linux kernel overcommit memory setting to 1:
 
-    sudo sysctl vm.overcommit_memory=1
+        sudo sysctl vm.overcommit_memory=1
 
-to change overcommit memory setting immediately. To make the change permanent, add line `vm.overcommit_memory = 1` to `/etc/sysctl.conf`:
+2.  This changes overcommit memory setting immediately. To make the change permanent, add  `vm.overcommit_memory = 1` to `/etc/sysctl.conf`:
 
-{: .file-excerpt }
-/etc/sysctl.conf
-:   ~~~
-    vm.overcommit_memory = 1
-    ~~~
+    {: .file-excerpt }
+    /etc/sysctl.conf
+    :   ~~~
+        vm.overcommit_memory = 1
+        ~~~
 
 ## Distributed Redis
 
@@ -108,7 +116,7 @@ Redis provides several options for setting up distributed data stores. The simpl
 
 The master/slave setup described above can be made highly available with *Redis Sentinel*. Sentinel will monitor both master and slave instances, and will perform automatic failover if master node is not working as expected. That means that one of the slave nodes will be elected master and all other slave nodes will be configured to use a new master.
 
-Starting from version 3.0, there is also a *Redis Cluster*, which is a data sharding solution with automatic management, handling failover and replication. With Redis Cluster you are able to automatically split your dataset among multiple nodes, which is useful when your dataset is larger than a single server RAM. It also gives you an ability to continue operations when a subset of the nodes are experiencing failures or are unable to communicate with the rest of the cluster.
+Starting from version 3.0, there is also a *Redis Cluster*, which is a data sharding solution with automatic management, handling failover and replication. With Redis Cluster you are able to automatically split your dataset among multiple nodes, which is useful when your dataset is larger than a single server's RAM. It also gives you an ability to continue operations when a subset of the nodes are experiencing failures or are unable to communicate with the rest of the cluster.
 
 The following steps will guide you through master/slave replication, with the slaves set to read-only.
 
@@ -117,16 +125,18 @@ The following steps will guide you through master/slave replication, with the sl
 
 ###  Prepare Two Linodes and Configure the Master Linode
 
-1.  Set up both Linodes with Redis instance using **Redis Installation** and **Redis Configuration** steps from this guide.
+For this section of the guide we will be using two Linodes, named `master` and `slave`.
 
-2.  Configure [Private IP Addresses](/docs/networking/remote-access#adding-private-ip-addresses) on both Linodes, and make sure you can access master Linode's private IP address from slave. You will use only private addresses for replication traffic for security reasons.
+1.  Set up both Linodes with Redis instance using **Redis Installation** and **Redis Configuration** steps from this guide. You can also copy your initially configured disk to another Linode using the [Clone](/docs/migrate-to-linode/disk-images/disk-images-and-configuration-profiles#cloning-disks-and-configuration-profiles) option in the Linode Manager.
 
-3.  Configure master Redis instance to listen on private IP address by updating `bind` configuration option in `redis.conf`
+2.  Configure [Private IP Addresses](/docs/networking/remote-access#adding-private-ip-addresses) on both Linodes, and make sure you can access the `master` Linode's private IP address from `slave`. You will use only private addresses for replication traffic for security reasons.
+
+3.  Configure the `master` Redis instance to listen on private IP address by updating the `bind` configuration option in `redis.conf`. Replace `192.0.2.100` with the `master` Linode's private IP address
 
     {: .file-excerpt }
     /etc/redis/redis.conf
     :   ~~~
-        bind 127.0.0.1 <master_private_ip>
+        bind 127.0.0.1 192.0.2.100
         ~~~
 
         Restart `redis-server` to apply the changes:
@@ -135,21 +145,21 @@ The following steps will guide you through master/slave replication, with the sl
 
 ### Configure the Slave Linode
 
-Configure slave instance by adding `slaveof` directive into `redis.conf` to setup the replication:
+1.  Configure slave instance by adding `slaveof` directive into `redis.conf` to setup the replication. Again replace `192.0.2.100` with the `master` Linode's private IP address:
 
-{: .file-excerpt }
-/etc/redis/redis.conf
-:   ~~~
-    slaveof <master_private_ip> 6379
-    ~~~
+    {: .file-excerpt }
+    /etc/redis/redis.conf
+    :   ~~~
+        slaveof 192.0.2.100 6379
+        ~~~
 
-The `slaveof` directive takes two arguments: the first is the IP address of the master node; the second is the Redis port specified in the master's configuration.
+    The `slaveof` directive takes two arguments: the first is the IP address of the master node; the second is the Redis port specified in the master's configuration.
 
-Restart the slave Redis instance:
+2.  Restart the slave Redis instance:
 
-    sudo service redis-server restart
+        sudo service redis-server restart
 
-After restart slave instance will attempt to synchronize its data set to the master and then propagate the changes.
+After restart the `slave` Linode will attempt to synchronize its data set to `master` and then propagate the changes.
 
 ### Confirm Replication
 
@@ -159,8 +169,8 @@ Test that the replication works. On master Linode, run `redis-cli` and execute c
     127.0.0.1:6379> set 'a' 1
     OK
 
-Enter ``exit`` or press **Ctrl-C** to exit from `redis-cli` prompt.
-Then run `redis-cli` on slave Linode, and execute `get 'a'` which should return the same value as on master:
+Type `exit` or press **Ctrl-C** to exit from `redis-cli` prompt.
+Then run `redis-cli` on `slave`, and execute `get 'a'` which should return the same value as on `master`:
 
 	redis-cli
 	127.0.0.1:6379> get 'a'
@@ -170,4 +180,10 @@ Your master/slave replication setup is working properly.
 
 ## Securing Redis Installation
 
-Since Redis is designed to work in trusted environments and with trusted clients, you should take care of controlling access to the Redis instance. The preferred method for doing this is to set up firewall using [iptables](/docs/security/firewalls/iptables) and possibly some sort of encryption such as an SSH tunnel to ensure that traffic is secure. Also, to make sure that nobody from outside can access your Redis instance, it is advised to only listen for connections on localhost interface or on your Linode's private IP.
+Since Redis is designed to work in trusted environments and with trusted clients, you should take care of controlling access to the Redis instance. Security methods include:
+
+- Setting up a firewall using [iptables](/docs/security/firewalls/iptables).
+
+- Encrypting Redis traffic, using an SSH tunnel or the methods described in their [Security](http://redis.io/topics/security) documentation.
+
+Also, to make sure that nobody from outside can access your Redis instance, it is advised to only listen for connections on the localhost interface and/or your Linode's private IP.
