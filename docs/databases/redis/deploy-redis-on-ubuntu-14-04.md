@@ -65,7 +65,7 @@ The Redis package in the Ubuntu 14.04 repository is outdated and lacks several s
         127.0.0.1:6379>ping
         PONG
 
-Enter ``exit`` or press **Ctrl-C** to exit from the `redis-cli` prompt.
+Enter `exit` or press **Ctrl-C** to exit from the `redis-cli` prompt.
 
 
 ## Configure Redis
@@ -113,9 +113,9 @@ To improve Redis performance, make the following adjustment to the Linux system 
 
 ## Distributed Redis
 
-Redis provides several options for setting up distributed data stores. The simplest one, covered below, is the *master/slave replication*, which allows you to have a real-time copy (or multiple copies) of master server data. It will also allow you to distribute reads among groups of slave copies, as long as all write operations are handled by the master server.
+Redis provides several options for setting up distributed data stores. The simplest one, covered below, is the *master/slave replication*, which creates a real-time copy (or multiple copies) of master/server data. It will also allow distribution of reads among groups of slave copies as long as all write operations are handled by the master server.
 
-The master/slave setup described above can be made highly available with *Redis Sentinel*. Sentinel will monitor both master and slave instances, and will perform automatic failover if the master node is not working as expected. That means that one of the slave nodes will be elected master and all other slave nodes will be configured to use a new master.
+The master/slave setup described above can be made highly available with *Redis Sentinel*. Sentinel can be configured to monitor both master and slave instances, and will perform automatic failover if the master node is not working as expected. That means that one of the slave nodes will be elected master and all other slave nodes will be configured to use a new master.
 
 Starting with Redis version 3.0, *Redis Cluster*, a data-sharding solution with automatic management, handles failover and replication. With Redis Cluster you are able to automatically split your dataset among multiple nodes, which is useful when your dataset is larger than a single server's RAM. It also gives you the ability to continue operations when a subset of the nodes are experiencing failures or are unable to communicate with the rest of the cluster.
 
