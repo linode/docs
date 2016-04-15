@@ -1,15 +1,15 @@
 ---
 author:
-  name: Sergey Pariev
-  email: spariev@gmail.com
+  name: Linode Community
+  email: docs@linode.com
 description: 'Deploy Redis on Ubuntu 14.04 LTS. This Tutorial Guides You Through Installation and Best Practices of Redis, an Open-Source, In-Line Memory Data-Structure Store.'
 keywords: 'redis,redis ubuntu 14.04,nosql,key-value database,data structure,redis cluster'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['databases/redis/redis-on-ubuntu-14-04/']
-modified: Wednesday, April 13th, 2016
+alias:
+modified: Friday, April 15th, 2016
 modified_by:
   name: Edward Angert
-published: ''
+published: Monday, April 18, 2016
 title: 'Deploy Redis on Ubuntu 14.04 LTS'
 contributor:
   name: Sergey Pariev
@@ -20,6 +20,9 @@ external_resources:
  - '[Redis Persistence](http://redis.io/topics/persistence)'
  - '[Redis Security](http://redis.io/security)'
 ---
+
+*This is a Linode Community guide. [Write for us](/docs/linode-writers-guide/) and earn $250 per published guide.*
+<hr>
 
 Redis is an open-source, in-memory, data-structure store with optional disk writes for persistence, which can be used as key-value database, cache and message broker. Redis features built-in transactions, replication, and support for a variety of data structures such as strings, hashes, lists, sets and others. Redis can be made highly available with Redis Sentinel and supports automatic partitioning with Redis Cluster. This document provides both instructions for deploying the Redis server and an overview of best practices for maintaining Redis instances.
 
@@ -185,6 +188,6 @@ Since Redis is designed to work in trusted environments and with trusted clients
 
 - Setting up a firewall using [iptables](/docs/security/firewalls/iptables).
 
-- Encrypting Redis traffic, using an SSH tunnel or the methods described in their [Security](http://redis.io/topics/security) documentation.
+- Encrypting Redis traffic, using an SSH tunnel or the methods described in the [Redis Security documentation](http://redis.io/topics/security).
 
-Also, to make sure that nobody from outside can access your Redis instance, we advise that you only listen for connections on the localhost interface and/or your Linode's private IP.
+Additionally, to ensure that no outside traffic accesses your Redis instance, we suggest that you only listen for connections on the localhost interface or your Linode's private IP.
