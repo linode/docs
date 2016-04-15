@@ -12,7 +12,7 @@ published: 'Friday, April 8, 2016'
 title: Update and Secure Drupal 8 on Ubuntu or Debian
 ---
 
-Drupal 8 is the lastest version of the popular [Drupal](https://www.drupal.org/) content management system. While an incremental update feature is planned for version 8.1, manual updates are currently required. This guide demonstrates how to manually install an incremental Drupal 8 update on your Linode. This guide assumes you have a functional Drupal 8 installation running on Apache and Debian or Ubuntu.
+Drupal 8 is the lastest version of the popular [Drupal](https://www.drupal.org/) content management system. While an automatic incremental update feature is planned for version 8.1, manual updates are currently required. This guide demonstrates how to manually install an incremental Drupal 8 update on your Linode. This guide assumes you have a functional Drupal 8 installation running on Apache and Debian or Ubuntu.
 
 ## Before You Begin
 
@@ -23,7 +23,7 @@ Drupal 8 is the lastest version of the popular [Drupal](https://www.drupal.org/)
     -   [Install a LAMP stack](/docs/websites/lamp/lamp-on-ubuntu-14-04) 
     -   [Install and Configure Drupal 8](/docs/websites/cms/install-and-configure-drupal-8)
 
-2.  Confirm the name of your site's Document Root folder by running the following command on your Linode: ``ls /var/www/html``
+2.  Confirm the name of your site's Document Root folder by running the following command on your Linode: `ls /var/www/html`
 
 3.  Update your system:
 
@@ -33,7 +33,7 @@ Drupal 8 is the lastest version of the popular [Drupal](https://www.drupal.org/)
 >
 >  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account, harden SSH access, remove unnecessary network services and create firewall rules for your web server; you may need to make addional firewall exceptions for your specific application.
 >
->Replace each instance of ``example.com`` and ``user`` with the names appropriate to your site, and `203.0.113.52` with your Liode's IP address or domain name.
+>Replace each instance of `example.com` and `user` with the names appropriate to your site, and `203.0.113.52` with your Liode's IP address or domain name.
 
 ## Create Backups
 
@@ -89,12 +89,12 @@ Backup existing files and move the archive into the backups directory. This proc
 3.  From a browser on your local machine, navigate to `example.com/update.php`.
 
     {: .note}
-    >If update.php does not load or returns a 403 Forbidden error, you can try to change the ownership and permissions of the newly expanded files:
+    >If `update.php` does not load or returns a 403 Forbidden error, you can try to change the ownership and permissions of the newly expanded files:
     >
     >~~~
-    >chgrp www-data /var/www/html/examplesite/public_html/sites/default/files
-    >chmod 775 /var/www/html/examplesite/public_html/sites/default/files
-    >chmod 757 /var/www/html/examplesite/public_html/sites/default/settings.php
+    >chgrp www-data /var/www/html/example.com/public_html/sites/default/files
+    >chmod 775 /var/www/html/example.com/public_html/sites/default/files
+    >chmod 757 /var/www/html/example.com/public_html/sites/default/settings.php
     >~~~
 
 4.  Follow the prompts to continue the update
@@ -105,7 +105,7 @@ Backup existing files and move the archive into the backups directory. This proc
 
 7.  Click **Reports** in the Admin Toolbar, then **Status report** 
 
-8.  From your Linode, open ``/var/www/html/examplesite/public_html/sites/default/settings.php`` and confirm that ``$update_free_access = FALSE``
+8.  From your Linode, open `/var/www/html/example.com/public_html/sites/default/settings.php` and confirm that `$update_free_access = FALSE`
 
 9.  If everything looks good, take the site out of maintenance mode as described above in *Put site into Maintenance Mode* and uncheck the box next to "Put site into maintenance mode"
 
@@ -114,7 +114,7 @@ Backup existing files and move the archive into the backups directory. This proc
 1.  Increase password security by adding the following to `services.yml`:
 
     {: .file-excerpt}
-    /var/www/html/examplesite/public_html/sites/default/services.yml
+    /var/www/html/example.com/public_html/sites/default/services.yml
     : ~~~ yml
       # Increase the number of password hash iterations. Minimum = 7; Maximum = 30; Default = 16
         services:
@@ -126,9 +126,9 @@ Backup existing files and move the archive into the backups directory. This proc
       {: .note}
       > You may need to add write permission to this file before you can edit it:
       >
-      >     chmod u+w /var/www/html/afornuto-1.fornuto.com/public_html/sites/default/services.yml
+      >     chmod u+w /var/www/html/example.com/public_html/sites/default/services.yml
 
-2. Consider installing additional security modules from ``https://www.drupal.org/project/project_module``:
+2. Consider installing additional security modules from `https://www.drupal.org/project/project_module`:
     * [Secure Login](https://www.drupal.org/project/securelogin) enforces secure authenticated session cookies
     * [Password Policy](https://www.drupal.org/project/password_policy): Define a user password policy
     * [Security Review](https://www.drupal.org/project/security_review): Automated security testing
