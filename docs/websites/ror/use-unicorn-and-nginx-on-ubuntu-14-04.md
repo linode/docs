@@ -17,6 +17,9 @@ external_resources:
  - '[Ruby on Rails](http://rubyonrails.org/)'
 ---
 
+*This is a Linode Community guide. Write for us and earn $250 per published guide.*
+<hr>
+
 Ruby on Rails is a popular web-application framework that allows developers to create dynamic web applications. This guide describes how to deploy Rails applications on servers using Unicorn and nginx on Ubuntu 14.04.
 
 Unicorn is an HTTP server, just like Passenger or Puma. Since Unicorn cannot be accessed by users directly we will be using nginx as the reverse proxy that will buffer requests and response between users and Rails application.
