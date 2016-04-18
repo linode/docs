@@ -2,18 +2,18 @@
 author:
   name: Alex Fornuto
   email: afornuto@linode.com
-description: Our guide to using the Linode backup service.
-keywords: 'backup,linode platform,linode backup service,enable a backup,manage a backup,schedule a backup,disable a backup,restore from a backup,boot from a backup'
+description: Use the Linode Backup Service to protect and secure your data.
+keywords: 'backup service,linode platform,linode backup service'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['backup-service/']
 modified: 'Monday, October 26th, 2015'
 modified_by:
   name: Linode
 published: 'Wednesday, March 14th, 2012'
-title: Linode Backup Service
+title: Use the Linode Backup Service to Protect and Secure Your Data
 ---
 
-The *Linode Backup Service* is a subscription service that automatically performs daily and weekly backups of your Linode. It's affordable, easy to use and provides peace of mind. This guide explains how to enable and schedule a backup, make a manual backup, restore from backup, and disable the Backup Service.
+The *Linode Backup Service* is a subscription service that automatically performs daily and weekly backups of your Linode. It's affordable, easy to use and provides peace of mind. This guide explains several backup functions including enabling, scheduling, restoring, disabling and making a manual backup. 
 
 ##Get Started
 
@@ -55,7 +55,7 @@ You'll manage your backups with a simple web interface in the Linode Manager. Th
 
 ##How Linode Backups Work
 
-Backups are stored on a separate systems in the same datacenter as your Linode. The space required to store the backups is *not* subtracted from your storage space. You can store four backups of your Linode, three of which are automatically generated and rotated:
+Backups are stored on a separate system in the same datacenter as your Linode. The space required to store the backups is *not* subtracted from your storage space. You can store four backups of your Linode, three of which are automatically generated and rotated:
 
 -   **Daily backup:** Automatically initiated daily within the backup window you select. Less than 24 hours old.
 -   **Current week's backup:** Automatically initiated weekly within the backup window, on the day you select. Less than 7 days old.
@@ -90,7 +90,7 @@ You can make a manual backup of your Linode by taking a *snapshot*. Here's how:
 
 4.  A warning appears asking if you would like to overwrite the previous snapsnot. Click **OK**.
 
-The Linode Backup Service initiates the manual snapshot. Be patient. Creating the manual snapshot can take several minutes depending on the size of your Linode and the amount of data you have stored on it. Other Linode Manager jobs for this Linode will not run until the snapshot job has been completed.
+The Linode Backup Service initiates the manual snapshot. Be patient. Creating the manual snapshot can take several minutes, depending on the size of your Linode and the amount of data you have stored on it. Other Linode Manager jobs for this Linode will not run until the snapshot job has been completed.
 
 ##Restore from a Backup
 
