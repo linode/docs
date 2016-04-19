@@ -149,7 +149,7 @@ Redis provides several options for setting up distributed data stores. The simpl
 
 The master/slave setup described above can be made highly available with *Redis Sentinel*. Sentinel can be configured to monitor both master and slave instances, and will perform automatic failover if the master node is not working as expected. That means that one of the slave nodes will be elected master and all other slave nodes will be configured to use a new master.
 
-Starting with Redis version 3.0, *Redis Cluster*, a data-sharding solution with automatic management, handles failover and replication. With Redis Cluster you are able to automatically split your dataset among multiple nodes, which is useful when your dataset is larger than a single server's RAM. It also gives you the ability to continue operations when a subset of the nodes are experiencing failures or are unable to communicate with the rest of the cluster.
+Starting with Redis version 3.0, you can use *Redis Cluster* - a data sharding solution, that automatically manages replication and failover. With Redis Cluster you are able to automatically split your dataset among multiple nodes, which is useful when your dataset is larger than a single server's RAM. It also gives you the ability to continue operations when a subset of the nodes are experiencing failures or are unable to communicate with the rest of the cluster.
 
 The following steps will guide you through master/slave replication, with the slaves set to read-only.
 
