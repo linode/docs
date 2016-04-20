@@ -59,7 +59,7 @@ Add the Redis PPA repository to install the latest version:
 
 ### Debian
 
-[Dotdeb](https://www.dotdeb.org) is a popular third party repository for Debian users looking for newer versions of the LAMP stack and related software than that which Debian provides.
+[Dotdeb](https://www.dotdeb.org) is a popular third party repository for Debian users looking for newer versions of the LAMP stack and related software than what's provided by Debian.
 
 1.  Review the [list of mirrors](https://www.dotdeb.org/mirrors/) Dotdeb provides and select the one closest to your Linode.
 
@@ -78,7 +78,7 @@ Add the Redis PPA repository to install the latest version:
         sudo apt-key add dotdeb.gpg
 
 
-###Update and Install
+### Update and Install
 
 Update packages and install `redis-server` package:
 
