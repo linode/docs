@@ -81,9 +81,24 @@ Here's how to add a new domain zone:
     Alternatively, to keep the domain zone empty and prevent the DNS Manager from creating DNS records, select **No, I want the zone empty**.
 5.  Click **Add a Master Zone**. The webpage shown below then appears, with your domain zone information.
 
-     If you want to add a *slave zone* instead of a master zone, click the **I wanted a slave zone** link to the lower right.
+6.  If you want to add a *slave zone* instead of a master zone, click the **I wanted a slave zone** link to the lower right.
 
-    [![This page lets you add specific DNS records.](/docs/assets/1121-dns9.png)](/docs/assets/1121-dns9.png)
+    {: .note}
+    > In order for Linode's DNS servers to function as slaves, your DNS master server must notify and allow AXFR requests to and from the follow IP addresses:
+    >
+    >     69.164.199.240
+    >     69.164.199.241
+    >     69.164.199.242
+    >     69.93.127.10
+    >     65.19.178.10
+    >     75.127.96.10
+    >     207.192.70.10
+    >     109.74.194.10
+
+If you selected the option to have the DNS Manager insert basic DNS records, those records will be visible, as shown above. If you elected to keep the zone empty, you can start adding DNS records now. Skip to the [Adding DNS Records](#adding-1) section for instructions.
+
+[![This page lets you add specific DNS records.](/docs/assets/1121-dns9.png)](/docs/assets/1121-dns9.png)
+
 
 If you selected the option to have the DNS Manager insert basic DNS records, those records will be visible, as shown above. If you elected to keep the zone empty, you can start adding DNS records now.
 
@@ -101,7 +116,7 @@ When you first create a domain zone, you'll need to add some DNS records. The DN
 	>
 	> The exact form fields will vary depending on the type of DNS record you select.
 
-    [This page allows you to create a new A/AAAA record.](/docs/assets/1122-dns10.png)
+    ![This page allows you to create a new A/AAAA record.](/docs/assets/1122-dns10.png)
 
 3.  Enter a hostname in the **Hostname** field.
 4.  Enter the IP address of your server in the **IP Address** field. For instructions, see [Finding the IP Address](/docs/getting-started#finding-the-ip-address).
