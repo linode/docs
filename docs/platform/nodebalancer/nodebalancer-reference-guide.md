@@ -120,6 +120,9 @@ Three different Health Check Type exist:
 
 NodeBalancers work over the private network. Backend nodes must have a private IP configured via [static networking](/docs/networking/configuring-static-ip-interfaces).
 
+{: .note}
+> If you choose to restrict local traffic on your back-end Linodes using a firewall, be sure to allow traffic from `192.168.255.0/24`. While the public IP address of a NodeBalancer is persistent, the private IP address **will** change, so allowing a single IP address will not work long term.
+
 Once you have established a basic configuration, you will be asked to set up "Nodes". Nodes are combinations of addresses and ports that you wish to balance.
 
 -   **Label** - This option allows you to label the Node. You can specify any value here.
