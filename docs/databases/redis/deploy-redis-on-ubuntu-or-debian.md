@@ -5,11 +5,10 @@ author:
 description: 'Deploy Redis on Ubuntu 14.04 LTS, Ubuntu 16.04 LTS, or Debian 8. This Tutorial Guides You Through Installation and Best Practices of Redis, an Open-Source, In-Line Memory Data-Structure Store.'
 keywords: 'redis,redis ubuntu 14.04,redis server,redis ubuntu 16.04,debian 8,redis cluster'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias:
 modified: Wednesday, April 20th, 2016
 modified_by:
   name: Edward Angert
-published: Thursday, April 21, 2016
+published: Wednesday, April 20th, 2016
 title: 'Deploy Redis on Ubuntu or Debian 8'
 contributor:
   name: Sergey Pariev
