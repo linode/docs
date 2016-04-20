@@ -146,7 +146,7 @@ The Linode Manager allows you to add private IP addresses for fast and secure co
 	[![Adding Private IP addresses](/docs/assets/1696-remote_access_privateip.png)](/docs/assets/1696-remote_access_privateip.png)
 
 6.  The Linode Manager assigns a private IP address to your Linode.
-7.  Configure static networking. See the [Linux Static IP Configuration](/docs/networking/configuring-static-ip-interfaces) guide for instructions.
+7.  Make sure [Network Helper](/docs/platform/network-helper) is enabled on your configuration profile. Otherwise, configure static networking. See the [Linux Static IP Configuration](/docs/networking/configuring-static-ip-interfaces) guide for instructions.
 
 If you'd like to add more than one private IP address to your Linode, please [contact support](/docs/support).
 
