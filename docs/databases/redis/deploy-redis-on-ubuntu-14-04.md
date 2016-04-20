@@ -2,15 +2,15 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Deploy Redis on Ubuntu 14.04 LTS. This Tutorial Guides You Through Installation and Best Practices of Redis, an Open-Source, In-Line Memory Data-Structure Store.'
-keywords: 'redis,redis ubuntu 14.04,debian 8,nosql,key-value database,data structure,redis cluster'
+description: 'Deploy Redis on Ubuntu 14.04 LTS, Ubuntu 16.04 LTS, or Debian 8. This Tutorial Guides You Through Installation and Best Practices of Redis, an Open-Source, In-Line Memory Data-Structure Store.'
+keywords: 'redis,redis ubuntu 14.04,redis server,ubuntu 16.04,LTS,debian 8,nosql,key-value database,data structure,redis cluster'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias:
-modified: Friday, April 15th, 2016
+modified: Wednesday, April 20th, 2016
 modified_by:
   name: Edward Angert
-published: Monday, April 18, 2016
-title: 'Deploy Redis on Ubuntu 14.04 LTS or Debian 8'
+published: Thursday, April 21, 2016
+title: 'Deploy Redis on Ubuntu 14.04 LTS, Ubuntu 16.04 LTS, or Debian 8'
 contributor:
   name: Sergey Pariev
   link: https://twitter.com/spariev
@@ -52,18 +52,14 @@ Redis is an open-source, in-memory, data-structure store with optional disk writ
 
 The Redis package in the Ubuntu 14.04 repository is outdated and lacks several security patches; consequently, we'll use a third-party PPA for installation.
 
-1.  Add the Redis PPA repository to install the latest version:
+Add the Redis PPA repository to install the latest version:
 
-        sudo add-apt-repository ppa:chris-lea/redis-server
+    sudo add-apt-repository ppa:chris-lea/redis-server
 
-2.  Update packages and install `redis-server` package:
-
-        sudo apt-get update
-        sudo apt-get install redis-server
 
 ### Debian
 
-[Dotdeb](https://www.dotdeb.org) is a popular third party repository for Debian users looking for newer versions of the LAMP stack and it's related softwares than Debian provides.
+[Dotdeb](https://www.dotdeb.org) is a popular third party repository for Debian users looking for newer versions of the LAMP stack and related software than that which Debian provides.
 
 1.  Review the [list of mirrors](https://www.dotdeb.org/mirrors/) Dotdeb provides and select the one closest to your Linode.
 
@@ -76,26 +72,29 @@ The Redis package in the Ubuntu 14.04 repository is outdated and lacks several s
         deb-src http://ftp.utexas.edu/dotdeb/ stable all
         ~~~
 
-3.  Download and install the GPG key, as documented [here](https://www.dotdeb.org/instructions/):
+3.  Download and install the GPG key, as documented in the [Dotdeb instructions](https://www.dotdeb.org/instructions/):
 
         wget https://www.dotdeb.org/dotdeb.gpg
         sudo apt-key add dotdeb.gpg
 
-4.  Update packages and install `redis-server` package:
 
-        sudo apt-get update
-        sudo apt-get install redis-server
+###Update and Install
+
+Update packages and install `redis-server` package:
+
+    sudo apt-get update
+    sudo apt-get install redis-server
 
 ### Verify the Installation
 
-3.  Verify Redis is up by running `redis-cli`:
+Verify Redis is up by running `redis-cli`:
 
-        redis-cli
+    redis-cli
 
-4.  Your prompt will change to `127.0.0.1:6379>`. Run the command `ping`, which should return a `PONG`:
+Your prompt will change to `127.0.0.1:6379>`. Run the command `ping`, which should return a `PONG`:
 
-        127.0.0.1:6379>ping
-        PONG
+    127.0.0.1:6379>ping
+    PONG
 
 Enter `exit` or press **Ctrl-C** to exit from the `redis-cli` prompt.
 
