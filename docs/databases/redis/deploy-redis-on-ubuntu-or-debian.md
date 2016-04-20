@@ -10,7 +10,7 @@ modified: Wednesday, April 20th, 2016
 modified_by:
   name: Edward Angert
 published: Thursday, April 21, 2016
-title: 'Deploy Redis on Ubuntu 14.04 LTS, Ubuntu 16.04 LTS, or Debian 8'
+title: 'Deploy Redis on Ubuntu or Debian 8'
 contributor:
   name: Sergey Pariev
   link: https://twitter.com/spariev
@@ -50,7 +50,7 @@ Redis is an open-source, in-memory, data-structure store with optional disk writ
 
 ### Ubuntu
 
-The Redis package in the Ubuntu 14.04 repository is outdated and lacks several security patches; consequently, we'll use a third-party PPA for installation.
+The Redis package in the Ubuntu repositories is outdated and lacks several security patches; consequently, we'll use a third-party PPA for installation.
 
 Add the Redis PPA repository to install the latest version:
 
@@ -59,7 +59,7 @@ Add the Redis PPA repository to install the latest version:
 
 ### Debian
 
-[Dotdeb](https://www.dotdeb.org) is a popular third party repository for Debian users looking for newer versions of the LAMP stack and related software than that which Debian provides.
+[Dotdeb](https://www.dotdeb.org) is a popular third party repository for Debian users looking for newer versions of the LAMP stack and related software than what's provided by Debian.
 
 1.  Review the [list of mirrors](https://www.dotdeb.org/mirrors/) Dotdeb provides and select the one closest to your Linode.
 
@@ -78,7 +78,7 @@ Add the Redis PPA repository to install the latest version:
         sudo apt-key add dotdeb.gpg
 
 
-###Update and Install
+### Update and Install
 
 Update packages and install `redis-server` package:
 
