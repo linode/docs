@@ -6,9 +6,6 @@ description: 'Managing software and other content with version control systems.'
 keywords: 'version control,VCS,git,cvs,bazaar,svn'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['linux-tools/version-control/']
-modified: Tuesday, April 19th, 2011
-modified_by:
-  name: Linode
 published: 'Thursday, July 16th, 2009'
 title: Development
 ---

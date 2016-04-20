@@ -1,11 +1,11 @@
 ---
 author:
-  name: Linode
+  name: Chris Walsh
   email: docs@linode.com
 description: 'A common use case for a VPN tunnel is to access the internet from behind it to evade censorship or geolocation and protect your connection from untrusted internet service providers, WiFi hotspots, and sites and services you connect to.'
 keywords: 'openvpn,vpn,vpn tunnel,openssl'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: 'Friday, December 11th, 2015'
+modified: 'Monday, January 26th, 2016'
 modified_by:
   name: Linode
 published: 'Wednesday, December 9th, 2015'
@@ -14,7 +14,7 @@ external_resources:
  - '[Official OpenVPN Documentation](https://openvpn.net/index.php/open-source/documentation/howto.html)'
 ---
 
-This gude will show you how to configure an OpenVPN server to forward all traffic it receives out to the interent, then route the responses back appropriately to client devices.
+This guide will show you how to configure an OpenVPN server to forward all traffic it receives out to the Internet, then route the responses back appropriately to client devices.
 
 A common use case for a VPN tunnel is to access the internet from behind it to evade censorship or geolocation, while shielding your computer's web traffic to internet service providers and untrusted WiFi or cellular hotspots.
 
@@ -131,8 +131,8 @@ Since now the server should forward traffic out to the internet from clients, ac
         # Log any packets which don't fit the rules above...
         # (optional but useful)
         -A INPUT -m limit --limit 3/min -j LOG --log-prefix "iptables_INPUT_denied: " --log-level 4
-        -A INPUT -m limit --limit 3/min -j LOG --log-prefix "iptables_FORWARD_denied: " --log-level 4
-        -A INPUT -m limit --limit 3/min -j LOG --log-prefix "iptables_OUTPUT_denied: " --log-level 4
+        -A FORWARD -m limit --limit 3/min -j LOG --log-prefix "iptables_FORWARD_denied: " --log-level 4
+        -A OUTPUT -m limit --limit 3/min -j LOG --log-prefix "iptables_OUTPUT_denied: " --log-level 4
 
         # then reject them.
         -A INPUT -j REJECT

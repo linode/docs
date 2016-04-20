@@ -3,33 +3,46 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Computer networks frequently use DHCP to assign IP addresses, routing and DNS information to systems which join the network. Additional IPs can be assigned to virtual network interfaces for a fully static IP address configuration, including multiple static addresses.'
-keywords: 'multiple ip addresses,linux static ip,DHCP,change ip address,network configuration'
+keywords: 'multiple ip addresses,linux static ip,DHCP,change ip address,network configuration,dns,gateway,routing'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['networking/configuring-static-ip-interfaces/']
-modified: Tuesday, December 8th, 2015
+modified: Wednesday, February 24th, 2016
 modified_by:
   name: Linode
 published: 'Thursday, July 20th, 2014'
 title: Linux Static IP Configuration
 ---
 
-Computer networks, including Linode's, frequently use [DHCP](https://en.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol) to provide IP addresses, routing and DNS information to systems which join the network. DHCP can only assign one IP address per DHCP lease request.
+Network configurations are generally assigned to a networked device in one of two methods, either by [DHCP](https://en.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol) or static assignments. These terms (and others) are often used when discussing IP addresses, but along with IPs, a basic network interface configuration usually needs DNS resolvers and routing as well.
 
-Additional IP addresses can be assigned using either [Network Helper](/docs/platform/network-helper) to automatically create a static network, or manual configuration by following this guide. Be aware that errors in network configurations may disconnect SSH sessions, so it is advised that you use the [Linode Shell (LISH)](/docs/networking/using-the-linode-shell-lish) when making such changes.
+Upon a Linode's creation, an IPv4 address is selected from a pool of available addresses from the datacenter your Linode is hosted in. Our [Network Helper](https://www.linode.com/docs/platform/network-helper) is *enabled* by default for new Linodes, meaning that when you deploy a Linux distribution to your Linode and boot it, the host system detects which distro was selected and modifies the [network configuration files](/docs/platform/network-helper#what-files-are-affected) in the disk image to statically configure the Linode's IPv4 addresses, routing and DNS. Network Helper does not work with IPv6 so v6 addresses are assigned via SLAAC during deployment.
+
+If Network Helper is *disabled* (or if your Linode was created before Network Helper became default), a Linode will be assigned its IPv4 network configuration by DHCP from the datacenter's networking hardware. One limitation of DHCP is that it can only assign one IP address per DHCP lease request. If you want additonal IPs for your Linode, static addressing must be used.
+
+Due to the limited availablilty of IPv4 addresses, additional v4 addresses for your Linode must be requested by [contacting support](/docs/support) with a technical justification. Once approved, they can be added through the Remote Access tab of the Linode Manager and [additional IPv6 addresses](/docs/networking/native-ipv6-networking#additional-ipv6-addresses) are also available by submitting a support ticket.
+
+An alternative to using the Linode Manager for static addressing is to manually configure within your Linux distribution, and it's this method which will be the focus of this guide. **Be aware that errors in network configurations can disconnect SSH sessions**, so it is advised that you use the [Linode Shell (Lish)](/docs/networking/using-the-linode-shell-lish) when making the changes below.
 
 
 ## General Network Configuration
 
-You'll first need some information from the [Linode Manager](https://manager.linode.com/). Log in and go to the **Remote Access** tab. There you'll find your Linode's **IPv4 and IPv6 addresses** (both public and private, if you assigned a private IP), **default gateways**, **netmasks** and **DNS resolvers**.
+Log in to the [Linode Manager](https://manager.linode.com/) and go to the **Remote Access** tab.
+
+From there you will see your Linode's:
+
+*   IPv4 and IPv6 addresses (both private and public).
+*   [Netmask](https://en.wikipedia.org/wiki/Subnetwork)
+*   Default IPv4 gateway.
+*   DNS resolvers.
+
+Keep this information handy, because you'll need it as you configure your Linode's network settings.
 
 [![Linode Manager / Remote Access](/docs/assets/1711-remote_access_ips_small.png)](/docs/assets/1710-remote_access_ips.png)
 
-Keep this information handy, because you'll need it as you configure your Linode's network settings. Bear in mind that each Linode has only one virtual ethernet interface, *eth0*. Most outbound connections will still originate from the IP assigned to *eth0*, but if you need server daemons to bind to a particular IP address, you'll need to specify the correct IP in their configuration files.
+{: .note}
+>
+>Each Linode has only one virtual ethernet interface, *eth0*. Most outbound connections will still originate from the IP assigned to *eth0*, but if you need server daemons to bind to a particular IP address, you'll need to specify the correct IP in their configuration files.
 
-
-## Hostname and FQDN Settings
-
-If you haven't already done so, set your system's hostname and [fully qualified domain name](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) (FQDN) using our [Getting Started](https://linode.com/docs/getting-started#setting-the-hostname) guide.
 
 ## DNS Resolver Settings
 
@@ -96,7 +109,7 @@ Edit the interface's config file:
     PREFIX0="24"
 
     # To add a second public IP address:
-    IPADDR=198.51.100.10
+    IPADDR1=198.51.100.10
     PREFIX1="24"
 
     # To add a private IP address:
@@ -207,7 +220,7 @@ Networking in Gentoo utilizes the `netifrc` utility. Addresses are specified in 
 
 ## Disable Network Helper
 
-When assigning static IP addresses, [Network Helper](/docs/platform/network-helper) (not to be confused with [NetworkManager](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Deployment_Guide/ch-NetworkManager.html)) should be disabled to avoid it overwriting your `interfaces` file in the future.
+When manually assigning static IP addresses, [Network Helper](/docs/platform/network-helper) should be disabled to avoid it overwriting your `interfaces` file in the future.
 
 1.  From the Linode Manager's **Dashboard**, choose **Edit** for the desired configuration profile.
 
@@ -218,9 +231,9 @@ When assigning static IP addresses, [Network Helper](/docs/platform/network-help
     [![Linode Manager: Dashboard > Configuration Profile > Edit](/docs/assets/network-helper-hilighted_small.png)](/docs/assets/network-helper-hilighted.png)
 
 
-## Reboot your Linode
+## Reboot Your Linode
 
-It's best to **reboot your Linode from the Dashboard of the Linode Manager** rather than use `ifconfig` or an init system to restart the interfaces or distro's network services. This ensures that the new settings take effect without issues and that the networking services reliably start in full from the boot-up.
+It's best to reboot your Linode **from the Dashboard of the Linode Manager** rather than use `ifconfig` or an init system to restart the interfaces or distro's network services. This ensures that the new settings take effect without issues and that the networking services reliably start in full from the boot-up.
 
 
 ## Test Connectivity
@@ -229,6 +242,6 @@ It's best to **reboot your Linode from the Dashboard of the Linode Manager** rat
 
 2.  Confirm that your `/etc/resolv.conf` exists and is correct.
 
-3.  Ping each default gateway listed on the **Remote Access** tab of the Linode Manager:
+3.  Ping each default IPv4 gateway listed on the **Remote Access** tab of the Linode Manager:
 
-        ping 198.51.100.1
+        ping -c 3 198.51.100.1

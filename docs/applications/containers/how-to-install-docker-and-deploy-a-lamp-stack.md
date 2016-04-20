@@ -1,6 +1,6 @@
 ---
 author:
-  name: Linode
+  name: Joe D. 
   email: docs@linode.com
 description: 'LAMP container with Docker on Linode'
 keywords: 'docker,lamp,LAMP,ubuntu,debian'

@@ -118,7 +118,7 @@ To allow a specific IP address/port combination:
 
 To remove a rule, add `delete` before the rule implementation. If you no longer wished to allow HTTP traffic, you could run:
 
-    sudo ufw delete allow 22
+    sudo ufw delete allow 80
     
 Deleting also allows the use of service names.
 

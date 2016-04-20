@@ -4,9 +4,6 @@ author:
   email: docs@linode.com
 keywords: 'SQL database,relational database,RDBMS,MySQL,Postgresql,nosql,mongodb,couchdb,'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Monday, August 4th, 2014
-modified_by:
-  name: Alex Fornuto
 published: 'Thursday, July 16th, 2009'
 title: Database Management Systems
 ---

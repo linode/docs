@@ -232,11 +232,11 @@ Here we will go through installing Tunneblick on OSX:
 1.  To download the latest version of Tunnelblick, [click here](https://tunnelblick.net/downloads.html#Tunnelblick_Stable_Release). After opening the dmg file you can drag it into applications or open it immediately and it will copy itself.
 2.  After starting, you will see this splash screen:
 
-    [![Splash screen for TunnelBlick.](/docs/assets/1346-tunnelblick2)](/docs/assets/1346-tunnelblick2)
+    ![Splash screen for TunnelBlick.](/docs/assets/1346-tunnelblick2.png)
    
 	At the next screen click the **I have configuration files** button.
    
-    [![Splash screen for TunnelBlick.](/docs/assets/1342-tunnelblick1)](/docs/assets/1342-tunnelblick1)
+    ![Splash screen for TunnelBlick.](/docs/assets/1342-tunnelblick1.png)
 
 3.  At the next screen, click **OpenVPN Configuration(s)**:
 

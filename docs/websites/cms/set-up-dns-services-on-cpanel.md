@@ -55,30 +55,22 @@ The DNS changes can take up to 48 hours to propagate.
 
 To get your cPanel Linode ready as your master DNS server, you'll need to make a few additions/edits to your `/etc/named.conf` file.
 
-The transfer of DNS records from your Master DNS server to the Linode DNS servers is done through AXFR queries. By default these are not allowed.
-
-First open the `/etc/named.conf` file in your text editor and search for the following line:
+The transfer of DNS records from your Master DNS server to the Linode DNS servers is done through AXFR queries. By default these are not allowed. Add these sections to `options`:
 
 {: .file-excerpt }
 /etc/named.conf
 :   ~~~
-    recursion no; 
-    ~~~
-
-You will need to change it to:
-
-{: .file-excerpt }
-/etc/named.conf
-:   ~~~
-    recursion yes;
-    ~~~
-
-After you make that edit, add these two sections under your recursion line:
-
-{: .file-excerpt }
-/etc/named.conf
-:   ~~~
-    allow-recursion {
+    allow-transfer {
+         69.164.199.240;
+         69.164.199.241;
+         69.164.199.242;
+         69.93.127.10;
+         65.19.178.10;
+         75.127.96.10;
+         207.192.70.10;
+         109.74.194.10;
+     };
+     also-notify {
          69.164.199.240;
          69.164.199.241;
          69.164.199.242;
@@ -89,16 +81,6 @@ After you make that edit, add these two sections under your recursion line:
          109.74.194.10;
      };
 
-     allow-transfer {
-         69.164.199.240;
-         69.164.199.241;
-         69.164.199.242;
-         69.93.127.10;
-         65.19.178.10;
-         75.127.96.10;
-         207.192.70.10;
-         109.74.194.10;
-     };
     ~~~
 
 After your updates are complete, save and close the `named.conf` file. 

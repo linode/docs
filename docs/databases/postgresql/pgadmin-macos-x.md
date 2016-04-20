@@ -2,8 +2,8 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Using the open source pgAdmin program to securely manage remote PostgreSQL databases from a Mac OS X workstation.'
-keywords: 'pgadmin,pgadmin mac os x,postgresql gui,manage postgresql databases'
+description: 'Use the Open-source PgAdmin Program to Securely Manage Remote PostgreSQL Databases from a Mac OS X Workstation.'
+keywords: 'pgadmin,mac os x,postgresql gui,manage postgresql databases,ssh tunnel'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: Tuesday, May 17th, 2011
 modified_by:
@@ -15,9 +15,9 @@ external_resources:
  - '[PostgreSQL Documentation](http://www.postgresql.org/docs/)'
 ---
 
-pgAdmin is a free, open source PostgreSQL database administration GUI for Microsoft Windows, Apple Mac OS X and Linux systems. It offers excellent capabilities with regard to database server information retrieval, development, testing, and ongoing maintenance. This guide will help you get up and running with pgAdmin on Mac OS X, providing secure access to remote PostgreSQL databases. It is assumed that you have already installed PostgreSQL on your Linode VPS in accordance with our [PostgreSQL installation guides](/docs/databases/postgresql/).
+pgAdmin is a free, open-source PostgreSQL database administration GUI for Microsoft Windows, Apple Mac OS X and Linux systems. It offers excellent capabilities with regard to database server information retrieval, development, testing, and ongoing maintenance. This guide will help you get up and running with pgAdmin on Mac OS X, providing secure access to remote PostgreSQL databases. It is assumed that you have already installed PostgreSQL on your Linode in accordance with our [PostgreSQL installation guides](/docs/databases/postgresql/).
 
-## Installing pgAdmin
+## Install pgAdmin
 
 Visit the [pgAdmin download page](http://www.pgadmin.org/download/macosx.php) to obtain the most recent version of the program. Save the installer to your desktop and launch it. Read the license agreement and click the "Agree" button to continue.
 
@@ -25,7 +25,7 @@ Visit the [pgAdmin download page](http://www.pgadmin.org/download/macosx.php) to
 
 After the program has uncompressed itself, you'll see a pgAdmin icon in a Finder window. You may drag this to your Applications folder or your dock.
 
-## SSH Tunnel Configuration
+## Configure SSH Tunnel
 
 While PostgreSQL supports SSL connections, it is not advisable to instruct it to listen on public IP addresses unless absolutely necessary. For this reason, you'll be using the script found below to create an SSH tunnel to your database server. Save it to your local home directory as `postgresql-tunnel.pl`, making sure to change the `$remote_user` and `$remote_host` variables to match your setup.
 
@@ -79,12 +79,12 @@ else
 }
 ~~~
 
-You can start the tunnel by issuing the following commands from your home directory in a terminal window:
+You can start the ssh tunnel by issuing the following commands from your home directory in a terminal window:
 
     chmod +x postgresql-tunnel.pl
     ./postgresql-tunnel.pl start
 
-## Using pgAdmin
+## Use pgAdmin
 
 Launch pgAdmin and you'll be presented with a default view containing no servers. Click "File -\> Add Server" as shown below.
 

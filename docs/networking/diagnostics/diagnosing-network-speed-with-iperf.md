@@ -1,6 +1,6 @@
 ---
 author:
-  name: Dave Russell
+  name: Dave R.
   email: docs@linode.com
 description: 'How to diagnose network speed issues using Iperf.'
 keywords: 'networking,diagnostic,speed,iperf'

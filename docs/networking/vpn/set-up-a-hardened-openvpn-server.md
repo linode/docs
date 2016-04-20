@@ -1,11 +1,11 @@
 ---
 author:
-  name: Linode
+  name: Chris Walsh
   email: docs@linode.com
 description: 'OpenVPN is used to creating network tunnels between computers that are not on the same local network. When integrated with OpenSSL, OpenVPN can encrypt all VPN traffic to provide a secure connection between machines.'
 keywords: 'openvpn,vpn,vpn tunnel,openssl'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: 'Wednesday, December 9th, 2015'
+modified: 'Monday, January 26th, 2016'
 modified_by:
   name: Linode
 published: 'Wednesday, December 9th, 2015'
@@ -40,7 +40,7 @@ You can manage the OpenVPN environment in [two ways](https://openvpn.net/index.p
 
 For small applications, OpenVPN Access Server is the more streamlined and user-friendly solution. The free version allows up to two simultaneous users and, although each user can have as many client devices as they like, a user's clients will all have the same keys and certificates. More can be added by buying licensing. For more advanced configurations than what the GUI offers though, you would still need to resort to editing config files.
 
-If you are interested running OpenVPN Access Server on your Linode, see our guide: [Secure Communications with OpenVPN Access Server](docs/networking/vpn/openvpn-access-server). **The remainder of *this* guide will focus on manual configuration using OpenVPN Community Edition.**
+If you are interested running OpenVPN Access Server on your Linode, see our guide: [Secure Communications with OpenVPN Access Server](/docs/networking/vpn/openvpn-access-server). **The remainder of *this* guide will focus on manual configuration using OpenVPN Community Edition.**
 
 ## Networking Rules
 
@@ -98,8 +98,8 @@ For these reasons, this series assumes your VPN will operate over IPv4 only. If 
         # Log any packets which don't fit the rules above...
         # (optional but useful)
         -A INPUT -m limit --limit 3/min -j LOG --log-prefix "iptables_INPUT_denied: " --log-level 4
-        -A INPUT -m limit --limit 3/min -j LOG --log-prefix "iptables_FORWARD_denied: " --log-level 4
-        -A INPUT -m limit --limit 3/min -j LOG --log-prefix "iptables_OUTPUT_denied: " --log-level 4
+        -A FORWARD -m limit --limit 3/min -j LOG --log-prefix "iptables_FORWARD_denied: " --log-level 4
+        -A OUTPUT -m limit --limit 3/min -j LOG --log-prefix "iptables_OUTPUT_denied: " --log-level 4
 
         # then reject them.
         -A INPUT -j REJECT
