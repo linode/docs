@@ -5,11 +5,11 @@ author:
 description: 'Learn how to use Glish as a shell for managing graphic environments on your Linode.'
 keywords: 'Console,Shell,glish,graphic'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Friday, August 28th, 2015
+modified: Wednesday, March 9th, 2015
 modified_by:
-  name: Alex Fornuto
+  name: Linode
 published: 'Friday, August 28th, 2015'
-title: 'Using the Graphic Shell (Glish) - BETA'
+title: 'Using the Graphic Shell (Glish)'
 ---
 
 Glish is the graphical version of the [Linode Shell](using-the-linode-shell-lish) (LISH). It allows you to use a graphic environment running natively on your Linode's operating system.
@@ -49,6 +49,3 @@ When using one of Linode's distribution templates with Distro Helper turned on, 
 		startxfce4
 
 	[![Glish at the Xfce4 desktop.](/docs/assets/glish-xfce4-desktop_small.png)](/docs/assets/glish-xfce4-desktop.png)
-
-
-Remember that GLISH is currently in beta testing. If you encounter any issues, please contact [support](/docs/platform/support).

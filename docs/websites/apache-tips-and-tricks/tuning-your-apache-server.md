@@ -92,7 +92,7 @@ Apache `mod_status` diplays information related to incoming server connections b
 
 The ApacheBuddy script, similar to MySQLTuner, reviews your Apache setup, and makes suggestions based on your Apache process memory and overall RAM. Although it is a fairly basic program, focusing on the `MaxClients` directive, ApacheBuddy is useful, and can be run through a single command:
 
-	curl http://cloudfiles.fanatassist.com/apachebuddy.pl | perl
+	curl -L http://apachebuddy.pl/ | perl
 
 ##Multi Processing Modules
 
@@ -181,7 +181,7 @@ This limits the number of requests a child server handles during its life. Once 
 
 ####ServerLimit
 
-If you need to increase the `MaxClients` above `256`, then increase your `SeverLimit` to match. To do this, add the `SeverLimit` line to your MPM code and alter the value:
+If you need to increase the `MaxClients` above `256`, then increase your `ServerLimit` to match. To do this, add the `ServerLimit` line to your MPM code and alter the value:
 
 	ServerLimit          256
 

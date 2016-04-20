@@ -1,1 +1,0 @@
-../../security/ssl/how-to-provide-encrypted-access-to-resources-using-ssl-certificated-on-nginx.md
