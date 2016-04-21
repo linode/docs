@@ -160,3 +160,8 @@ If you're using the Nginx web server, you can add the following lines to your Ng
     set_real_ip_from 192.168.255.0/24;
 
 This will allow Nginx to capture the client's IP address in the logs.
+
+## IP Address Range
+
+NodeBalancers all have private IP addresses in the `192.168.255.0/24` range. It's important to note that while their public IP address is persistent, the private IP address **will** change. When configuring a firewall or other network restriction on back-end Linodes, be sure to allow the entire `192.168.255.0/24` range and not a specific IP address.
+

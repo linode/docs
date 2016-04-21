@@ -3,13 +3,12 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'Deploy Redis on Ubuntu 14.04 LTS, Ubuntu 16.04 LTS, or Debian 8. This Tutorial Guides You Through Installation and Best Practices of Redis, an Open-Source, In-Line Memory Data-Structure Store.'
-keywords: 'redis,redis ubuntu 14.04,redis server,ubuntu 16.04,LTS,debian 8,nosql,key-value database,data structure,redis cluster'
+keywords: 'redis,redis ubuntu 14.04,redis server,redis ubuntu 16.04,debian 8,redis cluster'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias:
 modified: Wednesday, April 20th, 2016
 modified_by:
   name: Edward Angert
-published: Thursday, April 21, 2016
+published: Wednesday, April 20th, 2016
 title: 'Deploy Redis on Ubuntu or Debian 8'
 contributor:
   name: Sergey Pariev
@@ -32,7 +31,7 @@ Redis is an open-source, in-memory, data-structure store with optional disk writ
 
 2.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
 
-3.  Update your system.
+3.  Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
 
@@ -59,7 +58,7 @@ Add the Redis PPA repository to install the latest version:
 
 ### Debian
 
-[Dotdeb](https://www.dotdeb.org) is a popular third party repository for Debian users looking for newer versions of the LAMP stack and related software than what's provided by Debian.
+[Dotdeb](https://www.dotdeb.org) is a popular, third-party repository for Debian users looking for newer versions of the LAMP stack and related software than what's been provided by Debian.
 
 1.  Review the [list of mirrors](https://www.dotdeb.org/mirrors/) Dotdeb provides and select the one closest to your Linode.
 
@@ -144,7 +143,7 @@ To improve Redis performance, make the following adjustment to the Linux system 
 
 ## Distributed Redis
 
-Redis provides several options for setting up distributed data stores. The simplest one, covered below, is the *master/slave replication*, which creates a real-time copy (or multiple copies) of master/server data. It will also allow distribution of reads among groups of slave copies as long as all write operations are handled by the master server.
+Redis provides several options for setting up distributed data stores. The simplest option, covered below, is the *master/slave replication*, which creates a real-time copy (or multiple copies) of master/server data. It will also allow distribution of reads among groups of slave copies as long as all write operations are handled by the master server.
 
 The master/slave setup described above can be made highly available with *Redis Sentinel*. Sentinel can be configured to monitor both master and slave instances, and will perform automatic failover if the master node is not working as expected. That means that one of the slave nodes will be elected master and all other slave nodes will be configured to use a new master.
 
@@ -157,13 +156,13 @@ The following steps will guide you through master/slave replication, with the sl
 
 ###  Prepare Two Linodes and Configure the Master Linode
 
-For this section of the guide, you will use two Linodes, named `master` and `slave`.
+For this section of the guide, you will use two Linodes, respectively named `master` and `slave`.
 
 1.  Set up both Linodes with a Redis instance, using **Redis Installation** and **Redis Configuration** steps from this guide. You can also copy your initially configured disk to another Linode using the [Clone](/docs/migrate-to-linode/disk-images/disk-images-and-configuration-profiles#cloning-disks-and-configuration-profiles) option in the Linode Manager.
 
 2.  Configure [Private IP Addresses](/docs/networking/remote-access#adding-private-ip-addresses) on both Linodes, and make sure you can access the `master` Linode's private IP address from `slave`. You will use only private addresses for replication traffic for security reasons.
 
-3.  Configure the `master` Redis instance to listen on private IP address by updating the `bind` configuration option in `redis.conf`. Replace `192.0.2.100` with the `master` Linode's private IP address
+3.  Configure the `master` Redis instance to listen on a private IP address by updating the `bind` configuration option in `redis.conf`. Replace `192.0.2.100` with the `master` Linode's private IP address
 
     {: .file-excerpt }
     /etc/redis/redis.conf
