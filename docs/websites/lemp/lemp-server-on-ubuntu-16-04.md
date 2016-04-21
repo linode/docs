@@ -5,7 +5,6 @@ author:
 description: 'Install web applications with "LEMP," a LAMP-like stack using nginx, MySQL, and PHP.'
 keywords: 'nginx,lemp,php,linux,web applications'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['lemp-guides/ubuntu-16-04/']
 modified: Friday, April 8, 2016
 modified_by:
   name: Phil Zona
@@ -14,74 +13,102 @@ title: 'LEMP Server on Ubuntu 16.04 (Xenial Xerus)'
 external_resources:
  - '[Basic nginx Configuration](/docs/websites/nginx/basic-nginx-configuration)'
  - '[Official Nginx Documentation](http://nginx.org/en/docs/#introduction)'
- ---
+---
 
-This guide describes an alternative to the "LAMP" (Linux, Apache, MySQL, and PHP) stack, known as "LEMP." The LEMP stack replaces the Apache web server component with nginx (pronounced "engine x," providing the "E" in LEMP,) which can increase the ability of the server to scale in response to demand.
+This guide describes an alternative to the *LAMP* (Linux, Apache, MySQL, and PHP) stack, known as *LEMP*. The LEMP stack replaces the Apache web server component with nginx (pronounced "engine x," providing the "E" in LEMP.) Nginx can increase the ability of the server to scale in response to demand.
 
-Prior to beginning this guide, please complete the [getting started guide](/docs/getting-started/), specifically [setting your hostname](/docs/getting-started#setting-the-hostname). If you are new to Linux systems administration, you may want to consider the [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts) and the [Linux administration basics guide](/docs/using-linux/administration-basics).
+## Before You Begin
 
-This guide is for a non-root user, although many commands will require root privileges. Be sure your system and all packages are fully up-to-date before beginning.
+- Complete the [Getting Started](/docs/getting-started/) guide, specifically [setting your hostname](/docs/getting-started#setting-the-hostname).
 
-## Install the Nginx Web Server
+- If you are new to Linux systems administration, you may want to consider the [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts) and the [Linux administration basics guide](/docs/using-linux/administration-basics).
+
+- Update your system:
+
+      sudo apt-get update && sudo apt-get upgrade
+
+{: .note}
+>
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+
+## Nginx
+
+### Install the Nginx Web Server
 
 Nginx may be installed from the Ubuntu package repository. This is the recommended installation method as all dependencies will be included and you will not need to monitor for nginx-specific updates.
 
-Use APT to install nginx:
+Use `apt` to install nginx:
 
     sudo apt-get install nginx
 
 As of this writing, this command will install version 1.9.14 of the nginx server. Future updates to the nginx version may take place if your system packages are continuously updated, but minor updates will not significantly affect the configuration process.
 
-## Configure Nginx Virtual Hosting
+### Configure Nginx Virtual Hosting
 
 Older versions of nginx specified site directories and other information in the main `nginx.conf` file, but newer versions, such as the ones included with Ubuntu 16.04, are more compartmentalized. As you read through this section, make note of each file's contents and location so that you are familiar with the structure and know where to go if you need to customize one particular aspect of your web server. 
 
-You will need to configure `server` directives to specify name-based virtual hosts (also called "server blocks," a term specific to nginx). All virtual host configurations are contained within `server` directives that are in turn contained within the site files in `/etc/nginx/sites-available`. When activated, these are included in the main nginx configuration by default.
+Nginx uses `server` directives to specify name-based virtual hosts. Nginx calls these *server blocks*. All server blocks are contained in `server` directives in site files, locate in `/etc/nginx/sites-available`. When activated, these are included in the main nginx configuration by default.
 
-Nginx 1.9.14 includes a sample configuration that you may use as a template. To create a new file with a basic server block for configuration, enter the following command, replacing `example.com` with your domain:
+1.  Nginx 1.9.14 includes a sample configuration that you may use as a template. To create a new file with a basic server block for configuration, enter the following command, replacing `example.com` with your domain:
 
-    tail /etc/nginx/sites-available/default -n 18 >> /etc/nginx/sites-available/example.com
+        tail /etc/nginx/sites-available/default -n 13 | cut -c 2- | sudo tee /etc/nginx/sites-available/example.com 1> /dev/null
 
-Alternatively, you may manually copy the last section from `/etc/nginx/sites-available/default` into a new file, `/etc/nginx/sites-available/example.com`. 
+    The command above reads the last 13 lines of the default site file (which is an example server block), cuts out the comment symbols (`#`), and outputs the result to a new site file.
 
-Consider the following nginx virtual host configuration (these lines will need to be uncommented if you copied the template from `default`):
+    Alternatively, you may manually copy the last section from `/etc/nginx/sites-available/default` into a new file, `/etc/nginx/sites-available/example.com`. You will have to manually remove the `#` in front of the relevant lines.
 
-{: .file-excerpt }
-/etc/nginx/sites-available/example.com
-:   ~~~ nginx
-    server {
-        listen 80;
-        listen [::]:80;
+2.  You should now have the following nginx virtual host configuration:
 
-        server_name www.example.com example.com;
+    {: .file }
+    /etc/nginx/sites-available/example.com
+    :   ~~~ nginx
+        server {
+            listen 80;
+            listen [::]:80;
 
-        root   /var/www/example.com/public_html;
-        index  index.html;
+            server_name example.com;
 
-        location / {
-            try_files $uri $uri/ =404;
+            root   /var/www/example.com;
+            index  index.html;
+
+            location / {
+                try_files $uri $uri/ =404;
+            }
         }
-    }
-    ~~~
+        ~~~
 
-{: .note}
-> If your index page includes PHP, add `index.php` to the line beginning with `index`. 
+    Replace `example.com` with your domain name. If your index page uses PHP, add `index.php` to the line beginning with `index`:
 
-Create the root directory referenced in this configuration by issuing the following command:
+    {: .file-excerpt}
+    /etc/nginx/sites-available/example.com
+    :   ~~~ nginx
+            index index.html index.php;
+        ~~~
 
-    mkdir -p /var/www/example.com/public_html
+3.  As of this writing, the nginx example configuration uses `/var/www/` as a document root, but Ubuntu uses `/var/www/html` as a standard. Additionally, our guides use a subdirectory called `public_html` to exclude web files that shouldn't be publicly accesible. Update the `root` directive to match these conventions:
 
-Issue the following command to enable the site and restart the web server:
+    {: .file-excerpt}
+    /etc/nginx/sites-available/example.com
+    :   ~~~ nginx
+            root   /var/www/html/example.com/public_html;
+        ~~~
 
-    ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled
-    sudo service nginx restart
+4.  Create the root directory referenced in this configuration, replacing `example.com` with your domain name:
 
-To deactivate a site, simply delete the symbolic link by issuing the following commands:
+        sudo mkdir -p /var/www/html/example.com/public_html
 
-    rm /etc/nginx/sites-enabled/example.com
-    sudo service nginx restart
+5.  Enable the site, disable the default host, and restart the web server:
 
-The source file is saved, and the site can be re-enabled at any time by recreating the symbolic link.
+        sudo ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled
+        sudo rm /etc/nginx/sites-enabled/default
+        sudo systemctl restart nginx.service
+
+    To deactivate a site, simply delete the symbolic link:
+
+        sudo rm /etc/nginx/sites-enabled/example.com
+        sudo systemctl restart nginx.service
+
+    The source file is saved, and the site can be re-enabled at any time by recreating the symbolic link.
 
 If you are using nginx to host more than one site, create multiple virtual host files using the method above.
 
@@ -93,64 +120,89 @@ You may also want to edit the `http` block in `/etc/nginx/nginx.conf`, which app
 
 ## Deploy PHP with FastCGI
 
-In order to deploy PHP applications, you will need to implement the following "PHP-FastCGI" solution to allow nginx to properly handle and serve pages that contain PHP code. Begin the deployment process by issuing the following command to install the required dependencies:
+In order to deploy PHP applications, we will implement the following *PHP-FastCGI* solution to allow nginx to properly handle and serve pages that contain PHP code.
 
-    sudo apt-get install php7.0-cli php7.0-cgi php7.0-fpm
+1.  Install the required dependencies:
 
-Consider the following nginx virtual host configuration. Modify your configuration to resemble the one below, and ensure that the `location ~ \.php$ { }` block resembles the one in this example:
+        sudo apt-get install php7.0-cli php7.0-cgi php7.0-fpm
 
-{: .file }
-/etc/nginx/sites-available/example.com
-:   ~~~ nginx
-    server {
-    
+2.  Modify your virtual host configuration to include the location directive shown below:
+
+    {: .file }
+    /etc/nginx/sites-available/example.com
+    :   ~~~ nginx
+        server {
+
         ...
 
-        location ~ \.php$ {
-            include snippets/fastcgi-php.conf;
-            include fastcgi_params;
-            fastcgi_pass unix:/run/php/php7.0-fpm.sock;
-            fastcgi_param SCRIPT_FILENAME /var/www/example.com/public_html$fastcgi_script_name;
-        }
-    }    
-    ~~~
+                location ~ \.php$ {
+                        include snippets/fastcgi-php.conf;
+                        include fastcgi_params;
+                        fastcgi_pass unix:/run/php/php7.0-fpm.sock;
+                        fastcgi_param SCRIPT_FILENAME /var/www/html/example.com/public_html$fastcgi_script_name;
+                }
 
-When you've made these modifications to the configuration, make sure that the virtual host is enabled and issue the following command to restart the web server:
+        }    
+        ~~~
 
-    sudo service php7.0-fpm restart
-    sudo service nginx restart
+    {: .note }
+    > The `...` in the file excerpt above references existing lines, and is not a literal part of the file.
 
-Congratulations! You can now deploy PHP scripts with with your web server.
+3.  Restart the `php7.0-fpm` and `nginx` services:
+
+        sudo service php7.0-fpm restart
+        sudo service nginx restart
+
+Congratulations! You can now deploy PHP scripts with your web server.
 
 ## Install the MySQL Database Server
 
-The MySQL database engine is one of the leading open source relational database engines, and is a popular database solution for web-based applications. Issue the following command to install the MySQL server packages and required PHP support for MySQL:
+The MySQL database engine is one of the leading open source relational database engines, and is a popular database solution for web-based applications.
 
-    sudo apt-get install mysql-server php7.0-mysql
+1.  Install the MySQL server packages and required PHP support for MySQL:
 
-During the installation process you will be prompted to set a password for the MySQL root user via a graphical interface. Choose a strong password and keep it in a safe place for future reference.
+        sudo apt-get install mysql-server php7.0-mysql
 
-<!-- [![Setting the MySQL root password in Ubuntu 10.04 Lucid.](/docs/assets/1129-66-lucid-01-mysql-root-password.png)](/docs/assets/1129-66-lucid-01-mysql-root-password.png)
+    During the installation process you will be prompted to set a password for the MySQL root user via an [ncurses](https://en.wikipedia.org/wiki/Ncurses) menu. Choose a strong password and keep it in a safe place for future reference.
 
-Commenting this section out - the screenshot is outdated and needs to be either removed or updated. MySQL is version 5.7 now and has a different interface. -->
+2.  Run the `mysql_secure_installation` script, created to help secure fresh MySQL server installations.
 
-Issue the following command to secure the MySQL instance:
+        sudo mysql_secure_installation
 
-    sudo mysql_secure_installation
+    We've already set a strong root password so there's no need to replace it, but all other actions should be performed in most cases. 
 
-Answer all questions prompted during this process. Next, issue the following command to get a root prompt for the MySQL server:
+3.  Log in to the MySQL command line interface (CLU) as the root user. When prompted, provide the password set in step 1:
 
-    mysql -u root -p
+        mysql -u root -p
 
-Enter the root password created above and then issue the following sequence of commands to create the `example` and `username` database users (make sure you choose a secure `password`), grant the `username` user access to the `example` database, and exit from the database:
+4.  Create a database and user with permissions for it. Replace `web` and `webuser` with appropriate names, and `password` with a strong password:
 
-    CREATE DATABASE example;
-    CREATE USER 'username' IDENTIFIED BY 'password';
-    GRANT ALL PRIVILEGES ON example.* TO 'username';
-    exit
+        CREATE DATABASE web;
+        CREATE USER 'webuser' IDENTIFIED BY 'password';
+        GRANT ALL PRIVILEGES ON web.* TO 'webuser';
+        quit
 
-You may now provide the credentials for the `example` database and the `username` user to your application, which will now be able to use the database for its purposes. To ensure that PHP will be able to access the MySQL connector your just installed, restart the PHP service by issue the following command:
 
-    sudo service php7.0-fpm restart
+    You can now provide the credentials for the `web` database and the `webuser` user to your application, which will now be able to use the database for its purposes. To ensure that PHP will be able to access the MySQL connector your just installed, restart the PHP service by issue the following command:
+
+        sudo service php7.0-fpm restart
+
+## Test The Server
+
+1.  Create a test php file in `/var/www/html/example.com/public_html`:
+
+    {: .file }
+    /var/www/html/example.com/public_html/info.php
+    :   ~~~ php
+        <?php phpinfo(); ?>
+        ~~~
+
+2.  Navigate to `example.com/info.php` in your local web browser. You should see an info page like the one below:
+
+    [![PHP Info Page](/docs/assets/lemp-1604-phpinfo-small.png)](/docs/assets/lemp-1604-phpinfo.png)
+
+3.  Remove this file once you're done inspecting it:
+
+        sudo rm /var/www/html/example.com/public_html/info.php
 
 Congratulations! You now have a fully functional and fully featured LEMP stack for website and application deployment.
