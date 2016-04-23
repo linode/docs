@@ -38,7 +38,7 @@ Follow the [Getting Started](/docs/getting-started) guide to configure your basi
  
 2.  Enable the EPEL repository:
 
-        wget http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm
+        wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
         rpm -ivh epel-release-7-5.noarch.rpm
 
 3.  Install Fail2ban:
