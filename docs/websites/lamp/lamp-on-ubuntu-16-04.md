@@ -71,31 +71,45 @@ A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used for hosting 
 
 5.  Restart Apache:
 
-        sudo service apache2 restart
+        sudo systemctl restart apache2
 
 
 ### Configure Virtual Hosts
 
-There are several different ways to set up virtual hosts; however, below is the recommended method. By default, Apache listens on all IP addresses available to it.
+There are several different ways to set up virtual hosts; however, below is the recommended method. By default, Apache listens on all IP addresses available to it. For all steps below, replace `example.com` with your domain name
 
-1.  Create the above-referenced directories:
-
-        sudo mkdir -p /var/www/html/example.com/public_html
-        sudo mkdir /var/www/html/example.com/logs
-
-2.  Create a copy of the default Apache configuration file for your site:
+1.  Create a copy of the default Apache configuration file for your site:
 
         sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/example.com.conf
 
-3.  Edit the new `example.com.conf` configuration file by uncommenting `ServerName` and replacing `example.com` with your site's IP or Fully Qualified Domain Name (FQDN). Enter the document root path referenced in Step 1, and add the following before the `</VirtualHost>`:
+2.  Edit the new `example.com.conf` configuration file by uncommenting `ServerName` and replacing `example.com` with your site's IP or Fully Qualified Domain Name (FQDN). Enter the document root path and log directories as shown below, and add `Directory` block before `</VirtualHost>`:
 
     {: .file }
     /etc/apache2/sites-available/example.com.conf
     :   ~~~ apache
-         <Directory /var/www/html/example.com/public_html>
+        <Directory /var/www/html/example.com/public_html>
             Require all granted
-         </Directory>
+        </Directory>
+        <VirtualHost *:80>
+                ServerName example.com
+                ServerAlias www.example.com
+                ServerAdmin webmaster@localhost
+                DocumentRoot /var/www/html/example.com/public_html
+
+                ErrorLog /var/www/html/example.com/logs/error.log
+                CustomLog /var/www/html/example.com/logs/access.log combined
+
+        </VirtualHost>
         ~~~
+
+    {: .note}
+    > The file example above has had all comment sections removed for brevity; you may keep or remove the commented areas as you see fit.
+    >
+    > The `ServerAlias` directive allows you to include multiple domain names or subdomains for a single host. The example above allows visitors to use `example.com` or `www.example.com` to navigate to this virtual host.
+
+3.  Create the above-referenced directories:
+
+        sudo mkdir -p /var/www/html/example.com/{public_html,logs}
 
 4.  Link your virtual host file from the `sites-available` directory to the `sites-enabled` directory:
 
@@ -109,9 +123,9 @@ There are several different ways to set up virtual hosts; however, below is the 
     
 5.  Reload Apache:
 
-        sudo service apache2 reload
+        sudo systemctl reload apache2
 
-    Assuming that you have configured the DNS for your domain to point to your Linode's IP address, virtual hosting for your domain should now work.
+    Assuming that you have configured DNS services for your domain to point to your Linode's IP address, virtual hosting for your domain should now work.
 
     If there are additional websites you wish to add to your Linode repeat the above steps to add a folder and configuration file for each.
 
@@ -160,7 +174,7 @@ There are several different ways to set up virtual hosts; however, below is the 
 2.  Once PHP7 is installed, tune the configuration file located in `/etc/php/7.0/apache2/php.ini` to enable more descriptive errors, logging, and better performance. The following modifications provide a good starting point:
 
     {: .file-excerpt}
-    /etc/php7/apache2/php.ini
+    /etc/php/7.0/apache2/php.ini
     :   ~~~ ini
         max_input_time = 30
         error_reporting = E_COMPILE_ERROR | E_RECOVERABLE_ERROR | E_ERROR | E_CORE_ERROR
@@ -185,7 +199,7 @@ There are several different ways to set up virtual hosts; however, below is the 
 
 Create a file which tests if Apache can render PHP and connect to the MySQL database.
 
-1.  Paste the following code into a new file, `phptest.php`, in the `public_html` directory. Modify `localhost`, `user`, and `password` to match the information entered in the **Create a MySQL Database** section above:
+1.  Paste the following code into a new file, `phptest.php`, in the `public_html` directory. Modify `localhost`, `webuser`, and `password` to match the information entered in the **Create a MySQL Database** section above:
 
     {: .file-excerpt}
     /var/www/html/example.com/public_html/phptest.php
@@ -199,7 +213,7 @@ Create a file which tests if Apache can render PHP and connect to the MySQL data
 
             // In the variables section below, replace user and password with your own MySQL credentials as created on your server
             $servername = "localhost";
-            $username = "user";
+            $username = "webuser";
             $password = "password";
 
             // Create MySQL connection 
@@ -221,8 +235,8 @@ Create a file which tests if Apache can render PHP and connect to the MySQL data
 
 *  If the site does not load at all, check if Apache is running, and restart if required:
 
-        service apache2 status
-        sudo service apache2 restart
+        systemctl status apache2
+        sudo systemctl restart apache2
 
 *  If the site loads, but the page it returns is the default "Congratulations" page, return to the **Configure Virtual Hosts** section above, and check that the `DocumentRoot` matches your `example.com/public_html` folder
 
