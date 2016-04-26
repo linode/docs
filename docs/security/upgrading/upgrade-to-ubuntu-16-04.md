@@ -24,7 +24,6 @@ Ubuntu 16.04 is a long-term support (LTS) release that will be supported until A
  >
  > You should use [Lish](/docs/networking/using-the-linode-shell-lish) or [Glish](/docs/networking/use-the-graphic-shell-glish) to perform this upgrade. In the event your internet connection is disconnected, your system may end up corrupted or the upgrade may be incomplete.
 
-
 {: .note}
 >The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
@@ -44,12 +43,7 @@ Before upgrading, you will need to prepare your Linode to be upgraded. In order 
 
 Each of these will be discussed in more detail below.
 
-{: .note }
->
->In the interest of security, Ubuntu 16.04 LTS disables password based SSH authentication for the root user.  If you log into your root account directly via SSH, you will need to ensure that you have configured key based authentication prior to following these upgrade steps.  If you have already followed our steps for [adding a new user](/docs/security/securing-your-server/#debian--ubuntu) to your Linode, you should be able to log in with that account after the upgrade process has completed.
-
 ### Install Available Updates
-
 
 1.  Update your package lists:
 
@@ -122,7 +116,7 @@ Here's how to upgrade from Ubuntu 14.04 LTS to Ubuntu 16.04 LTS. Remember to per
         if the mirror information is out of date.
 
         Do you want to rewrite your 'sources.list' file anyway? If you choose
-        'Yes' here it will update all 'precise' to 'trusty' entries.
+        'Yes' here it will update all 'trusty' to 'xenial' entries.
         If you select 'No' the upgrade will cancel.
 
         Continue [yN]
@@ -142,7 +136,6 @@ Here's how to upgrade from Ubuntu 14.04 LTS to Ubuntu 16.04 LTS. Remember to per
         Codename:       xenial
 
 Your Linode is now running Ubuntu 16.04 LTS.
-
 
 ## Upgrading from Previous Ubuntu Releases
 
