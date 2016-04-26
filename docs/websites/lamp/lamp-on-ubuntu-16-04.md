@@ -105,7 +105,7 @@ There are several different ways to set up virtual hosts; however, below is the 
     {: .note}
     > The file example above has had all comment sections removed for brevity; you may keep or remove the commented areas as you see fit.
     >
-    > The `ServerAlias` directive allows you to include multiple domain names or subdomains for a single host. The example above allows visitors to use `example.com` or `www.example.com` to navigate to this virtual host.mysql -u root -p 
+    > The `ServerAlias` directive allows you to include multiple domain names or subdomains for a single host. The example above allows visitors to use `example.com` or `www.example.com` to navigate to this virtual host.
 
 3.  Create the above-referenced directories:
 
