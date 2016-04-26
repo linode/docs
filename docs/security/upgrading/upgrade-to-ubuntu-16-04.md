@@ -12,7 +12,7 @@ published: 'Tuesday, October 21st, 2014'
 title: 'How to Upgrade to Ubuntu 16.04 LTS'
 ---
 
-Ubuntu 16.04 is a Long-Term Support (LTS) release that will be supported by Ubuntu until April 2021. This guide explains how to upgrade your Linode from Ubuntu 14.04 (Trusty Tahr) to Ubuntu 16.04 (Xenial Xerus).
+Ubuntu 16.04 is a Long-Term Support (LTS) release that will be supported by Canonical until April 2021. This guide explains how to upgrade your Linode from Ubuntu 14.04 (Trusty Tahr) to Ubuntu 16.04 (Xenial Xerus).
 
  {: .caution }
  >Distribution upgrades sometimes yield unpredictable results. If possible, use these steps as an alternative to the upgrade method described in this guide:
@@ -22,7 +22,7 @@ Ubuntu 16.04 is a Long-Term Support (LTS) release that will be supported by Ubun
  - Transfer your data
  - Swap IP addresses
  >
- > The upgrade may be incomplete or your system may be corrupted if your internet connection is interrupted. Use [Lish](/docs/networking/using-the-linode-shell-lish) or [Glish](/docs/networking/use-the-graphic-shell-glish) to perform this upgrade in a stable environment that does not rely on an active local internet connection to your Linode.
+ > The upgrade may be incomplete or your system may be corrupted if your internet connection is interrupted. Use [Lish](/docs/networking/using-the-linode-shell-lish) or [Glish](/docs/networking/use-the-graphic-shell-glish) to perform this upgrade in a stable environment that does not rely on an active internet connection to your Linode.
 
 {: .note}
 >The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
