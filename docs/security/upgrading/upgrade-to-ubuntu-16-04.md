@@ -12,46 +12,40 @@ published: 'Tuesday, October 21st, 2014'
 title: 'How to Upgrade to Ubuntu 16.04 LTS'
 ---
 
-Ubuntu 16.04 is a long-term support (LTS) release that will be supported until April 2021. This guide explains how to upgrade your Linode from Ubuntu 14.04 (Trusty Tahr) to Ubuntu 16.04 (Xenial Xerus).
+Ubuntu 16.04 is a Long-Term Support (LTS) release that will be supported by Ubuntu until April 2021. This guide explains how to upgrade your Linode from Ubuntu 14.04 (Trusty Tahr) to Ubuntu 16.04 (Xenial Xerus).
 
  {: .caution }
- >Distribution upgrades can yield unpredictable results, due to variations in software stacks. When possible, we recommend:
+ >Distribution upgrades sometimes yield unpredictable results. If possible, use these steps as an alternative to the upgrade method described in this guide:
  >
- - Creating a new Linode with the latest disk template
- - Rebuilding your stack
- - Transferring your data
- - Swapping IP addresses
+ - Create a new Linode with the latest disk template
+ - Rebuild your stack
+ - Transfer your data
+ - Swap IP addresses
  >
- > You should use [Lish](/docs/networking/using-the-linode-shell-lish) or [Glish](/docs/networking/use-the-graphic-shell-glish) to perform this upgrade. In the event your internet connection is disconnected, your system may end up corrupted or the upgrade may be incomplete.
+ > The upgrade may be incomplete or your system may be corrupted if your internet connection is interrupted. Use [Lish](/docs/networking/using-the-linode-shell-lish) or [Glish](/docs/networking/use-the-graphic-shell-glish) to perform this upgrade in a stable environment that does not rely on an active local internet connection to your Linode.
 
 {: .note}
 >The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
 ## Prepare to Upgrade
 
-Before upgrading, you will need to prepare your Linode to be upgraded. In order to do so, we will:
+In order to prepare you Linode for upgrade, the following steps will:
 
 1.  Install updates for Ubuntu 14.04
 
 2.  Backup your data
 
-3.  Check to ensure the kernel version you're using is the latest kernel
+3.  Ensure that the kernel version you're using is the latest
 
 4.  Stop non-critical services
 
 5.  Start a LISH session to ensure that the installation is not interrupted
 
-Each of these will be discussed in more detail below.
-
 ### Install Available Updates
 
-1.  Update your package lists:
+Update package lists and install all updates:
 
-        apt-get update
-
-2.  Install all updates:
-
-        apt-get upgrade
+    apt-get update && apt-get upgrade
 
 ### Back Up Your Linode
 
@@ -69,11 +63,11 @@ We recommend that you stop as many services as possible before upgrading to Ubun
 
 You are now ready to install Ubuntu 16.04 LTS on your Linode.
 
-## Upgrading from Ubuntu 14.04 LTS
+## Upgrading from Ubuntu 14.04 LTS to Ubuntu 16.04 LTS
 
-Here's how to upgrade from Ubuntu 14.04 LTS to Ubuntu 16.04 LTS. Remember to perform these steps in a Lish or Glish session:
+Remember to perform these steps in a Lish or Glish session:
 
-1.  If it's not already, install the `update-manager-core` package:
+1.  Install the `update-manager-core` package:
 
         apt-get install update-manager-core
 
@@ -123,7 +117,7 @@ Here's how to upgrade from Ubuntu 14.04 LTS to Ubuntu 16.04 LTS. Remember to per
 
     Type `y` and **Enter** to continue.
 
-5.  The upgrade will require a reboot. Afterwards, verify that it's running Ubuntu 16.04:
+5.  The upgrade will require a reboot. Once the system has rebooted, verify that it's running Ubuntu 16.04:
 
         lsb_release -a
 
@@ -139,4 +133,4 @@ Your Linode is now running Ubuntu 16.04 LTS.
 
 ## Upgrading from Previous Ubuntu Releases
 
-If your Linode is running an release of Ubuntu older than 14.04 LTS, use the upgrade guides in the [Upgrading](/docs/security/upgrading) section to upgrade to Ubuntu 14.04 LTS first. You may then upgrade your Linode to Ubuntu 16.04 LTS.
+If your Linode is running a release of Ubuntu older than 14.04 LTS, use the upgrade guides in the [Upgrading](/docs/security/upgrading) section to upgrade to Ubuntu 14.04 LTS first. You may then upgrade your Linode to Ubuntu 16.04 LTS.
