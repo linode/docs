@@ -61,26 +61,29 @@ The transfer of DNS records from your Master DNS server to the Linode DNS server
 /etc/named.conf
 :   ~~~
     allow-transfer {
-         69.164.199.240;
-         69.164.199.241;
-         69.164.199.242;
          69.93.127.10;
          65.19.178.10;
          75.127.96.10;
          207.192.70.10;
          109.74.194.10;
+         2600:3c00::a;
+         2600:3c01::a;
+         2600:3c02::a;
+         2600:3c03::a;
+         2a01:7e00::a;
      };
      also-notify {
-         69.164.199.240;
-         69.164.199.241;
-         69.164.199.242;
          69.93.127.10;
          65.19.178.10;
          75.127.96.10;
          207.192.70.10;
          109.74.194.10;
+         2600:3c00::a;
+         2600:3c01::a;
+         2600:3c02::a;
+         2600:3c03::a;
+         2a01:7e00::a;
      };
-
     ~~~
 
 After your updates are complete, save and close the `named.conf` file. 
