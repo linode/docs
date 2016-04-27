@@ -86,7 +86,7 @@ As much as we would like to support all writers, we can not accept every guide w
 
 ## Contributed Guides
 
-Here are some examples of exceptional community-contributed guides. Use these as gudielines for your own submission.
+Here are some examples of exceptional community-contributed guides. Use these as guidelines for your own submission.
 
 [Install Odoo 9 ERP on Ubuntu 14.04](/docs/websites/cms/install-odoo-9-erp-on-ubuntu-14-04) by Damaso Sanoja.
 
