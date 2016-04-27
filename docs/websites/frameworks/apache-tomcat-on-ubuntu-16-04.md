@@ -10,7 +10,7 @@ modified: Wednesday, April 27, 2016
 modified_by:
   name: Phil Zona
 published: 'Thursday, April 28 2016'
-title: 'Apache Tomcat on Ubuntu 16.04 (Xenial Xerus)'
+title: 'Apache Tomcat on Ubuntu 16.04'
 external_resources:
  - '[Tomcat Home Page](http://tomcat.apache.org/)'
  - '[Tomcat FAQ](http://wiki.apache.org/tomcat/FAQ)'
