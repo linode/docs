@@ -58,7 +58,7 @@ Tomcat should be totally functional following your next system reboot. If you ne
 
 ## Test and Use Tomcat
 
-Tomcat listens on network port 8080. You can test your Tomcat installation by pointing your browser at `http://[yourdomain-or-ip-address]:8080/`. By default, Tomcat files are located in the `/usr/share/tomcat8` directory.
+Tomcat listens on network port 8080 and does not accept forced HTTPS connections by default. You can test your Tomcat installation by pointing your browser at `http://[yourdomain-or-ip-address]:8080/`. By default, Tomcat files are located in the `/usr/share/tomcat8` directory.
 
 To configure the admin area, you'll need to add the following lines to the end of your `/etc/tomcat8/tomcat-users.xml` file before the `</tomcat-users>` line, substituting your own username and password. Make sure you keep the "manager" role.
 
