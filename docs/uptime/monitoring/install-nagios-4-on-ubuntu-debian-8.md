@@ -3,14 +3,14 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'Nagios is a widely used tool for monitoring systems and services.'
-keywords: 'nagios,ubuntu,monitoring,install nagios,nagios 4 ubuntu 14.04,debian 8'
+keywords: 'nagios,ubuntu,monitoring,install nagios,nagios 4 ubuntu,debian 8'
 alias: ['uptime/monitoring/monitor-services-with-nagios-4-on-ubuntu-14-04/']
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 published: 'Tuesday, April 12th, 2016'
 modified: Tuesday, April 12th, 2016
 modified_by:
   name: Edward Angert
-title: 'Install Nagios 4 on Ubuntu 14.04 and Debian 8'
+title: 'Install Nagios 4 on Ubuntu and Debian 8'
 contributor:
   name: Paulo Telles
   link: http://github.com/paulotfilho
@@ -26,7 +26,7 @@ A monitoring tool is a key application in a production server. Nagios is a popul
 
 ## Before You Begin
 
-1.  In order to run Nagios on your Linode, follow the configuration steps for Ubuntu 14.04 or Debian 8 from our [Getting Started guide](/docs/getting-started/).
+1.  In order to run Nagios on your Linode, follow the configuration steps for Ubuntu or Debian 8 from our [Getting Started guide](/docs/getting-started/).
 
 2.  Install and configure a LAMP stack (Linux, Apache, MySQL and PHP stack). Follow the [LAMP on Ubuntu 14.04](/docs/websites/lamp/lamp-on-ubuntu-14-04) or [LAMP on Debian 8](/docs/websites/lamp/lamp-on-debian-8-jessie) guide for instructions.
 
@@ -59,7 +59,7 @@ The latest stable version of Nagios 4 is not available in Ubuntu or Debian's def
 
 2.  In your web browser, go to [the Nagios Core DIY download page](https://www.nagios.org/downloads/core-stay-informed/). If you prefer not to register for updates, click **Skip to download**.
 
-3.  Under **Nagios Core**, find the release that says **Latest stable release** under **Notes**, then copy the download link (e.g., `https://assets.nagios.com/downloads/nagioscore/releases/nagios-4.1.1.tar.gz`) to your clipboard.
+3.  Under **Nagios Core**, find the release that says **Latest stable release** under **Notes**, then copy the download link to your clipboard.
 
 4.  Download and extract Nagios to your Linode using `wget` and `tar`, pasting the link from Step 3:
 
@@ -87,10 +87,6 @@ The latest stable version of Nagios 4 is not available in Ubuntu or Debian's def
 
         sudo a2enmod rewrite && sudo a2enmod cgi
 
-    If `mod_rewrite` or `mod_cgi` were not already enabled, restart Apache:
-
-        sudo service apache2 restart
-
 2.  Copy the sample virtual host configuration Nagios provides to `sites-available`:
 
         sudo cp sample-config/httpd.conf /etc/apache2/sites-available/nagios4.conf
@@ -107,9 +103,9 @@ The latest stable version of Nagios 4 is not available in Ubuntu or Debian's def
 
         sudo htpasswd -c /usr/local/nagios/etc/htpasswd.users nagiosadmin
 
-6.  Reload Apache
+6.  Restart Apache
 
-        sudo service apache2 reload
+        sudo service apache2 restart
 
 ## Install Nagios Plugins
 
@@ -133,10 +129,13 @@ Nagios Plugins allow you to monitor services like DHCP, FTP, HTTP and NTP. To us
 
         sudo service nagios start
 
-    The interface can be accessed in your web browser by appending `/nagios` to your domain or Public IP. When prompted at login, use `nagiosadmin` as the user and use the password you assigned in the **Configure Nagios Web Interface** section.
+    {: .note}
+    > For Ubuntu versions after 14.04, see the [Systemd section below](#systemd) before running this step.
+
+2.  The interface can be accessed in your web browser by appending `/nagios` to your domain or Public IP. When prompted at login, use `nagiosadmin` as the user and use the password you assigned in the **Configure Nagios Web Interface** section.
 
 
-2.  You will be greeted with a screen like this one:
+    You will be greeted with a screen like this one:
 
     ![Nagios 4 Greeting](/docs/assets/greeting_nagios4.png)
 
@@ -144,6 +143,36 @@ Nagios Plugins allow you to monitor services like DHCP, FTP, HTTP and NTP. To us
 
     ![Nagios 4 Hosts](/docs/assets/hosts_nagios4.png)
 
+
+### Systemd
+
+As of this guide's publication, the Nagios build process does not create a systemd service file. In order to manage the service with systemd, create a Nagios service file for the system to load on initialization:
+
+ {: .file}
+ /etc/systemd/system/nagios.service
+ :    ~~~
+      [Unit]
+      Description=Nagios
+      BindTo=network.target
+
+      [Install]
+      WantedBy=multi-user.target
+
+      [Service]
+      User=nagios
+      Group=nagios
+      Type=simple
+      ExecStart=/usr/local/nagios/bin/nagios /usr/local/nagios/etc/nagios.cfg
+      ~~~
+
+
+Enable the link, start the Nagios service, and check the status:
+
+    sudo systemctl enable /etc/systemd/system/nagios.service
+    sudo systemctl start nagios
+    systemctl status nagios
+
+You can now continue at [Access the Nagios Web Interface](#access-the-nagios-web-interface)
 
 ## Next Steps
 
