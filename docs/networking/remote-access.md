@@ -130,8 +130,9 @@ Here's how to swap IP addresses:
 
 8.  Select both of the **Move It** checkboxes to verify that you want the IP addresses switched.
 9.  Click **Do it**.
+10.  (Optional) Enable the [Network Helper tool](https://www.linode.com/docs/platform/network-helper) and reboot your Linode VPS.
 
-The IP address(es) will be swapped immediately as your Linode's networking is hotplugged. There may be a delay, however, of a few minutes (usually no more than five to ten) between the IP swap. There may be a brief period of time when your Linode's IP is unreachable due to this delay. Often, rebooting your Linode with the [network helper](https://www.linode.com/docs/platform/network-helper) feature enabled can make this process easier.
+An IP swap tells our routers to begin sending traffic to your Linode, but you still need to have the right IP address set in Linux's network interface configuration file. If you have not changed this yourself and restarted your interface (see [Static IP configuration for more information](https://www.linode.com/docs/networking/linux-static-ip-configuration) then you'll want to use the network helper tool to write it automatically. After that there may still be a delay of a few minutes (usually no more than a few minutes) between the IP swap for our routers to begin pointing traffic at your Linode.
 
 ## Adding Private IP Addresses
 
