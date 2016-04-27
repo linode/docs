@@ -8,8 +8,8 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['frameworks/apache-tomcat/ubuntu-16-4-xenial-xerus/']
 modified: Wednesday, April 27, 2016
 modified_by:
-  name: Edward Angert
-published: 'Friday, April 6, 2016'
+  name: Phil Zona
+published: 'Thursday, April 28 2016'
 title: 'Apache Tomcat on Ubuntu 16.04 (Xenial Xerus)'
 external_resources:
  - '[Tomcat Home Page](http://tomcat.apache.org/)'
@@ -31,7 +31,7 @@ Apache Tomcat is an open source software implementation of the Java Servlet and 
 
 3.  You should also make sure your system is up to date. Enter the following command and install any available updates:
 
-    apt-get update && apt-get upgrade
+        apt-get update && apt-get upgrade
 
 {: .note }
 >The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
@@ -58,9 +58,9 @@ Tomcat should be totally functional following your next system reboot. If you ne
 
 ## Test and Use Tomcat
 
-You can test your Tomcat installation by pointing your browser at `http://[yourdomain-or-ip-address]:8080/`. Note that Tomcat listens on network port 8080 and does not accept forced HTTPS connections by default. By default, Tomcat files are located in the `/usr/share/tomcat8` directory.
+You can test your Tomcat installation by pointing your browser at your site's port `:8080`, `http://example.com:8080/`. Note that Tomcat listens on network port 8080 and does not accept forced HTTPS connections by default. By default, Tomcat files are located in the `/usr/share/tomcat8` directory.
 
-To use the `tomcat8-admin` web application, you'll need to add the following lines to the end of your `/etc/tomcat8/tomcat-users.xml` file before the `</tomcat-users>` line, substituting your own username and secure password. Make sure you include the "manager-gui" and "admin-gui" roles, as these are defined by Tomcat to be required for using the manager and host-manager web applications respectively. 
+To use the `tomcat8-admin` web application, add the following lines to the end of your `/etc/tomcat8/tomcat-users.xml` file before the `</tomcat-users>` line, substituting your own username and secure password. If using Tomcat Admin, include both the "manager-gui" role for the manager and the "admin-gui" role for the host-manager application.
 
 If you are not using the web application and plan to manage your application(s) from the command line only, you should not enter these lines, as doing so may expose your server to unauthorized login attempts.
 
