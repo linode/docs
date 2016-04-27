@@ -130,12 +130,12 @@ Nagios Plugins allow you to monitor services like DHCP, FTP, HTTP and NTP. To us
         sudo service nagios start
 
     {: .note}
-    > For Ubuntu versions after 14.04, see the [section below](#systemd) before running this step.
+    > For Ubuntu versions after 14.04, see the [Systemd section below](#systemd) before running this step.
 
-    The interface can be accessed in your web browser by appending `/nagios` to your domain or Public IP. When prompted at login, use `nagiosadmin` as the user and use the password you assigned in the **Configure Nagios Web Interface** section.
+2.  The interface can be accessed in your web browser by appending `/nagios` to your domain or Public IP. When prompted at login, use `nagiosadmin` as the user and use the password you assigned in the **Configure Nagios Web Interface** section.
 
 
-2.  You will be greeted with a screen like this one:
+    You will be greeted with a screen like this one:
 
     ![Nagios 4 Greeting](/docs/assets/greeting_nagios4.png)
 
@@ -146,7 +146,7 @@ Nagios Plugins allow you to monitor services like DHCP, FTP, HTTP and NTP. To us
 
 ### Systemd
 
-As of this guides publication, the Nagios build process does not create a systemd service file. In order to manage the service with systemd, create a Nagios service file for the system to load on initialization:
+As of this guide's publication, the Nagios build process does not create a systemd service file. In order to manage the service with systemd, create a Nagios service file for the system to load on initialization:
 
  {: .file}
  /etc/systemd/system/nagios.service
