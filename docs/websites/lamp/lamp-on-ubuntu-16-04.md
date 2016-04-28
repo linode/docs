@@ -6,10 +6,10 @@ description: 'How to install a LAMP (Linux, Apache, MySQL, PHP) stack on an Ubun
 keywords: 'ubuntu lamp,ubuntu 16.04 lamp,lamp install,ubuntu web server,apache,mysql,php,ubuntu 16-04'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['websites/lamp/lamp-server-on-ubuntu-16-04/','websites/lamp/how-to-install-a-lamp-stack-on-ubuntu-16-04/']
-modified: Wednesday, April 26, 2016
+modified: Thursday, April 28th, 2016
 modified_by:
   name: Edward Angert
-published: ''
+published: 'Thursday, April 28th, 2016'
 title: 'LAMP on Ubuntu 16.04'
 external_resources:
  - '[Ubuntu Server Edition Homepage](http://www.ubuntu.com/server)'
