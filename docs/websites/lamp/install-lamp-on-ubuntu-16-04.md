@@ -2,15 +2,14 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'How to install a LAMP (Linux, Apache, MySQL, PHP) stack on an Ubuntu 16.04 long term support (LTS) system.'
-keywords: 'ubuntu lamp,ubuntu 16.04 lamp,lamp install,ubuntu web server,apache,mysql,php,ubuntu 16-04'
+description: 'How to install a LAMP (Linux, Apache, MySQL, PHP) stack on an Ubuntu 16.04 Long Term Support (LTS) system.'
+keywords: 'install lamp ubuntu 16.04,apache install,mysql install,php 7.0, ubuntu 16.04 '
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['websites/lamp/lamp-server-on-ubuntu-16-04/','websites/lamp/how-to-install-a-lamp-stack-on-ubuntu-16-04/']
 modified: Thursday, April 28th, 2016
 modified_by:
   name: Edward Angert
 published: 'Thursday, April 28th, 2016'
-title: 'LAMP on Ubuntu 16.04'
+title: 'Install LAMP on Ubuntu 16.04'
 external_resources:
  - '[Ubuntu Server Edition Homepage](http://www.ubuntu.com/server)'
  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.4/)'
@@ -28,7 +27,7 @@ A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used for hosting 
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, and that the Linode's [hostname is set](/docs/getting-started#setting-the-hostname).
+1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides and that the Linode's [hostname is set](/docs/getting-started#setting-the-hostname).
 
 2.  Update your system:
 
@@ -50,7 +49,7 @@ A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used for hosting 
         KeepAlive Off
         ~~~
 
-3.  The default *multi-processing module* (MPM) for Apache is the *event* module, but by default PHP uses the *prefork* module. Open the `mpm_prefork.conf` file located in `/etc/apache2/mods-available` and edit the configuration. Below are the suggested values for a **1GB Linode**:
+3.  The default *multi-processing module* (MPM) for Apache is the *event* module but by default PHP uses the *prefork* module. Open the `mpm_prefork.conf` file located in `/etc/apache2/mods-available` and edit the configuration. Below are the suggested values for a **1GB Linode**:
 
     {: .file}
     /etc/apache2/mods-available/mpm_prefork.conf
@@ -75,7 +74,7 @@ A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used for hosting 
 
 ### Configure Virtual Hosts
 
-There are several ways to set up virtual hosts; however, below is the recommended method. By default, Apache listens on all IP addresses available to it. For all steps below, replace `example.com` with your domain name
+You can set up virtual hosts several ways; however, below is the recommended method. By default, Apache listens on all IP addresses available to it. For all steps below, replace `example.com` with your domain name.
 
 1.  Create a copy of the default Apache configuration file for your site:
 
@@ -106,7 +105,7 @@ There are several ways to set up virtual hosts; however, below is the recommende
     >
     > The `ServerAlias` directive allows you to include multiple domain names or subdomains for a single host. The example above allows visitors to use `example.com` or `www.example.com` to navigate to this virtual host.
 
-3.  Create the above-referenced directories:
+3.  Create the directories referenced above:
 
         sudo mkdir -p /var/www/html/example.com/{public_html,logs}
 
@@ -173,7 +172,7 @@ There are several ways to set up virtual hosts; however, below is the recommende
 
         sudo apt-get install php7.0-curl php7.0-json php7.0-cgi
 
-2.  Once PHP7 is installed, edit the configuration file located in `/etc/php/7.0/apache2/php.ini` to enable more descriptive errors, logging, and better performance. The following modifications provide a good starting point:
+2.  Once PHP7.0 is installed, edit the configuration file located in `/etc/php/7.0/apache2/php.ini` to enable more descriptive errors, logging, and better performance. The following modifications provide a good starting point:
 
     {: .file-excerpt}
     /etc/php/7.0/apache2/php.ini
@@ -234,13 +233,13 @@ In this section, we'll create a test page that shows whether Apache can render P
 
 ### Troubleshooting
 
-*   If the site does not load at all, check if Apache is running, and restart if required:
+*   If the site does not load at all, check if Apache is running, and restart it if required:
 
         systemctl status apache2
         sudo systemctl restart apache2
 
-*   If the site loads, but the page it returns is the default "Congratulations" page, return to the **Configure Virtual Hosts** section above, and check that the `DocumentRoot` matches your `example.com/public_html` folder
+*   If the site loads, but the page returned is the default "Congratulations" page, return to the **Configure Virtual Hosts** section above, and check that the `DocumentRoot` matches your `example.com/public_html` folder.
 
-*   If the page it returns says "Index of /" or has a similar folder tree structure, create a test `index.html` file or a test file as shown above.
+*   If the page returned says "Index of /" or has a similar folder tree structure, create a test `index.html` file or a test file as shown above.
 
-Congratulations! You have now set up and configured a LAMP stack.
+Congratulations! You have now set up and configured a LAMP stack on Ubuntu 16.04 (LTS).
