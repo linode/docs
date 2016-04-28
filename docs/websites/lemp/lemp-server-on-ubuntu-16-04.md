@@ -190,7 +190,7 @@ The MySQL database engine is one of the leading open source relational database 
 
 In this section, we'll create a test page that shows whether nginx can render PHP and connect to the MySQL database. This can be helpful in locating the source of an error if one of the elements of your LEMP stack is not communicating with the others.
 
-1.  Paste the following code into a new file, `phptest.php`, in the `public_html` directory. Modify `localhost`, `webuser`, and `password` to match the information entered in the **Install the MySQL Database Server** section above:
+1.  Paste the following code into a new file, `phptest.php`, in the `public_html` directory. Modify `webuser` and `password` to match the information entered in the **Install the MySQL Database Server** section above:
 
     {: .file-excerpt}
     /var/www/html/example.com/public_html/phptest.php
