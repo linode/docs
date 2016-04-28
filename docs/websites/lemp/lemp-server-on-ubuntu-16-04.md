@@ -101,12 +101,12 @@ Nginx uses `server` directives to specify name-based virtual hosts. Nginx calls 
 
         sudo ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled
         sudo rm /etc/nginx/sites-enabled/default
-        sudo systemctl restart nginx.service
+        sudo systemctl restart nginx
 
     To deactivate a site, simply delete the symbolic link:
 
         sudo rm /etc/nginx/sites-enabled/example.com
-        sudo systemctl restart nginx.service
+        sudo systemctl restart nginx
 
     The source file is saved, and the site can be re-enabled at any time by recreating the symbolic link.
 
@@ -150,8 +150,8 @@ In order to deploy PHP applications, we will implement the following *PHP-FastCG
 
 3.  Restart the `php7.0-fpm` and `nginx` services:
 
-        sudo service php7.0-fpm restart
-        sudo service nginx restart
+        sudo systemctl restart php7.0-fpm
+        sudo systemctl restart nginx
 
 Congratulations! You can now deploy PHP scripts with your web server.
 
@@ -182,27 +182,59 @@ The MySQL database engine is one of the leading open source relational database 
         GRANT ALL PRIVILEGES ON web.* TO 'webuser';
         quit
 
-
     You can now provide the credentials for the `web` database and the `webuser` user to your application, which will now be able to use the database for its purposes. To ensure that PHP will be able to access the MySQL connector your just installed, restart the PHP service by issue the following command:
 
-        sudo service php7.0-fpm restart
+        sudo systemctl restart php7.0-fpm
 
-## Test The Server
+## Optional: Test and Troubleshoot the LEMP Stack
 
-1.  Create a test php file in `/var/www/html/example.com/public_html`:
+In this section, we'll create a test page that shows whether nginx can render PHP and connect to the MySQL database. This can be helpful in locating the source of an error if one of the elements of your LEMP stack is not communicating with the others.
 
-    {: .file }
-    /var/www/html/example.com/public_html/info.php
+1.  Paste the following code into a new file, `phptest.php`, in the `public_html` directory. Modify `localhost`, `webuser`, and `password` to match the information entered in the **Install the MySQL Database Server** section above:
+
+    {: .file-excerpt}
+    /var/www/html/example.com/public_html/phptest.php
     :   ~~~ php
-        <?php phpinfo(); ?>
+        <html>
+        <head>
+            <title>PHP Test</title>
+        </head>
+            <body>
+            <?php echo '<p>Hello World</p>';
+
+            // In the variables section below, replace user and password with your own MySQL credentials as created on your server
+            $servername = "localhost";
+            $username = "webuser";
+            $password = "password";
+
+            // Create MySQL connection 
+            $conn = mysqli_connect($servername, $username, $password);
+
+            // Check connection - if it fails, output will include the error message
+            if (!$conn) {
+                die('<p>Connection failed: <p>' . mysqli_connect_error());
+            }
+            echo '<p>Connected successfully</p>';
+            ?>
+        </body>
+        </html>
         ~~~
 
-2.  Navigate to `example.com/info.php` in your local web browser. You should see an info page like the one below:
+2.  Navigate to `example.com/phptest.php` from your local machine. If the components of your LEMP stack are working correctly, the browser will display a "Connected successfully" message. If not, the output will be an error message.
 
-    [![PHP Info Page](/docs/assets/lemp-1604-phpinfo-small.png)](/docs/assets/lemp-1604-phpinfo.png)
+3.  Once you've verified that the stack is working, you may remove the file:
 
-3.  Remove this file once you're done inspecting it:
+        sudo rm -rf /var/www/html/example.com/public_html/phptest.php
 
-        sudo rm /var/www/html/example.com/public_html/info.php
+### Troubleshooting
+
+*   If the site does not load at all, check whether nginx is running, and restart if required:
+
+        systemctl status nginx
+        sudo systemctl restart nginx
+
+*   If the site loads, but the page it returns is the default nginx page, return to the **Configure Nginx Virtual Hosting** section above, and check that the `root` directive matches your `example.com/public_html` folder
+
+*   If the page it returns says "Index of /" or has a similar folder tree structure, create a test `index.html` file or a test file as shown above.
 
 Congratulations! You now have a fully functional and fully featured LEMP stack for website and application deployment.
