@@ -119,12 +119,16 @@ There are several ways to set up virtual hosts; however, below is the recommende
     >If you need to disable your website, run:
     >
     >     a2dissite example.com.conf
+
+5.  Disable the default virtual host to minimize security risks:
+
+        sudo a2dissite 000-default.conf
     
-5.  Reload Apache:
+6.  Reload Apache:
 
         sudo systemctl reload apache2
 
-    Virtual hosting for your domain should now be enabled, assuming that you have configured [DNS services](https://www.linode.com/docs/networking/dns/dns-manager-overview) for your domain to point to your Linode's IP address.
+    Virtual hosting should now be enabled. To allow the virtual host to use your domain name, be sure that you have configured [DNS services](https://www.linode.com/docs/networking/dns/dns-manager-overview) for your domain to point to your Linode's IP address. 
 
     If there are additional websites you wish to host on your Linode, repeat the above steps to add a folder and configuration file for each.
 
@@ -196,7 +200,7 @@ There are several ways to set up virtual hosts; however, below is the recommende
 
 In this section, we'll create a test page that shows whether Apache can render PHP and connect to the MySQL database. This can be helpful in locating the source of an error if one of the elements of your LAMP stack is not communicating with the others.
 
-1.  Paste the following code into a new file, `phptest.php`, in the `public_html` directory. Modify `localhost`, `webuser`, and `password` to match the information entered in the **Create a MySQL Database** section above:
+1.  Paste the following code into a new file, `phptest.php`, in the `public_html` directory. Modify `webuser` and `password` to match the information entered in the **Create a MySQL Database** section above:
 
     {: .file-excerpt}
     /var/www/html/example.com/public_html/phptest.php
