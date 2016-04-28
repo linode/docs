@@ -5,11 +5,11 @@ author:
 description: 'Install MongoDB for use in application development on Ubuntu 16.04 (Xenial).'
 keywords: 'nosql,database,mongodb,key store'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Monday, April 25th, 2016
+modified: Thursday, April 28th, 2016
 modified_by:
   name: Phil Zona
-published: 'Monday, April 25th, 2016'
-title: 'Use MongoDB to Store Application Data on Ubuntu 16.04 (Xenial)'
+published: 'Thursday, April 28th, 2016'
+title: 'MongoDB on Ubuntu 16.04 (Xenial)'
 ---
 
 MongoDB is a database engine that provides access to non-relational, document-oriented databases. It is part of the growing NoSQL movement, which seeks to provide an alternative to traditional relational database management systems (RDBMS). In addition to its schema-free design and scalable architecture, MongoDB provides a JSON output and specialized language specific bindings that make it particularly attractive for use in custom application development. MongoDB has been used in a number of large scale [production deployments](https://www.mongodb.org/community/deployments) and is currently one of the most popular database engines across all systems.
@@ -22,7 +22,7 @@ MongoDB is a database engine that provides access to non-relational, document-or
 
 - Update your system:
 
-      sudo apt-get update && apt-get upgrade
+      sudo apt-get update && sudo apt-get upgrade
 
 {: .note}
 >
@@ -44,46 +44,42 @@ The configuration file for MongoDB Server is located at `/etc/mongodb.conf`. Mos
 - `logpath` indicates where MongoDB's logs will be located (`/var/log/mongodb/mongodb.log` by default).
 - `logappend` indicates whether or not new entries will be appended to the end of the log rather than overwriting existing log entries after each time MongoDB restarts.
 - `bind_ip` option specifies which IP address(es) MongoDB should listen on. It is generally recommended to leave this at the default setting of 127.0.0.1 (localhost) unless you have a specific reason to host this to the public internet. Specifying `0.0.0.0` here will cause MongoDB to listen on *all* network interfaces.
-- `port` specifies the default network port, but can be uncommented and modified
+- `port` specifies the default network port of 27017, but can be uncommented and modified.
 
-It is recommended that you uncomment and set the `auth` option to `true` in order to take advantage of MongoDB's internal authentication capabilities. If you need to test the database without authentication, you can replace the `auth` option with `noauth`.
+It is recommended that you uncomment and set the `auth` option to `true` in order to take advantage of MongoDB's internal authentication capabilities. If you need to test the database without authentication, you can set the `auth` option to "false" or simply comment it out as authentication is disabled when not explicitly defined.
 
-Please note that after making any changes to the MongoDB configuration file, you'll need to restart the service for the changes to take effect.
+{: .note}
+>You may notice a `noauth` option in the configuration file in addition to `auth`. This option is left over from previous MongoDB versions and exists for future compatibility. The `auth` option should be used instead for clarity and consistency.
+
+After making any changes to the MongoDB configuration file, you'll need to restart the service for the changes to take effect.
 
 ## Start and Stop the MongoDB Server
 
 To start, restart, or stop MongoDB, issue the appropriate command from the following:
 
-    sudo service mongodb start
-    sudo service mongodb restart
-    sudo service mongodb stop
+    sudo systemctl start mongodb
+    sudo systemctl restart mongodb
+    sudo systemctl stop mongodb 
 
 ## Create a User
 
-If you enabled authentication above, your first step will be to create a user administrator and credentials for use on the database.
+If you enabled authentication above, your first step will be to create a user administrator and credentials for use on the database. 
 
-1.  Start the MongoDB daemon, specifying the filepath for the configuration file to be used. The default location is `/etc/mongodb.conf`:
+1.  From the command line, run the `mongo` command to open the shell.
 
-        sudo mongod --config /etc/mongodb.conf
-
-    {: .note }
-    > If you need to stop the daemon, issue the above command with the `--shutdown` argument appended. The shutdown command does require `--config /etc/mongodb.conf` if it was specified on startup.
-
-2.  From the command line, run the `mongo` command to open the shell.
-
-3.  By default, you will be connected to a database called `test`. Before adding any users, we will create a database to store user data for authentication:
+2.  By default, you will be connected to a database called `test`. Before adding any users, we will create a database to store user data for authentication:
 
         use admin
 
-4.  The following command will create a user called `mongo-admin` with a password of `password`, with the ability to create other users on any database:
+3.  The following command will create a user called `mongo-admin` with a password of `password`, with the ability to create other users on any database:
 
         db.createUser({user: "mongo-admin", pwd: "password", roles:[{role: "userAdminAnyDatabase", db: "admin"}]})
 
     Be sure to change `password` to something secure, and keep it in a safe place for future reference. 
 
-5.  Run the `quit()` function to exit to your Ubuntu user shell.
+4.  Run the `quit()` function to exit to your Ubuntu user shell.
 
-6.  Test your connection to MongoDB with the credentials specified above, using the `admin` database for authentication:
+5.  Test your connection to MongoDB with the credentials specified above, using the `admin` database for authentication:
 
         mongo -u mongo-admin -p --authenticationDatabase admin
 
@@ -103,14 +99,14 @@ Much of MongoDB's popularity comes from its ease of integration. Interactions wi
 
         use newdb
 
-    To show the name of the current working database, run the `db` command.
+    To show the name of the current working database, run the `db` command. To show a list of all databases, run `show dbs`.
 
 3.  Create sample data for entry into the test database. MongoDB accepts input as *documents* in the form of JSON objects such as those below. The `a` and `b` variables are used to simplify entry; objects can be inserted directly via functions as well.
 
-        var a = { name : "John Doe"}
+        var a = { name : "John Doe" }
         var b = { age : 30 }
 
-4.  Insert the data into a *collection* called `example`, using the `insert` function. If you're not familiar with MongoDB terminology, you can think of a collection as analogous to a table in SQL.
+4.  Insert the data into a *collection* called `example`, using the `insert` function. If you're not familiar with MongoDB terminology, you can think of a collection as analogous to a table in a relational database management system.
 
         db.example.insert(a)
         db.example.insert(b)
@@ -121,7 +117,7 @@ Much of MongoDB's popularity comes from its ease of integration. Interactions wi
 
     The output will list all collections containing data within the current working database.
 
-6.  View all data in the `example` collection using the `find` function. This function can also be used to search for a specific field by entering a search term as an argument rather than leaving it empty:
+6.  View all data in the `example` collection using the `find` function. This function can also be used to search for a specific field by entering a search term parameter rather than leaving it empty:
 
         db.example.find()
 
