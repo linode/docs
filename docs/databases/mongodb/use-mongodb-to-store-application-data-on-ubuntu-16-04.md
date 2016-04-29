@@ -77,7 +77,7 @@ If you enabled authentication above, your first step will be to create a user ad
 
     Be sure to change `password` to something secure, and keep it in a safe place for future reference. 
 
-4.  Run the `quit()` function to exit to your Ubuntu user shell.
+4.  Run the `quit()` function to exit the Mongo shell.
 
 5.  Test your connection to MongoDB with the credentials specified above, using the `admin` database for authentication:
 
