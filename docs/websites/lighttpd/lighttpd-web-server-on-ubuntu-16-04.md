@@ -30,11 +30,11 @@ This tutorial explains how to install and configure the lighttpd ("lighty") web 
 
 4.  Update your system:
 
-    apt-get update && apt-get upgrade
+        apt-get update && apt-get upgrade
 
 {: .note}
 >
->This guide is written for a root user. 
+>The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
 ## Install Lighttpd
 
@@ -45,7 +45,7 @@ First, install the server from the Ubuntu package repository:
 Once the server is installed, check to make sure that it's running and is enabled. Visit `http://198.51.100.10:80` in your browser, replacing `198.51.100.10` with your own IP address. If you have set up lighttpd to run on an alternate port for testing, be sure to replace `80` with this port. You'll see a placeholder page for lighttpd that contains some important information. Notably:
 
 -   The configuration file is located at `/etc/lighttpd/lighttpd.conf`, which we will be editing to further configure the server.
--   By default, the "server.document-root" (where all web-accessible files are stored) is located in the `/var/www` directory. You'll be able to indicate another folder later in the process if you would like.
+-   By default, the "server.document-root" (where all web-accessible files are stored) is located in the `/var/www/html` directory. You'll be able to indicate another folder later in the process if you would like.
 -   Ubuntu provides helper scripts to enable and disable server modules without directly editing the config file: `lighty-enable-mod` and `lighty-disable-mod`
 
 ## Configure Lighttpd
