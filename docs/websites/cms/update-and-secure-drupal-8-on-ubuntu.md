@@ -16,7 +16,7 @@ Drupal 8 is the lastest version of the popular [Drupal](https://www.drupal.org/)
 
 ## Before You Begin
 
-1.  Ensure that you have followed the following guides:
+1.  Ensure that you have completed the following guides:
 
     -   [Getting Started](/docs/getting-started)
     -   [Securing Your Server](/docs/security/securing-your-server)
@@ -31,13 +31,13 @@ Drupal 8 is the lastest version of the popular [Drupal](https://www.drupal.org/)
 
 {: .note}
 >
->  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account, harden SSH access, remove unnecessary network services and create firewall rules for your web server; you may need to make addional firewall exceptions for your specific application.
->
->Replace each instance of `example.com` and `user` with the names appropriate to your site, and `203.0.113.52` with your Liode's IP address or domain name.
+> - This guide will use `sudo` wherever possible.
+> - You may need additional firewall rules for your specific application.
+> - Replace each instance of `example.com` and `user` with the names appropriate to your site, and `203.0.113.52` with your Liode's IP address or domain name.
 
 ## Create Backups
 
-Backup existing files and move the archive into the backups directory. This process can also be moved into a script and run on a regular basis using [cron](docs/tools-reference/tools/schedule-tasks-with-cron):
+Backup existing files and move the archive into the backups directory. This process can also be scripted and run on a regular basis using [cron](docs/tools-reference/tools/schedule-tasks-with-cron):
 
     cd /var/www/html/example.com/public_html
     sudo tar -cvzf example.com-BCKP-$(date +%Y%m%d).tar.gz ./
@@ -45,12 +45,12 @@ Backup existing files and move the archive into the backups directory. This proc
 
 ## Download Updates 
 
-1.  Log in to your Drupal site, and navigate to the Admin Toolbar. Click **Reports**, then **Available updates**.
+1.  Log in to your Drupal site and navigate to the Admin Toolbar. Click **Reports**, then **Available updates**.
 
     {: .note}
     > If **Available updates** is not listed, enable the Update Manager plugin under **Extend**.
 
-2.  Right click "Download" to the right of the desired version and copy the link address
+2.  Right click "Download" to the right of the desired version and copy the link address:
 
     [![A Drupal Update](/docs/assets/drupal-updates-download-small.png)](/docs/assets/drupal-updates-download.png)
 
@@ -58,14 +58,14 @@ Backup existing files and move the archive into the backups directory. This proc
 
         ssh user@203.0.113.52
 
-4.  Navigate to the Apache DocumentRoot directory and download the new file, using `wget` and pasting the link address you copied from Step 2:
+4.  Navigate to the Apache DocumentRoot directory. Download the new file using `wget` and pasting the link address you copied from Step 2:
 
         cd /var/www/html/example.com
         wget https://ftp.drupal.org/files/projects/drupal-8.0.5.tar.gz
 
 ## Upgrade Your Site
 
-###  Put site into Maintenance Mode
+###  Put the Site into Maintenance Mode
 
 1.  Back in you browser navigate to **Configuration**, **Development**, then **Maintenance mode**:
 
@@ -86,7 +86,7 @@ Backup existing files and move the archive into the backups directory. This proc
         cd ..
         sudo tar -zxvf drupal-8.0.6.tar.gz --strip-components=1 -C public_html
 
-3.  From a browser on your local machine, navigate to `example.com/update.php`.
+3.  From a browser on your local machine, navigate to `example.com/update.php`:
 
     {: .note}
     >If `update.php` does not load or returns a 403 Forbidden error, you can try to change the ownership and permissions of the newly expanded files:
@@ -97,17 +97,17 @@ Backup existing files and move the archive into the backups directory. This proc
     >chmod 757 /var/www/html/example.com/public_html/sites/default/settings.php
     >~~~
 
-4.  Follow the prompts to continue the update
+4.  Follow the prompts to continue the update.
 
-5.  If installing additional modules or configuring additional security settings, proceed to the *Additional Security* section below. Return to Step 6 once those configurations are complete.
+5.  If installing additional modules or configuring additional security settings, proceed to the *[Additional Security](/docs/websites/cms/update-and-secure-drupal-8-on-ubuntu#additional-security)* section below. Return to Step 6 once those configurations are complete.
 
-6.  Rebuild the site's cache by clicking **Configuration** in the Admin Toolbar, then **Performance** under Development. Click **Clear all caches**
+6.  Rebuild the site's cache by clicking **Configuration** in the Admin Toolbar, then **Performance** under Development. Click **Clear all caches**.
 
-7.  Click **Reports** in the Admin Toolbar, then **Status report** 
+7.  Click **Reports** in the Admin Toolbar, then **Status report**.
 
-8.  From your Linode, open `/var/www/html/example.com/public_html/sites/default/settings.php` and confirm that `$update_free_access = FALSE`
+8.  From your Linode, open `/var/www/html/example.com/public_html/sites/default/settings.php` and confirm that `$update_free_access = FALSE`.
 
-9.  If everything looks good, take the site out of maintenance mode as described above in *Put site into Maintenance Mode* and uncheck the box next to "Put site into maintenance mode"
+9.  If everything looks good, take the site out of maintenance mode *[described above](/docs/websites/cms/update-and-secure-drupal-8-on-ubuntu#put-the-site-into-maintenance-mode)* by unchecking the box next to "Put site into maintenance mode".
 
 ## Additional Security 
 
