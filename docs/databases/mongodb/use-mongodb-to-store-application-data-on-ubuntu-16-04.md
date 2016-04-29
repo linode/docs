@@ -61,7 +61,7 @@ To start, restart, or stop MongoDB, issue the appropriate command from the follo
     sudo systemctl restart mongodb
     sudo systemctl stop mongodb 
 
-## Create a User
+## Create Database Users
 
 If you enabled authentication above, your first step will be to create a user administrator and credentials for use on the database. 
 
@@ -71,13 +71,23 @@ If you enabled authentication above, your first step will be to create a user ad
 
         use admin
 
-3.  The following command will create a user called `mongo-admin` with a password of `password`, with the ability to create other users on any database:
+3.  The following command will create an administrative user called `mongo-admin` with a password of `password`, with the ability to create other users on any database:
 
         db.createUser({user: "mongo-admin", pwd: "password", roles:[{role: "userAdminAnyDatabase", db: "admin"}]})
 
-    Be sure to change `password` to something secure, and keep it in a safe place for future reference. 
+    Be sure to change `password` to something secure, and keep it in a safe place for future reference. You may also use a different username if you choose; `mongo-admin` is only an example. The output will display the information written to the database while omitting the password:
 
-4.  Run the `quit()` function to exit to your Ubuntu user shell.
+        Successfully added user: {
+            "user" : "mongo-admin",
+            "roles" : [
+                    {
+                        "role" : "userAdminAnyDatabase",
+                        "db" : "admin"
+                    }
+            ]
+        }
+
+4.  Run the `quit()` function to exit the mongo shell.
 
 5.  Test your connection to MongoDB with the credentials specified above, using the `admin` database for authentication:
 
@@ -85,7 +95,19 @@ If you enabled authentication above, your first step will be to create a user ad
 
     Note that authentication is not forced, even when the `auth` option is enabled within the configuration file. However, access to other databases will be restricted to users that have been added to the `admin` database with the proper permissions.
 
-The `mongo-admin` user is purely administrative. You may use it to create additional users and define privileges on any database, but you will not have privileges on those databases unless it is granted. If you are using multiple applications with MongoDB, it is recommended to set up different users with custom permissions.
+    The `mongo-admin` user we created is purely administrative based on the roles we specified; it is defined as a user administrator for any database, but does not have any permissions itself. You may use it to create additional users and define their roles, but it will not have privileges on those databases. If you are using multiple applications with MongoDB, it is recommended to set up different users with custom permissions for their corresponding databases.
+
+6.  As the `mongo-admin` user, create a new database to store regular user data for authentication. We'll call it `user-data` for this example, but you can choose a different name if you wish:
+
+        use user-data
+
+7.  Next, create a new, non-admin user so that we can enter some test data. You may change `example-user` to anything you like, but be sure to set `password` to something secure:
+       
+        db.createUser({user: "example-user", pwd: "password", roles:[{role: "read", db: "user-data"}, {role:"readWrite", db: "newdb"}]})
+
+    This command uses the current working database to store the given authentication information for `example-user`. Permissions for different databases are handled in separate `roles` objects; in this example, `example-user` has read-only permissions for the `user-data` database, but has read and write permissions for the `newdb` database, which we'll create in the next section. 
+
+To create additional users, repeat steps 6 and 7 as the administrative user, creating new usernames, passwords and roles by substituing the appropriate values.
 
 For more information on access control and user management, as well as other tips on securing your databases, refer to the [MongoDB Security Documentation](https://docs.mongodb.org/v2.6/core/security-introduction/).
 
@@ -93,13 +115,17 @@ For more information on access control and user management, as well as other tip
 
 Much of MongoDB's popularity comes from its ease of integration. Interactions with databases are done via JavaScript functions, although [drivers for other languages](http://docs.mongodb.org/ecosystem/drivers/) are available. This section will demonstrate a few basic features, but we encourage you to do further research based on your specific use case.
 
-1.  Open the MongoDB shell using `mongo`, without any credentials. Make sure you are not using the shell as `mongo-admin` for this example, as that user does not have any privileges on the new database we are going to create.
+1.  Open the MongoDB shell using the `example-user` we created above:
+
+        mongo -u example-user -p --authenticationDatabase user-data
 
 2.  Create a new database called `newdb`:
 
         use newdb
 
-    To show the name of the current working database, run the `db` command. To show a list of all databases, run `show dbs`.
+    Make sure that this database name corresponds with the one for which the user has read and write permissions.   
+
+    To show the name of the current working database, run the `db` command.
 
 3.  Create sample data for entry into the test database. MongoDB accepts input as *documents* in the form of JSON objects such as those below. The `a` and `b` variables are used to simplify entry; objects can be inserted directly via functions as well.
 
@@ -111,11 +137,20 @@ Much of MongoDB's popularity comes from its ease of integration. Interactions wi
         db.example.insert(a)
         db.example.insert(b)
 
+    The output for each of these operations will show the number of objects successfully written to the current working database:
+
+        WriteResult({ "nInserted" : 1 })
+
 5.  Confirm that the `example` collection was properly created:
 
         show collections
 
-    The output will list all collections containing data within the current working database.
+    The output will list all collections containing data within the current working database:
+
+        example
+        system.indexes
+
+    In this case, `example` is the collection we created, and `system.indexes` is a collection of indexes created automatically for internal use by MongoDB.
 
 6.  View all data in the `example` collection using the `find` function. This function can also be used to search for a specific field by entering a search term parameter rather than leaving it empty:
 
@@ -126,7 +161,7 @@ Much of MongoDB's popularity comes from its ease of integration. Interactions wi
         { "_id" : ObjectId("571a3e7507d0fcd78baef08f"), "name" : "John Doe" }
         { "_id" : ObjectId("571a3e8707d0fcd78baef090"), "age" : 30 }
 
-    You may notice the objects we entered are preceded by `_id` fields and `ObjectId` values. These are unique indexes generated by MongoDB when an `_id` value is not explicitly defined. `ObjectId` values can be used as primary keys when entering queries, although for ease of use, you may wish to create a custom index as you would with any other database system.
+    You may notice the objects we entered are preceded by `_id` fields and `ObjectId` values. These are unique indexes generated by MongoDB when an `_id` value is not explicitly defined. `ObjectId` values can be used as primary keys when entering queries, although for ease of use, you may wish to create your own index as you would with any other database system.
 
 ## Additional MongoDB Functionality
 
