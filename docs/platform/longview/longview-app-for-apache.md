@@ -229,6 +229,10 @@ To fix this, follow these steps:
             SetHandler server-status
         ~~~
     The `SetHandler server-status` line indicates that this is the location block for mod\_status. The location line itself sets the location.
+    
+    #####On cPanel/WHM
+    You'll want to edit the `/etc/linode/longview.d/Apache.conf` file with the contents: 
+    `location http://localhost/whm-server-status?auto` to update Longview to look at the cPanel customized status page. 
 
 4.  Longview is designed to check the default location automatically. If you use the default location shown above, you should be done. Refresh the Longview Apache tab in the Linode Manager to verify that it's working now.
 5.  If you're not using the default location, you need to create a new file, `/etc/linode/longview.d/Apache.conf`, and set the `location` variable to match what you set in the Apache configuration file:
