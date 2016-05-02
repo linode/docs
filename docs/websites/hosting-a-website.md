@@ -184,10 +184,6 @@ MySQL consumes a lot of memory when using the default configuration. To set reso
 
         sudo nano /etc/mysql/my.cnf
 
-    If you are using Ubuntu 16.04, the path will be slightly different:
-
-        sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf
-
 2.  Comment out all lines beginning with `key_buffer`. This is a deprecated setting and we'll use the correct option instead.
 
 3.  Edit following values:
