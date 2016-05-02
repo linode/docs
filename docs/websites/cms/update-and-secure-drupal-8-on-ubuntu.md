@@ -37,7 +37,7 @@ Drupal 8 is the lastest version of the popular [Drupal](https://www.drupal.org/)
 
 ## Create Backups
 
-Backup existing files and move the archive into the backups directory. This process can also be scripted and run on a regular basis using [cron](docs/tools-reference/tools/schedule-tasks-with-cron):
+Back up existing files and move the archive into the backups directory. This process can also be scripted and run on a regular basis using [cron](docs/tools-reference/tools/schedule-tasks-with-cron):
 
     cd /var/www/html/example.com/public_html
     sudo tar -cvzf example.com-BCKP-$(date +%Y%m%d).tar.gz ./
@@ -58,7 +58,7 @@ Backup existing files and move the archive into the backups directory. This proc
 
         ssh user@203.0.113.52
 
-4.  Navigate to the Apache DocumentRoot directory. Download the new file using `wget` and pasting the link address you copied from Step 2:
+4.  Navigate to the Apache DocumentRoot directory. Download the new file by using `wget` and pasting the link address you copied from Step 2:
 
         cd /var/www/html/example.com
         wget https://ftp.drupal.org/files/projects/drupal-8.0.5.tar.gz
@@ -128,7 +128,7 @@ Backup existing files and move the archive into the backups directory. This proc
       >
       >     chmod u+w /var/www/html/example.com/public_html/sites/default/services.yml
 
-2. Consider installing additional security modules from `https://www.drupal.org/project/project_module`:
+2. Consider installing additional security modules from the [Drupal Project Module](https://www.drupal.org/project/project_module):
     * [Secure Login](https://www.drupal.org/project/securelogin) enforces secure authenticated session cookies
     * [Password Policy](https://www.drupal.org/project/password_policy): Define a user password policy
     * [Security Review](https://www.drupal.org/project/security_review): Automated security testing
