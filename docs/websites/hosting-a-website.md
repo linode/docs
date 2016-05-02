@@ -17,7 +17,7 @@ Now that you've installed Linux and secured your Linode, it's time to start *doi
 
 {: .note }
 >
-> Debian 8 and Ubuntu 14.04 LTS are the [Linux distributions](/docs/getting-started#sph_deploying-a-linux-distribution) we're using as the starting point for the packages and configurations mentioned in this guide. If you'd like to use Ubuntu 16.04 LTS, refer to the distribution-specific guide on how to set up a [LAMP Stack](/docs/websites/lamp/install-lamp-on-ubuntu-16-04), and then return here to continue from the [upload files](#upload-files) section.
+> Debian 8 and Ubuntu 14.04 LTS are the [Linux distributions](/docs/getting-started#deploying-an-image) we're using as the starting point for the packages and configurations mentioned in this guide. If you'd like to use Ubuntu 16.04 LTS, refer to the distribution-specific guide on how to set up a [LAMP Stack](/docs/websites/lamp/install-lamp-on-ubuntu-16-04), and then return here to continue from the [upload files](#upload-files) section.
 >
 > This guide is designed for small and medium-size websites running on WordPress, Drupal, or another PHP content management system. If your website doesn't belong in that category, you'll need to assess your requirements and install custom packages tailored for your particular requirements.
 >
