@@ -9,7 +9,7 @@ alias: ['remote-access/']
 modified: Saturday, September 6th, 2014
 modified_by:
   name: Linode
-published: 'Tuesday, April 24th, 2012'
+published: 'Tuesday, May 3rd, 2016'
 title: Remote Access
 ---
 
@@ -130,9 +130,11 @@ Here's how to swap IP addresses:
 
 8.  Select both of the **Move It** checkboxes to verify that you want the IP addresses switched.
 9.  Click **Do it**.
-10.  (Optional) Enable the [Network Helper tool](https://www.linode.com/docs/platform/network-helper) and reboot your Linode VPS.
+10. **Optional** Enable [Network Helper](/docs/platform/network-helper) and reboot your Linode VPS.
 
-An IP swap tells our routers to begin sending traffic to your Linode, but you still need to have the right IP address set in Linux's network interface configuration file. If you have not changed this yourself and restarted your interface (see [Static IP configuration for more information](https://www.linode.com/docs/networking/linux-static-ip-configuration) then you'll want to use the network helper tool to write it automatically. After that there may still be a delay of a few minutes (usually no more than a few minutes) between the IP swap for our routers to begin pointing traffic at your Linode.
+    Network Helper automatically configures static IP address configuration files, and will update them with the new IP address. It's turned on by default for newer Linodes. For older Linodes, unless you've modified the networking configuration, DHCP assigns the IP address on boot.
+
+    If Network Helper is turned off *and* you've configured your IP address [statically](/docs/networking/linux-static-ip-configuration), you'll need to update the configuration for the new addresses, or turn Network Helper on.
 
 ## Adding Private IP Addresses
 
