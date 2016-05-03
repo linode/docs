@@ -10,7 +10,7 @@ modified: Wednesday, April 27, 2016
 modified_by:
   name: Phil Zona
 published: 'Thursday, April 28 2016'
-title: 'Apache Tomcat on Ubuntu 16.04 (Xenial Xerus)'
+title: 'Apache Tomcat on Ubuntu 16.04'
 external_resources:
  - '[Tomcat Home Page](http://tomcat.apache.org/)'
  - '[Tomcat FAQ](http://wiki.apache.org/tomcat/FAQ)'
@@ -50,11 +50,11 @@ You may also want to install the `tomcat8-docs`, `tomcat8-examples`, and `tomcat
 
     apt-get install tomcat8-docs tomcat8-examples tomcat8-admin
 
-Tomcat should be totally functional following your next system reboot. If you need to start, stop, or restart Tomcat you can use the following commands:
+If you need to start, stop, or restart Tomcat you can use the following commands:
 
-    /etc/init.d/tomcat8 start
-    /etc/init.d/tomcat8 stop
-    /etc/init.d/tomcat8 restart
+    systemctl start tomcat8
+    systemctl stop tomcat8
+    systemctl restart tomcat8
 
 ## Test and Use Tomcat
 
@@ -74,6 +74,6 @@ If you are not using the web application and plan to manage your application(s) 
 
 Restart the Tomcat server, which will allow these changes to take effect:
 
-    /etc/init.d/tomcat8 restart
+    systemctl restart tomcat8
 
 Congratulations! You now have a working Apache Tomcat installation.
