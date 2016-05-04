@@ -5,7 +5,6 @@ author:
 description: 'Using lighttpd to host multiple websites on Ubuntu 16.04 (Xenial Xerus)'
 keywords: 'lighttpd,web server,web hosting'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['web-servers/lighttpd/ubuntu-16-04/']
 modified: Wednesday, April 13th, 2016
 modified_by:
   name: Phil Zona
@@ -18,7 +17,7 @@ external_resources:
  - '[NixCraft Guides for Ligttpd (nixcraft)](http://www.cyberciti.biz/tips/category/lighttpd)'
 ---
 
-This tutorial explains how to install and configure the lighttpd ("lighty") web server on Ubuntu 16.04 (Xenial Xerus). Lighttpd provides a lightweight web server that is capable of serving large loads using less memory than servers like the Apache. It's commonly deployed on high traffic sites, including WhatsApp and Xkcd. Lighttpd makes sense for users who find "big" programs like Apache daunting and bloated.
+This tutorial explains how to install and configure the lighttpd ("lighty") web server on Ubuntu 16.04 (Xenial Xerus). Lighttpd provides a lightweight web server that is capable of serving large loads using less memory than servers like the Apache. It's commonly deployed on high traffic sites, including WhatsApp and xkcd. Lighttpd makes sense for users who find "big" programs like Apache daunting and bloated.
 
 ## Before You Begin
 
@@ -42,159 +41,181 @@ First, install the server from the Ubuntu package repository:
 
     apt-get install lighttpd
 
-Once the server is installed, check to make sure that it's running and is enabled. Visit `http://198.51.100.10:80` in your browser, replacing `198.51.100.10` with your own IP address. If you have set up lighttpd to run on an alternate port for testing, be sure to replace `80` with this port. You'll see a placeholder page for lighttpd that contains some important information. Notably:
+Once the server is installed, check to make sure that it's running and is enabled. Visit `http://198.51.100.10:80` in your browser, replacing `198.51.100.10` with your own IP address. If you set up lighttpd to run on an alternate port for testing, be sure to replace `80` with this port. You'll see a placeholder page for lighttpd that contains some important information:
 
--   The configuration file is located at `/etc/lighttpd/lighttpd.conf`, which we will be editing to further configure the server.
--   By default, the "server.document-root" (where all web-accessible files are stored) is located in the `/var/www/html` directory. You'll be able to indicate another folder later in the process if you would like.
--   Ubuntu provides helper scripts to enable and disable server modules without directly editing the config file: `lighty-enable-mod` and `lighty-disable-mod`
+-   The configuration files are located in `/etc/lighttpd`.
+-   By default, the "DocumentRoot" (where all HTML files are stored) is located in the `/var/www` directory. You'll be able to configure this later.
+-   Ubuntu provides helper scripts to enable and disable server modules without directly editing the config file: `lighty-enable-mod` and `lighty-disable-mod`.
 
 ## Configure Lighttpd
 
-You should configure lighttpd to provide only the services that you need. Strictly speaking, none of the configuration options described in this section are *required*, but they may prove useful in your configuration process.
+The main lighttpd configuration file is located at `/etc/lighttpd/lighttpd.conf`. This file provides a list of server modules to be loaded and allows you to change global settings for the web server. 
 
-Begin by entering the command `lighty-enable-mod` at the command prompt. You will be provided with a list of available modules and a list of already enabled modules, as well as a prompt to enable a module. You can exit with **CTRL+C**, or you can enable one of the modules at this point. You may also use `lighty-enable` to activate this prompt.
+The first directive in the configuration is `server.modules`, which lists modules to be loaded upon starting or reloading the lighttpd server. Modules can be commented out to disable them, uncommented to enable them, and added to this list. For example, in the default file, you can enable the `mod_rewrite` (rewriting URL requests) module by uncommenting the appropriate line, or add `mod_auth` to enable the authentication module. Note that these modules will be loaded in the order they appear.
 
-For a basic complement of modules, we might begin by enabling SSI (for server-side includes) and authentication modules:
+Following the `server.modules` block is a list of other settings to configure the server and its modules. Most directives are self-explanatory, but not all available options are listed by default and you may want to add them, depending on your needs. A few performance settings you may want to add yourself include:
 
-    lighty-enable-mod ssi auth
+-   `server.max-connections` - Specifies how many concurrent connections will be supported
+-   `server.max-keep-alive-requests` - Sets the maximum number of requests within a keep alive session before the connection is terminated
+-   `server.max-worker` - Specifies the number of worker processes to spawn. If you're familiar with Apache, a worker is analogous to a child process.
+-   `server.bind` - Defines the IP address, hostname, or path to the socket lighttpd will listen on. Multiple lines can be created to listen on different IP addresses. The default setting is to bind to all interfaces.
 
-You may also want to enable the `mod_rewrite` (rewriting URL requests) and `mod_evhost` (virtual hosting of domains and subdomains) modules, which you can do by uncommenting the appropriate lines at the beginning of the config file (`/etc/lighttpd/lighttpd.conf`). Some options in this file allow you to:
+Some settings depend on certain modules. For example, `url.rewrite` requires that `mod_rewrite` be enabled because it is specific to that module. However, for ease of use, most modules have their own configuration files and can be enabled and disabled via command line rather than by editing the configuration file.
 
--   change which TCP port lighttpd uses by modifying `server.port`.
--   specify which network devices (statically configured IP addresses) you want the server to use to listen for new connections. If you want to run lighttpd for some IP addresses, and another web server for other IP addresses, you can alter the `server.bind` property.
--   configure URL rewriting by modifying `url.rewrite` values.
+### Enable and Disable Modules via Command Line
 
-There are many additional modules that are included in separate Ubuntu packages. They can be installed with `apt-get install`. The salient ones are:
+For ease of use, you may wish to enable and disable modules via the command line. Lighttpd provides a simple method to do this so the configuration doesn't need to be edited every time a new module is needed.
 
--   `lighttpd-mod-mysql-vhost` - provides an alternate means of managing virtual hosts using a MySQL database, and is good for instances where you need to manage a large number of virtual hosts in a programmatic manner
--   `lighttpd-mod-webdav` - provides support for the WebDAV extensions to the HTTP protocol for distributed authoring of HTTP resources
--   `lighttpd-mod-magnet` - provides a powerful mechanism for URL rewrites and caching abilities based on the Lua scripting language
+Run `lighty-enable-mod` from the command line to see a list of available modules and a list of already enabled modules, as well as a prompt to enable a module. This can also be accomplished in one line. For example, to enable the authentication module:
 
-When you have installed these packages you will be able to enable them using `lighty-enable-mod`. For more information regarding installation and configuration of specific modules, consult the [lighttpd documentation](http://redmine.lighttpd.net/projects/lighttpd/wiki/Docs).
+    lighty-enable-mod auth
 
-Remember to reload lighttpd after you've finished installing, enabling, and configuring new modules:
+This command creates a symbolic link to the module's configuration file in `/etc/lighttpd/conf-enabled`, which is read by a script in the main configuration file. To edit the configuration for a specific module, look for its `.conf` file in `/etc/lighttpd/conf-available`.
 
-    /etc/init.d/lighttpd force-reload
+There are many additional modules that are included in separate Ubuntu packages. Some useful ones are:
+
+-   `lighttpd-mod-mysql-vhost` - Manages virtual hosts using a MySQL database. This module works well when you need to manage a large number of virtual hosts
+-   `lighttpd-mod-webdav` - Supports WebDAV extensions to HTTP for distributed authoring of HTTP resources
+-   `lighttpd-mod-magnet` - Controls the request handling module 
+
+When you have installed these packages you will be able to enable them using `lighty-enable-mod`. 
+
+Remember to restart lighttpd to load any changes:
+
+    systemctl restart lighttpd.service
+
+For a comprehensive list of available options and modules, refer to the lighttpd project's documentation on [configuration options](https://redmine.lighttpd.net/projects/lighttpd/wiki/Docs_ConfigurationOptions).
 
 ## Virtual Host Setup with Simple Vhost
 
-### Configure Simple Vhost Module
+This section covers configuration for simple virtual hosting. The `simple-vhost` module allows you to set up virtual hosts with respective document roots in user-defined folders named for the domains, below a server root. Ensure that all other virtual hosting modules are turned off before proceeding.
 
-This section covers configuration for simple virtual hosting. Ensure that all other virtual hosting modules are turned off before proceeding.
+1.  Begin by enabling `simple-vhost`:
 
-The `simple-vhost` module allows you to set up virtual hosts with respective document roots in folders named for the domains, below a server root.
+        lighty-enable-mod simple-vhost
 
-Begin by enabling `simple-vhost` with the following command:
+2.  Restart lighttpd to load your changes:
 
-    lighty-enable-mod simple-vhost
+        systemctl restart lighttpd.service
 
-Continue by reloading lighttpd:
+3.  Modify the following settings in your `/etc/lighttpd/conf-available/10-simple-vhost.conf` file:
 
-    /etc/init.d/lighttpd force-reload
+    {: .file-excerpt}
+    /etc/lighttpd/conf-available/10-simple-vhost.conf
+    :   ~~~ lighty
+        simple-vhost.server-root = "/var/www/html" 
+        simple-vhost.document-root = "htdocs" 
+        simple-vhost.default-host = "example.com" 
+        ~~~
+    The `server-root` defines the base directory under which all virtual host directories are created.
 
-Modify the following settings in your `/etc/lighttpd/conf-enabled/10-simple-vhost.conf` file:
+    The `document-root` defines the subdirectory under the host directory that contains the pages to be served. This is comparable to the `public_html` directory in some Apache configurations, and is called `htdocs` in the above configuration.
 
-{: .file-excerpt}
-/etc/lighttpd/conf-enabled/10-simple-vhost.conf
-:   ~~~ lighty
-    simple-vhost.server-root = "/var/www" 
-    simple-vhost.document-root = "htdocs" 
-    # simple-vhost.default-host = "www.example.com" 
-    ~~~
-The `server-root` defines the base directory under which all virtual host directories are created.
+    If lighttpd receives a request and cannot find a matching directory, it serves content from the `default-host`.
 
-The `document-root` defines the subdirectory under the `default-host` directory that contains the pages to be served. This is comparable to the `public_html/` directory you may be familiar with from some Apache configurations, and is called `htdocs` in the above configuration.
+    In the above configuration, requests are checked against existing directory names within `/var/www/html`. If a directory matching the requested domain exists, the result is served from the corresponding `htdocs`. If it doesn't exist, content is served from `htdocs` within the `default-host` directory. 
 
-The `default-host` specifies which host name will be directed to the default site. For optimal operation, you should not set this value.
+    To clarify this concept, suppose that `/var/www/html` contains only the directories `mysite.com` and `example.com`, both of which contain `htdocs` folders with content:
 
-In this configuration, lighttpd will look for directories in `/var/www` that correspond to domain and subdomain requests and serve results from those directories. If lighttpd receives a request and cannot find a directory it serves content from the `default-host` directory.
+    -   If a request is made for the URL `mysite.com`, content will be served from `/var/www/html/mysite.com/htdocs`.
+    -   If a request is made for the URL `wrongsite.com`, which does not have a directory, content will be served from `/var/www/html/example.com/htdocs`, since `example.com` is the default host.
+    -   If a request is made for the URL `something.mysite.com`, content will be served from `/var/www/html/mysite.com/htdocs` since the request is a subdomain of `mysite.com`. 
 
-After editing this file reload the web server again with the following command:
+    If you want to create subdomains with their own content, rather than having them redirected to the base domain, you can create directories for the subdomains in the same way. For instance, to use `something` as a subdomain of `mysite.com`, create a directory called `something.mysite.com`. If a subdomain request is not found, the server will run checks against the next highest level domain before using the default host.
 
-    /etc/init.d/lighttpd force-reload
+4.  Restart the web server again to reload any changes you made:
 
-### Create Simple Virtual Hosts
+        systemctl restart lighttpd.service
 
-Once the required `simple-vhost.` directives are configured as above, create the required directories to create the default virtual host, replacing `example.com` with your domain name:
-
-    mkdir -p /var/www/example.com/htdocs/
-
-Issue the following command to create two additional virtual hosts:
-
-    mkdir -p /var/www/{example.net/htdocs/,example.org/htdocs}
-    
-Use the following sequence of commands to create default index pages for all sites:
-
-    echo "<h1>Welcome to example.com</h1> <p>This is the default site</p>" > /var/www/example.com/htdocs/index.htm
-    echo "<h1>Welcome to example.net</h1>" > /var/www/example.net/htdocs/index.htm
-    echo "<h1>Welcome to example.org</h1>" > /var/www/example.org/htdocs/index.htm
+For information, consult the [lighttpd official documentation](https://redmine.lighttpd.net/projects/lighttpd/wiki/Docs_ModSimpleVhost).
 
 ## Virtual Host Setup with Enhanced Vhost
 
-Begin by adding the `mod_evhost` module in the `server.modules` block of the `/etc/lighttpd/lighttpd.conf` file.
+Enhanced virtual hosting works slightly differently, building the document root based on a pattern containing wildcards. Be sure the all other virtual hosting modules are disabled, and run the following command to enable the enhanced virtual hosting module:
 
-To accomplish the same directory structure with `evhost` as with the `simple-vhost`, we need to insert the following statement into `lighttpd.conf`:
+    lighty-enable-mod evhost
+
+Restart lighttpd to confirm the configuration changes:
+
+    systemctl restart lighttpd.service
+
+To accomplish the same directory structure with `evhost` as with `simple-vhost` above, we need to modify the `/etc/lighttpd/conf-available/10-evhost.conf` file:
 
 {: .file-excerpt }
-lighttpd.conf
+/etc/lighttpd/conf-available/10-evhost.conf
 :   ~~~ lighty
-    evhost.path-pattern = "/var/www/%0/htdocs/"
+    server.document-root = "/var/www/html/example.com/htdocs"
+    evhost.path-pattern = "/var/www/html/%0/htdocs/"
     ~~~
 
-You have great flexibility to create virtual hosts in this manner. The naming convention for these virtual hosts is derived from the domain names, given the following (fictitious) web address: `http://lookhere.somesubdomain.example.com/`
+In this configuration, if `mysite.com` is requested, and `/var/www/html/mysite.com/htdocs/` is found, that directory becomes the document root when serving requests. The `0%` in the path pattern specifies that a request will be checked against host files named in the format of domain and TLD (top level domain). The `server.document-root` directive specifies a default host that is used when a matching directory does not exist.
 
-You can modify the url format lighttpd recognizes by defining the pattern that gets passed through to the directory from which the content lives.
+You can modify the URL format lighttpd recognizes by defining the pattern that gets passed to the directory in which the content lives. The following table shows what part of the URL is used as the document root for each pattern, assuming the directory for that URL is found:
 
-{: .file-excerpt}
-lighttpd.conf
-:   ~~~ lighty
-    # define a pattern for the host url finding
-    # %% => % sign
-    # %0 => domain name + TLD
-    # %1 => TLD
-    # %2 => domain name without TLD
-    # %3 => subdomain 1 name
-    # %4 => subdomain 2 name
-    #
-    # evhost.path-pattern = "/home/storage/dev/www/%3/htdocs/"
-    ~~~
+{: .table .table-striped} 
+| Pattern          | URL Format              | 
+| ---------------- |-------------------------|  
+| %%               | % sign                  | 
+| %0               | Domain name and TLD     |
+| %1               | Only TLD                | 
+| %2               | Domain name without TLD |
+| %3               | Subdomain 1 name        |
+| %4               | Subdomain 2 name        |
+| %_               | Full domain name        |
 
-We read domain names backwards, so `com` is the TLD or "top level domain", `example` is the domain, `somesubdomain` is the subdomain 1 name, and `lookhere` is the subdomain 2 name. These can be combined using the above syntax to create a custom virtual hosting scheme.
+The naming convention for these virtual hosts is derived from the domain names; take the following web address as an example: `http://lookhere.somesubdomain.example.com/` We read domain names backwards, so `com` is the TLD or "top level domain", `example` is the domain, `somesubdomain` is the subdomain 1 name, and `lookhere` is the subdomain 2 name. These can be combined using the above syntax to create a custom virtual hosting scheme.
+
+## Create Virtual Host Directories
+
+Whether using `simple-vhost` or `evhost`, you'll need to create directories before lighttpd can use them to serve content. Once the required directives are configured as above, create the required directories, replacing `mysite.com` with your domain name:
+
+    mkdir -p /var/www/html/mysite.com/htdocs/
+
+The following command will create two additional virtual hosts for .net and .org top level domains:
+
+    mkdir -p /var/www/html/{mysite.net/htdocs,mysite.org/htdocs}
+
+The following command will create two additional virtual hosts for the subdomains from the `evhost` example:
+
+    mkdir -p /var/www/html/{somesubdomain/htdocs,lookhere/htdocs}
 
 ## Virtual Hosting Best Practices
 
-The way you set up virtual hosting on your web server depends upon what kind of sites you host, their traffic, the number of domains, and their workflows. We recommend hosting all of your domains in a centralized top level directory (eg. `/var/www/` ) and then symbolically linking these directories into more useful locations.
+The way you set up virtual hosting on your web server depends upon what kind of sites you host, their traffic, the number of domains, and their workflows. We recommend hosting all of your domains in a centralized directory (eg. `/var/www/html` ) and then symbolically linking these directories into more useful locations.
 
-For instance, you can create a series of "web editor" user accounts. You may then link the document root of each domain into a folder in the home folder of the account of the editor for that domain. For the user account "example-user" that manages the "example.com" site, the link would be created like so:
+For instance, you can create a series of "web editor" user accounts. You may then link the document root of each domain into a folder in the home folder of the editor for that domain. For the user account "example-user" that manages the "example.com" site:
 
-    ln -s /home/example-user/example.com/ /var/www/example.com
+    ln -s /home/example-user/example.com/ /var/www/html/example.com
 
 You can also use symbolic links to cause multiple virtually hosted domains to host the same files. For example, to get example.org to point to example.com's files, create the following link:
 
-    ln -s /var/www/example.org/ /var/www/example.com
+    ln -s /var/www/html/example.org/ /var/www/html/example.com
 
-No matter what you decide, we recommend developing some sort of systematic method for organizing virtual hosting so that you don't becomes confused down the road when you need to modify your system.
+No matter what you decide, we recommend developing a systematic method for organizing virtual hosting to simplify any modifications to your system.
 
-## Running Scripts with mod_fastcgi
+## Run Scripts with FastCGI
 
-If you need your web server to execute dynamic content, you may run these scripts using FastCGI. To run a script, FastCGI externalizes the interpreter for the script for dynamic web applications from the web server rather than running the scripts "inside" the web server. This is in contrast to the common Apache-based approaches such as `mod_perl`, `mod_python`, and `mod_php`. If you're familar with Apache this might seem antiquated, but in high-traffic situations doing things this way is often more efficient and effective.
+If you need your web server to execute dynamic content, you may run these scripts using FastCGI. To run a script, FastCGI externalizes the interpreter from the web server rather than running the scripts "inside" the web server. This is in contrast to approaches such as `mod_perl`, `mod_python`, and `mod_php`, but in high-traffic situations this way is often more efficient.
 
-To set up FastCGI you need to make sure that an interpreter is installed on your system for your language of choice:
+To set up FastCGI, make sure that an interpreter is installed on your system for your language of choice:
 
-    # to install Python
-        apt-get install python
+To install Python:
+        
+    apt-get install python
 
-    # to install Ruby
-        apt-get install ruby
+To install Ruby:
+    
+    apt-get install ruby
 
-    # to install PHP version 7 for CGI interfaces
-        apt-get install php-cgi
+To install PHP 5 for CGI interfaces:
+    
+    apt-get install php5-cgi
 
 Perl version 5.22.1 is included in Ubuntu 16.04 by default. You may need to install and set up a database system as well, depending on the software you intend to run.
 
 Lighttpd will send CGI requests to CGI handlers on the basis of file extensions, which can be forwarded to individual handlers. You may also forward requests for one extension to multiple servers, and lighttpd will automatically load balance these FastCGI connections.
 
-For example, if you install the `php-cgi` package and enable FastCGI with `lighty-enable-mod fastcgi` then a default FastCGI handler will be configured in the file `/etc/lighttpd/conf-enabled/15-fastcgi-php.conf`. Though the handler will likely require specific customization, the default settings offer an effective example:
+For example, if you install the `php5-cgi` package and enable FastCGI with `lighty-enable-mod fastcgi-php` then a default FastCGI handler will be configured in the file `/etc/lighttpd/conf-enabled/15-fastcgi-php.conf`. Though the handler will likely require specific customization, the default settings offer an effective example:
 
 {: .file-excerpt }
 /etc/lighttpd/conf-enabled/15-fastcgi-php.conf
@@ -216,7 +237,7 @@ For example, if you install the `php-cgi` package and enable FastCGI with `light
     )
     ~~~
 
-You can map more than one file extension to a single FastCGI handler by adding the following entry to your config file:
+You can map more than one file extension to a single FastCGI handler by adding the following entry to your configuration file:
 
 {: .file-excerpt }
 /etc/lighttpd/conf-enabled/15-fastcgi-php.conf
@@ -226,12 +247,8 @@ You can map more than one file extension to a single FastCGI handler by adding t
 
 ## Things to Keep in Mind
 
-While lighttpd is an effective and capable web server there are two caveats regarding its behavior that you should be familiar with.
+While lighttpd is an effective and capable web server there are two caveats regarding its behavior.
 
 First, server side includes, which allow you to dynamically include content from one file in another, do not function in lighttpd in the same way as they do in Apache's `mod_ssi`. While it is an effective method for quickly assembling content, lighttpd's script handling via SSI is not a recommended work flow. See [lighttpd project documentation on mod_ssi](http://redmine.lighttpd.net/projects/lighttpd/wiki/Docs:ModSSI).
 
 Second, because of the way FastCGI works, running web applications with lighttpd requires additional configuration, particularly for users who are writing applications using interpreters embedded in the web server (e.g. mod_perl, mod_python, mod_php, etc.). For more information, please consult the [lighttpd project documentation on optimizing FastCGI performance](http://redmine.lighttpd.net/projects/lighttpd/wiki/Docs:PerformanceFastCGI).
-
-## Additional Ubuntu Configuration
-
-The default configuration for Ubuntu (in addition to `/etc/lighttpd/lighttpd.conf`) automatically includes all of the files in the `/etc/lighttpd/conf-enabled/` directory with the `.conf` extension. Typically, these files are symbolically linked from the `/etc/lighttpd/conf-available/` directory by the `lighttpd-enable-mod`. You can add specific configuration directives for required modules in these files, or in the master `lighttpd.conf` file.
