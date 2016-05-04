@@ -58,14 +58,14 @@ If you need to start, stop, or restart Tomcat you can use the following commands
 
 ## Test and Use Tomcat
 
-You can test your Tomcat installation by pointing your browser at your site's port `:8080`, `http://example.com:8080/`. Note that Tomcat listens on network port 8080 and does not accept forced HTTPS connections by default. By default, Tomcat files are located in the `/usr/share/tomcat8` directory.
+You can test your Tomcat installation by pointing your browser at your site's port `:8080`, `http://example.com:8080/`. Note that Tomcat listens on network port 8080 and does not accept forced HTTPS connections by default. By default, Tomcat configuration files are located in the `/var/lib/tomcat8/conf` directory.
 
-To use the `tomcat8-admin` web application, add the following lines to the end of your `/etc/tomcat8/tomcat-users.xml` file before the `</tomcat-users>` line, substituting your own username and secure password. If using Tomcat Admin, include both the "manager-gui" role for the manager and the "admin-gui" role for the host-manager application.
+To use the `tomcat8-admin` web application, add the following lines to the end of your `/var/lib/tomcat8/conf/tomcat-users.xml` file before the `</tomcat-users>` line, substituting your own username and secure password. If using Tomcat Admin, include both the "manager-gui" role for the manager and the "admin-gui" role for the host-manager application.
 
 If you are not using the web application and plan to manage your application(s) from the command line only, you should not enter these lines, as doing so may expose your server to unauthorized login attempts.
 
 {: .file-excerpt }
-/etc/tomcat8/tomcat-users.xml
+/var/lib/tomcat8/conf/tomcat-users.xml
 :   ~~~ xml
     <role rolename="manager-gui"/>
     <role rolename="admin-gui"/>
