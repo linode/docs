@@ -354,7 +354,8 @@ If everything is OK you shouldn't get any output. If you want to see more inform
         # Milter configuration
         # OpenDKIM
         milter_default_action = accept
-        milter_protocol = 2
+        # Postfix ≥ 2.6 milter_protocol = 6, Postfix ≤ 2.5 milter_protocol = 2
+        milter_protocol = 6
         smtpd_milters = local:/opendkim/opendkim.sock
         non_smtpd_milters = local:/opendkim/opendkim.sock
         ~~~
