@@ -2,8 +2,8 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Instructions for installing the Apache Tomcat Java servlet engine on Ubuntu 16.04 (Xenial Xerus).'
-keywords: 'apache tomcat ubuntu 16.04,java,java ubuntu 16.04,java servlets ubuntu lucid,java ubuntu'
+description: 'Install the Apache Tomcat Java servlet engine on Ubuntu 16.04 (Xenial Xerus) by following this guide.'
+keywords: 'apache tomcat ubuntu 16.04,tomcat java,java ubuntu 16.04,tomcat ubuntu'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['frameworks/apache-tomcat/ubuntu-16-4-xenial-xerus/']
 modified: Wednesday, April 27, 2016
@@ -16,7 +16,7 @@ external_resources:
  - '[Tomcat FAQ](http://wiki.apache.org/tomcat/FAQ)'
 ---
 
-Apache Tomcat is an open source software implementation of the Java Servlet and Java Server Pages technologies. You'll run applications within Tomcat using the OpenJDK implementation of the Java development environment.
+Apache Tomcat is an open-source software implementation of the Java Servlet and Java Server Pages technologies. You'll run applications within Tomcat using the OpenJDK implementation of the Java development environment.
 
 ## Before You Begin
 
@@ -50,7 +50,7 @@ You may also want to install the `tomcat8-docs`, `tomcat8-examples`, and `tomcat
 
     apt-get install tomcat8-docs tomcat8-examples tomcat8-admin
 
-If you need to start, stop, or restart Tomcat you can use the following commands:
+If you need to start, stop or restart Tomcat you can use the following commands:
 
     systemctl start tomcat8
     systemctl stop tomcat8
@@ -62,7 +62,7 @@ You can test your Tomcat installation by pointing your browser at your site's po
 
 To use the `tomcat8-admin` web application, add the following lines to the end of your `/var/lib/tomcat8/conf/tomcat-users.xml` file before the `</tomcat-users>` line, substituting your own username and secure password. If using Tomcat Admin, include both the "manager-gui" role for the manager and the "admin-gui" role for the host-manager application.
 
-If you are not using the web application and plan to manage your application(s) from the command line only, you should not enter these lines, as doing so may expose your server to unauthorized login attempts.
+If you are not using the web application and plan to manage your application(s) from the command line only, you should not enter these lines, because doing so may expose your server to unauthorized login attempts.
 
 {: .file-excerpt }
 /var/lib/tomcat8/conf/tomcat-users.xml
