@@ -109,7 +109,7 @@ This section covers configuration for simple virtual hosting. The `simple-vhost`
         ~~~
     The `server-root` defines the base directory under which all virtual host directories are created.
 
-    The `document-root` defines the subdirectory under the host directory that contains the pages to be served. This is comparable to the `public_html` directory in some Apache configurations, and is called `htdocs` in the above configuration.
+    The `document-root` defines the subdirectory under the host directory that contains the pages to be served. This is comparable to the `public_html` directory in some Apache configurations, but is called `htdocs` in the above configuration.
 
     If lighttpd receives a request and cannot find a matching directory, it serves content from the `default-host`.
 
@@ -117,11 +117,10 @@ This section covers configuration for simple virtual hosting. The `simple-vhost`
 
     To clarify this concept, suppose that `/var/www/html` contains only the directories `mysite.com` and `example.com`, both of which contain `htdocs` folders with content:
 
-    -   If a request is made for the URL `mysite.com`, content will be served from `/var/www/html/mysite.com/htdocs`.
+    -   If a request is made for the URL `mysite.com`, content will be served from `/var/www/html/mysite.com/htdocs`. 
     -   If a request is made for the URL `wrongsite.com`, which does not have a directory, content will be served from `/var/www/html/example.com/htdocs`, since `example.com` is the default host.
-    -   If a request is made for the URL `something.mysite.com`, content will be served from `/var/www/html/mysite.com/htdocs` since the request is a subdomain of `mysite.com`. 
-
-    If you want to create subdomains with their own content, rather than having them redirected to the base domain, you can create directories for the subdomains in the same way. For instance, to use `something` as a subdomain of `mysite.com`, create a directory called `something.mysite.com`. If a subdomain request is not found, the server will run checks against the next highest level domain before using the default host.
+    
+    For subdomains, create host directories for the subdomains in the same way. For instance, to use `something` as a subdomain of `mysite.com`, create a directory called `something.mysite.com` with a `htdocs` directory for content. Be sure to add [DNS records](https://www.linode.com/docs/networking/dns/dns-manager-overview) for any subdomains you plan to use.
 
 4.  Restart the web server again to reload any changes you made:
 
@@ -131,39 +130,54 @@ For information, consult the [lighttpd official documentation](https://redmine.l
 
 ## Virtual Host Setup with Enhanced Vhost
 
-Enhanced virtual hosting works slightly differently, building the document root based on a pattern containing wildcards. Be sure the all other virtual hosting modules are disabled, and run the following command to enable the enhanced virtual hosting module:
+Enhanced virtual hosting works slightly differently, building the document root based on a pattern containing wildcards. Be sure the all other virtual hosting modules are disabled before beginning.
 
-    lighty-enable-mod evhost
+1.  Run the following command to enable the enhanced virtual hosting module:
 
-Restart lighttpd to confirm the configuration changes:
+        lighty-enable-mod evhost
 
-    systemctl restart lighttpd.service
+2.  Restart lighttpd to load the configuration changes:
 
-To accomplish the same directory structure with `evhost` as with `simple-vhost` above, we need to modify the `/etc/lighttpd/conf-available/10-evhost.conf` file:
+        systemctl restart lighttpd.service
 
-{: .file-excerpt }
-/etc/lighttpd/conf-available/10-evhost.conf
-:   ~~~ lighty
-    server.document-root = "/var/www/html/example.com/htdocs"
-    evhost.path-pattern = "/var/www/html/%0/htdocs/"
-    ~~~
+3.  To accomplish the same directory structure with `evhost` as with `simple-vhost` above, we need to modify the `/etc/lighttpd/conf-available/10-evhost.conf` file:
 
-In this configuration, if `mysite.com` is requested, and `/var/www/html/mysite.com/htdocs/` is found, that directory becomes the document root when serving requests. The `0%` in the path pattern specifies that a request will be checked against host files named in the format of domain and TLD (top level domain). The `server.document-root` directive specifies a default host that is used when a matching directory does not exist.
+    {: .file-excerpt }
+    /etc/lighttpd/conf-available/10-evhost.conf
+    :   ~~~ lighty
+            evhost.path-pattern = "/var/www/html/%0/htdocs/"
+        ~~~
 
-You can modify the URL format lighttpd recognizes by defining the pattern that gets passed to the directory in which the content lives. The following table shows what part of the URL is used as the document root for each pattern, assuming the directory for that URL is found:
+4.  Modify the `server.document-root` in the main lighttpd configuration file:
+
+    {: .file-excerpt }
+    /etc/lighttpd/conf-available/10-evhost.conf
+    :   ~~~ lighty
+            server.document-root = "/var/www/html/example.com/htdocs"
+        ~~~
+
+    With the configuration we set in this and the previous step, if `mysite.com` is requested, and `/var/www/html/mysite.com/htdocs/` is found, that directory becomes the document root when serving requests. The `0%` in the path pattern specifies that a request will be checked against host files named in the format of domain and TLD (top level domain). The `server.document-root` directive specifies a default host that is used when a matching directory does not exist.
+
+    {: .caution}
+    > We previously configured the `server.document-root` to `/var/www/html`. While leaving this configuration produces essentially the same result, it exposes your server to a [vulnerability](https://redmine.lighttpd.net/projects/lighttpd/wiki/Docs_ModEVhost#A-Bad-Example) in which authentication can be bypassed in certain situations. This also redirects unmatched requests to the lighttpd index page rather than a default host of your choosing.
+
+5.  Restart lighttpd to put any changes you've made into effect:
+
+        systemctl restart lighttpd.service
+
+The naming convention for these virtual hosts is derived from the domain names. Take the following web address as an example: `http://lookhere.somesubdomain.mysite.com/` We read domain names backwards, so `com` is the TLD or "top level domain", `mysite` is the domain, `somesubdomain` is the subdomain 1 name, and `lookhere` is the subdomain 2 name. 
+
+You can modify the host directory format lighttpd recognizes by defining the pattern that gets passed to the directory in which the content lives. The following table shows what host directory format is used as the document root for each pattern. It also shows which host file will be used to serve content, using the above URL as the request:
 
 {: .table .table-striped} 
-| Pattern          | URL Format              | 
-| ---------------- |-------------------------|  
-| %%               | % sign                  | 
-| %0               | Domain name and TLD     |
-| %1               | Only TLD                | 
-| %2               | Domain name without TLD |
-| %3               | Subdomain 1 name        |
-| %4               | Subdomain 2 name        |
-| %_               | Full domain name        |
-
-The naming convention for these virtual hosts is derived from the domain names; take the following web address as an example: `http://lookhere.somesubdomain.example.com/` We read domain names backwards, so `com` is the TLD or "top level domain", `example` is the domain, `somesubdomain` is the subdomain 1 name, and `lookhere` is the subdomain 2 name. These can be combined using the above syntax to create a custom virtual hosting scheme.
+| Pattern | Host Directory Format   | Document Root Path                                     |
+| --------|-------------------------|--------------------------------------------------------|  
+| %0      | Domain name and TLD     | /var/www/html/mysite.com/htdocs                        | 
+| %1      | Only TLD                | /var/www/html/com/htdocs                               |
+| %2      | Domain name without TLD | /var/www/html/mysite/htdocs                            |
+| %3      | Subdomain 1 name        | /var/www/html/somesubdomain/htdocs                     |
+| %4      | Subdomain 2 name        | /var/www/html/lookhere/htdocs                          | 
+| %_      | Full domain name        | /var/www/html/lookhere.somesubdomain.mysite.com/htdocs |
 
 ## Create Virtual Host Directories
 
