@@ -60,16 +60,16 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
           apt-get install linux-image-virtual grub2
     
     * Gentoo
-    
-	  echo "GRUB_PLATFORMS=\"coreboot pc\"" >> /etc/portage/make.conf
-	  emerge --ask sys-boot/grub
+
+          echo "GRUB_PLATFORMS=\"coreboot pc\"" >> /etc/portage/make.conf
+          emerge --ask sys-boot/grub
 
     {: .note }
     > During the installation of `grub` you may be asked which disk image to install to. Since Linode provides the grub bootloader, the system need only provide the `grub.cfg` file, and you don't need to install `grub` to your MBR.
 
 5.  Verify the kernel version provided by your distribution in `/boot`:
  
-        # ls /boot/vmlinuz*
+        ls /boot/vmlinuz*
         /boot/vmlinuz-3.16.0-4-amd64
 
 ## Configuring Grub
