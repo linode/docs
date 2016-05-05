@@ -5,10 +5,10 @@ author:
 description: 'Using the PostgreSQL relational database server with Ubuntu 16.04 LTS (Xenial Xerus).'
 keywords: 'postgresql,ubuntu 16.04,postgresql database,open source database,relational database'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Tuesday, April 12th, 2016
+modified: Thursday, May 5th, 2016
 modified_by:
   name: Phil Zona
-published: 'Tuesday, April 12th, 2016'
+published: 'Thursday, May 5th, 2016'
 title: 'Use PostgreSQL Relational Databases on Ubuntu 16.04'
 alias: ['databases/postgresql/ubuntu-16-04-xenial-xerus/']
 external_resources:
@@ -16,39 +16,52 @@ external_resources:
  - '[psql manual page](http://www.rootr.net/man/man/psql/1)'
 ---
 
-The [PostgreSQL](http://www.postgresql.org/) relational database system is a powerful, scalable, and standards-compliant open-source database platform. This guide will help you install and configure PostgreSQL on your Ubuntu 16.04 LTS (Xenial Xerus) Linode. We assume you've already followed the steps detailed in our [getting started guide](/docs/getting-started/).
+The [PostgreSQL](http://www.postgresql.org/) relational database system is a powerful, scalable, and standards-compliant open-source database platform. This guide will help you install and configure PostgreSQL on your Ubuntu 16.04 LTS (Xenial Xerus) Linode. 
+
+## Before You Begin
+
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services. 
+
+3.  Update your system.
+
+        sudo apt-get update && sudo apt-get upgrade
 
 {: .note}
+>
 >This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
 ## Install PostgreSQL
 
-Make sure your package repositories are up to date by issuing the following command:
-
-    sudo apt-get update && apt-get upgrade
-
-Install PostgreSQL from the Ubuntu packages:
+Install PostgreSQL from the Ubuntu package repository:
 
     sudo apt-get install postgresql postgresql-contrib
 
 ## Configure PostgreSQL
 
-### Set the Postgres User's Password
+### Modify the Postgres Users
 
 By default, PostgreSQL will create a Linux user named `postgres` to access the database software. It is important not to use the `postgres` user for any other purpose (e.g. connecting to other networks). Doing so presents a risk to the security of your databases.
 
-1.  Change the `postgres` user's Linux password with the following command. If you are already logged in as the `postgres` user, issue the `exit` command first to return to your normal user shell.
+1.  Change the `postgres` user's Linux password:
 
         sudo passwd postgres
-
-2.  Issue the following commands to set a password for the `postgres` database user. Note that this user is distinct from the `postgres` Linux user. Be sure to replace `newpassword` with a strong password and keep it in a secure place. This password will be used to connect to the database via the network; peer authentication will be used by default for local connections made with `psql` while logged into a shell as the `postgres` user.
+        
+2.  Issue the following commands to set a password for the `postgres` database user. Be sure to replace `newpassword` with a strong password and keep it in a secure place. 
 
         su - postgres
         psql -d template1 -c "ALTER USER postgres WITH PASSWORD 'newpassword';"
 
+    Note that this user is distinct from the `postgres` Linux user. The Linux user is used to access the database, and the PostgreSQL user is used to perform administrative tasks on the databases. 
+
+    The password set in this step will be used to connect to the database via the network. Peer authentication will be used by default for local connections, but we'll explain how to change this setting later.
+
 ### Create a Database
 
-1.  Create a database by issuing the following command:
+Make sure you are running the commands in this section as the `postgres` Linux user.
+
+1.  Create a sample database called `mytestdb`:
 
         createdb mytestdb 
 
@@ -67,7 +80,7 @@ By default, PostgreSQL will create a Linux user named `postgres` to access the d
 
 ### Create Tables
 
-This section will demonstrate how to create a test database with an employee's first and last name, along with a unique key. When creating your own tables, you may specify as many parameters (columns) as you need, and name them appropriately.
+This section will demonstrate how to create a test database with an employee's first and last name, along with a unique key. When creating your own tables, you may specify as many parameters (columns) as you need, and name them appropriately. Commands in this section are to be run from the PostgreSQL shell, which we opened in the last section.
 
 1.  To create a table called "employees" in your test database:
 
@@ -88,51 +101,67 @@ This section will demonstrate how to create a test database with an employee's f
                    1 | John       | Doe
         (1 row)
 
-4.  To exit the PostgreSQL shell, enter the command `\q`. 
+4.  Exit the PostgreSQL shell by entering the `\q` command. 
 
 ### Create PostgreSQL Roles
 
 PostgreSQL grants database access via "roles", which are used to specify privileges. Roles can be understood as having a similar function to Linux "users," although you may also create a role that consists of a set of other roles, similar to a Linux "group." PostgreSQL roles apply globally, so you will not need to create the same role twice if you'd like to grant it access to more than one database on the same server.
 
-1.  To add a new role and specify its password, issue the following command as the `postgres` Linux user:
+Commands in this section should be run as the `postgres` Linux user.
+
+1.  To add a new user role and specify its password, issue the following command from the command line:
 
         createuser examplerole --pwprompt 
 
-    To delete this role:
+    If you need to delete a role, you can use the `dropuser` command in place of `createuser`.
 
-        dropuser examplerole
-
-2.  To grant all privileges on the table "employees" to the user "examplerole", connect to the database:
+2.  Connect to the database:
 
         psql mytestdb 
 
-    From the PostgreSQL shell, enter the following command:
+    You'll be connected as the `postgres` database user by default.
+
+3.  From the PostgreSQL shell, enter the following command to grant all privileges on the table `employees` to the user `examplerole`:
 
         GRANT ALL ON employees TO examplerole; 
 
-3.  PostgreSQL uses peer authentication by default. This means database connections will be granted to local system users that own or have privileges on the database being connected to. Such authentication is useful in cases where a particular system user will be running a local program (e.g. scripts, CGI/FastCGI processes owned by separate users, etc), but for greater security, you may wish to require passwords to access your databases. To do so, edit `/etc/postgresql/9.5/main/pg_hba.conf` using `sudo` or as the `postgres` user:
+4.  Exit the PostgreSQL shell by entering the `\q` command 
+
+### Secure Local PostgreSQL Access
+
+PostgreSQL uses *peer authentication* by default. This means database connections will be granted to local system users that own or have privileges on the database being connected to. Such authentication is useful in cases where a particular system user will be running a local program (e.g. scripts, CGI/FastCGI processes owned by separate users, etc.), but for greater security, you may wish to require passwords to access your databases. 
+
+Commands in this section should be run as the `postgres` Linux user unless otherwise specified.
+
+1.  Edit your `/etc/postgresql/9.5/main/pg_hba.conf` file:
 
     {: .file-excerpt }
     /etc/postgresql/9.5/main/pg_hba.conf
     :   ~~~
-
         #TYPE    DATABASE   USER   ADDRESS  METHOD
 
         # "local" is for Unix domain socket connections only
         local    all        all             peer
         ~~~
 
-    Replace "peer" with "md5" on this line to activate password authentication and restart PostgreSQL:
+    Replace "peer" with "md5" on this line to activate password authentication using an MD5 hash. 
+
+2.  To enable these changes, we need to restart PostgreSQL. However, we did not grant the `postgres` user sudo privileges for security reasons. Return to your normal user shell:
+
+        exit
+
+3.  Run the following commands to restart PostgreSQL and switch back to the `postgres` user:
 
         sudo service postgresql restart
+        su - postgres
 
-4.  To access the database "mytestdb" as "examplerole", issue the following command from the `postgres` Linux user shell:
+4.  As the `postgres` Linux user, run the following command to connect to the test database as the `examplerole` PostgreSQL user:
 
         psql -U examplerole -W mytestdb 
 
-You will be prompted to enter the password for the "alison" user and given `psql` shell access to the database. When using a database, you may check access privileges for each of its tables with the `\z` command.
+    You will be prompted to enter the password for the `examplerole` user and given `psql` shell access to the database. When using a database, you may check access privileges for each of its tables with the `\z` command.
 
-## Secure Remote Database Access
+## Secure Remote PostgreSQL Access
 
 PostgreSQL listens for connections on localhost, and it is not advised to reconfigure it to listen on public IP addresses. If you would like to access your databases remotely using a graphical tool, please follow one of these guides:
 
