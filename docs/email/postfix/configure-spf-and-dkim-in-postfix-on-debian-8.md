@@ -385,15 +385,15 @@ You don't need to set this up, but doing so makes it harder for anyone to forge 
 
 The reason the YYYYMM format is used for the selector is that best practice calls for changing the DKIM signing keys every so often (monthly is recommended, and no longer than every 6 months). To do that without disrupting messages in transit, you generate the new keys using a new selector. The process is:
 
-1.  Generate new keys as in step 8 of "Configure OpenDKIM". Do this in a scratch directory, not directly in `/etc/opendkim/keys`. Use the current year and month for the YYYYMM selector value, so it's different from the selector currently in use.
+1.  Generate new keys as in step 8 of [Configure OpenDKIM](#configure-opendkim). Do this in a scratch directory, not directly in `/etc/opendkim/keys`. Use the current year and month for the YYYYMM selector value, so it's different from the selector currently in use.
 
-2.  Use the newly-generated `.txt` files to add the new keys to DNS as in the DKIM "Setting Up DNS" section, using the new YYYYMM selector in the host names. Don't remove or alter the existing DKIM TXT records. Once this is done, verify the new key data using the following command (replacing example.com, example and YYYYMM with the appropriate values):
+2.  Use the newly-generated `.txt` files to add the new keys to DNS as in the DKIM [Set Up DNS](#set-up-dns) section, using the new YYYYMM selector in the host names. Don't remove or alter the existing DKIM TXT records. Once this is done, verify the new key data using the following command (replacing example.com, example and YYYYMM with the appropriate values):
 
-    opendkim-testkey -d example.com -s YYYYMM -k example.private
+        opendkim-testkey -d example.com -s YYYYMM -k example.private
 
-Add the `-vvv` switch to get debugging output if you need it to diagnose any problems. Correct any problems before proceeding, beginning to use the new private key file and selector when `opendkim-testkey` doesn't indicate a successful verification will cause problems with your email including non-receipt of messages.
+    Add the `-vvv` switch to get debugging output if you need it to diagnose any problems. Correct any problems before proceeding, beginning to use the new private key file and selector when `opendkim-testkey` doesn't indicate a successful verification will cause problems with your email including non-receipt of messages.
 
-3.  Stop Postfix and OpenDKIM by doing a `systemctl stop postfix opendkim` so that they won't be processing mail while you're changing out keys.
+3.  Stop Postfix and OpenDKIM with `systemctl stop postfix opendkim` so that they won't be processing mail while you're changing out keys.
 
 4.  Copy the newly-generated `.private` files into place and make sure their ownership and permissions are correct by running these commands from the directory in which you generated the key files:
 
