@@ -3,7 +3,7 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Install web applications with "LEMP," a LAMP-like stack using nginx, MySQL, and PHP.'
-keywords: 'nginx,lemp,php,linux,web applications'
+keywords: 'nginx,lemp,php,ubuntu 16.04'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: Friday, April 8, 2016
 modified_by:
@@ -35,7 +35,7 @@ This guide describes an alternative to the *LAMP* (Linux, Apache, MySQL, and PHP
 
 ### Install the Nginx Web Server
 
-To ensure compatability of installation and future updates, install nginx from the Ubuntu package repository using `apt`:
+To ensure compatability of installation and with future updates, install nginx from the Ubuntu package repository using `apt`:
 
     sudo apt-get install nginx
 
@@ -156,7 +156,7 @@ Congratulations! You can now deploy PHP scripts with your web server.
 
 ## Install the MySQL Database Server
 
-The MySQL database engine is one of the leading open source relational database engines, and is a popular database solution for web-based applications.
+The MySQL database engine is one of the leading open-source relational database engines and is a popular database solution for web-based applications.
 
 1.  Install the MySQL server packages and required PHP support for MySQL:
 
@@ -187,7 +187,7 @@ The MySQL database engine is one of the leading open source relational database 
 
 ## Optional: Test and Troubleshoot the LEMP Stack
 
-In this section, we'll create a test page that shows whether nginx can render PHP and connect to the MySQL database. This can be helpful in locating the source of an error if one of the elements of your LEMP stack is not communicating with the others.
+In this section, you'll create a test page that shows whether nginx can render PHP and connect to the MySQL database. This can be helpful in locating the source of an error if one of the elements of your LEMP stack is not communicating with the others.
 
 1.  Paste the following code into a new file, `phptest.php`, in the `public_html` directory. Modify `webuser` and `password` to match the information entered in the **Install the MySQL Database Server** section above:
 
@@ -227,13 +227,13 @@ In this section, we'll create a test page that shows whether nginx can render PH
 
 ### Troubleshooting
 
-*   If the site does not load at all, check nginx's status, and restart if required:
+*   If the site does not load at all, check nginx's status and restart if required:
 
         systemctl status nginx
         sudo systemctl restart nginx
 
-*   If the site loads, but the page it returns is the default nginx page, return to the [Configure Nginx Virtual Hosting](lemp-server-on-ubuntu-16-04/#configure-nginx-virtual-hosting) section above, and check that the `root` directive matches your `example.com/public_html` folder
+*   If the site loads, but the page it returns is the default nginx page, return to the [Configure Nginx Virtual Hosting](lemp-server-on-ubuntu-16-04/#configure-nginx-virtual-hosting) section above and check that the `root` directive matches your `example.com/public_html` folder.
 
-*   If the page it returns says "Index of /" or has a similar folder tree structure, create a test `index.html` file or a test file as shown above.
+*   If the page it returns displays "Index of /" or has a similar folder tree structure, create a test `index.html` file or a test file as shown above.
 
 Congratulations! You now have a fully functional and fully featured LEMP stack for website and application deployment.
