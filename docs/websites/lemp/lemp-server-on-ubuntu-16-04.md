@@ -5,10 +5,10 @@ author:
 description: 'Install web applications with "LEMP," a LAMP-like stack using nginx, MySQL, and PHP.'
 keywords: 'nginx,lemp,php,ubuntu 16.04'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Friday, April 8, 2016
+modified: Friday, May 6th 2016
 modified_by:
   name: Phil Zona
-published: 'Friday, April 8, 2016'
+published: 'Friday, May 6th, 2016'
 title: 'LEMP Server on Ubuntu 16.04 (Xenial Xerus)'
 external_resources:
  - '[Basic nginx Configuration](/docs/websites/nginx/basic-nginx-configuration)'
