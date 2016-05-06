@@ -1,29 +1,24 @@
 ---
-author: Henry Rendler
-  name: Henry Rendler
-  email: henry@hwrrobotics.com
-description: 'Have you ever wanted to create a Docker Image from a linux operating system that is still online? By following some very simple Docker commands you will be able to export a container to a tar file, transfer it to a different server, import the tar into a Docker Image, tag the image, and finally run it. **Caution: Before attempting any commands shown below make sure that you have a backup of your data!**'
+author:
+  name: Linode Community
+  email: docs@linode.com
+description: 'Have you ever wanted to create a Docker Image from a linux operating system that is still online? By following some very simple Docker commands you will be able to export a container to a tar file, transfer it to a different server, import the tar into a Docker Image, tag the image, and finally run it.'
 keywords: 'Docker, Modular Server, Ubuntu, Make a Linux System image using Docker, Use Docker to Make a Full Linux System Image'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-published: 'Monday, February 20th, 2016'
-modified: Monday, February 20th, 2016
+published: ''
+modified: Friday, May 6th, 2016
 modified_by:
-  name: Henry Rendler
+  name: Alex Fornuto
 title: 'How to make a Linux System Docker Image'
 contributor:
   name: Henry Rendler
-  link: Github/Twitter Link
-  '[Link to My Github Profile](https://github.com/hentronnumerouno)'
-  '[Link to My Twitter](https://twitter.com/hwrrobotics)'
-  '[Link to My Website](https://www.hwrrobotics.com)'
-  external_resources:
- '[Taring Your System](https://help.ubuntu.com/community/BackupYourSystem/TAR)'
- '[Tagging Docker Images](https://docs.docker.com/mac/step_six/)'
- '[Docker Docs](https://docs.docker.com/)'
-
+  link: https://github.com/hentronnumerouno
+external_resources:
+ - '[Taring Your System](https://help.ubuntu.com/community/BackupYourSystem/TAR)'
+ - '[Tagging Docker Images](https://docs.docker.com/mac/step_six/)'
+ - '[Docker Docs](https://docs.docker.com/)'
 --- 
 
-# How to make a Linux System Docker Image
  Have you ever wanted to create a docker image from a running operating system? Following some very simple Docker commands you will be able to export a container to a tar file, transfer it to a different server, import the tar into a Docker image, tag the image, and finally run it. **Caution: Before attempting any commands shown below make sure that you have a backup of your data!**
 
  1.	To create a tar of the current operating system you are going to want to change into your root or home directory
