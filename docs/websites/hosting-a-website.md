@@ -53,27 +53,28 @@ Installing Apache is easy, but if you leave it running with the default settings
 
 3.  Make sure that the following values are set:
 
-{: .note }
->
-> In Ubuntu 14.04, you will need to append the module section noted below to the end of your apache2.conf file:
+    {: .note }
+    >
+    > In Ubuntu 14.04, you will need to append the module section noted below to the end of your apache2.conf file:
 
-{: .file-excerpt}
-/etc/apache2/apache2.conf
-:	~~~ apache
-	KeepAlive Off
+    {: .file-excerpt}
+    /etc/apache2/apache2.conf
+    :   ~~~ apache
+	    KeepAlive Off
 
-	...
+        ...
 
-	<IfModule mpm_prefork_module>
-	StartServers 2
-	MinSpareServers 6
-	MaxSpareServers 12
-	MaxClients 30
-	MaxRequestsPerChild 3000
-	</IfModule>
-	~~~
+	    <IfModule mpm_prefork_module>
+	    StartServers 2
+	    MinSpareServers 6
+	    MaxSpareServers 12
+	    MaxClients 30
+	    MaxRequestsPerChild 3000
+	    </IfModule>
+	    ~~~
 
 4.  Save the changes to Apache's configuration file by pressing **CTRL+X** and then pressing **Y**. Press **ENTER** to confirm.
+
 5.  Restart Apache to incorporate the new settings:
 
         sudo service apache2 restart
