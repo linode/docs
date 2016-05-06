@@ -19,26 +19,28 @@ external_resources:
  - '[Docker Docs](https://docs.docker.com/)'
 --- 
 
- Have you ever wanted to create a docker image from a running operating system? Following some very simple Docker commands you will be able to export a container to a tar file, transfer it to a different server, import the tar into a Docker image, tag the image, and finally run it. **Caution: Before attempting any commands shown below make sure that you have a backup of your data!**
+Have you ever wanted to create a docker image from a running operating system? Following some very simple Docker commands you will be able to export a container to a tar file, transfer it to a different server, import the tar into a Docker image, tag the image, and finally run it.
 
- 1.	To create a tar of the current operating system you are going to want to change into your root or home directory
-```
-	/home/<name>
-	/root/<name>
-```
+{: .caution }
+> Before attempting any commands shown below make sure that you have a backup of your data!
 
-2.	Then issue the following command:
-      IF YOU HAVE ANY FOLDER THAT YOU DO NOT WANT TO BACKUP MAKE SURE TO ADD THEM TO THE COMMAND using the 
+1.  To create a tar of the current operating system you are going to want to change into your root or home directory
 
-```
+        cd /home/user
+        cd /root/
+
+2.  Then issue the following command:
+
+    IF YOU HAVE ANY FOLDER THAT YOU DO NOT WANT TO BACKUP MAKE SURE TO ADD THEM TO THE COMMAND using the 
+
       --exclude=/donotbackthisup 
       tar -cvpzf serverbackup.tar.gz --exclude=/serverbackup.tar.gz  --one-file-system /
-```
 
-3.Depending the speed of your server and the size of the system you are backing up the time to complete the task will vary. If you are making a copy of your server and it is only running a decent sized webserver you can expect it to be close to 8 gigabytes. Once this is finished you want to the make sure that Docker is installed on the server or computer that you want to transfer the tar to. If it is all setup and ready to go, then you can continue with the tutorial. If not, you may want to check out the following tutorial:
+
+3. Depending the speed of your server and the size of the system you are backing up the time to complete the task will vary. If you are making a copy of your server and it is only running a decent sized webserver you can expect it to be close to 8 gigabytes. Once this is finished you want to the make sure that Docker is installed on the server or computer that you want to transfer the tar to. If it is all setup and ready to go, then you can continue with the tutorial. If not, you may want to check out the following tutorial:
   [Installing Docker On Ubuntu](https://docs.docker.com/engine/installation/linux/ubuntulinux/)'
 
-3.	Once you have the tar image on your new system you can import it by changing to the directory containing the tar file and running the following command:
+4.  Once you have the tar image on your new system you can import it by changing to the directory containing the tar file and running the following command:
 
 ```
 	cd /home/<dockerimagedir>/
