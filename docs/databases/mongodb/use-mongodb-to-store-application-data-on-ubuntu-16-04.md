@@ -20,6 +20,8 @@ MongoDB is a database engine that provides access to non-relational, document-or
 
 - Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
 
+- MongoDB requires about 3.4GB of free disk space for its journal files. To account for this, as well as other MongoDB files, make sure you have at least 4GB  of free disk space before using this guide. If you plan on building a large database, you will need to increase this as your dataset grows. 
+
 - Update your system:
 
       sudo apt-get update && sudo apt-get upgrade
@@ -93,7 +95,7 @@ If you enabled authentication above, your first step will be to create a user ad
 
         mongo -u mongo-admin -p --authenticationDatabase admin
 
-    Note that authentication is not forced, even when the `auth` option is enabled within the configuration file. However, access to other databases will be restricted to users that have been added to the `admin` database with the proper permissions.
+    Note that authentication is not forced, even when the `auth` option is enabled within the configuration file. However, access to other databases will be restricted to users that have been added to the `admin` database with the proper permissions. The options in the above command are required in order to authenticate when connecting to the shell.
 
     The `mongo-admin` user we created is purely administrative based on the roles we specified; it is defined as a user administrator for any database, but does not have any permissions itself. You may use it to create additional users and define their roles, but it will not have privileges on those databases. If you are using multiple applications with MongoDB, it is recommended to set up different users with custom permissions for their corresponding databases.
 
