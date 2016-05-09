@@ -182,7 +182,7 @@ Since all of the information has been entered into MySQL, check that the data is
         +----+-----------+-------------------------------------+--------------------+
         2 rows in set (0.01 sec)
 
-5.  Check the `virtual_users` table:
+5.  Check the `virtual_aliases` table:
 
         SELECT * FROM mailserver.virtual_aliases;
 
