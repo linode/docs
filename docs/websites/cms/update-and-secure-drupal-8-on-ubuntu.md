@@ -12,7 +12,7 @@ published: 'Friday, April 8, 2016'
 title: Update and Secure Drupal 8 on Ubuntu or Debian
 ---
 
-Drupal 8 is the lastest version of the popular [Drupal](https://www.drupal.org/) content management system. While a simple incremental update feature is planned for version 8.1, manual updates are currently required. This guide demonstrates how to manually install an incremental Drupal 8 update on your Linode. This guide assumes you have a functional Drupal 8 installation running on Apache and Debian or Ubuntu.
+Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) content management system. While a simple incremental update feature is planned for version 8.1, manual updates are currently required. This guide demonstrates how to manually install an incremental Drupal 8 update on your Linode. This guide assumes you have a functional Drupal 8 installation running on Apache and Debian or Ubuntu.
 
 ## Before You Begin
 
@@ -23,7 +23,9 @@ Drupal 8 is the lastest version of the popular [Drupal](https://www.drupal.org/)
     -   [Install a LAMP stack](/docs/websites/lamp/lamp-on-ubuntu-14-04) 
     -   [Install and Configure Drupal 8](/docs/websites/cms/install-and-configure-drupal-8)
 
-2.  Confirm the name of your site's Document Root folder by running the following command on your Linode: `ls /var/www/html`
+2.  Confirm the name of your site's Document Root folder by running the following command on your Linode:
+
+        ls /var/www/html
 
 3.  Update your system:
 
@@ -33,7 +35,7 @@ Drupal 8 is the lastest version of the popular [Drupal](https://www.drupal.org/)
 >
 > - This guide will use `sudo` wherever possible.
 > - You may need additional firewall rules for your specific application.
-> - Replace each instance of `example.com` and `user` with the names appropriate to your site, and `203.0.113.52` with your Liode's IP address or domain name.
+> - Replace each instance of `example.com` and `user` with the names appropriate to your site, and `203.0.113.52` with your Linode's IP address or domain name.
 
 ## Create Backups
 
@@ -54,7 +56,7 @@ Back up existing files and move the archive into the backups directory. This pro
 
     [![A Drupal Update](/docs/assets/drupal-updates-download-small.png)](/docs/assets/drupal-updates-download.png)
 
-3.  Connect to your Linode over ssh:
+3.  Connect to your Linode over SSH:
 
         ssh user@203.0.113.52
 
@@ -67,17 +69,17 @@ Back up existing files and move the archive into the backups directory. This pro
 
 ###  Put the Site into Maintenance Mode
 
-1.  Back in you browser navigate to **Configuration**, **Development**, then **Maintenance mode**:
+1.  Back in you browser navigate to **Configuration**, **Development**, then **Maintenance mode**.
 
     ![Maintenance Mode](/docs/assets/drupal-updates-maintenance.png)
 
-2.  Check the box next to "Put site into maintenance mode". Enter a message if desired, and click **Save Configuration**.
+2.  Check the box next to "Put site into maintenance mode." Enter a message if desired, and click **Save Configuration**.
 
     [![Title](/docs/assets/drupal-updates-maintenance2-small.png)](/docs/assets/drupal-updates-maintenance2.png)
 
 ### Replace System Files
 
-1.  From the Linode, while in the site's `public_html` folder, remove existing files and folders except `sites` and `profiles`:
+1.  While in the site's `public_html` folder on your Linode, remove existing files and folders except `sites` and `profiles`:
 
         sudo rm -ifr autoload.php composer.* example.gitignore index.php LICENSE.txt README.txt robots.txt update.php web.config && sudo rm -ifr core/ modules/ vendor/ themes/
 
@@ -107,7 +109,7 @@ Back up existing files and move the archive into the backups directory. This pro
 
 8.  From your Linode, open `/var/www/html/example.com/public_html/sites/default/settings.php` and confirm that `$update_free_access = FALSE`.
 
-9.  If everything looks good, take the site out of maintenance mode *[described above](/docs/websites/cms/update-and-secure-drupal-8-on-ubuntu#put-the-site-into-maintenance-mode)* by unchecking the box next to "Put site into maintenance mode".
+9.  If everything looks good, take the site out of maintenance mode *[described above](/docs/websites/cms/update-and-secure-drupal-8-on-ubuntu#put-the-site-into-maintenance-mode)* by unchecking the box next to "Put site into maintenance mode."
 
 ## Additional Security 
 
