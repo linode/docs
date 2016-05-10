@@ -6,7 +6,7 @@ description: 'This is a starting point of best practices for hardening a product
 keywords: 'security,secure,firewall,ssh,add user,quick start'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['securing-your-server/']
-modified: 'Wednesday, March 16, 2016'
+modified: 'Tuesday, May 10th, 2016'
 modified_by:
   name: Phil Zona
 published: 'Friday, February 17th, 2012'
