@@ -5,14 +5,14 @@ author:
 description: 'This guide will show you how to update and secure an installation of Drupal 8 CMS on your Linode running Ubuntu or Debian.'
 keywords: 'drupal,cms,apache,php,content management system,drupal 8,update'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Friday, April 8, 2016
+modified: 'Wednesday, May 11, 2016'
 modified_by:
     name: Edward Angert
-published: 'Friday, April 8, 2016'
+published: 'Wednesday, May 11, 2016'
 title: Update and Secure Drupal 8 on Ubuntu or Debian
 ---
 
-Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) content management system. While a simple incremental update feature is planned for version 8.1, manual updates are currently required. This guide demonstrates how to manually install an incremental Drupal 8 update on your Linode. This guide assumes you have a functional Drupal 8 installation running on Apache and Debian or Ubuntu.
+Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) content management system. While a simple incremental update feature is included in version 8.1, manual core updates are required for all preceding versions. This guide demonstrates how to manually install an incremental Drupal 8 update on your Linode. This guide assumes you have a functional Drupal 8 installation running on Apache and Debian or Ubuntu.
 
 ## Before You Begin
 
@@ -63,13 +63,13 @@ Back up existing files and move the archive into the backups directory. This pro
 4.  Navigate to the Apache DocumentRoot directory. Download the new file by using `wget` and pasting the link address you copied from Step 2:
 
         cd /var/www/html/example.com
-        wget https://ftp.drupal.org/files/projects/drupal-8.0.5.tar.gz
+        wget https://ftp.drupal.org/files/projects/drupal-8.1.1.tar.gz
 
 ## Upgrade Your Site
 
 ###  Put the Site into Maintenance Mode
 
-1.  Back in you browser navigate to **Configuration**, **Development**, then **Maintenance mode**.
+1.  Back in your browser navigate to **Configuration**, **Development**, then **Maintenance mode**.
 
     ![Maintenance Mode](/docs/assets/drupal-updates-maintenance.png)
 
@@ -83,10 +83,10 @@ Back up existing files and move the archive into the backups directory. This pro
 
         sudo rm -ifr autoload.php composer.* example.gitignore index.php LICENSE.txt README.txt robots.txt update.php web.config && sudo rm -ifr core/ modules/ vendor/ themes/
 
-2.  Go up one directory, then expand the update into your `public_html` folder. Replace `drupal-8.0.6.tar.gz` with the current update:
+2.  Go up one directory, then expand the update into your `public_html` folder. Replace `drupal-8.1.1.tar.gz` with the current update:
 
         cd ..
-        sudo tar -zxvf drupal-8.0.6.tar.gz --strip-components=1 -C public_html
+        sudo tar -zxvf drupal-8.1.1.tar.gz --strip-components=1 -C public_html
 
 3.  From a browser on your local machine, navigate to `example.com/update.php`:
 
