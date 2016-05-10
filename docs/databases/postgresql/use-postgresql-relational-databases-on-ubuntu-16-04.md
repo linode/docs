@@ -63,11 +63,11 @@ Make sure you are running the commands in this section as the `postgres` Linux u
 
 1.  Create a sample database called `mytestdb`:
 
-        createdb mytestdb 
+        createdb mytestdb
 
 2.  Connect to the test database:
 
-        psql mytestdb 
+        psql mytestdb
 
 3.  You will see the following output:
 
@@ -84,19 +84,19 @@ This section will demonstrate how to create a test database with an employee's f
 
 1.  To create a table called "employees" in your test database:
 
-        CREATE TABLE employees (employee_id int, first_name varchar, last_name varchar); 
+        CREATE TABLE employees (employee_id int, first_name varchar, last_name varchar);
 
 2.  To insert a record into the table:
 
-        INSERT INTO employees VALUES (1, 'John', 'Doe'); 
+        INSERT INTO employees VALUES (1, 'John', 'Doe');
 
 3.  To see the contents of the "employees" table:
 
-        SELECT * FROM employees; 
+        SELECT * FROM employees;
 
     This produces the following output:
 
-         employee_id | first_name | last_name 
+         employee_id | first_name | last_name
         -------------+------------+-----------
                    1 | John       | Doe
         (1 row)
@@ -111,21 +111,21 @@ Commands in this section should be run as the `postgres` Linux user.
 
 1.  To add a new user role and specify its password, issue the following command from the command line:
 
-        createuser examplerole --pwprompt 
+        createuser examplerole --pwprompt
 
     If you need to delete a role, you can use the `dropuser` command in place of `createuser`.
 
 2.  Connect to the database:
 
-        psql mytestdb 
+        psql mytestdb
 
     You'll be connected as the `postgres` database user by default.
 
 3.  From the PostgreSQL shell, enter the following command to grant all privileges on the table `employees` to the user `examplerole`:
 
-        GRANT ALL ON employees TO examplerole; 
+        GRANT ALL ON employees TO examplerole;
 
-4.  Exit the PostgreSQL shell by entering the `\q` command 
+4.  Exit the PostgreSQL shell by entering the `\q` command.
 
 ### Secure Local PostgreSQL Access
 
@@ -133,18 +133,16 @@ PostgreSQL uses *peer authentication* by default. This means database connection
 
 Commands in this section should be run as the `postgres` Linux user unless otherwise specified.
 
-1.  Edit your `/etc/postgresql/9.5/main/pg_hba.conf` file:
+1.  Edit your `/etc/postgresql/9.5/main/pg_hba.conf` file, under the `# "local" is for Unix domain socket connections only` header:
 
     {: .file-excerpt }
     /etc/postgresql/9.5/main/pg_hba.conf
     :   ~~~
-        #TYPE    DATABASE   USER   ADDRESS  METHOD
-
         # "local" is for Unix domain socket connections only
         local    all        all             peer
         ~~~
 
-    Replace "peer" with "md5" on this line to activate password authentication using an MD5 hash. 
+    Replace `peer` with `md5` on this line to activate password authentication using an MD5 hash. 
 
 2.  To enable these changes, we need to restart PostgreSQL. However, we did not grant the `postgres` user sudo privileges for security reasons. Return to your normal user shell:
 
