@@ -2,8 +2,8 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Our guide to hosting a website on your Linode.'
-keywords: 'linode guide,hosting a website,website,linode quickstart guide'
+description: 'The Linode Guide to Hosting a Website on Its Virtual Servers.'
+keywords: 'linode guide,hosting a website,linode quickstart guide'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['hosting-website/']
 modified: Monday, March 7th, 2016
@@ -13,19 +13,19 @@ published: 'Tuesday, March 13th, 2012'
 title: Hosting a Website
 ---
 
-Now that you've installed Linux and secured your Linode, it's time to start *doing* stuff with it. In this guide, you'll learn how to host a website. Start by installing a web server, database, and PHP - a popular combination which is commonly referred to as the LAMP stack (Linux, Apache, MySQL, and PHP). Then create or import a database, upload files, and add DNS records. By the time you reach the end of this guide, your Linode will be hosting one or more websites!
+Now that you've installed Linux and secured your Linode, it's time to start *doing* stuff with it. In this guide, you'll learn how to host a website. Start by installing atop Linux a web server, database, and PHP - a popular software combination which is commonly referred to as the LAMP stack (Linux, Apache, MySQL, and PHP). Then create or import a database, upload files, and add DNS records. By the time you reach the end of this guide, your Linode will be hosting one or more websites.
 
  {: .note }
 >
 > Debian 8 and Ubuntu 14.04 LTS are the [Linux distributions](/docs/getting-started#sph_deploying-a-linux-distribution) we're using as the starting point for the packages and configurations mentioned in this guide. 
 >
-> This guide is designed for small and medium-size websites running on WordPress, Drupal, or another PHP content management system. If your website doesn't belong in that category, you'll need to assess your requirements and install custom packages tailored for your particular requirements.
+> This guide is designed for small- and medium-size websites running on WordPress, Drupal, or another PHP content management system. If your website doesn't belong in that category, you'll need to assess your requirements and install custom packages tailored for your particular requirements.
 >
 >This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
 ## Web Server
 
-Hosting a website starts with installing a *web server*, an application on your Linode that delivers content through the Internet. This section:"" will help you get started with *Apache*, the world's most popular web server. For more information about Apache and other web servers, see our [web server reference manuals](/docs/web-servers).
+Hosting a website starts with installing a *web server*, an application on your Linode that delivers content through the internet. This section:"THIS NEEDS TO BE FILLED or DELETED" will help you get started with *Apache*, the world's most popular web server. For more information about Apache and other web servers, see our [web server reference manuals](/docs/web-servers).
 
 ### Install Apache
 
@@ -51,7 +51,7 @@ Installing Apache is easy, but if you leave it running with the default settings
 
         sudo nano /etc/apache2/apache2.conf
 
-3.  Make sure that the following values are set.
+3.  Make sure that the following values are set:
 
     {: .note }
     >
@@ -78,11 +78,11 @@ Installing Apache is easy, but if you leave it running with the default settings
 
         sudo service apache2 restart
 
-Good work! You've successfully optimized Apache for your Linode, increasing performance and implementing safeguards to prevent excessive resource consumption. You're almost ready to host websites with Apache.
+Good work! You've successfully optimized Apache for your Linode, increasing performance and implementing safeguards to prevent excessive resource depletion. You're almost ready to host websites with Apache.
 
 ### Configure Name-based Virtual Hosts
 
-Now that Apache is optimized for performance, it's time to starting hosting one or more websites. There are several possible methods of doing this. In this section, you'll use *name-based virtual hosts* to host websites in your home directory. 
+Now that Apache is optimized for performance, it's time to start hosting one or more websites. Several possible website hosting methods are available. In this section, you'll use *name-based virtual hosts* to host websites in your home directory. 
 
  {: .note }
 >
@@ -96,7 +96,7 @@ Now that Apache is optimized for performance, it's time to starting hosting one 
 
         cd /var/www/html
 
-3.  Create a folder to hold your website, and subfolders for its logs, backups, and public data. Replace `example.com` with your domain name:
+3.  Create a folder to hold your website and create subfolders for its logs, backups, and public data. Replace `example.com` with your domain name:
 
         mkdir -p example.com/{public_html,log,backups}
 
@@ -104,7 +104,7 @@ Now that Apache is optimized for performance, it's time to starting hosting one 
 
         sudo nano /etc/apache2/sites-available/example.com.conf
 
-5.  Now it's time to create a configuration for your virtual host. We've created some basic settings to get your started. Copy and paste the settings shown below in to the virtual host file you just created. Replace `example.com` with your domain name.
+5.  Now, it's time to create a configuration for your virtual host. We've created some basic settings to get you started. Copy and paste the settings shown below into the virtual host file you just created. Replace `example.com` with your domain name:
 
     {: .file-excerpt}
     /etc/apache2/sites-available/example.com.conf
@@ -142,19 +142,20 @@ Now that Apache is optimized for performance, it's time to starting hosting one 
 
 9.  Repeat steps 1-8 for any other websites you want to host on your Linode.
 
-Congratulations! You've configured Apache to host one or more websites on your Linode. After you [upload files](#upload-files) and [add DNS records](#add-dns-records) later in this guide, your websites will be accessible to the outside world.
+Congratulations! You've configured Apache to host one or more websites on your Linode. After you [upload files](#upload-files) and [add DNS records](#add-dns-records) later in this guide, your websites will be accessible from the outside world.
 
 ## Database
 
-Databases store data in a structured and easily accessible manner, serving as the foundation for hundreds of web and server applications. A variety of open source database platforms exist to meet the needs of applications running on your Linode. This section will help you get started with *MySQL*, one of the most popular database platforms. For more information about MySQL and other databases, see our [database reference manuals](/docs/databases).
+Databases store data in a structured and easily accessible manner, serving as the foundation for hundreds of web and server applications. A variety of open-source database platforms exist to meet the needs of applications running on your Linode. This section will help you get started with *MySQL*, one of the most popular database platforms. For more information about MySQL and other databases, see our [database reference manuals](/docs/databases).
 
 ### Install MySQL
 
-1.  Install MySQL. Your Linode will download, install, and start the MySQL database server.
+1.  Install MySQL. Your Linode will download, install, and start the MySQL database server:
 
         sudo apt-get install mysql-server
 
 2.  You will be prompted to enter a password for the MySQL root user. This is not related to the root user for your Linode, so be sure to choose a different password for security purposes.
+
 3.  Secure MySQL using the `mysql_secure_installation` utility:
 
         sudo mysql_secure_installation
@@ -165,7 +166,7 @@ That's it! MySQL is now installed and running on your Linode.
 
 ### Optimize MySQL for a Linode 1GB
 
-MySQL consumes a lot of memory when using the default configuration. To set resource constraints, you'll need to edit the MySQL configuration file. 
+MySQL consumes lots of memory when using the default configuration. To set resource constraints, you'll need to edit the MySQL configuration file. 
 
  {: .note }
 >
@@ -236,18 +237,18 @@ The first thing you'll need to do in MySQL is create a *database*. (If you alrea
 
         quit
 
-Now you have a new database that you can use for your website. If you don't need to import a database, go ahead and skip to [PHP](#php).
+Now, you have a new database that you can use for your website. If you don't need to import a database, go ahead and skip to [PHP](#php).
 
 ### Import a Database
 
-If you have an existing website, you may want to import an existing database in to MySQL. It's easy, and it allows you to have an established website up and running on your Linode in a matter of minutes. 
+If you have an existing website, you may want to import an existing database into MySQL. It's easy, and it allows you to have an established website up and running on your Linode in a matter of minutes. 
 
 1.  Upload the database file to your Linode. See the instructions in the section [Upload Files](#upload-files).
 2.  Import the database, replacing `username` with your MySQL username and `database_name` with the database name you want to import to. You will be prompted for your MySQL password:
 
         mysql -u username -p database_name < FILE.sql
 
-Your database will be imported in to MySQL.
+Your database will be imported into MySQL.
 
 ## PHP
 
@@ -308,7 +309,7 @@ Congratulations! PHP is now installed on your Linode and configured for optimal 
 
 ## Upload Files
 
-You've successfully installed Apache, MySQL, and PHP. Now it's time to upload a website to your Linode. This is one of the last steps before you "flip the switch" and publish your website on the Internet.
+You've successfully installed Apache, MySQL, and PHP. Now it's time to upload a website to your Linode. This is one of the last steps before you "flip the switch" and publish your website on the internet.
 
 1.  If you haven't done so already, download and install an SFTP capable client on your computer. We recommend using the [FileZilla](/docs/tools-reference/file-transfer/filezilla) SFTP client.
 2.  Follow the instructions in the guides listed above to connect to your Linode.
@@ -335,7 +336,7 @@ It's a good idea to test your website(s) before you add the DNS records. This is
 
 ## Add DNS Records
 
-Now you need to point your domain name(s) at your Linode. This process can take a while, so please allow up to 24 hours for DNS changes to be reflected throughout the Internet. 
+Now you need to point your domain name(s) at your Linode. This process can take a while, so please allow up to 24 hours for DNS changes to be reflected throughout the internet. 
 
 1.  Log in to the [Linode Manager](https://manager.linode.com).
 2.  Click the **DNS Manager** tab.
@@ -360,9 +361,9 @@ Now you need to point your domain name(s) at your Linode. This process can take 
 
 9.  Repeat steps 1-8 for every other name-based virtual host you created earlier.
 
-You've added DNS records for your website(s). Remember, DNS changes can take up to 24 hours to propagate through the Internet. Be patient! Once the DNS changes are completed, you will be able to access your website by typing the domain name in to your browser's address bar.
+You've added DNS records for your website(s). Remember, DNS changes can take up to 24 hours to propagate through the internet. Be patient. Once the DNS changes are completed, you will be able to access your website by typing the domain name into your browser's address bar.
 
-## Setting Reverse DNS
+## Set Reverse DNS
 
 You're almost finished! The last step is setting reverse DNS for your domain name. 
 
