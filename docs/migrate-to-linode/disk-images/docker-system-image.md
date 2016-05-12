@@ -30,10 +30,10 @@ To create a tar of the current operating system you are going to want to change 
         cd /root/
 
 
+If there is a folder that you do no want to backup make sure you include its path in the command below. For example, if you wanted to exclude /home/john/files you would enter 
 
-If you have any folder that you do not want to backup make sure to add them to the command using the 
-
-      --exclude=/donotbackthisup 
+      tar -cvpzf serverbackup.tar.gz --exclude=/home/john/files  --one-file-system /
+      
       tar -cvpzf serverbackup.tar.gz --exclude=/serverbackup.tar.gz  --one-file-system /
 
 
