@@ -97,7 +97,9 @@ If you enabled authentication in the [Configure MongoDB Server](#configure-mongo
             ]
         }
 
-4.  Run the `quit()` function to exit the mongo shell
+4.  Exit the mongo shell:
+
+        quit()
 
 5.  Test your connection to MongoDB with the credentials created in Step 3, using the `admin` database for authentication:
 
@@ -107,15 +109,15 @@ If you enabled authentication in the [Configure MongoDB Server](#configure-mongo
 
     The `mongo-admin` user created in Step 3 is purely administrative based on the roles specified. It is defined as a user administrator for all databases, but does not have any database permissions itself. You may use it to create additional users and define their roles. If you are using multiple applications with MongoDB, set up different users with custom permissions for their corresponding databases.
 
-6.  As the `mongo-admin` user, create a new database to store regular user data for authentication. The following example uses `user-data`:
+6.  As the `mongo-admin` user, create a new database to store regular user data for authentication. The following example calls it `user-data`:
 
         use user-data
 
-    Permissions for different databases are handled in separate `roles` objects. The example in Step 7 creates the user, `example-user`, with read-only permissions for the `user-data` database and has read and write permissions for the `newdb` database we'll create in the [Basic MongoDB Functions](#basic-mongodb-functions) section below.
+    Permissions for different databases are handled in separate `roles` objects. The example in Step 7 creates the user, `example-user`, with read-only permissions for the `user-data` database and has read and write permissions for the `example-db` database we'll create in the [Basic MongoDB Functions](#basic-mongodb-functions) section below.
 
 7.  Create a new, non-administrative user to enter test data. Change both `example-user` and `password` to something relevant and secure:
        
-        db.createUser({user: "example-user", pwd: "password", roles:[{role: "read", db: "user-data"}, {role:"readWrite", db: "newdb"}]})
+        db.createUser({user: "example-user", pwd: "password", roles:[{role: "read", db: "user-data"}, {role:"readWrite", db: "example-db"}]})
 
 To create additional users, repeat Steps 6 and 7 as the administrative user, creating new usernames, passwords and roles by substituing the appropriate values.
 
@@ -129,9 +131,9 @@ Much of MongoDB's popularity comes from its ease of integration. Interactions wi
 
         mongo -u example-user -p --authenticationDatabase user-data
 
-2.  Create a new database. This example uses `newdb`:
+2.  Create a new database. This example calls it `example-db`:
 
-        use newdb
+        use example-db
 
     Make sure that this database name corresponds with the one for which the user has read and write permissions.   
 
