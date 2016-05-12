@@ -22,16 +22,16 @@ external_resources:
 Have you ever wanted to create a docker image from a running operating system? Following some very simple Docker commands you will be able to export a container to a tar file, transfer it to a different server, import the tar into a Docker image, tag the image, and finally run it.
 
 
-## Before attempting any commands shown below make sure that you have a backup of your data!
+#### Before attempting any commands shown below make sure that you have a backup of your data!
 
 To create a tar of the current operating system you are going to want to change into your root or home directory
 
         cd /home/user
         cd /root/
 
-###2.  Then issue the following command:
 
-    IF YOU HAVE ANY FOLDER THAT YOU DO NOT WANT TO BACKUP MAKE SURE TO ADD THEM TO THE COMMAND using the 
+
+If you have any folder that you do not want to backup make sure to add them to the command using the 
 
       --exclude=/donotbackthisup 
       tar -cvpzf serverbackup.tar.gz --exclude=/serverbackup.tar.gz  --one-file-system /
@@ -43,7 +43,7 @@ To create a tar of the current operating system you are going to want to change 
 Once you have the tar image on your new system you can import it by changing to the directory containing the tar file and running the following command:
 
 	cd /home/<dockerimagedir>/
-	docker import serverbackup.tar
+	docker import serverbackup.tar 
 
  When you type this docker will list all of the current images you have installed into your docker system. You are going to want to find the one with the most recent date and it should be named <none> we are going to want to change the name of it so we are going to make a docker tag:
 
@@ -56,7 +56,7 @@ Once this is completed you will be able to run your image. A sample Docker run c
 
 This command will run the Docker container within the terminal and allow the user to kill the server by just typing exit in the terminal when they are in the root directory. If the port forwarding is setup up correctly you should be able to access your website via http and https as well as ssh through ports 80 for http, 443 for https, and 6789 for ssh.
 
-## Troubleshooting:
+### Troubleshooting:
 
 If you get an error that looks like this after restarting apache2 :  
 
@@ -83,4 +83,4 @@ If you try to access the ip or web address and there is no connection, try this:
 	sudo service mysql restart
 
 
-###If the service that you want to use is not working just try restarting it.
+####If the service that you want to use is not working just try restarting it.
