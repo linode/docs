@@ -5,7 +5,7 @@ author:
 description: 'Install SteamCMD, a command-line version of the Steam client, which works with games that use SteamPipe. Installing SteamCMD is a prerequisite before hosting a Steam title on your own game server.'
 keywords: 'steam,steamcmd,steam cmd,games,game server,steam server,steampipe'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: 'Monday, February 15th, 2016'
+modified: 'Tuesday, March 29th, 2016'
 modified_by:
   name: Linode
 published: 'Monday, February 15th, 2016'
@@ -133,15 +133,15 @@ Game servers and clients are an especially ripe target for attack. Use our [Secu
 
 ## Install SteamCMD
 
-1.  Newly created Linodes use 64-bit Linux operating systems. Since Steam is compiled for i386, install the appropriate libraries:
+1.  Newly created Linodes use 64-bit Linux operating systems. Since Steam is compiled for i386, install the appropriate libraries. Screen we'll also use when running Steam games.
 
     **CentOS 7**
 
-        sudo yum install glibc.i686 libstdc++.i686
+        sudo yum install glibc.i686 libstdc++.i686 screen
 
     **Debian / Ubuntu**
 
-        sudo apt-get install lib32gcc1
+        sudo apt-get install lib32gcc1 screen
 
     {: .note}
     >
@@ -149,7 +149,7 @@ Game servers and clients are an especially ripe target for attack. Use our [Secu
 
 2.  Create the directory for SteamCMD and change to it:
 
-        mkdir ~/steamcmd && cd ~/steamcmd
+        mkdir ~/Steam && cd ~/Steam
 
 3.  Download the SteamCMD tarball:
 
@@ -168,7 +168,7 @@ When running a Steam game, the following error is common to encounter:
 The game server will still operate despite this error, and it should be something fixed in a later release of SteamCMD. The temporary fix is to create the directory and symlink to `libsteam.so`.
 
     mkdir -p ~/.steam/sdk32/
-    ln -s ~/steamcmd/linux32/steamclient.so ~/.steam/sdk32/steamclient.so
+    ln -s ~/Steam/linux32/steamclient.so ~/.steam/sdk32/steamclient.so
 
 ## Run SteamCMD
 
@@ -178,7 +178,7 @@ The game server will still operate despite this error, and it should be somethin
 
     That will return an output similar to below and leave you at the `Steam>` prompt:
 
-        Redirecting stderr to '/home/linode/Steam/logs/stderr.txt'
+        Redirecting stderr to '/home/steam/Steam/logs/stderr.txt'
         [  0%] Checking for available updates...
         [----] Downloading update (0 of 7,013 KB)...
         [  0%] Downloading update (1,300 of 7,013 KB)...
@@ -192,7 +192,7 @@ The game server will still operate despite this error, and it should be somethin
                 . . .
         [----] Cleaning up...
         [----] Update complete, launching Steam...
-        Redirecting stderr to '/home/linode/Steam/logs/stderr.txt'
+        Redirecting stderr to '/home/steam/Steam/logs/stderr.txt'
         [  0%] Checking for available updates...
         [----] Verifying installation...
         Steam Console Client (c) Valve Corporation

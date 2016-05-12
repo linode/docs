@@ -34,7 +34,7 @@ First, you'll need to [sign up for Linode Managed](https://www.linode.com/manage
 You'll need to perform several of the tasks outlined in this guide to start using Linode Managed:
 
 1.  Verify that your servers are responding to ping ICMP echo requests.
-2.  [Install Linode's public SSH key on all of your servers.](#installing-linode-s-public-ssh-key)
+2.  [Install Linode's public SSH key on all of your servers.](#adding-the-public-key)
 3.  [Add credentials for the services you want to monitor.](#adding-service-credentials)
 4.  [Specify contacts and groups.](#contacts)
 5.  [Add services to be monitored.](#adding-a-new-service)

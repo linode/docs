@@ -22,7 +22,7 @@ Vagrant can be paired with Linode through the use of the *vagrant-linode* plugin
 
 ## Prerequisites
 
-1.  [Install Vagrant](http://www.vagrantup.com/downloads) on your local computer or other workspace.
+1.  [Install Vagrant](https://www.vagrantup.com/downloads.html) on your local computer or other workspace.
 
 2.  Generate an API Key. This will be used to create Linodes based upon your Vagrant profile:
 

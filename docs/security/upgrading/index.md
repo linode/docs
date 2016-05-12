@@ -5,9 +5,6 @@ author:
 keywords: upgrading
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['upgrading/']
-modified: Friday, June 1st, 2012
-modified_by:
-  name: Linode
 published: 'Friday, June 1st, 2012'
 title: Upgrading
 ---
