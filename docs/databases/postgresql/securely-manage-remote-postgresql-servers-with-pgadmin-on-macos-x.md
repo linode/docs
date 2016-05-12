@@ -10,6 +10,7 @@ modified_by:
   name: Phil Zona
 published: 'Friday, April 30th, 2010'
 title: Securely Manage Remote PostgreSQL Servers with pgAdmin on Mac OS X
+alias: ['databases/postgresql/pgadmin-macos-x/']
 external_resources:
  - '[pgAdmin Documentation](http://www.pgadmin.org/docs/)'
  - '[PostgreSQL Documentation](http://www.postgresql.org/docs/)'
@@ -29,7 +30,9 @@ pgAdmin is a free, open-source PostgreSQL database administration GUI for Micros
 
 While PostgreSQL supports SSL connections, it is not advisable to instruct it to listen on public IP addresses unless absolutely necessary. For this reason, you'll be using following command to create an SSH tunnel to your database server, replacing `username` with your Linux username and `remote-host` with your Linode's hostname or IP address:
 
-    ssh -f -L 127.0.0.1:5432:127.0.0.1:5432 username@remote-host -N
+    ssh -f -L 5433:127.0.0.1:5432 username@remote-host -N
+
+Although PostgreSQL uses port 5432 for TCP connections, we're using the local port 5433 in case you decide to install PostgreSQL locally later on.
    
 ## Use pgAdmin
 
