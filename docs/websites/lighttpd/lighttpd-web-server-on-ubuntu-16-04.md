@@ -145,18 +145,18 @@ Enhanced virtual hosting works slightly differently, building the document root 
     {: .file-excerpt }
     /etc/lighttpd/conf-available/10-evhost.conf
     :   ~~~ lighty
-            evhost.path-pattern = "/var/www/html/%0/htdocs/"
+        evhost.path-pattern = "/var/www/html/%0/htdocs/"
         ~~~
 
 4.  Modify the `server.document-root` in the main lighttpd configuration file:
 
     {: .file-excerpt }
-    /etc/lighttpd/conf-available/10-evhost.conf
+    /etc/lighttpd/lighttpd.conf
     :   ~~~ lighty
-            server.document-root = "/var/www/html/example.com/htdocs"
+        server.document-root = "/var/www/html/example.com/htdocs"
         ~~~
 
-    With the configuration we set in this and the previous step, if `mysite.com` is requested, and `/var/www/html/mysite.com/htdocs/` is found, that directory becomes the document root when serving requests. The `0%` in the path pattern specifies that a request will be checked against host files named in the format of domain and TLD (top level domain). The `server.document-root` directive specifies a default host that is used when a matching directory does not exist.
+    With the configuration we set in this and the previous step, if `example.com` is requested, and `/var/www/html/example.com/htdocs/` is found, that directory becomes the document root when serving requests. The `0%` in the path pattern specifies that a request will be checked against host files named in the format of domain and TLD (top level domain). The `server.document-root` directive specifies a default host that is used when a matching directory does not exist.
 
     {: .caution}
     > We previously configured the `server.document-root` to `/var/www/html`. While leaving this configuration produces essentially the same result, it exposes your server to a [vulnerability](https://redmine.lighttpd.net/projects/lighttpd/wiki/Docs_ModEVhost#A-Bad-Example) in which authentication can be bypassed in certain situations. This also redirects unmatched requests to the lighttpd index page rather than a default host of your choosing.
@@ -197,7 +197,7 @@ The following command will create two additional virtual hosts for the subdomain
 
 The way you set up virtual hosting on your web server depends upon what kind of sites you host, their traffic, the number of domains, and their workflows. We recommend hosting all of your domains in a centralized directory (eg. `/var/www/html` ) and then symbolically linking these directories into more useful locations.
 
-For instance, you can create a series of "web editor" user accounts. You may then link the document root of each domain into a folder in the home folder of the editor for that domain. For the user account "example-user" that manages the "example.com" site:
+For instance, you can create a series of "web editor" user accounts. You may then link the document root of each domain into a folder in the home folder of the editor for that domain. For the user account `example-user` that manages the `example.com` site:
 
     ln -s /home/example-user/example.com/ /var/www/html/example.com
 
@@ -221,15 +221,15 @@ To install Ruby:
     
     apt-get install ruby
 
-To install PHP 5 for CGI interfaces:
+To install PHP 7 for CGI interfaces:
     
-    apt-get install php5-cgi
+    apt-get install php7.0-cgi
 
 Perl version 5.22.1 is included in Ubuntu 16.04 by default. You may need to install and set up a database system as well, depending on the software you intend to run.
 
 Lighttpd will send CGI requests to CGI handlers on the basis of file extensions, which can be forwarded to individual handlers. You may also forward requests for one extension to multiple servers, and lighttpd will automatically load balance these FastCGI connections.
 
-For example, if you install the `php5-cgi` package and enable FastCGI with `lighty-enable-mod fastcgi-php` then a default FastCGI handler will be configured in the file `/etc/lighttpd/conf-enabled/15-fastcgi-php.conf`. Though the handler will likely require specific customization, the default settings offer an effective example:
+For example, if you install the `php7.0-cgi` package and enable FastCGI with `lighty-enable-mod fastcgi-php` then a default FastCGI handler will be configured in the file `/etc/lighttpd/conf-enabled/15-fastcgi-php.conf`. Though the handler will likely require specific customization, the default settings offer an effective example:
 
 {: .file-excerpt }
 /etc/lighttpd/conf-enabled/15-fastcgi-php.conf
@@ -265,4 +265,4 @@ While lighttpd is an effective and capable web server there are two caveats rega
 
 First, server side includes, which allow you to dynamically include content from one file in another, do not function in lighttpd in the same way as they do in Apache's `mod_ssi`. While it is an effective method for quickly assembling content, lighttpd's script handling via SSI is not a recommended work flow. See [lighttpd project documentation on mod_ssi](http://redmine.lighttpd.net/projects/lighttpd/wiki/Docs:ModSSI).
 
-Second, because of the way FastCGI works, running web applications with lighttpd requires additional configuration, particularly for users who are writing applications using interpreters embedded in the web server (e.g. mod_perl, mod_python, mod_php, etc.). For more information, please consult the [lighttpd project documentation on optimizing FastCGI performance](http://redmine.lighttpd.net/projects/lighttpd/wiki/Docs:PerformanceFastCGI).
+Second, because of the way FastCGI works, running web applications with lighttpd requires additional configuration, particularly for users who are writing applications using interpreters embedded in the web server (e.g. `mod_perl`, `mod_python`, `mod_php`, etc.). For more information, please consult the [lighttpd project documentation on optimizing FastCGI performance](http://redmine.lighttpd.net/projects/lighttpd/wiki/Docs:PerformanceFastCGI).
