@@ -24,12 +24,12 @@ Have you ever wanted to create a docker image from a running operating system? F
 
 ## Before attempting any commands shown below make sure that you have a backup of your data!
 
-#1. To create a tar of the current operating system you are going to want to change into your root or home directory
+To create a tar of the current operating system you are going to want to change into your root or home directory
 
         cd /home/user
         cd /root/
 
-#2.  Then issue the following command:
+###2.  Then issue the following command:
 
     IF YOU HAVE ANY FOLDER THAT YOU DO NOT WANT TO BACKUP MAKE SURE TO ADD THEM TO THE COMMAND using the 
 
@@ -83,4 +83,4 @@ If you try to access the ip or web address and there is no connection, try this:
 	sudo service mysql restart
 
 
-#If the service that you want to use is not working just try restarting it.
+###If the service that you want to use is not working just try restarting it.
