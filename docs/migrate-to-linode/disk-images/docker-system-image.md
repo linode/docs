@@ -19,12 +19,12 @@ external_resources:
  - '[Docker Docs](https://docs.docker.com/)'
 --- 
 
-Have you ever wanted to create a docker image from a running operating system? Following some very simple Docker commands you will be able to export a container to a tar file, transfer it to a different server, import the tar file into a Docker image, tag the image, and finally run it.
+Have you ever wanted to create a docker image from a running operating system? Following some very simple Docker commands you will be able to export a container to a tar file, transfer it to a different server, import the tar file into a Docker image, tag the image, and finally run it. Typically, you would have to build a server in docker from the ground up, starting with the minimal version of an OS. With this tutorial, you will be able to have a system image that can be run as a normal OS and managed completely through Docker.
 
 
 #### Before attempting any commands shown below make sure that you have a backup of your data!
 
-To create a tar of the current operating system you are going to want to change into your root or home directory. You also want to make sure that you have enough storage space on your server to store the image. 
+To create a tar of the current operating system you are going to want to change into your root or home directory. You also want to make sure that you have enough storage space on your server to store the image. If you do not enough space on your current server and you have access to another device that allows ssh access you may want to check out Linode's tutorial on how to setup SSHFS which will let you mount a remote filesystem, accessible via SSH as a local filesystem. [Using SSHFS on Linux and MacOS X](https://www.linode.com/docs/networking/ssh/using-sshfs-on-linux-and-macos-x)
 
         cd /home/user
         cd /root/
