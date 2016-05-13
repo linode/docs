@@ -17,15 +17,16 @@ external_resources:
  - '[NixCraft Guides for Ligttpd (nixcraft)](http://www.cyberciti.biz/tips/category/lighttpd)'
 ---
 
-This tutorial explains how to install and configure the lighttpd ("lighty") web server on Ubuntu 16.04 (Xenial Xerus). Lighttpd provides a lightweight web server that is capable of serving large loads using less memory than servers like the Apache. It's commonly deployed on high traffic sites, including WhatsApp and xkcd. Lighttpd makes sense for users who find "big" programs like Apache daunting and bloated.
+Lighttpd provides a lightweight web server that is capable of serving large loads using less memory than servers like the Apache. It's commonly deployed on high traffic sites, including WhatsApp and xkcd.
+This guide explains how to install and configure the lighttpd ("lighty") web server on Ubuntu 16.04 (Xenial Xerus). Consult the resources at the end for more information about deploying other services commonly found in web server stacks.
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started Guide](/docs/getting-started/) and complete the steps for setting your Linode's hostname and timezone. This guide does not include instructions for deploying other services commonly found in web server stacks, but we have included several additional resources at the end of this document that you may wish to consult.
+1.  Familiarize yourself with and complete the [Getting Started Guide](/docs/getting-started/), setting your Linode's hostname and timezone.
 
-2.  Complete the sections of our [Securing Your Server Guide](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services. Lighttpd is a network-facing service and failing to secure your server may expose you to vulnerabilities.
+2.  Lighttpd is a network-facing service and failing to secure your server may expose you to vulnerabilities. Consult the [Securing Your Server Guide](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
 
-3.  If you're switching from an alternate web server like Apache, remember to turn the other server off for testing purposes, or configure lighttpd to serve on an alternate port until it's configured properly.
+3.  If you're switching from an different web server like Apache, remember to turn the other server off for testing purposes, or configure lighttpd to use an alternate port until it's configured properly.
 
 4.  Update your system:
 
@@ -33,15 +34,15 @@ This tutorial explains how to install and configure the lighttpd ("lighty") web 
 
 {: .note}
 >
->The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+>The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups guide](/docs/tools-reference/linux-users-and-groups).
 
 ## Install Lighttpd
 
-First, install the server from the Ubuntu package repository:
+Install the server from the Ubuntu package repository:
 
     apt-get install lighttpd
 
-Once the server is installed, check to make sure that it's running and is enabled. Visit `http://198.51.100.10:80` in your browser, replacing `198.51.100.10` with your own IP address. If you set up lighttpd to run on an alternate port for testing, be sure to replace `80` with this port. You'll see a placeholder page for lighttpd that contains some important information:
+Once the server is installed, make sure that it's running and is enabled. Replacing `198.51.100.10` with your own IP address, visit `http://198.51.100.10:80` in your browser. If you set up lighttpd to run on an alternate port for testing, be sure to replace `80` with this port. You'll see a placeholder page for lighttpd that contains some important information:
 
 -   The configuration files are located in `/etc/lighttpd`.
 -   By default, the "DocumentRoot" (where all HTML files are stored) is located in the `/var/www` directory. You'll be able to configure this later.
@@ -103,9 +104,9 @@ This section covers configuration for simple virtual hosting. The `simple-vhost`
     {: .file-excerpt}
     /etc/lighttpd/conf-available/10-simple-vhost.conf
     :   ~~~ lighty
-        simple-vhost.server-root = "/var/www/html" 
-        simple-vhost.document-root = "htdocs" 
-        simple-vhost.default-host = "example.com" 
+        simple-vhost.server-root = "/var/www/html"
+        simple-vhost.document-root = "htdocs"
+        simple-vhost.default-host = "example.com"
         ~~~
     The `server-root` defines the base directory under which all virtual host directories are created.
 
@@ -169,14 +170,14 @@ The naming convention for these virtual hosts is derived from the domain names. 
 
 You can modify the host directory format lighttpd recognizes by defining the pattern that gets passed to the directory in which the content lives. The following table shows what host directory format is used as the document root for each pattern. It also shows which host file will be used to serve content, using the above URL as the request:
 
-{: .table .table-striped} 
+{: .table .table-striped}
 | Pattern | Host Directory Format   | Document Root Path                                     |
-| --------|-------------------------|--------------------------------------------------------|  
-| %0      | Domain name and TLD     | /var/www/html/mysite.com/htdocs                        | 
+| --------|-------------------------|--------------------------------------------------------|
+| %0      | Domain name and TLD     | /var/www/html/mysite.com/htdocs                        |
 | %1      | Only TLD                | /var/www/html/com/htdocs                               |
 | %2      | Domain name without TLD | /var/www/html/mysite/htdocs                            |
 | %3      | Subdomain 1 name        | /var/www/html/somesubdomain/htdocs                     |
-| %4      | Subdomain 2 name        | /var/www/html/lookhere/htdocs                          | 
+| %4      | Subdomain 2 name        | /var/www/html/lookhere/htdocs                          |
 | %_      | Full domain name        | /var/www/html/lookhere.somesubdomain.mysite.com/htdocs |
 
 ## Create Virtual Host Directories
@@ -225,7 +226,7 @@ To install PHP 7 for CGI interfaces:
     
     apt-get install php7.0-cgi
 
-Perl version 5.22.1 is included in Ubuntu 16.04 by default. You may need to install and set up a database system as well, depending on the software you intend to run.
+Perl version 5.22.1 is included in Ubuntu 16.04 by default. Depending on the software you intend to run, you may need to install and set up a database system as well.
 
 Lighttpd will send CGI requests to CGI handlers on the basis of file extensions, which can be forwarded to individual handlers. You may also forward requests for one extension to multiple servers, and lighttpd will automatically load balance these FastCGI connections.
 
@@ -234,12 +235,12 @@ For example, if you install the `php7.0-cgi` package and enable FastCGI with `li
 {: .file-excerpt }
 /etc/lighttpd/conf-enabled/15-fastcgi-php.conf
 :   ~~~ lighty
-    fastcgi.server   += ( ".php" => 
+    fastcgi.server   += ( ".php" =>
             ((
                     "bin-path" => "/usr/bin/php-cgi",
                     "socket" => "/var/run/lighttpd/php.socket",
                     "max-procs" => 1,
-                    "bin-environment" => ( 
+                    "bin-environment" => (
                             "PHP_FCGI_CHILDREN" => "4",
                             "PHP_FCGI_MAX_REQUESTS" => "10000"
                     ),
