@@ -19,18 +19,18 @@ external_resources:
  - '[Docker Docs](https://docs.docker.com/)'
 --- 
 
-Have you ever wanted to create a docker image from a running operating system? Following some very simple Docker commands you will be able to export a container to a tar file, transfer it to a different server, import the tar into a Docker image, tag the image, and finally run it.
+Have you ever wanted to create a docker image from a running operating system? Following some very simple Docker commands you will be able to export a container to a tar file, transfer it to a different server, import the tar file into a Docker image, tag the image, and finally run it.
 
 
 #### Before attempting any commands shown below make sure that you have a backup of your data!
 
-To create a tar of the current operating system you are going to want to change into your root or home directory
+To create a tar of the current operating system you are going to want to change into your root or home directory. You also want to make sure that you have enough storage space on your server to store the image. 
 
         cd /home/user
         cd /root/
 
 
-If there is a folder that you do no want to backup make sure you include its path in the command below. For example, if you wanted to exclude /home/john/files you would enter 
+If there is a folder that you do no want to backup make sure you include its path in the command below. You also want to exclude the tar you are creating from the tar source. For example, if your tar file was going to be stored in /home/john/files you would enter: 
 
       tar -cvpzf serverbackup.tar.gz --exclude=/home/john/files  --one-file-system /
       
