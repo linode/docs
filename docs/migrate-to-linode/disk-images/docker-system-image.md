@@ -38,7 +38,7 @@ If there is a folder that you do no want to backup make sure you include its pat
 
 
  Depending the speed of your server and the size of the system you are backing up the time to complete the task will vary. If you are making a copy of your server and it is only running a decent sized webserver you can expect it to be close to 8 gigabytes. Once this is finished you want to the make sure that Docker is installed on the server or computer that you want to transfer the tar to. If it is all setup and ready to go, then you can continue with the tutorial. If not, you may want to check out the following tutorial:
-  [Installing Docker On Ubuntu](https://docs.docker.com/engine/installation/linux/ubuntulinux/)'
+  [Installing Docker On Ubuntu](https://docs.docker.com/engine/installation/linux/ubuntulinux/)
 
 Once you have the tar image on your new system you can import it by changing to the directory containing the tar file and running the following command:
 
