@@ -6,7 +6,7 @@ description: 'Our guide to hosting a website on your Linode.'
 keywords: 'linode guide,hosting a website,website,linode quickstart guide'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['hosting-website/']
-modified: Monday, March 7th, 2016
+modified: Monday, May 2nd, 2016
 modified_by:
   name: Phil Zona
 published: 'Tuesday, March 13th, 2012'
@@ -15,9 +15,9 @@ title: Hosting a Website
 
 Now that you've installed Linux and secured your Linode, it's time to start *doing* stuff with it. In this guide, you'll learn how to host a website. Start by installing a web server, database, and PHP - a popular combination which is commonly referred to as the LAMP stack (Linux, Apache, MySQL, and PHP). Then create or import a database, upload files, and add DNS records. By the time you reach the end of this guide, your Linode will be hosting one or more websites!
 
- {: .note }
+{: .note }
 >
-> Debian 8 and Ubuntu 14.04 LTS are the [Linux distributions](/docs/getting-started#sph_deploying-a-linux-distribution) we're using as the starting point for the packages and configurations mentioned in this guide. 
+> Debian 8 and Ubuntu 14.04 LTS are the [Linux distributions](/docs/getting-started#deploying-an-image) we're using as the starting point for the packages and configurations mentioned in this guide. If you'd like to use Ubuntu 16.04 LTS, refer to the distribution-specific guide on how to set up a [LAMP Stack](/docs/websites/lamp/install-lamp-on-ubuntu-16-04), and then return here to continue from the [upload files](#upload-files) section.
 >
 > This guide is designed for small and medium-size websites running on WordPress, Drupal, or another PHP content management system. If your website doesn't belong in that category, you'll need to assess your requirements and install custom packages tailored for your particular requirements.
 >
@@ -25,7 +25,7 @@ Now that you've installed Linux and secured your Linode, it's time to start *doi
 
 ## Web Server
 
-Hosting a website starts with installing a *web server*, an application on your Linode that delivers content through the Internet. This section:"" will help you get started with *Apache*, the world's most popular web server. For more information about Apache and other web servers, see our [web server reference manuals](/docs/web-servers).
+Hosting a website starts with installing a *web server*, an application on your Linode that delivers content through the Internet. This section will help you get started with *Apache*, the world's most popular web server. For more information about Apache and other web servers, see our [web server reference manuals](/docs/web-servers).
 
 ### Install Apache
 
@@ -39,7 +39,7 @@ Your Linode will download, install, and start the Apache web server.
 
 Installing Apache is easy, but if you leave it running with the default settings, your server could run out of memory. That's why it's important to optimize Apache *before* you start hosting a website on your Linode. 
 
- {: .note }
+{: .note }
 >
 > These guidelines are designed to optimize Apache for a **Linode 1GB**, but you can use this information for any size Linode. The values are based on the amount of memory available, so if you have a Linode 2GB, multiply all of the values by 2 and use those numbers for your settings.
 
@@ -51,29 +51,30 @@ Installing Apache is easy, but if you leave it running with the default settings
 
         sudo nano /etc/apache2/apache2.conf
 
-3.  Make sure that the following values are set.
+3.  Make sure that the following values are set:
 
     {: .note }
     >
-    > In Ubuntu 14.04 LTS, you will need to append the module section noted below to the end of your apache2.conf file:
+    > In Ubuntu 14.04, you will need to append the module section noted below to the end of your apache2.conf file:
 
     {: .file-excerpt}
     /etc/apache2/apache2.conf
-    :	~~~ conf
-    	KeepAlive Off
+    :   ~~~ apache
+	    KeepAlive Off
 
-    	...
+        ...
 
-    	<IfModule mpm_prefork_module>
-    	StartServers 2
-    	MinSpareServers 6
-    	MaxSpareServers 12
-    	MaxClients 30
-    	MaxRequestsPerChild 3000
-    	</IfModule>
-    	~~~
+	    <IfModule mpm_prefork_module>
+	    StartServers 2
+	    MinSpareServers 6
+	    MaxSpareServers 12
+	    MaxClients 30
+	    MaxRequestsPerChild 3000
+	    </IfModule>
+	    ~~~
 
 4.  Save the changes to Apache's configuration file by pressing **CTRL+X** and then pressing **Y**. Press **ENTER** to confirm.
+
 5.  Restart Apache to incorporate the new settings:
 
         sudo service apache2 restart
@@ -84,7 +85,7 @@ Good work! You've successfully optimized Apache for your Linode, increasing perf
 
 Now that Apache is optimized for performance, it's time to starting hosting one or more websites. There are several possible methods of doing this. In this section, you'll use *name-based virtual hosts* to host websites in your home directory. 
 
- {: .note }
+{: .note }
 >
 > You should *not* be logged in as `root` while executing these commands. To learn how to create a new user account and log in as that user, see [Adding a New User](/docs/securing-your-server#sph_adding-a-new-user).
 
@@ -96,15 +97,24 @@ Now that Apache is optimized for performance, it's time to starting hosting one 
 
         cd /var/www/html
 
-3.  Create a folder to hold your website, and subfolders for its logs, backups, and public data. Replace `example.com` with your domain name:
+3.  Create a folder to hold your website, replacing 'example.com' with your domain name:
 
-        mkdir -p example.com/{public_html,log,backups}
+        sudo mkdir example.com
 
-4.  Create the virtual host file for your website. Replace the `example.com` in `example.com.conf` with your domain name:
+4.  Create a set of folders inside the folder you've just created to store your website's files, logs, and backups. Enter the following commands, replacing `example.com` with your domain name:
+
+        sudo mkdir -p example.com/public_html
+		sudo mkdir -p example.com/log
+		sudo mkdir -p example.com/backups
+
+5.  Create the virtual host file for your website. Replace the `example.com` in `example.com.conf` with your domain name:
 
         sudo nano /etc/apache2/sites-available/example.com.conf
 
-5.  Now it's time to create a configuration for your virtual host. We've created some basic settings to get your started. Copy and paste the settings shown below in to the virtual host file you just created. Replace `example.com` with your domain name.
+    {:.caution}
+    > The file name *must* end with `.conf` in Apache versions 2.4 and later, which Ubuntu 14.04 uses. The `.conf` extension is backwards-compatible with earlier versions.
+
+6.  Now it's time to create a configuration for your virtual host. We've created some basic settings to get your started. Copy and paste the settings shown below in to the virtual host file you just created. Replace `example.com` with your domain name.
 
     {: .file-excerpt}
     /etc/apache2/sites-available/example.com.conf
@@ -128,19 +138,19 @@ Now that Apache is optimized for performance, it's time to starting hosting one 
         </VirtualHost>
         ~~~
 
-6.  Save the changes to the virtual host configuration file by pressing **CTRL+X** and then pressing **Y**. Press **ENTER** to confirm.
+7.  Save the changes to the virtual host configuration file by pressing **CTRL+X** and then pressing **Y**. Press **ENTER** to confirm.
 
-7.  Enable your new website, replacing `example.com` with your domain name:
+8. Enable your new website, replacing `example.com` with your domain name:
 
         sudo a2ensite example.com.conf
 
     This creates a symbolic link to your `example.com.conf` file in the appropriate directory for active virtual hosts.
 
-8.  The previous command will alert you that you need to restart Apache to save the changes. Restart to apply your new configuration:
+9. The previous command will alert you that you need to restart Apache to save the changes. Restart to apply your new configuration:
 
         sudo service apache2 restart
 
-9.  Repeat steps 1-8 for any other websites you want to host on your Linode.
+10. Repeat steps 1-9 for any other websites you want to host on your Linode.
 
 Congratulations! You've configured Apache to host one or more websites on your Linode. After you [upload files](#upload-files) and [add DNS records](#add-dns-records) later in this guide, your websites will be accessible to the outside world.
 
@@ -167,7 +177,7 @@ That's it! MySQL is now installed and running on your Linode.
 
 MySQL consumes a lot of memory when using the default configuration. To set resource constraints, you'll need to edit the MySQL configuration file. 
 
- {: .note }
+{: .note }
 >
 > These guidelines are designed to optimize MySQL 5.5 and up for a **Linode 1GB**, but you can use this information for any size Linode. If you have a larger Linode, start with these values and modify them while carefully watching for memory and performance issues.
 
@@ -219,18 +229,18 @@ The first thing you'll need to do in MySQL is create a *database*. (If you alrea
 
 2.  Create a database, replacing `exampleDB` with your own database name:
 
-        create database exampleDB;
+        CREATE DATABASE exampleDB;
 
 3.  Create a new user in MySQL and then grant that user permission to access the new database, replacing `example_user` with your username, and `password` with your password:
 
-        grant all on exampleDB.* to 'example_user' identified by 'password';
+        GRANT ALL ON exampleDB.* TO 'example_user' IDENTIFIED BY 'password';
 
     {: .note }
     > MySQL usernames and passwords are only used by scripts connecting to the database. They do not need to represent actual user accounts on the system.
 
 4.  Tell MySQL to reload the grant tables:
 
-        flush privileges;
+        FLUSH PRIVILEGES;
 
 5.  Now that you've created the database and granted a user permissions to the database, you can exit MySQL:
 
@@ -243,6 +253,7 @@ Now you have a new database that you can use for your website. If you don't need
 If you have an existing website, you may want to import an existing database in to MySQL. It's easy, and it allows you to have an established website up and running on your Linode in a matter of minutes. 
 
 1.  Upload the database file to your Linode. See the instructions in the section [Upload Files](#upload-files).
+
 2.  Import the database, replacing `username` with your MySQL username and `database_name` with the database name you want to import to. You will be prompted for your MySQL password:
 
         mysql -u username -p database_name < FILE.sql
@@ -314,7 +325,7 @@ You've successfully installed Apache, MySQL, and PHP. Now it's time to upload a 
 2.  Follow the instructions in the guides listed above to connect to your Linode.
 3.  Upload your website's files to the `/var/www/example.com/public_html` directory. Replace `example.com` with your domain name.
 
-     {: .note }
+    {: .note }
     >
     > If you configured name-based virtual hosts, don't forget to upload the files for the other websites to their respective directories.
 
