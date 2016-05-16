@@ -17,7 +17,8 @@ external_resources:
  - '[NixCraft Guides for Ligttpd (nixcraft)](http://www.cyberciti.biz/tips/category/lighttpd)'
 ---
 
-Lighttpd provides a lightweight web server that is capable of serving large loads using less memory than servers like the Apache. It's commonly deployed on high traffic sites, including WhatsApp and xkcd.
+Lighttpd provides a lightweight web server that is capable of serving large loads using less memory than servers like Apache. It's commonly deployed on high traffic sites, including WhatsApp and xkcd.
+
 This guide explains how to install and configure the lighttpd ("lighty") web server on Ubuntu 16.04 (Xenial Xerus). Consult the resources at the end for more information about deploying other services commonly found in web server stacks.
 
 ## Before You Begin
@@ -42,7 +43,7 @@ Install the server from the Ubuntu package repository:
 
     apt-get install lighttpd
 
-Once the server is installed, make sure that it's running and is enabled. Replacing `198.51.100.10` with your Linode's IP address, visit `http://198.51.100.10:80` in your browser. If you configured lighttpd to run on an alternate port for testing, be sure to replace `80` with this port. You'll see a placeholder page for lighttpd that contains some important information:
+Once the server is installed, make sure that it's running and is enabled. Visit `http://198.51.100.10:80` in your browser, replacing `198.51.100.10` with your Linode's IP address. If you configured lighttpd to run on an alternate port for testing, be sure to replace `80` with this port. You'll see a placeholder page for lighttpd that contains some important information:
 
 -   Configuration files are located in `/etc/lighttpd`.
 -   By default, the "DocumentRoot" (where all HTML files are stored) is located in the `/var/www` directory. You'll be able to configure this later.
@@ -266,4 +267,4 @@ While lighttpd is an effective and capable web server there are two caveats rega
 
 Server side includes, which allow you to dynamically include content from one file in another, do not function in lighttpd in the same way as they do in Apache's `mod_ssi`. While it is an effective method for quickly assembling content, lighttpd's script handling via SSI is not a recommended work flow. See [lighttpd project documentation on mod_ssi](http://redmine.lighttpd.net/projects/lighttpd/wiki/Docs:ModSSI).
 
-Second, because of the way FastCGI works, running web applications with lighttpd requires additional configuration, particularly for users who are writing applications using interpreters embedded in the web server (e.g. `mod_perl`, `mod_python`, `mod_php`, etc.). For more information, consult the [lighttpd project documentation on optimizing FastCGI performance](http://redmine.lighttpd.net/projects/lighttpd/wiki/Docs:PerformanceFastCGI).
+Because of the way FastCGI works, running web applications with lighttpd requires additional configuration, particularly for users who are writing applications using interpreters embedded in the web server (e.g. `mod_perl`, `mod_python`, `mod_php`, etc.). For more information, consult the [lighttpd project documentation on optimizing FastCGI performance](http://redmine.lighttpd.net/projects/lighttpd/wiki/Docs:PerformanceFastCGI).
