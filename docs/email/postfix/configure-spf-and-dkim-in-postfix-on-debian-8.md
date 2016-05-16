@@ -326,10 +326,10 @@ If everything is OK you shouldn't get any output. If you want to see more inform
         mkdir /var/spool/postfix/opendkim
         chown opendkim:postfix /var/spool/postfix/opendkim
 
-2.  Set the correct socket for Postfix in the OpenDKIM defaults file `/etc/defaults/opendkim`:
+2.  Set the correct socket for Postfix in the OpenDKIM defaults file `/etc/default/opendkim`:
 
     {: .file}
-    /etc/defaults/opendkim
+    /etc/default/opendkim
     :   ~~~ conf
         # Command-line options specified here will override the contents of
         # /etc/opendkim.conf. See opendkim(8) for a complete list of options.
