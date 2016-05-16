@@ -6,7 +6,7 @@ description: 'This is a starting point of best practices for hardening a product
 keywords: 'security,secure,firewall,ssh,add user,quick start'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['securing-your-server/']
-modified: 'Tuesday, May 10th, 2016'
+modified: 'Monday, May 16th, 2016'
 modified_by:
   name: Phil Zona
 published: 'Friday, February 17th, 2012'
@@ -25,11 +25,11 @@ There are arguments for and against automatic updates on servers. [Fedora's Wiki
 
 The practicality of automatic updates is something you must judge for yourself because it comes down to what *you* do with your Linode. Bear in mind that automatic updates apply only to packages sourced from repositories, not self-compiled applications. You may find it worthwhile to have a test environment that replicates your production server. Updates can be applied there and reviewed for issues before being applied to the live environment.
 
-* CentOS uses [yum-cron](https://fedoraproject.org/wiki/AutoUpdates#Fedora_21_or_earlier_versions) for automatic updates.
+* CentOS uses *[yum-cron](https://fedoraproject.org/wiki/AutoUpdates#Fedora_21_or_earlier_versions)* for automatic updates.
 
-* Debian and Ubuntu use [unattended upgrades](https://help.ubuntu.com/lts/serverguide/automatic-updates.html).
+* Debian and Ubuntu use *[unattended upgrades](https://help.ubuntu.com/lts/serverguide/automatic-updates.html)*.
 
-* Fedora uses [dnf-automatic](https://dnf.readthedocs.org/en/latest/automatic.html).
+* Fedora uses *[dnf-automatic](https://dnf.readthedocs.org/en/latest/automatic.html)*.
 
 ## Add a Limited User Account
 
@@ -69,11 +69,11 @@ Now you can administer your Linode from your new user account instead of `root`.
 
 ## Harden SSH Access
 
-By default, password authentication is used to connect to your Linode via SSH. A cryptographic key pair is more secure because a private key takes the place of a password, which is generally much more difficult to brute-force. In this section we'll create a key pair and configure the Linode to not accept passwords for SSH logins.
+By default, password authentication is used to connect to your Linode via SSH. A cryptographic key-pair is more secure because a private key takes the place of a password, which is generally much more difficult to brute-force. In this section we'll create a key-pair and configure the Linode to not accept passwords for SSH logins.
 
 ### Create an Authentication Key-pair
 
-1.  This is done on your local computer, **not** your Linode, and will create a 4096-bit RSA key-pair. During creation, you will be given the option to encrypt the private key with a passphrase. This means that the it cannot be used without entering the passphrase, unless you save it to your local desktop's keychain manager. We suggest you use the key pair with a passphrase, but you can leave the passphrase field blank to skip this.
+1.  This is done on your local computer, **not** your Linode, and will create a 4096-bit RSA key-pair. During creation, you will be given the option to encrypt the private key with a passphrase. This means that it cannot be used without entering the passphrase, unless you save it to your local desktop's keychain manager. We suggest you use the key-pair with a passphrase, but you can leave this field blank if you don't want to use one.
 
     **Linux / OS X**
 
@@ -134,7 +134,7 @@ By default, password authentication is used to connect to your Linode via SSH. A
 
 ### SSH Daemon Options
 
-1.  **Disallow root logins over SSH.** This requires all SSH connections be by non-root users. Once a limited user account is connected, administrative privileges are accessible either by using `sudo` or changing to a root shell using `su -` and entering the root password.
+1.  **Disallow root logins over SSH.** This requires all SSH connections be by non-root users. Once a limited user account is connected, administrative privileges are accessible either by using `sudo` or changing to a root shell using `su -`.
 
 
     {: .file-excerpt}
@@ -156,7 +156,7 @@ By default, password authentication is used to connect to your Linode via SSH. A
 
     {: .note}
     >
-    >You may want to leave password authentication enabled if you connect to your Linode from many different computers. This will allow you to authenticate with a password instead of generating and uploading a key pair for every device.
+    >You may want to leave password authentication enabled if you connect to your Linode from many different computers. This will allow you to authenticate with a password instead of generating and uploading a key-pair for every device.
 
 3.  **Listen on only one internet protocol.** The SSH daemon listens for incoming connections over both IPv4 and IPv6 by default. Unless you need to SSH into your Linode using both protocols, disable whichever you do not need. *This does not disable the protocol system-wide, it is only for the SSH daemon.*
 
@@ -171,7 +171,7 @@ By default, password authentication is used to connect to your Linode via SSH. A
 
 4.  Restart the SSH service to load the new configuration.
 
-    If you’re using a Linux distribution which uses systemd (CentOS 7, Debian 8, Fedora, Ubuntu 16.04)
+    If you’re using a Linux distribution which uses systemd (CentOS 7, Debian 8, Fedora, Ubuntu 15.10+)
 
         sudo systemctl restart sshd
 
@@ -181,7 +181,7 @@ By default, password authentication is used to connect to your Linode via SSH. A
 
 ### Use Fail2Ban for SSH Login Protection
 
-[*Fail2Ban*](http://www.fail2ban.org/wiki/index.php/Main_Page) is an application that bans IP addresses from logging into your server after too many failed attempts. Since legitimate logins usually take no more than three tries to succeed (and with SSH keys, no more than one), a server being spammed with unsuccessful logins indicates attempted malicious access.
+[*Fail2Ban*](http://www.fail2ban.org/wiki/index.php/Main_Page) is an application that bans IP addresses from logging into your server after too many failed login attempts. Since legitimate logins usually take no more than three tries to succeed (and with SSH keys, no more than one), a server being spammed with unsuccessful logins indicates attempted malicious access.
 
 Fail2Ban can monitor a variety of protocols including SSH, HTTP, and SMTP. By default, Fail2Ban monitors SSH only, and is a helpful security deterrent for any server since the SSH daemon is usually configured to run constantly and listen for connections from any remote IP address.
 
@@ -245,7 +245,7 @@ Our netstat output shows that NTPdate is: 1) accepting incoming connections on t
 
 If you were to do a basic TCP and UDP [nmap](https://nmap.org/) scan of your Linode without a firewall enabled, SSH, RPC and NTPdate would be present in the result with ports open. By [configuring a firewall](#configure-a-firewall) you can filter those ports, with the exception of SSH because it must allow your incoming connections. Ideally, however, the unused services should be disabled.
 
-* You will likely be administering your server primarily through an SSH connection, so that service needs to stay. As mentioned above, [RSA keys](/docs/security/securing-your-server/#create-an-authentication-keypair) and [Fail2Ban](/docs/security/securing-your-server/#use-fail2ban-for-ssh-login-protection) can help protect SSH.
+* You will likely be administering your server primarily through an SSH connection, so that service needs to stay. As mentioned above, [RSA keys](/docs/security/securing-your-server/#create-an-authentication-key-pair) and [Fail2Ban](/docs/security/securing-your-server/#use-fail2ban-for-ssh-login-protection) can help protect SSH.
 
 * NTP is necessary for your server's timekeeping but there are alternatives to NTPdate. If you prefer a time synchronization method which does not hold open network ports, and you do not need nanosecond accuracy, then you may be interested in replacing NTPdate with [OpenNTPD](https://en.wikipedia.org/wiki/OpenNTPD).
 
@@ -311,9 +311,11 @@ Iptables has no rules by default for both IPv4 and IPv6. As a result, on a newly
 
 Appropriate firewall rules depend on the services being run. Below are iptables rulesets to secure your Linode if you're running a web server.
 
-*These are given as an example!*
+**These are given only as an example!**
 
-A real production web server may require more or less configuration and these rules would not be appropriate for a file or database server, Minecraft, or VPN server. Iptables rules can always be modified or reset later, but these basic rulesets serve as a beginning demonstration.
+{: .caution}
+>
+>A real production web server may require more or less configuration and these rules would not be appropriate for a file or database server, Minecraft, or VPN server. Iptables rules can always be modified or reset later, but these basic rulesets serve as a beginning demonstration.
 
 **IPv4**
 
