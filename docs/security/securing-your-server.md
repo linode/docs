@@ -6,7 +6,7 @@ description: 'This is a starting point of best practices for hardening a product
 keywords: 'security,secure,firewall,ssh,add user,quick start'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['securing-your-server/']
-modified: 'Wednesday, March 16, 2016'
+modified: 'Monday, May 16th, 2016'
 modified_by:
   name: Phil Zona
 published: 'Friday, February 17th, 2012'
@@ -17,13 +17,13 @@ In the [Getting Started](/docs/getting-started) guide, you learned how to deploy
 
 ## Update Your System--Frequently
 
-Keeping your software up to date is the single biggest security precaution you can take for any operating system--be it desktop, mobile or server. Software updates range from critical vulnerability patches to minor bug fixes, and many software vulnerabilities are actually patched by the time they become public.
+Keeping your software up to date is the single biggest security precaution you can take for any operating system. Software updates range from critical vulnerability patches to minor bug fixes, and many software vulnerabilities are actually patched by the time they become public.
 
 ### Automatic Security Updates
 
-There are opposing arguments for and against automatic updates on servers. Nonetheless, CentOS, Debian, Fedora and Ubuntu can be automatically updated to various extents. [Fedora's Wiki](https://fedoraproject.org/wiki/AutoUpdates#Why_use_Automatic_updates.3F) has a good breakdown of the pros and cons, but the risk of automatic updates will be minimal if you limit them to security updates.
+There are arguments for and against automatic updates on servers. [Fedora's Wiki](https://fedoraproject.org/wiki/AutoUpdates#Why_use_Automatic_updates.3F) has a good breakdown of the pros and cons, but the risk of automatic updates will be minimal if you limit them to security updates.
 
-The practicality of automatic updates must be something which you judge for yourself because it comes down to what *you* do with your Linode. Bear in mind that automatic updates apply only to packages sourced from repositories, not self-compiled applications. You may find it worthwhile to have a test environment which replicates your production server. Updates can be applied there and reviewed for issues before being applied to the live environment.
+The practicality of automatic updates is something you must judge for yourself because it comes down to what *you* do with your Linode. Bear in mind that automatic updates apply only to packages sourced from repositories, not self-compiled applications. You may find it worthwhile to have a test environment that replicates your production server. Updates can be applied there and reviewed for issues before being applied to the live environment.
 
 * CentOS uses *[yum-cron](https://fedoraproject.org/wiki/AutoUpdates#Fedora_21_or_earlier_versions)* for automatic updates.
 
@@ -33,9 +33,9 @@ The practicality of automatic updates must be something which you judge for your
 
 ## Add a Limited User Account
 
-Up to this point, you have accessed your Linode as the `root` user. The concern here is that `root` has unlimited privileges and can execute *any* command--even one that could accidentally break your server. For this reason and others, we recommend creating a limited user account and using that at all times. Administrative tasks will be done using `sudo` to temporarily elevate your limited user's privileges so you can administer your server without logging in as root.
+Up to this point, you have accessed your Linode as the `root` user, which has unlimited privileges and can execute *any* command--even one that could accidentally disrupt your server. We recommend creating a limited user account and using that at all times. Administrative tasks will be done using `sudo` to temporarily elevate your limited user's privileges so you can administer your server.
 
-To add a new user, [log in to your Linode](/docs/getting-started#sph_logging-in-for-the-first-time) via SSH.
+To add a new user, first [log in to your Linode](/docs/getting-started#sph_logging-in-for-the-first-time) via SSH.
 
 ### CentOS / Fedora
 
@@ -57,7 +57,7 @@ To add a new user, [log in to your Linode](/docs/getting-started#sph_logging-in-
 
         adduser example_user sudo
 
-With your new user assigned, disconnect from your Linode as `root`:
+After creating your limited user, disconnect from your Linode:
 
     exit
 
@@ -69,16 +69,16 @@ Now you can administer your Linode from your new user account instead of `root`.
 
 ## Harden SSH Access
 
-By default, password authentication is used to connect to your Linode via SSH. A cryptographic key pair is more secure because a private key takes the place of a password, which is generally much more difficult to brute-force. In this section we'll create a key pair and configure the Linode to not accept passwords for SSH logins.
+By default, password authentication is used to connect to your Linode via SSH. A cryptographic key-pair is more secure because a private key takes the place of a password, which is generally much more difficult to brute-force. In this section we'll create a key-pair and configure the Linode to not accept passwords for SSH logins.
 
 ### Create an Authentication Key-pair
 
-1.  This is done on your local computer, **not** your Linode, and will create a 4096-bit RSA key pair. During creation, you will be given the option to encrypt the private key with a passphrase. This means that the it cannot be used without entering the passphrase, unless you save it to your local desktop's keychain manager. We suggest you do use the key pair with a passphrase, but if unwanted, leave the field blank when prompted.
+1.  This is done on your local computer, **not** your Linode, and will create a 4096-bit RSA key-pair. During creation, you will be given the option to encrypt the private key with a passphrase. This means that it cannot be used without entering the passphrase, unless you save it to your local desktop's keychain manager. We suggest you use the key-pair with a passphrase, but you can leave this field blank if you don't want to use one.
 
     **Linux / OS X**
 
-	{: .caution}
-	> If you've already created an RSA keypair, this command will overwrite it, potentially locking you out of other systems. If you've already created a key pair, skip this step. To check for existing keys, run `ls ~/.ssh/id_rsa*`.
+    {: .caution}
+    > If you've already created an RSA key-pair, this command will overwrite it, potentially locking you out of other systems. If you've already created a key-pair, skip this step. To check for existing keys, run `ls ~/.ssh/id_rsa*`.
 
         ssh-keygen -b 4096
 
@@ -156,7 +156,7 @@ By default, password authentication is used to connect to your Linode via SSH. A
 
     {: .note}
     >
-    >You may want to leave password authentication enabled if you connect to your Linode from many different computers. This will allow you to authenticate with a password instead of generating and uploading a key pair for every device.
+    >You may want to leave password authentication enabled if you connect to your Linode from many different computers. This will allow you to authenticate with a password instead of generating and uploading a key-pair for every device.
 
 3.  **Listen on only one internet protocol.** The SSH daemon listens for incoming connections over both IPv4 and IPv6 by default. Unless you need to SSH into your Linode using both protocols, disable whichever you do not need. *This does not disable the protocol system-wide, it is only for the SSH daemon.*
 
@@ -181,7 +181,7 @@ By default, password authentication is used to connect to your Linode via SSH. A
 
 ### Use Fail2Ban for SSH Login Protection
 
-[*Fail2Ban*](http://www.fail2ban.org/wiki/index.php/Main_Page) is an application which bans IP addresses from logging into your server after too many failed login attempts. Since legitimate logins usually take no more than three tries to happen (and with SSH keys, no more than one), a server being spammed with unsuccessful logins indicates attempted malicious access.
+[*Fail2Ban*](http://www.fail2ban.org/wiki/index.php/Main_Page) is an application that bans IP addresses from logging into your server after too many failed login attempts. Since legitimate logins usually take no more than three tries to succeed (and with SSH keys, no more than one), a server being spammed with unsuccessful logins indicates attempted malicious access.
 
 Fail2Ban can monitor a variety of protocols including SSH, HTTP, and SMTP. By default, Fail2Ban monitors SSH only, and is a helpful security deterrent for any server since the SSH daemon is usually configured to run constantly and listen for connections from any remote IP address.
 
@@ -199,9 +199,9 @@ To see your Linode's running network services:
 
 {: .note}
 >
->If netstat isn't included in your Linux distribution by default, install the package `net-tools`.
+>If netstat isn't included in your Linux distribution by default, install the package `net-tools` or use the `ss -tulpn` command instead.
 
-Using Debian 8 as an example, the output should look similar to this:
+The following output is from a Debian 8 system, but other distributions should include similar information:
 
 ~~~
 Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
@@ -245,7 +245,7 @@ Our netstat output shows that NTPdate is: 1) accepting incoming connections on t
 
 If you were to do a basic TCP and UDP [nmap](https://nmap.org/) scan of your Linode without a firewall enabled, SSH, RPC and NTPdate would be present in the result with ports open. By [configuring a firewall](#configure-a-firewall) you can filter those ports, with the exception of SSH because it must allow your incoming connections. Ideally, however, the unused services should be disabled.
 
-* You will likely be administering your server primarily through an SSH connection, so that service needs to stay. As mentioned above, [RSA keys](/docs/security/securing-your-server/#create-an-authentication-keypair) and [Fail2Ban](/docs/security/securing-your-server/#use-fail2ban-for-ssh-login-protection) can help protect SSH.
+* You will likely be administering your server primarily through an SSH connection, so that service needs to stay. As mentioned above, [RSA keys](/docs/security/securing-your-server/#create-an-authentication-key-pair) and [Fail2Ban](/docs/security/securing-your-server/#use-fail2ban-for-ssh-login-protection) can help protect SSH.
 
 * NTP is necessary for your server's timekeeping but there are alternatives to NTPdate. If you prefer a time synchronization method which does not hold open network ports, and you do not need nanosecond accuracy, then you may be interested in replacing NTPdate with [OpenNTPD](https://en.wikipedia.org/wiki/OpenNTPD).
 
@@ -279,11 +279,11 @@ Run `sudo netstat -tulpn` again. You should now only see listening services for 
 
 ## Configure a Firewall
 
-Using a *firewall* to block unwanted inbound traffic to your Linode is a highly effective security layer. By being very specific about the traffic you allow in, you can prevent intrusions and network mapping from outside your LAN. A best practice is to allow only the traffic you need, and deny everything else. 
+Using a *firewall* to block unwanted inbound traffic to your Linode provides a highly effective security layer. By being very specific about the traffic you allow in, you can prevent intrusions and network mapping from outside your LAN. A best practice is to allow only the traffic you need, and deny everything else. 
 
-[Iptables](http://www.netfilter.org/projects/iptables/index.html) is the controller for netfilter, the Linux kernel's packet filtering framework. Iptables is included in most Linux distros by default but is considered an advanced method of firewall control. Consequently, several projects exist to control iptables in a more user-friendly way.
+[Iptables](http://www.netfilter.org/projects/iptables/index.html) is the controller for netfilter, the Linux kernel's packet filtering framework. Iptables is included in most Linux distributions by default but is considered an advanced method of firewall control. Consequently, several projects exist to control iptables in a more user-friendly way.
 
-[FirewallD](http://www.firewalld.org/) for the Fedora distribution family and [UFW](https://help.ubuntu.com/community/UFW) for the Debian family are the two common iptables controllers. **This section will focus on iptables** but you can see our guides on [FirewallD](/docs/security/firewalls/introduction-to-firewalld-on-centos) and [UFW](/docs/security/firewalls/configure-firewall-with-ufw) if you feel they may be a better choice for you.
+[FirewallD](http://www.firewalld.org/) for the Fedora distribution family and [UFW](https://help.ubuntu.com/community/UFW) for the Debian family are the two common iptables controllers. This section will focus on iptables but you can see our guides on [FirewallD](/docs/security/firewalls/introduction-to-firewalld-on-centos) and [UFW](/docs/security/firewalls/configure-firewall-with-ufw) if you feel they may be a better choice for you.
 
 ### View Your Current iptables Rules
 
@@ -309,11 +309,13 @@ Iptables has no rules by default for both IPv4 and IPv6. As a result, on a newly
 
 ### Basic iptables Rulesets for IPv4 and IPv6
 
-Appropriate firewall rules depend almost entirely on the services being run. Below are iptables rulesets to secure your Linode if you're running a web server.
+Appropriate firewall rules depend on the services being run. Below are iptables rulesets to secure your Linode if you're running a web server.
 
-*These are given as an example!*
+**These are given only as an example!**
 
-A real production web server may require more or less configuration and these rules would not be appropriate for a file or database server, Minecraft or VPN server, etc. Iptables rules can always be modified or reset later, but these basic rulesets serve only as a beginning demonstration.
+{: .caution}
+>
+>A real production web server may require more or less configuration and these rules would not be appropriate for a file or database server, Minecraft, or VPN server. Iptables rules can always be modified or reset later, but these basic rulesets serve as a beginning demonstration.
 
 **IPv4**
 
@@ -348,7 +350,7 @@ A real production web server may require more or less configuration and these ru
     # Reject all other inbound.
     -A INPUT -j REJECT
 
-    # Log any traffic which was sent to you
+    # Log any traffic that was sent to you
     # for forwarding (optional but useful).
     -A FORWARD -m limit --limit 5/min -j LOG --log-prefix "iptables_FORWARD_denied: " --log-level 7
 
@@ -401,7 +403,7 @@ If you would like to supplement your web server's IPv4 rules with IPv6 too, this
     # Reject all other inbound.
     -A INPUT -j REJECT
 
-    # Log any traffic which was sent to you
+    # Log any traffic that was sent to you
     # for forwarding (optional but useful).
     -A FORWARD -m limit --limit 5/min -j LOG --log-prefix "ip6tables_FORWARD_denied: " --log-level 7
 
@@ -582,7 +584,7 @@ Your firewall rules are now in place and protecting your Linode. Remember, you m
 
 ### Insert, Replace or Delete iptables Rules
 
-Iptables rules are enforced in a top-down fashion, so the first rule in the ruleset is applied to traffic in the chain, then the second, third and so on. This means that rules can not necessarily be added to a ruleset with `iptables -A` or `ip6tables -A`. Instead, rules must be *inserted* with `iptables -I` or `ip6tables -I`.
+Iptables rules are enforced in a top-down fashion, so the first rule in the ruleset is applied to traffic in the chain, then the second, third and so on. This means that rules cannot necessarily be added to a ruleset with `iptables -A` or `ip6tables -A`. Instead, rules must be *inserted* with `iptables -I` or `ip6tables -I`.
 
 **Insert**
 
@@ -614,8 +616,6 @@ Deleting a rule is also done using the rule number. For example, to delete the r
 
 ## Next Steps
 
-These are the most basic steps to harden any Linux server, but further security layers will depend more heavily on its intended use. Additional techniques can include application configurations, using [intrusion detection](https://linode.com/docs/security/ossec-ids-debian-7) or installing a form of [access control](https://en.wikipedia.org/wiki/Access_control#Access_Control).
+These are the most basic steps to harden any Linux server, but further security layers will depend on its intended use. Additional techniques can include application configurations, using [intrusion detection](https://linode.com/docs/security/ossec-ids-debian-7) or installing a form of [access control](https://en.wikipedia.org/wiki/Access_control#Access_Control).
 
 Now you can begin setting up your Linode for any purpose you choose. We have a library of documentation to assist you with a variety of topics ranging from [migration from shared hosting](/docs/migrate-to-linode/migrate-from-shared-hosting) to [enabling two-factor authentication](/docs/security/linode-manager-security-controls) to [hosting a website](/docs/hosting-website).
-
-[Linode Guides & Tutorials](/docs/)
