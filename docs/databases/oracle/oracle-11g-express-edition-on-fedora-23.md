@@ -9,7 +9,7 @@ published: 'Monday, May 16th, 2016'
 modified: Monday, May 16th, 2016
 modified_by:
   name: Tyler Nelson
-title: 'Oracle 10g Express Edition on Fedora 23'
+title: 'Oracle 11g Express Edition on Fedora 23'
 contributor:
   name: Tyler Nelson
   link: https://github.com/tylerjaynelson/
