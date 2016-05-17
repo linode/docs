@@ -189,7 +189,7 @@ For complete instructions on installing and configuring Fail2Ban, see our guide:
 
 ## Remove Unused Network-Facing Services
 
-Most Linux distributions install with running network services which listen for incoming connections from the internet, the loopback interface, or a combination of both. Network-facing services which are not needed should be removed from the system to reduce the attack surface of both running process and installed packages.
+Most Linux distributions install with running network services which listen for incoming connections from the internet, the loopback interface, or a combination of both. Network-facing services which are not needed should be removed from the system to reduce the attack surface of both running processes and installed packages.
 
 ### Determine Running Services
 
