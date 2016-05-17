@@ -42,7 +42,11 @@ Install PostgreSQL from the Ubuntu package repository:
 
 ### Modify the Postgres Users
 
-By default, PostgreSQL will create a Linux user named `postgres` to access the database software. It is important not to use the `postgres` user for any other purpose (e.g. connecting to other networks). Doing so presents a risk to the security of your databases.
+By default, PostgreSQL will create a Linux user named `postgres` to access the database software. 
+
+{: .caution}
+>
+>The `postgres` user should not be used for for other purposes (e.g. connecting to other networks). Doing so presents a serious risk to the security of your databases.
 
 1.  Change the `postgres` user's Linux password:
 
