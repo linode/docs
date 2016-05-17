@@ -61,26 +61,26 @@ Zandronum does not support IPv6 as of yet. Add this rule to your iptables:
 This allows clients to access ports 10666 (Zandronum's default port) to 10700.
 
 ### Zandronum User
-For security (and for your directories to be a little more organised), it is recommended you use a seperate user for Zandronum.
+1. For security (and for your directories to be a little more organised), it is recommended you use a seperate user for Zandronum.
 See the [Add a limited user account](/docs/security/securing-your-server#add-a-limited-user-account) section of the Securing Your Server guide, and create a user called `zandronum`.
 
-After creating the account, change into it, and create your directories:
+2. After creating the account, change into it, and create your directories:
 
     sudo su - zandronum
     mkdir ~/bin
     mkdir ~/wads
     mkdir ~/iwads
 
-If you plan on creating more than one server, create these too:
+3. If you plan on creating more than one server, create these too:
 
     mkdir -p ~/servers/configs
     mkdir -p ~/servers/scripts
 
-Now exit the `zandronum` user:
+4. Now exit the `zandronum` user:
 
     exit
 
- Upload your IWADs to /home/zandronum/iwads/ using your preferred method of file transfer.
+5. Upload your IWADs to /home/zandronum/iwads/ using your preferred method of file transfer.
 
 ## Install Dependencies
 Zandronum requires OpenSSL and zlib. This guide also uses `wget` on non-Debian distributions.
@@ -95,25 +95,25 @@ The `--needed` parameter ensures you don't uselessly install the packages again 
 
 ## Download Zandronum
 ### Debian/Ubuntu
-A semi-official package repository is provided by [DRDTeam](http://drdteam.org). To add it, execute these commands:
+1. A semi-official package repository is provided by [DRDTeam](http://drdteam.org). To add it, execute these commands:
 
     sudo add-apt-repository 'deb http://debian.drdteam.org/ stable multiverse'
     wget -O - http://debian.drdteam.org/drdteam.gpg | sudo apt-key add -
 
-Update your package databases:
+2. Update your package databases:
 
     sudo apt-get update
 
-Install the Zandronum server package:
+3. Install the Zandronum server package:
 
     sudo apt-get install zandronum-server
 
 ### Other Distributions
-Switch user to `zandronum`:
+1. Switch user to `zandronum`:
 
     sudo su - zandronum
 
-Change to your `bin` directory, where you'll store the Zandronum binaries:
+2. Change to your `bin` directory, where you'll store the Zandronum binaries:
 
     cd ~/bin
 
