@@ -31,7 +31,7 @@ If you plan to use a domain name for your nameservers that you will also be host
 
 ## Install cPanel
 
-Before proceeding, make sure you've purchased a cPanel license. You may obtain a license from the [cPanel Store](https://store-koala.cpanel.net/). Next, log into your Linode as the "root" user via SSH to its IP address (found on the "Remote Access" tab in the Linode Manager). 
+Before proceeding, make sure you've purchased a cPanel license. You may obtain a license from the [cPanel Store](https://store.cpanel.net/). Next, log into your Linode as the "root" user via SSH to its IP address (found on the "Remote Access" tab in the Linode Manager). 
 
 1. Issue the following commands to download and install cPanel:
 

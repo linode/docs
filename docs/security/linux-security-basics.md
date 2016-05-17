@@ -105,7 +105,7 @@ When deciding to deploy firewall rules, the decision often comes down to the fol
 
 ## Use Denyhosts or Fail2Ban to Prevent Password Attacks
 
-The [DenyHosts](http://denyhosts.sourceforge.net/) and [Fail2Ban](/docs/security/fail2ban) applications (for which packages should be included in your distribution's software repository) help prevent dictionary attacks on your server. The basic concept is simple: these programs watch for attempted logins, and if your server is receiving multiple failed login attempts from the same IP address, these applications will insert firewall rules that will block traffic from the attacker's IP address.
+The [DenyHosts](http://denyhosts.sourceforge.net/) and [Fail2Ban](/docs/security/using-fail2ban-for-security) applications (for which packages should be included in your distribution's software repository) help prevent dictionary attacks on your server. The basic concept is simple: these programs watch for attempted logins, and if your server is receiving multiple failed login attempts from the same IP address, these applications will insert firewall rules that will block traffic from the attacker's IP address.
 
 The assumption is that "good" users are very likely to be able to get their password correct in less than 3-5 attempts, and that anyone who submits an incorrect password more than 3-5 times is trying to break into a system. While there is the potential for false positives, the "bans" can be temporary, and are easily reversed by the administrator if necessary.
 

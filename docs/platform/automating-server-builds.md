@@ -14,7 +14,7 @@ title: Automating Server Builds
 
 If you run a large website that requires multiple servers, or have a general interest in server automation, you may want to automate your server builds. You can rapidly spin up multiple servers with exactly the same configuration by creating a *golden image* that can be cloned to multiple Linodes with the intention of eliminating server discrepancies.
 
-Server configuration can also be automated through [Stackcripts](https://www.linode.com/stackscripts). View the [Stackscripts](/docs/platform/stackscripts/) guide for more information.
+Server configuration can also be automated through [Stackscripts](https://www.linode.com/stackscripts). View the [Stackscripts](/docs/platform/stackscripts/) guide for more information.
 
 ##Why You Should Automate Server Builds
 
@@ -97,7 +97,7 @@ Golden disks are capable of handling automated server builds for most individual
 
 -   **Chef:** An open source configuration management tool that allows you to "turn your infrastructure into code." See the [Chef website](https://www.chef.io/) for more information. The [knife linode](http://docs.opscode.com/plugin_knife_linode.html) subcommand can also be used to manage Linodes with Chef.
 
--   **Ansible:** A "radically simple" open source platform for configuring and managing systems. It works by connecting to your systems via SSH — it doesn't install anything on the remote systems. See the [AnsibleWorks website](http://www.ansibleworks.com/) for more information. You can find a [Linode module for Ansible on GitHub](https://github.com/lextoumbourou/ansible-linode).
+-   **Ansible:** A "radically simple" open source platform for configuring and managing systems. It works by connecting to your systems via SSH — it doesn't install anything on the remote systems. See the [AnsibleWorks website](http://www.ansible.com/) for more information. You can find a [Linode module for Ansible on GitHub](https://github.com/lextoumbourou/ansible-linode).
 
 There are plenty of other third-party configuration management tools to be used should the above options not suit your needs.
 

@@ -123,7 +123,7 @@ The standard tool for interacting with MySQL is the `mysql` client which install
 1. In the example below, `testdb` is the name of the database, `testuser` is the user, and `password` is the user's password.
 
         create database testdb;
-        create user 'testuser'@localhost identified by 'password';
+        create user 'testuser'@'localhost' identified by 'password';
         grant all on testdb.* to 'testuser' identified by 'password';
     
     You can shorten this process by creating the user *while* assigning database permissions:

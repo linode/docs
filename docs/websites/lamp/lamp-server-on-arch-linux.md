@@ -3,12 +3,12 @@ author:
     name: Alex Fornuto
     email: afornuto@linode.com
 description: 'Creating a LAMP (Linux, Apache, MySQL, PHP) stack on an Arch Linux-powered Linode.'
-keywords: 'arch lamp,arch linux lamp,lamp linux,arch linode,archlinux lamp,archlinux,arch,lamp,lamp stack,apache,mysql,php'
+keywords: 'arch lamp,arch lamp stack,lamp linux,arch linode,arch linux lamp,arch linux,arch,lamp,lamp stack,apache,mysql,php'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['lamp-guides/arch-linux/','lamp-guides/arch-linux-10-2013/']
-modified: Monday, June 29th, 2015
+modified: Monday, December 7th, 2015
 modified_by:
-    name: Elle Krout
+    name: Alex Fornuto
 published: 'Monday, October 7th, 2013'
 title: LAMP Server on Arch Linux
 external_resources:
@@ -19,9 +19,9 @@ external_resources:
  - '[PHP Documentation](http://www.php.net/docs.php)'
 ---
 
-A LAMP (Linux, Apache, MySQL, PHP) Stack is a basic web stack you can use to prepare your servers for hosting websites. This guide contains step-by-step instructions for installing a full-featured LAMP stack on an Arch Linux system.
+A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used to prepare servers for hosting web content. This guide shows you how to install a LAMP stack an Arch Linux server.
 
-Since Arch does not come in specific versions, this guide is up-to-date as of the June 2015 Arch update.
+Since Arch does not come in specific versions, this guide is up-to-date as of the December 2015 Arch update.
 
 {: .note }
 >
@@ -31,30 +31,25 @@ Since Arch does not come in specific versions, this guide is up-to-date as of th
 
 1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, and the Linode's [hostname is set](/docs/getting-started#setting-the-hostname).
 
-    To check your hostname, run:
-
-        hostname
-        hostname -f
-
-    The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
-
 2.  Update your system:
 
         sudo pacman -Syu
 
-## Install and Configure Apache
+## Apache
+
+### Install and Configure
 
 1.  Install Apache 2.4:
 
         sudo pacman -Syu apache
 
-2.  Edit the `httpd-mpm.conf` Apache configuration file in `/etc/httpd/conf/extras/` to adjust the resource use settings. The settings shown below are a good starting point for a **Linode 1GB**:
+2.  Edit the `httpd-mpm.conf` Apache configuration file in `/etc/httpd/conf/extra/` to adjust the resource use settings. The settings shown below are a good starting point for a **Linode 1GB**:
 
     {: .note}
     >
     >Before changing any configuration files, it is advised that you make a backup of the file. To make a backup:
     >
-    >     cp /etc/httpd/conf/extras/httpd-mpm.conf ~/httpd-mpm.conf.backup
+    >     cp /etc/httpd/conf/extra/httpd-mpm.conf ~/httpd-mpm.conf.backup
 
     {: .file-excerpt }
     /etc/httpd/conf/extra/httpd-mpm.conf
@@ -144,7 +139,9 @@ Virtual hosting can be configured so that multiple domains (or subdomains) can b
     >     sudo systemctl restart httpd.service
 
 
-## Install and Configure MySQL
+## MySQL
+
+### Install and Configure
 
 By default, Arch Linux provides MariaDB as a relational database solution. MariaDB is an open source drop-in replacement for MySQL, and all system commands that reference `mysql` are compatible with it.
 
@@ -186,7 +183,7 @@ By default, Arch Linux provides MariaDB as a relational database solution. Maria
 
 With Apache and MySQL installed, you are now ready to move on to installing PHP to provide scripting support for your web application.
 
-## Install and Configuring PHP
+## PHP
 
 PHP makes it possible to produce dynamic and interactive pages using your own scripts and popular web development frameworks. Many popular web applications like WordPress are written in PHP. If you want to develop your websites using PHP, you must first install it.
 

@@ -29,7 +29,7 @@ All services are billed automatically at the end of the month. If you used a ser
 | Linode 4GB  | $0.06/hr    | $40/mo  | $0.016/hr           | $10/mo
 | Linode 8GB  | $0.12/hr    | $80/mo  | $0.03/hr            | $20/mo
 | Linode 16GB | $0.24/hr    | $160/mo | $0.06/hr            | $40/mo
-| Linode 32Gb | $0.48/hr    | $320/mo | $0.12/hr            | $80/mo
+| Linode 32GB | $0.48/hr    | $320/mo | $0.12/hr            | $80/mo
 | Linode 48GB | $0.72/hr    | $480/mo | $0.18/hr            | $120/mo
 | Linode 64GB | $0.96/hr    | $640/mo | $0.24/hr            | $160/mo
 | Linode 96GB | $1.44/hr    | $960/mo | $0.36/hr            | $240/mo

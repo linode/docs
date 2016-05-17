@@ -5,10 +5,10 @@ author:
 description: Best practices in preparation for a server reboot.
 keywords: 'uptime,reboot,downtime,fault tolerance'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Friday, February 27, 2015
+modified: Wednesday, October 28th, 2015
 modified_by:
   name: Alex Fornuto
-published: 'Friday, February 27, 2015'
+published: 'Friday, February 27th, 2015'
 title: Reboot Survival Guide
 ---
 
@@ -19,6 +19,17 @@ This guide covers best practices to ensure that your server is prepared to handl
 ## Testing for Reboot Issues
 
 The best way to know what occurs during a server reboot is to test for it. During your development process, or whenever you make significant changes to your stack, reboot your system and test to ensure that your stack is fully operational afterwards. By conducting scheduled reboot tests, you can be sure that your system is prepared for the unexpected.
+
+## When to Reboot
+
+In most cases a reboot is required when upgrading to a newer Linux kernel. By default, Linode configuration profiles are set to use the latest kernel available provided by Linode at each boot. If you've changed this option or are using a custom configuration, you're responsible for updating the kernel on your system.
+
+{: .note }
+> Linode maintains an RSS feed and web page for cataloging current and deprecated Linux kernels. When the support status of a kernel changes, that change will always be recorded and be pushed out to RSS subscribers. See [Available Kernels](https://www.linode.com/kernels).
+
+Updating certain packages will occasionally require a system reboot too. This does not happen often, but when necessary, the terminal output will inform you that a reboot is needed.
+
+It's not uncommon to see *[fsck](http://linux.die.net/man/8/fsck)* run a filesystem scan on reboot. This does not mean anything is broken--fsck is a regularly scheduled process for optimal system health. Some Linux distros run fsck on every boot, others run the tool after a certain duration, and most distros perfom a filesystem check after unclean shutdowns.
 
 ## Backups
 
@@ -161,7 +172,7 @@ The console does not display any characters (ex: **\***) as you enter your passp
 
 ## Firewall Rules
 
-If you followed the [Creating a Firewall](/docs/security/securing-your-server#creating-a-firewall) section of our [Securing your Server](/docs/security/securing-your-server) guide, your firewall rules should already be saved, and loaded on boot automatically. If, however, you've manually configured your `iptables` exceptions live, they may not persist through a server reboot. 
+If you followed the [Creating a Firewall](/docs/security/securing-your-server#configuring-a-firewall) section of our [Securing your Server](/docs/security/securing-your-server) guide, your firewall rules should already be saved, and loaded on boot automatically. If, however, you've manually configured your `iptables` exceptions live, they may not persist through a server reboot. 
 
 1.  Ensure that your custom firewall rules are saved:
 

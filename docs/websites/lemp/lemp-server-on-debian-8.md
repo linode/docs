@@ -156,7 +156,7 @@ For more information regarding Nginx configuration options, check out our [Overv
 
 4.  When you have completed the modifications to the configuration, make sure that the sever block is enabled and restart Nginx:
 
-    /etc/init.d/nginx restart
+        /etc/init.d/nginx restart
 
 You are now able to deploy PHP scripts with with your LEMP stack.
 
