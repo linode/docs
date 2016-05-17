@@ -20,17 +20,17 @@ The [PostgreSQL](http://www.postgresql.org/) relational database system is a pow
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started guide](/docs/getting-started) and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services. 
+2.  Complete the sections of our [Securing Your Server guide](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
 
-3.  Update your system.
+3.  Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
 
 {: .note}
 >
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, visit the [Users and Groups guide](/docs/tools-reference/linux-users-and-groups) for more information.
 
 ## Install PostgreSQL
 
@@ -47,19 +47,19 @@ By default, PostgreSQL will create a Linux user named `postgres` to access the d
 1.  Change the `postgres` user's Linux password:
 
         sudo passwd postgres
-        
-2.  Issue the following commands to set a password for the `postgres` database user. Be sure to replace `newpassword` with a strong password and keep it in a secure place. 
+
+2.  Issue the following commands to set a password for the `postgres` database user. Be sure to replace `newpassword` with a strong password and keep it in a secure place.
 
         su - postgres
         psql -d template1 -c "ALTER USER postgres WITH PASSWORD 'newpassword';"
 
-    Note that this user is distinct from the `postgres` Linux user. The Linux user is used to access the database, and the PostgreSQL user is used to perform administrative tasks on the databases. 
+    Note that this user is distinct from the `postgres` Linux user. The Linux user is used to access the database, and the PostgreSQL user is used to perform administrative tasks on the databases.
 
-    The password set in this step will be used to connect to the database via the network. Peer authentication will be used by default for local connections, but we'll explain how to change this setting later.
+    The password set in this step will be used to connect to the database via the network. Peer authentication will be used by default for local connections. See the [Secure Local PostgreSQL Access section](#secure-local-postgresql-access) for information about changing this setting.
 
 ### Create a Database
 
-Make sure you are running the commands in this section as the `postgres` Linux user.
+Run the commands in this section as the `postgres` Linux user.
 
 1.  Create a sample database called `mytestdb`:
 
@@ -80,17 +80,17 @@ Make sure you are running the commands in this section as the `postgres` Linux u
 
 ### Create Tables
 
-This section will demonstrate how to create a test database with an employee's first and last name, along with a unique key. When creating your own tables, you may specify as many parameters (columns) as you need, and name them appropriately. Commands in this section are to be run from the PostgreSQL shell, which we opened in the last section.
+This section contains examples which create a test database with an employee's first and last name, assigning each a unique key. When creating your own tables, you may specify as many parameters (columns) as you need and name them appropriately. Run the commands in this section from the PostgreSQL shell, opened in Step 2 of the [Create a Database](#create-a-database) section.
 
-1.  To create a table called "employees" in your test database:
+1.  Create a table called "employees" in your test database:
 
         CREATE TABLE employees (employee_id int, first_name varchar, last_name varchar);
 
-2.  To insert a record into the table:
+2.  Insert a record into the table:
 
         INSERT INTO employees VALUES (1, 'John', 'Doe');
 
-3.  To see the contents of the "employees" table:
+3.  View the contents of the "employees" table:
 
         SELECT * FROM employees;
 
@@ -105,11 +105,11 @@ This section will demonstrate how to create a test database with an employee's f
 
 ### Create PostgreSQL Roles
 
-PostgreSQL grants database access via "roles", which are used to specify privileges. Roles can be understood as having a similar function to Linux "users," although you may also create a role that consists of a set of other roles, similar to a Linux "group." PostgreSQL roles apply globally, so you will not need to create the same role twice if you'd like to grant it access to more than one database on the same server.
+PostgreSQL grants database access via *roles* which are used to specify privileges. Roles can be understood as having a similar function to Linux "users." In addition, roles may also be created as a set of other roles, similar to a Linux "group." PostgreSQL roles apply globally, so you will not need to create the same role twice if you'd like to grant it access to more than one database on the same server.
 
-Commands in this section should be run as the `postgres` Linux user.
+The example commands in this section should be run as the `postgres` Linux user.
 
-1.  To add a new user role and specify its password, issue the following command from the command line:
+1.  Add a new user role, then a password at the prompt:
 
         createuser examplerole --pwprompt
 
@@ -121,11 +121,11 @@ Commands in this section should be run as the `postgres` Linux user.
 
     You'll be connected as the `postgres` database user by default.
 
-3.  From the PostgreSQL shell, enter the following command to grant all privileges on the table `employees` to the user `examplerole`:
+3.  From the PostgreSQL shell, enter the following to grant all privileges on the table `employees` to the user `examplerole`:
 
         GRANT ALL ON employees TO examplerole;
 
-4.  Exit the PostgreSQL shell by entering the `\q` command.
+4.  Exit the PostgreSQL shell by entering `\q`.
 
 ### Secure Local PostgreSQL Access
 
@@ -133,7 +133,7 @@ PostgreSQL uses *peer authentication* by default. This means database connection
 
 Commands in this section should be run as the `postgres` Linux user unless otherwise specified.
 
-1.  Edit your `/etc/postgresql/9.5/main/pg_hba.conf` file, under the `# "local" is for Unix domain socket connections only` header:
+1.  Edit the `/etc/postgresql/9.5/main/pg_hba.conf` file, under the `# "local" is for Unix domain socket connections only` header:
 
     {: .file-excerpt }
     /etc/postgresql/9.5/main/pg_hba.conf
@@ -144,16 +144,16 @@ Commands in this section should be run as the `postgres` Linux user unless other
 
     Replace `peer` with `md5` on this line to activate password authentication using an MD5 hash. 
 
-2.  To enable these changes, we need to restart PostgreSQL. However, we did not grant the `postgres` user sudo privileges for security reasons. Return to your normal user shell:
+2.  To enable these changes, we need to restart PostgreSQL. However, we did not grant the `postgres` user sudo privileges for security reasons. Return to the normal user shell:
 
         exit
 
-3.  Run the following commands to restart PostgreSQL and switch back to the `postgres` user:
+3.  Restart PostgreSQL and switch back to the `postgres` user:
 
         sudo service postgresql restart
         su - postgres
 
-4.  As the `postgres` Linux user, run the following command to connect to the test database as the `examplerole` PostgreSQL user:
+4.  As `postgres`, connect to the test database as the `examplerole` PostgreSQL user:
 
         psql -U examplerole -W mytestdb 
 
@@ -161,7 +161,7 @@ Commands in this section should be run as the `postgres` Linux user unless other
 
 ## Secure Remote PostgreSQL Access
 
-PostgreSQL listens for connections on localhost, and it is not advised to reconfigure it to listen on public IP addresses. If you would like to access your databases remotely using a graphical tool, please follow one of these guides:
+PostgreSQL listens for connections on `localhost` and it is not advised to reconfigure it to listen on public IP addresses. If you would like to access your databases remotely using a graphical tool, please follow one of these guides:
 
 -   [Securely Manage Remote PostgreSQL Servers with pgAdmin on Windows](/docs/databases/postgresql/pgadmin-windows)
 -   [Securely Manage Remote PostgreSQL Servers with pgAdmin on Mac OS X](/docs/databases/postgresql/pgadmin-macos-x)
