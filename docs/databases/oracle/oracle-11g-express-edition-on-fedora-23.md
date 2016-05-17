@@ -53,7 +53,7 @@ The following steps are layed out to be performed in any browser on your local m
 
 1. Go to the following URL:
     
-          http://download.oracle.com/otn/linux/oracle11g/xe/oracle-xe-11.2.0-1.0.x86_64.rpm.zip
+        http://download.oracle.com/otn/linux/oracle11g/xe/oracle-xe-11.2.0-1.0.x86_64.rpm.zip
   
         {: .note}
         > 
