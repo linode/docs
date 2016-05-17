@@ -134,11 +134,11 @@ For this example the user I will use is `testuser` replace it with your desired 
 
 ### Start Oracle Databse
 
-    /etc/init.d/oracle-xe start
+    sudo /etc/init.d/oracle-xe start
 
 ### Stop Oracle Databse
 
-    /etc/init.d/oracle-xe stop
+    sudo /etc/init.d/oracle-xe stop
 
 {: .note}
 >
@@ -159,4 +159,4 @@ For this example the user I will use is `testuser` replace it with your desired 
 
 1. Run the following command to uninstall:
 
-        rpm -e oracle-xe
+        sudo rpm -e oracle-xe
