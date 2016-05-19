@@ -6,10 +6,10 @@ description: 'Use lighttpd to Host Multiple Websites on Ubuntu 16.04 (Xenial Xer
 keywords: 'lighttpd,web server,web hosting'
 alias: ['websites/lighttpd/lighttpd-web-server-on-ubuntu-16-04/']
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Wednesday, April 13th, 2016
+modified: Thursday, May 19th, 2016
 modified_by:
   name: Phil Zona
-published: 'Wednesday, April 13th, 2016'
+published: 'Thursday, May 19th, 2016'
 title: 'Use lighttpd Web Server on Ubuntu 16.04 (Xenial Xerus)'
 external_resources:
  - '[Optimizing FastCGI Performance (lighttpd wiki)](http://redmine.lighttpd.net/projects/lighttpd/wiki/Docs:PerformanceFastCGI)'
