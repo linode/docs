@@ -2,14 +2,15 @@
 author:
   name: Dave Messina
   email: docs@linode.com
-description: 'Using lighttpd to host multiple websites on Ubuntu 16.04 (Xenial Xerus)'
+description: 'Use lighttpd to Host Multiple Websites on Ubuntu 16.04 (Xenial Xerus)'
 keywords: 'lighttpd,web server,web hosting'
+alias: ['websites/lighttpd/lighttpd-web-server-on-ubuntu-16-04/']
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: Wednesday, April 13th, 2016
 modified_by:
   name: Phil Zona
 published: 'Wednesday, April 13th, 2016'
-title: 'lighttpd Web Server on Ubuntu 16.04 (Xenial Xerus)'
+title: 'Use lighttpd Web Server on Ubuntu 16.04 (Xenial Xerus)'
 external_resources:
  - '[Optimizing FastCGI Performance (lighttpd wiki)](http://redmine.lighttpd.net/projects/lighttpd/wiki/Docs:PerformanceFastCGI)'
  - '[mod_fastcgi Documentation (lighttpd wiki)](http://redmine.lighttpd.net/projects/lighttpd/wiki/Docs:ModFastCGI)'
@@ -17,7 +18,7 @@ external_resources:
  - '[NixCraft Guides for Ligttpd (nixcraft)](http://www.cyberciti.biz/tips/category/lighttpd)'
 ---
 
-Lighttpd provides a lightweight web server that is capable of serving large loads using less memory than servers like Apache. It's commonly deployed on high traffic sites, including WhatsApp and xkcd.
+Lighttpd provides a lightweight web server that is capable of serving large loads while using less memory than servers like Apache. It's commonly deployed on high traffic sites, including WhatsApp and xkcd.
 
 This guide explains how to install and configure the lighttpd ("lighty") web server on Ubuntu 16.04 (Xenial Xerus). Consult the resources at the end for more information about deploying other services commonly found in web server stacks.
 
@@ -27,7 +28,7 @@ This guide explains how to install and configure the lighttpd ("lighty") web ser
 
 2.  Lighttpd is a network-facing service and failing to secure your server may expose you to vulnerabilities. Consult the [Securing Your Server Guide](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
 
-3.  If you're switching from a different web server like Apache, remember to turn the other server off for testing purposes, or [configure lighttpd](#configure_lighttpd) to use an alternate port until it's configured properly.
+3.  If you're switching from a different web server like Apache, remember to turn off the other server for testing purposes, or [configure lighttpd](#configure_lighttpd) to use an alternate port until it's configured properly.
 
 4.  Update your system:
 
@@ -66,7 +67,7 @@ Some settings depend on certain modules. For example, `url.rewrite` requires tha
 
 ### Enable and Disable Modules via Command Line
 
-For ease of use, you may wish to enable and disable modules via the command line. Lighttpd provides a simple method to do this so the configuration doesn't need to be edited every time a new module is needed.
+For ease of use, you may wish to enable and disable modules via the command line. Lighttpd provides a simple method to do this, so the configuration doesn't need to be edited every time a new module is needed.
 
 Run `lighty-enable-mod` from the command line to see a list of available modules and a list of already enabled modules, as well as a prompt to enable a module. This can also be accomplished in one line. For example, to enable the `auth` authentication module:
 
@@ -142,7 +143,7 @@ Enhanced virtual hosting works slightly differently than Simple by building the 
 
         systemctl restart lighttpd.service
 
-3.  To accomplish the same directory structure with `evhost` as with `simple-vhost` above, we need to modify the `/etc/lighttpd/conf-available/10-evhost.conf` file:
+3.  To accomplish the same directory structure with `evhost` as with `simple-vhost` above, you need to modify the `/etc/lighttpd/conf-available/10-evhost.conf` file:
 
     {: .file-excerpt }
     /etc/lighttpd/conf-available/10-evhost.conf
@@ -158,7 +159,7 @@ Enhanced virtual hosting works slightly differently than Simple by building the 
         server.document-root = "/var/www/html/example.com/htdocs"
         ~~~
 
-    With the configuration we set in Steps 3 and 4, if `example.com` is requested, and `/var/www/html/example.com/htdocs/` is found, that directory becomes the document root when serving requests. The `0%` in the path pattern specifies that a request will be checked against host files named in the format of domain and Top Level Domain (TLD). The `server.document-root` directive specifies a default host that is used when a matching directory does not exist.
+    With the configuration you set in Steps 3 and 4, if `example.com` is requested, and `/var/www/html/example.com/htdocs/` is found, that directory becomes the document root when serving requests. The `0%` in the path pattern specifies that a request will be checked against host files named in the format of domain and Top Level Domain (TLD). The `server.document-root` directive specifies a default host that is used when a matching directory does not exist.
 
     {: .caution}
     > These steps configure `server.document-root` to `/var/www/html`. According to lighttpd documentation, this [may expose your server to a vulnerability](https://redmine.lighttpd.net/projects/lighttpd/wiki/Docs_ModEVhost#A-Bad-Example) in which authentication can be bypassed in certain situations. If improperly configured, this may also redirect unmatched requests to the lighttpd index page rather than the default host of your choosing.
@@ -197,7 +198,7 @@ The following command will create two additional virtual hosts for the subdomain
 
 ## Virtual Hosting Best Practices
 
-The way you set up virtual hosting on your web server depends upon what kind of sites you host, their traffic, the number of domains, and their workflows. We recommend hosting all of your domains in a centralized directory (eg. `/var/www/html`) and then symbolically linking these directories into more useful locations.
+The way you set up virtual hosting on your web server depends upon what kind of sites you host, their traffic, the number of domains, and their workflows. We recommend hosting all of your domains in a centralized directory (e.g., `/var/www/html`) and then symbolically linking these directories into more useful locations.
 
 For instance, you can create a series of "web editor" user accounts. You may then link the document root of each domain into a folder in the home folder of the editor for that domain. For the user account `example-user` that manages the `example.com` site:
 
@@ -267,4 +268,4 @@ While lighttpd is an effective and capable web server there are two caveats rega
 
 Server side includes, which allow you to dynamically include content from one file in another, do not function in lighttpd in the same way as they do in Apache's `mod_ssi`. While it is an effective method for quickly assembling content, lighttpd's script handling via SSI is not a recommended work flow. See [lighttpd project documentation on mod_ssi](http://redmine.lighttpd.net/projects/lighttpd/wiki/Docs:ModSSI).
 
-Because of the way FastCGI works, running web applications with lighttpd requires additional configuration, particularly for users who are writing applications using interpreters embedded in the web server (e.g. `mod_perl`, `mod_python`, `mod_php`, etc.). For more information, consult the [lighttpd project documentation on optimizing FastCGI performance](http://redmine.lighttpd.net/projects/lighttpd/wiki/Docs:PerformanceFastCGI).
+Because of the way FastCGI works, running web applications with lighttpd requires additional configuration, particularly for users who are writing applications using interpreters embedded in the web server (e.g., `mod_perl`, `mod_python`, `mod_php`). For more information, consult the [lighttpd project documentation on optimizing FastCGI performance](http://redmine.lighttpd.net/projects/lighttpd/wiki/Docs:PerformanceFastCGI).
