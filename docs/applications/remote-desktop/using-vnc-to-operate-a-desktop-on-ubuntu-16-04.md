@@ -15,7 +15,7 @@ external_resources:
  - '[RealVNC](https://www.realvnc.com/)'
 ---
 
-VNC, or *virtual network computing*, is a graphical desktop sharing system that allows you to control one computer remotely from another. A VNC server transfers keyboard and mouse events, and displays the remote host's screen via a network connection, which allows you to operate a full desktop environment on your Linode.
+*Virtual network computing*, or VNC, is a graphical desktop sharing system that allows you to control one computer remotely from another. A VNC server transfers keyboard and mouse events, and displays the remote host's screen via a network connection, which allows you to operate a full desktop environment on your Linode.
 
 This guide explains how to install a graphic desktop environment on your Linode running Ubuntu 16.04 and how to connect to it from your local computer using VNC.
 
@@ -59,21 +59,21 @@ The default VNC connection is unencrypted. In order to secure your passwords and
 
         vncserver :1
 
-3.  Initiate your connection as per the steps in the following section.
+3.  Initiate your connection as per the steps in the [Connect to VNC from your Desktop](#connect-to-vnc-from-your-desktop) section.
 
 ### Windows
 
-1.  Open [PuTTY](/docs/networking/using-putty) and navigate under the `SSH` menu to `Tunnels`. Add a new forwarded port as shown below, replacing `example.com` with your Linode's IP address or hostname:
+1.  Open [PuTTY](/docs/networking/using-putty) and navigate to `Tunnels` under the `SSH` section in the menu. Add a new forwarded port as shown below, replacing `example.com` with your Linode's IP address or hostname:
 
     [![Adding a forwarded port to PuTTY.](/docs/assets/1648-vnc-putty-1.png)](/docs/assets/1648-vnc-putty-1.png)
 
-2.  Return to the 'Session' screen. Enter your Linode's hostname or IP address and a title for your session.  Click save to save your settings for future use, and then click open to initiate your SSH tunnel.
+2.  Return to the 'Session' screen. Enter your Linode's hostname or IP address and a title for your session. Click save to save your settings for future use, and then click open to initiate your SSH tunnel.
 
 3.  Launch the VNC server to test your connection. You will be prompted to set a password:
 
         vncserver :1
 
-4.  Initiate your connection as per the steps in the following section.
+4.  Initiate your connection as per the steps in the [Connect to VNC from your Desktop](#connect-to-vnc-from-your-desktop) section.
 
 ## Connect to VNC from your Desktop
 
@@ -83,7 +83,7 @@ In this section, we'll use a VNC client, or *viewer*, to connect to our server. 
 
 While there are many options for OS X and Windows, this guide will use [RealVNC Viewer](http://www.realvnc.com/download/viewer/).
 
-1.  After installing and opening the viewer, connect to the localhost through your VNC client. The format is `localhost:#`, where `#` is the display number we used in [the previous section](#install-a-desktop-and-vnc-server-on-your-linode):
+1.  After installing and opening the viewer, connect to the localhost through your VNC client. The format is `localhost:#`, where `#` is the display number we used in the [Secure your VNC connection](#secure-your-vnc-connection) section:
 
     [![Connecting through an SSH tunnel.](/docs/assets/1647-vnc-5.png)](/docs/assets/1647-vnc-5.png)
 
