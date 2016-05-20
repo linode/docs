@@ -10,7 +10,6 @@ modified_by:
   name: Phil Zona
 published: 'Thursday, May 5th, 2016'
 title: 'Use PostgreSQL Relational Databases on Ubuntu 16.04'
-alias: ['databases/postgresql/ubuntu-16-04-xenial-xerus/']
 external_resources:
  - '[PostgreSQL Online Documentation](http://www.postgresql.org/docs/)'
  - '[psql manual page](http://www.rootr.net/man/man/psql/1)'
