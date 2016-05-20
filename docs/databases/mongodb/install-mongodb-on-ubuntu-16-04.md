@@ -4,12 +4,11 @@ author:
   email: docs@linode.com
 description: 'Install MongoDB for use in application development on Ubuntu 16.04 (Xenial).'
 keywords: 'nosql,database,mongodb,key store'
-alias: ['databases/mongodb/use-mongodb-to-store-application-data-on-ubuntu-16-04/']
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Thursday, April 28th, 2016
+modified: Friday, May 20th, 2016
 modified_by:
   name: Phil Zona
-published: 'Thursday, April 28th, 2016'
+published: 'Friday, May 20th, 2016'
 title: 'Install MongoDB on Ubuntu 16.04 (Xenial)'
 external_resources:
  - '[Official MongoDB Documentation](https://docs.mongodb.org/v2.6/)'
@@ -44,9 +43,9 @@ Install MongoDB from the Ubuntu repository:
 
 This package from the Ubuntu repository includes version 2.6.10. While the most current version available is 3.2.5, as of this writing, MongoDB has not released an official package for Ubuntu 16.04. If you are comfortable manually installing software and monitoring for updates, you can find newer versions on [MongoDB's download page](https://www.mongodb.org/downloads). However, neither manual installation nor newer versions is supported by this guide.
 
-## Configure MongoDB Server
+## Configure MongoDB
 
-The configuration file for the MongoDB Server is located at `/etc/mongodb.conf`. Most of the settings are well commented within the file, and we've outlined some of the more important options below:
+The configuration file for MongoDB is located at `/etc/mongodb.conf`. Most of the settings are well commented within the file, and we've outlined some of the more important options below:
 
 - `dbpath` indicates where the database files will be stored (`/var/lib/mongodb` by default)
 - `logpath` indicates where MongoDB's logs will be located (`/var/log/mongodb/mongodb.log` by default)
@@ -61,9 +60,9 @@ By default, authentication is disabled when `auth` is commented out or not expli
 
 After making changes to the MongoDB configuration file, restart the service as shown in the following section.
 
-## Start and Stop the MongoDB Server
+## Start and Stop MongoDB
 
-To start, restart, or stop MongoDB, issue the appropriate command from the following:
+To start, restart, or stop the MongoDB service, issue the appropriate command from the following:
 
     sudo systemctl start mongodb
     sudo systemctl restart mongodb
@@ -71,7 +70,7 @@ To start, restart, or stop MongoDB, issue the appropriate command from the follo
 
 ## Create Database Users
 
-If you enabled authentication in the [Configure MongoDB Server](#configure-mongodb-server) section, create a user administrator with credentials for use on the database: 
+If you enabled authentication in the [Configure MongoDB](#configure-mongodb) section, create a user administrator with credentials for use on the database: 
 
 1.  Run the `mongo` command to open the shell:
 
