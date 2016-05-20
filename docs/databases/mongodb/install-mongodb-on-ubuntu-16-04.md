@@ -4,12 +4,13 @@ author:
   email: docs@linode.com
 description: 'Install MongoDB for use in application development on Ubuntu 16.04 (Xenial).'
 keywords: 'nosql,database,mongodb,key store'
+alias: ['databases/mongodb/use-mongodb-to-store-application-data-on-ubuntu-16-04/']
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: Thursday, April 28th, 2016
 modified_by:
   name: Phil Zona
 published: 'Thursday, April 28th, 2016'
-title: 'MongoDB on Ubuntu 16.04 (Xenial)'
+title: 'Install MongoDB on Ubuntu 16.04 (Xenial)'
 external_resources:
  - '[Official MongoDB Documentation](https://docs.mongodb.org/v2.6/)'
  - '[MongoDB Project](http://www.mongodb.org/)'
@@ -17,7 +18,7 @@ external_resources:
  - '[Language-Specific MongoDB Drivers](http://docs.mongodb.org/ecosystem/drivers/)'
 ---
 
-MongoDB is a database engine that provides access to non-relational, document-oriented databases. It is part of the growing NoSQL movement, which seeks to provide an alternative to traditional relational database management systems (RDBMS). In addition to its schema-free design and scalable architecture, MongoDB provides a JSON output and specialized language specific bindings that make it particularly attractive for use in custom application development. MongoDB has been used in a number of large scale [production deployments](https://www.mongodb.org/community/deployments) and is currently one of the most popular database engines across all systems.
+MongoDB is a database engine that provides access to non-relational, document-oriented databases. It is part of the growing NoSQL movement, which seeks to provide an alternative to traditional relational database management systems (RDBMS). In addition to its schema-free design and scalable architecture, MongoDB provides a JSON output and specialized language-specific bindings that make it particularly attractive for use in custom application development. MongoDB has been used in a number of large scale [production deployments](https://www.mongodb.org/community/deployments) and is currently one of the most popular database engines across all systems.
 
 ## Before You Begin
 
@@ -45,7 +46,7 @@ This package from the Ubuntu repository includes version 2.6.10. While the most 
 
 ## Configure MongoDB Server
 
-The configuration file for MongoDB Server is located at `/etc/mongodb.conf`. Most of the settings are well-commented within the file, and we've outlined some of the more important options below:
+The configuration file for the MongoDB Server is located at `/etc/mongodb.conf`. Most of the settings are well commented within the file, and we've outlined some of the more important options below:
 
 - `dbpath` indicates where the database files will be stored (`/var/lib/mongodb` by default)
 - `logpath` indicates where MongoDB's logs will be located (`/var/log/mongodb/mongodb.log` by default)
