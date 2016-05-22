@@ -14,7 +14,7 @@ title: Getting Started with Linode
 
 Congratulations on selecting Linode as your cloud hosting provider! This guide will help you sign up for an account, deploy a Linux distribution, boot your Linode, and perform some basic system administration tasks.
 
-## Signing Up
+## Sign Up
 
 If you haven't already signed up for a Linode account, start here.
 
@@ -41,13 +41,13 @@ The [Linode Manager](https://manager.linode.com) is a web-based control panel th
 
 ### Deploying an Image
 
-After creating a new Linode, select it and you'll be taken to the Linode Manager Dashboard.
+After creating a new Linode, select it to open the Linode Manager Dashboard.
 
 1.  Click on **Deploy an Image**.
 
     [![Linux Dashboard](/docs/assets/linode-manager-dashboard-newacct_small.png)](/docs/assets/linode-manager-dashboard-newacct.png)
 
-    You'll be taken to the *Deploy* page.
+    The *Deploy* page opens.
 
     [![Deploy a Linux Image](/docs/assets/linode-manager-deploy-an-image_small.png)](/docs/assets/linode-manager-deploy-an-image.png)
 
@@ -89,7 +89,7 @@ When booted, the **Server Status** will change from **Powered Off** to **Running
 
 [![Linode Booted](/docs/assets/linode-manager-linode-booted_small.png)](/docs/assets/linode-manager-linode-booted.png)
 
-## Connecting to Your Linode
+## Connecting to Your Linode via SSH
 
 Communicating with your Linode is usually done using the secure shell (SSH) protocol. SSH encrypts all of the data transferred between the SSH client application on your computer and the Linode, including passwords and other sensitive information. There are SSH clients available for every operating system.
 
@@ -108,11 +108,11 @@ Communicating with your Linode is usually done using the secure shell (SSH) prot
     >
     > These videos were created by [Treehouse](http://www.teamtreehouse.com), which is offering Linode customers a free one month trial. [Click here](http://teamtreehouse.com/join/free-month?utm_source=linode&utm_medium=partnership&utm_campaign=linode-2013&cid=1124) to start your free trial and start learning web design, web development, and more.
 
-### Finding the IP Address
+### Find the IP Address of Your Linode
 
 Your Linode has a unique *IP address* that identifies it to other devices and users on the Internet. For the time being, you'll use the IP address to connect to your server. After you perform some of these initial configuration steps outlined in the Linode Quick Start Guides, you can use [DNS records](/docs/hosting-website#sph_adding-dns-records) to point a domain name at your server and give it a more recognizable and memorable identifier.
 
-Here's how to find your Linode's IP address from the [Linode Manager](https://manager.linode.com).
+Find your Linode's IP address from the [Linode Manager](https://manager.linode.com).
 
 1.  Click the **Linodes** tab.
 2.  Select your Linode.
@@ -123,11 +123,11 @@ Here's how to find your Linode's IP address from the [Linode Manager](https://ma
 
 In this example, the Linode's IPv4 address is *96.126.109.54* and its IPv6 address is *2600:3c03::f03c:91ff:fe70:cabd*. Unless your Internet service provider supports IPv6, you'll want to the use the IPv4 address.
 
-### Logging in for the First Time
+### Logging In for the First Time
 
 Once you have the IP address and an SSH client, you can log in via SSH. The following instructions are written for Linux and Mac OS X. If you're using PuTTY as your SSH client in Windows, follow [these instructions](/docs/networking/using-putty).
 
-1.  Enter the following into your terminal window or application. Be sure to replace the example IP address with your Linode's IP address.
+1.  Enter the following into your terminal window or application. Replace the example IP address with your Linode's IP address.
 
         ssh root@123.456.78.90
 
@@ -151,13 +151,15 @@ Once you have the IP address and an SSH client, you can log in via SSH. The foll
 > If you recently rebuilt an existing Linode, you might receive an error message when you try to
 > reconnect via SSH. SSH clients try to match the remote host with the known keys on your desktop computer, so when you rebuild your Linode, the remote host key changes.
 >
->Revoking the key for that IP address will fix the problem. For Linux and Mac OS X:
+>To reconnect via SSH, revoke the key for that IP address. 
+>
+>For Linux and Mac OS X:
 >
 > ~~~
 > ssh-keygen -R 123.456.789
 > ~~~
 >
-> PuTTY users must remove the old host IP addresses manually. PuTTY's known hosts are in the registry entry:
+> For Windows, PuTTY users must remove the old host IP addresses manually. PuTTY's known hosts are in the registry entry:
 >
 >     HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\SshHostKeys
 
