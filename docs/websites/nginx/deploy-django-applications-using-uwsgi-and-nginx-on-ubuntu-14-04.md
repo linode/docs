@@ -149,7 +149,7 @@ external_resources:
         exec $UWSGI --master --emperor /etc/uwsgi/sites --die-on-term --uid django --gid www-data --logto $LOGTO
         ~~~
 
-    This job will start uWSGI in *Emperor* mode, meaning that it will monitor `/etc/uwsgi/site` directory and will spawn instances (*vassals*) for each configuration file it finds. Whenever a config file is changed, the emperor will automatically restart its vassals.
+    This job will start uWSGI in *Emperor* mode, meaning that it will monitor `/etc/uwsgi/sites` directory and will spawn instances (*vassals*) for each configuration file it finds. Whenever a config file is changed, the emperor will automatically restart its vassals.
 
 4.  Start the `uwsgi` service:
 
