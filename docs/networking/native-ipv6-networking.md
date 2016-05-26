@@ -209,7 +209,7 @@ If you are using `systemd-networkd` on Arch Linux or Fedora 21, you can statical
 
     {: .file }
     /etc/systemd/network/50-static.network
-    :   ~~~
+    :   ~~~ ini
         [Match]
         Name=eth0
 
