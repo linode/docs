@@ -6,7 +6,7 @@ description: 'Computer networks frequently use DHCP to assign IP addresses, rout
 keywords: 'multiple ip addresses,linux static ip,DHCP,change ip address,network configuration,dns,gateway,routing'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['networking/configuring-static-ip-interfaces/']
-modified: Wednesday, February 24th, 2016
+modified: Wednesday, June 1st, 2016
 modified_by:
   name: Linode
 published: 'Thursday, July 20th, 2014'
@@ -101,8 +101,8 @@ Edit the interface's config file:
     Name=eth0
 
     [Network]
-    Gateway=45.79.131.1
-    Address=45.79.131.10/24
+    Gateway=198.51.100.1
+    Address=198.51.100.2/24
     Address=192.168.133.234/17
 
     ~~~
