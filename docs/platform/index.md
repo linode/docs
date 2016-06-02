@@ -5,7 +5,7 @@ alias: ['linode-platform/']
 description: 'Learn about everything Linode!'
 featured:
  - linode-beginners-guide.md
- - backup-service.md
+ - linode-backup-service.md
  - accounts-and-passwords.md
  - linode-cli.md
  - linode-images.md
