@@ -2,20 +2,20 @@
 author:
   name: Alex Fornuto
   email: afornuto@linode.com
-description: Our guide to using the Linode backup service.
-keywords: 'backup,linode platform,linode backup service,enable a backup,manage a backup,schedule a backup,disable a backup,restore from a backup,boot from a backup'
+description: Use the Linode Backup Service to protect and secure your data.
+keywords: 'backup service,linode platform,linode backup service,enable a backup,manage a backup,schedule a backup,disable a backup,restore from a backup,boot from a backup'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['backup-service/']
-modified: 'Monday, October 26th, 2015'
+alias: ['backup-service/','platform/backup-service/']
+modified: 'Thursday, June 2nd, 2016'
 modified_by:
   name: Linode
 published: 'Wednesday, March 14th, 2012'
-title: Linode Backup Service
+title: Use the Linode Backup Service to Protect and Secure Your Data
 ---
 
 The *Linode Backup Service* is a subscription service that automatically performs daily and weekly backups of your Linode. It's affordable, easy to use and provides peace of mind. This guide explains how to enable and schedule a backup, make a manual backup, restore from backup, and disable the Backup Service.
 
-##Get Started
+## Get Started
 
 Ready to start protecting your data? Let us help you sign up and get going with the Linode Backup Service.
 
@@ -53,9 +53,9 @@ You'll manage your backups with a simple web interface in the Linode Manager. Th
 3.  Manually back up your Linode by taking a *manual snapshot*. For more information, see [Taking a Manual Snapshot](#taking-a-manual-snapshot).
 4.  Review the history to see when backups were created. If there are any error messages, they will also be displayed in this section.
 
-##How Linode Backups Work
+## How Linode Backups Work
 
-Backups are stored on a separate systems in the same datacenter as your Linode. The space required to store the backups is *not* subtracted from your storage space. You can store four backups of your Linode, three of which are automatically generated and rotated:
+Backups are stored on a separate system in the same datacenter as your Linode. The space required to store the backups is *not* subtracted from your storage space. You can store four backups of your Linode, three of which are automatically generated and rotated:
 
 -   **Daily backup:** Automatically initiated daily within the backup window you select. Less than 24 hours old.
 -   **Current week's backup:** Automatically initiated weekly within the backup window, on the day you select. Less than 7 days old.
@@ -64,7 +64,7 @@ Backups are stored on a separate systems in the same datacenter as your Linode. 
 
 The daily and weekly backups are automatically erased when a new backup is performed. The Linode Backup Service does not keep automated backups older than 8 - 14 days.
 
-##Schedule a Backup
+## Schedule a Backup
 
 You can configure when automatic backups are initiated. Here's how:
 
@@ -76,7 +76,7 @@ You can configure when automatic backups are initiated. Here's how:
 
 The Linode Backup Service will backup your Linode according to the schedule you specified.
 
-##Take a Manual Snapshot
+## Take a Manual Snapshot
 
 You can make a manual backup of your Linode by taking a *snapshot*. Here's how:
 
@@ -90,9 +90,9 @@ You can make a manual backup of your Linode by taking a *snapshot*. Here's how:
 
 4.  A warning appears asking if you would like to overwrite the previous snapsnot. Click **OK**.
 
-The Linode Backup Service initiates the manual snapshot. Be patient. Creating the manual snapshot can take several minutes depending on the size of your Linode and the amount of data you have stored on it. Other Linode Manager jobs for this Linode will not run until the snapshot job has been completed.
+The Linode Backup Service initiates the manual snapshot. Be patient. Creating the manual snapshot can take several minutes, depending on the size of your Linode and the amount of data you have stored on it. Other Linode Manager jobs for this Linode will not run until the snapshot job has been completed.
 
-##Restore from a Backup
+## Restore from a Backup
 
 You can restore a backup to any Linode located in the same data center, even if it does not have the Backup Service enabled. Here's how:
 
@@ -115,7 +115,7 @@ You can restore a backup to any Linode located in the same data center, even if 
 
 The backup disks and configuration profiles will be restored to the Linode you selected. Watch the *Host Job Queue* to monitor the progress. Restoring from a backup can take several minutes depending on the size of your Linode and the amount of data you have stored on it.
 
- {: .note }
+{: .note }
 >
 > The size of of the disk(s) created by the restore process will be slightly larger than the total size of the files restored. You may want to resize your disk(s) after the restore process is completed.
 
@@ -132,11 +132,11 @@ After the backup has been restored, the disks and configuration profiles will be
 
 The Linode will start from the backup disks. Watch the *Host Job Queue* to monitor the progress.
 
-##Disable a Backup
+## Disable a Backup
 
 You can cancel the Backup Service at any time. From your Linode's dashboard, choose the **Backups** tab and click the **Cancel Backups** link at the bottom of the page.  This will turn off the service, remove your backups from our servers, and issue a prorated service credit for the time left in the current billing period. This credit may be used to purchase additional Linode services in the future.
 
-##Limitations
+## Limitations
 
 There are some limitations to what the Linode Backup Service can back up. Here are some things you should be aware of:
 
