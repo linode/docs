@@ -18,7 +18,7 @@ external_resources:
  - '[Package Management](/docs/using-linux/package-management)'
 ---
 
-Linodes run **Linux**. Linux is an operating system, just like Windows and Mac OS X. As an operating system, Linux manages your Linode's hardware and provides services your other software needs to run.
+Linodes run **Linux**. Linux is an operating system that works just like Windows and Mac OS X. As an operating system, Linux manages your Linode's hardware and provides services your other software needs to run.
 
 Linux is a very hands-on operating system. If running Windows is like driving an automatic, then running Linux is like driving a stick. It can take some work, but once you know your way around Linux, you'll be using the command line and installing packages like a pro. This article aims to ease you into the world of Linux.
 
@@ -47,8 +47,8 @@ Let's begin at the beginning. If some of this is a repeat for you, feel free to 
 Your Linode is a type of *server*. A server is a type of computer that provides services over a *network*, or connected group of computers. Servers are typically:
 
 -   Always (or almost always) on
--   Connected to the Internet
--   Contains programs and files for websites and/or other Internet content
+-   Connected to the Internet or a network of computers
+-   Contain programs and files for hosting websites and/or other Internet content
 
 Since a server is a type of computer, there are a lot of similarities between a Linode and your home computer. Some important similarities include:
 
@@ -63,21 +63,21 @@ Before you install Linux, decide which distribution to install. Linux comes in s
 
 ### Install Linux to Get Started
 
-Here at Linode, you install Linux with the [Linode Manager](https://manager.linode.com/) dashboard. It takes just a few clicks to install Linux with this dashboard. If you don't have a particular Linux distribution in mind, install **Ubuntu 14.04 LTS**. Ubuntu is good for Linux beginners because it is well-supported and doesn't change often.
+Here at Linode, you install Linux with the [Linode Manager](https://manager.linode.com/) dashboard. It takes just a few clicks to install Linux with this dashboard. If you don't have a particular Linux distribution in mind, install **Ubuntu 16.04 LTS**. Ubuntu is good for Linux beginners because it is well-supported and doesn't change often.
 
 After you know which distribution you want to install, follow the instructions for installing Linux in the [Getting Started](/docs/getting-started/) article. Follow that article until you complete [Booting Your Linode](/docs/getting-started#sph_booting-your-linode), then come back here.
 
 ### Connecting to Your Linode
 
-Your Linode is physically housed in the Tokyo, London, Newark, Atlanta, Dallas, or Fremont data center, so you have to use the Internet and a terminal to connect to it and start using it. A *terminal* is a tool that runs a *shell* that lets you run text commands to interact with your server. The Secure Shell (**SSH**) protocol lets you send these commands to your Linode over a secure Internet connection from your local machine.
+Your Linode is physically housed in the Atlanta, Dallas, Frankfurt, Fremont, London, Newark, Singapore, or Tokyo data center, so you have to use the Internet and a terminal to connect to it and start using it. A *terminal* is a tool that runs a *shell* that lets you run text commands to interact with your server. The Secure Shell (**SSH**) protocol lets you send these commands to your Linode over a secure Internet connection from your local machine.
 
  {: .note }
 >
 > In this guide, we'll mostly be using the terms *terminal*, *shell*, and *SSH* to refer to the interface you use to send text commands to your Linux system. These are different tools that layer on top of each other to let you interact with your server. To learn more, read these simplified definitions:
 >
-- Terminal: a device that enters data into and displays data from a computer. The terminal has the most direct access to the operating system. Technically, most terminals these days are actually *terminal emulators* that run as software on Mac OS X, Linux, or Windows computers.
-- Shell: a program that provides a user interface for interacting with an operating system. There are different types of shells, but the one we're using here is called **Bash** and provides a command-line interface that accepts and outputs text.
-- SSH: a protocol that lets you send shell commands to your Linode securely over the Internet.
+  - **Terminal**: A device that enters data into and displays data from a computer. The terminal has the most direct access to the operating system. Technically, most terminals these days are actually *terminal emulators* that run as software on Mac OS X, Linux, or Windows computers.
+  - **Shell**: A program that provides a user interface for interacting with an operating system. There are different types of shells, but the one we're using here is called **Bash** and provides a command-line interface that accepts and outputs text.
+  - **SSH**: A protocol that lets you send shell commands to your Linode securely over the Internet.
 
 To connect to your Linode, follow the next section of the **Getting Started** article, [Connecting to Your Linode](/docs/getting-started#sph_connecting-to-your-linode). Follow along with the written instructions or watch the videos, or both. It will help you install a terminal emulator and use it to establish an SSH connection to your Linode. 
 
@@ -87,7 +87,7 @@ After you connect to your Linode, you should be looking at a shell prompt that l
 
     root@localhost:~#
 
-What does this bit of text mean? The entire thing is the *shell prompt*. It's your terminal's way of telling you that it's ready for you to enter the next command. The different parts of the shell prompt have meanings.
+What does this bit of text mean? The entire thing is the *shell prompt*. It's your terminal's way of telling you that it's ready for you to enter the next command. The different parts of the shell prompt provide information:
 
 -   **root**: This is your username. To learn more about users, jump down to the [Users and Permissions](#users-and-permissions) section.
 -   **localhost**: This is your Linode's hostname. A *hostname* is your Linode's name for itself.
@@ -100,7 +100,7 @@ You can type any valid Linux shell command at the blinking cursor after the shel
 >
 > These command line tips will make your Linux forays much more effective:
 >
-- Press `Return` after you finish a command.
+- Press the `Return` or `Enter` key after you finish a command.
 - In most cases, you will not receive an "Are you sure?" message after executing a potentially destructive command. Make sure you really want to run a command before you execute it.
 - You might not get any message after a successful command. You will get an error if the command didn't work.
 - If you don't know which directory you're in, you can always type `pwd`, short for *print working directory*.
@@ -108,7 +108,7 @@ You can type any valid Linux shell command at the blinking cursor after the shel
 
 ## Finding Your Way Around Files and Folders
 
-In this section, we'll look at the structure of a Linux server. Everything on your Linode is a file or a directory. Remember, *directory* is the Linux term for a folder. Linux uses a tree of nested directories to keep its files organized. The highest-level directory is called the *root* directory. It's designated with a single slash. Unlike Windows, there are no different disks or drives; the root directory is the highest-level directory for all Linux systems. Underneath the root directory are more directories. 
+In this section, we'll look at the structure of a Linux server. Everything on your Linode is a file or a directory. Remember, *directory* is the Linux term for a folder. Linux uses a tree of nested directories to keep its files organized. The highest-level directory is called the *root* directory. It's designated with a single slash. Unlike Windows, there are no different disks or drives; the root directory is the highest-level directory for all Linux systems. Underneath the root directory are more, sub-directories. 
 
 Most Linux systems have directories called `lib` and `var` (along with several others) underneath the root directory. The `lib` directory contains system libraries, while the `var` directory contains all of the files on your system that are likely to change, such as your logs and your mail messages. Directories can go inside other directories, as illustrated below:
 
@@ -119,36 +119,36 @@ Find out where you are in the directory structure. Make sure your terminal appli
 
 1. For your first command, use the `pwd` command. Short for *print working directory*, it lets you view the full path to your current directory. Type `pwd` after the shell prompt:
 
-    root@localhost:~# pwd
+        root@localhost:~# pwd
 
 2. Press `Return` to execute the command. You should see the following output:
 
-    /root
+        /root
 
 The output of `pwd` shows you the full path to your current directory or directory. At the moment, you're inside the `/root` directory. You will always be inside a particular directory when you execute shell commands, although which directory you're in can change. The `pwd` command is very useful because it shows you exactly where you are in your Linode's directory structure.
 
 ### Change Directories 
 Let's move into the root directory, `/`, with the `cd` command. The `cd` command is short for *change directory*. After `cd` type a space and then the file path. The file path can be long or short, depending on how deep you're going into the directory structure. 
 
-Change to the root directory.
+Change to the root directory:
 
-1. At the shell prompt, type the following command, and press `Return` to execute it. 
+At the shell prompt, type the following command, and press `Return` to execute it. 
 
     cd /
 
-2. Now you're in the root directory. 
+Now you're in the root directory. 
 
 ### List the Current Directory 
 
 The *list* command, `ls`, shows everything that's directly inside of your current directory. To make the output the most helpful, you can add a few *flags* to the `ls` command. The flags are part of the command. In this case, we'll add the `-ahl` flags to show `-a` all the files, in `-h` human-readable format, and with a `-l` long list format. There are more flags that you can add to the `ls` command, but you can learn more about them on the web. 
 
-List the current directory.
+List the current directory:
 
-1. Type the following command, and press `Return` to execute it:
+Type the following command, and press `Return` to execute it:
 
     ls -ahl
 
-  You should see output that looks something like this:
+The output should look something like this:
 
     total 84K
     drwxr-xr-x  22 root root 4.0K Apr 30  2012 .
@@ -185,13 +185,13 @@ If you open the `var` directory, you'll find more directories, such as `log` for
 
 1. Move into the `var` directory by executing the `cd` command:
 
-    cd var
+        cd var
 
 2. View the contents of the `var` directory with the `ls` command, just like we did earlier:
 
-    ls -ahl 
+        ls -ahl
 
-  You'll see another list of directories:
+You'll see another list of directories:
 
     total 52K
     drwxr-xr-x 13 root root     4.0K Nov  6 16:04 .
@@ -210,23 +210,23 @@ If you open the `var` directory, you'll find more directories, such as `log` for
     drwxrwxrwt  2 root root     4.0K Feb  4  2013 tmp
     drwxr-xr-x  2 root root     4.0K Apr  6  2013 www
 
-Here you can see the `log` and `mail` directories, as well as several others. At the top of the list, you see two directories named `.` and `..` with periods. Similar to the tilde (**\~**) we saw earlier, these directories are actually shortcuts or aliases, that appear in every directory. The single-period directory indicates the current directory. The double-period directory indicates the directory above the current one. If you are inside a lower-level directory and want to move to the directory above it, type `cd ..`. 
+Here you can see the `log` and `mail` directories, as well as several others. At the top of the list, you see two directories named `.` and `..` with periods. Similar to the tilde (**\~**) we saw earlier, these directories are actually shortcuts or aliases, that appear in every directory. The single-period directory indicates the current directory. The double-period directory indicates the directory above the current one. If you are inside a lower-level directory and want to move to the directory above it, type `cd ..`.
 
 1. To move back up to `/` from `var`, type the following command:
 
-    cd ..
+        cd ..
 
 2. You should be in the `/` directory again. You can use `pwd` to verify this.
 
-    pwd
+        pwd
 
 3. Let's take a look at the `lib` directory. Move into `lib` with the `cd` command:
 
-    cd lib
+        cd lib
 
 4. List its contents with the `ls` command:
 
-    ls -ahl
+        ls -ahl
 
   Inside, you'll see more directories and long list of library files that all start with `lib`. The output is very long, so we're just showing part of it here. The `...` indicates that the output continues.
 
@@ -256,23 +256,26 @@ One of the easiest ways to upload your own files to your Linode is with a Secure
 ## Users and Permissions in Linux
 
 Linux uses a powerful system of users and permissions to make sure that the right people get access to the right files. For example,
+
 -   As the owner of your Linode, you want to be able to view, edit, and run every file on the system. 
 -   You want the general public to be able to view, but not change, your website files, and you don't want them to see the structural files on your server.
 -   A different user, such as someone with a mailbox on your Linode, should be able to access their own files but not anyone else's. 
+
 You can set users and permissions for each file directory on your Linode. 
 
 Three categories comprise the file access system in Linux:
 
--   **Users**. Unique logins for your Linode. A user account is typically assigned to either a person or an application that needs to access files on your system. You can have any number of users on your Linode. To learn how to add a user, see the [Adding a New User](/docs/securing-your-server#sph_adding-a-new-user) section of the **Securing Your Server** guide.
--   **Groups**. A collection of one or more users. Groups are a useful way to grant similar access privileges to multiple users, without having to set them individually for each user. When a user account is created, it is assigned a default group with the same name as the user name. Each user can belong to any number of groups. Users that are a part of a group inherit the permissions granted to the group.
--   **Everyone** is the category for everyone else. If someone accesses files on your Linode without being logged in as a specific user, they fall into the *everyone* category. *Everyone* is sometimes known as *world*, because it includes everyone in the whole world. 
+-   **Users**: Unique logins for your Linode. A user account is typically assigned to either a person or an application that needs to access files on your system. You can have any number of users on your Linode. To learn how to add a user, see the [Adding a New User](/docs/securing-your-server#sph_adding-a-new-user) section of the **Securing Your Server** guide.
+-   **Groups**: A collection of one or more users. Groups are a useful way to grant similar access privileges to multiple users, without having to set them individually for each user. When a user account is created, it is assigned a default group with the same name as the user name. Each user can belong to any number of groups. Users that are a part of a group inherit the permissions granted to the group.
+-   **Everyone**: is the category for everyone else. If someone accesses files on your Linode without being logged in as a specific user, they fall into the *everyone* category. *Everyone* is sometimes known as *world*, because it includes everyone in the whole world. 
 
 The next important concept is *permissions*. Every file and directory on your Linux system has three possible access levels:
--     **read**. Files with *read* permissions can be viewed.
--     **write**. Files with *write* permissions can be edited.
--     **execute**. Files with *execute* permissions can be run, like an application. When you start a program or script, you execute it.
 
-### View permissions in Linux
+-  **Read**: Files with *read* permissions can be viewed.
+-  **Write**: Files with *write* permissions can be edited.
+-  **Execute**: Files with *execute* permissions can be run, like an application. When you start a program or script, you execute it.
+
+### View Permissions in Linux
 View the users and permissions for a particular file or directory.
 
 1. Run the `ls -l` command replacing **my\_directory** with the name of your own file or directory:
@@ -309,7 +312,7 @@ Like most things in Linux, installing software is accomplished by typing and exe
 Our **Quick Start Guides** series contain basic instructions for installing and configuring many common types of Linux software. The [Hosting a Website](/docs/hosting-website) guide shows you how to install software to run a website, while [Running a Mail Server](/docs/mailserver) is for email servers.
 
 #### Install with APT
-Because we've been working with the Ubuntu 14.04 distribution so far, let's look at an example with APT. The general form of the installation command for Ubuntu and Debian systems is:
+Because we've been working with the Ubuntu 16.04 distribution so far, let's look at an example with APT. The general form of the installation command for Ubuntu and Debian systems is:
 
     apt-get install software
 
@@ -335,7 +338,7 @@ There are three main ways to run programs in Linux.
 
 You want some programs, like your web server, to run constantly. These are the programs that run as services on your Linode. For example, your web server keeps your website visible, so you want it to stay on all the time. Server processes that stay running in the background are known as *daemons*. To start a daemon, run the following command, replacing **software** with the name of the software you want to run. The name will be the same one you used to install it (for example, **apache2** for Apache):
 
-    service software start
+    systemctl start software
 
 **Once:**
 
@@ -396,6 +399,6 @@ Some distributions are designed to be as simple and minimalistic as possible, wh
 
 -   **Release Cycle**: Different distributions release their operating system updates on different schedules. Distributions like Gentoo and Arch Linux use a *rolling release* model where individual packages are released whenever they're deemed ready by their developers. Conversely, distributions like Debian, Slackware, and CentOS strive to provide the most stable operating system attainable, and release new versions much less frequently. Fedora and Ubuntu release new versions of their operating systems every six months. Choosing the release cycle that's right for you depends on many factors, including the software you need to run, your comfort level, and the amount of stability and reliability you need.
 -   **Organizational Structure**: While it might not affect the performance of the distribution, one of the distinguishing factors between distributions is the organizational structure of the development team. Some distributions, like Debian, Gentoo, Arch, and Slackware are developed by independent communities of developers, while other distributions like OpenSUSE, Fedora, and Ubuntu are developed by communities sponsored by various corporations (e.g. Novell, RedHat, and Canonical for the examples above). Other distributions, such as CentOS, are derived by a community from commercially-produced distributions.
--   **Common Tool Sets**: Different distributions make use of different tools for common tasks like [package management](/docs/using-linux/package-management) or system configuration. As we discussed above, Debian and Ubuntu use APT to manage `.deb` packages, CentOS and Fedora use yum to manage `.rpm` packages, and OpenSUSE also uses `.rpm` packages but manages them with a tool called **yast**. In many cases your choice of distribution will come down to the one that provides the tools you need and are most comfortable with.
+-   **Common Tool Sets**: Different distributions make use of different tools for common tasks like [package management](/docs/tools-reference/linux-package-management/) or system configuration. As we discussed above, Debian and Ubuntu use APT to manage `.deb` packages, CentOS and Fedora use yum to manage `.rpm` packages, and OpenSUSE also uses `.rpm` packages but manages them with a tool called **yast**. In many cases your choice of distribution will come down to the one that provides the tools you need and are most comfortable with.
 
 Different distributions of Linux are right for different situations. You should experiment until you find the best fit for you. Given the similarities between different distributions, don't be afraid switch to a new one that will serve you better. If you're familiar with the concepts in this article, you're well on your way to administrating your system like a pro with any distribution of Linux.
