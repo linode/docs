@@ -24,7 +24,7 @@ If you haven't already signed up for a Linode account, start here.
 
     [![Available Linode plans](/docs/assets/linode-manager-select-plan_small.png)](/docs/assets/linode-manager-select-plan.png)
 
-If you're unsure of which data center to select, see our [speed test](http://www.linode.com/speedtest) to determine which location provides the best performance for your target audience. You can also generate [MTR reports](/docs/networking/diagnosing-network-issues-with-mtr/) for each of the data centers to determine which of our facilities provides the best latency from your particular location.
+If you're unsure of which data center to select, see our [speed test](http://www.linode.com/speedtest) to determine which location provides the best performance for your target audience. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for each of the data centers to determine which of our facilities provides the best latency from your particular location.
 
 ## Provisioning Your Linode
 
@@ -36,7 +36,7 @@ The [Linode Manager](https://manager.linode.com) is a web-based control panel th
 
 * Boot and shut down your virtual server,
 * Access monitoring statistics, 
-* Update your billing and account information, 
+* Update your billing and account information,
 * Request support and perform other administrative tasks.
 
 ### Deploying an Image
@@ -51,7 +51,7 @@ After creating a new Linode, select it to open the Linode Manager Dashboard.
 
     [![Deploy a Linux Image](/docs/assets/linode-manager-deploy-an-image_small.png)](/docs/assets/linode-manager-deploy-an-image.png)
 
-2.  Select a Linux distribution from the **Image** menu. You can choose from [Arch Linux](http://www.archlinux.org/), [CentOS](http://www.centos.org/), [Debian](http://www.debian.org/), [Fedora](http://fedoraproject.org/), [Gentoo](http://www.gentoo.org/), [openSUSE](http://www.opensuse.org/), [Slackware](http://www.slackware.com/), and [Ubuntu](http://www.ubuntu.com/) to install on your Linode. If you're new to the Linux operating system, consider selecting Ubuntu 14.04 LTS. Ubuntu is the most popular distribution among Linode customers and one of the most well supported by online communities, so resolving any issues you may have should be simple.
+2.  Select a Linux distribution from the **Image** menu. You can choose from [Arch Linux](http://www.archlinux.org/), [CentOS](http://www.centos.org/), [Debian](http://www.debian.org/), [Fedora](http://fedoraproject.org/), [Gentoo](http://www.gentoo.org/), [openSUSE](http://www.opensuse.org/), [Slackware](http://www.slackware.com/), and [Ubuntu](http://www.ubuntu.com/) to install on your Linode. If you're new to the Linux operating system, consider selecting Ubuntu 16.04 LTS. Ubuntu is the most popular distribution among Linode customers and one of the most well supported by online communities, so resolving any issues you may have should be simple.
 
 3.  Enter a size for the disk in the **Deployment Disk Size** field. By default all of the available space is allocated, but you can set a lower size if you plan on cloning a disk or creating multiple configuration profiles. You can always create, resize, and delete disks later.
 
@@ -123,11 +123,11 @@ Find your Linode's IP address from the [Linode Manager](https://manager.linode.c
 
 In this example, the Linode's IPv4 address is *96.126.109.54* and its IPv6 address is *2600:3c03::f03c:91ff:fe70:cabd*. Unless your Internet service provider supports IPv6, you'll want to the use the IPv4 address.
 
-### Logging In for the First Time
+### Logging in for the First Time
 
 Once you have the IP address and an SSH client, you can log in via SSH. The following instructions are written for Linux and Mac OS X. If you're using PuTTY as your SSH client in Windows, follow [these instructions](/docs/networking/using-putty).
 
-1.  Enter the following into your terminal window or application. Replace the example IP address with your Linode's IP address.
+1.  Enter the following into your terminal window or application. Replace the example IP address with your Linode's IP address:
 
         ssh root@123.456.78.90
 
@@ -137,14 +137,17 @@ Once you have the IP address and an SSH client, you can log in via SSH. The foll
         RSA key fingerprint is 11:eb:57:f3:a5:c3:e0:77:47:c4:15:3a:3c:df:6c:d2.
         Are you sure you want to continue connecting (yes/no)?
 
+    After you enter `yes`, the client confirms the addition:
+
+        Warning: Permanently added '123.456.78.90' (RSA) to the list of known hosts.
+
 3.  The login prompt appears for you to enter the password you created for the `root` user above.
 
         root@123.456.78.90's password:
 
 4.  The SSH client initiates the connection. You'll know you're logged in when the following prompt appears:
 
-        Warning: Permanently added '123.456.78.90' (RSA) to the list of known hosts.
-        root@li123-456:~# 
+        root@li123-456:~#
 
  {: .note }
 >
@@ -212,7 +215,7 @@ For a walkthrough of setting system's hostname and timezone, see the following v
 >
 > This video was created by [Treehouse](http://www.teamtreehouse.com), which is offering Linode customers a free one month trial. [Click here](http://teamtreehouse.com/join/free-month?utm_source=linode&utm_medium=partnership&utm_campaign=linode-2013&cid=1124) to start your free trial and start learning web design, web development, and more.
 
-### Arch / CentOS 7 / Debian 8 / Fedora version 18 and above / Ubuntu 15.04 
+### Arch / CentOS 7 / Debian 8 / Fedora version 18 and above / Ubuntu 15.04 and above
 
 Replace `hostname` with one of your choice.
 
