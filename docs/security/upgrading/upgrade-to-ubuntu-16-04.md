@@ -98,7 +98,7 @@ Remember to perform these steps in a Lish or Glish session:
 
 3.  You're now ready to begin the upgrade to Ubuntu 16.04 LTS:
 
-        do-release-upgrade -d
+        do-release-upgrade
 
     Follow the on-screen instructions to complete the installation process.
 
