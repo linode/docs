@@ -119,6 +119,10 @@ The backup disks and configuration profiles will be restored to the Linode you s
 >
 > The size of of the disk(s) created by the restore process will be slightly larger than the total size of the files restored. You may want to resize your disk(s) after the restore process is completed.
 
+{: .note }
+>
+> If you want to restore a backup to a different data center, first restore to a Linode in the same data center -- creating a new one if necessary. Once the restore is complete, use the "Clone" tab to copy the disks from source data center to the destination data center (again, creating a Linode beforehand if needed.)
+
 ### Boot from a Backup
 
 After the backup has been restored, the disks and configuration profiles will be available to the Linode you selected. Select the restored configuration profile and reboot your Linode to start up from the restored disks. Here's how:
