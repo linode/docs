@@ -2,10 +2,10 @@
 author:
   name: Sam Mauldin
   email: sam@fluidnode.com
-description: 'Use tinc VPN to securely cluster and access services on Ubuntu 14.04 and 15.10'
+description: 'Use tinc VPN to securely cluster and access services on Ubuntu 16.04'
 keywords: 'tinc,vpn,networking,ubuntu'
 license: '[CC BY-SA 4.0](http://creativecommons.org/licenses/by-sa/4.0/)'
-title: 'Secure Clustering with tinc on Ubuntu 14.04 and 15.10'
+title: 'Secure Clustering with tinc on Ubuntu 16.04'
 contributor:
   name: Sam Mauldin
 ---
