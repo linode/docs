@@ -2,18 +2,18 @@
 author:
   name: Alex Fornuto
   email: afornuto@linode.com
-description: Use the Linode Backup Service to protect and secure your data.
+description: 'Use the Linode Backup Service to protect and secure your data.'
 keywords: 'backup service,linode platform,linode backup service,enable a backup,manage a backup,schedule a backup,disable a backup,restore from a backup,boot from a backup'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['backup-service/','platform/backup-service/']
-modified: 'Thursday, June 2nd, 2016'
+modified: Thursday, June 2nd, 2016
 modified_by:
   name: Linode
 published: 'Wednesday, March 14th, 2012'
-title: Use the Linode Backup Service to Protect and Secure Your Data
+title: 'Use the Linode Backup Service to Protect and Secure Your Data'
 ---
 
-The *Linode Backup Service* is a subscription service that automatically performs daily and weekly backups of your Linode. It's affordable, easy to use and provides peace of mind. This guide explains how to enable and schedule a backup, make a manual backup, restore from backup, and disable the Backup Service.
+*Linode Backup Service* is a subscription service add-on that automatically performs daily and weekly backups of your Linode. It's affordable, easy to use and provides peace of mind. This guide explains how to enable and schedule a backup, make a manual backup, restore from backup, and disable the Backup Service.
 
 ## Get Started
 
@@ -46,7 +46,7 @@ The Linode Backup Service is now enabled for the selected Linode.
 
 You'll manage your backups with a simple web interface in the Linode Manager. There's no software to install, and there are no commands to run. Just log in to the Linode Manager, click the **Linodes** tab, select a Linode, and then click the **Backups** tab. The backups interface is shown below.
 
-[![The Linode Backup Service interface.](/docs/assets/954-backups0-small1-1.png)](/docs/assets/955-backups01-1.png)
+[![The Linode Backup Service interface](/docs/assets/954-backups0-small1-1.png)](/docs/assets/955-backups01-1.png)
 
 1.  Schedule automated backups. For more information, see [Scheduling Backups](#scheduling-backups).
 2.  Indicates when the daily and weekly backups were performed. Click the **Restore to...** link to restore a backup to a Linode.
