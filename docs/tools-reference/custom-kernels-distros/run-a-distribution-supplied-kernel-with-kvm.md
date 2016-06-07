@@ -62,10 +62,15 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
     * Gentoo
     
 	  echo "GRUB_PLATFORMS=\"coreboot pc\"" >> /etc/portage/make.conf
+	  
 	  emerge --ask sys-boot/grub sys-kernel/gentoo-sources
+	  
 	  eselect kernel list
+	  
 	  eselect kernel set [# of new kernel]
+	  
 	  zcat /proc/config.gz > /usr/src/linux/.config
+	  
 	  genkernel --oldconfig all
 
     {: .note }
