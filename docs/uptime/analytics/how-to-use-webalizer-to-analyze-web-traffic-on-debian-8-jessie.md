@@ -1,5 +1,4 @@
-﻿
----
+﻿---
 author:
   name: Linode Community
   email: docs@linode.com
@@ -423,9 +422,9 @@ When it runs, 'logrotate' checks the configuration directory: `/etc/logrotate.d`
 
 	The 'logrotate' process is executed once per day, but you can schedule it to run at a specific moment by setting up a cron job, as we'll explain below.
 
-3.  You can also run 'logrotate' manually for a specific configuration file. To run 'logrotate' for Nginx logs manually, use the following command:
+You can also run 'logrotate' manually for a specific configuration file. To run 'logrotate' for Nginx logs manually, use the following command:
 
-		logrotate -f /etc/logrotate.d/nginx
+	logrotate -f /etc/logrotate.d/nginx
 
 ## Set Up the Cron Job
 
@@ -449,7 +448,7 @@ But what if you want to run Webalizer on a regular basis, let's say once a day a
 
 	You can save and exit the file now. 
 
-## Step Six - Test Webalizer
+## Test Webalizer
 
 1.  To test Webalizer first you have to access each website so that the access log files could be populated. You can do it using a browser or by using the `wget` command:
 
