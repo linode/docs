@@ -78,8 +78,7 @@ WordPress is a popular, dynamic, blog-focused content management system. The sof
 
 5.  Copy the WordPress files to your `public_html` folder, then remove the folder in the `src` directory:
 
-        sudo cp -R wordpress/* ../public_html/
-        sudo rm -rf wordpress/
+        sudo mv wordpress/* ../public_html/
 
 
 ## Configure WordPress
