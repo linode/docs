@@ -1,4 +1,5 @@
-﻿---
+﻿
+---
 author:
   name: Linode Community
   email: docs@linode.com
@@ -34,10 +35,10 @@ This tutorial will explain how to install Webalizer on a Debian 8 server, and ho
 
 ## Before You Begin
 
-This tutorial expects that you have ssh access to your server with Debian 8 (Jessie) installed. You'll also need the following:
+Ensure that you have ssh access to your server with Debian 8 (Jessie) installed. You'll also need the following:
 
-*   **a LEMP (Linux, Nginx (pronounced "engine x"), MySQL, PHP) stack**. To install a LEMP stack you can follow [this tutorial](https://www.linode.com/docs/websites/lemp/lemp-server-on-debian-8). However, you can skip the Nginx configuration because we'll address it later on in this tutorial.
-*   **a non-root user with sudo priviledges**. To create a non-root user with sudo privileges you can follow the steps in [this tutorial](https://www.linode.com/docs/tools-reference/linux-users-and-groups).
+*   **a LEMP (Linux, Nginx (pronounced "engine x"), MySQL, PHP) stack**. To install a LEMP stack you can follow [this guide](https://www.linode.com/docs/websites/lemp/lemp-server-on-debian-8). However, you can skip the Nginx configuration because we'll address it later on in this tutorial.
+*   **a non-root user with sudo priviledges**. To create a non-root user with sudo privileges you can follow the steps in [this guide](https://www.linode.com/docs/tools-reference/linux-users-and-groups).
 
 ## Install and Configure Webalizer
 
@@ -126,6 +127,7 @@ This tutorial expects that you have ssh access to your server with Debian 8 (Jes
 	{: .file-excerpt }
 	/etc/webalizer/webalizer.conf
 	:   ~~~ conf
+	
 		. . .
 		
 		SearchEngine    facebook.       q=
@@ -171,15 +173,11 @@ This tutorial expects that you have ssh access to your server with Debian 8 (Jes
 
 	You can save and exit the file now.
 
-## Configure Nginx
+## Create the Webalizer Output Directory
 
-The next step is to configure Nginx but before doing this you have to create the output directory for Webalizer.
+The web server will be configured so that the Webalizer reports will be accessible on a subdirectory of the website (something like 'www.example1.com/webalizer') which will be in fact the alias of the Webalizer output directory, so, for safety reasons it's a good idea to name the alias something different than 'webalizer', for example 'up-webalizer', or anything similar but difficult to guess. This way you'll prevent unauthorised users to even reach the reports. Of course the main security measure will be to protect the reports directory with http authentication so that only users with a valid username and password can get access to these reports, as we'll exaplain below.
 
-### Create the Webalizer Output Directory
-
-	The web server will be configured so that the Webalizer reports will be accessible on a subdirectory of the website (something like 'www.example1.com/webalizer') which will be in fact the alias of the Webalizer output directory, so, for safety reasons it's a good idea to name the alias something different than 'webalizer', for example 'up-webalizer', or anything similar but difficult to guess. This way you'll prevent unauthorised users to even reach the reports. Of course the main security measure will be to protect the reports directory with http authentication so that only users with a valid username and password can get access to these reports, as we'll exaplain below.
-
-	As about the location of the output directory, this can be `/var/log/sites/example1.com`. So, Webalizer will put the report files it will generate in `/var/log/sites/example1.com/webalizer`. The reports will be accessible by typing `www.example1.com/up-webalizer` in a web browser and then authenticating with a username and password.
+As about the location of the output directory, this can be `/var/log/sites/example1.com`. So, Webalizer will put the report files it will generate in `/var/log/sites/example1.com/webalizer`. The reports will be accessible by typing `www.example1.com/up-webalizer` in a web browser and then authenticating with a username and password.
 
 1.  You can create with one command the Webalizer output directory, the `logs` directory that will hold the access logs of `www.example1.com`, and the parent directories like this:
 
@@ -192,9 +190,9 @@ The next step is to configure Nginx but before doing this you have to create the
 
 	Now let's configure the web server.
 
-### Configure Nginx
+## Configure Nginx
 
-	The first thing you want to do is to set usernames and passwords for http authentication for all the users that will be given access to the Webalizer reports. 
+The first thing you want to do is to set usernames and passwords for http authentication for all the users that will be given access to the Webalizer reports. 
 
 1.  Create the directory that will hold the username and password files:
 
@@ -214,7 +212,7 @@ The next step is to configure Nginx but before doing this you have to create the
 
 		sudo apt-get install apache2-utils
 
-5.  Now let's suppose you want to give permission to the user `sammy`. Run the following command:
+5.  Now let's suppose you want to give permission to the user 'sammy'. Run the following command:
 
 		htpasswd -c /etc/nginx/httppass/passwd1 sammy
 
@@ -227,7 +225,7 @@ The next step is to configure Nginx but before doing this you have to create the
 		sammy:$apr1$dNwvAUPd$JROs/szkb7MAqN99/sNCm1
 		~~~
 
-6.  To add the credentials for a new user `jerry` to the `passwd1` file you must run:
+6.  To add the credentials for a new user 'jerry' to the `passwd1` file you must run:
  
 		htpasswd /etc/nginx/httppass/passwd1 jerry
 
@@ -352,8 +350,8 @@ The next step is to configure Nginx but before doing this you have to create the
 
 	`options` is one or more of the options supported by Webalizer, which alter the way it runs. `log-file ` is the name of the log file to be processed. The two options that we used were:
 
-	*   `-n name` - This option specifies the hostname for the reports. The hostname appears in the title of all reports, and is also prepended to URLs in the reports.
-	*   `-o dir` - This option specifies the output directory for the reports. 
+	*   **`-n name`** - This option specifies the hostname for the reports. The hostname appears in the title of all reports, and is also prepended to URLs in the reports.
+	*   **`-o dir`** - This option specifies the output directory for the reports. 
 
 	So, to make Webalizer analyze the access log of `www.example1.com`, which is `/var/log/sites/example1.com/logs/access.log`, and save the traffic statistics it generates in the `/var/log/sites/example1.com/webalizer` directory, the command must be:
 
@@ -378,6 +376,7 @@ When it runs, 'logrotate' checks the configuration directory: `/etc/logrotate.d`
 	{: .file-excerpt }
 	/etc/logrotate.d/nginx
 	:   ~~~ conf
+	
 		. . . 
 		
 		/var/log/sites/example1.com/logs/access.log {
@@ -405,16 +404,16 @@ When it runs, 'logrotate' checks the configuration directory: `/etc/logrotate.d`
 
 	Let's explain the parameters used:
 
-	*   `missingok` - If the log file is missing, go on to the next one without issuing an error message.
-	*   `rotate 5` - Create a maximum of 5 archives.
-	*   `compress` - Compress the old log files with gzip.
-	*   `delaycompress` - Postpone compression of the previous log file to the next rotation cycle. This way, at any moment there are two uncomplressed log files: the current log file and the previous one, while all the other log files are compressed.
-	*   `notifempty` - Don't rotate empty log files.
-	*   `create 0640 root adm` - Create new log files as being owned by the user 'root' and the group 'adm', with the specified permissions.
-	*   `size 5M` - Rotate the current log file when it grows over 5 MB.
-	*   `sharedscripts` - Run the postrotate script only once, after the old logs have been compressed, not once for each log which is rotated.
-	*   `prerotate` - The lines between 'prerotate' and 'endscript' are executed before the current log file is rotated. 
-	*   `postrotate` - The lines between 'postrotate' and 'endscript' are executed after the current log file is rotated.
+	*   **`missingok`** - If the log file is missing, go on to the next one without issuing an error message.
+	*   **`rotate 5`** - Create a maximum of 5 archives.
+	*   **`compress`** - Compress the old log files with gzip.
+	*   **`delaycompress`** - Postpone compression of the previous log file to the next rotation cycle. This way, at any moment there are two uncomplressed log files: the current log file and the previous one, while all the other log files are compressed.
+	*   **`notifempty`** - Don't rotate empty log files.
+	*   **`create 0640 root adm`** - Create new log files as being owned by the user 'root' and the group 'adm', with the specified permissions.
+	*   **`size 5M`** - Rotate the current log file when it grows over 5 MB.
+	*   **`sharedscripts`** - Run the postrotate script only once, after the old logs have been compressed, not once for each log which is rotated.
+	*   **`prerotate`** - The lines between 'prerotate' and 'endscript' are executed before the current log file is rotated. 
+	*   **`postrotate`** - The lines between 'postrotate' and 'endscript' are executed after the current log file is rotated.
 
 	This is only an example of a functional configuration and these parameters can be changed or adjusted to meet any specific needs.
 
@@ -446,7 +445,7 @@ But what if you want to run Webalizer on a regular basis, let's say once a day a
 
 	This command tells 'cron' to run the `webalizer-script.sh` script every day at 3:30 a.m. The last part of the command, `> /dev/null 2>&1`, means that any standard output message or error produced by this command will be ignored; it won't be shown to the user.
 
-	Please note that it's highly recommended to set Webalizer to run at a moment during the day when the websites are having the fewest vistors so that Webalizer won't use precious processing power when it's most needed. The low traffic hours in the early morning are generally a good choise.
+	It's highly recommended to set Webalizer to run at a moment during the day when the websites are having the fewest vistors so that Webalizer won't use precious processing power when it's most needed. The low traffic hours in the early morning are generally a good choise.
 
 	You can save and exit the file now. 
 
@@ -457,7 +456,7 @@ But what if you want to run Webalizer on a regular basis, let's say once a day a
 		wget www.example1.com
 		wget www.example2.com
 
-2.  Then you just have to run:
+2.  Then you have to run:
 
 		sudo /var/scripts/webalizer-script.sh
 
@@ -471,7 +470,7 @@ But what if you want to run Webalizer on a regular basis, let's say once a day a
 
 ![Webalizer - Usage by country](/docs/assets/webalizer3.png)
 
-	Please note that Webalizer calls 'total unique visitors' 'Total Unique Sites'. It is worth mentioning that Webalizer considers search engine bots as normal visitors and counts them as such.
+Webalizer calls 'total unique visitors' 'Total Unique Sites'. It is also worth mentioning that Webalizer considers search engine bots as normal visitors and counts them as such.
  
 ## Conclusion
 
