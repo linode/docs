@@ -6,7 +6,7 @@ description: 'Use DNS Manager to Direct Domains to Your Linode.'
 keywords: 'dns manager,linode dns,linode manager dns,dns configuration,ttl,domain zones,domain name'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['dns-manager/','dns-guides/configuring-dns-with-the-linode-manager/', 'networking/dns/dns-manager/']
-modified: Wednesday, March 2, 2016
+modified: Wednesday, March 31, 2016
 modified_by:
   name: Phil Zona
 published: 'Thursday, July 16th, 2009'
@@ -52,7 +52,7 @@ See the instructions on your domain name registrar's website for more informatio
 
 Log in to the [Linode Manager](https://manager.linode.com) and click the **DNS Manager** tab. It should resemble this:
 
-[![1. All of the domain zones are listed in the Domain Zone column. 2. The "Import a zone" link lets you import zone files. 3. The "Clone an existing zone" link lets you duplicate another zone you already have set up in the Linode Manager. 4. The "Add a domain zone" link lets you create a new zone file for a domain. 5. In the Options column for each domain, you have the following links: "Edit," "Remove," "Check," and "Zone file."](/docs/assets/1112-dns1-2.png)](/docs/assets/1112-dns1-2.png)
+![The DNS Manger](/docs/assets/1112-dns1-2.png)
 
 1.  All of your domain zones are listed here. A *domain zone*, essentially synonymous with the term "domain," is a collection of DNS records for a single domain name. Click the name of a domain zone to add or edit DNS records within that zone.
 2.  If you have a zone that can be exported from a server or another hosting provider, click **Import a zone** to import it.
@@ -101,7 +101,7 @@ When you first create a domain zone, you'll need to add some DNS records. The DN
 	>
 	> The exact form fields will vary depending on the type of DNS record you select.
 
-	[![This page allows you to create a new A/AAAA record. In the "Hostname" field, enter any text you want for a subdomain. For example, you could type "www". "\*" will make a wildcard entry. Leave this field blank if this is the primary A record for the domain. The other fields for the A record screen are explained in the steps below.](/docs/assets/1122-dns10.png)](/docs/assets/1122-dns10.png)
+    [This page allows you to create a new A/AAAA record.](/docs/assets/1122-dns10.png)
 
 3.  Enter a hostname in the **Hostname** field.
 4.  Enter the IP address of your server in the **IP Address** field. For instructions, see [Finding the IP Address](/docs/getting-started#finding-the-ip-address).
