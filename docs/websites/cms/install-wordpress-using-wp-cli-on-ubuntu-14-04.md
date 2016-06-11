@@ -268,7 +268,7 @@ To uninstall a theme, you can use:
 
 You can update your blog through the following commands:
 
-    www-data wp core update
+    wp core update
     wp core update-db
 
 The first command updates the files. The second one completes the database upgrade.
