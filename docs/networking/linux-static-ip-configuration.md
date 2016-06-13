@@ -92,20 +92,20 @@ There are multiple ways to configure static IP addresses in Arch. See the [Stati
 
 ### CentOS 7 / Fedora
 
-CentOS 7 installs with the package `NetworkManager-tui`, an ncurses configuration tool for some NetworkManager functions. NetworkManager-tui directly edits `/etc/sysconfig/network-scripts/ifcfc-eth0` so all configuration should be done in the tool. This is a generally easier solution than manually editing the interface files.
+CentOS 7 installs with the package `NetworkManager-tui`, an ncurses configuration tool for some NetworkManager functions. NetworkManager-tui directly edits `/etc/sysconfig/network-scripts/ifcfc-eth0` so all configuration should be done using it. This is a generally easier solution than manually editing the interface files.
 
-It can be run with:
+Fedora Server uses NetworkManager but does not include `NetworkManager-tui` by default. Install it with:
+
+    sudo dnf install nmtui
+
+
+To run `NetworkManager-tui`:
 
     sudo nmtui edit eth0
 
-You'll want to add your Linode's public IP and Gateway, DNS servers and the search domain `members.linode.com`. After you've made your edits, restart NetworkManager:
+Add your Linode's public IP and Gateway, DNS servers and the search domain `members.linode.com`. After you've made your edits, restart NetworkManager:
 
     sudo systemctl restart network.service
-
-
-Fedora Server uses NetworkManager but does not include `NetworkManager-tui` by default. Install and run it with:
-
-    sudo dnf install nmtui && sudo nmtui edit eth0
 
 
 ## CentOS 6
