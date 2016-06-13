@@ -55,7 +55,7 @@ The default VNC connection is unencrypted. In order to secure your passwords and
 
         ssh -L 5901:127.0.0.1:5901 user@example.com
 
-2.  Launch the VNC server to test your connection. You will be prompted to set a password:
+2.  From your Linode, launch the VNC server to test your connection. You will be prompted to set a password:
 
         vncserver :1
 
@@ -67,7 +67,7 @@ The default VNC connection is unencrypted. In order to secure your passwords and
 
     [![Adding a forwarded port to PuTTY.](/docs/assets/1648-vnc-putty-1.png)](/docs/assets/1648-vnc-putty-1.png)
 
-2.  Return to the 'Session' screen. Enter your Linode's hostname or IP address and a title for your session. Click save to save your settings for future use, and then click open to initiate your SSH tunnel.
+2.  Click **Add**, then return to the 'Session' screen. Enter your Linode's hostname or IP address and a title for your session. Click save to save your settings for future use, and then click open to initiate your SSH tunnel.
 
 3.  Launch the VNC server to test your connection. You will be prompted to set a password:
 
