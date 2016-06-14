@@ -435,7 +435,6 @@ How these IPv4 and IPv6 rules are deployed differs among the various Linux distr
         sudo systemctl start iptables && sudo systemctl start ip6tables
         sudo systemctl enable iptables && sudo systemctl enable ip6tables
 
-4.  Apply the `pre-network.conf` fix from the [ArchWiki](https://wiki.archlinux.org/index.php/Iptables#Configuration_and_usage), so iptables starts before the network is up.
 
 For more info on using iptables in Arch, see its Wiki entries for [iptables](https://wiki.archlinux.org/index.php/Iptables) and a [Simple Stateful Firewall](https://wiki.archlinux.org/index.php/Simple_stateful_firewall).
 
