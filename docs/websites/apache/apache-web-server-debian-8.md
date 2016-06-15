@@ -59,7 +59,7 @@ Apache 2.4 offers various multi-processing modules (MPMs) to handle connections.
 
 #### The Prefork Module
 
-1.  Open `/etc/apache2/mods-available/mpm_prefork.conf` in your text editor and edit the values as needed. The following is optimized for a 1GB Linode:
+1.  Open `/etc/apache2/mods-available/mpm_prefork.conf` in your text editor and edit the values as needed. The following is optimized for a 2GB Linode:
 
     {: .file}
     /etc/apache2/mods-available/mpm_prefork.conf
@@ -72,11 +72,11 @@ Apache 2.4 offers various multi-processing modules (MPMs) to handle connections.
         # MaxConnectionsPerChild: maximum number of requests a server process serves
 
         <IfModule mpm_prefork_module>
-                StartServers              2
-                MinSpareServers           6
-                MaxSpareServers           12
-                MaxRequestWorkers         30
-                MaxConnectionsPerChild    3000
+                StartServers              4
+                MinSpareServers           20
+                MaxSpareServers           40
+                MaxRequestWorkers         200
+                MaxConnectionsPerChild    4500
         </IfModule>
         ~~~
 
@@ -92,7 +92,7 @@ Apache 2.4 offers various multi-processing modules (MPMs) to handle connections.
 
 #### The Event Module
 
-If you choose to keep the *event module* enabled, these settings are suggested for a 1GB Linode.
+If you choose to keep the *event module* enabled, these settings are suggested for a 2GB Linode.
 
 1.  Open `/etc/apache2/mods-available/mpm_event.conf` in your text editor and edit the values as needed:
 
@@ -108,11 +108,11 @@ If you choose to keep the *event module* enabled, these settings are suggested f
         # MaxConnectionsPerChild: maximum number of requests a server process serves
         <IfModule mpm_event_module>
                 StartServers             2
-                MinSpareThreads          15
-                MaxSpareThreads          50
+                MinSpareThreads          25
+                MaxSpareThreads          75
                 ThreadLimit              64
                 ThreadsPerChild          25
-                MaxRequestWorkers        30
+                MaxRequestWorkers        150
                 MaxConnectionsPerChild   3000
         </IfModule>
         ~~~

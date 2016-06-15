@@ -56,11 +56,11 @@ This guide shows you how to set up a personal [Minecraft](https://minecraft.net/
         BINDIR=$(dirname "$(readlink -fn "$0")")
         cd "$BINDIR"
 
-        java -Xms512M -Xmx1000M -jar minecraft_server.1.8.8.jar -o true
+        java -Xms1024M -Xmx1536M -jar minecraft_server.1.8.8.jar -o true
         ~~~
 
     {: .note }
-    > The `Xms` and `Xmx` flags define the minimum and maximum amount of RAM the Minecraft server will use. The settings above are recommended for a Linode 1GB used solely for this purpose. Adjust these values to fit your needs.
+    > The `Xms` and `Xmx` flags define the minimum and maximum amount of RAM the Minecraft server will use. The settings above are recommended for a Linode 2GB used solely for this purpose. Adjust these values to fit your needs.
 
 4.  Make `run.sh` executable:
 

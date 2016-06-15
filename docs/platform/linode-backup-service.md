@@ -23,12 +23,12 @@ Ready to start protecting your data? Let us help you sign up and get going with 
 
 Pricing is per Linode and varies depending on the size of your virtual private server, as shown below:
 
--   Linode 1GB: $2.50/month
--   Linode 2GB: $5.00/month
--   Linode 4GB: $10.00/month
--   Linode 8GB: $20.00/month
--   Linode 16GB: $40.00/month
--   Linode 32GB: $80.00/month
+-   Linode 2GB: $2.50/month
+-   Linode 4GB: $5.00/month
+-   Linode 8GB: $10.00/month
+-   Linode 12GB: $20.00/month
+-   Linode 24GB: $40.00/month
+-   Linode 48GB: $80.00/month
 
 ### Enable a Backup
 

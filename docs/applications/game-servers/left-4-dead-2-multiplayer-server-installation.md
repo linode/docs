@@ -26,7 +26,7 @@ You will need the following items to get started:
 
 - A [Steam](http://store.steampowered.com) account.
 - OPTIONAL (needed to test the server): A copy of [Left 4 Dead 2](http://store.steampowered.com/app/550/).
-- A Linode with at least 1GB of RAM and 10GB of free disk space.
+- A Linode with at least 2GB of RAM and 10GB of free disk space.
 - An up-to-date Linode running Ubuntu or Debian. We suggest you follow our [Getting Started](/docs/getting-started) guide for help configuring your Linode.
 
 {: .note }

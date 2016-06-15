@@ -43,7 +43,7 @@ Since Arch does not come in specific versions, this guide is up-to-date as of th
 
         sudo pacman -Syu apache
 
-2.  Edit the `httpd-mpm.conf` Apache configuration file in `/etc/httpd/conf/extra/` to adjust the resource use settings. The settings shown below are a good starting point for a **Linode 1GB**:
+2.  Edit the `httpd-mpm.conf` Apache configuration file in `/etc/httpd/conf/extra/` to adjust the resource use settings. The settings shown below are a good starting point for a **Linode 2GB**:
 
     {: .note}
     >
@@ -55,11 +55,11 @@ Since Arch does not come in specific versions, this guide is up-to-date as of th
     /etc/httpd/conf/extra/httpd-mpm.conf
     :   ~~~ conf
         <IfModule mpm_prefork_module>
-        StartServers        2
-        MinSpareServers     6
-        MaxSpareServers     12
-        MaxRequestWorkers   30
-        MaxRequestsPerChild 3000
+                StartServers            4
+                MinSpareServers         20
+                MaxSpareServers         40
+                MaxRequestWorkers       200
+                MaxConnectionsPerChild  4500
         </IfModule>
         ~~~
 
@@ -191,7 +191,7 @@ PHP makes it possible to produce dynamic and interactive pages using your own sc
 
         sudo pacman -Syu php php-apache
 
-2.  Edit `/etc/php/php.ini` for better error messages and logs, and upgraded performance. These modifications provide a good starting point for a **Linode 1GB**:
+2.  Edit `/etc/php/php.ini` for better error messages and logs, and upgraded performance. These modifications provide a good starting point for a **Linode 2GB**:
 
     {: .file-excerpt }
     /etc/php/php.ini

@@ -136,7 +136,7 @@ Vagrant can be paired with Linode through the use of the *vagrant-linode* plugin
         end
         ~~~
 
-    In this instance, a 1GB Ubuntu 14.04 LTS Linode is being created in the Newark data center. The `provider.label` is the name that the Linode will show up as in the Linode Manager.
+    In this instance, a 2GB Ubuntu 14.04 LTS Linode is being created in the Newark data center. The `provider.label` is the name that the Linode will show up as in the Linode Manager.
 
     To see more options regarding the vagrant-linode plugin see the documentation on the plugin's [GitHub repository](https://github.com/displague/vagrant-linode).
 

@@ -131,11 +131,11 @@ Once you select your MPM, you will need to change the values inside the configur
 /etc/httpd/conf/httpd.conf (CentOS/Fedora)
 :	~~~
 	<IfModule mpm_prefork_module>
-    	StartServers          2
-    	MinSpareServers       6
-    	MaxSpareServers      12
-    	MaxClients           60
-    	MaxRequestsPerChild  3000
+    	StartServers          4
+    	MinSpareServers       20
+    	MaxSpareServers      40
+    	MaxClients           200
+    	MaxRequestsPerChild  4500
 	</IfModule>
 	~~~
 

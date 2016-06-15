@@ -53,17 +53,17 @@ Configurations directives for Apache are contained in the `httpd.conf` file, whi
 
 Additional files are located in `/etc/apache2/modules.d/` and `/etc/apache2/vhosts.d/`.
 
-Edit the 00\_mpm.conf Apache configuration file in /etc/apache2/modules.d/ to adjust the resource use settings. The settings shown below are a good starting point for a **Linode 1GB**.
+Edit the 00\_mpm.conf Apache configuration file in /etc/apache2/modules.d/ to adjust the resource use settings. The settings shown below are a good starting point for a **Linode 2GB**.
 
 {: .file }
 /etc/apache2/modules.d/00\_mpm.conf
 :   ~~~ apache
     <IfModule prefork.c>
-    StartServers 2
-    MinSpareServers 6
-    MaxSpareServers 12
-    MaxClients 80
-    MaxRequestsPerChild 3000
+            StartServers        4
+            MinSpareServers     20
+            MaxSpareServers     40
+            MaxClients          200
+            MaxRequestsPerChild 4500
     </IfModule>
     ~~~
 
@@ -176,7 +176,7 @@ After installing MySQL, it's recommended that you run `mysql_secure_installation
 
     mysql_secure_installation
 
-The settings for your MySQL daemon are located in `/etc/mysql/my.cnf`. The default values should be fine for a **Linode 1GB**, but if you decide to adjust them you should first make a backup copy:
+The settings for your MySQL daemon are located in `/etc/mysql/my.cnf`. The default values should be fine for a **Linode 2GB**, but if you decide to adjust them you should first make a backup copy:
 
     cp /etc/mysql/my.cnf ~/my.cnf.backup
 

@@ -1,3 +1,5 @@
+<<<<<<< Local Changes
+<<<<<<< Local Changes
 ---
 author:
   name: Linode
@@ -35,13 +37,13 @@ Install Apache on your Linode:
 
 Your Linode will download, install, and start the Apache web server.
 
-### Optimize Apache for a Linode 1GB
+### Optimize Apache for a Linode 2GB
 
 Installing Apache is easy, but if you leave it running with the default settings, your server could run out of memory. That's why it's important to optimize Apache *before* you start hosting a website on your Linode. 
 
 {: .note }
 >
-> These guidelines are designed to optimize Apache for a **Linode 1GB**, but you can use this information for any size Linode. The values are based on the amount of memory available, so if you have a Linode 2GB, multiply all of the values by 2 and use those numbers for your settings.
+> These guidelines are designed to optimize Apache for a **Linode 2GB**, but you can use this information for any size Linode. The values are based on the amount of memory available, so if you have a Linode 2GB, multiply all of the values by 2 and use those numbers for your settings.
 
 1.  Just to be safe, make a copy of Apache's configuration file. You can restore the duplicate (`apache2.backup.conf`) if anything happens to the configuration file.
 
@@ -64,14 +66,14 @@ Installing Apache is easy, but if you leave it running with the default settings
 
         ...
 
-	    <IfModule mpm_prefork_module>
-	    StartServers 2
-	    MinSpareServers 6
-	    MaxSpareServers 12
-	    MaxClients 30
-	    MaxRequestsPerChild 3000
-	    </IfModule>
-	    ~~~
+        <IfModule mpm_prefork_module>
+            StartServers 4
+            MinSpareServers 20
+            MaxSpareServers 40
+            MaxClients 200
+            MaxRequestsPerChild 4500
+        </IfModule>
+        ~~~
 
 4.  Save the changes to Apache's configuration file by pressing **CTRL+X** and then pressing **Y**. Press **ENTER** to confirm.
 
@@ -173,13 +175,13 @@ Databases store data in a structured and easily accessible manner, serving as th
 
 That's it! MySQL is now installed and running on your Linode.
 
-### Optimize MySQL for a Linode 1GB
+### Optimize MySQL for a Linode 2GB
 
 MySQL consumes a lot of memory when using the default configuration. To set resource constraints, you'll need to edit the MySQL configuration file. 
 
 {: .note }
 >
-> These guidelines are designed to optimize MySQL 5.5 and up for a **Linode 1GB**, but you can use this information for any size Linode. If you have a larger Linode, start with these values and modify them while carefully watching for memory and performance issues.
+> These guidelines are designed to optimize MySQL 5.5 and up for a **Linode 2GB**, but you can use this information for any size Linode. If you have a larger Linode, start with these values and modify them while carefully watching for memory and performance issues.
 
 1.  Open the MySQL configuration file for editing:
 
@@ -194,7 +196,9 @@ MySQL consumes a lot of memory when using the default configuration. To set reso
     :   ~~~ conf
         max_allowed_packet = 1M
         thread_stack = 128K
+        
         ...
+        
         max_connections = 75
         ~~~
 
@@ -274,12 +278,12 @@ PHP is a general-purpose scripting language that allows you to produce dynamic a
 
         sudo apt-get install php5-mysql
 
-### Optimize PHP for a Linode 1GB
+### Optimize PHP for a Linode 2GB
 
 After you install PHP, you'll need to enable logging and tune PHP for better performance. The setting you'll want to pay the most attention to is `memory_limit`, which controls how much memory is allocated to PHP. 
 
 {: .note }
-> These guidelines are designed to optimize PHP for a Linode 1GB, but you can use this information as a starting point for any size Linode. If you have a larger Linode, you could increase the memory limit to a larger value, like 256M.
+> These guidelines are designed to optimize PHP for a Linode 2GB, but you can use this information as a starting point for any size Linode. If you have a larger Linode, you could increase the memory limit to a larger value, like 256M.
 
 1.  Open the PHP configuration files:
 
@@ -345,6 +349,7 @@ It's a good idea to test your website(s) before you add the DNS records. This is
     >Remember to remove the entries for the name-based virtual hosts from your `hosts` file when you're ready to test the DNS records.
 
 ## Add DNS Records
+
 
 Now you need to point your domain name(s) at your Linode. This process can take a while, so please allow up to 24 hours for DNS changes to be reflected throughout the Internet. 
 
