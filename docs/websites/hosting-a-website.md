@@ -1,5 +1,3 @@
-<<<<<<< Local Changes
-<<<<<<< Local Changes
 ---
 author:
   name: Linode

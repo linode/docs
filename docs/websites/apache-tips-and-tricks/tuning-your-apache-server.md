@@ -167,7 +167,7 @@ To determine the RAM each Apache process uses, replace `httpd` with `apache2` on
 
 	ps -ylC httpd --sort:rss
 
-Divide the number by 1024 for megabytes.
+Divide the number by 2048 for megabytes.
 
 To get information on memory usage:
 

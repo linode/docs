@@ -128,7 +128,7 @@ Vagrant can be paired with Linode through the use of the *vagrant-linode* plugin
             #Linode Settings
             provider.distribution = 'Ubuntu 14.04 LTS'
             provider.datacenter = 'newark'
-            provider.plan = '1024'
+            provider.plan = '2048'
             provider.label = 'vagrant-ubuntu-lts'
 
           end
