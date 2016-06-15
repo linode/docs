@@ -58,7 +58,7 @@ WordPress is a popular, dynamic, blog-focused content management system. The sof
 
 ## Install WordPress
 
-1.  Create an `src` directory under your website's directory to store pristine copies of WordPress's source files. In this guide, the home directory `/var/www/exmaple.com/` is used as an example. Navigate to that new directory:
+1.  Create an `src` directory under your website's directory to store pristine copies of WordPress's source files. In this guide, the home directory `/var/www/example.com/` is used as an example. Navigate to that new directory:
 
         sudo mkdir /var/www/example.com/src/
         cd /var/www/example.com/src/
