@@ -48,33 +48,29 @@ After restarting, browse to a directory of your server that does not exist, and 
 
 [![404 With Server Tokens Disabled](/docs/assets/404_Not_Found_Server_Tokens_Off.jpg)](/docs/assets/404_Not_Found_Server_Tokens_Off.jpg) 
 
-### Enable SPDY Support
+### Enable HTTP/2 Support
 
-SPDY is an open networking protocol developed primarily by Google to decrease page load time over an HTTP or HTTPS connection. Currently browsers only use SPDY when establishing a secure, encrypted HTTPS connection. SPDY decreases page load time by only utilizing a single HTTPS connection to provide all assests to load a page. Traditionally when you access a web page a separate HTTP connection is established to load each resource (ex. HTML, CSS, JavaScript, or images). The server also compresses assests before sending them to the client requiring less bandwdith. 
+HTTP/2 is a new version of the HTTP standard replacing HTTP/1.1 to reduce page load time. HTTP/2 relies upon establishing multiple HTTP requests to a server to download assests in parallel. Traditionally when you access a web page a separate HTTP connection is established to load each resource (ex. HTML, CSS, JavaScript, or images). The server also compresses assests before sending them to the client requiring less bandwdith. 
 
 {.note}
-> SPDY is currently being phased out in favor of HTTP/2. SPDY is supported only in nginx 1.8.x or older, whereas newer versions are beginning to support HTTP/2. However, most nginx packages shipped with current stable distros do support SPDY.
+> In Sepetmeber 2010, Google released SPDY for all version of Chrome 6. SPDY is currently being phased out in favor of HTTP/2. Support for SPDY in Chrome was removed in May 2016. SPDY is supported only in nginx 1.8.x or older, whereas newer versions are beginning to support HTTP/2. However, most nginx packages shipped with current stable distros do support SPDY.
 
-1.  To enable SPDY, open your nginx SSL virtual host configuration file. Depending on how you installed nginx this could be located at `/etc/nginx/sites-enabled/default` or at `/etc/nginx/conf.d/example_ssl.conf`.
+1.  To enable HTTP/2, open your nginx SSL virtual host configuration file. Depending on how you installed nginx this could be located at `/etc/nginx/sites-enabled/default` or at `/etc/nginx/conf.d/example_ssl.conf`.
 
         nano /etc/nginx/conf.d/example_ssl.conf
 
-2.  Look for the `listen` line and add `spdy` to the end before the semicolon.
+2.  Look for the `listen` line and add `http2` to the end before the semicolon.
 
-        listen       443 ssl spdy;
+        listen       443 ssl http2;
 
-3.  Below the listen line append the following line telling browsers that your Linode supports SPDY.
-
-        add_header   Alternate-Protocol  443:npn-spdy/3;
-
-4.  Save your changes and restart nginx.
+3.  Save your changes and restart nginx.
 
         systemctl restart nginx
 
-5.  Open a web browser and navigate to [SPDYCheck.org](http://SPDYCheck.org), enter your Linode's domain name or hostname in the text box and click "Check". This free tool will check to server and let you know if SPDY is enabled and functioning correctly. 
+4.  Open a web browser and navigate to [the KeyCDN HTTP/2 Test](https://tools.keycdn.com/http2-test), enter your Linode's domain name or hostname in the text box and click "Test". Optionally uncheck the Public checkbox if you do not want your results displayed publicly. This free tool will check your server and let you know if HTTP/2 is enabled and functioning correctly.
 
-If SPDY is functioning properly, your report should look like this.
-[![SPDY Report](/docs/assets/SPDY_Report_Resized.jpg)](/docs/assets/SPDY_Report.jpg)
+If HTTP/2 is functioning properly, your report should look like this.
+[![SPDY Report](/docs/assets/HTTP2_Report.jpg)](/docs/assets/HTTP2_Report.jpg)
 
 ### Redirect HTTP Traffic to HTTPS
 
@@ -103,10 +99,6 @@ Google is now ranking websites that accept encrypted HTTPS connections higher in
 5. Exit your text editor saving your changes and restart nginx.
 
         systemctl restart nginx
-
-Now if you run a SPDYCheck again, your report should indicate HTTP connections are no longer accepted.
-
-[![SPDY Report HTTP Redirect](/docs/assets/SPDY_Report_Redirect.jpg)](/docs/assets/SPDY_Report_Redirect.jpg)
 
 ### OCSP Stapling
 
@@ -236,7 +228,7 @@ If you have been following along, starting with the guide on installing the late
     # HTTPS server
     #
     server {
-        listen       443 ssl spdy;
+        listen       443 ssl http2;
         
         add_header   Alternate-Protocol  443:npn-spdy/3;
         add_header   Strict-Transport-Security "max-age=31536000; includeSubdomains";
