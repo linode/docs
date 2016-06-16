@@ -70,7 +70,7 @@ HTTP/2 is a new version of the HTTP standard replacing HTTP/1.1 to reduce page l
 4.  Open a web browser and navigate to [the KeyCDN HTTP/2 Test](https://tools.keycdn.com/http2-test), enter your Linode's domain name or hostname in the text box and click "Test". Optionally uncheck the Public checkbox if you do not want your results displayed publicly. This free tool will check your server and let you know if HTTP/2 is enabled and functioning correctly.
 
 If HTTP/2 is functioning properly, your report should look like this.
-[![SPDY Report](/docs/assets/HTTP2_Report.jpg)](/docs/assets/HTTP2_Report.jpg)
+[![HTTP/2 Report](/docs/assets/HTTP2_Report.jpg)](/docs/assets/HTTP2_Report.jpg)
 
 ### Redirect HTTP Traffic to HTTPS
 
