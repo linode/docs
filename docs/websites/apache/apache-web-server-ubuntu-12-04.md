@@ -47,7 +47,7 @@ If instead you would like to install a full LAMP (Linux, Apache, MySQL and PHP) 
 
         sudo apt-get install apache2 apache2-doc apache2-utils
 
-2.  Edit the main Apache configuration file to adjust the resource use settings. The settings shown below are a good starting point for a **Linode 1GB**:
+2.  Edit the main Apache configuration file to adjust the resource use settings. The settings shown below are a good starting point for a **Linode 2GB**:
 
     {: .file }
     /etc/apache2/apache2.conf
@@ -57,11 +57,11 @@ If instead you would like to install a full LAMP (Linux, Apache, MySQL and PHP) 
         ...
 
         <IfModule mpm_prefork_module>
-            StartServers        2
-            MinSpareServers     6
-            MaxSpareServers     12
-            MaxClients          30
-            MaxRequestsPerChild 3000
+            StartServers        4
+            MinSpareServers     20
+            MaxSpareServers     40
+            MaxClients          200
+            MaxRequestsPerChild 4500
         </IfModule>
         ~~~
 

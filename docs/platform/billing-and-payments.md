@@ -22,17 +22,17 @@ All services are billed automatically at the end of the month. If you used a ser
 #### Linode Cloud Hosting and Backups
 
 {: .table .table-striped }
-| Service     | Hourly Rate | Monthly | Backups Hourly Rate | Backups Monthly
-|:------------|:------------|:--------|:--------------------|:---------------
-| Linode 1GB  | $0.015/hr   | $10/mo  | $0.004/hr           | $2.50/mo
-| Linode 2GB  | $0.03/hr    | $20/mo  | $0.008/hr           | $5/mo
-| Linode 4GB  | $0.06/hr    | $40/mo  | $0.016/hr           | $10/mo
-| Linode 8GB  | $0.12/hr    | $80/mo  | $0.03/hr            | $20/mo
-| Linode 16GB | $0.24/hr    | $160/mo | $0.06/hr            | $40/mo
-| Linode 32GB | $0.48/hr    | $320/mo | $0.12/hr            | $80/mo
-| Linode 48GB | $0.72/hr    | $480/mo | $0.18/hr            | $120/mo
-| Linode 64GB | $0.96/hr    | $640/mo | $0.24/hr            | $160/mo
-| Linode 96GB | $1.44/hr    | $960/mo | $0.36/hr            | $240/mo
+| Service      | Hourly Rate | Monthly | Backups Hourly Rate | Backups Monthly
+|:-------------|:------------|:--------|:--------------------|:---------------
+| Linode 2GB   | $0.015/hr   | $10/mo  | $0.004/hr           | $2.50/mo
+| Linode 4GB   | $0.03/hr    | $20/mo  | $0.008/hr           | $5/mo
+| Linode 8GB   | $0.06/hr    | $40/mo  | $0.016/hr           | $10/mo
+| Linode 12GB  | $0.12/hr    | $80/mo  | $0.03/hr            | $20/mo
+| Linode 24GB  | $0.24/hr    | $160/mo | $0.06/hr            | $40/mo
+| Linode 48GB  | $0.48/hr    | $320/mo | $0.12/hr            | $80/mo
+| Linode 64GB  | $0.72/hr    | $480/mo | $0.18/hr            | $120/mo
+| Linode 80GB  | $0.96/hr    | $640/mo | $0.24/hr            | $160/mo
+| Linode 120GB | $1.44/hr    | $960/mo | $0.36/hr            | $240/mo
 |----------------------------------------------------------------------------
 
 #### Additional Linode Services

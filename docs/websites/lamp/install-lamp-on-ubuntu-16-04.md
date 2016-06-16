@@ -49,17 +49,17 @@ A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used for hosting 
         KeepAlive Off
         ~~~
 
-3.  The default *multi-processing module* (MPM) for Apache is the *event* module but by default PHP uses the *prefork* module. Open the `mpm_prefork.conf` file located in `/etc/apache2/mods-available` and edit the configuration. Below are the suggested values for a **1GB Linode**:
+3.  The default *multi-processing module* (MPM) for Apache is the *event* module but by default PHP uses the *prefork* module. Open the `mpm_prefork.conf` file located in `/etc/apache2/mods-available` and edit the configuration. Below are the suggested values for a **2GB Linode**:
 
     {: .file}
     /etc/apache2/mods-available/mpm_prefork.conf
     :   ~~~ conf
         <IfModule mpm_prefork_module>
-                StartServers            2
-                MinSpareServers         6
-                MaxSpareServers         12
-                MaxRequestWorkers       39
-                MaxConnectionsPerChild  3000
+                StartServers            4
+                MinSpareServers         20
+                MaxSpareServers         40
+                MaxRequestWorkers       200
+                MaxConnectionsPerChild  4500
         </IfModule>
         ~~~
 

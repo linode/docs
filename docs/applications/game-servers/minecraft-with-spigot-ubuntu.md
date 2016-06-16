@@ -71,7 +71,7 @@ We'll compile the [Spigot](https://spigotmc.com) Minecraft server (1.8.3 at the 
         java -jar BuildTools.jar
 
     {: .note }
-    >This may take approximately 10 minutes, depending in the size of the Linode you are building on. If you are running a Linode 1GB you will need at least 256MB of swap or the build may not complete.
+    >This may take approximately 10 minutes, depending in the size of the Linode you are building on.
 
 
 2.	When the build has finished, move the resulting `.jar` file to a server folder:
@@ -88,10 +88,10 @@ We'll compile the [Spigot](https://spigotmc.com) Minecraft server (1.8.3 at the 
         #!/bin/bash
         cd /home/minecraft/server;
 
-        java -XX:MaxPermSize=128M -Xms512M -Xmx900M -jar spigot.jar
+        java -XX:MaxPermSize=1024M -Xms512M -Xmx1536M -jar spigot.jar
         ~~~
 
-    The values in this file are suggested for a Linode 1GB. You may want to change the RAM allocation depending on your Linode size.
+    The values in this file are suggested for a Linode 2GB. You may want to change the RAM allocation depending on your Linode size.
 
 4.  Make the file executable:
 

@@ -39,9 +39,7 @@ This tutorial will cover the following:
 
 2.  Complete our [Securing Your Server](/docs/security/securing-your-server) tutorial to create a standard user account, harden SSH access, and remove unnecessary network services.
 
-3. Make sure your Linode has at least 2GB of total RAM. If you are running a **Linode 1024** server, add 1GB of SWAP memory to meet this requirement.
-
-4.  Update your server's software packages.
+3.  Update your server's software packages.
 
     **CentOS**
 

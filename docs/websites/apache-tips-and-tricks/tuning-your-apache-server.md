@@ -131,11 +131,11 @@ Once you select your MPM, you will need to change the values inside the configur
 /etc/httpd/conf/httpd.conf (CentOS/Fedora)
 :	~~~
 	<IfModule mpm_prefork_module>
-    	StartServers          2
-    	MinSpareServers       6
-    	MaxSpareServers      12
-    	MaxClients           60
-    	MaxRequestsPerChild  3000
+    	StartServers          4
+    	MinSpareServers       20
+    	MaxSpareServers      40
+    	MaxClients           200
+    	MaxRequestsPerChild  4500
 	</IfModule>
 	~~~
 
@@ -167,7 +167,7 @@ To determine the RAM each Apache process uses, replace `httpd` with `apache2` on
 
 	ps -ylC httpd --sort:rss
 
-Divide the number by 1024 for megabytes.
+Divide the number by 2048 for megabytes.
 
 To get information on memory usage:
 

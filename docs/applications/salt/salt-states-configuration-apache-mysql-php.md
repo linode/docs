@@ -15,7 +15,7 @@ title: Salt States for Configuration of Apache, MySQL, and PHP (LAMP)
 After Salt is <a href="/docs/applications/salt/install-salt" target="_blank">installed</a> and <a href="/docs/applications/salt/salt-states-configuration-apache-mysql-php" target="_blank">Salt States</a> are created, the Minion will need to be configured. This tutorial will configure a Minion's LAMP stack with further use of Salt States. This tutorial is written for Debian 8 but can easily be adjusted for other Linux Distributions.
 
 ##Create the LAMP Configuration States
-The below steps configure all Salt Minions for a 1GB Linode, feel free to adjust as needed. 
+The steps below configure all Salt Minions for a 2GB Linode, feel free to adjust as needed.
 
 1.  Open the `/etc/salt/base/top.sls` file and add the additional line:
  
@@ -34,7 +34,7 @@ The below steps configure all Salt Minions for a 1GB Linode, feel free to adjust
     {:.file }
     /etc/salt/base/lampconf.sls
     :  ~~~
-       #Apache Conguration for 1GB Linode
+       #Apache Conguration for 2GB Linode
        /etc/apache2/apache2.conf-KA:
          file.replace:
            - name: /etc/apache2/apache2.conf
@@ -47,14 +47,14 @@ The below steps configure all Salt Minions for a 1GB Linode, feel free to adjust
            - name: /etc/apache2/apache2.conf
            - text: |
                <IfModule mpm_prefork_module>
-               StartServers 2
-               MinSpareServers 6
-               MaxSpareServers 12
-               MaxClients 30
-               MaxRequestsPerChild 3000
+               StartServers 4
+               MinSpareServers 20
+               MaxSpareServers 40
+               MaxClients 200
+               MaxRequestsPerChild 4500
                </IfModule>
 
-       #MySQL Configuration for 1GB Linode
+       #MySQL Configuration for 2GB Linode
        /etc/mysql/my.cnf-br:
          file.blockreplace:
            - name: /etc/mysql/my.cnf
@@ -76,7 +76,7 @@ The below steps configure all Salt Minions for a 1GB Linode, feel free to adjust
            - backup: '.bak'
            - show_changes: True
 
-       #PHP Configuration for 1GB Linode
+       #PHP Configuration for 2GB Linode
        /etc/php5/apache2/php.ini-er:
          file.replace:
            - name: /etc/php5/apache2/php.ini
