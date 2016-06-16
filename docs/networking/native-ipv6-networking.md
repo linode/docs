@@ -124,7 +124,7 @@ While default IPv6 addresses are configured automatically, you will need to stat
       net.ipv6.conf.all.forwarding=1
       ~~~
 
-    For addresses within a /116 pool, make the above change on any other Linodes you'd like to use as routers. Addresses in a /116 pool can routed to any Linode on your account within the same datacenter.
+    For addresses within a /116 pool, the above change is not necessary as routing will be automatically configured. Addresses in a /116 pool are routed to other Linodes on your account within the same datacenter.
 
 3.  Restart networking. This command should be performed in [Lish](/docs/networking/using-the-linode-shell-lish), as it will terminate an SSH connection.
 
@@ -167,29 +167,19 @@ If you are using CentOS 6.5 or lower, restart networking:
 
     service network restart
     
-If you are using CentOS 7, you will need to reload your configuration using `nmcli`, and bring your static interface down and back up:
+If you are using CentOS 7:
 
-    nmcli reload
-    nmcli con down "System eth0"
-    nmcli con up "System eth0"
+    systemctl restart network
 
 ### Arch Linux (netctl)
 
 If you are still using `netctl` in Arch Linux, you can statically configure your IPv6 pools by editing the `/etc/netctl/examples/ethernet-static` file and copying it to `/etc/netctl`.
 
-1.  Navigate to examples directory:
-
-        cd /etc/netctl/examples
-
-2.  Copy and rename one of the sample network profiles to the `netctl` directory:
+1.  Copy and rename one of the sample network profiles to the `netctl` directory:
 
         cp /etc/netctl/examples/ethernet-dhcp /etc/netctl/ethernet-static
 
-3.  Edit your newly copied file using a text editor:
-
-        nano ethernet-static
-
-4.  Enter your IPv6 networking information (i.e. IP address, subnet, etc.). Save and exit your profile.
+2.  Edit your newly copied file, entering your IPv6 networking information (i.e. IP address, subnet, etc.). 
 
     {: .file }
     /etc/netctl/ethernet-static
@@ -208,14 +198,14 @@ If you are still using `netctl` in Arch Linux, you can statically configure your
 
             ## For IPv6 static address configuration
             IP6=static
-            Address6=('2001:DB8:2000:aff0::1/32')
+            Address6=('2001:db8:2000:aff0::1/32')
             Gateway6='fe80::1'
 
             ## DNS resolvers
             DNS=('198.51.100.6' '198.51.100.7' '198.51.100.8')
         ~~~
   
-5.  Enable your new network profile:
+3.  Enable your new network profile:
 
         netctl enable ethernet-static
 
@@ -257,7 +247,7 @@ The configuration of additional IPv6 addresses in Gentoo is simple. Append the I
     # scripts in /etc/init.d.  To create a more complete configuration,
     # please review /usr/share/doc/openrc*/net.example* and save your configuration
     # in /etc/conf.d/net (this file :]!).
-    config_eth0="dhcp 2001:DB8:2000:aff0::1/32 2001:DB8:2000:aff0::2/32 2001:DB8:2000:aff0::3/32"
+    config_eth0="dhcp 2001:db8:2000:aff0::1/32 2001:db8:2000:aff0::2/32 2001:db8:2000:aff0::3/32"
     ~~~   
 
 ## Maintain Static IP Configurations
