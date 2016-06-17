@@ -132,7 +132,7 @@ While default IPv6 addresses are configured automatically, you will need to stat
 
 ### CentOS/Fedora
 
-On CentOS or Fedora, edit `/etc/sysconfig/network-scripts/ifcfg-eth0` to set up statically configured IPv6. You should configure [Static IP Networking](/docs/networking/linux-static-ip-configuration) for IPv4 as well.
+On CentOS or Fedora, edit `/etc/sysconfig/network-scripts/ifcfg-eth0` to set up statically configured IPv6 addresses. You should configure [Static IP Networking](/docs/networking/linux-static-ip-configuration) for IPv4 as well.
 
 {: .file }
 /etc/sysconfig/network-scripts/ifcfg-eth0
@@ -160,7 +160,7 @@ On CentOS or Fedora, edit `/etc/sysconfig/network-scripts/ifcfg-eth0` to set up 
 
   IPV6INIT = yes
   # Adding IPv6 addresses from pool.
-  IPV6ADDR_SECONDARIES="2001:DB8:2000:aff0::1/32 2001:DB8:2000:aff0::2/32 2001:DB8:2000:aff0::3/32"
+  IPV6ADDR_SECONDARIES="2001:db8:2000:aff0::1/32 2001:db8:2000:aff0::2/32 2001:db8:2000:aff0::3/32"
   ~~~
 
 If you are using CentOS 6.5 or lower, restart networking:
@@ -227,9 +227,9 @@ If you are using `systemd-networkd` on Arch Linux or Fedora 21, you can statical
         Address=198.51.100.2/24
         Address=192.168.133.234/17
         Gateway=198.51.100.1
-        Address=2001:DB8:2000:aff0::/32
-        Address=2001:DB8:2000:aff0::1/32
-        Address=2001:DB8:2000:aff0::2/32
+        Address=2001:db8:2000:aff0::/32
+        Address=2001:db8:2000:aff0::1/32
+        Address=2001:db8:2000:aff0::2/32
         ~~~
 
 3.  Restart `systemd-networkd`
@@ -252,4 +252,4 @@ The configuration of additional IPv6 addresses in Gentoo is simple. Append the I
 
 ## Maintain Static IP Configurations
 
-If the "Auto-configure Networking" option is turned on in your Linode Manager, you may lose changes to static IP configurations upon rebooting your system. Before disabling it completely, please refer to our [Network Helper guide](https://www.linode.com/docs/platform/network-helper) for information on how to restore previous configurations. This will help mitigate issues that may arise if other files affected by the Network Helper are modified. Alternatively, you can manually back up your desired configuration and restore it each time you reboot to avoid losing changes.
+If the "Auto-configure Networking" option is turned on in your Linode Manager, you may lose changes to static IP configurations upon rebooting your system. Before disabling it completely, please refer to our [Network Helper guide](https://www.linode.com/docs/platform/network-helper) for information on how to restore previous configurations. This will help mitigate issues that may arise if other files affected by the Network Helper are modified. You can also manually back up your configuration and restore it each time you reboot to avoid losing changes.
