@@ -45,54 +45,54 @@ To access SquirrelMails's web interface, create and configure a copy of its defa
 
         sudo nano /etc/apache2/sites-available/squirrelmail.conf
 
-	{: .file }
-	/etc/apache2/sites-available/squirrelmail
-	:   ~~~ apache
-		Alias /squirrelmail /usr/share/squirrelmail
+    {: .file }
+    /etc/apache2/sites-available/squirrelmail
+    :   ~~~ apache
+        Alias /squirrelmail /usr/share/squirrelmail
 
-		<Directory /usr/share/squirrelmail>
-		  Options FollowSymLinks
-		  <IfModule mod_php5.c>
-		    php_flag register_globals off
-		  </IfModule>
-		  <IfModule mod_dir.c>
-		    DirectoryIndex index.php
-		  </IfModule>
+        <Directory /usr/share/squirrelmail>
+          Options FollowSymLinks
+          <IfModule mod_php5.c>
+            php_flag register_globals off
+          </IfModule>
+          <IfModule mod_dir.c>
+            DirectoryIndex index.php
+          </IfModule>
 
-		  # access to configtest is limited by default to prevent information leak
-		  <Files configtest.php>
-		    order deny,allow
-		    deny from all
-		    allow from 127.0.0.1
-		  </Files>
-		</Directory>
+          # access to configtest is limited by default to prevent information leak
+          <Files configtest.php>
+            order deny,allow
+            deny from all
+            allow from 127.0.0.1
+          </Files>
+        </Directory>
 
-		# users will prefer a simple URL like http://webmail.example.com
-		<VirtualHost *:80>
-		  DocumentRoot /usr/share/squirrelmail
-		  ServerName squirrelmail.example.com
-		</VirtualHost>
+        # users will prefer a simple URL like http://webmail.example.com
+        <VirtualHost *:80>
+          DocumentRoot /usr/share/squirrelmail
+          ServerName squirrelmail.example.com
+        </VirtualHost>
 
-		# redirect to https when available (thanks omen@descolada.dartmouth.edu)
-		#
-		#  Note: There are multiple ways to do this, and which one is suitable for
-		#  your site's configuration depends. Consult the apache documentation if
-		#  you're unsure, as this example might not work everywhere.
-		#
-		#<IfModule mod_rewrite.c>
-		#  <IfModule mod_ssl.c>
-		#    <Location /squirrelmail>
-		#      RewriteEngine on
-		#      RewriteCond %{HTTPS} !^on$ [NC]
-		#      RewriteRule . https://%{HTTP_HOST}%{REQUEST_URI}  [L]
-		#    </Location>
-		#  </IfModule>
-		#</IfModule>
+        # redirect to https when available (thanks omen@descolada.dartmouth.edu)
+        #
+        #  Note: There are multiple ways to do this, and which one is suitable for
+        #  your site's configuration depends. Consult the apache documentation if
+        #  you're unsure, as this example might not work everywhere.
+        #
+        #<IfModule mod_rewrite.c>
+        #  <IfModule mod_ssl.c>
+        #    <Location /squirrelmail>
+        #      RewriteEngine on
+        #      RewriteCond %{HTTPS} !^on$ [NC]
+        #      RewriteRule . https://%{HTTP_HOST}%{REQUEST_URI}  [L]
+        #    </Location>
+        #  </IfModule>
+        #</IfModule>
     ~~~
 
-	{: .note }
-	>
-	> If Apache is serving other virtual hosts you may need to adjust them and/or this configuration file to prevent any conflicts. If you're running Apache solely for SquirrelMail, you may still want to remove the default virtual host from `sites-enabled`.
+    {: .note }
+    >
+    > If Apache is serving other virtual hosts you may need to adjust them and/or this configuration file to prevent any conflicts. If you're running Apache solely for SquirrelMail, you may still want to remove the default virtual host from `sites-enabled`.
 
 3.  Add a symbolic link to this file in the `sites-enabled folder`:
 
