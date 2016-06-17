@@ -19,19 +19,18 @@ Upon a Linode's creation, an IPv4 address is selected from a pool of available a
 
 If Network Helper is *disabled* (or if your Linode was created before Network Helper became default), a Linode will be assigned its IPv4 network configuration by DHCP from the datacenter's networking hardware. One limitation of DHCP is that it can only assign one IP address per DHCP lease request. If you want additonal IPs for your Linode, static addressing must be used.
 
-Due to the limited availablilty of IPv4 addresses, additional v4 addresses for your Linode must be requested by [contacting support](/docs/support) with a technical justification. Once approved, they can be added through the Remote Access tab of the Linode Manager and [additional IPv6 addresses](/docs/networking/native-ipv6-networking#additional-ipv6-addresses) are also available by submitting a support ticket.
+Due to the limited availablilty of IPv4 addresses, additional v4 addresses for your Linode must be requested by [contacting support](/docs/support) with a technical justification. Once approved, they can be added through the Remote Access tab of the Linode Manager. [Additional IPv6 addresses](/docs/networking/native-ipv6-networking#additional-ipv6-addresses) are also available by submitting a support ticket.
 
 An alternative to using the Linode Manager for static addressing is to manually configure within your Linux distribution, and it's this method which will be the focus of this guide. **Be aware that errors in network configurations can disconnect SSH sessions**, so it is advised that you use the [Linode Shell (Lish)](/docs/networking/using-the-linode-shell-lish) when making the changes below.
-
 
 ## General Network Configuration
 
 Log in to the [Linode Manager](https://manager.linode.com/) and go to the **Remote Access** tab. From there you will see your Linode's:
 
-*   IPv4 and IPv6 addresses (both private and public).
+*   IPv4 and IPv6 addresses (both private and public)
 *   [Netmask](https://en.wikipedia.org/wiki/Subnetwork)
-*   Default IPv4 gateway.
-*   DNS resolvers.
+*   Default IPv4 gateway
+*   DNS resolvers
 
 Keep this information handy, because you'll need it as you configure your Linode's network settings.
 
@@ -40,7 +39,6 @@ Keep this information handy, because you'll need it as you configure your Linode
 {: .note}
 >
 >Each Linode has only one virtual ethernet interface, *eth0*. Most outbound connections will still originate from the IP assigned to *eth0*, but if you need server daemons to bind to a particular IP address, you'll need to specify the correct IP in their configuration files.
-
 
 ## Static Network Configuration
 
@@ -90,25 +88,25 @@ Add the addressing to the interface's configuration.
 
 There are multiple ways to configure static IP addresses in Arch. See the [Static IP Address](https://wiki.archlinux.org/index.php/Network_Configuration#Static_IP_address) section of Arch's Network Configuration Wiki page for other options such as using Netctl. There are also several ways to [configure DNS](https://wiki.archlinux.org/index.php/Resolv.conf#Preserve_DNS_settings) without needing to direcly modify `resolv.conf`.
 
-### CentOS 7 / Fedora
+### CentOS 7 
 
-CentOS 7 installs with the package `NetworkManager-tui`, an ncurses configuration tool for some NetworkManager functions. NetworkManager-tui directly edits `/etc/sysconfig/network-scripts/ifcfc-eth0` so all configuration should be done using it. This is a generally easier solution than manually editing the interface files.
+CentOS 7 installs with the package `NetworkManager-tui`, an ncurses configuration tool for some NetworkManager functions. NetworkManager-tui directly edits `/etc/sysconfig/network-scripts/ifcfg-eth0`, which is a generally easier solution than manually editing the interface files.
 
-Fedora Server uses NetworkManager but does not include `NetworkManager-tui` by default. Install it with:
+1.  If you have previously started your Linode with the "Auto-configure Networking" option turned on in your Linode Manager, the `/etc/sysconfig/network-scripts/ifcfg-eth0` file will have already been created. If this is the case, delete it (you can create a backup first if you want) as we will be creating our own configuration:
 
-    sudo dnf install nmtui
+        sudo rm /etc/sysconfig/network-scripts/ifcfg-eth0
 
+2.  Start the NetworkManager tool:
 
-To run `NetworkManager-tui`:
+        sudo nmtui
 
-    sudo nmtui edit eth0
+3.  Add a new connection, and select the type "Ethernet." Set the profile name and device both to "eth0". Set the configuration from "automatic" to "manual" and add your Linode's public IP address, gateway, DNS servers, and search domain `members.linode.com`.
 
-Add your Linode's public IP and Gateway, DNS servers and the search domain `members.linode.com`. After you've made your edits, restart NetworkManager:
+4.  Restart the network service to enable any changes you made:
 
-    sudo systemctl restart network.service
+        sudo systemctl restart network.service
 
-
-## CentOS 6
+### CentOS 6
 
 The default ethernet interface file is located at `/etc/sysconfig/network-scripts/ifcfg-eth0`. In it you would set a static IP address by **editing or adding** the following lines:
 
@@ -152,6 +150,23 @@ For multiple static IP addresses, additional IPs are assigned to an alias you cr
 
 For more information on the options available to interface files, see `man ifcfg` and [Fedora's documentation](https://docs.fedoraproject.org/en-US/Fedora/23/html/Networking_Guide/sec-Using_the_Command_Line_Interface.html) and the file `/usr/share/doc/initscripts-*/sysconfig.txt` on CentOS and Fedora installations.
 
+### Fedora
+
+Fedora Server, like CentOS 7, uses NetworkManager but does not include `NetworkManager-tui` by default. 
+
+1.  Install the text user interface with:
+
+        sudo dnf install NetworkManager-tui
+
+    To use it to edit your eth0 device:
+    
+        sudo nmtui edit eth0
+
+2.  In the section labeled **IPV4 CONFIGURATION** or **IPV6 CONFIGURATION**, depending on which you want to edit, change "Automatic" to "Manual" to enable static configuration. 
+
+3.  Select "Show" to  Add your Linode's public IP and Gateway, DNS servers and the search domain `members.linode.com`. After you've made your changes, restart the network service:
+
+        sudo systemctl restart network.service
 
 ### Debian / Ubuntu
 
@@ -254,7 +269,6 @@ When manually assigning static IP addresses, [Network Helper](/docs/platform/net
 ## Reboot Your Linode
 
 It's best to reboot your Linode from the Dashboard of the Linode Manager rather than use `ifconfig` or an init system to restart the interfaces or distro's network services. This ensures that the new settings take effect without issues and that the networking services reliably start in full from the boot-up.
-
 
 ## Test Connectivity
 
