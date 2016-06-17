@@ -23,7 +23,7 @@ This guide explains how to install a graphic desktop environment on your Linode 
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services. 
+2.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account, harden SSH access and remove unnecessary network services. 
 
 3.  Update your system.
 
@@ -38,6 +38,26 @@ This guide explains how to install a graphic desktop environment on your Linode 
 1.  Ubuntu has several desktop environments available in its repositories. The following command installs the default desktop, [Unity](https://unity.ubuntu.com/), as well as several packages that are required for the graphical interface to work properly:
 
         sudo apt-get install ubuntu-desktop gnome-panel gnome-settings-daemon metacity nautilus gnome-terminal
+
+    {: .note}
+    > This will install the full Ubuntu desktop environment, including office and web browsing tools. To install the desktop without these packages, run:
+    >
+    >    apt-get install --no-install-recommends ubuntu-desktop gnome-panel gnome-settings-daemon metacity nautilus gnome-terminal
+
+    During the install process, you will be asked whether or not to change a system file to the new version:
+
+        Configuration file '/etc/init/tty1.conf'
+         ==> File on system created by you or by a script.
+         ==> File also in package provided by package maintainer.
+           What would you like to do about it ?  Your options are:
+            Y or I  : install the package maintainer's version
+            N or O  : keep your currently-installed version
+              D     : show the differences between the versions
+              Z     : start a shell to examine the situation
+         The default action is to keep your current version.
+        *** tty1.conf (Y/I/N/O/D/Z) [default=N] ?
+
+    Type **y** then **enter** to use the updated version. 
 
 2.  Install the VNC server:
 
@@ -143,7 +163,6 @@ In the next few steps, we'll configure VNC to launch the full Unity desktop when
         gnome-settings-daemon &
         metacity &
         nautilus &
-        gnome-terminal &
         ~~~
 
 3.  Save and exit the file. Begin another VNC session:
