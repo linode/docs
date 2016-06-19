@@ -305,7 +305,7 @@ common_server_setup.yml
                       line="{{ hostvars[item].ansible_default_ipv4.address }} {{ LOCAL_FQDN_NAME }} {{ LOCAL_HOSTNAME }}" 
                       state=present
           when: hostvars[item].ansible_default_ipv4.address is defined
-          with_items: groups['linode']
+          with_items: "{{ groups['linode'] }}"
         - name: Update packages
           apt: update_cache=yes upgrade=dist 
     ~~~
