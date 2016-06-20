@@ -179,24 +179,6 @@ To put any changes into effect, restart your networking service:
 
 For more information on the options available to interface files, see `man ifcfg` and [Fedora's documentation](https://docs.fedoraproject.org/en-US/Fedora/23/html/Networking_Guide/sec-Using_the_Command_Line_Interface.html) and the file `/usr/share/doc/initscripts-*/sysconfig.txt` on CentOS and Fedora installations.
 
-### Fedora
-
-Fedora Server, like CentOS 7, uses NetworkManager but does not include `NetworkManager-tui` by default. 
-
-1.  Install the text user interface with:
-
-        sudo dnf install NetworkManager-tui
-
-    To use it to edit your eth0 device:
-    
-        sudo nmtui edit eth0
-
-2.  In the section labeled **IPV4 CONFIGURATION** or **IPV6 CONFIGURATION**, depending on which you want to edit, change "Automatic" to "Manual" to enable static configuration. 
-
-3.  Select "Show" to  Add your Linode's public IP and Gateway, DNS servers and the search domain `members.linode.com`. After you've made your changes, restart the network service:
-
-        sudo systemctl restart network.service
-
 ### Debian / Ubuntu
 
 Add the following to the interface's config file:
