@@ -13,6 +13,7 @@ published: 'Tuesday, January 14th, 2014'
 title: 'Installing SquirrelMail on Ubuntu 12.04'
 external_resources:
  - '[Official SquirrelMail Documentation](http://squirrelmail.org/documentation/)'
+deprecated: true
 ---
 
 SquirrelMail is a webmail package written in PHP. It supports both SMTP and IMAP protocols. SquirrelMail features cross-platform compatibility since all of its pages render in HTML 4.0. SquirrelMail requires a web server with PHP to run properly. For this guide we'll be using Apache 2. If you don't already have Apache and PHP installed, you can check our [LAMP Server on Ubuntu 12.04](/docs/lamp-guides/ubuntu-12.04-precise-pangolin) guide.
