@@ -9,7 +9,7 @@ modified: Tuesday, June 14, 2016
 modified_by:
   name: Edward Angert
 published: 'Tuesday, January 14th, 2014'
-title: Install SquirrelMail on Ubuntu or Debian 8
+title: Install SquirrelMail on Ubuntu 16.04 or Debian 8
 external_resources:
  - '[Official SquirrelMail Documentation](http://squirrelmail.org/documentation/)'
 ---
