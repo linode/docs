@@ -43,8 +43,6 @@ To access SquirrelMails's web interface, create and configure a copy of its defa
 
 2.  Edit the configuration file to uncomment the `<VirtualHost 1.2.3.4:80>` block by removing the pound symbol (`#`), as shown below. Edit the IP and ServerName to match your Linode and domain settings:
 
-        sudo nano /etc/apache2/sites-available/squirrelmail.conf
-
     {: .file }
     /etc/apache2/sites-available/squirrelmail
     :   ~~~ apache
@@ -94,35 +92,39 @@ To access SquirrelMails's web interface, create and configure a copy of its defa
     >
     > If Apache is serving other virtual hosts you may need to adjust them and/or this configuration file to prevent any conflicts. If you're running Apache solely for SquirrelMail, you may still want to remove the default virtual host from `sites-enabled`.
 
-3.  Add a symbolic link to this file in the `sites-enabled folder`:
+3.  Enable the new virtual host:
 
-        sudo ln -s /etc/apache2/sites-available/squirrelmail.conf /etc/apache2/sites-enabled/
+        sudo a2ensite squirrelmail.conf
 
-4.  Reload Apache with the following command:
+4.  Reload Apache:
 
-        sudo service apache2 reload
+        sudo systemctl reload apache2.service
 
-You should now be able to see SquirrelMail's default login page in your browser after navigating to your Linode's IP address:
+You should now be able to see SquirrelMail's default login page in your browser after navigating to your Linode's IP address or domain:
 
-[![SquirrelMail Login Page.](/docs/assets/1519-squirrelmail_login.png)](/docs/assets/1519-squirrelmail_login.png)
+![SquirrelMail Login Page.](/docs/assets/1519-squirrelmail_login.png)
 
 ## Configuring SquirrelMail
 
 Before using SquirrelMail for the first time, configure it to access your mail server. SquirrelMail provides a tool called `squirrelmail-configure`, an interactive interface which edits the `/etc/squirrelmail/config.php` file for you with the input you provide.
 
-1.  Launch the `squirrelmail-configure` application with the command:
+1.  Launch the `squirrelmail-configure` application:
 
         sudo squirrelmail-configure
 
     This will bring up the menu shown below:
 
-    [![The squirrelmail-conifg main menu.](/docs/assets/1517-squirrelmail-config_1.png)](/docs/assets/1517-squirrelmail-config_1.png)
+    ![The squirrelmail-conifg main menu.](/docs/assets/1517-squirrelmail-config_1.png)
 
-2.  There are many options to adjust here; too many for the scope of this guide. The only settings required to make SquirrelMail work are the `Server Settings`. Press `2` to bring up the Server Settings submenu:
+2.  There are many options to adjust here; too many for the scope of this guide. The only settings required to make SquirrelMail work are the `Server Settings`. Enter **2** to bring up the Server Settings submenu:
 
     [![squirrelmail-config server settings menu .](/docs/assets/1518-squirrelmail-config_2.png)](/docs/assets/1518-squirrelmail-config_2.png)
 
 3.  If your mail server is on the same Linode as your SquirrelMail installation, you may not need to make any adjustments to the default settings. Otherwise, adjust the **Domain**, **IMAP**, and **SMTP** settings to match the mail server you want to connect to. You can find additional configuration tips for this section from [SquirrelMail's official documentation](http://squirrelmail.org/docs/admin/admin-5.html#ss5.3).
+
+    {: .note }
+    > If your email server uses `STARTTLS` encryption, as our [Email with Postfix, Dovecot, and MySQL](/docs/email/postfix/email-with-postfix-dovecot-and-mysql) guide does, You will not be able to authenticate using this version of Squirrelmail. Version 1.5.1 and higher can use `STARTTLS`, but are in development and not available in the main repositories. You can [download](https://squirrelmail.org/download.php) the latest build from Squirrelmail's website.
+
 4.  When done, press `S` to save your changes, then press Q to quit.
 
 ## Signing In to the Web Interface
