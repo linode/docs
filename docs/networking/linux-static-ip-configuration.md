@@ -88,27 +88,50 @@ Add the addressing to the interface's configuration.
 
 There are multiple ways to configure static IP addresses in Arch. See the [Static IP Address](https://wiki.archlinux.org/index.php/Network_Configuration#Static_IP_address) section of Arch's Network Configuration Wiki page for other options such as using Netctl. There are also several ways to [configure DNS](https://wiki.archlinux.org/index.php/Resolv.conf#Preserve_DNS_settings) without needing to direcly modify `resolv.conf`.
 
-### CentOS 7 
+### CentOS 7 / Fedora 22+
 
-CentOS 7 installs with the package `NetworkManager-tui`, an ncurses configuration tool for some NetworkManager functions. NetworkManager-tui directly edits `/etc/sysconfig/network-scripts/ifcfg-eth0`, which is a generally easier solution than manually editing the interface files.
+The default ethernet interface file is located at `/etc/sysconfig/network-scripts/ifcfg-eth0`. You can configure a static IP address by adding or editing the following lines, substituting your own Linode's IP addresses, gateways, and DNS resolvers:
 
-1.  If you have previously started your Linode with the "Auto-configure Networking" option turned on in your Linode Manager, the `/etc/sysconfig/network-scripts/ifcfg-eth0` file will have already been created. If this is the case, delete it (you can create a backup first if you want) as we will be creating our own configuration:
+{: .file-excerpt }
+/etc/sysconfig/network-scripts/ifcfg-eth0
+:   ~~~ conf
+    DEVICE="eth0"
+    BOOTPROTO="static"
+    ONBOOT="yes"
+    IPV6INIT="yes"
+    IPV6_AUTOCONF="yes"
+    NM_CONTROLLED="no"
+    PEERDNS="no"
 
-        sudo rm /etc/sysconfig/network-scripts/ifcfg-eth0
+    GATEWAY=198.51.100.1
+    
+    # Your primary public IP address
+    # The netmask is taken from the PREFIX (where 24 is a public IP, 17 is a private IP)
+    IPADDR0=198.51.100.5
+    PREFIX0="24"
 
-2.  Start the NetworkManager tool:
+    # To add a second public IP address:
+    IPADDR1=198.51.100.10
+    PREFIX1="24"
+    
+    # To add a private IP address:
+    IPADDR2=192.0.2.6
+    PREFIX2="17"
 
-        sudo nmtui
+    DOMAIN=members.linode.com
+    
+    DNS1=203.0.113.1
+    DNS2=203.0.113.2
+    DNS3=203.0.113.3
+    ~~~
 
-3.  Add a new connection, and select the type "Ethernet." Set the profile name and device both to "eth0". Set the configuration from "automatic" to "manual" and add your Linode's public IP address, gateway, DNS servers, and search domain `members.linode.com`.
+To load your changes, restart the network service:
 
-4.  Restart the network service to enable any changes you made:
-
-        sudo systemctl restart network.service
+    sudo systemctl restart network
 
 ### CentOS 6
 
-The default ethernet interface file is located at `/etc/sysconfig/network-scripts/ifcfg-eth0`. In it you would set a static IP address by **editing or adding** the following lines:
+Like in CentOS 7, simply edit the ethernet interface file to configure a static IP address:
 
 {: .file-excerpt }
 /etc/sysconfig/network-scripts/ifcfg-eth0
@@ -123,6 +146,7 @@ The default ethernet interface file is located at `/etc/sysconfig/network-script
     DOMAIN=members.linode.com
     DNS1=203.0.113.1
     DNS2=203.0.113.2
+    DNS3=203.0.113.3
     ~~~
 
 To add the resolv.conf option to rotate DNS providers, create a dhclient script:
@@ -139,14 +163,19 @@ To add the resolv.conf option to rotate DNS providers, create a dhclient script:
     }
     ~~~
 
-For multiple static IP addresses, additional IPs are assigned to an alias you create for *eth0*. You would then alias the interface with an additional file. For example, an `eth0:1` file for the *eth0:1* interface alias, `eth0:2` for *eth0:2*, etc. Alias files only need to contain the changes from the primary interface file.
+For multiple static IP addresses, additional IPs are assigned to an alias you create for *eth0*. To achieve this, an additional file must be created for the alias. For example, an `eth0:1` file must be created for the *eth0:1* interface alias, `eth0:2` for *eth0:2*, etc. 
 
 {: .file }
 /etc/sysconfig/network-scripts/ifcfg-eth0:1
 :   ~~~ conf
     # Add a second static public IP address.
+    DEVICE=eth0:1
     IPADDR1=198.51.100.10
     ~~~
+
+To put any changes into effect, restart your networking service:
+
+    sudo service network restart
 
 For more information on the options available to interface files, see `man ifcfg` and [Fedora's documentation](https://docs.fedoraproject.org/en-US/Fedora/23/html/Networking_Guide/sec-Using_the_Command_Line_Interface.html) and the file `/usr/share/doc/initscripts-*/sysconfig.txt` on CentOS and Fedora installations.
 
