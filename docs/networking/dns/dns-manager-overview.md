@@ -6,9 +6,9 @@ description: 'Use DNS Manager to Direct Domains to Your Linode.'
 keywords: 'dns manager,linode dns,linode manager dns,dns configuration,ttl,domain zones,domain name'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['dns-manager/','dns-guides/configuring-dns-with-the-linode-manager/', 'networking/dns/dns-manager/']
-modified: Wednesday, March 31, 2016
+modified: Monday, June 20th, 2016 
 modified_by:
-  name: Phil Zona
+  name: Alex Fornuto 
 published: 'Thursday, July 16th, 2009'
 title: DNS Manager Overview
 ---
@@ -21,6 +21,8 @@ The Domain Name System (DNS) attaches human-readable domain names to machine-usa
 
 {: .note}
 >All steps within this guide are completed within the **[DNS Manager](https://manager.linode.com/dns)** tab of your Linode Manager.
+>
+>DNS records are only actively hosted on accounts with at least one Linode.
 
 ## DNS Set-Up Checklist
 
