@@ -190,7 +190,7 @@ The Linode CLI requires your API key to function. If you need to generate an API
     {: .file-excerpt }
     .linodecli/config
     :   ~~~
-        ... api-key SampleKey123456 ...
+        api-key SampleKey123456 
         ~~~
 
 -   As an environment variable:
@@ -201,7 +201,7 @@ The Linode CLI requires your API key to function. If you need to generate an API
 
         linode --api-key SampleKey123456
 
-If you add your API key in the `.linodecli/config` file, or if you set it as an environment variable, the Linode CLI will automatically have access to your account. If you don't save or set the API key beforehand, you will have to enter it in the command when you use the CLI. The `--api-key` option should come at the end of the command. For example, your command would look like:
+If you add your API key in the `.linodecli/config` file, or if you set it as an environment variable, the Linode CLI will have persistent access to your account. If you don't save or set the API key beforehand, you will have to enter it in the command whenever you use the CLI. The `--api-key` option should come at the end of the command. For example, your command would look like:
 
     linode options --api-key SampleKey123456
 
@@ -219,7 +219,7 @@ Invoke the CLI by prefacing your commands with `linode`. Make sure the `linode-c
 
     linode [object] [action] [action-options...] [options...]
 
-If no object is given, the **linode** object is assumed. Available objects:
+If no object is given, the **linode** object is assumed. Available objects include:
 
     linode
     domain
@@ -254,7 +254,7 @@ Listing Linodes:
 
 Creating a new Linode:
 
-    linode create <linode-label> --location <data center> --plan <linodeXXXX> --payment-term <X> --distribution "<Distribution>" --group <group-label>
+    linode create <linode-label> --location <data center> --plan <linodeXXXX> --payment-term <X> --distribution "<Distribution>" --group <group-label> --stackscript "<stackscript-label>"
 
 Restarting a Linode:
 
@@ -280,15 +280,15 @@ To view available [Linode plan sizes](https://www.linode.com/pricing/) for the `
 
 Choose from the options below:
 
--   Linode 1024
 -   Linode 2048
 -   Linode 4096
 -   Linode 8192
--   Linode 16384
+-   Linode 12288
 -   Linode 24576
--   Linode 32768
--   Linode 40960
--   Linode 98304
+-   Linode 49152
+-   Linode 65536
+-   Linode 81920
+-   Linode 122880
 
 #### --location options
 
@@ -305,6 +305,7 @@ Choose from the options below:
 -   london
 -   newark
 -   tokyo
+-   singapore
 
 #### --distribution options
 
@@ -315,25 +316,27 @@ To view available distributions for new Linodes for the `--distribution` option,
 
 Choose from the options below:
 
--   Arch Linux 2013.06
--   Arch Linux 2013.06 32bit
--   CentOS 6.4
+-   Arch 2016.06.01
+-   Arch Linux 2015.08
+-   CentOS 5.6
 -   CentOS 6.5
--   Debian 7 32bit
--   Debian 7.4
--   Debian 7.5
--   Fedora 19
--   Fedora 20
+-   CentOS 7
+-   Debian 7
+-   Debian 8
+-   Fedora 22
+-   Fedora 23
 -   Gentoo 2013-11-26
+-   Gentoo 2014.12
 -   Slackware 13.37
 -   Slackware 13.37 32bit
 -   Slackware 14.1
--   Ubuntu 10.04 LTS
--   Ubuntu 10.04 LTS 32bit
 -   Ubuntu 12.04 LTS
--   Ubuntu 13.10
 -   Ubuntu 14.04 LTS
+-   Ubuntu 15.04
+-   Ubuntu 15.10
+-   Ubuntu 16.04 LTS
 -   openSUSE 13.1
+-   openSUSE 13.2
 
 ### Domains
 
@@ -415,7 +418,6 @@ Sample output:
     transfer used: 13.02GB
     transfer billable: 0.00GB
     billing method: prepay
-
 
 To see all the available options, check the man pages:
 
