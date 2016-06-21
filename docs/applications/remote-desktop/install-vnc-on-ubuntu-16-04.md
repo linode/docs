@@ -42,7 +42,7 @@ This guide explains how to install a graphic desktop environment on your Linode 
     {: .note}
     > This will install the full Ubuntu desktop environment, including office and web browsing tools. To install the desktop without these packages, run:
     >
-    >     apt-get install --no-install-recommends ubuntu-desktop gnome-panel gnome-settings-daemon metacity nautilus gnome-terminal
+    >     sudo apt-get install --no-install-recommends ubuntu-desktop gnome-panel gnome-settings-daemon metacity nautilus gnome-terminal
 
     During the install process, you will be asked whether or not to change a system file to the new version:
 
