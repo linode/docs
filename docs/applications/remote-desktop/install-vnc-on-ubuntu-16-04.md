@@ -9,7 +9,7 @@ modified: Friday, May 13th, 2016
 modified_by:
   name: Phil Zona
 published: 'Thursday, April 10th, 2014'
-title: 'Using VNC to Operate a Desktop on Ubuntu 16.04'
+title: 'Install VNC on Ubuntu 16.04'
 external_resources:
  - '[VNC on Wikipedia](http://en.wikipedia.org/wiki/Virtual_Network_Computing)'
  - '[RealVNC](https://www.realvnc.com/)'
@@ -42,7 +42,7 @@ This guide explains how to install a graphic desktop environment on your Linode 
     {: .note}
     > This will install the full Ubuntu desktop environment, including office and web browsing tools. To install the desktop without these packages, run:
     >
-    >    apt-get install --no-install-recommends ubuntu-desktop gnome-panel gnome-settings-daemon metacity nautilus gnome-terminal
+    >     apt-get install --no-install-recommends ubuntu-desktop gnome-panel gnome-settings-daemon metacity nautilus gnome-terminal
 
     During the install process, you will be asked whether or not to change a system file to the new version:
 
