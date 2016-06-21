@@ -6,7 +6,7 @@ description: 'An introduction to the Linode command line interface.'
 keywords: 'linode cli, command line interface, man pages, api key'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['cli/']
-modified: Monday, June 16th, 2014
+modified: Monday, June 20th, 2016
 modified_by:
   name: Alex Fornuto
 published: 'Monday, January 27th, 2014'
@@ -111,52 +111,56 @@ To start with, most users will want to run the configuration utility:
 
         Default distribution when deploying a new Linode or rebuilding an existing one. (Optional)
         Valid options are:
-           1 - Arch Linux 2013.06
-           2 - Arch Linux 2013.06 32bit
-           3 - CentOS 6.4
-           4 - CentOS 6.5
-           5 - Debian 7 32bit
-           6 - Debian 7.4
-           7 - Debian 7.5
-           8 - Fedora 19
-           9 - Fedora 20
-          10 - Gentoo 2013-11-26
-          11 - Slackware 13.37
-          12 - Slackware 13.37 32bit
-          13 - Slackware 14.1
-          14 - Ubuntu 10.04 LTS
-          15 - Ubuntu 10.04 LTS 32bit
-          16 - Ubuntu 12.04 LTS
-          17 - Ubuntu 13.10
-          18 - Ubuntu 14.04 LTS
-          19 - openSUSE 13.1
-         Choose[ 1-19 ] or Enter to skip>> 18
+          1 - Arch 2016.06.01
+          2 - Arch Linux 2015.08
+          3 - CentOS 5.6
+          4 - CentOS 6.5
+          5 - CentOS 7
+          6 - Debian 7
+          7 - Debian 8
+          8 - Fedora 22
+          9 - Fedora 23
+         10 - Gentoo 2013-11-26
+         11 - Gentoo 2014.12
+         12 - Slackware 13.37
+         13 - Slackware 13.37 32bit
+         14 - Slackware 14.1
+         15 - Ubuntu 12.04 LTS
+         16 - Ubuntu 14.04 LTS
+         17 - Ubuntu 15.04
+         18 - Ubuntu 15.10
+         19 - Ubuntu 16.04 LTS
+         20 - openSUSE 13.1
+         21 - openSUSE 13.2
+        Choose[ 1-21 ] or Enter to skip>> 19
 
         Default datacenter when deploying a new Linode. (Optional)
         Valid options are:
           1 - atlanta
           2 - dallas
-          3 - fremont
-          4 - london
-          5 - newark
-          6 - tokyo
-        Choose[ 1-6 ] or Enter to skip>> 5
+          3 - frankfurt
+          4 - fremont
+          5 - london
+          6 - newark
+          7 - singapore
+          8 - tokyo
+        Choose[ 1-8 ] or Enter to skip>> 3
 
         Default plan when deploying a new Linode. (Optional)
         Valid options are:
-          1 - Linode 1024
-          2 - Linode 2048
-          3 - Linode 4096
-          4 - Linode 8192
-          5 - Linode 16384
-          6 - Linode 32768
-          7 - Linode 49152
-          8 - Linode 65536
-          9 - Linode 98304
+          1 - Linode 2048
+          2 - Linode 4096
+          3 - Linode 8192
+          4 - Linode 12288
+          5 - Linode 24576
+          6 - Linode 49152
+          7 - Linode 65536
+          8 - Linode 81920
+          9 - Linode 122880
         Choose[ 1-9 ] or Enter to skip>> 2
 
         Path to an SSH public key to install when deploying a new Linode. (Optional)
-        >>
+        >> /home/user1/.ssh/id_rsa.pub
 
         Config written to /Users/user1/.linodecli/config
 
@@ -186,20 +190,20 @@ The Linode CLI requires your API key to function. If you need to generate an API
     {: .file-excerpt }
     .linodecli/config
     :   ~~~
-        ... api-key SampleKey123456 ...
+        api-key SampleKey123456...
         ~~~
 
 -   As an environment variable:
 
-        LINODE_API_KEY=SampleKey123456
+        LINODE_API_KEY=SampleKey123456...
 
 -   Passed directly in the command:
 
-        linode --api-key SampleKey123456
+        linode --api-key SampleKey123456...
 
-If you add your API key in the `.linodecli/config` file, or if you set it as an environment variable, the Linode CLI will automatically have access to your account. If you don't save or set the API key beforehand, you will have to enter it in the command when you use the CLI. The `--api-key` option should come at the end of the command. For example, your command would look like:
+If you add your API key in the `.linodecli/config` file, or if you set it as an environment variable, the Linode CLI will have persistent access to your account. If you don't save or set the API key beforehand, you will have to enter it in the command whenever you use the CLI. The `--api-key` option should come at the end of the command. For example, your command would look like:
 
-    linode options --api-key SampleKey123456
+    linode options --api-key SampleKey123456...
 
 ### Multiple Users
 
@@ -215,7 +219,7 @@ Invoke the CLI by prefacing your commands with `linode`. Make sure the `linode-c
 
     linode [object] [action] [action-options...] [options...]
 
-If no object is given, the **linode** object is assumed. Available objects:
+If no object is given, the **linode** object is assumed. Available objects include:
 
     linode
     domain
@@ -250,7 +254,7 @@ Listing Linodes:
 
 Creating a new Linode:
 
-    linode create <linode-label> --location <data center> --plan <linodeXXXX> --payment-term <X> --distribution "<Distribution>" --group <group-label>
+    linode create <linode-label> --location <data center> --plan <linodeXXXX> --payment-term <X> --distribution "<Distribution>" --group <group-label> --stackscript "<stackscript-label>"
 
 Restarting a Linode:
 
@@ -276,15 +280,15 @@ To view available [Linode plan sizes](https://www.linode.com/pricing/) for the `
 
 Choose from the options below:
 
--   Linode 1024
 -   Linode 2048
 -   Linode 4096
 -   Linode 8192
--   Linode 16384
+-   Linode 12288
 -   Linode 24576
--   Linode 32768
--   Linode 40960
--   Linode 98304
+-   Linode 49152
+-   Linode 65536
+-   Linode 81920
+-   Linode 122880
 
 #### --location options
 
@@ -298,9 +302,11 @@ Choose from the options below:
 -   atlanta
 -   dallas
 -   fremont
+-   frankfurt
 -   london
 -   newark
 -   tokyo
+-   singapore
 
 #### --distribution options
 
@@ -311,25 +317,27 @@ To view available distributions for new Linodes for the `--distribution` option,
 
 Choose from the options below:
 
--   Arch Linux 2013.06
--   Arch Linux 2013.06 32bit
--   CentOS 6.4
+-   Arch 2016.06.01
+-   Arch Linux 2015.08
+-   CentOS 5.6
 -   CentOS 6.5
--   Debian 7 32bit
--   Debian 7.4
--   Debian 7.5
--   Fedora 19
--   Fedora 20
+-   CentOS 7
+-   Debian 7
+-   Debian 8
+-   Fedora 22
+-   Fedora 23
 -   Gentoo 2013-11-26
+-   Gentoo 2014.12
 -   Slackware 13.37
 -   Slackware 13.37 32bit
 -   Slackware 14.1
--   Ubuntu 10.04 LTS
--   Ubuntu 10.04 LTS 32bit
 -   Ubuntu 12.04 LTS
--   Ubuntu 13.10
 -   Ubuntu 14.04 LTS
+-   Ubuntu 15.04
+-   Ubuntu 15.10
+-   Ubuntu 16.04 LTS
 -   openSUSE 13.1
+-   openSUSE 13.2
 
 ### Domains
 
@@ -411,7 +419,6 @@ Sample output:
     transfer used: 13.02GB
     transfer billable: 0.00GB
     billing method: prepay
-
 
 To see all the available options, check the man pages:
 
