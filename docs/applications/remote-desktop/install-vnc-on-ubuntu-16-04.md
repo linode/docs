@@ -5,10 +5,10 @@ author:
 description: 'How to install and connect to a desktop environment on your Linode'
 keywords: 'vnc,remote desktop,ubuntu,16.04'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Friday, May 13th, 2016
+modified: Tuesday, June 21st, 2016
 modified_by:
   name: Phil Zona
-published: 'Thursday, April 10th, 2014'
+published: 'Tuesday, June 21st, 2016'
 title: 'Install VNC on Ubuntu 16.04'
 external_resources:
  - '[VNC on Wikipedia](http://en.wikipedia.org/wiki/Virtual_Network_Computing)'
