@@ -33,7 +33,7 @@ Update the system and install SquirrelMail from the repositories.
 
         sudo apt-get install squirrelmail
 
-## Configuring the Virtual Host
+## Configure the Virtual Host
 
 To access SquirrelMails's web interface, create and configure a copy of its default virtual host configuration file in the Apache directory. Configure the settings in the copied file to match your Linode and domain settings.
 
@@ -104,7 +104,7 @@ You should now be able to see SquirrelMail's default login page in your browser 
 
 ![SquirrelMail Login Page.](/docs/assets/1519-squirrelmail_login.png)
 
-## Configuring SquirrelMail
+## Configure SquirrelMail
 
 Before using SquirrelMail for the first time, configure it to access your mail server. SquirrelMail provides a tool called `squirrelmail-configure`, an interactive interface which edits the `/etc/squirrelmail/config.php` file for you with the input you provide.
 
@@ -127,7 +127,7 @@ Before using SquirrelMail for the first time, configure it to access your mail s
 
 4.  When done, press `S` to save your changes, then press Q to quit.
 
-## Signing In to the Web Interface
+## Sign In to the Web Interface
 
 1.  At this point you should be able to log in to the SquirrelMail Login page using your email credentials. Navigate in your web browser to the Linode's IP address, or domain name depending on how you've configured the virtual host:
 
