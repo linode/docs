@@ -190,20 +190,20 @@ The Linode CLI requires your API key to function. If you need to generate an API
     {: .file-excerpt }
     .linodecli/config
     :   ~~~
-        api-key SampleKey123456 
+        api-key SampleKey123456...
         ~~~
 
 -   As an environment variable:
 
-        LINODE_API_KEY=SampleKey123456
+        LINODE_API_KEY=SampleKey123456...
 
 -   Passed directly in the command:
 
-        linode --api-key SampleKey123456
+        linode --api-key SampleKey123456...
 
 If you add your API key in the `.linodecli/config` file, or if you set it as an environment variable, the Linode CLI will have persistent access to your account. If you don't save or set the API key beforehand, you will have to enter it in the command whenever you use the CLI. The `--api-key` option should come at the end of the command. For example, your command would look like:
 
-    linode options --api-key SampleKey123456
+    linode options --api-key SampleKey123456...
 
 ### Multiple Users
 
@@ -302,6 +302,7 @@ Choose from the options below:
 -   atlanta
 -   dallas
 -   fremont
+-   frankfurt
 -   london
 -   newark
 -   tokyo
