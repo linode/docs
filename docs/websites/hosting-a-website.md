@@ -125,8 +125,8 @@ Now that Apache is optimized for performance, it's time to starting hosting one 
         <VirtualHost *:80>
           # Admin email, Server Name (domain name), and any aliases
           ServerAdmin webmaster@example.com
-          ServerName  www.example.com
-          ServerAlias example.com
+          ServerName  example.com
+          ServerAlias www.example.com
 
           # Index file and Document Root (where the public files are located)
           DirectoryIndex index.html index.php
