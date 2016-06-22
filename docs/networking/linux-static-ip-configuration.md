@@ -62,7 +62,7 @@ A default gateway should not be specified for private IP addresses. Additionally
 
 **DNS Resolution**
 
-Your DNS nameservers are listed under the **Remote Access** tab of the Linode Manager (see [the screenshot above](#general-network-configuration)). With exception to specific situations, you should not change your Linode's nameservers by editing `/etc/resolv.conf`. Depending on your distribution, `resolv.conf` is overwritten frequently so permanent DNS and resolvconf options are usually intended to be set elsewhere.
+Your DNS nameservers are listed under the **Remote Access** tab of the Linode Manager (see [the screenshot above](#general-network-configuration)). With exception to specific situations, you should not change your Linode's nameservers by editing `/etc/resolv.conf`. Depending on your distribution, `resolv.conf` may be overwritten frequently so permanent DNS and `resolv.conf` options are usually intended to be set elsewhere.
 
 For more info on `resolv.conf`, see [its manual page](http://linux.die.net/man/5/resolv.conf).
 
@@ -82,11 +82,18 @@ Add the addressing to the interface's configuration.
 
     [Network]
     Gateway=198.51.100.1
+
+    # Your primary public IP address
     Address=198.51.100.2/24
+
+    # To add a second public IP address:
+    Address=198.51.100.3/24
+
+    #To add a private IP address:
     Address=192.168.133.234/17
     ~~~
 
-There are multiple ways to configure static IP addresses in Arch. See the [Static IP Address](https://wiki.archlinux.org/index.php/Network_Configuration#Static_IP_address) section of Arch's Network Configuration Wiki page for other options such as using Netctl. There are also several ways to [configure DNS](https://wiki.archlinux.org/index.php/Resolv.conf#Preserve_DNS_settings) without needing to direcly modify `resolv.conf`.
+There are multiple ways to configure static IP addresses in Arch. See the [Static IP Address](https://wiki.archlinux.org/index.php/Network_Configuration#Static_IP_address) section of Arch's Network Configuration Wiki page for other options such as using Netctl. There are also several ways to [configure DNS](https://wiki.archlinux.org/index.php/Resolv.conf#Preserve_DNS_settings) without modifying `resolv.conf`.
 
 ### CentOS 7 / Fedora 22+
 
@@ -208,7 +215,7 @@ Add the following to the interface's config file:
 
 ### Gentoo
 
-Networking in Gentoo utilizes the `netifrc` utility. Addresses are specified in the `config_eth0` line and separated by spaces.
+Networking in Gentoo utilizes the `netifrc` utility. Addresses are specified in the `config_eth0` line and separated by spaces. The gateway is defined in the `routes_eth0` line.
 
 {: .file-excerpt }
 /etc/conf.d/net
