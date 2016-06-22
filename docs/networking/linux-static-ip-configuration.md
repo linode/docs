@@ -15,13 +15,13 @@ title: Linux Static IP Configuration
 
 Network configurations are generally assigned to a networked device in one of two methods, either by [DHCP](https://en.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol) or static assignments. These terms (and others) are often used when discussing IP addresses, but along with IPs, a basic network interface configuration usually needs DNS resolvers and routing as well.
 
-Upon a Linode's creation, an IPv4 address is selected from a pool of available addresses from the datacenter your Linode is hosted in. Our [Network Helper](https://www.linode.com/docs/platform/network-helper) is *enabled* by default for new Linodes, meaning that when you deploy a Linux distribution to your Linode and boot it, the host system detects which distro was selected and modifies the [network configuration files](/docs/platform/network-helper#what-files-are-affected) in the disk image to statically configure the Linode's IPv4 addresses, routing and DNS. Network Helper does not work with IPv6 so v6 addresses are assigned via SLAAC during deployment.
+Upon a Linode's creation, an IPv4 address is selected from a pool of available addresses from the datacenter your Linode is hosted in. Our [Network Helper](https://www.linode.com/docs/platform/network-helper) is *enabled* by default for new Linodes, meaning that when you deploy a Linux distribution to your Linode and boot it, the host system detects which distro was selected and modifies the [network configuration files](/docs/platform/network-helper#what-files-are-affected) in the disk image to statically configure the Linode's IPv4 addresses, routing and DNS. Network Helper does not work with IPv6, so v6 addresses are assigned via SLAAC during deployment.
 
 If Network Helper is *disabled* (or if your Linode was created before Network Helper became default), a Linode will be assigned its IPv4 network configuration by DHCP from the datacenter's networking hardware. One limitation of DHCP is that it can only assign one IP address per DHCP lease request. If you want additonal IPs for your Linode, static addressing must be used.
 
 Due to the limited availablilty of IPv4 addresses, additional v4 addresses for your Linode must be requested by [contacting support](/docs/support) with a technical justification. Once approved, they can be added through the Remote Access tab of the Linode Manager. [Additional IPv6 addresses](/docs/networking/native-ipv6-networking#additional-ipv6-addresses) are also available by submitting a support ticket.
 
-An alternative to using the Linode Manager for static addressing is to manually configure within your Linux distribution, and it's this method which will be the focus of this guide. **Be aware that errors in network configurations can disconnect SSH sessions**, so it is advised that you use the [Linode Shell (Lish)](/docs/networking/using-the-linode-shell-lish) when making the changes below.
+An alternative to using the Linode Manager for static addressing is to manually configure within your Linux distribution, and it's this method that will be the focus of this guide. **Be aware that errors in network configurations can disconnect SSH sessions**, so it is advised that you use the [Linode Shell (Lish)](/docs/networking/using-the-linode-shell-lish) when making the changes below.
 
 ## General Network Configuration
 
@@ -62,7 +62,7 @@ A default gateway should not be specified for private IP addresses. Additionally
 
 **DNS Resolution**
 
-Your DNS nameservers are listed under the **Remote Access** tab of the Linode Manager (see [the screenshot above](#general-network-configuration)). With exception to specific situations, you should not change your Linode's nameservers by editing `/etc/resolv.conf`. Depending on your distribution, `resolv.conf` may be overwritten frequently so permanent DNS and `resolv.conf` options are usually intended to be set elsewhere.
+Your DNS nameservers are listed under the **Remote Access** tab of the Linode Manager (see [the screenshot above](#general-network-configuration)). With exception to specific situations, you should not change your Linode's nameservers by editing `/etc/resolv.conf`. Depending on your distribution, `resolv.conf` may be overwritten frequently so permanent DNS and resolver configuration options are usually intended to be set elsewhere.
 
 For more info on `resolv.conf`, see [its manual page](http://linux.die.net/man/5/resolv.conf).
 
@@ -72,7 +72,7 @@ For more info on `resolv.conf`, see [its manual page](http://linux.die.net/man/5
 
 ### Arch
 
-Add the addressing to the interface's configuration.
+Add the following addressing to the interface's configuration.
 
 {: .file-excerpt }
 /etc/systemd/network/05-eth0.network
@@ -136,6 +136,9 @@ To load your changes, restart the network service:
 
     sudo systemctl restart network
 
+{: .note}
+> CentOS 7 and recent versions of Fedora also include NetworkManager, which uses tools such as `nmtui` and `nmcli` to modify and create network configuration files. The above method, however, is a more straightforward way of making the necessary modifications. 
+
 ### CentOS 6
 
 Like in CentOS 7, simply edit the ethernet interface file to configure a static IP address:
@@ -188,7 +191,7 @@ For more information on the options available to interface files, see `man ifcfg
 
 ### Debian / Ubuntu
 
-Add the following to the interface's config file:
+Add the following to the interface's configuration file:
 
 {: .file-excerpt }
 /etc/network/interfaces
@@ -212,6 +215,8 @@ Add the following to the interface's config file:
     iface eth0 inet static
         address 192.0.2.6/17
     ~~~
+
+Note that static and dynamic addressing cannot be combined in Debian and Ubuntu systems. In order to statically configure additional IP addresses, you must also statically configure your default IP address.
 
 ### Gentoo
 
@@ -273,7 +278,7 @@ Networking in Gentoo utilizes the `netifrc` utility. Addresses are specified in 
 
 ## Disable Network Helper
 
-When manually assigning static IP addresses, [Network Helper](/docs/platform/network-helper) should be disabled to avoid it overwriting your `interfaces` file in the future.
+When statically configuring IP addresses, [Network Helper](/docs/platform/network-helper) should be disabled to avoid it overwriting your interface's configuration file in the future.
 
 1.  From the Linode Manager's **Dashboard**, choose **Edit** for the desired configuration profile.
 
