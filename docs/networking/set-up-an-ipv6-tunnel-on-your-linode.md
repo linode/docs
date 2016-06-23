@@ -6,16 +6,16 @@ description: 'How to set up an IPv6 tunnel on your Linode.'
 keywords: 'ipv6,tunnel,broker,networking'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['networking/ipv6-tunnels/']
-modified: Tuesday, February 28th, 2012
+modified: Wednesday, June 21st, 2016
 modified_by:
-  name: Linode
+  name: Phil Zona
 published: 'Friday, April 29th, 2011'
 title: Set Up an IPv6 Tunnel on Your Linode
 ---
 
 As IPv4 exhaustion nears, many people are preparing to make the switch to IPv6. Linode offers native IPv6 addresses in all locations; please refer to our [native IPv6 guide](/docs/networking/native-ipv6-networking) for configuration instructions. Additionally, be sure to watch the [IPv6 status page](http://www.linode.com/IPv6/) for updates.
 
-Before beginning this guide, you should have already signed up for an IPv6 tunnel through a tunnel broker. [Wikipedia contains a list of tunnel brokers by region](http://en.wikipedia.org/wiki/List_of_IPv6_tunnel_brokers), and we encourage you to research each one before you decide which one to use. The steps outlined in this guide were performed using tunnels from HE.
+Before beginning this guide, you should have already signed up for an IPv6 tunnel through a tunnel broker. [Wikipedia contains a list of tunnel brokers by region](http://en.wikipedia.org/wiki/List_of_IPv6_tunnel_brokers), and we encourage you to research each one before you decide which one to use. The steps outlined in this guide were performed using tunnels from Hurricane Electric (HE).
 
 ## General Setup
 
@@ -36,13 +36,15 @@ Once you have completed these steps, issue the following command to test the tun
 
     ping6 irc6.oftc.net
 
-If everything is working, you should see ping replies. If not, go back and make sure that you haven't made any errors.
+If everything is working, you should see ping replies. If not, go back and make sure that you haven't made any errors. Note that configuration of an IP tunnel using this method will not be persistent across reboots
 
 ### Arch
 
 Arch Linux users will need to issue the following commands before continuing:
 
     pacman -S iproute2
+
+In addition, Arch does not include a `ping6` command for testing. If you've installed [MTR](https://www.linode.com/docs/networking/diagnostics/diagnosing-network-issues-with-mtr), simply use it with a `-6` flag to check your tunnel connection.
 
 ### Gentoo
 
@@ -61,9 +63,9 @@ Debian and Ubuntu users (versions before 10.04 Lucid are not covered here) can p
 
 Insert the following into your `/etc/network/interfaces` file:
 
-    auto tunnel
-    iface tunnel inet6 v4tunnel
-        address 2001:470:1f0e:520::2/64
+    auto he-ipv6
+    iface he-ipv6 inet6 v4tunnel
+        address 2001:470:1f0e:520::2
         netmask 64
         ttl 64
         gateway 2001:470:1f0e:520::1/64
