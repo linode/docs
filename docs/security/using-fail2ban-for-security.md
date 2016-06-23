@@ -208,7 +208,7 @@ If you wish to receive email when Fail2ban is triggered, adjust the email settin
 >
 >If unsure of what to put under `sender`, run the command `sendmail -t user@email.com`, replacing `user@email.com` with your email address. Check your email (including spam folders, if needed) and review the sender email. This address can be used for the above configuration.
 
-You will also need to adjudst the `action` setting, which defines what actions occur when the threshold for ban is met. The default, `%(action_)s`, only bans the user. `action_mw` will ban and send an email with a WhoIs report; while `action_mwl` will ban and send an email with the WhoIs report and all relevant lines in the log file. This can also be changed on a jail-specific basis.
+You will also need to adjudst the `action` setting, which defines what actions occur when the threshold for ban is met. The default, `%(action_)s`, only bans the user. `%(action_mw)s` will ban and send an email with a WhoIs report; while `%(action_mwl)s` will ban and send an email with the WhoIs report and all relevant lines in the log file. This can also be changed on a jail-specific basis.
 
 ### Jail Configuration
 
