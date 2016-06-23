@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Building dynamic websites and applications with open source frameworks.'
 keywords: 'web applications,web frameworks,VPS applications,tomcat,cakephp,catalyst,django,ruby-on-rails,seaside'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['frameworks/']
 published: 'Thursday, July 16th, 2009'
 title: Web Application Frameworks

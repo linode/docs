@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Help with common Linode memory use and networking issues.'
 keywords: 'Linode troubleshooting,VPS troubleshooting,Linux configuration'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['troubleshooting/memory-networking/']
 modified: Tuesday, November 19th, 2013
 modified_by:

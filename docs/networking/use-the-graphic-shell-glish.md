@@ -5,7 +5,7 @@ author:
 description: 'Use the graphic shell, Glish, to Manage Graphic Environments on Your Linode.'
 keywords: 'Console,Shell,glish,graphic'
 alias: ['networking/using-the-graphic-shell-glish/']
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Wednesday, March 9th, 2015
 modified_by:
   name: Linode

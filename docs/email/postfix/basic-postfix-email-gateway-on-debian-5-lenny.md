@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Configure the Postfix MTA as a basic email gateway.'
 keywords: 'email,postfix,mta,forwarding,'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['email/postfix/gateway-debian-5-lenny/']
 modified: Monday, October 8th, 2012
 modified_by:

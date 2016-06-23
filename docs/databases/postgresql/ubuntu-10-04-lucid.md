@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Using the PostgreSQL relational database server with Ubuntu 10.04 LTS (Lucid).'
 keywords: 'postgresql,postgresql ubuntu 10.04,postgreql lucid,postgresql database,open source database,relational database'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Tuesday, September 24th, 2013
 modified_by:
   name: Linode

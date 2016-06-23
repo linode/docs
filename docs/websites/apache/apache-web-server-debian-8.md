@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Install Apache on your Debian 8 (Jessie) server, configure virtual hosting, and set up modules and scripting.'
 keywords: 'apache debian 8,apache debian jessie,linux web server,apache on debian,apache jessie,apache,debian,web server'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Monday, June 29th, 2015
 modified_by:
   name: Elle Krout

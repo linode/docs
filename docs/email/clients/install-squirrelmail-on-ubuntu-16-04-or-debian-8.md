@@ -4,7 +4,7 @@ author:
   email: afornuto@linode.com
 description: 'A guide to installing the SquirrelMail web client for email on Ubuntu or Debian 8.'
 keywords: 'squirrelmail, squirrel mail, debian, debian 8, mail client, ubuntu, ubuntu 16'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Tuesday, June 14, 2016
 modified_by:
   name: Edward Angert

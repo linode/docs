@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Getting started with MySQL for web and server applications on Ubuntu 10.10 Maverick'
 keywords: 'mysql ubuntu 10.10,mysql maverick,mysql ubuntu,mysql on linux,mysql vps'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['databases/mysql/ubuntu-10-10-maverick/']
 modified: Monday, October 8th, 2012
 modified_by:

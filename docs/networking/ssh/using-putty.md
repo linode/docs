@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Accessing remote servers with PuTTY, a free and open source SSH client for Windows and UNIX systems.'
 keywords: 'putty,putty ssh,windows ssh client'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['networking/using-putty/']
 modified: Sunday, October 14th, 2012
 modified_by:

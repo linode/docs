@@ -4,7 +4,7 @@ author:
   email: contribute@linode.com
 description: 'Set up, configure, and customize a Minecraft server using Spigot'
 keywords: 'minecraft,spigot,'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-applications/game-servers/minecraft-ubuntu12-04/']
 published: 'Tuesday, April 21st, 2015'
 modified: Tuesday, April 21st, 2015

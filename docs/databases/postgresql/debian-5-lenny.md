@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Using the PostgreSQL relational database server with Debian 5 (Lenny).'
 keywords: 'postgresql,postgresql database,postgresql on debian,relational database'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Wednesday, October 3rd, 2012
 modified_by:
   name: Linode

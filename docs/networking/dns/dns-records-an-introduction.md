@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Learn about DNS records and system structure.'
 keywords: 'dns records,domain names,dns record types,dns resolution'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['dns-guides/introduction-to-dns-records/','dns-guides/introduction-to-dns/','networking/dns/introduction-to-dns-records/']
 modified: Tuesday, January 20, 2015
 modified_by:

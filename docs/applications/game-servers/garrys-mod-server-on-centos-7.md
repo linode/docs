@@ -4,7 +4,7 @@ author:
   email: --
 description: 'A Garrys Mod Server for CentOS 7.'
 keywords: 'garry''s mod,centos,centos 7'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-applications/game-servers/minecraft-ubuntu12-04/']
 published: 'Wednesday, January 21, 2015'
 modified: Thursday, February 25th, 2016

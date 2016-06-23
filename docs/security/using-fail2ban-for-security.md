@@ -5,7 +5,7 @@ author:
 description: 'Use Fail2ban to block automated system attacks and further harden your server. Fail2ban monitors system logs for symptoms of an automated attack, bans the IP and alerts you of the attach through email.'
 keywords: 'fail2ban'
 alias: ['tools-reference/tools/using-fail2ban-to-block-network-probes/']
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Thursday, March 3rd, 2016
 modified_by:
   name: Linode

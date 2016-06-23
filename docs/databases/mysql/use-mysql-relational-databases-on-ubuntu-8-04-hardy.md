@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Getting started with MySQL for web and server applications on Ubuntu Hardy.'
 keywords: 'MySQL on Linux,MySQL Ubuntu,MySQL Hardy,MySQL VPS'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['databases/mysql/ubuntu-8-04-hardy/']
 modified: Monday, October 8th, 2012
 modified_by:

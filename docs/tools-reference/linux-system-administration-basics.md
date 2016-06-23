@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Tips, troubleshooting pointers, and software usage suggestions for Linux beginners.'
 keywords: 'linux tips,linux beginners,systems administration,admin,linux,mail,http,troubleshooting'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['using-linux/administration-basics/']
 modified: Wednesday, February 18, 2015
 modified_by:

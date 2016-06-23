@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: An advanced overview of configuration for the Apache web server including virtual hosts and configuration file management
 keywords: 'configuration,apache,web server,virtual hosting,http'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-servers/apache/configuration/configuration-basics/']
 modified: Monday, August 22nd, 2011
 modified_by:

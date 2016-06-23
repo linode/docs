@@ -4,7 +4,7 @@ author:
     email: docs@linode.com
 description: 'Use phpMyAdmin to manage MySQL databases and users though a web interface.'
 keywords: 'mysql,phpmyadmin,sql,ubuntu,precise,ubuntu 14.04,lts,ubuntu lts,localhost phpmyadmin,php mysql,http localhost phpmyadmin'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['databases/mysql/phpmyadmin-ubuntu-12-04-precise/','databases/mysql/mysql-phpmyadmin-ubuntu-14-04']
 modified: Wednesday, September 16th, 2015
 modified_by:

@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Our guide to testing and troubleshooting Postfix, Dovecot, and MySQL'
 keywords: 'postfix,dovecot,mysql'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['email/postfix/troubleshooting/']
 modified: Monday, March 24th, 2014
 modified_by:

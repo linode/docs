@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Use DNS Manager to Direct Domains to Your Linode.'
 keywords: 'dns manager,linode dns,linode manager dns,dns configuration,ttl,domain zones,domain name'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['dns-manager/','dns-guides/configuring-dns-with-the-linode-manager/', 'networking/dns/dns-manager/']
 modified: Monday, June 20th, 2016 
 modified_by:

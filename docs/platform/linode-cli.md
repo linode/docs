@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'An introduction to the Linode command line interface.'
 keywords: 'linode cli, command line interface, man pages, api key'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['cli/']
 modified: Monday, June 20th, 2016
 modified_by:

@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Install MongoDB for use in application development on Debian 5 (Lenny).'
 keywords: 'nosql,database,mognodb,key store'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['databases/mongodb/debian-5-lenny/']
 modified: Friday, April 29th, 2011
 modified_by:

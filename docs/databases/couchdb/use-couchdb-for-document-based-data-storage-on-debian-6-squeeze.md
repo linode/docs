@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'An introduction and getting started guide for CouchDB on Debian 6 (Squeeze) systems.'
 keywords: 'couchdb,nosql,json,debian'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['databases/couchdb/debian-6-squeeze/']
 modified: Friday, April 29th, 2011
 modified_by:

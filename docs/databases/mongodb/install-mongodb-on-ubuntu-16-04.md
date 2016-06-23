@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Install MongoDB for use in application development on Ubuntu 16.04 (Xenial).'
 keywords: 'nosql,database,mongodb,key store'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Friday, May 20th, 2016
 modified_by:
   name: Phil Zona

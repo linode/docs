@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Install web applications with "LEMP," a LAMP-like stack using nginx, MySQL, and PHP.'
 keywords: 'nginx,lemp,php,ubuntu 16.04'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Friday, May 6th 2016
 modified_by:
   name: Phil Zona

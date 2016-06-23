@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Installation and basic usage guide for Prosody, a lightweight XMPP server on Ubuntu 12.04 (Lucid).'
 keywords: 'prosody,prosody ubuntu,prosody.im,xmpp,real time messaging,lua'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['communications/xmpp/prosody/ubuntu-12-04-precise-pangolin/']
 modified: Wednesday, October 3rd, 2012
 modified_by:

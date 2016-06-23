@@ -4,7 +4,7 @@ author:
   email: afornuto@linode.com
 description: 'Use uWSGI to Deploy Python Application Servers in Conjunction with Nginx.'
 keywords: 'uwsgi,wsgi,nginx,python,ubuntu,install uwsgi,deploy python applications with nginx,virtual host'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-servers/nginx/python-uwsgi/ubuntu-12-04-precise-pangolin/','websites/nginx/wsgi-using-uwsgi-and-nginx-on-ubuntu-12-04-precise-pangolin/index.cfm/','websites/nginx/wsgi-using-uwsgi-and-nginx-on-ubuntu-12-04-precise-pangolin/','websites/nginx/how-to-install-uwsgi-with-nginx-on-ubuntu-12-04-precise-pangolin/']
 modified: Tuesday, November 13th, 2012
 modified_by:

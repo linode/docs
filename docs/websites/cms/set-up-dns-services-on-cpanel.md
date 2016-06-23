@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: How to set up DNS on your cPanel server
 keywords: 'DNS, cPanel'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-applications/control-panels/cpanel/dns-on-cpanel/']
 modified: Friday, August 16th, 2013
 modified_by:

@@ -4,7 +4,7 @@ author:
   email: afornuto@linode.com
 description: 'A guide to testing a website for a domain before the DNS records are adjusted.'
 keywords: 'dns, website, preview'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['dns-guides/preview-websites/']
 modified: Monday, June 22, 2015
 modified_by:

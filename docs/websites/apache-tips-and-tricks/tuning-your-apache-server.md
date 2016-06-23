@@ -4,7 +4,7 @@ author:
   email: ekrout@linode.com
 description: Tuning your Apache server to optimize your website.
 keywords: 'configuration,apache,web server,resource tuning'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Friday, February 27, 2015
 modified_by:
   name: Elle Krout

@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: Longview App for Apache
 keywords: 'Longview, Apache, statistics, mod\_status'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['longview/longview-for-apache/']
 modified: Monday, January 6th, 2014
 modified_by:

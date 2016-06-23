@@ -4,7 +4,7 @@ author:
     email: docs@linode.com
 description: 'Using Drush to install themes, modules, and backup systems'
 keywords: 'drupal,WordPress,joomla,cms,content management system,content management framework,debian,drush'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Friday, December 5th, 2014
 modified_by:
     name: Linode

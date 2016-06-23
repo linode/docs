@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Setting up Google Apps with the Linode DNS Manager to handle email for your domains.'
 keywords: 'google email,google apps,google apps linode'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['email/google-mail/']
 modified: Tuesday, August 5, 2014
 modified_by:

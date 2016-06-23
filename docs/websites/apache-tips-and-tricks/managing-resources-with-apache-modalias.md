@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'An introduction to mod\_alias for managing file system resources with the Apache web server.'
 keywords: 'resources,http,files,management,mod\_alias,Alias,apache'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-servers/apache/configuration/managing-resources-with-apache-alias/']
 modified: Monday, August 22nd, 2011
 modified_by:

@@ -4,7 +4,7 @@ author:
     email: docs@linode.com
 description: 'Use Elastisearch, Logstash, and Kibana to Store and Visualize Apache Webserver Logs.'
 keywords: 'webserver,apache,elasticsearch,logstash,kibana,dashboard,visualization'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: Friday, October 23rd, 2015
 modified: 'Friday, October 23rd, 2015'
 modified_by:

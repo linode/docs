@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Our guide to running a mail server on your Linode.'
 keywords: 'mail server,linode guide,running a mail server,linode quickstart guide'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['mailserver/']
 modified: Sunday, April 13th, 2014
 modified_by:

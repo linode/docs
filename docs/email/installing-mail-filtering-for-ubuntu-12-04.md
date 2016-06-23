@@ -4,7 +4,7 @@ author:
   email: afornuto@linode.com
 description: 'Configuring Virus and Spam protection for your mail server.'
 keywords: 'email,mail,postfix,dovecot,mysql,ubuntu,12.04,clamav,spamassassin,amavis'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['email/postfix/clamav-spamassasin-ubuntu-12-04/']
 modified: Friday, April 4th, 2014
 modified_by:

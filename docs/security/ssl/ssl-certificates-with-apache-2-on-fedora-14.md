@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Serve SSL-enabled websites with the Apache 2 web server on Fedora 14.'
 keywords: 'apache ssl,ssl on fedora,web server,fedora 14'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-servers/apache/ssl-guides/fedora-14/']
 modified: Friday, October 4th, 2013
 modified_by:

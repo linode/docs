@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: SHOUTcast
 keywords: 'shoutcast, radio, internet radio, stream, streaming, audio'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['communications/media-servers/shoutcast/']
 modified: Tuesday, April 9th, 2013
 modified_by:

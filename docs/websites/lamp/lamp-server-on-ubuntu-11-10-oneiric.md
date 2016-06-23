@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Configuring a LAMP stack with Apache, MySQL, PHP and on Ubuntu Linux 11.10 (Oneiric).'
 keywords: 'ubuntu lamp server,ubuntu 11.10 lamp,oneiric lamp,ubuntu web server,ubuntu oneiric'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['lamp-guides/ubuntu-11-10-oneiric/']
 modified: Monday, September 23rd, 2013
 modified_by:

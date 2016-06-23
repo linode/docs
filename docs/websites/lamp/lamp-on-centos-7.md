@@ -4,7 +4,7 @@ author:
     email: docs@linode.com
 description: 'Create a LAMP stack on a CentOS 7 Linode.'
 keywords: 'LAMP,CentOS,CentOS 7,apache,mysql,php,centos lamp'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Monday, June 29th, 2015
 modified_by:
     name: Alex Fornuto

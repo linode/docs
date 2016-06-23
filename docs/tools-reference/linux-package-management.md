@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: Guides for installing and managing software on major Linux operating systems.
 keywords: 'Linux package management,rpm,apt,dpkg,apt-get,apt-cache,pacman,yum'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['using-linux/package-management/']
 modified: Friday, April 15th, 2016
 modified_by:

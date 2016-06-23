@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Our guide to upgrading to Ubuntu 16.04 LTS'
 keywords: 'upgrading,ubuntu,16.04'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Tuesday, April 26th, 2016
 modified_by:
   name: Alex Fornuto

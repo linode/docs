@@ -4,7 +4,7 @@ author:
   email: afornuto@linode.com
 description: 'A basic Minecraft server installation guide for Debian and Ubuntu'
 keywords: 'minecraft,ubuntu,debian'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
  - '[Minecraft.net](https://minecraft.net/)'
  - '[The Official Minecraft Wiki](http://minecraft.gamepedia.com/Minecraft_Wiki)'

@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Getting started with ejabberd, an instant messaging server written in Erlang/OTP on Ubuntu 8.04 (Hardy).'
 keywords: 'ejabberd,ejabberd ubuntu hardy,ejabberd on linux,real-time messaging,xmpp server,collaboration software,chat software,linux jabber server'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['communications/xmpp/ejabberd/ubuntu-8-04-hardy/']
 modified: Friday, April 29th, 2011
 modified_by:
