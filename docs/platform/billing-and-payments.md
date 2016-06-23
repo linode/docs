@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: Our guide to prepaid billing and payments.
 keywords: 'billing,payments'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['billing-and-payments/']
 modified: Monday, June 16th, 2014
 modified_by:

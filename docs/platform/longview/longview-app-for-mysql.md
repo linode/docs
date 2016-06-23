@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: Longview App for MySQL
 keywords: 'Longview, MySQL, statistics'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['longview/longview-for-mysql/']
 modified: Wednesday, November 6th, 2013
 modified_by:

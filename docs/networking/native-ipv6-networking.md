@@ -4,7 +4,7 @@ author:
     email: docs@linode.com
 description: 'How to configure IPv6 networking natively on your Linode.'
 keywords: 'ipv6, networking'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Wednesday, June 1st, 2016
 modified_by:
     name: Dave Russell

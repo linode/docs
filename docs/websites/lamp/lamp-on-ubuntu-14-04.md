@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'How to install a LAMP (Linux, Apache, MySQL, PHP) stack on an Ubuntu 14.04 long term support (LTS) system.'
 keywords: 'ubuntu lamp,ubuntu 14.04 lamp,lamp install,ubuntu web server,apache,mysql,php,ubuntu 14.04'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['websites/lamp/lamp-server-on-ubuntu-14-04/','websites/lamp/how-to-install-a-lamp-stack-on-ubuntu-14-04/']
 modified: Monday, December 7th, 2015
 modified_by:

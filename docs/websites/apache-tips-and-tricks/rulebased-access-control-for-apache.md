@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Deploying and configuring granular access control with the Apache web server.'
 keywords: 'apache,access control,security,http,web server'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-servers/apache/configuration/rule-based-access-control/']
 modified: Monday, August 22nd, 2011
 modified_by:

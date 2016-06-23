@@ -5,7 +5,7 @@ author:
 published: 'Tuesday, August 18th, 2009'
 description: 'How to run a custom Linux distribution or pre-built Linux appliance on your Linode.'
 keywords: 'custom distro,custom distribution,advanced Linux'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['platform/custom-kernels-distros/running-a-custom-linux-distro-on-a-linode-vps/', 'custom-instances/custom-distro-howto/']
 modified_by:
   name: Linode

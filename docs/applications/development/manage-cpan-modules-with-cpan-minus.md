@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Use CPAN Minus to install and manage Perl modules easily.'
 keywords: 'cpan,perl,cpanm'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['linux-tools/utilities/cpanm/']
 modified: Wednesday, November 16th, 2011
 modified_by:

@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Getting started with the open source edition of Zimbra groupware on your Ubuntu 8.04 (Hardy) Linux VPS.'
 keywords: 'zimbra on ubuntu,zimbra groupware,zimbra mail server,linux mail server'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['email/zimbra/install-zimbra-ubuntu-8-04-hardy/']
 modified: Tuesday, May 17th, 2011
 modified_by:

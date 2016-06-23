@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and Perl-FastCGI on Ubuntu 12.04 LTS (Precise Pangolin).'
 keywords: 'nginx,fastscgi perl,nginx ubuntu 12.04,nginx fastcgi,nginx perl'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-servers/nginx/perl-fastcgi/ubuntu-12-04-precise-pangolin/']
 modified: Wednesday, October 31st, 2012
 modified_by:

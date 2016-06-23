@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Information on submitting articles to Linode Guides & Tutorials, including benefits and procedures.'
 keywords: 'writing,open source software,contribute linode library, submissions,linode guides and tutorials,guides,tutorials'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['contribute/']
 modified: Wednesday, January 13th, 2016
 modified_by:

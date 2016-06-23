@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Getting started with MySQL on Debian 8'
 keywords: 'MySQL on Linux,Debian 8,Debian,cloud,cloud hosting,Linux,MySQL,database,MariaDB,install MySQL,secure MySQL,mysqltuner'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['databases/mysql/debian-7-wheezy/','databases/mysql/mysql-relational-databases-debian-8/']
 modified: Wednesday, August 26th, 2015
 modified_by:

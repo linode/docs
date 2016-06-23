@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Installing and configuring the Postfix MTA to work with Courier and MySQL for virtual domains on Ubuntu 8.04 (Hardy).'
 keywords: 'postfix,courier,mail server,imap,postfix ubuntu 8.04,postfix on linux,postfix with courier,postfix with mysql,mysql virtual domains'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['email/postfix/courier-mysql-ubuntu-8-04-hardy/']
 modified: Tuesday, May 17th, 2011
 modified_by:

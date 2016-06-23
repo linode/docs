@@ -4,7 +4,7 @@ author:
     email: docs@linode.com
 description: 'This guide will show you how to update and secure an installation of Drupal 8 CMS on your Linode running Ubuntu or Debian.'
 keywords: 'drupal,cms,apache,php,content management system,drupal 8,update'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 'Wednesday, May 11, 2016'
 modified_by:
     name: Edward Angert

@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'A collection of security practices to help you prevent common system exploits.'
 keywords: 'security,ssh,development,hosting,network'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['security/basics/','using-linux/security-basics/']
 modified: Tuesday, April 19th, 2011
 modified_by:

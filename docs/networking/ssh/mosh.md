@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: Mosh usage and Installation
 keywords: 'mosh, ssh,'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['networking/mosh/']
 modified: Saturday, August 3rd, 2013
 modified_by:

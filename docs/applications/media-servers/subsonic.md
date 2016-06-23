@@ -4,7 +4,7 @@ author:
   email: afornuto@linode.com
 description: Subsonic
 keywords: 'subsonic, music, audio'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Monday, February 2, 2015
 modified_by:
   name: Alex Fornuto

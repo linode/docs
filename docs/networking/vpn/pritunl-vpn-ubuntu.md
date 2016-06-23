@@ -4,7 +4,7 @@ author:
     email: docs@linode.com
 description: 'Set up Pritunl, an open source VPN server with an intuitive web interface'
 keywords: 'pritunl,vpn,vpn server,ubuntu,ubuntu 14.04'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Tuesday, July 27th, 2015'
 modified: Tuesday, July 27th, 2015
 modified_by:

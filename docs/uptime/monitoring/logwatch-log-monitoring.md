@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'A collection of guides for installing and configuring the Logwatch utility.'
 keywords: 'logwatch,security,logging,audit'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['server-monitoring/logwatch/']
 modified: Tuesday, April 19th, 2011
 modified_by:

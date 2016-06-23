@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Guides on using Mailman to manage mailing lists on your Linode.'
 keywords: 'mailman,listserv,email,postfix,mailing list'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Friday, February 12th, 2010'
 title: Mailman Guides
 ---

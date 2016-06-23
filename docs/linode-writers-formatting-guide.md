@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'The Linode Guides & Tutorials style guide for article submissions'
 keywords: 'style guide,format,formatting,how to write,write for us,write for linode,linode library,submissions'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['style-guide/']
 modified: Tuesday, February 16th, 2016
 modified_by:
@@ -32,7 +32,7 @@ Author Submission
       email: docs@linode.com
     description: 'Two to three sentences describing your guide.'
     keywords: 'list,of,keywords,and key phrases,'
-    license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+    license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
     published: 'Weekday, Month 00th, 2015'
     modified: Weekday, Month 00th, 2015
     modified_by:

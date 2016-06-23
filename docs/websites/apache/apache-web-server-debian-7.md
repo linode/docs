@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Install Apache on your Debian 7 server, configure virtual hosting, and set up module and scripting support.'
 keywords: 'apache,apache 2,debian,debian 7,wheezy,apache web server'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-servers/apache/installation/debian-7-wheezy/','websites/apache/apache-2-web-server-on-debian-7-wheezy/','websites/apache/how-to-install-and-configure-the-apache-web-server-on-debian-7-wheezy/']
 modified: Friday, January 10th, 2014
 modified_by:

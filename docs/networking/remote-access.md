@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: Our guide to the remote access area of the Linode Manager.
 keywords: 'remote access,ip addresses,ip failover,swapping ip addresses,console access'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['remote-access/']
 modified: Saturday, September 6th, 2014
 modified_by:

@@ -4,7 +4,7 @@ author:
     email: docs@linode.com
 description: 'Use Unicorn and Nginx to Configure a Ruby on Rails Stack on Ubuntu 14.04 '
 keywords: 'ruby on rails,unicorn rails,ruby on rails ubuntu 14.04, nginx,reverse proxy,ubuntu 14.04'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Wednesday, March 30, 2016'
 modified: Wednesday, March 30, 2016
 modified_by:

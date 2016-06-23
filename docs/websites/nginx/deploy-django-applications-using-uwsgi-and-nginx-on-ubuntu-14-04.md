@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Deploy Django Applications Using uWSGI and Nginx on Ubuntu 14.04'
 keywords: 'django,uwsgi,nginx,python'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 'Wednesday, November 25th, 2015'
 modified_by:
   name: Sergey Pariev

@@ -4,7 +4,7 @@ author:
     email: docs@linode.com
 description: 'Set up and configure WildFly as your Java Application Server to develop, test, and run, Java applications'
 keywords: 'java,jboss,jboss as,wildfly,apache,mysql,mariaDB'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Friday, September 18th, 2015'
 modified: Friday, September 18th, 2015
 modified_by:

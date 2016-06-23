@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'A Linode server gives you a lot more power and flexibility than a shared web host. This guide focuses on migrating your website from a shared hosting plan to a Linode cloud server with a LAMP stack ready to serve your websites and applications.'
 keywords: 'shared hosting,vps,shared,host,migrate,migration,website,ttl,domain'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['migrate-from-shared/','migrate-to-linode/migrate-from-shared-hosting/']
 modified: 'Monday, December 21st, 2015'
 modified_by:

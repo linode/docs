@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Installation, configuration and usage guides for phpFox.'
 keywords: 'social networking,phpfox,community'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-applications/social-networking/phpfox/']
 modified: Friday, October 4th, 2013
 modified_by:

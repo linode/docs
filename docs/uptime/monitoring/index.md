@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Watching server resources with open source tools.'
 keywords: 'server monitoring,cacti,monit,munin,nagios,rrdtool'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['server-monitoring/']
 published: 'Thursday, July 16th, 2009'
 title: Server Monitoring

@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Steps to take if your Linode becomes compromised by unauthorized parties.'
 keywords: 'root compromise,Linode troubleshooting,VPS troubleshooting,Linux configuration'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['troubleshooting/compromise-recovery/']
 modified: Friday, July 12th, 2013
 modified_by:

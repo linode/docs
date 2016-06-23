@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Instructions for getting started with the Apache web server on Debian 6 (Squeeze).'
 keywords: 'apache debian 6,apache debian squeeze,linux web server,apache on debian,apache squeeze'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-servers/apache/installation/debian-6-squeeze/']
 modified: Friday, October 4th, 2013
 modified_by:

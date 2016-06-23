@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Use PHP CGI to run PHP scripts as indivudual users on Ubuntu 12.04.'
 keywords: 'php,php cgi,cgi,apache,php scripts,web apps,web applications'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-servers/apache/php-cgi/ubuntu-12-04-precise-pangolin/','websites/apache/run-php-applications-under-cgi-with-apache-on-ubuntu-12-04-lts-precise-pangolin/']
 modified: Wednesday, October 31st, 2012
 modified_by:

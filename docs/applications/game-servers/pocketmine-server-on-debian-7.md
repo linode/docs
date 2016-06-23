@@ -4,7 +4,7 @@ author:
   email: afornuto@linode.com
 description: 'A third party server for Minecraft Pocket Edition'
 keywords: 'minecraft,pocketmine,debian'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
  - '[PocketMine.net](https://www.pocketmine.net/)'
  - '[PocketMine Documentation](http://pocketmine-mp.readthedocs.org/en/latest/)'

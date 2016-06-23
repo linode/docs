@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'An introduction and getting started guide for CouchDB on CentOS 5 systems.'
 keywords: 'couchdb,nosql,json,centos'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['databases/couchdb/centos-5/']
 modified: Friday, April 29th, 2011
 modified_by:

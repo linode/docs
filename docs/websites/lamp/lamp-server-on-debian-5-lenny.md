@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'How to build a LAMP application server with Debian 5.0 (Lenny).'
 keywords: 'Debian LAMP Server,Debian LAMP guide,LAMP howto'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['lamp-guides/debian-5-lenny/']
 modified: Wednesday, October 3rd, 2012
 modified_by:

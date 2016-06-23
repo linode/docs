@@ -4,7 +4,7 @@ author:
   email: afornuto@linode.com
 description: 'How to install and connect to a desktop environment on your Linode'
 keywords: 'vnc,remote desktop,ubuntu,16.04'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Tuesday, June 21st, 2016
 modified_by:
   name: Phil Zona

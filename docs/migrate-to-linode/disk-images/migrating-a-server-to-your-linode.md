@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'How to copy an existing Linux server to your new Linode VPS.'
 keywords: 'migrate to linode,linode migration,migrate linux'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['migration/migrate-server-to-linode/']
 modified: Thursday, June 19th, 2014
 modified_by:

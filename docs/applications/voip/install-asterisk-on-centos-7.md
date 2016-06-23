@@ -4,7 +4,7 @@ author:
     email: docs@linode.com
 description: 'Installing Asterisk 13 on CentOS 7'
 keywords: 'asterisk 13,centos 7,centos,open source,private branch exchange,pbx,asterisk pbx,sip,session initiation protocol,sip protocol,IP PBX systems,VoIP gateways'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Wednesday, September 30th, 2015'
 modified: Wednesday, September 30th, 2015
 modified_by:

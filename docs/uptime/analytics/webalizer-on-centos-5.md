@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Get detailed website statistics such as visitor counts, pageviews, user agents percentages, and much more using the open source Webalizer package on Centos 5.'
 keywords: 'webalizer,statistics,analytics,stats,server monitoring,centos'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-applications/analytics/webalizer/centos-5/']
 modified: Friday, December 2nd, 2011
 modified_by:

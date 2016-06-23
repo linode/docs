@@ -4,7 +4,7 @@ author:
   email: docs@Linode.com
 description: 'Use cPanel to manage services on your CentOS Linux VPS.'
 keywords: 'cpanel,vps control panel,cpanel linux,cpanel centos'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-applications/control-panels/cpanel/centos-6/','websites/cms/cpanel-on-centos-6-5/','websites/cms/cpanel-on-centos-5/']
 modified: Monday, September 22, 2014
 modified_by:

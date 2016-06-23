@@ -4,7 +4,7 @@ author:
     email: docs@linode.com
 description: 'Install the ZNC bouncer on Debian to retain an IRC connection.'
 keywords: 'install znc,irc bouncer,znc on debian,configure znc,znc'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Thursday, June 4th, 2015
 modified_by:
     name: 'Elle Krout'

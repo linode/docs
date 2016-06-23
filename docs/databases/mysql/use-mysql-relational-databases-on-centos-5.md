@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Getting started with MySQL for web and server applications on CentOS 5.'
 keywords: 'MySQL on Linux,MySQL CentOS,MySQL VPS'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['databases/mysql/centos-5/']
 modified: Wednesday, January 22nd, 2014
 modified_by:

@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Use PostgreSQL Relational Databases on Ubuntu 16.04 LTS (Xenial Xerus).'
 keywords: 'postgresql,ubuntu 16.04,postgresql database,open source database,relational database'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Friday, May 20th, 2016
 modified_by:
   name: Phil Zona

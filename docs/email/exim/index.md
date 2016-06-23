@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Using the free, open source Exim MTA to deliver mail on Linux systems.'
 keywords: 'exim,mail server,linux mail,smtp server,debian exim,debian lenny'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Thursday, December 17th, 2009'
 title: Exim Guides
 ---

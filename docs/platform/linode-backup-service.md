@@ -4,7 +4,7 @@ author:
   email: afornuto@linode.com
 description: 'Use the Linode Backup Service to protect and secure your data.'
 keywords: 'backup service,linode platform,linode backup service,enable a backup,manage a backup,schedule a backup,disable a backup,restore from a backup,boot from a backup'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['backup-service/','platform/backup-service/']
 modified: Thursday, June 2nd, 2016
 modified_by:

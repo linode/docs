@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Install and optimize the WordPress blogging and content management system on your Linode.'
 keywords: 'install WordPress,WordPress on Linode,WordPress how-to, how to install wordpress, how to configure wordpress'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-applications/cms-guides/wordpress/','websites/cms/manage-web-content-with-wordpress/']
 modified: Monday, October 5th, 2015
 modified_by:

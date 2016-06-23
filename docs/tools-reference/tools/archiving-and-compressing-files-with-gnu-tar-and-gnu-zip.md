@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Use GNU tools to compress and archive files.'
 keywords: 'tar,gnu tar,gzip,gnu zip,tar.gz. tgz,file archive'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['linux-tools/common-commands/tar-gzip/']
 modified: Monday, August 22nd, 2011
 modified_by:

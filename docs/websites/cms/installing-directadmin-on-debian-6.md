@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: Installing DirectAdmin on Debian 6
 keywords: 'directadmin, install, control panels, debian'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-applications/control-panels/directadmin/installing-directadmin/']
 modified: Thursday, October 3rd, 2013
 modified_by:
