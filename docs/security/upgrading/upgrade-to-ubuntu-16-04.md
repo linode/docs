@@ -102,6 +102,9 @@ Remember to perform these steps in a Lish or Glish session:
 
     Follow the on-screen instructions to complete the installation process.
 
+    {: .note}
+    >The `-d` flag in this command tells Ubuntu to check for a development version. Because both Ubuntu 14.04 and Ubuntu 16.04 are LTS, the `do-release-upgrade` command will not suggest an upgrade until the first incremental point (16.04.1) version has been released with some of the initial bugs worked out.
+
 4.  Because Linode offers internal package mirrors for Ubuntu, you may see this message:
 
         No valid mirror found
