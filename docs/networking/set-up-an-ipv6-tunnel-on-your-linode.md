@@ -21,9 +21,9 @@ Before beginning this guide, you should have already signed up for an IPv6 tunne
 
 Once you have signed up for a tunnel, you will need to issue a few commands. Users of Arch and Gentoo Linux will need to install packages before continuing. Please see the instructions at the end of this section.
 
-Issue the following commands, making sure to replace `209.51.161.14` with the endpoint of your tunnel and `12.34.56.78` with your Linode's IP address. The information for the endpoint can be found in your tunnel broker's web interface, and your Linode's IP address can be found under the "Remote Access" tab of the Linode Manager:
+Issue the following commands, making sure to replace `x.x.x.x` with the endpoint of your tunnel and `y.y.y.y` with your Linode's IP address. The information for the endpoint can be found in your tunnel broker's web interface, and your Linode's IP address can be found under the "Remote Access" tab of the Linode Manager:
 
-    ip tunnel add he-ipv6 mode sit remote 209.51.161.14 local 12.34.56.78 ttl 255
+    ip tunnel add he-ipv6 mode sit remote x.x.x.x local y.y.y.y ttl 255
     ip link set he-ipv6 up
 
 Next, issue the following commands, making sure to replace `2001:470:1f0e:520::2/64` with the IP range assigned to you. This information should be provided to you by your tunnel broker:
@@ -34,9 +34,9 @@ Next, issue the following commands, making sure to replace `2001:470:1f0e:520::2
 
 Once you have completed these steps, issue the following command to test the tunnel:
 
-    ping6 irc6.oftc.net
+    ping6 -I he-ipv6 irc6.oftc.net
 
-If everything is working, you should see ping replies. If not, go back and make sure that you haven't made any errors. Note that configuration of an IP tunnel using this method will not be persistent across reboots
+If everything is working, you should see ping replies. If not, go back and make sure that you haven't made any errors. Note that configuration of an IP tunnel using this method will not be persistent across reboots, and will need to be configured upon restarting your Linode.
 
 ### Arch
 
@@ -67,16 +67,19 @@ Insert the following into your `/etc/network/interfaces` file:
     iface he-ipv6 inet6 v4tunnel
         address 2001:470:1f0e:520::2
         netmask 64
-        ttl 64
-        gateway 2001:470:1f0e:520::1/64
         endpoint 216.218.224.42
         local 12.34.56.78
-
+        ttl 255
+        gateway 2001:470:1f0e:520::1
+        
 Replace the `address` value with the "Client IPv6 address". Replace the `gateway` value with the "Server IPv6 address". Replace `endpoint` with the endpoint that your tunnel broker provides you. Generally this endpoint is in a geographical location that is close to your Linode. Replace `12.34.56.78` with your Linode's IP address. If you have multiple IPs, make sure that this IP is set to the same address as the one you used to sign up for the tunnel.
 
-Once you have completed these steps, issue the following command to test the tunnel:
+{: .note}
+>Be sure that [Network Helper](https://www.linode.com/docs/platform/network-helper) is disabled when adding the tunnel via this method, as it will remove the tunnel lines upon rebooting if it is turned on.
 
-    ping6 irc6.oftc.net
+Once you have completed these steps, reboot your Linode and issue the following command to test the tunnel:
+
+    ping6 -I he-ipv6 irc6.oftc.net
 
 If everything is working, you should see ping replies. If not, go back and double check your network configuration for errors.
 
@@ -102,7 +105,7 @@ Issue the following command to start the interface:
 
 Once you have completed these steps, issue the following command to test the tunnel:
 
-    ping6 irc6.oftc.net
+    ping6 -I sit1 irc6.oftc.net
 
 If everything is working, you should see ping replies. If not, go back and double check your network configuration for errors.
 
