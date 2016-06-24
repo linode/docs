@@ -39,19 +39,19 @@ This will show a block of text similar to:
           inet6 ff32:20:2001:db8::/96 scope link
             valid_lft forever preferred_lft forever
 
-The second and fourth lines in the output above show your IPv6 address block. 
+The lines beginning with `inet6` show your IPv6 address block. 
 
 As displayed above, you will have inet6 blocks even if you only have one IPv6 address:
 
  * The first, ending in `global`, is the global IPv6 address which everyone can connect to. 
 
- * The second, ending in `link`, is your link-local address. An IPv6 link-local address is a unicast address that can be automatically configured on any interface. The link-local is usually in the FE80::/10 range, however to comply with [RFC 3849](https://tools.ietf.org/html/rfc3849), the link-local for the documentation address is in the FF32::/10 range.
+ * The second, ending in `link`, is your link-local address. An IPv6 link-local address is a unicast address that can be automatically configured on any interface. The link-local is usually in the fe80::/10 range, however to comply with [RFC 3849](https://tools.ietf.org/html/rfc3849), the link-local for the documentation address is in the ff32::/10 range.
 
 If your Linode does not have the correct IPv6 address or an IPv6 address at all, you should verify that you have router advertisements enabled and you have disabled privacy extensions. In order to use Linode's SLAAC, your Linode will need to accept router advertisements. These settings are properly set in our distribution templates by default.
 
 ## Additional IPv6 Addresses
 
-You can request additional IPv6 addresses at any time by opening a [support ticket](/docs/platform/support). Additional addresses are allotted in pools. Each pool size has a different number of IPv6 addresses. The IPv6 pool sizes Linode provides and their respective quantity of IPv6 addresses are below.
+You can request additional IPv6 addresses at any time by opening a [support ticket](/docs/platform/support). Additional addresses are allotted in *pools*. Each pool size has a different number of IPv6 addresses. The IPv6 pool sizes Linode provides and their respective quantity of IPv6 addresses are below.
 
 {: .table .table-striped }
 | Pool   | No. of IPS                    |
@@ -63,7 +63,7 @@ You can request additional IPv6 addresses at any time by opening a [support tick
 
 ### IPv6 Neighbor Discovery
 
-Each /56 or /64 IPv6 address pool is routed to a specific Linode. If you want to use that same address pool across multiple Linodes, you can use neighbor discovery. In order to take advantage of neighbor discovery you must configure your Linode to be a router using `net.ipv6.conf.default.forwarding`.
+Each /56 or /64 IPv6 address pool is routed to a specific Linode. If you want to use that same address pool across multiple Linodes, you can use neighbor discovery. In order to take advantage of neighbor discovery you must configure your Linode to act as a router using `net.ipv6.conf.default.forwarding`. 
 
 {: .caution}
 >This will create a single point of failure for your infrastructure. If that Linode were to crash, lose networking, or have another disruption in service, your entire IPv6 network would also go down.
@@ -112,8 +112,8 @@ While default IPv6 addresses are configured automatically, you will need to stat
 
         {: .note}
         >On Debian Jessie, your default IPv6 address provided by SLAAC will no longer be automatically assigned after you request a /64 pool. You will need to manually add it as a static address or IPv6 routing will not work.
-
-2.  For /56 and /64 pools, addresses within your pool will be routed to your Linode's default IP address, or another Linode on your account in the same datacenter. You will see where the pool is routed under "Public IP Pools" within the Linode Manager's Remote Access tab. You must enable packet forwarding to allow that Linode to act as a router and enable traffic from addresses within your IPv6 pool:
+                
+2.  For /56 and /64 pools, addresses within your pool will be routed to your Linode's default IP address, or another Linode on your account in the same datacenter. You will see where the pool is routed under "Public IP Pools" within the Linode Manager's Remote Access tab. You must enable packet forwarding on that Linode to allow it to act as a router and enable external traffic from addresses within your IPv6 pool:
 
     {: .file}
     /etc/sysctl.conf
@@ -129,6 +129,9 @@ While default IPv6 addresses are configured automatically, you will need to stat
 3.  Restart networking. This command should be performed in [Lish](/docs/networking/using-the-linode-shell-lish), as it will terminate an SSH connection.
 
         ifdown -a && ifup -a
+
+{: .note}
+> Be sure that [Network Helper](https://www.linode.com/docs/platform/network-helper) is disabled when adding addresses from a pool, otherwise your configuration files may be overwritten upon rebooting your Linode, causing disruption to your IPv6 networking.
 
 ### CentOS/Fedora
 
@@ -160,14 +163,14 @@ On CentOS or Fedora, edit `/etc/sysconfig/network-scripts/ifcfg-eth0` to set up 
 
   IPV6INIT = yes
   # Adding IPv6 addresses from pool.
-  IPV6ADDR_SECONDARIES="2001:db8:2000:aff0::1/32 2001:db8:2000:aff0::2/32 2001:db8:2000:aff0::3/32"
+  IPV6ADDR_SECONDARIES="2001:db8:2000:aff0::1/64 2001:db8:2000:aff0::2/64 2001:db8:2000:aff0::3/64"
   ~~~
 
 If you are using CentOS 6.5 or lower, restart networking:
 
     service network restart
     
-If you are using CentOS 7:
+If you are using CentOS 7 or Fedora:
 
     systemctl restart network
 
@@ -179,7 +182,7 @@ If you are still using `netctl` in Arch Linux, you can statically configure your
 
         cp /etc/netctl/examples/ethernet-dhcp /etc/netctl/ethernet-static
 
-2.  Edit your newly copied file, entering your IPv6 networking information (i.e. IP address, subnet, etc.). 
+2.  Edit your newly copied file, entering your IPv6 networking information (e.g. IP address, gateway, etc.). 
 
     {: .file }
     /etc/netctl/ethernet-static
@@ -204,7 +207,7 @@ If you are still using `netctl` in Arch Linux, you can statically configure your
             ## DNS resolvers
             DNS=('198.51.100.6' '198.51.100.7' '198.51.100.8')
         ~~~
-  
+
 3.  Enable your new network profile:
 
         netctl enable ethernet-static
