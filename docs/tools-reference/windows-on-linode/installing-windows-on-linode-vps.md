@@ -27,6 +27,7 @@ Linode has a wide selection of popular Linux distributions that fill almost any 
 You should be comfortable with the Linux command line, installing software, and installing operating systems.  You should also be familiar with the difference between a disk & partition including how they work together.  We'll be following the same general principal as the [Linode Custom Distro Guide](https://www.linode.com/docs/tools-reference/custom-kernels-distros/running-a-custom-linux-distro-on-a-linode-vps) with a few key differences to make it work with Windows.
 
 To complete the guide you'll need these resources:
+
 1. A Linux, Windows, or OS X host computer with at least 30 GB of free hard drive space and a stable internet connection.
 
 2. Download a copy of a [Finnix](http://www.finnix.org/Download) Linux.
