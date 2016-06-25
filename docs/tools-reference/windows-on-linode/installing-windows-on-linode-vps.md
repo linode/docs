@@ -150,9 +150,13 @@ We're going back to the local Windows Virtual Machine.  We need to boot it up wi
 	We can see that "/dev/sda" has a 24 GiB size, this is our primary disk!  Write down that disk location and label it "Local Disk Location".  On this virtual machine we can see it's "/dev/sda", yours is probably the same but we still need to make 100% sure.
 
 4. Alright, we're ready to transfer the Windows HDD over to the VPS with the following command:
+
 		dd if={Local Disk Location} | pv | gzip -9 | ssh root@{VPS IP} "gzip -d | dd of={Remote Disk Location}"
+        
 	Where {Local Disk Location} \== your local disk location we found, {Remote Disk Location} \== the remote disk location we found, and {VPS IP} \== the IP address of your Linode VPS.  For example, my command looks like this:
+    
 		dd if=/dev/sda | pv | gzip -9 | ssh root@45.33.41.131 "gzip -d | dd of=/dev/sda"
+        
 	Once you start the command, you'll likely get asked to accept a certficiate.  Type "yes" and enter, then type the password you set earlier for the VPS when prompted.  The transfer will begin once the password is accepted.
 	
     ![Starting the transfer.](images/tran2.jpg)
@@ -180,8 +184,11 @@ We're going back to the local Windows Virtual Machine.  We need to boot it up wi
 	Your mouse doesn't work, that's okay because we're going to use a different protocol from here on out for remote access to your VPS, RDP.  Let's close the Glish window one last time.
 
 3. Time to connect to your VPS with RDP.  We have to setup an RDP Client on our host computer.  
+
 	3.1 **Windows Host**: Press the Windows Key + R and type "mstsc" then press enter.
+
 	3.2 **OS X Host**: Download the free [Remote Desktop App](https://itunes.apple.com/us/app/microsoft-remote-desktop/id715768417?mt=12) from the App Store.
+	
 	3.3 **Linux Host**: Visit [this page](https://github.com/FreeRDP/Remmina/wiki) and follow the instructions to install Remmina RDP client. 
 
 4. Once you get the RDP application up, it's time to connect to your VPS.  The "Computer" we're connecting to is the IP Address for your VPS.  The OS X and Linux RDP clients will look different, but configuration should be identical.
