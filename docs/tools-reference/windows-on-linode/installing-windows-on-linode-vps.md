@@ -44,6 +44,21 @@ To complete the guide you'll need these resources:
 >
 >Linode's backup system uses partition level scanning to work, Windows NTFS partitions aren't compatible with the system at all.  This means you won't be able to use Linode's automatic backup system with th VPS holding Windows on it.
 
+## A Quick Summary
+Sometimes it's helpful to get the big picture before diving into something, so here's basically what we're going to do in this guide:
+
+1. Create two virtual machines with 24GB HDDs, one on Linode and one on our local computer.
+
+2. Install Windows on our local VM and enable remote desktop connections.
+
+3. Clone the local VM disk to the Linode VPS.
+
+4. Increase the size of the Linode VPS and increase the Windows partition size to fill the new drive space.
+
+5. Use RDP on our local machine to connect to the VPS.
+
+Excellent, let's get started!
+
 ## Setup Windows On A Local Virtual Machine
 The first step of the process is to make a Windows based virtual machine that is preconfigured to run in a remote environment.  We'll configure the VM, install Windows, then make some small changes to the Windows settings.
 
@@ -66,10 +81,11 @@ The first step of the process is to make a Windows based virtual machine that is
 	![Attaching an ISO file.](images/vm7.jpg)
 
 6. Boot up the VM and setup Windows.  Once you're on the Windows Desktop, you're ready for the next step.
-{: .caution}
-> * Don't install any programs or add files to the system at this point!  We need it to be as light on disk space as possible.
-> * If possible, don't yet activate Windows.  Wait until after Windows is installed on the Linode VPS to activate it.  The change in hardware will likely force the need for a second activation if you do it now.
-> * Don't install the VirtualBox Guest additions, they'll just get in your way and needlessly fluff up the system.
+
+	{: .caution}
+	> * Don't install any programs or add files to the system at this point!  We need it to be as light on disk space as possible.
+	> * If possible, don't yet activate Windows.  Wait until after Windows is installed on the Linode VPS to activate it.  The change in hardware will likely force the need for a second activation if you do it now.
+	> * Don't install the VirtualBox Guest additions, they'll just get in your way and needlessly fluff up the system.
 
 	![Windows 10 is up and running!](images/vm9.jpg)
 
@@ -153,7 +169,7 @@ We're going back to the local Windows Virtual Machine.  We need to boot it up wi
 
 		dd if={Local Disk Location} | pv | gzip -9 | ssh root@{VPS IP} "gzip -d | dd of={Remote Disk Location}"
         
-	Where {Local Disk Location} \== your local disk location we found, {Remote Disk Location} \== the remote disk location we found, and {VPS IP} \== the IP address of your Linode VPS.  For example, my command looks like this:
+	Where {Local Disk Location} == your local disk location we found, {Remote Disk Location} == the remote disk location we found, and {VPS IP} == the IP address of your Linode VPS.  For example, my command looks like this:
     
 		dd if=/dev/sda | pv | gzip -9 | ssh root@45.33.41.131 "gzip -d | dd of=/dev/sda"
         
