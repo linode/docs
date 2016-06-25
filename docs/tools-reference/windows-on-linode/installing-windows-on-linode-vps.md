@@ -49,19 +49,15 @@ The first step of the process is to make a Windows based virtual machine that is
 1. Head over to the [VirtualBox Website](https://www.virtualbox.org/wiki/Downloads) and download a free copy of VirtualBox for the host OS you're using.  Install VirtualBox and open it up.
 
 2. Now let's make the VM.  You can give it whatever name makes sense to you.
-
 ![Naming your virtual machine.](images/vm1.jpg)
 
 3. 2GB of ram is fine, this just needs to be enough to run the VM on your local machine. 
-
 ![Setting the ram.](images/vm2.jpg)
 
 4. Hit "Next" through the defaults until this screen.  We need the VM to have exactly 24GB to match the Linode VPS we're going to copy this to later.
-
 ![Make a virtual disk right away.](images/vm6.jpg)
 
 5. Now attach the Windows ISO to the VM.
-
 ![Attaching an ISO file.](images/vm7.jpg)
 
 6. Boot up the VM and setup Windows.  Once you're on the Windows Desktop, you're ready for the next step.
@@ -70,21 +66,17 @@ The first step of the process is to make a Windows based virtual machine that is
 > * Don't install any programs or add files to the system at this point!  We need it to be as light on disk space as possible.
 > * If possible, don't yet activate Windows.  Wait until after Windows is installed on the Linode VPS to activate it.  The change in hardware will likely force the need for a second activation if you do it now.
 > * Don't install the VirtualBox Guest additions, they'll just get in your way and needlessly fluff up the system.
-
 ![Windows 10 is up and running!](images/vm9.jpg)
 
 7. Now we need to enable remote desktop.  There is an [article on How-To Geek](http://www.howtogeek.com/howto/windows-vista/turn-on-remote-desktop-in-windows-vista/) on this for all modern Windows systems.  The screenshots below outline how it can be done in Windows 10 Enterprise.
 
 	7.1 Go to the control panel, then System & Security.
-
 ![Windows 10 Control Panel.](images/vm10.jpg)
 
 	7.2 Select "Allow Remote Access" under the "System" heading.
-
 ![System Settings in the Control Panel.](images/vm11.jpg)
 
 	7.3 Make sure the "Allow Remote Connections" option is checked.  I unchecked the secure option to keep things simple for now, this is an easy setting to adjust later in production mode.
-
 ![Make sure we can connect to this VM later.](images/vm12.jpg)
 
 8. Now that we have remote desktop enabled, lets shutdown the Windows VM and minimize VirtualBox.  We're going to work on someting else for the next few minutes.
@@ -95,36 +87,26 @@ In the last step we prepared a Windows system to send over the wire to a VPS, bu
 1. Create a new "2048" VPS.  I know that's crazy small, we'll go over how to resize to a larger VPS later.  For now, it's just easier to keep the resources identical to the local VM.
 
 2. Once the VM is created, we're going to make a single disk using the settings below.
-
 ![VPS Disk Settings.](images/lin2.jpg)
 
 3. Now we need a Configuration Profile that will boot Windows.  The settings below get it done.
-
 ![Configuratio Manager part 1.](images/lin4.jpg)
 ..
-
 ![Configuration Manager part 2.](images/lin5.jpg)
 
 4. Next we boot the VPS into Rescue Mode and access it via the Glish interface.
-
 ![Booting into resuce mode.](images/lin6.jpg)
-
 The Glish option is under the "Remote Access" tab.
-
 ![Getting Glish up for us.](images/lin7.jpg)
 
 5. Set a password using the `passwd` command.
-
 ![Getting Glish up for us.](images/lin8.jpg)
 
 6. Now start up the SSH server with `service ssh start`.
-
 ![Getting Glish up for us.](images/lin9.jpg)
 
 7. We're almost done here!  Before the next step, we need to know where are primary disk is.  We can do that with `fdisk -l`.
-
 ![Getting Glish up for us.](images/lin10.jpg)
-
 We can see a few disks here, but only one of them is 24 GiB, the exact size we set our primary disk before!  Knowing the size, we can see above that the primary disk is located at "/dev/sda".  Let's write that down and label it "Remote Disk Location".  Once you write it down, go ahead and close the Glish window but keep your VPS running.
 
 ## We Need To Move Your Windows, All Of Them
@@ -133,21 +115,15 @@ Okay, we've got both ends setup now and we're ready to copy the Windows system o
 We're going back to the local Windows Virtual Machine.  We need to boot it up with Finnix instead of Windows.  If you haven't already downloaded Finnix you can do so [here](http://www.finnix.org/Download).
 
 1. Select the Finnix ISO to boot in VirtualBox.
-
 ![Selecting the Finnix ISO.](images/vm13.jpg)
 
 2. Bootup Finnix and select the 64-bit boot option.
-
 ![Finnix boot screen.](images/vm14.jpg)
-
 Once you get the command line you're good to go.
-
 ![Finnix command line.](images/vm15.jpg)
 
 3. We need to know what disk to copy, let's see what disks are present with `fdisk -l`.
-
 ![Getting Glish up for us.](images/tran1.jpg)
-
 We can see that "/dev/sda" has a 24 GiB size, this is our primary disk!  Write down that disk location and label it "Local Disk Location".  On this virtual machine we can see it's "/dev/sda", yours is probably the same but we still need to make 100% sure.
 
 4. Alright, we're ready to transfer the Windows HDD over to the VPS with the following command:
@@ -155,18 +131,13 @@ We can see that "/dev/sda" has a 24 GiB size, this is our primary disk!  Write d
 Where {Local Disk Location} \== your local disk location we found, {Remote Disk Location} \== the remote disk location we found, and {VPS IP} \== the IP address of your Linode VPS.  For example, my command looks like this:
 	dd if=/dev/sda | pv | gzip -9 | ssh root@45.33.41.131 "gzip -d | dd of=/dev/sda"
 Once you start the command, you'll likely get asked to accept a certficiate.  Type "yes" and enter, then type the password you set earlier for the VPS when prompted.  The transfer will begin once the password is accepted.
-
 ![Starting the transfer.](images/tran2.jpg)
-
 This can take a while, up to a few hours.  Take a nap, let this run overnight, walk the dog, etc.
 *The command used in this step was originally contributed by [Nathan Sweet](https://github.com/NathanSweet).*
 
 5. When the transfer completes, we should see something like this:
-
 ![Starting the transfer.](images/tran3.jpg)
-
 At this point we can shutdown the local vm with `shutdown -h now` and delete the VM completely from our computer.
-
 ![Starting the transfer.](images/tran4.jpg)
 
 ## Finishing Up & RDP
