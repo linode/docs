@@ -13,7 +13,7 @@ title: 'Windows on Linode'
 contributor:
   name: Scott Lott
   link: Website
-  external_resources:
+  external_resources:(replace /dev/sda2(replace /dev/sda2
 - '[ClickSimply.com](http://clicksimply.com)'
 ---
 
@@ -36,26 +36,25 @@ To complete the guide you'll need these resources:
 
 4. An authentic copy of Windows.  I’ve tested this process back to Windows 7/Windows Server 2012 but we’ll be using a [Windows 10 trial](https://www.microsoft.com/en-us/evalcenter/evaluate-windows-10-enterprise) for this guide.
 
-5. An active Linode2048.
+5. An active Linode VPS.
 
 6. A few spare hours.
 
 {: .caution}
->
 >Linode's backup system uses partition level scanning to work, Windows NTFS partitions aren't compatible with the system at all.  This means you won't be able to use Linode's automatic backup system with th VPS holding Windows on it.
 
 ## A Quick Summary
 Sometimes it's helpful to get the big picture before diving into something, so here's basically what we're going to do in this guide:
 
-1. Create two virtual machines with 24GB HDDs, one on Linode and one on our local computer.
+1. Create two virtual machines, one on Linode and one on our local computer.
 
 2. Install Windows on our local VM and enable remote desktop connections.
 
 3. Clone the local VM disk to the Linode VPS.
 
-4. Increase the size of the Linode VPS and increase the Windows partition size to fill the new drive space.
+4. Increase the size of the Windows partition to fill the VPS drive space.
 
-5. Use RDP on our local machine to connect to the VPS.
+5. Use RDP on the local machine to connect to the VPS.
 
 Excellent, let's get started!
 
@@ -72,7 +71,7 @@ The first step of the process is to make a Windows based virtual machine that is
 
 	![Setting the ram.](images/vm2.jpg)
 
-4. Hit "Next" through the defaults until this screen.  We need the VM to have exactly 24GB to match the Linode VPS we're going to copy this to later.
+4. Hit "Next" through the defaults until this screen.  The HDD should be no larger than 24GB, the smaller the better.
 
 	![Make a virtual disk right away.](images/vm6.jpg)
 
@@ -83,6 +82,7 @@ The first step of the process is to make a Windows based virtual machine that is
 6. Boot up the VM and setup Windows.  Once you're on the Windows Desktop, you're ready for the next step.
 
 	{: .caution}
+	> * Install Windows on a single partition that fills the hard drive (basically the default settings).
 	> * Don't install any programs or add files to the system at this point!  We need it to be as light on disk space as possible.
 	> * If possible, don't yet activate Windows.  Wait until after Windows is installed on the Linode VPS to activate it.  The change in hardware will likely force the need for a second activation if you do it now.
 	> * Don't install the VirtualBox Guest additions, they'll just get in your way and needlessly fluff up the system.
@@ -108,9 +108,9 @@ The first step of the process is to make a Windows based virtual machine that is
 ## Setup A Linode VPS
 In the last step we prepared a Windows system to send over the wire to a VPS, but right now there's nowhere to send it.  We've got to configure a minimal VPS server and set it up to recieve the Windows image.
 
-1. Create a new "2048" VPS.  I know that's crazy small, we'll go over how to resize to a larger VPS later.  For now, it's just easier to keep the resources identical to the local VM.
+1. Create a new Linode VPS, the smallest Linode VPS will work so pick whatever size you'd like. 
 
-2. Once the VM is created, we're going to make a single disk using the settings below.
+2. Once the VM is created, we're going to make a single disk using the settings below.  The size should be the largest possible allowed, filling all available disk space for this VPS.
 
 	![VPS Disk Settings.](images/lin2.jpg)
 
@@ -135,15 +135,11 @@ In the last step we prepared a Windows system to send over the wire to a VPS, bu
 6. Now start up the SSH server with `service ssh start`.
 	
     ![Starting up SSH.](images/lin9.jpg)
-
-7. We're almost done here!  Before the next step, we need to know where are primary disk is.  We can do that with `fdisk -l`.
-
-	![Checking out the disks on the VPS.](images/lin10.jpg)
-    
-	We can see a few disks here, but only one of them is 24 GiB, the exact size we set our primary disk before!  Knowing the size, we can see above that the primary disk is located at "/dev/sda".  Let's write that down and label it "Remote Disk Location".  Once you write it down, go ahead and close the Glish window but keep your VPS running.
+	
+    We're good to go on setting up the VPS, lets get Windows moved over to your VPS!
 
 ## We Need To Move Your Windows, All Of Them
-Okay, we've got both ends setup now and we're ready to copy the Windows system over to VPS. 
+Okay, we've got both ends setup now and we're ready to copy the Windows system over. 
 
 We're going back to the local Windows Virtual Machine.  We need to boot it up with Finnix instead of Windows.  If you haven't already downloaded Finnix you can do so [here](http://www.finnix.org/Download).
 
@@ -159,28 +155,19 @@ We're going back to the local Windows Virtual Machine.  We need to boot it up wi
 	
     ![Finnix command line.](images/vm15.jpg)
 
-3. We need to know what disk to copy, let's see what disks are present with `fdisk -l`.
-	
-    ![Getting Glish up for us.](images/tran1.jpg)
-    
-	We can see that "/dev/sda" has a 24 GiB size, this is our primary disk!  Write down that disk location and label it "Local Disk Location".  On this virtual machine we can see it's "/dev/sda", yours is probably the same but we still need to make 100% sure.
+3. Alright, we're ready to do the transfer with the following command:
 
-4. Alright, we're ready to transfer the Windows HDD over to the VPS with the following command:
-
-		dd if={Local Disk Location} | pv | gzip -9 | ssh root@{VPS IP} "gzip -d | dd of={Remote Disk Location}"
+		dd if=/dev/sda | pv | gzip -9 | ssh root@LinodeIP "gzip -d | dd of=/dev/sda"
         
-	Where {Local Disk Location} == your local disk location we found, {Remote Disk Location} == the remote disk location we found, and {VPS IP} == the IP address of your Linode VPS.  For example, my command looks like this:
-    
-		dd if=/dev/sda | pv | gzip -9 | ssh root@45.33.41.131 "gzip -d | dd of=/dev/sda"
+	The first "/dev/sda" is the local vm drive that holds windows, the last "/dev/sda" is the location of the empty disk we created a few minutes ago.  If you need to find out which drive is which use `fdisk -l` to see what drives are connected to the system.
         
 	Once you start the command, you'll likely get asked to accept a certficiate.  Type "yes" and enter, then type the password you set earlier for the VPS when prompted.  The transfer will begin once the password is accepted.
 	
     ![Starting the transfer.](images/tran2.jpg)
 
 	This can take a while, up to a few hours.  Take a nap, let this run overnight, walk the dog, etc.
-	*The command used in this step was originally contributed by [Nathan Sweet](https://github.com/NathanSweet).*
 
-5. When the transfer completes, we should see something like this:
+4. When the transfer completes, we should see something like this:
 
 	![Transfer completed!](images/tran3.jpg)
 	
@@ -226,25 +213,19 @@ We're going back to the local Windows Virtual Machine.  We need to boot it up wi
     ![Windows 10 settings on Linode VPS.](images/fin7.jpg)
 
 ## Making the Drive Bigger
-Now that we've got Windows running on our VPS we need to give it some extra space.  25 GB will get filled up instantly on any Windows install so let's do this.
+Now that we've got Windows running on our VPS we need to fill the availble disk space with the Windows partition.
 
-1. Disconnect your RDP session, then go into the Linode Manager and disable Lassie for your VPS.
+1. We need to do a proper shutdown of Windows since we're resizing the disk.  Start by going into the control panel and disable Lassie.
 
-2. Reconnect to the VPS using Glish like we did before.  Once the black Glish window appears, hit the spacebar to bring the screen to life and show the login page.  We need to perform a proper Windows shutdown since we're resizing the disks.  By tapping the "Tab" and arrow keys you can navigate to the power icon and press enter.  Then select shutdown from the dropdown list using the arrows and enter key once again.
+	![Turning Lassie off.  Good girl!](images/res1.jpg)
 
-	![Windows login on Glish.](images/res1.jpg)
+2. We can't shutdown Windows from the start menu in a remote desktop session, so open a command prompt by clicking on the start menu and searching for "cmd".  Then, enter this into the command window:
 	
-    Close the glish window once it shuts down.
+    	shutdown /s /t 0
+        
+	The VPS will shutdown and close your RDP session automatically.
 
-3. Resize your VPS to whatever size you'd like now that it's shut down.  I'm just going to bump up to the 4096.
-
-	![Resizing the Linode.](images/res2.jpg)
-
-4. Edit the single disk on your VPS to make it larger to acomodate the bigger disk size.
-
-	![Make the disk bigger!](images/res3.jpg)
-
-5. Once that's all done it's time to reboot into rescue mode again, we're going to use Finnix to resize the Windows partition.  Once it boots up, bring up the Glish console.
+3. Once that's all done it's time to reboot into rescue mode again, we're going to use Finnix to resize the Windows partition.  Once it boots up, bring up the Glish console.
 	
     ![Back into rescue mode.](images/lin6.jpg)
 	
@@ -252,42 +233,37 @@ Now that we've got Windows running on our VPS we need to give it some extra spac
 	
     ![Confirming the drive to edit.](images/lin7.jpg)
 
-6. We need to resize the partition container first, fdisk is the best tool for this.  Our Windows partition should be at /dev/sda2 but lets just confirm that with a `fdisk -l`
-	
-    ![Use FDisk to find the right partition.](images/res4.jpg)
- 
-	We can see that our primary disk is still at /dev/sda by seeing that it's 48 GiB in size, exactly how big we set in the Linode Manager in step 4. Under /dev/sda we see two partitions, one of them is 23.5G, that's almost exactly the same size we set our original Windows partition a while ago.  So sure enough, /dev/sda2 is our primary partition.  Let's get to work on it.
-
-7. Lets dive into the primary disk, type `fdisk /dev/sda`.  Replace '/dev/sda' with the primary disk you found in the previous step.  Next press 'd'.  You'll be asked for a partition number.  The partition number is the last number of the partition location in the last step, for example we'd type a '2' here to target /dev/sda2. Once we press enter the command will get executed.
+4. Lets dive into the primary disk, type `fdisk /dev/sda`.  Next press 'd'.  You'll be asked for a partition number.  The partition number is the last number of the partition location, for example we'd type a '2' here to target /dev/sda2.
 	
     ![Removing the existing partition.](images/res5.jpg)
 	
     Don't worry about the whole "Partition has been deleted" message.  We'll take care of that in the next step.
 
-8. Okay, now lets remake the partition at a larger size.  Type 'n', then enter, 'p', then enter. Next give it the partition number we've been using (probably 2).  For the First Sector it needs to stay exactly the same as it was before.  Just press enter to apply the default, finally the Last Sector should be as high as possible, also usually the default so just press enter again.  
+5. Okay, now lets remake the partition at a larger size.  Type 'n', then enter, 'p', then enter. Next type "2" for the partition number and enter.  For the First Sector it needs to stay exactly the same as it was before.  Just press enter to apply the default, finally the Last Sector should be as high as possible, also usually the default so just press enter again.  
 
 	![Putting the partition back.](images/res6.jpg)
 
-9. To finish up with fdisk we'll set the partition type then write the changes to disk.  Type "t" to go into partition type mode, select the same partition as before, then provide "7" as the partition type.  Finally, type "w" to commit changes and press enter.  All done with fdisk!
+6. To finish up with fdisk we'll set the partition type then write the changes to disk.  Type "t" to go into partition type mode, select the same partition as before, then provide "7" as the partition type.  Finally, type "w" to commit changes and press enter.  All done with fdisk!
 	
     ![Setting the partition type correctly.](images/res8.jpg)
 
-10. Now that we've resized the physical disk and the partition container, we need to resize the partition itself.  Let's type `ntfsresize --info /dev/sda2` (replace /dev/sda2 with whatver the primary partition is) into the Glish window to see how things are going.
+7. Now that we've resized the physical disk and the partition container, we need to resize the partition itself.  Let's type `ntfsresize --info /dev/sda2` (replace /dev/sda2 with whatever the primary partition is) into the Glish window to see how things are going.
 	
     ![Resizing the NTFS partition.](images/res9.jpg)
 	
     Notice space in use shows 49%, exactly what we want to see since we doubled the disk size from it's original.  Let's go ahead and resize the NTFS partition.  
 
-11. I resized to a 48GB VPS, so the command I'm going to use is:
+8. I setup a  4096 VPS with a 48 GB hard drive, so the command I'm going to use is:
+
 		ntfsresize --size 48G /dev/sda2
 	
-    You'll replace "48G" with the GB size of the VPS you have and "/dev/sda2" with your primary partition.  When prompted to confirm accept with the enter key and the resize will happen.
+    You'll replace "48G" with the GB size of the VPS you have.
 	
     ![Applying the resize to our partition.](images/res11.jpg)
 	
     Don't worry about oversizing the partition, ntfsresize won't let you.  It's possible to play with the GB number a little to get a bit more space out of the system, your mileage may vary.
 
-12. That's it!  The resize is complete, shutdown with `shutdown -h now`, turn Lassie back on, then boot up your Windows VPS normally with the new larger disk!  Once you access it via RDP you should see all the new space and other resouces!
+9. That's it!  The resize is complete, shutdown with `shutdown -h now`, turn Lassie back on, then boot up your Windows VPS normally with the new larger disk!  Once you access it via RDP you should see all the new space and other resouces!
 	
     ![Showing the larger resources available to this VPS.](images/res12.jpg)
 
