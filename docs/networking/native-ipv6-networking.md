@@ -5,9 +5,9 @@ author:
 description: 'How to configure IPv6 networking natively on your Linode.'
 keywords: 'ipv6, networking'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Friday, February 6th, 2015
+modified: Friday, June 24, 2016
 modified_by:
-    name: Dave Russell
+    name: Phil Zona
 published: 'Tuesday, May 3rd, 2011'
 title: Native IPv6 Networking
 external_resources:
@@ -15,7 +15,7 @@ external_resources:
  - '[IPv6 Subnet Cheat Sheet](http://www.ipv6ve.info/project-definition/ipv6-subnet-cheat-sheet-and-ipv6-cheat-sheet-reference)'
 ---
 
-Linode provides IPv6 support in all of our data centers, and all Linodes come with one IPv6 address at creation. By default, IPv6 is enabled on all Linodes and the IPv6 address is acquired via SLAAC. To determine your Linode's IPv6 address, click on the [Remote Access](/docs/networking/remote-access) tab of the Linode's dashboard.
+Linode provides IPv6 support in all of our data centers, and all Linodes are created with one IPv6 address. By default, IPv6 is enabled on all Linodes and the IPv6 address is acquired via Stateless Address Autoconfiguration (SLAAC). To determine your Linode's IPv6 address, click on the [Remote Access](/docs/networking/remote-access) tab of the Linode's dashboard.
 
 It is important to note that Linode does not offer private IPv6 address allocations. We have designed our IPv6 accounting so that local IPv6 traffic does not count against your transfer quota and you can use them just like private IPv6 addresses. 
 
@@ -66,9 +66,9 @@ You can request additional IPv6 addresses at any time by opening a [support tick
 Each /56 or /64 IPv6 address pool is routed to a specific Linode. If you want to use that same address pool across multiple Linodes, you can use neighbor discovery. In order to take advantage of neighbor discovery you must configure your Linode to act as a router using `net.ipv6.conf.default.forwarding`. 
 
 {: .caution}
->This will create a single point of failure for your infrastructure. If that Linode were to crash, lose networking, or have another disruption in service, your entire IPv6 network would also go down.
+>This creates a single point of failure for your infrastructure. If a Linode set up in this way were to crash, lose networking, or encounter any another disruption in service, your entire IPv6 network will also be interrupted.
 
-Unlike the other pools available, /116 IPv6 address pools route to all of the Linodes on your account within the same data center as the Linode the pool is assigned to. This means there is no single point of failure.
+Unlike the other pools available, /116 IPv6 address pools route to all of the Linodes on your account within the same data center as the Linode to which the pool is assigned. This means there is no single point of failure.
 
 ## Adding IPv6 Addresses
 
@@ -78,6 +78,10 @@ While default IPv6 addresses are configured automatically, you will need to stat
 >If SLAAC is not obtaining your IPv6 address, even after verifying that privacy extensions are disabled and your Linode is accepting router advertisements, you may need to statically configure your default IPv6 address as well.
 
 ### Debian/Ubuntu
+
+{: .note}
+> Be sure that [Network Helper](https://www.linode.com/docs/platform/network-helper) is disabled when adding addresses from a pool, otherwise your configuration files may be overwritten upon rebooting your Linode, causing disruption to your IPv6 networking.
+> 
 
 1.  On Debian and Ubuntu, edit `/etc/network/interfaces` to set up statically configured IPv6:
 
@@ -91,7 +95,7 @@ While default IPv6 addresses are configured automatically, you will need to stat
       auto lo
       iface lo inet loopback
 
-      # Automatically brings up the default network interface (eth0) 
+      # Automatically brings up the default network interface (eth0)
       auto eth0
       allow-hotplug eth0
 
@@ -112,7 +116,7 @@ While default IPv6 addresses are configured automatically, you will need to stat
 
         {: .note}
         >On Debian Jessie, your default IPv6 address provided by SLAAC will no longer be automatically assigned after you request a /64 pool. You will need to manually add it as a static address or IPv6 routing will not work.
-                
+
 2.  For /56 and /64 pools, addresses within your pool will be routed to your Linode's default IP address, or another Linode on your account in the same datacenter. You will see where the pool is routed under "Public IP Pools" within the Linode Manager's Remote Access tab. You must enable packet forwarding on that Linode to allow it to act as a router and enable external traffic from addresses within your IPv6 pool:
 
     {: .file}
@@ -130,8 +134,6 @@ While default IPv6 addresses are configured automatically, you will need to stat
 
         ifdown -a && ifup -a
 
-{: .note}
-> Be sure that [Network Helper](https://www.linode.com/docs/platform/network-helper) is disabled when adding addresses from a pool, otherwise your configuration files may be overwritten upon rebooting your Linode, causing disruption to your IPv6 networking.
 
 ### CentOS/Fedora
 
@@ -182,7 +184,7 @@ If you are still using `netctl` in Arch Linux, you can statically configure your
 
         cp /etc/netctl/examples/ethernet-dhcp /etc/netctl/ethernet-static
 
-2.  Edit your newly copied file, entering your IPv6 networking information (e.g. IP address, gateway, etc.). 
+2.  Edit your newly copied file, entering your IPv6 networking information (e.g. IP address, gateway, etc.).
 
     {: .file }
     /etc/netctl/ethernet-static
