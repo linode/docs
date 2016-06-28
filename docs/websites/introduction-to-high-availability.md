@@ -11,8 +11,7 @@ modified_by:
   name: Phil Zona
 title: 'Introduction to High Availability'
 external_resources:
-- '[Link Title 1](http://www.example.com)'
-- '[Link Title 2](http://www.example.net)'
+- '[Fault Tolerance](https://en.wikipedia.org/wiki/Fault_tolerance)'
 ---
 
 ## What High Availability Is
@@ -31,9 +30,9 @@ However, because highly available systems are made up of so many components, the
 
 To create a highly available system, three characteristics should be present:
 
-    1.  Redundancy
-    2.  Monitoring
-    3.  Failover
+1.  Redundancy
+2.  Monitoring
+3.  Failover
 
 In general, a high availability system works by having more components than it needs, performing regular checks to make sure each component is working properly, and if one fails, switching it out for one that is working.
 
@@ -71,9 +70,9 @@ In our configuration, a cluster of three GlusterFS nodes are configured to repli
 
 The database stores the content and user credentials for your site. In our guide, we use MySQL, but other database management systems work in a similar way. A database is particularly important when using a CMS like Wordpress, as it stores the information that makes up your pages and posts.
 
-In our configuration, the database nodes are a Galera cluster of MySQL servers. Galera offers *synchronous replication*, meaning data is written to secondary database nodes ast the same time as it's being written to the primary. This method of replication provides excellent redundancy to the database cluster because it avoids periods of time where the database nodes are not in matching states. Galera also provides *multi-master replication*, meaning any one of the database nodes can respond to client queries.
+In our configuration, the database nodes are a Galera cluster of MySQL servers. Galera offers *synchronous replication*, meaning data is written to secondary database nodes at the same time as it's being written to the primary. This method of replication provides excellent redundancy to the database cluster because it avoids periods of time where the database nodes are not in matching states. Galera also provides *multi-master replication*, meaning any one of the database nodes can respond to client queries.
 
-Our configuration also uses Percona XtraDB, which offers *state snapshot transfer*, or SST. This means that when a new node joins the cluster, the node from which it's syncing data (the donor) does not enter a read-only state. This not only helps with efficiency in the initial setup, it also allows nearly seamless horizontal scaling as your needs grow.
+Our configuration also uses XtraBackup, a more efficient method of *state snapshot transfer*. This means that when a new node joins the cluster, the node from which it's syncing data (the donor) is still available to handle queries. This not only helps with efficiency in the initial setup, it also allows nearly seamless horizontal scaling as your needs grow.
 
 ### Web Server
 
