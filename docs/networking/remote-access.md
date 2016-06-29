@@ -8,8 +8,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['remote-access/']
 modified: Saturday, September 6th, 2014
 modified_by:
-  name: Linode
-published: 'Tuesday, May 3rd, 2016'
+  name: Phil Zona
+published: 'update before publishing, 2016'
 title: Remote Access
 ---
 
@@ -77,7 +77,7 @@ You'll see a confirmation message that the reverse DNS has been reset.
 
 ## Configuring IP Failover
 
-If you're using two Linodes to make a website highly available with Heartbeat and Pacemaker , you can use the Linode Manager to configure IP failover. Here's how:
+*IP failover* is the process by which an IP address is reassigned from one Linode to another in the event the first one fails or goes down. If you're using two Linodes to make a website [highly available](/docs/websites/introduction-to-high-availability) with Keepalived or a similar service, you can use the Linode Manager to configure IP failover. Here's how:
 
 1.  Log in to the [Linode Manager](https://manager.linode.com).
 2.  Click the **Linodes** tab. A list of your virtual private servers appears.
