@@ -16,8 +16,11 @@ contributor:
 external_resources:
  - '[Sender Policy Framework](http://www.openspf.org/)'
  - '[DomainKeys Identified Mail](http://www.dkim.org/)'
+ - '[DMARC](http://dmarc.org/)'
  - '[OpenDKIM](http://www.opendkim.org/)'
  - 'The [Sender Policy Framework](https://en.wikipedia.org/wiki/Sender_Policy_Framework) and [DomainKeys Identified Mail](https://en.wikipedia.org/wiki/DomainKeys_Identified_Mail) Wikipedia pages should not be considered authoritative but do provide helpful discusson and additional references.'
+ - '[How to eliminate spam and protect your name with DMARC](https://www.skelleton.net/2015/03/21/how-to-eliminate-spam-and-protect-your-name-with-dmarc/#dmarc) provides additional help with DMARC records.'
+ - '[DMARC Record Assistant](http://kitterman.com/dmarc/assistant.html) provides a web form to generate a DMARC record for you based on your selections.'
 ---
 
 *This is a Linode Community guide. Write for us and earn $250 per published guide.*
@@ -27,7 +30,9 @@ external_resources:
 
 [DKIM (DomainKeys Identified Mail)](http://www.dkim.org/) is a system that lets your official mail servers add a signature to headers of outgoing email and identifies your domain's public key so other mail servers can verify the signature. As with SPF, DKIM helps keep your mail from being considered spam. It also lets mail servers detect when your mail hass been tampered with in transit.
 
-The instructions for setting up DNS for SPF and DKIM are generic. The instructions for configuring the SPF policy agent and OpenDKIM into Postfix should work on any distribution after making respective code adjustments for the package tool and to identify the exact path to OpenDKIM's socket file in Postfix.
+[DMARC (Domain Message Authentication, Reporting & Conformance)](http://dmarc.org/) allows you to advertise to mail servers what your domain's policies are regarding mail that fails SPF and/or DKIM validations. It additionally allows you to request reports on failed messages from mail servers, which the OpenDMARC software allows your mail server to generate for incoming messages.
+
+The instructions for setting up DNS for SPF, DKIM and DMARC are generic. The instructions for configuring the SPF policy agent, OpenDKIM and OpenDMARC into Postfix should work on any distribution after making respective code adjustments for the package tool and to identify the exact path to socket files in use.
 
 {: .note}
 >
@@ -381,6 +386,22 @@ As a final item, you can add an ADSP policy to your domain saying that all email
 
 You don't need to set this up, but doing so makes it harder for anyone to forge email from your domains because recipient mail servers will see the lack of a DKIM signature and reject the message.
 
+### Set up Domain Message Authentication, Reporting & Conformance (optional)
+
+The DMARC DNS record can be added to your domain to advise mail servers what you think they should do with mail claiming to be from your domain that fails validation with SPF and/or DKIM, and to request reports on failing mail. DMARC should only be set up if you have SPF and DKIM set up and operating successfully. If you add the DMARC DNS record without having both SPF and DKIM in place, all messages from your domain will fail validation which may cause them to be discarded or relegated to a spam folder.
+
+The DMARC record is a TXT record for host `_dmarc` in your domain containing the following recommended values:
+
+    v=DMARC1 p=quarantine sp=quarantine adkim=r aspf=r
+
+This requests mail servers to quarantine (do not discard, but separate from regular messages) any email that fails either SPF or DKIM checks. No reporting of failures is requested. Very few mail servers implement the software to generate reports on failed messages, so there seems to be little point in requesting reports. If you do wish to request reports, the value would be:
+
+    v=DMARC1 p=quarantine sp=quarantine adkim=r aspf=r fo=1 rf=afrf rua=mailto:youremail@example.com ruf=mailto:youremail@example.com
+
+all as a single string. Replace `youremail@example.com` in the `mailto:` URLs with your own email or an email address you own dedicated to receiving reports. If you're using Linode's DNS Manager, the screen for the new text record will look like this:
+
+![Linode DNS manager add TXT record](/docs/assets/Postfix_DMARC_TXT_record.png)
+
 ### Key rotation
 
 The reason the YYYYMM format is used for the selector is that best practice calls for changing the DKIM signing keys every so often (monthly is recommended, and no longer than every 6 months). To do that without disrupting messages in transit, you generate the new keys using a new selector. The process is:
@@ -413,3 +434,5 @@ The reason the YYYYMM format is used for the selector is that best practice call
     Make sure they both start without any errors.
 
 7.  After a couple of weeks, all email in transit should either have been delivered or bounced and the old DKIM key information in DNS won't be needed anymore. Delete the old `YYYYMM._domainkey` TXT records in each of your domains, leaving just the newest ones (most recent year and month). Don't worry if you forget and leave the old keys around longer than planned. There's no security issue. Removing the obsolete records is more a matter of keeping things neat and tidy than anything else.
+
+##
