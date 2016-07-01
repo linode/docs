@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Introduction to high availability concepts'
 keywords: 'high availability,hosting,website,failover'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Thursday, June 30th, 2016'
 modified: Thursday, June 30th, 2016
 modified_by:
@@ -60,7 +60,7 @@ The concepts discussed here are specifically geared toward the configuration des
 
 ### File System
 
-In order to store uploads and plugins, your site will need a networked file system. Our high availability guide uses GlusterFS. A file system is exactly what it sounds like: a system of files. These files could be software, plugins, or a number of other things.
+In order to store uploads and plugins, your site will need a networked file system. Our high availability guide uses GlusterFS.
 
 In a high availability setup, a *distributed replicated volume* is used to store files. You can think of the volume as the entire shared file system across all servers. The volume is made up of *bricks*, which are the shared file directories on any one server. 
 
@@ -68,11 +68,11 @@ In our configuration, a cluster of three GlusterFS nodes are configured to repli
 
 ### Database
 
-The database stores the content and user credentials for your site. In our guide, we use MySQL, but other database management systems work in a similar way. A database is particularly important when using a CMS like Wordpress, as it stores the information that makes up your pages and posts.
+The database stores the content and user credentials for your site. In our guide, we use Percona DB, but other database management systems work in a similar way. A database is particularly important when using a CMS like Wordpress, as it stores the information that makes up your pages and posts.
 
-In our configuration, the database nodes are a Galera cluster of MySQL servers. Galera offers *synchronous replication*, meaning data is written to secondary database nodes at the same time as it's being written to the primary. This method of replication provides excellent redundancy to the database cluster because it avoids periods of time where the database nodes are not in matching states. Galera also provides *multi-master replication*, meaning any one of the database nodes can respond to client queries.
+In our configuration, the database nodes are a Galera cluster of servers. Galera offers *synchronous replication*, meaning data is written to secondary database nodes at the same time as it's being written to the primary. This method of replication provides excellent redundancy to the database cluster because it avoids periods of time where the database nodes are not in matching states. Galera also provides *multi-master replication*, meaning any one of the database nodes can respond to client queries.
 
-Our configuration also uses XtraBackup, a more efficient method of *state snapshot transfer*. This means that when a new node joins the cluster, the node from which it's syncing data (the donor) is still available to handle queries. This not only helps with efficiency in the initial setup, it also allows nearly seamless horizontal scaling as your needs grow.
+Our configuration also uses XtraBackup, an efficient method of *state snapshot transfer*. This means that when a new node joins the cluster, the node from which it's syncing data (the donor) is still available to handle queries. This not only helps with efficiency in the initial setup, it also allows nearly seamless horizontal scaling as your needs grow.
 
 ### Web Server
 
@@ -96,7 +96,7 @@ Keepalived uses *virtual router redundancy protocol*, or VRRP, to automatically 
 
 The load balancing component of a high availability system is one of its most important components, acting as the first barrier to handle traffic from users to the application servers. Without a load balancer, your site would be hosted on three application servers that have no way of assigning priority amongst themselves.
 
-Our solution to load balancing is the [NodeBalancer](https://www.linode.com/nodebalancers), a highly available component that will evenly distribute incoming traffic to one of the three application servers, ensuring that no single server experiences a much heavier load than the others.
+Our solution to load balancing is the [NodeBalancer](/docs/platform/nodebalancer/getting-started-with-nodebalancers), a highly available component that will evenly distribute incoming traffic to one of the three application servers, ensuring that no single server experiences a much heavier load than the others.
 
 The NodeBalancer is critical because it provides a single point of access without a single point of failure. It offers backend monitoring, and failover at the top level of the highly available system (the bottom level is handled by Gluster FS and Keepalived).
 
