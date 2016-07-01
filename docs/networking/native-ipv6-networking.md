@@ -21,7 +21,7 @@ It is important to note that Linode does not offer private IPv6 address allocati
 
 {: .note }
 >
-> The steps provided in this guide require root privileges. It is assumed that you will run these commands as the root superuser. If you are not logged in as `root` you will need to use `sudo`. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+> The steps provided in this guide require root privileges. It is assumed that you will run these commands as the root superuser. If you are not logged in as `root` you will need to prefix most commands with `sudo`. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 
 ## Setting up IPv6
 
@@ -63,7 +63,7 @@ You can request additional IPv6 addresses at any time by opening a [support tick
 
 ### IPv6 Neighbor Discovery
 
-Each /56 or /64 IPv6 address pool is routed to a specific Linode. If you want to use that same address pool across multiple Linodes, you can use neighbor discovery. In order to take advantage of neighbor discovery you must configure your Linode to act as a router using `net.ipv6.conf.default.forwarding`. 
+Each /56 or /64 IPv6 address pool is routed to a specific Linode. If you want to use that same address pool across multiple Linodes, you can use neighbor discovery. In order to take advantage of neighbor discovery you must configure your Linode to act as a router by changing the value of `net.ipv6.conf.default.forwarding`. Check your distribution's documentation for information on where to find this setting, as the location varies among different systems.
 
 {: .caution}
 >This creates a single point of failure for your infrastructure. If a Linode set up in this way were to crash, lose networking, or encounter any another disruption in service, your entire IPv6 network will also be interrupted.
@@ -133,7 +133,6 @@ While default IPv6 addresses are configured automatically, you will need to stat
 3.  Restart networking. This command should be performed in [Lish](/docs/networking/using-the-linode-shell-lish), as it will terminate an SSH connection.
 
         ifdown -a && ifup -a
-
 
 ### CentOS/Fedora
 
