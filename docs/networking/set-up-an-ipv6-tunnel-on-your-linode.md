@@ -6,7 +6,7 @@ description: 'How to set up an IPv6 tunnel on your Linode.'
 keywords: 'ipv6,tunnel,broker,networking'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['networking/ipv6-tunnels/']
-modified: Wednesday, June 21st, 2016
+modified: Friday, July 1, 2016
 modified_by:
   name: Phil Zona
 published: 'Friday, April 29th, 2011'
@@ -17,26 +17,28 @@ As IPv4 exhaustion nears, many people are making the switch to IPv6. Linode offe
 
 An IPv6 tunnel lets a system reach an IPv6 network using existing IPv4 connectivity. You may want to follow this guide if you:
 
- - Have a tunnel, which you are migrating to your Linode,
+ - Have a tunnel that you are migrating to your Linode,
  - Want to increase your IPv6 footprint for redundancy and failover in case of routing issues,
- - Don't have IPv6 from your ISP at home, and want to interact with your Linode through it's IPv6 address. By configuring the tunnel to a local computer instead of your Linode, you can connect to your Linode via the IPv6 address.
+ - Don't have IPv6 from your ISP at home, and want to interact with your Linode through its IPv6 address. By configuring the tunnel to a local computer instead of your Linode, you can connect to your Linode via the IPv6 address.
 
-Before beginning this guide, you should have already signed up for an IPv6 tunnel through a tunnel broker. [Wikipedia contains a list of tunnel brokers by region](http://en.wikipedia.org/wiki/List_of_IPv6_tunnel_brokers), and we encourage you to research each one before you decide which one to use. The steps outlined in this guide were performed using tunnels from Hurricane Electric (HE).
+## Before You Begin
+
+You should have already signed up for an IPv6 tunnel through a tunnel broker. [Wikipedia contains a list of tunnel brokers by region](http://en.wikipedia.org/wiki/List_of_IPv6_tunnel_brokers), and we encourage you to research each one before you decide which one to use. The steps outlined in this guide were performed using tunnels from Hurricane Electric (HE).
 
 ## General Setup
 
-Once you have signed up for a tunnel, you will need to issue a few commands on your Linode. Arch and Gentoo Linux users will need to install packages before continuing. Please see the instructions at the end of this section.
+Once you have signed up for a tunnel, you will need to issue a few commands on your Linode. Arch and Gentoo Linux users will need to install the `iproute2` package before continuing. 
 
-1.  Because these steps will temporarily disable networking on the Linode, begin by logging in to through either the [Lish](/using-the-linode-shell-lish) or [Glish](/docs/networking/use-the-graphic-shell-glish) interface.
+1.  Because some of these steps will temporarily disable networking on the Linode, begin by logging in to through either the [Lish](/using-the-linode-shell-lish) or [Glish](/docs/networking/use-the-graphic-shell-glish) interface.
 
 2.  Use the `ip` tool to add the tunnel device. Ours is called `he-ipv6`, to match the device described in Hurricane Electric's examples. Make sure to replace `203.0.113.10` with the endpoint of your tunnel, and `198.51.100.5` with your Linode's IP address. The information for the endpoint can be found in your tunnel broker's web interface, and your Linode's IP address can be found under the [Remote Access](/docs/networking/remote-access) tab of the Linode Manager:
 
         ip tunnel add he-ipv6 mode sit remote 203.0.113.10 local 198.51.100.5 ttl 255
         ip link set he-ipv6 up
 
-3.  Assign IPv6 address and routing information to your new tunnel device. Make sure to replace `2001:DB8:1234:5678::2/64` with the IPv6 address assigned to you. This information should be provided to you by your tunnel broker:
+3.  Assign IPv6 address and routing information to your new tunnel device. Make sure to replace `2001:db8:1234:5678::2/64` with the IPv6 address assigned to you. This information should be provided to you by your tunnel broker as your "Client IPv6 Address":
 
-        ip addr add 2001:DB8:1234:5678::2/64 dev he-ipv6
+        ip addr add 2001:db8:1234:5678::2/64 dev he-ipv6
         ifdown eth0
         ip route add ::/0 dev he-ipv6
         ifup eth0
@@ -45,12 +47,12 @@ Once you have signed up for a tunnel, you will need to issue a few commands on y
     {: .note}
     > The `ifdown` command **will** halt all network traffic to your Linode. This step is included to avoid an error when adding the IPv6 route. It may not be required on all Linux distributions.
     >
-    > on Arch Linux, replace the `ifdown` and `ifup` commands with `ip link set eth0 down` and `ip link set eth0 up`
+    > On Arch Linux, replace the `ifdown` and `ifup` commands with `ip link set eth0 down` and `ip link set eth0 up`
 
     The final command will show all devices with IPv6 addresses, and should have a block similar to the one below:
 
         13: he-ipv6@NONE: <POINTOPOINT,NOARP,UP,LOWER_UP> mtu 1480 state UNKNOWN qlen 1
-            inet6 2001:DB8:1234:5678::2/64 scope global
+            inet6 2001:db8:1234:5678::2/64 scope global
                valid_lft forever preferred_lft forever
             inet6 fe80::0000:0000/64 scope link
                valid_lft forever preferred_lft forever
@@ -64,64 +66,121 @@ Once you have signed up for a tunnel, you will need to issue a few commands on y
 
 If everything is working, you should see ping replies. If not, go back and make sure that you haven't made any errors. Note that configuration of an IP tunnel using this method will not be persistent across reboots, and will need to be configured upon restarting your Linode.
 
-
 ## Manual Configuration
 
-The following instructions will allow you to manually configure your IPv6 tunnel. Please note that in many cases, this is not the preferred method. Read the documentation for your distribution regarding IPv6 before proceeding.
+The instructions in this section will allow you to manually configure your IPv6 tunnel. This can permanently affect your connectivity across reboots, so be sure to read the IPv6 documentation for your distribution before proceeding.
 
 {: .caution }
 > When manually modifying your network configuration, always disable [Network Helper](/docs/platform/network-helper#turn-network-helper-on-for-individual-configuration-profiles) first to avoid having your changes overwritten on reboot.
 
 ### Debian and Ubuntu
 
-Debian and Ubuntu users (versions before 16.04 are not covered here) can perform the following steps to set up a tunnel on their Linode.
+Debian and Ubuntu users (versions before Ubuntu 16.04 are not covered here) can perform the following steps to set up a tunnel on their Linode.
 
 1.  Insert the following into your `/etc/network/interfaces` file:
 
-        auto he-ipv6
-        iface he-ipv6 inet6 v4tunnel
-            address 2001:DB8:1234:5678::2
-            netmask 64
-            endpoint 203.0.113.10
-            local 198.51.100.5
-            ttl 255
-            gateway 2001:470:1f0e:520::1
+    {: .file-excerpt}
+    /etc/network/interfaces
+    : ~~~
+      auto he-ipv6
+      iface he-ipv6 inet6 v4tunnel
+          address 2001:db8:1234:5678::2
+          netmask 64
+          endpoint 203.0.113.10
+          local 198.51.100.5
+          ttl 255
+          gateway 2001:db8:1234:5678::1
+      ~~~
 
-    Replace the `address` value with the "Client IPv6 address". Replace the `gateway` value with the "Server IPv6 address". Replace `203.0.113.10` with the endpoint that your tunnel broker provides you. Generally this endpoint is in a geographical location that is close to your Linode. Replace `198.51.100.5` with your Linode's IP address. If you have multiple IPs, make sure that this IP is set to the same address as the one you used to sign up for the tunnel.
+    Replace the `address` value with the "Client IPv6 address". Replace the `gateway` value with the "Server IPv6 address". Replace the `endpoint` value with the endpoint, or "Server IPv4 Address," that your tunnel broker provides you. Generally this endpoint is in a geographical location that is close to your Linode. Replace the `local` values with your Linode's IP address. If you have multiple IPs, make sure that this IP is set to the same address as the one you used to sign up for the tunnel.
 
 2.  Restart networking services and test the tunnel:
 
         systemctl restart networking.service
         ping6 -I he-ipv6 irc6.oftc.net
 
+    If everything is working, you should see ping replies. If not, go back and double check your network configuration for errors.
+
+### CentOS 7 and Fedora 22+
+
+1.  Create a file at `/etc/sysconfig/network-scripts/ifcfg-he-ipv6` and insert the following directives into it:
+
+    {: .file}
+    /etc/sysconfig/network-scripts/ifcfg-he-ipv6
+    : ~~~
+      NAME="he-ipv6"
+      DEVICE=he-ipv6
+      ONBOOT=yes
+      USERCTL=yes
+      BOOTPROTO=none
+      PEERDNS=no
+
+      IPV6INIT=yes
+      IPV6_AUTOTUNNEL=yes
+      IPV6ADDR="2001:db8:1234:5678::2/64"
+      IPV6_ROUTER=yes
+      IPV6_AUTOCONF=no
+
+      IPV6_CONTROL_RADVD=yes
+      IPV6TUNNELIPV4=203.0.113.10
+      IPV6TUNNELIPV4LOCAL=45.79.171.199
+
+      PHYSDEV=eth0
+      TYPE=sit
+      DEVICETYPE=sit
+      NM_CONTROLLED=no
+
+      IPV6_DEFAULTGW=2001:db8:1234:5678::1
+      IPV6_DEFAUTLDEV=he-ipv6
+      ~~~
+
+    Replace the `IPV6ADDR` value with your "Client IPV6 Address." Replace the `IPV6TUNNELIPV4` value with your "Server IPV4 Address." Replace the `IPV6TUNNELIPV4LOCAL` value with your "Client IPV4 Address." Replace the `IPV6_DEFAULTGW` value with your "Server IPV6 Address." These addresses can be obtained from your tunnel broker.
+
+2.  Start the `he-ipv6` interface:
+
+        ifup he-ipv6
+
+3.  Test the tunnel:
+
+        ping6 -I he-ipv6 irc6.oftc.net
 
     If everything is working, you should see ping replies. If not, go back and double check your network configuration for errors.
 
-### CentOS and Fedora
+### CentOS 6
 
-Add the following lines to your `/etc/sysconfig/network` file:
+1.  Add the following lines to your `/etc/sysconfig/network` file:
 
-    NETWORKING_IPV6=yes
-    IPV6_DEFAULTDEV=sit1
+    {: .file-excerpt}
+    /etc/sysconfig/network
+    : ~~~
+      NETWORKING_IPV6=yes
+      IPV6_DEFAULTDEV=he-ipv6
+      ~~~
 
-Next, create a file at `/etc/sysconfig/network-scripts/ifcfg-sit1`. Insert the following directives into it, replacing the addresses:
+2.  Create a file at `/etc/sysconfig/network-scripts/ifcfg-he-ipv6`. Insert the following directives into it
 
-    DEVICE=sit1
-    BOOTPROTO=none
-    ONBOOT=yes
-    IPV6INIT=yes
-    IPV6TUNNELIPV4=203.0.113.10
-    IPV6ADDR=2001:DB8:1234:5678::2/64
+    {: .file-excerpt}
+    /etc/sysconfig/network-scripts/ifcfg-he-ipv6
+    : ~~~
+      DEVICE=he-ipv6
+      BOOTPROTO=none
+      ONBOOT=yes
+      IPV6INIT=yes
+      IPV6TUNNELIPV4=203.0.113.10
+      IPV6ADDR=2001:db8:1234:5678::2/64
+      ~~~
 
-Issue the following command to start the interface:
+    Replace the `IPV6TUNNELIPV4` value with your remote tunnel endpoint and the `IPV6ADDR` value with the "Client IPv6" address provided to you by your tunnel broker.
 
-    ifup sit1
+3.  Start the `he-ipv6` interface:
 
-Once you have completed these steps, issue the following command to test the tunnel:
+        ifup he-ipv6
 
-    ping6 -I sit1 irc6.oftc.net
+4.  Test the tunnel:
 
-If everything is working, you should see ping replies. If not, go back and double check your network configuration for errors.
+        ping6 -I he-ipv6 irc6.oftc.net
+
+    If everything is working, you should see ping replies. If not, go back and double check your network configuration for errors.
 
 ### Arch Linux
 
