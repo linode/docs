@@ -51,7 +51,7 @@ Add one additional configuration file to the apache `conf.d` folder in order to 
 
 {: .file}
 /etc/httpd/conf.d/ttrss.conf
-:   ~~~ php
+:   ~~~ conf
     <Directory /var/www/html/cache>
         Require all denied
     </Directory>
