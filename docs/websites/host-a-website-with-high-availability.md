@@ -403,7 +403,7 @@ After these rules have been set, reload the firewall rules on each file system n
 
 Next, we'll mount the Gluster volume on our application servers. The steps in this section should be performed on each Apache server node. 
 
-1.  Install `glusterfs-fuse` on each app node:
+1.  Install `glusterfs-fuse`:
 
         yum install glusterfs-fuse
 
@@ -456,6 +456,10 @@ To test redundancy of your file system, you can stop the Gluster daemon on your 
 
 Follow the above steps again, creating another test file and checking whether it is visible from your your application nodes' public IPs. Because the GlusterFS volume is replicated and distributed, and we set backup volumes for our Apache servers, taking down one GlusterFS node should not affect the accessibility of your files.
 
+When you're finished, be sure to remove the test files. Do this for any additional test files you created as well:
+
+    rm /srv/www/testfile
+
 Remember to bring `gluster1`'s Gluster daemon back up before continuing:
 
     systemctl start glusterd
@@ -481,7 +485,7 @@ First, we'll configure IP failover on `galera2` and `galera3` to take on the flo
 
 1.  Go to the **Remote Access** tab in the Linode Manager for `galera2`, and click "IP Failover" under your public IP addresses. 
 
-2.  You'll see a menu listing all of the Linodes on your account. Check the box corresponding to the new private IP addresses for `galera1`, which we will now refer to as the the floating IP address, and click **Save Changes**.
+2.  You'll see a menu listing all of the Linodes on your account. Check the box corresponding to the new private IP address for `galera1`, which we will now refer to as the the floating IP address, and click **Save Changes**.
 
 3.  Repeat the above steps to configure IP failover for `galera3` as well. Make sure to select the same IP address.
 
@@ -499,7 +503,7 @@ First, we'll configure IP failover on `galera2` and `galera3` to take on the flo
 
         mv /etc/keepalived/keepalived.conf /etc/keepalived/keepalived.conf.backup
 
-3.  Replace the file with the following:
+3.  On all database nodes, replace the original file with the following:
 
     {: .file}
     /etc/keepalived/keepalived.conf
@@ -564,7 +568,7 @@ First, we'll configure IP failover on `galera2` and `galera3` to take on the flo
         GRANT USAGE ON *.* to 'clustercheck'@'localhost' IDENTIFIED BY 'example_password';
         FLUSH PRIVILEGES;
 
-    This step only needs to be done on one database node. Once complete, exit the MySQL cli using `quit`.
+    This step only needs to be done on one database node. Once complete, exit the MySQL CLI using `quit`.
 
 6.  On all of your database nodes, add the following entry to your firewall configuration, within the `<zone>` block:
 
@@ -581,7 +585,7 @@ First, we'll configure IP failover on `galera2` and `galera3` to take on the flo
 
         firewall-cmd --reload
 
-8.  Start the keepalived service and enable it to load at boot time:
+8.  Start the `keepalived` service and enable it to load at boot time:
 
         systemctl start keepalived
         systemctl enable keepalived
@@ -594,7 +598,7 @@ Congratulations! You've successfully installed and configured keepalived. Your d
 
 The final step in creating a highly available website or application is to load balance traffic to the application servers. In this step, we'll use a NodeBalancer to distribute traffic between the application servers to ensure that no single server gets overloaded. NodeBalancers are highly available by default, and do not constitute a single point of failure.
 
-For instructions on how to install, follow our guide on [getting started with NodeBalancers](/docs/platform/nodebalancer/getting-started-with-nodebalancers). Be sure to use the private IP addresses of your application servers when adding nodes to your backend.
+For instructions on how to install this component, follow our guide on [getting started with NodeBalancers](/docs/platform/nodebalancer/getting-started-with-nodebalancers). Be sure to use the *private* IP addresses of your application servers when adding nodes to your backend.
 
 {: .note}
 > Nodebalancers are an add-on service. Be aware that adding a Nodebalancer will create an additional monthly charge to your account. Please see our [Billing and Payments](/docs/platform/billing-and-payments#additional-linode-services) guide for more information.
@@ -614,7 +618,7 @@ If you're installing WordPress to manage your new highly available website, we'l
         GRANT ALL PRIVILEGES ON wordpress.* TO 'wordpress'@'%';
         FLUSH PRIVILEGES;
 
-3.  On all of your application servers install PHP and the necessary dependencies:
+3.  On all of your application servers, install PHP and the necessary dependencies:
 
         yum install php php-mysql php-gd
 
