@@ -54,9 +54,11 @@ In a highly available setup, regular checks are performed to ensure that the pri
 
 ## Elements of High Availability
 
-In this section, we'll go over the function of each component of the high availability configuration, and explain how the pieces work together. There are a number of combinations of software to perform each task in a high availability configuration, and the software mentioned in this section serves as just one possible solution to creating a highly available site or application.
+In this section, we'll go over the function of each component of the high availability configuration, and explain how the pieces work together. There are a number of combinations of software to perform each task in a high availability configuration, and the software mentioned in this section servehs as just one possible solution to creating a highly available site or application.
 
-The concepts discussed here are specifically geared toward the configuration described in our guide on how to [host a website with high availability](/docs/websites/host-a-website-with-high-availability), but will apply to highly available systems in general.
+The concepts discussed here are specifically geared toward the configuration described in our guide on how to [host a website with high availability](/docs/websites/host-a-website-with-high-availability), but will apply to highly available systems in general. The  diagram below shows the configuration we use in our guide.
+
+[![High availability server configuration](/docs/assets/high-availability-diagram.png)](/docs/assets/high-availability-diagram.png)
 
 ### File System
 
@@ -68,7 +70,7 @@ In our configuration, a cluster of three GlusterFS nodes are configured to repli
 
 ### Database
 
-The database stores the content and user credentials for your site. In our guide, we use Percona DB, but other database management systems work in a similar way. A database is particularly important when using a CMS like Wordpress, as it stores the information that makes up your pages and posts.
+The database stores the content and user credentials for your site. In our guide, we use Percona XtraDB, but other database management systems work in a similar way. A database is particularly important when using a CMS like Wordpress, as it stores the information that makes up your pages and posts.
 
 In our configuration, the database nodes are a cluster of Percona XtraDB servers, using Galera for replication. Galera offers *synchronous replication*, meaning data is written to secondary database nodes at the same time as it's being written to the primary. This method of replication provides excellent redundancy to the database cluster because it avoids periods of time where the database nodes are not in matching states. Galera also provides *multi-master replication*, meaning any one of the database nodes can respond to client queries.
 
