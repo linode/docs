@@ -15,7 +15,7 @@ external_resources:
  - '[IPv6 Subnet Cheat Sheet](http://www.ipv6ve.info/project-definition/ipv6-subnet-cheat-sheet-and-ipv6-cheat-sheet-reference)'
 ---
 
-Linode provides IPv6 support in all of our data centers, and all Linodes are created with one IPv6 address. By default, IPv6 is enabled on all Linodes and the IPv6 address is acquired via Stateless Address Autoconfiguration (SLAAC). To determine your Linode's IPv6 address, click on the [Remote Access](/docs/networking/remote-access) tab of the Linode's dashboard.
+Linode provides IPv6 support in all of our data centers, and all Linodes are created with one IPv6 address. By default, IPv6 is enabled on all Linodes and the IPv6 address is acquired via Stateless Address Autoconfiguration (SLAAC). To find your Linode's IPv6 address, click on the [Remote Access](/docs/networking/remote-access) tab of the Linode's dashboard.
 
 It is important to note that Linode does not offer private IPv6 address allocations. We have designed our IPv6 accounting so that local IPv6 traffic does not count against your transfer quota and you can use them just like private IPv6 addresses. 
 
@@ -39,13 +39,13 @@ This will show a block of text similar to:
           inet6 ff32:20:2001:db8::/96 scope link
             valid_lft forever preferred_lft forever
 
-The lines beginning with `inet6` show your IPv6 address block. 
+The lines beginning with `inet6` show your IPv6 address block.
 
 As displayed above, you will have inet6 blocks even if you only have one IPv6 address:
 
  * The first, ending in `global`, is the global IPv6 address which everyone can connect to. 
 
- * The second, ending in `link`, is your link-local address. An IPv6 link-local address is a unicast address that can be automatically configured on any interface. The link-local is usually in the fe80::/10 range, however to comply with [RFC 3849](https://tools.ietf.org/html/rfc3849), the link-local for the documentation address is in the ff32::/10 range.
+ * The second, ending in `link`, is your link-local address. An IPv6 link-local address is a unicast address that can be automatically configured on any interface. The link-local is usually in the `fe80::/10` range, however to comply with [RFC 3849](https://tools.ietf.org/html/rfc3849), the link-local address for this documentation is in the `ff32::/10` range.
 
 If your Linode does not have the correct IPv6 address or an IPv6 address at all, you should verify that you have router advertisements enabled and you have disabled privacy extensions. In order to use Linode's SLAAC, your Linode will need to accept router advertisements. These settings are properly set in our distribution templates by default.
 
@@ -55,7 +55,7 @@ You can request additional IPv6 addresses at any time by opening a [support tick
 
 {: .table .table-striped }
 | Pool   | No. of IPS                    |
-|:-------|:------------------------------|
+|:-------|------------------------------:|
 | /56    | 4,722,366,482,869,645,213,696 |
 | /64    | 18,446,744,073,709,551,616    |
 | /116   | 4,096                         |
@@ -63,7 +63,7 @@ You can request additional IPv6 addresses at any time by opening a [support tick
 
 ### IPv6 Neighbor Discovery
 
-Each /56 or /64 IPv6 address pool is routed to a specific Linode. If you want to use that same address pool across multiple Linodes, you can use neighbor discovery. In order to take advantage of neighbor discovery you must configure your Linode to act as a router by changing the value of `net.ipv6.conf.default.forwarding`. Check your distribution's documentation for information on where to find this setting, as the location varies among different systems.
+Each /56 or /64 IPv6 address pool is routed to a specific Linode. If you want to use that same address pool across multiple Linodes, you can by using neighbor discovery. In order to take advantage of neighbor discovery you must configure your Linode to act as a router by changing the value of `net.ipv6.conf.default.forwarding`. Check your distribution's documentation for information on where to find this setting, as the location varies between different systems.
 
 {: .caution}
 >This creates a single point of failure for your infrastructure. If a Linode set up in this way were to crash, lose networking, or encounter any another disruption in service, your entire IPv6 network will also be interrupted.
@@ -76,12 +76,11 @@ While default IPv6 addresses are configured automatically, you will need to stat
 
 {: .note}
 >If SLAAC is not obtaining your IPv6 address, even after verifying that privacy extensions are disabled and your Linode is accepting router advertisements, you may need to statically configure your default IPv6 address as well.
-
-### Debian/Ubuntu
-
-{: .note}
+>
 > Be sure that [Network Helper](https://www.linode.com/docs/platform/network-helper) is disabled when adding addresses from a pool, otherwise your configuration files may be overwritten upon rebooting your Linode, causing disruption to your IPv6 networking.
-> 
+
+
+### Debian / Ubuntu
 
 1.  On Debian and Ubuntu, edit `/etc/network/interfaces` to set up statically configured IPv6:
 
@@ -121,7 +120,7 @@ While default IPv6 addresses are configured automatically, you will need to stat
 
     {: .file}
     /etc/sysctl.conf
-    : ~~~
+    : ~~~ conf
       # Uncomment the next line to enable packet forwarding for IPv6
       #  Enabling this option disables Stateless Address Autoconfiguration
       #  based on Router Advertisements for this host
@@ -130,7 +129,7 @@ While default IPv6 addresses are configured automatically, you will need to stat
 
     For addresses within a /116 pool, the above change is not necessary as routing will be automatically configured. Addresses in a /116 pool are routed to other Linodes on your account within the same datacenter.
 
-3.  Restart networking. This command should be performed in [Lish](/docs/networking/using-the-linode-shell-lish), as it will terminate an SSH connection.
+3.  Restart networking. This command should be performed in [Lish](/docs/networking/using-the-linode-shell-lish), as it may terminate an SSH connection.
 
         ifdown -a && ifup -a
 
