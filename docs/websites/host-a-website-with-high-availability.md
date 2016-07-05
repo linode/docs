@@ -66,7 +66,7 @@ These steps should be run on each file system node in your cluster.
 {: .caution}
 >GlusterFS generates a UUID upon installation. Do not clone a single Linode to replicate your GlusterFS installation; it must be installed separately on each node.
 
-1.  Run the following commands to add the `centos-release-gluster37` repository, which will allow you to install the GlusterFS server edition package:
+1.  Add the `centos-release-gluster37` repository, which will allow you to install the GlusterFS server edition package:
 
         yum install epel-release 
         yum install centos-release-gluster37 
@@ -96,7 +96,7 @@ These steps should be run on each file system node in your cluster.
 
         gluster volume create example-volume replica 3 gluster1:/data/example-volume gluster2:/data/example-volume gluster3:/data/example-volume force 
 
-4.  Start the volume to enable replication among servers in your pool:
+4.  Start the volume to enable replication among servers in your pool. Replace `example-volume` with the name you chose:
 
         gluster volume start example-volume
 
@@ -166,7 +166,7 @@ This section will explain how to test file replication between servers in your p
 
 ## Galera with XtraDB
 
-Now that we have a replicated file system, we can begin to set up our database cluster. In this section, we'll be using a Galera cluster of MySQL database servers running the Percona XtraDB engine. 
+Now that we have a replicated file system, we can begin to set up our database cluster. In this section, we'll be using a cluster of Percona XtraDB database servers with Galera replication. 
 
 We'll use three 2GB Linodes with hostnames `galera1`, `galera2`, and `galera3` as our database nodes. Create these now if you have not already, and edit the `/etc/hosts` file on each to add the following, replacing the private IP addresses, fully qualified domain names, and hostnames of your database nodes:
 
@@ -230,10 +230,10 @@ We will configure the cluster to use XtraBackup for *state snapshot transfer* (S
 
     The values for `wsrep_node_name` and `wsrep_node_address` should be configured individually for each node, using the private IP address for that node and its hostname. The rest of the lines should match on all your database nodes. 
 
-    On the line beginning with `wsrep_sst_auth`, replace `password` with a secure password of your choosing and keep it in a safe place as it will be needed later. 
+    In the line beginning with `wsrep_sst_auth`, replace `password` with a secure password of your choosing and keep it in a safe place as it will be needed later. 
 
     {: .note }
-    > The `xtrabackup-v2` service accesses MySQL as `sstuser`, authenticating using `password` to log into MySQL to grab backup locks for replication.
+    > The `xtrabackup-v2` service accesses the database as `sstuser`, authenticating using `password` to log into MySQL to grab backup locks for replication.
 
 2.  On your first database node, start MySQL as the primary component in your cluster. This process is known as *bootstrapping*; this tells the database node to start as the primary component that the other nodes in the cluster will use as a reference point when they join the cluster and sync their data:
 
@@ -276,7 +276,7 @@ Now that your database nodes are configured, we can test to make sure they've al
         4 rows in set (0.00 sec)
 
     {: .note}
-    > If you add or remove nodes to and from the cluster in the future, you may notice the value for `wsrep_cluster_conf_id` changes each time. This value is the number of changes the cluster's configuration has gone through, and does not directly affect functionality. The above value of `3` is only an example.
+    > If you add or remove nodes to and from the cluster in the future, you may notice the value for `wsrep_cluster_conf_id` increases each time. This value is the number of changes the cluster's configuration has gone through, and does not directly affect functionality. The above value of `3` is only an example.
 
 2.  Create a test database:
 
@@ -299,6 +299,8 @@ Now that your database nodes are configured, we can test to make sure they've al
         +--------------------+
         4 rows in set (0.00 sec)
 
+    You can run the same command on any other database nodes to check that replication is occurring across the entire cluster.
+
 4.  Exit the MySQL CLI on all nodes:
 
         quit
@@ -313,7 +315,9 @@ This will display a series of prompts that will allow you to set your MySQL root
 
 ### Add Firewall Rules
 
-1.  On each database node, create and edit `/etc/firewalld/services/galera.xml` to match the following:
+Run the following commands on each database node.
+
+1.  Create and edit `/etc/firewalld/services/galera.xml` to match the following:
 
     {: .file}
     /etc/firewalld/services/galera.xml
@@ -328,11 +332,11 @@ This will display a series of prompts that will allow you to set your MySQL root
         </service>
         ~~~
 
-2.  On each node, start the `firewalld` service:
+2.  Start `firewalld`:
 
-        systemctl start firewalld.service
+        systemctl start firewalld
 
-3.  On each database node, add firewall rules that allow Galera and MySQL service to communicate between your trusted servers. Replace the IP addresses below with the private IP addresses of your database nodes:
+3.  Add firewall rules that allow Galera and MySQL service to communicate between your trusted servers. Replace the IP addresses below with the private IP addresses of your database nodes:
 
         firewall-cmd --zone=internal --add-service=mysql --permanent
         firewall-cmd --zone=internal --add-service=galera --permanent
@@ -343,7 +347,7 @@ This will display a series of prompts that will allow you to set your MySQL root
     {: .note}
     > In the Linode Manger, you may notice that the netmask for your private IP addresses is /17. Firewalld does not recognize this, so a /32 prefix should be used instead.
 
-4.  Reload your firewall configuration and enable it to start automatically on boot:
+4.  Reload your firewall configuration and enable the `firewalld` service to start automatically on boot:
 
         firewall-cmd --reload
         systemctl enable firewalld
