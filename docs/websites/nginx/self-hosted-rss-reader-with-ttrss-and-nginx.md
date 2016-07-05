@@ -19,13 +19,13 @@ external_resources:
 <hr/>
 
 [Tiny Tiny RSS](https://tt-rss.org/) is an open-source, self-hosted RSS reader that runs on PHP and a traditional SQL database (in this case, MariaDB).
-Running your own RSS aggregator puts you in control of your data, and even supports [mobile apps](https://play.google.com/store/apps/details?id=org.ttrssreader) that can tie into the server you set up.
+Running your own RSS aggregator puts you in control of your data, and Tiny Tiny RSS even supports [mobile apps](https://play.google.com/store/apps/details?id=org.ttrssreader) that can tie into the server you set up.
 
 This guide will walk through the steps necessary to install and configure Tiny Tiny RSS on a CentOS 7 system.
 
 { .note }
 > SELinux is installed and enabled by default on CentOS 7.
-> While common pratice is to disable it out of the box, this guide contains necessary commands to install and use Tiny Tiny RSS while SELinux is enabled if you would prefer to retain the security features it provides.
+> While common practice is to disable it out of the box, this guide contains necessary commands to install and use Tiny Tiny RSS while SELinux is enabled to retain the security features it provides.
 
 ## Before You Begin
 
@@ -33,7 +33,7 @@ This guide will walk through the steps necessary to install and configure Tiny T
 
 2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account, harden SSH access, and remove unnecessary network services. When configuring the firewall, be sure to open port **80** and potentially port **443** if you will be configuring SSL/TLS for your webserver.
 
-3.  Follow the steps in the [LAMP on CentOS 7](/docs/websites/lamp/lamp-on-centos-7) guide. When initializing the new MariaDB database, follow the example to create a database for Tiny Tiny RSS (remember to replace "MyPassword" with different, strong password and save it for later):
+3.  Follow the steps in the [LAMP on CentOS 7](/docs/websites/lamp/lamp-on-centos-7) guide. When initializing the new MariaDB database, use the following example to create a database for Tiny Tiny RSS (remember to replace "MyPassword" with a different, strong password and save it for later):
 
 ~~~
 create database ttrss;
@@ -41,9 +41,13 @@ grant all on ttrss.* to 'ttrss' identified by 'MyPassword';
 exit
 ~~~
 
-In addition, ensure that `php-mysql` is installed as part of the php configuration steps.
+## Preparing Apache
 
-Finally, add one additional configuration file to the apache `conf.d` folder in order to more completely secure some directories that Tiny Tiny RSS will use:
+Ensure that necessary php prerequisites are installed:
+
+    sudo yum install -y php-mysql php-mbstring
+
+Add one additional configuration file to the apache `conf.d` folder in order to more completely secure some directories that Tiny Tiny RSS will use:
 
 {: .file}
 /etc/httpd/conf.d/ttrss.conf
@@ -65,9 +69,10 @@ Restart apache for the configuration file to take effect.
 
 ## Install Tiny Tiny RSS
 
-Using `git` to install Tiny Tiny RSS is recommended in order to ease updating the application, so install `git` first, and an additional php dependency that the application requires:
+The recommended method to install Tiny Tiny RSS is to clone the repository over `git`, which makes updating the application simpler.
+First, install `git`:
 
-    sudo yum install -y git php-mbstring
+    sudo yum install -y git
 
 Then clone the codebase into `/var/www/html`:
 
@@ -77,13 +82,13 @@ Then clone the codebase into `/var/www/html`:
 > This command will clone tt-rss into the `/var/www/html` directory at the root, which means you will access the application at the root URL of your webserver (for example, at http://myserver).
 > If you would prefer to use Tiny Tiny RSS under a separate URL (for example, at http://myserver/tt-rss), you can change the directory indicated in the `git clone` command to `/var/www/html/tt-rss`.
 
-Before using the webapp, restart Apache to ensure any changes to Apache have been cleanly applied.
+Before using the webapp, restart Apache again to ensure any changes to Apache have been cleanly applied.
 
     sudo systemctl restart httpd
 
 ## Configure Tiny Tiny RSS
 
-At this point the application should accessible under Apache.
+At this point the application should be accessible under Apache.
 As an example, if your Linode had the IP address of `1.2.3.4`, browsing to `http://1.2.3.4` should result in the following screen:
 
 ![Tiny Tiny RSS Installation Page](/docs/assets/tiny-tiny-rss-install-page.png)
@@ -98,15 +103,15 @@ Fill in the fields with the appropriate information:
 *   The final URL field is what address Tiny Tiny RSS expects to be accessed under. If you are accessing your Linode via a DNS name rather than IP address, be sure to correctly fill in the field with the method you will use.
 
 After filling in the fields, click "Test configuration".
-Some preliminary checks will be performed, and if everything is ready, another button with "Initialize database" will appear.
+Some preliminary checks will be performed, and, if everything is ready, another button with "Initialize database" will appear.
 Click the button when you are ready to initialize the database.
 
 { .note }
 > Initializing the databse will wipe all data in the `ttrss` database.
 > If you are installing over a previous installation, perform any backups as necessary.
 
-After the application initializes the MariaDB database, a message will appear about being unable to save `config.php` because the parent directory is not writeable.
-This is a **good** thing, which means that any potential vulnerabilities in the web application cannot write files to disk.
+After the application initializes the MariaDB database, a message should appear about being unable to save `config.php` because the parent directory is not writeable.
+This is a **good** thing because any potential vulnerabilities in the web application cannot write files to disk.
 In order to finish configuring the application, follow the instructions to copy the contents of the text box (the block of text beginning with `<?php`) and paste the contents into `/var/www/html/config.php`
 
 The following snippet shows the beginning of what the file should look like (note that you should have many additional lines with fields for the database username, password, and so on):
@@ -125,15 +130,16 @@ The following snippet shows the beginning of what the file should look like (not
 
 If you need to customize your installation configuration further (for example, if you have an SMTP server that you wish to use in conjunction with Tiny Tiny RSS to email you with feed news), you should do so by editing `config.php` now.
 
-Before using Tiny Tiny RSS, a few directory permissions must be changed so that they can be written to by the web server.
-Change the following directories' group and mode in order to allow the application to write to them:
+Before using Tiny Tiny RSS, a few directory permissions must be changed so the webserver can write to them.
+We'll change only the necessary directories that require additional permissions:
 
     cd /var/www/html
     sudo chgrp -R apache cache lock feed-icons
     sudo chmod -R g+w cache lock feed-icons
 
 { .note }
-> On CentOS 7, SELinux is enabled by default. In order to properly set access controls for these directories with SELinux in enforcing mode, the following command must be used:
+> The following command must be used to permit the webserver to write to these directories on CentOS 7, where SELinux is enabled by default.
+> If SELinux has been disabled (check the output of the `sestatus` command if unsure), this step is not necessary.
 
     sudo chcon -R unconfined_u:object_r:httpd_sys_rw_content_t:s0 cache feed-icons lock
 
