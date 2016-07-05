@@ -27,7 +27,7 @@ You should have already signed up for an IPv6 tunnel through a tunnel broker. [W
 
 ## General Setup
 
-Once you have signed up for a tunnel, you will need to issue a few commands on your Linode. Arch and Gentoo Linux users will need to install the `iproute2` package before continuing. 
+Once you have signed up for a tunnel, you will need to issue a few commands on your Linode. Arch and Gentoo Linux users may need to install the `iproute2` package before continuing.
 
 1.  Because some of these steps will temporarily disable networking on the Linode, begin by logging in to through either the [Lish](/using-the-linode-shell-lish) or [Glish](/docs/networking/use-the-graphic-shell-glish) interface.
 
@@ -75,7 +75,7 @@ The instructions in this section will allow you to manually configure your IPv6 
 
 ### Debian and Ubuntu
 
-Debian and Ubuntu users (versions before Ubuntu 16.04 are not covered here) can perform the following steps to set up a tunnel on their Linode.
+Debian and Ubuntu users (versions before 16.04 are not covered here) can perform the following steps to set up a tunnel on their Linode.
 
 1.  Insert the following into your `/etc/network/interfaces` file:
 
