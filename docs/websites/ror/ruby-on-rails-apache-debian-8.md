@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Using the Apache web server with Debian 7 Wheezy to serve Ruby on Rails applications.'
 keywords: 'ruby on rails,rails on debian,rails apps,rails and apache'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Monday, July 13th, 2015
 modified_by:
   name: Elle Krout

@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Instructions for installing and using the Apache Tomcat Java Servlet engine on Fedora 13.'
 keywords: 'apache tomcat fedora 13,java,java fedora 13,java servlets fedora 13,java fedora'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['frameworks/apache-tomcat/fedora-13/']
 modified: Friday, April 29th, 2011
 modified_by:

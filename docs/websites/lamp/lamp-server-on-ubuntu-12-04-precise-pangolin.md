@@ -3,14 +3,14 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Configuring a LAMP stack with Apache, MySQL, PHP and on Ubuntu 12.04 (Precise Pangolin).'
-keywords: 'ubuntu lamp server,ubuntu 12.04 lamp,lamp,ubuntu web server,ubuntu,apache,mysql,php'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+keywords: 'ubuntu lamp server,ubuntu 12.04 lamp,lamp,ubuntu server,ubuntu,apache,mysql,php,lamp stacks'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['lamp-guides/ubuntu-12-04-precise-pangolin/']
 modified: Tuesday, June 30th, 2015
 modified_by:
-  name: Elle Krout
-published: 'Wednesday, October 3rd, 2012'
-title: 'LAMP Server on Ubuntu 12.04'
+  name: Alex Fornuto
+published: 'Monday, October 3rd, 2012'
+title: 'LAMP Server on Ubuntu 12.04 (Precise Pangolin)'
 external_resources:
  - '[Ubuntu Server Edition Homepage](http://www.ubuntu.com/server)'
  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)'
@@ -18,7 +18,7 @@ external_resources:
  - '[PHP Documentation](http://www.php.net/docs.php)'
 ---
 
-Setting up a LAMP (Linux, Apache, MySql, PHP) stack on your server will allow for the creation and hosting of websites and web applications. This guide provides step by step instructions for installing a LAMP stack on an Ubuntu 12.04 (Precise Pangolin) Linode.
+Setting up a LAMP (Linux, Apache, MySql, PHP) stack will allow for the creation and hosting of websites and web applications. This guide provides step by step instructions for installing a LAMP stack on an Ubuntu 12.04 (Precise Pangolin) Linode.
 
 {: .note}
 >
@@ -28,24 +28,19 @@ Setting up a LAMP (Linux, Apache, MySql, PHP) stack on your server will allow fo
 
 1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, and the Linode's [hostname is set](/docs/getting-started#setting-the-hostname).
 
-    To check your hostname run:
-
-        hostname
-        hostname -f
-
-    The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
-
 2.  Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
 
-## Install and Configure Apache
+##Apache
+
+### Install and Configure
 
 1.  Install Apache 2:
 
         sudo apt-get install apache2
 
-2.  Edit the main Apache configuration file to adjust the resource use settings. The settings shown below are a good starting point for a **Linode 1GB**:
+2.  Edit the main Apache configuration file to adjust the resource use settings. The settings shown below are a good starting point for a **Linode 2GB**:
 
     {: .file-excerpt }
     /etc/apache2/apache2.conf
@@ -53,11 +48,11 @@ Setting up a LAMP (Linux, Apache, MySql, PHP) stack on your server will allow fo
         KeepAlive Off
 
         <IfModule mpm_prefork_module>
-        StartServers 2
-        MinSpareServers 6
-        MaxSpareServers 12
-        MaxClients 30
-        MaxRequestsPerChild 3000
+        StartServers 4
+        MinSpareServers 20
+        MaxSpareServers 40
+        MaxClients 200
+        MaxRequestsPerChild 4500
         </IfModule>
         ~~~
 
@@ -107,7 +102,9 @@ There are different ways to set up virtual hosts; however, the method below is r
     Assuming that you have configured the DNS for your domain to point to your Linode's IP address, virtual hosting for your domain should now work.
 
 
-## Install and Configure MySQL
+## MySQL
+
+### Install and Configure
 
 1.  Install MySQL:
 
@@ -139,7 +136,7 @@ There are different ways to set up virtual hosts; however, the method below is r
 With Apache and MySQL installed you are now ready to install PHP.
 
 
-## Install and Configure PHP
+## PHP
 
 1.  Install PHP, and the PHP Extension and Application Repository:
 

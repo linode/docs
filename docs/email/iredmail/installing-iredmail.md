@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Installing iRedMail on your Linode.'
 keywords: 'email,mail,iredmail'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['installing-iredmail/']
 contributor:
     name: Nick Reichley

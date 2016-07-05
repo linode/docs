@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: Longview App for Apache
 keywords: 'Longview, Apache, statistics, mod\_status'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['longview/longview-for-apache/']
 modified: Monday, January 6th, 2014
 modified_by:
@@ -159,7 +159,17 @@ If you run the [automatic Longview configuration tool](#debian-and-ubuntu-automa
 
 [![Longview has detected Apache running on this server but was unable to access the server status page. Would you like to attempt to automatically configure mod\_status? This will require reloading Apache to enable. Autoconfigure Mod\_Status: \<Yes\> \<No\>](/docs/assets/1451-longview_apache_popup_crop.png)](/docs/assets/1451-longview_apache_popup_crop.png)
 
-This indicates that Longview can't locate the Apache status page. In turn, this could indicate that the status page is in an unusual and unspecified location, or that mod\_status isn't enabled, or that Apache itself is misconfigured. If you choose:
+This indicates that Longview can't locate the Apache status page. In turn, this could indicate that either:
+
+1.  The status page is in an unusual and unspecified location.
+
+2.  `mod_status` isn't enabled.
+
+3.  An Apache virtual host setting is interfering with requests to the status page.
+
+4.  Apache itself is misconfigured.
+
+If you choose:
 
 -   **\<No\>**: the Longview tool will quit, and you can do a [manual configuration](#manual-configuration-all-distributions). This is the safer option.
 -   **\<Yes\>**: the Longview tool will attempt to enable mod\_status, set the status page location, and restart Apache. This option is easier, but has the potential to disrupt your current Apache configuration. If you choose yes, and the configuration is successful, you should see output like the following:
@@ -184,11 +194,15 @@ You will need to double-check your Apache installation, and then do a [manual co
 
 ### Unable to Access Local Server Status for Apache
 
-More specifically, the error will state `Unable to access local server status for Apache at <http://example.com/example?auto>: <error>:`. This error occurs when Apache's `mod_status` setting is disabled or has been changed from the default location.
+More specifically, the error will state `Unable to access local server status for Apache at <http://example.com/example?auto>: <error>:`. This error occurs when either:
+
+1.  Apache's `mod_status` setting is disabled or has been changed from the default location.
+
+2.  An Apache virtual host configuration is interfering with web requests to the `mod_status` location.
 
  {: .note }
 >
-> This error occurs when Longview attempts to check the status page `location` listed in `/etc/linode/longview.d/Apache.conf`, or the default page at `127.0.0.1/server-status?auto`, but receives a non-200 HTTP response code. Basically, it means that the status page Longview is checking doesn't exist.
+> This error occurs when Longview attempts to check the status page `location` listed in `/etc/linode/longview.d/Apache.conf`, or the default page at `127.0.0.1/server-status?auto`, but receives a non-200 HTTP response code. Basically, it means that the status page Longview is expecting is not being returned by the server.
 
 To fix this, follow these steps:
 
@@ -224,11 +238,18 @@ To fix this, follow these steps:
     :   ~~~
         location http://127.0.0.1/custom/location/path
         ~~~
-6.  Restart Longview:
+6.  Determine if an Apache virtual host configuration is interfering with requests to the mod_status location. Use a tool like `curl` or `wget` to request the server status location:
+
+        curl http://127.0.0.1/server-status?auto
+
+    Observe the output. If the output looks like something other than a simple status page, then you'll have to fix your Apache virtual host configuration.
+
+
+7.  Restart Longview:
 
         service longview restart
 
-7.  Refresh the Longview Apache tab in the Linode Manager to verify that it's working now.
+8.  Refresh the Longview Apache tab in the Linode Manager to verify that it's working now.
 
 ### The Apache Status Page Doesn't Look Right
 

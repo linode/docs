@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Use Confluence on Debian 5 (Lenny) to power a full-featured wiki system.'
 keywords: 'confluence debian 5,confluence,confluence wiki,confluence linux'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-applications/wikis/confluence/debian-5-lenny/']
 modified: Tuesday, May 17th, 2011
 modified_by:

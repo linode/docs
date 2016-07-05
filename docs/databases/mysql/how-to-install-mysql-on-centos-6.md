@@ -4,7 +4,7 @@ author:
   email: afornuto@linode.com
 description: 'Getting started with MySQL on CentOS 6'
 keywords: 'MySQL on Linux,CentOS,cloud,cloud hosting,Linux,MySQL,database,MariaDB,install MySQL,secure MySQL,mysqltuner'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['databases/mysql/centos-6/', 'databases/mysql/using-mysql-relational-databases-on-centos-6-4/']
 modified: Wednesday, August 12th, 2015
 modified_by:
@@ -123,7 +123,7 @@ The standard tool for interacting with MySQL is the `mysql` client which install
 1. In the example below, `testdb` is the name of the database, `testuser` is the user, and `password` is the user's password.
 
         create database testdb;
-        create user 'testuser'@localhost identified by 'password';
+        create user 'testuser'@'localhost' identified by 'password';
         grant all on testdb.* to 'testuser' identified by 'password';
     
     You can shorten this process by creating the user *while* assigning database permissions:

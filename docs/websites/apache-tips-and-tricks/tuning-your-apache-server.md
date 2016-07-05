@@ -4,7 +4,7 @@ author:
   email: ekrout@linode.com
 description: Tuning your Apache server to optimize your website.
 keywords: 'configuration,apache,web server,resource tuning'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Friday, February 27, 2015
 modified_by:
   name: Elle Krout
@@ -92,7 +92,7 @@ Apache `mod_status` diplays information related to incoming server connections b
 
 The ApacheBuddy script, similar to MySQLTuner, reviews your Apache setup, and makes suggestions based on your Apache process memory and overall RAM. Although it is a fairly basic program, focusing on the `MaxClients` directive, ApacheBuddy is useful, and can be run through a single command:
 
-	curl http://cloudfiles.fanatassist.com/apachebuddy.pl | perl
+	curl -L http://apachebuddy.pl/ | perl
 
 ##Multi Processing Modules
 
@@ -131,11 +131,11 @@ Once you select your MPM, you will need to change the values inside the configur
 /etc/httpd/conf/httpd.conf (CentOS/Fedora)
 :	~~~
 	<IfModule mpm_prefork_module>
-    	StartServers          2
-    	MinSpareServers       6
-    	MaxSpareServers      12
-    	MaxClients           60
-    	MaxRequestsPerChild  3000
+    	StartServers          4
+    	MinSpareServers       20
+    	MaxSpareServers      40
+    	MaxClients           200
+    	MaxRequestsPerChild  4500
 	</IfModule>
 	~~~
 
@@ -167,7 +167,7 @@ To determine the RAM each Apache process uses, replace `httpd` with `apache2` on
 
 	ps -ylC httpd --sort:rss
 
-Divide the number by 1024 for megabytes.
+Divide the number by 2048 for megabytes.
 
 To get information on memory usage:
 
@@ -177,11 +177,11 @@ To receive a fuller view of the resources Apache is using, use the `top` command
 
 ####MaxRequestsPerChild
 
-This limits the number of requests a child server handles during its life. Once the limit has been hit, the child server dies. If set to 0, the child servers are set to never expire. The suggested value for this is a few thousand, to percent of memory leakage. Be aware that setting this too low can slow down the system, since creating new processes does take up resources.
+This limits the number of requests a child server handles during its life. Once the limit has been hit, the child server dies. If set to 0, the child servers are set to never expire. The suggested value for this is a few thousand, to prevent memory leakage. Be aware that setting this too low can slow down the system, since creating new processes does take up resources.
 
 ####ServerLimit
 
-If you need to increase the `MaxClients` above `256`, then increase your `SeverLimit` to match. To do this, add the `SeverLimit` line to your MPM code and alter the value:
+If you need to increase the `MaxClients` above `256`, then increase your `ServerLimit` to match. To do this, add the `ServerLimit` line to your MPM code and alter the value:
 
 	ServerLimit          256
 

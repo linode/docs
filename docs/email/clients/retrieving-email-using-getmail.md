@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Configure getmail to download email from remote servers.'
 keywords: 'email,getmail,mda'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['email/getmail/']
 modified: Thursday, September 12th, 2013
 modified_by:

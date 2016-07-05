@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Install Oracle 10g to power server-side applications and web apps on Debian 6 (Squeeze).'
 keywords: 'oracle debian squeeze,oracle 10g debian 6,oracle debian 6,oracle debian,oracle linux,sql database,relational database,rdbms,oracle 10g'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['databases/oracle/10g-debian-6-squeeze/']
 modified: Wednesday, August 13, 2014
 modified_by:

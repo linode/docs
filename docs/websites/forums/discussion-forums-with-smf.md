@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Configuring the SMF system for hosting web-based discussion forums.'
 keywords: 'smf,forum software,web applications,PHP'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-applications/bulletin-boards/smf/']
 modified: Wednesday, February 11, 2015
 modified_by:
@@ -13,7 +13,7 @@ published: 'Thursday, March 18th, 2010'
 title: Discussion Forums with SMF
 deprecated: false
 external_resources:
- - '[SMF Documentation](http://docs.simplemachines.org/)'
+ - '[SMF Documentation](http://wiki.simplemachines.org/)'
  - '[Modifications, Styles, and Upgrades](http://custom.simplemachines.org/)'
  - '[Functions Database](http://support.simplemachines.org/function_db/)'
  - '[SMF Community Forum](http://www.simplemachines.org/community/index.php)'
@@ -59,8 +59,8 @@ The following instructions will download the latest stable release, which is 2.0
 
 2.  Download and extract the package:
 
-        sudo -u www-data wget http://mirror.ord.simplemachines.org/downloads/smf_2-0-9_install.tar.gz
-        sudo -u www-data tar -zxvf smf_2-0-9_install.tar.gz
+        sudo -u www-data wget http://download.simplemachines.org/index.php/latest/install -O smf_latest_install.tar.gz
+        sudo -u www-data tar -zxvf smf_latest_install.tar.gz
 
 3.  Follow the instructions on the web interface to finish the installation; then, in your terminal, remove the installation script:
 

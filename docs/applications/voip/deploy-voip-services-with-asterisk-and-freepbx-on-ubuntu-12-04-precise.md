@@ -2,15 +2,15 @@
 author:
   name: Alex Fornuto
   email: afornuto@linode.com
-description: 'Install Asterisk and FreePBX on your Linux VPS to use and manage a telephone exchange.'
-keywords: 'asterisk ubuntu 12.04,asterisk,asterisk linux,freepbx,freepbx ubuntu,pbx,voip,google voice'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+description: 'Install Asterisk and FreePBX on Your Linux VPS to Use and Manage a Telephone Exchange.'
+keywords: 'ubuntu 12.04,asterisk,freepbx,pbx,voip,google voice,grub,lamp stack,apache,php'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: [ 'communications/voip-services-ubuntu-12-04/' ]
 modified: Tuesday, June 17th, 2014
 modified_by:
   name: Alex Fornuto
 published: 'Tuesday, June 17th, 2014'
-title: 'Deploy VoIP Services with Asterisk and FreePBX on Ubuntu 12.04 (Precise)'
+title: 'Deploy VoIP Services with Asterisk and Freepbx on Ubuntu 12.04'
 external_resources:
  - '[Asterisk Documentation](http://www.asterisk.org/docs)'
  - '[Asterisk Community](http://www.asterisk.org/community)'
@@ -18,7 +18,7 @@ external_resources:
  - '[FreePBX Community](http://www.freepbx.org/community)'
 ---
 
-Asterisk is an open-source telephone solution that runs over the internet instead of running through copper lines. It offers a variety of features such as voicemail and conference calling, much like a land line telephone can.
+Asterisk is an open-source telephone solution that runs over the Internet instead of running through copper lines. It offers a variety of features such as voicemail and conference calling, much like a landline telephone can.
 
 For this guide we will install Asterisk from source rather than from Ubuntu's repositories. The newer version offers several additional features, including the ability to integrate a Google Voice account as a trunk. We will use FreePBX as a web interface for our Asterisk configuration.
 
@@ -121,7 +121,7 @@ You will now need to log in to the Linode Manager in order to change your Linode
 3.  Save this configuration profile. You may wish to change its name to indicate that this is no longer a default profile.
 4.  Reboot your system to make sure that these changes are applied. You will need to do this before you can proceed. It is a good idea to watch the shutdown and reboot phases via [LISH](/docs/using-lish-the-linode-shell) to see if there are any errors.
 
-### Troubleshooting
+### Troubleshoot
 
 It's very important that you follow the steps outlined above carefully or your system may not boot. It is highly recommended that you watch the console during the shutdown and reboot phases via [LISH](/docs/troubleshooting/using-lish-the-linode-shell). If your Linode does not boot and you get an error, change your configuration profile back to the latest Paravirt kernel and read over this guide to make sure you have not missed any steps.
 

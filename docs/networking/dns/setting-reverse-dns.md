@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Resolving an IP address to your domain name.'
 keywords: 'linode dns,linode manager dns,dns configuration'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['dns-manager/','dns-guides/configuring-dns-with-the-linode-manager/']
 modified: Tuesday, Janaury 20, 2015
 modified_by:

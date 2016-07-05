@@ -4,7 +4,7 @@ author:
     email: docs@linode.com
 description: 'Set up and configure WildFly as your Java Application Server to develop, test, and run, Java applications'
 keywords: 'java,jboss,jboss as,wildfly,apache,mysql,mariaDB'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Friday, September 18th, 2015'
 modified: Friday, September 18th, 2015
 modified_by:
@@ -17,7 +17,11 @@ external_resources:
  - '[WildFly Administration Guide](https://books.google.com.sa/books?id=rufiBAAAQBAJ)'
 ---
 
-JBoss AS (Renamed to [WildFly](http://wildfly.org/)) has been used for many years as one of the best known performing & free community Java Application Server. The attention even increased when Red Hat started providing commercial support to its enterprise version [JBoss EAP](http://www.redhat.com/en/technologies/jboss-middleware/application-platform) with support to on-premise, virtual, or cloud. Red Hat also provides commercial support for Red Hat Enterprise Linux & building huge ecosystem of multiple products to serve its clients.
+*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
+
+<hr>
+
+JBoss AS (Renamed to [WildFly](http://wildfly.org/)) has been used for many years as one of the best known performing & free community Java Application Server. The attention even increased when Red Hat started providing commercial support to its enterprise version [JBoss EAP](http://www.redhat.com/en/technologies/jboss-middleware/application-platform) with support to on-premises, virtual, or cloud. Red Hat also provides commercial support for Red Hat Enterprise Linux & building huge ecosystem of multiple products to serve its clients.
 
 Many software companies working with Java technology are targeting the stack of WildFly on CentOS so it supports clients with limited budget, and also supports JBoss EAP on Redhat Enterprise Linux for customers looking for commercial support, so they ensure their software meets various customer segments.
 
@@ -44,7 +48,7 @@ After full installation of above stack it was consuming around 650 MB of RAM wit
         sudo systemctl start firewalld
         sudo systemctl enable firewalld
 
--   Please follow the steps mentioned in [Linode: Hosting a Website](https://www.linode.com/docs/websites/hosting-a-website) sections "Installing MySQL", "Optimizing MySQL for a Linode 1GB", "Creating a Database".
+-   Please follow the steps mentioned in [Linode: Hosting a Website](https://www.linode.com/docs/websites/hosting-a-website) sections "Installing MySQL", "Optimizing MySQL for a Linode 2GB", "Creating a Database".
 
 
 ### Oracle Java 8 SE installation

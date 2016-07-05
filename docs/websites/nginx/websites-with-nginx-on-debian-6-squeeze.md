@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'A basic guide to installing nginx from source on Debian 6 (Squeeze)'
 keywords: 'nginx,http,web servers,debian,debian squeeze,debian 6'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-servers/nginx/installation/debian-6-squeeze/']
 modified: Tuesday, January 28th, 2014
 modified_by:

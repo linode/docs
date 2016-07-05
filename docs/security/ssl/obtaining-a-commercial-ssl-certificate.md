@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'How to prepare and submit a request for a commercially-signed SSL certificate.'
 keywords: 'openssl,commercial ssl cert,apache ssl,ssl linux'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['security/ssl-certificates/commercial/']
 modified: Tuesday, November 18th, 2014
 modified_by:

@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Installing and configuring Redmine, an open source project management system, on an Ubuntu 11.04 LTS (Natty) Linux VPS.'
 keywords: 'redmine,redmine ubuntu 11.04,redmine linux,project management software,redmine postgresql'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-applications/project-management/redmine/ubuntu-11-04-natty/']
 modified: Monday, February 18th, 2013
 modified_by:

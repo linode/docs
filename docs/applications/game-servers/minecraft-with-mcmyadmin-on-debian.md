@@ -4,8 +4,8 @@ author:
   email: jstewart@linode.com
 description: 'McMyAdmin is one of the most popular Minecraft server control panels available. It boasts compatibility with third party mods, heavy focus on security and a sleek web interface for managing your server. This guide covers the installation and configuration of a new McMyAdmin server on a Linode running Debian 7 or 8.'
 keywords: 'minecraft,mcmyadmin,debian,debian jessie,debian wheezy,jessie,wheezy,debian 7,debian 8'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Tuesday, November 3rd, 2015
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+modified: Wednesday, February 3rd, 2016
 modified_by:
   name: Linode
 published: 'Thursday, February 5th, 2015'
@@ -21,7 +21,7 @@ external_resources:
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the *Creating a Firewall* section--this guide has instructions specifcally for firewall rules for a Minecraft server.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the *Configure a Firewall* section yet--this guide includes firewall rules specifcally for a Minecraft server.
 
 3.  Update your system.
 
@@ -29,89 +29,71 @@ external_resources:
 
 ## Configure a Firewall
 
-1.  See our [Securing Your Server](/docs/security/securing-your-server/) guide and complete the section on iptables for Debian **using the ruleset below**:
+Now see [Securing Your Server](/docs/security/securing-your-server/) again and complete the section on iptables for your Linux distribution **using the rulesets below**:
 
-    {: .file}
-    /etc/iptables/rules.v4
-    :   ~~~
-        *filter
-    
-        # Allow all loopback (lo0) traffic and reject traffic
-        # to localhost that does not originate from lo0.
-        -A INPUT -i lo -j ACCEPT
-        -A INPUT ! -i lo -s 127.0.0.0/8 -j REJECT
-    
-        # Allow ping.
-        -A INPUT -p icmp -m state --state NEW --icmp-type 8 -j ACCEPT
+**IPv4**
 
-        # Allow SSH connections.
-        -A INPUT -p tcp -m state --state NEW --dport 22 -j ACCEPT
-       
-        # Allow connections from other Minecraft clients.
-        -A INPUT -p tcp -m state --state NEW --dport 25565 -j ACCEPT
-        
-        # Allow web access to McMyAdmin.
-        -A INPUT -p tcp -m state --state NEW --dport 8080 -j ACCEPT
-    
-        # Allow inbound traffic from established connections.
-        # This includes ICMP error returns.
-        -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
-    
-        # Log what was incoming but denied (optional but useful).
-        -A INPUT -m limit --limit 3/min -j LOG --log-prefix "iptables_INPUT_denied: " --log-level 7
-    
-        # Reject all other inbound.
-        -A INPUT -j REJECT
-        -A FORWARD -j REJECT
-    
-        COMMIT
-        ~~~
+~~~
+*filter
 
-2.  By default, both McMyAdmin and Minecraft operate on IPv4, but unlike a default Minecraft server installation, McMyAdmin does not listen for incoming IPv6 traffic. Since Minecraft can not use both protocols simultaneously, IPv4 is usually chosen over IPv6 because of its much greater availablity, thus including players whose ISPs or hardware don't support IPv6.
+# Allow all loopback (lo0) traffic and reject traffic
+# to localhost that does not originate from lo0.
+-A INPUT -i lo -j ACCEPT
+-A INPUT ! -i lo -s 127.0.0.0/8 -j REJECT
 
-	If you choose **not** to use IPv6 on your Minecraft server, you should disable it by adding the following lines to `/etc/sysctl.d/99-sysctl.conf`:
-    
-    {: .file-excerpt}
-    /etc/sysctl.d/99-sysctl.conf
-    :   ~~~
-    	net.ipv6.conf.all.disable_ipv6 = 1
-    	net.ipv6.conf.default.disable_ipv6 = 1
-    	net.ipv6.conf.lo.disable_ipv6 = 1
-    	net.ipv6.conf.eth0.disable_ipv6 = 1
-        ~~~
+# Allow ping.
+-A INPUT -p icmp -m state --state NEW --icmp-type 8 -j ACCEPT
 
-	To activate the changes immediately:
+# Allow SSH connections.
+-A INPUT -p tcp -m state --state NEW --dport 22 -j ACCEPT
 
-    	sudo sysctl -p
+# Allow connections from other Minecraft players.
+-A INPUT -p tcp -m state --state NEW --dport 25565 -j ACCEPT
 
-	Then, go into `/etc/hosts` and comment out the line for IPv6 resolution over localhost:
+# Allow web access to McMyAdmin.
+-A INPUT -p tcp -m state --state NEW --dport 8080 -j ACCEPT
 
-	{: .file-excerpt}
-	/etc/hosts
-	:   ~~~ conf
-	    #::1 localhost.localdomain localhost
-	    ~~~
+# Allow inbound traffic from established connections.
+# This includes ICMP error returns.
+-A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
 
-    Add an ip6tables ruleset to reject all v6 traffic:
+# Log what was incoming but denied (optional but useful).
+-A INPUT -m limit --limit 3/min -j LOG --log-prefix "iptables_INPUT_denied: " --log-level 7
 
-    {: .file}
-    /etc/iptables/rules.v6
-    :   ~~~ conf
+# Reject all other inbound.
+-A INPUT -j REJECT
+-A FORWARD -j REJECT
 
-        *filter
+COMMIT
+~~~
 
-        -A INPUT -j REJECT
-        -A FORWARD -j REJECT
-        -A OUTPUT -j REJECT
+**IPv6**
 
-        COMMIT
-        ~~~
+By default, both McMyAdmin and Minecraft operate on IPv4, but unlike a default Minecraft server installation, McMyAdmin does not listen for incoming IPv6 traffic. Since Minecraft can not use both protocols simultaneously, IPv4 is usually chosen over IPv6 because of its much greater availablity, thus including players whose ISPs or hardware don't support IPv6.
 
-    Enforce the ruleset immeditately:
+If you choose *not* to use IPv6 on your Minecraft server, then it needs only basic IPv6 firewall rules.
 
-        sudo ip6tables-restore < /etc/iptables/rules.v6
+~~~
+*filter
 
-	When asked to save current rules, choose `yes` for both IPv4 and IPv6.
+# Allow all loopback (lo0) traffic and reject traffic
+# to localhost that does not originate from lo0.
+-A INPUT -i lo -j ACCEPT
+-A INPUT ! -i lo -s ::1/128 -j REJECT
+
+# Allow ICMP
+-A INPUT -p icmpv6 -j ACCEPT
+
+# Allow inbound traffic from established connections.
+-A INPUT -m state --state ESTABLISHED -j ACCEPT
+
+# Reject all other inbound.
+-A INPUT -j REJECT
+-A FORWARD -j REJECT
+
+COMMIT
+~~~
+
 
 ##Install Prerequisite Software
 

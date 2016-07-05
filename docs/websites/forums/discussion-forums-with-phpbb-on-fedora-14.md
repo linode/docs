@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Configuring the phpBB system for hosting web-based discussion forums on Fedora 14.'
 keywords: 'phpBB,forum software,web applications,PHP'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-applications/bulletin-boards/phpbb/fedora-14/']
 modified: Tuesday, October 1st, 2013
 modified_by:

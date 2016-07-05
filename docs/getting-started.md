@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Our guide to deploying your first Linode.'
 keywords: 'linode guide,getting started,linode quickstart,quick start,boot,configuration profile,update,hostname,timezone,SSH'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Monday August 24th, 2015
 modified_by:
   name: Linode
@@ -14,7 +14,7 @@ title: Getting Started with Linode
 
 Congratulations on selecting Linode as your cloud hosting provider! This guide will help you sign up for an account, deploy a Linux distribution, boot your Linode, and perform some basic system administration tasks.
 
-## Signing Up
+## Sign Up
 
 If you haven't already signed up for a Linode account, start here.
 
@@ -24,7 +24,7 @@ If you haven't already signed up for a Linode account, start here.
 
     [![Available Linode plans](/docs/assets/linode-manager-select-plan_small.png)](/docs/assets/linode-manager-select-plan.png)
 
-If you're unsure of which data center to select, see our [speed test](http://www.linode.com/speedtest) to determine which location provides the best performance for your target audience. You can also generate [MTR reports](/docs/networking/diagnosing-network-issues-with-mtr/) for each of the data centers to determine which of our facilities provides the best latency from your particular location.
+If you're unsure of which data center to select, see our [speed test](http://www.linode.com/speedtest) to determine which location provides the best performance for your target audience. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for each of the data centers to determine which of our facilities provides the best latency from your particular location.
 
 ## Provisioning Your Linode
 
@@ -36,22 +36,22 @@ The [Linode Manager](https://manager.linode.com) is a web-based control panel th
 
 * Boot and shut down your virtual server,
 * Access monitoring statistics, 
-* Update your billing and account information, 
+* Update your billing and account information,
 * Request support and perform other administrative tasks.
 
 ### Deploying an Image
 
-After creating a new Linode, select it and you'll be taken to the Linode Manager Dashboard.
+After creating a new Linode, select it to open the Linode Manager Dashboard.
 
 1.  Click on **Deploy an Image**.
 
     [![Linux Dashboard](/docs/assets/linode-manager-dashboard-newacct_small.png)](/docs/assets/linode-manager-dashboard-newacct.png)
 
-    You'll be taken to the *Deploy* page.
+    The *Deploy* page opens.
 
     [![Deploy a Linux Image](/docs/assets/linode-manager-deploy-an-image_small.png)](/docs/assets/linode-manager-deploy-an-image.png)
 
-2.  Select a Linux distribution from the **Image** menu. You can choose from [Arch Linux](http://www.archlinux.org/), [CentOS](http://www.centos.org/), [Debian](http://www.debian.org/), [Fedora](http://fedoraproject.org/), [Gentoo](http://www.gentoo.org/), [openSUSE](http://www.opensuse.org/), [Slackware](http://www.slackware.com/), and [Ubuntu](http://www.ubuntu.com/) to install on your Linode. If you're new to the Linux operating system, consider selecting Ubuntu 14.04 LTS. Ubuntu is the most popular distribution among Linode customers and one of the most well supported by online communities, so resolving any issues you may have should be simple.
+2.  Select a Linux distribution from the **Image** menu. You can choose from [Arch Linux](http://www.archlinux.org/), [CentOS](http://www.centos.org/), [Debian](http://www.debian.org/), [Fedora](http://fedoraproject.org/), [Gentoo](http://www.gentoo.org/), [openSUSE](http://www.opensuse.org/), [Slackware](http://www.slackware.com/), and [Ubuntu](http://www.ubuntu.com/) to install on your Linode. If you're new to the Linux operating system, consider selecting Ubuntu 16.04 LTS. Ubuntu is the most popular distribution among Linode customers and one of the most well supported by online communities, so resolving any issues you may have should be simple.
 
 3.  Enter a size for the disk in the **Deployment Disk Size** field. By default all of the available space is allocated, but you can set a lower size if you plan on cloning a disk or creating multiple configuration profiles. You can always create, resize, and delete disks later.
 
@@ -79,7 +79,7 @@ After creating a new Linode, select it and you'll be taken to the Linode Manager
 
 ## Booting Your Linode
 
-Your Linode is now provisioned with the distro of your choice but it's turned off, as inidcated in the Dashboard.
+Your Linode is now provisioned with the distro of your choice but it's turned off, as indicated in the Dashboard.
 
 Click **Boot** to turn on your Linode.
 
@@ -89,7 +89,7 @@ When booted, the **Server Status** will change from **Powered Off** to **Running
 
 [![Linode Booted](/docs/assets/linode-manager-linode-booted_small.png)](/docs/assets/linode-manager-linode-booted.png)
 
-## Connecting to Your Linode
+## Connecting to Your Linode via SSH
 
 Communicating with your Linode is usually done using the secure shell (SSH) protocol. SSH encrypts all of the data transferred between the SSH client application on your computer and the Linode, including passwords and other sensitive information. There are SSH clients available for every operating system.
 
@@ -108,11 +108,11 @@ Communicating with your Linode is usually done using the secure shell (SSH) prot
     >
     > These videos were created by [Treehouse](http://www.teamtreehouse.com), which is offering Linode customers a free one month trial. [Click here](http://teamtreehouse.com/join/free-month?utm_source=linode&utm_medium=partnership&utm_campaign=linode-2013&cid=1124) to start your free trial and start learning web design, web development, and more.
 
-### Finding the IP Address
+### Find the IP Address of Your Linode
 
 Your Linode has a unique *IP address* that identifies it to other devices and users on the Internet. For the time being, you'll use the IP address to connect to your server. After you perform some of these initial configuration steps outlined in the Linode Quick Start Guides, you can use [DNS records](/docs/hosting-website#sph_adding-dns-records) to point a domain name at your server and give it a more recognizable and memorable identifier.
 
-Here's how to find your Linode's IP address from the [Linode Manager](https://manager.linode.com).
+Find your Linode's IP address from the [Linode Manager](https://manager.linode.com).
 
 1.  Click the **Linodes** tab.
 2.  Select your Linode.
@@ -127,7 +127,7 @@ In this example, the Linode's IPv4 address is *96.126.109.54* and its IPv6 addre
 
 Once you have the IP address and an SSH client, you can log in via SSH. The following instructions are written for Linux and Mac OS X. If you're using PuTTY as your SSH client in Windows, follow [these instructions](/docs/networking/using-putty).
 
-1.  Enter the following into your terminal window or application. Be sure to replace the example IP address with your Linode's IP address.
+1.  Enter the following into your terminal window or application. Replace the example IP address with your Linode's IP address:
 
         ssh root@123.456.78.90
 
@@ -137,27 +137,32 @@ Once you have the IP address and an SSH client, you can log in via SSH. The foll
         RSA key fingerprint is 11:eb:57:f3:a5:c3:e0:77:47:c4:15:3a:3c:df:6c:d2.
         Are you sure you want to continue connecting (yes/no)?
 
+    After you enter `yes`, the client confirms the addition:
+
+        Warning: Permanently added '123.456.78.90' (RSA) to the list of known hosts.
+
 3.  The login prompt appears for you to enter the password you created for the `root` user above.
 
         root@123.456.78.90's password:
 
 4.  The SSH client initiates the connection. You'll know you're logged in when the following prompt appears:
 
-        Warning: Permanently added '123.456.78.90' (RSA) to the list of known hosts.
-        root@li123-456:~# 
+        root@li123-456:~#
 
  {: .note }
 >
 > If you recently rebuilt an existing Linode, you might receive an error message when you try to
 > reconnect via SSH. SSH clients try to match the remote host with the known keys on your desktop computer, so when you rebuild your Linode, the remote host key changes.
 >
->Revoking the key for that IP address will fix the problem. For Linux and Mac OS X:
+>To reconnect via SSH, revoke the key for that IP address. 
+>
+>For Linux and Mac OS X:
 >
 > ~~~
 > ssh-keygen -R 123.456.789
 > ~~~
 >
-> PuTTY users must remove the old host IP addresses manually. PuTTY's known hosts are in the registry entry:
+> For Windows, PuTTY users must remove the old host IP addresses manually. PuTTY's known hosts are in the registry entry:
 >
 >     HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\SshHostKeys
 
@@ -192,9 +197,15 @@ Slackpkg is the easiest way to update Slackware installations. See the [Slackpkg
 
 You'll need to set your system's hostname and fully qualified domain name (FQDN). Your hostname should be something unique. Some people name their servers after planets, philosophers, or animals. Note that the system's hostname has no relationship to websites or email services hosted on it, aside from providing a name for the system itself. Your hostname should *not* be "www" or anything too generic.
 
- {: .note }
+Once you're done, you can verify by running the command `hostname`.
+
+{: .note }
 >
-> If you're unfamiliar with Linux, one of the first things you'll need to learn is how to use [nano](/docs/linux-tools/text-editors/nano), a text editor included with most distributions. To open a file for editing, type `nano file.txt` where "file.txt" is the name of the file you want to create or edit. When you're finished editing, press `Control-X`, then `Y` to save the changes and `Enter` to confirm.
+> If you're unfamiliar with Linux, one of the first things you'll need to learn is how to use [nano](/docs/linux-tools/text-editors/nano), a text editor included with most distributions. To open a file for editing, type `nano file.txt` where "file.txt" is the name of the file you want to create or edit. If the file is not in your current working directory, specify the entire file path. For example, open the `hosts` file with:
+>
+>     nano /etc/hosts
+>
+>When you're finished editing, press `Control-X`, then `Y` to save the changes and `Enter` to confirm.
 
 For a walkthrough of setting system's hostname and timezone, see the following video:
 
@@ -204,7 +215,7 @@ For a walkthrough of setting system's hostname and timezone, see the following v
 >
 > This video was created by [Treehouse](http://www.teamtreehouse.com), which is offering Linode customers a free one month trial. [Click here](http://teamtreehouse.com/join/free-month?utm_source=linode&utm_medium=partnership&utm_campaign=linode-2013&cid=1124) to start your free trial and start learning web design, web development, and more.
 
-### Arch / CentOS 7 / Debian 8 / Fedora version 18 and above / Ubuntu 15.04 
+### Arch / CentOS 7 / Debian 8 / Fedora version 18 and above / Ubuntu 15.04 and above
 
 Replace `hostname` with one of your choice.
 
@@ -217,11 +228,11 @@ Replace `hostname` with one of your choice.
     echo "hostname" > /etc/hostname
     hostname -F /etc/hostname
 
-Check if the file `/etc/default/dhcpcd` exists.
+Check if the file `/etc/default/dhcpcd` exists, and it's contents.
 
-    ls /etc/default
+    cat /etc/default/dhcpcd | grep SET_HOSTNAME
 
-If so, edit it and comment out the `SET_HOSTNAME` directive:
+If the returned value is `SET_HOSTNAME='yes'`, edit `/etc/default/dhcpcd` and comment out the `SET_HOSTNAME` directive:
 
 {: .file-excerpt }
 /etc/default/dhcpcd
@@ -245,22 +256,30 @@ Enter the following commands to set the hostname, replacing `hostname` with the 
 
 ### Update /etc/hosts
 
-Next, edit your `/etc/hosts` file to resemble the following example, replacing `hostname` with your chosen hostname, `example.com` with your system's domain name, and `12.34.56.78` with your system's IP address. As with the hostname, the domain name part of your FQDN does not necessarily need to have any relationship to websites or other services hosted on the server (although it may if you wish). As an example, you might host "www.something.com" on your server, but the system's FQDN might be "mars.somethingelse.com."
+Update the `/etc/hosts` file. This file creates static associations between IP addresses and hostnames, with higher priority than DNS. 
+
+1.  Every `hosts` file should begin with the line `127.0.0.1 localhost.localdomain localhost`, although the naming may be slightly different between Linux distributions. `127.0.0.1` is the [**loopback address**](https://en.wikipedia.org/wiki/Loopback#Virtual_loopback_interface), and is used to send IP traffic internally on the system. You can leave this line alone.
+
+    Some distributions may also ship with a line for `127.0.1.1` in their `hosts file`. This is the loopback domain, and can be ignored in most cases.
+
+2.  Add a line for your Linode's public IP address. You can associate this address with your Linode's **Fully Qualified Domain Name** (FQDN) if you have one, and with the local hostname you set in the steps above. In the example below, `203.0.113.10` is our public IP address, `hostname` is our local hostname, and `hostname.example.com` is our FQDN.
+
+As with the hostname, the domain name part of your FQDN does not necessarily need to have any relationship to websites or other services hosted on the server (although it may if you wish). As an example, you might host "www.something.com" on your server, but the system's FQDN might be "mars.somethingelse.com."
 
 {:.file }
 /etc/hosts
 : ~~~ 
-  127.0.0.1 localhost.localdomain localhost 
-  12.34.56.78 hostname.example.com hostname
+  127.0.0.1 localhost.localdomain localhost
+  203.0.113.10 hostname.example.com hostname
   ~~~
 
-If you have IPv6 enabled on your Linode, you will also want to add an entry for your IPv6 address, as shown in this example:
+If you have IPv6 enabled on your Linode, you may also want to add an entry for your IPv6 address, as shown in this example:
 
 {:.file }
 /etc/hosts
 : ~~~
-  127.0.0.1 localhost.localdomain localhost 
-  12.34.56.78 hostname.example.com hostname 
+  127.0.0.1 localhost.localdomain localhost
+  203.0.113.10 hostname.example.com hostname
   2600:3c01::a123:b456:c789:d012 hostname.example.com hostname
   ~~~
 

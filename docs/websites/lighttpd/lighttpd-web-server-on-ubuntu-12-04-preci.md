@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Using lighttpd to host multiple websites on Ubuntu 12.04 (Precise)'
 keywords: 'lighttpd,web server,web hosting'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-servers/lighttpd/ubuntu-12-04-precise/']
 modified: Wednesday, September 11th, 2013
 modified_by:

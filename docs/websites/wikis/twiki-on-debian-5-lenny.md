@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Install and configure a structured wiki with TWiki.'
 keywords: 'wiki,twiki,structured wiki,enterprise wiki'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-applications/wikis/twiki/debian-5-lenny/']
 modified: Monday, October 8th, 2012
 modified_by:

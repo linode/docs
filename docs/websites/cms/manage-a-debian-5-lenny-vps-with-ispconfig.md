@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Installing and configuring the ISPConfig control panel to maintain your Debian 5 (Lenny) VPS.'
 keywords: 'ispconfig,control panel,cpanel,plesk,gui'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-applications/control-panels/ispconfig/debian-5-lenny/']
 modified: Monday, October 8th, 2012
 modified_by:

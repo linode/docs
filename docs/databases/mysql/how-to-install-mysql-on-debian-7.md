@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Getting started with MySQL on Debian 7.'
 keywords: 'MySQL on Linux,Debian 7,Debian Wheezy,Debian,cloud,cloud hosting,Linux,MySQL,database,MariaDB,install MySQL,secure MySQL,mysqltuner'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['databases/mysql/debian-7-wheezy/','databases/mysql/using-mysql-relational-databases-on-debian-7-wheezy/']
 modified: Wednesday August 26th, 2015
 modified_by:
@@ -115,7 +115,7 @@ The standard tool for interacting with MySQL is the `mysql` client which install
 1. In the example below, `testdb` is the name of the database, `testuser` is the user, and `password` is the user's password.
 
         create database testdb;
-        create user 'testuser'@localhost identified by 'password';
+        create user 'testuser'@'localhost' identified by 'password';
         grant all on testdb.* to 'testuser' identified by 'password';
     
 2.  Then exit MySQL.

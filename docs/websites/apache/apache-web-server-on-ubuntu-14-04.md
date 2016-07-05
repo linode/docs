@@ -2,23 +2,22 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Instructions for getting started with the Apache web server on Ubuntu 14.04 LTS (Trusty Tahr).'
-keywords: 'apache,apache ubuntu 12.04,apache ubuntu precise pangolin,web server,apache on ubuntu,apache lucid'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['web-servers/apache/installation/ubuntu-12-04-precise-pangolin/']
+description: 'Install Apache on your Ubuntu 14.04 (Trusty Tahr) server, configure virtual hosting, and set up modules and scripting.'
+keywords: 'apache,ubuntu,ubuntu 14.04,trusty tahr,http,web server'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Friday, July 31st, 2015
 modified_by:
   name: Elle Krout
 published: 'Friday, July 31st, 2015'
-title: 'Set Up an Apache Web Server on Ubuntu 14.04 LTS'
+title: 'Apache Web Server on Ubuntu 14.04 LTS'
 external_resources:
  - '[Apache HTTP Server Version 2.4 Documentation](http://httpd.apache.org/docs/2.4/)'
  - '[Apache Configuration](/docs/web-servers/apache/configuration/)'
 ---
 
-Apache is an open-source web server application. This guide explains how to install and configure an Apache web server on Ubuntu 14.04 LTS.
+The *Apache HTTP Web Sever* (Apache) is an open source web application for deploying web servers. This guide explains how to install and configure an Apache web server on Ubuntu 14.04 LTS.
 
-If instead you would like to install a full LAMP stack, please see the [LAMP on Ubuntu 14.04](/docs/websites/lamp/lamp-server-on-ubuntu-14-04) guide.
+If instead you would like to install a full LAMP (Linux, Apache, MySQL and PHP) stack, please see the [LAMP on Ubuntu 14.04](/docs/websites/lamp/lamp-server-on-ubuntu-14-04) guide.
 
 {: .note}
 >
@@ -55,13 +54,13 @@ If instead you would like to install a full LAMP stack, please see the [LAMP on 
         KeepAlive Off
         ~~~
 
-## Configure the Multi-Processing Module
+### Configure the Multi-Processing Module
 
 Apache 2.4 offers various multi-processing modules (MPMs) to handle connections. The default MPM is the *event module*, although the *prefork module* is still recommended if you’re using standard PHP.
 
-### The Prefork Module
+#### The Prefork Module
 
-1.  Open `/etc/apache2/mods-available/mpm_prefork.conf` in your text editor and edit the values as needed. The following is optimized for a 1GB Linode:
+1.  Open `/etc/apache2/mods-available/mpm_prefork.conf` in your text editor and edit the values as needed. The following is optimized for a 2GB Linode:
 
     {: .file}
     /etc/apache2/mods-available/mpm_prefork.conf
@@ -74,11 +73,11 @@ Apache 2.4 offers various multi-processing modules (MPMs) to handle connections.
         # MaxConnectionsPerChild: maximum number of requests a server process serves
 
         <IfModule mpm_prefork_module>
-                StartServers              2
-                MinSpareServers           6
-                MaxSpareServers           12
-                MaxRequestWorkers         30
-                MaxConnectionsPerChild    3000
+                StartServers              4
+                MinSpareServers           20
+                MaxSpareServers           40
+                MaxRequestWorkers         200
+                MaxConnectionsPerChild    4500
         </IfModule>
         ~~~
 
@@ -91,9 +90,9 @@ Apache 2.4 offers various multi-processing modules (MPMs) to handle connections.
 
         sudo service apache2 restart
 
-### The Event Module
+#### The Event Module
 
-If you choose to keep the *event module* enabled, these settings are suggested for a 1GB Linode.
+If you choose to keep the *event module* enabled, these settings are suggested for a 2GB Linode.
 
 1.  Open `/etc/apache2/mods-available/mpm_event.conf` in your text editor and edit the values as needed:
 
@@ -109,11 +108,11 @@ If you choose to keep the *event module* enabled, these settings are suggested f
         # MaxConnectionsPerChild: maximum number of requests a server process serves
         <IfModule mpm_event_module>
                 StartServers             2
-                MinSpareThreads          15
-                MaxSpareThreads          50
+                MinSpareThreads          25
+                MaxSpareThreads          75
                 ThreadLimit              64
                 ThreadsPerChild          25
-                MaxRequestWorkers        30
+                MaxRequestWorkers        150
                 MaxConnectionsPerChild   3000
         </IfModule>
         ~~~
@@ -123,7 +122,7 @@ If you choose to keep the *event module* enabled, these settings are suggested f
         sudo service apache2 restart
 
 
-### Configure Name-based Virtual Hosts
+### Configure Virtual Hosting
 
 Apache supports *name-based virtual hosting*, which allows you to host multiple domains on a single server with a single IP. Although there are different ways to set up virtual hosts, the method below is recommended.
 
@@ -174,7 +173,7 @@ Apache supports *name-based virtual hosting*, which allows you to host multiple 
         sudo service apache2 restart
 
 
-## Set Up Mods and Scripting
+## Apache Mods and Scripting
 
 ### Install Apache Modules
 

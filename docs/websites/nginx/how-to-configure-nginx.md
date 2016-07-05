@@ -4,9 +4,9 @@ author:
   email: afornuto@linode.com
 description: 'Nginix is a high-performance web server that delivers large amounts of static content quickly. This doc will outline the basic Nginx parameters and conventions.'
 keywords: 'nginx, web server, nginx.conf, install'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-servers/nginx/configuration/basic/','websites/nginx/basic-nginx-configuration/index.cfm/','websites/nginx/basic-nginx-configuration/','websites/nginx/how-to-configure-nginx/index.cfm/']
-modified: Tuesday, May 20th, 2014
+modified: Wednesday, February 24th, 2016
 modified_by:
   name: Alex Fornuto
 published: 'Monday, January 18th, 2010'
@@ -88,7 +88,7 @@ Normally, you will not need to change anything in this first section. Instead, w
 -   Settings begin with the *variable* name and then state an *argument* or series of arguments separated by spaces. Examples include `worker_processes  1;` and `error_log  logs/error.log  notice;`. All statements end with a semi-colon (**;**).
 -   Some settings, like the `events` variable above, have arguments that are themselves settings with arguments. All sub-directives are enclosed in one set of curly brackets (**{** **}**).
 -   Brackets are sometimes nested inside each other for multiple sets of sub-directives. If you add or edit a section with nested brackets, make sure they all come in opening and closing pairs.
--   White space characters (tabs, spaces, and new line characters) are not interpreted by Nginx. This doesn't mean that they aren't important, though! Using indentation in a standardized way will greatly improve the readability of your file and make it easier for you to keep up with maintenance in the long run.
+-   Tabs or multiple spaces are interpreted by nginx as a single space. Using tabs or spaces for indentation in a standardized way will greatly improve the readability of your file and make it easier to maintain.
 
 ## Understanding How Nginx Works
 

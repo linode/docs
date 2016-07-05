@@ -4,7 +4,7 @@ author:
   email: docs@Linode.com
 description: 'Use cPanel to manage services on your CentOS Linux VPS.'
 keywords: 'cpanel,vps control panel,cpanel linux,cpanel centos'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-applications/control-panels/cpanel/centos-6/','websites/cms/cpanel-on-centos-6-5/','websites/cms/cpanel-on-centos-5/']
 modified: Monday, September 22, 2014
 modified_by:
@@ -31,7 +31,7 @@ If you plan to use a domain name for your nameservers that you will also be host
 
 ## Install cPanel
 
-Before proceeding, make sure you've purchased a cPanel license. You may obtain a license from the [cPanel Store](https://store-koala.cpanel.net/). Next, log into your Linode as the "root" user via SSH to its IP address (found on the "Remote Access" tab in the Linode Manager). 
+Before proceeding, make sure you've purchased a cPanel license. You may obtain a license from the [cPanel Store](https://store.cpanel.net/). Next, log into your Linode as the "root" user via SSH to its IP address (found on the "Remote Access" tab in the Linode Manager). 
 
 1. Issue the following commands to download and install cPanel:
 

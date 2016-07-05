@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Getting started with Openfire, an open source instant messaging server built on the XMPP/Jabber protocol for Ubuntu 9.10 (Karmic).'
 keywords: 'openfire,openfire ubuntu 9.10,openfire linux,instant messaging,real-time messaging,xmpp server,collaboration software,chat software,linux jabber server'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['communications/xmpp/openfire/ubuntu-9-10-karmic/']
 modified: Wednesday, October 3rd, 2012
 modified_by:

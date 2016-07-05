@@ -4,8 +4,8 @@ author:
     email: docs@linode.com
 description: 'How to configure IPv6 networking natively on your Linode.'
 keywords: 'ipv6, networking'
-license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/us/)'
-modified: Friday, June 24, 2016
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+modified: Wednesday, June 1st, 2016
 modified_by:
     name: Phil Zona
 published: 'Tuesday, May 3rd, 2011'
@@ -175,6 +175,33 @@ If you are using CentOS 7 or Fedora:
 
     systemctl restart network
 
+### Arch Linux (systemd-networkd)
+
+If you are using `systemd-networkd` on Arch Linux, you can statically configure IPv6 pools by editing `/etc/systemd/network/05-eth0.network`.
+
+1.  Set up [Static IP Networking](/docs/networking/linux-static-ip-configuration/#arch) for your IPv4 address.
+
+2.  Edit your current static IP networking configuration to allow for your IPv6 addresses. You will need to include your default IPv6 address as well.
+
+    {: .file }
+    /etc/systemd/network/05-eth0.network
+    :   ~~~
+        [Match]
+        Name=eth0
+
+        [Network]
+        Address=198.51.100.2/24
+        Address=192.168.133.234/17
+        Gateway=198.51.100.1
+        Address=2001:DB8:2000:aff0::/32
+        Address=2001:DB8:2000:aff0::1/32
+        Address=2001:DB8:2000:aff0::2/32
+        ~~~
+
+3.  Restart `systemd-networkd`
+
+        systemctl restart systemd-networkd
+
 ### Arch Linux (netctl)
 
 If you are still using `netctl` in Arch Linux, you can statically configure your IPv6 pools by editing the `/etc/netctl/examples/ethernet-static` file and copying it to `/etc/netctl`.
@@ -213,6 +240,7 @@ If you are still using `netctl` in Arch Linux, you can statically configure your
 
         netctl enable ethernet-static
 
+<<<<<<< HEAD
 ### Arch Linux/Fedora 21 (systemd-networkd)
 
 If you are using `systemd-networkd` on Arch Linux or Fedora 21, you can statically configure IPv6 pools by editing `/etc/systemd/network/50-static.network`.
@@ -240,6 +268,8 @@ If you are using `systemd-networkd` on Arch Linux or Fedora 21, you can statical
 
         systemctl restart systemd-networkd
 
+=======
+>>>>>>> ffc94ca246c064429d386c4cf76bef32027f74fa
 ### Gentoo
 
 The configuration of additional IPv6 addresses in Gentoo is simple. Append the IPv6 addresses and netmask you want to the `config_eth0` line in `/etc/conf.d/net`. The list itself is a space separated list.

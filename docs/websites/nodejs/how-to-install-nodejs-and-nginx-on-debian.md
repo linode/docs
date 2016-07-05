@@ -1,10 +1,10 @@
 ---
 author:
-    name: Linode
+    name: Joe D. 
     email: docs@linode.com
 description: 'How to install Nginx for static content and Node.js for dynamic requests.'
 keywords: 'linode guide,hosting a website,website,linode setup, install node.js, install nginx, debian, front-end requests, back-end requests'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Wednesday, January 14th, 2015
 modified_by:
     name: Linode

@@ -5,7 +5,7 @@ author:
 published: 'Thursday, July 23rd, 2015'
 description: 'How to run a custom Linux distribution or pre-built Linux appliance on your KVM Linode.'
 keywords: 'custom distro,custom distribution,advanced Linux,kvm'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
   name: Alex Fornuto
 modified: 'Thursday, July 23rd, 2015'
@@ -102,7 +102,7 @@ For this guide we'll be using Ubuntu as an example, but you're welcome to apply 
     By piping our `dd` command through `pv`, we can track the progress of the transfer. The `dd` command will transfer the entire partition including empty space, this process will take some time.
 
 
-## Configure the transferred image.
+## Configure the transferred image
 
 1.  While still booted into Finnix on your Linode, mount the newly transferred disk:
 

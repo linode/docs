@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Protecting access to your Linux VPS with the arno-iptables-firewall package.'
 keywords: 'arno-iptables-firewall,Debian firewall,Linux firewall,networking'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['security/firewalls/arno-iptables-debian-5-lenny/']
 modified: Tuesday, October 1st, 2013
 modified_by:

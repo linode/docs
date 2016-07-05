@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Get in-depth website visitor statistics with Piwik, a self-hosted, open source analytics solution on Fedora 13.'
 keywords: 'open source analytics,piwik fedora 13,piwik,analytics,centos,tracking,statistics'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-applications/analytics/piwik/fedora-13/']
 modified: Tuesday, October 1st, 2013
 modified_by:

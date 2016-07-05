@@ -4,12 +4,12 @@ author:
   email: --
 description: 'A Garrys Mod Server for CentOS 7.'
 keywords: 'garry''s mod,centos,centos 7'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-applications/game-servers/minecraft-ubuntu12-04/']
 published: 'Wednesday, January 21, 2015'
-modified: Monday, January 26, 2015
+modified: Thursday, February 25th, 2016
 modified_by:
-  name: Elle Krout
+  name: Linode
 title: 'Garry''s Mod on CentOS 7'
 external_resources:
 - '[SRCDS](http://www.srcds.com/)'
@@ -25,92 +25,126 @@ earn $250 per published guide.*
 
 <hr>
 
-Garry's Mod enables complete control and modification of the video game engine, Source Engine. With Garry's Mod, you can create almost any game you want. Setting up a Garry's Mod server is a great way to play with friends over the internet while maintaining control over the server.
+[Garry's Mod](http://www.garrysmod.com/) enables complete control and modification of the video game engine, Source Engine. With Garry's Mod, you can create almost any game you want. Setting up a Garry's Mod server is a great way to play with friends over the internet while maintaining control over the server.
 
 This guide shows how to create, maintain, and secure a Garry's Mod server.
 
+## Before You Begin
+
+1.  You will need a [Steam](http://store.steampowered.com) account and a copy of [Garry's Mod](http://store.steampowered.com/app/4000/).
+
+2.  Complete our guide: [Install SteamCMD for a Steam Game Server](/docs/applications/game-servers/install-steamcmd-for-a-steam-game-server). This will get SteamCMD installed and running on your Linode and this guide will pick up where the SteamCMD page leaves off.
+
 {: .note}
 >
->You will need a [Steam](http://www.steampowered.com) account and a copy of [Garry's Mod](http://store.steampowered.com/app/4000/) to complete this guide.
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
-##Preparation
+## Prerequisites for Garry's Mod
 
-Before you begin, install necessary packages, create a user, and edit your firewall privileges.
+From the SteamCMD guide, two additional steps are needed specifically for Gmod.
 
-{: .note}
-> This section assumes root access. Be sure to run the guide as `root` or with the sudo prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+1.  Add a firewall rule. This command assumes that you have **only** the firewalld rules in place from the SteamCMD guide. This inserts a rule for port 10999 after the pre-existing rules for SteamCMD.
 
-### Update Packages
+        sudo firewall-cmd --zone=public --add-port=27000 27030/udp --permanent
 
-1.  Log in to your Linode via [SSH](/docs/getting-started#logging-in-for-the-first-time).
-2.  Run the update command, and install the required dependencies to run SteamCMD:
+2.  Install an additonal 32-bit package:
 
-    	yum update
-	    yum install tmux gdb mailx postfix glibc.i686 libstdc++.i686
+        sudo yum install ncurses-libs.i686
 
-###Update Firewall
+## Install Garry's Mod
 
-If you have a firewall on your Linode, add the following ruleset to `iptables.firewall.rules` in order to run SteamCMD:
+1.  Be sure you are in the directory `~/Steam`, then access the `Steam>` prompt.
 
-{: .file-excerpt}
-/etc/iptables.firewall.rules
-:   ~~~
-    # Allow SteamCMD
-    -A INPUT -p udp -m udp --sport 27000:27030 --dport 1025:65355 -j ACCEPT
-    -A INPUT -p udp -m udp --sport 4380 --dport 1025:65355 -j ACCEPT
-    ~~~
+        cd ~/Steam && ./steamcmd.sh
 
-### Add A User
+2.  From the SteamCMD prompt, login anonymously:
 
-1.  Create the user. In this example, the user is called `gmod`:
+        login anonymous
 
-    	adduser gmod
+    Or log in with your Steam username:
 
-2.  Set the password for your user:
+        login example_user
 
-	    passwd gmod
+3.  Install Gmod to the `Steam` user's home directory:
 
-3.  Login to your new user:
+        force_install_dir ./gmod
+        app_update 4020 validate
 
-    	su - gmod
+    This can take some time. If the download looks as if it has frozen, be patient. Once the download is complete, you should see this output:
 
-## Installation
+        Success! App '4020' fully installed.
 
-1.  Download the required script. This script installs both the server installer (SteamCMD) and the necessary server files:
+        Steam>
 
-    	wget http://danielgibbs.co.uk/dl/gmodserver
+4.  Quit SteamCMD:
 
-2.  Give the user execute permissions for the script:
+        quit
 
-    	chmod +x gmodserver
+    {: .note}
+    >
+    >To update Gmod, run the above 4 commands again.
 
-3.  Run the installer:
-
-    	./gmodserver install
-
-4.  Press `y` when it asks about the server directory.
-
-5.  Ensure that the install was successful, press `y` if the output reads affirmative:
-
-        Update state (0x61) downloading, progress: 97.37 (3695044726 / 3795030198)
-	    Update state (0x61) downloading, progress: 99.92 (3792009490 / 3795030198)
-	    Success! App '4020' fully installed.
-
-	    =================================
-	    Was the install successful? [y/N]
-
-6.  You can choose to install [Game Server Query](https://code.google.com/p/ax-gameserver-query/) in the next step. The Game Server Query plugin improves monitoring of the server. 
-
-7.  Configure your server by replacing `Example Server` and `password` with your desired server name and password.
-
-	    Enter server name: Example Server
-    	Enter rcon password: password
-
-## Configuration
+## Configure Garry's Mod
 
 This section configures different aspects of the server, including gamemode and workshop addons.
 
-1.  Create a collection of addons you want to install on your server at [Garry's Mod Collections](http://steamcommunity.com/workshop/browse/?section=collections&appid=4000&p=3). You will need to be logged into Steam.
+### Startup Script
+
+1.  Create a startup script for Gmod with the following contents:
+
+    {: .file }
+    ~/startgmod.sh
+    :   ~~~
+        #!/bin/sh
+
+        cd ./Steam/gmod
+        screen -S "Garry's Mod Server" ./srcds_run -game garrysmod +maxplayers 20 +map gm_flatgrass
+        ~~~
+
+    When run, the script will change directories to `~/Steam/gmod` and execute Garry's Mod in a [Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions) session. The `srcds_run` binary can take many more arguments which you can see at [Valve's Developer wiki](https://developer.valvesoftware.com/wiki/Command_Line_Options#Source_Dedicated_Server).
+
+2.  Make the script executable:
+
+        chmod +x ~/startgmod.sh
+
+### Update Script
+
+The Garry's Mod wiki has instructions to use a script to update Gmod rather than manually through SteamCMD. See under [*Installing Garry's Mod*](http://wiki.garrysmod.com/page/Linux_Dedicated_Server_Hosting).
+
+### Automatic Startup After Server Reboots
+
+This will automatically restart Garry's Mod when your server reboots.
+
+1.  Open Crontab (this will open in `vim`):
+
+        crontab -e
+
+2.  Enter the startup command. **Be sure that the binary flags are the same as in your startup script.**
+
+        @reboot /home/steam/Steam/gmod/srcds_run -game garrysmod +maxplayers 20 +map gm_flatgrass
+
+3.  To exit `vim`, press **Esc**, then type **:x** and hit **Enter**.
+
+### Server Config File
+
+The default `server.cfg` file is blank, and any configuration options you want to specify for the server must be added. This are optional, but below is a sane starting point.
+
+{: .file }
+~/Steam/gmod/garrysmod/cfg/server.cfg
+:   ~~~
+    hostname "server_hostname"
+    sv_password "server_password"
+    sv_timeout 60
+    rcon_password "rcon_password"
+    mp_autoteambalance 1
+    mp_limitteams 1
+    writeid
+    writeip
+    ~~~
+
+### Workshop Addons
+
+1.  Create a collection of addons you want to install on your server at [Garry's Mod Collections](http://steamcommunity.com/workshop/browse/?section=collections&appid=4000&p=3). You will need to be logged in to Steam.
 
 2.  Note the collection ID. It is located at the end of the url, denoted by the 'X's here:
 
@@ -118,118 +152,30 @@ This section configures different aspects of the server, including gamemode and 
 
 3.  Acquire a Steam API key from the [Steam API Keys](http://steamcommunity.com/dev/apikey) page. Note the key.
 
-4.  Open `gmodserver` in the editor:
+4.  Paste the Steam API key and Workshop Collection ID into your startup script. For example:
 
-    	nano gmodserver
-
-5.  Set the `workshopauth` to your Steam API Key, and your `workshopcollectionid` to your collection ID.
-
-6.  Set the gamemode of the Garry's Mod server by adding the following to the `parms` variable on line 34:
-
-    	+gamemode terrortown
+        ./srcds_run +maxplayers 20 +gamemode terrortown +map cs_office -authkey YOURKEYGOESHERE +host_workshop_collection 157384458
 
     This sets the game for the Trouble in Terrorist Town (TTT) gamemode, but can be changed to your desired gamemode, if you have it downloaded.
 
-7.  Save and exit with CTRL-X followed by Y.
+    For more info on Workshop Addons, see [Workshop for Dedicated Servers](http://wiki.garrysmod.com/page/Workshop_for_Dedicated_Servers) in the Garry's Mod wiki.
 
-### Running the Server
+##Using the Server
 
-Start the server using:
+1.  Now that your server is installed and configured, it can be launched by running the `startgmod.sh` script from your `steam` user's home directory.
 
-    ./gmodserver start
+        cd ~/ && ./startgmod.sh
 
-To ensure it is running and access to the console, use:
+    {: .caution}
+    >From this point, do not press the **Control+C** keys while in the console unless you want to stop Gmod.
 
-    ./gmodserver console
+2.  To detach from the screen session running the server console, press these two key combinations in succession:
 
-{: .note}
->
->To exit the console, use CTRL-B followed by D. Do not CTRL-C out of the console, which shuts down the server.
+    **Control+A**<br>
+    **Control+D**
 
-To stop the server, use:
+3.  To bring the console back, type the following command:
 
-    ./gmodserver stop
+        screen -r
 
-## Server Maintenance
-
-This section discusses how to do different maintenance functions for the server.
-
-### Run on Boot
-
-1.  Open up `/etc/rc.local`:
-
-    	nano /etc/rc.local
-	
-2.  Add a line at the end of the file for Garry's Mod:
-
-    {: .file-excerpt}
-    /etc/rc.local
-    :   ~~~
-    	su - gmod -c '/home/gmod/gmodserver start'
-    	~~~
-
-3.  Save and exit using CTRL-X followed by Y.
-
-### Enable Email Notification
-
-1.  Open the `gmodserver` file:
-
-    	nano gmodserver
-	
-2.  Turn on email notifications by editing these lines:
-
-    {: .file}
-    gmodserver
-    :   ~~~
-    	emailnotification="on"
-	    email="test@example.com"
-        ~~~
-
-3.  Save and exit using CTRL-X followed by Y.
-
-### Daily Server Update
-
-1.  Edit the crontab using:
-
-    	crontab -e
-
-2.  Press `i` to enter insertion mode.
-
-3.  Add this line to the the end of the crontab:
-
-    	0 5 * * *  su - gmod -c '/home/gmod/gmodserver update-restart' > /dev/null 2>&1
-
-	This configuration updates and restarts the server everyday at 5:00 am.
-
-4.  Exit cron using ESC, `:x`, ENTER.
-
-### Monitor the Server
-
-This will make sure the server is online every 30 minutes.
-
-1.  Edit the crontab using:
-
-    	crontab -e
-
-2.  Press `i` to enter insertion mode.
-
-3.  Add this line to the end of the crontab:
-
-    	*/30 * * * *  su - gmod -c '/home/gmod/gmodserver monitor' > /dev/null 2>&1
-
-4.  Exit cron using ESC, `:x`, ENTER.
-
-### Updating the Server
-
-To update the server, run:
-
-    ./gmodserver update
-
-### Validating the Server
-
-If you think your Garry's Mod version is corrupted for one reason or another, run:
-
-    ./gmodserver validate
-
-
-
+4.  To stop the server, bring back the Gmod console and press **CONTROL + C**.

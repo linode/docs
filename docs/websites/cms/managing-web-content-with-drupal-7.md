@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Installing, configuring, and optimizing the Drupal content management framework on your Linode.'
 keywords: 'drupal,cms,web framework,web application,php,content management system,content management framwork'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-applications/cms-guides/drupal/']
 modified: Thursday, November 6th, 2014
 modified_by:

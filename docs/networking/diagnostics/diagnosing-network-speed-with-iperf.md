@@ -1,10 +1,10 @@
 ---
 author:
-  name: Dave Russell
+  name: Dave R.
   email: docs@linode.com
 description: 'How to diagnose network speed issues using Iperf.'
 keywords: 'networking,diagnostic,speed,iperf'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Monday, January 12, 2015
 modified_by:
   name: Linode
