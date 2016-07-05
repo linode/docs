@@ -35,11 +35,11 @@ This guide will walk through the steps necessary to install and configure Tiny T
 
 3.  Follow the steps in the [LAMP on CentOS 7](/docs/websites/lamp/lamp-on-centos-7) guide. When initializing the new MariaDB database, use the following example to create a database for Tiny Tiny RSS (remember to replace "MyPassword" with a different, strong password and save it for later):
 
-~~~
-create database ttrss;
-grant all on ttrss.* to 'ttrss' identified by 'MyPassword';
-exit
-~~~
+    ~~~
+    create database ttrss;
+    grant all on ttrss.* to 'ttrss' identified by 'MyPassword';
+    exit
+    ~~~
 
 ## Preparing Apache
 
