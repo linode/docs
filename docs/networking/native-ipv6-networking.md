@@ -98,15 +98,16 @@ While default IPv6 addresses are configured automatically, you will need to stat
       auto lo
       iface lo inet loopback
 
-      # Automatically brings up the default network interface (eth0)
+      # The primary network interface (eth0)
       auto eth0
-      allow-hotplug eth0
+      iface eth0 inet dhcp
 
       # IPv6 Address Blocks
       # Add a static block for your default public IPv6 address, and include a directive for its gateway.
 
       iface eth0 inet6 static
         address 2001:db8:a0b:12f0::1/64
+        gateway fe80::1
 
       # Add an additional block for each IPv6 address you need to configure.
       
