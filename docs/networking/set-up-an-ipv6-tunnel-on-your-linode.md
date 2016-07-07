@@ -39,7 +39,7 @@ Once you have signed up for a tunnel, you will need to issue a few commands on y
         ip tunnel add he-ipv6 mode sit remote 203.0.113.10 local 198.51.100.5 ttl 255
         ip link set he-ipv6 up
 
-    Line 1 in the command above instructs the `ip` tool to add a tunnel called `he-ipv6` in mode `sit`. It uses the example remote IP `203.0.113.10` and example local IP `198.51.100.5`, and sets a Time To Live (TTL) of 255. For more information on how the `ip` tool configures tunnels, see its [documentation](http://man7.org/linux/man-pages/man8/ip-tunnel.8.html).
+    For more information on how the `ip` tool configures tunnels, see its [documentation](http://man7.org/linux/man-pages/man8/ip-tunnel.8.html).
 
 3.  Assign IPv6 address and routing information to your new tunnel device. Replace `2001:db8:1234:5678::2/64` with the IPv6 address assigned to you. This information should be provided to you by your tunnel broker as your "Client IPv6 Address":
 
