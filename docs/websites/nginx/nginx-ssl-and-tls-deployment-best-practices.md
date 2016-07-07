@@ -22,46 +22,58 @@ contributor:
 
 This guide is intended to inform you of some additional configuration options that nginx uses when serving HTTPS. While these features help optimize nginx for SSL and TLS, this is by no means a complete guide to securing nginx or your Linode. The best way to ensure your server remains secure is to not only to configure it properly, but to follow best security practices at all times. This guide is intended to be one of many steps toward creating the most secure environment possible. 
 
-Please note that you will need root privileges for some of the commands that follow.
+## Before you Begin
+
+1.  This guide requires a Linode with nginx already installed. If you have not done this already, refer to our [nginx guides](https://www.linode.com/docs/websites/nginx/) for installation instructions for your system.
+
+2.  Update your system:
+
+        apt-get update && apt-get upgrade
+
+{: .note}
+>
+>The commands in this guide are written for a root user. If you're following along as a non-root user, commands that require elevated privileges should prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
 For more information, please review our guides on [basic nginx configuration](/docs/websites/nginx/how-to-configure-nginx), [Linux security basics](/docs/security/linux-security-basics), and [securing your server](/docs/security/securing-your-server).
 
-### Disable Nginx Server Tokens
+## Disable Nginx Server Tokens
 
 By default, nginx will share its version number with anyone who connects to your server. For example, if a directory is not found, nginx will return a 404 error that includes its version number. Disabling server tokens makes it more difficult to determine the version of nginx running on your Linode, and therefore more difficult to implement version-specific exploits.
 
 [![404 With Nginx Version Number](/docs/assets/404_Not_Found.jpg)](/docs/assets/404_Not_Found.jpg)
 
-1.  To disable `server_tokens` open up your `nginx.conf` using your text editor of choice.
-        
-	    nano /etc/nginx/nginx.conf
-
-2.  Inside of the `http` block, append the following line before the ending `}`. Depending on where you installed nginx from this line may already exist but may be commented out. To make it active just remove the `#` sign in front.
-
+1.  To disable `server_tokens`, open your `/etc/nginx/nginx.conf` file. Inside of the `http` block, append or uncomment the following line:
+    
+    {: .file-excerpt}
+    /etc/nginx/nginx.conf
+    :   ~~~
         server_tokens       off;
+        ~~~
 
-3.  Exit your text editor and restart nginx.
+2.  Save your changes and restart nginx.
 
         systemctl restart nginx
 
-After restarting, browse to a directory of your server that does not exist, and nginx will no longer share its version number.
+After restarting, direct your web browser to a directory of your server that does not exist, and nginx will no longer share its version number.
 
 [![404 With Server Tokens Disabled](/docs/assets/404_Not_Found_Server_Tokens_Off.jpg)](/docs/assets/404_Not_Found_Server_Tokens_Off.jpg) 
 
-### Enable HTTP/2 Support
+## Enable HTTP/2 Support
 
-HTTP/2 is a new version of the HTTP standard replacing HTTP/1.1 to reduce page load time. HTTP/2 relies upon establishing multiple HTTP requests to a server to download assests in parallel. Traditionally when you access a web page a separate HTTP connection is established to load each resource (ex. HTML, CSS, JavaScript, or images). The server also compresses assests before sending them to the client requiring less bandwdith. 
+HTTP/2 is a new version of the HTTP standard replacing HTTP/1.1 to reduce page load time. HTTP/2 relies upon establishing multiple HTTP requests to a server to download assests in parallel. Traditionally, when you access a web page a separate HTTP connection is established to load each resource (e.g. HTML, CSS, JavaScript, or images). The server also compresses assests before sending them to the client, which requires less bandwdith. 
 
 {.note}
-> In Sepetmeber 2010, Google released SPDY for all version of Chrome 6. SPDY is currently being phased out in favor of HTTP/2. Support for SPDY in Chrome was removed in May 2016. SPDY is supported only in nginx 1.8.x or older, whereas newer versions are beginning to support HTTP/2. However, most nginx packages shipped with current stable distros do support SPDY.
+> In September 2010, Google released SPDY for all version of Chrome 6. SPDY is currently being phased out in favor of HTTP/2. Support for SPDY in Chrome was removed in May 2016. SPDY is supported only in nginx 1.8.x or older, whereas versions beginning with 1.9.5 are beginning to support HTTP/2. To check your nginx version:
+>
+>    nginx -v
 
-1.  To enable HTTP/2, open your nginx SSL virtual host configuration file. Depending on how you installed nginx this could be located at `/etc/nginx/sites-enabled/default` or at `/etc/nginx/conf.d/example_ssl.conf`.
+1.  To enable HTTP/2, open your nginx SSL virtual host configuration file. Depending on how you installed nginx this could be located at `/etc/nginx/sites-enabled/default` or at `/etc/nginx/conf.d/example_ssl.conf`. Look for the `listen` line within the "SSL Configuration" section. Uncomment the following line and add `http2` to the end before the semicolon.
 
-        nano /etc/nginx/conf.d/example_ssl.conf
-
-2.  Look for the `listen` line and add `http2` to the end before the semicolon.
-
+    {: .file-excerpt}
+    /etc/nginx/sites-enabled/default OR /etc/nginx/conf.d/example_ssl.conf
+    :   ~~~
         listen       443 ssl http2;
+        ~~~
 
 3.  Save your changes and restart nginx.
 
@@ -72,7 +84,7 @@ HTTP/2 is a new version of the HTTP standard replacing HTTP/1.1 to reduce page l
 If HTTP/2 is functioning properly, your report should look like this.
 [![HTTP/2 Report](/docs/assets/HTTP2_Report.jpg)](/docs/assets/HTTP2_Report.jpg)
 
-### Redirect HTTP Traffic to HTTPS
+## Redirect HTTP Traffic to HTTPS
 
 Google is now ranking websites that accept encrypted HTTPS connections higher in search results, why not force clients to use HTTPS and increase your page rank? 
 
@@ -100,7 +112,7 @@ Google is now ranking websites that accept encrypted HTTPS connections higher in
 
         systemctl restart nginx
 
-### OCSP Stapling
+## OCSP Stapling
 
 The *Online Certificate Status Protocol* (OCSP) was created to speed up the process that operating systems and browsers use to check for certificate revocation. For instance, when you use Internet Explorer or Google Chrome on a Windows machine, Windows is configured by default to check for certificate revocation. Prior to OCSP, your operating system or browser would download a *certificate revocation list* (CRL). CRLs have grown so large that browser vendors are now creating their own CRLs and distributing them to users.
 
@@ -150,7 +162,7 @@ Once the test is complete, scroll down to the "Protocol Details" section. Look f
 
 [![SSL Server Test OCSP](/docs/assets/OCSP_Stapling_SSL_Test.jpg)](/docs/assets/OCSP_Stapling_SSL_Test.jpg)
 
-### HTTP Strict Transport Security (HSTS)
+## HTTP Strict Transport Security (HSTS)
 
 Google Chrome, Mozilla Firefox, Opera, and Safari currently honor HSTS headers. HSTS is used to force browsers to only connect using secure encrypted connections. This means your site will no longer be accessible over HTTP. When HSTS is enabled and a valid HSTS header is stored in a users browser cache, the user will be unable to access your site if presented with a self-signed, expired, or SSL certificate issued by an untrusted certificate authority. The user will also be unable to bypass any certificate warnings unless your HSTS header expires or the browser cache is cleared.
 
@@ -176,7 +188,7 @@ Once the test is complete, scroll down to the "Protocol Details" section. Look f
 
 [![SSL Server Test HSTS](/docs/assets/HSTS_SSL_Test.jpg)](/docs/assets/HSTS_SSL_Test.jpg)
 
-### Disable Content Sniffing
+## Disable Content Sniffing
 
 Content sniffing allows browsers to inspect a byte stream in order to "guess" the file format of its contents. It is generally used to help sites that do not correctly identify the MIME type of their web content, but it also presents a vulnerability to cross-site scripting and other attacks. To disable content sniffing, add the following line to your nginx SSL configuration file in the `server` block:
 
@@ -186,7 +198,7 @@ Content sniffing allows browsers to inspect a byte stream in order to "guess" th
     add_header X-Content-Type-Options nosniff;
     ~~~
 
-### Disable or Limit Embedding
+## Disable or Limit Embedding
 
 This HTTPS header can specify whether a page is able to be rendered in a frame, iframe, or object. If left unset, your site's content may be embedded into other sites' HTML code in a clickjacking attack. To disable the embedding of your content, add the following line to your SSL configuration file in the `server` block:
 
@@ -198,7 +210,7 @@ This HTTPS header can specify whether a page is able to be rendered in a frame, 
 
 If you'd like to limit embedding rather than disabling it altogether, you can replace `DENY` with `SAMEORIGIN`. This will allow you to use your page in a frame as long as the site attempting to do so is the same one serving your page.
 
-### Create a Custom Diffie-Hellman Key Exchange
+## Create a Custom Diffie-Hellman Key Exchange
 
 We're using a 2048 bit RSA private key to sign the Diffie-Hellman key exchange, but the default parameters for Diffie-Hellman only specify 1024 bits, often making it the weakest link in the SSL cipher suite. We should generate our own custom parameters for the key exchange to provide greater security.
 
@@ -224,8 +236,7 @@ If you have been following along, starting with the guide on installing the late
 
 {: .file}
 /etc/nginx/conf.d/example_ssl.conf
-:   ~~~
-
+:   ~~~ conf
     # HTTPS server
     #
     server {
