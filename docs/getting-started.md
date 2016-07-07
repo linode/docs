@@ -223,9 +223,9 @@ Replace `hostname` with one of your choice.
 
 ### Debian 7 / Slackware / Ubuntu 14.04
 
-Replace `hostname` with one of your choice.
+Replace `example_hostname` with one of your choice.
 
-    echo "hostname" > /etc/hostname
+    echo "example_hostname" > /etc/hostname
     hostname -F /etc/hostname
 
 Check if the file `/etc/default/dhcpcd` exists, and it's contents.
