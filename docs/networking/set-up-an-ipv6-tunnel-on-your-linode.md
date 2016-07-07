@@ -6,7 +6,7 @@ description: 'How to set up an IPv6 tunnel on your Linode.'
 keywords: 'ipv6,tunnel,broker,networking'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['networking/ipv6-tunnels/']
-modified: Friday, July 1, 2016
+modified: Thursday, July 6th, 2016
 modified_by:
   name: Phil Zona
 published: 'Friday, April 29th, 2011'
@@ -29,7 +29,8 @@ You should have already signed up for an IPv6 tunnel through a tunnel broker. [W
 
 Once you have signed up for a tunnel, you will need to issue a few commands on your Linode. Arch and Gentoo Linux users may need to install the `iproute2` package before continuing.
 
-Note that configuration of an IP tunnel using this method will not be persistent after reboot and will need to be reconfigured after restarting your Linode.
+{: .note}
+>Configuration of an IP tunnel using this method will not be persistent after reboot and will need to be reconfigured after restarting your Linode.
 
 1.  Because some of these steps will temporarily disable networking on the Linode, begin by logging in using either the [Lish](/using-the-linode-shell-lish) or [Glish](/docs/networking/use-the-graphic-shell-glish) interface.
 
@@ -38,7 +39,7 @@ Note that configuration of an IP tunnel using this method will not be persistent
         ip tunnel add he-ipv6 mode sit remote 203.0.113.10 local 198.51.100.5 ttl 255
         ip link set he-ipv6 up
 
-    Line 1 in the command above instructs the `ip` tool to add a tunnel called `he-ipv6` in mode `sit`. It uses the example remote IP `203.0.113.10` and example local IP `198.51.100.5`, and sets a Time To Live (TTL) of 255.
+    Line 1 in the command above instructs the `ip` tool to add a tunnel called `he-ipv6` in mode `sit`. It uses the example remote IP `203.0.113.10` and example local IP `198.51.100.5`, and sets a Time To Live (TTL) of 255. For more information on how the `ip` tool configures tunnels, see its [documentation](http://man7.org/linux/man-pages/man8/ip-tunnel.8.html).
 
 3.  Assign IPv6 address and routing information to your new tunnel device. Replace `2001:db8:1234:5678::2/64` with the IPv6 address assigned to you. This information should be provided to you by your tunnel broker as your "Client IPv6 Address":
 
@@ -61,7 +62,7 @@ Note that configuration of an IP tunnel using this method will not be persistent
             inet6 fe80::0000:0000/64 scope link
                valid_lft forever preferred_lft forever
 
-4.  Test the tunnel. Replace `he-ipv6` with your tunnel device:
+4.  Test the tunnel. Replace `he-ipv6` with the name of your tunnel:
 
         ping6 -I he-ipv6 irc6.oftc.net
 
@@ -103,7 +104,7 @@ Debian and Ubuntu users (versions before Ubuntu 16.04 are not covered here) can 
           gateway 2001:db8:1234:5678::1
       ~~~
 
-2.  Restart networking services and test the tunnel. Replace `he-ipv6` with your tunnel device:
+2.  Restart networking services and test the tunnel. Replace `he-ipv6` with the name of your tunnel:
 
         systemctl restart networking.service
         ping6 -I he-ipv6 irc6.oftc.net
@@ -154,7 +155,7 @@ Debian and Ubuntu users (versions before Ubuntu 16.04 are not covered here) can 
 
         ifup he-ipv6
 
-3.  Test the tunnel. Replace `he-ipv6` with your tunnel device:
+3.  Test the tunnel. Replace `he-ipv6` with the name of your tunnel:
 
         ping6 -I he-ipv6 irc6.oftc.net
 
@@ -190,7 +191,7 @@ Debian and Ubuntu users (versions before Ubuntu 16.04 are not covered here) can 
 
         ifup he-ipv6
 
-4.  Test the tunnel. Replace `he-ipv6` with your tunnel device:
+4.  Test the tunnel. Replace `he-ipv6` with the name of your tunnel:
 
         ping6 -I he-ipv6 irc6.oftc.net
 
