@@ -392,11 +392,11 @@ The DMARC DNS record can be added to your domain to advise mail servers what you
 
 The DMARC record is a TXT record for host `_dmarc` in your domain containing the following recommended values:
 
-    v=DMARC1 p=quarantine sp=quarantine adkim=r aspf=r
+    v=DMARC1;p=quarantine;sp=quarantine;adkim=r;aspf=r
 
 This requests mail servers to quarantine (do not discard, but separate from regular messages) any email that fails either SPF or DKIM checks. No reporting of failures is requested. Very few mail servers implement the software to generate reports on failed messages, so there seems to be little point in requesting reports. If you do wish to request reports, the value would be:
 
-    v=DMARC1 p=quarantine sp=quarantine adkim=r aspf=r fo=1 rf=afrf rua=mailto:youremail@example.com ruf=mailto:youremail@example.com
+    v=DMARC1;p=quarantine;sp=quarantine;adkim=r;aspf=r;fo=1;rf=afrf;rua=mailto:youremail@example.com;ruf=mailto:youremail@example.com
 
 all as a single string. Replace `youremail@example.com` in the `mailto:` URLs with your own email or an email address you own dedicated to receiving reports. If you're using Linode's DNS Manager, the screen for the new text record will look like this:
 
