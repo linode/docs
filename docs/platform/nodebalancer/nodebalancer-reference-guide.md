@@ -97,7 +97,7 @@ When servicing an incoming request, if a backend node fails to connect, times ou
 
 Passive health checks can be disabled if you choose:
 
-1.  From the Liode Manager, click the **NodeBalancers** tab.
+1.  From the Linode Manager, click the **NodeBalancers** tab.
 2.  Select your NodeBalancer and choose **Edit**.
 3.  Under the **Configurations** section at the top of the page, choose **Edit**.
 4.  Scroll down and uncheck the **Enabled** box under **Passive Checks**. Then click **Save Changes**.
@@ -110,7 +110,7 @@ NodeBalancers also proactively check the health of back-end nodes by performing 
 -   **Check Timeout** - Seconds to wait before considering the probe a failure. 1-30.
 -   **Check Attempts** - Number of failed probes before taking a node out of rotation. 1-30.
 
-Three different Health Check Type exist:
+Three different Health Check Types exist:
 
 -   **TCP Connection** - requires a successful TCP handshake with a backend node.
 -   **HTTP Valid Status** - performs an HTTP request on the provided path and requires a 2xx or 3xx response from the backend node.
