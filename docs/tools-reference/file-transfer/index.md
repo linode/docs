@@ -3,11 +3,8 @@ author:
   name: Linode
   email: docs@linode.com
 keywords: 'file transfer,file transferring,cyberduck,filezilla,winscp'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['networking/file-transfer/']
-modified: Tuesday, April 19th, 2011
-modified_by:
-  name: Linode
 published: 'Thursday, July 16th, 2009'
 title: File Transfer
 ---

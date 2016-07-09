@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'How to upgrade from Debian 7 (Wheezy) to Debian 8 (Jessie).'
 keywords: 'debian,upgrade,wheezy,jessie'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Wednesday, April 29th, 2015
 modified_by:
   name: Alex Fornuto

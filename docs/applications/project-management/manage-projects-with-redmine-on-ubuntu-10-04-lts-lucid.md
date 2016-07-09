@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Installing and configuring Redmine, an open source project management system on an Ubuntu 10.04 LTS (Lucid) Linux VPS running nginx.'
 keywords: 'redmine,redmine ubuntu 10.04,redmine linux,project management software,redmine postgresql'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-applications/project-management/redmine/ubuntu-10-04-lucid/']
 modified: Tuesday, June 7th, 2011
 modified_by:

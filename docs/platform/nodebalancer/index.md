@@ -3,11 +3,8 @@ author:
   name: Linode
   email: docs@linode.com
 keywords: 'nodebalancer,load balancing,load,load balance'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['nodebalancers/']
-modified: Monday, March 11th, 2013
-modified_by:
-  name: Linode
 published: 'Tuesday, July 17th, 2012'
 title: NodeBalancers
 ---

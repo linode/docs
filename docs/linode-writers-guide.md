@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Information on submitting articles to Linode Guides & Tutorials, including benefits and procedures.'
 keywords: 'writing,open source software,contribute linode library, submissions,linode guides and tutorials,guides,tutorials'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['contribute/']
 modified: Wednesday, January 13th, 2016
 modified_by:
@@ -86,7 +86,7 @@ As much as we would like to support all writers, we can not accept every guide w
 
 ## Contributed Guides
 
-Here are some examples of exceptional community-contributed guides. Use these as gudielines for your own submission.
+Here are some examples of exceptional community-contributed guides. Use these as guidelines for your own submission.
 
 [Install Odoo 9 ERP on Ubuntu 14.04](/docs/websites/cms/install-odoo-9-erp-on-ubuntu-14-04) by Damaso Sanoja.
 

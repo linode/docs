@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Installing and configuring the ISPConfig control panel to maintain your Debian 6 (Squeeze) VPS.'
 keywords: 'ispconfig,control panel,cpanel,plesk,gui'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-applications/control-panels/ispconfig/debian-6-squeeze/']
 modified: Friday, April 29th, 2011
 modified_by:

@@ -4,8 +4,8 @@ author:
   email: docs@linode.com
 description: 'Install SteamCMD, a command-line version of the Steam client, which works with games that use SteamPipe. Installing SteamCMD is a prerequisite before hosting a Steam title on your own game server.'
 keywords: 'steam,steamcmd,steam cmd,games,game server,steam server,steampipe'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: 'Thursday, February 25th, 2016'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+modified: 'Tuesday, March 29th, 2016'
 modified_by:
   name: Linode
 published: 'Monday, February 15th, 2016'
@@ -133,15 +133,15 @@ Game servers and clients are an especially ripe target for attack. Use our [Secu
 
 ## Install SteamCMD
 
-1.  Newly created Linodes use 64-bit Linux operating systems. Since Steam is compiled for i386, install the appropriate libraries:
+1.  Newly created Linodes use 64-bit Linux operating systems. Since Steam is compiled for i386, install the appropriate libraries. Screen we'll also use when running Steam games.
 
     **CentOS 7**
 
-        sudo yum install glibc.i686 libstdc++.i686
+        sudo yum install glibc.i686 libstdc++.i686 screen
 
     **Debian / Ubuntu**
 
-        sudo apt-get install lib32gcc1
+        sudo apt-get install lib32gcc1 screen
 
     {: .note}
     >

@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Deploy Python WSGI Applications with Apache and mod\_wsgi'
 keywords: 'python,apache,mod\_wsgi'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-servers/apache/mod-wsgi/fedora-14/']
 modified: Friday, October 4th, 2013
 modified_by:

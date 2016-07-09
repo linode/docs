@@ -5,7 +5,7 @@ author:
 description: 'Use Fail2ban to block automated system attacks and further harden your server. Fail2ban monitors system logs for symptoms of an automated attack, bans the IP and alerts you of the attach through email.'
 keywords: 'fail2ban'
 alias: ['tools-reference/tools/using-fail2ban-to-block-network-probes/']
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Thursday, March 3rd, 2016
 modified_by:
   name: Linode
@@ -38,8 +38,8 @@ Follow the [Getting Started](/docs/getting-started) guide to configure your basi
  
 2.  Enable the EPEL repository:
 
-        wget http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm
-        rpm -ivh epel-release-7-5.noarch.rpm
+        wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+        rpm -ivh epel-release-latest-7.noarch.rpm
 
 3.  Install Fail2ban:
 

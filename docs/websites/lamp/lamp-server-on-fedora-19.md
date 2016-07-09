@@ -5,7 +5,7 @@ author:
   email: jstewart@linode.com
 description: 'Creating a LAMP stack with Apache, MySQL, PHP, and Python on Fedora 19.'
 keywords: 'fedora 19 lamp,lamp server,linux lamp,fedora 19 apache'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['lamp-guides/fedora-19/']
 modified: Friday, April 11th, 2014
 modified_by:
@@ -56,7 +56,7 @@ The main configuration directives for Apache are contained in the `httpd.conf` f
 
 By default, all files ending in the `.conf` extension in `/etc/httpd/conf.d/` are treated as configuration files, and we recommend placing your non-standard configuration options in files in this directory. Regardless of how you choose to organize your configuration files, making regular backups of known working states is highly recommended.
 
-Edit the main Apache configuration file to add these resource use settings, or create a new .conf file in `/etc/httpd/conf.d/`. The settings shown below are a good starting point for a **Linode 1GB**.
+Edit the main Apache configuration file to add these resource use settings, or create a new .conf file in `/etc/httpd/conf.d/`. The settings shown below are a good starting point for a **Linode 2GB**.
 
 {: .file }
 /etc/httpd/conf/httpd.conf
@@ -64,11 +64,11 @@ Edit the main Apache configuration file to add these resource use settings, or c
     KeepAlive Off
 
     <IfModule prefork.c>
-    StartServers 2
-    MinSpareServers 6
-    MaxSpareServers 12
-    MaxClients 80
-    MaxRequestsPerChild 3000
+            StartServers        4
+            MinSpareServers     20
+            MaxSpareServers     40
+            MaxClients          200
+            MaxRequestsPerChild 4500
     </IfModule>
     ~~~
 
@@ -149,7 +149,7 @@ Now you can start the mysql daemon (`mysqld`) with the following command:
 
     systemctl start mysqld.service
 
-MySQL should be ready to configure and run. While you shouldn't need to change the configuration file, note that it is located at `/etc/my.cnf` for future reference. The default values should be fine for a **Linode 1GB**, but if you decide to adjust them you should first make a backup copy:
+MySQL should be ready to configure and run. While you shouldn't need to change the configuration file, note that it is located at `/etc/my.cnf` for future reference. The default values should be fine for a **Linode 2GB**, but if you decide to adjust them you should first make a backup copy:
 
     cp /etc/my.cnf ~/my.cnf.backup
 

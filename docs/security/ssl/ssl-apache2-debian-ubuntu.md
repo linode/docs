@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Serve SSL-enabled websites with the Apache web server.'
 keywords: 'apache SSL,ssl on debian,web sever,debian,apache,ssl,ubuntu,ssl on ubuntu'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['security/ssl/ssl-certificates-with-apache-2-on-ubuntu/']
 modified: Wednesday, May 6th, 2015
 modified_by:

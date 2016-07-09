@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: Our guide to disks and configuration profiles
 keywords: 'disks,config profiles'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['disk-images-config-profiles/']
 modified: Thursday, June 19th, 2014
 modified_by:

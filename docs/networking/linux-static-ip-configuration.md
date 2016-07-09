@@ -4,9 +4,9 @@ author:
   email: docs@linode.com
 description: 'Computer networks frequently use DHCP to assign IP addresses, routing and DNS information to systems which join the network. Additional IPs can be assigned to virtual network interfaces for a fully static IP address configuration, including multiple static addresses.'
 keywords: 'multiple ip addresses,linux static ip,DHCP,change ip address,network configuration,dns,gateway,routing'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['networking/configuring-static-ip-interfaces/']
-modified: Wednesday, February 24th, 2016
+modified: Wednesday, June 1st, 2016
 modified_by:
   name: Linode
 published: 'Thursday, July 20th, 2014'
@@ -90,7 +90,24 @@ A default gateway should not be specified for private IP addresses. Additionally
 
 ### Arch
 
-There are multiple ways to configure static IP addresses in Arch. See the [Static IP Address](https://wiki.archlinux.org/index.php/Network_Configuration#Static_IP_address) section of Arch's Network Configuration Wiki page.
+Edit the interface's config file:
+
+{: .file-excerpt }
+/etc/systemd/network/05-eth0.network
+:   ~~~ conf
+    . . .
+
+    [Match]
+    Name=eth0
+
+    [Network]
+    Gateway=198.51.100.1
+    Address=198.51.100.2/24
+    Address=192.168.133.234/17
+
+    ~~~
+
+There are multiple ways to configure static IP addresses in Arch. See the [Static IP Address](https://wiki.archlinux.org/index.php/Network_Configuration#Static_IP_address) section of Arch's Network Configuration Wiki page for other options such as using Netctl.
 
 ### CentOS 7 / Fedora 22+
 
@@ -179,7 +196,7 @@ Networking in Gentoo utilizes the `netifrc` utility. Addresses are specified in 
 /etc/conf.d/net
 :   ~~~ conf
     config_eth0="198.51.100.5/24 198.51.100.10/24 192.0.2.6/17"
-    routes_eth0="default gw 198.51.100.1"
+    routes_eth0="default via 198.51.100.1"
     . . .
     ~~~
 

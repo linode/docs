@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Instructions for installing the Apache Tomcat Java Servlet engine on Ubuntu 8.04 LTS (Hardy).'
 keywords: 'java,apache tomcat,java ubuntu,java hardy'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['frameworks/apache-tomcat/ubuntu-8-04-hardy/']
 modified: Friday, April 29th, 2011
 modified_by:

@@ -3,11 +3,8 @@ author:
   name: Linode
   email: docs@linode.com
 keywords: 'linode instances,pv grub,linux kernel,linode platform,linux distributions'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['custom-instances/']
-modified: Wednesday, December 5th, 2012
-modified_by:
-  name: Linode
 published: 'Thursday, July 16th, 2009'
 title: Run Custom Kernels and Distribution Templates on Linode Instances
 ---

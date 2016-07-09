@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Cacti is a powerful server monitoring solution that uses SNMP to track resource usage on Ubuntu 9.10 (Karmic).'
 keywords: 'Cacti,Ubuntu,Lenny,SNMP'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['server-monitoring/cacti/ubuntu-9-10-karmic/']
 modified: Friday, April 29th, 2011
 modified_by:

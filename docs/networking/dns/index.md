@@ -1,8 +1,8 @@
 ---
 title: DNS
 featured:
- - introduction-to-dns-records.md
- - dns-manager.md
+ - dns-records-an-introduction.md
+ - dns-manager-overview.md
  - setting-reverse-dns.md
  - common-dns-configurations.md
  - previewing-websites-without-dns.md

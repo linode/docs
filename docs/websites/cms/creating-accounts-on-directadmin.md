@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: Creating Accounts on DirectAdmin
 keywords: 'directadmin, reseller, accounts'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-applications/control-panels/directadmin/directadmin-accounts/']
 modified: Thursday, October 3rd, 2013
 modified_by:

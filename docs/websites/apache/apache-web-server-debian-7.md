@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Install Apache on your Debian 7 server, configure virtual hosting, and set up module and scripting support.'
 keywords: 'apache,apache 2,debian,debian 7,wheezy,apache web server'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-servers/apache/installation/debian-7-wheezy/','websites/apache/apache-2-web-server-on-debian-7-wheezy/','websites/apache/how-to-install-and-configure-the-apache-web-server-on-debian-7-wheezy/']
 modified: Friday, January 10th, 2014
 modified_by:
@@ -47,7 +47,7 @@ Note that if you're looking to install a full LAMP (Linux, Apache, MySQL and PHP
 
         sudo apt-get install apache2 apache2-doc apache2-utils
 
-3.  Edit the main Apache configuration file to adjust the resource use settings. The settings shown below are a good starting point for a **Linode 1GB**:
+3.  Edit the main Apache configuration file to adjust the resource use settings. The settings shown below are a good starting point for a **Linode 2GB**:
 
     {: .file }
     /etc/apache2/apache2.conf
@@ -57,11 +57,11 @@ Note that if you're looking to install a full LAMP (Linux, Apache, MySQL and PHP
         ...
 
         <IfModule mpm_prefork_module>
-        StartServers 2
-        MinSpareServers 6
-        MaxSpareServers 12
-        MaxClients 80
-        MaxRequestsPerChild 3000
+        StartServers 4
+        MinSpareServers 20
+        MaxSpareServers 40
+        MaxClients 200
+        MaxRequestsPerChild 4500
         </IfModule>
         ~~~
 

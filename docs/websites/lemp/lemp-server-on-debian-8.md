@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Installing a LEMP stack on Debian 8'
 keywords: 'nginx,lemp,lepp,perl,python,php,linux,web applications'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Friday, June 1th, 2015
 modified_by:
   name: James Stewart 
@@ -156,7 +156,7 @@ For more information regarding Nginx configuration options, check out our [Overv
 
 4.  When you have completed the modifications to the configuration, make sure that the sever block is enabled and restart Nginx:
 
-    /etc/init.d/nginx restart
+        /etc/init.d/nginx restart
 
 You are now able to deploy PHP scripts with with your LEMP stack.
 

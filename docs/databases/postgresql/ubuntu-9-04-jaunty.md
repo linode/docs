@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Using the PostgreSQL relational database server with Ubuntu 9.04 (Jaunty).'
 keywords: 'postgresql,postgresql database,postgresql on ubuntu,relational database'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Friday, April 29th, 2011
 modified_by:
   name: Linode

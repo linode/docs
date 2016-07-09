@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Odoo is an open-source suite of over 4,500 business applications. Odoo allows administrators to install, configure and customize any application to satisfy their needs. This guide covers how to install and configure Odoo using Git source so it will be easy to upgrade and maintain.'
 keywords: 'Odoo,Odoo ERP,CMS,Ubuntu,CRM,OpenERP'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Tuesday, November 3rd, 2015'
 modified: 'Tuesday, November 3rd, 2015'
 modified_by:

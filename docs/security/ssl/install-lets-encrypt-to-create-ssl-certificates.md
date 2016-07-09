@@ -4,7 +4,7 @@ author:
   email: 'docs@linode.com'
 description: "Let's Encrypt is an SSL certificate authority managed by the Internet Security Research Group. It utilizes the Automated Certificate Management Environment to automatically deploy browser-trusted SSL certificates to anyone for free."
 keywords: "ACME,HTTPS,Let's Encrypt,SSL,SSL certificates"
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Thursday, February 25th, 2016'
 modified: 'Thursday, February 25th, 2016'
 modified_by:
@@ -39,9 +39,7 @@ This tutorial will cover the following:
 
 2.  Complete our [Securing Your Server](/docs/security/securing-your-server) tutorial to create a standard user account, harden SSH access, and remove unnecessary network services.
 
-3. Make sure your Linode has at least 2GB of total RAM. If you are running a **Linode 1024** server, add 1GB of SWAP memory to meet this requirement.
-
-4.  Update your server's software packages.
+3.  Update your server's software packages.
 
     **CentOS**
 

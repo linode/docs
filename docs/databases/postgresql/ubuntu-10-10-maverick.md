@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Using the PostgreSQL relational database server with Ubuntu 10.10 (Maverick).'
 keywords: 'postgresql,postgresql ubuntu 10.10,postgreql maverick,postgresql database,open source database,relational database'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Wednesday, October 3rd, 2012
 modified_by:
   name: Linode

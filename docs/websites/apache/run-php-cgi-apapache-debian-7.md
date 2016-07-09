@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Use PHP CGI to run PHP scripts as indivudual users.'
 keywords: 'php cgi,php,apache,cgi,php scripts,web apps,web applications'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-servers/apache/php-cgi/debian-7-wheezy/','websites/apache/run-php-applications-under-cgi-with-apache-on-debian-7-wheezy/']
 modified: Wednesday, November 18th, 2015
 modified_by:

@@ -3,10 +3,7 @@ author:
   name: Linode
   email: docs@linode.com
 keywords: 'varnish,cache'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Tuesday, September 9th, 2014
-modified_by:
-  name: Linode
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Tuesday, September 9th, 2014'
 title: Varnish Web Cache
 ---

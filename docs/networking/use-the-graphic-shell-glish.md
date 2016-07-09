@@ -2,14 +2,15 @@
 author:
   name: Alex Fornuto
   email: docs@linode.com
-description: 'Learn how to use Glish as a shell for managing graphic environments on your Linode.'
+description: 'Use the graphic shell, Glish, to Manage Graphic Environments on Your Linode.'
 keywords: 'Console,Shell,glish,graphic'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+alias: ['networking/using-the-graphic-shell-glish/']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Wednesday, March 9th, 2015
 modified_by:
   name: Linode
 published: 'Friday, August 28th, 2015'
-title: 'Using the Graphic Shell (Glish)'
+title: 'Use the Graphic Shell, Glish, to Manage Graphic Environments on Your Linode'
 ---
 
 Glish is the graphical version of the [Linode Shell](using-the-linode-shell-lish) (LISH). It allows you to use a graphic environment running natively on your Linode's operating system.
@@ -19,7 +20,7 @@ Glish is the graphical version of the [Linode Shell](using-the-linode-shell-lish
 >
 >Glish is only available on KVM Linodes.
 
-## Enabling Glish on a Linode-Supplied Image
+## Enable Glish on a Linode-Supplied Image
 
 Ensure that your Linode is booted with the latest Linode kernel, which has mouse drivers enabled. You may need to reboot to access the latest kernel version. 
 
@@ -30,7 +31,7 @@ When using one of Linode's distribution templates with Distro Helper turned on, 
 {: .note }
 > The process for launching a getty may differ depending on your distribution.
 
-## Accessing Glish
+## Access Glish
 
 1.  From your Linode Dashboard, click on the **Remote Access** Tab. Under **Console Access**, click on the "Launch Graphical Web Console" link:
 
@@ -44,7 +45,7 @@ When using one of Linode's distribution templates with Distro Helper turned on, 
 
 		sudo apt-get install xfce4
 
-3.  After installing, launch your desktop environment from the Glish console:
+3.  After installation, launch your desktop environment from the Glish console:
 
 		startxfce4
 

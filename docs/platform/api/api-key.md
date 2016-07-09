@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Learn how to generate, update, and disable your Linode API key.'
 keywords: 'linode api, api key, key'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['api/key/']
 modified: Friday, February 14th, 2014
 modified_by:

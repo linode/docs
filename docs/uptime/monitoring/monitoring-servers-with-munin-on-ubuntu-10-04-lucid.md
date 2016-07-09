@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Keep track of vital system statistics and troubleshoot performance problems with Munin on Ubuntu 10.04 (Lucid).'
 keywords: 'munin,monitoring'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['server-monitoring/munin/ubuntu-10-04-lucid/']
 modified: Tuesday, October 1st, 2013
 modified_by:

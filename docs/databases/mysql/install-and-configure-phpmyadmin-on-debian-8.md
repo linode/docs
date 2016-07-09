@@ -4,7 +4,7 @@ author:
     email: docs@linode.com
 description: 'Use phpMyAdmin to manage MySQL databases and users though a web interface.'
 keywords: 'mysql,phpmyadmin,localhost phpmyadmin,php mysql,http localhost phpmyadmin,sql,debian,debian 8,php,mysql management'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['databases/mysql/phpmyadmin-debian-7-wheezy/','docs/databases/mysql/manage-mysql-phpmyadmin-debian-8/','docs/databases/mysql/install-mysql-phpmyadmin-debian-8']
 modified: Wednesday, September 16th, 2015
 modified_by:

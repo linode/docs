@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Install and optimize the WordPress blogging and content management system on your Linode.'
 keywords: 'install WordPress,WordPress on Linode,WordPress how-to, how to install wordpress, how to configure wordpress'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-applications/cms-guides/wordpress/','websites/cms/manage-web-content-with-wordpress/']
 modified: Monday, October 5th, 2015
 modified_by:
@@ -58,7 +58,7 @@ WordPress is a popular, dynamic, blog-focused content management system. The sof
 
 ## Install WordPress
 
-1.  Create an `src` directory under your website's directory to store pristine copies of WordPress's source files. In this guide, the home directory `/var/www/exmaple.com/` is used as an example. Navigate to that new directory:
+1.  Create an `src` directory under your website's directory to store pristine copies of WordPress's source files. In this guide, the home directory `/var/www/example.com/` is used as an example. Navigate to that new directory:
 
         sudo mkdir /var/www/example.com/src/
         cd /var/www/example.com/src/

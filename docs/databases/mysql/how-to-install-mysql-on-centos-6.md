@@ -4,7 +4,7 @@ author:
   email: afornuto@linode.com
 description: 'Getting started with MySQL on CentOS 6'
 keywords: 'MySQL on Linux,CentOS,cloud,cloud hosting,Linux,MySQL,database,MariaDB,install MySQL,secure MySQL,mysqltuner'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['databases/mysql/centos-6/', 'databases/mysql/using-mysql-relational-databases-on-centos-6-4/']
 modified: Wednesday, August 12th, 2015
 modified_by:

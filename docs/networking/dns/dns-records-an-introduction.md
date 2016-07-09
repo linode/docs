@@ -2,15 +2,15 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Learning about DNS records and system structure.'
-keywords: 'DNS,domains,subdomains,domain records,mx records,cname records'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['dns-guides/introduction-to-dns-records/','dns-guides/introduction-to-dns/']
+description: 'Learn about DNS records and system structure.'
+keywords: 'dns records,domain names,dns record types,dns resolution'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+alias: ['dns-guides/introduction-to-dns-records/','dns-guides/introduction-to-dns/','networking/dns/introduction-to-dns-records/']
 modified: Tuesday, January 20, 2015
 modified_by:
   name: Elle Krout
 published: 'Wednesday, July 29th, 2009'
-title: Introduction to DNS Records
+title: "DNS Records: an Introduction"
 external_resources:
 - '[DNS Manager](/docs/networking/dns/dns-manager)'
 - '[Reverse DNS](/docs/networking/dns/setting-reverse-dns)'
@@ -26,7 +26,7 @@ Before adding any DNS records, you should learn the basics of DNS. You'll start 
 
 ### Domain Names
 
-Domain names are best understood by reading from right to left. The broadest domain classification is on the right, and become more specific as you move to the left. In the examples below, the top-level domain, or *TLD*, is *.com*.
+Domain names are best understood by reading from right to left. The broadest domain classification is on the right, and becomes more specific as you move to the left. In the examples below, the top-level domain, or *TLD*, is *.com*.
 
     example.com
     mail.hello.example.com
@@ -67,7 +67,7 @@ Every domain's zone file contains the admin's email address, the name servers, a
 
 ### DNS Resolution
 
-So how does DNS actually work? First, the domain name needs to get translated into your Linode's IP address. DNS matches human-friendly domain names like *example.com* to computer-friendly IP addresses like *12.34.56.78*. This happens in a special text file called a *zone file*, which lists domains and their corresponding IP addresses (and a few other things). A zone file is a lot like a phone book that matches names with street addresses.
+So how does DNS actually work? First, the domain name needs to get translated into your Linode's IP address. DNS matches human-friendly domain names like *example.com* to computer-friendly IP addresses like *12.34.56.78*. This happens in a special text file called a *zone file*, which lists domains and their corresponding IP addresses (and a few other things). A zone file is like a phone book that matches names with street addresses.
 
 Here's how the DNS lookup process works:
 
@@ -82,7 +82,7 @@ Here's how the DNS lookup process works:
 9.  Now that the ISP has the IP address for *example.com*, it connects you to your Linode.
 10. Apache handles everything after that, ensuring that the correct files and folders get displayed in your visitor's browser.
 
-    [![This steps for DNS resolution, also displayed below.](/docs/assets/1330-dnsoverview.jpeg)](/docs/assets/1330-dnsoverview.jpeg)
+    [![The steps for DNS resolution, also displayed below.](/docs/assets/1330-dnsoverview.jpeg)](/docs/assets/1330-dnsoverview.jpeg)
 
 The scenario described above is what happens if the ISP has no current information about the requested domain. In actuality, ISPs cache a lot of DNS information after they've looked it up the first time. This results in faster lookups and less strain on DNS servers. Usually caching is a good thing, but it can be a problem if you've recently made a change to your DNS information, like when you move to Linode from a different hosting provider. In those cases, you'll want to pay attention to your zone file's [time to live (TTL)](/docs/networking/dns/dns-manager#setting-the-time-to-live-or-ttl) so that your DNS change happens as quickly as possible.
 

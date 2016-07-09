@@ -2,17 +2,18 @@
 author:
   name: Josh Sager
   email: docs@linode.com
-description: What changes when you switch from Xen to KVM virtualization.
-keywords: 'xen,kvm,linode,virtualization'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Monday, June 15th, 2015
+description: KVM Reference explains the differences when going from Xen to KVM virtualization.
+keywords: 'kvm,kvm reference,virtual machine mode,kvm linode,xen'
+alias: ['platform/kvm/']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+modified: Wednesday, June 15th, 2016
 modified_by:
-  name: Josh Sager
+  name: Alex Fornuto
 published: 'Monday, June 15, 2015'
 title:  KVM Reference
 ---
 
-Linode's virtualization stack supports KVM as well as Xen. Along with the increased performance of KVM virtualization, several details are different between Xen and KVM Linodes.
+Linode's current virtualization stack is built KVM. Previously, Linode used Xen, and older Linodes may still be on the Xen platform. Along with the increased performance of KVM virtualization, several details are different between Xen and KVM Linodes.
 
 ## What's Changed?
 
@@ -85,15 +86,11 @@ An upgrade to KVM Linode includes the ability to do **Direct Disk** booting. Cho
 
 ## How to Enable KVM
 
-There are two ways to enable KVM mode for your Linodes:
+All new Linodes are created as KVM guests. Older Xen Linodes will need to migrate to KVM before receiving other plan upgrades.
 
-* **Existing Linode:** If your Linode is currently running on Xen, go to the Linode's Dashboard page. In the bottom right of the sidebar is an "Upgrade to KVM" link. Click on the link and follow the instructions to upgrade:
+If your Linode is currently running on Xen, go to the Linode's Dashboard page. In the bottom right of the sidebar is an "Upgrade to KVM" link. Click on the link and follow the instructions to upgrade:
 
   [![The KVM Upgrade Button.](/docs/assets/kvm_upgrade_context.png)](/docs/assets/kvm_upgrade_context.png)
-
-* **Future Linodes:** You can configure your user account to automatically create new Linodes using KVM. To do this, go to your [Linode Manager](https://manager.linode.com), then the **Account** tab, and then click on the **Account Settings** link. On the Account Settings page is a section called **Hypervisor Preference**. Set the preference to *KVM* and submit the form.
-
-  [![Setting the account settings for the KVM hypervisor.](/docs/assets/kvm_account_setting_small.png)](/docs/assets/kvm_account_setting.png)
 
 ## Troubleshooting
 
@@ -105,14 +102,14 @@ There are some reported cases of Linodes running CentOS 6.X that lose network co
 
     rm -f /etc/udev/rules.d/70-persistent-net.rules
 
-Then reboot the Linode. 
+Then, reboot the Linode. 
 
 ### Arch Linux
 
-An upstream change to persistent device naming in systemd has resulted in broken connectivity for Linodes running Arch Linux on KVM hosts. The latest version of systemd (226-1+) uses "Predictable Network Interface Names", which prevent the network interface on our platform from being brought online at boot.
+An upstream change to persistent device naming in systemd has resulted in broken connectivity for any Linode running Arch Linux on a KVM host. The latest version of systemd (226-1+) uses "Predictable Network Interface Names," which prevent the network interface on our platform from being brought online at boot.
 
 You can disable the use of Predictable Network Interface Names with the command below. 
 
     ln -s /dev/null /etc/udev/rules.d/80-net-setup-link.rules
 
-If have already upgraded and lost connectivity to your Linode, you will need to use the [LISH Console](/docs/networking/using-the-linode-shell-lish) to regain access to your Linode to run this command. Once you've done so, reboot your system.
+If you have already upgraded and lost connectivity to your Linode, you will need to use the [LISH Console](/docs/networking/using-the-linode-shell-lish) to regain access to your Linode to run this command. Once you've done so, reboot your system.

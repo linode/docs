@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: Full Disk Encryption.
 keywords: full disk encryption debian wheezy security cryptsetup
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Thursday, June 19th, 2014
 modified_by:
   name: Linode

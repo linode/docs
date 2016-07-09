@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Building dynamic websites and applications with Catalyst.'
 keywords: 'Catalyst,dynamic content,web applications'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['frameworks/catalyst/']
 modified: Friday, September 27th, 2013
 modified_by:

@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Get started with MySQL for web and server applications on Debian 6 (Squeeze).'
 keywords: 'mysql debian 6,mysql debian,mysql debian squeeze,mysql linux,mysql linux vps'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['databases/mysql/debian-6-squeeze/']
 modified: Tuesday, January 14th, 2014
 modified_by:

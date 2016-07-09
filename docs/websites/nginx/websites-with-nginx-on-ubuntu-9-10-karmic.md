@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'A basic guide to installing nginx from source on Ubuntu 9.10 (Karmic)'
 keywords: 'nginx,http,web servers,ubuntu,ubuntu 9.10,ubuntu karmic'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-servers/nginx/installation/ubuntu-9-10-karmic/']
 modified: Friday, April 29th, 2011
 modified_by:

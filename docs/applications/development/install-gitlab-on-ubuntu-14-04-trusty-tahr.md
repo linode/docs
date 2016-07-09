@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Install GitLab on an Ubuntu 14.04 (Trusty Tahr).'
 keywords: 'version control,git,gitlab,ruby, ruby on rails,mysql,postgresql,nginx'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['gitlab-with-ubuntu/','applications/development/gitlab-on-ubuntu-14-04/']
 contributor:
     name: Nashruddin Amin

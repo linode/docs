@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: Use wget to download files on the command line
 keywords: 'wget,command line,linux common commands'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['linux-tools/common-commands/wget/']
 modified: Tuesday, May 17th, 2011
 modified_by:

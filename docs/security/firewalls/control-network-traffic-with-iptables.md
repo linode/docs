@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Use iptables to manage Netfilter rules.'
 keywords: 'iptables,networking,firewalls,filtering'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['security/firewalls/iptables/']
 modified: Monday, November 10th, 2015
 modified_by:

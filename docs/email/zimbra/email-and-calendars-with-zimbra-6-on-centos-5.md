@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Getting started with the open source edition of Zimbra groupware on your CentOS 5 Linux VPS.'
 keywords: 'zimbra on centos,zimbra groupware,zimbra mail server,linux mail server'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['email/zimbra/install-zimbra-centos-5/']
 modified: Tuesday, May 17th, 2011
 modified_by:

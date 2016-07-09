@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Accessing CouchDB databases remotely using an SSH tunnel.'
 keywords: 'couchdb tunnel,couchdb over SSH,SSH tunnel'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['databases/couchdb/ssh-tunnel/']
 modified: Tuesday, May 17th, 2011
 modified_by:

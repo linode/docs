@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'How to cluster Apache web servers and proxy requests for content to external servers on Ubuntu 12.04 (Precise Pangolin).'
 keywords: 'clusters,proxy,proxy pass,apache,httpd'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-servers/apache/proxy-configuration/proxy-and-clustering-services-ubuntu-12-04-precise-pangolin/']
 modified: Thursday, October 18th, 2012
 modified_by:
