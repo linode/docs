@@ -96,7 +96,7 @@ Keepalived uses *virtual router redundancy protocol*, or VRRP, to automatically 
 
 ### Load Balancing
 
-The load balancing component of a high availability system is one of its most important components, acting as the first barrier to handle traffic from users to the application servers. Without a load balancer, your site would be hosted on three application servers that have no way of assigning priority amongst themselves.
+The load balancing component of a high availability system is one of its most important components, acting as the first barrier to handle traffic from users to the application servers. Without a load balancer, your site would be hosted on three application servers that have no way of assigning priority among themselves.
 
 Our solution to load balancing is the [NodeBalancer](/docs/platform/nodebalancer/getting-started-with-nodebalancers), a highly available component that will evenly distribute incoming traffic to one of the three application servers, ensuring that no single server experiences a much heavier load than the others.
 

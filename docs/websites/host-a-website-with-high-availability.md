@@ -19,7 +19,7 @@ external_resources:
 
 When deploying a website or application, one of the most important elements to consider is availability, or the period of time for which your content is accessible to users. High availability is a term used to describe server setups that eliminate single points of failure by offering redundancy, monitoring, and failover. This ensures that even if one component of your web stack goes down, the content will still be accessible. 
 
-In this guide, we'll explain how to host a website with high availability using Wordpress. However, you can use this setup to serve other types of content as well. This guide is intended to be a tutorial on the setup of such a system. For more information on how each element in the high availability stack functions, refer to our [introduction to high availability](/docs/websites/introduction-to-high-availability).
+In this guide, we'll explain how to host a highly available website with Wordpress. However, you can use this setup to serve other types of content as well. This guide is intended to be a tutorial on the setup of such a system. For more information on how each element in the high availability stack functions, refer to our [introduction to high availability](/docs/websites/introduction-to-high-availability).
 
 ## Before You Begin
 
@@ -35,7 +35,7 @@ In this guide, we'll explain how to host a website with high availability using 
 
     You can call your nodes anything you like, but try to keep the naming consistent for organizational purposes. When you see one of the above names, be sure to substitute the hostname you configured for the corresponding node.
 
-4.  To create a private network amongst your Linodes, you'll need a [private IP address](/docs/networking/remote-access#adding-private-ip-addresses) for each.
+4.  To create a private network among your Linodes, you'll need a [private IP address](/docs/networking/remote-access#adding-private-ip-addresses) for each.
 
 5.  Remember to update each Linode's package repositories before attempting to install software:
 
@@ -230,7 +230,7 @@ We will configure the cluster to use XtraBackup for *state snapshot transfer* (S
 
     The values for `wsrep_node_name` and `wsrep_node_address` should be configured individually for each node, using the private IP address for that node and its hostname. The rest of the lines should match on all your database nodes. 
 
-    In the line beginning with `wsrep_sst_auth`, replace `password` with a secure password of your choosing and keep it in a safe place as it will be needed later. 
+    In the line beginning with `wsrep_sst_auth`, replace `password` with a secure password of your choosing and keep it in a safe place. It will be needed later. 
 
     {: .note }
     > The `xtrabackup-v2` service accesses the database as `sstuser`, authenticating using `password` to log into MySQL to grab backup locks for replication.
