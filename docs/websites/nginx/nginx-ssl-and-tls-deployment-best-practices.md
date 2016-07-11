@@ -5,8 +5,8 @@ author:
 description: 'This guide details best practices for deploying SSL and TLS in conjunction with nginx.'
 keywords: 'nginx,ssl,tls'
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Monday, March 28th, 2016'
-modified: Monday, March 28th, 2016
+published: 'Monday, July 11th, 2016'
+modified: Monday, July 11th, 2016
 modified_by:
   name: Linode
 title: 'Nginx SSL and TLS Deployment Best Practices'
@@ -67,7 +67,7 @@ In September 2010, Google released the SPDY protocol for all versions of Chrome 
 HTTP/2 is a new version of the HTTP standard replacing HTTP/1.1 to reduce page load time. Traditionally, when a user accessed a web page, a separate HTTP connection was established to load each resource (e.g. HTML, CSS, JavaScript, or images). HTTP/2 allows concurrent requests on a single connection to download assests in parallel. The server also compresses assets before sending them to the client, which requires less bandwdith. 
 
 {: .note}
-> Some browsers, including Chrome, require Application-Layer Protocol Negotiation (ALPN) for full HTTP/2 compatibility. However, ALPN requires OpenSSL 1.0.2+. Many distributions, such as Debian 8 (Jessie) do not include this package in their repositories. If you intend to enable HTTP/2, you will need to compile nginx with OpenSSL 1.0.2+.
+> Chrome has deprecated Next Protocol Negotiation (NPN) and now requires Application-Layer Protocol Negotiation (ALPN) for HTTP/2 compatibility. However, ALPN requires OpenSSL 1.0.2+. Many distributions, such as Debian 8 (Jessie) do not include this package in their repositories. If you intend to enable HTTP/2, you will need to use a version of nginx compiled with OpenSSL 1.0.2+.
 
 1.  To enable HTTP/2, open your nginx SSL virtual host configuration file. Depending on how you installed nginx, this could be located at `/etc/nginx/sites-enabled/default` or at `/etc/nginx/conf.d/example_ssl.conf`. Look for the `listen` line within the "SSL Configuration" section. Uncomment the following line and add `http2` to the end before the semicolon.
 
@@ -77,13 +77,13 @@ HTTP/2 is a new version of the HTTP standard replacing HTTP/1.1 to reduce page l
         listen       443 ssl http2;
         ~~~
 
-3.  Save your changes and restart nginx.
+2.  Save your changes and restart nginx.
 
         systemctl restart nginx
 
-4.  Open a web browser and navigate to [the KeyCDN HTTP/2 Test](https://tools.keycdn.com/http2-test), enter your Linode's domain name or hostname in the text box and click "Test". Optionally uncheck the Public checkbox if you do not want your results displayed publicly. This free tool will check your server and let you know if HTTP/2 is enabled and functioning correctly.
+3.  Open a web browser and navigate to [the KeyCDN HTTP/2 Test](https://tools.keycdn.com/http2-test), enter your Linode's domain name or hostname in the text box and click "Test". Optionally uncheck the Public checkbox if you do not want your results displayed publicly. This free tool will check your server and let you know if HTTP/2 is enabled and functioning correctly.
 
-If HTTP/2 is functioning properly, your report should look like this.
+If HTTP/2 is functioning properly, your report should look like this:
 [![HTTP/2 Report](/docs/assets/HTTP2_Report.jpg)](/docs/assets/HTTP2_Report.jpg)
 
 ## Redirect HTTP Traffic to HTTPS
@@ -140,7 +140,7 @@ Before enabling OCSP stapling you will need to create a file on your system that
 
         cat sub.class1.server.ca.pem >> /etc/nginx/ca.pem
 
-5.  Delete the Class 1 Intermediate file as it is no longer needed:
+5.  Delete the Class 1 Intermediate file now that it is no longer needed:
 
         rm sub.class1.server.ca.pem
 
@@ -194,7 +194,7 @@ Content sniffing allows browsers to inspect a byte stream in order to "guess" th
 
 {: .file}
 /etc/nginx/conf.d/example_ssl
-:   ~~~conf
+:   ~~~ conf
     add_header X-Content-Type-Options nosniff;
     ~~~
 
