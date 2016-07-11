@@ -16,7 +16,7 @@ external_resources:
 
 ## What High Availability Is
 
-High availability is a term that describes a website or application with maximum uptime and accessibility for the content stored on it. While a more basic system will be adequate to serve content to a low or medium number of users, it may include a single point of failure. This means that if one server goes down, whether due to traffic overload or any number of other issues, the entire site or application could become unavailable. 
+High availability is a term that describes a website or application with maximum potential uptime and accessibility for the content stored on it. While a more basic system will be adequate to serve content to a low or medium number of users, it may include a single point of failure. This means that if one server goes down, whether due to traffic overload or any number of other issues, the entire site or application could become unavailable. 
 
 Systems with high availability avoid this problem by eliminating single points of failure, which prevents the site or application from going down when one component fails.
 
@@ -40,7 +40,7 @@ In general, a high availability system works by having more components than it n
 
 In computing, *redundancy* means that there are multiple components that can perform the same task. This eliminates the single point of failure problem by allowing a second server to take over a task if the first one goes down or becomes disabled. Because the same tasks are handled by multiple components, *replication* is also critical. In a replicated system, the components that handle the same tasks communicate with one another to ensure that they have the same information at all times.
 
-For example, suppose you have a LAMP stack and website hosted on a single Linode. If the database in the LAMP stack were to stop working, PHP may be unable to perform queries properly, and your website will be unavailable to display the requested content or handle user authentication.
+For example, suppose you have a LAMP stack running a website hosted on a single Linode. If the database in the LAMP stack were to stop working, PHP may be unable to perform queries properly, and your website will be unavailable to display the requested content or handle user authentication.
 
 In a highly available configuration, however, this problem is mitigated because the databases are distributed across several servers. If one of the database servers becomes disabled for any reason, data can still be read from one of the others, and because the databases are replicated, any one of them can serve the same information. Even if one database becomes disabled, another can take its place.
 
@@ -62,7 +62,7 @@ The concepts discussed here are specifically geared toward the configuration des
 
 ### File System
 
-In order to store uploads and plugins, your site will need a networked file system. Our high availability guide uses GlusterFS.
+In order to store uploads and plugins, your site will need a networked file system. Our high availability guide uses [GlusterFS](https://www.gluster.org/).
 
 In a high availability setup, a *distributed replicated volume* is used to store files. You can think of the volume as the entire shared file system across all servers. The volume is made up of *bricks*, which are the shared file directories on any one server. 
 
@@ -70,15 +70,15 @@ In our configuration, a cluster of three GlusterFS nodes are configured to repli
 
 ### Database
 
-The database stores the content and user credentials for your site. In our guide, we use Percona XtraDB, but other database management systems work in a similar way. A database is particularly important when using a CMS like Wordpress, as it stores the information that makes up your pages and posts.
+The database stores the content and user credentials for your site. In our guide, we use [Percona XtraDB](https://www.percona.com/software/mysql-database/percona-server/xtradb), but other database management systems work in a similar way. A database is particularly important when using a CMS like Wordpress, as it stores the information that makes up your pages and posts.
 
 In our configuration, the database nodes are a cluster of Percona XtraDB servers, using Galera for replication. Galera offers *synchronous replication*, meaning data is written to secondary database nodes at the same time as it's being written to the primary. This method of replication provides excellent redundancy to the database cluster because it avoids periods of time where the database nodes are not in matching states. Galera also provides *multi-master replication*, meaning any one of the database nodes can respond to client queries.
 
-Our configuration also uses XtraBackup, an efficient method of *state snapshot transfer*. This means that when a new node joins the cluster, the node from which it's syncing data (the donor) is still available to handle queries. This not only helps with efficiency in the initial setup, it also allows nearly seamless horizontal scaling as your needs grow.
+Our configuration also uses [XtraBackup](https://www.percona.com/software/mysql-database/percona-xtrabackup), an efficient method of *state snapshot transfer*. This means that when a new node joins the cluster, the node from which it's syncing data (the donor) is still available to handle queries. This not only helps with efficiency in the initial setup, it also allows nearly seamless horizontal scaling as your needs grow.
 
 ### Web Server
 
-Web servers monitor for requests for web content, and serve them accordingly. Our guide uses Apache HTTPD, but other web servers like nginx and lighttpd will fill this role as well. 
+Web servers monitor for requests for web content, and serve them accordingly. Our guide uses [Apache HTTPD](https://www.apache.org/), but other web servers like nginx and lighttpd will fill this role as well. 
 
 In most setups, the web server will read from a database to generate its content and write to a database if a form is filled out. On a dynamic website or application, the database is crucial to fulfilling web requests. The web server also stores software, such as Wordpress, and plugins within the file system.
 
@@ -90,7 +90,7 @@ Apache's communication with the database nodes works in a similar way. Because t
 
 *Failover* is the process by which one node takes over the job of another in the event that one becomes disabled. This comes as a result of monitoring for failures by the system.
 
-While GlusterFS handles monitoring and failover itself, a separate service is needed for the database cluster. For this, we use Keepalived with a *floating IP address*. The floating (or virtual) IP address is simply a private IP address that can be reassigned between nodes as needed when one fails. 
+While GlusterFS handles monitoring and failover itself, a separate service is needed for the database cluster. For this, we use [Keepalived](http://www.keepalived.org/) with a *floating IP address*. The floating (or virtual) IP address is simply a private IP address that can be reassigned between nodes as needed when one fails. 
 
 Keepalived uses *virtual router redundancy protocol*, or VRRP, to automatically assign the floating IP address to any of the database nodes. The keepalived service uses user-defined rules to monitor for a certain number of failures by a database node. When that failure threshold is met, keepalived assigns the floating IP address to a different node so that there is no interruption to the fulfillment of requests while the first node waits to be fixed.
 

@@ -75,7 +75,7 @@ These steps should be run on each file system node in your cluster.
     {: .note}
     >When installing `glusterfs-server`, you may be prompted to verify a GPG key from the CentOS Storage SIG repository. Before running the third command, you can manually import the GPG key:
     >
-    >    rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-SIG-Storage
+    >     rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-SIG-Storage
 
 2.  Start the GlusterFS daemon:
 
@@ -196,7 +196,7 @@ We'll use three 2GB Linodes with hostnames `galera1`, `galera2`, and `galera3` a
     {: .note}
     >When installing `Percona-XtraDB-Cluster-56` and `Percona-XtraDB-Cluster-shared-56`, you will be prompted to verify a GPG key from the Percona repository. Before running the third command, you can manually import the GPG key:
     >
-    >    rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-SIG-Storage
+    >     rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-SIG-Storage
 
 ### Configure Your Galera Cluster
 
