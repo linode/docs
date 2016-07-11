@@ -223,14 +223,14 @@ We're using a 2048 bit RSA private key to sign the Diffie-Hellman key exchange, 
 If you have been following along, starting with the guide on installing the latest version of Nginx for Debian Wheezy or Jessie and getting a StartSSL certificate, your `/etc/nginx/conf.d/example_ssl.conf` should now look similar to this:
 
 {: .file}
-/etc/nginx/conf.d/example_ssl
-:   ~~~conf
+/etc/nginx/conf.d/example_ssl.conf
+:   ~~~
+
     # HTTPS server
     #
     server {
         listen       443 ssl http2;
         
-        add_header   Alternate-Protocol  443:npn-spdy/3;
         add_header   Strict-Transport-Security "max-age=31536000; includeSubdomains";
         add_header   X-Content-Type-Options nosniff;
         add_header   X-Frame-Options DENY;
