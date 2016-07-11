@@ -66,6 +66,9 @@ In September 2010, Google released the SPDY protocol for all versions of Chrome 
 
 HTTP/2 is a new version of the HTTP standard replacing HTTP/1.1 to reduce page load time. Traditionally, when a user accessed a web page, a separate HTTP connection was established to load each resource (e.g. HTML, CSS, JavaScript, or images). HTTP/2 allows concurrent requests on a single connection to download assests in parallel. The server also compresses assets before sending them to the client, which requires less bandwdith. 
 
+{: .note}
+> Some browsers, including Chrome, require Application-Layer Protocol Negotiation (ALPN) for full HTTP/2 compatibility. However, ALPN requires OpenSSL 1.0.2+. Many distributions, such as Debian 8 (Jessie) do not include this package in their repositories. If you intend to enable HTTP/2, you will need to compile nginx with OpenSSL 1.0.2+.
+
 1.  To enable HTTP/2, open your nginx SSL virtual host configuration file. Depending on how you installed nginx, this could be located at `/etc/nginx/sites-enabled/default` or at `/etc/nginx/conf.d/example_ssl.conf`. Look for the `listen` line within the "SSL Configuration" section. Uncomment the following line and add `http2` to the end before the semicolon.
 
     {: .file-excerpt}
