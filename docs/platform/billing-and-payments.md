@@ -2,11 +2,11 @@
 author:
   name: Linode
   email: docs@linode.com
-description: Our guide to prepaid billing and payments.
+description: Our guide to billing and payments.
 keywords: 'billing,payments'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['billing-and-payments/']
-modified: Monday, June 16th, 2014
+modified: Tuesday, July 12th, 2016
 modified_by:
   name: Alex Fornuto
 published: 'Friday, February 28th, 2014'
@@ -79,7 +79,10 @@ If you want to stop being billed for a particular Linode service, you need to [r
 
 ## Payment Methods
 
-We accept Visa, MasterCard, Discover, and American Express. We also accept checks and money orders (which *must* be in USD) made out to "Linode, LLC" and sent to our [office address](http://www.linode.com/contact#contact-address). Please [contact support](/docs/support) before paying with check or money order. Note that we do not accept bank/wire transfers, and we have no plans to support PayPal at this time.
+We accept Visa, MasterCard, Discover, and American Express. We also accept PayPal, as well as checks and money orders (which *must* be in USD) made out to "Linode, LLC" and sent to our [office address](http://www.linode.com/contact#contact-address). Please [contact support](/docs/support) before paying with check or money order. Note that we do not accept bank/wire transfers.
+
+{: .note }
+>PayPal payments can only be made **after** an account is opened with an initial payment from a credit or debit card.
 
 If you overpay, credit will be applied to your account; this allows you to prepay if desired. Service credit is always used before charging the credit card on file for ongoing service.
 
