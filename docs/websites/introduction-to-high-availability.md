@@ -14,13 +14,13 @@ external_resources:
 - '[Fault Tolerance](https://en.wikipedia.org/wiki/Fault_tolerance)'
 ---
 
-## What High Availability Is
+## What High is Availability?
 
-High availability is a term that describes a website or application with maximum potential uptime and accessibility for the content stored on it. While a more basic system will be adequate to serve content to a low or medium number of users, it may include a single point of failure. This means that if one server goes down, whether due to traffic overload or any number of other issues, the entire site or application could become unavailable. 
+High availability (HA) is a term that describes a website or application with maximum potential uptime and accessibility for the content stored on it. While a more basic system will be adequate to serve content to a low or medium number of users, it may include a single point of failure. This means that if one server goes down, whether due to traffic overload or any number of other issues, the entire site or application could become unavailable. 
 
 Systems with high availability avoid this problem by eliminating single points of failure, which prevents the site or application from going down when one component fails.
 
-## What High Availability Is Not
+## What High Availability is Not
 
 High availability does **not** mean your site or application will never go down. Although it provides a number of failsafes, no system is perfect. Availability will still depend on the number of components, their configuration settings, and the resources allocated to each component. While high availability solutions offer your site or application greater uptime than a single host, remember that the system is only equal to the sum of its parts.
 
