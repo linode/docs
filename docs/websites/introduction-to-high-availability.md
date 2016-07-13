@@ -54,7 +54,7 @@ In a highly available setup, regular checks are performed to ensure that the pri
 
 ## Elements of High Availability
 
-In this section, we'll go over the function of each component of the high availability configuration, and explain how the pieces work together. There are a number of combinations of software to perform each task in a high availability configuration, and the software mentioned in this section servehs as just one possible solution to creating a highly available site or application.
+In this section, we'll go over the function of each component of the high availability configuration, and explain how the pieces work together. There are a number of combinations of software to perform each task in a high availability configuration, and the software mentioned in this section serves as just one possible solution to creating a highly available site or application.
 
 The concepts discussed here are specifically geared toward the configuration described in our guide on how to [host a website with high availability](/docs/websites/host-a-website-with-high-availability), but will apply to highly available systems in general. The  diagram below shows the configuration we use in our guide.
 
