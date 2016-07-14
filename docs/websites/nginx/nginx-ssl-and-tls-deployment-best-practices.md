@@ -4,9 +4,9 @@ author:
   email: docs@linode.com
 description: 'This guide details best practices for deploying SSL and TLS in conjunction with nginx.'
 keywords: 'nginx,ssl,tls'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-published: 'Monday, March 28th, 2016'
-modified: Monday, March 28th, 2016
+license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0)'
+published: 'Monday, July 11th, 2016'
+modified: Monday, July 11th, 2016
 modified_by:
   name: Linode
 title: 'Nginx SSL and TLS Deployment Best Practices'
@@ -22,85 +22,99 @@ contributor:
 
 This guide is intended to inform you of some additional configuration options that nginx uses when serving HTTPS. While these features help optimize nginx for SSL and TLS, this is by no means a complete guide to securing nginx or your Linode. The best way to ensure your server remains secure is to not only to configure it properly, but to follow best security practices at all times. This guide is intended to be one of many steps toward creating the most secure environment possible. 
 
-Please note that you will need root privileges for some of the commands that follow.
+## Before you Begin
+
+1.  This guide requires a Linode with the latest stable version of nginx already installed. If you have not done this already, refer to our [nginx guides](https://www.linode.com/docs/websites/nginx/) for installation instructions for your system.
+
+2.  Update your system:
+
+        apt-get update && apt-get upgrade
+
+{: .note}
+>
+>The commands in this guide are written for a root user. If you're following along as a non-root user, commands that require elevated privileges should prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
 For more information, please review our guides on [basic nginx configuration](/docs/websites/nginx/how-to-configure-nginx), [Linux security basics](/docs/security/linux-security-basics), and [securing your server](/docs/security/securing-your-server).
 
-### Disable Nginx Server Tokens
+## Disable Nginx Server Tokens
 
 By default, nginx will share its version number with anyone who connects to your server. For example, if a directory is not found, nginx will return a 404 error that includes its version number. Disabling server tokens makes it more difficult to determine the version of nginx running on your Linode, and therefore more difficult to implement version-specific exploits.
 
 [![404 With Nginx Version Number](/docs/assets/404_Not_Found.jpg)](/docs/assets/404_Not_Found.jpg)
 
-1.  To disable `server_tokens` open up your `nginx.conf` using your text editor of choice.
-        
-	    nano /etc/nginx/nginx.conf
-
-2.  Inside of the `http` block, append the following line before the ending `}`. Depending on where you installed nginx from this line may already exist but may be commented out. To make it active just remove the `#` sign in front.
-
+1.  To disable `server_tokens`, open your `/etc/nginx/nginx.conf` file. Inside of the `http` block, append or uncomment the following line:
+    
+    {: .file-excerpt}
+    /etc/nginx/nginx.conf
+    :   ~~~
         server_tokens       off;
+        ~~~
 
-3.  Exit your text editor and restart nginx.
+2.  Save your changes and restart nginx.
 
         systemctl restart nginx
 
-After restarting, browse to a directory of your server that does not exist, and nginx will no longer share its version number.
+After restarting, direct your web browser to a directory of your server that does not exist, and nginx will no longer share its version number.
 
 [![404 With Server Tokens Disabled](/docs/assets/404_Not_Found_Server_Tokens_Off.jpg)](/docs/assets/404_Not_Found_Server_Tokens_Off.jpg) 
 
-### Enable HTTP/2 Support
+## Enable HTTP/2 Support
 
-HTTP/2 is a new version of the HTTP standard replacing HTTP/1.1 to reduce page load time. HTTP/2 relies upon establishing multiple HTTP requests to a server to download assests in parallel. Traditionally when you access a web page a separate HTTP connection is established to load each resource (ex. HTML, CSS, JavaScript, or images). The server also compresses assests before sending them to the client requiring less bandwdith. 
+In September 2010, Google released the SPDY protocol for all versions of Chrome 6. SPDY is currently being phased out in favor of HTTP/2. Support for SPDY in Chrome was removed in May 2016. SPDY is supported only in nginx 1.8.x or older, whereas versions beginning with 1.9.5 are beginning to support HTTP/2. To check your nginx version:
 
-{.note}
-> In Sepetmeber 2010, Google released SPDY for all version of Chrome 6. SPDY is currently being phased out in favor of HTTP/2. Support for SPDY in Chrome was removed in May 2016. SPDY is supported only in nginx 1.8.x or older, whereas newer versions are beginning to support HTTP/2. However, most nginx packages shipped with current stable distros do support SPDY.
+    nginx -v
 
-1.  To enable HTTP/2, open your nginx SSL virtual host configuration file. Depending on how you installed nginx this could be located at `/etc/nginx/sites-enabled/default` or at `/etc/nginx/conf.d/example_ssl.conf`.
+HTTP/2 is a new version of the HTTP standard replacing HTTP/1.1 to reduce page load time. Traditionally, when a user accessed a web page, a separate HTTP connection was established to load each resource (e.g. HTML, CSS, JavaScript, or images). HTTP/2 allows concurrent requests on a single connection to download assests in parallel. The server also compresses assets before sending them to the client, which requires less bandwdith. 
 
-        nano /etc/nginx/conf.d/example_ssl.conf
+{: .note}
+> Chrome has deprecated Next Protocol Negotiation (NPN) and now requires Application-Layer Protocol Negotiation (ALPN) for HTTP/2 compatibility. However, ALPN requires OpenSSL 1.0.2+. Many distributions, such as Debian 8 (Jessie) do not include this package in their repositories. If you intend to enable HTTP/2, you will need to use a version of nginx compiled with OpenSSL 1.0.2+.
 
-2.  Look for the `listen` line and add `http2` to the end before the semicolon.
+1.  To enable HTTP/2, open your nginx SSL virtual host configuration file. Depending on how you installed nginx, this could be located at `/etc/nginx/sites-enabled/default` or at `/etc/nginx/conf.d/example_ssl.conf`. Look for the `listen` line within the "SSL Configuration" section. Uncomment the following line and add `http2` to the end before the semicolon.
 
+    {: .file-excerpt}
+    /etc/nginx/conf.d/example_ssl
+    :   ~~~ conf
         listen       443 ssl http2;
+        ~~~
 
-3.  Save your changes and restart nginx.
+2.  Save your changes and restart nginx.
 
         systemctl restart nginx
 
-4.  Open a web browser and navigate to [the KeyCDN HTTP/2 Test](https://tools.keycdn.com/http2-test), enter your Linode's domain name or hostname in the text box and click "Test". Optionally uncheck the Public checkbox if you do not want your results displayed publicly. This free tool will check your server and let you know if HTTP/2 is enabled and functioning correctly.
+3.  Open a web browser and navigate to [the KeyCDN HTTP/2 Test](https://tools.keycdn.com/http2-test), enter your Linode's domain name or hostname in the text box and click "Test". Optionally uncheck the Public checkbox if you do not want your results displayed publicly. This free tool will check your server and let you know if HTTP/2 is enabled and functioning correctly.
 
-If HTTP/2 is functioning properly, your report should look like this.
+If HTTP/2 is functioning properly, your report should look like this:
 [![HTTP/2 Report](/docs/assets/HTTP2_Report.jpg)](/docs/assets/HTTP2_Report.jpg)
 
-### Redirect HTTP Traffic to HTTPS
+## Redirect HTTP Traffic to HTTPS
 
-Google is now ranking websites that accept encrypted HTTPS connections higher in search results, why not force clients to use HTTPS and increase your page rank? 
+Google is now ranking websites that accept encrypted HTTPS connections higher in search results, so redirecting HTTP requests to HTTPS is one possible way to increase your page rank. Before following these steps, however, be sure to research compatibility issues that may arise with older browsers.
 
-1.  Open up your HTTP nginx virtual host configuration file, which can be located at `/etc/nginx/conf.d/default.conf` or `/etc/nginx/sites-enabled/default` depending on how you installed nginx.
+1.  Open your HTTP nginx virtual host configuration file, which can be located at `/etc/nginx/conf.d/default.conf` or `/etc/nginx/sites-enabled/default` depending on how you installed nginx. Change `your-domain` to match your Linode's domain name or hostname:
 
-        nano /etc/nginx/conf.d/default.conf
+        server_name example.com
 
-2.  Change `your-domain` to match your Linode's domain name or hostname.
-
-        server_name your-domain
-
-3.  Append the following line below the `server_name` line.
+2.  Append the following line below the `server_name` line.
        
         rewrite        ^ https://$server_name$request_uri? permanent;
 
-4.  Comment out (place # signs in front) all other lines so that your configuration looks like this:
+3.  Comment out (place `#` in front of) all other lines so your configuration looks like this:
 
+    {: .file-excerpt}
+    /etc/nginx/conf.d/default
+    :   ~~~ conf
         server {
             listen       80;
-            server_name  Your Domain Name or Hostname Here;
+            server_name  example.com;
             rewrite      ^ https://$server_name$request_uri? permanent;
         }
+        ~~~
 
-5. Exit your text editor saving your changes and restart nginx.
+4. Save your changes and restart nginx.
 
         systemctl restart nginx
 
-### OCSP Stapling
+## OCSP Stapling
 
 The *Online Certificate Status Protocol* (OCSP) was created to speed up the process that operating systems and browsers use to check for certificate revocation. For instance, when you use Internet Explorer or Google Chrome on a Windows machine, Windows is configured by default to check for certificate revocation. Prior to OCSP, your operating system or browser would download a *certificate revocation list* (CRL). CRLs have grown so large that browser vendors are now creating their own CRLs and distributing them to users.
 
@@ -110,95 +124,93 @@ When OCSP stapling is enabled, nginx on your Linode will make an OCSP request fo
 
 Before enabling OCSP stapling you will need to create a file on your system that stores the CA certificates used to sign your server certificate. This tutorial assumes that you have a free certificate from StartSSL. If you need help with this, contact your certificate issuer.
 
-1.  Navigate to your `/etc/nginx` directory.
+1.  Navigate to your `/etc/nginx` directory:
 
         cd /etc/nginx
 
-2.  Download the StartSSL CA Certificate.
+2.  Download the StartSSL CA Certificate:
 
         wget http://www.startssl.com/certs/ca.pem
 
-3.  Download the StartSSL Class 1 Intermediate CA Certificate.
+3.  Download the StartSSL Class 1 Intermediate CA Certificate:
 
         wget http://www.startssl.com/certs/sub.class1.server.ca.pem
 
-4.  Combine the two CA Certificates into a single file.
+4.  Append the Class 1 Intermediate file to the first StartSSL CA Certificate you downloaded:
 
         cat sub.class1.server.ca.pem >> /etc/nginx/ca.pem
 
-5.  Delete the no longer needed certificate file.
+5.  Delete the Class 1 Intermediate file now that it is no longer needed:
 
         rm sub.class1.server.ca.pem
 
-6.  Open up your HTTPS Nginx virtual host configuration file this can be located at `/etc/nginx/conf.d/example_ssl.conf` or `/etc/nginx/sites-enabled/default` depending on how you installed nginx.
+6.  Open your HTTPS nginx virtual host configuration file, which can be located at `/etc/nginx/conf.d/example_ssl.conf` or `/etc/nginx/sites-enabled/default` depending on how you installed nginx. In some cases, you may need to create the file yourself. Add the following lines inside the `server` block:
 
-        nano /etc/nginx/conf.d/example_ssl.conf
-
-7.  Append the following lines inside of the `server` block:
-
+    {: .file-excerpt}
+    /etc/nginx/conf.d/example_ssl
+    :   ~~~ conf
         ssl_stapling on;
         ssl_stapling_verify on;
         ssl_trusted_certificate /etc/nginx/ca.pem;
+        ~~~
 
-8.  Save your changes exiting your text editor and restart nginx.
+7.  Save your changes and restart nginx.
 
         systemctl restart nginx
 
-9.  Navigate to the [Qualys SSL Labs SSL Server Test](https://www.ssllabs.com/ssltest/). Enter the domain name or hostname of your Linode and click "Submit". Optionally, you may uncheck the checkbox to not show your results on the boards.
+8.  In a web browser, navigate to the [Qualys SSL Labs SSL Server Test](https://www.ssllabs.com/ssltest/). Enter the domain name or hostname of your Linode and click "Submit". Optionally, you may uncheck the checkbox to prevent your test from being shown publicly.
 
-Once the test is complete, scroll down to the "Protocol Details" section. Look for the "OCSP stapling" line. If nginx is confiugred correctly this test will return "Yes".
+    Once the test is complete, scroll down to the "Protocol Details" section. Look for the "OCSP stapling" line. If nginx is confiugred correctly, this test will return "Yes".
 
-[![SSL Server Test OCSP](/docs/assets/OCSP_Stapling_SSL_Test.jpg)](/docs/assets/OCSP_Stapling_SSL_Test.jpg)
+    [![SSL Server Test OCSP](/docs/assets/OCSP_Stapling_SSL_Test.jpg)](/docs/assets/OCSP_Stapling_SSL_Test.jpg)
 
-### HTTP Strict Transport Security (HSTS)
+## HTTP Strict Transport Security (HSTS)
 
 Google Chrome, Mozilla Firefox, Opera, and Safari currently honor HSTS headers. HSTS is used to force browsers to only connect using secure encrypted connections. This means your site will no longer be accessible over HTTP. When HSTS is enabled and a valid HSTS header is stored in a users browser cache, the user will be unable to access your site if presented with a self-signed, expired, or SSL certificate issued by an untrusted certificate authority. The user will also be unable to bypass any certificate warnings unless your HSTS header expires or the browser cache is cleared.
 
-With all traffic being redirected from HTTP to HTTPS why not tell visitors browsers to only connect using HTTPS?
+With all traffic being redirected from HTTP to HTTPS, you may want to allow users to only connect using HTTPS. Before enabling HSTS, be sure that you understand the potential impact on compatibility with older browsers.
 
 **Do not follow these steps if you want users to access your site over HTTP!**
 
-1.  Open up your Nginx HTTPS virtual host configuration file. This may be located at `/etc/nginx/sites-enabled/default` or at `/etc/nginx/conf.d/example_ssl.conf`.
-
-        nano /etc/nginx/conf.d/example_ssl.conf
-
-2.  Append the following line inside of your server block. `max-age` sets the expiration date for this header in seconds; in this configuration, the header will expire after 1 year. You can configure this to be longer or shorter if you choose. The `includeSubdomains` argument enforces HSTS on all subdomains.
+1.  Open up your Nginx HTTPS virtual host configuration file. This may be located at `/etc/nginx/sites-enabled/default` or at `/etc/nginx/conf.d/example_ssl.conf`. Append the following line inside your `server` block: 
 
         add_header Strict-Transport-Security "max-age=31536000; includeSubdomains";
 
-3.  Save your changes exiting your text editor and restart Nginx.
+    The `max-age` attribute sets the expiration date for this header in seconds; in the above configuration, the header will expire after 1 year. You can configure this to be longer or shorter if you choose. The `includeSubdomains` argument enforces HSTS on all subdomains.
+
+2.  Save your changes and restart Nginx.
 
         systemctl restart nginx
 
-4.  Navigate to the [Qualys SSL Labs SSL Server Test](https://www.ssllabs.com/ssltest/). Enter the domain name or hostname of your Linode and click "Submit". Optionally, you may uncheck the checkbox to not show your results on the boards.
+3.  Navigate to the [Qualys SSL Labs SSL Server Test](https://www.ssllabs.com/ssltest/). Enter the domain name or hostname of your Linode and click "Submit". Optionally, you may uncheck the checkbox to not show your results on the boards.
 
 Once the test is complete, scroll down to the "Protocol Details" section. Look for the "Strict Transport Security (HSTS)" line. If nginx is configured correctly this test will return "Yes".
 
 [![SSL Server Test HSTS](/docs/assets/HSTS_SSL_Test.jpg)](/docs/assets/HSTS_SSL_Test.jpg)
 
-### Disable Content Sniffing
+## Disable Content Sniffing
 
 Content sniffing allows browsers to inspect a byte stream in order to "guess" the file format of its contents. It is generally used to help sites that do not correctly identify the MIME type of their web content, but it also presents a vulnerability to cross-site scripting and other attacks. To disable content sniffing, add the following line to your nginx SSL configuration file in the `server` block:
 
 {: .file}
 /etc/nginx/conf.d/example_ssl
-:   ~~~conf
+:   ~~~ conf
     add_header X-Content-Type-Options nosniff;
     ~~~
 
-### Disable or Limit Embedding
+## Disable or Limit Embedding
 
-This HTTPS header can specify whether a page is able to be rendered in a frame, iframe, or object. If left unset, your site's content may be embedded into other sites' HTML code in a clickjacking attack. To disable the embedding of your content, add the following line to your SSL configuration file in the `server` block:
+The HTTPS header `X-Frame-Options` can specify whether a page is able to be rendered in a frame, iframe, or object. If left unset, your site's content may be embedded into other sites' HTML code in a clickjacking attack. To disable the embedding of your content, add the following line to your SSL configuration file in the `server` block:
 
 {: .file}
 /etc/nginx/conf.d/example_ssl
-:   ~~~conf
+:   ~~~ conf
     add_header X-Frame-Options DENY;
     ~~~
 
 If you'd like to limit embedding rather than disabling it altogether, you can replace `DENY` with `SAMEORIGIN`. This will allow you to use your page in a frame as long as the site attempting to do so is the same one serving your page.
 
-### Create a Custom Diffie-Hellman Key Exchange
+## Create a Custom Diffie-Hellman Key Exchange
 
 We're using a 2048 bit RSA private key to sign the Diffie-Hellman key exchange, but the default parameters for Diffie-Hellman only specify 1024 bits, often making it the weakest link in the SSL cipher suite. We should generate our own custom parameters for the key exchange to provide greater security.
 
@@ -206,17 +218,21 @@ We're using a 2048 bit RSA private key to sign the Diffie-Hellman key exchange, 
 
         cd /etc/ssl/certs
 
-2.  Create custom parameters for the handshake. Here we will use 2048 bits, but you can increase this to 4096 if you'd like even greater security:
+2.  Create custom parameters for the TLS handshake. Here we will use a 2048 bit key, but you can increase this to 4096 if you'd like even greater security:
 
         openssl dhparam -out dhparam.pem 2048
 
 3.  Specify the new parameter by adding the following line to your nginx SSL configuration file in the `server` block:
 
-{: .file}
-/etc/nginx/conf.d/example_ssl
-:   ~~~conf
-    ssl_dhparam /etc/ssl/certs/dhparam.pem;
-    ~~~
+    {: .file}
+    /etc/nginx/conf.d/example_ssl
+    :   ~~~ conf
+        ssl_dhparam /etc/ssl/certs/dhparam.pem;
+        ~~~
+
+4.  Save your changes and restart nginx:
+
+        systemctl restart nginx
 
 ## Test Your Configuration
 
@@ -224,8 +240,7 @@ If you have been following along, starting with the guide on installing the late
 
 {: .file}
 /etc/nginx/conf.d/example_ssl.conf
-:   ~~~
-
+:   ~~~ conf
     # HTTPS server
     #
     server {
@@ -235,7 +250,7 @@ If you have been following along, starting with the guide on installing the late
         add_header   X-Content-Type-Options nosniff;
         add_header   X-Frame-Options DENY;
         
-        server_name  your-domain;
+        server_name  example.com;
 
         ssl_certificate      /etc/ssl/nginx/nginx.crt;
         ssl_certificate_key  /etc/ssl/nginx/server.key;
@@ -243,7 +258,7 @@ If you have been following along, starting with the guide on installing the late
         ssl_session_cache shared:SSL:10m;
         ssl_session_timeout  5m;
 
-        ssl_ciphers  "EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH";
+        ssl_ciphers  "EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH !RC4";
         ssl_prefer_server_ciphers   on;
 
         ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
