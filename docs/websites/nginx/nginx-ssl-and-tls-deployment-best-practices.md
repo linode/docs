@@ -11,10 +11,11 @@ modified_by:
   name: Linode
 title: 'Nginx SSL and TLS Deployment Best Practices'
 contributor:
-  name: 
+  name: Ryan Laverdiere
   link: https://github.com/capecodrailfan
   external_resources:
 - '[Qualys SSL Labs SSL Server Test](https://www.ssllabs.com/ssltest/)'
+- '[KeyCDN HTTP/2 Test](https://tools.keycdn.com/http2-test)'
 ---
 
 *This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
