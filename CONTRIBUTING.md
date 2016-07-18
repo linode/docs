@@ -1,3 +1,13 @@
+# Update: 07/20/16
+
+The bounty program has been an overwhelming success. Too succesful, in fact! Our inbox and repository are overflowing with proposed articles.
+
+As a four man team responsible for both internal *and* externally sourced docs, we're in a bit over our heads. That's why, until further notice. We're no longer accepting new submissions for the Linode bounty program. Any new guides submitted, both through GitHub or email, after today will be rejected without review.
+
+Rest assured, this is temporary. Once we've cleared through the backlog and given the appropriate time and consideration (and hopefully payout) to the authors already patiently waiting, we'll resume the bounty program, with a revised set of topic requirements.
+
+Please note, if you see the need for a correction to an existing guide, please feel free to make a pull request! We still want to improve and update our existing guides, even as we go through new ones.
+
 Write Your Article
 ------------------
 
