@@ -318,7 +318,7 @@ As you run this playbook you will again see the steps come across as "changed." 
 
 ### Install the Stack
 
-Finally, let's get a very basic server set up with Apache and PHP, and a test MySQL databases to use.
+Finally, let's get a very basic server set up with Apache and PHP, and a test MySQL database to use.
 
 1.  The following playbook downloads the appropriate packages, turns on the Apache and MySQL services, and creates a basic database and user.
 
