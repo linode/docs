@@ -2,12 +2,12 @@
 author:
     name: Linode
     email: docs@linode.com
-description: 'A basic guide to installing nginx from source on Debian 7 (Wheezy)'
+description: 'A basic guide to installing nginx from source on Debian 8 (Jessie)'
 keywords: 'nginx,http,web servers,debian,debian jessie,debian 8'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Thursday, July 9th, 2015
+modified: Wednesday, July 20th, 2016
 modified_by:
-    name: Elle Krout
+    name: Phil Zona
 published: 'Thursday, July 9th, 2015'
 title: 'Nginx Web Server on Debian 8'
 external_resources:
@@ -20,7 +20,6 @@ Nginx is a lightweight, high performance web server designed with the purpose of
 {: .note}
 >
 >This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
-
 
 ## Before You Begin
 
@@ -37,13 +36,11 @@ Nginx is a lightweight, high performance web server designed with the purpose of
 
         sudo apt-get update && sudo apt-get upgrade
 
-
 ## Installing Nginx
-
 
 ### Install Nginx from Repositories
 
-The simplest way to install Nginx on a server is by downloading it from Debian's repositories:
+The simplest way to install Nginx on a server is by downloading it from Debian's repositories.
 
 1.  Install Nginx and start the daemon:
 
@@ -53,7 +50,36 @@ The simplest way to install Nginx on a server is by downloading it from Debian's
 
 2.  Nginx can be tested by navigating to your FQDN in your browser. The default Nginx page should be present.
 
-### Install Nginx from a Source Distribution
+### Install from Nginx Package Repository
+
+This method differs from the one above in that it installs from the official Nginx repository rather than using the package provided by Debian. Follow these steps if you would like to install the latest stable version of nginx.
+
+1.  Create the `/etc/apt/sources.list.d/nginx.list` file, which instructs the package manager to download packages from the Nginx repositories:
+
+        touch /etc/apt/sources.list.d/nginx.list
+
+2.  Add the following lines to the file:
+    
+    {: .file}
+    /etc/apt/sources.list.d/nginx.list
+    :   ~~~
+        deb http://nginx.org/packages/debian/ jessie nginx
+        deb-src http://nginx.org/packages/debian/ jessie nginx
+        ~~~
+
+3.  Download the PGP key used to sign the packages in the Nginx repository and import it into your keyring:
+    
+        curl http://nginx.org/keys/nginx_signing.key | apt-key add -
+
+4.  Update your list of available packages:
+
+        apt-get update
+
+5.  Instruct the package manager to install the Nginx package:
+    
+        apt-get install nginx
+
+### Install and Compile Nginx from Source
 
 The Debian project does not track the latest development of Nginx server. If you require a newer version, Nginx can be downloaded and installed from a source distribution.
 
@@ -61,20 +87,20 @@ The Debian project does not track the latest development of Nginx server. If you
 
         sudo apt-get install libpcre3-dev build-essential libssl-dev
 
-2.  The source files and binaries will be downloaded in the `/opt/` directory. Navigate to `/opt/`:
+2.  The source files and binaries will be downloaded to the `/opt/` directory. Navigate to `/opt/`:
 
         cd /opt/
 
-3.  Download the [latest version](http://nginx.org/) of Nginx, which can be found on their website. At the time of publication, Nginx 1.9.2 is the mainline version:
+3.  Download the [latest stable version](http://nginx.org/en/download.html) of Nginx, which can be found on their website. At the time of this publication, Nginx 1.10.1 is the latest stable version:
 
-        sudo wget http://nginx.org/download/nginx-1.9.2.tar.gz
+        sudo wget http://nginx.org/download/nginx-1.10.1.tar.gz
 
-4.  Expand the file, then navigate to the new directory:
+4.  Extract the file, then navigate to the new directory:
 
-        sudo tar -zxvf nginx*.tar.gz
-        cd /opt/nginx-*
+        sudo tar -zxvf nginx-1.10.1.tar.gz
+        cd /opt/nginx-1.10.1
 
-5.  Configure the build options:
+5.  Configure the build options. You may also wish to install additional modules and specify additional settings in this step, depending on your needs:
 
         sudo ./configure --prefix=/opt/nginx --user=nginx --group=nginx --with-http_ssl_module --with-ipv6
 
@@ -98,13 +124,13 @@ The Debian project does not track the latest development of Nginx server. If you
         sudo make
         sudo make install
 
-7.  As the root user create a user and group for Nginx:
+    Nginx is now installed in `/opt/nginx`.
+
+7.  As the root user, create a user and group for Nginx:
 
         sudo adduser --system --no-create-home --disabled-login --disabled-password --group nginx
 
-    Nginx is now installed in `/opt/nginx`.
-
-8.  Create a script to run Nginx:
+8.  Create a systemd service script to run Nginx:
 
     {: .file}
     /lib/systemd/system/nginx.service
@@ -127,13 +153,20 @@ The Debian project does not track the latest development of Nginx server. If you
         WantedBy=multi-user.target
         ~~~
 
+    {: .note}
+    >
+    >This script assumes that you used the build configuration options specified in Step 5. If your script is not working correctly, be sure that the path in the line beginning with `PIDFile` matches your PID file and the path in lines beginning with `Exec` match your binary file. These file paths can be found in the output when you configured your build options.
+
 9.  Change the ownership of the script:
 
         sudo chmod +x /lib/systemd/system/nginx.service
 
-10.  Start Nginx:
+10. Start Nginx:
 
-         sudo systemctl start nginx
+        sudo systemctl start nginx
 
+    Optionally, you can enable it to start automatically on boot:
+
+        sudo systemctl enable nginx
 
 Continue reading our introduction to [Basic Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration) for more information about using and setting up a web server.
