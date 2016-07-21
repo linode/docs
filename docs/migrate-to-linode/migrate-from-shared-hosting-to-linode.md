@@ -24,6 +24,8 @@ This guide assumes three things:
 *   You already have a Linode account.
 *   You know how to sign in to the [Linode Manager](https://manager.linode.com/).
 *   You have at least basic knowledge of how to use SSH.
+*   The site being migrated is capable of running on a LAMP stack.
+  *   If the site is being migrated from a Windows/IIS host, and is dependent on features or frameworks specific to Windows, or requires a particular server configuration, then it may not work natively in a LAMP environment. If you're unsure about this, *seriously consider pausing your migration,* and consult your web developer.
 
 See our [Getting Started](/docs/getting-started) guide for more information on signing up and setting up your Linode.
 
