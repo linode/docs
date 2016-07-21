@@ -51,7 +51,7 @@ Be aware that when using this method, you will be responsible for updating nginx
 
 1.  Add the [Debian Backports](https://backports.debian.org/) repository to the list of files that the package manager checks for updates:
 
-        echo "deb http://ftp.de.debian.org/debian jessie-backports main " >> /etc/apt/sources.list.d/backports.list
+        echo "deb http://ftp.debian.org/debian jessie-backports main " >> /etc/apt/sources.list.d/backports.list
 
 2.  Update your list of available packages:
 
