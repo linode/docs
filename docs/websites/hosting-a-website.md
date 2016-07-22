@@ -41,7 +41,7 @@ Installing Apache is easy, but if you leave it running with the default settings
 
 {: .note }
 >
-> These guidelines are designed to optimize Apache for a **Linode 2GB**, but you can use this information for any size Linode. The values are based on the amount of memory available, so if you have a Linode 2GB, multiply all of the values by 2 and use those numbers for your settings.
+> These guidelines are designed to optimize Apache for a **Linode 2GB**, but you can use this information for any size Linode. The values are based on the amount of memory available, so if you have a Linode 4GB, multiply all of the values by 2 and use those numbers for your settings.
 
 1.  Just to be safe, make a copy of Apache's configuration file. You can restore the duplicate (`apache2.backup.conf`) if anything happens to the configuration file.
 
