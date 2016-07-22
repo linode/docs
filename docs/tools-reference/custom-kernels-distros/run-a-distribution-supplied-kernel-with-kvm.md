@@ -5,7 +5,7 @@ author:
 description: 'Instructions for configuring your Linode to run a native distribution-supplied kernel on KVM hosts. Written for distributions using systemd'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: 'kvm,custom linux, kernel,custom linode,systemd,debian 8,centos,fedora,gentoo'
-modified: Tuesday, January 19, 2016
+modified: Tuesday, June 7, 2016
 modified_by:
   name: Kent Davis
 published: 'Monday June 29th, 2015'
@@ -63,6 +63,17 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
 
           echo "GRUB_PLATFORMS=\"coreboot pc\"" >> /etc/portage/make.conf
           emerge --ask sys-boot/grub
+
+          emerge --ask sys-boot/grub sys-kernel/gentoo-sources
+
+          eselect kernel list
+
+          eselect kernel set [# of new kernel]
+
+          zcat /proc/config.gz > /usr/src/linux/.config
+
+          genkernel --oldconfig all
+
 
     {: .note }
     > During the installation of `grub` you may be asked which disk image to install to. Since Linode provides the grub bootloader, the system need only provide the `grub.cfg` file, and you don't need to install `grub` to your MBR.
