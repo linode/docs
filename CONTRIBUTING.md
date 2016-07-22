@@ -1,4 +1,4 @@
-# Update: 07/20/16
+# Update: 07/22/16
 
 Linode's bounty program has been an overwhelming success. Too succesful, in fact! Our inbox and repository are overflowing with proposed articles.
 
