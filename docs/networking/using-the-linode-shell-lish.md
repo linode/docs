@@ -223,7 +223,7 @@ These are the fingerprints for the Lish gateway in our Singapore data center (li
     RSA 06:26:d8:2a:12:8b:2f:d7:6c:54:72:5a:a7:7b:da:7b
     DSA 0c:f9:f9:d6:f3:0a:f6:bb:82:82:07:4b:51:db:e2:35
     ECDSA e4:09:16:a1:4e:b5:91:99:1a:75:25:76:b7:21:8a:f5
-    SHA256 LzlyP1Uj1nne2KwCkB5HlOWoHLH/7YrApZlNCn5204A=
+    SHA256 rFYWuld4hWMbTzX+xZMuQ3kxiJ6t8A+FNQ5k889mKEA=
 
 
 ### Tokyo
