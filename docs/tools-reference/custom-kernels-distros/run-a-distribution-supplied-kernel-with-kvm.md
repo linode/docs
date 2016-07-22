@@ -18,8 +18,8 @@ This guide explains how to enable the kernels your OS provides for a KVM Linode.
 * CentOS 7
 * Debian
 * Fedora 22
-* Ubuntu
 * Gentoo
+* Ubuntu
 
 Before you get started, make sure you follow the steps outlined in our [Getting Started](/docs/getting-started) guide. Your Linode needs to be in a functional state. These steps should be performed as `root` on your Linode, via an SSH session.
 
@@ -35,7 +35,7 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
 
         Linux localhost 4.0.4-x86_64-linode57 #1 SMP Thu May 21 11:01:47 EDT 2015 x86_64 x86_64 x86_64 GNU/Linux
 
-3.  Make a note of the kernel you're currently using (`4.0.4-x86_64` in our example). You will be replacing it with the current latest kernel supplied by your Linux distribution.
+3.  Make a note of the kernel you're currently using (`4.0.4-x86_64` in our example). You will be replacing it with the latest kernel supplied by your Linux distribution.
 
 4.  Install the Linux kernel. The package name differs based on your distribution:
 
@@ -62,9 +62,8 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
     * Gentoo
 
           echo "GRUB_PLATFORMS=\"coreboot pc\"" >> /etc/portage/make.conf
-          emerge --ask sys-boot/grub
 
-          emerge --ask sys-boot/grub sys-kernel/gentoo-sources
+          emerge --ask sys-boot/grub sys-kernel/gentoo-sources genkernel
 
           eselect kernel list
 
@@ -82,6 +81,9 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
  
         ls /boot/vmlinuz*
         /boot/vmlinuz-3.16.0-4-amd64
+
+    {: .note }
+    > On Gentoo, use `ls /boot/kernel-*`
 
 ## Configuring Grub
 
@@ -120,8 +122,9 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
 
     * Gentoo
 
-	  grub2-mkconfig -o /boot/grub/grub.cfg
-	  
+          mkdir /boot/grub
+          grub2-mkconfig -o /boot/grub/grub.cfg
+
 Note that if you later install an updated kernel, you'll need to run this command again to update your GRUB menu. By default, the first kernel in the list will be booted.
 
 ## Rebooting into Grub2 Mode
