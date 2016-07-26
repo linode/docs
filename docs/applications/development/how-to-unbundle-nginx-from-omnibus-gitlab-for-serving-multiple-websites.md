@@ -42,7 +42,7 @@ Are you ready to make the most of your computer? These are the steps to be perfo
 - Create a virtual host on your own Nginx
 - Proxy the incoming requests to GitLab
 
-By the way, please keep in mind that GitLab 7 might not allow you to unbundle Nginx from Omnibus. As I say, this is a relatively new feature which is available on version 8.
+By the way, please keep in mind that GitLab 7 may not allow you to unbundle Nginx from Omnibus. As I say, this is a relatively new feature which is available on version 8. Specifically, note that I am showing how to configure a custom Nginx server on the 8.4.5 environment.
 
 ## Before You Begin
 
@@ -57,6 +57,8 @@ This is the specific environment on which I've run the steps required for the ta
 
 ## Update Your System
 
+As a rule of thumb, it is always a good idea to keep your software up-to-date.
+
 1. First of all, make sure your system is up-to-date:
 
 		sudo apt-get update
@@ -69,7 +71,7 @@ This is the specific environment on which I've run the steps required for the ta
 
 	 If your GitLab is an old version 7, it is a good idea for you to upgrade in minor version steps: 7.3 > 7.5 > 7.5, and so on, so that the major new features and fixes won't break anything.
 
-   Please, read the resource entitled [Updating GitLab via omnibus-gitlab](https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/doc/update.md "Updating GitLab via omnibus-gitlab") for further information on this topic.
+   Please, read the resource entitled [Updating GitLab via omnibus-gitlab](https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/doc/update.md "Updating GitLab via omnibus-gitlab") for further information on how to update your Omnibus environment.
 
 ## Unbundle Nginx from Omnibus GitLab
 
