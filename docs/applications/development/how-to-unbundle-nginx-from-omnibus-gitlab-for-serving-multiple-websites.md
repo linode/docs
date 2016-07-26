@@ -59,7 +59,7 @@ This is the specific environment on which I've run the steps required for the ta
 
 As a rule of thumb, it is always a good idea to keep your software up-to-date.
 
-1. First of all, make sure your system is up-to-date:
+1. First of all, make sure your Ubuntu OS is up-to-date:
 
 		sudo apt-get update
 		sudo apt-get upgrade
