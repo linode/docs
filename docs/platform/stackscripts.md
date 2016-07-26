@@ -271,8 +271,7 @@ StackScript
     ~~~
 
 {: .note }
-> If you would like to create a masked password input field, use the word 'password' anywhere in the UDF name. The following is an example of this:
-<UDF name="password" Label="A strong password" default="" example="Enter a strong password." />
+> If you would like to create a masked password input field, use the word 'password' anywhere in the UDF name.
 
 There are also a set of Linode created environmental variables that can be used for API calls or other tasks from within the script.
 
