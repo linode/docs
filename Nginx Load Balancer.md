@@ -192,13 +192,13 @@ NGINX have four important files.
 
 - cache config (in http section )
     
-    	proxy_cache_path/var/nginx/cache levels=1:2 keys_zone=one:10m max_size=1g inactive=30m;
+    	proxy_cache_path /var/nginx/cache levels=1:2 keys_zone=one:10m max_size=1g inactive=30m;
     	proxy_intercept_errors  on;
     	proxy_cache one;
 
 - log format (in http section )
     
-    	log_format  main'$remote_addr - $remote_user [$time_local] '
+    	log_format  main '$remote_addr - $remote_user [$time_local] '
     					'"$request" $status $body_bytes_sent "$http_referer" '
     					'"$http_user_agent" "$connection"';
 
@@ -331,9 +331,6 @@ You should see the following two lines in running programs
 To stop NGINX
 
 	nginx –s stop
-
-**Thats ALL**
-
 
 ***Extra Notes:-***
 
