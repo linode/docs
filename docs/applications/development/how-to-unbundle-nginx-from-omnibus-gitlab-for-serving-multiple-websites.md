@@ -2,7 +2,7 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Omnibus GitLab was originally designed on the idea of running one single Nginx server per machine. However, the newest versions of Omnibus allow you to unbundle the default Nginx server and install and configure your own as you like. This way, you can run multiple virtual servers on one machine, which in some cases is synonymous of saving money.'
+description: 'Omnibus GitLab was originally designed on the idea of running one single Nginx server per machine. However, the newest versions of Omnibus allow you to unbundle the default Nginx server and install and configure your own as you like. This way, you can run multiple virtual servers on one machine, which in some cases is synonymous with saving money.'
 keywords: 'version control, git, gitlab, install gitlab on ubuntu, how to manage repositories with gitlab'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['gitlab-with-ubuntu/','applications/development/gitlab-on-ubuntu-14-04/']
