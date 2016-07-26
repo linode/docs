@@ -18,7 +18,7 @@ modified_by:
 
      name: Suyash Jain
 
-title: 'Guide Title'
+title: 'Nginx Based SSL Terminator and Web Application Firewall'
 
 contributor:
   
