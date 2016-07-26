@@ -31,7 +31,7 @@ However, like everything else in life, one-click installs are a good thing but t
 
 One drawback to Omnibus is that was originally designed on the idea of running one single Nginx server per machine. Thus, Omnibus' Nginx was tied to GitLab and you simply couldn't take advantage of your computer's potential, optimize it and run multiple virtual web servers.
 
-Nevertheless, fortunately for all of us, Omnibus CE is a living creature and the newest versions do allow developers to disable GitLab's Nginx and install their own web server without having to compile anything.
+Nevertheless, Omnibus CE is a living creature and the newest versions do allow developers to disable GitLab's Nginx and install their own web server without having to compile anything.
 
 This guide walks you through the process of installing and setting up your own Nginx server on a typical Omnibus installation. This way, you are not forced to use Omnibus' anymore, and can create as many virtual servers as you want.
 
