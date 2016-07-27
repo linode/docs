@@ -138,10 +138,10 @@ To make things simple, here is a quite basic Nginx configuration example that I 
 	}
 
 	server {
-    listen 80;
-		server_name foo.com;
-		server_tokens off; # don't show the version number, a security best practice
-    root /opt/gitlab/embedded/service/gitlab-rails/public;
+        listen 80;
+        server_name foo.com;
+        server_tokens off; # don't show the version number, a security best practice
+        root /opt/gitlab/embedded/service/gitlab-rails/public;
 
         # Increase this if you want to upload large attachments
         # Or if you want to accept large git objects over http
@@ -152,11 +152,11 @@ To make things simple, here is a quite basic Nginx configuration example that I 
         error_log   /var/log/nginx/gitlab_error.log;
 
         location / {
-            proxy_redirect off;
-            proxy_set_header Host $http_host;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-			proxy_set_header X-Real-IP $remote_addr;
-			proxy_pass http://gitlab;
+          proxy_redirect off;
+          proxy_set_header Host $http_host;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_set_header X-Real-IP $remote_addr;
+          proxy_pass http://gitlab;
 		}
 	}
 
