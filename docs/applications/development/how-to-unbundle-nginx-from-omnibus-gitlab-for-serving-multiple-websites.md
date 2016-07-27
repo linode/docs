@@ -130,7 +130,7 @@ That's easy:
 	sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/foo.com
 	sudo vim /etc/nginx/sites-available/foo.com
 
-Here are some basic settings which will make things work ok:
+To make things simple, here is the basic Nginx configuration that I used just to start the web server. From this point it can be adapted to your needs:
 
 	upstream gitlab {
        	server unix:/var/opt/gitlab/gitlab-rails/sockets/gitlab.socket;
@@ -138,8 +138,8 @@ Here are some basic settings which will make things work ok:
 
 	server {
        	listen 443;
-		server_name foo.com;
-		server_tokens off; # don't show the version number, a security best practice
+		    server_name foo.com;
+		    server_tokens off; # don't show the version number, a security best practice
        	root /opt/gitlab/embedded/service/gitlab-rails/public;
 
         # Increase this if you want to upload large attachments
@@ -161,12 +161,12 @@ Here are some basic settings which will make things work ok:
        	ssl_prefer_server_ciphers on;
 
         location / {
-			proxy_set_header X-Forwarded-Ssl on;
+			      proxy_set_header X-Forwarded-Ssl on;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-			proxy_set_header Host $http_host;
-			proxy_redirect off;
-			proxy_pass http://gitlab;
-		}
+			      proxy_set_header Host $http_host;
+			      proxy_redirect off;
+			      proxy_pass http://gitlab;
+		    }
 	}
 
 At this point, enable your new virtual host by creating a symbolic link as follows:
