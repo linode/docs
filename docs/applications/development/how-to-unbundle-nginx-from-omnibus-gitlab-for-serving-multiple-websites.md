@@ -2,7 +2,7 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Omnibus GitLab was originally designed on the idea of running one single Nginx server per machine. However, the newest versions of Omnibus allow you to unbundle the default Nginx server and install and configure your own as you like. This way, you can run multiple virtual servers on one machine, which in some cases is synonymous with saving money.'
+description: 'Omnibus GitLab was originally designed on the idea of running one single Nginx server per machine. However, the newest versions of Omnibus allow you to unbundle the default Nginx server and install and configure your own as you like. This way, you can run multiple virtual servers on one machine.'
 keywords: 'version control, git, gitlab, install gitlab on ubuntu, how to manage repositories with gitlab'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 alias: ['gitlab-with-ubuntu/','applications/development/gitlab-on-ubuntu-14-04/']
@@ -42,7 +42,7 @@ Are you ready to make the most of your computer? These are the steps to be perfo
 - Create a virtual host on your own Nginx
 - Proxy the incoming requests to GitLab
 
-By the way, please keep in mind that GitLab 7 may not allow you to unbundle Nginx from Omnibus. As I say, this is a relatively new feature which is available on version 8. Specifically, note that I am showing how to configure a custom Nginx server on the 8.4.5 environment.
+By the way, keep in mind that GitLab Omnibus 7 may not allow you to unbundle Nginx from the stack. As I say, this is a relatively new feature which is available on version 8. Specifically, note that I am showing how to configure a custom Nginx server on the 8.10.1 environment.
 
 ## Before You Begin
 
@@ -52,7 +52,7 @@ This is the specific environment on which I've run the steps required for the ta
 - **Hard disk drive**: 50 GB
 - **RAM**: 2 GB
 - **Installation type**: GitLab CE Omnibus package
-- **GitLab version**: 8.4.5
+- **GitLab version**: 8.10.1
 - **Deb package**: [gitlab-ce_8.4.5-ce.0_amd64.deb](https://packages.gitlab.com/gitlab/gitlab-ce/packages/ubuntu/trusty/gitlab-ce_8.4.5-ce.0_amd64.deb "gitlab-ce_8.4.5-ce.0_amd64.deb for Ubuntu 14.04.4 LTS (Trusty Tahr)")
 
 ## Update Your System
@@ -64,36 +64,35 @@ As a rule of thumb, it is always a good idea to keep your software up-to-date.
 		sudo apt-get update
 		sudo apt-get upgrade
 
-2. Take this moment to upgrade GitLab to the newest version. This can be done in several different ways depending on your current version. For example, since I have version 8.3 I end up running this:
+2. Install the newest GitLab CE Omnibus package from [here](https://about.gitlab.com/downloads/#ubuntu1404). Otherwise, if you're already running an Omnibus GitLab environment you can take this moment to update to the newest version.
 
-		curl -LJO https://packages.gitlab.com/gitlab/gitlab-ce/packages/ubuntu/trusty/gitlab-ce_8.4.5-ce.0_amd64.deb/download
-		sudo dpkg -i gitlab-ce_8.4.5-ce.0_amd64.deb
-
-	 If your GitLab is an old version 7, it is a good idea for you to upgrade in minor version steps: 7.3 > 7.5 > 7.5, and so on, so that the major new features and fixes won't break anything.
+	 Nginx cannot be disabled in older versions of GitLab CE. If this is your case and you have installed, let's say, version 7, it is a good idea for you to upgrade in minor version steps: 7.3 > 7.5 > 7.5, and so on, so that the major new features and fixes won't break anything.
 
    Please, read the resource entitled [Updating GitLab via omnibus-gitlab](https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/doc/update.md "Updating GitLab via omnibus-gitlab") for further information on how to update your Omnibus environment.
 
 ## Unbundle Nginx from Omnibus GitLab
 
-Now edit GitLab's config file:
+Now we are editing GitLab's config file:
 
 	sudo vim /etc/gitlab/gitlab.rb
 
-Add these two settings:
+Update the following settings as follows:
 
 	# Unbundle nginx from Omnibus GitLab
 	nginx['enable'] = false
 	# Set your Nginx's username
 	web_server['external_users'] = ['www-data']
 
-And then reconfigure GitLab:
+And then reconfigure:
 
 	sudo gitlab-ctl reconfigure
+
+For more information on how to customize Omnibus Nginx please [click here](https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/doc/settings/nginx.md) to read the official documentation.
 
 
 ## Install Ruby, Passenger and Nginx
 
-Well done! At this point GitLab's Nginx is disabled.
+Well done! At this point GitLab's bundled Nginx is disabled.
 
 The next thing to do is installing and configuring the web server from scratch, globally on the OS.
 
@@ -116,10 +115,12 @@ The next thing to do is installing and configuring the web server from scratch, 
 		# Install Passenger + Nginx:
 		sudo apt-get install -y nginx-extras passenger
 
-3. Finally, let's enable our brand new Passenger module by uncommenting the `passenger_root` and `passenger_ruby` lines from the `/etc/nginx/nginx.conf` file:
+3. Finally, let's enable our brand new Passenger module by uncommenting the `include /etc/nginx/passenger.conf;` line from the `/etc/nginx/nginx.conf` file.
 
-		passenger_root /some-filename/locations.ini;
-		passenger_ruby /usr/bin/passenger_free_ruby;
+4. And restart Nginx:
+
+		sudo service nginx restart
+
 
 For further information on this installation process please read Phusion Passenger's resource entitled [Installing Passenger + Nginx on Ubuntu 14.04 LTS (with APT)](https://www.phusionpassenger.com/library/install/nginx/install/oss/trusty/ "Installing Passenger + Nginx").
 
@@ -130,17 +131,17 @@ That's easy:
 	sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/foo.com
 	sudo vim /etc/nginx/sites-available/foo.com
 
-To make things simple, here is a quite basic Nginx configuration example that I particularly used just to start the web server. From this point it can be adapted to your needs:
+To make things simple, here is a quite basic Nginx configuration example that I particularly used just to start the web server. Feel free to adapt it to your needs:
 
 	upstream gitlab {
        	server unix:/var/opt/gitlab/gitlab-rails/sockets/gitlab.socket;
 	}
 
 	server {
-       	listen 443;
+    listen 80;
 		server_name foo.com;
 		server_tokens off; # don't show the version number, a security best practice
-       	root /opt/gitlab/embedded/service/gitlab-rails/public;
+    root /opt/gitlab/embedded/service/gitlab-rails/public;
 
         # Increase this if you want to upload large attachments
         # Or if you want to accept large git objects over http
@@ -150,21 +151,11 @@ To make things simple, here is a quite basic Nginx configuration example that I 
         access_log  /var/log/nginx/gitlab_access.log;
         error_log   /var/log/nginx/gitlab_error.log;
 
-        ssl on;
-        ssl_certificate /etc/gitlab/ssl/gitlab.crt;
-        ssl_certificate_key /etc/gitlab/ssl/gitlab.key;
-
-        ssl_session_timeout 5m;
-
-       	ssl_protocols SSLv3 TLSv1 TLSv1.1 TLSv1.2;
-       	ssl_ciphers "HIGH:!aNULL:!MD5 or HIGH:!aNULL:!MD5:!3DES";
-       	ssl_prefer_server_ciphers on;
-
         location / {
-			proxy_set_header X-Forwarded-Ssl on;
+            proxy_redirect off;
+            proxy_set_header Host $http_host;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-			proxy_set_header Host $http_host;
-			proxy_redirect off;
+			proxy_set_header X-Real-IP $remote_addr;
 			proxy_pass http://gitlab;
 		}
 	}
@@ -181,4 +172,4 @@ Since Nginx needs to access GitLab you must add the `www-data` user to the `gitl
 
 	sudo usermod -aG gitlab-www www-data
 
-We just turned a default Omnibus GitLab server into a multi-purpose one. Now our Nginx web server can manage plenty of websites. This is all for now, thank you for reading this guide.
+This is all for now, thank you for reading this guide. We just turned a default Omnibus GitLab server into a multi-purpose one. Now, our custom Nginx web server can manage plenty of web apps.
