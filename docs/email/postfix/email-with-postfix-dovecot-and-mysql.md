@@ -207,7 +207,7 @@ Next, set up Postfix so the server can accept incoming messages for the domains.
 
         cp /etc/postfix/main.cf /etc/postfix/main.cf.orig
 
-2.  Edit the `/etc/postfix/main.cf` file to match the following. Ensure that occurrences of `example.com` are replaced with the domain name. Also, replace `hostname` with the system's hostname on line 44.
+2.  Edit the `/etc/postfix/main.cf` file to match the following, with these changes:(a) Replace occurrences of `example.com` are replaced with your domain name. (b) on line 44, replace `hostname` with the system's hostname.  (c) On lines 26 and 27, enter the indicated paths.  Regarding the certificate file, usually SSL providers will give you two files: one containing your cert and a second file containing one or more certs of the certificate authority.  Unlike Apache, Postfix only reads one cert file, so you must contatenate these two files into a "chained SSL certificate", and enter its path here.  (You will use this same file for Dovecot later.)
 
     {:.file }
     /etc/postfix/main.cf
@@ -237,8 +237,8 @@ Next, set up Postfix so the server can accept incoming messages for the domains.
       #smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache
       #smtp_tls_session_cache_database = btree:${data_directory}/smtp_scache
 
-      smtpd_tls_cert_file=/etc/dovecot/dovecot.pem
-      smtpd_tls_key_file=/etc/dovecot/private/dovecot.pem
+      smtpd_tls_cert_file=/path/to/your-(chained)-SSL-cert-file.pem
+      smtpd_tls_key_file=/path/to/your-SSL-private-key-file.pem
       smtpd_use_tls=yes
       smtpd_tls_auth_only = yes
 
@@ -347,7 +347,7 @@ Next, set up Postfix so the server can accept incoming messages for the domains.
 
         cp /etc/postfix/master.cf /etc/postfix/master.cf.orig
 
-12. Open the configuration file for editing and uncomment the two lines starting with `submission` and `smtps` and the block of lines starting with `-o` after each. The first section of the `/etc/postfix/master.cf` file should resemble the following:
+12. Open the configuration file for editing and uncomment the two lines starting with `submission` and `smtps`, and all of the twenty or so lines starting with `-o`.  The first section of the `/etc/postfix/master.cf` file should resemble the following:
 
     {: .file-excerpt }
 	/etc/postfix/master.cf
@@ -370,22 +370,18 @@ Next, set up Postfix so the server can accept incoming messages for the domains.
 	  submission inet n       -       -       -       -       smtpd
 	    -o syslog_name=postfix/submission
 	    -o smtpd_tls_security_level=encrypt
-	    -o smtpd_sasl_auth_enable=yes
-	    -o smtpd_client_restrictions=permit_sasl_authenticated,reject
-	    -o milter_macro_daemon_name=ORIGINATING
+	    ...
 	  smtps     inet  n       -       -       -       -       smtpd
 	    -o syslog_name=postfix/smtps
 	    -o smtpd_tls_wrappermode=yes
-	    -o smtpd_sasl_auth_enable=yes
-	    -o smtpd_client_restrictions=permit_sasl_authenticated,reject
-	    -o milter_macro_daemon_name=ORIGINATING
+	    ...
 	  ~~~
 
 13. Restart Postfix by entering the following command:
 
         service postfix restart
 
-Congratulations! You have successfully configured Postfix.
+Congratulations! You have configured Postfix.
 
 ## Dovecot
 
@@ -400,111 +396,20 @@ Dovecot allows users to log in and check their email using POP3 and IMAP. In thi
         cp /etc/dovecot/conf.d/10-master.conf /etc/dovecot/conf.d/10-master.conf.orig
         cp /etc/dovecot/conf.d/10-ssl.conf /etc/dovecot/conf.d/10-ssl.conf.orig
 
-2.  Open the main configuration file and edit the contents to match the following:
+2.  Open the main configuration file `/etc/dovecot/dovecot.conf`and, in the #Enable installed protocols section, add a line to specify that the protocols are imap, pop3 and lmtp:
 
     {:.file }
     /etc/dovecot/dovecot.conf
     : ~~~
-      ## Dovecot configuration file
-
-      # If you're in a hurry, see http://wiki2.dovecot.org/QuickConfiguration
-
-      # "doveconf -n" command gives a clean output of the changed settings. Use it
-      # instead of copy&pasting files when posting to the Dovecot mailing list.
-
-      # '#' character and everything after it is treated as comments. Extra spaces
-      # and tabs are ignored. If you want to use either of these explicitly, put the
-      # value inside quotes, eg.: key = "# char and trailing whitespace  "
-
-      # Default values are shown for each setting, it's not required to uncomment
-      # those. These are exceptions to this though: No sections (e.g. namespace {})
-      # or plugin settings are added by default, they're listed only as examples.
-      # Paths are also just examples with the real defaults being based on configure
-      # options. The paths listed here are for configure --prefix=/usr
-      # --sysconfdir=/etc --localstatedir=/var
-
-      # Enable installed protocols
+       # Enable installed protocols
       !include_try /usr/share/dovecot/protocols.d/*.protocol
       protocols = imap pop3 lmtp
 
-      # A comma separated list of IPs or hosts where to listen in for connections. 
-      # "*" listens in all IPv4 interfaces, "::" listens in all IPv6 interfaces.
-      # If you want to specify non-default ports or anything more complex,
-      # edit conf.d/master.conf.
-      #listen = *, ::
-
-      # Base directory where to store runtime data.
-      #base_dir = /var/run/dovecot/
-
-      # Name of this instance. Used to prefix all Dovecot processes in ps output.
-      #instance_name = dovecot
-
-      # Greeting message for clients.
-      #login_greeting = Dovecot ready.
-
-      # Space separated list of trusted network ranges. Connections from these
-      # IPs are allowed to override their IP addresses and ports (for logging and
-      # for authentication checks). disable_plaintext_auth is also ignored for
-      # these networks. Typically you'd specify the IMAP proxy servers here.
-      #login_trusted_networks =
-
-      # Sepace separated list of login access check sockets (e.g. tcpwrap)
-      #login_access_sockets = 
-
-      # Show more verbose process titles (in ps). Currently shows user name and
-      # IP address. Useful for seeing who are actually using the IMAP processes
-      # (eg. shared mailboxes or if same uid is used for multiple accounts).
-      #verbose_proctitle = no
-
-      # Should all processes be killed when Dovecot master process shuts down.
-      # Setting this to "no" means that Dovecot can be upgraded without
-      # forcing existing client connections to close (although that could also be
-      # a problem if the upgrade is e.g. because of a security fix).
-      #shutdown_clients = yes
-
-      # If non-zero, run mail commands via this many connections to doveadm server,
-      # instead of running them directly in the same process.
-      #doveadm_worker_count = 0
-      # UNIX socket or host:port used for connecting to doveadm server
-      #doveadm_socket_path = doveadm-server
-
-      # Space separated list of environment variables that are preserved on Dovecot
-      # startup and passed down to all of its child processes. You can also give
-      # key=value pairs to always set specific settings.
-      #import_environment = TZ
-
-      ##
-      ## Dictionary server settings
-      ##
-
-      # Dictionary can be used to store key=value lists. This is used by several
-      # plugins. The dictionary can be accessed either directly or though a
-      # dictionary server. The following dict block maps dictionary names to URIs
-      # when the server is used. These can then be referenced using URIs in format
-      # "proxy::<name>".
-
-      dict {
-        #quota = mysql:/etc/dovecot/dovecot-dict-sql.conf.ext
-        #expire = sqlite:/etc/dovecot/dovecot-dict-sql.conf.ext
-      }
-
-      # Most of the actual configuration gets included below. The filenames are
-      # first sorted by their ASCII value and parsed in that order. The 00-prefixes
-      # in filenames are intended to make it easier to understand the ordering.
-      !include conf.d/*.conf
-
-      # A config file can also tried to be included without giving an error if
-      # it's not found:
-      !include_try local.conf
       ~~~
 
 3.  Save the changes to the `/etc/dovecot/dovecot.conf` file.
 
 4.  Open the `/etc/dovecot/conf.d/10-mail.conf` file. This file controls how Dovecot interacts with the server's file system to store and retrieve messages.
-
-    {:.note}
-    >
-    > Click this link to see the final, complete version of <a href="/docs/assets/1239-dovecot_10-mail.conf.txt" target="_blank">10-mail.conf</a> example file. This is a long file, so you may need to use the editor's search feature to find the values you need to edit.
 
     Modify the following variables within the configuration file.
 
@@ -667,7 +572,7 @@ Dovecot allows users to log in and check their email using POP3 and IMAP. In thi
 	: ~~~
     service imap-login {
       inet_listener imap {
-        #port = 0
+        port = 0
       }
     inet_listener imaps {
       port = 993
@@ -758,30 +663,15 @@ Dovecot allows users to log in and check their email using POP3 and IMAP. In thi
 
     Save the changes to the `/etc/dovecot/conf.d/10-master.conf` file.
 
-17. Verify that the default Dovecot SSL certificate and key exist:
+17. Open `/etc/dovecot/conf.d/10-ssl.conf`.
 
-        ls /etc/dovecot/dovecot.pem
-        ls /etc/dovecot/private/dovecot.pem
-
-    {:.note}
-    >
-    > As noted above, these files are not provided in Dovecot 2.2.13-7 and above, and will not be present on Debian 8 systems.
-    >
-    > If using a different SSL certificate, upload the certificate to the server and make a note of its location and the key's location.
-
-18. Open `/etc/dovecot/conf.d/10-ssl.conf`.
-
-    {:.note}
-    >
-    > Click the link to see the final, complete version of <a href="/docs/assets/1241-dovecot_10-ssl.conf.txt" target="_blank">10-ssl.conf</a>.
-
-19. Verify that the `ssl_cert` setting has the correct path to the certificate, and that the `ssl_key` setting has the correct path to the key. The default setting displayed uses Dovecot's built-in certificate, so you can leave this as-is if using the Dovecot certificate. Update the paths accordingly if you are using a different certificate and key.
+18. Find the `ssl_cert` and `ssl_key` settings and change them to the same paths that you used previously, when configuring Postfix. Leave the "<" less-than characters as shown.
 
     {: .file-excerpt }
 	/etc/dovecot/conf.d/10-ssl.conf
 	: ~~~
-	  ssl_cert = </etc/dovecot/dovecot.pem
-	  ssl_key = </etc/dovecot/private/dovecot.pem
+	  ssl_cert = </path/to/your-(chained)-SSL-cert-file.pem
+	  ssl_key = </path/to/your-SSL-private-key-file.pem
 	  ~~~
 
     Force the clients to use SSL encryption by uncommenting the `ssl` line and setting it to `required`:
