@@ -65,15 +65,15 @@ Be aware that when using this method, you will be responsible for updating nginx
 
         apt-get install libpcre3-dev build-essential
 
-5.  Download the [latest stable version](http://nginx.org/en/download.html) of nginx to your `/opt` directory. At the time of this publication, the latest stable version is nginx 1.10.1:
+5.  Download the [latest stable version](http://nginx.org/en/download.html) of nginx to your `/opt` directory. At the time of this publication, the latest stable version is nginx 1.11.2:
 
         cd /opt
-        wget http://nginx.org/download/nginx-1.10.1.tar.gz
+        wget http://nginx.org/download/nginx-1.11.2.tar.gz
 
 6.  Extract the file, then navigate to the new directory:
 
-        tar -zxvf nginx-1.10.1.tar.gz
-        cd /opt/nginx-1.10.1
+        tar -zxvf nginx-1.*.tar.gz
+        cd /opt/nginx-1.*
 
 7.  Configure the build options. The options shown here provide a good starting point, and will allow HTTP/2 compatibility. However, you may wish to add [other options](https://www.nginx.com/resources/admin-guide/installing-nginx-open-source/) as well, depending on your needs:
 
@@ -168,7 +168,7 @@ You should now be logged into your StartSSL account.
 
 ## Verify Your Domain Name with StartSSL
 
-1.  If you have already verified your domain name within the past 30 days, you may skip to the next section. Click on the "Validations Wizard" tab.
+1.  Click on the "Validations Wizard" tab. If you have already verified your domain name within the past 30 days, you may skip to the next section.
 
 2.  Select "Domain Name Validation" and click **Continue**.
 
@@ -264,7 +264,7 @@ You should now be logged into your StartSSL account.
             ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
 
             location / {
-                root   /usr/share/nginx/html;
+                root   /opt/nginx/html;
                 index  index.html index.htm;
             }
         }
@@ -277,11 +277,7 @@ You should now be logged into your StartSSL account.
     {: .file-excerpt}
     /etc/nginx/nginx.conf
     :   ~~~ conf
-        http {
-        ...
             include     /etc/nginx/conf.d/*.conf;
-        ...
-        }
         ~~~
 
 3.  Restart Nginx to apply your changes.
