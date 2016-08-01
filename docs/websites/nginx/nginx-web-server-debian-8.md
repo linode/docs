@@ -91,14 +91,14 @@ The Debian project does not track the latest development of Nginx server. If you
 
         cd /opt/
 
-3.  Download the [latest stable version](http://nginx.org/en/download.html) of Nginx, which can be found on their website. At the time of this publication, Nginx 1.10.1 is the latest stable version:
+3.  Download the [latest stable version](http://nginx.org/en/download.html) of Nginx, which can be found on their website. At the time of this publication, Nginx 1.11.2 is the latest stable version:
 
-        sudo wget http://nginx.org/download/nginx-1.10.1.tar.gz
+        sudo wget http://nginx.org/download/nginx-1.11.2.tar.gz
 
 4.  Extract the file, then navigate to the new directory:
 
-        sudo tar -zxvf nginx-1.10.1.tar.gz
-        cd /opt/nginx-1.10.1
+        sudo tar -zxvf nginx-1.*.tar.gz
+        cd /nginx-1.*
 
 5.  Configure the build options. You may also wish to install additional modules and specify additional settings in this step, depending on your needs:
 
