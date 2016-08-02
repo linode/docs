@@ -4,42 +4,42 @@ author:
   email: docs@linode.com
 description: ''
 keywords: 'compile kernel,kernel compiling,custom linux kernel,custom linode, debian,ubuntu'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: 'Wednesday, Febryary 10th, 2016'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+modified: Tuesday, August 2nd, 2016
 modified_by:
   name: Alex Fornuto
 published: ''
 title: 'Custom Compiled Kernel on Debian & Ubuntu'
 ---
 
-Running a custom-compiled Linux kernel is useful if you need to enable or disable certain kernel features that are unavailable in Linode-supplied or distribution-supplied kernels. For example, some users desire [SELinux](http://en.wikipedia.org/wiki/Security-Enhanced_Linux) support, which is not enabled in stock Linode kernels, and may not be enabled in some distribution-supplied kernels.
+Running a custom-compiled Linux kernel is useful if you need to enable or disable certain kernel features that are not available in Linode-supplied or distribution-supplied kernels. For example, some users desire [SELinux](http://en.wikipedia.org/wiki/Security-Enhanced_Linux) support, which is not enabled in stock Linode kernels, and may not be enabled in some distribution-supplied kernels.
 
 If you'd rather run a distribution-supplied kernel instead, please follow our guide for [Running a Distribution-Supplied Kernel](/docs/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel-with-kvm). 
 
-Prior to these instructions, follow the steps outlined in our [Getting Started](/docs/getting-started/) guide. Then, make sure you are logged into your Linode as the `root` user.
+Prior to these instructions, follow the steps outlined in our [Getting Started guide](/docs/getting-started/). Then, log in to your Linode as the `root` user.
 
 ## Prepare the System
 
-Update your package repositories and installed packages, and install additional packages needed for compiling and running your kernel:
+1.  Update your package repositories and installed packages, and install additional packages needed for compiling and running your kernel:
 
-    apt-get update
-    apt-get upgrade
-    apt-get install -y build-essential libncurses5-dev gcc libssl-dev grub2 bc
+        apt-get update && apt-get upgrade
+        apt-get install -y build-essential libncurses5-dev gcc libssl-dev grub2 bc
 
-{: .note}
-> When installing `GRUB`, you'll be asked which disk images you'd like GRUB to configure. Unless you're planning on using the **Direct Disk** option in the Linode Configuration Manager, this is not required.
+        {: .note}
+        > When installing `GRUB`, you'll be asked which disk images you'd like GRUB to configure. Unless you're planning on using the **Direct Disk** option in the Linode Configuration Manager, this is not required.
 
-If this is the first time compiling a kernel on the Linode, issue the following command to remove any existing files in the `/boot` directory. This helps avoid confusion later, as certain distributions install a pre-compiled kernel package along with their development packages.
+2.  Since some distributions install a pre-compiled kernel package into the `/boot/` directory along with their development package, avoid confusion later by removing any existing files there. **Warning**, this will delete everything within the `/boot/` directory _without_ asking for confirmation:
 
-    rm -rf /boot/*
+        rm -rf /boot/*
 
 ##Compile and Install the Kernel
 
 ### Download Kernel Sources
 
-1.  Download the latest 4.x kernel sources from [kernel.org](http://kernel.org/). A conventional location to download to is `/usr/src/`.
+1.  Download the latest 4.x kernel sources from [kernel.org](http://kernel.org/). A conventional location to download to is `/usr/src/`:
 
-        wget https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.7.tar.xz 
+        cd /usr/src
+        wget https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.7.tar.xz
 
 2.  Expand the archived file and change directories:
 
@@ -48,7 +48,7 @@ If this is the first time compiling a kernel on the Linode, issue the following 
 
 ### Default Kernel Configuration
 
-The kernel must be properly configured to run under the Linode environment. Some required configuration options may include:
+The kernel must be properly configured to run within the Linode environment. Some required configuration options may include:
 
     CONFIG_KVM_GUEST=y
     CONFIG_VIRTIO_PCI=y
@@ -58,7 +58,7 @@ The kernel must be properly configured to run under the Linode environment. Some
     CONFIG_SERIAL_8250=y
     CONFIG_SERIAL_8250_CONSOLE=y
 
-It's recommended to start with a kernel config from a running Linode kernel. All Linode kernels expose their configuration via `/proc/config.gz`. For example:
+We recommend that you start with a kernel configuration (config) from a running Linode kernel. All Linode kernels expose their configuration via `/proc/config.gz`. For example:
 
     zcat /proc/config.gz > .config
     make oldconfig
@@ -69,7 +69,7 @@ Changes to the kernel's configuration can be made with the `menuconfig` command.
 
     make menuconfig
 
-Once your configuration options are set, exit the configuration interface and answer "y" when asked whether you would like to save the new kernel configuration.
+Once your configuration options are set, exit the configuration interface and answer "y" for yes when asked whether you would like to save the new kernel configuration.
 
 ### Build the Kernel
 
@@ -82,7 +82,7 @@ Once your configuration options are set, exit the configuration interface and an
         make modules_install
 
     {: .note}
-    > If you're using a Linode with multiple cores, you can use the `j` option to spawn multible simultaneous jobs to increase speed. For example:
+    > If you're using a Linode with multiple cores, you can use the `j` option to spawn multiple simultaneous jobs to increase speed. For example:
     >    
     >     make -j2 bzImage
 
@@ -112,11 +112,11 @@ Once your configuration options are set, exit the configuration interface and an
     Note that if you install an updated kernel, you will need to update grub again.
     
 
-## Configure The Linode
+## Configure the Linode
 
-1.  In the Linode Dashboard, click **Edit** next to your Configuration Profile (Normally named after the version of Linux installed).
+1.  In the Linode Dashboard, click **Edit** next to your Configuration Profile (usually named after the version of Linux installed).
 
-2.  Under **Boot Settings** Click on the **Kernel** drop-down meny, and select **GRUB2**
+2.  Under **Boot Settings** Click on the **Kernel** drop-down menu, and select **GRUB2**:
 
     ![The GRUB2 Option.](/docs/assets/custom-kernel-grub2.png)
 
@@ -126,6 +126,4 @@ Once your configuration options are set, exit the configuration interface and an
     > You may need to run `cp /boot/grub/unicode.pf2 /boot/grub/fonts/` for the boot menu to properly display in GLISH. Your Linode will still boot, assuming there are no configuration issues, without this command.
 
 Congratulations, you've booted your Linode using a custom-compiled kernel!
-
-
 
