@@ -39,12 +39,12 @@ If this is the first time compiling a kernel on the Linode, issue the following 
 
 1.  Download the latest 4.x kernel sources from [kernel.org](http://kernel.org/). A conventional location to download to is `/usr/src/`.
 
-        wget https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.4.1.tar.xz 
+        wget https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.7.tar.xz 
 
 2.  Expand the archived file and change directories:
 
-        tar -xvf linux-4.4.1.tar.xz 
-        cd linux-4.4.1
+        tar -xvf linux-4.7.tar.xz 
+        cd linux-4.7
 
 ### Default Kernel Configuration
 
@@ -77,7 +77,7 @@ Once your configuration options are set, exit the configuration interface and an
 
         make bzImage
         make modules
-        make 
+        make
         make install
         make modules_install
 
@@ -93,11 +93,15 @@ Once your configuration options are set, exit the configuration interface and an
 
 3.  Edit `/etc/default/grub` and add or change the following variables to match. There will be other variables in this file, but we are only concerned with those listed below:
 
+    {: .file-excerpt}
+    /etc/default/grub
+    :   ~~~ conf
         GRUB_TIMEOUT=10
         GRUB_DISABLE_LINUX_UUID=true
         GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0,19200n8"
         GRUB_SERIAL_COMMAND="serial --speed=19200 --unit=0 --word=8 --parity=no --stop=1"
         GRUB_TERMINAL="serial console"
+        ~~~
 
     Comment or remove any lines starting with `GRUB_HIDDEN`.
 
