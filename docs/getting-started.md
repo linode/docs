@@ -22,7 +22,7 @@ If you haven't already signed up for a Linode account, start here.
 2.  Sign in and enter your billing and account information. Most accounts are activated instantly but some require manual review prior to activation. If your account is not immediately activated, you will receive an email with additional instructions.
 3.  Select a Linode plan and data center location
 
-    [![Available Linode plans](/docs/assets/linode-manager-select-plan_small.png)](/docs/assets/linode-manager-select-plan.png)
+    ![Available Linode plans](/docs/assets/linode-manager-select-plan.png)
 
 If you're unsure of which data center to select, see our [speed test](http://www.linode.com/speedtest) to determine which location provides the best performance for your target audience. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for each of the data centers to determine which of our facilities provides the best latency from your particular location.
 
