@@ -32,7 +32,7 @@ Prior to these instructions, follow the steps outlined in our [Getting Started g
 
         rm -rf /boot/*
 
-##Compile and Install the Kernel
+## Compile and Install the Kernel
 
 ### Download Kernel Sources
 
