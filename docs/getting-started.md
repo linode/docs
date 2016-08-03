@@ -14,6 +14,8 @@ title: Getting Started with Linode
 
 Congratulations on selecting Linode as your cloud hosting provider! This guide will help you sign up for an account, deploy a Linux distribution, boot your Linode, and perform some basic system administration tasks.
 
+<div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><iframe src="//fast.wistia.net/embed/iframe/35724r19mr?videoFoam=true" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen mozallowfullscreen webkitallowfullscreen oallowfullscreen msallowfullscreen width="100%" height="100%"></iframe></div></div><script src="//fast.wistia.net/assets/external/E-v1.js" async></script>
+
 ## Sign Up
 
 If you haven't already signed up for a Linode account, start here.
