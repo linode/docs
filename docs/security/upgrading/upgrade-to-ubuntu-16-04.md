@@ -5,7 +5,7 @@ author:
 description: 'Our guide to upgrading to Ubuntu 16.04 LTS'
 keywords: 'upgrading,ubuntu,16.04'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Tuesday, July 21, 2016
+modified: Wednesday, August 3, 2016
 modified_by:
   name: Edward Angert
 published: 'Tuesday, April 26th, 2016'
