@@ -15,6 +15,9 @@ title: Securing Your Server
 
 In the [Getting Started](/docs/getting-started) guide, you learned how to deploy a Linux distribution, boot your Linode and perform basic administrative tasks. Now it's time to harden your Linode against unauthorized access.
 
+<div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><iframe src="//fast.wistia.net/embed/iframe/971o40zba8?videoFoam=true" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen mozallowfullscreen webkitallowfullscreen oallowfullscreen msallowfullscreen width="100%" height="100%"></iframe></div></div>
+<script src="//fast.wistia.net/assets/external/E-v1.js" async></script>
+
 ## Update Your System--Frequently
 
 Keeping your software up to date is the single biggest security precaution you can take for any operating system. Software updates range from critical vulnerability patches to minor bug fixes, and many software vulnerabilities are actually patched by the time they become public.
@@ -634,4 +637,4 @@ Deleting a rule is also done using the rule number. For example, to delete the r
 
 These are the most basic steps to harden any Linux server, but further security layers will depend on its intended use. Additional techniques can include application configurations, using [intrusion detection](https://linode.com/docs/security/ossec-ids-debian-7) or installing a form of [access control](https://en.wikipedia.org/wiki/Access_control#Access_Control).
 
-Now you can begin setting up your Linode for any purpose you choose. We have a library of documentation to assist you with a variety of topics ranging from [migration from shared hosting](/docs/migrate-to-linode/migrate-from-shared-hosting) to [enabling two-factor authentication](/docs/security/linode-manager-security-controls) to [hosting a website](/docs/hosting-website).
+Now you can begin setting up your Linode for any purpose you choose. We have a library of documentation to assist you with a variety of topics ranging from [migration from shared hosting](/docs/migrate-to-linode/migrate-from-shared-hosting) to [enabling two-factor authentication](/docs/security/linode-manager-security-controls) to [hosting a website](/docs/websites/hosting-a-website).
