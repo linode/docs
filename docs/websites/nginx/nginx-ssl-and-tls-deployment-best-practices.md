@@ -65,6 +65,11 @@ In September 2010, Google released the SPDY protocol for all versions of Chrome 
 
     nginx -v
 
+{: .note}
+> If you installed nginx from source without modifying your environment variables, invoke the full path to the binary:
+>
+>     /opt/nginx/sbin/nginx -v
+
 HTTP/2 is a new version of the HTTP standard replacing HTTP/1.1 to reduce page load time. Traditionally, when a user accessed a web page, a separate HTTP connection was established to load each resource (e.g. HTML, CSS, JavaScript, or images). HTTP/2 allows concurrent requests on a single connection to download assests in parallel. The server also compresses assets before sending them to the client, which requires less bandwdith. 
 
 {: .note}
@@ -92,7 +97,7 @@ HTTP/2 is a new version of the HTTP standard replacing HTTP/1.1 to reduce page l
 
 Google is now ranking websites that accept encrypted HTTPS connections higher in search results, so redirecting HTTP requests to HTTPS is one possible way to increase your page rank. Before following these steps, however, be sure to research compatibility issues that may arise with older browsers.
 
-1.  Open your HTTP nginx virtual host configuration file, which can be located at `/etc/nginx/conf.d/default.conf` or `/etc/nginx/sites-enabled/default` depending on how you installed nginx. Change `example.com` to match your Linode's domain name or hostname:
+1.  Open your HTTP nginx virtual host configuration file, which can be located at `/etc/nginx/conf.d/default.conf`, `/etc/nginx/nginx.conf` or `/etc/nginx/sites-enabled/default` depending on how you installed nginx. Change `example.com` to match your Linode's domain name or hostname:
     
     {: .file-excerpt}
     /etc/nginx/conf.d/default.conf
@@ -123,6 +128,8 @@ Google is now ranking websites that accept encrypted HTTPS connections higher in
 4. Save your changes and restart nginx.
 
         systemctl restart nginx
+
+5.  Navigate to your Linode's domain name in your browser, specifying `http://`. You should now be redirect to `https`.
 
 ## OCSP Stapling
 
@@ -170,13 +177,17 @@ With all traffic being redirected from HTTP to HTTPS, you may want to allow user
         add_header Strict-Transport-Security "max-age=31536000; includeSubdomains";
         ~~~
 
-    The `max-age` attribute sets the expiration date for this header in seconds; in the above configuration, the header will expire after 1 year. You can configure this to be longer or shorter if you choose. The `includeSubdomains` argument enforces HSTS on all subdomains.
+    The `max-age` attribute sets the expiration date for this header in seconds; in the above configuration, the header will expire after 1 year. You can configure this to be longer or shorter if you choose, but a period of less than 180 days is considered too short for the Qualys test. The `includeSubdomains` argument enforces HSTS on all subdomains.
 
 2.  Save your changes and restart Nginx.
 
         systemctl restart nginx
 
 3.  Navigate to the [Qualys SSL Labs SSL Server Test](https://www.ssllabs.com/ssltest/). Enter the domain name or hostname of your Linode and click "Submit". Optionally, you may uncheck the checkbox to not show your results on the boards.
+
+    {: .note}
+    >
+    > If you've already conducted a test from one of the above sections, use the **Clear cache** link to initiate a new scan.
 
     Once the test is complete, scroll down to the "Protocol Details" section. Look for the "Strict Transport Security (HSTS)" line. If nginx is configured correctly this test will return "Yes".
 
