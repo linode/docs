@@ -37,11 +37,11 @@ This guide is intended to inform you of some additional configuration options th
 
 For more information, please review our guides on [basic nginx configuration](/docs/websites/nginx/how-to-configure-nginx), [Linux security basics](/docs/security/linux-security-basics), and [securing your server](/docs/security/securing-your-server).
 
-## Disable Nginx Server Tokens
+## Disable nginx Server Tokens
 
 By default, nginx will share its version number with anyone who connects to your server. For example, if a directory is not found, nginx will return a 404 error that includes its version number. Disabling server tokens makes it more difficult to determine the version of nginx running on your Linode, and therefore more difficult to implement version-specific exploits.
 
-[![404 With Nginx Version Number](/docs/assets/404_Not_Found.jpg)](/docs/assets/404_Not_Found.jpg)
+[![404 With nginx Version Number](/docs/assets/404_Not_Found.jpg)](/docs/assets/404_Not_Found.jpg)
 
 1.  To disable `server_tokens`, open your `/etc/nginx/nginx.conf` file. Inside of the `http` block, append or uncomment the following line:
     
@@ -169,7 +169,7 @@ With all traffic being redirected from HTTP to HTTPS, you may want to allow user
 
 **Do not follow these steps if you want users to be able to access your site over HTTP!**
 
-1.  Open up your Nginx HTTPS virtual host configuration file. This may be located at `/etc/nginx/sites-enabled/default` or at `/etc/nginx/conf.d/example_ssl.conf`. Append the following line inside your `server` block: 
+1.  Open up your nginx HTTPS virtual host configuration file. This may be located at `/etc/nginx/sites-enabled/default` or at `/etc/nginx/conf.d/example_ssl.conf`. Append the following line inside your `server` block: 
 
     {: .file-excerpt}
     /etc/nginx/conf.d/example_ssl.conf
@@ -179,7 +179,7 @@ With all traffic being redirected from HTTP to HTTPS, you may want to allow user
 
     The `max-age` attribute sets the expiration date for this header in seconds; in the above configuration, the header will expire after 1 year. You can configure this to be longer or shorter if you choose, but a period of less than 180 days is considered too short for the Qualys test. The `includeSubdomains` argument enforces HSTS on all subdomains.
 
-2.  Save your changes and restart Nginx.
+2.  Save your changes and restart nginx.
 
         systemctl restart nginx
 
@@ -217,15 +217,15 @@ If you'd like to limit embedding rather than disabling it altogether, you can re
 
 ## Create a Custom Diffie-Hellman Key Exchange
 
-We're using a 2048 bit RSA private key to sign the Diffie-Hellman key exchange, but the default parameters for Diffie-Hellman only specify 1024 bits, often making it the weakest link in the SSL cipher suite. We should generate our own custom parameters for the key exchange to provide greater security.
+We're using a 4096 bit RSA private key to sign the Diffie-Hellman key exchange, but the default parameters for Diffie-Hellman only specify 1024 bits, often making it the weakest link in the SSL cipher suite. We should generate our own custom parameters for the key exchange to provide greater security.
 
 1.  Navigate to your `certs` directory:
 
         cd /etc/ssl/certs
 
-2.  Create custom parameters for the TLS handshake. Here we will use a 2048 bit key, but you can increase this to 4096 if you'd like even greater security:
+2.  Create custom parameters for the TLS handshake. Here we will use a 4096 bit key for high security:
 
-        openssl dhparam -out dhparam.pem 2048
+        openssl dhparam -out dhparam.pem 4096
 
 3.  Specify the new parameter by adding the following line to your nginx SSL configuration file in the `server` block:
 
@@ -241,7 +241,7 @@ We're using a 2048 bit RSA private key to sign the Diffie-Hellman key exchange, 
 
 ## Test Your Configuration
 
-If you have been following along, starting with the guide on installing the latest version of Nginx for Debian Wheezy or Jessie and getting a StartSSL certificate, your `/etc/nginx/conf.d/example_ssl.conf` should now look similar to this:
+If you have been following along, starting with the guide on installing the latest version of nginx for Debian Wheezy or Jessie and getting a StartSSL certificate, your `/etc/nginx/conf.d/example_ssl.conf` should now look similar to this:
 
 {: .file}
 /etc/nginx/conf.d/example_ssl.conf
