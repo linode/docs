@@ -180,7 +180,7 @@ For multiple static IP addresses, additional IPs are assigned to an alias you cr
 :   ~~~ conf
     # Add a second static public IP address.
     DEVICE=eth0:1
-    IPADDR1=198.51.100.10
+    IPADDR=198.51.100.10
     ~~~
 
 To put any changes into effect, restart your networking service:
