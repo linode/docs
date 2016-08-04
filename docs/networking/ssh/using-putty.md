@@ -26,11 +26,11 @@ You can obtain the software from the [PuTTY download page](http://www.chiark.gre
 
 Enter the hostname or IP address of the system you'd like to log into and click "Open" to start an SSH session. If you haven't logged into this system with PuTTY before, you will receive a warning similar to the following:
 
-[![An unknown host key warning in PuTTY on Windows.](/docs/assets/161-putty-02-host-key-warning-2016.png)](/docs/assets/161-putty-02-host-key-warning-2016.png)
+[![An unknown host key warning in PuTTY on Windows.](/docs/assets/161-putty-02-host-key-warning.png)](/docs/assets/161-putty-02-host-key-warning.png)
 
-In this case, PuTTY is asking you to verify that the server you're logging into is who it says it is. This is due to the possibility that someone could be eavesdropping on your connection, posing as the server you are trying to log into.
+In this case, PuTTY is asking you to verify that the server you're logging in to is who it says it is. This is due to the possibility that someone could be eavesdropping on your connection, posing as the server you are trying to log in to.
 
-You need some "out of band" method of comparing the key fingerprint presented to PuTTY with the fingerprint of the public key on the server you wish to log into. To find the ssh-ed25519 key fingerprint as shown in the warning, log in to your Linode via the AJAX console (see the "Remote Access" tab in the Linode Manager) and execute the following command:
+You need some "out of band" method of comparing the key fingerprint presented to PuTTY with the fingerprint of the public key on the server you wish to log into. To find the ssh-ed25519 key fingerprint as shown in the warning, log in to your Linode [via the AJAX console](/docs/networking/using-the-linode-shell-lish/) (see the "Remote Access" tab in the Linode Manager) and execute the following command:
 
     ssh-keygen -lf /etc/ssh/ssh_host_ed25519_key.pub -E md5
 
