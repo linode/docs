@@ -30,12 +30,13 @@ This guide assumes that you are running Apache2.4 or higher on Debian 8 or Ubunt
 -   If hosting multiple websites with commercial SSL certificates on the same IP address, use the [SNI](https://wiki.apache.org/httpd/NameBasedSSLVHostsWithSNI) extension of TLS. SNI is accepted by most modern web browsers. If you expect to receive connections from clients running legacy browsers (Like Internet Explorer for Windows XP), you will need to [contact support](/docs/platform/support) to request an additional IP address.
 
 
-##Get the CA Root Certificate
+##Get the CA Root Certificate and Applicable Intermediate Certificates
 
-{: .note }
+{: .note}
+>
 > If you're using a self-signed certificate, skip this step.
 
-Download the root certificate for the provider that issued your commercial certificate before you can begin using it. You may obtain the root certs for various providers from these sites:
+Download the root certificate and any applicable intermediate certificates for the provider that issued your commercial certificate before you can begin using it. You may obtain the root certs for various providers from these sites:
 
 -   [Verisign](https://knowledge.verisign.com/support/ssl-certificates-support/index.html)
 -   [Thawte](http://www.thawte.com/roots/index.html)
@@ -43,11 +44,17 @@ Download the root certificate for the provider that issued your commercial certi
 -   [Comodo](https://support.comodo.com/index.php?_m=downloads&_a=view&parentcategoryid=1&pcid=0&nav=0)
 -   [StartSSL](http://www.startssl.com/certs/)
 
-Most providers will provide a root certificate file as either a .cer or .pem file. Save the provided root certificate in `/etc/ssl/localcerts`.
+Most providers will provide a root certificate file as either a .cer or .pem file. Save the provided root certificate and applicable intermediate certificates in separate files in `/usr/share/ca-certificates/mozilla`. If the file for a certificate already exists there, replace the content of the file with the provided file's content if different.
+
+Update certificate trust store:
+
+        sudo update-ca-certificates 
+
+This updates system hooks and the main ca-certificate.crt file located in `/etc/ssl/certs`.
 
 ## Configure Apache to use the SSL Certificate
 
-1.  Edit the virtual host configuration files located in `/etc/apache2/sites-available`, to provide the certificate file paths. For each virtual host, replicate the configuration shown below. Replace any mentions of `example.com` with your own domain. You will also need to ensure that the `SSLCACertificateFile` value is configured to point to the CA root certificate downloaded in the previous step:
+1.  Edit the virtual host configuration files located in `/etc/apache2/sites-available`, to provide the certificate file paths. For each virtual host, replicate the configuration shown below. Replace any mentions of `example.com` with your own domain. You will also need to ensure that the `SSLCACertificateFile` value is configured to point to the ca-certificates.crt file updated in the previous step:
 
     {: .file-excerpt }
     Apache virtual hosting file
@@ -56,7 +63,7 @@ Most providers will provide a root certificate file as either a .cer or .pem fil
             SSLEngine On
             SSLCertificateFile /etc/ssl/localcerts/www.example.com.crt
             SSLCertificateKeyFile /etc/ssl/localcerts/www.example.com.key
-            SSLCACertificateFile /etc/ssl/localcerts/ca.pem  # If using a self-signed certificate, omit this line
+            SSLCACertificateFile /etc/ssl/localcerts/ca-certificates.crt  # If using a self-signed certificate, omit this line
 
             ServerAdmin info@example.com
             ServerName www.example.com
@@ -73,5 +80,11 @@ Most providers will provide a root certificate file as either a .cer or .pem fil
 3.  Restart Apache:
 
         service apache2 restart
+
+(If troubleshooting problems, a reboot may be required.)
+  
+  {: .note}
+>
+> Your installation can appear to be correct in some browsers while not actually being correct, so test your installation using the test page at your certificate issuer's website. Alternately you can run `openssl s_client -CApath /etc/ssl/certs/ -connect example.com:443` and check for errors.
 
 You should now be able to visit your site with SSL enabled.
