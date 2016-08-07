@@ -32,8 +32,6 @@ earn $250 per published guide.*
 
         sudo apt install steamcmd
 
-{: .note}
->
 >This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
 
@@ -142,7 +140,7 @@ earn $250 per published guide.*
         }
 ```
 
-4.  Create a startup script ( e. g. `~/start_starbound.sh`) for the Starbound server with the following contents:
+4.  Create a startup script ( e. g. `~/start_starbound.sh`) for the Starbound server with the following contents.  When run, the script will launch the Starbound server in a [Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions) session.
 
 ```
         #!/bin/bash
@@ -150,7 +148,7 @@ earn $250 per published guide.*
         cd ~/Starbound/linux
         screen -S "Starbound" ./starbound_server
 ```
-    When run, the script will launch the Starbound server in a [Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions) session.
+
 
 5.  Make the script executable:
 
