@@ -73,8 +73,6 @@ earn $250 per published guide.*
 
         quit
 
-    {: .note}
-    >
     >To update Starbound, run the above 4 commands again, only without the validate parameter.
 
 ## Configure Starbound
@@ -92,9 +90,7 @@ earn $250 per published guide.*
 
 4.  A new default configuration file will have been written at `~/Starbound/storage/starbound_server.config`.  Below is an example as of version 1.0.5.  Edit the file to suit your needs, including setting up an administrative account for yourself, enabling RCON (a topic for another guide), and the like.
 
-    {:.file }
-    ~/Starbound/storage/starbound_server.config
-    :   ~~~
+```
         {
           "allowAdminCommands" : true,
           "allowAdminCommandsFromAnyone" : false,
@@ -144,18 +140,16 @@ earn $250 per published guide.*
           },
           "tutorialMessages" : true
         }
-        ~~~
+```
 
-4.  Create a startup script for the Starbound server with the following contents:
+4.  Create a startup script ( e. g. `~/start_starbound.sh`) for the Starbound server with the following contents:
 
-    {: .file }
-    ~/start_starbound.sh
-    :   ~~~
+```
         #!/bin/bash
 
         cd ~/Starbound/linux
         screen -S "Starbound" ./starbound_server
-        ~~~
+```
     When run, the script will launch the Starbound server in a [Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions) session.
 
 5.  Make the script executable:
@@ -168,7 +162,6 @@ earn $250 per published guide.*
 
         ~/start_starbound.sh
 
-    {: .caution}
     >From this point, do not press the **Control+C** keys while in the console unless you want to stop the server.
 
 2.  To detach from the screen session running the server console, press these two key combinations in succession:
