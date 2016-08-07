@@ -100,7 +100,7 @@ You can add more IP_JAILNAME arguments as well, specifying the jail's private IP
      This will fetch the current (as of this writing) stable release of FreeBSD and create the base datasets.
 
 8.   Time to create the jail! Run the following commands in order:
-iocage create tag=servicejail ip4_addr="lo1|172.16.4.2/29" minecraft
+iocage create tag=minecraft ip4_addr="lo1|172.16.4.2/29"
 iocage set pcpu=30:deny minecraft
 iocage set memoryuse=1G:deny minecraft
 iocage set rlimits=on minecraft
