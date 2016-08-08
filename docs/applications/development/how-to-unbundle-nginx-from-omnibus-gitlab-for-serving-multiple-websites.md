@@ -22,7 +22,7 @@ external_resources:
 *This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
 <hr>
 
-Are you a software developer fond of one-click installs? If so, you have probably heard of Omnibus GitLab, a software package that allows you to easily install and run GitLab together with some dependencies (Ruby, PostgreSQL, Redis, Nginx and Unicorn, among others).
+Omnibus GitLab is a software package that allows you to easily install and run GitLab together with some dependencies (Ruby, PostgreSQL, Redis, Nginx and Unicorn, among others).
 
 However, one-click installs sometimes bring a series of challenges to those who need to customize specific default settings. If this is your case, you might even consider [installing GitLab from source](https://www.linode.com/docs/applications/development/how-to-install-and-configure-gitlab-on-ubuntu-14-04-trusty-tahr "How to Install and Configure GitLab on Ubuntu 14.04 (Trusty Tahr)"), but this is a bit tricky for some users.
 
@@ -182,7 +182,7 @@ In this section, we'll create a new virtual host to serve GitLab. Since we unbun
 
 4.  Restart Nginx to load your changes. On Ubuntu 14.04:
 
-	    sudo service nginx restart
+        sudo service nginx restart
 
     On Ubuntu 16.04:
 
