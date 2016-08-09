@@ -3,7 +3,7 @@ author:
     name: Linode
     email: docs@linode.com
 description: 'Linode's Basic Guide on How to Install Nginx from Source on Debian 8 (Jessie)'
-keywords: 'nginx,http,web servers,debian,debian jessie,debian 8'
+keywords: 'nginx,debian jessie,debian 8'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 modified: Wednesday, July 20th, 2016
 modified_by:
@@ -50,7 +50,7 @@ The simplest way to install nginx on a server is to download it from Debian's re
 
 2.  Nginx can be tested by navigating to your FQDN in your browser. The default nginx page should be present.
 
-### From Nginx Package Repository
+### From nginx Package Repository
 
 This method differs from the one above in that it installs from the official nginx repository rather than use the package provided by Debian. Follow these steps if you would like to install the latest stable version of nginx.
 
