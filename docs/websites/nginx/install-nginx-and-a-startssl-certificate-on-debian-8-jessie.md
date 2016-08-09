@@ -3,8 +3,8 @@ deprecated: false
 author:
   name: Linode Community
   email: contribute@linode.com
-description: 'Install nginx and a StartSSL certificate on Debian 8 (Jessie)'
-keywords: 'startssl,nginx,debian 8,ssl certificate,jessie,nginx repositories,certificate signing request,generate CSR, domain name'
+description: 'Linode's Guide on How to Install Nginx and a StartSSL Certificate on Debian 8 (Jessie)'
+keywords: 'startssl,nginx,debian 8,ssl certificate,generate CSR'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['websites/nginx/startssl-wth-latest-nginx-debian-7/','websites/nginx/how-to-install-nginx-and-a-startssl-certificate-on-debian-8-jessie/']
 modified: Monday, July 20th, 2016
@@ -21,7 +21,7 @@ contributor:
 
 <hr>
 
-This guide will show you how to install the latest stable version of nginx on Debian Jessie. It will also deploy a free SSL certificate from StartSSL that, when combined with our guide on [SSL and TLS deployment best practices](/docs/websites/nginx/nginx-ssl-and-tls-deployment-best-practices), will get you an "A+" grade on the [Qualys SSL Labs SSL Server Test](https://www.ssllabs.com/ssltest/). In this guide, we are going to configure nginx to prefer strong server-side cipher suites, and disable the vulnerable SSLv2 and SSLv3 protocols.
+This guide will show you how to install the latest stable version of nginx on Debian Jessie. It will also deploy a free SSL certificate from StartSSL that, when combined with our guide on [SSL and TLS deployment best practices](/docs/websites/nginx/nginx-ssl-and-tls-deployment-best-practices), will get you an "A+" grade on the [Qualys SSL Labs SSL Server Test](https://www.ssllabs.com/ssltest/). In this guide we are going to configure nginx to prefer strong server-side cipher suites and disable the vulnerable SSLv2 and SSLv3 protocols.
 
 ## Before You Begin
 
@@ -29,7 +29,7 @@ This guide will show you how to install the latest stable version of nginx on De
 
 2.  Complete the sections of [Securing Your Server](/docs/security/securing-your-server) to harden SSH access, remove unnecessary network services and enable firewall rules for a web server.
 
-3.  In order to obtain an SSL certificate for your Linode, you must have first registered a domain name and configured your [DNS records](/docs/networking/dns/dns-records-an-introduction). It is also recommended you have access to an email account associated with your domain, or the email listed in the WHOIS information for the domain. This is the simplest way for StartSSL to verify that you have control of the domain for which you are requesting an SSL certificate.
+3.  In order to obtain an SSL certificate for your Linode, you must have first registered a domain name and configured your [DNS records](/docs/networking/dns/dns-records-an-introduction). It is also recommended you have access to an email account associated with your domain or the email listed in the WHOIS information for the domain. This is the simplest way for StartSSL to verify that you have control of the domain for which you are requesting an SSL certificate.
 
 4.  Update your system.
 
@@ -45,9 +45,9 @@ If you simply want the latest stable version of nginx, you may follow the steps 
 
 ### Install and Compile nginx from Source
 
-While installing from the nginx package repository is sufficient in many cases, HTTP/2 will not be compatible with all browsers using that method. Google Chrome now only allows HTTP/2 connections with *application-layer protocol negotiation* (ALPN), which is supported in OpenSSL version 1.0.2 or newer. This version is not included in the default Debian package repositories, so we will need to manually add it and compile nginx against the newer OpenSSL to enable full support for HTTP/2.
+While installing from the nginx package repository suffices in many cases, HTTP/2 will not be compatible with all browsers using that method. Google Chrome now only allows HTTP/2 connections with *application-layer protocol negotiation* (ALPN), which is supported in OpenSSL version 1.0.2 or newer. This version is not included in the default Debian package repositories, so you will need to manually add it and compile nginx against the newer OpenSSL to enable full support for HTTP/2.
 
-Be aware that when using this method, you will be responsible for updating nginx to include its latest updates!
+Be aware that when using this method, you will be responsible for updating nginx to include its latest updates.
 
 1.  Add the [Debian Backports](https://backports.debian.org/) repository to the list of files that the package manager checks for updates:
 
@@ -79,7 +79,7 @@ Be aware that when using this method, you will be responsible for updating nginx
 
         ./configure --prefix=/opt/nginx --conf-path=/etc/nginx/nginx.conf --user=nginx --group=nginx --with-debug --with-threads --with-http_ssl_module --with-ipv6 --with-http_v2_module
 
-    You will see an output of your configuration summary when this step is complete. Be sure to note the given file paths since you'll need them shortly.
+    You will see an output of your configuration summary when this step is complete. Be sure to note the given file paths, since you'll need them shortly.
 
 8.  Build and install nginx using the options you specified in Step 7:
 
@@ -128,11 +128,11 @@ Be aware that when using this method, you will be responsible for updating nginx
         systemctl enable nginx
 
 {: .note}
->If you compile from a source distribution as above, some of the files referenced in this and other nginx guides may not be created by default. You may create those files yourself at their specified file paths and nginx will work as intended. For more information, refer to our guide on [how to configure nginx](/docs/websites/nginx/how-to-configure-nginx).
+>If you compile from a source distribution as above, some of the files referenced in this and other nginx guides may not be created by default. You may create those files yourself at their specified file paths, and nginx will work as intended. For more information, refer to our guide on [how to configure nginx](/docs/websites/nginx/how-to-configure-nginx).
 
 ## Generate a Private Key and Certificate Signing Request (CSR)
 
-1.  Create a directory to store your certificate and private key. On Debian systems, the default location for storing certificates and private keys is in `/etc/ssl/`. We are going to create a new `nginx` directory at that location to store your certificate and private key for nginx:
+1.  Create a directory to store your certificate and private key. On Debian systems, the default location for storing certificates and private keys is in `/etc/ssl/`. You are going to create a new `nginx` directory at that location to store your certificate and private key for nginx:
 
         mkdir /etc/ssl/nginx
 
@@ -140,7 +140,7 @@ Be aware that when using this method, you will be responsible for updating nginx
 
         cd /etc/ssl/nginx
 
-3.  Generate a 4096 bit private RSA key. Most certificate authorities currently require customers to use at least a 2048 bit private RSA key.
+3.  Generate a 4096-bit private RSA key. Most certificate authorities currently require customers to use at least a 2048-bit private RSA key.
 
         openssl genrsa -out server.key 4096
 
@@ -148,7 +148,7 @@ Be aware that when using this method, you will be responsible for updating nginx
 
         openssl req -new -key server.key -out server.csr
 
-    When prompted for a `Common Name`, be sure to enter the domain name that you will be using to access your Linode, all other fields can be filled as you see fit.
+    When prompted for a `Common Name`, be sure to enter the domain name that you will be using to access your Linode. All other fields can be filled as you see fit.
 
     Optionally, you may enter a subdomain, for instance `www.yourdomain.com`. This must be a domain that you have control over and which you can receive email sent to `webmaster@yourdomain.com`. Any certificate issued for `yourname.yourdomain.com` is also valid for `yourdomain.com`.
 
@@ -164,7 +164,7 @@ Be aware that when using this method, you will be responsible for updating nginx
 
 4.  Once your email address has been verified, choose to generate a high grade private key. This private key and certificate pair will be used to identify you to StartSSL. If you ever lose it, you will be unable to regain access to your account. Make sure to back up this certificate and private key.
 
-5.  Click **Install** to install your personal certificate into your browser to identify yourself to StartSSL. Once you've done this, click **Finish**.
+5.  Click **Install** to install your personal certificate into your browser, which will identify you to StartSSL. Once you've done this, click **Finish**.
 
 You should now be logged into your StartSSL account.
 
@@ -206,7 +206,7 @@ You should now be logged into your StartSSL account.
 
     [![StartSSL Certificates Wizard CSR Domain Selection](/docs/assets/startssl-certificate2.png)](/docs/assets/startssl-certificate2.png)
 
-4.  On the same page, you will be prompted to submit your certificate signing request (CSR), which we generated previously. In our example, this file was located at `/etc/ssl/nginx/server.csr`. Copy the contents of your CSR file and paste them into the text box. Click **Submit**.
+4.  On the same page, you will be prompted to submit your certificate signing request (CSR), which you generated previously. In our example, this file was located at `/etc/ssl/nginx/server.csr`. Copy the contents of your CSR file and paste them into the text box. Click **Submit**.
 
     [![StartSSL Certificates Wizard Submit CSR](/docs/assets/startssl-certificate3.png)](/docs/assets/startssl-certificate3.png)
 
@@ -288,7 +288,7 @@ You should now be logged into your StartSSL account.
 
 ## Test Your Configuration
 
-Launch a web browser and navigate to your domain. You should see the default nginx page. Please note, this will not work until you have created an A record for your hostname at your domain provider pointing to the IP address of your Linode. Please contact your domain provider if you need assistance.
+Launch a web browser and navigate to your domain. You should see the default nginx page. Please note, this will not work until you have created at your domain provider an "A" record for your hostname that points to the IP address of your Linode. Please contact your domain provider if you need assistance.
 
 [![Up and Running](/docs/assets/1768-Up-And-Running.jpg)](/docs/assets/1768-Up-And-Running.jpg)
 
