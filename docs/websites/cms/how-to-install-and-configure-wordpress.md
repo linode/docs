@@ -70,7 +70,7 @@ WordPress is a popular, dynamic, blog-focused content management system. The sof
 
         sudo chown -R www-data:www-data /var/www/
 
-3.  Install the latest version of WordPress and exand it:
+3.  Install the latest version of WordPress and expand it:
 
         sudo wget http://wordpress.org/latest.tar.gz
         sudo -u www-data tar -xvf latest.tar.gz
@@ -79,10 +79,9 @@ WordPress is a popular, dynamic, blog-focused content management system. The sof
 
         sudo mv latest.tar.gz wordpress-`date "+%Y-%m-%d"`.tar.gz
 
-5.  Copy the WordPress files to your `public_html` folder, then remove the folder in the `src` directory:
+5.  Move the WordPress files to your `public_html` folder:
 
-        sudo cp -R wordpress/* ../public_html/
-        sudo rm -rf wordpress/
+        sudo mv wordpress/* ../public_html/
 
 
 ## Configure WordPress
