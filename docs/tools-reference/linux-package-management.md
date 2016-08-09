@@ -249,7 +249,7 @@ The `sbopkg` program, like `pkgtool`, offers a text-based menu interface. There 
 
 ## Package Management in Arch Linux with Pacman
 
-Arch Linux uses binary packages in a `.tar.gz` format, and also provides a "ports" build system that facilitates building packages.
+Arch Linux uses binary packages in a `.tar.xz` format, and also provides a "ports" build system that facilitates building packages.
 
 Arch Linux runs on a *rolling release* schedule, which means packages are added to the main repository when they (and their dependencies) are ready for production. This means that there aren't release versions of Arch, as all systems, once upgraded, are equivalent.
 
@@ -345,7 +345,7 @@ To build the package, use the following command as a non-root user:
 
 The `makepkg` command creates a package that contains dependency information. As root, issue the following command:
 
-    pacman -U PACKAGE.pkg.tar.gz
+    pacman -U PACKAGE.pkg.tar.xz
 
 Make sure to replace `PACKAGE` with the full package name exactly as it appears in the file system. Arch will now install the package and any required dependencies.
 
