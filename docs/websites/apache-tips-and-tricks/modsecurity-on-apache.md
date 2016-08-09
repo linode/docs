@@ -127,7 +127,7 @@ If you would rather symbolically link those configuration files to the activated
     >
     > > \<IfModule security2\_module\>
     > > :   Include modsecurity-crs/modsecurity\_crs\_10\_config.conf
-    > >      Include modsecurity-crs/activated\_rules/\*.conf
+    > >     Include modsecurity-crs/activated\_rules/\*.conf
     > > \</IfModule\>
 
 2.  Create the symbolic links before restarting Apache. A few examples are shown below.
