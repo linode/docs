@@ -88,16 +88,16 @@ Here's how to add a new domain zone:
     {: .note}
     > In order for Linode's DNS servers to function as slaves, your DNS master server must notify and allow AXFR requests to and from the follow IP addresses:
     >
-    >     69.93.127.10
-    >     65.19.178.10
-    >     75.127.96.10
-    >     207.192.70.10
-    >     109.74.194.10
-    >     2600:3c00::a
-    >     2600:3c01::a
-    >     2600:3c02::a
-    >     2600:3c03::a
-    >     2a01:7e00::a
+    >     162.159.27.72
+    >     162.159.24.39
+    >     162.159.25.129
+    >     162.159.26.99
+    >     162.159.24.25
+    >     2400:cb00:2049:1::a29f:1a63
+    >     2400:cb00:2049:1::a29f:1827
+    >     2400:cb00:2049:1::a29f:1981
+    >     2400:cb00:2049:1::a29f:1b48
+    >     2400:cb00:2049:1::a29f:1819
 
 If you selected the option to have the DNS Manager insert basic DNS records, those records will be visible, as shown above. If you elected to keep the zone empty, you can start adding DNS records now. Skip to the [Adding DNS Records](#adding-1) section for instructions.
 
