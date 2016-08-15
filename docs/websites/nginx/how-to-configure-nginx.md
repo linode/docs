@@ -2,7 +2,7 @@
 author:
   name: Alex Fornuto
   email: afornuto@linode.com
-description: 'Nginix is a high-performance web server that delivers large amounts of static content quickly. This doc will outline the basic Nginx parameters and conventions.'
+description: 'Nginx is a high-performance web server that delivers large amounts of static content quickly. This doc will outline the basic Nginx parameters and conventions.'
 keywords: 'nginx, web server, nginx.conf, install'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-servers/nginx/configuration/basic/','websites/nginx/basic-nginx-configuration/index.cfm/','websites/nginx/basic-nginx-configuration/','websites/nginx/how-to-configure-nginx/index.cfm/']
