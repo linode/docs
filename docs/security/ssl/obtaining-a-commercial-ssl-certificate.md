@@ -6,36 +6,38 @@ description: 'How to prepare and submit a request for a commercially-signed SSL 
 keywords: 'openssl,commercial ssl cert,apache ssl,ssl linux'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['security/ssl-certificates/commercial/']
-modified: Tuesday, November 18th, 2014
+modified: Wednesday, August 17th, 2016
 modified_by:
-  name: James Stewart
+  name: Nick Brewer
 published: 'Monday, November 16th, 2009'
 title: Obtaining a Commercial SSL Certificate
 external_resources:
  - '[OpenSSL Documentation](http://www.openssl.org/docs/)'
 ---
 
-Follow these instructions to get a commercial SSL certificate installed on your server. Please note that commercial SSL certificates require a unique IP address for each certificate. As SSL certificates may be used by many kinds of software, these instructions are generic in nature. If you're intending to use your SSL certificate on a website powered by Apache, you should follow our Apache SSL guides for [Debian & Ubuntu](/docs/security/ssl/ssl-apache2-debian-ubuntu) or [CentOS](/docs/security/ssl/ssl-apache2-centos) instead.
+These instructions will show you how to install a commercial SSL certificate on your Linode. As SSL certificates can be used by many kinds of software, the steps are generic in nature. If you intend to use your SSL certificate on a website powered by Apache, you can follow our Apache SSL guides for [Debian & Ubuntu](/docs/security/ssl/ssl-apache2-debian-ubuntu) or [CentOS](/docs/security/ssl/ssl-apache2-centos) once you've completed the process outlined here. For an SSL setup with Nginx, please refer to [this](/docs/security/ssl/provide-encrypted-resource-access-using-ssl-certificates-on-nginx) guide. 
+
+If you're hosting multiple websites with commercial SSL certificates on the same IP address, you'll need to use the [SNI](https://wiki.apache.org/httpd/NameBasedSSLVHostsWithSNI) extension of TLS. SNI is accepted by most modern web browsers. If you expect to receive connections from clients running legacy browsers (Like Internet Explorer for Windows XP), you will need to [contact support](/docs/platform/support) to request an additional IP address.
 
 ## Install OpenSSL
 
-Issue the following command to install required packages for OpenSSL, the open source SSL toolkit.
+Issue the following commands to install required packages for OpenSSL, the open source SSL toolkit.
 
 Debian/Ubuntu users:
 
-    apt-get update
-    apt-get upgrade
+    apt-get update && apt-get upgrade
     apt-get install openssl
-    mkdir /etc/ssl/localcerts
+	mkdir /etc/ssl/localcerts
 
 CentOS/Fedora users:
 
+    yum update
     yum install openssl
-    mkdir /etc/ssl/localcerts
+	mkdir /etc/ssl/localcerts
 
 ## Create a Certificate Signing Request
 
-Issue these commands to create a certificate signing request (CSR) for the site which you'd like to use with SSL. Be sure to change "www.mydomain.com" to reflect the fully qualified domain name (subdomain.domainname.com) of the site you'll be using SSL with. Leave the challenge password blank. We entered 365 for the days parameter to the command, as we would be paying for one year of SSL certificate verification from a commercial CA (certificate authority).
+Issue these commands to create a certificate signing request (CSR) for the site which you'd like to use with SSL. Be sure to change "www.mydomain.com" to reflect the fully qualified domain name (subdomain.domainname.com) of the site you'll be using SSL with. Leave the challenge password blank. We entered 365 for the days parameter to the command, as we would be paying for one year of SSL certificate verification from a commercial certificate authority (CA).
 
     cd /etc/ssl/localcerts
     openssl req -new -newkey rsa:2048 -nodes -sha256 -days 365 -keyout www.mydomain.com.key -out www.mydomain.com.csr
@@ -79,18 +81,28 @@ Execute the following command to protect the signed certificate:
 
 ## Get the CA Root Certificate
 
-Now you'll need to get the root certificate for the CA that you paid to sign your certificate. You may obtain the root certs for various providers from these sites:
+Most modern distributions come with the majority of root CA certificates installed under `/etc/ssl/certs` as part of the "ca-certificates" package. To check if this package is installed, run one of these commands:
+
+Debian/Ubuntu:
+
+	apt-cache policy ca-certificates
+
+CentOS/Fedora:
+
+	yum list installed ca-certificates
+
+If you're using an older distribution that does not have the "ca-certificates" package, you will need to download your root certificate from the certificate authority. Some of the most common commercial CA providers are listed below:
 
 -   [Verisign](https://knowledge.verisign.com/support/ssl-certificates-support/index.html)
 -   [Thawte](http://www.thawte.com/roots/index.html)
 -   [Globalsign](http://www.globalsign.com/en//)
 -   [Comodo](https://support.comodo.com/index.php?_m=downloads&_a=view&parentcategoryid=1&pcid=0&nav=0)
 
-For example, if we downloaded a root cert for Verisign, we would save it to `/etc/ssl/localcerts/verisign.cer`. Note that many Linux distributions offer a package that contains updated root certificates for major certificate authorities; check your distribution's repositories for a package named "ca-certificates". If you have this package installed, the root CA certs will be installed under `/etc/ssl/certs`.
+For example, if we downloaded a root cert for Verisign, we would save it to `/etc/ssl/localcerts/verisign.cer`. 
 
 ## Next Steps
 
-Once your certificate has been generated, you will need to configure your web server to utilize the new certificate.  Instructions for doing so with several popular platforms can be found at the links below.
+Once your certificate has been generated, you will need to configure your web server to utilize the new certificate. 
 
 - [SSL Certificates with Apache on Debian and Ubuntu](/docs/security/ssl/ssl-apache2-debian-ubuntu)
 - [SSL Certificates with Apache on CentOS 7](/docs/security/ssl/ssl-apache2-centos)
