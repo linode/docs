@@ -1,16 +1,15 @@
 ---
-deprecated: false
 author:
   name: Linode Community
   email: contribute@linode.com
-description: 'Linode's Guide on How to Install Nginx and a StartSSL Certificate on Debian 8 (Jessie)'
+description: 'Linode''s Guide on How to Install Nginx and a StartSSL Certificate on Debian 8 (Jessie)'
 keywords: 'startssl,nginx,debian 8,ssl certificate,generate CSR'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['websites/nginx/startssl-wth-latest-nginx-debian-7/','websites/nginx/how-to-install-nginx-and-a-startssl-certificate-on-debian-8-jessie/']
-modified: Monday, July 20th, 2016
+published: Friday, October 21st, 2015
+modified: Thursday, August 18th, 2016
 modified_by:
   name: Phil Zona
-published: Friday, October 21st, 2015
 title: 'Install nginx and a StartSSL Certificate on Debian 8 (Jessie)'
 contributor:
     name: Ryan Laverdiere

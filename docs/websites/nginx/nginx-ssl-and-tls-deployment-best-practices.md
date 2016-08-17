@@ -21,7 +21,7 @@ external_resources:
 *This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
 <hr>
 
-This guide is intended to inform you of some additional configuration options that nginx uses when serving HTTPS. While these features help optimize nginx for SSL and TLS, this is by no means a complete guide to securing nginx or your Linode. The best way to ensure your server remains secure is to not only to configure it properly, but to follow best security practices at all times. This guide is intended to be one of many steps toward creating the most secure environment possible. 
+This guide is intended to inform you of some additional configuration options that nginx uses when serving HTTPS. While these features help optimize nginx for SSL and TLS, this is by no means a complete guide to securing nginx or your Linode. The best way to ensure your server remains secure is to not only configure it properly, but to follow best security practices at all times. This guide is intended to be one of many steps toward creating the most secure environment possible. 
 
 ## Before you Begin
 
@@ -35,7 +35,7 @@ This guide is intended to inform you of some additional configuration options th
 >
 >The commands in this guide are written for a root user. If you're following along as a non-root user, commands that require elevated privileges should prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
-For more information, please review our guides on [basic nginx configuration](/docs/websites/nginx/how-to-configure-nginx), [Linux security basics](/docs/security/linux-security-basics), and [securing your server](/docs/security/securing-your-server).
+For more information, please review our guides on [basic nginx configuration](/docs/websites/nginx/how-to-configure-nginx), [Linux security basics](/docs/security/linux-security-basics) and [securing your server](/docs/security/securing-your-server).
 
 ## Disable nginx Server Tokens
 
@@ -87,7 +87,7 @@ HTTP/2 is a new version of the HTTP standard replacing HTTP/1.1 to reduce page l
 
         systemctl restart nginx
 
-3.  Open a web browser and navigate to [the KeyCDN HTTP/2 Test](https://tools.keycdn.com/http2-test), enter your Linode's domain name or hostname in the text box and click "Test". Optionally, uncheck the Public checkbox if you do not want your results displayed publicly. This free tool will check your server and let you know if HTTP/2 and ALPN are enabled and functioning correctly.
+3.  Open a web browser and navigate to [the KeyCDN HTTP/2 Test](https://tools.keycdn.com/http2-test), enter your Linode's domain name or hostname in the text box and click "Test." Optionally, uncheck the Public checkbox if you do not want your results displayed publicly. This free tool will check your server and let you know if HTTP/2 and ALPN are enabled and functioning correctly.
 
     If HTTP/2 is functioning properly, your report should look like this:
 
@@ -129,7 +129,7 @@ Google is now ranking websites that accept encrypted HTTPS connections higher in
 
         systemctl restart nginx
 
-5.  Navigate to your Linode's domain name in your browser, specifying `http://`. You should now be redirect to `https`.
+5.  Navigate to your Linode's domain name in your browser, specifying `http://`. You should now be redirected to HTTPS.
 
 ## OCSP Stapling
 
@@ -157,7 +157,7 @@ Before enabling OCSP stapling you will need to have a file on your system that s
 
 3.  In a web browser, navigate to the [Qualys SSL Labs SSL Server Test](https://www.ssllabs.com/ssltest/). Enter the domain name or hostname of your Linode and click "Submit". Optionally, you may uncheck the checkbox to prevent your test from being shown publicly.
 
-    Once the test is complete, scroll down to the "Protocol Details" section. Look for the "OCSP stapling" line. If nginx is configured correctly, this test will return "Yes".
+    Once the test is complete, scroll down to the "Protocol Details" section. Look for the "OCSP stapling" line. If nginx is configured correctly, this test will return "Yes."
 
     [![SSL Server Test OCSP](/docs/assets/OCSP_Stapling_SSL_Test.jpg)](/docs/assets/OCSP_Stapling_SSL_Test.jpg)
 
@@ -183,13 +183,13 @@ With all traffic being redirected from HTTP to HTTPS, you may want to allow user
 
         systemctl restart nginx
 
-3.  Navigate to the [Qualys SSL Labs SSL Server Test](https://www.ssllabs.com/ssltest/). Enter the domain name or hostname of your Linode and click "Submit". Optionally, you may uncheck the checkbox to not show your results on the boards.
+3.  Navigate to the [Qualys SSL Labs SSL Server Test](https://www.ssllabs.com/ssltest/). Enter the domain name or hostname of your Linode and click "Submit." Optionally, you may uncheck the checkbox to not show your results on the boards.
 
     {: .note}
     >
     > If you've already conducted a test from one of the above sections, use the **Clear cache** link to initiate a new scan.
 
-    Once the test is complete, scroll down to the "Protocol Details" section. Look for the "Strict Transport Security (HSTS)" line. If nginx is configured correctly this test will return "Yes".
+    Once the test is complete, scroll down to the "Protocol Details" section. Look for the "Strict Transport Security (HSTS)" line. If nginx is configured correctly this test will return "Yes."
 
     [![SSL Server Test HSTS](/docs/assets/HSTS_SSL_Test.jpg)](/docs/assets/HSTS_SSL_Test.jpg)
 
@@ -217,13 +217,13 @@ If you'd like to limit embedding rather than disabling it altogether, you can re
 
 ## Create a Custom Diffie-Hellman Key Exchange
 
-We're using a 4096 bit RSA private key to sign the Diffie-Hellman key exchange, but the default parameters for Diffie-Hellman only specify 1024 bits, often making it the weakest link in the SSL cipher suite. We should generate our own custom parameters for the key exchange to provide greater security.
+We're using a 4096-bit RSA private key to sign the Diffie-Hellman key exchange, but the default parameters for Diffie-Hellman only specify 1024 bits, often making it the weakest link in the SSL cipher suite. We should generate our own custom parameters for the key exchange to provide greater security.
 
 1.  Navigate to your `certs` directory:
 
         cd /etc/ssl/certs
 
-2.  Create custom parameters for the TLS handshake. Here we will use a 4096 bit key for high security:
+2.  Create custom parameters for the TLS handshake. Here we will use a 4096-bit key for high security:
 
         openssl dhparam -out dhparam.pem 4096
 
@@ -281,6 +281,6 @@ If you have been following along, starting with the guide on installing the late
     }
     ~~~
 
-Now that you've optimized nginx for SSL and TLS, you can test your configuration at [Qualys SSL Labs SSL Server Test](https://www.ssllabs.com/ssltest/). This configuration should earn you a grade of "A+". If you are getting a lesser rating, check your configuration for errors. Additionally, check that your site is enabled and returning a 200 HTTP response code, as that may also affect your rating. This information can be found in the "Miscellaneous" section at the bottom of your SSL Server Test report.
+Now that you've optimized nginx for SSL and TLS, you can test your configuration at [Qualys SSL Labs SSL Server Test](https://www.ssllabs.com/ssltest/). This configuration should earn you a grade of "A+." If you are getting a lesser rating, check your configuration for errors. Additionally, check that your site is enabled and returning a 200 HTTP response code, as that may also affect your rating. This information can be found in the "Miscellaneous" section at the bottom of your SSL Server Test report.
 
 Again, the best way to ensure security is by following best practices at all times, not simply relying on your configuration, so be sure to monitor for updates and apply them to your server as needed. With proper maintenance, your server will remain secure and safe from attack.
