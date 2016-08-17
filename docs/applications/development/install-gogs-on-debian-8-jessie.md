@@ -206,7 +206,7 @@ In this section we will setup Gogs to run automatically on boot by creating a sy
 1.  Using `sudo`, create `/etc/systemd/system/gogs.service`:
 
     {: .file}
-    /etc/nginx/sites-available/gogs
+    /etc/systemd/system/gogs.service
     :   ~~~ ini
         [Unit]
         Description=Gogs (Go Git Service)
