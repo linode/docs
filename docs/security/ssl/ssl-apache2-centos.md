@@ -23,7 +23,7 @@ This guide assumes that you are running Apache2 on CentOS or Fedora. Prior to fo
 
 -   Follow our [Getting Started](/docs/getting-started/) guide to configure your Linode.
 
--   Follow our [Hosting a Website](/docs/websites/hosting-a-website) guide, and create a site that you wish to secure with SSL.
+-   Follow our [LAMP on CentOS 7](/docs/websites/lamp/lamp-on-centos-7) guide, and create a site that you wish to secure with SSL.
 
 -   Follow our guide for obtaining either a [self signed](/docs/security/ssl/how-to-make-a-selfsigned-ssl-certificate) or [commercial](/docs/security/ssl/obtaining-a-commercial-ssl-certificate) SSL certificate.
 
@@ -33,7 +33,9 @@ This guide assumes that you are running Apache2 on CentOS or Fedora. Prior to fo
 
 ## Configure Apache to use the SSL Certificate
 
-1.  Edit the virtual host entries in the `/etc/httpd/conf/httpd.conf` file to include the certificate files that should be used by each domain. For each virtual host, you will need to replicate the configuration shown below. Replace any mentions of `example.com` with your own domain. If you're using a commercially signed certificate, ensure that the `SSLCACertificateFile` value is configured to point to the CA certificate bundle under `/etc/ssl/certs`.
+***THIS NEEDS TO MENTION THE SSL.CONF FILE***
+
+1.  Edit the virtual host entries in the `/etc/httpd/conf/httpd.conf` file to include the certificate files that should be used by each domain. For each virtual host, you will need to replicate the configuration shown below. Replace any mentions of `example.com` with your own domain. If you're using a commercially signed certificate and you've manually downloaded the root CA cert to `/etc/ssl/certs`, ensure that the `SSLCACertificateFile` value is configured to point to the root certificate directly. If the root certificate is being provided via the "ca-certificates" package, you can simply exclude the `SSLCACertificateFile` line.
 
     {: .file-excerpt }
     /etc/httpd/conf.d/vhost.conf
@@ -42,7 +44,7 @@ This guide assumes that you are running Apache2 on CentOS or Fedora. Prior to fo
              SSLEngine On
              SSLCertificateFile /etc/ssl/localcerts/www.example.com.crt
              SSLCertificateKeyFile /etc/ssl/localcerts/www.example.com.key
-             SSLCACertificateFile /etc/ssl/certs/ca-bundle.crt  #  If using a self-signed certificate, omit this line
+             SSLCACertificateFile /etc/ssl/certs/ca-bundle.crt  #  If using a self-signed certificate or a root certificate provided by ca-certificates, omit this line
 
              ServerAdmin info@example.com
              ServerName www.example.com
@@ -56,4 +58,4 @@ This guide assumes that you are running Apache2 on CentOS or Fedora. Prior to fo
 
         systemctl restart httpd
 
-You should now be able to visit your site with SSL enabled. 
+You should now be able to visit your site with SSL enabled.
