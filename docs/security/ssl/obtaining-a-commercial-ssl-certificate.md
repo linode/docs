@@ -15,9 +15,9 @@ external_resources:
  - '[OpenSSL Documentation](http://www.openssl.org/docs/)'
 ---
 
-These instructions will show you how to install a commercial SSL certificate on your Linode. As SSL certificates can be used by many kinds of software, the steps provided are generic in nature. If you intend to use your SSL certificate on a website powered by Apache, you can continue to our Apache SSL guides for [Debian & Ubuntu](/docs/security/ssl/ssl-apache2-debian-ubuntu) or [CentOS](/docs/security/ssl/ssl-apache2-centos) once you've completed the process outlined here. 
+These instructions will show you how to install a commercial SSL certificate on your Linode. As SSL certificates can be used by many kinds of software, the steps provided are generic in nature. If you intend to use your SSL certificate on a website powered by Apache, you can continue to our Apache SSL guides for [Debian & Ubuntu](/docs/security/ssl/ssl-apache2-debian-ubuntu) or [CentOS](/docs/security/ssl/ssl-apache2-centos) once you've completed the process outlined here.
 
-For an SSL setup with Nginx, please start with our [Nginx and SSL](/docs/security/ssl/provide-encrypted-resource-access-using-ssl-certificates-on-nginx) guide. 
+For an SSL setup with Nginx, please start with our [Nginx and SSL](/docs/security/ssl/provide-encrypted-resource-access-using-ssl-certificates-on-nginx) guide.
 
 If you're hosting multiple websites with commercial SSL certificates on the same IP address, you'll need to use the [SNI](https://wiki.apache.org/httpd/NameBasedSSLVHostsWithSNI) extension of TLS. SNI is accepted by most modern web browsers, but if you expect to receive connections from clients running legacy browsers (Like Internet Explorer for Windows XP), you will need to [contact support](/docs/platform/support) to request an additional IP address.
 
@@ -29,13 +29,13 @@ Debian/Ubuntu users:
 
     apt-get update && apt-get upgrade
     apt-get install openssl
-	mkdir /etc/ssl/localcerts
+    mkdir /etc/ssl/localcerts
 
 CentOS/Fedora users:
 
     yum update
     yum install openssl
-	mkdir /etc/ssl/localcerts
+    mkdir /etc/ssl/localcerts
 
 ## Create a Certificate Signing Request
 
@@ -83,15 +83,26 @@ Execute the following command to protect the signed certificate:
 
 ## Get the CA Root Certificate
 
-Most modern distributions come with the majority of root CA certificates installed under `/etc/ssl/certs` as part of the "ca-certificates" package. To check if this package is installed, you can run this command:
+Most modern distributions come with common root CA certificates installed as part of the "ca-certificates" package. To check if this package is installed, you can run this command:
 
 Debian/Ubuntu:
 
-	apt-cache policy ca-certificates
+    apt-cache policy ca-certificates
 
 CentOS/Fedora:
 
-	yum list installed ca-certificates
+    yum list installed ca-certificates
+
+The "ca-certificates" package comes with a bundle of root certs that can be used with commonly accepted certificate authorities. The specific location of the bundle varies depending upon the distribution:
+
+Debian/Ubuntu:
+
+    /etc/ssl/certs/ca-certificates.crt
+
+CentOS/Fedora:
+
+    /etc/pki/tls/certs/ca-bundle.crt
+
 
 If you're using an older distribution that does not have the "ca-certificates" package, you will need to download your root certificate from the CA that issued it. Some of the most common commercial certificate authorities are listed below:
 
@@ -100,6 +111,4 @@ If you're using an older distribution that does not have the "ca-certificates" p
 -   [Globalsign](http://www.globalsign.com/en//)
 -   [Comodo](https://support.comodo.com/index.php?_m=downloads&_a=view&parentcategoryid=1&pcid=0&nav=0)
 
-Once you've downloaded your root certificate, you'll need to add it to the `/etc/ssl/localcerts` directory. For example, if you were to download a root certificate for Verisign, you would save it to `/etc/ssl/localcerts/verisign.cer`. 
-
-
+Once you've downloaded your root certificate, you can add it to the `/etc/ssl/localcerts` directory. For example, if you were to download a root certificate for Verisign, you would save it to `/etc/ssl/localcerts/verisign.cer`.
