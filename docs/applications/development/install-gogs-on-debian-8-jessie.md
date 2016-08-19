@@ -50,7 +50,7 @@ This tutorial shows you how to install and configure Gogs, using PostgreSQL for 
 
 ## Install Go
 
-In this section we will download the latest version of Go (version 1.5.1 at the time of this writing) and install the package in the `/home/git/local/go` directory.
+In this section we will download the latest version of Go (version 1.7 at the time of this writing) and install the package in the `/home/git/local/go` directory.
 
 1.  Create the `/home/git/local` directory:
 
@@ -59,8 +59,8 @@ In this section we will download the latest version of Go (version 1.5.1 at the 
 
 2.  Download Go and extract the compressed file:
 
-        wget https://storage.googleapis.com/golang/go1.5.1.linux-amd64.tar.gz
-        tar -C /home/git/local -xvzf go1.5.1.linux-amd64.tar.gz
+        wget https://storage.googleapis.com/golang/go1.7.linux-amd64.tar.gz
+        tar -C /home/git/local -xvzf go1.7.linux-amd64.tar.gz
 
 3.  Set the `GOPATH` environment variable to specify the location of our workspace. We will set the variables in our `.bashrc` file, so they will be available everytime we enter the shell:
 
@@ -79,7 +79,7 @@ In this section we will download the latest version of Go (version 1.5.1 at the 
 
     You'll see output that resembles the following:
 
-        go version go1.5.1 linux/amd64
+        go version go1.7 linux/amd64
 
 ## Install Gogs
 
@@ -87,7 +87,7 @@ In this section we will download the latest version of Go (version 1.5.1 at the 
 
         go get -u github.com/gogits/gogs
 
-    This may take a few minutes during which your console will appear unresponsive. 
+    This may take a few minutes during which your console will appear unresponsive.
 
 2.  Build the Gogs binary:
 
@@ -110,7 +110,7 @@ In this section we will download the latest version of Go (version 1.5.1 at the 
         2015/10/09 15:41:41 [I] Run Mode: Development
         2015/10/09 15:41:41 [I] Listen: http://0.0.0.0:3000
 
-    Open `http://youripaddress:3000` using your browser. Gogs will redirect the browser to the installation page. Since you haven't installed the database server yet, close the browser and stop the web server by pressing CTRL+C. You will return to this installation page after installing PostgreSQL and Nginx.
+    Open `http://example.com:3000` using your browser. Gogs will redirect the browser to the installation page. Since you haven't installed the database server yet, close the browser and stop the web server by pressing CTRL+C. You will return to this installation page after installing PostgreSQL and Nginx.
 
 4.  Exit from user `git`:
 
@@ -134,7 +134,7 @@ Using a database server for Gogs is completely optional. Feel free to skip this 
         psql (9.4.4)
         Type "help" for help.
 
-        template1=# 
+        template1=#
 
 3.  Create new user for Gogs:
 
@@ -199,7 +199,7 @@ We will use Nginx as the reverse proxy for Gogs, so we can access Gogs using our
         sudo systemctl restart nginx
 
 
-## Setup systemd unit file 
+## Setup systemd unit file
 
 In this section we will setup Gogs to run automatically on boot by creating a systemd unit file.
 
@@ -258,10 +258,10 @@ In this section we will setup Gogs to run automatically on boot by creating a sy
 
 ## Configure Gogs using the web installer
 
-Open `https://example.com` in your browser. It will redirect you to the installation page:
+Open `https://example.com:3000` in your browser. It will redirect you to the installation page:
 
 ![Gogs installation page](/docs/assets/gogs_debian_jessie_installation_page.png)
-   
+
 Modify the database settings to match with the PostgreSQL database we created earlier:
 
 - **Database type** = `PostgreSQL`
@@ -310,10 +310,9 @@ If you notice, the Gogs site is still accessible using the plain HTTP via `http:
 4.  Logout from user `git`:
 
         exit
-        
+
 5.  Restart Gogs:
 
         sudo systemctl restart gogs
 
 6.  Open your browser. Confirm that `https://example.com` is still running and `http://example.com:3000` is not.
-        
