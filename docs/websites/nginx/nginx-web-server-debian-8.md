@@ -108,7 +108,7 @@ The Debian project does not track the latest development of Nginx server. If you
 
     {: .file}
     /lib/systemd/system/nginx.service
-    :   ~~~ shell
+    :   ~~~ ini
         [Unit]
         Description=A high performance web server and a reverse proxy server
         After=network.target
