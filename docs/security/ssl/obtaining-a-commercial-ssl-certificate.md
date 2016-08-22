@@ -1,4 +1,5 @@
 ---
+deprecated: true
 author:
   name: Linode
   email: docs@linode.com
@@ -14,6 +15,9 @@ title: Obtaining a Commercial SSL Certificate
 external_resources:
  - '[OpenSSL Documentation](http://www.openssl.org/docs/)'
 ---
+
+{: .caution}
+> This guide has been split into two guides, for [Debian & Ubuntu](/docs/security/ssl/obtaining-a-commercial-ssl-certificate-debian-ubuntu) and [CentOS & Fedora](/docs/security/ssl/obtaining-a-commercial-ssl-certificate-centos-fedora).
 
 These instructions will show you how to install a commercial SSL certificate on your Linode. As SSL certificates can be used by many kinds of software, the steps provided are generic in nature. If you intend to use your SSL certificate on a website powered by Apache, you can continue to our Apache SSL guides for [Debian & Ubuntu](/docs/security/ssl/ssl-apache2-debian-ubuntu) or [CentOS](/docs/security/ssl/ssl-apache2-centos) once you've completed the process outlined here.
 
