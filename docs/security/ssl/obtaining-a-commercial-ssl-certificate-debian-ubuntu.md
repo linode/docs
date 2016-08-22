@@ -15,7 +15,9 @@ external_resources:
  - '[OpenSSL Documentation](http://www.openssl.org/docs/)'
 ---
 
-These instructions will show you how to install a commercial SSL certificate on your Linode running Debian or Ubuntu. As SSL certificates can be used by many kinds of software, the steps provided are generic in nature. If you intend to use your SSL certificate on a website powered by Apache, you can continue to our [SSL Certificates with Apache on Debian & Ubuntu](/docs/security/ssl/ssl-apache2-debian-ubuntu) guide once you've completed the process outlined here.
+These instructions will show you how to install a commercial SSL certificate on your Linode running Debian or Ubuntu. SSL/TLS encryption is the standard for securing web traffic. As SSL certificates can be used by many kinds of software, the steps provided are generic in nature.
+
+If you intend to use your SSL certificate on a website powered by Apache, continue to our [SSL Certificates with Apache on Debian & Ubuntu](/docs/security/ssl/ssl-apache2-debian-ubuntu) guide once you've completed the process outlined here.
 
 For an SSL setup with Nginx, please start with our [Nginx and SSL](/docs/security/ssl/provide-encrypted-resource-access-using-ssl-certificates-on-nginx) guide.
 
@@ -23,11 +25,13 @@ If you're hosting multiple websites with commercial SSL certificates on the same
 
 ## Before You Begin
 
-1. Complete our [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/securing-your-server) guides.
+- Complete our [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/securing-your-server) guides.
 
-2. Ensure that your packages are up to date by running `apt-get update && apt-get upgrade`.
+- Ensure that your packages are up to date by running `apt-get update && apt-get upgrade`.
 
-3. Log in to your Linode as the root user, or escalate to root privileges.  
+{: .note}
+>
+>This guide assumes that you are logged in as the root user, and that you will not need to prepend commands with `sudo`.
 
 ## Create a Certificate Signing Request
 
