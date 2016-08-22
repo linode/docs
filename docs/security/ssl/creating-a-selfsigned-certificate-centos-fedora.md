@@ -41,9 +41,7 @@ This command generates a secure key, as well as a certificate signing request. A
 
 * `-x509` tells OpenSSL to create a self-signed certificate.
 
-You will be asked to enter values appropriate for your organization and server. The `-days 365` flag in this example will create a certificate valid for 365 days; you may wish to increase this value. We've specified the FQDN (fully qualified domain name) of the Linode for the "Common Name" entry, as this certificate will be used for generic SSL service. The `-nodes` flag instructs OpenSSL to create a certificate that does not require a passphrase. If this option is omitted, you will be required to enter a passphrase on the console to unlock the certificate each time the server application using it is restarted (most frequently, this will happen when you reboot your Linode).
-
-After the command completes, you will have a new `.crt` certificate file under `/etc/pki/tls/certs`, and a private `.key` file under `/etc/pki/tls/private`. You can issue these commands to ensure that both the certificate and the key are properly secured:
+You will be prompted to add identifying information for your website or organization. After the command completes, you will have a new `.crt` certificate file under `/etc/pki/tls/certs`, and a private `.key` file under `/etc/pki/tls/private`. You can issue these commands to ensure that both the certificate and the key are properly secured:
 
     chmod 400 /etc/pki/tls/certs/example.com.crt
     chmod 400 /etc/pki/tls/private/example.com.key
