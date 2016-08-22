@@ -15,7 +15,9 @@ external_resources:
  - '[OpenSSL documentation](http://openssl.org/docs/)'
 ---
 
-This guide details the process for creating a self-signed SSL certificate on Debian or Ubuntu. Self-signed certificates are suitable for personal use or for applications used internally within an organization. We assume that you've followed the steps outlined in our [Getting Started guide](/docs/getting-started/), and that you're logged into your Linode as root via a shell session.
+This guide details the process for creating a self-signed SSL certificate on Debian or Ubuntu. Self-signed certificates are suitable for personal use or for applications used internally within an organization. We assume that you've followed the steps outlined in our [Getting Started guide](/docs/getting-started/), and that you're logged into your Linode as the root user. If you intend to use your SSL certificate on a website powered by Apache, you can continue to our [SSL Certificates with Apache on Debian & Ubuntu](/docs/security/ssl/ssl-apache2-debian-ubuntu) guide once you've completed the process outlined here.
+
+For an SSL setup with Nginx, please start with our [Nginx and SSL](/docs/security/ssl/provide-encrypted-resource-access-using-ssl-certificates-on-nginx) guide.
 
 ## Installing OpenSSL
 

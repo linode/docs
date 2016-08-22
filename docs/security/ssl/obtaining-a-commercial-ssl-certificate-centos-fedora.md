@@ -21,29 +21,39 @@ For an SSL setup with Nginx, please start with our [Nginx and SSL](/docs/securit
 
 If you're hosting multiple websites with commercial SSL certificates on the same IP address, you'll need to use the [SNI](https://wiki.apache.org/httpd/NameBasedSSLVHostsWithSNI) extension of TLS. SNI is accepted by most modern web browsers, but if you expect to receive connections from clients running legacy browsers (Like Internet Explorer for Windows XP), you will need to [contact support](/docs/platform/support) to request an additional IP address.
 
-{: .note}
->
->This guide assumes that you are logged in as the root user, and that you will not need to prepend commands with `sudo`.
+## Before You Begin
 
-## Install OpenSSL
+1. Complete our [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/securing-your-server) guides.
 
-Issue the following commands to install required packages for OpenSSL, the open source SSL toolkit.
 
-    yum update
-    yum install openssl
+2. Ensure that your packages are up to date by running `yum upgrade`
+
+
+3. Log in to your Linode as the root user, or escalate to root privileges.  
 
 ## Create a Certificate Signing Request
 
-Issue these commands to create a certificate signing request (CSR) for the site that will be using SSL. Be sure to change "example.com" to reflect the fully qualified domain name (subdomain.example.com) of the site you'll be using SSL with. Leave the challenge password blank. We entered 365 for the days parameter to the command, as we would be paying for one year of SSL certificate verification from a commercial certificate authority (CA).
+Issue these commands to create a certificate signing request (CSR) for the site that will be using SSL. Be sure to change "example.com" to reflect the fully qualified domain name (subdomain.example.com) of the site you'll be using SSL with. Leave the challenge password blank.
 
 {: .note}
 >
->While some CA providers will automatically include the "www" subdomain when issuing certificates for a root domain such as example.com, others do not. If you wish to secure multiple subdomains using the same certificate, you will need to create a [wildcard certificate](https://en.wikipedia.org/wiki/Wildcard_certificate) or make use of [subject alternative names](https://www.linode.com/docs/security/ssl/multiple-ssl-sites-using-subjectaltname).
+>While some CA providers will automatically include the "www" subdomain when issuing certificates for a root domain such as example.com, others do not. If you wish to secure multiple subdomains using the same certificate, you will need to create a [wildcard certificate](https://en.wikipedia.org/wiki/Wildcard_certificate).
+
 
     cd /etc/ssl/
     openssl req -new -newkey rsa:2048 -nodes -sha256 -days 365 -keyout /etc/pki/tls/private/example.com.key -out example.com.csr
 
-Here are the values we entered for our example certificate. Note that you can ignore the extra attributes.
+The first command navigates to the `/etc/ssl` directory. The second command generates a secure key, as well as a certificate signing request. A brief explanation of the options used:
+
+* `-nodes` instructs OpenSSL to create a certificate that does not require a passphrase. If this option is excluded, you will be required to enter the the passphrase in the console each time the application using it is restarted.
+
+* `-days` determines the length of time in days that the certificate is being issued for. We entered 365 for the days parameter to the command, as we would be paying for one year of SSL certificate verification from a commercial certificate authority (CA).
+
+* `rsa:` allows you to specify the size of the RSA key. In this case we've chosen 2048 bits as this is the recommended minimum size.
+
+* `-sha256` ensures that the certificate request is generated using 265-bit SHA (Secure Hash Algorithm).
+
+Here are the values we entered for our example certificate. Note that you can ignore the 'extra' attributes.
 
     Generating a 2048 bit RSA private key
     ......................................................++++++
@@ -93,4 +103,54 @@ The "ca-certificates" package comes with a bundle of root certs located under `/
 -   [Globalsign](http://www.globalsign.com/en//)
 -   [Comodo](https://support.comodo.com/index.php?_m=downloads&_a=view&parentcategoryid=1&pcid=0&nav=0)
 
-Once you've downloaded your root certificate, you can add it to the `/etc/pki/tls/certs` directory. For example, if you were to download a root certificate for Verisign, you would save it to `/etc/pki/tls/certs/verisign.cer`.
+## Adding Your Root Certificate to the CA Bundle
+
+You can add root certificates to the bundle by enabling dynamic CA configuration:
+
+    update-ca-trust force-enable
+
+Next you'll need to copy the certificate file over to the appropriate directory, and then update the bundle:
+
+    cp root-example.crt /etc/pki/ca-trust/source/anchors/
+    update-ca-trust extract
+
+## Preparing a Chained SSL Certificate
+
+In some cases, CAs have not submitted a Trusted Root CA Certificate to some or all browser vendors. Because of this, you can choose to *chain* roots for certificates to be trusted by web browsers. If you receive several files from your CA ending with `.crt`(collectively referred to as a `chained SSL certificate`), they must be linked into one file, in a specific order, to provide full support with most browsers. The following example uses a chained SSL certificate that was signed by Comodo. Enter the following command to prepare your chained SSL certificate:
+
+        cat example.com.crt COMODORSADomainValidationSecureServerCA.crt  COMODORSAAddTrustCA.crt AddTrustExternalCARoot.crt > www.mydomain.com.crt
+
+    The contents of the resulting file will appear similar to the following (yours will be unique):
+
+        -----BEGIN CERTIFICATE-----
+        MIIFSzCCBDOgAwIBAgIQVjCXC0bF9U8FypJOnL9cuDANBgkqhkiG9w0BAQsFADCB
+        ................................................................
+        ncHG3hwHHwhiEz6ukC2mqxA+D3KILiywgHgWcumnpeCEUQgDzy0Fz2Ip/kR/1Fkv
+        DCQzME2NkT1ZdW8fdz+Y
+        -----END CERTIFICATE-----
+        -----BEGIN CERTIFICATE-----
+        MIIGCDCCA/CgAwIBAgIQKy5u6tl1NmwUim7bo3yMBzANBgkqhkiG9w0BAQwFADCB
+        ................................................................
+        j4rBYKEMrltDR5FL1ZoXX/nUh8HCjLfn4g8wGTeGrODcQgPmlKidrv0PJFGUzpII
+        -----END CERTIFICATE-----
+        -----BEGIN CERTIFICATE-----
+        ZFRydXN0IEV4dGVybmFsIFRUUCBOZXR3b3JrMSIwIAYDVQQDExlBZGRUcnVzdCBF
+        ................................................................
+        Uspzgb8c8+a4bmYRBbMelC1/kZWSWfFMzqORcUx8Rww7Cxn2obFshj5cqsQugsv5
+        -----END CERTIFICATE-----
+        -----BEGIN CERTIFICATE-----
+        MIIENjCCAx6gAwIBAgIBATANBgkqhkiG9w0BAQUFADBvMQswCQYDVQQGEwJTRTEU
+        ................................................................
+        6wwCURQtjr0W4MHfRnXnJK3s9EK0hZNwEGe6nQY1ShjTK3rMUUKhemPR5ruhxSvC
+        -----END CERTIFICATE-----
+
+
+    The chart below breaks this down a bit more clearly:
+
+    {: .table .table-striped }
+    | Certificate Type:          | Issued to:                              | Issued by:                              |
+    |----------------------------|:----------------------------------------|:----------------------------------------|
+    | End-user Certificate       | example.com                             | Comodo LLC                              |
+    | Intermediate Certificate 1 | Comodo LLC                              | COMODORSADomainValidationSecureServerCA |
+    | Intermediate Certificate 2 | COMODORSADomainValidationSecureServerCA | COMODORSAAddTrustCA                     |
+    | Root certificate           | COMODORSAAddTrustCA                     | AddTrustExternalCARoot                  |

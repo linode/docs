@@ -15,17 +15,17 @@ external_resources:
  - '[Setting up an SSL Secured Webserver with CentOS](http://wiki.centos.org/HowTos/Https)'
 ---
 
-This guide will assist you with enabling SSL for websites served with the Apache2 web server, in order to ensure secure access to your website and services.
+This guide will assist you with enabling SSL for websites served with the Apache2 web server on CentOS or Fedora, to ensure secure access to your website and services.
 
 ## Prerequisites
 
-This guide assumes that you are running Apache2 on CentOS or Fedora. Prior to following this guide, you will also need to ensure that the following steps have been taken on your Linode:
+This guide assumes that you are running Apache2 on CentOS or Fedora. Prior to starting this guide, you will also need to ensure that the following steps have been taken on your Linode:
 
 -   Follow our [Getting Started](/docs/getting-started/) guide to configure your Linode.
 
 -   Follow our [LAMP on CentOS 7](/docs/websites/lamp/lamp-on-centos-7) guide, and create a site that you wish to secure with SSL.
 
--   Follow our guide for obtaining either a [self signed](/docs/security/ssl/how-to-make-a-selfsigned-ssl-certificate) or [commercial](/docs/security/ssl/obtaining-a-commercial-ssl-certificate) SSL certificate.
+-   Follow our guide for obtaining either a [self signed](docs/security/ssl/creating-a-selfsigned-certificate-centos-fedora) or [commercial](/docs/security/ssl/obtaining-a-commercial-ssl-certificate-centos-fedora.md) SSL certificate.
 
 -   In order to configure your Linode to function with SSL, you will need to ensure that mod_ssl and OpenSSL are installed on your system.  You can do so by running the following command:
 
@@ -33,18 +33,16 @@ This guide assumes that you are running Apache2 on CentOS or Fedora. Prior to fo
 
 ## Configure Apache to use the SSL Certificate
 
-***THIS NEEDS TO MENTION THE SSL.CONF FILE***
-
-1.  Edit the virtual host entries in the `/etc/httpd/conf/httpd.conf` file to include the certificate files that should be used by each domain. For each virtual host, you will need to replicate the configuration shown below. Replace any mentions of `example.com` with your own domain. If you're using a commercially signed certificate and you've manually downloaded the root CA cert to `/etc/ssl/certs`, ensure that the `SSLCACertificateFile` value is configured to point to the root certificate directly. If the root certificate is being provided via the "ca-certificates" package, you can simply exclude the `SSLCACertificateFile` line.
+1.  Edit the virtual host entries in the `/etc/httpd/conf.d/ssl.conf` file to include the certificate files and virtual host information that should be used by each domain. For each virtual host, you will need to replicate the configuration shown below. Replace any mentions of `example.com` with your own domain. If you're using a commercially signed certificate and you've manually downloaded the root CA cert to `/etc/pki/tls/certs`, ensure that the `SSLCACertificateFile` value is configured to point to the root certificate directly. If the root certificate is being provided via the "ca-certificates" bundle, you can simply exclude the `SSLCACertificateFile` line.
 
     {: .file-excerpt }
-    /etc/httpd/conf.d/vhost.conf
+    /etc/httpd/conf.d/ssl.conf
     :   ~~~ apache
         <VirtualHost *:443>
              SSLEngine On
-             SSLCertificateFile /etc/ssl/localcerts/www.example.com.crt
-             SSLCertificateKeyFile /etc/ssl/localcerts/www.example.com.key
-             SSLCACertificateFile /etc/ssl/certs/ca-bundle.crt  #  If using a self-signed certificate or a root certificate provided by ca-certificates, omit this line
+             SSLCertificateFile /etc/pki/tls/certs/example.com.crt
+             SSLCertificateKeyFile /etc/pki/tls/private/example.com.key
+             SSLCACertificateFile /etc/pki/tls/certs/root-certificate.crt  #  If using a self-signed certificate or a root certificate provided by ca-certificates, omit this line
 
              ServerAdmin info@example.com
              ServerName www.example.com
