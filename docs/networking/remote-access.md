@@ -80,7 +80,7 @@ You'll see a confirmation message that the reverse DNS has been reset.
 *IP failover* is the process by which an IP address is reassigned from one Linode to another in the event the first one fails or goes down. If you're using two Linodes to make a website [highly available](/docs/websites/introduction-to-high-availability) with Keepalived or a similar service, you can use the Linode Manager to configure IP failover. Here's how:
 
 1.  Log in to the [Linode Manager](https://manager.linode.com).
-2.  Click the **Linodes** tab. A list of your virtual private servers appears.
+2.  Click the **Linodes** tab. A list of your available nodes will appear.
 3.  Select the Linode on which you wish to configure failover. The Linode's dashboard appears.
 4.  Click the **Remote Access** tab.
 5.  Select the **IP Failover** link. The webpage shown below appears.
@@ -90,7 +90,7 @@ You'll see a confirmation message that the reverse DNS has been reset.
 6.  Select the checkboxes of all IP addresses that need to fail over to the chosen Linode.
 7.  Click **Save Changes**.
 
-You have successfully configured IP failover.
+You have successfully configured IP failover. Now, when a failover service such as Keepalived detects failure of your chosen Linode, its IP address will be assigned to the new Linode to avoid an interruption in service. For more information on a practical use case, see our guide on [hosting a website with high availability](/docs/websites/host-a-website-with-high-availability).
 
 ## Networking Restrictions
 
