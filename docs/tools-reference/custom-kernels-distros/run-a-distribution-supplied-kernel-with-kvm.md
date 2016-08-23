@@ -3,11 +3,11 @@ author:
   name: Alex Fornuto
   email: docs@linode.com
 description: 'Instructions for configuring your Linode to run a native distribution-supplied kernel on KVM hosts. Written for distributions using systemd'
-keywords: 'kvm,custom linux, kernel,custom linode,systemd,debian 8,centos,fedora'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Monday, June 29th, 2015
+keywords: 'kvm,custom linux, kernel,custom linode,systemd,debian 8,centos,fedora,gentoo'
+modified: Tuesday, June 7, 2016
 modified_by:
-  name: Alex Fornuto
+  name: Kent Davis
 published: 'Monday June 29th, 2015'
 title: 'Run a Distribution-Supplied Kernel on a KVM Linode'
 ---
@@ -18,6 +18,7 @@ This guide explains how to enable the kernels your OS provides for a KVM Linode.
 * CentOS 7
 * Debian
 * Fedora 22
+* Gentoo
 * Ubuntu
 
 Before you get started, make sure you follow the steps outlined in our [Getting Started](/docs/getting-started) guide. Your Linode needs to be in a functional state. These steps should be performed as `root` on your Linode, via an SSH session.
@@ -34,7 +35,7 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
 
         Linux localhost 4.0.4-x86_64-linode57 #1 SMP Thu May 21 11:01:47 EDT 2015 x86_64 x86_64 x86_64 GNU/Linux
 
-3.  Make a note of the kernel you're currently using (`4.0.4-x86_64` in our example). You will be replacing it with the current latest kernel supplied by your Linux distribution.
+3.  Make a note of the kernel you're currently using (`4.0.4-x86_64` in our example). You will be replacing it with the latest kernel supplied by your Linux distribution.
 
 4.  Install the Linux kernel. The package name differs based on your distribution:
 
@@ -57,14 +58,32 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
     * Ubuntu
 
           apt-get install linux-image-virtual grub2
+    
+    * Gentoo
+
+          echo "GRUB_PLATFORMS=\"coreboot pc\"" >> /etc/portage/make.conf
+
+          emerge --ask sys-boot/grub sys-kernel/gentoo-sources genkernel
+
+          eselect kernel list
+
+          eselect kernel set [# of new kernel]
+
+          zcat /proc/config.gz > /usr/src/linux/.config
+
+          genkernel --oldconfig all
+
 
     {: .note }
     > During the installation of `grub` you may be asked which disk image to install to. Since Linode provides the grub bootloader, the system need only provide the `grub.cfg` file, and you don't need to install `grub` to your MBR.
 
 5.  Verify the kernel version provided by your distribution in `/boot`:
  
-        # ls /boot/vmlinuz*
+        ls /boot/vmlinuz*
         /boot/vmlinuz-3.16.0-4-amd64
+
+    {: .note }
+    > On Gentoo, use `ls /boot/kernel-*`
 
 ## Configuring Grub
 
@@ -98,6 +117,11 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
     * Fedora 22 - Replace with the current kernel version
 
           dracut /boot/initrd-4.0.5-300.fc22.x86_64.img 4.0.5-300.fc22.x86_64 
+          mkdir /boot/grub
+          grub2-mkconfig -o /boot/grub/grub.cfg
+
+    * Gentoo
+
           mkdir /boot/grub
           grub2-mkconfig -o /boot/grub/grub.cfg
 

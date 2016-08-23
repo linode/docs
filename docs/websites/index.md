@@ -10,6 +10,8 @@ published: 'Thursday, July 16th, 2009'
 title: Web Server Guides
 featured:
  - hosting-a-website.md
+ - introduction-to-high-availability.md
+ - host-a-website-with-high-availability.md
  - authbased-access-control-with-apache.md
 categories:
  - lamp

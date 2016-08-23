@@ -5,9 +5,11 @@ author:
 description: Use Squid to create an HTTP proxy server on your Linode
 keywords: 'squid,proxy,ubuntu,12.04,http,'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Monday, March 3rd, 2014
+modified: Sunday, August 7th, 2016
 modified_by:
-  name: Alex Fornuto
+  name: Andhika Maheva Wicaksono
+  email: me@andhika.id
+  website: https://andhikamaheva.com
 published: 'Monday, March 3rd, 2014'
 title: 'Creating an HTTP Proxy Using Squid on Ubuntu 12.04'
 external_resources:
@@ -89,7 +91,7 @@ The following configuration allows for authenticated access to the Squid proxy s
 	{: .file-excerpt }
 	/etc/squid3/squid.conf
 	: ~~~
-		auth_param basic program /usr/lib/squid3/ncsa_auth /etc/squid3/squid_passwd
+		auth_param basic program /usr/lib/squid3/basic_ncsa_auth /etc/squid3/squid_passwd
 		acl ncsa_users proxy_auth REQUIRED
 		http_access allow ncsa_users
 	~~~

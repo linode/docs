@@ -2,11 +2,11 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Resolving an IP address to your domain name.'
-keywords: 'linode dns,linode manager dns,dns configuration'
+description: 'Setting Reverse DNS Resolves an IP Address to a Designated Domain Name (Instead of Vice Versa).'
+keywords: 'reverse dns,linode dns,dns manager,dns configuration,IP address,PTR record,dns'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['dns-manager/','dns-guides/configuring-dns-with-the-linode-manager/']
-modified: Tuesday, Janaury 20, 2015
+modified: Tuesday, January 20, 2015
 modified_by:
   name: James Stewart
 published: 'Thursday, July 9, 2015'

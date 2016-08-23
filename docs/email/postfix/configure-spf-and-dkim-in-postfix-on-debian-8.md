@@ -25,7 +25,7 @@ external_resources:
 
 [SPF (Sender Policy Framework)](http://www.openspf.org/) is a system that identifies to mail servers what hosts are allowed to send email for a given domain. Setting up SPF helps to prevent your email from being classified as spam.
 
-[DKIM (DomainKeys Identified Mail)](http://www.dkim.org/) is a system that lets your official mail servers add a signature to headers of outgoing email and identifies your domain's public key so other mail servers can verify the signature. As with SPF, DKIM helps keep your mail from being considered spam. It also lets mail servers detect when your mail hass been tampered with in transit.
+[DKIM (DomainKeys Identified Mail)](http://www.dkim.org/) is a system that lets your official mail servers add a signature to headers of outgoing email and identifies your domain's public key so other mail servers can verify the signature. As with SPF, DKIM helps keep your mail from being considered spam. It also lets mail servers detect when your mail has been tampered with in transit.
 
 The instructions for setting up DNS for SPF and DKIM are generic. The instructions for configuring the SPF policy agent and OpenDKIM into Postfix should work on any distribution after making respective code adjustments for the package tool and to identify the exact path to OpenDKIM's socket file in Postfix.
 
@@ -69,7 +69,7 @@ The value in an SPF DNS record will look something like the following examples. 
 
 The tags between identify eligible servers from which email to your domain can originate.
 
-- `mx` is a shorthand for all the hosts listed in MX records for your domain. If you've got a solitary mail server, `mx` is probably the best option. If you've got a backup mail server (a second MX record), using `mx` won't cause any problems. Your backup mail server will be identified as an authorized source for email althought it will probably never send any.
+- `mx` is a shorthand for all the hosts listed in MX records for your domain. If you've got a solitary mail server, `mx` is probably the best option. If you've got a backup mail server (a second MX record), using `mx` won't cause any problems. Your backup mail server will be identified as an authorized source for email although it will probably never send any.
 
 - The `a` tag lets you identify a specific host by name or IP address, letting you specify which hosts are authorized. You'd use `a` if you wanted to prevent the backup mail server from sending outgoing mail or if you wanted to identify hosts other than your own mail server that could send mail from your domain (e.g., putting your ISP's outgoing mail servers in the list so they'd be recognized when you had to send mail through them).
 
@@ -186,7 +186,7 @@ DKIM involves setting up the OpenDKIM package, hooking it into Postfix, and addi
 
         # Always oversign From (sign using actual From and a null From to prevent
         # malicious signatures header fields (From and/or others) between the signer
-        # and the verifier.  From is oversigned by default in the Debian pacakge
+        # and the verifier.  From is oversigned by default in the Debian package
         # because it is often the identity key used by reputation systems and thus
         # somewhat security sensitive.
         OversignHeaders     From
@@ -354,7 +354,8 @@ If everything is OK you shouldn't get any output. If you want to see more inform
         # Milter configuration
         # OpenDKIM
         milter_default_action = accept
-        milter_protocol = 2
+        # Postfix ≥ 2.6 milter_protocol = 6, Postfix ≤ 2.5 milter_protocol = 2
+        milter_protocol = 6
         smtpd_milters = local:/opendkim/opendkim.sock
         non_smtpd_milters = local:/opendkim/opendkim.sock
         ~~~
@@ -401,7 +402,7 @@ The reason the YYYYMM format is used for the selector is that best practice call
         chown opendkim:opendkim /etc/opendkim/keys/*
         chmod go-rw /etc/opendkim/keys/*
 
-    Use the `opendkim-testkey` command as described above to ensure that your new record is propogated before you continue.
+    Use the `opendkim-testkey` command as described above to ensure that your new record is propagated before you continue.
 
 5.  Edit `/etc/opendkim/key.table` and change the old YYYYMM values to the new selector, reflecting the current year and month. Save the file.
 

@@ -23,6 +23,9 @@ Now that you've installed Linux and secured your Linode, it's time to start *doi
 >
 >This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
+<div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><iframe src="//fast.wistia.net/embed/iframe/f067hwymxy?videoFoam=true" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen mozallowfullscreen webkitallowfullscreen oallowfullscreen msallowfullscreen width="100%" height="100%"></iframe></div></div>
+<script src="//fast.wistia.net/assets/external/E-v1.js" async></script>
+
 ## Web Server
 
 Hosting a website starts with installing a *web server*, an application on your Linode that delivers content through the Internet. This section will help you get started with *Apache*, the world's most popular web server. For more information about Apache and other web servers, see our [web server reference manuals](/docs/web-servers).
@@ -41,7 +44,7 @@ Installing Apache is easy, but if you leave it running with the default settings
 
 {: .note }
 >
-> These guidelines are designed to optimize Apache for a **Linode 2GB**, but you can use this information for any size Linode. The values are based on the amount of memory available, so if you have a Linode 2GB, multiply all of the values by 2 and use those numbers for your settings.
+> These guidelines are designed to optimize Apache for a **Linode 2GB**, but you can use this information for any size Linode. The values are based on the amount of memory available, so if you have a Linode 4GB, multiply all of the values by 2 and use those numbers for your settings.
 
 1.  Just to be safe, make a copy of Apache's configuration file. You can restore the duplicate (`apache2.backup.conf`) if anything happens to the configuration file.
 

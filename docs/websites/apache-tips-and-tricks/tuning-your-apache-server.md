@@ -29,7 +29,7 @@ There are a variety of tools that can assist in determining if you need to alter
 	echo [PID]  [MEM]  [PATH] &&  ps aux | awk '{print $2, $4, $11}' | sort -k2rn | head -n 20
 	ps -eo pcpu,pid,user,args | sort -k 1 -r | head -20
 
-More specific resources for resource tuning Apache includes Apache `mod_status` and ApacheBuddy.
+More specific resources for resource tuning Apache includes Apache `mod_status` and Apache2Buddy.
 
 ###Apache mod_status
 
@@ -88,11 +88,11 @@ Apache `mod_status` diplays information related to incoming server connections b
 
 		lynx http://localhost/server-status
 
-###ApacheBuddy
+###Apache2Buddy
 
-The ApacheBuddy script, similar to MySQLTuner, reviews your Apache setup, and makes suggestions based on your Apache process memory and overall RAM. Although it is a fairly basic program, focusing on the `MaxClients` directive, ApacheBuddy is useful, and can be run through a single command:
+The Apache2Buddy script, similar to MySQLTuner, reviews your Apache setup, and makes suggestions based on your Apache process memory and overall RAM. Although it is a fairly basic program, focusing on the `MaxClients` directive, Apache2Buddy is useful, and can be run through a single command:
 
-	curl -L http://apachebuddy.pl/ | perl
+	curl -L http://apache2buddy.pl/ | perl
 
 ##Multi Processing Modules
 
