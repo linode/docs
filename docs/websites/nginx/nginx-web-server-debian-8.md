@@ -2,7 +2,7 @@
 author:
     name: Linode
     email: docs@linode.com
-description: 'A basic guide to installing nginx from source on Debian 7 (Wheezy)'
+description: 'A basic guide to installing Nginx from source on Debian 8 (Jessie)'
 keywords: 'nginx,http,web servers,debian,debian jessie,debian 8'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Thursday, July 9th, 2015
