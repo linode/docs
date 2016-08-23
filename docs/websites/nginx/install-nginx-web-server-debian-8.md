@@ -1,7 +1,7 @@
 ---
 author:
-    name: Linode
-    email: docs@linode.com
+  name: Linode
+  email: docs@linode.com
 description: 'Linode''s Basic Guide on How to Install Nginx from Source on Debian 8 (Jessie)'
 keywords: 'nginx,http,web servers,debian,debian jessie,debian 8'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

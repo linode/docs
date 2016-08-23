@@ -12,8 +12,8 @@ modified_by:
   name: Phil Zona
 title: 'Install nginx and a StartSSL Certificate on Debian 8 (Jessie)'
 contributor:
-    name: Ryan Laverdiere
-    link: https://github.com/capecodrailfan
+  name: Ryan Laverdiere
+  link: https://github.com/capecodrailfan
 ---
 
 *This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
