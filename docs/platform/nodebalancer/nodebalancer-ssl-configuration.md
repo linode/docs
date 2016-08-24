@@ -14,14 +14,13 @@ title: NodeBalancer SSL Configuration
 
 This guide will help you install an SSL certificate on your NodeBalancer. It includes step-by-step instructions for configuring a NodeBalancer to redirect all web connections over port 443/HTTPS using SSL. The provided directions are designed to work with Apache and Nginx web servers, running on Debian and Red Hat-based distributions.
 
-
 {: .note }
 >
 > Throughout this guide we will offer several suggested values for specific configuration settings; some of these values will be set by default. These settings are shown in the guide as a reference and you may need to modify them to suit your application accordingly.
 
 ## Before you Begin
 
-- When first configuring back-end Linodes, you should set them up according to the instructions in our [Getting Started](/docs/getting-started) guide. In addition, we recommend that you implement security precautions. For assistance with this, please see our documentation: [Securing Your Server](https://linode.com/docs/security/securing-your-server)
+- When first configuring back-end Linodes, you should set them up according to the instructions in our [Getting Started](/docs/getting-started) guide. In addition, we recommend that you implement security precautions. For assistance with this, please see our guide on [Securing Your Server](https://linode.com/docs/security/securing-your-server)
 
 - Install a commercial or self-signed [SSL certificate](/docs/security/ssl) using the appropriate guide for your distribution.
 
@@ -35,11 +34,10 @@ This guide will help you install an SSL certificate on your NodeBalancer. It inc
     - [Getting Started with NodeBalancers](/docs/platform/nodebalancer/getting-started-with-nodebalancers)
     - [NodeBalancer Reference Guide](/docs/platform/nodebalancer/nodebalancer-reference-guide)
 
-    {: .note}
-> This guide has been written with the assumption that you are logged in as the root user and that you will not need to prepend commands with `sudo`.
+{: .note}
+> This guide has been written with the assumption that you are logged in as the root user. If you are using a limited user account, you will need to prefix some commands with `sudo`.
 
-
-## Installing the SSL Certificate and Private Key on your NodeBalancer
+## Install the SSL Certificate and Private Key on your NodeBalancer
 
 1.  Go to your NodeBalancer's configuration page. If you select the HTTPS protocol, the **Certificate** and **Private Key** fields will appear.
 
@@ -49,9 +47,9 @@ This guide will help you install an SSL certificate on your NodeBalancer. It inc
 
 3.  Copy your unpassphrased private key into the **Private Key** field.
 
-4.  On your NodeBalancer `Configurations` page, select `Create Configuration` to configure each port/protocol that you would like to use, i.e. `80` and `443`.
+4.  On your NodeBalancer **Configurations** page, select **Create Configuration** to configure each port/protocol that you would like to use, i.e. `80` and `443`.
 
-5.  Under `Edit Configuration,`  once selected, fill out the values in the fields as shown below:
+5.  Under **Edit Configuration,**  once selected, fill out the values in the fields as shown below:
 
     - **Port**                    443
     - **Protocol**                HTTPS
@@ -65,19 +63,19 @@ This guide will help you install an SSL certificate on your NodeBalancer. It inc
     - **Check Attempts**          2
     - **Check HTTP Path**         /
 
-    Then, select **`Save Changes`**.
+    Select **Save Changes** when you're finished.
 
-6.  Add as many nodes as you require for the port configuration by selecting **`Add Node`**. Once selected, fill out the values in the fields as shown below, replacing `xxx.xxx.xxx.xxx` with your Linode's private IP address:
+6.  Add as many nodes as you require for the port configuration by selecting **Add Node**. Once selected, fill out the values in the fields as shown below, replacing `xxx.xxx.xxx.xxx` with your Linode's private IP address:
 
     - **Label**                   Backend Linode 1
     - **Address**                 xxx.xxx.xxx.xxx:80
     - **Weight**                  100
     - **Mode**                    Accept
 
-    Then, click on **Save Changes**.
+    Select **Save Changes** when you're finished.
 
 
-## Configuring the Apache Web Server
+## Configure the Apache Web Server
 
 1.  Enable `mod_rewrite` so that you can redirect all traffic back to the NodeBalancer over port 443/HTTPS:
 
@@ -87,8 +85,8 @@ This guide will help you install an SSL certificate on your NodeBalancer. It inc
 
         LoadModule rewrite_module modules/mod_rewrite.so
 
-    {:.caution}
-    > Depending on selected distro, Debian or a Redhat, this file will be located in one of the following locations:
+    {:.note}
+    > Depending on your distribution, this file's location may vary. For example, it can be found at the following paths on Debian and Red Hat based distributions, respectively:
     >
     >     /etc/apache2/apache2.conf
     >
@@ -127,9 +125,9 @@ This guide will help you install an SSL certificate on your NodeBalancer. It inc
         ~~~
 
     {: .caution}
-    > On RHEL based distributions, change the `Rewritelog` path to `/var/log/httpd/rewrite.log`
+    > On Red Hat based distributions, change the `Rewritelog` path to `/var/log/httpd/rewrite.log`
 
-3.  Create the RewriteLog as referenced from above:
+3.  Create the `RewriteLog` as referenced from above:
 
      - Debian / Ubuntu
 
@@ -139,7 +137,7 @@ This guide will help you install an SSL certificate on your NodeBalancer. It inc
 
            touch /var/log/httpd/rewrite.log
 
-## Configuring the Nginx Web Server.
+## Configure the Nginx Web Server
 
 1.  Edit the Nginx server block configuration file to establish the rewrite rules to redirect all incoming traffic from port 80/HTTP back to the NodeBalancer on port 443/HTTPS:
 
@@ -162,6 +160,8 @@ This guide will help you install an SSL certificate on your NodeBalancer. It inc
             }
         ~~~
 
+    In the above configuration, be sure to replace the values of `server_name` and `root` with your actual domain and document root, respectively.
+
 2. Your configuration should now be complete. After reloading your web server, all requests made to your website that are not sent to port 443 should be redirected back to your Nodebalancer on a secure connection with SSL/TLS.
 
 ## Tips for Troubleshooting
@@ -170,23 +170,20 @@ This guide will help you install an SSL certificate on your NodeBalancer. It inc
 
 - Every time you make changes to your web server's document root file or other configuration files, be sure to reload the server:
 
-- For Apache:
+    -   For Apache, choose from the following commands, depending on your distribution:
 
-      service apache2 reload
-      service httpd reload
-      systemctl restart httpd.service
+            service apache2 reload
+            service httpd reload
+            systemctl restart httpd
 
-- For Nginx:
+    -   For Nginx, choose from the following commands, depending on your distribution:
 
-      service nginx reload
-      systemctl restart nginx.service
-
-
-
+            service nginx reload
+            systemctl restart nginx
 
 - When testing behind a load balancer, using curl with the `-I` or `-L` flags can be very helpful when debugging:
 
         curl -I example.com
         curl -L example.com
 
-  The `-I` or `--head` options will fetch the HTTP-header only. The `-L` or `--location` option will detect and display if the server indicates that the requested page has moved to a different location. This option will make curl repeat the request at the new location. If used together with `-I`, headers from all requested pages will be displayed. This is particularly useful if your rewrite rules have managed to create an infinite loop and your web page does not load. Check out the man pages for curl for more info.
+  The `-I` or `--head` options will fetch the HTTP-header only. The `-L` or `--location` option will detect and display if the server indicates that the requested page has moved to a different location. This option will make curl repeat the request at the new location. If used together with `-I`, headers from all requested pages will be displayed. This is particularly useful if your rewrite rules have created an infinite loop and your web page does not load. Refer to the [man pages](https://curl.haxx.se/docs/manual.html) for `curl` for more info.
