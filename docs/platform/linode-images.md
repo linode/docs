@@ -67,10 +67,14 @@ Deploying one of your saved images to any Linode under your account is a simple 
 
 1.  Navigate to the Dashboard of the Linode you wish to deploy your image to.
 
-2.  Click the **Deploy a Linux Distribution** link and select your image from the drop down list, under the **Images** heading.
+2.  Click the **Deploy an Image** link and select your image from the drop down list, under the **Dashboard** heading.
+ {: .note}
+>If you are deploying a recently deleted Linode's disks(which are automatically saved) then the image will be at the bottom of the drop down list.
+
+	[![Deploy an Image Link](/docs/assets/deploy-an-image2.png)](/docs/assets/deploy-an-image2.png)
+
+3.  Select your desired disk size and set your root password, then click Deploy to create a configuration profile with your saved disk. If this is an image you made with a root password previously, you can leave it blank to keep the old one.
 
 	[![Deploy a Distribution](/docs/assets/deploy-a-distro.png)](/docs/assets/deploy-a-distro.png)
-
-3.  Select your desired disk size and set your root password, then click Deploy to create a configuration profile with your saved disk.
 
 Once you've completed these steps, your saved image will be deployed on your new Linode.
