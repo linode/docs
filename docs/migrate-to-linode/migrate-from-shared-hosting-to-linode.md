@@ -15,7 +15,7 @@ title: Migrate from Shared Hosting to Linode
 
 This guide walks you through migrating your website from a shared hosting provider to a Linode running a LAMP stack. A Linode server gives you much more power and flexibility than a shared host, but these advantages come at the cost of increased complexity and responsibility.
 
-The biggest change between shared hosting and Linode's cloud is that with Linode you have full administrative access to the server without intervention. This means that solely you will be responsible for keeping your software updated and your valuable data backed up. Our [Guides and Tutorials](/docs/) area contains all of the information you'll need for basic [server administration](/docs/tools-reference/linux-system-administration-basics), [security hardening](/docs/security/securing-your-server) and [system backups](/docs/tools-reference/linux-system-administration-basics).
+The biggest change between shared hosting and Linode's cloud is that with Linode you have full administrative access to the server without intervention. This means that solely you will be responsible for keeping your software updated and your valuable data backed up. Our [Guides and Tutorials](/docs/) area contains all of the information you'll need for basic [server administration](/docs/tools-reference/linux-system-administration-basics), [security hardening](/docs/security/securing-your-server) and [system backups](/docs/security/backups/backing-up-your-data).
 
 ## Before You Begin
 
@@ -23,9 +23,11 @@ This guide assumes three things:
 
 *   You already have a Linode account.
 *   You know how to sign in to the [Linode Manager](https://manager.linode.com/).
-*   You have at least basic knowledge of how to use SSH.
-*   The site being migrated is capable of running on a LAMP stack.
-  *   If the site is being migrated from a Windows/IIS host, and is dependent on features or frameworks specific to Windows, or requires a particular server configuration, then it may not work natively in a LAMP environment. If you're unsure about this, *seriously consider pausing your migration,* and consult your web developer.
+*   You have a basic knowledge of how to use SSH.
+
+{: .note }
+>
+> As this guide is intended to be general in nature, it does not take into account the specific dependencies or frameworks of each individual setup. If you're unsure if your website is compatible with a LAMP configuration, we strongly suggest consulting your web developer before proceeding.
 
 See our [Getting Started](/docs/getting-started) guide for more information on signing up and setting up your Linode.
 
@@ -163,7 +165,7 @@ A Linode can run both your web server and an [email server](/docs/mailserver) fo
 
 The last step in your Linode migration is to point your domain at your Linode's IP address. If you decided to lower your TTL, make sure you've waited out the original time period.
 
-1.  Follow [these instructions](/docs/networking/dns/dns-manager#adding-1) to create DNS records at Linode for your domain.
+1.  Follow [these instructions](networking/dns/dns-manager-overview#add-a-domain-zone) to create DNS records at Linode for your domain.
 
 2.  If you use a third-party email service, edit the default MX records.
 
