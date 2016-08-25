@@ -378,7 +378,7 @@ If everything is OK you shouldn't get any output. If you want to see more inform
 
 The easiest way to verify that everything's working is to send a test e-mail to `check-auth@verifier.port25.com` using an email client configured to submit mail to the submission port on your mail server. It will analyze your message and mail you a report indicating whether your email was signed correctly or not. It also reports on a number of other things such as SPF configuration and SpamAssassin flagging of your domain. If there's a problem, it'll report what the problem was.
 
-### Set up Author Domain Signing Practices (ADSP) (optional)
+### **Optional:** Set up Author Domain Signing Practices (ADSP)
 
 As a final item, you can add an ADSP policy to your domain saying that all emails from your domain should be DKIM-signed. As usual, it's done with a TXT record for host `_adsp._domainkey` in your domain with a value of `dkim=all`. If you're using Linode's DNS Manager, the screen for the new text record will look like this:
 
@@ -386,7 +386,7 @@ As a final item, you can add an ADSP policy to your domain saying that all email
 
 You don't need to set this up, but doing so makes it harder for anyone to forge email from your domains because recipient mail servers will see the lack of a DKIM signature and reject the message.
 
-### Set up Domain Message Authentication, Reporting & Conformance (optional)
+### **Optional:** Set up Domain Message Authentication, Reporting & Conformance (DMARC)
 
 The DMARC DNS record can be added to your domain to advise mail servers what you think they should do with mail claiming to be from your domain that fails validation with SPF and/or DKIM, and to request reports on failing mail. DMARC should only be set up if you have SPF and DKIM set up and operating successfully. If you add the DMARC DNS record without having both SPF and DKIM in place, all messages from your domain will fail validation which may cause them to be discarded or relegated to a spam folder.
 
@@ -394,13 +394,25 @@ The DMARC record is a TXT record for host `_dmarc` in your domain containing the
 
     v=DMARC1;p=quarantine;sp=quarantine;adkim=r;aspf=r
 
-This requests mail servers to quarantine (do not discard, but separate from regular messages) any email that fails either SPF or DKIM checks. No reporting is requested. Very few mail servers implement the software to generate reports on failed messages, so there seems to be little point in requesting them. If you do wish to request reports, the value would be:
+This requests mail servers to quarantine (do not discard, but separate from regular messages) any email that fails either SPF or DKIM checks. No reporting is requested. Very few mail servers implement the software to generate reports on failed messages, so there seems to be little point in requesting them. If you do wish to request reports, the value would be similar to this example, added as a single string:
 
     v=DMARC1;p=quarantine;sp=quarantine;adkim=r;aspf=r;fo=1;rf=afrf;rua=mailto:youremail@example.com
 
-all as a single string. Replace `youremail@example.com` in the `mailto:` URL with your own email or an email address you own dedicated to receiving reports (an address such as `dmarc@example.com`). This requests aggregated reports in XML showing how many messages fell into each combination of pass and fail results and the mail server addresses sending them. If you're using Linode's DNS Manager, the screen for the new text record will look like this:
+Replace `youremail@example.com` in the `mailto:` URL with your own email or an email address you own dedicated to receiving reports (an address such as `dmarc@example.com`). This requests aggregated reports in XML showing how many messages fell into each combination of pass and fail results and the mail server addresses sending them. If you're using Linode's DNS Manager, the screen for the new text record will look like this:
 
 ![Linode DNS manager add TXT record](/docs/assets/Postfix_DMARC_TXT_record.png)
+
+DMARC records have a number of available tags and options. Here's a brief overview of the tags used in these examples:
+
+* `v=` specifies the protocol version, in this case `DMARC1`.
+* `p=` determines the policy for the root domain, such as "example.com." The available options:
+    * `quarantine` requests that the recipient set aside emails that fail validation for processing.
+    * `reject` instructs the receiving mail server to reject the emails that fail validation.
+    * `none` requests that the receiver take no action if an email does not pass a DMARC check.
+* `sp=` determines the policy for subdomains, such as "subdomain.example.com." It takes the same arguments as the `p=` tag.
+* `adkim=` specifies the alignment mode for DKIM, which determines how strictly records are validated. More information on  The available options are:
+    * `r` relaxed alignment mode. This requires that
+
 
 ### Key rotation
 
@@ -434,5 +446,3 @@ The reason the YYYYMM format is used for the selector is that best practice call
     Make sure they both start without any errors.
 
 7.  After a couple of weeks, all email in transit should either have been delivered or bounced and the old DKIM key information in DNS won't be needed anymore. Delete the old `YYYYMM._domainkey` TXT records in each of your domains, leaving just the newest ones (most recent year and month). Don't worry if you forget and leave the old keys around longer than planned. There's no security issue. Removing the obsolete records is more a matter of keeping things neat and tidy than anything else.
-
-##
