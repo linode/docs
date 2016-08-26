@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Linode''s Basic Guide on How to Install Nginx from Source on Debian 8 (Jessie)'
+description: 'How to Install Nginx from Source on Debian 8 (Jessie)'
 keywords: 'nginx,http,web servers,debian,debian jessie,debian 8'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 published: 'Thursday, July 9th, 2015'
@@ -10,6 +10,7 @@ modified: Thursday, August 18th, 2016
 modified_by:
     name: Phil Zona
 title: 'Install Nginx Web Server on Debian 8'
+alias: ['websites/nginx/nginx-web-server-debian-8/']
 external_resources:
  - '[Linode nginx Documentation](/docs/websites/nginx/)'
  - '[Nginx Community Documentation](http://wiki.nginx.org)'
