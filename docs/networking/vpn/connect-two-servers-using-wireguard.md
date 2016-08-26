@@ -19,7 +19,7 @@ WireGuard is an extremely simple and fast VPN that utilizes state-of-the-art cry
 Before installing WireGuard, we assume that you have followed our [Getting Started Guide](/docs/getting-started/). If you're new to Linux server administration you may be interested in our [Introduction to Linux Concepts Guide](/docs/tools-reference/introduction-to-linux-concepts), [Beginner's Guide](/docs/beginners-guide/) and [Administration Basics Guide](/docs/using-linux/administration-basics). If you're concerned about securing on your Linode, you might be interested in our [Security Basics](/docs/security/basics) article as well.
 
 ## Requirements
-This guide assumes that you're running the latest version of the Linux kernel, because WireGuard requires a kernel older than 4.1 in order to function correctly.
+This guide assumes that you're running the latest version of the Linux kernel, because WireGuard requires a kernel newer than 4.1 in order to function correctly.
 
 ## Installing WireGuard
 
