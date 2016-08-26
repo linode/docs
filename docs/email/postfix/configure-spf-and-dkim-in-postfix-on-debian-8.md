@@ -404,14 +404,19 @@ Replace `youremail@example.com` in the `mailto:` URL with your own email or an e
 
 DMARC records have a number of available tags and options. Here's a brief overview of the tags used in these examples:
 
-* `v=` specifies the protocol version, in this case `DMARC1`.
-* `p=` determines the policy for the root domain, such as "example.com." The available options:
-    * `quarantine` requests that the recipient set aside emails that fail validation for processing.
-    * `reject` instructs the receiving mail server to reject the emails that fail validation.
+* `v` specifies the protocol version, in this case `DMARC1`.
+* `p` determines the policy for the root domain, such as "example.com." The available options:
+    * `quarantine` instructs that if an email fails validation, the recipient should set it aside for processing.
+    * `reject` requests that the receiving mail server reject the emails that fail validation.
     * `none` requests that the receiver take no action if an email does not pass a DMARC check.
-* `sp=` determines the policy for subdomains, such as "subdomain.example.com." It takes the same arguments as the `p=` tag.
-* `adkim=` specifies the alignment mode for DKIM, which determines how strictly records are validated. More information on  The available options are:
-    * `r` relaxed alignment mode. This requires that
+* `sp` determines the policy for subdomains, such as "subdomain.example.com." It takes the same arguments as the `p` tag.
+* `adkim` specifies the alignment mode for DKIM, which determines how strictly DKIM records are validated. The available options are:
+    * `r` relaxed alignment mode, DKIM authentication is less strictly enforced.
+    * `s` strict alignment mode. Only an exact match with the DKIM entry for the root domain will be seen as validated.
+* `aspf` determines the alignment mode for SPF verification. It takes the same arguments as `adkim`.
+* ``
+* `fo`
+
 
 
 ### Key rotation
@@ -434,7 +439,7 @@ The reason the YYYYMM format is used for the selector is that best practice call
         chown opendkim:opendkim /etc/opendkim/keys/*
         chmod go-rw /etc/opendkim/keys/*
 
-    Use the `opendkim-testkey` command as described above to ensure that your new record is propogated before you continue.
+    Use the `opendkim-testkey` command as described above to ensure that your new record is propagated before you continue.
 
 5.  Edit `/etc/opendkim/key.table` and change the old YYYYMM values to the new selector, reflecting the current year and month. Save the file.
 
