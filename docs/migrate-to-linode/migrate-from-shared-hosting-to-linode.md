@@ -27,15 +27,15 @@ This guide assumes three things:
 
 {: .note }
 >
-> As this guide is intended to be general in nature, it does not take into account the specific dependencies or frameworks of each individual setup. If you're unsure if your website is compatible with a LAMP configuration, we strongly suggest consulting your web developer before proceeding.
+> Because this guide is intended to be general in nature, it does not take into account the specific dependencies or frameworks of each individual setup. If you're unsure if your website is compatible with a LAMP configuration, we strongly suggest consulting your web developer before proceeding.
 
 See our [Getting Started](/docs/getting-started) guide for more information on signing up and setting up your Linode.
 
 ## Prepare Your Domain Name to Move
 
-Start by lowering the *Time to Live* (TTL) for your domain so the migration won't have a negative impact on your site's visitors. TTL tells DNS caching servers how long to save information about your domain. Since DNS addresses don't often change server IP addresses, TTL is normally about 24 hours.
+Start by lowering the *Time to Live* (TTL) setting for your domain so the migration won't have a negative impact on your site's visitors. TTL tells DNS caching servers how long to save information about your domain. Since DNS addresses don't often change server IP addresses, default TTL is normally about 24 hours.
 
-When changing servers, however, you want a low TTL to make sure that when you update your domain information, it takes effect quickly. Otherwise, your domain could resolve to your old server's IP for up to 24 hours. However, changing TTL is not a guarantee because caching DNS servers ignore TTL, but it does the most to make sure that your site has a smooth transition.
+When changing servers, however, you want a low TTL to make sure that when you update your domain information, it takes effect quickly. Otherwise, your domain could resolve to your old server's IP address for up to 24 hours. However, changing TTL is not a guarantee because caching DNS servers ignore TTL, but it does the most to make sure that your site has a smooth transition.
 
 1.  Locate your current *nameservers* in your shared hosting provider's account control panel. If you're not sure what your nameservers are, you can find out with a [Whois Search tool](http://www.internic.net/whois.html). You will see several nameservers listed, probably all at the same company.
 
@@ -43,9 +43,9 @@ When changing servers, however, you want a low TTL to make sure that when you up
 
 2.  Contact your domain registrar for details on how to lower the TTL for your domain. Every provider is a little different, so you may have to ask for instructions.
 
-3.  Make a note of your current TTL. It will be listed in seconds, so you need to divide by 3600 to get the number of hours (ex: 86,400 seconds = 24 hours). This is the amount of time that you need to wait between now and when you actually move your domain.
+3.  Make a note of your current TTL. It will be listed in seconds, so you need to divide by 3600 to get the number of hours (e.g. 86,400 seconds = 24 hours). This is the amount of time that you need to wait between now and when you actually move your domain.
 
-4.  Lower your TTL as low as it will go. 300 seconds = 5 minutes, so that's a good choice if it's available.
+4.  Lower your TTL to its lowest setting. For example, 300 seconds is equal to 5 minutes, so that's a good choice if it's available.
 
 5.  Make sure you wait out the original TTL from Step 3 before actually moving your domain. In the meantime, you can continue through this page to back up your data, deploy your Linode and upload your website. For more information on domain TTL, see our [DNS guide](/docs/networking/dns/dns-manager#setting-the-time-to-live-or-ttl).
 
@@ -57,7 +57,7 @@ When changing servers, however, you want a low TTL to make sure that when you up
 
 The next step is to back up your site from your old server to your desktop. There are multiple ways to do this, though you may find it easiest to work directly through your host's control panel from your web browser. The location of your website on the server will vary among hosting providers, though it should be something along the lines of `/home/account_name/public_html`.
 
-You may want to explore whether the application you use for your website has its own backup instructions, such as the combination of [WordPress](https://codex.wordpress.org/WordPress_Backups) and [phpMyAdmin](http://docs.phpmyadmin.net/en/latest/faq.html?highlight=backup#how-can-i-backup-my-database-or-table), for example. Regardless of backup method, every website is made up of files and databases so you can use the instructions in this section to back up every type of website.
+You may want to explore whether the application you use for your website has its own backup instructions, such as the combination of [WordPress](https://codex.wordpress.org/WordPress_Backups) and [phpMyAdmin](http://docs.phpmyadmin.net/en/latest/faq.html?highlight=backup#how-can-i-backup-my-database-or-table), for example. Regardless of the backup method, every website is made up of files and databases so you can use the instructions in this section to back up every type of website.
 
 If you have a MySQL or MariaDB database on your old server, you need to back it up, too. Your old host probably has a control panel that will allow you to make an easy backup of your database. Contact them for instructions. If your old host does not have a database backup solution, you can follow our instructions to [Back Up Your MySQL Databases](/docs/databases/mysql/backup-options) using the command line.
 
@@ -83,10 +83,10 @@ The next step is to build the software environment needed for your site to funct
 
 [LAMP](https://en.wikipedia.org/wiki/LAMP_%28software_bundle%29) stands for the following:
 
-*   Linux: Linode offers a LAMP StackScript for CentOS, Debian and Ubuntu. Which Linux distribution you choose is up to you. While there will be no discernible difference to your site's users, each distro has its own positives and negatives.
-*   Apache: A web server that handles HTTP and HTTPS internet traffic.
-*   MySQL: A database server.
-*   PHP: A software language that lets you have dynamic website content.
+*   **Linux:** Linode offers a LAMP StackScript for CentOS, Debian and Ubuntu. Which Linux distribution you choose is up to you. While there will be no discernible difference to your site's users, each distro has its own pros and cons.
+*   **Apache:** A web server that handles HTTP and HTTPS internet traffic.
+*   **MySQL:** A database server.
+*   **PHP:** A software language that lets you have dynamic website content.
 
 1.  After you select a data center for your Linode, you'll be prompted to deploy a *Linux distribution*. Select the option to **Deploy using StackScripts**.
 
@@ -107,7 +107,7 @@ The next step is to build the software environment needed for your site to funct
     *   Distribution: Choose your preferred Linux distro. If you are relatively new to Linux, the newest Ubuntu LTS is a good start because it has five-year release cycles and widely available support.
     *   Deployment Disk Size: Leave the default setting.
     *   Swap Disk: Leave the default setting.
-    *   Root password: Not to be confused with the MySQL root uesr's password, this root password is the master key to your Linode. You want a strong password here, and ideally, to later remove password access to your Linode in exchange for [SSH key authentication](/docs/security/securing-your-server#using-ssh-key-pair-authentication).
+    *   Root password: Not to be confused with the MySQL root user's password, this root password is the master key to your Linode. You want a strong password here, and ideally, to later remove password access to your Linode in exchange for [SSH key authentication](/docs/security/securing-your-server#using-ssh-key-pair-authentication).
 
 4.  Click the **Deploy** button. You will be redirected to your Linode's **Dashboard**. Watch the **Host Job Queue**. You should see a number of jobs in progress.
 
@@ -147,11 +147,11 @@ Once you've installed all the underlying software for your Linode, you can uploa
 
     {: .note}
     >
-    >`example_user` again should be the user on your Linode you want to log in as.
+    >`example_user` should be the user on your Linode you want to log in as, and `example.com` should be replaced by your domain name.
 
     If you have a database, you'll need to upload it to your Linode. If you're more comfortable using a control panel, you may want to [install phpMyAdmin](/docs/search?q=phpmyadmin) at this point. You can also [restore your database](/docs/security/backups/back-up-your-mysql-databases/#restoring-an-entire-dbms-from-backup) using the command line.
 
-3.  Now check your website's IP address in your browser like you did earlier. Your website should be visible.
+3.  Now check your website's IP address in your browser. Your website should be displayed.
 
     {: .note }
     >
@@ -178,16 +178,16 @@ The last step in your Linode migration is to point your domain at your Linode's 
 
 4.  Wait five minutes for the domain to propagate. If you did not lower your TTL first, this can take up to 48 hours.
 
-5.  Visit your domain in a web browser. It should now be showing the website from Linode, rather than your old host. If you can't tell the difference, you can use the [DIG utility](http://www.kloth.net/services/dig.php). It should show the IP address for your Linode.
+5.  Navigate to your domain in a web browser. It should now show the website from Linode, rather than your old host. If you can't tell the difference, you can use the [DIG utility](http://www.kloth.net/services/dig.php). It should show the IP address for your Linode.
 
-6.  [Set reverse DNS](/docs/networking/dns/setting-reverse-dns) for your domain so you don't have any mail problems.
+6.  [Set reverse DNS](/docs/networking/dns/setting-reverse-dns) for your domain so you don't have mail problems.
 
     {: .note }
     >
-    > If you're having trouble seeing your site at the new IP address, you may need to try visiting it in a different browser. Sometimes your browser will cache old DNS data, even if it has updated everywhere else.
+    > If you're having trouble seeing your site at the new IP address, you may need to try visiting it in a different browser, or in a private browsing session. Sometimes your browser will cache old DNS data, even if it has updated everywhere else.
 
-Your website is now fully migrated to Linode. It would be a good idea to wait a few days before cancelling your shared hosting service to make sure that everything is running smoothly and you don't need to grab more files from your shared host for any reason.
+Your website is now fully migrated to Linode. It is a good idea to wait a few days before cancelling your shared hosting service to make sure that everything is running smoothly and you don't need to obtain more files from your shared host.
 
 ## Next Steps
 
-Your server is only as secure as you make it. You should follow our [Securing Your Server](/docs/securing-your-server) guide to make sure your Linode is hardened against unauthorized access.
+Your server is only as secure as you make it. Follow our [Securing Your Server](/docs/securing-your-server) guide to make sure your Linode is hardened against unauthorized access.
