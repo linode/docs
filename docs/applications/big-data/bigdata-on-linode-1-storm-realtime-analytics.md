@@ -78,7 +78,7 @@ You can set up multiple Cluster Manager nodes if necessary to satisfy organizati
 
         you@workstation$ git clone "https://github.com/pathbreak/storm-linode"
         you@workstation$ cd storm-linode
-        you@workstation$ git checkout $(git tag -l "release*" | head -n1)
+        you@workstation$ git checkout $(git describe $(git rev-list --tags='release*' --max-count=1))
 
 
 3.  Make them executable:
