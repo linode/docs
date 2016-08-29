@@ -402,7 +402,7 @@ Replace `user@example.com` in the `mailto:` URL with your own email or an email 
 
 ![Linode DNS Manager add TXT record](/docs/assets/Postfix_DMARC_TXT_record.png)
 
-DMARC records have a number of available tags and options. Here's an overview of the tags used in these examples:
+DMARC records have a number of available tags and options. These tags are used to control your authentication settings:
 
 * `v` specifies the protocol version, in this case `DMARC1`.
 * `p` determines the policy for the root domain, such as "example.com." The available options:
@@ -414,6 +414,9 @@ DMARC records have a number of available tags and options. Here's an overview of
     * `r` relaxed alignment mode, DKIM authentication is less strictly enforced.
     * `s` strict alignment mode. Only an exact match with the DKIM entry for the root domain will be seen as validated.
 * `aspf` determines the alignment mode for SPF verification. It takes the same arguments as `adkim`.
+
+If you wish to receive authentication failure reports, DMARC provides a number of configuration options. You can use the following tags to customize the formatting of your reports, as well as the criteria for report creation. 
+
 * `rua` specifies the email address that will receive aggregate reports. This uses the `mailto:user@example.com` syntax, and accepts multiple addresses separated by commas. Aggregate reports are usually generated once per day.
 * `ruf` specifies the email address that will receive detailed authentication failure reports. This takes the same arguments as `rua`. With this option, each authentication failure would result in a separate report.
 * `fo` allows you to specify which failed authentication methods will be reported. One or more of the following options can be used:
