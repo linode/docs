@@ -15,34 +15,36 @@ external_resources:
  - '[Setting up an SSL Secured Webserver with CentOS](http://wiki.centos.org/HowTos/Https)'
 ---
 
-This guide will assist you with enabling SSL for websites served with the Apache2 web server on CentOS or Fedora, to ensure secure access to your website and services.
+This guide will show you how to enable SSL for websites served through Apache web server on CentOS or Fedora in order to ensure secure access to your website and services.
 
-## Prerequisites
+## Before You Begin
 
-This guide assumes that you are running Apache2 on CentOS or Fedora. Prior to starting this guide, you will also need to ensure that the following steps have been taken on your Linode:
+This guide assumes that you are running Apache2 on CentOS or Fedora. Prior to starting this guide, ensure that the following steps have been taken on your Linode:
 
--   Follow our [Getting Started](/docs/getting-started/) guide to configure your Linode.
+-  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
--   Follow our [LAMP on CentOS 7](/docs/websites/lamp/lamp-on-centos-7) guide, and create a site that you wish to secure with SSL.
+-  Complete our [LAMP on CentOS 7](/docs/websites/lamp/lamp-on-centos-7) guide, and create a site that you wish to secure with SSL.
 
--   Follow our guide for obtaining either a [self signed](docs/security/ssl/creating-a-selfsigned-certificate-centos-fedora) or [commercial](/docs/security/ssl/obtaining-a-commercial-ssl-certificate-centos-fedora.md) SSL certificate.
+-  Follow our guide for obtaining either a [self-signed](docs/security/ssl/creating-a-selfsigned-certificate-centos-fedora) or [commercial](/docs/security/ssl/obtaining-a-commercial-ssl-certificate-centos-fedora.md) SSL certificate.
 
--   In order to configure your Linode to function with SSL, you will need to ensure that mod_ssl and OpenSSL are installed on your system.  You can do so by running the following command:
+-  In order to configure your Linode to function with SSL, you will need to ensure that `mod_ssl` and `OpenSSL` are installed on your system.  You can do so by running the following command:
 
         yum install mod_ssl openssl
 
 ## Configure Apache to use the SSL Certificate
 
-1.  Edit the virtual host entries in the `/etc/httpd/conf.d/ssl.conf` file to include the certificate files and virtual host information that should be used by each domain. For each virtual host, you will need to replicate the configuration shown below. Replace any mentions of `example.com` with your own domain. If you're using a commercially signed certificate and you've manually downloaded the root CA cert to `/etc/pki/tls/certs`, ensure that the `SSLCACertificateFile` value is configured to point to the root certificate directly. If the root certificate is being provided via the "ca-certificates" bundle, you can simply exclude the `SSLCACertificateFile` line.
+1.  Edit the virtual host entries in the `/etc/httpd/conf.d/ssl.conf` file to include the certificate files and virtual host information that should be used by each domain. For each virtual host, replicate the configuration shown below. Replace each mention of `example.com` with your own domain.
+
+    If you're using a commercially signed certificate and you've manually downloaded the root CA cert to `/etc/pki/tls/certs`, ensure that the `SSLCACertificateFile` value is configured to point to the root certificate directly. If the root certificate is being provided via the "ca-certificates" bundle, you can simply exclude the `SSLCACertificateFile` line.
 
     {: .file-excerpt }
     /etc/httpd/conf.d/ssl.conf
-    :   ~~~ apache
+    :   ~~~ conf
         <VirtualHost *:443>
              SSLEngine On
              SSLCertificateFile /etc/pki/tls/certs/example.com.crt
              SSLCertificateKeyFile /etc/pki/tls/private/example.com.key
-             SSLCACertificateFile /etc/pki/tls/certs/root-certificate.crt  #  If using a self-signed certificate or a root certificate provided by ca-certificates, omit this line
+             SSLCACertificateFile /etc/pki/tls/certs/root-certificate.crt  #If using a self-signed certificate or a root certificate provided by ca-certificates, omit this line
 
              ServerAdmin info@example.com
              ServerName www.example.com
@@ -57,3 +59,7 @@ This guide assumes that you are running Apache2 on CentOS or Fedora. Prior to st
         systemctl restart httpd
 
 You should now be able to visit your site with SSL enabled.
+
+## Test Your Configuration
+
+Test your SSL configuration using the test page at your certificate issuer's website, then perform a deep analysis through the [Qualys SSL Labs SSL Server Test](https://www.ssllabs.com/ssltest/)

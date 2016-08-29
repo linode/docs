@@ -31,7 +31,9 @@ If you're hosting multiple websites with commercial SSL certificates on the same
 
 {: .note}
 >
->This guide assumes that you are logged in as the root user, and that you will not need to prepend commands with `sudo`.
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, see the [Linux Users and Groups guide](/docs/tools-reference/linux-users-and-groups).
+>
+>Replace each instance of `example.com` in this guide with your site's domain name.
 
 ## Create a Certificate Signing Request
 
