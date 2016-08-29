@@ -9,7 +9,7 @@ published: 'Thursday, March 24th, 2016'
 modified: Thursday, March 24th, 2016
 modified_by:
   name: Linode
-title: 'Big Data in the Linode cloud - Part 1: Streaming Data Processing using Apache Storm'
+title: 'Big Data in the Linode Cloud: Streaming Data Processing with Apache Storm'
 contributor:
   name: Karthik Shiraly
   link: https://github.com/pathbreak
