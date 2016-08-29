@@ -21,7 +21,7 @@ external_resources:
 
 ## Introduction
 
-[Apache Storm](http://storm.apache.org/) is a big data technology that enables software, data and infrastructure engineers in startups and large enterprises to process high velocity, high volume data in real time and extract useful information. Any project that involves processing of high velocity data streams in real time can benefit from it.
+[Apache Storm](http://storm.apache.org/) is a big data technology that enables software, data, and infrastructure engineers in startups and large enterprises to process high velocity, high volume data in real time and extract useful information. Any project that involves processing of high velocity data streams in real time can benefit from it.
 
 Some use cases where Storm is a good solution:
 
@@ -30,425 +30,279 @@ Some use cases where Storm is a good solution:
 -   Analysis of server logs
 -   IoT sensor data processing
 
-
-This article describes how to create Storm clusters on the Linode cloud using a set of shell scripts that use Linode's powerful Application Programming Interfaces (APIs) to programmatically create and configure large clusters. The deployed architecture will look like this:
+This article describes how to create Storm clusters on the Linode cloud using a set of shell scripts that use Linode's Application Programming Interfaces (APIs) to programmatically create and configure large clusters. The deployed architecture will look like this:
 
 ![Architecture](/docs/assets/storm-architecture-650px.png)
 
-*Zookeeper* is a critical distributed systems technology that Storm depends on for functioning correctly.
+*Zookeeper* is a critical distributed systems technology that Storm depends on to function correctly.
 
 ## Target Audience
 
-This article is targeted at
+This article is intended for:
 
--   Software Engineers, Data Engineers and Data Scientists interested in using Storm clusters for processing real-time data.
-
--   Infrastructure Engineers, System Administrators and DevOps Professionals tasked with deploying and managing real-time data processing infrastructure.
+-   Software Engineers, Data Engineers and Data Scientists interested in using Storm clusters for processing real-time data
+-   Infrastructure Engineers, System Administrators and DevOps Professionals tasked with deploying and managing real-time data processing infrastructure
 
 ## Before You Begin
 
-### OS requirements
+### OS Requirements
 
-+   This article assumes that the workstation used for initial setup of Cluster Manager Linode is running Ubuntu 14.04 LTS or Debian 8. Other versions, distributions or OSes have not been tested. 
-
-+   After initial setup, any SSH capable workstation can be used for logging into the Cluster Manager Linode or cluster nodes.
-
-+   The Cluster Manager Linode can have either Ubuntu 14.04 LTS or Debian 8 installed.
-
-+   A Zookeeper or Storm cluster can have either Ubuntu 14.04 LTS or Debian 8 installed on its nodes. Its distribution need not be the same one as the one installed on the Cluster Manager Linode managing it.
+-   This article assumes that the workstation used for the initial setup of the Cluster Manager Linode is running Ubuntu 14.04 LTS or Debian 8. Other versions, distributions and operating systems have not been tested. 
+-   After the initial setup, any SSH capable workstation can be used to log in to the Cluster Manager Linode or cluster nodes.
+-   The Cluster Manager Linode can have either Ubuntu 14.04 LTS or Debian 8 installed.
+-   A Zookeeper or Storm cluster can have either Ubuntu 14.04 LTS or Debian 8 installed on its nodes. Its distribution does not need to be the same one as the one installed on the Cluster Manager Linode.
 
 ### Get a Linode API Key
 
-Follow the steps in [Generating an API Key](/docs/platform/api/api-key) and save the shown key securely, because it has to be entered into configuration files in upcoming steps.
+Follow the steps in [Generating an API Key](/docs/platform/api/api-key) and save the shown key securely. It will be entered into configuration files in upcoming steps.
 
-If the key expires or is removed, remember to create a new one and update the *api_env_linode.conf* API environment configuration file on Cluster Manager Linode. More about this in the next section, [Setup the Cluster Manager Linode](#setup-the-cluster-manager-linode).
+If the key expires or is removed, remember to create a new one and update the *api_env_linode.conf* API environment configuration file on Cluster Manager Linode. This will be explained further in the next section.
 
-## Setup the Cluster Manager Linode
+## Set Up the Cluster Manager Linode
 
-The first step is setting up a central *Cluster Manager* linode to store details of all Storm clusters, and enable authorized employees to create, manage or access those clusters. 
+The first step is setting up a central *Cluster Manager* Linode to store details of all Storm clusters, and enable authorized users to create, manage or access those clusters. 
 
-You can set up multiple Cluster Manager nodes if necessary to satisfy organizational or security needs. For example, two departments can each have its own Cluster Manager to manage its respective clusters and keep data access restricted to its own members.
+You can set up multiple Cluster Manager nodes if necessary to satisfy organizational or security needs. For example, two departments can each have their own Cluster Manager nodes to manage their respective clusters and keep data access restricted to their own members.
 
 1.  The scripts talk to Linode's API using Python. Install Git, Python 2.7 and curl on your Ubuntu 14.04 LTS or Debian 8 workstation:
 
-        you@workstation$ sudo apt-get install python2.7 curl git
+        sudo apt-get install python2.7 curl git
 
 2.  Download the project git repository:
 
-        you@workstation$ git clone "https://github.com/pathbreak/storm-linode"
-        you@workstation$ cd storm-linode
-        you@workstation$ git checkout $(git describe $(git rev-list --tags='release*' --max-count=1))
+        git clone "https://github.com/pathbreak/storm-linode"
+        cd storm-linode
+        git checkout $(git describe $(git rev-list --tags='release*' --max-count=1))
 
+3.  Make the shell and Python scripts executable:
 
-3.  Make them executable:
+        chmod +x *.sh *.py
 
-        you@workstation$ chmod +x *.sh *.py
-    
-    
 4.  Make a working copy of the API environment configuration file:
 
-        you@workstation$ cp api_env_example.conf api_env_linode.conf
+        cp api_env_example.conf api_env_linode.conf
     
-5.  Open api_env_linode.conf in an editor, and set `LINODE_KEY` to the API key previously created (see [Get a Linode API key](#get-a-linode-api-key) ).
+5.  Open api_env_linode.conf in a text editor, and set `LINODE_KEY` to the API key previously created (see [Get a Linode API key](#get-a-linode-api-key) ).
 
-        you@workstation$ nano -Y sh api_env_linode.conf
-
-        ...
+    {: .file-excerpt}
+    ~/storm-linode/api_env_linode.conf
+    :   ~~~
         export LINODE_KEY=Enter your API key here
-        ...    
-    
+        ~~~
+
     Save and close the editor.
     
-6.  Open cluster_manager.sh in an editor and change these configuration settings to customize where and how the Cluster Manager Linode is created:
-
-        you@workstation$ nano -Y sh cluster_manager.sh
+6.  Open `cluster_manager.sh` in a text editor and change the following configuration settings to customize where and how the Cluster Manager Linode is created:
  
     -   `ROOT_PASSWORD`
     
-        Root user's password for the Cluster Manager linode.
-    
-        Set this to a strong lengthy password of your choice with a mix of characters. Linode requires root password to contain at least 2 or more of these 4 character types – lower case characters, upper case characters, numeric characters and symbolic characters. 
+        This is the root user's password for the Cluster Manager Linode and is **required** to create the node. Set this to a secure password of your choice. Linode requires the root password to contain at least 2 of these 4 character types – lower case characters, upper case characters, numeric characters and symbolic characters.
 
-        If you have spaces in your password, make sure the entire password is enclosed in double quotes.
-
-        If you have double quotes, dollar characters or backslashes in your password, prefix each of them with a backslash (`\`).
+        If you have spaces in your password, make sure the entire password is enclosed in double quotes. If you have double quotes, dollar characters or backslashes in your password, escape each of them with a backslash (`\`).
         
     -   `PLAN_ID`
 
-        The default value of `1` creates Cluster Manager Linode as a 2GB node, the least expensive plan. This is usually good enough.
-
-        But if you want a higher configuration linode, run this command to see a list of all available plans and their IDs:
+        The default value of `1` creates Cluster Manager Linode as a 2GB node, the smallest plan. This is usually sufficient. However, if you want a higher configuration Linode, use the following commands to see a list of all available plans and their IDs:
         
-            you@workstation$ source ./api_env_linode.conf
-            you@workstation$ ./linode_api.py plans
+            source ./api_env_linode.conf
+            ./linode_api.py plans
             
     -   `DATACENTER`
     
-        The Linode datacenter where Cluster Manager linode is created.
+        This specifies the Linode datacenter where the Cluster Manager Linode is created. Set it to the ID of the datacenter that is nearest to your location, to reduce network latency. It's also recommended to create the cluster manager node in the same datacenter where the images and cluster nodes will be created, so that it can communicate with them using low latency private IP addresses and save on networking quota costs.
 
-        Set it to the ID of the datacenter that is nearest to your location, to reduce network delays. 
-
-        It's also recommended to create the cluster manager node in the same datacenter where the images and cluster nodes will be created, so that it can communicate with them using low latency private IP addresses and save on networking quota costs.
-
-        You can get the list of datacenters and their IDs with this command:
+        To view the list of datacenters and their IDs:
         
-            you@workstation$ source ./api_env_linode.conf
-            you@workstation$ ./linode_api.py datacenters table
+            source ./api_env_linode.conf
+            ./linode_api.py datacenters table
             
     -   `DISTRIBUTION`
 
-        This is the ID of the OS to install on Cluster Manager linode. 
+        This is the ID of the distribution to install on Cluster Manager linode. This guide has been tested only on Ubuntu 14.04 or Debian 8, and other distributions are not supported.
         
-        It's recommended to use Ubuntu 14.04 or Debian 8 because the scripts have been tested only with those two OSes.
-        
-        The default value of 124 selects Ubuntu 14.04 LTS 64-bit.
-
-        For other available Ubuntu distributions, run these commands:
-        
-            you@workstation$ source ./api_env_linode.conf
-            
-            you@workstation$ ./linode_api.py distributions "ubuntu" table
-            
-            you@workstation$ ./linode_api.py distributions "debian" table
+        The default value of `124` selects Ubuntu 14.04 LTS 64-bit. If you'd like to use Debian 8 instead, change this value to `140`.
     
     -   `KERNEL`
     
-        This is the ID of the Linux kernel to install on Cluster Manager linode.
-
-        The default value of 138 always selects the latest 64-bit Linux kernel available from Linode.
-
-        For list of available kernels, run this command:
-        
-            you@workstation$ source ./api_env_linode.conf
-            you@workstation$ ./linode_api.py kernels "" table
-
-        For listing only kernels that match a particular version, use a regular expression filter. For example, this command shows only kernels with the string “4.1.” in their labels.
-        
-            you@workstation$ source ./api_env_linode.conf
-            you@workstation$ ./linode_api.py kernels "4\.1\." table    
+        This is the ID of the Linux kernel to install on the Cluster Manager Linode. The default value of `138` selects the latest 64-bit Linux kernel available from Linode. It is recommended not to change this setting.   
             
     -   `DISABLE_SSH_PASSWORD_AUTHENTICATION`
     
-        Disables SSH password authentication and allows only key based SSH authentication for Cluster Manager linode. Password authentication is considered less secure, and is hence disabled by default.
+        This disables SSH password authentication and allows only key based SSH authentication for the Cluster Manager Linode. Password authentication is considered less secure, and is hence disabled by default. To enable password authentication, you can change this value to `no`.
 
-        `yes` (default) - disables password authentication and enables only key based authentication.
+    {: .note}
+    > The options shown in this section are generated by the `linode_api.py` script, and differ slightly from the options shown using the Linode CLI tool. Do not use the Linode CLI tool to configure your Manager Node.
         
-        `no` - enables both key based and password authentication.
-        
-7.  Save all changes to cluster_manager.sh and close the editor.
+7.  Save all changes to `cluster_manager.sh` and close the editor.
 
-8.  Now, create and setup the Cluster Manager Linode with this command:
+8.  Now, create and set up the Cluster Manager Linode:
 
-        you@workstation$ ./cluster_manager.sh create-linode api_env_linode.conf
+        ./cluster_manager.sh create-linode api_env_linode.conf
         
-    When installation completes, you should see output like this:
+    When the node is created, you should see output like this:
     
     ![Cluster Manager creation](/docs/assets/storm-clustermgr-creation-2.png)
     
-    Note down the public IP address of the Cluster Manager Linode. You will need this in future whenever you want to log into the cluster manager to create or manage clusters.
+    Note the public IP address of the Cluster Manager Linode. You will need this when you log into the cluster manager to create or manage clusters.
 
-9.  **Security Overview**
-
-    This section explains the security configuration created by the installation script to help you keep your clusters secure from both external and internal malicious parties.
-
-    {: .caution}
-    >
-    > Since access to the cluster manager provides access to all Storm and Zookeeper clusters and any sensitive data they are processing, its security configuration should be considered critical, and access should be as restricted as possible.
-    
-    The script creates three users on the Cluster Manager Linode, and generates authentication keypairs for all of them on your workstation, as shown in this illustration:
+9.  The `cluster_manager.sh` script in the previous step creates three users on the Cluster Manager Linode, and generates authentication keypairs for all of them on your workstation, as shown in this illustration:
     
     [![Security Overview](/docs/assets/storm-clustermgrkeys-650px.png)](/docs/assets/storm-clustermgrkeys.png)
     
-    -   *$HOME/.ssh/clustermgrroot* is the private key for Cluster Manager Linode's *root* user.
+    -   `~/.ssh/clustermgrroot` is the private key for Cluster Manager Linode's *root* user. Access to this user should be as restricted as possible.
     
-        Access to this user should be as restricted as possible.
-    
-    -   *$HOME/.ssh/clustermgr* is the private key for Cluster Manager Linode's *clustermgr* user. 
+    -   `~/.ssh/clustermgr` is the private key for Cluster Manager Linode's *clustermgr* user. This is a privileged administrative user who can create and manage Storm or Zookeeper clusters. Access to this user should be as restricted as possible.
         
-        This is a privileged administrative user who can create and manage Storm or Zookeeper clusters.
+    -   `~/.ssh/clustermgrguest` is the private key for Cluster Manager Linode's *clustermgrguest* user. This is an unprivileged user for use by anybody who need information about Storm clusters, but not the ability to manage them. These are typically developers, who need to know a cluster's client node IP address to submit topologies to it.
         
-        Access to this user should be as restricted as possible.
-        
-    -   *$HOME/.ssh/clustermgrguest* is the private key for Cluster Manager Linode's *clustermgrguest* user. 
-        
-        This is an unprivileged user for use by anybody who need information about Storm clusters, but not the ability to manage them. These are typically developers, who need to know a cluster's client node IP address to submit topologies to it.
-        
-    -   SSH password authentication to the cluster manager is disabled by default. It is recommended to leave  it like that.
-    
-        However, if you want to enable password authentication for just *clustermgrguest* users for convenience, log in as root and append the following line to the *end* of /etc/ssh/sshd_config:
+    SSH password authentication to the cluster manager is disabled by default. It is recommended to leave the default setting. However, if you want to enable password authentication for just *clustermgrguest* users for convenience, log in as root and append the following line to the *end* of `/etc/ssh/sshd_config`:
 	
-            ...
-            Match User clustermgrguest
-		      PasswordAuthentication yes
+    {: .file-excerpt}
+    /etc/ssh/sshd_config
+    :   ~~~ conf
+        Match User clustermgrguest
+		  PasswordAuthentication yes
+        ~~~
 
-        and restart ssh service:
+    Then restart the SSH service:
 	        
-            root@localhost:~# service ssh restart
+        service ssh restart
 
+    {: .caution}
+    >
+    > Since access to the cluster manager provides access to all Storm and Zookeeper clusters and any sensitive data they are processing, its security configuration should be considered critical, and access should be as restrictive as possible.
 
-10. Log in to the Cluster Manager Node as its `root` user:
+10. Log in to the Cluster Manager Node as its `root` user, using the public IP address that was shown when you created the node:
 
-        you@workstation$ ssh -i ~/.ssh/clustermgrroot root@PUBLIC-IP-OF-CLUSTER-MANAGER-LINODE
+        ssh -i ~/.ssh/clustermgrroot root@PUBLIC-IP-OF-CLUSTER-MANAGER-LINODE
  
-    Sometimes this may fail with an error: 
+    {: .note}
+    >If this fails with an error, repeat the command as follows and check for `gnome-keyring` interference:
+    >
+    >        SSH_AUTH_SOCK=0 ssh -i ~/.ssh/clustermgrroot root@PUBLIC-IP-OF-CLUSTER-MANAGER-LINODE
     
-        Agent admitted failure to sign using the key
-        Permission denied (publickey).
-    
-    If you see that error, repeat the command as follows:
-    
-        you@workstation$ SSH_AUTH_SOCK=0 ssh -i ~/.ssh/clustermgrroot root@PUBLIC-IP-OF-CLUSTER-MANAGER-LINODE
-    
-11. Change its host name to something more descriptive. Here, we are changing it to *clustermgr*:
+11. Change its host name to something more descriptive. Here, we are changing it to *clustermgr*, but you may substitute a different name if you like:
 
-        root@localhost:~# sed -i -r "s/127.0.1.1.*$/127.0.1.1\tclustermgr/" /etc/hosts
-        root@localhost:~# echo clustermgr > /etc/hostname
-        root@localhost:~# hostname clustermgr
+        sed -i -r "s/127.0.1.1.*$/127.0.1.1\tclustermgr/" /etc/hosts
+        echo clustermgr > /etc/hostname
+        hostname clustermgr
         
 12. Set passwords for *clustermgr* and *clustermgrguest* users:
 
-        root@clustermgr:~# passwd clustermgr
-        <Enter a secure password>
-        <Reenter the same secure password>
+        passwd clustermgr
+        passwd clustermgrguest
 
-        root@clustermgr:~# passwd clustermgrguest
-        <Enter a secure password>
-        <Reenter the same secure password>
-
-    Any administrator logging in as *clustermgr* user should know this password because they may be asked to enter the password when attempting a privileged command.
+    Any administrator logging in as *clustermgr* user should know this password because they will be asked to enter the password when attempting a privileged command.
 
 13. Delete *cluster_manager.sh* from root user's directory and close the SSH session:
 
-        root@clustermgr:~# rm cluster_manager.sh
-        root@clustermgr:~# exit
+        rm cluster_manager.sh
+        exit
 
 14. Now, log back in to the Cluster Manager Linode - this time as *clustermgr* user - using its public IP address and the private key for *clustermgr* user:
 
-        you@workstation$ ssh -i ~/.ssh/clustermgr clustermgr@PUBLIC-IP-OF-CLUSTER-MANAGER-LINODE
+        ssh -i ~/.ssh/clustermgr clustermgr@PUBLIC-IP-OF-CLUSTER-MANAGER-LINODE
 
-    Sometimes this may fail with an error: 
-    
-        Agent admitted failure to sign using the key
-        Permission denied (publickey).
-    
-    If you see that error, repeat the command as follows:
-     
-        you@workstation$ SSH_AUTH_SOCK=0 ssh -i ~/.ssh/clustermgr clustermgr@PUBLIC-IP-OF-CLUSTER-MANAGER-LINODE
+15. Navigate to your `storm-linode` directory and make a working copy of `api_env_example.conf`. In this example, we'll call it `api_env_linode.conf`:
 
-15. Make a working copy of *api_env_example.conf* as *api_env_linode.conf*:
+        cd storm-linode
+        cp api_env_example.conf api_env_linode.conf
 
-        clustermgr@clustermgr:~$ cd storm-linode
-        clustermgr@clustermgr:~/storm-linode$ cp api_env_example.conf api_env_linode.conf
+16. Open the newly created `api_env_linode.conf` in a text editor and set `LINODE_KEY` to your API key. Set `CLUSTER_MANAGER_NODE_PASSWORD` to the password for the *clustermgr* user.
 
-16. Open *api_env_linode.conf* in an editor.
-
-    Set LINODE_KEY to the API key previously created.
-    
-    Set CLUSTER_MANAGER_NODE_PASSWORD to the password for *clustermgr* user.
-
-        clustermgr@clustermgr:~/storm-linode$ nano -Y sh api_env_linode.conf
-
+    {: .file-excerpt}
+    ~/storm-linode/api_env_linode.conf
+    :   ~~~
+        export LINODE_KEY=Enter your API key here
         ...
-        export LINODE_KEY=[Enter your API key here]
-        export CLUSTER_MANAGER_NODE_PASSWORD=[Enter password of clusermgr user]
-        ...
+        export CLUSTER_MANAGER_NODE_PASSWORD=Enter a password of clusermgr user
+        ~~~
         
-    Save those changes and close the editor.
+    Save your changes and close the editor.
 
-17. **The Cluster Manager linode is now ready to create Apache Storm clusters.**
-
-18. Any sysadmin / devops / developer who should manage the clusters should get their public keys added to */home/clustermgr/.ssh/authorized_keys* so that they can SSH to the Cluster Manager Linode as user *clustermgr*. 
+17. The Cluster Manager Linode is now ready to create Apache Storm clusters. Anyone who will manage the clusters should have their public keys added to `/home/clustermgr/.ssh/authorized_keys` so that they can connect via SSH to the Cluster Manager Linode as user *clustermgr*. 
 
 ## Create a Storm Cluster
 
-Creating a new Storm cluster involves four main steps, most of which are necessary only the very first time and can be skipped while creating subsequent clusters.
+Creating a new Storm cluster involves four main steps, most of which are necessary only the very first time and can be skipped when creating subsequent clusters.
 
-### 1. Create a Zookeeper Image
+### Create a Zookeeper Image
 
-A *Zookeeper Image* is a master disk with all necessary Zookeeper softwares and libraries installed. 
+A *Zookeeper image* is a master disk image with all necessary Zookeeper softwares and libraries installed. Some of the benefits of using a Zookeeper image include:
 
-Creating a Zookeeper Image:
-
--   ... enables quick creation of a Zookeeper cluster by simply cloning it to create as many nodes as required, each a perfect copy of the image. 
-
--   ... ensures that OS packages and third party software packages are identical on all nodes, and prevent version mismatch errors.
-
--   ... reduces network usage, because downloads and updates are executed only once when preparing the image instead of repeating them on each node.
+-   Quick creation of a Zookeeper cluster by simply cloning it to create as many nodes as required, each a perfect copy of the image
+-   OS packages and third party software packages are identical on all nodes, preventing version mismatch errors
+-   Reduced network usage, because downloads and updates are executed only once when preparing the image instead of repeating them on each node
 
 {: .note}
 >If a Zookeeper image already exists, this step is not mandatory. Multiple Zookeeper clusters can share the same Zookeeper image. 
->In fact it's a good idea to keep the number of images low because Linode provides only 10 GB for image storage.
+>In fact, it's a good idea to keep the number of images low because image storage is limited to 10GB.
 >
->For creating an image, you should have `clustermgr` authorization to the Cluster Manager Linode.
+>When creating an image, you should have `clustermgr` authorization to the Cluster Manager Linode.
 
-The steps to create a Zookeeper image are:
-
-1.  Log in to the Cluster Manager Linode as `clustermgr` via ssh using an authorized private key:
+1.  Log in to the Cluster Manager Linode as `clustermgr` and navigate to the `storm-linode` directory:
         
-        you@workstation:~$ ssh -i ~/.ssh/clustermgr clustermgr@PUBLIC-IP-OF-CLUSTER-MANAGER-LINODE
+        ssh -i ~/.ssh/clustermgr clustermgr@PUBLIC-IP-OF-CLUSTER-MANAGER-LINODE
+        cd storm-linode
+
+2.  Decide on a unique name for your image. Create a configuration directory for the new image using `new-image-conf` command. In this example, we'll call our new image `zk-image`:
+
+        ./zookeeper-cluster-linode.sh new-image-conf zk-image1
         
-        clustermgr@clustermgr:~$ cd storm-linode
+    This creates a directory named `zk-image1` containing the files that make up the image configuration:
 
-2.  Decide on a unique name for the new image. In this example, we'll call it `zk-image1`.
+    -   **image-name.conf** 
+        This is the main image configuration file, and the one you'll be modifying the most. Its properties are described further down. This file is named `zk-image1.conf` in our example, but if you chose a different image name, yours may vary.
 
-    The name should follow these convenctions...
-    
-        -   Alphabets, digits, hyphens, underscores only
-        -   No spaces
-        -   No other special characters
-        -   Cannot be empty
+    -   **zoo.cfg** - This is the primary Zookeeper configuration file. See the official [Zookeeper Configuration Parameters documentation](https://zookeeper.apache.org/doc/current/zookeeperAdmin.html#sc_configuration) for details on what parameters can be customized. It's not necessary to enter the cluster's node list in this file. That's done automatically by the script during cluster creation.
 
-    The name should be unique because it is possible that in future, you may want to create additional Zookeeper images  with different configurations.
-
-3.  Create configuration directory for the new image using `new-image-conf` command:
-
-        clustermgr@clustermgr:~/storm-linode$ ./zookeeper-cluster-linode.sh new-image-conf zk-image1
-        
-4.  List the directory to see a newly created subdirectory named `zk-image1` and under it, the files that make up the image configuration:
-
-        clustermgr@clustermgr:~/storm-linode$ ls zk-image1 
-        
-        log4j.properties  zk-image1.conf  zk-supervisord.conf  zoo.cfg
-
-5.  *image-name.conf* (for example, *zk-image1.conf* here) is the main image configuration file, and the one you'll be modifying the most. Its properties are described further down.  
-
-    The other files are secondary configuration files. They contain reasonable default values, but you can always open them in an editor like nano, and modify them to suit your environment and expected workloads:  
-
-    -   **zoo.cfg**
-    
-        This is the primary Zookeeper configuration file. 
-        
-        See the official [Zookeeper Configuration Parameters documentation](https://zookeeper.apache.org/doc/current/zookeeperAdmin.html#sc_configuration)  for details on what parameters can be customized. 
-        
-        It's not necessary to enter the cluster's node list in this file. That's done automatically by the script during cluster creation.
-   
     -   **log4j.properties**
-    
-        Customize the default logging levels for Zookeeper components. You can also customize these at a node level later  when cluster is created.
+        This file sets the default logging levels for Zookeeper components. You can also customize these at a node level later  when cluster is created.
 
     -   **zk-supervisord.conf**
-    
-        The Zookeeper daemon is run under supervision, so that if it shuts down unexpectedly, it's automatically restarted by Supervisord. 
-        
-        There is nothing much to customize here, but review the [Supervisord Configuration documentation](http://supervisord.org/configuration.html) if you do want to customize it.
+        The Zookeeper daemon is run under supervision, so that if it shuts down unexpectedly, it's automatically restarted by Supervisord. There is nothing much to customize here, but you can refer to the [Supervisord Configuration documentation](http://supervisord.org/configuration.html) if you want to learn more about the options.
    
-
-6.  Open the image configuration file (in this example, `./zk-image1/zk-image1.conf`) in an editor:
-
-        clustermgr@clustermgr:~/storm-linode$ nano -Y sh ./zk-image1/zk-image1.conf
-
-7.  Enter or edit values of configuration properties as required. Properties that should be mandatorily entered are marked as **REQUIRED**:
+3.  Open the image configuration file (in this example, `./zk-image1/zk-image1.conf`) in an editor. Enter or edit values of configuration properties as required. Properties that *must* be entered are marked as **REQUIRED**:
 
     -   `DISTRIBUTION_FOR_IMAGE`
     
-        Specify either Ubuntu 14.04 or Debian 8 distribution to use for this image. 
-        
-        {: .caution}
-        >The scripts have not been tested on any other versions or distributions.
+        Specify either Ubuntu 14.04 or Debian 8 to use for this image. This guide has *not* been tested on any other versions or distributions.
 
-        All nodes of all clusters created from this image will have this same distribution.
-        
-        Default is 124 corresponding to Ubuntu 14.04 LTS 64-bit. For Debian 8 64-bit, set it to 140.
-        
-        The value can be either the numeric distribution ID or the distribution label. The command below lists all available Ubuntu distributions provided by Linode:
-        
-            clustermgr@clustermgr:~/storm-linode$ ./zookeeper-cluster-linode.sh distributions api_env_linode.conf ubuntu
+        All nodes of all clusters created from this image will have this distribution. The default value is `124` corresponding to Ubuntu 14.04 LTS 64-bit. For Debian 8 64-bit, change it it to `140`.
         
     -   `LABEL_FOR_IMAGE`
     
-        A friendly label for the image to help you differentiate it from other images.
+        A label to help you differentiate it from other images. This name will be shown if you edit or view your images in the Linode Manager.
         
     -   `KERNEL_FOR_IMAGE`
     
-        The kernel version provided by Linode to use in this image. This can either be the kernel ID or label. You can get a list of all available kernels with this command:
-
-            clustermgr@clustermgr:~/storm-linode$ ./zookeeper-cluster-linode.sh kernels api_env_linode.conf
-
-        You can also provide a regular expression filter. For example, this command lists all the kernels which have version "4.1" in their labels:
-
-            clustermgr@clustermgr:~/storm-linode$ ./zookeeper-cluster-linode.sh kernels api_env_linode.conf "4\.1.*"
-            
-        Default value is 138 corresponding to the latest 64-bit kernel provided by Linode.
+        The kernel version provided by Linode to use in this image. The default value is `138` corresponding to the latest 64-bit kernel provided by Linode. It is recommended that you leave this as the default setting.
 
     -   `DATACENTER_FOR_IMAGE`
     
-        The preferred Linode datacenter where this image should be created. 
+        The Linode datacenter where this image should be created. This can be any Linode datacenter, but cluster creation is faster if the image is created in the same datacenter where the cluster will be created. It's also recommended to create the image in the same datacenter as the Cluster Manager Linode. Select a datacenter that is geographically close to your premises, to reduce network latency.
         
-        This can be any Linode datacenter, but cluster creation is faster if the image is created in the same datacenter where cluster will be created. It's also recommended to create the image in the same datacenter as the Cluster Manager Linode. Select a datacenter that is geographically close to your premises, to reduce network delays.
-        
-        The value can either be the datacenter's ID or location or abbreviation. You can get a list of all datacenters using:
+        The value can either be the datacenter's ID or location or abbreviation. To see a list of all datacenters:
 
-            clustermgr@clustermgr:~/storm-linode$ ./zookeeper-cluster-linode.sh datacenters api_env_linode.conf 
+            ./zookeeper-cluster-linode.sh datacenters api_env_linode.conf 
 
     -   `IMAGE_ROOT_PASSWORD` **REQUIRED**
         
-        The default root user password baked into the image. All nodes of any clusters created from this image will have this as the root password, unless it's overridden in a cluster's configuration file.
-        
-        Ensure this is a really strong password. Linode validation rules requires it to contain at least two of these four character classes: lower case letters, upper case letters, numbers, punctuation.
+        The default root user password for the image. All nodes of any clusters created from this image will have this as the root password, unless it's overridden in a cluster's configuration file.
         
     -   `IMAGE_ROOT_SSH_PUBLIC_KEY` and `IMAGE_ROOT_SSH_PRIVATE_KEY`
     
         The keypair files for SSH public key authentication as root user. Any user who logs in with this private key  will be authenticated as root.
         
-        By default, cluster_manager.sh setup would have already created a keypair named clusterroot and clusterroot.pub under /home/clustermgr/.ssh/.
-        
-        If you wish to replace them with your own keypair, select a descriptive filename for this new keypair (example: "myclusterroot"), generate them using `ssh-keygen` as described in the [Appendix](#appendix-generating-ssh-keypairs), and set their full paths here.
+        By default, the `cluster_manager.sh` setup has already created a keypair named `clusterroot` and `clusterroot.pub` under `~/.ssh/`. If you wish to replace them with your own keypair, you may create your own keys and set their full paths here.
         
     -   `IMAGE_DISABLE_SSH_PASSWORD_AUTHENTICATION`
     
-        Default value: `yes` (recommended)
-        
-        If this is `yes`, password based SSH authentication is disabled. Any user who wishes to log in via SSH into any cluster node created from this image should have the correct SSH private key. This improves the cluster's security.
-        
-        If this is `no`, password based SSH authentication is enabled, and both password and key based authentication are available on all nodes created from this image. Allowing password based SSH authentication reduces the cluster's security.
+        This disables SSH password authentication and allows only key based SSH authentication for the cluster nodes. Password authentication is considered less secure, and is hence disabled by default. To enable password authentication, you can change this value to `no`.
         
     -   `IMAGE_ADMIN_USER`
     
-        Often, administrators or developers may have to log in to the cluster nodes for maintenance or troubleshooting. 
-        
-        Instead of logging in as root users, it's better to log in as a non-root but privileged user.
-        
-        The script creates a privileged user with this name in the image (and as a consequence, in all cluster nodes based on this image).
+        Often, administrators or developers may have to log in to the cluster nodes for maintenance or troubleshooting. Instead of logging in as root users, it's better to log in as a privileged non-root user. The script creates a privileged user with this name in the image (and as a consequence, in all cluster nodes based on this image).
         
     -   `IMAGE_ADMIN_PASSWORD` **REQUIRED**
     
@@ -456,11 +310,9 @@ The steps to create a Zookeeper image are:
         
     -   `IMAGE_ADMIN_SSH_AUTHORIZED_KEYS`
     
-        A file which contains public keys of all personnel authorized to log in to cluster nodes as IMAGE_ADMIN_USER. 
+        A file that contains public keys of all personnel authorized to log in to cluster nodes as `IMAGE_ADMIN_USER`. This file should be in the same format as the standard SSH *authorized_keys* file. All the entries in this file are appended to the image's `authorized_keys` file, and get inherited into all nodes based on this image.
         
-        This file should be in the same format as the standard SSH *authorized_keys* file. All the entries in this file are appended to the image's authorized_keys file, and get inherited into all nodes based on this image.
-        
-        By default, cluster_manager.sh setup creates a new 'clusteradmin' keypair, and this variable is set to the path of the public key. 
+        By default, the `cluster_manager.sh` setup creates a new `clusteradmin` keypair, and this variable is set to the path of the public key. 
         
         You can either retain this generated keypair and distribute the generated private key file /home/clustermgr/.ssh/clusteradmin to authorized personnel. 
         
@@ -528,9 +380,9 @@ The steps to create a Zookeeper image are:
         
         Default value: 75%, which means 75% of the Linode's RAM is committed – not just reserved - to the JVM and unavailable to any other process. 
 
-8.  Save the changes and close the editor.
+7.  Save the changes and close the editor.
 
-9.  Create the image using `create-image` command, specifying the newly created image name and API environment file:
+8.  Create the image using `create-image` command, specifying the newly created image name and API environment file:
 
         clustermgr@clustermgr:~/storm-linode$ ./zookeeper-cluster-linode.sh create-image zk-image1 api_env_linode.conf
         
@@ -544,9 +396,9 @@ The steps to create a Zookeeper image are:
 
     {: .note}
     >
-    > During this process, a short lived 2GB linode is created and deleted. This will entail a small cost in the monthly invoice and trigger an event notification email to be sent to the address you have registered with Linode. This is perfectly normal.
+    > During this process, a short lived 2GB linode is created and deleted. This will entail a small cost in the monthly invoice and trigger an event notification email to be sent to the address you have registered with Linode. This is expected behavior.
 
-### 2. Create a Zookeeper Cluster
+### Create a Zookeeper Cluster
 
 {: .note}
 >
