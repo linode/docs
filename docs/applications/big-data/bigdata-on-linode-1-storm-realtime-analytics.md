@@ -70,21 +70,21 @@ The first step is setting up a central *Cluster Manager* linode to store details
 
 You can set up multiple Cluster Manager nodes if necessary to satisfy organizational or security needs. For example, two departments can each have its own Cluster Manager to manage its respective clusters and keep data access restricted to its own members.
 
-1.  Download these scripts to an Ubuntu 14.04 LTS or Debian 8 workstation:
+1.  The scripts talk to Linode's API using Python. Install Git, Python 2.7 and curl on your Ubuntu 14.04 LTS or Debian 8 workstation:
 
-        you@workstation$ wget https://raw.githubusercontent.com/pathbreak/storm-linode/release-0.1.0/cluster_manager.sh
+        you@workstation$ sudo apt-get install python2.7 curl git
 
-        you@workstation$ wget https://raw.githubusercontent.com/pathbreak/storm-linode/release-0.1.0/linode_api.py
+2.  Download the project git repository:
 
-        you@workstation$ wget https://raw.githubusercontent.com/pathbreak/storm-linode/release-0.1.0/api_env_example.conf
+        you@workstation$ git clone "https://github.com/pathbreak/storm-linode"
+        you@workstation$ cd storm-linode
+        you@workstation$ git checkout $(git tag -l "release*" | head -n1)
 
-2.  Make them executable:
+
+3.  Make them executable:
 
         you@workstation$ chmod +x *.sh *.py
     
-3.  The scripts talk to Linode's API using Python. Install Python 2.7 and curl on your workstation if you don't have it already:
-
-        you@workstation$ sudo apt-get install python2.7 curl
     
 4.  Make a working copy of the API environment configuration file:
 
@@ -116,7 +116,7 @@ You can set up multiple Cluster Manager nodes if necessary to satisfy organizati
         
     -   `PLAN_ID`
 
-        The default value of `1` creates Cluster Manager Linode as a 1GB node, the least expensive plan. This is usually good enough.
+        The default value of `1` creates Cluster Manager Linode as a 2GB node, the least expensive plan. This is usually good enough.
 
         But if you want a higher configuration linode, run this command to see a list of all available plans and their IDs:
         
@@ -332,6 +332,13 @@ The steps to create a Zookeeper image are:
 
 2.  Decide on a unique name for the new image. In this example, we'll call it `zk-image1`.
 
+    The name should follow these convenctions...
+    
+        -   Alphabets, digits, hyphens, underscores only
+        -   No spaces
+        -   No other special characters
+        -   Cannot be empty
+
     The name should be unique because it is possible that in future, you may want to create additional Zookeeper images  with different configurations.
 
 3.  Create configuration directory for the new image using `new-image-conf` command:
@@ -524,9 +531,9 @@ The steps to create a Zookeeper image are:
 
 8.  Save the changes and close the editor.
 
-9.  Create the image using `create-image` command, specifying the newly created image configuration file and API environment file:
+9.  Create the image using `create-image` command, specifying the newly created image name and API environment file:
 
-        clustermgr@clustermgr:~/storm-linode$ ./zookeeper-cluster-linode.sh create-image zk-image1/zk-image1.conf api_env_linode.conf
+        clustermgr@clustermgr:~/storm-linode$ ./zookeeper-cluster-linode.sh create-image zk-image1 api_env_linode.conf
         
     If the image is created successfully,  the output will look something like this towards the end:
     
@@ -538,7 +545,7 @@ The steps to create a Zookeeper image are:
 
     {: .note}
     >
-    > During this process, a short lived 1GB linode is created and deleted. This will entail a small cost in the monthly invoice and trigger an event notification email to be sent to the address you have registered with Linode. This is perfectly normal.
+    > During this process, a short lived 2GB linode is created and deleted. This will entail a small cost in the monthly invoice and trigger an event notification email to be sent to the address you have registered with Linode. This is perfectly normal.
 
 ### 2. Create a Zookeeper Cluster
 
@@ -557,6 +564,14 @@ In this section, you will learn how to create a new Zookeeper cluster in which e
         clustermgr@clustermgr:~$ cd storm-linode
 
 2.  Decide on a unique name for the new cluster. In this example, we'll call it `zk-cluster1`.
+
+    The name should follow these naming conventions...
+    
+        -   Maximum 25 characters in length 
+        -   Alphabets, digits, hyphens, underscores only
+        -   No spaces
+        -   No other special characters
+        -   Cannot be empty
 
     The name should be unique because it is possible that in future, you may want to create additional Zookeeper clusters for other projects.
 
@@ -578,17 +593,6 @@ In this section, you will learn how to create a new Zookeeper cluster in which e
 
 7.  Enter or edit values of configuration properties as required. Properties that should be mandatorily entered or changed from their default values are marked as **REQUIRED**:
 
-    -   `CLUSTER_NAME` **REQUIRED**
-    
-        A name for this cluster. It should satisfy these constraints:
-        
-        -   Maximum 25 characters in length 
-        -   Alphabets, digits, hyphens, underscores only
-        -   No spaces
-        -   No other special characters
-        -   Cannot be empty
-        
-
     -   `DATACENTER_FOR_CLUSTER`
     
         The preferred Linode datacenter where the nodes of this cluster should be created. All nodes of a cluster have to be in the same datacenter; they cannot span multiple datacenters.
@@ -607,7 +611,7 @@ In this section, you will learn how to create a new Zookeeper cluster in which e
         
         `plan:count   plan:count ....`
 
-        where a `plan` is one of `1GB | 2GB | 4GB| ....| 96GB` (see [Linode plans](/pricing) for all plans) and count is the number of nodes with that plan.
+        where a `plan` is one of `2GB | 4GB| ....| 120GB` (see [Linode plans](/pricing) for all plans) and count is the number of nodes with that plan.
         
         Examples: 
         
@@ -617,29 +621,29 @@ In this section, you will learn how to create a new Zookeeper cluster in which e
 
         -   For a cluster with three nodes of different plans:
         
-            CLUSTER_SIZE="1GB:1 2GB:1 4GB:1"
+            CLUSTER_SIZE="2GB:1 4GB:1 8GB:1"
 
         Total number of nodes in a Zookeeper cluster *should* be an odd number. 
         
         Although cluster can have nodes of different plans, it's recommended to use the same plan for all nodes. 
         
-        Avoid very large clusters. A cluster with 5-9 nodes is good enough for most use cases. 11-19 nodes would be considered "large". Anything more than 19 nodes would probably be counterproductive, because Zookeeper will slow down all the Storm clusters that depend on it.
+        Avoid very large clusters. A cluster with 3-9 nodes is good enough for most use cases. 11-19 nodes would be considered "large". Anything more than 19 nodes would probably be counterproductive, because Zookeeper will slow down all the Storm clusters that depend on it.
         
         Size the cluster carefully, because as of version 3.4.6, Zookeeper does not support dynamically expanding it. The only way to resize would be to take it down and create a new cluster. This will cause downtime for Storm clusters that rely on this Zookeeper cluster.
         
     -   `ZK_IMAGE_CONF` **REQUIRED**
     
-        Path of the Zookeeper image configuration to use as a template for creating nodes of this cluster. Every node's disk will be a replica of this image.
+        Path of the Zookeeper image directory to use as a template for creating nodes of this cluster. Every node's disk will be a replica of this image.
         
         The path can either be an absolute path, or a path that is relative to this cluster configuration directory.
         
         Examples:
         
-        ZK_IMAGE_CONF=/home/clustermgr/storm-linode/zk-image1/zk-image1.conf
+        ZK_IMAGE_CONF=/home/clustermgr/storm-linode/zk-image1
 
         or
         
-        ZK_IMAGE_CONF=../zk-image1/zk-image1.conf
+        ZK_IMAGE_CONF=../zk-image1
 
     -   `NODE_DISK_SIZE`
     
@@ -721,7 +725,7 @@ In this section, you will learn how to create a new Zookeeper cluster in which e
 
 9.  Create the cluster using the `create` command:
 
-        clustermgr@clustermgr:~/storm-linode$ ./zookeeper-cluster-linode.sh create zk-cluster1/zk-cluster1.conf  api_env_linode.conf
+        clustermgr@clustermgr:~/storm-linode$ ./zookeeper-cluster-linode.sh create zk-cluster1  api_env_linode.conf
 
     If the cluster is created successfully,  a success message is printed:
     
@@ -733,7 +737,7 @@ In this section, you will learn how to create a new Zookeeper cluster in which e
 
 10.  Details of the created cluster can be viewed using `describe` command:
 
-        clustermgr@clustermgr:~/storm-linode$ ./zookeeper-cluster-linode.sh describe zk-cluster1/zk-cluster1.conf
+        clustermgr@clustermgr:~/storm-linode$ ./zookeeper-cluster-linode.sh describe zk-cluster1
 
 11.  Cluster nodes are shutdown soon after creation. They are restarted only when any of the Storm clusters is starting up.
 
@@ -765,6 +769,14 @@ The steps to create a Storm image are:
         clustermgr@clustermgr:~$ cd storm-linode
 
 2.  Decide on a unique name for the new image. In this example, we'll call it `storm-image1`.
+
+    The name should follow these naming conventions...
+    
+        -   Alphabets, digits, hyphens, underscores only
+        -   No spaces
+        -   No other special characters
+        -   Cannot be empty
+
 
     The name should be unique because it is possible that in future, you may want to create additional Storm images  with different configurations.
 
@@ -938,9 +950,9 @@ The steps to create a Storm image are:
 
 8.  Save the changes and close the editor.
 
-9.  Create the image using `create-image` command, specifying the newly created image configuration file and API environment file:
+9.  Create the image using `create-image` command, specifying the newly created image name and API environment file:
 
-        clustermgr@clustermgr:~/storm-linode$ ./storm-cluster-linode.sh create-image  storm-image1/storm-image1.conf api_env_linode.conf
+        clustermgr@clustermgr:~/storm-linode$ ./storm-cluster-linode.sh create-image  storm-image1 api_env_linode.conf
         
     If the image is created successfully,  the output will look something like this towards the end:
     
@@ -952,7 +964,7 @@ The steps to create a Storm image are:
 
     {: .note}
     >
-    > During this process, a short lived 1GB linode is created and deleted. This will entail a small cost in the monthly invoice and trigger an event notification email to be sent to the address you have registered with Linode. This is perfectly normal.
+    > During this process, a short lived 2GB linode is created and deleted. This will entail a small cost in the monthly invoice and trigger an event notification email to be sent to the address you have registered with Linode. This is perfectly normal.
 
 ### 4. Create a Storm Cluster
 
@@ -969,6 +981,14 @@ In this section, you will learn how to create a new Storm cluster in which every
         clustermgr@clustermgr:~$ cd storm-linode
 
 2.  Decide on a unique name for the new cluster. In this example, we'll call it `storm-cluster1`.
+
+    The name should follow these naming conventions...
+    
+        -   Maximum 25 characters in length 
+        -   Alphabets, digits, hyphens, underscores only
+        -   No spaces
+        -   No other special characters
+        -   Cannot be empty
 
     The name should be unique because it is possible that in future, you may want to create additional Storm clusters for other projects.
 
@@ -990,16 +1010,6 @@ In this section, you will learn how to create a new Storm cluster in which every
 
 7.  Enter or edit values of configuration properties as required. Properties that should be mandatorily entered or changed from their default values are marked as **REQUIRED**:
 
-    -   `CLUSTER_NAME` **REQUIRED**
-    
-        A name for this cluster. It should satisfy these constraints:
-        
-        -   Maximum 25 characters in length 
-        -   Alphabets, digits, hyphens, underscores only
-        -   No spaces
-        -   No other special characters
-        -   Cannot be empty
-        
 
     -   `DATACENTER_FOR_CLUSTER`
     
@@ -1015,9 +1025,9 @@ In this section, you will learn how to create a new Storm cluster in which every
     
         This variable specifies the Linode plan to use for the Nimbus node, which is responsible for distributing and coordinating a Storm topology to supervisor nodes.
         
-        It should be one of `1GB | 2GB | 4GB| ....| 96GB` (see [Linode plans](/pricing) for all plans).
+        It should be one of `2GB | 4GB| ....| 120GB` (see [Linode plans](/pricing) for all plans).
         
-        Default: 1GB, but a more powerful plan is strongly recommended for Nimbus.
+        Default: 2GB, but a more powerful plan is strongly recommended for Nimbus.
         
     -   `SUPERVISOR_NODES`
     
@@ -1028,7 +1038,7 @@ In this section, you will learn how to create a new Storm cluster in which every
         Syntax is: 
         `plan:count plan:count ....`
 
-        where a `plan` is one of `1GB | 2GB | 4GB| ....| 96GB` (see [Linode plans](/pricing) for all plans) and count is the number of supervisor nodes with that plan.
+        where a `plan` is one of `2GB | 4GB| ....| 120GB` (see [Linode plans](/pricing) for all plans) and count is the number of supervisor nodes with that plan.
         
         Although a cluster can have supervisor nodes of different plans, it's recommended to use the same plan for all nodes.
         
@@ -1042,29 +1052,29 @@ In this section, you will learn how to create a new Storm cluster in which every
 
         -   Create six nodes with different plans:
 
-            SUPERVISOR_NODES="1GB:2 2GB:2 4GB:2"
+            SUPERVISOR_NODES="2GB:2 4GB:2 8GB:2"
     
     -   `CLIENT_NODE`
     
         The client node of a cluster is used to submit topologies to it and monitor it.
         
-        It should be one of `1GB | 2GB | 4GB| ....| 96GB` (see [Linode plans](/pricing) for all plans).
+        It should be one of `2GB | 4GB| ....| 120GB` (see [Linode plans](/pricing) for all plans).
         
-        Default: 1GB
+        Default: 2GB
         
     -   `STORM_IMAGE_CONF` **REQUIRED**
     
-        Path of the Storm image configuration to use as a template for creating nodes of this cluster. Every node's disk will be a replica of this image.
+        Path of the Storm image directory to use as a template for creating nodes of this cluster. Every node's disk will be a replica of this image.
         
         The path can either be an absolute path, or a path that is relative to this cluster configuration directory.
         
         Examples:
         
-        STORM_IMAGE_CONF=/home/clustermgr/storm-linode/storm-image1/storm-image1.conf
+        STORM_IMAGE_CONF=/home/clustermgr/storm-linode/storm-image1
 
         or
         
-        STORM_IMAGE_CONF=../storm-image1/storm-image1.conf
+        STORM_IMAGE_CONF=../storm-image1
 
     -   `NODE_DISK_SIZE`
     
@@ -1109,17 +1119,17 @@ In this section, you will learn how to create a new Storm cluster in which every
 
     -   `ZOOKEEPER_CLUSTER` **REQUIRED**
     
-        Path of the configuration file of the Zookeeper cluster to be used by this Storm cluster.
+        Path of the Zookeeper cluster directory to be used by this Storm cluster.
         
         This can be either an absolute path or a relative path that is relative to this Storm cluster configuration directory.
 
         Examples:
         
-        /home/clustermgr/storm-linode/zk-cluster1/zk-cluster1.conf
+        ZOOKEEPER_CLUSTER=/home/clustermgr/storm-linode/zk-cluster1
         
         or 
         
-        ../zk-cluster1/zk-cluster1.conf
+        ZOOKEEPER_CLUSTER=../zk-cluster1
         
 
     -   `IPTABLES_V4_RULES_TEMPLATE`
@@ -1152,7 +1162,7 @@ In this section, you will learn how to create a new Storm cluster in which every
 
 9.  Create the cluster using the `create` command:
 
-        clustermgr@clustermgr:~/storm-linode$ ./storm-cluster-linode.sh create storm-cluster1/storm-cluster1.conf  api_env_linode.conf
+        clustermgr@clustermgr:~/storm-linode$ ./storm-cluster-linode.sh create storm-cluster1  api_env_linode.conf
 
     If the cluster is created successfully,  a success message is printed:
     
@@ -1164,7 +1174,7 @@ In this section, you will learn how to create a new Storm cluster in which every
 
 10.  Details of the created cluster can be viewed using `describe` command:
 
-        clustermgr@clustermgr:~/storm-linode$ ./storm-cluster-linode.sh describe storm-cluster1/storm-cluster1.conf
+        clustermgr@clustermgr:~/storm-linode$ ./storm-cluster-linode.sh describe storm-cluster1
 
 11.  Cluster nodes are shutdown soon after creation. Learn how to start the cluster in the next section.
 
@@ -1182,11 +1192,11 @@ In this section, you will learn how to create a new Storm cluster in which every
 
 2.  Start a Storm cluster using the `start` command:
 
-        clustermgr@clustermgr:~/storm-linode$ ./storm-cluster-linode.sh start <cluster-conf-file> api_env_linode.conf
+        clustermgr@clustermgr:~/storm-linode$ ./storm-cluster-linode.sh start <cluster-name> api_env_linode.conf
     
     Example:
     
-        clustermgr@clustermgr:~/storm-linode$ ./storm-cluster-linode.sh start storm-cluster1/storm-cluster1.conf api_env_linode.conf
+        clustermgr@clustermgr:~/storm-linode$ ./storm-cluster-linode.sh start storm-cluster1 api_env_linode.conf
 
 3.  The script will automatically start the required Zookeeper cluster too if required.
 
@@ -1250,7 +1260,7 @@ The next two sections explain how to whitelist workstations and monitor a cluste
 
 9.  Activate the new ipsets on cluster client node with `update-user-whitelist` command:
 
-        clustermgr@clustermgr:~/storm-linode$ ./storm-cluster-linode.sh update-user-whitelist storm-cluster1/storm-cluster1.conf
+        clustermgr@clustermgr:~/storm-linode$ ./storm-cluster-linode.sh update-user-whitelist storm-cluster1
         
 10.  Log in to the client node from the Cluster Manager Linode, and verify that the new ipsets have been configured correctly:
 
@@ -1265,7 +1275,7 @@ The next two sections explain how to whitelist workstations and monitor a cluste
     
 11.  Get the public IP address of client node. This IP address should be passed on to employees authorized to access the Storm UI monitoring web application:
 
-        clustermgr@clustermgr:~/storm-linode$ ./storm-cluster-linode.sh describe storm-cluster1/storm-cluster1.conf
+        clustermgr@clustermgr:~/storm-linode$ ./storm-cluster-linode.sh describe storm-cluster1
         
 12.  Finally, verify that the Storm UI web application is accessible from whitelisted workstations by opening `http://public-IP-of-client-node` on each one of them. 
 
@@ -1289,7 +1299,7 @@ On a whitelisted workstation, execute these steps to monitor a cluster:
         
         clustermgr@clustermgr:~$ cd storm-linode
         
-        clustermgr@clustermgr:~/storm-linode$ ./storm-cluster-linode.sh describe storm-cluster1/storm-cluster1.conf
+        clustermgr@clustermgr:~/storm-linode$ ./storm-cluster-linode.sh describe storm-cluster1
 
     Otherwise, you should be authorized to log in to the cluster manager node as `clustermgrguest` user.  Log in that way and get the public IP address using `cluster_info.sh`.
     
@@ -1323,7 +1333,7 @@ On a whitelisted workstation, execute these steps to monitor a cluster:
         
 2.  Get the private IP address (this is preferred for security and cost reasons, but public IP address too works)  of the client node of the target cluster.        
 
-        clustermgr@clustermgr:~/storm-linode$ ./storm-cluster-linode.sh describe storm-cluster1/storm-cluster1.conf
+        clustermgr@clustermgr:~/storm-linode$ ./storm-cluster-linode.sh describe storm-cluster1
 
 3.  Log in to the client node as its `IMAGE_ADMIN_USER` user (default value : `clusteradmin`, configured in the Storm image configuration file) via ssh using an authorized private key: 
 
@@ -1409,15 +1419,15 @@ If the supervisor nodes of a Storm cluster are overloaded with too many topologi
 
 3.  Expand the cluster using `add-nodes` command, specifying the plans and counts for the new nodes:
 
-        clustermgr@clustermgr:~/storm-linode$ ./storm-cluster-linode.sh add-nodes <cluster-conf-file> api_env_linode.conf <new-nodes>
+        clustermgr@clustermgr:~/storm-linode$ ./storm-cluster-linode.sh add-nodes <cluster-name> api_env_linode.conf <new-nodes>
 
     Example 1: Add three new 4GB supervisor nodes to storm-cluster1:
     
-        clustermgr@clustermgr:~/storm-linode$ ./storm-cluster-linode.sh add-nodes storm-cluster1/storm-cluster1.conf  api_env_linode.conf "4GB:3"
+        clustermgr@clustermgr:~/storm-linode$ ./storm-cluster-linode.sh add-nodes storm-cluster1  api_env_linode.conf "4GB:3"
 
     Example 2: Add a 2GB and two 4GB supervisor nodes to storm-cluster1: 
     
-        clustermgr@clustermgr:~/storm-linode$ ./storm-cluster-linode.sh add-nodes storm-cluster1/storm-cluster1.conf  api_env_linode.conf "2GB:1 4GB:2"
+        clustermgr@clustermgr:~/storm-linode$ ./storm-cluster-linode.sh add-nodes storm-cluster1  api_env_linode.conf "2GB:1 4GB:2"
         
 ### 2. Describe a Storm Cluster
 
@@ -1431,7 +1441,7 @@ A user with `clustermgr` authorization can use `describe` command to describe a 
         
 2.  Execute the `describe` command:
 
-        clustermgr@clustermgr:~/storm-linode$ ./storm-cluster-linode.sh describe <target-cluster-conf-file>
+        clustermgr@clustermgr:~/storm-linode$ ./storm-cluster-linode.sh describe <target-cluster-name>
 
 A user with only `clustermgrguest` authorization can use `cluster_info.sh` to describe a Storm cluster.
 
@@ -1470,11 +1480,11 @@ The nodes will still incur Linode's hourly charges even when stopped.
        
 2.  Execute the `stop` command:
         
-        clustermgr@clustermgr:~/storm-linode$ ./storm-cluster-linode.sh stop <target-cluster-conf-file> api_env_linode.conf
+        clustermgr@clustermgr:~/storm-linode$ ./storm-cluster-linode.sh stop <target-cluster-name> api_env_linode.conf
 
      Example:
         
-        clustermgr@clustermgr:~/storm-linode$ ./storm-cluster-linode.sh stop storm-cluster1/storm-cluster1.conf api_env_linode.conf
+        clustermgr@clustermgr:~/storm-linode$ ./storm-cluster-linode.sh stop storm-cluster1 api_env_linode.conf
 
 
 ### 4. Destroy a Storm Cluster
@@ -1493,11 +1503,11 @@ Destroying a Storm cluster permanently deletes all nodes of that cluster and the
         
 2.  Execute the `destroy` command:
         
-        clustermgr@clustermgr:~/storm-linode$ ./storm-cluster-linode.sh destroy <target-cluster-conf-file> api_env_linode.conf
+        clustermgr@clustermgr:~/storm-linode$ ./storm-cluster-linode.sh destroy <target-cluster-name> api_env_linode.conf
 
      Example:
         
-        clustermgr@clustermgr:~/storm-linode$ ./storm-cluster-linode.sh destroy storm-cluster1/storm-cluster1.conf api_env_linode.conf
+        clustermgr@clustermgr:~/storm-linode$ ./storm-cluster-linode.sh destroy storm-cluster1 api_env_linode.conf
 
 ### 5. Run a Command on all Nodes of a Storm Cluster
 
@@ -1517,11 +1527,11 @@ The command will be executed as root user on each node.
         
 2.  Execute the `run` command:
         
-        clustermgr@clustermgr:~/storm-linode$ ./storm-cluster-linode.sh run <target-cluster-conf-file> "<cmds"
+        clustermgr@clustermgr:~/storm-linode$ ./storm-cluster-linode.sh run <target-cluster-name> "<cmds"
 
      Example:
         
-        clustermgr@clustermgr:~/storm-linode$ ./storm-cluster-linode.sh run storm-cluster1/storm-cluster1.conf "apt-get update"
+        clustermgr@clustermgr:~/storm-linode$ ./storm-cluster-linode.sh run storm-cluster1 "apt-get update"
 
 ### 6. Copy Files to all Nodes of a Storm Cluster
 
@@ -1545,11 +1555,11 @@ The files will be copied as root user on each node.
         
 3.  Execute the `cp` command, giving the destination directory on each node and the list of local files to copy:
         
-        clustermgr@clustermgr:~/storm-linode$ ./storm-cluster-linode.sh cp <target-cluster-conf-file> <target-directory> <local-files>
+        clustermgr@clustermgr:~/storm-linode$ ./storm-cluster-linode.sh cp <target-cluster-name> <target-directory> <local-files>
 
      Example:
         
-        clustermgr@clustermgr:~/storm-linode$ ./storm-cluster-linode.sh cp storm-cluster1/storm-cluster1.conf "." "~/*.data"
+        clustermgr@clustermgr:~/storm-linode$ ./storm-cluster-linode.sh cp storm-cluster1 "." "~/*.data"
 
 ### 7. Delete a Storm Image
 
@@ -1565,11 +1575,11 @@ The files will be copied as root user on each node.
         
 2.  Execute the `delete-image` command:
         
-        clustermgr@clustermgr:~/storm-linode$ ./storm-cluster-linode.sh delete-image <target-image-conf-file> api_env_linode.conf
+        clustermgr@clustermgr:~/storm-linode$ ./storm-cluster-linode.sh delete-image <target-image-name> api_env_linode.conf
 
      Example:
         
-        clustermgr@clustermgr:~/storm-linode$ ./storm-cluster-linode.sh delete-image storm-image1/storm-image1.conf api_env_linode.conf
+        clustermgr@clustermgr:~/storm-linode$ ./storm-cluster-linode.sh delete-image storm-image1 api_env_linode.conf
 
 ## Zookeeper Cluster Operations
 
@@ -1585,7 +1595,7 @@ A user with `clustermgr` authorization can use `describe` command to describe a 
         
 2.  Execute the `describe` command:
 
-        clustermgr@clustermgr:~/storm-linode$ ./zookeepercluster-linode.sh describe <target-cluster-conf-file>
+        clustermgr@clustermgr:~/storm-linode$ ./zookeepercluster-linode.sh describe <target-cluster-name>
 
 A user with only `clustermgrguest` authorization can use `cluster_info.sh` to describe a Zookeeper cluster.
 
@@ -1628,11 +1638,11 @@ The nodes still incur Linode's hourly charges even when stopped.
         
 2.  Execute the `stop` command:
         
-        clustermgr@clustermgr:~/storm-linode$ ./zookeeper-cluster-linode.sh stop <target-cluster-conf-file> api_env_linode.conf
+        clustermgr@clustermgr:~/storm-linode$ ./zookeeper-cluster-linode.sh stop <target-cluster-name> api_env_linode.conf
 
      Example:
         
-        clustermgr@clustermgr:~/storm-linode$ ./zookeeper-cluster-linode.sh stop zk-cluster1/zk-cluster1.conf api_env_linode.conf
+        clustermgr@clustermgr:~/storm-linode$ ./zookeeper-cluster-linode.sh stop zk-cluster1 api_env_linode.conf
          
 ### 3. Destroy a Zookeeper Cluster
 
@@ -1654,11 +1664,11 @@ Destroying a Zookeeper cluster permanently deletes all nodes of that cluster and
         
 2.  Execute the `destroy` command:
         
-        clustermgr@clustermgr:~/storm-linode$ ./zookeeper-cluster-linode.sh destroy <target-cluster-conf-file> api_env_linode.conf
+        clustermgr@clustermgr:~/storm-linode$ ./zookeeper-cluster-linode.sh destroy <target-cluster-name> api_env_linode.conf
 
      Example:
         
-        clustermgr@clustermgr:~/storm-linode$ ./zookeeper-cluster-linode.sh destroy zk-cluster1/zk-cluster1.conf api_env_linode.conf
+        clustermgr@clustermgr:~/storm-linode$ ./zookeeper-cluster-linode.sh destroy zk-cluster1 api_env_linode.conf
 
 ### 4. Run a Command on all Nodes of a Zookeeper Cluster
 
@@ -1678,11 +1688,11 @@ The command will be executed as root user on each node.
         
 2.  Execute the `run` command:
         
-        clustermgr@clustermgr:~/storm-linode$ ./zookeeper-cluster-linode.sh run <target-cluster-conf-file> "<cmds>"
+        clustermgr@clustermgr:~/storm-linode$ ./zookeeper-cluster-linode.sh run <target-cluster-name> "<cmds>"
 
      Example:
         
-        clustermgr@clustermgr:~/storm-linode$ ./zookeeper-cluster-linode.sh run zk-cluster1/zk-cluster1.conf "apt-get update"
+        clustermgr@clustermgr:~/storm-linode$ ./zookeeper-cluster-linode.sh run zk-cluster1 "apt-get update"
         
 ### 5. Copy Files to all Nodes of a Zookeeper Cluster
 
@@ -1706,11 +1716,11 @@ The files will be copied as root user on each node.
         
 3.  Execute the `cp` command, giving the destination directory on each node and the list of local files to copy:
         
-        clustermgr@clustermgr:~/storm-linode$ ./zookeeper-cluster-linode.sh cp <target-cluster-conf-file> <target-directory> <local-files>
+        clustermgr@clustermgr:~/storm-linode$ ./zookeeper-cluster-linode.sh cp <target-cluster-name> <target-directory> <local-files>
 
      Example:
         
-        clustermgr@clustermgr:~/storm-linode$ ./zookeeper-cluster-linode.sh cp zk-cluster1/zk-cluster1.conf "." "~/*.data"
+        clustermgr@clustermgr:~/storm-linode$ ./zookeeper-cluster-linode.sh cp zk-cluster1 "." "~/*.data"
 
 ### 6. Delete a Zookeeper Image
 
@@ -1726,11 +1736,11 @@ The files will be copied as root user on each node.
         
 2.  Execute the `delete-image` command:
         
-        clustermgr@clustermgr:~/storm-linode$ ./zookeeper-cluster-linode.sh delete-image <target-image-conf-file> api_env_linode.conf
+        clustermgr@clustermgr:~/storm-linode$ ./zookeeper-cluster-linode.sh delete-image <target-image-name> api_env_linode.conf
 
      Example:
         
-        clustermgr@clustermgr:~/storm-linode$ ./zookeeper-cluster-linode.sh delete-image zk-image1/zk-image1.conf api_env_linode.conf
+        clustermgr@clustermgr:~/storm-linode$ ./zookeeper-cluster-linode.sh delete-image zk-image1 api_env_linode.conf
 
 ## Appendix – Generating SSH Keypairs
 
