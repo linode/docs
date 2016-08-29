@@ -1,23 +1,22 @@
 ---
 author:
-  name: Karthik Shiraly
-  email: docs@linode.com
+    name: Karthik Shiraly
+    email: docs@linode.com
 description: 'Deploy Storm cluster on Linode cloud for real-time analytics on streaming datasets.'
 keywords: 'storm,analytics,big data,zookeeper'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
 published: 'Thursday, March 24th, 2016'
 modified: Thursday, March 24th, 2016
 modified_by:
-  name: Linode
+    name: Linode
 title: 'Big Data in the Linode Cloud: Streaming Data Processing with Apache Storm'
 contributor:
-  name: Karthik Shiraly
-  link: https://github.com/pathbreak
-  external_resources:
+    name: Karthik Shiraly
+    link: https://github.com/pathbreak
+external_resources:
 - '[Apache Storm project website](http://storm.apache.org/)'
 - '[Apache Storm documentation](http://storm.apache.org/documentation.html)'
 - '[Storm - Distributed and Fault-Tolerant Real-time Computation](http://www.infoq.com/presentations/Storm-Introduction)'
-
 ---
 
 ## Introduction
