@@ -192,10 +192,12 @@ You can use any preferred GUI or CLI client to connect to ZNC. For the example b
 
     [![ZNC](/docs/assets/znc-konversation-1.png)](/docs/assets/znc-konversation-1.png)
 
-2. enter a name for the new network. For this example the network is **linode-znc**. Then click 'Add...' to enter your network details like IP Address, Port number, and password.
+2. Enter a name for the new network. For this example the network is **linode-znc**. Then click 'Add...' to open the dialog to add the server.
 
     [![ZNC](/docs/assets/znc-konversation-2.png)](/docs/assets/znc-konversation-2.png)
     
+3. Now enter your network details such as IP Address, Port number, and password.
+
     [![ZNC](/docs/assets/znc-konversation-3.png)](/docs/assets/znc-konversation-3.png)
     
 
