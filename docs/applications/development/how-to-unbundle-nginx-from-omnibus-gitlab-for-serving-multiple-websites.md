@@ -21,17 +21,17 @@ external_resources:
 *This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
 <hr>
 
-Omnibus GitLab is a software package (or software stack) that allows you to easily install and run GitLab on your own Linode.
+Omnibus GitLab is a software package (or software stack) that allows you to easily install and run GitLab on your Linode.
 This guide walks you through the process of installing and setting up your own nginx server on a typical Omnibus installation. Using the method outlined here, you are not forced to use Omnibus's default settings, and can create as many virtual hosts as you need for hosting multiple websites and apps on the same server as your GitLab.
 
-Software stacks sometimes bring a series of challenges to those who need to customize specific settings. If you require more control over your installation, consider [installing GitLab from source](/docs/applications/development/how-to-install-and-configure-gitlab-on-ubuntu-14-04-trusty-tahr "How to Install and Configure GitLab on Ubuntu 14.04 (Trusty Tahr)").
+Preconfigured software stacks sometimes bring a series of challenges to those who need to customize specific settings. If you require more control over your installation, consider [installing GitLab from source](/docs/applications/development/how-to-install-and-configure-gitlab-on-ubuntu-14-04-trusty-tahr "How to Install and Configure GitLab on Ubuntu 14.04 (Trusty Tahr)").
 
 
 ## Before You Begin
 
-1.  Familiarize yourself with [Linode's Getting Started guide](/docs/getting-started) and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with Linode's [Getting Started guide](/docs/getting-started) and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server guide](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services. 
+2.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  This guide has been tested with Ubuntu 14.04 LTS and 16.04 LTS. Some commands will be slightly different for each version, so be sure to read each step carefully for version-specific instructions.
 
@@ -45,9 +45,9 @@ Software stacks sometimes bring a series of challenges to those who need to cust
 
 ## Install Omnibus GitLab
 
-If you're already running an Omnibus GitLab environment [upgrade to the newest version](https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/doc/update.md) and proceed to the next section, [Unbundle nginx from Omnibus]. If you're installing GitLab for the first time, continue with the steps in this section.
+If you're already running an Omnibus GitLab environment [upgrade to the newest version](https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/doc/update.md) and proceed to the next section, [Unbundle nginx from Omnibus](#unbundle-nginx-from-omnibus-gitlab). If you're installing GitLab for the first time, continue with the steps in this section.
 
-Note that nginx cannot be disabled in older versions of GitLab Community Edition (CE). If you currently have an older version of GitLab CE installed, we recommend that you upgrade incrementally to avoid major issues.
+Note that nginx cannot be disabled in older versions of GitLab Community Edition (CE). If you currently have an older version of GitLab CE installed, we recommend that you upgrade incrementally to avoid issues.
 
 1.  Install the dependencies:
 
@@ -160,7 +160,7 @@ In this section, we'll create a new virtual host to serve GitLab. Since we've un
             client_max_body_size 250m;
 
             # individual nginx logs for this gitlab vhost
-            access_log  /var/log/nginx/gitlab_access.log; 
+            access_log  /var/log/nginx/gitlab_access.log;
             error_log   /var/log/nginx/gitlab_error.log;
 
             location / {
