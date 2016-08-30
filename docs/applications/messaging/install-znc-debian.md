@@ -168,6 +168,8 @@ ZNC is an IRC bouncer. It's designed to run on a server that remains connected t
 
 ## Connect to The Client
 
+### HexChat ###
+
 You can use any preferred GUI or CLI client to connect to ZNC. For the example below, we'll be using [HexChat](https://hexchat.github.io/index.html).
 
 1.  Open HexChat, add your desired nicknames, and then create a new network. In this example, the network is called **ZNCserver**:
