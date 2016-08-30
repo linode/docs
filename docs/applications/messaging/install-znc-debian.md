@@ -186,6 +186,18 @@ You can use any preferred GUI or CLI client to connect to ZNC. For the example b
 
 3.  Press **Connect**. You should be connected to your ZNC server and from there to any networks and channels you've configured to autojoin.
 
+### Konversation ###
+
+1. Open Konversation, click 'New...' 
+
+    [![ZNC](/docs/assets/znc-konversation-1.png)](/docs/assets/znc-konversation-1.png)
+
+2. enter a name for the new network. For this example the network is **linode-znc**. Then click 'Add...' to enter your network details like IP Address, Port number, and password.
+
+    [![ZNC](/docs/assets/znc-konversation-2.png)](/docs/assets/znc-konversation-2.png)
+    
+    [![ZNC](/docs/assets/znc-konversation-3.png)](/docs/assets/znc-konversation-3.png)
+    
 
 ## SSL Encryption with a Signed Certificate (Optional)
 
