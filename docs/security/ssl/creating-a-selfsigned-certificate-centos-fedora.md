@@ -34,7 +34,7 @@ Issue the following command to generate your self-signed certificate. Change `ex
 
     openssl req -new -x509 -sha256 -days 365 -nodes -out /etc/pki/tls/certs/example.com.crt -keyout /etc/pki/tls/private/example.com.key
 
-This command creates a `.csr` file under the `/etc/pki/tls/certs` directory, and a `.key` file under `/etc/pki/tls/private` using these options:
+This command creates a `.crt` file under the `/etc/pki/tls/certs` directory, and a `.key` file under `/etc/pki/tls/private` using these options:
 
 * `-nodes` instructs OpenSSL to create a certificate that does not require a passphrase. If this option is excluded, you will be required to enter the the passphrase in the console each time the application using it is restarted.
 
