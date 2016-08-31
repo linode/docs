@@ -31,7 +31,7 @@ If hosting multiple websites with commercial SSL certificates on the same IP add
 
 {: .note}
 >
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, see the [Linux Users and Groups guide](/docs/tools-reference/linux-users-and-groups).
+>The steps in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 >
 >Replace each instance of `example.com` in this guide with your site's domain name.
 
@@ -41,12 +41,12 @@ If hosting multiple websites with commercial SSL certificates on the same IP add
 >
 >While some Certificate Authorities (CA) will automatically include the "www" subdomain when issuing certificates for a root domain such as example.com, others do not. If you wish to secure multiple subdomains using the same certificate, you will need to create a [wildcard certificate](https://en.wikipedia.org/wiki/Wildcard_certificate).
 
-Issue the following commands to navigate to the `/etc/ssl` directory, and create a certificate signing request (CSR) for the site that will be using SSL. Change `example.com` to reflect the fully qualified domain name (FQDN) or IP of the site you intend to use with SSL. Leave the challenge password blank:
+Issue the following commands to navigate to the `/etc/ssl` directory, and create a certificate signing request (CSR) for the site that will be using SSL. Change `example.com` to reflect the fully qualified domain name (FQDN) of the site you intend to use with SSL. Leave the challenge password blank:
 
     cd /etc/ssl/
     openssl req -new -newkey rsa:2048 -nodes -sha256 -days 365 -keyout /etc/pki/tls/private/example.com.key -out example.com.csr
 
-After the first command changes directories, the second command creates a `.csr` file under the `/etc/ssl` directory, and a `.key` file under `/etc/ssl/private` using these options:
+After the first command changes directories, the second command creates a `.csr` file under the `/etc/ssl` directory, and a `.key` file under `/etc/pki/tls/private` using these options:
 
 * `-nodes` instructs OpenSSL to create a certificate that does not require a passphrase. If this option is excluded, you will be required to enter the the passphrase in the console each time the application using it is restarted.
 
@@ -99,7 +99,7 @@ Most modern distributions come with common root CA certificates installed as par
 
     yum list installed ca-certificates
 
-The ca-certificates package comes with a bundle of root certs located under `/etc/ssl/certs/ca-certificates.crt` that can be used with many prevalent certificate authorities. If you're using an older distribution that does not have the ca-certificates package, you will need to download your root certificate from the CA that issued it. Some standard commercial certificate authorities are:
+The ca-certificates package comes with a bundle of root certs located under `/etc/pki/tls/certs/ca-bundle.crt` that can be used with many prevalent certificate authorities. If you're using an older distribution that does not have the ca-certificates package, you will need to download your root certificate from the CA that issued it. Some standard commercial certificate authorities are:
 
 -   [Verisign](https://knowledge.verisign.com/support/ssl-certificates-support/index.html)
 -   [Thawte](http://www.thawte.com/roots/index.html)

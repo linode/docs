@@ -17,10 +17,12 @@ external_resources:
 
 This guide details the process for creating a self-signed SSL certificate on Debian or Ubuntu. Self-signed certificates are suitable for personal use or for applications used internally within an organization.
 
+If you intend to use your SSL certificate on a website powered by Apache, continue to our [SSL Certificates with Apache on Debian & Ubuntu](/docs/security/ssl/ssl-apache2-debian-ubuntu) guide once you've completed the process outlined here.
+
 For an SSL setup with Nginx, please start with our [Nginx and SSL](/docs/security/ssl/provide-encrypted-resource-access-using-ssl-certificates-on-nginx) guide.
 
 {: .note}
->The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+>The steps in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
 ## Before You Begin
 
@@ -30,7 +32,7 @@ For an SSL setup with Nginx, please start with our [Nginx and SSL](/docs/securit
 
 ## Creating a Self-Signed Certificate
 
-Issue the following command to generate your self-signed certificate. Change `example.com` to reflect the fully qualified domain name (FQDN) or IP of the site you intend to use with SSL:
+Issue the following command to generate your self-signed certificate. Change `example.com` to reflect the fully qualified domain name (FQDN) of the site you intend to use with SSL:
 
     openssl req -new -x509 -sha256 -days 365 -nodes -out /etc/ssl/certs/example.com.crt -keyout /etc/ssl/private/example.com.key
 
@@ -50,10 +52,3 @@ Restrict the private key and certificate file properties to be read only by owne
 
     chmod 400 /etc/ssl/certs/example.com.crt
     chmod 400 /etc/ssl/private/example.com.key
-
-## Next Steps
-
-Once your certificate has been generated, configure your web server to utilize the new certificate. Instructions for doing so with several popular platforms can be found at the links below:
-
--  [SSL Certificates with Apache on Debian and Ubuntu](/docs/security/ssl/ssl-apache2-debian-ubuntu)
--  [SSL Certificates with Nginx](/docs/security/ssl/ssl-certificates-with-nginx)

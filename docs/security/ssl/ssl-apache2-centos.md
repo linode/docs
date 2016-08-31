@@ -15,7 +15,7 @@ external_resources:
  - '[Setting up an SSL Secured Webserver with CentOS](http://wiki.centos.org/HowTos/Https)'
 ---
 
-This guide will show you how to enable SSL for websites served through Apache web server on CentOS or Fedora in order to ensure secure access to your website and services.
+This guide will show you how to enable SSL to secure websites served through Apache on CentOS or Fedora.
 
 ## Before You Begin
 
@@ -27,9 +27,9 @@ This guide assumes that you are running Apache2 on CentOS or Fedora. Prior to st
 
 -  Follow our guide for obtaining either a [self-signed](docs/security/ssl/creating-a-selfsigned-certificate-centos-fedora) or [commercial](/docs/security/ssl/obtaining-a-commercial-ssl-certificate-centos-fedora.md) SSL certificate.
 
--  In order to configure your Linode to function with SSL, you will need to ensure that `mod_ssl` and `OpenSSL` are installed on your system.  You can do so by running the following command:
+-  In order to configure your Linode to function with SSL, you will need to ensure that the Apache `mod_ssl` module is installed on your system.  You can do so by running the following command:
 
-        yum install mod_ssl openssl
+        yum install mod_ssl
 
 ## Configure Apache to use the SSL Certificate
 
