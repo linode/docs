@@ -41,12 +41,12 @@ If hosting multiple websites with commercial SSL certificates on the same IP add
 >
 >While some Certificate Authorities (CA) will automatically include the "www" subdomain when issuing certificates for a root domain such as example.com, others do not. If you wish to secure multiple subdomains using the same certificate, you will need to create a [wildcard certificate](https://en.wikipedia.org/wiki/Wildcard_certificate).
 
-Issue the following commands to navigate to the `/etc/ssl` directory, and create a certificate signing request (CSR) for the site that will be using SSL. Change `example.com` to reflect the fully qualified domain name (FQDN) or IP of the site you'll be using SSL with. Leave the challenge password blank:
+Issue the following commands to navigate to the `/etc/ssl` directory, and create a certificate signing request (CSR) for the site that will be using SSL. Change `example.com` to reflect the fully qualified domain name (FQDN) or IP of the site you intend to use with SSL. Leave the challenge password blank:
 
     cd /etc/ssl/
     openssl req -new -newkey rsa:2048 -nodes -sha256 -days 365 -keyout /etc/pki/tls/private/example.com.key -out example.com.csr
 
-The first command navigates to the `/etc/ssl` directory. The second command generates a secure key, as well as a certificate signing request. A brief explanation of the options used:
+After the first command changes directories, the second command creates a `.csr` file under the `/etc/ssl` directory, and a `.key` file under `/etc/ssl/private` using these options:
 
 * `-nodes` instructs OpenSSL to create a certificate that does not require a passphrase. If this option is excluded, you will be required to enter the the passphrase in the console each time the application using it is restarted.
 
@@ -56,7 +56,7 @@ The first command navigates to the `/etc/ssl` directory. The second command gene
 
 * `-sha256` ensures that the certificate request is generated using 265-bit SHA (Secure Hash Algorithm).
 
-Here are the values we entered for our example certificate. Note that you can ignore the 'extra' attributes.
+Here are the values we entered for our example certificate. Note that you can ignore the 'extra' attributes:
 
     Generating a 2048 bit RSA private key
     ......................................................++++++
@@ -83,23 +83,23 @@ Here are the values we entered for our example certificate. Note that you can ig
     A challenge password []:
     An optional company name []:
 
-This command will create a `.key` file under `/etc/pki/tls/private` and a `.csr` file under `/etc/ssl`. Issue this command to protect your private key:
+Restrict the private key's file properties to be read only by owner:
 
     chmod 400 /etc/pki/tls/private/example.com.key
 
 You may now submit the file ending in `.csr` to a commercial SSL provider for signing. You will receive a signed file after the CA signs the request. Save this file as `/etc/pki/tls/certs/example.com.crt`.
 
-Execute the following command to protect the signed certificate:
+Restrict the signed certificate's file properties as well:
 
     chmod 400 /etc/pki/tls/certs/example.com.crt
 
 ## Get the CA Root Certificate
 
-Most modern distributions come with common root CA certificates installed as part of the "ca-certificates" package. To check if this package is installed, you can run this command:
+Most modern distributions come with common root CA certificates installed as part of the "ca-certificates" package. To check if this package is installed, run:
 
     yum list installed ca-certificates
 
-The "ca-certificates" package comes with a bundle of root certs located under `/etc/pki/tls/certs/ca-bundle.crt` that can be used with many prevalent certificate authorities. If you're using an older distribution that does not have the "ca-certificates" package, you will need to download your root certificate from the CA that issued it. Some of the most common commercial certificate authorities are listed below:
+The ca-certificates package comes with a bundle of root certs located under `/etc/ssl/certs/ca-certificates.crt` that can be used with many prevalent certificate authorities. If you're using an older distribution that does not have the ca-certificates package, you will need to download your root certificate from the CA that issued it. Some standard commercial certificate authorities are:
 
 -   [Verisign](https://knowledge.verisign.com/support/ssl-certificates-support/index.html)
 -   [Thawte](http://www.thawte.com/roots/index.html)
@@ -112,48 +112,50 @@ You can add root certificates to the bundle by enabling dynamic CA configuration
 
     update-ca-trust force-enable
 
-Next you'll need to copy the certificate file over to the appropriate directory, and then update the bundle:
+Next copy the certificate file to the appropriate directory, and update the bundle:
 
     cp root-example.crt /etc/pki/ca-trust/source/anchors/
     update-ca-trust extract
 
 ## Preparing a Chained SSL Certificate
 
-In some cases, CAs have not submitted a Trusted Root CA Certificate to some or all browser vendors. Because of this, you can choose to *chain* roots for certificates to be trusted by web browsers. If you receive several files from your CA ending with `.crt`(collectively referred to as a `chained SSL certificate`), they must be linked into one file, in a specific order, to provide full support with most browsers. The following example uses a chained SSL certificate that was signed by Comodo. Enter the following command to prepare your chained SSL certificate:
+In some cases, CAs have not submitted a Trusted Root CA Certificate to some or all browser vendors. Because of this, you can choose to *chain* roots for certificates to be trusted by web browsers. If you receive several files from your CA ending with `.crt` (collectively referred to as a "chained SSL certificate"), they must be linked into one file, in a specific order, to ensure full compatibility with most browsers. The example below uses a chained SSL certificate that was signed by Comodo.
 
-        cat example.com.crt COMODORSADomainValidationSecureServerCA.crt  COMODORSAAddTrustCA.crt AddTrustExternalCARoot.crt > www.mydomain.com.crt
+Prepare your chained SSL certificate:
 
-    The contents of the resulting file will appear similar to the following (yours will be unique):
+    cat example.com.crt COMODORSADomainValidationSecureServerCA.crt  COMODORSAAddTrustCA.crt AddTrustExternalCARoot.crt > www.mydomain.com.crt
 
-        -----BEGIN CERTIFICATE-----
-        MIIFSzCCBDOgAwIBAgIQVjCXC0bF9U8FypJOnL9cuDANBgkqhkiG9w0BAQsFADCB
-        ................................................................
-        ncHG3hwHHwhiEz6ukC2mqxA+D3KILiywgHgWcumnpeCEUQgDzy0Fz2Ip/kR/1Fkv
-        DCQzME2NkT1ZdW8fdz+Y
-        -----END CERTIFICATE-----
-        -----BEGIN CERTIFICATE-----
-        MIIGCDCCA/CgAwIBAgIQKy5u6tl1NmwUim7bo3yMBzANBgkqhkiG9w0BAQwFADCB
-        ................................................................
-        j4rBYKEMrltDR5FL1ZoXX/nUh8HCjLfn4g8wGTeGrODcQgPmlKidrv0PJFGUzpII
-        -----END CERTIFICATE-----
-        -----BEGIN CERTIFICATE-----
-        ZFRydXN0IEV4dGVybmFsIFRUUCBOZXR3b3JrMSIwIAYDVQQDExlBZGRUcnVzdCBF
-        ................................................................
-        Uspzgb8c8+a4bmYRBbMelC1/kZWSWfFMzqORcUx8Rww7Cxn2obFshj5cqsQugsv5
-        -----END CERTIFICATE-----
-        -----BEGIN CERTIFICATE-----
-        MIIENjCCAx6gAwIBAgIBATANBgkqhkiG9w0BAQUFADBvMQswCQYDVQQGEwJTRTEU
-        ................................................................
-        6wwCURQtjr0W4MHfRnXnJK3s9EK0hZNwEGe6nQY1ShjTK3rMUUKhemPR5ruhxSvC
-        -----END CERTIFICATE-----
+The contents of the resulting file will appear similar to the following:
+
+    -----BEGIN CERTIFICATE-----
+    MIIFSzCCBDOgAwIBAgIQVjCXC0bF9U8FypJOnL9cuDANBgkqhkiG9w0BAQsFADCB
+    ................................................................
+    ncHG3hwHHwhiEz6ukC2mqxA+D3KILiywgHgWcumnpeCEUQgDzy0Fz2Ip/kR/1Fkv
+    DCQzME2NkT1ZdW8fdz+Y
+    -----END CERTIFICATE-----
+    -----BEGIN CERTIFICATE-----
+    MIIGCDCCA/CgAwIBAgIQKy5u6tl1NmwUim7bo3yMBzANBgkqhkiG9w0BAQwFADCB
+    ................................................................
+    j4rBYKEMrltDR5FL1ZoXX/nUh8HCjLfn4g8wGTeGrODcQgPmlKidrv0PJFGUzpII
+    -----END CERTIFICATE-----
+    -----BEGIN CERTIFICATE-----
+    ZFRydXN0IEV4dGVybmFsIFRUUCBOZXR3b3JrMSIwIAYDVQQDExlBZGRUcnVzdCBF
+    ................................................................
+    Uspzgb8c8+a4bmYRBbMelC1/kZWSWfFMzqORcUx8Rww7Cxn2obFshj5cqsQugsv5
+    -----END CERTIFICATE-----
+    -----BEGIN CERTIFICATE-----
+    MIIENjCCAx6gAwIBAgIBATANBgkqhkiG9w0BAQUFADBvMQswCQYDVQQGEwJTRTEU
+    ................................................................
+    6wwCURQtjr0W4MHfRnXnJK3s9EK0hZNwEGe6nQY1ShjTK3rMUUKhemPR5ruhxSvC
+    -----END CERTIFICATE-----
 
 
-    The chart below breaks this down a bit more clearly:
+Use this table to better visualize the command entered to prepare the chained SSL certificate:
 
-    {: .table .table-striped }
-    | Certificate Type:          | Issued to:                              | Issued by:                              |
-    |----------------------------|:----------------------------------------|:----------------------------------------|
-    | End-user Certificate       | example.com                             | Comodo LLC                              |
-    | Intermediate Certificate 1 | Comodo LLC                              | COMODORSADomainValidationSecureServerCA |
-    | Intermediate Certificate 2 | COMODORSADomainValidationSecureServerCA | COMODORSAAddTrustCA                     |
-    | Root certificate           | COMODORSAAddTrustCA                     | AddTrustExternalCARoot                  |
+{: .table .table-striped }
+| **Certificate Type:**      | **Issued to:**                          | **Issued by:**                          |
+|----------------------------|:----------------------------------------|:----------------------------------------|
+| End-user Certificate       | example.com                             | Comodo LLC                              |
+| Intermediate Certificate 1 | Comodo LLC                              | COMODORSADomainValidationSecureServerCA |
+| Intermediate Certificate 2 | COMODORSADomainValidationSecureServerCA | COMODORSAAddTrustCA                     |
+| Root certificate           | COMODORSAAddTrustCA                     | AddTrustExternalCARoot                  |

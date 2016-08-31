@@ -3,7 +3,7 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Creating an SSL certificate for personal or internal organizational use on a Linux server.'
-keywords: 'ssl certificate,ssl cert,self signed ssl,ssl linux,ssl cert linux'
+keywords: 'ssl certificate,ssl cert,self signed ssl,ssl linux,ssl cert linux,centos ssl,fedora ssl'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['security/ssl-certificates/self-signed/']
 modified: Friday, August 16th, 2016
@@ -15,9 +15,12 @@ external_resources:
  - '[OpenSSL documentation](http://openssl.org/docs/)'
 ---
 
-This guide details the process for creating a self-signed SSL certificate, suitable for personal use or for applications used internally within an organization. We assume that you've followed the steps outlined in our [Getting Started guide](/docs/getting-started/), and that you're logged into your Linode as the root user. If you intend to use your SSL certificate on a website powered by Apache, you can continue to our [SSL Certificates with Apache on CentOS 7](/docs/security/ssl/ssl-apache2-centos) guide once you've completed the process outlined here.
+This guide details the process for creating a self-signed SSL certificate on CentOS or Fedora. Self-signed certificates are suitable for personal use or for applications used internally within an organization.
 
-For an SSL setup with the Nginx web server, please start with our [Nginx and SSL](/docs/security/ssl/provide-encrypted-resource-access-using-ssl-certificates-on-nginx) guide.
+For an SSL setup with Nginx, please start with our [Nginx and SSL](/docs/security/ssl/provide-encrypted-resource-access-using-ssl-certificates-on-nginx) guide.
+
+{: .note}
+>The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
 ## Before You Begin
 
@@ -27,11 +30,11 @@ For an SSL setup with the Nginx web server, please start with our [Nginx and SSL
 
 ## Creating a Self-Signed Certificate
 
-Issue the following command to generate your self-signed certificate, replacing "example.com" with the domain you intend to use with SSL:
+Issue the following command to generate your self-signed certificate. Change `example.com` to reflect the fully qualified domain name (FQDN) or IP of the site you intend to use with SSL:
 
     openssl req -new -x509 -sha256 -days 365 -nodes -out /etc/pki/tls/certs/example.com.crt -keyout /etc/pki/tls/private/example.com.key
 
-This command generates a secure key, as well as a certificate signing request. A brief explanation of the options used:
+This command creates a `.csr` file under the `/etc/pki/tls/certs` directory, and a `.key` file under `/etc/pki/tls/private` using these options:
 
 * `-nodes` instructs OpenSSL to create a certificate that does not require a passphrase. If this option is excluded, you will be required to enter the the passphrase in the console each time the application using it is restarted.
 
@@ -48,7 +51,7 @@ You will be prompted to add identifying information for your website or organiza
 
 ## Next Steps
 
-Once your certificate has been generated, you will need to configure your web server to utilize the new certificate.  Instructions for doing so with several popular platforms can be found at the links below.
+Once your certificate has been generated, configure your web server to utilize the new certificate.  Instructions for doing so with several popular platforms can be found at the links below.
 
 - [SSL Certificates with Apache on CentOS 7](/docs/security/ssl/ssl-apache2-centos)
 - [SSL Certificates with Nginx](/docs/security/ssl/ssl-certificates-with-nginx)

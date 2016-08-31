@@ -41,12 +41,12 @@ If hosting multiple websites with commercial SSL certificates on the same IP add
 >
 >While some Certificate Authorities (CA) will automatically include the "www" subdomain when issuing certificates for a root domain such as example.com, others do not. If you wish to secure multiple subdomains using the same certificate, you will need to create a [wildcard certificate](https://en.wikipedia.org/wiki/Wildcard_certificate).
 
-Issue the following commands to navigate to the `/etc/ssl` directory, and create a certificate signing request (CSR) for the site that will be using SSL. Change `example.com` to reflect the fully qualified domain name (FQDN) or IP of the site you'll be using SSL with. Leave the challenge password blank:
+Issue the following commands to navigate to the `/etc/ssl` directory and create a certificate signing request (CSR) for the site that will be using SSL. Change `example.com` to reflect the fully qualified domain name (FQDN) or IP of the site you intend to use with SSL. Leave the challenge password blank:
 
     cd /etc/ssl/
     openssl req -new -newkey rsa:2048 -nodes -sha256 -days 365 -keyout /etc/ssl/private/example.com.key -out example.com.csr
 
-The second command generates a secure key as well as a certificate signing request using these options:
+After the first command changes directories, the second command creates a `.csr` file under the `/etc/ssl/certs` directory, and a `.key` file under `/etc/ssl/private` using these options:
 
 * `-nodes` instructs OpenSSL to create a certificate that does not require a passphrase. If this option is excluded, you will be required to enter the the passphrase in the console each time the application using it is restarted.
 
@@ -56,7 +56,7 @@ The second command generates a secure key as well as a certificate signing reque
 
 * `-sha256` ensures that the certificate request is generated using 265-bit SHA (Secure Hash Algorithm).
 
-Here are the values we entered for our example certificate. Note that you can ignore the 'extra' attributes.
+Here are the values we entered for our example certificate. Note that you can ignore the 'extra' attributes:
 
     Generating a 2048 bit RSA private key
     ......................................................++++++
@@ -83,13 +83,13 @@ Here are the values we entered for our example certificate. Note that you can ig
     A challenge password []:
     An optional company name []:
 
-This command will create a `.csr` file under the `/etc/ssl` directory, and a `.key` file under `/etc/ssl/private`. You can execute this command to protect your private key:
+Restrict the private key's file properties to be read only by owner:
 
     chmod 400 /etc/ssl/private/example.com.key
 
 You may now submit the file ending in `.csr` to a commercial SSL provider for signing. You will receive a signed file after the CA signs the request. Save this file as `/etc/ssl/certs/example.com.crt`.
 
-Restrict the signed certificate's file properties to be read only by owner:
+Restrict the signed certificate's file properties as well:
 
     chmod 400 /etc/ssl/certs/example.com.crt
 
@@ -108,7 +108,7 @@ The ca-certificates package comes with a bundle of root certs located under `/et
 
 ## Adding Your Root Certificate to the CA Bundle
 
-If your ca-certificates bundle does not include your certificate authority's root cert, add it manually by moving the file to the source directory:
+If your ca-certificates bundle does not include your CA's root cert, add it manually by moving the file to the source directory:
 
     cp root-example.crt /usr/local/share/ca-certificates/
 

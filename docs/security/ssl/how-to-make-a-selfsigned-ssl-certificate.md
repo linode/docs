@@ -44,7 +44,7 @@ As an example, we'll create a certificate that might be used to secure a persona
     openssl req -new -x509 -sha256 -days 365 -nodes -out /etc/ssl/localcerts/example.com.crt -keyout /etc/ssl/localcerts/example.com.key
     chmod 600 /etc/ssl/localcerts/example.com*
 
-Change example.com in the above commands to correspond to the domain you are generating the certificate for
+Change `example.com` in the above commands to correspond to the domain you are generating the certificate for
 
 You will be asked for several configuration values. Enter values appropriate for your organization and server, as shown here. This example will create a certificate valid for 365 days; you may wish to increase this value. We've specified the FQDN (fully qualified domain name) of the VPS for the "Common Name" entry, as this certificate will be used for generic SSL service. The `-nodes` flag instructs OpenSSL to create a certificate that does not require a passphrase. If this option is omitted, you will be required to enter a passphrase on the console to unlock the certificate each time the server application using it is restarted (most frequently, this will happen when you reboot your Linode).
 
