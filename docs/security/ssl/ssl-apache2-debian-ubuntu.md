@@ -25,7 +25,7 @@ This guide assumes that you are running Apache 2.4 or higher on Debian 8 or Ubun
 
 -  Complete our [Hosting a Website](/docs/websites/hosting-a-website) guide, and create a site that you wish to secure with SSL.
 
--  Follow our guide to obtain either a [self-signed](/docs/security/ssl/how-to-make-a-selfsigned-ssl-certificate) or [commercial](/docs/security/ssl/obtaining-a-commercial-ssl-certificate) SSL certificate.
+-  Follow our guide to obtain either a [self-signed](/docs/security/ssl/creating-a-selfsigned-certificate-debian-ubuntu) or [commercial](/docs/security/ssl/obtaining-a-commercial-ssl-certificate-debian-ubuntu) SSL certificate.
 
 -  If hosting multiple websites with commercial SSL certificates on the same IP address, use the [Server Name Identification (SNI) extension](https://wiki.apache.org/httpd/NameBasedSSLVHostsWithSNI) of TLS. SNI is accepted by most modern web browsers. If you expect to receive connections from clients running legacy browsers (like Internet Explorer for Windows XP), you will need to [contact support](/docs/platform/support) to request an additional IP address.
 
