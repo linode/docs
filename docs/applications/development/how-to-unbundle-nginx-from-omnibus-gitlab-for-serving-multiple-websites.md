@@ -8,9 +8,9 @@ license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
 contributor:
     name: Jordi Bassagañas
     link: https://twitter.com/programarivm
-modified: Monday, February 29th, 2016
+modified: Monday, August 8, 2016
 modified_by:
-  name: Jordi Bassagañas
+  name: Phil Zona
 published: 'Monday, February 29th, 2016'
 title: 'How to Unbundle nginx from Omnibus GitLab for Serving Multiple Websites'
 external_resources:
