@@ -50,7 +50,7 @@ You will be asked for several configuration values. Enter values appropriate for
 
 ## Next Steps
 
-Once your certificate has been generated, you will need to configure your web server to utilize the new certificate.  Instructions for doing so with several popular platforms can be found at the links below.
+Once your certificate has been generated, you will need to configure your web server to utilize the new certificate. Instructions for doing so with several popular platforms can be found at the links below:
 
 - [SSL Certificates with Apache on Debian and Ubuntu](/docs/security/ssl/ssl-apache2-debian-ubuntu)
 - [SSL Certificates with Apache on CentOS 7](/docs/security/ssl/ssl-apache2-centos)

@@ -51,7 +51,7 @@ You will be prompted to add identifying information for your website or organiza
 
 ## Next Steps
 
-Once your certificate has been generated, configure your web server to utilize the new certificate.  Instructions for doing so with several popular platforms can be found at the links below.
+Once your certificate has been generated, configure your web server to utilize the new certificate. Instructions for doing so with several popular platforms can be found at the links below:
 
 - [SSL Certificates with Apache on CentOS 7](/docs/security/ssl/ssl-apache2-centos)
 - [SSL Certificates with Nginx](/docs/security/ssl/ssl-certificates-with-nginx)
