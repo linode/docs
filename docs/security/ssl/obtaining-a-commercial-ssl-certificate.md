@@ -23,7 +23,7 @@ These instructions will show you how to install a commercial SSL certificate on 
 
 For an SSL setup with Nginx, please start with our [Nginx and SSL](/docs/security/ssl/provide-encrypted-resource-access-using-ssl-certificates-on-nginx) guide.
 
-If you're hosting multiple websites with commercial SSL certificates on the same IP address, you'll need to use the [SNI](https://wiki.apache.org/httpd/NameBasedSSLVHostsWithSNI) extension of TLS. SNI is accepted by most modern web browsers, but if you expect to receive connections from clients running legacy browsers (Like Internet Explorer for Windows XP), you will need to [contact support](/docs/platform/support) to request an additional IP address.
+If hosting multiple websites with commercial SSL certificates on the same IP address, use the [Server Name Identification (SNI) extension](https://wiki.apache.org/httpd/NameBasedSSLVHostsWithSNI) of TLS. SNI is accepted by most modern web browsers. If you expect to receive connections from clients running legacy browsers (like Internet Explorer for Windows XP), you will need to [contact support](/docs/platform/support) to request an additional IP address.
 
 ## Install OpenSSL
 
@@ -43,10 +43,20 @@ CentOS/Fedora users:
 
 ## Create a Certificate Signing Request
 
-Issue these commands to create a certificate signing request (CSR) for the site which you'd like to use with SSL. Be sure to change "www.mydomain.com" to reflect the fully qualified domain name (subdomain.domainname.com) of the site you'll be using SSL with. Leave the challenge password blank. We entered 365 for the days parameter to the command, as we would be paying for one year of SSL certificate verification from a commercial certificate authority (CA).
+Issue the following commands to navigate to the `/etc/ssl/localcerts` directory and create a certificate signing request (CSR) for the site that will be using SSL. Change `example.com` to reflect the fully qualified domain name (FQDN) or IP of the site you'll be using SSL with. Leave the challenge password blank. Note that in this example, we entered 365 for the days parameter, as we would be paying for one year of SSL certificate verification from a commercial certificate authority (CA):
 
     cd /etc/ssl/localcerts
     openssl req -new -newkey rsa:2048 -nodes -sha256 -days 365 -keyout www.example.com.key -out www.example.com.csr
+
+After the first command changes directories, the second command creates a `.csr` and a `.key` file under the `/etc/ssl/localcerts` directory using these options:
+
+* `-nodes` instructs OpenSSL to create a certificate that does not require a passphrase. If this option is excluded, you will be required to enter the the passphrase in the console each time the application using it is restarted.
+
+* `-days` determines the length of time in days that the certificate is being issued for. We entered 365 for the days parameter to the command, as we would be paying for one year of SSL certificate verification from a commercial certificate authority (CA).
+
+* `rsa:` allows you to specify the size of the RSA key. In this case we've chosen 2048 bits as this is the recommended minimum size.
+
+* `-sha256` ensures that the certificate request is generated using 265-bit SHA (Secure Hash Algorithm).
 
 Here are the values we entered for our example certificate. Note that you can ignore the extra attributes.
 

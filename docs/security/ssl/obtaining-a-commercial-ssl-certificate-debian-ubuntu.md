@@ -15,13 +15,13 @@ external_resources:
  - '[OpenSSL Documentation](http://www.openssl.org/docs/)'
 ---
 
-These instructions will show you how to install a commercial SSL certificate on your Linode running Debian or Ubuntu. SSL/TLS encryption is the standard for securing web traffic. As SSL certificates can be used by many kinds of software, the steps provided are generic in nature.
+SSL/TLS encryption is the standard for securing web traffic. This guide will show you how to install a commercial SSL certificate on your Linode running Debian or Ubuntu. As SSL certificates can be used by many kinds of software, the steps provided are generic in nature.
 
 If you intend to use your SSL certificate on a website powered by Apache, continue to our [SSL Certificates with Apache on Debian & Ubuntu](/docs/security/ssl/ssl-apache2-debian-ubuntu) guide once you've completed the process outlined here.
 
-For an SSL setup with Nginx, please start with our [Nginx and SSL](/docs/security/ssl/provide-encrypted-resource-access-using-ssl-certificates-on-nginx) guide.
+For an SSL setup with Nginx, use our [Nginx and SSL](/docs/security/ssl/provide-encrypted-resource-access-using-ssl-certificates-on-nginx) guide.
 
-If you're hosting multiple websites with commercial SSL certificates on the same IP address, you'll need to use the [SNI](https://wiki.apache.org/httpd/NameBasedSSLVHostsWithSNI) extension of TLS. SNI is accepted by most modern web browsers, but if you expect to receive connections from clients running legacy browsers (Like Internet Explorer for Windows XP), you will need to [contact support](/docs/platform/support) to request an additional IP address.
+If hosting multiple websites with commercial SSL certificates on the same IP address, use the [Server Name Identification (SNI) extension](https://wiki.apache.org/httpd/NameBasedSSLVHostsWithSNI) of TLS. SNI is accepted by most modern web browsers. If you expect to receive connections from clients running legacy browsers (like Internet Explorer for Windows XP), you will need to [contact support](/docs/platform/support) to request an additional IP address.
 
 ## Before You Begin
 
@@ -31,20 +31,22 @@ If you're hosting multiple websites with commercial SSL certificates on the same
 
 {: .note}
 >
->This guide assumes that you are logged in as the root user, and that you will not need to prepend commands with `sudo`.
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, see the [Linux Users and Groups guide](/docs/tools-reference/linux-users-and-groups).
+>
+>Replace each instance of `example.com` in this guide with your site's domain name.
 
 ## Create a Certificate Signing Request
 
-Issue these commands to create a certificate signing request (CSR) for the site that will be using SSL. Be sure to change "example.com" to reflect the fully qualified domain name (subdomain.example.com) of the site you'll be using SSL with. Leave the challenge password blank.
-
 {: .note}
 >
->While some CA providers will automatically include the "www" subdomain when issuing certificates for a root domain such as example.com, others do not. If you wish to secure multiple subdomains using the same certificate, you will need to create a [wildcard certificate](https://en.wikipedia.org/wiki/Wildcard_certificate).
+>While some Certificate Authorities (CA) will automatically include the "www" subdomain when issuing certificates for a root domain such as example.com, others do not. If you wish to secure multiple subdomains using the same certificate, you will need to create a [wildcard certificate](https://en.wikipedia.org/wiki/Wildcard_certificate).
+
+Issue the following commands to navigate to the `/etc/ssl` directory and create a certificate signing request (CSR) for the site that will be using SSL. Change `example.com` to reflect the fully qualified domain name (FQDN) or IP of the site you intend to use with SSL. Leave the challenge password blank:
 
     cd /etc/ssl/
     openssl req -new -newkey rsa:2048 -nodes -sha256 -days 365 -keyout /etc/ssl/private/example.com.key -out example.com.csr
 
-The first command navigates to the `/etc/ssl` directory. The second command generates a secure key, as well as a certificate signing request. A brief explanation of the options used:
+After the first command changes directories, the second command creates a `.csr` file under the `/etc/ssl/certs` directory, and a `.key` file under `/etc/ssl/private` using these options:
 
 * `-nodes` instructs OpenSSL to create a certificate that does not require a passphrase. If this option is excluded, you will be required to enter the the passphrase in the console each time the application using it is restarted.
 
@@ -54,7 +56,7 @@ The first command navigates to the `/etc/ssl` directory. The second command gene
 
 * `-sha256` ensures that the certificate request is generated using 265-bit SHA (Secure Hash Algorithm).
 
-Here are the values we entered for our example certificate. Note that you can ignore the 'extra' attributes.
+Here are the values we entered for our example certificate. Note that you can ignore the 'extra' attributes:
 
     Generating a 2048 bit RSA private key
     ......................................................++++++
@@ -81,23 +83,23 @@ Here are the values we entered for our example certificate. Note that you can ig
     A challenge password []:
     An optional company name []:
 
-This command will create a `.csr` file under the `/etc/ssl` directory, and a `.key` file under `/etc/ssl/private`. You can execute this command to protect your private key:
+Restrict the private key's file properties to be read only by owner:
 
     chmod 400 /etc/ssl/private/example.com.key
 
 You may now submit the file ending in `.csr` to a commercial SSL provider for signing. You will receive a signed file after the CA signs the request. Save this file as `/etc/ssl/certs/example.com.crt`.
 
-Execute the following command to protect the signed certificate:
+Restrict the signed certificate's file properties as well:
 
     chmod 400 /etc/ssl/certs/example.com.crt
 
 ## Get the CA Root Certificate
 
-Most modern distributions come with common root CA certificates installed as part of the "ca-certificates" package. To check if this package is installed, you can run this command:
+Most modern distributions come with common root CA certificates installed as part of the "ca-certificates" package. To check if this package is installed, run:
 
     apt-cache policy ca-certificates
 
-The "ca-certificates" package comes with a bundle of root certs located under `/etc/ssl/certs/ca-certificates.crt` that can be used with many prevalent certificate authorities. If you're using an older distribution that does not have the "ca-certificates" package, you will need to download your root certificate from the CA that issued it. Some standard commercial certificate authorities are listed below:
+The ca-certificates package comes with a bundle of root certs located under `/etc/ssl/certs/ca-certificates.crt` that can be used with many prevalent certificate authorities. If you're using an older distribution that does not have the ca-certificates package, you will need to download your root certificate from the CA that issued it. Some standard commercial certificate authorities are:
 
 -   [Verisign](https://knowledge.verisign.com/support/ssl-certificates-support/index.html)
 -   [Thawte](http://www.thawte.com/roots/index.html)
@@ -106,51 +108,53 @@ The "ca-certificates" package comes with a bundle of root certs located under `/
 
 ## Adding Your Root Certificate to the CA Bundle
 
-If your ca-certificates bundle does not include your certificate authority's root cert, you can add it manually by moving the file to the source directory:
+If your ca-certificates bundle does not include your CA's root cert, add it manually by moving the file to the source directory:
 
     cp root-example.crt /usr/local/share/ca-certificates/
 
-Issue this command to update the bundle with your new root certificate:
+Update the bundle with your new root certificate:
 
     update-ca-certificates
 
 ## Preparing a Chained SSL Certificate
 
-In some cases, CAs have not submitted a Trusted Root CA Certificate to some or all browser vendors. Because of this, you can choose to *chain* roots for certificates to be trusted by web browsers. If you receive several files from your CA ending with `.crt`(collectively referred to as a `chained SSL certificate`), they must be linked into one file, in a specific order, to provide full support with most browsers. The following example uses a chained SSL certificate that was signed by Comodo. Enter the following command to prepare your chained SSL certificate:
+In some cases, CAs have not submitted a Trusted Root CA Certificate to some or all browser vendors. Because of this, you can choose to *chain* roots for certificates to be trusted by web browsers. If you receive several files from your CA ending with `.crt` (collectively referred to as a "chained SSL certificate"), they must be linked into one file, in a specific order, to ensure full compatibility with most browsers. The example below uses a chained SSL certificate that was signed by Comodo.
 
-        cat example.com.crt COMODORSADomainValidationSecureServerCA.crt  COMODORSAAddTrustCA.crt AddTrustExternalCARoot.crt > www.mydomain.com.crt
+Prepare your chained SSL certificate:
 
-    The contents of the resulting file will appear similar to the following (yours will be unique):
+    cat example.com.crt COMODORSADomainValidationSecureServerCA.crt  COMODORSAAddTrustCA.crt AddTrustExternalCARoot.crt > www.mydomain.com.crt
 
-        -----BEGIN CERTIFICATE-----
-        MIIFSzCCBDOgAwIBAgIQVjCXC0bF9U8FypJOnL9cuDANBgkqhkiG9w0BAQsFADCB
-        ................................................................
-        ncHG3hwHHwhiEz6ukC2mqxA+D3KILiywgHgWcumnpeCEUQgDzy0Fz2Ip/kR/1Fkv
-        DCQzME2NkT1ZdW8fdz+Y
-        -----END CERTIFICATE-----
-        -----BEGIN CERTIFICATE-----
-        MIIGCDCCA/CgAwIBAgIQKy5u6tl1NmwUim7bo3yMBzANBgkqhkiG9w0BAQwFADCB
-        ................................................................
-        j4rBYKEMrltDR5FL1ZoXX/nUh8HCjLfn4g8wGTeGrODcQgPmlKidrv0PJFGUzpII
-        -----END CERTIFICATE-----
-        -----BEGIN CERTIFICATE-----
-        ZFRydXN0IEV4dGVybmFsIFRUUCBOZXR3b3JrMSIwIAYDVQQDExlBZGRUcnVzdCBF
-        ................................................................
-        Uspzgb8c8+a4bmYRBbMelC1/kZWSWfFMzqORcUx8Rww7Cxn2obFshj5cqsQugsv5
-        -----END CERTIFICATE-----
-        -----BEGIN CERTIFICATE-----
-        MIIENjCCAx6gAwIBAgIBATANBgkqhkiG9w0BAQUFADBvMQswCQYDVQQGEwJTRTEU
-        ................................................................
-        6wwCURQtjr0W4MHfRnXnJK3s9EK0hZNwEGe6nQY1ShjTK3rMUUKhemPR5ruhxSvC
-        -----END CERTIFICATE-----
+The contents of the resulting file will appear similar to the following:
+
+    -----BEGIN CERTIFICATE-----
+    MIIFSzCCBDOgAwIBAgIQVjCXC0bF9U8FypJOnL9cuDANBgkqhkiG9w0BAQsFADCB
+    ................................................................
+    ncHG3hwHHwhiEz6ukC2mqxA+D3KILiywgHgWcumnpeCEUQgDzy0Fz2Ip/kR/1Fkv
+    DCQzME2NkT1ZdW8fdz+Y
+    -----END CERTIFICATE-----
+    -----BEGIN CERTIFICATE-----
+    MIIGCDCCA/CgAwIBAgIQKy5u6tl1NmwUim7bo3yMBzANBgkqhkiG9w0BAQwFADCB
+    ................................................................
+    j4rBYKEMrltDR5FL1ZoXX/nUh8HCjLfn4g8wGTeGrODcQgPmlKidrv0PJFGUzpII
+    -----END CERTIFICATE-----
+    -----BEGIN CERTIFICATE-----
+    ZFRydXN0IEV4dGVybmFsIFRUUCBOZXR3b3JrMSIwIAYDVQQDExlBZGRUcnVzdCBF
+    ................................................................
+    Uspzgb8c8+a4bmYRBbMelC1/kZWSWfFMzqORcUx8Rww7Cxn2obFshj5cqsQugsv5
+    -----END CERTIFICATE-----
+    -----BEGIN CERTIFICATE-----
+    MIIENjCCAx6gAwIBAgIBATANBgkqhkiG9w0BAQUFADBvMQswCQYDVQQGEwJTRTEU
+    ................................................................
+    6wwCURQtjr0W4MHfRnXnJK3s9EK0hZNwEGe6nQY1ShjTK3rMUUKhemPR5ruhxSvC
+    -----END CERTIFICATE-----
 
 
-    The chart below breaks this down a bit more clearly:
+Use this table to better visualize the command entered to prepare the chained SSL certificate:
 
-    {: .table .table-striped }
-    | Certificate Type:          | Issued to:                              | Issued by:                              |
-    |----------------------------|:----------------------------------------|:----------------------------------------|
-    | End-user Certificate       | example.com                             | Comodo LLC                              |
-    | Intermediate Certificate 1 | Comodo LLC                              | COMODORSADomainValidationSecureServerCA |
-    | Intermediate Certificate 2 | COMODORSADomainValidationSecureServerCA | COMODORSAAddTrustCA                     |
-    | Root certificate           | COMODORSAAddTrustCA                     | AddTrustExternalCARoot                  |
+{: .table .table-striped }
+| **Certificate Type:**      | **Issued to:**                          | **Issued by:**                          |
+|----------------------------|:----------------------------------------|:----------------------------------------|
+| End-user Certificate       | example.com                             | Comodo LLC                              |
+| Intermediate Certificate 1 | Comodo LLC                              | COMODORSADomainValidationSecureServerCA |
+| Intermediate Certificate 2 | COMODORSADomainValidationSecureServerCA | COMODORSAAddTrustCA                     |
+| Root certificate           | COMODORSAAddTrustCA                     | AddTrustExternalCARoot                  |
