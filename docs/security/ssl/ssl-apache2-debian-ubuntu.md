@@ -63,7 +63,7 @@ This updates system hooks and the main ca-certificate.crt file located in `/etc/
             SSLEngine On
             SSLCertificateFile /etc/ssl/localcerts/www.example.com.crt
             SSLCertificateKeyFile /etc/ssl/localcerts/www.example.com.key
-            SSLCACertificateFile /etc/ssl/localcerts/ca-certificates.crt  # If using a self-signed certificate, omit this line
+            SSLCACertificateFile /etc/ssl/certs/ca-certificates.crt  # If using a self-signed certificate, omit this line
 
             ServerAdmin info@example.com
             ServerName www.example.com
