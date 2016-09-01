@@ -6,22 +6,22 @@ description: 'Our guide to rescuing and rebuilding your Linode.'
 keywords: 'rescue,rebuild'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['rescue-and-rebuild/','troubleshooting/finnix-rescue-mode/']
-modified: Thursday, June 19th, 2014
+modified: Thursday, August 18th, 2016
 modified_by:
   name: Linode
 published: 'Thursday, May 31st, 2012'
 title: Rescue and Rebuild
 ---
 
-Even the best system administrators have to deal with accidents and unplanned events. Fortunately, the Linode Manager has a number of tools to assist you in the unlikely event that catastrophe strikes your VPS. This guide shows you how to use the tools at your disposal. You can boot your Linode into *rescue mode* to perform system recovery tasks and transfer data off your disks, if necessary. And if all else fails, you can *rebuild* your Linode from a backup or start over with a fresh Linux distribution.
+Even the best system administrators have to deal with accidents and unplanned events. Fortunately, the Linode Manager has a number of tools to assist you in the unlikely event that catastrophe strikes your VPS. This guide shows you how to use the tools at your disposal. You can boot your Linode into *Rescue Mode* to perform system recovery tasks and transfer data off your disks, if necessary. And if all else fails, you can *rebuild* your Linode from a backup or start over with a fresh Linux distribution.
 
 ## Rescuing
 
-If you suspect that your primary filsystem is corrupted, use the Linode Manager to boot your Linode into rescue mode. This is a safe environment for performing many system recovery and disk management tasks. Rescue mode is based on the [Finnix recovery distribution](http://www.finnix.org/), a self-contained and bootable Linux distribution. You can also use rescue mode for tasks other than disaster recovery, such as formatting disks to use different filesystems, copying data between disks, and downloading files from a disk via SSH and SFTP.
+If you suspect that your primary filesystem is corrupted, use the Linode Manager to boot your Linode into Rescue Mode. This is a safe environment for performing many system recovery and disk management tasks. Rescue Mode is based on the [Finnix recovery distribution](http://www.finnix.org/), a self-contained and bootable Linux distribution. You can also use Rescue Mode for tasks other than disaster recovery, such as formatting disks to use different filesystems, copying data between disks, and downloading files from a disk via SSH and SFTP.
 
 ### Booting into Rescue Mode
 
-Here's how to boot your Linode into rescue mode:
+Here's how to boot your Linode into Rescue Mode:
 
 1.  Log in to the [Linode Manager](https://manager.linode.com).
 2.  Click the **Linodes** tab. A list of your virtual private servers appears.
@@ -34,7 +34,7 @@ Here's how to boot your Linode into rescue mode:
 
  {: .note }
 >
-> Make a note of where the disks are located. For example, in the screenshot shown above, the Ubuntu disk is at `/dev/xvda`. You will need this information later.
+> Make a note of where the disks are located. For example, in the screenshot shown above, the Ubuntu disk is at `/dev/sda`. You will need this information later.
 
 6.  Click **Reboot into Rescue Mode**. The Linode's dashboard appears. Watch the *Host Job Queue* on the Dashboard to monitor the progress.
 
@@ -52,7 +52,7 @@ Now you've connected to your Linode, you can start doing stuff in rescue mode.
 
 You can use the `fsck` system utility (short for "file system check") to check the consistency of file systems and repair any damage detected. If you suspect that your Linode's file system is corrupted, you should run `fsck` to check for and repair any damage. Here's how:
 
-1.  Enter the `df` command to verify that your primary disks are not currently mounted. Your primary disks should not appear in the list. For example, when [we booted into rescue mode earlier](#booting-into-rescue-mode), we specified two disks: Ubuntu at `/dev/xvda` and Swap at `/dev/xvdb`, neither of which are shown as being mounted in the screenshot below.
+1.  Enter the `df` command to verify that your primary disks are not currently mounted. Your primary disks should not appear in the list. For example, when [we booted into rescue mode earlier](#booting-into-rescue-mode), we specified two disks: Ubuntu at `/dev/sda` and Swap at `/dev/sdb`, neither of which are shown as being mounted in the screenshot below.
 
 [![Output of df command](/docs/assets/999-rescue2.png)](/docs/assets/999-rescue2.png)
 
@@ -60,13 +60,13 @@ You can use the `fsck` system utility (short for "file system check") to check t
 >
 > You should never run `fsck` on a mounted disk. Do not continue unless you're sure that the target disk is unmounted.
 
-2.  To verify the location of your disks, enter the `fdisk -l` command. The disk layout will appear, as shown below. Notice that the Ubuntu disk is `/dev/xvda`, the Swap disk is `/dev/xvdb`, and the Finnix partition is `/dev/xvdh`.
+2.  To verify the location of your disks, enter the `fdisk -l` command. The disk layout will appear, as shown below. Notice that the Ubuntu disk is `/dev/sda`, the Swap disk is `/dev/sdb`, and the Finnix partition is `/dev/sdh`.
 
 [![Output of fdisk -l command](/docs/assets/1001-rescue4.png)](/docs/assets/1001-rescue4.png)
 
-3.  Run `fsck` by entering the following command, replacing `/dev/xvda` with the location of the disk you want to check and repair:
+3.  Run `fsck` by entering the following command, replacing `/dev/sda` with the location of the disk you want to check and repair:
 
-        e2fsck -f /dev/xvda
+        e2fsck -f /dev/sda
 
 4.  If no problems are detected, `fsck` will display a message indicating that the file system is "clean," as shown below.
 
@@ -80,13 +80,13 @@ Once the file system check completes, any problems detected should be fixed. You
 
 ### Mounting Disks
 
-By default, your disks are not mounted when your Linode boots into rescue mode. However, you can manually mount a disk while your Linode is running in rescue mode to perform system recovery and maintenance tasks. Enter the following command to mount a disk in rescue mode, replacing `/dev/xvda` with the location of the disk you want to mount:
+By default, your disks are not mounted when your Linode boots into rescue mode. However, you can manually mount a disk while your Linode is running in rescue mode to perform system recovery and maintenance tasks. Enter the following command to mount a disk in rescue mode, replacing `/dev/sda` with the location of the disk you want to mount:
 
-    mount -o barrier=0 /dev/xvda
+    mount -o barrier=0 /dev/sda
 
 Disks that contain a single file system will have mount points under `/media` in the rescue environment's `/etc/fstab` file. To view the directories on the disk, enter the following command: :
 
-    ls /media/xvda
+    ls /media/sda
 
 Now you can read and write to files on the mounted disk.
 
@@ -98,11 +98,11 @@ Chroot will allow you to change user passwords, remove/install packages, and do 
 
 Before you can use chroot, you need to mount your root disk with execute permissions:
 
-    mount -o exec,barrier=0 /dev/xvda
+    mount -o exec,barrier=0 /dev/sda
 
 Then to create the chroot, you need to mount the temporary filesystems:
 
-    cd /media/xvda
+    cd /media/sda
     mount -t proc proc proc/
     mount -t sysfs sys sys/
     mount -o bind /dev dev/
@@ -110,7 +110,7 @@ Then to create the chroot, you need to mount the temporary filesystems:
 
 Chroot to your disk with the following command:
 
-    chroot /media/xvda /bin/bash
+    chroot /media/sda /bin/bash
 
 To exit the chroot and get back to Finnix type "exit" :
 
