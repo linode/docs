@@ -25,7 +25,7 @@ This guide assumes that you are running Apache2 on CentOS or Fedora. Prior to st
 
 -  Complete our [LAMP on CentOS 7](/docs/websites/lamp/lamp-on-centos-7) guide, and create a site that you wish to secure with SSL.
 
--  Follow our guide for obtaining either a [self-signed](docs/security/ssl/creating-a-selfsigned-certificate-centos-fedora) or [commercial](/docs/security/ssl/obtaining-a-commercial-ssl-certificate-centos-fedora.md) SSL certificate.
+-  Follow our guide for obtaining either a [self-signed](/docs/security/ssl/create-a-self-signed-certificate-on-centos-and-fedora) or [commercial](/docs/security/ssl/obtain-a-commercially-signed-ssl-certificate-on-centos-and-fedora) SSL certificate.
 
 -  In order to configure your Linode to function with SSL, you will need to ensure that the Apache `mod_ssl` module is installed on your system.  You can do so by running the following command:
 
