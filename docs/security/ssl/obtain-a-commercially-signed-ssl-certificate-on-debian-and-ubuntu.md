@@ -2,24 +2,24 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'How to prepare and submit a request for a commercially-signed SSL certificate on CentOS or Fedora'
-keywords: 'openssl,commercial ssl cert,apache ssl,ssl linux, centos ssl, fedora ssl'
+description: 'Prepare and Submit a Request to Obtain a Commercially Signed SSL Certificate on Debian or Ubuntu.'
+keywords: 'ssl certificate,ssl cert,commercial,csr,debian,ubuntu'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['security/ssl-certificates/commercial/']
 modified: Friday, August 19th, 2016
 modified_by:
   name: Nick Brewer
 published: 'Friday, August 19th, 2016'
-title: Obtaining a Commercial SSL Certificate on CentOS & Fedora
+title: Obtain a Commercially Signed SSL Certificate on Debian & Ubuntu
 external_resources:
  - '[OpenSSL Documentation](http://www.openssl.org/docs/)'
 ---
 
-SSL/TLS encryption is the standard for securing web traffic. This guide will show you how to install a commercial SSL certificate on your Linode running CentOS or Fedora. As SSL certificates can be used by many kinds of software, the steps provided are generic in nature.
+SSL/TLS encryption is the standard for securing web traffic. This guide will show you how to install a commercial SSL certificate on your Linode running Debian or Ubuntu. As SSL certificates can be used by many kinds of software, the steps provided are generic in nature.
 
-If you intend to use your SSL certificate on a website powered by Apache, continue to our [SSL Certificates with Apache on CentOS 7](/docs/security/ssl/ssl-apache2-centos) guide once you've completed the process outlined here.
+If you intend to use your SSL certificate on a website powered by Apache, continue to our [SSL Certificates with Apache on Debian & Ubuntu](/docs/security/ssl/ssl-apache2-debian-ubuntu) guide once you've completed the process outlined here.
 
-For an SSL setup with Nginx, please start with our [Nginx and SSL](/docs/security/ssl/provide-encrypted-resource-access-using-ssl-certificates-on-nginx) guide.
+For an SSL setup with Nginx, use our [Nginx and SSL](/docs/security/ssl/provide-encrypted-resource-access-using-ssl-certificates-on-nginx) guide.
 
 If hosting multiple websites with commercial SSL certificates on the same IP address, use the [Server Name Identification (SNI) extension](https://wiki.apache.org/httpd/NameBasedSSLVHostsWithSNI) of TLS. SNI is accepted by most modern web browsers. If you expect to receive connections from clients running legacy browsers (like Internet Explorer for Windows XP), you will need to [contact support](/docs/platform/support) to request an additional IP address.
 
@@ -27,7 +27,7 @@ If hosting multiple websites with commercial SSL certificates on the same IP add
 
 - Complete our [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/securing-your-server) guides.
 
-- Ensure that your packages are up to date by running `yum upgrade`
+- Ensure that your packages are up to date by running `apt-get update && apt-get upgrade`.
 
 {: .note}
 >
@@ -41,12 +41,12 @@ If hosting multiple websites with commercial SSL certificates on the same IP add
 >
 >While some Certificate Authorities (CA) will automatically include the "www" subdomain when issuing certificates for a root domain such as example.com, others do not. If you wish to secure multiple subdomains using the same certificate, you will need to create a [wildcard certificate](https://en.wikipedia.org/wiki/Wildcard_certificate).
 
-Issue the following commands to navigate to the `/etc/ssl` directory, and create a certificate signing request (CSR) for the site that will be using SSL. Change `example.com` to reflect the fully qualified domain name (FQDN) of the site you intend to use with SSL. Leave the challenge password blank:
+Issue the following commands to navigate to the `/etc/ssl` directory and create a certificate signing request (CSR) for the site that will be using SSL. Change `example.com` to reflect the fully qualified domain name (FQDN) of the site you intend to use with SSL. Leave the challenge password blank:
 
     cd /etc/ssl/
-    openssl req -new -newkey rsa:2048 -nodes -sha256 -days 365 -keyout /etc/pki/tls/private/example.com.key -out example.com.csr
+    openssl req -new -newkey rsa:2048 -nodes -sha256 -days 365 -keyout /etc/ssl/private/example.com.key -out example.com.csr
 
-After the first command changes directories, the second command creates a `.csr` file under the `/etc/ssl` directory, and a `.key` file under `/etc/pki/tls/private` using these options:
+After the first command changes directories, the second command creates a `.csr` file under the `/etc/ssl/certs` directory, and a `.key` file under `/etc/ssl/private` using these options:
 
 * `-nodes` instructs OpenSSL to create a certificate that does not require a passphrase. If this option is excluded, you will be required to enter the the passphrase in the console each time the application using it is restarted.
 
@@ -73,7 +73,7 @@ Here are the values we entered for our example certificate. Note that you can ig
     Country Name (2 letter code) [AU]:US
     State or Province Name (full name) [Some-State]:New Jersey
     Locality Name (eg, city) []:Absecon
-    Organization Name (eg, company) [Internet Widgits Pty Ltd]:MyDomain, LLC
+    Organization Name (eg, company) [Internet Widgits Pty Ltd]:example, LLC
     Organizational Unit Name (eg, section) []:Web Services
     Common Name (eg, YOUR name) []:example.com
     Email Address []:support@example.com
@@ -85,39 +85,38 @@ Here are the values we entered for our example certificate. Note that you can ig
 
 Restrict the private key's file properties to be read only by owner:
 
-    chmod 400 /etc/pki/tls/private/example.com.key
+    chmod 400 /etc/ssl/private/example.com.key
 
-You may now submit the file ending in `.csr` to a commercial SSL provider for signing. You will receive a signed file after the CA signs the request. Save this file as `/etc/pki/tls/certs/example.com.crt`.
+You may now submit the file ending in `.csr` to a commercial SSL provider for signing. You will receive a signed file after the CA signs the request. Save this file as `/etc/ssl/certs/example.com.crt`.
 
 Restrict the signed certificate's file properties as well:
 
-    chmod 400 /etc/pki/tls/certs/example.com.crt
+    chmod 400 /etc/ssl/certs/example.com.crt
 
 ## Get the CA Root Certificate
 
 Most modern distributions come with common root CA certificates installed as part of the "ca-certificates" package. To check if this package is installed, run:
 
-    yum list installed ca-certificates
+    apt-cache policy ca-certificates
 
-The ca-certificates package comes with a bundle of root certs located under `/etc/pki/tls/certs/ca-bundle.crt` that can be used with many prevalent certificate authorities. If you're using an older distribution that does not have the ca-certificates package, you will need to download your root certificate from the CA that issued it. Some standard commercial certificate authorities are:
+The ca-certificates package comes with a bundle of root certs located under `/etc/ssl/certs/ca-certificates.crt` that can be used with many prevalent certificate authorities. If you're using an older distribution that does not have the ca-certificates package, you will need to download your root certificate from the CA that issued it. Some standard commercial certificate authorities are:
 
 -   [Verisign](https://knowledge.verisign.com/support/ssl-certificates-support/index.html)
 -   [Thawte](http://www.thawte.com/roots/index.html)
 -   [Globalsign](http://www.globalsign.com/en//)
 -   [Comodo](https://support.comodo.com/index.php?_m=downloads&_a=view&parentcategoryid=1&pcid=0&nav=0)
 
-## Adding Your Root Certificate to the CA Bundle
+## Add Your Root Certificate to the CA Bundle
 
-You can add root certificates to the bundle by enabling dynamic CA configuration:
+If your ca-certificates bundle does not include your CA's root cert, add it manually by moving the file to the source directory:
 
-    update-ca-trust force-enable
+    cp root-example.crt /usr/local/share/ca-certificates/
 
-Next copy the certificate file to the appropriate directory, and update the bundle:
+Update the bundle with your new root certificate:
 
-    cp root-example.crt /etc/pki/ca-trust/source/anchors/
-    update-ca-trust extract
+    update-ca-certificates
 
-## Preparing a Chained SSL Certificate
+## Prepare a Chained SSL Certificate
 
 In some cases, CAs have not submitted a Trusted Root CA Certificate to some or all browser vendors. Because of this, you can choose to *chain* roots for certificates to be trusted by web browsers. If you receive several files from your CA ending with `.crt` (collectively referred to as a "chained SSL certificate"), they must be linked into one file, in a specific order, to ensure full compatibility with most browsers. The example below uses a chained SSL certificate that was signed by Comodo.
 

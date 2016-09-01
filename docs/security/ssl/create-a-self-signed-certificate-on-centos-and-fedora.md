@@ -2,15 +2,15 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Creating an SSL certificate for personal or internal organizational use on a Linux server.'
-keywords: 'ssl certificate,ssl cert,self signed ssl,ssl linux,ssl cert linux,centos ssl,fedora ssl'
+description: 'Create an SSL Certificate on a Linux Server Running Centos or Fedora.'
+keywords: 'ssl certificate,ssl cert,self signed,centos,fedora'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['security/ssl-certificates/self-signed/']
 modified: Friday, August 16th, 2016
 modified_by:
   name: Nick Brewer
 published: 'Monday, November 16th, 2009'
-title: 'Creating a Self-Signed Certificate on CentOS & Fedora'
+title: 'Create a Self-Signed Certificate on CentOS and Fedora'
 external_resources:
  - '[OpenSSL documentation](http://openssl.org/docs/)'
 ---
@@ -30,7 +30,7 @@ For an SSL setup with Nginx, please start with our [Nginx and SSL](/docs/securit
 
  - Ensure that your packages are up to date by running `yum upgrade`
 
-## Creating a Self-Signed Certificate
+## Create a Self-Signed Certificate
 
 Issue the following command to generate your self-signed certificate. Change `example.com` to reflect the fully qualified domain name (FQDN) of the site you intend to use with SSL:
 
