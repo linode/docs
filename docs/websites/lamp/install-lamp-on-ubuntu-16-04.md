@@ -141,9 +141,13 @@ You can set up virtual hosts several ways; however, below is the recommended met
 
     Choose a secure password when prompted.
 
-2.  Run `mysql_secure_installation`, a program that helps secure MySQL. You will be presented with the opportunity to change the MySQL root password, remove anonymous user accounts, disable root logins outside of `localhost`, and remove test databases:
+2.  Change the root database password. (Note that running the old `mysql_secure_installation` script is no longer necessary in MySQL 5.7 and above, and can actually [cause problems](https://bugs.launchpad.net/ubuntu/+source/mysql-5.7/+bug/1610574).) Log into mysql with:
 
-        mysql_secure_installation
+        sudo mysql -u root
+
+and run:
+
+        ALTER USER 'root'@'localhost' IDENTIFIED BY 'passphrase' WITH 'mysql_native_password'
 
 ### Create a MySQL Database
 
