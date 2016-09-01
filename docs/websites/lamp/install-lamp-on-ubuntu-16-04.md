@@ -133,32 +133,30 @@ You can set up virtual hosts several ways; however, below is the recommended met
 
 ## MySQL
 
-### Install and Configure
+### Install MySQL
 
-1.  Install the `mysql-server` package:
+Install the `mysql-server` package and choose a secure password when prompted:
 
-        sudo apt-get install mysql-server
-
-    Choose a secure password when prompted.
-
-2.  Run `mysql_secure_installation`, a program that helps secure MySQL. You will be presented with the opportunity to change the MySQL root password, remove anonymous user accounts, disable root logins outside of `localhost`, and remove test databases:
-
-        mysql_secure_installation
+    sudo apt-get install mysql-server
 
 ### Create a MySQL Database
 
 1.  Log into MySQL:
 
-        mysql -u root -p 
+        mysql -u root -p
 
     Enter MySQL's root password, and you'll be presented with a MySQL prompt.
 
-4.  Create a database and a user with permissions for it. In this example, the database is called `webdata`, the user `webuser`, and password `password`:
+2.  If no password was entered in the previous section, or if you want to change the root password, enter the following command. Replace `password` with a new root password:
+
+        ALTER USER 'root'@'localhost' IDENTIFIED WITH 'mysql_native_password' BY 'password';
+
+3.  Create a database and a user with permissions for it. In this example, the database is called `webdata`, the user `webuser`, and password `password`:
 
         CREATE DATABASE webdata;
         GRANT ALL ON webdata.* TO 'webuser' IDENTIFIED BY 'password';
 
-5.  Exit MySQL:
+4.  Exit MySQL:
 
         quit
 
