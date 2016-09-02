@@ -131,9 +131,9 @@ When PHP-FastCGI is installed it does not automatically get set up as a service 
 
 {: .file }
 /etc/systemd/system/php-fastcgi.service
-:   ~~~ systemd
+:   ~~~ ini
     [Unit]
-    Description= php-fastcgi systemd service script
+    Description=php-fastcgi systemd service script
 
     [Service]
     Type=forking
