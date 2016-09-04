@@ -86,7 +86,7 @@ Create a blank disk if you need detachable storage space or want to download and
 7.  Enter a size for the disk in the **Deployment Disk Size** field. The size must be smaller than the amount of storage space remaining in your Linode plan.
 8.  Click **Save Changes**.
 
-The disk will be created. Watch the *Host Job Queue* on the Dashboard to monitor the progress. When the process is complete, the disk will appear on the dashboard. You'll need to create or modify a configuration profile to mount the new disk. For instructions, see [Configuration Profiles](#id5).
+The disk will be created. Watch the *Host Job Queue* on the Dashboard to monitor the progress. When the process is complete, the disk will appear on the dashboard. You'll need to create or modify a configuration profile to mount the new disk. For instructions, see [Configuration Profiles](#configuration-profiles).
 
 ### Resizing a Disk
 
@@ -105,7 +105,7 @@ You have successfully resized the disk.
 
 ### Duplicating a Disk
 
-You can create an exact copy of a disk by duplicating it. This is an effective way to back up your server or clone an existing Linode to a new Linode. (To clone a disk, see [Cloning disks and Configuration Profiles](#id10).) Here's how to duplicate a disk:
+You can create an exact copy of a disk by duplicating it. This is an effective way to back up your server or clone an existing Linode to a new Linode. (To clone a disk, see [Cloning disks and Configuration Profiles](#cloning-disks-and-configuration-profiles).) Here's how to duplicate a disk:
 
 1.  Log in to the [Linode Manager](https://manager.linode.com).
 2.  Click the **Linodes** tab. A list of your virtual private servers appears.
@@ -225,7 +225,7 @@ After the cloning process completes, the disks and configuration profiles you se
 
 If you're wondering how you could use disks and configuration profiles, here are some ideas to get you started:
 
--   **Duplicate Server Configurations:** It takes time to configure your Linode. Preserve that hard work by [duplicating the disk](#duplicating-a-disk) to preserve all of your settings and applications in their current state. If you decide to create another Linode later, you could [clone a saved disk](#id10) to the new VPS in a matter of minutes, saving yourself hours of work.
+-   **Duplicate Server Configurations:** It takes time to configure your Linode. Preserve that hard work by [duplicating the disk](#duplicating-a-disk) to preserve all of your settings and applications in their current state. If you decide to create another Linode later, you could [clone a saved disk](#cloning-disks-and-configuration-profiles) to the new VPS in a matter of minutes, saving yourself hours of work.
 -   **Automate Server Builds:** If you run a large website that requires multiple servers, or if you just love automating things, you'll want to [automate your server builds](/docs/platform/automating-server-builds). You can rapidly spin up multiple servers with exactly the same configuration by creating a *golden disk* that can be cloned to multiple Linodes.
 -   **Experiment with Distributions:** New to Linux? Take different distributions out for a spin by creating a separate disk for each flavor of Linux. Once you find a distribution you like, you can delete all of the disks except the one with your favorite distribution.
 -   **Create a Software Testing Environment:** If you're a developer, you can create different disks for testing purposes. Every disk can hold a different 32- or 64-bit distribution, and every configuration profile can be set to use a different kernel. Even if you're not a developer, this is ideal for testing open source or proprietary software on different distributions.
