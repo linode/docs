@@ -60,6 +60,12 @@ In this section, you will learn how to install the Debian and Ubuntu package for
 4.  Install the Linode CLI package:
 
         sudo apt-get install linode-cli
+        
+
+### Fedora
+linode-cli included with Fedora from the fedora dnf repo, so you just need to do the following:
+
+        dnf install linode-cli
 
 ### Manual Installation for Linux (All Distros)
 
