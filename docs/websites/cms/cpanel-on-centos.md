@@ -16,7 +16,9 @@ external_resources:
  - '[cPanel Support](https://www.cpanel.com/support/)'
 ---
 
-[cPanel](http://cpanel.com) is a commercial web-based control panel for server systems. It can help ease the burden of common system administration tasks such as website creation, database deployment and management, and more. This guide will help you get up and running with cPanel on your CentOS Linode. Please note, Linode does not sell cPanel licenses. You'll need to [obtain a VPS license directly from cPanel](https://store.cpanel.net/view/cpanel/license-options) or an authorized distributor. Additionally, Linode does not provide cPanel support, although you may contact [cPanel support](https://www.cpanel.com/support/) directly once you've purchased a license. This product **must** be installed on a freshly deployed, CentOS Linode. These instructions should be performed as the ``root`` user via SSH.
+[cPanel](http://cpanel.com) is a commercial web-based control panel for server systems. It can help ease the burden of common system administration tasks such as website creation, database deployment and management, and more. This guide will help you get up and running with cPanel on your CentOS Linode.
+
+**Please note**, Linode does not sell cPanel licenses. You'll need to [obtain a VPS license directly from cPanel](https://store.cpanel.net/view/cpanel/license-options) or an authorized distributor. Additionally, Linode does not provide cPanel support, although you may contact [cPanel support](https://www.cpanel.com/support/) directly once you've purchased a license. This product **must** be installed on a freshly deployed, CentOS Linode. These instructions should be performed as the ``root`` user via SSH.
 
 {: .note}
 >The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
@@ -43,17 +45,17 @@ Before proceeding, make sure you've purchased a cPanel license. You may obtain a
 
 ## Configure cPanel
 
-1. Access cPanel at `https://198.51.100.0:2087` (replace `198.51.100.0` with your Linode's IP address or domain name). If your browser displays an SSL warning message like the one below, you can ignore and continue for now. In Google Chrome, click Advanced, then the Proceed link as shown:
+1. Access cPanel at `https://198.51.100.0:2087` (replace `198.51.100.0` with your Linode's IP address or domain name). If your browser displays an SSL warning message like the one below, you can ignore and continue for now. In Google Chrome, click **ADVANCED**, then the **Proceed** link as shown:
 
     [![A browser warning for an untrusted certificate.](/docs/assets/ssl-warning.png)](/docs/assets/ssl-warning.png)
 
-2. Log in with the username "root" and your root password.
+2. Log in with the username `root` and your root password.
 
 3. Read and accept the license agreement to continue:
 
     [![cPanel license agreement.](/docs/assets/267-cpanel-whm-01-license-large.png)](/docs/assets/267-cpanel-whm-01-license-large.png)
 
-4. Provide an appropriate contact email address. Optionally, you may enter an SMS address, AIM name, or ICQ number as well:
+4. Provide an appropriate contact email address. Optionally, you may also enter an SMS address, AIM name, or ICQ number as well:
 
     [![cPanel contact information entry.](/docs/assets/268-cpanel-whm-02-01-networking-contact-information.png)](/docs/assets/268-cpanel-whm-02-01-networking-contact-information.png)
 
@@ -71,7 +73,7 @@ Before proceeding, make sure you've purchased a cPanel license. You may obtain a
 
 8. Once you have ensured that the information above is correct, press "Save & Go to Step 3".
 
-9. When presented with the "Setup IP Addresses" section, click "Skip This Step and Use Default Settings" to continue:
+9. When presented with the "Setup IP Addresses" section, click **Skip This Step and Use Default Settings** to continue:
 
     [![cPanel IP address configuration.](/docs/assets/272-cpanel-whm-03-setup-ip-addresses.png)](/docs/assets/272-cpanel-whm-03-setup-ip-addresses.png)
 
@@ -90,7 +92,7 @@ List your desired nameservers in the fields provided:
 [![Linode nameservers](/docs/assets/278-cpanel-whm-04-01A-nameservers.png)](/docs/assets/278-cpanel-whm-04-01A-nameservers.png)
 
 
-When you've finished, click on "Save & Go to Step 5".
+When you've finished, click on **Save & Go to Step 5**.
 
 #### Using Self-Managed DNS
 
