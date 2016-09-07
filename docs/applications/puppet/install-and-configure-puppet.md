@@ -2,15 +2,15 @@
 author:
     name: Elle Krout
     email: ekrout@linode.com
-description: 'Basic setup and configuration of a Puppet master and agents using Ubuntu and CentOS servers. Puppet is a configuration automation platform that allows users to efficiently manage your infrastructure'
-keywords: 'puppet,puppet installation,install puppet,configuration change management,server automation,puppet master,puppet agent,puppet tutorial,open-source configuration management,configuration management'
+description: 'Basic tutorial describing the setup and configuration of a Puppet master and agents using Ubuntu and CentOS servers. Puppet is a configuration automation platform that allows users to efficiently manage your infrastructure'
+keywords: 'puppet,puppet installation,install puppet,configuration change management,server automation,puppet master,puppet agent,puppet tutorial,open-source configuration management'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['websites/puppet/basic-puppet-setup-and-configuration/','websites/puppet/manage-and-automate-systems-configuration-with-puppet/']
+alias: ['websites/puppet/basic-puppet-setup-and-configuration/','websites/puppet/manage-and-automate-systems-configuration-with-puppet/','applications/set-up-puppet-master-agent']
 modified: Thursday, September 17th, 2015
 modified_by:
     name: Elle Krout
 published: 'Thursday, September 17th, 2015'
-title: Setting Up a Puppet Master and Multiple Agent Nodes
+title: Install and Configure Puppet
 external_resources:
     - '[Puppet Labs](https://puppetlabs.com/)'
     - '[Puppet Open Source Documentation](https://docs.puppetlabs.com/puppet/)'
