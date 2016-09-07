@@ -21,7 +21,7 @@ external_resources:
 
 Nginx is a lightweight, high performance web server designed to deliver large amounts of static content quickly with efficient use of system resources. Nginx's strong point is its ability to efficiently serve static content, like plain HTML and media files. Some consider it a less than ideal server for dynamic content.
 
-Unlike [Apache](/docs/web-servers/apache/), which uses a threaded or process-oriented approach to handle requests, Nginx uses an asynchronous event-driven model which provides more predictable performance under load. Rather than using the embedded interpreter approach, Nginx hands off dynamic content to CGI, FastCGI, or even other web severs like Apache, which is then passed back to Nginx for delivery to the client.
+Unlike [Apache](/docs/web-servers/apache/), which uses a threaded or process-oriented approach to handle requests, Nginx uses an asynchronous event-driven model which provides more predictable performance under load. Rather than using the embedded interpreter approach, Nginx hands off dynamic content to CGI, FastCGI, or even other web servers like Apache, which is then passed back to Nginx for delivery to the client.
 
 This leads to a more complex setup for certain deployments. For these and other reasons, the configuration of Nginx can feel complicated and unintuitive at first. This document should familiarize you with basic Nginx parameters and conventions. We'll be going through Nginx's primary configuration file.
 
