@@ -24,7 +24,7 @@ Puppet can be used to manage multiple servers across various infrastructures, fr
 
 {: .note}
 >
->Begin this guide as the `root` user. A limited user with `sudo` privileges will be configured in later steps.
+>Begin this guide as the `root` user. A limited user with administrative privileges will be configured in later steps.
 
 ## Before You Begin
 
@@ -154,13 +154,13 @@ On agent nodes running **CentOS 7** or other Red Hat systems, follow these steps
 
 ## Add Modules to Configure Agent Nodes
 
-Both the Puppet master and agent nodes configured above are functional, but not fully secure. Based on concepts from the [Securing Your Server](/docs/security/securing-your-server/) guide, a privileged subuser and a firewall should be configured. This can be done on all nodes through the creation of basic Puppet modules, shown below. This section is optional, but recommended.
+Both the Puppet master and agent nodes configured above are functional, but not fully secure. Based on concepts from the [Securing Your Server](/docs/security/securing-your-server/) guide, a limited user and a firewall should be configured. This can be done on all nodes through the creation of basic Puppet modules, shown below. This section is optional, but recommended.
 
 {: .note}
 >
 >This is not meant to provide a basis for a fully-hardened server, and is intended only as a starting point. Alter and add firewall and other configuration options, depending on your specific needs.
 
-### Add a Privileged Non-Root User
+### Add a Limited User
 
 1.  From the **Puppet master**, navigate to the `modules` directory and create your new module for adding user accounts, then `cd` into that directory:
 
@@ -176,7 +176,7 @@ Both the Puppet master and agent nodes configured above are functional, but not 
 
 3.  Move to the `manifests` directory and create your first class, called `init.pp`. All modules require an `init.pp` file to be used as the main definition file of a module.
 
-4.  Within the `init.pp` file, define a user to use instead of `root`, replacing all instances of `username` with your chosen username:
+4.  Within the `init.pp` file, define a limited user to use instead of `root`, replacing all instances of `username` with your chosen username:
 
     {: .file}
     /etc/puppet/modules/accounts/manifests/init.pp
@@ -222,7 +222,7 @@ Both the Puppet master and agent nodes configured above are functional, but not 
         ...
         ~~~
     
-6.  This user should be an administrative user. Because we have agent nodes on both Debian- and Red Hat-based systems the new user needs to be in the `sudo` group on Debian systems, and the `wheel` group on Red Hat systems. This value can be set dynamically through the use of a selector and *facter*, a program included in Puppet that keeps tracks of information, or *facts*, about every server. Add a selector statement to the top of the `init.pp` file within the accounts class brackets, defining the two options:
+6.  This user should have privileges so that it can perform administrative tasks. Because we have agent nodes on both Debian- and Red Hat-based systems the new user needs to be in the `sudo` group on Debian systems, and the `wheel` group on Red Hat systems. This value can be set dynamically through the use of a selector and *facter*, a program included in Puppet that keeps tracks of information, or *facts*, about every server. Add a selector statement to the top of the `init.pp` file within the accounts class brackets, defining the two options:
 
     {: .file-excerpt}
     /etc/puppet/modules/accounts/manifests/init.pp
@@ -321,7 +321,7 @@ Both the Puppet master and agent nodes configured above are functional, but not 
 
         puppet apply init.pp
 
-13. Log out as `root` and log in to the Puppet master as your new superuser. The rest of this guide will be run by this user.
+13. Log out as `root` and log in to the Puppet master as your new user. The rest of this guide will be run by this user.
 
 ### Edit SSH Settings
 
@@ -407,7 +407,7 @@ Although a new user has successfully been added to the Puppet master, the accoun
         sudo puppet apply --noop init.pp
         sudo puppet apply init.pp
         
-8.  To ensure that the `ssh` class is working properly, log out, and then try to log in as `root`. You should not be able it. Log in as your subuser again.
+8.  To ensure that the `ssh` class is working properly, log out, and then try to log in as `root`. You should not be able it. Log in as your limited user again.
         
 ### Add and Configure iptables
 
@@ -631,7 +631,7 @@ Now that the `accounts` and `firewall` modules have been created, tested, and ru
 
         puppet agent -t
 
-6.  To ensure that the Puppet agent worked, log in as the subuser that was created and check the iptables:
+6.  To ensure that the Puppet agent worked, log in as the limited user that was created and check the iptables:
 
         sudo iptables -L
 
