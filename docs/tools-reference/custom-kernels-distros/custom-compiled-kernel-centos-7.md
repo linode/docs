@@ -49,6 +49,7 @@ The kernel must be properly configured to run within the Linode environment. Som
     CONFIG_KVM_GUEST=y
     CONFIG_VIRTIO_PCI=y
     CONFIG_VIRTIO_PCI_LEGACY=y
+    CONFIG_BLK_DEV_SD
     CONFIG_SCSI_VIRTIO=y
     CONFIG_VIRTIO_NET=y
     CONFIG_SERIAL_8250=y
