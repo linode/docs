@@ -18,10 +18,13 @@ external_resources:
 
 [cPanel](http://cpanel.com) is a commercial web-based control panel for server systems. It can help ease the burden of common system administration tasks such as website creation, database deployment and management, and more. This guide will help you get up and running with cPanel on your CentOS Linode.
 
-**Please note**, Linode does not sell cPanel licenses. You'll need to [obtain a VPS license directly from cPanel](https://store.cpanel.net/view/cpanel/license-options) or an authorized distributor. Additionally, Linode does not provide cPanel support, although you may contact [cPanel support](https://www.cpanel.com/support/) directly once you've purchased a license. This product **must** be installed on a freshly deployed, CentOS Linode. These instructions should be performed as the ``root`` user via SSH.
+<div class="panel panel-warning">
+**Linode does not sell cPanel licenses**
+{: .panel-heading}
+<div class="panel-body">
+You'll need to [obtain a VPS license directly from cPanel](https://store.cpanel.net/view/cpanel/license-options) or an authorized distributor. Additionally, Linode does not provide cPanel support, although you may contact [cPanel support](https://www.cpanel.com/support/) directly once you've purchased a license. This product **must** be installed on a freshly deployed, CentOS Linode. These instructions should be performed as the `root` user via SSH.
 
-{: .note}
->The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+</div></div>
 
 ## DNS Prerequisites
 
@@ -33,7 +36,10 @@ If you plan to use a domain name for nameservers for which you will also be host
 
 ## Install cPanel
 
-Before proceeding, make sure you've purchased a cPanel license. You may obtain a license from the [cPanel Store](https://store.cpanel.net/). Next, log into your Linode as the "root" user via SSH to its IP address (found on the "Remote Access" tab in the Linode Manager). 
+{: .note}
+>The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+
+Before proceeding, make sure you've purchased a cPanel license. You may obtain a license from the [cPanel Store](https://store.cpanel.net/). Next, log into your Linode as the `root` user via SSH to its IP address (found on the "Remote Access" tab in the Linode Manager). 
 
 1. Issue the following command to download and install cPanel. Note that the installation process may take a long time to complete:
 
@@ -71,9 +77,9 @@ Before proceeding, make sure you've purchased a cPanel license. You may obtain a
 
     [![cPanel main network device selection.](/docs/assets/271-cpanel-whm-02-04-networking-ethernet-device.png)](/docs/assets/271-cpanel-whm-02-04-networking-ethernet-device.png)
 
-8. Once you have ensured that the information above is correct, press "Save & Go to Step 3".
+8. Once you have ensured that the information above is correct, press **Save & Go to Step 3**.
 
-9. When presented with the "Setup IP Addresses" section, click **Skip This Step and Use Default Settings** to continue:
+9. When presented with the *Setup IP Addresses* section, click **Skip This Step and Use Default Settings** to continue:
 
     [![cPanel IP address configuration.](/docs/assets/272-cpanel-whm-03-setup-ip-addresses.png)](/docs/assets/272-cpanel-whm-03-setup-ip-addresses.png)
 
@@ -83,7 +89,7 @@ Step 4 of the cPanel installation provides options for DNS configuration.
 
 #### Using Linode Nameservers
 
-If you intend to use Linode's nameservers (or those provided by a third party) for authoritative DNS services, make sure you select "Disabled" in the "Name Server" column:
+If you intend to use Linode's nameservers (or those provided by a third party) for authoritative DNS services, make sure you select *Disabled* in the *Name Server* column:
 
 [![cPanel DNS server selection using Linode nameservers.](/docs/assets/273-cpanel-whm-04-01-nameservers-linode-large.png)](/docs/assets/273-cpanel-whm-04-01-nameservers-linode-large.png)
 
@@ -96,11 +102,11 @@ When you've finished, click on **Save & Go to Step 5**.
 
 #### Using Self-Managed DNS
 
-If you wish to operate your own DNS servers on your Linode, select either "BIND" or "NSD" under the "Name Server" column. You must list the nameservers you set up in the "DNS Prerequisites" section of this document. There is a Linode guide on setting up your own nameservers in WHM using a single IP address, available in our [Set up DNS Services on cPanel](/docs/websites/cms/set-up-dns-services-on-cpanel) guide.
+If you wish to operate your own DNS servers on your Linode, select either **BIND** or **NSD** under the *Name Server* column. You must list the nameservers you set up in the "DNS Prerequisites" section of this document. There is a Linode guide on setting up your own nameservers in WHM using a single IP address, available in our [Set up DNS Services on cPanel](/docs/websites/cms/set-up-dns-services-on-cpanel) guide.
 
 [![cPanel DNS server selection using custom nameservers.](/docs/assets/274-cpanel-whm-04-02-nameservers-custom-large.png)](/docs/assets/274-cpanel-whm-04-02-nameservers-custom-large.png)
 
-When you've finished, click on "Save & Go to Step 5".
+When you've finished, click on **Save & Go to Step 5**.
 
 ### Services
 
@@ -114,12 +120,12 @@ Step 5 of the cPanel installation goes over configuration options for additional
 
     [![cPanel cPHulk Brute Force Protection](/docs/assets/279-cpanel-whm-05-01-cphulk-protection.png)](/docs/assets/279-cpanel-whm-05-01-cphulk-protection.png)
 
-3. After reviewing all options on this page, click on "Save & Go to Step 6"
+3. After reviewing all options on this page, click on **Save & Go to Step 6**
 
 4. You may choose to enable or disable support for filesystem quotas. Unless you actually need to track disk usage on a per-user basis, it's best to leave this disabled:
 
     [![cPanel quota support selection.](/docs/assets/277-cpanel-whm-07-quotas.png)](/docs/assets/277-cpanel-whm-07-quotas.png)
 
-5. Click on "Finish Setup Wizard". You will be brought to the "Feature Showcase" page, where you can enable additional features offered by cPanel. After reviewing these options, you can click on "Save Settings" to enable extra features, or "Exit to WHM".
+5. Click on **Finish Setup Wizard**. You will be brought to the *Feature Showcase* page, where you can enable additional features offered by cPanel. After reviewing these options, you can click on **Save Settings** to enable extra features, or **Exit to WHM**.
 
 That's it! cPanel should now be properly configured on your Linode. For product support, please be sure to contact [cPanel support](http://cpanel.net/support.html) with any further questions you may have.
