@@ -74,7 +74,7 @@ Rules can be added in two ways: By denoting the **port number** or by using the 
 For example, to allow both incoming and outgoing connections on port 22 for SSH, you can run:
 
     sudo ufw allow ssh
-    
+
 You can also run:
 
     sudo ufw allow 22
@@ -82,17 +82,16 @@ You can also run:
 Similarly, to **deny** traffic on a certain port (in this example, 111) you would only have to run:
 
     sudo ufw deny 111
-    
+
 To farther fine-tune your rules, you can also allow packets based on TCP or UDP. The following will allow TCP packets on port 80:
 
     sudo ufw allow 80/tcp
     sudo ufw allow http/tcp
-    
+
 Whereas this will allow UDP packets on 1725:
 
     sudo ufw allow 1725/udp
-    
-    
+
 ### Advanced Rules
 
 Along with allowing or denying based solely on port, UFW also allows you to allow/block by IP addresses, subnets, and a IP address/subnet/port combinations.
@@ -100,15 +99,15 @@ Along with allowing or denying based solely on port, UFW also allows you to allo
 To allow connections from an IP address:
 
     sudo ufw allow from 123.45.67.89
-    
+
 To allow connections from a specific subnet:
 
     sudo ufw allow from 123.45.67.89/24
-    
+
 To allow a specific IP address/port combination:
 
     sudo ufw allow from 123.45.67.89 to any port 22 proto tcp
-    
+
 `proto tcp` can be removed or switched to `proto udp` depending upon your needs, and all instances of `allow` can be changed to `deny` as needed.
 
 ### Remove Rules
@@ -147,7 +146,7 @@ You can check the status of UFW at any time with the command: `sudo ufw status`.
 With your chosen rules in place, your initial run of `ufw status` will probably output `Status: inactive`. To enable UFW and enforce your firewall rules:
 
     sudo ufw enable
-    
+
 Similarly, to disable UFW's rules:
 
     sudo ufw disable
@@ -167,7 +166,7 @@ Log levels can be set by running `sudo ufw logging low|medium|high`, selecting e
 A normal log entry will resemble the following, and will be located at `/var/logs/ufw`:
 
     Sep 16 15:08:14 <hostname> kernel: [UFW BLOCK] IN=eth0 OUT= MAC=00:00:00:00:00:00:00:00:00:00:00:00:00:00 SRC=123.45.67.89 DST=987.65.43.21 LEN=40 TOS=0x00 PREC=0x00 TTL=249 ID=8475 PROTO=TCP SPT=48247 DPT=22 WINDOW=1024 RES=0x00 SYN URGP=0
-    
+
 The initial values list the date, time, and hostname of your Linode. Additional important values include:
 
 -   **[UFW BLOCK]:** This location is where the description of the logged event will be located. In this instance, it blocked a connection.
