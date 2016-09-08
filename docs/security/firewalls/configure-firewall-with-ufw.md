@@ -2,7 +2,7 @@
 author:
   name: Elle Krout
   email: ekrout@linode.com
-description: 'Use UFW (Ucomplicated Firewall) to manage your firewall on Ubuntu, Debian, or Arch Linux; this guide contains instructions for setting up default rules, adding/removing rules, setting up logging, and some advanced features.'
+description: 'Use UFW (Uncomplicated Firewall) to manage your firewall on Ubuntu, Debian, or Arch Linux; this guide contains instructions for setting up default rules, adding/removing rules, setting up logging, and some advanced features.'
 keywords: 'ufw,uncomplicated firewall,ubuntu ufw,linux ufw,ufw tutorial,ubuntu firewall,iptables,networking,firewalls,filtering,firewall setup,ubuntu,debian,arch'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Tuesday, December 1st, 2015
@@ -12,7 +12,7 @@ published: 'Tuesday, November 17th, 2015'
 title: How to Configure a Firewall with UFW
 ---
 
-UFW, or *uncomplicated firewall*, is a frontend for managing firewall rules Arch Linux, Debian or Ubuntu. UFW is used through the command line (although has GUIs available), and aims to make firewall configuration easy (or, uncomplicated).
+UFW, or *uncomplicated firewall*, is a frontend for managing firewall rules Arch Linux, Debian or Ubuntu. UFW is used through the command line (although it has GUIs available), and aims to make firewall configuration easy (or, uncomplicated).
 
 ## Before You Begin
 
@@ -30,8 +30,7 @@ UFW, or *uncomplicated firewall*, is a frontend for managing firewall rules Arch
 
         sudo apt-get update && sudo apt-get upgrade
 
-
-## Installing UFW
+## Install UFW
 
 UFW is included in Ubuntu by default but must be installed in Arch and Debian. Debian will start UFW's systemd unit automatically and enable it to start on reboots, but Arch will not. *This is not the same as telling UFW to enable the firewall rules*, as enabling UFW with systemd or upstart only tells the init system to switch on the UFW daemon.
 
@@ -49,27 +48,26 @@ By default, UFW's rulesets are blank so it is not enforcing any firewall rules--
         sudo systemctl enable ufw
 
 ### Debian / Ubuntu
-        
+
 1.  Install UFW
 
         sudo apt-get install ufw
 
-
-## Using UFW
+## Use UFW to Manage Firewall Rules
 
 ### Set Default Rules
 
-Most systems will need a only a small amount of ports open for incoming connections, and all remaining ports closed. To start with an easy basis of rules, the `ufw default` command can be used to set the default response to incoming and outgoing connections. To deny all incoming and allow all outgoing connections, run:
+Most systems will need a only a small number of ports open for incoming connections, and all remaining ports closed. To start with an easy basis of rules, the `ufw default` command can be used to set the default response to incoming and outgoing connections. To deny all incoming and allow all outgoing connections, run:
 
     sudo ufw default allow outgoing
     sudo ufw default deny incoming
-        
+
 The `ufw default` command also allows for the use of the `reject` parameter.
 
 {:.caution}
 >Configuring a default reject or deny rule can lock you out of your Linode unless explicit allow rules are in place.  Ensure that you have configured allow rules for SSH and other critical services as per the section below before applying default deny or reject rules.
 
-### Adding Rules
+### Add Rules
 
 Rules can be added in two ways: By denoting the **port number** or by using the **service name**.
 
@@ -113,24 +111,21 @@ To allow a specific IP address/port combination:
     
 `proto tcp` can be removed or switched to `proto udp` depending upon your needs, and all instances of `allow` can be changed to `deny` as needed.
 
-    
-### Removing Rules
+### Remove Rules
 
 To remove a rule, add `delete` before the rule implementation. If you no longer wished to allow HTTP traffic, you could run:
 
     sudo ufw delete allow 80
-    
+
 Deleting also allows the use of service names.
 
-
-## Editing UFW's Configuration Files
+## Edit UFW's Configuration Files
 
 Although simple rules can be added through the command line, there may be a time when more advanced or specific rules need to be added or removed. Prior to running the rules input through the terminal, UFW will run a file, `before.rules`, that allows loopback, ping, and DHCP. To add to alter these rules edit the `/etc/ufw/before.rules` file. A `before6.rules` file is also located in the same directory for IPv6.
 
 An `after.rule` and an `after6.rule` file also exists to add any rules that would need to be added after UFW runs your command-line-added rules.
 
 An additional configuration file is located at `/etc/default/ufw`. From here IPv6 can be disabled or enabled, default rules can be set, and UFW can be set to manage built-in firewall chains.
-
 
 ## UFW Status
 
@@ -146,7 +141,6 @@ You can check the status of UFW at any time with the command: `sudo ufw status`.
     22 (v6)                    ALLOW       Anywhere (v6)
     80/tcp (v6)                ALLOW       Anywhere (v6)
     443 (v6)                   ALLOW       Anywhere (v6)
-
 
 ### Enable the Firewall
 
@@ -167,7 +161,7 @@ Similarly, to disable UFW's rules:
 You can enable logging with the command:
 
     sudo ufw logging on
-    
+
 Log levels can be set by running `sudo ufw logging low|medium|high`, selecting either `low`, `medium`, or `high` from the list. The default setting is `low`.
     
 A normal log entry will resemble the following, and will be located at `/var/logs/ufw`:
