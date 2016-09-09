@@ -5,10 +5,10 @@ author:
 description: 'Basic instructions to setup and configure a Puppet master and agents using Ubuntu or CentOS servers.'
 keywords: 'puppet installation,configuration change management,server automation'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['websites/puppet/basic-puppet-setup-and-configuration/','websites/puppet/manage-and-automate-systems-configuration-with-puppet/','applications/set-up-puppet-master-agent']
-modified: Thursday, September 17th, 2015
+alias: ['websites/puppet/basic-puppet-setup-and-configuration/','websites/puppet/manage-and-automate-systems-configuration-with-puppet/','applications/set-up-puppet-master-agent/']
+modified: Friday, September 9th, 2016
 modified_by:
-    name: Elle Krout
+    name: Phil Zona
 published: 'Thursday, September 17th, 2015'
 title: Install and Configure Puppet
 external_resources:
@@ -28,13 +28,13 @@ Puppet can be used to manage multiple servers across various infrastructures, fr
 
 ## Before You Begin
 
-1.  You should have three available Linodes, one of which has at least four CPU cores for the Puppet master. A [Linode 8GB](/pricing) plan is recommended. The two other nodes can be of any plan size, depending on how you intend to use them, once Puppet is installed and configured.
+1.  You should have three available Linodes, one of which has at least four CPU cores for the Puppet master. A [Linode 8GB](/pricing) plan is recommended. The two other nodes can be of any plan size, depending on how you intend to use them after Puppet is installed and configured.
 
 2.  Follow the [Getting Started](/docs/getting-started) guide and ensure your Linodes are configured to use the same timezone.
 
     {: .note}
     >
-    >For ease of use, set the Puppet master server's hostname to `puppet`, and have a valid, fully-qualified domain name (FQDN).
+    >For ease of use, set the Puppet master server's hostname to `puppet`, and have a valid fully-qualified domain name (FQDN).
     >
     >To check your hostname, run `hostname` and to check your FQDN, run `hostname -f`.
 
