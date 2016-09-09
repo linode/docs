@@ -93,19 +93,23 @@ You should also turn off all the **Filesystem/Boot Helpers** for now.
 
     For example, the latest stable version's `apk-tools-static` package can be found by visiting `http://nl.alpinelinux.org/alpine/latest-stable/main/x86_64/`. From there, simply search for `apk-tools-static`. Once you have found it, you will need to copy the file's location. To do this in most browsers, right click the filename and select **Copy Link Address**.
 
-3.  Download and extract the `apk-tools-static` package to your Linode. You should still be working in the `/alpine` directory when performing this step. Replace `address` in the following command with the address you copied in Step 2:
+3.  Update the CA Certificates.  Finnix doesn't have them by default, and so `curl` will fail to download the `apk-tools-static` package if you are using https, as it won't be able to verify the ssl certificate.
+
+    update-ca-certificates
+
+4.  Download and extract the `apk-tools-static` package to your Linode. You should still be working in the `/alpine` directory when performing this step. Replace `address` in the following command with the address you copied in Step 2:
         
         curl -s address | tar xz
 
     If this fails with an error, ensure the guide 
 
-4.  Perform the initial distro installation. This will use the latest stable build of Alpine.
+5.  Perform the initial distro installation. This will use the latest stable build of Alpine.
 
         ./sbin/apk.static --repository http://nl.alpinelinux.org/alpine/latest-stable/main/ --update-cache --allow-untrusted --root /alpine --initdb add alpine-base alpine-mirrors
 
 ### Initial Setup
 
-In this section, we will modify important system files. It is **strongly** recommended that you make backup copies of these files before making changes.
+In this section, we will modify important system files. It is recommended that you make backup copies of these files before making changes.
 
 1.  Configure your fstab. Note, you need a single hard tab between each column.
 
@@ -206,8 +210,12 @@ In this section, we will modify important system files. It is **strongly** recom
 
         rc-update add networking boot
         rc-update add urandom boot
+<<<<<<< HEAD
         
 7.  Install the kernel:
+=======
+        rc-update add crond
+>>>>>>> 61eb432052bc29a8d861a7c95e64795af157b679
 
         apk add linux-grsec
 
@@ -226,20 +234,38 @@ In this section, we will modify important system files. It is **strongly** recom
 
 ### Configuration
 
-1.  Set a password for root
+1.  Setup and start networking. Alpine has a handy script that'll configure the network interface file for you, and guide you through the various options. It's capable of advanced configs, like bridging, bonding and such, but for this, it's defaults should be good enough. Just press enter 3 times to accept the defaults of `eth0`, `dhcp`, and `no`, and then restart the networking service, and your Alpine install should have a functional network connection.
+
+        setup-interfaces
+        service networking restart
+
+2.  Set a password for root:
 
         passwd
 
-2.  Create a limited user account to avoid using root for all commands. Replace `example-user` with a username of your choice:
+3.  Create a limited user account to avoid using root for all commands. Replace `example-user` with a username of your choice:
 
         adduser example-user
 
-3.  Install `sudo`:
+4.  Install `sudo`:
 
         apk add sudo
 
 4.  Configure `sudo` to allow users in the sudo group to temporarily elevate their privileges:
 
+=======
+2.  Setup and start networking.  Alpine has a handy script that'll configure the network interface file for you, and guide you through the various options.  It's capable of advanced configs, like bridging, bonding and such, but for this, it's defaults should be good enough.  Just press enter 3 times to accept the defaults of `eth0`, `dhcp`, and `no`, and then restart the networking service, and your Alpine install should have a functional network connection.
+        setup-interfaces
+        service networking restart
+
+3.  Create a user
+        adduser `username`
+
+4.  Install sudo
+        apk add sudo
+
+5.  Configure sudo to allow users in the group sudo to use sudo.  
+>>>>>>> 61eb432052bc29a8d861a7c95e64795af157b679
         echo "%sudo   ALL=(ALL) ALL" >> /etc/sudoers
 
     Alternatively, you can allow passwordless sudo:
