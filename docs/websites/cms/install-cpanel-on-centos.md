@@ -5,11 +5,11 @@ author:
 description: 'Use cPanel to manage services on your CentOS Linux VPS.'
 keywords: 'cpanel,vps control panel,install cpanel,cpanel centos'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/control-panels/cpanel/centos-6/','websites/cms/cpanel-on-centos-6-5/','websites/cms/cpanel-on-centos-5/','websites/cms/cpanel-on-centos']
+alias: ['web-applications/control-panels/cpanel/centos-6/','websites/cms/cpanel-on-centos-6-5/','websites/cms/cpanel-on-centos-5/','websites/cms/cpanel-on-centos/']
 modified: Wednesday, September 7, 2016
 modified_by:
   name: Edward Angert
-published: 
+published:
 title: Install cPanel on CentOS
 external_resources:
  - '[cPanel Home Page](https://www.cpanel.com/)'
@@ -39,7 +39,7 @@ If you plan to use a domain name for nameservers for which you will also be host
 {: .note}
 >The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
-Before proceeding, make sure you've purchased a cPanel license. You may obtain a license from the [cPanel Store](https://store.cpanel.net/). Next, log into your Linode as the `root` user via SSH to its IP address (found on the "Remote Access" tab in the Linode Manager). 
+Before proceeding, make sure you've purchased a cPanel license. You may obtain a license from the [cPanel Store](https://store.cpanel.net/). Next, log into your Linode as the `root` user via SSH to its IP address (found on the "Remote Access" tab in the Linode Manager).
 
 1. Issue the following command to download and install cPanel. Note that the installation process may take a long time to complete:
 
