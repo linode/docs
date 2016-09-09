@@ -80,15 +80,18 @@ It is regularly updated with security patches, and runs on the [grsecurity](http
 
 ### Download initial APK tools
 
-1.  Pick your desired release.  In most cases, you can use the latest-stable release, located at (http://nl.alpinelinux.org/alpine/latest-stable/)[http://nl.alpinelinux.org/alpine/latest-stable/]
+1.  Pick your desired release.  In most cases, you can use the latest-stable release, located at (https://nl.alpinelinux.org/alpine/latest-stable/)[https://nl.alpinelinux.org/alpine/latest-stable/]
 
-2.  Identify the current version of the `apk-tools-static` package.  You will need to navigate into the `main/x86_64` directory of your chosen release.  For example, the latest stable would be (http://nl.alpinelinux.org/alpine/latest-stable/main/x86_64/)[http://nl.alpinelinux.org/alpine/latest-stable/main/x86_64/].  From there, simply search for `apk-tools-static`.  Once you have found it, you will need to copy the file's location.  (Right click, Copy Link Address)
+2.  Identify the current version of the `apk-tools-static` package.  You will need to navigate into the `main/x86_64` directory of your chosen release.  For example, the latest stable would be (https://nl.alpinelinux.org/alpine/latest-stable/main/x86_64/)[https://nl.alpinelinux.org/alpine/latest-stable/main/x86_64/].  From there, simply search for `apk-tools-static`.  Once you have found it, you will need to copy the file's location.  (Right click, Copy Link Address)
 
-3.  Download and extract the `apk-tools-static` package.  You should still be in `/alpine`
+3.  Update the CA Certificates.  Finnix doesn't have them by default, and so `curl` will fail to download the `apk-tools-static` package if you are using https, as it won't be able to verify the ssl certificate.
+        update-ca-certificates
+
+4.  Download and extract the `apk-tools-static` package.  You should still be in `/alpine`
         curl -s `apk-tools-static.apk` | tar xz
 
-4.  Perform initial distro install.  This will preform the install using the latest stable build of Alpine.
-        ./sbin/apk.static --repository http://nl.alpinelinux.org/alpine/latest-stable/main/ --update-cache --allow-untrusted --root /alpine --initdb add alpine-base alpine-mirrors
+5.  Perform initial distro install.  This will preform the install using the latest stable build of Alpine.
+        ./sbin/apk.static --repository https://nl.alpinelinux.org/alpine/latest-stable/main/ --update-cache --allow-untrusted --root /alpine --initdb add alpine-base alpine-mirrors
 
 ### Initial setup
 
@@ -174,7 +177,7 @@ It is regularly updated with security patches, and runs on the [grsecurity](http
 6.  Configure important services to start automatically.
         rc-update add networking boot
         rc-update add urandom boot
-        rc-update add cron
+        rc-update add crond
 
 7.  Install the kernel
         apk add linux-grsec
@@ -196,22 +199,26 @@ It is regularly updated with security patches, and runs on the [grsecurity](http
 1.  Set a password for root
         passwd
 
-2.  Create a user
+2.  Setup and start networking.  Alpine has a handy script that'll configure the network interface file for you, and guide you through the various options.  It's capable of advanced configs, like bridging, bonding and such, but for this, it's defaults should be good enough.  Just press enter 3 times to accept the defaults of `eth0`, `dhcp`, and `no`, and then restart the networking service, and your Alpine install should have a functional network connection.
+        setup-interfaces
+        service networking restart
+
+3.  Create a user
         adduser `username`
 
-3.  Install sudo
+4.  Install sudo
         apk add sudo
 
-4.  Configure sudo to allow users in the group sudo to use sudo.  
+5.  Configure sudo to allow users in the group sudo to use sudo.  
         echo "%sudo   ALL=(ALL) ALL" >> /etc/sudoers
     Alternatively, you can allow passwordless sudo
         echo "%sudo   ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
-5.  Create the sudo group and add your user to it.
+6.  Create the sudo group and add your user to it.
         addgroup sudo
         adduser `username` sudo
         
-6.  Install and configure sshd.  Alpine has a simple setup script to handle this.  I recommend the `openssh` server if you want sftp access, though `dropbear` is lighter if you just need ssh access
+7.  Install and configure sshd.  Alpine has a simple setup script to handle this.  I recommend the `openssh` server if you want sftp access, though `dropbear` is lighter if you just need ssh access
         setup-sshd
 
 ## Finished
