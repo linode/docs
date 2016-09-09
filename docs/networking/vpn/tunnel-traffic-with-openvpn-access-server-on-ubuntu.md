@@ -5,15 +5,16 @@ author:
 description: 'Easily tunnel web traffic through your personal OpenVPN Access Server in Ubuntu 14.04'
 keywords: 'openvpn,networking,vpn,ubuntu,ubuntu trusty,14.04'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-published: 'Friday, April 1st, 2016'
-title: 'VPN Tunnel with OpenVPN Access Server and Ubuntu 14.04'
-contributor:
+modified: Thursday, September 1st, 2016
+modified_by:
   name: Neal Sebastian
   link: https://github.com/yoneal
+published: 'Friday, April 1st, 2016'
+title: 'Tunnel Traffic with OpenVPN Access Server on Ubuntu'
 ---
 
 *This is a Linode Community guide. Write for us and earn $250 per published guide.*
-<hr>
+
 
 VPN tunneling is a method of creating an encrypted connection to a remote local area network (LAN) over the Internet. Consequently, you can use this connection to access the Internet from behind it. This is useful if you want to evade censorship, geolocation or company firewall.
 
@@ -41,7 +42,7 @@ For "Should VPN clients have access to private subnets (non-public networks on t
 
 {: .note}
 >
-> The default route of vpn clients will be set to the VPN server's virtual IP address. This means that all Internet traffic will go through the VPN tunnel.
+> The default route of VPN clients will be set to the VPN server's virtual IP address. This means that all Internet traffic will go through the VPN tunnel.
 
 2. To avoid DNS leaking, we must push DNS servers to clients. Simply select **Have clients use the same DNS servers as the Access Server host** in "DNS Settings" to have the client use the same DNS servers as your linode.
 
@@ -63,10 +64,14 @@ You need to enable IP Masquerading by enabling packet forwarding and configuring
 
 2. Edit `/etc/ufw/sysctl.conf` and uncomment the following:
 
-	# Uncomment this to allow this host to route packets between interfaces
-	net/ipv4/ip_forward=1
-	net/ipv6/conf/default/forwarding=1
-	net/ipv6/conf/all/forwarding=1
+{: .file }
+/etc/ufw/sysctl.conf
+:   ~~~ conf
+    # Uncomment this to allow this host to route packets between interfaces
+    net/ipv4/ip_forward=1
+    net/ipv6/conf/default/forwarding=1
+    net/ipv6/conf/all/forwarding=1
+    ~~~
 
 3. Find out the dynamic IP address network that vpn clients are assigned to, this will be needed for the next step. In the Admin UI, click *VPN Settings* and take note of the "Dynamic IP Address Network".
 
@@ -76,14 +81,18 @@ In the example above, the dynamic IP address network is **172.27.224.0/20**.
 
 4. Add the following rules to the top of the `/etc/ufw/before.rules` file, just after the header comments:
 
-	# nat Table rules
-	*nat
-	:POSTROUTING ACCEPT [0:0]
+{: .file }
+/etc/ufw/before.rules
+:   ~~~ conf
+    # nat Table rules
+    *nat
+    :POSTROUTING ACCEPT [0:0]
 
-	# Forward traffic from eth1 through eth0.
-	-A POSTROUTING -s <dynamic ip address network> -o eth0 -j MASQUERADE
+    # Forward traffic from eth1 through eth0.
+    -A POSTROUTING -s 172.27.224.0/20 -o eth0 -j MASQUERADE
+    ~~~
 
-	# don't delete the 'COMMIT' line or these nat table rules won't be processed
+- don't delete the 'COMMIT' line or these nat table rules won't be processed
 	COMMIT
 
 Replace `<dynamic ip address network>` with the one found in the previous step.

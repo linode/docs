@@ -4,6 +4,7 @@ alias: ['networking/openvpn/']
 featured:
  - set-up-a-hardened-openvpn-server.md
  - tunnel-your-internet-traffic-through-an-openvpn-server.md
+ - tunnel-traffic-with-openvpn-access-server-on-ubuntu.md
  - configuring-openvpn-client-devices.md
  - openvpn-access-server.md
  - pritunl-vpn-ubuntu.md
