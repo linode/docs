@@ -96,6 +96,25 @@ If your Linode is currently running on Xen, go to the Linode's Dashboard page. I
 
 There have been a few minor issues reported when upgrading to KVM. If you're using any of the Linux distributions listed below and encounter an issue, please read on. If you are running a different distribution, or encounter an issue not listed here, please contact [Support](/docs/platform/support).
 
+### Migration from Xen
+
+If you are using a kernel other than the one provided by Linode and migrate from Xen to KVM, you may encounter this error on boot:
+
+![KVM Kernel Boot Error](/docs/assets/kvm-kernel-error.png)
+
+This means your Kernel doesn't have the necessary `virtio` drivers. To resolve:
+
+1.  Edit your Linode's configuration profile to use the Linode-supplied kernel.
+
+2.  Boot your Linode to update the kernel and regenerate `initramfs`. The steps will differ depending on your distribution. Assuming you're still using Grub 1 (Legacy Grub), refer to [this guide](/docs/tools-reference/custom-kernels-distros/run-a-distributionsupplied-kernel-with-pvgrub).
+
+3.  Update `/boot/grub/menu.lst` to use your newly built kernel and `initramfs` file.
+
+3.  Edit your Linode's configuration profile back to the previous setting.
+
+{: .note }
+> Remember to check [Glish](/docs/networking/use-the-graphic-shell-glish) as well as Lish while testing. Without the grub terminal set to serial, your startup output may only appear on the Glish output.
+
 ### CentOS 6
 
 There are some reported cases of Linodes running CentOS 6.X that lose network connectivity after upgrading. To resolve this issue, open the [LISH Console](/docs/networking/using-the-linode-shell-lish) and run:
