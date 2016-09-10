@@ -85,7 +85,7 @@ Log back in as your new user. Replace `example_user` with your username, and the
 
     ssh example_user@203.0.113.10
 
-Now you can administer your Linode from your new user account instead of `root`. Nearly all superuser commands can be executed with `sudo` (example: `sudo iptables -L`) and those commands will be logged to `/var/log/auth.log`.
+Now you can administer your Linode from your new user account instead of `root`. Nearly all superuser commands can be executed with `sudo` (example: `sudo iptables -L -nv`) and those commands will be logged to `/var/log/auth.log`.
 
 ## Harden SSH Access
 
@@ -309,23 +309,22 @@ Using a *firewall* to block unwanted inbound traffic to your Linode provides a h
 
 IPv4:
 
-    sudo iptables -L
+    sudo iptables -L -nv
 
 IPv6:
 
-    sudo ip6tables -L
+    sudo ip6tables -L -nv
 
 Iptables has no rules by default for both IPv4 and IPv6. As a result, on a newly created Linode you will see what is shown below--three empty chains without any firewall rules. This means that all incoming, forwarded and outgoing traffic is *allowed*. It's important to limit inbound and forwarded traffic to only what's necessary.
 
-    Chain INPUT (policy ACCEPT)
-    target     prot opt source               destination
+    Chain INPUT (policy ACCEPT 0 packets, 0 bytes)
+     pkts bytes target     prot opt in     out     source               destination
 
-    Chain FORWARD (policy ACCEPT)
-    target     prot opt source               destination
+    Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)
+     pkts bytes target     prot opt in     out     source               destination
 
-    Chain OUTPUT (policy ACCEPT)
-    target     prot opt source               destination
-
+    Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)
+     pkts bytes target     prot opt in     out     source               destination
 
 ### Basic iptables Rulesets for IPv4 and IPv6
 
@@ -524,7 +523,7 @@ Red Hat Security Guide: [Using Firewalls](https://access.redhat.com/documentatio
 
 ### Debian / Ubuntu
 
-UFW is the iptables controller included with Ubuntu but is also available in Debian's repositories. If you would prefer to use UFW instead of ipables, see our guide: [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw).
+UFW is the iptables controller included with Ubuntu but is also available in Debian's repositories. If you would prefer to use UFW instead of iptables, see our guide: [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw).
 
 1.  Create the files `/tmp/v4` and `/tmp/v6`. Paste the [above rulesets](#basic-iptables-rulesets-for-ipv4-and-ipv6) into their respective files.
 
@@ -609,13 +608,13 @@ Iptables rules are enforced in a top-down fashion, so the first rule in the rule
 
 Inserted rules need to be placed in the correct order with respect other rules in the chain. To get a numerical list of your iptables rules:
 
-    sudo iptables -L --line-numbers
+    sudo iptables -L -nv --line-numbers
 
 For example, let's say we want to insert a rule to [the ruleset above](#basic-iptables-rulesets-for-ipv4-and-ipv6) which accepts incoming [Linode Longview](https://www.linode.com/docs/platform/longview/longview) connections. We'll add it as rule 9 to the INPUT chain, following the web traffic rules.
 
     sudo iptables -I INPUT 9 -p tcp --dport 8080 -j ACCEPT
 
-If you now run `sudo iptables -L` again, you'll see the new rule in the output.
+If you now run `sudo iptables -L -nv` again, you'll see the new rule in the output.
 
 **Replace**
 
