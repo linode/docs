@@ -60,7 +60,7 @@ If the key expires or is removed, remember to create a new one and update the *a
 Throughout this guide, we will use the following names as examples that refer to the images and clusters we will be creating:
 
 -   `zk-image1` - Zookeeper image
--   `zk-cluster` - Zookeeper cluster
+-   `zk-cluster1` - Zookeeper cluster
 -   `storm-image1` - Storm image
 -   `storm-cluster1` - Storm cluster
 
@@ -427,7 +427,7 @@ In this section, you will learn how to create a new Zookeeper cluster in which e
     
         Path of the Zookeeper image directory or configuration file to use as a template for creating nodes of this cluster. Every node's disk will be a replica of this image.
         
-        The path can either be an absolute path, or a path that is relative to the cluster configuration directory. Using our example, the absolute path would be `/home/clustermgr/storm-linode/zk-image1/zk-image1` and the relative path would be `../zk-image1/zk-image1.conf`.
+        The path can either be an absolute path, or a path that is relative to the cluster configuration directory. Using our example, the absolute path would be `/home/clustermgr/storm-linode/zk-image1` and the relative path would be `../zk-image1`.
         
     -   `NODE_DISK_SIZE`
     
@@ -691,7 +691,7 @@ In this section, you will learn how to create a new Storm cluster in which every
     
         Path of the Storm image directory or configuration file to use as a template for creating nodes of this cluster. Every node's disk will be a replica of this image.
         
-        The path can either be an absolute path, or a path that is relative to this cluster configuration directory. Using our example, the absolute path would be `/home/clustermgr/storm-linode/storm-image1/storm-image1.conf` and the relative path would be `../storm-image1/storm-image1.conf`.
+        The path can either be an absolute path, or a path that is relative to this cluster configuration directory. Using our example, the absolute path would be `/home/clustermgr/storm-linode/storm-image1` and the relative path would be `../storm-image1`.
 
     -   `NODE_DISK_SIZE`
     
@@ -1008,7 +1008,7 @@ You can copy one or more files from the cluster manager node to all nodes of a S
    
 To delete a Storm image, use the `delete-image` command:
         
-        ./storm-cluster-linode.sh delete-image storm-cluster1 api_env_linode.conf
+        ./storm-cluster-linode.sh delete-image storm-image1 api_env_linode.conf
 
 Note that this command will delete the image, but not any clusters that were created from it.
 
@@ -1037,7 +1037,7 @@ Stopping a Zookeeper cluster cleanly stops the Zookeeper daemon on all nodes, an
 >
 >Do not stop a Zookeeper cluster while any Storm clusters that depend on it are running. This may result in data loss.
 
-To stop a cluster, user the `stop` command:
+To stop a cluster, use the `stop` command:
         
     ./zookeeper-cluster-linode.sh stop zk-cluster1 api_env_linode.conf
 
