@@ -320,6 +320,7 @@ With the failregex created, it then needs to be added to a filter.
         [Definition]
         
         failregex = <HOST> - - \[(\d{2})/\w{3}/\d{4}:\1:\1:\1 -\d{4}\] "POST /wp-login.php HTTP/1.1" 200
+        ignoreregex =
         ~~~
         
     Save and quit.
@@ -333,6 +334,7 @@ With the failregex created, it then needs to be added to a filter.
         enabled  = true
         filter   = wordpress
         logpath  = /var/www/html/andromeda/logs/access.log
+        port     = 80,443
         ~~~
         
     This will use the default ban and email action. Other actions can be defined by adding an `action =` line.
