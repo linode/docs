@@ -34,6 +34,9 @@ This guide explains how to create Storm clusters on the Linode cloud using a set
 
 ![Architecture](/docs/assets/storm-architecture-650px.png)
 
+
+![Storm Topology and Deployment](/docs/assets/storm-topology.png)
+
 The application flow begins, from the client side, with the Storm client, which provides a user interface. This contacts a *Nimbus* node, which is central to the operation of the Storm cluster. The Nimbus node gets the current state of the cluster, including a list of the supervisor nodes and *topologies* from the Zookeeper cluster. The Storm cluster's supervisor nodes constantly update their states to the Zookeeper nodes, which ensure that the system remains synced.
 
 The method by which Storm handles and processes data is called a *topology*. A topology is a network of components that perform individual operations, and is made up of *spouts*, which are sources of data, and *bolts*, which accept the incoming data and perform operations such as running functions or transformations. The data itself, called a *stream* in Storm terminology, comes in the form of unbounded sequences of tuples. 
@@ -919,9 +922,9 @@ If you or a developer have created a topology, perform these steps to start a ne
 5.  Submit the topology to the cluster:
 
         cd /opt/apache-storm-0.9.5/bin
-        ./storm jar topology-jar.jar main-class "name-of-topology" 
+        ./storm jar topology-jar.jar main-class arguments-for-topology
 
-    Substitute `topology-jar.jar` for the path of the JAR file you wish to submit, `main-class` with the main class of the topology, and `name-of-topology` for the name under which the topology should run in the Storm UI.
+    Substitute `topology-jar.jar` for the path of the JAR file you wish to submit, `main-class` with the main class of the topology, and `arguments-for-topology` for the arguments accepted by the topology's main class.
 
 6.  [Monitor the execution of the new topology.](#monitor-a-storm-cluster-using-storm-ui)
 
