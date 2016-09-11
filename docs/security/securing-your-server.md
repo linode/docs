@@ -537,7 +537,7 @@ UFW is the iptables controller included with Ubuntu but is also available in Deb
 
         sudo apt-get install iptables-persistent
 
-4. You'll be asked if you want to save the current IPv4 and IPv6 rules. Answer `yes` to each prompt.
+4. You'll be asked if you want to save the current IPv4 and IPv6 rules. Answer `yes` to each prompt.  If in future, you edit the rules and need to save them again, use: `sudo dpkg-reconfigure iptables-persistent`
 
 5.  Remove the temporary rule files:
 
