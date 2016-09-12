@@ -9,6 +9,7 @@ featured:
  - pritunl-vpn-ubuntu.md
  - secure-communications-with-openvpn-on-centos-6.md
  - secure-communications-with-openvpn-on-ubuntu-12-04-precise-and-debian-7.md
+ - secure-clustering-with-tinc-on-ubuntu-16-04.md
 
 ---
 

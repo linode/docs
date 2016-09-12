@@ -1,33 +1,31 @@
 ---
 author:
-  name: Sam Mauldin
-  email: sam@fluidnode.com
+  name: Linode Community
+  email: docs@linode.com
 description: 'Use tinc VPN to securely cluster and access services on Ubuntu 16.04'
 keywords: 'tinc,vpn,networking,ubuntu'
-license: '[CC BY-SA 4.0](http://creativecommons.org/licenses/by-sa/4.0/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 title: 'Secure Clustering with tinc on Ubuntu 16.04'
 contributor:
   name: Sam Mauldin
+published: ''
+modified: Monday, September 12th, 2016
+modified_by:
+    name: Alex Fornuto
 ---
 
-tinc is a meshed VPN that can be used to encrypt traffic between a cluster of
-Linodes. For example, if you're running a MySQL database, and need more performance,
-you can setup a cluster of nodes and secure data as it passes through the network.
+tinc is a meshed VPN that can be used to encrypt traffic between a cluster of Linodes. For example, if you're running a MySQL database, and need more performance, you can setup a cluster of nodes and secure data as it passes through the network.
 
 ## Installing tinc
 
-1. Make sure your systems are up to date.
+1.  Make sure your systems are up to date.
 
-```
-sudo apt-get update
-sudo apt-get upgrade
-```
+        sudo apt-get update
+        sudo apt-get upgrade
 
-2. Then install the tinc package on the nodes you want to connect.
+2.  Then install the `tinc` package on the nodes you want to connect.
 
-```
-sudo apt-get install tinc
-```
+        sudo apt-get install tinc
 
 ## Configure tinc
 
