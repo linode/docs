@@ -64,6 +64,7 @@ For standard paravirtualized KVM Linodes, add the following to your kernel `.con
     CONFIG_KVM_GUEST=y
     CONFIG_VIRTIO_PCI=y
     CONFIG_VIRTIO_PCI_LEGACY=y
+    CONFIG_BLK_DEV_SD=y
     CONFIG_SCSI_VIRTIO=y
     CONFIG_VIRTIO_NET=y
     CONFIG_SERIAL_8250=y
