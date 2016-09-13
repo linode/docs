@@ -133,7 +133,7 @@ Game servers and clients are an especially ripe target for attack. Use our [Secu
 
 ## Install SteamCMD
 
-1.  Newly created Linodes use 64-bit Linux operating systems. Since Steam is compiled for i386, install the appropriate libraries. Screen we'll also use when running Steam games.
+1.  Newly created Linodes use 64-bit Linux operating systems. Since Steam is compiled for i386, install the appropriate libraries. We'll also install `screen` to use when running Steam games.
 
     **CentOS 7**
 
