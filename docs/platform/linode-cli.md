@@ -26,8 +26,6 @@ You can install the Linode CLI on any Mac OS X or Linux computer. You can instal
 
 ### Mac OS X
 
-In this section, you will learn how to install the Mac OS X package for the Linode CLI.
-
 Prerequisites:
 
 -   [Homebrew](http://brew.sh)
@@ -42,8 +40,6 @@ Run the following commands to install the Linode CLI:
     brew install linode-cli
 
 ### Debian and Ubuntu
-
-In this section, you will learn how to install the Debian and Ubuntu package for the Linode CLI.
 
 1.  Add the Linode repository to your list:
 
@@ -60,12 +56,12 @@ In this section, you will learn how to install the Debian and Ubuntu package for
 4.  Install the Linode CLI package:
 
         sudo apt-get install linode-cli
-        
 
 ### Fedora
-linode-cli included with Fedora from the fedora dnf repo, so you just need to do the following:
 
-        dnf install linode-cli
+linode-cli included in Fedora's standard package database:
+
+    dnf install linode-cli
 
 ### Manual Installation for Linux (All Distros)
 
