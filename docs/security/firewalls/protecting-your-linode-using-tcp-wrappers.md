@@ -1,11 +1,10 @@
 ---
 author:
-  name: Francis McNamee
-  email: --
-description: 'Enhance your server''s security through the use of TCP wrasppers'
+  name: Linode Community
+  email: docs@linode.com
+description: 'Enhance your server''s security through the use of TCP wrappers'
 keywords: 'tcp wrappers,security,firewall,acl,access control'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/game-servers/minecraft-ubuntu12-04/']
 published: 'Thursday, April 30th, 2015'
 modified: Thursday, April 30th, 2015
 modified_by:
