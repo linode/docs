@@ -126,11 +126,14 @@ Fail2ban reads its configuration files so that all `.conf` files are read first 
 
         cd /etc/fail2ban
 
-2.  Copy `fail2ban.conf` to `fail2ban.local`:
+2.  The file `fail2ban.conf` contains the default configuration variables for Fail2ban logging, the socket used to communicate with the daemon, and the location of the PID file. Changes should be made in a separate file, `fail2ban.local`, which overrides `fail2ban.conf`. If you want, you can copy `fail2ban.conf` to `fail2ban.conf`, commenting out all variables, and then uncomment only the options you want to modify:
 
         cp fail2ban.conf fail2ban.local
+        sed -i 's/^/#/g' fail2ban.local
 
-3.  Open `fail2ban.local` in your chosen text editor. This file contains configuration for Fail2ban logging, the socket used to communicate with the daemon, and the location of the PID file. The values that can be changed within the `fail2ban.local` file are as follows:
+    Otherwise, create a blank `fail2ban.local` file, and manually add the options you wish to modify.
+
+3.  In `fail2ban.local` add or uncomment and edit the values to match your desired configuration. The values that can be changed within the `fail2ban.local` file are:
 
     -   `loglevel`: The level of detail that Fail2ban's logs provide can be set to 1 (error), 2 (warn), 3 (info), or 4 (debug).
     -   `logtarget`: Logs actions into a specific file. The default value of `/var/log/fail2ban.log` puts all logging into the defined file. Alternately, you can change the value to STDOUT, which will output any data; STDERR, which will output any errors; SYSLOG, which is message-based logging; and FILE, which outputs to a file.
