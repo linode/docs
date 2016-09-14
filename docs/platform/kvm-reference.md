@@ -10,7 +10,7 @@ modified: Wednesday, June 15th, 2016
 modified_by:
   name: Alex Fornuto
 published: 'Monday, June 15, 2015'
-title:  KVM Reference
+title: 'KVM Reference'
 ---
 
 Linode's current virtualization stack is built on KVM. Previously, Linode used Xen, and older Linodes may still be on the Xen platform. Along with the increased performance of KVM virtualization, several details are different between Xen and KVM Linodes.
@@ -96,6 +96,25 @@ If your Linode is currently running on Xen, go to the Linode's Dashboard page. I
 ## Troubleshooting
 
 There have been a few minor issues reported when upgrading to KVM. If you're using any of the Linux distributions listed below and encounter an issue, please read on. If you are running a different distribution, or encounter an issue not listed here, please contact [Support](/docs/platform/support).
+
+### Migration from Xen
+
+If you are using a kernel other than the one provided by Linode and you migrate from Xen to KVM, you may encounter this error on boot:
+
+![KVM Kernel Boot Error: "This isn't a KVM kernel! Fix your configuration profile."](/docs/assets/kvm-kernel-error.png "KVM Kernel Boot Error: "This isn't a KVM kernel! Fix your configuration profile."")
+
+This means your Kernel doesn't have the necessary `virtio` drivers. To resolve:
+
+1.  Edit your Linode's configuration profile to use the Linode-supplied kernel.
+
+2.  Boot your Linode to update the kernel and regenerate `initramfs`. The steps will differ depending on your distribution. Assuming you're still using Grub 1 (Legacy Grub), refer to the [Run a Distribution-Supplied Kernel with PV-GRUB](/docs/tools-reference/custom-kernels-distros/run-a-distributionsupplied-kernel-with-pvgrub) guide.
+
+3.  Update `/boot/grub/menu.lst` to use your newly built kernel and `initramfs` file.
+
+3.  Edit your Linode's configuration profile back to the previous setting.
+
+{: .note }
+> Remember to check [Glish](/docs/networking/use-the-graphic-shell-glish) as well as Lish while testing. Without the grub terminal set to serial, your startup output may only appear on the Glish output.
 
 ### CentOS 6
 
