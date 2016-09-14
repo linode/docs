@@ -58,44 +58,44 @@ We start by installing and setup of the prerequisites mentioned in the Introduct
 
 Standard compile procedure, we start by installing some needed packages:
 
-		igorc@sl01:/opt$ sudo aptitude install zlib1g-dev zlibc libcrypto++-dev
+	igorc@sl01:/opt$ sudo aptitude install zlib1g-dev zlibc libcrypto++-dev
 
 and then downloading and extracting the source:
 
-		igorc@sl01:/opt$ sudo wget http://www.openssl.org/source/openssl-1.0.2g.tar.gz
-		igorc@sl01:/opt$ sudo tar -xzf openssl-1.0.2g.tar.gz
-		igorc@sl01:/opt$ sudo chown -R igorc\: openssl-1.0.2g
+	igorc@sl01:/opt$ sudo wget http://www.openssl.org/source/openssl-1.0.2g.tar.gz
+	igorc@sl01:/opt$ sudo tar -xzf openssl-1.0.2g.tar.gz
+	igorc@sl01:/opt$ sudo chown -R igorc\: openssl-1.0.2g
 
 Next we change to the source directory and create the openssl.ld file:
 
-		igorc@sl01:/opt$ cd openssl-1.0.2g/
-		igorc@sl01:~/openssl-1.0.2g$ vi openssl.ld
-		OPENSSL_1.0.0 {
-			global:
-			*;
-		};
+	igorc@sl01:/opt$ cd openssl-1.0.2g/
+	igorc@sl01:~/openssl-1.0.2g$ vi openssl.ld
+	OPENSSL_1.0.0 {
+		global:
+		*;
+	};
 
 and finally compile and install the software:
 
-		igorc@sl01:/opt/openssl-1.0.2g$ ./config --prefix=/opt/openssl zlib-dynamic shared -Wl,--version-script=/home/igorc/openssl-1.0.2g/openssl.ld -Wl,-Bsymbolic-functions
-		igorc@sl01:/opt/openssl-1.0.2g$ make depend
-		igorc@sl01:/opt/openssl-1.0.2g$ make all
-		igorc@sl01:/opt/openssl-1.0.2g$ sudo make install
+	igorc@sl01:/opt/openssl-1.0.2g$ ./config --prefix=/opt/openssl zlib-dynamic shared -Wl,--version-script=/home/igorc/openssl-1.0.2g/openssl.ld -Wl,-Bsymbolic-functions
+	igorc@sl01:/opt/openssl-1.0.2g$ make depend
+	igorc@sl01:/opt/openssl-1.0.2g$ make all
+	igorc@sl01:/opt/openssl-1.0.2g$ sudo make install
 
 This will set OpenSSL 1.0.2g under /opt/openssl directory:
 
-		igorc@sl01:/opt/openssl-1.0.2g$ ls -l /opt/openssl
-		total 16
-		drwxr-xr-x 2 root root 4096 Apr  2 19:18 bin
-		drwxr-xr-x 3 root root 4096 Apr  2 19:18 include
-		drwxr-xr-x 4 root root 4096 Apr  2 19:18 lib
-		drwxr-xr-x 6 root root 4096 Apr  2 19:18 ssl
+	igorc@sl01:/opt/openssl-1.0.2g$ ls -l /opt/openssl
+	total 16
+	drwxr-xr-x 2 root root 4096 Apr  2 19:18 bin
+	drwxr-xr-x 3 root root 4096 Apr  2 19:18 include
+	drwxr-xr-x 4 root root 4096 Apr  2 19:18 lib
+	drwxr-xr-x 6 root root 4096 Apr  2 19:18 ssl
 
 ### Java8
 
 One liner installation that we use in our config manager:
 
-		igorc@sl01:/opt$ sudo echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections && echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main" | sudo tee -a /etc/apt/sources.list && echo "deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main" | sudo tee -a /etc/apt/sources.list && sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys EEA14886 && sudo aptitude update && sudo aptitude install -y oracle-java8-installer && sudo aptitude install -y oracle-java8-set-default
+	igorc@sl01:/opt$ sudo echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections && echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main" | sudo tee -a /etc/apt/sources.list && echo "deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main" | sudo tee -a /etc/apt/sources.list && sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys EEA14886 && sudo aptitude update && sudo aptitude install -y oracle-java8-installer && sudo aptitude install -y oracle-java8-set-default
 
 This will add the needed Ubuntu ppa, install the latest Oracle 1.8 JDK and set it as default Java environment.
 
@@ -105,63 +105,63 @@ This will add the needed Ubuntu ppa, install the latest Oracle 1.8 JDK and set i
 
 Get and unpack the latest Tomcat9 release, alfa version v9.0.0.M4 at the moment of this writing, and setup tomcat user:
 
-		igorc@sl01:/opt$ sudo groupadd -r -g 501 tomcat9
-		igorc@sl01:/opt$ sudo useradd -r -c "Tomcat9 user" -s /bin/false -M -d /usr/share/tomcat9 -g 501 -u 501 -G www-data tomcat9
-		igorc@sl01:/opt$ sudo wget http://apache.uberglobalmirror.com/tomcat/tomcat-9/v9.0.0.M4/bin/apache-tomcat-9.0.0.M4.tar.gz
-		igorc@sl01:/opt$ sudo tar -xzf apache-tomcat-9.0.0.M4.tar.gz
-		igorc@sl01:/opt$ sudo mv apache-tomcat-9.0.0.M4 /usr/share/tomcat9
-		igorc@sl01:/opt$ sudo ln -sf /usr/share/tomcat9/logs /var/log/tomcat9
-		igorc@sl01:/opt$ sudo ln -sf /usr/share/tomcat9/work /var/cache/tomcat9
-		igorc@sl01:/opt$ sudo ln -sf /usr/share/tomcat9/conf /etc/tomcat9
+	igorc@sl01:/opt$ sudo groupadd -r -g 501 tomcat9
+	igorc@sl01:/opt$ sudo useradd -r -c "Tomcat9 user" -s /bin/false -M -d /usr/share/tomcat9 -g 501 -u 501 -G www-data tomcat9
+	igorc@sl01:/opt$ sudo wget http://apache.uberglobalmirror.com/tomcat/tomcat-9/v9.0.0.M4/bin/apache-tomcat-9.0.0.M4.tar.gz
+	igorc@sl01:/opt$ sudo tar -xzf apache-tomcat-9.0.0.M4.tar.gz
+	igorc@sl01:/opt$ sudo mv apache-tomcat-9.0.0.M4 /usr/share/tomcat9
+	igorc@sl01:/opt$ sudo ln -sf /usr/share/tomcat9/logs /var/log/tomcat9
+	igorc@sl01:/opt$ sudo ln -sf /usr/share/tomcat9/work /var/cache/tomcat9
+	igorc@sl01:/opt$ sudo ln -sf /usr/share/tomcat9/conf /etc/tomcat9
 
 #### TC-Native
 
 We install the needed packages first:
 
-		igorc@sl01:/opt$ sudo aptitude install libapr1-dev libssl-dev
+	igorc@sl01:/opt$ sudo aptitude install libapr1-dev libssl-dev
 
 and then we download and etract the tcnative source, xtract and build it against oopenssl-1.0.2g we installed previously:
 
-		igorc@sl01:/opt$ sudo wget http://apache.mirror.digitalpacific.com.au/tomcat/tomcat-connectors/native/1.2.5/source/tomcat-native-1.2.5-src.tar.gz
-		igorc@sl01:/opt$ sudo tar -xzf tomcat-native-1.2.5-src.tar.gz
-		igorc@sl01:/opt$ cd tomcat-native-1.2.5-src/native
-		igorc@sl01:/opt/tomcat-native-1.2.5-src/native$ ./configure --prefix=/usr --libdir=/usr/lib --with-apr=/usr/bin/apr-1-config --with-java-home=/usr/lib/jvm/java-8-oracle --with-ssl=/opt/openssl
-		igorc@sl01:/opt/tomcat-native-1.2.5-src/native$ make
-		igorc@sl01:/opt/tomcat-native-1.2.5-src/native$ sudo make install
+	igorc@sl01:/opt$ sudo wget http://apache.mirror.digitalpacific.com.au/tomcat/tomcat-connectors/native/1.2.5/source/tomcat-native-1.2.5-src.tar.gz
+	igorc@sl01:/opt$ sudo tar -xzf tomcat-native-1.2.5-src.tar.gz
+	igorc@sl01:/opt$ cd tomcat-native-1.2.5-src/native
+	igorc@sl01:/opt/tomcat-native-1.2.5-src/native$ ./configure --prefix=/usr --libdir=/usr/lib --with-apr=/usr/bin/apr-1-config --with-java-home=/usr/lib/jvm/java-8-oracle --with-ssl=/opt/openssl
+	igorc@sl01:/opt/tomcat-native-1.2.5-src/native$ make
+	igorc@sl01:/opt/tomcat-native-1.2.5-src/native$ sudo make install
 
 We check that tcnative is properly linked to the right openssl version (in case you have more than one installed):
 
-		igorc@sl01:/opt/tomcat-native-1.2.5-src/native$ ldd /usr/lib/libtcnative-1.so.0.2.5
-		linux-vdso.so.1 =>  (0x00007ffcd2ba5000)
-		libssl.so.1.0.0 => /opt/openssl/lib/libssl.so.1.0.0 (0x00007f67d06a1000)
-		libcrypto.so.1.0.0 => /opt/openssl/lib/libcrypto.so.1.0.0 (0x00007f67d0251000)
-		libapr-1.so.0 => /usr/lib/x86_64-linux-gnu/libapr-1.so.0 (0x00007f67d0020000)
-		libpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007f67cfe02000)
-		libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f67cfa3d000)
-		libdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 (0x00007f67cf839000)
-		libz.so.1 => /lib/x86_64-linux-gnu/libz.so.1 (0x00007f67cf620000)
-		libuuid.so.1 => /lib/x86_64-linux-gnu/libuuid.so.1 (0x00007f67cf41b000)
-		/lib64/ld-linux-x86-64.so.2 (0x00007f67d0b3e000)
+	igorc@sl01:/opt/tomcat-native-1.2.5-src/native$ ldd /usr/lib/libtcnative-1.so.0.2.5
+	linux-vdso.so.1 =>  (0x00007ffcd2ba5000)
+	libssl.so.1.0.0 => /opt/openssl/lib/libssl.so.1.0.0 (0x00007f67d06a1000)
+	libcrypto.so.1.0.0 => /opt/openssl/lib/libcrypto.so.1.0.0 (0x00007f67d0251000)
+	libapr-1.so.0 => /usr/lib/x86_64-linux-gnu/libapr-1.so.0 (0x00007f67d0020000)
+	libpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007f67cfe02000)
+	libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f67cfa3d000)
+	libdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 (0x00007f67cf839000)
+	libz.so.1 => /lib/x86_64-linux-gnu/libz.so.1 (0x00007f67cf620000)
+	libuuid.so.1 => /lib/x86_64-linux-gnu/libuuid.so.1 (0x00007f67cf41b000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007f67d0b3e000)
 
 #### Config and SSL setup
 
 I wanted to test the ECDSA certificate type and multi-certificate support in tomcat9. First create ECC cert and install it so tomcat can find it:
 
-		$ openssl req -new -x509 -nodes -newkey ec:<(openssl ecparam -name secp384r1) -keyout cert_ecdsa.key -out cert_ecdsa.crt -days 7200 -subj '/C=AU/ST=New South Wales/L=Sydney/O=My Corporation Ltd./OU=DevOps/CN=tomcat9.mydomain.com
-		$ sudo mkdir /etc/etc/ssl
-		$ sudo cp cert_ecdsa.key cert_ecdsa.crt /etc/tomcat9/ssl/
+	$ openssl req -new -x509 -nodes -newkey ec:<(openssl ecparam -name secp384r1) -keyout cert_ecdsa.key -out cert_ecdsa.crt -days 7200 -subj '/C=AU/ST=New South Wales/L=Sydney/O=My Corporation Ltd./OU=DevOps/CN=tomcat9.mydomain.com
+	$ sudo mkdir /etc/etc/ssl
+	$ sudo cp cert_ecdsa.key cert_ecdsa.crt /etc/tomcat9/ssl/
 
 Then created a standard RSA one too:
 
-		$ openssl genrsa -des3 -passout pass:x -out server.pass.key 2048
-		$ openssl rsa -passin pass:x -in server.pass.key -out server.key
-		$ rm server.pass.key
-		$ openssl req -new -key server.key -out server.csr -subj '/C=AU/ST=New South Wales/L=Sydney/O=My Corporation Ltd./OU=DevOps/CN=tomcat9.mydomain.com'
-		$ openssl x509 -req -days 7200 -in server.csr -signkey server.key -out server.crt
-		Signature ok
-		subject=/C=AU/ST=New South Wales/L=Sydney/O=My Corporation Ltd./OU=DevOps/CN=tomcat9.mydomain.com
-		Getting Private key
-		$ sudo cp server.key server.crt /etc/tomcat9/ssl/
+	$ openssl genrsa -des3 -passout pass:x -out server.pass.key 2048
+	$ openssl rsa -passin pass:x -in server.pass.key -out server.key
+	$ rm server.pass.key
+	$ openssl req -new -key server.key -out server.csr -subj '/C=AU/ST=New South Wales/L=Sydney/O=My Corporation Ltd./OU=DevOps/CN=tomcat9.mydomain.com'
+	$ openssl x509 -req -days 7200 -in server.csr -signkey server.key -out server.crt
+	Signature ok
+	subject=/C=AU/ST=New South Wales/L=Sydney/O=My Corporation Ltd./OU=DevOps/CN=tomcat9.mydomain.com
+	Getting Private key
+	$ sudo cp server.key server.crt /etc/tomcat9/ssl/
 
 Now we can configure Tomcat9's SSL/TLS connector with HTTP/2 support. Replace the default <Connector> section in the tomcat's server.xml file, in our case /etc/tomcat9/server.xml, with the one below:
 
@@ -183,21 +183,21 @@ Now we can configure Tomcat9's SSL/TLS connector with HTTP/2 support. Replace th
 
 Now we can start the server:
 
-		igorc@sl01:/opt$ sudo /usr/share/tomcat9/bin/startup.sh
-		Using CATALINA_BASE:   /usr/share/tomcat9
-		Using CATALINA_HOME:   /usr/share/tomcat9
-		Using CATALINA_TMPDIR: /usr/share/tomcat9/temp
-		Using JRE_HOME:        /usr
-		Using CLASSPATH:       /usr/share/tomcat9/bin/bootstrap.jar:/usr/share/tomcat9/bin/tomcat-juli.jar
-		Tomcat started.
+	igorc@sl01:/opt$ sudo /usr/share/tomcat9/bin/startup.sh
+	Using CATALINA_BASE:   /usr/share/tomcat9
+	Using CATALINA_HOME:   /usr/share/tomcat9
+	Using CATALINA_TMPDIR: /usr/share/tomcat9/temp
+	Using JRE_HOME:        /usr
+	Using CLASSPATH:       /usr/share/tomcat9/bin/bootstrap.jar:/usr/share/tomcat9/bin/tomcat-juli.jar
+	Tomcat started.
 
 and check for the features we need in the log file:
 
-		igorc@sl01:/opt$ sudo grep -E "AprLifecycleListener|h2" /var/log/tomcat9/catalina.out
-		02-Apr-2016 20:29:05.875 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Loaded APR based Apache Tomcat Native library 1.2.5 using APR version 1.5.1.
-		02-Apr-2016 20:29:05.875 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
-		02-Apr-2016 20:29:05.881 INFO [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL successfully initialized (OpenSSL 1.0.2g  1 Mar 2016)
-		02-Apr-2016 20:29:05.883 INFO [main] org.apache.coyote.http11.AbstractHttp11Protocol.configureUpgradeProtocol The ["https-apr-8443"] connector has been configured to support negotiation to [h2] via ALPN
+	igorc@sl01:/opt$ sudo grep -E "AprLifecycleListener|h2" /var/log/tomcat9/catalina.out
+	02-Apr-2016 20:29:05.875 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Loaded APR based Apache Tomcat Native library 1.2.5 using APR version 1.5.1.
+	02-Apr-2016 20:29:05.875 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+	02-Apr-2016 20:29:05.881 INFO [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL successfully initialized (OpenSSL 1.0.2g  1 Mar 2016)
+	02-Apr-2016 20:29:05.883 INFO [main] org.apache.coyote.http11.AbstractHttp11Protocol.configureUpgradeProtocol The ["https-apr-8443"] connector has been configured to support negotiation to [h2] via ALPN
 
 We can see the APR connector, the correct OpenSSL version and the h2 protocol available via ALPN (Application-Layer Protocol Negotiation).
 
@@ -209,97 +209,97 @@ To test the server I used the trusted curl. It came up it was little bit painful
 
 First the SPDY (Google extension which is now becoming obsolete with http2) support:
 
-		igorc@sl01:~$ git clone https://github.com/tatsuhiro-t/spdylay.git
-		igorc@sl01:~$ cd spdylay/
-		igorc@sl01:~$ autoreconf -i
-		igorc@sl01:~$ automake
-		igorc@sl01:~$ autoconf
-		igorc@sl01:~$ ./configure
-		igorc@sl01:~$ make -I/opt/openssl/include/
-		igorc@sl01:~$ sudo make install
-		igorc@sl01:~$ locate libspdylay.so.7
-		/opt/spdylay/lib/.libs/libspdylay.so.7
-		/opt/spdylay/lib/.libs/libspdylay.so.7.2.0
-		/usr/local/lib/libspdylay.so.7
-		/usr/local/lib/libspdylay.so.7.2.0
-		igorc@sl01:~$ sudo ln -s /usr/local/lib/libspdylay.so.7 /lib/x86_64-linux-gnu/libspdylay.so.7
-		igorc@sl01:~$ sudo ln -s /usr/local/lib/libspdylay.so.7.2.0 /lib/x86_64-linux-gnu/libspdylay.so.7.2.0
-		igorc@sl01:~$ sudo ldconfig
+	igorc@sl01:~$ git clone https://github.com/tatsuhiro-t/spdylay.git
+	igorc@sl01:~$ cd spdylay/
+	igorc@sl01:~$ autoreconf -i
+	igorc@sl01:~$ automake
+	igorc@sl01:~$ autoconf
+	igorc@sl01:~$ ./configure
+	igorc@sl01:~$ make -I/opt/openssl/include/
+	igorc@sl01:~$ sudo make install
+	igorc@sl01:~$ locate libspdylay.so.7
+	/opt/spdylay/lib/.libs/libspdylay.so.7
+	/opt/spdylay/lib/.libs/libspdylay.so.7.2.0
+	/usr/local/lib/libspdylay.so.7
+	/usr/local/lib/libspdylay.so.7.2.0
+	igorc@sl01:~$ sudo ln -s /usr/local/lib/libspdylay.so.7 /lib/x86_64-linux-gnu/libspdylay.so.7
+	igorc@sl01:~$ sudo ln -s /usr/local/lib/libspdylay.so.7.2.0 /lib/x86_64-linux-gnu/libspdylay.so.7.2.0
+	igorc@sl01:~$ sudo ldconfig
 
 Next is nghhtp2:
 
-		igorc@sl01:~$ git clone https://github.com/nghttp2/nghttp2.git
-		igorc@sl01:~$ cd nghttp2
-		igorc@sl01:~$ autoreconf -i
-		igorc@sl01:~$ automake
-		igorc@sl01:~$ autoconf
-		igorc@sl01:~$ OPENSSL_CFLAGS="-I/opt/openssl/include" OPENSSL_LIBS="-L/opt/openssl/lib -lssl -lcrypto -ldl" ./configure PYTHON=/usr/bin/python3
-		igorc@sl01:~$ make
-		igorc@sl01:~$ sudo make install
-		igorc@sl01:~$ sudo updatedb
-		igorc@sl01:~$ locate libnghttp2.so.14
-		/opt/nghttp2/lib/.libs/libnghttp2.so.14
-		/opt/nghttp2/lib/.libs/libnghttp2.so.14.6.0
-		/opt/nghttp2-1.9.1/lib/.libs/libnghttp2.so.14
-		/opt/nghttp2-1.9.1/lib/.libs/libnghttp2.so.14.6.0
-		/usr/local/lib/libnghttp2.so.14
-		/usr/local/lib/libnghttp2.so.14.6.0
-		igorc@sl01:~$ sudo ln -s /usr/local/lib/libnghttp2.so.14 /lib/x86_64-linux-gnu/libnghttp2.so.14
-		igorc@sl01:~$ sudo ln -s /usr/local/lib/libnghttp2.so.14.0.2 /lib/x86_64-linux-gnu/libnghttp2.so.14.0.2
-		igorc@sl01:~$ sudo ldconfig
+	igorc@sl01:~$ git clone https://github.com/nghttp2/nghttp2.git
+	igorc@sl01:~$ cd nghttp2
+	igorc@sl01:~$ autoreconf -i
+	igorc@sl01:~$ automake
+	igorc@sl01:~$ autoconf
+	igorc@sl01:~$ OPENSSL_CFLAGS="-I/opt/openssl/include" OPENSSL_LIBS="-L/opt/openssl/lib -lssl -lcrypto -ldl" ./configure PYTHON=/usr/bin/python3
+	igorc@sl01:~$ make
+	igorc@sl01:~$ sudo make install
+	igorc@sl01:~$ sudo updatedb
+	igorc@sl01:~$ locate libnghttp2.so.14
+	/opt/nghttp2/lib/.libs/libnghttp2.so.14
+	/opt/nghttp2/lib/.libs/libnghttp2.so.14.6.0
+	/opt/nghttp2-1.9.1/lib/.libs/libnghttp2.so.14
+	/opt/nghttp2-1.9.1/lib/.libs/libnghttp2.so.14.6.0
+	/usr/local/lib/libnghttp2.so.14
+	/usr/local/lib/libnghttp2.so.14.6.0
+	igorc@sl01:~$ sudo ln -s /usr/local/lib/libnghttp2.so.14 /lib/x86_64-linux-gnu/libnghttp2.so.14
+	igorc@sl01:~$ sudo ln -s /usr/local/lib/libnghttp2.so.14.0.2 /lib/x86_64-linux-gnu/libnghttp2.so.14.0.2
+	igorc@sl01:~$ sudo ldconfig
 
 Finally checking the versions installed:
 
-		igorc@sl01:~$ nghttp --version
-		nghttp nghttp2/1.10.0-DEV
-		igorc@sl01:~$ nghttpx --version
-		nghttpx nghttp2/1.10.0-DEV
-		igorc@sl01:~$ nghttpd --version
-		nghttpd nghttp2/1.10.0-DEV
-		igorc@sl01:~$ h2load --version
-		h2load nghttp2/1.10.0-DEV
+	igorc@sl01:~$ nghttp --version
+	nghttp nghttp2/1.10.0-DEV
+	igorc@sl01:~$ nghttpx --version
+	nghttpx nghttp2/1.10.0-DEV
+	igorc@sl01:~$ nghttpd --version
+	nghttpd nghttp2/1.10.0-DEV
+	igorc@sl01:~$ h2load --version
+	h2load nghttp2/1.10.0-DEV
 
 We can use this tool as SSL proxy if needed (nothing to do with the test, just mentioning):
 
-		$ sudo nghttpx \
-			--frontend=*,443 \
-			--backend=localhost,8080 \
-			--private-key-file=/path/to/key.key \
-			--certificate-file=/path/to/cert.crt
+	$ sudo nghttpx \
+		--frontend=*,443 \
+		--backend=localhost,8080 \
+		--private-key-file=/path/to/key.key \
+		--certificate-file=/path/to/cert.crt
 
 Or turn it into service:
 
-		$ sudo cp ~/nghttp2/contrib/nghttpx-init /etc/init.d/nghttpx
-		$ sudo service nghttpx restart
+	$ sudo cp ~/nghttp2/contrib/nghttpx-init /etc/init.d/nghttpx
+	$ sudo service nghttpx restart
 
 And finally CuRL:
 
-		igorc@sl01:~$ wget https://curl.haxx.se/download/curl-7.48.0.tar.gz
-		igorc@sl01:~$ tar -xzf curl-7.48.0.tar.gz
-		igorc@sl01:~$ cd curl-7.48.0/
-		igorc@sl01:~$ PKG_CONFIG_LIBDIR=/opt/openssl/lib/pkgconfig/ ./configure --with-ssl=/opt/openssl --with-nghttp2=/usr/local
-		igorc@sl01:~$ make && sudo make install
+	igorc@sl01:~$ wget https://curl.haxx.se/download/curl-7.48.0.tar.gz
+	igorc@sl01:~$ tar -xzf curl-7.48.0.tar.gz
+	igorc@sl01:~$ cd curl-7.48.0/
+	igorc@sl01:~$ PKG_CONFIG_LIBDIR=/opt/openssl/lib/pkgconfig/ ./configure --with-ssl=/opt/openssl --with-nghttp2=/usr/local
+	igorc@sl01:~$ make && sudo make install
 
 Now we set the correct binary and library paths so curl can find them:
 
-		igorc@sl01:~$ export PATH=/opt/openssl/bin:/usr/local/bin:igorc@sl01:~$PATH
-		igorc@sl01:~$ export LD_LIBRARY_PATH=/opt/openssl/lib:igorc@sl01:~$LD_LIBRARY_PATH
+	igorc@sl01:~$ export PATH=/opt/openssl/bin:/usr/local/bin:igorc@sl01:~$PATH
+	igorc@sl01:~$ export LD_LIBRARY_PATH=/opt/openssl/lib:igorc@sl01:~$LD_LIBRARY_PATH
 
 Check the openssl and curl binaries and their features:
 
-		igorc@sl01:~$ openssl version
-		OpenSSL 1.0.2g  1 Mar 2016
- 
-		igorc@sl01:~$ curl --version
-		curl 7.48.0 (x86_64-pc-linux-gnu) libcurl/7.48.0 OpenSSL/1.0.2g zlib/1.2.8 nghttp2/1.10.0-DEV
-		Protocols: dict file ftp ftps gopher http https imap imaps pop3 pop3s rtsp smb smbs smtp smtps telnet tftp
-		Features: IPv6 Largefile NTLM NTLM_WB SSL libz TLS-SRP HTTP2 UnixSockets
+	igorc@sl01:~$ openssl version
+	OpenSSL 1.0.2g  1 Mar 2016
+
+	igorc@sl01:~$ curl --version
+	curl 7.48.0 (x86_64-pc-linux-gnu) libcurl/7.48.0 OpenSSL/1.0.2g zlib/1.2.8 nghttp2/1.10.0-DEV
+	Protocols: dict file ftp ftps gopher http https imap imaps pop3 pop3s rtsp smb smbs smtp smtps telnet tftp
+	Features: IPv6 Largefile NTLM NTLM_WB SSL libz TLS-SRP HTTP2 UnixSockets
 
 From the above output we can confirm that curl has http2 support.
 
 With all this done we can run the test. I tested for both when we have only ECDSA/ECC certificateconfigured in Tomcat, since I wanted to see this cert in action:
 
-igorc@sl01:~/ssl$ curl --http2 -v -k -s -S -I https://localhost:8443/ -o /dev/null
+	igorc@sl01:~$ curl --http2 -v -k -s -S -I https://localhost:8443/ -o /dev/null
 	*   Trying 127.0.0.1...
 	* Connected to localhost (127.0.0.1) port 8443 (#0)
 	* ALPN, offering h2
@@ -358,10 +358,11 @@ igorc@sl01:~/ssl$ curl --http2 -v -k -s -S -I https://localhost:8443/ -o /dev/nu
 	< date:Mon, 04 Apr 2016 02:45:38 GMT
 	<
 	* Connection #0 to host localhost left intact
+	igorc@sl01:~$
 
 and when both cert types are configured as per our example above:
 
-	igorc@sl01:~/openssl-1.0.2g$ curl --http2 -v -k -s -S -I https://localhost:8443/ -o /dev/null
+	igorc@sl01:~$ curl --http2 -v -k -s -S -I https://localhost:8443/ -o /dev/null
 	*   Trying 127.0.0.1...
 	* Connected to localhost (127.0.0.1) port 8443 (#0)
 	* ALPN, offering h2
@@ -420,7 +421,7 @@ and when both cert types are configured as per our example above:
 	< date:Mon, 04 Apr 2016 02:21:07 GMT
 	<
 	* Connection #0 to host localhost left intact
-	igorc@sl01:~/openssl-1.0.2g$
+	igorc@sl01:~$
 
 in which case the server sends the RSA type (notice the different start and expire dates). In both cases we can see HTTP/2 connection being established.
 
