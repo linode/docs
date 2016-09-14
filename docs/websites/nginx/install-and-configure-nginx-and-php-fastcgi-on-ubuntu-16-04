@@ -2,10 +2,10 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Serve dynamic websites and applications with the lightweight nginx web server and PHP-FastCGI on Ubuntu 16.04 LTS'
-keywords: 'nginx,nginx ubuntu 16.04,nginx fastcgi,nginx php,php,fastcgi,ubuntu'
+description: 'Serve Dynamic Websites and Applications with the Lightweight Nginx Web Server and PHP-FastCGI on Ubuntu 16.04 LTS'
+keywords: 'nginx,ubuntu 16.04,fastcgi,php'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/nginx/php-fastcgi/ubuntu-12-04-precise-pangolin/']
+alias: ['web-servers/nginx/php-fastcgi/ubuntu-12-04-precise-pangolin/','install-and-configure-nginx-phpfastcgi-ubuntu-16-04/']
 modified: Tuesday, September 13, 2016
 modified_by:
   name: Edward Angert
@@ -18,7 +18,7 @@ external_resources:
  - '[Basic Ngnix Configuration](/docs/websites/nginx/basic-nginx-configuration)'
 ---
 
-The nginx web server is a fast, lightweight server designed to efficiently handle the needs of both low and high traffic websites. Although commonly used to serve static content, it's quite capable of handling dynamic pages as well. This guide will help you get nginx up and running with PHP via FastCGI on your Ubuntu 16.04 Linode.
+The nginx web server is a fast, lightweight server designed to efficiently handle the needs of both low- and high-traffic websites. Although commonly used to serve static content, it's quite capable of handling dynamic pages as well. This guide will help you install and run nginx with PHP via FastCGI on your Ubuntu 16.04 Linode.
 
 {: .note}
 >The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
