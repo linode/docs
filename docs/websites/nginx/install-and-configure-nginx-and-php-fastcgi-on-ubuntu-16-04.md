@@ -5,7 +5,7 @@ author:
 description: 'Serve Dynamic Websites and Applications with the Lightweight Nginx Web Server and PHP-FastCGI on Ubuntu 16.04 LTS'
 keywords: 'nginx,ubuntu 16.04,fastcgi,php'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/nginx/php-fastcgi/ubuntu-12-04-precise-pangolin/','install-and-configure-nginx-phpfastcgi-ubuntu-16-04/']
+alias: ['web-servers/nginx/php-fastcgi/ubuntu-12-04-precise-pangolin/']
 modified: Tuesday, September 13, 2016
 modified_by:
   name: Edward Angert
@@ -13,15 +13,15 @@ published: 'Friday, June 12th, 2015'
 title: 'Install and configure nginx and PHP-FastCGI on Ubuntu 16.04'
 external_resources:
  - '[The nginx Homepage](http://nginx.org/)'
- - '[FastCGI Project Homepage](http://www.fastcgi.com/)'
+ - '[FastCGI article on Wikipedia](https://en.wikipedia.org/wiki/FastCGI)'
  - '[PHP Documentation](http://www.php.net/docs.php)'
- - '[Basic Ngnix Configuration](/docs/websites/nginx/basic-nginx-configuration)'
+ - '[How to Configure Ngnix](/docs/websites/nginx/how-to-configure-nginx/)'
 ---
 
 The nginx web server is a fast, lightweight server designed to efficiently handle the needs of both low- and high-traffic websites. Although commonly used to serve static content, it's quite capable of handling dynamic pages as well. This guide will help you install and run nginx with PHP via FastCGI on your Ubuntu 16.04 Linode.
 
 {: .note}
->The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+>The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges, see our [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
 ## Before You Begin
 
@@ -34,7 +34,7 @@ The nginx web server is a fast, lightweight server designed to efficiently handl
 
     The first command shows your short hostname, and the second shows your fully qualified domain name (FQDN).
 
-- If you are new to Linux systems administration, you may want to consider the [introduction to Linux concepts](/docs/tools-reference/introduction-to-linux-concepts) guide and the [Linux administration basics](/docs/using-linux/administration-basics) guide.
+- If you are new to Linux systems administration, you may want to consider the [Introduction to Linux Concepts](/docs/tools-reference/introduction-to-linux-concepts) guide and the [Linux Administration Basics](/docs/using-linux/administration-basics) guide.
 
 - Update your system:
 
@@ -119,7 +119,7 @@ You may also want to edit the `http` block in `/etc/nginx/nginx.conf`, which app
 
 If you're planning to run applications that support file uploads (images, for example), the above configurations may expose you to a security risk by allowing arbitrary code execution. The short explanation for this behavior is that a properly crafted URI which ends in ".php", in combination with a malicious image file that actually contains valid PHP, can result in the image being processed as PHP.
 
-To mitigate this issue, you may wish to modify your configuration to include a `try_files` directive:
+To mitigate this issue, you may wish to modify your configuration to include a `try_files` directive as shown in this excerpt:
 
 {: .file}
 /etc/nginx/sites-available/example.com
