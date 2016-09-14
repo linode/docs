@@ -136,6 +136,13 @@ Here's how to swap IP addresses:
 
     If Network Helper is turned off *and* you've [configured a static IP address](/docs/networking/linux-static-ip-configuration), you'll need to update the configuration for the new addresses, or turn Network Helper on.
 
+	{: .note }
+	>
+	> If the IP is unreachable after a few minutes, you may need to notify the router directly of the IP change. To do so, run this command (the gateway address is listed in your Remote Acess tab under "Default Gateways").
+	>
+	>arping -c5 -I eth0 -b -A -s <IP_ADDRESS> <GATEWAY>
+	>ping -c5 -I <IP_ADDRESS> <GATEWAY>
+
 ## Adding Private IP Addresses
 
 The Linode Manager allows you to add private IP addresses for fast and secure connections between Linodes located in the same data center. Here's how to add a private IP address:
