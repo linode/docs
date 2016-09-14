@@ -15,7 +15,7 @@ deprecated: true
 ---
 
 {: .caution}
-> This guide is for legacy Xen Linodes. For newer Linodes, click [here](/docs/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel-with-kvm).
+> This guide is for legacy Xen Linodes. For newer Linodes, consult our guide on how to [Run a Distribution-Supplied Kernel on a KVM Linode](/docs/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel-with-kvm).
 
 PV-GRUB makes it possible to run your own kernel on your Linode, instead of using a host-supplied kernel. This is useful in cases where you'd like to enable specific kernel features, or you'd prefer to handle kernel upgrades directly.
 
