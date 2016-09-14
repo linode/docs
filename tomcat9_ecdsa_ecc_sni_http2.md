@@ -46,7 +46,7 @@ Nice things to have so I setup a test Tomcat9 server on Ubunut 14.04.
 
 4.  Please note the versions of the software installed were the current versions in the time of writing the article.
 
-{: .note}
+{:.note}
 >
 >This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
@@ -93,7 +93,7 @@ This will set OpenSSL 1.0.2g under /opt/openssl directory:
 
 ### Java8
 
-One liner installation that we use in our config manager:
+One liner installation:
 
 	igorc@sl01:/opt$ sudo echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections && echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main" | sudo tee -a /etc/apt/sources.list && echo "deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main" | sudo tee -a /etc/apt/sources.list && sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys EEA14886 && sudo aptitude update && sudo aptitude install -y oracle-java8-installer && sudo aptitude install -y oracle-java8-set-default
 
