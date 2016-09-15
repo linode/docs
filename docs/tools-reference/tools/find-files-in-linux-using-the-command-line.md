@@ -5,18 +5,18 @@ author:
 description: Use the Find command from the Linux command line to locate files in a file system
 keywords: 'find command,linux,command line'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['linux-tools/common-commands/find/','tools-reference/tools/filter-file-systems-with-the-find-command/','how-to-find-files-in-linux-command-line/']
+alias: ['linux-tools/common-commands/find/','tools-reference/tools/filter-file-systems-with-the-find-command/']
 modified: Thursday, September 15, 2016
 modified_by: 
   name: Edward Angert
 published: 'Monday, October 25th, 2010'
-title: How to Use the Linux Command Line to Find Files in a File System
+title: Find Files in Linux, Using the Command Line
 external_resources:
 - '[Online man Pages](http://man7.org/linux/man-pages/man1/find.1.html)'
 - '[ExplainShell](http://explainshell.com/explain/1/find)'
 ---
 
-`Find` is a command for recursively filtering objects in the file system based on a simple conditional mechanism. Use `find` to search for a file or directory on your file system. Using the `-exec` flag, files can be found and immediately [processed within the same command](#how-to-find-and-process-files-using-the-find-command).
+`find` is a command for recursively filtering objects in the file system based on a simple conditional mechanism. Use `find` to search for a file or directory on your file system. Using the `-exec` flag, files can be found and immediately [processed within the same command](#how-to-find-and-process-files-using-the-find-command).
 
 ## Find Linux Files by Name or Extension
 Use `find` from the command line to locate a specific file by name or extension.
@@ -26,29 +26,29 @@ The following example searches for `*.err` files in the `/home/username/` direct
 
 ## Common Linux Find Commands and Syntax
 
-`Find` expressions take the following form:
+`find` expressions take the following form:
 
     find options starting/path expression
 
 * The `options` attribute will control the behavior and optimization method of the `find` process.
-* The `starting/path` attriute will define the top level directory where `find` begins filtering.
+* The `starting/path` attribute will define the top level directory where `find` begins filtering.
 * The `expression` attribute controls the tests that search the directory hierarchy to produce output.
 
 Consider the following example command:
 
     find -O3 -L /var/www/ -name "*.html"
 
-This command enables the maximum optimization level (-03) and allows `find` to follow symbolic links (`-L`). The command`find` searches the entire directory tree beneath `/var/www/` for files that end with `.html`.
+This command enables the maximum optimization level (-03) and allows `find` to follow symbolic links (`-L`). `find` searches the entire directory tree beneath `/var/www/` for files that end with `.html`.
 
 ###Basic Examples
 
 {: .table .table-striped .table-bordered}
 | Command                                              | Description                                                                     |
 |------------------------------------------------------|:--------------------------------------------------------------------------------|
-| `find . -name testfile.txt`                          | find a file called testfile.txt in current and sub-directories.                  |
-| `find /home -name '*.jpg`                            | find all `.jpg` files in the `/home` and sub-directories.                        |
-| `find . -type f -empty`                              | find an empty file within the current directory.                                 |
-| `find /home -user exampleuser -mtime 7 -iname ".db"` | find all `.db` files (ignoring text case) modified in the last 7 days by a user named exampleuser.  |
+| `find . -name testfile.txt`                          | Find a file called testfile.txt in current and sub-directories.                  |
+| `find /home -name '*.jpg`                            | Find all `.jpg` files in the `/home` and sub-directories.                        |
+| `find . -type f -empty`                              | Find an empty file within the current directory.                                 |
+| `find /home -user exampleuser -mtime 7 -iname ".db"` | Find all `.db` files (ignoring text case) modified in the last 7 days by a user named exampleuser.  |
 |------------------------------------------------------|---------------------------------------------------------------------------------|
 
     
@@ -56,21 +56,21 @@ This command enables the maximum optimization level (-03) and allows `find` to f
 
 The default configuration for `find` will ignore symbolic links (shortcut files). If you want `find` to follow and return symbolic links, you can add the `-L` option to the command, as shown in the example above.
 
-`Find` optimizes its filtering strategy to increase performance. Three user-selectable optimization levels are specified as `-O1`, `-O2`, and `-O3`. The `-O1` optimization is the default and forces `find` to filter based on file name before running all other tests.
+`find` optimizes its filtering strategy to increase performance. Three user-selectable optimization levels are specified as `-O1`, `-O2`, and `-O3`. The `-O1` optimization is the default and forces `find` to filter based on filename before running all other tests.
 
 Optimization at the `-O2` level prioritizes file name filters, as in `-O1`, and then runs all file-type filtering before proceeding with other more resource-intensive conditions. Level `-O3` optimization allows `find` to perform the most severe optimization and reorders all tests based on their relative expense and the likelihood of their success.
 
 {: .table .table-striped .table-bordered}
 | Command     | Description                                                                                               |
 |------------:|:----------------------------------------------------------------------------------------------------------|
-| `-01`       | (default) filter based on file name first.                                                                 |
-| `-02`       | file name first, then file-type.                                                                           |
-| `-03`       | allow `find` to automatically re-order the search based on efficient use of resources and likelihood. of success |
-| `-maxdepth X` | search current directory as well as all sub-directories X levels deep.                                   |
-| `-iname`    | search without regard for text case.                                                                       |
-| `-not`      | return only results that do not match the test case.                                                       |
-| `-type f`   | search for files.                                                                                          |
-| `-type d`   | search for directories.                                                                                    |
+| `-01`       | (Default) filter based on file name first.                                                                 |
+| `-02`       | File name first, then file-type.                                                                           |
+| `-03`       | Allow `find` to automatically re-order the search based on efficient use of resources and likelihood. of success |
+| `-maxdepth X` | Search current directory as well as all sub-directories X levels deep.                                   |
+| `-iname`    | Search without regard for text case.                                                                       |
+| `-not`      | Return only results that do not match the test case.                                                       |
+| `-type f`   | Search for files.                                                                                          |
+| `-type d`   | Search for directories.                                                                                    |
 |-------------|-----------------------------------------------------------------------------------------------------------|
 
 ## Find Files by Modification Time
@@ -88,7 +88,7 @@ The `find` command is only able to filter the directory hierarchy based on a fil
 
     find . -type f -exec grep "example" '{}' \; -print
 
-This searches every object in the current directory hierarchy (i.e., `.`) that is a file (i.e., `-type f`) and then runs the command `grep "example"` for every file that satisfies the conditions. The files that match are printed on the screen (i.e., `-print`). The curly braces (i.e., `{}`) are a placeholder for the `find` match results. The `{}` are enclosed in single quotes (`'`) to avoid handing `grep` a malformed file name. The `-exec` command is terminated with a semicolon (i.e., `;`), which should be escaped (i.e., `\;`) to avoid interpretation by the shell.
+This searches every object in the current directory hierarchy (`.`) that is a file (`-type f`) and then runs the command `grep "example"` for every file that satisfies the conditions. The files that match are printed on the screen (`-print`). The curly braces (`{}`) are a placeholder for the `find` match results. The `{}` are enclosed in single quotes (`'`) to avoid handing `grep` a malformed file name. The `-exec` command is terminated with a semicolon (`;`), which should be escaped (`\;`) to avoid interpretation by the shell.
 
 Before the implementation of the `-exec` option, this kind of command might have used the `xargs` command to generate a similar output:
 
