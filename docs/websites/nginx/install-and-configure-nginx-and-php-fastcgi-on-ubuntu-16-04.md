@@ -48,7 +48,7 @@ The nginx web server is a fast, lightweight server designed to efficiently handl
 
 Install the nginx web server and PHP dependencies:
 
-    apt-get install nginx php7.0-cli php7.0-cgi php7.0-fpm
+    sudo apt-get install nginx php7.0-cli php7.0-cgi php7.0-fpm
 
 ## Configure nginx Virtual Hosting and the PHP Processor
 
@@ -64,7 +64,7 @@ Nginx uses `server` directives to specify name-based virtual hosts. Nginx calls 
 
     Alternatively, you may manually copy the last section from `/etc/nginx/sites-available/default` into a new file, `/etc/nginx/sites-available/example.com`. You will have to manually remove the `#` in front of the relevant lines.
 
-2.  You should now have the following server block in the nginx virtual host configuration:
+2.  You should now have the following server block in the nginx virtual host configuration. Replace all instances of `example.com` with your domain, modify the **root** path as shown below, and add the `location ~ \.php$` block:
 
     {: .file }
     /etc/nginx/sites-available/example.com
@@ -127,7 +127,7 @@ To mitigate this issue, you may wish to modify your configuration to include a `
     location ~ \.php$ {
         try_files $uri =404;
         include /etc/nginx/fastcgi_params;
-        fastcgi_pass unix:/var/run/php-fastcgi/php-fastcgi.socket;
+        fastcgi_pass unix:/run/php/php7.0-fpm.sock;
         fastcgi_index index.php;
         fastcgi_param SCRIPT_FILENAME /var/www/html/example.com/public_html/$fastcgi_script_name;
     }
@@ -141,7 +141,7 @@ Additionally, it's a good idea to secure any upload directories your application
     location ~ \.php$ {
         include /etc/nginx/fastcgi_params;
         if ($uri !~ "^/images/") {
-            fastcgi_pass unix:/var/run/php-fastcgi/php-fastcgi.socket;
+            fastcgi_pass unix:/run/php/php7.0-fpm.sock;
         }
         fastcgi_index index.php;
         fastcgi_param SCRIPT_FILENAME /var/www/html/example.com/public_html/$fastcgi_script_name;
