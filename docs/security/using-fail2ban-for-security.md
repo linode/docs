@@ -29,7 +29,6 @@ Fail2ban is primarily focused on SSH attacks, although it can be further configu
 
 Follow the [Getting Started](/docs/getting-started) guide to configure your basic server. You may also want to review the [Securing Your Server](/docs/security/securing-your-server) guide before beginning.
 
-
 ### CentOS 7
 
 1.  Ensure your system is up to date:
@@ -72,7 +71,6 @@ Follow the [Getting Started](/docs/getting-started) guide to configure your basi
 
         apt-get install sendmail-bin sendmail
 
-
 ### Fedora
 
 1.  Update your system:
@@ -93,7 +91,6 @@ Follow the [Getting Started](/docs/getting-started) guide to configure your basi
         systemctl enable fail2ban
         systemctl start sendmail
         systemctl enable sendmail
-
 
 ### Ubuntu
 
@@ -126,12 +123,11 @@ Fail2ban reads its configuration files so that all `.conf` files are read first 
 
         cd /etc/fail2ban
 
-2.  The file `fail2ban.conf` contains the default configuration variables for Fail2ban logging, the socket used to communicate with the daemon, and the location of the PID file. Changes should be made in a separate file, `fail2ban.local`, which overrides `fail2ban.conf`. If you want, you can copy `fail2ban.conf` to `fail2ban.conf`, commenting out all variables, and then uncomment only the options you want to modify:
+2.  The file `fail2ban.conf` contains the default configuration variables for Fail2ban logging, the socket used to communicate with the daemon, and the location of the PID file. Changes should be made in a separate file, `fail2ban.local`, definitions in which override `fail2ban.conf`. If you want, you can copy `fail2ban.conf` to `fail2ban.conf`, commenting out all variables, and then uncomment only the options you want to modify:
 
-        cp fail2ban.conf fail2ban.local
-        sed -i 's/^/#/g' fail2ban.local
+        sed 's/\(^[[:alpha:]]\)/# \1/' fail2ban.conf | sudo tee fail2ban.local 1&> /dev/null
 
-    Otherwise, create a blank `fail2ban.local` file, and manually add the options you wish to modify.
+    Otherwise, create a blank `fail2ban.local` file, and manually add the options (with corresponding section titles) you wish to modify.
 
 3.  In `fail2ban.local` add or uncomment and edit the values to match your desired configuration. The values that can be changed within the `fail2ban.local` file are:
 
@@ -144,7 +140,9 @@ Fail2ban reads its configuration files so that all `.conf` files are read first 
 
 1.  Return to `/etc/fail2ban` directory and copy the `jail.conf` file to `jail.local`:
 
-        cp jail.conf jail.local
+        sed 's/\(^[[:alpha:]]\)/# \1/' jail.conf | sudo tee jail.local 1&> /dev/null
+
+    This will create a copy of `jail.conf` with all the directives commented out. To overwrite a setting, uncomment and modify it in `jail.local`.
 
 2.  **If using CentOS or Fedora** open `jail.local` and set the `backend` to `systemd`. This is not necessary on Debian 8, even though it is a SystemD system.
 
@@ -173,7 +171,6 @@ If you wish to whitelist IPs only for certain jails, this can be done with the `
 
     fail2ban-client set JAIL addignoreip 123.45.67.89   
 
-
 #### Ban Time and Retry Amount
 
 The `bantime`, `findtime`, and `maxretry` then need to be set. These are the values that define the circumstances and the length of time of a ban.
@@ -195,7 +192,6 @@ The `bantime`, `findtime`, and `maxretry` then need to be set. These are the val
 -   `findtime`: The length of time between login attempts before a ban is set. For example, if Fail2ban is set to ban an IP after five (5) failed log-in attempts, those 5 attempts must occur within the set 10-minute `findtime` limit. The `findtime` value should be a set number of seconds.
 
 -   `maxretry`: How many attempts can be made to access the server from a single IP before a ban is imposed. The default is set to 3.
-
 
 #### Email Alerts
 
@@ -241,7 +237,6 @@ An average jail configuration will resemble the following:
 {: .note}
 >
 >Jails can also be configured as individual `.conf` files placed in the `jail.d` directory. The format will remain the same.
-
 
 ## Failregexs
 
@@ -341,7 +336,6 @@ With the failregex created, it then needs to be added to a filter.
     This will use the default ban and email action. Other actions can be defined by adding an `action =` line.
     
     Save and exit, then restart Fail2ban.
-
 
 ## Using the Fail2ban Client
 
