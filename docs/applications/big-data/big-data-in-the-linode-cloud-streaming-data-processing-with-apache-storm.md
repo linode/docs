@@ -34,7 +34,6 @@ This guide explains how to create Storm clusters on the Linode cloud using a set
 
 ![Architecture](/docs/assets/storm-architecture-650px.png)
 
-
 ![Storm Topology and Deployment](/docs/assets/storm-topology.png)
 
 The application flow begins, from the client side, with the Storm client, which provides a user interface. This contacts a *Nimbus* node, which is central to the operation of the Storm cluster. The Nimbus node gets the current state of the cluster, including a list of the supervisor nodes and *topologies* from the Zookeeper cluster. The Storm cluster's supervisor nodes constantly update their states to the Zookeeper nodes, which ensure that the system remains synced.
@@ -758,7 +757,7 @@ In this section, you will learn how to create a new Storm cluster in which every
     
         Storm cluster successfully created
 
-    Details of the created cluster can be viewed using `describe` command:
+    Details of the created cluster can be viewed using the `describe` command:
 
         ./storm-cluster-linode.sh describe storm-cluster1
 
@@ -896,6 +895,10 @@ When performing the steps in this section, you should have `clustermgr` authoriz
         2076 [main] INFO  backtype.storm.StormSubmitter - Finished submitting topology: wordcount 
 
 5.  Verify that the topology is running correctly by opening the Storm UI in a web browser. The "wordcount" topology should be visible in the **Topology Summary** section.
+
+The above instructions will use the sample "wordcount" topology, which doesn't provide a visible output to show the results of the operations it is running. However, this topology simply counts words in generated sentences, so the number under "Emitted" is the actual word count.
+
+For a more practical test, feel free to download another topology, such as the [Reddit Comment Sentiment Analysis Topology](https://github.com/pathbreak/reddit-sentiment-storm), which outputs a basic list of threads within given subreddits, based upon which have the most positive and negative comments over time. If you do choose to download a third party topology, be sure it is from a trustworthy source.
 
 ## Start a New Topology
 
