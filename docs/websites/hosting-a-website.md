@@ -32,8 +32,9 @@ Hosting a website starts with installing a *web server*, an application on your 
 
 ### Install Apache
 
-Install Apache on your Linode:
+Check for and install all system updates, and install Apache on your Linode:
 
+    sudo apt-get update && sudo apt-get upgrade
     sudo apt-get install apache2
 
 Your Linode will download, install, and start the Apache web server.
