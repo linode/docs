@@ -257,7 +257,7 @@ Now you have a new database that you can use for your website. If you don't need
 
 If you have an existing website, you may want to import an existing database in to MySQL. It's easy, and it allows you to have an established website up and running on your Linode in a matter of minutes. 
 
-1.  Upload the database file to your Linode. See the instructions in the section [Upload Files](#upload-files).
+1.  Upload the database file to your Linode. See the instructions in the [Upload Files](#upload-files) section.
 
 2.  Import the database, replacing `username` with your MySQL username and `database_name` with the database name you want to import to. You will be prompted for your MySQL password:
 
@@ -290,7 +290,7 @@ After you install PHP, you'll need to enable logging and tune PHP for better per
 
         sudo nano /etc/php5/apache2/php.ini
 
-2.  Verify that the following values are set. All of the lines listed below should be uncommented. Be sure to remove any semi-colons (;) at the beginning of the lines.
+2.  Verify that the following values are set. All of the lines listed below should be uncommented. Be sure to remove any semi-colons (`;`) at the beginning of the lines.
 
     {: .file-excerpt}
     /etc/php5/apache2/php.ini
@@ -328,7 +328,7 @@ You've successfully installed Apache, MySQL, and PHP. Now it's time to upload a 
 
 1.  If you haven't done so already, download and install an SFTP capable client on your computer. We recommend using the [FileZilla](/docs/tools-reference/file-transfer/filezilla) SFTP client.
 2.  Follow the instructions in the guides listed above to connect to your Linode.
-3.  Upload your website's files to the `/var/www/example.com/public_html` directory. Replace `example.com` with your domain name.
+3.  Upload your website's files to the `/var/www/html/example.com/public_html` directory. Replace `example.com` with your domain name.
 
     {: .note }
     >

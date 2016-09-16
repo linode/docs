@@ -83,31 +83,31 @@ The next step is to build the software environment needed for your site to funct
 
 [LAMP](https://en.wikipedia.org/wiki/LAMP_%28software_bundle%29) stands for the following:
 
-*   **Linux:** Linode offers a LAMP StackScript for CentOS, Debian and Ubuntu. Which Linux distribution you choose is up to you. While there will be no discernible difference to your site's users, each distro has its own pros and cons.
-*   **Apache:** A web server that handles HTTP and HTTPS internet traffic.
-*   **MySQL:** A database server.
-*   **PHP:** A software language that lets you have dynamic website content.
+*  **Linux:** Linode offers a LAMP StackScript for CentOS, Debian and Ubuntu. Which Linux distribution you choose is up to you. While there will be no discernible difference to your site's users, each distro has its own pros and cons.
+*  **Apache:** A web server that handles HTTP and HTTPS internet traffic.
+*  **MySQL:** A database server.
+*  **PHP:** A software language that lets you have dynamic website content.
 
-1.  After you select a data center for your Linode, you'll be prompted to deploy a *Linux distribution*. Select the option to **Deploy using StackScripts**.
+1.  After you select a data center for your Linode, you'll be prompted to deploy a *Linux distribution*. Select the option to **Deploy using StackScripts**:
 
-    [![Deploy with StackScripts.](/docs/assets/1436-stackscripts_deploywith_sm.png)](/docs/assets/1420-stackscripts_deploywith.png)
+    [![Deploy with StackScripts](/docs/assets/1436-stackscripts_deploywith_sm.png)](/docs/assets/1420-stackscripts_deploywith.png)
 
-2.  Select **linode/LAMP Stack**.
+2.  Select **linode/LAMP Stack**:
 
-    [![Choose the LAMP StackScript.](/docs/assets/1440-stackscripts_lamp_sm.png)](/docs/assets/1423-stackscripts_lamp.png)
+    [![Choose the LAMP StackScript](/docs/assets/1440-stackscripts_lamp_sm.png)](/docs/assets/1423-stackscripts_lamp.png)
 
 3.  Fill in the requested details. The example given is for a new Drupal site:
 
     [![Fill in the details as listed below.](/docs/assets/1438-stackscripts_lamp_drupal_sm.png)](/docs/assets/1422-stackscripts_lamp_drupal.png)
 
-    *   MySQL root Password: Enter a strong password and make note of it. This will be the highest-level password for your database.
-    *   Create Database: Enter a name for your database, if desired.
-    *   Create MySQL User: You should create a secondary user for your database so you're not working in it as the DB's root user.
-    *   MySQL User's Password: This is the password for your new database user.
-    *   Distribution: Choose your preferred Linux distro. If you are relatively new to Linux, the newest Ubuntu LTS is a good start because it has five-year release cycles and widely available support.
-    *   Deployment Disk Size: Leave the default setting.
-    *   Swap Disk: Leave the default setting.
-    *   Root password: Not to be confused with the MySQL root user's password, this root password is the master key to your Linode. You want a strong password here, and ideally, to later remove password access to your Linode in exchange for [SSH key authentication](/docs/security/securing-your-server#using-ssh-key-pair-authentication).
+    *  MySQL root Password: Enter a strong password and make note of it. This will be the highest-level password for your database.
+    *  Create Database: Enter a name for your database, if desired.
+    *  Create MySQL User: You should create a secondary user for your database so you're not working in it as the DB's root user.
+    *  MySQL User's Password: This is the password for your new database user.
+    *  Distribution: Choose your preferred Linux distro. If you are relatively new to Linux, the newest Ubuntu LTS is a good start because it has five-year release cycles and widely available support.
+    *  Deployment Disk Size: Leave the default setting.
+    *  Swap Disk: Leave the default setting.
+    *  Root password: Not to be confused with the MySQL root user's password, this root password is the master key to your Linode. You want a strong password here, and ideally, to later remove password access to your Linode in exchange for [SSH key authentication](/docs/security/securing-your-server#using-ssh-key-pair-authentication).
 
 4.  Click the **Deploy** button. You will be redirected to your Linode's **Dashboard**. Watch the **Host Job Queue**. You should see a number of jobs in progress.
 
@@ -117,13 +117,13 @@ The next step is to build the software environment needed for your site to funct
 
 6.  To verify that LAMP installed correctly, check that a basic website framework has been added to your server. To do that, your IP address must be used since your domain isn't pointing to Linode yet.
 
-    To find your IP, go to the **Remote Access** tab. Your IP will be in both the **SSH Access** and **Public IPs** sections. i
+    To find your IP, go to the **Remote Access** tab. Your IP will be in both the **SSH Access** and **Public IPs** sections:
 
-    [![Locate your IP address.](/docs/assets/1712-remote_access_ip_single_small.png)](/docs/assets/1713-remote_access_ip_single.png)
+    [![Locate your IP address](/docs/assets/1712-remote_access_ip_single_small.png)](/docs/assets/1713-remote_access_ip_single.png)
 
-7.  Open a new browser tab and paste the IP address into the address bar. You should see Apache's test webpage.
+7.  Open a new browser tab and paste the IP address into the address bar. You should see Apache's test webpage:
 
-    ![Apache test page.](/docs/assets/apache2-test-page.png)
+    ![Apache test page](/docs/assets/apache2-test-page.png)
 
 8.  Install Additional Software
 
@@ -137,13 +137,13 @@ The next step is to build the software environment needed for your site to funct
 
 Once you've installed all the underlying software for your Linode, you can upload your website to the new server. This will replace the Apache test page shown earlier with your actual website.
 
-1.  Follow [these steps](/docs/websites/hosting-a-website/#configuring-name-based-virtual-hosts) to configure name-based virtual hosts for Apache on your Linode.
+1.  Follow the steps in our [hosting a website](/docs/websites/hosting-a-website/#configure-name-based-virtual-hosts) guide to configure name-based virtual hosts for Apache on your Linode.
 
-2.  Upload your website's files *from your local computer* to `/var/www/example.com/public_html` *on your Linode*. The process to do this is similar to how you downloaded your site's files to your local computer when creating a backup from your shared host. The only differences are the source and destination of the transfer.
+2.  Upload your website's files *from your local computer* to `/var/www/html/example.com/public_html` *on your Linode*. The process to do this is similar to how you downloaded your site's files to your local computer when creating a backup from your shared host. The only differences are the source and destination of the transfer.
 
     For example, to *upload* to your Linode using SCP on Linux or OS X:
 
-        scp ~/example.com example_user@server_ip_address:/home/example.com
+        scp ~/example.com example_user@server_ip_address:/var/www/html/example.com/public_html
 
     {: .note}
     >
@@ -165,16 +165,16 @@ A Linode can run both your web server and an [email server](/docs/mailserver) fo
 
 The last step in your Linode migration is to point your domain at your Linode's IP address. If you decided to lower your TTL, make sure you've waited out the original time period.
 
-1.  Follow [these instructions](/docs/networking/dns/dns-manager-overview#add-a-domain-zone) to create DNS records at Linode for your domain.
+1.  Follow our instructions on [adding a domain zone](/docs/networking/dns/dns-manager-overview#add-a-domain-zone) to create DNS records at Linode for your domain.
 
 2.  If you use a third-party email service, edit the default MX records.
 
 3.  Log in to your domain registrar's control panel and update the nameservers to use Linode's:
-    *   ns1.linode.com
-    *   ns2.linode.com
-    *   ns3.linode.com
-    *   ns4.linode.com
-    *   ns5.linode.com
+    *  ns1.linode.com
+    *  ns2.linode.com
+    *  ns3.linode.com
+    *  ns4.linode.com
+    *  ns5.linode.com
 
 4.  Wait five minutes for the domain to propagate. If you did not lower your TTL first, this can take up to 48 hours.
 
