@@ -72,7 +72,7 @@ Turn off all the **Filesystem/Boot Helpers**. The rest of the settings can be le
 
 1.  From the Linode Manager, boot your Linode into [rescue mode](https://www.linode.com/docs/troubleshooting/rescue-and-rebuild), with your boot disk image as `/dev/sda`, your root disk image as `/dev/sdb`, and your swap as /`dev/sdc`.
 
-2.  Once the Linode has booted, connect to it via Lish. If you are not familiar with Lish, there is a simple web interface for it located under the **Remote Access** in the Linode Manager.
+2.  Once the Linode has booted, connect to it via Lish. If you are not familiar with Lish, there is a simple web interface for it located under the **Remote Access** tab in the Linode Manager.
 
 ### Mount Drives
 
@@ -108,7 +108,7 @@ Turn off all the **Filesystem/Boot Helpers**. The rest of the settings can be le
 
 5.  Perform the initial distro installation. This will use the latest stable build of Alpine:
 
-        ./sbin/apk.static --repository http://nl.alpinelinux.org/alpine/latest-stable/main/ --update-cache --allow-untrusted --root /alpine --initdb add alpine-base alpine-mirrors
+        ./sbin/apk.static --repository https://nl.alpinelinux.org/alpine/latest-stable/main/ --update-cache --allow-untrusted --root /alpine --initdb add alpine-base alpine-mirrors
 
     This should output a series of installation messages, followed by a message showing how many packages were installed and their sizes.
 
