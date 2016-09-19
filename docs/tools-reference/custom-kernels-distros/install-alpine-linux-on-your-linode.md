@@ -21,15 +21,15 @@ external_resources:
 <hr>
 
 [Alpine Linux](http://www.alpinelinux.org/) is a small, security-oriented Linux distro.
-It is regularly updated with security patches, and runs on the [grsecurity](https://grsecurity.net/) kernel. All binaries are statically linked and built against [musl libc](http://www.musl-libc.org/intro.html).
+It's regularly updated with security patches, and runs on the [grsecurity](https://grsecurity.net/) kernel. All binaries are statically linked and built against [musl libc](http://www.musl-libc.org/intro.html).
 
 ## Before You Begin
 
-1.  Familiarize yourself with [Lish](https://www.linode.com/docs/networking/using-the-linode-shell-lish), as most of this guide will require an out-of-band connection.
+1.  Familiarize yourself with [Lish](/docs/networking/using-the-linode-shell-lish), as most of this guide will require an out-of-band connection.
 
 2.  Back up *all* data on the images on which you intend to install Alpine. Installing Alpine in this manner will destroy all existing data on the disk images you install it on.
 
-3.  The initial portion of this guide will involve creating the disk images, so you make sure you have plenty of free space for them. A minimal installation of Alpine will require less than 1 GB, but depending on your data storage and software needs, you will probably want to allow for more.
+3.  The initial portion of this guide involves creating the disk images, so you make sure you have plenty of free space for them. A minimal installation of Alpine requires less than 1 GB, but depending on your data storage and software needs, you may want to allow for more.
 
 4.  This guide assumes a consistent present working directory, meaning all commands should be run from the same directory. In most cases, it will be `/alpine` or a chroot of said directory.
 
@@ -42,9 +42,9 @@ It is regularly updated with security patches, and runs on the [grsecurity](http
 
 In this section, we'll create the disk images necessary to install Alpine Linux. Although it is not strictly necessary, giving each disk a descriptive name upon creation will make it easier to keep track of its role in the system.
 
-1.  Log in to the [Linode Manager](https://manager.linode.com/linodes/) and select the Linode you will be installing Alpine Linux on.
+1.  Log in to the [Linode Manager](https://manager.linode.com/linodes/) and select the Linode to install Alpine Linux on.
 
-2.  Create your boot disk image by selecting **Create a new Disk** under the Disks section. The size should be ~128-256 MB, and the type should be **ext4**.
+2.  Create your boot disk image by selecting **Create a new Disk** under the Disks section. The size should be between 128 and 256 MB, and the type should be **ext4**.
 
     {: .note}
     >
@@ -56,7 +56,7 @@ In this section, we'll create the disk images necessary to install Alpine Linux.
 
     {: .note}
     >
-    > ~256-512 MB of swap is a good estimate. Many sources recommend much more than this, but a new installation of Alpine will use less than 50 MB of RAM when fully booted.
+    > Between 256 and 512 MB of swap is a good estimate. Many sources recommend much more than this, but a new installation of Alpine will use less than 50 MB of RAM when fully booted.
 
 ### Configuration Profile
 
@@ -70,7 +70,7 @@ Turn off all the **Filesystem/Boot Helpers**. The rest of the settings can be le
 
 ### Boot into Rescue Mode
 
-1.  From the Linode Manager, boot your Linode into [rescue mode](https://www.linode.com/docs/troubleshooting/rescue-and-rebuild), with your boot disk image as `/dev/sda`, your root disk image as `/dev/sdb`, and your swap as /`dev/sdc`.
+1.  From the Linode Manager, boot your Linode into [Rescue Mode](/docs/troubleshooting/rescue-and-rebuild), with your boot disk image as `/dev/sda`, your root disk image as `/dev/sdb`, and your swap as /`dev/sdc`.
 
 2.  Once the Linode has booted, connect to it via Lish. If you are not familiar with Lish, there is a simple web interface for it located under the **Remote Access** tab in the Linode Manager.
 
@@ -80,7 +80,7 @@ Turn off all the **Filesystem/Boot Helpers**. The rest of the settings can be le
 
         mkdir /alpine
 
-2.  Mount the root partition to the new `/alpine` directory and navigate to it:
+2.  Mount the root disk to the new `/alpine` directory and navigate to it:
 
         mount /dev/sdb /alpine
         cd /alpine
@@ -92,15 +92,15 @@ Turn off all the **Filesystem/Boot Helpers**. The rest of the settings can be le
 
 ### Download APK Tools
 
-1.  Select your desired Alpine Linux release. In most cases, you can use the [latest stable release](http://nl.alpinelinux.org/alpine/latest-stable/)
-
-2.  Update the CA Certificates. Finnix (the operating system running in rescue mode) doesn't have them by default, and so `curl` will fail to download the `apk-tools-static` package if you are using HTTPS, as it won't be able to verify the SSL certificate.
+1.  Update the CA Certificates package, so `curl` can verify the download:
 
         update-ca-certificates
 
+2.  Select your desired Alpine Linux release. In most cases, you can use the [latest stable release](http://nl.alpinelinux.org/alpine/latest-stable/)
+
 3.  Identify the current version of the `apk-tools-static` package. You will need to navigate into the `main/x86_64` directory of your chosen release in your web browser.
 
-    For example, the latest stable version's `apk-tools-static` package can be found by visiting `http://nl.alpinelinux.org/alpine/latest-stable/main/x86_64/`. From there, simply search for `apk-tools-static`. Once you have found it, you will need to copy the file's location. To do this in most browsers, right click the filename and select **Copy Link Address**.
+    For example, the latest stable version's `apk-tools-static` package can be found by visiting `http://nl.alpinelinux.org/alpine/latest-stable/main/x86_64/`. From there, simply search for `apk-tools-static`. Once you've found it, copy the file's location. To do this in most browsers, right click the filename and select **Copy Link Address**.
 
 4.  Download and extract the `apk-tools-static` package to your Linode. You should still be working in the `/alpine` directory when performing this step. Replace `address` in the following command with the address you copied in the previous step:
 
@@ -182,7 +182,7 @@ In this section, we will modify critical system files. It is recommended that yo
 
         cp /etc/resolv.conf /alpine/etc
 
-6.  Add `ttyS0` to `securetty` to allow root login over Lish
+6.  Add `ttyS0` to `securetty` to allow root login over Lish:
 
         echo ttyS0 >> /alpine/etc/securetty
 
@@ -223,7 +223,7 @@ In this section, we will modify critical system files. It is recommended that yo
 
         apk add linux-grsec
 
-8.  Exit the chroot jail by issuing the `exit` command, and then reboot your Linode from the Linode Dashboard.
+8.  Exit the chroot jail by issuing the `exit` command, and then shut down your Linode from the Linode Dashboard.
 
 ## Configure Alpine Linux
 
@@ -235,10 +235,15 @@ In this section, we will modify critical system files. It is recommended that yo
 
 ### Configuration
 
-1.  Set up and start networking. Alpine has a handy script that will configure the network interface file for you and guide you through the various options. It's capable of advanced configuration, like bridging and bonding, but for a basic setup, its defaults should be sufficient. Press enter 3 times to accept the defaults of `eth0`, `dhcp`, and `no`, and then restart the networking service, and your Linode should have a functional network connection.
+1.  Set up and start networking. Alpine has a handy script that will configure the network interface file for you and guide you through the various options. It's capable of advanced configuration, like bridging and bonding, but for a basic setup, its defaults should be sufficient.
 
         setup-interfaces
+
+    Press **enter** 3 times to accept the defaults of `eth0`, `dhcp`, and `no`, then restart the networking service:
+
         service networking restart
+
+    Your Linode should now have a functional network connection.
 
 2.  Set a root password:
 
@@ -259,6 +264,9 @@ In this section, we will modify critical system files. It is recommended that yo
     Alternatively, you can allow passwordless sudo. However, this is not recommended in most cases:
 
         echo "%sudo   ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+
+    {: .caution }
+    > This configuration is less secure, and generally not recommended.
 
 6.  Create the sudo group and add your new user to it:
 
@@ -281,10 +289,10 @@ Alpine's website provides a searchable library of [available packages](https://p
 
 A few packages to consider:
 
-1.  Text editor: `nano` or `vim`
-2.  Web server: `lighttpd`, `apache2`, or `nginx`
-3.  Scripting languages: `php`, `perl`, or `python`
-4.  Database servers: `mysql` or `postgresql`
+-  Text editor: `nano` or `vim`
+-  Web server: `lighttpd`, `apache2`, or `nginx`
+-  Scripting languages: `php`, `perl`, or `python`
+-  Database servers: `mysql` or `postgresql`
 
 Note that some of these combinations may require additional dependencies. To install a new package, use the following command, replacing `package` with the package name(s):
 
@@ -298,6 +306,6 @@ For more information, see Alpine's wiki page on [package management](https://wik
 
 ## Secure Your Server
 
-Before using your Linode in a development or production capacity, make sure you've taken some basic security precautions. Our guide on [Securing Your Server](https://www.linode.com/docs/security/securing-your-server) provides a good starting point, but you may want to research additional, Alpine-specific security options on your own. Keep in mind that you will need to install most security packages, e.g. `iptables`.
+Before using your Linode in a development or production capacity, make sure you've taken some basic security precautions. Our guide on [Securing Your Server](/docs/security/securing-your-server) provides a good starting point, but you may want to research additional, Alpine-specific security options on your own. Keep in mind that you will need to install most security packages, e.g. `iptables`.
 
 For more information, refer to their wiki page on [security](https://wiki.alpinelinux.org/wiki/Category:Security).
