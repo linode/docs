@@ -158,7 +158,7 @@ In this section, we will modify critical system files. It is recommended that yo
     :   ~~~ conf
         set root=(hd0)
         set default="Alpine Linux"
-        set timeout=10
+        set timeout=0
 
         menuentry "Alpine Linux" {
             linux /vmlinuz-grsec root=/dev/sdb modules=sd-mod,usb-storage,ext4 console=ttyS0 quiet
