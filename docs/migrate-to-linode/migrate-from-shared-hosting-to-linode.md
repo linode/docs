@@ -6,7 +6,7 @@ description: 'A Linode server gives you a lot more power and flexibility than a 
 keywords: 'shared hosting,vps,shared,host,migrate,migration,website,ttl,domain'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['migrate-from-shared/','migrate-to-linode/migrate-from-shared-hosting/']
-modified: 'Monday, December 21st, 2015'
+modified: 'Monday, September 19th, 2016'
 modified_by:
   name: Linode
 published: 'Friday, October 18th, 2013'
@@ -15,7 +15,7 @@ title: Migrate from Shared Hosting to Linode
 
 This guide walks you through migrating your website from a shared hosting provider to a Linode running a LAMP stack. A Linode server gives you much more power and flexibility than a shared host, but these advantages come at the cost of increased complexity and responsibility.
 
-The biggest change between shared hosting and Linode's cloud is that with Linode you have full administrative access to the server without intervention. This means that solely you will be responsible for keeping your software updated and your valuable data backed up. Our [Guides and Tutorials](/docs/) area contains all of the information you'll need for basic [server administration](/docs/tools-reference/linux-system-administration-basics), [security hardening](/docs/security/securing-your-server) and [system backups](/docs/security/backups/backing-up-your-data).
+The biggest change between shared hosting and Linode's cloud is that with Linode you have full administrative access to the server without intervention. This means that you will be solely responsible for keeping your software updated and your valuable data backed up. Our [Guides and Tutorials](/docs/) area contains all of the information you'll need for basic [server administration](/docs/tools-reference/linux-system-administration-basics), [security hardening](/docs/security/securing-your-server) and [system backups](/docs/security/backups/backing-up-your-data).
 
 ## Before You Begin
 
@@ -55,11 +55,11 @@ When changing servers, however, you want a low TTL to make sure that when you up
 
 ## Back Up Your Website
 
-The next step is to back up your site from your old server to your desktop. There are multiple ways to do this, though you may find it easiest to work directly through your host's control panel from your web browser. The location of your website on the server will vary among hosting providers, though it should be something along the lines of `/home/account_name/public_html`.
+The next step is to back up your site from your old server to your local computer. There are multiple ways to do this, though you may find it easiest to work directly through your host's control panel from your web browser. The location of your website on the server will vary among hosting providers, though it should be something along the lines of `/home/account_name/public_html`.
 
 You may want to explore whether the application you use for your website has its own backup instructions, such as the combination of [WordPress](https://codex.wordpress.org/WordPress_Backups) and [phpMyAdmin](http://docs.phpmyadmin.net/en/latest/faq.html?highlight=backup#how-can-i-backup-my-database-or-table), for example. Regardless of the backup method, every website is made up of files and databases so you can use the instructions in this section to back up every type of website.
 
-If you have a MySQL or MariaDB database on your old server, you need to back it up, too. Your old host probably has a control panel that will allow you to make an easy backup of your database. Contact them for instructions. If your old host does not have a database backup solution, you can follow our instructions to [Back Up Your MySQL Databases](/docs/databases/mysql/backup-options) using the command line.
+If you have a MySQL or MariaDB database on your old server, you need to back it up, too. Your old host probably has a control panel that will allow you to make an easy backup of your database. Contact them for instructions if you are not sure how to do it. If your old host does not have a database backup solution, you can follow our instructions to [Back Up Your MySQL Databases](/docs/databases/mysql/backup-options) using the command line.
 
 **Shared Host's Control Panel**
 
@@ -77,24 +77,24 @@ See [our Filezilla guide](/docs/tools-reference/file-transfer/filezilla) to use 
 
 ## Install a Basic Web Server on Your Linode
 
-The next step is to build the software environment needed for your site to function properly. Linode provides prepackaged software options called [StackScripts](https://www.linode.com/stackscripts/) that make it easy to deploy software stacks in just a few clicks. We'll go over detailed instructions for installing the basic LAMP web server. From there, you can install a content management system of your choice such as [WordPress](https://wordpress.org/) or [Drupal](https://www.drupal.com/).
+The next step is to build the software environment needed for your site to function properly. Linode provides prepackaged software options called [StackScripts](https://www.linode.com/stackscripts/) that make it easy to deploy software stacks in just a few clicks. We'll go over detailed instructions for installing the basic LAMP web server. Once that's complete, you can install a content management system of your choice such as [WordPress](https://wordpress.org/) or [Drupal](https://www.drupal.com/).
 
 ### LAMP Stack
 
 [LAMP](https://en.wikipedia.org/wiki/LAMP_%28software_bundle%29) stands for the following:
 
-*  **Linux:** Linode offers a LAMP StackScript for CentOS, Debian and Ubuntu. Which Linux distribution you choose is up to you. While there will be no discernible difference to your site's users, each distro has its own pros and cons.
+*  **Linux:** Linode offers a LAMP StackScript for CentOS, Debian and Ubuntu. Which Linux distribution you choose is up to you. While there will be no discernible difference to your site's users, each distro has advantages and disadvantages to consider.
 *  **Apache:** A web server that handles HTTP and HTTPS internet traffic.
 *  **MySQL:** A database server.
-*  **PHP:** A software language that lets you have dynamic website content.
+*  **PHP:** A software language that allows you to create and configure dynamic website content. 
 
 1.  After you select a data center for your Linode, you'll be prompted to deploy a *Linux distribution*. Select the option to **Deploy using StackScripts**:
 
     [![Deploy with StackScripts](/docs/assets/1436-stackscripts_deploywith_sm.png)](/docs/assets/1420-stackscripts_deploywith.png)
 
-2.  Select **linode/LAMP Stack**:
+2.  Select **linode / LAMP**:
 
-    [![Choose the LAMP StackScript](/docs/assets/1440-stackscripts_lamp_sm.png)](/docs/assets/1423-stackscripts_lamp.png)
+    [![Choose the LAMP StackScript](/docs/assets/lamp-stackscript-sm.png)](/docs/assets/lamp-stackscript.png)
 
 3.  Fill in the requested details. The example given is for a new Drupal site:
 
@@ -155,7 +155,7 @@ Once you've installed all the underlying software for your Linode, you can uploa
 
     {: .note }
     >
-    > Your website may not function completely correctly if it is URL-dependent. A website created with WordPress is an example of a URL-dependent website. Because you're using the IP address instead of the URL, WordPress gets confused. It should start working correctly once you move your domain to point to Linode.
+    > Your website may not yet function completely correctly if it is URL-dependent. A website created with WordPress is an example of a URL-dependent website. Because you're using the IP address instead of the URL, WordPress gets confused. It should start working correctly once you move your domain to point to Linode.
 
 ### A Note About Email
 
@@ -176,7 +176,7 @@ The last step in your Linode migration is to point your domain at your Linode's 
     *  ns4.linode.com
     *  ns5.linode.com
 
-4.  Wait five minutes for the domain to propagate. If you did not lower your TTL first, this can take up to 48 hours.
+4.  Wait five minutes for the domain to propagate, or whatever amount of time you set as your TTL. If you did not lower your TTL, this may take up to 48 hours.
 
 5.  Navigate to your domain in a web browser. It should now show the website from Linode, rather than your old host. If you can't tell the difference, you can use the [DIG utility](http://www.kloth.net/services/dig.php). It should show the IP address for your Linode.
 
