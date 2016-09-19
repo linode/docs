@@ -44,7 +44,7 @@ In this section, we'll create the disk images necessary to install Alpine Linux.
 
 1.  Log in to the [Linode Manager](https://manager.linode.com/linodes/) and select the Linode you will be installing Alpine Linux on.
 
-2.  Create your boot disk image by selecting **Create a new Disk** under the Disks section. The size should be ~128-256 MB, and the type should be **ext4**. 
+2.  Create your boot disk image by selecting **Create a new Disk** under the Disks section. The size should be ~128-256 MB, and the type should be **ext4**.
 
     {: .note}
     >
@@ -52,7 +52,7 @@ In this section, we'll create the disk images necessary to install Alpine Linux.
 
 3.  Create your root disk image with as much space as you need, although if you want a swap disk image, make sure you leave room for it. The root disk image should be of the **ext4** type as well.
 
-4.  Optionally, create a swap disk image with type **swap**. 
+4.  Optionally, create a swap disk image with type **swap**.
 
     {: .note}
     >
@@ -77,16 +77,16 @@ Turn off all the **Filesystem/Boot Helpers**. The rest of the settings can be le
 ### Mount Drives
 
 1.  Create the `/alpine` directory. This will serve as a mount point for the root disk image:
-        
+
         mkdir /alpine
 
 2.  Mount the root partition to the new `/alpine` directory and navigate to it:
-        
+
         mount /dev/sdb /alpine
         cd /alpine
 
 3.  Create a `boot` directory and mount the boot disk image to it:
-        
+
         mkdir boot
         mount /dev/sda /alpine/boot
 
@@ -98,12 +98,12 @@ Turn off all the **Filesystem/Boot Helpers**. The rest of the settings can be le
 
         update-ca-certificates
 
-3.  Identify the current version of the `apk-tools-static` package. You will need to navigate into the `main/x86_64` directory of your chosen release in your web browser. 
+3.  Identify the current version of the `apk-tools-static` package. You will need to navigate into the `main/x86_64` directory of your chosen release in your web browser.
 
     For example, the latest stable version's `apk-tools-static` package can be found by visiting `http://nl.alpinelinux.org/alpine/latest-stable/main/x86_64/`. From there, simply search for `apk-tools-static`. Once you have found it, you will need to copy the file's location. To do this in most browsers, right click the filename and select **Copy Link Address**.
 
 4.  Download and extract the `apk-tools-static` package to your Linode. You should still be working in the `/alpine` directory when performing this step. Replace `address` in the following command with the address you copied in the previous step:
-        
+
         curl -s address | tar xz
 
 5.  Perform the initial distro installation. This will use the latest stable build of Alpine:
@@ -132,23 +132,23 @@ In this section, we will modify critical system files. It is recommended that yo
     /alpine/etc/inittab
     :   ~~~ conf
         # /etc/inittab
-    
+
         ::sysinit:/sbin/rc sysinit
         ::sysinit:/sbin/rc boot
         ::wait:/sbin/rc default
-    
+
         # Put a getty on the serial port
         ttyS0::respawn:/sbin/getty -L ttyS0 115200 vt100
-    
+
         # Stuff to do for the 3-finger salute
         ::ctrlaltdel:/sbin/reboot
-    
+
         # Stuff to do before rebooting
         ::shutdown:/sbin/rc shutdown
         ~~~
 
 3.  Create the GRUB 2 boot configuration directory:
-        
+
         mkdir /alpine/boot/grub
 
     Create a new file, `grub.cfg` within this directory, and add the following contents. This file specifies configuration options for GRUB 2 to use during the boot process:
@@ -159,13 +159,13 @@ In this section, we will modify critical system files. It is recommended that yo
         set root=(hd0)
         set default="Alpine Linux"
         set timeout=0
-    
+
         menuentry "Alpine Linux" {
             linux /vmlinuz-grsec root=/dev/sdb modules=sd-mod,usb-storage,ext4 console=ttyS0 quiet
             initrd /initramfs-grsec
         }
         ~~~
-    
+
 4.  Create a `mkinitfs` directory:
 
         mkdir /alpine/etc/mkinitfs
@@ -181,9 +181,9 @@ In this section, we will modify critical system files. It is recommended that yo
 5.  Copy the system's `resolv.conf` file into `/alpine/etc`:
 
         cp /etc/resolv.conf /alpine/etc
-        
+
 6.  Add `ttyS0` to `securetty` to allow root login over Lish
-        
+
         echo ttyS0 >> /alpine/etc/securetty
 
 ### Install the Kernel
@@ -198,7 +198,7 @@ In this section, we will modify critical system files. It is recommended that yo
         chroot /alpine /bin/sh
 
 3.  Select a mirror to use when downloading or updating packages:
-        
+
         setup-apkrepos
 
     You can select a mirror by entering its corresponding number, or `f` to automatically pick the fastest mirror.
@@ -216,18 +216,15 @@ In this section, we will modify critical system files. It is recommended that yo
         rc-update add networking boot
         rc-update add urandom boot
         rc-update add crond
-        
+
     If you'll need other services, you can also add them now. The above is intended to serve as a starting point.
 
 7.  Install the [grsecurity](https://grsecurity.net/) kernel:
 
         apk add linux-grsec
 
-8.  Exit the chroot jail and shut down your Linode:
+8.  Exit the chroot jail by issuing the `exit` command, and then reboot your Linode from the Linode Dashboard.
 
-        exit
-        shutdown -h now
-        
 ## Configure Alpine Linux
 
 ### Reboot into Alpine
@@ -267,9 +264,9 @@ In this section, we will modify critical system files. It is recommended that yo
 
         addgroup sudo
         adduser example-user sudo
-        
+
 7.  Install and configure the SSH daemon (SSHD). Alpine has a simple setup script to handle this:
-        
+
         setup-sshd
 
     We recommend the `openssh` server if you want full SFTP access. `dropbear` is a more lightweight option, although it only provides SSH access.
@@ -291,9 +288,9 @@ A few packages to consider:
 
 Note that some of these combinations may require additional dependencies. To install a new package, use the following command, replacing `package` with the package name(s):
 
-    apk add package 
+    apk add package
 
-For example, to add Apache, PHP, and MySQL: 
+For example, to add Apache, PHP, and MySQL:
 
     apk add apache2 php mysql
 
