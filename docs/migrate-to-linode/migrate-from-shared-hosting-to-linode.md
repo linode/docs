@@ -169,14 +169,15 @@ The last step in your Linode migration is to point your domain at your Linode's 
 
 2.  If you use a third-party email service, edit the default MX records.
 
-3.  Log in to your domain registrar's control panel and update the nameservers to use Linode's:
-    *  ns1.linode.com
-    *  ns2.linode.com
-    *  ns3.linode.com
-    *  ns4.linode.com
-    *  ns5.linode.com
+3.  Log in to your domain registrar's control panel and update the name servers to use Linode's:
+    
+    *  `ns1.linode.com`
+    *  `ns2.linode.com`
+    *  `ns3.linode.com`
+    *  `ns4.linode.com`
+    *  `ns5.linode.com`
 
-4.  Wait five minutes for the domain to propagate, or whatever amount of time you set as your TTL. If you did not lower your TTL, this may take up to 48 hours.
+4.  Wait five minutes (or the time you set for your TTL) for the domain to propagate. If you did not lower your TTL, this may take up to 48 hours.
 
 5.  Navigate to your domain in a web browser. It should now show the website from Linode, rather than your old host. If you can't tell the difference, you can use the [DIG utility](http://www.kloth.net/services/dig.php). It should show the IP address for your Linode.
 
