@@ -1,17 +1,21 @@
 ---
 author:
-  name: Huw Evans
-  email: me@huw.nu
-description: 'Generate a GPG keypair, and convert it to an SSH key for authentication with your Linode. Smartcards/YubiKeys welcome, but your local machine must have OS X / Linux'
+  name: Linode Community
+  email: docs@linode.com
+description: 'Generate a GPG key-pair, and convert it to an SSH key for authentication with your Linode.'
 keywords: 'gpg,ssh,authentication,ssh-agent,gpg-agent,yubikey,smartcard,ssh key'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 title: 'How to use a GPG key for SSH authentication'
 contributor:
   name: Huw Evans
   link: github.com/huw
-  external_resources:
-- '[Securely set up smartcard](https://gist.github.com/abeluck/3383449)'
-- '[Instructions for GPG 2.1](https://incenp.org/notes/2015/gnupg-for-ssh-authentication.html)'
+external_resources:
+ - '[Securely set up smartcard](https://gist.github.com/abeluck/3383449)'
+ - '[Instructions for GPG 2.1](https://incenp.org/notes/2015/gnupg-for-ssh-authentication.html)'
+modified: Monday, September 19th, 2016
+modified_by:
+  name: Alex Fornuto
+published: ''
 ---
 
 *This is a Linode Community guide. Write for us and earn $250 per published guide.*
