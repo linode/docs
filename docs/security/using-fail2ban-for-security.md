@@ -123,7 +123,7 @@ Fail2ban reads its configuration files so that all `.conf` files are read first 
 
         cd /etc/fail2ban
 
-2.  The file `fail2ban.conf` contains the default configuration variables for Fail2ban logging, the socket used to communicate with the daemon, and the location of the PID file. Changes should be made in a separate file, `fail2ban.local`, definitions in which override `fail2ban.conf`. If you want, you can copy `fail2ban.conf` to `fail2ban.conf`, commenting out all variables, and then uncomment only the options you want to modify:
+2.  The file `fail2ban.conf` contains the default configuration variables for Fail2ban logging, the socket used to communicate with the daemon, and the location of the PID file. Changes should be made in a separate file, `fail2ban.local`, definitions in which override `fail2ban.conf`. If you want, you can copy `fail2ban.conf` to `fail2ban.local`, commenting out all variables, and then uncomment only the options you want to modify:
 
         sed 's/\(^[[:alpha:]]\)/# \1/' fail2ban.conf | sudo tee fail2ban.local 1&> /dev/null
 
