@@ -52,6 +52,8 @@ All services are billed automatically at the end of the month. If you used a ser
  {: .note }
 >
 > A large base amount of network transfer is included with all Linode plans, but exceeding that amount can result in a [bandwidth overage](#bandwidth-overages) charge beyond the monthly cap.
+>
+> Due to the [impending exhaustion of the IPv4 address space](http://en.wikipedia.org/wiki/IPv4_address_exhaustion), Linode requires users to provide technical justification. To add another public IP address, please [contact support](/docs/support) with your justification.
 
 ## Viewing Current Balance
 
