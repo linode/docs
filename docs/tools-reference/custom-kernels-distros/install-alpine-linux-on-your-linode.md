@@ -1,14 +1,14 @@
 ---
 author:
-  name: Andrew Leap
-  email: andyleap@gmail.com
+  name: Linode Community
+  email: docs@linode.com
 description: 'Alpine Linux is a small, security-oriented Linux distro. This guide explains how to install and configure Alpine Linux on a Linode'
 keywords: 'alpine,alpine linux,custom,custom distro,install alpine linux,alpine linux packages'
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
-modified: Monday, September 12th, 2016
+modified: Monday, September 22nd, 2016
 modified_by:
-  name: Andrew Leap
-published: 'Monday, September 12th, 2016'
+  name: Phil Zona
+published: 'Monday, September 22nd, 2016'
 title: 'Install Alpine Linux on your Linode'
 contributor:
   name: Andrew Leap
