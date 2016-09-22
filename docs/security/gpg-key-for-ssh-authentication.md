@@ -251,9 +251,9 @@ You should always have a backup of your private key in case something goes wrong
 
 1.  Backup your `~/.gnupg` folder by typing:
 
-        cp ~/.gnupg/ /Volumes/USB_DEVICE/.gnupg/
+        cp -r ~/.gnupg/ /Volumes/USB_DEVICE/
 
-    (Assuming you have a storage device mounted at `/Volumes/USB_DEVICE/`)
+    (Assuming you have a storage device mounted at `/Volumes/USB_DEVICE/`. You can also safely ignore any `Operation not supported on socket` warnings.)
 
 2.  Backup your private key by typing:
 
@@ -281,7 +281,7 @@ You can reimport it with the ever-handy `gpg2 --import <key file>` command.
 
 {: .note}
 >
-> If you're using a brand new YubiKey, you'll need to enable OpenPGP Card / CCID Mode first.
+> If you're using a brand new YubiKey, you'll need to enable OpenPGP Card / CCID Mode first. This can be done through the YubiKey Personlisation Tool, or by running `ykpersonalise -m82`. `ykpersonalise` can be installed through your package manager.
 
 ### Secure Your Card
 It is assumed that you have configured your card/YubiKey's (herein referred to as 'GPG device') owner information. You will need to secure your card before you start (or at least it's highly recommended).
@@ -302,9 +302,9 @@ It is assumed that you have configured your card/YubiKey's (herein referred to a
 
         passwd
 
-4.  Change the password to your device by selecting `1 - change PIN`. This will be required every time you want to access your GPG key (i.e. every time you authenticate with SSH).
+4.  Change the password to your device by selecting `2 - unblock PIN`. This will unblock your PIN, and prompt you to change it. This PIN will be required every time you want to access your GPG key (i.e. every time you authenticate with SSH), and has a limit of eight characters.
 
-5.  Change the admin PIN by selecting `3 - change Admin PIN`. This PIN is required to make administrative changes, like in step 2.
+5.  Change the admin PIN by selecting `3 - change Admin PIN`. This PIN is required to make administrative changes, like in step 2, and has a limit of 6 characters. For optimum security, never store this PIN in a digital location, since it will be unnecessary for daily use of the YubiKey.
 
 6.  Exit these menus by selecting `Q` and then typing `quit`.
 
@@ -382,11 +382,11 @@ After all this, your screen should show:
     ssb  4096R/48B9C23C  created: 2016-04-09  expires: never  
     (1) Your Name <you@yoursite.net>
     
-    gpg> key 1
+    gpg> key 2
     
     sec  4096R/71735D23  created: 2016-04-09  expires: 2017-04-09
-    ssb* 4096R/693C5635  created: 2016-04-09  expires: never     
-    ssb  4096R/48B9C23C  created: 2016-04-09  expires: never
+    ssb  4096R/693C5635  created: 2016-04-09  expires: never     
+    ssb* 4096R/48B9C23C  created: 2016-04-09  expires: never
     (1) Your Name <you@yoursite.net>
     
     gpg> keytocard
@@ -410,25 +410,27 @@ This should mean you're ready to roll. If you weren't using a VM/offline machine
 
 At this point you should return to your main (still local) machine and import all of the appropriate GPG keys and insert the appropriate GPG device. Install GPG if you need to.
 
-1.  Edit the `~/.profile` file (or any similar shell startup file that you choose) to include:
+1.  Edit the `~/.bash_profile` file (or any similar shell startup file that you choose) to include:
 
     On Linux:
 
     {: .file-excerpt}
-    ~/.profile
+    ~/.bash_profile
     :   ~~~
         if [ -f "${HOME}/.gpg-agent-info" ]; then
              . "${HOME}/.gpg-agent-info"
                export GPG_AGENT_INFO
                export SSH_AUTH_SOCK
                export SSH_AGENT_PID
+        else
+            eval $( gpg-agent --daemon --write-env-file ~/.gpg-agent-info )
         fi
         ~~~
     
     On OS X:
     
     {: .file-excerpt}
-    ~/.profile
+    ~/.bash_profile
     :   ~~~
         [ -f ~/.gpg-agent-info ] && source ~/.gpg-agent-info
         if [ -S "${GPG_AGENT_INFO%%:*}" ]; then
@@ -440,7 +442,7 @@ At this point you should return to your main (still local) machine and import al
         fi
         ~~~
     
-    This ensures that SSH can 'see' your GPG keys, and on OS X, automatically starts `gpg-agent` as needed. Newer versions of GPG may automatically run `gpg-agent`, so check this first before proceeding.
+    This ensures that SSH can 'see' your GPG keys and automatically starts `gpg-agent` as needed.
     
 2.  Edit or create `~/.gnupg/gpg-agent.conf`:
     
@@ -464,7 +466,9 @@ At this point you should return to your main (still local) machine and import al
         sudo killall gpg-agent
         gpg-agent --daemon --write-env-file ~/.gpg-agent-info
 
-4.  Quit and reopen your shell.
+4.  Reset the shell (or quit and reopen your terminal):
+
+        reset
 
 ## Add the New Key to Your Linode
 
@@ -474,7 +478,7 @@ The steps taken so far will take your GPG keys, and pipe them through SSH's serv
 
         ssh-add -L
 
-2.  The output of this process may differ, but you should only have a single usable line if you've started from scratch. Copy the whole line, including `ssh-rsa`. It might look like this:
+2.  The output of this process may differ, but you should only have a single usable line if you've started from scratch (otherwise, logging out and back in may help, as may a reboot). Copy the whole line, including `ssh-rsa`. It might look like this:
 
         ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDxAZn1IQ2cBxIbgwksWOfkAMKKLa3cUYMkbQBaR9Nw4CfoLs8xiu0Kb8oN4JH6p+E4C1MrlmFQuMZbVzs9JseV2pe6kw0xKQgLINopyF6letzCOEzPH7THicxyQc35vMIa8JTAMU6X3hpzzSUVSQGKDljj+c4XayTZCVQVg2Yqc67Vdm+4q4OQCU7Fns73KWmqwsdYtuyk74yPWjAvKkEaW7I9d3TLKVI8LLdzC6FoP2jJyGEoqxWEf2yL0eWelmJi/ikLJFSdXvdVCzvyI3dTeNqEdaisKQ0SJ7W0ysH1Os2hYyxBazWonMYI/T8Sh9J21xcWGmBumFTIcsbLEP17tojR4ttFq69ebtJIMkbPo0e+u4gWdvM44MyWsDm8jkKDuqNcduGIhF0dFY57niq4TEv5+Yvya2gwqBS4ttq/NlUAseL4zAcaP+kpDae4GMiRXwpFAiKA3ctn6/gf5QLvcAHMz62ASHeo9gG9t6n0eGUzBD/lv0qMsaYgmxfgIpqoU6Sr1w2EVp8TYjIVAaO/96Kljb2v9mB+0/BTO7gxJicxUNYQLOhEYdMnbr0bFNAG93hlUiq5eGTTG7nn1mre2OHWyGB8fZN9EukbMeFicgFTxgl3ddQawjn1Qb6u//ZpSCD++IH4HQCjz1fI9r+yZ+6CqfUrM0PI+dwAfcL4pw== cardno:000500001BDE
 
