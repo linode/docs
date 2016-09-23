@@ -418,7 +418,7 @@ At this point you should return to your main (still local) machine and import al
     ~/.bash_profile
     :   ~~~
         if [ -f "${HOME}/.gpg-agent-info" ]; then
-             . "${HOME}/.gpg-agent-info"
+             source "${HOME}/.gpg-agent-info"
                export GPG_AGENT_INFO
                export SSH_AUTH_SOCK
                export SSH_AGENT_PID
@@ -452,7 +452,7 @@ At this point you should return to your main (still local) machine and import al
         default-cache-ttl 600
         max-cache-ttl 7200
         enable-ssh-support
-        write-env-file
+        write-env-file ~/.gpg-agent-info
         ~~~
         
     If you're on OS X and installed GPGTools, you can also add
@@ -464,11 +464,8 @@ At this point you should return to your main (still local) machine and import al
 3.  Restart the GPG agent:
 
         sudo killall gpg-agent
-        gpg-agent --daemon --write-env-file ~/.gpg-agent-info
-
-4.  Reset the shell (or quit and reopen your terminal):
-
-        reset
+        gpg-agent --daemon --write-env-file ~/.gpg-agent-info --enable-ssh-support
+        source ~/.gpg-agent-info
 
 ## Add the New Key to Your Linode
 
@@ -478,7 +475,9 @@ The steps taken so far will take your GPG keys, and pipe them through SSH's serv
 
         ssh-add -L
 
-2.  The output of this process may differ, but you should only have a single usable line if you've started from scratch (otherwise, logging out and back in may help, as may a reboot). Copy the whole line, including `ssh-rsa`. It might look like this:
+    You should see a long output of alphanumeric characters. If you see `The agent has no identities`, try the steps to restart the GPG agent from above.
+
+2.  Copy the whole line of output, including `ssh-rsa`. If you see multiple lines, copy the one that ends with `cardno:`. It might look like this:
 
         ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDxAZn1IQ2cBxIbgwksWOfkAMKKLa3cUYMkbQBaR9Nw4CfoLs8xiu0Kb8oN4JH6p+E4C1MrlmFQuMZbVzs9JseV2pe6kw0xKQgLINopyF6letzCOEzPH7THicxyQc35vMIa8JTAMU6X3hpzzSUVSQGKDljj+c4XayTZCVQVg2Yqc67Vdm+4q4OQCU7Fns73KWmqwsdYtuyk74yPWjAvKkEaW7I9d3TLKVI8LLdzC6FoP2jJyGEoqxWEf2yL0eWelmJi/ikLJFSdXvdVCzvyI3dTeNqEdaisKQ0SJ7W0ysH1Os2hYyxBazWonMYI/T8Sh9J21xcWGmBumFTIcsbLEP17tojR4ttFq69ebtJIMkbPo0e+u4gWdvM44MyWsDm8jkKDuqNcduGIhF0dFY57niq4TEv5+Yvya2gwqBS4ttq/NlUAseL4zAcaP+kpDae4GMiRXwpFAiKA3ctn6/gf5QLvcAHMz62ASHeo9gG9t6n0eGUzBD/lv0qMsaYgmxfgIpqoU6Sr1w2EVp8TYjIVAaO/96Kljb2v9mB+0/BTO7gxJicxUNYQLOhEYdMnbr0bFNAG93hlUiq5eGTTG7nn1mre2OHWyGB8fZN9EukbMeFicgFTxgl3ddQawjn1Qb6u//ZpSCD++IH4HQCjz1fI9r+yZ+6CqfUrM0PI+dwAfcL4pw== cardno:000500001BDE
 
