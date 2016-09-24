@@ -209,7 +209,7 @@ MySQL consumes a lot of memory when using the default configuration. To set reso
 
     {: .note }
     >
-    >In MySQL 5.6, you may need to add these lines as one block with `[mysql]` at the top. In earlier MySQL versions, there may be multiple entries for a single option so be sure to edit both lines.
+    >In MySQL 5.6, you may need to add these lines as one block with `[mysqld]` at the top. In earlier MySQL versions, there may be multiple entries for a single option so be sure to edit both lines.
 
 4.  Add the following lines to the end of `my.cnf`:
 
