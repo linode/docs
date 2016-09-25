@@ -275,13 +275,9 @@ PHP is a general-purpose scripting language that allows you to produce dynamic a
 
 ### Install PHP
 
-1.  Install the base PHP package:
+1.  Install the PHP package with MySQL support:
 
-        sudo apt-get install php5 php-pear
-
-2.  Add the MySQL support extension for PHP:
-
-        sudo apt-get install php5-mysql
+        sudo apt-get install php libapache2-mod-php php-mysql
 
 ### Optimize PHP for a Linode 2GB
 
