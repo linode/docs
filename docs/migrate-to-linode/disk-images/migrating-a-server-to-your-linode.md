@@ -68,8 +68,8 @@ You'll need a configuration profile to boot your existing server after you uploa
 	 >
 	 > Make sure that you select the correct kernel for your existing server. There are 32-bit and 64-bit versions available. The 64-bit version has `x86_64` in the name.
 
-5.  Set `/dev/xvda` to the primary disk you created for the existing server.
-6.  Set `/dev/xvdb` to the swap disk you created for the existing server.
+5.  Set `/dev/sda` to the primary disk you created for the existing server.
+6.  Set `/dev/sdb` to the swap disk you created for the existing server.
 7.  Click **Save Changes**.
 
 You have successfully created the configuration profile.
@@ -78,12 +78,12 @@ You have successfully created the configuration profile.
 
 Before you initiate the transfer, you need to start the Linode in rescue mode. Here's how:
 
-1.  Boot your Linode into Rescue Mode. For instructions, see [Booting into Rescue Mode](/docs/rescue-and-rebuild#sph_booting-into-rescue-mode). Be sure to set the primary disk to `/dev/xvda` and the swap disk to `/dev/xvdb`.
+1.  Boot your Linode into Rescue Mode. For instructions, see [Booting into Rescue Mode](/docs/rescue-and-rebuild#sph_booting-into-rescue-mode). Be sure to set the primary disk to `/dev/sda` and the swap disk to `/dev/sdb`.
 2.  After the Linode has booted, connect to it via LISH. For instructions, see [Connecting to a Linode Running in rescue mode](/docs/rescue-and-rebuild#sph_connecting-to-a-linode-running-in-rescue-mode).
 3.  Start SSH. For instructions, see [Start SSH](/docs/rescue-and-rebuild#sph_starting-ssh).
 4.  Mount the blank primary disk by entering the following command:
 
-        mount -o barrier=0 /dev/xvda
+        mount -o barrier=0 /dev/sda
 
 Your Linode is now ready to receive the files from your existing server.
 
@@ -104,7 +104,7 @@ Now it's time to copy the files from your existing server to your Linode. Here's
 1.  Connect to your existing server via SSH and log in as `root`.
 2.  Enter the following command to initiate the copy, replacing `123.45.67.890` with your Linode's IP address. (For instructions on finding your Linode's IP address, see [Finding the IP Address](/docs/getting-started#sph_finding-the-ip-address).) :
 
-        rsync --exclude="/sys/*" --exclude="/proc/*" -aHSKDvz -e ssh / root@123.45.67.890:/media/xvda/
+        rsync --exclude="/sys/*" --exclude="/proc/*" -aHSKDvz -e ssh / root@123.45.67.890:/media/sda/
 
  {: .note }
 >
@@ -122,7 +122,7 @@ After the network copy is complete and the files from the existing server have b
 
 1.  On the Linode, which should still be running in rescue mode, enter the following command to change directories:
 
-        cd /media/xvda
+        cd /media/sda
 
 2.  Now enter the following command to replace all instances of your old IP address. Be sure to replace all instances of the old IP address with the new IP address. In this example, `98.76.54.32` is the old IP address and `12.34.56.78` is the Linode's IP address:
 
@@ -136,20 +136,20 @@ After the network copy is complete and the files from the existing server have b
 
 Now you should configure mount points for the new disks. Here's how:
 
-1.  On the Linode, open the `/media/xvda/etc/fstab` file for editing by entering the following command:
+1.  On the Linode, open the `/media/sda/etc/fstab` file for editing by entering the following command:
 
-        nano /media/xvda/etc/fstab
+        nano /media/sda/etc/fstab
 
-2.  Change the mount point for `root` to `/dev/xvda`, and the mount and `swap` to `/dev/xvdb`, as shown below:
+2.  Change the mount point for `root` to `/dev/sda`, and the mount and `swap` to `/dev/sdb`, as shown below:
 
 	{: .file-excerpt }
-	/media/xvda/etc/fstab
+	/media/sda/etc/fstab
 	: ~~~
    	 # /etc/fstab: static file system information.
    	 #
    	 # <file system> <mount point>   <type>  <options>       <dump>  <pass>
-   	 /dev/xvda       /               ext4    errors=remount-ro 0       1
-   	 /dev/xvdb       none            swap    sw              0       0
+   	 /dev/sda       /               ext4    errors=remount-ro 0       1
+   	 /dev/sdb       none            swap    sw              0       0
    	 proc            /proc           proc    defaults        0       0
 	~~~
 	
@@ -157,27 +157,27 @@ You have successfully configured the mount points for the disks.
 
 ### Configuring Device Nodes via Chroot
 
-Verify that `/media/xvda/dev` is complete by making sure that all of the device node entries listed below are present. If they aren't, you'll need to `chroot` to the mount point and execute the `MAKEDEV` command. Here's how:
+Verify that `/media/sda/dev` is complete by making sure that all of the device node entries listed below are present. If they aren't, you'll need to `chroot` to the mount point and execute the `MAKEDEV` command. Here's how:
 
 1.  `Chroot` to the mount point by entering the following command:
 
-        chroot /media/xvda /bin/bash
+        chroot /media/sda /bin/bash
 
 2.  Enter the following command:
 
         MAKEDEV /dev
 
-3.  If necessary, manually create `xvd[a-h]` device node entries by entering the following commands:
+3.  If necessary, manually create `sd[a-h]` device node entries by entering the following commands:
 
         cd /dev
-        mknod xvda b 202 0
-        mknod xvdb b 202 16
-        mknod xvdc b 202 32
-        mknod xvdd b 202 48
-        mknod xvde b 202 64
-        mknod xvdf b 202 80
-        mknod xvdg b 202 96
-        mknod xvdh b 202 112
+        mknod sda b 202 0
+        mknod sdb b 202 16
+        mknod sdc b 202 32
+        mknod sdd b 202 48
+        mknod sde b 202 64
+        mknod sdf b 202 80
+        mknod sdg b 202 96
+        mknod sdh b 202 112
 
 4.  If `/dev/hvc0` doesn't exist, enter the following command:
 
@@ -195,7 +195,7 @@ Here's how to fix persistent rules:
 
 1.  If your distribution is using `udev` (most distributions are these days), enter the following command on the Linode:
 
-        cd /media/xvda/etc/udev/rules.d 
+        cd /media/sda/etc/udev/rules.d 
 
 2.  Open the file that creates the persistent network rules, which is usually `75-persistent-net-generator.rules`, by entering the following command:
 
@@ -213,11 +213,11 @@ Here's how to fix persistent rules:
 
 4.  Remove any rules that were auto generated by entering the following command:
 
-        rm /media/xvda/etc/udev/rules.d/70-persistent-net.rules
+        rm /media/sda/etc/udev/rules.d/70-persistent-net.rules
 
 5.  Remove the `cd rules` file by entering the following command:
 
-        rm /media/xvda/etc/udev/rules.d/70-persistent-cd.rules
+        rm /media/sda/etc/udev/rules.d/70-persistent-cd.rules
 
 You have successfully fixed persistent rules.
 
