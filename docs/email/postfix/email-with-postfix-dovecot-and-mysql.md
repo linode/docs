@@ -40,7 +40,7 @@ Dovecot offers a default self-signed certificate for free. This certificate encr
 >
 > As of version 2.2.13-7, Dovecot no longer provides a default SSL certificate. This affects Debian 8 users, and means that if you wish to use SSL encryption (recommended), you must generate your own self-signed certificate or use a trusted certificate from a Certificate Authority.
 >
-> Many email service providers such as Gmail will only accept commercial SSL certificates for secure IMAP/POP3 connections. To communicate with these providers, follow our guide for [Obtaining a Commercial SSL Certificate](https://www.linode.com/docs/security/ssl/obtaining-a-commercial-ssl-certificate).
+> Many email service providers such as Gmail will only accept commercial SSL certificates for secure IMAP/POP3 connections. To communicate with these providers, follow our guide for obtaining a commercial SSL certificate for [Debian and Ubuntu](/docs/security/ssl/obtain-a-commercially-signed-ssl-certificate-on-debian-and-ubuntu) or [CentOS and Fedora](/docs/security/ssl/obtain-a-commercially-signed-ssl-certificate-on-centos-and-fedora).
 
 ## Installing Packages
 
@@ -513,9 +513,9 @@ Dovecot allows users to log in and check their email using POP3 and IMAP. In thi
     Modify the following variables within the configuration file:
 
     {: .file-excerpt }
-	  /etc/dovecot/conf.d/10-mail.conf
-	  :   ~~~
-	      mail_location = maildir:/var/mail/vhosts/%d/%n
+    /etc/dovecot/conf.d/10-mail.conf
+    :   ~~~
+        mail_location = maildir:/var/mail/vhosts/%d/%n
         ...
         mail_privileged_group = mail
         ~~~
@@ -795,10 +795,10 @@ Dovecot allows users to log in and check their email using POP3 and IMAP. In thi
     Force the clients to use SSL encryption by uncommenting the `ssl` line and setting it to `required`:
 
     {: .file-excerpt }
-	  /etc/dovecot/conf.d/10-ssl.conf
-  	: ~~~
-	    ssl = required
-	    ~~~
+    /etc/dovecot/conf.d/10-ssl.conf
+    :   ~~~
+        ssl = required
+        ~~~
 
     Save the changes to the `/etc/dovecot/conf.d/10-ssl.conf` file.
 
