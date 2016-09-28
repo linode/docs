@@ -29,10 +29,6 @@ This tutorial will cover the following:
 *   Required attention and maintenance.
 *   Technical details about Let's Encrypt and certificates issued by it.
 
-{: .caution}
->
-> As of Feb. 25, 2016, Let's Encrypt is still in *public beta*. Although most users have reported success, the ACME client is still being debugged and developed. **Do not deploy Let's Encrypt Public Beta in a production environment without testing it beforehand.**
-
 ## Before you Begin
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
