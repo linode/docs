@@ -35,7 +35,7 @@ This tutorial will cover the following:
 
 2.  Complete the steps in our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
-3.  Update you server's software packages:
+3.  Update your server's software packages:
 
     **CentOS**
 
