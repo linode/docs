@@ -6,7 +6,7 @@ description: "Let's Encrypt is an SSL certificate authority managed by the Inter
 keywords: "ACME,HTTPS,Let's Encrypt,SSL,SSL certificates"
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Thursday, February 25th, 2016'
-modified: 'Thursday, February 25th, 2016'
+modified: 'Thursday, September 29th, 2016'
 modified_by:
   name: 'Linode'
 title: "Install Let's Encrypt to Create SSL Certificates"
@@ -20,7 +20,7 @@ contributor:
 *This is a Linode Community guide. Write for us and earn $250 per published guide.*
 <hr>
 
-[Let's Encrypt](https://letsencrypt.org/) is an SSL certificate authority managed by the Internet Security Research Group (ISRG). It utilizes the [Automated Certificate Management Environment](https://github.com/ietf-wg-acme/acme/) (ACME) to automatically deploy browser-trusted SSL certificates to anyone for free.
+[Let's Encrypt](https://letsencrypt.org/) is an SSL certificate authority managed by the Internet Security Research Group (ISRG). It utilizes the [Automated Certificate Management Environment](https://github.com/ietf-wg-acme/acme/) (ACME) to automatically deploy free SSL certificates that are trusted by nearly all major browsers. 
 
 This tutorial will cover the following:
 
@@ -29,17 +29,13 @@ This tutorial will cover the following:
 *   Required attention and maintenance.
 *   Technical details about Let's Encrypt and certificates issued by it.
 
-{: .caution}
->
-> As of Feb. 25, 2016, Let's Encrypt is still in *public beta*. Although most users have reported success, the ACME client is still being debugged and developed. **Do not deploy Let's Encrypt Public Beta in a production environment without testing it beforehand.**
-
 ## Before you Begin
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  Complete our [Securing Your Server](/docs/security/securing-your-server) tutorial to create a standard user account, harden SSH access, and remove unnecessary network services.
+2.  Complete the steps in our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
-3.  Update your server's software packages.
+3.  Update you server's software packages:
 
     **CentOS**
 
@@ -65,18 +61,17 @@ This tutorial will cover the following:
 
         sudo apt-get install git
 
-
 2.  Download a clone of Let's Encrypt from the [official GitHub repository](https://github.com/letsencrypt/letsencrypt). `/opt` is a common installation directory for third-party packages, so let's install the clone to `/opt/letsencrypt`:
 
         sudo git clone https://github.com/letsencrypt/letsencrypt /opt/letsencrypt
 
-3.  Position your Bash prompt in the new `/opt/letsencrypt` directory:
+3.  Navigate to the new `/opt/letsencrypt` directory:
 
         cd /opt/letsencrypt
 
 ## Create an SSL Certificate
 
-Let's Encrypt automatically performs Domain Validation (DV) using a series of *challenges*. The Certificate Authority (CA) uses challenges to verify the authenticity of your computer's domain. Once your Linode is validated, the CA will issue SSL certificates to you.
+Let's Encrypt automatically performs Domain Validation (DV) using a series of *challenges*. The Certificate Authority (CA) uses challenges to verify the authenticity of your computer's domain. Once your Linode has been validated, the CA will issue SSL certificates to you.
 
 1.  Run Let's Encrypt with the `--standalone` parameter. For each additional domain name requiring a certificate, add `-d example.com` to the end of the command.
 
@@ -115,13 +110,13 @@ Let's Encrypt automatically performs Domain Validation (DV) using a series of *c
       Donating to EFF:                    https://eff.org/donate-le
     ~~~
 
-### Explore Let's Encrypt Certificate Directory Structure
+### Let's Encrypt Certificate Directory Structure
 
 1.  List the `/etc/letsencrypt/live` directory:
 
         sudo ls /etc/letsencrypt/live
 
-2.  Each domain name you specified in [Step 1](#create-an-ssl-certificate) of the **Create an SSL Certificate** section has its own directory. List any one of these domain name directories:
+2.  Each domain name you specified in [Step 1](#create-an-ssl-certificate) of the **Create an SSL Certificate** section has its own directory. List any of these domain name directories:
 
         sudo ls /etc/letsencrypt/live/example.com
 
@@ -139,6 +134,8 @@ Let's Encrypt automatically performs Domain Validation (DV) using a series of *c
     *   **fullchain.pem**: combination of server, root and intermediate certificates (replaces `cert.pem` and `chain.pem`).
     *   **privkey.pem**: private key (do **not** share this with anyone!).
 
+    Let's Encrypt issues certificates from intermediate certificate authorities. Intermediate certificates have been cross-signed by [Identrust](https://www.identrust.com/), which ensures compatibility between the end certificate and all major browsers. Refer to Let's Encrypt's [certificates](https://letsencrypt.org/certificates/) page for more information.
+
 4.  For good measure, display the file status of `fullchain.pem`:
 
         sudo stat /etc/letsencrypt/live/example.com/fullchain.pem
@@ -155,7 +152,7 @@ Let's Encrypt automatically performs Domain Validation (DV) using a series of *c
 
 ### Renew SSL Certificates
 
-1.  Return your Bash prompt to the `/opt/letsencrypt` directory:
+1.  Return to the `/opt/letsencrypt` directory:
 
         cd /opt/letsencrypt
 
@@ -177,15 +174,15 @@ Let's Encrypt automatically performs Domain Validation (DV) using a series of *c
       Donating to EFF:                    https://eff.org/donate-le
     ~~~
 
-    Let's Encrypt has refreshed the lifespan of your certificates; in this case, March 31st, 2016 is the new expiration date.
+    Let's Encrypt has refreshed the lifespan of your certificates; in this example, March 31st, 2016 is the new expiration date.
 
 {: .note}
 >
-> Let's Encrypt certificates have a 90-day lifespan before they expire. According to Let's Encrypt, this encourages automation and minimizes damage from key compromises. You can renew your certificates anytime during their lifespan.
+> Let's Encrypt certificates have a 90-day lifespan before they expire. [According to Let's Encrypt](https://letsencrypt.org/2015/11/09/why-90-days.html), this encourages automation and minimizes damage from key compromises. You can renew your certificates anytime during their lifespan.
 
-### Automate SSL Certificate Renewal (Optional)
+### Automatically Renew SSL Certificates (Optional)
 
-Since it's easy to forget about logging into a remote server, we also recommend automating your certificate renewal. This will prevent your certificates from expiring and can be accomplished with `cron`.
+We also recommend automating your certificate renewal since it can be easy to lose track of expiration dates, especially if you have them for several different domains. This will prevent your certificates from expiring, and can be accomplished with `cron`.
 
 1.  Before we execute the following command, let's break it down and make some modifications:
 
@@ -197,15 +194,17 @@ Since it's easy to forget about logging into a remote server, we also recommend 
     *   **>> /var/log/letsencrypt/letsencrypt-auto-update.log**: record the *standard output* and *standard error* to a log file named `letsencrypt-auto-update.log`
     *   **tee --append /etc/crontab**: save the new cron job to the `/etc/crontab` file
 
+    The above settings will be effective in most cases, but for more information about available cron job options, refer to the [Ubuntu Community Cron How-to](https://help.ubuntu.com/community/CronHowto) or the [CentOS Cron Documentation](https://www.centos.org/docs/5/html/5.2/Deployment_Guide/s2-autotasks-cron-configuring.html).
+
 2.  Execute your modified command to add the cron job to your Linode.
 
 {: .caution}
 >
-> Once Let's Encrypt leaves public beta and supports auto-renewal natively, open the `/etc/crontab` file and manually remove this entry to avoid future renewal conflicts.
+> Once Let's Encrypt supports auto-renewal natively, open the `/etc/crontab` file and manually remove this entry to avoid future renewal conflicts.
 
 ### Update Let's Encrypt
 
-1.  Return your Bash prompt to the `/opt/letsencrypt` directory:
+1.  Return to the `/opt/letsencrypt` directory:
 
         cd /opt/letsencrypt
 
@@ -213,7 +212,7 @@ Since it's easy to forget about logging into a remote server, we also recommend 
 
         sudo git pull
 
-### Automate Let's Encrypt Updates (Optional)
+### Automatically Update Let's Encrypt (Optional)
 
 You can also use `cron` to keep the `letsencrypt-auto` client up to date. The `@weekly` parameter will issue a `git pull` command in the `/opt/letsencrypt` directory every Sunday at midnight.
 
@@ -223,7 +222,7 @@ To change the update frequency, choose a different parameter, for example, `@hou
 
 ## Conclusion
 
-Now that you have installed Let's Encrypt and obtained SSL certificates, you can configure any package that supports commercial or self-signed SSL certificates to use them.
+Now that you have installed Let's Encrypt and obtained your free SSL certificates, you can configure any package that supports commercial or self-signed SSL certificates to use them.
 
 - [Email with Postfix, Dovecot, and MySQL](https://www.linode.com/docs/email/postfix/email-with-postfix-dovecot-and-mysql)
 - [How to Provide Encrypted Access to Resources Using SSL Certificates on Nginx](https://www.linode.com/docs/security/ssl/how-to-provide-encrypted-access-to-resources-using-ssl-certificated-on-nginx)
