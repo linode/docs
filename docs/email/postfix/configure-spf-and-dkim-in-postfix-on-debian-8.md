@@ -356,8 +356,8 @@ If everything is OK you shouldn't get any output. If you want to see more inform
         milter_default_action = accept
         # Postfix ≥ 2.6 milter_protocol = 6, Postfix ≤ 2.5 milter_protocol = 2
         milter_protocol = 6
-        smtpd_milters = local:/opendkim/opendkim.sock
-        non_smtpd_milters = local:/opendkim/opendkim.sock
+        smtpd_milters = unix:opendkim/opendkim.sock
+        non_smtpd_milters = unix:opendkim/opendkim.sock
         ~~~
 
     You can put this anywhere in the file. The usual practice is to put it after the `smtpd_recipient_restrictions` entry. You'll notice the path to the socket isn't the same here as it was in the `/etc/defaults/opendkim` file. That's because of Postfix's chroot jail, the path here is the path within that restricted view of the filesystem instead of within the actual filesystem.
