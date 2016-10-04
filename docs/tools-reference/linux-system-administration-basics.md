@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Tips, troubleshooting pointers, and software usage suggestions for Linux beginners.'
+description: 'Troubleshooting tips, basic Linux commands, and software usage suggestions for beginner system administrators.'
 keywords: 'linux tips,linux beginners,systems administration,admin,linux,mail,http,troubleshooting'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['using-linux/administration-basics/']
@@ -13,7 +13,7 @@ published: 'Sunday, December 13th, 2009'
 title: Linux System Administration Basics
 ---
 
-This document presents a collection of common issues and useful tips for Linux system administration. Whether you're new to system administration or have been maintaining systems for some time, we hope these tips are helpful regardless of your background or choice in Linux distributions.
+This guide presents a collection of common issues and useful tips for Linux system administration. Whether you're new to system administration or have been maintaining systems for some time, we hope this collection of basic Linux commands will be helpful in managing your system from the command line.
 
 ## Basic Configuration
 
@@ -21,7 +21,7 @@ These tips cover some of the basic steps and issues encountered during the begin
 
 ### Set the Hostname
 
-Please follow our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
+Please follow our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). You can use the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -30,9 +30,9 @@ The first command should show your short hostname, and the second should show yo
 
 ### Set the Timezone
 
-When setting the timezone of your server, it may be best to set it to the timezone of the bulk of your users. If you're unsure which timezone would be best, consider using universal coordinated time or UTC (i.e. Greenwich Mean Time).
+When setting the timezone of your server, it may be best to use the timezone of the majority of your users. If you're unsure which timezone would be best, consider using universal coordinated time or UTC (i.e. Greenwich Mean Time).
 
-By default, Linode base installs are set to Eastern Standard Time. The following process will set the timezone manually, though many operating systems provide a more elegant method for changing timezones. To change the time zone manually, you must find the proper zone file in `/usr/share/zoneinfo/` and link that file to `/etc/localtime`. See the example below for common possibilities. Please note that all contents following the double hashes (eg. `##`) are comments and should not be copied into your terminal.
+By default, Linodes are set to Eastern Standard Time. The following process will set the timezone manually, though many operating systems provide simpler methods for changing timezones. To change the time zone manually, you must find the proper zone file in `/usr/share/zoneinfo/` and link that file to `/etc/localtime`. See the example below for common possibilities. All contents following the double hashes (`##`) are comments and should not be copied into your terminal.
 
     ln -sf /usr/share/zoneinfo/UTC /etc/localtime ## for Universal Coordinated Time 
 
@@ -42,13 +42,13 @@ By default, Linode base installs are set to Eastern Standard Time. The following
 
     ln -sf /usr/share/zoneinfo/US/Eastern /etc/localtime ## for American Eastern (including DST)
 
-To change the time zone in Debian and Ubuntu systems, issue the following command and answer the questions as prompted by the utility:
+To change the timezone in Debian and Ubuntu systems, issue the following command and answer the questions as prompted onscreen:
 
     dpkg-reconfigure tzdata
 
 In Arch Linux, set the timezone in the `/etc/rc.conf` file by configuring the `TIMEZONE=` setting in the "Localization" section. This line will resemble the following:
 
-{: .file-excerpt }
+{: .file-excerpt}
 /etc/rc.conf
 :   ~~~
     TIMEZONE="America/New\_York"
@@ -56,9 +56,9 @@ In Arch Linux, set the timezone in the `/etc/rc.conf` file by configuring the `T
 
 Note that the string specified in `TIMEZONE` refers to the "zoneinfo" file located in or below the `/usr/share/zoneinfo/` directory.
 
-### Use the /etc/hosts File
+### Configure the /etc/hosts File
 
-The `/etc/hosts` file provides a list of IP addresses with corresponding hostnames. This allows you to specify hostnames for an IP address once on the local machine, and then have multiple applications connect to external resources via their hostnames. The system of host files predates [DNS](/docs/dns-guides/introduction-to-dns), and hosts files are *always* checked before DNS is queried. As a result, `/etc/hosts` can be useful for maintaining small "internal" networks, for development purposes, and for managing clusters.
+The `/etc/hosts` file provides a list of IP addresses with corresponding hostnames. This allows you to specify hostnames for an IP address in one place on the local machine, and then have multiple applications connect to external resources via their hostnames. The system of host files precedes [DNS](/docs/dns-guides/introduction-to-dns), and hosts files are *always* checked before DNS is queried. As a result, `/etc/hosts` can be useful for maintaining small "internal" networks, for development purposes, and for managing clusters.
 
 Some applications require that the machine properly identify itself in the `/etc/hosts` file. As a result, we recommend configuring the `/etc/hosts` file shortly after deployment. Here is an example file:
 
@@ -76,43 +76,43 @@ You can specify a number of hostnames on each line separated by spaces. Every li
     74.125.67.100 test.com 192.168.1.1 stick.example.com
     ~~~
 
-In this example, all requests for the test.com" hostname or domain will resolve to the IP address `74.125.67.100`, which bypasses the DNS records for `test.com` and returns an alternate website.
+In this example, all requests for the `test.com` hostname or domain will resolve to the IP address `74.125.67.100`, which bypasses the DNS records for `test.com` and returns an alternate website.
 
-The second entry tells the system to look to `192.168.1.1` for the domain `stick.example.com`. These kinds of host entries are useful for using "private" or "back channel" networks to access other servers in a cluster without needing to access the public network.
+The second entry tells the system to look to `192.168.1.1` for the domain `stick.example.com`. These kinds of host entries are useful for using "private" or "back channel" networks to access other servers in a cluster without needing to send traffic on the public network.
 
 ## Network Diagnostics
 
-The following tips address the basic usage and functionality of a number of tools that you can use to assess and diagnose network problems. If you suspect connectivity issues, including output of the relevant commands in your [support ticket](/docs/platform/support) can help our staff diagnose your issue. This is particularly helpful in cases where networking issues are intermittent.
+In this section, we'll review some basic Linux commands that will help you assess and diagnose network problems. If you suspect connectivity issues, including output from the relevant commands in your [support ticket](/docs/platform/support) can help our staff diagnose your issue. This is particularly helpful in cases where networking issues are intermittent.
 
-### Using the Ping Command
+### The ping Command
 
 The `ping` command tests the connection between the local machine and a remote address or machine. The following command "pings" `google.com` and `74.125.67.100`:
 
     ping google.com ping 74.125.67.100
 
-These commands send a bit of data (i.e. an ICMP packet) to the remote host, and wait for a response. If the system is able to make a connection, for every packet it will report on the "round trip time." Here is the output of four pings of google.com:
+These commands send a small amount of data (an ICMP packet) to the remote host, and wait for a response. If the system is able to make a connection, it will report on the "round trip time" for every packet. Here is the output of four pings of google.com:
 
     64 bytes from yx-in-f100.1e100.net (74.125.45.100): icmp_seq=1 ttl=50 time=33.8 ms
     64 bytes from yx-in-f100.1e100.net (74.125.45.100): icmp_seq=2 ttl=50 time=53.2 ms
     64 bytes from yx-in-f100.1e100.net (74.125.45.100): icmp_seq=3 ttl=50 time=35.9 ms
     64 bytes from yx-in-f100.1e100.net (74.125.45.100): icmp_seq=4 ttl=50 time=37.5 ms
 
-In this case `yx-in-f100.1e100.net` is the reverse DNS for this IP address. The `time` field specifies in milliseconds that the round trip takes for an individual packet. When you've gathered the amount of information you need, send `Control+C` to interrupt the process. At this juncture, you'll be presented with some statistics. This will resemble:
+In this case `yx-in-f100.1e100.net` is the reverse DNS entry for this IP address. The `time` field specifies in milliseconds that the round trip takes for an individual packet. When you've gathered the amount of information you need, use **Control+C** to interrupt the process. You'll be presented with some statistics once the process is stopped. This will resemble:
 
     --- google.com ping statistics ---
     4 packets transmitted, 4 received, 0% packet loss, time 3007ms 
     rtt min/avg/max/mdev = 33.890/40.175/53.280/7.679 ms
 
-There are several important data points to notice. They are:
+There are several important data points to notice:
 
--   *Packet Loss*, or the discrepancy between the number of packets sent and the number of packets that return successfully.
--   *Round Trip Time* statistics on the final line report important information about all the ping responses. For this ping we see that the fastest packet round trip took 33.89 milliseconds. The longest packet took 53.28 milliseconds. The average round trip took 40.175 milliseconds. A single standard deviation unit for these four packets is 7.67 milliseconds.
+-   *Packet Loss*, or the discrepancy between the number of packets sent and the number of packets that return successfully. This number shows the percentage of packets that are dropped.
+-   *Round Trip Time* (rtt) statistics on the final line report information about all the ping responses. For this ping we see that the fastest packet round trip (min) took 33.89 milliseconds. The longest packet (max) took 53.28 milliseconds. The average round trip (avg) took 40.175 milliseconds. A single standard deviation unit (mdev) for these four packets is 7.67 milliseconds.
 
-Use the ping tool to contact a server and ensure that you are able to make a connection. Furthermore, ping is useful as an informal diagnostic tool to measure point-to-point network latency, and as a network connection testing tool.
+The ping command is useful as an informal diagnostic tool to measure point-to-point network latency, and as a tool to simply ensure you are able to make a connection to a remote server.
 
-### Using the traceroute Command
+### The traceroute Command
 
-The `traceroute` command expands on the functionality of the [ping](#using_the_ping_command) command. `traceroute` provides a report on the path that the packets take to get from the local machine to the remote machine. Route information is useful when troubleshooting a networking issue: if there is packet loss in one of the first few "hops" the problem is often related to the user's local area network (LAN) or Internet service provider (ISP). By contrast, if there is packet loss near the end of the route, the problem may be caused by an issue with the server's connection.
+The `traceroute` command expands on the functionality of the [ping](#the_ping_command) command. `traceroute` provides a report on the path that the packets take to get from the local machine to the remote machine. Each step (intermediate server) in the path is called a *hop*. Route information is useful when troubleshooting a networking issue: if there is packet loss in one of the first few hops the problem is often related to the user's local area network (LAN) or Internet service provider (ISP). By contrast, if there is packet loss near the end of the route, the problem may be caused by an issue with the server's connection.
 
 Here is an example of output from a `traceroute` command:
 
@@ -130,55 +130,55 @@ Here is an example of output from a `traceroute` command:
     11 216.239.48.32 (216.239.48.32) 81.267 ms 81.198 ms 81.186 ms 
     12 216.239.48.137 (216.239.48.137) 77.478 ms pw-in-f100.1e100.net (74.125.53.100) 79.009 ms 216.239.48.137 (216.239.48.137) 77.437 ms
 
-Often the hostnames and IP addresses on either side of a failed jump are useful in determining who operates the machine where the routing error occurs. Failed jumps are designated by line with three asterisks (e.g. `* * *`).
+Often the hostnames and IP addresses on either side of a failed jump are useful in determining who operates the machine where the routing error occurs. Failed jumps are designated by lines with three asterisks (`* * *`).
 
-Furthermore, including `traceroute` information in tickets to [Linode support](/docs/platform/support/) is sometimes useful when trying to diagnose network issues. You may also want to forward `traceroute` information to your Internet Service Provider (ISP) if you suspect that the connectivity issue is with your ISP's network. Recording `traceroute` information is particularly useful if you are experiencing an intermittent issue.
+Including `traceroute` output in tickets to [Linode support](/docs/platform/support/) is sometimes useful when trying to diagnose network issues. You may also want to forward `traceroute` information to your Internet Service Provider (ISP) if you suspect that the connectivity issue is with your ISP's network. Recording `traceroute` information is particularly useful if you are experiencing an intermittent issue.
 
-### Using the mtr Command
+### The mtr Command
 
-The "mtr" command, like the [traceroute](#using_the_traceroute_command) tool, provides information about the route that Internet traffic takes between the local system and a remote host. However, `mtr` provides additional information about the round trip time for the packet. In a way, you can think of `mtr` as a combination of traceroute and ping.
+The `mtr` command, like the [traceroute](#using_the_traceroute_command) tool, provides information about the route that Internet traffic takes between the local system and a remote host. However, `mtr` provides additional information about the round trip time for the packet. In a way, you can think of `mtr` as a combination of traceroute and ping.
 
-Here is the example output of an `mtr` command:
+Here is an example of output of an `mtr` command:
 
-    HOST: username.example.com  Loss%   Snt   Last   Avg  Best  Wrst StDev
-        1.  256.129.75.4 0.0% 10 0.4 0.4 0.3 0.6 0.1
-        2.  vlan804.tbr2.mmu.nac.net 0.0% 10 0.3 0.4 0.3 0.7 0.1
-        3.  0.e1-1.tbr2.tl9.nac.net 0.0% 10 4.3 4.4 1.3 11.4 4.1
-        4.  core1-0-2-0.lga.net.google.c 0.0% 10 64.9 11.7 1.5 64.9 21.2
-        5.  209.85.255.68 0.0% 10 1.7 4.5 1.7 29.3 8.7
-        6.  209.85.251.9 0.0% 10 23.1 35.9 22.6 95.2 27.6
-        7.  72.14.239.127 0.0% 10 24.2 24.8 23.7 26.1 1.0
-        8.  209.85.255.190 0.0% 10 27.0 27.3 23.9 37.9 4.2
-        9.  gw-in-f100.1e100.net 0.0% 10 24.1 24.4 24.0 26.5 0.7
+    HOST: username.example.com              Loss%   Snt     Last    Avg     Best    Wrst    StDev
+        1.  256.129.75.4                    0.0%    10      0.4     0.4     0.3     0.6     0.1
+        2.  vlan804.tbr2.mmu.nac.net        0.0%    10      0.3     0.4     0.3     0.7     0.1
+        3.  0.e1-1.tbr2.tl9.nac.net         0.0%    10      4.3     4.4     1.3     11.4    4.1
+        4.  core1-0-2-0.lga.net.google.com  0.0%    10      64.9    11.7    1.5     64.9    21.2
+        5.  209.85.255.68                   0.0%    10      1.7     4.5     1.7     29.3    8.7
+        6.  209.85.251.9                    0.0%    10      23.1    35.9    22.6    95.2    27.6
+        7.  72.14.239.127                   0.0%    10      24.2    24.8    23.7    26.1    1.0
+        8.  209.85.255.190                  0.0%    10      27.0    27.3    23.9    37.9    4.2
+        9.  gw-in-f100.1e100.net            0.0%    10      24.1    24.4    24.0    26.5    0.7
 
-Used without the `--report` flag, `mtr` tracks the speed of the connection in real time until you exit the program. Additionally, be aware that `mtr` will pause for a few moments before generating output. For more information regarding `mtr` consider our [guide to diagnosing network issues with mtr](/docs/linux-tools/mtr).
+Used without the `--report` flag, `mtr` tracks the speed of the connection in real time until you exit the program. Be aware that `mtr` will pause for a few moments while generating output. For more information regarding `mtr` consider our [guide to diagnosing network issues with mtr](/docs/linux-tools/mtr).
 
 ## System Diagnostics
 
-If you're having an issue with your Linode that is neither related to [networking](#network_diagnostics), nor another easily diagnosable application issue, it is worthwhile to rule out "hardware" and operating system level issues. Use the following tools to better diagnose and resolve these kinds of issues.
+If you're having an issue with your Linode that is neither related to [networking](#network-diagnostics), nor another application issue, it may help to rule out "hardware" and operating system level issues. Use the following tools to better diagnose and resolve these.
 
-If you determine that you have a problem with memory usage, please reference our document regarding [resolving memory usage issues](/docs/troubleshooting/memory-networking). Use the following tools and approaches to determine the specific cause of your troubles.
+If you determine that you have a problem with memory usage, refer to our guide on [resolving memory usage issues](/docs/troubleshooting/memory-networking). Use the following tools and approaches to determine the specific cause of your troubles.
 
 ### Check Current Memory Usage
 
-If you need to see how much memory your system is using at the current moment issue the following command:
+To see how much memory your system is currently using:
 
     free -m
 
-On a moderately utilized Linode 1GB, this command will generate output that resembles the following:
+On a Linode 2GB under moderate use, the output should resemble the following:
 
-        total       used       free     shared    buffers     cached
-    Mem: 1002        956         46          0        171        357 
-    -/+ buffers/cache: 427      575 
-    Swap: 127         39         88
+                        total       used       free     shared    buffers     cached
+    Mem:                 1002        956         46          0        171        357 
+    -/+ buffers/cache:    427        575 
+    Swap:                 127         39         88
 
-This output takes a little bit of careful reading to interpret correctly. Out of a total 1002 megabytes of memory (RAM), the system is using 956 megabytes, and has 46 megabytes free. **However**, the system also has 427 megabytes of "stale" data buffered and stored in cache. The operating system will "drop" the caches when and if it needs the space, but retains the cache if there is no other need for the space. It is totally normal for a Linux system to leave old data in RAM until the space is needed, and you should not be alarmed if only a small amount of memory is actually "free."
+This output takes a bit of careful reading to interpret. Out of a total 1002 megabytes of memory (RAM), the system is using 956 megabytes, and has 46 megabytes free. *However*, the system also has 427 megabytes of "stale" data buffered and stored in cache. The operating system will "drop" the caches if it needs the space, but retains the cache if there is no other need for the space. It is normal for a Linux system to leave old data in RAM until the space is needed, so don't be alarmed if only a small amount of memory is "free."
 
 In the above example, there are 575 megabytes of memory that are actually *free*. This means 575 megabytes are available to your system when you start an additional process or a running application needs more memory.
 
-### Monitor IO Usage with vmstat
+### Monitor I/O Usage with vmstat
 
-The `vmstat` tool provides information about memory, swap utilization, IO wait, and system activity. It is particularly useful for diagnosing I/O-related issues.
+The `vmstat` tool provides information about memory, swap utilization, I/O wait, and system activity. It is particularly useful for diagnosing I/O-related issues.
 
 If you think you're having an I/O issue then run the following command:
 
@@ -242,7 +242,7 @@ If you're new to administering systems and the Linux world, you might consider o
 
 As always, if you are giving other users access to upload files to your server, it would be wise to consider the [security implications](/docs/security/basics) of all additional access that you grant to third parties seriously.
 
-### How to Upload files to a Remote Server
+### Upload Files to a Remote Server
 
 If you're used to using an FTP client, OpenSSH (which is included and active with all of the Linode provided installation templates) allows you to use an FTP-like interface over the SSH protocol. Known as "SFTP," many clients support this protocol, including: "[WinSCP](/docs/networking/file-transfer/transfer-files-winscp)" for Windows, "[Cyberduck](/docs/networking/file-transfer/transfer-files-cyberduck)" for Mac OS X, and "[Filezilla](/docs/networking/file-transfer/transfer-files-filezilla-ubuntu-9.10)" for Linux, OS X, and Windows desktops.
 
@@ -270,7 +270,7 @@ Additionally, we suggest the following best practices for maintaining security:
 -   Only run services on public interfaces that you are actively using. One common source of security vulnerabilities are in daemons that are left running and unused. This includes database servers, HTTP development servers, and FTP servers.
 -   Use SSH connections whenever possible to secure and encrypt the transfer of sensitive information.
 
-### Understanding and Using Sym Linking
+### Symbolic Links
 
 "Symbolic Linking," colloquially "sym linking," allows you to create an object in your filesystem that points to another object on your filesystem. This is useful when you need to provide users and applications access to specific files and directories without reorganizing your folders. This way you can provide restricted users access to your web-accessible directories without moving your `DocumentRoot` into their home directories.
 
@@ -289,7 +289,7 @@ Note the following features of the link command:
 -   You may remove a symbolic link without affecting the target file.
 -   You can use relative or absolute paths when creating a link.
 
-### How to Manage and Manipulate Files on a Linux System
+### Manage Files on a Linux System
 
 If you're new to using Linux and manipulating files on the terminal interface we encourage you to consider our [using the terminal](/docs/using-linux/using-the-terminal) document. This tip provides an overview of basic file management operations.
 
@@ -321,7 +321,7 @@ Contemporary Linux systems use package management tools to facilitate the instal
 
 While package management provides a number of powerful features, it is easy to obviate the benefits of package management. If you install software manually without package management tools, it becomes very difficult to keep your system up to date and to manage complex dependencies. For these reasons, we recommend installing all software through package management tools unless other means are absolutely necessary. The following tips outline a couple of basic package management tasks.
 
-### How to Know What Packages are Installed on Your System
+### Find Packages Installed on Your System
 
 Because packages are so easy to install, and often pull in a number of dependencies, it can be easy to lose track of what software is installed on your system. The following commands provide a list of installed packages on your system.
 
@@ -395,7 +395,7 @@ will return the same list as the plain "`dpkg -l`; however, the results will app
 
 You can append `| grep "[string]"` to these commands to filter package list results, or `| less` to display the results in a pager, regardless of distribution.
 
-### How to Discover Package Names and Information
+### Discover Package Names and Information
 
 Sometimes the name of a package doesn't correspond to the name that you may associate with a given piece of software. As a result, most package management tools make provide an interface to search the package database. These search tools may be helpful if you're looking for a specific piece of software but don't know what it's called.
 
