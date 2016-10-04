@@ -7,6 +7,7 @@ featured:
  - linux-security-basics.md
  - recovering-from-a-system-compromise.md
  - use-public-key-authentication-with-ssh.md
+ - gpg-key-for-ssh-authentication.md
  - full-disk-encryption.md
  - ossec-ids-debian-7.md
  - using-fail2ban-for-security.md
