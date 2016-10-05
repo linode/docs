@@ -6,7 +6,7 @@ description: 'Troubleshooting tips, basic Linux commands, and software usage sug
 keywords: 'linux tips,linux beginners,systems administration,admin,linux,mail,http,troubleshooting'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['using-linux/administration-basics/']
-modified: Wednesday, February 18, 2015
+modified: Wednesday, October 5th, 2016
 modified_by:
   name: Linode
 published: 'Sunday, December 13th, 2009'
@@ -184,7 +184,7 @@ If you think you're having an I/O issue then run the following command:
 
     vmstat 1 20
 
-This runs a vmstat every second, twenty times. We find this gives a pretty good sample of the current state of the system. The output generated resembles the following:
+This runs a vmstat every second, twenty times, giving a sample of the current state of the system. The output generated resembles the following:
 
     procs -----------memory---------- ---swap-- -----io---- -system-- ----cpu----
      r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa
@@ -209,7 +209,7 @@ This runs a vmstat every second, twenty times. We find this gives a pretty good 
      0  0      4  33388  47888 110912    0    0 0     0   89  144  0  0 100  0
      0  0      4  33380  47888 110912    0    0 0     0  181  185  0  0 99  0
 
-The memory and swap columns provide the same kind of information provided by the "[free -m](#check_current_memory_usage)" command, albeit in a slightly more difficult to comprehend format. The most salient information produced by this command is the `wa` column, which is the final column in most implementations. This field displays the amount of time the CPU spends waiting for IO operations to complete.
+The memory and swap columns provide the same kind of information provided by the "[free -m](#check_current_memory_usage)" command, albeit in a slightly harder to understand format. The most relevant information produced by this command is the `wa` column, which is the final column in most implementations. This field displays the amount of time the CPU spends waiting for IO operations to complete.
 
 If this number is consistently and considerably higher than 0, you might consider taking measures to address your IO usage. However, if the `vmstat` output resembles the above, you can be sure in the knowledge that you're not experiencing an IO-related issues.
 
@@ -217,83 +217,84 @@ If you are experiencing an intermittent issue, you will need to run `vmstat` *wh
 
 ### Monitor Processes, Memory, and CPU Usage with htop
 
-If you want a more organized and real-time view of the current state of your system, we recommend a tool called `htop`. This is not installed by default on most systems. To install `htop`, issue one of the following commands, depending on which distribution you use:
+If you want a more organized, real-time view of the current state of your system, we recommend a tool called `htop`. This is not installed by default on most systems. To install `htop`, issue one of the following commands, depending on which distribution you use:
 
     apt-get install htop
     yum install htop
     pacman -S htop
     emerge sys-process/htop
 
-Now, at a command line, issue the following command:
+To start the program:
 
     htop
 
 You can quit at any time by pressing the `F10` or `Q` keys. There are a couple of `htop` behaviors that may not be initially intuitive. Take note of the following:
 
 -   The memory utilization graph displays used memory, buffered memory, and cached memory. The numbers displayed at the end of this graph reflect the total amount of memory available and the total amount memory on the system as reported by the kernel.
--   The default configuration of `htop` presents all application threads as independent processes, which is non-intuitive. You can disable this by selecting the "setup" option with `F2`, then "Display Options," and then toggling the "Hide userland threads" option.
--   You can toggle a "Tree" view with the `F5` key that usefully displays the processes in a hierarchy and shows which processes were spawned by which other processes. This is helpful in diagnosing a problem when you're having trouble figuring out what processes are what.
+-   The default configuration of `htop` presents all application threads as independent processes, which may not be clear if you're not aware of it. You can disable this by selecting the "setup" option with `F2`, then "Display Options," and then toggling the "Hide userland threads" option.
+-   You can toggle a "Tree" view with the `F5` key that displays the processes in a hierarchy and shows which processes were spawned by other processes in an organized format. This is helpful in diagnosing a problem when you're having trouble figuring out what processes are what.
 
 ## File System Management
 
-Historically, web developers and editors have used the FTP protocol to transfer and manage files on a remote system. FTP, however, is very insecure and inefficient for managing the files on a system when you have SSH access.
+Web developers and editors often use the FTP protocol to transfer and manage files on a remote system. FTP, however, is very insecure and inefficient for managing the files on a system when you have SSH access.
 
-If you're new to administering systems and the Linux world, you might consider our "[Tools & Reference](/docs/tools-reference/)" section and articles including: "[installing and using WinSCP](/docs/networking/file-transfer/transfer-files-winscp)" [using rsync to synchronize files](/docs/linux-tools/utilities/rsync) and "[using SSH and the terminal](/docs/using-linux/using-the-terminal)."
+If you're new to Linux systems administration, consider our "[Tools & Reference](/docs/tools-reference/)" section and articles including: [installing and using WinSCP](/docs/networking/file-transfer/transfer-files-winscp), [using rsync to synchronize files](/docs/linux-tools/utilities/rsync) and [using SSH and the terminal](/docs/using-linux/using-the-terminal).
 
-As always, if you are giving other users access to upload files to your server, it would be wise to consider the [security implications](/docs/security/basics) of all additional access that you grant to third parties seriously.
+{: .caution}
+>If you are giving other users access to upload files to your server, consider the [security implications](/docs/security/basics) of all additional access that you grant to third parties.
 
 ### Upload Files to a Remote Server
 
-If you're used to using an FTP client, OpenSSH (which is included and active with all of the Linode provided installation templates) allows you to use an FTP-like interface over the SSH protocol. Known as "SFTP," many clients support this protocol, including: "[WinSCP](/docs/networking/file-transfer/transfer-files-winscp)" for Windows, "[Cyberduck](/docs/networking/file-transfer/transfer-files-cyberduck)" for Mac OS X, and "[Filezilla](/docs/networking/file-transfer/transfer-files-filezilla-ubuntu-9.10)" for Linux, OS X, and Windows desktops.
+If you're used to using an FTP client, OpenSSH (which is included and active with all of the Linode distribution images) allows you to use an FTP-like interface over the SSH protocol. Known as "SFTP," many clients support this protocol, including [WinSCP](/docs/networking/file-transfer/transfer-files-winscp) for Windows, [Cyberduck](/docs/networking/file-transfer/transfer-files-cyberduck) for Mac OS X, and [Filezilla](/docs/tools-reference/file-transfer/filezilla) for Linux, OS X, and Windows desktops.
 
-If you are accustomed to FTP, SFTP is great option. Do note that by default, whatever access a user has to a file system at the command line, they will also have over SFTP. Consider [file permissions](/docs/tools-reference/linux-users-and-groups) very carefully.
+If you are accustomed to FTP, SFTP will be very familiar to you. By default, whatever access a user has to a file system at the command line, they will also have over SFTP. Consider the implications of [file permissions](/docs/tools-reference/linux-users-and-groups) when configuring user access.
 
-Conversely, you can use Unix utilities including `scp` and [rsync](/docs/linux-tools/utilities/rsync) to securely transfer files to your Linode. On local machine, a command to copy `team-info.tar.gz` would look like:
+You can also use Unix utilities including `scp` and [rsync](/docs/linux-tools/utilities/rsync) to securely transfer files to your Linode. On local machine, a command to copy `team-info.tar.gz` would look like:
 
     scp team-info.tar.gz username@hostname.example.com:/home/username/backups/
 
-The command, `scp`, is followed by the name of the file on the local file system to be transferred. Next is the username and hostname of the remote machine, separated by an "at" sign (e.g. `@`). Following the hostname, there is a colon (e.g. `:`) and the path on the remote server where the file should be uploaded to. Taken another way, this command would be:
+The command, `scp`, is followed by the path of the file on the local file system to be transferred. Next is the username and hostname of the remote machine, separated by an "at" sign (`@`). Following the hostname, there is a colon (`:`) and the path on the remote server where the file should be uploaded to. Using a more generalized example:
 
     scp [/path/to/local/file] [remote-username]@[remote-hostname]:[/path/to/remote/file]
 
-This command is available by default on OS X and Linux machines. You can use it to copy files to a Linode, as well as between remote servers. If you have SSH keys deployed, you can use the `scp` command without entering a password for every transfer.
+This command is available by default on OS X and Linux machines. You can use it to copy files to a Linode, as well as between remote servers. If you use SSH keys, you can use the `scp` command without entering a password for every transfer.
 
 The syntax of `scp` follows the form `scp [source] [destination]`. You can copy files from a remote host to the local machine by reversing the order of the paths in the above example.
 
-### How to Protect Files on a Remote Server
+### Protect Files on a Remote Server
 
-Because Linode servers are network accessible and often have a number of distinct users, maintaining the security of files is often an important concern. We recommend you familiarize yourself with our [basic security guide](/docs/security/basics). Furthermore, our documentation of [access control with user accounts and permissions](/docs/tools-reference/linux-users-and-groups) may provide additional insight.
+Because Linode servers are network accessible and often have a number of distinct users, maintaining the security of files is often an important concern. We recommend you familiarize yourself with our [basic security guide](/docs/security/basics). Our guide on [access control with user accounts and permissions](/docs/tools-reference/linux-users-and-groups) may provide additional insight.
 
-Additionally, we suggest the following best practices for maintaining security:
+We suggest the following best practices for maintaining security:
 
--   Only give users the permission to do what they need to. This includes application specific users.
--   Only run services on public interfaces that you are actively using. One common source of security vulnerabilities are in daemons that are left running and unused. This includes database servers, HTTP development servers, and FTP servers.
+-   Only give users the permission to do what they need to. This includes application-specific users.
+-   Only run services on public interfaces that you are actively using. One common source of security vulnerabilities are in unused daemons that are left running. This includes database servers, HTTP development servers, and FTP servers.
 -   Use SSH connections whenever possible to secure and encrypt the transfer of sensitive information.
 
 ### Symbolic Links
 
-"Symbolic Linking," colloquially "sym linking," allows you to create an object in your filesystem that points to another object on your filesystem. This is useful when you need to provide users and applications access to specific files and directories without reorganizing your folders. This way you can provide restricted users access to your web-accessible directories without moving your `DocumentRoot` into their home directories.
+*Symbolic linking* colloquially "symlinking," allows you to create an object in your filesystem that points to another object on your filesystem. This is useful when you need to provide users and applications access to specific files and directories without reorganizing your folders. This way you can provide restricted users access to your web-accessible directories without moving your `DocumentRoot` into their home directories.
 
 To create a symbolic link, issue a command in the following format:
 
     ln -s /home/username/config-git/etc-hosts /etc/hosts
 
-This creates a link of the file `etc-hosts` at the location of the system's `/etc/hosts` file. More generically. this command would read:
+This creates a link of the file `etc-hosts` at the location of the system's `/etc/hosts` file. More generically:
 
     ln -s [/path/to/target/file] [/path/to/location/of/sym/link]
 
 Note the following features of the link command:
 
--   The final term, the location of the link, is optional. If you opt to omit the link destination, a link will be created in the current directory with the same name as the file you're linking to.
+-   The final term, the location of the link, is optional. If you omit the link destination, a link will be created in the current directory with the same name as the file you're linking to.
 -   When specifying the location of the link, ensure that path does not have a final trailing slash. You can create a sym link that *targets* a directory, but sym links cannot terminate with slashes.
 -   You may remove a symbolic link without affecting the target file.
 -   You can use relative or absolute paths when creating a link.
 
 ### Manage Files on a Linux System
 
-If you're new to using Linux and manipulating files on the terminal interface we encourage you to consider our [using the terminal](/docs/using-linux/using-the-terminal) document. This tip provides an overview of basic file management operations.
+If you're new to using Linux and manipulating files on the terminal interface we encourage you to consider our guide on [using the terminal](/docs/using-linux/using-the-terminal). This section provides a list of basic commands to manage the contents of your filesystem.
 
-To **copy** files, issue the following command:
+To **copy** files:
 
     cp /home/username/todo.txt /home/username/archive/todo.01.txt
 
@@ -301,67 +302,67 @@ This copies `todo.txt` to an archive folder, and adds a number to the file name.
 
     cp -R /home/username/archive/ /srv/backup/username.01/
 
-If you need to **move** a file or directory, use the following command:
+To **move** a file or directory:
 
     mv /home/username/archive/ /srv/backup/username.02/
 
 You can also use the `mv` command to rename a file.
 
-To **delete** a file, issue a command in the following form:
+To **delete** a file:
 
     rm scratch.txt
 
 This will delete the `scratch.txt` file from the current directory.
 
-For more information about file system navigation and manipulation, please consider our documentation of [file system navigation](/docs/using-linux/using-the-terminal#file_system_navigation) in the [using the terminal](/docs/using-linux/using-the-terminal) document.
+For more information about file system navigation and manipulation, please consider our documentation of [file system navigation](/docs/using-linux/using-the-terminal#file-system-navigation).
 
 ## Package Management
 
-Contemporary Linux systems use package management tools to facilitate the installation and maintenance of all software on your system. For more in-depth coverage of this topic, please reference our [package management](/docs/using-linux/package-management) guide.
+Most Linux systems use package management tools to facilitate the installation and maintenance of all software on your system. For more in-depth coverage of this topic, please reference our [package management](/docs/using-linux/package-management) guide.
 
-While package management provides a number of powerful features, it is easy to obviate the benefits of package management. If you install software manually without package management tools, it becomes very difficult to keep your system up to date and to manage complex dependencies. For these reasons, we recommend installing all software through package management tools unless other means are absolutely necessary. The following tips outline a couple of basic package management tasks.
+While these tools provides a number of powerful features, it is easy to look past the benefits of package management. If you install software manually without package management tools, it becomes difficult to keep your system up to date and to manage dependencies. For these reasons, we recommend installing all software through package management tools unless other means are absolutely necessary. The following tips outline a couple of basic package management tasks.
 
 ### Find Packages Installed on Your System
 
 Because packages are so easy to install, and often pull in a number of dependencies, it can be easy to lose track of what software is installed on your system. The following commands provide a list of installed packages on your system.
 
-**For Debian and Ubuntu systems**, issue the following command:
+**For Debian and Ubuntu systems**:
 
     dpkg -l
 
 The following example presents the first few lines of the output of this command on a production Debian Lenny system.
 
-    ||/ Name             Version              Description
+    ||/ Name                         Version                      Description
     +++-============================-============================-===============================
-    ii  adduser          3.110                add and remove users and groups
-    ii  apache2-mpm-itk      2.2.6-02-1+lenny2        multiuser MPM for Apache 2.2
-    ii  apache2-utils        2.2.9-10+lenny4          utility programs for webservers
-    ii  apache2.2-common         2.2.9-10+lenny4          Apache HTTP Server common files
-    ii  apt              0.7.20.2+lenny1          Advanced front-end for dpkg
-    ii  apt-utils            0.7.20.2+lenny1          APT utility programs
-    ii  bash             3.2-4                The GNU Bourne Again SHell
+    ii  adduser                      3.110                        add and remove users and groups
+    ii  apache2-mpm-itk              2.2.6-02-1+lenny2            multiuser MPM for Apache 2.2
+    ii  apache2-utils                2.2.9-10+lenny4              utility programs for webservers
+    ii  apache2.2-common             2.2.9-10+lenny4              Apache HTTP Server common files
+    ii  apt                          0.7.20.2+lenny1              Advanced front-end for dpkg
+    ii  apt-utils                    0.7.20.2+lenny1              APT utility programs
+    ii  bash                         3.2-4                        The GNU Bourne Again SHell
 
-**For CentOS and Fedora systems**, issue the following command:
+**For CentOS and Fedora systems**:
 
     yum list installed
 
-The following example presents a few relevant lines of the output of this command:
+The following example shows a few lines of this command's output:
 
-    MAKEDEV.i386                 3.23-1.2              installed
+    MAKEDEV.i386                 3.23-1.2                  installed
     SysVinit.i386                2.86-15.el5               installed
 
-CentOS and Fedora systems provide the name of the package (e.g. `SysVinit`), the architecture it was compiled for (e.g. `i386`), and the version of the build installed on the system (e.g. `2.86-15.el5`).
+CentOS and Fedora systems provide the name of the package (`SysVinit`), the architecture it was compiled for (`i386`), and the version of the build installed on the system (`2.86-15.el5`).
 
-**For Arch Linux systems**, issue the following command:
+**For Arch Linux systems**:
 
     pacman -Q
 
-This command provides a total list of all packages installed on the system. Arch also allows you to filter these results to display only packages that were explicitly installed (with the `-Qe` option) or that were installed as dependencies (with the `-Qd` option). The above command is thus the union of the output of the following commands:
+This command provides a total list of all packages installed on the system. Arch also allows you to filter these results to display only packages that were explicitly installed (with the `-Qe` option) or that were automatically installed as dependencies (with the `-Qd` option). The above command is actually a combination of the output of two commands:
 
     pacman -Qe
     pacman -Qd
 
-The following is a sample of the format of this output:
+The following is an example of the output:
 
     perl-www-mechanize 1.60-
     perl-yaml 0.70-1
@@ -370,11 +371,11 @@ The following is a sample of the format of this output:
     python 2.6.4-1
     rsync 3.0.6-1
 
-**For Gentoo Linux systems**, issue the following command:
+**For Gentoo Linux systems**:
 
     emerge -evp --deep world
 
-The following is a sample of the format of this output:
+The following is a sample of this output:
 
     These are the packages that would be merged, in order:
 
@@ -383,27 +384,27 @@ The following is a sample of the format of this output:
        [ebuild   R   ] virtual/libintl-0  0 kB
        [ebuild   R   ] sys-libs/zlib-1.2.3-r1  0 kB
 
-Because there are often a large number of packages installed on any given system, the output of these commands is often quite large. As a result, it is often useful to use tools like [grep](#how_to_search_for_a_string_in_files_with_grep) and `less` to make these results more useful. For example, the command :
+Because there are often a large number of packages installed on any given system, the output of these commands can be quite large. As a result, it is often useful to use tools like [grep](#search-for-a-string-in-files-with-grep) and `less` to make these results more useful. For example:
 
     dpkg -l | grep "python"
 
-will return a list of all packages with the word python in their name or description. Similarly, the following command:
+This will return a list of all packages with the word "python" in their name or description. Similarly, you can use `less`:
 
     dpkg -l | less
 
-will return the same list as the plain "`dpkg -l`; however, the results will appear in the `less` pager, which allows you to search and scroll more easily.
+This will return the same list as the plain "`dpkg -l`; however, the results will appear in the `less` [pager](https://en.wikipedia.org/wiki/Terminal_pager), which allows you to search and scroll more easily.
 
 You can append `| grep "[string]"` to these commands to filter package list results, or `| less` to display the results in a pager, regardless of distribution.
 
-### Discover Package Names and Information
+### Find Package Names and Information
 
-Sometimes the name of a package doesn't correspond to the name that you may associate with a given piece of software. As a result, most package management tools make provide an interface to search the package database. These search tools may be helpful if you're looking for a specific piece of software but don't know what it's called.
+Sometimes the name of a package isn't intuitive, based on the name of the software. As a result, most package management tools make provide an option to search the package database. These search tools may be helpful if you're looking for a specific piece of software but don't know what it's called.
 
-**For Debian and Ubuntu systems**, issue the following command:
+**For Debian and Ubuntu systems**:
 
     apt-cache search [package-name]
 
-This will search the local package database for a given term and generate a list with brief descriptions. An excerpt of the output for `apt-cache search python` follows:
+This will search the local package database for a given term and generate a list with descriptions. An excerpt of the output for `apt-cache search python` follows:
 
     txt2regex - A Regular Expression "wizard", all written with bash2 builtins
     vim-nox - Vi IMproved - enhanced vi editor
@@ -416,17 +417,17 @@ This will search the local package database for a given term and generate a list
     python-pygresql-dbg - PostgreSQL module for Python (debug extension)
     python-samba - Python bindings that allow access to various aspects of Samba
 
-Note that `apt-cache search` queries the full records for all of the packages, and not simply the titles and the descriptions displayed here, hence the inclusion of `vim-nox` and `groovy` which both mention python in their descriptions. To see the full record on a package issue the following command:
+Note that `apt-cache search` queries the full records for all of the packages, and not simply the titles and the descriptions displayed here, hence the inclusion of `vim-nox` and `groovy` which both mention python in their descriptions. To see the full record on a specific package:
 
     apt-cache show [package-name]
 
-This provides information regarding the maintainer, the dependencies, the size, the homepage of the upstream project, and a description of the software. This command can be used to provide additional information about a package from the command line.
+This provides information regarding the maintainer, the dependencies, the size, the homepage of the upstream project, and a description of the software.
 
-**For CentOS and Fedora systems**, issue the following command:
+**For CentOS and Fedora systems**:
 
     yum search [package-name]
 
-This generates a list of all packages available in the package database that match the given term. See the following excerpt for an example of the output of `yum search wget`:
+This generates a list of all packages available in the package database that match the given term. The following is an example of the output of `yum search wget`:
 
     Loaded plugins: fastestmirror
      Loading mirror speeds from cached hostfile
@@ -443,29 +444,29 @@ You can use the package management tools to discover more information about a sp
 
 This output presents more in-depth information concerning the package, its dependencies, origins, and purpose.
 
-**For Arch Linux systems**, issue the following command:
+**For Arch Linux systems**:
 
     pacman -Ss [package-name]
 
-This will perform a search of the local copy of the package database. Here is an excerpt of results for a search for "python:
+This will perform a search of the local package database. Here is an excerpt of results for a search for "python":
 
     extra/twisted 8.2.0-1
         Asynchronous networking framework written in Python.
     community/emacs-python-mode 5.1.0-1
         Python mode for Emacs
 
-The terms "extra" and "community" refer to which repository the software is located in. This level of specificity is unnecessary when specifying packages to install or display more information about. To request more information about a specific package issue a command in the following form:
+The terms "extra" and "community" refer to which repository the software is located in. To request more information about a specific package issue a command in the following form:
 
     pacman -Si [package-name]
 
-Running `pacman` with the `-Si` option generates the package's record from the database. This record includes information about dependencies, optional dependencies, package size, and a brief description.
+Running `pacman` with the `-Si` option generates the package's record from the database. This record includes dependencies, package size, and a brief description.
 
-**For Gentoo Linux systems**, issue one of the following commands:
+**For Gentoo Linux systems**:
 
     emerge --search [package-name]
     emerge --searchdoc [package-name]
 
-The first command only searches the database for package names. The second command searches through the database for package names and descriptions. These commands will allow you to search your local package tree (i.e. portage) for the specific package name or term. The output of either command is similar to the excerpt presented bellow.
+The first command only searches the database for package names. The second command searches through the database for package names and descriptions. These commands will allow you to search your local package tree (i.e. portage) for the specific package name or term. The output of either command is similar to the excerpt below.
 
     Searching...   
      [ Results for search key : wget ]
@@ -479,63 +480,63 @@ The first command only searches the database for package names. The second comma
            Description:   Wget interface for Emacs
            License:       GPL-2
 
-Because the output provided by the `emerge --search` command is rather verbose, there is no "show more information" tool, unlike other distributions' tools. The `emerge --search` command accepts input in the form of a regular expression if you need to narrow results even further.
+Because the output provided by the `emerge --search` command is verbose, there is no "show more information" tool, unlike other distributions' tools. The `emerge --search` command accepts input in the form of a regular expression if you need to narrow results even further.
 
-Since there are often a large number of results for package searches, these commands output a great quantity of text. As a result it is often useful to use tools like [grep](#how_to_search_for_a_string_in_files_with_grep) and `less` to make these results easier to scroll. For example, the command :
+Since there are often a large number of results for package searches, these commands output a great quantity of text. As a result it is often useful to use tools like [grep](#search-for-a-string-in-files-with-grep) and `less` to make these results easier to scroll through. For example:
 
     apt-cache search python | grep "xml"
 
-will return the subset of the list of packages which matched for the search term "python," and that mention xml in their name or short description. Similarly, the following command:
+This will return the subset of the list of packages which matched for the search term "python," and that mention xml in their name or short description. Similarly:
 
     apt-cache search python | less
 
-will return the same list as the plain `apt-cache search python` but the results will appear in the `less` pager. This allows you to search and scroll more conveniently.
+This will return the same list as the plain `apt-cache search python` but the results will appear in the `less` pager. This allows you to search and scroll more conveniently.
 
 You can append `| grep "[string]"` to any of these commands to filter package search results, or `| less` to display the results in the `less` pager, regardless of distribution.
 
 ## Text Manipulation
 
-Among Linux and UNIX-like systems, nearly all system configuration information is stored and manipulated in plain text form. These tips provide some basic information regarding the manipulation of text files on your system.
+Among Linux and UNIX-like systems, nearly all system configuration information is stored and manipulated in plain text form. These following sections show a list of basic Linux commands and tools to manipulate text files.
 
-### How to Search for a String in Files with grep
+### Search for a String in Files with grep
 
-The `grep` tool allows you to search a stream of text, such as a file or the output of a command, for a term or pattern matching a regular expression.
+The `grep` tool allows you to search a stream of text, such as a file or the output of a command, for a term or regex pattern.
 
-To use the `grep` tool, issue a command in the following format:
+To use the `grep` tool, let's review an example:
 
     grep "^Subject:.*HELP.*" /home/username/mbox
 
-This will search the mail spool for subject lines (i.e. begins with the word "Subject:"), beginning with any number of characters, containing the word "help" in upper case, and followed by any number of additional characters. `grep` would then print these results on the terminal.
+This will search your mail spool for subject lines (i.e. begins with the word "Subject:"), beginning with any number of characters, containing the word "help" in upper case, and followed by any number of additional characters. `grep` would then print these results on the terminal.
 
-`grep` provides a number of additional options that, if specified, force the program to output the context for each match (e.g. with `-C 2` for two lines of context). With `-n`, `grep` outputs the line number of the match. With `-H`, `grep` prints the file name for each match, which is useful when you "grep" a group of files or "grep" recursively through a file system (e.g. with `-r`). Consider the output of `grep --help` for more options.
+`grep` provides additional options that, if specified, force the program to output the context for each match (e.g. with `-C 2` for two lines of context). With `-n`, `grep` outputs the line number of the match. With `-H`, `grep` prints the file name for each match, which is useful when you "grep" a group of files or "grep" recursively through a file system (using `-r`). Use `grep --help` for more options.
 
-To grep a group of files, you can specify the file with a wildcard, as in the following example:
+To grep a group of files, you can specify the file with a wildcard:
 
     grep -i "morris" ~/org/*.txt
 
 This will find and match against every occurrence of the word "morris," while ignoring case (because of the option for `-i`). `grep` will search all files in the `~/org/` directory with a .txt extension.
 
-You can use `grep` to filter the results of another command that sends output to standard out (e.g. `stdout`). This is accomplished by "piping" the output of one command "into `grep`." For instance:
+You can use `grep` to filter the results of another command that sends output to standard out (`stdout`). This is done by "piping" the output of one command into `grep`. For instance:
 
     ls /home/username/data | grep "1257"
 
-In this example, we assume that the `/home/username/data` directory contains a large number of files that have a UNIX time stamp in their file name. The above command will filter the output to only display those tiles that have the four digits "1257" in their file name. Note, in these cases `grep` only filters the output of `ls` and does not look into file contents. For more information regarding `grep` consider the full documentation of the [grep command](/docs/tools-reference/search-and-filter-text-with-grep).
+In this example, we assume that the `/home/username/data` directory contains a large number of files that have a UNIX time stamp in their file name. The above command will filter the output to only display those tiles that have the four digits "1257" in their file name. In these cases, `grep` only filters the output of `ls` and does not look into file contents. For more information regarding `grep`, refer to our full documentation of the [grep command](/docs/tools-reference/search-and-filter-text-with-grep).
 
-### How to Search and Replace Across a Group of Files
+### Search and Replace Across a Group of Files
 
-While the [grep](#how_to_search_for_a_string_in_files_with_grep) tool is quite powerful for filtering text on the basis of regular expressions, if you need to edit a file or otherwise manipulate the text you may use the `sed` tool. `sed`, or the Stream EDitor, allows you search for a regular expression pattern and replace it with another string.
+While the [grep](#search-for-a-string-in-files-with-grep) tool is quite powerful for filtering text on the basis of regular expressions, if you need to edit a file or otherwise manipulate the text, you can use the `sed` tool. `sed`, or the Stream EDitor, allows you search for a regex pattern and replace it with another string.
 
-`sed` is extremely powerful, and we recommend that you back up your files and test your `sed` commands thoroughly before running them, particularly if you're new to using `sed`. Here is a very simple `sed` one-liner, intended to illustrate its syntax.
+`sed` is extremely powerful, and we recommend that you back up your files and test your `sed` commands thoroughly before running them. Here is a very simple `sed` one-liner, intended to illustrate its syntax:
 
     sed -i `s/^good/BAD/` morning-star.txt
 
-This replaces occurrences of the word "good" occurring at the beginning of a line (as noted by the `^`) with the string "BAD" in the file `morning-star.txt`. The option `-i` tells `sed` to perform the replacements "in place." `sed` can make backups of the files it edits if you specify a suffix after the `-i` option, as in `-iBAK`. In the above command this option would save the original file as `morning-star.txt.BAK` before making changes.
+This replaces occurrences of the word "good" occurring at the beginning of a line (noted by the `^`) with the string "BAD" in the file `morning-star.txt`. The option `-i` tells `sed` to perform the replacements "in place." `sed` can make backups of the files it edits if you specify a suffix after the `-i` option, as in `-iBAK`. In the above command this option would save the original file as `morning-star.txt.BAK` before making changes.
 
-We can surmise that the format of a `sed` statement is:
+The general format of a `sed` statement is:
 
     's/[regex]/[replacement]/'
 
-To match literal slashes (e.g. `/`), you must escape them with a backslash (e.g. `\`). As a result, to match a `/` character you would use `\/` in the `sed` expression. If you are searching for a string that has a number of slashes, you can replace the slashes which another character. For instance:
+To match literal slashes (e.g. `/`), you must escape them with a backslash (e.g. `\`). As a result, to match a `/` character you would use `\/` in the `sed` expression. If you are searching for a string that has multiple slashes, you can replace the slashes which another character. For instance:
 
     's|r/e/g/e/x|regex|'
 
@@ -545,149 +546,149 @@ The following example, from our [migrating a server to your Linode](/docs/migrat
 
     sed -i 's/98\.76\.54\.32/12\.34\.56\.78/'
 
-In the above example, period characters are escaped as `\.`. In regular expressions the full-stop (period) character matches to any character.
+In the above example, period characters are escaped as `\.`. In regular expressions the full-stop (period) character matches to any character if it is not escaped.
 
-Once again, `sed` is a very powerful and useful tool; however, if you are unfamiliar with it, we strongly recommend testing your search and replace patterns before making any edit of consequence. For more information about `sed` consider the full documentation of [text manipulation with sed](/docs/tools-reference/tools/manipulate-text-from-the-command-line-with-sed).
+For more information about `sed` refer to our full documentation of [text manipulation with sed](/docs/tools-reference/tools/manipulate-text-from-the-command-line-with-sed).
 
-### How to Edit Text Interactively
+### Edit Text
 
-In many Linode documents, you may be instructed to edit the contents of a file. To do this, you need to use a text editor. Most of the distribution templates that Linode provides come with an implementation of the vi/vim text editor and the nano text editor. These are small, lightweight, and very powerful text editors that allow you manipulate the text of a file from the terminal environment.
+In many Linode documents, you may be instructed to edit the contents of a file. To do this, you need to use a text editor. Most of the distribution templates that Linode provides come with an implementation of the vi/vim text editor and the nano text editor. These are small, lightweight, and powerful text editors that allow you manipulate the text of a file from the terminal environment.
 
-There are other options for text editors, notably emacs and "zile." Feel free to install these programs using your operating system's package manager. Make sure you [search your package database](#how_to_discover_package_names_and_information) so that you can install a version compiled without GUI components (i.e. X11).
+There are other options for text editors, notably emacs and "zile." Feel free to install these programs using your operating system's package manager. Make sure you [search your package database](#find-package-names-and-information) so you can install a version compiled without GUI components (i.e. X11).
 
-To open a file, simply issue a command beginning with the name of the editor you wish to run followed by the name of the file you wish to edit. Here are a number of example commands that open the `/etc/hosts` file:
+To open a file, issue a command beginning with the name of the editor you wish to run followed by the name of the file you wish to edit. Here are a number of example commands that open the `/etc/hosts` file:
 
     nano /etc/hosts
     vi /etc/hosts
     emacs /etc/hosts
     zile /etc/hosts 
 
-When you've made edits to a file, you can save and exit the editor to return to the prompt. This procedure varies between different editors. In emacs and zile, the key sequence is the same: depress control and type x and s to save. This operation is typically notated "C-x C-s" and then "C-x C-c" to close the editor. In nano, press Control-O (notated \^O) and confirm the file name to write the file, and type \^X to exit from the program.
+When you've edited a file, you can save and exit the editor to return to the prompt. This procedure varies between different editors. In emacs and zile, the key sequence is the same: press control and type x and s to save. This operation is typically notated "C-x C-s" and then "C-x C-c" to close the editor. In nano, press Control-O (notated \^O) and confirm the file name to write the file, and use Control-X to exit from the program.
 
-Since vi and vim are modal editors, their operation is a bit more complex. After opening a file in vi, you can enter "insert" mode by pressing the "i" key; this will let you edit text in the conventional manner. To save the file, you must exit into "normal" mode by pressing the escape key (`Control-[` also sends escape), and then type `:wq` to write the file and quit the program.
+Since vi and vim are *modal* editors, their operation is a bit more complex. After opening a file in vi, you can enter "insert" mode by pressing the "i" key; this will let you edit text in the conventional way. To save the file, you must exit into "normal" mode by pressing the escape key (`Control-[` also sends escape), and then type `:wq` to write the file and quit the program.
 
-This provides only the most basic outline of how to use these text editors, and there are numerous external resources which will provide a more thorough introduction for more advanced use of this software.
+This provides only the most basic outline of how to use these text editors, and there are numerous external resources which will provide instructions for more advanced use of this software.
 
 ## Web Servers and HTTP Issues
 
-Linodes do not come with any particular web server installed by default. You have the choice and power to install and configure your web server as you see fit. This allows you to deploy a configuration in a way that makes sense for your application and desired use case. [Linode Guides & Tutorials](/) contains a number of documents regarding the installation and maintenance of various [web servers](/docs/web-servers/).
+Linodes do not come with a web server installed by default. You must install and configure your web server. This allows you to configure your web server in a way that makes sense for your application or website. [Linode Guides & Tutorials](/docs) contains a number of documents regarding the installation and maintenance of various [web servers](/docs/websites/).
 
-The following tips cover a number of basic web serving tasks and functions, as well as some guidance for users new to the world of web servers.
+This section covers a number of basic web serving tasks and functions, as well as some guidance for users new to the world of web servers.
 
-### How to Serve Websites
+### Serve Websites
 
-Web servers work by listening on a TCP port, typically port 80 for "http" and port 443 for "https." When a visitor makes a request for content, the servers respond by delivering the resource requested. Typically resources are specified with a URL that contains the protocol, `http` or `https`; a colon and two slashes, `://`; hostname or domain, `www.example.com` or `username.example.com`; and the path to a file, `/images/avatar.jpg,` or `index.html`. Thus a full URL would resemble: `http://www.example.com/images/avatar.jpg`.
+Web servers work by listening on a TCP port, typically port 80 for HTTP and port 443 for HTTPS. When a visitor makes a request for content, the servers respond by delivering the resource requested. Typically resources are specified with a URL that contains the protocol, `http` or `https`; a colon and two slashes, `://`; hostname or domain, `www.example.com` or `username.example.com`; and the path to a file, `/images/avatar.jpg,` or `index.html`. A full URL would resemble `http://www.example.com/images/avatar.jpg`.
 
-In order to provide these resources to connected users, your Linode needs to be running a web server. There are multiple different HTTP servers and countless configurations to provide support for various web development frameworks. The three most popular general use web servers are the [Apache HTTP](/docs/web-servers/apache) server, [Lighttpd server](/docs/web-servers/lighttpd) ("Lighty"), and [nginx server](/docs/web-servers/) ("Engine X"). Each server has its strengths and weaknesses, and your choice depends largely on your experience and the nature of your needs.
+In order to provide these resources to users, your Linode needs to be running a web server. There are many different HTTP servers and countless configurations to provide support for various web development frameworks. The three most popular general use web servers are the [Apache HTTP](/docs/websites/apache) server, [Lighttpd](/docs/websites/lighttpd) ("Lighty"), and [nginx](/docs/websites/nginx) ("Engine X"). Each server has its strengths and weaknesses, and your choice depends largely on your experience and your needs.
 
 Once you've chosen a web server, you need to decide what (if any) scripting support you need to install. Scripting support allows you to run dynamic content with your web server and program server side scripts in languages such as Python, PHP, Ruby, and Perl.
 
-If you need a full web application stack, we encourage you to consider one of our more full-featured [LAMP stack guides](/docs/lamp-guides/). If you need support for a specific web development framework, consult our tutorials for installing and using specific [web development frameworks](/docs/frameworks/).
+If you need a full web application stack, we encourage you to consider one of our more full-featured [LAMP stack guides](/docs/websites/lamp/). If you need support for a specific web development framework, consult our tutorials for installing and using specific [web application frameworks](/docs/websites/frameworks/).
 
 ### How to Choose a Web Server
 
-In most situations, end users are completely oblivious to which web server you use. As a result, choosing a web server is often a highly personal decision based on the comfort of the administrator and the requirements of the deployment in question. This can be a challenge for the new systems administrator. This tip attempts to offer some guidance by providing some background and information which might be helpful during this process.
+In most situations, end users are unaware of which web server you use. As a result, choosing a web server is often a personal decision based on the comfort of the administrator and the requirements of the deployment in question. This can be a challenge for the new systems administrator. This section offers some guidance by providing some background and information on the most popular web servers.
 
-The [Apache HTTP Server](/docs/web-servers/apache/) is considered by many to be the *de facto* standard web server. It is the most widely deployed open source web server, its configuration interface has been stable for many years, and its modular architecture allows it to function in many different types of deployments. Apache forms the foundation of the [LAMP stack](/docs/lamp-guides), and contains superb support for integrating dynamic server-side applications into the web server.
+The [Apache HTTP Server](/docs/web-servers/apache/) is considered by some to be the *de facto* standard web server. It is the most widely deployed open source web server, its configuration interface has been stable for many years, and its modular architecture allows it to function in many different types of deployments. Apache forms the foundation of the [LAMP stack](/docs/lamp-guides), and supports the integration of dynamic server-side applications into the web server.
 
-By contrast, web servers like [Lighttpd](/docs/web-servers/lighttpd) and [nginx](/docs/web-servers/nginx/) are highly optimized for serving static content in an efficient manner. If you have a deployment where server resources are limited and are facing a great deal of demand, consider one of these servers. They are very functional and run very well with minimal systems resources. Lighttpd and nginx can be more complex to set up than Apache, and can be difficult to configure with regards to integration with dynamic content interpreters. Furthermore, as these servers are more directed at niche use cases, there are more situations and applications which remain undocumented.
+By contrast, web servers like [Lighttpd](/docs/websites/lighttpd) and [nginx](/docs/websites/nginx/) are optimized for efficiently serving static content. If you have a deployment where server resources are limited and are facing a great deal of demand, consider one of these servers. They are functional and stable with minimal system resources. Lighttpd and nginx can be more difficult to configure when integrating dynamic content interpreters.
 
-Finally the [Cherokee web server](/docs/web-servers/cherokee/) provides a general purpose web server with an easy to configure interface. Cherokee might be a good option for some basic deployments.
+Finally the [Cherokee web server](/docs/websites/cherokee/) provides a general purpose web server with an easy to configure interface. Cherokee might be a good option for some basic deployments, although it has fallen out of popularity in recent years.
 
-Remember that the choice of web servers is often contextually determined. Specific choices depend on factors like: the type of content you want to serve, the demand for that content, and your comfort with that software as an administrator.
+Your choice of web servers is based on your needs. Specific choices depend on factors like the type of content you want to serve, the demand for that content, and your comfort with that software as an administrator.
 
-### Reading Apache Logs
+### Apache Logs
 
-Often, when there is something wrong with an [Apache web sever](/docs/web-servers/apache) configuration or site, it is difficult to determine what the cause of the error is from the behavior of the web server. There are a number of common issues with which you might begin your [troubleshooting efforts](/docs/web-servers/apache/troubleshooting/). However, when more complex issues arise it is important to review the Apache error logs.
+When there is something wrong with [Apache](/docs/websites/apache), it can be difficult to determine what the cause of the error is from the behavior of the web server. There are a number of common issues with which you might begin your [troubleshooting](/docs/troubleshooting/troubleshooting-common-apache-issues/) efforts. When more complex issues arise, you may need to review the Apache error logs.
 
-By default, error logs are located in the /var/log/apache2/error.log file. You can track or "tail" this log with the following command:
+By default, error logs are located in the `/var/log/apache2/error.log` file (on Debian-based distributions). You can track or "tail" this log with the following command:
 
     tail -F /var/log/apache2/error.log
 
-In the default virtual host configurations suggested in our [Apache installation](/docs/web-servers/apache/) and [LAMP guides](/docs/lamp-guides), we suggest the following error logging setup:
+In the default virtual host configurations suggested in our [Apache installation](/docs/websites/apache/) and [LAMP guides](/docs/websites/lamp), we suggest adding a custom log setting:
 
 {: .file-excerpt }
 Apache Virtual Host Configuration
 :   ~~~
-    ErrorLog /srv/www/example.com/logs/error.log CustomLog /srv/www/example.com/logs/access.log combined
+    ErrorLog /var/www//html/example.com/logs/error.log CustomLog /var/www/html/example.com/logs/access.log combined
     ~~~
 
-Where `example.com` represents the name of your virtual host, and the location of relevant files. These configuration directives make Apache create two log files that contain logging information specific to that virtual host. This allows you to easily troubleshoot errors on specific virtual hosts. To track or tail the error log, issue the following command:
+Where `example.com` represents the name of your virtual host, and the location of its resources. These directives make Apache create two log files that contain logging information specific to that virtual host. This allows you to easily troubleshoot errors on specific virtual hosts. To track or tail the error log:
 
-    tail -F /srv/www/example.com/logs/error.log
+    tail -F /var/www/html/example.com/logs/error.log
 
-This will allow you to see new error messages as they appear. Often problems can be diagnosed by using specific parts of an error message from an Apache log as a term in Web search (e.g. Google.) Common errors to look for include:
+This will allow you to see new error messages as they appear. Problems can be diagnosed by using specific parts of an error message from an Apache log as a term in web search. Common errors to look for include:
 
--   Missing files, or errors in file names.
--   Permissions errors.
--   Configuration errors.
--   Dynamic code execution or interpretation errors.
+-   Missing files, or errors in file names
+-   Permissions errors
+-   Configuration errors
+-   Dynamic code execution or interpretation errors
 
 ## DNS Servers and Domain Names
 
-The *Domain Name System*, or DNS, is the service that the Internet uses to associate the hard to remember and manage IP addresses with more human-usable domain names. These tips address several specific DNS related tasks. To learn more about DNS consider our [overview of the domain name system](/docs/dns-guides/introduction-to-dns). If you are familiar with DNS and just need to figure out how to set up your DNS server, consider our documentation of the [Linode DNS manager](/docs/dns-guides/configuring-dns-with-the-linode-manager).
+The *Domain Name System*, or DNS, is the service that the Internet uses to associate the hard to remember and manage IP addresses with more human-usable domain names. This section will address several specific DNS-related tasks. To learn more about DNS, check out our [overview of the domain name system](/docs/networking/dns/dns-records-an-introduction). If you are familiar with DNS and just need to figure out how to configure your DNS server, see our guide for the [Linode DNS manager](/docs/networking/dns/dns-manager-overview).
 
-### Using CNAMEs to Redirect DNS Queries
+### Redirect DNS Queries with CNAMEs
 
-[CNAME DNS records](/docs/dns-guides/introduction-to-dns#cname_records) make it possible to redirect requests for one hostname or domain to another hostname or domain. This is useful in situations where you want to direct requests for one domain to another, but don't want to set up the web-server to handle requests.
+[CNAME DNS records](/docs/networking/dns/dns-records-an-introduction#cname) make it possible to redirect requests for one hostname or domain to another hostname or domain. This is useful in situations where you want to direct requests for one domain to another, but don't want to set up the web server to handle requests.
 
-CNAMEs are **only** valid when pointing from one domain to another. If you need to redirect a full URL, you will need to set up a web server and [configure redirection](/docs/web-servers/apache/configuration/redirecting-urls) and/or virtual hosting on the server level. CNAMEs will allow you to redirect subdomains, such as `team.example.com`, to other subdomains or domains, such as `jack.example.org`. CNAMEs must point a valid a domain that has a valid A Record, or to another CNAME.
+CNAMEs are *only* valid when pointing from one domain to another. If you need to redirect a full URL, you will need to set up a web server and [configure redirection](/docs/websites/apache-tips-and-tricks/redirect-urls-with-the-apache-web-server) and/or virtual hosting on the server level. CNAMEs will allow you to redirect subdomains, such as `team.example.com`, to other subdomains or domains, such as `jack.example.org`. CNAMEs must point a valid a domain that has a valid A Record, or to another CNAME.
 
-Although limited in their capabilities, CNAMEs can be quite useful in some situations. In particular, if you need to change the hostname of a machine, CNAMEs are quite useful. To learn how to set up CNAME records with the [Linode Manager](http://manager.linode.com//), consult our documentation of the [Linode DNS Manager](/docs/dns-guides/configuring-dns-with-the-linode-manager).
+Although limited in their capabilities, CNAMEs can be quite useful in some situations. In particular, if you need to change the hostname of a machine, CNAMEs are quite useful. To learn how to set up CNAME records with the [Linode Manager](https://manager.linode.com//), refer to our [DNS Manager Guide](/docs/networking/dns/dns-manager-overview).
 
-### How to Set Up Subdomains
+### Set Up Subdomains
 
-When [reading domain names](/docs/dns-guides/introduction-to-dns#anatomy_of_a_domain_name), we commonly refer to parts before the main or first-level domain as "sub-domains." For example, in the domain `team.example.com`, `team` is a sub-domain for the root domain `example.com`.
+When [reading domain names](/docs/networking/dns/dns-records-an-introduction#domain-names), we refer to parts before the main or first-level domain as "subdomains." For example, in the domain `team.example.com`, `team` is a subdomain for the root domain `example.com`.
 
-If you want to [create and host a sub-domain](/docs/dns-guides/introduction-to-dns#configuring_subdomains), consider the following process:
+Follow these steps to [create and host a sub-domain](/docs/networking/dns/common-dns-configurations#configuring-subdomains):
 
-First we need to create an [A Record](/docs/dns-guides/introduction-to-dns#a_aaaa_records) in the DNS zone for the domain. This is easily accomplished when using the [Linode DNS Manager](/docs/dns-guides/configuring-dns-with-the-linode-manager). As always, you may host the DNS for your domain with any provider you choose.
+1.  First, create an [A Record](/docs/networking/dns/dns-records-an-introduction#a-and-aaaa) in the DNS zone for the domain. You can do this using the [Linode DNS Manager](/docs/networking/dns/dns-manager-overview). You may host the DNS for your domain with any provider you choose.
 
-In order for your server to respond to requests for this domain, you must set up a server to respond to these requests. For web servers like [Apache](/docs/web-servers/apache/) this requires [configuring a new virtual host](/docs/web-servers/apache/installation/debian-5-lenny#configure_apache_for_named_based_virtual_hosting). For XMPP Servers you must [configure an additional host](/docs/applications/messaging/instant-messaging-services-with-ejabberd-on-ubuntu-12-04-precise-pangolin#hostnames_and_virtual_hosting) to receive the requests for this host. For more information, consult the documentation for the specific server you wish to deploy.
+2.  Set up a server to respond to requests sent to this domain. For web servers like [Apache](/docs/websites/apache/), this requires configuring a new virtual host. For XMPP servers you must configure an additional host to receive the requests for this host. For more information, consult the documentation for the specific server you wish to deploy.
 
-Once configured, subdomains function identically to first-level domains on your server in almost all respects. If you need to, you can set up HTTP redirection for the new sub domain.
+3.  Once configured, subdomains function almost identically to root domains on your server. If you need to, you can set up HTTP redirection for the new sub domain.
 
 ## SMTP Servers and Email Issues
 
-We provide a number of guides that cover [email-related issues](/docs/email/). The following tips attempt to further demystify email management.
+We provide a number of guides that cover [email-related topics](/docs/email/). In this section, we'll explain how to choose an email setup that fits your needs and how to configure your Linode to send email.
 
-### Choosing an Email Solution
+### Choose an Email Solution
 
-There are two major components of the email stack that are typically required for basic email functionality. The most important part of the tool chain is the SMTP server or "Mail Transfer Agent." The MTA, as it is often called, sends mail from one server to another. The second crucial part of an email system is a server that permits users to access and download that mail from the server to their own machine. Typically these server use a protocol such as POP3 or IMAP to provide remote access to the mailbox.
+There are two major components that are required for email functionality. The most important part is the SMTP server or "Mail Transfer Agent." The MTA, as it is often called, sends mail from one server to another. The second part of an email system is a server that permits users to access and download that mail from the server to their own machine. Typically these server use a protocol such as POP3 or IMAP to provide remote access to the mailbox.
 
-There are additional components in the email server tool chain. These components may or may not be optional depending on the requirements of your deployment. They include filtering and delivery tools like [procmail](http://www.procmail.org/), anti-virus filters like [ClamAV](http://www.clamav.net/), mailing list managers like [MailMan](http://www.gnu.org/software/mailman/index.html), and spam filters like [SpamAssassin](http://spamassassin.apache.org/). These components function independently of which MTA and remote mailbox accessing server you chose to deploy.
+There may also be other components in the email server tool chain. These components may be optional depending on the requirements of your deployment. They include filtering and delivery tools like [procmail](http://www.procmail.org/), anti-virus filters like [ClamAV](https://www.clamav.net/), mailing list managers like [MailMan](https://www.gnu.org/software/mailman/index.html), and spam filters like [SpamAssassin](https://spamassassin.apache.org/). These components function independently of the MTA and remote mailbox server.
 
-The most prevalent SMTP servers or MTAs in the UNIX-like world are [Postfix](http://www.postfix.org/), [Exim](http://www.exim.org/), and [Sendmail](http://www.sendmail.org/). Sendmail has the longest history and many systems administrators have extensive experience with it. Postfix is robust and modern, and is compatible with many different deployment types. Exim is the default MTA in Debian systems, and many consider it to be easier to use for basic tasks. For remote mailbox access, servers like [Courier](/docs/email/postfix/courier-mysql-debian-5-lenny) and [Dovecot](http://www.dovecot.org/) are widely deployed to provide remote access to mailboxes.
+The most prevalent SMTP servers or MTAs in the UNIX-like world are [Postfix](http://www.postfix.org/), [Exim](https://www.exim.org/), and [Sendmail](http://www.sendmail.org/). Sendmail has the longest history and many systems administrators have extensive experience with it. Postfix is robust and modern, and is compatible with many different configurations. Exim is the default MTA in Debian systems, and many consider it to be easier to use for basic tasks. For remote mailbox access, servers like [Courier](http://www.courier-mta.org/) and [Dovecot](https://www.dovecot.org/) are popular options.
 
-If you are in need of an integrated and easy to install email solution we encourage you to consider the [Citadel groupware server](/docs/email/citadel/). Citadel provides an integrated "turnkey" solution that includes an SMTP server, remote mailbox access, real time collaboration tools including XMPP, and a shared calendar interface. Along similar lines, we also provide documentation for the installation of the [Zimbra groupware server](/docs/email/zimbra).
+If you need an easy-to-install email solution, consider the [Citadel groupware server](/docs/email/citadel/). Citadel provides an integrated "turnkey" solution that includes an SMTP server, remote mailbox access, real time collaboration tools including XMPP, and a shared calendar interface. Along similar lines, we also provide documentation for the installation of the [Zimbra groupware server](/docs/email/zimbra).
 
 If, by contrast, you want a more simple and modular email stack, we urge you to consider one of our guides built around the [Postfix SMTP server](/docs/email/postfix/).
 
-Finally, it's possible to outsource email service to a third party provider, such as [Google Apps](/docs/email/google-mail/) or [FastMail.fm](http://www.fastmail.fm). This allows you to send and receive mail from your domain, without hosting email services on your Linode. Consult our documentation for setting up [Google Apps for your domain](/docs/email/google-mail/).
+Finally, it's possible to outsource email service to a third party provider, such as [Google Apps](/docs/email/using-google-apps-for-email) or [FastMail.fm](https://www.fastmail.fm). This allows you to send and receive mail from your domain, without hosting email services on your Linode. 
 
-### Sending Email From Your Server
+### Send Email From Your Server
 
-In many cases, administrators have no need for a complete email stack like those documented in our [email guides](/docs/email/). However, applications running on that server still need to be able to send mail for notifications and other routine purposes.
+For simple configurations, you may have no need for a complete email stack like some of those documented in our [email guides](/docs/email/). However, applications running on that server still need to be able to send mail for notifications and other routine purposes. 
 
-The configuration of applications to send notifications and alerts is beyond the scope of this tip, most applications rely on a simple "sendmail" interface. Nevertheless, the modern MTAs Postfix provides a sendmail-compatible interfaces located at `/usr/sbin/sendmail`.
+The configuration of applications to send notifications and alerts is beyond the scope of this guide. Most applications rely on a simple "sendmail" interface, which is accessible via several common SMTP servers including Postfix and msmtp.
 
-You can install postfix on Debian and Ubuntu systems with the following command:
+To install Postfix on Debian and Ubuntu systems:
 
     apt-get install postfix
 
-On CentOS and Fedora systems you can install postfix by issuing the following command:
+On CentOS and Fedora systems:
 
     yum install postfix
 
 Once Postfix is installed, your applications should be able to access the sendmail interface, located at `/usr/sbin/sendmail`. Most applications running on your Linode should be able to send mail normally with this configuration.
 
-If you simply want to use your server to send email through an external SMTP server, you may want to consider a more simple tool like `msmtp`. Since `msmtp` is packaged in most distributions you can install using the command appropriate to your distribution:
+If you want to use your server to send email through an external SMTP server, consider a more simple tool like `msmtp`. Since `msmtp` is packaged in most distributions, and you can install it using the appropriate command:
 
     apt-get install msmtp
     yum install msmtp
     pacman -S msmtp
 
-Use the command `type msmtp`, to find the location of `msmtp` on your system. Typically the program is located at `/usr/bin/msmtp`. You can specify authentication credentials with command line arguments or by declaring SMTP credentials in a configuration file. Here is an example `.msmtprc` file.
+Use the command `type msmtp` or `which msmtp`, to find the location of `msmtp` on your system. Typically the program is located at `/usr/bin/msmtp`. You can specify authentication credentials with command line arguments or by declaring SMTP credentials in a configuration file. Here is an example `.msmtprc` file.
 
 {: .file-excerpt }
 .msmtprc example
@@ -695,6 +696,6 @@ Use the command `type msmtp`, to find the location of `msmtp` on your system. Ty
     account default host smtp.example.com from <username@example.com> auth on user username password s3cr37 tls on tls\_certcheck off port 587
     ~~~
 
-The `.msmptrc` file needs to be set to mode 600, and owned by the user account that will be sending mail. If the configuration file is located at `/srv/smtp/msmtprc`, you can call mstmp with the following command:
+The `.msmptrc` file needs to be set to mode 600, and owned by the user account that will be sending mail. For example, if the configuration file is located at `/srv/smtp/msmtprc`, you can call mstmp with the following command:
 
     /usr/bin/msmtp --file=/srv/smtp/msmtprc
