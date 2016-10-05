@@ -179,7 +179,7 @@ You can set up multiple Cluster Manager nodes if necessary to satisfy organizati
     >
     > Since access to the cluster manager provides access to all Storm and Zookeeper clusters and any sensitive data they are processing, its security configuration should be considered critical, and access should be as restrictive as possible.
 
-9.  Continue from this same Linode to log in to the Cluster Manager Node as the `root` user, using the public IP address that was shown when you created the node:
+9.  Log in to the Cluster Manager Node as the `root` user, using the public IP address that was shown when you created the node:
 
         ssh -i ~/.ssh/clustermgrroot root@PUBLIC-IP-OF-CLUSTER-MANAGER-LINODE
 
