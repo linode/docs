@@ -71,15 +71,15 @@ Follow the steps in [Generating an API Key](/docs/platform/api/api-key) and save
 
 If the key expires or is removed, remember to create a new one and update the `api_env_linode.conf` API environment configuration file on Cluster Manager Linode. This will be explained further in the next section.
 
-## Set Up the Cluster Manager Linode
+## Set Up the Cluster Manager
 
-The first step is setting up a central *Cluster Manager* Linode to store details of all Storm clusters, and enable authorized users to create, manage or access those clusters. 
+The first step is setting up a central *Cluster Manager* to store details of all Storm clusters, and enable authorized users to create, manage or access those clusters. This can be a local workstation or a Linode.
 
 You can set up multiple Cluster Manager nodes if necessary to satisfy organizational or security needs. For example, two departments can each have their own Cluster Manager nodes to manage their respective clusters and keep data access restricted to their own members.
 
-1.  The scripts communicate with Linode's API using Python. Install Git, Python 2.7 and curl on your Ubuntu 14.04 LTS or Debian 8 Linode:
+1.  The scripts communicate with Linode's API using Python. Install Git, Python 2.7 and curl on your Ubuntu 14.04 LTS or Debian 8 workstation or Linode:
 
-        apt-get install python2.7 curl git
+        sudo apt-get install python2.7 curl git
 
 2.  Download the project git repository:
 
