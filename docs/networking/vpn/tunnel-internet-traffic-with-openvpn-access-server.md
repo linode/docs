@@ -1,19 +1,24 @@
 ---
 author:
-  name: Neal Sebastian
-  email: yoneal@gmail.com
+  name: Linode Community
+  email: contribute@linode.com
 description: 'Easily tunnel web traffic through OpenVPN Access Server'
 keywords: 'openvpn,networking,vpn,tunnel'
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
-modified: Monday, October 3rd, 2016
+modified: Tuesday, October 4th, 2016
 modified_by:
+  name: Nick Brewer
+  link: https://github.com/yoneal
+published: 'Tuesday, October 4th, 2016'
+title: 'Tunnel Internet Traffic with OpenVPN Access Server'
+contributor:
   name: Neal Sebastian
   link: https://github.com/yoneal
-published: 'Friday, April 1st, 2016'
-title: 'Tunnel Internet Traffic with OpenVPN Access Server'
 ---
 
 *This is a Linode Community guide. Write for us and earn $250 per published guide.*
+
+<hr>
 
 *VPN tunneling* is a method of forwarding internet traffic through your VPN connection. This is useful if you want to evade censorship, IP geolocation, or a firewall on your local network.
 
@@ -25,7 +30,7 @@ title: 'Tunnel Internet Traffic with OpenVPN Access Server'
 
 2. Follow the [Securing Your Server](/docs/security/securing-your-server) guide.  OpenVPN Access Server creates its own firewall rules, so the steps for [configuring a firewall](/docs/security/securing-your-server#configure-a-firewall) should be skipped for now. Once you've configured OpenVPN, you can apply additional firewall rules as needed.  
 
-3. Install OpenVPN Access Server using the [Secure Communications with OpenVPN Access Server](docs/networking/vpn/openvpn-access-server) guide.
+3. Install OpenVPN Access Server using the [Secure Communications with OpenVPN Access Server](/docs/networking/vpn/openvpn-access-server) guide.
 
 ## Configure OpenVPN Access Server for Tunneling
 
@@ -37,7 +42,7 @@ To configure OpenVPN for tunneling, you'll first need to log in to the Access Se
 
     The option "Should VPN clients have access to private subnets (non-public networks on the server side)?" can be set to **No**, since we are using the VPN to mask internet traffic. If you wish to give VPN users access to services listening on your Linode's local network, set this option to **Yes**.
 
-2. To avoid DNS leaking, we must modify the DNS resolver settings. Simply select **Have clients use the same DNS servers as the Access Server host** in **DNS Settings** to have the client use the same resolvers as your Linode.
+2. To avoid [DNS leaking](https://www.dnsleaktest.com/what-is-a-dns-leak.html), modify the DNS resolver settings. Under **DNS Settings**, select **Have clients use the same DNS servers as the Access Server host**.
 
     ![OpenVPN Access Server DNS Settings.](/docs/assets/openvpn-access-server-dns.png)
 
@@ -50,7 +55,7 @@ To configure OpenVPN for tunneling, you'll first need to log in to the Access Se
 
 ## Enable IP Forwarding
 
-IP Forwarding is necessary if you wish to connect additional private network devices behind your client machine, and have their traffic forwarded through the VPN. IP forwarding can be enabled by running these commands in order:
+IP Forwarding is necessary if you wish to connect additional private network devices behind your client machine, and have their traffic forwarded through the VPN. IP forwarding can be enabled by running these commands on your Linode, in order:
 
     echo 'net.ipv4.ip_forward=1' | sudo tee -a /etc/sysctl.d/99-sysctl.conf
     sudo sysctl -p
@@ -59,7 +64,7 @@ The first command enables forwarding over IPv4 in your system configuration, and
 
 Once forwarding is enabled, restart OpenVPN by hitting the **Stop the Server** and **Start the Server** buttons under the **Status Overview** section in the Access Server Admin UI:
 
-![OpenVPN Access Server Restart](/docs/assets/openvpn-access-server-restart-resize.png)](/docs/assets/openvpn-access-server-restart.png)
+[![OpenVPN Access Server Restart](/docs/assets/openvpn-access-server-restart-resize.png)](/docs/assets/openvpn-access-server-restart.png)
 
 ### Disable IPv6
 
@@ -67,7 +72,7 @@ As OpenVPN does not support transfer over IPv4 and IPv6 simultaneously, you shou
 
 ## Test and Troubleshoot
 
-Once you've [connected your client](/docs/networking/vpn/openvpn-access-server#client-software-installation), you can use a website such as [WhatsMyIP.org](https://www.whatsmyip.org/) to confirm that your traffic is routing through the VPN server's address. You can also use [DNSLeakTest.com](https://www.dnsleaktest.com/) to ensure that your VPN connection is using the resolvers specified by your OpenVPN server, to prevent leaking of your actual location via your ISP's resolvers.
+Once you've [connected your client](/docs/networking/vpn/openvpn-access-server#client-software-installation), you can use a website such as [WhatIsMyIP.com](http://www.whatismyip.com/) to confirm that your traffic is routing through the VPN server's address. You can also use [DNSLeakTest.com](https://www.dnsleaktest.com/) to ensure that your VPN connection is using the resolvers specified by your OpenVPN server, to prevent leaking of your actual location via your ISP's resolvers.
 
 ### Compression
 
