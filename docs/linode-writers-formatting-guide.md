@@ -6,9 +6,9 @@ description: 'The Linode Guides & Tutorials style guide for article submissions'
 keywords: 'style guide,format,formatting,how to write,write for us,write for linode,linode library,submissions'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['style-guide/']
-modified: Tuesday, February 16th, 2016
+modified: Thursday, October 6th, 2016
 modified_by:
-  name: Linode
+  name: Edward Angert
 published: 'Wednesday, January 15th, 2014'
 title: Linode Writer's Formatting Guide
 ---
@@ -17,7 +17,7 @@ Submissions which adhere to the following formatting guidelines are more likely 
 
 ## General Layout
 
-Linode Guides & Tutorials are written in [PHP Markdown Extra](https://michelf.ca/projects/php-markdown/extra/). Additional Linode-specific markdown formatting notes are given [further below](#linode-specific-formatting), and submissions should be a `.md` file.
+Linode Guides & Tutorials are written in [PHP Markdown Extra](https://michelf.ca/projects/php-markdown/extra/). Additional Linode-specific markdown formatting notes are given [further below](#markdown-formatting), and submissions should be a `.md` file.
 
 ### Header
 
@@ -31,10 +31,10 @@ Author Submission
       name: Linode Community
       email: docs@linode.com
     description: 'Two to three sentences describing your guide.'
-    keywords: 'list,of,keywords,and key phrases,'
+    keywords: 'list,of,keywords,and key phrases'
     license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-    published: 'Weekday, Month 00th, 2015'
-    modified: Weekday, Month 00th, 2015
+    published: 'Weekday, Month 00, 2015'
+    modified: Weekday, Month 00, 2015
     modified_by:
       name: Linode
     title: 'Guide Title'
@@ -46,8 +46,8 @@ Author Submission
     - '[Link Title 2](http://www.example.net)'
     ---
 
-    *This is a Linode Community guide. Write for us and earn $250 per published guide.*
-    <hr>
+    *This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
+    ----
     ~~~
 
 ### Introduction
@@ -56,7 +56,7 @@ Introductions should be concise; explain what the goal of the guide is and why. 
 
 ### Before You Begin
 
-The *Before You Begin* section is a basic area of prerequisites a reader should know or have completed before proceeding further in your guide. Use the template below and edit as needed.
+The *Before You Begin* section is a basic area of prerequisites a reader should know or have completed before proceeding further in your guide. Use the template below and edit as needed:
 
 {: .file-excerpt}
 Author Submission
@@ -70,11 +70,30 @@ Author Submission
     3.  Update your system.
 
             sudo apt-get update && sudo apt-get upgrade
+    ~~~
 
+#### Include a Note about Root or Non-Root users
+
+{: .file-excerpt}
+Guides Written for a Non-Root User
+:   ~~~ txt
     {: .note}
     >
-    >This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+    > This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
     ~~~
+
+{: .file-excerpt}
+Guides Written for a Root User
+:   ~~~ txt
+    {: .note}
+    > The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+    ~~~
+
+#### Include a Note about Example Variables
+
+If using example variables, like [example IPs](#example-ip-addresses), which should be changed throughout the guide, declare them in this section. For example:
+
+    Replace each instance of `example.com` in this guide with your site's domain name.
 
 ### Paragraph Structure
 
@@ -276,7 +295,6 @@ Use single spaces between sentences; do not double-space.
 
 <table class="table table-striped table-bordered">
   <thead><th>Formatting</th><th>Example</th></thead>
-  </tr>
   <tr>
     <td>
 {: .table .table-striped}
