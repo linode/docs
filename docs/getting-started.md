@@ -189,7 +189,7 @@ Installing software updates should be performed *regularly*. If you need help re
 ### Gentoo
 
     emerge --sync
-    emerge-webrsync
+    emerge --update --deep --with-bdeps=y --newuse @world
 
 ### Slackware
 
@@ -306,6 +306,22 @@ Use the `Up`, `Down`, `Page Up` and `Page Down` keys to navigate. Find the time 
 To set the time zone:
 
     timedatectl set-timezone 'America/New_York'
+
+### Gentoo
+
+View the list of available time zones.
+
+    ls /usr/share/zoneinfo
+
+Write the selected time zone to the `/etc/timezone` file.
+
+*Example (for Eastern Standard Time)*:
+
+    echo "EST" > /etc/timezone
+
+Configure the `sys-libs/timezone-data` package, which will set `/etc/localtime` appropriately.
+
+    emerge --config sys-libs/timezone-data
 
 ### All Other Distributions
 
