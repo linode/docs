@@ -32,7 +32,7 @@ The first command should show your short hostname, and the second should show yo
 
 When setting the time zone of your server, it may be best to use the time zone of the majority of your users. If you're unsure which time zone would be best, consider using universal coordinated time or UTC (i.e., Greenwich Mean Time).
 
-By default, Linodes are set to Eastern Standard Time. The following process will set the time zone manually, though many operating systems provide simpler methods for changing time zones. To change the time zone manually, you must find the proper zone file in `/usr/share/zoneinfo/` and link that file to `/etc/localtime`. See the example below for common possibilities. All contents following the double hashes (`##`) are comments and should not be copied into your terminal.
+By default, Linodes are set to UTC time. The following process will set the time zone manually, though many operating systems provide simpler methods for changing time zones. To change the time zone manually, you must find the proper zone file in `/usr/share/zoneinfo/` and link that file to `/etc/localtime`. See the example below for common possibilities. All contents following the double hashes (`##`) are comments and should not be copied into your terminal.
 
     ln -sf /usr/share/zoneinfo/UTC /etc/localtime ## for Universal Coordinated Time 
 
@@ -65,7 +65,8 @@ Some applications require that the machine properly identify itself in the `/etc
 {: .file-excerpt }
 /etc/hosts
 :   ~~~
-    127.0.0.1 localhost.localdomain localhost 12.34.56.78 username.example.com username
+    127.0.0.1 localhost.localdomain localhost
+    103.0.113.12 username.example.com username
     ~~~
 
 You can specify a number of hostnames on each line separated by spaces. Every line must begin with one and only one IP address. In this case, replace `12.34.56.78` with your machine's IP address. Let us consider a few additional `/etc/hosts` entries:
@@ -73,10 +74,11 @@ You can specify a number of hostnames on each line separated by spaces. Every li
 {: .file-excerpt }
 /etc/hosts
 :   ~~~
-    74.125.67.100 test.com 192.168.1.1 stick.example.com
+    198.51.100.30 example.com
+    192.168.1.1 stick.example.com
     ~~~
 
-In this example, all requests for the `test.com` hostname or domain will resolve to the IP address `74.125.67.100`, which bypasses the DNS records for `test.com` and returns an alternate website.
+In this example, all requests for the `example.com` hostname or domain will resolve to the IP address `198.51.100.30`, which bypasses the DNS records for `example.com` and returns an alternate website.
 
 The second entry tells the system to look to `192.168.1.1` for the domain `stick.example.com`. These kinds of host entries are useful for using "private" or "back channel" networks to access other servers in a cluster without needing to send traffic on the public network.
 
@@ -86,18 +88,21 @@ In this section, we'll review some basic Linux commands that will help you asses
 
 ### The ping Command
 
-The `ping` command tests the connection between the local machine and a remote address or machine. The following command "pings" `google.com` and `74.125.67.100`:
+The `ping` command tests the connection between the local machine and a remote address or machine. The following commanda "ping" `google.com` and `216.58.217.110`:
 
-    ping google.com ping 74.125.67.100
+    ping google.com
+    ping 216.58.217.110
 
-These commands send a small amount of data (an ICMP packet) to the remote host, and wait for a response. If the system is able to make a connection, it will report on the "round trip time" for every packet. Here is the output of four pings of google.com:
+These commands send a small amount of data (an ICMP packet) to the remote host and wait for a response. If the system is able to make a connection, it will report on the "round trip time" for every packet. Here is the output of four pings of google.com:
 
-    64 bytes from yx-in-f100.1e100.net (74.125.45.100): icmp_seq=1 ttl=50 time=33.8 ms
-    64 bytes from yx-in-f100.1e100.net (74.125.45.100): icmp_seq=2 ttl=50 time=53.2 ms
-    64 bytes from yx-in-f100.1e100.net (74.125.45.100): icmp_seq=3 ttl=50 time=35.9 ms
-    64 bytes from yx-in-f100.1e100.net (74.125.45.100): icmp_seq=4 ttl=50 time=37.5 ms
+    PING google.com (216.58.217.110): 56 data bytes
+    64 bytes from 216.58.217.110: icmp_seq=0 ttl=54 time=14.852 ms
+    64 bytes from 216.58.217.110: icmp_seq=1 ttl=54 time=16.574 ms
+    64 bytes from 216.58.217.110: icmp_seq=2 ttl=54 time=16.558 ms
+    64 bytes from 216.58.217.110: icmp_seq=3 ttl=54 time=18.695 ms
+    64 bytes from 216.58.217.110: icmp_seq=4 ttl=54 time=25.885 ms
 
-In this case `yx-in-f100.1e100.net` is the reverse DNS entry for this IP address. The `time` field specifies in milliseconds that the round trip takes for an individual packet. When you've gathered the amount of information you need, use **Control+C** to interrupt the process. You'll be presented with some statistics once the process is stopped. This will resemble:
+The `time` field specifies in milliseconds the duration of the round trip for an individual packet. When you've gathered the amount of information you need, use **Control+C** to interrupt the process. You'll be presented with some statistics once the process is stopped. This will resemble:
 
     --- google.com ping statistics ---
     4 packets transmitted, 4 received, 0% packet loss, time 3007ms 
@@ -167,14 +172,14 @@ To see how much memory your system is currently using:
 
 On a Linode 2GB under moderate use, the output should resemble the following:
 
-                        total       used       free     shared    buffers     cached
-    Mem:                 1002        956         46          0        171        357 
-    -/+ buffers/cache:    427        575 
-    Swap:                 127         39         88
+                 total       used       free     shared    buffers     cached
+    Mem:          1999        954       1044        105         34        703
+    -/+ buffers/cache:        216       1782
+    Swap:          255          0        255
 
-This output takes a bit of careful reading to interpret. Out of a total 1002 megabytes of memory (RAM), the system is using 956 megabytes and has 46 megabytes free. *However*, the system also has 427 megabytes of "stale" data buffered and stored in cache. The operating system will "drop" the caches if it needs the space, but retains the cache if there is no other need for the space. It is normal for a Linux system to leave old data in RAM until the space is needed, so don't be alarmed if only a small amount of memory is "free."
+This output takes a bit of careful reading to interpret. Out of a total 1999 megabytes of memory (RAM), the system is using 954 megabytes and has 1044 megabytes free. *However*, the system also has 703 megabytes of "stale" data buffered and stored in cache. The operating system will "drop" the caches if it needs the space, but retains the cache if there is no other need for the space. It is normal for a Linux system to leave old data in RAM until the space is needed, so don't be alarmed if only a small amount of memory is "free."
 
-In the above example, there are 575 megabytes of memory that are actually *free*. This means 575 megabytes are available to your system when you start an additional process or a running application needs more memory.
+In the above example, there are 1782 megabytes of memory that are actually *free*. This means 1782 megabytes are available to your system when you start an additional process or a running application needs more memory.
 
 ### Monitor I/O Usage with vmstat
 
@@ -209,7 +214,7 @@ This runs a vmstat every second, twenty times, giving a sample of the current st
      0  0      4  33388  47888 110912    0    0 0     0   89  144  0  0 100  0
      0  0      4  33380  47888 110912    0    0 0     0  181  185  0  0 99  0
 
-The memory and swap columns provide the same kind of information provided by the "[free -m](#check_current_memory_usage)" command, albeit in a slightly harder to understand format. The most relevant information produced by this command is the `wa` column, which is the final column in most implementations. This field displays the amount of time the CPU spends waiting for IO operations to complete.
+The memory and swap columns provide the same kind of information provided by the "[free -m](#check_current_memory_usage)" command, albeit in a slightly harder to understand format. The most relevant information produced by this command is the `wa` column, which is the final column in most implementations. This field displays the amount of time the CPU spends waiting for I/O operations to complete.
 
 If this number is consistently and considerably higher than 0, you might consider taking measures to address your IO usage. However, if the `vmstat` output resembles the above, you can be sure in the knowledge that you're not experiencing an IO-related issues.
 
@@ -273,7 +278,7 @@ We suggest the following best practices for maintaining security:
 
 ### Symbolic Links
 
-*Symbolic linking* colloquially "symlinking," allows you to create an object in your filesystem that points to another object on your filesystem. This is useful when you need to provide users and applications access to specific files and directories without reorganizing your folders. This way you can provide restricted users access to your web-accessible directories without moving your `DocumentRoot` into their home directories.
+*Symbolic linking* colloquially "symlinking", allows you to create an object in your filesystem that points to another object on your filesystem. This is useful when you need to provide users and applications access to specific files and directories without reorganizing your folders. This way you can provide restricted users access to your web-accessible directories without moving your `DocumentRoot` into their home directories.
 
 To create a symbolic link, issue a command in the following format:
 
