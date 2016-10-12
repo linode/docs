@@ -8,14 +8,14 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
  - '[Minecraft.net](https://minecraft.net/)'
  - '[The Official Minecraft Wiki](http://minecraft.gamepedia.com/Minecraft_Wiki)'
-modified: Wednesday, January 28, 2015
+modified: Tuesday, October 12, 2016
 modified_by:
   name: Alex Fornuto
 published: 'Wednesday, January 28, 2015'
 title: 'Minecraft on Debian and Ubuntu'
 ---
 
-This guide shows you how to set up a personal [Minecraft](https://minecraft.net/game) server on a Linode running Debian 7 or Ubuntu 14.04 LTS.
+This guide shows you how to set up a personal [Minecraft](https://minecraft.net/game) server on a Linode running Debian 8 or Ubuntu 16.04 LTS.
 
 ##Prerequisites
 
@@ -26,9 +26,16 @@ This guide shows you how to set up a personal [Minecraft](https://minecraft.net/
 
         sudo apt-get update && sudo apt-get upgrade
 
-2.  Install **OpenJDK**, an open-source implementation of Java:
+2.  Install **OpenJDK**, an open-source implementation of Java, and the GNU Screen package.
 
-        sudo apt-get install openjdk-7-jre-headless
+       - In Ubuntu 16.04:
+
+   
+             sudo apt-get install openjdk-8-jre-headless screen
+
+       - In Debian 8:
+ 
+             sudo apt-get install openjdk-7-jre-headless
 
 3.  Create a new user for Minecraft to run as. Take note of the password you assign:
 
@@ -43,9 +50,9 @@ This guide shows you how to set up a personal [Minecraft](https://minecraft.net/
 
 1.  Exit your SSH session and log back in to your Linode as the `minecraft` user.
 
-2.  Download the latest version of the Minecraft Multiplayer Server from [Minecraft.net](https://minecraft.net/). The current version as of this publication is 1.8.8. Refer to the linked page to download the latest version:
+2.  Download the latest version of the Minecraft Multiplayer Server from [Minecraft.net](https://minecraft.net/). The current version as of this publication is 1.10.2. Refer to the linked page to download the latest version:
 
-        wget https://s3.amazonaws.com/Minecraft.Download/versions/1.8.8/minecraft_server.1.8.8.jar
+        wget https://s3.amazonaws.com/Minecraft.Download/versions/1.10.2/minecraft_server.1.10.2.jar
 
 3.  Create a script to run the Minecraft server:
 
@@ -56,7 +63,7 @@ This guide shows you how to set up a personal [Minecraft](https://minecraft.net/
         BINDIR=$(dirname "$(readlink -fn "$0")")
         cd "$BINDIR"
 
-        java -Xms1024M -Xmx1536M -jar minecraft_server.1.8.8.jar -o true
+        java -Xms1024M -Xmx1536M -jar minecraft_server.1.10.2.jar -o true
         ~~~
 
     {: .note }
@@ -94,7 +101,7 @@ This guide shows you how to set up a personal [Minecraft](https://minecraft.net/
 
         screen /home/minecraft/run.sh
 
-    This time the Minecraft server console will generate a lot of output as it creates required text files and generates the Minecraft world:
+    This time the Minecraft server console will generate a lot of output as it creates required configuration files and generates the Minecraft world:
 
         [22:00:06] [Server thread/INFO]: Starting minecraft server version 1.8.8
         [22:00:06] [Server thread/INFO]: Loading properties
@@ -129,6 +136,6 @@ This guide shows you how to set up a personal [Minecraft](https://minecraft.net/
 
     [![Minecraft Players.](/docs/assets/minecraft-gameplay_small.png)](/docs/assets/minecraft-gameplay.png)
 
-Congratulations! You can now play Minecraft in a persistent world with your friends.
+Congratulations! You can now play Minecraft in a persistent world with your friends. For more information on working with `screen`, check out our guide on [GNU Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions).
 
 
