@@ -215,7 +215,7 @@ The time-based one-time password authentication methods in this guide use *PAM*,
 
 ## Combine Two-Factor and Public Key Authentication
 
-The steps in this section are optional. The above configuration provides two layers of security for your server, but if you'd like to combine [public key authentication](/docs/security/use-public-key-authentication-with-ssh) with password and TOTP, modify the `AuthenticationMethods` line in `/etc/ssh/sshd_config`:
+This section is optional. The above configuration provides two layers of security for your server, but if you'd like to combine [public key authentication](/docs/security/use-public-key-authentication-with-ssh) with password and TOTP, modify the `AuthenticationMethods` line in `/etc/ssh/sshd_config`:
 
 {: .file-excerpt}
 /etc/ssh/sshd_config
@@ -224,7 +224,7 @@ The steps in this section are optional. The above configuration provides two lay
         AuthenticationMethods publickey,keyboard-interactive
     ~~~
 
-Configure this setting in the `Match User` block for each user as appropriate. When any of these users log in, they will not only need to provide their SSH key, but they will be authenticated via password and TOTP as well.
+Configure this setting in the `Match User` block for each user as appropriate. When any of these users log in, they will not only need to provide their SSH key, but they will be authenticated via password and TOTP as well. Be sure to restart your SSH daemon to apply these changes.
 
 ## Next Steps
 
