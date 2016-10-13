@@ -11,6 +11,7 @@ featured:
  - full-disk-encryption.md
  - ossec-ids-debian-7.md
  - using-fail2ban-for-security.md
+ - use-one-time-passwords-for-two-factor-authentication-with-ssh.md
 ---
 
 Security is one of the most important concerns that face server administrators. These guides will help you firm your system's security and address topics that include: configuring a firewall, creating and administering SSL certificates for transport layer security, offering secured SFTP user access to your Linode, or blocking malicious probes.
