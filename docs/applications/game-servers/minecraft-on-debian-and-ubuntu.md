@@ -26,23 +26,24 @@ This guide shows you how to set up a personal [Minecraft](https://minecraft.net/
 
         sudo apt-get update && sudo apt-get upgrade
 
-2.  Install **OpenJDK**, an open-source implementation of Java, and the GNU Screen package.
+2.  Install *OpenJDK*, an open-source implementation of Java, and the GNU Screen package.
 
-       - In Ubuntu 16.04:
+    - In Ubuntu 16.04:
 
-   
-             sudo apt-get install openjdk-8-jre-headless screen
+            sudo apt-get install openjdk-8-jre-headless screen
 
-       - In Debian 8:
+    - In Debian 8:
  
-             sudo apt-get install openjdk-7-jre-headless
+            sudo apt-get install openjdk-7-jre-headless screen
 
-3.  Create a new user for Minecraft to run as. Take note of the password you assign:
+3.  Create a new user for Minecraft to run as:
 
         sudo adduser minecraft
 
+    Assign a secure password, and configure any additional SSH hardening options at this time.
+
 {: .note }
-> If you have a firewall configured according to our [Securing Your Server](/docs/security/securing-your-server) guide, you will need to add an exception for port 25565. The line to add to your `iptables.firewall.rules` file is:
+> If you have a firewall configured according to our [Securing Your Server](/docs/security/securing-your-server) guide, you will need to add an exception for port 25565. Add this line to your `iptables.firewall.rules` file:
 >
 >     -A INPUT -p tcp --dport 25565 -j ACCEPT
 
@@ -50,9 +51,11 @@ This guide shows you how to set up a personal [Minecraft](https://minecraft.net/
 
 1.  Exit your SSH session and log back in to your Linode as the `minecraft` user.
 
-2.  Download the latest version of the Minecraft Multiplayer Server from [Minecraft.net](https://minecraft.net/). The current version as of this publication is 1.10.2. Refer to the linked page to download the latest version:
+2.  Download the latest version of the Minecraft Multiplayer Server from [Minecraft.net](https://minecraft.net/). The current version as of this publication is 1.10.2: 
 
         wget https://s3.amazonaws.com/Minecraft.Download/versions/1.10.2/minecraft_server.1.10.2.jar
+
+    Refer to the [Minecraft server page](https://minecraft.net/en/download/server) to check for the latest release.
 
 3.  Create a script to run the Minecraft server:
 
@@ -73,7 +76,7 @@ This guide shows you how to set up a personal [Minecraft](https://minecraft.net/
 
         chmod +x run.sh
 
-##Running Minecraft
+##Run Minecraft
 
 1.  The first time you run the Minecraft server it will create an EULA file and then exit:
 
@@ -97,7 +100,7 @@ This guide shows you how to set up a personal [Minecraft](https://minecraft.net/
         ~~~
 
 
-3.  To ensure that the Minecraft server runs, dependent of an SSH connection, execute `run.sh` from within a [GNU Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions) session:
+3.  To ensure that the Minecraft server runs independent of an SSH connection, execute `run.sh` from within a [GNU Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions) session:
 
         screen /home/minecraft/run.sh
 
@@ -120,7 +123,14 @@ This guide shows you how to set up a personal [Minecraft](https://minecraft.net/
         [22:00:21] [Server thread/INFO]: Preparing spawn area: 96%
         [22:00:22] [Server thread/INFO]: Done (14.737s)! For help, type "help" or "?"
 
-##Connecting to your Minecraft Server
+    {: .note}
+    > To disconnect from the screen session without stopping the script, press **CTRL+a** and then **d**. To resume the running screen session, use the command `screen -r`.
+
+4.  Optionally, you can take this opportunity to disconnect from the screen session and customize your game settings. When the `run.sh` script is run, a world is created and you cannot change its settings. If you would like to create a new world with updated settings, change the `level-name` directive in the `server.properties` file and modify other settings accordingly. 
+    
+    Upon running the script with the `level-name` changed, a new directory is created that contains your game data for that world. For more information on available settings and how to modify them, refer to the [Minecraft Wiki settings page](http://minecraft.gamepedia.com/Server.properties).
+
+##Connect to your Minecraft Server
 
 1.  Open your local Minecraft client. After logging in, click on the **Multiplayer** option:
 
@@ -137,5 +147,3 @@ This guide shows you how to set up a personal [Minecraft](https://minecraft.net/
     [![Minecraft Players.](/docs/assets/minecraft-gameplay_small.png)](/docs/assets/minecraft-gameplay.png)
 
 Congratulations! You can now play Minecraft in a persistent world with your friends. For more information on working with `screen`, check out our guide on [GNU Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions).
-
-
