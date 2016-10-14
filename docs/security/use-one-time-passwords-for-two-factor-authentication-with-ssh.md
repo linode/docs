@@ -148,12 +148,12 @@ Congratulations! You have finished generating your key and adding it to your cli
 
 ## Configure Authentication Settings
 
-The time-based one-time password authentication methods in this guide use *PAM*, or pluggable authentication modules. [PAM](http://www.linux-pam.org/) is mechanism that integrates low-level authentication mechanisms into modules that can be configured for different applications and services. Because we're using additional software (i.e., programs that aren't built into the Linux distro), we'll need to configure PAM to properly authenticate users.
+The time-based one-time password authentication methods in this guide use *PAM*, or Pluggable Authentication Modules. [PAM](http://www.linux-pam.org/) is mechanism that integrates low-level authentication mechanisms into modules that can be configured for different applications and services. Because we're using additional software (i.e., programs that aren't built into the Linux distro), we'll need to configure PAM to properly authenticate users.
 
 {: .caution}
-> It is strongly recommended to have another terminal session open while configuring your authentication settings. This way, if you disconnect to test authentication and something is not properly configured, you won't be locked out of your Linode.
+> It is strongly recommended that you have another terminal session open while configuring your authentication settings. This way, if you disconnect to test authentication and something is not properly configured, you won't be locked out of your Linode.
 
-1.  Open `/etc/pam.d/sshd` and edit the file, depending on your distribution:
+1.  Open `/etc/pam.d/sshd` with sudo privileges and edit the file, depending on your distribution:
 
     **Ubuntu 16.04**:
 
@@ -166,7 +166,7 @@ The time-based one-time password authentication methods in this guide use *PAM*,
         auth    required      pam_google_authenticator.so
         ~~~
 
-    The first line tells PAM to authenticate with a normal Unix user password before other methods. The second line specifies an additional method of authentication, which in this case, is the TOTP software we installed earlier. Note that 
+    The first line tells PAM to authenticate with a normal Unix user password before other methods. The second line specifies an additional method of authentication, which in this case, is the TOTP software we installed earlier.
 
     **CentOS 7**
 
@@ -217,6 +217,9 @@ The time-based one-time password authentication methods in this guide use *PAM*,
 
 This section is optional. The above configuration provides two layers of security for your server, but if you'd like to combine [public key authentication](/docs/security/use-public-key-authentication-with-ssh) with password and TOTP, modify the `AuthenticationMethods` line in `/etc/ssh/sshd_config`:
 
+{: .note}
+> Confirm that your public key has been copied to your Linode before completing this section. View installed SSH keys by entering `ssh-add -l` in your terminal.
+
 {: .file-excerpt}
 /etc/ssh/sshd_config
 :   ~~~
@@ -230,6 +233,6 @@ Configure this setting in the `Match User` block for each user as appropriate. W
 
 First, be sure you have followed our guide to [Securing Your Server](/docs/security/securing-your-server). Although there is no single, foolproof method to protecting your data, firewalls and services like [Fail2Ban](/docs/security/using-fail2ban-for-security) are a great way to minimize risk.
 
-When you use two-factor authentication with TOTPs, an important point to consider is the physical security of the device on which you've configured your authenticator app. Be sure your phone or device is secured with a passphrase, so that even if it falls into the wrong hands, it can't easily be used to compromise your server. If you lose the phone or device that stores your credentials, you can use [Lish](/docs/networking/using-the-linode-shell-lish) to access your Linode and disable two-factor authentication. If this happens, you should switch to a different, hardened method of SSH access, such as [public key authentication](/docs/security/use-public-key-authentication-with-ssh, in the interim.
+When you use two-factor authentication with TOTPs, an important point to consider is the physical security of the device on which you've configured your authenticator app. Be sure your phone or device is secured with a passphrase, so that even if it falls into the wrong hands, it can't easily be used to compromise your server. If you lose the phone or device that stores your credentials, you can use [Lish](/docs/networking/using-the-linode-shell-lish) to access your Linode and disable two-factor authentication. If this happens, you should switch to a different, hardened method of SSH access, such as [public key authentication](/docs/security/use-public-key-authentication-with-ssh), in the interim.
 
 While two-factor authentication may be a great security feature, total security is an ongoing process, not an end goal that can be achieved by adding extra layers of authentication. To provide the best protection for your data, take care to follow security best practices at all times.
