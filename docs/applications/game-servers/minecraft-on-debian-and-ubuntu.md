@@ -30,17 +30,17 @@ This guide shows you how to set up a personal [Minecraft](https://minecraft.net/
 
     - In Ubuntu 16.04:
 
-            sudo apt-get install openjdk-8-jre-headless screen
+          sudo apt-get install openjdk-8-jre-headless screen
 
     - In Debian 8:
  
-            sudo apt-get install openjdk-7-jre-headless screen
+          sudo apt-get install openjdk-7-jre-headless screen
 
 3.  Create a new user for Minecraft to run as:
 
         sudo adduser minecraft
 
-    Assign a secure password, and configure any additional SSH hardening options at this time.
+    Assign a secure password, and configure any additional [SSH hardening](/docs/security/use-public-key-authentication-with-ssh) options at this time.
 
 {: .note }
 > If you have a firewall configured according to our [Securing Your Server](/docs/security/securing-your-server) guide, you will need to add an exception for port 25565. Add this line to your `iptables.firewall.rules` file:
@@ -124,11 +124,11 @@ This guide shows you how to set up a personal [Minecraft](https://minecraft.net/
         [22:00:22] [Server thread/INFO]: Done (14.737s)! For help, type "help" or "?"
 
     {: .note}
-    > To disconnect from the screen session without stopping the script, press **CTRL+a** and then **d**. To resume the running screen session, use the command `screen -r`.
+    > To disconnect from the screen session without stopping the game server, press **CTRL+a** and then **d**. To resume the running screen session, use the command `screen -r`.
 
-4.  Optionally, you can take this opportunity to disconnect from the screen session and customize your game settings. When the `run.sh` script is run, a world is created and you cannot change its settings. If you would like to create a new world with updated settings, change the `level-name` directive in the `server.properties` file and modify other settings accordingly. 
+4.  Optionally, you can take this opportunity to disconnect from the screen session and customize your game settings. When the `run.sh` script is executed, a world is created with the default variables. If you would like to create a new world with updated variables (like [world seeds](http://minecraft.gamepedia.com/Seed_(level_generation))), change the `level-name` directive in the `server.properties` file and modify other settings accordingly. 
     
-    Upon running the script with the `level-name` changed, a new directory is created that contains your game data for that world. For more information on available settings and how to modify them, refer to the [Minecraft Wiki settings page](http://minecraft.gamepedia.com/Server.properties).
+    After stopping and restarting the server script with the `level-name` changed, a new directory is created that contains your game data for that world. For more information on available settings and how to modify them, refer to the [Minecraft Wiki settings page](http://minecraft.gamepedia.com/Server.properties).
 
 ##Connect to your Minecraft Server
 
