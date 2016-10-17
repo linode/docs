@@ -14,6 +14,8 @@ title: Full Disk Encryption
 
 Full disk encryption protects the information stored on your Linode's disks by converting it into unreadable code that can only be deciphered with a unique password. Nearly everything on the disk is encrypted, including the swap space and temporary files. This guide will show you how to deploy a custom distribution with [LUKS](https://en.wikipedia.org/wiki/Linux_Unified_Key_Setup) filesystem encryption. While this demonstration will use Debian 8 (Jessie), the process should be similar for any Linux distribution, provided that their installer includes a LUKS encryption option.
 
+The Debian 8 guided encryption option in this guide makes use of a process commonly referred to as **LVM on LUKS**, which allows you to create several logical volumes within an encrypted block device. This method offers advantages in terms of scalability and convenience, as your password only needs to be entered once to allow access to all of the volumes within your encrypted disk.
+
 {: .caution}
 >
 >Full disk encryption does a great job of keeping your data secure, but there are a few caveats. To decrypt and mount the disk, you'll need to enter the encryption passphrase in the console every time your Linode boots.
@@ -170,4 +172,21 @@ Full disk encryption protects the information stored on your Linode's disks by c
 
     [![Lish Decryption Password](/docs/assets/fde-lish-small.png)](/docs/assets/fde-lish.png)
 
-You now have a securely LUKS-encrypted Debian installation, which you can begin configuring as needed.  
+## Confirm Disk Encryption.
+
+Once you've logged in, you can confirm your encryption settings by running the following command:
+
+    cryptsetup status /dev/mapper/sda5_crypt
+
+Your output will be similar to this:
+
+    type:    LUKS1
+    cipher:  aes-xts-plain64
+    keysize: 512 bits
+    device:  /dev/sda5
+    offset:  4096 sectors
+    size:    19972096 sectors
+    mode:    read/write
+
+
+You now have a securely LUKS-encrypted Debian installation. You can follow the steps in our [Getting Started](/docs/getting-started) and [Securing your Server](/docs/security/securing-your-server) guides to begin configuring your Linode as needed.  
