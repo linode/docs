@@ -14,7 +14,7 @@ title: Full Disk Encryption
 
 Full disk encryption protects the information stored on your Linode's disks by converting it into unreadable code that can only be deciphered with a unique password. Nearly everything on the disk is encrypted, including the swap space and temporary files. This guide will show you how to deploy a custom distribution with [LUKS](https://en.wikipedia.org/wiki/Linux_Unified_Key_Setup) filesystem encryption. While this demonstration will use Debian 8 (Jessie), the process should be similar for any Linux distribution, provided that their installer includes a LUKS encryption option.
 
-The Debian 8 guided encryption option in this guide makes use of a process commonly referred to as **LVM on LUKS**, which allows you to create several logical volumes within an encrypted block device. This method offers advantages in terms of scalability and convenience, as your password only needs to be entered once to allow access to all of the volumes within your encrypted disk.
+The Debian 8 guided encryption option in this guide makes use of a process commonly referred to as **LVM on LUKS**, which allows you to create several logical volumes within an encrypted block device. This method offers advantages in terms of scalability and convenience, as your password only needs to be entered once to access all of the volumes within your encrypted disk.
 
 {: .caution}
 >
