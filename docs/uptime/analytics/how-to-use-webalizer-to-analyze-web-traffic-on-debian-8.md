@@ -9,7 +9,7 @@ published: 'Weekday, Month 00th, 2016'
 modified: Weekday, Month 00th, 2016
 modified_by:
   name: Linode
-title: 'How to Use Webalizer to Analyze Web Traffic on Debian 8 (Jessie)'
+title: 'How to Use Webalizer to Analyze Nginx Logs on Debian 8 (Jessie)'
 contributor:
   name: Frederick Jost Zweig
   link: https://github.com/Fred-Zweig
@@ -22,7 +22,7 @@ contributor:
 <hr>
 
 
-# How to Use Webalizer to Analyze Web Traffic on Debian 8 (Jessie)
+# How to Use Webalizer to Analyze Nginx Logs on Debian 8 (Jessie)
 
 ## Introduction
 
