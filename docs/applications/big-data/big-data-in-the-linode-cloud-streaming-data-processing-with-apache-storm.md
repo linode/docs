@@ -1144,7 +1144,9 @@ You can copy one or more files from the cluster manager node to all nodes of a S
 
         ./storm-cluster-linode.sh cp target-cluster-name "target-directory" "local-files"
 
-    For example:
+    Remember to specify the target directory _before_ the list of source files (this is the reverse of regular `cp` or `scp` commands).
+    
+    For example, if your topology requires data files named "*.data" for processing, you can copy them to `root` user's home directory on all cluster nodes with:
 
         ./storm-cluster-linode.sh cp storm-cluster1 "~" "~/*.data"
 
@@ -1222,7 +1224,9 @@ You can copy one or more files from the cluster manager node to all nodes of a S
 
         ./zookeeper-cluster-linode.sh cp target-cluster-name "target-directory" "local-files"
 
-    For example:
+    Remember to specify the target directory _before_ the list of source files (this is the reverse of regular `cp` or `scp` commands).
+    
+    For example, if your cluster requires data files named "*.data" for processing, you can copy them to `root` user's home directory on all cluster nodes with:
 
         ./zookeeper-cluster-linode.sh cp zk-cluster1 "~" "~/*.data"
 
