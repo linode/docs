@@ -15,7 +15,7 @@ external_resources:
  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.4/)'
 ---
 
-This tutorial explains how to install and configure the Apache web server on CentOS 7.
+This guide explains how to install and configure the Apache web server on CentOS 7.
 
 {: .note}
 >
@@ -50,7 +50,7 @@ This tutorial explains how to install and configure the Apache web server on Cen
 
     {: .note}
     >
-    >Before changing any configuration files, we recommend that you make a backup of the file. To make a backup:
+    > Before changing any configuration files, we recommend that you make a backup of the file. To make a backup:
     >
     >     cp /etc/httpd/conf/httpd.conf ~/httpd.conf.backup
 
@@ -59,6 +59,7 @@ This tutorial explains how to install and configure the Apache web server on Cen
     :   ~~~ conf
 
         DocumentRoot "/var/www/html/example.com/public_html"
+        
         ...
         
         <IfModule prefork.c>
@@ -70,11 +71,11 @@ This tutorial explains how to install and configure the Apache web server on Cen
         </IfModule>
         ~~~
 
-    These settings can also be added to a separate file if so desired. The file must be located in the `conf.module.d` or `conf` directories, and must end in `.conf`.
+    These settings can also be added to a separate file. The file must be located in the `conf.module.d` or `conf` directories, and must end in `.conf`, since this is the format of files that are included in the configuration.
 
 ### Configure Name-based Virtual Hosts
 
-There are different ways to set up virtual hosts; however, the method below is recommended.
+There are different ways to set up virtual hosts. In this section we'll explain one of the easier ones, which we recommend.
 
 1.  Within the `conf.d` directory create `vhost.conf` to store your virtual host configurations. The example below is a template for website `example.com`; change the necessary values for your domain:
 
@@ -93,30 +94,32 @@ There are different ways to set up virtual hosts; however, the method below is r
         </VirtualHost>
         ~~~
 
-    Additional domains can be added to the `vhost.conf` file as needed.
+    Additional domains can be added to the `vhost.conf` file as needed. To domains, copy the `VirtualHost` block above and modify its values for each additional virtual host.
 
     {: .note}
     >
-    >`ErrorLog` and `CustomLog` entries are suggested for more fine-grained logging, but are not required. If they are defined (as shown above), the `logs` directories must be created before you restart Apache.
+    >`ErrorLog` and `CustomLog` entries are suggested for more specific logging, but are not required. If they are defined (as shown above), the `logs` directories must be created before you restart Apache.
 
 2.  Create the directories referenced above:
 
-        sudo mkdir -p /var/www/html/example.com/public_html
-        sudo mkdir /var/www/html/example.com/logs
+        sudo mkdir -p /var/www/html/example.com/{public_html,logs}
 
 3.  Enable Apache to start at boot, and restart the service for the above changes to take place:
 
         sudo systemctl enable httpd.service
         sudo systemctl restart httpd.service
 
-    You can now visit your domain to test the Apache server. A default Apache page will be visible if no index page is found in your Directory Root as declared in `/etc/httpd/conf/httpd.conf`:
+    You can now visit your domain to test the Apache server. A default Apache page will be visible if no index page is found in your Document Root as declared in `/etc/httpd/conf/httpd.conf`:
+
     ![Apache on CentOS 7 Welcome Screen](/docs/assets/centos7-apache-welcome.png "Welcome to Apache on CentOS 7")
 
-## Further Reading: Add SSL for security and Install GlusterFS for High Availability
+## Next Steps
 
-### Secure your site with SSL
+Congratulations! You've set up Apache and you're now ready to host websites. If you're wondering what additional configuration changes are available to get the most out of your server, some optional steps can be found below.
 
-To add additional security to your site, consider [enabling a Secure Sockets Layer (SSL)](https://www.linode.com/docs/security/ssl/ssl-apache2-centos).
+### Secure your Site with SSL
+
+To add additional security to your site, consider [enabling a Secure Sockets Layer (SSL) certificate](https://www.linode.com/docs/security/ssl/ssl-apache2-centos).
 
 ### Install and Configure GlusterFS, Galera, and XtraDB for High Availability
 
