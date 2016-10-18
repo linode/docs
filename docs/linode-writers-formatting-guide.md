@@ -17,7 +17,7 @@ Submissions which adhere to the following formatting guidelines are more likely 
 
 ## General Layout
 
-Linode Guides & Tutorials are written in [PHP Markdown Extra](https://michelf.ca/projects/php-markdown/extra/). Additional Linode-specific markdown formatting notes are given [further below](#markdown-formatting), and submissions should be a `.md` file.
+Linode Guides & Tutorials are written in [PHP Markdown Extra](https://michelf.ca/projects/php-markdown/extra/). Additional Linode-specific markdown formatting notes are given [further below](#markdown-formatting), and submissions should be an `.md` file.
 
 ### Header
 
@@ -33,8 +33,8 @@ Author Submission
     description: 'Two to three sentences describing your guide.'
     keywords: 'list,of,keywords,and key phrases'
     license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-    published: 'Weekday, Month 00, 2015'
-    modified: Weekday, Month 00, 2015
+    published: 'Weekday, Month 00st, 2015'
+    modified: Weekday, Month 00th, 2015
     modified_by:
       name: Linode
     title: 'Guide Title'
