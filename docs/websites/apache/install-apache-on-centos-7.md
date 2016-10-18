@@ -5,10 +5,10 @@ author:
 description: 'Install and configure Apache on CentOS 7.'
 keywords: 'CentOS,CentOS 7,apache'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 'Thursday, October 13, 2016'
+modified: 'Thursday, October 20, 2016'
 modified_by:
     name: Edward Angert
-published: 'Thursday, October 13, 2016'
+published: 'Thursday, October 20, 2016'
 title: How to install Apache on CentOS 7
 external_resources:
  - '[CentOS Linux Home Page](http://www.centos.org/)'
@@ -94,7 +94,7 @@ There are different ways to set up virtual hosts. In this section we'll explain 
         </VirtualHost>
         ~~~
 
-    Additional domains can be added to the `vhost.conf` file as needed. To domains, copy the `VirtualHost` block above and modify its values for each additional virtual host.
+    Additional domains can be added to the `vhost.conf` file as needed. To add domains, copy the `VirtualHost` block above and modify its values for each additional virtual host.
 
     {: .note}
     >
@@ -113,7 +113,7 @@ There are different ways to set up virtual hosts. In this section we'll explain 
 
     ![Apache on CentOS 7 Welcome Screen](/docs/assets/centos7-apache-welcome.png "Welcome to Apache on CentOS 7")
 
-## Next Steps
+## Next Steps: Add SSL for security and Install GlusterFS for High Availability
 
 Congratulations! You've set up Apache and you're now ready to host websites. If you're wondering what additional configuration changes are available to get the most out of your server, some optional steps can be found below.
 
