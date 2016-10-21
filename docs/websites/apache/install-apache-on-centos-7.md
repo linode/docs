@@ -119,8 +119,8 @@ Congratulations! You've set up Apache and you're now ready to host websites. If 
 
 ### Secure your Site with SSL
 
-To add additional security to your site, consider [enabling a Secure Sockets Layer (SSL) certificate](https://www.linode.com/docs/security/ssl/ssl-apache2-centos).
+To add additional security to your site, consider [enabling a Secure Sockets Layer (SSL) certificate](/docs/security/ssl/ssl-apache2-centos).
 
 ### Install and Configure GlusterFS, Galera, and XtraDB for High Availability
 
-Consult our [Host a Website with High Availability](https://www.linode.com/docs/websites/host-a-website-with-high-availability) guide to mitigate downtime through redundancy, monitoring, and failover.
+Consult our [Host a Website with High Availability](/docs/websites/host-a-website-with-high-availability) guide to mitigate downtime through redundancy, monitoring, and failover.
