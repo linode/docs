@@ -133,15 +133,39 @@ Game servers and clients are an especially ripe target for attack. Use our [Secu
 
 ## Install SteamCMD
 
-1.  Newly created Linodes use 64-bit Linux operating systems. Since Steam is compiled for i386, install the appropriate libraries. We'll also install `screen` to use when running Steam games.
+First, we are going to install `screen` to use when running Steam games.
+
+**CentOS 7**
+
+    sudo yum install screen
+
+**Debian / Ubuntu**
+
+    sudo apt-get install screen
+
+
+### Package from repositories (recommended)
+It's recommended to install SteamCMD from your distribution repositories, if available.
+
+1.  Install the package:
+
+        sudo apt-get install steamcmd
+        
+2.  Create a symlink to the **steamcmd** executable in a convenient place:
+
+        cd ~
+        ln -s /usr/games/steamcmd steamcmd
+
+### Manually
+1.  Newly created Linodes use 64-bit Linux operating systems. Since Steam is compiled for i386, install the appropriate libraries.
 
     **CentOS 7**
 
-        sudo yum install glibc.i686 libstdc++.i686 screen
+        sudo yum install glibc.i686 libstdc++.i686
 
     **Debian / Ubuntu**
 
-        sudo apt-get install lib32gcc1 screen
+        sudo apt-get install lib32gcc1
 
     {: .note}
     >
@@ -159,7 +183,7 @@ Game servers and clients are an especially ripe target for attack. Use our [Secu
 
         tar -xvzf steamcmd_linux.tar.gz
 
-## Add an Error Fix
+#### Add an Error Fix
 
 When running a Steam game, the following error is common to encounter:
 
@@ -172,8 +196,14 @@ The game server will still operate despite this error, and it should be somethin
 
 ## Run SteamCMD
 
-1.  Run the installer:
+1.  Run the executable.
 
+    If you have installed SteamCMD from repositories:
+        
+        ./steamcmd
+
+    If you have installed SteamCMD manually: 
+        
         ./steamcmd.sh
 
     That will return an output similar to below and leave you at the `Steam>` prompt:
