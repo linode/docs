@@ -8,7 +8,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
  - '[Minecraft.net](https://minecraft.net/)'
  - '[The Official Minecraft Wiki](http://minecraft.gamepedia.com/Minecraft_Wiki)'
-modified: Tuesday, October 12, 2016
+modified: Tuesday, October 18, 2016
 modified_by:
   name: Alex Fornuto
 published: 'Wednesday, January 28, 2015'
@@ -19,14 +19,18 @@ This guide shows you how to set up a personal [Minecraft](https://minecraft.net/
 
 ##Prerequisites
 
-{: .note }
-> To use a Minecraft server you must also have a version of the game client from [Minecraft.net](https://minecraft.net/).
+{: .note}
+>The steps in this guide require root privileges. Be sure to run the steps below as a limited user with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
-1.  Begin by updating your Linode's software:
+1.  To use a Minecraft server you must also have a version of the game client from [Minecraft.net](https://minecraft.net/).
+
+2.  Complete our [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/securing-your-server) guides.
+
+3.  Update your Linode's software:
 
         sudo apt-get update && sudo apt-get upgrade
 
-2.  Install *OpenJDK*, an open-source implementation of Java, and the GNU Screen package.
+3.  Install *OpenJDK*, an open-source implementation of Java, and the GNU Screen package.
 
     - In Ubuntu 16.04:
 
@@ -36,22 +40,22 @@ This guide shows you how to set up a personal [Minecraft](https://minecraft.net/
  
           sudo apt-get install openjdk-7-jre-headless screen
 
-3.  Create a new user for Minecraft to run as:
+4.  Create a new user for Minecraft to run as:
 
         sudo adduser minecraft
 
     Assign a secure password, and configure any additional [SSH hardening](/docs/security/use-public-key-authentication-with-ssh) options at this time.
 
 {: .note }
-> If you have a firewall configured according to our [Securing Your Server](/docs/security/securing-your-server) guide, you will need to add an exception for port 25565. Add this line to your `iptables.firewall.rules` file:
+> If you have a firewall configured according to our [Securing Your Server](/docs/security/securing-your-server) guide, add the following line to your `iptables.firewall.rules` file to add an exception for port 25565:
 >
 >     -A INPUT -p tcp --dport 25565 -j ACCEPT
 
 ##Install Minecraft
 
-1.  Exit your SSH session and log back in to your Linode as the `minecraft` user.
+1.  Exit your current SSH session and log back in to your Linode as the `minecraft` user.
 
-2.  Download the latest version of the Minecraft Multiplayer Server from [Minecraft.net](https://minecraft.net/). The current version as of this publication is 1.10.2: 
+2.  Download the latest version of the Minecraft Multiplayer Server from [Minecraft.net](https://minecraft.net/). Replace the URL in this example to match the current version:
 
         wget https://s3.amazonaws.com/Minecraft.Download/versions/1.10.2/minecraft_server.1.10.2.jar
 
@@ -74,7 +78,7 @@ This guide shows you how to set up a personal [Minecraft](https://minecraft.net/
 
 4.  Make `run.sh` executable:
 
-        chmod +x run.sh
+        chmod +x /home/minecraft/run.sh
 
 ##Run Minecraft
 
@@ -136,11 +140,11 @@ This guide shows you how to set up a personal [Minecraft](https://minecraft.net/
 
     [![Minecraft Launch Menu.](/docs/assets/minecraft-select-multiplayer_small.png)](/docs/assets/minecraft-select-multiplayer.png)
 
-2.  Click on **Add server** and enter your Linode's IP address or domain name. When you're finished click **Done**.
+2.  Click on **Add server** and enter your Linode's IP address or domain name. When you're finished click **Done**:
 
     [![Edit Server Info.](/docs/assets/minecraft-server-info_small.png)](/docs/assets/minecraft-server-info.png)
 
-3.  Your server is now available to connect to. Click **Join Server** to connect:
+3.  Your server is now available to incoming connections. Click **Join Server** to connect:
 
     [![Minecraft Server List.](/docs/assets/minecraft-server-added_small.png)](/docs/assets/minecraft-server-added.png)
 
