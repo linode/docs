@@ -20,7 +20,7 @@ This guide shows you how to set up a personal [Minecraft](https://minecraft.net/
 ##Prerequisites
 
 {: .note}
->The steps in this guide require root privileges. Be sure to run the steps below asas a limited user with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+>The steps in this guide require root privileges. Be sure to run the steps below as a limited user with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
 1.  To use a Minecraft server you must also have a version of the game client from [Minecraft.net](https://minecraft.net/).
 
