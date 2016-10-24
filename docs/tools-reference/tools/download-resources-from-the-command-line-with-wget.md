@@ -38,8 +38,8 @@ When issued at the command line without options, `wget` will download the file s
 
     $ cat wget-example.txt
     This is an example resource for the `wget` document
-    <http://library.linode.com/using-linux/common-commands/wget/>, located
-    in the Linode Library. 
+    <http://www.linode.com/docs/tools-reference/tools/download-resources-from-the-command-line-with-wget>, located
+    in the Linode Docs.
 
     There are four lines of random characters at the end of this file. 
 
@@ -58,8 +58,8 @@ The `-O` option controls the location and name of the file where `wget` writes t
 
     $ wget -q -O - http://www.linode.com/docs/assets/695-wget-example.txt
     This is an example resource for the `wget` document
-    <http://library.linode.com/using-linux/common-commands/wget/>, located
-    in the Linode Library. 
+    <http://www.linode.com/docs/tools-reference/tools/download-resources-from-the-command-line-with-wget>, located
+    in the Linode Docs.
 
     There are four lines of random characters at the end of this file. 
 

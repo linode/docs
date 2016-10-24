@@ -131,7 +131,7 @@ More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [Linode Library nginx Documentation](/docs/web-servers/nginx/)
+- [Linode Docs nginx Documentation](/docs/web-servers/nginx/)
 - [nginx Community Documentation](http://wiki.nginx.org)
 
 
