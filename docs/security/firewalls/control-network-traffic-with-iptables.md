@@ -22,7 +22,7 @@ Packet filtering using network rules such as Network Address Translation (NAT) c
 
 By default, the iptables tool is included with your Linode supplied distribution. In order to use iptables, you will need root privileges to make changes. The iptables files are in the `/sbin` directory. However, unlike some other Linux configurations made through a text editor, you will make changes to iptables files by invoking commands from the command line.
 
-## Use iptables to Manage IPv4 Traffic
+## Use Linux iptables to Manage IPv4 Traffic
 
 ### The iptables Command
 
@@ -112,7 +112,7 @@ There are a number of options that may be used with the `iptables` command:
 
 Iptables can be configured and used in a variety of ways. The following sections will outline how to configure rules by port and IP, as well as blacklisting (blocking) or whitelisting (allowing) addresses.
 
-### Blocking Traffic by Port
+### iptables Example: Blocking Traffic by Port
 
 You may use a port to block all traffic coming in on a specific interface. For example:
 
@@ -147,7 +147,7 @@ To remove these rules, add `--delete` or `-D` to the command as in the following
     iptables --delete INPUT -s 198.51.100.0 -j DROP
     iptables -D INPUT -s 198.51.100.0 -j DROP
 
-### Block or Allow Traffic by Port Number to Create a Firewall with iptables
+### Block or Allow Traffic by Port Number to Create an iptables Firewall
 
 One method of creating a firewall is by blocking all traffic to the system and then allowing traffic on certain ports. Below are sample commands to illustrate the process:
 
