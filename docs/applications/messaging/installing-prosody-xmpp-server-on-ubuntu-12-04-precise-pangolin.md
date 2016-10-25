@@ -29,7 +29,7 @@ The developers of Prosody provide software repositories for Debian and Ubuntu to
 {: .file-excerpt }
 /etc/apt/sources.list
 :   ~~~
-    deb http://packages.prosody.im/debian precist main
+    deb http://packages.prosody.im/debian precise main
     ~~~
 
 Now, to download the public key for the Prosody package repository, issue the following `wget` command. You may need to install `wget` first by running `apt-get install wget`. This will allow you to authenticate and verify packages:
