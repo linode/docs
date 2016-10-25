@@ -23,6 +23,8 @@ external_resources:
 
 [Zookeeper](https://zookeeper.apache.org/) is a critical distributed systems technology that Storm depends on to function correctly. 
 
+![Big Data in the Linode Cloud: Streaming Data Processing with Apache Storm](/docs/assets/big_data_linode_cloud.png "Big Data in the Linode Cloud: Streaming Data Processing with Apache Storm")
+
 Some use cases where Storm is a good solution:
 
 -  Twitter data analytics (for example, trend prediction or sentiment analysis)
@@ -37,13 +39,13 @@ This guide explains how to create Storm clusters on the Linode cloud using a set
 
  The deployed architecture will look like this:
 
-[![Architecture of the Completed Cluster](/docs/assets/storm_zookeeper_architecture_650.png "Deployed Cluster Architecture")](/docs/assets/storm_zookeeper_architecture_900.png "Deployed Cluster Architecture")
+![Architecture of the Completed Cluster](/docs/assets/storm_zookeeper_architecture_900.png "Deployed Cluster Architecture")
 
 &nbsp;
 
 From an application standpoint, the flow of data is depicted below:
 
-[![Storm Topology and Deployment](/docs/assets/storm_topology_650.png "Storm Topology and Deployment")](/docs/assets/storm_topology_900.png "Storm Topology and Deployment")
+![Storm Topology and Deployment](/docs/assets/storm_topology_900.png "Storm Topology and Deployment")
 
 The application flow begins, from the client side, with the Storm client, which provides a user interface. This contacts a *Nimbus* node, which is central to the operation of the Storm cluster. The Nimbus node gets the current state of the cluster, including a list of the supervisor nodes and *topologies* from the Zookeeper cluster. The Storm cluster's supervisor nodes constantly update their states to the Zookeeper nodes, which ensure that the system remains synced.
 
@@ -170,7 +172,7 @@ The first step is setting up a central *Cluster Manager* to store details of all
 
 8.  The `cluster_manager.sh` script we ran in the previous step creates three users on the Cluster Manager Linode, and generates authentication keypairs for all of them on your workstation, as shown in this illustration:
     
-    [![Security Overview](/docs/assets/storm_clustermgrkeys_650.png)](/docs/assets/storm_clustermgrkeys_900.png)
+    ![Security Overview](/docs/assets/storm_clustermgrkeys_900.png)
 
     -  `~/.ssh/clustermgrroot` is the private key for Cluster Manager Linode's *root* user. Access to this user's credentials should be as restricted as possible.
 
