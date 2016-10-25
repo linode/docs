@@ -20,6 +20,8 @@ external_resources:
 
 Setting up a LAMP (Linux, Apache, MySql, PHP) stack will allow for the creation and hosting of websites and web applications. This guide provides step by step instructions for installing a LAMP stack on an Ubuntu 12.04 (Precise Pangolin) Linode.
 
+![LAMP Server on Ubuntu 12.04](/docs/assets/lamp_server_on_ubuntu_12_04.png "LAMP Server on Ubuntu 12.04")
+
 {: .note}
 >
 >This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
