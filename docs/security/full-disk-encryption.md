@@ -35,7 +35,7 @@ The Debian 8 guided encryption option in this guide makes use of a process commo
     * A disk labelled **Installer**. The size of this disk will depend upon the size of your distribution's installer, but it's recommended to make it slightly larger than the space taken up by the install media itself. For this example, the installer disk will be 100MB in size.
     * A disk labelled **Boot**. This will take up the rest of the free space available on your Linode.
 
-2. [Create two configuration profiles](docs/migrate-to-linode/disk-images/disk-images-and-configuration-profiles#configuration-profiles) and disable the options under **Filesystem / Boot Helpers** for each of them, as well as the [Lassie](docs/uptime/monitoring-and-maintaining-your-server#configuring-shutdown-watchdog) shutdown watchdog. Both profiles will use the **Direct Disk** option from the **Kernel** drop down menu:
+2. [Create two configuration profiles](docs/migrate-to-linode/disk-images/disk-images-and-configuration-profiles#configuration-profiles) and disable the options under **Filesystem / Boot Helpers** for each of them, as well as the [Lassie](/docs/uptime/monitoring-and-maintaining-your-server#configuring-shutdown-watchdog) shutdown watchdog under the **Settings** menu. Both profiles will use the **Direct Disk** option from the **Kernel** drop down menu:
 
     **Installer profile**
 
@@ -63,7 +63,7 @@ The Debian 8 guided encryption option in this guide makes use of a process commo
 
 ## Install the Operating System
 
-1. From the Glish console, you can view your distribution's installer. Click **Install**.
+1. From the Glish console, you can view your distribution's installer. Select **Install** and press the Enter key.
 
     ![Debian 8 Installer](/docs/assets/fde-debian-installer.png)
 
@@ -75,7 +75,7 @@ The Debian 8 guided encryption option in this guide makes use of a process commo
 
     [![Debian 8 Location Setting](/docs/assets/fde-location-small.png)](/docs/assets/fde-location.png)
 
-3. The installer will use DHCP to connect to the network. If you prefer, you'll have the option to configure your network settings manually.
+3. After you select a keyboard layout, the installer will use DHCP to connect to the network. If you prefer, you'll have the option to configure your network settings manually.
 
     [![Debian 8 DHCP](/docs/assets/fde-dhcp-config-small.png)](/docs/assets/fde-dhcp-config.png)
 
@@ -147,7 +147,7 @@ The Debian 8 guided encryption option in this guide makes use of a process commo
 
 ## Configure GRUB
 
-1. Now that you've completed the Debian installation, reboot your Linode into its *Installer* configuration profile, and connect to it from the Glish console. You will be prompted to enter your disk encryption passphrase:
+1. Now that you've completed the Debian installation, reboot your Linode into its *Boot* configuration profile, and connect to it from the Glish console. You will be prompted to enter your disk encryption passphrase:
 
     [![Glish Decryption Password](/docs/assets/fde-glish-decrypt-small.png)](/docs/assets/fde-glish-decrypt.png)
 
