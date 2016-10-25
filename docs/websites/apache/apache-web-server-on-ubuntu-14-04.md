@@ -97,7 +97,7 @@ If you choose to keep the *event module* enabled, these settings are suggested f
 1.  Open `/etc/apache2/mods-available/mpm_event.conf` in your text editor and edit the values as needed:
 
     {: .file}
-    /etc/apache2/mods-available/mpm_event.comf
+    /etc/apache2/mods-available/mpm_event.conf
     :   ~~~ conf
         # event MPM
         # StartServers: initial number of server processes to start
