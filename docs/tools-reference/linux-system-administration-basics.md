@@ -13,15 +13,15 @@ published: 'Sunday, December 13th, 2009'
 title: Linux System Administration Basics
 ---
 
-This guide presents a collection of common issues and useful tips for Linux system administration. Whether you're new to system administration or have been maintaining systems for some time, we hope this collection of basic Linux commands will be helpful in managing your system from the command line.
+This guide presents a collection of common issues and useful tips for Linux system administration. Whether you're new to system administration or have been maintaining systems for some time, we hope this collection of basic Linux commands will help you manage your system from the command line.
 
 ## Basic Configuration
 
-These tips cover some of the basic steps and issues encountered during the beginning of system configuration. We provide a general [getting started guide](/docs/getting-started) for your convenience if you're new to Linode and basic Linux system administration. Additionally, you may find some of our [Introduction to Linux Concepts guide](/docs/tools-reference/introduction-to-linux-concepts) useful.
+These tips cover some of the basic steps and issues encountered during the beginning of system configuration. We provide a general [Getting Started guide](/docs/getting-started) for your convenience if you're new to Linode and basic Linux system administration. Additionally, you may find our [Introduction to Linux Concepts guide](/docs/tools-reference/introduction-to-linux-concepts) useful.
 
 ### Set the Hostname
 
-Please follow our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). You can use the following commands to make sure it is set properly:
+Please follow our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). You can use the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -30,52 +30,68 @@ The first command should show your short hostname, and the second should show yo
 
 ### Set the Time Zone
 
-When setting the time zone of your server, it may be best to use the time zone of the majority of your users. If you're unsure which time zone would be best, consider using universal coordinated time or UTC (i.e., Greenwich Mean Time).
+When setting the time zone of your server, it may be best to use the time zone of the majority of your users. If you're not sure which time zone would be best, consider using Universal Coordinated Time or UTC (i.e., Greenwich Mean Time).
 
-By default, Linodes are set to UTC time. The following process will set the time zone manually, though many operating systems provide simpler methods for changing time zones. To change the time zone manually, you must find the proper zone file in `/usr/share/zoneinfo/` and link that file to `/etc/localtime`. See the example below for common possibilities. All contents following the double hashes (`##`) are comments and should not be copied into your terminal.
+By default, Linodes are set to UTC. Many operating systems provide built-in, interactive methods for changing time zones: 
 
-    ln -sf /usr/share/zoneinfo/UTC /etc/localtime ## for Universal Coordinated Time 
+#### Set the Time Zone in Debian or Ubuntu
 
-    ln -sf /usr/share/zoneinfo/EST /etc/localtime ## for Eastern Standard Time 
-
-    ln -sf /usr/share/zoneinfo/US/Central /etc/localtime ## for American Central time (including DST)
-
-    ln -sf /usr/share/zoneinfo/US/Eastern /etc/localtime ## for American Eastern (including DST)
-
-To change the time zone in Debian and Ubuntu systems, issue the following command and answer the questions as prompted on the screen:
+Issue the following command and answer the questions as prompted on the screen:
 
     dpkg-reconfigure tzdata
 
-In Arch Linux, set the time zone in the `/etc/rc.conf` file by configuring the `TIMEZONE=` setting in the "Localization" section. This line will resemble the following:
+#### Set the Time Zone in CentOS 7 or Arch Linux
 
-{: .file-excerpt}
-/etc/rc.conf
-:   ~~~
-    TIMEZONE="America/New\_York"
-    ~~~
+1. View the list of available time zones:
 
-Note that the string specified in `TIMEZONE` refers to the "zoneinfo" file located in or below the `/usr/share/zoneinfo/` directory.
+        timedatectl list-timezones
+
+    Use the `Up`, `Down`, `Page Up` and `Page Down` keys to navigate to the correct zone. Remember it, write it down or copy it as a mouse selection. Then press **q** to exit the list.
+
+2. Set the time zone (change `America/New_York` to the correct zone):
+
+        timedatectl set-timezone 'America/New_York'
+
+#### Set the Time Zone Manually on a Linux System
+
+Find the appropriate zone file in `/usr/share/zoneinfo/` and link that file to `/etc/localtime`. See the examples below for possibilities:
+
+Universal Coordinated Time:
+
+    ln -sf /usr/share/zoneinfo/UTC /etc/localtime
+
+Eastern Standard Time:
+
+    ln -sf /usr/share/zoneinfo/EST /etc/localtime
+
+American Central Time (including Daylight Savings Time):
+
+    ln -sf /usr/share/zoneinfo/US/Central /etc/localtime
+
+American Eastern Time (including Daylight Savings Time):
+
+    ln -sf /usr/share/zoneinfo/US/Eastern /etc/localtime
 
 ### Configure the /etc/hosts File
 
-The `/etc/hosts` file provides a list of IP addresses with corresponding hostnames. This allows you to specify hostnames for an IP address in one place on the local machine, and then have multiple applications connect to external resources via their hostnames. The system of host files precedes [DNS](/docs/dns-guides/introduction-to-dns), and hosts files are *always* checked before DNS is queried. As a result, `/etc/hosts` can be useful for maintaining small "internal" networks, for development purposes, and for managing clusters.
+The `/etc/hosts` file provides a list of IP addresses with corresponding hostnames. This allows you to specify hostnames for an IP address in one place on the local machine, and then have multiple applications connect to external resources via their hostnames. The system of host files precedes [DNS](/docs/networking/dns/dns-records-an-introduction/), and hosts files are *always* checked before DNS is queried. As a result, `/etc/hosts` can be useful for maintaining small "internal" networks, for development purposes, and for managing clusters.
 
 Some applications require that the machine properly identify itself in the `/etc/hosts` file. As a result, we recommend configuring the `/etc/hosts` file shortly after deployment. Here is an example file:
 
 {: .file-excerpt }
 /etc/hosts
 :   ~~~
-    127.0.0.1 localhost.localdomain localhost
-    103.0.113.12 username.example.com username
+    127.0.0.1   localhost.localdomain   localhost
+    103.0.113.12    username.example.com   username
     ~~~
 
-You can specify a number of hostnames on each line separated by spaces. Every line must begin with one and only one IP address. In this case, replace `12.34.56.78` with your machine's IP address. Let us consider a few additional `/etc/hosts` entries:
+You can specify a number of hostnames on each line separated by spaces. Every line must begin with one and only one IP address. In the above example, replace `103.0.113.12` with your machine's IP address. Consider a few additional `/etc/hosts` entries:
 
 {: .file-excerpt }
 /etc/hosts
 :   ~~~
-    198.51.100.30 example.com
-    192.168.1.1 stick.example.com
+    198.51.100.30   example.com
+    192.168.1.1     stick.example.com
     ~~~
 
 In this example, all requests for the `example.com` hostname or domain will resolve to the IP address `198.51.100.30`, which bypasses the DNS records for `example.com` and returns an alternate website.
@@ -88,12 +104,12 @@ In this section, we'll review some basic Linux commands that will help you asses
 
 ### The ping Command
 
-The `ping` command tests the connection between the local machine and a remote address or machine. The following commanda "ping" `google.com` and `216.58.217.110`:
+The `ping` command tests the connection between the local machine and a remote address or machine. The following commands "ping" `google.com` and `216.58.217.110`:
 
     ping google.com
     ping 216.58.217.110
 
-These commands send a small amount of data (an ICMP packet) to the remote host and wait for a response. If the system is able to make a connection, it will report on the "round trip time" for every packet. Here is the output of four pings of google.com:
+These commands send a small amount of data (an ICMP packet) to the remote host and wait for a response. If the system is able to make a connection, it will report on the "round trip time" for every packet. Here is the sample output of four pings to google.com:
 
     PING google.com (216.58.217.110): 56 data bytes
     64 bytes from 216.58.217.110: icmp_seq=0 ttl=54 time=14.852 ms
@@ -111,13 +127,13 @@ The `time` field specifies in milliseconds the duration of the round trip for an
 There are several important data points to notice:
 
 -   *Packet Loss*, or the discrepancy between the number of packets sent and the number of packets that return successfully. This number shows the percentage of packets that are dropped.
--   *Round Trip Time* (rtt) statistics on the final line report information about all the ping responses. For this ping we see that the fastest packet round trip (min) took 33.89 milliseconds. The longest packet (max) took 53.28 milliseconds. The average round trip (avg) took 40.175 milliseconds. A single standard deviation unit (mdev) for these four packets is 7.67 milliseconds.
+-   *Round Trip Time* (rtt) statistics on the final line report information about all the ping responses. For this ping we see that the fastest packet round trip (min) took 33.89 milliseconds. The average round trip (avg) took 40.175 milliseconds. The longest packet (max) took 53.28 milliseconds. A single standard deviation unit (mdev) for these four packets is 7.67 milliseconds.
 
 The ping command is useful as an informal diagnostic tool to measure point-to-point network latency, and as a tool to simply ensure you are able to make a connection to a remote server.
 
 ### The traceroute Command
 
-The `traceroute` command expands on the functionality of the [ping](#the_ping_command) command. It provides a report on the path that the packets take to get from the local machine to the remote machine. Each step (intermediate server) in the path is called a *hop*. Route information is useful when troubleshooting a networking issue: if there is packet loss in one of the first few hops the problem is often related to the user's local area network (LAN) or Internet service provider (ISP). By contrast, if there is packet loss near the end of the route, the problem may be caused by an issue with the server's connection.
+The `traceroute` command expands on the functionality of the [ping](#the-ping-command) command. It provides a report on the path that the packets take to get from the local machine to the remote machine. Each step (intermediate server) in the path is called a *hop*. Route information is useful when troubleshooting a networking issue: if there is packet loss in one of the first few hops the problem is often related to the user's local area network (LAN) or Internet service provider (ISP). By contrast, if there is packet loss near the end of the route, the problem may be caused by an issue with the server's connection.
 
 Here is an example of output from a `traceroute` command:
 
@@ -141,7 +157,7 @@ Adding `traceroute` output to [Linode support](/docs/platform/support/) tickets 
 
 ### The mtr Command
 
-The `mtr` command, like the [traceroute](#using_the_traceroute_command) tool, provides information about the route that internet traffic takes between the local system and a remote host. However, `mtr` provides additional information about the round trip time for the packet. In a way, you can think of `mtr` as a combination of traceroute and ping.
+The `mtr` command, like the [traceroute](#the-traceroute-command) tool, provides information about the route that internet traffic takes between the local system and a remote host. However, `mtr` provides additional information about the round trip time for the packet. In a way, you can think of `mtr` as a combination of traceroute and ping.
 
 Here is an example of output from an `mtr` command:
 
@@ -156,13 +172,17 @@ Here is an example of output from an `mtr` command:
         8.  209.85.255.190                  0.0%    10      27.0    27.3    23.9    37.9    4.2
         9.  gw-in-f100.1e100.net            0.0%    10      24.1    24.4    24.0    26.5    0.7
 
-Used without the `--report` flag, `mtr` tracks the speed of the connection in real time until you exit the program. Be aware that `mtr` will pause for a few moments while generating output. For more information regarding `mtr` consider our [guide to diagnosing network issues with mtr](/docs/linux-tools/mtr).
+Like the `ping` command, `mtr` tracks the speed of the connection in real time until you exit the program with **CONTROL+C**. To have `mtr` stop automatically and generate a report after ten packets, use the `--report` flag:
+
+    mtr --report
+
+Be aware that `mtr` will pause for a few moments while generating output. For more information regarding `mtr` consider our [diagnosing network issues with mtr](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) guide.
 
 ## System Diagnostics
 
 If you're having an issue with your Linode that is neither related to [networking](#network-diagnostics) nor another application issue, it may help to rule out "hardware" and operating system level issues. Use the following tools to better diagnose and resolve these.
 
-If you determine that you have a problem with memory usage, refer to our guide on [resolving memory usage issues](/docs/troubleshooting/memory-networking). Use the following tools and approaches to determine the specific cause of your troubles.
+If you determine that you have a problem with memory usage, refer to our guide on [resolving memory usage issues](/docs/troubleshooting/troubleshooting-memory-and-networking-issues/). Use the following tools and approaches to determine the specific cause of your troubles.
 
 ### Check Current Memory Usage
 
@@ -278,7 +298,7 @@ We suggest the following best practices for maintaining security:
 
 ### Symbolic Links
 
-*Symbolic linking* colloquially "symlinking", allows you to create an object in your filesystem that points to another object on your filesystem. This is useful when you need to provide users and applications access to specific files and directories without reorganizing your folders. This way you can provide restricted users access to your web-accessible directories without moving your `DocumentRoot` into their home directories.
+*Symbolic linking*, colloquially "symlinking", allows you to create an object in your filesystem that points to another object on your filesystem. This is useful when you need to provide users and applications access to specific files and directories without reorganizing your folders. This way you can provide restricted users access to your web-accessible directories without moving your `DocumentRoot` into their home directories.
 
 To create a symbolic link, issue a command in the following format:
 
