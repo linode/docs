@@ -14,13 +14,15 @@ title: 'Email with Postfix, Dovecot, and MySQL'
 
 In this guide, you'll learn how to set up a secure mail server with Postfix, Dovecot, and MySQL on Debian or Ubuntu. Specifically, we'll explain how to create new user mailboxes and send or receive email to and from configured domains.
 
+![Email with Postfix, Dovecot, and MySQL](/docs/assets/email_with_postfix_dovecot_and_mysql.png "Setting up a mail server with Postfix, Dovecot, and MySQL")
+
 For a different Linux distribution or different mail server, review our [email tutorials](/docs/email). 
 
 ### Before You Begin
 
 1.  Set up the Linode as specified in the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/securing-your-server) guides.
 
-2.  Ensure that the iptables [firewall](/docs/securing-your-server#creating-a-firewall) is not blocking any of the standard mail ports (25, 465, 587, 110, 995, 143, and 993). If using a different form of firewall, confirm that it is not blocking any of the needed ports either.
+2.  Ensure that the iptables [firewall](/docs/securing-your-server#creating-a-firewall) is not blocking any of the standard mail ports (`25`, `465`, `587`, `110`, `995`, `143`, and `993`). If using a different form of firewall, confirm that it is not blocking any of the needed ports either.
 
 ### Configure DNS
 
