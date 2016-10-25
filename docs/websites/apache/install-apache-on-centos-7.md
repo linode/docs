@@ -46,7 +46,7 @@ This guide explains how to install and configure the Apache web server on CentOS
 
         sudo yum install httpd
 
-2.  Edit `httpd.conf` to set your document root to direct Apache to your site's files and add the `<IfModule prefork.c>` section below to adjust the resource use settings. The settings shown below are a good starting point for a **Linode 2GB**:
+2.  Edit `httpd.conf` to set your document root to direct Apache to your site's files, and to add the `<IfModule prefork.c>` section below to adjust the resource use settings. The settings shown below are a good starting point for a **Linode 2GB**:
 
     {: .note}
     >
@@ -71,7 +71,7 @@ This guide explains how to install and configure the Apache web server on CentOS
         </IfModule>
         ~~~
 
-    These settings can also be added to a separate file. The file must be located in the `conf.module.d` or `conf` directories, and must end in `.conf`, since this is the format of files that are included in the configuration.
+    These settings can also be added to a separate file. The file must be located in the `conf.module.d` or `conf` directories, and must end in `.conf`, since this is the format of files included in the resulting configuration.
 
 ### Configure Name-based Virtual Hosts
 
