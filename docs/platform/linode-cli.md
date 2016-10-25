@@ -69,6 +69,7 @@ In this section, you will learn how to install the Linode CLI manually on any Li
 
 -   Crypt::SSLeay
 -   JSON
+-   LWP::Protocol::https
 -   LWP::UserAgent
 -   Mozilla::CA
 -   Try::Tiny
