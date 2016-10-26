@@ -21,6 +21,11 @@ external_resources:
 *This is a Linode Community guide. Write for us and earn $250 per published guide.*
 <hr>
 
+
+# How to Use Varnish with Nginx to Serve Cached WordPress Content over SSL on Debian 8
+
+## Introduction
+
 **Varnish** is a powerful and flexible caching HTTP reverse proxy. It can be installed in front of any web server and used to cache its contents, offering tremendous speed improvement and reducing server load. When a client requests a page, Varnish first tries to send it from cache. If the page is not cached it forwards the request to the backend server, fetches the response, stores it in cache and delivers it to the client. A cached page is delivered in a matter of microseconds, since it is read from system memory. The request doesn't reach the web server and doesn't involve any PHP or MySQL execution. This guide uses Varnish 4.0 which is included in the Debian 8 repositories.  
 
 It is important to note that Varnish doesn't support SSL encrypted traffic. This problem can be circumvented by using **nginx** both for SSL decryption and as a backend web server. Using nginx for both tasks reduces the complexity of the setup, leading to fewer potential failure points, lower usage of hardware resources and less components to maintain.
@@ -31,10 +36,10 @@ Both Varnish and nginx are versatile tools with a variety of uses. This guide wi
 
 For this example, we will configure nginx and Varnish for two Wordpress sites:
 
-  * `example-over-http.com` will be an unencrypted, HTTP-only site.
-  * `example-over-https.com` will be a separate, HTTPS-encrypted site.
+  * `www.example-over-http.com` will be an unencrypted, HTTP-only site.
+  * `www.example-over-https.com` will be a separate, HTTPS-encrypted site.
 
-For HTTP traffic Varnish will listen on port 80. If content is found in cache, Varnish will serve it from cache. If not, it will pass the request to nginx on port 8080. nginx will send the requested content back to Varnish on the same port, and Varnish will store the fetched content in cache and then deliver it to the client of port 80.
+For HTTP traffic Varnish will listen on port 80. If content is found in cache, Varnish will serve it from cache. If not, it will pass the request to nginx on port 8080. nginx will send the requested content back to Varnish on the same port, and Varnish will store the fetched content in cache and then deliver it to the client on port 80.
 
 For HTTPS traffic, nginx will listen on port 443 and send decrypted traffic to Varnish on port 80. If content is found in cache, Varnish will send the unencrypted content from cache back to nginx, which will encrypt it and send it to the client. If content is not found in cache Varnish will request it from backend nginx on port 8080, store it in cache and then send it unencrypted to frontend nginx which will encrypt it and send it to the client's browser.
 
@@ -125,8 +130,8 @@ This tutorial assumes that you have SSH access to your Linode running Debian 8 (
     {: .file-excerpt }
     /etc/varnish/custom.vcl
     :   ~~~ conf
-        if (client.ip != "127.0.0.1" && req.http.host ~ "example-over-ssl.com") {
-        set req.http.x-redir = "https://www.example-over-ssl.com" + req.url;
+        if (client.ip != "127.0.0.1" && req.http.host ~ "example-over-https.com") {
+        set req.http.x-redir = "https://www.example-over-https.com" + req.url;
         return(synth(850, ""));
         }
         ~~~
@@ -283,8 +288,8 @@ This tutorial assumes that you have SSH access to your Linode running Debian 8 (
 
 		sub vcl_recv {
 
-		 if (client.ip != "127.0.0.1" && req.http.host ~ "example-over-ssl.com") {
-			set req.http.x-redir = "https://www.example-over-ssl.com" + req.url;
+		 if (client.ip != "127.0.0.1" && req.http.host ~ "example-over-https.com") {
+			set req.http.x-redir = "https://www.example-over-https.com" + req.url;
 			return(synth(850, ""));
 		 }
 
@@ -451,7 +456,7 @@ Before configuring nginx we have to install PHP-FPM. FPM is short for FastCGI Pr
 
 12. Save and exit the file.
 
-13. Next we'll configure the HTTP-only website, `example-over-http.com`. Open the default nginx configuration file:
+13. Next we'll configure the HTTP-only website, `www.example-over-http.com`. Open the default nginx configuration file:
 
 		sudo nano /etc/nginx/sites-available/default
 
@@ -496,7 +501,7 @@ Before configuring nginx we have to install PHP-FPM. FPM is short for FastCGI Pr
 	*   `port_in_redirect off;` is needed to prevent nginx from appending the port number to the requested URL.
 	*   `fastcgi` directives are used to proxy requests for PHP code execution to PHP-FPM, via the FastCGI protocol.
 
-15. To configure nginx for the SSL website which we called `example-over-ssl.com`, we need two server blocks. Append the follow server blocks to your `/etc/nginx/sites-available/default` file:
+15. To configure nginx for the SSL website which we called `www.example-over-https.com`, we need two server blocks. Append the following server blocks to your `/etc/nginx/sites-available/default` file:
 
 	{: .file-excerpt }
 	/etc/nginx/sites-available/default
@@ -505,12 +510,12 @@ Before configuring nginx we have to install PHP-FPM. FPM is short for FastCGI Pr
 		server {
 		   listen  443 ssl;
 		   listen  [::]:443 ssl;
-		   server_name  www.example-over-ssl.com  example-over-ssl.com;
+		   server_name  www.example-over-https.com  example-over-https.com;
 		   port_in_redirect off;
 
 		   ssl                  on;
 		   ssl_certificate      /etc/nginx/ssl/ssl-bundle.crt;
-		   ssl_certificate_key  /etc/nginx/ssl/example-over-ssl.com.key;
+		   ssl_certificate_key  /etc/nginx/ssl/example-over-https.com.key;
 		   ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
 		   ssl_ciphers ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:ECDH+3DES:DH+3DES:RSA+AESGCM:RSA+AES:RSA+3DES:!aNULL:!MD5:!DSS;
 		   ssl_prefer_server_ciphers   on;
@@ -530,22 +535,22 @@ Before configuring nginx we have to install PHP-FPM. FPM is short for FastCGI Pr
 		     proxy_set_header X-Forwarded-Proto https;
 		     proxy_set_header HTTPS "on";
 
-		     access_log /var/log/allsites/example-over-ssl.com/logs/access.log;
-		     error_log  /var/log/nginx/example-over-ssl.com.error.log notice;
+		     access_log /var/log/allsites/example-over-https.com/logs/access.log;
+		     error_log  /var/log/nginx/example-over-https.com.error.log notice;
 		     }
 		   }
 
 		server {
 		   listen 8080;
 		   listen [::]:8080;
-		   server_name  www.example-over-ssl.com  example-over-ssl.com;
-		   root /var/www/example-over-ssl.com;
+		   server_name  www.example-over-https.com  example-over-https.com;
+		   root /var/www/example-over-https.com;
 		   index index.php;
 		   port_in_redirect off;
 
 		   ssl                  on;
 		   ssl_certificate      /etc/nginx/ssl/ssl-bundle.crt;
-		   ssl_certificate_key  /etc/nginx/ssl/www.example-over-ssl.com.key;
+		   ssl_certificate_key  /etc/nginx/ssl/example-over-https.com.key;
 		   ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
 		   ssl_ciphers ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:ECDH+3DES:DH+3DES:RSA+AESGCM:RSA+AES:RSA+3DES:!aNULL:!MD5:!DSS;
 		   ssl_prefer_server_ciphers   on;
@@ -580,7 +585,7 @@ Before configuring nginx we have to install PHP-FPM. FPM is short for FastCGI Pr
 
 	*   `ssl_session_cache   shared:SSL:20m;` creates a cache shared between all worker processes that has 20 MB. This cache is used to store SSL session parameters so as to avoid SSL handshakes for parallel and subsequent connections. 1MB can store about 4000 sessions, so adjust this cache size according to the expected traffic for your website.
 	*   `ssl_session_timeout 60m;` specifies the ssl session cache timeout. Here it's set to 60 minutes, but it can be decreased or increased, depending on traffic and hardware resources.
-	*   `ssl_prefer_server_ciphers   on;` means that when a SSL connection is established the server ciphers should be preferred over client ciphers.
+	*   `ssl_prefer_server_ciphers   on;` means that when a SSL connection is established, the server ciphers should be preferred over client ciphers.
 	*   `add_header Strict-Transport-Security "max-age=31536000";` tells web browsers they should only interact with this server using a secure HTTPS connection. The `max-age` specifies in seconds what period of time the site is willing to accept HTTPS-only connections.
 	*   `add_header X-Content-Type-Options nosniff;` this header tells the browser not to override the response content type. So, if the server says the content is text, the browser will render it as text.
 	*   `proxy_pass http://127.0.0.1:80;` this directive proxies all SSL traffic to Varnish which listens on port 80.
@@ -615,7 +620,7 @@ Before configuring nginx we have to install PHP-FPM. FPM is short for FastCGI Pr
 
 ## Install the "Varnish HTTP Purge" Plugin
 
-When you edit a WordPress page and update it the modification won't be visible even if you refresh the browser, because it will receive the cached version of the page. To purge the cached page automatically whenever you edit a page you must install a free WordPress plugin called "Varnish HTTP Purge".
+When you edit a WordPress page and update it, the modification won't be visible even if you refresh the browser, because it will receive the cached version of the page. To purge the cached page automatically whenever you edit a page you must install a free WordPress plugin called "Varnish HTTP Purge".
 
 To install this plugin login to your WordPress website, go to **Plugins**, **Add New**, and search for **Varnish HTTP Purge**. Click on **Install Now**, then on **Activate Plugin**.
 
