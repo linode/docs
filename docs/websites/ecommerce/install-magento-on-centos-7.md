@@ -2,8 +2,8 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Install Magento Community Edition on Ubuntu 16.04 to manage your e-commerce site.'
-keywords: 'magento,centos,e-commerce'
+description: 'Install Magento Community Edition on CentOS 7 to manage your e-commerce site.'
+keywords: 'magento,centos,e-commerce,magento centos'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Tuesday, October 18th, 2016
 modified_by:
@@ -17,7 +17,7 @@ external_resources:
 
 In this guide you'll learn how to install Magento on CentOS7. Magento Community Edition (CE) is a free, open-source e-commerce platform. It is one of the most popular solutions for self-hosted online stores due to its simple yet powerful admin panel and its large community of developers.
 
-Because of the resources needed by some Magento plugins, it is strongly recommended that you have at least a **4GB Linode**. Running Magento on a smaller Linode may result in certain scripts causing the server to crash under medium to heavy traffic. 
+Because of the resources needed by some Magento plugins, it is strongly recommended that you have at least a **4GB Linode**. We'll need to allocate up to 2GB memory for PHP and Magento use, so running Magento on a smaller Linode may result in certain scripts causing the server to crash under medium to heavy traffic. 
 
 {: .note}
 > This guide explains how to install the latest Magento release. For the Community Edition, this will be version 2.1.x. If you plan to use data, themes, and extensions from an older Magento site, be sure to check for compatibility issues between the two versions since not everything may function as it did in older releases.
@@ -38,7 +38,7 @@ Because of the resources needed by some Magento plugins, it is strongly recommen
 >
 >This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
-## Configure LAMP Stack
+## Prepare Your Server for Magento
 
 The LAMP stack serves as the basis for a Magento site, but its component parts need to be configured a bit more before installing the Magento software. In this section, we'll explain how to add some extra settings to Apache as well as how to install MySQL 5.7 and PHP 7.
 
@@ -115,7 +115,7 @@ As of this writing, Magento 2 is not compatible with MariaDB, which is normally 
 
         mysql -u root -p
 
-6.  Create a Magento database with a user and permissions. In this example, we'll call our database `magento`, use the `magento` UNIX user (which we'll create later), and our password will be set to `password`. You should replace `password` with a secure password, and you may optionally replace the other values as well:
+6.  Create a Magento database instance with a user and permissions. In this example, we'll call our database `magento`, use the `magento` UNIX user (which we'll create later), and our password will be set to `password`. You should replace `password` with a secure password, and you may optionally replace the other values as well:
 
         CREATE DATABASE magento;
         GRANT ALL ON magento.* TO magento@localhost IDENTIFIED BY 'password';
@@ -139,7 +139,7 @@ Because Magento is a PHP application, we'll need to install PHP 7 and make some 
         sudo yum localinstall /tmp/ius-release-1.0-14.ius.centos7.noarch.rpm
         sudo yum update
 
-2.  Next, install PHP 7 and its dependencies from the IUS repository:
+2.  Next, install PHP 7 and its required extensions from the IUS repository:
 
         sudo yum install php70u php70u-pdo php70u-mysqlnd php70u-opcache php70u-xml php70u-mcrypt php70u-gd php70u-devel php70u-mysql php70u-intl php70u-mbstring php70u-json php70u-iconv 
 
@@ -169,7 +169,7 @@ Because Magento is a PHP application, we'll need to install PHP 7 and make some 
 
         sudo systemctl restart httpd
 
-    Optionally, you may want to take this opportunity to create a [test PHP page](https://mediatemple.net/community/products/dv/204643880/how-can-i-create-a-phpinfo.php-page) to ensure it's working properly with Apache. Once you've confirmed this, delete the test page.
+    Optionally, you may want to take this opportunity to [create a phpinfo.php page](https://mediatemple.net/community/products/dv/204643880/how-can-i-create-a-phpinfo.php-page) to ensure it's working properly with Apache. Once you've confirmed this, delete the test page.
 
 ## Install Magento
 
@@ -185,8 +185,10 @@ In this section, we'll explain how to get the Magento Community Edition (CE) sof
 
     ![Select the option ending in ".tar.gz"](/docs/assets/magento-tar-gz.png)
 
+    In this step, you'll also be able to download the software with optional sample data. Whether you choose this or the basic version is up to you.
+
     {: .note}
-    > When choosing a version, refer to Magento's [prerequisites](http://devdocs.magento.com/guides/v2.0/install-gde/prereq/prereq-overview.html) to ensure a particular version's compatibility with the components of your LAMP stack. As of this writing, Magento version 2.1.2 is compatible with all packages we'll be using from the Ubuntu repositories.
+    > When choosing a version, refer to Magento's [prerequisites](http://devdocs.magento.com/guides/v2.0/install-gde/prereq/prereq-overview.html) to ensure a particular version's compatibility with the components of your LAMP stack. As of this writing, Magento version 2.1.2 is compatible with all packages we'll be installing in this guide.
 
 2.  Copy the file to your Linode. Replace `/path/on/local/` with the path to the location of your downloaded file, `you` with the username you set on your Linode, and `yourhost` with your Linode's hostname or IP address:
 
@@ -235,7 +237,7 @@ In this section, we'll explain how to get the Magento Community Edition (CE) sof
 
         sudo systemctl restart httpd
 
-### Install Magento Community Edition
+### Install Magento CE
 
 1.  Switch to the `magento` user and navigate to the `bin` directory in your Magento installation folder:
 
@@ -282,13 +284,13 @@ Magento relies on [cron](https://www.linode.com/docs/tools-reference/tools/sched
 
 3.  Add the following lines to the end of the file, substituting your Magento installation directory in each:
 
-        * * * * * /usr/bin/php /var/www/html/example.com/public_html/bin/magento cron:run | grep -v "Ran jobs by schedule" >> /var/www/html/example.com/public_html/var/log/magento.cron.log
+        * * * * * /bin/php /var/www/html/example.com/public_html/bin/magento cron:run | grep -v "Ran jobs by schedule" >> /var/www/html/example.com/public_html/var/log/magento.cron.log
         
-        * * * * * /usr/bin/php /var/www/html/example.com/public_html/update/cron.php >> /var/www/html/example.com/public_html/var/log/update.cron.log
+        * * * * * /bin/php /var/www/html/example.com/public_html/update/cron.php >> /var/www/html/example.com/public_html/var/log/update.cron.log
         
-        * * * * * /usr/bin/php /var/www/html/example.com/public_html/bin/magento setup:cron:run >> /var/www/html/example.com/public_html/var/log/setup.cron.log
+        * * * * * /bin/php /var/www/html/example.com/public_html/bin/magento setup:cron:run >> /var/www/html/example.com/public_html/var/log/setup.cron.log
 
-    The first line handles reindexing. The second and third lines are needed by the Component Manager and System Upgrade, respectively. The `/usr/bin/php` part of each line specifies your PHP binary. If you installed PHP using our LAMP stack guide, you can leave this value as we have shown it, but if you installed PHP by some other method, you can check its location with `which php` and substitute that value.
+    The first line handles reindexing. The second and third lines are needed by the Component Manager and System Upgrade, respectively. The `/bin/php` part of each line specifies your PHP binary. If you installed PHP using this guide, you can leave this value as we have shown it, but if you installed PHP by some other method, you can check its location with `which php` and substitute that value.
 
     When you're done, be sure to save the file.
 
@@ -317,7 +319,7 @@ At a minimum, you should restrict write access to the `app/etc` directory before
     sudo find app/etc -type f -exec chmod g-w {} \;
     sudo find app/etc -type d -exec chmod g-ws {} \;
 
-Depending on whether you install custom themes or extensions, you may need to do additional configuration. This will vary depending on what you have installed, but in general, you should disable write access for any directories that contain themes or extensions.
+Depending on whether you install custom themes or extensions, you may need to do additional configuration. This will vary depending on what you have installed. Once you're ready to deploy your site into production mode, refer to [Magento's ownership and permissions guide](http://devdocs.magento.com/guides/v2.1/config-guide/prod/prod_file-sys-perms.html) for a more comprehensive set of recommendations.
 
 {: .note}
 > If you need to make additional configuration changes in the future, you'll need to manually add write permissions again before you can do so. For more information, see our guide on [Linux users and groups](https://www.linode.com/docs/tools-reference/linux-users-and-groups).
