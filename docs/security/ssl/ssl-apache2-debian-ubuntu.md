@@ -15,7 +15,7 @@ external_resources:
  - '[Apache HTTP Server Version 2.0 Documentation](http://httpd.apache.org/docs/2.4/)'
 ---
 
-This guide will show you how to enable SSL to secure websites served through Apache on CentOS or Fedora.
+This guide will show you how to enable SSL to secure websites served through Apache on Debian and Ubuntu.
 
 ## Before You Begin
 
@@ -45,9 +45,9 @@ This guide assumes that you are running Apache 2.4 or higher on Debian 8 or Ubun
 
             ServerAdmin info@example.com
             ServerName www.example.com
-            DocumentRoot /var/www/example.com/public_html/
-            ErrorLog /var/www/example.com/log/error.log
-            CustomLog /var/www/example.com/log/access.log combined
+            DocumentRoot /var/www/html/example.com/public_html/
+            ErrorLog /var/www/html/example.com/log/error.log
+            CustomLog /var/www/html/example.com/log/access.log combined
         </VirtualHost>
         ~~~
 
