@@ -2,7 +2,7 @@
 author:
     name: Linode
     email: docs@linode.com
-description: 'Install and configure Apache on CentOS 7.'
+description: 'Learn how to install & configure Apache web server on Centos 7 on a Linode.'
 keywords: 'CentOS,CentOS 7,apache'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 'Thursday, October 20, 2016'
@@ -46,7 +46,7 @@ This guide explains how to install and configure the Apache web server on CentOS
 
         sudo yum install httpd
 
-2.  Edit `httpd.conf` to set your document root to direct Apache to your site's files, and to add the `<IfModule prefork.c>` section below to adjust the resource use settings. The settings shown below are a good starting point for a **Linode 2GB**:
+2.  Modify `httpd.conf` with your document root directory to point Apache to your site's files. Add the `<IfModule prefork.c>` section below to adjust the resource use settings. The settings shown below are a good starting point for a **Linode 2GB**:
 
     {: .note}
     >
@@ -75,7 +75,7 @@ This guide explains how to install and configure the Apache web server on CentOS
 
 ### Configure Name-based Virtual Hosts
 
-There are different ways to set up virtual hosts. In this section we'll explain one of the easier ones, which we recommend.
+You can choose many ways to set up a virtual host. In this section we recommend and explain one of the easier methods.
 
 1.  Within the `conf.d` directory create `vhost.conf` to store your virtual host configurations. The example below is a template for website `example.com`; change the necessary values for your domain:
 
@@ -113,11 +113,11 @@ There are different ways to set up virtual hosts. In this section we'll explain 
 
     ![Apache on CentOS 7 Welcome Screen](/docs/assets/centos7-apache-welcome.png "Welcome to Apache on CentOS 7")
 
-## Next Steps: Add SSL for security and Install GlusterFS for High Availability
+## Next Steps: Add SSL for Security and Install GlusterFS for High Availability
 
 Congratulations! You've set up Apache and you're now ready to host websites. If you're wondering what additional configuration changes are available to get the most out of your server, some optional steps can be found below.
 
-### Secure your Site with SSL
+### Secure Your Site with SSL
 
 To add additional security to your site, consider [enabling a Secure Sockets Layer (SSL) certificate](/docs/security/ssl/ssl-apache2-centos).
 
