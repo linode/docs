@@ -14,8 +14,6 @@ contributor:
   name: Frederick Jost Zweig
   link: https://github.com/Fred-Zweig
 external_resources:
-- '[Official Varnish Documentation](https://www.varnish-cache.org/docs)'
-- '[Official Nginx Documentation](http://nginx.org/en/docs/)'
 ---
 
 *This is a Linode Community guide. Write for us and earn $250 per published guide.*
@@ -74,17 +72,18 @@ This tutorial assumes that you have SSH access to your Linode running Debian 8 (
 
 4. In the `Alternative 2` section, make the following changes to the `DAEMON_OPTS` section:
 
-    {: .file-excerpt }
-    /etc/default/varnish
-    :   ~~~ conf
-        DAEMON_OPTS="-a :80 \
-        -T localhost:6082 \
-        -f /etc/varnish/custom.vcl \
-        -S /etc/varnish/secret \
-        -s malloc,500M"
-        ~~~
+	{: .file-excerpt }
+	/etc/default/varnish
+	:   ~~~ conf
+	
+		DAEMON_OPTS="-a :80 \
+				 	-T localhost:6082 \
+				 	-f /etc/varnish/custom.vcl \
+				 	-S /etc/varnish/secret \
+				 	-s malloc,500M"
+		~~~
 
-      This will set Varnish to listen on port 80, and will instruct it to use the `custom.vcl` configuration file. If you make the configuration changes in the `default.vcl` file, a future update to Varnish may overwrite it. Save and exit the file.
+	This will set Varnish to listen on port 80, and will instruct it to use the `custom.vcl` configuration file. If you make the configuration changes in the `default.vcl` file, a future update to Varnish may overwrite it. Save and exit the file.
 
 	The `-s malloc,500M` line sets the maximum amount of RAM that will be used by Varnish to store content. This value can be adjusted to suit your needs, taking into account the server's total RAM along with the size and expected traffic of your website. For example, on a system with 4 GB of RAM , you can allocate 1 or 2 or 3 GB to Varnish but obviously not all the system's RAM. To allocate 1 GB you should write: `-s malloc,1G`.
 
@@ -92,187 +91,202 @@ This tutorial assumes that you have SSH access to your Linode running Debian 8 (
 
 		sudo nano /etc/varnish/custom.vcl
 
-7.  Varnish configuration uses a domain-specific language called Varnish Configuration Language (VCL). First we specify the VCL version used:
+6.  Varnish configuration uses a domain-specific language called Varnish Configuration Language (VCL). First we specify the VCL version used:
 
-    {: .file-excerpt }
-    /etc/varnish/custom.vcl
-    :   ~~~ conf
-        vcl 4.0;
-        ~~~
+	{: .file-excerpt }
+	/etc/varnish/custom.vcl
+	:   ~~~ conf
+	
+		vcl 4.0;
+		~~~
 
-8.  Set the backend (which is nginx) to listen on port 8080, by editing the `backend default` directive as follows:
+7.  Set the backend (which is nginx) to listen on port 8080, by editing the `backend default` directive as follows:
 
-    {: .file-excerpt }
-    /etc/varnish/custom.vcl
-    :   ~~~ conf
-        backend default {
-        .host = "localhost";
-        .port = "8080";
-        }
-        ~~~
+	{: .file-excerpt }
+	/etc/varnish/custom.vcl
+	:   ~~~ conf
+	
+		backend default {
+		.host = "localhost";
+		.port = "8080";
+		}
+	       	~~~
 
-9.  Allow cache purging requests only from localhost by setting the `acl` directive:
+8.  Allow cache purging requests only from localhost by setting the `acl` directive:
 
-    {: .file-excerpt }
-    /etc/varnish/custom.vcl
-    :   ~~~ conf
-        acl purger {
-        "localhost";
-        "your_server_ip";
-        "your_server_ipv6";
-        }
-        ~~~
+	{: .file-excerpt }
+	/etc/varnish/custom.vcl
+	:   ~~~ conf
+	
+		acl purger {
+		"localhost";
+		"your_server_ip";
+		"your_server_ipv6";
+		}
+		~~~
 
         Now, we have to configure the `sub vcl_recv` routine which is used when a request is sent by a HTTP client.
 
-10. Redirect HTTP requests to our HTTPS for our SSL website:
+9. Redirect HTTP requests to our HTTPS for our SSL website:
 
-    {: .file-excerpt }
-    /etc/varnish/custom.vcl
-    :   ~~~ conf
-        if (client.ip != "127.0.0.1" && req.http.host ~ "example-over-https.com") {
-        set req.http.x-redir = "https://www.example-over-https.com" + req.url;
-        return(synth(850, ""));
-        }
-        ~~~
+	{: .file-excerpt }
+	/etc/varnish/custom.vcl
+	:   ~~~ conf
+	
+		if (client.ip != "127.0.0.1" && req.http.host ~ "example-over-https.com") {
+		set req.http.x-redir = "https://www.example-over-https.com" + req.url;
+		return(synth(850, ""));
+		}
+		~~~
 
-11. Allow cache purging requests only from the IPs mentioned in the above `acl purger` section. If a purge request comes from a different IP, an error message will be produced:
+10. Allow cache purging requests only from the IPs mentioned in the above `acl purger` section. If a purge request comes from a different IP, an error message will be produced:
 
-    {: .file-excerpt }
-    /etc/varnish/custom.vcl
-    :   ~~~ conf
-        if (req.method == "PURGE") {
-        if (!client.ip ~ purger) {
-        return(synth(405, "This IP is not allowed to send PURGE requests."));
-        }
-        return (purge);
-        }
-        ~~~
+	{: .file-excerpt }
+	/etc/varnish/custom.vcl
+	:   ~~~ conf
+	
+		if (req.method == "PURGE") {
+		if (!client.ip ~ purger) {
+		return(synth(405, "This IP is not allowed to send PURGE requests."));
+		}
+		return (purge);
+		}
+		~~~
 
-12. Change the `X-Forwarded-For` header:
+11. Change the `X-Forwarded-For` header:
 
-    {: .file-excerpt }
-    /etc/varnish/custom.vcl
-    :   ~~~ conf
-        if (req.restarts == 0) {
-        if (req.http.X-Forwarded-For) {
-        set req.http.X-Forwarded-For = client.ip;
-          }
-        }
-        ~~~
+	{: .file-excerpt }
+	/etc/varnish/custom.vcl
+	:   ~~~ conf
+	
+		if (req.restarts == 0) {
+		if (req.http.X-Forwarded-For) {
+		set req.http.X-Forwarded-For = client.ip;
+		  }
+		}
+		~~~
 
-13. Exclude POST requests or those with basic authentication from caching:
+12. Exclude POST requests or those with basic authentication from caching:
 
-    {: .file-excerpt }
-    /etc/varnish/custom.vcl
-    :   ~~~ conf
-        if (req.http.Authorization || req.method == "POST") {
-        return (pass);
-        }
-        ~~~
+	{: .file-excerpt }
+	/etc/varnish/custom.vcl
+	:   ~~~ conf
+	
+		if (req.http.Authorization || req.method == "POST") {
+		return (pass);
+		}
+		~~~
 
-14. Exclude RSS feeds from caching:
+13. Exclude RSS feeds from caching:
 
-    {: .file-excerpt }
-    /etc/varnish/custom.vcl
-    :   ~~~ conf
-        if (req.url ~ "/feed") {
-        return (pass);
-        }
-        ~~~
+	{: .file-excerpt }
+	/etc/varnish/custom.vcl
+	:   ~~~ conf
+	
+		if (req.url ~ "/feed") {
+		return (pass);
+		}
+		~~~
 
-15. Tell Varnish not to cache the WordPress admin and login pages:
+14. Tell Varnish not to cache the WordPress admin and login pages:
 
-    {: .file-excerpt }
-    /etc/varnish/custom.vcl
-    :   ~~~ conf
-        if (req.url ~ "wp-admin|wp-login") {
-        return (pass);
-        }
-        ~~~
+	{: .file-excerpt }
+	/etc/varnish/custom.vcl
+	:   ~~~ conf
+	
+		if (req.url ~ "wp-admin|wp-login") {
+		return (pass);
+		}
+		~~~
 
-16. WordPress sets many cookies that are safe to ignore. To remove them add the following lines:
+15. WordPress sets many cookies that are safe to ignore. To remove them add the following lines:
 
-    {: .file-excerpt }
-    /etc/varnish/custom.vcl
-    :   ~~~ conf
-        set req.http.cookie = regsuball(req.http.cookie, "wp-settings-\d+=[^;]+(; )?", "");
-        set req.http.cookie = regsuball(req.http.cookie, "wp-settings-time-\d+=[^;]+(; )?", "");
-        if (req.http.cookie == "") {
-        unset req.http.cookie;
-      }
-    }
-        ~~~
+	{: .file-excerpt }
+	/etc/varnish/custom.vcl
+	:   ~~~ conf
+	
+		set req.http.cookie = regsuball(req.http.cookie, "wp-settings-\d+=[^;]+(; )?", "");
+		set req.http.cookie = regsuball(req.http.cookie, "wp-settings-time-\d+=[^;]+(; )?", "");
+		if (req.http.cookie == "") {
+		unset req.http.cookie;
+		  }
+		}
+		~~~
 
 	This is where the `sub vcl_recv` routine ends.
 
-17. Redirect HTTP to HTTPS using the `sub vcl_synth` directive with the following settings:
+16. Redirect HTTP to HTTPS using the `sub vcl_synth` directive with the following settings:
 
-    {: .file-excerpt }
-    /etc/varnish/custom.vcl
-    :   ~~~ conf
-        sub vcl_synth {
-        if (resp.status == 850) {  
-        set resp.http.Location = req.http.x-redir;       
-        set resp.status = 302;
-        return (deliver);
-      }
-    }
-        ~~~
+	{: .file-excerpt }
+	/etc/varnish/custom.vcl
+	:   ~~~ conf
+	
+		sub vcl_synth {
+		if (resp.status == 850) {  
+		set resp.http.Location = req.http.x-redir;       
+		set resp.status = 302;
+		return (deliver);
+		  }
+		}
+		~~~
 
-18. Cache purging for a particular page must occur each time we make edits to that page. To implement this, we have to use the `sub vcl_purge` directive as follows:
+17. Cache purging for a particular page must occur each time we make edits to that page. To implement this, we have to use the `sub vcl_purge` directive as follows:
 
-    {: .file-excerpt }
-    /etc/varnish/custom.vcl
-    :   ~~~ conf
-        sub vcl_purge {
-        set req.method = "GET";
-        set req.http.X-Purger = "Purged";
-        return (restart);
-    }
-        ~~~
+	{: .file-excerpt }
+	/etc/varnish/custom.vcl
+	:   ~~~ conf
+	
+		sub vcl_purge {
+		set req.method = "GET";
+		set req.http.X-Purger = "Purged";
+		return (restart);
+		}
+		~~~
 
-19. The `sub vcl_backend_response` directive is used to handle communication with the backend server, in this case nginx. We use it to set the amount of time the content remains in cache. We can also set a *grace period*, which determines how Varnish will serve content from cache even if the backend server is down for any reason. Time can be set in seconds (s), minutes (m), hours (h) or days (d). Here we've set the caching time to 24 hours, and the grace period to 1 hour, but you can adjust these settings based on your needs:
+18. The `sub vcl_backend_response` directive is used to handle communication with the backend server, in this case nginx. We use it to set the amount of time the content remains in cache. We can also set a *grace period*, which determines how Varnish will serve content from cache even if the backend server is down for any reason. Time can be set in seconds (s), minutes (m), hours (h) or days (d). Here we've set the caching time to 24 hours, and the grace period to 1 hour, but you can adjust these settings based on your needs:
 
-    {: .file-excerpt }
-    /etc/varnish/custom.vcl
-    :   ~~~ conf
-        sub vcl_backend_response {
-        set beresp.ttl = 24h;
-        set beresp.grace = 1h;
-        ~~~
+	{: .file-excerpt }
+	/etc/varnish/custom.vcl
+	:   ~~~ conf
+	
+		sub vcl_backend_response {
+		set beresp.ttl = 24h;
+		set beresp.grace = 1h;
+		~~~
 
-20. Allow cookies to be set only if we are on admin pages or WooCommerce-specific pages:
+19. Allow cookies to be set only if we are on admin pages or WooCommerce-specific pages:
 
-    {: .file-excerpt }
-    /etc/varnish/custom.vcl
-    :   ~~~ conf
-        if (bereq.url !~ "wp-admin|wp-login|product|cart|checkout|my-account|/?remove_item=") {
-        unset beresp.http.set-cookie;    
-        }
-        }
-        ~~~
+	{: .file-excerpt }
+	/etc/varnish/custom.vcl
+	:   ~~~ conf
+	
+		if (bereq.url !~ "wp-admin|wp-login|product|cart|checkout|my-account|/?remove_item=") {
+		unset beresp.http.set-cookie;    
+		  }
+		}
+		~~~
 
 	Please remember to add to the above series any page that requires cookies to work, for example `phpmyadmin|webmail|postfixadmin`, etc. If you change the WordPress login page from `wp-login.php` to something else, you must also add the new name to this series.
 
-21. Change the headers for purge requests by adding the following lines to the `sub vcl_deliver` directive:
+20. Change the headers for purge requests by adding the following lines to the `sub vcl_deliver` directive:
 
-    {: .file-excerpt }
-    /etc/varnish/custom.vcl
-    :   ~~~ conf
-        sub vcl_deliver {
-        if (req.http.X-Purger) {
-        set resp.http.X-Purger = req.http.X-Purger;
-        }
-        }
-        ~~~
+	{: .file-excerpt }
+	/etc/varnish/custom.vcl
+	:   ~~~ conf
+	
+		sub vcl_deliver {
+		if (req.http.X-Purger) {
+		set resp.http.X-Purger = req.http.X-Purger;
+		  }
+		}
+		~~~
 
 	This concludes the `custom.vcl` configuration. You can save and exit the file. The final `custom.vcl` file will look like this:
 
 	{: .file }
 	/etc/varnish/custom.vcl
 	:   ~~~ conf
-
+	
 		vcl 4.0;
 
 		backend default {
@@ -359,24 +373,25 @@ This tutorial assumes that you have SSH access to your Linode running Debian 8 (
 
 	For Varnish to work we also need to edit the `varnish.service` file to use our custom configuration file, with the port number and allocated memory values updated to match the changes we made in our `/etc/default/varnish` file.
 
-22. Open the `/lib/systemd/system/varnish.service` file:
+21. Open the `/lib/systemd/system/varnish.service` file:
 
         sudo nano /lib/systemd/system/varnish.service
 
-23. Find the two lines beginning with  `ExecStart` and edit them to look like this:
+22. Find the two lines beginning with  `ExecStart` and edit them to look like this:
 
-    {: .file-excerpt }
-    lib/systemd/system/varnish.service
-    :   ~~~ conf
-        ExecStartPre=/usr/sbin/varnishd -C -f /etc/varnish/custom.vcl
-        ExecStart=/usr/sbin/varnishd -a :80 -T localhost:6082 -f /etc/varnish/custom.vcl -S /etc/varnish/secret -s malloc,500M
-        ~~~
+	{: .file-excerpt }
+	lib/systemd/system/varnish.service
+	:   ~~~ conf
+	
+		ExecStartPre=/usr/sbin/varnishd -C -f /etc/varnish/custom.vcl
+		ExecStart=/usr/sbin/varnishd -a :80 -T localhost:6082 -f /etc/varnish/custom.vcl -S /etc/varnish/secret -s malloc,500M
+		~~~
 
-24. After saving and exiting the file you have to reload the systemd process:
+23. After saving and exiting the file you have to reload the systemd process:
 
         sudo systemctl daemon-reload
 
-25. To make Varnish start at boot up, just run the following command:
+24. To make Varnish start at boot up, just run the following command:
 
 		sudo systemctl enable varnish.service
 
@@ -428,11 +443,11 @@ Before configuring nginx we have to install PHP-FPM. FPM is short for FastCGI Pr
 
 ## Configure nginx
 
-9.  Open `/etc/nginx/nginx.conf`:
+1.  Open `/etc/nginx/nginx.conf`:
 
 		sudo nano /etc/nginx/nginx.conf
 
-10. Comment out the following two lines, because we'll include these SSL settings in the server block within the `/etc/nginx/sites-enabled/default` file:
+2. Comment out the following two lines, because we'll include these SSL settings in the server block within the `/etc/nginx/sites-enabled/default` file:
 
 	{: .file-excerpt }
 	/etc/nginx/nginx.conf
@@ -442,57 +457,58 @@ Before configuring nginx we have to install PHP-FPM. FPM is short for FastCGI Pr
 		# ssl_prefer_server_ciphers on;
 		~~~
 
-11. By default nginx makes use of an access log format called 'combined.' This type of logging is used by many web servers because it records all the information that is generally required by log analysis tools. The access log format can be changed from default to a custom one by using the `log_format` directive, but since we don't need custom logging we'll let nginx use the default 'combined' option.
+3. By default nginx makes use of an access log format called 'combined.' This type of logging is used by many web servers because it records all the information that is generally required by log analysis tools. The access log format can be changed from default to a custom one by using the `log_format` directive, but since we don't need custom logging we'll let nginx use the default 'combined' option.
 
     Since the access logs and error logs will be defined for each individual website in the server block, you will also need to comment out the two lines below:
 
 	{: .file-excerpt }
 	/etc/nginx/nginx.conf
 	:   ~~~ nginx
-
+	
 		# access_log /var/log/nginx/access.log;
 		# error_log /var/log/nginx/error.log;
 		~~~
 
-12. Save and exit the file.
+4. Save and exit the file.
 
-13. Next we'll configure the HTTP-only website, `www.example-over-http.com`. Open the default nginx configuration file:
+5. Next we'll configure the HTTP-only website, `www.example-over-http.com`. Open the default nginx configuration file:
 
 		sudo nano /etc/nginx/sites-available/default
 
-14. Delete everything inside this file and add the following blocks:
+6. Delete everything inside this file and add the following blocks:
 
-    {: .file-excerpt }
-    /etc/nginx/sites-available/default
-    :   ~~~ nginx
-        server {
-          listen  8080;
-          listen  [::]:8080;
-          server_name  example-over-http.com;
-          return       301 http://www.example-over-http.com$request_uri;
-               }
+	{: .file-excerpt }
+	/etc/nginx/sites-available/default
+	:   ~~~ nginx
+	
+		server {
+		  listen  8080;
+		  listen  [::]:8080;
+		  server_name  example-over-http.com;
+		  return       301 http://www.example-over-http.com$request_uri;
+		       }
 
-        server {
-          listen 8080;
-          listen [::]:8080;
-          server_name  www.example-over-http.com;
-          root /var/www/example-over-http.com;
-          port_in_redirect off;
-          index index.php;
-          location / {
-          try_files $uri $uri/ /index.php?$args;
-               }
+		server {
+		  listen 8080;
+		  listen [::]:8080;
+		  server_name  www.example-over-http.com;
+		  root /var/www/example-over-http.com;
+		  port_in_redirect off;
+		  index index.php;
+		  location / {
+		  try_files $uri $uri/ /index.php?$args;
+		       }
 
-          location ~ \.php$ {
-               try_files $uri =404;
-               fastcgi_split_path_info ^(.+\.php)(/.+)$;
-               include fastcgi_params;
-               fastcgi_index index.php;
-               fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-               fastcgi_pass unix:/var/run/php5-fpm.sock;
-               }
-              }
-        ~~~
+		  location ~ \.php$ {
+		       try_files $uri =404;
+		       fastcgi_split_path_info ^(.+\.php)(/.+)$;
+		       include fastcgi_params;
+		       fastcgi_index index.php;
+		       fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+		       fastcgi_pass unix:/var/run/php5-fpm.sock;
+		       }
+		      }
+		~~~
 
 	A few things to be noted here:
 
@@ -501,12 +517,12 @@ Before configuring nginx we have to install PHP-FPM. FPM is short for FastCGI Pr
 	*   `port_in_redirect off;` is needed to prevent nginx from appending the port number to the requested URL.
 	*   `fastcgi` directives are used to proxy requests for PHP code execution to PHP-FPM, via the FastCGI protocol.
 
-15. To configure nginx for the SSL website which we called `www.example-over-https.com`, we need two server blocks. Append the following server blocks to your `/etc/nginx/sites-available/default` file:
+7. To configure nginx for the SSL website which we called `www.example-over-https.com`, we need two server blocks. Append the following server blocks to your `/etc/nginx/sites-available/default` file:
 
 	{: .file-excerpt }
 	/etc/nginx/sites-available/default
 	:   ~~~ nginx
-
+	
 		server {
 		   listen  443 ssl;
 		   listen  [::]:443 ssl;
@@ -577,7 +593,7 @@ Before configuring nginx we have to install PHP-FPM. FPM is short for FastCGI Pr
 
 	Please note that for an SSL website we need a server block to receive traffic on port 443 and pass decrypted traffic to Varnish on port 80, and also a second server block to serve unencrypted traffic to Varnish on port 8080, whenever Varnish asks for it. Also note that the SSL directives are included in both blocks.
 
-	The `ssl_certificate` directive must specify the location and name of the SSL certificate file. Take a look at our guide to using [SSL on nginx](/docs/security/ssl/provide-encrypted-resource-access-using-ssl-certificates-on-nginx) for more information.
+	The `ssl_certificate` directive must specify the location and name of the SSL certificate file. Take a look at our guide to using [SSL on nginx](https://www.linode.com/docs/security/ssl/provide-encrypted-resource-access-using-ssl-certificates-on-nginx) for more information.
 
 	Alternatively, if you don't have an SSL certificate issued by a CA, you can issue a self-signed SSL certificate using *openssl*, but this should be done only for testing purposes. Self-signed sites will return a "This Connection is Untrusted" message when opened in a browser.
 
@@ -593,12 +609,12 @@ Before configuring nginx we have to install PHP-FPM. FPM is short for FastCGI Pr
 	*   `access_log` and `error_log` indicate the location and name of the respective types of logs. Please adjust these locations and names according to your setup.
 	*   `fastcgi` directives present in the last server block are used to correctly proxy requests for PHP code execution to PHP-FPM, via the FastCGI protocol.
 
-16. To prevent access to your website via direct input of your IP address into a browser, you can put a catch-all default server block right at the top of the file:
+8. To prevent access to your website via direct input of your IP address into a browser, you can put a catch-all default server block right at the top of the file:
 
 	{: .file-excerpt }
 	/etc/nginx/sites-available/default
 	:   ~~~ nginx
-
+	
 		server {
 		  listen 8080 default_server;
 		  listen [::]:8080;
@@ -610,11 +626,11 @@ Before configuring nginx we have to install PHP-FPM. FPM is short for FastCGI Pr
 
 	The `/var/www/index.html` file can contain just a simple message like "Page not found!".
 
-17. You can restart nginx now:
+9. You can restart nginx now:
 
 		sudo systemctl restart nginx
 
-18. And finally start Varnish:
+10. And finally start Varnish:
 
 		sudo systemctl start varnish
 
