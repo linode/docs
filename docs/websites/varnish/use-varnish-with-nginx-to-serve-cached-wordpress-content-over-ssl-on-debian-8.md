@@ -49,11 +49,11 @@ Our setup is illustrated below. Please note that frontend nginx and backend ngin
 
 This tutorial assumes that you have SSH access to your Linode running Debian 8 (Jessie). Before you get started, make sure you've completed the following:
 
-*   Complete the steps in our [Getting Started](/docs/getting-started) and [Securing your Server](/docs/security/securing-your-server) guides.
+*   Complete the steps in our [Getting Started](https://linode.com/docs/getting-started) and [Securing your Server](https://www.linode.com/docs/security/securing-your-server) guides.
 
-*   Follow the steps outlined in our [LEMP on Debian 8](/docs/websites/lemp/lemp-server-on-debian-8). You should skip the nginx configuration section as we'll address it later on in our tutorial.
+*   Follow the steps outlined in our [LEMP on Debian 8](https://www.linode.com/docs/websites/lemp/lemp-server-on-debian-8). You should skip the nginx configuration section as we'll address it later on in our tutorial.
 
-*   Follow the steps in our [WordPress](docs/websites/cms/how-to-install-and-configure-wordpress) guide to install and configure WordPress.
+*   Follow the steps in our [WordPress](https://www.linode.com/docs/websites/cms/how-to-install-and-configure-wordpress) guide to install and configure WordPress.
 
 ## Install and Configure Varnish
 
@@ -110,7 +110,7 @@ This tutorial assumes that you have SSH access to your Linode running Debian 8 (
 		.host = "localhost";
 		.port = "8080";
 		}
-	       	~~~
+		~~~
 
 8.  Allow cache purging requests only from localhost by setting the `acl` directive:
 
@@ -125,7 +125,7 @@ This tutorial assumes that you have SSH access to your Linode running Debian 8 (
 		}
 		~~~
 
-        Now, we have to configure the `sub vcl_recv` routine which is used when a request is sent by a HTTP client.
+	Now, we have to configure the `sub vcl_recv` routine which is used when a request is sent by a HTTP client.
 
 9. Redirect HTTP requests to our HTTPS for our SSL website:
 
@@ -148,7 +148,7 @@ This tutorial assumes that you have SSH access to your Linode running Debian 8 (
 		if (req.method == "PURGE") {
 		if (!client.ip ~ purger) {
 		return(synth(405, "This IP is not allowed to send PURGE requests."));
-		}
+		  }
 		return (purge);
 		}
 		~~~
@@ -310,7 +310,7 @@ This tutorial assumes that you have SSH access to your Linode running Debian 8 (
 		 if (req.method == "PURGE") {
 			if (!client.ip ~ purger) {
 			return(synth(405, "This IP is not allowed to send PURGE requests."));
-		 }
+		  }
 		 return (purge);
 		 }
 
