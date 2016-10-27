@@ -13,11 +13,11 @@ modified_by:
 published: 'Monday, April 14th, 2014'
 title: 'Switch to a 64-bit Linux Kernel'
 external_resources:
- - '[AMD Developer Central](http://developer.amd.com/community/blog/2008/03/06/myths-and-facts-about-64-bit-linux/)'
+ - '[ArchWiki](https://wiki.archlinux.org/index.php/Migrating_between_architectures)'
  - '[AskUbuntu](http://askubuntu.com/questions/81824/how-can-i-switch-a-32-bit-installation-to-a-64-bit-one)'
 ---
 
-Before an existing Linode can be migrated to a new SSD host, you'll need to ensure that all configuration profiles on that Linode are configured to use the 64-bit kernel. This guide will show you how to make that switch, and warn about some of the more common issues to look out for when making this change.
+Before an existing Linode can be migrated to a new host, you'll need to ensure that all configuration profiles on that Linode are using a 64-bit kernel. This guide will show you how to make that switch, and warn about some of the more common issues to look out for in the process.
 
 ## Switch to a 64-bit Kernel
 
@@ -67,7 +67,7 @@ Now all future software installed from Yum will use the correct CPU architecture
 
 ### Arch Linux
 
-The Arch package manager Pacman chooses what architecture-specific builds to download based on the kernel. After switching to the 64-bit kernel you will want to adjust this in `/etc/pacman.conf`:
+The Arch package manager Pacman chooses what architecture-specific builds to download based on the kernel. After switching to the 64-bit kernel you will want to adjust this setting in `/etc/pacman.conf`:
 
 {: .file-excerpt }
 /etc/pacman.conf
