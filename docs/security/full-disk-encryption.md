@@ -137,7 +137,7 @@ The Debian 8 guided encryption option in this guide makes use of a process commo
 
     [![Debian 8 Write Partition Confirmation](/docs/assets/fde-disk-formatting-small.png)](/docs/assets/fde-disk-formatting.png)
 
-16. The installer will begin deploying the base system. Once it completes, you'll have the option to choose specific software packages. The only packages required for the server are `SSH server` and `standard system utilities`, but you can select additional options if you wish. If you wish to make use of a graphical shell over [VNC](/docs/applications/remote-desktop/install-vnc-on-ubuntu-16-04) or the Glish console, select the desktop environment of your choice. Once you've confirmed your selections, hit **Continue**:
+16. The installer will begin deploying the base system. Once it completes, you'll have the option to choose specific software packages. The only packages required for the server are `SSH server` and `standard system utilities`, but you can select additional options as needed. If you wish to make use of a graphical shell over [VNC](/docs/applications/remote-desktop/install-vnc-on-ubuntu-16-04) or the Glish console, select the desktop environment of your choice. Once you've confirmed your selections, hit **Continue**:
 
     [![Debian 8 Software Selection](/docs/assets/fde-software-selection-small.png)](/docs/assets/fde-software-selection.png)
 
@@ -199,4 +199,4 @@ Your output will be similar to this:
     mode:    read/write
 
 
-You now have a securely LUKS-encrypted Debian installation. You can follow the steps in our [Getting Started](/docs/getting-started) and [Securing your Server](/docs/security/securing-your-server) guides to begin configuring your Linode as needed.  
+You now have a securely LUKS-encrypted Debian installation. You can follow the steps in our [Getting Started](/docs/getting-started) and [Securing your Server](/docs/security/securing-your-server) guides to begin configuring your Linode.    
