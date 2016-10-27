@@ -36,7 +36,7 @@ WordPress is a popular, dynamic, blog-focused content management system. WordPre
 
     The first command will output your short hostname; the second, your fully-qualified domain name (FQDN).
 
--  Configure a [LAMP](/docs/websites/lamp/) or [LEMP](/docs/websites/lemp/) web stack and confirm that is configured properly.
+-  Configure a [LAMP](/docs/websites/lamp/install-lamp-on-ubuntu-16-04) or [LEMP](/docs/websites/lemp/lemp-server-on-ubuntu-16-04) web stack and confirm that is configured properly.
 
 -  Ensure that MySQL has a database set up for WordPress. If you do not have a WordPress database, create one:
 
@@ -137,24 +137,20 @@ To configure permalink settings:
 
 ### Configure WordPress to Allow Permalinks on Apache
 
-Update Apache to allow individual sites to update the `.htaccess` file. To permit this, add the following to your WordPress website's *VirtualHosts* codeblock:
+Update Apache to allow individual sites to update the `.htaccess` file. To permit this, add the following options to the *Directory* section in your WordPress website's *VirtualHost* code block:
 
 {: .file-excerpt}
 /etc/apache2/sites-available/example.com.conf
 :   ~~~ apache
-    <VirtualHost *:80>
-        ...
-
         <Directory /var/www/html/example.com/public_html>
             Options Indexes FollowSymLinks
             AllowOverride All
             Require all granted
         </Directory>
-    </VirtualHost>
     ~~~
 
  Restart Apache to enable the changes:
- 
+
      sudo systemctl restart apache2
 
 ### Configure WordPress to Allow Permalinks on nginx
