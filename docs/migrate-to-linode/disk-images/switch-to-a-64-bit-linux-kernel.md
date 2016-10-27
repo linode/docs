@@ -45,10 +45,6 @@ If you're ready to rebuild your Linode using a 64-bit distribution, you can star
 
 Otherwise, find your Linux distribution of choice below to check for additional known issues.
 
- {: .note }
->
-> This is a live guide, and additional information will continue to be added.
-
 ### Ubuntu and Debian
 
 For Ubuntu and Debian users the Apt package management system will continue to download correct architecture version of software, despite the new kernel.
