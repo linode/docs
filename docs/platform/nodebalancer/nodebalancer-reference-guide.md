@@ -60,7 +60,7 @@ How initial new connections are allocated across the backend Nodes.
 NodeBalancers have the ability for Session Persistence - meaning subsequent requests from the same client will be routed to the same backend Node when possible.
 
 -   **None** - No additional Session Stickiness will be performed.
--   **Table** - The NodeBalancer itself remembers which backend a given client IP was initially load balanced to (see Algorithm, above), and will route subsequent requests from this IP back to the same backend, regardless of changes to the number of healthy backend nodes. If a backend node goes offline, entries in the table for that node are removed.
+-   **Table** - The NodeBalancer itself remembers which backend a given client IP was initially load balanced to (see Algorithm, above), and will route subsequent requests from this IP back to the same backend, regardless of changes to the number of healthy backend nodes. Each entry in the table will expire 30 minutes from the time that it was added. If a backend node goes offline, entries in the table for that node are removed.
 -   **HTTP Cookie** - Requires the configuration protocol be set to HTTP. The NodeBalancer sets a cookie named `NB_SRVID` identifying the backend a client was initially load balanced to (see Algorithm, above), and will route subsequent requests from this IP back to the same backend, regardless of changes to the number of healthy backend nodes. If a backend node goes offline, the client is balanced to another backend and the cookie is rewritten.
 
 If you need Session Persistence it is our recommendation to utilize both the Source IP algorithm in combination with either Table or HTTP Cookie if possible.
