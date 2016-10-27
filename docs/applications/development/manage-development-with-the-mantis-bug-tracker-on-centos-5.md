@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Track development bugs and coordinate with team members using Mantis bug tracker on CentOS 5.'
 keywords: 'mantis,mantis fedora,mantis linux,bug tracker,development'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-applications/project-management/mantis/centos-5/']
 modified: Friday, April 29th, 2011
 modified_by:

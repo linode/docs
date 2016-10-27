@@ -4,7 +4,7 @@ author:
   email: caker@linode.com
 description: NodeBalancer Reference Guide
 keywords: 'load balancing,nodebalancer'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['nodebalancers/reference/']
 modified: 'Friday, December 18th, 2015'
 modified_by:
@@ -97,7 +97,7 @@ When servicing an incoming request, if a backend node fails to connect, times ou
 
 Passive health checks can be disabled if you choose:
 
-1.  From the Liode Manager, click the **NodeBalancers** tab.
+1.  From the Linode Manager, click the **NodeBalancers** tab.
 2.  Select your NodeBalancer and choose **Edit**.
 3.  Under the **Configurations** section at the top of the page, choose **Edit**.
 4.  Scroll down and uncheck the **Enabled** box under **Passive Checks**. Then click **Save Changes**.
@@ -110,7 +110,7 @@ NodeBalancers also proactively check the health of back-end nodes by performing 
 -   **Check Timeout** - Seconds to wait before considering the probe a failure. 1-30.
 -   **Check Attempts** - Number of failed probes before taking a node out of rotation. 1-30.
 
-Three different Health Check Type exist:
+Three different Health Check Types exist:
 
 -   **TCP Connection** - requires a successful TCP handshake with a backend node.
 -   **HTTP Valid Status** - performs an HTTP request on the provided path and requires a 2xx or 3xx response from the backend node.
@@ -160,3 +160,8 @@ If you're using the Nginx web server, you can add the following lines to your Ng
     set_real_ip_from 192.168.255.0/24;
 
 This will allow Nginx to capture the client's IP address in the logs.
+
+## IP Address Range
+
+NodeBalancers all have private IP addresses in the `192.168.255.0/24` range. It's important to note that while their public IP address is persistent, the private IP address **will** change. When configuring a firewall or other network restriction on back-end Linodes, be sure to allow the entire `192.168.255.0/24` range and not a specific IP address.
+

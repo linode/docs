@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Deploy web applications with the open source Mono framework.'
 keywords: '.net,mono,.net linux,mono linux,mono vps,mono apache,web applications,web frameworks'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['frameworks/mod-mono/']
 modified: Friday, September 27th, 2013
 modified_by:

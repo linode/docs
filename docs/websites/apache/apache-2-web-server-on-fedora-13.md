@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Instructions for getting started with the Apache web server on Fedora 13.'
 keywords: 'apache fedora 13,fedora web server,linux web server'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-servers/apache/installation/fedora-13/']
 modified: Friday, April 29th, 2011
 modified_by:

@@ -5,7 +5,7 @@ author:
   email: contribute@linode.com
 description: 'Install Nginx and Deploy a StartSSL Certificate on Debian 7 (Wheezy).'
 keywords: 'startssl,nginx,install nginx,ssl certificate,debian 7,wheezy,nginx repositories,certificate signing request, CSR,domain name)'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['websites/nginx/startssl-wth-latest-nginx-debian-7/','websites/nginx/how-to-install-nginx-and-a-startssl-certificate-on-debian-7-wheezy/']
 modified: Monday, July 13, 2015
 modified_by:

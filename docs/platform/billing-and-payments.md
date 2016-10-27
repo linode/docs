@@ -2,11 +2,11 @@
 author:
   name: Linode
   email: docs@linode.com
-description: Our guide to prepaid billing and payments.
+description: Our guide to billing and payments.
 keywords: 'billing,payments'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['billing-and-payments/']
-modified: Monday, June 16th, 2014
+modified: Tuesday, July 12th, 2016
 modified_by:
   name: Alex Fornuto
 published: 'Friday, February 28th, 2014'
@@ -22,17 +22,17 @@ All services are billed automatically at the end of the month. If you used a ser
 #### Linode Cloud Hosting and Backups
 
 {: .table .table-striped }
-| Service     | Hourly Rate | Monthly | Backups Hourly Rate | Backups Monthly
-|:------------|:------------|:--------|:--------------------|:---------------
-| Linode 1GB  | $0.015/hr   | $10/mo  | $0.004/hr           | $2.50/mo
-| Linode 2GB  | $0.03/hr    | $20/mo  | $0.008/hr           | $5/mo
-| Linode 4GB  | $0.06/hr    | $40/mo  | $0.016/hr           | $10/mo
-| Linode 8GB  | $0.12/hr    | $80/mo  | $0.03/hr            | $20/mo
-| Linode 16GB | $0.24/hr    | $160/mo | $0.06/hr            | $40/mo
-| Linode 32GB | $0.48/hr    | $320/mo | $0.12/hr            | $80/mo
-| Linode 48GB | $0.72/hr    | $480/mo | $0.18/hr            | $120/mo
-| Linode 64GB | $0.96/hr    | $640/mo | $0.24/hr            | $160/mo
-| Linode 96GB | $1.44/hr    | $960/mo | $0.36/hr            | $240/mo
+| Service      | Hourly Rate | Monthly | Backups Hourly Rate | Backups Monthly
+|:-------------|:------------|:--------|:--------------------|:---------------
+| Linode 2GB   | $0.015/hr   | $10/mo  | $0.004/hr           | $2.50/mo
+| Linode 4GB   | $0.03/hr    | $20/mo  | $0.008/hr           | $5/mo
+| Linode 8GB   | $0.06/hr    | $40/mo  | $0.016/hr           | $10/mo
+| Linode 12GB  | $0.12/hr    | $80/mo  | $0.03/hr            | $20/mo
+| Linode 24GB  | $0.24/hr    | $160/mo | $0.06/hr            | $40/mo
+| Linode 48GB  | $0.48/hr    | $320/mo | $0.12/hr            | $80/mo
+| Linode 64GB  | $0.72/hr    | $480/mo | $0.18/hr            | $120/mo
+| Linode 80GB  | $0.96/hr    | $640/mo | $0.24/hr            | $160/mo
+| Linode 120GB | $1.44/hr    | $960/mo | $0.36/hr            | $240/mo
 |----------------------------------------------------------------------------
 
 #### Additional Linode Services
@@ -52,6 +52,8 @@ All services are billed automatically at the end of the month. If you used a ser
  {: .note }
 >
 > A large base amount of network transfer is included with all Linode plans, but exceeding that amount can result in a [bandwidth overage](#bandwidth-overages) charge beyond the monthly cap.
+>
+> Due to the [impending exhaustion of the IPv4 address space](http://en.wikipedia.org/wiki/IPv4_address_exhaustion), Linode requires users to provide technical justification. To add another public IP address, please [contact support](/docs/support) with your justification.
 
 ## Viewing Current Balance
 
@@ -79,7 +81,10 @@ If you want to stop being billed for a particular Linode service, you need to [r
 
 ## Payment Methods
 
-We accept Visa, MasterCard, Discover, and American Express. We also accept checks and money orders (which *must* be in USD) made out to "Linode, LLC" and sent to our [office address](http://www.linode.com/contact#contact-address). Please [contact support](/docs/support) before paying with check or money order. Note that we do not accept bank/wire transfers, and we have no plans to support PayPal at this time.
+We accept Visa, MasterCard, Discover, and American Express. We also accept PayPal, as well as checks and money orders (which *must* be in USD) made out to "Linode, LLC" and sent to our [office address](http://www.linode.com/contact#contact-address). Please [contact support](/docs/support) before paying with check or money order. Note that we do not accept bank/wire transfers.
+
+{: .note }
+>PayPal payments can only be made **after** an account is opened with an initial payment from a credit or debit card.
 
 If you overpay, credit will be applied to your account; this allows you to prepay if desired. Service credit is always used before charging the credit card on file for ongoing service.
 

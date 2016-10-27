@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: Our guide to upgrading and resizing your Linode
 keywords: 'upgrading,resizing'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['resizing/']
 modified: Saturday, October 18th, 2014
 modified_by:

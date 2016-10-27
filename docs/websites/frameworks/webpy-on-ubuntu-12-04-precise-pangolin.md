@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Use the Web.py Python framework to develop powerful and innovative web applications on Ubuntu 12.04 (Precise Pangolin).'
 keywords: 'web.py,web applications,python,web frameworks'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['frameworks/webpy/ubuntu-12-04-precise-pangolin/']
 modified: Friday, September 27th, 2013
 modified_by:

@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Practical examples for using sed to transform text files and streams.'
 keywords: 'sed,find and replace,regular expression,unix'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['linux-tools/common-commands/sed/']
 modified: Monday, August 22nd, 2011
 modified_by:

@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Using the Joomla! content management system to ease administration overhead for websites.'
 keywords: 'joomla,cms,content management systems'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-applications/cms-guides/joomla/']
 modified: Tuesday, April 19th, 2011
 modified_by:

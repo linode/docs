@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Securely copying files to and from your Linode with FileZilla, a free and open source file transfer client for Linux, OS X, and Windows systems.'
 keywords: 'filezilla,ftp,linux scp,sftp,linux sftp program,linux ftp'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['networking/file-transfer/transfer-files-filezilla/']
 modified: Monday, October 13, 2014
 modified_by:

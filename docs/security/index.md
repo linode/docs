@@ -1,12 +1,13 @@
 ---
 title: 'Security, Upgrades & Backups'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 featured:
  - securing-your-server.md
  - linode-manager-security-controls.md
  - linux-security-basics.md
  - recovering-from-a-system-compromise.md
  - use-public-key-authentication-with-ssh.md
+ - gpg-key-for-ssh-authentication.md
  - full-disk-encryption.md
  - ossec-ids-debian-7.md
  - using-fail2ban-for-security.md

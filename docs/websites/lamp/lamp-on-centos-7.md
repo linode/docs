@@ -4,7 +4,7 @@ author:
     email: docs@linode.com
 description: 'Create a LAMP stack on a CentOS 7 Linode.'
 keywords: 'LAMP,CentOS,CentOS 7,apache,mysql,php,centos lamp'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Monday, June 29th, 2015
 modified_by:
     name: Alex Fornuto
@@ -48,7 +48,7 @@ A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used for hosting 
 
         sudo yum install httpd
 
-2.  Edit `httpd.conf` and add the code below to turn off KeepAlive and adjust the resource use settings. The settings shown below are a good starting point for a **Linode 1GB**:
+2.  Edit `httpd.conf` and add the code below to turn off KeepAlive and adjust the resource use settings. The settings shown below are a good starting point for a **Linode 2GB**:
 
     {: .note}
     >
@@ -63,11 +63,11 @@ A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used for hosting 
 
 
         <IfModule prefork.c>
-            StartServers        2
-            MinSpareServers     6
-            MaxSpareServers     12
-            MaxClients          80
-            MaxRequestsPerChild 3000
+            StartServers        4
+            MinSpareServers     20
+            MaxSpareServers     40
+            MaxClients          200
+            MaxRequestsPerChild 4500
         </IfModule>
         ~~~
 
@@ -176,7 +176,7 @@ With Apache and MariaDB installed, you are now ready to move on to installing PH
         sudo yum install php-mysql
 
 
-2.  Edit `/etc/php.ini` for better error messages and logs, and upgraded performance. These modifications provide a good starting point for a **Linode 1GB**:
+2.  Edit `/etc/php.ini` for better error messages and logs, and upgraded performance. These modifications provide a good starting point for a **Linode 2GB**:
 
     {: .file-excerpt }
     /etc/php.ini

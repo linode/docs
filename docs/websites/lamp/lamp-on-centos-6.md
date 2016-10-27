@@ -4,7 +4,7 @@ author:
   email: afornuto@linode.com
 description: 'Create a LAMP stack on a CentOS 6 Linode.'
 keywords: 'LAMP,CentOS,CentOS 6,apache,mysql,php,centos lamp'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['lamp-guides/centos-6/','websites/lamp/lamp-server-on-centos-6/']
 modified: Tuesday, December 1st, 2015
 modified_by:
@@ -49,7 +49,7 @@ A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used to prepare s
 
         sudo yum install httpd
 
-2.  Edit the `httpd.conf` under `/etc/httpd/conf/` to adjust the resource use settings. The settings shown below are a good starting point for a **Linode 1GB**:
+2.  Edit the `httpd.conf` under `/etc/httpd/conf/` to adjust the resource use settings. The settings shown below are a good starting point for a **Linode 2GB**:
 
     {: .note}
     >
@@ -65,11 +65,11 @@ A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used to prepare s
         ...
 
         <IfModule prefork.c>
-            StartServers        2
-            MinSpareServers     6
-            MaxSpareServers     12
-            MaxClients          80
-            MaxRequestsPerChild 3000
+            StartServers        4
+            MinSpareServers     20
+            MaxSpareServers     40
+            MaxClients          200
+            MaxRequestsPerChild 4500
         </IfModule>
         ~~~
 
@@ -170,7 +170,7 @@ With Apache and MySQL installed you are ready to move on to installing PHP.
 
         sudo yum install php-mysql
 
-2.  Edit `/etc/php.ini` for better error messages and logs, and upgraded performance. These modifications provide a good starting point for a **Linode 1GB**:
+2.  Edit `/etc/php.ini` for better error messages and logs, and upgraded performance. These modifications provide a good starting point for a **Linode 2GB**:
 
     {: .file-excerpt }
     /etc/php.ini

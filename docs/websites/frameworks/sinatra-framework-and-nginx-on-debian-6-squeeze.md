@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Deploy simple web applications with the Sinatra web development framework.'
 keywords: 'sinatra,ruby,web applications,development,deployment'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['frameworks/sinatra/debian-6-squeeze/']
 modified: Friday, September 27th, 2013
 modified_by:

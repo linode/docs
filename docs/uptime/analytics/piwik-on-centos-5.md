@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Get in-depth website visitor statistics with Piwik, a self-hosted, open source analytics solution on CentOS 5.'
 keywords: 'open source analytics,piwik centos 5,piwik,analytics,centos,tracking,statistics'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-applications/analytics/piwik/centos-5/']
 modified: Tuesday, January 28th, 2014
 modified_by:

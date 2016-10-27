@@ -5,7 +5,7 @@ author:
   email: afornuto@linode.com
 description: 'Getting started with MySQL for web and server applications on Fedora 20.'
 keywords: 'mysql fedora 20,mysql linux,mysql fedora'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['databases/mysql/fedora-20/']
 modified: Tuesday, January 28th, 2014
 modified_by:

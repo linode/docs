@@ -4,7 +4,7 @@ author:
     email: docs@linode.com
 description: 'How to Install a Salt Master and Salt Minions.'
 keywords: 'salt, saltstack, open source configuration management, cloud orchestration, infrastructure automation, systems management software, dev ops, install, beginner, Debian 8'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Thursday, July 2nd, 2015
 modified_by:
     name: James Stewart

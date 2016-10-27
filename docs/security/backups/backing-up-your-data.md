@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: Backing Up Your Linode
 keywords: 'backup,backups,rsync,cron,getting started,tutorial'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Thursday, April 4th, 2013
 modified_by:
   name: Linode

@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: Configure a MongoDB ReplSet
 keywords: 'mongodb,nosql,clusters,replset,databases'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['databases/mongodb/ubuntu-12/']
 modified: Wednesday, August 13, 2014
 modified_by:

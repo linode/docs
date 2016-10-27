@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Use Puppet for configuration change management.'
 keywords: 'puppet,puppet configuration,puppet linux,configuration change management,server automation'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['application-stacks/puppet/automation/']
 modified: Monday, August 22nd, 2011
 modified_by:

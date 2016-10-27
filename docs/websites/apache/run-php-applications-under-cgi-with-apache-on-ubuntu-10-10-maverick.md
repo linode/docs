@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Methods for enabling dynamic content run as individual users with PHP on Ubuntu 10.10 (Maverick).'
 keywords: 'php cgi,php ubuntu 10.10,php ubuntu maverick,php apache,php scripts,dynamic apache,web applications'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-servers/apache/php-cgi/ubuntu-10-10-maverick/']
 modified: Monday, October 8th, 2012
 modified_by:

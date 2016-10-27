@@ -4,7 +4,7 @@ author:
   email: afornuto@linode.com
 description: 'A third party server for Minecraft Pocket Edition'
 keywords: 'minecraft,pocketmine,debian'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
  - '[PocketMine.net](https://www.pocketmine.net/)'
  - '[PocketMine Documentation](http://pocketmine-mp.readthedocs.org/en/latest/)'
@@ -61,6 +61,11 @@ PocketMine is a third party server for the MineCraft - Pocket Edition game for [
     > If you've used `su` to switch to the pocketmine user, you will get an error message stating `Cannot open your terminal '/dev/pts/0' - please check.` when attempting to start screen. You can resolve this by first running the command:
     >
     >     script /dev/null
+
+    {: .caution }
+    > PocketMine may not run properly on systems not running PHP7. You can manually install it, or modify `start.sh`, replacing all instances of `php7` with `php5`:
+    >
+    >     sed -i -e 's/php7/php5/g' start.sh
 
 2.  The set-up wizard will begin by asking you to select a language. Enter the two-character value for your language of choice, or just press **return** for English.
 

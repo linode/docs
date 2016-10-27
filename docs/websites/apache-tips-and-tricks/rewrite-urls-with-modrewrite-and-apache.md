@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'How to use the mod\_rewrite engine to generate useful and attractive URLs with the Apache HTTP server.'
 keywords: 'mod\_rewrite,REST,URLs,redirect,apache,httpd'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-servers/apache/configuration/rewriting-urls/']
 modified: Wednesday, May 4th, 2011
 modified_by:

@@ -4,7 +4,7 @@ author:
     email: docs@linode.com
 description: 'Drupal 8 is the lastest version of the popular Drupal content management system. This guide will show you how to install, configure, and optimize the Drupal CMS on your Linode so you can begin developing your own websites.'
 keywords: 'drupal,cms,apache,php,content management system,drupal 8'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-applications/cms-guides/drupal/','websites/cms/managing-web-content-with-drupal-8-beta/']
 modified: Thursday, November 19, 2015
 modified_by:
@@ -35,10 +35,10 @@ Drupal 8 is the lastest version of the popular [Drupal](https://www.drupal.org/)
 
 1.  See Drupal's [download page](https://www.drupal.org/project/drupal) for the exact URL of Drupal 8's core tarball.
 
-    If you installed and configured your Apache server using one of the methods above, the publicly accessible DocumentRoot should be located at `/var/www/example.com/public_html/`. Change to that directory and download Drupal 8 with wget:
+    If you installed and configured your Apache server using one of the methods above, the publicly accessible DocumentRoot should be located at `/var/www/html/example.com/public_html/`. Change to that directory and download Drupal 8 with wget:
 
-        cd /var/www/example.com
-        sudo wget http://ftp.drupal.org/files/projects/drupal-8.0.0.tar.gz
+        cd /var/www/html/example.com
+        sudo wget http://ftp.drupal.org/files/projects/drupal-8.0.5.tar.gz
 
     {: .caution}
     >
@@ -54,14 +54,14 @@ Drupal 8 is the lastest version of the popular [Drupal](https://www.drupal.org/)
 
 4.  Drupal 8's `settings.php` and `services.yml` files are configured when the first start configuration is run. The files must be created from the default templates and their permissions changed so that Drupal can write to them.
         
-        cd /var/www/example.com/public_html/sites/default
+        cd /var/www/html/example.com/public_html/sites/default
         sudo cp default.settings.php settings.php && sudo cp default.services.yml services.yml
         sudo chmod 666 {services.yml,settings.php}
 
 5.  Enforce [trusted hostnames](https://www.drupal.org/node/2410395) with those that users will access your site by.
 
     {: .file-excerpt}
-    /var/www/example.com/public_html/sites/default/settings.php
+    /var/www/html/example.com/public_html/sites/default/settings.php
     :   ~~~ conf
         $settings['trusted_host_patterns'] = array(
           '^www\.example\.com$',
@@ -99,7 +99,7 @@ Drupal 8 is the lastest version of the popular [Drupal](https://www.drupal.org/)
 
 3.  Change ownership of Apache's DocumentRoot from the system's root user to Apache. This allows you to install modules and themes, and to update Drupal, all without being prompted for FTP credentials.
 
-        sudo chown -R www-data /var/www/example.com
+        sudo chown -R www-data /var/www/html/example.com
 
 4.  Restart Apache so all changes are applied. If you’re using a Linux distribution which uses systemd (CentOS 7, Debian 8, Fedora, Ubuntu 15.10+):
 
@@ -119,7 +119,7 @@ Drupal 8 is the lastest version of the popular [Drupal](https://www.drupal.org/)
 
     [![Drupal 8 choose installation profile.](/docs/assets/drupal-choose-installation-profile-small.png)](/docs/assets/drupal-choose-installation-profile.png)
 
-3.  Complete the database configuration using the DB name, username and password you created when [setting up your LAMP stack](https://linode.com/docs/websites/hosting-a-website#database) with a MySQL or MariaDB database.
+3.  Complete the database configuration using the DB name, username and password you created when [setting up your LAMP stack](/docs/websites/hosting-a-website#create-a-database) with a MySQL or MariaDB database.
 
     [![Drupal 8 database configuration.](/docs/assets/drupal-database-configuration-small.png)](/docs/assets/drupal-database-configuration.png)
 
@@ -137,7 +137,7 @@ Drupal 8 is the lastest version of the popular [Drupal](https://www.drupal.org/)
 
 5.  Now that Drupal 8 is finished writing to `settings.php` and `services.yaml`, you can restore their default permissions:
 
-        sudo chmod 644 /var/www/example.com/public_html/sites/default/{settings.php,services.yml}
+        sudo chmod 644 /var/www/html/example.com/public_html/sites/default/{settings.php,services.yml}
 
 ## Where to Go From Here
 

@@ -1,10 +1,10 @@
 ---
 author:
-    name: Linode Community 
+    name: Linode Community
     email: contribute@linode.com
 description: 'Configure SPF and DKIM in Postfix on Debian 8.'
 keywords: 'email,postfix,spf,dkim,debian 8,opendkim,dns'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Wednesday, February 3rd, 2016
 modified_by:
     name: Todd Knarr
@@ -25,7 +25,7 @@ external_resources:
 
 [SPF (Sender Policy Framework)](http://www.openspf.org/) is a system that identifies to mail servers what hosts are allowed to send email for a given domain. Setting up SPF helps to prevent your email from being classified as spam.
 
-[DKIM (DomainKeys Identified Mail)](http://www.dkim.org/) is a system that lets your official mail servers add a signature to headers of outgoing email and identifies your domain's public key so other mail servers can verify the signature. As with SPF, DKIM helps keep your mail from being considered spam. It also lets mail servers detect when your mail hass been tampered with in transit.
+[DKIM (DomainKeys Identified Mail)](http://www.dkim.org/) is a system that lets your official mail servers add a signature to headers of outgoing email and identifies your domain's public key so other mail servers can verify the signature. As with SPF, DKIM helps keep your mail from being considered spam. It also lets mail servers detect when your mail has been tampered with in transit.
 
 The instructions for setting up DNS for SPF and DKIM are generic. The instructions for configuring the SPF policy agent and OpenDKIM into Postfix should work on any distribution after making respective code adjustments for the package tool and to identify the exact path to OpenDKIM's socket file in Postfix.
 
@@ -63,13 +63,13 @@ The value in an SPF DNS record will look something like the following examples. 
 
         v=spf1 a:mail.example.com -all
 
-- The `v=spf1` tag is required and has to be the first tag. 
+- The `v=spf1` tag is required and has to be the first tag.
 
 - The last tag, `-all`, indicates that mail from your domain should only come from servers identified in the SPF string. Anything coming from any other source is forging your domain. An alternative is `~all`, indicating the same thing but also indicating that mail servers should accept the message and flag it as forged instead of rejecting it outright. `-all` makes it harder for spammers to forge your domain successfully; it is the recommended setting. `~all` reduces the chances of email getting lost because an incorrect mail server was used to send mail. `~all` can be used if you don't want to take chances.
 
-The tags between identify eligible servers from which email to your domain can originate. 
+The tags between identify eligible servers from which email to your domain can originate.
 
-- `mx` is a shorthand for all the hosts listed in MX records for your domain. If you've got a solitary mail server, `mx` is probably the best option. If you've got a backup mail server (a second MX record), using `mx` won't cause any problems. Your backup mail server will be identified as an authorized source for email althought it will probably never send any.
+- `mx` is a shorthand for all the hosts listed in MX records for your domain. If you've got a solitary mail server, `mx` is probably the best option. If you've got a backup mail server (a second MX record), using `mx` won't cause any problems. Your backup mail server will be identified as an authorized source for email although it will probably never send any.
 
 - The `a` tag lets you identify a specific host by name or IP address, letting you specify which hosts are authorized. You'd use `a` if you wanted to prevent the backup mail server from sending outgoing mail or if you wanted to identify hosts other than your own mail server that could send mail from your domain (e.g., putting your ISP's outgoing mail servers in the list so they'd be recognized when you had to send mail through them).
 
@@ -186,7 +186,7 @@ DKIM involves setting up the OpenDKIM package, hooking it into Postfix, and addi
 
         # Always oversign From (sign using actual From and a null From to prevent
         # malicious signatures header fields (From and/or others) between the signer
-        # and the verifier.  From is oversigned by default in the Debian pacakge
+        # and the verifier.  From is oversigned by default in the Debian package
         # because it is often the identity key used by reputation systems and thus
         # somewhat security sensitive.
         OversignHeaders     From
@@ -326,10 +326,10 @@ If everything is OK you shouldn't get any output. If you want to see more inform
         mkdir /var/spool/postfix/opendkim
         chown opendkim:postfix /var/spool/postfix/opendkim
 
-2.  Set the correct socket for Postfix in the OpenDKIM defaults file `/etc/defaults/opendkim`:
+2.  Set the correct socket for Postfix in the OpenDKIM defaults file `/etc/default/opendkim`:
 
     {: .file}
-    /etc/defaults/opendkim
+    /etc/default/opendkim
     :   ~~~ conf
         # Command-line options specified here will override the contents of
         # /etc/opendkim.conf. See opendkim(8) for a complete list of options.
@@ -354,7 +354,8 @@ If everything is OK you shouldn't get any output. If you want to see more inform
         # Milter configuration
         # OpenDKIM
         milter_default_action = accept
-        milter_protocol = 2
+        # Postfix ≥ 2.6 milter_protocol = 6, Postfix ≤ 2.5 milter_protocol = 2
+        milter_protocol = 6
         smtpd_milters = local:/opendkim/opendkim.sock
         non_smtpd_milters = local:/opendkim/opendkim.sock
         ~~~
@@ -385,11 +386,15 @@ You don't need to set this up, but doing so makes it harder for anyone to forge 
 
 The reason the YYYYMM format is used for the selector is that best practice calls for changing the DKIM signing keys every so often (monthly is recommended, and no longer than every 6 months). To do that without disrupting messages in transit, you generate the new keys using a new selector. The process is:
 
-1.  Generate new keys as in step 8 of "Configuring OpenDKIM". Do this in a scratch directory, not directly in `/etc/opendkim/keys`. Use the current year and month for the YYYYMM selector value, so it's different from the selector currently in use.
+1.  Generate new keys as in step 8 of [Configure OpenDKIM](#configure-opendkim). Do this in a scratch directory, not directly in `/etc/opendkim/keys`. Use the current year and month for the YYYYMM selector value, so it's different from the selector currently in use.
 
-2.  Use the newly-generated `.txt` files to add the new keys to DNS as in the DKIM "Setting Up DNS" section, using the new YYYYMM selector in the host names. Don't remove or alter the existing DKIM TXT records.
+2.  Use the newly-generated `.txt` files to add the new keys to DNS as in the DKIM [Set Up DNS](#set-up-dns) section, using the new YYYYMM selector in the host names. Don't remove or alter the existing DKIM TXT records. Once this is done, verify the new key data using the following command (replacing example.com, example and YYYYMM with the appropriate values):
 
-3.  Stop Postfix and OpenDKIM by doing a `systemctl stop postfix opendkim` so that they won't be processing mail while you're changing out keys.
+        opendkim-testkey -d example.com -s YYYYMM -k example.private
+
+    Add the `-vvv` switch to get debugging output if you need it to diagnose any problems. Correct any problems before proceeding, beginning to use the new private key file and selector when `opendkim-testkey` doesn't indicate a successful verification will cause problems with your email including non-receipt of messages.
+
+3.  Stop Postfix and OpenDKIM with `systemctl stop postfix opendkim` so that they won't be processing mail while you're changing out keys.
 
 4.  Copy the newly-generated `.private` files into place and make sure their ownership and permissions are correct by running these commands from the directory in which you generated the key files:
 
@@ -397,7 +402,7 @@ The reason the YYYYMM format is used for the selector is that best practice call
         chown opendkim:opendkim /etc/opendkim/keys/*
         chmod go-rw /etc/opendkim/keys/*
 
-    Use the `opendkim-testkey` command as described above to ensure that your new record is propogated before you continue.
+    Use the `opendkim-testkey` command as described above to ensure that your new record is propagated before you continue.
 
 5.  Edit `/etc/opendkim/key.table` and change the old YYYYMM values to the new selector, reflecting the current year and month. Save the file.
 

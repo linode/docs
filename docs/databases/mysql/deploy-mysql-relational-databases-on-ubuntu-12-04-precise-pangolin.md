@@ -4,7 +4,7 @@ author:
     email: afornuto@linode.com
 description: 'Get Started with MySQL for Web and Server Applications on Ubuntu 12.04 LTS (Precise Pangolin).'
 keywords: 'mysql,ubuntu 12.04,mysql ubuntu,mysql on linux,mysql vps'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['databases/mysql/ubuntu-12-04-precise-pangolin/','databases/using-mysql-relational-databases-on-ubuntu-12-04-precise-pangolin']
 modified: Friday, September 11th, 2015
 modified_by:

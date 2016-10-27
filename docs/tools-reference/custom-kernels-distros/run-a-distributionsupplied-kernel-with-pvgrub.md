@@ -4,14 +4,18 @@ author:
   email: docs@linode.com
 description: 'Instructions for configuring your Linode to run a native distribution-supplied kernel with PV-GRUB.'
 keywords: 'pv-grub,pvgrub,custom linux kernel,custom linode'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['platform/custom-kernels-distros/run-a-distributionsupplied-kernel-with-pvgrub/', 'custom-instances/pv-grub-howto/']
 modified: Wednesday, August 20th, 2014
 modified_by:
   name: James Stewart
 published: 'Wednesday, September 9th, 2009'
 title: 'Run a Distribution-Supplied Kernel with PV-GRUB'
+deprecated: true
 ---
+
+{: .caution}
+> This guide is for legacy Xen Linodes. For newer Linodes, consult our guide on how to [Run a Distribution-Supplied Kernel on a KVM Linode](/docs/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel-with-kvm).
 
 PV-GRUB makes it possible to run your own kernel on your Linode, instead of using a host-supplied kernel. This is useful in cases where you'd like to enable specific kernel features, or you'd prefer to handle kernel upgrades directly.
 

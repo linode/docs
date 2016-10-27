@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Use PHP CGI to run PHP scripts as indivudual users.'
 keywords: 'php cgi,php,apache,cgi,http,php scripts,web apps,web applications'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-servers/apache/php-cgi/centos-6/','websites/apache/run-php-applications-under-cgi-with-apache-on-centos-6/']
 modified: Tuesday, January 14th, 2014
 modified_by:

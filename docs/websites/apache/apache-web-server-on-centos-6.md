@@ -4,7 +4,7 @@ author:
   email: afornuto@linode.com
 description: 'Install Apache on your CentOS 6 server, configure virtual hosting, and set up mod and scripting support.'
 keywords: 'Apache,web sever,CentOS 6,centos,apache 2,httpd'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-servers/apache/installation/centos-6/','websites/apache/apache-2-web-server-on-centos-6/']
 modified: Friday, July 31st, 2015
 modified_by:
@@ -46,7 +46,7 @@ If instead you would like to install a full LAMP (Linux, Apache, MySQL, and PHP)
 
         sudo yum install httpd
 
-2.  Edit the main Apache configuration file to adjust the resource use settings. The settings shown below are a good starting point for a **Linode 1GB**:
+2.  Edit the main Apache configuration file to adjust the resource use settings. The settings shown below are a good starting point for a **Linode 2GB**:
 
     {: .file }
     /etc/httpd/conf/httpd.conf
@@ -55,11 +55,11 @@ If instead you would like to install a full LAMP (Linux, Apache, MySQL, and PHP)
 
 
         <IfModule prefork.c>
-            StartServers        2
-            MinSpareServers     6
-            MaxSpareServers     12
-            MaxClients          30
-            MaxRequestsPerChild 3000
+            StartServers        4
+            MinSpareServers     20
+            MaxSpareServers     40
+            MaxClients          200
+            MaxRequestsPerChild 4500
         </IfModule>
         ~~~
 

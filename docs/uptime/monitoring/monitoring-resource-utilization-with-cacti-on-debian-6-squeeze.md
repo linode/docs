@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Monitor resource usage through the powerful server monitoring tool Cacti on Debian 6 (Squeeze).'
 keywords: 'monitoring,cacti,snmp,debian,debian 6,squeeze,debian squeeze'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['server-monitoring/cacti/debian-6-squeeze/']
 modified: Wednesday, November 9th, 2011
 modified_by:

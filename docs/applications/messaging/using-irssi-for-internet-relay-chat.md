@@ -4,7 +4,7 @@ author:
   email: afornuto@linode.com
 description: 'Use IRC and GNU Screen to maintain persistent connections to IRC networks.'
 keywords: 'irssi,irc,oftc,freenode,real time,chat'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['communications/irc/irssi/']
 modified: Friday, January 9th, 2015
 modified_by:

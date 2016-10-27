@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Use system user accounts, postfix, and dovecot to provide'
 keywords: 'postfix,dovecot,system users,email'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['email/postfix/dovecot-system-users-debian-6-squeeze/']
 modified: Wednesday, September 25th, 2013
 modified_by:

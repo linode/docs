@@ -5,7 +5,7 @@ author:
 description: 'Install WordPress Using WP-CLI on Ubuntu 14.04'
 keywords: 'install WP-CLI,ubuntu,wordpress,apache,bash completion,plugin,WP-CLI,themes'
 alias: ['websites/cms/install-and-configure-wordpress-using-wp-cli']
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Friday, March 11th, 2016'
 modified: Friday, March 11th, 2016
 modified_by:
@@ -268,7 +268,7 @@ To uninstall a theme, you can use:
 
 You can update your blog through the following commands:
 
-    www-data wp core update
+    wp core update
     wp core update-db
 
 The first command updates the files. The second one completes the database upgrade.

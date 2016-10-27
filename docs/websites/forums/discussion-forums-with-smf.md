@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Configuring the SMF system for hosting web-based discussion forums.'
 keywords: 'smf,forum software,web applications,PHP'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-applications/bulletin-boards/smf/']
 modified: Wednesday, February 11, 2015
 modified_by:

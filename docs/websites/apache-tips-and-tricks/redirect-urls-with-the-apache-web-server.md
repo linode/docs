@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'An introduction to redirecting existing URLs to new resources with the Apache HTTP server.'
 keywords: 'apache,redirect,mod\_alias,URLs,REST'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-servers/apache/configuration/redirecting-urls/']
 modified: Monday, August 22nd, 2011
 modified_by:

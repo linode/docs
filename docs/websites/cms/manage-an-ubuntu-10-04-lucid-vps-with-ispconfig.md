@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Installing and configuring the ISPConfig control panel to maintain your Ubuntu 10.04 (Lucid) VPS.'
 keywords: 'ispconfig,control panel,cpanel,plesk,gui'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-applications/control-panels/ispconfig/ubuntu-10-04-lucid/']
 modified: Friday, April 29th, 2011
 modified_by:

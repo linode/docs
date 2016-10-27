@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Our guide to upgrading to Ubuntu 12.04'
 keywords: 'upgrading,ubuntu,precise'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['upgrading/upgrade-to-ubuntu-12-04-precise/']
 modified: Tuesday, February 5th, 2013
 modified_by:

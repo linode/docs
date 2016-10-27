@@ -4,7 +4,7 @@ author:
   email: ekrout@linode.com
 description: 'Learn how to create Chef cookbooks by creating a LAMP stack in Chef'
 keywords: 'chef,automation,cookbooks,opscode,lamp,lamp stack,beginner,server automation'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Wednesday, June 10th, 2015
 modified_by:
   name: Elle Krout
@@ -545,7 +545,7 @@ With the MySQL library downloaded and an encrypted root password prepared, you c
      - Add the PHP recipe, run the chef-client, and copy the file from a node (located in `/etc/php5/apache2/php.ini`), or:
      - Copy it from [here](/docs/assets/chef_php.ini). The file should be moved to the `chef-repo/cookbooks/lamp-stack/files/default/` directory. This can also be turned into a template, if that better suits your configuration.
 
-3.  `php.ini` is a large file. Search and edit the following values to best suit your Linodes. The values suggested below are for 1GB Linodes:
+3.  `php.ini` is a large file. Search and edit the following values to best suit your Linodes. The values suggested below are for 2GB Linodes:
 
     {: .file-excerpt}
     ~/chef-repo/cookbooks/lamp-stack/files/default/php.ini

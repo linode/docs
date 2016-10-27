@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Using Ikiwiki on Ubuntu 10.10 (Maverick) to power a standard wiki implementation.'
 keywords: 'ikiwiki,ubuntu,wiki,perl,git,markdown,lucid'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-applications/wikis/ikiwiki/ubuntu-10-10-maverick/']
 modified: Monday, October 8th, 2012
 modified_by:

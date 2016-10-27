@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Using the Bazaar version management system.'
 keywords: 'bzr,bazaar,vcs,scm,dcvs'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['linux-tools/version-control/bazaar/']
 modified: Monday, May 23rd, 2011
 modified_by:

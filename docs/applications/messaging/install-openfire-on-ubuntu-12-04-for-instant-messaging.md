@@ -4,7 +4,7 @@ author:
   email: afornuto@linode.com
 description: 'Install Openfire on Ubuntu 12.04 for Instant Messaging.'
 keywords: 'openfire,ubuntu 12.04,instant messaging,xmpp server,collaboration software,chat software,linux jabber server,JRE,configure openfire,'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['communications/xmpp/openfire/ubuntu-12-04-precise-pangolin/','applications/messaging/instant-messaging-services-with-openfire-on-ubuntu-12-04-lts-precise-pangolin/']
 modified: 'Monday, March 14, 2016'
 modified_by:

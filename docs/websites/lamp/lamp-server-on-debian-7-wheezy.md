@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Host websites and web applications with a LAMP server on Debian 7.0 (Wheezy).'
 keywords: 'debian 7 LAMP server,debian LAMP guide,LAMP howto,debian,debian 7,lamp server,lamp,apache,mysql,php,linux web'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['lamp-guides/debian-7-wheezy/']
 modified: Tuesday, December 1st, 2015
 modified_by:
@@ -48,7 +48,7 @@ A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used to prepare s
 
         sudo apt-get install apache2
 
-2.  Edit the main Apache configuration file to adjust the resource use settings. The settings shown below are a good starting point for a **Linode 1GB**:
+2.  Edit the main Apache configuration file to adjust the resource use settings. The settings shown below are a good starting point for a **Linode 2GB**:
 
     {: .file-excerpt }
     /etc/apache2/apache2.conf
@@ -56,11 +56,11 @@ A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used to prepare s
         KeepAlive Off
 
         <IfModule mpm_prefork_module>
-        StartServers 2
-        MinSpareServers 6
-        MaxSpareServers 12
-        MaxClients 30
-        MaxRequestsPerChild 3000
+                StartServers            4
+                MinSpareServers         20
+                MaxSpareServers         40
+                MaxRequestWorkers       200
+                MaxConnectionsPerChild  4500
         </IfModule>
         ~~~
 

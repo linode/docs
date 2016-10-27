@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'A collection of guides that introduce and support the use of Nagios.'
 keywords: 'nagios,server monitoring,nagios linux'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['server-monitoring/nagios/']
 modified: Tuesday, April 19th, 2011
 modified_by:

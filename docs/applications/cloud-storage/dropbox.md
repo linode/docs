@@ -4,7 +4,7 @@ author:
     email: docs@linode.com
 description: 'Installing and configuration Dropbox on a Linode'
 keywords: 'Dropbox,debian,centos,fedora,ubuntu,headless,storage,cloud storage'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: [ 'web-applications/cloud-storage/dropbox/debian-7.4' ]
 modified: Monday, June 29th, 2015
 modified_by:

@@ -4,7 +4,7 @@ author:
     email: docs@linode.com
 description: 'Set up and configure WildFly as your Java Application Server to develop, test, and run, Java applications'
 keywords: 'java,jboss,jboss as,wildfly,apache,mysql,mariaDB'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Friday, September 18th, 2015'
 modified: Friday, September 18th, 2015
 modified_by:
@@ -48,7 +48,7 @@ After full installation of above stack it was consuming around 650 MB of RAM wit
         sudo systemctl start firewalld
         sudo systemctl enable firewalld
 
--   Please follow the steps mentioned in [Linode: Hosting a Website](https://www.linode.com/docs/websites/hosting-a-website) sections "Installing MySQL", "Optimizing MySQL for a Linode 1GB", "Creating a Database".
+-   Please follow the steps mentioned in [Linode: Hosting a Website](https://www.linode.com/docs/websites/hosting-a-website) sections "Installing MySQL", "Optimizing MySQL for a Linode 2GB", "Creating a Database".
 
 
 ### Oracle Java 8 SE installation

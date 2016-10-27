@@ -4,7 +4,7 @@ author:
   email: ekrout@linode.com
 description: 'Reviewing your MySQL configuration for optimum resource usage'
 keywords: 'mysql,mysqltuner,resource tuning'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Friday, February 27th, 2015
 modified_by:
   name: Linode

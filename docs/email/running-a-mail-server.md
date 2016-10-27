@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Our guide to running a mail server on your Linode.'
 keywords: 'mail server,linode guide,running a mail server,linode quickstart guide'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['mailserver/']
 modified: Sunday, April 13th, 2014
 modified_by:
@@ -224,7 +224,7 @@ Here are some of the most popular webmail clients:
 -   [Citadel](http://www.citadel.org) is an all-in-one mail service that includes mail, calendars, instant messaging, mailing lists, and other collaboration tools. It's open source and geared towards small and medium-sized organizations. We have guides for [Citadel on Ubuntu 12.04](/docs/email/citadel/ubuntu-12.04-precise-pangolin) and [Citadel on Debian 6](/docs/email/citadel/debian-6-squeeze).
 -   [Horde Webmail](http://www.horde.org/apps/webmail) is an open-source IMAP client paired with some additional functions like account management and calendars.
 -   [RoundCube](http://roundcube.net) is an IMAP client with modern functionality and a clean layout.
--   [SquirrelMail](http://squirrelmail.org) is a solid option, but has an older user interface.
+-   [SquirrelMail](http://squirrelmail.org) is a solid option, but has an older user interface. Visit our guide to [Install SquirrelMail on Ubuntu 16.04 or Debian 8](/docs/email/clients/install-squirrelmail-on-ubuntu-16-04-or-debian-8)
 -   [Zimbra](http://www.zimbra.com) is an all-in-one mail service that's much simpler to install than other options, but less customizable. We have guides for [Zimbra on Ubuntu 10.04](/docs/email/zimbra/install-zimbra-ubuntu-10.04-lucid), [Zimbra on Debian 6](/docs/email/zimbra/install-zimbra-debian-6-squeeze), and [Zimbra CentOS 5](/docs/email/zimbra/install-zimbra-centos-5).
 
 ### Extras

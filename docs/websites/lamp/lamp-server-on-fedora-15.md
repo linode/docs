@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Creating a LAMP stack with Apache, MySQL, PHP, and Python on Fedora 15.'
 keywords: 'fedora 15 lamp,lamp server,linux lamp,fedora 15 apache'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['lamp-guides/fedora-15/']
 modified: Tuesday, November 19th, 2013
 modified_by:
@@ -51,7 +51,7 @@ The main configuration directives for Apache are contained in the `httpd.conf` f
 
 By default, all files ending in the `.conf` extension in `/etc/httpd/conf.d/` are treated as configuration files, and we recommend placing your non-standard configuration options in files in these directories. Regardless of how you choose to organize your configuration files, making regular backups of known working states is highly recommended.
 
-Edit the main Apache configuration file to adjust the resource use settings. The settings shown below are a good starting point for a **Linode 1GB**.
+Edit the main Apache configuration file to adjust the resource use settings. The settings shown below are a good starting point for a **Linode 2GB**.
 
 {: .file }
 /etc/httpd/conf/httpd.conf
@@ -61,11 +61,11 @@ Edit the main Apache configuration file to adjust the resource use settings. The
     ...
 
     <IfModule prefork.c>
-    StartServers 2
-    MinSpareServers 6
-    MaxSpareServers 12
-    MaxClients 80
-    MaxRequestsPerChild 3000
+            StartServers        4
+            MinSpareServers     20
+            MaxSpareServers     40
+            MaxClients          200
+            MaxRequestsPerChild 4500
     </IfModule>
     ~~~
 

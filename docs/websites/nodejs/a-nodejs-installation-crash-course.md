@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Node.js is a cross-platform runtime environment for server-side JavaScript applications. There are multiple ways to install and maintain Node.js and the decision of which installation method to use can quickly become a confusing one, so here are the main choices.'
 keywords: 'linode guide,hosting a website,website,linode quickstart guide'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Monday, December 21st, 2015
 modified_by:
   name: Linode

@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and PHP-FastCGI on Ubuntu 10.04 LTS (Lucid).'
 keywords: 'nginx,nginx ubuntu 10.04,nginx fastcgi,nginx php'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-servers/nginx/php-fastcgi/ubuntu-10-04-lucid/']
 modified: Monday, October 7th, 2013
 modified_by:

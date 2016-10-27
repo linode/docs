@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Using Git and Github start to finish.'
 keywords: 'git,dvcs,vcs,scm,gitweb,github'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Friday, February 6th, 2015
 external_resources:
  - '[Working with the Git Repository](/docs/applications/development/git-source-control-management#working-with-the-repository)'

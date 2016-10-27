@@ -5,7 +5,7 @@ author:
   email: afornuto@linode.com
 description: 'Switch to a 64-bit Linux Kernel with Your Existing Distribution.'
 keywords: 'kernel,64 bit,switch to a 64-bit linux kernel,64-bit distribution,ubuntu,centos,fedora,debian,arch linux,gentoo,32-bit,migrate,disk'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['switching-kernels/','migrate-to-linode/disk-images/switching-to-a-64bit-kernel/']
 modified: Wednesday, May 14th, 2014
 modified_by:

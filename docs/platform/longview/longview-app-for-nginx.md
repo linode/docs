@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: Longview App for Nginx
 keywords: 'Longview, Nginx, statistics, HttpStubStatusModule'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['longview/longview-for-nginx/']
 modified: Tuesday, November 12th, 2013
 modified_by:

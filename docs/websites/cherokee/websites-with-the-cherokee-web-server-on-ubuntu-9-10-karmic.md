@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Instructions for getting started with the Cherokee web server on Ubuntu 9.10 (Karmic).'
 keywords: 'cherokee,web sever,cherokee ubuntu 9.10,cherokee ubuntu karmic,ubuntu karmic'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-servers/cherokee/installing-cherokee-ubuntu-9-10-karmic/']
 modified: Monday, May 9th, 2011
 modified_by:

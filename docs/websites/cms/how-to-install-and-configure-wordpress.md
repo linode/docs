@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Install and optimize the WordPress blogging and content management system on your Linode.'
 keywords: 'install WordPress,WordPress on Linode,WordPress how-to, how to install wordpress, how to configure wordpress'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-applications/cms-guides/wordpress/','websites/cms/manage-web-content-with-wordpress/']
 modified: Monday, October 5th, 2015
 modified_by:
@@ -22,6 +22,9 @@ WordPress is a popular, dynamic, blog-focused content management system. The sof
 {: .note}
 >
 >This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+
+<div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><iframe src="//fast.wistia.net/embed/iframe/weh2nc2dad?videoFoam=true" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen mozallowfullscreen webkitallowfullscreen oallowfullscreen msallowfullscreen width="100%" height="100%"></iframe></div></div>
+<script src="//fast.wistia.net/assets/external/E-v1.js" async></script>
 
 ## Before You Begin
 
@@ -58,7 +61,7 @@ WordPress is a popular, dynamic, blog-focused content management system. The sof
 
 ## Install WordPress
 
-1.  Create an `src` directory under your website's directory to store pristine copies of WordPress's source files. In this guide, the home directory `/var/www/exmaple.com/` is used as an example. Navigate to that new directory:
+1.  Create an `src` directory under your website's directory to store pristine copies of WordPress's source files. In this guide, the home directory `/var/www/example.com/` is used as an example. Navigate to that new directory:
 
         sudo mkdir /var/www/example.com/src/
         cd /var/www/example.com/src/
@@ -67,7 +70,7 @@ WordPress is a popular, dynamic, blog-focused content management system. The sof
 
         sudo chown -R www-data:www-data /var/www/
 
-3.  Install the latest version of WordPress and exand it:
+3.  Install the latest version of WordPress and expand it:
 
         sudo wget http://wordpress.org/latest.tar.gz
         sudo -u www-data tar -xvf latest.tar.gz
@@ -76,10 +79,9 @@ WordPress is a popular, dynamic, blog-focused content management system. The sof
 
         sudo mv latest.tar.gz wordpress-`date "+%Y-%m-%d"`.tar.gz
 
-5.  Copy the WordPress files to your `public_html` folder, then remove the folder in the `src` directory:
+5.  Move the WordPress files to your `public_html` folder:
 
-        sudo cp -R wordpress/* ../public_html/
-        sudo rm -rf wordpress/
+        sudo mv wordpress/* ../public_html/
 
 
 ## Configure WordPress

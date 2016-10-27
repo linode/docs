@@ -4,7 +4,7 @@ author:
     email: scottinthebooth@gmail.com
 description: 'Access Google Drive from your Linode console'
 keywords: 'google,drive,console,fuse,apt,ubuntu'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Monday, September 28th, 2015'
 modified: Monday, September 28th, 2015
 modified_by:

@@ -4,8 +4,8 @@ author:
   email: docs@linode.com
 description: 'Use ejabberd for Instant Messaging on Ubuntu-12-04.'
 keywords: 'ejabberd,ejabberd ubuntu,ejabberd ubuntu 12.04,ejabberd on linux,real-time messaging,xmpp,collaboration software,chat software,linux jabber server,instant messaging,jabber daemon,erlang'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['communications/xmpp/ejabberd/ubuntu-12-04-precise-pangolin/','applications/messaging/instant-messaging-services-with-ejabberd-on-ubuntu-12-04-precise-pangolin']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+alias: ['communications/xmpp/ejabberd/ubuntu-12-04-precise-pangolin/','applications/messaging/instant-messaging-services-with-ejabberd-on-ubuntu-12-04-precise-pangolin/']
 modified: Wednesday, October 31st, 2012
 modified_by:
   name: Linode

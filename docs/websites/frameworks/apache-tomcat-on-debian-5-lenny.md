@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Instructions for installing and using the Apache Tomcat Java Servlet engine on Debian 5 (Lenny).'
 keywords: 'java,apache tomcat,java debian,java lenny'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['frameworks/apache-tomcat/debian-5-lenny/']
 modified: Monday, October 8th, 2012
 modified_by:

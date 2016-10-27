@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Deploy a Cherokee web server on Ubuntu 12.04 LTS (Precise Pangolin).'
 keywords: 'cherokee,web sever,ubuntu 12.04,precise pangolin,cherokee-admin'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-servers/cherokee/installing-cherokee-ubuntu-12-04-precise-pangolin/','websites/cherokee/websites-with-the-cherokee-web-server-on-ubuntu-12-04-lts-precise-pangolin/']
 modified: Wednesday, October 10th, 2012
 modified_by:
