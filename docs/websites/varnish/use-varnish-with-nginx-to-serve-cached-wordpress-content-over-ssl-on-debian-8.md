@@ -268,6 +268,8 @@ This tutorial assumes that you have SSH access to your Linode running Debian 8 (
 
 	Please remember to add to the above series any page that requires cookies to work, for example `phpmyadmin|webmail|postfixadmin`, etc. If you change the WordPress login page from `wp-login.php` to something else, you must also add the new name to this series.
 
+	It's worth noting that the "WooCommerce Recently Viewed" widget, which displays a group of recently viewed products, uses a cookie to store recent user-specific actions and this cookie prevents Varnish from caching product pages when they are browsed by visitors. If we want to cache product pages when they are just browsed, before products are added to the cart, we have to disable this widget. Special attention is required when enabling widgets that use cookies to store recent user-specific activities, if we want Varnish to cache as many pages as possible.
+
 20. Change the headers for purge requests by adding the following lines to the `sub vcl_deliver` directive:
 
 	{: .file-excerpt }
