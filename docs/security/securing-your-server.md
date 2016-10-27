@@ -221,7 +221,7 @@ To see your Linode's running network services:
 >
 >If netstat isn't included in your Linux distribution by default, install the package `net-tools` or use the `ss -tulpn` command instead.
 
-Netstat will return an output similar to what's below. Different distributions will be running different services by default, so take this only as an example:
+The following is an example of netstat's output. Note that because distributions run different services by default, your output will differ:
 
 ~~~
 Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
