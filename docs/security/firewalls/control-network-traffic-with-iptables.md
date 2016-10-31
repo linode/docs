@@ -18,9 +18,9 @@ external_resources:
  - '[Linux Firewalls with iptables](http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_:_Ch14_:_Linux_Firewalls_Using_iptables)'
 ---
 
-Packet filtering using network rules such as Network Address Translation (NAT) can be accomplished with *iptables*. Iptables utilizes ports and protocols and may also be used as a firewall. This guide will address setting iptables rules and provide a variety of examples.
+**iptables** is an application that allows users to configure specific rules to be enforced by the kernel's `netfilter` framework. It acts as a packet filter and firewall that examines and directs traffic based on port, protocol, and many other specifications. This guide will focus on the configuration and application of iptables rulesets, and will provide practical examples of common uses.
 
-By default, the iptables tool is included with your Linode supplied distribution. In order to use iptables, you will need root privileges to make changes. The iptables files are in the `/sbin` directory. However, unlike some other Linux configurations made through a text editor, you will make changes to iptables files by invoking commands from the command line.
+By default, the iptables tool is included with your Linode-supplied distribution. In order to use iptables, you will need root privileges.
 
 ## Use Linux iptables to Manage IPv4 Traffic
 
@@ -30,9 +30,9 @@ There are a number of options that can be used with iptables. As stated above, i
 
 ### Basic iptables Parameters and Syntax
 
-Before we begin creating rules, let's discuss how to format iptables syntax.
+Before we begin creating rules, let's review iptables rule syntax.
 
-For example, the following command adds a rule to the beginning of the chain and it will drop all packets from the address 198.51.100.0 received from anywhere:
+For example, the following command adds a rule to the beginning of the chain that will drop all packets from the address `198.51.100.0`:
 
     iptables -I INPUT -s 198.51.100.0 -j DROP
 
@@ -40,7 +40,7 @@ In the sample above:
 
  1.  Invokes `iptables`
  2.  Uses the `-I` option for *insertion*. Using a rule with the insertion option will add it at the beginning of a chain, it will also be the rule that is applied first. To indicate a specific placement in the chain, you may also use a number with the `-I` option.
- 3.  The `-s` parameter along with the IP address (198.51.100.0) indicates the *source*. 
+ 3.  The `-s` parameter along with the IP address (198.51.100.0) indicates the *source*.
  4.  Finally, the `-j` parameter is for *jump*. It specifies the target of the rule and what action it is to perform if the packet is a match.
 
 {: .table .table-striped }
@@ -57,7 +57,7 @@ In the sample above:
 | `-c, --set-counters`  | Enables the admin to initialize the packet and byte counters of a rule.                  |
 |:----------------------|:-----------------------------------------------------------------------------------------|
 
-#### Default Tables
+### Default Tables
 
 Tables are comprised of built-in chains and may also contain user-defined chains. The built-in tables available will depend on the kernel configuration and the installed modules.
 
@@ -108,11 +108,65 @@ There are a number of options that may be used with the `iptables` command:
 | `-X --delete-chain <name>` | Delete the user-defined chain specified.                                                                    |
 |:---------------------------|:------------------------------------------------------------------------------------------------------------|
 
+### Insert, Replace or Delete iptables Rules
+
+Iptables rules are enforced in a top-down fashion, so the first rule in the ruleset is applied to traffic in the chain, then the second, third and so on. This means that rules cannot necessarily be added to a ruleset with `iptables -A` or `ip6tables -A`. Instead, rules must be *inserted* with `iptables -I` or `ip6tables -I`.
+
+**Insert**
+
+Inserted rules need to be placed in the correct order with respect other rules in the chain. To get a numerical list of your iptables rules:
+
+    sudo iptables -L -nv --line-numbers
+
+For example, let's say we want to insert a rule to the [basic ruleset](#basic-iptables-rulesets-for-ipv4-and-ipv6) provided in this guide, to accept incoming connections to port 8080 over the TCP protocol. We'll add it as rule 9 to the INPUT chain, following the web traffic rules:
+
+    sudo iptables -I INPUT 9 -p tcp --dport 8080 -j ACCEPT
+
+If you now run `sudo iptables -L -nv` again, you'll see the new rule in the output:
+
+**Replace**
+
+Replacing a rule is similar to inserting but instead uses `iptables -R`. For example, let's say you want to reduce the logging of denied entires to only 3 per minute, down from 5 in the original ruleset. The LOG rule is the 11th in the INPUT chain:
+
+    sudo iptables -R INPUT 11 -m limit --limit 3/min -j LOG --log-prefix "iptables_INPUT_denied: " --log-level 7
+
+**Delete**
+
+Deleting a rule is also done using the rule number. For example, to delete the rule we just inserted for Linode Longview:
+
+    sudo iptables -D INPUT 9
+
+{: .caution }
+>
+>Editing rules does not automatically save them. See our section on [deploying rulesets](/docs/security/firewalls/control-network-traffic-with-iptables#deploy-your-iptables-rulesets) for the specific instructions for your distribution.
+
+### View Your Current iptables Rules
+
+IPv4:
+
+    sudo iptables -L -nv
+
+IPv6:
+
+    sudo ip6tables -L -nv
+
+Iptables has no rules by default for both IPv4 and IPv6. As a result, on a newly created Linode you will see what is shown below--three empty chains without any firewall rules. This means that all incoming, forwarded and outgoing traffic is *allowed*. It's important to limit inbound and forwarded traffic to only what's necessary.
+
+    Chain INPUT (policy ACCEPT 0 packets, 0 bytes)
+     pkts bytes target     prot opt in     out     source               destination
+
+    Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)
+     pkts bytes target     prot opt in     out     source               destination
+
+    Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)
+     pkts bytes target     prot opt in     out     source               destination
+
+
 ## Configuring iptables
 
 Iptables can be configured and used in a variety of ways. The following sections will outline how to configure rules by port and IP, as well as blacklisting (blocking) or whitelisting (allowing) addresses.
 
-### iptables Example: Blocking Traffic by Port
+### Block Traffic by Port
 
 You may use a port to block all traffic coming in on a specific interface. For example:
 
@@ -187,7 +241,7 @@ To view what rules are configured for IPv6 use the command:
 
     ip6tables -L
 
-### Configuring Rules for IPv6
+### Configure Rules for IPv6
 
 Again ip6tables works by using ports, specific addresses for blacklisting, protocols and so forth. The main exception is that ip6tables can use extended packet matching modules with the `-m` or `match` options, followed by the module name. Below are some of the extended modules:
 
@@ -207,7 +261,7 @@ There are several modules not listed here. You may review the list of extended m
 
 Below is a sample rule used in ip6tables:
 
-    # limit the number of parallel HTTP requests to 16 for the link local network 
+    # limit the number of parallel HTTP requests to 16 for the link local network
     ip6tables -A INPUT -p tcp --syn --dport 80 -s fe80::/64 -m connlimit --connlimit-above 16 --connlimit-mask 64 -j REJECT
     ip6tables -A INPUT -p tcp -m tcp --dport 22 -j ACCEPT
 
@@ -235,23 +289,271 @@ This rule breaks down as follows:
     ip6tables -A INPUT -p icmpv6 --icmpv6-type neighbor-advertisement -m hl --hl-eq 255 -j ACCEPT
     ip6tables -A INPUT -p icmpv6 --icmpv6-type redirect -m hl --hl-eq 255 -j ACCEPT
 
-## Saving Rules for iptables and ip6tables
+## Basic iptables Rulesets for IPv4 and IPv6
 
-Changes made with the iptables and ip6tables commands are rewritten on reboot. To prevent this from happening, see our [Securing Your Server](/docs/security/securing-your-server) guide for instructions on how to save iptables and ip6tables rules for your Linux distribution.
+Appropriate firewall rules depend on the services being run. Below are iptables rulesets to secure your Linode if you're running a web server.
 
-Now your rules are saved and should be available on your next reboot.
+{: .caution}
+>
+> **These rules are given only as an example.** A real production web server may require more or less configuration, and these rules would not be appropriate for a database, Minecraft, or VPN server. Iptables rules can always be modified or reset later, but these basic rulesets serve as a preliminary demonstration.
+
+**IPv4**
+
+{: .file}
+/tmp/v4
+:   ~~~ conf
+    *filter
+
+    # Allow all loopback (lo0) traffic and reject traffic
+    # to localhost that does not originate from lo0.
+    -A INPUT -i lo -j ACCEPT
+    -A INPUT ! -i lo -s 127.0.0.0/8 -j REJECT
+
+    # Allow ping.
+    -A INPUT -p icmp -m state --state NEW --icmp-type 8 -j ACCEPT
+
+    # Allow SSH connections.
+    -A INPUT -p tcp --dport 22 -m state --state NEW -j ACCEPT
+
+    # Allow HTTP and HTTPS connections from anywhere
+    # (the normal ports for web servers).
+    -A INPUT -p tcp --dport 80 -m state --state NEW -j ACCEPT
+    -A INPUT -p tcp --dport 443 -m state --state NEW -j ACCEPT
+
+    # Allow inbound traffic from established connections.
+    # This includes ICMP error returns.
+    -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+
+    # Log what was incoming but denied (optional but useful).
+    -A INPUT -m limit --limit 5/min -j LOG --log-prefix "iptables_INPUT_denied: " --log-level 7
+
+    # Reject all other inbound.
+    -A INPUT -j REJECT
+
+    # Log any traffic that was sent to you
+    # for forwarding (optional but useful).
+    -A FORWARD -m limit --limit 5/min -j LOG --log-prefix "iptables_FORWARD_denied: " --log-level 7
+
+    # Reject all traffic forwarding.
+    -A FORWARD -j REJECT
+
+    COMMIT
+    ~~~
+
+**Optional:** If you plan to use [Linode Longview](/docs/platform/longview/longview) or [Linode's NodeBalancers](/docs/platform/nodebalancer/getting-started-with-nodebalancers), add the respective rule after the section for allowing HTTP and HTTPS connections:
+
+~~~
+# Allow incoming Longview connections from longview.linode.com
+-A INPUT -s 96.126.119.66 -m state --state NEW -j ACCEPT
+~~~
+
+~~~
+# Allow incoming NodeBalancer connections
+-A INPUT -s 192.168.255.0/24 -m state --state NEW -j ACCEPT
+~~~
+
+**IPv6**
+
+If you would like to supplement your web server's IPv4 rules with IPv6 too, this ruleset will allow HTTP/S access and all ICMP functions.
+
+{: .file}
+/tmp/v6
+:   ~~~ conf
+    *filter
+
+    # Allow all loopback (lo0) traffic and reject traffic
+    # to localhost that does not originate from lo0.
+    -A INPUT -i lo -j ACCEPT
+    -A INPUT ! -i lo -s ::1/128 -j REJECT
+
+    # Allow ICMP
+    -A INPUT -p icmpv6 -j ACCEPT
+
+    # Allow HTTP and HTTPS connections from anywhere
+    # (the normal ports for web servers).
+    -A INPUT -p tcp --dport 80 -m state --state NEW -j ACCEPT
+    -A INPUT -p tcp --dport 443 -m state --state NEW -j ACCEPT
+
+    # Allow inbound traffic from established connections.
+    -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+
+    # Log what was incoming but denied (optional but useful).
+    -A INPUT -m limit --limit 5/min -j LOG --log-prefix "ip6tables_INPUT_denied: " --log-level 7
+
+    # Reject all other inbound.
+    -A INPUT -j REJECT
+
+    # Log any traffic that was sent to you
+    # for forwarding (optional but useful).
+    -A FORWARD -m limit --limit 5/min -j LOG --log-prefix "ip6tables_FORWARD_denied: " --log-level 7
+
+    # Reject all traffic forwarding.
+    -A FORWARD -j REJECT
+
+    COMMIT
+    ~~~
+
+{: .note}
+>
+>[APT](http://linux.die.net/man/8/apt) attempts to resolve mirror domains to IPv6 as a result of `apt-get update`. If you choose to entirely disable and deny IPv6, this will slow down the update process for Debian and Ubuntu because APT waits for each resolution to time out before moving on.
+>
+>To remedy this, uncomment the line `precedence ::ffff:0:0/96  100` in `/etc/gai.conf`.
+
+## Deploy your iptables rulesets
+The process for deploying iptables rulesets varies depending on the Linux distribution used:
+
+### Debian / Ubuntu
+
+UFW is the iptables controller included with Ubuntu but is also available in Debian's repositories. If you would prefer to use UFW instead of iptables, see our guide: [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw).
+
+1.  Create the files `/tmp/v4` and `/tmp/v6`. Paste the [above rulesets](#basic-iptables-rulesets-for-ipv4-and-ipv6) into their respective files.
+
+2.  Import the rulesets into immediate use:
+
+        sudo iptables-restore < /tmp/v4
+        sudo ip6tables-restore < /tmp/v6
+
+3.  If you want your iptables rules to be applied automatically on boot, see our section on configuring [iptables-persistent](/docs/security/firewalls/control-network-traffic-with-iptables#introduction-to-iptables-persistent).
+
+### CentOS / Fedora
+
+**CentOS 6 or Fedora 19 and below**
+
+1.  Create the files `/tmp/v4` and `/tmp/v6`. Paste the [rulesets above](#basic-iptables-rulesets-for-ipv4-and-ipv6) into their respective files.
+
+2.  Import the rules from the temporary files:
+
+        sudo iptables-restore < /tmp/v4
+        sudo ip6tables-restore < /tmp/v6
+
+3.  Save the rules:
+
+        sudo service iptables save
+        sudo service ip6tables save
+
+    {: .note }
+    >
+    >Firewall rules are saved to `/etc/sysconfig/iptables` and `/etc/sysconfig/ip6tables`.
+
+4.  Remove the temporary rule files:
+
+        sudo rm /tmp/{v4,v6}
+
+**CentOS 7 or Fedora 20 and above**
+
+In these distros, FirewallD is used to implement firewall rules instead of controlling iptables directly. If you would prefer to use it over iptables, see our guide: [Introduction to FirewallD on CentOS](/docs/security/firewalls/introduction-to-firewalld-on-centos).
+
+1.  If you would prefer to use iptables, FirewallD must first be stopped and disabled.
+
+        sudo systemctl stop firewalld.service && sudo systemctl disable firewalld.service
+
+2.  Install `iptables-services` and enable iptables:
+
+        sudo yum install iptables-services
+        sudo systemctl enable iptables && sudo systemctl enable ip6tables
+        sudo systemctl start iptables && sudo systemctl start ip6tables
+
+3.  Create the files `/tmp/v4` and `/tmp/v6`. Paste the [rulesets above](#basic-iptables-rulesets-for-ipv4-and-ipv6) into their respective files.
+
+4.  Import the rulesets into immediate use:
+
+        sudo iptables-restore < /tmp/v4
+        sudo ip6tables-restore < /tmp/v6
+
+5.  Save each ruleset:
+
+        sudo service iptables save
+        sudo service ip6tables save
+
+6.  Remove the temporary rule files:
+
+        sudo rm /tmp/{v4,v6}
+
+### Arch Linux
+
+1.  Create the files `/etc/iptables/iptables.rules` and `/etc/iptables/ip6tables.rules`. Paste the [rulesets above](#basic-iptables-rulesets-for-ipv4-and-ipv6) into their respective files.
+
+2.  Import the rulesets into immediate use:
+
+        sudo iptables-restore < /etc/iptables/iptables.rules
+                sudo ip6tables-restore < /etc/iptables/ip6tables.rules
+
+3.  Iptables does not run by default in Arch. Enable and start the systemd units:
+
+        sudo systemctl start iptables && sudo systemctl start ip6tables
+        sudo systemctl enable iptables && sudo systemctl enable ip6tables
+
+    For more info on using iptables in Arch, see its Wiki entries for [iptables](https://wiki.archlinux.org/index.php/Iptables) and a [simple stateful firewall](https://wiki.archlinux.org/index.php/Simple_stateful_firewall).
+
+### Verify iptables Rulesets
+
+Recheck your Linode's firewall rules with the `v` option for a verbose output:
+
+    sudo iptables -vL
+    sudo ip6tables -vL
+
+The output for IPv4 rules should show:
+
+~~~
+Chain INPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination
+    0     0 ACCEPT     all  --  lo     any     anywhere             anywhere
+    0     0 REJECT     all  --  !lo    any     loopback/8           anywhere             reject-with icmp-port-unreachable
+    0     0 ACCEPT     icmp --  any    any     anywhere             anywhere             icmp destination-unreachable
+    0     0 ACCEPT     icmp --  any    any     anywhere             anywhere             icmp echo-request
+    0     0 ACCEPT     icmp --  any    any     anywhere             anywhere             icmp time-exceeded
+    0     0 ACCEPT     tcp  --  any    any     anywhere             anywhere             tcp dpt:ssh state NEW
+    0     0 ACCEPT     tcp  --  any    any     anywhere             anywhere             tcp dpt:http state NEW
+    0     0 ACCEPT     tcp  --  any    any     anywhere             anywhere             tcp dpt:https state NEW
+    0     0 ACCEPT     all  --  any    any     anywhere             anywhere             state RELATED,ESTABLISHED
+    0     0 LOG        all  --  any    any     anywhere             anywhere             limit: avg 5/min burst 5 LOG level debug prefix "iptables_INPUT_denied: "
+    0     0 REJECT     all  --  any    any     anywhere             anywhere             reject-with icmp-port-unreachable
+
+Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination
+    0     0 LOG        all  --  any    any     anywhere             anywhere             limit: avg 5/min burst 5 LOG level debug prefix "iptables_FORWARD_denied: "
+    0     0 REJECT     all  --  any    any     anywhere             anywhere             reject-with icmp-port-unreachable
+
+Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination
+~~~
+
+Output for IPv6 rules will look like this:
+
+~~~
+Chain INPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination
+    0     0 ACCEPT     all      lo     any     anywhere             anywhere
+    0     0 REJECT     all      !lo    any     localhost            anywhere             reject-with icmp6-port-unreachable
+    0     0 ACCEPT     ipv6-icmp    any    any     anywhere             anywhere
+    0     0 ACCEPT     tcp      any    any     anywhere             anywhere             tcp dpt:http state NEW
+    0     0 ACCEPT     tcp      any    any     anywhere             anywhere             tcp dpt:https state NEW
+    0     0 ACCEPT     all      any    any     anywhere             anywhere             state RELATED,ESTABLISHED
+    0     0 LOG        all      any    any     anywhere             anywhere             limit: avg 5/min burst 5 LOG level debug prefix "ip6tables_INPUT_denied: "
+    0     0 REJECT     all      any    any     anywhere             anywhere             reject-with icmp6-port-unreachable
+
+Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination
+    0     0 LOG        all      any    any     anywhere             anywhere             limit: avg 5/min burst 5 LOG level debug prefix "ip6tables_FORWARD_denied: "
+    0     0 REJECT     all      any    any     anywhere             anywhere             reject-with icmp6-port-unreachable
+
+Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination
+~~~
+
+Your firewall rules are now in place and protecting your Linode. Remember, you may need to edit these rules later if you install other packages that require network access.
 
 ## Introduction to iptables-persistent
 
-Debian and Ubuntu have an extra package which makes working with iptables even easier. This package will save changes that have been made to your IP rules so the will become persistent. However, you may need to install this package. After installation, there will be two files created which will allow you to edit and save all your rules in one of these files. The first file is for the rules governing IPv4, and the second is for rules pertaining to IPv6.
+Ubuntu and Debian have a package called **iptables-persistent** that makes it easy to reapply your firewall rules at boot time.  After installation, there will be two files (one for IPv4 and one for IPv6) where you can save all of your rules. If you've already configured and applied iptables rules, iptables-persistent will detect them automatically, and allow you to add them to the appropriate configuration file.
 
 ### Installing iptables-persistent
 
-On a Debian or Ubuntu use the command:
+On Debian or Ubuntu use the command:
 
     ls /etc/iptables
 
-If you receive the message "No such file or directory," you will need to install the iptables persistent package. Use the command:
+If you receive the message "No such file or directory," you will need to install the `iptables-persistent` package. Use the command:
 
     apt-get install iptables-persistent
 
@@ -268,7 +570,7 @@ After the install is complete, you should see the iptables's subdirectory. Run t
     user@titan:~# ls /etc/iptables
     rules.v4  rules.v6
 
-## Using iptables-persistent
+### Using iptables-persistent
 
 To view what rules are already configured on your server run the following command:
 
