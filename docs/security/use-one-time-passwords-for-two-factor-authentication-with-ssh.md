@@ -15,7 +15,7 @@ external_resources:
  - '[Linux PAM Documentation](http://www.linux-pam.org/)'
 ---
 
-No matter what kind of data you are hosting, securing access to your Linode is a critical step in preventing your information from falling into the wrong hands. By default, you will need a password to log in, and you may also configure a key pair for even greater security. However, another option exists to complement these methods: time-based one-time passwords (TOTPs).
+No matter what kind of data you're hosting, securing access to your Linode is a critical step in preventing your information from falling into the wrong hands. By default, you will need a password to log in, and you may also configure a key pair for even greater security. However, another option exists to complement these methods: time-based one-time passwords (*TOTPs*).
 
 TOTPs allow you to enable two-factor authentication for SSH with single-use passwords that change every 30 seconds. By combining this method with a regular password or publickey (or both), you can add an extra layer of security to ensure your server is well protected.
 
@@ -25,14 +25,19 @@ This guide will explain how to install the necessary software, configure your sy
 
 1.  This guide is meant to be used with Linodes running Ubuntu 16.04 or CentOS 7. Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, and remove unnecessary network services. This guide will explain a different way to harden SSH access, but you may use a keypair in addition for even greater protection.
+2.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, and remove unnecessary network services. This guide will explain a different way to harden SSH access, but you may use a keypair in addition for even greater protection.
 
 3.  You will need a smartphone or another client device with an authenticator application such as [Google Authenticator](https://en.wikipedia.org/wiki/Google_Authenticator) or [Authy](https://www.authy.com/). Many other options exist, and this guide should be compatible with nearly all of them.
 
 4.  Update your system:
 
-        sudo apt-get update && sudo apt-get upgrade
-        sudo yum update && sudo yum upgrade
+    - Ubuntu
+
+          sudo apt-get update && sudo apt-get upgrade
+
+    - CentOS
+
+          sudo yum update && sudo yum upgrade
 
 {: .note}
 >
@@ -50,7 +55,7 @@ In Ubuntu, the password generator is included in the default package repositorie
 
 ### CentOS 7
 
-The CentOS installation requires a couple extra steps, but will provide you with similar functionality. First, enable the [EPEL](https://fedoraproject.org/wiki/EPEL) repository since the package we're looking for isn't included by default:
+The CentOS installation requires a couple extra steps, but will provide you with similar functionality. First, enable the [EPEL](https://fedoraproject.org/wiki/EPEL) repository, which hosts the package we're looking for:
 
     sudo wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
     sudo rpm -Uvh epel-release-latest-7.noarch.rpm
@@ -71,11 +76,11 @@ Now that the packages have been installed, we'll use them to generate keys. Thes
 To generate a TOTP, follow the steps below for your distribution. 
 
 {: .note}
-> Be sure to have your phone or mobile device ready, since this is where we'll be adding the password to your authenticator app. If you haven't downloaded an authenticator app, you'll also need to do that before proceeding.
+> Be sure to have your phone or mobile device ready, since this is where we'll add the password to your authenticator app. If you haven't downloaded an authenticator app, do so before proceeding.
 
 ### Ubuntu 16.04
 
-These instructions will generate a password for the user that is running the commands, so if you are configuring two-factor authentication for multiple users, you will need to follow these steps for each user.
+These instructions will generate a password for the user running the commands. If you are configuring two-factor authentication for multiple users, follow these steps for each user.
 
 1.  Run the `google-authenticator` program:
 
@@ -85,13 +90,15 @@ These instructions will generate a password for the user that is running the com
 
 2.  You should see a [QR code](https://en.wikipedia.org/wiki/QR_code) in your terminal:
 
-    [![The Google Authenticator QR Code and keys on Ubuntu 16.04.](/docs/assets/google-authenticator-ubuntu.png)](/docs/assets/google-authenticator-ubuntu.png)
+    ![The Google Authenticator QR Code and keys on Ubuntu 16.04.](/docs/assets/google-authenticator-ubuntu.png)
 
-    Using the authenticator app on your phone or mobile device, scan the code. A new entry should be added to your authenticator app in the format `username@hostname`. You'll also see a "secret key" below the QR code. You may enter this into the app manually instead of scanning the QR code to add your account.
+    Using the authenticator app on your phone or mobile device, scan the code. A new entry should be added to your authenticator app in the format `username@hostname`. 
 
-3.  Record your emergency scratch codes in a secure location. These codes can be used for authentication if you lose your device, but be aware that each code is only valid *once*. 
+    You'll also see a "secret key" below the QR code. You may enter this into the app manually instead of scanning the QR code to add your account.
 
-4.  You should be prompted to answer the following questions:
+3.  Record your emergency scratch codes in a secure location. These codes can be used for authentication if you lose your device, but be aware that each code is only valid **once**. 
+
+4.  You'll be prompted to answer the following questions:
 
         Do you want me to update your "/home/exampleuser/.google_authenticator" file (y/n)
 
@@ -101,7 +108,7 @@ These instructions will generate a password for the user that is running the com
         token? This restricts you to one login about every 30s, but it increases
         your chances to notice or even prevent man-in-the-middle attacks (y/n)
 
-    This makes your token a true one-time password, preventing the same password from being used twice. For example, if you set this to "no," and your password was intercepted while you logged in, someone may be able to gain entry to your server by entering it before the time expires. We *strongly* recommend answering `y`.
+    This makes your token a true one-time password, preventing the same password from being used twice. For example, if you set this to "no," and your password was intercepted while you logged in, someone may be able to gain entry to your server by entering it before the time expires. We **strongly** recommend answering `y`.
 
         By default, tokens are good for 30 seconds and in order to compensate for
         possible time-skew between the client and the server, we allow an extra
@@ -109,16 +116,16 @@ These instructions will generate a password for the user that is running the com
         time synchronization, you can increase the window from its default
         size of 1:30min to about 4min. Do you want to do so (y/n)
 
-    This setting accounts for time syncing issues across devices. Unless you have reason to believe that your phone or device may not sync properly, you can answer `n` here.
+    This setting accounts for time syncing issues across devices. Unless you have reason to believe that your phone or device may not sync properly, answer `n`.
 
         If the computer that you are logging into isn't hardened against brute-force
         login attempts, you can enable rate-limiting for the authentication module.
         By default, this limits attackers to no more than 3 login attempts every 30s.
         Do you want to enable rate-limiting (y/n)
 
-    This setting prevents attackers from using brute force to guess your token. Although the time limit should be enough to prevent most attacks, this will ensure that an attacker only has three chances per 30 seconds to guess your password. We recommend answering `y` here.
+    This setting prevents attackers from using brute force to guess your token. Although the time limit should be enough to prevent most attacks, this will ensure that an attacker only has three chances per 30 seconds to guess your password. We recommend answering `y`.
 
-5.  Before you log out, review the next section carefully to avoid getting locked out of your Linode.
+5.  **Before you log out**, review the [next section](#configure-authentication-settings) carefully to avoid getting locked out of your Linode.
 
 ### CentOS 7
 
@@ -126,13 +133,13 @@ These instructions will generate a password for the user that is running the com
 
         gen-oath-safe example-user totp
 
-    Replace `example-user` in the above command with the user for which you'd like to enable two-factor authentication. The `totp` option specifies that will be a time-based one-time password, as opposed to counter-based.
+    Replace `example-user` in the above command with the user you're enabling two-factor authentication for. The `totp` option specifies a time-based one-time password, as opposed to counter-based.
 
 2.  A QR code will appear in your terminal, which you can scan with your mobile device to set up your password:
 
     [![The generated QR Code and keys in CentOS 7.](/docs/assets/two-factor-keys-centos.png)](/docs/assets/two-factor-keys-centos.png)
 
-    You'll also notice some additional information displayed above and below the code. Notably, the secret key in the line beginning with "URI" provides you with a hex code that you can use to manually configure the code on your device. You'll also see another hex code on a line containing the user name, resembling the following:
+    You'll also notice some additional information displayed above and below the code. Notably, the secret key in the line beginning with `URI` provides you with a hex code that you can use to manually configure the code on your device. You'll also see another hex code on a line containing the user name, resembling the following:
 
         HOTP/T30 example-user - aae4f8b27eba8376005a2291c185c21a6f9aa8c3
 
@@ -140,9 +147,10 @@ These instructions will generate a password for the user that is running the com
 
         echo 'HOTP/T30 example-user - aae4f8b27eba8376005a2291c185c21a6f9aa8c3' | sudo tee /etc/liboath/users.oath
 
-    To configure two-factor authentication for multiple users, use this command to append the keys for each user to the `users.oath` file.
+4.  Repeat this process for each user you wish to create unique two-factor keys for, or repeat the previous step, replacing the user, to use the same key for multiple users.
 
-4.  Before you log out, review the next section carefully to avoid getting locked out of your Linode.
+
+5.  **Before you log out**, review the next section carefully to avoid getting locked out of your Linode.
 
 Congratulations! You have finished generating your key and adding it to your client, but some additional configuration is needed before these settings will go into effect. See the next section for instructions on how to require two-factor authentication for all SSH login attempts.
 
@@ -151,7 +159,7 @@ Congratulations! You have finished generating your key and adding it to your cli
 The time-based one-time password authentication methods in this guide use *PAM*, or Pluggable Authentication Modules. [PAM](http://www.linux-pam.org/) is mechanism that integrates low-level authentication mechanisms into modules that can be configured for different applications and services. Because we're using additional software (i.e., programs that aren't built into the Linux distro), we'll need to configure PAM to properly authenticate users.
 
 {: .caution}
-> It is strongly recommended that you have another terminal session open while configuring your authentication settings. This way, if you disconnect to test authentication and something is not properly configured, you won't be locked out of your Linode.
+> It is strongly recommended that you have another terminal session open while configuring your authentication settings. This way, if you disconnect to test authentication and something is not properly configured, you won't be locked out of your Linode. You can also use [Lish](/docs/networking/using-the-linode-shell-lish) to regain access.
 
 1.  Open `/etc/pam.d/sshd` with sudo privileges and edit the file, depending on your distribution:
 
@@ -170,23 +178,29 @@ The time-based one-time password authentication methods in this guide use *PAM*,
 
     **CentOS 7**
 
-    Add the following line to your file (it has been marked by a comment here for clarity, but you can omit everything following the `#`). The surrounding lines are included for context, but they should not be modified. The line *must* be added between the lines specified here:
+    Add the following line referencing `pam_oath.so` (it has been marked by a comment here for clarity, but you can omit everything following the `#`). The surrounding lines are included for context, but they should not be modified. The line **must** be added between the lines specified here:
 
     {: .file-excerpt}
     /etc/pam.d/sshd
     :   ~~~
-        auth   	required 	pam_sepermit.so
-        auth    required   	password-auth
-        auth 	required   	pam_oath.so usersfile=/etc/liboath/users.oath window=10 digits=6 #Add this line
-        auth   	include   	postlogin 
+        auth   	required    pam_sepermit.so
+        auth    required    password-auth
+        auth    required    pam_oath.so usersfile=/etc/liboath/users.oath window=10 digits=6 #Add this line
+        auth    include     postlogin 
         ~~~
 
     This line specifies the PAM OATH module as an additional method of authentication, the path for the users file, a window that specifies which passphrases will be accepted (to account for potential time syncing issues), and a length of six digits. 
 
     {: .note}
-    > If you follow the rest of the CentOS 7 steps and find that you are still unable to connect, try adding `debug=1` to the third line. 
+    > If you follow the rest of the CentOS 7 steps and find that you are still unable to connect, try adding `debug=1` to the third line:
+    >
+    > {: .file-excerpt}
+    > /etc/pam.d/sshd
+    > :   ~~~
+    >     auth    required    password-auth debug=1
+    >     ~~~
 
-2.  Edit your `/etc/ssh/sshd_config` file to include the following lines, replacing `example-user` with any system user for which you'd like to enable two-factor authentication. Comments are included here, but do not need to be added to your actual configuration file. These lines will be the same on both Ubuntu and CentOS:
+2.  Edit `/etc/ssh/sshd_config` to include the following lines, replacing `example-user` with any system user for which you'd like to enable two-factor authentication. Comments are included here, but do not need to be added to your actual configuration file. These lines will be the same on both Ubuntu and CentOS:
 
     {: .file-excerpt}
     /etc/ssh/sshd_config
