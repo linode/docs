@@ -3,12 +3,12 @@ author:
   name: Phil Zona
   email: docs@linode.com
 description: 'Use Google Authenticator to enable two-factor authentication for SSH connections.'
-keywords: 'two-factor,authentication,ssh,google authenticator'
+keywords: 'two-factor,authentication,ssh,google authenticator,ubuntu,centos'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 'Wednesday, October 12th, 2016'
+modified: 'Monday, October 31st, 2016'
 modified_by:
   name: Phil Zona
-published: 'Wednesday, October 12th, 2016'
+published: 'Monday, October 31st, 2016'
 title: Use One-Time Passwords for Two-Factor Authentication with SSH
 external_resources:
  - '[One-Time Passwords](https://en.wikipedia.org/wiki/One-time_password)'
@@ -64,7 +64,7 @@ Next, install the packages that we'll be using to generate keys and passwords:
 
     sudo yum install liboath gen-oath-safe pam_oath
 
-Ubuntu 16.04 uses the Google Authenticator package, although the keys it generates are compatible with other authentication apps. CentOS 7, however, does not include this package, and instead uses the `liboath`, `gen-oath-safe`, and `pam_oath`  packages, which combine to provide an open-source alternative. The packages offer slightly different options, but both will allow you to set up one-time passwords for two-factor authentication.
+Ubuntu 16.04 uses the Google Authenticator package, although the keys it generates are compatible with other authentication apps. CentOS 7, however, does not include this package, and instead uses the `liboath`, `gen-oath-safe`, and `pam_oath`  packages, which combine to provide an open-source alternative. The keys generated with these tools are compatible with the Google Authenticator app. The packages offer slightly different options, but both will allow you to set up one-time passwords for two-factor authentication.
 
 ## Generate a Key
 
@@ -129,7 +129,7 @@ These instructions will generate a password for the user running the commands. I
 
 ### CentOS 7
 
-1.  Generate a password:
+1.  Generate a key:
 
         gen-oath-safe example-user totp
 
@@ -148,7 +148,6 @@ These instructions will generate a password for the user running the commands. I
         echo 'HOTP/T30 example-user - aae4f8b27eba8376005a2291c185c21a6f9aa8c3' | sudo tee /etc/liboath/users.oath
 
 4.  Repeat this process for each user you wish to create unique two-factor keys for, or repeat the previous step, replacing the user, to use the same key for multiple users.
-
 
 5.  **Before you log out**, review the next section carefully to avoid getting locked out of your Linode.
 
@@ -184,7 +183,7 @@ The time-based one-time password authentication methods in this guide use *PAM*,
     /etc/pam.d/sshd
     :   ~~~
         auth   	required    pam_sepermit.so
-        auth    required    password-auth
+        auth    substack    password-auth
         auth    required    pam_oath.so usersfile=/etc/liboath/users.oath window=10 digits=6 #Add this line
         auth    include     postlogin 
         ~~~
@@ -229,7 +228,7 @@ The time-based one-time password authentication methods in this guide use *PAM*,
 
 ## Combine Two-Factor and Public Key Authentication
 
-This section is optional. The above configuration provides two layers of security for your server, but if you'd like to combine [public key authentication](/docs/security/use-public-key-authentication-with-ssh) with password and TOTP, modify the `AuthenticationMethods` line in `/etc/ssh/sshd_config`:
+This section is optional. If you'd like to use [public key authentication](/docs/security/use-public-key-authentication-with-ssh) instead of a password with TOTP, set `PasswordAuthentication` to `no` and modify the `AuthenticationMethods` line in `/etc/ssh/sshd_config`:
 
 {: .note}
 > Confirm that your public key has been copied to your Linode before completing this section. View installed SSH keys by entering `ssh-add -l` in your terminal.
@@ -237,11 +236,37 @@ This section is optional. The above configuration provides two layers of securit
 {: .file-excerpt}
 /etc/ssh/sshd_config
 :   ~~~
+    PasswordAuthentication no
+    ...
     Match User example-user
         AuthenticationMethods publickey,keyboard-interactive
     ~~~
 
-Configure this setting in the `Match User` block for each user as appropriate. When any of these users log in, they will not only need to provide their SSH key, but they will be authenticated via password and TOTP as well. Be sure to restart your SSH daemon to apply these changes.
+Configure this setting in the `Match User` block for each user as appropriate. When any of these users log in, they will not only need to provide their SSH key, but they will be authenticated via TOTP as well. Be sure to restart your SSH daemon to apply these changes.
+
+Next, you'll need to make changes to your PAM configuration. This step will vary depending on which distribution you're using:
+
+### Ubuntu 16.04
+
+Comment out or omit the following lines in your `/etc/pam.d/sshd` file:
+
+{: .file-excerpt}
+/etc/pam.d/sshd
+:   ~~~
+    # @include common-auth
+    ...
+    # auth    required      pam_unix.so     no_warn try_first_pass
+    ~~~
+
+### CentOS 7
+
+Comment out or omit the following line in your `/etc/pam.d/sshd` file:
+
+{: .file-excerpt}
+/etc/pam.d/sshd
+:   ~~~
+    # auth       substack     password-auth
+    ~~~
 
 ## Next Steps
 
