@@ -28,7 +28,7 @@ Because of the resources needed by some Magento plugins, it is strongly recommen
 
 2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services. 
 
-3.  Magento runs on a LAMP stack, and this guide assumes you have already installed and configured Apache.. If you haven't, refer to our [LAMP stack guides](https://www.linode.com/docs/websites/lamp/). However, do not use our LAMP guide to install MariaDB or PHP. We will explain how to install compatible versions of these packages in this guide
+3.  Magento runs on a LAMP stack, and this guide assumes you have already installed and configured Apache.. If you haven't, refer to our [LAMP stack guides](/docs/websites/lamp/lamp-on-centos-7). However, do not use our LAMP guide to install MariaDB or PHP. We will explain how to install compatible versions of these packages in this guide
 
 3.  Update your system:
 
@@ -52,7 +52,7 @@ Since Magento will be served by Apache, some additional configuration is needed 
 
     If this shows version 2.2 or another version, upgrade your packages before proceeding.
 
-2.  Modify the virtual host file for your Magento site to resemble the following. If you have not previously created a virtual host file, do so now and refer to our [LAMP stack guide](https://linode.com/docs/websites/lamp/lamp-on-centos-7) for additional guidance.
+2.  Modify the virtual host file for your Magento site to resemble the following. If you have not previously created a virtual host file, do so now and refer to our [LAMP stack guide](/docs/websites/lamp/lamp-on-centos-7) for additional guidance.
 
     {: .file}
     /etc/httpd/conf.d/vhost.conf
@@ -274,7 +274,7 @@ The dashboard will be functional at this point, but there is still some work to 
 
 ### Set Cron Jobs
 
-Magento relies on [cron](https://www.linode.com/docs/tools-reference/tools/schedule-tasks-with-cron) to perform tasks like continuously reindexing your site and generating emails and newsletters. If you logged into your admin panel once your installation finished, you may have noticed an error message saying that cron jobs needed to be set. Fortunately, the cron jobs Magento uses for a base installation are very easy to configure.
+Magento relies on [cron](/docs/tools-reference/tools/schedule-tasks-with-cron) to perform tasks like continuously reindexing your site and generating emails and newsletters. If you logged into your admin panel once your installation finished, you may have noticed an error message saying that cron jobs needed to be set. Fortunately, the cron jobs Magento uses for a base installation are very easy to configure.
 
 1.  Open the crontab for your `magento` user. Peform this step as a user with `sudo` privileges:
 
@@ -322,13 +322,13 @@ At a minimum, you should restrict write access to the `app/etc` directory before
 Depending on whether you install custom themes or extensions, you may need to do additional configuration. This will vary depending on what you have installed. Once you're ready to deploy your site into production mode, refer to [Magento's ownership and permissions guide](http://devdocs.magento.com/guides/v2.1/config-guide/prod/prod_file-sys-perms.html) for a more comprehensive set of recommendations.
 
 {: .note}
-> If you need to make additional configuration changes in the future, you'll need to manually add write permissions again before you can do so. For more information, see our guide on [Linux users and groups](https://www.linode.com/docs/tools-reference/linux-users-and-groups).
+> If you need to make additional configuration changes in the future, you'll need to manually add write permissions again before you can do so. For more information, see our guide on [Linux users and groups](/docs/tools-reference/linux-users-and-groups).
 
 ### Secure your Site with SSL
 
 Secure sockets layer (SSL) certificates are a vital part of e-commerce. They enable encrypted transmission of sensitive data, such as credit card numbers, that can be verified and trusted by clients. In fact, some payment vendors such as PayPal, require SSL certificates to be used for customer transactions.
 
-For instructions on how to use SSL certificates in your store, see our guides on [obtaining a commercially signed SSL certificate](https://www.linode.com/docs/security/ssl/obtain-a-commercially-signed-ssl-certificate-on-centos-and-fedora) and [using SSL certificates with Apache](https://www.linode.com/docs/security/ssl/ssl-apache2-centos).
+For instructions on how to use SSL certificates in your store, see our guides on [obtaining a commercially signed SSL certificate](/docs/security/ssl/obtain-a-commercially-signed-ssl-certificate-on-centos-and-fedora) and [using SSL certificates with Apache](/docs/security/ssl/ssl-apache2-centos).
 
 {: .note}
 > Many payment vendors that require SSL do not support self-signed certificates. Depending on how you handle payments, it is likely you will need to purchase a commercially signed certificate.
