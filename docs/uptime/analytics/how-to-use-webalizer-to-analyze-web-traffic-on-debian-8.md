@@ -9,20 +9,19 @@ published: 'Weekday, Month 00th, 2016'
 modified: Weekday, Month 00th, 2016
 modified_by:
   name: Linode
-title: 'How to Use Webalizer to Analyze Nginx Logs on Debian 8 (Jessie)'
+title: 'How to Use Webalizer to Analyze Nginx Logs on Debian 8'
 contributor:
   name: Frederick Jost Zweig
   link: https://github.com/Fred-Zweig
   external_resources:
 - '[Official Webalizer website](http://www.webalizer.org/download.html)'
-- '[Official Webalizer repository](ftp://ftp.mrunix.net/pub/webalizer/)'
 ---
 
 *This is a Linode Community guide. Write for us and earn $250 per published guide.*
 <hr>
 
 
-# How to Use Webalizer to Analyze Nginx Logs on Debian 8 (Jessie)
+# How to Use Webalizer to Analyze Nginx Logs on Debian 8
 
 ## Introduction
 
@@ -34,10 +33,10 @@ This tutorial will explain how to install Webalizer on a Debian 8 server, and ho
 
 ## Before You Begin
 
-Ensure that you have ssh access to your server with Debian 8 (Jessie) installed. You'll also need the following:
+This tutorial assumes that you have SSH access to your server running Debian 8 (Jessie). Before you begin, make sure you've completed the following:
 
-*   **a LEMP (Linux, Nginx (pronounced "engine x"), MySQL, PHP) stack**. To install a LEMP stack you can follow [this guide](https://www.linode.com/docs/websites/lemp/lemp-server-on-debian-8). However, you can skip the Nginx configuration because we'll address it later on in this tutorial.
-*   **a non-root user with sudo priviledges**. To create a non-root user with sudo privileges you can follow the steps in [this guide](https://www.linode.com/docs/tools-reference/linux-users-and-groups).
+*   Complete the steps in our [Getting Started](https://linode.com/docs/getting-started) and [Securing your Server](https://www.linode.com/docs/security/securing-your-server) guides.
+*   Follow the steps outlined in our [LEMP on Debian 8](https://www.linode.com/docs/websites/lemp/lemp-server-on-debian-8) guide. You should skip the nginx configuration section as we'll address it later on in this tutorial.
 
 ## Install and Configure Webalizer
 
@@ -93,33 +92,68 @@ Ensure that you have ssh access to your server with Debian 8 (Jessie) installed.
 
 12.  First you have to specify the name of the history file produced by Webalizer, which will contain the data for previous months and will be used to generate the `index.html` page, the main page of the reports. The default name is `webalizer.hist` and it will be stored in the output directory for Webalizer that we'll specify later on. So, the history file directive should look as follows:
 
+	{: .file-excerpt }
+	/etc/webalizer/webalizer.conf
+	:   ~~~ conf
+	
 		HistoryName	 webalizer.hist
+		~~~
 
 13.  Generally, web servers don't write access data to one big log file. When log files reach a certain dimension they are rotated and Webalizer must find a way to analyze the new files resulted after rotation. So, it saves its internal state before exiting and then restores it on the next run so as to continue data processing where it left off. The file `webalizer.current` is used to store the current state data, and is located in the output directory of Webalizer. To enable the incremental processing of logs, change the directive to look like this:
 
+	{: .file }
+	/etc/webalizer/webalizer.conf
+	:   ~~~ conf
+	
 		Incremental	yes
+		~~~
 
 14.  Next, you have to specify the location of the `dns_cache.db` file you previously created:
 
+	{: .file }
+	/etc/webalizer/webalizer.conf
+	:   ~~~ conf
+	
 		DNSCache	/var/log/webalizer/dns_cache.db
+		~~~
 
 15.  The `DNSChildren` setting will specify the number of child processes Webalizer is allowed to run in order to perform the DNS lookups. A large number of processes may affect normal system operations, so a reasonable number of child processes would be between 5 and 20. Let's set 10:
 
+	{: .file }
+	/etc/webalizer/webalizer.conf
+	:   ~~~ conf
+	
 		DNSChildren	  10
+		~~~
 
 16.  As mentioned earlier, to make Webalizer correctly identify the visotors' country, the native geolocation service must be enabled. This will be done using the `GeoDB` directive:   
 
+	{: .file }
+	/etc/webalizer/webalizer.conf
+	:   ~~~ conf
+	
 		GeoDB		yes
+		~~~
 
 	The next setting is the name and location of the GeoDB database to be used. The GeoDB database is the `GeoDB.dat` file that you downloaded earlier; so, since you are using the default name and location for this database, which is `/usr/share/GeoDB/GeoDB.dat`, you don't need to specify it again in this section.
 
 17.  Another adjustment that you may want to make is to tell Webalizer not to display the 'Top Users' table. If you protect the Webalizer subdirectory with HTTP authentication to prevent any random visitor to access the site's statistics, the 'Top Users' table will contain the login usernames of all the users who accessed the Webalizer report through HTTP authentication; this usernames, although not shown together with their respective passwords, represent sensitive information that is safe not to display in a report. To disable the 'Top Users' table, you just have to set the `TopUsers` parameter (located approximately on the 480th row of the `webalizer.conf` file) to 0:
 
+	{: .file }
+	/etc/webalizer/webalizer.conf
+	:   ~~~ conf
+	
 		TopUsers     0
+		~~~
 
 18.  You must also adjust the list of search engines and their respective query strings. This list allows Webalizer to identify the search strings used by visitors to find the site. The first word in this list is a substring used by Webalizer to pick out the search engine in the 'referer' section of each log entry, while the second is the URL variable used by that search engine to define its search terms. So, find the list of search engines that begins with this line:
 
+	{: .file }
+	/etc/webalizer/webalizer.conf
+	:   ~~~ conf
+	
 		SearchEngine	.google.	q=
+		~~~
 
 	Replace it with this more up-to-date list:
 
@@ -174,7 +208,7 @@ Ensure that you have ssh access to your server with Debian 8 (Jessie) installed.
 
 ## Create the Webalizer Output Directory
 
-The web server will be configured so that the Webalizer reports will be accessible on a subdirectory of the website (something like 'www.example1.com/webalizer') which will be in fact the alias of the Webalizer output directory, so, for safety reasons it's a good idea to name the alias something different than 'webalizer', for example 'up-webalizer', or anything similar but difficult to guess. This way you'll prevent unauthorised users to even reach the reports. Of course the main security measure will be to protect the reports directory with http authentication so that only users with a valid username and password can get access to these reports, as we'll exaplain below.
+The web server will be configured so that the Webalizer reports will be accessible on a subdirectory of the website (something like `www.example1.com/webalizer`) which will be in fact the alias of the Webalizer output directory, so, for safety reasons it's a good idea to name the alias something different than 'webalizer', for example 'up-webalizer', or anything similar but difficult to guess. This way you'll prevent unauthorised users to even reach the reports. Of course the main security measure will be to protect the reports directory with http authentication so that only users with a valid username and password can get access to these reports, as we'll exaplain below.
 
 As about the location of the output directory, this can be `/var/log/sites/example1.com`. So, Webalizer will put the report files it will generate in `/var/log/sites/example1.com/webalizer`. The reports will be accessible by typing `www.example1.com/up-webalizer` in a web browser and then authenticating with a username and password.
 
@@ -461,7 +495,7 @@ But what if you want to run Webalizer on a regular basis, let's say once a day a
 
 	To access the reports generated by Webalizer for `www.example1.com` just open a browser, type in `www.example1.com/up-webalizer` and enter your username and password when prompted.
 
-	The traffic statistics will look similar these:
+	The traffic statistics will look like this:
 
 ![Webalizer - Summary by month](/docs/assets/webalizer1.png)
 
