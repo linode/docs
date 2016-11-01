@@ -3,7 +3,7 @@ author:
   name: Edward Angert
   email: docs@linode.com
 description: 'Install and optimize the WordPress blogging and content management system on your Linode.'
-keywords: 'install WordPress,WordPress on Linode,WordPress how-to,how to install wordpress,how to configure wordpress,ubuntu 16.04'
+keywords: 'install WordPress, WordPress on Linode, how to configure WordPress, Permalink'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Friday, October 21, 2016
 modified_by:
@@ -16,7 +16,7 @@ external_resources:
 - '[WordPress Support](http://wordpress.org/support)'
 ---
 
-In this guide, you'll learn to install WordPress on a Linode running Ubuntu 16.04. WordPress is a popular, dynamic content management system focused on blogs. WordPress can be deployed on a LAMP or LEMP stack, and features an extensive plugin framework and theme system that allows site owners and developers to use its simple yet powerful publishing tools.
+In this guide, you'll learn to install WordPress on a Linode running Ubuntu 16.04. WordPress is a popular, dynamic content management system focused on blogs. WordPress can be deployed on a LAMP or LEMP stack, and features an extensive plugin framework and theme system that allows site owners and developers to use its simple, yet powerful publishing tools.
 
 {: .note}
 >
@@ -92,7 +92,7 @@ In this guide, you'll learn to install WordPress on a Linode running Ubuntu 16.0
 
     ![WordPress Installer](/docs/assets/wordpress-setup_small.png)
 
-    WordPress will test the credentials and if authentication is successful, will prompt you to **Run the install**.
+    WordPress will test the credentials and if authentication is successful, prompt you to **Run the install**.
 
     {: .note}
     > If Wordpress doesn't display when you visit your domain, try adding `/wp-admin` to the end of the URL. This sometimes happens if you previously created an index file in your site's home directory.
@@ -101,7 +101,7 @@ In this guide, you'll learn to install WordPress on a Linode running Ubuntu 16.0
 
     ![WordPress Administrative Information](/docs/assets/wordpress-installation-screen01.png)
 
-    Click **Log In**, enter your credentials and continue to the WordPress Dashboard.
+    Click **Log In**, enter your credentials and proceed to the WordPress Dashboard.
 
 3.  By default, WordPress will prompt you for FTP credentials when you install new themes or plugins. To bypass this, modify your `wp-config.php` file by adding the following lines:
 
@@ -112,7 +112,7 @@ In this guide, you'll learn to install WordPress on a Linode running Ubuntu 16.0
         define('FS_METHOD', 'direct');
         ~~~
 
-4.  If you're using Apache, run the following commands to ensure that `mod_rewrite` is enabled and restart Apache to apply the changes:
+4.  If you're using Apache, run the following commands to ensure that `mod_rewrite` is enabled and then restart Apache to apply the changes:
 
         sudo a2enmod rewrite
         sudo systemctl restart apache2
@@ -137,7 +137,7 @@ To configure permalink settings:
 
 3.  Select your preferred permalink style or create your own *Custom Structure* and click **Save Changes**
 
-4.  Configure your webserver to allow WordPress to create the customized URLs using the appropriate section below.
+4.  Configure your web server to allow WordPress to create the customized URLs using the appropriate section below.
 
 ### Configure WordPress to Allow Permalinks on Apache
 
@@ -159,7 +159,7 @@ Restart Apache to enable the changes:
 
 ### Configure WordPress to Allow Permalinks on nginx
 
-Nginx needs to be directed to check if the page each permalink refers to exists. By default, nginx assumes that it doesn't, and returns a server-side 404. Update the following lines in the `location / {` block in your virtual host configuration:
+Nginx needs to be directed to check whether the page each permalink refers to exists. By default, nginx assumes that it doesn't, and returns a server-side 404. Update the following lines in the `location / {` block in your virtual host configuration:
 
 {: .file-excerpt}
 /etc/nginx/sites-available/example.com
