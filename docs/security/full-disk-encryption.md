@@ -2,7 +2,7 @@
 author:
   name: Nick Brewer
   email: docs@linode.com
-description: Create a secure, LUKS-encrypted Debian installation.
+description: Create a secure, LUKS-encrypted Debian Installation.
 keywords: full disk encryption, debian, luks
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Thursday, October 13th, 2016
@@ -12,7 +12,7 @@ published: 'Thursday, October 13th, 2016'
 title: Full Disk Encryption
 ---
 
-Full disk encryption protects the information stored on your Linode's disks by converting it into unreadable code that can only be deciphered with a unique password. Nearly everything on the disk is encrypted, including the swap space and temporary files. This guide will show you how to deploy a Linux distribution with [LUKS](https://en.wikipedia.org/wiki/Linux_Unified_Key_Setup) filesystem encryption. While this demonstration will use Debian 8 (Jessie), the process should be similar for any Linux distribution, provided that their installer includes a LUKS encryption option.
+Full disk encryption protects the information stored on your Linode's disks by converting it into unreadable code that can only be deciphered with a unique password. Nearly everything on the disk is encrypted, including the swap space and temporary files. This guide will show you how to deploy a Linux distribution with [LUKS](https://en.wikipedia.org/wiki/Linux_Unified_Key_Setup) filesystem encryption. While this demonstration will use Debian 8 (Jessie), the process should be similar for any Linux distribution, provided that the respective distro's installer includes a LUKS encryption option.
 
 The Debian 8 guided encryption option in this guide makes use of a process commonly referred to as *LVM on LUKS*, which allows you to create several logical volumes within an encrypted block device. This method offers advantages in terms of scalability and convenience, as your password only needs to be entered once to access all of the volumes within your encrypted disk.
 
@@ -30,11 +30,11 @@ The Debian 8 guided encryption option in this guide makes use of a process commo
 
 2.  Determine the installation media you'll be using to deploy your custom distribution, and take note of its size. In this example, we're using Debian's [network boot](http://ftp.debian.org/debian/dists/stable/main/installer-amd64/current/images/netboot/) option.
 
-## Prepare your Linode
+## Prepare Your Linode for Encrypted Debian Installation
 
 1.  [Create two raw disk images](/docs/migrate-to-linode/disk-images/disk-images-and-configuration-profiles#creating-a-blank-disk) from the Linode's Dashboard:
 
-    * A disk labelled **Installer**. The size of this disk will depend upon the size of your distribution's installer, but it's recommended to make it slightly larger than the space taken up by the install media itself. For this example, the installer disk will be 100MB in size, giving us plenty of room for the Debian network installer.
+    * A disk labeled **Installer**. The size of this disk will depend upon the size of your distribution's installer, but it's recommended to make it slightly larger than the space taken up by the install media itself. For this example, the installer disk will be 100MB in size, giving us plenty of room for the Debian network installer.
     * A disk labelled **Boot**. This will take up the rest of the free space available on your Linode.
 
 2.  [Create two configuration profiles](/docs/migrate-to-linode/disk-images/disk-images-and-configuration-profiles#configuration-profiles) and disable the options under **Filesystem / Boot Helpers** for each of them, as well as the [Lassie](/docs/uptime/monitoring-and-maintaining-your-server#configuring-shutdown-watchdog) shutdown watchdog under the **Settings** menu. Both profiles will use the **Direct Disk** option from the **Kernel** drop down menu:
@@ -54,9 +54,9 @@ The Debian 8 guided encryption option in this guide makes use of a process commo
     - /dev/sda: *Boot* disk image.
     - root / boot device: Standard /dev/sda
 
-3.  Boot into [Rescue Mode](/docs/troubleshooting/rescue-and-rebuild#booting-into-rescue-mode) with your Installer disk mounted to `/dev/sda`, and connect to your Linode using the [Lish Console](/docs/networking/using-the-linode-shell-lish).
+3.  Boot into [Rescue Mode](/docs/troubleshooting/rescue-and-rebuild#booting-into-rescue-mode) with your *Installer* disk mounted to `/dev/sda`, and connect to your Linode using the [Lish Console](/docs/networking/using-the-linode-shell-lish).
 
-4.  Once in Rescue Mode, download the Debian installation media and copy it to your Installer disk:
+4.  Once in Rescue Mode, download the Debian installation media and copy it to your *Installer* disk:
 
     {: .note}
     > As an additional security step, you can use the keys provided in the same directory as the `iso` to [verify the authenticity](https://www.debian.org/CD/verify) of the image.
@@ -106,7 +106,7 @@ The Debian 8 guided encryption option in this guide makes use of a process commo
 
     [![Debian 8 Partitioning](/docs/assets/fde-partitioning-small.png)](/docs/assets/fde-partitioning.png)
 
-10. Select the volume to partition and install Debian to. Since we previously mounted the *Boot* disk to `/dev/sda`, select it here:
+10. Select the volume on which you'll create partitions and install Debian. Since we previously mounted the *Boot* disk to `/dev/sda`, select it here:
 
     [![Debian 8 Volume Selection](/docs/assets/fde-volume-selection-small.png)](/docs/assets/fde-volume-selection.png)
 
@@ -114,7 +114,7 @@ The Debian 8 guided encryption option in this guide makes use of a process commo
 
     [![Debian 8 Partition Scheme](/docs/assets/fde-disk-partitioning-small.png)](/docs/assets/fde-disk-partitioning.png)
 
-12. Confirm and apply your changes. This step may take a while, as the volume is overwritten with random data to protect against [cryptanalysis](https://en.wikipedia.org/wiki/Cryptanalysis):
+12. Confirm and apply your changes. This step may take awhile, as the volume is overwritten with random data to protect against [cryptanalysis](https://en.wikipedia.org/wiki/Cryptanalysis):
 
     [![Debian 8 Partitioning Confirmation](/docs/assets/fde-write-changes-small.png)](/docs/assets/fde-write-changes.png)
 
