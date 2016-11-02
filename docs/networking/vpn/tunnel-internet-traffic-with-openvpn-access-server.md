@@ -40,7 +40,7 @@ To configure OpenVPN for tunneling, you'll first need to log in to the Access Se
 
     ![OpenVPN Access Server Internet Routing.](/docs/assets/openvpn-access-server-routing.png)
 
-    The option "Should VPN clients have access to private subnets (non-public networks on the server side)?" can be set to **No**, since we are using the VPN to mask internet traffic. If you wish to give VPN users access to services listening on your Linode's local network, set this option to **Yes**.
+    The option "Should VPN clients have access to private subnets (non-public networks on the server side)?" can be set to **No**, since we are using the VPN to mask internet traffic. If you wish to give VPN users access to services listening on your Linode's local network, set this option to **Yes, using NAT**.
 
 2. To avoid [DNS leaking](https://www.dnsleaktest.com/what-is-a-dns-leak.html), modify the DNS resolver settings. Under **DNS Settings**, select **Have clients use the same DNS servers as the Access Server host**.
 
