@@ -5,10 +5,10 @@ author:
 description: Create a secure, LUKS-encrypted Debian Installation.
 keywords: full disk encryption, debian, luks
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Thursday, October 13th, 2016
+modified: Wednesday, November 2nd, 2016
 modified_by:
   name: Linode
-published: 'Thursday, October 13th, 2016'
+published: 'Wednesday, November 2nd, 2016'
 title: Full Disk Encryption
 ---
 
