@@ -9,14 +9,14 @@ modified: Friday, October 21, 2016
 modified_by:
   name: Edward Angert
 published: 'Friday, October 21, 2016'
-title: How to Install and Configure WordPress on Ubuntu 16.04
+title: Install WordPress on Ubuntu 16.04
 external_resources:
 - '[WordPress.org](http://wordpress.org)'
 - '[WordPress Codex](http://codex.wordpress.org)'
 - '[WordPress Support](http://wordpress.org/support)'
 ---
 
-In this guide, you'll learn to install WordPress on a Linode running Ubuntu 16.04. WordPress is a popular, dynamic content management system focused on blogs. WordPress can be deployed on a LAMP or LEMP stack, and features an extensive plugin framework and theme system that allows site owners and developers to use its simple, yet powerful publishing tools.
+In this guide, you'll learn to how to install WordPress on a Linode running Ubuntu 16.04. WordPress is a popular, dynamic content management system focused on blogs. WordPress can be deployed on a LAMP or LEMP stack, and features an extensive plugin framework and theme system that allows site owners and developers to use its simple, yet powerful publishing tools.
 
 {: .note}
 >
@@ -121,7 +121,7 @@ In this guide, you'll learn to install WordPress on a Linode running Ubuntu 16.0
 
 Congratulations! You have now successfully installed WordPress.
 
-## WordPress Permalinks
+## Create WordPress Permalinks (Optional)
 
 *Permalink* is a portmanteau of the words *permanent* and *link*. Permalinks are URLs that are automatically created for specific posts or pages in WordPress so that you or others can link to them. WordPress's default settings assign post numbers as permalinks, meaning a link to a specific post would look like `example.com/?p=42`. To enforce a "prettier" permalink format, you'll need to make a few adjustments to Apache or nginx.
 
