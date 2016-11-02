@@ -6,9 +6,9 @@ description: 'Use iptables to manage Netfilter rules.'
 keywords: 'iptables,networking,firewalls,filtering'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['security/firewalls/iptables/']
-modified: Friday, October 21st, 2016
+modified: Monday, October 31st, 2016
 modified_by:
-  name: Edward Angert
+  name: Nick Brewer
 published: 'Friday, July 30th, 2010'
 title: Control Network Traffic with iptables
 external_resources:
@@ -36,7 +36,7 @@ For example, the following command adds a rule to the beginning of the chain tha
 
     iptables -I INPUT -s 198.51.100.0 -j DROP
 
-In the sample above:
+The sample above:
 
  1.  Invokes `iptables`
  2.  Uses the `-I` option for *insertion*. Using a rule with the insertion option will add it at the beginning of a chain, it will also be the rule that is applied first. To indicate a specific placement in the chain, you may also use a number with the `-I` option.
@@ -150,7 +150,7 @@ IPv6:
 
     sudo ip6tables -L -nv
 
-Iptables has no rules by default for both IPv4 and IPv6. As a result, on a newly created Linode you will see what is shown below--three empty chains without any firewall rules. This means that all incoming, forwarded and outgoing traffic is *allowed*. It's important to limit inbound and forwarded traffic to only what's necessary.
+By default, iptables has no rules for either IPv4 and IPv6. As a result, on a newly created Linode you will see what is shown below--three empty chains without any firewall rules. This means that all incoming, forwarded and outgoing traffic is *allowed*. It's important to limit inbound and forwarded traffic to only what's necessary.
 
     Chain INPUT (policy ACCEPT 0 packets, 0 bytes)
      pkts bytes target     prot opt in     out     source               destination
@@ -354,7 +354,7 @@ Appropriate firewall rules depend on the services being run. Below are iptables 
 
 **IPv6**
 
-If you would like to supplement your web server's IPv4 rules with IPv6 too, this ruleset will allow HTTP/S access and all ICMP functions.
+If you would like to supplement your web server's IPv4 rules with IPv6 as well, this ruleset will allow HTTP/S access and all ICMP functions.
 
 {: .file}
 /tmp/v6
@@ -618,7 +618,7 @@ Use the `rules.v4` or `rules.v6` files to add, delete, or edit the rules for you
     COMMIT
     ~~~
 
-While there are rules configured in these files already, either file can be edited at any time. The syntax for altering table rules is the same as in the sections [Configuring iptables](/docs/security/firewalls/control-network-traffic-with-iptables#configuring-iptables) and [Configuring Rules for IPv6](#configuring-rules-for-ipv6).
+While there are rules configured in these files already, either file can be edited at any time. The syntax for altering table rules is the same as in the sections [Configuring iptables](#configuring-iptables) and [Configuring Rules for IPv6](#use-ip6tables-to-manage-ipv6-traffic).
 
 ### Save iptables-persistent Rules Through Reboot
 
