@@ -41,7 +41,7 @@ This guide will explain how to install the necessary software, configure your sy
 
 ## Install OATH Packages
 
-In this section, we'll review the software packages you'll need to install to set up two-factor authentication on CentOS 7. This software will generate keys on your Linode, which will then be paired with an app on a client device (often a smartphone) to generate single-use passwords (TOTPs) that expire after a set period of time.
+In this section, we'll review the software packages you'll need to install to set up two-factor authentication on CentOS 7. This software will generate keys on your Linode, which will then be paired with an app on a client device (often a smartphone) to generate single-use passwords that expire after a set period of time.
 
 To install the necessary packages enable the [EPEL](https://fedoraproject.org/wiki/EPEL) repository, which hosts the package you're looking for:
 
@@ -70,7 +70,7 @@ The following instructions will allow you to specify a user for whom you'd like 
 
         gen-oath-safe example-user totp
 
-    Replace `example-user` in the above command with the username for which you're enabling two-factor authentication. The `totp` option specifies a time-based one-time password, as opposed to counter-based password.
+    Replace `example-user` in the above command with the username for which you're enabling two-factor authentication. The `totp` option specifies a time-based one-time password, as opposed to a counter-based password.
 
 2.  A QR code will appear in your terminal, which you can scan with your mobile device to set up your password:
 
@@ -86,13 +86,13 @@ The following instructions will allow you to specify a user for whom you'd like 
 
 4.  Repeat this process for each user for whom you wish to create a unique two-factor key, or repeat the previous step, replacing the username, to use the same key for multiple users.
 
-5.  **Before you log out**, review Configure Authentication Settings (below) carefully to avoid getting locked out of your Linode.
+5.  **Before you log out**, review the Configure Authentication Settings section (below) carefully to avoid getting locked out of your Linode.
 
 Congratulations! You have finished generating your key and adding it to your client, but some additional configuration is needed before these settings will go into effect. Carefully read the following section in this guide for instructions on how to require two-factor authentication for all SSH login attempts.
 
 ## Configure Authentication Settings
 
-The TOTP authentication methods in this guide use *PAM*, or Pluggable Authentication Modules. [PAM](http://www.linux-pam.org/) is a tool that integrates low-level authentication mechanisms into modules that can be configured for different applications and services. Because you're using additional software (i.e., programs that aren't built into the Linux distro), you'll need to configure PAM to properly authenticate users.
+The TOTP authentication methods in this guide use *PAM*, or Pluggable Authentication Modules. [PAM](http://www.linux-pam.org/) integrates low-level authentication mechanisms into modules that can be configured for different applications and services. Because you're using additional software (i.e., programs that aren't built into the Linux distro), you'll need to configure PAM to properly authenticate users.
 
 {: .caution}
 > It is strongly recommended that you have another terminal session open while configuring your authentication settings. This way, if you disconnect to test authentication and something is not properly configured, you won't be locked out of your Linode. You can also use [Lish](/docs/networking/using-the-linode-shell-lish) to regain access.
@@ -108,10 +108,10 @@ The TOTP authentication methods in this guide use *PAM*, or Pluggable Authentica
         auth    include     postlogin 
         ~~~
 
-    This line specifies four criteria: the PAM OATH module as an additional method of authentication, the path for the users file, a window that specifies which passphrases will be accepted (to account for potential time syncing issues), and a passphrase length of six digits. (Reminder - delete clarifying note, #Add this line.)
+    This line specifies four criteria: the PAM OATH module as an additional method of authentication, the path for the users file, a window that specifies which passphrases will be accepted (to account for potential time syncing issues), and a verification code length of six digits.
 
     {: .note}
-    > If you follow the rest of the instructions and find that you are still unable to connect, try adding `debug=1` to the end of the PAM OATH line to provide you with more information when your authentication fails:
+    > If you follow the rest of the instructions and find that you are still unable to connect, try adding `debug=1` to the end of the `password-auth` line to provide you with more information when your authentication fails:
     >
     > {: .file-excerpt}
     > /etc/pam.d/sshd
@@ -134,7 +134,7 @@ The TOTP authentication methods in this guide use *PAM*, or Pluggable Authentica
             AuthenticationMethods keyboard-interactive
         ~~~
 
-    If you created TOTPs for multiple users and you'd like to have them all use two-factor authentication, create additional `Match User` blocks for each user, duplicating the command format shown above.
+    If you created TOTPs for multiple users and you'd like to have them all use two-factor authentication, create additional `Match User` blocks for each user, duplicating the format shown above.
 
     {: .note}
     > If you want to enforce two-factor authentication globally, you can use the `AuthenticationMethods` directive by itself, outside of a `Match User` block. However, this should not be done until two-factor credentials have been provided to all users.
@@ -171,7 +171,7 @@ This section is optional. If you'd like to use [public key authentication](/docs
         # auth       substack     password-auth
         ~~~
 
-That's it! You should now be able to log in using your SSH key as the first method of authentication and your passphrase as the second. To test your configuration, log out and try to log in again via SSH. You should be asked for your 6-digit passphrase only, since the key authentication will not produce a prompt.
+That's it! You should now be able to log in using your SSH key as the first method of authentication and your verification code as the second. To test your configuration, log out and try to log in again via SSH. You should be asked for your 6-digit verification code only, since the key authentication will not produce a prompt.
 
 {: .caution}
 > If you or a user on your system use this method, be sure that the SSH key and authenticator app are on different devices. This way, if one device is lost or compromised, your credentials will still be separate and the security of two-factor authentication will remain intact.
