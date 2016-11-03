@@ -37,9 +37,9 @@ For this example, we will configure nginx and Varnish for two Wordpress sites:
   * `www.example-over-http.com` will be an unencrypted, HTTP-only site.
   * `www.example-over-https.com` will be a separate, HTTPS-encrypted site.
 
-For HTTP traffic Varnish will listen on port 80. If content is found in cache, Varnish will serve it from cache. If not, it will pass the request to nginx on port 8080. nginx will send the requested content back to Varnish on the same port, and Varnish will store the fetched content in cache and then deliver it to the client on port 80.
+For HTTP traffic Varnish will listen on port `80`. If content is found in cache, Varnish will serve it from cache. If not, it will pass the request to nginx on port `8080`. nginx will send the requested content back to Varnish on the same port, and Varnish will store the fetched content in cache and then deliver it to the client on port `80`.
 
-For HTTPS traffic, nginx will listen on port 443 and send decrypted traffic to Varnish on port 80. If content is found in cache, Varnish will send the unencrypted content from cache back to nginx, which will encrypt it and send it to the client. If content is not found in cache Varnish will request it from backend nginx on port 8080, store it in cache and then send it unencrypted to frontend nginx which will encrypt it and send it to the client's browser.
+For HTTPS traffic, nginx will listen on port `443` and send decrypted traffic to Varnish on port `80`. If content is found in cache, Varnish will send the unencrypted content from cache back to nginx, which will encrypt it and send it to the client. If content is not found in cache Varnish will request it from backend nginx on port `8080`, store it in cache and then send it unencrypted to frontend nginx which will encrypt it and send it to the client's browser.
 
 Our setup is illustrated below. Please note that frontend nginx and backend nginx are one and the same server:
 
@@ -49,11 +49,11 @@ Our setup is illustrated below. Please note that frontend nginx and backend ngin
 
 This tutorial assumes that you have SSH access to your Linode running Debian 8 (Jessie). Before you get started, make sure you've completed the following:
 
-*   Complete the steps in our [Getting Started](https://linode.com/docs/getting-started) and [Securing your Server](https://www.linode.com/docs/security/securing-your-server) guides.
+*   Complete the steps in our [Getting Started](/docs/getting-started) and [Securing your Server](/docs/security/securing-your-server) guides.
 
-*   Follow the steps outlined in our [LEMP on Debian 8](https://www.linode.com/docs/websites/lemp/lemp-server-on-debian-8). You should skip the nginx configuration section as we'll address it later on in our tutorial.
+*   Follow the steps outlined in our [LEMP on Debian 8](/docs/websites/lemp/lemp-server-on-debian-8) guide. You should skip the nginx configuration section as we'll address it later on in this tutorial.
 
-*   Follow the steps in our [WordPress](https://www.linode.com/docs/websites/cms/how-to-install-and-configure-wordpress) guide to install and configure WordPress.
+*   Follow the steps in our [WordPress](/docs/websites/cms/how-to-install-and-configure-wordpress) guide to install and configure WordPress.
 
 ## Install and Configure Varnish
 
@@ -62,7 +62,7 @@ This tutorial assumes that you have SSH access to your Linode running Debian 8 (
         sudo apt-get update
         sudo apt-get install varnish
 
-2.  Use 'nano' or other text editor to edit the `/etc/default/varnish` file:
+2.  Use 'nano' or other text editor to sudo apt-get install varnish:
 
         sudo nano /etc/default/varnish
 
@@ -83,7 +83,7 @@ This tutorial assumes that you have SSH access to your Linode running Debian 8 (
                     -s malloc,500M"
         ~~~
 
-    This will set Varnish to listen on port 80, and will instruct it to use the `custom.vcl` configuration file. If you make the configuration changes in the `default.vcl` file, a future update to Varnish may overwrite it. Save and exit the file.
+    This will set Varnish to listen on port `80`, and will instruct it to use the `custom.vcl` configuration file. If you make the configuration changes in the `default.vcl` file, a future update to Varnish may overwrite it. Save and exit the file.
 
     The `-s malloc,500M` line sets the maximum amount of RAM that will be used by Varnish to store content. This value can be adjusted to suit your needs, taking into account the server's total RAM along with the size and expected traffic of your website. For example, on a system with 4 GB of RAM , you can allocate 1 or 2 or 3 GB to Varnish but obviously not all the system's RAM. To allocate 1 GB you should write: `-s malloc,1G`.
 
@@ -100,7 +100,7 @@ This tutorial assumes that you have SSH access to your Linode running Debian 8 (
         vcl 4.0;
         ~~~
 
-7.  Set the backend (which is nginx) to listen on port 8080, by editing the `backend default` directive as follows:
+7.  Set the backend (which is nginx) to listen on port `8080`, by editing the `backend default` directive as follows:
 
     {: .file-excerpt }
     /etc/varnish/custom.vcl
@@ -593,7 +593,7 @@ Before configuring nginx we have to install PHP-FPM. FPM is short for FastCGI Pr
         ~~~
 
 
-    Please note that for an SSL website we need a server block to receive traffic on port 443 and pass decrypted traffic to Varnish on port 80, and also a second server block to serve unencrypted traffic to Varnish on port 8080, whenever Varnish asks for it. Also note that the SSL directives are included in both blocks.
+    Please note that for an SSL website we need a server block to receive traffic on port 443 and pass decrypted traffic to Varnish on port `80`, and also a second server block to serve unencrypted traffic to Varnish on port `8080`, whenever Varnish asks for it. Also note that the SSL directives are included in both blocks.
 
     The `ssl_certificate` directive must specify the location and name of the SSL certificate file. Take a look at our guide to using [SSL on nginx](https://www.linode.com/docs/security/ssl/provide-encrypted-resource-access-using-ssl-certificates-on-nginx) for more information.
 
