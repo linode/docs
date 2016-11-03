@@ -62,13 +62,13 @@ This tutorial assumes that you have SSH access to your Linode running Debian 8 (
         sudo apt-get update
         sudo apt-get install varnish
 
-2.  Use 'nano' or other text editor to sudo apt-get install varnish:
+2.  Open `/etc/default/varnish` with sudo rights. To make sure Varnish starts at boot, under `Should we start varnishd at boot?` make sure the `START` parameter is set to `yes`:
 
-        sudo nano /etc/default/varnish
-
-3.  To make Varnish start at boot, under `Should we start varnishd at boot?` set the `START` parameter to `yes`:
-
+    {: .file-excerpt }
+    /etc/default/varnish
+    :   ~~~ conf
         START=yes
+        ~~~
 
 4. In the `Alternative 2` section, make the following changes to the `DAEMON_OPTS` section:
 
