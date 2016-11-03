@@ -34,19 +34,19 @@ contributor:
 
 ## Configure OpenVPN Access Server for Tunneling
 
-To configure OpenVPN for tunneling, you'll first need to log in to the Access Server Admin UI, and navigate to the **VPN Settings** page.
+To configure OpenVPN for tunneling, you'll first need to log in to the Access Server Admin UI and navigate to the **VPN Settings** page.
 
 1. In the **Routing** section, ensure that the option "Should client Internet traffic be routed through the VPN?" is set to **Yes**.
 
     ![OpenVPN Access Server Internet Routing.](/docs/assets/openvpn-access-server-routing.png)
 
-    The option "Should VPN clients have access to private subnets (non-public networks on the server side)?" can be set to **No**, since we are using the VPN to mask internet traffic. If you wish to give VPN users access to services listening on your Linode's local network, set this option to **Yes, using NAT**.
+    The option "Should VPN clients have access to private subnets (non-public networks on the server side)?" can be set to **No**, since you are using the VPN to mask internet traffic. If you wish to give VPN users access to services listening on your Linode's local network, set this option to **Yes, using NAT**.
 
 2. To avoid [DNS leaking](https://www.dnsleaktest.com/what-is-a-dns-leak.html), modify the DNS resolver settings. Under **DNS Settings**, select **Have clients use the same DNS servers as the Access Server host**.
 
     ![OpenVPN Access Server DNS Settings.](/docs/assets/openvpn-access-server-dns.png)
 
-    Alternatively, you can manually set the DNS resolvers that will be used by your VPN client machines, under **Have clients use these DNS servers**. This will require that you add both a primary and secondary server. Some popular public DNS servers:
+    Alternatively, you can manually set the DNS resolvers that will be used by your VPN client machines, under **Have clients use these DNS servers**. This will require that you add both a primary and secondary server. Some popular public DNS servers to consider include:
 
     * Open DNS (primary: 208.67.222.222, secondary: 208.67.222.220)
     * Google Public DNS (primary: 8.8.8.8, secondary: 8.8.4.4)
@@ -55,24 +55,24 @@ To configure OpenVPN for tunneling, you'll first need to log in to the Access Se
 
 ## Enable IP Forwarding
 
-IP Forwarding is necessary if you wish to connect additional private network devices behind your client machine, and have their traffic forwarded through the VPN. IP forwarding can be enabled by running these commands on your Linode, in order:
+To connect additional private network devices behind your client machine and have their traffic forwarded through the VPN, you must first enable IP Forwarding. IP forwarding can be enabled by running these commands on your Linode, in order:
 
     echo 'net.ipv4.ip_forward=1' | sudo tee -a /etc/sysctl.d/99-sysctl.conf
     sudo sysctl -p
 
-The first command enables forwarding over IPv4 in your system configuration, and the second command applies this change.
+The first command enables traffic forwarding over IPv4 in your system configuration. The second command applies the change.
 
-Once forwarding is enabled, restart OpenVPN by hitting the **Stop the Server** and **Start the Server** buttons under the **Status Overview** section in the Access Server Admin UI:
+Once forwarding is enabled, restart OpenVPN by clicking on the **Stop the Server**, then **Start the Server** buttons under the **Status Overview** section in the Access Server Admin UI:
 
 [![OpenVPN Access Server Restart](/docs/assets/openvpn-access-server-restart-resize.png)](/docs/assets/openvpn-access-server-restart.png)
 
 ### Disable IPv6
 
-As OpenVPN does not support transfer over IPv4 and IPv6 simultaneously, you should follow our steps for [disabling IPv6](/docs/networking/vpn/set-up-a-hardened-openvpn-server#disable-ipv6) unless you have a specific reason not to do so.
+Because OpenVPN does not support transfer over IPv4 and IPv6 simultaneously, you should follow our steps for [disabling IPv6](/docs/networking/vpn/set-up-a-hardened-openvpn-server#disable-ipv6), unless you have a specific reason not to do so.
 
 ## Test and Troubleshoot
 
-Once you've [connected your client](/docs/networking/vpn/openvpn-access-server#client-software-installation), you can use a website such as [WhatIsMyIP.com](http://www.whatismyip.com/) to confirm that your traffic is routing through the VPN server's address. You can also use [DNSLeakTest.com](https://www.dnsleaktest.com/) to ensure that your VPN connection is using the resolvers specified by your OpenVPN server, to prevent leaking of your actual location via your ISP's resolvers.
+Once you've [connected your client](/docs/networking/vpn/openvpn-access-server#client-software-installation), you can use a website such as [WhatIsMyIP.com](http://www.whatismyip.com/) to confirm that your traffic is routing through the VPN server's address. You can also use [DNSLeakTest.com](https://www.dnsleaktest.com/) to ensure that your VPN connection is using the resolvers specified by your OpenVPN server to prevent leaking of your actual location via your ISP's resolvers.
 
 ### Compression
 
@@ -80,6 +80,6 @@ If you are connected to the VPN, but unable to browse the Internet, check the Op
 
 	2016-03-28 16:59:05+0800 [-] OVPN 11 OUT: 'Mon Mar 28 08:59:05 2016 guest/123.45.67.89:55385 Bad compression stub decompression header byte: 251'
 
-This is likely an issue related to client compression. To resolve this, disable support for client compression from **Advanced VPN** section in the Admin UI, by unchecking **Support compression on client VPN connections**:
+This is likely an issue related to client compression. To resolve this, disable support for client compression from the **Advanced VPN** section in the Admin UI, by unchecking **Support compression on client VPN connections**:
 
 ![OpenVPN Access Server Compression](/docs/assets/openvpn-access-compression.png)
