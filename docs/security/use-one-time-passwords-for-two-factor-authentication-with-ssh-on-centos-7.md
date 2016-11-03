@@ -58,8 +58,8 @@ CentOS 7 uses several [OATH](https://en.wikipedia.org/wiki/Initiative_For_Open_A
 
 Now that the packages have been installed, you'll use them to generate keys. Software on client devices use these keys to generate TOTPs. To understand the difference between these passwords and the ones you already use, let's break down the TOTP concept:
 
--   **Time-based** - The generated password will change every 30-60 seconds. This means that should an attacker try a brute force assault, time will run out before new credentials are needed to gain access.
--   **One-time** - The password will be valid for a single authentication only, thus minimizing replay attack risk. Even if your TOTP is intercepted upon sending it to the server, it will no longer be valid after you've logged in.
+-   **Time-based** - The generated password will change every 30-60 seconds. This means that if an attacker tries to use brute force, they'll almost certainly run out of time before new credentials are needed to gain access.
+-   **One-time** - The password will be valid for a single authentication only, thus minimizing the risk of a replay attack. Even if your TOTP is intercepted upon sending it to the server, it will no longer be valid after you've logged in.
 
 The following instructions will allow you to specify a user for whom you'd like to generate a password. If you are configuring two-factor authentication for multiple users, follow these steps for each user.
 
