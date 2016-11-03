@@ -129,9 +129,8 @@ Because Magento is a PHP application, we'll need to make some adjustments to our
     {: .file-excerpt}
     /etc/php/7.0/apache2/php.ini AND /etc/php/7.0/cli/php.ini
     :   ~~~  ini
-        date.timezone = America/New_York
-
         memory_limit = 2G
+        date.timezone = America/New_York
         ~~~
 
     It is necessary to modify **both** files. This sets the time zone for PHP's `date()` function and imposes a 2GB limit to the amount of memory PHP can use. This value is recommended for a 4GB Linode, but could be increased for a larger server.
@@ -241,6 +240,10 @@ In this section, we'll explain how to get the Magento Community Edition (CE) sof
 
 Congratulations, you've successfully installed Magento on your Linode! You can log into your admin panel by entering your domain, followed by the "Magento Admin URI" displayed above, in a web browser. The **admin-user** and **admin-password** options you specified when running the installation script will be your credentials. 
 
+4.  Exit from the `magento` user:
+
+        exit
+
 ## Configure Magento
 
 The dashboard will be functional at this point, but there is still some work to be done before the site is ready to use. In this section, we'll explain how to set up cron jobs and secure the Magento software to be suitable for a live e-commerce site.
@@ -268,8 +271,6 @@ Magento relies on [cron](/docs/tools-reference/tools/schedule-tasks-with-cron) t
     When you're done, be sure to save the file.
 
 4.  To verify that the rules have been set properly, log out of your Magento admin and log back in. If everything has been configured correctly, you should no longer see the notification.
-
-
 
 For more information about setting up cron jobs for development servers and custom Magento modules, refer to the [Magento Cron Documentation](http://devdocs.magento.com/guides/v2.1/config-guide/cli/config-cli-subcommands-cron.html#config-cli-cron-bkg).
 
