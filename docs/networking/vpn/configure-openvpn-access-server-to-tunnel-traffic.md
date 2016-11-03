@@ -5,10 +5,10 @@ author:
 description: 'Easily tunnel web traffic through OpenVPN Access Server'
 keywords: 'openvpn,networking,vpn,tunnel'
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
-modified: Tuesday, October 4th, 2016
+modified: Thursday, November 3rd, 2016
 modified_by:
   name: Nick Brewer
-published: 'Tuesday, October 4th, 2016'
+published: 'Thursday, November 3, 2016'
 title: 'How to Configure OpenVPN Access Server to Tunnel Traffic'
 contributor:
   name: Neal Sebastian
