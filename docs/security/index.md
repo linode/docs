@@ -15,4 +15,4 @@ featured:
  - use-one-time-passwords-for-two-factor-authentication-with-ssh-on-centos-7.md
 ---
 
-Security is one of the most important concerns that face server administrators. These guides will help you firm your system's security and address topics that include: configuring a firewall, creating and administering SSL certificates for transport layer security, offering secured SFTP user access to your Linode, or blocking malicious probes.
+Security is one of the most important concerns that server administrators face. These guides will help you harden your system's security, addressing topics that include: configuring a firewall, creating and administering SSL certificates for transport layer security, offering secured SFTP user access to your Linode, and blocking malicious probes.
