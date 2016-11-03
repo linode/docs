@@ -5,7 +5,7 @@ featured:
  - set-up-a-hardened-openvpn-server.md
  - tunnel-your-internet-traffic-through-an-openvpn-server.md
  - openvpn-access-server.md
- - tunnel-internet-traffic-with-openvpn-access-server.md
+ - configure-openvpn-access-server-to-tunnel-traffic.md
  - configuring-openvpn-client-devices.md
  - openvpn-access-server.md
  - pritunl-vpn-ubuntu.md
