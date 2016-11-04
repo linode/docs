@@ -18,6 +18,8 @@ external_resources:
 
 In this guide, you'll learn to how to install WordPress on a Linode running Ubuntu 16.04. WordPress is a popular, dynamic content management system focused on blogs. WordPress can be deployed on a LAMP or LEMP stack, and features an extensive plugin framework and theme system that allows site owners and developers to use its simple, yet powerful publishing tools.
 
+![Install WordPress on Ubuntu 16.04](/docs/assets/wordpress-ubuntu-16-04-title.png "Install WordPress on Ubuntu 16.04")
+
 {: .note}
 >
 >This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
