@@ -17,7 +17,7 @@ external_resources:
 ---
 
 {: .caution}
-> This guide has been split into two guides, for [Debian & Ubuntu](/docs/security/ssl/creating-a-selfsigned-certificate-debian-ubuntu) and [CentOS & Fedora](/docs/security/ssl/creating-a-selfsigned-certificate-centos-fedora).
+> This guide has been split into two guides, for [Debian & Ubuntu](/docs/security/ssl/create-a-self-signed-certificate-on-debian-and-ubuntu) and [CentOS & Fedora](/docs/security/ssl/create-a-self-signed-certificate-on-centos-and-fedora).
 
 This guide explains the creation of a self-signed SSL certificate, suitable for personal use or for applications used internally in an organization. The end product may be used with SSL-capable software such as web servers, email servers, or other server systems. We assume that you've followed the steps outlined in our [getting started guide](/docs/getting-started/), and that you're logged into your Linode as root via a shell session.
 
