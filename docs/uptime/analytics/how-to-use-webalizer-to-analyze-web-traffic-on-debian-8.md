@@ -2,7 +2,7 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This tutorial explains how to configure Webalizer to process Nginx logs on Debian 8. Webalizer is a popular web traffic analysis tool that has the advantage of being lightweight yet powerful, so it is capable to deliver in-depth analysis without using any significant amount of resources.'
+description: 'This tutorial explains how to configure Webalizer to process Nginx logs on Debian 8. Webalizer is a popular web traffic analysis tool that has the advantage of being lightweight yet powerful, so that it's capable to deliver in-depth analysis without using any significant amount of resources.'
 keywords: 'Webalizer, traffic analysis, access log, Nginx, reports'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 published: 'Weekday, Month 00th, 2016'
@@ -25,7 +25,7 @@ contributor:
 
 ## Introduction
 
-Webalizer is a very popular web log analysis tool. It uses web server logs to generate detailed reports about the total number of visits to a website, unique visitors, visited pages, browsers used, visitors' countries, amount of downloaded data, etc. Results are presented as tables and charts and are organized by different time frames, such as by month, day or hour. 
+Webalizer is a very popular log analysis tool. It uses web server logs to generate detailed reports about the total number of visits to a website, unique visitors, visited pages, browsers used, visitors' countries, amount of downloaded data, search terms used to find the website, etc. Results are presented as tables and charts and are organized by different time frames, such as by month, day or hour. 
 
 There are alternative tools for web traffic analysis that involve the insertion of some 3rd party *java script* code into the web pages, but apart from the privacy issue, these methods lead to increased web page complexity and can in some cases slow down a website. When properly configured, Webalizer has no negative impact on the site performance since it doesn't directly interact with it or with the web server; instead it analyzes server logs at specific moments, when the server is less busy.
 
@@ -291,44 +291,51 @@ The first thing you want to do is to set usernames and passwords for http authen
 
 		sudo nano /etc/nginx/sites-enabled/default
 
-	This file will contain the server blocks for all the websites served by Nginx. The server block for `www.example1.com` should look similar to this:
+	This file will contain the server blocks for all the websites served by Nginx. The server blocks for `www.example1.com` should look similar to this:
 
 	{: .file-excerpt }
 	/etc/nginx/sites-enabled/default
 	:   ~~~ nginx
 	
 		server {
-				listen 80;
-				listen [::]:80;
-				server_name www.example1.com;
+		   listen  80;
+		   listen  [::]:80;
+		   server_name  example1.com;
+		   return       301 http://www.example1.com$request_uri;
+		   }
+		
+		server {
+		   listen 80;
+		   listen [::]:80;
+		   server_name www.example1.com;
 				
-				root /var/www/example1.com;
-				port_in_redirect off;
-				index index.php;
+		   root /var/www/example1.com;
+		   port_in_redirect off;
+		   index index.php;
 				
-				location / {
-						try_files $uri $uri/ /index.php?$args;
-				}
-				
-				location ~ \.php$ {
-				  try_files $uri =404;
-				  fastcgi_split_path_info ^(.+\.php)(/.+)$;
-				  include fastcgi_params;
-				  fastcgi_index index.php;
-				  fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-				  fastcgi_pass unix:/var/run/php5-fpm.sock;
-				}
-				
-				access_log  /var/log/sites/example1.com/logs/access.log;
-				error_log  /var/log/nginx/example1.com.error.log notice;
-				
-				location /up-webalizer {
-					auth_basic "Restricted";
-					auth_basic_user_file /etc/nginx/httppass/passwd1;
-					alias /var/log/sites/example1.com/webalizer/;
-					index index.html;
-				  }        
-		}
+		   location / {
+		       try_files $uri $uri/ /index.php?$args;
+		       }
+		
+		   location ~ \.php$ {
+		       try_files $uri =404;
+		       fastcgi_split_path_info ^(.+\.php)(/.+)$;
+		       include fastcgi_params;
+		       fastcgi_index index.php;
+		       fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+		       fastcgi_pass unix:/var/run/php5-fpm.sock;
+		       }
+		
+		   access_log  /var/log/sites/example1.com/logs/access.log;
+		   error_log  /var/log/nginx/example1.com.error.log notice;
+		
+		   location /up-webalizer {
+		       auth_basic "Restricted";
+		       auth_basic_user_file /etc/nginx/httppass/passwd1;
+		       alias /var/log/sites/example1.com/webalizer/;
+		       index index.html;
+		       }        
+		   }
 		~~~
 
 	Please note the `access_log` and the `error_log` directives that specify the name and location of the respective log files. Also note the `location /up-webalizer` section that tells Nginx to serve the Webalizer reports on the `up-webalizer` subdirectory of the current website, which is an alias of the Webalizer output directory. The `auth_basic` directive denies access to this directory to users not having their username and password stored in the `passwd1` file. 
@@ -509,4 +516,4 @@ Webalizer calls 'total unique visitors' 'Total Unique Sites'. It is also worth m
 
 No web server is complete without a traffic analysis tool. Such an application allows a website owner to evaluate the popularity of a website, to understand how visitors reach the site and to articulate strategies for future improvement both at the level of content and site structure.
 
-Webalizer has the advantage of being lightweight yet powerful, so it is capable to deliver in-depth analysis without using any significant amount of resources.
+Webalizer has the advantage of being lightweight yet powerful, so that it's capable to deliver in-depth analysis without using any significant amount of resources.
