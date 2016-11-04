@@ -53,8 +53,8 @@ Although we are using the Google Authenticator package, the keys it generates ar
 
 Now that you've installed the package, you'll use it to generate keys. These keys are then used by software on client devices to generate time-based one-time passwords (TOTPs). To understand the difference between these passwords and the ones you already use, let's break down the concept of a TOTP:
 
--   **Time-based** - The generated password will change every 30-60 seconds. This means that should an attacker try a brute force assault, time will run out before new credentials are needed to gain access.
--   **One-time** - The password will only be valid for a single authentication only, thus minimizing replay attack risk. Even if your TOTP is intercepted upon sending it to the server, it will no longer be valid after you've logged in.
+-   **Time-based** - The generated password will change every 30-60 seconds. This means that if an attacker tries to use brute force, they'll almost certainly run out of time before new credentials are needed to gain access.
+-   **One-time** - The password will be valid for a single authentication only, thus minimizing the risk of a replay attack. Even if your TOTP is intercepted upon sending it to the server, it will no longer be valid after you've logged in.
 
 The following instructions will generate a password for the user running the commands. If you are configuring two-factor authentication for multiple users, perform these steps for each user.
 
@@ -93,7 +93,7 @@ The following instructions will generate a password for the user running the com
         possible time-skew between the client and the server, we allow an extra
         token before and after the current time. If you experience problems with poor
         time synchronization, you can increase the window from its default
-        size of 1:30 min to about 4 min. Do you want to do so (y/n)
+        size of 1:30min to about 4min. Do you want to do so (y/n)
 
     This setting accounts for time syncing issues across devices. Unless you have reason to believe that your phone or device may not sync properly, answer `n`.
 
@@ -110,7 +110,7 @@ Congratulations! You have finished generating your key and adding it to your cli
 
 ## Configure Authentication Settings
 
-The TOTP authentication methods in this guide use *PAM*, or Pluggable Authentication Modules. [PAM](http://www.linux-pam.org/) is a tool that integrates low-level authentication mechanisms into modules that can be configured for different applications and services. Because you're using additional software (i.e., programs that aren't built into the Linux distro), you'll need to configure PAM to properly authenticate users.
+The TOTP authentication methods in this guide use *PAM*, or Pluggable Authentication Modules. [PAM](http://www.linux-pam.org/) integrates low-level authentication mechanisms into modules that can be configured for different applications and services. Because you're using additional software (i.e., programs that aren't built into the Linux distro), you'll need to configure PAM to properly authenticate users.
 
 {: .caution}
 > It is strongly recommended that you have another terminal session open while configuring your authentication settings. This way, if you disconnect to test authentication and something is not properly configured, you won't be locked out of your Linode. You can also use [Lish](/docs/networking/using-the-linode-shell-lish) to regain access.
@@ -168,7 +168,7 @@ This section is optional. If you'd like to use [public key authentication](/docs
             AuthenticationMethods publickey,keyboard-interactive
         ~~~
 
-    Configure this setting in the `AuthenticationMethods` directive for each user as appropriate. When any of these users log in, they will not only need to provide their SSH key and they will be authenticated via TOTP, as well. Be sure to restart your SSH daemon to apply these changes.
+    Configure this setting in the `AuthenticationMethods` directive for each user as appropriate. When any of these users log in, they will need to provide their SSH key and they will be authenticated via TOTP, as well. Be sure to restart your SSH daemon to apply these changes.
 
 2.  Next, you'll need to make changes to your PAM configuration. Comment out or omit the following lines in your `/etc/pam.d/sshd` file:
 
@@ -180,7 +180,7 @@ This section is optional. If you'd like to use [public key authentication](/docs
         # auth    required      pam_unix.so     no_warn try_first_pass
         ~~~
 
-That's it! You should now be able to log in using your SSH key as the first method of authentication and your passphrase as the second. To test your configuration, log out and try to log in again via SSH. You should be asked for your 6-digit passphrase only, since the key authentication will not produce a prompt.
+That's it! You should now be able to log in using your SSH key as the first method of authentication and your verification code as the second. To test your configuration, log out and try to log in again via SSH. You should be asked for your 6-digit verification code only, since the key authentication will not produce a prompt.
 
 {: .caution}
 > If you or a user on your system use this method, be sure that the SSH key and authenticator app are on different devices. This way, if one device is lost or compromised, your credentials will still be separate and the security of two-factor authentication will remain intact.
