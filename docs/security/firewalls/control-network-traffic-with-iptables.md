@@ -118,23 +118,23 @@ Inserted rules need to be placed in the correct order with respect other rules i
 
     sudo iptables -L -nv --line-numbers
 
-For example, let's say we want to insert a rule to the [basic ruleset](#basic-iptables-rulesets-for-ipv4-and-ipv6) provided in this guide, to accept incoming connections to port 8080 over the TCP protocol. We'll add it as rule 9 to the INPUT chain, following the web traffic rules:
+For example, let's say we want to insert a rule to the [basic ruleset](#basic-iptables-rulesets-for-ipv4-and-ipv6) provided in this guide, to accept incoming connections to port 8080 over the TCP protocol. We'll add it as rule 7 to the INPUT chain, following the web traffic rules:
 
-    sudo iptables -I INPUT 9 -p tcp --dport 8080 -j ACCEPT
+    sudo iptables -I INPUT 7 -p tcp --dport 8080 -m state --state NEW -j ACCEPT
 
 If you now run `sudo iptables -L -nv` again, you'll see the new rule in the output:
 
 **Replace**
 
-Replacing a rule is similar to inserting but instead uses `iptables -R`. For example, let's say you want to reduce the logging of denied entires to only 3 per minute, down from 5 in the original ruleset. The LOG rule is the 11th in the INPUT chain:
+Replacing a rule is similar to inserting but instead uses `iptables -R`. For example, let's say you want to reduce the logging of denied entires to only 3 per minute, down from 5 in the original ruleset. The LOG rule is the 9th in the INPUT chain:
 
-    sudo iptables -R INPUT 11 -m limit --limit 3/min -j LOG --log-prefix "iptables_INPUT_denied: " --log-level 7
+    sudo iptables -R INPUT 9 -m limit --limit 3/min -j LOG --log-prefix "iptables_INPUT_denied: " --log-level 7
 
 **Delete**
 
-Deleting a rule is also done using the rule number. For example, to delete the rule we just inserted for Linode Longview:
+Deleting a rule is also done using the rule number. For example, to delete the rule we just inserted for port 8080:
 
-    sudo iptables -D INPUT 9
+    sudo iptables -D INPUT 7
 
 {: .caution }
 >
@@ -417,28 +417,6 @@ UFW is the iptables controller included with Ubuntu but is also available in Deb
 
 ### CentOS / Fedora
 
-**CentOS 6 or Fedora 19 and below**
-
-1.  Create the files `/tmp/v4` and `/tmp/v6`. Paste the [rulesets above](#basic-iptables-rulesets-for-ipv4-and-ipv6) into their respective files.
-
-2.  Import the rules from the temporary files:
-
-        sudo iptables-restore < /tmp/v4
-        sudo ip6tables-restore < /tmp/v6
-
-3.  Save the rules:
-
-        sudo service iptables save
-        sudo service ip6tables save
-
-    {: .note }
-    >
-    >Firewall rules are saved to `/etc/sysconfig/iptables` and `/etc/sysconfig/ip6tables`.
-
-4.  Remove the temporary rule files:
-
-        sudo rm /tmp/{v4,v6}
-
 **CentOS 7 or Fedora 20 and above**
 
 In these distros, FirewallD is used to implement firewall rules instead of controlling iptables directly. If you would prefer to use it over iptables, see our guide: [Introduction to FirewallD on CentOS](/docs/security/firewalls/introduction-to-firewalld-on-centos).
@@ -468,6 +446,29 @@ In these distros, FirewallD is used to implement firewall rules instead of contr
 6.  Remove the temporary rule files:
 
         sudo rm /tmp/{v4,v6}
+
+**CentOS 6**
+
+1.  Create the files `/tmp/v4` and `/tmp/v6`. Paste the [rulesets above](#basic-iptables-rulesets-for-ipv4-and-ipv6) into their respective files.
+
+2.  Import the rules from the temporary files:
+
+        sudo iptables-restore < /tmp/v4
+        sudo ip6tables-restore < /tmp/v6
+
+3.  Save the rules:
+
+        sudo service iptables save
+        sudo service ip6tables save
+
+    {: .note }
+    >
+    >Firewall rules are saved to `/etc/sysconfig/iptables` and `/etc/sysconfig/ip6tables`.
+
+4.  Remove the temporary rule files:
+
+        sudo rm /tmp/{v4,v6}
+
 
 ### Arch Linux
 
