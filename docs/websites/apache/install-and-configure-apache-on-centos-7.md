@@ -104,7 +104,7 @@ You can choose many ways to set up a virtual host. In this section we recommend 
 
         sudo mkdir -p /var/www/html/example.com/{public_html,logs}
 
-3.  Enable Apache to start at boot, and restart the service for the above changes to take place:
+3.  Enable Apache to start at boot, and restart the service for the above changes to take effect:
 
         sudo systemctl enable httpd.service
         sudo systemctl restart httpd.service
@@ -112,6 +112,13 @@ You can choose many ways to set up a virtual host. In this section we recommend 
     You can now visit your domain to test the Apache server. A default Apache page will be visible if no index page is found in your Document Root as declared in `/etc/httpd/conf/httpd.conf`:
 
     ![Apache on CentOS 7 Welcome Screen](/docs/assets/centos7-apache-welcome.png "Welcome to Apache on CentOS 7")
+
+## Configure firewalld to Allow Web Traffic
+
+CentOS 7's built-in firewall is set to block web traffic by default. Run the following commands to allow web traffic:
+
+    sudo firewall-cmd --add-service=http --permanent && sudo firewall-cmd --add-service=https --permanent 
+    sudo systemctl restart firewalld
 
 ## Next Steps: Add SSL for Security and Install GlusterFS for High Availability
 
