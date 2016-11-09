@@ -10,6 +10,7 @@ modified_by:
   name: Linode
 published: 'Wednesday, November 2nd, 2016'
 title: Full Disk Encryption
+image: https://linode.com/docs/assets/full_disk_encryption.png
 ---
 
 Full disk encryption protects the information stored on your Linode's disks by converting it into unreadable code that can only be deciphered with a unique password. Nearly everything on the disk is encrypted, including the swap space and temporary files. This guide will show you how to deploy a Linux distribution with [LUKS](https://en.wikipedia.org/wiki/Linux_Unified_Key_Setup) filesystem encryption. While this demonstration will use Debian 8 (Jessie), the process should be similar for any Linux distribution, provided that the respective distro's installer includes a LUKS encryption option.
