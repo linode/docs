@@ -14,6 +14,8 @@ title: How to Configure a Firewall with UFW
 
 UFW, or *uncomplicated firewall*, is a frontend for managing firewall rules Arch Linux, Debian or Ubuntu. UFW is used through the command line (although it has GUIs available), and aims to make firewall configuration easy (or, uncomplicated).
 
+![How to Configure a Firewall with UFW](/docs/assets/ufw_tg.png "How to Configure a Firewall with UFW")
+
 ## Before You Begin
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
