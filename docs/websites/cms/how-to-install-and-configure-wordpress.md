@@ -19,6 +19,8 @@ external_resources:
 
 WordPress is a popular, dynamic, blog-focused content management system. The software is built upon a LAMP or LEMP stack and features an extensive plugin framework and theme system, which allows site owners and developers to deploy easy-to-use and powerful publishing tools.
 
+If you're using Ubuntu 16.04, please use our guide on how to [Install Wordpress on Ubuntu 16.04](/docs/websites/cms/install-wordpress-on-ubuntu-16-04).
+
 {: .note}
 >
 >This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
