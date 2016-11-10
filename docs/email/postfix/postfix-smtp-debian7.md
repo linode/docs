@@ -13,6 +13,7 @@ modified_by:
   name: Linode
 published: 'Friday, May 30th, 2014'
 title: Configure Postfix to Send Mail Using an External SMTP Server
+link: https://linode.com/docs/assets/external_smtp_tg.png
 ---
 
 *This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
