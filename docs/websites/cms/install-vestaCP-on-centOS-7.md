@@ -74,7 +74,7 @@ Click on `Advanced` and then `Proceed to your-server-ip`
 
 2.Next you will see the VestaCP login page (here enter the `username` and `password` VestaCP installation gave you after finishing and press `Login` button. )
 		
-[![VestaCP Login.](/docs/assets/vesta-ssl-warning.bmp)](/docs/assets/vesta-ssl-warning.bmp)
+[![VestaCP Login.](/docs/assets/vesta-login.bmp)](/docs/assets/vesta-login.bmp)
 
 3.You are now logged in.
 
