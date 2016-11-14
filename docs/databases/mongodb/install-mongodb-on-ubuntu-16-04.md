@@ -2,24 +2,23 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Install MongoDB for use in application development on Ubuntu 16.04 (Xenial).'
+description: 'Install MongoDB for document-oriented data storage on Ubuntu 16.04 (Xenial).'
 keywords: 'nosql,database,mongodb,key store,ubuntu,mongodb tutorial'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Monday, November 7th, 2016
+modified: Monday, November 14th, 2016
 modified_by:
   name: Phil Zona
 published: 'Friday, May 20th, 2016'
 title: 'Install MongoDB on Ubuntu 16.04 (Xenial)'
 external_resources:
- - '[Official MongoDB Documentation](https://docs.mongodb.org/v2.6/)'
+ - '[Official MongoDB Documentation](https://docs.mongodb.org/v3.2/)'
  - '[MongoDB Project](http://www.mongodb.org/)'
- - '[MongoDB Documentation](http://docs.mongodb.org/v2.6/)'
  - '[Language-Specific MongoDB Drivers](http://docs.mongodb.org/ecosystem/drivers/)'
 ---
 
 MongoDB is a database engine that provides access to non-relational, document-oriented databases. It is part of the growing [NoSQL](https://en.wikipedia.org/wiki/NoSQL) movement, along with databases like Redis and Cassandra (although there are many difference among the many non-relational databases).
 
-MongoDB seeks to provide an alternative to traditional relational database management systems (RDBMS). In addition to its schema-free design and scalable architecture, MongoDB provides a JSON output and specialized language-specific bindings that make it particularly attractive for use in custom application development. MongoDB has been used in a number of large scale [production deployments](https://www.mongodb.org/community/deployments) and is currently one of the most popular database engines across all systems.
+MongoDB seeks to provide an alternative to traditional relational database management systems (RDBMS). In addition to its schema-free design and scalable architecture, MongoDB provides a JSON output and specialized language-specific bindings that make it particularly attractive for use in custom application development and rapid prototyping. MongoDB has been used in a number of large scale [production deployments](https://www.mongodb.org/community/deployments) and is currently one of the most popular database engines across all systems.
 
 In this guide, we'll explain how to install MongoDB on Ubuntu 16.04, and provide a short tutorial on some basic features and functions.
 
@@ -28,8 +27,6 @@ In this guide, we'll explain how to install MongoDB on Ubuntu 16.04, and provide
 - Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
 - Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
-
-- MongoDB requires at least 3.4GB of free disk space for its journal files. To account for this and other MongoDB files, make sure you have at least 4GB  of free disk space before using this guide. If you plan on building a large database, you will need to increase this as your dataset grows.
 
 - Update your system:
 
@@ -151,7 +148,7 @@ If you enabled authentication in the [Configure MongoDB](#configure-mongodb) sec
 
 7.  Create a new, non-administrative user to enter test data. Change both `example-user` and `password` to something relevant and secure:
        
-        db.createUser({user: "example-user", pwd: "password", roles:[{role: "read", db: "user-data"}, {role:"readWrite", db: "example-db"}]})
+        db.createUser({user: "example-user", pwd: "password", roles:[{role: "read", db: "user-data"}, {role:"readWrite", db: "exampleDB"}]})
 
     To create additional users, repeat Steps 6 and 7 as the administrative user, creating new usernames, passwords and roles by substituing the appropriate values.
 
@@ -202,7 +199,7 @@ Much of MongoDB's popularity comes from its ease of integration. Interactions wi
 
         WriteResult({ "nInserted" : 1 })
 
-6.  Confirm that the `example` collection was properly created:
+6.  Confirm that the `exampleCollection` collection was properly created:
 
         show collections
 
@@ -210,7 +207,7 @@ Much of MongoDB's popularity comes from its ease of integration. Interactions wi
 
         exampleCollection
 
-7.  View all data in the `exampleCollection` collection using the `find` method. This method can also be used to search for a specific field by entering a search term parameter rather than leaving it empty:
+7.  View unfiltered data in the `exampleCollection` collection using the `find` method. This returns up to the first 20 documents in a collection, if a query is not passed:
 
         db.exampleCollection.find()
 
@@ -220,6 +217,12 @@ Much of MongoDB's popularity comes from its ease of integration. Interactions wi
         { "_id" : ObjectId("571a3e8707d0fcd78baef090"), "age" : 30 }
 
     You may notice the objects we entered are preceded by `_id` keys and `ObjectId` values. These are unique indexes generated by MongoDB when an `_id` value is not explicitly defined. `ObjectId` values can be used as primary keys when entering queries, although for ease of use, you may wish to create your own index as you would with any other database system.
+
+    The `find` method can also be used to search for a specific document or field by entering a search term parameter (in the form of an object) rather than leaving it empty. For example:
+
+        db.exampleCollection.find({"name" : "John Doe"})
+
+    Running the above command returns a list of documents containing the `{"name" : "John Doe"}` object.
 
 ## Additional MongoDB Functionality
 
