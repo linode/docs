@@ -28,7 +28,7 @@ Because of the resources needed by some Magento plugins, it is strongly recommen
 
 2.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account, harden SSH access and remove unnecessary network services.
 
-3.  Magento runs on a LAMP stack, and this guide assumes you have already installed and configured Apache. If you haven't, refer to our [Apache on CentOS 7](/docs/websites/apache/install-and-configure-apache-on-centos-7) guide. However, do not install MariaDB or PHP. We will explain how to install compatible versions of those packages in this guide
+3.  Magento runs on a LAMP stack, and this guide assumes you have already installed and configured Apache. If you haven't, refer to our [Apache on CentOS 7](/docs/websites/apache/install-and-configure-apache-on-centos-7) guide. However, do not install MariaDB or PHP. We will explain how to install compatible versions of those packages in this guide.
 
 3.  Update your system:
 
@@ -180,7 +180,7 @@ Magento is a PHP application, so we need to install PHP 7 and make some adjustme
         <?php phpinfo(); ?>
         ~~~
 
-        Once you've visited this page in your browser and confirmed that PHP is working, delete the test page.
+    Once you've visited this page in your browser and confirmed that PHP is working, delete the test page.
 
 ## Install Magento
 
