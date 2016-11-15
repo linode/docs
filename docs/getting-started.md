@@ -190,7 +190,7 @@ Installing software updates should be performed *regularly*. If you need help re
 
     emerge --sync
     emerge --update --deep --with-bdeps=y --newuse @world
-
+Please note that emerge's sync action is included as a compatibility command.  The "Sync Operations" (eg. repository updates) are now preformed using the new CLI emaint(1) with its sync command.  An option is required for the sync command.  Please see the emaint(1) man page for additional information. Run the check option with all command, "emaint --check all", which runs checks for all the applicable emaint commands.
 ### Slackware
 
 Slackpkg is the easiest way to update Slackware installations. See the [Slackpkg documentation](http://slackpkg.org/documentation.html) for installation and upgrade instructions.
