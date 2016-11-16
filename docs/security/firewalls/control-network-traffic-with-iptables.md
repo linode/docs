@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Use IPtables to manage Netfilter rules.'
+description: 'Use iptables to manage Netfilter rules.'
 keywords: 'iptables,networking,firewalls,filtering'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['security/firewalls/iptables/']
@@ -10,7 +10,7 @@ modified: Monday, October 31st, 2016
 modified_by:
   name: Nick Brewer
 published: 'Friday, July 30th, 2010'
-title: Control Network Traffic with IPtables
+title: Control Network Traffic with iptables
 external_resources:
  - '[Security Basics](/docs/security/linux-security-basics)'
  - '[Using the Linode Shell (Lish)](/docs/networking/using-the-linode-shell-lish)'
@@ -18,19 +18,19 @@ external_resources:
  - '[Linux Firewalls with iptables](http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_:_Ch14_:_Linux_Firewalls_Using_iptables)'
 ---
 
-**IPtables** is an application that allows users to configure specific rules that will be enforced by the kernel's `netfilter` framework. It acts as a packet filter and firewall that examines and directs traffic based on port, protocol and other criteria. This guide will focus on the configuration and application of IPtables rulesets and will provide examples of ways they are commonly used.
+**iptables** is an application that allows users to configure specific rules that will be enforced by the kernel's `netfilter` framework. It acts as a packet filter and firewall that examines and directs traffic based on port, protocol and other criteria. This guide will focus on the configuration and application of iptables rulesets and will provide examples of ways they are commonly used.
 
-By default, the IPtables tool is included with your Linode-supplied distribution. In order to use IPtables, you will need root (`sudo`) privileges.
+By default, the iptables tool is included with your Linode-supplied distribution. In order to use iptables, you will need root (`sudo`) privileges.
 
-## Use Linux IPtables to Manage IPv4 Traffic
+## Use Linux iptables to Manage IPv4 Traffic
 
-### The IPtables Command
+### The iptables Command
 
-Many options can be used with the IPtables command. As stated above, IPtables sets the rules that control network traffic. You can define different tables to handle these rules through chains, lists of rules that match a subset of packets. The table contains a variety of built-in chains, but you can add your own.
+Many options can be used with the iptables command. As stated above, iptables sets the rules that control network traffic. You can define different tables to handle these rules through chains, lists of rules that match a subset of packets. The table contains a variety of built-in chains, but you can add your own.
 
-### Basic IPtables Parameters and Syntax
+### Basic iptables Parameters and Syntax
 
-Before we begin creating rules, let's review the syntax of an IPtables rule.
+Before we begin creating rules, let's review the syntax of an iptables rule.
 
 For example, the following command adds a rule to the beginning of the chain that will drop all packets from the address `198.51.100.0`:
 
@@ -89,7 +89,7 @@ The default tables are as follows:
     -  Output: locally generated packets
     -  Forward: packets passing through the server
 
-### Basic IPtables Options
+### Basic iptables Options
 
 There are many options that may be used with the `iptables` command:
 
@@ -108,13 +108,13 @@ There are many options that may be used with the `iptables` command:
 | `-X --delete-chain <name>` | Delete the user-defined chain.                                                                    |
 |:---------------------------|:------------------------------------------------------------------------------------------------------------|
 
-### Insert, Replace or Delete IPtables Rules
+### Insert, Replace or Delete iptables Rules
 
-IPtables rules are enforced top down, so the first rule in the ruleset is applied to traffic in the chain, then the second, third and so on. This means that rules cannot necessarily be added to a ruleset with `iptables -A` or `ip6tables -A`. Instead, rules must be *inserted* with `iptables -I` or `ip6tables -I`.
+iptables rules are enforced top down, so the first rule in the ruleset is applied to traffic in the chain, then the second, third and so on. This means that rules cannot necessarily be added to a ruleset with `iptables -A` or `ip6tables -A`. Instead, rules must be *inserted* with `iptables -I` or `ip6tables -I`.
 
 **Insert**
 
-Inserted rules need to be placed in the correct order with respect to other rules in the chain. To get a numerical list of your IPtables rules:
+Inserted rules need to be placed in the correct order with respect to other rules in the chain. To get a numerical list of your iptables rules:
 
     sudo iptables -L -nv --line-numbers
 
@@ -140,7 +140,7 @@ Deleting a rule is also done using the rule number. For example, to delete the r
 >
 >Editing rules does not automatically save them. See our section on [deploying rulesets](/docs/security/firewalls/control-network-traffic-with-iptables#deploy-your-iptables-rulesets) for the specific instructions for your distribution.
 
-### View Your Current IPtables Rules
+### View Your Current iptables Rules
 
 IPv4:
 
@@ -150,7 +150,7 @@ IPv6:
 
     sudo ip6tables -L -nv
 
-On most distributions, IPtables has no default rules for either IPv4 and IPv6. As a result, on a newly created Linode you will likely see what is shown below - three empty chains without any firewall rules. This means that all incoming, forwarded and outgoing traffic is *allowed*. It's important to limit inbound and forwarded traffic to only what's necessary.
+On most distributions, iptables has no default rules for either IPv4 and IPv6. As a result, on a newly created Linode you will likely see what is shown below - three empty chains without any firewall rules. This means that all incoming, forwarded and outgoing traffic is *allowed*. It's important to limit inbound and forwarded traffic to only what's necessary.
 
     Chain INPUT (policy ACCEPT 0 packets, 0 bytes)
      pkts bytes target     prot opt in     out     source               destination
@@ -161,9 +161,9 @@ On most distributions, IPtables has no default rules for either IPv4 and IPv6. A
     Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)
      pkts bytes target     prot opt in     out     source               destination
 
-## Configure IPtables
+## Configure iptables
 
-IPtables can be configured and used in a variety of ways. The following sections will outline how to configure rules by port and IP, as well as how to blacklist (block) or whitelist (allow) addresses.
+iptables can be configured and used in a variety of ways. The following sections will outline how to configure rules by port and IP, as well as how to blacklist (block) or whitelist (allow) addresses.
 
 ### Block Traffic by Port
 
@@ -180,7 +180,7 @@ Let's examine what each part of this command does:
 - `--destination-port 110` filters packets targeted to port 110.
 - `-i eth0` means this rule will impact only packets arriving on the *eth0* interface.
 
-It is important to understand that IPtables do *not* recognize aliases on the network interface. Therefore, if you have several virtual IP interfaces, you will have to specify the destination address to filter the traffic. A sample command is provided below:
+It is important to understand that iptables do *not* recognize aliases on the network interface. Therefore, if you have several virtual IP interfaces, you will have to specify the destination address to filter the traffic. A sample command is provided below:
 
     iptables -A INPUT -j DROP -p tcp --destination-port 110 -i eth0 -d 198.51.100.0
 
@@ -191,7 +191,7 @@ You may also use `-D` or `--delete` to remove rules. For example, these commands
 
 ### Drop Traffic from an IP
 
-In order to drop all incoming traffic from a specific IP address, use the IPtables command with the following options:
+In order to drop all incoming traffic from a specific IP address, use the iptables command with the following options:
 
     iptables -I INPUT -s 198.51.100.0 -j DROP
 
@@ -200,7 +200,7 @@ To remove these rules, use the `--delete` or `-D` option:
     iptables --delete INPUT -s 198.51.100.0 -j DROP
     iptables -D INPUT -s 198.51.100.0 -j DROP
 
-### Block or Allow Traffic by Port Number to Create an IPtables Firewall
+### Block or Allow Traffic by Port Number to Create an iptables Firewall
 
 One way to create a firewall is to block all traffic to the system and then allow traffic on certain ports. Below is a sample sequence of commands to illustrate the process:
 
@@ -218,7 +218,7 @@ Note that the rules described above only control incoming packets, and do not li
 
 ### Whitelist/Blacklist Traffic by Address
 
-You can use IPtables to block all traffic and then only allow traffic from certain IP addresses. These firewall rules limit access to specific resources at the network layer. Below is an example sequence of commands:
+You can use iptables to block all traffic and then only allow traffic from certain IP addresses. These firewall rules limit access to specific resources at the network layer. Below is an example sequence of commands:
 
     iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
     iptables -A INPUT -i lo -m comment --comment "Allow loopback connections" -j ACCEPT
@@ -230,9 +230,9 @@ You can use IPtables to block all traffic and then only allow traffic from certa
 
 In the first command, the `-s 192.168.1.0/24` statement specifies that all source IPs (`-s`) in the address space of `192.168.1` are allowed. You may specify an IP address range using CIDR (Classless Inter-Domain Routing) notation, or individual IP addresses, as in the second command. The third command allows all incoming and outgoing packets that are associated with existing connections. The final two commands set the default policy for all `INPUT` and `FORWARD` chains to drop all packets.
 
-## Use IP6tables to Manage IPv6 Traffic
+## Use ip6tables to Manage IPv6 Traffic
 
-When you're working with IPv6, remember that the `iptables` command is not compatible. Instead, there is an `ip6tables` command. The options such as append, check, etc. are the same. The tables used by IP6tables are *raw*, *security*, *mangle* and *filter*. The parameters such as protocol, source, etc. are the same. The syntax is essentially the same as IPv4. Sample syntax is below:
+When you're working with IPv6, remember that the `iptables` command is not compatible. Instead, there is an `ip6tables` command. The options such as append, check, etc. are the same. The tables used by ip6tables are *raw*, *security*, *mangle* and *filter*. The parameters such as protocol, source, etc. are the same. The syntax is essentially the same as IPv4. Sample syntax is below:
 
     ip6tables [-t table] -N chain
 
@@ -242,7 +242,7 @@ To view what rules are configured for IPv6, use the command:
 
 ### Configure Rules for IPv6
 
-IP6tables works by using ports, specific addresses for blacklisting, protocols and so forth. The primary difference is that IP6tables can use extended packet matching modules with the `-m` or `match` options, followed by the module name. Below are some of the extended modules:
+ip6tables works by using ports, specific addresses for blacklisting, protocols and so forth. The primary difference is that ip6tables can use extended packet matching modules with the `-m` or `match` options, followed by the module name. Below are some of the extended modules:
 
 -  **addrtype** - Matches packets based on their address type. Some of the address types are:
     -  Local
@@ -258,7 +258,7 @@ This is not intended to be a complete or comprehensive list. You may review the 
 
     man ip6tables
 
-Below is a sample rule used in IP6tables:
+Below is a sample rule used in ip6tables:
 
     # limit the number of parallel HTTP requests to 16 for the link local network
     ip6tables -A INPUT -p tcp --syn --dport 80 -s fe80::/64 -m connlimit --connlimit-above 16 --connlimit-mask 64 -j REJECT
@@ -288,13 +288,13 @@ This rule breaks down as follows:
     ip6tables -A INPUT -p icmpv6 --icmpv6-type neighbor-advertisement -m hl --hl-eq 255 -j ACCEPT
     ip6tables -A INPUT -p icmpv6 --icmpv6-type redirect -m hl --hl-eq 255 -j ACCEPT
 
-## Basic IPtables Rulesets for IPv4 and IPv6
+## Basic iptables Rulesets for IPv4 and IPv6
 
-Appropriate firewall rules depend on the services being run. Below are IPtables rulesets to secure your Linode if you're running a web server.
+Appropriate firewall rules depend on the services being run. Below are iptables rulesets to secure your Linode if you're running a web server.
 
 {: .caution}
 >
-> **These rules are given only as an example.** A real production web server may require more or less configuration, and these rules would not be appropriate for a database, Minecraft or VPN server. IPtables rules can always be modified or reset later, but these basic rulesets serve as a demonstration.
+> **These rules are given only as an example.** A real production web server may require more or less configuration, and these rules would not be appropriate for a database, Minecraft or VPN server. Iptables rules can always be modified or reset later, but these basic rulesets serve as a demonstration.
 
 **IPv4**
 
@@ -398,13 +398,13 @@ If you would like to supplement your web server's IPv4 rules with IPv6 as well, 
 >
 >To remedy this, uncomment the line `precedence ::ffff:0:0/96  100` in `/etc/gai.conf`.
 
-## Deploy Your IPtables Rulesets
+## Deploy Your iptables Rulesets
 
-The process for deploying IPtables rulesets varies depending on which Linux distribution you're using:
+The process for deploying iptables rulesets varies depending on which Linux distribution you're using:
 
 ### Debian / Ubuntu
 
-UFW is the IPtables controller included with Ubuntu, but it is also available in Debian's repositories. If you prefer to use UFW instead of IPtables, see our guide: [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw).
+UFW is the iptables controller included with Ubuntu, but it is also available in Debian's repositories. If you prefer to use UFW instead of iptables, see our guide: [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw).
 
 1.  Create the files `/tmp/v4` and `/tmp/v6`. Paste the [above rulesets](#basic-iptables-rulesets-for-ipv4-and-ipv6) into their respective files.
 
@@ -413,19 +413,19 @@ UFW is the IPtables controller included with Ubuntu, but it is also available in
         sudo iptables-restore < /tmp/v4
         sudo ip6tables-restore < /tmp/v6
 
-3.  To apply your IPtables rules automatically on boot, see our section on configuring [iptables-persistent](/docs/security/firewalls/control-network-traffic-with-iptables#introduction-to-iptables-persistent).
+3.  To apply your iptables rules automatically on boot, see our section on configuring [iptables-persistent](/docs/security/firewalls/control-network-traffic-with-iptables#introduction-to-iptables-persistent).
 
 ### CentOS / Fedora
 
 **CentOS 7 or Fedora 20 and above**
 
-In these distros, FirewallD is used to implement firewall rules instead of using the IPtables command. If you prefer to use it over IPtables, see our guide: [Introduction to FirewallD on CentOS](/docs/security/firewalls/introduction-to-firewalld-on-centos).
+In these distros, FirewallD is used to implement firewall rules instead of using the iptables command. If you prefer to use it over iptables, see our guide: [Introduction to FirewallD on CentOS](/docs/security/firewalls/introduction-to-firewalld-on-centos).
 
-1.  If you prefer to use IPtables, FirewallD must first be stopped and disabled.
+1.  If you prefer to use iptables, FirewallD must first be stopped and disabled.
 
         sudo systemctl stop firewalld.service && sudo systemctl disable firewalld.service
 
-2.  Install `iptables-services` and enable IPtables and IP6tables:
+2.  Install `iptables-services` and enable iptables and ip6tables:
 
         sudo yum install iptables-services
         sudo systemctl enable iptables && sudo systemctl enable ip6tables
@@ -478,14 +478,14 @@ In these distros, FirewallD is used to implement firewall rules instead of using
         sudo iptables-restore < /etc/iptables/iptables.rules
         sudo ip6tables-restore < /etc/iptables/ip6tables.rules
 
-3.  IPtables does not run by default in Arch. Enable and start the systemd units:
+3.  iptables does not run by default in Arch. Enable and start the systemd units:
 
         sudo systemctl start iptables && sudo systemctl start ip6tables
         sudo systemctl enable iptables && sudo systemctl enable ip6tables
 
-    For more info on using IPtables in Arch, see its Wiki entries for [iptables](https://wiki.archlinux.org/index.php/Iptables) and a [simple stateful firewall](https://wiki.archlinux.org/index.php/Simple_stateful_firewall).
+    For more info on using iptables in Arch, see its Wiki entries for [iptables](https://wiki.archlinux.org/index.php/Iptables) and a [simple stateful firewall](https://wiki.archlinux.org/index.php/Simple_stateful_firewall).
 
-### Verify IPtables Rulesets
+### Verify iptables Rulesets
 
 Check your Linode's firewall rules with the `v` option for a verbose output:
 
@@ -543,11 +543,11 @@ Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)
 
 Your firewall rules are now in place and protecting your Linode. Remember, you may need to edit these rules later if you install other packages that require network access.
 
-## Introduction to IPtables-persistent
+## Introduction to iptables-persistent
 
-Ubuntu and Debian have a package called **iptables-persistent** that makes it easy to reapply your firewall rules at boot time.  After installation, you can save all your rules in two files (one for IPv4 and one for IPv6). If you've already configured and applied IPtables rules, IPtables-persistent will detect them automatically and allow you to add them to the appropriate configuration file.
+Ubuntu and Debian have a package called **iptables-persistent** that makes it easy to reapply your firewall rules at boot time.  After installation, you can save all your rules in two files (one for IPv4 and one for IPv6). If you've already configured and applied iptables rules, iptables-persistent will detect them automatically and allow you to add them to the appropriate configuration file.
 
-### Install IPtables-persistent
+### Install iptables-persistent
 
 On Debian or Ubuntu use the following command to check whether `iptables-persistent` is already installed:
 
@@ -565,11 +565,11 @@ The second prompt is to save the rules configured for IPv6.
 
 [![Save IPv6 rules prompt.](/docs/assets/1722-ipv6-rules.png)](/docs/assets/1722-ipv6-rules.png)
 
-After the install is complete, you should see the IPtables's subdirectory. Run the `ls /etc/iptables` command again to verify that your output resembles the following:
+After the install is complete, you should see the iptables's subdirectory. Run the `ls /etc/iptables` command again to verify that your output resembles the following:
 
     rules.v4  rules.v6
 
-### Use IPtables-persistent
+### Use iptables-persistent
 
 To view what rules are already configured on your server:
 
@@ -589,7 +589,7 @@ You should see output similar to:
 
 The rules above allow anyone anywhere access to everything. If your output resembles this, you'll need to set rules that prevent unauthorized access.
 
-### IPtables-persistent Rules
+### iptables-persistent Rules
 
 Use the `rules.v4` or `rules.v6` files to add, delete or edit the rules for your server. These files can be edited using a text editor to function as a proxy, NAT or firewall. The configuration depends on the requirements of your server and what functions are needed. Below is a file excerpt from both the `rules.v4` and `rules.v6` files:
 
@@ -618,11 +618,11 @@ Use the `rules.v4` or `rules.v6` files to add, delete or edit the rules for your
 
 While some rules are configured in these files already, either file can be edited at any time. The syntax for altering table rules is the same as in the sections [Configure iptables](#configure-iptables) and [Configuring Rules for IPv6](#use-ip6tables-to-manage-ipv6-traffic).
 
-### Save IPtables-persistent Rules Through Reboot
+### Save iptables-persistent Rules Through Reboot
 
-By default, IPtables-persistent rules save on reboot for IPv4 only. Therefore, if you are running both IPv4 and IPv6 together you will need to manually edit both the `rules.v4` and `rules.v6` files. On older systems, `iptables-save` was used to write the changes to the `rules` file. Now that `iptables-persistent` is an option, do not use the `iptables-save > /etc/iptables/rules.v4` or `iptables-save > /etc/iptables/rules.v6` commands as any IPv6 changes will be overwritten by the IPv4 rules.
+By default, iptables-persistent rules save on reboot for IPv4 only. Therefore, if you are running both IPv4 and IPv6 together you will need to manually edit both the `rules.v4` and `rules.v6` files. On older systems, `iptables-save` was used to write the changes to the `rules` file. Now that `iptables-persistent` is an option, do not use the `iptables-save > /etc/iptables/rules.v4` or `iptables-save > /etc/iptables/rules.v6` commands as any IPv6 changes will be overwritten by the IPv4 rules.
 
-To enforce the IPtables rules and ensure that they persist after reboot run `dpkg-reconfigure` and respond **Yes** when prompted:
+To enforce the iptables rules and ensure that they persist after reboot run `dpkg-reconfigure` and respond **Yes** when prompted:
 
     dpkg-reconfigure iptables-persistent
 
