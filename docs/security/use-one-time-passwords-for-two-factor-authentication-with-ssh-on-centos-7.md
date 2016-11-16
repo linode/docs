@@ -5,10 +5,10 @@ author:
 description: 'Use OATH to enable two-factor authentication for SSH connections.'
 keywords: 'two factor authentication,ssh,TOTPs'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 'Monday, October 31st, 2016'
+modified: 'Friday, November 18th, 2016'
 modified_by:
   name: Phil Zona
-published: 'Monday, October 31st, 2016'
+published: 'Friday, November 18th, 2016'
 title: Use One-Time Passwords for Two-Factor Authentication with SSH on CentOS 7
 external_resources:
  - '[One-Time Passwords](https://en.wikipedia.org/wiki/One-time_password)'
@@ -16,6 +16,8 @@ external_resources:
 ---
 
 In this guide, you'll learn how to use one-time passwords for two-factor authentication with SSH on CentOS 7.
+
+![Use One-Time Passwords for Two-Factor Authentication with SSH on CentOS 7](/docs/assets/two-factor-authentication-centos-title.png "Use One-Time Passwords for Two-Factor Authentication with SSH on CentOS 7")
 
 No matter what kind of data you're hosting, securing access to your Linode is a critical step in preventing your information from falling into the wrong hands. By default, you will need a password to log in, and you may also configure a key pair for even greater security. However, another option exists to complement these methods: time-based one-time passwords (*TOTPs*).
 
@@ -142,6 +144,10 @@ The TOTP authentication methods in this guide use *PAM*, or Pluggable Authentica
 3.  Restart the SSH daemon to apply these changes:
 
         sudo systemctl restart sshd
+
+Congratulations! Two-factor authentication is now enabled. When you connect to your Linode via SSH, the authentication process will proceed as follows: 
+
+![Two-factor authentication with SSH login.](/docs/assets/two-factor-authentication-diagram.png "Two-factor authentication with SSH login.")
 
 ## Combine Two-Factor and Public Key Authentication
 
