@@ -15,7 +15,9 @@ external_resources:
  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.4/)'
 ---
 
-This guide explains how to install and configure the Apache web server on CentOS 7.
+<img align="right" src="/docs/assets/apache-vhost-flow.png" height="50%" width="50%">
+
+This guide explains how to install and configure the Apache web server on CentOS 7. As illustrated in the image on the right, Apache can be configured to serve a single or multiple websites using the same Linode.
 
 {: .note}
 >
