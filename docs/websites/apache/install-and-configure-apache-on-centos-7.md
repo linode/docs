@@ -15,8 +15,6 @@ external_resources:
  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.4/)'
 ---
 
-<img align="right" src="/docs/assets/apache-vhost-flow.png" height="50%" width="50%">
-
 This guide explains how to install and configure the Apache web server on CentOS 7. As illustrated in the image on the right, Apache can be configured to serve a single or multiple websites using the same Linode.
 
 {: .note}
@@ -96,7 +94,9 @@ You can choose many ways to set up a virtual host. In this section we recommend 
         </VirtualHost>
         ~~~
 
-    Additional domains can be added to the `vhost.conf` file as needed. To add domains, copy the `VirtualHost` block above and modify its values for each additional virtual host.
+    Additional domains can be added to the `vhost.conf` file as needed. To add domains, copy the `VirtualHost` block above and modify its values for each additional virtual host. When new requests come in from the internet, Apache checks which VirtualHost block matches the requested url, and serves the appropriate content:
+
+    ![Apache VirtualHost Traffic Flow](/docs/assets/apache-vhost-flow.png "Apache VirtualHost Traffic Flow")
 
     {: .note}
     >
