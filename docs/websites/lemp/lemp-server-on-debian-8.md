@@ -4,10 +4,10 @@ author:
   email: docs@linode.com
 description: 'Installing a LEMP stack on Debian 8'
 keywords: 'nginx,lemp,lepp,perl,python,php,linux,web applications'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Friday, June 1th, 2015
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+modified: Friday, November 18th, 2016
 modified_by:
-  name: James Stewart 
+  name: Linode
 published: 'Friday, February 7th, 2014'
 title: 'LEMP Server on Debian 8'
 external_resources:
@@ -48,7 +48,6 @@ Install Nginx:
 
     sudo apt-get install nginx
 
-
 ### Configure Server Blocks
 
 1.  In Nginx `server blocks` are the equivalent of Apache's virtual hosts. Create the server block file `/etc/nginx/sites-available/example.com`. In this and all following steps, replace `example.com` with your domain:
@@ -77,12 +76,12 @@ Install Nginx:
 3.  Enable the site and restart the web server.
 
         sudo ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled
-        sudo /etc/init.d/nginx restart
+        sudo systemctl restart nginx
 
     To deactivate a site, simply delete the symbolic link and restart Nginx:
 
         sudo rm /etc/nginx/sites-enabled/example.com
-        sudo /etc/init.d/nginx restart
+        sudo systemctl restart nginx
 
     The source file is saved, and the site can be re-enabled at any time.
 
@@ -111,8 +110,7 @@ For more information regarding Nginx configuration options, check out our [Overv
           sudo /etc/init.d/php-fastcgi start
           sudo update-rc.d php-fastcgi defaults
 
-3.  In your server block file, add a `location` directive to pass php files through to FastCGI:
-
+3.  In your server block file, add a `location` directive to pass PHP files through to FastCGI:
 
     {: .file }
     /etc/nginx/sites-available/example.com
@@ -190,8 +188,4 @@ MySQL database engine may be the leading open source relational database engine,
         sudo /etc/init.d/php-fastcgi restart
 
 You now have a fully functional and fully featured LEMP stack for application deployment.
-
-
-
-
 
