@@ -9,7 +9,7 @@ modified: 'Friday, November 18. 2016'
 modified_by:
     name: Edward Angert
 published: 'Friday, November 18. 2016'
-title: How to install Apache on CentOS 7
+title: How to Install Apache on CentOS 7
 external_resources:
  - '[CentOS Linux Home Page](http://www.centos.org/)'
  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.4/)'
