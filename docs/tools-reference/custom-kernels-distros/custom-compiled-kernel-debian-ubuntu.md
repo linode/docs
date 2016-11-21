@@ -75,23 +75,11 @@ Once your configuration options are set, exit the configuration interface and an
 
 1.  Compile and install the kernel and modules:
 
-        make bzImage
-        make modules
-        make
-        make install
-        make modules_install
-
-    {: .note}
-    > If you're using a Linode with multiple cores, you can use the `j` option to spawn multiple simultaneous jobs to increase speed. For example:
-    >    
-    >     make -j2 bzImage
-
-
-2.  Create the `grub` directory under `/boot`: 
-
-        mkdir /boot/grub
-
-3.  Edit `/etc/default/grub` and add or change the following variables to match. There will be other variables in this file, but we are only concerned with those listed below:
+        make deb-pkg
+        
+        This will create five deb packages in /usr/src/ that you will need to install via dpkg -i linux-*.deb
+        
+2.  Edit `/etc/default/grub` and add or change the following variables to match. There will be other variables in this file, but we are only concerned with those listed below:
 
     {: .file-excerpt}
     /etc/default/grub
@@ -105,12 +93,9 @@ Once your configuration options are set, exit the configuration interface and an
 
     Comment or remove any lines starting with `GRUB_HIDDEN`.
 
-4.  Update the bootloader:
+3.  Update the bootloader:
 
         update-grub
-
-    Note that if you install an updated kernel, you will need to update grub again.
-    
 
 ## Configure the Linode
 
