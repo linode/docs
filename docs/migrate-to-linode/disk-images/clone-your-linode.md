@@ -4,7 +4,6 @@ author:
   email: docs@linode.com
 description: Clone Your Disks to Another Linode.
 keywords: 'clone, cloning, linode manager'
-alias: ['migrate-to-linode/disk-images/disk-images-and-configuration-profiles#cloning-disks-and-configuration-profiles/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Monday, November 21st, 2016
 modified_by:
