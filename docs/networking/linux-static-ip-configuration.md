@@ -218,7 +218,7 @@ Add the following to the interface's configuration file:
 
 Note that static and dynamic addressing cannot be combined in Debian and Ubuntu systems. In order to statically configure additional IP addresses, you must also statically configure your default IP address.
 
-Now to get name resolution working, populate `resolv.conf` with your DNS IP addresses and resolv.conf options [see man 5 resolv.conf](https://linux.die.net/man/5/resolv.conf). The `domain`, `search` and `options` lines aren't necessary but useful to have.
+To get name resolution working, populate `resolv.conf` with your DNS IP addresses and resolv.conf options ([see man 5 resolv.conf](https://linux.die.net/man/5/resolv.conf)). The `domain`, `search` and `options` lines aren't necessary, but useful to have.
 
 {: .file }
 /etc/resolv.conf
@@ -294,7 +294,7 @@ Networking in Gentoo utilizes the `netifrc` utility. Addresses are specified in 
 
 ### Ubuntu
 
-Add the following to the interface's configuration file:
+Add the following to the interface's configuration file. 
 
 {: .file-excerpt }
 /etc/network/interfaces
@@ -319,7 +319,10 @@ Add the following to the interface's configuration file:
         address 192.0.2.6/17
     ~~~
 
+Ubuntu incldes [resolvconf](http://packages.ubuntu.com/xenial/resolvconf) in its minimal installation, a small application which manages `/etc/resolv.conf`. Therefore, you do not want to edit `resolv.conf` directly. Instead, the DNS IP addresses and resolv.conf options need to be added to the interfaces file as shown above.
+
 Note that static and dynamic addressing cannot be combined in Debian and Ubuntu systems. In order to statically configure additional IP addresses, you must also statically configure your default IP address.
+
 
 ## Disable Network Helper
 
