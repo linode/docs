@@ -24,7 +24,7 @@ This guide will show you how to clone your Linode's existing disks or configurat
 1.  Log in to the [Linode Manager](https://manager.linode.com).
 2.  Select the **Linodes** tab to list your active Linodes.
 4.  Click on the Linode you wish to clone. You will be navigated to its Dashboard.  
-5.  *Optional:* Click **Shut down** to power down the Linode. This is recommended to prevent data corruption.
+5.  *Recommended* Click **Shut down** to power down the Linode. This is recommended to prevent data corruption.
 6.  Click the **Clone** tab to select the disks or configuration profiles you wish to clone. If you select a configuration profile, all of the disks attached to it will be included automatically. You can confirm this from the *Disks Attached* column.
 
 	[![Selecting configuration profiles and disks to migrate](/docs/assets/clone-tab-small.png)](/docs/assets/clone-tab.png)
