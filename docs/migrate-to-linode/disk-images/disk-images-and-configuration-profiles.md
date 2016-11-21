@@ -197,30 +197,9 @@ You can remove a configuration profile from the Linode Manager at anytime. Here'
 
 The configuration profile is removed from the dashboard.
 
-## Cloning disks and Configuration Profiles
+## Clone Disks and Configuration Profiles
 
-You can *clone* disks and configuration profiles from one Linode to another, as long as both of the Linodes are in your account. This is an easy way to transfer disks and configuration profiles between Linodes or migrate your Linode to a different datacenter or a new host in the same data center.
-
-Here's how to clone your disks and configuration profiles from one Linode to another:
-
-1.  Log in to the [Linode Manager](https://manager.linode.com).
-2.  Click the **Linodes** tab. A list of your virtual private servers appears.
-3.  If you are planning to clone an existing Linode, disks, or configuration profiles to a new Linode, click **Add a Linode** to create a new Linode. Do not deploy any disks to this new Linode. 
-4.  Back in the **Linodes** tab, select the Linode with the configuration profiles and disks you want to clone from. The Linode's dashboard appears.
-5.  *Optional:* Click **Shut down** to power down the Linode. This is recommended to prevent data corruption.
-6.  Click the **Clone** tab. The webpage shown below appears.
-
-	[![Selecting configuration profiles and disks to migrate](/docs/assets/1038-disk9-small.png)](/docs/assets/1037-disk9.png)
-
-7.  Select the disks and configuration profiles you want to clone to another Linode.
-8.  Click **Select**. The webpage shown below appears.
-
-	[![Clone summary webpage](/docs/assets/1036-disk8-small.png)](/docs/assets/1035-disk8.png)
-
-9.  From the **Destination Linode** menu, select the Linode you want to receive the disks and configuration profiles.
-10.  Click **Clone**. The receiving Linode's dashboard appears. Watch the *Host Job Queue* to monitor the progress.
-
-After the cloning process completes, the disks and configuration profiles you selected will be available on the destination Linode.
+You can *clone* disks and configuration profiles from one Linode to another, as long as both of the Linodes are on your account. This is an easy way to transfer your configuration between Linodes, or migrate your Linode to a different datacenter. See our guide on [cloning your Linode](/docs/migrate-to-linode/disk-images/clone-your-linode) for more information.
 
 ## Potential Uses
 
