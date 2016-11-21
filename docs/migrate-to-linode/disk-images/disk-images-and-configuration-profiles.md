@@ -205,7 +205,8 @@ Here's how to clone your disks and configuration profiles from one Linode to ano
 
 1.  Log in to the [Linode Manager](https://manager.linode.com).
 2.  Click the **Linodes** tab. A list of your virtual private servers appears.
-3.  Select the Linode with the configuration profiles and disks you want to clone. The Linode's dashboard appears.
+3.  If you are planning to clone an existing Linode, disks, or configuration profiles to a new Linode, click **Add a Linode** to create a new Linode. Do not deploy any disks to this new Linode. 
+3.  Back in the **Linodes** tab, select the Linode with the configuration profiles and disks you want to clone from. The Linode's dashboard appears.
 4.  *Optional:* Click **Shut down** to power down the Linode. This is recommended to prevent data corruption.
 5.  Click the **Clone** tab. The webpage shown below appears.
 
