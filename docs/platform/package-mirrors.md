@@ -8,7 +8,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['package-mirrors/']
 modified: Monday, November 21st, 2016
 modified_by:
-  name: Kenyon Ralph
+  name: Linode
 published: 'Tuesday, February 11th, 2014'
 title: Package Mirrors
 ---

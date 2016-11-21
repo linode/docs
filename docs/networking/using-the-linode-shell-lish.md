@@ -8,7 +8,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['using-lish-the-linode-shell/','troubleshooting/using-lish-the-linode-shell/']
 modified: Monday, November 21st, 2016
 modified_by:
-  name: Phil Zona
+  name: Linode
 published: 'Tuesday, August 4th, 2009'
 title: 'Using the Linode Shell (Lish)'
 ---
