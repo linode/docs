@@ -6,9 +6,9 @@ description: Setting Linode Package Mirrors.
 keywords: 'package,mirrors,linode,repository,Debian,Ubuntu,CentOS,yum,apt-get'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['package-mirrors/']
-modified: Wednesday, September 24, 2014
+modified: Monday, November 21st, 2016
 modified_by:
-  name: Kenyon Ralph
+  name: Linode
 published: 'Tuesday, February 11th, 2014'
 title: Package Mirrors
 ---
