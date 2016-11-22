@@ -28,7 +28,7 @@ Because of the resources needed by some Magento plugins, it is strongly recommen
 
 2.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account, harden SSH access and remove unnecessary network services.
 
-3.  Magento runs on a LAMP stack, and this guide assumes you have already installed and configured Apache, MySQL and PHP. If you haven't, refer to our [LAMP stack guides](/docs/websites/lamp/). Be aware that there are known compatibility issues with PHP 7.0.5, so check your version with `php -v` before proceeding.
+3.  Magento runs on a LAMP stack, and this guide assumes you have already installed and configured Apache, MySQL and PHP. If you haven't, refer to our [LAMP on Ubuntu 16.04](/docs/websites/lamp/install-lamp-on-ubuntu-16-04) guide. Be aware that there are known compatibility issues with PHP 7.0.5, so check your version with `php -v` before proceeding.
 
 3.  Update your system:
 
@@ -44,24 +44,21 @@ In addition to the standard [LAMP stack](/docs/websites/lamp/install-lamp-on-ubu
 
     sudo apt-get install php7.0-common php7.0-gd php7.0-mcrypt php7.0-curl php7.0-intl php7.0-xsl php7.0-mbstring php7.0-zip php7.0-iconv mysql-client
 
-{: .note}
-> These packages are in addition to those specified in our guide on installing [LAMP on Ubuntu 16.04](/docs/websites/lamp/install-lamp-on-ubuntu-16-04).
-
 ### Configure Apache
 
 Since Magento will be served by Apache, some additional configuration is needed to ensure the application is served properly. In this section, we'll configure Apache for Magento to ensure that styles and other settings display properly in your storefront.
 
-1.  Be sure you're using Apache version 2.4:
+1.  Confirm you're using Apache version 2.4:
 
         apache2 -v
 
-    If this shows version 2.2 or another version, upgrade your packages before proceeding.
+    If this shows version 2.2 or another version, upgrade Apache before proceeding.
 
 2.  Enable the Apache rewrite module:
 
         sudo a2enmod rewrite
 
-3.  Modify the virtual host file for your Magento site to resemble the following. If you have not previously created a virtual host file, do so now and refer to our [LAMP stack guide](/docs/websites/lamp/install-lamp-on-ubuntu-16-04) for additional guidance.
+3.  Modify the virtual host file for your Magento site as exampled below. If you have not previously created a virtual host file, do so now and refer to the [Configure Virtual Hosts](/docs/websites/lamp/install-lamp-on-ubuntu-16-04#configure-virtual-hosts) section of the LAMP on Ubuntu 16.04 guide for additional guidance.
 
     {: .file}
     /etc/apache2/sites-available/example.com.conf
@@ -90,7 +87,7 @@ Since Magento will be served by Apache, some additional configuration is needed 
 
     It's important to note the value of `AllowOverride` as this affects which settings in each directory's `.htaccess` file will apply and which will be ignored. If you're not sure if the `All` option is optimal for your site, refer to the [Apache documentation](http://httpd.apache.org/docs/current/mod/core.html#allowoverride) for more information on this setting.
 
-4.  If you haven't already, make sure your site is enabled:
+4.  If you haven't already, enable your site:
 
         sudo a2ensite example.com
 
@@ -127,7 +124,7 @@ Because Magento is a PHP application, we'll need to make some adjustments to our
 1.  Modify the following settings in your `php.ini` files for the CLI and Apache PHP configurations. These files can be found at `/etc/php/7.0/apache2/php.ini` and `/etc/php/7.0/cli/php.ini`:
 
     {: .file-excerpt}
-    /etc/php/7.0/apache2/php.ini AND /etc/php/7.0/cli/php.ini
+    /etc/php/7.0/apache2/php.ini & /etc/php/7.0/cli/php.ini
     :   ~~~  ini
         memory_limit = 2G
         date.timezone = America/New_York
@@ -165,9 +162,9 @@ In this section, we'll explain how to get the Magento Community Edition (CE) sof
     In this step, you'll also be able to download the software with optional sample data. Whether you choose this or the basic version is up to you.
 
     {: .note}
-    > When choosing a version, refer to Magento's [prerequisites](http://devdocs.magento.com/guides/v2.0/install-gde/prereq/prereq-overview.html) to ensure a particular version's compatibility with the components of your LAMP stack. As of the publication of this guide, Magento version 2.1.2 is compatible with all package versions from the Ubuntu repositories.
+    > When choosing a version, refer to Magento's [prerequisites](http://devdocs.magento.com/guides/v2.0/install-gde/prereq/prereq-overview.html) to ensure a particular version's compatibility with the components of your LAMP stack. As of the publication of this guide, Magento version 2.1.2 is compatible with all prerequisite package versions from the Ubuntu repositories.
 
-2.  From your local computer, copy the file to your Linode. Replace `/path/on/local/` with the path to the location of your downloaded file, `user` with your standard user account on your Linode, and `yourhost` with your Linode's hostname or IP address:
+2.  From your local computer, copy the file to your Linode. Replace `/path/on/local/` with the path of your downloaded file, `user` with your standard user account on your Linode, and `yourhost` with your Linode's hostname or IP address:
 
         scp /path/on/local/Magento-CE-2.*.tar.gz user@yourhost:~/
 
@@ -190,12 +187,9 @@ In this section, we'll explain how to get the Magento Community Edition (CE) sof
 
 1.  Create a Magento user, which will run the software. For simplicity, we'll call this user `magento`:
 
-        sudo adduser magento
-        sudo adduser magento sudo
+        sudo useradd magento
 
-    Be sure to set a *strong* password when prompted.
-
-2.  Next, we'll need to add the Magento user to the web server's user group. For Apache, the default user is `www-data`:
+2.  Add the Magento user to the web server's user group. For Apache, the default user is `www-data`:
 
         sudo usermod -g www-data magento
 
@@ -226,7 +220,7 @@ In this section, we'll explain how to get the Magento Community Edition (CE) sof
 
 2.  Run the Magento installation script with the following options:
 
-        ./magento setup:install --admin-firstname="John" --admin-lastname="Doe" --admin-email="your@email.com" --admin-user="john" --admin-password="password1" --db-name="magento" --db-host="localhost" --db-user="magento" --db-password="password" 
+        ./magento setup:install --admin-firstname="John" --admin-lastname="Doe" --admin-email="your@email.com" --admin-user="john" --admin-password="password1" --db-name="magento" --db-host="localhost" --db-user="magento" --db-password="password"
 
     Replace the values in the options as follows:
 
@@ -236,7 +230,7 @@ In this section, we'll explain how to get the Magento Community Edition (CE) sof
     -   **db-name** - This is the name of the database you set up in MySQL. In our example, we called it `magento`, but if you chose a different value, substitute it here.
     -   **db-host** - If you're running Magento on the same server as its database, use `localhost` here. If not, this value will be the hostname of the server on which your database lives.
     -   **db-user** - This is the MySQL database user you set up previously. In our example, we called it `magento` but if you chose a different name use that here instead.
-    -   **db-password** - This will be the MySQL password you configured for the `magento` user.
+    -   **db-password** - This will be the password you configured for the `magento` MySQL user.
 
     {: .note}
     > These are just a few of the available options to configure your Magento installation. For more information, refer to the [Magento Installation Guide](http://devdocs.magento.com/guides/v2.1/install-gde/install/cli/install-cli-install.html) and feel free to use additional options when running the script.
@@ -260,7 +254,7 @@ The dashboard is functional at this point, but there is still work to be done be
 
 Magento relies on [cron](/docs/tools-reference/tools/schedule-tasks-with-cron) to perform tasks like continuously reindexing your site and generating emails and newsletters. If you logged into your admin panel, you may have noticed an error message saying that cron jobs needed to be set. Fortunately, the cron jobs Magento uses for a base installation are very easy to configure.
 
-1.  Open the crontab for your `magento` user. Peform this step as a user with `sudo` privileges:
+1.  Open the crontab for your `magento` user. Perform this step as a user with `sudo` privileges:
 
         sudo crontab -u magento -e
 
@@ -282,7 +276,7 @@ For more information about setting up cron jobs for development servers and cust
 
 ### Configure X-Frame Options
 
-It is strongly recommended to disable the ability to display your Magento storefront in a frame to prevent [clickjacking](https://en.wikipedia.org/wiki/Clickjacking) attacks. To do this, modify the following line in your `env.php` file:
+We strongly recommend to disable the ability to display your Magento storefront in a frame to prevent [clickjacking](https://en.wikipedia.org/wiki/Clickjacking) attacks. To do this, modify the following line in your `env.php` file:
 
 {: .file-excerpt}
 /var/www/html/example.com/public_html/app/etc/env.php
@@ -323,7 +317,7 @@ Once you've installed your SSL certificate and configured Apache to serve your s
 
     ![Go to "Configuration" in the "Stores" menu.](/docs/assets/magento-stores-config.png)
 
-3.  On the next screen, you'll see a list of configuration settings including "General," "Catalog," and "Customers" among others. Click on **General**, and select **Web** from its submenu.
+3.  On the next screen, you'll see a list of configuration settings including "General," "Catalog," and "Customers". Click on **General**, and select **Web** from its submenu.
 
     ![Select "Web" from the "General" menu.](/docs/assets/magento-general-web.png)
 
