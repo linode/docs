@@ -3,7 +3,7 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'Learn to integrate Varnish with nginx to serve cached WordPress content for both SSL and plain HTTP websites.'
-keywords: 'Varnish,cache,Nginx,WordPress,SSL,speed,PHP-FPM'
+keywords: 'Varnish,cache,Nginx,WordPress,SSL,PHP-FPM'
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
 published: 'Monday, September 19th, 2016'
 modified: Monday, September 19th, 2016
@@ -21,13 +21,15 @@ external_resources:
 *This is a Linode Community guide. Write for us and earn $250 per published guide.*
 <hr>
 
-**Varnish** is a powerful and flexible caching HTTP reverse proxy. It can be installed in front of any web server to cache its contents, improving speed and reducing server load. When a client requests a page, Varnish first tries to send it from the cache. If the page is not cached, it forwards the request to the backend server, fetches the response, stores it in the cache and delivers it to the client. When a cached resource is requested, the request doesn't reach the web server or involve PHP or MySQL execution. Instead, it is read from memory, so the cached page is delivered in a matter of microseconds. This guide uses Varnish 4.0, which is included in the Debian 8 repositories.
+**Varnish** is a powerful and flexible caching HTTP reverse proxy. It can be installed in front of any web server to cache its contents, which will improve speed and reduce server load. When a client requests a webpage, Varnish first tries to send it from the cache. If the page is not cached, Varnish forwards the request to the backend server, fetches the response, stores it in the cache, and delivers it to the client. 
 
-One drawback is that Varnish doesn't support SSL encrypted traffic. This problem can be circumvented by using **nginx** both for SSL decryption and as a backend web server. Using nginx for both tasks reduces the complexity of the setup, leading to fewer potential points of failure, lower resource consumption, and fewer components to maintain.
+When a cached resource is requested through Varnish, the request doesn't reach the web server or involve PHP or MySQL execution. Instead, Varnish reads it from memory, delivering the cached page in a matter of microseconds.
 
-Both Varnish and nginx are versatile tools with a variety of uses. This guide will present a basic setup that you can refine to meet your specific needs.
+One Varnish drawback is that it doesn't support SSL-encrypted traffic. You can circumvent this issue by using **nginx** for both SSL decryption and as a backend web server. Using nginx for both tasks reduces the complexity of the setup, leading to fewer potential points of failure, lower resource consumption, and fewer components to maintain.
 
-## Configuration
+Both Varnish and nginx are versatile tools with a variety of uses. This guide uses Varnish 4.0, which comes included in Debian 8 repositories, and presents a basic setup that you can refine to meet your specific needs.
+
+## Reason Behind Configuring Both Varnish and nginx
 
 In this guide, we will configure nginx and Varnish for two Wordpress sites:
 
@@ -36,7 +38,7 @@ In this guide, we will configure nginx and Varnish for two Wordpress sites:
 
 For HTTP traffic, Varnish will listen on port `80`. If content is found in the cache, Varnish will serve it. If not, it will pass the request to nginx on port `8080`. In the second case, nginx will send the requested content back to Varnish on the same port, then Varnish will store the fetched content in cache and deliver it to the client on port `80`.
 
-For HTTPS traffic, nginx will listen on port `443` and send decrypted traffic to Varnish on port `80`. If content is found in the cache, Varnish will send the unencrypted content from the cache back to nginx, which will encrypt it and send it to the client. If content is not found in the cache, Varnish will request it from nginx on port `8080`, store it in the cache and then send it unencrypted to frontend nginx which will encrypt it and send it to the client's browser.
+For HTTPS traffic, nginx will listen on port `443` and send decrypted traffic to Varnish on port `80`. If content is found in the cache, Varnish will send the unencrypted content from the cache back to nginx, which will encrypt it and send it to the client. If content is not found in the cache, Varnish will request it from nginx on port `8080`, store it in the cache, and then send it unencrypted to frontend nginx, which will encrypt it and send it to the client's browser.
 
 Our setup is illustrated below. Please note that frontend nginx and backend nginx are one and the same server:
 
@@ -48,7 +50,7 @@ This tutorial assumes that you have SSH access to your Linode running Debian 8 (
 
 1.  Complete the steps in our [Getting Started](/docs/getting-started) and [Securing your Server](/docs/security/securing-your-server) guides. You'll need a standard user account with `sudo` privileges for many commands in this guide.
 
-2.  Follow the steps outlined in our [LEMP on Debian 8](/docs/websites/lemp/lemp-server-on-debian-8) guide. Skip the nginx configuration section since we'll address it later in this guide.
+2.  Follow the steps outlined in our [LEMP on Debian 8](/docs/websites/lemp/lemp-server-on-debian-8) guide. Skip the nginx configuration section, since we'll address it later in this guide.
 
 3.  After configuring nginx according to this guide, follow the steps in our [WordPress](/docs/websites/cms/how-to-install-and-configure-wordpress) guide to install and configure WordPress. We'll include a step in the instructions to let you know you when it's time to do this.
 
@@ -81,13 +83,13 @@ For all steps in this section, replace `203.0.113.100` with your Linodes public 
                     -s malloc,1G"
         ~~~
 
-    This will set Varnish to listen on port `80`, and will instruct it to use the `custom.vcl` configuration file. The custom configuration file is used so that future updates to Varnish do not overwrite changes to `default.vcl`.
+    This will set Varnish to listen on port `80` and will instruct it to use the `custom.vcl` configuration file. The custom configuration file is used so that future updates to Varnish do not overwrite changes to `default.vcl`.
 
     The `-s malloc,1g` line sets the maximum amount of RAM that will be used by Varnish to store content. This value can be adjusted to suit your needs, taking into account the server's total RAM along with the size and expected traffic of your website. For example, on a system with 4 GB of RAM, you can allocate 2 or 3 GB to Varnish.
 
     When you've made these changes, save and exit the file.
 
-### Create a Custom Configuration File
+### Create a Custom Varnish Configuration File
 
 1.  To start customizing your Varnish configuration, create a new file called `custom.vcl`:
 
@@ -248,7 +250,7 @@ For all steps in this section, replace `203.0.113.100` with your Linodes public 
         }
         ~~~
 
-8.  The `sub vcl_backend_response` directive is used to handle communication with the backend server, nginx. We use it to set the amount of time the content remains in the cache. We can also set a *grace period*, which determines how Varnish will serve content from the cache even if the backend server is down. Time can be set in seconds (s), minutes (m), hours (h) or days (d). Here we've set the caching time to 24 hours, and the grace period to 1 hour, but you can adjust these settings based on your needs:
+8.  The `sub vcl_backend_response` directive is used to handle communication with the backend server, nginx. We use it to set the amount of time the content remains in the cache. We can also set a *grace period*, which determines how Varnish will serve content from the cache even if the backend server is down. Time can be set in seconds (s), minutes (m), hours (h) or days (d). Here, we've set the caching time to 24 hours, and the grace period to 1 hour, but you can adjust these settings based on your needs:
 
     {: .file-excerpt }
     /etc/varnish/custom.vcl
@@ -294,11 +296,11 @@ For all steps in this section, replace `203.0.113.100` with your Linodes public 
     >
     > You can download the complete sample configuration file using the link above and `wget`. If you do, remember to replace the variables as described above.
 
-### Edit the Startup Configuration
+### Edit the Varnish Startup Configuration
 
-1.  For Varnish to work properly, we also need to edit the `/lib/systemd/system/varnish.service` file to use our custom configuration file.  Specifically, we'll tell it to use the the custom configuration file and modify the port number and allocated memory values to match the changes we made in our `/etc/default/varnish` file.
+1.  For Varnish to work properly, we also need to edit the `/lib/systemd/system/varnish.service` file to use our custom configuration file.  Specifically, we'll tell it to use the custom configuration file and modify the port number and allocated memory values to match the changes we made in our `/etc/default/varnish` file.
 
-    Find the two lines beginning with `ExecStart` and modify them to look like this:
+    Open `/lib/systemd/system/varnish.service` and find the two lines beginning with `ExecStart`. Modify them to look like this:
 
     {: .file-excerpt }
     /lib/systemd/system/varnish.service
@@ -327,7 +329,7 @@ Before configuring nginx, we have to install *PHP-FPM*. FPM is short for FastCGI
         cgi.fix_pathinfo=0
         ~~~
 
-    When you've made this change, save and exit the file.
+    After you've made this change, save and exit the file.
 
 3.  Open `/etc/php5/fpm/pool.d/www.conf` and confirm that the `listen =` directive, which specifies the socket used by nginx to pass requests to PHP-FPM, matches the following:
 
@@ -356,7 +358,7 @@ Before configuring nginx, we have to install *PHP-FPM*. FPM is short for FastCGI
 
 ## Configure nginx
 
-1.  Open `/etc/nginx/nginx.conf` and comment out the `ssl_protocols` and `ssl_prefer_server_ciphers` directives. We'll include these SSL settings in the server block within the `/etc/nginx/sites-enabled/default` file:
+1.  Open `/etc/nginx/nginx.conf` and comment out the `ssl_protocols` and `ssl_prefer_server_ciphers` directives. We'll insert these SSL settings in the server block within the `/etc/nginx/sites-enabled/default` file:
 
     {: .file-excerpt }
     /etc/nginx/nginx.conf
@@ -417,14 +419,14 @@ Before configuring nginx, we have to install *PHP-FPM*. FPM is short for FastCGI
         }
         ~~~
 
-    A few things to be noted here:
+    A few things to note here:
 
     *   The first server block is used to redirect all requests for `example-over-http.com` to `www.example-over-http.com`. This assumes you want to use the `www` subdomain and have added a DNS A record for it.
     *   `listen [::]:8080;` is needed if you want your site to be also accesible over IPv6.
     *   `port_in_redirect off;` prevents nginx from appending the port number to the requested URL.
     *   `fastcgi` directives are used to proxy requests for PHP code execution to PHP-FPM, via the FastCGI protocol.
 
-5.  To configure nginx for the SSL-encrypted website (in our example we called it `www.example-over-https.com`), we need two more server blocks. Append the following server blocks to your `/etc/nginx/sites-available/default` file:
+5.  To configure nginx for the SSL-encrypted website (in our example we called it `www.example-over-https.com`), you need two more server blocks. Append the following server blocks to your `/etc/nginx/sites-available/default` file:
 
     {: .file-excerpt }
     /etc/nginx/sites-available/default
@@ -496,23 +498,23 @@ Before configuring nginx, we have to install *PHP-FPM*. FPM is short for FastCGI
         }
         ~~~
 
-    For an SSL-encrypted website, we need one server block to receive traffic on port 443 and pass decrypted traffic to Varnish on port `80`, and another server block to serve unencrypted traffic to Varnish on port `8080`, when Varnish asks for it. Note that the SSL directives are included in both blocks.
+    For an SSL-encrypted website, you need one server block to receive traffic on port 443 and pass decrypted traffic to Varnish on port `80`, and another server block to serve unencrypted traffic to Varnish on port `8080`, when Varnish asks for it. Note that the SSL directives are included in both blocks.
 
     {: .caution}
     >
     >The `ssl_certificate` directive must specify the location and name of the SSL certificate file. Take a look at our guide to using [SSL on nginx](https://www.linode.com/docs/security/ssl/provide-encrypted-resource-access-using-ssl-certificates-on-nginx) for more information, and update the `ssl_certificate` and `ssl_certificate_key` values as needed.
 
-    Alternatively, if you don't have a commercially-signed SSL certificate (issued by a CA), you can issue a self-signed SSL certificate using *openssl*, but this should be done only for testing purposes. Self-signed sites will return a "This Connection is Untrusted" message when opened in a browser.
+    Alternately, if you don't have a commercially-signed SSL certificate (issued by a CA), you can issue a self-signed SSL certificate using *openssl*, but this should be done only for testing purposes. Self-signed sites will return a "This Connection is Untrusted" message when opened in a browser.
 
     Now, let's review the key points of the previous two server blocks:
 
-    *   `ssl_session_cache   shared:SSL:20m;` creates a 20 MB cache shared between all worker processes. This cache is used to store SSL session parameters to avoid SSL handshakes for parallel and subsequent connections. 1MB can store about 4000 sessions, so adjust this cache size according to the expected traffic for your website.
+    *   `ssl_session_cache   shared:SSL:20m;` creates a 20MB cache shared between all worker processes. This cache is used to store SSL session parameters to avoid SSL handshakes for parallel and subsequent connections. 1MB can store about 4000 sessions, so adjust this cache size according to the expected traffic for your website.
     *   `ssl_session_timeout 60m;` specifies the SSL session cache timeout. Here it's set to 60 minutes, but it can be decreased or increased, depending on traffic and resources.
-    *   `ssl_prefer_server_ciphers   on;` means that when a SSL connection is established, the server ciphers are preferred over client ciphers.
+    *   `ssl_prefer_server_ciphers   on;` means that when an SSL connection is established, the server ciphers are preferred over client ciphers.
     *   `add_header Strict-Transport-Security "max-age=31536000";` tells web browsers they should only interact with this server using a secure HTTPS connection. The `max-age` specifies in seconds what period of time the site is willing to accept HTTPS-only connections.
     *   `add_header X-Content-Type-Options nosniff;` this header tells the browser not to override the response content's MIME type. So, if the server says the content is text, the browser will render it as text.
     *   `proxy_pass http://127.0.0.1:80;` this directive proxies all the decrypted traffic to Varnish, which listens on port `80`.
-    *   `proxy_set_header` directives add to requests specific headers, so SSL traffic can be recognised.
+    *   `proxy_set_header` directives add specific headers to requests, so SSL traffic can be recognized.
     *   `access_log` and `error_log` indicate the location and name of the respective types of logs. Adjust these locations and names according to your setup, and make sure the `www-data` user has permissions to modify each log.
     *   `fastcgi` directives present in the last server block are necessary to proxy requests for PHP code execution to PHP-FPM, via the FastCGI protocol.
 
@@ -530,7 +532,7 @@ Before configuring nginx, we have to install *PHP-FPM*. FPM is short for FastCGI
         }
         ~~~
 
-    The `/var/www/html/index.html` file can contain a simple message like "Page not found!".
+    The `/var/www/html/index.html` file can contain a simple message like "Page not found!"
 
 7.  Restart nginx, then start Varnish:
 
@@ -545,7 +547,7 @@ Before configuring nginx, we have to install *PHP-FPM*. FPM is short for FastCGI
 
 ## Install the "Varnish HTTP Purge" Plugin
 
-When you edit a WordPress page and update it, the modification won't be visible even if you refresh the browser because it will receive the cached version of the page. To purge the cached page automatically when you edit a page, you must install a free WordPress plugin called "Varnish HTTP Purge".
+When you edit a WordPress page and update it, the modification won't be visible even if you refresh the browser because it will receive the cached version of the page. To purge the cached page automatically when you edit a page, you must install a free WordPress plugin called "Varnish HTTP Purge."
 
 To install this plugin, log in to your WordPress website and click **Plugins** on the main left sidebar. Select **Add New** at the top of the page, and search for **Varnish HTTP Purge**. When you've found it, click **Install Now**, then **Activate**.
 
@@ -579,7 +581,7 @@ To install this plugin, log in to your WordPress website and click **Plugins** o
 
             2016-03-27 00:33:42 (138 MB/s) - \u2018index.html.2\u2019 saved [12459]
 
-    The third line specifies the connection port number: `80`, the backend server is correctly identified: `Server: nginx/1.6.2`, and the traffic passes through Varnish as intended: `Via: 1.1 varnish-v4`. The period of time the object has been kept in cache by Varnish is also displayed in seconds: `Age: 467`.
+    The third line specifies the connection port number: `80`. The backend server is correctly identified: `Server: nginx/1.6.2`. And the traffic passes through Varnish as intended: `Via: 1.1 varnish-v4`. The period of time the object has been kept in cache by Varnish is also displayed in seconds: `Age: 467`.
 
 2.  To test the SSL-encrypted website, run the same command, replacing the URL: 
 
@@ -594,8 +596,8 @@ To install this plugin, log in to your WordPress website and click **Plugins** o
 
 ## Next Steps
 
-By using nginx in conjunction with Varnish, the speed of any WordPress website can be dramatically improved while making best use of your hardware resources.
+By using nginx in conjunction with Varnish, the speed of any WordPress website can be drastically improved while making best use of your hardware resources.
 
 You can strengthen the security of the SSL connection by generating a [custom Diffie-Hellman (DH) parameter](/docs/websites/nginx/nginx-ssl-and-tls-deployment-best-practices#create-a-custom-diffie-hellman-key-exchange), for a more secure cryptographic key exchange process.
 
-An additional configuration option is to enable Varnish logging for the plain HTTP website, since now Varnish is the first to receive the client requests, while nginx only receives requests for those pages that are not found in the cache. For SSL-encrypted websites, the logging should be done by nginx because client requests pass through it first. Logging becomes even more important if you use log monitoring software such as [Fail2ban](/docs/security/using-fail2ban-for-security), Awstats or Webalizer.
+An additional configuration option is to enable Varnish logging for the plain HTTP website, since now Varnish will be the first to receive the client requests, while nginx only receives requests for those pages that are not found in the cache. For SSL-encrypted websites, the logging should be done by nginx because client requests pass through it first. Logging becomes even more important if you use log monitoring software such as [Fail2ban](/docs/security/using-fail2ban-for-security), Awstats or Webalizer.
