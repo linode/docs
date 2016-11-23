@@ -8,7 +8,7 @@ license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
 published: 'Wednesday, November 23rd, 2016'
 modified: Wednesday, November 23rd, 2016
 modified_by:
-    name: Linode
+    name: Nick Brewer
 title: Use Varnish & nginx to Serve WordPress over SSL & HTTP on Debian 8
 contributor:
   name: Frederick Jost Zweig
