@@ -9,14 +9,16 @@ published: 'Monday, September 19th, 2016'
 modified: Monday, September 19th, 2016
 modified_by:
     name: Linode
-title: Use Varnish with nginx to Serve Cached Wordpress Content over SSL and HTTP on Debian 8
+title: Use Varnish & nginx to Serve WordPress over SSL & HTTP on Debian 8
 contributor:
   name: Frederick Jost Zweig
   link: https://github.com/Fred-Zweig
 external_resources:
  - '[Varnish Documentation](https://varnish-cache.org/docs/index.html)'
  - '[NGINX Documentation](https://varnish-cache.org/docs/index.html)'
+image: https://linode.com/docs/assets/varnish-cache.png
 ---
+
 
 *This is a Linode Community guide. Write for us and earn $250 per published guide.*
 <hr>
@@ -29,9 +31,9 @@ One Varnish drawback is that it doesn't support SSL-encrypted traffic. You can c
 
 Both Varnish and nginx are versatile tools with a variety of uses. This guide uses Varnish 4.0, which comes included in Debian 8 repositories, and presents a basic setup that you can refine to meet your specific needs.
 
-## Reason Behind Configuring Both Varnish and nginx
+## How Varnish and nginx Work Together
 
-In this guide, we will configure nginx and Varnish for two Wordpress sites:
+In this guide, we will configure nginx and Varnish for two WordPress sites:
 
   * `www.example-over-http.com` will be an unencrypted, HTTP-only site.
   * `www.example-over-https.com` will be a separate, HTTPS-encrypted site.
@@ -42,7 +44,7 @@ For HTTPS traffic, nginx will listen on port `443` and send decrypted traffic to
 
 Our setup is illustrated below. Please note that frontend nginx and backend nginx are one and the same server:
 
-[![Nginx-Varnish-Nginx server configuration diagram](/docs/assets/varnish-cache.png)](/docs/assets/varnish-cache.png)
+[![Nginx-Varnish-Nginx server configuration diagram](/docs/assets/varnish-cache.png)](/docs/assets/varnish-cache.png "Nginx-Varnish-Nginx server configuration diagram")
 
 ## Before You Begin
 
@@ -358,7 +360,7 @@ Before configuring nginx, we have to install *PHP-FPM*. FPM is short for FastCGI
 
 ## Configure nginx
 
-1.  Open `/etc/nginx/nginx.conf` and comment out the `ssl_protocols` and `ssl_prefer_server_ciphers` directives. We'll insert these SSL settings in the server block within the `/etc/nginx/sites-enabled/default` file:
+1.  Open `/etc/nginx/nginx.conf` and comment out the `ssl_protocols` and `ssl_prefer_server_ciphers` directives. We'll include these SSL settings in the server block within the `/etc/nginx/sites-enabled/default` file:
 
     {: .file-excerpt }
     /etc/nginx/nginx.conf
@@ -545,7 +547,7 @@ Before configuring nginx, we have to install *PHP-FPM*. FPM is short for FastCGI
 
         sudo systemctl restart varnish
 
-## Install the "Varnish HTTP Purge" Plugin
+## Install the WordPress "Varnish HTTP Purge" Plugin
 
 When you edit a WordPress page and update it, the modification won't be visible even if you refresh the browser because it will receive the cached version of the page. To purge the cached page automatically when you edit a page, you must install a free WordPress plugin called "Varnish HTTP Purge."
 
