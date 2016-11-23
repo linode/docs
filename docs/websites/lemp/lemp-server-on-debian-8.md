@@ -5,11 +5,7 @@ author:
 description: 'Installing a LEMP stack on Debian 8'
 keywords: 'nginx,lemp,lepp,perl,python,php,linux,web applications'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-<<<<<<< HEAD
-modified: Friday, June 1th, 2015
-=======
 modified: Friday, November 18th, 2016
->>>>>>> varnish-nginx-ssl-wordpress
 modified_by:
   name: Linode
 published: 'Friday, February 7th, 2014'
