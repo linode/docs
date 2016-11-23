@@ -5,8 +5,8 @@ author:
 description: 'Learn to integrate Varnish with nginx to serve cached WordPress content for both SSL and plain HTTP websites.'
 keywords: 'Varnish,cache,Nginx,WordPress,SSL,PHP-FPM'
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
-published: 'Monday, September 19th, 2016'
-modified: Monday, September 19th, 2016
+published: 'Wednesday, November 23rd, 2016'
+modified: Wednesday, November 23rd, 2016
 modified_by:
     name: Linode
 title: Use Varnish & nginx to Serve WordPress over SSL & HTTP on Debian 8
@@ -16,7 +16,7 @@ contributor:
 external_resources:
  - '[Varnish Documentation](https://varnish-cache.org/docs/index.html)'
  - '[NGINX Documentation](https://varnish-cache.org/docs/index.html)'
-image: https://linode.com/docs/assets/varnish-cache.png
+image: https://linode.com/docs/assets/varnish-nginx-ssl.png
 ---
 
 
