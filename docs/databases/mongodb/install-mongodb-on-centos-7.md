@@ -89,6 +89,15 @@ These are only a few basic configuration options that are set by default. For mo
 
 After making changes to the MongoDB configuration file, restart the service as shown in the following section.
 
+### Increase User Limits
+
+Issue the following commands to increase your open file and process limits for MongoDB:
+
+    echo "mongod     soft    nofiles   64000" >> /etc/security/limits.conf
+    echo "mongod     soft    nproc     64000" >> /etc/security/limits.conf
+
+These are the [recommended](https://docs.mongodb.com/v3.2/reference/ulimit/#recommended-ulimit-settings) settings, but you may need to further adjust them depending upon your individual usage. See the [MongoDB Documentation](https://docs.mongodb.com/v3.2/reference/ulimit/) for more information.
+
 ## Start and Stop MongoDB
 
 To start, restart, or stop the MongoDB service, issue the appropriate command from the following:
@@ -101,9 +110,13 @@ You can also enable MongoDB to start on boot:
 
     sudo systemctl enable mongod
 
+When `systemctl enable` is used, these settings are automatically applied via the new systemd unit.
+
+It may be necessary to adjust these values depending upon your needs. See the [MongoDB Documentation](https://docs.mongodb.com/v3.2/reference/ulimit/) for more information.
+
 ## Create Database Users
 
-If you enabled authentication in the [Configure MongoDB](#configure-mongodb) section, create a user administrator with credentials for use on the database: 
+If you enabled authentication in the [Configure MongoDB](#configure-mongodb) section, create a user administrator with credentials for use on the database:
 
 1.  Run the `mongo` command to open the shell:
 
@@ -148,7 +161,7 @@ If you enabled authentication in the [Configure MongoDB](#configure-mongodb) sec
     Permissions for different databases are handled in separate `roles` objects. The example in Step 7 creates the user, `example-user`, with read-only permissions for the `user-data` database and has read and write permissions for the `example-db` database we'll create in the [Manage Data and Collections](#manage-data-and-collections) section below.
 
 7.  Create a new, non-administrative user to enter test data. Change both `example-user` and `password` to something relevant and secure:
-       
+
         db.createUser({user: "example-user", pwd: "password", roles:[{role: "read", db: "user-data"}, {role:"readWrite", db: "exampleDB"}]})
 
     To create additional users, repeat Steps 6 and 7 as the administrative user, creating new usernames, passwords and roles by substituing the appropriate values.
@@ -223,7 +236,7 @@ Much of MongoDB's popularity comes from its ease of integration. Interactions wi
 
         db.exampleCollection.find({"name" : "John Doe"})
 
-    Running the above command returns a list of documents containing the `{"name" : "John Doe"}` object. 
+    Running the above command returns a list of documents containing the `{"name" : "John Doe"}` object.
 
 ## Additional MongoDB Functionality
 
