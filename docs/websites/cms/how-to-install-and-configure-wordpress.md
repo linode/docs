@@ -65,8 +65,8 @@ If you're using Ubuntu 16.04, please use our guide on how to [Install Wordpress 
 
 1.  Create an `src` directory under your website's directory to store pristine copies of WordPress's source files. In this guide, the home directory `/var/www/example.com/` is used as an example. Navigate to that new directory:
 
-        sudo mkdir /var/www/example.com/src/
-        cd /var/www/example.com/src/
+        sudo mkdir /var/www/html/example.com/src/
+        cd /var/www/html/example.com/src/
 
 2.  Set the owner of the new directory to be your web server's user. In this instance, our web server is Apache:
 
@@ -95,7 +95,7 @@ If you're using Ubuntu 16.04, please use our guide on how to [Install Wordpress 
 2.  As it stands, should you try to update WordPress or install new themes or plugins, you will be asked to input your FTP information. To bypass this, you must alter your `wp-config.php` file by adding the following line:
 
     {: .file-excerpt}
-    /var/www/example.com/public_html/wp-config.php
+    /var/www/html/example.com/public_html/wp-config.php
     :   ~~~ php
         /** Bypass FTP */
         define('FS_METHOD', 'direct');
@@ -103,7 +103,7 @@ If you're using Ubuntu 16.04, please use our guide on how to [Install Wordpress 
 
     Next, give WordPress permission to add and edit files in the `public_html` folder:
 
-        sudo chown -R www-data:www-data /var/www/example.com/public_html
+        sudo chown -R www-data:www-data /var/www/html/example.com/public_html
 
 3.  If using Apache, issue the following commands to ensure that `mod_rewrite` is enabled:
 
