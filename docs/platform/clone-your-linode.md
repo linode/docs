@@ -1,0 +1,1 @@
+../migrate-to-linode/disk-images/clone-your-linode.md
