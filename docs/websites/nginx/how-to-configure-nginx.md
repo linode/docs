@@ -436,7 +436,7 @@ nginx always fulfills request using the most specific match. So, for example:
     location ~ ^/BlogPlanet(/|/index\.php)$ { }
     ~~~
 
-When a `location` directive is followed by a tilde (**\~**), nginx performs a *regular expression* match. These matches are always case-sensitive. So, `IndexPage.php` would match the first example above, but `indexpage.php` would not. In the second example, the regular expression `^/BlogPlanet(/|index\.php)$` will match requests for `/BlogPlanet/` and `/BlogPlanet/index.php`, but **not** `/BlogPlanet`, `/blogplanet/`, or `/blogplanet/index.php`. nginx uses [Perl Compatible Regular Expressions](http://perldoc.perl.org/perlre.html) (PCRE).
+When a `location` directive is followed by a tilde (**~**), nginx performs a *regular expression* match. These matches are always case-sensitive. So, `IndexPage.php` would match the first example above, but `indexpage.php` would not. In the second example, the regular expression `^/BlogPlanet(/|index\.php)$` will match requests for `/BlogPlanet/` and `/BlogPlanet/index.php`, but **not** `/BlogPlanet`, `/blogplanet/`, or `/blogplanet/index.php`. nginx uses [Perl Compatible Regular Expressions](http://perldoc.perl.org/perlre.html) (PCRE).
 
 {: .file-excerpt }
 /etc/nginx/sites-available/example.com
@@ -445,7 +445,7 @@ When a `location` directive is followed by a tilde (**\~**), nginx performs a *r
     location ~* \.(md|mdwn|txt|mkdn)$ { }
     ~~~
 
-If you want matches to be case-*insensitive*, use a tilde with an asterisk (**\~**\*). The examples above all specify how nginx should process requests that end in a particular file extension. In the first example, any file ending in: `.pl`, `.PL`, `.cgi`, `.CGI`, `.perl`, `.Perl`, `.prl`, and `.PrL` (among others) will match the request.
+If you want matches to be case-*insensitive*, use a tilde with an asterisk (**~***). The examples above all specify how nginx should process requests that end in a particular file extension. In the first example, any file ending in: `.pl`, `.PL`, `.cgi`, `.CGI`, `.perl`, `.Perl`, `.prl`, and `.PrL` (among others) will match the request.
 
 {: .file-excerpt }
 /etc/nginx/sites-available/example.com
@@ -453,7 +453,7 @@ If you want matches to be case-*insensitive*, use a tilde with an asterisk (**\~
     location ^~ /images/IndexPage/ { }
     location ^~ /blog/BlogPlanet/ { }
     ~~~
-Adding a caret and tilde (**\^\~**) to your `location` directives tells nginx, if it makes a match for a particular string, to stop searching for more specific matches and use the directives here instead. Other than that, these directives work like the literal string matches in the first group. So, even if there's a more specific match later, if a request matches one of these directives, the settings here will be used. See below for more information about the order and priority of `location` directive processing.
+Adding a caret and tilde (**^~**) to your `location` directives tells nginx, if it makes a match for a particular string, to stop searching for more specific matches and use the directives here instead. Other than that, these directives work like the literal string matches in the first group. So, even if there's a more specific match later, if a request matches one of these directives, the settings here will be used. See below for more information about the order and priority of `location` directive processing.
 
 {: .file-excerpt }
 /etc/nginx/sites-available/example.com
@@ -466,8 +466,8 @@ Finally, if you add an equals sign (**=**) to the `location` setting, this force
 Directives are processed in the following order:
 
 1.  Exact string matches are processed first. If a match is found, nginx stops searching and fulfills the request.
-2.  Remaining literal string directives are processed next. If nginx encounters a match where the **\^\~** argument is used, it stops here and fulfills the request. Otherwise, nginx continues to process location directives.
-3.  All location directives with regular expressions (**\~** and **\~**\*) are processed. If a regular expression matches the request, nginx stops searching and fulfills the request.
+2.  Remaining literal string directives are processed next. If nginx encounters a match where the **^~** argument is used, it stops here and fulfills the request. Otherwise, nginx continues to process location directives.
+3.  All location directives with regular expressions (**~** and **~***) are processed. If a regular expression matches the request, nginx stops searching and fulfills the request.
 4.  If no regular expressions match, the most specific literal string match is used.
 
 Make sure each file and folder under a domain will match at least one `location` directive.
