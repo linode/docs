@@ -6,7 +6,7 @@ description: 'Use iptables to manage Netfilter rules.'
 keywords: 'iptables,networking,firewalls,filtering'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['security/firewalls/iptables/']
-modified: Monday, October 31st, 2016
+modified: Monday, November 28, 2016
 modified_by:
   name: Nick Brewer
 published: 'Friday, July 30th, 2010'
