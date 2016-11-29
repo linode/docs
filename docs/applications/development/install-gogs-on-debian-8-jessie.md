@@ -26,6 +26,8 @@ external_resources:
 
 [Gogs](http://gogs.io) is a self-hosted Git service, similar to GitLab. It is written in [Go](http://golang.org) and aims to be the easiest and most painless way to set up self-hosted Git service. Gogs is one of the best choices if you need to set up a private Git repository, but don't want to pay for the private plans on other Git services.
 
+![Install Gogs on Debian 8 Jessie](/docs/assets/gogs_tg.png "Install Gogs on Debian 8 Jessie")
+
 This tutorial shows you how to install and configure Gogs, using PostgreSQL for the database server and Nginx for the reverse proxy server. We will use `example.com` as the domain name for the site.
 
 {: .note}

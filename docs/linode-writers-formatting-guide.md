@@ -3,7 +3,7 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'The Linode Guides & Tutorials style guide for article submissions'
-keywords: 'style guide,format,formatting,how to write,write for us,write for linode,linode library,submissions'
+keywords: 'style guide,format,formatting,how to write,write for us,write for linode,linode docs,submissions'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['style-guide/']
 modified: Thursday, October 6th, 2016

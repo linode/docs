@@ -15,6 +15,8 @@ title: Running a Mail Server
 
 If you've followed along with the quick start guides up to this point, you've managed to [install Linux](/docs/getting-started), [secure your Linode](/docs/securing-your-server), and [start hosting a website](/docs/hosting-website). Now it's time to set up email. This guide explains how to install a mail server on your Linode and create mail accounts for your own domains. First, we'll help you decide whether to run your own mail server or let a third-party mail service handle it for you. Then we'll show you how a mail server works, present common mail server configurations, and provide basic instructions for getting a mail server up and running.
 
+![Running a Mail Server](/docs/assets/mail_server_tg.png "Running a Mail Server")
+
 ## Should You Run a Mail Server?
 
 First, you'll need to decide whether or not you want to run your own mail server. If you do, you'll have control over your domain's email, but you'll also have to deal with the hassles associated with setting up and running some pretty complex software. Using a third-party mail service is easier, but you'll sacrifice control and flexibility. In this section, we'll be discussing the benefits and drawbacks to running your own mail server, as well as how to choose an external mail service, if you decide to go that route.

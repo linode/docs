@@ -6,9 +6,9 @@ description: Setting Linode Package Mirrors.
 keywords: 'package,mirrors,linode,repository,Debian,Ubuntu,CentOS,yum,apt-get'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['package-mirrors/']
-modified: Wednesday, September 24, 2014
+modified: Monday, November 21st, 2016
 modified_by:
-  name: Kenyon Ralph
+  name: Linode
 published: 'Tuesday, February 11th, 2014'
 title: Package Mirrors
 ---
@@ -23,7 +23,8 @@ Linode offers public package mirrors for Ubuntu, Debian, and CentOS. When you in
 - <http://newark.mirrors.linode.com/>
 - <http://singapore.mirrors.linode.com/>
 - <http://tokyo.mirrors.linode.com/>
-
+- <http://tokyo2.mirrors.linode.com/>
+- 
 ## Package Mirror Settings
 
 For best performance, you will want to use the mirror in the same datacenter as your Linode. When using the Linode DNS resolvers, **mirrors.linode.com** will resolve to the mirror within the same datacenter. For public queries, mirrors.linode.com will return a round robin of the US locations.
