@@ -96,7 +96,7 @@ Issue the following commands to increase your open file and process limits for M
     echo "mongod     soft    nofiles   64000" >> /etc/security/limits.conf
     echo "mongod     soft    nproc     64000" >> /etc/security/limits.conf
 
-These are the [recommended](https://docs.mongodb.com/v3.2/reference/ulimit/#recommended-ulimit-settings) settings, but you may need to further adjust them depending upon your individual usage. See the [MongoDB Documentation](https://docs.mongodb.com/v3.2/reference/ulimit/) for more information.
+These are the [recommended](https://docs.mongodb.com/v3.2/reference/ulimit/#recommended-ulimit-settings) settings, but you may need to adjust them depending upon your individual usage. See the [MongoDB Documentation](https://docs.mongodb.com/v3.2/reference/ulimit/) for more information.
 
 ## Start and Stop MongoDB
 
@@ -109,10 +109,6 @@ To start, restart, or stop the MongoDB service, issue the appropriate command fr
 You can also enable MongoDB to start on boot:
 
     sudo systemctl enable mongod
-
-When `systemctl enable` is used, these settings are automatically applied via the new systemd unit.
-
-It may be necessary to adjust these values depending upon your needs. See the [MongoDB Documentation](https://docs.mongodb.com/v3.2/reference/ulimit/) for more information.
 
 ## Create Database Users
 
