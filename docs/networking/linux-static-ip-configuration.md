@@ -16,14 +16,13 @@ title: Linux Static IP Configuration
 Network configurations are generally assigned to a networked device in one of two methods, either by [DHCP](https://en.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol) or static assignments. These terms (and others) are often used when discussing IP addresses. In addition to IP addresses, a basic static configuration usually needs DNS resolvers and routing too.
 
 
-Upon a Linode's creation, an IPv4 address is selected from a pool of available addresses from the datacenter in which your Linode is hosted. Our [Network Helper](/docs/platform/network-helper) is *enabled* by default for new Linodes. This means that when you deploy a Linux distribution to your Linode and boot it, the host system detects which distro was selected and modifies the [network configuration files](/docs/platform/network-helper#what-files-are-affected) in the disk image to statically configure the Linode's IPv4 addresses, routing and DNS. Network Helper does not work with IPv6, so v6 addresses are assigned via SLAAC during deployment.
+Upon a Linode's creation, an IPv4 address is selected from a pool of available addresses from the datacenter in which your Linode is hosted. Our [Network Helper](/docs/platform/network-helper) is *enabled* by default for new Linodes. This means that when you deploy a Linux distribution to your Linode and boot it, the host system detects which distro was selected and modifies the [network configuration files](/docs/platform/network-helper#what-files-are-affected) in the disk image to statically configure the Linode's IPv4 addresses, routing and DNS. Your Linode's default IPv6 address will be assigned via SLAAC, but additional IPv6 addresses can be added [manually](docs/networking/native-ipv6-networking).
 
 If Network Helper is *disabled* (or if your Linode was created before Network Helper became default), a Linode will be assigned its IPv4 network configuration by DHCP from the datacenter's networking hardware. One limitation of DHCP is that it can only assign one IP address per DHCP lease request. If you want additional IPs for your Linode, static addressing must be used.
 
-Due to the limited availability of IPv4 addresses, additional v4 addresses for your Linode must be requested by [contacting support](/docs/support) with a technical justification. Once approved, v4 addresses can be added through the Remote Access tab of the Linode Manager. [Additional IPv6 addresses](/docs/networking/native-ipv6-networking#additional-ipv6-addresses) are also available by submitting a support ticket.
+Due to the limited availability of IPv4 addresses, additional public IPv4 addresses for your Linode must be requested by [contacting support](/docs/support) with a technical justification. Once approved, v4 addresses can be added through the Remote Access tab of the Linode Manager. [Additional IPv6 addresses](/docs/networking/native-ipv6-networking#additional-ipv6-addresses) are also available by submitting a support ticket.
 
-
-An alternative to using the Linode Manager for static addressing is to manually configure within your Linux distribution. This alternative method will be the focus of this guide. **Be aware that errors in network configurations can disconnect SSH sessions**, so it is advised that you use the [Linode Shell (Lish)](/docs/networking/using-the-linode-shell-lish) when making the changes below.
+An alternative to using [Network Helper](/docs/platform/network-helper) for static addressing is to manually configure it within your Linux distribution. This alternative method will be the focus of this guide. **Be aware that errors in network configurations can disconnect SSH sessions**, so it is advised that you use the [Linode Shell (Lish)](/docs/networking/using-the-linode-shell-lish) when making the changes below.
 
 ## General Network Configuration
 
@@ -114,7 +113,7 @@ The default ethernet interface file is located at `/etc/sysconfig/network-script
     PEERDNS="no"
 
     GATEWAY=198.51.100.1
-    
+
     # Your primary public IP address
     # The netmask is taken from the PREFIX (where 24 is a public IP, 17 is a private IP)
     IPADDR0=198.51.100.5
@@ -123,13 +122,13 @@ The default ethernet interface file is located at `/etc/sysconfig/network-script
     # To add a second public IP address:
     IPADDR1=198.51.100.10
     PREFIX1="24"
-    
+
     # To add a private IP address:
     IPADDR2=192.0.2.6
     PREFIX2="17"
 
     DOMAIN=members.linode.com
-    
+
     DNS1=203.0.113.1
     DNS2=203.0.113.2
     DNS3=203.0.113.3
@@ -140,7 +139,7 @@ To load your changes, restart the network service:
     sudo systemctl restart network
 
 {: .note}
-> CentOS 7 and recent versions of Fedora also include NetworkManager, which uses tools such as `nmtui` and `nmcli` to modify and create network configuration files. The above method to make the necessary modifications, however, is more straightforward. 
+> CentOS 7 and recent versions of Fedora also include NetworkManager, which uses tools such as `nmtui` and `nmcli` to modify and create network configuration files. The above method to make the necessary modifications, however, is more straightforward.
 
 ### CentOS 6
 
@@ -151,7 +150,7 @@ Like in CentOS 7, simply edit the ethernet interface file to configure a static 
 :   ~~~ conf
     BOOTPROTO=none
     PEERDNS=no
-    
+
     # Your primary static public IP address.
     IPADDR0=198.51.100.5
     PREFIX0=24
@@ -176,7 +175,7 @@ To add the resolv.conf option to rotate DNS providers, create a dhclient script:
     }
     ~~~
 
-For multiple static IP addresses, additional IPs are assigned to an alias you create for *eth0*. To use this alias, an additional file must be created. For example, an `eth0:1` file must be created for the *eth0:1* interface alias, `eth0:2` for *eth0:2*, etc. 
+For multiple static IP addresses, additional IPs are assigned to an alias you create for *eth0*. To use this alias, an additional file must be created. For example, an `eth0:1` file must be created for the *eth0:1* interface alias, `eth0:2` for *eth0:2*, etc.
 
 {: .file }
 /etc/sysconfig/network-scripts/ifcfg-eth0:1
@@ -216,8 +215,6 @@ Add the following to the interface's configuration file:
         address 192.0.2.6/17
     ~~~
 
-Note that static and dynamic addressing cannot be combined in Debian and Ubuntu systems. In order to statically configure additional IP addresses, you must also statically configure your default IP address.
-
 To get name resolution working, populate `resolv.conf` with your DNS IP addresses and resolv.conf options ([see man 5 resolv.conf](https://linux.die.net/man/5/resolv.conf)). The `domain`, `search` and `options` lines aren't necessary, but useful to have.
 
 {: .file }
@@ -232,7 +229,7 @@ To get name resolution working, populate `resolv.conf` with your DNS IP addresse
     options rotate
     ~~~
 
-Linode offers a minimal Debian installation which doesn't include Network Manager or resolvconf to manage /etc/resolv.conf. In this situation, it's alright to directly edit resolv.conf because nothing will overwrite your changes on a reboot or restart of networking services. Also be aware that resolv.conf can only use up to three `nameserver` entries.
+By default, Debian doesn't include Network Manager or resolvconf to manage /etc/resolv.conf. In this situation, it's alright to directly edit resolv.conf because nothing will overwrite your changes on a reboot or restart of networking services. Also be aware that resolv.conf can only use up to three `nameserver` entries.
 
 ### Gentoo
 
@@ -254,7 +251,7 @@ Networking in Gentoo utilizes the `netifrc` utility. Addresses are specified in 
     /etc/sysconfig/network/ifcfg-eth0
     : ~~~ conf
       BOOTPROTO=static
-      
+
       . . .
 
       # Your primary public IP address.
@@ -294,7 +291,7 @@ Networking in Gentoo utilizes the `netifrc` utility. Addresses are specified in 
 
 ### Ubuntu
 
-Add the following to the interface's configuration file. 
+Add the following to the interface's configuration file.
 
 {: .file-excerpt }
 /etc/network/interfaces
@@ -319,14 +316,17 @@ Add the following to the interface's configuration file.
         address 192.0.2.6/17
     ~~~
 
-Ubuntu incldes [resolvconf](http://packages.ubuntu.com/xenial/resolvconf) in its minimal installation, a small application which manages `/etc/resolv.conf`. Therefore, you do not want to edit `resolv.conf` directly. Instead, the DNS IP addresses and resolv.conf options need to be added to the interfaces file as shown above.
+Ubuntu includes [resolvconf](http://packages.ubuntu.com/xenial/resolvconf) in its minimal installation, a small application which manages the content of `/etc/resolv.conf`. Therefore, you do not want to edit `resolv.conf` directly. Instead, the DNS IP addresses and resolv.conf options need to be added to the interfaces file as shown above.
 
-Note that static and dynamic addressing cannot be combined in Debian and Ubuntu systems. In order to statically configure additional IP addresses, you must also statically configure your default IP address.
+If you've previously made use of [Network Helper](/docs/platform/network-helper) to manage your static configuration, you will need to reactivate resolvconf's dynamic update feature to use the setup provided here. You can do so by running:
 
+    dpkg-reconfigure resolvconf
+
+Hit **OK** and then **Yes** to apply the change.
 
 ## Disable Network Helper
 
-When statically configuring IP addresses, [Network Helper](/docs/platform/network-helper) should be disabled to avoid its overwriting your interface's configuration file in the future.
+When manually configuring static IP addresses, [Network Helper](/docs/platform/network-helper) should be disabled to avoid its overwriting your interface's configuration file in the future.
 
 1.  From the Linode Manager's **Dashboard**, choose **Edit** for the desired configuration profile.
 
