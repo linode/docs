@@ -196,6 +196,9 @@ We also recommend automating your certificate renewal since it can be easy to lo
 
     The above settings will be effective in most cases, but for more information about available cron job options, refer to the [Ubuntu Community Cron How-to](https://help.ubuntu.com/community/CronHowto) or the [CentOS Cron Documentation](https://www.centos.org/docs/5/html/5.2/Deployment_Guide/s2-autotasks-cron-configuring.html).
 
+    {: .note }
+    > The automatic renewal process requires access to port `443`, which would most likely be bound to your web server. You can configure your cron tasks to temporarily stop the web server, or use one of several methods documented [here](https://letsencrypt.readthedocs.io/en/latest/using.html#webroot).
+
 2.  Execute your modified command to add the cron job to your Linode.
 
 {: .caution}
