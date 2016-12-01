@@ -84,7 +84,18 @@ The configuration file for MongoDB is located at `/etc/mongod.conf`, and is writ
     - `port` is the port on which the MongoDB daemon will run
     - `bindIP` specifies the IP addresses MongoDB binds to in order to listen for connections from other applications
 
-These are only a few basic configuration options that are set by default. For more information on how to customize these and other values in your configuration file, refer to the [official MongoDB configuration guide](https://docs.mongodb.com/manual/reference/configuration-options/).
+These are only a few basic configuration options that are set by default. In addition to these, we recommend uncommenting the `security` section and adding the following:
+
+{: .file-excerpt}
+/etc/mongod.conf
+:   ~~~ conf
+    security:
+      authorization: enabled
+    ~~~
+
+The `authorization` option enables [role-based access control](https://docs.mongodb.com/manual/core/authorization/) for your databases. If no value is specified, any user will have the ability to modify any database. We'll explain how to create database users and set their permissions later in this guide.
+
+For more information on how to customize these and other values in your configuration file, refer to the [official MongoDB configuration guide](https://docs.mongodb.com/manual/reference/configuration-options/).
 
 After making changes to the MongoDB configuration file, restart the service as shown in the following section.
 
@@ -102,7 +113,7 @@ You can also enable MongoDB to start on boot:
 
 ## Create Database Users
 
-If you enabled authentication in the [Configure MongoDB](#configure-mongodb) section, create a user administrator with credentials for use on the database: 
+If you enabled role-based access control in the [Configure MongoDB](#configure-mongodb) section, create a user administrator with credentials for use on the database: 
 
 1.  Run the `mongo` command to open the shell:
 
