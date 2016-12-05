@@ -21,7 +21,7 @@ external_resources:
 
 MongoDB is a leading non-relational database management system, and a prominent member of the [NoSQL](https://en.wikipedia.org/wiki/NoSQL) movement. Rather than using the tables and fixed schemas of a relational database management system (RDBMS), MongoDB uses key-value storage in collection of documents. It also supports a number of options for horizontal scaling in large, production environments. In this guide, we'll explain how to set up a *sharded cluster* for highly available distributed datasets.
 
-There are two broad categories of scaling strategies for data. *Vertical scaling* involves adding more resources to a server so that it can handle larger datasets. The upside is that the process is usually as simple as migrating the database, but it often involves downtime and is difficult to automate. *Horizontal scaling* involves adding more servers to increase the resources, and is generally preferred in configurations that use fast-growing, dynamic datasets. Because it is based on the concept of adding more servers, not more resources on one server, datasets need to be broken into parts and distributed across the servers. Sharding refers to the breaking up of data into subsets so that it can be stored on separate database servers (a sharded cluster).
+There are two broad categories of scaling strategies for data. *Vertical scaling* involves adding more resources to a server so that it can handle larger datasets. The upside is that the process is usually as simple as migrating the database, but it often involves downtime and is difficult to automate. *Horizontal scaling* involves adding more servers to increase the resources, and is generally preferred in configurations that use fast-growing, dynamic datasets. Because it is based on the concept of adding more servers, not more resources on one server, datasets often need to be broken into parts and distributed across the servers. Sharding refers to the breaking up of data into subsets so that it can be stored on separate database servers (a sharded cluster).
 
 The commands and filepaths in this guide are based on those used in Ubuntu 16.04 (Xenial). However, the configuration is the same for any system running MongoDB 3.2. To use this guide with a Linode running CentOS 7, for example, simply adjust the distro-specific commands and configuration files accordingly.
 
@@ -29,11 +29,11 @@ The commands and filepaths in this guide are based on those used in Ubuntu 16.04
 
 1.  To follow along with this guide, you will need at least six Linodes. Their functions will be explained in the next section. Follow our guides to [install MongoDB](/docs/databases/mongodb/) on each Linode you want to use in your cluster.
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting the hostname and timezone on each Linode. We recommend choosing hostnames that correspond with each Linode's role in the cluster, explained in the next section.
+2.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting the hostname and timezone on each Linode. We recommend choosing hostnames that correspond with each Linode's role in the cluster, explained in the next section.
 
-2.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services for each Linode. 
+3.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services for each Linode. 
 
-3.  Update your system:
+4.  Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
 
@@ -45,10 +45,10 @@ The commands and filepaths in this guide are based on those used in Ubuntu 16.04
 Before we get started, let's review the components of the setup we'll be creating:
 
 -   **Config Server** - This stores metadata and configuration settings for the rest of the cluster. In this guide, we'll use one config server for simplicity but in production environments, this should be a replica set of at least three Linodes.
--   **Query Router** - The `mongos` daemon acts as an interface between the client application and the cluster shards. Since data is distributed among multiple servers, any queries need to be routed to the shard where it's stored. The query router is run on the application server. In this guide, we'll only be using one query router, although you should put one on each application server in your cluster.
+-   **Query Router** - The `mongos` daemon acts as an interface between the client application and the cluster shards. Since data is distributed among multiple servers, queries need to be routed to the shard where a given piece of information is stored. The query router is run on the application server. In this guide, we'll only be using one query router, although you should put one on each application server in your cluster.
 -   **Shard** - A shard is simply a database server that holds a portion of your data. Items in the database are divided among shards either by range or hashing, which we'll explain later in this guide. For simplicity, we'll use two single-server shards in our example.
 
-The problem inherent in this configuration is that if one of the shard servers experiences downtime, a portion of your data will become unavailable. To avoid this, you can use [replica sets](https://docs.mongodb.com/manual/reference/replica-configuration/) for each shard to ensure high availability.
+The problem in this configuration is that if one of the shard servers experiences downtime, a portion of your data will become unavailable. To avoid this, you can use [replica sets](https://docs.mongodb.com/manual/reference/replica-configuration/) for each shard to ensure high availability. For more information, refer to our guide on [creating MongoDB replica sets](/docs/databases/mongodb/create-a-mongodb-replica-set).
 
 ## Configure Hosts File
 
@@ -76,7 +76,7 @@ Replace the IP addresses above with the IP addresses for each Linode. Also subst
 
 In this section, we'll create a replica set of config servers. The config servers store metadata for the states and organization of your data. This includes information about the locations of data *chunks*, which is important since the data will be distributed across multiple shards. 
 
-Rather than using a single config server, we'll use a replica set to ensure the integrity of the metadata. This enables master-slave (or primary-secondary) replication among the three servers and automates failover so that if one config server is down, a new primary is elected and requests will continue to be processed.
+Rather than using a single config server, we'll use a replica set to ensure the integrity of the metadata. This enables master-slave (primary-secondary) replication among the three servers and automates failover so that if your primary config server is down, a new one will be elected and requests will continue to be processed.
 
 The steps below should be performed on each config server individually, unless otherwise specified.
 
@@ -100,7 +100,7 @@ The steps below should be performed on each config server individually, unless o
           replSetName: configReplSet
         ~~~
 
-    `configReplSet` is the name of the replica set to be configured. This can be modified, but we recommend using a descriptive name to help you keep track of the replica sets you'll be configuring.
+    `configReplSet` is the name of the replica set to be configured. This value can be modified, but we recommend using a descriptive name to help you keep track of the replica sets you'll be configuring.
 
 3.  Uncomment the `sharding` section and configure the host's role in the cluster as a config server:
 
@@ -115,17 +115,17 @@ The steps below should be performed on each config server individually, unless o
 
         sudo systemctl restart mongod
 
-5.  On any *one* of your config server Linodes, connect to the MongoDB shell over port 27019:
+5.  On *one* of your config server Linodes, connect to the MongoDB shell over port 27019:
 
         mongo mongo-config-1:27019
 
-    Modify the hostname to match your own if you used a different naming convention than our example. We're connecting to the `mongo` shell on the first config server in this example, but you can connect to any of the config servers in your cluster since we'll be adding each host in the next step.
+    Modify the hostname to match your own if you used a different naming convention than our example. We're connecting to the `mongo` shell on the first config server in this example, but you can connect to any of the config servers in your cluster since we'll be adding each host from the same connection.
 
 6.  From the `mongo` shell, initialize the replica set:
 
         rs.initiate( { _id: "configReplSet", configsvr: true, members: [ { _id: 0, host: "mongo-config-1:27019" }, { _id: 1, host: "mongo-config-2:27019" }, { _id: 2, host: "mongo-config-3:27019" } ] } )
 
-    You should see a message indicating the operation succeeded:
+    Substitute your own hostnames if applicable. You should see a message indicating the operation succeeded:
 
         { "ok" : 1 }
 
@@ -208,7 +208,7 @@ In this section, we'll set up the MongoDB query router. The query router obtains
 
 All steps here should be performed from your query router Linode (this will be the same as your application server). Since we're only configuring one query router, we'll only need to do this once. However, it's also possible to use a replica set of query routers. If you're using more than one (i.e., in a high availability setup), perform these steps on each query router Linode.
 
-1.  If you don't have it already, install the GNU Screen package. This will allow you to run the `mongos` service in a separate session:
+1.  Install the GNU Screen package. This will allow you to run the `mongos` service in a separate session, since you'll need shell access once `mongos` is running:
 
         sudo apt-get install screen
 
@@ -272,7 +272,7 @@ Now that the query router is able to communicate with the config servers, we mus
 
 ## Configure Sharding
 
-At this stage, the components of your cluster are all connected and communicating with one another. The final step in preparing your cluster for use is enabling sharding. Enabling sharding takes place in stages due to the organization of data in MongoDB. Let's briefly review the main data structures:
+At this stage, the components of your cluster are all connected and communicating with one another. The final step is to enable sharding. Enabling sharding takes place in stages due to the organization of data in MongoDB. To understand how data will be distrubuted, let's briefly review the main data structures:
 
 -   **Databases** - The broadest data structure in MongoDB, used to hold groups of related data.
 -   **Collections** - Analogous to tables in traditional relational database systems, collections are the data structures that comprise databases
@@ -280,7 +280,7 @@ At this stage, the components of your cluster are all connected and communicatin
 
 ### Enable Sharding at Database Level
 
-First, we'll enable sharding at the database level, which means that a given database can be distributed among different shards. 
+First, we'll enable sharding at the database level, which means that collections in a given database can be distributed among different shards. 
 
 1.  Access the `mongos` shell on your query router. This can be done from any server in your cluster:
 
@@ -304,7 +304,7 @@ First, we'll enable sharding at the database level, which means that a given dat
 
         db.databases.find()
 
-    This will return a list of all databases with some information about them. In this case, there should be only one entry for the `exampleDB` database we just created:
+    This will return a list of all databases with some information about them. In our case, there should be only one entry for the `exampleDB` database we just created:
 
         { "_id" : "exampleDB", "primary" : "shard0001", "partitioned" : true }
 
@@ -323,7 +323,7 @@ This is not intended to be a comprehensive guide to choosing a sharding strategy
 Now that the database is available for sharding and we've chosen a strategy, we need to enable sharding at the collections level. This allows the documents within a collection to be distributed among your shards. We'll use a hash-based sharding strategy for simplicity.
 
 {: .note}
-> It's not always necessary to shard every collection in a database. Depending on what data each collection contains, it may be more prudent to store certain collections in one location since database queries to a single shard are faster. Before sharding a collection, carefully analyze its anticipated contents and the ways it will be used by your application.
+> It's not always necessary to shard every collection in a database. Depending on what data each collection contains, it may be more efficient to store certain collections in one location since database queries to a single shard are faster. Before sharding a collection, carefully analyze its anticipated contents and the ways it will be used by your application.
 
 1.  Connect to the `mongo` shell on your query router if you're not already there:
 
@@ -351,11 +351,15 @@ This section is optional. To ensure your data is being distributed evenly in the
 
         mongo mongo-query-router:27017
 
-2.  Run the following code in the `mongo` shell to generate 500 simple documents and insert them into `exampleCollection`:
+2.  Switch to your `exampleDB` database:
+
+        use exampleDB
+
+3.  Run the following code in the `mongo` shell to generate 500 simple documents and insert them into `exampleCollection`:
 
         for (var i = 1; i <= 500; i++) db.exampleCollection.insert( { x : i } )
 
-3.  Check your data distribution:
+4.  Check your data distribution:
 
         db.exampleCollection.getShardDistribution()
 
@@ -377,6 +381,10 @@ This section is optional. To ensure your data is being distributed evenly in the
          Shard shard0001 contains 47% data, 47% docs in cluster, avg obj size on shard : 33B
 
     The sections beginning with `Shard` give information about each shard in your cluster. Since we only added two shards there are only two sections, but if you add more shards to the cluster, they'll show up here as well. The `Totals` section provides information about the collection as a whole, including its distribution among the shards. Notice that distribution is not perfectly equal. The hash function does not guarantee absolutely even distribution, but with a carefully chosen shard key it will usually be fairly close.
+
+5.  When you're finished, delete the test data:
+
+        db.dropDatabase()
 
 ## Next Steps
 
