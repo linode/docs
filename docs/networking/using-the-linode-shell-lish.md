@@ -243,6 +243,6 @@ These are the fingerprints for the Lish gateway in our Tokyo2 data center (lish-
     RSA 2c:60:9a:ce:cf:4b:8d:4e:8f:09:ae:e0:c2:b0:fb:b7
     DSA 2d:0f:b0:a5:d0:bd:4a:71:1a:75:dc:de:b1:06:61:a6
     ECDSA 24:2d:6d:89:72:04:d9:99:6c:b6:30:d8:35:b4:27:5f 
-    ECDSA 256 0sRmstQ+6lfa4KwnAIQvuZMunq8KKNmu/n4KeAcAXmg
+    ECDSA SHA256 0sRmstQ+6lfa4KwnAIQvuZMunq8KKNmu/n4KeAcAXmg
 
 
