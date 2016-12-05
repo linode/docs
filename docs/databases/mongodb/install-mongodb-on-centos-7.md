@@ -42,16 +42,16 @@ The most current stable version of MongoDB is 3.2 and, as of this writing, the d
 
 Create a new file, `/etc/yum.repos.d/mongodb-org-3.2.repo`, so that you can install the latest release using `yum`. Add the following contents to the file:
 
-    {: .file}
-    /etc/yum.repos.d/mongodb-org-3.2.repo
-    :   ~~~
-        [mongodb-org-3.2]
-        name=MongoDB Repository
-        baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.2/x86_64/
-        gpgcheck=1
-        enabled=1
-        gpgkey=https://www.mongodb.org/static/pgp/server-3.2.asc
-        ~~~
+{: .file}
+/etc/yum.repos.d/mongodb-org-3.2.repo
+:   ~~~
+    [mongodb-org-3.2]
+    name=MongoDB Repository
+    baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.2/x86_64/
+    gpgcheck=1
+    enabled=1
+    gpgkey=https://www.mongodb.org/static/pgp/server-3.2.asc
+    ~~~
 
 ## Install MongoDB
 
@@ -64,7 +64,7 @@ This command installs `mongodb-org`, a meta-package that includes the following:
 -   `mongodb-org-server` - The standard MongoDB daemon, and relevant init scripts and configurations
 -   `mongodb-org-mongos` - The MongoDB Shard daemon
 -   `mongodb-org-shell` - The MongoDB shell, used to interact with MongoDB via the command line
--   `mongodb-org-tools` - Contains a few basic tools to restore, import, and export data, as well as a variety of other functions
+-   `mongodb-org-tools` - Contains a few basic tools to restore, import, and export data, as well as a variety of other functions.
 
 These packages provide a good base that will serve most use cases, and we recommend installing them all. However, if you want a more minimal installation, you can selectively install packages from the above list rather than using the `mongodb-org` metapackage.
 
@@ -77,15 +77,17 @@ The configuration file for MongoDB is located at `/etc/mongod.conf`, and is writ
 - `systemLog` specifies the various logging options, explained below:
     - `destination` tells MongoDB whether to store the log output as a file or syslog
     - `logAppend` specifies whether to append new entries to the end of an existing log when the daemon restarts (as opposed to creating a backup and starting a new log upon restarting)
-    - `path` tells the daemon where to send its logging information (`/var/log/mongodb/mongod.log` by default)
+    - `path` tells the daemon where to send its logging information (`/var/log/mongodb/mongod.log` by default).
 - `storage` specifies the settings that tell MongoDB how to store data, which we'll explain below:
     - `dbPath` indicates where the database files will be stored (`/var/lib/mongo` by default)
-    - `journal.enabled` enables or disables the journal, which ensures data files are recoverable
+    - `journal.enabled` enables or disables the journal, which ensures that data files are recoverable.
 - `net` specifies the various network options, explained below:
-    - `port` is the port on which the MongoDB daemon will run
-    - `bindIP` specifies the IP addresses MongoDB binds to in order to listen for connections from other applications
+    - `port` is the port on which the MongoDB daemon will listen
+    - `bindIP` specifies the IP addresses MongoDB binds to in order to listen for connections from other applications.
 
-These are only a few basic configuration options that are set by default. In addition to these, we recommend uncommenting the `security` section and adding the following:
+These are only a few basic configuration options that are set by default.
+
+We **strongly** recommend uncommenting the `security` section and adding the following:
 
 {: .file-excerpt}
 /etc/mongod.conf
@@ -125,7 +127,7 @@ You can also enable MongoDB to start on boot:
 
 If you enabled role-based access control in the [Configure MongoDB](#configure-mongodb) section, create a user administrator with credentials for use on the database:
 
-1.  Run the `mongo` command to open the shell:
+1.  Open the `mongo` shell:
 
         mongo
 
@@ -133,7 +135,7 @@ If you enabled role-based access control in the [Configure MongoDB](#configure-m
 
         use admin
 
-3.  Use the following command to create an administrative user with the ability to create other users on any database. For security, change `mongo-admin` and `password` to something secure:
+3.  Use the following command to create an administrative user with the ability to create other users on any database. For better security, change the values `mongo-admin` and `password`:
 
         db.createUser({user: "mongo-admin", pwd: "password", roles:[{role: "userAdminAnyDatabase", db: "admin"}]})
 
@@ -157,17 +159,17 @@ If you enabled role-based access control in the [Configure MongoDB](#configure-m
 
         mongo -u mongo-admin -p --authenticationDatabase admin
 
-    The `-u` and `-p --authenticationDatabase` options in the above command are required in order to authenticate connections to the shell. Without authentication, the MongoDB shell can be accessed, but it will not allow connections to databases.
+    The `-u`, `-p`, and `--authenticationDatabase` options in the above command are required in order to authenticate connections to the shell. Without authentication, the MongoDB shell can be accessed, but will not allow connections to databases.
 
-    The `mongo-admin` user created in Step 3 is purely administrative based on the roles specified. It is defined as a user administrator for all databases, but does not have any database permissions itself. You may use it to create additional users and define their roles. If you are using multiple applications with MongoDB, set up different users with custom permissions for their corresponding databases.
+    The `mongo-admin` user created in Step 3 is purely administrative based on the roles specified. It is defined as an administrator of user for all databases, but does not have any database permissions itself. You may use it to create additional users and define their roles. If you are using multiple applications with MongoDB, set up different users with custom permissions for their corresponding databases.
 
-6.  As the `mongo-admin` user, create a new database to store regular user data for authentication. The following example calls it `user-data`:
+6.  As the `mongo-admin` user, create a new database to store regular user data for authentication. The following example calls this database `user-data`:
 
         use user-data
 
-    Permissions for different databases are handled in separate `roles` objects. The example in Step 7 creates the user, `example-user`, with read-only permissions for the `user-data` database and has read and write permissions for the `example-db` database we'll create in the [Manage Data and Collections](#manage-data-and-collections) section below.
+7.  Permissions for different databases are handled in separate `roles` objects. This example creates the user, `example-user`, with read-only permissions for the `user-data` database and has read and write permissions for the `exampleDB` database we'll create in the [Manage Data and Collections](#manage-data-and-collections) section below.
 
-7.  Create a new, non-administrative user to enter test data. Change both `example-user` and `password` to something relevant and secure:
+    Create a new, non-administrative user to enter test data. Change both `example-user` and `password` to something relevant and secure:
 
         db.createUser({user: "example-user", pwd: "password", roles:[{role: "read", db: "user-data"}, {role:"readWrite", db: "exampleDB"}]})
 
@@ -181,7 +183,7 @@ For more information on access control and user management, as well as other tip
 
 ## Manage Data and Collections
 
-Much of MongoDB's popularity comes from its ease of integration. Interactions with databases are done via JavaScript methods, and [drivers for other languages](http://docs.mongodb.org/ecosystem/drivers/) are available. This section will demonstrate a few basic features, but we encourage you to do further research based on your specific use case.
+Much of MongoDB's popularity comes from its ease of integration. Interactions with databases are done via JavaScript methods, but [drivers for other languages](http://docs.mongodb.org/ecosystem/drivers/) are available. This section will demonstrate a few basic features, but we encourage you to do further research based on your specific use case.
 
 1.  Open the MongoDB shell using the `example-user` we created above:
 
@@ -243,7 +245,7 @@ Much of MongoDB's popularity comes from its ease of integration. Interactions wi
 
         db.exampleCollection.find({"name" : "John Doe"})
 
-    Running the above command returns a list of documents containing the `{"name" : "John Doe"}` object.
+    Running the command above returns a list of documents containing the `{"name" : "John Doe"}` object.
 
 ## Additional MongoDB Functionality
 
@@ -251,6 +253,6 @@ As noted above, MongoDB has an available collection of language-specific drivers
 
 The `mongodb-org-tools` package we installed also includes several other tools such as `mongodump` and `mongorestore` for creating and restoring backups and snapshots, as well as `mongoimport` and `mongoexport` for importing and exporting content from extended JSON, or supported CSV or TSV files.
 
-To view the available options or how to use a particular method, append `.help()` to the end. For example, to see a list of options for the `find` method in Step 6 of [Manage Data and Collections](#manage-data-and-collections):
+To view the available options or how to use a particular method, append `.help()` to the end of your commands. For example, to see a list of options for the `find` method in Step 6 of [Manage Data and Collections](#manage-data-and-collections):
 
     db.exampleCollection.find().help()
