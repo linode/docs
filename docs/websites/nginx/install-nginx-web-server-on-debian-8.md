@@ -18,6 +18,8 @@ external_resources:
 
 Nginx is a lightweight, high-performance web server designed for the purpose of delivering large amounts of static content quickly and with efficient use of system resources. In contrast to the [Apache server](/docs/web-servers/apache/), nginx uses an asynchronous event-driven model which provides more predictable performance under load.
 
+![Install Nginx Web Server on Debian 8](/docs/assets/nginx-on-debian-8.png "Install Nginx Web Server on Debian 8")
+
 {: .note}
 >
 >This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
