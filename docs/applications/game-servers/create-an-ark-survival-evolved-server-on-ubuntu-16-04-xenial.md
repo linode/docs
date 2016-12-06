@@ -20,23 +20,23 @@ This guide will show you how to set up a personal [ARK: Survival Evolved](http:/
 {: .note}
 > The steps in this guide require root privileges unless otherwise noted. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
-##Before you Begin
+##Before You Begin
 
 1.  To connect to your ARK server, you must have a copy of the [ARK](http://www.playark.com/) game client.
 
 2.  In keeping with the [system requirements](http://ark.gamepedia.com/Dedicated_Server_Setup#Hardware) for an ARK server, we recommend using our **Linode 8GB** plan or higher when following these steps.
 
-1.  Update your Linode's software:
+3.  Update your Linode's software:
 
         apt-get update && apt-get upgrade
 
-2.  Install **SteamCMD**, the Steam command line interface:
+4.  Install **SteamCMD**, the Steam command line interface:
 
         apt-get install steamcmd
 
     During the installation process, you will be prompted to agree to the Steam License Agreement. Select **I Agree** and hit **Ok** to accept the terms of the agreement.
 
-3.  For security reasons, you'll create a separate `ark` user to run your server application. Take note of the password you assign:
+5.  For security reasons, you'll create a separate `ark` user to run your server application. Take note of the password you assign:
 
         adduser ark
 
@@ -55,7 +55,7 @@ This guide will show you how to set up a personal [ARK: Survival Evolved](http:/
 
         echo "session required pam_limits.so" >> /etc/pam.d/common-session
 
-##Install your ARK Server
+##Install Your ARK Server
 
 1.  Switch your session to that of the `ark` user, and create a `server` directory that will contain your ARK server files:
 
@@ -72,7 +72,7 @@ This guide will show you how to set up a personal [ARK: Survival Evolved](http:/
 
     This will take several minutes to complete.
 
-##Create a Systemd Unit for your ARK Server
+##Create a systemd Unit for Your ARK Server
 
 By creating a systemd unit file for your ARK server, it can be set to start automatically after a reboot.
 
@@ -80,7 +80,7 @@ By creating a systemd unit file for your ARK server, it can be set to start auto
 
         su -
 
-3.  Create a new systemd service file and add the following values to it. Fill in the `SessionName` value on line 12 with the name you'll use to identify your ARK server:
+2.  Create a new systemd service file and add the following values to it. Fill in the `SessionName` value on line 12 with the name you'll use to identify your ARK server:
 
     {: .file }
     /lib/systemd/system/ark.service
@@ -104,16 +104,16 @@ By creating a systemd unit file for your ARK server, it can be set to start auto
 
     Save and exit the file.
 
-4.  Update systemd to apply your changes:
+3.  Update systemd to apply your changes:
 
         systemctl daemon-reload
 
-5.  Enable your new systemd unit and start your ARK server:
+4.  Enable your new systemd unit and start your ARK server:
 
         systemctl enable ark.service
         systemctl start ark
 
-## Configure your ARK Server
+## Configure Your ARK Server
 
 Once you've started the server, you can add or remove settings by editing the `GameUserSettings.ini` file under `/home/ark/server/ShooterGame/Saved/Config/LinuxServer`. Add the following settings within the `[ServerSettings]` section of that file, replacing the "example" passwords with your own:
 
@@ -129,11 +129,11 @@ Once you've started the server, you can add or remove settings by editing the `G
 {: .note}
 > If you choose to use the `ServerPassword` option, when connecting to the server you will need to click on **Show Password Protected**, or manually add the server to your favorites list. Both options are shown in the next section.
 
-There are a number of options that can be configured within this file - for more information take a look at the [server configuration](http://ark.gamepedia.com/Server_Configuration#GameUserSettings.ini) section of the ARK wiki.
+There are a number of options that can be configured within this file - for more information take a look at the [Server Configuration](http://ark.gamepedia.com/Server_Configuration#GameUserSettings.ini) section of the ARK wiki.
 
 ##Connect the Game Client to Your ARK Server
 
-There are two ways to find and connect to your new ARK server. Because the game is currently in pre-release and under heavy development, some functionality may change, or work intermittently. While finding your server from within the game itself is often easier, it's not always reliable (as of this guides publication), so we'll also go over how to add it to your favorite servers in the Steam client.
+There are two ways to find and connect to your new ARK server. Because the game is currently in pre-release and under heavy development, some functionality may change, or work intermittently. While finding your server from within the game itself is often easier, it's not always reliable (as of this guide's publication), so we'll also go over how to add it to your favorite servers in the Steam client.
 
 ### In-Game Server List
 
@@ -147,18 +147,18 @@ There are two ways to find and connect to your new ARK server. Because the game 
 
 3.  Select your server, and click **Join**. If your server is password-protected, you'll be prompted to enter the password.
 
-### Steam Servers Favorites
+### Steam Server Favorites
 1.  Open the Steam application on your local machine, select the **File** (or **View** on OS X) menu and navigate to **Servers**.
 
-2.  Under **Favorites** select **Add A Server** and direct Steam to connect to your Linode's IP address or domain name:
+2.  Under **FAVORITES** select **ADD A SERVER** and direct Steam to connect to your Linode's IP address or domain name:
 
     [![Steam Add Server](/docs/assets/ark-add-server-small.png)](/docs/assets/ark-add-server.png)
 
-3.  Once Steam identifies your ARK server, it should appear in the Servers list. Choose your server and hit **Connect**:
+3.  Once Steam identifies your ARK server, it should appear in the **SERVERS** list. Choose your server and hit **CONNECT**:
 
     [![Steam Servers](/docs/assets/ark-servers-small.png)](/docs/assets/ark-servers.png)
 
-    Alternately, you can select *Favorites* from the **Server Filter** in the in-game server list:
+    Alternately, you can select **Favorites** from the **Server Filter** in the in-game server list:
 
     [![ARK: Survival Evolved Favorites List](/docs/assets/ark-favorites-list-small.png "ARK: Survival Evolved Favorites List")](/docs/assets/ark-favorites-list.png "ARK: Survival Evolved Favorites List")
 
