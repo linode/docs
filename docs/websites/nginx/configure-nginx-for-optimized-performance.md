@@ -152,7 +152,7 @@ Timeouts can also drastically improve performance.
 
 ### Static Asset Serving
 
-If your site serves static assets (such as CSS/JavaScript/images), nginx can cache these files for a short period of time.  Adding this within your configuration block tells nginx to cache 1000 files for 30 seconds, excluding any files that haven't been accessed in 20 seconds, and only files that have 5 times or more. If you aren't deploying frequently you can safely bump up these numbers higher.
+If your site serves static assets (such as CSS/JavaScript/images), nginx can cache these files for a short period of time.  Adding this within your configuration block tells nginx to cache 1000 files for 30 seconds, excluding any files that haven't been accessed in 20 seconds, and only files that have been accessed at least 5 times in that timeframe. If you aren't deploying frequently you can safely bump up these numbers higher.
 
 {: .file-excerpt}
 /etc/nginx/nginx.conf
