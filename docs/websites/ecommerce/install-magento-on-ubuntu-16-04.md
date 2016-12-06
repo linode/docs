@@ -2,22 +2,22 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'A collection of security practices to help you prevent common system exploits.'
+description: 'Install Magento Community Edition on Ubuntu 16.04 to manage your e-commerce site.'
 keywords: 'magento,ubuntu,e-commerce,magento ubuntu'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Tuesday, October 18th, 2016
+modified: Tuesday, December 6th, 2016
 modified_by:
   name: Phil Zona
-published: 'Tuesday, October 18th, 2016'
+published: 'Tuesday, December 6th, 2016'
 title: Install Magento on Ubuntu 16.04
 external_resources:
  - '[Magento Documentation](http://docs.magento.com/m2/ce/user_guide/getting-started.html)'
  - '[Magento Resources Library](https://magento.com/resources)'
 ---
 
-In this guide you'll learn how to install Magento on Ubuntu 16.04. Magento Community Edition (CE) is a free, open-source e-commerce platform. It's one of the most popular solutions for self-hosted online stores due to its simple yet powerful admin panel and large community of developers.
+In this guide you'll learn how to install Magento on Ubuntu 16.04. Magento Community Edition (CE) is a free, open-source e-commerce platform. It's one of the most popular solutions for self-hosted online stores due to its simple yet powerful admin panel and large developer community.
 
-Because of the resources needed by some Magento plugins, it is strongly recommended that you have at least a **Linode 4GB**. We'll need to allocate up to 2GB of memory for PHP and Magento to use, so running Magento on a smaller Linode may result in server crashes or unreliability under medium to heavy traffic.
+Considering the resources some Magento plugins demand, we strongly recommend that you have at least a **Linode 4GB**. You'll need to allocate up to 2GB of memory for PHP and Magento to use; running Magento on a smaller Linode may result in server crashes or unreliability under medium to heavy traffic.
 
 {: .note}
 > This guide explains how to install the latest Magento release at the time of publication. For the Community Edition, this will be version 2.1.x. If you plan to use data, themes, and extensions from an older Magento site, be sure to check for compatibility issues between the two versions since not everything may function as it did in older releases.
@@ -119,7 +119,7 @@ If you previously installed a LAMP stack using our guide, you should already hav
 
 ### Configure PHP
 
-Because Magento is a PHP application, we'll need to make some adjustments to our system's PHP settings. 
+Magento is a PHP application, so you'll need to make some adjustments to your system's PHP settings. 
 
 1.  Modify the following settings in your `php.ini` files for the CLI and Apache PHP configurations. These files can be found at `/etc/php/7.0/apache2/php.ini` and `/etc/php/7.0/cli/php.ini`:
 
@@ -151,11 +151,11 @@ Because Magento is a PHP application, we'll need to make some adjustments to our
 
 In this section, we'll explain how to get the Magento Community Edition (CE) software on your Linode. There are several ways to do this, but here we'll cover the simplest method.
 
-1.  On your local computer, download a copy of Magento from their [official website](https://www.magentocommerce.com/download). There are several versions available, but we recommend downloading the latest release. As of this writing, the latest version is 2.1.2:
+1.  On your local computer, download a copy of Magento from their [official website](https://www.magentocommerce.com/download). Several versions are available, but we recommend downloading the latest release. As of this writing, the latest version is 2.1.2:
 
     ![The Magento download screen](/docs/assets/magento-download-screen.png)
 
-    Next to your selected version, there will be a dropdown menu that says "Select your format". Choose the option ending with the `.tar.gz` extension and click **Download**. Be sure to note where you saved the downloaded file.
+    Next to your selected version, there will be a dropdown menu that says "Select your format." Choose the option ending with the `.tar.gz` extension and click **Download**. Be sure to note where you saved the downloaded file.
 
     ![Select the option ending in ".tar.gz"](/docs/assets/magento-tar-gz.png)
 
@@ -168,13 +168,13 @@ In this section, we'll explain how to get the Magento Community Edition (CE) sof
 
         scp /path/on/local/Magento-CE-2.*.tar.gz user@yourhost:~/
 
-    Alternatively, you can use an FTP client like [Filezilla](/docs/tools-reference/file-transfer/filezilla) if you're running Windows or are otherwise unable to use a command-line tool like `scp`.
+    Alternatively, you can use an FTP client, like [Filezilla](/docs/tools-reference/file-transfer/filezilla), if you're running Windows or are otherwise unable to use a command-line tool like `scp`.
 
 3.  Log into your Linode via SSH as your standard user account. Navigate to the document root you specified in your virtual host file:
 
         cd /var/www/html/example.com/public_html
 
-    Extracting the archive directly into your webroot, as we'll do in the next step, will make it accessible as the main page on your domain. For instance, if your domain is `example.com`, the Magento storefront will display when you visit `example.com` in your browser. 
+    Extracting the archive directly into your webroot, as you'll do in the next step, will make it accessible as the main page on your domain. For instance, if your domain is `example.com`, the Magento storefront will display when you visit `example.com` in your browser. 
 
     If you want to run a Magento store as a subsection of your site, move and extract the archive in a directory within your webroot. For instance, if you intend to make your site accessible by visiting `example.com/store`, create the subdirectory `/var/www/html/example.com/public_html/store` and navigate to that directory before proceeding to the next step.
 
@@ -185,11 +185,11 @@ In this section, we'll explain how to get the Magento Community Edition (CE) sof
 
 ### Configure Users and Permissions
 
-1.  Create a Magento user, which will run the software. For simplicity, we'll call this user `magento`:
+1.  Create a Magento user, which will run the software. For simplicity, call this user `magento`:
 
         sudo useradd magento
 
-2.  Add the Magento user to the web server's user group. For Apache, the default user is `www-data`:
+2.  Next, add the Magento user to the web server's user group. For Apache, the default user is `www-data`:
 
         sudo usermod -g www-data magento
 
@@ -229,7 +229,7 @@ In this section, we'll explain how to get the Magento Community Edition (CE) sof
     -   **admin-user** / **admin-password** - These are your login credentials for the Magento admin control panel. Be sure to set a secure password here and store it in a safe place. Note that the Magento script requires you to use both letter and number characters in your password, and will return an error if you do not.
     -   **db-name** - This is the name of the database you set up in MySQL. In our example, we called it `magento`, but if you chose a different value, substitute it here.
     -   **db-host** - If you're running Magento on the same server as its database, use `localhost` here. If not, this value will be the hostname of the server on which your database lives.
-    -   **db-user** - This is the MySQL database user you set up previously. In our example, we called it `magento` but if you chose a different name use that here instead.
+    -   **db-user** - This is the MySQL database user you set up previously. In our example, we called it `magento` but if you chose a different name, use that here instead.
     -   **db-password** - This will be the password you configured for the `magento` MySQL user.
 
     {: .note}
@@ -248,7 +248,7 @@ Congratulations, you've successfully installed Magento on your Linode! You can l
 
 ## Configure Magento
 
-The dashboard is functional at this point, but there is still work to be done before the site is ready to use. In this section, we'll explain how to set up cron jobs and secure the Magento software to be suitable for a live e-commerce site.
+The dashboard is functional at this point, but you've still got work to do before the site is ready to use. In this section, we'll explain how to set up cron jobs and secure the Magento software to be suitable for a live e-commerce site.
 
 ### Set Cron Jobs
 
@@ -327,7 +327,7 @@ Once you've installed your SSL certificate and configured Apache to serve your s
 
     ![Enter your domain with the HTTPS protocol.](/docs/assets/magento-secure-base-url.png)
 
-    This assumes that you used `/var/www/html/example.com/public_html` as your Magento installation directory as we did in our examples. If you installed Magento in a subdirectory of your web root, you will need to modify that here. For example, if you installed Magento in a folder called `/var/www/html/example.com/public_html/magento`, you'll need to enter:
+    This assumes that you used `/var/www/html/example.com/public_html` as your Magento installation directory, as we did in our examples. If you installed Magento in a subdirectory of your web root, you will need to modify that here. For example, if you installed Magento in a folder called `/var/www/html/example.com/public_html/magento`, you'll need to enter:
 
         https://example.com/magento
 
@@ -343,5 +343,5 @@ You may wish to install extensions to add functionality, or themes to change you
 
 You may also want to configure caching with Varnish or other software to increase the speed of your site. For more information on this and other configuration options, see [Magento's configuration guide](http://devdocs.magento.com/guides/v2.1/config-guide/bk-config-guide.html).
 
-Finally, be sure to keep your Magento software and its components up to date. Not only is this important to the security of your site, it will allow you to use the latest features and functions Magento has to offer. For more information, refer to the [Magento upgrade documentation](http://devdocs.magento.com/guides/v2.1/comp-mgr/bk-compman-upgrade-guide.html).
+Finally, be sure to keep your Magento software and its components up to date. Not only is this important to the security of your site, but it will also allow you to use the latest features and functions Magento has to offer. For more information, refer to the [Magento upgrade documentation](http://devdocs.magento.com/guides/v2.1/comp-mgr/bk-compman-upgrade-guide.html).
 

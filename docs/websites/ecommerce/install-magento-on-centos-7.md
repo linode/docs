@@ -5,10 +5,10 @@ author:
 description: 'Install Magento Community Edition on CentOS 7 to manage your e-commerce site.'
 keywords: 'magento,centos,e-commerce,magento centos'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Tuesday, October 18th, 2016
+modified: Tuesday, December 6th, 2016
 modified_by:
   name: Phil Zona
-published: 'Tuesday, October 18th, 2016'
+published: 'Tuesday, December 6th, 2016'
 title: Install Magento on CentOS 7
 external_resources:
  - '[Magento Documentation](http://docs.magento.com/m2/ce/user_guide/getting-started.html)'
@@ -17,7 +17,7 @@ external_resources:
 
 In this guide you'll learn how to install Magento on CentOS 7. Magento Community Edition (CE) is a free, open-source e-commerce platform. It's one of the most popular solutions for self-hosted online stores due to its simple yet powerful admin panel and large developer community.
 
-Considering the resources some Magento plugins demand, we strongly recommend that you have at least a **Linode 4GB**. You'll need to allocate up to 2GB of memory for PHP and Magento to use; so running Magento on a smaller Linode may result in server crashes or unreliability when encountering medium to heavy traffic.
+Considering the resources some Magento plugins demand, we strongly recommend that you have at least a **Linode 4GB**. You'll need to allocate up to 2GB of memory for PHP and Magento to use; running Magento on a smaller Linode may result in server crashes or unreliability under medium to heavy traffic.
 
 {: .note}
 > This guide explains how to install the latest Magento release at the time of publication. For the Community Edition, this will be version 2.1.x. If you plan to use data, themes and extensions from an older Magento site, be sure to check for compatibility issues between the two versions since not everything may function as it did in older releases.
@@ -205,7 +205,7 @@ In this section, we'll explain how to get the Magento Community Edition (CE) sof
 
         scp /path/on/local/Magento-CE-2.*.tar.gz user@yourhost:~/
 
-    Alternately, you can use an FTP client, like [Filezilla](/docs/tools-reference/file-transfer/filezilla), if you're running Windows or are otherwise unable to use a command-line tool like `scp`.
+    Alternatively, you can use an FTP client, like [Filezilla](/docs/tools-reference/file-transfer/filezilla), if you're running Windows or are otherwise unable to use a command-line tool like `scp`.
 
 3.  Log into your Linode via SSH as your standard user account. Navigate to the document root you specified in your virtual host file:
 
@@ -226,7 +226,7 @@ In this section, we'll explain how to get the Magento Community Edition (CE) sof
 
         sudo useradd magento 
 
-2.  Next, you'll need to add the Magento user to the web server's user group. For Apache, the default user is `apache`:
+2.  Next, add the Magento user to the web server's user group. For Apache, the default user is `apache`:
 
         sudo usermod -g apache magento
 
@@ -285,8 +285,7 @@ Congratulations, you've successfully installed Magento on your Linode! You can l
 
 ## Configure Magento
 
-The dashboard is functional at this point, but you've still got work to do before the site is ready to use. 
-In this section, we'll explain how to set up cron jobs and secure the Magento software to be suitable for a live e-commerce site.
+The dashboard is functional at this point, but you've still got work to do before the site is ready to use. In this section, we'll explain how to set up cron jobs and secure the Magento software to be suitable for a live e-commerce site.
 
 ### Set Cron Jobs
 
@@ -316,7 +315,7 @@ For more information about setting up cron jobs for development servers and cust
 
 ### Configure X-Frame Options
 
-We strongly recommended that you disable the display of your Magento storefront in a frame to prevent [clickjacking](https://en.wikipedia.org/wiki/Clickjacking) attacks. To do this, modify the following line in your `env.php` file:
+We strongly recommended that you disable the ability to display your Magento storefront in a frame to prevent [clickjacking](https://en.wikipedia.org/wiki/Clickjacking) attacks. To do this, modify the following line in your `env.php` file:
 
 {: .file-excerpt}
 /var/www/html/example.com/public_html/app/etc/env.php
@@ -383,5 +382,5 @@ You may wish to install extensions to add functionality, or themes to change you
 
 You may also want to configure caching with Varnish or other software to increase the speed of your site. For more information on this and other configuration options, see [Magento's configuration guide](http://devdocs.magento.com/guides/v2.1/config-guide/bk-config-guide.html).
 
-Finally, be sure to keep your Magento software and its components up to date. Not only is this important to the security of your site, but also it will allow you to use the latest features and functions Magento has to offer. For more information, refer to the [Magento upgrade documentation](http://devdocs.magento.com/guides/v2.1/comp-mgr/bk-compman-upgrade-guide.html).
+Finally, be sure to keep your Magento software and its components up to date. Not only is this important to the security of your site, but it will also allow you to use the latest features and functions Magento has to offer. For more information, refer to the [Magento upgrade documentation](http://devdocs.magento.com/guides/v2.1/comp-mgr/bk-compman-upgrade-guide.html).
 
