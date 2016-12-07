@@ -205,6 +205,12 @@ Click **Yes, delete this sucker** to permanently delete the zone, including all 
 
 You have successfully removed the DNS record. It can take up to 30 minutes for the changes to be removed.
 
+	{: .note }
+	> IMPORTANT
+	> Once removed, you _MUST_ delete the Linode nameserver entries from the domain at the registrar level. 
+	> This is a very important step; if not performed, someone could use your domain without you
+	> permission and potentially do bad things!
+
 ## Troubleshoot
 
 Having problems with your DNS records? We recommend reviewing this section to help get your DNS settings back on track. Follow these tips to troubleshoot DNS issues.
