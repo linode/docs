@@ -7,4 +7,4 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 title: PostgreSQL
 ---
 
-PostgreSQL is an open source relational database management system. Known for high performance and standards compliance, this database system serves as the foundation for many popular open source software applications. These guides will help you install and configure PostgreSQL on your Linode VPS.
+PostgreSQL is an open source relational database management system. Known for high performance and standards compliance, this database system serves as the foundation for many popular open source software applications. These guides will help you install and configure PostgreSQL on your Linode.
