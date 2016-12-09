@@ -170,3 +170,12 @@ Nginx needs to be directed to check whether the page each permalink refers to ex
         index index.php index.html index.htm;
         try_files $uri $uri/ /index.php?$args;
     ~~~
+    
+## Install PHP Extensions for XML-RPC and others (Optional)
+
+WordPress and many of its plugins leverage additional PHP extensions.  For example, to use XML-RPC to access Wordpress via the mobile app, you'll need php-xmlrpc.
+
+We can download and install php-xmlrpc and several more of the most popular PHP extensions for use with WordPress with these commands:
+
+    sudo apt-get update
+    sudo apt-get install php-curl php-gd php-mbstring php-mcrypt php-xml php-xmlrpc
