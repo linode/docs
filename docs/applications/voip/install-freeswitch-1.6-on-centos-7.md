@@ -9,7 +9,7 @@ published: 'Friday, December  9th, 2016'
 title: 'How to Install Freeswitch 1.6 on CentOS 7'
 contributor:
     name: Eriol Pole
-	email: eriolpole@protonmail.ch
+    email: eriolpole@protonmail.ch
 ---
 
 ## Introduction
