@@ -17,6 +17,7 @@ external_resources:
  - '[Freeswitch WiKi - Sofia SIP](http://wiki.freeswitch.org/wiki/Sofia-SIP)'
  - '[Freeswitch WiKi - Security](https://freeswitch.org/confluence/display/FREESWITCH/Security)'
  - '[Freeswitch WiKi - SIP TLS](https://wiki.freeswitch.org/wiki/SIP_TLS)'
+ - '[Mozilla Public License](https://www.mozilla.org/en-US/MPL/)' 
 ---
 
 ## Introduction
