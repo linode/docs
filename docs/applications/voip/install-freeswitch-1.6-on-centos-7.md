@@ -168,9 +168,9 @@ We are now on a working freeswitch paltform. Let's make some test to be sure tha
 
  `/quit` 
 
- or 
+ or from keyboard press
 
- "ctrl + d "
+  ctrl + d
 
 4. Start freeswitch service
 
