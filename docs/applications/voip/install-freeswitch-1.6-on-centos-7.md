@@ -31,15 +31,15 @@ Use can use freeswitch for building a PBX Telefony Server with all of its feaute
 
     `whoami`
 
-If you see that you are root than go on:
+ If you see that you are root than go on:
 
     `root`
 	
-If not take sudo privileges by executing the following command:
+ If not take sudo privileges by executing the following command:
 
     `sudo su`
 	
-Follow by your root password.
+ Follow by your root password.
 
 {: .note}
 >
@@ -47,7 +47,7 @@ Follow by your root password.
 	
 3. Make sure to check that the server ip up to date byt excuting the following command: 
 
-`yum -y update`
+ `yum -y update`
 
 4. Disable SELinux: Navigate to `/etc/selinux/config` and modify it as below:
 
@@ -63,7 +63,7 @@ Follow by your root password.
 
 5. Reboot your server:
 
-`reboot`
+ `reboot`
 
 
 ## Install Base Packages
