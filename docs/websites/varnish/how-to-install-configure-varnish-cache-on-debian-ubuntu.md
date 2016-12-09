@@ -2,17 +2,17 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: How to install and setup Varnish Cache
-keywords: 'Varnish,Ubuntu 12.04,Cache,'
+description: How to install and configure Varnish Cache on Debian and Ubuntu
+keywords: 'Varnish,Ubuntu,Debian,Cache,'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/varnish/']
-modified: Friday, February 7th, 2014
+alias: ['web-servers/varnish/','websites/varnish/getting-started-with-varnish-cache/']
+modified: Friday, December 7, 2016
 contributor:
     name: Kevin Cupp
 modified_by:
-  name: Alex Fornuto
+  name: Edward Angert
 published: 'Wednesday, February 5th, 2014'
-title: Getting Started with Varnish Cache
+title: How to Install and Configure Varnish Cache on Debian and Ubuntu
 external_resources:
  - '[Official Varnish Documentation](https://www.varnish-cache.org/docs)'
 ---
@@ -25,27 +25,33 @@ Need to handle a lot of traffic? Caching is one of the best ways to maximize the
 
 ![Getting Started with Varnish Cache](/docs/assets/varnish_tg.png "Getting Started with Varnish Cache")
 
-Varnish works by handling requests BEFORE they make it to your backend, whether your backend is Apache, Nginx or anything else. If it doesn't have a request cached, it will forward the request to your backend and then cache its output. You can optionally store these cached requests in memory, so they're retrieved extremely fast.
+Varnish works by handling requests before they make it to your backend, whether your backend is Apache, nginx, or anything else. If it doesn't have a request cached, it will forward the request to your backend and then cache its output. You can optionally store these cached requests in memory, so they're retrieved extremely quickly.
 
-Sound good? Let's get started setting up a basic Varnish install. The examples in this guide run inside an Ubuntu 12.04 LTS install. We will also be operating in the context of setting up caching for a basic website hosted by Apache.
+If your server is nginx and you plan to use Varnish cache to serve WordPress, visit Linode's guide to [Using Varnish & nginx to Serve WordPress over SSL & HTTP on Debian 8](/docs/websites/varnish/use-varnish-and-nginx-to-serve-wordpress-over-ssl-and-http-on-debian-8).
 
-{: .note }
+## Before You Begin
+
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+
+2.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account, harden SSH access and remove unnecessary network services.
+
+3.  Install and configure a [web server](/docs/websites/) like Apache or nginx.
+
+4.  Update your system:
+
+        sudo apt update && sudo apt upgrade
+
+{: .note}
 >
-> The steps in this guide are written assuming the root user is running them. If you are not logged in as Root you will need to use 'sudo' for certain steps.
+> This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
-## Installation
+## Install Varnish Cache
 
-1.  First update current packages and install Varnish from apt:
+1.  Install Varnish:
 
-        $ apt-get update
-        $ apt-get upgrade
-        $ apt-get install varnish
+        sudo apt install varnish
 
-2.  Next thing we'll do is edit the daemon options for Varnish to instruct it to load our custom configuration:
-
-        $ nano /etc/default/varnish
-
-	Scroll down to this chunk of the configuration file to find the current defaults:
+2.  In the Varnish configuration, edit the `-f /etc/varnish/` line of the `DAEMON_OPTS` section to instruct it to load a custom configuration. The following example uses `user.vcl`, but you can name the file whatever you prefer:
 
     {: .file-excerpt }
     /etc/default/varnish
@@ -58,32 +64,28 @@ Sound good? Let's get started setting up a basic Varnish install. The examples i
         #
         DAEMON_OPTS="-a :6081 \
                      -T localhost:6082 \
-                     -f /etc/varnish/default.vcl \
+                     -f /etc/varnish/user.vcl \
                      -S /etc/varnish/secret \
-                     -s malloc,256m"
+                     -s malloc,1G"
         ~~~
 
-We particularly need to edit the `-f` option. Change it to:
+It's important to have your configuration outside of the default VCL file or a future package update may overwrite it.
 
-    -f /etc/varnish/user.vcl \
+The configuration above allocates a maximum of 1GB of memory to store its cache items. If you need to adjust this allocation, simply edit the number in the `-s malloc,1G` line:
 
-Or whatever name you prefer. It's important to have your configuration outside of the default VCL file or a future package update may overwrite it.
+    -s malloc,1G
 
-From the configuration above, we also see that Varnish is being told to store its cache items in memory and to take a maximum of 256MB of memory to do that. If you need to adjust this allocation, simply edit the value on this line:
+We'll come back and edit more daemon options more later. For now, let's start configuring Varnish to cache and present our backend.
 
-    -s malloc,256m
+## Basic Varnish Configuration
 
-We'll come back and edit these daemon options more later. For now, let's start configuring Varnish to cache and present our backend.
-
-## Basic Configuration
-
-Varnish is configured via the [Varnish Configuration Language (VCL)](https://www.varnish-cache.org/docs/3.0/reference/vcl.html). Once the configuration file is loaded, Varnish translates and compiles the VCL code into a C program that runs along side the Varnish process.
+Varnish is configured via the [Varnish Configuration Language (VCL)](https://www.varnish-cache.org/docs/4.0/reference/vcl.html). Once the configuration file is loaded, Varnish translates and compiles the VCL code into a C program that runs along side the Varnish process.
 
 Let's start customizing our VCL. Start by copying `default.vcl` to a new file, this will give us a good starting point:
 
-    $ cd /etc/varnish
-    $ cp default.vcl user.vcl
-    $ nano user.vcl
+    cd /etc/varnish
+    sudo cp default.vcl user.vcl
+    nano user.vcl
 
 ### Configure Backend
 
@@ -94,9 +96,9 @@ Let's start customizing our VCL. Start by copying `default.vcl` to a new file, t
             .port = "80";
         }
 
-2.  This change alone should get Varnish up and running for us with reasonable defaults. To see, restart Varnish:
+2.  This change alone should get Varnish up and running with reasonable defaults. To see, restart Varnish:
 
-        service varnish restart
+        sudo systemctl restart varnish
 
 3.  By default, Varnish runs on port 6081, so in a web browser, access port 6081 on your server:
 
@@ -109,7 +111,7 @@ Let's start customizing our VCL. Start by copying `default.vcl` to a new file, t
 
     **Age** is how old this item in the cache is in seconds. Refresh the page a few times and ensure the `Age` header is incrementing properly. If it stays at **0**, your page likely isn't caching and it could be for a number of reasons. If your website sets cookies, Varnish assumes it is displaying user-specific content and therefore will not cache the request. Or if your web application sets Expires headers that are too short, or if it sets a strict `no-cache` policy in its caching headers, Varnish will also not cache that.
 
-### Configuring Cache Time-to-Live (TTL)
+### Configure Cache Time-to-Live (TTL)
 
 By default, Varnish will cache requests for two minutes. If you'd like to adjust this, go back and open your VCL file and override the `vcl_fetch` subroutine by adding this below your backend declaration:
 
@@ -133,7 +135,7 @@ If we're happy with our basic Varnish set up, it's time to tell Varnish and Apac
 
         <VirtualHost *:8080>
 
-3.  Now we configure Varnish to start on port 80. Go back into our daemon options file (`/etc/default/varnish`) and find the uncommented options where we were editing before. The line with the `-a` flag specifies the port number, change that to `80`:
+3.  Configure Varnish to start on port 80. Go back into our daemon options file `/etc/default/varnish` and find the uncommented options where we were editing before. The line with the `-a` flag specifies the port number, change that to `80`:
 
         DAEMON_OPTS="-a :80 \
 
@@ -146,14 +148,14 @@ If we're happy with our basic Varnish set up, it's time to tell Varnish and Apac
 
 5.  It's time to reload the configuration in both Apache and Varnish. With this, Varnish should be facing live to our site visitors and serving our site from Apache:
 
-        $ service apache2 reload
-        $ service varnish restart
+        sudo systemctl reload apache2
+        sudo systemctl restart varnish
 
-## Advanced Configuration
+## Advanced Varnish Configuration
 
 The VCL provides much control over how requests are cached, and it's likely you may need to make some custom modifications for your situation. Let's go over a few common VCL modifications, as well as some tips and tricks.
 
-### Excluding Requests From Caching
+### Exclude Requests from Varnish Cache
 
 If your Linode runs multiple websites, it's common to want to exclude some of them from Varnish's caching. To do this, we'll dig through Varnish's request object to get information about the request and conditionally tell varnish to **pass** the request though to the backend with no caching.
 
@@ -170,7 +172,7 @@ We need to override the `vcl_recv` subroutine in our VCL file which is run each 
 
 You can see we're checking for two conditions we don't want to cache. The first is any request that is for `example.com`, the second is for any URI requests that begin with `/admin`. If any of these are true, Varnish will not cache the request.
 
-### Unsetting Cookies
+### Unset Cookies
 
 As mentioned earlier, if Varnish detects your website is setting cookies, it assumes your site needs to interact with those cookies and show dynamic content accordingly, and Varnish will not cache those pages. We can override this behavior by unsetting the `Cookie` variable on Varnish's `req.http` object.
 
@@ -194,7 +196,7 @@ For this case, we'll check `req.http.Cookie` for a cookie called "logged\_in", a
         unset req.http.Cookie;
     }
 
-### Cache POST, or Not to Cache POST?
+### To Cache POST, or Not to Cache POST?
 
 It's very likely you don't want to cache POST requests because they probably need to interact with the backend to gather dynamic data or setup a user's session. In our example above, we chose not to cache requests if the user is logged in. Well we need to make sure they can log in to begin with. An easy approach is to skip POST requests all together.
 
