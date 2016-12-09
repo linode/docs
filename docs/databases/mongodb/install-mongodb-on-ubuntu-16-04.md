@@ -79,10 +79,10 @@ The configuration file for MongoDB is located at `/etc/mongod.conf`, and is writ
 - `systemLog` specifies the various logging options, explained below:
     - `destination` tells MongoDB whether to store the log output as a file or syslog
     - `logAppend` specifies whether to append new entries to the end of an existing log when the daemon restarts (as opposed to creating a backup and starting a new log upon restarting)
-    - `path` tells the daemon where to send its logging information (`/var/log/mongodb/mongod.log` by default).
+    - `path` tells the daemon where to send its logging information (`/var/log/mongodb/mongod.log` by default)
 - `net` specifies the various network options, explained below:
     - `port` is the port on which the MongoDB daemon will run
-    - `bindIP` specifies the IP addresses MongoDB binds to in order to listen for connections from other applications.
+    - `bindIP` specifies the IP addresses MongoDB binds to in order to listen for connections from other applications
 
 These are only a few basic configuration options that are set by default.
 
