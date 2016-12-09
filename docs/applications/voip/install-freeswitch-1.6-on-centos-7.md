@@ -41,9 +41,9 @@ Use can use freeswitch for building a PBX Telefony Server with all of its feaute
 	
  Follow by your root password.
 
-{: .note}
->
-> Check centos [User and Group Management Tools](https://www.centos.org/docs/5/html/Deployment_Guide-en-US/s1-users-tools.html) and [How To Become Root](https://wiki.centos.org/TipsAndTricks/BecomingRoot)
+ {: .note}
+ >
+ > Check centos [User and Group Management Tools](https://www.centos.org/docs/5/html/Deployment_Guide-en-US/s1-users-tools.html) and  [How To Become Root](https://wiki.centos.org/TipsAndTricks/BecomingRoot)
 	
 3. Make sure to check that the server ip up to date byt excuting the following command: 
 
@@ -57,9 +57,9 @@ Use can use freeswitch for building a PBX Telefony Server with all of its feaute
         SELINUX=disabled
         ~~~
 
-{: .note}
->
-> To edit a file in centos please use vi and follow  [Vi Guide] (https://www.cs.colostate.edu/helpdocs/vi.html)
+ {: .note}
+ >
+ > To edit a file in centos please use vi and follow  [Vi Guide] (https://www.cs.colostate.edu/helpdocs/vi.html)
 
 5. Reboot your server:
 
@@ -70,76 +70,76 @@ Use can use freeswitch for building a PBX Telefony Server with all of its feaute
 
 1. Install Development Tools
 
-`yum -y groupinstall "Development tools"`
+ `yum -y groupinstall "Development tools"`
 
 2. Enable Epel Repository
 
-`yum -y install epel-release`
+ `yum -y install epel-release`
 
 3. Enable Freeswitch Repository
 
-`rpm -Uvh http://files.freeswitch.org/freeswitch-release-1-6.noarch.rpm`
+ `rpm -Uvh http://files.freeswitch.org/freeswitch-release-1-6.noarch.rpm`
 
 4. Update
 
-`yum update`
+ `yum update`
 
 ## Install Freeswitch
 
 1. Install dependencies for freeswitch
 
-`yum install -y git gcc-c++ autoconf automake libtool wget python ncurses-devel zlib-devel libjpeg-devel openssl-devel e2fsprogs-devel sqlite-devel libcurl-devel pcre-devel speex-devel ldns-devel libedit-devel libxml2-devel libyuv-devel opus-devel libvpx-devel libvpx2* libdb4* libidn-devel unbound-devel libuuid-devel lua-devel libsndfile-devel yasm-devel`
+ `yum install -y git gcc-c++ autoconf automake libtool wget python ncurses-devel zlib-devel libjpeg-devel openssl-devel e2fsprogs-devel sqlite-devel libcurl-devel pcre-devel speex-devel ldns-devel libedit-devel libxml2-devel libyuv-devel opus-devel libvpx-devel libvpx2* libdb4* libidn-devel unbound-devel libuuid-devel lua-devel libsndfile-devel yasm-devel`
 
 2. Navigate to `/usr/local/src`
 
-`cd /usr/local/src`
+ `cd /usr/local/src`
 
 3. Clone freeswitch version 1.6 from git 
 
-`git clone https://freeswitch.org/stash/scm/fs/freeswitch.git`
+ `git clone https://freeswitch.org/stash/scm/fs/freeswitch.git`
 
 4. Navigate to `/usr/local/src/freeswitch`
 
-`cd /usr/local/src/freeswitch`
+ `cd /usr/local/src/freeswitch`
 
 5. Execute bootstrap.sh
 
-`./bootstrap.sh -j`
+ `./bootstrap.sh -j`
 
 6. Enable mod_xml_curl, mod_xml_cdr, mod_perl (If you want to use calling card features)
 
-`sed -i "s#\#xml_int/mod_xml_curl#xml_int/mod_xml_curl#g" /usr/local/src/freeswitch/modules.conf`
-`sed -i "s#\#mod_xml_cdr#mod_xml_cdr#g" /usr/local/src/freeswitch/modules.conf`
+ `sed -i "s#\#xml_int/mod_xml_curl#xml_int/mod_xml_curl#g" /usr/local/src/freeswitch/modules.conf`
+ `sed -i "s#\#mod_xml_cdr#mod_xml_cdr#g" /usr/local/src/freeswitch/modules.conf`
 
-{: .note}
->
-> To add a module use have to remove the "#" comment character at the begining of the line. To remove a module we have to add the "#" comment character. 
+ {: .note}
+ >
+ > To add a module use have to remove the "#" comment character at the begining of the line. To remove a module we have to add the "#"    comment character. 
 
 7. Compile
 
-`./configure`
+ `./configure`
 
 8. Install Freeswitch with sound files
 
-`make`
-`make install`
-`make cd-sounds-install`
-`make cd-moh-install`
+ `make`
+ `make install`
+ `make cd-sounds-install`
+ `make cd-moh-install`
 
 9. Install mod_perl ( Optional )
 
-`sed -i "s#\#languages/mod_perl#languages/mod_perl#g" /usr/local/src/freeswitch/modules.conf`
-`./configure`
-`make mod_perl-install`
+ `sed -i "s#\#languages/mod_perl#languages/mod_perl#g" /usr/local/src/freeswitch/modules.conf`
+ `./configure`
+ `make mod_perl-install`
 
 10. Create symbolic links for Freeswitch executables
 
-`ln -s /usr/local/freeswitch/bin/freeswitch /usr/local/bin/freeswitch`
-`ln -s /usr/local/freeswitch/bin/fs_cli /usr/local/bin/fs_cli`
+ `ln -s /usr/local/freeswitch/bin/freeswitch /usr/local/bin/freeswitch`
+ `ln -s /usr/local/freeswitch/bin/fs_cli /usr/local/bin/fs_cli`
 
 11. Reboot server 
 
-`reboot`
+ `reboot`
 
 ## Try It
 
@@ -147,53 +147,53 @@ We are now on a working freeswitch paltform. Let's make some test to be sure tha
 
 1. Check freeswitch status
 
-`service freeswitch status`
+ `service freeswitch status`
 
 2. Enter to freeswitch cli
 
-`fs_cli`
+ `fs_cli`
 
 3. Exit freeswithc cli
 
-`/exit` 
+ `/exit` 
 
-or 
+ or 
 
-`/quit` 
+ `/quit` 
 
-or 
+ or 
 
-"ctrl + d "
+ "ctrl + d "
 
 4. Start freeswitch service
 
-`service freeswitch start`
+ `service freeswitch start`
 
-or 
-
-`/etc/init.d/freeswitch start`
+ or 
+ 
+ `/etc/init.d/freeswitch start`
 
 5. Stop freeswitch service
 
-`service freeswitch stop`
+ `service freeswitch stop`
 
-or 
+ or 
 
-`/etc/init.d/freeswitch stop`
+ `/etc/init.d/freeswitch stop`
 
 6. Type /help <enter> to see a list of commands
 
-`/help`
+ `/help`
 
 ## What to do Next ?!
 
-1. Configure sip accounts using the freeswitch documentation
+ 1. Configure sip accounts using the freeswitch documentation
 
-[Configuring SIP](https://wiki.freeswitch.org/wiki/Configuring_SIP)
-[Sofia SIP](http://wiki.freeswitch.org/wiki/Sofia-SIP)
+ [Configuring SIP](https://wiki.freeswitch.org/wiki/Configuring_SIP)
+ [Sofia SIP](http://wiki.freeswitch.org/wiki/Sofia-SIP)
 
 
-2. Securing freeswitch
+ 2. Securing freeswitch
 
-[Secure Freeswitch](https://freeswitch.org/confluence/display/FREESWITCH/Security)
-[SIP TLS](https://wiki.freeswitch.org/wiki/SIP_TLS)
+ [Secure Freeswitch](https://freeswitch.org/confluence/display/FREESWITCH/Security)
+ [SIP TLS](https://wiki.freeswitch.org/wiki/SIP_TLS)
