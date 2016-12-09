@@ -109,6 +109,7 @@ Use can use freeswitch for building a PBX Telefony Server with all of its feaute
 6. Enable mod_xml_curl, mod_xml_cdr, mod_perl (If you want to use calling card features)
 
  `sed -i "s#\#xml_int/mod_xml_curl#xml_int/mod_xml_curl#g" /usr/local/src/freeswitch/modules.conf`
+ 
  `sed -i "s#\#mod_xml_cdr#mod_xml_cdr#g" /usr/local/src/freeswitch/modules.conf`
 
  {: .note}
