@@ -9,7 +9,14 @@ published: 'Friday, December  9th, 2016'
 title: 'How to Install Freeswitch 1.6 on CentOS 7'
 contributor:
     name: Eriol Pole
-    email: eriolpole@protonmail.ch
+external_resources:
+ - '[Centos Documentation - User and Group Management Tools](https://www.centos.org/docs/5/html/Deployment_Guide-en-US/s1-users-tools.html)'
+ - '[Centos Documentation - Becoming Root](https://wiki.centos.org/TipsAndTricks/BecomingRoot)'
+ - '[Basic Vi Commands](https://www.cs.colostate.edu/helpdocs/vi.html)'
+ - '[Freeswitch WiKi - Configuring SIP](https://wiki.freeswitch.org/wiki/Configuring_SIP)'
+ - '[Freeswitch WiKi - Sofia SIP](http://wiki.freeswitch.org/wiki/Sofia-SIP)'
+ - '[Freeswitch WiKi - Security](https://freeswitch.org/confluence/display/FREESWITCH/Security)'
+ - '[Freeswitch WiKi - SIP TLS](https://wiki.freeswitch.org/wiki/SIP_TLS)'
 ---
 
 ## Introduction
@@ -197,10 +204,12 @@ We are now on a working freeswitch paltform. Let's make some test to be sure tha
  1. Configure sip accounts using the freeswitch documentation
 
  [Configuring SIP](https://wiki.freeswitch.org/wiki/Configuring_SIP)
+ 
  [Sofia SIP](http://wiki.freeswitch.org/wiki/Sofia-SIP)
 
 
  2. Securing freeswitch
 
  [Secure Freeswitch](https://freeswitch.org/confluence/display/FREESWITCH/Security)
+ 
  [SIP TLS](https://wiki.freeswitch.org/wiki/SIP_TLS)
