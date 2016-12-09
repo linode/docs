@@ -123,19 +123,25 @@ Use can use freeswitch for building a PBX Telefony Server with all of its feaute
 8. Install Freeswitch with sound files
 
  `make`
+ 
  `make install`
+ 
  `make cd-sounds-install`
+ 
  `make cd-moh-install`
 
 9. Install mod_perl ( Optional )
 
  `sed -i "s#\#languages/mod_perl#languages/mod_perl#g" /usr/local/src/freeswitch/modules.conf`
+ 
  `./configure`
+ 
  `make mod_perl-install`
 
 10. Create symbolic links for Freeswitch executables
 
  `ln -s /usr/local/freeswitch/bin/freeswitch /usr/local/bin/freeswitch`
+ 
  `ln -s /usr/local/freeswitch/bin/fs_cli /usr/local/bin/fs_cli`
 
 11. Reboot server 
