@@ -21,6 +21,7 @@ Freeswitch is a free telephony platform that operates under a free software lice
 Use can use freeswitch for building a PBX Telefony Server with all of its feautes ( connecting internat phones, IVR, integrating with PSTN networks, configuring VoIP providers, sip trunking etc ), integrating it with other open source web application to built an open source voip switch ( including billing, configuring providers and customers)
 
 {: .note}
+>
 > The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide. 
 
 ## Before You Begin
@@ -41,6 +42,7 @@ If not take sudo privileges by executing the following command:
 Follow by your root password.
 
 {: .note}
+>
 > Check centos [User and Group Management Tools](https://www.centos.org/docs/5/html/Deployment_Guide-en-US/s1-users-tools.html) and [How To Become Root](https://wiki.centos.org/TipsAndTricks/BecomingRoot)
 	
 3. Make sure to check that the server ip up to date byt excuting the following command: 
@@ -56,6 +58,7 @@ Follow by your root password.
     ~~~
 
 {: .note}
+>
 > To edit a file in centos please use vi and follow  [Vi Guide] (https://www.cs.colostate.edu/helpdocs/vi.html)
 
 5. Reboot your server:
@@ -109,6 +112,7 @@ Follow by your root password.
 `sed -i "s#\#mod_xml_cdr#mod_xml_cdr#g" /usr/local/src/freeswitch/modules.conf`
 
 {: .note}
+>
 > To add a module use have to remove the "#" comment character at the begining of the line. To remove a module we have to add the "#" comment character. 
 
 7. Compile
