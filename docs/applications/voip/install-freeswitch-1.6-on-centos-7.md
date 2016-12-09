@@ -33,11 +33,11 @@ Use can use freeswitch for building a PBX Telefony Server with all of its feaute
 
 If you see that you are root than go on:
 
-	`root`
+    `root`
 	
 If not take sudo privileges by executing the following command:
 
-	`sudo su`
+    `sudo su`
 	
 Follow by your root password.
 
@@ -51,11 +51,11 @@ Follow by your root password.
 
 4. Disable SELinux: Navigate to `/etc/selinux/config` and modify it as below:
 
-{: .file }
-/etc/selinux/config
-:   ~~~ conf
-    SELINUX=disabled
-    ~~~
+    {: .file-excerpt}
+    /etc/selinux/config
+    :   ~~~ config
+        SELINUX=disabled
+        ~~~
 
 {: .note}
 >
