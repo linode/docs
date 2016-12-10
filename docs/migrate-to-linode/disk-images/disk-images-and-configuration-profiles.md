@@ -53,7 +53,7 @@ The Linode Manager makes it easy to create a new disk with a fresh Linux distrib
 1.  Log in to the [Linode Manager](https://manager.linode.com).
 2.  Click the **Linodes** tab. A list of your virtual private servers appears.
 3.  Select a Linode. The Linode's dashboard appears.
-4.  Select the **Deploy a Linux Distribution** link. The webpage shown below appears.
+4.  Select the **Deploy an Image** link. The webpage shown below appears.
 
 [![Create a new disk with a Linux distribution.](/docs/assets/980-disk2-small.png)](/docs/assets/979-disk2.png)
 
