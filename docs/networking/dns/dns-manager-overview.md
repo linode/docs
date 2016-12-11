@@ -6,9 +6,9 @@ description: 'Use DNS Manager to Direct Domains to Your Linode.'
 keywords: 'dns manager,linode dns,linode manager dns,dns configuration,ttl,domain zones,domain name'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['dns-manager/','dns-guides/configuring-dns-with-the-linode-manager/', 'networking/dns/dns-manager/']
-modified: Monday, June 20th, 2016 
+modified: Monday, June 20th, 2016
 modified_by:
-  name: Alex Fornuto 
+  name: Alex Fornuto
 published: 'Thursday, July 16th, 2009'
 title: DNS Manager Overview
 ---
@@ -205,6 +205,11 @@ Click **Yes, delete this sucker** to permanently delete the zone, including all 
 
 You have successfully removed the DNS record. It can take up to 30 minutes for the changes to be removed.
 
+{: .caution }
+>Once removed, you **MUST** delete the Linode nameserver entries from the domain at the registrar level.
+> This is a very important step; if the entries are not removed, someone could use your domain without your
+> permission.
+
 ## Troubleshoot
 
 Having problems with your DNS records? We recommend reviewing this section to help get your DNS settings back on track. Follow these tips to troubleshoot DNS issues.
@@ -260,6 +265,3 @@ If you're on a Windows machine, or you're more comfortable using a web-based too
 ##Next Steps
 
 Now that you are familiar with Linode's DNS Manager, you should set up your [reverse DNS configuration](/docs/networking/dns/setting-reverse-dns), and consider looking at our [Common DNS Configurations](/docs/networking/dns/common-dns-configurations) guide.
-
-
-
