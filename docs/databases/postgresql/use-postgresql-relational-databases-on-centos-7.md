@@ -5,10 +5,10 @@ author:
 description: 'Use PostgreSQL Relational Databases on CentOS 7.'
 keywords: 'postgresql,CentOS 7,postgresql database,open source database,relational database'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Friday, May 20th, 2016
+modified: Monday, December 12th, 2016
 modified_by:
   name: Nick Brewer
-published: 'Friday, May 20th, 2016'
+published: 'Monday, December 12th, 2016'
 title: 'Use PostgreSQL Relational Databases on CentOS 7'
 external_resources:
  - '[PostgreSQL Online Documentation](http://www.postgresql.org/docs/)'
@@ -56,7 +56,7 @@ Alternatively, you can install the latest version from the Postgres repositories
 
 {: .note}
 >
->When Postgres is installed manually, the version number is included in its configuration directories. For example, `/var/lib/pgsql` becomes `/var/lib/pgsql-9.6`. This is also the case with SystemD units; `systemctl status postgresql` becomes `systemctl status postgresql-9.6`.
+>When Postgres is installed manually, the version number is included in its configuration directories. For example, `/var/lib/pgsql` becomes `/var/lib/pgsql-9.6`. This is also the case with systemd units; `systemctl status postgresql` becomes `systemctl status postgresql-9.6`.
 
 
 1.  Select the version you wish to install from the [Postgres Yum repositories](https://yum.postgresql.org/repopackages.php). Locate the CentOS 7 link for your chosen version, and download it to your Linode:
@@ -112,11 +112,123 @@ The PostgreSQL client shell allows you to issue SQL commands to administer your 
 
 This will log you in as the `postgres` database user. You'll see a prompt similar to this:
 
-    
+    psql (9.2.15)
+    Type "help" for help.
 
-### Connect
+    postgres=#
+
+To see a list of available commands, type `\h`. You may find more information on a specific command by adding it after `\h`. Once you’ve finished using the shell, you can exit with `\q`.
+
+## Work with Roles
+
+PostgreSQL grants database access via **roles** which are used to specify privileges. Roles can be understood as having a similar function to Linux "users." In addition, roles may also be created as a set of other roles, similar to a Linux "group." PostgreSQL roles apply globally, so you will not need to create the same role twice if you'd like to grant it access to more than one database on the same server.
+
+### Create Roles
+
+New user roles are added with the `createuser` command. To create a new user called `exampleuser`, issue this command as the `postgres` Linux user:
+
+    createuser examplerole --pwprompt
+
+You will be prompted to create a password for the new user.
+
+### Give a Role Access to a Database
+
+In this example you'll give the newly created `examplerole` user access to your database.
+
+1.  Connect to the database:
+
+        psql mytestdb
+
+    You'll be connected as the `postgres` database user by default.
+
+2.  From the PostgreSQL shell, enter the following to grant all privileges on the table `employees` to the user `examplerole`:
+
+        GRANT ALL ON employees TO examplerole;
+
+3.  Exit the database with `\q`.
+
+### List All Roles
+
+You can list all roles from the [Postgres Shell](#access-the-postgresql-shell) by running `\du`. You'll see an output similar to this:
+
+    postgres=# \du
+                                 List of roles
+    Role name   |                   Attributes                   | Member of
+    -------------+------------------------------------------------+-----------
+    examplerole |                                                | {}
+    postgres    | Superuser, Create role, Create DB, Replication | {}
+
+### Role Groups
+
+For ease of administration, it's possible to add multiple user roles to a single group, so that their privileges can be managed as a whole. In this section you'll create a new group, and add the `examplerole` user to it. These commands should be run as the `postgres` Linux user.
+
+1.  Use the `createuser` command to create a new role. The `--no-login` option is specified because groups do not need login capability.
+
+        createuser examplegroup --no-login
+
+2.  Log into the Postgres shell and add `exampleuser` to the new group:
+
+        psql postgres
+        GRANT examplegroup TO examplerole;
+
+3.  From the Postgres shell, confirm your changes with `\du`. You'll see that the `examplerole` user is now listed as a member of the `examplegroup` group:
+
+        postgres=# \du
+                                        List of roles
+        Role name    |                   Attributes                   |   Member of
+        --------------+------------------------------------------------+----------------
+        examplegroup | Cannot login                                   | {}
+        examplerole  |                                                | {examplegroup}
+        group        |                                                | {}
+        postgres     | Superuser, Create role, Create DB, Replication | {}
+
+    The `createuser` command has several other options. See the [PostgreSQL documentation](https://www.postgresql.org/docs/9.2/static/app-createuser.html) for more details.
+
+4.  When you've finished applying your changes, exit the Postgres shell by entering `\q`.
+
+### Alter Roles
+
+While specific settings and privileges can be applied to a role when it's created, you can also modify a role's properties later on. In this example, we'll modify the `examplerole` user so that it can create new databases. The commands in this section should be run as the `postgres` Linux user.
+
+1.  Log in as the `postgres` database user:
+
+        psql postgres
+
+2.  From the Postgres shell, add the `CREATEDB` parameter to the `examplerole` user:
+
+        ALTER ROLE examplerole CREATEDB;
+
+    There are a number of permissions that can be applied when creating or altering a role. See the [PostgeSQL Documentation](https://www.postgresql.org/docs/9.2/static/sql-createrole.html) for more details.
+
+3.  Use `\du` to confirm your changes. You'll see that the "Create DB" attribute is listed next to the `examplerole` user:
+
+        postgres=# \du
+                                     List of roles
+        Role name   |                   Attributes                   | Member of
+        -------------+------------------------------------------------+-----------
+        examplerole | Create DB                                      | {}
+        group       |                                                | {}
+        postgres    | Superuser, Create role, Create DB, Replication | {}
+
+4.  Once you've finished, exit the Postgres shell with `\q`.
+
+### Delete Roles
+
+The `dropuser` command is used to delete PostgreSQL roles. To delete the `examplerole` user, issue this command as the `postgres` Linux user:
+
+    dropuser examplerole
+
+### Peer Authentication
+
+PostgreSQL uses **peer authentication** by default. This means that database connections will be granted to local system users if their Linux username matches the name of their PostgreSQL role. To make use of peer authentication effectively you would need to create both a Linux user and a corresponding PostgreSQL role. For the `examplerole` role you just created, you can use peer authentication by creating an `examplerole` local system user. This command must be run as a user with `sudo` access:
+
+    sudo adduser examplerole && passwd examplerole
+
+Note that you will be prompted to create a password for the new `examplerole` Linux user. Alternatively, you can follow our steps to [secure local access](#secure-local-access).
 
 ## Work with Databases
+
+This section will cover how to create, delete, and access databases.
 
 ### Create a Database
 
@@ -124,63 +236,65 @@ You can create databases with the `createdb` command. Create a sample database c
 
     createdb mytestdb
 
-It's also possible to assign ownership of the database to a specific Postgres user/role. For example, you could assign ownership to the user `testuser` by running:
+It's also possible to assign ownership of the database to a specific Postgres user/role. For example, you could assign ownership to the `exampleuser` role by running:
 
-    createdb mytestdb -O testuser
+    createdb mytestdb -O exampleuser
 
 The `createdb` command has several additional options, which can be found in the [PostgreSQL documentation](https://www.postgresql.org/docs/9.2/static/app-createdb.html).
 
-### Delete a Database
-
-You can delete databases using the `dropdb` command. For example, if you want to delete the `mytestdb` database created in the previous step, issue this command as the `postgres` Linux user:
-
-    dropdb mytestdb
-
-{: .caution}
->Deleted databases cannot be recovered.
-
-### List All Databases
-
-1.  You can list all of your databases by logging in as the `postgres` administrative user you created previously. This command should be run as the `postgres` Linux user:
-
-        pgsl postgres
-
-2.  From the Postgres command line, you can use either the `\l` or `\list` command. You will receive output similar to this:
-
-        postgres=# \l
-                                  List of databases
-        Name    |  Owner   | Encoding |   Collate   |    Ctype    |   Access privileges
-        -----------+----------+----------+-------------+-------------+-----------------------
-        mytestdb  | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 |
-        postgres  | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 |
-        template0 | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =c/postgres          +
-        |         |          |          |             | postgres=CTc/postgres
-        template1 | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =c/postgres          +
-        |         |          |          |             | postgres=CTc/postgres
-        (4 rows)
-
 ### Connect to a Database
 
+You can use the `psql` command to connect to a specific database.
 
-
-2.  Connect to the test database:
+1.  Connect to the test database:
 
         psql mytestdb
 
-3.  You will see the following output:
+2.  You will see the following output:
 
         psql (9.2.15)
         Type "help" for help.
 
         mytestdb=#
 
-    This is the PostgreSQL client shell, in which you can issue SQL commands. To see a list of available commands, use the `\h` command. You may find more information on a specific command by adding it after `\h`. You can exit the shell at any time by running `\q`.
+    By default, you will automatically log into a database as your [peer-authenticated](#peer-authentication) user. However if you've enabled [local password access](#secure-local-access), it's also possible to specify which user you wish to connect as:
 
-## Work with Tables and Rows
+        psql mytestdb -U examplerole
+
+    You'll be prompted to enter the password for the `examplerole` database user.
+
+### List All Databases
+
+From the [Postgres shell](#access-the-postgresql-shell), you can list all of your databases with the `\l` or `\list` command. You will receive output similar to this:
+
+    postgres=# \l
+                              List of databases
+    Name    |  Owner   | Encoding |   Collate   |    Ctype    |   Access privileges
+    -----------+----------+----------+-------------+-------------+-----------------------
+    mytestdb  | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 |
+    postgres  | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 |
+    template0 | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =c/postgres          +
+    |         |          |          |             | postgres=CTc/postgres
+    template1 | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =c/postgres          +
+    |         |          |          |             | postgres=CTc/postgres
+    (4 rows)
+
+### Delete a Database
+
+You can delete databases with the `dropdb` command. For example, if you want to delete the `mytestdb` database created previously, issue this command as the `postgres` Linux user:
+
+    dropdb mytestdb
+
+{: .caution}
+>Deleted databases cannot be recovered.
+
+## Work with Tables
+
+PostgreSQL databases use tables to store and organize information. In this section you'll find practical examples for adding, removing, and manipulating tables. Unless otherwise noted, the commands in this section should be issued once you've [connected to your database](#connect-to-a-database).
 
 ### Create Tables
 
-This section contains examples which create a test database with an employee's first and last name, assigning each a unique key. When creating your own tables, you may specify as many parameters (columns) as you need and name them appropriately. Run the commands in this section from the PostgreSQL shell, opened in Step 2 of the [Create a Database](#create-a-database) section.
+This section contains examples which create a test database with an employee's first and last name, assigning each a unique key. When creating your own tables, you may specify as many parameters (columns) as you need and name them appropriately.
 
 1.  Create a table called "employees" in your test database:
 
@@ -190,63 +304,125 @@ This section contains examples which create a test database with an employee's f
 
         INSERT INTO employees VALUES (1, 'John', 'Doe');
 
-3.  View the contents of the "employees" table:
+### View the Content of a Table
 
-        SELECT * FROM employees;
+To view the contents of the "employees" table:
 
-    This produces the following output:
+    SELECT * FROM employees;
 
-         employee_id | first_name | last_name
-        -------------+------------+-----------
-                   1 | John       | Doe
-        (1 row)
+This produces the following output:
+
+    employee_id | first_name | last_name
+    -------------+------------+-----------
+              1 | John       | Doe
+    (1 row)
+
+### List All Tables in a Database
+
+You can list all tables in a particular database with the `\dt` command:
+
+    mytestdb-# \dt
+              List of relations
+    Schema |   Name    | Type  |  Owner
+    --------+-----------+-------+----------
+    public | employees | table | postgres
 
 ### Delete Tables
 
-PostgreSQL has a number of options for deleting tables:
+You can delete tables with `DROP TABLE`. To delete the `employees` table:
 
-*  [DROP](https://www.postgresql.org/docs/9.2/static/sql-droptable.html) removes a table entirely.
+    DROP TABLE employees;
 
+`DROP TABLE` accepts multiple comma-separated table names as arguments.  For example, if you had two separate tables called `employees1` and `employees2`, you could delete them both by running:
 
-*  [DELETE](https://www.postgresql.org/docs/9.2/static/sql-delete.html) is used to delete rows from a table.
-*  [TRUNCATE](https://www.postgresql.org/docs/9.2/static/sql-truncate.html) is used to remove all rows form
+    DROP TABLE employees1, employees2;
 
-### List Tables
+### Add Columns
 
+Tables can be altered to add additional definitions, data types, and columns. In this example you'll add a new `start_date` column that uses the [date](https://www.postgresql.org/docs/9.2/static/datatype-datetime.html) data type.
 
+1.  Add the `start_date` column to the `employees` table:
 
+        ALTER TABLE employees ADD start_date date;
 
-### Create PostgreSQL Roles
+2.  Confirm your change:
 
-PostgreSQL grants database access via *roles* which are used to specify privileges. Roles can be understood as having a similar function to Linux "users." In addition, roles may also be created as a set of other roles, similar to a Linux "group." PostgreSQL roles apply globally, so you will not need to create the same role twice if you'd like to grant it access to more than one database on the same server.
+        SELECT * FROM employees;
 
-The example commands in this section should be run as the `postgres` Linux user unless otherwise specified.
+    You'll see that the new column has been created, but it does not contain any data:
 
-1.  Add a new user role, then a password at the prompt:
+        employee_id | first_name | last_name | start_date
+        -------------+------------+-----------+------------
+                  1 | John       | Doe       |
+        (1 row)
 
-        createuser examplerole --pwprompt
+    While in this example you've used the `date` data type, PostgreSQL tables support several different types of data. See the [PostgreSQL Documentation](https://www.postgresql.org/docs/9.2/static/datatype.html) for a full explanation of supported data types.
 
-    If you need to delete a role, you can use the `dropuser` command in place of `createuser`.
+### Add and Update Rows
 
-2.  Connect to the database:
+In this section, you'll enter a value into the existing row you've created, using `UPDATE`. Then, you'll create an entirely new row with `INSERT`.
 
-        psql mytestdb
+1.  Update the `start_date` field for the user with the value `1` in the `employee_id` column:
 
-    You'll be connected as the `postgres` database user by default.
+        UPDATE employees SET start_date = '2016-09-28' WHERE employee_id = '1';
 
-3.  From the PostgreSQL shell, enter the following to grant all privileges on the table `employees` to the user `examplerole`:
+2.  Create a new row in the `employees` table:
 
-        GRANT ALL ON employees TO examplerole;
+        INSERT INTO employees VALUES (2, 'Jane', 'Smith', '2015-03-09');
 
-4.  Exit the PostgreSQL shell by entering `\q`.
+3.  Confirm your changes:
 
-PostgreSQL uses peer authentication by default. This means that database connections will be granted to local system users if their Linux username matches the name of their PostgreSQL role. To make use of peer authentication effectively you would need to create both a Linux user and a corresponding PostgreSQL role. For the `examplerole` role you just created, you can use peer authentication by creating an `examplerole` local system user. This command must be run as a user with `sudo` access:
+        SELECT * FROM employees;
 
-    sudo adduser examplerole && passwd examplerole
+    You'll see that the start date of `2016-09-28` has been added to the first row, and that a new row has been created for "Jane Smith":
 
- Note that you will be prompted to create a password for the new `examplerole` Linux user. Alternatively, you can follow the steps in the next section to secure local PostgreSQL access.
+        employee_id | first_name | last_name | start_date
+        -------------+------------+-----------+------------
+                  1 | John       | Doe       | 2016-09-28
+                  2 | Jane       | Smith     | 2015-03-09
+        (2 rows)
 
-### Secure Local PostgreSQL Access
+### Remove Columns and Rows
+
+In this section, you'll remove a column from your table, and then create a new row.
+
+1.  Use `ALTER TABLE` to remove the `start_date` column you made previously:
+
+        ALTER TABLE employees DROP start_date;
+
+2.  Now use `DELETE` to remove the second row of your `employees` table. The following command will remove the row with a value of `2` in the `employee_id` column:
+
+        DELETE FROM employees WHERE employee_id = '2';
+
+3.  Confirm your changes:
+
+        SELECT * FROM employees;
+
+    Your table now consists of a single row, with the `start_date` column removed:
+
+        employee_id | first_name | last_name
+        -------------+------------+-----------
+                  1 | John       | Doe
+        (1 row)
+
+### Query a Table
+
+You can use queries to pull specific information from your database. This command will query your `employees` table to only return values for the `employee_id` and `last_name` columns:
+
+    SELECT last_name,employee_id  FROM employees;
+
+You'll receive an output similar to this:
+
+    last_name | employee_id
+    -----------+-------------
+    Doe       |           1
+    (1 row)
+
+PostgreSQL supports many querying options. See the [PostgreSQL Documentation](https://www.postgresql.org/docs/9.2/static/sql-select.html) for more information.
+
+## Secure PostgreSQL
+
+### Secure Local Access
 
 While PostgreSQL's default peer authentication is useful in cases where a particular system user will be running a local program (e.g. scripts, CGI/FastCGI processes owned by separate users, etc.), you may wish to require passwords for greater security.
 
@@ -263,6 +439,11 @@ Commands in this section should be run as the `postgres` Linux user unless other
 
     Replace `peer` with `md5` on this line to activate password authentication using an MD5 hash.
 
+    {: .note}
+    >
+    >If you installed PostgreSQL from the [Postgres repositories](#install-from-the-postgres-repositories) you will need to specify your version number in this file path, for example: `/var/lib/pgsql/9.6/data/pg_hba.conf`.
+
+
 2.  To enable these changes, we need to restart PostgreSQL. However, we did not grant the `postgres` user sudo privileges for security reasons. Return to the normal user shell:
 
         exit
@@ -274,13 +455,13 @@ Commands in this section should be run as the `postgres` Linux user unless other
 
 4.  As `postgres`, connect to the test database as the `examplerole` PostgreSQL user:
 
-        psql -U examplerole -W mytestdb
+        psql mytestdb -U examplerole
 
     You will be prompted to enter the password for the `examplerole` user and given `psql` shell access to the database. When using a database, you may check access privileges for each of its tables with the `\z` command.
 
-## Secure Remote PostgreSQL Access
+### Secure Remote Access
 
-PostgreSQL listens for connections on `localhost` and it is not advised to reconfigure it to listen on public IP addresses. If you would like to access your databases remotely using a graphical tool, please follow one of these guides:
+PostgreSQL listens for connections on `localhost` by default, and it is not advised to reconfigure it to listen on public IP addresses. If you wish to make PostgreSQL externally accessible, it's recommended that you follow the Postgres documentation for [using SSL](https://www.postgresql.org/docs/9.2/static/ssl-tcp.html) to secure your remote connections. Alternatively, you could connect to PostgreSQL over an [SSH tunnel](https://www.postgresql.org/docs/9.2/static/ssh-tunnels.html). If you would like to access your databases remotely using a graphical tool, please follow one of these guides:
 
 -   [Securely Manage Remote PostgreSQL Servers with pgAdmin on Windows](/docs/databases/postgresql/pgadmin-windows)
 -   [Securely Manage Remote PostgreSQL Servers with pgAdmin on Mac OS X](/docs/databases/postgresql/pgadmin-macos-x)
