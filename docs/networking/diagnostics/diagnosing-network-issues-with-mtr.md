@@ -96,7 +96,7 @@ If no packet loss seems to be revealed, a support technician may aske you to run
 
 On some systems, it may require administrative privileges to run when using this flag:
 
-    mtr -rwc 50 -i 0.2 -rw 12.34.56.78
+    sudo mtr -rwc 50 -i 0.2 -rw 12.34.56.78
 
 {: .note }
 >
