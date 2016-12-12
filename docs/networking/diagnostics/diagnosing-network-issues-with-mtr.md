@@ -108,7 +108,7 @@ On some systems, it may require administrative privileges to run when using this
 >
 > The `c` option flag sets how many packets are sent and recorded in the report. When not used, the default will generally be 10, but for faster intervals you may want to set it to 50 or 100. The report can take longer to finish when doing this.
 >
-> The `i` option flag runs the report at a faster rate to reveal packet loss that can occur only during network congestion. This flag ructs MTR to send one packet every *i* seconds. The default is 1 second, so setting it to a few tenths of a second is generally helpful.
+> The `i` option flag runs the report at a faster rate to reveal packet loss that can occur only during network congestion. This flag instructs MTR to send one packet every *n* seconds. The default is 1 second, so setting it to a few tenths of a second (0.1, 0.2, etc.) is generally helpful.
 
 ### Using MTR on Windows Systems
 
