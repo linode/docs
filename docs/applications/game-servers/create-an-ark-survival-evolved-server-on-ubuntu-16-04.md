@@ -12,10 +12,10 @@ modified: Friday, November 11th, 2016
 modified_by:
   name: Nick Brewer
 published: 'Friday, November 11th, 2016'
-title: 'Create an ARK Survival Evolved Server on Ubuntu 16.04 (Xenial)'
+title: 'Create an ARK Survival Evolved Server on Ubuntu 16.04'
 ---
 
-This guide will show you how to set up a personal [ARK: Survival Evolved](http://www.playark.com/) server on a Linode running Ubuntu 16.04 LTS.
+This guide will show you how to set up a personal [ARK: Survival Evolved](http://www.playark.com/) server on a Linode running Ubuntu 16.04 LTS (Xenial Xerus).
 
 {: .note}
 > The steps in this guide require root privileges unless otherwise noted. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
@@ -24,7 +24,7 @@ This guide will show you how to set up a personal [ARK: Survival Evolved](http:/
 
 1.  To connect to your ARK server, you must have a copy of the [ARK](http://www.playark.com/) game client.
 
-2.  In keeping with the [system requirements](http://ark.gamepedia.com/Dedicated_Server_Setup#Hardware) for an ARK server, we recommend using our **Linode 8GB** plan or higher when following these steps.
+2.  In keeping with the [system requirements](http://ark.gamepedia.com/Dedicated_Server_Setup#Hardware) for an ARK server, we recommend using our **8GB** plan or higher when following these steps.
 
 3.  Update your Linode's software:
 
