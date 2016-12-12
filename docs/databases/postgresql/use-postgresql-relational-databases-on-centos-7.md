@@ -384,7 +384,7 @@ In this section, you'll enter a value into the existing row you've created, usin
 
 ### Remove Columns and Rows
 
-In this section, you'll remove a column from your table, and then create a new row.
+In this section, you'll remove a column from your table, and then remove the second row.
 
 1.  Use `ALTER TABLE` to remove the `start_date` column you made previously:
 
