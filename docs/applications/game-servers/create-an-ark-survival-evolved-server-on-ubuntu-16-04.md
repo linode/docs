@@ -129,7 +129,7 @@ Once you've started the server, you can add or remove settings by editing the `G
 {: .note}
 > If you choose to use the `ServerPassword` option, when connecting to the server you will need to click on **Show Password Protected**, or manually add the server to your favorites list. Both options are shown in the next section.
 
-There are a number of options that can be configured within this file - for more information take a look at the [Server Configuration](http://ark.gamepedia.com/Server_Configuration#GameUserSettings.ini) section of the ARK wiki.
+A number of options can be configured within this file - for more information take a look at the [Server Configuration](http://ark.gamepedia.com/Server_Configuration#GameUserSettings.ini) section of the ARK wiki.
 
 ##Connect the Game Client to Your ARK Server
 
