@@ -33,7 +33,7 @@ To configure a subdomain, such as `staging.example.org`, create an A record with
 
  {: .note }
 >
-> You will also need to create a name-based virtual host for the subdomain. If you're using Apache, see [Configuring Name-Based Virtual Hosts](/docs/websites/hosting-a-website/#configuring-name-based-virtual-hosts) for more information.
+> You will also need to create a name-based virtual host for the subdomain. If you're using Apache, see [Configuring Name-Based Virtual Hosts](/docs/websites/hosting-a-website/#configure-name-based-virtual-hosts) for more information.
 
 ##Hosting Multiple Domains on a Single Server
 
