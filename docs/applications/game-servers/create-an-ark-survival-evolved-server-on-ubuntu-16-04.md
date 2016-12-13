@@ -133,7 +133,7 @@ A number of options can be configured within this file - for more information ta
 
 ##Connect the Game Client to Your ARK Server
 
-There are two ways to find and connect to your new ARK server. Because the game is currently in pre-release and under heavy development, some functionality may change, or work intermittently. While finding your server from within the game itself is often easier, it's not always reliable (as of this guide's publication), so we'll also go over how to add it to your favorite servers in the Steam client.
+You can connect to your new ARK server using two different methods. Because the game is currently in pre-release and under heavy development, some functionality may change or work intermittently. While finding your server from within the game itself is often easier, it's not always reliable (as of this guide's publication), so we'll also go over how to add it to your favorite servers in the Steam client.
 
 ### In-Game Server List
 
@@ -166,7 +166,7 @@ There are two ways to find and connect to your new ARK server. Because the game 
 
     ![ARK Server Password](/docs/assets/ark-password.png)
 
-    Or if you are using the in-game menu, here:
+    Or if you are using the in-game menu, enter the server password here:
 
     [![ARK: Survival Evolved Server Password Prompt](/docs/assets/ark-server-password-small.png "ARK: Survival Evolved Server Password Prompt")](/docs/assets/ark-server-password.png "ARK: Survival Evolved Server Password Prompt")
 
