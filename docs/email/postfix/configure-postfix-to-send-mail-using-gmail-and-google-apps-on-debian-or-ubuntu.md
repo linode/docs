@@ -90,7 +90,7 @@ Usernames and passwords are stored in `sasl_passwd` in the `/etc/postfix/sasl/` 
 
 If all went well, you should have a new file named `sasl_passwd.db` in the `/etc/postfix/sasl/` directory.
 
-## Secure Your Password and Hash Database Files
+## Secure Your Postfix Password and Hash Database Files
 
 The `/etc/postfix/sasl/sasl_passwd` and the `/etc/postfix/sasl/sasl_passwd.db` files created in the previous steps contain your SMTP credentials in plain text.
 
