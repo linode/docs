@@ -9,10 +9,10 @@ modified: Friday, December 9, 2016
 modified_by:
   name: Edward Angert
 published: 'Friday, December 9, 2016'
-title: Configure Postfix on Debian and Ubuntu to Send Mail Using Gmail and Google Apps
+title: Configure Postfix to Send Mail Using Gmail and Google Apps on Debian or Ubuntu
 ---
 
-Postfix is a Mail Transfer Agent (MTA) that can act as an SMTP server or client to send or receive email. There are many reasons why you would want to configure Postfix to send email using an external SMTP provider such as Google Apps and Gmail. One reason is to avoid getting your mail flagged as spam if your current server's IP has been added to a spam list.
+Postfix is a Mail Transfer Agent (MTA) that can act as an SMTP server or client to send or receive email. There are many reasons why you would want to configure Postfix to send email using an external SMTP provider such as Google Apps and Gmail. One reason is to avoid getting your mail flagged as spam if your current server's IP has been added to a blacklist.
 
 ![Configure Postfix to Send Mail Using an External SMTP Server](/docs/assets/external_smtp_tg.png "Configure Postfix to Send Mail Using an External SMTP Server")
 
@@ -22,7 +22,7 @@ In this guide, you will learn how to install and configure a Postfix server on D
 
 1.  Complete our [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/securing-your-server) guides and ensure that the Linode's [hostname is set](/docs/getting-started#arch--centos-7--debian-8--fedora-version-18-and-above--ubuntu-1504-and-above).
 
-2.  Check for and install system updates:
+2.  Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
 
@@ -34,7 +34,7 @@ In this guide, you will learn how to install and configure a Postfix server on D
 
 ## Allow Postfix Connections Through Gmail and Google Apps
 
-Gmail is pre-configured to refuse connections from Postfix. While these are important security measures that are designed to restrict unauthorized users from accessing your account, this also disables sending mail through SMTP as we're doing here. Follow the following steps to configure Gmail and Postfix:
+Gmail is preconfigured to refuse connections from Postfix. While this is an important security measure that is designed to restrict unauthorized users from accessing your account, it disables sending mail through SMTP as you're doing here. Follow these steps to configure Gmail to accept connections from Postfix:
 
 1. Log into your email, then [disable two-step verification](https://myaccount.google.com/security). Scroll down to "Password & sign-in method" and click **2-Step Verification**. You may be asked for your password and a verification code before continuing. Click the **TURN OFF** button. Gmail will automatically send a confirmation email.
 
@@ -108,7 +108,7 @@ In this section, you will configure the `/etc/postfix/main.cf` file to use Gmail
     {: .file-excerpt }
     /etc/postfix/main.cf
     :   ~~~
-        # specify SMTP relay host 
+        # specify SMTP relay host
         relayhost = [smtp.gmail.com]:587
         ~~~
 
@@ -117,13 +117,13 @@ In this section, you will configure the `/etc/postfix/main.cf` file to use Gmail
     {: .file-excerpt }
     /etc/postfix/main.cf
     :   ~~~
-        # Enable SASL authentication 
+        # Enable SASL authentication
         smtp_sasl_auth_enable = yes
         # Disallow methods that allow anonymous authentication
         smtp_sasl_security_options = noanonymous
         # Location of sasl_passwd
         smtp_sasl_password_maps = hash:/etc/postfix/sasl/sasl_passwd
-        # Enable STARTTLS encryption 
+        # Enable STARTTLS encryption
         smtp_tls_security_level = encrypt
         # Location of CA certificates
         smtp_tls_CAfile = /etc/ssl/certs/ca-certificates.crt
@@ -137,7 +137,7 @@ In this section, you will configure the `/etc/postfix/main.cf` file to use Gmail
 
 ## Test Postfix
 
-Use Postfix's sendmail implementation to send a test email. Enter lines similar to those shown below and note that there is no prompt between lines until the `.` ends the process:
+Use Postfix's sendmail implementation to send a test email. Enter lines similar to those shown below, and note that there is no prompt between lines until the `.` ends the process:
 
     sendmail recipient@elsewhere.com
     From: you@example.com
