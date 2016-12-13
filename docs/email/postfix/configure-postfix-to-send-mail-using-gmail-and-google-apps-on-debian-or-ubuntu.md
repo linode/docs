@@ -1,22 +1,20 @@
 ---
 author:
-  name: Edward Angert
+  name: Linode Community
   email: docs@linode.com
 description: 'Install and configure Postfix on Debian and Ubuntu to send email through Gmail and Google Apps.'
 keywords: 'Postfix, Ubuntu, Debian, SMTP, Gmail'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Friday, December 9, 2016
+modified: Tuesday, December 13, 2016
 modified_by:
   name: Edward Angert
-published: 'Friday, December 9, 2016'
+published: 'Tuesday, December 13, 2016'
 title: Configure Postfix to Send Mail Using Gmail and Google Apps on Debian or Ubuntu
 ---
 
-Postfix is a Mail Transfer Agent (MTA) that can act as an SMTP server or client to send or receive email. There are many reasons why you would want to configure Postfix to send email using an external SMTP provider such as Google Apps and Gmail. One reason is to avoid getting your mail flagged as spam if your current server's IP has been added to a blacklist.
+Postfix is a Mail Transfer Agent (MTA) that can act as an SMTP server or client to send or receive email. There are many reasons why you would want to configure Postfix to send email using Google Apps and Gmail. One reason is to avoid getting your mail flagged as spam if your current server's IP has been added to a blacklist.
 
-![Configure Postfix to Send Mail Using an External SMTP Server](/docs/assets/external_smtp_tg.png "Configure Postfix to Send Mail Using an External SMTP Server")
-
-In this guide, you will learn how to install and configure a Postfix server on Debian or Ubuntu to send email through Gmail and Google Apps
+In this guide, you will learn how to install and configure a Postfix server on Debian or Ubuntu to send email through Gmail and Google Apps. For information on configuring Postfix with other external SMTP servers, see our [Configure Postfix to Send Mail Using an External SMTP Server](/docs/email/postfix/postfix-smtp-debian7) guide.
 
 ## Before You Begin
 
@@ -31,22 +29,6 @@ In this guide, you will learn how to install and configure a Postfix server on D
 {: .note }
 >
 > This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
-
-## Allow Postfix Connections Through Gmail and Google Apps
-
-Gmail is preconfigured to refuse connections from Postfix. While this is an important security measure that is designed to restrict unauthorized users from accessing your account, it disables sending mail through SMTP as you're doing here. Follow these steps to configure Gmail to accept connections from Postfix:
-
-1. Log into your email, then [disable two-step verification](https://myaccount.google.com/security). Scroll down to "Password & sign-in method" and click **2-Step Verification**. You may be asked for your password and a verification code before continuing. Click the **TURN OFF** button. Gmail will automatically send a confirmation email.
-
-    ![Disable two-Step Verification](/docs/assets/postfix-gmail-2-step_verification.png "Disable two-Step Verification")
-
-2.  [Enable "Less secure apps" access](https://www.google.com/settings/security/lesssecureapps)
-
-    Select **Turn on**. A yellow "Updated" notice will appear at the top of the browser window and Gmail will automatically send a confirmation email.
-
-    ![Enable "Less Secure Apps"](/docs/assets/postfix-gmail-less-secure-apps.png "Enable "Less Secure Apps"")
-
-3.  [Disable captcha from new application login attempts](https://accounts.google.com/DisplayUnlockCaptcha) and click **Continue**.
 
 ## Install Postfix
 
@@ -90,7 +72,7 @@ Usernames and passwords are stored in `sasl_passwd` in the `/etc/postfix/sasl/` 
 
 If all went well, you should have a new file named `sasl_passwd.db` in the `/etc/postfix/sasl/` directory.
 
-## Secure Your Postfix Password and Hash Database Files
+## Secure Your Postfix Hash Database and Email Password Files
 
 The `/etc/postfix/sasl/sasl_passwd` and the `/etc/postfix/sasl/sasl_passwd.db` files created in the previous steps contain your SMTP credentials in plain text.
 
@@ -134,6 +116,22 @@ In this section, you will configure the `/etc/postfix/main.cf` file to use Gmail
 4.  Restart Postfix:
 
         sudo systemctl restart postfix
+
+## Allow Postfix Connections Through Gmail and Google Apps
+
+Gmail is preconfigured to refuse connections from Postfix. While this is an important security measure that is designed to restrict unauthorized users from accessing your account, it disables sending mail through SMTP as you're doing here. Follow these steps to configure Gmail to accept connections from Postfix:
+
+1. Log into your email, then click the following link to [Manage your account access and security settings](https://myaccount.google.com/security). Scroll down to "Password & sign-in method" and click **2-Step Verification**. You may be asked for your password and a verification code before continuing. Click the **TURN OFF** button as shown in the following image. Gmail will automatically send a confirmation email.
+
+    ![Disable two-Step Verification](/docs/assets/postfix-gmail-2-step_verification.png "Disable two-Step Verification")
+
+2.  [Enable "Less secure apps" access](https://www.google.com/settings/security/lesssecureapps)
+
+    Select **Turn on**. A yellow "Updated" notice will appear at the top of the browser window and Gmail will automatically send a confirmation email.
+
+    ![Enable "Less Secure Apps"](/docs/assets/postfix-gmail-less-secure-apps.png "Enable "Less Secure Apps"")
+
+3.  Test Postfix as shown in the following section. If your test emails don't appear after a few minutes, [disable captcha from new application login attempts](https://accounts.google.com/DisplayUnlockCaptcha) and click **Continue**.
 
 ## Test Postfix
 
