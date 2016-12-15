@@ -56,7 +56,7 @@ Alternatively, you can install the latest version from the Postgres repositories
 
 {: .note}
 >
->When Postgres is installed manually, the version number is included in its configuration directories. For example, `/var/lib/pgsql` becomes `/var/lib/pgsql-9.6`. This is also the case with systemd units; `systemctl status postgresql` becomes `systemctl status postgresql-9.6`.
+>When Postgres is installed manually, the version number is included in its configuration directories. For example, `/var/lib/pgsql` becomes `/var/lib/pgsql/9.6`. This is also the case with systemd units; `systemctl status postgresql` becomes `systemctl status postgresql-9.6`.
 
 
 1.  Select the version you wish to install from the [Postgres Yum repositories](https://yum.postgresql.org/repopackages.php). Locate the CentOS 7 link for your chosen version, and download it to your Linode:
