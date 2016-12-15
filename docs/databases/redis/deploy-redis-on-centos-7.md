@@ -202,7 +202,7 @@ Additionally, to ensure that no outside traffic accesses your Redis instance, we
 
 For an added layer of security, you can use password authentication to secure the connection between your `master` and `slave` Linodes.
 
-1.  On your `master` Linode, uncomment the `requirepass` line in your Redis configuration and create a specify a secure password:
+1.  On your `master` Linode, uncomment the `requirepass` line in your Redis configuration and create a secure password:
 
     {: .file-excerpt }
     /etc/redis.conf
@@ -214,7 +214,7 @@ For an added layer of security, you can use password authentication to secure th
 
         sudo systemctl restart redis
 
-3.  On your `slave` Linode, add the `master` to your Redis configuration under `masterpass`, and then create a unique password for `slave` under `requirepass`:
+3.  On your `slave` Linode, add the `master` password to your Redis configuration under `masterpass`, and then create a unique password for `slave` with `requirepass`:
 
     {: .file-excerpt }
     /etc/redis.conf
@@ -232,7 +232,7 @@ For an added layer of security, you can use password authentication to secure th
         redis-cli
         127.0.0.1:6379> AUTH (your master password)
 
-6.  Once you've authenticated, you can view details about your Redis configuration by running `INFO`. This provides a lot of information, so you'll specify the "Replication" section in your command:
+6.  Once you've authenticated, you can view details about your Redis configuration by running `INFO`. This provides a lot of information, so you can specifically request the "Replication" section in your command:
 
         127.0.0.1:6379> INFO replication
 
@@ -250,7 +250,7 @@ For an added layer of security, you can use password authentication to secure th
         redis-cli
         127.0.0.1:6379> AUTH (your slave password)
 
-3.  Once you've authenticated, run `INFO` and check the "Replication" section to confirm your `slave` Linode's role, and its connection to `master`:
+3.  Once you've authenticated, use `INFO` to confirm your `slave` Linode's role, and its connection to `master`:
 
         127.0.0.1:6379> INFO replication
         # Replication
