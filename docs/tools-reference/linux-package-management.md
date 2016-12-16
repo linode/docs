@@ -19,14 +19,14 @@ Many tutorials reference "package managers" and "package management tools." If y
 
 Contemporary distributions of Linux-based operating systems install software in pre-compiled *packages*, which are archives that contain binaries of software, configuration files, and information about dependencies. Furthermore, package management tools keep track of updates and upgrades so that we don't have to hunt down information about bug and security fixes.
 
-Without package management, users must ensure that all of the required dependencies for a piece of software are installed and up to date, compile the software from the source code (which takes time and introduces compiler-based variations from system to system), and manage configuration for each piece of software. Without package management, application files are located in the standard locations for the system to which the developers are accustomed, regardless of which system you're using. 
+Without package management, users must ensure that all of the required dependencies for a piece of software are installed and up to date, compile the software from the source code (which takes time and introduces compiler-based variations from system to system), and manage configuration for each piece of software. Without package management, application files are located in the standard locations for the system to which the developers are accustomed, regardless of which system you're using.
 
 Package management systems attempt to solve these problems, and are the tools through which developers attempt to increase the overall quality and coherence of a Linux-based operating system. The features that most package management applications provide are:
 
 -   **Package downloading**: Operating system projects provide repositories of packages which allow users to download their packages from a single, trusted provider. When you download from a package manager, the software can be authenticated and will remain in the repository even if the original source becomes unreliable.
 -   **Dependency resolution**: Packages contain meta-data which provides information about what other packages are required by the package in question. This allows applications and their dependencies to be installed with one command, and for programs to rely on common shared libraries, reducing bulk and allowing the operating system to manage updates to the packages.
 -   **A standard binary package format**: Packages are prepared in a uniform way across the system in order to make installation easier. While some distributions share formats, there can be compatibility issues between similarly formatted packages for different operating systems.
--   **Common installation and configuration locations**: Linux distribution developers often have conventions for how applications are configured and the layout of files in the `/etc/` and `/etc/init.d/` directories; by using packages, distrubutions are able to enforce a single standard.
+-   **Common installation and configuration locations**: Linux distribution developers often have conventions for how applications are configured and the layout of files in the `/etc/` and `/etc/init.d/` directories; by using packages, distributions are able to enforce a single standard.
 -   **Additional system-related configuration and functionality**: Occasionally, operating system developers will develop patches and helper scripts for their software which get distributed in the packages. These modifications can have a significant impact on user experience.
 -   **Quality control**: Operating system developers use the packaging process to test and ensure that the software is stable and free of bugs that might affect product quality, and that the software doesn't cause the system to become unstable. The subjective judgments and community standards that guide packaging and package management guide the "feel" and "stability" of a given system.
 
@@ -38,7 +38,7 @@ The remainder of this guide will cover how to use specific package management sy
 
 The Debian package management system, based on a tool called `dpkg` with the very popular `apt` system is a powerful, popular, and useful method of package management. In addition to Debian, a number of other prominent distributions of GNU/Linux are derived from the Debian system, most notably the Ubuntu family of distributions.
 
-As a result, these instructions apply for Debian and Ubuntu systems. While Debian and derived systems are not necessarily binary-compatible, .debs packaged for Debian are often compatible with Ubuntu (though this is not a supported workflow). 
+As a result, these instructions apply for Debian and Ubuntu systems. While Debian and derived systems are not necessarily binary-compatible, .debs packaged for Debian are often compatible with Ubuntu (though this is not a supported workflow).
 
 ### Advanced Packaging Tool (APT)
 
@@ -73,7 +73,7 @@ Aptitude is another front-end interface for APT. In addition to a graphical inte
 -   `aptitude search` or `aptitude show`, - Same as their apt-cache counterparts.
 -   `aptitude download` - Downloads a .deb file for a given package into the current directory.
 
-Aptitude also includes *safe upgrading*, meaning it doesn't remove existing packages, as well as *holding*, which prevents the system from upgrading specific packages. 
+Aptitude also includes *safe upgrading*, meaning it doesn't remove existing packages, as well as *holding*, which prevents the system from upgrading specific packages.
 
 ### /etc/apt/sources.list
 
@@ -112,7 +112,7 @@ For information about building your own packages, refer to the [Debian New Maint
 
 ## Fedora and CentOS Package Management
 
-Fedora and CentOS are closely related distributions, being upstream and downstream (respectively) from Red Hat Enterprise Linux. Their main differences stem from how packages are chosen for inclusion in their repositories. 
+Fedora and CentOS are closely related distributions, being upstream and downstream (respectively) from Red Hat Enterprise Linux. Their main differences stem from how packages are chosen for inclusion in their repositories.
 
 Both systems use `yum` as a front end to interact with system repositories and install dependencies, and also include a lower-level tool called `rpm`, which allows you to interact with individual packages.
 
@@ -135,9 +135,43 @@ You can use the following commands to interact with YUM:
 -   `yum update optional-package-name(s)` - Downloads and installs all updates including bug fixes, security releases, and upgrades, as provided by the distributors of your operating system. Note that you can specify package names with the update command
 -   `yum upgrade` - Upgrades all packages installed in your system to the latest release
 
+### /etc/yum.conf
+
+The file located at `/etc/yum.conf` provides system-wide configuration options for YUM, as well as information about repositories. Repository information may also be located in files ending in `.repo` under `/etc/yum.repos.d`
+
+The options in the `[main]` stanza don't need modification, though you may set alternate logging and cache locations for the database by adding the following lines:
+
+{: .file-excerpt}
+/etc/yum.conf
+: ~~~ conf
+  logfile=/var/log/yum.log
+  cachedir=/var/cache/yum
+  ~~~
+
+### Dandified Yum (DNF)
+
+DNF is the modern extension of the YUM package manager. It retains much of the same command usage and functionality as YUM, with number of improvements for newer operating systems. DNF was first introduced in Fedora 18, and became the default package manager with the release of Fedora 22.
+
+-   `dnf install package-name(s)` - Installs the specified package(s) along with any required dependencies. `dnf install` can also accept `.rpm` files in place of a package name, to install directly from a downloaded RPM
+-   `dnf remove package-name(s)` - Removes the specified package(s) from your system, along with any package(s) that depend upon them
+-   `dnf search search-pattern` - Searches the list of package names and descriptions for packages that match the search pattern and provides a list of package names, with architectures and a brief description of the package contents. Note that regular expression searches are not permitted
+-   `dnf provides package-name(s)` - Lists all of the libraries and modules that the named package depends on, along with the names of the packages (including versions) that provide those dependencies
+-   `dnf check-update` - Refreshes the local cache of the DNF database so that dependency information and the latest packages are always up to date.
+-   `dnf info package-name(s)` - Provides the name, description of the package, as well as a link to the upstream home page for the software, release versions and the installed size of the software.
+-   `dnf reinstall package-name(s)` - Erases and then downloads a new copy of the package file and re-installs the software on your system
+-   `dnf upgrade optional-package-name(s)` - Downloads and installs all updates including bug fixes, security releases, and upgrades for a specific package
+-   `dnf upgrade` - With no arguments, `upgrade` upgrades all packages installed in your system to the latest release
+-   `dnf config-manager --add-repo example.repo` Adds a `.repo` file as a DNF repository.
+-   `dnf config-manager --set-enabled example-repo` Enables a DNF repository
+-   `dnf config-manager --set-disabled example-repo` Disables a DNF repository
+
+### /etc/dnf/dnf.conf
+
+The `dnf.conf` file provides global configuration settings for DNF. If DNF `.repo` files are being added manually, instead of with `dnf config-manager`, they should be added to `/etc/yum.repos.d`. 
+
 ### RPM Package Manager (RPM)
 
-YUM is simply a front end to a lower-level tool called RPM, similar to `apt-get`'s relationship with `dpkg`. You will likely not need to interact with RPM very often, but there are a few commands that you may find useful.
+YUM and DNF are simply front ends to a lower-level tool called RPM, similar to `apt-get`'s relationship with `dpkg`. You will likely not need to interact with RPM very often, but there are a few commands that you may find useful.
 
 The following commands should be run as root. The flags are expanded here, but the abbreviated syntax is also included:
 
@@ -174,7 +208,7 @@ You can use the following template to define a new stanza for a new repository, 
 : ~~~ conf
   [REPO-NAME]
   name=REPOSITORY-NAME
-  mirrorlist=HTTP-ACCESSIBLE-MIRROR-LIST 
+  mirrorlist=HTTP-ACCESSIBLE-MIRROR-LIST
   #baseurl=BASE-URL-FOR-REPOSITORY
   gpgcheck=BOOLEAN-VALUE-TO-VERIFY-REPOSITORY
   gpgkey=FILE-PATH-TO-GPG-KEY
@@ -257,7 +291,7 @@ Therefore, administrators of Arch Linux must consider the output of `pacman` car
 
 ### Pacman
 
-The `pacman` tool is very powerful, but it is also very simple. There are three core commands for basic package management: 
+The `pacman` tool is very powerful, but it is also very simple. There are three core commands for basic package management:
 
 -   `pacman --query package-name(s)` or `pacman -Q` - Searches the package database for a package name and version number
 -   `pacman --sync package-name(s)` or `pacman -S` - Installs new packages, downloads new content for the database and/or upgrades the system, depending on the options and the named package or packages
@@ -301,7 +335,7 @@ The `Server =` and `Include =` lines are both optional, and the order indicates 
 The Arch Build System allows users to compile and install software not included in the Arch repository. This brief guide outlines the steps to building a package using the ABS.
 
 {: .note}
->All commands explained here should be run as root unless otherwise specified. 
+>All commands explained here should be run as root unless otherwise specified.
 
 Begin by installing the `abs` framework and the `base-devel` packages:
 
@@ -317,7 +351,7 @@ Arch recommends that you create a build directory at another location, such as `
 
 Begin the build process by copying the files from the ABS tree into your build directory as a non-root user:
 
-    cp -r /var/abs/REPO/PACKAGE ~/abs 
+    cp -r /var/abs/REPO/PACKAGE ~/abs
 
 Change to the package's directory:
 
@@ -335,7 +369,7 @@ You have the option of modifying the `PKGBUILD` file. There's a build shell func
     $startdir/src/${pkgname}_${pkgver}-$_patchlevel.diff || return 1
 
     ./configure --prefix=/usr
-    make || return 1 
+    make || return 1
     make install
   }
   ~~~
@@ -362,7 +396,7 @@ If you're interested in learning more about Arch and its package management tool
 
 Gentoo provides its entire operating system in source format. These source packages, in concert with `ebuild` scripts, provide a package management system that borrows and builds on many concepts from the BSD's "portage" system.
 
-Like Arch, the Gentoo project produces new versions of Gentoo Linux on a rolling release cycle. 
+Like Arch, the Gentoo project produces new versions of Gentoo Linux on a rolling release cycle.
 
 This section addresses common package management tasks and functions using the `emerge` front end for the portage system. We encourage you to install the "gentoolkit" to provide additional package management tools, such as `equery`. Install this package with the following command:
 
@@ -379,7 +413,7 @@ This section addresses common package management tasks and functions using the `
 -   `emerge --depclean package-name(s)` or `emerge -c package-name(s)` - Removes the specified package or packages
 -   `emerge --depclean` - Removes packages that are orphaned. This means removal of all packages that weren't explicitly installed and are not not depended upon by any specific package. We recommend that you run it with the `--pretend` option before running this command on a production system.
 -   `emerge -evp --deep world` - Lists all of the packages currently installed on the system
--   `equery depends package-name(s)` - Lists all of the packages that depends upon the specified package 
+-   `equery depends package-name(s)` - Lists all of the packages that depends upon the specified package
 -   `equery files package-name(s)` - Lists all of the files "owned" by a package
 -   `equery belongs filename` - Lists the package that "owns" a particular file
 
