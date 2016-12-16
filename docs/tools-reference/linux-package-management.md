@@ -114,7 +114,9 @@ For information about building your own packages, refer to the [Debian New Maint
 
 Fedora and CentOS are closely related distributions, being upstream and downstream (respectively) from Red Hat Enterprise Linux. Their main differences stem from how packages are chosen for inclusion in their repositories.
 
-Both systems use `yum` as a front end to interact with system repositories and install dependencies, and also include a lower-level tool called `rpm`, which allows you to interact with individual packages.
+CentOS uses `yum` as a front end to interact with system repositories and install dependencies, and also includes a lower-level tool called `rpm`, which allows you to interact with individual packages.
+
+Starting with version 22, Fedora uses the `dnf` package manager instead of YUM to interact with `rpm`. DNF supports many of the same commands as YUM, with some slight changes.
 
 **Note:** Many operating systems aside from RedHat use `rpm` packages. These include OpenSuSE, AIX, and Mandriva. While it may be possible to install an RPM packaged for one operating system on another, this is not supported or recommended, and the results of this action can vary greatly.
 
@@ -167,7 +169,7 @@ DNF is the modern extension of the YUM package manager. It retains much of the s
 
 ### /etc/dnf/dnf.conf
 
-The `dnf.conf` file provides global configuration settings for DNF. If DNF `.repo` files are being added manually, instead of with `dnf config-manager`, they should be added to `/etc/yum.repos.d`. 
+The `dnf.conf` file provides global configuration settings for DNF. If DNF `.repo` files are being added manually, instead of with `dnf config-manager`, they should be added to `/etc/yum.repos.d`.
 
 ### RPM Package Manager (RPM)
 
@@ -187,19 +189,6 @@ Note that RPM does not automatically check for dependencies, so you must install
 
 -   [iDevelopment Info - RPM Commands](http://www.idevelopment.info/data/Unix/Linux/LINUX_RPMCommands.shtml)
 -   [Quick Guide to RPM](http://www.tfug.org/helpdesk/linux/rpm.html)
-
-### /etc/yum.conf
-
-The file located at `/etc/yum.conf` provides system-wide configuration options for YUM, as well as information about repositories. Repository information may also be located in files ending in `.repo` under `/etc/yum.repos.d`
-
-The options in the `[main]` stanza don't need modification, though you may set alternate logging and cache locations for the database by adding the following lines:
-
-{: .file-excerpt}
-/etc/yum.conf
-: ~~~ conf
-  logfile=/var/log/yum.log
-  cachedir=/var/cache/yum
-  ~~~
 
 You can use the following template to define a new stanza for a new repository, replacing the capitalized strings with your own values:
 
