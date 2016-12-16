@@ -82,7 +82,7 @@ OpenVAS consists of a database, which stores results and configurations; a regul
 
 ## Configure a Proxy
 
-OpenVAS is designed to run on a local computer, not a remote server. Additionally, it only listens for connections on IPv6. To provide easy access to the manager, we'll install [nginx](https://www.nginx.com/) to use as a proxy.
+OpenVAS runs best on a local computer, not a remote server. Additionally, it only listens for connections to the user interface on IPv6. To provide easy access to the manager, we'll install [nginx](https://www.nginx.com/) to use as a proxy.
 
 1.  Install nginx:
 
