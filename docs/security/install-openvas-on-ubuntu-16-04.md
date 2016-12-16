@@ -5,16 +5,16 @@ author:
 description: Install OpenVAS 8 to scan your system for vulnerabilities.
 keywords: 'openvas,ubuntu,install openvas'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Wednesday, December 7th, 2016
+modified: Monday, December 19th, 2016
 modified_by:
   name: Linode
-published: 'Wednesday, December 7th, 2016'
+published: 'Monday, December 19th, 2016'
 title: Install OpenVAS 8 on Ubuntu 16.04
 ---
 
 In this guide, you'll learn how to install OpenVAS 8 on Ubuntu 16.04. OpenVAS, the *Open Vulnerability Assessment System*, is a framework of tools that allow you to scan your system for thousands of known vulnerabilities. 
 
-OpenVAS consists of a database, which stores results and configurations, a regularly updated feed of *NVTs*, or network vulnerability tests, a scanner, which runs the NVTs, and the Greenbone Security Assistant, a graphical interface that allows you to manage vulnerability scans from a web application. For more information about the architecture of the software, refer to the [OpenVAS website](http://www.openvas.org/software.html).
+OpenVAS consists of a database, which stores results and configurations; a regularly updated feed of *NVTs*, or network vulnerability tests; a scanner, which runs the NVTs; and the Greenbone Security Assistant, a graphical interface that allows you to manage vulnerability scans from a web application. For more information about the architecture of the software, refer to the [OpenVAS website](http://www.openvas.org/software.html).
 
 {: .caution}
 > OpenVAS is a powerful security tool that is capable of scanning remote hosts as well as your local machine. This guide is intended for monitoring vulnerabilities on machines that you control or have permission to scan. If you use OpenVAS scan remote servers owned by others, be sure that you have a full understanding of the responsibilities involved and potential consequences.
@@ -55,7 +55,7 @@ OpenVAS consists of a database, which stores results and configurations, a regul
 
     [![OpenVAS Redis socket configuration.](/docs/assets/openvas-redis-configuration.png)](/docs/assets/openvas-redis-configuration.png)
          
-3.  Install the SQLite database. This is used to store the [CVEs](https://cve.mitre.org/) we'll obtain in the next steps:
+3.  Install the SQLite 3 database package. This is used to store the [CVEs](https://cve.mitre.org/) we'll obtain in the next steps:
 
         sudo apt-get install sqlite3
 
