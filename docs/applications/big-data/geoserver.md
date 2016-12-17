@@ -1,11 +1,11 @@
 ---
 author:
-    name: Karthik Shiraly
-    email: docs@linode.com
-description: 'Deploy Storm cluster on Linode cloud for real-time analytics on streaming datasets.'
-keywords: 'storm,analytics,big data,zookeeper'
+    name: Keith Albury
+    email: keith.albury@gmail.com
+description: 'Deploy MapServer on Linode'
+keywords: 'gis, web mapping, opensource'
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
-published: 'Tuesday, October 25th, 2016'
+published: 'Saturday, December 17, 2016'
 modified: Tuesday, October 25th, 2016
 modified_by:
     name: Phil Zona
@@ -14,13 +14,14 @@ contributor:
     name: Karthik Shiraly
     link: https://github.com/pathbreak
 external_resources:
-- '[Apache Storm project website](http://storm.apache.org/)'
-- '[Apache Storm documentation](https://storm.apache.org/releases/current/index.html)'
-- '[Storm - Distributed and Fault-Tolerant Real-time Computation](http://www.infoq.com/presentations/Storm-Introduction)'
+- '[GeoServer website](http://geoserver.org/)'
+- '[Open Geospatial Consortium] (http://www.opengeospatial.org/)'
+
+Computation](http://www.infoq.com/presentations/Storm-Introduction)'
 image: https://www.linode.com/docs/assets/big_data_linode_cloud.png
 ---
 
-[Apache Storm](http://storm.apache.org/) is a big data technology that enables software, data, and infrastructure engineers to process high velocity, high volume data in real time and extract useful information. Any project that involves processing high velocity data streams in real time can benefit from it.
+[GeoServer](http://geoserver.org/) GeoServer is a Java-based software server that allows users to view and edit geospatial data. Using open standards set forth by the [Open Geospatial Consortium (OGC)](http://www.opengeospatial.org/), GeoServer allows for great flexibility in map creation and data sharing.
 
 [Zookeeper](https://zookeeper.apache.org/) is a critical distributed systems technology that Storm depends on to function correctly. 
 
