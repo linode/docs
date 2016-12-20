@@ -18,7 +18,7 @@ external_resources:
 
 Linode has a thriving community of authors who contribute to Linode Guides and Tutorials. We are always looking for guides on popular, trending topics, and updates to existing guides. If you're interested in writing for Linode, this page describes the process for submitting your work. If your guide is published, you'll receive $250 per article by PayPal or in Linode credit.
 
-## UPDATE
+## Update
 
 Linode's bounty program has been an overwhelming success. Too succesful, in fact! Our inbox and repository are overflowing with proposed articles.
 
