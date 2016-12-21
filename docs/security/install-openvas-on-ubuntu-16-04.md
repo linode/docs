@@ -12,7 +12,7 @@ published: 'Monday, December 19th, 2016'
 title: Install OpenVAS 8 on Ubuntu 16.04
 ---
 
-In this guide, you'll learn how to install OpenVAS 8 on Ubuntu 16.04. OpenVAS, the *Open Vulnerability Assessment System*, is a framework of tools that allow you to scan your system for thousands of known vulnerabilities. 
+In this guide, you'll learn how to install OpenVAS 8 on Ubuntu 16.04. OpenVAS, the *Open Vulnerability Assessment System*, is a framework of tools that allow you to scan your system for thousands of known vulnerabilities.
 
 OpenVAS consists of a database, which stores results and configurations; a regularly updated feed of *NVTs*, or network vulnerability tests; a scanner, which runs the NVTs; and the Greenbone Security Assistant, a graphical interface that allows you to manage vulnerability scans from a web application. For more information about the architecture of the software, refer to the [OpenVAS website](http://www.openvas.org/software.html).
 
@@ -54,7 +54,7 @@ OpenVAS consists of a database, which stores results and configurations; a regul
     When installing `openvas`, you'll be prompted to configure a Redis database for application data, such as tasks and configurations. Select **yes** when asked if you'd like to add a socket at `/var/run/redis/redis.sock`:
 
     [![OpenVAS Redis socket configuration.](/docs/assets/openvas-redis-configuration.png)](/docs/assets/openvas-redis-configuration.png)
-         
+
 3.  Install the SQLite 3 database package. This is used to store the [CVEs](https://cve.mitre.org/) we'll obtain in the next steps:
 
         sudo apt-get install sqlite3
@@ -80,41 +80,23 @@ OpenVAS consists of a database, which stores results and configurations; a regul
 
         sudo openvasmd --rebuild --progress
 
-## Configure a Proxy
-
-OpenVAS runs best on a local computer, not a remote server. Additionally, it only listens for connections to the user interface on IPv6. To provide easy access to the manager, we'll install [nginx](https://www.nginx.com/) to use as a proxy.
-
-1.  Install nginx:
-
-        sudo apt-get install nginx
-
-2.  Create a virtual host file for your OpenVAS installation:
-
-        sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/openvas
-
-3.  Add the following to your OpenVAS virtual host file within the `location` block:
-
-    {: .file-excerpt}
-    /etc/nginx/sites-available/openvas
-    :   ~~~
-        location / {
-            proxy_set_header   X-Real-IP $remote_addr;
-            proxy_set_header   Host      $http_host;
-            proxy_pass         https://ip6-localhost:443;
-        }
-
-    This configures nginx to proxy incoming requests to port `443` on localhost over IPv6. The `ip6-localhost` hostname is configured in your `/etc/hosts` file by default. If you're performing [additional configuration](https://www.linode.com/docs/websites/nginx/how-to-configure-nginx) to nginx, such as configuring name-based virtual hosting, you can modify other settings at this time.
-
-4.  Enable the OpenVAS virtual host and remove the default site:
-
-        sudo ln -s /etc/nginx/sites-available/openvas /etc/nginx/sites-enabled/openvas
-        sudo rm /etc/nginx/sites-enabled/default
-
-5.  Restart nginx to apply your changes:
-
-        sudo systemctl restart nginx
-
 ## Configure OpenVAS
+
+### Remote Access
+
+To access the Greenbone Security Assistant web interface remotely, you must configure it to listen on your Linode's public IP address. You can do so by editing its configuration file under the `/etc/init.d/openvas-gsa`, and specifying your public IP address on the `DAEMON_ARGS` line. Replace `198.51.100.221` with your Linode's public address:
+
+{: .file-excerpt}
+/etc/init.d/openvas-gsa
+:   ~~~
+    DAEMON_ARGS= --listen "198.51.100.221"
+    }
+
+Save your changes, and then restart `openvas-gsa`:
+
+    sudo service openvas-gsa restart
+
+### User Authentication
 
 OpenVAS is now installed, and we're almost ready to start using it to scan for vulnerabilities. However, we should first change the default password to prevent unauthorized access.
 
@@ -201,5 +183,11 @@ Your output should include the following lines:
     tcp6       0      0 :::443                  :::*                    LISTEN      7046/gsad
     tcp6       0      0 :::9390                 :::*                    LISTEN      3577/openvasmd
 
-These lines represent the OpenVAS scanner, the Greenbone Security Assistant, and the OpenVAS manager, respectively. If one of these lines is not present, simply start the daemon and try to reconnect. For example, if the `gsad` program is stopped, run `sudo gsad start`. The syntax is the same for each of these daemons.
+These lines represent the OpenVAS scanner, the Greenbone Security Assistant, and the OpenVAS manager, respectively. If one of these lines is not present, simply start the daemon and try to reconnect. For example, if the `gsad` program is stopped, run `sudo service openvas-gsa restart`. Here are the names of the relevant daemons, as well as the commands you can use to restart them:
 
+{: .table .table-striped}
+| Program Name | Command to Restart                   |
+| -------------|--------------------------------------|
+| openvassd    | sudo service openvas-scanner restart |
+| openvasmd    | sudo service openvas-manager restart |
+| gsad         | sudo service openvas-gsa restart     |
