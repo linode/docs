@@ -186,15 +186,18 @@ We also recommend automating your certificate renewal since it can be easy to lo
 
 1.  Before we execute the following command, let's break it down and make some modifications:
 
-        echo '@monthly root /opt/letsencrypt/letsencrypt-auto certonly --standalone --renew-by-default -d example.com -d www.example.com >> /var/log/letsencrypt/letsencrypt-auto-update.log' | sudo tee --append /etc/crontab
+        echo '@monthly root /opt/letsencrypt/letsencrypt-auto certonly --quiet --standalone --renew-by-default -d example.com -d www.example.com >> /var/log/letsencrypt/letsencrypt-auto-update.log' | sudo tee --append /etc/crontab
 
     *   **@monthly**: for simplicity, this command will execute at midnight on the first day of every month
     *   **root**: run the command as the **root** user
-    *   **/opt/letsencrypt/letsencrypt-auto certonly --standalone --renew-by-default -d example.com -d www.example.com**: `letsencrypt-auto` renewal command. Again, add `-d example.com` for each domain name you need to renew
+    *   **/opt/letsencrypt/letsencrypt-auto certonly --quiet --standalone --renew-by-default -d example.com -d www.example.com**: `letsencrypt-auto` renewal command. Again, add `-d example.com` for each domain name you need to renew
     *   **>> /var/log/letsencrypt/letsencrypt-auto-update.log**: record the *standard output* and *standard error* to a log file named `letsencrypt-auto-update.log`
     *   **tee --append /etc/crontab**: save the new cron job to the `/etc/crontab` file
 
     The above settings will be effective in most cases, but for more information about available cron job options, refer to the [Ubuntu Community Cron How-to](https://help.ubuntu.com/community/CronHowto) or the [CentOS Cron Documentation](https://www.centos.org/docs/5/html/5.2/Deployment_Guide/s2-autotasks-cron-configuring.html).
+
+    {: .note }
+    > The automatic renewal process requires access to port `443`, which would most likely be bound to your web server. You can configure your cron tasks to temporarily stop the web server, or use one of several methods documented [here](https://letsencrypt.readthedocs.io/en/latest/using.html#webroot).
 
 2.  Execute your modified command to add the cron job to your Linode.
 
