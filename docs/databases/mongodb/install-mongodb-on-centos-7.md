@@ -38,7 +38,7 @@ MongoDB seeks to provide an alternative to traditional relational database manag
 
 ## Add the MongoDB Repository
 
-The most current, stable version of MongoDB is 3.2 and, as of this writing, the default CentOS 7 repository does not contain a package for it. Instead, we'll need to use the MongoDB repository.
+The most current stable version of MongoDB is 3.2 and, as of this writing, the default CentOS 7 repository does not contain a package for it. Instead, we'll need to use the MongoDB repository.
 
 Create a new file, `/etc/yum.repos.d/mongodb-org-3.2.repo`, so that you can install the latest release using `yum`. Add the following contents to the file:
 
@@ -64,7 +64,7 @@ This command installs `mongodb-org`, a meta-package that includes the following:
 -   `mongodb-org-server` - The standard MongoDB daemon, and relevant init scripts and configurations
 -   `mongodb-org-mongos` - The MongoDB Shard daemon
 -   `mongodb-org-shell` - The MongoDB shell, used to interact with MongoDB via the command line
--   `mongodb-org-tools` - Contains a few basic tools to restore, import and export data, as well as diverse other functions.
+-   `mongodb-org-tools` - Contains a few basic tools to restore, import, and export data, as well as other diverse functions.
 
 These packages provide a good base that will serve most use cases, and we recommend installing them all. However, if you want a more minified installation, you can selectively install packages from the above list rather than use the `mongodb-org` metapackage.
 
