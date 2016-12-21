@@ -175,7 +175,7 @@ The MySQL database engine is one of the leading open-source relational database 
         GRANT ALL PRIVILEGES ON web.* TO 'webuser';
         quit
 
-    You can now provide the credentials for the `web` database and the `webuser` user to your application, which will now be able to use the database for its purposes. To ensure that PHP will be able to access the MySQL connector your just installed, restart the PHP service by issue the following command:
+    You can now provide the credentials for the `web` database and the `webuser` user to your application, which will now be able to use the database for its purposes. To ensure that PHP will be able to access the MySQL connector you just installed, restart the PHP service by issue the following command:
 
         sudo systemctl restart php7.0-fpm
 
