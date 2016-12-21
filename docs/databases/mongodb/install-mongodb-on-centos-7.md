@@ -16,11 +16,11 @@ external_resources:
  - '[Language-Specific MongoDB Drivers](http://docs.mongodb.org/ecosystem/drivers/)'
 ---
 
-MongoDB is a database engine that provides access to non-relational, document-oriented databases. It is part of the growing [NoSQL](https://en.wikipedia.org/wiki/NoSQL) movement, along with databases like Redis and Cassandra (although there are many difference among the many non-relational databases).
+In this MongoDB tutorial, we explain how to install the database on CentOS 7, and then provide a short guide on some basic features and functions.
 
-MongoDB seeks to provide an alternative to traditional relational database management systems (RDBMS). In addition to its schema-free design and scalable architecture, MongoDB provides a JSON output and specialized language-specific bindings that make it particularly attractive for use in custom application development and rapid prototyping. MongoDB has been used in a number of large scale [production deployments](https://www.mongodb.org/community/deployments) and is currently one of the most popular database engines across all systems.
+MongoDB is a database engine that provides access to non-relational, document-oriented databases. It is part of the growing [NoSQL](https://en.wikipedia.org/wiki/NoSQL) movement, along with databases like Redis and Cassandra (although there are vast differences among the many non-relational databases).
 
-In this guide, we'll explain how to install MongoDB on CentOS 7, and provide a short tutorial on some basic features and functions.
+MongoDB seeks to provide an alternative to traditional relational database management systems (RDBMS). In addition to its schema-free design and scalable architecture, MongoDB provides a JSON output and specialized, language-specific bindings that make it particularly attractive for use in custom application development and rapid prototyping. MongoDB has been used in a number of large scale [production deployments](https://www.mongodb.org/community/deployments) and is currently one of the most popular database engines across all systems.
 
 ## Before You Begin
 
@@ -38,7 +38,7 @@ In this guide, we'll explain how to install MongoDB on CentOS 7, and provide a s
 
 ## Add the MongoDB Repository
 
-The most current stable version of MongoDB is 3.2 and, as of this writing, the default CentOS 7 repository does not contain a package for it. Instead, we'll need to use the MongoDB repository.
+The most current, stable version of MongoDB is 3.2 and, as of this writing, the default CentOS 7 repository does not contain a package for it. Instead, we'll need to use the MongoDB repository.
 
 Create a new file, `/etc/yum.repos.d/mongodb-org-3.2.repo`, so that you can install the latest release using `yum`. Add the following contents to the file:
 
@@ -64,15 +64,15 @@ This command installs `mongodb-org`, a meta-package that includes the following:
 -   `mongodb-org-server` - The standard MongoDB daemon, and relevant init scripts and configurations
 -   `mongodb-org-mongos` - The MongoDB Shard daemon
 -   `mongodb-org-shell` - The MongoDB shell, used to interact with MongoDB via the command line
--   `mongodb-org-tools` - Contains a few basic tools to restore, import, and export data, as well as a variety of other functions.
+-   `mongodb-org-tools` - Contains a few basic tools to restore, import and export data, as well as diverse other functions.
 
-These packages provide a good base that will serve most use cases, and we recommend installing them all. However, if you want a more minimal installation, you can selectively install packages from the above list rather than using the `mongodb-org` metapackage.
+These packages provide a good base that will serve most use cases, and we recommend installing them all. However, if you want a more minified installation, you can selectively install packages from the above list rather than use the `mongodb-org` metapackage.
 
 For more information on the installation process and options, refer to the [official MongoDB installation tutorial](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-red-hat/).
 
 ## Configure MongoDB
 
-The configuration file for MongoDB is located at `/etc/mongod.conf`, and is written in YAML format. Most of the settings are well commented within the file, and we've outlined the default options below:
+The configuration file for MongoDB is located at `/etc/mongod.conf`, and is written in YAML format. Most of the settings are well commented within the file. We've outlined the default options below:
 
 - `systemLog` specifies the various logging options, explained below:
     - `destination` tells MongoDB whether to store the log output as a file or syslog
@@ -83,7 +83,7 @@ The configuration file for MongoDB is located at `/etc/mongod.conf`, and is writ
     - `journal.enabled` enables or disables the journal, which ensures that data files are recoverable
 - `net` specifies the various network options, explained below:
     - `port` is the port on which the MongoDB daemon will listen
-    - `bindIP` specifies the IP addresses MongoDB binds to in order to listen for connections from other applications
+    - `bindIP` specifies the IP addresses to which MongoDB binds, so it can listen for connections from other applications
 
 These are only a few basic configuration options that are set by default.
 
@@ -98,7 +98,7 @@ We **strongly** recommend uncommenting the `security` section and adding the fol
 
 The `authorization` option enables [role-based access control](https://docs.mongodb.com/manual/core/authorization/) for your databases. If no value is specified, any user will have the ability to modify any database. We'll explain how to create database users and set their permissions later in this guide.
 
-For more information on how to customize these and other values in your configuration file, refer to the [official MongoDB configuration guide](https://docs.mongodb.com/manual/reference/configuration-options/).
+For more information on how to customize these and other values in your configuration file, refer to the [official MongoDB configuration tutorial](https://docs.mongodb.com/manual/reference/configuration-options/).
 
 After making changes to the MongoDB configuration file, restart the service as shown in the following section.
 
@@ -159,15 +159,15 @@ If you enabled role-based access control in the [Configure MongoDB](#configure-m
 
         mongo -u mongo-admin -p --authenticationDatabase admin
 
-    The `-u`, `-p`, and `--authenticationDatabase` options in the above command are required in order to authenticate connections to the shell. Without authentication, the MongoDB shell can be accessed, but will not allow connections to databases.
+    The `-u`, `-p`, and `--authenticationDatabase` options in the above command are required in order to authenticate connections to the shell. Without authentication, the MongoDB shell can be accessed but will not allow connections to databases.
 
-    The `mongo-admin` user created in Step 3 is purely administrative based on the roles specified. It is defined as an administrator of user for all databases, but does not have any database permissions itself. You may use it to create additional users and define their roles. If you are using multiple applications with MongoDB, set up different users with custom permissions for their corresponding databases.
+    The `mongo-admin` user created in Step 3 is purely administrative based on the roles specified. It is defined as an administrator of user for all databases but does not have any database permissions itself. You may use it to create additional users and define their roles. If you are using multiple applications with MongoDB, set up different users with custom permissions for their corresponding databases.
 
 6.  As the `mongo-admin` user, create a new database to store regular user data for authentication. The following example calls this database `user-data`:
 
         use user-data
 
-7.  Permissions for different databases are handled in separate `roles` objects. This example creates the user, `example-user`, with read-only permissions for the `user-data` database and has read and write permissions for the `exampleDB` database we'll create in the [Manage Data and Collections](#manage-data-and-collections) section below.
+7.  Permissions for different databases are handled in separate `roles` objects. This example creates the user, `example-user`, with read-only permissions for the `user-data` database and has read and write permissions for the `exampleDB` database that we'll create in the [Manage Data and Collections](#manage-data-and-collections) section below.
 
     Create a new, non-administrative user to enter test data. Change both `example-user` and `password` to something relevant and secure:
 
@@ -249,7 +249,7 @@ Much of MongoDB's popularity comes from its ease of integration. Interactions wi
 
 ## Additional MongoDB Functionality
 
-As noted above, MongoDB has an available collection of language-specific drivers that can be used to interact with your databases from within non-JavaScript applications. One advantage these drivers provide is the ability to allow applications written in different languages to use the same database without the strict need for an object data mapper (ODM). If you do want to use an object data mapper, however, there are many well-supported ODMs available.
+As noted above, MongoDB has an available collection of language-specific drivers that can be used to interact with your databases from within non-JavaScript applications. One advantage these drivers provide is the ability to allow applications written in different languages to use the same database without the strict need for an object data mapper (ODM). If you do want to use an object data mapper, however, many well-supported ODMs are available.
 
 The `mongodb-org-tools` package we installed also includes several other tools such as `mongodump` and `mongorestore` for creating and restoring backups and snapshots, as well as `mongoimport` and `mongoexport` for importing and exporting content from extended JSON, or supported CSV or TSV files.
 
