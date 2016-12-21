@@ -139,7 +139,7 @@ Timeouts can also drastically improve performance.
 
 -	`client_header_timeout` sends directives for the time a server will wait for a **header** body to be sent.  These directives are responsible for the time a server will wait for a client body or client header to be sent after request. If neither a body or header is sent, the server will issue a 408 error or Request time out.
 
--	`sent_timeout` specifies the response timeout to the client. This timeout does not apply to the entire transfer but, rather, only between two subsequent client-read operations. Thus, if the client has not read any data for this amount of time, then nginx shuts down the connection.
+-	`send_timeout` specifies the response timeout to the client. This timeout does not apply to the entire transfer but, rather, only between two subsequent client-read operations. Thus, if the client has not read any data for this amount of time, then nginx shuts down the connection.
 
 {: .file-excerpt}
 /etc/nginx/nginx.conf
