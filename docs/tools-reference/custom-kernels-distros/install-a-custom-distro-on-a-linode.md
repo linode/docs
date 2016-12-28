@@ -9,14 +9,14 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
   name: Alex Fornuto
 modified: 'Thursday, July 23rd, 2015'
-title: Run a Custom Distro on a KVM Linode
+title: Install a Custom Distro on a Linode
 ---
 
-This guide entails installing a custom Linux distribution on your KVM Linode. If you're currently running a Xen Linode, you can [upgrade](https://www.linode.com/docs/platform/kvm#how-to-enable-kvm), or follow our older guide on [Running a Custom Linux Distribution on a Linode](/docs/tools-reference/custom-kernels-distros/running-a-custom-linux-distro-on-a-linode-vps).
+This guide entails installing a custom Linux distribution on your KVM Linode. If you're currently running a Xen Linode, you can [upgrade](https://www.linode.com/docs/platform/kvm#how-to-enable-kvm), or follow our older guide on [Running a Custom Linux Distribution on a Xen Linode](/docs/tools-reference/custom-kernels-distros/running-a-custom-linux-distro-on-a-linode-vps).
 
 While there are methods of installing operating systems in place on the Linode, they often create partition tables on the disk image which are incompatible with our Backups service, and prevent us from resizing the disk image properly. Therefore we will install the operating system on a virtual image locally, then copy the filesystem to the Linode.
 
-For this guide we'll be using Ubuntu as an example, but you're welcome to apply these steps to any compatible OS. 
+For this guide we'll be using Ubuntu as an example, but you're welcome to apply these steps to any compatible OS.
 
 ## Before You Begin
 
@@ -135,6 +135,6 @@ For this guide we'll be using Ubuntu as an example, but you're welcome to apply 
         echo "# resolv.conf - DNS resolver configuration file" > /media/sda/etc/resolv.conf
         echo "options rotate" > /media/sda/etc/resolv.conf.tail
 
-5.  Reboot your Linode. 
+5.  Reboot your Linode.
 
 Your Linode should now be running your custom distro!
