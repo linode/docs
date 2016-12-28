@@ -8,14 +8,16 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 external_resources:
  - '[PlayARK.com](http://www.playark.com/)'
  - '[The Official ARK: Survival Evolved Wiki](http://ark.gamepedia.com/ARK_Survival_Evolved_Wiki)'
-modified: Friday, November 11th, 2016
+modified: Wednesday, December 28th, 2016
 modified_by:
   name: Nick Brewer
-published: 'Friday, November 11th, 2016'
+published: 'Wednesday, December 28th, 2016'
 title: 'Create an ARK: Survival Evolved Server on Ubuntu 16.04'
 ---
 
 This guide will show you how to set up a personal [ARK: Survival Evolved](http://www.playark.com/) server on a Linode running Ubuntu 16.04 LTS (Xenial Xerus).
+
+![Create an ARK: Survival Evolved Server on Ubuntu 16.04](/docs/assets/ark-survival-evolved.png "Create an ARK: Survival Evolved Server on Ubuntu 16.04")
 
 {: .note}
 > The steps in this guide require root privileges unless otherwise noted. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
