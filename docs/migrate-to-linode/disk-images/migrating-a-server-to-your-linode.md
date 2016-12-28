@@ -80,7 +80,7 @@ Before you initiate the transfer, you need to start the Linode in rescue mode. H
 
 1.  Boot your Linode into Rescue Mode. For instructions, see [Booting into Rescue Mode](/docs/rescue-and-rebuild#sph_booting-into-rescue-mode). Be sure to set the primary disk to `/dev/sda` and the swap disk to `/dev/sdb`.
 2.  After the Linode has booted, connect to it via LISH. For instructions, see [Connecting to a Linode Running in rescue mode](/docs/rescue-and-rebuild#sph_connecting-to-a-linode-running-in-rescue-mode).
-3.  Start SSH. For instructions, see [Start SSH](/docs/rescue-and-rebuild#sph_starting-ssh).
+3.  Start SSH. For instructions, see [Start SSH](/docs/troubleshooting/rescue-and-rebuild/#starting-ssh).
 4.  Mount the blank primary disk by entering the following command:
 
         mount -o barrier=0 /dev/sda
@@ -152,7 +152,7 @@ Now you should configure mount points for the new disks. Here's how:
    	 /dev/sdb       none            swap    sw              0       0
    	 proc            /proc           proc    defaults        0       0
 	~~~
-	
+
 You have successfully configured the mount points for the disks.
 
 ### Configuring Device Nodes via Chroot
@@ -195,7 +195,7 @@ Here's how to fix persistent rules:
 
 1.  If your distribution is using `udev` (most distributions are these days), enter the following command on the Linode:
 
-        cd /media/sda/etc/udev/rules.d 
+        cd /media/sda/etc/udev/rules.d
 
 2.  Open the file that creates the persistent network rules, which is usually `75-persistent-net-generator.rules`, by entering the following command:
 
