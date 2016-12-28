@@ -5,10 +5,10 @@ author:
 description: 'Install Magento Community Edition on CentOS 7 to manage your e-commerce site.'
 keywords: 'magento,centos,e-commerce,magento centos'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Tuesday, December 6th, 2016
+modified: Wednesday, December 28th, 2016
 modified_by:
   name: Phil Zona
-published: 'Tuesday, December 6th, 2016'
+published: 'Wednesday, December 28th, 2016'
 title: Install Magento on CentOS 7
 external_resources:
  - '[Magento Documentation](http://docs.magento.com/m2/ce/user_guide/getting-started.html)'
@@ -16,6 +16,8 @@ external_resources:
 ---
 
 In this guide you'll learn how to install Magento on CentOS 7. Magento Community Edition (CE) is a free, open-source e-commerce platform. It's one of the most popular solutions for self-hosted online stores due to its simple yet powerful admin panel and large developer community.
+
+![Install Magento on CentOS 7](/docs/assets/install-magento-centos-title.png "Install Magento on CentOS 7")
 
 Considering the resources some Magento plugins demand, we strongly recommend that you have at least a **Linode 4GB**. You'll need to allocate up to 2GB of memory for PHP and Magento to use; running Magento on a smaller Linode may result in server crashes or unreliability under medium to heavy traffic.
 
