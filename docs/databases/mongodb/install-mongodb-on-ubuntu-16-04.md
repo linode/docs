@@ -5,7 +5,7 @@ author:
 description: 'Install MongoDB for document-oriented data storage on Ubuntu 16.04 (Xenial).'
 keywords: 'nosql,database,mongodb,key store,ubuntu,mongodb tutorial'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Monday, November 14th, 2016
+modified: Friday, December 30th, 2016
 modified_by:
   name: Phil Zona
 published: 'Friday, May 20th, 2016'
@@ -17,6 +17,8 @@ external_resources:
 ---
 
 In this MongoDB tutorial, we explain how to install the database on CentOS 7, and then provide a short guide on some basic features and functions.
+
+![Install MongoDB on Ubuntu 16.04](/docs/assets/install-mongodb-ubuntu-16-04-title.png "Install MongoDB on Ubuntu 16.04")
 
 MongoDB is a database engine that provides access to non-relational, document-oriented databases. It is part of the growing [NoSQL](https://en.wikipedia.org/wiki/NoSQL) movement, along with databases like Redis and Cassandra (although there are vast differences among the many non-relational databases).
 
