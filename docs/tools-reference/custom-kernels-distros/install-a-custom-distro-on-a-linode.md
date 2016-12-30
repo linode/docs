@@ -16,42 +16,62 @@ This guide entails installing a custom Linux distribution on your KVM Linode. If
 
 While there are methods of installing operating systems in place on the Linode, they often create partition tables on the disk image which are incompatible with our Backups service, and prevent us from resizing the disk image properly. Therefore we will install the operating system on a virtual image locally, then copy the filesystem to the Linode.
 
-For this guide we'll be using Ubuntu as an example, but you're welcome to apply these steps to any compatible OS.
+This guide will use Debian as an example, but you're welcome to apply these steps to any compatible OS.
 
 ## Before You Begin
 
-1.  Make sure you have a working installer ISO for the distribution. In our example, we've downloaded the Ubuntu 15.04 Server ISO from the [Ubuntu Downloads](http://www.ubuntu.com/download/server) page.
+1.  Make sure you have a working installer ISO for the distribution. In our example, we've downloaded the Debian 8 ISO from the [Ubuntu Downloads](http://www.ubuntu.com/download/server) page.
 
 2.  Have a virtual machine manager installed. In this example we'll be using Oracle's [VirtualBox](https://www.virtualbox.org/).
 
 3.  A local copy of the [Finnix](http://www.finnix.org/) ISO.
 
-## Create the Virtual Machine
+## Install a Custom Distro
 
-1.  From VirtualBox, create a new virtual machine:
+In this section you'll install your custom distro to a raw disk, with the *direct disk boot* option. The end result will leave you with a working custom install, however it will not support disk resizing from within the Linode Manager, nor will it be compatible with the Backup Service.
 
-    [![The VirtualBox interface.](/docs/assets/1164-vbvm1-1.png)](/docs/assets/1164-vbvm1-1.png)
+1.  [Create two raw disk images](/docs/migrate-to-linode/disk-images/disk-images-and-configuration-profiles#creating-a-blank-disk) from the Linode's Dashboard:
 
-2.  Name your new virtual machine based on your selected distribution.  In this example the virtual machine is named **Ubuntu 15.04**. VirtualBox should recognize the name and assign the correct type and version:
+    * A disk labeled **Installer**. The size of this disk will depend upon the size of your distribution's installer, but it's recommended to make it slightly larger than the space taken up by the install media itself. For this example, the installer disk will be 100MB in size, giving us plenty of room for the Debian network installer.
+    * A disk labelled **Boot**. This will take up the rest of the free space available on your Linode. **Important**: If you intend to continue to the next section on *making your custom distro work with the Linode Manager*, you should make your boot disk no larger than necessary - in this example we'll install Debian to a 2000MB disk.  
 
-    [![A new virtual machine.](/docs/assets/custom-distro-new-image.png)](/docs/assets/custom-distro-new-image.png)
+2.  [Create two configuration profiles](/docs/migrate-to-linode/disk-images/disk-images-and-configuration-profiles#configuration-profiles) and disable the options under **Filesystem / Boot Helpers** for each of them, as well as the [Lassie](/docs/uptime/monitoring-and-maintaining-your-server#configuring-shutdown-watchdog) shutdown watchdog under the **Settings** menu. Both profiles will use the **Direct Disk** option from the **Kernel** drop down menu:
 
-3.  Select the RAM and hard drive size for your virtual machine. Because we need to transfer the entire filesystem to the Linode, make your disk image as small as possible. In this example we've set the virtual machine to 512MB RAM and 2048MB of disk space.
+    **Installer profile**
 
-4.  After you've created your new virtual machine, right-click on it and select **Settings**. From the **Storage** tab, select the IDE disk device, which should currently say `Empty`. Click on the disk icon to the right, and select **Choose a virtual CD/DVD disk file**. Select the Ubuntu install ISO.
+    - Label: Installer
+    - Kernel: Direct Disk
+    - /dev/sda: *Boot* disk image.
+    - /dev/sdb: *Installer* disk image.
+    - root / boot device: Standard /dev/sdb
 
-    [![Assigning an ISO to the virtual machine..](/docs/assets/custom-distro-choose-iso_small.png)](/docs/assets/custom-distro-choose-iso.png)
+    **Boot profile**
 
-5.  In the main VirtualBox window, select your new virtual machine and click on **Start**. Install the operating system as you would on any physical machine. Take note of what device and partition you install your system to.
+    - Label: Boot
+    - Kernel: Direct Disk
+    - /dev/sda: *Boot* disk image.
+    - root / boot device: Standard /dev/sda
 
-    {: .caution }
-    > Using disk encryption and/or LVM partition schemas will interfere with our Backups service, and may inhibit the ability to resize your Linode's disk images later. The same applies for file systems other than ext3/4.
+3.  Boot into [Rescue Mode](/docs/troubleshooting/rescue-and-rebuild#booting-into-rescue-mode) with your *Installer* disk mounted to `/dev/sda`, and connect to your Linode using the [Lish Console](/docs/networking/using-the-linode-shell-lish).
 
-    Ensure that the OpenSSH package is selected during the installation process. Without this package you will only be able to access your Linode through the [Lish](/docs/networking/using-the-linode-shell-lish) console.
+4.  Once in Rescue Mode, download your installation media and copy it to your *Installer* disk. In this example we're using the Debian network installer:
 
-    [![Select the OpenSSH package..](/docs/assets/custom-distro-select-openssh_small.png)](/docs/assets/custom-distro-select-openssh.png)
+    {: .note}
+    > As an additional security step, you can use the keys provided in the same directory as the `iso` to [verify the authenticity](https://www.debian.org/CD/verify) of the image.
 
+        wget http://ftp.debian.org/debian/dists/stable/main/installer-amd64/current/images/netboot/mini.iso
+        dd if=mini.iso of=/dev/sda
 
+5.  Reboot into your *Installer* configuration profile, and open the [Glish](/docs/networking/use-the-graphic-shell-glish) graphical console from the **Remote Access** tab in your Linode's Dashboard. You'll see your distribution's installer, and you can begin the install process.
+
+6.  During your installer's partitioning / installation phase, be sure to instruct it to use the `/dev/sda` volume. Most installers will create separate root and swap partitions, but you can adjust this as needed.
+
+    {: .note}
+    > Some installers offer the option to place `/boot` on a separate partition. If you intend to make use of the steps in the second half of this guide, it's important that your `/boot` directory is located on the same partition as your root filesystem.
+
+7.  Once the installation completes, reboot into your *Installer* profile and open the Glish console. You should have access to a login prompt:
+
+    [![Custom Distro Glish](/docs/assets/custom-distro-glish-small.png)](/docs/assets/custom-distro-glish.png)
 ## Prepare the Linode
 
 1.  From the [Linode Manager](https://manager.linode.com/) create a new Linode. Under the **Disks** section of the Linode Dashboard, click on **Create a new Disk**:
