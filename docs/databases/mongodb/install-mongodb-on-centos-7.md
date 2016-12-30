@@ -2,14 +2,14 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Install MongoDB for document-oriented data storage on Ubuntu 16.04 (Xenial).'
+description: 'Install MongoDB for document-oriented data storage on CentOS 7.'
 keywords: 'nosql,database,mongodb,key store,ubuntu,mongodb tutorial'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Friday, December 30th, 2016
 modified_by:
   name: Phil Zona
-published: 'Friday, May 20th, 2016'
-title: 'Install MongoDB on Ubuntu 16.04 (Xenial)'
+published: 'Friday, December 30th, 2016'
+title: 'Install MongoDB on CentOS 7'
 external_resources:
  - '[Official MongoDB Documentation](https://docs.mongodb.org/v3.2/)'
  - '[MongoDB Project](http://www.mongodb.org/)'
@@ -18,7 +18,7 @@ external_resources:
 
 In this MongoDB tutorial, we explain how to install the database on CentOS 7, and then provide a short guide on some basic features and functions.
 
-![Install MongoDB on Ubuntu 16.04](/docs/assets/install-mongodb-ubuntu-16-04-title.png "Install MongoDB on Ubuntu 16.04")
+![Install MongoDB on CentOS 7](/docs/assets/install-mongodb-centos-7-title.png "Install MongoDB on CentOS 7")
 
 MongoDB is a database engine that provides access to non-relational, document-oriented databases. It is part of the growing [NoSQL](https://en.wikipedia.org/wiki/NoSQL) movement, along with databases like Redis and Cassandra (although there are vast differences among the many non-relational databases).
 
@@ -32,7 +32,7 @@ MongoDB seeks to provide an alternative to traditional relational database manag
 
 - Update your system:
 
-      sudo apt-get update && sudo apt-get upgrade
+      sudo yum update
 
 {: .note}
 >
@@ -40,51 +40,52 @@ MongoDB seeks to provide an alternative to traditional relational database manag
 
 ## Add the MongoDB Repository
 
-The `mongodb-server` package from the Ubuntu repository includes version 2.6. However, this version reached end of life in October 2016, so it should not be used in production environments. The most current version available is 3.2 and, as of this writing, the default Ubuntu repositories do not contain an updated package. 
+The most current stable version of MongoDB is 3.2 and, as of this writing, the default CentOS 7 repository does not contain a package for it. Instead, we'll need to use the MongoDB repository.
 
-Because the Ubuntu repositories don't contain a current version, we'll need to use the MongoDB repository.
+Create a new file, `/etc/yum.repos.d/mongodb-org-3.2.repo`, so that you can install the latest release using `yum`. Add the following contents to the file:
 
-1.  Import the MongoDB public GPG key for package signing:
-
-        sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
-
-2.  Add the MongoDB repository to your `sources.list.d` directory:
-
-        echo "deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list
-
-3.  Update your repositories. This allows `apt` to read from the newly added MongoDB repo:
-
-        sudo apt-get update
+{: .file}
+/etc/yum.repos.d/mongodb-org-3.2.repo
+:   ~~~
+    [mongodb-org-3.2]
+    name=MongoDB Repository
+    baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.2/x86_64/
+    gpgcheck=1
+    enabled=1
+    gpgkey=https://www.mongodb.org/static/pgp/server-3.2.asc
+    ~~~
 
 ## Install MongoDB
 
 Now that the MongoDB repository has been added, we're ready to install the latest stable version of MongoDB:
 
-    sudo apt-get install mongodb-org
+    sudo yum install mongodb-org
 
 This command installs `mongodb-org`, a meta-package that includes the following:
 
 -   `mongodb-org-server` - The standard MongoDB daemon, and relevant init scripts and configurations
 -   `mongodb-org-mongos` - The MongoDB Shard daemon
 -   `mongodb-org-shell` - The MongoDB shell, used to interact with MongoDB via the command line
--   `mongodb-org-tools` - Contains a few basic tools to restore, import, and export data, as well as a variety of other functions.
+-   `mongodb-org-tools` - Contains a few basic tools to restore, import, and export data, as well as other diverse functions.
 
-These packages provide a good base that will serve most use cases, and we recommend installing them all. However, if you want a more minimal installation, you can selectively install packages from the above list rather than using the `mongodb-org` metapackage.
+These packages provide a good base that will serve most use cases, and we recommend installing them all. However, if you want a more minified installation, you can selectively install packages from the above list rather than use the `mongodb-org` metapackage.
 
-For more information on the installation process and options, refer to the [official MongoDB installation tutorial](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/).
+For more information on the installation process and options, refer to the [official MongoDB installation tutorial](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-red-hat/).
 
 ## Configure MongoDB
 
 The configuration file for MongoDB is located at `/etc/mongod.conf`, and is written in YAML format. Most of the settings are well commented within the file. We've outlined the default options below:
 
-- `dbPath` indicates where the database files will be stored (`/var/lib/mongodb` by default)
 - `systemLog` specifies the various logging options, explained below:
     - `destination` tells MongoDB whether to store the log output as a file or syslog
     - `logAppend` specifies whether to append new entries to the end of an existing log when the daemon restarts (as opposed to creating a backup and starting a new log upon restarting)
     - `path` tells the daemon where to send its logging information (`/var/log/mongodb/mongod.log` by default)
+- `storage` specifies the settings that tell MongoDB how to store data, which we'll explain below:
+    - `dbPath` indicates where the database files will be stored (`/var/lib/mongo` by default)
+    - `journal.enabled` enables or disables the journal, which ensures that data files are recoverable
 - `net` specifies the various network options, explained below:
-    - `port` is the port on which the MongoDB daemon will run
-    - `bindIP` specifies the IP addresses MongoDB to which binds, so it can listen for connections from other applications
+    - `port` is the port on which the MongoDB daemon will listen
+    - `bindIP` specifies the IP addresses to which MongoDB binds, so it can listen for connections from other applications
 
 These are only a few basic configuration options that are set by default.
 
@@ -103,6 +104,15 @@ For more information on how to customize these and other values in your configur
 
 After making changes to the MongoDB configuration file, restart the service as shown in the following section.
 
+### Increase User Limits
+
+Issue the following commands to increase your open file and process limits for MongoDB:
+
+    echo "mongod     soft    nofiles   64000" >> /etc/security/limits.conf
+    echo "mongod     soft    nproc     64000" >> /etc/security/limits.conf
+
+These are the [recommended](https://docs.mongodb.com/v3.2/reference/ulimit/#recommended-ulimit-settings) settings, but you may need to adjust them depending upon your individual usage. See the [MongoDB Documentation](https://docs.mongodb.com/v3.2/reference/ulimit/) for more information.
+
 ## Start and Stop MongoDB
 
 To start, restart, or stop the MongoDB service, issue the appropriate command from the following:
@@ -117,7 +127,7 @@ You can also enable MongoDB to start on boot:
 
 ## Create Database Users
 
-If you enabled role-based access control in the [Configure MongoDB](#configure-mongodb) section, create a user administrator with credentials for use on the database: 
+If you enabled role-based access control in the [Configure MongoDB](#configure-mongodb) section, create a user administrator with credentials for use on the database:
 
 1.  Open the `mongo` shell:
 
@@ -153,7 +163,7 @@ If you enabled role-based access control in the [Configure MongoDB](#configure-m
 
     The `-u`, `-p`, and `--authenticationDatabase` options in the above command are required in order to authenticate connections to the shell. Without authentication, the MongoDB shell can be accessed but will not allow connections to databases.
 
-    The `mongo-admin` user created in Step 3 is purely administrative based on the roles specified. It is defined as an administrator of user for all databases, but does not have any database permissions itself. You may use it to create additional users and define their roles. If you are using multiple applications with MongoDB, set up different users with custom permissions for their corresponding databases.
+    The `mongo-admin` user created in Step 3 is purely administrative based on the roles specified. It is defined as an administrator of user for all databases but does not have any database permissions itself. You may use it to create additional users and define their roles. If you are using multiple applications with MongoDB, set up different users with custom permissions for their corresponding databases.
 
 6.  As the `mongo-admin` user, create a new database to store regular user data for authentication. The following example calls this database `user-data`:
 
@@ -162,7 +172,7 @@ If you enabled role-based access control in the [Configure MongoDB](#configure-m
 7.  Permissions for different databases are handled in separate `roles` objects. This example creates the user, `example-user`, with read-only permissions for the `user-data` database and has read and write permissions for the `exampleDB` database that we'll create in the [Manage Data and Collections](#manage-data-and-collections) section below.
 
     Create a new, non-administrative user to enter test data. Change both `example-user` and `password` to something relevant and secure:
-       
+
         db.createUser({user: "example-user", pwd: "password", roles:[{role: "read", db: "user-data"}, {role:"readWrite", db: "exampleDB"}]})
 
     To create additional users, repeat Steps 6 and 7 as the administrative user, creating new usernames, passwords and roles by substituing the appropriate values.
