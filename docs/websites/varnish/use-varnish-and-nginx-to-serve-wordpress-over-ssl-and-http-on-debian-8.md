@@ -25,6 +25,8 @@ image: https://linode.com/docs/assets/varnish-nginx-ssl.png
 
 **Varnish** is a powerful and flexible caching HTTP reverse proxy. It can be installed in front of any web server to cache its contents, which will improve speed and reduce server load. When a client requests a webpage, Varnish first tries to send it from the cache. If the page is not cached, Varnish forwards the request to the backend server, fetches the response, stores it in the cache, and delivers it to the client. 
 
+![Use Varnish & nginx to Serve WordPress over SSL & HTTP on Debian 8](/docs/assets/use_varnish_nginx_to_serve_wordpress_over_ssl_http_on_debian_8.png "Use Varnish & nginx to Serve WordPress over SSL & HTTP on Debian 8")
+
 When a cached resource is requested through Varnish, the request doesn't reach the web server or involve PHP or MySQL execution. Instead, Varnish reads it from memory, delivering the cached page in a matter of microseconds.
 
 One Varnish drawback is that it doesn't support SSL-encrypted traffic. You can circumvent this issue by using **nginx** for both SSL decryption and as a backend web server. Using nginx for both tasks reduces the complexity of the setup, leading to fewer potential points of failure, lower resource consumption, and fewer components to maintain.

@@ -19,6 +19,8 @@ external_resources:
 
 Before an existing Linode can be migrated to a new host, you'll need to ensure that all configuration profiles on that Linode are using a 64-bit kernel. This guide will show you how to make that switch, and warn about some of the more common issues to look out for in the process.
 
+![Switch to a 64-bit Linux Kernel](/docs/assets/switch_to_a_64_bit_linux_kernel.png "Switch to a 64-bit Linux Kernel")
+
 ## Switch to a 64-bit Kernel
 
 1.  Next to your Configuration Profile, click **Edit**.
