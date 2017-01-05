@@ -33,7 +33,7 @@ The [PostgreSQL](http://www.postgresql.org/) relational database system is a pow
 
 ## Install PostgreSQL
 
-In this section, we'll cover two different methods for installing PostgreSQL. If you do not need the latest version, we recommend using the first method to install PostgreSQL from the default CentOS repositories.
+In this section, we'll cover two different methods for installing PostgreSQL. If you do not need the latest version, we recommend using the first method to install PostgreSQL from the CentOS repositories.
 
 Unless otherwise noted, the instructions in subsequent sections of this guide will be compatible with versions installed by either method.
 
@@ -60,7 +60,7 @@ Alternatively, you can install the latest version from the Postgres repositories
 >
 >When Postgres is installed using this method, the version number is included in its configuration directories. For example, `/var/lib/pgsql` becomes `/var/lib/pgsql/9.6`. This is also the case with systemd units; `systemctl status postgresql` becomes `systemctl status postgresql-9.6`.
 
-1.  Select the version you wish to install from the [Postgres Yum repositories](https://yum.postgresql.org/repopackages.php). Locate the CentOS 7 link for your chosen version, and download it to your Linode:
+1.  Select the version you wish to install from the [Postgres yum repositories](https://yum.postgresql.org/repopackages.php). Locate the CentOS 7 link for your chosen version, and download it to your Linode:
 
         wget https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-7-x86_64/pgdg-centos96-9.6-3.noarch.rpm
 
@@ -68,7 +68,7 @@ Alternatively, you can install the latest version from the Postgres repositories
 
         sudo yum install pgdg-centos96-9.6-3.noarch.rpm epel-release
 
-3.  Update Yum to apply your changes, and install PostgreSQL. When installing Postgres manually, you will have to specify the version:
+3.  Update yum to apply your changes, and install PostgreSQL. When installing Postgres manually, you will have to specify the version:
 
         sudo yum update
         sudo yum install postgresql96-server postgresql96-contrib
@@ -188,7 +188,7 @@ You can delete, or *drop*, databases with the `dropdb` command. For example, to 
 
 ## Work with Tables
 
-PostgreSQL databases use tables to store and organize information within a database. In this section, you'll find practical examples for adding, removing, and manipulating tables. Unless otherwise noted, the commands in this section should be issued from the Postgres shell, once you've [connected to your database](#connect-to-a-database).
+PostgreSQL databases use tables to store and organize information within a database. In this section, you'll find practical examples for adding, removing, and manipulating tables. Unless otherwise noted, the commands in this section should be issued from the Postgres shell once you've [connected to your database](#connect-to-a-database).
 
 ### Create Tables
 
@@ -254,11 +254,11 @@ Tables can be altered to add definitions, data types, and columns. In this examp
                   1 | John       | Doe       |
         (1 row)
 
-    While in this example, you've used the `date` data type, PostgreSQL tables support several different types of data. See the [PostgreSQL Documentation](https://www.postgresql.org/docs/9.2/static/datatype.html) for a full explanation of supported data types.
+    In this example you've used the `date` data type, but PostgreSQL tables support several different types of data. See the [PostgreSQL Documentation](https://www.postgresql.org/docs/9.2/static/datatype.html) for a full explanation of supported data types.
 
 ### Add and Update Rows
 
-In this section, you'll enter a value into the existing row you've created, using `UPDATE`. Then, you'll create an entirely new row with `INSERT`.
+In this section, you'll use `UPDATE` to enter a value into the existing row you've created. Then, you'll create an entirely new row with `INSERT`.
 
 1.  Update the `start_date` field for the user with the value `1` in the `employee_id` column:
 
@@ -359,7 +359,7 @@ You can list all roles from the [Postgres Shell](#access-the-postgresql-shell) b
 
 ### Group Roles
 
-For ease of administration, it's possible to add multiple user roles to a single group, so that their privileges can be managed as a whole. In this section you'll create a new group, and add the `examplerole` user to it. These commands should be run as the `postgres` Linux user.
+For ease of administration, it's possible to add multiple user roles to a single group, so that their privileges can be managed as a whole. In this section you'll create a new group and add the `examplerole` user to it. These commands should be run as the `postgres` Linux user.
 
 1.  Use the `createuser` command to create a new group role. The `--no-login` option is specified because groups do not need login capability.
 
