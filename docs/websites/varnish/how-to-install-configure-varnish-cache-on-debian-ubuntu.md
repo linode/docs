@@ -6,7 +6,7 @@ description: How to install and configure Varnish Cache on Debian and Ubuntu
 keywords: 'Varnish,Ubuntu,Debian,Cache,'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-servers/varnish/','websites/varnish/getting-started-with-varnish-cache/']
-modified: Friday, December 7, 2016
+modified: Friday, January 13, 2016
 contributor:
     name: Kevin Cupp
 modified_by:
@@ -27,7 +27,9 @@ Need to handle a lot of traffic? Caching is one of the best ways to maximize the
 
 Varnish works by handling requests before they make it to your backend, whether your backend is Apache, nginx, or anything else. If it doesn't have a request cached, it will forward the request to your backend and then cache its output. You can optionally store these cached requests in memory, so they're retrieved extremely quickly.
 
-If your server is nginx and you plan to use Varnish cache to serve WordPress, visit Linode's guide to [Using Varnish & nginx to Serve WordPress over SSL & HTTP on Debian 8](/docs/websites/varnish/use-varnish-and-nginx-to-serve-wordpress-over-ssl-and-http-on-debian-8).
+Additionally, Varnish cache can be used as part of a [highly available environment](#use-varnish-cache-for-high-availability-with-backend-polling) which ensures smooth uptime through high traffic times or hardware failures.
+
+If your web server is nginx and you plan to use Varnish cache to serve WordPress, visit Linode's guide to [Using Varnish & nginx to Serve WordPress over SSL & HTTP on Debian 8](/docs/websites/varnish/use-varnish-and-nginx-to-serve-wordpress-over-ssl-and-http-on-debian-8).
 
 ## Before You Begin
 
@@ -45,132 +47,125 @@ If your server is nginx and you plan to use Varnish cache to serve WordPress, vi
 >
 > This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
-## Install Varnish Cache
+## Install and Configure Varnish Cache
 
-1.  Install Varnish:
+1.  Install Varnish with the package manager:
 
         sudo apt install varnish
 
-2.  In the Varnish configuration, edit the `-f /etc/varnish/` line of the `DAEMON_OPTS` section to instruct it to load a custom configuration. The following example uses `user.vcl`, but you can name the file whatever you prefer:
+2.  To avoid having your configuration overwritten by future updates, make a copy of the default:
 
-    {: .file-excerpt }
-    /etc/default/varnish
-    :   ~~~
-        ## Alternative 2, Configuration with VCL
-        #
-        # Listen on port 6081, administration on localhost:6082, and forward to
-        # one content server selected by the vcl file, based on the request.  Use a 1GB
-        # fixed-size cache file.
-        #
-        DAEMON_OPTS="-a :6081 \
-                     -T localhost:6082 \
-                     -f /etc/varnish/user.vcl \
-                     -S /etc/varnish/secret \
-                     -s malloc,1G"
-        ~~~
+        cd /etc/varnish
+        sudo cp default.vcl user.vcl
 
-It's important to have your configuration outside of the default VCL file or a future package update may overwrite it.
+3.  Stop the Varnish service while making configuration changes:
 
-The configuration above allocates a maximum of 1GB of memory to store its cache items. If you need to adjust this allocation, simply edit the number in the `-s malloc,1G` line:
+        sudo systemctl stop varnish
+
+### Configure Varnish Backend with Systemd
+
+Varnish is configured via [Varnish Configuration Language (VCL)](https://www.varnish-cache.org/docs/4.0/reference/vcl.html). Once the configuration file is loaded by the system, Varnish translates and compiles the VCL code into a C program that runs alongside the Varnish process.
+
+Recent versions of Debian (8 and newer) and Ubuntu (15.04 and newer) require Varnish configuration through *systemd*.
+
+Open the `varnish.service` file, set the port, configuration file, and *memory allocation* on the `ExecStart` line. In the following example, these values are: `-a :80`, `/etc/varnish/user.vcl`, and `malloc,1G`
+
+{: .file-excerpt }
+/lib/systemd/system/varnish.service
+: ~~~ bash
+  ExecStart=/usr/sbin/varnishd -j unix,user=vcache -F -a :80 -T localhost:6082 -f /etc/varnish/user.vcl -S /etc/varnish/secret -s malloc,1G
+  ~~~
+
+The configuration above allocates a maximum of 1GB of memory to store its cache items. If you need to adjust this allocation, edit the number in `-s malloc,1G`:
 
     -s malloc,1G
 
-We'll come back and edit more daemon options more later. For now, let's start configuring Varnish to cache and present our backend.
+Reload systemd:
 
-## Basic Varnish Configuration
+    sudo systemctl daemon-reload
 
-Varnish is configured via the [Varnish Configuration Language (VCL)](https://www.varnish-cache.org/docs/4.0/reference/vcl.html). Once the configuration file is loaded, Varnish translates and compiles the VCL code into a C program that runs along side the Varnish process.
+### Modify Custom Varnish Configuration VCL
 
-Let's start customizing our VCL. Start by copying `default.vcl` to a new file, this will give us a good starting point:
+Now that we've pointed the Varnish initiation to `user.vcl`, we need to configure that file to serve the content Varnish gets from the web server. Edit the `backend default {` section of `/etc/varnish/user.vcl` to tell Varnish where to get the server content. In the example below, we use port `8080`, a web server setting we will configure later:
 
-    cd /etc/varnish
-    sudo cp default.vcl user.vcl
-    nano user.vcl
-
-### Configure Backend
-
-1.  The first thing we'll change is our *backend*. This is where Varnish forwards requests to and is essentially what you're caching. In our example case, we are caching Apache which is currently on port 80 on the same Linode, so change the backend accordingly:
-
-        backend default {
-            .host = "127.0.0.1";
-            .port = "80";
-        }
-
-2.  This change alone should get Varnish up and running with reasonable defaults. To see, restart Varnish:
-
-        sudo systemctl restart varnish
-
-3.  By default, Varnish runs on port 6081, so in a web browser, access port 6081 on your server:
-
-        http://example.com:6081
-
-    You should be seeing the homepage of your website. To confirm you're seeing a cached version of your site, inspect the headers returned. You should see these two headers:
-
-        Via: 1.1 varnish
-        Age: 10
-
-    **Age** is how old this item in the cache is in seconds. Refresh the page a few times and ensure the `Age` header is incrementing properly. If it stays at **0**, your page likely isn't caching and it could be for a number of reasons. If your website sets cookies, Varnish assumes it is displaying user-specific content and therefore will not cache the request. Or if your web application sets Expires headers that are too short, or if it sets a strict `no-cache` policy in its caching headers, Varnish will also not cache that.
+{: .file-excerpt }
+/etc/varnish/user.vcl
+: ~~~
+  backend default {
+      .host = "127.0.0.1";
+      .port = "8080";
+  }
+  ~~~
 
 ### Configure Cache Time-to-Live (TTL)
 
-By default, Varnish will cache requests for two minutes. If you'd like to adjust this, go back and open your VCL file and override the `vcl_fetch` subroutine by adding this below your backend declaration:
+By default, Varnish will cache requests for two minutes. To adjust this time, open your VCL file and override the `vcl_fetch` subroutine by adding this below your backend declaration:
 
-    sub vcl_fetch
-    {
-        set beresp.ttl = 5m;
-    }
+{: .file-excerpt }
+/etc/varnish/user.vcl
+: ~~~
+  sub vcl_fetch 
+  {
+    set beresp.ttl = 5m;
+  }
+  ~~~
 
-This subroutine is called after a request is fetched from the backend. You can see we're setting the TTL variable on the object to five minutes. Values can be in seconds (`120s`), minutes (`2m`) or hours (`2h`). Your ideal TTL can vary based on how often content on your site is updated, how large your site is, and how much traffic you need to handle.
+This subroutine is called after a request is fetched from the backend. In this example, we're setting the TTL variable on the object to five minutes (`5m`). Values can be in seconds (`120s`), minutes (`2m`) or hours (`2h`). Your ideal TTL may vary based on how often content on your site is updated, how large your site is, and how much traffic you need to handle.
 
-### Take Varnish Live
+## Take Varnish Live: Configure Web Traffic to Serve Cached Content
 
-If we're happy with our basic Varnish set up, it's time to tell Varnish and Apache to swap ports so that requests to our website go through Varnish by default.
+Now that you've configured Varnish, use this section to make it your web server by swapping the ports your web server and Varnish listen on. As illustrated in the graphic below, all web traffic will be served from Varnish cache and refreshed every two minutes or at the [interval configured above](#configure-cache-time-to-live-ttl):
 
-1.  To change Apache's port, we'll need to edit `/etc/apache2/ports.conf` and any virtual hosts we have. Open `ports.conf` to find `NameVirtualHost *:80` and `Listen 80` and change `80` in each to another port. We'll go with `8080`:
+![Getting Started with Varnish Cache](/docs/assets/varnish_tg.png "Getting Started with Varnish Cache")
 
-        NameVirtualHost *:8080
+While these steps specify Apache, nginx configuration is identical. If using nginx, begin with Step 2, and replace each instance of `apache2` below with `nginx`.
+
+1.  Change the port Apache listens on. Edit `/etc/apache2/ports.conf` and any virtual hosts. Open `ports.conf` and change the `80` in `Listen 80` to another port. We'll use `8080` in our examples:
+
         Listen 8080
 
-2.  Next, go into `/etc/apache2/sites-available` and change the beginning of each of your `VirtualHost` declarations to include the new port number:
+2.  Next, go into `/etc/apache2/sites-available/example.com.conf` and change the beginning of each of your `VirtualHost` declarations to include the new port number:
 
         <VirtualHost *:8080>
 
-3.  Configure Varnish to start on port 80. Go back into our daemon options file `/etc/default/varnish` and find the uncommented options where we were editing before. The line with the `-a` flag specifies the port number, change that to `80`:
-
-        DAEMON_OPTS="-a :80 \
-
-4.  Lastly, we need to edit Varnish's backend configuration to pull from `127.0.0.1:8080` instead of `127.0.0.1:80`. Open `/etc/varnish/user.vcl` and change the backend configuration to:
+3.  Edit Varnish's backend configuration to pull from `127.0.0.1:8080` instead of `127.0.0.1:80`. Open `/etc/varnish/user.vcl` and change the `backend default`:
 
         backend default {
             .host = "127.0.0.1";
             .port = "8080";
         }
 
-5.  It's time to reload the configuration in both Apache and Varnish. With this, Varnish should be facing live to our site visitors and serving our site from Apache:
+4.  Reload the configuration for both Apache and Varnish. After reload, Varnish should be live to site visitors and serving the cached site from Apache or nginx:
 
         sudo systemctl reload apache2
         sudo systemctl restart varnish
 
 ## Advanced Varnish Configuration
 
-The VCL provides much control over how requests are cached, and it's likely you may need to make some custom modifications for your situation. Let's go over a few common VCL modifications, as well as some tips and tricks.
+The VCL allows extended control over how requests are cached, and it's likely you may need to make some custom modifications. Let's go over a few common VCL modifications, as well as some tips and tricks.
 
-### Exclude Requests from Varnish Cache
+These modifications should be added to your `user.vcl` file.
 
-If your Linode runs multiple websites, it's common to want to exclude some of them from Varnish's caching. To do this, we'll dig through Varnish's request object to get information about the request and conditionally tell varnish to **pass** the request though to the backend with no caching.
+### Exclude Content from Varnish Cache
+
+You may want to exclude specific parts of your website from Varnish caching, particularly if there is a non-public or administrative portion. To do this, we'll dig through Varnish's request object for information about the request and conditionally tell varnish to **pass** the request though to the backend with no caching.
 
 We need to override the `vcl_recv` subroutine in our VCL file which is run each time Varnish receives a request, then add a conditional:
 
-    sub vcl_recv
-    {
-        if (req.http.host ~ "example.com" ||
-            req.url ~ "^/admin")
-        {   
-            return (pass);
-        }
-    }
+{: .file-excerpt }
+/etc/varnish/user.vcl
+: ~~~
+  sub vcl_recv
+  {
+      if (req.http.host ~ "example.com" ||
+          req.url ~ "^/admin")
+      {
+          return (pass);
+      }
+  }
+  ~~~
 
-You can see we're checking for two conditions we don't want to cache. The first is any request that is for `example.com`, the second is for any URI requests that begin with `/admin`. If any of these are true, Varnish will not cache the request.
+This example checks for two conditions we don't want to cache. The first is any request that is for `example.com`, the second is for any URI requests that begin with `/admin`. If both of these are true, Varnish will not cache the request.
 
 ### Unset Cookies
 
@@ -178,112 +173,102 @@ As mentioned earlier, if Varnish detects your website is setting cookies, it ass
 
 Add this to the bottom of `vcl_recv` in our VCL:
 
-    unset req.http.Cookie;
+{: .file-excerpt }
+/etc/varnish/user.vcl
+: ~~~
+  unset req.http.Cookie;
+  ~~~
 
 You may find that a particular cookie is important for displaying content or determines if your user is logged in or not. In this case, you probably don't want to show cached content and just send the user straight to the backend.
 
 For this case, we'll check `req.http.Cookie` for a cookie called "logged\_in", and if we find it, pass the request on to the backend with no caching. Here's our entire `vcl_recv` subroutine thus far:
 
-    sub vcl_recv
-    {
-        if (req.http.host ~ "example.com" ||
-            req.url ~ "^/admin" ||
-            req.http.Cookie ~ "logged_in")
-        {   
-            return (pass);
-        }
+{: .file-excerpt }
+/etc/varnish/user.vcl
+: ~~~
+  sub vcl_recv
+  {
+      if (req.http.host ~ "example.com" ||
+          req.url ~ "^/admin" ||
+          req.http.Cookie ~ "logged_in")
+       {
+          return (pass);
+       }
 
-        unset req.http.Cookie;
-    }
+       unset req.http.Cookie;
+  }
+  ~~~
 
 ### To Cache POST, or Not to Cache POST?
 
-It's very likely you don't want to cache POST requests because they probably need to interact with the backend to gather dynamic data or setup a user's session. In our example above, we chose not to cache requests if the user is logged in. Well we need to make sure they can log in to begin with. An easy approach is to skip POST requests all together.
+It's likely you don't want to cache [POST](https://en.wikipedia.org/wiki/POST_(HTTP)) requests because they probably need to interact with the backend to gather dynamic data or setup a user's session. In our example above, we chose not to cache requests if the user is logged in. This section ensures a user can log in to begin with. An easy approach is to skip POST requests all together.
 
-Let's add this condition to our existing `return (pass)` block inside of `vcl_recv`:
+To accomplish this add the following condition to the existing `return (pass)` block inside of `vcl_recv`:
 
-    if (req.http.host ~ "example.com" ||
-        req.url ~ "^/admin" ||
-        req.http.Cookie ~ "logged_in" ||
-        req.request == "POST")
-    {   
-        return (pass);
-    }
-
-### Using the Grace Period
-
-We’ve all lost precious uptime when one of our web services decides to crash. Varnish has some nifty tools in place to cover your tail in such an event, and it's called *backend polling*. The concept is simple: Varnish will poll your backend at an interval you specify, and if it detects the backend is unreachable, it will continue to serve out of the cache for a specified period of time, called *grace time*.
-
-Setting up polling is easy, we do it by adding a probe section to our backend declaration in `/etc/varnish/user.vcl`:
-
-    backend default {
-        .host = '127.0.0.1';
-        .port = '8080';
-        .probe = {
-            .url = "/";
-            .timeout = 34ms;
-            .interval = 1s;
-            .window = 10;
-            .threshold = 8;
-        }
-    }
-
-These are the default settings from Varnish's documentation, so you may want to tweak them for your website. This basically says, "Go to `http://127.0.0.1:8080/` every second, and if it takes less than 34ms to respond for at least 8 of the last 10 polls, the backend is considered healthy."
-
-If the backend fails the test, objects are served out of the cache in accordance to their grace time setting. To set this, we need to set the grace time both for the request and for the fetched object. To set grace time for the request, add this line to `vcl_recv`:
-
-    set req.grace = 1h; 
-
-And to set grace time on the object, add this line to `vcl_fetch`:
-
-    set beresp.grace = 1h; 
-
-This allows our backend to be down for a whole hour before we get it fixed without website visitors ever noticing.
-
-### Final VCL File
-
-For reference, here is our final VCL file with all the modifications made in this guide:
-
-{: .file }
+{: .file-excerpt }
 /etc/varnish/user.vcl
-:   ~~~
-    backend default {
-        .host = "127.0.0.1";  # IP address of your backend (Apache, nginx, etc.)
-        .port = "8080";       # Port your backend is listening on
-        .probe = {
-            .url = "/";
-            .timeout = 34ms;
-            .interval = 1s;
-            .window = 10;
-            .threshold = 8;
-        }
-    }
+: ~~~
+  if (req.http.host ~ "example.com" ||
+      req.url ~ "^/admin" ||
+      req.http.Cookie ~ "logged_in" ||
+      req.request == "POST")
+  {
+      return (pass);
+  }
+  ~~~
 
-    sub vcl_recv
-    {
-       # Do not cache example.com, the admin area,
-       # logged-in users or POST requests
-       if (req.http.host ~ "example.com" ||
-            req.url ~ "^/admin" ||
-            req.http.Cookie ~ "logged_in" ||
-            req.request == "POST")
-        {
-            return (pass);
-        }
+### Use Varnish Cache for High Availability with Backend Polling
 
-        # Don't allow cookies to affect cachability
-        unset req.http.Cookie;
+Varnish can use a built-in tool called *backend polling* to check on the backend server and continue serving cache if the backend is unreachable. In the event that Varnish detects downtime, it will continue serving cached content for a *grace time* that you configure in `user.vcl`.
 
-        # Set Grace Time to one hour
-        set req.grace = 1h;
-    }
+To set up polling, add a probe section to the backend declaration in `/etc/varnish/user.vcl`:
 
-    sub vcl_fetch
-    {
-        # Set the TTL for cache object to five minutes
-        set beresp.ttl = 5m;
+{: .file-excerpt }
+/etc/varnish/user.vcl
+: ~~~
+  backend default {
+      .host = '127.0.0.1';
+      .port = '8080';
+      .probe = {
+          .url = "/";
+          .timeout = 34ms;
+          .interval = 1s;
+          .window = 10;
+          .threshold = 8;
+       }
+  }
+  ~~~
 
-        # Set Grace Time to one hour
-        set beresp.grace = 1h;
-    }
-    ~~~
+These are the default settings from Varnish's documentation, so you may want to tweak them for your website. This example instructs Varnish to check `http://127.0.0.1:8080/` every second, and if it takes less than 34ms to respond for at least 8 of the last 10 polls, the backend is considered healthy.
+
+If the backend fails the test, objects are served out of the cache in accordance to their grace time setting. To set this, set the grace time both for the request and for the fetched object. To set grace time for the request, add this line to `vcl_recv`:
+
+{: .file-excerpt }
+/etc/varnish/user.vcl
+: ~~~
+  set req.grace = 1h;
+  ~~~
+
+And to set grace time for the object, add this line to `vcl_fetch`:
+
+{: .file-excerpt }
+/etc/varnish/user.vcl
+: ~~~
+  set beresp.grace = 1h;
+  ~~~
+
+This allows our backend to be down up to an hour without website visitors ever noticing. If you're serving static content, the grace time can be even longer to ensure uptime.
+
+#### Serve Varnish Cache from Another Linode (Optional)
+
+For added availability, consider serving Varnish cache from a separate Linode. In this case, the Varnish installation steps should be performed on a separate Linode in the same datacenter as the web server. Once installed, configure the Varnish backend `.host` to point at the web server Linode's [private IP address](/docs/networking/remote-access#adding-private-ip-addresses). Note that DNS should be pointed at the Varnish Linode for your Fully Qualified Domain Name (FQDN) to work.
+
+That's it! If everything went well, visitors to your site are now being served Varnish cache quickly.
+
+## Test Varnish with varnishlog
+
+Now that all traffic is configured to reach Varnish cache. Start `varnishlog` to view Varnish activity as it happens. Note that this is a live, ongoing log that will not show any information unless there is activity. Once started, use a local browser to view a page that should be cached and watch the log for activity:
+
+    sudo varnishlog
+
+Stop `varnishlog` with **CTRL+C** when done.
