@@ -23,6 +23,8 @@ This document describes a compatible alternative to the **LAMP** (Linux,Apache, 
 
 Prior to beginning this guide, please complete the [Getting Started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
 
+![LEMP Server on Debian 7 (Wheezy)](/docs/assets/lemp_server_on_debian_7_wheezy.png "LEMP Server on Debian 7 (Wheezy)2")
+
 ## Set the Hostname
 
 Before you begin installing and configuring the components described in this guide, please make sure you have followed our instructions for [setting your hostname](/docs/getting-started#sph_setting-the-hostname). Issue the following commands to make sure it is set properly:

@@ -15,6 +15,8 @@ title: Migrating a Server to Your Linode
 
 You can migrate an existing server to your Linode from another hosting provider or a local machine. This is a great option if you're moving to Linode from another hosting provider or if you've built a custom server on your local machine. You can even migrate virtualized servers created with products like VirtualBox or VMware. This guide shows you how to prepare the Linode to receive the files, copy the files from the existing server to the Linode, and then make the disks bootable.
 
+![Migrating a Server to Your Linode](/docs/assets/migrating_a_server_to_your_linode.png "Migrating a Server to Your Linode")
+
  {: .note }
 >
 > These instructions assume that you'll be working with a live server. If you can boot into an alternate environment, such as a live CD, you should do so. However, most hosting providers do not offer a bootable recovery or maintenance environment.
