@@ -16,7 +16,7 @@ external_resources:
  - '[Language-Specific MongoDB Drivers](http://docs.mongodb.org/ecosystem/drivers/)'
 ---
 
-In this MongoDB tutorial, we explain how to install the database on CentOS 7, and then provide a short guide on some basic features and functions.
+In this MongoDB tutorial, we explain how to install the database on Ubuntu 16.04, and then provide a short guide on some basic features and functions.
 
 ![Install MongoDB on Ubuntu 16.04](/docs/assets/install-mongodb-ubuntu-16-04-title.png "Install MongoDB on Ubuntu 16.04")
 
