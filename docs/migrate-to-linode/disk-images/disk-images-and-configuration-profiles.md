@@ -15,7 +15,7 @@ title: Disks and Configuration Profiles
 
 The Linode Manager allows you to create, edit, and use disks and configuration profiles with your Linode virtual private servers. You can install different Linux distributions on the disks, set device assignments, and configure boot settings. This guide will show you how to put the pieces together to create a custom setup.
 
-![isks and Configuration Profiles](/docs/assets/disks_and_configuration_profiles.png "isks and Configuration Profiles")
+![Disks and Configuration Profiles](/docs/assets/disks_and_configuration_profiles.png "isks and Configuration Profiles")
 
 ## Getting Started
 
