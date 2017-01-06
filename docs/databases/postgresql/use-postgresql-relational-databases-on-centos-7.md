@@ -3,7 +3,7 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Use PostgreSQL Relational Databases on CentOS 7.'
-keywords: 'postgresql,CentOS 7,postgresql database,open source database,relational database'
+keywords: 'postgresql,CentOS 7,open source database,relational database'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Monday, December 12th, 2016
 modified_by:
@@ -43,7 +43,7 @@ Unless otherwise noted, the instructions in subsequent sections of this guide wi
 
         sudo yum install postgresql-server postgresql-contrib
 
-2.  Initialize your Postgres database, and start PostgreSQL:
+2.  Initialize your Postgres database and start PostgreSQL:
 
         sudo postgresql-setup initdb
         sudo systemctl start postgresql
@@ -60,7 +60,7 @@ Alternatively, you can install the latest version from the Postgres repositories
 >
 >When Postgres is installed using this method, the version number is included in its configuration directories. For example, `/var/lib/pgsql` becomes `/var/lib/pgsql/9.6`. This is also the case with systemd units; `systemctl status postgresql` becomes `systemctl status postgresql-9.6`.
 
-1.  Select the version you wish to install from the [Postgres Yum repositories](https://yum.postgresql.org/repopackages.php). Locate the CentOS 7 link for your chosen version, and download it to your Linode:
+1.  Select the version you wish to install from the [Postgres Yum repositories](https://yum.postgresql.org/repopackages.php). Locate the CentOS 7 link for your chosen version and download it to your Linode:
 
         wget https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-7-x86_64/pgdg-centos96-9.6-3.noarch.rpm
 
@@ -68,7 +68,7 @@ Alternatively, you can install the latest version from the Postgres repositories
 
         sudo yum install pgdg-centos96-9.6-3.noarch.rpm epel-release
 
-3.  Update Yum to apply your changes, and install PostgreSQL. When installing Postgres manually, you will have to specify the version:
+3.  Update Yum to apply your changes and install PostgreSQL. When installing Postgres manually, you will have to specify the version:
 
         sudo yum update
         sudo yum install postgresql96-server postgresql96-contrib
@@ -90,7 +90,7 @@ By default, PostgreSQL will create a Linux user named `postgres` to access the d
 
 {: .caution}
 >
->The `postgres` user should not be used for for other purposes (e.g., connecting to other networks). Doing so presents a serious risk to the security of your databases.
+>The `postgres` user should not be used for other purposes (e.g., connecting to other networks). Doing so presents a serious risk to the security of your databases.
 
 1.  Change the `postgres` user's Linux password:
 
@@ -122,7 +122,7 @@ In the last line, `postgres=#` indicates the name of the current database. To se
 
 ## Work with Databases
 
-This section will cover how to create, delete, and access databases.
+This section will cover how to create, delete and access databases.
 
 ### Create a Database
 
@@ -151,7 +151,7 @@ You can use the `psql` command to connect to a specific database.
 
         mytestdb=#
 
-    By default, you will connect to a database as your [peer-authenticated](#peer-authentication) user. However if you've enabled [local password access](#secure-local-access), it's also possible to specify which user you wish to connect as:
+    By default, you will connect to a database as your [peer-authenticated](#peer-authentication) user. However, if you've enabled [local password access](#secure-local-access), it's also possible to specify which user you wish to connect as:
 
         psql mytestdb -U examplerole
 
@@ -173,7 +173,7 @@ From the [Postgres shell](#access-the-postgresql-shell), you can list all of you
     |         |          |          |             | postgres=CTc/postgres
     (4 rows)
 
-You may also show the current database and user by entering `\c` from the Postgres shell. Additional info like socket and port will be included if you use `\conninfo`:
+You may also show the current database and user by entering `\c` from the Postgres shell. Additional info, like socket and port, will be included if you use `\conninfo`:
 
     You are connected to database "mytestdb" as user "postgres" via socket in "/var/run/postgresql" at port "5432".
 
@@ -186,9 +186,9 @@ You can delete, or *drop*, databases with the `dropdb` command. For example, to 
 {: .caution}
 >Deleted databases cannot be recovered.
 
-## Work with Tables
+## Work With Tables
 
-PostgreSQL databases use tables to store and organize information within a database. In this section, you'll find practical examples for adding, removing, and manipulating tables. Unless otherwise noted, the commands in this section should be issued from the Postgres shell once you've [connected to your database](#connect-to-a-database).
+PostgreSQL databases use tables to store and organize information within a database. In this section, you'll find practical examples for adding, removing and manipulating tables. Unless otherwise noted, the commands in this section should be issued from the Postgres shell once you've [connected to your database](#connect-to-a-database).
 
 ### Create Tables
 
@@ -237,7 +237,7 @@ Delete tables with `DROP TABLE`. To delete the `employees` table:
 
 ### Add Columns
 
-Tables can be altered to add definitions, data types, and columns. In this example you'll add a new `start_date` column that uses the [date](https://www.postgresql.org/docs/9.2/static/datatype-datetime.html) data type.
+Tables can be altered to add definitions, data types and columns. In this example you'll add a new `start_date` column that uses the [date](https://www.postgresql.org/docs/9.2/static/datatype-datetime.html) data type.
 
 1.  Add the `start_date` column to the `employees` table:
 
@@ -318,7 +318,7 @@ You'll receive an output similar to this:
 
 PostgreSQL supports many querying options. See the [PostgreSQL Documentation](https://www.postgresql.org/docs/9.2/static/sql-select.html) for more information.
 
-## Work with Roles
+## Work With Roles
 
 PostgreSQL grants database access via **roles**, which are used to specify privileges. Roles can be understood as having a similar function to Linux "users." In addition, roles may also be created as a set of other roles, similar to a Linux "group." PostgreSQL roles apply globally, so you will not need to create the same role twice if you'd like to grant it access to more than one database on the same server.
 
@@ -446,9 +446,9 @@ Commands in this section should be run as the `postgres` Linux user unless other
 
     {: .note}
     >
-    >If you installed PostgreSQL from the [Postgres repositories](#install-from-the-postgres-repositories) you will need to specify your version number in this file path, for example: `/var/lib/pgsql/9.6/data/pg_hba.conf`.
+    >If you installed PostgreSQL from the [Postgres repositories](#install-from-the-postgres-repositories), you will need to specify your version number in this file path, for example: `/var/lib/pgsql/9.6/data/pg_hba.conf`.
 
-2.  To enable these changes, we need to restart PostgreSQL. However, we did not grant the `postgres` user sudo privileges for security reasons. Return to the normal user shell:
+2.  To enable these changes, you need to restart PostgreSQL. However, you did not grant the `postgres` user sudo privileges for security reasons. Return to the normal user shell:
 
         exit
 
@@ -461,7 +461,7 @@ Commands in this section should be run as the `postgres` Linux user unless other
 
         psql mytestdb -U examplerole
 
-    You will be prompted to enter the password for the `examplerole` user and given `psql` shell access to the database. When using a database, you may check access privileges for each of its tables with the `\z` command.
+    You will be prompted to enter the password for the `examplerole` user and then given `psql` shell access to the database. When using a database, you may check access privileges for each of its tables with the `\z` command.
 
 ### Secure Remote Access
 
