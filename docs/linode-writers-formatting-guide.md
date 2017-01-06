@@ -6,14 +6,14 @@ description: 'The Linode Guides & Tutorials style guide for article submissions'
 keywords: 'style guide,format,formatting,how to write,write for us,write for linode,linode docs,submissions'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['style-guide/']
-modified: Thursday, October 6th, 2016
+modified: Friday, January 6th, 2017
 modified_by:
   name: Edward Angert
 published: 'Wednesday, January 15th, 2014'
 title: Linode Writer's Formatting Guide
 ---
 
-Submissions which adhere to the following formatting guidelines are more likely to be accepted than those which do not, so review this page carefully. If you have any questions, contact <contribute@linode.com>.
+Submissions that adhere to the following formatting guidelines are more likely to be accepted than those that do not, so review this page carefully. If you have any questions, contact <contribute@linode.com>.
 
 ## General Layout
 
@@ -21,7 +21,7 @@ Linode Guides & Tutorials are written in [PHP Markdown Extra](https://michelf.ca
 
 ### Header
 
-Linode Guides & Tutorials store metadata and other information in a header at the top of every page. Use the template below for your own guide.
+Linode Guides & Tutorials store metadata and other information in a [YAML](http://yaml.org/) header at the top of every page. Use the template below for your own guide.
 
 {: .file-excerpt}
 Author Submission
@@ -50,13 +50,15 @@ Author Submission
     ----
     ~~~
 
+If you're using our repository, you may also notice a `deprecated` field in the header. This defaults to false, and setting it to *true* on an existing guide causes it to include a message near the beginning stating that the guide is no longer maintained. Typically, this will be used on guides specific to distributions that have reached EOL. 
+
 ### Introduction
 
 Introductions should be concise; explain what the goal of the guide is and why. If you're introducing new software to the system, include a brief description and link to its official website whenever possible.
 
 ### Before You Begin
 
-The *Before You Begin* section is a basic area of prerequisites a reader should know or have completed before proceeding further in your guide. Use the template below and edit as needed:
+The *Before You Begin* section is an area for basic prerequisites a reader should know or have completed before proceeding further in your guide. Use the example below and edit as needed:
 
 {: .file-excerpt}
 Author Submission
@@ -67,7 +69,7 @@ Author Submission
 
     2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the Configure a Firewall section yet--this guide includes firewall rules specifically for an OpenVPN server.
 
-    3.  Update your system.
+    3.  Update your system:
 
             sudo apt-get update && sudo apt-get upgrade
     ~~~
