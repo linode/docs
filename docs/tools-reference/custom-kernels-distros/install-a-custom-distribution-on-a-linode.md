@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['tools-reference/custom-kernels-distros/running-a-custom-linux-distro-on-a-linode-vps', 'tools-reference/custom-kernels-distros/custom-distro-on-kvm-linode']
 modified_by:
   name: Nick Brewer
-modified: 'Thursday, July 23rd, 2015'
+modified: 'Thursday, January 12, 2017'
 title: Install a Custom Distribution on a Linode
 ---
 
@@ -19,15 +19,14 @@ This guide will show you how to install and configure a custom distribution on y
 
 *  [Linode Manager Compatibility](#linode-manager-compatibility) builds upon the steps in the first section, and offers instructions to make your custom distribution work with features of the Linode Manager such as disk resizing, helpers, and the [Linode Backup Service](/docs/platform/linode-backup-service).
 
-This guide will use Debian 8 (Jessie) as an example, but the steps provided are generic in nature.
+This guide will use Debian 8 (Jessie) as an example, but the steps provided are generic in nature and should work with most distributions.
 
 {: .note}
 >This guide entails installing a custom Linux distribution on your KVM Linode. If you're currently running a Xen Linode, you can [upgrade](https://www.linode.com/docs/platform/kvm#how-to-enable-kvm), or follow our older guide on [Running a Custom Linux Distribution on a Xen [Linode](/docs/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-xen-linode).
 
-
 ## Advantages of KVM
 
-Our KVM hypervisor offers a number of advantages for those looking to install a custom operating system.
+Our KVM hypervisor offers several advantages for those looking to install a custom operating system:
 
 *  **Direct Disk Boot:** Direct disk booting allows you to boot from any disk with a Master Boot Record (MBR). This can be especially useful for operating systems that do not make use of the Grub bootloader, such as [FreeBSD](/docs/tools-reference/custom-kernels-distros/install-freebsd-on-linode).
 
@@ -37,19 +36,19 @@ Our KVM hypervisor offers a number of advantages for those looking to install a 
 
 ## Install a Custom Distribution
 
-In this section you'll install your custom distro to a raw disk, with the *direct disk boot* option. The end result will leave you with a working custom install, however it will not support disk resizing from within the Linode Manager, nor will it be compatible with the Backup Service.
+In this section you'll install your custom distro to a raw disk, with the *direct disk boot* option. The end result will leave you with a working custom install; however, it will not support disk resizing from within the Linode Manager, nor will it be compatible with the Backup Service.
 
 ### Prepare your Linode
 
-1.  [Create two raw disk images](/docs/migrate-to-linode/disk-images/disk-images-and-configuration-profiles#creating-a-blank-disk) from the Linode's Dashboard:
+1.  [Create two raw, unformatted disk images](/docs/migrate-to-linode/disk-images/disk-images-and-configuration-profiles#creating-a-blank-disk) from the Linode's Dashboard:
 
     * A disk labeled **Installer**. The size of this disk will depend upon the size of your distribution's installer, but it's recommended to make it slightly larger than the space taken up by the install media itself. For this example, the installer disk will be 100MB in size, giving us plenty of room for the Debian network installer.
-    * A disk labelled **Boot**. This will take up the rest of the free space available on your Linode.
+    * A disk labelled **Boot**. If you *don't* plan to complete the next section on Linode Manager compatibility, this can take up the rest of the free space available on your Linode.
 
-    {: .note}
+    {: .caution}
     >**Important**: If you intend to continue to the next section on [Linode Manager Compatibility](#linode-manager-compatibility), you should make your boot disk no larger than necessary - in this example we'll install Debian to a 2000MB disk.  
 
-2.  [Create two configuration profiles](/docs/migrate-to-linode/disk-images/disk-images-and-configuration-profiles#configuration-profiles) and disable the options under **Filesystem / Boot Helpers** for each of them, as well as the [Lassie](/docs/uptime/monitoring-and-maintaining-your-server#configuring-shutdown-watchdog) shutdown watchdog under the **Settings** menu. Both profiles will use the **Direct Disk** option from the **Kernel** drop down menu:
+2.  [Create two configuration profiles](/docs/migrate-to-linode/disk-images/disk-images-and-configuration-profiles#configuration-profiles) and disable the options under **Filesystem / Boot Helpers** for each of them, as well as the [Lassie](/docs/uptime/monitoring-and-maintaining-your-server#configuring-shutdown-watchdog) shutdown watchdog under the **Settings** menu. Both profiles will use the **Direct Disk** option from the **Kernel** dropdown menu:
 
     **Installer profile**
 
@@ -66,11 +65,11 @@ In this section you'll install your custom distro to a raw disk, with the *direc
     - /dev/sda: *Boot* disk image.
     - root / boot device: Standard /dev/sda
 
-### Download and Install
+### Download and Install Image
 
 1.  Boot into [Rescue Mode](/docs/troubleshooting/rescue-and-rebuild#booting-into-rescue-mode) with your *Installer* disk mounted to `/dev/sda`, and connect to your Linode using the [Lish Console](/docs/networking/using-the-linode-shell-lish).
 
-2.  Once in Rescue Mode, download your installation media and copy it to your *Installer* disk. In this example we're using the Debian network installer:
+2.  Once in Rescue Mode, download your installation media and copy it to your *Installer* disk. In this example we're using the Debian network installer, but you can replace the URL in the first command with the location of the image you want to install:
 
     {: .note}
     > As an additional security step, you can use the keys provided in the same directory as the `iso` to [verify the authenticity](https://www.debian.org/CD/verify) of the image.
@@ -80,12 +79,12 @@ In this section you'll install your custom distro to a raw disk, with the *direc
 
 3.  Reboot into your *Installer* configuration profile, and open the [Glish](/docs/networking/use-the-graphic-shell-glish) graphical console from the **Remote Access** tab in your Linode's Dashboard. You'll see your distribution's installer, and you can begin the install process.
 
-4.  During your installer's partitioning / installation phase, be sure to instruct it to use the `/dev/sda` volume. Most installers will create separate root and swap partitions, but you can adjust this as needed.
+4.  During your installer's partitioning/installation phase, be sure to instruct it to use the `/dev/sda` volume. Most installers will create separate root and swap partitions, but you can adjust this as needed.
 
     {: .note}
     > Some installers offer an option to place `/boot` on a separate partition. If you intend to make use of the steps in the [second part](#linode-manager-compatibility) of this guide, it's important that your `/boot` directory is located on the same partition as your root filesystem.
 
-5.  Once the installation completes, reboot into your *Installer* profile and open the Glish console. You will have access to a login prompt:
+5.  Once the installation completes, reboot into your *Boot* profile and open the Glish console. You will have access to a login prompt:
 
     [![Custom Distro Glish](/docs/assets/custom-distro-glish-small.png)](/docs/assets/custom-distro-glish.png)
 
@@ -98,37 +97,39 @@ At this point you can connect to your Linode via SSH or the Glish graphical cons
 : ~~~
     GRUB_TIMEOUT=10
     GRUB_CMDLINE_LINUX="console=ttyS0,19200n8"
+    GRUB_TERMINAL=serial
     GRUB_DISABLE_LINUX_UUID=true
     GRUB_SERIAL_COMMAND="serial --speed=19200 --unit=0 --word=8 --parity=no --stop=1"
-    GRUB_TERMINAL=serial
   ~~~
 
-Once you've finished, issue one of the following commands to apply your changes to your Grub configuration:
+Once you've finished, issue the appropriate command to apply your changes to your Grub configuration:
 
-*  Ubuntu and Debian:
+*   Ubuntu and Debian:
 
         update-grub
 
-*  CentOS 7, Fedora, and Gentoo:
+*   CentOS 7, Fedora, and Gentoo:
 
         grub2-mkconfig -o /boot/grub2/grub.cfg
 
-*  Arch Linux and Gentoo:
+*   Arch Linux and Gentoo:
 
         grub-mkconfig -o /boot/grub/grub.cfg
 
+{: .note}
+> If you're still not able to access your Linode via Lish after updating your GRUB configuration, a reboot may be required. If this is the case, make sure you're rebooting into your *Boot* configuation profile.
 
 ## Linode Manager Compatibility
 
-If you've followed the steps so far, you should have a working custom distribution with raw disks, using the *direct disk* boot option. While this setup works, it's not compatible with several features of the Linode Manager that require the ability to mount your filesystem, such as:
+If you've followed the steps so far, you should have a working custom distribution with raw disks, using the *direct disk* boot option. While this setup is functional, it's not compatible with several features of the Linode Manager that require the ability to mount your filesystem, such as:
 
-*  **Disk Resizing:** Since the Linode Manager cannot determine the amount of *used* storage space on a raw disk, it can only increase their size. The Linode Manager cannot be used to make a raw disk smaller, and it cannot resize the filesystem on the disk - this would need to be done manually.
+*  **Disk Resizing:** Since the Linode Manager cannot determine the amount of *used* storage space on a raw disk, it can only increase the size. The Linode Manager cannot be used to make a raw disk smaller, and it cannot resize the filesystem on the disk - this would need to be done manually.
 
 *  **Backups:** The Linode Backup Service needs to be able to mount your filesystem, and does not support partitioned disks.
 
 *  **Helpers:** Several helpful features within the Linode Manager, such as [root password resets](/docs/platform/accounts-and-passwords#resetting-the-root-password) and [Network Helper](/docs/platform/network-helper), need access to your filesystem in order to make changes.
 
-This section will cover how to move your custom installation over to an ext4 disk, so it can take advantage of these tools.
+This section will cover how to move your custom installation over to an **ext4** formatted disk so it can take advantage of these tools.
 
 ### Prepare your Linode
 
@@ -136,7 +137,7 @@ This section will cover how to move your custom installation over to an ext4 dis
 
 2.  From the **Create a new Disk** page, create a swap disk by choosing *swap* for the disk type. The size of this disk will depend upon your needs, but it's recommended that you make it between 256-512MB to start. We'll label this disk *Swap*.
 
-3.  [Create a new configuration profile](/docs/migrate-to-linode/disk-images/disk-images-and-configuration-profiles#configuration-profiles) with a name of your choice. For this example we'll call the new profile *Installer-New*, and it will use the following options:
+3.  [Create a new configuration profile](/docs/migrate-to-linode/disk-images/disk-images-and-configuration-profiles#configuration-profiles) with a name of your choice. For this example, we'll call the new profile *Installer-New* and it will use the following options:
 
     **Installer-New profile**
 
@@ -157,7 +158,7 @@ You should still be booted into your *Boot* profile using direct disk boot. Befo
     └─sda1   8:1    0  7.5G  0 part /
     sr0     11:0    1 1024M  0 rom
 
-In this case we can see that the `/dev/sda1` partition is the location of our root filesystem. Next, update your `/etc/fstab` file to match the following:
+In this case, we can see that the `/dev/sda1` partition is the location of our root filesystem. Next, update your `/etc/fstab` file to match the following:
 
     # <file system> <mount point>   <type>  <options>       <dump>  <pass>
     proc        /proc        proc    defaults                       0 0
@@ -168,7 +169,7 @@ Depending upon your distribution, it may use different parameters for your root 
 
 ### Configure Grub
 
-1.  Next you'll want to confirm the location of your `grub.cfg` file. Some distributions (notably CentOS and Fedora) place this file under the `/boot/grub` directory, while others have it under `/boot/grub2`. Your new setup will be using our *Grub 2* mode, which looks for a configuration file under `/boot/grub/grub.cfg`. You can confirm if your `grub.cfg` is located in the necessary spot with the `ls` command:
+1.  Next, confirm the location of your `grub.cfg` file. Some distributions (notably, CentOS and Fedora) place this file under the `/boot/grub` directory, while others have it under `/boot/grub2`. Your new setup will use our *Grub 2* mode, which looks for a configuration file under `/boot/grub/grub.cfg`. You can confirm if your `grub.cfg` is located in the necessary spot with the `ls` command:
 
           ls -la /boot/grub/grub.cfg
 
@@ -177,7 +178,7 @@ Depending upon your distribution, it may use different parameters for your root 
           root@custom-kvm:~# ls -la /boot/grub/grub.cfg
           -r--r--r-- 1 root root 5235 Dec 28 08:05 /boot/grub/grub.cfg
 
-2.  If the Grub config is located under `/boot/grub2` instead, you can simply create a symlink to provide the correct configuration to the bootloader:
+2.  If the Grub config is located under `/boot/grub2` instead, create a symlink to provide the correct configuration to the bootloader:
 
           mkdir /boot/grub
           ln -s /boot/grub2/grub.cfg /boot/grub/grub.cfg
@@ -195,8 +196,8 @@ Now that you've updated the necessary configuration files, you're ready to move 
 *  Your *Boot* disk mounted to `/dev/sda`
 *  Your *Boot-New* disk mounted to `/dev/sdb`
 
-Once you're in Rescue Mode, issue the following command to transfer your root filesystem from the `/dev/sda1` partition to your new ext4 disk:
+Once you're in Rescue Mode, connect via Lish and transfer your root filesystem from the `/dev/sda1` partition to your new ext4 disk:
 
     dd if=/dev/sda1 of=/dev/sdb bs=1M
 
-Once the command completes, reboot into your *Installer-New* profile. You now have a custom distribution that works with the Linode Manager's extra features. Note that in order to make use of the Backup Service, you'll need to remove the raw disks that were used during the install process.
+Once the transfer completes, reboot into your *Installer-New* profile. You now have a custom distribution that works with the Linode Manager's extra features. In order to make use of the Backup Service, you'll need to remove the raw disks that were used during the install process.
