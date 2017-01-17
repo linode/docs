@@ -8,7 +8,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
  - '[Minecraft.net](https://minecraft.net/)'
  - '[The Official Minecraft Wiki](http://minecraft.gamepedia.com/Minecraft_Wiki)'
-modified: Tuesday, October 18, 2016
+modified: Tuesday, January 17th, 2017
 modified_by:
   name: Alex Fornuto
 published: 'Wednesday, January 28, 2015'
