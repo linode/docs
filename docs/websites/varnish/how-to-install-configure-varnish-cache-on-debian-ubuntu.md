@@ -116,7 +116,7 @@ This subroutine is called after a request is fetched from the backend. In this e
 
 Now that you've configured Varnish, use this section to make it your web server by swapping the ports your web server and Varnish listen on. As illustrated in the graphic below, all web traffic will be served from Varnish cache and refreshed every two minutes or at the [interval configured above](#configure-cache-time-to-live-ttl):
 
-![Getting Started with Varnish Cache](/docs/assets/varnish_tg.png "Getting Started with Varnish Cache")
+![Where Varnish Exists in the Web Server Process](/docs/assets/varnish_cache_guide.png "Where Varnish Exists in the Web Server Process")
 
 While these steps specify Apache, nginx configuration is identical. If using nginx, begin with Step 2, and replace each instance of `apache2` below with `nginx`.
 
