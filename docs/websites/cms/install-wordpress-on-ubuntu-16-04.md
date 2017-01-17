@@ -171,10 +171,29 @@ Nginx needs to be directed to check whether the page each permalink refers to ex
         try_files $uri $uri/ /index.php?$args;
     ~~~
     
-## Install PHP Extension for XML-RPC (Optional)
-To use XML-RPC to access Wordpress via the mobile app or to use Jetpack, you'll need php-xmlrpc.  For more information on XML-RPC, visit the [WordPress guide on XML-RPC](https://codex.wordpress.org/XML-RPC_Support).  For more information on Jetpack, visit [Jetpack for Wordpress](https://jetpack.com/).
+## Install Optional PHP Extensions
 
-We can download and install php-xmlrpc with these commands:
+Wordpress and many plugins use PHP extensions that you'll need to install manually. This section is optional, but it will allow you to access some Wordpress features you may not have with a basic PHP installation.
 
-    sudo apt-get update
-    sudo apt-get install php-xmlrpc
+-   In order to modify photos or images in Wordpress, you'll need the PHP-GD extension. For example, when you upload an image to use as a header, you may need to crop the image to make it fit your page.
+
+    To install the GD extension:
+
+        sudo apt-get install php7.0-gd
+
+-   For full non-English language support and to fix certain character encoding-related bugs, you'll need the multibyte string (MBSTRING) extension.
+
+    To install MBSTRING:
+
+        sudo apt-get install php7.0-mbstring
+
+-   To use XML-RPC to access Wordpress via the mobile app or to use Jetpack, you'll need `php-xmlrpc`.  For more information on XML-RPC, visit the [WordPress guide on XML-RPC](https://codex.wordpress.org/XML-RPC_Support). For more information on Jetpack, visit [Jetpack for Wordpress](https://jetpack.com/).
+
+    To install the XML-RPC extension:
+
+        sudo apt-get install php7.0-xmlrpc
+
+These are only a few of the extensions you may find useful. Plenty of other PHP extensions exist and are required for certain plugin features, such as `php7.0-curl`, `php7.0-xml`, and `php7.0-mcrypt`. If you're having issues with a plugin or widget, check its documentation to see if a PHP extension is required.
+
+{: .note}
+> The package names above assume you're working with PHP version 7.0. If you installed PHP 5 from the Ubuntu repositories, modify the commands to use the `php` prefix rather than `php7.0`. For example, instead of installing `php7.0-gd`, use `php-gd`. 

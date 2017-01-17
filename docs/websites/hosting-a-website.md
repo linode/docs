@@ -6,7 +6,7 @@ description: 'Our guide to hosting a website on your Linode.'
 keywords: 'linode guide,hosting a website,website,linode quickstart guide'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['hosting-website/']
-modified: Monday, September 19th, 2016
+modified: Tuesday, January 18, 2017
 modified_by:
   name: Phil Zona
 published: 'Tuesday, March 13th, 2012'
@@ -15,10 +15,9 @@ title: Hosting a Website
 
 Now that you've installed Linux and secured your Linode, it's time to start *doing* stuff with it. In this guide, you'll learn how to host a website. Start by installing a web server, database, and PHP - a popular combination which is commonly referred to as the LAMP stack (Linux, Apache, MySQL, and PHP). Then create or import a database, upload files, and add DNS records. By the time you reach the end of this guide, your Linode will be hosting one or more websites!
 
-{: .note }
->
-> Debian 8 and Ubuntu 14.04 LTS are the [Linux distributions](/docs/getting-started#deploying-an-image) we're using as the starting point for the packages and configurations mentioned in this guide. If you'd like to use Ubuntu 16.04 LTS, refer to the distribution-specific guide on how to set up a [LAMP Stack](/docs/websites/lamp/install-lamp-on-ubuntu-16-04), and then return here to continue from the [upload files](#upload-files) section.
->
+**Debian 8** and **Ubuntu 14.04 LTS** are the [Linux distributions](/docs/getting-started#deploying-an-image) we're using as the starting point for the packages and configurations mentioned in this guide. If you'd like to use **Ubuntu 16.04 LTS**, refer to the distribution-specific guide on how to set up a [LAMP Stack](/docs/websites/lamp/install-lamp-on-ubuntu-16-04), and then return here to continue from the [upload files](#upload-files) section.
+
+{: .note}
 > This guide is designed for small and medium-size websites running on WordPress, Drupal, or another PHP content management system. If your website doesn't belong in that category, you'll need to assess your requirements and install custom packages tailored for your particular requirements.
 >
 >This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
