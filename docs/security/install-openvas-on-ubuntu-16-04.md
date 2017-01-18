@@ -12,9 +12,15 @@ published: 'Monday, December 19th, 2016'
 title: Install OpenVAS 8 on Ubuntu 16.04
 ---
 
-In this guide, you'll learn how to install OpenVAS 8 on Ubuntu 16.04. OpenVAS, the *Open Vulnerability Assessment System*, is a framework of tools that allow you to scan your system for thousands of known vulnerabilities.
+OpenVAS, the Open Vulnerability Assessment System, is a framework of tools that allow you to scan your system for thousands of known vulnerabilities. This guide will show you how to install OpenVAS 8 on Ubuntu 16.04.
 
-OpenVAS consists of a database, which stores results and configurations; a regularly updated feed of *NVTs*, or network vulnerability tests; a scanner, which runs the NVTs; and the Greenbone Security Assistant, a graphical interface that allows you to manage vulnerability scans from a web application. For more information about the architecture of the software, refer to the [OpenVAS website](http://www.openvas.org/software.html).
+OpenVAS consists of:
+
+* a database which stores results and configurations;
+* a regularly updated feed of Network Vulnerability Tests (NVTs);
+* a scanner, which runs the NVTs; and the Greenbone Security Assistant, a graphical interface that allows you to manage vulnerability scans from a web application.
+
+For more information about the architecture of the software, refer to the [OpenVAS website](http://www.openvas.org/software.html).
 
 {: .caution}
 > OpenVAS is a powerful security tool that is capable of scanning remote hosts as well as your local machine. This guide is intended for monitoring vulnerabilities on machines that you control or have permission to scan. If you use OpenVAS scan remote servers owned by others, be sure that you have a full understanding of the responsibilities involved and potential consequences.
@@ -23,41 +29,40 @@ OpenVAS consists of a database, which stores results and configurations; a regul
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  Update your system.
 
-        sudo apt-get update && sudo apt-get upgrade
+        sudo apt update && sudo apt upgrade
 
 {: .note}
 > This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
 ## Install OpenVAS
 
-1.  OpenVAS is not included in the default Ubuntu repositories, so we'll first need to install its PPA:
+The `openvas` repository and its packages are not officially supported by Ubuntu. If you'd like to review its contents, signing key, and fingerprint before installing OpenVAS, you can do so in the [Ubuntu package archive](https://launchpad.net/~mrazavi/+archive/ubuntu/openvas).
 
-        sudo apt-get install software-properties-common
+1.  Since OpenVAS is not included in the default Ubuntu repositories, install its PPA:
+
+        sudo apt install software-properties-common
         sudo add-apt-repository ppa:mrazavi/openvas
 
     The first command installs the `software-properties-common` package, which is required for adding certain repositories. The second command will output a list of instructions for how to install OpenVAS. We'll explain each of these instructions in the following steps. You don't need to explicitly import the GPG key, as it will be added to your keyring automatically with the second command. However, you should verify that your output includes:
 
         gpg: key 4AA450E0: public key "Launchpad PPA for Mohammad Razavi" imported
 
-    {: .note}
-    The `openvas` repository and its packages are *not* officially supported by Ubuntu. If you'd like to review its contents, signing key, and fingerprint before installing OpenVAS, you can do so [here](https://launchpad.net/~mrazavi/+archive/ubuntu/openvas).
-
 2.  After adding the repository, update your system packages and install the `openvas` package:
 
-        sudo apt-get update
-        sudo apt-get install openvas
+        sudo apt update
+        sudo apt install openvas
 
-    When installing `openvas`, you'll be prompted to configure a Redis database for application data, such as tasks and configurations. Select **yes** when asked if you'd like to add a socket at `/var/run/redis/redis.sock`:
+    When installing `openvas`, you'll be prompted to configure a Redis database for application data, such as tasks and configurations. Select **Yes** when asked if you'd like to add a socket at `/var/run/redis/redis.sock`:
 
     [![OpenVAS Redis socket configuration.](/docs/assets/openvas-redis-configuration.png)](/docs/assets/openvas-redis-configuration.png)
 
-3.  Install the SQLite 3 database package. This is used to store the [CVEs](https://cve.mitre.org/) we'll obtain in the next steps:
+3.  Install the SQLite 3 database package. This is used to store the [Common Vulnerabilities and Exposures (CVE)](https://cve.mitre.org/) data we'll obtain in Step 5:
 
-        sudo apt-get install sqlite3
+        sudo apt install sqlite3
 
 4.  Sync the OpenVAS NVT feed. This allows your installation to access tests for the most current vulnerabilities and exposures:
 
@@ -66,7 +71,7 @@ OpenVAS consists of a database, which stores results and configurations; a regul
     {: .note}
     > This feed is maintained by OpenVAS and is updated about once per week. To keep your NVT feed current, we recommend running this command regularly, or setting up a [cron job](https://www.linode.com/docs/tools-reference/tools/schedule-tasks-with-cron) to automate the process.
 
-5.  Run the following commands to sync SCAP (Security Content Automation Protocol) and CERT (Computer Emergency Readiness Team) vulnerability data to a local database. The synchronization will take several minutes, and you can monitor its progress in the output:
+5.  Sync Security Content Automation Protocol (SCAP) and Computer Emergency Readiness Team (CERT) vulnerability data to a local database. The synchronization will take several minutes, and you can monitor its progress in the output:
 
         sudo openvas-scapdata-sync
         sudo openvas-certdata-sync
@@ -76,7 +81,7 @@ OpenVAS consists of a database, which stores results and configurations; a regul
         sudo service openvas-scanner restart
         sudo service openvas-manager restart
 
-7.  Finally, rebuild the OpenVAS database, so the manager can access the NVT data we downloaded previously:
+7.  Finally, rebuild the OpenVAS database so the manager can access the NVT data downloaded previously:
 
         sudo openvasmd --rebuild --progress
 
@@ -88,11 +93,11 @@ To access the Greenbone Security Assistant web interface remotely, you must conf
 
 {: .file-excerpt}
 /etc/init.d/openvas-gsa
-:   ~~~
-    DAEMON_ARGS= --listen "198.51.100.221"
-    }
+:  ~~~
+   DAEMON_ARGS= --listen "198.51.100.221"
+   ~~~
 
-Save your changes, and then restart `openvas-gsa`:
+Save your changes, then restart `openvas-gsa`:
 
     sudo service openvas-gsa restart
 
@@ -100,11 +105,11 @@ Save your changes, and then restart `openvas-gsa`:
 
 OpenVAS is now installed, and we're almost ready to start using it to scan for vulnerabilities. However, we should first change the default password to prevent unauthorized access.
 
-From your Linode, run:
+From your Linode, replace `your-password` in the following example with your new password:
 
     sudo openvasmd --user=admin --new-password=your_password
 
-This changes the password for the `admin` user to a value of your choosing. Replace `your_password` with your new password. You can also create a new administrative user by replacing `new_user` in the following command:
+This changes the password for the `admin` user to a value of your choosing. You can also create a new administrative user by replacing `new_user` in the following command:
 
     sudo openvasmd --create-user=new_user
 
@@ -120,13 +125,13 @@ Congratulations! OpenVAS is now ready to use. In this section, we'll provide a b
 
 1.  On your local computer, navigate to your Linode's IP address or domain name in a web browser. You should be proxied to the GSA Login page.
 
-    In most browsers, you will first encounter a security warning. This happens because OpenVAS generates a self-signed SSL certificate upon installation, and your host is not recognized as a trusted certificate authority.
+    In most browsers, you will first encounter a security warning. This happens because OpenVAS generates a self-signed SSL certificate upon installation and your host is not recognized as a trusted certificate authority.
 
     To verify the certificate in Chrome:
 
     -   Click the warning icon next to `https://` in the URL bar, and choose "Details" under the message that is displayed.
     -   In the "Security Overview" pane, click the "View Certificate" button.
-    -   A small window will appear, showing information about the self-signed certificate. Click "Details" to expand the window and show more information.
+    -   A small window will appear with information about the self-signed certificate. Click "Details" to expand the window and show more information.
     -   Scroll to the bottom and find the `SHA 1` Fingerprint.
     -   On your Linode, run `sudo openssl x509 -noout -in /var/lib/openvas/CA/servercert.pem -fingerprint -sha1`.
     -   Compare the two fingerprints. If they match, it's safe to ignore the warning and proceed.
@@ -135,7 +140,7 @@ Congratulations! OpenVAS is now ready to use. In this section, we'll provide a b
 
     -   Click the "Advanced" button on the warning page in your browser.
     -   Additional details will be displayed, including an error code, which will be something like `SEC_ERROR_UNKNOWN_ISSUER`. Click the error code to view more information.
-    -   A pane will be displayed, showing the "Certificate Chain" for your server.
+    -   A pane will be displayed with the "Certificate Chain" for your server.
     -   On your Linode, run `cat /var/lib/openvas/CA/servercert.pem` and look for the `-----BEGIN CERTIFICATE-----` line in the output.
     -   Compare the two certificates to ensure they match. If they do, it's safe to click "Add Exception" and proceed.
 
@@ -148,7 +153,7 @@ Congratulations! OpenVAS is now ready to use. In this section, we'll provide a b
     [![Greenbone Security Assistant Task Wizard.](/docs/assets/openvas-gsa-task-wizard.png)](/docs/assets/openvas-gsa-task-wizard.png)
 
     {: .note}
-    >The Quick Start screen will not appear on login after you've scheduled 3 or more tasks. However, you can access this screen at any time, click the "Scan Management" tab at the top of the screen, select "Tasks," and hover over the purple magic wand icon in the top bar. From there, you can select "Task Wizard" or "Advanced Task Wizard" to create a new task quickly and easily.
+    >The Quick Start screen will not appear on login after you've scheduled 3 or more tasks. To access this screen at any time, click the "Scan Management" tab at the top of the screen, select "Tasks," and hover over the purple magic wand icon in the top bar. From there, you can select "Task Wizard" or "Advanced Task Wizard" to create a new task quickly and easily.
 
 4.  The reports showing results of your tasks can be accessed at any time while the scan is in progress. The time a scan takes to complete will depend on the services running on a host, and may vary significantly. To view the results of a scan, select "Scan Management" in the top navigation bar, and click "Reports."
 
@@ -172,7 +177,9 @@ Congratulations! OpenVAS is now ready to use. In this section, we'll provide a b
 
 ## Troubleshooting
 
-Occasionally, you may receive a 502 Bad Gateway error when you try to connect via browser. In most cases, this is caused by one of the OpenVAS daemons stopping. To check for problems:
+Occasionally, you may receive a *502 Bad Gateway* error when you try to connect via browser. In most cases, this is caused by one of the OpenVAS daemons stopping.
+
+To check for problems:
 
     sudo netstat -plntu
 
