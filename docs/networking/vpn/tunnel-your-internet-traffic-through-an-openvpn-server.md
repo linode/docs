@@ -16,6 +16,8 @@ external_resources:
 
 This guide will show you how to configure an OpenVPN server to forward all traffic it receives out to the Internet, then route the responses back appropriately to client devices.
 
+![Tunnel Your Internet Traffic Through an OpenVPN Server](/docs/assets/tunnel-traffic-through-openvpn.png "Tunnel Your Internet Traffic Through an OpenVPN Server")
+
 A common use case for a VPN tunnel is to access the internet from behind it to evade censorship or geolocation, while shielding your computer's web traffic to internet service providers and untrusted WiFi or cellular hotspots.
 
 ## Before You Begin

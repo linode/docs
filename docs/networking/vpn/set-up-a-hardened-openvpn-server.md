@@ -16,6 +16,8 @@ external_resources:
 
 [OpenVPN](https://openvpn.net/) is a tool for creating networking tunnels between and among groups of computers that are not on the same local network. This is useful if you want to remotely access services on a network or computer without making those services publicly accessible. When integrated with OpenSSL, OpenVPN can encrypt all VPN traffic to provide a secure connection between machines.
 
+![Set up a Hardened OpenVPN Server on Debian 8](/docs/assets/hardened-openvpn-server-debian-8.png "Set up a Hardened OpenVPN Server on Debian 8")
+
 This guide is the first of a three-part series. Part one will set you up with a hardened VPN server in Debian and prepare the certificate and key pairs for connecting client devices. This VPN can be used to host internal services such as websites, game servers or file servers.
 
 Part two will show you how to set up a classic routed VPN, where all traffic from client devices is tunneled through your Linode and out to the internet. Part three walks through setting up the client-side credentials and software for various operating systems, including mobile platforms.
