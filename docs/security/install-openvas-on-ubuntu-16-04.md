@@ -16,14 +16,15 @@ OpenVAS, the Open Vulnerability Assessment System, is a framework of tools that 
 
 OpenVAS consists of:
 
-* a database which stores results and configurations;
+* a database that stores results and configurations;
 * a regularly updated feed of Network Vulnerability Tests (NVTs);
-* a scanner, which runs the NVTs; and the Greenbone Security Assistant, a graphical interface that allows you to manage vulnerability scans from a web application.
+* a scanner, which runs the NVTs; 
+* the Greenbone Security Assistant, a graphical interface that allows you to manage vulnerability scans from a web application.
 
 For more information about the architecture of the software, refer to the [OpenVAS website](http://www.openvas.org/software.html).
 
 {: .caution}
-> OpenVAS is a powerful security tool that is capable of scanning remote hosts as well as your local machine. This guide is intended for monitoring vulnerabilities on machines that you control or have permission to scan. If you use OpenVAS scan remote servers owned by others, be sure that you have a full understanding of the responsibilities involved and potential consequences.
+> OpenVAS is a powerful security tool that is capable of scanning remote hosts as well as your local machine. This guide is intended for monitoring vulnerabilities on machines that you control or have permission to scan. If you use OpenVAS scan remote servers owned by others, be sure that you have a full understanding of the responsibilities involved and the potential consequences.
 
 ## Before You Begin
 
@@ -105,7 +106,7 @@ Save your changes, then restart `openvas-gsa`:
 
 OpenVAS is now installed, and we're almost ready to start using it to scan for vulnerabilities. However, we should first change the default password to prevent unauthorized access.
 
-From your Linode, replace `your-password` in the following example with your new password:
+From your Linode, replace `your_password` in the following example with your new password:
 
     sudo openvasmd --user=admin --new-password=your_password
 
