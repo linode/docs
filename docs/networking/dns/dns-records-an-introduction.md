@@ -20,7 +20,7 @@ external_resources:
 
 The Domain Name System (DNS) is the Internet's address book. DNS directs web traffic to your Linode and email to your inbox by mapping memorable domain names like `example.com` to IP addresses like `12.34.56.78` or `0123:4567:89ab:cdef:0123:4567:89ab:cdef`. This guide introduces basic DNS concepts and the different types of DNS records.
 
-![DNS Records: an Introductio](/docs/assets/dns-records-an-introduction.png "DNS Records: an Introductio")
+![DNS Records: an Introduction](/docs/assets/dns-records-an-introduction.png "DNS Records: an Introduction")
 
 ##How DNS Works
 
