@@ -22,6 +22,13 @@ Docker is a container platform for applications. With Docker, users can download
 
 *If you are familiar with Docker containers, also try [Linode Images](/docs/platform/linode-images) to capture and deploy larger system profiles.*
 
+##Install Prerequisites
+Due to a [known issue](https://github.com/docker/docker/issues/23347) with the dependencies of the docker .deb, installing docker on a Debian/Ubuntu VM requires an additional step:
+
+1. Run:
+
+        apt-get install dmsetup && dmsetup mknodes
+
 ##Install Docker
 Use the Docker-maintained install script for Debian or Ubuntu. For other operating systems, see the [Docker Installation](https://docs.docker.com/en/latest/installation/) guides.
 
