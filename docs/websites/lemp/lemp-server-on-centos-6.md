@@ -38,7 +38,7 @@ Before beginning with the installation of this web application stack, issue the 
 
     yum update
 
-## Install the Nginx Web Server
+## Install the nginx Web Server
 
 There are several viable and popular options for installing nginx. The first option retrieves packages from the Fedora Project's EPEL software repository and provides a more stable and tested version of the web server.
 
