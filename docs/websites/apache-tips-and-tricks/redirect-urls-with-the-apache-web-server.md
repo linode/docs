@@ -28,7 +28,21 @@ In this guide, you'll learn how to redirect URLs with Apache. Redirecting a URL 
 
 3.  Update your system.
 
-        sudo apt-get update && sudo apt-get upgrade
+The Apache virtual host configuration files are found in different places, depending on the distribution of Linux. For example, on CentOS 7: `/etc/httpd/conf.d/vhost.conf`; on Ubuntu 16.04: `/etc/apache2/sites-available/example.com.conf`. For the sake of brevity, configuration file excerpts in this guide will direct you to `Apache configuration option`.
+
+Remember to reload Apache configuration after making changes:
+
+{: .shell }
+CentOS 7
+:  ~~~ shell
+   sudo systemctl restart httpd
+   ~~~
+
+{: .shell }
+Ubuntu 16.04
+:  ~~~ shell
+   sudo systemctl restart apache2
+   ~~~
 
 ## The Redirect Directive
 
@@ -57,7 +71,7 @@ Apache configuration option
 
 -   `permanent` tells the client the resource has moved permanently. This returns a 301 HTTP status code.
 -   `temp` is the default behavior, and tells the client the resource has moved temporarily. This returns a 302 HTTP status code.
--   `seeother` tells the user the requested resouce has been replaced by another one. This returns a 303 HTTP status code.
+-   `seeother` tells the user the requested resource has been replaced by another one. This returns a 303 HTTP status code.
 -   `gone` tells the user that the resource they are looking for has been removed permanently. When using this argument, you don't need to specify a final URL. This returns a 410 HTTP status code.
 
 You can also use the HTTP status codes as arguments. Below, we've provided an equivalent example using the status code options:
