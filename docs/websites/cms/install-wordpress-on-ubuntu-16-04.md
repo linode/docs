@@ -170,7 +170,21 @@ Nginx needs to be directed to check whether the page each permalink refers to ex
         index index.php index.html index.htm;
         try_files $uri $uri/ /index.php?$args;
     ~~~
-    
+
+## Configure Maximum File Size Upload Setting to Allow Larger Files
+
+By default, PHP restricts web uploads to under two megabytes. To allow larger files like images to be uploaded through the web interface, configure the `upload_max_filesize` setting in `php.ini`:
+
+**Apache**: `/etc/php/7.0/cli/php.ini`
+**nginx**: `/etc/php/7.0/fpm/php.ini`
+
+{: .file-excerpt}
+:  ~~~ php
+   ; Maximum allowed size for uploaded files.
+   ; http://php.net/upload-max-filesize
+   upload_max_filesize = 2M
+   ~~~
+
 ## Install Optional PHP Extensions
 
 Wordpress and many plugins use PHP extensions that you'll need to install manually. This section is optional, but it will allow you to access some Wordpress features you may not have with a basic PHP installation.
