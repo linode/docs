@@ -17,9 +17,9 @@ Many tutorials reference "package managers" and "package management tools." If y
 
 ## Package Management Concepts
 
-Contemporary distributions of Linux-based operating systems install software in pre-compiled *packages*, which are archives that contain binaries of software, configuration files, and information about dependencies. Furthermore, package management tools keep track of updates and upgrades so that we don't have to hunt down information about bug and security fixes.
+Contemporary distributions of Linux-based operating systems install software in pre-compiled *packages*, which are archives that contain binaries of software, configuration files, and information about dependencies. Furthermore, package management tools keep track of updates and upgrades so that the user doesn't have to hunt down information about bug and security fixes.
 
-Without package management, users must ensure that all of the required dependencies for a piece of software are installed and up to date, compile the software from the source code (which takes time and introduces compiler-based variations from system to system), and manage configuration for each piece of software. Without package management, application files are located in the standard locations for the system to which the developers are accustomed, regardless of which system you're using.
+Without package management, users must ensure that all of the required dependencies for a piece of software are installed and up to date, compile the software from the source code (which takes time and introduces compiler-based variations from system to system), and manage configuration for each piece of software. Without package management, application files are located in the standard locations for the system to which the developers are accustomed, regardless of which system they're using.
 
 Package management systems attempt to solve these problems, and are the tools through which developers attempt to increase the overall quality and coherence of a Linux-based operating system. The features that most package management applications provide are:
 
@@ -38,7 +38,7 @@ The remainder of this guide will cover how to use specific package management sy
 
 The Debian package management system, based on a tool called `dpkg` with the very popular `apt` system is a powerful, popular, and useful method of package management. In addition to Debian, a number of other prominent distributions of GNU/Linux are derived from the Debian system, most notably the Ubuntu family of distributions.
 
-As a result, these instructions apply for Debian and Ubuntu systems. While Debian and derived systems are not necessarily binary-compatible, .debs packaged for Debian are often compatible with Ubuntu (though this is not a supported workflow).
+As a result, these instructions apply to Debian and Ubuntu systems. While Debian and derived systems are not necessarily binary-compatible, `.debs` packaged for Debian are often compatible with Ubuntu (though this is not a supported workflow).
 
 ### Advanced Packaging Tool (APT)
 
@@ -112,9 +112,9 @@ For information about building your own packages, refer to the [Debian New Maint
 
 ## Fedora and CentOS Package Management
 
-Fedora and CentOS are closely related distributions, being upstream and downstream (respectively) from Red Hat Enterprise Linux. Their main differences stem from how packages are chosen for inclusion in their repositories.
+Fedora and CentOS are closely related distributions, being upstream and downstream (respectively) from Red Hat Enterprise Linux (RHEL). Their main differences stem from how packages are chosen for inclusion in their repositories.
 
-CentOS uses `yum` as a front end to interact with system repositories and install dependencies, and also includes a lower-level tool called `rpm`, which allows you to interact with individual packages.
+CentOS uses `yum`, *Yellowdog Updater, Modified*, as a front end to interact with system repositories and install dependencies, and also includes a lower-level tool called `rpm`, which allows you to interact with individual packages.
 
 Starting with version 22, Fedora uses the `dnf` package manager instead of YUM to interact with `rpm`. DNF supports many of the same commands as YUM, with some slight changes.
 
@@ -150,22 +150,22 @@ The options in the `[main]` stanza don't need modification, though you may set a
   cachedir=/var/cache/yum
   ~~~
 
-### Dandified Yum (DNF)
+### Dandified YUM (DNF)
 
-DNF is the modern extension of the YUM package manager. It retains much of the same command usage and functionality as YUM, with number of improvements for newer operating systems. DNF was first introduced in Fedora 18, and became the default package manager with the release of Fedora 22.
+DNF is the modern extension of the YUM package manager. It retains much of the same command usage and functionality as YUM, with a number of improvements for newer operating systems. DNF was first introduced in Fedora 18, and became the default package manager with the release of Fedora 22.
 
--   `dnf install package-name(s)` - Installs the specified package(s) along with any required dependencies. `dnf install` can also accept `.rpm` files in place of a package name, to install directly from a downloaded RPM
--   `dnf remove package-name(s)` - Removes the specified package(s) from your system, along with any package(s) that depend upon them
--   `dnf search search-pattern` - Searches the list of package names and descriptions for packages that match the search pattern and provides a list of package names, with architectures and a brief description of the package contents. Note that regular expression searches are not permitted
--   `dnf provides package-name(s)` - Lists all of the libraries and modules that the named package depends on, along with the names of the packages (including versions) that provide those dependencies
+-   `dnf install package-name(s)` - Installs the specified package(s) along with any required dependencies. `dnf install` can also accept `.rpm` files in place of a package name, to install directly from a downloaded RPM.
+-   `dnf remove package-name(s)` - Removes the specified package(s) from your system, along with any package(s) that depend upon them.
+-   `dnf search search-pattern` - Searches the list of package names and descriptions for packages that match the search pattern and provides a list of package names, with architectures and a brief description of the package contents. Note that regular expression searches are not permitted.
+-   `dnf provides package-name(s)` - Lists all of the libraries and modules that the named package depends on, along with the names of the packages (including versions) that provide those dependencies.
 -   `dnf check-update` - Refreshes the local cache of the DNF database so that dependency information and the latest packages are always up to date.
--   `dnf info package-name(s)` - Provides the name, description of the package, as well as a link to the upstream home page for the software, release versions and the installed size of the software.
--   `dnf reinstall package-name(s)` - Erases and then downloads a new copy of the package file and re-installs the software on your system
--   `dnf upgrade optional-package-name(s)` - Downloads and installs all updates including bug fixes, security releases, and upgrades for a specific package
--   `dnf upgrade` - With no arguments, `upgrade` upgrades all packages installed in your system to the latest release
+-   `dnf info package-name(s)` - Provides the name and description of the package as well as a link to the upstream home page for the software, release versions, and the installed size of the software.
+-   `dnf reinstall package-name(s)` - Erases and then downloads a new copy of the package file and re-installs the software on your system.
+-   `dnf upgrade optional-package-name(s)` - Downloads and installs all updates including bug fixes, security releases, and upgrades for a specific package.
+-   `dnf upgrade` - With no arguments, `upgrade` upgrades all packages installed in your system to the latest release.
 -   `dnf config-manager --add-repo example.repo` Adds a `.repo` file as a DNF repository.
--   `dnf config-manager --set-enabled example-repo` Enables a DNF repository
--   `dnf config-manager --set-disabled example-repo` Disables a DNF repository
+-   `dnf config-manager --set-enabled example-repo` Enables a DNF repository.
+-   `dnf config-manager --set-disabled example-repo` Disables a DNF repository.
 
 ### /etc/dnf/dnf.conf
 
@@ -402,7 +402,7 @@ This section addresses common package management tasks and functions using the `
 -   `emerge --depclean package-name(s)` or `emerge -c package-name(s)` - Removes the specified package or packages
 -   `emerge --depclean` - Removes packages that are orphaned. This means removal of all packages that weren't explicitly installed and are not not depended upon by any specific package. We recommend that you run it with the `--pretend` option before running this command on a production system.
 -   `emerge -evp --deep world` - Lists all of the packages currently installed on the system
--   `equery depends package-name(s)` - Lists all of the packages that depends upon the specified package
+-   `equery depends package-name(s)` - Lists all of the packages that depend upon the specified package
 -   `equery files package-name(s)` - Lists all of the files "owned" by a package
 -   `equery belongs filename` - Lists the package that "owns" a particular file
 
