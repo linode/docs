@@ -24,7 +24,7 @@ OpenVAS consists of:
 For more information about the architecture of the software, refer to the [OpenVAS website](http://www.openvas.org/software.html).
 
 {: .caution}
-> OpenVAS is a powerful security tool that is capable of scanning remote hosts as well as your local machine. This guide is intended for monitoring vulnerabilities on machines that you control or have permission to scan. If you use OpenVAS scan remote servers owned by others, be sure that you have a full understanding of the responsibilities involved and the potential consequences.
+> OpenVAS is a powerful security tool that is capable of scanning remote hosts as well as your local machine. By following the instructions in this guide, you will be able to monitor vulnerabilities on machines that you control or have permission to scan. If you use OpenVAS to scan remote servers owned by others, be sure that you have a full understanding of the responsibilities involved and the potential consequences.
 
 ## Before You Begin
 
@@ -82,7 +82,7 @@ The `openvas` repository and its packages are not officially supported by Ubuntu
         sudo service openvas-scanner restart
         sudo service openvas-manager restart
 
-7.  Finally, rebuild the OpenVAS database so the manager can access the NVT data downloaded previously:
+7.  Finally, rebuild the OpenVAS database, so the manager can access the NVT data downloaded previously:
 
         sudo openvasmd --rebuild --progress
 
@@ -102,9 +102,9 @@ Save your changes, then restart `openvas-gsa`:
 
     sudo service openvas-gsa restart
 
-### User Authentication
+### User Authentication for OpenVAS
 
-OpenVAS is now installed, and we're almost ready to start using it to scan for vulnerabilities. However, we should first change the default password to prevent unauthorized access.
+OpenVAS is now installed, and you're almost ready to start using it to scan for vulnerabilities. However, you should first change the default password to prevent unauthorized access.
 
 From your Linode, replace `your_password` in the following example with your new password:
 
@@ -122,7 +122,7 @@ Replace `new_user` and `your_password` with the appropriate values. For a comple
 
 ## Scan Your System with OpenVAS
 
-Congratulations! OpenVAS is now ready to use. In this section, we'll provide a basic tutorial for logging into the Greenbone Security Assistant (GSA) web application and running a basic vulnerability scan.
+Congratulations! OpenVAS is now ready to use. In this section, we'll provide a basic tutorial for both logging into the Greenbone Security Assistant (GSA) web application and running a basic vulnerability scan.
 
 1.  On your local computer, navigate to your Linode's IP address or domain name in a web browser. You should be proxied to the GSA Login page.
 
@@ -145,11 +145,11 @@ Congratulations! OpenVAS is now ready to use. In this section, we'll provide a b
     -   On your Linode, run `cat /var/lib/openvas/CA/servercert.pem` and look for the `-----BEGIN CERTIFICATE-----` line in the output.
     -   Compare the two certificates to ensure they match. If they do, it's safe to click "Add Exception" and proceed.
 
-2.  The next page you see will be a login for the Greenbone Security Assistant, the graphical web interface for the OpenVAS manager. Enter the credentials for your `admin` user and click "Login."
+2.  The next page you see will be a login for the Greenbone Security Assistant, the graphical web interface for the OpenVAS manager. Once the page appears on you screen, enter the credentials for your `admin` user and click "Login."
 
     [![Greenbone Security Assistant login page.](/docs/assets/openvas-gsa-login.png)](/docs/assets/openvas-gsa-login.png)
 
-3.  The welcome screen will display instructions on how to use the tool. OpenVAS uses "Tasks" to manage scans, but to start running one right away, simply enter a hostname or IP address in the text box under "Quick Start" and click "Start Scan." This schedules a scan of the specified host to start immediately and sets the page contents to refresh every 30 seconds so you can see the progress in real time.
+3.  The welcome screen will display instructions on how to use the tool. OpenVAS uses "Tasks" to manage scans, but to start running one right away, simply enter a hostname or IP address in the text box under "Quick Start," and then click "Start Scan." This schedules a scan of the specified host to start immediately and sets the page contents to refresh every 30 seconds, so you can see the progress in real time.
 
     [![Greenbone Security Assistant Task Wizard.](/docs/assets/openvas-gsa-task-wizard.png)](/docs/assets/openvas-gsa-task-wizard.png)
 
