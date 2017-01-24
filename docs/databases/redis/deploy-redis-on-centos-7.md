@@ -17,7 +17,7 @@ external_resources:
  - '[Redis Security](http://redis.io/security)'
 ---
 
-Redis is an open-source, in-memory, data structure store with optional disk writes for persistence, which can be used as key-value database, cache and message broker. Redis features built-in transactions, replication, and support for a variety of data structures such as strings, hashes, lists, sets, and others. Redis can be made highly available with Redis Sentinel and supports automatic partitioning with Redis Cluster. This document provides both instructions for deploying the Redis server, and an overview of best practices for maintaining Redis instances on CentOS 7.
+Redis is an open-source, in-memory, data structure store with optional disk writes for persistence. It can be used as a key-value database, or as a cache and message broker. Redis features built-in transactions, replication, and support for a variety of data structures such as strings, hashes, lists, sets, and others. Redis can be made highly available with Redis Sentinel and supports automatic partitioning with Redis Cluster. This document provides both instructions for deploying the Redis server, and an overview of best practices for maintaining Redis instances on CentOS 7.
 
 ## Before You Begin
 
@@ -39,7 +39,7 @@ Redis is an open-source, in-memory, data structure store with optional disk writ
 
 In this section you'll add the [EPEL](https://fedoraproject.org/wiki/EPEL) repository, and then use it to install Redis.
 
-1.  Add the EPEL repository, and update Yum to confirm your change:
+1.  Add the EPEL repository, and update YUM to confirm your change:
 
         sudo yum install epel-release
         sudo yum update
@@ -52,7 +52,7 @@ In this section you'll add the [EPEL](https://fedoraproject.org/wiki/EPEL) repos
 
         sudo systemctl start redis
 
-    **Optional**: Configure Redis to start automatically on boot:
+    **Optional**: To automatically start Redis on boot:
 
         sudo systemctl enable redis
 
@@ -74,12 +74,12 @@ In this section, you'll configure some basic persistence and tuning options for 
 
 Redis provides two options for disk persistence:
 
-* Point-in-time snapshots of the dataset, made at specified intervals (RDB)
+* Point-in-time snapshots of the dataset, made at specified intervals (RDB).
 * Append-only logs of all the write operations performed by the server (AOF).
 
-Each option has its own pros and cons, which are detailed in the Redis documentation. For the greatest level of data safety, consider running both persistence methods.
+Each option has its own pros and cons which are detailed in the Redis documentation. For the greatest level of data safety, consider running both persistence methods.
 
-Because the point-in-time snapshot persistence is enabled by default, you only need to setup AOF persistence.
+Because the Point-in-time snapshot persistence is enabled by default, you only need to set up AOF persistence:
 
 1.  Make sure that the following values are set for the `appendonly` and `appendfsync` settings in `redis.conf`:
 
@@ -117,15 +117,15 @@ Depending upon your usage, you may find it necessary to add extra swap disk spac
 
 Redis provides several options for setting up distributed data stores. The simplest option, covered below, is *master/slave replication*, which creates copies of data. It will also allow distribution of reads among groups of slave copies as long as all write operations are handled by the master server.
 
-The master/slave setup described above can be made highly available with [Redis Sentinel](https://redis.io/topics/sentinel). Sentinel can be configured to monitor both master and slave instances, and will perform automatic failover if the master node is not working as expected. That means that one of the slave nodes will be elected master and all other slave nodes will be configured to use a new master.
+The master/slave setup described above can be made highly available with [Redis Sentinel](https://redis.io/topics/sentinel). Sentinel can be configured to monitor both master and slave instances, and will perform automatic failover if the master node is not working as expected. That means that one of the slave nodes will be elected master and all other slave nodes will be configured to use the new master.
 
 With Redis version 3.0 and above, you can use [Redis Cluster](https://redis.io/topics/cluster-tutorial), a data sharding solution that automatically manages replication and failover. With Redis Cluster, you are able to automatically split your dataset among multiple nodes, which is useful when your dataset is larger than a single server's RAM. It also gives you the ability to continue operations when a subset of the nodes are experiencing failures or are unable to communicate with the rest of the cluster.
 
 The following steps will guide you through master/slave replication, with the slaves set to read-only mode.
 
-## Set Up Master/Slave Replication
+## Set Up Redis Master/Slave Replication
 
-For this section of the guide, you will use two Linodes, a master and a slave.
+For this section, you will use two Linodes, a master and a slave.
 
 {: .note}
 >
@@ -191,9 +191,9 @@ Your master/slave replication setup is working properly.
 
 Since Redis is designed to work in trusted environments and with trusted clients, you should control access to the Redis instance. Some recommended security steps include:
 
-- Setting up a firewall using [iptables](/docs/security/firewalls/iptables).
+- Set up a firewall using [iptables](/docs/security/firewalls/iptables).
 
-- Encrypting Redis traffic using an SSH tunnel, or the methods described in the [Redis Security documentation](http://redis.io/topics/security).
+- Encrypt Redis traffic using an SSH tunnel, or the methods described in the [Redis Security documentation](http://redis.io/topics/security).
 
 Additionally, to ensure that no outside traffic accesses your Redis instance, we suggest that you only listen for connections on the localhost interface or your Linode's private IP address.
 
@@ -237,7 +237,7 @@ For an added layer of security, use password authentication to secure the connec
 
         127.0.0.1:6379> INFO replication
 
-    You'll see output similar to the following:
+    Output should be similar to the following:
 
         # Replication
         role:master
