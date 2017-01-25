@@ -6,14 +6,16 @@ description: 'The Linode Guides & Tutorials style guide for article submissions'
 keywords: 'style guide,format,formatting,how to write,write for us,write for linode,linode docs,submissions'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['style-guide/']
-modified: Thursday, October 6th, 2016
+modified: Friday, January 6th, 2017
 modified_by:
   name: Edward Angert
 published: 'Wednesday, January 15th, 2014'
 title: Linode Writer's Formatting Guide
 ---
 
-Submissions which adhere to the following formatting guidelines are more likely to be accepted than those which do not, so review this page carefully. If you have any questions, contact <contribute@linode.com>.
+This guide provides templates to use when creating or updating a guide for [Linode Docs](/docs).
+
+Submissions that adhere to the following formatting guidelines are more likely to be accepted than those that do not, so review this page carefully. If you have any questions, contact <contribute@linode.com>.
 
 ## General Layout
 
@@ -21,7 +23,7 @@ Linode Guides & Tutorials are written in [PHP Markdown Extra](https://michelf.ca
 
 ### Header
 
-Linode Guides & Tutorials store metadata and other information in a header at the top of every page. Use the template below for your own guide.
+Linode Guides & Tutorials store metadata and other information in a [YAML](http://yaml.org/) header at the top of every page. Use the template below for your own guide.
 
 {: .file-excerpt}
 Author Submission
@@ -50,13 +52,15 @@ Author Submission
     ----
     ~~~
 
+If you're updating an existing guide in our repository, you may also notice a `deprecated` field in the header. This defaults to false, and setting it to *true* inserts a pre-written message near the beginning stating that the guide is no longer maintained. Typically, this will be used on guides specific to applications or distributions that have reached End of Life (EOL).
+
 ### Introduction
 
 Introductions should be concise; explain what the goal of the guide is and why. If you're introducing new software to the system, include a brief description and link to its official website whenever possible.
 
 ### Before You Begin
 
-The *Before You Begin* section is a basic area of prerequisites a reader should know or have completed before proceeding further in your guide. Use the template below and edit as needed:
+The *Before You Begin* section is an area for basic prerequisites a reader should know or have completed before proceeding further in your guide. Use the example below and edit as needed:
 
 {: .file-excerpt}
 Author Submission
@@ -67,7 +71,7 @@ Author Submission
 
     2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the Configure a Firewall section yet--this guide includes firewall rules specifically for an OpenVPN server.
 
-    3.  Update your system.
+    3.  Update your system:
 
             sudo apt-get update && sudo apt-get upgrade
     ~~~
@@ -195,16 +199,16 @@ If you wish to provide links to external sites for the user to review after goin
 
 Use the *file* format when adding the content of a whole file to a guide. If only a part of the file is being shown, use the *file excerpt* format. Exceptionally long files should be shown in parts and have the whole file linked, if needed.
 
-Within the file formatting, a code language or syntax should be defined at the end of the `:   ~~~` line to set how the text is displayed. A list of supported languages with examples can be found [here](http://rouge.jayferd.us/demo).
+Within the file formatting, a code language or syntax should be defined at the end of the `:   ~~~` line to set how the text is displayed. A list of supported languages can be found [on GitHub](https://github.com/jneen/rouge/tree/master/lib/rouge/lexers).
 
-Example: File format
+**Example**: File format
 
 {: .table .table-striped .table-bordered }
 | Formatting | Example |
 |:--------------------------|:----------------------------------------------|
 | {: .file }<br>/path/to/file.html<br>:&nbsp;&nbsp;&nbsp;~~~ conf<br>&nbsp;&nbsp;&nbsp;&nbsp;#Sample file text<br>&nbsp;&nbsp;&nbsp;&nbsp;Sample file syntax<br>&nbsp;&nbsp;&nbsp;&nbsp;~~~ | <img src="/docs/assets/example_file_file.png"> |
 
-Example: File Excerpt format
+**Example**: File Excerpt format
 
 {: .table .table-striped .table-bordered }
 | Formatting | Example |
@@ -243,7 +247,7 @@ When adding an image, ensure that all identifying attributes such as names and I
 
 ### Key Combinations
 
-When instructing to use a combination of keys, format them in bold.
+When instructing a reader to use a combination of keys, format the key combination in bold:
 
 {: .table .table-striped .table-bordered }
 | Formatting | Example |
