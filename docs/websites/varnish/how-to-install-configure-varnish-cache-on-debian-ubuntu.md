@@ -68,7 +68,7 @@ Varnish is configured via [Varnish Configuration Language (VCL)](https://www.var
 
 Recent versions of Debian (8 and newer) and Ubuntu (15.04 and newer) require Varnish configuration through *systemd*.
 
-Open the `varnish.service` file, set the port, configuration file, and *memory allocation* on the `ExecStart` line. In the following example, these values are: `-a :80`, `/etc/varnish/user.vcl`, and `malloc,1G`
+Open the `varnish.service` file, set the port, configuration file, and *memory allocation* on the `ExecStart` line. In the following example, these values are: `-a :80`, `/etc/varnish/user.vcl`, and `malloc,1G`.
 
 {: .file-excerpt }
 /lib/systemd/system/varnish.service
@@ -104,8 +104,7 @@ By default, Varnish will cache requests for two minutes. To adjust this time, op
 {: .file-excerpt }
 /etc/varnish/user.vcl
 : ~~~
-  sub vcl_fetch 
-  {
+  sub vcl_fetch {
     set beresp.ttl = 5m;
   }
   ~~~
@@ -118,7 +117,7 @@ Now that you've configured Varnish, use this section to make it your web server 
 
 ![Where Varnish Exists in the Web Server Process](/docs/assets/varnish_cache_guide.png "Where Varnish Exists in the Web Server Process")
 
-While these steps specify Apache, nginx configuration is identical. If using nginx, begin with Step 2, and replace each instance of `apache2` below with `nginx`.
+While these steps specify Apache, nginx configuration is identical. If you're using nginx, begin with Step 2, and replace each instance of `apache2` below with `nginx`.
 
 1.  Change the port Apache listens on. Edit `/etc/apache2/ports.conf` and any virtual hosts. Open `ports.conf` and change the `80` in `Listen 80` to another port. We'll use `8080` in our examples:
 
@@ -157,7 +156,7 @@ We need to override the `vcl_recv` subroutine in our VCL file which is run each 
 : ~~~
   sub vcl_recv
   {
-      if (req.http.host ~ "example.com" ||
+      if (req.http.host == "example.com" &&
           req.url ~ "^/admin")
       {
           return (pass);
@@ -181,16 +180,16 @@ Add this to the bottom of `vcl_recv` in our VCL:
 
 You may find that a particular cookie is important for displaying content or determines if your user is logged in or not. In this case, you probably don't want to show cached content and just send the user straight to the backend.
 
-For this case, we'll check `req.http.Cookie` for a cookie called "logged\_in", and if we find it, pass the request on to the backend with no caching. Here's our entire `vcl_recv` subroutine thus far:
+For this case, we'll check `req.http.Cookie` for a cookie called "logged_in", and if we find it, pass the request on to the backend with no caching. Here's our entire `vcl_recv` subroutine thus far:
 
 {: .file-excerpt }
 /etc/varnish/user.vcl
 : ~~~
   sub vcl_recv
   {
-      if (req.http.host ~ "example.com" ||
-          req.url ~ "^/admin" ||
-          req.http.Cookie ~ "logged_in")
+      if ((req.http.host ~ "example.com" &&
+          req.url ~ "^/admin") ||
+          req.http.Cookie == "logged_in")
        {
           return (pass);
        }
@@ -201,16 +200,16 @@ For this case, we'll check `req.http.Cookie` for a cookie called "logged\_in", a
 
 ### To Cache POST, or Not to Cache POST?
 
-It's likely you don't want to cache [POST](https://en.wikipedia.org/wiki/POST_(HTTP)) requests because they probably need to interact with the backend to gather dynamic data or setup a user's session. In our example above, we chose not to cache requests if the user is logged in. This section ensures a user can log in to begin with. An easy approach is to skip POST requests all together.
+It's likely you don't want to cache [POST](https://en.wikipedia.org/wiki/POST_(HTTP)) requests because they probably need to interact with the backend to gather dynamic data or set up a user's session. In our example above, we chose not to cache requests if the user is logged in. This section ensures a user can log in to begin with. An easy approach is to skip POST requests all together.
 
 To accomplish this add the following condition to the existing `return (pass)` block inside of `vcl_recv`:
 
 {: .file-excerpt }
 /etc/varnish/user.vcl
 : ~~~
-  if (req.http.host ~ "example.com" ||
-      req.url ~ "^/admin" ||
-      req.http.Cookie ~ "logged_in" ||
+  if ((req.http.host == "example.com" &&
+      req.url ~ "^/admin") ||
+      req.http.Cookie == "logged_in" ||
       req.request == "POST")
   {
       return (pass);
@@ -219,7 +218,7 @@ To accomplish this add the following condition to the existing `return (pass)` b
 
 ### Use Varnish Cache for High Availability with Backend Polling
 
-Varnish can use a built-in tool called *backend polling* to check on the backend server and continue serving cache if the backend is unreachable. In the event that Varnish detects downtime, it will continue serving cached content for a *grace time* that you configure in `user.vcl`.
+Varnish can use a built-in tool called *backend polling* to check on the backend server and continue serving cached content if the backend is unreachable. In the event that Varnish detects downtime, it will continue serving cached content for a *grace time* that you configure in `user.vcl`.
 
 To set up polling, add a probe section to the backend declaration in `/etc/varnish/user.vcl`:
 
@@ -261,7 +260,7 @@ This allows our backend to be down up to an hour without website visitors ever n
 
 #### Serve Varnish Cache from Another Linode (Optional)
 
-For added availability, consider serving Varnish cache from a separate Linode. In this case, the Varnish installation steps should be performed on a separate Linode in the same datacenter as the web server. Once installed, configure the Varnish backend `.host` to point at the web server Linode's [private IP address](/docs/networking/remote-access#adding-private-ip-addresses). Note that DNS should be pointed at the Varnish Linode for your Fully Qualified Domain Name (FQDN) to work.
+For added availability, consider serving Varnish cache from a separate Linode. In this case, the Varnish installation steps should be performed on a separate Linode in the same datacenter as the web server. Once installed, configure the Varnish backend `.host` to point at the web server Linode's [private IP address](/docs/networking/remote-access#adding-private-ip-addresses). Note that DNS records should be pointed at the Varnish Linode for your Fully Qualified Domain Name (FQDN) to work, since this is the server facing the clients.
 
 That's it! If everything went well, visitors to your site are now being served Varnish cache quickly.
 
