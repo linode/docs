@@ -85,11 +85,20 @@ In this section you'll create a key file that will be used to secure authenticat
 
         sudo mkdir /opt/mongo
 
-3.  Assuming that your key file is under the `home` directory, move it to `/opt/mongo`. Then update its permissions and ownership:
+3.  Assuming that your key file is under the `home` directory, move it to `/opt/mongo`, and assign it the correct permissions:
 
         sudo mv ~/mongo-keyfile /opt/mongo
         sudo chmod 400 /opt/mongo/mongo-keyfile
+
+4.  Update the ownership of your key file, so that it belongs to the MongoDB user. Use the appropriate command for your distribution:
+
+    **Ubuntu / Debian:**
+
         sudo chown mongodb:mongodb /opt/mongo/mongo-keyfile
+
+    **CentOS:**
+
+        sudo chown mongod:mongod /opt/mongo/mongo-keyfile
 
     These steps should be performed on each member of the replica set, so that they all have the key file located in the same directory, with identical permissions.
 
@@ -103,7 +112,7 @@ In this section you'll create a key file that will be used to secure authenticat
 
         use admin
 
-3.  Create an administrative user with `root` privileges:
+3.  Create an administrative user with `root` privileges. Replace "password" with a strong password of your choice:
 
         db.createUser({user: “mongo-admin”, pwd: "password", roles:[{role: “root”, db: "admin"}]})
 
@@ -127,7 +136,7 @@ On each of your Linodes, make the following changes to your `/etc/mongod.conf` f
 
 The `port` value of 27017 is the default. If you have reason to use a different port you may do so, but the rest of this guide will use the default. The `bindIp` directive specifies the IP address on which the MongoDB daemon will listen, and since we're connecting several hosts, this should be the IP address that corresponds with the Linode on which you're configuring it (the same address added to the hosts files in the previous section). Leaving the default of `127.0.0.1` allows you to connect locally as well, which may be useful for testing replication.
 
-Uncomment the `security` section as well, and use the `keyFile` option to direct MongoDB to the key you created previously. Enabling `keyFile` authentication automatically enables [role-based access control](https://docs.mongodb.com/manual/core/authorization/) as well, so you will need to [create users](https://www.linode.com/docs/databases/mongodb/install-mongodb-on-ubuntu-16-04#create-database-users) and assign them privileges to access specific databases. 
+Uncomment the `security` section, and use the `keyFile` option to direct MongoDB to the key you created previously. Enabling `keyFile` authentication automatically enables [role-based access control](https://docs.mongodb.com/manual/core/authorization/) as well, so you will need to [create users](https://www.linode.com/docs/databases/mongodb/install-mongodb-on-ubuntu-16-04#create-database-users) and assign them privileges to access specific databases.
 
 The `replication` section needs to be uncommented to be enabled. Directives in this section are what directly affect the configuration of your replica set. The value `rs0` is the name we're using for our replica set; you can use a different naming convention if you like, but we'll be using `rs0` throughout this guide.
 
