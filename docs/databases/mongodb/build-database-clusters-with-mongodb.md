@@ -76,6 +76,20 @@ Replace the IP addresses above with the IP addresses for each Linode. Also subst
 
 In this section you'll create a key file that will be used to secure authentication between the members of your replica set. While in this example you'll be using a key file generated with `openssl`, MongoDB recommends using an [X.509 certificate](https://docs.mongodb.com/v3.2/core/security-x.509/) to secure connections between production systems.
 
+### Create an Administrative User
+
+1.  On the Linode that you intend to use as the *primary* member of your replica set of config servers, log in to the `mongo` shell:
+
+        mongo
+
+2.  Connect to the `admin` database:
+
+        use admin
+
+3.  Create an administrative user with `root` privileges. Replace "password" with a strong password of your choice:
+
+        db.createUser({user: "mongo-admin", pwd: "password", roles:[{role: "root", db: "admin"}]})
+
 ### Generate a Key file
 
 1.  Issue this command to generate your key file:
@@ -110,22 +124,11 @@ In this section you'll create a key file that will be used to secure authenticat
         security:
         keyFile: /opt/mongo/mongodb-keyfile
 
+    To apply the change, restart `mongod`:
+
+        sudo systemctl restart mongod
+
     You can skip this step on your query router, since you'll create a separate configuration file for it later in this guide. Note that key file authentication automatically enables [role-based access control](https://docs.mongodb.com/manual/core/authorization/), so you will need to [create users](https://www.linode.com/docs/databases/mongodb/install-mongodb-on-ubuntu-16-04#create-database-users) and assign them the necessary privileges to access databases.  
-
-### Create an Administrative User
-
-1.  On the Linode that you intend to use as the *primary* member of your replica set of config servers, log in to the `mongo` shell:
-
-        mongo
-
-2.  Connect to the `admin` database:
-
-        use admin
-
-3.  Create an administrative user with `root` privileges. Replace "password" with a strong password of your choice:
-
-        db.createUser({user: "mongo-admin", pwd: "password", roles:[{role: "root", db: "admin"}]})
-
 
 ## Initialize Config Servers
 
