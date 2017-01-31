@@ -17,6 +17,8 @@ external_resources:
 
 The [PostgreSQL](http://www.postgresql.org/) relational database system is a powerful, scalable, and standards-compliant open-source database platform. This guide will help you install and configure PostgreSQL on your CentOS 7 Linode.
 
+![Use PostgreSQL Relational Databases on CentOS 7](/docs/assets/use-postgresql-on-centos-7-title.png "Use PostgreSQL Relational Databases on CentOS 7")
+
 ## Before You Begin
 
 1.  Familiarize yourself with our [Getting Started guide](/docs/getting-started) and complete the steps for setting your Linode's hostname and timezone.
