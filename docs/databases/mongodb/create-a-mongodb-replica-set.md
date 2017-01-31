@@ -114,7 +114,7 @@ In this section you'll create a key file that will be used to secure authenticat
 
 3.  Create an administrative user with `root` privileges. Replace "password" with a strong password of your choice:
 
-        db.createUser({user: “mongo-admin”, pwd: "password", roles:[{role: “root”, db: "admin"}]})
+        db.createUser({user: "mongo-admin", pwd: "password", roles:[{role: "root", db: "admin"}]})
 
 ## Configure MongoDB
 
