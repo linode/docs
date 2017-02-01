@@ -16,7 +16,7 @@ external_resources:
  - '[Geographically Distributed Replica Sets](https://docs.mongodb.com/manual/tutorial/deploy-geographically-distributed-replica-set/)'
 ---
 
-In this guide, you'll learn how to create a MongoDB *replica set*. A replica set is a cluster of MongoDB database servers that implements master-slave (primary-secondary) replication. Replica sets also fail over automatically, so if one of the members becomes unavailable, a new primary host is elected and your data is still accessible. When combined with sharded database clusters, replica sets allow you to create scalable, highly available database systems for use with growing datasets. 
+In this guide, you'll learn how to create a MongoDB *replica set*. A replica set is a cluster of MongoDB database servers that implements master-slave (primary-secondary) replication. Replica sets also fail over automatically, so if one of the members becomes unavailable, a new primary host is elected and your data is still accessible. When combined with sharded database clusters, replica sets allow you to create scalable, highly available database systems for use with growing datasets.
 
 This guide has been tested with Ubuntu 16.04 and CentOS 7. Because most of the configuration is done within the MongoDB application, the steps should not vary significantly among other distributions, but additional configuration may be required.
 
@@ -67,7 +67,54 @@ Each member of your replica set should have a hostname that identifies it as a m
 If you're using more than three Linodes, add all of your hosts at this stage. Replace the hostnames with your actual hostnames, and the IP addresses with the IP addresses of your Linodes.
 
 {: .note}
-> These hostnames are only given as examples, but we'll use these names throughout this guide to refer to members of the replica set. When you see one of these names in a command or configuration file, substitute your own hostname if applicable. 
+> These hostnames are only given as examples, but we'll use these names throughout this guide to refer to members of the replica set. When you see one of these names in a command or configuration file, substitute your own hostname if applicable.
+
+## Set Up MongoDB Authentication
+
+In this section you'll create a key file that will be used to secure authentication between the members of your replica set. While in this example you'll be using a key file generated with `openssl`, MongoDB recommends using an [X.509 certificate](https://docs.mongodb.com/v3.2/core/security-x.509/) to secure connections between production systems.
+
+### Generate a Key file
+
+1.  Issue this command to generate your key file:
+
+        openssl rand -base64 756 > mongo-keyfile
+
+    Once you've generated the key, copy it to each member of your replica set.
+
+2.  Create the '/opt/mongo' directory to store your key file:
+
+        sudo mkdir /opt/mongo
+
+3.  Assuming that your key file is under the `home` directory, move it to `/opt/mongo`, and assign it the correct permissions:
+
+        sudo mv ~/mongo-keyfile /opt/mongo
+        sudo chmod 400 /opt/mongo/mongo-keyfile
+
+4.  Update the ownership of your key file, so that it belongs to the MongoDB user. Use the appropriate command for your distribution:
+
+    **Ubuntu / Debian:**
+
+        sudo chown mongodb:mongodb /opt/mongo/mongo-keyfile
+
+    **CentOS:**
+
+        sudo chown mongod:mongod /opt/mongo/mongo-keyfile
+
+    These steps should be performed on each member of the replica set, so that they all have the key file located in the same directory, with identical permissions.
+
+### Create an Administrative User
+
+1.  On the Linode that you intend to use as the *primary* member of your replication set, log in to the `mongo` shell:
+
+        mongo
+
+2.  Connect to the `admin` database:
+
+        use admin
+
+3.  Create an administrative user with `root` privileges. Replace "password" with a strong password of your choice:
+
+        db.createUser({user: "mongo-admin", pwd: "password", roles:[{role: "root", db: "admin"}]})
 
 ## Configure MongoDB
 
@@ -80,11 +127,16 @@ On each of your Linodes, make the following changes to your `/etc/mongod.conf` f
       port: 27017
       bindIp: 127.0.0.1,192.0.2.1
 
-    replication: 
+    security:
+      keyFile: /opt/mongo/mongo-keyfile
+
+    replication:
       replSetName: rs0
     ~~~
 
 The `port` value of 27017 is the default. If you have reason to use a different port you may do so, but the rest of this guide will use the default. The `bindIp` directive specifies the IP address on which the MongoDB daemon will listen, and since we're connecting several hosts, this should be the IP address that corresponds with the Linode on which you're configuring it (the same address added to the hosts files in the previous section). Leaving the default of `127.0.0.1` allows you to connect locally as well, which may be useful for testing replication.
+
+Uncomment the `security` section, and use the `keyFile` option to direct MongoDB to the key you created previously. Enabling `keyFile` authentication automatically enables [role-based access control](https://docs.mongodb.com/manual/core/authorization/) as well, so you will need to [create users](https://www.linode.com/docs/databases/mongodb/install-mongodb-on-ubuntu-16-04#create-database-users) and assign them privileges to access specific databases.
 
 The `replication` section needs to be uncommented to be enabled. Directives in this section are what directly affect the configuration of your replica set. The value `rs0` is the name we're using for our replica set; you can use a different naming convention if you like, but we'll be using `rs0` throughout this guide.
 
@@ -94,9 +146,9 @@ Once you've made these changes, restart the `mongod` service:
 
 ## Start Replication and Add Members
 
-1.  Log into any member of your replica set via SSH. Once you're logged in, enter the MongoDB shell:
+1.  Connect via SSH to the Linode that you intend to use as your *primary*. Once you're logged in, connect to the MongoDB shell using the [administrative user](#create-an-administrative-user) you created previously:
 
-        mongo
+        mongo -u mongo-admin -p --authenticationDatabase admin
 
     {: .note}
     > If your connection is refused, be sure that the address for localhost (`127.0.0.1`) is included in your configuration's `bindIp` value.
@@ -136,22 +188,22 @@ Once you've made these changes, restart the `mongod` service:
 
 At this stage, your replica set is fully functional and ready to use. The steps in this section are optional, but if you'd like a visual confirmation that your replication is working, you can follow along.
 
-1.  Connect to the `mongo` shell on the primary member of your replica set. This is usually the Linode from which you initiated the set, but if you're not sure, you can check the output of `rs.status()` from any of the members.
+1.  Connect to the `mongo` as the administrative user, on the primary member of your replica set. This is usually the Linode from which you initiated the set, but if you're not sure, you can check the output of `rs.status()` from any of the members.
 
 2.  Enter test data:
 
         use exampleDB
         for (var i = 0; i <= 10; i++) db.exampleCollection.insert( { x : i } )
 
-    This command creates a database called `exampleDB` and generates 20 simple documents, which are then inserted into a collection called `exampleCollection`.
+    The first command creates a database called `exampleDB`, and the second command generates 20 simple documents, which are then inserted into a collection called `exampleCollection`.
 
-3.  If your replica set is configured properly, the data should be present on your secondary members as well as the primary. To test this, connect to the `mongo` shell on one of your secondary members and run:
+3.  If your replica set is configured properly, the data should be present on your secondary members as well as the primary. To test this, connect to the `mongo` shell with the administrative user on one of your secondary members, and run:
 
         db.getMongo().setSlaveOk()
 
     This command enables secondary member read operations on a per-connection basis, so be sure to disconnect before you deploy your replica set into production. By default, read queries are not allowed on secondary members to avoid problems with your application retrieving stale data. This can become an issue when your database is undergoing more complex queries at a higher load, but because of the relatively simple test data we wrote, this is not an issue here.
 
-    However, changing the overall read preference can have benefits in some cases. For more information, see the offical [MongoDB documentation](https://docs.mongodb.com/v3.2/core/read-preference/).
+    However, changing the overall read preference can have benefits in some cases. For more information, see the official [MongoDB documentation](https://docs.mongodb.com/v3.2/core/read-preference/).
 
 4.  Before running the command in the previous step, any read operations, including simple ones like `show dbs` and `show collections` would fail with an error. Now that you've enabled reading, switch to the `exampleDB` database:
 
@@ -172,6 +224,3 @@ At this stage, your replica set is fully functional and ready to use. The steps 
 ## Next Steps
 
 Replica sets can be used as standalone components of a high availability system, or as part of a [sharded database cluster](https://docs.mongodb.com/manual/core/sharded-cluster-shards/). For larger datasets, a cluster allows you to distribute data across many database servers or replica sets and route queries to them based on criteria you specify. For more information on how to create a sharded cluster, see our guide on [building database clusters with MongoDB](/docs/databases/mongodb/building-database-clusters/with-mongodb).
-
-
-

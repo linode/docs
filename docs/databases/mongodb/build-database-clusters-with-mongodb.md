@@ -31,7 +31,7 @@ The commands and filepaths in this guide are based on those used in Ubuntu 16.04
 
 2.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting the hostname and timezone on each Linode. We recommend choosing hostnames that correspond with each Linode's role in the cluster, explained in the next section.
 
-3.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services for each Linode. 
+3.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services for each Linode.
 
 4.  Update your system:
 
@@ -72,9 +72,67 @@ Replace the IP addresses above with the IP addresses for each Linode. Also subst
 {: .note}
 > You may also configure DNS records for each host rather than using hosts file entries. However, be aware that public DNS servers, such as the ones used when configuring records in the [DNS Manager](/docs/networking/dns/dns-manager-overview), only support public IP addresses.
 
+## Set Up MongoDB Authentication
+
+In this section you'll create a key file that will be used to secure authentication between the members of your replica set. While in this example you'll be using a key file generated with `openssl`, MongoDB recommends using an [X.509 certificate](https://docs.mongodb.com/v3.2/core/security-x.509/) to secure connections between production systems.
+
+### Create an Administrative User
+
+1.  On the Linode that you intend to use as the *primary* member of your replica set of config servers, log in to the `mongo` shell:
+
+        mongo
+
+2.  Connect to the `admin` database:
+
+        use admin
+
+3.  Create an administrative user with `root` privileges. Replace "password" with a strong password of your choice:
+
+        db.createUser({user: "mongo-admin", pwd: "password", roles:[{role: "root", db: "admin"}]})
+
+### Generate a Key file
+
+1.  Issue this command to generate your key file:
+
+        openssl rand -base64 756 > mongo-keyfile
+
+    Once you've generated the key, copy it to each member of your replica set.
+
+2.  Create the '/opt/mongo' directory to store your key file:
+
+        sudo mkdir /opt/mongo
+
+3.  Assuming that your key file is under the `home` directory, move it to `/opt/mongo`, and assign it the correct permissions:
+
+        sudo mv ~/mongo-keyfile /opt/mongo
+        sudo chmod 400 /opt/mongo/mongo-keyfile
+
+4.  Update the ownership of your key file, so that it belongs to the MongoDB user. Use the appropriate command for your distribution:
+
+    **Ubuntu / Debian:**
+
+        sudo chown mongodb:mongodb /opt/mongo/mongo-keyfile
+
+    **CentOS:**
+
+        sudo chown mongod:mongod /opt/mongo/mongo-keyfile
+
+    These steps should be performed on each member of the replica set, so that they all have the key file located in the same directory, with identical permissions.
+
+5.  Once you've added your key file, uncomment the `Security` section of the `/etc/mongod.conf` file on each of your Linodes, and add the following value:
+
+        security:
+        keyFile: /opt/mongo/mongodb-keyfile
+
+    To apply the change, restart `mongod`:
+
+        sudo systemctl restart mongod
+
+    You can skip this step on your query router, since you'll create a separate configuration file for it later in this guide. Note that key file authentication automatically enables [role-based access control](https://docs.mongodb.com/manual/core/authorization/), so you will need to [create users](https://www.linode.com/docs/databases/mongodb/install-mongodb-on-ubuntu-16-04#create-database-users) and assign them the necessary privileges to access databases.  
+
 ## Initialize Config Servers
 
-In this section, we'll create a replica set of config servers. The config servers store metadata for the states and organization of your data. This includes information about the locations of data *chunks*, which is important since the data will be distributed across multiple shards. 
+In this section, we'll create a replica set of config servers. The config servers store metadata for the states and organization of your data. This includes information about the locations of data *chunks*, which is important since the data will be distributed across multiple shards.
 
 Rather than using a single config server, we'll use a replica set to ensure the integrity of the metadata. This enables master-slave (primary-secondary) replication among the three servers and automates failover so that if your primary config server is down, a new one will be elected and requests will continue to be processed.
 
@@ -115,9 +173,9 @@ The steps below should be performed on each config server individually, unless o
 
         sudo systemctl restart mongod
 
-5.  On *one* of your config server Linodes, connect to the MongoDB shell over port 27019:
+5.  On *one* of your config server Linodes, connect to the MongoDB shell over port 27019 with your administrative user:
 
-        mongo mongo-config-1:27019
+        mongo mongo-config-1:27019 -u mongo-admin -p --authenticationDatabase admin
 
     Modify the hostname to match your own if you used a different naming convention than our example. We're connecting to the `mongo` shell on the first config server in this example, but you can connect to any of the config servers in your cluster since we'll be adding each host from the same connection.
 
@@ -208,35 +266,92 @@ In this section, we'll set up the MongoDB query router. The query router obtains
 
 All steps here should be performed from your query router Linode (this will be the same as your application server). Since we're only configuring one query router, we'll only need to do this once. However, it's also possible to use a replica set of query routers. If you're using more than one (i.e., in a high availability setup), perform these steps on each query router Linode.
 
-1.  Install the GNU Screen package. This will allow you to run the `mongos` service in a separate session, since you'll need shell access once `mongos` is running:
+1.  Create a new configuration file called `/etc/mongos.conf`, and supply the following values:
 
-        sudo apt-get install screen
+    {: .file-excerpt}
+    /etc/mongos.conf
+    :   ~~~
+        # where to write logging data.
+        systemLog:
+        destination: file
+        logAppend: true
+        path: /var/log/mongodb/mongos.log
 
-    {: .note}
-    > For more information on the features and usage of GNU Screen, see our [guide](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions).
+        # network interfaces
+        net:
+        port: 27017
+        bindIp: 192.0.2.4
 
-2.  The `mongos` service needs to obtain data locks that conflicts with `mongod`, so be sure `monogod` is stopped before proceeding:
+        security:
+        keyFile: /opt/mongo/mongodb-keyfile
 
-        sudo systemctl status mongod
+        sharding:
+        configDB: configReplSet/mongo-config-1:27019,mongo-config-2:27019,mongo-config-3:27019
+        ~~~
 
-    If it's running, stop the process:
+    Replace `192.0.2.4` with your router Linode's private IP address, and save the file.
+
+2.  Create a new systemd unit file for `mongos` called `/lib/systemd/system/mongos.service`, with the following information:
+
+    {: .file-excerpt}
+    /lib/systemd/system/mongos.service
+    :   ~~~
+        [Unit]
+        Description=Mongo Cluster Router
+        After=network.target
+
+        [Service]
+        User=mongodb
+        Group=mongodb
+        ExecStart=/usr/bin/mongos --config /etc/mongos.conf
+        # file size
+        LimitFSIZE=infinity
+        # cpu time
+        LimitCPU=infinity
+        # virtual memory size
+        LimitAS=infinity
+        # open files
+        LimitNOFILE=64000
+        # processes/threads
+        LimitNPROC=64000
+        # total threads (user+kernel)
+        TasksMax=infinity
+        TasksAccounting=false
+
+        [Install]
+        WantedBy=multi-user.target
+        ~~~
+
+    Note that the above example uses the `mongodb` user that MongoDB runs as by default on Ubuntu and Debian. If you're using CentOS, substitute the following values under the `Service` section of the file:
+
+        [Service]
+        User=mongod
+        Group=mongod
+
+2.  The `mongos` service needs to obtain data locks that conflicts with `mongod`, so be sure `mongod` is stopped before proceeding:
 
         sudo systemctl stop mongod
 
-3.  Start the MongoDB query router in a screen session:
+3.  Enable `mongos.service` so that it automatically starts on reboot, and then initialize the `mongos`:
 
-        sudo screen mongos --configdb configReplSet/mongo-config-1:27019,mongo-config-2:27019,mongo-config-3:27019
+        sudo systemctl enable mongos.service
+        sudo systemctl start mongos
 
-    The `--configdb` flag specifies the configuration databases we set up in the last section. These databases store metadata, and are needed in order to help the `mongos` process route queries to the correct shard. The value for the config database is the name of the replica set (`configReplSet`) followed by a slash (`/`) and then the list of hostnames and ports (`mongo-config-1:27019`, etc.).
+4.  Confirm that `mongos` is running:
 
-    {: .caution}
-    > If you configure multiple query routers, be sure that the order of the hosts in this command is the same. If not, you will receive an error and `mongos` will not start.
+        systemctl status mongos
 
-4.  Exit the screen session by pressing **CTRL+a** and then **d**. The `mongos` service will continue to run in that session, and you can resume your screen session to view its output using `screen -r`.
+    You should see output similar to this:
+
+        Loaded: loaded (/lib/systemd/system/mongos.service; enabled; vendor preset: enabled)
+        Active: active (running) since Tue 2017-01-31 19:43:05 UTC; 10s ago
+        Main PID: 3901 (mongos)
+        CGroup: /system.slice/mongos.service
+            └─3901 /usr/bin/mongos --config /etc/mongos.conf
 
 ## Add Shards to the Cluster
 
-Now that the query router is able to communicate with the config servers, we must enable sharding so that the query router knows which servers will host the distributed data and where any given piece of data is located. 
+Now that the query router is able to communicate with the config servers, we must enable sharding so that the query router knows which servers will host the distributed data and where any given piece of data is located.
 
 1.  Log into *each* of your shard servers and change the following line in the MongoDB configuration file:
 
@@ -250,7 +365,7 @@ Now that the query router is able to communicate with the config servers, we mus
 
 2.  From *one* of your shard servers, connect to the query router we configured above:
 
-        mongo mongo-query-router:27017
+        mongo mongo-query-router:27017 -u mongo-admin -p --authenticationDatabase admin
 
     If your query router has a different hostname, subsitute that in the command.
 
@@ -280,11 +395,11 @@ At this stage, the components of your cluster are all connected and communicatin
 
 ### Enable Sharding at Database Level
 
-First, we'll enable sharding at the database level, which means that collections in a given database can be distributed among different shards. 
+First, we'll enable sharding at the database level, which means that collections in a given database can be distributed among different shards.
 
 1.  Access the `mongos` shell on your query router. This can be done from any server in your cluster:
 
-        mongo mongo-query-router:27017
+        mongo mongo-query-router:27017 -u mongo-admin -p --authenticationDatabase admin
 
     If applicable, subsitute your own query router's hostname.
 
@@ -314,7 +429,7 @@ Before we enable sharding for a collection, we'll need to decide on a *sharding 
 
 **Range-based sharding** divides your data based on specific ranges of values in the shard key. For example, you may have a collection of customers and associated address. If you use range-based sharding, the ZIP code may be a good choice for the shard key. This would distribute customers in a specified range of ZIP codes on the same shard. This may be a good strategy if your application will be running queries to find customers near each other when planning deliveries, for example. The downside to this is if your customers are not evenly distributed geographically, your data storage may rely too heavily on one shard, so it's important to analyze your data carefully before choosing a shard key. Another important factor to consider is what kinds of queries you'll be running, however. When properly utilized, range-base sharding is generally a better option when your application will be performing many complex read queries.
 
-**Hash-based sharding** distributes data by using a hash function on your shard key for a more even distribution of data among the shards. Suppose again that you have a collection of customers and addresses. In a hash-based sharding setup, you may choose a customer ID number, for example, as the shard key. This number is transformed by a hash function, and the results of the hashing are what determines which shard the data is stored on. Hash-based sharding is a good strategy in situations where your application will mostly perform write operations, or if your application needs only to run simple read queries like looking up only a few specific customers at a time. 
+**Hash-based sharding** distributes data by using a hash function on your shard key for a more even distribution of data among the shards. Suppose again that you have a collection of customers and addresses. In a hash-based sharding setup, you may choose a customer ID number, for example, as the shard key. This number is transformed by a hash function, and the results of the hashing are what determines which shard the data is stored on. Hash-based sharding is a good strategy in situations where your application will mostly perform write operations, or if your application needs only to run simple read queries like looking up only a few specific customers at a time.
 
 This is not intended to be a comprehensive guide to choosing a sharding strategy. Before making this decision for a production cluster, be sure to analyze your dataset, computing resources, and the queries your application will run. For more information, refer to [MongoDB's documentation on sharding](https://docs.mongodb.com/v3.2/sharding/).
 
@@ -327,7 +442,7 @@ Now that the database is available for sharding and we've chosen a strategy, we 
 
 1.  Connect to the `mongo` shell on your query router if you're not already there:
 
-        mongo mongo-query-router:27017
+        mongo mongo-query-router:27017 -u mongo-admin -p --authenticationDatabase admin
 
 2.  Switch to the `exampleDB` database we created previously:
 
@@ -336,7 +451,7 @@ Now that the database is available for sharding and we've chosen a strategy, we 
 3.  Create a new collection called `exampleCollection` and hash its `_id` key. The `_id` key is already created by default as a basic index for new documents:
 
         db.exampleCollection.ensureIndex( { _id : "hashed" } )
-        
+
 4.  Finally, shard the collection:
 
         sh.shardCollection( "exampleDB.exampleCollection", { "_id" : "hashed" } )
@@ -349,7 +464,7 @@ This section is optional. To ensure your data is being distributed evenly in the
 
 1.  Connect to the `mongo` shell on your query router if you're not already there:
 
-        mongo mongo-query-router:27017
+        mongo mongo-query-router:27017 -u mongo-admin -p --authenticationDatabase admin
 
 2.  Switch to your `exampleDB` database:
 
@@ -369,12 +484,12 @@ This section is optional. To ensure your data is being distributed evenly in the
          data : 8KiB docs : 265 chunks : 2
          estimated data per chunk : 4KiB
          estimated docs per chunk : 132
-        
+
         Shard shard0001 at mongo-shard-2:27017
          data : 7KiB docs : 235 chunks : 2
          estimated data per chunk : 3KiB
          estimated docs per chunk : 117
-        
+
         Totals
          data : 16KiB docs : 500 chunks : 4
          Shard shard0000 contains 53% data, 53% docs in cluster, avg obj size on shard : 33B
@@ -391,4 +506,3 @@ This section is optional. To ensure your data is being distributed evenly in the
 Before using your cluster in a production environment, it's important to configure a firewall to limit ports 27017 and 27019 to only accept traffic between hosts within your cluster. Additional firewall configuration will likely be needed depending on the other services you're running. For more information, consult our [firewall guides](/docs/security/firewalls/).
 
 You may also want to create a master disk image consisting of a full MongoDB installation and whatever configuration settings your application requires. By doing so, you can use the Linode Manager to dynamically scale your cluster as your data storage needs grow. You may also do this from the [Linode CLI](https://www.linode.com/docs/platform/linode-cli/) if you'd like to automate the process. For more information, see our guide on [Linode images](/docs/platform/linode-images).
-
