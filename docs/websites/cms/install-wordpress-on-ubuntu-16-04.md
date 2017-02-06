@@ -16,7 +16,7 @@ external_resources:
 - '[WordPress Support](http://wordpress.org/support)'
 ---
 
-In this guide, you'll learn to how to install WordPress on a Linode running Ubuntu 16.04. WordPress is a popular, dynamic content management system focused on blogs. WordPress can be deployed on a LAMP or LEMP stack, and features an extensive plugin framework and theme system that allows site owners and developers to use its simple, yet powerful publishing tools.
+In this guide, you'll learn to how to install WordPress on a Linode running Ubuntu 16.04. WordPress is a popular dynamic content management system focused on blogs. WordPress can be deployed on a LAMP or LEMP stack, and features an extensive plugin framework and theme system that allows site owners and developers to use its simple, yet powerful publishing tools.
 
 ![Install WordPress on Ubuntu 16.04](/docs/assets/wordpress-ubuntu-16-04-title.png "Install WordPress on Ubuntu 16.04")
 
@@ -143,7 +143,7 @@ To configure permalink settings:
 
 ### Configure WordPress to Allow Permalinks on Apache
 
-Update Apache to allow individual sites to update the `.htaccess` file. To permit this, add the following options to the *Directory* section in your WordPress website's *VirtualHost* code block:
+Instruct Apache to allow individual sites to update the `.htaccess` file, by adding the following options to the *Directory* section in your virtual host configuration:
 
 {: .file-excerpt}
 /etc/apache2/sites-available/example.com.conf
@@ -161,7 +161,7 @@ Restart Apache to enable the changes:
 
 ### Configure WordPress to Allow Permalinks on nginx
 
-Nginx needs to be directed to check whether the page each permalink refers to exists. By default, nginx assumes that it doesn't, and returns a server-side 404. Update the following lines in the `location / {` block in your virtual host configuration:
+Direct nginx to check whether each permalink refers to an existing page. By default, nginx assumes that it doesn't, and returns a server-side 404. Update the following lines in the `location / {` block in your virtual host configuration:
 
 {: .file-excerpt}
 /etc/nginx/sites-available/example.com
@@ -170,11 +170,44 @@ Nginx needs to be directed to check whether the page each permalink refers to ex
         index index.php index.html index.htm;
         try_files $uri $uri/ /index.php?$args;
     ~~~
-    
-## Install PHP Extension for XML-RPC (Optional)
-To use XML-RPC to access Wordpress via the mobile app or to use Jetpack, you'll need php-xmlrpc.  For more information on XML-RPC, visit the [WordPress guide on XML-RPC](https://codex.wordpress.org/XML-RPC_Support).  For more information on Jetpack, visit [Jetpack for Wordpress](https://jetpack.com/).
 
-We can download and install php-xmlrpc with these commands:
+## Configure Maximum File Size Upload Setting to Allow Larger Files
 
-    sudo apt-get update
-    sudo apt-get install php-xmlrpc
+By default, PHP restricts web uploads to under two megabytes. To allow larger file uploads through the web interface, configure the `upload_max_filesize` setting in `php.ini`:
+
+**Apache**: `/etc/php/7.0/cli/php.ini`
+**nginx**: `/etc/php/7.0/fpm/php.ini`
+
+{: .file-excerpt}
+:  ~~~ php
+   ; Maximum allowed size for uploaded files.
+   ; http://php.net/upload-max-filesize
+   upload_max_filesize = 2M
+   ~~~
+
+## Install Optional PHP Extensions
+
+Wordpress, and many of its plugins, use PHP extensions that you'll need to install manually. This section is optional, but it will allow you to access some Wordpress features you may not have with a basic PHP installation.
+
+-   In order to modify photos or images in Wordpress, you'll need the PHP-GD extension. For example, when you upload an image to use as a header, you may need to crop the image to make it fit your page.
+
+    To install the GD extension:
+
+        sudo apt-get install php7.0-gd
+
+-   For full non-English language support and to fix certain character encoding-related bugs, you'll need the multibyte string (MBSTRING) extension.
+
+    To install MBSTRING:
+
+        sudo apt-get install php7.0-mbstring
+
+-   To use XML-RPC to access Wordpress via the mobile app, or to use Jetpack, you'll need `php-xmlrpc`.  For more information on XML-RPC, visit the [WordPress guide on XML-RPC](https://codex.wordpress.org/XML-RPC_Support). For more information on Jetpack, visit [Jetpack for Wordpress](https://jetpack.com/).
+
+    To install the XML-RPC extension:
+
+        sudo apt-get install php7.0-xmlrpc
+
+These are only a few of the extensions you may find useful. Plenty of other PHP extensions exist and are required for certain plugin features, such as `php7.0-curl`, `php7.0-xml`, and `php7.0-mcrypt`. If you're having issues with a plugin or widget, check its documentation to see if a PHP extension is required.
+
+{: .note}
+> The package names above assume you're working with PHP version 7.0. If you installed PHP 5 from the Ubuntu repositories, modify the commands to use the `php` prefix rather than `php7.0`. For example, instead of installing `php7.0-gd`, use `php-gd`.
