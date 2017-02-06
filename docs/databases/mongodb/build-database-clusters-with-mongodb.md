@@ -98,11 +98,11 @@ In this section you'll create a key file that will be used to secure authenticat
 
     Once you've generated the key, copy it to each member of your replica set.
 
-2.  Create the '/opt/mongo' directory to store your key file:
+2.  The rest of the steps in this section should be performed on each member of the replica set, so that they all have the key file located in the same directory, with identical permissions. Create the `/opt/mongo` directory to store your key file:
 
         sudo mkdir /opt/mongo
 
-3.  Assuming that your key file is under the `home` directory, move it to `/opt/mongo`, and assign it the correct permissions:
+3.  Assuming that your key file is under the home directory for your user, move it to `/opt/mongo`, and assign it the correct permissions:
 
         sudo mv ~/mongo-keyfile /opt/mongo
         sudo chmod 400 /opt/mongo/mongo-keyfile
@@ -116,8 +116,6 @@ In this section you'll create a key file that will be used to secure authenticat
     **CentOS:**
 
         sudo chown mongod:mongod /opt/mongo/mongo-keyfile
-
-    These steps should be performed on each member of the replica set, so that they all have the key file located in the same directory, with identical permissions.
 
 5.  Once you've added your key file, uncomment the `Security` section of the `/etc/mongod.conf` file on each of your Linodes, and add the following value:
 
@@ -158,7 +156,7 @@ The steps below should be performed on each config server individually, unless o
           replSetName: configReplSet
         ~~~
 
-    `configReplSet` is the name of the replica set to be configured. This value can be modified, but we recommend using a descriptive name to help you keep track of the replica sets you'll be configuring.
+    `configReplSet` is the name of the replica set to be configured. This value can be modified, but we recommend using a descriptive name to help you keep track of your replica sets.
 
 3.  Uncomment the `sharding` section and configure the host's role in the cluster as a config server:
 

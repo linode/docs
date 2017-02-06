@@ -81,11 +81,11 @@ In this section you'll create a key file that will be used to secure authenticat
 
     Once you've generated the key, copy it to each member of your replica set.
 
-2.  Create the '/opt/mongo' directory to store your key file:
+2.  The rest of the steps in this section should be performed on each member of the replica set, so that they all have the key file located in the same directory, with identical permissions. Create the `/opt/mongo` directory to store your key file:
 
         sudo mkdir /opt/mongo
 
-3.  Assuming that your key file is under the `home` directory, move it to `/opt/mongo`, and assign it the correct permissions:
+3.  Assuming that your key file is under the home directory for your user, move it to `/opt/mongo`, and assign it the correct permissions:
 
         sudo mv ~/mongo-keyfile /opt/mongo
         sudo chmod 400 /opt/mongo/mongo-keyfile
@@ -99,8 +99,6 @@ In this section you'll create a key file that will be used to secure authenticat
     **CentOS:**
 
         sudo chown mongod:mongod /opt/mongo/mongo-keyfile
-
-    These steps should be performed on each member of the replica set, so that they all have the key file located in the same directory, with identical permissions.
 
 ### Create an Administrative User
 
@@ -161,7 +159,7 @@ Once you've made these changes, restart the `mongod` service:
 
     {
         "info2" : "no configuration specified. Using a default configuration for the set",
-        "me" : "192.168.174.106:27017",
+        "me" : "192.0.2.1:27017",
         "ok" : 1
     }
 
