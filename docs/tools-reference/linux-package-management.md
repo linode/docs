@@ -173,7 +173,7 @@ The `dnf.conf` file provides global configuration settings for DNF. If DNF `.rep
 
 ### RPM Package Manager (RPM)
 
-YUM and DNF are simply frontends to a lower-level tool called RPM, similar to `apt-get`'s relationship with `dpkg`. You will likely not need to interact with RPM very often, but there are a few commands that you may find useful.
+YUM and DNF are simply front-ends to a lower-level tool called RPM, similar to `apt-get`'s relationship with `dpkg`. You will likely not need to interact with RPM very often, but there are a few commands that you may find useful.
 
 The following commands should be run as root. The flags are expanded here, but the abbreviated syntax is also included:
 
@@ -400,7 +400,7 @@ This section addresses common package management tasks and functions using the `
 -   `emerge package-name(s)` - Installs the specified package or packages.
 -   `emerge -u package-name(s)` - Updates the specified package to the latest version. Using the flag `-uD` also updates dependencies.
 -   `emerge --depclean package-name(s)` or `emerge -c package-name(s)` - Removes the specified package or packages.
--   `emerge --depclean` - Removes packages that are orphaned. This means removal of all packages that weren't explicitly installed and do not dependend upon any specific package. We recommend that you run it with the `--pretend` option before running this command on a production system.
+-   `emerge --depclean` - Removes packages that are orphaned. This means removal of all packages that weren't explicitly installed and do not depend upon any specific package. We recommend that you run it with the `--pretend` option before running this command on a production system.
 -   `emerge -evp --deep world` - Lists all of the packages currently installed on the system.
 -   `equery depends package-name(s)` - Lists all of the packages that depend upon the specified package.
 -   `equery files package-name(s)` - Lists all of the files "owned" by a package.
