@@ -15,7 +15,7 @@ title: Hosting a Website
 
 Now that you've installed Linux and secured your Linode, it's time to start *doing* stuff with it. In this guide, you'll learn how to host a website. Start by installing a web server, database, and PHP - a popular combination which is commonly referred to as the LAMP stack (Linux, Apache, MySQL, and PHP). Then create or import a database, upload files, and add DNS records. By the time you reach the end of this guide, your Linode will be hosting one or more websites!
 
-**Debian 8** and **Ubuntu 14.04 LTS** are the [Linux distributions](/docs/getting-started#deploying-an-image) we're using as the starting point for the packages and configurations mentioned in this guide. If you'd like to use **Ubuntu 16.04 LTS**, refer to the distribution-specific guide on how to set up a [LAMP Stack](/docs/websites/lamp/install-lamp-on-ubuntu-16-04), and then return here to continue from the [upload files](#upload-files) section.
+**Debian 8** and **Ubuntu 14.04 LTS** are the [Linux distributions](/docs/getting-started#deploying-an-image) used in this guide. If you'd like to use **Ubuntu 16.04 LTS**, refer to the distribution-specific guide on configuring a [LAMP Stack](/docs/websites/lamp/install-lamp-on-ubuntu-16-04), and then continue to the [upload files](#upload-files) section.
 
 {: .note}
 > This guide is designed for small and medium-size websites running on WordPress, Drupal, or another PHP content management system. If your website doesn't belong in that category, you'll need to assess your requirements and install custom packages tailored for your particular requirements.
@@ -40,7 +40,7 @@ Your Linode will download, install, and start the Apache web server.
 
 ### Optimize Apache for a Linode 2GB
 
-Installing Apache is easy, but if you leave it running with the default settings, your server could run out of memory. That's why it's important to optimize Apache *before* you start hosting a website on your Linode. 
+Installing Apache is easy, but if you leave it running with the default settings, your server could run out of memory. That's why it's important to optimize Apache *before* you start hosting a website on your Linode.
 
 {: .note }
 >
@@ -88,7 +88,7 @@ Good work! You've successfully optimized Apache for your Linode, increasing perf
 
 ### Configure Name-based Virtual Hosts
 
-Now that Apache is optimized for performance, it's time to starting hosting one or more websites. There are several possible methods of doing this. In this section, you'll use *name-based virtual hosts* to host websites in your home directory. 
+Now that Apache is optimized for performance, it's time to starting hosting one or more websites. There are several possible methods of doing this. In this section, you'll use *name-based virtual hosts* to host websites in your home directory.
 
 {: .note }
 >
@@ -181,7 +181,7 @@ That's it! MySQL is now installed and running on your Linode.
 
 ### Optimize MySQL for a Linode 2GB
 
-MySQL consumes a lot of memory when using the default configuration. To set resource constraints, you'll need to edit the MySQL configuration file. 
+MySQL consumes a lot of memory when using the default configuration. To set resource constraints, you'll need to edit the MySQL configuration file.
 
 {: .note }
 >
@@ -200,9 +200,9 @@ MySQL consumes a lot of memory when using the default configuration. To set reso
     :   ~~~ conf
         max_allowed_packet = 1M
         thread_stack = 128K
-        
+
         ...
-        
+
         max_connections = 75
         ~~~
 
@@ -229,7 +229,7 @@ Now that you've edited the MySQL configuration file, you're ready to start creat
 
 ### Create a Database
 
-The first thing you'll need to do in MySQL is create a *database*. (If you already have a database that you'd like to import, skip to the section [Import a Database](#import-a-database).) 
+The first thing you'll need to do in MySQL is create a *database*. (If you already have a database that you'd like to import, skip to the section [Import a Database](#import-a-database).)
 
 1.  Log in using the MySQL root password:
 
@@ -258,7 +258,7 @@ Now you have a new database that you can use for your website. If you don't need
 
 ### Import a Database
 
-If you have an existing website, you may want to import an existing database in to MySQL. It's easy, and it allows you to have an established website up and running on your Linode in a matter of minutes. 
+If you have an existing website, you may want to import an existing database in to MySQL. It's easy, and it allows you to have an established website up and running on your Linode in a matter of minutes.
 
 1.  Upload the database file to your Linode. See the instructions in the [Upload Files](#upload-files) section.
 
@@ -284,7 +284,7 @@ PHP is a general-purpose scripting language that allows you to produce dynamic a
 
 ### Optimize PHP for a Linode 2GB
 
-After you install PHP, you'll need to enable logging and tune PHP for better performance. The setting you'll want to pay the most attention to is `memory_limit`, which controls how much memory is allocated to PHP. 
+After you install PHP, you'll need to enable logging and tune PHP for better performance. The setting you'll want to pay the most attention to is `memory_limit`, which controls how much memory is allocated to PHP.
 
 {: .note }
 > These guidelines are designed to optimize PHP for a Linode 2GB, but you can use this information as a starting point for any size Linode. If you have a larger Linode, you could increase the memory limit to a larger value, like 256M.
@@ -344,7 +344,7 @@ If you're using a content management system like WordPress or Drupal, you may ne
 
 ## Test your Website
 
-It's a good idea to test your website(s) before you add the DNS records. This is your last chance to check everything and make sure that it looks good before it goes live. 
+It's a good idea to test your website(s) before you add the DNS records. This is your last chance to check everything and make sure that it looks good before it goes live.
 
 1.  Enter your Linode's IP address in a web browser (e.g., type `http://192.0.2.0` in the address bar, replacing the example IP address with your own). Your website should load in the web browser.
 
@@ -357,7 +357,7 @@ It's a good idea to test your website(s) before you add the DNS records. This is
 
 ## Add DNS Records
 
-Now you need to point your domain name(s) at your Linode. This process can take a while, so please allow up to 24 hours for DNS changes to be reflected throughout the Internet. 
+Now you need to point your domain name(s) at your Linode. This process can take a while, so please allow up to 24 hours for DNS changes to be reflected throughout the Internet.
 
 1.  Log in to the [Linode Manager](https://manager.linode.com).
 
@@ -391,7 +391,7 @@ You've now added DNS records for your website(s). Remember, DNS changes can take
 
 ## Setting Reverse DNS
 
-You're almost finished! The last step is setting reverse DNS for your domain name. 
+You're almost finished! The last step is setting reverse DNS for your domain name.
 
 1.  Log in to the [Linode Manager](https://manager.linode.com).
 
