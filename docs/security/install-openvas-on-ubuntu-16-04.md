@@ -8,7 +8,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Monday, December 19th, 2016
 modified_by:
   name: Linode
-published: 'Monday, December 19th, 2016'
+published: 'Monday, February 6th, 2017'
 title: Install OpenVAS 8 on Ubuntu 16.04
 ---
 
