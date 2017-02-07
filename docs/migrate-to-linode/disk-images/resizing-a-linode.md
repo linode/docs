@@ -36,6 +36,10 @@ Here's how to resize your Linode:
 
 5.  Select a plan.
 6.  Click **Resize this Linode Now**. Your Linode will be powered off and moved to another host. Depending on the size of your Linode, this process can take up to one hour.
-7.  Once the migration completes, your Linode will still be powered off. From the **Dashboard** tab, click **Boot** to turn it on.
+7. (Optional) When the migration completes check your storage allocation meter. If you resized your Linode to a larger plan, you'll have additional un-used storage to allocate to your disks. In your Dashboard, click the "Edit" link next to the disk you'd like to add the extra free storage to. Enter a new size in the specified range and click "Save Changes".
+
+[![Adding storage space to an invidivual disk.](/docs/assets/resize-a-disk.png)](/docs/assets/resize-a-disk.png)
+
+8. Once completed, your Linode will still be powered off. From the **Dashboard** tab, click **Boot** to turn it on.
 
 Your Linode has been successfully resized and migrated to the new host.
