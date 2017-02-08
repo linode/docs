@@ -6,7 +6,7 @@ description: Use Varnish Cache to increase your site's speed and optimize server
 keywords: 'Varnish,Ubuntu,Debian,Cache,'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-servers/varnish/','websites/varnish/getting-started-with-varnish-cache/']
-modified: Monday, January 30, 2016
+modified: Monday, January 30, 2017
 contributor:
     name: Kevin Cupp
 modified_by:
@@ -138,10 +138,11 @@ To allow Varnish to communicate with your web server, you'll need to modify a fe
     {: .file-excerpt}
     /etc/nginx/sites-available/example.com
     :   ~~~ conf
-        listen 8080
+        listen 8080;
+        listen [::]:8080;
         ~~~
 
-3.  Check your `/etc/varnish/user.vcl` file and make sure the `backend default` is set to use port 8080 :
+3.  Check your `/etc/varnish/user.vcl` file and make sure the `backend default` is set to use port 8080:
 
         backend default {
             .host = "127.0.0.1";
@@ -230,7 +231,7 @@ To accomplish this, add the following condition to the existing `return (pass)` 
   if ((req.http.host == "example.com" &&
       req.url ~ "^/admin") ||
       req.http.Cookie == "logged_in" ||
-      req.request == "POST")
+      req.method == "POST")
   {
       return (pass);
   }
