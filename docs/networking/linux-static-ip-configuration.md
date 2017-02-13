@@ -97,7 +97,7 @@ Static IP addresses can be configured in several ways in Arch. See the [Static I
 
 ### CentOS 7 / Fedora
 
-The default ethernet interface file is located at `/etc/sysconfig/network-scripts/ifcfg-eth0`. You can configure a static IP address by editing the file as described below, substituting your own Linode's IP addresses, gateways, and DNS resolvers:
+The default ethernet interface file is located at `/etc/sysconfig/network-scripts/ifcfg-eth0`. You can configure a static IP address by editing the following lines, substituting your own Linode's IP addresses, gateways, and DNS resolvers:
 
 {: .file-excerpt }
 /etc/sysconfig/network-scripts/ifcfg-eth0
