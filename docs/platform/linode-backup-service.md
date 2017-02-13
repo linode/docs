@@ -15,22 +15,38 @@ title: 'Use the Linode Backup Service to Protect and Secure Your Data'
 
 *Linode Backup Service* is a subscription service add-on that automatically performs daily and weekly backups of your Linode. It's affordable, easy to use and provides peace of mind. This guide explains how to enable and schedule a backup, make a manual backup, restore from backup, and disable the Backup Service.
 
-## Get Started
+## Pricing
 
-Ready to start protecting your data? Let us help you sign up and get going with the Linode Backup Service.
+Pricing is per Linode and varies depending upon your Linode's plan:
 
-### Pricing
+### Standard Plans
 
-Pricing is per Linode and varies depending on the size of your virtual private server, as shown below:
+{: .table .table-striped }
+| Service      | Backups Hourly Rate | Backups Monthly
+|:-------------|:--------------------|:---------------
+| Linode 1GB   | $0.0019/hr          | $2/mo
+| Linode 2GB   | $0.004/hr           | $2.50/mo
+| Linode 4GB   | $0.008/hr           | $5/mo
+| Linode 8GB   | $0.016/hr           | $10/mo
+| Linode 12GB  | $0.03/hr            | $20/mo
+| Linode 24GB  | $0.06/hr            | $40/mo
+| Linode 48GB  | $0.12/hr            | $80/mo
+| Linode 64GB  | $0.18/hr            | $120/mo
+| Linode 80GB  | $0.24/hr            | $160/mo
+|-----------------------------------------------------
 
--   Linode 2GB: $2.50/month
--   Linode 4GB: $5.00/month
--   Linode 8GB: $10.00/month
--   Linode 12GB: $20.00/month
--   Linode 24GB: $40.00/month
--   Linode 48GB: $80.00/month
+### High Memory Plans
 
-### Enable a Backup
+{: .table .table-striped }
+| Service      | Backups Hourly Rate | Backups Monthly
+|:-------------|:--------------------|:---------------
+| Linode 16GB  | $0.008/hr           | $5/mo
+| Linode 32GB  | $0.015/hr           | $10/mo
+| Linode 60GB  | $0.03/hr            | $20/mo
+| Linode 104GB | $0.016/hr           | $40/mo
+| Linode 200GB | $0.09/hr            | $60/mo
+
+## Enable a Backup
 
 Use the Linode Manager to enable the Backup Service on a Linode. Here's how:
 
@@ -42,7 +58,7 @@ Use the Linode Manager to enable the Backup Service on a Linode. Here's how:
 
 The Linode Backup Service is now enabled for the selected Linode.
 
-### Manage Backup Services
+## Manage Backup Services
 
 You'll manage your backups with a simple web interface in the Linode Manager. There's no software to install, and there are no commands to run. Just log in to the Linode Manager, click the **Linodes** tab, select a Linode, and then click the **Backups** tab. The backups interface is shown below.
 
@@ -147,6 +163,3 @@ There are some limitations to what the Linode Backup Service can back up. Here a
 -   Backups taken of ext4 or ext3 filesystems will be restored as ext3. Backups taken of other mountable filesystem types will have their contents restored using ext3.
 -   Files that have been modified but have the same size and modify time will not be considered "changed" during a subsequent backup. ACLs and extended attributes are *not* tracked.
 -   The Backup Service uses a snapshot of your disks to take consistent backups while your Linode is running. This method is very reliable, but can fail to properly back up the data files for database services like MySQL. If the snapshot occurs during a transaction, the database's files may be backed up in an unclean state. We recommend scheduling routine dumps of your database to a file on the filesystem. The resulting file will then be backed up, allowing you to restore the contents of the database if you need to restore from a backup.
-
-
-
