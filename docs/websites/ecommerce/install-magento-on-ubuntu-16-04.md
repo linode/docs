@@ -19,7 +19,7 @@ In this guide you'll learn how to install Magento on Ubuntu 16.04. Magento Commu
 
 ![Install Magento on Ubuntu 16.04](/docs/assets/install-magento-ubuntu-title.png "Install Magento on Ubuntu 16.04")
 
-Considering the resources some Magento plugins demand, we strongly recommend that you have at least a **Linode 4GB**. You'll need to allocate up to 2GB of memory for PHP and Magento to use; running Magento on a smaller Linode may result in server crashes or unreliability under medium to heavy traffic.
+Considering the resources some Magento plugins demand, we strongly recommend that you have at least a **Linode 4GB**. You'll need to allocate up to 2GB of memory for PHP and Magento to use; running Magento on a smaller Linode may result in server crashes or unreliability under medium to heavy traffic. For more memory-intensive Magento setups, we recommend using a [high memory Linode](https://www.linode.com/pricing#high-memory).
 
 {: .note}
 > This guide explains how to install the latest Magento release at the time of publication. For the Community Edition, this will be version 2.1.x. If you plan to use data, themes, and extensions from an older Magento site, be sure to check for compatibility issues between the two versions since not everything may function as it did in older releases.
@@ -42,7 +42,7 @@ Considering the resources some Magento plugins demand, we strongly recommend tha
 
 ## Prepare Your Server for Magento
 
-In addition to the standard [LAMP stack](/docs/websites/lamp/install-lamp-on-ubuntu-16-04) software in our guide, Magento requires a few extra dependencies. To install them: 
+In addition to the standard [LAMP stack](/docs/websites/lamp/install-lamp-on-ubuntu-16-04) software in our guide, Magento requires a few extra dependencies. To install them:
 
     sudo apt-get install php7.0-common php7.0-gd php7.0-mcrypt php7.0-curl php7.0-intl php7.0-xsl php7.0-mbstring php7.0-zip php7.0-iconv mysql-client
 
@@ -121,7 +121,7 @@ If you previously installed a LAMP stack using our guide, you should already hav
 
 ### Configure PHP
 
-Magento is a PHP application, so you'll need to make some adjustments to your system's PHP settings. 
+Magento is a PHP application, so you'll need to make some adjustments to your system's PHP settings.
 
 1.  Modify the following settings in your `php.ini` files for the CLI and Apache PHP configurations. These files can be found at `/etc/php/7.0/apache2/php.ini` and `/etc/php/7.0/cli/php.ini`:
 
@@ -135,7 +135,7 @@ Magento is a PHP application, so you'll need to make some adjustments to your sy
     It is necessary to modify **both** files. This sets the time zone for PHP's `date()` function and imposes a 2GB limit to the amount of memory PHP can use. This value is recommended for a 4GB Linode, but could be increased for a larger server.
 
     {: .note}
-    > The value for `date.timezone` will vary based on your system's time zone. Refer to the [PHP time zone documentation](http://php.net/manual/en/timezones.php) and ensure this value matches the time zone you set when you configured your Linode. 
+    > The value for `date.timezone` will vary based on your system's time zone. Refer to the [PHP time zone documentation](http://php.net/manual/en/timezones.php) and ensure this value matches the time zone you set when you configured your Linode.
 
 2.  **Optional**: You may want to take this opportunity to create a `phpinfo.php` page to ensure that PHP is active and working properly with Apache:
 
@@ -176,7 +176,7 @@ In this section, we'll explain how to get the Magento Community Edition (CE) sof
 
         cd /var/www/html/example.com/public_html
 
-    Extracting the archive directly into your webroot, as you'll do in the next step, will make it accessible as the main page on your domain. For instance, if your domain is `example.com`, the Magento storefront will display when you visit `example.com` in your browser. 
+    Extracting the archive directly into your webroot, as you'll do in the next step, will make it accessible as the main page on your domain. For instance, if your domain is `example.com`, the Magento storefront will display when you visit `example.com` in your browser.
 
     If you want to run a Magento store as a subsection of your site, move and extract the archive in a directory within your webroot. For instance, if you intend to make your site accessible by visiting `example.com/store`, create the subdirectory `/var/www/html/example.com/public_html/store` and navigate to that directory before proceeding to the next step.
 
@@ -242,7 +242,7 @@ In this section, we'll explain how to get the Magento Community Edition (CE) sof
         [SUCCESS]: Magento installation complete.
         [SUCCESS]: Magento Admin URI: /admin_a61e40
 
-Congratulations, you've successfully installed Magento on your Linode! You can log into your admin panel by entering your domain, followed by the "Magento Admin URI" displayed above, in a web browser. The **admin-user** and **admin-password** options you specified when running the installation script will be your credentials. 
+Congratulations, you've successfully installed Magento on your Linode! You can log into your admin panel by entering your domain, followed by the "Magento Admin URI" displayed above, in a web browser. The **admin-user** and **admin-password** options you specified when running the installation script will be your credentials.
 
 4.  Exit from the `magento` user:
 
@@ -346,4 +346,3 @@ You may wish to install extensions to add functionality, or themes to change you
 You may also want to configure caching with Varnish or other software to increase the speed of your site. For more information on this and other configuration options, see [Magento's configuration guide](http://devdocs.magento.com/guides/v2.1/config-guide/bk-config-guide.html).
 
 Finally, be sure to keep your Magento software and its components up to date. Not only is this important to the security of your site, but it will also allow you to use the latest features and functions Magento has to offer. For more information, refer to the [Magento upgrade documentation](http://devdocs.magento.com/guides/v2.1/comp-mgr/bk-compman-upgrade-guide.html).
-

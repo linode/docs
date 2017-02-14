@@ -19,7 +19,7 @@ In this guide you'll learn how to install Magento on CentOS 7. Magento Community
 
 ![Install Magento on CentOS 7](/docs/assets/install-magento-centos-title.png "Install Magento on CentOS 7")
 
-Considering the resources some Magento plugins demand, we strongly recommend that you have at least a **Linode 4GB**. You'll need to allocate up to 2GB of memory for PHP and Magento to use; running Magento on a smaller Linode may result in server crashes or unreliability under medium to heavy traffic.
+Considering the resources some Magento plugins demand, we strongly recommend that you have at least a **Linode 4GB**. You'll need to allocate up to 2GB of memory for PHP and Magento to use; running Magento on a smaller Linode may result in server crashes or unreliability under medium to heavy traffic. For more memory-intensive Magento setups, we recommend using a [high memory Linode](https://www.linode.com/pricing#high-memory).
 
 {: .note}
 > This guide explains how to install the latest Magento release at the time of publication. For the Community Edition, this will be version 2.1.x. If you plan to use data, themes and extensions from an older Magento site, be sure to check for compatibility issues between the two versions since not everything may function as it did in older releases.
@@ -146,7 +146,7 @@ Magento is a PHP application, so you will need to install PHP 7 and make some ad
 
 2.  Install PHP 7 and its required extensions from the IUS repository:
 
-        sudo yum install php70u php70u-pdo php70u-mysqlnd php70u-opcache php70u-xml php70u-mcrypt php70u-gd php70u-devel php70u-mysql php70u-intl php70u-mbstring php70u-json php70u-iconv 
+        sudo yum install php70u php70u-pdo php70u-mysqlnd php70u-opcache php70u-xml php70u-mcrypt php70u-gd php70u-devel php70u-mysql php70u-intl php70u-mbstring php70u-json php70u-iconv
 
 3.  Modify the following settings in your `php.ini` file:
 
@@ -213,7 +213,7 @@ In this section, we'll explain how to get the Magento Community Edition (CE) sof
 
         cd /var/www/html/example.com/public_html
 
-    Extracting the archive directly into your webroot, as you'll do in the next step, will make it accessible as the main page on your domain. For instance, if your domain is `example.com`, the Magento storefront will display when you visit `example.com` in your browser. 
+    Extracting the archive directly into your webroot, as you'll do in the next step, will make it accessible as the main page on your domain. For instance, if your domain is `example.com`, the Magento storefront will display when you visit `example.com` in your browser.
 
     If you want to run a Magento store as a subsection of your site, move and extract the archive in a directory within your webroot. For instance, if you intend to make your site accessible by visiting `example.com/store`, create the subdirectory `/var/www/html/example.com/public_html/store` and navigate to that directory before proceeding to the next step.
 
@@ -226,7 +226,7 @@ In this section, we'll explain how to get the Magento Community Edition (CE) sof
 
 1.  Create a Magento user, which will run the software. For simplicity, call this user `magento`:
 
-        sudo useradd magento 
+        sudo useradd magento
 
 2.  Next, add the Magento user to the web server's user group. For Apache, the default user is `apache`:
 
@@ -259,8 +259,8 @@ In this section, we'll explain how to get the Magento Community Edition (CE) sof
 
 2.  Run the Magento installation script with the following options:
 
-        ./magento setup:install --admin-firstname="John" --admin-lastname="Doe" --admin-email="your@email.com" --admin-user="john" --admin-password="password1" --db-name="magento" --db-host="localhost" --db-user="magento" --db-password="P@ssword1" 
-    
+        ./magento setup:install --admin-firstname="John" --admin-lastname="Doe" --admin-email="your@email.com" --admin-user="john" --admin-password="password1" --db-name="magento" --db-host="localhost" --db-user="magento" --db-password="P@ssword1"
+
     Replace the values in the options as follows:
 
     -   **admin-firstname** / **admin-lastname** - This will set the full name of your admin user. Replace these with your name if you'll be the administrator.
@@ -385,4 +385,3 @@ You may wish to install extensions to add functionality, or themes to change you
 You may also want to configure caching with Varnish or other software to increase the speed of your site. For more information on this and other configuration options, see [Magento's configuration guide](http://devdocs.magento.com/guides/v2.1/config-guide/bk-config-guide.html).
 
 Finally, be sure to keep your Magento software and its components up to date. Not only is this important to the security of your site, but it will also allow you to use the latest features and functions Magento has to offer. For more information, refer to the [Magento upgrade documentation](http://devdocs.magento.com/guides/v2.1/comp-mgr/bk-compman-upgrade-guide.html).
-
