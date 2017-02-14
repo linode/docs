@@ -13,7 +13,7 @@ published: 'Wednesday, March 14th, 2012'
 title: 'Use the Linode Backup Service to Protect and Secure Your Data'
 ---
 
-*Linode Backup Service* is a subscription service add-on that automatically performs daily and weekly backups of your Linode. It's affordable, easy to use and provides peace of mind. This guide explains how to enable and schedule a backup, make a manual backup, restore from backup, and disable the Backup Service.
+The *Linode Backup Service* is a subscription service add-on that automatically performs daily, weekly, and biweekly backups of your Linode. It's affordable, easy to use, and provides peace of mind. This guide explains how to enable and schedule your backups, make a manual backup snapshot, restore from a backup, and disable the Backup Service.
 
 ## Pricing
 
