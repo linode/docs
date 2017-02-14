@@ -25,8 +25,8 @@ Pricing is per Linode and varies depending upon your Linode's plan:
 | Service      | Backups Hourly Rate | Backups Monthly
 |:-------------|:--------------------|:---------------
 | Linode 1GB   | $0.003/hr           | $2/mo
-| Linode 2GB   | $0.0038/hr          | $2.50/mo
-| Linode 4GB   | $0.0075/hr          | $5/mo
+| Linode 2GB   | $0.004/hr           | $2.50/mo
+| Linode 4GB   | $0.008/hr           | $5/mo
 | Linode 8GB   | $0.016/hr           | $10/mo
 | Linode 12GB  | $0.03/hr            | $20/mo
 | Linode 24GB  | $0.06/hr            | $40/mo
