@@ -64,9 +64,9 @@ You'll manage your backups with a simple web interface in the Linode Manager. Th
 
 [![The Linode Backup Service interface](/docs/assets/954-backups0-small1-1.png)](/docs/assets/955-backups01-1.png)
 
-1.  Schedule automated backups. For more information, see [Scheduling Backups](#scheduling-backups).
+1.  Schedule automated backups. For more information, see [Scheduling Backups](#schedule-backups).
 2.  Indicates when the daily and weekly backups were performed. Click the **Restore to...** link to restore a backup to a Linode.
-3.  Manually back up your Linode by taking a *manual snapshot*. For more information, see [Taking a Manual Snapshot](#taking-a-manual-snapshot).
+3.  Manually back up your Linode by taking a *manual snapshot*. For more information, see [Taking a Manual Snapshot](#take-a-manual-snapshot).
 4.  Review the history to see when backups were created. If there are any error messages, they will also be displayed in this section.
 
 ## How Linode Backups Work
