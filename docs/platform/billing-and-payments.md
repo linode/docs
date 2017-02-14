@@ -6,9 +6,9 @@ description: Our guide to billing and payments.
 keywords: 'billing,payments'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['billing-and-payments/']
-modified: Tuesday, July 12th, 2016
+modified: Tuesday, February 14th, 2017
 modified_by:
-  name: Alex Fornuto
+  name: Linode
 published: 'Friday, February 28th, 2014'
 title: Billing and Payments
 ---
@@ -27,8 +27,8 @@ All services are billed automatically at the end of the month. If you used a ser
 | Service      | Hourly Rate | Monthly | Backups Hourly Rate | Backups Monthly
 |:-------------|:------------|:--------|:--------------------|:---------------
 | Linode 1GB   | $0.0075/hr  | $5/mo   | $0.0019/hr          | $2/mo
-| Linode 2GB   | $0.015/hr   | $10/mo  | $0.0038/hr          | $2.50/mo
-| Linode 4GB   | $0.03/hr    | $20/mo  | $0.0075/hr          | $5/mo
+| Linode 2GB   | $0.015/hr   | $10/mo  | $0.004/hr           | $2.50/mo
+| Linode 4GB   | $0.03/hr    | $20/mo  | $0.008/hr           | $5/mo
 | Linode 8GB   | $0.06/hr    | $40/mo  | $0.015/hr           | $10/mo
 | Linode 12GB  | $0.12/hr    | $80/mo  | $0.03/hr            | $20/mo
 | Linode 24GB  | $0.24/hr    | $160/mo | $0.06/hr            | $40/mo
@@ -44,7 +44,7 @@ Full specs of each plan can be found on our [pricing page](https://www.linode.co
 {: .table .table-striped }
 | Service      | Hourly Rate | Monthly | Backups Hourly Rate | Backups Monthly
 |:-------------|:------------|:--------|:--------------------|:---------------
-| Linode 16GB  | $0.09/hr    | $60/mo  | $0.0075/hr          | $5/mo
+| Linode 16GB  | $0.09/hr    | $60/mo  | $0.008/hr          | $5/mo
 | Linode 32GB  | $0.18/hr    | $120/mo | $0.015/hr           | $10/mo
 | Linode 60GB  | $0.36/hr    | $240/mo | $0.03/hr            | $20/mo
 | Linode 104GB | $0.72/hr    | $480/mo | $0.06/hr            | $40/mo
