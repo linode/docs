@@ -46,7 +46,7 @@ Pricing is per Linode and varies depending upon your Linode's plan:
 | Linode 104GB | $0.06/hr            | $40/mo
 | Linode 200GB | $0.09/hr            | $60/mo
 
-## Enable a Backup
+## Enable the Backup Service
 
 Use the Linode Manager to enable the Backup Service on a Linode. Here's how:
 
@@ -58,7 +58,7 @@ Use the Linode Manager to enable the Backup Service on a Linode. Here's how:
 
 The Linode Backup Service is now enabled for the selected Linode.
 
-## Manage Backup Services
+## Manage Backups
 
 You'll manage your backups with a simple web interface in the Linode Manager. There's no software to install, and there are no commands to run. Just log in to the Linode Manager, click the **Linodes** tab, select a Linode, and then click the **Backups** tab. The backups interface is shown below.
 
@@ -80,7 +80,7 @@ Backups are stored on a separate system in the same datacenter as your Linode. T
 
 The daily and weekly backups are automatically erased when a new backup is performed. The Linode Backup Service does not keep automated backups older than 8 - 14 days.
 
-## Schedule a Backup
+## Schedule Backups
 
 You can configure when automatic backups are initiated. Here's how:
 
@@ -150,7 +150,7 @@ After the backup has been restored, the disks and configuration profiles will be
 
 The Linode will start from the backup disks. Watch the *Host Job Queue* to monitor the progress.
 
-## Disable a Backup
+## Cancel the Backup Service
 
 You can cancel the Backup Service at any time. From your Linode's dashboard, choose the **Backups** tab and click the **Cancel Backups** link at the bottom of the page.  This will turn off the service, remove your backups from our servers, and issue a prorated service credit for the time left in the current billing period. This credit may be used to purchase additional Linode services in the future.
 
