@@ -7,7 +7,7 @@ featured:
  - linode-beginners-guide.md
  - linode-backup-service.md
  - accounts-and-passwords.md
- - linode-cli.md
+ - clone-your-linode.md
  - linode-images.md
  - linode-managed.md
  - kvm-reference.md
@@ -17,6 +17,7 @@ featured:
  - billing-and-payments.md
  - support.md
  - network-helper.md
+ - linode-cli.md
 categories:
  - longview
  - nodebalancer
