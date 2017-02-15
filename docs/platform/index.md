@@ -15,6 +15,7 @@ featured:
  - automating-server-builds.md
  - stackscripts.md
  - billing-and-payments.md
+ - update-to-hourly-billing.md
  - support.md
  - network-helper.md
 categories:
@@ -22,4 +23,3 @@ categories:
  - nodebalancer
  - api
 ---
-
