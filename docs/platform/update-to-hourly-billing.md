@@ -9,14 +9,14 @@ modified: Wednesday, February 15th, 2017
 modified_by:
   name: Linode
 published: 'Wednesday, February 15th, 2017'
-title: 'Update to Hourly Billing'
+title: 'Upgrade to Hourly Billing'
 ---
 
-This guide will show you how to update your prepaid Linode account to use Hourly billing. For more information on Hourly billing, see our [Billing Guide](/docs/platform/billing-and-payments).
+This guide will show you how to upgrade your prepaid Linode account to use Hourly billing. For more information on Hourly billing, see our [Billing Guide](/docs/platform/billing-and-payments).
 
-## Updating
+## Upgrading
 
-To update to the Hourly billing system, follow these steps:
+To upgrade to the Hourly billing system, follow these steps:
 
 1.  Log in to the [Linode Manager](http://manager.linode.com).
 2.  Click the **Account** tab.
@@ -32,7 +32,7 @@ To update to the Hourly billing system, follow these steps:
 
     {: .note }
     >
-    >- Customers are not required to update to the new billing method
+    >- Customers are not required to upgrade to the new billing method
     - Prepaid discounts will not carry over to the new system
     - Those who remain on the prepaid billing system will not experience any changes, however newer plans and services may not be available on prepaid accounts.
 
