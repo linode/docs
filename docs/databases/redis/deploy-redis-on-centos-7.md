@@ -19,6 +19,8 @@ external_resources:
 
 Redis is an open-source, in-memory, data structure store with optional disk writes for persistence, which can be used as key-value database, cache and message broker. Redis features built-in transactions, replication, and support for a variety of data structures such as strings, hashes, lists, sets, and others. Redis can be made highly available with Redis Sentinel and supports automatic partitioning with Redis Cluster. This document provides both instructions for deploying the Redis server, and an overview of best practices for maintaining Redis instances on CentOS 7.
 
+Since Redis serves all data from memory, we recommend using a [high memory Linode](https://www.linode.com/pricing#high_memory) with this guide.
+
 ## Before You Begin
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
