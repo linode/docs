@@ -3,20 +3,17 @@ author:
   name: Linode
   email: docs@linode.com
 published: 'Tuesday, August 18th, 2009'
-description: 'Install a Custom Distribution on a Xen Linode.'
+description: 'How to run a custom Linux distribution or pre-built Linux appliance on your Linode.'
 keywords: 'custom distro,custom distribution,advanced Linux'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['platform/custom-kernels-distros/running-a-custom-linux-distro-on-a-linode-vps/', 'custom-instances/custom-distro-howto/']
 modified_by:
   name: Linode
 modified: Wednesday, October 8, 2014
-title: Install a Custom Distribution on a Xen Linode
+title: Running a Custom Linux Distribution on a Linode
 ---
 
 If you'd like to run a Linux distribution on your Linode that isn't available from our distribution list, you can do so by following these instructions. This guide is handy for people who prefer distributions that aren't heavily used in the community, or for those interested in creating a highly customized Linux environment and porting it to their Linode.
-
-{: .note}
->This guide entails installing a custom Linux distribution on Linodes using our older Xen hypervisor. If you're currently using our KVM hypervisor, see [this guide](/docs/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-linode) for information on installing a custom distribution. You can also upgrade to KVM by following [these instructions](https://www.linode.com/docs/platform/kvm#how-to-enable-kvm)
 
 ##Creating the Virtual Machine
 
