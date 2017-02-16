@@ -15,6 +15,8 @@ title: Disks and Configuration Profiles
 
 The Linode Manager allows you to create, edit, and use disks and configuration profiles with your Linode virtual private servers. You can install different Linux distributions on the disks, set device assignments, and configure boot settings. This guide will show you how to put the pieces together to create a custom setup.
 
+![Disks and Configuration Profiles](/docs/assets/disks_and_configuration_profiles.png "isks and Configuration Profiles")
+
 ## Getting Started
 
 Your Linode plan comes with persistent storage to hold your most important asset - data. This pool of storage can be broken up into individual containers called *disks*. You'll use disks to store all of the files on your VPS. It's easy to create, delete, resize, duplicate, and even clone disks to different Linodes.
@@ -53,7 +55,7 @@ The Linode Manager makes it easy to create a new disk with a fresh Linux distrib
 1.  Log in to the [Linode Manager](https://manager.linode.com).
 2.  Click the **Linodes** tab. A list of your virtual private servers appears.
 3.  Select a Linode. The Linode's dashboard appears.
-4.  Select the **Deploy a Linux Distribution** link. The webpage shown below appears.
+4.  Select the **Deploy an Image** link. The webpage shown below appears.
 
 [![Create a new disk with a Linux distribution.](/docs/assets/980-disk2-small.png)](/docs/assets/979-disk2.png)
 

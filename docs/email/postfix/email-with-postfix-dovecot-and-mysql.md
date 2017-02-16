@@ -817,7 +817,7 @@ Dovecot allows users to log in and check their email using POP3 and IMAP. In thi
     -   the password should be the one you added to the MySQL table for this email address.
     -   The incoming and outgoing server names must be a domain that resolves to the Linode.
     -   Both the incoming and outgoing servers require authentication and SSL encryption.
-    -   You should use Port 993 for secure IMAP, Port 995 for secure POP3, and Port 25 with SSL for SMTP.
+    -   You should use Port 993 for secure IMAP, Port 995 for secure POP3, and Port 587 with SSL for SMTP.
 
 2.  Try sending an email to this account from an outside email account and then reply to it. Check the mail log file in */var/log/mail.log* for the following output (the first block is for an incoming message, and the second block for an outgoing message):
 

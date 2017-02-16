@@ -149,6 +149,9 @@ Congratulations! Two-factor authentication is now enabled. When you connect to y
 
 ![Two-factor authentication with SSH login.](/docs/assets/two-factor-authentication-diagram.png "Two-factor authentication with SSH login.")
 
+{: .note}
+>If your SSH client disconnects before you can enter your two-factor token, check if PAM is enabled for SSH. You can do this by editing `/etc/ssh/sshd_config`: look for `UsePAM` and set it to `yes`. Don't forget to restart the SSH daemon.
+
 ## Combine Two-Factor and Public Key Authentication
 
 This section is optional. If you'd like to use [public key authentication](/docs/security/use-public-key-authentication-with-ssh) instead of a password with TOTP, follow these steps:

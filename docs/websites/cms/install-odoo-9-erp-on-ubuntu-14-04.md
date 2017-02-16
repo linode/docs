@@ -21,6 +21,8 @@ external_resources:
 
 [Odoo](https://www.odoo.com/) (formerly known as OpenERP) is an open-source suite of business applications including: Customer Relationship Management, Sales Pipeline, Project Management, Manufacturing, Invoicing , Accounting, eCommerce and Inventory just to name a few. There are 31 main applications created by Odoo team and over 4,500+ developed by community members covering a wide range of business needs.
 
+![Install Odoo 9 ERP on Ubuntu 14.04](/docs/assets/install-odoo-9-erp-on-ubuntu-14-04.png "Install Odoo 9 ERP on Ubuntu 14.04")
+
 Once deployed, Odoo's flexibility allows the administrator to install any module combination and configure/customize them at will to satisfy business needs ranging from a small shop to an Enterprise Level Corporation.
 
 This guide covers how to install and configure Odoo in just 35 minutes using Git source, so it will be easy to upgrade, maintain and customize. 
