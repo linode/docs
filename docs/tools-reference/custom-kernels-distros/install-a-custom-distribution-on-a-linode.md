@@ -13,7 +13,11 @@ modified: 'Thursday, July 23rd, 2015'
 title: Install a Custom Distribution on a Linode
 ---
 
-This guide will show you how to install and configure a custom distribution on your Linode. For the sake of organization, it has been split into two main sections:
+This guide will show you how to install and configure a custom distribution on your Linode.
+
+![Install a Custom Distribution on a Linode](/docs/assets/install-a-custom-distribution-on-a-linode.png "Install a Custom Distribution on a Linode")
+
+For the sake of organization, it has been split into two main sections:
 
 *  [Install a Custom Distribution](#install-a-custom-distribution) will show you how to use the advantages of **Direct Disk Boot** to easily install the custom distribution of your choice on to a Linode.
 
@@ -31,7 +35,7 @@ Our KVM hypervisor offers a number of advantages for those looking to install a 
 
 *  **Direct Disk Boot:** Direct disk booting allows you to boot from any disk with a Master Boot Record (MBR). This can be especially useful for operating systems that do not make use of the Grub bootloader, such as [FreeBSD](/docs/tools-reference/custom-kernels-distros/install-freebsd-on-linode).
 
-*  **Full Virtualization:** Our KVM hypervisor offers a full virtualization option that can be useful for proprietary operating systems and non-standard configurations.
+*  **Full Virtualization:** Our KVM hypervisor offers a full virtualization option that simulates the experience of running directly from hardware. This can be useful for non-standard configurations.
 
 *  **Glish:**  KVM also introduces the [Glish](docs/networking/use-the-graphic-shell-glish) graphical console, which makes it easy to access your distribution's installer directly from a disk.
 
