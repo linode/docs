@@ -19,8 +19,11 @@ contributor:
 
 <hr>
 
-nginx is known for its use in both high performance load balancing, and caching static and dynamic web content.  This guide aims to provide assistance in determining the best performance optimizations to make to an nginx server in order to speed up delivery of content to your end users. If you're unfamiliar with how nginx works, we suggest reading [How to Configure nginx
-](/docs/websites/nginx/how-to-configure-nginx) first.
+nginx is known for its use in both high performance load balancing, and caching static and dynamic web content.  This guide aims to provide assistance in determining the best performance optimizations to make to an nginx server in order to speed up delivery of content to your end users.
+
+![How to Configure nginx for Optimized Performance](/docs/assets/configure-nginx-for-optimized-performance.png "How to Configure nginx for Optimized Performance")
+
+If you're unfamiliar with how nginx works, we suggest reading [How to Configure nginx](/docs/websites/nginx/how-to-configure-nginx) first.
 
 
 ## Worker Modifications
@@ -139,7 +142,7 @@ Timeouts can also drastically improve performance.
 
 -	`client_header_timeout` sends directives for the time a server will wait for a **header** body to be sent.  These directives are responsible for the time a server will wait for a client body or client header to be sent after request. If neither a body or header is sent, the server will issue a 408 error or Request time out.
 
--	`sent_timeout` specifies the response timeout to the client. This timeout does not apply to the entire transfer but, rather, only between two subsequent client-read operations. Thus, if the client has not read any data for this amount of time, then nginx shuts down the connection.
+-	`send_timeout` specifies the response timeout to the client. This timeout does not apply to the entire transfer but, rather, only between two subsequent client-read operations. Thus, if the client has not read any data for this amount of time, then nginx shuts down the connection.
 
 {: .file-excerpt}
 /etc/nginx/nginx.conf
@@ -152,7 +155,7 @@ Timeouts can also drastically improve performance.
 
 ### Static Asset Serving
 
-If your site serves static assets (such as CSS/JavaScript/images), nginx can cache these files for a short period of time.  Adding this within your configuration block tells nginx to cache 1000 files for 30 seconds, excluding any files that haven't been accessed in 20 seconds, and only files that have 5 times or more. If you aren't deploying frequently you can safely bump up these numbers higher.
+If your site serves static assets (such as CSS/JavaScript/images), nginx can cache these files for a short period of time.  Adding this within your configuration block tells nginx to cache 1000 files for 30 seconds, excluding any files that haven't been accessed in 20 seconds, and only files that have been accessed at least 5 times in that timeframe. If you aren't deploying frequently you can safely bump up these numbers higher.
 
 {: .file-excerpt}
 /etc/nginx/nginx.conf

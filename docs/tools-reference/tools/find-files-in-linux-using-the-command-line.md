@@ -40,7 +40,7 @@ Consider the following example command:
 
     find -O3 -L /var/www/ -name "*.html"
 
-This command enables the maximum optimization level (-03) and allows `find` to follow symbolic links (`-L`). `find` searches the entire directory tree beneath `/var/www/` for files that end with `.html`.
+This command enables the maximum optimization level (-O3) and allows `find` to follow symbolic links (`-L`). `find` searches the entire directory tree beneath `/var/www/` for files that end with `.html`.
 
 ###Basic Examples
 
@@ -65,9 +65,9 @@ Optimization at the `-O2` level prioritizes file name filters, as in `-O1`, and 
 {: .table .table-striped .table-bordered}
 | Command     | Description                                                                                               |
 |------------:|:----------------------------------------------------------------------------------------------------------|
-| `-01`       | (Default) filter based on file name first.                                                                 |
-| `-02`       | File name first, then file-type.                                                                           |
-| `-03`       | Allow `find` to automatically re-order the search based on efficient use of resources and likelihood. of success |
+| `-O1`       | (Default) filter based on file name first.                                                                 |
+| `-O2`       | File name first, then file-type.                                                                           |
+| `-O3`       | Allow `find` to automatically re-order the search based on efficient use of resources and likelihood. of success |
 | `-maxdepth X` | Search current directory as well as all sub-directories X levels deep.                                   |
 | `-iname`    | Search without regard for text case.                                                                       |
 | `-not`      | Return only results that do not match the test case.                                                       |

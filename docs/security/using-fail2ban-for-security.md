@@ -127,7 +127,7 @@ Fail2ban reads its configuration files so that all `.conf` files are read first 
 
 2.  The file `fail2ban.conf` contains the default configuration variables for Fail2ban logging, the socket used to communicate with the daemon, and the location of the PID file. Changes should be made in a separate file, `fail2ban.local`, definitions in which override `fail2ban.conf`. If you want, you can copy `fail2ban.conf` to `fail2ban.local`, commenting out all variables, and then uncomment only the options you want to modify:
 
-        sed 's/\(^[[:alpha:]]\)/# \1/' fail2ban.conf | sudo tee fail2ban.local 1&> /dev/null
+        sed 's/\(^[[:alpha:]]\)/# \1/' fail2ban.conf | sudo tee fail2ban.local &> /dev/null
 
     Otherwise, create a blank `fail2ban.local` file, and manually add the options (with corresponding section titles) you wish to modify.
 
@@ -142,7 +142,7 @@ Fail2ban reads its configuration files so that all `.conf` files are read first 
 
 1.  Return to `/etc/fail2ban` directory and copy the `jail.conf` file to `jail.local`:
 
-        sed 's/\(^[[:alpha:]]\)/# \1/' jail.conf | sudo tee jail.local 1&> /dev/null
+        sed 's/\(^[a-z tab]\)/# \1/' jail.conf | sudo tee jail.local &> /dev/null
 
     This will create a copy of `jail.conf` with all the directives commented out. To overwrite a setting, uncomment and modify it in `jail.local`.
 
@@ -209,7 +209,7 @@ If you wish to receive email when Fail2ban is triggered, adjust the email settin
 >
 >If unsure of what to put under `sender`, run the command `sendmail -t user@email.com`, replacing `user@email.com` with your email address. Check your email (including spam folders, if needed) and review the sender email. This address can be used for the above configuration.
 
-You will also need to adjudst the `action` setting, which defines what actions occur when the threshold for ban is met. The default, `%(action_)s`, only bans the user. `action_mw` will ban and send an email with a WhoIs report; while `action_mwl` will ban and send an email with the WhoIs report and all relevant lines in the log file. This can also be changed on a jail-specific basis.
+You will also need to adjudst the `action` setting, which defines what actions occur when the threshold for ban is met. The default, `%(action_)s`, only bans the user. `%(action_mw)s` will ban and send an email with a WhoIs report; while `%(action_mwl)s` will ban and send an email with the WhoIs report and all relevant lines in the log file. This can also be changed on a jail-specific basis.
 
 ### Jail Configuration
 

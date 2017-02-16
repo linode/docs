@@ -24,6 +24,8 @@ Ruby on Rails is a popular web-application framework that allows developers to c
 
 Unicorn is an HTTP server, just like Passenger or Puma. Since Unicorn cannot be accessed by users directly we will be using nginx as the reverse proxy that will buffer requests and response between users and Rails application.
 
+![Use Unicorn and Nginx to Configure Ruby on Rails Applications on Ubuntu 14.04](/docs/assets/use_unicorn_and_nginx_to_configure_ruby_on_rails_apps_on_ubuntu_14_04.png "Use Unicorn and Nginx to Configure Ruby on Rails Applications on Ubuntu 14.04")
+
 ## Before You Begin
 
 Before starting this guide, make sure that  you have read through and completed our [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server/) guides. 

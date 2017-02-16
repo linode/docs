@@ -15,7 +15,7 @@ contributor:
   link: https://github.com/Fred-Zweig
 external_resources:
  - '[Varnish Documentation](https://varnish-cache.org/docs/index.html)'
- - '[NGINX Documentation](https://varnish-cache.org/docs/index.html)'
+ - '[NGINX Documentation](https://nginx.org/en/docs/)'
 image: https://linode.com/docs/assets/varnish-nginx-ssl.png
 ---
 
@@ -24,6 +24,8 @@ image: https://linode.com/docs/assets/varnish-nginx-ssl.png
 <hr>
 
 **Varnish** is a powerful and flexible caching HTTP reverse proxy. It can be installed in front of any web server to cache its contents, which will improve speed and reduce server load. When a client requests a webpage, Varnish first tries to send it from the cache. If the page is not cached, Varnish forwards the request to the backend server, fetches the response, stores it in the cache, and delivers it to the client. 
+
+![Use Varnish & nginx to Serve WordPress over SSL & HTTP on Debian 8](/docs/assets/use_varnish_nginx_to_serve_wordpress_over_ssl_http_on_debian_8.png "Use Varnish & nginx to Serve WordPress over SSL & HTTP on Debian 8")
 
 When a cached resource is requested through Varnish, the request doesn't reach the web server or involve PHP or MySQL execution. Instead, Varnish reads it from memory, delivering the cached page in a matter of microseconds.
 
@@ -38,7 +40,7 @@ In this guide, we will configure nginx and Varnish for two WordPress sites:
   * `www.example-over-http.com` will be an unencrypted, HTTP-only site.
   * `www.example-over-https.com` will be a separate, HTTPS-encrypted site.
 
-For HTTP traffic, Varnish will listen on port `80`. If content is found in the cache, Varnish will serve it. If not, it will pass the request to nginx on port `8080`. In the second case, nginx will send the requested content back to Varnish on the same port, then Varnish will store the fetched content in cache and deliver it to the client on port `80`.
+For HTTP traffic, Varnish will listen on port `80`. If content is found in the cache, Varnish will serve it. If not, it will pass the request to nginx on port `8080`. In the second case, nginx will send the requested content back to Varnish on the same port, then Varnish will store the fetched content in the cache and deliver it to the client on port `80`.
 
 For HTTPS traffic, nginx will listen on port `443` and send decrypted traffic to Varnish on port `80`. If content is found in the cache, Varnish will send the unencrypted content from the cache back to nginx, which will encrypt it and send it to the client. If content is not found in the cache, Varnish will request it from nginx on port `8080`, store it in the cache, and then send it unencrypted to frontend nginx, which will encrypt it and send it to the client's browser.
 
@@ -54,7 +56,7 @@ This tutorial assumes that you have SSH access to your Linode running Debian 8 (
 
 2.  Follow the steps outlined in our [LEMP on Debian 8](/docs/websites/lemp/lemp-server-on-debian-8) guide. Skip the nginx configuration section, since we'll address it later in this guide.
 
-3.  After configuring nginx according to this guide, follow the steps in our [WordPress](/docs/websites/cms/how-to-install-and-configure-wordpress) guide to install and configure WordPress. We'll include a step in the instructions to let you know you when it's time to do this.
+3.  After configuring nginx according to this guide, follow the steps in our [WordPress](/docs/websites/cms/how-to-install-and-configure-wordpress) guide to install and configure WordPress. We'll include a step in the instructions to let you know when it's time to do this.
 
 ## Install and Configure Varnish
 
@@ -87,7 +89,7 @@ For all steps in this section, replace `203.0.113.100` with your Linodes public 
 
     This will set Varnish to listen on port `80` and will instruct it to use the `custom.vcl` configuration file. The custom configuration file is used so that future updates to Varnish do not overwrite changes to `default.vcl`.
 
-    The `-s malloc,1g` line sets the maximum amount of RAM that will be used by Varnish to store content. This value can be adjusted to suit your needs, taking into account the server's total RAM along with the size and expected traffic of your website. For example, on a system with 4 GB of RAM, you can allocate 2 or 3 GB to Varnish.
+    The `-s malloc,1G` line sets the maximum amount of RAM that will be used by Varnish to store content. This value can be adjusted to suit your needs, taking into account the server's total RAM along with the size and expected traffic of your website. For example, on a system with 4 GB of RAM, you can allocate 2 or 3 GB to Varnish.
 
     When you've made these changes, save and exit the file.
 
@@ -474,16 +476,6 @@ Before configuring nginx, we have to install *PHP-FPM*. FPM is short for FastCGI
            index index.php;
            port_in_redirect off;
 
-           ssl                  on;
-           ssl_certificate      /etc/nginx/ssl/ssl-bundle.crt;
-           ssl_certificate_key  /etc/nginx/ssl/example-over-https.com.key;
-           ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
-           ssl_ciphers ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:ECDH+3DES:DH+3DES:RSA+AESGCM:RSA+AES:RSA+3DES:!aNULL:!MD5:!DSS;
-           ssl_prefer_server_ciphers   on;
-
-           ssl_session_cache   shared:SSL:20m;
-           ssl_session_timeout 60m;
-
            location / {
               try_files $uri $uri/ /index.php?$args;
            }
@@ -500,7 +492,7 @@ Before configuring nginx, we have to install *PHP-FPM*. FPM is short for FastCGI
         }
         ~~~
 
-    For an SSL-encrypted website, you need one server block to receive traffic on port 443 and pass decrypted traffic to Varnish on port `80`, and another server block to serve unencrypted traffic to Varnish on port `8080`, when Varnish asks for it. Note that the SSL directives are included in both blocks.
+    For an SSL-encrypted website, you need one server block to receive traffic on port 443 and pass decrypted traffic to Varnish on port `80`, and another server block to serve unencrypted traffic to Varnish on port `8080`, when Varnish asks for it.
 
     {: .caution}
     >

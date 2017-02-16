@@ -25,6 +25,8 @@ external_resources:
 
 Redis is an open-source, in-memory, data-structure store with optional disk writes for persistence, which can be used as key-value database, cache and message broker. Redis features built-in transactions, replication, and support for a variety of data structures such as strings, hashes, lists, sets and others. Redis can be made highly available with Redis Sentinel and supports automatic partitioning with Redis Cluster. This document provides both instructions for deploying the Redis server and an overview of best practices for maintaining Redis instances.
 
+Since Redis serves all data from memory, we recommend using a [high memory Linode](https://www.linode.com/pricing#high-memory) with this guide. 
+
 ## Before You Begin
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
@@ -43,7 +45,7 @@ Redis is an open-source, in-memory, data-structure store with optional disk writ
 >
 >This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 >
-> To utilize the replication steps in the second half of this guide, you will need at least two Linodes. 
+> To utilize the replication steps in the second half of this guide, you will need at least two Linodes.
 
 ## Install Redis
 

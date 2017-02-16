@@ -12,6 +12,7 @@ featured:
  - using-fail2ban-for-security.md
  - use-one-time-passwords-for-two-factor-authentication-with-ssh-on-ubuntu-16-04-and-debian-8.md
  - use-one-time-passwords-for-two-factor-authentication-with-ssh-on-centos-7.md
+ - install-openvas-on-ubuntu-16-04.md
 ---
 
 Security is one of the most important concerns that server administrators face. These guides will help you harden your system's security, addressing topics that include: configuring a firewall, creating and administering SSL certificates for transport layer security, offering secured SFTP user access to your Linode, and blocking malicious probes.

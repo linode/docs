@@ -6,7 +6,7 @@ description: How to set up DNS on your cPanel server
 keywords: 'DNS, cPanel'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-applications/control-panels/cpanel/dns-on-cpanel/']
-modified: Friday, August 16th, 2013
+modified: Wednesday, February 15th, 2017
 modified_by:
   name: Linode
 published: 'Friday, November 4th, 2011'
@@ -18,6 +18,8 @@ external_links:
 ---
 
 [cPanel](https://www.cpanel.com/) is a commercial web-based control panel for server systems. It can help ease the burden of common system administration tasks such as website creation, database deployment and management, and more. This guide will show you how to set up your cPanel server to serve DNS records. These instructions should be done through your root WHM interface.
+
+![Set Up DNS Services on cPanel](/docs/assets/set-up-dns-services-on-cpanel.png "Set Up DNS Services on cPanel")
 
 ## Nameserver Selection
 

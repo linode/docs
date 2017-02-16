@@ -96,7 +96,7 @@ Once you have a copy of your Linode's disk you may want to upload that copy from
 
     [![Create a new disk](/docs/assets/copydisk-create-disk.png)](/docs/assets/copydisk-create-disk-full.png)
 
-2.  Input a descriptive name in the in the **Label** field, and be sure the **Size** is large enough to hold the contents of the disk you are uploading. CLick on **Save Changes**.
+2.  Enter a descriptive name in the **Label** field, and be sure the **Size** is large enough to hold the contents of the disk you are uploading. Click **Save Changes**.
 
 3. [Boot the Linode in Rescue Mode and start SSH](#starting-your-linode-in-rescue-mode)
 

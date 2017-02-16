@@ -51,7 +51,7 @@ If you wish to use a 2048-bit certificate, add the following option to the above
 
     -newkey rsa:2048
 
-This produces a self-signed certificate that is valid for 365 days. You you may wish to increase this value in the command above. During this process, you will be asked several questions. Provide information that reflects your organization and server, as shown below. Specify the FQDN (fully qualified domain name) for your server in the "Common Name" entry as this certificate will be used for generic SSL service.
+This produces a self-signed certificate that is valid for 365 days. You may wish to increase this value in the command above. During this process, you will be asked several questions. Provide information that reflects your organization and server, as shown below. Specify the FQDN (fully qualified domain name) for your server in the "Common Name" entry as this certificate will be used for generic SSL service.
 
     Generating a 1024 bit RSA private key
     ...................................++++++

@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Install web applications with "LEMP," a LAMP-like stack using nginx, MySQL, and PHP.'
+description: 'Install a LEMP stack to serve websites and applications on Ubuntu 16.04'
 keywords: 'nginx,lemp,php,ubuntu 16.04'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Friday, May 6th 2016
@@ -175,7 +175,7 @@ The MySQL database engine is one of the leading open-source relational database 
         GRANT ALL PRIVILEGES ON web.* TO 'webuser';
         quit
 
-    You can now provide the credentials for the `web` database and the `webuser` user to your application, which will now be able to use the database for its purposes. To ensure that PHP will be able to access the MySQL connector your just installed, restart the PHP service by issue the following command:
+    You can now provide the credentials for the `web` database and the `webuser` user to your application, which will now be able to use the database for its purposes. To ensure that PHP will be able to access the MySQL connector you just installed, restart the PHP service by issue the following command:
 
         sudo systemctl restart php7.0-fpm
 

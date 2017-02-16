@@ -5,7 +5,7 @@ author:
 description: 'Create a LAMP stack on a CentOS 7 Linode.'
 keywords: 'LAMP,CentOS,CentOS 7,apache,mysql,php,centos lamp'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Monday, June 29th, 2015
+modified: Wednesday, October 26th, 2016
 modified_by:
     name: Alex Fornuto
 published: 'Tuesday, December 1st, 2015'
@@ -38,7 +38,6 @@ A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used for hosting 
 2.  Update your system:
 
         sudo yum update
-
 
 ## Apache
 
@@ -73,7 +72,6 @@ A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used for hosting 
 
     These settings can also be added to a separate file if so desired. The file must be located in the `conf.module.d` or `conf` directories, and must end in `.conf`.
 
-
 ### Configure Name-based Virtual Hosts
 
 There are different ways to set up virtual hosts; however, the method below is recommended.
@@ -89,9 +87,9 @@ There are different ways to set up virtual hosts; however, the method below is r
             ServerAdmin webmaster@example.com
             ServerName example.com
             ServerAlias www.example.com
-            DocumentRoot /var/www/example.com/public_html/
-            ErrorLog /var/www/example.com/logs/error.log
-            CustomLog /var/www/example.com/logs/access.log combined
+            DocumentRoot /var/www/html/example.com/public_html/
+            ErrorLog /var/www/html/example.com/logs/error.log
+            CustomLog /var/www/html/example.com/logs/access.log combined
         </VirtualHost>
         ~~~
 
@@ -103,8 +101,7 @@ There are different ways to set up virtual hosts; however, the method below is r
 
 2.  Create the directories referenced above:
 
-        sudo mkdir -p /var/www/example.com/public_html
-        sudo mkdir /var/www/example.com/logs
+        sudo mkdir -p /var/www/html/example.com/{public_html,logs}
 
 3.  Enable Apache to start at boot, and restart the service for the above changes to take place:
 
@@ -112,7 +109,6 @@ There are different ways to set up virtual hosts; however, the method below is r
         sudo systemctl restart httpd.service
 
     You can now visit your domain to test the Apache server; a default Apache page will be visible.
-
 
 ## MySQL / MariaDB
 
@@ -124,7 +120,7 @@ MySQL is replaced with MariaDB in CentOS 7. MariaDB is a popular drop-in replace
 >
 > If you prefer to use the MySQL branded database in CentOS 7, you will need to add the required repositories by issuing the following command:
 >
->     sudo yum install http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm
+>     sudo yum install http://dev.mysql.com/get/mysql57-community-release-el7-7.noarch.rpm
 
 1.  Install the MariaDB-server package:
 
@@ -138,8 +134,6 @@ MySQL is replaced with MariaDB in CentOS 7. MariaDB is a popular drop-in replace
 3.  Run `mysql_secure_installation` to secure MariaDB. You will be given the option to change the MariaDB root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases and reload privileges. It is recommended that you answer yes to these options:
 
         mysql_secure_installation
-
-
 
 ### Create a MySQL/MariaDB Database
 

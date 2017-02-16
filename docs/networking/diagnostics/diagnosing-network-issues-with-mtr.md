@@ -45,7 +45,7 @@ On CentOS and Fedora systems you will want to issue the following commands to up
 
 On Arch Linux systems issue the following commands to update the package database and install MTR:
 
-    pacman -Sy
+    pacman -Syu
     pacman -S mtr
 
 You may also want to use MTR to diagnose networking issues from your local workstation. If you're running a Linux system, you can install MTR using the commands above. 

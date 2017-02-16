@@ -196,7 +196,7 @@ This is particularly useful when running multiple client sites because you can g
         <IfModule mod_fastcgi.c>
             AddType application/x-httpd-fastphp5 .php
             Action application/x-httpd-fastphp5 /php5-fcgi
-            Alias /php5-fcgi /usr/lib/cgi-bin/php5-fcgi-site1.net
+            Alias /php5-fcgi /usr/lib/cgi-bin/php5-fcgi-site1.com
             FastCgiExternalServer /usr/lib/cgi-bin/php5-fcgi-site1.com -socket /var/run/php5-fpm-site1.com.sock -pass-header Authorization
         </IfModule>
 
