@@ -125,7 +125,7 @@ Network Helper configures `/etc/sysconfig/network/ifcfg-eth0`, `/etc/sysconfig/n
 
 Network Helper configures `/etc/rc.d/rc.inet1.conf` & `/etc/resolv.conf`.
 
-### Failure to Run
+## Failure to Run
 
 If Network Helper is unable to determine the operating system during boot, it will not attempt to write any new configuration files. When this happens, Network Helper will let you know in the Host Job Queue:
 
