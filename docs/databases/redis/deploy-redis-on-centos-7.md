@@ -5,7 +5,7 @@ author:
 description: 'Install and Configure Redis on Your CentOS 7 Linode.'
 keywords: 'redis, centos 7, redis cluster, centos'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Wednesday, April 20th, 2016
+modified: Monday, February 20th, 2017
 modified_by:
   name: Nick Brewer
 published: Wednesday, April 20th, 2016
