@@ -2,42 +2,82 @@
 author:
   name: Alex Fornuto
   email: docs@linode.com
-description: 'Instructions for configuring your Linode to run a native distribution-supplied kernel on KVM hosts. Written for distributions using systemd'
+description: 'Use the Linode Manager's GRUB 2 boot setting to run your distribution's native Linux kernel.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-keywords: 'kvm,custom linux, kernel,custom linode,systemd,debian 8,centos,fedora,gentoo'
-modified: Tuesday, June 7, 2016
+keywords: 'kvm,custom linux, kernel,custom linode,grub,grub 2'
+modified: Monday February 20th, 2017
 modified_by:
-  name: Kent Davis
+  name: Linode
 published: 'Monday June 29th, 2015'
 title: 'Run a Distribution-Supplied Kernel on a KVM Linode'
 ---
 
-This guide explains how to enable the kernels your OS provides for a KVM Linode. This is useful if you'd like to enable specific kernel features, or you'd prefer to handle kernel upgrades directly. These steps have been tested on:
+Beginning with 2017, you can boot your Linode using your choice of Linode's own kernel or the upstream kernel provided by a distribution's maintainers. Booting with Linode's kernel is enabled by default but changing to the distro-supplied kernel is easy. This is useful if you'd like to enable specific kernel features, or you'd prefer to handle kernel upgrades directly.
+
+## Reboot into a Distribution-Supplied Kernel (for Recommended Distributions)
+
+This currently applies to only the distributions under *Recommended* in the Linode Manager's *Deploy an Image* dropdown.
+
+[![Deploy an Image](/docs/assets/deploy-an-image-example.png)
+
+1.  Shut down your Linode from the Linode Manager.
+
+2.  Click **Edit** to view a distribution's configuration profile options.
+
+    [![Click on Edit](/docs/assets/edit_config_profile_small.png)](/docs/assets/edit_config_profile.png)
+    
+3.  Under **Boot Settings** is a **Kernel** dropdown menu. By default, this will be set to our latest 64 bit kernel.
+
+    [![Boot Settings > Kernel > Latest 64-bit](/docs/assets/boot-settings-kernel-latest-small.png)](/docs/assets/boot-settings-kernel-latest.png)
+
+4.  To switch to the distro's default kernel, select **GRUB 2**.
+
+    [![Boot Settings > Kernel > GRUB 2 64-bit](/docs/assets/boot-settings-kernel-grub2-small.png)](/docs/assets/boot-settings-kernel-grub2.png)
+
+5.  Hit **Save Changes** at the bottom of the page and reboot into the new kernel.
+
+Once booted, you can verify the kernel information with `uname`:
+
+    uname -r
+    
+That should return something similar to:
+
+    4.8.13-1-ARCH
+
+If you want to switch back to the Linode kernel at any time, you simply:
+
+1.  Shut down.
+2.  Select the latest Linode kernel.
+3.  Save Changes and reboot.
+
+### Caveats:
+CentOS 7 and Fedora ship with SELinux installed and enabled by default. When switching from the Linode kernel to the CentOS or Fedora kernel, SELinux must run a relabeling of the filesystem to boot. Systemd will then reboot the Linode and if you have Lassie enabled, you'll be back at the login prompt shortly. If you do not have Lassie enabled, you will need to manually hit *Reboot* in the Linode Manager.
+
+[![SELinux filesystem relabel](/docs/assets/selinux-filesystem-relabel.png)
+
+The relabel process is triggered by the empty file `/.autorelabel`.
+
+    [root@li901-254 ~]# ls -a /
+    .   .autorelabel  boot  etc   lib    lost+found  mnt  proc  run   srv  tmp  var
+    ..  bin           dev   home  lib64  media       opt  root  sbin  sys  usr
+
+We include a systemd unit and bash script in our CentOS 7 and Fedora 25 images to automatically create this file when the Linode kernel is booted. This will save you from needing to do it manually before rebooting into the upstream kernel. You'll find the systemd unit file at `/etc/systemd/system/selinuxfsrelabel.service` which calls `/usr/local/bin/selinuxfsrelabel.sh`.
+
+
+## Install the Distribution Provided Kernel (for Older Distributions)
+
+At the time of this writing, these steps have been tested on:
 
 * Arch Linux
 * CentOS 7
 * Debian
-* Fedora 22
+* Fedora 24
 * Gentoo
 * Ubuntu
 
-Before you get started, make sure you follow the steps outlined in our [Getting Started](/docs/getting-started) guide. Your Linode needs to be in a functional state. These steps should be performed as `root` on your Linode, via an SSH session.
+1.  Ensure that your system is up to date using the distribution's package manager.
 
-## Installing the Distribution Provided Kernel
-
-1.  Ensure that your system is up to date, using the distribution's package manager.
-
-2.  Use `uname` to identify the current kernel version:
-
-        uname -a
-
-    The output will be similar to that shown below:
-
-        Linux localhost 4.0.4-x86_64-linode57 #1 SMP Thu May 21 11:01:47 EDT 2015 x86_64 x86_64 x86_64 GNU/Linux
-
-3.  Make a note of the kernel you're currently using (`4.0.4-x86_64` in our example). You will be replacing it with the latest kernel supplied by your Linux distribution.
-
-4.  Install the Linux kernel. The package name differs based on your distribution:
+2.  Install the Linux kernel. The package name differs based on your distribution:
 
     * Arch Linux
 
@@ -51,14 +91,10 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
 
           apt-get install linux-image-amd64 grub2
 
-    * Fedora 22
+    * Fedora
 
           dnf install kernel-core grub2
 
-    * Ubuntu
-
-          apt-get install linux-image-virtual grub2
-    
     * Gentoo
 
           echo "GRUB_PLATFORMS=\"coreboot pc\"" >> /etc/portage/make.conf
@@ -73,61 +109,68 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
 
           genkernel --oldconfig all
 
+    * Ubuntu
+
+          apt-get install linux-image-virtual grub2
 
     {: .note }
     > During the installation of `grub` you may be asked which disk image to install to. Since Linode provides the grub bootloader, the system need only provide the `grub.cfg` file, and you don't need to install `grub` to your MBR.
 
-5.  Verify the kernel version provided by your distribution in `/boot`:
+    You'll see the kernel and other components you just installed and generated in `/boot`. For example:
  
-        ls /boot/vmlinuz*
-        /boot/vmlinuz-3.16.0-4-amd64
+        [root@centos7 ~]# ls /boot
+        config-3.10.0-514.el7.x86_64
+        grub
+        grub2
+        initramfs-0-rescue-4f09fa5fdd3642fa85221d7c11370603.img
+        initramfs-3.10.0-514.el7.x86_64.img
+        initramfs-3.10.0-514.el7.x86_64kdump.img
+        initrd-plymouth.img
+        symvers-3.10.0-514.el7.x86_64.gz
+        System.map-3.10.0-514.el7.x86_64
+        vmlinuz-0-rescue-4f09fa5fdd3642fa85221d7c11370603
+        vmlinuz-3.10.0-514.el7.x86_64
 
-    {: .note }
-    > On Gentoo, use `ls /boot/kernel-*`
+## Configure Grub
 
-## Configuring Grub
+1.  Open `/etc/default/grub` in a text editor and go to the line `GRUB_CMDLINE_LINUX`. Remove the word `quiet` if present, and add `console=ttyS0,19200n8 net.ifnames=0`. Leave the other entries in the line. So using CentOS 7 as an example, you shuld have something similar to:
 
-1.  Edit `/etc/default/grub` and add or change the following variables to match the following. There will be other variables in this file, but we are only concerned with those listed below:
+      GRUB_CMDLINE_LINUX="crashkernel=auto rhgb console=ttyS0,19200n8 net.ifnames=0"
+
+2.  Then add or change the following options to match what's below. There will be other variables in this file, but we are only concerned with these.
 
 	{:.file-excerpt }
 	/etc/default/grub
 	: ~~~
-      GRUB_TIMEOUT=10
-      GRUB_CMDLINE_LINUX="console=ttyS0,19200n8"
-      GRUB_DISABLE_LINUX_UUID=true
-      GRUB_SERIAL_COMMAND="serial --speed=19200 --unit=0 --word=8 --parity=no --stop=1"
       GRUB_TERMINAL=serial
+      GRUB_DISABLE_OS_PROBER=true
+      GRUB_SERIAL_COMMAND="serial --speed=19200 --unit=0 --word=8 --parity=no --stop=1"
+      GRUB_DISABLE_LINUX_UUID=true
+      GRUB_GFXPAYLOAD_LINUX=text
 	  ~~~
 
-2.  Run the following command to update the bootloader.
+3.  Run the following command to update the bootloader:
 
     * Arch Linux
 
           grub-mkconfig -o /boot/grub/grub.cfg
 
-    * Debian 8 & Ubuntu 15.04
+    * CentOS and Fedora
+
+          mkdir /boot/grub
+          grub2-mkconfig -o /boot/grub/grub.cfg
+          touch /.autorelabel
+          
+    * Debian and Ubuntu
 
           update-grub
-
-    * CentOS 7
-
-          mkdir /boot/grub
-          grub2-mkconfig -o /boot/grub/grub.cfg
-
-    * Fedora 22 - Replace with the current kernel version
-
-          dracut /boot/initrd-4.0.5-300.fc22.x86_64.img 4.0.5-300.fc22.x86_64 
-          mkdir /boot/grub
-          grub2-mkconfig -o /boot/grub/grub.cfg
 
     * Gentoo
 
           mkdir /boot/grub
           grub2-mkconfig -o /boot/grub/grub.cfg
 
-Note that if you later install an updated kernel, you'll need to run this command again to update your GRUB menu. By default, the first kernel in the list will be booted.
-
-## Rebooting into Grub2 Mode
+## Reboot using Grub 2
 
 1.  In your Linode's Dashboard, Click on **Edit** under the  Configuration Profiles section:
 
@@ -141,17 +184,7 @@ Note that if you later install an updated kernel, you'll need to run this comman
 
 4.  Reboot your Linode. You can monitor the boot process in the [LISH console](/docs/networking/using-the-linode-shell-lish).
 
-    {: .note }
-    > During boot you may see this error message:
-    >
-    >     error: file `/boot/grub/i386-pc/all_video.mod' not found.
-    >     Loading Linux linux ...
-    >     Loading initial ramdisk ...
-    >
-    >     Press any key to continue...
-    >
-    > You can safely ignore it.
+5.  After logging back in to your Linode, use `uname -r` to confirm you're booted with the distribution's kernel. The output will be similar to that shown below, again using CentOS 7 as an example:
 
-5.  After logging back in to your Linode, run `uname -a` again to confirm the new kernel:
-
-        Linux li63-119.members.linode.com 3.10.0-229.4.2.el7.x86_64.debug #1 SMP Wed May 13 10:20:16 UTC 2015 x86_64 x86_64 x86_64 GNU/Linux
+        [root@centos7 ~]# uname -r
+        3.10.0-514.el7.x86_64
