@@ -56,7 +56,7 @@ Follow the [Getting Started](/docs/getting-started) guide to configure your basi
         systemctl enable fail2ban
         systemctl start sendmail
         systemctl enable sendmail
-
+Note:  create directory '/var/run/fail2ban' if you start Fail2ban failed.
 ### Debian
 
 1.  Ensure your system is up to date:
