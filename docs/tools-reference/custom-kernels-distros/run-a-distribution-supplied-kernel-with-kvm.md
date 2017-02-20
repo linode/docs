@@ -97,6 +97,8 @@ At the time of this writing, these steps have been tested on:
 
     * Gentoo
 
+          mkdir /boot/grub
+          
           echo "GRUB_PLATFORMS=\"coreboot pc\"" >> /etc/portage/make.conf
 
           emerge --ask sys-boot/grub sys-kernel/gentoo-sources genkernel
@@ -151,7 +153,7 @@ At the time of this writing, these steps have been tested on:
 
 3.  Run the following command to update the bootloader:
 
-    * Arch Linux
+    * Arch and Gentoo
 
           grub-mkconfig -o /boot/grub/grub.cfg
 
@@ -164,11 +166,6 @@ At the time of this writing, these steps have been tested on:
     * Debian and Ubuntu
 
           update-grub
-
-    * Gentoo
-
-          mkdir /boot/grub
-          grub2-mkconfig -o /boot/grub/grub.cfg
 
 ## Reboot using Grub 2
 
