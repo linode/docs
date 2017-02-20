@@ -20,7 +20,7 @@ This guide applies to customers using Linode's prepaid billing system. For curre
 
 {: .note }
 >
-> To convert your prepaid account to Hourly billing, see [this guide](/docs/platform/update-to-hourly-billing).
+> To convert your prepaid account to Hourly billing, see [this guide](/docs/platform/upgrade-to-hourly-billing).
 
 ## How Prepaid Billing Works
 
