@@ -6,7 +6,7 @@ description: 'An introduction to redirecting existing URLs to new resources with
 keywords: 'apache,redirect,mod_alias,URLs,REST'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-servers/apache/configuration/redirecting-urls/']
-modified: Friday, January 6th, 2017
+modified: Tuesday, February 21st, 2017
 modified_by:
   name: Phil Zona
 published: 'Tuesday, October 13th, 2009'
