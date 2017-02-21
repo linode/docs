@@ -18,17 +18,31 @@ external_resources:
  - '[Rewrite URLs with mod_rewrite and Apache](/docs/websites/apache-tips-and-tricks/rewrite-urls-with-modrewrite-and-apache)'
 ---
 
-In this guide, you'll learn how to redirect URLs with Apache. Redirecting a URL allows you to return an HTTP status code that directs the client a different URL, making it useful for cases in which you've moved a piece of content. Redirect is part of Apache's [mod_alias](https://httpd.apache.org/docs/current/mod/mod_alias.html) module.
+In this guide, you'll learn how to redirect URLs with Apache. Redirecting a URL allows you to return an HTTP status code that directs the client to a different URL, making it useful for cases in which you've moved a piece of content. Redirect is part of Apache's [mod_alias](https://httpd.apache.org/docs/current/mod/mod_alias.html) module.
 
 ## Before You Begin
 
 1.  This guide assumes you have followed our [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, and that you have already configured your Apache installation. If you haven't, refer to our [Apache guides](https://www.linode.com/docs/websites/apache/) or [LAMP stack guides](https://www.linode.com/docs/websites/lamp/).
 
-2.  In this guide, we'll be modifying Apache configuration files, so be sure you have the proper permissions to do so.
+2.  In this guide, you will modify the Apache configuration files, so be sure you have the proper permissions to do so.
 
 3.  Update your system.
 
-        sudo apt-get update && sudo apt-get upgrade
+The Apache virtual host configuration files are found in different places, depending on the distribution of Linux. For example, on CentOS 7: `/etc/httpd/conf.d/vhost.conf`; on Ubuntu 16.04: `/etc/apache2/sites-available/example.com.conf`. For the sake of brevity, configuration file excerpts in this guide will direct you to `Apache configuration option`.
+
+Remember to reload Apache configuration after making changes:
+
+{: .shell }
+CentOS 7
+:  ~~~ shell
+   sudo systemctl restart httpd
+   ~~~
+
+{: .shell }
+Ubuntu 16.04
+:  ~~~ shell
+   sudo systemctl restart apache2
+   ~~~
 
 ## The Redirect Directive
 
@@ -40,9 +54,9 @@ Apache configuration option
     Redirect /username http://team.example.com/~username/
     ~~~
 
-If no argument is given, `Redirect` sends a temporary (302) status code, and the client is informed that the resource available at `/username` has moved temporarily to `http://team.example.com/~username/`.
+If no argument is given, `Redirect` sends a temporary (302) status code, and the client is informed that the resource available at `/username` has temporarily moved to `http://team.example.com/~username/`.
 
-No matter where they are located, `Redirect` statements must specify the full file path of the redirected resource following the domain name. These statements must also include the full URL of the resource's new location.
+No matter where they are located, `Redirect` statements must specify the full file path of the redirected resource, following the domain name. These statements must also include the full URL of the resource's new location.
 
 You can also provide an argument to return a specific HTTP status:
 
@@ -57,10 +71,10 @@ Apache configuration option
 
 -   `permanent` tells the client the resource has moved permanently. This returns a 301 HTTP status code.
 -   `temp` is the default behavior, and tells the client the resource has moved temporarily. This returns a 302 HTTP status code.
--   `seeother` tells the user the requested resouce has been replaced by another one. This returns a 303 HTTP status code.
+-   `seeother` tells the user the requested resource has been replaced by another one. This returns a 303 HTTP status code.
 -   `gone` tells the user that the resource they are looking for has been removed permanently. When using this argument, you don't need to specify a final URL. This returns a 410 HTTP status code.
 
-You can also use the HTTP status codes as arguments. Below, we've provided an equivalent example using the status code options:
+You can also use the HTTP status codes as arguments. Here's an example using the status code options:
 
 {: .file-excerpt }
 Apache configuration option
@@ -85,7 +99,7 @@ Redirects can be made with [regex patterns](https://en.wikipedia.org/wiki/Regula
 {: .file-excerpt }
 Apache configuration option
 :   ~~~ apache
-    RedirectMatch (.*)\.jpg$ http://static.example.com$1.jpg 
+    RedirectMatch (.*)\.jpg$ http://static.example.com$1.jpg
     ~~~
 
 This matches any request for a file with a `.jpg` extension and replaces it with a location on a given domain. The parentheses allow you to get a specific part of the request, and insert it into the new location's URL as a variable (specified by `$1`, `$2`, etc.). For example:
@@ -99,4 +113,4 @@ In addition to redirecting users, Apache also allows you to [rewrite URLs](/docs
 
 On a more practical level, rewriting a request does not change the contents of the browser's address bar, and can be useful in hiding URLs with sensitive or vulnerable data.
 
-Although redirection allows you to easily change the locations of specific resources, you may find rewriting to fit you needs better in certain situations. For more information, refer to [Apache's mod_rewrite documentation](https://httpd.apache.org/docs/current/mod/mod_rewrite.html).
+Although redirection allows you to easily change the locations of specific resources, you may find that rewriting better fits your needs in certain situations. For more information, refer to [Apache's mod_rewrite documentation](https://httpd.apache.org/docs/current/mod/mod_rewrite.html).
