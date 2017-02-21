@@ -17,6 +17,8 @@ external_resources:
 
 This guide describes an alternative to the *LAMP* (Linux, Apache, MySQL, and PHP) stack, known as *LEMP*. The LEMP stack replaces the Apache web server component with nginx (pronounced "engine x," providing the "E" in LEMP). Nginx can increase the ability of the server to scale in response to demand.
 
+![LEMP Server on Ubuntu 16.04](/docs/assets/lemp-server-on-ubuntu-1604.png "LEMP Server on Ubuntu 16.04")
+
 ## Before You Begin
 
 - Complete the [Getting Started](/docs/getting-started/) guide, specifically [setting your hostname](/docs/getting-started#setting-the-hostname).
