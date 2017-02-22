@@ -6,7 +6,7 @@ description: 'Computer networks frequently use DHCP to assign IP addresses, rout
 keywords: 'multiple ip addresses,linux static ip,change ip address,network configuration,dns,DHCP'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['networking/configuring-static-ip-interfaces/']
-modified: Monday, February 13th, 2017
+modified: Wednesday, February 22nd, 2017
 modified_by:
   name: Linode
 published: 'Thursday, July 20th, 2014'
@@ -103,15 +103,20 @@ The default ethernet interface file is located at `/etc/sysconfig/network-script
 /etc/sysconfig/network-scripts/ifcfg-eth0
 :   ~~~ conf
 
-    # Edit this line from dhcp to none:
-    BOOTPROTO="none"
+    # Edit this line from "dhcp" to "none":
+    BOOTPROTO=none
+    
+    # Edit from "yes" to "no":
+    PEERDNS=no
     
     ...
     
     # Add the following lines:
-    PEERDNS=no
     DOMAIN=members.linode.com
-    GATEWAY=198.51.100.1
+    
+    # We specifically want GATEWAY0 here, not
+    # GATEWAY without an interger following it.
+    GATEWAY0=198.51.100.1
     
     DNS1=203.0.113.1
     DNS2=203.0.113.2
