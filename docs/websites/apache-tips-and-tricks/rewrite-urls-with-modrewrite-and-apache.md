@@ -20,6 +20,8 @@ external_resources:
 
 In this guide, you'll learn how to rewrite URLs with mod_rewrite and Apache. Rewriting a URL is a server-side operation that allows you to serve content from a file system location that doesn't correspond exactly with the client's request. This can be useful for improving URL readability by search engines and users, or updating locations of resources when your site architecture changes.
 
+![Rewrite URLs with mod_rewrite and Apache](/docs/assets/rewrite-urls-with-modrewrite-and-apache.png "Rewrite URLs with mod_rewrite and Apache")
+
 ## Before You Begin
 
 1.  This guide assumes you have followed our [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, and that you have already configured your Apache installation. If you haven't, refer to our [Apache guides](https://www.linode.com/docs/websites/apache/) or [LAMP stack guides](https://www.linode.com/docs/websites/lamp/).
