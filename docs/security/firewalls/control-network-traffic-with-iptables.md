@@ -6,9 +6,9 @@ description: 'Use iptables to manage Netfilter rules.'
 keywords: 'iptables,networking,firewalls,filtering'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['security/firewalls/iptables/']
-modified: Monday, November 28, 2016
+modified: Wednesday, February 28, 2017
 modified_by:
-  name: Nick Brewer
+  name: Linode
 published: 'Friday, July 30th, 2010'
 title: Control Network Traffic with iptables
 external_resources:
@@ -551,9 +551,9 @@ Ubuntu and Debian have a package called **iptables-persistent** that makes it ea
 
 On Debian or Ubuntu use the following command to check whether `iptables-persistent` is already installed:
 
-    ls /etc/iptables
+    dpkg -l iptables-persistent
 
-If you receive the message "No such file or directory," you will need to install the `iptables-persistent` package:
+If `dpkg` returns that there are no matching packages, you will need to install the `iptables-persistent` package:
 
     apt-get install iptables-persistent
 
@@ -644,3 +644,29 @@ When you're applying network rules, especially with both IPv4 and IPv6 and multi
 7.  Attempt login via a regular SSH session.
 
 This Lish console will function similarly to a regular SSH terminal session.
+
+## Troubleshooting: netfilter-persistent doesn't come back up on reboot.
+
+If you have upgraded to Debian 8 from an earlier version, you may see a situation where netfilter-persistent fails to start during boot when using the Linode kernel. The console output will show similar to:
+
+    [FAILED] Failed to start Load Kernel Modules.
+    See 'systemctl status systemd-modules-load.service' for details.
+    [DEPEND] Dependency failed for netfilter persistent configuration
+
+You can also use `journalctl -xn` to see that systemd can not load the `loop` module:
+
+    systemd-modules-load[3452]: Failed to lookup alias 'loop': Function not implemented
+
+To fix this, comment out the line `loop` in `/etc/modules`:
+
+    sed -i 's/loop/#loop/g' /etc/apt/sources.list
+
+Then restart netfilter-persistent:
+
+    systemctl restart netfilter-persistent
+
+It should then be running fine. Confirm with:
+
+    systemctl status netfilter-persistent
+
+This issue does not occur in new deployments of Debian 8 because the `loop` line isn't present in `/etc/modules`.
