@@ -6,7 +6,7 @@ description: Guides for installing and managing software on major Linux operatin
 keywords: 'Linux package management,rpm,apt,dpkg,apt-get,apt-cache,pacman,yum'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['using-linux/package-management/']
-modified: Friday, April 15th, 2016
+modified: Thursdsay, February 23rd, 2017
 modified_by:
   name: Linode
 published: 'Thursday, July 16th, 2009'
@@ -14,6 +14,8 @@ title: Linux Package Management
 ---
 
 Many tutorials reference "package managers" and "package management tools." If you are new to the Linux world and don't understand the purpose of these technologies, or if you are familiar with one package management tool but want to learn how to use another, this guide will provide an introduction to the major package management tools.
+
+![Linux Package Management](/docs/assets/linux-package-management.png "Linux Package Management")
 
 ## Package Management Concepts
 
