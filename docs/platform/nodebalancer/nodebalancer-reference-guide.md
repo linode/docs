@@ -6,7 +6,7 @@ description: NodeBalancer Reference Guide
 keywords: 'load balancing,nodebalancer'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['nodebalancers/reference/','linode-platform/nodebalancer-reference/']
-modified: 'Friday, December 18th, 2015'
+modified: Thursday, February 23rd, 2017
 modified_by:
   name: Linode
 published: 'Friday, July 8th, 2011'
@@ -21,7 +21,7 @@ Click the NodeBalancers tab, and then "Add a NodeBalancer". You must choose the 
 
 ## NodeBalancer Settings
 
-Here you may adjust the NodeBalancer's display label, along with the 'Client Connection Throttle'. The connection throttle limits the number subsequent new connections from the same client IP address.
+Here you may adjust the NodeBalancer's display label, along with the 'Client Connection Throttle.' The connection throttle limits the number of  subsequent new connections from the same client IP address.
 
 ## Configuration
 
