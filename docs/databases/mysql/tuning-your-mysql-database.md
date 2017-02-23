@@ -37,15 +37,11 @@ In order to determine if your MySQL database needs to be reconfigured, it is bes
 
 The [MySQLTuner](http://mysqltuner.com/) script assesses your MySQL installation, and then outputs suggestions to increase your server's performance and stability.
 
-1.  Download MySQLTuner:
+1.  Download and run MySQLTuner:
 
-		wget http://mysqltuner.pl/ -O mysqltuner.pl
+		curl -L http://mysqltuner.pl/ | perl
 
-2.  Run the program:
-
-		perl mysqltuner.pl
-
-3.  It outputs your results:
+2.  It outputs your results:
 
 		 >>  MySQLTuner 1.4.0 - Major Hayden <major@mhtx.net>
 		 >>  Bug reports, feature requests, and downloads at http://mysqltuner.com/
