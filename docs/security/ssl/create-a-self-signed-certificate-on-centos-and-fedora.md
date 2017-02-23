@@ -28,7 +28,15 @@ For an SSL setup with Nginx, please start with our [Nginx and SSL](/docs/securit
 
  - Complete our [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/securing-your-server) guides.
 
- - Ensure that your packages are up to date by running `yum upgrade`
+ - Ensure that your packages are up to date.
+
+    * On CentOS and Fedora 21 or below:
+
+          sudo yum update
+
+    * On Fedora 22 and above:
+
+          sudo dnf upgrade
 
 ## Create a Self-Signed Certificate
 
