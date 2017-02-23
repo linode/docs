@@ -6,7 +6,7 @@ author:
 description: 'Information on the Network Helper option.'
 keywords: 'network, networking, network helper, ip, ip address, static ip,'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Friday, February 17, 2017
+modified: Thursday, February 23, 2017
 modified_by:
   name: Linode
 published: ''
@@ -24,7 +24,7 @@ Network Helper automatically deposits a static networking configuration in to yo
 
 
 {: .note }
-> Network Helper does not affect IPv6 networking. Please see our [Native IPv6 Networking](/docs/networking/native-ipv6-networking) for more information on IPv6.
+> If you intend to manually configure IPv6 addresses from a supplied pool, you should [disable](/docs/networking/linux-static-ip-configuration#disable-network-helper) Network Helper so that it doesn't overwrite your configuration file on reboot. Please see our [Native IPv6 Networking](/docs/networking/native-ipv6-networking) guide for more information on IPv6. 
 
 ## What Does It Do?
 
