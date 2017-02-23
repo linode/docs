@@ -195,6 +195,9 @@ Installing software updates should be performed *regularly*. If you need help re
     emerge --sync
     emerge --update --deep --with-bdeps=y --newuse @world
 
+{: .note}
+> While Gentoo package management has traditionally been handled by `emerge`, it is being phased out in favor of `emaint`. For more information on how to use `emaint`, refer to its [man page](https://dev.gentoo.org/~zmedico/portage/doc/man/emaint.1.html).
+
 ### Slackware
 
 Slackpkg is the easiest way to update Slackware installations. See the [Slackpkg documentation](http://slackpkg.org/documentation.html) for installation and upgrade instructions.
