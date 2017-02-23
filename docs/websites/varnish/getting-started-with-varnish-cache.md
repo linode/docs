@@ -5,14 +5,14 @@ author:
 description: Use Varnish Cache to increase your site's speed and optimize server resources
 keywords: 'Varnish,Ubuntu,Debian,Cache,'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/varnish/','websites/varnish/getting-started-with-varnish-cache/']
+alias: ['web-servers/varnish/']
 modified: Monday, January 30, 2017
 contributor:
     name: Kevin Cupp
 modified_by:
   name: Edward Angert
 published: 'Wednesday, February 5th, 2014'
-title: How to Install and Configure Varnish Cache on Debian and Ubuntu
+title: Getting Started with Varnish Cache
 external_resources:
  - '[Official Varnish Documentation](https://www.varnish-cache.org/docs)'
 ---
@@ -21,13 +21,13 @@ external_resources:
 
 <hr>
 
-Need to handle a lot of traffic? Caching is one of the best ways to maximize the output of your Linode. The idea is your server shouldn't have to regenerate the same dynamic content from scratch every time it's accessed. Save your Linode's resources by putting a caching proxy like Varnish Cache in front of your web service to accelerate responses to HTTP requests and reduce server workload.
+Need to handle a lot of traffic? Caching is one of the best ways to maximize the output of your Linode. The idea behind caching is that your server shouldn't have to regenerate the same dynamic content from scratch every time it's accessed. Save your Linode's resources by putting a caching proxy like Varnish in front of your web service to accelerate responses to HTTP requests and reduce server workload.
 
 ![Getting Started with Varnish Cache](/docs/assets/varnish_tg.png "Getting Started with Varnish Cache")
 
-Varnish works by handling requests before they make it to your backend, whether your backend is Apache, nginx, or any other web server. If it doesn't have a request cached, it will forward the request to your backend and then cache its output. You can then store these cached requests in memory, so they're retrieved and delivered to clients much faster than they would be from disk.
+Varnish works by handling requests before they make it to your backend; whether your backend is Apache, nginx, or any other web server. If it doesn't have a request cached, it will forward the request to your backend and then cache its output. You can then store these cached requests in memory, so they're retrieved and delivered to clients much faster than they would be from disk.
 
-Additionally, Varnish cache can be used as part of a [highly available environment](#use-varnish-cache-for-high-availability-with-backend-polling), which ensures uptime through high traffic times or server failures.
+Additionally, Varnish cache can be used as part of a [highly available environment](#use-varnish-cache-for-high-availability-with-backend-polling), which ensures uptime through high traffic or server failures.
 
 If your web server is nginx and you plan to use Varnish cache to serve WordPress, visit Linode's guide to [Using Varnish & nginx to Serve WordPress over SSL & HTTP on Debian 8](/docs/websites/varnish/use-varnish-and-nginx-to-serve-wordpress-over-ssl-and-http-on-debian-8).
 
@@ -86,7 +86,7 @@ Recent versions of Debian (8 and newer) and Ubuntu (15.04 and newer) require Var
 
 ### Modify Custom Varnish Configuration VCL
 
-Now that we've pointed the Varnish start script to `user.vcl`, we need to configure that file to serve the content Varnish gets from the web server. Edit the `backend default {` section of `/etc/varnish/user.vcl` to tell Varnish where to get the server (backend) content. In the example below, we use port `8080`, a web server setting we will configure later:
+Now that you've pointed the Varnish start script to `user.vcl`, you need to configure that file to serve the content Varnish gets from the web server. Edit the `backend default {` section of `/etc/varnish/user.vcl` to tell Varnish where to get the server (backend) content. The example below  uses port `8080`, a web server setting you  will configure later:
 
 {: .file-excerpt }
 /etc/varnish/user.vcl
@@ -99,7 +99,7 @@ Now that we've pointed the Varnish start script to `user.vcl`, we need to config
 
 ### Configure Cache Time-to-Live (TTL)
 
-By default, Varnish will cache requests for two minutes. To adjust this time, open your VCL file and override the `vcl_backend_response` subroutine by adding this below your backend declaration:
+By default, Varnish will cache requests for two minutes. To adjust this time, open your VCL file and override the `vcl_backend_response` subroutine by updating  your backend declaration:
 
 {: .file-excerpt }
 /etc/varnish/user.vcl
@@ -109,7 +109,7 @@ By default, Varnish will cache requests for two minutes. To adjust this time, op
   }
   ~~~
 
-This subroutine is called after a request is fetched from the backend. In this example, we're setting the TTL variable on the object to five minutes (`5m`). Values can be in seconds (`120s`), minutes (`2m`) or hours (`2h`). Your ideal TTL may vary based on how often content on your site is updated, how large your site is, and how much traffic you need to handle.
+This subroutine is called after a request is fetched from the backend. In this example, we're setting the TTL variable on the object to five minutes (`5m`). Values can be in seconds (`120s`), minutes (`2m`) or hours (`2h`). Your ideal TTL may vary depending on how often the content of your site is updated, and the amount of traffic you need to handle. 
 
 ## Take Varnish Live: Configure Web Traffic to Serve Cached Content
 
@@ -119,7 +119,7 @@ Now that you've configured Varnish, use this section to make it your web server 
 
 To allow Varnish to communicate with your web server, you'll need to modify a few settings in the virtual host file for your site.
 
-1.  If you're using nginx, skip this step. If you're using Apache, change the port Apache listens on. Edit `/etc/apache2/ports.conf` and any virtual hosts. Open `ports.conf` and change the `80` in `Listen 80` to another port. We'll use `8080` in our examples:
+1.  If you're using nginx, skip this step. If you're using Apache, change the port Apache listens on. Edit `/etc/apache2/ports.conf` and any virtual hosts. Open `ports.conf` and change the `80` in `Listen 80` to another port. Port `8080` will be used in this example:
 
         Listen 8080
 
@@ -149,7 +149,7 @@ To allow Varnish to communicate with your web server, you'll need to modify a fe
             .port = "8080";
         }
 
-4.  Reload the configuration for both Apache or nginx:
+4.  Reload the configuration for your web server:
 
         sudo systemctl reload apache2
         sudo systemctl restart nginx
@@ -162,15 +162,15 @@ To allow Varnish to communicate with your web server, you'll need to modify a fe
 
 ## Advanced Varnish Configuration
 
-The VCL allows extended control over how requests are cached, and you may need to make some modifications. In this section, we'll go over a few common VCL configurations.
+The VCL allows extended control over how requests are cached, and you may need to make some modifications. This section will go over a few common VCL configurations.
 
 These modifications should be made in your `user.vcl` file.
 
 ### Exclude Content from Varnish Cache
 
-You may want to exclude specific parts of your website from Varnish caching, particularly if there is a non-public or administrative portion. To do this, we'll access Varnish's request object for information about the request and conditionally tell Varnish to **pass** the request though to the backend with no caching.
+You may want to exclude specific parts of your website from Varnish caching, particularly if there is a non-public or administrative portion. To do this, you'll access Varnish's request object for information about the request, and conditionally tell Varnish to **pass** the request though to the backend with no caching.
 
-We need to override the `vcl_recv` subroutine in our VCL file which is run each time Varnish receives a request, then add a conditional:
+You'll need to override the `vcl_recv` subroutine in our VCL file, which is run each time Varnish receives a request, then add a conditional:
 
 {: .file-excerpt }
 /etc/varnish/user.vcl
@@ -185,11 +185,11 @@ We need to override the `vcl_recv` subroutine in our VCL file which is run each 
   }
   ~~~
 
-This example checks for two conditions we don't want to cache. The first is any request that is for `example.com`, the second is for any URI requests that begin with `/admin`. If both of these are true, Varnish will not cache the request.
+This example checks for two conditions you don't want to cache. The first is any request for `example.com`, the second is for any URI requests that begin with `/admin`. If both of these are true, Varnish will not cache the request.
 
 ### Unset Cookies
 
-As mentioned earlier, if Varnish detects your website is setting cookies, it assumes your site needs to interact with those cookies and show dynamic content accordingly, and Varnish will not cache those pages. We can override this behavior by unsetting the `Cookie` variable on Varnish's `req.http` object.
+As mentioned earlier, if Varnish detects your website is setting cookies, it assumes your site needs to interact with those cookies and show dynamic content accordingly, and Varnish will not cache those pages. You can override this behavior by unsetting the `Cookie` variable on Varnish's `req.http` object.
 
 Add this line to the bottom of the `vcl_recv` section:
 
@@ -201,7 +201,7 @@ Add this line to the bottom of the `vcl_recv` section:
 
 You may find that a particular cookie is important for displaying content or determines if your user is logged in or not. In this case, you probably don't want to show cached content and just send the user straight to the backend.
 
-For this case, we'll check `req.http.Cookie` for a cookie called "logged_in", and if we find it, pass the request on to the backend with no caching. Here's our entire `vcl_recv` subroutine thus far:
+For this case, you'll check `req.http.Cookie` for a cookie called "logged_in", and if its found, the request will be passed on to the backend with no caching. Here's our entire `vcl_recv` subroutine thus far:
 
 {: .file-excerpt }
 /etc/varnish/user.vcl
@@ -221,7 +221,7 @@ For this case, we'll check `req.http.Cookie` for a cookie called "logged_in", an
 
 ### To Cache POST, or Not to Cache POST?
 
-It's likely you don't want to cache [POST](https://en.wikipedia.org/wiki/POST_(HTTP)) requests because they probably need to interact with the backend to gather dynamic data or set up a user's session. In our example above, we chose not to cache requests if the user is logged in. This section ensures a user can log in to begin with. An easy approach is to skip POST requests all together.
+It's likely you don't want to cache [POST](https://en.wikipedia.org/wiki/POST_(HTTP)) requests, because they probably need to interact with the backend to gather dynamic data or set up a user's session. In the example above, you chose not to cache requests if the user is logged in. This section ensures a user can log in to begin with. An easy approach is to skip POST requests all together.
 
 To accomplish this, add the following condition to the existing `return (pass)` block inside of `vcl_recv`:
 
@@ -269,7 +269,7 @@ If the backend fails the test, it's considered unhealthy and objects are served 
   set beresp.grace = 1h;
   ~~~
 
-This allows our backend to be down for an hour without any impact to website users. If you're serving static content, the grace time can be even longer to ensure uptime.
+This allows the backend to be down for an hour without any impact to website users. If you're serving static content, the grace time can be even longer to ensure uptime.
 
 #### Serve Varnish Cache from Another Linode (Optional)
 
@@ -293,4 +293,4 @@ If Varnish is running on the same Linode as your web server, be sure to allow in
 
 If Varnish and your web server are running on separate Linodes, you'll need to accept incoming traffic on port 80 on the Varnish Linode, and port 8080 on the web server.
 
-These are simply the minimum requirements, and we strongly recommend you use additional firewall rules on each, based on the other services you have running. If you're not sure how to set up a firewall, check out our guides on [iptables](/docs/security/firewalls/control-network-traffic-with-iptables) and [UFW](/docs/security/firewalls/configure-firewall-with-ufw).
+These are simply the minimum requirements, and it is strongly recommended you use additional firewall rules on each, based on the other services you have running. If you're not sure how to set up a firewall, check out our guides on [iptables](/docs/security/firewalls/control-network-traffic-with-iptables) and [UFW](/docs/security/firewalls/configure-firewall-with-ufw).
