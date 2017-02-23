@@ -31,7 +31,7 @@ By contrast, tools such as traceroute and MTR send ICMP packets with incremental
 Rather than provide a simple outline of the route that traffic takes across the Internet, MTR collects additional information regarding the state, connection, and responsiveness of the intermediate hosts. Because of this additional information, it is recommended that you use MTR whenever possible to provide the most complete overview of the connection between two hosts on the Internet. The following sections outline how to install the MTR software and how to interpret the results provided by this tool.
 
 ## Installing MTR
-
+### Installing on Linux
 On Debian and Ubuntu systems, issue the following commands to ensure that your system's package repository is up to date, that all installed packages are up to date, and finally to install MTR itself:
 
     apt-get update
@@ -50,6 +50,10 @@ On Arch Linux systems issue the following commands to update the package databas
 
 You may also want to use MTR to diagnose networking issues from your local workstation. If you're running a Linux system, you can install MTR using the commands above. 
 
+### Installing on Windows
+For Windows there is a port of MTR called "WinMTR". You can download this application from the [WinMTR upstream](http://sourceforge.net/projects/winmtr/).
+
+### Installing on Mac OS X
 If you're running a Mac OS X workstation, you may install MTR with either [Homebrew](http://brew.sh/), or [MacPorts](http://www.macports.org/). To install MTR with Homebrew, run:
 
     brew install mtr
@@ -57,8 +61,6 @@ If you're running a Mac OS X workstation, you may install MTR with either [Homeb
 To install MTR with MacPorts, run:
 
     port install mtr
-
-If your desktop runs Windows, you can use the windows port of MTR called "WinMTR". You can download this application from the [WinMTR upstream](http://sourceforge.net/projects/winmtr/).
 
 ## Generating an MTR Report
 
@@ -88,13 +90,25 @@ Be sure to replace `87.65.43.21` with the IP address of your Linode, which is li
 
 Replace `12.34.56.78` with the IP address of your home network. If you are unsure of what your home IP address is you may use the first or second host on your outgoing MTR reports (depending on the configuration of your home network). Alternatively, you may use a third party service, such as [WhatIsMyIP.com](http://whatismyip.com/).
 
+If no packet loss seems to be revealed, a support technician may aske you to run a faster interval:
+
+    mtr -rwc 50 -i 0.2 -rw 12.34.56.78
+
+On some systems, it may require administrative privileges to run when using this flag:
+
+    sudo mtr -rwc 50 -i 0.2 -rw 12.34.56.78
+
 {: .note }
 >
-> The flags we are using above (`rwc`) are useful to our support technicians when contacting support about network-related issues.
+> The flags we are using above (`rwc [x] -i [y]`) are useful to our support technicians when contacting support about network-related issues.
 >
 > The `r` option flag generates the report (short for `--report`).
 >
 > The `w` option flag uses the long-version of the hostname so our technicians and you can see the full hostname of each hop (short for `--report-wide`).
+>
+> The `c` option flag sets how many packets are sent and recorded in the report. When not used, the default will generally be 10, but for faster intervals you may want to set it to 50 or 100. The report can take longer to finish when doing this.
+>
+> The `i` option flag runs the report at a faster rate to reveal packet loss that can occur only during network congestion. This flag instructs MTR to send one packet every *n* seconds. The default is 1 second, so setting it to a few tenths of a second (0.1, 0.2, etc.) is generally helpful.
 
 ### Using MTR on Windows Systems
 
@@ -350,6 +364,15 @@ Timeouts can happen for various reasons. Some routers will discard ICMP and no r
       8. gw-in-f147.1e100.net          0.0%    10   39.6  40.5  39.5  46.7   2.2
 
 Timeouts are not necessarily an indication of packet loss. Packets still reach their destination without significant packet loss or latency. Timeouts may be attributable to routers dropping packets for QoS (quality of service) purposes or there may be some issue with return routes causing the timeouts. This is another false positive.
+
+## Advanced MTR techniques
+
+Newer versions of MTR are now capable of running in TCP mode on a specified TCP port, compared to the default use of the ICMP (ping) protocol. In some instances network degradation will only affect certain ports or misconfigured firewall rules on a router may block a certain protocol. Running MTR over a certain port can show packet loss where the default ICMP report may not.
+
+Running MTR in TCP mode will require super-user privileges on most machines:
+
+    sudo mtr -P 80 -i 0.5 -rw50 example.com
+    sudo mtr -P 22 -i 0.5 -rw50 example.com
 
 ## Resolving Routing and Networking Issues Identified in your MTR report
 
