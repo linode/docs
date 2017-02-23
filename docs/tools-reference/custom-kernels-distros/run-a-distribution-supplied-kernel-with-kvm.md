@@ -151,7 +151,7 @@ At the time of this writing, these steps have been tested on:
       GRUB_GFXPAYLOAD_LINUX=text
 	  ~~~
 
-3.  Run the following command to update the bootloader:
+3.  Run the following command to prepare and update the bootloader:
 
     * Arch and Gentoo
 
@@ -160,8 +160,12 @@ At the time of this writing, these steps have been tested on:
     * CentOS and Fedora
 
           mkdir /boot/grub
+          ln -s /boot/grub2/grub.cfg /boot/grub/grub.cfg
           grub2-mkconfig -o /boot/grub/grub.cfg
           touch /.autorelabel
+          
+          {: .note }
+          > The autorelabel command is necessary to queue the SELinux filesystem relabeling process when rebooting from the Linode kernel to the CentOS or Fedora kernel.
           
     * Debian and Ubuntu
 
