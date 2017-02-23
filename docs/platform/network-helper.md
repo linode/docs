@@ -6,7 +6,7 @@ author:
 description: 'Information on the Network Helper option.'
 keywords: 'network, networking, network helper, ip, ip address, static ip,'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Friday, February 17, 2017
+modified: Thursday, February 23, 2017
 modified_by:
   name: Linode
 published: ''
