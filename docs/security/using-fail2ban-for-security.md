@@ -6,7 +6,7 @@ description: 'Use Fail2ban to block automated system attacks and further harden 
 keywords: 'fail2ban'
 alias: ['tools-reference/tools/using-fail2ban-to-block-network-probes/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Thursday, March 3rd, 2016
+modified: Friday, February 24th 2017
 modified_by:
   name: Linode
 published: 'Monday, October 12th, 2015'
@@ -37,20 +37,15 @@ Follow the [Getting Started](/docs/getting-started) guide to configure your basi
 
         yum update
  
-2.  Enable the EPEL repository:
+2.  Enable the EPEL repository and install Sendmail if you additionally would like email support. Sendmail is not required to use Fail2Ban.
 
-        wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-        rpm -ivh epel-release-latest-7.noarch.rpm
+        yum install epel-release sendmail
 
-3.  Install Fail2ban:
+3.  Install Fail2Ban:
 
         yum install fail2ban
 
-4.  (Optional) For email support, install Sendmail:
-
-        yum install sendmail
-
-5.  Start and enable Fail2ban and, if needed, Sendmail:
+4.  Start and enable Fail2ban and, if needed, Sendmail:
 
         systemctl start fail2ban
         systemctl enable fail2ban
@@ -121,17 +116,11 @@ Fail2ban reads its configuration files so that all `.conf` files are read first 
 
 ### fail2ban.local Configuration
 
-1.  Navigate to `/etc/fail2ban`. Within this directory are all configuration files.
+1.  The file `fail2ban.conf` contains the default configuration profile. The default settings will give you a sane and working setup so this is the best place to start. If you want to make any changes, it's best to do it in a separate file, `fail2ban.local`, which overrides `fail2ban.conf`. Rename a copy `fail2ban.conf` to `fail2ban.local`. 
 
-        cd /etc/fail2ban
+        cp /etc/fail2ban/fail2ban.conf /etc/fail2ban/fail2ban.local
 
-2.  The file `fail2ban.conf` contains the default configuration variables for Fail2ban logging, the socket used to communicate with the daemon, and the location of the PID file. Changes should be made in a separate file, `fail2ban.local`, definitions in which override `fail2ban.conf`. If you want, you can copy `fail2ban.conf` to `fail2ban.local`, commenting out all variables, and then uncomment only the options you want to modify:
-
-        sed 's/\(^[[:alpha:]]\)/# \1/' fail2ban.conf | sudo tee fail2ban.local &> /dev/null
-
-    Otherwise, create a blank `fail2ban.local` file, and manually add the options (with corresponding section titles) you wish to modify.
-
-3.  In `fail2ban.local` add or uncomment and edit the values to match your desired configuration. The values that can be changed within the `fail2ban.local` file are:
+3.  From here, you can opt to edit the definitions in `fail2ban.local` to match your desired configuration. The values that can be changed are:
 
     -   `loglevel`: The level of detail that Fail2ban's logs provide can be set to 1 (error), 2 (warn), 3 (info), or 4 (debug).
     -   `logtarget`: Logs actions into a specific file. The default value of `/var/log/fail2ban.log` puts all logging into the defined file. Alternately, you can change the value to STDOUT, which will output any data; STDERR, which will output any errors; SYSLOG, which is message-based logging; and FILE, which outputs to a file.
@@ -140,20 +129,24 @@ Fail2ban reads its configuration files so that all `.conf` files are read first 
 
 ### jail.local Basic Configuration
 
-1.  Return to `/etc/fail2ban` directory and copy the `jail.conf` file to `jail.local`:
+1.  The `jail.conf` file will enable Fail2ban for SSH by default. All other protocols and configurations (HTTP, FTP, etc.) are commented out. If you want to change this, it's recommended to create a `jail.local` for editing just like you did with `fail2ban.local`.
 
-        sed 's/\(^[a-z tab]\)/# \1/' jail.conf | sudo tee jail.local &> /dev/null
+        cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
 
-    This will create a copy of `jail.conf` with all the directives commented out. To overwrite a setting, uncomment and modify it in `jail.local`.
+2.  **If using CentOS or Fedora** you will need to change the `backend` option in `jail.local` from *auto* to *systemd*. This is not necessary on Debian 8 or Ubuntu 16.04, even though both use systemd as well.
 
-2.  **If using CentOS or Fedora** open `jail.local` and set the `backend` to `systemd`. This is not necessary on Debian 8, even though it is a SystemD system.
-
-    {: .file-excerpt}
-    /etc/fail2ban/jail.local
-    :   ~~~
+        {: .file-excerpt}
+        /etc/fail2ban/jail.local
+        :   ~~~ conf
+        # "backend" specifies the backend used to get files modification.
+        # Available options are "pyinotify", "gamin", "polling", "systemd" and "auto".
+        # This option can be overridden in each jail as well.
+        
+        . . .
+        
         backend = systemd
         ~~~
-
+    
 #### IP Whitelisting        
 
 Add any IPs to the `ignoreip` line that you wish Fail2ban to ignore. By default, this command will not ban the localhost. If you work from a single IP address often, it may be beneficial to add it to the ignore list:
