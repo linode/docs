@@ -21,13 +21,15 @@ external_resources:
 
 <hr>
 
-Need to handle a lot of traffic? Caching is one of the best ways to maximize the output of your Linode. The idea behind caching is that your server shouldn't have to regenerate the same dynamic content from scratch every time it's accessed. Save your Linode's resources by putting a caching proxy like Varnish in front of your web service to accelerate responses to HTTP requests and reduce server workload.
+Does your server need to handle lots of traffic? Caching is one of the best ways to maximize the output of your Linode. But what is caching, exactly?
+
+The idea behind caching is that your server shouldn't have to regenerate the same dynamic content from scratch every time it's accessed. Save your Linode's resources by putting a caching proxy like Varnish in front of your web service to accelerate responses to HTTP requests and reduce server workload.
 
 ![Getting Started with Varnish Cache](/docs/assets/varnish_tg.png "Getting Started with Varnish Cache")
 
-Varnish works by handling requests before they make it to your backend; whether your backend is Apache, nginx, or any other web server. If it doesn't have a request cached, it will forward the request to your backend and then cache its output. You can then store these cached requests in memory, so they're retrieved and delivered to clients much faster than they would be from disk.
+Varnish works by handling requests before they make it to your backend; whether your backend is Apache, nginx, or any other web server. If it doesn't have a request cached, it will forward the request to your backend and then cache its output. You can then store these cached requests in memory, so they're retrieved by and delivered to clients much faster than they would be from disk.
 
-Additionally, Varnish cache can be used as part of a [highly available environment](#use-varnish-cache-for-high-availability-with-backend-polling), which ensures uptime through high traffic or server failures.
+Additionally, Varnish cache can be used as part of a [highly available environment](#use-varnish-cache-for-high-availability-with-backend-polling), which ensures uptime during high traffic loads or server failures.
 
 If your web server is nginx and you plan to use Varnish cache to serve WordPress, visit Linode's guide to [Using Varnish & nginx to Serve WordPress over SSL & HTTP on Debian 8](/docs/websites/varnish/use-varnish-and-nginx-to-serve-wordpress-over-ssl-and-http-on-debian-8).
 
@@ -168,7 +170,7 @@ These modifications should be made in your `user.vcl` file.
 
 ### Exclude Content from Varnish Cache
 
-You may want to exclude specific parts of your website from Varnish caching, particularly if there is a non-public or administrative portion. To do this, you'll access Varnish's request object for information about the request, and conditionally tell Varnish to **pass** the request though to the backend with no caching.
+You may want to exclude specific parts of your website from Varnish caching, particularly if there is a non-public or administrative portion. To do this, you'll access Varnish's request object for information about the request, and conditionally tell Varnish to **pass** the request through to the backend with no caching.
 
 You'll need to override the `vcl_recv` subroutine in our VCL file, which is run each time Varnish receives a request, then add a conditional:
 
@@ -189,7 +191,7 @@ This example checks for two conditions you don't want to cache. The first is any
 
 ### Unset Cookies
 
-As mentioned earlier, if Varnish detects your website is setting cookies, it assumes your site needs to interact with those cookies and show dynamic content accordingly, and Varnish will not cache those pages. You can override this behavior by unsetting the `Cookie` variable on Varnish's `req.http` object.
+As mentioned earlier, if Varnish detects your website is setting cookies, it assumes your site needs to interact with those cookies and shows dynamic content accordingly, and as a result, Varnish will not cache those pages. You can override this behavior by unsetting the `Cookie` variable on Varnish's `req.http` object.
 
 Add this line to the bottom of the `vcl_recv` section:
 
@@ -199,7 +201,7 @@ Add this line to the bottom of the `vcl_recv` section:
   unset req.http.Cookie;
   ~~~
 
-You may find that a particular cookie is important for displaying content or determines if your user is logged in or not. In this case, you probably don't want to show cached content and just send the user straight to the backend.
+You may find that a particular cookie is important for displaying content or determines if your user is logged in or not. In this case, you probably don't want to show cached content and instead, just want to send the user straight to the backend.
 
 For this case, you'll check `req.http.Cookie` for a cookie called "logged_in", and if its found, the request will be passed on to the backend with no caching. Here's our entire `vcl_recv` subroutine thus far:
 
@@ -269,17 +271,17 @@ If the backend fails the test, it's considered unhealthy and objects are served 
   set beresp.grace = 1h;
   ~~~
 
-This allows the backend to be down for an hour without any impact to website users. If you're serving static content, the grace time can be even longer to ensure uptime.
+"1h" allows the backend to be down for one hour without any impact to website users. If you're serving static content, the grace time can be even longer to ensure uptime.
 
 #### Serve Varnish Cache from Another Linode (Optional)
 
 For added availability, consider serving Varnish cache from a separate Linode. In this case, the Varnish installation steps should be performed on a separate Linode in the same datacenter as the web server. Once installed, configure the Varnish backend `.host` value to point at the web server Linode's [private IP address](/docs/networking/remote-access#adding-private-ip-addresses). Note that DNS records for your site should be pointed at the Varnish Linode, since this is where the client connects.
 
-That's it! If everything went well, visitors to your site are now being served Varnish cached content from memory, resulting in dramatic improvements to your site's speed.
+That's it! If everything went well, visitors to your site are now being served Varnish-cached content from memory, resulting in dramatic improvements to your site's speed.
 
 ## Test Varnish with varnishlog
 
-Now that all traffic is configured to reach Varnish cache, start `varnishlog` to view Varnish activity as it happens. Note that this is a live, ongoing log that will not show any information unless there is activity. Once started, use a browser to view a page that should be cached and watch the log for activity:
+Now that all traffic is configured to reach Varnish cache, start `varnishlog` to view Varnish activity as it happens. Note that this is a live, ongoing log that will not show any information unless activity has occurred. Once you've started Varnishlog, use a browser to view a page that should be cached and watch the log for activity:
 
     sudo varnishlog
 
@@ -287,10 +289,10 @@ Stop `varnishlog` with **CTRL+C** when done.
 
 ## Firewall Rules
 
-When using a firewall, Varnish requires a bit of modification to the rules you may be used to setting for a web server. 
+When using a firewall, Varnish requires slight modification to the rules you may have used when setting up a web server. 
 
 If Varnish is running on the same Linode as your web server, be sure to allow incoming connections on port 80. However, you will also need to allow connections from localhost on port 8080, since this is how Varnish communicates with the web server.
 
 If Varnish and your web server are running on separate Linodes, you'll need to accept incoming traffic on port 80 on the Varnish Linode, and port 8080 on the web server.
 
-These are simply the minimum requirements, and it is strongly recommended you use additional firewall rules on each, based on the other services you have running. If you're not sure how to set up a firewall, check out our guides on [iptables](/docs/security/firewalls/control-network-traffic-with-iptables) and [UFW](/docs/security/firewalls/configure-firewall-with-ufw).
+These two are simply the minimum rule modifications. It is strongly recommended you use additional firewall rules on each, based on the other services you have running. If you're not sure how to set up a firewall, check out our guides on [iptables](/docs/security/firewalls/control-network-traffic-with-iptables) and [UFW](/docs/security/firewalls/configure-firewall-with-ufw).
