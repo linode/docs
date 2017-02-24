@@ -31,6 +31,7 @@ By contrast, tools such as traceroute and MTR send ICMP packets with incremental
 Rather than provide a simple outline of the route that traffic takes across the Internet, MTR collects additional information regarding the state, connection, and responsiveness of the intermediate hosts. Because of this additional information, it is recommended that you use MTR whenever possible to provide the most complete overview of the connection between two hosts on the Internet. The following sections outline how to install the MTR software and how to interpret the results provided by this tool.
 
 ## Installing MTR
+
 ### Installing on Linux
 On Debian and Ubuntu systems, issue the following commands to ensure that your system's package repository is up to date, that all installed packages are up to date, and finally to install MTR itself:
 
