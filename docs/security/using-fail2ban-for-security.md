@@ -33,17 +33,17 @@ Follow the [Getting Started](/docs/getting-started) guide to configure your basi
 
 ### CentOS 7
 
-1.  Ensure your system is up to date:
+1.  Ensure your system is up to date and install the EPEL repository:
 
-        yum update
+        yum update && yum install epel-release
  
-2.  Enable the EPEL repository and install Sendmail if you additionally would like email support. Sendmail is not required to use Fail2Ban.
-
-        yum install epel-release sendmail
-
-3.  Install Fail2Ban:
+2.  Install Fail2Ban:
 
         yum install fail2ban
+
+3.  Install Sendmail if you additionally would like email support. Sendmail is not required to use Fail2Ban.:
+
+    yum install sendmail
 
 4.  Start and enable Fail2ban and, if needed, Sendmail:
 
@@ -64,9 +64,15 @@ Follow the [Getting Started](/docs/getting-started) guide to configure your basi
         
     The service will automatically start.
 
-3.  (Optional) If you wish to avail email support, install Sendmail:
+3.  (Optional) If you would like email support, install Sendmail:
 
         apt-get install sendmail-bin sendmail
+
+    {: .note}
+    > The current version of Sendmail in Deiban Jessie has an [upstream bug](https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=293017) which causes the following errors when installing `sendmail-bin`. The installation will hang for a minute, but then complete.
+    > Creating /etc/mail/sendmail.cf...
+    > ERROR: FEATURE() should be before MAILER() MAILER(`local') must appear after FEATURE(`always_add_domain')
+    > ERROR: FEATURE() should be before MAILER() MAILER(`local') must appear after FEATURE(`allmasquerade')
 
 ### Fedora
 
@@ -78,7 +84,7 @@ Follow the [Getting Started](/docs/getting-started) guide to configure your basi
 
         dnf install fail2ban
 
-3.  (Optional) If you wish to avail email support, install Sendmail:
+3.  (Optional) If you would like email support, install Sendmail:
 
         dnf install sendmail
 
@@ -101,14 +107,14 @@ Follow the [Getting Started](/docs/getting-started) guide to configure your basi
         
     The service will automatically start.
 
-3.  (Optional) If you wish to avail email support, install Sendmail:
+3.  (Optional) If you would like email support, install Sendmail:
 
         apt-get install sendmail
 
-4.  Ensure UFW is enabled, and you have SSH access to the server:
+4.  Allow SSH access through UFW and then enable the firewall:
 
-        ufw enable
         ufw allow ssh
+        ufw enable
 
 ## Configuring Fail2ban
 
@@ -129,7 +135,7 @@ Fail2ban reads its configuration files so that all `.conf` files are read first 
 
 ### jail.local Basic Configuration
 
-1.  The `jail.conf` file will enable Fail2ban for SSH by default. All other protocols and configurations (HTTP, FTP, etc.) are commented out. If you want to change this, it's recommended to create a `jail.local` for editing just like you did with `fail2ban.local`.
+1.  The `jail.conf` file will enable Fail2ban for SSH by default for Debian and Ubuntu, but not CentOS. All other protocols and configurations (HTTP, FTP, etc.) are commented out. If you want to change this, it's recommended to create a `jail.local` for editing just like you did with `fail2ban.local`.
 
         cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
 
@@ -146,7 +152,16 @@ Fail2ban reads its configuration files so that all `.conf` files are read first 
         
         backend = systemd
         ~~~
-    
+
+3.  No jails are enabled by default in CentOS 7. For example, to enable the SSH daemon jail, uncomment the following lines in `jail.local:
+
+        {: .file-excerpt}
+        /etc/fail2ban/jail.local
+        :   ~~~ conf
+        [sshd]
+        enabled = true
+        ~~~
+
 #### IP Whitelisting        
 
 Add any IPs to the `ignoreip` line that you wish Fail2ban to ignore. By default, this command will not ban the localhost. If you work from a single IP address often, it may be beneficial to add it to the ignore list:
@@ -202,7 +217,7 @@ If you wish to receive email when Fail2ban is triggered, adjust the email settin
 >
 >If unsure of what to put under `sender`, run the command `sendmail -t user@email.com`, replacing `user@email.com` with your email address. Check your email (including spam folders, if needed) and review the sender email. This address can be used for the above configuration.
 
-You will also need to adjudst the `action` setting, which defines what actions occur when the threshold for ban is met. The default, `%(action_)s`, only bans the user. `%(action_mw)s` will ban and send an email with a WhoIs report; while `%(action_mwl)s` will ban and send an email with the WhoIs report and all relevant lines in the log file. This can also be changed on a jail-specific basis.
+You will also need to adjust the `action` setting, which defines what actions occur when the threshold for ban is met. The default, `%(action_)s`, only bans the user. `%(action_mw)s` will ban and send an email with a WhoIs report; while `%(action_mwl)s` will ban and send an email with the WhoIs report and all relevant lines in the log file. This can also be changed on a jail-specific basis.
 
 ### Jail Configuration
 
@@ -346,5 +361,15 @@ Fail2ban provides a command `fail2ban-client` that can be used to run Fail2ban f
 -   `stop`: Terminates the server.
 -   `status`: Will show the status of the server, and enable jails.
 -   `status JAIL`: Will show the status of the jail, including any currently-banned IPs.
+
+For example, to check that the Fail2Ban is running and the SSHd jail is enabled, run:
+
+    fail2ban-client status
+
+The output should be:
+
+    Status
+    |- Number of jail:      1
+    `- Jail list:   sshd
 
 For additional information about `fail2ban-client` commands, see the [Fail2ban wiki](http://www.fail2ban.org/wiki/index.php/Commands).
