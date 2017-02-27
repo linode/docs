@@ -6,7 +6,7 @@ description: 'Configure MongoDB for use in clustered environments.'
 keywords: 'mongodb,nosql,clusters,databases'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['databases/mongodb/clusters/']
-modified: 'Friday, December 2nd, 2016'
+modified: Monday, February 27th, 2017
 modified_by:
   name: Phil Zona
 published: 'Thursday, September 30th, 2010'
@@ -20,6 +20,8 @@ external_resources:
 ---
 
 MongoDB is a leading non-relational database management system, and a prominent member of the [NoSQL](https://en.wikipedia.org/wiki/NoSQL) movement. Rather than using the tables and fixed schemas of a relational database management system (RDBMS), MongoDB uses key-value storage in collection of documents. It also supports a number of options for horizontal scaling in large, production environments. In this guide, we'll explain how to set up a *sharded cluster* for highly available distributed datasets.
+
+!["Build Database Clusters with MongoDB"](/docs/assets/build-database-clusters-with-mongodb.png "Build Database Clusters with MongoDB")
 
 There are two broad categories of scaling strategies for data. *Vertical scaling* involves adding more resources to a server so that it can handle larger datasets. The upside is that the process is usually as simple as migrating the database, but it often involves downtime and is difficult to automate. *Horizontal scaling* involves adding more servers to increase the resources, and is generally preferred in configurations that use fast-growing, dynamic datasets. Because it is based on the concept of adding more servers, not more resources on one server, datasets often need to be broken into parts and distributed across the servers. Sharding refers to the breaking up of data into subsets so that it can be stored on separate database servers (a sharded cluster).
 
@@ -47,6 +49,8 @@ Before we get started, let's review the components of the setup we'll be creatin
 -   **Config Server** - This stores metadata and configuration settings for the rest of the cluster. In this guide, we'll use one config server for simplicity but in production environments, this should be a replica set of at least three Linodes.
 -   **Query Router** - The `mongos` daemon acts as an interface between the client application and the cluster shards. Since data is distributed among multiple servers, queries need to be routed to the shard where a given piece of information is stored. The query router is run on the application server. In this guide, we'll only be using one query router, although you should put one on each application server in your cluster.
 -   **Shard** - A shard is simply a database server that holds a portion of your data. Items in the database are divided among shards either by range or hashing, which we'll explain later in this guide. For simplicity, we'll use two single-server shards in our example.
+
+!["A sharded MongoDB cluster"](/docs/assets/mongodb-cluster-diagram.png "A sharded MongoDB cluster")
 
 The problem in this configuration is that if one of the shard servers experiences downtime, a portion of your data will become unavailable. To avoid this, you can use [replica sets](https://docs.mongodb.com/manual/reference/replica-configuration/) for each shard to ensure high availability. For more information, refer to our guide on [creating MongoDB replica sets](/docs/databases/mongodb/create-a-mongodb-replica-set).
 

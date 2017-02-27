@@ -5,7 +5,7 @@ author:
 description: Configure a MongoDB Replica Set
 keywords: 'mongodb,nosql,clusters,replica set'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Friday, December 2nd, 2016
+modified: Monday, February 27th, 2017
 modified_by:
   name: Phil Zona
 published: 'Friday, December 2nd, 2016'
@@ -17,6 +17,8 @@ external_resources:
 ---
 
 In this guide, you'll learn how to create a MongoDB *replica set*. A replica set is a cluster of MongoDB database servers that implements master-slave (primary-secondary) replication. Replica sets also fail over automatically, so if one of the members becomes unavailable, a new primary host is elected and your data is still accessible. When combined with sharded database clusters, replica sets allow you to create scalable, highly available database systems for use with growing datasets.
+
+!["Create a MongoDB Replica Set"](/docs/assets/create-a-mongodb-replica-set.png "Create a MongoDB Replica Set")
 
 This guide has been tested with Ubuntu 16.04 and CentOS 7. Because most of the configuration is done within the MongoDB application, the steps should not vary significantly among other distributions, but additional configuration may be required.
 
@@ -44,7 +46,11 @@ This guide has been tested with Ubuntu 16.04 and CentOS 7. Because most of the c
 
 ## Configure Networking
 
-There are two major ways to allow the members of your replica set to communicate.
+To allow for consistent replication, each node will need to communicate with all the others in the cluster. For example, in a three node set, data transfer will look like this:
+
+!["A three node replica set"](/docs/assets/mongodb-replication-diagram.png "A three node replica set")
+
+There are two major ways to allow the members of your replica set to communicate. 
 
 The first method is to use [private IP addresses](/docs/networking/remote-access#adding-private-ip-addresses) for each member of the replica set. This allows the Linodes in your replica set to communicate without exposing your data to the public internet. This method is recommended, but note that it requires all members of the replica set be in the same datacenter.
 
