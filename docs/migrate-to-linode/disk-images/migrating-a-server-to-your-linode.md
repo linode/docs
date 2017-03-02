@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'How to copy an existing Linux server to your new Linode VPS.'
+description: 'How to copy an existing Linux server to your new Linode'
 keywords: 'migrate to linode,linode migration,migrate linux'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['migration/migrate-server-to-linode/']
@@ -61,7 +61,7 @@ You'll need a configuration profile to boot your existing server after you uploa
 1.  In the [Linode Manager](https://manager.linode.com), select the Linode's dashboard.
 2.  Select **Create a new Configuration Profile**. The webpage shown below appears.
 
-	[![Creating a configuration profile](/docs/assets/1044-migrate4-small.png)](/docs/assets/1043-migrate4.png)
+	[![Creating a configuration profile](/docs/assets/migrate-configuration-profile-small.png)](/docs/assets/migrate-configuration-profile.png)
 
 3.  Enter a name for the configuration profile in the **Label** field.
 4.  *Optional:* Enter notes for the configuration profile in the **Notes** field.
@@ -181,9 +181,9 @@ Verify that `/media/sda/dev` is complete by making sure that all of the device n
         mknod sdg b 202 96
         mknod sdh b 202 112
 
-4.  If `/dev/hvc0` doesn't exist, enter the following command:
+4.  If `/dev/ttyS0` doesn't exist, enter the following command:
 
-        mknod hvc0 c 229 0
+        mknod ttyS0 c 229 0
 
 5.  Exit `chroot` by entering the following command:
 
