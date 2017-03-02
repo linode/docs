@@ -45,13 +45,13 @@ Please note that we do *not* sell control panel licenses. If you decide you'd li
 
 By default, SSH is enabled on all newly deployed Linodes. You may use any file transfer program that supports the SFTP standard to upload files. We've created guides for some commonly used programs:
 
--   [WinSCP](/docs/networking/file-transfer/transfer-files-winscp) - Windows 95 through Windows 7
+-   [WinSCP](/docs/networking/file-transfer/transfer-files-winscp) - Windows 95 through Windows 10
 -   [Cyberduck](/docs/networking/file-transfer/transfer-files-cyberduck) - Mac OS X
--   [Filezilla](/docs/networking/file-transfer/transfer-files-filezilla-ubuntu-9.10) - Linux desktops (we used Ubuntu 9.10)
+-   [Filezilla](/docs/tools-reference/file-transfer/filezilla) - Available on all major desktop platforms, including Linux-based operating systems
 
 ## How can I download a backup of my Linode?
 
-First, you might want to give the official [Linode backup system](http://www.linode.com/backups/) a try. It's a fast, flexible and cost-effective way to make extra copies of your data. That said, the old saying "you can never have too many backups" is certainly true. In case you'd like to "roll your own" solution, we've created guides that explain various ways of creating backups of your Linode's filesystems:
+First, you might want to give the [Linode Backup Service](http://www.linode.com/backups/) a try. It's a fast, flexible and cost-effective way to make extra copies of your data. That said, the old saying "you can never have too many backups" is certainly true. In case you'd like to "roll your own" solution, we've created guides that explain various ways of creating backups of your Linode's filesystems:
 
 -   [Introduction to Rsync](/docs/tools-reference/tools/introduction-to-rsync/) - Using `rsync` to mirror files to another server.
 -   [Using Rdiff-backup with SSHFS](/docs/security/backups/using-rdiff-backup-with-sshfs/) - An easy approach to using the `rdiff-backup` utility to maintain differential backups.
@@ -64,7 +64,7 @@ Please refer to our guide on [Linux package management](/docs/tools-reference/li
 
 ## How do I add another IP address?
 
-You may add an additional public IP address from the "Remote Access" tab in the Linode Manager. After you've added a new IP address, you must [configure static networking](/docs/networking/linux-static-ip-configuration/) and reboot your Linode before it can be used. 
+You may add an additional public IP address from the "Remote Access" tab in the Linode Manager. After you've added a new IP address, you must [configure static networking](/docs/networking/linux-static-ip-configuration/) or enable [Network Helper](/docs/platform/network-helper#turn-network-helper-on-for-individual-configuration-profiles) and reboot your Linode before it can be used. 
 
 {: .note}
 > We require technical justification for the issuance of new IP addresses; you may need to open a ticket from the "Support" tab of the Linode Manager explaining the reason for the new IP.
@@ -77,11 +77,13 @@ You may use the "Reverse DNS" link on the "Remote Access" tab in the Linode Mana
 
 ## Why does my Linode keep crashing?
 
-You may be running out of memory. Have a look at our [troubleshooting guide](/docs/troubleshooting/) for tips on diagnosing problems and easy steps for fixing common issues.
+You may be running out of memory, disk space, or other resources. Have a look at our [troubleshooting guide](/docs/troubleshooting/) for tips on diagnosing problems and easy steps for fixing common issues.
+
+If an application is crashing, be sure to check its error logs. These are typically located within an application-specific directory under `/var/log`.
 
 ## Why is my connection to my Linode slow or broken?
 
-First, check to be sure that the service (SSH, HTTP, etc.) you're trying to access is running. If your Linode runs a firewall, make sure you're allowing traffic to the desired destination. If this doesn't help, please submit a traceroute or the output of `mtr --report` to and from your Linode via the "Support" tab in the Linode Manager. You may need to use [Lish](/docs/troubleshooting/using-lish-the-linode-shell) if you're having problems reaching your Linode via normal networking.
+First, check to be sure that the service (SSH, HTTP, etc.) you're trying to access is running. If your Linode runs a firewall, [check your firewall rules](/docs/security/firewalls/control-network-traffic-with-iptables#view-your-current-iptables-rules) to ensure that you're allowing traffic to the desired destination. If this doesn't help, generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr) to and from your Linode, and submit them via the "Support" tab in the Linode Manager. You may need to use [Lish](/docs/troubleshooting/using-lish-the-linode-shell) if you're having problems reaching your Linode via normal networking.
 
 ## How can I upgrade or downgrade my Linode?
 
@@ -89,7 +91,7 @@ Resizing your Linode is automated via the "Resize" tab in the Linode Manager, pe
 
 ## How can I test downloads speeds from different datacenters?
 
-You may use our [speed test](http://www.linode.com/speedtest/) page to check latency and download speeds from your location to each of our datacenters. Many customers with a large Asia-Pacific presence find our Singapore and Tokyo, facilities to work best, while those with a visitor base in Europe tend to prefer our London or Frankfurt datacenters.
+You may use our [speed test](http://www.linode.com/speedtest/) page to check latency and download speeds from your location to each of our datacenters. Many customers with a large Asia-Pacific presence find that our Singapore and Tokyofacilities work best, while those with a visitor base in Europe tend to prefer our London or Frankfurt datacenters.
 
 ## Can I transfer my Linode to another datacenter?
 
