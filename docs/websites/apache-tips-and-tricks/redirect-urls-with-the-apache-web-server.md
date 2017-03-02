@@ -3,32 +3,52 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'An introduction to redirecting existing URLs to new resources with the Apache HTTP server.'
-keywords: 'apache,redirect,mod\_alias,URLs,REST'
+keywords: 'apache,redirect,mod_alias,URLs,REST'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-servers/apache/configuration/redirecting-urls/']
-modified: Monday, August 22nd, 2011
+modified: Tuesday, February 21st, 2017
 modified_by:
-  name: Linode
+  name: Phil Zona
 published: 'Tuesday, October 13th, 2009'
 title: Redirect URLs with the Apache Web Server
 external_resources:
- - '[Installing Apache](/docs/web-servers/apache/)'
- - '[LAMP stack guides](/docs/lamp-guides/)'
- - '[Troubleshooting Apache](/docs/web-servers/apache/troubleshooting/)'
- - '[Linode User Community](http://linode.com/community/)'
+ - '[Installing Apache](/docs/websites/apache/)'
+ - '[LAMP stack guides](/docs/lamp/)'
+ - '[Apache Redirect Guide](https://httpd.apache.org/docs/current/mod/mod_alias.html#redirect)'
+ - '[Rewrite URLs with mod_rewrite and Apache](/docs/websites/apache-tips-and-tricks/rewrite-urls-with-modrewrite-and-apache)'
 ---
 
-When HTTP resources, or web pages, change locations it is often important to provide some means of alerting users that these resources have moved. HTTP provides a number of "redirection" codes that can be used to facilitate this process, by communicating with the client application without interfering on the users experience.
+In this guide, you'll learn how to redirect URLs with Apache. Redirecting a URL allows you to return an HTTP status code that directs the client to a different URL, making it useful for cases in which you've moved a piece of content. Redirect is part of Apache's [mod_alias](https://httpd.apache.org/docs/current/mod/mod_alias.html) module.
 
-Apache provides a number of "redirect" configuration directives that allow administrators to specify resources in the configuration file to redirect to another URL. When a request is redirected the server returns a result for that request that instructs the client to initiate a second request for the target resource's new location.
+![Redirect URLs with the Apache Web Server](/docs/assets/redirect-urls-with-the-apache-web-server.png "Redirect URLs with the Apache Web Server")
 
-Redirections can tell the client that the requested page has been moved temporarily or permanently. Apache provides tools to easily support these functions. This guide covers the `Redirect` configuration directive, explains how to set various redirect options, and shows how to redirect classes of requests for resources to new locations.
+## Before You Begin
 
-This guide assumes you have a working installation of Apache and have access to modify configuration files. If you have not installed Apache, you might want to use one of our [Apache installation guides](/docs/web-servers/apache/) or [LAMP stack installaiton guides](/docs/lamp-guides/) to get up and running first. If you want a more thorough introduction to Apache configuration, consider our [basic Apache configuration](/docs/web-servers/apache/configuration/configuration-basics) and [Apache configuration structure](/docs/web-servers/apache/configuration/configuration-structure) documents.
+1.  This guide assumes you have followed our [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, and that you have already configured your Apache installation. If you haven't, refer to our [Apache guides](https://www.linode.com/docs/websites/apache/) or [LAMP stack guides](https://www.linode.com/docs/websites/lamp/).
+
+2.  In this guide, you will modify the Apache configuration files, so be sure you have the proper permissions to do so.
+
+3.  Update your system.
+
+The Apache virtual host configuration files are found in different places, depending on the distribution of Linux. For example, on CentOS 7: `/etc/httpd/conf.d/vhost.conf`; on Ubuntu 16.04: `/etc/apache2/sites-available/example.com.conf`. For the sake of brevity, configuration file excerpts in this guide will direct you to `Apache configuration option`.
+
+Remember to reload Apache configuration after making changes:
+
+{: .shell }
+CentOS 7
+:  ~~~ shell
+   sudo systemctl restart httpd
+   ~~~
+
+{: .shell }
+Ubuntu 16.04
+:  ~~~ shell
+   sudo systemctl restart apache2
+   ~~~
 
 ## The Redirect Directive
 
-The `Redirect` configuration directive can be located in "main" server configuration files, but we recommend that you keep them in your virtual hosting entry or directory blocks. It is also possible to assert `Redirect` statements in `.httaccess` files. Here is an example of a `Redirect` directive:
+`Redirect` settings can be located in your main Apache configuration file, but we recommend you keep them in your virtual host files or directory blocks. You can also use `Redirect` statements in `.httaccess` files. Here's an example of how to use `Redirect`:
 
 {: .file-excerpt }
 Apache configuration option
@@ -36,11 +56,11 @@ Apache configuration option
     Redirect /username http://team.example.com/~username/
     ~~~
 
-If no argument is given, `Redirect` sends a temporary (e.g. 302) status. In this case, the client (user agent) is informed that the resource available at `/username` has moved temporarily to `http://team.example.com/~username/`.
+If no argument is given, `Redirect` sends a temporary (302) status code, and the client is informed that the resource available at `/username` has temporarily moved to `http://team.example.com/~username/`.
 
-Remember that no matter what configuration file they are located in, `Redirect` statements must specify the full path of the redirected resource following the domain name. These statements must also include the full URL of the resource's new location..
+No matter where they are located, `Redirect` statements must specify the full file path of the redirected resource, following the domain name. These statements must also include the full URL of the resource's new location.
 
-To specify a particular HTTP redirection status, specify one of the following status:
+You can also provide an argument to return a specific HTTP status:
 
 {: .file-excerpt }
 Apache configuration option
@@ -51,9 +71,12 @@ Apache configuration option
     Redirect gone /username
     ~~~
 
-This redirection tells the client that the resource has moved permanently, which corresponds to HTTP status 301. The "temp" status is the default behavior, specifying that the redirection is only temporary; this corresponds to HTTP status 302. The "seeother" status sends a signal (HTTP status 303) that says the requested resource has been replaced by another resource. Finally, the "gone" status tells the client that the resource has been removed (permanently); this sends the HTTP status 410, as an alternative to the unavailable "404" status. In the case of the "gone" redirection, omit the final URL.
+-   `permanent` tells the client the resource has moved permanently. This returns a 301 HTTP status code.
+-   `temp` is the default behavior, and tells the client the resource has moved temporarily. This returns a 302 HTTP status code.
+-   `seeother` tells the user the requested resource has been replaced by another one. This returns a 303 HTTP status code.
+-   `gone` tells the user that the resource they are looking for has been removed permanently. When using this argument, you don't need to specify a final URL. This returns a 410 HTTP status code.
 
-You can also specify specific HTTP codes, as follows.
+You can also use the HTTP status codes as arguments. Here's an example using the status code options:
 
 {: .file-excerpt }
 Apache configuration option
@@ -64,7 +87,7 @@ Apache configuration option
     Redirect 410 /username
     ~~~
 
-Apache also provides two additional directives for permanent and temporary redirections that are a bit more clear. They are as follows:
+Permanent and temporary redirects can also be done with `RedirectPermanent` and `RedirectTemp`, respectively:
 
 {: .file-excerpt }
 Apache configuration option
@@ -73,21 +96,23 @@ Apache configuration option
     RedirectTemp /username/bio.html http://team.example.com/~username/bio/
     ~~~
 
-Additionally, Apache makes it possible to redirect a given class of requests to match a given regular expression using the `RedirectMatch` directive. For example:
+Redirects can be made with [regex patterns](https://en.wikipedia.org/wiki/Regular_expression) as well, using `RedirectMatch`:
 
 {: .file-excerpt }
 Apache configuration option
 :   ~~~ apache
-    RedirectMatch (.*)\.jpg$ http://static.example.com$1.jpg 
+    RedirectMatch (.*)\.jpg$ http://static.example.com$1.jpg
     ~~~
 
-This directive matches against any request for a file with a `.jpg` extension and replaces it with a location on a second domain. Therefore:
+This matches any request for a file with a `.jpg` extension and replaces it with a location on a given domain. The parentheses allow you to get a specific part of the request, and insert it into the new location's URL as a variable (specified by `$1`, `$2`, etc.). For example:
 
 -   A request for `http://www.example.com/avatar.jpg` will be redirected to `http://static.example.com/avatar.jpg` and
 -   A request for `http://www.example.com/images/avatar.jpg` will be redirected to `http://static.example.com/images/avatar.jpg`.
 
 ## Beyond URL Redirection
 
-The `Redirect` directive provides basic functionality to point requests for specific resource to different URLs and can help administrators move content to different servers and locations without breaking existing links. However, many Apache users use the facility to "rewrite" URLs in Apache's `mod_rewrite` module. If you're struggling to keep your Apache configuration organized or need more control than these `Redirect` statements can provide, we encourage you to investigate `mod_rewrite`.
+In addition to redirecting users, Apache also allows you to [rewrite URLs](/docs/websites/apache-tips-and-tricks/rewrite-urls-with-modrewrite-and-apache) with `mod_rewrite`. While the features are similar, the main difference is that rewriting a URL involves the server returning a different request than the one provided by the client, whereas a redirect simply returns a status code, and the "correct" result is then requested by the client.
 
-Linode Guides & Tutorials contains an introduction to [rewriting URLs with mod\_rewrite and Apache](/docs/web-servers/apache/configuration/rewriting-urls), which you might find useful.
+On a more practical level, rewriting a request does not change the contents of the browser's address bar, and can be useful in hiding URLs with sensitive or vulnerable data.
+
+Although redirection allows you to easily change the locations of specific resources, you may find that rewriting better fits your needs in certain situations. For more information, refer to [Apache's mod_rewrite documentation](https://httpd.apache.org/docs/current/mod/mod_rewrite.html).

@@ -166,7 +166,7 @@ On CentOS or Fedora, edit `/etc/sysconfig/network-scripts/ifcfg-eth0` to set up 
   IPADDR2=192.168.133.234
   PREFIX2=17
 
-  IPV6INIT = yes
+  IPV6INIT=yes
   # Adding IPv6 addresses from pool.
   IPV6ADDR_SECONDARIES="2001:db8:2000:aff0::1/64 2001:db8:2000:aff0::2/64 2001:db8:2000:aff0::3/64"
   ~~~

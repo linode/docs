@@ -6,9 +6,9 @@ description: Our guide to copying a disk over SSH
 keywords: 'copy,disk,ssh'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['migration/ssh-copy/']
-modified: Wednesday, January 28, 2015
+modified: Thursday, February 23, 2017
 modified_by:
-  name: Elle Krout
+  name: Linode
 published: 'Monday, June 4th, 2012'
 title: Copying a Disk Over SSH
 ---
@@ -33,8 +33,12 @@ Now that the Linode is running in Rescue Mode, you can transfer the disk from th
 
 1.  Enter the following command on the receiving machine. Replace `123.45.67.89` with the Linode's IP address and `/home/archive/linode.img` with the path where you want to store the disk:
 
-        ssh root@123.45.67.89 "dd if=/dev/xvda " | dd of=/home/archive/linode.img
+        ssh root@123.45.67.89 "dd if=/dev/sda " | dd of=/home/archive/linode.img
 
+    {: .note}
+    >
+    >The device `/dev/sda` is used for Linodes running on top of KVM. If you Linode is still using XEN, then throughout this guide you must use `/dev/xvda` instead.
+    
 2.  The receiving machine will connect to the Linode. Type `yes` and press Enter to continue connecting:
 
         The authenticity of host '123.45.67.89 (123.45.67.89)' can't be established.
@@ -102,7 +106,7 @@ Once you have a copy of your Linode's disk you may want to upload that copy from
 
 4. From your **receiving machine** issue the following command, replacing `/home/archive/linode.img/` with your disk image's path, and `123.45.67.89` with your Linode's IP.
 
-        dd if=/home/archive/linode.img | ssh root@123.45.67.89 "dd of=/dev/xvda"
+        dd if=/home/archive/linode.img | ssh root@123.45.67.89 "dd of=/dev/sda"
 
     When the transfer is done, you will see an output similar to this:
 
@@ -127,7 +131,7 @@ As above, you will want to verify the disk by mounting it on the receiving Linod
 
 2.  Mount the disk:
 
-        mount /dev/xvda linode
+        mount /dev/sda linode
 
 3.  View the directories in the disk:
 
@@ -146,7 +150,7 @@ You will now need to create a new configuration profile on the receiving Linode 
 
     [![Selecting the configuration profile](/docs/assets/1065-migration6-small.png)](/docs/assets/1064-migration6.png)
 
-2.  Enter the name for the configuration profile in the **Label** field, and in the **Block Device Assignment** section set the `/dev/xvda` to the new disk you created earlier in this section of the guide. Set `/dev/xvdb` to the swap image. Save changes.
+2.  Enter the name for the configuration profile in the **Label** field, and in the **Block Device Assignment** section set the `/dev/sda` to the new disk you created earlier in this section of the guide. Set `/dev/sdb` to the swap image. Save changes.
 
 3.  Return to the Linode's dashboard manager, and select the configuration profile that you just created. Click **Reboot** to start the Linode using the disk you just transferred. 
 

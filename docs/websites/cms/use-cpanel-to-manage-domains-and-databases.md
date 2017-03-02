@@ -6,7 +6,7 @@ description: Use cPanel to Manage Domains and Databases
 keywords: 'cpanel,database,managing domain,subdomain,add-on domain,parked domain,phpmyadmin,mysql,create database,manage database'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-applications/control-panels/cpanel/managing-domains-and-databases/','websites/cms/managing-domains-and-databases/']
-modified: Friday, June 8th, 2012
+modified: Wednesday, February 15th, 2017
 modified_by:
   name: Linode
 published: 'Friday, June 8th, 2012'
@@ -17,6 +17,8 @@ external_resources:
 ---
 
 [cPanel](http://cpanel.net) is a commercial web-based control panel that simplifies many common system administration tasks such as website creation, database deployment and management, and more. This guide shows you how to manage your domains and databases with your cPanel user account. All of these instructions pertain to the user login located at port 2082 (2083 for SSL connection).
+
+![Use cPanel to Manage Domains and Databases](/docs/assets/use-cpanel-to-manage-domains-and-databases.png "Use cPanel to Manage Domains and Databases")
 
 ## Managing Domains
 

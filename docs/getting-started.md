@@ -37,7 +37,7 @@ After your Linode is created, you'll need to prepare it for operation by deployi
 The [Linode Manager](https://manager.linode.com) is a web-based control panel that allows you to manage your Linode virtual servers and services. Log in with the `username` and `password` you created when you signed up. After you've created your first Linode, you can use the Linode Manager to:
 
 * Boot and shut down your virtual server,
-* Access monitoring statistics, 
+* Access monitoring statistics,
 * Update your billing and account information,
 * Request support and perform other administrative tasks.
 
@@ -156,7 +156,7 @@ Once you have the IP address and an SSH client, you can log in via SSH. The foll
 > If you recently rebuilt an existing Linode, you might receive an error message when you try to
 > reconnect via SSH. SSH clients try to match the remote host with the known keys on your desktop computer, so when you rebuild your Linode, the remote host key changes.
 >
->To reconnect via SSH, revoke the key for that IP address. 
+>To reconnect via SSH, revoke the key for that IP address.
 >
 >For Linux and Mac OS X:
 >
@@ -178,9 +178,13 @@ Installing software updates should be performed *regularly*. If you need help re
 
     apt-get update && apt-get upgrade
 
-### CentOS / Fedora
+### CentOS / Fedora 21 or Below
 
     yum update
+
+### Fedora 22 and Above
+
+    dnf upgrade
 
 ### Arch Linux
 
@@ -258,7 +262,7 @@ Enter the following commands to set the hostname, replacing `hostname` with the 
 
 ### Update /etc/hosts
 
-Update the `/etc/hosts` file. This file creates static associations between IP addresses and hostnames, with higher priority than DNS. 
+Update the `/etc/hosts` file. This file creates static associations between IP addresses and hostnames, with higher priority than DNS.
 
 1.  Every `hosts` file should begin with the line `127.0.0.1 localhost.localdomain localhost`, although the naming may be slightly different between Linux distributions. `127.0.0.1` is the [**loopback address**](https://en.wikipedia.org/wiki/Loopback#Virtual_loopback_interface), and is used to send IP traffic internally on the system. You can leave this line alone.
 
@@ -270,7 +274,7 @@ As with the hostname, the domain name part of your FQDN does not necessarily nee
 
 {:.file }
 /etc/hosts
-: ~~~ 
+: ~~~
   127.0.0.1 localhost.localdomain localhost
   203.0.113.10 hostname.example.com hostname
   ~~~
@@ -348,4 +352,3 @@ The output should look similar to: `Thu Feb 16 12:17:52 EST 2012`.
 ## Next Steps
 
 Now that you have an up-to-date Linode, you'll need to secure your Linode and protect it from unauthorized access. Read the [Securing Your Server](/docs/security/securing-your-server) quick start guide to get going.
-

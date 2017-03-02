@@ -6,7 +6,7 @@ description: 'Computer networks frequently use DHCP to assign IP addresses, rout
 keywords: 'multiple ip addresses,linux static ip,change ip address,network configuration,dns,DHCP'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['networking/configuring-static-ip-interfaces/']
-modified: Tuesday, December 6th, 2016
+modified: Wednesday, February 22nd, 2017
 modified_by:
   name: Linode
 published: 'Thursday, July 20th, 2014'
@@ -95,41 +95,46 @@ Add the following addressing to the interface's configuration:
 
 Static IP addresses can be configured in several ways in Arch. See the [Static IP Address](https://wiki.archlinux.org/index.php/Network_Configuration#Static_IP_address) section of Arch's Network Configuration Wiki page for other options such as using Netctl. Additionally, you can [configure DNS](https://wiki.archlinux.org/index.php/Resolv.conf#Preserve_DNS_settings) several other ways without modifying `resolv.conf`.
 
-### CentOS 7 / Fedora 22+
+### CentOS 7 / Fedora
 
-The default ethernet interface file is located at `/etc/sysconfig/network-scripts/ifcfg-eth0`. You can configure a static IP address by adding or editing the following lines, substituting your own Linode's IP addresses, gateways, and DNS resolvers:
+The default ethernet interface file is located at `/etc/sysconfig/network-scripts/ifcfg-eth0`. You can configure a static IP address by editing the following lines, substituting your own Linode's IP addresses, gateways, and DNS resolvers:
 
 {: .file-excerpt }
 /etc/sysconfig/network-scripts/ifcfg-eth0
 :   ~~~ conf
-    DEVICE="eth0"
-    BOOTPROTO="static"
-    ONBOOT="yes"
-    IPV6INIT="yes"
-    IPV6_AUTOCONF="yes"
-    NM_CONTROLLED="no"
-    PEERDNS="no"
 
-    GATEWAY=198.51.100.1
-
-    # Your primary public IP address
-    # The netmask is taken from the PREFIX (where 24 is a public IP, 17 is a private IP)
-    IPADDR0=198.51.100.5
-    PREFIX0="24"
-
-    # To add a second public IP address:
-    IPADDR1=198.51.100.10
-    PREFIX1="24"
-
-    # To add a private IP address:
-    IPADDR2=192.0.2.6
-    PREFIX2="17"
-
+    # Edit this line from "dhcp" to "none":
+    BOOTPROTO=none
+    
+    # Edit from "yes" to "no":
+    PEERDNS=no
+    
+    ...
+    
+    # Add the following lines:
     DOMAIN=members.linode.com
-
+    
+    # We specifically want GATEWAY0 here, not
+    # GATEWAY without an interger following it.
+    GATEWAY0=198.51.100.1
+    
     DNS1=203.0.113.1
     DNS2=203.0.113.2
     DNS3=203.0.113.3
+
+    # Your primary public IP address. The netmask
+    # is taken from the PREFIX (where 24 is a
+    # public IP, 17 is a private IP)
+    IPADDR0=198.51.100.5
+    PREFIX0=24
+
+    # To add a second public IP address:
+    IPADDR1=198.51.100.10
+    PREFIX1=24
+
+    # To add a private IP address:
+    IPADDR2=192.0.2.6
+    PREFIX2=17
     ~~~
 
 To load your changes, restart the network service:
@@ -137,7 +142,7 @@ To load your changes, restart the network service:
     sudo systemctl restart network
 
 {: .note}
-> CentOS 7 and recent versions of Fedora also include NetworkManager, which uses tools such as `nmtui` and `nmcli` to modify and create network configuration files. However, using the method above to make the necessary modifications is more straightforward.
+> CentOS 7 and recent versions of Fedora include NetworkManager, which uses tools such as `nmtui` and `nmcli` to modify and create network configuration files. These are additional options to set static addressing if you would prefer to not manually edit the network interface's configuration file.
 
 ### CentOS 6
 

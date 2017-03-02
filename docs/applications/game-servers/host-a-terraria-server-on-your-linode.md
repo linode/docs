@@ -6,7 +6,7 @@ description: 'Terraria is a two-dimensional sandbox game similar to Minecraft th
 keywords: 'terraria,steam,minecraft,gaming'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Monday, December 21st, 2015'
-modified: Wednesday, February 3rd, 2016
+modified: Tuesday, February 21st, 2017
 modified_by:
   name: Linode
 title: 'Host a Terraria Server on Your Linode'
@@ -26,7 +26,7 @@ external_resources:
 
 This guide outlines everything required to run a Terraria server for yourself or others to play on, and is compatible with any Linux distribution that uses systemd. This includes recent versions of CentOS, Debian and Ubuntu, Arch Linux and Fedora.
 
-Due to Terraria's system requirements, **a Linode 2048 plan is the minimum required** to ensure the server has enough RAM to function. If your Linode does not meet Terraria's minimum requirements, the process will crash intermittently. If you already have a 1 GB Linode, it is possible to resize it to a larger plan. See our guide [Resizing a Linode](/docs/migrate-to-linode/disk-images/resizing-a-linode) for more info.
+Due to Terraria's system requirements, a Linode with at least two CPU cores and adequate RAM is required. For this reason, we recommend using our 4GB plan or higher when following this guide. If your Linode does not meet Terraria's minimum requirements, the process will crash intermittently.
 
 
 ## Before You Begin

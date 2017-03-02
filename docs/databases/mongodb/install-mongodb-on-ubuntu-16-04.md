@@ -24,6 +24,8 @@ MongoDB is a database engine that provides access to non-relational, document-or
 
 MongoDB seeks to provide an alternative to traditional relational database management systems (RDBMS). In addition to its schema-free design and scalable architecture, MongoDB provides a JSON output and specialized, language-specific bindings that make it particularly attractive for use in custom application development and rapid prototyping. MongoDB has been used in a number of large scale [production deployments](https://www.mongodb.org/community/deployments) and is currently one of the most popular database engines across all systems.
 
+Since MongoDB can require a significant amount of RAM, we recommend using a [high memory Linode](https://www.linode.com/pricing#high-memory) with this guide.
+
 ## Before You Begin
 
 - Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
@@ -40,7 +42,7 @@ MongoDB seeks to provide an alternative to traditional relational database manag
 
 ## Add the MongoDB Repository
 
-The `mongodb-server` package from the Ubuntu repository includes version 2.6. However, this version reached end of life in October 2016, so it should not be used in production environments. The most current version available is 3.2 and, as of this writing, the default Ubuntu repositories do not contain an updated package. 
+The `mongodb-server` package from the Ubuntu repository includes version 2.6. However, this version reached end of life in October 2016, so it should not be used in production environments. The most current version available is 3.2 and, as of this writing, the default Ubuntu repositories do not contain an updated package.
 
 Because the Ubuntu repositories don't contain a current version, we'll need to use the MongoDB repository.
 
@@ -117,7 +119,7 @@ You can also enable MongoDB to start on boot:
 
 ## Create Database Users
 
-If you enabled role-based access control in the [Configure MongoDB](#configure-mongodb) section, create a user administrator with credentials for use on the database: 
+If you enabled role-based access control in the [Configure MongoDB](#configure-mongodb) section, create a user administrator with credentials for use on the database:
 
 1.  Open the `mongo` shell:
 
@@ -162,7 +164,7 @@ If you enabled role-based access control in the [Configure MongoDB](#configure-m
 7.  Permissions for different databases are handled in separate `roles` objects. This example creates the user, `example-user`, with read-only permissions for the `user-data` database and has read and write permissions for the `exampleDB` database that we'll create in the [Manage Data and Collections](#manage-data-and-collections) section below.
 
     Create a new, non-administrative user to enter test data. Change both `example-user` and `password` to something relevant and secure:
-       
+
         db.createUser({user: "example-user", pwd: "password", roles:[{role: "read", db: "user-data"}, {role:"readWrite", db: "exampleDB"}]})
 
     To create additional users, repeat Steps 6 and 7 as the administrative user, creating new usernames, passwords and roles by substituing the appropriate values.
