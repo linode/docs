@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-description: Using the Ruby on Rails framework for Nginx web applications on Debian 7
+description: Using the Ruby on Rails framework for Nginx web applications on Debian 8
 keywords: 'ruby on rails,ruby on nginx,rails apps,debian,debian 8, ruby, nginx'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Thursday, June 25th, 2015
@@ -19,6 +19,8 @@ external_resources:
 ---
 
 Ruby on Rails is a rapid development web framework that allows web designers and developers to implement dynamic fully featured web applications. This guide describes the required process for deploying Ruby on Rails with Passenger and the Nginx web server on Debian 8.
+
+![Ruby on Rails with nginx on Debian 8](/docs/assets/ruby_on_rails_with_nginx_debian_8_smg.png "Ruby on Rails with nginx on Debian 8")
 
 {: .note}
 >
