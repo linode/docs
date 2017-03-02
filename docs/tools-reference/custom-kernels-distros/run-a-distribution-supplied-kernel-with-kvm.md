@@ -2,37 +2,37 @@
 author:
   name: Alex Fornuto
   email: docs@linode.com
-description: 'Use the Linode Manager's GRUB 2 boot setting to run your distribution's native Linux kernel.'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+description: "Use the Linode Manager's GRUB 2 boot setting to run your distribution's native Linux kernel"
 keywords: 'kvm,custom linux, kernel,custom linode,grub,grub 2'
-modified: Monday February 20th, 2017
+license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
+modified: 'Monday, February 20th, 2017'
 modified_by:
   name: Linode
-published: 'Monday June 29th, 2015'
+published: 'Monday, June 29th, 2015'
 title: 'Run a Distribution-Supplied Kernel on a KVM Linode'
 ---
 
-Beginning with 2017, you can boot your Linode using your choice of Linode's own kernel or the upstream kernel provided by a distribution's maintainers. Booting with Linode's kernel is enabled by default but changing to the distro-supplied kernel is easy. This is useful if you'd like to enable specific kernel features, or you'd prefer to handle kernel upgrades directly.
+Beginning in 2017, you can boot your Linode using your choice of Linode's own kernel or the upstream kernel provided by a distribution's maintainers. Booting with Linode's kernel is enabled by default, but changing to the distro-supplied kernel is easy. This is useful if you'd like to enable specific kernel features, or you'd prefer to handle kernel upgrades yourself.
 
-## Reboot into a Distribution-Supplied Kernel (for Recommended Distributions)
+## Recommended Distributions
 
-This currently applies to only the distributions under *Recommended* in the Linode Manager's *Deploy an Image* dropdown.
+The steps in this section currently apply only to the distributions under *Recommended* in the Linode Manager's *Deploy an Image* dropdown.
 
-[![Deploy an Image](/docs/assets/deploy-an-image-example.png)
+![Deploy an image](/docs/assets/deploy-an-image-example.png "Deploy an image")
 
 1.  Shut down your Linode from the Linode Manager.
 
 2.  Click **Edit** to view a distribution's configuration profile options.
 
-    [![Click on Edit](/docs/assets/edit_config_profile_small.png)](/docs/assets/edit_config_profile.png)
+    ![Edit the configuration profile](/docs/assets/edit_config_profile_small.png "Edit the configuration profile")
     
 3.  Under **Boot Settings** is a **Kernel** dropdown menu. By default, this will be set to our latest 64 bit kernel.
 
-    [![Boot Settings > Kernel > Latest 64-bit](/docs/assets/boot-settings-kernel-latest-small.png)](/docs/assets/boot-settings-kernel-latest.png)
+    ![Our latest 64 bit kernel](/docs/assets/boot-settings-kernel-latest.png "Our latest 64 bit kernel")
 
-4.  To switch to the distro's default kernel, select **GRUB 2**.
+4.  To switch to the distro's default kernel, select **GRUB 2** instead of the latest 64 bit.
 
-    [![Boot Settings > Kernel > GRUB 2 64-bit](/docs/assets/boot-settings-kernel-grub2-small.png)](/docs/assets/boot-settings-kernel-grub2.png)
+    ![Selecting the distribution's kernel](/docs/assets/boot-settings-kernel-grub2.png "Selecting the distribution's kernel")
 
 5.  Hit **Save Changes** at the bottom of the page and reboot into the new kernel.
 
@@ -40,20 +40,21 @@ Once booted, you can verify the kernel information with `uname`:
 
     uname -r
     
-That should return something similar to:
+This should return something similar to:
 
     4.8.13-1-ARCH
 
-If you want to switch back to the Linode kernel at any time, you simply:
+If you want to switch back to the Linode kernel at any time:
 
-1.  Shut down.
-2.  Select the latest Linode kernel.
-3.  Save Changes and reboot.
+1.  Shut down your Linode.
+2.  Select the latest 64 bit Linode kernel using the steps above.
+3.  Click **Save Changes** and reboot.
 
-### Caveats:
-CentOS 7 and Fedora ship with SELinux installed and enabled by default. When switching from the Linode kernel to the CentOS or Fedora kernel, SELinux must run a relabeling of the filesystem to boot. Systemd will then reboot the Linode and if you have Lassie enabled, you'll be back at the login prompt shortly. If you do not have Lassie enabled, you will need to manually hit *Reboot* in the Linode Manager.
+### Caveats
 
-[![SELinux filesystem relabel](/docs/assets/selinux-filesystem-relabel.png)
+CentOS 7 and Fedora ship with SELinux installed and enabled by default. When switching from the Linode kernel to the CentOS or Fedora kernel, SELinux must run a relabeling of the filesystem to boot. Systemd will then reboot the Linode and if you have Lassie enabled, you'll be back at the login prompt shortly. If you do not have Lassie enabled, you will need to manually *Reboot* in the Linode Manager.
+
+![SELinux filesystem relabel](/docs/assets/selinux-filesystem-relabel.png "SELinux filesystem relabel")
 
 The relabel process is triggered by the empty file `/.autorelabel`.
 
@@ -61,19 +62,22 @@ The relabel process is triggered by the empty file `/.autorelabel`.
     .   .autorelabel  boot  etc   lib    lost+found  mnt  proc  run   srv  tmp  var
     ..  bin           dev   home  lib64  media       opt  root  sbin  sys  usr
 
-We include a systemd unit and bash script in our CentOS 7 and Fedora 25 images to automatically create this file when the Linode kernel is booted. This will save you from needing to do it manually before rebooting into the upstream kernel. You'll find the systemd unit file at `/etc/systemd/system/selinuxfsrelabel.service` which calls `/usr/local/bin/selinuxfsrelabel.sh`.
+We include a systemd unit and bash script in our CentOS 7 and Fedora 25 images to automatically create this file when the Linode kernel is booted. This will save you from needing to do it manually before rebooting into the upstream kernel. You'll find the systemd unit file at `/etc/systemd/system/selinuxfsrelabel.service`, which calls `/usr/local/bin/selinuxfsrelabel.sh`.
 
+## Older Distributions
 
-## Install the Distribution Provided Kernel (for Older Distributions)
+The steps in this section apply to distributions that are not found in the *Recommended* section when deploying an image.
 
 At the time of this writing, these steps have been tested on:
 
 * Arch Linux
-* CentOS 7
+* CentOS
 * Debian
 * Fedora 24
 * Gentoo
 * Ubuntu
+
+### Install the Distribution Provided Kernel
 
 1.  Ensure that your system is up to date using the distribution's package manager.
 
@@ -133,13 +137,13 @@ At the time of this writing, these steps have been tested on:
         vmlinuz-0-rescue-4f09fa5fdd3642fa85221d7c11370603
         vmlinuz-3.10.0-514.el7.x86_64
 
-## Configure Grub
+### Configure Grub
 
-1.  Open `/etc/default/grub` in a text editor and go to the line `GRUB_CMDLINE_LINUX`. Remove the word `quiet` if present, and add `console=ttyS0,19200n8 net.ifnames=0`. Leave the other entries in the line. So using CentOS 7 as an example, you shuld have something similar to:
+1.  Open `/etc/default/grub` in a text editor and go to the line beginning with `GRUB_CMDLINE_LINUX`. Remove the word `quiet` if present, and add `console=ttyS0,19200n8 net.ifnames=0`. Leave the other entries in the line. For example, on CentOS you should have something similar to:
 
       GRUB_CMDLINE_LINUX="crashkernel=auto rhgb console=ttyS0,19200n8 net.ifnames=0"
 
-2.  Then add or change the following options to match what's below. There will be other variables in this file, but we are only concerned with these.
+2.  Then add or change the following options to match what's below. There will be other variables in this file, but we are only concerned with these lines.
 
 	{:.file-excerpt }
 	/etc/default/grub
@@ -171,21 +175,3 @@ At the time of this writing, these steps have been tested on:
 
           update-grub
 
-## Reboot using Grub 2
-
-1.  In your Linode's Dashboard, Click on **Edit** under the  Configuration Profiles section:
-
-    [![Click on Edit](/docs/assets/edit_config_profile_small.png)](/docs/assets/edit_config_profile.png)
-
-2.  In the *Boot Settings* section, select **GRUB 2** from the **Kernel** drop down menu:
-
-    [![Select GRUB 2](/docs/assets/config_profile_grub2.png)](/docs/assets/config_profile_grub2.png)
-
-3.  At the bottom of the page, click on **Save Changes**.
-
-4.  Reboot your Linode. You can monitor the boot process in the [LISH console](/docs/networking/using-the-linode-shell-lish).
-
-5.  After logging back in to your Linode, use `uname -r` to confirm you're booted with the distribution's kernel. The output will be similar to that shown below, again using CentOS 7 as an example:
-
-        [root@centos7 ~]# uname -r
-        3.10.0-514.el7.x86_64
