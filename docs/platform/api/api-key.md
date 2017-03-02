@@ -15,6 +15,8 @@ title: API Key
 
 Learn how to generate and remove your Linode API keys for use with the [Linode API](https://www.linode.com/api/).
 
+![Learn how to generate, update, and disable your Linode API key.](/docs/assets/linode_api_smg.png "Learn how to generate, update, and disable your Linode API key.")
+
 ## Generating
 
 Follow the steps below to generate an API key for your Linode account. This will enable access to the Linode API for this user.

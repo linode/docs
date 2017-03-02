@@ -15,6 +15,8 @@ title: Copying a Disk Over SSH
 
 You can use SSH to copy a Linode's disk to a system that resides on a different network. This is an effective way to back up your Linode's disks to a personal computer or another server. In this guide, you'll learn how to use SSH to copy a Linode's disk to a local system.
 
+![Our guide to copying a disk over SSH](/docs/assets/copying_a_disk_over_ssh_smg.png "Our guide to copying a disk over SSH")
+
 ##Preparing the Receiving Computer
 
 Verify that the receiving computer has SSH installed. (Most Linux/Unix-like systems have it installed by default.) If you're running Windows locally, you may wish to set up the [Cygwin](http://www.cygwin.com/) compatibility layer to provide a reasonably complete Unix-like environment.

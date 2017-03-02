@@ -15,6 +15,8 @@ title: Copying a Disk to a Different Account
 
 You can copy a Linode's disk from one Linode account to another. This is a great way to prepare a disk for another Linode customer and transfer it from your account to the other user's account. Or if you have multiple Linode accounts, you can use this guide to consolidate all of your disks in one account.
 
+![Our guide to copying a disk to a different Linode account](/docs/assets/copying_a_disk_to_a_differnet_account_smg.png "Our guide to copying a disk to a different Linode account")
+
 ## Preparing the Source Linode
 
 Before initiating the transfer, you'll need to prepare the *source* Linode that contains the disk you want to copy. Start the Linode in rescue mode to transfer files to the other account. Here's how:

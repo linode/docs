@@ -13,14 +13,16 @@ published: 'Wednesday, March 27th, 2013'
 title: Longview
 ---
 
-Longview is our Linux system statistics graphing service. It tracks important metrics for CPU, memory, and network use, both aggregate and per-process, and it provides real-time graphs that can help you pinpoint performance problems. Longview can be used to monitor any virtual server or computer running Linux - including systems not hosted by Linode. Features include:
+Longview is our Linux system statistics graphing service. It tracks important metrics for CPU, memory, and network use, both aggregate and per-process, and it provides real-time graphs that can help you pinpoint performance problems. This guide shows you how to start monitoring systems with Longview.
+
+![Our guide to installing and using Linode Longview.](/docs/assets/longview_smg.png "Our guide to installing and using Linode Longview.")
+
+Longview can be used to monitor any virtual server or computer running Linux - including systems not hosted by Linode. Features include:
 
 -   Up-to-the-minute information about each system
 -   Open-source client application
 -   Zoomable graphs with contextual data
 -   Process statistics including CPU, memory, and IO usage
-
-This guide shows you how to start monitoring systems with Longview.
 
 To access Longview, log in to the [Linode Manager](https://manager.linode.com) and click the **Longview** tab.
 
