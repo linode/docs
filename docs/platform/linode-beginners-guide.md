@@ -91,7 +91,7 @@ Resizing your Linode is automated via the "Resize" tab in the Linode Manager, pe
 
 ## How can I test downloads speeds from different datacenters?
 
-You may use our [speed test](http://www.linode.com/speedtest/) page to check latency and download speeds from your location to each of our datacenters. Many customers with a large Asia-Pacific presence find that our Singapore and Tokyofacilities work best, while those with a visitor base in Europe tend to prefer our London or Frankfurt datacenters.
+You may use our [speed test](http://www.linode.com/speedtest/) page to check latency and download speeds from your location to each of our datacenters. Many customers with a large Asia-Pacific presence find that our Singapore and Tokyo facilities work best, while those with a visitor base in Europe tend to prefer our London or Frankfurt datacenters.
 
 ## Can I transfer my Linode to another datacenter?
 
