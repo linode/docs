@@ -44,7 +44,7 @@ Here's how to resize your Linode:
 
     In your Dashboard, click the **Edit** button next to the disk you'd like to allocate the extra storage to. Enter a new size in the specified range and click **Save Changes**.
 
-    [![Adding storage space to an invidivual disk.](/docs/assets/resize-a-disk-small.png)](/docs/assets/resize-a-disk.png)
+    [![Adding storage space to an individual disk.](/docs/assets/resize-a-disk-small.png)](/docs/assets/resize-a-disk.png)
 
 8.  Once completed, your Linode will still be powered off. From the **Dashboard** tab, click **Boot** to turn it on.
 
