@@ -150,7 +150,7 @@ Note that if you later install an updated kernel, you'll need to run this comman
     >
     >     Press any key to continue...
     >
-    > You can safely ignore it.
+    > You can safely ignore it. To prevent this from occuring, add "GRUB_VIDEO_BACKEND=vbe" to /etc/default/grub and run update-grub
 
 5.  After logging back in to your Linode, run `uname -a` again to confirm the new kernel:
 
