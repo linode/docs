@@ -5,7 +5,7 @@ author:
 description: 'Our guide to deploying your first Linode.'
 keywords: 'linode guide,getting started,linode quickstart,quick start,boot,configuration profile,update,hostname,timezone,SSH'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Monday August 24th, 2015
+modified: Friday, March 3rd, 2017
 modified_by:
   name: Linode
 published: 'Sunday, July 19th, 2009'
@@ -178,11 +178,11 @@ Installing software updates should be performed *regularly*. If you need help re
 
     apt-get update && apt-get upgrade
 
-### CentOS / Fedora 21 or Below
+### CentOS
 
     yum update
 
-### Fedora 22 and Above
+### Fedora
 
     dnf upgrade
 
@@ -192,12 +192,21 @@ Installing software updates should be performed *regularly*. If you need help re
 
 ### Gentoo
 
-    emerge --sync
-    emerge --update --deep --with-bdeps=y --newuse @world
+    emaint sync
+
+{: .note}
+>emaint is a [plugin](https://gentoo.org/support/news-items/2015-02-04-portage-sync-changes.html) for emerge, so `emerge --sync` is no longer used and that command now just calls `emaint sync`. The sync command uses the `auto` option by default. See [here](https://wiki.gentoo.org/wiki/Project:Portage/Sync#Operation) for more info on what that means and when you may want to change it. For more information on how to use `emaint`, refer to its [man page](https://dev.gentoo.org/~zmedico/portage/doc/man/emaint.1.html).
+
+After running a sync, it may end with a message that you should upgrade Portage using a *--oneshot* emerge comand. If so, run the Portage update. Then update the rest of the system:
+    
+    emerge --uDN @world
 
 ### Slackware
 
-Slackpkg is the easiest way to update Slackware installations. See the [Slackpkg documentation](http://slackpkg.org/documentation.html) for installation and upgrade instructions.
+    slackpkg update
+    slackpkg upgrade-all
+
+See the [Slackpkg documentation](http://slackpkg.org/documentation.html) for more information on package management in Slackware.
 
 ## Setting the Hostname
 
