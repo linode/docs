@@ -48,7 +48,7 @@ Puppet can be used to manage multiple servers across various infrastructures, fr
 
         wget https://apt.puppetlabs.com/puppetlabs-release-pc1-xenial.deb
         dpkg -i puppetlabs-release-pc1-xenial.deb
-        apt-get update
+        apt update
         
     {: .note}
     >
@@ -66,9 +66,13 @@ Puppet can be used to manage multiple servers across various infrastructures, fr
 
 2.  Install the `puppetmaster-passenger` package:
 
-        apt-get install puppetmaster-passenger
+        apt install puppetmaster-passenger
 
-3.  Ensure you have the latest version of Puppet by running:
+3.  The default Puppet installation may start Apache and configure it to listen on the same port as Puppet port. Stop Apache to avoid this conflict (if using CentOS7, change `apache2` in this example to `httpd`):
+
+        systemctl stop apache2
+
+4.  Ensure you have the latest version of Puppet by running:
 
         puppet resource package puppetmaster ensure=latest
 
@@ -91,36 +95,39 @@ Puppet can be used to manage multiple servers across various infrastructures, fr
 
         netstat -anpl | grep 8140
 
-    The default Puppet installation may start Apache and configure it to listen on this port. If this is the case, stop Apache, and then try starting the puppet master again:
-
-        systemctl stop apache2
-        systemctl start puppetmaster
-
 ## Puppet Agents
 
 ### Install Puppet Agent
 
 On agent nodes running **Ubuntu 16.04** or other Debian-based distributions, use this command to install Puppet:
 
-        apt-get install puppet
+    apt install puppet
 
 On agent nodes running **CentOS 7** or other Red Hat systems, follow these steps:
 
 1.  For **CentOS 7** only, add the Puppet Labs repository:
 
         rpm -ivh https://yum.puppetlabs.com/el/7/products/x86_64/puppetlabs-release-22.0-2.noarch.rpm
-        
+
     {: .note}
     >
     > If you're on a Red Hat system other than CentOS 7, skip this step.
-        
+
 2.  Install the Puppet agent:
 
         yum install puppet
 
 ### Configure Puppet Agent
 
-1.  Add the `server` value to the `[main]` section of the node's `puppet.conf` file, replacing `puppet.example.com` with the FQDN of your Puppet master:
+1.  Modify your Puppet Agent's host file to resolve the Puppet master IP as `puppet`:
+
+    {: .file-excerpt}
+    /etc/hosts
+    :   ~~~ conf
+        198.51.100.0    puppet
+        ~~~
+
+2.  Add the `server` value to the `[main]` section of the node's `puppet.conf` file, replacing `puppet.example.com` with the FQDN of your Puppet master:
 
     {: .file-excerpt}
     /etc/puppet/puppet.conf
@@ -129,16 +136,16 @@ On agent nodes running **CentOS 7** or other Red Hat systems, follow these steps
         server=puppet.example.com
         ~~~
 
-2.  Restart the Puppet service:
+3.  Restart the Puppet service:
 
         systemctl restart puppet
 
 ### Generate and Sign Certificates
 
-1.  Generate a certificate for the Puppet master to sign:
+1.  On each agent, generate a certificate for the Puppet master to sign:
 
         puppet agent -t
-        
+
     This will output an error, stating that no certificate has been found. This error is because the generated certificate needs to be approved by the Puppet master.
 
 2.  Log in to your **Puppet master** and list the certificates that need approval:
@@ -177,6 +184,8 @@ Both the Puppet master and agent nodes configured above are functional, but not 
     The `examples` directory allows you to test the module locally. `files` contains any static files that may need to be edited or added. `manifests` contains the actual Puppet code for the module, and `templates` contains any non-static files that may be needed.
 
 3.  Move to the `manifests` directory and create your first class, called `init.pp`. All modules require an `init.pp` file to be used as the main definition file of a module.
+
+        cd manifests
 
 4.  Within the `init.pp` file, define a limited user to use instead of `root`, replacing all instances of `username` with your chosen username:
 
@@ -262,17 +271,17 @@ Both the Puppet master and agent nodes configured above are functional, but not 
             groups      => "$rootgroup",
           }
         ~~~
-        
+
     The value `"$rootgroup"` is enclosed in double quotes (") instead of single quotes (') because it is a variable. Any value enclosed within single quotes will be added as typed in your module; anything enclosed in double quotes can accept variables.  
 
-8.  The final value that needs to be added is the `password`. Since we do not want to use plain text, it should be fed to Puppet as a SHA1 digest, which is supported by default. Set a password:
+8.  The final value that needs to be added is the `password`. Since we do not want to use plain text, it should be fed to Puppet as a SHA1 digest, which is supported by default. Set a password from the terminal:
 
         openssl passwd -1
 
     You will be prompted to enter your password and confirm. A hashed password will be output. This should then be copied and added to the `user` resource:
 
     {: .file}
-    /etc/puppet/modules/accounts/manifests
+    /etc/puppet/modules/accounts/manifests/init.pp
     :   ~~~ pp
         class accounts {
 
@@ -300,6 +309,8 @@ Both the Puppet master and agent nodes configured above are functional, but not 
     Any errors that need to be addressed will be logged to standard output. If nothing is returned, your code is valid.
 
 10. Before the module can be tested further, navigate to the `examples` directory and create another `init.pp` file, this time to call to the `accounts` module:
+
+        cd ../examples
 
     {: .file}
     /etc/puppet/modules/accounts/examples/init.pp
@@ -340,11 +351,11 @@ Although a new user has successfully been added to the Puppet master, the accoun
 1.  Navigate to `files` within the `account` module directory:
 
         cd /etc/puppet/modules/accounts/files
-        
+
 2.  Copy the `sshd_config` file to this directory:
 
         sudo cp /etc/ssh/sshd_config .
-        
+
 3.  Open the file with `sudo`, and set the `PermitRootLogin` value to `no`:
 
     {: .file-excerpt}
@@ -353,7 +364,9 @@ Although a new user has successfully been added to the Puppet master, the accoun
         PermitRootLogin no
         ~~~
         
-4.  Navigate back to the `manifests` directory and create a file called `ssh.pp`. Use the `file` resource to replace the default configuration file with the one managed by Puppet:
+4.  Navigate back to the `manifests` directory and, using `sudo`, create a file called `ssh.pp`. Use the `file` resource to replace the default configuration file with the one managed by Puppet:
+
+        cd ../manifests
 
     {: .file}
     /etc/puppet/modules/accounts/manifests/ssh.pp
@@ -374,13 +387,13 @@ Although a new user has successfully been added to the Puppet master, the accoun
     
 5.  Create a second resource to restart the SSH service and set it to run whenever `sshd_config` is changed. This will also require a selector statement because the SSH service is called `ssh` on Debian systems and `sshd` on Red Hat:
 
-    {: .file-excerpt}
+    {: .file}
     /etc/puppet/modules/accounts/manifests/ssh.pp
     :   ~~~ pp
 
-          ...
+        class accounts::ssh {
 
-          $sshname = $osfamily ? {
+        $sshname = $osfamily ? {
             'Debian'  => 'ssh',
             'RedHat'  => 'sshd',
             default   => warning('This distribution is not supported by the Accounts module'),
@@ -395,21 +408,49 @@ Although a new user has successfully been added to the Puppet master, the accoun
           service { "$sshname":
             hasrestart  => true,
           }
+        }
         ~~~
-        
+
 6.  Include the `ssh` class within `init.pp`:
 
     {: .file-excerpt}
     /etc/puppet/modules/accounts/manifests/init.pp
     :   ~~~ pp
-        class account {
-        
-          include groups        
+        class accounts {
+          include groups
           include ssh
         
         ...
         ~~~
-        
+    
+    Your complete `init.pp` will look similar to this:
+    
+    {: .file}
+    /etc/puppet/modules/accounts/manifests/init.pp
+    :   ~~~ pp
+        class accounts {
+            include groups
+            include ssh
+
+            $rootgroup = $osfamily ? {
+                'Debian' => 'sudo',
+                'RedHat' => 'wheel',
+                default => warning('This distro not supported by Accounts module'),
+            }
+            user { 'example':
+
+                ensure  => present,
+                home    => '/home/username',
+                shell   => '/bin/bash',
+                managehome  => true,
+                gid     => 'username',
+                groups  => "$rootgroup",
+                password => '$1$07JUIM1HJKDSWm8.NJOqsP.blweQ..3L0'
+            }
+
+        }
+        ~~~
+
 7.  Run the Puppet parser, then navigate to the `examples` directory to test and run `puppet apply`:
 
         sudo puppet parser validate ssh.pp
@@ -423,16 +464,16 @@ Although a new user has successfully been added to the Puppet master, the accoun
     >     `Error: Removing mount "files": /etc/puppet/files does not exist or is not a directory`
     >
     > This refers to a Puppet configuration file, not the module resource you're trying to copy. If this is the only error in your output, the operation should still succeed.
-        
+
 8.  To ensure that the `ssh` class is working properly, log out and then try to log in as `root`. You should not be able to do so.
-        
+
 ### Add and Configure IPtables
 
 In this section, we'll configure firewall rules using `iptables`. However, these rules will not persist across reboots by default. To avoid this, install the appropriate package on each node (both master and agents) before proceeding:
 
 **Ubuntu/Debian**:
 
-    sudo apt-get install iptables-persistent
+    sudo apt install iptables-persistent
 
 **CentOS 7**:
 
@@ -515,7 +556,7 @@ In this section, we'll configure firewall rules using `iptables`. However, these
 4.  In the same directory create `post.pp`, which will run any firewall rules that need to be input last:
 
     {: .file}
-    post.pp
+    /etc/puppet/modules/firewall/manifests/post.pp
     :   ~~~ pp
         class firewall::post {
 
@@ -544,7 +585,7 @@ In this section, we'll configure firewall rules using `iptables`. However, these
 7.  Within `examples`, create an `init.pp` file to test the firewall on the Puppet master:
 
     {: .file}
-    init.pp
+    /etc/puppet/modules/firewall/examples/init.pp
     :   ~~~ pp
         resources { 'firewall':
           purge => true,
@@ -615,7 +656,7 @@ Now that the `accounts` and `firewall` modules have been created, tested, and ru
 3.  Create the file `site.pp` to define which nodes will take what modules. Replace `ubuntuagent.example.com` and `centosagent.example.com` with the FQDNs of your agent nodes:
 
     {: .file}
-    site.pp
+    /etc/puppet/manifests/site.pp
     :   ~~~ pp
         node 'ubuntuagent.example.com' {
           include accounts
