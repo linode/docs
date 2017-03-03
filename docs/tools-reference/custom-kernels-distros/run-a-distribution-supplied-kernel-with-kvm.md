@@ -5,14 +5,14 @@ author:
 description: "Use the Linode Manager's GRUB 2 boot setting to run your distribution's native Linux kernel"
 keywords: 'kvm,custom linux, kernel,custom linode,grub,grub 2'
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
-modified: 'Monday, February 20th, 2017'
+modified: 'Friday, March 3, 2017'
 modified_by:
   name: Linode
 published: 'Monday, June 29th, 2015'
 title: 'Run a Distribution-Supplied Kernel on a KVM Linode'
 ---
 
-Beginning in 2017, you can boot your Linode using your choice of Linode's own kernel or the upstream kernel provided by a distribution's maintainers. Booting with Linode's kernel is enabled by default, but changing to the distro-supplied kernel is easy. This is useful if you'd like to enable specific kernel features, or you'd prefer to handle kernel upgrades yourself.
+As of February, 2017, you can boot your Linode using your choice of Linode's own kernel or the upstream kernel provided by a distribution's maintainers. Booting with Linode's kernel is enabled by default, but changing to the distro-supplied kernel is easy. This is useful if you'd like to enable specific kernel features, or if you'd prefer to handle kernel upgrades yourself.
 
 ## Recommended Distributions
 
@@ -22,11 +22,11 @@ The steps in this section currently apply only to the distributions under *Recom
 
 1.  Shut down your Linode from the Linode Manager.
 
-2.  Click **Edit** to view a distribution's configuration profile options.
+2.  Click **Edit** to view a distribution's configuration profile options:
 
     ![Edit the configuration profile](/docs/assets/edit_config_profile_small.png "Edit the configuration profile")
     
-3.  Under **Boot Settings** is a **Kernel** dropdown menu. By default, this will be set to our latest 64 bit kernel.
+3.  Under **Boot Settings** is a **Kernel** dropdown menu. By default, this will be set to the latest Linode-supplied 64 bit kernel:
 
     ![Our latest 64 bit kernel](/docs/assets/boot-settings-kernel-latest.png "Our latest 64 bit kernel")
 
@@ -34,12 +34,12 @@ The steps in this section currently apply only to the distributions under *Recom
 
     ![Selecting the distribution's kernel](/docs/assets/boot-settings-kernel-grub2.png "Selecting the distribution's kernel")
 
-5.  Hit **Save Changes** at the bottom of the page and reboot into the new kernel.
+5.  Click **Save Changes** at the bottom of the page and reboot into the new kernel.
 
 Once booted, you can verify the kernel information with `uname`:
 
     uname -r
-    
+
 This should return something similar to:
 
     4.8.13-1-ARCH
@@ -56,7 +56,7 @@ CentOS 7 and Fedora ship with SELinux installed and enabled by default. When swi
 
 ![SELinux filesystem relabel](/docs/assets/selinux-filesystem-relabel.png "SELinux filesystem relabel")
 
-The relabel process is triggered by the empty file `/.autorelabel`.
+The relabel process is triggered by the empty `/.autorelabel` file.
 
     [root@li901-254 ~]# ls -a /
     .   .autorelabel  boot  etc   lib    lost+found  mnt  proc  run   srv  tmp  var
@@ -83,46 +83,40 @@ At the time of this writing, these steps have been tested on:
 
 2.  Install the Linux kernel. The package name differs based on your distribution:
 
-    * Arch Linux
+    #### Arch Linux
 
-          pacman -S linux grub
+        pacman -S linux grub
 
-    * CentOS 7
+    #### CentOS 7
 
-          yum install kernel grub2
+        yum install kernel grub2
 
-    * Debian
+    #### Debian
 
-          apt-get install linux-image-amd64 grub2
+        apt-get install linux-image-amd64 grub2
 
-    * Fedora
+    #### Fedora
 
-          dnf install kernel-core grub2
+        dnf install kernel-core grub2
 
-    * Gentoo
+    #### Gentoo
 
-          mkdir /boot/grub
-          
-          echo "GRUB_PLATFORMS=\"coreboot pc\"" >> /etc/portage/make.conf
+        mkdir /boot/grub
+        echo "GRUB_PLATFORMS=\"coreboot pc\"" >> /etc/portage/make.conf
+        emerge --ask sys-boot/grub sys-kernel/gentoo-sources genkernel
+        eselect kernel list
+        eselect kernel set [# of new kernel]
+        zcat /proc/config.gz > /usr/src/linux/.config
+        genkernel --oldconfig all
 
-          emerge --ask sys-boot/grub sys-kernel/gentoo-sources genkernel
+    #### Ubuntu
 
-          eselect kernel list
-
-          eselect kernel set [# of new kernel]
-
-          zcat /proc/config.gz > /usr/src/linux/.config
-
-          genkernel --oldconfig all
-
-    * Ubuntu
-
-          apt-get install linux-image-virtual grub2
+        apt-get install linux-image-virtual grub2
 
     {: .note }
     > During the installation of `grub` you may be asked which disk image to install to. Since Linode provides the grub bootloader, the system need only provide the `grub.cfg` file, and you don't need to install `grub` to your MBR.
 
-    You'll see the kernel and other components you just installed and generated in `/boot`. For example:
+    You'll see the kernel and other components you just installed and generated in the `/boot` directory. For example:
  
         [root@centos7 ~]# ls /boot
         config-3.10.0-514.el7.x86_64
@@ -141,9 +135,9 @@ At the time of this writing, these steps have been tested on:
 
 1.  Open `/etc/default/grub` in a text editor and go to the line beginning with `GRUB_CMDLINE_LINUX`. Remove the word `quiet` if present, and add `console=ttyS0,19200n8 net.ifnames=0`. Leave the other entries in the line. For example, on CentOS you should have something similar to:
 
-      GRUB_CMDLINE_LINUX="crashkernel=auto rhgb console=ttyS0,19200n8 net.ifnames=0"
+        GRUB_CMDLINE_LINUX="crashkernel=auto rhgb console=ttyS0,19200n8 net.ifnames=0"
 
-2.  Then add or change the following options to match what's below. There will be other variables in this file, but we are only concerned with these lines.
+2.  Then add or change the following options to match the following example. There will be other variables in this file, but we are only concerned with these lines.
 
 	{:.file-excerpt }
 	/etc/default/grub
@@ -157,21 +151,22 @@ At the time of this writing, these steps have been tested on:
 
 3.  Run the following command to prepare and update the bootloader:
 
-    * Arch and Gentoo
+    ##### Arch and Gentoo
 
-          grub-mkconfig -o /boot/grub/grub.cfg
+        grub-mkconfig -o /boot/grub/grub.cfg
 
-    * CentOS and Fedora
+    ##### CentOS and Fedora
 
-          mkdir /boot/grub
-          ln -s /boot/grub2/grub.cfg /boot/grub/grub.cfg
-          grub2-mkconfig -o /boot/grub/grub.cfg
-          touch /.autorelabel
-          
-          {: .note }
-          > The autorelabel command is necessary to queue the SELinux filesystem relabeling process when rebooting from the Linode kernel to the CentOS or Fedora kernel.
-          
-    * Debian and Ubuntu
+        mkdir /boot/grub
+        ln -s /boot/grub2/grub.cfg /boot/grub/grub.cfg
+        grub2-mkconfig -o /boot/grub/grub.cfg
+        touch /.autorelabel
 
-          update-grub
+
+    {: .note }
+    > The autorelabel command is necessary to queue the SELinux filesystem relabeling process when rebooting from the Linode kernel to the CentOS or Fedora kernel.
+
+    ##### Debian and Ubuntu
+
+        update-grub
 
