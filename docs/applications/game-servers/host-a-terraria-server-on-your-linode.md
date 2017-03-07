@@ -116,18 +116,22 @@ Check [Terraria news](http://terraria.org/news) to get the latest version, which
 
 1.  Download the Terraria tarball to `/tmp`:
 
-        sudo wget -P /tmp http://terraria.org/server/terraria-server-linux-1308.tar.gz
+        sudo wget -P /tmp http://terraria.org/server/terraria-server-1321.zip
 
-2.  Extract the archive and set its permissions:
+2.  Extract the archive, set its permissions and give some server files execute permissions:
 
-        sudo tar xvzf /tmp/terraria-server-linux-1308.tar.gz -C /opt
+        sudo unzip /tmp/terraria-server-1321.zip -d /opt
+        sudo mv /opt/Dedicated\ Server/Linux /opt/terraria-server-1321
+        sudo rm -rf Dedicated\ Server/
         sudo chown -R root:root /opt/terraria*
         sudo find /opt/terraria* -type f -print0 | sudo xargs -0 chmod a+r
         sudo find /opt/terraria* -type d -print0 | sudo xargs -0 chmod a+rx
+        sudo chmod +x /opt/terraria-server-1321/TerrariaServer*
+        sudo chmod +x /opt/terraria-server-1321/open-folder
 
 3.  Create a link to access the game files with a path that is easier to remember for future steps:
 
-        sudo ln -s /opt/terraria-server-linux-1308 /opt/terraria
+        sudo ln -s /opt/terraria-server-1321 /opt/terraria
 
 4.  Running daemons under discrete users is a good practice. Create a `terraria` user to run the game server as:
 
