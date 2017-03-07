@@ -68,11 +68,11 @@ Apache `mod_status` displays information about incoming server connections by ge
 
 	- 	Debian/Ubuntu:
 
-			service apache2 restart
+			systemctl restart apache2
 
 	-	CentOS/Fedora:
 
-			/bin/systemctl reload httpd.service
+			systemctl restart httpd
 
 5.  To view the file generated, download Lynx:
 
