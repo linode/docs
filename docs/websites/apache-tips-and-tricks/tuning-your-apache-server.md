@@ -16,7 +16,7 @@ external_resources:
  - '[Apache 2.4 Documentation](http://httpd.apache.org/docs/2.4/)' 
 ---
 
-Apache configuration has a major affect on your Linode's performance. The easiest way to increase server performance is to turn off unneeded modules. This guide covers Apache modules, information on which modules to turn off, and other Apache performance tuning options.
+Apache configuration has a major affect on your Linode's performance. The easiest way to increase server performance is to turn off unneeded modules. This guide covers Apache modules, which modules to use or disable, and other Apache performance tuning options.
 
 {: .note}
 >
@@ -29,11 +29,11 @@ There are a variety of tools that can assist in determining if you need to alter
 	echo [PID]  [MEM]  [PATH] &&  ps aux | awk '{print $2, $4, $11}' | sort -k2rn | head -n 20
 	ps -eo pcpu,pid,user,args | sort -k 1 -r | head -20
 
-More specific resources for resource tuning Apache includes Apache `mod_status` and Apache2Buddy.
+For application-specific tools, there's Apache's `mod_status` module, and Apache2Buddy.
 
 ### Apache mod_status
 
-Apache `mod_status` diplays information related to incoming server connections by generating a detailed status page. View an example of this page at [Apache's own website](http://www.apache.org/server-status).
+Apache `mod_status` displays information about incoming server connections by generating a detailed status page. See Apache's [example status](http://www.apache.org/server-status).
 
 1.  Open your website's configuration file. This file is located at `/etc/apache2/sites-available/example.com.conf` on Debian/Ubuntu systems or `/etc/httpd/conf.d/vhost.conf` on CentOS/Fedora systems.
 
@@ -90,7 +90,7 @@ Apache `mod_status` diplays information related to incoming server connections b
 
 ### Apache2Buddy
 
-The Apache2Buddy script, similar to MySQLTuner, reviews your Apache setup, and makes suggestions based on your Apache process memory and overall RAM. Although it is a fairly basic program, focusing on the `MaxClients` directive, Apache2Buddy is useful, and can be run through a single command:
+The Apache2Buddy script reviews your Apache setup, and makes suggestions based on your Apache process memory and the overall RAM available on your system. Although it is a fairly basic program, focusing on the `MaxClients` directive, Apache2Buddy is useful for optimization. You can run Apache2Buddy with this command:
 
 	curl -L http://apache2buddy.pl/ | perl
 
@@ -98,7 +98,7 @@ The Apache2Buddy script, similar to MySQLTuner, reviews your Apache setup, and m
 
 Multi processing modules, or *MPMs*, are Apache modules that handle the creation of child processes on startup. Child processes are responsible for the handling of [threads](https://en.wikipedia.org/wiki/Thread_(computing), which affect your server's ability to handle requests.
 
-Apache offers two main MPMs, or three if you're using Apache 2.4, for managing your settings.
+Apache offers two main MPMs: **Prefork** and **Worker**. for managing your settings. With Apache version 2.4, a third 
 
 {: .note}
 >
@@ -122,13 +122,13 @@ Prefork is generally considered the safest MPM, and is the best choice when usin
 
 The worker module spawns multi-threaded child processes, meaning each child process can handle multiple requests. This allows your server to handle a greater number of concurrent requests with less RAM. The worker module offers high performance, but is less secure than prefork, and is incompatible with non-thread safe modules.
 
-Worker is a good choice when you're running a high-traffic server, and are using an Apache version before 2.4.
+Worker is a good choice when you're running a high-traffic server on an Apache version before 2.4.
 
 ### Event
 
-The event module is only available in Apache 2.4, and is based on the worker module. Like the worker, the event MPM spawns multi-threaded child processes with a thread dedicated to KeepAlive connections. These connections are handed to child threads once a request has been made. This works well with multiple concurrent connections that are not active at the same time, but make occasional requests. For SSL connections, the event MPM functions in the same way as the worker.
+The event module is only available in Apache 2.4, and is based on the worker module. Like the worker, the event MPM spawns multi-threaded child processes with a thread dedicated to KeepAlive connections. These connections are handed to child threads once a request has been made. This works well with multiple concurrent connections that are not active at the same time, that make occasional requests. For SSL connections, the event MPM functions in the same way as the worker.
 
-Event is a good choice when you need to minimize resource consumption and have access to an updated version of Apache.
+Event is a good choice when you need to minimize resource consumption on Apache 2.4.
 
 ## Module Values
 
@@ -149,7 +149,7 @@ Once you select your MPM, you will need to change the values inside the configur
 
 For other MPMs replace `<IfModule mpm_prefork_module>` with `<IfModule mpm_worker_module>` or `<IfModule mpm_event_module>` for worker and event, respectively.
 
-The next step to reconfiguring your Apache server is altering the above settings. To do this, you need to be aware of what each value does, and how best to change it.
+The next step toward optimizing your Apache server is to alter the above settings as needed. To do this, you need to be aware of what each value does, and how best to change it.
 
 Again, the best way to make configuration changes is to make incremental changes and then monitor the effects.
 
@@ -185,7 +185,7 @@ To get information on memory usage:
 
 	free -m
 
-To receive a fuller view of the resources Apache is using, use the `top` command.
+To receive a comprehensive view of the resources Apache is using, use the `top` command.
 
 #### MaxRequestsPerChild
 
