@@ -6,7 +6,7 @@ description: 'Terraria is a two-dimensional sandbox game similar to Minecraft th
 keywords: 'terraria,steam,minecraft,gaming'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Monday, December 21st, 2015'
-modified: Tuesday, February 21st, 2017
+modified: Tuesday, March 7th, 2017
 modified_by:
   name: Linode
 title: 'Host a Terraria Server on Your Linode'
@@ -35,114 +35,123 @@ Due to Terraria's system requirements, a Linode with at least two CPU cores and 
 
 2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the *Configure a Firewall* section yet--this guide includes firewall rules specifically for a Terraria server.
 
-3.  Update your operating system's packages.
-
-    **CentOS**
-
-        sudo yum update
-
-    **Debian / Ubuntu**
-
-        sudo apt-get update && sudo apt-get upgrade
+3.  Ensure your operating system's packages are fully updated.
 
 
 ## Configure a Firewall
 
-Now see our [Securing Your Server](/docs/security/securing-your-server) guide again and complete the section on iptables for your Linux distribution **using the rulesets below**:
+{:.note}
+>
+>Terraria does not use IPv6, only IPv4.
 
-**IPv4**
+### firewalld
 
-~~~
-*filter
+firewalld is the default iptables controller in CentOS 7+ and Fedora. See our guide on using firewalld for more info.
 
-# Allow all loopback (lo0) traffic and reject traffic
-# to localhost that does not originate from lo0.
--A INPUT -i lo -j ACCEPT
--A INPUT ! -i lo -s 127.0.0.0/8 -j REJECT
+1.  Ensure firewalld is enabled and running:
 
-# Allow ping.
--A INPUT -p icmp -m state --state NEW --icmp-type 8 -j ACCEPT
+    sudo systemctl enable firewalld && sudo systemctl start firewalld
 
-# Allow SSH connections.
--A INPUT -p tcp -m state --state NEW --dport 22 -j ACCEPT
+  You should be using the public zone by default. Verify with:
 
-# Allow connections from Terraria clients.
--A INPUT -p tcp --dport 7777 -j ACCEPT
+    sudo firewall-cmd --get-active-zones
 
-# Allow inbound traffic from established connections.
-# This includes ICMP error returns.
--A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+2.  Create a firewalld service file for Terraria:
 
-# Log what was incoming but denied (optional but useful).
--A INPUT -m limit --limit 3/min -j LOG --log-prefix "iptables_INPUT_denied: " --log-level 7
--A FORWARD -m limit --limit 3/min -j LOG --log-prefix "iptables_FORWARD_denied: " --log-level 7
+    {: .file}
+    /etc/firewalld/services/terraria.xml
+    :   ~~~ config
+        <?xml version="1.0" encoding="utf-8"?>
+        <service>
+          <short>Terraria</short>
+          <description>Open TCP port 7777 for incoming Terria client connections.</description>
+          <port protocol="tcp" port="7777"/>
+        </service>
+        ~~~
 
-# Reject all other inbound.
--A INPUT -j REJECT
--A FORWARD -j REJECT
+3.  Enable the firewalld service, reload firewalld and verify the Terraria service is being used:
 
-COMMIT
-~~~
+    sudo firewall-cmd --zone=public --permanent --add-service=terraria
+    sudo firewall-cmd --reload
+    sudo firewall-cmd --zone=public --permanent --list-services
 
-**IPv6**
+  The output of the last command should be similar to:
 
-Terraria currently supports multiplayer only over IPv4, so a Terraria server needs only basic IPv6 firewall rules.
+    dhcpv6-client ssh terraria
 
-~~~
-*filter
 
-# Allow all loopback (lo0) traffic and reject traffic
-# to localhost that does not originate from lo0.
--A INPUT -i lo -j ACCEPT
--A INPUT ! -i lo -s ::1/128 -j REJECT
+### ufw
 
-# Allow ICMP
--A INPUT -p icmpv6 -j ACCEPT
+ufw is an iptables controller packaged with Ubuntu but it's not installed in Debian by default. 
 
-# Allow inbound traffic from established connections.
--A INPUT -m state --state ESTABLISHED -j ACCEPT
+1.  Install ufw if needed:
 
-# Reject all other inbound.
--A INPUT -j REJECT
--A FORWARD -j REJECT
+    sudo apt install ufw
 
-COMMIT
-~~~
+2.  Add SSH and a rule for Terraria. It's important you add rules before enabling ufw. If you don't, you'll terminate your SSH session and will need to access your Linode using [Lish](https://www.linode.com/docs/networking/using-the-linode-shell-lish/).
+
+    sudo ufw allow ssh
+    sudo ufw allow 7777/tcp
+
+3.  Only after your rules are added, enable ufw. Then remove the Terraria rule for IPv6 since it's not needed.
+
+    sudo ufw enable
+    sudo ufw delete 4
+
+
+
+
+
+### iptables
+
+If you wish to use only iptables with no controller, see our [iptables guide](https://www.linode.com/docs/security/firewalls/control-network-traffic-with-iptables) for a general ruleset.
+
+1.  You'll also want to add the rule below for Terraria:
+
+    sudo iptables -A INPUT -p tcp --dport 7777 -j ACCEPT
+
+2.  Verify with:
+
+    sudo iptables -L
 
 
 ## Install and Configure Terraria
 
-Check [Terraria news](http://terraria.org/news) to get the latest version, which is 1.3.0.8 at the time of this writing.
+1.  Change your working directory to `/opt` and download the Terraria tarball. You'll need to check [Terraria's website](http://terraria.gamepedia.com/Server#How_to_.28Linux.29) for the current release version. Right-click and copy the link to use with `curl` or `wget`. At the time of this writing, the current version is 1.3.3.3 so that is what will be used in this guide.
+ 
+        cd /opt && curl -O http://terraria.org/server/terraria-server-1333.zip
 
-1.  Download the Terraria tarball to `/tmp`:
+2. You will need the `unzip` utility to decompress the .zip file. Install it using your distribution's package manager:
 
-        sudo wget -P /tmp http://terraria.org/server/terraria-server-linux-1308.tar.gz
+        sudo apt install unzip
 
-2.  Extract the archive and set its permissions:
+        sudo yum install unzip
 
-        sudo tar xvzf /tmp/terraria-server-linux-1308.tar.gz -C /opt
-        sudo chown -R root:root /opt/terraria*
-        sudo find /opt/terraria* -type f -print0 | sudo xargs -0 chmod a+r
-        sudo find /opt/terraria* -type d -print0 | sudo xargs -0 chmod a+rx
-
-3.  Create a link to access the game files with a path that is easier to remember for future steps:
-
-        sudo ln -s /opt/terraria-server-linux-1308 /opt/terraria
+3.  Extract the archive and set the necessary permissions:
+ 
+        sudo unzip terraria-server-1333.zip
+        sudo mv /opt/Dedicated\ Server/Linux /opt/terraria
+        sudo rm -rf Dedicated\ Server/
+        sudo chown -R root:root /opt/terraria
+        sudo chmod +x /opt/terraria/TerrariaServer.bin.x86_64
 
 4.  Running daemons under discrete users is a good practice. Create a `terraria` user to run the game server as:
 
         sudo useradd -r -m -d /srv/terraria terraria
 
-5.  Terraria can be configured to automatically create a world and start the server without any manual intervention. You can use several [server options](http://terraria.gamepedia.com/Server#Server_config_file) to customize settings such as difficulty, server passwords, and so on.
+5.  Terraria has a server configuration file which can be edited with settings such as automatically creating a world, server passwords and other options shown [here](http://terraria.gamepedia.com/Server#serverconfig). Create a copy of the default file so you have something to revert back to if you run into problems.
 
-    The options given below will automatically create and serve `MyWorld` when the game server starts up. Note that you should change `MyWorld` to a world name of your choice.
+    sudo mv /opt/terraria/serverconfig.txt /opt/terraria/serverconfig.txt.bak
+
+
+    Then create a new server configuration file for yourself. The options below will automatically create and serve `MyWorld` when the game server starts up. Note that you should change `MyWorld` to a world name of your choice.
 
     {: .file}
-    /srv/terraria/config.txt
+    /opt/terraria/serverconfig.txt
     :   ~~~ ini
+        world=/srv/terraria/Worlds/MyWorld.wld
         autocreate=1
         worldname=MyWorld
-        world=/srv/terraria/Worlds/MyWorld.wld
         worldpath=/srv/terraria/Worlds
         ~~~
 
@@ -151,9 +160,9 @@ Check [Terraria news](http://terraria.org/news) to get the latest version, which
 
 ### Screen
 
-Terraria, like many other game servers, runs an interactive console as part of its server process. While useful, accessing this console can be challenging when operating game servers under service managers. The problem can be solved by running Terraria in a [Screen](https://www.gnu.org/software/screen/) session that will enable you to send arbitrary commands to the listening admin console within Screen.
+Terraria runs an interactive console as part of its server process. While useful, accessing this console can be challenging when operating game servers under service managers. The problem can be solved by running Terraria in a [Screen](https://www.gnu.org/software/screen/) session that will enable you to send arbitrary commands to the listening admin console within Screen.
 
-Install Screen with the system's package manager.
+Install Screen with the system's package manager:
 
 **CentOS**
 
@@ -161,7 +170,7 @@ Install Screen with the system's package manager.
 
 **Debian / Ubuntu**
 
-    sudo apt-get install screen
+    sudo apt install screen
 
 ### systemd
 
@@ -179,16 +188,16 @@ Create the following file to define the `terraria` systemd service:
     Type=forking
     User=terraria
     KillMode=none
-    ExecStart=/usr/bin/screen -dmS terraria /bin/bash -c "/opt/terraria/TerrariaServer -autoarch -config /srv/terraria/config.txt"
+    ExecStart=/usr/bin/screen -dmS terraria /bin/bash -c "/opt/terraria/TerrariaServer.bin.x86_64 -config /opt/terraria/serverconfig.txt"
     ExecStop=/usr/local/bin/terrariad exit
 
     [Install]
     WantedBy=multi-user.target
     ~~~
 
-*   **ExecStart** instructs systemd to spawn a Screen session containing `TerrariaServer` which starts the daemon and sets `KillMode=none` to ensure that systemd does not prematurely kill the server before it has had a chance to cleanly save and close down the server.
+*   **ExecStart** instructs systemd to spawn a Screen session containing the 64 bit `TerrariaServer` binary, which starts the daemon. `KillMode=none`is used to ensure that systemd does not prematurely kill the server before it has had a chance to cleanly save and shut it down.
 
-*   **ExecStop** calls a script to send the `exit` command to Terraria, which the server will recognize and ensure that the world is saved before shutting down. To do this, a script is needed to send arbitrary commands to the running `TerrariaServer` instance, which will be written next.
+*   **ExecStop** calls a script to send the `exit` command to Terraria, which the server will recognize and ensure that the world is saved before shutting down. To do this, a script is needed to send arbitrary commands to the running Terraria instance. This script will be added next.
 
 {: .caution}
 >
@@ -260,20 +269,14 @@ To check if the server is running, use the command:
 The output should be similar to:
 
 ~~~
-● terraria.service - server daemon for terraria
+● terraria.service
    Loaded: loaded (/etc/systemd/system/terraria.service; disabled)
-   Active: inactive (dead)
-user1@localhost:~$ sudo systemctl start terraria
-user1@localhost:~$ sudo systemctl status terraria
-● terraria.service - server daemon for terraria
-   Loaded: loaded (/etc/systemd/system/terraria.service; disabled)
-   Active: active (running) since Thu 2015-12-10 21:02:54 UTC; 1s ago
-  Process: 12462 ExecStart=/usr/bin/screen -dmS terraria /bin/bash -c /opt/terraria/TerrariaServer -autoarch -config /srv/terraria/config.txt (code=exited, status=0/SUCCESS)
- Main PID: 12463 (screen)
+   Active: active (running) since Tue 2017-03-07 17:37:03 UTC; 7s ago
+  Process: 31143 ExecStart=/usr/bin/screen -dmS terraria /bin/bash -c /opt/terraria/TerrariaServer.bin.x86_64 -config /opt/terraria/serverconfig.txt (code=exited, status=0/SUCCESS)
+ Main PID: 31144 (screen)
    CGroup: /system.slice/terraria.service
-           ├─12463 /usr/bin/SCREEN -dmS terraria /bin/bash -c /opt/terraria/TerrariaServer -autoarch -config /srv/terraria/config.txt
-           ├─12464 /bin/bash /opt/terraria/TerrariaServer -autoarch -config /srv/terraria/config.txt
-           └─12469 ./TerrariaServer.bin.x86_64 -autoarch -config /srv/terraria/config.txt
+           ├─31144 /usr/bin/SCREEN -dmS terraria /bin/bash -c /opt/terraria/TerrariaServer.bin.x86_64 -config /opt/terraria/serverconfig.txt
+           └─31145 /opt/terraria/TerrariaServer.bin.x86_64 -config /opt/terraria/serverconfig.txt
 ~~~
 
 ###Stop the Server
