@@ -44,7 +44,7 @@ Puppet can be used to manage multiple servers across various infrastructures, fr
 
 ### Install Puppet Master
 
-1.  Enable the `puppetlabs-release` repository on Ubuntu 16.04, unpackage it and update your system. This process downloads a `.deb` file that will configure the repositories for you:
+1.  Install the `puppetlabs-release` repository into Ubuntu 16.04 and update your system. This process downloads a `.deb` file that will configure the repositories for you:
 
         wget https://apt.puppetlabs.com/puppetlabs-release-pc1-xenial.deb
         dpkg -i puppetlabs-release-pc1-xenial.deb
@@ -68,7 +68,7 @@ Puppet can be used to manage multiple servers across various infrastructures, fr
 
         apt install puppetmaster-passenger
 
-3.  The default Puppet installation may start Apache and configure it to listen on the same port as Puppet port. Stop Apache to avoid this conflict (if using CentOS7, change `apache2` in this example to `httpd`):
+3.  The default Puppet installation may start Apache and configure it to listen on the same port as Puppet. Stop Apache to avoid this conflict (if using CentOS7, change `apache2` in this example to `httpd`):
 
         systemctl stop apache2
 
@@ -87,11 +87,11 @@ Puppet can be used to manage multiple servers across various infrastructures, fr
         dns_alt_names=puppet,puppet.example.com
         ~~~
 
-2.  Start the puppet master:
+2.  Start the Puppet master:
 
         systemctl start puppetmaster
 
-    By default, the puppet master process listens for client connections on port 8140. If the `puppetmaster` service fails to start, check that the port is not already in use:
+    By default, the Puppet master process listens for client connections on port 8140. If the `puppetmaster` service fails to start, check that the port is not already in use:
 
         netstat -anpl | grep 8140
 
@@ -164,7 +164,7 @@ On agent nodes running **CentOS 7** or other Red Hat systems, follow these steps
 
 ## Add Modules to Configure Agent Nodes
 
-Both the Puppet master and agent nodes configured above are functional, but not fully secure. Based on concepts from the [Securing Your Server](/docs/security/securing-your-server/) guide, a limited user and a firewall should be configured. This can be done on all nodes through the creation of basic Puppet modules, shown below. This section is optional, but strongly recommended.
+Both the Puppet master and agent nodes configured above are functional, but not secure. Based on concepts from the [Securing Your Server](/docs/security/securing-your-server/) guide, a limited user and a firewall should be configured. This can be done on all nodes through the creation of basic Puppet modules, shown below.
 
 {: .note}
 >
@@ -477,8 +477,13 @@ In this section, we'll configure firewall rules using `iptables`. However, these
 
 **CentOS 7**:
 
+CentOS 7 uses firewalld by default as a controller for iptables. Be sure firewalld is stopped and disabled before starting to work directly with iptables:
+
+    sudo systemctl stop firewalld && sudo systemctl disable firewalld
+    
     sudo yum install iptables-services
 
+               
 1.  On your Puppet master node, install Puppet Lab's firewall module from the Puppet Forge:
 
         sudo puppet module install puppetlabs-firewall
@@ -605,7 +610,7 @@ In this section, we'll configure firewall rules using `iptables`. However, these
         }
         ~~~
 
-    This code block ensures that `pre.pp` and `post.pp` run properly, and adds a Firewall rule to the Puppet master to allow nodes to access it.
+    This code block ensures that `pre.pp` and `post.pp` run properly, and adds a firewall rule to the Puppet master to allow nodes to access it.
 
 8.  Run the `init.pp` file through the Puppet parser and then test to see if it will run:
 
