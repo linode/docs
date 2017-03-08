@@ -6,7 +6,7 @@ description: 'Use Fail2ban to block automated system attacks and further harden 
 keywords: 'fail2ban'
 alias: ['tools-reference/tools/using-fail2ban-to-block-network-probes/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Friday, February 24th 2017
+modified: Wednesday, March 8th, 2017
 modified_by:
   name: Linode
 published: 'Monday, October 12th, 2015'
@@ -43,7 +43,7 @@ Follow the [Getting Started](/docs/getting-started) guide to configure your basi
 
 3.  Install Sendmail if you additionally would like email support. Sendmail is not required to use Fail2Ban.:
 
-    yum install sendmail
+        yum install sendmail
 
 4.  Start and enable Fail2ban and, if needed, Sendmail:
 
@@ -51,7 +51,12 @@ Follow the [Getting Started](/docs/getting-started) guide to configure your basi
         systemctl enable fail2ban
         systemctl start sendmail
         systemctl enable sendmail
-Note:  create directory '/var/run/fail2ban' if you start Fail2ban failed.
+
+    {:.note}
+    > Should you encounter the error that there is "*no directory /var/run/fail2ban to contain the socket file /var/run/fail2ban/fail2ban.sock*", create the directory manually:
+    >
+    > 'mkdir /var/run/fail2ban`
+
 ### Debian
 
 1.  Ensure your system is up to date:
@@ -144,23 +149,23 @@ Fail2ban reads its configuration files so that all `.conf` files are read first 
         {: .file-excerpt}
         /etc/fail2ban/jail.local
         :   ~~~ conf
-        # "backend" specifies the backend used to get files modification.
-        # Available options are "pyinotify", "gamin", "polling", "systemd" and "auto".
-        # This option can be overridden in each jail as well.
-        
-        . . .
-        
-        backend = systemd
-        ~~~
+            # "backend" specifies the backend used to get files modification.
+            # Available options are "pyinotify", "gamin", "polling", "systemd" and "auto".
+            # This option can be overridden in each jail as well.
+            
+            . . .
+            
+            backend = systemd
+            ~~~
 
 3.  No jails are enabled by default in CentOS 7. For example, to enable the SSH daemon jail, uncomment the following lines in `jail.local:
 
         {: .file-excerpt}
         /etc/fail2ban/jail.local
         :   ~~~ conf
-        [sshd]
-        enabled = true
-        ~~~
+            [sshd]
+            enabled = true
+            ~~~
 
 #### IP Whitelisting        
 
