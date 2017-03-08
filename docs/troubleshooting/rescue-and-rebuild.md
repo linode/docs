@@ -28,13 +28,13 @@ Here's how to boot your Linode into Rescue Mode:
 3.  Select a Linode. The Linode's dashboard appears.
 4.  Click the **Rescue** tab. The webpage shown below appears.
 
-[![The Rescue tab in the Linode Manager](/docs/assets/1000-rescue3-1.png)](/docs/assets/1000-rescue3-1.png)
+    [![The Rescue tab in the Linode Manager](/docs/assets/1000-rescue3-1.png)](/docs/assets/1000-rescue3-1.png)
 
 5.  In the **Rescue Mode** section, select the disks you want to be mounted.
 
- {: .note }
->
-> Make a note of where the disks are located. For example, in the screenshot shown above, the Ubuntu disk is at `/dev/sda`. You will need this information later.
+    {: .note }
+    >
+    > Make a note of where the disks are located. For example, in the screenshot shown above, the Ubuntu disk is at `/dev/sda`. You will need this information later.
 
 6.  Click **Reboot into Rescue Mode**. The Linode's dashboard appears. Watch the *Host Job Queue* on the Dashboard to monitor the progress.
 
