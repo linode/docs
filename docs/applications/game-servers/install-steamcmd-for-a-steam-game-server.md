@@ -151,6 +151,10 @@ Installing via the package manager allows you to more easily download updates an
 1.  Install the package:
 
         sudo apt-get install steamcmd
+
+    {: .note}
+    >
+    >On Debian you need to add the `non-free` area of the repository to your sources, because the package is available only there.
         
 2.  Create a symlink to the `steamcmd` executable in a convenient place, such as your home directory:
 
