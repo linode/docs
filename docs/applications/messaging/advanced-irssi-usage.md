@@ -15,7 +15,7 @@ external_resources:
  - '[Irssi Script Repository](http://scripts.irssi.org/)'
  - '[Irssi Themes Page](http://irssi.org/themes/)'
  - '[An Effective Guide for Using Screen and Irssi](http://quadpoint.org/articles/irssi)'
- - '[The Open and Free Technology Community](http://www.oftc.net/oftc/)'
+ - '[The Open and Free Technology Community](https://www.oftc.net/)'
  - '[The Freenode IRC Network](http://freenode.net/)'
  - '[GNU Screen](http://www.gnu.org/software/screen/)'
 ---
