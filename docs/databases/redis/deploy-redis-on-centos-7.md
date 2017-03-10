@@ -14,7 +14,7 @@ external_resources:
  - '[Redis Project Home Page](http://redis.io/)'
  - '[Redis Configuration](http://redis.io/topics/config)'
  - '[Redis Persistence](http://redis.io/topics/persistence)'
- - '[Redis Security](http://redis.io/security)'
+ - '[Redis Security](http://redis.io/topics/security)'
 ---
 
 Redis is an open-source, in-memory, data structure store with optional disk writes for persistence. It can be used as a key-value database, or as a cache and message broker. Redis features built-in transactions, replication, and support for a variety of data structures such as strings, hashes, lists, sets, and others. Redis can be made highly available with Redis Sentinel and supports automatic partitioning with Redis Cluster. This document provides both instructions for deploying the Redis server, and an overview of best practices for maintaining Redis instances on CentOS 7.
