@@ -140,7 +140,7 @@ You can also modify existing DNS records in the DNS Manager.
 
 You have successfully edited the DNS record. It can take up to 30 minutes for the record to be updated.
 
-### Import Domain Zones
+### Import Domain Zones with AXFR
 
 If you're migrating domains to Linode from another hosting provider, and that provider allows zone transfers from its DNS server, it may be possible to import your existing domain zone and DNS records into the Linode Manager. If the import is successful, all of your existing DNS records will be available in the DNS Manager.
 
