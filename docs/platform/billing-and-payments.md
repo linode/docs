@@ -127,7 +127,9 @@ If you exceed your monthly bandwidth quota, your account will be billed for $0.0
 
 ## Bandwidth Pro-ration
 
-The bandwidth quota for a Linode is pro-rated based on its creation date, meaning that if a Linode is created mid-month it's quota for that month will be proportionate to the amount of time remaining in the month.
+Your Linode's bandwidth quota is prorated based on its creation date. This means that a Linode you create mid-month will have less bandwidth quota than what's listed on our [pricing page](https://www.linode.com/pricing), depending on how much time remains in the month.
+
+Prorated bandwidth quota is reset at the beginning of the following month.
 
 ## Accessing Billing History
 
