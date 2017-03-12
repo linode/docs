@@ -125,6 +125,10 @@ The payment may take a few minutes to be applied to your account. Click the **Ac
 
 If you exceed your monthly bandwidth quota, your account will be billed for $0.02/GB at the end of the current month.
 
+## Bandwidth Pro-ration
+
+The bandwidth quota for a Linode is pro-rated based on its creation date, meaning that if a Linode is created mid-month it's quota for that month will be proportionate to the amount of time remaining in the month.
+
 ## Accessing Billing History
 
 All of your billing history is stored in the Linode Manager. Here's how to access it:
