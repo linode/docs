@@ -147,6 +147,7 @@ At the time of this writing, these steps have been tested on:
       GRUB_SERIAL_COMMAND="serial --speed=19200 --unit=0 --word=8 --parity=no --stop=1"
       GRUB_DISABLE_LINUX_UUID=true
       GRUB_GFXPAYLOAD_LINUX=text
+      GRUB_CMDLINE_LINUX="console=ttyS0,19200n8"
 	  ~~~
 
 3.  Run the following command to prepare and update the bootloader:
