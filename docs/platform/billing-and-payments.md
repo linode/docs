@@ -6,7 +6,7 @@ description: Our guide to billing and payments.
 keywords: 'billing,payments'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['billing-and-payments/']
-modified: Tuesday, February 14th, 2017
+modified: Wednesday, March 15th, 2017
 modified_by:
   name: Linode
 published: 'Friday, February 28th, 2014'
