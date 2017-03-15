@@ -170,7 +170,7 @@ Our services are provided without a contract, so you're free to remove services 
 2.  To remove a Linode from your account, click the **Linodes** tab, and then select the **Remove** link next to the Linode you want to remove.
 3.  To remove extras from your account, click the **Linodes** tab, select a Linode, click the **Extras** tab, and then select the **Remove** link.
 4.  To remove a NodeBalancer from your account, click the **NodeBalancers** tab, and then select the **Remove** link next to the NodeBalancer you want to remove.
-5.  To remove the Linode Backup Service, please [contact support](/docs/support).
+5.  To remove the Linode Backup Service, go to the **Backups** tab in your Linode's Dashboard, and click the **Cancel Backups** link at the bottom of the page. 
 
 ## Canceling Your Account
 
