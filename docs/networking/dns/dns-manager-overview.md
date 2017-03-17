@@ -88,7 +88,7 @@ Here's how to add a new domain zone:
     {: .note}
     > In order for Linode's DNS servers to function as slaves, your DNS master server must notify and allow AXFR requests to and from the follow IP addresses:
     >
-    >     69.93.127.10
+    >     104.237.137.10
     >     65.19.178.10
     >     75.127.96.10
     >     207.192.70.10

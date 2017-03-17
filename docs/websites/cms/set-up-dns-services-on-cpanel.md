@@ -63,7 +63,7 @@ The transfer of DNS records from your Master DNS server to the Linode DNS server
 /etc/named.conf
 :   ~~~
     allow-transfer {
-         69.93.127.10;
+         104.237.137.10;
          65.19.178.10;
          75.127.96.10;
          207.192.70.10;
@@ -75,7 +75,7 @@ The transfer of DNS records from your Master DNS server to the Linode DNS server
          2a01:7e00::a;
      };
      also-notify {
-         69.93.127.10;
+         104.237.137.10;
          65.19.178.10;
          75.127.96.10;
          207.192.70.10;
