@@ -123,6 +123,11 @@ When you first create a domain zone, you'll need to add some DNS records. The DN
     ![This page allows you to create a new A/AAAA record.](/docs/assets/1122-dns10.png)
 
 3.  Enter a hostname in the **Hostname** field.
+
+	{: .note }
+	>
+	> Domain zones do not allow multi-level wildcard subdomains, e.g. "*.subdomain.example.com". If you want a wildcard subdomain, then you'll need to make an entire new zone for the subdomain, "subdomain.example.com". This zone will then accept a record with a hostname value of '*'.
+	
 4.  Enter the IP address of your server in the **IP Address** field. For instructions, see [Finding the IP Address](/docs/getting-started#finding-the-ip-address).
 5.  From the **TTL** menu, select a time interval. *TTL*, which stands for "time to live," controls how long DNS records are cached by DNS resolvers before the resolver must query the authoritative name servers for new records.
 6.  Click **Save Changes**.
