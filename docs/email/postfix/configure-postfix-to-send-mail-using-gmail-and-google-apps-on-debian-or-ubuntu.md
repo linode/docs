@@ -5,7 +5,7 @@ author:
 description: 'Install and configure Postfix on Debian and Ubuntu to send email through Gmail and Google Apps.'
 keywords: 'Postfix, Ubuntu, Debian, SMTP, Gmail'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Tuesday, December 13, 2016
+modified: Wednesday, March 22, 2017
 modified_by:
   name: Edward Angert
 published: 'Tuesday, December 13, 2016'
@@ -54,6 +54,22 @@ In this section, you will install Postfix as well as *libsasl2*, a package which
         myhostname = fqdn.example.com
         ~~~
 
+## Generate an App Password for Postfix
+
+When Two-Factor Authentication (2FA) is enabled, Gmail is preconfigured to refuse connections from applications like Postfix that don't provide the second step of authentication. While this is an important security measure that is designed to restrict unauthorized users from accessing your account, it hinders sending mail through some SMTP clients as you're doing here. Follow these steps to configure Gmail to create a Postfix-specific password:
+
+1. Log in to your email, then click the following link: [Manage your account access and security settings](https://myaccount.google.com/security). Scroll down to "Password & sign-in method" and click **2-Step Verification**. You may be asked for your password and a verification code before continuing. Ensure that 2-Step Verification is enabled.
+
+2.  Click the following link to [Generate an App password](https://security.google.com/settings/security/apppasswords) for Postfix:
+
+    ![Generate an App password](/docs/assets/postfix-gmail-app-password.png "Generate an App password")
+
+3.  Click **Select app** and choose **Other (custom name)** from the dropdown. Enter "Postfix" and click **Generate**.
+
+4.  The newly generated password will appear. Write it down or save it somewhere secure that you'll be able to find easily in the next steps, then click **Done**:
+
+    ![Generated app password](/docs/assets/postfix-gmail-generated-app-password.png "Generated app password")
+
 ## Add Gmail Username and Password to Postfix
 
 Usernames and passwords are stored in `sasl_passwd` in the `/etc/postfix/sasl/` directory. In this section, you'll add your email login credentials to this file and to Postfix.
@@ -90,7 +106,6 @@ In this section, you will configure the `/etc/postfix/main.cf` file to use Gmail
     {: .file-excerpt }
     /etc/postfix/main.cf
     :   ~~~
-        # specify SMTP relay host
         relayhost = [smtp.gmail.com]:587
         ~~~
 
@@ -117,21 +132,17 @@ In this section, you will configure the `/etc/postfix/main.cf` file to use Gmail
 
         sudo systemctl restart postfix
 
-## Allow Postfix Connections Through Gmail and Google Apps
+## Troubleshooting - Enable "Less secure apps" access
 
-Gmail is preconfigured to refuse connections from Postfix. While this is an important security measure that is designed to restrict unauthorized users from accessing your account, it disables sending mail through SMTP as you're doing here. Follow these steps to configure Gmail to accept connections from Postfix:
+In some cases, Gmail might still block connections from what it calls "Less secure apps." To enable access:
 
-1. Log into your email, then click the following link to [Manage your account access and security settings](https://myaccount.google.com/security). Scroll down to "Password & sign-in method" and click **2-Step Verification**. You may be asked for your password and a verification code before continuing. Click the **TURN OFF** button as shown in the following image. Gmail will automatically send a confirmation email.
-
-    ![Disable two-Step Verification](/docs/assets/postfix-gmail-2-step_verification.png "Disable two-Step Verification")
-
-2.  [Enable "Less secure apps" access](https://www.google.com/settings/security/lesssecureapps)
+1.  [Enable "Less secure apps" access](https://www.google.com/settings/security/lesssecureapps)
 
     Select **Turn on**. A yellow "Updated" notice will appear at the top of the browser window and Gmail will automatically send a confirmation email.
 
     ![Enable "Less Secure Apps"](/docs/assets/postfix-gmail-less-secure-apps.png "Enable "Less Secure Apps"")
 
-3.  Test Postfix as shown in the following section. If your test emails don't appear after a few minutes, [disable captcha from new application login attempts](https://accounts.google.com/DisplayUnlockCaptcha) and click **Continue**.
+2.  Test Postfix as shown in the following section. If your test emails don't appear after a few minutes, [disable captcha from new application login attempts](https://accounts.google.com/DisplayUnlockCaptcha) and click **Continue**.
 
 ## Test Postfix
 
