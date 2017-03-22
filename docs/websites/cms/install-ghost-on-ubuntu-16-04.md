@@ -2,17 +2,17 @@
 author:
   name: Elliot Blackburn
   email: elliot.blackburn@gmail.com
-description: 'Install, configure, and optimize the Ghost blogging application your Linode.'
+description: 'Install, configure, and optimize the Ghost blogging application on your Linode.'
 keywords: 'Ghost,install Ghost,Ghost on Linode,how to configure Ghost'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Wednesday, November 29, 2016
+modified: Thursday, March 22nd, 2017
 modified_by:
   name: Elliot Blackburn
-published: 'Wednesday, November 29, 2016'
+published: 'Thursday, March 22nd, 2017'
 title: Install Ghost on Ubuntu 16.04
 ---
 
-Ghost is a relatively new publishing platform. Its simplistic design and focus on blogging makes it a popular choice for those looking to share written content, and it is well equipped for use by individuals or small groups. This guide will take you through the installation and configuration of Ghost along with nginx, on a Linode running Ubuntu 16.04 LTS.
+[Ghost](https://ghost.org/) is a relatively new publishing platform. Its simplistic design and focus on blogging makes it a popular choice for those looking to share written content, and it is well equipped for use by individuals or small groups. This guide will take you through the installation and configuration of Ghost with nginx on a Linode running Ubuntu 16.04 LTS.
 
 {: .note}
 >
@@ -24,7 +24,7 @@ Ghost is a relatively new publishing platform. Its simplistic design and focus o
 
 2. Ensure that your system is up to date:
 
-        sudo apt-get update && sudo apt-get upgrade
+        sudo apt update && sudo apt upgrade
 
 ## Install Node.js
 
@@ -38,28 +38,28 @@ In this section, you'll use a tool called *nvm* (node version manager) to instal
 
         curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.1/install.sh | bash
 
-3. Now that nvm is installed, you're ready to use Node.js. [Ghost currently recommends and supports Node.js version 4.2.x](http://support.ghost.org/supported-node-versions/), so you'll use that:
+3. Now that nvm is installed, you're ready to use Node.js. [Ghost currently recommends Node.js version 4.2.x](http://support.ghost.org/supported-node-versions/), so use that:
 
         nvm install 4.2
 
-## Install and Configure Nginx
+## Install and Configure nginx
 
-Next you'll configure nginx to receive requests, and pass them along to Ghost.
+Next you'll configure nginx to receive requests and pass them along to Ghost.
 
-1. Install nginx.
+1. Install nginx:
 
         sudo apt install nginx
 
-2. Move into the nginx configuration directory and remove the default site configuration, as we will make our own.
+2. We will make our own site configuration, so move into the nginx configuration directory and remove the default:
 
         cd /etc/nginx/
         sudo rm sites-enabled/default
 
-3. Use the editor of your choice to create a new file under `/etc/nginx/sites-available/ghost`. This example will use `nano`:
+3. Use the editor of your choice to create a new site configuration file under `/etc/nginx/sites-available/`. This example will use `nano`.
 
         sudo nano /etc/nginx/sites-available/ghost
 
-4. Paste the following configuration code into the file. Change `example.com` to the domain name that you wish to use for your blog:
+4. Paste the following configuration code into the file. Change `example.com` to your blog's domain.
 
     {: .file}
     /etc/nginx/sites-available/ghost
@@ -79,17 +79,17 @@ Next you'll configure nginx to receive requests, and pass them along to Ghost.
 
     Once you've made the necessary changes, save and close the file.
 
-6. Symlink the `sites-available` configuration into `sites-enabled`:
+6. Symlink the `sites-available` configuration to `sites-enabled`:
 
         sudo ln -s /etc/nginx/sites-available/ghost /etc/nginx/sites-enabled/ghost
 
-7. Restart nginx
+7. Restart nginx:
 
         sudo systemctl restart nginx
 
 ## Install Ghost
 
-Now you're ready to install Ghost. This example will use Ghost  version `0.11.7`, however you can find the most recent version [here](https://ghost.org/developers/).
+Now you're ready to install Ghost. You can find the most recent version of Ghost [here](https://ghost.org/developers/), but this example will use Ghost version `0.11.7`.
 
 1. Move to your home directory, download the latest Ghost release as a zip file, and install `unzip`:
 
@@ -97,7 +97,7 @@ Now you're ready to install Ghost. This example will use Ghost  version `0.11.7`
         sudo wget https://ghost.org/zip/ghost-0.11.7.zip
         sudo apt install unzip
 
-2. Create a new `ghost` directory, and unzip the package to it:
+2. Create a new `ghost` directory and unzip the package to it:
 
 		mkdir ghost
         unzip -d ghost ghost-0.11.7.zip
@@ -118,7 +118,7 @@ Now you're ready to install Ghost. This example will use Ghost  version `0.11.7`
 
         nano config.js
 
-3. Edit the `url` section, replacing "example.com" with the URL or IP address that you chose previously:
+3. Edit the `url` section, replacing `example.com` with the URL or IP address of your blog:
 
     {: .file-excerpt}
     ~/ghost/config.js
@@ -143,25 +143,25 @@ Now you're ready to install Ghost. This example will use Ghost  version `0.11.7`
 
     When you're finished, save your changes and exit the editor.
 
-5. Install the npm package **forever**, which will ensure that Ghost runs continuously:
+5. Install the npm package `forever`, which will ensure that Ghost runs continuously:
 
         npm install -g forever
 
-6. Run Ghost in production mode using forever:
+6. Run Ghost in production mode using `forever`:
 
         NODE_ENV=production forever start index.js
 
-Now that Ghost is running, you should be able to see your blog in a browser by visiting the web address that you entered in your configuration files, in place of `http://example.com`.
+Now that Ghost is running, you should be able to see your blog in a web browser by visiting the domain or IP address you entered into your configuration files.
 
 ### Complete Setup
 
 To complete the setup process, navigate to the Ghost configuration page by appending `/ghost` to the end of your blog's URL. This example uses `example.com/ghost`.
 
-1. You should see the following page. Click on **Create your Account**:
+1. You should see the following page. Click on **Create your Account**.
 
     [![Ghost Welcome page](/docs/assets/ghost-welcome-small.png)](/docs/assets/ghost-welcome.png)
 
-2. Enter the required information to create a user, password, and blog title:
+2. Enter the required information to create a user, password, and blog title.
 
     [![Ghost create account page](/docs/assets/ghost-create-account-small.png)](/docs/assets/ghost-create-account.png)
 
