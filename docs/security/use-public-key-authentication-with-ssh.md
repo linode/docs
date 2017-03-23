@@ -6,7 +6,7 @@ description: 'Access your Linode via SSH using Public Key Authentication.'
 keywords: 'ssh,pki,ssh keys,secure shell,vpn,tunneling'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['security/ssh-keys/']
-modified: 'Wednesday, March 16, 2016'
+modified: 'Thursday, March 23rd, 2017'
 modified_by:
   name: Linode
 published: 'Tuesday, April 5th, 2011'
@@ -14,6 +14,8 @@ title: Use Public Key Authentication with SSH
 ---
 
 Public key authentication provides SSH users with the convenience of logging in to their Linodes without entering their passwords. SSH keys are also more secure than passwords, because the private key used to secure the connection is never shared. Private keys can also be *encrypted* so their contents can't be read as easily. While SSH passwords are not required once keys are set up, passwords for *decrypting* the private keys locally are still required. For added convenience, depending on your local workstation's security, you can add the new password to your local keychain so it's saved after the first login.
+
+![Use Public Key Authentication with SSH](/docs/assets/use_public_key_authentication_with_ssh.png "Use Public Key Authentication with SSH")
 
 ## Intro to SSH Keys Authentication
 

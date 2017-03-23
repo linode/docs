@@ -6,7 +6,7 @@ description: 'Use Nginx as a Front-end Proxy and Software Load-Balancer.'
 keywords: 'apache,nginx,proxy,load balancer,load balancing,web server,http,use nginx as proxy,use nginx as load-balancer,front-end proxy,cluster'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-servers/nginx/configuration/front-end-proxy-and-software-load-balancing/','websites/loadbalancing/Use-Nginx-for-Proxy-Services-and-Software-Load-Balancing/','uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing/index.cfm/','uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing/', 'uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer/']
-modified: Friday, August 9th, 2013
+modified: Thursday, March 23rd, 2017
 modified_by:
   name: Linode
 published: 'Tuesday, May 11th, 2010'
@@ -18,6 +18,8 @@ external_resources:
 ---
 
 The nginx web server can act as a very capable software load balancer, in addition to its more traditional roles serving static content over HTTP and dynamic content using FastCGI handlers for scripts. Because ngnix uses a non-threaded, event-driven architecture, it is able to outperform web servers like Apache. This is particularly true in deployments that receive heavy loads.
+
+![Use Nginx as a Front-end Proxy and Software Load Balancer](/docs/assets/use_nginx_as_a_frontend_proxy_and_software_load_balancer.png "Use Nginx as a Front-end Proxy and Software Load Balancer")
 
 Using a proxy is helpful when the demands of serving a single website outgrow the capabilities of a single machine. Additionally, there are some web frameworks, like [Seaside](/docs/frameworks/seaside/) and Ruby On Rails's Mongrel server, that deploy applications on framework-specific web servers. While these single-purpose servers provide powerful application services, they are not suitable for hosting entire applications. In these cases, using nginx as a front-end proxy to pass only the essential requests to the application server is a viable means of unifying dynamic content with static content and providing a stable production environment.
 
