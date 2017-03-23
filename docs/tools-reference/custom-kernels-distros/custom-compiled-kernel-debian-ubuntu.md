@@ -5,14 +5,14 @@ author:
 description: ''
 keywords: 'compile kernel,kernel compiling,custom linux kernel,custom linode, debian,ubuntu'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Tuesday, August 2nd, 2016
+modified: Thursday, March 23rd, 2017
 modified_by:
-  name: Alex Fornuto
+  name: Linode
 published: ''
 title: 'Custom Compiled Kernel on Debian & Ubuntu'
 ---
 
-Running a custom-compiled Linux kernel is useful if you need to enable or disable certain kernel features that are not available in Linode-supplied or distribution-supplied kernels. For example, some users desire [SELinux](http://en.wikipedia.org/wiki/Security-Enhanced_Linux) support, which is not enabled in stock Linode kernels, and may not be enabled in some distribution-supplied kernels.
+Compiling your own Linux kernel is useful if you need to enable or disable certain kernel features that are not available in Linode-supplied or distribution-supplied kernels. For example, some users desire [SELinux](http://en.wikipedia.org/wiki/Security-Enhanced_Linux) support, which is not enabled in stock Linode kernels, and may not be enabled in some distribution-supplied kernels.
 
 If you'd rather run a distribution-supplied kernel instead, please follow our guide for [Running a Distribution-Supplied Kernel](/docs/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel-with-kvm). 
 
@@ -77,23 +77,25 @@ Once your configuration options are set, exit the configuration interface and an
 
         make deb-pkg
         
-        This will create five deb packages in /usr/src/ that you will need to install via dpkg -i linux-*.deb
+2.  The `make deb-pkg` command will create five deb packages in /usr/src/ that you will need to install:
+
+        dpkg -i linux-*.deb
         
-2.  Edit `/etc/default/grub` and add or change the following variables to match. There will be other variables in this file, but we are only concerned with those listed below:
+3.  Edit `/etc/default/grub` and add or change the following variables to match. Comment or remove any lines starting with `GRUB_HIDDEN`, and if the word *splash* appears in the line `GRUB_CMDLINE_LINUX_DEFAULT`, remove it. There will be other variables in this file, but we are only concerned with those listed below:
 
     {: .file-excerpt}
     /etc/default/grub
     :   ~~~ conf
         GRUB_TIMEOUT=10
         GRUB_DISABLE_LINUX_UUID=true
-        GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0,19200n8"
+        GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0,19200n8 net.ifnames=0"
         GRUB_SERIAL_COMMAND="serial --speed=19200 --unit=0 --word=8 --parity=no --stop=1"
-        GRUB_TERMINAL="serial console"
+        GRUB_TERMINAL=serial
+        GRUB_GFXPAYLOAD_LINUX=text
+        GRUB_DISABLE_OS_PROBER=true
         ~~~
 
-    Comment or remove any lines starting with `GRUB_HIDDEN`.
-
-3.  Update the bootloader:
+4.  Update the bootloader:
 
         update-grub
 
