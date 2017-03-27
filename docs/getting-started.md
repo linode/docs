@@ -178,6 +178,11 @@ Installing software updates should be performed *regularly*. If you need help re
 
     apt-get update && apt-get upgrade
 
+{: .note }
+>
+>Some versions of Ubuntu may prompt you "about modified configuration file grub."
+>If prompted, select `keep the local version currently installed`.
+
 ### CentOS
 
     yum update
