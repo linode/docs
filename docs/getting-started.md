@@ -178,6 +178,11 @@ Installing software updates should be performed *regularly*. If you need help re
 
     apt-get update && apt-get upgrade
 
+{: .note }
+>
+>Ubuntu may prompt you when the Grub package is updated.
+>If prompted, select `keep the local version currently installed`.
+
 ### CentOS
 
     yum update
