@@ -180,7 +180,7 @@ Installing software updates should be performed *regularly*. If you need help re
 
 {: .note }
 >
->Some versions of Ubuntu may prompt you "about modified configuration file grub."
+>Ubuntu may prompt you when the Grub package is updated.
 >If prompted, select `keep the local version currently installed`.
 
 ### CentOS
