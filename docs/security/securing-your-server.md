@@ -6,9 +6,9 @@ description: 'This is a starting point of best practices for hardening a product
 keywords: 'security,secure,firewall,ssh,add user,quick start'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['securing-your-server/','security/linux-security-basics/','security/basics']
-modified: 'Monday, May 16th, 2016'
+modified: 'Wednesday, March 29th, 2017'
 modified_by:
-  name: Phil Zona
+  name: Linode
 published: 'Friday, February 17th, 2012'
 title: Securing Your Server
 ---
@@ -267,7 +267,7 @@ If you were to do a basic TCP and UDP [nmap](https://nmap.org/) scan of your Lin
 
 * You will likely be administering your server primarily through an SSH connection, so that service needs to stay. As mentioned above, [RSA keys](/docs/security/securing-your-server/#create-an-authentication-key-pair) and [Fail2Ban](/docs/security/securing-your-server/#use-fail2ban-for-ssh-login-protection) can help protect SSH.
 
-* NTP is necessary for your server's timekeeping but there are alternatives to NTPdate. If you prefer a time synchronization method which does not hold open network ports, and you do not need nanosecond accuracy, then you may be interested in replacing NTPdate with [OpenNTPD](https://en.wikipedia.org/wiki/OpenNTPD).
+* An NTP daemon is one option for your server's timekeeping but there are alternatives. If you prefer a time synchronization method which does not hold open network ports, and you do not need nanosecond accuracy, then you may be interested in replacing NTPdate with [OpenNTPD](https://en.wikipedia.org/wiki/OpenNTPD).
 
 * Exim and RPC, however, are unnecessary unless you have a specific use for them, and should be removed.
 
