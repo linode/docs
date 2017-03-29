@@ -221,7 +221,7 @@ To see your Linode's running network services:
 >
 >If netstat isn't included in your Linux distribution by default, install the package `net-tools` or use the `ss -tulpn` command instead.
 
-The following is an example of netstat's output. Note that because distributions run different services by default, your output will differ:
+The following is an example of netstat's output. Note that because distributions run different services by default, your output will differ. If you are unsure of what a service does, do an internet search to understand what it is before attempting to remove or disable it.
 
 ~~~
 Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
@@ -271,9 +271,6 @@ If you were to do a basic TCP and UDP [nmap](https://nmap.org/) scan of your Lin
 
 * Exim and RPC, however, are unnecessary unless you have a specific use for them, and should be removed.
 
-{: .note }
->
->This section focused on Debian 8. Different Linux distributions have different services enabled by default. If you are unsure of what a service does, do an internet search to understand what it is before attempting to remove or disable it.
 
 ### Uninstall the Listening Services
 
