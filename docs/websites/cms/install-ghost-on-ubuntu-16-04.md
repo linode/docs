@@ -2,17 +2,26 @@
 author:
   name: Elliot Blackburn
   email: elliot.blackburn@gmail.com
-description: 'Install, configure, and optimize the Ghost blogging application on your Linode.'
+description: 'Install and configure a Ghost blog on your Linode running Ubuntu 16.04.'
 keywords: 'Ghost,install Ghost,Ghost on Linode,how to configure Ghost'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Thursday, March 22nd, 2017
+modified: Thursday, March 30th, 2017
 modified_by:
-  name: Elliot Blackburn
-published: 'Thursday, March 22nd, 2017'
+  name: Nick Brewer
+published: 'Thursday, March 30th, 2017'
 title: Install Ghost on Ubuntu 16.04
+contributor:
+  name: Elliot Blackburn
+  link: https://github.com/BlueHatbRit
+external_resources:
+- '[Ghost Setup Documentation](https://support.ghost.org/developers/)'
+- '[Ghost Theme Documentation](http://themes.ghost.org/)'
+- '[Ghost API Documentation](http://api.ghost.org/v0.1/docs)'
 ---
 
 [Ghost](https://ghost.org/) is a relatively new publishing platform. Its simplistic design and focus on blogging makes it a popular choice for those looking to share written content, and it is well equipped for use by individuals or small groups. This guide will take you through the installation and configuration of Ghost with nginx on a Linode running Ubuntu 16.04 LTS.
+
+![Install Ghost on Ubuntu 16.04](/docs/assets/install-ghost-on-ubuntu-16-04.png)
 
 {: .note}
 >
@@ -173,4 +182,4 @@ To complete the setup process, navigate to the Ghost configuration page by appen
 
     [![Ghost getting started page](/docs/assets/ghost-getting-started-small.png)](/docs/assets/ghost-getting-started.png)
 
-    From here, you can start configuring your blog from the **Settings** section, or create your first post by clicking **New Post**. To start changing the appearance of your blog, see Ghost's [theme](http://themes.ghost.org/) documentation. 
+    From here, you can start configuring your blog from the **Settings** section, or create your first post by clicking **New Post**. To start changing the appearance of your blog, see Ghost's [theme](http://themes.ghost.org/) documentation.
