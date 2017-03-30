@@ -5,8 +5,8 @@ author:
 description: 'Self-host your RSS reader on a CentOS 7 Linode with Tiny Tiny RSS.'
 keywords: 'apache,centos,rss,reader,ttrss,tt-rss'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Tuesday, March 27th, 2017'
-modified: Tuesday, March 27th, 2017
+published: 'Thursday, March 30th, 2017'
+modified: Thursday, March 30th, 2017
 modified_by:
     name: Nick Brewer
 title: 'Host Your Own RSS Reader with Tiny Tiny RSS on CentOS 7'
