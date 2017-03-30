@@ -12,8 +12,8 @@ published: 'Wednesday, December 9th, 2015'
 title: 'Configuring OpenVPN Client Devices'
 external_resources:
  - '[Official OpenVPN Documentation](https://openvpn.net/index.php/open-source/documentation/howto.html)'
- - '[Tunnelblick OS X OpenVPN Client](http://code.google.com/p/tunnelblick/)'
- - '[OpenVPN GUI for Windows](https://tunnelblick.net/)'
+ - '[Tunnelblick OS X OpenVPN Client](https://www.tunnelblick.net/)'
+ - '[OpenVPN GUI for Windows](https://openvpn.net/index.php/open-source/downloads.html)'
  - '[Network Manager GNOME Configuration Management Tool](https://wiki.gnome.org/Projects/NetworkManager)'
 ---
 
