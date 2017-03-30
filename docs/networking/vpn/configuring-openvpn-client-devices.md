@@ -5,9 +5,9 @@ author:
 description: 'This guide will show you how to install, configure and fine-tune OpenVPN clients on Android, iOS, Linux, OS X and Windows.'
 keywords: 'openvpn,vpn,vpn tunnel,ios,os x,mac,windows,android'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 'Wednesday, December 9th, 2015'
+modified: 'Thursday, March 30th, 2017'
 modified_by:
-  name: Linode
+  name: Steven Jacobs
 published: 'Wednesday, December 9th, 2015'
 title: 'Configuring OpenVPN Client Devices'
 external_resources:
@@ -223,7 +223,7 @@ Apple OS X does not natively support the OpenVPN protocol. [Tunnelblick](https:/
 3.  OpenVPN must be run as an administrator to function properly. There are two ways you can do this:
 
     **Option 1**
-    
+
     Right-click on the OpenVPN GUI desktop shortcut and select **Run as administrator**. This must be done each time you to connect to your VPN.
 
     **Option 2**
