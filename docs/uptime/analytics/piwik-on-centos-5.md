@@ -1,4 +1,5 @@
 ---
+deprecated: true
 author:
   name: Stan Schwertly
   email: docs@linode.com
