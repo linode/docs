@@ -212,7 +212,7 @@ You have successfully removed the DNS record. It can take up to 30 minutes for t
 
 ### Subdomains
 
-The DNS Manager does not support addition of a subdomain on top of an existing subdomain in the same zone. For example, if you have a record for `subdomain.example.com`, you cannot create `another.subdomain.example.com` within the same zone.
+The DNS Manager does not support addition of a subdomain on top of an existing subdomain in the same zone. For example, if you have `example.com` as a zone, with an A record for `subdomain.example.com`, you cannot create `another.subdomain.example.com` within that zone.
 
 Instead, [add](#add-a-domain-zone) the subdomain as a separate zone in the DNS Manager, and then create your additional subdomain as an A record.
 
