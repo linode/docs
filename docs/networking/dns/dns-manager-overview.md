@@ -210,6 +210,16 @@ You have successfully removed the DNS record. It can take up to 30 minutes for t
 > This is a very important step; if the entries are not removed, someone could use your domain without your
 > permission.
 
+### Subdomains
+
+The DNS Manager does not support addition of a subdomain on top of an existing subdomain in the same zone. For example, if you have `example.com` as a zone, with an A record for `subdomain.example.com`, you cannot create `another.subdomain.example.com` within that zone.
+
+Instead, [add](#add-a-domain-zone) the subdomain as a separate zone in the DNS Manager, and then create your additional subdomain as an A record.
+
+### Wildcards
+
+The DNS Manager uses an asterisk (`*`) for wildcards.
+
 ## Troubleshoot
 
 Having problems with your DNS records? We recommend reviewing this section to help get your DNS settings back on track. Follow these tips to troubleshoot DNS issues.
