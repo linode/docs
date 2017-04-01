@@ -42,6 +42,9 @@ This document assumes your don't have direct root privileges while following the
 
     And now we will populate the file with the below content, once you paste this into your file, press CTRL+O and then ENTER to save the file changes. Then press CTRL+X to exit out of the editor.
 
+    {: .file}
+    /sbin/chkconfig
+    :   ~~~ conf
         #!/bin/bash 
         # Oracle 11gR2 XE installer chkconfig hack for Ubuntu 
         file=/etc/init.d/oracle-xe 
@@ -57,6 +60,7 @@ This document assumes your don't have direct root privileges while following the
             echo '### END INIT INFO' >> $file 
         fi 
         update-rc.d oracle-xe defaults 80 01
+        ~~~
 
 9. We now need to make sure that the correct file permissions are set for the file we just created, we can do this be running the following command.
 
