@@ -90,7 +90,7 @@ This document assumes your don't have direct root privileges while following the
 
         sudo sysctl -q fs.file-max
 
-13. Now we need to set up /dev/shm mount point for Oracle. Once again we are creating a new file and will the populate the file.
+13. Now we need to set up /dev/shm mount point for Oracle. Once again we are creating a new file and will then populate the file.
 
         sudo pico /etc/rc2.d/S01shm_load
 
@@ -113,7 +113,7 @@ This document assumes your don't have direct root privileges while following the
         esac
         ~~~
 
-14. Now we again have to make sure that the permission on the newly created file are correct, we can do this by running the following command.
+14. Again have to make sure that the file permissions on the newly created file are correct, we can do this by running the following command.
 
         sudo chmod 755 /etc/rc2.d/S01shm_load
 
@@ -130,7 +130,7 @@ This document assumes your don't have direct root privileges while following the
 
 ### Installing Oracle XE 11g
 
-So now onto the part as to why were here in the first place, install Oracle XE 11g on Ubuntu 14. Once again if you just follow the below steps and throughout the steps there are additional informational bits about some errors that you might see along the way and how to get fix them.
+So now onto the part as to why your here in the first place, installing Oracle XE 11g on Ubuntu 14. Once again if you just follow the below steps and throughout the steps there are additional informational bits about some errors that you might see along the way and how to get fix them.
 
 1. So now that we've logged onto the server we need to go to the directory where we created our Oracle .deb file.
 
@@ -140,11 +140,15 @@ So now onto the part as to why were here in the first place, install Oracle XE 1
 
         sudo dpkg --install oracle-xe_11.2.0-2_amd64.deb
 
-3. Once that has completed we need to create a directory that is required or Oracle.
+3. Once that has completed we need to create a directory that is required for the Oracle install.
 
         sudo mkdir -p /var/lock/subsys
 
 4. The next bit is where issues occur, this is were we configure the Oracle installation. You will be asked to supply some information here, most of it you can leave as default, just the SYS and SYSTEM password will need to be set.
+
+{: .note}
+>
+>A strong password is recommended with at least 8 characters in length with upper and lower case characters and numbers at a minimum.
 
         sudo /etc/init.d/oracle-xe configure
 
@@ -159,7 +163,9 @@ So now onto the part as to why were here in the first place, install Oracle XE 1
 {: .note}
 >
 >If you have issues with the database configuration failing, check the shmmax setting below. 
->    * sudo grep -n ".*" /proc/sys/kernel/shmm* 
+>    * sudo grep -n ".*" /proc/sys/kernel/shmm
+>
+> Steps on how to change the shmmax value if required.
 >    * sudo vi /etc/sysctl.d/60-oracle.conf 
 >        * Update the 'shmmax' to: kernel.shmmax=33554432 
 >    * Save and exit 
@@ -167,7 +173,7 @@ So now onto the part as to why were here in the first place, install Oracle XE 1
 
 {: .note}
 >
->If you come across a shared memory issue where Oracle says that it can't find shared memory, you can set it with the following commands.
+>If you come across a shared memory issue where Oracle says that it can't find shared memory, you can set it with the following commands. A minimum of 1GB is recommended.
 >    * rm -rf /dev/shm 
 >    * mkdir /dev/shm 
 >    * mount -t tmpfs shmfs -o size=4096m /dev/shm
@@ -180,7 +186,7 @@ So now onto the part as to why were here in the first place, install Oracle XE 1
 
         sudo service oracle-xe start
 
-7. Add user username to group dba using the command.
+7. Add user to group dba using the command.
 
         sudo usermod -a -G dba ubuntu
 
@@ -199,7 +205,7 @@ So now onto the part as to why were here in the first place, install Oracle XE 1
 
         GRANT CONNECT, RESOURCE TO username;
 
-4. Now exit your database be running.
+4. Now exit your database by running.
 
         EXIT;
 
