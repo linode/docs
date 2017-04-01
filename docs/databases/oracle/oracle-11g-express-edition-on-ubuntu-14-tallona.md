@@ -72,11 +72,15 @@ This document assumes your don't have direct root privileges while following the
 
     And now like before we will populate the file we just created by copying the below contents into the file, once you paste this into your file, press CTRL+O and then ENTER to save the file changes. Then press CTRL+X to exit out of the editor.
 
+    {: .file}
+    /etc/sysctl.d/60-oracle.conf
+    :   ~~~ conf
         # Oracle 11g XE kernel parameters  
         fs.file-max=6815744   
         net.ipv4.ip_local_port_range=9000 65000   
         kernel.sem=250 32000 100 128  
         kernel.shmmax=536870912
+        ~~~
 
 11. Now we need to load the new kernel parameters.
 
@@ -92,6 +96,9 @@ This document assumes your don't have direct root privileges while following the
 
     Now we will populate the file with the below content, once again we need to save the new changes, press CTRL+O and then ENTER to save the file changes. Then press CTRL+X to exit out of the editor.
 
+    {: .file}
+    /etc/rc2.d/S01shm_load
+    :   ~~~ conf
         #!/bin/sh 
         case "$1" in 
         start) 
@@ -104,6 +111,7 @@ This document assumes your don't have direct root privileges while following the
             exit 1 
             ;;
         esac
+        ~~~
 
 14. Now we again have to make sure that the permission on the newly created file are correct, we can do this by running the following command.
 
