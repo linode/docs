@@ -292,153 +292,150 @@ The most relevant line in this file is `StandardOutput=journal+console`. As conf
 
 ## Updating Odoo 
 
-Best practice before updating your Odoo system is to check that everything will work as expected, especially third-party modules. The safer way to do it is using a testing environment, which is nothing more than a separate Odoo installation.
-Depending on your server resources, security concerns and testing scope this second installation can be done alongside the production one or in another location (remote or local). For the purpose of this guide, we'll use a testing environment running on the same server as the production one.
+Before updating your Odoo system, you should check that everything will work as expected, especially third-party modules. The safest way to do this is to use a testing environment, which is nothing more than a separate Odoo installation.
 
-## Configure UFW Firewall
+Depending on your server resources, security concerns and testing the scope of this second installation can be done alongside the production instance or in another location (remote or local). For the purpose of this guide, we'll use a testing environment running on the same server as the production one.
+
+### Configure UFW Firewall
 
 In order to use the testing environment at the same time than production we need to use a different TCP port for server connections:
 
-		sudo ufw allow 8080/tcp
+    sudo ufw allow 8080/tcp
 
-## Create Database User
+### Create a Separate Database User
 
 An independent database user is a good idea to keep everything off production, however it's not necessary to use a password as before:
 
-		sudo su - postgres
-		createuser odoo-te -U postgres -dRS
+    sudo su - postgres
+    createuser odoo-te -U postgres -dRS
 
 Press **CTRL+D** to exit the `postgres` user session.
 
-## Create Odoo User
+### Create a Test Odoo User
 
 It's very important to use a different odoo user than production one:
 
-		sudo adduser --system --home=/opt/odoo-te --group odoo-te
+    sudo adduser --system --home=/opt/odoo-te --group odoo-te
 
-## Configure Logs
+### Configure Logs
 
 In the case of the testing environment it's advisable to use a separate log file:
 
-		sudo mkdir /var/log/odoo-te
+    sudo mkdir /var/log/odoo-te
 
-## Install Odoo Testing Environment
+### Install Odoo Testing Environment
 
-At this point, you will clone the updated Odoo source which is different from your older production instance:
+Clone the updated Odoo source which is different from your older production instance:
 
-		sudo git clone https://www.github.com/odoo/odoo --depth 1 --branch 10.0 --single-branch /opt/odoo-te
+    sudo git clone https://www.github.com/odoo/odoo --depth 1 --branch 10.0 --single-branch /opt/odoo-te
 
-## Testing Environment Configuration
+### Testing Environment Configuration
 
 The advantage of using the same server is that all dependencies are already meet. What is next is to configure the server accordingly.
 
-1. Copy the original configuration file from source to appropiate location:
+1.  Copy the original configuration file from the source to appropiate location:
 
-		sudo cp /opt/odoo/debian/odoo.conf /etc/odoo-server-te.conf
+        sudo cp /opt/odoo/debian/odoo.conf /etc/odoo-server-te.conf
 
-2. Modify the configuration file, paying attention to changes from previous installation especially the inclusion of `logfile` and different communication port:
+2.  Modify the configuration file, paying attention to changes from previous installation especially the inclusion of `logfile` and the communication port:
 
-      {: .file}
-      /etc/odoo-server.conf
-      :   ~~~ conf
-          [options]
-          admin_passwd = admin
-          db_host = False 
-          db_port = False
-          db_user = odoo-te
-          db_password = FALSE
-          addons_path = /opt/odoo-te/addons
-          logfile = /var/log/odoo-te/odoo-server-te.log
-          xmlrpc_port = 8080
-          ~~~
+    {: .file}
+    /etc/odoo-server.conf
+    :   ~~~ conf
+        [options]
+        admin_passwd = admin
+        db_host = False 
+        db_port = False
+        db_user = odoo-te
+        db_password = FALSE
+        addons_path = /opt/odoo-te/addons
+        logfile = /var/log/odoo-te/odoo-server-te.log
+        xmlrpc_port = 8080
+        ~~~
 
-3. Create Odoo unit for the testing environment, this allows to run it as an independent service from the other instance:
+3.  Create a systemd unit for the Odoo testing environment. This allows you to run it as an independent service:
 
-{: .file}
-  /lib/systemd/system/odoo-server-te.service
- :   ~~~ shell
-     [Unit]
-     Description=Odoo Open Source ERP and CRM
-     Requires=postgresql.service
-     After=network.target postgresql.service
-     
-     [Service]
-     Type=simple
-     PermissionsStartOnly=true
-     SyslogIdentifier=odoo-server-te
-     User=odoo-te
-     Group=odoo-te
-     ExecStart=/opt/odoo-te/odoo-bin --config=/etc/odoo-server-te.conf --addons-path=/opt/odoo-te/addons/
-     WorkingDirectory=/opt/odoo-te/
-     
-     
-     [Install]
-      WantedBy=multi-user.target
-      ~~~
+    {: .file}
+    /lib/systemd/system/odoo-server-te.service
+    :   ~~~ shell
+        [Unit]
+        Description=Odoo Open Source ERP and CRM (Test Env)
+        Requires=postgresql.service
+        After=network.target postgresql.service
 
-## Change File Ownership and Permissions
+        [Service]
+        Type=simple
+        PermissionsStartOnly=true
+        SyslogIdentifier=odoo-server-te
+        User=odoo-te
+        Group=odoo-te
+        ExecStart=/opt/odoo-te/odoo-bin --config=/etc/odoo-server-te.conf --addons-path=/opt/odoo-te/addons/
+        WorkingDirectory=/opt/odoo-te/
+
+        [Install]
+        WantedBy=multi-user.target
+        ~~~
+
+### Change File Ownership and Permissions
 
 Just as you did before, set permissions for the testing environment:
 
-		sudo chmod 755 /lib/systemd/system/odoo-server-te.service
-        sudo chown root: /lib/systemd/system/odoo-server-te.service
-		sudo chown -R odoo-te: /opt/odoo-te/
-		sudo chown odoo-te:root /var/log/odoo-te
-		sudo chown odoo-te: /etc/odoo-server-te.conf
-        sudo chmod 640 /etc/odoo-server-te.conf
+    sudo chmod 755 /lib/systemd/system/odoo-server-te.service
+    sudo chown root: /lib/systemd/system/odoo-server-te.service
+    sudo chown -R odoo-te: /opt/odoo-te/
+    sudo chown odoo-te:root /var/log/odoo-te
+    sudo chown odoo-te: /etc/odoo-server-te.conf
+    sudo chmod 640 /etc/odoo-server-te.conf
 
-## Check your Testing Environment
+### Check your Testing Environment
 
 Now you can start your new Odoo service and verify log entries for errors:
 
-		sudo systemctl start odoo-server-te
+    sudo systemctl start odoo-server-te
+    sudo systemctl status odoo-server-te
+    sudo journalctl -u postgresql
+    sudo cat /var/log/odoo-te/odoo-server-te.log
 
-		sudo systemctl status odoo-server-te
+## Prepare your System for Production Tests
 
-		sudo journalctl -u postgresql
+At this point, you have a completely independent Odoo installation. Next steps will setup your testing environment to replicate the production one.
 
-		sudo cat /var/log/odoo-te/odoo-server-te.log
+1.  Make a backup of your production database using the Odoo graphical interface. Navigate to the following URL in your web browser. This assumes that your are using the default port 8069:
 
-## Preparing your system for production tests
+        http://your_domain_or_IP_address:8069/web/database/manager
 
-Up to this point you have a completely independent Odoo installation.  Next steps will setup your Testing Environment to replicate the Production one.
+    ![Odoo database manager](/docs/assets/odoo_backup_db.png)
 
-1. Make a backup of your production database using the Odoo graphical interfase, the command assumes that your are using the default port 8069:
+2. Start your `odoo-server-te` service and restore the production database using the Odoo graphical interface by navigating to the URL below. Note that this time you'll be using port 8080 since that's where the test environment is running:
 
-		http://<your_domain_or_IP_address>:8069/web/database/manager		
+        http://your_domain_or_IP_address:8080/web/database/manager
 
-		![Odoo database manager](/docs/assets/odoo_backup_db.png)
+    ![Odoo database manager](/docs/assets/odoo_restore_db.png)
 
-2. Start your `odoo-server-te` and restore the production database using again the Odoo graphical interfase, take notice of port change:
+3.  The final step is to update Odoo modules to newer versions, this is done restarting the service and updating database entries which tells the system to apply changes:
 
-		http://<your_domain_or_IP_address>:8080/web/database/manager
+        sudo service odoo-server-te restart -u all -d <production_database_name> 
 
-		![Odoo database manager](/docs/assets/odoo_restore_db.png)
+    At this stage, you may encounter errors produced by incompatible changes in modules. This is rarely the case for Odoo standard modules but is not uncommon for ones downloaded from a third-party. If you do encounter an error, you'll need to check for a new version of the module that's causing it, and reinstall it.
 
-3. Final step is to update Odoo modules to newer versions, this is done restarting the service and updating database entries which tells the system to apply changes:
+4.  If everything goes as expected, you can start your load tests modules "behavior" tests (which are different from code-incompatible errors), and any other tests you've configured. 
 
-		sudo service odoo-server-te restart -u all -d <production_database_name> 
+### Update your Production System
 
-At this stage you may encounter errors, produced by incompatible changes in modules. This is rarely the case for Odoo standard modules but for third-party's.
+If all your tests pass, you can safely update your production installation.
 
-4. If everything goes as expected, you can start your load tests, modules "behavior" tests (different from code-incompatible errors), etc. 
+1.  Download the new code from source:
 
-## Updating your Production System
+        cd /opt/odoo
+        sudo git fetch origin 10.0
 
-If all your tests go without problems then you can safely update your production installation.
+2.  Apply the changes to your repository:
 
-1. Download the new code from source:
+        sudo git reset --hard origin/10.0
 
-		cd /opt/odoo
-		sudo git fetch origin 10.0
+3.  Access your new system:
 
-2. Apply the changes to your repository:
-
-		sudo git reset --hard origin/10.0
-
-3. Test your system:
-
-		http://<your_domain_or_IP_address>:8069
+        http://your_domain_or_IP_address:8069
 
 ## Next Steps
 
