@@ -67,7 +67,7 @@ Add the following to /etc/rc.conf via your favorite text editor.
       # Enable cloned interface
       cloned_interfaces="lo1"
       # Set cloned interface IPs. This will set it for 9 IPs, tune to taste
-      ipv4_addrs_lo1="172.16.4.1-9/29"
+      ipv4_addrs_lo1="127.0.1.1-9/29"
        ~~~
 
 Time to create /etc/pf.conf, which will contain our NAT rules. 
@@ -81,10 +81,10 @@ You can add more IP_JAILNAME arguments as well, specifying the jail's private IP
 
       ## Setting Public IP  and Network##
       IP_PUB="Your Public IP Address Here"
-      NET_JAIL="172.16.4.0/29"
+      NET_JAIL="127.0.1.0/29"
 
       ## JAIL IPS. Follow IP_JAILNAME ##
-      IP_MINECRAFTJAIL="172.16.4.2"
+      IP_MINECRAFTJAIL="127.0.1.2"
 
       ## RULES ##          
       scrub in all
@@ -96,11 +96,11 @@ You can add more IP_JAILNAME arguments as well, specifying the jail's private IP
 
 6.   Next, reboot your Linode to apply all the changes we've made so far. Once it's back up, the fun begins.
 
-7.   Run iocage fetch release=10.3-RELEASE
+7.   Run iocage fetch release=11.0-RELEASE
      This will fetch the current (as of this writing) stable release of FreeBSD and create the base datasets.
 
 8.   Time to create the jail! Run the following commands in order:
-iocage create tag=minecraft ip4_addr="lo1|172.16.4.2/29"
+iocage create -b tag=minecraft ip4_addr="lo1|127.0.1.2/29"
 iocage set pcpu=30:deny minecraft
 iocage set memoryuse=1G:deny minecraft
 iocage set rlimits=on minecraft
@@ -112,7 +112,7 @@ quota sets a 5 gigabyte disk usage quota, meaning the jail only has a 5Gb disk. 
 
 9.    Time to start the jail! Run iocage start minecraft. After it starts, run iocage console minecraft. This command drops us into a root shell inside the jail. From now on, any changes you make will only affect the jail.
 
-10.   You should be sitting at the root prompt of a brand new FreeBSD 10.3-RELEASE jail at this point. iocage automatically applies updates when you first create a jail, so no worries about that! The next step is to bootstrap the ports tree, as well as pkgng. That's right, you have to bootstrap pkgng inside the jail too.
+10.   You should be sitting at the root prompt of a brand new FreeBSD 11.0-RELEASE jail at this point. iocage automatically applies updates when you first create a jail, so no worries about that! The next step is to bootstrap the ports tree, as well as pkgng. That's right, you have to bootstrap pkgng inside the jail too.
 
 Run #pkg to bootstrap pkgng, and then pkg update to update the repository cache.
 
