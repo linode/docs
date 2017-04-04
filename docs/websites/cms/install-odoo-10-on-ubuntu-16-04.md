@@ -3,10 +3,10 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'Odoo is an open-source suite of over 5,500 business applications. Odoo allows administrators to install, configure and customize any application to satisfy their needs. This guide covers how to install and configure Odoo using Git source so it will be easy to upgrade and maintain.'
-keywords: 'Odoo,Odoo ERP,CMS,Ubuntu,CRM,OpenERP, Odoo 10, Ubuntu 16.04'
+keywords: 'Odoo,Odoo ERP,CMS,Ubuntu,CRM,OpenERP,Odoo 10,Ubuntu 16.04'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Monday, March 20th, 2017'
-modified: 'Monday, March 20th, 2017'
+published: 'Tuesday, April 4th, 2017'
+modified: 'Tuesday, April 4th, 2017'
 modified_by:
   name: Linode
 title: 'Install Odoo 10 on Ubuntu 16.04'
@@ -21,6 +21,8 @@ external_resources:
 <hr>
 
 [Odoo](https://www.odoo.com/) (formerly known as OpenERP) is an open-source suite of business applications including customer relationship management (CRM), sales pipeline, project management, manufacturing, invoicing, accounting, eCommerce, and inventory tools, just to name a few. There are thirty-four main applications created by the Odoo team and more than 5,500 developed by community members, covering a wide range of business needs.
+
+![Install Odoo 10 ERP on Ubuntu 16.04](/docs/assets/Install_Odoo10_Ubuntu16.04.png "Install Odoo 10 ERP on Ubuntu 16.04")
 
 Once deployed, Odoo allows the administrator to install any module combination and configure/customize it as needed for business needs ranging from a small shop to an enterprise-level corporation.
 
@@ -404,13 +406,13 @@ At this point, you have a completely independent Odoo installation. Next steps w
 
         http://your_domain_or_IP_address:8069/web/database/manager
 
-    ![Odoo database manager](/docs/assets/odoo_backup_db.png)
+    ![Back up a database in Odoo](/docs/assets/odoo_backup_db.png "Back up a database in Odoo")
 
-2. Start your `odoo-server-te` service and restore the production database using the Odoo graphical interface by navigating to the URL below. Note that this time you'll be using port 8080 since that's where the test environment is running:
+2.  Start your `odoo-server-te` service and restore the production database using the Odoo graphical interface by navigating to the URL below. Note that this time you'll be using port 8080 since that's where the test environment is running:
 
         http://your_domain_or_IP_address:8080/web/database/manager
 
-    ![Odoo database manager](/docs/assets/odoo_restore_db.png)
+    ![Restore a database in Odoo](/docs/assets/odoo_restore_db.png "Restore a database in Odoo")
 
 3.  The final step is to update Odoo modules to newer versions, this is done restarting the service and updating database entries which tells the system to apply changes:
 
