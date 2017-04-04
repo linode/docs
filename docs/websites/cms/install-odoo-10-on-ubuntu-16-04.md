@@ -22,7 +22,7 @@ external_resources:
 
 [Odoo](https://www.odoo.com/) (formerly known as OpenERP) is an open-source suite of business applications including customer relationship management (CRM), sales pipeline, project management, manufacturing, invoicing, accounting, eCommerce, and inventory tools, just to name a few. There are thirty-four main applications created by the Odoo team and more than 5,500 developed by community members, covering a wide range of business needs.
 
-![Install Odoo 10 ERP on Ubuntu 16.04](/docs/assets/Install_Odoo10_Ubuntu16.04.png "Install Odoo 10 ERP on Ubuntu 16.04")
+![Install Odoo 10 ERP on Ubuntu 16.04](/docs/assets/install-odoo-10-on-ubuntu-16-04.png "Install Odoo 10 ERP on Ubuntu 16.04")
 
 Once deployed, Odoo allows the administrator to install any module combination and configure/customize it as needed for business needs ranging from a small shop to an enterprise-level corporation.
 
