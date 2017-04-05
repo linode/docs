@@ -126,7 +126,7 @@ In the future when you create or edit any virtual host file, you'll need to relo
 
     /etc/init.d/apache2 reload
 
-Congratulations! You now have Apache installed on your Ubuntu Linode VPS and have configured the server for virtual hosting.
+Congratulations! You now have Apache installed on your Ubuntu Linode and have configured the server for virtual hosting.
 
 Install Apache Modules
 ----------------------

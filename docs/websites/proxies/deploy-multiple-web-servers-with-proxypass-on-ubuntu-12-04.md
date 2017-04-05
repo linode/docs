@@ -16,7 +16,7 @@ external_resources:
  - '[Apache HTTP Server Version 2.2 Docs](http://httpd.apache.org/docs/2.2/)'
 ---
 
-In some cases, administrators find that while Apache meets most of their general-purpose web serving needs, other web or application servers are better suited for certain tasks. Fortunately, it's easy to configure Apache to pass certain requests to other web server processes. These secondary (or tertiary) web servers may be running on the same VPS or separate nodes (perhaps via private networking). Our examples use lighttpd as a secondary web server, but they apply to any web server or application you'd like to proxy HTTP requests to.
+In some cases, administrators find that while Apache meets most of their general-purpose web serving needs, other web or application servers are better suited for certain tasks. Fortunately, it's easy to configure Apache to pass certain requests to other web server processes. These secondary (or tertiary) web servers may be running on the same Linode or separate nodes (perhaps via private networking). Our examples use lighttpd as a secondary web server, but they apply to any web server or application you'd like to proxy HTTP requests to.
 
 We assume you already have Apache running on your Linode. If you don't, you may wish to review our [Apache on Ubuntu 12.04 (Precise Pangolin) guide](/docs/websites/apache/apache-2-web-server-on-ubuntu-12-04-lts-precise-pangolin) before proceeding. These steps should be performed as root via a shell session.
 
@@ -80,7 +80,7 @@ We already have a site called "www.firstsite.org" running under Apache as a norm
     </VirtualHost>
     ~~~
 
-The `ProxyPass` directive tells Apache to forward all requests for this domain to a web server running on port 8080. If our target server was running on another VPS (as with a server that only answers on the backend private network), we could just specify that address instead. We'll enable the site with the following commands:
+The `ProxyPass` directive tells Apache to forward all requests for this domain to a web server running on port 8080. If our target server was running on another Linode (as with a server that only answers on the backend private network), we could just specify that address instead. We'll enable the site with the following commands:
 
     a2ensite www.secondsite.org
     service apache2 reload

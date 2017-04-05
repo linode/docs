@@ -13,7 +13,7 @@ published: 'Tuesday, April 3rd, 2012'
 title: Accounts and Passwords
 ---
 
-Maintaining your accounts, passwords, and contact information in the Linode Manager is just as important as administering your Linode VPS. This guide shows you how to control access to the Linode Manager, update your contact information, and modify account passwords. Note that the information in this guide applies to the Linode Manager only, except for the section on resetting the root password.
+Maintaining your accounts, passwords, and contact information in the Linode Manager is just as important as administering your Linode. This guide shows you how to control access to the Linode Manager, update your contact information, and modify account passwords. Note that the information in this guide applies to the Linode Manager only, except for the section on resetting the root password.
 
 ## Users and Permissions
 

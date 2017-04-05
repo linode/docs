@@ -2,7 +2,7 @@
 author:
   name: Stan Schwertly
   email: docs@linode.com
-description: 'Installing and configuring CakePHP for developing PHP applications on your Debian 5 (Lenny) Linux VPS.'
+description: 'Installing and configuring CakePHP for developing PHP applications on your Debian 5 (Lenny) Linode.'
 keywords: 'cakephp,cakephp debian,php framework,debian,develop php'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['frameworks/cakephp/']

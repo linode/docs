@@ -32,7 +32,7 @@ You can move your Linode from one plan to another by using the *resize* feature.
 Here's how to resize your Linode:
 
 1.  Log in to the [Linode Manager](https://manager.linode.com).
-2.  Click the **Linodes** tab. A list of your virtual private servers appears.
+2.  Click the **Linodes** tab.
 3.  Select a Linode from the list.
 4.  Click the **Resize** tab. The webpage shown below appears.
 

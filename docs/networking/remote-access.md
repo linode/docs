@@ -30,7 +30,7 @@ Here's how to set reverse DNS for your domain names:
 > Before setting reverse DNS, verify that you have created a matching forward DNS record for the IP address. For instructions, see [Adding DNS Records](/docs/hosting-website#sph_adding-dns-records). If you use a third-party DNS provider, create the forward DNS record with your provider's management tool.
 
 1.  Log in to the [Linode Manager](https://manager.linode.com).
-2.  Click the **Linodes** tab. A list of your virtual private servers appears.
+2.  Click the **Linodes** tab.
 3.  Select your Linode. The Linode's dashboard appears.
 4.  Click the **Remote Access** tab.
 5.  Select the **Reverse DNS** link, as shown in the below image.
@@ -60,7 +60,7 @@ You have successfully configured reverse DNS.
 To reset reverse DNS to the Linode domain, which will be something like **li12-345.members.linode.com**, follow these instructions:
 
 1.  Log in to the [Linode Manager](https://manager.linode.com).
-2.  Click the **Linodes** tab. A list of your virtual private servers appears.
+2.  Click the **Linodes** tab.
 3.  Select your Linode. The Linode's dashboard appears.
 4.  Click the **Remote Access** tab.
 5.  Select the **Reverse DNS** link, as shown in the below image.
@@ -111,7 +111,7 @@ If you have two Linodes in the same data center, you can use the *IP swap* featu
 Here's how to swap IP addresses:
 
 1.  Log in to the [Linode Manager](https://manager.linode.com).
-2.  Click the **Linodes** tab. A list of your virtual private servers appears.
+2.  Click the **Linodes** tab.
 3.  Select a Linode. The Linode's dashboard appears.
 4.  Click the **Remote Access** tab.
 5.  Select the **IP Swap** link. The webpage shown below appears.
@@ -130,7 +130,7 @@ Here's how to swap IP addresses:
 
 8.  Select both of the **Move It** checkboxes to verify that you want the IP addresses switched.
 9.  Click **Do it**.
-10. **Optional** Enable [Network Helper](/docs/platform/network-helper) and reboot your Linode VPS.
+10. **Optional** Enable [Network Helper](/docs/platform/network-helper) and reboot your Linode.
 
     Network Helper automatically configures static IP address configuration files, and will update them with the new IP address. It's turned on by default for newer Linodes. For older Linodes, unless you've modified the networking configuration, DHCP assigns the IP address on boot.
 
@@ -150,7 +150,7 @@ Here's how to swap IP addresses:
 The Linode Manager allows you to add private IP addresses for fast and secure connections between Linodes located in the same data center. Here's how to add a private IP address:
 
 1.  Log in to the [Linode Manager](https://manager.linode.com).
-2.  Click the **Linodes** tab. A list of your virtual private servers appears.
+2.  Click the **Linodes** tab.
 3.  Select a Linode. The Linode's dashboard appears.
 4.  Click the **Remote Access** tab.
 5.  Select the **Add a Private IP** link, as shown below.
@@ -175,7 +175,7 @@ The Lish console allows you to access your Linode at any time, even if you've me
 If you need to quickly access Lish, use the Ajax Console to open it directly from your web browser. Here's how:
 
 1.  Log in to the [Linode Manager](https://manager.linode.com).
-2.  Click the **Linodes** tab. A list of your virtual private servers appears.
+2.  Click the **Linodes** tab.
 3.  Select a Linode. The Linode's dashboard appears.
 4.  Click the **Remote Access** tab. Scroll down to the *Console Access* section.
 5.  Select the **Launch Lish Ajax Console** link.
@@ -188,7 +188,7 @@ You are now logged in to the Lish Ajax console.
 You can also access Lish with an SSH client application installed on your computer. Here's how:
 
 1.  Log in to the [Linode Manager](https://manager.linode.com).
-2.  Click the **Linodes** tab. A list of your virtual private servers appears.
+2.  Click the **Linodes** tab.
 3.  Select a Linode. The Linode's dashboard appears.
 4.  Click the **Remote Access** tab. Scroll down to the *Console Access* section, as shown below.
 

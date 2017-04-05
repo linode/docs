@@ -3,7 +3,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Creating a LAMP stack with Apache, MySQL, PHP, and Python on a Fedora 13 powered Linode VPS.'
+description: 'Creating a LAMP stack with Apache, MySQL, PHP, and Python on a Fedora 13 powered Linode.'
 keywords: 'fedora 13 lamp,lamp server,linux lamp,fedora 13 apache'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['lamp-guides/fedora-13/']

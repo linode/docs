@@ -13,15 +13,15 @@ published: 'Tuesday, April 24th, 2012'
 title: Disks and Configuration Profiles
 ---
 
-The Linode Manager allows you to create, edit, and use disks and configuration profiles with your Linode virtual private servers. You can install different Linux distributions on the disks, set device assignments, and configure boot settings. This guide will show you how to put the pieces together to create a custom setup.
+The Linode Manager allows you to create, edit, and use disks and configuration profiles with your Linodes. You can install different Linux distributions on the disks, set device assignments, and configure boot settings. This guide will show you how to put the pieces together to create a custom setup.
 
-![Disks and Configuration Profiles](/docs/assets/disks_and_configuration_profiles.png "isks and Configuration Profiles")
+![Disks and Configuration Profiles](/docs/assets/disks_and_configuration_profiles.png "Disks and Configuration Profiles")
 
 ## Getting Started
 
-Your Linode plan comes with persistent storage to hold your most important asset - data. This pool of storage can be broken up into individual containers called *disks*. You'll use disks to store all of the files on your VPS. It's easy to create, delete, resize, duplicate, and even clone disks to different Linodes.
+Your Linode plan comes with persistent storage to hold your most important asset - data. This pool of storage can be broken up into individual containers called *disks*. It's easy to create, delete, resize, duplicate, and even clone disks to different Linodes.
 
-A *configuration profile* is a boot loader for your Linode VPS. It controls general boot settings, including the disk your Linode will start up from, the disks that will be mounted, and the kernel that will be used. You can create multiple configuration profiles and store them in the Linode Manager.
+A *configuration profile* is a boot loader for your Linode. It controls general boot settings, including the disk your Linode will start up from, the disks that will be mounted, and the kernel that will be used. You can create multiple configuration profiles and store them in the Linode Manager.
 
 [![Overview of disks and configuration profiles.](/docs/assets/1740-disk-images1.png)](/docs/assets/1740-disk-images1.png)
 
@@ -53,7 +53,7 @@ The Linode Manager makes it easy to create a new disk with a fresh Linux distrib
 > A new configuration profile will automatically be created when you make a disk this way. After the disk is created, you can select the new configuration profile to boot your Linode from the new disk.
 
 1.  Log in to the [Linode Manager](https://manager.linode.com).
-2.  Click the **Linodes** tab. A list of your virtual private servers appears.
+2.  Click the **Linodes** tab.
 3.  Select a Linode. The Linode's dashboard appears.
 4.  Select the **Deploy an Image** link. The webpage shown below appears.
 
@@ -77,7 +77,7 @@ The disk will be created. Watch the *Host Job Queue* on the Dashboard to monitor
 Create a blank disk if you need detachable storage space or want to download and install your own Linux distribution. Here's how:
 
 1.  Log in to the [Linode Manager](https://manager.linode.com).
-2.  Click the **Linodes** tab. A list of your virtual private servers appears.
+2.  Click the **Linodes** tab.
 3.  Select a Linode. The Linode's dashboard appears.
 4.  Select the **Create a new disk** link. The *Edit disk* webpage appears, as shown below.
 
@@ -95,7 +95,7 @@ The disk will be created. Watch the *Host Job Queue* on the Dashboard to monitor
 Resizing allows you to allocate more storage to a disk so you can store more files, or shrink a disk so you have more storage for the other disks in your account. Here's how to resize a disk:
 
 1.  Log in to the [Linode Manager](https://manager.linode.com).
-2.  Click the **Linodes** tab. A list of your virtual private servers appears.
+2.  Click the **Linodes** tab.
 3.  Select a Linode. The Linode's dashboard appears.
 4.  Click **Shut down** to turn your Linode off. Watch the *Host Job Queue* for confirmation that the Linode has shut down.
 5.  Select the disk you want to resize. The *Edit disk* webpage appears.
@@ -110,7 +110,7 @@ You have successfully resized the disk.
 You can create an exact copy of a disk by duplicating it. This is an effective way to back up your server or clone an existing Linode to a new Linode. (To clone a disk, see [Cloning disks and Configuration Profiles](#cloning-disks-and-configuration-profiles).) Here's how to duplicate a disk:
 
 1.  Log in to the [Linode Manager](https://manager.linode.com).
-2.  Click the **Linodes** tab. A list of your virtual private servers appears.
+2.  Click the **Linodes** tab.
 3.  Select a Linode. The Linode's dashboard appears.
 4.  Click **Shut down** to turn your Linode off. Watch the *Host Job Queue* for confirmation that the Linode has shut down.
 5.  Select the disk you want to duplicate. The *Edit disk* webpage appears.
@@ -124,7 +124,7 @@ The disk will be duplicated. Watch the *Host Job Queue* on the Dashboard to moni
 You can delete a disk to remove it from your Linode and reallocate its storage space to another disk. This action is permanent and cannot be undone. Here's how to delete a disk:
 
 1.  Log in to the [Linode Manager](https://manager.linode.com).
-2.  Click the **Linodes** tab. A list of your virtual private servers appears.
+2.  Click the **Linodes** tab.
 3.  Select a Linode. The Linode's dashboard appears.
 4.  Click **Shut down** to turn your Linode off. Watch the *Host Job Queue* for confirmation that the Linode has shut down.
 5.  Select the **Remove** link next to the Linode you want to delete, as shown below. The disk will be deleted. Watch the *Host Job Queue* for confirmation that the disk has been duplicated.
@@ -144,7 +144,7 @@ Linode's configuration profiles are similar to [GNU GRUB](http://en.wikipedia.or
 Making a new configuration profile allows you to create a new and separate boot configuration for your system. You can specify boot settings and disks to mount. Here's how to create a new configuration profile:
 
 1.  Log in to the [Linode Manager](https://manager.linode.com).
-2.  Click the **Linodes** tab. A list of your virtual private servers appears.
+2.  Click the **Linodes** tab.
 3.  Select a Linode. The Linode's dashboard appears.
 4.  Select the **Create a new Configuration Profile** link. The *Configuration Profile* webpage appears, as shown below.
 
@@ -165,7 +165,7 @@ The configuration profile will be created and will appear on the Linode's dashbo
 You can edit existing configuration profiles to change boot settings, set other disks to mount, and more. Here's how to edit a configuration profile:
 
 1.  Log in to the [Linode Manager](https://manager.linode.com).
-2.  Click the **Linodes** tab. A list of your virtual private servers appears.
+2.  Click the **Linodes** tab.
 3.  Select a Linode. The Linode's dashboard appears.
 4.  Select a configuration profile. The *Configuration Profile* appears.
 5.  Edit the settings as necessary.
@@ -178,7 +178,7 @@ The changes to the configuration profile have been saved. You may need to reboot
 You can create and store many different configuration profiles in the Linode Manager, but you can only boot your Linode from one configuration profile at a time. Here's how to select a configuration profile and boot your Linode from it:
 
 1.  Log in to the [Linode Manager](https://manager.linode.com).
-2.  Click the **Linodes** tab. A list of your virtual private servers appears.
+2.  Click the **Linodes** tab.
 3.  Select a Linode. The Linode's dashboard appears.
 4.  Click the button to select a configuration profile, as shown below.
 
@@ -193,7 +193,7 @@ You have successfully selected and booted your Linode from a configuration profi
 You can remove a configuration profile from the Linode Manager at anytime. Here's how:
 
 1.  Log in to the [Linode Manager](https://manager.linode.com).
-2.  Click the **Linodes** tab. A list of your virtual private servers appears.
+2.  Click the **Linodes** tab.
 3.  Select a Linode. The Linode's dashboard appears.
 4.  Select the **Remove** link next to the configuration profile you want to remove.
 
@@ -207,7 +207,7 @@ You can *clone* disks and configuration profiles from one Linode to another, as 
 
 If you're wondering how you could use disks and configuration profiles, here are some ideas to get you started:
 
--   **Duplicate Server Configurations:** It takes time to configure your Linode. Preserve that hard work by [duplicating the disk](#duplicating-a-disk) to preserve all of your settings and applications in their current state. If you decide to create another Linode later, you could [clone a saved disk](#cloning-disks-and-configuration-profiles) to the new VPS in a matter of minutes, saving yourself hours of work.
+-   **Duplicate Server Configurations:** It takes time to configure your Linode. Preserve that hard work by [duplicating the disk](#duplicating-a-disk) to preserve all of your settings and applications in their current state. If you decide to create another Linode later, you could [clone a saved disk](#cloning-disks-and-configuration-profiles) to the new Linode in a matter of minutes, saving yourself hours of work.
 -   **Automate Server Builds:** If you run a large website that requires multiple servers, or if you just love automating things, you'll want to [automate your server builds](/docs/platform/automating-server-builds). You can rapidly spin up multiple servers with exactly the same configuration by creating a *golden disk* that can be cloned to multiple Linodes.
 -   **Experiment with Distributions:** New to Linux? Take different distributions out for a spin by creating a separate disk for each flavor of Linux. Once you find a distribution you like, you can delete all of the disks except the one with your favorite distribution.
 -   **Create a Software Testing Environment:** If you're a developer, you can create different disks for testing purposes. Every disk can hold a different 32- or 64-bit distribution, and every configuration profile can be set to use a different kernel. Even if you're not a developer, this is ideal for testing open source or proprietary software on different distributions.

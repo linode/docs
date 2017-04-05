@@ -10,4 +10,4 @@ published: 'Friday, November 20th, 2009'
 title: Project Management
 ---
 
-These guides offer step-by-step instructions for setting up leading open source project management systems on your Linux VPS.
+These guides offer step-by-step instructions for setting up leading open source project management systems on your Linode.

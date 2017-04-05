@@ -35,7 +35,7 @@ You'll also need to prepare the *receiving* Linode before initiating the transfe
 To hold the files that will be transferred from the other Linode, you should create a new disk. Here's how:
 
 1.  Log in to the [Linode Manager](https://manager.linode.com) with the account that will be receiving the disk.
-2.  Click the **Linodes** tab. A list of your virtual private servers appears.
+2.  Click the **Linodes** tab.
 3.  Select the Linode that will be receiving the disk. The Linode's dashboard appears.
 4.  Create a disk to hold the files from the other account's disk. Select **Create a new disk**. The webpage shown below appears.
 
@@ -117,7 +117,7 @@ Now it's time to boot from the disk. First, you'll create a configuration profil
 
 The boot the receiving Linode from the transferred disk, you'll need to create a new configuration profile. Here's how:
 
-1.  Click the **Linodes** tab. A list of your virtual private servers appears.
+1.  Click the **Linodes** tab.
 2.  Select the Linode that received the disk. The Linode's dashboard appears.
 3.  Select **Create a new Configuration Profile**. The webpage shown below appears.
 

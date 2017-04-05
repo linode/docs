@@ -145,7 +145,7 @@ When you create or edit any virtual host file, you'll need to reload the config,
 
     /etc/init.d/apache2 reload
 
-Congratulations! You now have Apache installed on your Debian Linux VPS and have configured the server for virtual hosting.
+Congratulations! You now have Apache installed on your Debian Linode and have configured the server for virtual hosting.
 
 Install Apache Modules
 ----------------------

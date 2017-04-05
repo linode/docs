@@ -3,7 +3,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Use OpenVPN to securely connect separate networks on an Ubuntu 10.04 (Lucid) Linux VPS.'
+description: 'Use OpenVPN to securely connect separate networks on an Ubuntu 10.04 (Lucid) Linode.'
 keywords: 'openvpn,networking,vpn,ubuntu,ubuntu lucid,ubuntu 10.4'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['networking/openvpn/ubuntu-10-04-lucid/']
