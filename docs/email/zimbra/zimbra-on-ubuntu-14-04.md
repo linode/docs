@@ -4,7 +4,7 @@ author:
     email: docs@linode.com
 description: 'Install Zimbra OSE 8.6 on Ubuntu 14.04 LTS Linode'
 keywords: 'zimbra,install zimbra,mail server,zimbra email,zimbra email server,mail zimbra,open source guide,zimbra open source,postfix,web mail,opendkim,amavis,ubuntu tahr,ubuntu 14.04,ubuntu'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Thursday, October 1st, 2015'
 modified: Thursday, October 1st, 2015
 modified_by:

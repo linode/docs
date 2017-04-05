@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: Basic NFS Configuration on Debian 7.
 keywords: 'NFS,Debian,network,file,system,wheezy'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['networking/file-transfer/basic-nfs-debian/']
 contributor:
     

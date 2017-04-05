@@ -4,7 +4,7 @@ author:
     email: docs@linode.com
 description: 'Set up TeamSpeak on your Linode and chat with your friends or coworkers while gaming, working, or otherwise'
 keywords: 'teamspeak,virtual intercom,chat,game server'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Thursday, July 23th, 2015'
 modified: Thursday, July 23th, 2015
 modified_by:

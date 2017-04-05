@@ -4,7 +4,7 @@ author:
   email: caker@linode.com
 description: 'Generate and manipulate dates with the date command.'
 keywords: 'date,time,linux commands,shell'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['linux-tools/common-commands/date/']
 modified: Tuesday, April 19th, 2011
 modified_by:

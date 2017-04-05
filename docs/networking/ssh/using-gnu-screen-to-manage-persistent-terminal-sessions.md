@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: Using GNU Screen to Manage Persistent Terminal Sessions
 keywords: 'screen,gnu screen,terminal,console,linux'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['linux-tools/utilities/screen/', 'tools-reference/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions/']
 modified: Monday, January 13th, 2014
 modified_by:
@@ -17,6 +17,8 @@ external_resources:
 ---
 
 GNU Screen is a tool which works with a terminal session to allow users to resume a session after they have disconnected. Screen prevents a session from "timing out" or disconnecting SSH connections or local terminal emulators. A single Screen session has the ability to host multiple sessions or "windows." Screen may be used for a variety of tasks such as maintaining persistent IRC sessions and multitasking in a terminal environment.
+
+![Using GNU Screen to Manage Persistent Terminal Sessions](/docs/assets/gnu-screen.png "Using GNU Screen to Manage Persistent Terminal Sessions")
 
 Screen runs on any Unix/Linux environment (such as your Linode) and Mac OS X. Before installing and using Screen, it is recommended that you review the [Getting Started Guide](/docs/getting-started/). In addition, if you are unfamiliar with using a terminal environment, you will want to review the [Using the Terminal Guide](/docs/using-linux/using-the-terminal).
 

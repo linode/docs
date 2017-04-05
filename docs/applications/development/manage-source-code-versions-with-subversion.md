@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Managing source control with Subversion, an open source version control system.'
 keywords: 'svn,version control,source control management'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['linux-tools/version-control/svn/']
 modified: Tuesday, June 7th, 2011
 modified_by:

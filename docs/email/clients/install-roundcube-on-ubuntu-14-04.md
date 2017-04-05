@@ -4,7 +4,7 @@ author:
   email: 'docs@linode.com'
 description: 'Roundcube is a web-based IMAP email client that offers a user interface similar to Gmail or Hotmail. Email users interact with Roundcube over the internet using a web browser.'
 keywords: 'Roundcube,webmail,email,Ubuntu,Postfix,Dovecot'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Monday, February 1st, 2016'
 modified: 'Monday, February 1st, 2016'
 modified_by:

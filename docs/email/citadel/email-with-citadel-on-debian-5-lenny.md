@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Setting up an email and groupware server using Citadel on a Debian 5 (Lenny) Linode VPS.'
 keywords: 'citadel,debian mail server,groupware,email server,email howto'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['email/citadel/debian-5-lenny/']
 modified: Monday, October 8th, 2012
 modified_by:

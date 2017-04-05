@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Getting started with MySQL on Debian 7.'
 keywords: 'MySQL on Linux,Debian 7,Debian Wheezy,Debian,cloud,cloud hosting,Linux,MySQL,database,MariaDB,install MySQL,secure MySQL,mysqltuner'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['databases/mysql/debian-7-wheezy/','databases/mysql/using-mysql-relational-databases-on-debian-7-wheezy/']
 modified: Wednesday August 26th, 2015
 modified_by:
@@ -20,6 +20,8 @@ external_resources:
 ---
 
 MySQL is a popular database management system used for web and server applications. This guide will introduce how to install, configure and manage MySQL on a Linode running Debian 7 (Wheezy).
+
+Large MySQL databases can require a considerable amount of memory. For this reason, we recommend using a [high memory Linode](https://www.linode.com/pricing#high-memory) for such setups. 
 
 {: .note}
 >
@@ -117,9 +119,9 @@ The standard tool for interacting with MySQL is the `mysql` client which install
         create database testdb;
         create user 'testuser'@'localhost' identified by 'password';
         grant all on testdb.* to 'testuser' identified by 'password';
-    
+
 2.  Then exit MySQL.
-    
+
         exit
 
 ### Create a Sample Table
@@ -134,7 +136,7 @@ The standard tool for interacting with MySQL is the `mysql` client which install
         create table customers (customer_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, first_name TEXT, last_name TEXT);
 
 3.  Then exit MySQL.
-    
+
         exit
 
 ## Reset the MySQL Root Password

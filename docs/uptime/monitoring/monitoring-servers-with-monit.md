@@ -4,7 +4,7 @@ author:
     email: docs@linode.com
 description: 'Improve uptime with Monit Server Monitoring. Monit will watch you system around the clock, and respond to out-of-the-norm events by following your instructions.'
 keywords: 'installing Monit for server monitoring'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Thursday October 15th, 2015'
 modified: 'Thursday October 15th, 2015'
 modified_by:
@@ -23,6 +23,8 @@ external_resources:
 <hr>
 
 Keeping tabs on your servers can be time-consuming. You need to make sure connectivity is good, processes are running but not running away, resources are available, and system health is good. Whether you have one server or many, it's something you may not do as often as you should. 
+
+![Installing Monit for Server Monitoring](/docs/assets/monit_tg.png "Installing Monit for Server Monitoring")
 
 [Monit](https://mmonit.com/) can watch your servers for you. You can tell Monit exactly what you would do if a program stops running, or begins using too much RAM, or another host becomes unreachable. Monit will watch around the clock, and respond to out-of-the-norm events by following your instructions.
 

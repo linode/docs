@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Use the Web.py Python framework to develop powerful and innovative web applications on Ubuntu 10.10 (Maverick).'
 keywords: 'web.py,web applications,python,web frameworks'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['frameworks/webpy/ubuntu-10-10-maverick/']
 modified: Monday, October 8th, 2012
 modified_by:

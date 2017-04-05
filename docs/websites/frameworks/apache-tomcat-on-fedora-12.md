@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Instructions for installing and using the Apache Tomcat Java Servlet engine on Fedora 12.'
 keywords: 'apache tomcat fedora 12,java,java fedora 12,java servlets fedora 12,java fedora'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['frameworks/apache-tomcat/fedora-12/']
 modified: Friday, April 29th, 2011
 modified_by:

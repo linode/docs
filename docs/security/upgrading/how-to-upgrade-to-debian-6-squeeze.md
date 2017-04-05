@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'How to upgrade from Debian 5 (Lenny) to Debian 6 (Squeeze).'
 keywords: 'debian upgrade,upgrade distro,squeeze upgrade,squeeze'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['upgrading/upgrade-to-debian-6-squeeze/']
 modified: Tuesday, October 1st, 2013
 modified_by:

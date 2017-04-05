@@ -4,9 +4,9 @@ author:
   email: caker@linode.com
 description: NodeBalancer Reference Guide
 keywords: 'load balancing,nodebalancer'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['nodebalancers/reference/']
-modified: 'Friday, December 18th, 2015'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+alias: ['nodebalancers/reference/','linode-platform/nodebalancer-reference/']
+modified: Thursday, February 23rd, 2017
 modified_by:
   name: Linode
 published: 'Friday, July 8th, 2011'
@@ -21,7 +21,7 @@ Click the NodeBalancers tab, and then "Add a NodeBalancer". You must choose the 
 
 ## NodeBalancer Settings
 
-Here you may adjust the NodeBalancer's display label, along with the 'Client Connection Throttle'. The connection throttle limits the number subsequent new connections from the same client IP address.
+Here you may adjust the NodeBalancer's display label, along with the 'Client Connection Throttle.' The connection throttle limits the number of  subsequent new connections from the same client IP address.
 
 ## Configuration
 
@@ -60,7 +60,7 @@ How initial new connections are allocated across the backend Nodes.
 NodeBalancers have the ability for Session Persistence - meaning subsequent requests from the same client will be routed to the same backend Node when possible.
 
 -   **None** - No additional Session Stickiness will be performed.
--   **Table** - The NodeBalancer itself remembers which backend a given client IP was initially load balanced to (see Algorithm, above), and will route subsequent requests from this IP back to the same backend, regardless of changes to the number of healthy backend nodes. If a backend node goes offline, entries in the table for that node are removed.
+-   **Table** - The NodeBalancer itself remembers which backend a given client IP was initially load balanced to (see Algorithm, above), and will route subsequent requests from this IP back to the same backend, regardless of changes to the number of healthy backend nodes. Each entry in the table will expire 30 minutes from the time that it was added. If a backend node goes offline, entries in the table for that node are removed.
 -   **HTTP Cookie** - Requires the configuration protocol be set to HTTP. The NodeBalancer sets a cookie named `NB_SRVID` identifying the backend a client was initially load balanced to (see Algorithm, above), and will route subsequent requests from this IP back to the same backend, regardless of changes to the number of healthy backend nodes. If a backend node goes offline, the client is balanced to another backend and the cookie is rewritten.
 
 If you need Session Persistence it is our recommendation to utilize both the Source IP algorithm in combination with either Table or HTTP Cookie if possible.
@@ -97,7 +97,7 @@ When servicing an incoming request, if a backend node fails to connect, times ou
 
 Passive health checks can be disabled if you choose:
 
-1.  From the Liode Manager, click the **NodeBalancers** tab.
+1.  From the Linode Manager, click the **NodeBalancers** tab.
 2.  Select your NodeBalancer and choose **Edit**.
 3.  Under the **Configurations** section at the top of the page, choose **Edit**.
 4.  Scroll down and uncheck the **Enabled** box under **Passive Checks**. Then click **Save Changes**.
@@ -110,7 +110,7 @@ NodeBalancers also proactively check the health of back-end nodes by performing 
 -   **Check Timeout** - Seconds to wait before considering the probe a failure. 1-30.
 -   **Check Attempts** - Number of failed probes before taking a node out of rotation. 1-30.
 
-Three different Health Check Type exist:
+Three different Health Check Types exist:
 
 -   **TCP Connection** - requires a successful TCP handshake with a backend node.
 -   **HTTP Valid Status** - performs an HTTP request on the provided path and requires a 2xx or 3xx response from the backend node.
@@ -160,3 +160,8 @@ If you're using the Nginx web server, you can add the following lines to your Ng
     set_real_ip_from 192.168.255.0/24;
 
 This will allow Nginx to capture the client's IP address in the logs.
+
+## IP Address Range
+
+NodeBalancers all have private IP addresses in the `192.168.255.0/24` range. It's important to note that while their public IP address is persistent, the private IP address **will** change. When configuring a firewall or other network restriction on back-end Linodes, be sure to allow the entire `192.168.255.0/24` range and not a specific IP address.
+

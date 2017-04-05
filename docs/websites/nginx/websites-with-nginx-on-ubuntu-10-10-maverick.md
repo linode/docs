@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'A basic guide to installing nginx from source on Ubuntu 10.10 (Maverick)'
 keywords: 'nginx,nginx ubuntu 10.10,http,web servers,ubuntu,ubuntu maverick'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-servers/nginx/installation/ubuntu-10-10-maverick/']
 modified: Monday, October 8th, 2012
 modified_by:
@@ -141,7 +141,7 @@ More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [Linode Library nginx Documentation](/docs/web-servers/nginx/)
+- [Linode Docs nginx Documentation](/docs/web-servers/nginx/)
 - [nginx Community Documentation](http://wiki.nginx.org)
 - [Configure Perl and FastCGI with nginx](/docs/web-servers/nginx/perl-fastcgi/ubuntu-10.10-maverick)
 - [Configure PHP and FastCGI with nginx](/docs/web-servers/nginx/php-fastcgi/ubuntu-10.10-maverick)

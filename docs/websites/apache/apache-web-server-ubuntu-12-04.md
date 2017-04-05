@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Install Apache on your Ubuntu 12.04 Server, configure virtual hosting, and set up module and scripting support.'
 keywords: 'apache,ubuntu,ubuntu 12.04,precise,pengolin,apache web server,web server,'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Wednesday, July 15th, 2015
 alias: ['web-servers/apache/installation/ubuntu-12-04-precise-pangolin/','websites/apache/apache-2-web-server-on-ubuntu-12-04-lts-precise-pangolin/','websites/apache/how-to-install-and-configure-apache-2-web-server-on-ubuntu-12-04-lts-precise-pangolin/']
 modified_by:
@@ -16,7 +16,7 @@ external_resources:
  - '[Apache Configuration](/docs/web-servers/apache/configuration/)'
 ---
 
-The *Apache HTTP Web Sever* (Apache) is an open source web application for running web servers.  This guide explains how to install and configure an Apache web server on Ubuntu 12.04 LTS.
+The *Apache HTTP Web Server* (Apache) is an open source web application for running web servers.  This guide explains how to install and configure an Apache web server on Ubuntu 12.04 LTS.
 
 If instead you would like to install a full LAMP (Linux, Apache, MySQL and PHP) stack, please see the [LAMP on Ubuntu 12.04](/docs/websites/lamp/lamp-server-on-ubuntu-12-04-precise-pangolin) guide.
 
@@ -47,7 +47,7 @@ If instead you would like to install a full LAMP (Linux, Apache, MySQL and PHP) 
 
         sudo apt-get install apache2 apache2-doc apache2-utils
 
-2.  Edit the main Apache configuration file to adjust the resource use settings. The settings shown below are a good starting point for a **Linode 1GB**:
+2.  Edit the main Apache configuration file to adjust the resource use settings. The settings shown below are a good starting point for a **Linode 2GB**:
 
     {: .file }
     /etc/apache2/apache2.conf
@@ -57,11 +57,11 @@ If instead you would like to install a full LAMP (Linux, Apache, MySQL and PHP) 
         ...
 
         <IfModule mpm_prefork_module>
-            StartServers        2
-            MinSpareServers     6
-            MaxSpareServers     12
-            MaxClients          30
-            MaxRequestsPerChild 3000
+            StartServers        4
+            MinSpareServers     20
+            MaxSpareServers     40
+            MaxClients          200
+            MaxRequestsPerChild 4500
         </IfModule>
         ~~~
 

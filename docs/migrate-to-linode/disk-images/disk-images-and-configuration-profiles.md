@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: Our guide to disks and configuration profiles
 keywords: 'disks,config profiles'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['disk-images-config-profiles/']
 modified: Thursday, June 19th, 2014
 modified_by:
@@ -14,6 +14,8 @@ title: Disks and Configuration Profiles
 ---
 
 The Linode Manager allows you to create, edit, and use disks and configuration profiles with your Linode virtual private servers. You can install different Linux distributions on the disks, set device assignments, and configure boot settings. This guide will show you how to put the pieces together to create a custom setup.
+
+![Disks and Configuration Profiles](/docs/assets/disks_and_configuration_profiles.png "isks and Configuration Profiles")
 
 ## Getting Started
 
@@ -53,7 +55,7 @@ The Linode Manager makes it easy to create a new disk with a fresh Linux distrib
 1.  Log in to the [Linode Manager](https://manager.linode.com).
 2.  Click the **Linodes** tab. A list of your virtual private servers appears.
 3.  Select a Linode. The Linode's dashboard appears.
-4.  Select the **Deploy a Linux Distribution** link. The webpage shown below appears.
+4.  Select the **Deploy an Image** link. The webpage shown below appears.
 
 [![Create a new disk with a Linux distribution.](/docs/assets/980-disk2-small.png)](/docs/assets/979-disk2.png)
 
@@ -86,7 +88,7 @@ Create a blank disk if you need detachable storage space or want to download and
 7.  Enter a size for the disk in the **Deployment Disk Size** field. The size must be smaller than the amount of storage space remaining in your Linode plan.
 8.  Click **Save Changes**.
 
-The disk will be created. Watch the *Host Job Queue* on the Dashboard to monitor the progress. When the process is complete, the disk will appear on the dashboard. You'll need to create or modify a configuration profile to mount the new disk. For instructions, see [Configuration Profiles](#id5).
+The disk will be created. Watch the *Host Job Queue* on the Dashboard to monitor the progress. When the process is complete, the disk will appear on the dashboard. You'll need to create or modify a configuration profile to mount the new disk. For instructions, see [Configuration Profiles](#configuration-profiles).
 
 ### Resizing a Disk
 
@@ -105,7 +107,7 @@ You have successfully resized the disk.
 
 ### Duplicating a Disk
 
-You can create an exact copy of a disk by duplicating it. This is an effective way to back up your server or clone an existing Linode to a new Linode. (To clone a disk, see [Cloning disks and Configuration Profiles](#id10).) Here's how to duplicate a disk:
+You can create an exact copy of a disk by duplicating it. This is an effective way to back up your server or clone an existing Linode to a new Linode. (To clone a disk, see [Cloning disks and Configuration Profiles](#cloning-disks-and-configuration-profiles).) Here's how to duplicate a disk:
 
 1.  Log in to the [Linode Manager](https://manager.linode.com).
 2.  Click the **Linodes** tab. A list of your virtual private servers appears.
@@ -197,35 +199,15 @@ You can remove a configuration profile from the Linode Manager at anytime. Here'
 
 The configuration profile is removed from the dashboard.
 
-## Cloning disks and Configuration Profiles
+## Cloning Disks and Configuration Profiles
 
-You can *clone* disks and configuration profiles from one Linode to another, as long as both of the Linodes are in your account. This is an easy way to transfer disks and configuration profiles between Linodes or migrate your Linode to a different datacenter or a new host in the same data center.
-
-Here's how to clone your disks and configuration profiles from one Linode to another:
-
-1.  Log in to the [Linode Manager](https://manager.linode.com).
-2.  Click the **Linodes** tab. A list of your virtual private servers appears.
-3.  Select the Linode with the configuration profiles and disks you want to clone. The Linode's dashboard appears.
-4.  *Optional:* Click **Shut down** to power down the Linode. This is recommended to prevent data corruption.
-5.  Click the **Clone** tab. The webpage shown below appears.
-
-	[![Selecting configuration profiles and disks to migrate](/docs/assets/1038-disk9-small.png)](/docs/assets/1037-disk9.png)
-
-6.  Select the disks and configuration profiles you want to clone to another Linode.
-7.  Click **Select**. The webpage shown below appears.
-
-	[![Clone summary webpage](/docs/assets/1036-disk8-small.png)](/docs/assets/1035-disk8.png)
-
-8.  From the **Destination Linode** menu, select the Linode you want to receive the disks and configuration profiles.
-9.  Click **Clone**. The receiving Linode's dashboard appears. Watch the *Host Job Queue* to monitor the progress.
-
-After the cloning process completes, the disks and configuration profiles you selected will be available on the destination Linode.
+You can *clone* disks and configuration profiles from one Linode to another, as long as both of the Linodes are on your account. This is an easy way to transfer your configuration between Linodes, or migrate your Linode to a different datacenter. See our guide on [cloning your Linode](/docs/migrate-to-linode/disk-images/clone-your-linode) for more information.
 
 ## Potential Uses
 
 If you're wondering how you could use disks and configuration profiles, here are some ideas to get you started:
 
--   **Duplicate Server Configurations:** It takes time to configure your Linode. Preserve that hard work by [duplicating the disk](#duplicating-a-disk) to preserve all of your settings and applications in their current state. If you decide to create another Linode later, you could [clone a saved disk](#id10) to the new VPS in a matter of minutes, saving yourself hours of work.
+-   **Duplicate Server Configurations:** It takes time to configure your Linode. Preserve that hard work by [duplicating the disk](#duplicating-a-disk) to preserve all of your settings and applications in their current state. If you decide to create another Linode later, you could [clone a saved disk](#cloning-disks-and-configuration-profiles) to the new VPS in a matter of minutes, saving yourself hours of work.
 -   **Automate Server Builds:** If you run a large website that requires multiple servers, or if you just love automating things, you'll want to [automate your server builds](/docs/platform/automating-server-builds). You can rapidly spin up multiple servers with exactly the same configuration by creating a *golden disk* that can be cloned to multiple Linodes.
 -   **Experiment with Distributions:** New to Linux? Take different distributions out for a spin by creating a separate disk for each flavor of Linux. Once you find a distribution you like, you can delete all of the disks except the one with your favorite distribution.
 -   **Create a Software Testing Environment:** If you're a developer, you can create different disks for testing purposes. Every disk can hold a different 32- or 64-bit distribution, and every configuration profile can be set to use a different kernel. Even if you're not a developer, this is ideal for testing open source or proprietary software on different distributions.

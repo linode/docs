@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Deploy Python WSGI Applications with Apache and mod_wsgi.'
 keywords: 'python,apache,mod_wsgi,django'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-servers/apache/mod-wsgi/ubuntu-12-04-precise-pangolin/']
 modified: Wednesday, November 18th, 2015
 modified_by:

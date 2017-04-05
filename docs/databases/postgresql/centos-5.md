@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Using the PostgreSQL relational database server with CentOS 5.'
 keywords: 'postgresql,postgresql database,postgresql on centos,relational database'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Tuesday, September 24th, 2013
 modified_by:
   name: Linode

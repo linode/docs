@@ -4,7 +4,7 @@ author:
     email: docs@linode.com
 description: 'This Counter Strike: Global Offensive (CS:GO) server guide contains instructions on how to install SteamCMD, download the dedicated server, and launch the game server.'
 keywords: 'counter strike,counter strike global offensive,csgo,cs:go,csgo server,csgo server hosting, steam servers,game servers,games,ubuntu,ubuntu 14.04'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Thursday, February 25th, 2016'
 modified: Monday, February 29th, 2016
 modified_by:

@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Follow these instructions to launch a SOCKS server on your computer and browse the web securely using your Linode.'
 keywords: 'socks,proxy,socks proxy,tunnel,tunnelling'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['networking/socks-proxy/']
 contributor:
     name: Arnaldo Ariel Arrieta
@@ -124,4 +124,4 @@ Keep these considerations in mind when you use SSH tunneling.
 -   If you are already in a public network that blocks your access to SSH, to edit the server settings you can use the Linode Shell from the web (More info: <https://www.linode.com/docs/networking/using-the-linode-shell-lish/#using-a-web-browser>).
 -   Sometimes, the traffic through the tunnel could be a bit slower than browsing the web without it; but remember, it's a small price to pay when your privacy is at risk.
 -   This is a simple and quick way to establish a secure connection for web browsing, a kind of “poor man's VPN” solution.
--   If you often access the web using untrusted public networks or if you need to secure other applications and not just the browser, then this method will fall short and you will need to set up a VPN on your server. Take a look at one of the Linode Library's [OpenVPN](/docs/networking/vpn/) guides for instructions about that topic.
+-   If you often access the web using untrusted public networks or if you need to secure other applications and not just the browser, then this method will fall short and you will need to set up a VPN on your server. Take a look at one of our [OpenVPN](/docs/networking/vpn/) guides for instructions about that topic.

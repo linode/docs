@@ -4,7 +4,7 @@ author:
     email: docs@linode.com
 description: 'Use WeeChat and GNU Screen to create and maintain connections to IRC networks'
 keywords: 'weechat,irc,oftc,real time,chat'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributor:
   name: Samuel Damashek
 modified: Thursday, March 10th, 2016

@@ -4,7 +4,7 @@ author:
     email: docs@linode.com
 description: 'Clojure Deployment with Immutant and WildFly on Ubuntu 14.04'
 keywords: 'clojure,luminus,leiningen,immutant,jvm,wildfly,jboss,oracle jdk 8'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 'Monday, December 21st, 2015'
 modified_by:
   name: Sergey Pariev

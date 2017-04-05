@@ -4,12 +4,12 @@ author:
   email: docs@linode.com
 description: Our guide to the remote access area of the Linode Manager.
 keywords: 'remote access,ip addresses,ip failover,swapping ip addresses,console access'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['remote-access/']
 modified: Saturday, September 6th, 2014
 modified_by:
-  name: Linode
-published: 'Tuesday, April 24th, 2012'
+  name: Phil Zona
+published: 'Tuesday, August 23rd, 2016'
 title: Remote Access
 ---
 
@@ -77,10 +77,10 @@ You'll see a confirmation message that the reverse DNS has been reset.
 
 ## Configuring IP Failover
 
-If you're using two Linodes to make a website highly available with Heartbeat and Pacemaker , you can use the Linode Manager to configure IP failover. Here's how:
+*IP failover* is the process by which an IP address is reassigned from one Linode to another in the event the first one fails or goes down. If you're using two Linodes to make a website [highly available](/docs/websites/introduction-to-high-availability) with Keepalived or a similar service, you can use the Linode Manager to configure IP failover. Here's how:
 
 1.  Log in to the [Linode Manager](https://manager.linode.com).
-2.  Click the **Linodes** tab. A list of your virtual private servers appears.
+2.  Click the **Linodes** tab. A list of your available nodes will appear.
 3.  Select the Linode on which you wish to configure failover. The Linode's dashboard appears.
 4.  Click the **Remote Access** tab.
 5.  Select the **IP Failover** link. The webpage shown below appears.
@@ -90,7 +90,7 @@ If you're using two Linodes to make a website highly available with Heartbeat an
 6.  Select the checkboxes of all IP addresses that need to fail over to the chosen Linode.
 7.  Click **Save Changes**.
 
-You have successfully configured IP failover.
+You have successfully configured IP failover. Now, when a failover service such as Keepalived detects failure of your chosen Linode, its IP address will be assigned to the new Linode to avoid an interruption in service. For more information on a practical use case, see our guide on [hosting a website with high availability](/docs/websites/host-a-website-with-high-availability).
 
 ## Networking Restrictions
 
@@ -130,8 +130,20 @@ Here's how to swap IP addresses:
 
 8.  Select both of the **Move It** checkboxes to verify that you want the IP addresses switched.
 9.  Click **Do it**.
+10. **Optional** Enable [Network Helper](/docs/platform/network-helper) and reboot your Linode VPS.
 
-The IP address(es) will be swapped immediately as your Linode's networking is hotplugged. There may be a delay, however, of a few minutes (usually no more than five to ten) between the IP swap. There may be a brief period of time when your Linode's IP is unreachable due to this delay. Often, rebooting your Linode with the [network helper](https://www.linode.com/docs/platform/network-helper) feature enabled can make this process easier.
+    Network Helper automatically configures static IP address configuration files, and will update them with the new IP address. It's turned on by default for newer Linodes. For older Linodes, unless you've modified the networking configuration, DHCP assigns the IP address on boot.
+
+    If Network Helper is turned off *and* you've [configured a static IP address](/docs/networking/linux-static-ip-configuration), you'll need to update the configuration for the new addresses, or turn Network Helper on.
+
+    {: .note }
+    >
+    > If the IP is unreachable after a few minutes, you may need to notify the router directly of the IP change with the `arp` command:
+    >
+    >     arping -c5 -I eth0 -b -A -s 198.51.100.10 198.51.100.1
+    >     ping -c5 -I 198.51.100.10 198.51.100.1
+    >
+    > Replace `198.51.100.10` with your new IP address, and `198.51.100.1` with the gateway address listed in your Remote Access tab under "Default Gateways".
 
 ## Adding Private IP Addresses
 
@@ -146,7 +158,7 @@ The Linode Manager allows you to add private IP addresses for fast and secure co
 	[![Adding Private IP addresses](/docs/assets/1696-remote_access_privateip.png)](/docs/assets/1696-remote_access_privateip.png)
 
 6.  The Linode Manager assigns a private IP address to your Linode.
-7.  Configure static networking. See the [Linux Static IP Configuration](/docs/networking/configuring-static-ip-interfaces) guide for instructions.
+7.  Make sure [Network Helper](/docs/platform/network-helper) is enabled on your configuration profile. Otherwise, configure static networking. See the [Linux Static IP Configuration](/docs/networking/configuring-static-ip-interfaces) guide for instructions.
 
 If you'd like to add more than one private IP address to your Linode, please [contact support](/docs/support).
 

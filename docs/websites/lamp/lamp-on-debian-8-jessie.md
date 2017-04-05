@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Get your website or web application online by setting up Apache, MySQL, and PHP'
 keywords: 'debian 8 LAMP server,debian LAMP,LAMP howto,lamp,debian,debian 8,websites,apache,mysql,php,apache 2.4,lamp debian'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Tuesday, December 1st, 2015
 modified_by:
   name: Alex Fornuto
@@ -19,6 +19,8 @@ external_resources:
 ---
 
 Setting up a LAMP (Linux, Apache, MySql, PHP) stack on your server will allow for the creation and hosting of websites and web applications. This guide shows you how to install a LAMP stack on Debian 8 (Jessie).
+
+![LAMP on Debian 8 (Jessie)](/docs/assets/lamp-on-debian-8.png "LAMP on Debian 8 (Jessie)")
 
 {: .note }
 >
@@ -56,7 +58,7 @@ Prior to installing your LAMP stack ensure that:
         KeepAlive Off
         ~~~
 
-3.  Open `/etc/apache2/mods-available/mpm_prefork.conf` in your text editor and edit the values as needed. The following is optimized for a 1GB Linode:
+3.  Open `/etc/apache2/mods-available/mpm_prefork.conf` in your text editor and edit the values as needed. The following is optimized for a 2GB Linode:
 
     {: .file}
     /etc/apache2/mods-available/mpm_prefork.conf
@@ -69,11 +71,11 @@ Prior to installing your LAMP stack ensure that:
         # MaxConnectionsPerChild: maximum number of requests a server process serves
 
         <IfModule mpm_prefork_module>
-                StartServers              2
-                MinSpareServers           6
-                MaxSpareServers           12
-                MaxRequestWorkers         30
-                MaxConnectionsPerChild    3000
+                StartServers              4
+                MinSpareServers           20
+                MaxSpareServers           40
+                MaxRequestWorkers         200
+                MaxConnectionsPerChild    4500
         </IfModule>
 
         # vim: syntax=apache ts=4 sw=4 sts=4 sr noet
@@ -192,7 +194,7 @@ PHP makes it possible to produce dynamic and interactive pages using your own sc
 
         sudo apt-get install php5 php-pear
 
-2.  Open `/etc/php5/apache2/php.ini` in your text editor, and edit the following values. These settings are optimized for the 1GB Linode:
+2.  Open `/etc/php5/apache2/php.ini` in your text editor, and edit the following values. These settings are optimized for the 2GB Linode:
 
     {: .file-excerpt }
     /etc/php5/apache2/php.ini

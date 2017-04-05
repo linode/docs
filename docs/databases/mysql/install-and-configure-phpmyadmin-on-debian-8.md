@@ -4,7 +4,7 @@ author:
     email: docs@linode.com
 description: 'Use phpMyAdmin to manage MySQL databases and users though a web interface.'
 keywords: 'mysql,phpmyadmin,localhost phpmyadmin,php mysql,http localhost phpmyadmin,sql,debian,debian 8,php,mysql management'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['databases/mysql/phpmyadmin-debian-7-wheezy/','docs/databases/mysql/manage-mysql-phpmyadmin-debian-8/','docs/databases/mysql/install-mysql-phpmyadmin-debian-8']
 modified: Wednesday, September 16th, 2015
 modified_by:
@@ -33,19 +33,19 @@ phpMyAdmin is a web application that provides a GUI to aid in MySQL database adm
 2.  Update your system:
 
         sudo apt-get update && sudo apt-get upgrade -y
-        
+
 3.  Set up a working LAMP stack. Please see the [LAMP on Debian 8](/docs/websites/lamp/lamp-server-debian-8) guide if needed.
 
     {: .note}
     >
     >If you have installed the `php-suhosin` package, there are some known issues when using phpMyAdmin. Please visit the [Suhosin phpMyAdmin Compatibility Issues page](http://www.hardened-php.net/hphp/troubleshooting.html) for more information about tuning and workarounds.
-    
+
 4.  Set up Apache with SSL, so your passwords will not be sent over plain text. To do so, go through the [SSL Certificates with Apache on Debian & Ubuntu](/docs/security/ssl/ssl-apache2-debian-ubuntu) guide.
 
 5.  Install the `mcrypt` PHP module:
 
         sudo apt-get install mcrypt
-        
+
 6.  Restart Apache:
 
         sudo systemctl restart apache2

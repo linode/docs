@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: Our guide to copying a disk to a different Linode account
 keywords: 'disk,migration,moving to different accounts'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['migration/copy-disk-image-different-account/','linode-platform/manager/managing-disk-images/']
 modified: Thursday, June 12th, 2014
 modified_by:
@@ -14,6 +14,8 @@ title: Copying a Disk to a Different Account
 ---
 
 You can copy a Linode's disk from one Linode account to another. This is a great way to prepare a disk for another Linode customer and transfer it from your account to the other user's account. Or if you have multiple Linode accounts, you can use this guide to consolidate all of your disks in one account.
+
+![Our guide to copying a disk to a different Linode account](/docs/assets/copying_a_disk_to_a_differnet_account_smg.png "Our guide to copying a disk to a different Linode account")
 
 ## Preparing the Source Linode
 

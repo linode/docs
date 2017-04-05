@@ -4,7 +4,7 @@ author:
   email: afornuto@linode.com
 description: 'Use OpenVPN to securely connect separate networks on an Ubuntu 12.04 (Precise) or Debian 7 Linux VPS.'
 keywords: 'openvpn,networking,vpn,ubuntu,ubuntu precise,12.04,debian 7,debian'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['networking/openvpn/ubuntu-12-04-precise/']
 modified: Monday, February 17th, 2014
 modified_by:

@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Use the PostgreSQL relational database server with Debian 6 (Squeeze).'
 keywords: 'postgresql debian 6,postgresql squeeze,postgresql database,relational database'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Friday, March 8th, 2013
 modified_by:
   name: Linode

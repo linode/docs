@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Using the Apache web server with Ubuntu 10.10 to serve Ruby on Rails applications.'
 keywords: 'ruby on rails,rails on ubuntu,rails apps,rails and apache'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['frameworks/ruby-on-rails-apache/ubuntu-10-10-maverick/']
 modified: Monday, October 8th, 2012
 modified_by:

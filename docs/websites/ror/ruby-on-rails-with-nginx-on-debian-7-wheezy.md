@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: Using the Ruby on Rails framework for Nginx web applications on Debian 7
 keywords: 'ruby on rails,ruby on nginx,rails apps'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['frameworks/ruby-on-rails-nginx/debian-7-wheezy/']
 modified: Tuesday, December 9th, 2014
 modified_by:
@@ -20,6 +20,8 @@ external_resources:
 ---
 
 Ruby on Rails is a popular rapid development web framework that allows web designers and developers to implement fully featured dynamic web applications using the Ruby programming language. This guide describes the required process for deploying Ruby on Rails with Passenger and the Nginx web server on Debian 7 (Wheezy). For the purposes of this tutorial, it is assumed that you've followed the steps outlined in our [getting started guide](/docs/getting-started/), that your system is up to date, and that you've logged into your Linode as root via SSH.
+
+![Using the Ruby on Rails framework for Nginx web applications on Debian 7](/docs/assets/ruby_on_rails_with_nginx_debian_7_smg.png "Using the Ruby on Rails framework for Nginx web applications on Debian 7")
 
 ## Set the Hostname
 

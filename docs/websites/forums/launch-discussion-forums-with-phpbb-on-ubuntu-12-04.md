@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Configure the PhpBB System for Hosting Web-based Discussion Forums on Ubuntu 12.04 (Precise Pangolin).'
 keywords: 'phpBB,forum software,web applications,PHP,Ubuntu 12.04,precise pangolin'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-applications/bulletin-boards/phpbb/ubuntu-12-04-precise-pangolin/','websites/forums/discussion-forums-with-phpbb-on-ubuntu-12-04-precise-pangolin/']
 modified: Thursday, November 8th, 2012
 modified_by:

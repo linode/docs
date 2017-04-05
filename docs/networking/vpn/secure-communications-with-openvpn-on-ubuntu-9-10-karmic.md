@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Use OpenVPN to securely connect separate networks on an Ubuntu 9.10 (Karmic) Linux VPS.'
 keywords: 'openvpn,networking,vpn,ubuntu,ubuntu karmic,ubuntu 9.10'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['networking/openvpn/ubuntu-9-10-karmic/']
 modified: Tuesday, May 17th, 2011
 modified_by:

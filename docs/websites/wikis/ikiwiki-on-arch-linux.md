@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Using Ikiwiki on Arch Linux to power a standard wiki implementation.'
 keywords: 'ikiwiki,ubuntu,wiki,perl,git,markdown,lucid'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-applications/wikis/ikiwiki/arch-linux/']
 modified: Friday, October 4th, 2013
 modified_by:
@@ -79,7 +79,7 @@ Set the `username` user's password with the following command:
 Install a Web Server
 --------------------
 
-If you have already installed Apache or nginx you can skip this section. For the purposes of this document nginx and Apache are equivalent. The Linode Library contains extensive documentation of both systems and you should deploy your Ikiwiki site with the server that you are most familiar or comfortable, if you do not already have a web-server installed.
+If you have already installed Apache or nginx you can skip this section. For the purposes of this document nginx and Apache are equivalent. The Linode Docs contain extensive documentation of both systems and you should deploy your Ikiwiki site with the server that you are most familiar or comfortable, if you do not already have a web-server installed.
 
 Both of the following subsections assume that you will deploy your ikiwiki site within the top level of the `example.com` virtual host. You will need to modify the domains and file system paths to match your domain name.
 

@@ -4,7 +4,7 @@ author:
   email: jkruger@linode.com
 description: 'Forcing all connections to use SSL with NodeBalancers.'
 keywords: 'Linode,NodeBalancer,SSL,redirect,load balancing,install,certificate,configuration'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Monday, August 31st, 2015
 modified_by:
   name: Joel Kruger
@@ -14,6 +14,7 @@ title: NodeBalancer SSL Configuration
 
 This guide will help you  obtain a valid, commercially signed SSL certificate, and install it on your NodeBalancer. This guide provides step-by-step instructions for configuring a NodeBalancer to redirect all web connections, using SSL, over port 443/HTTPS. Instructions will be provided to configure this with both the Apache and Nginx servers on Debian- and Redhat-based distributions.
 
+![Forcing all connections to use SSL with NodeBalancers.](/docs/assets/NodeBalancer_SSL_Configuration_smg.png "Forcing all connections to use SSL with NodeBalancers.")
 
 {: .note }
 > 

@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Use OpenVPN to securely connect separate networks on an Ubuntu 10.04 (Lucid) Linux VPS.'
 keywords: 'openvpn,networking,vpn,ubuntu,ubuntu lucid,ubuntu 10.4'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['networking/openvpn/ubuntu-10-04-lucid/']
 modified: Thursday, August 22nd, 2013
 modified_by:

@@ -4,7 +4,7 @@ author:
   email: ekrout@linode.com
 description: Tuning your Apache server to optimize your website.
 keywords: 'configuration,apache,web server,resource tuning'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Friday, February 27, 2015
 modified_by:
   name: Elle Krout
@@ -18,6 +18,8 @@ external_resources:
 
 Apache configuration has a major affect on your Linode's performance. The easiest way to increase server performance is to turn off unneeded modules. This guide covers Apache modules, information on which modules to turn off, and other Apache performance tuning options.
 
+![Tuning Your Apache Server](/docs/assets/tuning-your-apache-server.png "Tuning Your Apache Server")
+
 {: .note}
 >
 >The steps in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
@@ -29,7 +31,7 @@ There are a variety of tools that can assist in determining if you need to alter
 	echo [PID]  [MEM]  [PATH] &&  ps aux | awk '{print $2, $4, $11}' | sort -k2rn | head -n 20
 	ps -eo pcpu,pid,user,args | sort -k 1 -r | head -20
 
-More specific resources for resource tuning Apache includes Apache `mod_status` and ApacheBuddy.
+More specific resources for resource tuning Apache includes Apache `mod_status` and Apache2Buddy.
 
 ###Apache mod_status
 
@@ -68,11 +70,11 @@ Apache `mod_status` diplays information related to incoming server connections b
 
 	- 	Debian/Ubuntu:
 
-			service apache2 restart
+			systemctl restart apache2
 
 	-	CentOS/Fedora:
 
-			/bin/systemctl reload httpd.service
+			systemctl restart httpd
 
 5.  To view the file generated, download Lynx:
 
@@ -88,11 +90,11 @@ Apache `mod_status` diplays information related to incoming server connections b
 
 		lynx http://localhost/server-status
 
-###ApacheBuddy
+###Apache2Buddy
 
-The ApacheBuddy script, similar to MySQLTuner, reviews your Apache setup, and makes suggestions based on your Apache process memory and overall RAM. Although it is a fairly basic program, focusing on the `MaxClients` directive, ApacheBuddy is useful, and can be run through a single command:
+The Apache2Buddy script, similar to MySQLTuner, reviews your Apache setup, and makes suggestions based on your Apache process memory and overall RAM. Although it is a fairly basic program, focusing on the `MaxClients` directive, Apache2Buddy is useful, and can be run through a single command:
 
-	curl -L http://apachebuddy.pl/ | perl
+	curl -L http://apache2buddy.pl/ | perl
 
 ##Multi Processing Modules
 
@@ -131,11 +133,11 @@ Once you select your MPM, you will need to change the values inside the configur
 /etc/httpd/conf/httpd.conf (CentOS/Fedora)
 :	~~~
 	<IfModule mpm_prefork_module>
-    	StartServers          2
-    	MinSpareServers       6
-    	MaxSpareServers      12
-    	MaxClients           60
-    	MaxRequestsPerChild  3000
+    	StartServers          4
+    	MinSpareServers       20
+    	MaxSpareServers      40
+    	MaxClients           200
+    	MaxRequestsPerChild  4500
 	</IfModule>
 	~~~
 
@@ -167,7 +169,7 @@ To determine the RAM each Apache process uses, replace `httpd` with `apache2` on
 
 	ps -ylC httpd --sort:rss
 
-Divide the number by 1024 for megabytes.
+Divide the number by 2048 for megabytes.
 
 To get information on memory usage:
 

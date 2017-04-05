@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'How to install a LAMP (Linux, Apache, MySQL, PHP) stack on an Ubuntu 14.04 long term support (LTS) system.'
 keywords: 'ubuntu lamp,ubuntu 14.04 lamp,lamp install,ubuntu web server,apache,mysql,php,ubuntu 14.04'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['websites/lamp/lamp-server-on-ubuntu-14-04/','websites/lamp/how-to-install-a-lamp-stack-on-ubuntu-14-04/']
 modified: Monday, December 7th, 2015
 modified_by:
@@ -48,17 +48,17 @@ A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used for hosting 
         KeepAlive Off
         ~~~
 
-3.  The default *multi-processing module* (MPM) for Apache is the *event* module, but by default PHP uses the *prefork* module. Open the `mpm_prefork.conf` file located in `/etc/apache2/mods-available` and edit the configuration. Below is the suggested values for a **1GB Linode**:
+3.  The default *multi-processing module* (MPM) for Apache is the *event* module, but by default PHP uses the *prefork* module. Open the `mpm_prefork.conf` file located in `/etc/apache2/mods-available` and edit the configuration. Below is the suggested values for a **2GB Linode**:
 
     {: .file}
     /etc/apache2/mods-available/mpm_prefork.conf
     :   ~~~ conf
         <IfModule mpm_prefork_module>
-                StartServers            2
-                MinSpareServers         6
-                MaxSpareServers         12
-                MaxRequestWorkers       39
-                MaxConnectionsPerChild  3000
+                StartServers            4
+                MinSpareServers         20
+                MaxSpareServers         40
+                MaxRequestWorkers       200
+                MaxConnectionsPerChild  4500
         </IfModule>
         ~~~
 

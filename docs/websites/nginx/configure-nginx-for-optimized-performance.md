@@ -2,14 +2,14 @@
 author:
     name: Linode Community
     email: docs@linode.com
-description: 'Fine tune Nginx for maximum performance'
+description: 'Fine tune nginx for maximum performance'
 keywords: 'nginx,performance,tuning,optimize,web servers'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Wednesday, September 9th, 2015'
 modified: Wednesday, September 9th, 2015
 modified_by:
     name: Linode
-title: 'How to Configure Nginx for Optimized Performance'
+title: 'How to Configure nginx for Optimized Performance'
 contributor:
     name: Bob Strecansky
     link: https://github.com/bobstrecansky
@@ -19,7 +19,11 @@ contributor:
 
 <hr>
 
-Nginx is known for its use in both high performance load balancing, and caching static and dynamic web content.  This guide aims to provide assistance in determining the best performance optimizations to make to an Nginx server in order to speed up delivery of content to your end users.
+nginx is known for its use in both high performance load balancing, and caching static and dynamic web content.  This guide aims to provide assistance in determining the best performance optimizations to make to an nginx server in order to speed up delivery of content to your end users.
+
+![How to Configure nginx for Optimized Performance](/docs/assets/configure-nginx-for-optimized-performance.png "How to Configure nginx for Optimized Performance")
+
+If you're unfamiliar with how nginx works, we suggest reading [How to Configure nginx](/docs/websites/nginx/how-to-configure-nginx) first.
 
 
 ## Worker Modifications
@@ -28,9 +32,9 @@ The easiest thing to set in your configuration is the right number of workers an
 
 ### Worker Processes
 
-In `/etc/nginx/nginx.conf`, set `worker_processes 1;` if you have a lower traffic site where Nginx, a database, and a web application all run on the same server.
+In `/etc/nginx/nginx.conf`, set `worker_processes 1;` if you have a lower traffic site where nginx, a database, and a web application all run on the same server.
 
-If you have a higher traffic site or a dedicated instance for Nginx, set one worker per CPU core: `worker_processes auto;`
+If you have a higher traffic site or a dedicated instance for nginx, set one worker per CPU core: `worker_processes auto;`
 
 If you'd like to set this manually, you can utilize `grep ^processor /proc/cpuinfo | wc -l` to find the number of processes that the server can handle.
 
@@ -39,7 +43,7 @@ If you'd like to set this manually, you can utilize `grep ^processor /proc/cpuin
 
 The option `worker_connections` sets the maximum number of connections that can be processed at one time by each worker process. By default, the worker connection limit is 512, but many systems can handle more.
 
-The appropriate sizing can be discovered through testing, as it is variable based on the type of traffic Nginx is handling.  The system's core limitations can also be find through using `ulimit`:
+The appropriate sizing can be discovered through testing, as it is variable based on the type of traffic nginx is handling.  The system's core limitations can also be find through using `ulimit`:
 
 	ulimit -n
 
@@ -75,7 +79,7 @@ Keep alive allows for fewer reconnections from the browser.
 
 -	`sendfile` optimizes serving static files from the file system, like logos.
 
--	`tcp_nodelay` allows Nginx to make TCP send multiple buffers as individual packets. 
+-	`tcp_nodelay` allows nginx to make TCP send multiple buffers as individual packets. 
 
 -	`tcp_nopush` optimizes the amount of data sent down the wire at once by activating the *TCP_CORK* option within the TCP stack. TCP_CORK blocks the data until the packet reaches the MSS, which is equal to the MTU minus the 40 or 60 bytes of the IP header.
 
@@ -92,7 +96,7 @@ Keep alive allows for fewer reconnections from the browser.
 
 ### Buffer Size
 
-Making tweaks to the buffer size can be advantageous. If the buffer sizes are too low, then Nginx will write to a temporary file. This will cause for excessive disk I/O.
+Making tweaks to the buffer size can be advantageous. If the buffer sizes are too low, then nginx will write to a temporary file. This will cause for excessive disk I/O.
 
 -	`client_body_buffer_size` handles the client buffer size.  Most client buffers are coming from POST method form submissions. 128k is normally a good choice for this setting.
 
@@ -102,7 +106,7 @@ Making tweaks to the buffer size can be advantageous. If the buffer sizes are to
 
 -	`large_client_header_buffers` shows the maximum number and size of buffers for large client headers. 4 headers with 4k buffers should be sufficient here.
 
--	`output_buffers` sets the number and size of the buffers used for reading a response from a disk.  If possible, the transmission of client data will be postponed until Nginx has at least the set size of bytes of data to send. The zero value disables postponing data transmission.
+-	`output_buffers` sets the number and size of the buffers used for reading a response from a disk.  If possible, the transmission of client data will be postponed until nginx has at least the set size of bytes of data to send. The zero value disables postponing data transmission.
 
 {: .file-excerpt}
 /etc/nginx/nginx.conf
@@ -118,7 +122,7 @@ Making tweaks to the buffer size can be advantageous. If the buffer sizes are to
 
 ### Connection Queue
 
-Some directives in the in the `/etc/sysctl.conf` file can be changed in order to set the size of a Linux queue for connections and buckets.  Updating the `net.core.somaxconn` and `net.ipv4.tcp_max_tw_buckets` changes the size of the queue for connections waiting for acceptance by Nginx.  If there are error messages in the kernel log, increase the value until errors stop.
+Some directives in the in the `/etc/sysctl.conf` file can be changed in order to set the size of a Linux queue for connections and buckets.  Updating the `net.core.somaxconn` and `net.ipv4.tcp_max_tw_buckets` changes the size of the queue for connections waiting for acceptance by nginx.  If there are error messages in the kernel log, increase the value until errors stop.
 
 {: .file-excerpt}
 /etc/sysctl.conf
@@ -138,7 +142,7 @@ Timeouts can also drastically improve performance.
 
 -	`client_header_timeout` sends directives for the time a server will wait for a **header** body to be sent.  These directives are responsible for the time a server will wait for a client body or client header to be sent after request. If neither a body or header is sent, the server will issue a 408 error or Request time out.
 
--	`sent_timeout` specifies the response timeout to the client. This timeout does not apply to the entire transfer but, rather, only between two subsequent client-read operations. Thus, if the client has not read any data for this amount of time, then Nginx shuts down the connection.
+-	`send_timeout` specifies the response timeout to the client. This timeout does not apply to the entire transfer but, rather, only between two subsequent client-read operations. Thus, if the client has not read any data for this amount of time, then nginx shuts down the connection.
 
 {: .file-excerpt}
 /etc/nginx/nginx.conf
@@ -151,7 +155,7 @@ Timeouts can also drastically improve performance.
 
 ### Static Asset Serving
 
-If your site serves static assets (such as CSS/JavaScript/images), Nginx can cache these files for a short period of time.  Adding this within your configuration block tells Nginx to cache 1000 files for 30 seconds, excluding any files that haven't been accessed in 20 seconds, and only files that have 5 times or more. If you aren't deploying frequently you can safely bump up these numbers higher.
+If your site serves static assets (such as CSS/JavaScript/images), nginx can cache these files for a short period of time.  Adding this within your configuration block tells nginx to cache 1000 files for 30 seconds, excluding any files that haven't been accessed in 20 seconds, and only files that have been accessed at least 5 times in that timeframe. If you aren't deploying frequently you can safely bump up these numbers higher.
 
 {: .file-excerpt}
 /etc/nginx/nginx.conf
@@ -175,7 +179,7 @@ You can also cache via a particular location.  Caching files for a long time is 
 
 ### Gzipping Content
 
-For content that is plain text, Nginx can use gzip compression to serve back these assets compressed to the client.  Modern web browsers will accept gzip compression and this will shave bytes off of each request that comes in for plain text assets. The list below is a "safe" list of compressible content types; however, you only want to enable the content types that you are utilizing within your web application.
+For content that is plain text, nginx can use gzip compression to serve back these assets compressed to the client.  Modern web browsers will accept gzip compression and this will shave bytes off of each request that comes in for plain text assets. The list below is a "safe" list of compressible content types; however, you only want to enable the content types that you are utilizing within your web application.
 
 {: .file-excerpt}
 /etc/nginx/nginx.conf
@@ -193,7 +197,7 @@ These file system operations improve system memory management, and can be added 
 
 ### Ephemeral Ports
 
-When Nginx is acting as a proxy, each connection to an upstream server uses a temporary, or ephemeral, port.
+When nginx is acting as a proxy, each connection to an upstream server uses a temporary, or ephemeral, port.
 
 The IPv4 local port range defines a port range value.  A common setting is `net.ipv4.ip_local_port_range 1024 65000`.
 
@@ -223,7 +227,7 @@ The `net.ipv4.tcp_max_syn_backlog` determines a number of packets to keep in the
 
 ### File Descriptors
 
-File descriptors are operating system resources used to handle things such as connections and open files.  Nginx can use up to two file descriptors per connection. For example, if it is proxying, there is generally one file descriptor for the client connection and another for the connection to the proxied server, though this ratio is much lower if HTTP keep alives are used. For a system serving a large number of connections, these settings may need to be adjusted.
+File descriptors are operating system resources used to handle things such as connections and open files.  nginx can use up to two file descriptors per connection. For example, if it is proxying, there is generally one file descriptor for the client connection and another for the connection to the proxied server, though this ratio is much lower if HTTP keep alives are used. For a system serving a large number of connections, these settings may need to be adjusted.
 
 `sys.fs.file_max` defines the system wide limit for file descriptors. `nofile` defines the user file descriptor limit, set in the `/etc/security/limits.conf` file.
 
@@ -308,7 +312,7 @@ You could also utilize [Linode Longview](https://github.com/linode/longview) in 
 
 ## Example Files
 
-Several tweaks have now been made across three files to improve Nginx performance on your system. Full snippets of the files are included below.
+Several tweaks have now been made across three files to improve nginx performance on your system. Full snippets of the files are included below.
 
 ###sysctl.conf
 

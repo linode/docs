@@ -2,13 +2,13 @@
 author:
   name: Linode
   email: docs@linode.com
-description: Our guide to prepaid billing and payments.
+description: Our guide to billing and payments.
 keywords: 'billing,payments'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['billing-and-payments/']
-modified: Monday, June 16th, 2014
+modified: Wednesday, March 15th, 2017
 modified_by:
-  name: Alex Fornuto
+  name: Linode
 published: 'Friday, February 28th, 2014'
 title: Billing and Payments
 ---
@@ -19,23 +19,41 @@ We've done our best to create straightforward billing and payment policies. Stil
 
 All services are billed automatically at the end of the month. If you used a service for the entirety of the past month, you'll be billed the **monthly cap** amount for that service. If you used a service for only part of the past month, you'll be billed at the **hourly** rate for that service. If your usage during any given month hits the monthly cap for the service, hourly billing stops. You'll never be billed more than the monthly cap for any service, excluding [bandwidth overages](#bandwidth-overages). In other words, if you've used a service for the entire month, you'll have a predictable amount on your bill.
 
-#### Linode Cloud Hosting and Backups
+## Linode Cloud Hosting and Backups
+
+### Standard Plans
 
 {: .table .table-striped }
-| Service     | Hourly Rate | Monthly | Backups Hourly Rate | Backups Monthly
-|:------------|:------------|:--------|:--------------------|:---------------
-| Linode 1GB  | $0.015/hr   | $10/mo  | $0.004/hr           | $2.50/mo
-| Linode 2GB  | $0.03/hr    | $20/mo  | $0.008/hr           | $5/mo
-| Linode 4GB  | $0.06/hr    | $40/mo  | $0.016/hr           | $10/mo
-| Linode 8GB  | $0.12/hr    | $80/mo  | $0.03/hr            | $20/mo
-| Linode 16GB | $0.24/hr    | $160/mo | $0.06/hr            | $40/mo
-| Linode 32GB | $0.48/hr    | $320/mo | $0.12/hr            | $80/mo
-| Linode 48GB | $0.72/hr    | $480/mo | $0.18/hr            | $120/mo
-| Linode 64GB | $0.96/hr    | $640/mo | $0.24/hr            | $160/mo
-| Linode 96GB | $1.44/hr    | $960/mo | $0.36/hr            | $240/mo
-|----------------------------------------------------------------------------
+| Service      | Hourly Rate | Monthly | Backups Hourly Rate | Backups Monthly
+|:-------------|:------------|:--------|:--------------------|:---------------
+| Linode 1GB   | $0.0075/hr  | $5/mo   | $0.0019/hr          | $2/mo
+| Linode 2GB   | $0.015/hr   | $10/mo  | $0.004/hr           | $2.50/mo
+| Linode 4GB   | $0.03/hr    | $20/mo  | $0.008/hr           | $5/mo
+| Linode 8GB   | $0.06/hr    | $40/mo  | $0.015/hr           | $10/mo
+| Linode 12GB  | $0.12/hr    | $80/mo  | $0.03/hr            | $20/mo
+| Linode 24GB  | $0.24/hr    | $160/mo | $0.06/hr            | $40/mo
+| Linode 48GB  | $0.48/hr    | $320/mo | $0.12/hr            | $80/mo
+| Linode 64GB  | $0.72/hr    | $480/mo | $0.18/hr            | $120/mo
+| Linode 80GB  | $0.96/hr    | $640/mo | $0.24/hr            | $160/mo
+|-----------------------------------------------------------------------------
 
-#### Additional Linode Services
+Full specs of each plan can be found on our [pricing page](https://www.linode.com/pricing#standard)
+
+### High Memory Plans
+
+{: .table .table-striped }
+| Service      | Hourly Rate | Monthly | Backups Hourly Rate | Backups Monthly
+|:-------------|:------------|:--------|:--------------------|:---------------
+| Linode 16GB  | $0.09/hr    | $60/mo  | $0.008/hr          | $5/mo
+| Linode 32GB  | $0.18/hr    | $120/mo | $0.015/hr           | $10/mo
+| Linode 60GB  | $0.36/hr    | $240/mo | $0.03/hr            | $20/mo
+| Linode 104GB | $0.72/hr    | $480/mo | $0.06/hr            | $40/mo
+| Linode 200GB | $1.44/hr    | $960/mo | $0.09/hr            | $60/mo
+|-----------------------------------------------------------------------------
+
+Full specs of each plan can be found on our [pricing page](https://www.linode.com/pricing#high_memory)
+
+### Additional Linode Services
 
 {: .table .table-striped }
 | Service          | Hourly Rate | Monthly
@@ -49,9 +67,12 @@ All services are billed automatically at the end of the month. If you used a ser
 | Longview Pro 100 | $0.30/hr    | $200/mo
 |-----------------------------------------
 
+
  {: .note }
 >
 > A large base amount of network transfer is included with all Linode plans, but exceeding that amount can result in a [bandwidth overage](#bandwidth-overages) charge beyond the monthly cap.
+>
+> Due to the [impending exhaustion of the IPv4 address space](http://en.wikipedia.org/wiki/IPv4_address_exhaustion), Linode requires users to provide technical justification. To add another public IP address, please [contact support](/docs/support) with your justification.
 
 ## Viewing Current Balance
 
@@ -79,7 +100,10 @@ If you want to stop being billed for a particular Linode service, you need to [r
 
 ## Payment Methods
 
-We accept Visa, MasterCard, Discover, and American Express. We also accept checks and money orders (which *must* be in USD) made out to "Linode, LLC" and sent to our [office address](http://www.linode.com/contact#contact-address). Please [contact support](/docs/support) before paying with check or money order. Note that we do not accept bank/wire transfers, and we have no plans to support PayPal at this time.
+We accept Visa, MasterCard, Discover, and American Express. We also accept PayPal, as well as checks and money orders (which *must* be in USD) made out to "Linode, LLC" and sent to our [office address](http://www.linode.com/contact#contact-address). Please [contact support](/docs/support) before paying with check or money order. Note that we do not accept bank/wire transfers.
+
+{: .note }
+>PayPal payments can only be made **after** an account is opened with an initial payment from a credit or debit card.
 
 If you overpay, credit will be applied to your account; this allows you to prepay if desired. Service credit is always used before charging the credit card on file for ongoing service.
 
@@ -100,6 +124,12 @@ The payment may take a few minutes to be applied to your account. Click the **Ac
 ## Bandwidth Overages
 
 If you exceed your monthly bandwidth quota, your account will be billed for $0.02/GB at the end of the current month.
+
+## Bandwidth Proration
+
+Your Linode's bandwidth quota is prorated based on its creation date. This means that a Linode you create mid-month will have a lower bandwidth quota than what's listed on our [pricing page](https://www.linode.com/pricing), depending on how much time remains in the month.
+
+Prorated bandwidth quota is reset at the beginning of the following month.
 
 ## Accessing Billing History
 
@@ -146,7 +176,7 @@ Our services are provided without a contract, so you're free to remove services 
 2.  To remove a Linode from your account, click the **Linodes** tab, and then select the **Remove** link next to the Linode you want to remove.
 3.  To remove extras from your account, click the **Linodes** tab, select a Linode, click the **Extras** tab, and then select the **Remove** link.
 4.  To remove a NodeBalancer from your account, click the **NodeBalancers** tab, and then select the **Remove** link next to the NodeBalancer you want to remove.
-5.  To remove the Linode Backup Service, please [contact support](/docs/support).
+5.  To remove the Linode Backup Service, go to the **Backups** tab in your Linode's Dashboard, and click the **Cancel Backups** link at the bottom of the page. 
 
 ## Canceling Your Account
 

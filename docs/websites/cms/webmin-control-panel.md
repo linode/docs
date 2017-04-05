@@ -4,19 +4,18 @@ author:
   email: docs@linode.com
 description: 'Installing and configuring the Webmin control panel to maintain your Linode.'
 keywords: 'webmin,webmin debian,webmin centos,webmin ubuntu,webmin fedora,linux control panel,debian,ubuntu,centos,fedora,control panel,admin panel'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-applications/control-panels/webmin/installing-webmin/']
-modified: Thursday, November 17th, 2011
+modified: Tuesday, February 21st, 2017
 modified_by:
-  name: Alex Fornuto
+  name: Nick Brewer
 published: 'Wednesday, October 8th, 2014'
 title: Webmin Control Panel
 external_resources:
  - '[Webmin Home Page](http://www.webmin.com/)'
- - '[Webmin Documentation](http://doxfer.com/Webmin)'
- - '[Webmin Modules](http://doxfer.com/Webmin/Modules)'
+ - '[Webmin Documentation](http://www.webmin.com/docs.html)'
+ - '[Webmin Modules](http://www.webmin.com/standard.html)'
  - '[Webmin FAQ](http://www.webmin.com/faq.html)'
- - '[Webmin Tutorials](http://doxfer.com/Webmin/Tutorials)'
 ---
 
 Webmin is a web interface that allows you to manage configuration files and reload programs without needing to use SSH. It is a popular alternative to administration panels such as cPanel or Plesk and contains many of the features that make them popular. Modules and plugins expand Webmin's functionality and can be found for many popular packages like the [Apache web server](/docs/web-servers/apache/) and [Postfix](/docs/email/postfix/). Many third-party modules exist for different use cases, which contribute to the flexibility of the Webmin control panel.

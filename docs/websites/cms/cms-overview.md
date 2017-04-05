@@ -4,16 +4,18 @@ author:
   email: docs@linode.com
 description: 'An overview of the three content management systems that Linode supports'
 keywords: 'drupal,WordPress,joomla,cms,content management system,content management framwork, '
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: 
-modified: Friday, October 17th, 2014
+modified: Wednesday, February 15th, 2017
 modified_by:
   name: Linode
 published: 'Friday, October 17th, 2014'
 title: 'Content Management Systems: an Overview'
 ---
 
-A content management system, or CMS, creates and manages websites. CMS applications eliminate the need for programming. Once running, they enable non-technical professionals to upload and administer their own content. Any coding is replaced with a user-friendly, point-and-click interface. There are dozens of popular CMS apps available, and many are free. Every CMS has a different design with particular web functionalities, aimed at specific users. CMS applications have been around since the late 1990s, and they continue to reach larger and larger audiences. 
+A content management system, or CMS, creates and manages websites. CMS applications eliminate the need for programming. Once running, they enable non-technical professionals to upload and administer their own content. Any coding is replaced with a user-friendly, point-and-click interface. There are dozens of popular CMS apps available, and many are free. Every CMS has a different design with particular web functionalities, aimed at specific users. CMS applications have been around since the late 1990s, and they continue to reach larger and larger audiences.
+
+![Content Management Systems: an Overview](/docs/assets/content-management-systems-an-overview.png "Content Management Systems: an Overview")
 
 Even experienced programmers often choose using a CMS over coding a website. Content management systems foster quicker website development. A CMS website can be created and deployed within days. Many of the more popular CMS applications are open sourced. Open sourcing allows users to write helpful documentation or develop new add-ons. Through extremely active online communities, open sourcing creates plug-ins, modules, comments, questions, and technical answers. Help is always just a search away. 
 

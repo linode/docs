@@ -5,7 +5,7 @@ author:
   email: afornuto@linode.com
 description: 'A basic Minecraft server installation for Ubuntu 12.04'
 keywords: 'minecraft,ubuntu,ubuntu precise,12.04'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-applications/game-servers/minecraft-ubuntu12-04/']
 modified: Tuesday, October 1st, 2013
 modified_by:
@@ -29,7 +29,7 @@ Preparation
 
 In this section, we'll prepare your Linode for installing the Minecraft server.
 
--   We recommend that you install the Minecraft on at least a Linode 1GB so it runs smoothly.
+-   We recommend that you install the Minecraft on at least a Linode 2GB so it runs smoothly.
 -   We will also be installing Oracle Java Runtime Environment (JRE) 7 as a prerequisite.
 
 ### Updating Packages
@@ -119,14 +119,14 @@ To find the latest version of the Minecraft server, visit the [Minecraft downloa
         BINDIR=$(dirname "$(readlink -fn "$0")")
         cd "$BINDIR"
 
-        java -Xms512M -Xmx1000M -jar minecraft_server.1.6.4.jar -o true
+        java -Xms1024M -Xmx1536M -jar minecraft_server.1.6.4.jar -o true
         ~~~
         
     {:.note}
     >
     > If you are using a different or newer version of the Minecraft server, make sure to adjust this file to name the correct `.jar` file.
     >
-    > The variable `-Xms` defines for Java the minimum amount of memory to allocate for the Minecraft server, and `-Xmx` defines the maximum. These values are set for a Linode 1GB, but you will want to adjust these numbers based on your Linode’s size and other uses.
+    > The variable `-Xms` defines for Java the minimum amount of memory to allocate for the Minecraft server, and `-Xmx` defines the maximum. These values are set for a Linode 2GB, but you will want to adjust these numbers based on your Linode’s size and other uses.
 
 6.  Make the script executable:
 

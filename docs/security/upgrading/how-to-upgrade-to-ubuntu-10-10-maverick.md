@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'How to avoid common pitfalls when upgrading your Linux VPS to Ubuntu 10.10.'
 keywords: 'ubuntu 10.10 upgrade,ubuntu maverick upgrade,distro upgrade,linux upgrade howto'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['upgrading/upgrade-to-ubuntu-10-10-maverick/']
 modified: Friday, May 10th, 2013
 modified_by:

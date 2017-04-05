@@ -4,7 +4,7 @@ author:
     email: docs@linode.com
 description: 'A quick getting started guide to Ansible, with a demo of how to provision a basic web server with Ansible'
 keywords: 'ansible,ansible configuration,ansible provisioning,ansible infrastructure,ansible automation,ansible configuration,ansible configuration change management,ansible server automation'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Monday, September 8, 2015'
 modified: Monday, September 8, 2015
 modified_by:
@@ -305,7 +305,7 @@ common_server_setup.yml
                       line="{{ hostvars[item].ansible_default_ipv4.address }} {{ LOCAL_FQDN_NAME }} {{ LOCAL_HOSTNAME }}" 
                       state=present
           when: hostvars[item].ansible_default_ipv4.address is defined
-          with_items: groups['linode']
+          with_items: "{{ groups['linode'] }}"
         - name: Update packages
           apt: update_cache=yes upgrade=dist 
     ~~~
@@ -318,7 +318,7 @@ As you run this playbook you will again see the steps come across as "changed." 
 
 ### Install the Stack
 
-Finally, let's get a very basic server set up with Apache and PHP, and a test MySQL databases to use.
+Finally, let's get a very basic server set up with Apache and PHP, and a test MySQL database to use.
 
 1.  The following playbook downloads the appropriate packages, turns on the Apache and MySQL services, and creates a basic database and user.
 

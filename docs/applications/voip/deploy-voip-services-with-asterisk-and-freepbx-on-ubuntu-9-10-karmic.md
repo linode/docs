@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Install Asterisk and FreePBX on your Linux VPS to use and manage a telephone exchange.'
 keywords: 'asterisk ubuntu 9.10,asterisk,asterisk linux,freepbx,freepbx ubuntu,pbx,voip'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['communications/voip-services-ubuntu9-10/']
 modified: Friday, August 2nd, 2013
 modified_by:

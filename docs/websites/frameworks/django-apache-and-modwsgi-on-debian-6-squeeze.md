@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Installing and configuring the Django web application development framework for Apache on Debian 6.'
 keywords: 'django,python,apache,mod\_wsgi'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['frameworks/django-apache-mod-wsgi/debian-6-squeeze/']
 modified: Friday, May 13th, 2011
 modified_by:

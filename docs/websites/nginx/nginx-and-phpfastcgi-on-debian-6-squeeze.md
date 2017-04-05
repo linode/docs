@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and PHP-FastCGI on Debian 6 (Squeeze).'
 keywords: 'nginx,nginx debian 6,nginx fastcgi,nginx php'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-servers/nginx/php-fastcgi/debian-6-squeeze/']
 modified: Wednesday, June 15th, 2011
 modified_by:

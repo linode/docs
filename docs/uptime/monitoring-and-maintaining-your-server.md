@@ -4,11 +4,11 @@ author:
   email: docs@linode.com
 description: Our guide to monitoring and maintaining your server.
 keywords: 'monitor,monitoring,maintaining,maintenance'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['monitoring-and-maintaining/']
-modified: Tuesday, June 17th, 2014
+modified: Wednesday, February 22nd, 2017
 modified_by:
-  name: Alex Fornuto
+  name: Linode
 published: 'Wednesday, August 22nd, 2012'
 title: Monitoring and Maintaining Your Server
 ---
@@ -31,7 +31,7 @@ Whether you use one virtual private server or dozens of them, mission-critical s
 
 There are several different availability monitoring tools available. Your decision should be based on how many servers you'll be monitoring:
 
--   **Multiple Servers**: If you run more than one server, [Nagios](/docs/server-monitoring/nagios) makes an ideal monitoring tool. This free and flexible framework makes it possible to keep an eye on a broad range of infrastructural components and network services. After installing the Nagios server and client packages, one Linode will act as the primary server to monitor the other servers.
+-   **Multiple Servers**: If you run more than one server, [Nagios](/docs/uptime/monitoring/install-nagios-4-on-ubuntu-debian-8) makes an ideal monitoring tool. This free and flexible framework makes it possible to keep an eye on a broad range of infrastructural components and network services. After installing the Nagios server and client packages, one Linode will act as the primary server to monitor the other servers.
 -   **Single Server**: If you only run a single server, you might want to use a third-party service to monitor your Linode. (You could install Nagios, but if your server goes down, Nagios will go down with it.) You could also use a network diagnostic tool like [MTR](/docs/linux-tools/mtr) to diagnose and isolate networking errors.
 -   **Linode Longview**: [Longview](/docs/platform/longview/longview) is Linode's own monitoring and graphing service. It offers real time data that can be used to help identify system issues. Using Longview in conjunction with a notification service like Nagios can help you to identify issues faster, and get your system up and running sooner.
 

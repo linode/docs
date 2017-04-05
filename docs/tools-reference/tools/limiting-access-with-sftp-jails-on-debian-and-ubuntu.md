@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Restricting remote users to their home directories, only allowing access to SFTP for transferring files.'
 keywords: 'sftp,sftp jail,openssh,ssh jail'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['security/sftp-jails/']
 modified: Tuesday, April 16th, 2014
 modified_by:

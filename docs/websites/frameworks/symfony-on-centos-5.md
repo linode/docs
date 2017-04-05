@@ -4,7 +4,7 @@ author:
   email: oyerli@gmail.com
 description: 'Installing and configuring Symfony for developing PHP applications on your CentOS 5 Linux VPS.'
 keywords: 'cakephp,cakephp debian,php framework,debian,develop php'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['frameworks/symfony/']
 modified: Friday, September 27th, 2013
 modified_by:

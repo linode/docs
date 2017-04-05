@@ -4,7 +4,7 @@ author:
     email: docs@linode.com
 description: 'How to Install a Salt Master and Salt Minions.'
 keywords: 'salt, saltstack, open source configuration management, cloud orchestration, infrastructure automation, systems management software, dev ops, install, beginner, Debian 8'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Thursday, July 2nd, 2015
 modified_by:
     name: James Stewart
@@ -63,7 +63,7 @@ title: Install Salt
     /etc/salt/master 
     :   ~~~  
         # The address of the interface to bind to:
-        interface: <master's IP address>
+          interface: <master Linode IP address>
         ~~~
 
         {: .note}
@@ -73,7 +73,6 @@ title: Install Salt
         >     chown -R user /etc/salt /var/cache/salt /var/log/salt /var/run/salt
         >       
         >Once this setting has been modified, you will need to issue any further Salt commands on your Salt Master while logged in as that user.
-
 
 3.  Restart Salt:
 
@@ -110,7 +109,7 @@ title: Install Salt
         salt-key -L
 
 3.  For security purposes, verify the Minions' IDs on both the Salt Master and the Salt Minions. Each Minion will be identified by its hostname.
-        
+
     Run the following command from the Salt master to query each minion's key ID:
 
         salt-key -f <hostname>
@@ -136,7 +135,7 @@ title: Install Salt
 4.  Ping the Minions, using `*` for all:
 
         salt '*' test.ping
-        
+
     It should return the value `True` for each minion.
 
 ##Installing Individal Packages with Salt

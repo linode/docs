@@ -4,7 +4,7 @@ author:
     email: docs@linode.com
 description: 'PageSpeed is an open source Google project created to optimize website performance using modules for Apache and nginx. PageSpeed is available as .deb or .rpm binaries, or can be compiled from source. This guide will walk you through setting up the ngx_pagespeed module for nginx on Ubuntu 14.04.'
 keywords: 'nginx,PageSpeed,ngx_pagespeed,pagespeed,ubuntu,Ubuntu 14.04,'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Tuesday, November 3rd, 2015'
 modified: Tuesday, November 3rd, 2015
 modified_by:

@@ -4,7 +4,7 @@ author:
   email: ekrout@linode.com
 description: 'Load testing your web server with regression testing and benchmarking utility Siege'
 keywords: 'siege,load testing,benchmarking'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Wednesday, February 18th, 2015
 modified_by:
   name: Elle Krout

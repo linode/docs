@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Deploy Django Applications Using uWSGI and Nginx on Ubuntu 14.04'
 keywords: 'django,uwsgi,nginx,python'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 'Wednesday, November 25th, 2015'
 modified_by:
   name: Sergey Pariev
@@ -149,7 +149,7 @@ external_resources:
         exec $UWSGI --master --emperor /etc/uwsgi/sites --die-on-term --uid django --gid www-data --logto $LOGTO
         ~~~
 
-    This job will start uWSGI in *Emperor* mode, meaning that it will monitor `/etc/uwsgi/site` directory and will spawn instances (*vassals*) for each configuration file it finds. Whenever a config file is changed, the emperor will automatically restart its vassals.
+    This job will start uWSGI in *Emperor* mode, meaning that it will monitor `/etc/uwsgi/sites` directory and will spawn instances (*vassals*) for each configuration file it finds. Whenever a config file is changed, the emperor will automatically restart its vassals.
 
 4.  Start the `uwsgi` service:
 

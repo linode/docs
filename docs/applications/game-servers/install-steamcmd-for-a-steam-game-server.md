@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Install SteamCMD, a command-line version of the Steam client, which works with games that use SteamPipe. Installing SteamCMD is a prerequisite before hosting a Steam title on your own game server.'
 keywords: 'steam,steamcmd,steam cmd,games,game server,steam server,steampipe'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 'Tuesday, March 29th, 2016'
 modified_by:
   name: Linode
@@ -133,15 +133,45 @@ Game servers and clients are an especially ripe target for attack. Use our [Secu
 
 ## Install SteamCMD
 
-1.  Newly created Linodes use 64-bit Linux operating systems. Since Steam is compiled for i386, install the appropriate libraries. Screen we'll also use when running Steam games.
+First, install `screen` to run Steam games in a separate session:
+
+**CentOS 7**
+
+    sudo yum install screen
+
+**Debian / Ubuntu**
+
+    sudo apt-get install screen
+
+
+### From Package Repositories (Recommended)
+
+Installing via the package manager allows you to more easily download updates and security patches, so we strongly recommend using this method if your distribution includes the SteamCMD package.
+
+1.  Install the package:
+
+        sudo apt-get install steamcmd
+
+    {: .note}
+    >
+    >On Debian you need to add the `non-free` area of the repository to your sources, because the package is available only there.
+        
+2.  Create a symlink to the `steamcmd` executable in a convenient place, such as your home directory:
+
+        cd ~
+        ln -s /usr/games/steamcmd steamcmd
+
+### Manually
+
+1.  Newly created Linodes use 64-bit Linux operating systems. Since Steam is compiled for i386, install the appropriate libraries.
 
     **CentOS 7**
 
-        sudo yum install glibc.i686 libstdc++.i686 screen
+        sudo yum install glibc.i686 libstdc++.i686
 
     **Debian / Ubuntu**
 
-        sudo apt-get install lib32gcc1 screen
+        sudo apt-get install lib32gcc1
 
     {: .note}
     >
@@ -159,9 +189,9 @@ Game servers and clients are an especially ripe target for attack. Use our [Secu
 
         tar -xvzf steamcmd_linux.tar.gz
 
-## Add an Error Fix
+#### Add an Error Fix
 
-When running a Steam game, the following error is common to encounter:
+When running a Steam game, you may encounter the following error:
 
     /home/steam/.steam/sdk32/libsteam.so: cannot open shared object file: No such file or directory
 
@@ -172,9 +202,15 @@ The game server will still operate despite this error, and it should be somethin
 
 ## Run SteamCMD
 
-1.  Run the installer:
+1.  Run the executable in a screen.
 
-        ./steamcmd.sh
+    If you have installed SteamCMD from repositories:
+        
+        screen ./steamcmd
+
+    If you have installed SteamCMD manually: 
+        
+        screen ./steamcmd.sh
 
     That will return an output similar to below and leave you at the `Steam>` prompt:
 
@@ -213,14 +249,16 @@ The game server will still operate despite this error, and it should be somethin
 
     {: .caution}
     >
-    > Be aware that the Steam CLI does **not** obfuscate passwords. If signing in with your Steam account, be aware of your local screen's security.
+    > Be aware that some versions of the Steam CLI do **not** obfuscate passwords. If you're signing in with your Steam account, be aware of your local screen's security.
 
     {: .note}
     >
     >You can exit the `Steam>` prompt at any time by typing `quit`.
 
+3.  To exit the screen session without disrupting the Steam process, press **CTRL + A** and then **D**. To resume, use the `screen -r` command. For more information, check out our guide on [how to use screen sessions](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions).
+
 ## Next Steps
 
-You're ready to install your first Steam game server. From here, certain games may need a few more i386 libraries or firewall rules, and most will need their configuration settings edited. The game server should allow easy administrative access with as little interruption to players as possible. Its software should frequently be updated, and players' progress should be saved when the server is properly shut down. 
+You're ready to install your first Steam game server. From here, certain games may need a few more i386 libraries or firewall rules, and most will need their configuration settings to be modified. The game server should allow easy administrative access with as little interruption to players as possible. Its software should frequently be updated, and players' progress should be saved when the server is properly shut down. 
 
-Our [game server guides](/docs/applications/game-servers/) cover these requirements and contain various Steam tutorials which will pick you up exactly where this page leaves off.
+Our [game server guides](/docs/applications/game-servers/) cover these requirements for specific games and contain various Steam tutorials which will pick you up exactly where this page leaves off.
