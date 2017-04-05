@@ -13,9 +13,9 @@ published: 'Tuesday, October 9th, 2012'
 title: 'Install Nginx and PHP via FastCGI on Ubuntu 12.04 (Precise Pangolin)'
 ---
 
-The nginx web server is a fast, lightweight server designed to efficiently handle the needs of both low and high traffic websites. Although commonly used to serve static content, it's quite capable of handling dynamic pages as well. This guide will help you get nginx up and running with PHP via FastCGI on your Ubuntu 12.04 LTS (Precise Pangolin) Linux VPS.
+The nginx web server is a fast, lightweight server designed to efficiently handle the needs of both low and high traffic websites. Although commonly used to serve static content, it's quite capable of handling dynamic pages as well. This guide will help you get nginx up and running with PHP via FastCGI on your Ubuntu 12.04 LTS (Precise Pangolin) Linode.
 
-It is assumed that you've already followed the steps outlined in our [getting started guide](/docs/getting-started/). These steps should be performed via a root login to your Linode VPS over SSH.
+It is assumed that you've already followed the steps outlined in our [getting started guide](/docs/getting-started/). These steps should be performed via a root login to your Linode over SSH.
 
 Set the Hostname
 ----------------

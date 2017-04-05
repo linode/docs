@@ -13,7 +13,7 @@ published: 'Thursday, May 31st, 2012'
 title: Rescue and Rebuild
 ---
 
-Even the best system administrators have to deal with accidents and unplanned events. Fortunately, the Linode Manager has a number of tools to assist you in the unlikely event that catastrophe strikes your VPS. This guide shows you how to use the tools at your disposal. You can boot your Linode into *Rescue Mode* to perform system recovery tasks and transfer data off your disks, if necessary. And if all else fails, you can *rebuild* your Linode from a backup or start over with a fresh Linux distribution.
+Even the best system administrators have to deal with accidents and unplanned events. Fortunately, the Linode Manager has a number of tools to assist you in the unlikely event that catastrophe strikes your Linode. This guide shows you how to use the tools at your disposal. You can boot your Linode into *Rescue Mode* to perform system recovery tasks and transfer data off your disks, if necessary. And if all else fails, you can *rebuild* your Linode from a backup or start over with a fresh Linux distribution.
 
 ## Rescuing
 
@@ -24,7 +24,7 @@ If you suspect that your primary filesystem is corrupted, use the Linode Manager
 Here's how to boot your Linode into Rescue Mode:
 
 1.  Log in to the [Linode Manager](https://manager.linode.com).
-2.  Click the **Linodes** tab. A list of your virtual private servers appears.
+2.  Click the **Linodes** tab.
 3.  Select a Linode. The Linode's dashboard appears.
 4.  Click the **Rescue** tab. The webpage shown below appears.
 
@@ -165,7 +165,7 @@ Here's how to rebuild your Linode from scratch:
 
 1.  If you need to copy files from an existing disk, [start SSH](#starting-ssh) and then use an SFTP client to copy files to your computer.
 2.  Log in to the [Linode Manager](https://manager.linode.com).
-3.  Click the **Linodes** tab. A list of your virtual private servers appears.
+3.  Click the **Linodes** tab.
 4.  Select a Linode. The Linode's dashboard appears.
 5.  Click the **Rebuild** tab. The webpage shown below appears.
 
@@ -178,4 +178,4 @@ Here's how to rebuild your Linode from scratch:
 10. Click **Rebuild**. The Linode's dashboard appears. The Linode Manager deletes your existing disks and installs the Linux distribution you selected in a new disk.
 11. Click **Boot** to turn on the Linode.
 
-Your Linode will boot with the newly-installed Linux distribution. See the [Getting Started guide](/docs/getting-started) to reprovision your server.
+Your Linode will boot with the newly-installed Linux distribution. See the [Getting Started guide](/docs/getting-started) to provision your server.

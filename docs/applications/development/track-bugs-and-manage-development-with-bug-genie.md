@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Install the advanced bug tracking and issue management software Bug Genie on your Linux VPS to manage projects.'
+description: 'Install the advanced bug tracking and issue management software Bug Genie on your Liode to manage projects.'
 keywords: 'bug tracking,issue tracking,feature development,bug genie,the bug genie'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-applications/project-management/bug-genie/']

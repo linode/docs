@@ -25,7 +25,7 @@ Not everyone needs to monitor the availability of their server. For example, if 
 
 If you depend on your website or web application for your livelihood, an availability monitoring tool is practically a necessity. Once set up, the tool actively watches your servers and services and alerts you when they're unavailable. You'll be able to troubleshoot the problem and restore service as quickly as possible.
 
-Whether you use one virtual private server or dozens of them, mission-critical servers and services should be watched by an independent monitoring tool that can keep tabs on their availability. The tool should have an automated method of detecting service-related incidents and be able to notify you via email, text message, or SMS. That way you'll know that a server or service is down within minutes of it having failed.
+Whether you use one Linode or dozens of them, mission-critical servers and services should be watched by an independent monitoring tool that can keep tabs on their availability. The tool should have an automated method of detecting service-related incidents and be able to notify you via email, text message, or SMS. That way you'll know that a server or service is down within minutes of it having failed.
 
 ### Finding the Right Tool
 
@@ -44,7 +44,7 @@ Shutdown Watchdog, also known as *Lassie*, is a Linode Manager feature capable o
 Here's how to turn Lassie on and off:
 
 1.  Log in to the [Linode Manager](https://manager.linode.com).
-2.  Click the **Linodes** tab. A list of your virtual private servers appears.
+2.  Click the **Linodes** tab.
 3.  Select your Linode. The Linode's dashboard appears.
 4.  Click the **Settings** tab. The Shutdown Watchdog settings appear, as shown below.
 
@@ -77,7 +77,7 @@ The Linode Manager allows you to configure *email alerts* that automatically not
 Here's how to turn on and customize the alerts:
 
 1.  Log in to the [Linode Manager](https://manager.linode.com).
-2.  Click the **Linodes** tab. A list of your virtual private servers appears.
+2.  Click the **Linodes** tab.
 3.  Select your Linode. The Linode's dashboard appears.
 4.  Click the **Settings** tab. The *Email Alert Thresholds* settings appear, as shown below.
 
@@ -159,7 +159,7 @@ Here's how to check for a new kernel and start using it on your Linode:
         Linux version 3.15.4-x86_64-linode45 (maker@build) (gcc version 4.4.5 (Debian 4.4.5-8) ) #1 SMP Mon Jul 7 08:42:36 EDT 2014
 
 3.  Log in to the [Linode Manager](https://manager.linode.com).
-4.  Click the **Linodes** tab. A list of your virtual private servers appears.
+4.  Click the **Linodes** tab.
 5.  Select your Linode. The Linode's dashboard appears.
 6.  Select the active configuration profile by clicking the link, as shown below.
 

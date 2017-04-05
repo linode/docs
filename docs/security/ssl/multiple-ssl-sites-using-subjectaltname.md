@@ -63,7 +63,7 @@ Issue the following command to generate the certificate itself. Note that this c
     openssl req -new -x509 -sha256 -days 365 -nodes -out /etc/ssl/localcerts/apache.pem\
          -keyout /etc/ssl/localcerts/apache.key
 
-OpenSSL will ask you for several configuration values. Enter values appropriate for your organization and server, as shown here. This example will create a certificate valid for 365 days; you may wish to increase this value. We've specified the FQDN (fully qualified domain name) of the VPS for the "Common Name" entry, as this certificate will be used for generic SSL service.
+OpenSSL will ask you for several configuration values. Enter values appropriate for your organization and server, as shown here. This example will create a certificate valid for 365 days; you may wish to increase this value. We've specified the FQDN (fully qualified domain name) of the Linode for the "Common Name" entry, as this certificate will be used for generic SSL service.
 
     Generating a 1024 bit RSA private key
     ...................................++++++

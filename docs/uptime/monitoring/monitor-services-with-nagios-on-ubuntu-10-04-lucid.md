@@ -3,7 +3,7 @@ deprecated: true
 author:
   name: Amanda Folson
   email: docs@linode.com
-description: 'Use Nagios to monitor services and send status updates on your Ubuntu 10.04 (Lucid) VPS.'
+description: 'Use Nagios to monitor services and send status updates on your Ubuntu 10.04 (Lucid) Linode.'
 keywords: 'nagios,monitoring'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['server-monitoring/nagios/ubuntu-10-04-lucid/']
