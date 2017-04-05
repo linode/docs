@@ -83,7 +83,7 @@ Replace "12.34.56.78" with your Linode's IP address. You may now visit `http://l
 
 You'll be presented with the Cherokee administration panel, which you may use to configure websites and specify configuration options. You'll still need to log in using the username and one-time password provided when you launched `cherokee-admin`.
 
-[![The cherokee-admin web server administration interface running on a Fedora 13 Linode Linode.](/docs/assets/234-cherokee-fedora-13-admin-01-home.png)](/docs/assets/234-cherokee-fedora-13-admin-01-home.png)
+[![The cherokee-admin web server administration interface running on a Fedora 13 Linode.](/docs/assets/234-cherokee-fedora-13-admin-01-home.png)](/docs/assets/234-cherokee-fedora-13-admin-01-home.png)
 
 ### Secure Admin Panel Access on Windows
 
