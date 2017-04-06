@@ -172,6 +172,7 @@ This guide will help you install an SSL certificate on your NodeBalancer. It inc
 
             service apache2 reload
             service httpd reload
+            systemctl restart apache2
             systemctl restart httpd
 
     -   For Nginx, choose from the following commands, depending on your distribution:
