@@ -43,7 +43,7 @@ The Chef server is the hub of interaction between all workstations and nodes usi
 
 ### Install the Chef Server
 
-1.	[Download](https://downloads.chef.io/chef-server/ubuntu/) the latest Chef server core (12.0.8 at the time of writing):
+1.	[Download](https://downloads.chef.io/chef-server/#ubuntu) the latest Chef server core (12.0.8 at the time of writing):
 
 		wget https://web-dl.packagecloud.io/chef/stable/packages/ubuntu/trusty/chef-server-core_12.0.8-1_amd64.deb
 

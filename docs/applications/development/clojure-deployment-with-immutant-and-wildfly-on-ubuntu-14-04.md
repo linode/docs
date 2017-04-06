@@ -72,7 +72,7 @@ This guide will show how to deploy a Clojure application to WildFly - the popula
 
 {: .note}
 >
->If you are not comfortable with using 3rd-party PPA, please use instructions for manual installation of Oracle Java 8 from [Java Development with WildFly on CentOS 7](docs/applications/development/java-development-wildfly-centos-7) guide.
+>If you are not comfortable with using 3rd-party PPA, please use instructions for manual installation of Oracle Java 8 from [Java Development with WildFly on CentOS 7](/docs/applications/development/java-development-wildfly-centos-7) guide.
 
 ## Install Leiningen
 

@@ -53,7 +53,7 @@ TCP wrappers rely on two files in order to work: `/etc/hosts.allow` and `/etc/ho
 
 ### Editing hosts.allow and hosts.deny
 
-You can edit hosts.allow and hosts.deny with any text editor you like. Open the `hosts.deny` file in your perfered text editor. If you've never opened *hosts.deny* before it will look something like this:
+You can edit hosts.allow and hosts.deny with any text editor you like. Open the `hosts.deny` file in your preferred text editor. If you've never opened *hosts.deny* before it will look something like this:
 
 {: .file}
 /etc/hosts.deny
