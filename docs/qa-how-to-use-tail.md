@@ -16,26 +16,26 @@ In this guide, you'll learn how to use the `tail` command. Using `tail` is a sim
 
 1.  Enter the `tail` command, followed by the file name of which you'd like to see the end:
 
-        tail /path/to/file
+        tail /var/log/auth.log
 
-    This will print the last ten lines of the file to your terminal output.
+    This will print the last ten lines of the `/var/log/auth.log` file to your terminal output. 
 
 2.  To change the number of lines displayed, use the `-n` option:
 
-        tail -n 50 /path/to/file
+        tail -n 50 /var/log/auth.log
 
     In this example, the last 50 lines will be shown, but you can modify this number to show as many or as few lines as you need.
 
 3.  To show a real-time, streaming output of a changing file, use the `-f` or `--follow` options:
 
-        tail -f /path/to/file
+        tail -f /var/log/auth.log
 
     This will print the end of the file to your screen, and update it as the file changes. For example, you can use this option with `/var/log/auth.log` (on Debian and Ubuntu systems) to show your access log in real time. This will run as a foreground process, so to cancel it, press **CTRL+C**.
 
 4.  Tail can even be combined with other tools like `grep` to filter the results:
 
-        tail /path/to/file | grep 198.51.100.1
+        tail /var/log/auth.log | grep 198.51.100.1
 
-    This command would search the last ten lines of the given file, and display lines that contain the IP address `198.51.100.1`. You can also apply options to `tail` in order to show more or less lines, view the filtered results in real time, and more.
+    This command would search the last ten lines of your access log and only display those that contain the IP address `198.51.100.1`. You can also apply options to `tail` in order to show more or less lines, view the filtered results in real time, and more.
 
 These are just the basics of how to use `tail`. It is an incredibly useful tool with many more options than we've listed here. To learn more advanced techniques, please check out our full guide on [the tail command](/docs/tools-reference/tools/view-and-follow-the-end-of-text-files-with-tail).
