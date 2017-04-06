@@ -1,0 +1,41 @@
+---
+author:
+  name: Phil Zona
+description: 'View and follow the end of files with the tail command'
+keywords: 'gpg,ssh,authentication,ssh-agent,gpg-agent,yubikey,smartcard,ssh key'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+title: 'How to Use the tail Command'
+external_resources:
+ - '[Linux Man Page for tail](http://man7.org/linux/man-pages/man1/tail.1.html)'
+published: 'Monday, April 10th, 2017'
+---
+
+In this guide, you'll learn how to use the `tail` command. Using `tail` is a simple way to show the ends of files, for example, when analyzing logs and other text files that change over time. It may also be combined with other tools for selective, real-time monitoring. When performing administrative tasks on your Linode, `tail` is one of the most useful tools available.
+
+## How to Use the tail Command
+
+1.  Enter the `tail` command, followed by the file name of which you'd like to see the end:
+
+        tail /path/to/file
+
+    This will print the last ten lines of the file to your terminal output.
+
+2.  To change the number of lines displayed, use the `-n` option:
+
+        tail -n 50 /path/to/file
+
+    In this example, the last 50 lines will be shown, but you can modify this number to show as many or as few lines as you need.
+
+3.  To show a real-time, streaming output of a changing file, use the `-f` or `--follow` options:
+
+        tail -f /path/to/file
+
+    This will print the end of the file to your screen, and update it as the file changes. For example, you can use this option with `/var/log/auth.log` (on Debian and Ubuntu systems) to show your access log in real time. This will run as a foreground process, so to cancel it, press **CTRL+C**.
+
+4.  Tail can even be combined with other tools like `grep` to filter the results:
+
+        tail /path/to/file | grep 198.51.100.1
+
+    This command would search the last ten lines of the given file, and display lines that contain the IP address `198.51.100.1`. You can also apply options to `tail` in order to show more or less lines, view the filtered results in real time, and more.
+
+These are just the basics of how to use `tail`. It is an incredibly useful tool with many more options than we've listed here. To learn more advanced techniques, please check out our full guide on [the tail command](/docs/tools-reference/tools/view-and-follow-the-end-of-text-files-with-tail).
