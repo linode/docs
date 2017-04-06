@@ -20,7 +20,7 @@ pgAdmin is a free, open-source PostgreSQL database administration GUI for Micros
 
 ## Install pgAdmin
 
-1.  Visit the [pgAdmin download page](http://www.pgadmin.org/download/macosx.php) to obtain the most recent version of the program. Save the installer to your desktop and launch it. Read the license agreement and click the "Agree" button to continue.
+1.  Visit the [pgAdmin download page](https://www.pgadmin.org/download/macos4.php) to obtain the most recent version of the program. Save the installer to your desktop and launch it. Read the license agreement and click the "Agree" button to continue.
 
     [![pgAdmin on Mac OS X installer license agreement dialog](/docs/assets/pg-admin-macosx-license.png)](/docs/assets/pg-admin-macosx-license.png)
 

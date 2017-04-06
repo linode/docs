@@ -20,6 +20,8 @@ external_resources:
 
 In many situations, HTTP services are public and intended to be accessed by anyone with the ability to connect to the server. However, there are a number of cases where site administrators need to have some additional control over which users can access the server. In these contexts, it is useful to require users to submit authentication credentials (e.g. usernames and passwords) to a site before gaining access to a resource.
 
+![Auth-based Access Control with Apache](/docs/assets/auth-based_access_control_with_apache.png "Auth-based Access Control with Apache")
+
 This guide provides an overview of both credential-based and rule-based access control tools for the Apache HTTP server. We assume that you have a working installation of Apache and have access to modify configuration files. If you have not installed Apache, you might want to follow one of our [Apache installation guides](/docs/web-servers/apache/) or [LAMP stack installation guides](/docs/lamp-guides/). If you want a more thorough introduction to Apache configuration, please reference our [Apache HTTP server configuration basics](/docs/web-servers/apache/configuration/configuration-basics) and [Apache configuration structure](/docs/web-servers/apache/configuration/configuration-structure) guides.
 
 ## Configuring HTTP Authentication

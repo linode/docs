@@ -6,7 +6,7 @@ description: 'Use Fail2ban to block automated system attacks and further harden 
 keywords: 'fail2ban'
 alias: ['tools-reference/tools/using-fail2ban-to-block-network-probes/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Thursday, March 3rd, 2016
+modified: Wednesday, March 8th, 2017
 modified_by:
   name: Linode
 published: 'Monday, October 12th, 2015'
@@ -14,6 +14,8 @@ title: Using Fail2ban to Secure Your Server
 ---
 
 Fail2ban is a log-parsing application that monitors system logs for symptoms of an automated attack on your Linode. When an attempted compromise is located, using the defined parameters, Fail2ban will add a new rule to iptables, thus blocking the IP address of the attacker, either for a set amount of time or permanently. Fail2ban will also alert you through email that an attack is occurring.
+
+![Using Fail2ban to secure your server](/docs/assets/fail2ban_tg.png "Using Fail2ban to secure your server")
 
 Fail2ban is primarily focused on SSH attacks, although it can be further configured to work for any service that uses log files and can be subject to a compromise.
 
@@ -29,32 +31,31 @@ Fail2ban is primarily focused on SSH attacks, although it can be further configu
 
 Follow the [Getting Started](/docs/getting-started) guide to configure your basic server. You may also want to review the [Securing Your Server](/docs/security/securing-your-server) guide before beginning.
 
-
 ### CentOS 7
 
-1.  Ensure your system is up to date:
+1.  Ensure your system is up to date and install the EPEL repository:
 
-        yum update
+        yum update && yum install epel-release
  
-2.  Enable the EPEL repository:
-
-        wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-        rpm -ivh epel-release-latest-7.noarch.rpm
-
-3.  Install Fail2ban:
+2.  Install Fail2Ban:
 
         yum install fail2ban
 
-4.  (Optional) For email support, install Sendmail:
+3.  Install Sendmail if you additionally would like email support. Sendmail is not required to use Fail2Ban.:
 
         yum install sendmail
 
-5.  Start and enable Fail2ban and, if needed, Sendmail:
+4.  Start and enable Fail2ban and, if needed, Sendmail:
 
         systemctl start fail2ban
         systemctl enable fail2ban
         systemctl start sendmail
         systemctl enable sendmail
+
+    {:.note}
+    > Should you encounter the error that there is "*no directory /var/run/fail2ban to contain the socket file /var/run/fail2ban/fail2ban.sock*", create the directory manually:
+    >
+    > 'mkdir /var/run/fail2ban`
 
 ### Debian
 
@@ -68,10 +69,15 @@ Follow the [Getting Started](/docs/getting-started) guide to configure your basi
         
     The service will automatically start.
 
-3.  (Optional) If you wish to avail email support, install Sendmail:
+3.  (Optional) If you would like email support, install Sendmail:
 
         apt-get install sendmail-bin sendmail
 
+    {: .note}
+    > The current version of Sendmail in Deiban Jessie has an [upstream bug](https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=293017) which causes the following errors when installing `sendmail-bin`. The installation will hang for a minute, but then complete.
+    > Creating /etc/mail/sendmail.cf...
+    > ERROR: FEATURE() should be before MAILER() MAILER(`local') must appear after FEATURE(`always_add_domain')
+    > ERROR: FEATURE() should be before MAILER() MAILER(`local') must appear after FEATURE(`allmasquerade')
 
 ### Fedora
 
@@ -83,7 +89,7 @@ Follow the [Getting Started](/docs/getting-started) guide to configure your basi
 
         dnf install fail2ban
 
-3.  (Optional) If you wish to avail email support, install Sendmail:
+3.  (Optional) If you would like email support, install Sendmail:
 
         dnf install sendmail
 
@@ -93,7 +99,6 @@ Follow the [Getting Started](/docs/getting-started) guide to configure your basi
         systemctl enable fail2ban
         systemctl start sendmail
         systemctl enable sendmail
-
 
 ### Ubuntu
 
@@ -107,14 +112,14 @@ Follow the [Getting Started](/docs/getting-started) guide to configure your basi
         
     The service will automatically start.
 
-3.  (Optional) If you wish to avail email support, install Sendmail:
+3.  (Optional) If you would like email support, install Sendmail:
 
         apt-get install sendmail
 
-4.  Ensure UFW is enabled, and you have SSH access to the server:
+4.  Allow SSH access through UFW and then enable the firewall:
 
-        ufw enable
         ufw allow ssh
+        ufw enable
 
 ## Configuring Fail2ban
 
@@ -122,15 +127,11 @@ Fail2ban reads its configuration files so that all `.conf` files are read first 
 
 ### fail2ban.local Configuration
 
-1.  Navigate to `/etc/fail2ban`. Within this directory are all configuration files.
+1.  The file `fail2ban.conf` contains the default configuration profile. The default settings will give you a sane and working setup so this is the best place to start. If you want to make any changes, it's best to do it in a separate file, `fail2ban.local`, which overrides `fail2ban.conf`. Rename a copy `fail2ban.conf` to `fail2ban.local`. 
 
-        cd /etc/fail2ban
+        cp /etc/fail2ban/fail2ban.conf /etc/fail2ban/fail2ban.local
 
-2.  Copy `fail2ban.conf` to `fail2ban.local`:
-
-        cp fail2ban.conf fail2ban.local
-
-3.  Open `fail2ban.local` in your chosen text editor. This file contains configuration for Fail2ban logging, the socket used to communicate with the daemon, and the location of the PID file. The values that can be changed within the `fail2ban.local` file are as follows:
+3.  From here, you can opt to edit the definitions in `fail2ban.local` to match your desired configuration. The values that can be changed are:
 
     -   `loglevel`: The level of detail that Fail2ban's logs provide can be set to 1 (error), 2 (warn), 3 (info), or 4 (debug).
     -   `logtarget`: Logs actions into a specific file. The default value of `/var/log/fail2ban.log` puts all logging into the defined file. Alternately, you can change the value to STDOUT, which will output any data; STDERR, which will output any errors; SYSLOG, which is message-based logging; and FILE, which outputs to a file.
@@ -139,17 +140,32 @@ Fail2ban reads its configuration files so that all `.conf` files are read first 
 
 ### jail.local Basic Configuration
 
-1.  Return to `/etc/fail2ban` directory and copy the `jail.conf` file to `jail.local`:
+1.  The `jail.conf` file will enable Fail2ban for SSH by default for Debian and Ubuntu, but not CentOS. All other protocols and configurations (HTTP, FTP, etc.) are commented out. If you want to change this, it's recommended to create a `jail.local` for editing just like you did with `fail2ban.local`.
 
-        cp jail.conf jail.local
+        cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
 
-2.  **If using CentOS or Fedora** open `jail.local` and set the `backend` to `systemd`. This is not necessary on Debian 8, even though it is a SystemD system.
+2.  **If using CentOS or Fedora** you will need to change the `backend` option in `jail.local` from *auto* to *systemd*. This is not necessary on Debian 8 or Ubuntu 16.04, even though both use systemd as well.
 
-    {: .file-excerpt}
-    /etc/fail2ban/jail.local
-    :   ~~~
-        backend = systemd
-        ~~~
+        {: .file-excerpt}
+        /etc/fail2ban/jail.local
+        :   ~~~ conf
+            # "backend" specifies the backend used to get files modification.
+            # Available options are "pyinotify", "gamin", "polling", "systemd" and "auto".
+            # This option can be overridden in each jail as well.
+            
+            . . .
+            
+            backend = systemd
+            ~~~
+
+3.  No jails are enabled by default in CentOS 7. For example, to enable the SSH daemon jail, uncomment the following lines in `jail.local:
+
+        {: .file-excerpt}
+        /etc/fail2ban/jail.local
+        :   ~~~ conf
+            [sshd]
+            enabled = true
+            ~~~
 
 #### IP Whitelisting        
 
@@ -169,7 +185,6 @@ Add any IPs to the `ignoreip` line that you wish Fail2ban to ignore. By default,
 If you wish to whitelist IPs only for certain jails, this can be done with the `fail2ban-client` command. Replace `JAIL` with the name of your fail, and `123.45.67.89` with the IP you wish to whitelist.
 
     fail2ban-client set JAIL addignoreip 123.45.67.89   
-
 
 #### Ban Time and Retry Amount
 
@@ -193,7 +208,6 @@ The `bantime`, `findtime`, and `maxretry` then need to be set. These are the val
 
 -   `maxretry`: How many attempts can be made to access the server from a single IP before a ban is imposed. The default is set to 3.
 
-
 #### Email Alerts
 
 If you wish to receive email when Fail2ban is triggered, adjust the email settings:
@@ -208,7 +222,7 @@ If you wish to receive email when Fail2ban is triggered, adjust the email settin
 >
 >If unsure of what to put under `sender`, run the command `sendmail -t user@email.com`, replacing `user@email.com` with your email address. Check your email (including spam folders, if needed) and review the sender email. This address can be used for the above configuration.
 
-You will also need to adjudst the `action` setting, which defines what actions occur when the threshold for ban is met. The default, `%(action_)s`, only bans the user. `action_mw` will ban and send an email with a WhoIs report; while `action_mwl` will ban and send an email with the WhoIs report and all relevant lines in the log file. This can also be changed on a jail-specific basis.
+You will also need to adjust the `action` setting, which defines what actions occur when the threshold for ban is met. The default, `%(action_)s`, only bans the user. `%(action_mw)s` will ban and send an email with a WhoIs report; while `%(action_mwl)s` will ban and send an email with the WhoIs report and all relevant lines in the log file. This can also be changed on a jail-specific basis.
 
 ### Jail Configuration
 
@@ -238,7 +252,6 @@ An average jail configuration will resemble the following:
 {: .note}
 >
 >Jails can also be configured as individual `.conf` files placed in the `jail.d` directory. The format will remain the same.
-
 
 ## Failregexs
 
@@ -320,6 +333,7 @@ With the failregex created, it then needs to be added to a filter.
         [Definition]
         
         failregex = <HOST> - - \[(\d{2})/\w{3}/\d{4}:\1:\1:\1 -\d{4}\] "POST /wp-login.php HTTP/1.1" 200
+        ignoreregex =
         ~~~
         
     Save and quit.
@@ -333,12 +347,12 @@ With the failregex created, it then needs to be added to a filter.
         enabled  = true
         filter   = wordpress
         logpath  = /var/www/html/andromeda/logs/access.log
+        port     = 80,443
         ~~~
         
     This will use the default ban and email action. Other actions can be defined by adding an `action =` line.
     
     Save and exit, then restart Fail2ban.
-
 
 ## Using the Fail2ban Client
 
@@ -352,5 +366,15 @@ Fail2ban provides a command `fail2ban-client` that can be used to run Fail2ban f
 -   `stop`: Terminates the server.
 -   `status`: Will show the status of the server, and enable jails.
 -   `status JAIL`: Will show the status of the jail, including any currently-banned IPs.
+
+For example, to check that the Fail2Ban is running and the SSHd jail is enabled, run:
+
+    fail2ban-client status
+
+The output should be:
+
+    Status
+    |- Number of jail:      1
+    `- Jail list:   sshd
 
 For additional information about `fail2ban-client` commands, see the [Fail2ban wiki](http://www.fail2ban.org/wiki/index.php/Commands).

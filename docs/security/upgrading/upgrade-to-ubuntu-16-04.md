@@ -5,9 +5,9 @@ author:
 description: 'Our guide to upgrading to Ubuntu 16.04 LTS'
 keywords: 'upgrading,ubuntu,16.04'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Wednesday, August 3, 2016
+modified: Wednesday, March 15th, 2017
 modified_by:
-  name: Edward Angert
+  name: Nick Brewer
 published: 'Tuesday, April 26th, 2016'
 title: 'How to Upgrade to Ubuntu 16.04 LTS'
 ---
@@ -23,6 +23,8 @@ Ubuntu 16.04 is a Long-Term Support (LTS) release that will be supported by Cano
  - Swap IP addresses
  >
  > The upgrade may be incomplete or your system may be corrupted if your internet connection is interrupted. Use [Lish](/docs/networking/using-the-linode-shell-lish) or [Glish](/docs/networking/use-the-graphic-shell-glish) to perform this upgrade in a stable environment that does not rely on an active internet connection to your Linode.
+>
+>**Important:** Ubuntu 16.04 ships with OpenSSH 7.2p2, which does not allow `ssh-dss` host authentication, or use of the SSH version 1 protocol. 
 
 {: .note}
 >The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.

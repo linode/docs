@@ -18,6 +18,8 @@ external_resources:
 
 Apache configuration has a major affect on your Linode's performance. The easiest way to increase server performance is to turn off unneeded modules. This guide covers Apache modules, information on which modules to turn off, and other Apache performance tuning options.
 
+![Tuning Your Apache Server](/docs/assets/tuning-your-apache-server.png "Tuning Your Apache Server")
+
 {: .note}
 >
 >The steps in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
@@ -68,11 +70,11 @@ Apache `mod_status` diplays information related to incoming server connections b
 
 	- 	Debian/Ubuntu:
 
-			service apache2 restart
+			systemctl restart apache2
 
 	-	CentOS/Fedora:
 
-			/bin/systemctl reload httpd.service
+			systemctl restart httpd
 
 5.  To view the file generated, download Lynx:
 

@@ -11,10 +11,10 @@ Please note, if you see the need for a correction in an existing guide, feel fre
 Write Your Article
 ------------------
 
-Use the [style guide](docs/style-guide.md). While you're writing, make sure your content is:
+Use the [Linode writers' guide](docs/linode-writers-guide.md). While you're writing, make sure your content is:
 
 -   Accurate. Your instructions should be straightforward and technically sound.
--   Formatted. Your style should use [PHP Markdown Extra](https://michelf.ca/projects/php-markdown/extra/) formatting and match the Linode Library [style guide](docs/style-guide.md).
+-   Formatted. Your style should use [PHP Markdown Extra](https://michelf.ca/projects/php-markdown/extra/) formatting and match the Linode Docs [style guide](docs/linode-writers-formatting-guide.md).
 -   Original. Your content should be original material written for Linode. We will not accept submissions that have been copied from other sources.
 
 Want to make sure you don't waste time writing a long article we can't use? First, submit a writing sample to <contribute@linode.com>.

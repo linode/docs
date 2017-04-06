@@ -5,7 +5,7 @@ author:
 description: 'Forcing all connections to use SSL with NodeBalancers.'
 keywords: 'Linode,NodeBalancer,SSL,redirect,load balancing,install,certificate,configuration'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Tuesday, August 21st, 2016
+modified: Thursday, April 6th, 2017
 modified_by:
   name: Nick Brewer
 published: Tuesday, September 1st, 2015
@@ -13,6 +13,8 @@ title: NodeBalancer SSL Configuration
 ---
 
 This guide will help you install an SSL certificate on your NodeBalancer. It includes step-by-step instructions for configuring a NodeBalancer to redirect all web connections over port 443/HTTPS using SSL. The provided directions are designed to work with Apache and Nginx web servers, running on Debian and Red Hat-based distributions.
+
+![Forcing all connections to use SSL with NodeBalancers.](/docs/assets/NodeBalancer_SSL_Configuration_smg.png "Forcing all connections to use SSL with NodeBalancers.")
 
 {: .note }
 >
@@ -45,7 +47,7 @@ This guide will help you install an SSL certificate on your NodeBalancer. It inc
 
 2.  Copy the contents of your SSL certificate into the **Certificate** field. If you have linked multiple segments of a chained certificate, be sure to copy all of its contents into the text field, appearing one after another.
 
-3.  Copy your unpassphrased private key into the **Private Key** field.
+3.  Copy your private key into the **Private Key** field. Your private key must not have a passphrase.
 
 4.  On your NodeBalancer **Configurations** page, select **Create Configuration** to configure each port/protocol that you would like to use, i.e. `80` and `443`.
 
@@ -99,8 +101,6 @@ This guide will help you install an SSL certificate on your NodeBalancer. It inc
     :   ~~~ apache
         <VirtualHost *:80>
 
-            ...
-
              RewriteEngine    On
              RewriteCond      %{HTTP:X-Forwarded-Proto} !https
              RewriteRule      ^.*$ https://%{SERVER_NAME}%{REQUEST_URI} [L,R=301,NE]
@@ -118,14 +118,12 @@ This guide will help you install an SSL certificate on your NodeBalancer. It inc
     /etc/apache2/sites-available/example.com.conf
     :   ~~~ apache2
 
-            ...
-
-             RewriteLog       /var/log/apache2/rewrite.log
-             RewriteLogLevel  5  # Adjust log verbosity as required. ex. 1-9
+          RewriteLog       /var/log/apache2/rewrite.log
+          RewriteLogLevel  5  # Adjust log verbosity as required. ex. 1-9
         ~~~
 
     {: .caution}
-    > On Red Hat based distributions, change the `Rewritelog` path to `/var/log/httpd/rewrite.log`
+    > On Red Hat-based distributions, change the `Rewritelog` path to `/var/log/httpd/rewrite.log`
 
 3.  Create the `RewriteLog` as referenced from above:
 

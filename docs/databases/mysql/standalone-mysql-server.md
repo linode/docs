@@ -3,7 +3,7 @@ deprecated: true
 author:
   name: Stan Schwertly
   email: docs@linode.com
-description: 'Deploying a standalone MySQL database server on a separate Linux VPS for increased application performance.'
+description: 'Deploying a standalone MySQL database server on a separate Linode for increased application performance.'
 keywords: 'mysql,standalone myql,separate mysql,wordpress'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Friday, April 29th, 2011

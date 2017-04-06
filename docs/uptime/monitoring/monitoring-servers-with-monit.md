@@ -24,6 +24,8 @@ external_resources:
 
 Keeping tabs on your servers can be time-consuming. You need to make sure connectivity is good, processes are running but not running away, resources are available, and system health is good. Whether you have one server or many, it's something you may not do as often as you should. 
 
+![Installing Monit for Server Monitoring](/docs/assets/monit_tg.png "Installing Monit for Server Monitoring")
+
 [Monit](https://mmonit.com/) can watch your servers for you. You can tell Monit exactly what you would do if a program stops running, or begins using too much RAM, or another host becomes unreachable. Monit will watch around the clock, and respond to out-of-the-norm events by following your instructions.
 
 With Monit you get:

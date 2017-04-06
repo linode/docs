@@ -45,7 +45,7 @@ For an Arch Linux system, the command is as follows:
 
 For a Gentoo system, the command is as follows:
 
-    sudo emerge ask --verbose dev-util/git
+    sudo emerge --ask --verbose dev-vcs/git
 
 ### Local System Installation
 

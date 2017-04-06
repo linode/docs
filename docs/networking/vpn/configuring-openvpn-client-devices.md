@@ -5,19 +5,21 @@ author:
 description: 'This guide will show you how to install, configure and fine-tune OpenVPN clients on Android, iOS, Linux, OS X and Windows.'
 keywords: 'openvpn,vpn,vpn tunnel,ios,os x,mac,windows,android'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 'Wednesday, December 9th, 2015'
+modified: 'Thursday, March 30th, 2017'
 modified_by:
-  name: Linode
+  name: Steven Jacobs
 published: 'Wednesday, December 9th, 2015'
 title: 'Configuring OpenVPN Client Devices'
 external_resources:
  - '[Official OpenVPN Documentation](https://openvpn.net/index.php/open-source/documentation/howto.html)'
- - '[Tunnelblick OS X OpenVPN Client](http://code.google.com/p/tunnelblick/)'
- - '[OpenVPN GUI for Windows](https://tunnelblick.net/)'
+ - '[Tunnelblick OS X OpenVPN Client](https://www.tunnelblick.net/)'
+ - '[OpenVPN GUI for Windows](https://openvpn.net/index.php/open-source/downloads.html)'
  - '[Network Manager GNOME Configuration Management Tool](https://wiki.gnome.org/Projects/NetworkManager)'
 ---
 
 This guide is the third of a three-part series to set up a hardened OpenVPN environment. Though it's recommended that you first complete parts one and two, [Set up a Hardend OpenVPN Server on Debian 8](/docs/networking/vpn/set-up-a-hardened-openvpn-server) and [Tunnel Your Internet Traffic Through an OpenVPN Server](/docs/networking/vpn/tunnel-your-internet-traffic-through-an-openvpn-server), this guide can stand on its own as a general tutorial for configuring OpenVPN clients on various operating systems, including mobile.
+
+![Configuring OpenVPN Client Devices](/docs/assets/configuring-openvpn-client-devices.png "Configuring OpenVPN Client Devices")
 
 ## Before You Begin
 
@@ -221,7 +223,7 @@ Apple OS X does not natively support the OpenVPN protocol. [Tunnelblick](https:/
 3.  OpenVPN must be run as an administrator to function properly. There are two ways you can do this:
 
     **Option 1**
-    
+
     Right-click on the OpenVPN GUI desktop shortcut and select **Run as administrator**. This must be done each time you to connect to your VPN.
 
     **Option 2**

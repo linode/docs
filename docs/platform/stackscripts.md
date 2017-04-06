@@ -2,7 +2,7 @@
 author:
   name: Alex Fornuto
   email: afornuto@linode.com
-description: 'Create Custom Instances and Automate Deployment with StackScritps.'
+description: 'Create Custom Instances and Automate Deployment with StackScripts.'
 keywords: 'ami,automation,elasticity,cloud,custom instance'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['stackscripts/']
@@ -269,6 +269,9 @@ StackScript
     <UDF name="var4" Label="Pick several from" manyOf="foo,bar" default="foo,bar" />
     # [...]
     ~~~
+
+{: .note }
+> If you would like to create a masked password input field, use the word 'password' anywhere in the UDF name.
 
 There are also a set of Linode created environmental variables that can be used for API calls or other tasks from within the script.
 

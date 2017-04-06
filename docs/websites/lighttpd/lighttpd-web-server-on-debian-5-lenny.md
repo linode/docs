@@ -3,8 +3,8 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Using lighttpd to host multiple websites from your Linode VPS.'
-keywords: 'lighttpd server,lighttpd vps,web server,vps web server,vps hosting'
+description: 'Using lighttpd to host multiple websites from your Linode.'
+keywords: 'lighttpd server,lighttpd Linode,web server,Linode web server,Linode hosting'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-servers/lighttpd/debian-5-lenny/']
 modified: Monday, August 22nd, 2011

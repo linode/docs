@@ -15,6 +15,8 @@ title: Copying a Disk to a Different Account
 
 You can copy a Linode's disk from one Linode account to another. This is a great way to prepare a disk for another Linode customer and transfer it from your account to the other user's account. Or if you have multiple Linode accounts, you can use this guide to consolidate all of your disks in one account.
 
+![Our guide to copying a disk to a different Linode account](/docs/assets/copying_a_disk_to_a_differnet_account_smg.png "Our guide to copying a disk to a different Linode account")
+
 ## Preparing the Source Linode
 
 Before initiating the transfer, you'll need to prepare the *source* Linode that contains the disk you want to copy. Start the Linode in rescue mode to transfer files to the other account. Here's how:
@@ -33,7 +35,7 @@ You'll also need to prepare the *receiving* Linode before initiating the transfe
 To hold the files that will be transferred from the other Linode, you should create a new disk. Here's how:
 
 1.  Log in to the [Linode Manager](https://manager.linode.com) with the account that will be receiving the disk.
-2.  Click the **Linodes** tab. A list of your virtual private servers appears.
+2.  Click the **Linodes** tab.
 3.  Select the Linode that will be receiving the disk. The Linode's dashboard appears.
 4.  Create a disk to hold the files from the other account's disk. Select **Create a new disk**. The webpage shown below appears.
 
@@ -61,7 +63,7 @@ Now it's time to start copying the files on the disk from one account to another
 
 1.  On the source Linode, enter the following command to start copying the disk, replacing `12.34.56.78` with your Linode's IP address.:
 
-        dd if=/dev/xvda | ssh -C 12.34.56.78 "dd of=/dev/xvda"
+        dd if=/dev/sda | ssh -C 12.34.56.78 "dd of=/dev/sda"
 
 2.  The following output appears. Enter `yes` to continue connecting:
 
@@ -94,7 +96,7 @@ After the file transfer has completed, you should verify the disk by mounting it
 
 2.  Mount the disk by entering the following command:
 
-        mount /dev/xvda linode
+        mount /dev/sda linode
 
 3.  View the directories in the disk by entering the following command:
 
@@ -115,15 +117,15 @@ Now it's time to boot from the disk. First, you'll create a configuration profil
 
 The boot the receiving Linode from the transferred disk, you'll need to create a new configuration profile. Here's how:
 
-1.  Click the **Linodes** tab. A list of your virtual private servers appears.
+1.  Click the **Linodes** tab.
 2.  Select the Linode that received the disk. The Linode's dashboard appears.
 3.  Select **Create a new Configuration Profile**. The webpage shown below appears.
 
 [![Selecting the configuration profile](/docs/assets/1065-migration6-small.png)](/docs/assets/1064-migration6.png)
 
 4.  Enter a name for the configuration profile in the **Label** field, such as *Received disk*.
-5.  In the *Block Device Assignment* section, set `/dev/xvda` to **Received disk**.
-6.  Set `/dev/xvdb` to a swap disk.
+5.  In the *Block Device Assignment* section, set `/dev/sda` to **Received disk**.
+6.  Set `/dev/sdb` to a swap disk.
 7.  Click **Save Changes**.
 
 You have successfully created the configuration profile.

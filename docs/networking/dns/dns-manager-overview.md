@@ -6,9 +6,9 @@ description: 'Use DNS Manager to Direct Domains to Your Linode.'
 keywords: 'dns manager,linode dns,linode manager dns,dns configuration,ttl,domain zones,domain name'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['dns-manager/','dns-guides/configuring-dns-with-the-linode-manager/', 'networking/dns/dns-manager/']
-modified: Monday, June 20th, 2016 
+modified: Monday, June 20th, 2016
 modified_by:
-  name: Alex Fornuto 
+  name: Alex Fornuto
 published: 'Thursday, July 16th, 2009'
 title: DNS Manager Overview
 ---
@@ -88,7 +88,7 @@ Here's how to add a new domain zone:
     {: .note}
     > In order for Linode's DNS servers to function as slaves, your DNS master server must notify and allow AXFR requests to and from the follow IP addresses:
     >
-    >     69.93.127.10
+    >     104.237.137.10
     >     65.19.178.10
     >     75.127.96.10
     >     207.192.70.10
@@ -140,7 +140,7 @@ You can also modify existing DNS records in the DNS Manager.
 
 You have successfully edited the DNS record. It can take up to 30 minutes for the record to be updated.
 
-### Import Domain Zones
+### Import Domain Zones with AXFR
 
 If you're migrating domains to Linode from another hosting provider, and that provider allows zone transfers from its DNS server, it may be possible to import your existing domain zone and DNS records into the Linode Manager. If the import is successful, all of your existing DNS records will be available in the DNS Manager.
 
@@ -205,6 +205,21 @@ Click **Yes, delete this sucker** to permanently delete the zone, including all 
 
 You have successfully removed the DNS record. It can take up to 30 minutes for the changes to be removed.
 
+{: .caution }
+>Once removed, you **MUST** delete the Linode nameserver entries from the domain at the registrar level.
+> This is a very important step; if the entries are not removed, someone could use your domain without your
+> permission.
+
+### Subdomains
+
+The DNS Manager does not support addition of a subdomain on top of an existing subdomain in the same zone. For example, if you have `example.com` as a zone, with an A record for `subdomain.example.com`, you cannot create `another.subdomain.example.com` within that zone.
+
+Instead, [add](#add-a-domain-zone) the subdomain as a separate zone in the DNS Manager, and then create your additional subdomain as an A record.
+
+### Wildcards
+
+The DNS Manager uses an asterisk (`*`) for wildcards.
+
 ## Troubleshoot
 
 Having problems with your DNS records? We recommend reviewing this section to help get your DNS settings back on track. Follow these tips to troubleshoot DNS issues.
@@ -260,6 +275,3 @@ If you're on a Windows machine, or you're more comfortable using a web-based too
 ##Next Steps
 
 Now that you are familiar with Linode's DNS Manager, you should set up your [reverse DNS configuration](/docs/networking/dns/setting-reverse-dns), and consider looking at our [Common DNS Configurations](/docs/networking/dns/common-dns-configurations) guide.
-
-
-

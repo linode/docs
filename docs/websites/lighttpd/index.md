@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-keywords: 'lighttpd web server,lighttpd Linux,lighttpd VPS HOWTO'
+keywords: 'lighttpd web server,lighttpd Linux,lighttpd Linode HOWTO'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-servers/lighttpd/']
 published: 'Thursday, July 16th, 2009'

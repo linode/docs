@@ -20,7 +20,7 @@ During the development and administration of your CouchDB server and application
 
 ## Create a Tunnel with PuTTY on Windows
 
-### Connecting to your VPS
+### Connecting to your Linode
 
 You can obtain the software from the [PuTTY download page](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html). For Microsoft Windows users, PuTTY is compatible with Windows 95 or greater (practically any modern Windows computer can run it). Simply save the program to your desktop and double-click it to begin. You'll be presented with this screen:
 

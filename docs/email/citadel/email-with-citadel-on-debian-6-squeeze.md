@@ -3,7 +3,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Setting up an email and groupware server using Citadel on a Debian 6 (Squeeze) Linux VPS.'
+description: 'Setting up an email and groupware server using Citadel on a Debian 6 (Squeeze) Linode.'
 keywords: 'citadel debian 6,citadel debian squeeze,debian 6 mail server,groupware,email server'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['email/citadel/debian-6-squeeze/']

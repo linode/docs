@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Install web applications with "LEMP," a LAMP-like stack using nginx, MySQL, and PHP.'
+description: 'Install a LEMP stack to serve websites and applications on Ubuntu 16.04'
 keywords: 'nginx,lemp,php,ubuntu 16.04'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Friday, May 6th 2016
@@ -16,6 +16,8 @@ external_resources:
 ---
 
 This guide describes an alternative to the *LAMP* (Linux, Apache, MySQL, and PHP) stack, known as *LEMP*. The LEMP stack replaces the Apache web server component with nginx (pronounced "engine x," providing the "E" in LEMP). Nginx can increase the ability of the server to scale in response to demand.
+
+![LEMP Server on Ubuntu 16.04](/docs/assets/lemp-server-on-ubuntu-1604.png "LEMP Server on Ubuntu 16.04")
 
 ## Before You Begin
 
@@ -35,7 +37,7 @@ This guide describes an alternative to the *LAMP* (Linux, Apache, MySQL, and PHP
 
 ### Install the Nginx Web Server
 
-To ensure compatability of installation and with future updates, install nginx from the Ubuntu package repository using `apt`:
+To ensure compatibility of installation and with future updates, install nginx from the Ubuntu package repository using `apt`:
 
     sudo apt-get install nginx
 
@@ -164,26 +166,25 @@ The MySQL database engine is one of the leading open-source relational database 
 
     During the installation process you will be prompted to set a password for the MySQL root user via an [ncurses](https://en.wikipedia.org/wiki/Ncurses) menu. Choose a strong password and keep it in a safe place for future reference.
 
-2.  Run the `mysql_secure_installation` script, created to help secure fresh MySQL server installations.
-
-        sudo mysql_secure_installation
-
-    We've already set a strong root password in Step 1, and there's no need to replace it. All other actions should be performed in most cases. 
-
-3.  Log in to the MySQL command line interface (CLU) as the root user. When prompted, provide the password set in step 1:
+2.  Log in to the MySQL command line interface (CLI) as the root user. When prompted, provide the password set in Step 1:
 
         mysql -u root -p
 
-4.  Create a database and user with permissions for it. Replace `web` and `webuser` with appropriate names, and `password` with a strong password:
+3.  Create a database and user with permissions for it. Replace `web` and `webuser` with appropriate names, and `password` with a strong password:
 
         CREATE DATABASE web;
         CREATE USER 'webuser' IDENTIFIED BY 'password';
         GRANT ALL PRIVILEGES ON web.* TO 'webuser';
         quit
 
-    You can now provide the credentials for the `web` database and the `webuser` user to your application, which will now be able to use the database for its purposes. To ensure that PHP will be able to access the MySQL connector your just installed, restart the PHP service by issue the following command:
+    You can now provide the credentials for the `web` database and the `webuser` user to your application, which will now be able to use the database for its purposes. To ensure that PHP will be able to access the MySQL connector you just installed, restart the PHP service by issue the following command:
 
         sudo systemctl restart php7.0-fpm
+
+{: .note}
+> If at any point you need to change the root password, log in as shown in Step 2 and enter the following command, replacing `password` with the new root password:
+>
+>      ALTER USER 'root'@'localhost' IDENTIFIED WITH 'mysql_native_password' BY 'password';
 
 ## Optional: Test and Troubleshoot the LEMP Stack
 

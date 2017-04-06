@@ -6,7 +6,7 @@ description: 'An introduction to the principal concepts and use of the users and
 keywords: 'users,permissions,access control lists,chmod,chown,linux'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['docs/using-linux/users-and-groups/']
-modified: Wednesday, September 17, 2014
+modified: Thursday, March 23rd, 2017
 modified_by:
   name: Linode
 published: 'Monday, August 31st, 2009'
@@ -18,6 +18,8 @@ external_resources:
 ---
 
 If you are new to Linux/Unix, then the concept of permissions may be confusing. This guide will provide you with an explanation of what permissions are, how they work, and how to manage them. A number of examples will be provided to illustrate how to set and change permissions for both users and groups.
+
+![Linux Users and Groups](/docs/assets/linux_users_and_groups.png "Linux Users and Groups")
 
 ## What are User and Group Permissions?
 

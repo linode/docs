@@ -6,32 +6,32 @@ description: Our guide to performing basic troubleshooting.
 keywords: troubleshooting
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['quick-start-troubleshooting/']
-modified: Monday, December 23rd, 2013
+modified: Monday, March 6th, 2017
 modified_by:
-  name: Sokhumpheak Thong
+  name: Nick Brewer
 published: 'Thursday, April 5th, 2012'
 title: Troubleshooting
 ---
 
-We know it's frustrating when you run into problems with your Linode VPS. That's why we've created this introductory troubleshooting checklist. Use it to diagnose and resolve basic issues with your Linode through a process of elimination. Here's how:
+We know it's frustrating when you run into problems with your Linode. That's why we've created this introductory troubleshooting checklist. Use it to diagnose and resolve basic issues with your Linode through a process of elimination. Here's how:
 
 -   Select the issue that best describes your problem
 -   Follow the troubleshooting steps in the order they are presented
 -   Once you've identified a problem, try fixing it with the suggested solutions
 -   If you can't find your problem in this guide, take a look at the [troubleshooting manuals](/docs/troubleshooting)
 
-If the issue you're experiencing isn't listed here, or if the recommended solution doesn't help, please feel free to [contact our support staff](/docs/support) 24 hours a day, 7 days a week.
+If the issue you're experiencing isn't listed here, or if the recommended solution doesn't help, please feel free to [contact our Support team](/docs/support).
 
-## VPS is Slow or Unresponsive
+## Linode is Slow or Unresponsive
 
-Use the following checklist if your Linode VPS is running slowly or is completely unresponsive when you try to connect.
+Use the following checklist if your Linode is running slowly or is completely unresponsive when you try to connect.
 
 ### Is the Linode powered on?
 
-A Linode VPS can be turned on and off, just like a physical computer. If you attempt to connect to your Linode when it's powered off, nothing will happen. To start troubleshooting, verify that your Linode is powered on. Here's how to check:
+You can turn off a Linode, just like a physical computer. If you attempt to connect to your Linode when it's powered off, nothing will happen. To start troubleshooting, verify that your Linode is powered on. Here's how to check:
 
 1.  Log in to the [Linode Manager](https://manager.linode.com).
-2.  Click the **Linode** tab. A list of your virtual private servers appears.
+2.  Click the **Linode** tab. A list of your Linodes appears.
 3.  Select a Linode. The Linode's dashboard appears, as shown below.
 
 [![Check Linode boot status.](/docs/assets/952-troubleshooting1-1-small.png)](/docs/assets/953-troubleshooting1-1.png)
@@ -68,7 +68,7 @@ If you can successfully ping the server, please to continue to the next section.
 To verify that your Linode is operating correctly, you should try to log in with the Linode Shell (LISH), which provides out of band access to your Linode from the Linode Manager. Here's how:
 
 1.  Log in to the [Linode Manager](https://manager.linode.com).
-2.  Click the **Linode** tab. A list of your virtual private servers appears.
+2.  Click the **Linode** tab. A list of your Linodes appears.
 3.  Select a Linode. The Linode's dashboard appears.
 4.  Click the **Remote Access** tab.
 5.  Select the **Launch Lish Ajax Console** link. The LISH console window appears.
@@ -83,23 +83,55 @@ If you can log in, continue to the next section, even if there are error message
 
 ### Is your disk full?
 
-Like a local machine, if your virtual machine's disk is nearly filled to capacity it will see a massive degradation in performance. You will be able to see the total data available and free space of the current disk using the command:
+If your Linode's disk is full, this can cause performance degradation and instability for your applications. Use the following command to determine the free space on your Linode's filesystem:
 
-    sudo egrep --color 'Mem' /proc/meminfo
+    df -h
 
-The output will look akin to:
+The output will look similar to this:
 
-    MemTotal:        1011048 kB
-    MemFree:          418908 kB
+    Filesystem      Size  Used Avail Use% Mounted on
+	/dev/root       189G  166G   14G  93% /
+	devtmpfs        3.9G     0  3.9G   0% /dev
+	tmpfs           3.9G   16K  3.9G   1% /dev/shm
+	tmpfs           3.9G  399M  3.6G  10% /run
+	tmpfs           5.0M     0  5.0M   0% /run/lock
+	tmpfs           3.9G     0  3.9G   0% /sys/fs/cgroup
+	tmpfs           799M     0  799M   0% /run/user/1000
 
-If you have 80%+ of your disk used you may start seeing this degradation. You may want to start investigating temporary files, logs, and unneeded processes. You may also want to consider upgrading your Linode for more storage.
+In this example, you can see that the root filesystem is 93% full. Here's a command you can use to list all files over 200MB on your root filesystem:
+
+	sudo find / -xdev -type f -size +200M -exec ls -lah {} \;
+	
+You can adjust the `+200M` value in this command as needed, to search for files above a specific size. 
+
+
+#### Deleted Files
+
+If a service deletes a file that it is no longer using, the file remains on your disk until the next time the service has been rebooted. In this example you'll see how deleted files belonging to Apache can take up space. 
+
+Use the following command to check for deleted files that are currently open:
+
+	sudo lsof | grep deleted  | numfmt --field=8 --to=iec
+
+This command will check the output of `lsof` for files marked as deleted, and will convert the file sizes so that they're more easily readable. In this example Apache is holding on to several old files:
+
+	apache2   32341         www-data   13u      REG                8,0          0        24K /tmp/.ZendSem.OmCTIC (deleted)
+	apache2   32341         www-data   14w      REG               0,19          0       243M /run/lock/apache2/proxy.13748 (deleted)
+	apache2   32341         www-data   15w      REG               0,19          0       243M /run/lock/apache2/mpm-accept.13748 (deleted)
+	apache2   32342         www-data   12w      REG               0,19          0       158M /run/lock/apache2/ssl-cache.13747 (deleted)
+	apache2   32342         www-data   13u      REG                8,0          0        24K /tmp/.ZendSem.OmCTIC (deleted)
+	apache2   32342         www-data   14w      REG               0,19          0       243M /run/lock/apache2/proxy.13748 (deleted)
+	apache2   32342         www-data   15wW     REG               0,19          0       243M /run/lock/apache2/mpm-accept.13748 (deleted)
+	apache2   32343         www-data   12w      REG               0,19          0       158M /run/lock/apache2/ssl-cache.13747 (deleted)
+
+To free up this space, you can simply restart the Apache process on your Linode. 
 
 ### Is the Linode out of memory?
 
 The applications on your Linode require a certain amount of physical memory to function correctly. If all of the available physical memory is consumed, your Linode could slow down, display out of memory errors, or become unresponsive. Here's how to tell if your Linode is out of memory:
 
 1.  Log in to the [Linode Manager](https://manager.linode.com).
-2.  Click the **Linode** tab. A list of your virtual private servers appears.
+2.  Click the **Linode** tab. A list of your Linodes appears.
 3.  Select a Linode. The Linode's dashboard appears.
 4.  Click the **Remote Access** tab.
 5.  Select the **Launch Lish Ajax Console** link. The LISH console window appears. If memory errors are displayed in the LISH console, stop some running services to free up memory or upgrade to larger plan.
@@ -109,7 +141,7 @@ The applications on your Linode require a certain amount of physical memory to f
 
 7.  Examine the output. The free memory available (in megabytes) is shown in the *-/+ buffers/cache* column and the *free* row, as shown below.
 
-[![Check free memory.](/docs/assets/941-troubleshooting3-1.png)](/docs/assets/941-troubleshooting3-1.png)
+	[![Check free memory.](/docs/assets/941-troubleshooting3-1.png)](/docs/assets/941-troubleshooting3-1.png)
 
 8.  A lack of free memory may indicate that an application is consuming all of your available memory. To see a list of running processes sorted by memory usage, execute the following command in the LISH console or a terminal window:
 
@@ -122,13 +154,13 @@ If your Linode is not out of memory, continue to the next section.
 
 ### Are you experiencing network issues?
 
-Network issues between your desktop computer and the data center can make your server appear slow or unavailable. You can check for issues with *upstream providers* by following the instructions in [Diagnosing Network Issues with MTR](/docs/linux-tools/mtr) to generate *my traceroute* (MTR) reports. MTR combines the functionality of the ping and traceroute programs in a single tool that can help diagnose and isolate networking problems. If the MTR reports indicate that there is a networking issue, use following list to try resolving the issue yourself before contacting Linode support:
+Network issues between your desktop computer and the data center can make your server appear slow or unavailable. You can check for issues with *upstream providers* by following the instructions in [Diagnosing Network Issues with MTR](/docs/linux-tools/mtr) to generate *my traceroute* (MTR) reports. MTR combines the functionality of the ping and traceroute programs in a single tool that can help diagnose and isolate networking problems. If the MTR reports indicate that there is a networking issue, use the following list to try resolving the issue yourself before contacting Linode support:
 
 -   Most routing issues displayed in MTR reports are temporary and clear up within 24 hours.
 -   If you have experienced degraded service for an extended period of time, you can contact a service provider about the issues you're experiencing. Be sure to send MTR reports and any other relevant data.
 -   Network congestion over long distances and during peak times is normal. We recommended positioning hosts and resources as geographically close to the targeted audience as possible.
 
-When contacting [Linode support](/docs/support) for assistance, please include the output of the MTR report so our technicians can help analyze your issue.
+When contacting [Linode support](/docs/support) for assistance, please include the output of two MTR reports; one from your your local network to your Linode, and another from your Linode to your local network's IP address. You can use a website such as [whatsmyip.org](http://www.whatsmyip.org/) to determine the IP address of your local network. If you're not able to connect to your Linode over SSH, you can connect using the [Lish](/docs/networking/using-the-linode-shell-lish) console to generate a report. 
 
 ### Is there a Disk I/O bottleneck?
 
@@ -137,7 +169,7 @@ Disk input/output (I/O) bottlenecks can occur when an application or service is 
 1.  Open a terminal window and log in to your Linode via SSH.
 2.  Enter `top` to access the `top` monitoring utility. The screen shown below appears.
 
-[![Check for Disk I/O bottleneck.](/docs/assets/939-troubleshooting2.png)](/docs/assets/939-troubleshooting2.png)
+	[![Check for Disk I/O bottleneck.](/docs/assets/939-troubleshooting2.png)](/docs/assets/939-troubleshooting2.png)
 
 3.  Examine the I/O wait percentage, as shown above. If the number is zero, your server does not currently have a bottleneck.
 4.  If your I/O wait percentage is above zero, verify that your server has enough free memory available. In many cases, high I/O is an indication that your server has started "swapping," or using disk space as memory.
@@ -157,7 +189,7 @@ Use the following checklist if your website is not loading when you try to conne
 
  {: .note }
 >
-> You should follow all steps in the [VPS is Slow or Unresponsive](#vps-is-slow-or-unresponsive) section before using this checklist.
+> You should follow all steps in the [Linode is Slow or Unresponsive](#linode-is-slow-or-unresponsive) section before using this checklist.
 
 ### Have you added DNS records?
 
@@ -240,11 +272,11 @@ If you recently added a new IP address for an SSL certificate and it's not worki
 
 ## Can't Connect via SSH or FTP
 
-Use the following checklist if you cannot connect to your Linode VPS with an SSH or FTP client application.
+Use the following checklist if you cannot connect to your Linode via SSH or an FTP client application.
 
  {: .note }
 >
-> You should follow all steps in the [VPS is Slow or Unresponsive](#vps-is-slow-or-unresponsive) section before using this checklist.
+> You should follow all steps in the [Linode is Slow or Unresponsive](#linode-is-slow-or-unresponsive) section before using this checklist.
 
 ### Are you using Telnet or FTP?
 
@@ -267,7 +299,21 @@ The SSH and SFTP protocols operate over port 22, so you will not be able to conn
 
 ## Forgot My Username or Password
 
-If you've forgotten the `root` password or your Linode Manager username or password, follow the instructions in the [Accounts and Passwords](/docs/accounts-and-passwords) guide to recover your username and reset your passwords.
+### Linode User/Root Password
+
+If you've forgotten the password for the root user on your Linode, you can follow the our steps for [resetting the root password](/docs/platform/accounts-and-passwords/#resetting-the-root-password) from the Linode Manager.
+
+Once you have access to your Linode as the root user, you can reset the password for any additional system users with the `passwd` command. In this case, we'll reset the password for the `example` user:
+
+	passwd example
+
+### Linode Manager User
+
+*  If you forget your Linode Manager username, you can confirm it by supplying your email address [here](https://manager.linode.com/session/forgot/username).
+
+*  Assuming you know your Linode Manager username, but you've forgotten the password, you can retrieve it [here](https://manager.linode.com/session/forgot/password).
+
+If you've followed these steps, but you're still having trouble accessing your account, please [contact Support](/docs/platform/support#contacting-linode-support).
 
 ## Linode Manager is Displaying "Incorrect" Information
 
@@ -279,13 +325,13 @@ If you recently created a new account, resized an existing Linode, or added extr
 
 ### Did you add additional storage?
 
-If you recently upgraded your plan or added extra storage space, your Linode won't be able to take advantage of the additional space until you resize the disk. You can use the Linode Manager to see if there's additional storage space available for disks:
+If you recently upgraded your plan, your Linode won't be able to take advantage of the additional space until you resize the disk. You can use the Linode Manager to see if there's additional storage space available for disks:
 
 1.  Log in to the [Linode Manager](https://manager.linode.com).
-2.  Click the **Linode** tab. A list of your virtual private servers appears.
+2.  Click the **Linode** tab. A list of your Linodes appears.
 3.  Select a Linode. The Linode's dashboard appears.
 4.  Examine the *Storage* pane on the sidebar, as shown below. If you have free storage space, you can allocate that space to your existing disks.
 
 [![Resize disks.](/docs/assets/944-troubleshooting4-1.png)](/docs/assets/944-troubleshooting4-1.png)
 
-For instructions on resizing disks, see the [Manage Linode Disks](/docs/disk-images-config-profiles#sph_resizing-a-disk-image) guide.
+Follow our steps for [resizing a disk](/docs/migrate-to-linode/disk-images/disk-images-and-configuration-profiles/#resizing-a-disk) to take advantage of the extra space. 

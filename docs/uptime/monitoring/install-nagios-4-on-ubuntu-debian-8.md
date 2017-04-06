@@ -150,7 +150,7 @@ As of this guide's publication, the Nagios build process does not create a syste
 
  {: .file}
  /etc/systemd/system/nagios.service
- :    ~~~
+ :    ~~~ ini
       [Unit]
       Description=Nagios
       BindTo=network.target

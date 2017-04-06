@@ -14,9 +14,9 @@ title: 'Nginx and PHP-FastCGI on Ubuntu 9.10 (Karmic)'
 deprecated: true
 ---
 
-The nginx web server is a fast, lightweight server designed to efficiently handle the needs of both low and high traffic websites. Although commonly used to serve static content, it's quite capable of handling dynamic pages as well. This guide will help you get nginx up and running with PHP and FastCGI on your Ubuntu 9.10 Linux VPS.
+The nginx web server is a fast, lightweight server designed to efficiently handle the needs of both low and high traffic websites. Although commonly used to serve static content, it's quite capable of handling dynamic pages as well. This guide will help you get nginx up and running with PHP and FastCGI on your Ubuntu 9.10 Linode.
 
-It is assumed that you've already followed the steps outlined in our [getting started guide](/docs/getting-started/). These steps should be performed via a root login to your Linode VPS over SSH.
+It is assumed that you've already followed the steps outlined in our [getting started guide](/docs/getting-started/). These steps should be performed via a root login to your Linode over SSH.
 
 Basic System Configuration
 --------------------------

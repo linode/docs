@@ -20,6 +20,8 @@ Running MySQL at optimal settings for specific resources helps in handling large
 
 Database tuning is an expansive topic, and this guide covers only the basics of editing your MySQL configuration.
 
+Large MySQL databases can require a considerable amount of memory. For this reason, we recommend using a [high memory Linode](https://www.linode.com/pricing#high-memory) for such setups. 
+
 {: .note}
 >
 >The steps in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
@@ -35,15 +37,11 @@ In order to determine if your MySQL database needs to be reconfigured, it is bes
 
 The [MySQLTuner](http://mysqltuner.com/) script assesses your MySQL installation, and then outputs suggestions to increase your server's performance and stability.
 
-1.  Download MySQLTuner:
+1.  Download and run MySQLTuner:
 
-		wget http://mysqltuner.pl/ -O mysqltuner.pl
+		curl -L http://mysqltuner.pl/ | perl
 
-2.  Run the program:
-
-		perl mysqltuner.pl
-
-3.  It outputs your results:
+2.  It outputs your results:
 
 		 >>  MySQLTuner 1.4.0 - Major Hayden <major@mhtx.net>
 		 >>  Bug reports, feature requests, and downloads at http://mysqltuner.com/
@@ -118,7 +116,7 @@ Changing the `key_buffer` allocates more memory to MySQL, which can substantiall
 The maximum size of a packet allowed to be sent. A packet is a single SQL state, a single row being sent to a client, or a log being sent from a master to a slave. If you know that your MySQL server is going to be processing large packets, it is best to raise this to the size of your largest packet. Should this value be set too small, you would receive an error in your error log.
 
 ####thread_stack
-This value contains the stack size for each thread. MySQL considers the default value of the `thread_stack` variable sufficient for normal use; however, should an error relating to the `thread_stack` be logged, this can be raised. 
+This value contains the stack size for each thread. MySQL considers the default value of the `thread_stack` variable sufficient for normal use; however, should an error relating to the `thread_stack` be logged, this can be raised.
 
 ####thread_cache_size
 If `thread_cache_size` is "turned off" (set to 0), then all new connections being made need a new thread created for them, and when the connections disconnect the thread is destroyed. Otherwise, this value sets the number of unused threads to store in a cache until they need to be used for a connection. Generally this setting has little affect on performance, unless you are receiving hundreds of connections per minute, at which time this value should be rasied so the majority of connections are being made on cached threads.
@@ -130,4 +128,3 @@ Sets the maximum amount of *concurrent* connections. It is best to consider the 
 Should be kept higher than your `open_tables` value. To determine this value use:
 
 	SHOW STATUS LIKE 'open%';
-

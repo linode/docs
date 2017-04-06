@@ -22,6 +22,8 @@ Lighttpd provides a lightweight web server that is capable of serving large load
 
 This guide explains how to install and configure the lighttpd ("lighty") web server on Ubuntu 16.04 (Xenial Xerus). Consult the resources at the end for more information about deploying other services commonly found in web server stacks.
 
+![Use lighttpd Web Server on Ubuntu 16.04](/docs/assets/using_lighttpd_web_server_on_ubuntu_1604_xenial_xerus.png "Use lighttpd Web Server on Ubuntu 16.04")
+
 ## Before You Begin
 
 1.  Familiarize yourself with and complete the [Getting Started Guide](/docs/getting-started/), setting your Linode's hostname and timezone.

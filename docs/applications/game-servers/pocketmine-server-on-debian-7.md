@@ -62,6 +62,11 @@ PocketMine is a third party server for the MineCraft - Pocket Edition game for [
     >
     >     script /dev/null
 
+    {: .caution }
+    > PocketMine may not run properly on systems not running PHP7. You can manually install it, or modify `start.sh`, replacing all instances of `php7` with `php5`:
+    >
+    >     sed -i -e 's/php7/php5/g' start.sh
+
 2.  The set-up wizard will begin by asking you to select a language. Enter the two-character value for your language of choice, or just press **return** for English.
 
         [*] PocketMine-MP set-up wizard

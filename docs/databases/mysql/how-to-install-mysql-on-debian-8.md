@@ -21,6 +21,8 @@ external_resources:
 
 MySQL is a popular database management system used for web and server applications. This guide will introduce how to install, configure and manage MySQL on a Linode running Debian 8 (Jessie).
 
+Large MySQL databases can require a considerable amount of memory. For this reason, we recommend using a [high memory Linode](https://www.linode.com/pricing#high-memory) for such setups. 
+
 {: .note}
 >
 >This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
@@ -124,9 +126,9 @@ The standard tool for interacting with MySQL is the `mysql` client which install
 
         create database testdb;
         grant all on testdb.* to 'testuser' identified by 'password';
-    
+
 2.  Then exit MySQL.
-    
+
         exit
 
 ### Create a Sample Table
@@ -141,7 +143,7 @@ The standard tool for interacting with MySQL is the `mysql` client which install
         create table customers (customer_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, first_name TEXT, last_name TEXT);
 
 3.  Then exit MySQL.
-    
+
         exit
 
 ## Reset the MySQL Root Password

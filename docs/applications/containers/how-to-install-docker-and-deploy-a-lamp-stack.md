@@ -22,6 +22,13 @@ Docker is a container platform for applications. With Docker, users can download
 
 *If you are familiar with Docker containers, also try [Linode Images](/docs/platform/linode-images) to capture and deploy larger system profiles.*
 
+##Install Prerequisites
+Due to a [known issue](https://github.com/docker/docker/issues/23347) with the dependencies of the docker .deb, installing docker on a Debian/Ubuntu VM requires an additional step:
+
+1. Run:
+
+        apt-get install dmsetup && dmsetup mknodes
+
 ##Install Docker
 Use the Docker-maintained install script for Debian or Ubuntu. For other operating systems, see the [Docker Installation](https://docs.docker.com/en/latest/installation/) guides.
 
@@ -38,7 +45,7 @@ Use the Docker-maintained install script for Debian or Ubuntu. For other operati
           linux-image-virtual kernel and linux-image-extra-virtual for AUFS support.
           + sleep 10
     >
-    >This message can be safely ignored, as the script will continue the installation using DeviceMapper.  If you require AUFS support, you will need to configure a [distribution supplied](https://www.linode.com/docs/tools-reference/custom-kernels-distros/run-a-distributionsupplied-kernel-with-pvgrub) or [custom compiled](/docs/tools-reference/custom-kernels-distros/custom-compiled-kernel-with-pvgrub-debian-ubuntu) kernel.
+    >This message can be safely ignored, as the script will continue the installation using DeviceMapper or OverlayFS.  If you require AUFS support, you will need to configure a [distribution supplied](https://www.linode.com/docs/tools-reference/custom-kernels-distros/run-a-distributionsupplied-kernel-with-pvgrub) or [custom compiled](/docs/tools-reference/custom-kernels-distros/custom-compiled-kernel-with-pvgrub-debian-ubuntu) kernel.
 
 2.  If necessary, add the non-root user to the "docker" group:
 
