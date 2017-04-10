@@ -5,6 +5,7 @@ author:
 description: Clone your Disks to another Linode.
 keywords: 'clone, cloning, linode manager'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+alias: ['migrate-to-linode/disk-images/clone-your-linode/']
 modified: Wednesday, February 15th, 2017
 modified_by:
   name: Linode
