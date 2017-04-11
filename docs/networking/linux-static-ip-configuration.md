@@ -6,7 +6,7 @@ description: 'Computer networks frequently use DHCP to assign IP addresses, rout
 keywords: 'multiple ip addresses,linux static ip,change ip address,network configuration,dns,DHCP'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['networking/configuring-static-ip-interfaces/']
-modified: Wednesday, February 22nd, 2017
+modified: Tuesday, March 11th, 2017
 modified_by:
   name: Linode
 published: 'Thursday, July 20th, 2014'
@@ -15,7 +15,7 @@ title: Linux Static IP Configuration
 
 Network configurations are generally assigned to a networked device in one of two methods, either by [DHCP](https://en.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol) or static assignment. These terms (and others) are often used when discussing IP addresses. In addition to IP addresses, a basic static configuration usually needs DNS resolvers and routing, too.
 
-Upon a Linode's creation, an IPv4 address is selected from a pool of available addresses from the datacenter in which your Linode is hosted. Our [Network Helper](/docs/platform/network-helper) is *enabled* by default for new Linodes. This means that when you deploy a Linux distribution to your Linode and boot it, the host system detects which distro was selected and modifies the [network configuration files](/docs/platform/network-helper#what-files-are-affected) in the disk image to statically configure the Linode's IPv4 addresses, routing, and DNS. Your Linode's default IPv6 address will be assigned via [SLAAC](https://en.wikipedia.org/wiki/IPv6_address#Stateless_address_autoconfiguration), but additional IPv6 addresses can be added [manually](docs/networking/native-ipv6-networking).
+Upon a Linode's creation, an IPv4 address is selected from a pool of available addresses from the datacenter in which your Linode is hosted. Our [Network Helper](/docs/platform/network-helper) is *enabled* by default for new Linodes. This means that when you deploy a Linux distribution to your Linode and boot it, the host system detects which distro was selected and modifies the [network configuration files](/docs/platform/network-helper#what-files-are-affected) in the disk image to statically configure the Linode's IPv4 addresses, routing, and DNS. Your Linode's default IPv6 address will be assigned via [SLAAC](https://en.wikipedia.org/wiki/IPv6_address#Stateless_address_autoconfiguration), but additional IPv6 addresses can be added [manually](/docs/networking/native-ipv6-networking).
 
 If Network Helper is *disabled* (or if your Linode was created before Network Helper became default), your Linode will be assigned its IPv4 network configuration by DHCP from the datacenter's networking hardware. One limitation of DHCP is that it can only assign one IP address per DHCP lease request. If you want additional IPs for your Linode, you must use static addressing.
 
@@ -81,6 +81,11 @@ Add the following addressing to the interface's configuration:
     Name=eth0
 
     [Network]
+    DHCP=no
+    DNS= 203.0.113.1 203.0.113.2 203.0.113.3
+    Domains=members.linode.com
+    IPv6PrivacyExtensions=false
+    
     Gateway=198.51.100.1
 
     # Your primary public IP address
@@ -93,7 +98,9 @@ Add the following addressing to the interface's configuration:
     Address=192.168.133.234/17
     ~~~
 
-Static IP addresses can be configured in several ways in Arch. See the [Static IP Address](https://wiki.archlinux.org/index.php/Network_Configuration#Static_IP_address) section of Arch's Network Configuration Wiki page for other options such as using Netctl. Additionally, you can [configure DNS](https://wiki.archlinux.org/index.php/Resolv.conf#Preserve_DNS_settings) several other ways without modifying `resolv.conf`.
+{: .note}
+>
+>Static IP addresses can be configured in several ways in Arch. Linode's Arch deployments use [*systemd-networkd* and *systemd-resolved*](https://wiki.archlinux.org/index.php/Systemd-networkd#Required_services_and_setup) for both DHCP and static addressing, including with Network Helper.
 
 ### CentOS 7 / Fedora
 

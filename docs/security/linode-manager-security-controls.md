@@ -27,8 +27,8 @@ Before you enable two-factor authentication in the Linode Manager, you should se
 
 -   [Google Authenticator](http://support.google.com/accounts/bin/answer.py?hl=en&answer=1066447) (iPhone/Android/BlackBerry)
 -   [Duo Mobile](http://guide.duosecurity.com/third-party-accounts) (iPhone/Android)
--   [Amazon AWS MFA](http://www.amazon.com/gp/product/B0061MU68M) (Android)
--   [Authomator](http://www.authomator.com/) (BlackBerry 10)
+-   [Amazon AWS MFA](https://aws.amazon.com/iam/details/mfa/) (Android)
+-   [Authomator](https://appworld.blackberry.com/webstore/content/22517879/?lang=en) (BlackBerry 10)
 
 Install one of these applications on your smartphone before continuing.
 

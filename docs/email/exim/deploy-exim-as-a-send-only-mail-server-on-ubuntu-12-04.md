@@ -1,4 +1,5 @@
 ---
+deprecated: true
 author:
   name: Lukas Sabota
   email: docs@linode.com

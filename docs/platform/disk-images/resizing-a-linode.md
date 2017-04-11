@@ -5,7 +5,7 @@ author:
 description: Our guide to upgrading and resizing your Linode
 keywords: 'upgrading,resizing'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['resizing/']
+alias: ['resizing/','migrate-to-linode/disk-images/resizing-a-linode/']
 modified: Thursday, March 2nd, 2017
 modified_by:
   name: Linode

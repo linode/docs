@@ -1,4 +1,5 @@
 ---
+deprecated: true
 author:
   name: Jonathan Frederickson
   email: docs@linode.com
@@ -106,6 +107,6 @@ external_resources:
 
 ## Install MySQL Support (optional)
 
-If your application uses MySQL, install the database server by following our [MySQL on Ubuntu 12.04 (Precise) guide](/docs/databases/mysql/using-mysql-relational-databases-on-ubuntu-12-04-lts-precise-pangolin). Once it's installed and configured properly, issue the following command:
+If your application uses MySQL, install the database server by following our [MySQL on Ubuntu 12.04 (Precise) guide](/docs/databases/mysql/deploy-mysql-relational-databases-on-ubuntu-12-04-precise-pangolin). Once it's installed and configured properly, issue the following command:
 
     sudo apt-get install libmysqlclient-dev libmysql-ruby 

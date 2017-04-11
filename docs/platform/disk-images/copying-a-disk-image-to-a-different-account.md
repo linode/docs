@@ -5,7 +5,7 @@ author:
 description: Our guide to copying a disk to a different Linode account
 keywords: 'disk,migration,moving to different accounts'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['migration/copy-disk-image-different-account/','linode-platform/manager/managing-disk-images/']
+alias: ['migration/copy-disk-image-different-account/','linode-platform/manager/managing-disk-images/','migrate-to-linode/disk-images/copying-a-disk-image-to-a-different-account/']
 modified: Thursday, June 12th, 2014
 modified_by:
   name: Alex Fornuto
@@ -63,7 +63,7 @@ Now it's time to start copying the files on the disk from one account to another
 
 1.  On the source Linode, enter the following command to start copying the disk, replacing `12.34.56.78` with your Linode's IP address.:
 
-        dd if=/dev/xvda | ssh -C 12.34.56.78 "dd of=/dev/xvda"
+        dd if=/dev/sda | ssh -C 12.34.56.78 "dd of=/dev/sda"
 
 2.  The following output appears. Enter `yes` to continue connecting:
 
@@ -96,7 +96,7 @@ After the file transfer has completed, you should verify the disk by mounting it
 
 2.  Mount the disk by entering the following command:
 
-        mount /dev/xvda linode
+        mount /dev/sda linode
 
 3.  View the directories in the disk by entering the following command:
 
@@ -124,8 +124,8 @@ The boot the receiving Linode from the transferred disk, you'll need to create a
 [![Selecting the configuration profile](/docs/assets/1065-migration6-small.png)](/docs/assets/1064-migration6.png)
 
 4.  Enter a name for the configuration profile in the **Label** field, such as *Received disk*.
-5.  In the *Block Device Assignment* section, set `/dev/xvda` to **Received disk**.
-6.  Set `/dev/xvdb` to a swap disk.
+5.  In the *Block Device Assignment* section, set `/dev/sda` to **Received disk**.
+6.  Set `/dev/sdb` to a swap disk.
 7.  Click **Save Changes**.
 
 You have successfully created the configuration profile.
