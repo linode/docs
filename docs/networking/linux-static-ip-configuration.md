@@ -6,7 +6,7 @@ description: 'Computer networks frequently use DHCP to assign IP addresses, rout
 keywords: 'multiple ip addresses,linux static ip,change ip address,network configuration,dns,DHCP'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['networking/configuring-static-ip-interfaces/']
-modified: Wednesday, February 22nd, 2017
+modified: Tuesday, March 11th, 2017
 modified_by:
   name: Linode
 published: 'Thursday, July 20th, 2014'
@@ -81,6 +81,11 @@ Add the following addressing to the interface's configuration:
     Name=eth0
 
     [Network]
+    DHCP=no
+    DNS= 203.0.113.1 203.0.113.2 203.0.113.3
+    Domains=members.linode.com
+    IPv6PrivacyExtensions=false
+    
     Gateway=198.51.100.1
 
     # Your primary public IP address
@@ -93,7 +98,9 @@ Add the following addressing to the interface's configuration:
     Address=192.168.133.234/17
     ~~~
 
-Static IP addresses can be configured in several ways in Arch. See the [Static IP Address](https://wiki.archlinux.org/index.php/Network_Configuration#Static_IP_address) section of Arch's Network Configuration Wiki page for other options such as using Netctl. Additionally, you can [configure DNS](https://wiki.archlinux.org/index.php/Resolv.conf#Preserve_DNS_settings) several other ways without modifying `resolv.conf`.
+{: .note}
+>
+>Static IP addresses can be configured in several ways in Arch. Our Arch images use *[systemd-networkd* and *systemd-resolved]((https://wiki.archlinux.org/index.php/Systemd-networkd#Required_services_and_setup))* for both DHCP and static addressing, including with Network Helper.
 
 ### CentOS 7 / Fedora
 
