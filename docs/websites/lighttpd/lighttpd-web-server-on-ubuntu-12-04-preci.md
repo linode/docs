@@ -1,4 +1,5 @@
 ---
+deprecated: true
 author:
   name: Dave Messina
   email: docs@linode.com

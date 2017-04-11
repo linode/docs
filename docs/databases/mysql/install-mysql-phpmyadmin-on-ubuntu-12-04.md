@@ -1,4 +1,5 @@
 ---
+deprecated: true
 author:
     name: James Stewart
     email: jstewart@linode.com
