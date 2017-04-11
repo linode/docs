@@ -13,6 +13,7 @@ title: 'Left 4 Dead 2 Multiplayer Server Installation'
 contributor:
     name: Andrew Gottschling
     link: https://github.com/agottschling
+alias: ['applications/game-servers/left-4-dead-2-multiplayer-server-installation/']
 ---
 
 *This is a Linode Community guide. Write for us and earn $250 per published guide.*

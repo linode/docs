@@ -3,7 +3,7 @@ author:
   name: Alex Fornuto
   email: afornuto@linode.com
 description: 'Installation of MultiCraft on a Linode running Debian or Ubuntu'
-keywords: 'minecraft,debian,multicraft'
+keywords: 'minecraft,ubuntu,multicraft'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
  - '[Multicraft Documentation](http://www.multicraft.org/site/userguide?view=index)'
@@ -12,10 +12,11 @@ modified: Wednesday, February 4, 2015
 modified_by:
   name: Alex Fornuto
 published: ''
-title: 'Installing Multicraft on Debian'
+title: 'Installing Multicraft on Ubuntu'
+alias: ['applications/game-servers/multicraft-on-ubuntu/']
 ---
 
-[Multicraft](http://www.multicraft.org/) is a control panel for single or multiple Minecraft servers Free and paid versions are available. This guide will help you install Multicraft on a Linode running Debian 7.
+[Multicraft](http://www.multicraft.org/) is a control panel for single or multiple Minecraft servers, with free and paid versions available. This guide will help you install Multicraft on a Linode running Ubuntu 14.04.
 
 {: .note }
 >The steps required in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
@@ -32,21 +33,17 @@ Multicraft for Linux depends on several software packages in order to run.
 
         apt-get install -y apache2 sqlite php5 php5-sqlite php5-gd openjdk-7-jre-headless
 
-3.  In Apache's default virtual host file under the `<Directory /var/www/>` section, change the `AllowOverride` value to `all`.
+3.  In Apache's configuration file, under the `<Directory /var/www/>` section, change the `AllowOverride` value to `all`.
 
     {: .file-excerpt}
-    /etc/apache2/sites-enabled/000-default
+    /etc/apache2/apache2.conf
     :   ~~~ apache
         <Directory /var/www/>
-                Options Indexes FollowSymLinks MultiViews
-                AllowOverride all
-                Order allow,deny
-                allow from all
+                Options Indexes FollowSymLinks
+                AllowOverride All
+                Require all granted
         </Directory>
         ~~~
-
-        {: .note}
-        >If you want a dedicated Apache virtual host for Multicraft, follow the instructions [here](/docs/websites/hosting-a-website#configuring-name-based-virtual-hosts). Be sure to configure the `AllowOverride` option on your custom virtual host.
 
 4.  Reload the Apache configuration:
 
@@ -70,10 +67,17 @@ Multicraft for Linux depends on several software packages in order to run.
 
         ./setup.sh
 
-    This will launch an interactive script that will prompt you to configure several options. If you've purchased a license for Multicraft, enter it when prompted. If you're unsure which option to choose, press `return` to select the default option.
+5.  This will launch an interactive script that will prompt you to configure several options. If you've purchased a license for Multicraft, enter it when prompted. If you're unsure of which options to choose, you can press `return` to select the default option, with a couple of exceptions:
 
-    {: .caution }
-    > Because of the insecure nature of FTP, we strongly recommend that you **not** enable the built-in FTP server when prompted.
+    * Unless you're configuring a custom Apache virtual host for Multicraft, specify the location for the PHP frontend to `/var/www/html/multicraft`:
+
+          Location of the PHP frontend: [/var/www/multicraft] /var/www/html/multicraft
+
+    * Because of the insecure nature of FTP, we strongly recommend that you **not** enable the builtin FTP server when prompted:
+
+          Enable builtin FTP server? [y]/n n
+
+    Once this script finishes, you are ready to begin configuring your Multicraft install.
 
 ##Configuring the Control Panel
 
@@ -81,7 +85,7 @@ Multicraft for Linux depends on several software packages in order to run.
 
     [![Multicraft Installer.](/docs/assets/multicraft-init_small.png)](/docs/assets/multicraft-init.png)
 
-2.  Multicraft will check your requirements. If you completed the steps above without issue, your page should reflect the results shown below:
+2.  Multicraft will check your requirements. If you completed the steps above without issue, your page should reflect the results show below:
 
     [![Multicraft Requirements Check.](/docs/assets/multicraft-reqs_small.png)](/docs/assets/multicraft-reqs.png)
 
@@ -95,7 +99,7 @@ Multicraft for Linux depends on several software packages in order to run.
 
     [![Multicraft Database Creation.](/docs/assets/multicraft-db_small.png)](/docs/assets/multicraft-db.png)
 
-5.  The next page will attempt to connect to the panel database. You should see the message `Connection successful`. You can now click on the `Login` button and sign in with the username and password `admin`:
+5.  The next page will attempt to connect to the panel database. You should see the message `Connection successful`. You can now click on the `Login` button and sign in with the username and password `admin`.
 
     [![Multicraft Panel Database Connection.](/docs/assets/multicraft-panel_small.png)](/docs/assets/multicraft-panel.png)
 
@@ -114,7 +118,7 @@ Multicraft for Linux depends on several software packages in order to run.
 
 9.  Your configuration of the Multicraft control panel is now complete. As per the instructions on the page, delete the `install.php` file from your terminal:
 
-        rm /var/www/multicraft/install.php
+        rm /var/www/html/multicraft/install.php
 
 ##Install Minecraft
 
@@ -138,7 +142,7 @@ Multicraft for Linux depends on several software packages in order to run.
         04.02 22:24:38 [Server] INFO [22:24:38] [Server thread/WARN]: Failed to load eula.txt
         ...
 
-5.  After reading the End User License Agreement, open the file `eula.txt` in your terminal, and change the value of `eula` to `true`:
+5.  After reading the End User License Agreement, open the file `eula.txt` in your terminal and change the value of `eula` to `true`:
 
     {: .file}
     /home/minecraft/multicraft/servers/server1/eula.txt
@@ -148,4 +152,4 @@ Multicraft for Linux depends on several software packages in order to run.
         eula=true
         ~~~
 
-    You can now successfully start and manage your Minecraft server through Multicraft! For instructions on connecting to your Minecraft server, click [here](/docs/applications/game-servers/minecraft-on-debian-and-ubuntu#connecting-to-your-minecraft-server).
+    You can now successfully start and manage your Minecraft server through Multicraft! For instructions on connecting to your Minecraft server, click [here](/docs/applications/game-servers/minecraft-on-debian-and-ubuntu#connecting-to-your-minecraft-server). 

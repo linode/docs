@@ -17,6 +17,7 @@ external_resources:
  - '[Terraria Wiki](http://terraria.gamepedia.com/Terraria_Wiki)'
  - '[Terraria Wiki: Server](http://terraria.gamepedia.com/Server)'
  - '[Terraria Wiki: Setting up a Terraria Server](http://terraria.gamepedia.com/Guide:Setting_up_a_Terraria_server)'
+alias: ['applications/game-servers/host-a-terraria-server-on-your-linode/']
 ---
 
 *This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
