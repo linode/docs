@@ -12,9 +12,9 @@ modified_by:
 published: 'Friday, November 6th, 2009'
 title: Apache Configuration Basics
 external_resources:
- - '[Apache Installation](/docs/web-servers/apache/)'
- - '[LAMP stack guides](/docs/lamp-guides/)'
- - '[Troubleshooting Common Issues with Apache](/docs/web-servers/apache/troubleshooting/)'
+ - '[Apache Installation](/docs/websites/apache/)'
+ - '[LAMP stack guides](/docs/websites/lamp/)'
+ - '[Troubleshooting Common Issues with Apache](/docs/troubleshooting/troubleshooting-common-apache-issues/)'
  - '[Linode User Community](http://linode.com/community/)'
  - '[Apache Virtual Host Documentation](http://httpd.apache.org/docs/2.2/vhosts/)'
  - '[Virtual Host Directives](http://httpd.apache.org/docs/2.2/mod/core.html#virtualhost)'
@@ -26,7 +26,7 @@ The Apache HTTP web server is in many respects the *defacto* standard for genera
 
 The extraordinary degree of flexibility provided by Apache does not come without some cost; this mostly takes the form of a configuration structure that is sometimes confusing and often complicated. For this reason we've created this document and a number of other guides that seek to address this complexity and explore some more advanced and *optional* functionality of the Apache HTTP Sever.
 
-If you're interested in just getting a running web server and installing Apache for the first time, we recommend using the appropriate "[installing Apache guide](/docs/web-servers/apache/)" for your distribution of Linux. If you need a more full-featured LAMP stack, consider trying the appropriate [LAMP guide](/docs/lamp-guides/) for your distribution. This guide assumes that you have a running and up to date Linux system, have successfully installed Apache, and have logged into a shell session with root access.
+If you're interested in just getting a running web server and installing Apache for the first time, we recommend using the appropriate "[installing Apache guide](/docs/websites/apache/)" for your distribution of Linux. If you need a more full-featured LAMP stack, consider trying the appropriate [LAMP guide](/docs/websites/lamp/) for your distribution. This guide assumes that you have a running and up to date Linux system, have successfully installed Apache, and have logged into a shell session with root access.
 
 ## Apache Basics
 

@@ -12,7 +12,7 @@ published: 'Tuesday, November 17th, 2015'
 title: How to Configure a Firewall with UFW
 ---
 
-UFW, or *uncomplicated firewall*, is a frontend for managing firewall rules Arch Linux, Debian or Ubuntu. UFW is used through the command line (although it has GUIs available), and aims to make firewall configuration easy (or, uncomplicated).
+UFW, or *uncomplicated firewall*, is a frontend for managing firewall rules in Arch Linux, Debian or Ubuntu. UFW is used through the command line (although it has GUIs available), and aims to make firewall configuration easy (or, uncomplicated).
 
 ![How to Configure a Firewall with UFW](/docs/assets/ufw_tg.png "How to Configure a Firewall with UFW")
 
@@ -36,7 +36,7 @@ UFW, or *uncomplicated firewall*, is a frontend for managing firewall rules Arch
 
 UFW is included in Ubuntu by default but must be installed in Arch and Debian. Debian will start UFW's systemd unit automatically and enable it to start on reboots, but Arch will not. *This is not the same as telling UFW to enable the firewall rules*, as enabling UFW with systemd or upstart only tells the init system to switch on the UFW daemon.
 
-By default, UFW's rulesets are blank so it is not enforcing any firewall rules--even when the daemon is running. Enforcing your firewall ruleset is covered [further down the page](http://localhost:4567/docs/security/firewalls/configure-firewall-with-ufw#enable-the-firewall).
+By default, UFW's rulesets are blank so it is not enforcing any firewall rules--even when the daemon is running. Enforcing your firewall ruleset is covered [further down the page](#enable-the-firewall).
 
 ### Arch Linux
 

@@ -42,7 +42,7 @@ Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) 
 
 ## Create Backups
 
-Back up existing files and move the archive into the backups directory. This process can also be scripted and run on a regular basis using [cron](docs/tools-reference/tools/schedule-tasks-with-cron):
+Back up existing files and move the archive into the backups directory. This process can also be scripted and run on a regular basis using [cron](/docs/tools-reference/tools/schedule-tasks-with-cron):
 
     cd /var/www/html/example.com/public_html
     sudo tar -cvzf example.com-BCKP-$(date +%Y%m%d).tar.gz ./
