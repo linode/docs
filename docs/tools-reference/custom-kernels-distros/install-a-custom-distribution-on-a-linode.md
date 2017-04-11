@@ -36,7 +36,7 @@ Linodes running on our KVM hypervisor offer several advantages over Xen, particu
 
 *  **Full Virtualization:** Our KVM hypervisor offers a full virtualization option that simulates the experience of running directly from hardware. This can be useful for non-standard configurations.
 
-*  **Glish:** KVM introduces the [Glish](docs/networking/use-the-graphic-shell-glish) graphical console, which makes it easy to access your distribution's installer directly from a disk.
+*  **Glish:** KVM introduces the [Glish](/docs/networking/use-the-graphic-shell-glish) graphical console, which makes it easy to access your distribution's installer directly from a disk.
 
 ## Install a Custom Distribution
 

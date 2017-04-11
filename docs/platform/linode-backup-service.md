@@ -116,8 +116,7 @@ This section will show you how to restore a backup to a [new](#restore-to-a-new-
 >
 > The size of of the disk(s) created by the restore process will be slightly larger than the total size of the files restored. You may want to resize your disk(s) after the restore process is completed.
 
-To restore a backup to a different data center, first restore to a Linode in the same data center, creating a new one if necessary. Once the restore is complete, use the [Clone](/docs/migrate-to\
--linode/disk-images/clone-your-linode) tab to copy the disk(s) to a Linode in a different data center.
+To restore a backup to a different data center, first restore to a Linode in the same data center, creating a new one if necessary. Once the restore is complete, use the [Clone](/docs/migrate-to-linode/disk-images/clone-your-linode) tab to copy the disk(s) to a Linode in a different data center.
 
 ### Restore to a New Linode
 
