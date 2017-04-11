@@ -5,6 +5,7 @@ author:
 description: 'Learn how to efficiently use Puppet modules to manage files and services, create templates, and store data in Hiera. This guide walks users through the creation of a LAMP stack to learn various techniques for building a working Puppet configuration.'
 keywords: 'puppet,automation,puppet master,puppet agent,modules,server automation,configuration management'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+alias: ['applications/puppet/create-puppet-module/']
 modified: Thursday, November 12th, 2015
 modified_by:
     name: Elle Krout

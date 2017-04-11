@@ -5,6 +5,7 @@ author:
 description: 'Use Salt States to Create a LAMP Stack on Debian 8.'
 keywords: 'salt,salt states,linux,apache,mysql,php,debian 8'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+alias: ['applications/salt/salt-states-configuration-apache-mysql-php/']
 modified: Thursday, July 2nd, 2015
 modified_by:
     name: Linode

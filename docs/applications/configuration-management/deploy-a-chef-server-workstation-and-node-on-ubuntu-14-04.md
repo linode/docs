@@ -5,6 +5,7 @@ author:
 description: Deploy a Chef Server, Workstation and Node
 keywords: 'chef,chef installation,configuration change management,server automation,chef server,chef workstation,chef-client,knife.rb,version control'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+alias: ['applications/chef/deploy-a-chef-server-workstation-and-node-on-ubuntu-14-04/']
 modified: Wednesday, June 10th, 2015
 modified_by:
   name: Elle Krout
