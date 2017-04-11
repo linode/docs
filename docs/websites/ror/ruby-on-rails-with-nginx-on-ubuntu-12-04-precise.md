@@ -1,4 +1,5 @@
 ---
+deprecated: true
 author:
   name: Jonathan Frederickson
   email: docs@linode.com
