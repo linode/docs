@@ -1,11 +1,11 @@
 ---
 author:
-    name: Joe D. 
+    name: Joe D.
     email: docs@linode.com
 description: 'How to install Nginx for static content and Node.js for dynamic requests.'
 keywords: 'linode guide,hosting a website,website,linode setup, install node.js, install nginx, debian, front-end requests, back-end requests'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Wednesday, January 14th, 2015
+modified: Tuesday, April 11th, 2017
 modified_by:
     name: Linode
 published: 'Wednesday, January 14, 2015'
@@ -24,9 +24,9 @@ Node.js is a JavaScript platform which can serve dynamic, responsive content. Ja
 ##Install and Configure NGINX
 This guide can be started immediately after terminal login on a new Linode, it's written for the `root` user. However, before installation you might want to make sure the Linode is up-to-date with our [Getting Started](/docs/getting-started) guide and secured with our [Securing Your Server](/docs/securing-your-server) guide.
 
-1.  Install:
-        
-        apt-get install nginx
+1.  Install NGINX as well as screen, which you'll use later:
+
+        apt-get install nginx screen
 
 2.  Start NGINX:
 
@@ -39,7 +39,7 @@ This guide can be started immediately after terminal login on a new Linode, it's
 4.  Create a new sites-available file, replacing `example.com` with your domain or IP address:
 
     {:.file }
-    /etc/nginx/sites-available/example.com 
+    /etc/nginx/sites-available/example.com
     : ~~~ nginx
     #Names a server and declares the listening port
     server {
@@ -52,7 +52,7 @@ This guide can be started immediately after terminal login on a new Linode, it's
             index index.html index.htm;
 
         #These lines create a bypass for certain pathnames
-        #www.example.com/test.js is now routed to port 3000 
+        #www.example.com/test.js is now routed to port 3000
         #instead of port 80
         location /test.js {
             proxy_pass http://localhost:3000;
@@ -92,7 +92,7 @@ NGINX is now configured. However, the `example.com` server block points to direc
 3.  Create the HTML index file:
 
     {:.file }
-    /var/www/example.com/index.html 
+    /var/www/example.com/index.html
     : ~~~
         <!DOCTYPE html>
         <html>
@@ -127,7 +127,7 @@ NGINX is now configured. However, the `example.com` server block points to direc
 
 
 ##Install Node.js and Write a Web Server
-NGINX is now listening on port 80 and serving content. It's also configured to pass `/test.js` requests to port 3000. The next steps are to install Node.js, then write a server with Node.js. The new server listens on port 3000. 
+NGINX is now listening on port 80 and serving content. It's also configured to pass `/test.js` requests to port 3000. The next steps are to install Node.js, then write a server with Node.js. The new server listens on port 3000.
 
 1.  Install the Node Version Manager:
 
@@ -151,7 +151,7 @@ NGINX is now listening on port 80 and serving content. It's also configured to p
             path = require("path"),
             fs = require("fs");
 
-        http.createServer(function(request, response) {       //Create server 
+        http.createServer(function(request, response) {       //Create server
         var name = url.parse(request.url).pathname;           //Parse URL
         var filename = path.join(process.cwd(), name);        //Create filename
         fs.readFile(filename, "binary", function(err, file) { //Read file
@@ -161,11 +161,11 @@ NGINX is now listening on port 80 and serving content. It's also configured to p
                 response.end();
                 return;
             }
-            response.writeHead(200);                          //Header request response 
+            response.writeHead(200);                          //Header request response
             response.write(file, "binary");                   //Sends body response
-            response.end();                                   //Signals to server that 
+            response.end();                                   //Signals to server that
          });                                                  //header and body sent
-        }).listen(3000);                                      //Listening port 
+        }).listen(3000);                                      //Listening port
         console.log("Server is listening on port 3000.")      //Terminal output
     ~~~
 
@@ -185,25 +185,25 @@ NGINX is listening on port 80 and passing any `/test.js` requests to port 3000. 
 1.  Create the file:
 
     {:.file }
-    /var/www/example.com/test.js 
+    /var/www/example.com/test.js
     : ~~~ html
         <!DOCTYPE html>
         <html>
         <body>
-        
+
         <center>
-        <h2> 
+        <h2>
         Your Node.JS server is working.
         </h2>
         </center>
-                
+
         <center>
         <p>
-        The below button is technically dynamic. You are now using Javascript on both the client-side and the server-side. 
+        The below button is technically dynamic. You are now using Javascript on both the client-side and the server-side.
         </p>
         </center>
         <br>
-        
+
         <center>
         <button type="button"
         onclick="document.getElementById('sample').innerHTML = Date()">
@@ -211,7 +211,7 @@ NGINX is listening on port 80 and passing any `/test.js` requests to port 3000. 
         </button>
         <p id="sample"></p>
         </center>
-        
+
         </body>
         </html>
     ~~~
