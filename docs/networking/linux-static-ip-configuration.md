@@ -100,7 +100,7 @@ Add the following addressing to the interface's configuration:
 
 {: .note}
 >
->Static IP addresses can be configured in several ways in Arch. Our Arch images use *[systemd-networkd* and *systemd-resolved]((https://wiki.archlinux.org/index.php/Systemd-networkd#Required_services_and_setup))* for both DHCP and static addressing, including with Network Helper.
+>Static IP addresses can be configured in several ways in Arch. Linode's Arch deployments use [*systemd-networkd* and *systemd-resolved*](https://wiki.archlinux.org/index.php/Systemd-networkd#Required_services_and_setup) for both DHCP and static addressing, including with Network Helper.
 
 ### CentOS 7 / Fedora
 
