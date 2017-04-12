@@ -5,6 +5,7 @@ author:
 description: 'A quick getting started guide to Ansible, with a demo of how to provision a basic web server with Ansible'
 keywords: 'ansible,ansible configuration,ansible provisioning,ansible infrastructure,ansible automation,ansible configuration,ansible configuration change management,ansible server automation'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+alias: ['applications/ansible/getting-started-with-ansible/']
 published: 'Monday, September 8, 2015'
 modified: Monday, September 8, 2015
 modified_by:

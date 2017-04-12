@@ -5,6 +5,7 @@ author:
 description: 'Use Salt States to Create a LAMP Stack and Fail2ban Across All Listed Salt Minions on Debian 8.'
 keywords: 'salt,salt state,lamp stack,apache,mysql,php,fail2ban,salt minions,debian 8'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+alias: ['applications/salt/use-salt-states-to-create-lamp-stack-and-fail2ban-across-salt-minions/']
 modified: Tuesday, November 22, 2016
 modified_by:
     name: Edward Angert
