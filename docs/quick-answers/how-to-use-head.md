@@ -1,18 +1,20 @@
+
 ---
 author:
   name: Phil Zona
+  email: docs@linode.com
 description: 'View the beginning of a text file with the head command'
-keywords: 'gpg,ssh,authentication,ssh-agent,gpg-agent,yubikey,smartcard,ssh key'
+keywords: 'linux,how to,head,first lines,file'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-title: 'How to Use the head Command'
-external_resources:
- - '[Linux Man Page for head](https://linux.die.net/man/1/head)'
+modified: 'Monday, April 10th, 2017'
+modified_by:
+  name: Phil Zona
 published: 'Monday, April 10th, 2017'
+title: How to Use the head Command
 ---
 
 In this guide, you'll learn how to use the `head` command. Using `head` is a simple way to show the beginning of text files, for example, when analyzing logs and other text files that change over time. It may also be combined with other tools for selective, real-time monitoring. When performing administrative tasks on your Linode, `head` is one of the most useful tools available.
 
-## How to Use the head Command
 
 1.  Enter the `head` command, followed by the file name of which you'd like to see the beginning:
 

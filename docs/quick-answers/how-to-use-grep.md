@@ -1,18 +1,18 @@
 ---
 author:
   name: Phil Zona
+  email: docs@linode.com
 description: 'Filter system output with the grep command'
-keywords: 'gpg,ssh,authentication,ssh-agent,gpg-agent,yubikey,smartcard,ssh key'
+keywords: 'linux,how to,grep,filter'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-title: 'How to Use the grep Command'
-external_resources:
- - '[Linux Man Page for grep](https://linux.die.net/man/1/grep)'
+modified: 'Monday, April 10th, 2017'
+modified_by:
+  name: Phil Zona
 published: 'Monday, April 10th, 2017'
+title: How to Use the grep Command
 ---
 
 In this guide, you'll learn how to use the `grep` command. When performing administrative tasks on your Linode, many commands will give you far information than you need. Using `grep` allows you to filter that output in order to find only the data that's relevant.
-
-## How to Use the grep Command
 
 1.  To search a file for a particular string, simply provide the string and filename as arguments:
 

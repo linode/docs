@@ -1,18 +1,18 @@
 ---
 author:
   name: Phil Zona
+  email: docs@linode.com
 description: 'View and follow the end of files with the tail command'
-keywords: 'gpg,ssh,authentication,ssh-agent,gpg-agent,yubikey,smartcard,ssh key'
+keywords: 'linux,how to,tail,last lines,file'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-title: 'How to Use the tail Command'
-external_resources:
- - '[Linux Man Page for tail](http://man7.org/linux/man-pages/man1/tail.1.html)'
+modified: 'Monday, April 10th, 2017'
+modified_by:
+  name: Phil Zona
 published: 'Monday, April 10th, 2017'
+title: How to Use the tail Command
 ---
 
 In this guide, you'll learn how to use the `tail` command. Using `tail` is a simple way to show the ends of files, for example, when analyzing logs and other text files that change over time. It may also be combined with other tools for selective, real-time monitoring. When performing administrative tasks on your Linode, `tail` is one of the most useful tools available.
-
-## How to Use the tail Command
 
 1.  Enter the `tail` command, followed by the file name of which you'd like to see the end:
 
