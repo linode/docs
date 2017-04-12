@@ -1,4 +1,3 @@
-
 ---
 author:
   name: Phil Zona
