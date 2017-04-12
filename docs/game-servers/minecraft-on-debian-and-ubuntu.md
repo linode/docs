@@ -13,6 +13,7 @@ modified_by:
   name: Alex Fornuto
 published: 'Wednesday, January 28, 2015'
 title: 'Minecraft on Debian and Ubuntu'
+alias: ['applications/game-servers/minecraft-on-debian-and-ubuntu/']
 ---
 
 This guide shows you how to set up a personal [Minecraft](https://minecraft.net/game) server on a Linode running Debian 8 or Ubuntu 16.04 LTS.

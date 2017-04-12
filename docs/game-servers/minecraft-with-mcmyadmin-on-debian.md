@@ -13,6 +13,7 @@ title: Installing McMyAdmin for Minecraft on Debian
 external_resources:
  - '[McMyAdmin Home Page](https://mcmyadmin.com/)'
  - '[McMyAdmin Settings Reference](http://wiki.cubecoders.com/wiki/3/mcmyadmin-settings-reference)'
+alias: ['applications/game-servers/minecraft-with-mcmyadmin-on-debian/']
 ---
 
 [McMyAdmin](https://mcmyadmin.com/) is one of the most popular Minecraft server control panels available. It boasts compatibility with third party mods, heavy focus on security and a sleek web interface for managing your server. This guide covers the installation and configuration of a new McMyAdmin server on a Linode running Debian 7 or 8. Be aware that to actually play on a Minecraft server you must also have the game client from [minecraft.net](https://minecraft.net/).

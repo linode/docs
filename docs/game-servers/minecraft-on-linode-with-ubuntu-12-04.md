@@ -6,7 +6,7 @@ author:
 description: 'A basic Minecraft server installation for Ubuntu 12.04'
 keywords: 'minecraft,ubuntu,ubuntu precise,12.04'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/game-servers/minecraft-ubuntu12-04/']
+alias: ['web-applications/game-servers/minecraft-ubuntu12-04/','applications/game-servers/minecraft-on-linode-with-ubuntu-12-04/']
 modified: Tuesday, October 1st, 2013
 modified_by:
   name: Linode

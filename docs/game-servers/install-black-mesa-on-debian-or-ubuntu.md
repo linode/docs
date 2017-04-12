@@ -18,6 +18,7 @@ external_resources:
 - '[The Official Black Mesa Wiki](http://wiki.blackmesasource.com/)'
 - '[The Valve Wiki](https://developer.valvesoftware.com/)'
 - '[SourceMod.net](https://www.sourcemod.net)'
+alias: ['applications/game-servers/install-black-mesa-on-debian-or-ubuntu/']
 ---
 
 *This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*

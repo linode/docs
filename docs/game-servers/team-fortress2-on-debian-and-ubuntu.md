@@ -10,6 +10,7 @@ modified_by:
   name: Linode
 published: 'Thursday, March 12th, 2015'
 title: 'Team Fortress 2 on Debian and Ubuntu'
+alias: ['applications/game-servers/team-fortress2-on-debian-and-ubuntu/']
 ---
 
 [Team Fortress 2](http://teamfortress.com/) is a team-based, first-person shooter, where you and a team of fellow players can play a variety of game modes. From capture the flag, to a battle pitting your team against a robotic horde, there are numerous options to choose. Setting up a personal game server puts you in control of what game modes and maps you use, as well as a variety of other settings to customize your experience.
@@ -18,7 +19,7 @@ title: 'Team Fortress 2 on Debian and Ubuntu'
 
 1.  You will need a [Steam](http://store.steampowered.com) account and a copy of [Team Fortress 2](http://store.steampowered.com/app/440/).
 
-2.  Complete our guide: [Install SteamCMD for a Steam Game Server](/docs/applications/game-servers/install-steamcmd-for-a-steam-game-server). This will get SteamCMD installed and running on your Linode and this guide will pick up where the SteamCMD page leaves off.
+2.  Complete our guide: [Install SteamCMD for a Steam Game Server](/docs/game-servers/install-steamcmd-for-a-steam-game-server). This will get SteamCMD installed and running on your Linode and this guide will pick up where the SteamCMD page leaves off.
 
 {: .note}
 >
