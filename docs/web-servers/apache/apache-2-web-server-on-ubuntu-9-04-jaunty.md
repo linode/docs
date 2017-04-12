@@ -6,7 +6,7 @@ author:
 description: 'Instructions for getting started with the Apache web server on Ubuntu Jaunty.'
 keywords: 'Apache,web sever,Ubuntu Jaunty'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/apache/installation/ubuntu-9-04-jaunty/']
+alias: ['web-servers/apache/installation/ubuntu-9-04-jaunty/','websites/apache/apache-2-web-server-on-ubuntu-9-04-jaunty/']
 modified: Friday, April 29th, 2011
 modified_by:
   name: Linode
@@ -41,11 +41,11 @@ To install Ruby support, issue the following command:
 
 To install Perl support, issue the following command:
 
-    apt-get install libapache2-mod-perl2 
+    apt-get install libapache2-mod-perl2
 
 To install Python support, issue the following command:
 
-    apt-get install libapache2-mod-python 
+    apt-get install libapache2-mod-python
 
 If you need support for MySQL in Python, you will also need to install Python MySQL support:
 
@@ -71,12 +71,12 @@ Create the virtual hosting file for example.com, located at `/etc/apache2/sites-
 {: .file-excerpt }
 /etc/apache2/sites-available/example.com
 :   ~~~ apache
-    <VirtualHost 12.34.56.78:80> 
+    <VirtualHost 12.34.56.78:80>
          ServerAdmin username@example.com     
          ServerName example.com
          ServerAlias www.example.com
          DocumentRoot /srv/www/example.com/public_html/
-         ErrorLog /srv/www/example.com/logs/error.log 
+         ErrorLog /srv/www/example.com/logs/error.log
          CustomLog /srv/www/example.com/logs/access.log combined
     </VirtualHost>
     ~~~
@@ -95,12 +95,12 @@ Next, create the virtual hosting file for example.com, located in `/etc/apache2/
 {: .file-excerpt }
 /etc/apache2/sites-available/example.com
 :   ~~~ apache
-    <VirtualHost 12.34.56.78:80> 
+    <VirtualHost 12.34.56.78:80>
          ServerAdmin username@example.com
          ServerName example.com
          ServerAlias www.example.com
          DocumentRoot /srv/www/example.com/public_html/
-         ErrorLog /srv/www/example.com/logs/error.log 
+         ErrorLog /srv/www/example.com/logs/error.log
          CustomLog /srv/www/example.com/logs/access.log combined
     </VirtualHost>
     ~~~
@@ -143,7 +143,7 @@ To disable a module that is currently enabled, use the inverse command:
 
 To get a list of available Apache modules modules in the Ubuntu repository use the following command:
 
-    apt-cache search libapache2* 
+    apt-cache search libapache2*
 
 To install one of these modules use the command:
 
@@ -270,6 +270,3 @@ You may wish to consult the following resources for additional information on th
 - [Apache HTTP Server Version 2.0 Documentation](http://httpd.apache.org/docs/2.0/)
 - [URL Rewriting on HTML Source](http://www.yourhtmlsource.com/sitemanagement/urlrewriting.html)
 - [Apache Configuration](/docs/web-servers/apache/configuration/)
-
-
-

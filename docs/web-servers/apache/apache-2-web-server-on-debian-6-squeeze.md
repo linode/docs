@@ -6,7 +6,7 @@ author:
 description: 'Instructions for getting started with the Apache web server on Debian 6 (Squeeze).'
 keywords: 'apache debian 6,apache debian squeeze,linux web server,apache on debian,apache squeeze'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/apache/installation/debian-6-squeeze/']
+alias: ['web-servers/apache/installation/debian-6-squeeze/','websites/apache/apache-2-web-server-on-debian-6-squeeze/']
 modified: Friday, October 4th, 2013
 modified_by:
   name: Linode
@@ -58,11 +58,11 @@ To install Ruby support, issue the following command:
 
 To install Perl support, issue the following command:
 
-    apt-get install libapache2-mod-perl2 
+    apt-get install libapache2-mod-perl2
 
 To install Python support, issue the following command:
 
-    apt-get install libapache2-mod-python 
+    apt-get install libapache2-mod-python
 
 If you need support for MySQL in Python, you will also need to install Python MySQL support:
 
@@ -102,12 +102,12 @@ Follow these instructions:
     {: .file }
 /etc/apache2/sites-available/example.net
     :   ~~~ apache
-        <VirtualHost *:80> 
+        <VirtualHost *:80>
              ServerAdmin webmaster@example.net     
              ServerName example.net
              ServerAlias www.example.net
              DocumentRoot /srv/www/example.net/public_html/
-             ErrorLog /srv/www/example.net/logs/error.log 
+             ErrorLog /srv/www/example.net/logs/error.log
              CustomLog /srv/www/example.net/logs/access.log combined
         </VirtualHost>
         ~~~
@@ -130,12 +130,12 @@ Follow these instructions:
     {: .file }
 /etc/apache2/sites-available/example.org
     :   ~~~ apache
-        <VirtualHost *:80> 
+        <VirtualHost *:80>
              ServerAdmin admin@example.org
              ServerName example.org
              ServerAlias www.example.org
              DocumentRoot /srv/www/example.org/public_html/
-             ErrorLog /srv/www/example.org/logs/error.log 
+             ErrorLog /srv/www/example.org/logs/error.log
              CustomLog /srv/www/example.org/logs/access.log combined
         </VirtualHost>
         ~~~
@@ -176,7 +176,7 @@ One of Apache's strengths is its ability to be customized with modules. The defa
 
 To get a list of available Apache modules in the Debian repository, run the following command:
 
-    apt-cache search libapache2* 
+    apt-cache search libapache2*
 
 To install one of these modules, run this command:
 
@@ -268,6 +268,3 @@ You may wish to consult the following resources for additional information on th
 
 - [Apache HTTP Server Version 2.2 Documentation](http://httpd.apache.org/docs/2.2/)
 - [Apache Configuration](/docs/web-servers/apache/configuration/)
-
-
-

@@ -6,7 +6,7 @@ author:
 description: 'Instructions for getting started with the Apache web server on Ubuntu 8.04 LTS (Hardy).'
 keywords: 'apache,apache ubuntu 8.04,apache ubuntu hardy,web server,apache on ubuntu,apache hardy'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/apache/installation/ubuntu-8-04-hardy/']
+alias: ['web-servers/apache/installation/ubuntu-8-04-hardy/','web-servers/apache/apache-2-web-server-on-ubuntu-8-04-lts-hardy/','websites/apache/apache-2-web-server-on-ubuntu-8-04-lts-hardy/']
 modified: Tuesday, May 17th, 2011
 modified_by:
   name: Linode
@@ -40,7 +40,7 @@ Various packages discussed in this guide require the `universe` repositories to 
 :   ~~~
     ## main & restricted repositories
     deb http://us.archive.ubuntu.com/ubuntu/ hardy main restricted         
-    deb-src http://us.archive.ubuntu.com/ubuntu/ hardy main restricted 
+    deb-src http://us.archive.ubuntu.com/ubuntu/ hardy main restricted
 
     deb http://security.ubuntu.com/ubuntu hardy-security main restricted
     deb-src http://security.ubuntu.com/ubuntu hardy-security main restricted
@@ -78,11 +78,11 @@ To install Ruby support, issue the following command:
 
 To install Perl support, issue the following command:
 
-    apt-get install libapache2-mod-perl2 
+    apt-get install libapache2-mod-perl2
 
 To install Python support, issue the following command:
 
-    apt-get install libapache2-mod-python 
+    apt-get install libapache2-mod-python
 
 If you need support for MySQL in Python, you will also need to install Python MySQL support:
 
@@ -123,12 +123,12 @@ First create example.com (`/etc/apache2/sites-available/example.com`) so that it
 {: .file }
 /etc/apache2/sites-available/example.com
 :   ~~~ apache
-    <VirtualHost 12.34.56.78:80> 
+    <VirtualHost 12.34.56.78:80>
          ServerAdmin webmaster@example.com
          ServerName example.com
          ServerAlias www.example.com
          DocumentRoot /srv/www/example.com/public_html/
-         ErrorLog /srv/www/example.com/logs/error.log 
+         ErrorLog /srv/www/example.com/logs/error.log
          CustomLog /srv/www/example.com/logs/access.log combined
     </VirtualHost>
     ~~~
@@ -147,12 +147,12 @@ Next, create example.org (`/etc/apache2/sites-available/example.org`) so that it
 {: .file }
 /etc/apache2/sites-available/example.org
 :   ~~~ apache
-    <VirtualHost 12.34.56.78:80> 
+    <VirtualHost 12.34.56.78:80>
          ServerAdmin webmaster@example.org     
          ServerName example.org
          ServerAlias www.example.org
          DocumentRoot /srv/www/example.org/public_html/
-         ErrorLog /srv/www/example.org/logs/error.log 
+         ErrorLog /srv/www/example.org/logs/error.log
          CustomLog /srv/www/example.org/logs/access.log combined
     </VirtualHost>
     ~~~
@@ -197,7 +197,7 @@ To disable a module that is currently enabled, use the inverse command:
 
 To get a list of available Apache modules modules in the Ubuntu repository use the following command:
 
-    apt-cache search libapache2* 
+    apt-cache search libapache2*
 
 To install one of these modules use the command:
 
@@ -258,6 +258,3 @@ You may wish to consult the following resources for additional information on th
 
 - [Apache HTTP Server Version 2.2 Documentation](http://httpd.apache.org/docs/2.2/)
 - [Apache Configuration](/docs/web-servers/apache/configuration/)
-
-
-

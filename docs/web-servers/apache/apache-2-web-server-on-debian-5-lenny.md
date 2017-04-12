@@ -3,20 +3,20 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Instructions for getting started with the Apache web server on Ubuntu 10.04 LTS (Lucid).'
-keywords: 'apache,apache ubuntu 10.04,apache ubuntu lucid,web server,apache on ubuntu,apache lucid'
+description: 'Instructions for getting started with the Apache web server on Debian 5 (Lenny).'
+keywords: 'apache debian 5,apache web server,apache debian lenny,web server,apache on debian,apache lenny'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/apache/installation/ubuntu-10-04-lucid/']
-modified: Friday, October 4th, 2013
+alias: ['web-servers/apache/installation/debian-5-lenny/','websites/apache/apache-2-web-server-on-debian-5-lenny/]
+modified: Monday, October 8th, 2012
 modified_by:
   name: Linode
-published: 'Thursday, April 29th, 2010'
-title: 'Apache 2 Web Server on Ubuntu 10.04 LTS (Lucid)'
+published: 'Monday, July 27th, 2009'
+title: 'Apache 2 Web Server on Debian 5 (Lenny)'
 ---
 
 
 
-This tutorial explains how to install and configure the Apache web server on Ubuntu 10.04 (Lucid). All configuration will be done through the terminal; make sure you are logged in as root via SSH. If you have not followed the [getting started](/docs/getting-started/) guide, it is recommended that you do so prior to beginning this guide. Also note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guide for Ubuntu 10.04](/docs/websites/apache/apache-2-web-server-on-ubuntu-10-04-lts-lucid).
+This tutorial explains how to install and configure the Apache web server on Debian 5 (Lenny). All configuration will be done through the terminal; make sure you are logged in as root via SSH. If you have not followed the [getting started](/docs/getting-started/) guide, it is recommended that you do so prior to beginning this guide. Also note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guide for Debian 5](/docs/lamp-guides/debian-5-lenny).
 
 Set the Hostname
 ----------------
@@ -51,17 +51,17 @@ To install Ruby support, issue the following command:
 
 To install Perl support, issue the following command:
 
-    apt-get install libapache2-mod-perl2 
+    apt-get install libapache2-mod-perl2
 
 To install Python support, issue the following command:
 
-    apt-get install libapache2-mod-python 
+    apt-get install libapache2-mod-python
 
 If you need support for MySQL in Python, you will also need to install Python MySQL support:
 
     apt-get install python-mysqldb
 
-Your PHP application may require additional dependencies included in Ubuntu. To check for available PHP dependencies run `apt-cache search php`, which will provide a list of package names and descriptions. To install, issue the following command:
+Your PHP application may require additional dependencies included in Debian. To check for available PHP dependencies run `apt-cache search php`, which will provide a list of package names and descriptions. To install, issue the following command:
 
     apt-get install libapache2-mod-php5 php5 php-pear php5-xcache
 
@@ -83,22 +83,22 @@ First, issue the following command to disable the default Apache virtual host.
 
 Each additional virtual host needs its own file in the `/etc/apache2/sites-available/` directory. In this example, you'll create files for two **name-based** virtually hosted sites, "example.net" and "example.org".
 
-First create example.com (`/etc/apache2/sites-available/example.net`) so that it resembles the following.
+First create example.com (`/etc/apache2/sites-available/example.net`) so that it resembles the following example.
 
 {: .file }
 /etc/apache2/sites-available/example.net
 :   ~~~ apache
-    <VirtualHost *:80> 
-         ServerAdmin webmaster@example.net     
-         ServerName example.net
-         ServerAlias www.example.net
-         DocumentRoot /srv/www/example.net/public_html/
-         ErrorLog /srv/www/example.net/logs/error.log 
-         CustomLog /srv/www/example.net/logs/access.log combined
+    <VirtualHost *:80>
+        ServerAdmin webmaster@example.net     
+        ServerName example.net
+        ServerAlias www.example.net
+        DocumentRoot /srv/www/example.net/public_html/
+        ErrorLog /srv/www/example.net/logs/error.log
+        CustomLog /srv/www/example.net/logs/access.log combined
     </VirtualHost>
     ~~~
 
-If you would like to enable Perl, add the following lines to the `VirtualHost` entry above.
+If you would like to enable Perl support, then add the following lines to the `VirtualHost` entry above.
 
 {: .file-excerpt }
 /etc/apache2/sites-available/example.net
@@ -112,12 +112,12 @@ Next, create example.com (`/etc/apache2/sites-available/example.org`) so that it
 {: .file }
 /etc/apache2/sites-available/example.org
 :   ~~~ apache
-    <VirtualHost *:80> 
+    <VirtualHost *:80>
          ServerAdmin admin@example.org
          ServerName example.org
          ServerAlias www.example.org
          DocumentRoot /srv/www/example.org/public_html/
-         ErrorLog /srv/www/example.org/logs/error.log 
+         ErrorLog /srv/www/example.org/logs/error.log
          CustomLog /srv/www/example.org/logs/access.log combined
     </VirtualHost>
     ~~~
@@ -145,7 +145,7 @@ When you create or edit any virtual host file, you'll need to reload the config,
 
     /etc/init.d/apache2 reload
 
-Congratulations! You now have Apache installed on your Ubuntu Linode and have configured the server for virtual hosting.
+Congratulations! You now have Apache installed on your Debian Linode and have configured the server for virtual hosting.
 
 Install Apache Modules
 ----------------------
@@ -160,9 +160,9 @@ To disable a module that is currently enabled, use the inverse command:
 
     a2dismod [module-name]
 
-To get a list of available Apache modules modules in the Ubuntu repository use the following command:
+To get a list of available Apache modules modules in the Debian repository use the following command:
 
-    apt-cache search libapache2* 
+    apt-cache search libapache2*
 
 To install one of these modules use the command:
 
@@ -173,7 +173,7 @@ Modules should be enabled and ready to use following installation, though you ma
 Configuration Options
 ---------------------
 
-One of the strengths, and obstacles, of Apache is the immense amount of flexibility offered in its configuration files. In the default installation of Apache 2 on Ubuntu, the main configuration is located in the `/etc/apache2/apache2.conf` files, but Apache configuration directives are loaded from files in a number of different locations, in a specific order. Configuration files are read in the following order, with items specified later taking precedence over earlier and potentially conflicting options:
+One of the strengths, and obstacles, of Apache is the immense amount of flexibility offered in its configuration files. In the default installation of Apache 2 on Debian, the main configuration is located in the `/etc/apache2/apache2.conf` files, but Apache configuration directives are loaded from files in a number of different locations, in a specific order. Configuration files are read in the following order, with items specified later taking precedence over earlier and potentially conflicting options:
 
 1.  `/etc/apache2/apache2.conf`
 2.  Files with `.load` or `.conf` extensions in `/etc/apache2/mods-enabled/` directory.
@@ -189,7 +189,7 @@ Apache will follow symbolic links to read configuration files, so you can create
 
 Best practices for most installations dictate that we don't recommend modifying the following default configuration files: `/etc/apache2/httpd.conf`, files in `/etc/apache2/mods-enabled/`, and in most cases `/etc/apache2/apache2.conf`. This is to avoid unnecessary confusion and unintended conflicts in the future.
 
-Generally, as specified in our [LAMP guide for Ubuntu 10.04 LTS (Lucid)](/docs/websites/apache/apache-2-web-server-on-ubuntu-10-04-lts-lucid) and elsewhere, files that configure virtual hosts should be located in the `/etc/apache2/sites-available/` directory (and symbolically linked to `sites-enabled/` with the `a2ensite` tool. This allows for a clear and specific per-site configuration.
+Generally, as specified in our [LAMP guide for Debian 5 (Lenny)](/docs/lamp-guides/debian-5-lenny) and elsewhere, files that configure virtual hosts should be located in the `/etc/apache2/sites-available/` directory (and symbolically linked to `sites-enabled/` with the `a2ensite` tool. This allows for a clear and specific per-site configuration.
 
 In practice, the vast majority of configuration options will probably be located in site-specific virtual host configuration files. If you need to set a system-wide configuration option or aren't using virtual hosting, the best practice is to specify options in files created beneath the `conf.d/` directory.
 
@@ -223,6 +223,3 @@ You may wish to consult the following resources for additional information on th
 
 - [Apache HTTP Server Version 2.2 Documentation](http://httpd.apache.org/docs/2.2/)
 - [Apache Configuration](/docs/web-servers/apache/configuration/)
-
-
-

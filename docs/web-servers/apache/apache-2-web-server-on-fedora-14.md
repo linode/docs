@@ -6,7 +6,7 @@ author:
 description: 'Instructions for getting started with the Apache web server on Fedora 14.'
 keywords: 'apache fedora 14,fedora web server,linux web server'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/apache/installation/fedora-14/']
+alias: ['web-servers/apache/installation/fedora-14/','websites/apache/apache-2-web-server-on-fedora-14/']
 modified: Friday, October 4th, 2013
 modified_by:
   name: Linode
@@ -46,7 +46,7 @@ The following commands are optional, and should be run if you want to have suppo
 
 To install Ruby support, issue the following command:
 
-    yum install ruby 
+    yum install ruby
 
 Note that this only installs support for the Ruby programing language. Running scripts and applications written in Ruby in web pages will require a CGI handler.
 
@@ -90,21 +90,21 @@ Now you will create virtual host entries for each site that you need to host wit
 {: .file-excerpt }
 /etc/httpd/conf.d/vhost.conf
 :   ~~~ apache
-    <VirtualHost *:80> 
+    <VirtualHost *:80>
          ServerAdmin webmaster@example.org
          ServerName example.org
          ServerAlias www.example.org
          DocumentRoot /srv/www/example.org/public_html/
-         ErrorLog /srv/www/example.org/logs/error.log 
+         ErrorLog /srv/www/example.org/logs/error.log
          CustomLog /srv/www/example.org/logs/access.log combined
     </VirtualHost>
 
-    <VirtualHost *:80> 
+    <VirtualHost *:80>
          ServerAdmin admin@example.net     
          ServerName example.net
          ServerAlias www.example.net
          DocumentRoot /srv/www/example.net/public_html/
-         ErrorLog /srv/www/example.net/logs/error.log 
+         ErrorLog /srv/www/example.net/logs/error.log
          CustomLog /srv/www/example.net/logs/access.log combined
     </VirtualHost>
     ~~~
@@ -123,13 +123,13 @@ Before you can use the above configuration, you'll need to create the specified 
 
 After you've set up your virtual hosts, issue the following command to run Apache for the first time:
 
-    /etc/init.d/httpd start 
+    /etc/init.d/httpd start
 
 Assuming that you have configured the DNS for your domain to point to your Linode's IP address, virtual hosting for your domain should now work. Remember that you can create as many virtual hosts with Apache as you need.
 
 Any time you change an option in your `vhost.conf` file or any other Apache configuration remember to reload the configuration with the following command:
 
-    /etc/init.d/httpd reload 
+    /etc/init.d/httpd reload
 
 Configuration Options
 ---------------------
@@ -241,6 +241,3 @@ You may wish to consult the following resources for additional information on th
 - [Apache Configuration](/docs/web-servers/apache/configuration/)
 - [Apache HTTP Server Version 2.2 Documentation](http://httpd.apache.org/docs/2.2/)
 - [URL Rewriting on HTML Source](http://www.yourhtmlsource.com/sitemanagement/urlrewriting.html)
-
-
-

@@ -3,31 +3,51 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Instructions for getting started with the Apache web server on Fedora 12.'
-keywords: 'Apache,web sever,Fedora 12'
+description: 'Instructions for getting started with the Apache web server on CentOS 5.'
+keywords: 'Apache,web sever,CentOS 5'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/apache/installation/fedora-12/']
-modified: Friday, April 29th, 2011
+alias: ['web-servers/apache/installation/centos-5/','websites/apache/apache-2-web-server-on-centos-5/']
+modified: Monday, November 18th, 2013
 modified_by:
   name: Linode
-published: 'Thursday, December 10th, 2009'
-title: Apache 2 Web Server on Fedora 12
+published: 'Monday, July 27th, 2009'
+title: Apache 2 Web Server on CentOS 5
 ---
 
 
 
-This tutorial explains how to install and configure the Apache web server on Fedora 12. All configuration will be done through the terminal; make sure you are logged in as root via SSH. If you have not followed the [getting started](/docs/getting-started/) guide, it is recommended that you do so prior to beginning this guide. Also note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guide for Fedora 12](/docs/lamp-guides/fedora-12).
+This tutorial explains how to install and configure the Apache web server on CentOS 5. All configuration will be done through the terminal; make sure you are logged in as root via SSH. If you have not followed the [getting started](/docs/getting-started/) guide, it is recommended that you do so prior to beginning this guide. Also note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guide for CentOS](/docs/lamp-guides/centos-5).
+
+Set the Hostname
+----------------
+
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
+
+    hostname
+    hostname -f
+
+The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
 Install Apache HTTP Server
 --------------------------
 
-Before beginning the installation process, ensure that you are running a complete and update version of your system. Issue the following command:
+Make sure your system is up to date by issuing the following command:
 
     yum update
+
+You'll want to make sure your CentOS install is configured to allow inbound traffic to port 80; you can configure the built-in firewall by issuing the command `system-config-securitylevel-tui` at the shell prompt.
 
 Enter the following command to install the Apache HTTP Server:
 
     yum install httpd
+
+Issue the following command to start the web server:
+
+    /etc/init.d/httpd start
+
+To ensure that Apache starts following the next reboot cycle, issue the following command:
+
+    chkconfig httpd on
 
 Install Support for Scripting
 -----------------------------
@@ -36,7 +56,7 @@ The following commands are optional, and should be run if you want to have suppo
 
 To install Ruby support, issue the following command:
 
-    yum install ruby 
+    yum install ruby
 
 Note that this only installs support for the Ruby programing language. Running scripts and applications written in Ruby in web pages will require some sort of CGI handler.
 
@@ -63,7 +83,7 @@ If you're also hoping to run PHP with mysql, then also install mySQL support:
 Configure Apache
 ----------------
 
-All configuration for Apache are contained in the `httpd.conf` file, which is located at: `/etc/httpd/conf.d/httpd.conf`. We advise you to make a backup of this file into your home directory, like so:
+All configuration for Apache are contained in the `httpd.conf` file, which is located at: `/etc/httpd/conf/httpd.conf`. We advise you to make a backup of this file into your home directory, like so:
 
     cp /etc/httpd/conf/httpd.conf ~/httpd.conf.backup
 
@@ -71,43 +91,41 @@ By default all files ending in the `.conf` extension in `/etc/httpd/conf.d/` are
 
 Now we'll configure virtual hosting so that we can host multiple domains (or subdomains) with the server. These websites can be controlled by different users, or by a single user, as you prefer.
 
-There are different ways to set up virtual hosts, however we recommend the method below.
+Before we get started, we suggest that you combine all configuration on virtual hosting into a single file called `vhost.conf` located in the `/etc/httpd/conf.d/` directory. Open this file in your favorite text editor, and we'll begin by setting up virtual hosting.
 
-By default, Apache listens on all IP addresses available to it. We must configure it to listen only on addresses we specify. Even if you only have one IP, it is still a good idea to tell Apache what IP address to listen on in case you decide to add more.
+### Configure Name-based Virtual Hosts
 
-Begin by adding the following line to the virtual hosting configuration file:
+First we must configure Apache to only "listen" for requests on a specific IP address. By default Apache listens to requests on *all* IP addresses.
+
+For name based Virtual Hosting, begin with a line that reads:
 
 {: .file-excerpt }
-/etc/httpd/conf.d/vhost.conf
+Apache Virtual Host Configuration
 :   ~~~ apache
-    NameVirtualHost 12.34.56.78:80
+    NameVirtualHost *:80
     ~~~
 
-Be sure to replace 12.34.56.78 with your own IP address.
-
-### Configure Virtual Hosts
-
-Now we will create virtual host entries for each site that we need to host with this server. Here are two examples for sites at "example.com" and "example.com".
+Now, you will create virtual host entries for each site that you need to host with this server. Here are two examples for sites at "example.org" and "example.net:"
 
 {: .file-excerpt }
-/etc/httpd/conf.d/vhost.conf
+Apache Virtual Host Configuration
 :   ~~~ apache
-    <VirtualHost 12.34.56.78:80> 
-         ServerAdmin username@example.com
-         ServerName example.com
-         ServerAlias www.example.com
-         DocumentRoot /srv/www/example.com/public_html/
-         ErrorLog /srv/www/example.com/logs/error.log 
-         CustomLog /srv/www/example.com/logs/access.log combined
+    <VirtualHost *:80>
+         ServerAdmin admin@example.org
+         ServerName example.org
+         ServerAlias www.example.org
+         DocumentRoot /srv/www/example.org/public_html/
+         ErrorLog /srv/www/example.org/logs/error.log
+         CustomLog /srv/www/example.org/logs/access.log combined
     </VirtualHost>
 
-    <VirtualHost 12.34.56.78:80> 
-         ServerAdmin username@example.com     
-         ServerName example.com
-         ServerAlias www.example.com
-         DocumentRoot /srv/www/example.com/public_html/
-         ErrorLog /srv/www/example.com/logs/error.log 
-         CustomLog /srv/www/example.com/logs/access.log combined
+    <VirtualHost *:80>
+         ServerAdmin webmaster@example.net     
+         ServerName example.net
+         ServerAlias www.example.net
+         DocumentRoot /srv/www/example.net/public_html/
+         ErrorLog /srv/www/example.net/logs/error.log
+         CustomLog /srv/www/example.net/logs/access.log combined
     </VirtualHost>
     ~~~
 
@@ -116,30 +134,30 @@ Notes regarding this example configuration:
 -   All of the files for the sites that you host will be located in directories that exist underneath `/srv/www`. You can symbolically link these directories into other locations if you need them to exist in other places.
 -   `ErrorLog` and `CustomLog` entries are suggested for more fine-grained logging, but are not required. If they are defined (as shown above), the `logs` directories must be created before you restart Apache.
 
-Before you can use the above configuration, you'll need to create the specified directories. For the above configuration, you can do this with the following commands:
+Before you can use the above configuration you'll need to create the specified directories. For the above configuration, you can do this with the following commands:
 
-    mkdir -p /srv/www/example.com/public_html
-    mkdir /srv/www/example.com/logs
-    mkdir -p /srv/www/example.com/public_html
-    mkdir /srv/www/example.com/logs
+    mkdir -p /srv/www/example.org/public_html
+    mkdir -p /srv/www/example.org/logs
+    mkdir -p /srv/www/example.net/public_html
+    mkdir -p /srv/www/example.net/logs
 
 After you've set up your virtual hosts, issue the following command to run Apache for the first time:
 
-    /etc/init.d/httpd start 
+    /etc/init.d/httpd start
 
-Assuming that you have configured the DNS for your domain to point to your Linode's IP address, virtual hosting for your domain should now work. Remember that you can create as many virtual hosts with Apache as you need.
+Virtual hosting for your domain should now work -- assuming of course that you have already configured DNS to point your domain to your Linode's IP address. Remember that you can create as many virtual hosts with Apache as you need.
 
 Any time you change an option in your `vhost.conf` file, or any other Apache configuration remember to reload the configuration with the following command:
 
-    /etc/init.d/httpd reload 
+    /etc/init.d/httpd reload
 
 Configuration Options
 ---------------------
 
-One of the strengths, and obstacles, of Apache is the immense amount of flexibility offered in its configuration files. In the default installation of Apache 2 on Fedora 12, the main configuration file is located at `/etc/httpd/conf/httpd.conf`, but Apache configuration is also loaded from files in a number of different locations, in a specific order. Configuration files are read in the following order, with items specified later taking precedence over earlier and potentially conflicting options:
+One of the strengths, and obstacles, of Apache is the immense amount of flexibility offered in its configuration files. In the default installation of Apache 2 on CentOS 5, the main configuration file is located at `/etc/httpd/conf/httpd.conf`, but Apache configuration is also loaded from files in a number of different locations, in a specific order. Configuration files are read in the following order, with items specified later taking precedence over earlier and potentially conflicting options:
 
 1.  `/etc/httpd/conf/httpd.conf`
-2.  Files with`.conf` extensions in `/etc/httpd/conf.d/` directory are read in order, sorted by file name.
+2.  Files with`.conf` extensions in `/etc/httpd/conf.d/` directory are read in order, sorted alphabetically by file name.
 
 Remember, later files take precedence over earlier-cited files. Within a directory of included configuration files, files will be read in order based on an alpha-numeric sort of their file names.
 
@@ -149,7 +167,7 @@ In accordance with best practices, we do not recommend modifying the default con
 
     cp /etc/httpd/conf/httpd.conf /etc/httpd/conf/httpd-conf.backup-1
 
-Generally, as specified above and in our [LAMP guide for Fedora 12](/docs/lamp-guides/fedora-12) configuration files related to virtually hosted sites should be located in hosts should be located in a specific virtual host file, such as `/etc/httpd/conf.d/vhost.conf`, though you can split site-specific configuration information into additional files if needed.
+Generally, as specified above and in our [LAMP guide for CentOS 5.2](/docs/lamp-guides/centos-5) configuration files related to virtually hosted sites should be located in hosts should be located in a specific virtual host file, such as `/etc/httpd/conf.d/vhost.conf`, though you can split site-specific configuration information into additional files if needed.
 
 Install Apache Modules
 ----------------------
@@ -163,7 +181,7 @@ To see if a module is enabled, look in "conf" files for lines beginning with `Lo
 
 To disable an existing module (at your own risk) edit the file in question, and comment out the `LoadModule` statement by prefixing the line with a hash (e.g. `#`).
 
-To get a list of available Apache modules modules in the Fedora repository use the following commands:
+To get a list of available Apache modules modules in the CentOS repository use the following commands:
 
     yum search mod_
 
@@ -171,7 +189,7 @@ You can then install one of these modules with the command:
 
     yum install mod_[module-name]
 
-Modules should be enabled and ready to use following installation, though you may have to apply additional configuration options to have access to the modules' functionality. Consult the [Apache module documentation](http://httpd.apache.org/docs/2.0/mod/) for more information regarding the configuration of specific modules.
+Modules should be enabled and ready to use following installation, though you may have to apply additional configuration options to have access to the modules' functionality. Consult the [Apache Module Documentation](http://httpd.apache.org/docs/2.0/mod/) for more information regarding the configuration of specific modules.
 
 Understanding .htaccess Configuration
 -------------------------------------
@@ -183,9 +201,9 @@ Remember that options specified in an `.htaccess` file apply to all directories 
 Password Protecting Directories
 -------------------------------
 
-In a **non** web accessible directory, we need to create a .htpasswd file. For example, if the document root for your Virtual Host is `/srv/www/bleddington.com/public_html/`, use `/srv/www/bleddington.com/`. Enter this directory:
+In a **non** web accessible directory, we need to create a .htpasswd file. For example, if the document root for your Virtual Host is `/srv/www/example.com/public_html/`, use `/srv/www/example.com/`. Enter this directory:
 
-    cd /srv/www/bleddington.com/
+    cd /srv/www/example.com/
 
 Using the `htpasswd` command we'll create a new password entry for a user named `cecil`:
 
@@ -200,7 +218,7 @@ In the .htaccess file for the directory that you want to protect, add the follow
 {: .file-excerpt }
 .htaccess
 :   ~~~ apache
-    AuthUserFile /srv/www/bleddington.com/.htpasswd
+    AuthUserFile /srv/www/example.com/.htpasswd
     AuthType Basic
     AuthName "Advanced Choreographic Information"
     Require valid-user
@@ -216,7 +234,7 @@ The mod\_rewrite engine is very powerful, and is available for your use by defau
 In a `<Directory >` block or `.htaccess` file, enable mod\_rewrite with the following line:
 
 {: .file-excerpt }
-Apache Virtual Hosting Configuration File or .htaccess
+Apache Virtual Host Configuration or .htaccess
 :   ~~~ apache
     RewriteEngine on
     ~~~
@@ -224,7 +242,7 @@ Apache Virtual Hosting Configuration File or .htaccess
 Now, you may create any number of separate rewrite rules. These rules provide a pattern that the server compares incoming requests against, and if a request matches a rewrite pattern, the server provides an alternate page. Here is an example rewrite rule:
 
 {: .file-excerpt }
-Apache Virtual Hosting Configuration File or .htaccess
+Apache Virtual Host Configuration or .htaccess
 :   ~~~ apache
     RewriteRule ^post-id/([0-9]+)$ /posts/$1.html
     ~~~
@@ -241,8 +259,4 @@ More Information
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [Apache HTTP Server Version 2.0 Documentation](http://httpd.apache.org/docs/2.0/)
-- [URL Rewriting on HTML Source](http://www.yourhtmlsource.com/sitemanagement/urlrewriting.html)
 - [Apache Configuration](/docs/web-servers/apache/configuration/)
-
-
-

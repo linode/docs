@@ -3,20 +3,20 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Instructions for getting started with the Apache web server on Ubuntu 10.10 (Maverick)'
-keywords: 'apache,apache ubuntu 10.10,apache ubuntu maverick,web server,apache on ubuntu,apache maverick'
+description: 'Instructions for getting started with the Apache web server on Ubuntu 10.04 LTS (Lucid).'
+keywords: 'apache,apache ubuntu 10.04,apache ubuntu lucid,web server,apache on ubuntu,apache lucid'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/apache/installation/ubuntu-10-10-maverick/']
-modified: Monday, October 8th, 2012
+alias: ['web-servers/apache/installation/ubuntu-10-04-lucid/','websites/apache/apache-2-web-server-on-ubuntu-10-04-lts-lucid/']
+modified: Friday, October 4th, 2013
 modified_by:
   name: Linode
-published: 'Monday, December 6th, 2010'
-title: 'Apache 2 Web Server on Ubuntu 10.10 (Maverick)'
+published: 'Thursday, April 29th, 2010'
+title: 'Apache 2 Web Server on Ubuntu 10.04 LTS (Lucid)'
 ---
 
 
 
-This tutorial explains how to install and configure the Apache web server on Ubuntu 10.10 (Maverick). All configuration will be done through the terminal; make sure you are logged in as root via SSH. If you have not followed the [getting started](/docs/getting-started/) guide, it is recommended that you do so prior to beginning this guide. Also note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guide for Ubuntu 10.10](/docs/lamp-guides/ubuntu-10.10-maverick).
+This tutorial explains how to install and configure the Apache web server on Ubuntu 10.04 (Lucid). All configuration will be done through the terminal; make sure you are logged in as root via SSH. If you have not followed the [getting started](/docs/getting-started/) guide, it is recommended that you do so prior to beginning this guide. Also note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guide for Ubuntu 10.04](/docs/websites/apache/apache-2-web-server-on-ubuntu-10-04-lts-lucid).
 
 Set the Hostname
 ----------------
@@ -34,9 +34,9 @@ Install Apache 2
 Make sure your package repositories and installed programs are up to date by issuing the following commands:
 
     apt-get update
-    apt-get upgrade
+    apt-get upgrade --show-upgraded
 
-Enter the following command to install the Apache HTTP server, its documentation, and a collection of utilities.
+Enter the following command to install the Apache 2 web server, its documentation and a collection of utilities.
 
     apt-get install apache2 apache2-doc apache2-utils
 
@@ -51,11 +51,11 @@ To install Ruby support, issue the following command:
 
 To install Perl support, issue the following command:
 
-    apt-get install libapache2-mod-perl2 
+    apt-get install libapache2-mod-perl2
 
 To install Python support, issue the following command:
 
-    apt-get install libapache2-mod-python 
+    apt-get install libapache2-mod-python
 
 If you need support for MySQL in Python, you will also need to install Python MySQL support:
 
@@ -86,19 +86,19 @@ Each additional virtual host needs its own file in the `/etc/apache2/sites-avail
 First create example.com (`/etc/apache2/sites-available/example.net`) so that it resembles the following.
 
 {: .file }
-/etc/apache2/sites-available/example.com
+/etc/apache2/sites-available/example.net
 :   ~~~ apache
-    <VirtualHost *:80> 
-         ServerAdmin admin@example.net     
+    <VirtualHost *:80>
+         ServerAdmin webmaster@example.net     
          ServerName example.net
          ServerAlias www.example.net
          DocumentRoot /srv/www/example.net/public_html/
-         ErrorLog /srv/www/example.net/logs/error.log 
+         ErrorLog /srv/www/example.net/logs/error.log
          CustomLog /srv/www/example.net/logs/access.log combined
     </VirtualHost>
     ~~~
 
-If you would like to enable Perl support, then add the following lines to the `VirtualHost` entry above.
+If you would like to enable Perl, add the following lines to the `VirtualHost` entry above.
 
 {: .file-excerpt }
 /etc/apache2/sites-available/example.net
@@ -107,17 +107,17 @@ If you would like to enable Perl support, then add the following lines to the `V
     AddHandler cgi-script .pl
     ~~~
 
-Next, create example.org (`/etc/apache2/sites-available/example.org`) so that it resembles this:
+Next, create example.com (`/etc/apache2/sites-available/example.org`) so that it resembles this:
 
 {: .file }
-/etc/apache2/sites-available/example.com
+/etc/apache2/sites-available/example.org
 :   ~~~ apache
-    <VirtualHost *:80> 
-         ServerAdmin webmaster@example.org
+    <VirtualHost *:80>
+         ServerAdmin admin@example.org
          ServerName example.org
          ServerAlias www.example.org
          DocumentRoot /srv/www/example.org/public_html/
-         ErrorLog /srv/www/example.org/logs/error.log 
+         ErrorLog /srv/www/example.org/logs/error.log
          CustomLog /srv/www/example.org/logs/access.log combined
     </VirtualHost>
     ~~~
@@ -162,7 +162,7 @@ To disable a module that is currently enabled, use the inverse command:
 
 To get a list of available Apache modules modules in the Ubuntu repository use the following command:
 
-    apt-cache search libapache2* 
+    apt-cache search libapache2*
 
 To install one of these modules use the command:
 
@@ -189,16 +189,16 @@ Apache will follow symbolic links to read configuration files, so you can create
 
 Best practices for most installations dictate that we don't recommend modifying the following default configuration files: `/etc/apache2/httpd.conf`, files in `/etc/apache2/mods-enabled/`, and in most cases `/etc/apache2/apache2.conf`. This is to avoid unnecessary confusion and unintended conflicts in the future.
 
-Generally, as specified in the [LAMP guide](/docs/lamp-guides/ubuntu-10.10-maverick) and elsewhere, files that configure virtual hosts should be located in the `/etc/apache2/sites-available/` directory (and symbolically linked to `sites-enabled/` with the `a2ensite` tool. This allows for a clear and specific per-site configuration.
+Generally, as specified in our [LAMP guide for Ubuntu 10.04 LTS (Lucid)](/docs/websites/apache/apache-2-web-server-on-ubuntu-10-04-lts-lucid) and elsewhere, files that configure virtual hosts should be located in the `/etc/apache2/sites-available/` directory (and symbolically linked to `sites-enabled/` with the `a2ensite` tool. This allows for a clear and specific per-site configuration.
 
 In practice, the vast majority of configuration options will probably be located in site-specific virtual host configuration files. If you need to set a system-wide configuration option or aren't using virtual hosting, the best practice is to specify options in files created beneath the `conf.d/` directory.
 
 Multi-Processing Module
 -----------------------
 
-The default Apache configuration uses a tool called MPM-worker. This multi-processing module can handle a large number of requests quickly by utilizing multiple threads per worker process. However, this use of multiple threads is not compatible with some PHP extensions. When PHP is installed MPM-worker is replaced with MPM-prefork, which allows Apache to handle requests without threading for greater compatibility with some software. Furthermore, using MPM-prefork allows Apache to isolate requests in separate processes so that if one request fails for some reason, other requests will be unaffected.
+The default Apache configuration uses a tool called MPM-worker, this multi-processing module can handle a large number of requests quickly by utilizing multiple threads per worker process. However, this use of multiple threads is not compatible with some PHP extensions. When PHP is installed MPM-worker is replaced with MPM-prefork, which allows Apache to handle requests without threading for greater compatibility with some software. Furthermore, using MPM-prefork allows Apache to isolate requests in separate processes so that if one request fails for some reason, other requests will be unaffected.
 
-For more complex setups, however, we recommend that you consider using an alternate MPM module called "ITK". `mpm-itk` is quite similar to `prefork`, but it goes one step further and runs the processes for each site under a distinct user account. This is particularly useful in situations where you're hosting a number of distinct sites that you need to isolate sites on the basis of user privileges.
+For more complex setups, however, we recommend that you consider using an alternate MPM module called "ITK." `mpm-itk` is quite similar to `prefork`, but it goes one step further and runs the processes for each site under a distinct user account. This is particularly useful in situations where you're hosting a number of distinct sites that you need to isolate sites on the basis of user privileges.
 
 Begin by installing the mpm-itk module:
 
@@ -223,6 +223,3 @@ You may wish to consult the following resources for additional information on th
 
 - [Apache HTTP Server Version 2.2 Documentation](http://httpd.apache.org/docs/2.2/)
 - [Apache Configuration](/docs/web-servers/apache/configuration/)
-
-
-
