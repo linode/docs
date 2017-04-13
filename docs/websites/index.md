@@ -12,13 +12,7 @@ featured:
  - hosting-a-website.md
  - introduction-to-high-availability.md
  - host-a-website-with-high-availability.md
- - authbased-access-control-with-apache.md
 categories:
- - lamp
- - lemp
- - apache
- - apache-tips-and-tricks
- - nginx
  - ssl
  - nodejs
  - frameworks
@@ -29,9 +23,4 @@ categories:
  - cms
  - wikis
  - ecommerce
- - cherokee
- - lighttpd
 ---
-
-
-
