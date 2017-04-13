@@ -10,7 +10,7 @@ modified_by:
     name: Alex Fornuto
 published: 'Tuesday, December 1st, 2015'
 title: LAMP on CentOS 7
-alias: ['websites/lamp/lamp-server-on-centos-7/']
+alias: ['websites/lamp/lamp-server-on-centos-7/','websites/lamp/lamp-on-centos-7/']
 external_resources:
  - '[CentOS Linux Home Page](http://www.centos.org/)'
  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)'
@@ -82,7 +82,7 @@ There are different ways to set up virtual hosts; however, the method below is r
     /etc/httpd/conf.d/vhost.conf
     :   ~~~ conf
         NameVirtualHost *:80
-        
+
         <VirtualHost *:80>
             ServerAdmin webmaster@example.com
             ServerName example.com

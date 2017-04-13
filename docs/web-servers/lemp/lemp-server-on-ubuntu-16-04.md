@@ -5,6 +5,7 @@ author:
 description: 'Install a LEMP stack to serve websites and applications on Ubuntu 16.04'
 keywords: 'nginx,lemp,php,ubuntu 16.04'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+alias: ['websites/lemp/lemp-server-on-ubuntu-16-04/']
 modified: Friday, May 6th 2016
 modified_by:
   name: Phil Zona
@@ -43,7 +44,7 @@ To ensure compatibility of installation and with future updates, install nginx f
 
 ### Configure Nginx Virtual Hosting
 
-Older versions of nginx specified site directories and other information in the main `nginx.conf` file, but newer versions, such as the ones included with Ubuntu 16.04, are more compartmentalized. As you read through this section, make note of each file's contents and location so that you are familiar with the structure and know where to go if you need to customize one particular aspect of your web server. 
+Older versions of nginx specified site directories and other information in the main `nginx.conf` file, but newer versions, such as the ones included with Ubuntu 16.04, are more compartmentalized. As you read through this section, make note of each file's contents and location so that you are familiar with the structure and know where to go if you need to customize one particular aspect of your web server.
 
 Nginx uses `server` directives to specify name-based virtual hosts. Nginx calls these *server blocks*. All server blocks are contained within `server` directives in site files, located in `/etc/nginx/sites-available`. When activated, these are included in the main nginx configuration by default.
 
@@ -114,7 +115,7 @@ You may also want to edit the `http` block in `/etc/nginx/nginx.conf`, which app
 
 -   Hiding HTTP header information using `server_tokens`
 -   Configuring SSL/TLS settings
--   Customizing log file paths 
+-   Customizing log file paths
 
 ## Deploy PHP with FastCGI
 
@@ -207,7 +208,7 @@ In this section, you'll create a test page that shows whether nginx can render P
             $username = "webuser";
             $password = "password";
 
-            // Create MySQL connection 
+            // Create MySQL connection
             $conn = mysqli_connect($servername, $username, $password);
 
             // Check connection - if it fails, output will include the error message

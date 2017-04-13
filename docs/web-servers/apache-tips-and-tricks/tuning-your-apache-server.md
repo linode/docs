@@ -5,6 +5,7 @@ author:
 description: Tuning your Apache server to optimize your website.
 keywords: 'configuration,apache,web server,resource tuning'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+alias: ['websites/apache-tips-and-tricks/tuning-your-apache-server/']
 modified: Friday, February 27, 2015
 modified_by:
   name: Elle Krout
@@ -13,7 +14,7 @@ title: Tuning Your Apache Server
 external_resources:
  - '[Apache Performance Tuning](http://httpd.apache.org/docs/2.2/misc/perf-tuning.html)'
  - '[Apache MPM Common Directives](http://httpd.apache.org/docs/2.2/mod/mpm_common.html)'
- - '[Apache 2.4 Documentation](http://httpd.apache.org/docs/2.4/)' 
+ - '[Apache 2.4 Documentation](http://httpd.apache.org/docs/2.4/)'
 ---
 
 Apache configuration has a major affect on your Linode's performance. The easiest way to increase server performance is to turn off unneeded modules. This guide covers Apache modules, information on which modules to turn off, and other Apache performance tuning options.

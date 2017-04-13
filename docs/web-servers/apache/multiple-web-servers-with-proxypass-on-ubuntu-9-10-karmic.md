@@ -6,7 +6,7 @@ author:
 description: 'How to use separate web servers to host sites or applications using ProxyPass with Apache.'
 keywords: 'apache,proxypass,apache on ubuntu,multiple web servers'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/apache/proxy-configuration/multiple-webservers-proxypass-ubuntu-9-10-karmic/']
+alias: ['web-servers/apache/proxy-configuration/multiple-webservers-proxypass-ubuntu-9-10-karmic/','websites/apache/multiple-web-servers-with-proxypass-on-ubuntu-9-10-karmic/']
 modified: Friday, April 29th, 2011
 modified_by:
   name: Linode
@@ -125,6 +125,3 @@ You may wish to consult the following resources for additional information on th
 
 - [Apache Module mod\_proxy](http://httpd.apache.org/docs/2.2/mod/mod_proxy.html)
 - [Apache HTTP Server Version 2.2 Docs](http://httpd.apache.org/docs/2.2/)
-
-
-

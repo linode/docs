@@ -6,7 +6,7 @@ author:
 description: 'Install a LEMP stack to serve websites and applications on Ubuntu 12.04'
 keywords: 'nginx,lemp,php,linux,web applications'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['lemp-guides/ubuntu-12-04-precise-pangolin/']
+alias: ['lemp-guides/ubuntu-12-04-precise-pangolin/','websites/lemp/lemp-server-on-ubuntu-12-04-precise-pangolin/']
 modified: Thursday, September 12th, 2013
 modified_by:
   name: Linode
@@ -93,14 +93,14 @@ Issue the following commands to compile and then install the software as specifi
 
 Create a dedicated system user to run the nginx process under by issuing the following command:
 
-    adduser --system --no-create-home --disabled-login --disabled-password --group nginx 
+    adduser --system --no-create-home --disabled-login --disabled-password --group nginx
 
 Now install and configure the [init script](/docs/assets/1131-init-deb.sh) to make it possible to start and stop the web server more easily. Issue the following command sequence:
 
     wget -O init-deb.sh http://www.linode.com/docs/assets/1131-init-deb.sh
     mv init-deb.sh /etc/init.d/nginx
     chmod +x /etc/init.d/nginx
-    /usr/sbin/update-rc.d -f nginx defaults 
+    /usr/sbin/update-rc.d -f nginx defaults
 
 Now, issue the following command to start the web-server:
 

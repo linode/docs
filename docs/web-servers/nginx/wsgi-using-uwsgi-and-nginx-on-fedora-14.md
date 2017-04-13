@@ -6,7 +6,7 @@ author:
 description: 'Use uWSGI to deploy Python application servers in conjunction with nginx.'
 keywords: 'uwsgi,wsgi,nginx,python'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/nginx/python-uwsgi/fedora-14/']
+alias: ['web-servers/nginx/python-uwsgi/fedora-14/','websites/nginx/wsgi-using-uwsgi-and-nginx-on-fedora-14/']
 modified: Monday, October 7th, 2013
 modified_by:
   name: Linode
@@ -102,17 +102,17 @@ Issue the following commands to make this init script executable, ensure that uW
 
     chkconfig --add uwsgi
     chkconfig uwsgi on
-    /etc/init.d/uwsgi start 
+    /etc/init.d/uwsgi start
 
 Install nginx
 -------------
 
 Issue the following commands to install and configure the nginx web server:
 
-    yum install nginx 
+    yum install nginx
     chkconfig --add nginx
     chkconfig nginx on
-    /etc/init.d/nginx start 
+    /etc/init.d/nginx start
 
 Configure nginx
 ---------------
@@ -188,6 +188,3 @@ You may wish to consult the following resources for additional information on th
 - [Installing Nginx on Fedora 14](/docs/web-servers/nginx/installation/fedora-14)
 - [Deploy a LEMP Server on Fedora 14](/docs/lemp-guides/fedora-14/)
 - [Configure nginx Proxy Servers](/docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer)
-
-
-

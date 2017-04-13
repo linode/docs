@@ -5,7 +5,7 @@ author:
 description: 'Using lighttpd to host multiple websites on Ubuntu 9.10 (Karmic).'
 keywords: 'lighttpd,web server,web hosting'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/lighttpd/ubuntu-9-10-karmic/']
+alias: ['web-servers/lighttpd/ubuntu-9-10-karmic/','websites/lighttpd/lighttpd-web-server-on-ubuntu-9-10-karmic/']
 modified: Monday, October 7th, 2013
 modified_by:
   name: Linode
@@ -42,7 +42,7 @@ Edit your `/etc/apt/sources.list` file to enable the "universe" repositories by 
 :   ~~~
     ## main & restricted repositories
     deb http://us.archive.ubuntu.com/ubuntu/ karmic main restricted         
-    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic main restricted 
+    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
 
     deb http://security.ubuntu.com/ubuntu karmic-security main restricted
     deb-src http://security.ubuntu.com/ubuntu karmic-security main restricted
@@ -128,9 +128,9 @@ Modify the following settings in your `/etc/lighttpd/conf-enabled/10-simple-vhos
 {: .file-excerpt }
 /etc/lighttpd/conf-enabled/10-simple-vhost.conf
 :   ~~~ lighty
-    simple-vhost.server-root = "/srv/www" 
-    simple-vhost.document-root = "/public/" 
-    # simple-vhost.default-host = "brackley.org" 
+    simple-vhost.server-root = "/srv/www"
+    simple-vhost.document-root = "/public/"
+    # simple-vhost.default-host = "brackley.org"
     ~~~
 
 After editing this file reload the web server again with the following command:
@@ -235,13 +235,13 @@ If you install the php5-cgi package and enable mod\_fastcgi with `lighty-enable-
 {: .file-excerpt }
 /etc/lighttpd/conf-enabled/10-fastcgi.conf
 :   ~~~ lighty
-    fastcgi.server    = ( ".php" => 
+    fastcgi.server    = ( ".php" =>
             ((
                     "bin-path" => "/usr/bin/php-cgi",
                     "socket" => "/tmp/php.socket",
             "max-procs" => 2,
                     "idle-timeout" => 20,
-                    "bin-environment" => ( 
+                    "bin-environment" => (
                             "PHP_FCGI_CHILDREN" => "4",
                             "PHP_FCGI_MAX_REQUESTS" => "10000"
                     ),
@@ -295,6 +295,3 @@ You may wish to consult the following resources for additional information on th
 - [mod\_fastcgi Documentation (lighttpd wiki)](http://redmine.lighttpd.net/projects/lighttpd/wiki/Docs:ModFastCGI)
 - [HowtoForge Guides for lighttpd (howtoforge.com)](http://www.howtoforge.com/howtos/lighttpd)
 - [NixCraft Guides for Ligttpd (nixcraft)](http://www.cyberciti.biz/tips/category/lighttpd)
-
-
-

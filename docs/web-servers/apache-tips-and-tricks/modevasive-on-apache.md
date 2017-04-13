@@ -5,7 +5,7 @@ author:
 description: 'mod_evasive'
 keywords: 'mod_evasive, modevasive, evasive, apache'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/apache/mod-evasive/']
+alias: ['web-servers/apache/mod-evasive/','websites/apache-tips-and-tricks/modevasive-on-apache/']
 modified: Tuesday, February 5th, 2013
 modified_by:
   name: Linode
@@ -48,7 +48,7 @@ You'll then need to add the mod_evasive configuration to your Apache configurati
 {: .file }
 /etc/apache2/apache2.conf (Debian / Ubuntu)
 :   ~~~
-    # Include module configuration: 
+    # Include module configuration:
     Include mods-enabled/*.load
     Include mods-enabled/*.conf
     ~~~

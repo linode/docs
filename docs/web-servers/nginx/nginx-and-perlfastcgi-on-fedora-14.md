@@ -6,7 +6,7 @@ author:
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and Perl-FastCGI on Fedora 14.'
 keywords: 'nginx,nginx fedora 14,nginx fastcgi,nginx perl'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/nginx/perl-fastcgi/fedora-14/']
+alias: ['web-servers/nginx/perl-fastcgi/fedora-14/','websites/nginx/nginx-and-perlfastcgi-on-fedora-14/']
 modified: Monday, October 7th, 2013
 modified_by:
   name: Linode
@@ -58,7 +58,7 @@ Add the following lines to your `/etc/nginx/nginx.conf` file, immediately after 
 {: .file-excerpt }
 /etc/nginx/nginx.conf
 :   ~~~
-    # Load virtual host configuration files. 
+    # Load virtual host configuration files.
     include /etc/nginx/sites-enabled/*;
     ~~~
 
@@ -116,10 +116,10 @@ First create the FastCGI wrapper script (credit: [Denis S. Filimonov](http://www
 
     #this keeps the program alive or something after exec'ing perl scripts
     END() { } BEGIN() { }
-    *CORE::GLOBAL::exit = sub { die "fakeexit\nrc=".shift()."\n"; }; 
-    eval q{exit}; 
-    if ($@) { 
-        exit unless $@ =~ /^fakeexit/; 
+    *CORE::GLOBAL::exit = sub { die "fakeexit\nrc=".shift()."\n"; };
+    eval q{exit};
+    if ($@) {
+        exit unless $@ =~ /^fakeexit/;
     };
 
     &main;
@@ -145,7 +145,7 @@ First create the FastCGI wrapper script (credit: [Denis S. Filimonov](http://www
                #processing any STDIN input from WebServer (for CGI-POST actions)
                $stdin_passthrough ='';
                $req_len = 0 + $req_params{'CONTENT_LENGTH'};
-               if (($req_params{'REQUEST_METHOD'} eq 'POST') && ($req_len != 0) ){ 
+               if (($req_params{'REQUEST_METHOD'} eq 'POST') && ($req_len != 0) ){
                     my $bytes_read = 0;
                     while ($bytes_read < $req_len) {
                             my $data = '';
@@ -194,7 +194,7 @@ First create the FastCGI wrapper script (credit: [Denis S. Filimonov](http://www
                 exec($req_params{SCRIPT_FILENAME});
                 die("exec failed");
             }
-                } 
+                }
                 else {
                     print("Content-type: text/plain\r\n\r\n");
                     print "Error: No such CGI app - $req_params{SCRIPT_FILENAME} may not ";
@@ -356,6 +356,3 @@ You may wish to consult the following resources for additional information on th
 - [Perl Documentation](http://perldoc.perl.org/)
 - [Installing Nginx on Fedora 14](/docs/web-servers/nginx/installation/fedora-14)
 - [Basic Ngnix Configuration](/docs/websites/nginx/basic-nginx-configuration)
-
-
-

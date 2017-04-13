@@ -6,7 +6,7 @@ author:
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and Perl-FastCGI on Debian 5 (Lenny).'
 keywords: 'nginx,fastcgi perl,nginx debian,nginx fastcgi,nginx perl'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/nginx/perl-fastcgi/debian-5-lenny/']
+alias: ['web-servers/nginx/perl-fastcgi/debian-5-lenny/','websites/nginx/nginx-and-perlfastcgi-on-debian-5-lenny/']
 modified: Monday, October 8th, 2012
 modified_by:
   name: Linode
@@ -138,6 +138,3 @@ You may wish to consult the following resources for additional information on th
 - [Perl Documentation](http://perldoc.perl.org/)
 - [Installing Nginx on Debian 5 (Lenny)](/docs/web-servers/nginx/installation/debian-5-lenny)
 - [Basic Ngnix Configuration](/docs/websites/nginx/basic-nginx-configuration)
-
-
-

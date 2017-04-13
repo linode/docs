@@ -6,7 +6,7 @@ author:
 description: 'Use Cherokee Web Server on Ubuntu 12.04.'
 keywords: 'cherokee,web sever,ubuntu 12.04,posix,precise pangolin,ssh,ssh tunnel,cherokee admin,PuTTY'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-alias: ['web-servers/cherokee/installing-cherokee-ubuntu-12-04-precise-pangolin/', 'websites/cherokee/websites-with-the-cherokee-web-server-on-ubuntu-12-04-lts-precise-pangolin/']
+alias: ['web-servers/cherokee/installing-cherokee-ubuntu-12-04-precise-pangolin/', 'websites/cherokee/websites-with-the-cherokee-web-server-on-ubuntu-12-04-lts-precise-pangolin/','websites/cherokee/use-cherokee-web-server-on-ubuntu-12-04/']
 modified: Friday, March 11th, 2016
 modified_by:
   name: Linode
@@ -41,7 +41,7 @@ First, make sure you have the `universe` repositories enabled on your system. Yo
 :   ~~~
     ## main & restricted repositories
     deb http://us.archive.ubuntu.com/ubuntu/ lucid main restricted         
-    deb-src http://us.archive.ubuntu.com/ubuntu/ lucid main restricted 
+    deb-src http://us.archive.ubuntu.com/ubuntu/ lucid main restricted
 
     deb http://security.ubuntu.com/ubuntu lucid-security main restricted
     deb-src http://security.ubuntu.com/ubuntu lucid-security main restricted
@@ -77,13 +77,13 @@ The Cherokee web server includes an easy to use, comprehensive administration in
 
 Start `cherokee-admin` by issuing the following command:
 
-    cherokee-admin -b & 
+    cherokee-admin -b &
 
 This instructs the administration program to bind to all IP addresses so it may be reached remotely. It will be launched in the background, so you'll still be able to use your SSH session. You should see output similar to the following:
 
     user@hostname:~# cherokee-admin -b &
     [1] 2154
-    user@hostname:~# 
+    user@hostname:~#
     Login:
       User:              admin
       One-time Password: eFxccWtngt75ALZg
@@ -101,12 +101,12 @@ Instead of binding to all interfaces on your Linode, you may wish to bind to loc
 
 On your Linode:
 
-    killall cherokee-admin 
-    cherokee-admin & 
+    killall cherokee-admin
+    cherokee-admin &
 
 In a terminal window on your local workstation (MacOS X, Linux, BSD, etc):
 
-    ssh -L 9090:localhost:9090 root@198.51.100.0 -N 
+    ssh -L 9090:localhost:9090 root@198.51.100.0 -N
 
 Replace "198.51.100.0" with your Linode's IP address. You may now visit `http://localhost:9090` in your web browser browser via the SSH tunnel. To stop the tunnel, simply press **CTRL+C** in your local terminal window.
 

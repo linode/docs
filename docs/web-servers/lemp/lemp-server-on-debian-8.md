@@ -5,6 +5,7 @@ author:
 description: 'Install a LEMP stack to serve websites and applications on Debian 8'
 keywords: 'nginx,lemp,lepp,perl,python,php,linux,web applications'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+alias: 'websites/lemp/lemp-server-on-debian-8/'
 modified: Friday, November 18th, 2016
 modified_by:
   name: Linode
@@ -94,13 +95,13 @@ For more information regarding Nginx configuration options, check out our [Overv
         sudo apt-get install php5-cli php5-cgi spawn-fcgi php-pear
 
 2.  The following sequence of commands will:
-    
+
     * Download a small wrapper script for PHP-FastCGI.
     * Configure an init script to control the process.
     * Start the process for the first time.
     * Ensure that the process will start following a reboot cycle.
 
-          cd /opt/ 
+          cd /opt/
           sudo wget -O php-fastcgi-deb.sh http://www.linode.com/docs/assets/1548-php-fastcgi-deb.sh
           sudo mv /opt/php-fastcgi-deb.sh /usr/bin/php-fastcgi
           sudo chmod +x /usr/bin/php-fastcgi
@@ -188,4 +189,3 @@ MySQL database engine may be the leading open source relational database engine,
         sudo /etc/init.d/php-fastcgi restart
 
 You now have a fully functional and fully featured LEMP stack for application deployment.
-

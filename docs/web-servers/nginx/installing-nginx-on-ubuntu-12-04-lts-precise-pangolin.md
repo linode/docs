@@ -6,7 +6,7 @@ author:
 description: 'A basic guide to installing nginx from source on Ubuntu 12.04 LTS (Precise Pangolin)'
 keywords: 'nginx,nginx ubuntu 12.04,http,web servers,ubuntu,ubuntu l2.04,ubuntu precise pangolin'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/nginx/installation/ubuntu-12-04-precise-pangolin','websites/nginx/websites-with-nginx-on-ubuntu-12-04-lts-precise-pangolin/','websites/nginx/websites-with-nginx-on-ubuntu-12-04-lts-precise-pangolin/index.cfm/','websites/nginx/install-nginx-ubuntu-12-04/']
+alias: ['web-servers/nginx/installation/ubuntu-12-04-precise-pangolin','websites/nginx/websites-with-nginx-on-ubuntu-12-04-lts-precise-pangolin/','websites/nginx/websites-with-nginx-on-ubuntu-12-04-lts-precise-pangolin/index.cfm/','websites/nginx/install-nginx-ubuntu-12-04/','websites/nginx/installing-nginx-on-ubuntu-12-04-lts-precise-pangolin/']
 modified: Wednesday, September 16th, 2015
 modified_by:
   name: Elle Krout
@@ -102,7 +102,7 @@ Compiling from source gives you the most flexibility and choice for optimization
 
         cd /opt
 
-3.  [Download](https://www.nginx.com/) the latest version of Nginx Open Source and its PGP signature. You will have the choice of mainline, stable or legacy versions. Again, stable (1.8.0 at the time of this writing) is used as an example. 
+3.  [Download](https://www.nginx.com/) the latest version of Nginx Open Source and its PGP signature. You will have the choice of mainline, stable or legacy versions. Again, stable (1.8.0 at the time of this writing) is used as an example.
 
         sudo wget http://nginx.org/download/nginx-1.8.0.tar.gz
         sudo wget http://nginx.org/download/nginx-1.8.0.tar.gz.asc
@@ -166,7 +166,7 @@ Compiling from source gives you the most flexibility and choice for optimization
 
 7.  As the root user, create a separate user and group for Nginx:
 
-        sudo adduser --system --no-create-home --disabled-login --disabled-password --group nginx 
+        sudo adduser --system --no-create-home --disabled-login --disabled-password --group nginx
 
     NGINX is now installed in `/opt/nginx`.
 
@@ -242,7 +242,7 @@ Compiling from source gives you the most flexibility and choice for optimization
 9.  Make the file executable and add it to the default run levels:
 
         sudo chmod +x /etc/init.d/nginx
-        sudo /usr/sbin/update-rc.d -f nginx defaults 
+        sudo /usr/sbin/update-rc.d -f nginx defaults
 
 10. Start Nginx:
 

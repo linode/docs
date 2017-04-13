@@ -6,7 +6,7 @@ author:
 description: 'Instructions for getting started with the Cherokee web server on Ubuntu 9.04 (Jaunty).'
 keywords: 'cherokee,web sever,cherokee on ubuntu,ubuntu jaunty'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/cherokee/installing-cherokee-ubuntu-9-04-jaunty/']
+alias: ['web-servers/cherokee/installing-cherokee-ubuntu-9-04-jaunty/','websites/cherokee/websites-with-the-cherokee-web-server-on-ubuntu-9-04-jaunty/']
 modified: Friday, April 29th, 2011
 modified_by:
   name: Linode
@@ -53,7 +53,7 @@ Install Cherokee
 
 Enter the following command to install the Cherokee web server, its documentation and a collection of utilities.
 
-    apt-get install cherokee 
+    apt-get install cherokee
 
 Several packages will be installed in addition to the main server package. You may visit your Linode's IP address (or domain name, if you have it pointed to the IP) in a web browser to verify that Cherokee is running. You should see the default Cherokee test page.
 
@@ -64,13 +64,13 @@ The Cherokee web server includes an easy to use, comprehensive administration in
 
 Start `cherokee-admin` by issuing the following command:
 
-    cherokee-admin -b & 
+    cherokee-admin -b &
 
 This instructs the administration program to bind to all IP addresses so it may be reached remotely. It will be launched in the background, so you'll still be able to use your SSH session. You should see output similar to the following:
 
     root@archimedes:~# cherokee-admin -b &
     [1] 3319
-    root@archimedes:~# 
+    root@archimedes:~#
     Login:
       User:              admin
       One-time Password: YJ0cfZMSGw9B34vl
@@ -85,12 +85,12 @@ Instead of binding to all interfaces on your Linode, you may wish to bind to loc
 
 On your Linode:
 
-    killall cherokee-admin 
-    cherokee-admin & 
+    killall cherokee-admin
+    cherokee-admin &
 
 In a terminal window on your local workstation (MacOS X, Linux, BSD, etc) :
 
-    ssh -L 9090:localhost:9090 root@12.34.56.78 -N 
+    ssh -L 9090:localhost:9090 root@12.34.56.78 -N
 
 Replace "12.34.56.78" with your Linode's IP address. You may now visit `http://localhost:9090` in your web browser browser via the SSH tunnel. To stop the tunnel, simply press `Ctrl+C` in your local terminal window.
 
@@ -129,6 +129,3 @@ More Information
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [Cherokee Web Server Documentation](http://www.cherokee-project.com/doc/)
-
-
-

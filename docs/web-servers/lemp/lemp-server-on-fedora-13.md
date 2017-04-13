@@ -6,7 +6,7 @@ author:
 description: 'Install web applications with "LEMP," a LAMP-like stack using nginx, PostgreSQL/MySQL, and Perl/Python/PHP.'
 keywords: 'nginx,lemp,php,linux,web applications'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['lemp-guides/fedora-13/']
+alias: ['lemp-guides/fedora-13/','websites/lemp/lemp-server-on-fedora-13/']
 modified: Tuesday, May 3rd, 2011
 modified_by:
   name: Amanda Folson
@@ -170,7 +170,7 @@ If your application includes PHP code, you will need to implement the following 
 
 Issue the following sequence of commands to download a small wrapper script for PHP-FastCGI, configure an init script to control the process, start the process for the first time, and ensure that the process will start following a reboot cycle:
 
-    cd /opt/ 
+    cd /opt/
     wget -O php-fastcgi-rpm.sh http://www.linode.com/docs/assets/548-php-fastcgi-rpm.sh
     mv php-fastcgi-rpm.sh /usr/bin/php-fastcgi
     chmod +x /usr/bin/php-fastcgi
@@ -292,6 +292,3 @@ You may wish to consult the following resources for additional information on th
 - [Deploy CGI and Perl Scripts with Perl-FastCGI and nginx](/docs/web-servers/nginx/perl-fastcgi/fedora-13)
 - [Use PostgeSQL as an Alternative to MySQL for data storage](/docs/databases/postgresql/fedora-13)
 - [Deploy Python Applications with uWSGI and nginx](/docs/web-servers/nginx/python-uwsgi/fedora-13)
-
-
-

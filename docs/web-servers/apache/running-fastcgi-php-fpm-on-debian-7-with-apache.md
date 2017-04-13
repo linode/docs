@@ -5,7 +5,7 @@ author:
 description: 'Install and Configure mod_fastcgi and PHP-FPM on Debian with Apache'
 keywords: 'apache,fastcgi,php-fpm,php,php pool'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['websites/apache/php-fpm/debian-7/','web-servers/apache/php-fpm/apache-php-fpm-debian-ubuntu/']
+alias: ['websites/apache/php-fpm/debian-7/','web-servers/apache/php-fpm/apache-php-fpm-debian-ubuntu/','websites/apache/running-fastcgi-php-fpm-on-debian-7-with-apache/']
 contributor:
     name: Jesin A
     link: https://twitter.com/jesin_a
@@ -25,22 +25,22 @@ title: 'Running mod_fastcgi and PHP-FPM on Debian 7 (Wheezy) with Apache'
 
 This article explains how to configure and install `mod_fastcgi` and `PHP-FPM` on a Debian 7 instance using Apache. Apache's default configuration, which uses `mod_php` instead of `mod_fastcgi`, uses a significant amount of system resources.
 
-The main reason `mod_php` uses more resources is because it is loaded even for non-PHP files (like plain HTML and JavaScript files). The FastCGI Process Manager (PHP-FPM) helps to reduce the amount of system resources used by forcing the web server to act as a proxy and passing only files ending with the _php_ file extension to PHP-FPM. 
+The main reason `mod_php` uses more resources is because it is loaded even for non-PHP files (like plain HTML and JavaScript files). The FastCGI Process Manager (PHP-FPM) helps to reduce the amount of system resources used by forcing the web server to act as a proxy and passing only files ending with the _php_ file extension to PHP-FPM.
 
 Additionally, using PHP-FPM allows each virtual host to be configured to run PHP code as individual users. Previously, this was only possible by using suPHP.
 
-This guide assumes that you are familiar and comfortable with setting up [LAMP stacks](/docs/websites/lamp) on Debian 7. If you are new to Linux server administration, you may be interested in reading our [Linux System Administration Basics](/docs/tools-reference/linux-system-administration-basics) documentation series. 
+This guide assumes that you are familiar and comfortable with setting up [LAMP stacks](/docs/websites/lamp) on Debian 7. If you are new to Linux server administration, you may be interested in reading our [Linux System Administration Basics](/docs/tools-reference/linux-system-administration-basics) documentation series.
 
 ## Installing mod_fastcgi and PHP-FPM
 
 Both `mod_fastcgi` and `PHP-FPM` are part of repositories for aptitude supported by Debian 7. The following are necessary steps to install `mod_fastcgi` and `PHP-FPM`.
 
 1.  Update the apt-get repositories
-    
+
         sudo apt-get update && sudo apt-get upgrade --show-upgraded
 
 2.  See if `mod_fastcgi` is available. By default, the Debian 7 does not include the necessary repositories to install `mod_fastcgi` because it is a contrib module and is non-free (in terms of Debian's licensing restrictions).
-    
+
         sudo apt-cache search libapache2-mod-fastcgi
 
 3.  If it is not available, you will need to edit your `/etc/apt/sources.list` file to allow for contrib and non-free software to be loaded in the repository list. Your sources file should look like:
@@ -59,7 +59,7 @@ Both `mod_fastcgi` and `PHP-FPM` are part of repositories for aptitude supported
         # wheezy-updates, previously known as 'volatile'
         deb http://mirrors.linode.com/debian/ wheezy-updates main
         deb-src http://mirrors.linode.com/debian/ wheezy-updates main
-        ~~~ 
+        ~~~
 
     b) If you are using Debian's mirrors:
 
@@ -90,7 +90,7 @@ Both `mod_fastcgi` and `PHP-FPM` are part of repositories for aptitude supported
 We will now configure Apache to pass all requests for PHP files, with the _php_ file extension, to the PHP wrapper through FastCGI.
 
 1.  Enable the `mod_actions` module with the following command:
-    
+
         sudo a2enmod actions
 
 2.  Configure PHP-FPM to use UNIX sockets instead of TCP. In this command, we will use `grep` to determine if the sockets are already being used. In a standard installation, they will be.
@@ -105,7 +105,7 @@ We will now configure Apache to pass all requests for PHP files, with the _php_ 
 
 3.  If no output is returned, you will need to edit the following file and add this line:
 
-    {: .file-excerpt } 
+    {: .file-excerpt }
     etc/php5/fpm/pool.d/www.conf
     :   ~~~
         listen = /var/run/php5-fpm.sock

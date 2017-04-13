@@ -5,7 +5,7 @@ author:
 description: 'Install Apache on your Debian 7 server, configure virtual hosting, and set up module and scripting support.'
 keywords: 'apache,apache 2,debian,debian 7,wheezy,apache web server'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/apache/installation/debian-7-wheezy/','websites/apache/apache-2-web-server-on-debian-7-wheezy/','websites/apache/how-to-install-and-configure-the-apache-web-server-on-debian-7-wheezy/']
+alias: ['web-servers/apache/installation/debian-7-wheezy/','websites/apache/apache-2-web-server-on-debian-7-wheezy/','websites/apache/how-to-install-and-configure-the-apache-web-server-on-debian-7-wheezy/','websites/apache/apache-web-server-debian-7/']
 modified: Friday, January 10th, 2014
 modified_by:
   name: Linode
@@ -79,12 +79,12 @@ Apache supports *name-based virtual hosting*, which allows you to host multiple 
     {: .file }
     /etc/apache2/sites-available/example.com.conf
     :   ~~~ apache
-        <VirtualHost *:80> 
+        <VirtualHost *:80>
              ServerAdmin webmaster@example.com
              ServerName example.com
              ServerAlias www.example.com
              DocumentRoot /var/www/example.com/public_html/
-             ErrorLog /var/www/example.com/logs/error.log 
+             ErrorLog /var/www/example.com/logs/error.log
              CustomLog /var/www/example.com/logs/access.log combined
         </VirtualHost>
         ~~~
@@ -145,11 +145,11 @@ To install:
 
 -   Perl support:
 
-        sudo apt-get install libapache2-mod-perl2 
+        sudo apt-get install libapache2-mod-perl2
 
 -   Python support:
 
-        sudo apt-get install libapache2-mod-python 
+        sudo apt-get install libapache2-mod-python
 
 -   MySQL in Python support:
 

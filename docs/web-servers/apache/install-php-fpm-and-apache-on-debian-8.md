@@ -5,6 +5,7 @@ author:
 description: 'Install PHP-FPM and Apache on Debian 8 for Improved Website Agility and Security'
 keywords: 'php-fpm,apache,debian 8,php5-mysql,fastcgi,php,cgi,mod_php,php pool'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+alias: ['websites/apache/install-php-fpm-and-apache-on-debian-8/']
 modified: Tuesday, February 21st, 2017
 modified_by:
   name: Nick Brewer
@@ -19,7 +20,7 @@ PHP-FPM is an implementation of the FastCGI protocol for PHP. This guide covers 
 
 ## Benefits over mod_php
 
-While the `mod_php` module lets Apache run php scripts directly, it comes with the overhead of being loaded by every Apache process. For sites or servers that rely heavily on PHP this can be a benefit, but for largely static sites it makes more sense to only load php when needed. 
+While the `mod_php` module lets Apache run php scripts directly, it comes with the overhead of being loaded by every Apache process. For sites or servers that rely heavily on PHP this can be a benefit, but for largely static sites it makes more sense to only load php when needed.
 
 PHP-FPM also offers more security, since scripts are not run as the Apache user. When running multiple sites, you can even set site-specific users to run php scripts, helping prevent one site's compromise from affecting the others.
 
@@ -134,17 +135,17 @@ This is particularly useful when running multiple client sites because you can g
         ; the variable $pool can we used in any directive and will be replaced by the
         ; pool name ('www' here)
         [site1.com]
-        
+
         ...
-        
+
         ; Unix user/group of processes
         ; Note: The user is mandatory. If the group is not set, the default user's group
         ;       will be used.
         user = site1
         group = site1
-        
+
         ...
-        
+
         ; The address on which to accept FastCGI requests.
         ; Valid syntaxes are:
         ;   'ip.add.re.ss:port'    - to listen on a TCP socket to a specific IPv4 address on

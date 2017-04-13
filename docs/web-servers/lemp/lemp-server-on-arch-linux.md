@@ -6,7 +6,7 @@ author:
 description: 'Install a LEMP stack to serve websites and applications on Arch Linux'
 keywords: 'nginx,lemp,php,linux,web applications'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['lemp-guides/arch-linux/']
+alias: ['lemp-guides/arch-linux/','websites/lemp/lemp-server-on-arch-linux/']
 modified: Thursday, June 21st, 2012
 modified_by:
   name: Linode
@@ -33,7 +33,7 @@ Install the Nginx Web Server
 
 Before installing the nginx server, issue the following command to ensure that your system has an up to date version of the Arch Linux package repository. Issue the following command to update the package database:
 
-    pacman -Sy 
+    pacman -Sy
 
 You can then install the nginx server with the following command:
 
@@ -108,7 +108,7 @@ Deploy PHP with FastCGI
 
 If your application includes PHP code you will need to implement the following "PHP-FastCGI" solution to allow nginx to properly handle and serve pages that contain PHP code. Issue the following sequence of commands to build and install the packages required to run PHP as a FastCGI process:
 
-    pacman -S sudo base-devel php-cgi spawn-fcgi 
+    pacman -S sudo base-devel php-cgi spawn-fcgi
     cd /opt
     wget http://aur.archlinux.org/packages/spawn-fcgi-php/spawn-fcgi-php.tar.gz
     tar -zxvf spawn-fcgi-php.tar.gz
@@ -190,7 +190,7 @@ The MySQL database engine may be the leading open source relational database eng
 
 Issue the following command to start the MySQL daemon:
 
-    /etc/rc.d/mysqld start 
+    /etc/rc.d/mysqld start
 
 Add the `mysqld` daemon to the `DAEMONS=()` array at the end of the `/etc/rc.conf` file to ensure that the MySQL daemon starts following then next reboot cycle. Issue the following command to secure the MySQL instance. Answer all questions as prompted during this process:
 
@@ -220,6 +220,3 @@ You may wish to consult the following resources for additional information on th
 
 - [Basic nginx Configuration](/docs/websites/nginx/basic-nginx-configuration)
 - [Clustered Web Servers and Software Load Balancing with nginx](/docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer)
-
-
-

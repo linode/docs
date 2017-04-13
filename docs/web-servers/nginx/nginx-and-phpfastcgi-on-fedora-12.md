@@ -5,7 +5,7 @@ author:
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and PHP-FastCGI on Fedora 12'
 keywords: 'nginx,nginx fedora 12,nginx fastcgi,nginx php'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/nginx/php-fastcgi/fedora-12/']
+alias: ['web-servers/nginx/php-fastcgi/fedora-12/','websites/nginx/nginx-and-phpfastcgi-on-fedora-12/']
 modified: Tuesday, May 17th, 2011
 modified_by:
   name: Linode
@@ -31,7 +31,7 @@ Edit your `/etc/hosts` file to resemble the following, substituting your Linode'
 {: .file }
 /etc/hosts
 :   ~~~
-    127.0.0.1 localhost.localdomain localhost 
+    127.0.0.1 localhost.localdomain localhost
     12.34.56.78 hostname.example.com hostname
     ~~~
 
@@ -169,6 +169,3 @@ You may wish to consult the following resources for additional information on th
 - [PHP Documentation](http://www.php.net/docs.php)
 - [Installing Nginx on Fedora 12](/docs/web-servers/nginx/installation/fedora-12)
 - [Basic Ngnix Configuration](/docs/websites/nginx/basic-nginx-configuration)
-
-
-

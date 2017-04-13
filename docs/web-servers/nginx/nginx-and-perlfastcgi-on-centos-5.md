@@ -6,7 +6,7 @@ author:
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and Perl-FastCGI on CentOS 5.'
 keywords: 'nginx,nginx centos 5,nginx fastcgi,nginx perl'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/nginx/perl-fastcgi/centos-5/','websites/nginx/nginx-and-perlfastcgi-on-centos-5/index.cfm/']
+alias: ['web-servers/nginx/perl-fastcgi/centos-5/','websites/nginx/nginx-and-perlfastcgi-on-centos-5/index.cfm/','websites/nginx/nginx-and-perlfastcgi-on-centos-5/']
 modified: Wednesday, July 20th, 2011
 modified_by:
   name: Linode
@@ -43,7 +43,7 @@ Issue the following commands to update your system and install the nginx web ser
 
     yum update
     yum install nginx make automake gcc gcc-c++ fcgi-perl wget
-    yum install nginx fcg-perl wget 
+    yum install nginx fcg-perl wget
     chkconfig --add nginx
     chkconfig nginx on
     /etc/init.d/nginx start
@@ -125,10 +125,10 @@ First create the FastCGI wrapper script (credit: [Denis S. Filimonov](http://www
 
     #this keeps the program alive or something after exec'ing perl scripts
     END() { } BEGIN() { }
-    *CORE::GLOBAL::exit = sub { die "fakeexit\nrc=".shift()."\n"; }; 
-    eval q{exit}; 
-    if ($@) { 
-        exit unless $@ =~ /^fakeexit/; 
+    *CORE::GLOBAL::exit = sub { die "fakeexit\nrc=".shift()."\n"; };
+    eval q{exit};
+    if ($@) {
+        exit unless $@ =~ /^fakeexit/;
     };
 
     &main;
@@ -154,7 +154,7 @@ First create the FastCGI wrapper script (credit: [Denis S. Filimonov](http://www
                #processing any STDIN input from WebServer (for CGI-POST actions)
                $stdin_passthrough ='';
                $req_len = 0 + $req_params{'CONTENT_LENGTH'};
-               if (($req_params{'REQUEST_METHOD'} eq 'POST') && ($req_len != 0) ){ 
+               if (($req_params{'REQUEST_METHOD'} eq 'POST') && ($req_len != 0) ){
                     my $bytes_read = 0;
                     while ($bytes_read < $req_len) {
                             my $data = '';
@@ -203,7 +203,7 @@ First create the FastCGI wrapper script (credit: [Denis S. Filimonov](http://www
                 exec($req_params{SCRIPT_FILENAME});
                 die("exec failed");
             }
-                } 
+                }
                 else {
                     print("Content-type: text/plain\r\n\r\n");
                     print "Error: No such CGI app - $req_params{SCRIPT_FILENAME} may not ";

@@ -6,7 +6,7 @@ author:
 description: 'Host websites and web applications with a LAMP server on Debian 6.0 (Squeeze).'
 keywords: 'debian 6 LAMP server,debian LAMP guide,LAMP howto'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['lamp-guides/debian-6-squeeze/']
+alias: ['lamp-guides/debian-6-squeeze/','websites/lamp/lamp-server-on-debian-6-squeeze/']
 modified: Wednesday, October 9th, 2013
 modified_by:
   name: Linode
@@ -60,12 +60,12 @@ You can create as many virtual hosting files as you need to support the domains 
 {: .file }
 /etc/apache2/sites-available/example.com
 :   ~~~ apache
-    <VirtualHost *:80> 
+    <VirtualHost *:80>
          ServerAdmin webmaster@example.com
          ServerName example.com
          ServerAlias www.example.com
          DocumentRoot /srv/www/example.com/public_html/
-         ErrorLog /srv/www/example.com/logs/error.log 
+         ErrorLog /srv/www/example.com/logs/error.log
          CustomLog /srv/www/example.com/logs/access.log combined
     </VirtualHost>
     ~~~
@@ -73,12 +73,12 @@ You can create as many virtual hosting files as you need to support the domains 
 {: .file }
 /etc/apache2/sites-available/example.org
 :   ~~~ apache
-    <VirtualHost *:80> 
+    <VirtualHost *:80>
          ServerAdmin webmaster@example.org     
          ServerName example.org
          ServerAlias www.example.org
          DocumentRoot /srv/www/example.org/public_html/
-         ErrorLog /srv/www/example.org/logs/error.log 
+         ErrorLog /srv/www/example.org/logs/error.log
          CustomLog /srv/www/example.org/logs/access.log combined
     </VirtualHost>
     ~~~
@@ -168,8 +168,8 @@ Make sure that the following values are set, and relevant lines are uncommented 
     max_execution_time = 30
     memory_limit = 64M
     error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
-    display_errors = Off 
-    log_errors = On 
+    display_errors = Off
+    log_errors = On
     error_log = /var/log/php.log  
     register_globals = Off
     ~~~

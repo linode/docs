@@ -5,6 +5,7 @@ author:
 description: 'Learn how to install & configure Apache web server on Centos 7 on a Linode.'
 keywords: 'CentOS,CentOS 7,apache'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+alias: ['websites/apache/install-and-configure-apache-on-centos-7/']
 modified: 'Friday, November 18. 2016'
 modified_by:
     name: Edward Angert
@@ -60,9 +61,9 @@ Apache is an [open-source web server](https://httpd.apache.org/ABOUT_APACHE.html
     :   ~~~ conf
 
         DocumentRoot "/var/www/html/example.com/public_html"
-        
+
         ...
-        
+
         <IfModule prefork.c>
             StartServers        5
             MinSpareServers     20
@@ -84,7 +85,7 @@ You can choose many ways to set up a virtual host. In this section we recommend 
     /etc/httpd/conf.d/vhost.conf
     :   ~~~ conf
         NameVirtualHost *:80
-        
+
         <VirtualHost *:80>
             ServerAdmin webmaster@example.com
             ServerName example.com
@@ -120,7 +121,7 @@ You can choose many ways to set up a virtual host. In this section we recommend 
 
 CentOS 7's built-in firewall is set to block web traffic by default. Run the following commands to allow web traffic:
 
-    sudo firewall-cmd --add-service=http --permanent && sudo firewall-cmd --add-service=https --permanent 
+    sudo firewall-cmd --add-service=http --permanent && sudo firewall-cmd --add-service=https --permanent
     sudo systemctl restart firewalld
 
 ## Next Steps: Add SSL for Security and Install GlusterFS for High Availability

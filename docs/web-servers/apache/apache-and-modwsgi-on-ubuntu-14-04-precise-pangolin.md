@@ -5,6 +5,7 @@ author:
 description: 'Deploy Python WSGI Applications with Apache and mod_wsgi.'
 keywords: 'python,apache,mod\_wsgi,django'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+alias: ['websites/apache/apache-and-modwsgi-on-ubuntu-14-04-precise-pangolin/']
 modified: Wednesday, November 18th, 2015
 modified_by:
   name: Linode
@@ -23,7 +24,7 @@ external_resources:
 The WSGI specification provides a standard and efficient method for dynamic web applications to communicate with web servers. `mod_wsgi` provides a method for simply deploying WSGI applications with Apache. WSGI is used to deploy applications written with frameworks and tools like Django, Web.py, Werkzug, Chery.py, TurboGears, and Flask. This guides outline this installation and configuration process for WSGI with Apache on Ubuntu 14.04.
 
 ## Before You Begin
- 
+
 1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, and the Linode's [hostname is set](/docs/getting-started#setting-the-hostname).
 
 2.  We recommend that you are already familiar with [Apache](/docs/websites/apache/apache-web-server-on-ubuntu-14-04) before beginning this guide.
@@ -91,7 +92,7 @@ In this example the Web.py *application* is embedded in a `application.wsgi` fil
 
     class hello:        
         def GET(self, name):
-            if not name: 
+            if not name:
                 name = 'World'
             return 'Hello, ' + name + '!'
 
@@ -138,14 +139,14 @@ Apache `VirtualHost` Configuration
 
        DocumentRoot /var/www/html/example.com/public_html
 
-       ErrorLog /var/www/html/example.com/logs/error.log 
+       ErrorLog /var/www/html/example.com/logs/error.log
        CustomLog /var/www/html/example.com/logs/access.log combined
 
        WSGIScriptAlias / /var/www/html/example.com/application/application.wsgi
 
        Alias /robots.txt /var/www/html/example.com/public_html/robots.txt
        Alias /favicon.ico /var/www/html/example.com/public_html/favicon.ico
-       Alias /images /var/www/html/example.com/public_html/images 
+       Alias /images /var/www/html/example.com/public_html/images
        Alias /static /var/www/html/example.com/public_html/static
     </VirtualHost>
     ~~~

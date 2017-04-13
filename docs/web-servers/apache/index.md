@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 keywords: 'Apache web server,Apache on Linode,Linode web server'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/apache/']
+alias: ['websites/apache/']
 published: 'Thursday, July 16th, 2009'
 title: Hosting Websites with Apache
 ---

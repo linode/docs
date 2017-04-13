@@ -5,6 +5,7 @@ author:
 description: 'Install Apache on your Debian 8 (Jessie) server, configure virtual hosting, and set up modules and scripting.'
 keywords: 'apache debian 8,apache debian jessie,linux web server,apache on debian,apache jessie,apache,debian,web server'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+alias: ['websites/apache/apache-web-server-debian-8/']
 modified: Monday, June 29th, 2015
 modified_by:
   name: Elle Krout
@@ -135,12 +136,12 @@ Apache supports *name-based virtual hosting*, which allows you to host multiple 
     {: .file }
     /etc/apache2/sites-available/example.com.conf
     :   ~~~ conf
-        <VirtualHost *:80> 
+        <VirtualHost *:80>
              ServerAdmin webmaster@example.com
              ServerName example.com
              ServerAlias www.example.com
              DocumentRoot /var/www/example.com/public_html/
-             ErrorLog /var/www/example.com/logs/error.log 
+             ErrorLog /var/www/example.com/logs/error.log
              CustomLog /var/www/example.com/logs/access.log combined
         </VirtualHost>
         ~~~
@@ -182,7 +183,7 @@ One of Apache's strengths is its ability to be customized with modules. The defa
 
 1.  List available Apache modules:
 
-        sudo apt-cache search libapache2* 
+        sudo apt-cache search libapache2*
 
 2.  Install any desired modules:
 

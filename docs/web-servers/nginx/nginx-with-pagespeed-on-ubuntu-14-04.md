@@ -5,6 +5,7 @@ author:
 description: 'PageSpeed is an open source Google project created to optimize website performance using modules for Apache and nginx. PageSpeed is available as .deb or .rpm binaries, or can be compiled from source. This guide will walk you through setting up the ngx_pagespeed module for nginx on Ubuntu 14.04.'
 keywords: 'nginx,PageSpeed,ngx_pagespeed,pagespeed,ubuntu,Ubuntu 14.04,'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+alias: ['websites/nginx/nginx-with-pagespeed-on-ubuntu-14-04/']
 published: 'Tuesday, November 3rd, 2015'
 modified: Tuesday, November 3rd, 2015
 modified_by:
@@ -57,22 +58,22 @@ After installing necessary packages, you must download the module. In this guide
 
         NPS_VERSION=1.9.32.6
 
-3.  Now, you need to download the source of the module: 
-    
+3.  Now, you need to download the source of the module:
+
         wget https://github.com/pagespeed/ngx_pagespeed/archive/release-${NPS_VERSION}-beta.zip
 
-4.  Extract the file using `unzip` command: 
-    
+4.  Extract the file using `unzip` command:
+
         unzip release-${NPS_VERSION}-beta.zip
- 
+
 5.  Move to the module's directory:
-    
+
         cd ngx_pagespeed-release-${NPS_VERSION}-beta/
- 
-6.  Download some additional files: 
-    
+
+6.  Download some additional files:
+
         wget https://dl.google.com/dl/page-speed/psol/${NPS_VERSION}.tar.gz
- 
+
 7.  Extract the files using `tar` command:
 
         tar -xzvf ${NPS_VERSION}.tar.gz
@@ -151,7 +152,7 @@ Now that you have everything configured correctly, start your web server.
         sudo /usr/local/nginx/sbin/nginx
 
 2.  To stop the web server:
- 
+
         sudo /usr/local/nginx/sbin/nginx -s stop
 
 ##Check if module works or not
@@ -159,5 +160,5 @@ Now that you have everything configured correctly, start your web server.
 You have compiled and configured the module. You may want to check if the module is working (or not) before deploying the application. Issue the following command at the terminal of your local machine (i.e., your computer):
 
     curl -I website_url_or_IP_adress
-    
+
 You will see something like `X-Page-Speed: 1.9.32.6` in the response. This means that you have successfully installed ngx_pagespeed on your Linode.

@@ -1,6 +1,6 @@
 ---
 author:
-  name: Elle K. 
+  name: Elle K.
   email: docs@linode.com
 description: 'Get your website or web application online by setting up Apache, MySQL, and PHP'
 keywords: 'debian 8 LAMP server,debian LAMP,LAMP howto,lamp,debian,debian 8,websites,apache,mysql,php,apache 2.4,lamp debian'
@@ -10,7 +10,7 @@ modified_by:
   name: Alex Fornuto
 published: 'Monday, June 29th, 2015'
 title: 'LAMP on Debian 8 (Jessie)'
-alias: ['websites/lamp/lamp-server-debian-8/']
+alias: ['websites/lamp/lamp-server-debian-8/','websites/lamp/lamp-on-debian-8-jessie/']
 external_resources:
  - '[Debian Linux Home Page](http://www.debian.org/)'
  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.4/)'
@@ -110,12 +110,12 @@ There can be as many virtual hosts files as needed to support the amount of doma
     {: .file }
     /etc/apache2/sites-available/example.com.conf
     :   ~~~ conf
-        <VirtualHost *:80> 
+        <VirtualHost *:80>
              ServerAdmin webmaster@example.com
              ServerName example.com
              ServerAlias www.example.com
              DocumentRoot /var/www/html/example.com/public_html/
-             ErrorLog /var/www/html/example.com/logs/error.log 
+             ErrorLog /var/www/html/example.com/logs/error.log
              CustomLog /var/www/html/example.com/logs/access.log combined
         </VirtualHost>
         ~~~
@@ -125,12 +125,12 @@ There can be as many virtual hosts files as needed to support the amount of doma
     {: .file }
     /etc/apache2/sites-available/example.org.conf
     :   ~~~ conf
-        <VirtualHost *:80> 
+        <VirtualHost *:80>
              ServerAdmin webmaster@example.org     
              ServerName example.org
              ServerAlias www.example.org
              DocumentRoot /var/www/html/example.org/public_html/
-             ErrorLog /var/www/html/example.org/logs/error.log 
+             ErrorLog /var/www/html/example.org/logs/error.log
              CustomLog /var/www/html/example.org/logs/access.log combined
         </VirtualHost>
         ~~~
@@ -220,6 +220,3 @@ PHP makes it possible to produce dynamic and interactive pages using your own sc
 5.  Restart Apache:
 
         sudo systemctl restart apache2
-
-
-

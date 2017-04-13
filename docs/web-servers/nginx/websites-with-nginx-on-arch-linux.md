@@ -6,7 +6,7 @@ author:
 description: 'A basic guide to installing nginx on Arch Linux.'
 keywords: 'nginx arch linux,nginx arch,nginx,http server,web server'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/nginx/installation/arch-linux/']
+alias: ['web-servers/nginx/installation/arch-linux/','websites/nginx/websites-with-nginx-on-arch-linux/']
 modified: Thursday, March 27th, 2014
 modified_by:
   name: Alex Fornuto
@@ -62,6 +62,3 @@ You may wish to consult the following resources for additional information on th
 - [nginx Community Documentation](http://wiki.nginx.org)
 - [Configure Perl and FastCGI with nginx](/docs/web-servers/nginx/perl-fastcgi/arch-linux)
 - [Configure PHP and FastCGI with nginx](/docs/web-servers/nginx/php-fastcgi/arch-linux)
-
-
-

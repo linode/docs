@@ -6,7 +6,7 @@ author:
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and PHP-FastCGI on Debian 6 (Squeeze).'
 keywords: 'nginx,nginx debian 6,nginx fastcgi,nginx php'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/nginx/php-fastcgi/debian-6-squeeze/']
+alias: ['web-servers/nginx/php-fastcgi/debian-6-squeeze/','websites/nginx/nginx-and-phpfastcgi-on-debian-6-squeeze/']
 modified: Wednesday, June 15th, 2011
 modified_by:
   name: Tim Heckman
@@ -279,6 +279,3 @@ You may wish to consult the following resources for additional information on th
 - [FastCGI Project Homepage](http://www.fastcgi.com/)
 - [PHP Documentation](http://www.php.net/docs.php)
 - [Basic Ngnix Configuration](/docs/websites/nginx/basic-nginx-configuration)
-
-
-

@@ -6,7 +6,7 @@ author:
 description: 'Using lighttpd to host multiple websites on Ubuntu 12.04 (Precise)'
 keywords: 'lighttpd,web server,web hosting'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/lighttpd/ubuntu-12-04-precise/']
+alias: ['web-servers/lighttpd/ubuntu-12-04-precise/','websites/lighttpd/lighttpd-web-server-on-ubuntu-12-04-preci/']
 modified: Wednesday, September 11th, 2013
 modified_by:
   name: Linode
@@ -106,9 +106,9 @@ Modify the following settings in your `/etc/lighttpd/conf-enabled/10-simple-vhos
 {: .file-excerpt }
 /etc/lighttpd/conf-enabled/10-simple-vhost.conf
 :   ~~~ lighty
-    simple-vhost.server-root = "/var/www" 
-    simple-vhost.document-root = "/htdocs/" 
-    # simple-vhost.default-host = "brackley.org" 
+    simple-vhost.server-root = "/var/www"
+    simple-vhost.document-root = "/htdocs/"
+    # simple-vhost.default-host = "brackley.org"
     ~~~
 
 After editing this file reload the web server again with the following command:
@@ -210,13 +210,13 @@ If you install the php5-cgi package and enable mod\_fastcgi with `lighty-enable-
 {: .file-excerpt }
 /etc/lighttpd/conf-enabled/10-fastcgi.conf
 :   ~~~ lighty
-    fastcgi.server    = ( ".php" => 
+    fastcgi.server    = ( ".php" =>
             ((
                     "bin-path" => "/usr/bin/php-cgi",
                     "socket" => "/tmp/php.socket",
             "max-procs" => 2,
                     "idle-timeout" => 20,
-                    "bin-environment" => ( 
+                    "bin-environment" => (
                             "PHP_FCGI_CHILDREN" => "4",
                             "PHP_FCGI_MAX_REQUESTS" => "10000"
                     ),

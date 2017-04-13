@@ -5,7 +5,7 @@ author:
 description: 'Host websites and web applications with a LAMP server on Debian 7.0 (Wheezy).'
 keywords: 'debian 7 LAMP server,debian LAMP guide,LAMP howto,debian,debian 7,lamp server,lamp,apache,mysql,php,linux web'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['lamp-guides/debian-7-wheezy/']
+alias: ['lamp-guides/debian-7-wheezy/','websites/lamp/lamp-server-on-debian-7-wheezy/']
 modified: Tuesday, December 1st, 2015
 modified_by:
   name: Alex Fornuto
@@ -73,12 +73,12 @@ There are different ways to set up virtual hosts; however, the method below is r
     {: .file }
     /etc/apache2/sites-available/example.com.conf
     :   ~~~ conf
-        <VirtualHost *:80> 
+        <VirtualHost *:80>
              ServerAdmin webmaster@example.com
              ServerName example.com
              ServerAlias www.example.com
              DocumentRoot /var/www/example.com/public_html/
-             ErrorLog /var/www/example.com/logs/error.log 
+             ErrorLog /var/www/example.com/logs/error.log
              CustomLog /var/www/example.com/logs/access.log combined
         </VirtualHost>
         ~~~
@@ -134,8 +134,8 @@ Assuming that you have configured the DNS for your domain to point to your Linod
 
 2.  Create a database and a user with permissions for it. In this example the databse is called `webdata`, the user `webuser` and password `password`:
 
-        create database webdata; 
-        grant all on webdata.* to 'webuser' identified by 'password'; 
+        create database webdata;
+        grant all on webdata.* to 'webuser' identified by 'password';
 
 3.  Exit MySQL:
 

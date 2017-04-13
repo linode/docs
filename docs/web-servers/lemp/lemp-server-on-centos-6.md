@@ -5,7 +5,7 @@ author:
 description: 'Install a LEMP stack to serve websites and applications on CentOS 6'
 keywords: 'nginx,lemp,php,linux,web applications'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['lemp-guides/centos-6/']
+alias: ['lemp-guides/centos-6/','websites/lemp/lemp-server-on-centos-6/']
 modified: Tuesday, January 8th, 2013
 modified_by:
   name: Doug Freed
@@ -285,7 +285,7 @@ Make sure that the directories referenced in your configuration exist on your fi
 
 If your application includes PHP code you will need to implement the following "PHP-FastCGI" solution to allow nginx to properly handle and serve pages that contain PHP code. Begin the deployment process by issuing the following commands to install the required dependencies:
 
-    rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm 
+    rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
     yum update     
     yum install php-cli php spawn-fcgi wget
 
@@ -296,14 +296,14 @@ Next you will need to create the scripts that start and control the php-cgi proc
 :   ~~~ bash
     #!/bin/sh
 
-    if [ `grep -c "nginx" /etc/passwd` = "1" ]; then 
+    if [ `grep -c "nginx" /etc/passwd` = "1" ]; then
        FASTCGI_USER=nginx
-    elif [ `grep -c "www-data" /etc/passwd` = "1" ]; then 
+    elif [ `grep -c "www-data" /etc/passwd` = "1" ]; then
        FASTCGI_USER=www-data
-    elif [ `grep -c "http" /etc/passwd` = "1" ]; then 
+    elif [ `grep -c "http" /etc/passwd` = "1" ]; then
        FASTCGI_USER=http
-    else 
-    # Set the FASTCGI_USER variable below to the user that 
+    else
+    # Set the FASTCGI_USER variable below to the user that
     # you want to run the php-fastcgi processes as
 
     FASTCGI_USER=
@@ -325,14 +325,14 @@ Then create the init script to automatically start and the php-cgi process. To d
     # description: Use php-fastcgi to run php applications
     # processname: php-fastcgi
 
-    if [ `grep -c "nginx" /etc/passwd` = "1" ]; then 
+    if [ `grep -c "nginx" /etc/passwd` = "1" ]; then
        OWNER=nginx
-    elif [ `grep -c "www-data" /etc/passwd` = "1" ]; then 
+    elif [ `grep -c "www-data" /etc/passwd` = "1" ]; then
        OWNER=www-data
-    elif [ `grep -c "http" /etc/passwd` = "1" ]; then 
+    elif [ `grep -c "http" /etc/passwd` = "1" ]; then
        OWNER=http
-    else 
-    # Set the OWNER variable below to the user that 
+    else
+    # Set the OWNER variable below to the user that
     # you want to run the php-fastcgi processes as
 
     OWNER=

@@ -5,7 +5,7 @@ author:
 description: 'Installing, configuring, and managing the nginx web server for both static and dynamic content.'
 keywords: 'nginx,nginx linux,nginx tutorials, how to install nginx, Linode, configure nginx, managing nginx, cloud server, install nginx on cloud server'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/nginx/','websites/nginx/index.cfm/']
+alias: ['websites/nginx/index.cfm/','websites/nginx/']
 published: 'Monday, December 14th, 2009'
 title: 'Nginx'
 ---

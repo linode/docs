@@ -6,7 +6,7 @@ author:
 description: 'Configuring the LAMP stack on Ubuntu Linux 9.04 (Jaunty).'
 keywords: 'ubuntu lamp server,ubuntu web server,ubuntu jaunty'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['lamp-guides/ubuntu-9-04-jaunty/']
+alias: ['lamp-guides/ubuntu-9-04-jaunty/','websites/lamp/lamp-server-on-ubuntu-9-04-jaunty/']
 modified: Monday, May 2nd, 2011
 modified_by:
   name: Linode
@@ -75,12 +75,12 @@ First, create a file in the `/etc/apache2/sites-available/` directory for each v
 {: .file }
 /etc/apache2/sites-available/example.com
 :   ~~~ apache
-    <VirtualHost 12.34.56.78:80> 
+    <VirtualHost 12.34.56.78:80>
          ServerAdmin webmaster@example.com
          ServerName example.com
          ServerAlias www.example.com
          DocumentRoot /srv/www/example.com/public_html/
-         ErrorLog /srv/www/example.com/logs/error.log 
+         ErrorLog /srv/www/example.com/logs/error.log
          CustomLog /srv/www/example.com/logs/access.log combined
     </VirtualHost>
     ~~~
@@ -88,12 +88,12 @@ First, create a file in the `/etc/apache2/sites-available/` directory for each v
 {: .file }
 /etc/apache2/sites-available/example.org
 :   ~~~ apache
-    <VirtualHost 12.34.56.78:80> 
+    <VirtualHost 12.34.56.78:80>
          ServerAdmin webmaster@example.org     
          ServerName example.org
          ServerAlias www.example.org
          DocumentRoot /srv/www/example.org/public_html/
-         ErrorLog /srv/www/example.org/logs/error.log 
+         ErrorLog /srv/www/example.org/logs/error.log
          CustomLog /srv/www/example.org/logs/access.log combined
     </VirtualHost>
     ~~~
@@ -113,12 +113,12 @@ Before you can use the above configuration you'll need to create the specified d
 
 After you've set up your virtual hosts, issue the following commands:
 
-    a2ensite example.com 
+    a2ensite example.com
     a2ensite example.org
 
 This command symbolically links your virtual host file from `sites-available` to the `sites-enabled` directory. Finally, before you can access your sites you must reload Apache with the following command:
 
-    /etc/init.d/apache2 reload 
+    /etc/init.d/apache2 reload
 
 Assuming that you have configured the DNS for your domain to point to your Linode's IP address, Virtual hosting for your domain should now work.
 
@@ -208,7 +208,7 @@ To install the php5-suhosin package, which provides additional security for PHP 
 
 Now run the following command to update the package archive:
 
-    apt-get update 
+    apt-get update
 
 Finally, install the suhosin package by issuing:
 

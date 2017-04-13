@@ -6,7 +6,7 @@ author:
 description: 'Configuring a LAMP stack with Apache, MySQL, PHP and on Ubuntu 12.04 (Precise Pangolin).'
 keywords: 'ubuntu lamp server,ubuntu 12.04 lamp,lamp,ubuntu server,ubuntu,apache,mysql,php,lamp stacks'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['lamp-guides/ubuntu-12-04-precise-pangolin/']
+alias: ['lamp-guides/ubuntu-12-04-precise-pangolin/','websites/lamp/lamp-server-on-ubuntu-12-04-precise-pangolin/']
 modified: Tuesday, June 30th, 2015
 modified_by:
   name: Alex Fornuto
@@ -69,12 +69,12 @@ There are different ways to set up virtual hosts; however, the method below is r
     {: .file }
     /etc/apache2/sites-available/example.com.conf
     :   ~~~ conf
-        <VirtualHost *:80> 
+        <VirtualHost *:80>
              ServerAdmin webmaster@example.com
              ServerName example.com
              ServerAlias www.example.com
              DocumentRoot /var/www/example.com/public_html/
-             ErrorLog /var/www/example.com/logs/error.log 
+             ErrorLog /var/www/example.com/logs/error.log
              CustomLog /var/www/example.com/logs/access.log combined
         </VirtualHost>
         ~~~
@@ -111,7 +111,7 @@ There are different ways to set up virtual hosts; however, the method below is r
 
 1.  Install MySQL:
 
-        sudo apt-get install mysql-server 
+        sudo apt-get install mysql-server
 
     Choose a secure password when prompted.
 
@@ -123,7 +123,7 @@ There are different ways to set up virtual hosts; however, the method below is r
 
 1.  Log into MySQL:
 
-        mysql -u root -p 
+        mysql -u root -p
 
     Enter the root password. The MySQL prompt will appear.
 

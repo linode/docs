@@ -6,7 +6,7 @@ author:
 description: 'Creating a LAMP stack with Apache, MySQL, PHP, and Python on Fedora 19.'
 keywords: 'fedora 19 lamp,lamp server,linux lamp,fedora 19 apache'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['lamp-guides/fedora-19/']
+alias: ['lamp-guides/fedora-19/','websites/lamp/lamp-server-on-fedora-19/']
 modified: Friday, April 11th, 2014
 modified_by:
   name: Alex Fornuto
@@ -48,7 +48,7 @@ To install the current version of the Apache web server (in the 2.x series) use 
 
     yum install httpd
     systemctl enable httpd.service
-    systemctl start httpd.service 
+    systemctl start httpd.service
 
 The main configuration directives for Apache are contained in the `httpd.conf` file, which is located at `/etc/httpd/conf/httpd.conf`. We advise you to make a backup of this file into your home directory, like so:
 
@@ -85,21 +85,21 @@ Now we will create virtual host entries for each site that we need to host with 
 {: .file-excerpt }
 /etc/httpd/conf.d/vhost.conf
 :   ~~~ apache
-    <VirtualHost *:80> 
+    <VirtualHost *:80>
          ServerAdmin webmaster@example.com
          ServerName example.com
          ServerAlias www.example.com
          DocumentRoot /var/www/example.com/public_html/
-         ErrorLog /var/www/example.com/logs/error.log 
+         ErrorLog /var/www/example.com/logs/error.log
          CustomLog /var/www/example.com/logs/access.log combined
     </VirtualHost>
 
-    <VirtualHost *:80> 
+    <VirtualHost *:80>
          ServerAdmin webmaster@example.org     
          ServerName example.org
          ServerAlias www.example.org
          DocumentRoot /var/www/example.org/public_html/
-         ErrorLog /var/www/example.org/logs/error.log 
+         ErrorLog /var/www/example.org/logs/error.log
          CustomLog /var/www/example.org/logs/access.log combined
     </VirtualHost>
     ~~~
@@ -119,7 +119,7 @@ Before you can use the above configuration, you'll need to create the specified 
 
 After you've set up your virtual hosts, issue the following command to reload Apache with your new virtual hosts:
 
-    systemctl reload httpd.service 
+    systemctl reload httpd.service
 
 Once you have reloaded Apache, you can use the following command to confirm that your Virtual Hosts settings are correct
 
@@ -139,7 +139,7 @@ MySQL is a relational database management system (RDBMS) and is a popular compon
 
 The first step is to install the mysql-server package, which is accomplished by the following command:
 
-    yum install mysql-server 
+    yum install mysql-server
 
 If you want to run MySQL by default when the system boots, which is a typical setup, execute the following command:
 
@@ -194,10 +194,10 @@ Make sure that the following values are set, and relevant lines are uncommented 
 /etc/php.ini
 :   ~~~ ini
     error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
-    display_errors = Off 
-    log_errors = On 
+    display_errors = Off
+    log_errors = On
     error_log = /var/log/php/error.log
-    max_execution_time = 30 
+    max_execution_time = 30
     memory_limit = 128M
     register_globals = Off
     max_input_time = 30

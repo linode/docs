@@ -6,7 +6,7 @@ author:
 description: 'Instructions for getting started with the Cherokee web server on Debian 5 (Lenny).'
 keywords: 'cherokee,web sever,debian 5,debian lenny'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/cherokee/installing-cherokee-debian-5-lenny/']
+alias: ['web-servers/cherokee/installing-cherokee-debian-5-lenny/','websites/cherokee/websites-with-the-cherokee-web-server-on-debian-5-lenny/']
 modified: Friday, April 29th, 2011
 modified_by:
   name: Linode
@@ -61,8 +61,8 @@ Please note that in version 0.7.2, a login is not required to access `cherokee-a
 
 On your Linode:
 
-    killall cherokee-admin 
-    cherokee-admin & 
+    killall cherokee-admin
+    cherokee-admin &
 
 In a terminal window on your local workstation (MacOS X, Linux, BSD, etc) :
 
@@ -105,6 +105,3 @@ More Information
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [Cherokee Web Server Documentation](http://www.cherokee-project.com/doc/)
-
-
-

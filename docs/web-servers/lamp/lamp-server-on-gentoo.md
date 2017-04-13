@@ -6,7 +6,7 @@ author:
 description: 'Creating a LAMP stack with Apache, MySQL, and PHP on a Gentoo Linux powered Linode.'
 keywords: 'LAMP,Gentoo Linux,Gentoo'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['lamp-guides/gentoo-10-2013/']
+alias: ['lamp-guides/gentoo-10-2013/','websites/lamp/lamp-server-on-gentoo/']
 modified: Monday, February 10th, 2014
 modified_by:
   name: Alex Fornuto
@@ -106,12 +106,12 @@ Now we will create virtual host entries for each site being hosted on this serve
 {: .file }
 /etc/apache2/vhosts.d/example.conf
 :   ~~~ apache
-    <VirtualHost 12.34.56.78:80> 
+    <VirtualHost 12.34.56.78:80>
          ServerAdmin username@example.com
          ServerName example.com
          ServerAlias www.example.com
          DocumentRoot /srv/www/example.com/public_html/
-         ErrorLog /srv/www/example.com/logs/error.log 
+         ErrorLog /srv/www/example.com/logs/error.log
          CustomLog /srv/www/example.com/logs/access.log combined
     </VirtualHost>
     ~~~
@@ -162,7 +162,7 @@ In Gentoo Linux this provides version 5.1.70 of MySQL (at the time of this guide
 
 If you are starting MySQL for the first time, issue the following command:
 
-    /etc/init.d/mysql start 
+    /etc/init.d/mysql start
 
 To ensure that the MySQL daemon starts during the boot process, issue the following command:
 
@@ -227,10 +227,10 @@ Make sure that the following values are set, and relevant lines are uncommented 
 /etc/php/apache2-php5.5/php.ini
 :   ~~~ ini
     error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
-    display_errors = Off 
-    log_errors = On 
+    display_errors = Off
+    log_errors = On
     error_log = /var/log/php/error.log
-    max_execution_time = 30 
+    max_execution_time = 30
     memory_limit = 128M
     register_globals = Off
     max_input_time = 30

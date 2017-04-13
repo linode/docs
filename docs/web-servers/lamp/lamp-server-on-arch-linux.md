@@ -5,7 +5,7 @@ author:
 description: 'Creating a LAMP (Linux, Apache, MySQL, PHP) stack on an Arch Linux-powered Linode.'
 keywords: 'arch lamp,arch lamp stack,lamp linux,arch linode,arch linux lamp,arch linux,arch,lamp,lamp stack,apache,mysql,php'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['lamp-guides/arch-linux/','lamp-guides/arch-linux-10-2013/']
+alias: ['lamp-guides/arch-linux/','lamp-guides/arch-linux-10-2013/','websites/lamp/lamp-server-on-arch-linux/']
 modified: Monday, December 7th, 2015
 modified_by:
     name: Alex Fornuto
@@ -100,12 +100,12 @@ Virtual hosting can be configured so that multiple domains (or subdomains) can b
     {: .file-excerpt }
     /etc/httpd/conf/extra/httpd-vhosts.conf
     :   ~~~ conf
-        <VirtualHost *:80> 
+        <VirtualHost *:80>
              ServerAdmin webmaster@example.com
              ServerName example.com
              ServerAlias www.example.com
              DocumentRoot /srv/http/example.com/public_html/
-             ErrorLog /srv/http/example.com/logs/error.log 
+             ErrorLog /srv/http/example.com/logs/error.log
              CustomLog /srv/http/example.com/logs/access.log combined
                     <Directory />
                        Order deny,allow
@@ -154,10 +154,10 @@ By default, Arch Linux provides MariaDB as a relational database solution. Maria
         sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 
 3.  Start MySQL and set it to run at boot:
-    
+
         sudo systemctl start mysqld.service
         sudo systemctl enable mysqld.service
-    
+
 4.  Run `mysql_secure_installation`, a program that helps secure MySQL. `mysql_secure_installation` gives you the option to set your root password, disable root logins from outside localhost, remove anonymous user accounts, remove the test database and then reload the privilege tables:
 
         mysql_secure_installation
@@ -197,7 +197,7 @@ PHP makes it possible to produce dynamic and interactive pages using your own sc
     /etc/php/php.ini
     :   ~~~ ini
         error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
-        log_errors = On 
+        log_errors = On
         error_log = /var/log/php/error.log
         max_input_time = 30
         extension=mysql.so
@@ -219,7 +219,7 @@ PHP makes it possible to produce dynamic and interactive pages using your own sc
     :   ~~~ conf
         # Dynamic Shared Object (DSO) Support
         LoadModule php5_module modules/libphp5.so
-        
+
         # Supplemental configuration
         # PHP 5
         Include conf/extra/php5_module.conf

@@ -5,6 +5,7 @@ author:
 description: 'Install Apache on your Ubuntu 14.04 (Trusty Tahr) server, configure virtual hosting, and set up modules and scripting.'
 keywords: 'apache,ubuntu,ubuntu 14.04,trusty tahr,http,web server'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+alias: ['websites/apache/apache-web-server-on-ubuntu-14-04/']
 modified: Friday, July 31st, 2015
 modified_by:
   name: Elle Krout
@@ -135,12 +136,12 @@ Apache supports *name-based virtual hosting*, which allows you to host multiple 
     {: .file }
     /etc/apache2/sites-available/example.com.conf
     :   ~~~ conf
-        <VirtualHost *:80> 
+        <VirtualHost *:80>
              ServerAdmin webmaster@example.com
              ServerName example.com
              ServerAlias www.example.com
              DocumentRoot /var/www/example.com/public_html/
-             ErrorLog /var/www/example.com/logs/error.log 
+             ErrorLog /var/www/example.com/logs/error.log
              CustomLog /var/www/example.com/logs/access.log combined
         </VirtualHost>
         ~~~
@@ -181,7 +182,7 @@ One of Apache's strengths is its ability to be customized with modules. The defa
 
 1.  List available Apache modules:
 
-        sudo apt-cache search libapache2* 
+        sudo apt-cache search libapache2*
 
 2.  Install any desired modules:
 
@@ -204,11 +205,11 @@ To install:
 
 -   Perl support:
 
-        sudo apt-get install libapache2-mod-perl2 
+        sudo apt-get install libapache2-mod-perl2
 
 -   Python support:
 
-        sudo apt-get install libapache2-mod-python 
+        sudo apt-get install libapache2-mod-python
 
 -   PHP support:
 

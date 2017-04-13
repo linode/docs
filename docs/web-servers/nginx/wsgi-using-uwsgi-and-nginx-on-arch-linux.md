@@ -6,7 +6,7 @@ author:
 description: 'Use uWSGI to deploy Python application servers in conjunction with nginx.'
 keywords: 'uwsgi,wsgi,nginx,python,arch linux'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/nginx/python-uwsgi/arch-linux/']
+alias: ['web-servers/nginx/python-uwsgi/arch-linux/','websites/nginx/wsgi-using-uwsgi-and-nginx-on-arch-linux/']
 modified: Monday, October 7th, 2013
 modified_by:
   name: Linode
@@ -75,7 +75,7 @@ Issue the following sequence of commands to prepare the new init script and log 
 
 Start `uWSGI` for the first time by issuing the following command:
 
-    /etc/rc.d/uwsgi start 
+    /etc/rc.d/uwsgi start
 
 You will want to add the `uwsgi` daemon to the `DAEMONS=()` array at the end of the `/etc/rc.conf` file to ensure that the uWSGI daemon starts following the next reboot cycle.
 
@@ -152,6 +152,3 @@ You may wish to consult the following resources for additional information on th
 
 - [Deploy a LEMP Server on Arch Linux](/docs/lemp-guides/arch-linux/)
 - [Configure nginx Proxy Servers](/docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer)
-
-
-

@@ -6,7 +6,7 @@ author:
 description: 'A basic guide to installing nginx from source on Ubuntu 10.04 LTS (Lucid)'
 keywords: 'nginx,nginx ubuntu 10.04,http,web servers,ubuntu,ubuntu l0.04,ubuntu lucid'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/nginx/installation/ubuntu-10-04-lucid/']
+alias: ['web-servers/nginx/installation/ubuntu-10-04-lucid/','websites/nginx/websites-with-nginx-on-ubuntu-10-04-lts-lucid/']
 modified: Monday, October 7th, 2013
 modified_by:
   name: Linode
@@ -104,7 +104,7 @@ To build and install nginx with the above configuration, use the following comma
 
 You will also need to create a user and group for nginx. Issue the following command to do so:
 
-    adduser --system --no-create-home --disabled-login --disabled-password --group nginx 
+    adduser --system --no-create-home --disabled-login --disabled-password --group nginx
 
 Nginx is now installed in `/opt/nginx`.
 
@@ -126,7 +126,7 @@ Before we can begin to use the nginx server, we must create a means of controlli
     wget -O init-deb.sh http://www.linode.com/docs/assets/660-init-deb.sh
     mv init-deb.sh /etc/init.d/nginx
     chmod +x /etc/init.d/nginx
-    /usr/sbin/update-rc.d -f nginx defaults 
+    /usr/sbin/update-rc.d -f nginx defaults
 
 You can now start, stop, and restart nginx just like any other server daemon. For example, to start the server, issue the following command:
 
@@ -143,6 +143,3 @@ You may wish to consult the following resources for additional information on th
 - [nginx Community Documentation](http://wiki.nginx.org)
 - [Configure Perl and FastCGI with nginx](/docs/web-servers/nginx/perl-fastcgi/ubuntu-10.04-lucid)
 - [Configure PHP and FastCGI with nginx](/docs/web-servers/nginx/php-fastcgi/ubuntu-10.04-lucid)
-
-
-

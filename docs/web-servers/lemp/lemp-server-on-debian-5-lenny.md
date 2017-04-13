@@ -6,7 +6,7 @@ author:
 description: 'Install web applications with "LEMP," a LAMP-like stack using nginx,MySQL, PHP.'
 keywords: 'nginx,lemp,lepp,perl,python,php,linux,web applications'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['lemp-guides/debian-5-lenny/']
+alias: ['lemp-guides/debian-5-lenny/','websites/lemp/lemp-server-on-debian-5-lenny/']
 modified: Monday, February 18th, 2013
 modified_by:
   name: Linode
@@ -74,7 +74,7 @@ Pin the `nginx` package to the `lenny-backports` repository by inserting the fol
 Now issue the following commands to update the package manger and install the nginx package and the required dependencies:
 
     apt-get update
-    apt-get install nginx 
+    apt-get install nginx
 
 At the time of writing, this will install version 0.7.67 of the nginx server. Issue the following command to start nginx for the first time:
 
@@ -117,14 +117,14 @@ Issue the following commands to compile and then install the software as specifi
 
 Create a dedicated system user to run the nginx process under by issuing the following command:
 
-    adduser --system --no-create-home --disabled-login --disabled-password --group nginx 
+    adduser --system --no-create-home --disabled-login --disabled-password --group nginx
 
 Now install and configure the [init script](/docs/assets/549-init-deb.sh) to make it possible to start and stop the web server more easily. Issue the following command sequence:
 
     wget -O init-deb.sh http://www.linode.com/docs/assets/549-init-deb.sh
     mv init-deb.sh /etc/init.d/nginx
     chmod +x /etc/init.d/nginx
-    /usr/sbin/update-rc.d -f nginx defaults 
+    /usr/sbin/update-rc.d -f nginx defaults
 
 Now, issue the following command to start the web-server:
 
@@ -224,7 +224,7 @@ Visit the [spawn-fcgi project page](http://redmine.lighttpd.net/projects/spawn-f
 
 Issue the following sequence of commands to download a small wrapper script for PHP-FastCGI, configure an init script to control the process, start the process for the first time, and ensure that the process will start following a reboot cycle:
 
-    cd /opt/ 
+    cd /opt/
     wget -O php-fastcgi-deb.sh http://www.linode.com/docs/assets/551-php-fastcgi-deb.sh
     mv /opt/php-fastcgi-deb.sh /usr/bin/php-fastcgi
     chmod +x /usr/bin/php-fastcgi
@@ -350,6 +350,3 @@ You may wish to consult the following resources for additional information on th
 - [Deploy CGI and Perl Scripts with Perl-FastCGI and nginx](/docs/web-servers/nginx/perl-fastcgi/debian-5-lenny)
 - [Use PostgeSQL as an Alternative to MySQL for data storage](/docs/databases/postgresql/debian-5-lenny)
 - [Deploy Python Applications with uWSGI and nginx](/docs/web-servers/nginx/python-uwsgi/debian-5-lenny)
-
-
-

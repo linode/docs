@@ -6,7 +6,7 @@ author:
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and Perl-FastCGI on Ubuntu 9.10 (Karmic).'
 keywords: 'nginx,fastscgi perl,nginx ubuntu 9.10,nginx fastcgi,nginx perl'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/nginx/perl-fastcgi/ubuntu-9-10-karmic/']
+alias: ['web-servers/nginx/perl-fastcgi/ubuntu-9-10-karmic/','websites/nginx/nginx-and-perlfastcgi-on-ubuntu-9-10-karmic/']
 modified: Tuesday, May 17th, 2011
 modified_by:
   name: Linode
@@ -33,7 +33,7 @@ Edit your `/etc/hosts` file to resemble the following, substituting your Linode'
 {: .file }
 /etc/hosts
 :   ~~~
-    127.0.0.1 localhost.localdomain localhost 
+    127.0.0.1 localhost.localdomain localhost
     12.34.56.78 hostname.example.com hostname
     ~~~
 
@@ -67,7 +67,7 @@ Issue the following commands to update your system and install the nginx web ser
 
     apt-get update
     apt-get upgrade
-    apt-get install nginx build-essential psmisc wget libfcgi-perl curl 
+    apt-get install nginx build-essential psmisc wget libfcgi-perl curl
     echo "console output" >> /etc/init.d/nginx
     /etc/init.d/nginx start
 
@@ -178,6 +178,3 @@ You may wish to consult the following resources for additional information on th
 - [Perl Documentation](http://perldoc.perl.org/)
 - [Installing Nginx on Ubuntu 9.10 (Karmic)](/docs/web-servers/nginx/installation/ubuntu-9.10-karmic)
 - [Basic Ngnix Configuration](/docs/websites/nginx/basic-nginx-configuration)
-
-
-

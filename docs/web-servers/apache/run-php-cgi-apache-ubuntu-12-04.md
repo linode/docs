@@ -6,7 +6,7 @@ author:
 description: 'Use PHP CGI to run PHP scripts as indivudual users on Ubuntu 12.04.'
 keywords: 'php,php cgi,cgi,apache,php scripts,web apps,web applications'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/apache/php-cgi/ubuntu-12-04-precise-pangolin/','websites/apache/run-php-applications-under-cgi-with-apache-on-ubuntu-12-04-lts-precise-pangolin/']
+alias: ['web-servers/apache/php-cgi/ubuntu-12-04-precise-pangolin/','websites/apache/run-php-applications-under-cgi-with-apache-on-ubuntu-12-04-lts-precise-pangolin/','websites/apache/run-php-cgi-apache-ubuntu-12-04/']
 modified: Wednesday, October 31st, 2012
 modified_by:
   name: Linode
@@ -45,7 +45,7 @@ In instances where running the `mod_php` module to run PHP scripts on Apache is 
         sudo apt-get install apache2
 
     You can now [configure virtual hosting](/docs/web-servers/apache/installation/ubuntu-10.04-lucid#configure_apache_for_named_based_virtual_hosting) in accordance with the needs of your server.
-    
+
 2.  Install the PHP CGI binaries:
 
         sudo apt-get install php5-cgi
@@ -78,9 +78,9 @@ The configuration file for the CGI executable of PHP is located at `/etc/php5/cg
 /etc/php5/cgi/php.ini
 :   ~~~ ini
     error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
-    display_errors = Off 
-    log_errors = On 
-    error_log = /var/log/php.log 
+    display_errors = Off
+    log_errors = On
+    error_log = /var/log/php.log
     max_execution_time = 30
     memory_limit = 64M
     register_globals = Off

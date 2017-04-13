@@ -4,7 +4,8 @@ author:
     email: docs@linode.com
 description: 'Fine tune nginx for maximum performance'
 keywords: 'nginx,performance,tuning,optimize,web servers'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)
+alias: ['websites/nginx/configure-nginx-for-optimized-performance/']
 published: 'Wednesday, September 9th, 2015'
 modified: Wednesday, September 9th, 2015
 modified_by:
@@ -28,7 +29,7 @@ If you're unfamiliar with how nginx works, we suggest reading [How to Configure 
 
 ## Worker Modifications
 
-The easiest thing to set in your configuration is the right number of workers and connections. 
+The easiest thing to set in your configuration is the right number of workers and connections.
 
 ### Worker Processes
 
@@ -57,7 +58,7 @@ Lastly, you can utilize `multi_accept` in order for a worker to accept all new c
 
 The `events` function should look something like this when configured:
 
-	
+
 {: .file-excerpt}
 /etc/nginx/nginx.conf
 :	~~~ conf
@@ -79,7 +80,7 @@ Keep alive allows for fewer reconnections from the browser.
 
 -	`sendfile` optimizes serving static files from the file system, like logos.
 
--	`tcp_nodelay` allows nginx to make TCP send multiple buffers as individual packets. 
+-	`tcp_nodelay` allows nginx to make TCP send multiple buffers as individual packets.
 
 -	`tcp_nopush` optimizes the amount of data sent down the wire at once by activating the *TCP_CORK* option within the TCP stack. TCP_CORK blocks the data until the packet reaches the MSS, which is equal to the MTU minus the 40 or 60 bytes of the IP header.
 
@@ -210,7 +211,7 @@ The TCP FIN timeout belays the amount of time a port must be inactive before it 
 	~~~
 
 
-### Scale TCP Window 
+### Scale TCP Window
 
 The TCP window scale option is an option to increase the receive window size allowed in Transmission Control Protocol above its former maximum value of 65,535 bytes. This TCP option, along with several others, is defined in IETF RFC 1323 which deals with long fat networks.  It can be defined with the `net.ipv4.tcp_window_scaling = 1` tag.
 
@@ -323,7 +324,7 @@ Several tweaks have now been made across three files to improve nginx performanc
 	net.ipv4.tcp_max_tw_buckets = 1440000
 	net.ipv4.ip_local_port_range = 1024 65000
 	net.ipv4.tcp_fin_timeout = 15
-	net.ipv4.tcp_window_scaling = 1	
+	net.ipv4.tcp_window_scaling = 1
 	net.ipv4.tcp_max_syn_backlog = 3240000
 	~~~
 
@@ -343,45 +344,45 @@ nginx.conf
 :	~~~ conf
 	pid /var/run/nginx.pid;
 	worker_processes  2;
-	
+
 	events {
 		worker_connections   65536;
 		use epoll;
 		multi_accept on;
 	}
-	
+
 	http {
 		keepalive_timeout 65;
 		keepalive_requests 100000;
 		sendfile         on;
 		tcp_nopush       on;
 		tcp_nodelay      on;
-		
+
 		client_body_buffer_size    128k;
 		client_max_body_size       10m;
 		client_header_buffer_size    1k;
 		large_client_header_buffers  4 4k;
 		output_buffers   1 32k;
 		postpone_output  1460;
-		
+
 		client_header_timeout  3m;
 		client_body_timeout    3m;
 		send_timeout           3m;
-		
+
 		open_file_cache max=1000 inactive=20s;
 		open_file_cache_valid 30s;
 		open_file_cache_min_uses 5;
 		open_file_cache_errors off;
-		
+
 		gzip on;
 		gzip_min_length  1000;
 		gzip_buffers     4 4k;
 		gzip_types       text/html application/x-javascript text/css application/javascript text/javascript text/plain text/xml application/json application/vnd.ms-fontobject application/x-font-opentype application/x-font-truetype application/x-font-ttf application/xml font/eot font/opentype font/otf image/svg+xml image/vnd.microsoft.icon;
 		gzip_disable "MSIE [1-6]\.";
 
-		# [ debug | info | notice | warn | error | crit | alert | emerg ] 
+		# [ debug | info | notice | warn | error | crit | alert | emerg ]
 		error_log  /var/log/nginx.error_log  warn;
-		
+
 		log_format main      '$remote_addr - $remote_user [$time_local]  '
 		  '"$request" $status $bytes_sent '
 		  '"$http_referer" "$http_user_agent" '
@@ -391,18 +392,18 @@ nginx.conf
 		  '"$request" $status $bytes_sent '
 		  '"$http_referer" "$http_user_agent" '
   		'"$http_range" "$sent_http_content_range"';
-		
+
 		map $status $loggable {
 			~^[23]  0;
 			default 1;
-		} 
-		
+		}
+
 		server {
 			listen        127.0.0.1;
 			server_name   127.0.0.1;
 			root         /var/www/html;
 			access_log   /var/log/nginx.access_log  main;
-			
+
 			location / {
 				proxy_pass         http://127.0.0.1/;
 				proxy_redirect     off;
@@ -418,7 +419,7 @@ nginx.conf
 				proxy_temp_file_write_size 64k;
 				proxy_temp_path            /etc/nginx/proxy_temp;
 			}
-			
+
 			location ~* .(woff|eot|ttf|svg|mp4|webm|jpg|jpeg|png|gif|ico|css|js)$ {
 				expires 365d;
 			}

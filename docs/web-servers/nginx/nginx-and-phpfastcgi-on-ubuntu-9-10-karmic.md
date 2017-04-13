@@ -5,7 +5,7 @@ author:
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and PHP-FastCGI on Ubuntu 9.10 (Karmic).'
 keywords: 'nginx,nginx ubuntu 9.10,nginx fastcgi,nginx php'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/nginx/php-fastcgi/ubuntu-9-10-karmic/']
+alias: ['web-servers/nginx/php-fastcgi/ubuntu-9-10-karmic/','websites/nginx/nginx-and-phpfastcgi-on-ubuntu-9-10-karmic/']
 modified: Tuesday, May 17th, 2011
 modified_by:
   name: Linode
@@ -182,6 +182,3 @@ You may wish to consult the following resources for additional information on th
 - [PHP Documentation](http://www.php.net/docs.php)
 - [Installing Nginx on Ubuntu 9.10 (Karmic)](/docs/web-servers/nginx/installation/ubuntu-9.10-karmic)
 - [Basic Ngnix Configuration](/docs/websites/nginx/basic-nginx-configuration)
-
-
-

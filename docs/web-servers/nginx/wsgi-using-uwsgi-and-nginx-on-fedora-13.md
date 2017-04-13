@@ -6,7 +6,7 @@ author:
 description: 'Use uWSGI to deploy Python application servers in conjunction with nginx.'
 keywords: 'uwsgi,wsgi,nginx,python'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/nginx/python-uwsgi/fedora-13/']
+alias: ['web-servers/nginx/python-uwsgi/fedora-13/','websites/nginx/wsgi-using-uwsgi-and-nginx-on-fedora-13/']
 modified: Friday, April 29th, 2011
 modified_by:
   name: Linode
@@ -58,7 +58,7 @@ Issue the following commands to download and compile nginx with support for the 
     tar -zxvf nginx-1.0.0.tar.gz
     cd /opt/nginx-1.0.0/
     ./configure --prefix=/opt/nginx --user=nginx --group=nginx --with-http_ssl_module
-    make 
+    make
     make install
     useradd -M -r --shell /bin/sh --home-dir /opt/nginx nginx
     mkdir /var/lib/nginx
@@ -68,7 +68,7 @@ Issue the following commands to download and compile nginx with support for the 
     chmod +x /etc/rc.d/init.d/nginx
     chkconfig --add nginx
     chkconfig nginx on
-    /etc/init.d/nginx start 
+    /etc/init.d/nginx start
 
 Configure uWSGI
 ---------------
@@ -116,7 +116,7 @@ Issue the following commands to make this init script executable, ensure that uW
 
     chkconfig --add uwsgi
     chkconfig uwsgi on
-    /etc/init.d/uwsgi start 
+    /etc/init.d/uwsgi start
 
 Configure nginx Server
 ----------------------
@@ -192,6 +192,3 @@ You may wish to consult the following resources for additional information on th
 - [Installing Nginx on Fedora 13](/docs/web-servers/nginx/installation/fedora-13)
 - [Deploy a LEMP Server on Fedora 13](/docs/lemp-guides/fedora-13/)
 - [Configure nginx Proxy Servers](/docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer)
-
-
-

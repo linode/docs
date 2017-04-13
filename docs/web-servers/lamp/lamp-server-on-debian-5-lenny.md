@@ -6,7 +6,7 @@ author:
 description: 'How to build a LAMP application server with Debian 5.0 (Lenny).'
 keywords: 'Debian LAMP Server,Debian LAMP guide,LAMP howto'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['lamp-guides/debian-5-lenny/']
+alias: ['lamp-guides/debian-5-lenny/','websites/lamp/lamp-server-on-debian-5-lenny/']
 modified: Wednesday, October 3rd, 2012
 modified_by:
   name: Linode
@@ -58,12 +58,12 @@ You can create as many virtual hosting files as you need to support the domains 
 {: .file }
 /etc/apache2/sites-available/example.com
 :   ~~~ apache
-    <VirtualHost *:80> 
+    <VirtualHost *:80>
          ServerAdmin webmaster@example.com
          ServerName example.com
          ServerAlias www.example.com
          DocumentRoot /srv/www/example.com/public_html/
-         ErrorLog /srv/www/example.com/logs/error.log 
+         ErrorLog /srv/www/example.com/logs/error.log
          CustomLog /srv/www/example.com/logs/access.log combined
     </VirtualHost>
     ~~~
@@ -71,12 +71,12 @@ You can create as many virtual hosting files as you need to support the domains 
 {: .file }
 /etc/apache2/sites-available/example.org
 :   ~~~ apache
-    <VirtualHost *:80> 
+    <VirtualHost *:80>
          ServerAdmin webmaster@example.org     
          ServerName example.org
          ServerAlias www.example.org
          DocumentRoot /srv/www/example.org/public_html/
-         ErrorLog /srv/www/example.org/logs/error.log 
+         ErrorLog /srv/www/example.org/logs/error.log
          CustomLog /srv/www/example.org/logs/access.log combined
     </VirtualHost>
     ~~~
@@ -96,7 +96,7 @@ Before you can use the above configuration you'll need to create the specified d
 
 After you've set up your virtual hosts, issue the following commands:
 
-    a2ensite example.com 
+    a2ensite example.com
     a2ensite example.org
 
 This command symbolically links your virtual host file from `sites-available` to the `sites-enabled` directory. Finally, before you can access your sites you must reload Apache with the following command:
@@ -170,8 +170,8 @@ Make sure that the following values are set, and relevant lines are uncommented 
     max_execution_time = 30
     memory_limit = 64M
     error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
-    display_errors = Off 
-    log_errors = On 
+    display_errors = Off
+    log_errors = On
     error_log = /var/log/php.log  
     register_globals = Off
     ~~~

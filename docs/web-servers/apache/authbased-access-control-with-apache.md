@@ -5,7 +5,7 @@ author:
 description: 'Using HTTP AUTH to limit and control access to resources hosted on websites.'
 keywords: 'access control,http auth,mod\_auth,http,apache,web server,security'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/apache/configuration/http-authentication/']
+alias: ['web-servers/apache/configuration/http-authentication/','websites/apache/authbased-access-control-with-apache/']
 modified: Monday, August 22nd, 2011
 modified_by:
   name: Linode
@@ -49,7 +49,7 @@ To generate passwords, we need the `htpasswd` tool. For many distributions, this
 
     apt-get update
     apt-get upgrade
-    apt-get install apache2-utils 
+    apt-get install apache2-utils
 
 To create a new file with a single user, issue the following command:
 

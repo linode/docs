@@ -6,7 +6,7 @@ author:
 description: 'Use uWSGI to deploy Python application servers in conjunction with nginx.'
 keywords: 'uwsgi,wsgi,nginx,python'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/nginx/python-uwsgi/ubuntu-9-10-karmic/']
+alias: ['web-servers/nginx/python-uwsgi/ubuntu-9-10-karmic/','websites/nginx/wsgi-using-uwsgi-and-nginx-on-ubuntu-9-10-karmic/']
 modified: Friday, April 29th, 2011
 modified_by:
   name: Linode
@@ -58,15 +58,15 @@ Issue the following commands to download and compile nginx with support for the 
     tar -zxvf nginx-1.0.0.tar.gz
     cd /opt/nginx-1.0.0/
     ./configure --prefix=/opt/nginx --user=nginx --group=nginx --with-http_ssl_module
-    make 
+    make
     make install
-    adduser --system --no-create-home --disabled-login --disabled-password --group nginx 
+    adduser --system --no-create-home --disabled-login --disabled-password --group nginx
     cp /opt/uwsgi/nginx/uwsgi_params /opt/nginx/conf/uwsgi_params
     wget -O init-deb.sh http://www.linode.com/docs/assets/652-init-deb.sh
     mv init-deb.sh /etc/init.d/nginx
     chmod +x /etc/init.d/nginx
-    /usr/sbin/update-rc.d -f nginx defaults 
-    /etc/init.d/nginx start 
+    /usr/sbin/update-rc.d -f nginx defaults
+    /etc/init.d/nginx start
 
 Configure uWSGI
 ---------------
@@ -112,7 +112,7 @@ If you want to deploy a "Hello World" application, insert the following code int
 
 Issue the following commands to make this init script executable, ensure that uWSGI is restarted following the next reboot sequence, and start the service:
 
-    /usr/sbin/update-rc.d -f uwsgi defaults 
+    /usr/sbin/update-rc.d -f uwsgi defaults
     /etc/init.d/uwsgi start
 
 Configure nginx Server
@@ -189,6 +189,3 @@ You may wish to consult the following resources for additional information on th
 - [Installing Nginx on Ubuntu 9.10 (Karmic)](/docs/web-servers/nginx/installation/ubuntu-9.10-karmic)
 - [Deploy a LEMP Server on Ubuntu 9.10 (Karmic)](/docs/lemp-guides/ubuntu-9.10-karmic/)
 - [Configure nginx Proxy Servers](/docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer)
-
-
-

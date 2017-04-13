@@ -6,7 +6,7 @@ author:
 description: 'A basic guide to installing nginx from source on Ubuntu 9.10 (Karmic)'
 keywords: 'nginx,http,web servers,ubuntu,ubuntu 9.10,ubuntu karmic'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/nginx/installation/ubuntu-9-10-karmic/']
+alias: ['web-servers/nginx/installation/ubuntu-9-10-karmic/','websites/nginx/websites-with-nginx-on-ubuntu-9-10-karmic/']
 modified: Friday, April 29th, 2011
 modified_by:
   name: Linode
@@ -35,7 +35,7 @@ To install nginx from the Ubuntu repositories, you'll need to uncomment the univ
 :   ~~~
     ## main & restricted repositories
     deb http://us.archive.ubuntu.com/ubuntu/ karmic main restricted         
-    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic main restricted 
+    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
 
     deb http://security.ubuntu.com/ubuntu karmic-security main restricted
     deb-src http://security.ubuntu.com/ubuntu karmic-security main restricted
@@ -111,7 +111,7 @@ To build and install nginx with the above configuration, use the following comma
 
 You will also need to create a user and group for nginx. Issue the following command to do so:
 
-    adduser --system --no-create-home --disabled-login --disabled-password --group nginx 
+    adduser --system --no-create-home --disabled-login --disabled-password --group nginx
 
 Nginx is now installed in `/opt/nginx`.
 
@@ -133,7 +133,7 @@ Before we can begin to use the nginx server, we must create a means of controlli
     wget -O init-deb.sh http://www.linode.com/docs/assets/634-init-deb.sh
     mv init-deb.sh /etc/init.d/nginx
     chmod +x /etc/init.d/nginx
-    /usr/sbin/update-rc.d -f nginx defaults 
+    /usr/sbin/update-rc.d -f nginx defaults
 
 You can now start, stop, and restart nginx just like any other server daemon. For example, to start the server, issue the following command:
 
@@ -154,6 +154,3 @@ You may wish to consult the following resources for additional information on th
 - [Configure Perl and FastCGI with nginx](/docs/web-servers/nginx/perl-fastcgi/ubuntu-9.10-karmic)
 - [Configure PHP and FastCGI with nginx](/docs/web-servers/nginx/php-fastcgi/ubuntu-9.10-karmic)
 - [Configure Ruby on Rails with nginx](/docs/frameworks/ruby-on-rails-nginx/ubuntu-9.10-karmic)
-
-
-

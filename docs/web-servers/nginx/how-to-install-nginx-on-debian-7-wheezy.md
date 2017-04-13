@@ -5,7 +5,7 @@ author:
 description: 'A basic guide to installing nginx from source on Debian 7 (Wheezy)'
 keywords: 'nginx,http,web servers,debian,debian wheezy,debian 7, install nginx on debian 7, install nginx'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/nginx/installation/debian-7-wheezy/','websites/nginx/basic-nginx-installation/','websites/nginx/websites-with-nginx-on-debian-7-wheezy/','websites/nginx/websites-with-nginx-on-debian-7-wheezy/index.cfm/','websites/nginx/install-nginx-debian-7/','websites/nginx/how-to-install-nginx-on-debian-7-wheezy/index.cfm/']
+alias: ['web-servers/nginx/installation/debian-7-wheezy/','websites/nginx/basic-nginx-installation/','websites/nginx/websites-with-nginx-on-debian-7-wheezy/','websites/nginx/websites-with-nginx-on-debian-7-wheezy/index.cfm/','websites/nginx/install-nginx-debian-7/','websites/nginx/how-to-install-nginx-on-debian-7-wheezy/index.cfm/','websites/nginx/how-to-install-nginx-on-debian-7-wheezy/']
 modified: Tuesday, January 28th, 2014
 modified_by:
   name: Linode
@@ -100,7 +100,7 @@ To build and install Nginx with the above configuration, use the following comma
 
 You will also need to create a user and group for Nginx, issue the following command:
 
-    sudo adduser --system --no-create-home --disabled-login --disabled-password --group nginx 
+    sudo adduser --system --no-create-home --disabled-login --disabled-password --group nginx
 
 Nginx is now installed in `/opt/nginx`.
 
@@ -122,7 +122,7 @@ Before you can use the Nginx server, you must create a means of controlling the 
     sudo wget -O init-deb.sh http://www.linode.com/docs/assets/1538-init-deb.sh
     sudo mv init-deb.sh /etc/init.d/nginx
     sudo chmod +x /etc/init.d/nginx
-    sudo /usr/sbin/update-rc.d -f nginx defaults 
+    sudo /usr/sbin/update-rc.d -f nginx defaults
 
 You can now start, stop, and restart Nginx just like any other server daemon. For example, to start the server, issue the following command:
 

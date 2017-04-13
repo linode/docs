@@ -6,7 +6,7 @@ author:
 description: 'Methods for enabling dynamic content to run as individual users with PHP on Ubuntu 8.04 (Hardy).'
 keywords: 'php cgi,php apache,php scripts,dynamic apache,web applications'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/apache/php-cgi/ubuntu-8-04-hardy/']
+alias: ['web-servers/apache/php-cgi/ubuntu-8-04-hardy/','websites/apache/run-php-applications-under-cgi-with-apache-on-ubuntu-8-04-hardy/']
 modified: Monday, October 8th, 2012
 modified_by:
   name: Linode
@@ -67,10 +67,10 @@ The configuration file for the CGI executable of PHP is located at `/etc/php5/cg
 /etc/php5/cgi/php.ini
 :   ~~~ ini
     error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
-    display_errors = Off 
-    log_errors = On 
-    error_log = /var/log/php.log 
-    max_execution_time = 30 
+    display_errors = Off
+    log_errors = On
+    error_log = /var/log/php.log
+    max_execution_time = 30
     memory_limit = 64M
     register_globals = Off
     ~~~
@@ -116,6 +116,3 @@ You may wish to consult the following resources for additional information on th
 
 - [The PHP Homepage](http://php.net/)
 - [Apache 2.2 CGI documentation](http://httpd.apache.org/docs/2.2/howto/cgi.html)
-
-
-

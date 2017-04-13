@@ -6,7 +6,7 @@ author:
 description: 'Use PHP CGI to run PHP scripts as indivudual users.'
 keywords: 'php cgi,php,apache,cgi,http,php scripts,web apps,web applications'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/apache/php-cgi/centos-6/','websites/apache/run-php-applications-under-cgi-with-apache-on-centos-6/']
+alias: ['web-servers/apache/php-cgi/centos-6/','websites/apache/run-php-applications-under-cgi-with-apache-on-centos-6/','websites/apache/run-php-cgi-apache-centos-6/']
 modified: Tuesday, January 14th, 2014
 modified_by:
   name: Linode
@@ -48,8 +48,8 @@ In instances where running the `mod_php` module to run PHP scripts on Apache is 
 
         sudo chkconfig httpd on
 
-    You can now [configure virtual hosting](/docs/web-servers/apache/installation/centos-5#configure_apache) in accordance with the needs of your server. 
-    
+    You can now [configure virtual hosting](/docs/web-servers/apache/installation/centos-5#configure_apache) in accordance with the needs of your server.
+
 3.  Install the PHP CGI binaries:
 
         sudo yum install php-cgi
@@ -79,10 +79,10 @@ The configuration file for PHP is located at `/etc/php.ini`. You can modify this
 /etc/php.ini
 :   ~~~ ini
     error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
-    display_errors = Off 
-    log_errors = On 
-    error_log = /var/log/php.log 
-    max_execution_time = 300 
+    display_errors = Off
+    log_errors = On
+    error_log = /var/log/php.log
+    max_execution_time = 300
     memory_limit = 64M
     register_globals = Off
     ~~~

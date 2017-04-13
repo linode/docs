@@ -5,7 +5,7 @@ author:
 description: 'An introduction to mod\_alias for managing file system resources with the Apache web server.'
 keywords: 'resources,http,files,management,mod\_alias,Alias,apache'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/apache/configuration/managing-resources-with-apache-alias/']
+alias: ['web-servers/apache/configuration/managing-resources-with-apache-alias/','websites/apache-tips-and-tricks/managing-resources-with-apache-modalias/']
 modified: Monday, August 22nd, 2011
 modified_by:
   name: Linode
@@ -38,7 +38,7 @@ Apache Configuration
     <Directory /srv/git/public>
         Order allow,deny
         Allow from all
-    </Directory> 
+    </Directory>
     ~~~
 
 Without the `Alias` directive, a request for `http://example.com/code/` would return resources available in the folder `/srv/www/example.com/public_html/code/`. However, the `Alias` would direct Apache to serve content from the `/srv/git/public` directory. The `<Directory>` section permits remote users to access this directory.

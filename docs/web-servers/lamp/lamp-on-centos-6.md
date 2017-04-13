@@ -5,7 +5,7 @@ author:
 description: 'Create a LAMP stack on a CentOS 6 Linode.'
 keywords: 'LAMP,CentOS,CentOS 6,apache,mysql,php,centos lamp'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['lamp-guides/centos-6/','websites/lamp/lamp-server-on-centos-6/']
+alias: ['lamp-guides/centos-6/','websites/lamp/lamp-server-on-centos-6/','websites/lamp/lamp-on-centos-6/']
 modified: Tuesday, December 1st, 2015
 modified_by:
   name: Alex Fornuto
@@ -84,12 +84,12 @@ There are different ways to set up virtual hosts; however, the method below is r
     :   ~~~ apache
         NameVirtualHost *:80
 
-        <VirtualHost *:80> 
+        <VirtualHost *:80>
              ServerAdmin webmaster@example.com
              ServerName example.com
              ServerAlias www.example.com
              DocumentRoot /var/www/example.com/public_html/
-             ErrorLog /var/www/example.com/logs/error.log 
+             ErrorLog /var/www/example.com/logs/error.log
              CustomLog /var/www/example.com/logs/access.log combined
         </VirtualHost>
         ~~~
@@ -108,7 +108,7 @@ There are different ways to set up virtual hosts; however, the method below is r
 3.  Start Apache for the first time, and set it to run at boot:
 
         sudo service httpd start
-        sudo /sbin/chkconfig --levels 235 httpd on 
+        sudo /sbin/chkconfig --levels 235 httpd on
 
     You should new be able to view a default Apache page on your website.
 
@@ -116,7 +116,7 @@ There are different ways to set up virtual hosts; however, the method below is r
     >
     >Anytime you change an option in your `vhost.conf` file, or any other Apache configuration file, remember to reload the configuration with the following command:
     >
-    >     sudo service httpd reload 
+    >     sudo service httpd reload
 
 
 ## MySQL
@@ -130,7 +130,7 @@ There are different ways to set up virtual hosts; however, the method below is r
 2.  Start MySQL, and set it to run at boot:
 
         sudo service mysqld start
-        sudo /sbin/chkconfig --levels 235 mysqld on 
+        sudo /sbin/chkconfig --levels 235 mysqld on
 
 3.  Run `mysql_secure_installation` to secure MySQL. You will be given the option to change the root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases and reload privileges. It is recommended that you answer yes to these options:
 

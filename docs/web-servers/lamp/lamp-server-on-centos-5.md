@@ -6,7 +6,7 @@ author:
 description: 'Creating a LAMP stack on a CentOS 5 Linode.'
 keywords: 'LAMP,CentOS,CentOS 5'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['lamp-guides/centos-5/']
+alias: ['lamp-guides/centos-5/','websites/lamp/lamp-server-on-centos-5/']
 modified: Tuesday, July 19th, 2011
 modified_by:
   name: Linode
@@ -62,21 +62,21 @@ Now we will create virtual host entries for each site that we need to host with 
 {: .file-excerpt }
 /etc/httpd/conf.d/vhost.conf
 :   ~~~ apache
-    <VirtualHost *:80> 
+    <VirtualHost *:80>
          ServerAdmin webmaster@example.com
          ServerName example.com
          ServerAlias www.example.com
          DocumentRoot /srv/www/example.com/public_html/
-         ErrorLog /srv/www/example.com/logs/error.log 
+         ErrorLog /srv/www/example.com/logs/error.log
          CustomLog /srv/www/example.com/logs/access.log combined
     </VirtualHost>
 
-    <VirtualHost *:80> 
+    <VirtualHost *:80>
          ServerAdmin webmaster@example.org     
          ServerName example.org
          ServerAlias www.example.org
          DocumentRoot /srv/www/example.org/public_html/
-         ErrorLog /srv/www/example.org/logs/error.log 
+         ErrorLog /srv/www/example.org/logs/error.log
          CustomLog /srv/www/example.org/logs/access.log combined
     </VirtualHost>
     ~~~
@@ -96,19 +96,19 @@ Before you can use the above configuration you'll need to create the specified d
 
 After you've set up your virtual hosts, issue the following command to run Apache for the first time:
 
-    /etc/init.d/httpd start 
+    /etc/init.d/httpd start
 
 Assuming that you have configured the DNS for your domain to point to your Linode's IP address, Virtual hosting for your domain should now work. Remember that you can create as many virtual hosts with Apache as you need.
 
 If you want to run Apache by default when the system boots, which is a typical setup, execute the following command:
 
-    /sbin/chkconfig --levels 235 httpd on 
+    /sbin/chkconfig --levels 235 httpd on
 
 Use the `chkconfig` command to setup [runlevels](http://en.wikipedia.org/wiki/Runlevel) as needed.
 
 Anytime you change an option in your `vhost.conf` file, or any other Apache configuration remember to reload the configuration with the following command:
 
-    /etc/init.d/httpd reload 
+    /etc/init.d/httpd reload
 
 ## Install and Configure MySQL Database Server
 
@@ -118,17 +118,17 @@ MySQL is a relational database management system (RDBMS) and is a popular compon
 
 The first step is to install the mysql-server package, which is accomplished by the following command:
 
-    yum install mysql-server 
+    yum install mysql-server
 
 In CentOS 5.3 this provides version 5.0.45 of MySQL. Before you can use MySQL some configuration is required.
 
 If you want to run MySQL by default when the system boots, which is a typical setup, execute the following command:
 
-    /sbin/chkconfig --levels 235 mysqld on 
+    /sbin/chkconfig --levels 235 mysqld on
 
 Now you can start the mysql daemon (`mysqld`) with the following command (as root):
 
-    /etc/init.d/mysqld start 
+    /etc/init.d/mysqld start
 
 At this point MySQL should be ready to configure and run. While you shouldn't need to change the configuration file, note that it is located at `/etc/my.cnf` for future reference.
 
@@ -173,10 +173,10 @@ Make sure that the following values are set, and relevant lines are uncommented 
 /etc/php.ini
 :   ~~~ ini
     error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
-    display_errors = Off 
-    log_errors = On 
+    display_errors = Off
+    log_errors = On
     error_log = /var/log/php.log
-    max_execution_time = 300 
+    max_execution_time = 300
     memory_limit = 64M
     register_globals = Off
     ~~~

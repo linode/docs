@@ -7,7 +7,7 @@ description: 'Install Apache on your Ubuntu 12.04 Server, configure virtual host
 keywords: 'apache,ubuntu,ubuntu 12.04,precise,pengolin,apache web server,web server,'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Wednesday, July 15th, 2015
-alias: ['web-servers/apache/installation/ubuntu-12-04-precise-pangolin/','websites/apache/apache-2-web-server-on-ubuntu-12-04-lts-precise-pangolin/','websites/apache/how-to-install-and-configure-apache-2-web-server-on-ubuntu-12-04-lts-precise-pangolin/']
+alias: ['web-servers/apache/installation/ubuntu-12-04-precise-pangolin/','websites/apache/apache-2-web-server-on-ubuntu-12-04-lts-precise-pangolin/','websites/apache/how-to-install-and-configure-apache-2-web-server-on-ubuntu-12-04-lts-precise-pangolin/','websites/apache/apache-web-server-ubuntu-12-04/']
 modified_by:
   name: Linode
 published: 'Wednesday, October 10th, 2012'
@@ -80,12 +80,12 @@ Apache supports *name-based virtual hosting*, which allows you to host multiple 
     {: .file }
     /etc/apache2/sites-available/example.com.conf
     :   ~~~ conf
-        <VirtualHost *:80> 
+        <VirtualHost *:80>
              ServerAdmin webmaster@example.com
              ServerName example.com
              ServerAlias www.example.com
              DocumentRoot /var/www/example.com/public_html/
-             ErrorLog /var/www/example.com/logs/error.log 
+             ErrorLog /var/www/example.com/logs/error.log
              CustomLog /var/www/example.com/logs/access.log combined
         </VirtualHost>
         ~~~
@@ -126,7 +126,7 @@ One of Apache's strengths is its ability to be customized with modules. The defa
 
 1.  List available Apache modules:
 
-        sudo apt-cache search libapache2* 
+        sudo apt-cache search libapache2*
 
 2.  Install any desired modules:
 
@@ -153,11 +153,11 @@ To install:
 
 -   Perl support:
 
-        sudo apt-get install libapache2-mod-perl2 
+        sudo apt-get install libapache2-mod-perl2
 
 -   Python support:
 
-        sudo apt-get install libapache2-mod-python 
+        sudo apt-get install libapache2-mod-python
 
 -   MySQL in Python support:
 

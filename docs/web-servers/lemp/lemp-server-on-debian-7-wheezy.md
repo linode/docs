@@ -5,7 +5,7 @@ author:
 description: 'Install a LEMP stack to serve websites and applications on Debian 7'
 keywords: 'nginx,lemp,lepp,perl,python,php,linux,web applications'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['lemp-guides/debian-7-wheezy/']
+alias: ['lemp-guides/debian-7-wheezy/','websites/lemp/lemp-server-on-debian-7-wheezy/']
 modified: Friday, February 7th, 2014
 modified_by:
   name: Alex Fornuto
@@ -99,7 +99,7 @@ In order to deploy PHP applications, you will need to implement the following "P
 
 Issue the following sequence of commands to download a small wrapper script for PHP-FastCGI, configure an init script to control the process, start the process for the first time, and ensure that the process will start following a reboot cycle:
 
-    cd /opt/ 
+    cd /opt/
     sudo wget -O php-fastcgi-deb.sh http://www.linode.com/docs/assets/1548-php-fastcgi-deb.sh
     sudo mv /opt/php-fastcgi-deb.sh /usr/bin/php-fastcgi
     sudo chmod +x /usr/bin/php-fastcgi

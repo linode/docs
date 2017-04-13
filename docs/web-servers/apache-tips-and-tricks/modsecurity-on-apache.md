@@ -5,7 +5,7 @@ author:
 description: 'mod_security'
 keywords: 'apache, mod_security'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/apache/mod-security/']
+alias: ['web-servers/apache/mod-security/','websites/apache-tips-and-tricks/modsecurity-on-apache/']
 modified: Friday, February 14th, 2014
 modified_by:
   name: Linode

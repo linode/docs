@@ -5,7 +5,7 @@ author:
 description: 'Serve Dynamic Websites and Applications with the Lightweight Nginx Web Server and PHP-FastCGI on Ubuntu 16.04 LTS'
 keywords: 'nginx,ubuntu 16.04,fastcgi,php'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/nginx/php-fastcgi/ubuntu-12-04-precise-pangolin/']
+alias: ['web-servers/nginx/php-fastcgi/ubuntu-12-04-precise-pangolin/','websites/nginx/install-and-configure-nginx-and-php-fastcgi-on-ubuntu-16-04/']
 modified: Tuesday, September 13, 2016
 modified_by:
   name: Edward Angert
@@ -54,7 +54,7 @@ Install the nginx web server and PHP dependencies:
 
 ## Configure nginx Virtual Hosting and the PHP Processor
 
-In this guide, the domain `example.com` is used as an example site. Substitute your own FQDN or IP in the configuration steps that follow. 
+In this guide, the domain `example.com` is used as an example site. Substitute your own FQDN or IP in the configuration steps that follow.
 
 Nginx uses `server` directives to specify name-based virtual hosts. Nginx calls these *server blocks*. All server blocks are contained within `server` directives in site files, located in `/etc/nginx/sites-available`. When activated, these are included in the main nginx configuration by default.
 
@@ -115,7 +115,7 @@ You may also want to edit the `http` block in `/etc/nginx/nginx.conf`, which app
 
 -   Hide HTTP header information using `server_tokens`
 -   Configure SSL/TLS settings
--   Customize log file paths 
+-   Customize log file paths
 
 ### Important Security Considerations
 

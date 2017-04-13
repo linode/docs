@@ -5,7 +5,7 @@ author:
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and PHP-FastCGI on Fedora 14'
 keywords: 'nginx,nginx fedora 14,nginx fastcgi,nginx php'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/nginx/php-fastcgi/fedora-14/']
+alias: ['web-servers/nginx/php-fastcgi/fedora-14/','websites/nginx/nginx-and-phpfastcgi-on-fedora-14/']
 modified: Monday, October 7th, 2013
 modified_by:
   name: Linode
@@ -162,6 +162,3 @@ You may wish to consult the following resources for additional information on th
 - [PHP Documentation](http://www.php.net/docs.php)
 - [Installing Nginx on Fedora 14](/docs/web-servers/nginx/installation/fedora-14)
 - [Basic Ngnix Configuration](/docs/websites/nginx/basic-nginx-configuration)
-
-
-

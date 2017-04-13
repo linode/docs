@@ -6,7 +6,7 @@ author:
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and PHP-FastCGI on Arch Linux.'
 keywords: 'nginx arch linux,nginx arch,nginx fastcgi,nginx php'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/nginx/php-fastcgi/arch-linux/']
+alias: ['web-servers/nginx/php-fastcgi/arch-linux/','websites/nginx/nginx-and-phpfastcgi-on-arch-linux/']
 modified: Monday, October 7th, 2013
 modified_by:
   name: Linode
@@ -52,7 +52,7 @@ Edit the `/etc/rc.conf` file, adding "nginx" and "spawn-fcgi-php" to the "DEAMON
 :   ~~~
     DAEMONS=(syslog-ng network netfs crond sshd ntpd nginx spawn-fcgi-php)
     ~~~
-    
+
 Since you have built spawn-fcgi-php from source, you will want to monitor its page in the Arch User Repository (AUR) so that you'll be able to recompile compile the [spawn-fcgi-php](http://aur.archlinux.org/packages.php?ID=37439) package when updates are available.
 
 Issue the following command to start the PHP FastCGI process:
@@ -166,6 +166,3 @@ You may wish to consult the following resources for additional information on th
 - [FastCGI Project Homepage](http://www.fastcgi.com/)
 - [PHP Documentation](http://www.php.net/docs.php)
 - [Basic Ngnix Configuration](/docs/websites/nginx/basic-nginx-configuration)
-
-
-

@@ -6,7 +6,7 @@ author:
 description: 'Install Nginx and Deploy a StartSSL Certificate on Debian 7 (Wheezy).'
 keywords: 'startssl,nginx,install nginx,ssl certificate,debian 7,wheezy,nginx repositories,certificate signing request, CSR,domain name)'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['websites/nginx/startssl-wth-latest-nginx-debian-7/','websites/nginx/how-to-install-nginx-and-a-startssl-certificate-on-debian-7-wheezy/']
+alias: ['websites/nginx/startssl-wth-latest-nginx-debian-7/','websites/nginx/how-to-install-nginx-and-a-startssl-certificate-on-debian-7-wheezy/','websites/nginx/install-nginx-and-a-startssl-certificate-on-debian-7-wheezy/']
 modified: Monday, July 13, 2015
 modified_by:
   name: Ryan Laverdiere
@@ -25,9 +25,9 @@ This guide is going to show you how to install the latest stable version of Ngin
 
 ### Prerequisites
 
-This article assumes that you already have Debian 7 Wheezy running on a Linode. If you do not, follow the [Getting Started guide](https://www.linode.com/docs/getting-started) and them come back here. 
+This article assumes that you already have Debian 7 Wheezy running on a Linode. If you do not, follow the [Getting Started guide](https://www.linode.com/docs/getting-started) and them come back here.
 
-Please note, in order to obtain an SSL certificate for your Linode, you must have registered a domain name, and have access to an email account like webmaster@yourdomain.com. This is necessary for StartSSL to verify that you have control of the domain you are requesting an SSL certificate for. 
+Please note, in order to obtain an SSL certificate for your Linode, you must have registered a domain name, and have access to an email account like webmaster@yourdomain.com. This is necessary for StartSSL to verify that you have control of the domain you are requesting an SSL certificate for.
 
 All of the commands below should be executed as the ``root`` user.
 
@@ -38,30 +38,30 @@ All of the commands below should be executed as the ``root`` user.
         nano /etc/apt/sources.list.d/nginx.list
 
 2.  Add the following lines to the file. Save your changes and exit your text editor.
-    
+
         deb http://nginx.org/packages/debian/ wheezy nginx
         deb-src http://nginx.org/packages/debian/ wheezy nginx
 
 3.  Download the PGP key used to sign the packages in the Nginx repository using wget:
-    
+
         wget http://nginx.org/keys/nginx_signing.key
 
 4.  Import the PGP key into the keyring used by the package manager to verify the authenticity of packages downloaded from the repository:
 
         apt-key add nginx_signing.key
-    
+
 5.  Delete the PGP key from the file system:
 
         rm nginx_signing.key
-    
+
 6.  Update your list of available packages:
 
         apt-get update
-    
+
 ### Install Nginx
 
 1.  Instruct the package manager to install the Nginx package:
-    
+
         apt-get install nginx
 
 ### Generate a Private Key and Certificate Signing Request (CSR)
@@ -100,7 +100,7 @@ All of the commands below should be executed as the ``root`` user.
 
     [![StartSSL Generate Private Key Page](/docs/assets/1754-StartSSL-Generate-Private-Key.jpg)](/docs/assets/1754-StartSSL-Generate-Private-Key.jpg)
 
-5.  Click "Install >> >>" to install your personal certificate into your browser to identify yourself to StartSSL. 
+5.  Click "Install >> >>" to install your personal certificate into your browser to identify yourself to StartSSL.
 
     [![StartSSL Certificate Installation Page](/docs/assets/1755-StartSSL-Install-Certificate.jpg)](/docs/assets/1755-StartSSL-Install-Certificate.jpg)
 
@@ -171,7 +171,7 @@ You should now be logged into your StartSSL account.
 10. Once your certificate has been issued paste the certificate into a new server.crt file. Then save your changes and exit the editor.
 
         nano /etc/ssl/nginx/server.crt
-    
+
 11. You can now exit the StartSSL website.
 
 ### Gather Additional Required Certificate Files
@@ -182,7 +182,7 @@ You should now be logged into your StartSSL account.
 2.  Download the StartSSL CA Certificate using wget:
 
         wget http://www.startssl.com/certs/ca.pem
-    
+
 3.  Download the StartSSL Intermediate CA Certificate using wget:
 
         wget http://www.startssl.com/certs/sub.class1.server.ca.pem
@@ -221,7 +221,7 @@ You should now be logged into your StartSSL account.
 
             ssl_ciphers  "EECDH+ECDSA+AESGCM EECDH+aRSA+AESGCM EECDH+ECDSA+SHA384 EECDH+ECDSA+SHA256 EECDH+aRSA+SHA384 EECDH+aRSA+SHA256 EECDH+aRSA+RC4 EECDH EDH+aRSA RC4 !EXPORT !aNULL !eNULL !LOW !3DES !MD5 !EXP !PSK !SRP !DSS";
             ssl_prefer_server_ciphers   on;
-            
+
             ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
 
             location / {
@@ -233,7 +233,7 @@ You should now be logged into your StartSSL account.
     {: .note }
     >
     >The changes are to `server_name`, `ssl_certificate`, `ssl_certificate_key`, `ssl_session_cache`, `ssl_ciphers`, and the removal of # signs. Also note, the addition of `ssl_protocols`.
-    
+
 3.  Restart Nginx to apply your changes.
 
         service nginx restart
@@ -245,6 +245,3 @@ Launch a web browser and navigate to https://yourdomainorsubdomainhere and you s
   [![Up and Running](/docs/assets/1768-Up-And-Running.jpg)](/docs/assets/1768-Up-And-Running.jpg)
 
 You have successfully installed the latest version of Nginx and configured your free StartSSL SSL Certificate. You can now run an [SSL test](https://www.ssllabs.com/ssltest/) on your server and get an A! Now you can place any files you would like Nginx to make available in the /usr/share/nginx/html folder.
-
-
-

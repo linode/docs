@@ -6,7 +6,7 @@ author:
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and Perl-FastCGI on Arch Linux.'
 keywords: 'perl fastcgi arch linux,fastcgi,nginx arch linux,nginx arch,nginx perl'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/nginx/perl-fastcgi/arch-linux/']
+alias: ['web-servers/nginx/perl-fastcgi/arch-linux/','websites/nginx/nginx-and-perlfastcgi-on-arch-linux/']
 modified: Monday, October 7th, 2013
 modified_by:
   name: Linode
@@ -61,10 +61,10 @@ Now, edit the `/etc/conf.d/fcgiwrap` file to resemble the following example:
     FCGI_EXTRA_OPTIONS=''
     SPAWNER_ARGS="-a $FCGI_ADDRESS -p $FCGI_PORT -u $FCGI_USER -g $FCGI_GROUP $FCGI_EXTRA_OPTIONS -- /usr/sbin/fcgiwrap"
     ~~~
-    
+
 Issue the following command to start the FastCGI wrapper for the first time:
 
-    /etc/rc.d/fcgiwrap start 
+    /etc/rc.d/fcgiwrap start
 
 Configure Virtual Hosting
 -------------------------
@@ -165,6 +165,3 @@ You may wish to consult the following resources for additional information on th
 - [FastCGI Project Homepage](http://www.fastcgi.com/)
 - [Perl Documentation](http://perldoc.perl.org/)
 - [Basic Ngnix Configuration](/docs/websites/nginx/basic-nginx-configuration)
-
-
-

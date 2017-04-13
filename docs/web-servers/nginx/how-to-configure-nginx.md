@@ -5,7 +5,7 @@ author:
 description: 'nginx is a high-performance web server that delivers large amounts of static content quickly. This doc will outline the basic nginx parameters and conventions.'
 keywords: 'nginx, web server, nginx.conf, install'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/nginx/configuration/basic/','websites/nginx/basic-nginx-configuration/index.cfm/','websites/nginx/basic-nginx-configuration/','websites/nginx/how-to-configure-nginx/index.cfm/']
+alias: ['web-servers/nginx/configuration/basic/','websites/nginx/basic-nginx-configuration/index.cfm/','websites/nginx/basic-nginx-configuration/','websites/nginx/how-to-configure-nginx/index.cfm/','websites/nginx/how-to-configure-nginx/']
 modified: Wednesday, February 24th, 2016
 modified_by:
   name: Alex Fornuto
@@ -110,7 +110,7 @@ events {
         # multi_accept on;
 }
 ~~~
-  
+
 
 user
 :   Defines which Linux system user will own and run the nginx server. Most Debian-based distributions use `www-data` but this may be different in other distros. There are certain use cases that benefit from changing the user; for instance if you run two simultaneous web servers, or need another program's user to have control over nginx.
@@ -171,7 +171,7 @@ include
         include /etc/nginx/sites-enabled/*;
 
     Or to be more specific, you can include all `.conf` files in a directory:
-    
+
         include /etc/nginx/conf.d/*.conf;
 
 gzip
@@ -410,10 +410,10 @@ Here are a few examples:
 {: .file-excerpt }
 /etc/nginx/sites-available/example.com
 :   ~~~ nginx
-    location / { } 
-    location /images/ { } 
-    location /blog/ { } 
-    location /planet/ { } 
+    location / { }
+    location /images/ { }
+    location /blog/ { }
+    location /planet/ { }
     location /planet/blog/ { }
     ~~~
 
@@ -440,7 +440,7 @@ When a `location` directive is followed by a tilde (**~**), nginx performs a *re
 
 {: .file-excerpt }
 /etc/nginx/sites-available/example.com
-:   ~~~ nginx 
+:   ~~~ nginx
     location ~* \.(pl|cgi|perl|prl)$ { }
     location ~* \.(md|mdwn|txt|mkdn)$ { }
     ~~~

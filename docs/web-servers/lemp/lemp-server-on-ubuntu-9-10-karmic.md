@@ -6,7 +6,7 @@ author:
 description: 'Install web applications with "LEMP," a LAMP-like stack using nginx, MySQL, and PHP.'
 keywords: 'nginx,lemp,php,linux,web applications'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['lemp-guides/ubuntu-9-10-karmic/']
+alias: ['lemp-guides/ubuntu-9-10-karmic/','websites/lemp/lemp-server-on-ubuntu-9-10-karmic/']
 modified: Tuesday, May 3rd, 2011
 modified_by:
   name: Amanda Folson
@@ -97,14 +97,14 @@ Issue the following commands to compile and then install the software as specifi
 
 Create a dedicated system user to run the nginx process under by issuing the following command:
 
-    adduser --system --no-create-home --disabled-login --disabled-password --group nginx 
+    adduser --system --no-create-home --disabled-login --disabled-password --group nginx
 
 Now install and configure the [init script](/docs/assets/543-init-deb.sh) to make it possible to start and stop the web server more easily. Issue the following command sequence:
 
     wget -O init-deb.sh http://www.linode.com/docs/assets/543-init-deb.sh
     mv init-deb.sh /etc/init.d/nginx
     chmod +x /etc/init.d/nginx
-    /usr/sbin/update-rc.d -f nginx defaults 
+    /usr/sbin/update-rc.d -f nginx defaults
 
 Now, issue the following command to start the web-server:
 
@@ -204,7 +204,7 @@ Visit the [spawn-fcgi project page](http://redmine.lighttpd.net/projects/spawn-f
 
 Issue the following sequence of commands to download a small wrapper script for PHP-FastCGI, configure an init script to control the process, start the process for the first time, and ensure that the process will start following a reboot cycle:
 
-    cd /opt/ 
+    cd /opt/
     wget -O php-fastcgi-deb.sh http://www.linode.com/docs/assets/544-php-fastcgi-deb.sh
     mv php-fastcgi-deb.sh /usr/bin/php-fastcgi
     chmod +x /usr/bin/php-fastcgi
@@ -330,6 +330,3 @@ You may wish to consult the following resources for additional information on th
 - [Deploy CGI and Perl Scripts with Perl-FastCGI and nginx](/docs/web-servers/nginx/perl-fastcgi/debian-5-lenny)
 - [Use PostgeSQL as an Alternative to MySQL for data storage](/docs/databases/postgresql/debian-5-lenny)
 - [Deploy Python Applications with uWSGI and nginx](/docs/web-servers/nginx/python-uwsgi/debian-5-lenny)
-
-
-

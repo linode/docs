@@ -6,7 +6,7 @@ author:
 description: 'A basic guide to installing nginx from source on Debian 6 (Squeeze)'
 keywords: 'nginx,http,web servers,debian,debian squeeze,debian 6'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/nginx/installation/debian-6-squeeze/']
+alias: ['web-servers/nginx/installation/debian-6-squeeze/','websites/nginx/websites-with-nginx-on-debian-6-squeeze/']
 modified: Tuesday, January 28th, 2014
 modified_by:
   name: Linode
@@ -85,7 +85,7 @@ To build and install nginx with the above configuration, use the following comma
 
 You will also need to create a user and group for nginx, issue the following command:
 
-    adduser --system --no-create-home --disabled-login --disabled-password --group nginx 
+    adduser --system --no-create-home --disabled-login --disabled-password --group nginx
 
 Nginx is now installed in `/opt/nginx`.
 
@@ -107,7 +107,7 @@ Before we can begin to use the nginx server, we must create a means of controlli
     wget -O init-deb.sh http://www.linode.com/docs/assets/658-init-deb.sh
     mv init-deb.sh /etc/init.d/nginx
     chmod +x /etc/init.d/nginx
-    /usr/sbin/update-rc.d -f nginx defaults 
+    /usr/sbin/update-rc.d -f nginx defaults
 
 You can now start, stop, and restart nginx just like any other server daemon. For example, to start the server, issue the following command:
 
@@ -122,6 +122,3 @@ You may wish to consult the following resources for additional information on th
 
 - [Linode Docs nginx Documentation](/docs/web-servers/nginx/)
 - [nginx Community Documentation](http://wiki.nginx.org)
-
-
-

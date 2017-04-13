@@ -6,7 +6,7 @@ author:
 description: 'Creating a LAMP stack with Apache, MySQL, and PHP on a Gentoo Linux powered Linode.'
 keywords: 'LAMP,Gentoo Linux,Gentoo'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['lamp-guides/gentoo/']
+alias: ['lamp-guides/gentoo/','websites/lamp/set-up-a-lamp-server-on-gentoo/']
 modified: Thursday, October 24th, 2013
 modified_by:
   name: Linode
@@ -94,12 +94,12 @@ Now we will create virtual host entries for each site that we need to host with 
 {: .file }
 /etc/apache2/vhosts.d/example.conf
 :   ~~~ apache
-    <VirtualHost 12.34.56.78:80> 
+    <VirtualHost 12.34.56.78:80>
          ServerAdmin username@example.com
          ServerName example.com
          ServerAlias www.example.com
          DocumentRoot /srv/www/example.com/public_html/
-         ErrorLog /srv/www/example.com/logs/error.log 
+         ErrorLog /srv/www/example.com/logs/error.log
          CustomLog /srv/www/example.com/logs/access.log combined
     </VirtualHost>
     ~~~
@@ -113,7 +113,7 @@ Before you can use the above configuration, you'll need to create the specified 
 
 After you've set up your virtual hosts, if you have not done so already, issue the following command Apache for the first time:
 
-    /etc/init.d/apache2 start 
+    /etc/init.d/apache2 start
 
 Assuming that you have configured the DNS for your domain to point to your Linode's IP address, virtual hosting for your domain should now work. Remember that you can create as many virtual hosts with Apache as you need.
 
@@ -137,7 +137,7 @@ In Gentoo Linux this provides version 5.1.51 of MySQL. Before starting MySQL, th
 
 If you are starting MySQL for the first time, issue the following command:
 
-    /etc/init.d/mysql start 
+    /etc/init.d/mysql start
 
 To ensure that the MySQL daemon starts during the boot process, issue the following command:
 
@@ -195,10 +195,10 @@ Make sure that the following values are set, and relevant lines are uncommented 
 **File excerpt:** */etc/php/apache2-php5.5/php.ini* :
 
     error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
-    display_errors = Off 
-    log_errors = On 
+    display_errors = Off
+    log_errors = On
     error_log = /var/log/php.log
-    max_execution_time = 300 
+    max_execution_time = 300
     memory_limit = 64M
     register_globals = Off
 

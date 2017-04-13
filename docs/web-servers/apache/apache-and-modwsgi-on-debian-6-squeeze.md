@@ -6,7 +6,7 @@ author:
 description: 'Deploy Python WSGI Applications with Apache and mod\_wsgi.'
 keywords: 'python,apache,mod\_wsgi'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/apache/mod-wsgi/debian-6-squeeze/']
+alias: ['web-servers/apache/mod-wsgi/debian-6-squeeze/','websites/apache/apache-and-modwsgi-on-debian-6-squeeze/']
 modified: Thursday, January 26th, 2012
 modified_by:
   name: Amanda Folson
@@ -84,7 +84,7 @@ Consider the following example Web.py *application* which is embedded in a `appl
 
     class hello:        
         def GET(self, name):
-            if not name: 
+            if not name:
                 name = 'World'
             return 'Hello, ' + name + '!'
 
@@ -132,14 +132,14 @@ Apache VirtualHost Configuration
 
        DocumentRoot /srv/www/example.com/public_html
 
-       ErrorLog /srv/www/example.com/logs/error.log 
+       ErrorLog /srv/www/example.com/logs/error.log
        CustomLog /srv/www/example.com/logs/access.log combined
 
        WSGIScriptAlias / /srv/www/example.com/application/application.wsgi
 
        Alias /robots.txt /srv/www/example.com/public_html/robots.txt
        Alias /favicon.ico /srv/www/example.com/public_html/favicon.ico
-       Alias /images /srv/www/example.com/public_html/images 
+       Alias /images /srv/www/example.com/public_html/images
        Alias /static /srv/www/example.com/public_html/static
     </VirtualHost>
     ~~~
@@ -164,6 +164,3 @@ You may wish to consult the following resources for additional information on th
 - [Werkzug](http://werkzeug.pocoo.org/)
 - [Django](http://www.djangoproject.com/)
 - [Web.py](http://webpy.org/)
-
-
-

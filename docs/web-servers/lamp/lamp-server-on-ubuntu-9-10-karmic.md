@@ -6,7 +6,7 @@ author:
 description: 'Configuring a LAMP stack with Apache, MySQL, PHP and on Ubuntu Linux 9.10 (Karmic).'
 keywords: 'ubuntu lamp server,ubuntu 9.10 lamp,karmic lamp,ubuntu web server,ubuntu karmic'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['lamp-guides/ubuntu-9-10-karmic/']
+alias: ['lamp-guides/ubuntu-9-10-karmic/','websites/lamp/lamp-server-on-ubuntu-9-10-karmic/']
 modified: Monday, May 2nd, 2011
 modified_by:
   name: Linode
@@ -73,12 +73,12 @@ First, create a file in the `/etc/apache2/sites-available/` directory for each v
 {: .file }
 /etc/apache2/sites-available/example.com
 :   ~~~ apache
-    <VirtualHost 12.34.56.78:80> 
+    <VirtualHost 12.34.56.78:80>
          ServerAdmin webmaster@example.com
          ServerName example.com
          ServerAlias www.example.com
          DocumentRoot /srv/www/example.com/public_html/
-         ErrorLog /srv/www/example.com/logs/error.log 
+         ErrorLog /srv/www/example.com/logs/error.log
          CustomLog /srv/www/example.com/logs/access.log combined
     </VirtualHost>
     ~~~
@@ -86,12 +86,12 @@ First, create a file in the `/etc/apache2/sites-available/` directory for each v
 {: .file }
 /etc/apache2/sites-available/example.org
 :   ~~~ apache
-    <VirtualHost 12.34.56.78:80> 
+    <VirtualHost 12.34.56.78:80>
          ServerAdmin webmaster@example.org     
          ServerName example.org
          ServerAlias www.example.org
          DocumentRoot /srv/www/example.org/public_html/
-         ErrorLog /srv/www/example.org/logs/error.log 
+         ErrorLog /srv/www/example.org/logs/error.log
          CustomLog /srv/www/example.org/logs/access.log combined
     </VirtualHost>
     ~~~
@@ -111,12 +111,12 @@ Before you can use the above configuration you'll need to create the specified d
 
 After you've set up your virtual hosts, issue the following commands:
 
-    a2ensite example.com 
+    a2ensite example.com
     a2ensite example.org
 
 This command symbolically links your virtual host file from `sites-available` to the `sites-enabled` directory. Finally, before you can access your sites you must reload Apache with the following command:
 
-    /etc/init.d/apache2 reload 
+    /etc/init.d/apache2 reload
 
 Assuming that you have configured the DNS for your domain to point to your Linode's IP address, Virtual hosting for your domain should now work.
 
@@ -134,7 +134,7 @@ MySQL is a relational database management system (RDBMS) and is a popular compon
 
 The first step is to install the mysql-server package, which is accomplished by the following command:
 
-    apt-get install mysql-server 
+    apt-get install mysql-server
 
 During the installation you will be prompted for a password. Choose something secure (use letters, numbers, and non-alphanumeric characters) and record it for future reference.
 
@@ -148,20 +148,20 @@ After installing MySQL, it's recommended that you run `mysql_secure_installation
 
 Next, we'll create a database and grant your users permissions to use databases. First, log in to MySQL:
 
-    mysql -u root -p 
+    mysql -u root -p
 
 Enter MySQL's root password, and you'll be presented with a MySQL prompt where you can issue SQL statements to interact with the database.
 
 To create a database and grant your users permissions on it, issue the following command. Note, the semi-colons (`;`) at the end of the lines are crucial for ending the commands. Your command should look like this:
 
-    create database webdata; 
-    grant all on webdata.* to 'username' identified by 'password'; 
+    create database webdata;
+    grant all on webdata.* to 'username' identified by 'password';
 
 In the example above, `webdata` is the name of the database, `username` is the username, and `password` password. Note that database user names and passwords are only used by scripts connecting to the database, and that database user account names need not (and perhaps should not) represent actual user accounts on the system.
 
 With that completed you've successfully configured MySQL and you may now pass these database credentials on to your users. To exit the MySQL database administration utility issue the following command:
 
-    quit 
+    quit
 
 With Apache and MySQL installed you are now ready to move on to installing PHP to provide scripting support for your web pages.
 
@@ -171,7 +171,7 @@ PHP makes it possible to produce dynamic and interactive pages using your own sc
 
 Ubuntu includes packages for installing PHP from the terminal. Issue the following command:
 
-    apt-get install php5 php-pear 
+    apt-get install php5 php-pear
 
 Once PHP5 is installed we'll need to tune the configuration file located in `/etc/php5/apache2/php.ini` to enable more descriptive errors, logging, and better performance. These modifications provide a good starting point if you're unfamiliar with PHP configuration.
 
@@ -209,7 +209,7 @@ To install the php5-suhosin package, which provides additional security for PHP 
 
 Now run the following command to update the package archive:
 
-    apt-get update 
+    apt-get update
 
 Install the suhosin package by issuing:
 

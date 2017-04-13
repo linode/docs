@@ -6,7 +6,7 @@ author:
 description: A basic guide to installing nginx from source on CentOS 5
 keywords: 'nginx,http,web servers,centos,centos,centos 5'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/nginx/installation/centos-5/']
+alias: ['web-servers/nginx/installation/centos-5/','websites/nginx/websites-with-nginx-on-centos-5/']
 modified: Thursday, March 27th, 2014
 modified_by:
   name: Alex Fornuto
@@ -139,6 +139,3 @@ You may wish to consult the following resources for additional information on th
 - [Configure Perl and FastCGI with nginx](/docs/web-servers/nginx/perl-fastcgi/centos-5)
 - [Configure PHP and FastCGI with nginx](/docs/web-servers/nginx/php-fastcgi/centos-5)
 - [Configure Ruby on Rails with nginx](/docs/frameworks/ruby-on-rails-nginx/centos-5)
-
-
-

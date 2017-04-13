@@ -5,7 +5,7 @@ author:
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and PHP-FastCGI on Ubuntu 10.04 LTS (Lucid).'
 keywords: 'nginx,nginx ubuntu 10.04,nginx fastcgi,nginx php'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/nginx/php-fastcgi/ubuntu-10-04-lucid/']
+alias: ['web-servers/nginx/php-fastcgi/ubuntu-10-04-lucid/','websites/nginx/nginx-and-phpfastcgi-on-ubuntu-10-04-lts-lucid/']
 modified: Monday, October 7th, 2013
 modified_by:
   name: Linode
@@ -279,6 +279,3 @@ You may wish to consult the following resources for additional information on th
 - [FastCGI Project Homepage](http://www.fastcgi.com/)
 - [PHP Documentation](http://www.php.net/docs.php)
 - [Basic Ngnix Configuration](/docs/websites/nginx/basic-nginx-configuration)
-
-
-

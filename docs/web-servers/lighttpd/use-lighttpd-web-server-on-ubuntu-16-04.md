@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Use lighttpd to Host Multiple Websites on Ubuntu 16.04 (Xenial Xerus)'
 keywords: 'lighttpd,web server,web hosting'
-alias: ['websites/lighttpd/lighttpd-web-server-on-ubuntu-16-04/']
+alias: ['websites/lighttpd/lighttpd-web-server-on-ubuntu-16-04/','websites/lighttpd/use-lighttpd-web-server-on-ubuntu-16-04/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Thursday, May 19th, 2016
 modified_by:
@@ -81,7 +81,7 @@ There are many additional modules that are included in separate Ubuntu packages.
 
 -   `lighttpd-mod-mysql-vhost` - Manages virtual hosts using a MySQL database. This module works well when you need to manage a large number of virtual hosts
 -   `lighttpd-mod-webdav` - Supports WebDAV extensions to HTTP for distributed authoring of HTTP resources
--   `lighttpd-mod-magnet` - Controls the request handling module 
+-   `lighttpd-mod-magnet` - Controls the request handling module
 
 When you have installed these packages you will be able to enable them using `lighty-enable-mod`.
 
@@ -118,13 +118,13 @@ This section covers configuration for simple virtual hosting. The `simple-vhost`
 
     If lighttpd receives a request and cannot find a matching directory, it serves content from the `default-host`.
 
-    In the above configuration, requests are checked against existing directory names within `/var/www/html`. If a directory matching the requested domain exists, the result is served from the corresponding `htdocs`. If it doesn't exist, content is served from `htdocs` within the `default-host` directory. 
+    In the above configuration, requests are checked against existing directory names within `/var/www/html`. If a directory matching the requested domain exists, the result is served from the corresponding `htdocs`. If it doesn't exist, content is served from `htdocs` within the `default-host` directory.
 
     To clarify this concept, suppose that `/var/www/html` contains only the directories `exampleA.com` and `example.com`, both of which contain `htdocs` folders with content:
 
-    -   If a request is made for the URL `exampleA.com`, content will be served from `/var/www/html/exampleA.com/htdocs`. 
+    -   If a request is made for the URL `exampleA.com`, content will be served from `/var/www/html/exampleA.com/htdocs`.
     -   If a request is made for a URL which resolves to the server, but does not have a directory, content will be served from `/var/www/html/example.com/htdocs`, since `example.com` is the default host.
-    
+
     For subdomains, create host directories for each subdomain in the same way. For instance, to use `exampleSub` as a subdomain of `exampleA.com`, create a directory called `exampleSub.exampleA.com` with a `htdocs` directory for content. Be sure to add [DNS records](https://www.linode.com/docs/networking/dns/dns-manager-overview) for any subdomains you plan to use.
 
 4.  Restart the web server again to reload changes:
@@ -170,7 +170,7 @@ Enhanced virtual hosting works slightly differently than Simple by building the 
 
         systemctl restart lighttpd.service
 
-The naming convention for these virtual hosts is derived from the domain names. Take the following web address as an example: `http://exampleSub2.exampleSub.exampleA.com/` We read domain names from highest level on the right, to lowest on the left. So `com` is the TLD, `exampleA` is the domain, `exampleSub` is the subdomain 1 name, and `exampleSub2` is the subdomain 2 name. 
+The naming convention for these virtual hosts is derived from the domain names. Take the following web address as an example: `http://exampleSub2.exampleSub.exampleA.com/` We read domain names from highest level on the right, to lowest on the left. So `com` is the TLD, `exampleA` is the domain, `exampleSub` is the subdomain 1 name, and `exampleSub2` is the subdomain 2 name.
 
 To modify the host directory format lighttpd recognizes, define the pattern that gets passed to the directory in which the content lives. The following table shows what host directory format is used as the document root for each pattern. It also shows which host file will be used to serve content, using the above URL as an example request:
 

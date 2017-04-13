@@ -5,7 +5,7 @@ author:
 description: 'An introduction to the structure of the Apache web server configuration for maintaining granular configuration.'
 keywords: 'apache,httpd,configuration'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/apache/configuration/configuration-structure/']
+alias: ['web-servers/apache/configuration/configuration-structure/','websites/apache-tips-and-tricks/apache-configuration-structure/']
 modified: Monday, August 22nd, 2011
 modified_by:
   name: Linode
@@ -46,7 +46,7 @@ Additional notes about the `<Directory>` block:
 
     **File excerpt:** *Directory Block in an Apache Configuration file* :
 
-        <Directory /srv/www/*/public_html> 
+        <Directory /srv/www/*/public_html>
 
 ## File Options
 

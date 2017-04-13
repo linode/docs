@@ -6,7 +6,7 @@ author:
 description: 'Using lighttpd to host multiple websites from your Linode.'
 keywords: 'lighttpd server,lighttpd Linode,web server,Linode web server,Linode hosting'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/lighttpd/debian-5-lenny/']
+alias: ['web-servers/lighttpd/debian-5-lenny/','websites/lighttpd/lighttpd-web-server-on-debian-5-lenny/']
 modified: Monday, August 22nd, 2011
 modified_by:
   name: Amanda Folson
@@ -103,9 +103,9 @@ Modify the following settings in your `/etc/lighttpd/conf-enabled/10-simple-vhos
 {: .file-excerpt }
 /etc/lighttpd/conf-enabled/10-simple-vhost.conf
 :   ~~~ lighty
-    simple-vhost.server-root = "/var/www" 
-    simple-vhost.default-host = "brackley.org" 
-    simple-vhost.document-root = "/pages/" 
+    simple-vhost.server-root = "/var/www"
+    simple-vhost.default-host = "brackley.org"
+    simple-vhost.document-root = "/pages/"
     ~~~
 
 The `server-root` defines the base directory under which all virtual host directories are created.
@@ -183,13 +183,13 @@ If you install the php5-cgi package and enable mod\_fastcgi with `lighty-enable-
 {: .file-excerpt }
 /etc/lighttpd/conf-enabled/10-fastcgi.conf
 :   ~~~ lighty
-    fastcgi.server    = ( ".php" => 
+    fastcgi.server    = ( ".php" =>
             ((
                     "bin-path" => "/usr/bin/php-cgi",
                       "socket" => "/tmp/php.socket",
               "max-procs" => 2,
                      "idle-timeout" => 20,
-                     "bin-environment" => ( 
+                     "bin-environment" => (
                             "PHP_FCGI_CHILDREN" => "4",
                             "PHP_FCGI_MAX_REQUESTS" => "10000"
                     ),
@@ -234,6 +234,3 @@ You may wish to consult the following resources for additional information on th
 - [mod\_fastcgi Documentation (lighttpd wiki)](http://redmine.lighttpd.net/projects/lighttpd/wiki/Docs:ModFastCGI)
 - [HowtoForge Guides for lighttpd (howtoforge.com)](http://www.howtoforge.com/howtos/lighttpd)
 - [NixCraft Guides for Ligttpd (nixcraft)](http://www.cyberciti.biz/tips/category/lighttpd)
-
-
-

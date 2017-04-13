@@ -6,7 +6,7 @@ author:
 description: 'Use uWSGI to deploy Python application servers in conjunction with nginx.'
 keywords: 'uwsgi,wsgi,nginx,python'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/nginx/python-uwsgi/centos-5/']
+alias: ['web-servers/nginx/python-uwsgi/centos-5/','websites/nginx/wsgi-using-uwsgi-and-nginx-on-centos-5/']
 modified: Monday, May 9th, 2011
 modified_by:
   name: Linode
@@ -100,7 +100,7 @@ Issue the following commands to make this init script executable, ensure that uW
 
     chkconfig --add uwsgi
     chkconfig uwsgi on
-    /etc/init.d/uwsgi start 
+    /etc/init.d/uwsgi start
 
 Install nginx
 -------------
@@ -109,9 +109,9 @@ Issue the following commands to install and configure the nginx web server from 
 
     su -c 'rpm -Uvh http://download.fedora.redhat.com/pub/epel/5/i386/epel-release-5-4.noarch.rpm'
     yum update
-    yum install nginx 
+    yum install nginx
     chkconfig nginx on
-    /etc/init.d/nginx start 
+    /etc/init.d/nginx start
 
 During this process you will be asked to confirm importing the EPEL GPG key. Confirm this option to successfully complete the installation process.
 
@@ -189,6 +189,3 @@ You may wish to consult the following resources for additional information on th
 - [Installing Nginx on CentOS 5](/docs/web-servers/nginx/installation/centos-5)
 - [Deploy a LEMP Server on CentOS 5](/docs/lemp-guides/centos-5/)
 - [Configure nginx Proxy Servers](/docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer)
-
-
-

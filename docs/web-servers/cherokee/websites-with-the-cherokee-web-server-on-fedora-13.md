@@ -6,7 +6,7 @@ author:
 description: 'Instructions for getting started with the Cherokee web server on Fedora 13.'
 keywords: 'cherokee fedora 13,cherokee web sever,cherokee,fedora 13'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/cherokee/installing-cherokee-fedora-13/']
+alias: ['web-servers/cherokee/installing-cherokee-fedora-13/','websites/cherokee/websites-with-the-cherokee-web-server-on-fedora-13/']
 modified: Monday, May 9th, 2011
 modified_by:
   name: Linode
@@ -48,13 +48,13 @@ The Cherokee web server includes an easy to use, comprehensive administration in
 
 Start `cherokee-admin` by issuing the following command:
 
-    cherokee-admin -b & 
+    cherokee-admin -b &
 
 This instructs the administration program to bind to all IP addresses so it may be reached remotely. It will be launched in the background, so you'll still be able to use your SSH session. You should see output similar to the following:
 
     root@hostname:~# cherokee-admin -b &
     [1] 2154
-    root@hostname:~# 
+    root@hostname:~#
     Login:
       User:              admin
       One-time Password: eFxccWtngt75ALZg
@@ -72,12 +72,12 @@ Instead of binding to all interfaces on your Linode, you may wish to bind to loc
 
 On your Linode:
 
-    killall cherokee-admin 
-    cherokee-admin & 
+    killall cherokee-admin
+    cherokee-admin &
 
 In a terminal window on your local workstation (MacOS X, Linux, BSD, etc) :
 
-    ssh -L 9090:localhost:9090 root@12.34.56.78 -N 
+    ssh -L 9090:localhost:9090 root@12.34.56.78 -N
 
 Replace "12.34.56.78" with your Linode's IP address. You may now visit `http://localhost:9090` in your web browser browser via the SSH tunnel. To stop the tunnel, simply press `Ctrl+C` in your local terminal window.
 
@@ -116,6 +116,3 @@ More Information
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [Cherokee Web Server Documentation](http://www.cherokee-project.com/doc/)
-
-
-

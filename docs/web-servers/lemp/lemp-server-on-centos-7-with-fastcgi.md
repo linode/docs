@@ -5,11 +5,11 @@ author:
 description: 'Install LEMP, an application stack using Nginx, MariaDB, and PHP with fastcgi for CentOS 7'
 keywords: 'nginx,lemp,php,fastcgi,linux,web applications, CentOS'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['websites/lemp-guides/centos-7']
+alias: ['websites/lemp-guides/centos-7','websites/lemp/lemp-server-on-centos-7-with-fastcgi/']
 modified: Thursday, December 11, 2014
 modified_by:
     name: Ryan Arlan
-published: 
+published:
 title: LEMP server on CentOS 7 with FastCGI
 external_resources:
 - '[Basic Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration/)'
@@ -18,7 +18,7 @@ external_resources:
 - '[MariaDB and MySQL compatibility](https://mariadb.com/kb/en/mariadb/mariadb-vs-mysql-compatibility/)'
 ---
 
-This document describes how to install a Linux, Nginx (pronounced engine-x), MariaDB and PHP server, also called LEMP stack, on CentOS 7 with php-fastcgi. It includes configuring php-fastcgi as a service in systemd for easier administration. 
+This document describes how to install a Linux, Nginx (pronounced engine-x), MariaDB and PHP server, also called LEMP stack, on CentOS 7 with php-fastcgi. It includes configuring php-fastcgi as a service in systemd for easier administration.
 
 Make sure that before starting this guide you have read through and completed our [Getting Started](/docs/getting-started/) guide.
 
@@ -74,7 +74,7 @@ Once Nginx is installed, you need to configure your 'server' directives to speci
     server_name www.example.com example.com;
     access_log /var/www/example.com/logs/access.log;
     error_log /var/www/example.com/logs/error.log;
-    
+
     location / {
         root  /var/www/example.com/public_html;
         index index.html index.htm index.php;
@@ -85,32 +85,32 @@ Once Nginx is installed, you need to configure your 'server' directives to speci
 Any additional websites you like to host can be added as new files in the `/etc/nginx/conf.d/` directory.  Once you set the configuration, you need to make the directories for your public html files, and your logs:
 
     mkdir -p /var/www/example.com/{public_html,logs}
-  
+
 Once you have configured your virtual hosts, you'll need to restart nginx for your changes to be implemented:
 
     systemctl restart nginx.service
-  
+
 Deploy PHP with FastCGI
 -----------------------
 
 If you are using PHP code with your application, you will need to implement "PHP-FastCGI" in order to allow Nginx to properly handle and parse PHP code.  You can install this via YUM from the EPEL repository that was previously installed:
 
     yum install php-cli php spawn-fcgi
-  
+
 Once PHP-FastCGI is installed, you will need to create a script to start and control the php-cgi process.  Create the `/usr/bin/php-fastcgi` file in your favorite editor and place the following lines into the file:
 
 {: .file-excerpt }
 /usr/bin/php-fastcgi
 :   ~~~ bash
     #!/bin/sh
-    if [ `grep -c "nginx" /etc/passwd` = "1" ]; then 
+    if [ `grep -c "nginx" /etc/passwd` = "1" ]; then
         FASTCGI_USER=nginx
-    elif [ `grep -c "www-data" /etc/passwd` = "1" ]; then 
+    elif [ `grep -c "www-data" /etc/passwd` = "1" ]; then
         FASTCGI_USER=www-data
-    elif [ `grep -c "http" /etc/passwd` = "1" ]; then 
+    elif [ `grep -c "http" /etc/passwd` = "1" ]; then
         FASTCGI_USER=http
-    else 
-    # Set the FASTCGI_USER variable below to the user that 
+    else
+    # Set the FASTCGI_USER variable below to the user that
     # you want to run the php-fastcgi processes as
 
     FASTCGI_USER=
@@ -142,23 +142,23 @@ When PHP-FastCGI is installed it does not automatically get set up as a service 
     [Install]
     WantedBy=multi-user.target
     ~~~
-  
+
 Once the file has been created, you will need to reload the systemd daemons, enable the service, then start it:
 
     systemctl daemon-reload
     systemctl enable php-fastcgi.service
     systemctl start php-fastcgi.service
-  
+
 Now PHP-FastCGI is installed as a systemd service!
 
 ## Installing MariaDB
 
-Last but not least, your LEMP stack needs a database.  MySQL is no longer supported in CentOS 7, so you need to use MySQL's drop in replacement, MariaDB. 
+Last but not least, your LEMP stack needs a database.  MySQL is no longer supported in CentOS 7, so you need to use MySQL's drop in replacement, MariaDB.
 
 1.  You can install this directly from the repositories:
 
         yum install mariadb-server
-  
+
 2.  Once the installation is complete, you can use it the same way you use MySQL. First however, you must enable and start it in systemd:
 
         systemctl enable mariadb.service
@@ -178,7 +178,7 @@ Last but not least, your LEMP stack needs a database.  MySQL is no longer suppor
         CREATE USER 'myuser' IDENTIFIED BY 'MyPassword';
         GRANT ALL PRIVILEGES ON mydomain.* to 'myuser';
         exit
-  
+
     You can edit the name of the user, database, and password to what you would like it to be.  You can then configure your application to use that database, username, and password to insert data.
 
 Congratulations!  You now have a fully functioning and working LEMP stack on CentOS 7!

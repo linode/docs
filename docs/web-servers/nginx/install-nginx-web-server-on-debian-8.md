@@ -10,7 +10,7 @@ modified: Thursday, August 18th, 2016
 modified_by:
     name: Phil Zona
 title: 'Install Nginx Web Server on Debian 8'
-alias: ['websites/nginx/nginx-web-server-debian-8/']
+alias: ['websites/nginx/nginx-web-server-debian-8/','websites/nginx/install-nginx-web-server-on-debian-8/']
 external_resources:
  - '[Linode nginx Documentation](/docs/websites/nginx/)'
  - '[Nginx Community Documentation](http://wiki.nginx.org)'
@@ -62,7 +62,7 @@ This method differs from the one above in that it installs from the official ngi
         touch /etc/apt/sources.list.d/nginx.list
 
 2.  Add the following lines to the file:
-    
+
     {: .file}
     /etc/apt/sources.list.d/nginx.list
     :   ~~~
@@ -71,7 +71,7 @@ This method differs from the one above in that it installs from the official ngi
         ~~~
 
 3.  Download the PGP key used to sign the packages in the nginx repository and import it into your keyring:
-    
+
         curl http://nginx.org/keys/nginx_signing.key | apt-key add -
 
 4.  Update your list of available packages:
@@ -79,7 +79,7 @@ This method differs from the one above in that it installs from the official ngi
         apt-get update
 
 5.  Instruct the package manager to install the nginx package:
-    
+
         apt-get install nginx
 
 ### From Source

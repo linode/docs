@@ -6,7 +6,7 @@ author:
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and Perl-FastCGI on Fedora 13.'
 keywords: 'nginx,nginx fedora 13,nginx fastcgi,nginx perl'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/nginx/perl-fastcgi/fedora-13/']
+alias: ['web-servers/nginx/perl-fastcgi/fedora-13/','websites/nginx/nginx-and-perlfastcgi-on-fedora-13/']
 modified: Tuesday, May 17th, 2011
 modified_by:
   name: Linode
@@ -117,7 +117,7 @@ Issue the following command sequence to download the FastCGI wrapper script (cre
     chmod +x /etc/rc.d/init.d/perl-fastcgi
     /etc/rc.d/init.d/perl-fastcgi start
     chkconfig --add perl-fastcgi
-    chkconfig perl-fastcgi on 
+    chkconfig perl-fastcgi on
 
 Test Perl with FastCGI
 ----------------------
@@ -159,6 +159,3 @@ You may wish to consult the following resources for additional information on th
 - [Perl Documentation](http://perldoc.perl.org/)
 - [Installing Nginx on Fedora 13](/docs/web-servers/nginx/installation/fedora-13)
 - [Basic Ngnix Configuration](/docs/websites/nginx/basic-nginx-configuration)
-
-
-

@@ -6,7 +6,7 @@ author:
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and PHP-FastCGI on CentOS 5.'
 keywords: 'nginx,nginx centos 5,nginx fastcgi,nginx php'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/nginx/php-fastcgi/centos-5/']
+alias: ['web-servers/nginx/php-fastcgi/centos-5/','websites/nginx/nginx-and-phpfastcgi-on-centos-5/']
 modified: Tuesday, May 17th, 2011
 modified_by:
   name: Linode
@@ -36,7 +36,7 @@ Edit your `/etc/hosts` file to resemble the following, substituting your Linode'
 {: .file }
 /etc/hosts
 :   ~~~
-    127.0.0.1 localhost.localdomain localhost 
+    127.0.0.1 localhost.localdomain localhost
     12.34.56.78 hostname.example.com hostname
     ~~~
 

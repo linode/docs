@@ -6,7 +6,7 @@ author:
 description: 'Creating a LAMP stack with Apache, MySQL, PHP, and Python on Fedora 15.'
 keywords: 'fedora 15 lamp,lamp server,linux lamp,fedora 15 apache'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['lamp-guides/fedora-15/']
+alias: ['lamp-guides/fedora-15/','websites/lamp/lamp-server-on-fedora-15/']
 modified: Tuesday, November 19th, 2013
 modified_by:
   name: Linode
@@ -43,7 +43,7 @@ Make sure your system is up to date by issuing the following command:
 To install the current version of the Apache web server (in the 2.x series) use the following commands:
 
     yum install httpd
-    chkconfig httpd on 
+    chkconfig httpd on
 
 The main configuration directives for Apache are contained in the `httpd.conf` file, which is located at `/etc/httpd/conf/httpd.conf`. We advise you to make a backup of this file into your home directory, like so:
 
@@ -82,21 +82,21 @@ Now we will create virtual host entries for each site that we need to host with 
 {: .file-excerpt }
 /etc/httpd/conf.d/vhost.conf
 :   ~~~ apache
-    <VirtualHost *:80> 
+    <VirtualHost *:80>
          ServerAdmin webmaster@example.com
          ServerName example.com
          ServerAlias www.example.com
          DocumentRoot /srv/www/example.com/public_html/
-         ErrorLog /srv/www/example.com/logs/error.log 
+         ErrorLog /srv/www/example.com/logs/error.log
          CustomLog /srv/www/example.com/logs/access.log combined
     </VirtualHost>
 
-    <VirtualHost *:80> 
+    <VirtualHost *:80>
          ServerAdmin webmaster@example.org     
          ServerName example.org
          ServerAlias www.example.org
          DocumentRoot /srv/www/example.org/public_html/
-         ErrorLog /srv/www/example.org/logs/error.log 
+         ErrorLog /srv/www/example.org/logs/error.log
          CustomLog /srv/www/example.org/logs/access.log combined
     </VirtualHost>
     ~~~
@@ -116,13 +116,13 @@ Before you can use the above configuration, you'll need to create the specified 
 
 After you've set up your virtual hosts, issue the following command to run Apache for the first time:
 
-    service httpd start 
+    service httpd start
 
 Assuming that you have configured the DNS for your domain to point to your Linode's IP address, virtual hosting for your domain should now work. Remember that you can create as many virtual hosts with Apache as you need.
 
 Any time you change an option in your `vhost.conf` file, or any other Apache configuration remember to reload the configuration with the following command:
 
-    service httpd reload 
+    service httpd reload
 
 ## Install and Configure MySQL Database Server
 
@@ -132,11 +132,11 @@ MySQL is a relational database management system (RDBMS) and is a popular compon
 
 The first step is to install the mysql-server package, which is accomplished by the following command:
 
-    yum install mysql-server 
+    yum install mysql-server
 
 If you want to run MySQL by default when the system boots, which is a typical setup, execute the following command:
 
-    chkconfig mysqld on 
+    chkconfig mysqld on
 
 Use the `chkconfig` command to setup [runlevels](http://en.wikipedia.org/wiki/Runlevel) as needed.
 
@@ -187,10 +187,10 @@ Make sure that the following values are set, and relevant lines are uncommented 
 /etc/php.ini
 :   ~~~ ini
     error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
-    display_errors = Off 
-    log_errors = On 
+    display_errors = Off
+    log_errors = On
     error_log = /var/log/php.log
-    max_execution_time = 300 
+    max_execution_time = 300
     memory_limit = 64M
     register_globals = Off
     ~~~

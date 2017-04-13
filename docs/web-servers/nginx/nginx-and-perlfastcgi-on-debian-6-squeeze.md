@@ -6,7 +6,7 @@ author:
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and Perl-FastCGI on Debian 6 (Squeeze).'
 keywords: 'nginx perl debian 6,nginx perl fastcgi,nginx debian squeeze,fastscgi perl,nginx debian'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/nginx/perl-fastcgi/debian-6-squeeze/']
+alias: ['web-servers/nginx/perl-fastcgi/debian-6-squeeze/','websites/nginx/nginx-and-perlfastcgi-on-debian-6-squeeze/']
 modified: Tuesday, May 10th, 2011
 modified_by:
   name: Linode
@@ -184,6 +184,3 @@ You may wish to consult the following resources for additional information on th
 - [FastCGI Project Homepage](http://www.fastcgi.com/)
 - [Perl Documentation](http://perldoc.perl.org/)
 - [Basic Ngnix Configuration](/docs/websites/nginx/basic-nginx-configuration)
-
-
-

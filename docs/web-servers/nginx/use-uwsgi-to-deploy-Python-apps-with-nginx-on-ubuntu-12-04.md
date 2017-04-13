@@ -6,7 +6,7 @@ author:
 description: 'Use uWSGI to Deploy Python Application Servers in Conjunction with Nginx.'
 keywords: 'uwsgi,wsgi,nginx,python,ubuntu,install uwsgi,deploy python applications with nginx,virtual host'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/nginx/python-uwsgi/ubuntu-12-04-precise-pangolin/','websites/nginx/wsgi-using-uwsgi-and-nginx-on-ubuntu-12-04-precise-pangolin/index.cfm/','websites/nginx/wsgi-using-uwsgi-and-nginx-on-ubuntu-12-04-precise-pangolin/','websites/nginx/how-to-install-uwsgi-with-nginx-on-ubuntu-12-04-precise-pangolin/']
+alias: ['web-servers/nginx/python-uwsgi/ubuntu-12-04-precise-pangolin/','websites/nginx/wsgi-using-uwsgi-and-nginx-on-ubuntu-12-04-precise-pangolin/index.cfm/','websites/nginx/wsgi-using-uwsgi-and-nginx-on-ubuntu-12-04-precise-pangolin/','websites/nginx/how-to-install-uwsgi-with-nginx-on-ubuntu-12-04-precise-pangolin/','websites/nginx/use-uwsgi-to-deploy-Python-apps-with-nginx-on-ubuntu-12-04/']
 modified: Tuesday, November 13th, 2012
 modified_by:
   name: Linode
@@ -125,7 +125,7 @@ Now, we need to configure uWSGI. Here's how:
             <vacuum/>
         </uwsgi>
         ~~~
-    
+
 3.  Link the configuration to apps-enabled by entering the following command, replacing `example.com` with your domain name:
 
         ln -s /etc/uwsgi/apps-available/example.com.xml /etc/uwsgi/apps-enabled/example.com.xml
@@ -206,6 +206,3 @@ You may wish to consult the following resources for additional information on th
 - [Installing Nginx on Ubuntu 12.04 (Precise Pangolin)](/docs/websites/apache/apache-2-web-server-on-ubuntu-12-04-lts-precise-pangolin)
 - [Deploy a LEMP Server on Ubuntu 12.04 (Precise Pangolin)](/docs/lemp-guides/ubuntu-12.04-precise-pangolin)
 - [Configure nginx Proxy Servers](/docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer)
-
-
-

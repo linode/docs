@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 keywords: 'lighttpd web server,lighttpd Linux,lighttpd Linode HOWTO'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/lighttpd/']
+alias: ['web-servers/lighttpd/','websites/lighttpd/']
 published: 'Thursday, July 16th, 2009'
 title: Hosting Websites with Lighttpd
 ---

@@ -5,7 +5,7 @@ author:
 description: 'How to install a LAMP (Linux, Apache, MySQL, PHP) stack on an Ubuntu 14.04 long term support (LTS) system.'
 keywords: 'ubuntu lamp,ubuntu 14.04 lamp,lamp install,ubuntu web server,apache,mysql,php,ubuntu 14.04'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['websites/lamp/lamp-server-on-ubuntu-14-04/','websites/lamp/how-to-install-a-lamp-stack-on-ubuntu-14-04/']
+alias: ['websites/lamp/lamp-server-on-ubuntu-14-04/','websites/lamp/how-to-install-a-lamp-stack-on-ubuntu-14-04/','websites/lamp/lamp-on-ubuntu-14-04/']
 modified: Monday, December 7th, 2015
 modified_by:
   name: Alex Fornuto
@@ -81,12 +81,12 @@ There are several different ways to set up virtual hosts; however, below is the 
     {: .file }
     /etc/apache2/sites-available/example.com.conf
     :   ~~~ apache
-        <VirtualHost *:80> 
+        <VirtualHost *:80>
              ServerAdmin webmaster@example.com
              ServerName example.com
              ServerAlias www.example.com
              DocumentRoot /var/www/html/example.com/public_html/
-             ErrorLog /var/www/html/example.com/logs/error.log 
+             ErrorLog /var/www/html/example.com/logs/error.log
              CustomLog /var/www/html/example.com/logs/access.log combined
              <Directory /path/to/public/website/>
                 Require all granted
@@ -112,7 +112,7 @@ There are several different ways to set up virtual hosts; however, below is the 
     >If you later need to disable your website, run:
     >
     >     a2dissite example.com.conf
-    
+
 4.  Reload Apache:
 
         sudo service apache2 reload
@@ -128,7 +128,7 @@ There are several different ways to set up virtual hosts; however, below is the 
 
 1.  Install the `mysql-server` package:
 
-        sudo apt-get install mysql-server 
+        sudo apt-get install mysql-server
 
     Choose a secure password when prompted.
 
@@ -140,18 +140,18 @@ There are several different ways to set up virtual hosts; however, below is the 
 
 1.  Log into MySQL:
 
-        mysql -u root -p 
+        mysql -u root -p
 
     Enter MySQL's root password, and you'll be presented with a MySQL prompt.
 
 4.  Create a database and a user with permissions for it. In this example the databse is called `webdata`, the user `webuser` and password `password`:
 
-        create database webdata; 
-        grant all on webdata.* to 'webuser' identified by 'password'; 
+        create database webdata;
+        grant all on webdata.* to 'webuser' identified by 'password';
 
 5.  Exit MySQL:
 
-        quit 
+        quit
 
 ## PHP
 
