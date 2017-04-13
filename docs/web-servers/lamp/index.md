@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 keywords: 'LAMP,LAMP stack,LAMP server'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['lamp-guides/','websites/lamp']
+alias: ['lamp-guides/','websites/lamp/']
 published: 'Thursday, July 16th, 2009'
 title: LAMP Guides
 ---
