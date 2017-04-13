@@ -12,18 +12,20 @@ modified_by:
 title: 'Linux Command Line Tips'
 ---
 
-These are only a few of the many commands and tricks available in the Linux terminal. Visit our guide for a deeper [introduction to Linux concepts](/docs/tools-reference/introduction-to-linux-concepts).
+These are just a few of the many commands and tricks available in the Linux terminal. Visit our guide for a deeper [introduction to Linux concepts](/docs/tools-reference/introduction-to-linux-concepts).
 
 ## Basic Linux Terminal Things to Know
 
-* Scroll through previous command text with the **Up** arrow on your keyboard. Press **Enter** to send the command.
+* Scroll through previous commands with the **Up** arrow on your keyboard. Press **Enter** to send the command.
 * Stop the current process and get back to the prompt: **CTRL+C**
-* Use the **TAB** key to autocomplete commands and paths
+* Use the **TAB** key to autocomplete commands and file paths
 
 ## Easy Ways to Fix or Undo Text in the Terminal
 
 * Jump left one word: **ESC+B**
 * Jump right one word: **ESC+F**
+* Jump to the beginning of the line: **CTRL+A**
+* Jump to the end of the line: **CTRL+E**
 * Delete the previous word: **CTRL+W**
 * Clear the entire line: **CTRL+U**
 
