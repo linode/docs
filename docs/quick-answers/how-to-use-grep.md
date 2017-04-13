@@ -2,7 +2,7 @@
 author:
   name: Phil Zona
   email: docs@linode.com
-description: 'Filter system output with the grep command'
+description: 'Filter system output with the grep command.'
 keywords: 'linux,how to,grep,filter'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 'Monday, April 10th, 2017'
@@ -12,9 +12,9 @@ published: 'Monday, April 10th, 2017'
 title: How to Use the grep Command
 ---
 
-In this guide, you'll learn how to use the `grep` command. When performing administrative tasks on your Linode, many commands will give you far information than you need. Using `grep` allows you to filter that output in order to find only the data that's relevant.
+In this guide, you'll learn how to use the `grep` command. When performing administrative tasks on your Linode, many commands will give you more information than you need. Using `grep` allows you to filter that output in order to find only the data that's relevant.
 
-1.  To search a file for a particular string, simply provide the string and filename as arguments:
+1.  To search a file for a particular string, provide the string and filename as arguments:
 
         grep 'some text' /etc/ssh/sshd_config
 
