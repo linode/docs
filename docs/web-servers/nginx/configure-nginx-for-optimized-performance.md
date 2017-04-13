@@ -4,7 +4,7 @@ author:
     email: docs@linode.com
 description: 'Fine tune nginx for maximum performance'
 keywords: 'nginx,performance,tuning,optimize,web servers'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['websites/nginx/configure-nginx-for-optimized-performance/']
 published: 'Wednesday, September 9th, 2015'
 modified: Wednesday, September 9th, 2015
