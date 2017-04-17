@@ -5,13 +5,12 @@ author:
 description: 'Node.js is a cross-platform runtime environment for server-side JavaScript applications. There are multiple ways to install and maintain Node.js and the decision of which installation method to use can quickly become a confusing one, so here are the main choices.'
 keywords: 'linode guide,hosting a website,website,linode quickstart guide'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['websites/nodejs/a-nodejs-installation-crash-course/']
 modified: Wednesday, February 15th, 2017
 modified_by:
   name: Linode
 published: 'Thursday, December 18th, 2014'
 title: A Node.js Installation Crash Course
-alias: ['development/nodejs/installing-nodejs/']
+alias: ['websites/nodejs/installing-nodejs/','websites/nodejs/a-nodejs-installation-crash-course/','development/nodejs/installing-nodejs/']
 external_resources:
  - '[NodeSchool](http://nodeschool.io/)'
  - '[Node Version Manager](https://github.com/creationix/nvm)'
