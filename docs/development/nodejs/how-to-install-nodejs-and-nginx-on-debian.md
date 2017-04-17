@@ -11,7 +11,7 @@ modified_by:
     name: Linode
 published: 'Wednesday, January 14, 2015'
 title: 'How to Install Node.js and Nginx on Debian'
-alias: ['websites/nodejs/nodejs-nginx-debian/','websites/nodejs/how-to-install-nodejs-and-nginx-on-debian/index.cfm/']
+alias: ['websites/nodejs/how-to-install-nodejs-and-nginx-on-debian/','websites/nodejs/nodejs-nginx-debian/','websites/nodejs/how-to-install-nodejs-and-nginx-on-debian/index.cfm/']
 external_resources:
  - '[Node.js](http://nodejs.org)'
  - '[NGINX](http://nginx.com/)'
