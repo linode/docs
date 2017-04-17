@@ -7,7 +7,6 @@ featured:
  - linode-beginners-guide.md
  - linode-backup-service.md
  - accounts-and-passwords.md
- - clone-your-linode.md
  - linode-images.md
  - linode-managed.md
  - kvm-reference.md
@@ -20,7 +19,9 @@ featured:
  - network-helper.md
  - linode-cli.md
 categories:
+ - migrate-to-linode
  - longview
  - nodebalancer
+ - disk-images
  - api
 ---
