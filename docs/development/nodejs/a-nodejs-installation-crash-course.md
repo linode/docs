@@ -11,7 +11,7 @@ modified_by:
   name: Linode
 published: 'Thursday, December 18th, 2014'
 title: A Node.js Installation Crash Course
-alias: ['websites/nodejs/installing-nodejs/']
+alias: ['development/nodejs/installing-nodejs/']
 external_resources:
  - '[NodeSchool](http://nodeschool.io/)'
  - '[Node Version Manager](https://github.com/creationix/nvm)'
