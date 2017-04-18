@@ -6,7 +6,7 @@ description: Our guide to copying a disk over SSH
 keywords: 'copy,disk,ssh'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['migration/ssh-copy/','migrate-to-linode/disk-images/copying-a-disk-image-over-ssh/']
-modified: Thursday, February 23, 2017
+modified: Thursday, April 13, 2017
 modified_by:
   name: Linode
 published: 'Monday, June 4th, 2012'
@@ -40,7 +40,7 @@ Now that the Linode is running in Rescue Mode, you can transfer the disk from th
     {: .note}
     >
     >The device `/dev/sda` is used for Linodes running on top of KVM. If you Linode is still using XEN, then throughout this guide you must use `/dev/xvda` instead.
-    
+
 2.  The receiving machine will connect to the Linode. Type `yes` and press Enter to continue connecting:
 
         The authenticity of host '123.45.67.89 (123.45.67.89)' can't be established.
@@ -144,6 +144,31 @@ As above, you will want to verify the disk by mounting it on the receiving Linod
         bin   dev  home  lib64       media  opt   root  sbin     srv  tmp  var
         boot  etc  lib   lost+found  mnt    proc  run   selinux  sys  usr
 
+###Expanding the Filesystem
+
+If the disk you created on the receiving Linode is larger than the source disk (for example you're transferring a disk from a smaller linode to a larger linode), you'll have to resize the filesystem in order to make use of the new space.
+
+You can check if this is necessary by comparing the space reported by the filesystem:
+
+    # df -h
+    Filesystem      Size  Used Avail Use% Mounted on
+    /dev/sda         24G   19G  4.0G  83% /
+
+To the space reported by the disk:
+
+    # lsblk
+    NAME  MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+    sda     8:0    0   30G  0 disk /
+
+In the above example, the values in the **Size** column don't match. Although the disk is 30GB (the Linode Manager will also show the disk as 30GB), the filesystem can only see 24G. To use all available space on the new disk, execute the following from Rescue Mode:
+
+    e2fsck -f /dev/sda
+    resize2fs /dev/sda
+
+### Create the Swap Disk
+
+If your Linode still has enough space for a swap disk, simply [create](/docs/platform/disk-images/disk-images-and-configuration-profiles/#creating-a-blank-disk) one from your Linode's Dashboard by selecting `swap` from the **Type** drop down menu. A swap disk is typically between 256MB and 512MB in size, but can be made larger or smaller depending upon your needs. If all of the free space on your Linode is assigned to the disk you created previously, [resize](/docs/migrate-to-linode/disk-images/disk-images-and-configuration-profiles/#resizing-a-disk) the disk to make enough room for the swap disk, and then follow the steps to [create](/docs/platform/disk-images/disk-images-and-configuration-profiles/#creating-a-blank-disk) it.
+
 ###Booting from the Disk
 
 You will now need to create a new configuration profile on the receiving Linode to boot from.
@@ -154,7 +179,4 @@ You will now need to create a new configuration profile on the receiving Linode 
 
 2.  Enter the name for the configuration profile in the **Label** field, and in the **Block Device Assignment** section set the `/dev/sda` to the new disk you created earlier in this section of the guide. Set `/dev/sdb` to the swap image. Save changes.
 
-3.  Return to the Linode's dashboard manager, and select the configuration profile that you just created. Click **Reboot** to start the Linode using the disk you just transferred. 
-
-
-
+3.  Return to the Linode's dashboard manager, and select the configuration profile that you just created. Click **Reboot** to start the Linode using the disk you just transferred.
