@@ -43,7 +43,7 @@ Run the following commands to install the Linode CLI:
 
 1.  Add the Linode repository to your list:
 
-        sudo bash -c 'echo "deb http://apt.linode.com/ stable main" > /etc/apt/sources.list.d/linode.list'
+        sudo bash -c 'echo "deb http://apt.linode.com/ $(lsb_release -cs) main" > /etc/apt/sources.list.d/linode.list'
 
 2.  Get the Linode GPG key:
 
