@@ -112,7 +112,7 @@ The user name would be the user you connect with and the server is either the IP
 
 ### Changing Default Screen Behavior
 
-To change the default settings of Screen, edit the `screenrc` file located in `/usr/home/etc/screenrc`. The `screenrc` file may be edited using any text editor. This file is used to set options, bind Screen functions to keys, set terminal capabilities, and to automatically connect to one or more windows at the start of your Screen session. It is strongly recommended that you make a backup copy of the `screenrc` file before you make any changes.
+To change the default settings of Screen, edit the `screenrc` file located in `/etc/screenrc`. The `screenrc` file may be edited using any text editor. This file is used to set options, bind Screen functions to keys, set terminal capabilities, and to automatically connect to one or more windows at the start of your Screen session. It is strongly recommended that you make a backup copy of the `screenrc` file before you make any changes.
 
 There are two configuration files contained within your Screen distribution: `/etc/screenrc` and `/etc/etcscreenrc`. They contain several useful examples on how to customize Screen. Open the file using your favorite text editor. The command for editing one of these files is:
 
