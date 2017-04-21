@@ -23,6 +23,8 @@ external_resources:
 
 There's a good chance you've been using SSH (Secure Shell) to access your Linode from your computer. Although SSH is a secure protocol, most system compromises are a result of human error or failure to take advantage of the security features offered. In this guide, we'll cover a few key features provided by OpenSSH.
 
+![Use Advanced OpenSSH Features to Harden Access to Your Linode](/docs/assets/advanced-ssh-server-security.png "Use Advanced OpenSSH Features to Harden Access to Your Linode")
+
 [OpenSSH](http://www.openssh.com/) is a suite of connectivity tools that sysadmins use daily to access remote servers. From a security point of view, it's the 'front door' for remote logins so it is extremely important to harden SSH as much as possible. The aim of this guide is to build upon our [Securing Your Server](/docs/security/securing-your-server/) guide with easy steps that can be implemented in just a few minutes.
 
 **Assumptions:**
