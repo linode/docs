@@ -40,6 +40,10 @@ StackScripts are usually Bash scripts, stored in the Linode Manager, and can be 
 
     [![Our StackScript options.](/docs/assets/1508-stackscripts_step3_small.png)](/docs/assets/1503-stackscripts_step3.png)
 
+Alternatively, you can follow along with this video, which will show you how to deploy from a StackScript:
+
+<iframe width="825" height="465" src="https://www.youtube.com/embed/XviHHyXVH20?controls=0&amp;showinfo=0&amp;rel=0&amp;loop=1" frameborder="0" allowfullscreen></iframe>
+
 ### Using a Community StackScript
 
 1.  In addition to the StackScripts created by Linode, any community member who creates a StackScript has the option to make it publicly available to other customers. As seen in the image below, you can use the drop down menu and keywords field to narrow your search to match your distribution and goal:

@@ -27,6 +27,11 @@ You can grant other users access to the Linode Manager by creating *accounts* an
 
 When you add a user, you give that individual permission to log in to the Linode Manager and, depending on the access level they are assigned, receive email notifications. There are two types of users: *Restricted users*, who have limited access to the Linode Manager, and *unrestricted users*, who have full access.
 
+This video will show you how to add a new user:
+
+<iframe width="825" height="465" src="https://www.youtube.com/embed/QF5FNxWbtUQ?controls=0&amp;showinfo=0&amp;rel=0&amp;loop=1" frameborder="0" allowfullscreen></iframe>
+
+
 Here's how to add a user to your Linode account:
 
 1.  Log in to the [Linode Manager](https://manager.linode.com).
