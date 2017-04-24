@@ -15,6 +15,8 @@ title: Resizing a Linode
 
 We make it easy to upgrade or downgrade your Linode by changing plans and adding additional resources. If you're expecting a temporary burst of traffic to your website, or if you're not using your Linode as much as you thought, you can temporarily or permanently resize your Linode to a different plan.
 
+<iframe width="825" height="465" src="https://www.youtube.com/embed/RjCDNtHU0Z4?controls=0&amp;showinfo=0&amp;rel=0" frameborder="0" allowfullscreen></iframe>
+
 {: .note }
 >
 > Linodes can be resized to a smaller or larger plan. A [standard](https://www.linode.com/pricing#standard) plan can also be converted to a [high memory](https://www.linode.com/pricing#high-memory) plan, or vice versa.

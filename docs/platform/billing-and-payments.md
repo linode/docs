@@ -102,6 +102,10 @@ If you want to stop being billed for a particular Linode service, you need to [r
 
 We accept Visa, MasterCard, Discover, and American Express. We also accept PayPal, as well as checks and money orders (which *must* be in USD) made out to "Linode, LLC" and sent to our [office address](http://www.linode.com/contact#contact-address). Please [contact support](/docs/support) before paying with check or money order. Note that we do not accept bank/wire transfers.
 
+The following video will show you how to make a payment via PayPal:
+
+<iframe width="825" height="465" src="https://www.youtube.com/embed/9BG6CGsIZwc?controls=0&amp;showinfo=0&amp;rel=0&amp;loop=1" frameborder="0" allowfullscreen></iframe>
+
 {: .note }
 >PayPal payments can only be made **after** an account is opened with an initial payment from a credit or debit card.
 
@@ -176,7 +180,7 @@ Our services are provided without a contract, so you're free to remove services 
 2.  To remove a Linode from your account, click the **Linodes** tab, and then select the **Remove** link next to the Linode you want to remove.
 3.  To remove extras from your account, click the **Linodes** tab, select a Linode, click the **Extras** tab, and then select the **Remove** link.
 4.  To remove a NodeBalancer from your account, click the **NodeBalancers** tab, and then select the **Remove** link next to the NodeBalancer you want to remove.
-5.  To remove the Linode Backup Service, go to the **Backups** tab in your Linode's Dashboard, and click the **Cancel Backups** link at the bottom of the page. 
+5.  To remove the Linode Backup Service, go to the **Backups** tab in your Linode's Dashboard, and click the **Cancel Backups** link at the bottom of the page.
 
 ## Canceling Your Account
 

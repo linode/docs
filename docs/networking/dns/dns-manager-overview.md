@@ -15,6 +15,7 @@ title: DNS Manager Overview
 
 The *DNS Manager* is a comprehensive DNS management interface available within the [Linode Manager](https://manager.linode.com) that allows you to add DNS records for all of your domain names. This guide covers the use of Linode's DNS Manager and basic domain zone setup. For an introduction to DNS in general, please see our [Introduction to DNS Records](/docs/networking/dns/introduction-to-dns-records) guide.
 
+
 ## Getting Started
 
 The Domain Name System (DNS) attaches human-readable domain names to machine-usable IP addresses. In many ways, it is the phone book of the Internet. Just like a phone book can help you find the phone number of a business, DNS can take a domain name like `google.com` and translate it into an IP address like `74.125.19.147`, the IP address for Google's homepage. This global system allows users to remember the names of websites instead of their numeric IP addresses.
@@ -70,7 +71,9 @@ Before you can add any DNS records, you must create a domain zone — a containe
 
 If you're new to Linode, or if have just purchased a new domain name, the first step is to add a new domain zone in the DNS Manager. This creates a container for the DNS records for your domain name. If you don't know what records to add, the DNS Manager can insert some basic records when you create the new domain zone.
 
-Here's how to add a new domain zone:
+This video runs through the process of adding a new domain zone:
+
+<iframe width="825" height="465" src="https://www.youtube.com/embed/-GHW8aPsyPI?controls=0&amp;showinfo=0&amp;rel=0&amp;loop=1" frameborder="0" allowfullscreen></iframe>
 
 1.  From the DNS Manager tab, select the **Add a domain zone** link.
 
