@@ -4,6 +4,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 featured:
  - securing-your-server.md
  - linode-manager-security-controls.md
+ - linux-security-basics.md
+ - advanced-ssh-server-security.md
  - recovering-from-a-system-compromise.md
  - use-public-key-authentication-with-ssh.md
  - gpg-key-for-ssh-authentication.md
