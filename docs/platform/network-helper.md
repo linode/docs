@@ -6,7 +6,7 @@ author:
 description: 'Information on the Network Helper option.'
 keywords: 'network, networking, network helper, ip, ip address, static ip,'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Thursday, February 23, 2017
+modified: Friday, April 28, 2017
 modified_by:
   name: Linode
 published: ''
@@ -111,7 +111,7 @@ Network Helper configures `/etc/sysconfig/network-scripts/ifcfg-eth0`.
 
 ### Arch
 
-Network Helper configures `/etc/systemd/network/05-eth0.network` & `/etc/resolv.conf`.
+Network Helper configures `/etc/systemd/network/05-eth0.network`.
 
 ### Gentoo
 
