@@ -16,36 +16,36 @@ external_resources:
  - '[cPanel Support](https://cpanel.com/support)'
 ---
 
-[cPanel](https://cpanel.com/) is a commercial web-based control panel for server systems. It can help ease the burden of common system administration tasks such as website creation, database deployment and management, and more. This guide will show you how to install SSL certificates on your Linode using cPanel. These instructions should be done through the cPanel interface. This guide was made on a cPanel server using the default paper_lantern theme.
+[cPanel](https://cpanel.com/) is a commercial web-based control panel for server systems. It can help ease the burden of common system administration tasks such as website creation, database deployment and management, and more. This guide will show you how to install SSL certificates on your Linode using cPanel, through the cPanel interface. This guide was made on a cPanel server using the default *paper_lantern* theme.
 
-To get started, log into your cPanel account, go to the "Security" section, and click on "SSL/TLS".
+To get started, log into your cPanel account, go to the **Security** section, and click on **SSL/TLS**.
 
 [![cPanel SSL/TLS section.](/docs/assets/SSLTLS-scaled.png)](/docs/assets/SSLTLS.png)
 
 ## Create a Certificate Signing Request
 
-You will need a Certificate Signing Request to obtain an SSL certificate from any issuer. To generate your CSR, click on "Generate, view, or delete SSL certificate signing requests." On this page, you will need to fill out the form with your information as requested and click on the "Create" button at the bottom:
+You will need a Certificate Signing Request to obtain an SSL certificate from any issuer. To generate your CSR, click on **Generate, view, or delete SSL certificate signing requests**. On this page, you will need to fill out the form with your information as requested and click on the **Create** button at the bottom:
 
 [![cPanel CSR form.](/docs/assets/CSR-scaled.png)](/docs/assets/CSR.png)
 
 After you submit the CSR form, you will see several different sections. The ones you will need are:
-- Encoded Certificate Signing Request : This is your CSR.
-- Encoded Key : This is the private key that you will need to install the certificate once generated.
 
-You can then contact your SSL issuer of choice to obtain a certificate.
+- **Encoded Certificate Signing Request**: This is your CSR.
+- **Encoded Key**: This is the private key that you will need to install the certificate once generated.
+
+With this information on hand, you can contact the certificate authority of choice to obtain a certificate.
 
 ## Install a Commercial SSL Certificate
 
-Once you have obtained an SSL certificate from your issuer of choice, you can proceed to the installation. You will now need to click on "Manage SSL sites." On this page, you will need to scroll down and select the domain you wish to install an SSL certificate on.
+Once you have obtained an SSL certificate from your issuer of choice, you can proceed to the installation by clicking **Manage SSL sites**. On this page, you will need to scroll down and select the domain you wish to install an SSL certificate on.
 
 [![cPanel Install SSL form.](/docs/assets/InstallSSL-scaled.png)](/docs/assets/InstallSSL.png)
 
-Paste the contents of your .crt file into the top box. Next, paste the encoded key from before into the "Private Key" section. Finally, if your Certificate Authority (SSL Issuer) provided you with intermediate certificates (usually a .cabundle file), you would paste the contents of that into the final box labeled "Certificate Authority Bundle."
+Paste the contents of your `.crt` file into the top box. Next, paste the encoded key from before into the **Private Key** section. Finally, if your Certificate Authority (SSL Issuer) provided you with intermediate certificates (usually a `.cabundle` file), paste the contents of that file into the final box labeled **Certificate Authority Bundle**.
 
-Then, click on "Install Certificate". cPanel will automatically install your certificate at this time and configure SNI as necessary. The process can take a few minutes, so don't worry if it doesn't complete instantly. On occassion, the installation bar will hang and not complete even after several minutes. In this case, simply refresh the page and you should see that the certificate has been installed.
+Click on **Install Certificate**, and cPanel will automatically install your certificate and configure SNI as necessary. The process can take a few minutes, so don't worry if it doesn't complete instantly. On occasion, the installation bar will hang and not complete even after several minutes. In this case, simply refresh the page and you should see that the certificate has been installed.
 
 
 ## Troubleshooting
 
 In general, this process is very straightforward and should not result in any complications. If something does go wrong, the best place to get help would be either at the [cPanel Forums](https://forums.cpanel.net/) or by contacting [cPanel Support](https://cpanel.com/support) directly.
-
