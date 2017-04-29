@@ -14,11 +14,19 @@ title: Install a Commercial SSL Certificate Using cPanel
 external_resources:
  - '[cPanel Home Page](https://cpanel.com)'
  - '[cPanel Support](https://cpanel.com/support)'
+ - '[cPanel Documentation](https://documentation.cpanel.net)'
 ---
 
 [cPanel](https://cpanel.com/) is a commercial web-based control panel for server systems. It can help ease the burden of common system administration tasks such as website creation, database deployment and management, and more. This guide will show you how to install SSL certificates on your Linode using cPanel, through the cPanel interface. This guide was made on a cPanel server using the default *paper_lantern* theme.
 
-To get started, log into your cPanel account, go to the **Security** section, and click on **SSL/TLS**.
+## Before You Begin
+
+1.  This guide requires that you have cPanel/WHM installed and configured on your system. If you do not have it installed, follow our instructions on how to [Install cPanel on CentOS](/docs/websites/cms/install-cpanel-on-centos).
+
+2.  You should have a cPanel account created. If you have not created an account yet, reference the cPanel Documentation to learn how to [Create a New Account](https://documentation.cpanel.net/display/ALD/Create+a+New+Account).
+
+
+When you're ready to proceed, log into your cPanel account, go to the **Security** section, and click on **SSL/TLS**.
 
 [![cPanel SSL/TLS section.](/docs/assets/SSLTLS-scaled.png)](/docs/assets/SSLTLS.png)
 
@@ -33,7 +41,12 @@ After you submit the CSR form, you will see several different sections. The ones
 - **Encoded Certificate Signing Request**: This is your CSR.
 - **Encoded Key**: This is the private key that you will need to install the certificate once generated.
 
-With this information on hand, you can contact the certificate authority of choice to obtain a certificate.
+With this information on hand, you can contact the certificate authority of choice to obtain a certificate. Some certificate authorities include:
+- [Verisign](http://www.verisign.com/)
+- [GeoTrust](https://www.geotrust.com/)
+- [Comodo](https://www.comodo.com/)
+- [DigiCert](https://www.digicert.com/)
+- [Thawte](https://www.thawte.com/)
 
 ## Install a Commercial SSL Certificate
 
