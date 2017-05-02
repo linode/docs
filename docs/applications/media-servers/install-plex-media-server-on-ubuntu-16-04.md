@@ -2,7 +2,7 @@
 author:
   name: Nick Brewer
   email: nbrewer@linode.com
-description: Install the Plex Media Server to
+description: View and organize your media library with Plex on Ubuntu 16.04
 keywords: 'plex media server, install plex, plex ubuntu'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Monday, May 1st, 2017
@@ -15,7 +15,6 @@ external_resources:
 ---
 
 [Plex](https://www.plex.tv/) is a feature-rich media library platform that allows you to organize and stream your digital video and audio from virtually anywhere. This guide will show you how to set up the **Plex Media Server** on your Linode running Ubuntu 16.04 LTS, as well as how to connect to your media server from a Plex [client](https://support.plex.tv/hc/en-us/categories/200006953-Plex-Apps) application.
-
 
 {: .note}
 >
@@ -65,8 +64,11 @@ This section will show you how to complete your server setup and start adding me
 
     [![Plex web interface.](/docs/assets/plex-browser-view-small.png)](/docs/assets/plex-browser-view.png)
 
+3.  Give your Plex server a name. Be sure to leave the **Allow me to access my media outside my home** box checked, and click **Next**:
 
-3.  Finally, you'll create the directories that will store your Plex media. In this example we'll create library directories for `movies` and `television` within a `plex-media` directory. These will be located within your user's `/home`:
+    [![Plex web interface - Server Name.](/docs/assets/plex-server-name-small.png)](/docs/assets/plex-server-name.png)
+
+4.  Finally, you'll create the directories that will store your Plex media. In this example we'll create library directories for `movies` and `television` within a `plex-media` directory. These will be located within your user's `/home`:
 
         cd ~/
         mkdir -p plex-media/movies && mkdir plex-media/television
