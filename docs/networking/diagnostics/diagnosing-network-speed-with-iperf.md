@@ -14,12 +14,14 @@ external_resources:
   - '[Iperf Official Website](https://iperf.fr)'
 ---
 
-Linux systems administrators and network administrators often find diagnosing network speed degradation complicated, as there are very few tools available to diagnose these issues. Iperf is a command-line tool used in the diagnostics of network speed issues. 
+Linux systems administrators and network administrators often find diagnosing network speed degradation complicated, as there are very few tools available to diagnose these issues. Iperf is a command-line tool used in the diagnostics of network speed issues.
+
+![Diagnosing Network Speed with Iperf](/docs/assets/diagnosing-network-speed-with-iperf.png)
 
 Iperf measures the maximum network throughput a server can handle. It is particularly useful when experiencing network speed issues, as you can use Iperf to determine which server is unable to reach maximum throughput.
 
 {:.note}
-> 
+>
 > This guide assumes that you are the `root` user. If you are not using the super user, you will need to use `sudo` before each command.
 
 ## Installing Iperf
@@ -67,7 +69,7 @@ Iperf must be installed on both computers you are testing the connection between
 
 ### TCP Clients & Servers
 
-Iperf requires two systems because one system must act as a server, while the other acts as a client. The client connects to the server you're testing the speed of. 
+Iperf requires two systems because one system must act as a server, while the other acts as a client. The client connects to the server you're testing the speed of.
 
 1.  On the Linode you wish to test, launch Iperf in server mode:
 
@@ -147,7 +149,7 @@ Using Iperf, you can also test the maximum throughput achieved via UDP connectio
 
         iperf -c 198.51.100.5 -u -b 1000m
 
-    This tells the client that we want to achieve a maximum of 1000 Mbits per second if possible. The `-b` flag only works when using UDP connections, since Iperf does not set a bandwidth limit on the TCP clients. 
+    This tells the client that we want to achieve a maximum of 1000 Mbits per second if possible. The `-b` flag only works when using UDP connections, since Iperf does not set a bandwidth limit on the TCP clients.
 
     The output should be similar to:
 
@@ -174,7 +176,7 @@ Run the following command to test both connections:
 
 	iperf -c 198.51.100.5 -d
 
-The result is that Iperf will start a server and a client connection on the original client server (198.51.100.6). Once this has been done, Iperf will connect the original Iperf server to the client connection, which is now acting as both a server connection and a client connection. This will look similar 
+The result is that Iperf will start a server and a client connection on the original client server (198.51.100.6). Once this has been done, Iperf will connect the original Iperf server to the client connection, which is now acting as both a server connection and a client connection. This will look similar
 
     ------------------------------------------------------------
     Server listening on TCP port 5001
@@ -212,4 +214,3 @@ On the original Iperf server, you will see:
 | -p                                 | Changes the port. When not specified, the default port is 5001. You must use this flag on both the client and server.  															   |
 | -B 			             | Binds Iperf to a specific interface or address. If passed through the server command, the incoming interface will be set. If passed through the client command, the outgoing interface will be set.           |
 |:-----------------------------------|:------------------------------------------------------------------------------------------|
-

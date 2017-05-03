@@ -1,6 +1,6 @@
 ---
 author:
-  name: Joe D. 
+  name: Joe D.
   email: docs@linode.com
 description: 'LAMP container with Docker on Linode'
 keywords: 'docker,lamp,LAMP,ubuntu,debian'
@@ -18,7 +18,9 @@ external_resources:
  - '[Docker Hub](https://hub.docker.com/)'
 ---
 
-Docker is a container platform for applications. With Docker, users can download pre-configured apps without the hassle of the installation and configuration process. Docker containers can also build on each other. 
+Docker is a container platform for applications. With Docker, users can download pre-configured apps without the hassle of the installation and configuration process. Docker containers can also build on each other.
+
+![How to Install Docker and deploy a LAMP Stack](/docs/assets/how-to-install-docker-and-deploy-a-lamp-stack.png)
 
 *If you are familiar with Docker containers, also try [Linode Images](/docs/platform/linode-images) to capture and deploy larger system profiles.*
 
@@ -63,7 +65,7 @@ The Docker Hub user page for Linode can be accessed [here](https://hub.docker.co
         sudo docker pull linode/lamp
 
 ##Run the Docker Container, Apache, and MySQL
-When an image downloads, there are no image containers running. 
+When an image downloads, there are no image containers running.
 
 1.  Run, create, or turn on a new container and forward port 80:
 

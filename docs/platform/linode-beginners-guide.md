@@ -15,6 +15,8 @@ title: 'Linode Beginner''s Guide'
 
 If you're relatively new to Linux system administration, or just new to our platform, this guide will help address some of the most common questions we receive. If you've just created your first Linode account, please first refer to our [Getting Started](/docs/getting-started/) Guide and return here once your Linode has been deployed.
 
+![Linode Beginners Guide](/docs/assets/linode-beginners-guide.png)
+
 ## How do I log into my Linode?
 
 By default, all Linodes are deployed with SSH enabled. This allows command line access through the shell. You can learn more about connecting to your Linode for the first time in the [connecting to your Linode with SSH](/docs/getting-started/#connecting_to_your_linode_with_ssh) section of our [Getting Started](/docs/getting-started/) guide.
@@ -64,7 +66,7 @@ Please refer to our guide on [Linux package management](/docs/tools-reference/li
 
 ## How do I add another IP address?
 
-You may add an additional public IP address from the "Remote Access" tab in the Linode Manager. After you've added a new IP address, you must [configure static networking](/docs/networking/linux-static-ip-configuration/) or enable [Network Helper](/docs/platform/network-helper#turn-network-helper-on-for-individual-configuration-profiles) and reboot your Linode before it can be used. 
+You may add an additional public IP address from the "Remote Access" tab in the Linode Manager. After you've added a new IP address, you must [configure static networking](/docs/networking/linux-static-ip-configuration/) or enable [Network Helper](/docs/platform/network-helper#turn-network-helper-on-for-individual-configuration-profiles) and reboot your Linode before it can be used.
 
 {: .note}
 > We require technical justification for the issuance of new IP addresses; you may need to open a ticket from the "Support" tab of the Linode Manager explaining the reason for the new IP.

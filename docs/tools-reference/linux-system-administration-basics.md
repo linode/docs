@@ -15,6 +15,8 @@ title: Linux System Administration Basics
 
 This guide presents a collection of common issues and useful tips for Linux system administration. Whether you're new to system administration or have been maintaining systems for some time, we hope this collection of basic Linux commands will help you manage your system from the command line.
 
+![Linux System Administration Basics](/docs/assets/linux-system-administration-basics.png)
+
 ## Basic Configuration
 
 These tips cover some of the basic steps and issues encountered during the beginning of system configuration. We provide a general [Getting Started guide](/docs/getting-started) for your convenience if you're new to Linode and basic Linux system administration. Additionally, you may find our [Introduction to Linux Concepts guide](/docs/tools-reference/introduction-to-linux-concepts) useful.
@@ -32,7 +34,7 @@ The first command should show your short hostname, and the second should show yo
 
 When setting the time zone of your server, it may be best to use the time zone of the majority of your users. If you're not sure which time zone would be best, consider using Universal Coordinated Time or UTC (i.e., Greenwich Mean Time).
 
-By default, Linodes are set to UTC. Many operating systems provide built-in, interactive methods for changing time zones: 
+By default, Linodes are set to UTC. Many operating systems provide built-in, interactive methods for changing time zones:
 
 #### Set the Time Zone in Debian or Ubuntu
 
@@ -121,7 +123,7 @@ These commands send a small amount of data (an ICMP packet) to the remote host a
 The `time` field specifies in milliseconds the duration of the round trip for an individual packet. When you've gathered the amount of information you need, use **Control+C** to interrupt the process. You'll be presented with some statistics once the process is stopped. This will resemble:
 
     --- google.com ping statistics ---
-    4 packets transmitted, 4 received, 0% packet loss, time 3007ms 
+    4 packets transmitted, 4 received, 0% packet loss, time 3007ms
     rtt min/avg/max/mdev = 33.890/40.175/53.280/7.679 ms
 
 There are several important data points to notice:
@@ -138,17 +140,17 @@ The `traceroute` command expands on the functionality of the [ping](#the-ping-co
 Here is an example of output from a `traceroute` command:
 
     traceroute to google.com (74.125.53.100), 30 hops max, 40 byte packets
-    1 207.192.75.2 (207.192.75.2) 0.414 ms 0.428 ms 0.509 ms 
-    2 vlan804.tbr2.mmu.nac.net (209.123.10.13) 0.287 ms 0.324 ms 0.397 ms 
-    3 0.e1-1.tbr2.tl9.nac.net (209.123.10.78) 1.331 ms 1.402 ms 1.477 ms 
-    4 core1-0-2-0.lga.net.google.com (198.32.160.130) 1.514 ms 1.497 ms 1.519 ms 
-    5 209.85.255.68 (209.85.255.68) 1.702 ms 72.14.238.232 (72.14.238.232) 1.731 ms 21.031 ms 
-    6 209.85.251.233 (209.85.251.233) 26.111 ms 216.239.46.14 (216.239.46.14) 23.582 ms 23.468 ms 
-    7 216.239.43.80 (216.239.43.80) 123.668 ms 209.85.249.19 (209.85.249.19) 47.228 ms 47.250 ms 
-    8 209.85.241.211 (209.85.241.211) 76.733 ms 216.239.43.80 (216.239.43.80) 73.582 ms 73.570 ms 
-    9 209.85.250.144 (209.85.250.144) 86.025 ms 86.151 ms 86.136 ms 
-    10 64.233.174.131 (64.233.174.131) 80.877 ms 216.239.48.34 (216.239.48.34) 76.212 ms 64.233.174.131 (64.233.174.131) 80.884 ms 
-    11 216.239.48.32 (216.239.48.32) 81.267 ms 81.198 ms 81.186 ms 
+    1 207.192.75.2 (207.192.75.2) 0.414 ms 0.428 ms 0.509 ms
+    2 vlan804.tbr2.mmu.nac.net (209.123.10.13) 0.287 ms 0.324 ms 0.397 ms
+    3 0.e1-1.tbr2.tl9.nac.net (209.123.10.78) 1.331 ms 1.402 ms 1.477 ms
+    4 core1-0-2-0.lga.net.google.com (198.32.160.130) 1.514 ms 1.497 ms 1.519 ms
+    5 209.85.255.68 (209.85.255.68) 1.702 ms 72.14.238.232 (72.14.238.232) 1.731 ms 21.031 ms
+    6 209.85.251.233 (209.85.251.233) 26.111 ms 216.239.46.14 (216.239.46.14) 23.582 ms 23.468 ms
+    7 216.239.43.80 (216.239.43.80) 123.668 ms 209.85.249.19 (209.85.249.19) 47.228 ms 47.250 ms
+    8 209.85.241.211 (209.85.241.211) 76.733 ms 216.239.43.80 (216.239.43.80) 73.582 ms 73.570 ms
+    9 209.85.250.144 (209.85.250.144) 86.025 ms 86.151 ms 86.136 ms
+    10 64.233.174.131 (64.233.174.131) 80.877 ms 216.239.48.34 (216.239.48.34) 76.212 ms 64.233.174.131 (64.233.174.131) 80.884 ms
+    11 216.239.48.32 (216.239.48.32) 81.267 ms 81.198 ms 81.186 ms
     12 216.239.48.137 (216.239.48.137) 77.478 ms pw-in-f100.1e100.net (74.125.53.100) 79.009 ms 216.239.48.137 (216.239.48.137) 77.437 ms
 
 Often the hostnames and IP addresses on either side of a failed jump are useful in determining who operates the machine where the routing error occurs. Failed jumps are designated by lines with three asterisks (`* * *`).
@@ -586,7 +588,7 @@ To open a file, issue a command beginning with the name of the editor you wish t
     nano /etc/hosts
     vi /etc/hosts
     emacs /etc/hosts
-    zile /etc/hosts 
+    zile /etc/hosts
 
 When you've edited a file, you can save and exit the editor to return to the prompt. This procedure varies between different editors. In emacs and zile, the key sequence is the same: press control and type x and s to save. This operation is typically notated "C-x C-s" and then "C-x C-c" to close the editor. In nano, press Control-O (notated \^O) and confirm the file name to write the file, and use Control-X to exit from the program.
 
@@ -687,11 +689,11 @@ If you need an easy-to-install email solution, consider the [Citadel groupware s
 
 If, by contrast, you want a more simple and modular email stack, we urge you to consider one of our guides built around the [Postfix SMTP server](/docs/email/postfix/).
 
-Finally, it's possible to outsource email service to a third-party provider, such as [Google Apps](/docs/email/using-google-apps-for-email) or [FastMail.fm](https://www.fastmail.fm). These services allows you to send and receive mail from your domain, without hosting email services on your Linode. 
+Finally, it's possible to outsource email service to a third-party provider, such as [Google Apps](/docs/email/using-google-apps-for-email) or [FastMail.fm](https://www.fastmail.fm). These services allows you to send and receive mail from your domain, without hosting email services on your Linode.
 
 ### Send Email From Your Server
 
-For simple configurations, you may have no need for a complete email stack like some of those documented in our [email guides](/docs/email/). However, applications running on that server still need to be able to send mail for notifications and other routine purposes. 
+For simple configurations, you may have no need for a complete email stack like some of those documented in our [email guides](/docs/email/). However, applications running on that server still need to be able to send mail for notifications and other routine purposes.
 
 The configuration of applications to send notifications and alerts is beyond the scope of this guide. Most applications rely on a simple "sendmail" interface, which is accessible via several common SMTP servers including Postfix and msmtp.
 

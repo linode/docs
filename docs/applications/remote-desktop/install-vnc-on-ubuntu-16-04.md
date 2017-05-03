@@ -17,13 +17,15 @@ external_resources:
 
 *Virtual network computing*, or VNC, is a graphical desktop sharing system that allows you to control one computer remotely from another. A VNC server transfers keyboard and mouse events, and displays the remote host's screen via a network connection, which allows you to operate a full desktop environment on your Linode.
 
+![Install VNC on Ubuntu 16.04](/docs/assets/install-vnc-on-ubuntu-16-04.png)
+
 This guide explains how to install a graphic desktop environment on your Linode running Ubuntu 16.04 and how to connect to it from your local computer using VNC.
 
 ## Before You Begin
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account, harden SSH access and remove unnecessary network services. 
+2.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  Update your system.
 
@@ -57,7 +59,7 @@ This guide explains how to install a graphic desktop environment on your Linode 
          The default action is to keep your current version.
         *** tty1.conf (Y/I/N/O/D/Z) [default=N] ?
 
-    Type **y** then **enter** to use the updated version. 
+    Type **y** then **enter** to use the updated version.
 
 2.  Install the VNC server:
 
@@ -65,7 +67,7 @@ This guide explains how to install a graphic desktop environment on your Linode 
 
 ## Secure your VNC connection
 
-The VNC server generates a *display*, or graphical output, identified by a number that is defined when the server starts. If no display number is defined, the server will use the lowest one available. VNC connections take place on port `5900 + display`. In this section we'll use a display number of 1; therefore, we'll connect to remote port 5901. 
+The VNC server generates a *display*, or graphical output, identified by a number that is defined when the server starts. If no display number is defined, the server will use the lowest one available. VNC connections take place on port `5900 + display`. In this section we'll use a display number of 1; therefore, we'll connect to remote port 5901.
 
 The default VNC connection is unencrypted. In order to secure your passwords and data, you will need to tunnel the traffic through an SSH connection to a local port. We'll use the same local port for consistency.
 
@@ -129,7 +131,7 @@ There are a variety of VNC clients available for Ubuntu desktops. You can find t
 
     [![Settings for a Remmina remote desktop connection.](/docs/assets/1641-vnc-ubuntu-2.png)](/docs/assets/1641-vnc-ubuntu-2.png)
 
-3.  Press **Connect**. 
+3.  Press **Connect**.
 
 You'll see a blank gray screen since the desktop processes have not yet started. In the next section, we will configure your Linode to launch a full desktop.
 
@@ -154,11 +156,11 @@ In the next few steps, we'll configure VNC to launch the full Unity desktop when
 
         [ -x /etc/vnc/xstartup ] && exec /etc/vnc/xstartup
         [ -r $HOME/.Xresources ] && xrdb $HOME/.Xresources
-        xsetroot -solid grey 
+        xsetroot -solid grey
         vncconfig -iconic &
         x-terminal-emulator -geometry 80x24+10+10 -ls -title "$VNCDESKTOP Desktop" &
         x-window-manager &
-        
+
         gnome-panel &
         gnome-settings-daemon &
         metacity &

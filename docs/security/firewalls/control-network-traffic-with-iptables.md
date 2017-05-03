@@ -20,6 +20,8 @@ external_resources:
 
 **iptables** is an application that allows users to configure specific rules that will be enforced by the kernel's `netfilter` framework. It acts as a packet filter and firewall that examines and directs traffic based on port, protocol and other criteria. This guide will focus on the configuration and application of iptables rulesets and will provide examples of ways they are commonly used.
 
+![Control Network Traffic with iptables](/docs/assets/control-network-traffic-with-iptables.png)
+
 By default, the iptables tool is included with your Linode-supplied distribution. In order to use iptables, you will need root (`sudo`) privileges.
 
 ## Use Linux iptables to Manage IPv4 Traffic
