@@ -20,6 +20,8 @@ external_resources:
 
 MTR is a powerful network diagnostic tool that enables administrators to diagnose and isolate networking errors and provide helpful reports of network status to upstream providers. MTR represents an evolution of the `traceroute` command by providing a greater data sample, as if augmenting `traceroute` with `ping` output. This document provides an in depth overview of MTR, the data it generates, and how to properly interpret and draw conclusions based on the data provided by it.
 
+![Diagnosing Network Issues with MTR](/docs/assets/diagnosing-network-issues-with-mtr.png)
+
 For a basic overview of network diagnostic techniques consider our introduction to [network diagnostics](/docs/using-linux/administration-basics#network_diagnostics). If you suspect that you're having some other issue with your system, you may consider our overview of general [system diagnostics](/docs/using-linux/administration-basics#system_diagnostics). As a matter of course, it is assumed that all Linode deployments will have completed our [getting started guide](/docs/getting-started/) prior to beginning with this document.
 
 ## Network Diagnostics Background
@@ -49,7 +51,7 @@ On Arch Linux systems issue the following commands to update the package databas
     pacman -Syu
     pacman -S mtr
 
-You may also want to use MTR to diagnose networking issues from your local workstation. If you're running a Linux system, you can install MTR using the commands above. 
+You may also want to use MTR to diagnose networking issues from your local workstation. If you're running a Linux system, you can install MTR using the commands above.
 
 ### Installing on Windows
 For Windows there is a port of MTR called "WinMTR". You can download this application from the [WinMTR upstream](http://sourceforge.net/projects/winmtr/).
@@ -305,7 +307,7 @@ The question marks appear when there is no additional route information. The fol
        3. 209.51.130.213               0.0%    10    0.8   2.7   0.8  19.0   5.7
        4. aix.pr1.atl.google.com       0.0%    10    6.7   6.8   6.7   6.9   0.1
        5. 172.16.29.45                 0.0%    10    0.0   0.0   0.0   0.0   0.0
-       6. ???                          0.0%    10    0.0   0.0   0.0   0.0   0.0 
+       6. ???                          0.0%    10    0.0   0.0   0.0   0.0   0.0
        7. ???                          0.0%    10    0.0   0.0   0.0   0.0   0.0
        8. ???                          0.0%    10    0.0   0.0   0.0   0.0   0.0
        9. ???                          0.0%    10    0.0   0.0   0.0   0.0   0.0

@@ -18,6 +18,8 @@ external_resources:
 
 PHP-FPM is an implementation of the FastCGI protocol for PHP. This guide covers installing PHP-FPM for Apache on Debian 8 (Jessie).
 
+![Install PHP-FPM and Apache on Debian 8](/docs/assets/install-php-fpm-and-apache-on-debian-8.png)
+
 ## Benefits over mod_php
 
 While the `mod_php` module lets Apache run php scripts directly, it comes with the overhead of being loaded by every Apache process. For sites or servers that rely heavily on PHP this can be a benefit, but for largely static sites it makes more sense to only load php when needed.

@@ -15,6 +15,7 @@ title: DNS Manager Overview
 
 The *DNS Manager* is a comprehensive DNS management interface available within the [Linode Manager](https://manager.linode.com) that allows you to add DNS records for all of your domain names. This guide covers the use of Linode's DNS Manager and basic domain zone setup. For an introduction to DNS in general, please see our [Introduction to DNS Records](/docs/networking/dns/introduction-to-dns-records) guide.
 
+![DNS Manager Overview](/docs/assets/dns-manager-overview.png)
 
 ## Getting Started
 

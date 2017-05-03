@@ -23,6 +23,8 @@ external_resources:
 
 [Counter Strike: Global Offensive](http://store.steampowered.com/app/730) (CS:GO) is a first-person shooter by Valve. Hosting your own server gives you full control over your game and game modes, so you can play the exact flavor of CS:GO you want. This guide contains instructions on how to download the dedicated server and launch the game server.
 
+![Launch a Counter Strike GO server on Ubuntu 14.04](/docs/assets/launch-a-cs-go-server-on-ubuntu-14-04.png)
+
 ## Before You Begin
 
 1.  You will need a [Steam](http://store.steampowered.com) account and a copy of [Counter Strike: Global Offensive](http://store.steampowered.com/app/730/). A game server token is required to host a public CS:GO server. Without the token, client connections are restricted to the LAN only.
