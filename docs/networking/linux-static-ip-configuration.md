@@ -15,6 +15,8 @@ title: Linux Static IP Configuration
 
 Network configurations are generally assigned to a networked device in one of two methods, either by [DHCP](https://en.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol) or static assignment. These terms (and others) are often used when discussing IP addresses. In addition to IP addresses, a basic static configuration usually needs DNS resolvers and routing, too.
 
+![Linux Static IP Configuration](/docs/assets/linux-static-ip-configuration.png)
+
 Upon a Linode's creation, an IPv4 address is selected from a pool of available addresses from the datacenter in which your Linode is hosted. Our [Network Helper](/docs/platform/network-helper) is *enabled* by default for new Linodes. This means that when you deploy a Linux distribution to your Linode and boot it, the host system detects which distro was selected and modifies the [network configuration files](/docs/platform/network-helper#what-files-are-affected) in the disk image to statically configure the Linode's IPv4 addresses, routing, and DNS. Your Linode's default IPv6 address will be assigned via [SLAAC](https://en.wikipedia.org/wiki/IPv6_address#Stateless_address_autoconfiguration), but additional IPv6 addresses can be added [manually](/docs/networking/native-ipv6-networking).
 
 If Network Helper is *disabled* (or if your Linode was created before Network Helper became default), your Linode will be assigned its IPv4 network configuration by DHCP from the datacenter's networking hardware. One limitation of DHCP is that it can only assign one IP address per DHCP lease request. If you want additional IPs for your Linode, you must use static addressing.
@@ -85,7 +87,7 @@ Add the following addressing to the interface's configuration:
     DNS= 203.0.113.1 203.0.113.2 203.0.113.3
     Domains=members.linode.com
     IPv6PrivacyExtensions=false
-    
+
     Gateway=198.51.100.1
 
     # Your primary public IP address
@@ -112,19 +114,19 @@ The default ethernet interface file is located at `/etc/sysconfig/network-script
 
     # Edit this line from "dhcp" to "none":
     BOOTPROTO=none
-    
+
     # Edit from "yes" to "no":
     PEERDNS=no
-    
+
     ...
-    
+
     # Add the following lines:
     DOMAIN=members.linode.com
-    
+
     # We specifically want GATEWAY0 here, not
     # GATEWAY without an interger following it.
     GATEWAY0=198.51.100.1
-    
+
     DNS1=203.0.113.1
     DNS2=203.0.113.2
     DNS3=203.0.113.3

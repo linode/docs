@@ -15,6 +15,8 @@ title: Install and Configure Drupal 8
 
 Drupal 8 is the lastest version of the popular [Drupal](https://www.drupal.org/) content management system. This guide demonstrates how to install Drupal 8 on your Linode running Debian or Ubuntu.
 
+![Install and Configure Drupal 8](/docs/assets/install-and-configure-drupal-8.png)
+
 ## Before You Begin
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
@@ -53,7 +55,7 @@ Drupal 8 is the lastest version of the popular [Drupal](https://www.drupal.org/)
         sudo apt-get install php5-gd
 
 4.  Drupal 8's `settings.php` and `services.yml` files are configured when the first start configuration is run. The files must be created from the default templates and their permissions changed so that Drupal can write to them.
-        
+
         cd /var/www/html/example.com/public_html/sites/default
         sudo cp default.settings.php settings.php && sudo cp default.services.yml services.yml
         sudo chmod 666 {services.yml,settings.php}

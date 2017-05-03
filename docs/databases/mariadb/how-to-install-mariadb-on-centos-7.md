@@ -20,6 +20,8 @@ external_resources:
 
 MariaDB is a fork of the popular cross-platform MySQL database management system and is considered a full [drop-in replacement](https://mariadb.com/kb/en/mariadb/mariadb-vs-mysql-features/) for MySQL. MariaDB was created by one of MySQL's originial developers in 2009 after MySQL was acquired by Oracle during the Sun Microsystems merger. Today MariaDB is maintained and developed by the [MariaDB Foundation](https://mariadb.org/en/foundation/) and community contributors with the intention of it remaining GNU GPL software.
 
+![How to Install MariaDB on CentOS 7](/docs/assets/how-to-install-mariadb-on-centos-7.png)
+
 MariaDB replaced MySQL as the default database system in the CentOS 7 repositories. Though installing MySQL into CentOS 7 is not difficult (see our [MySQL CentOS 7 guide](https://linode.com/docs/databases/mysql/how-to-install-mysql-on-centos-7) for instructions), if you simply need a database MariaDB is recommended for official support and a minimal chance of incompatibilities with other repository software.
 
 {: .note}
@@ -125,9 +127,9 @@ The standard tool for interacting with MariaDB is the `mariadb` client, which in
 
         create database testdb;
         grant all on testdb.* to 'testuser' identified by 'password';
-        
+
 2.  Then exit MariaDB:
-    
+
         exit
 
 ### Create a Sample Table
@@ -146,7 +148,7 @@ The standard tool for interacting with MariaDB is the `mariadb` client, which in
         show tables;
 
 3.  Then exit MariaDB:
-    
+
         exit
 
 ## Reset the MariaDB Root Password

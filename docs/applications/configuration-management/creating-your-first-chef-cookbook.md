@@ -17,6 +17,8 @@ external_resources:
 
 Cookbooks are one of the key components in Chef. They describe the *desired state* of your nodes, and allow Chef to push out the changes needed to achieve this state. Creating a cookbook can seem like an arduous task at first, given the sheer amount of options provided and areas to configure, so in this guide we will walk through the creation of one of the first things people often learn to configure: A LAMP stack.
 
+![Creating Your First Chef Cookbook](/docs/assets/creating-your-first-chef-cookbook.png)
+
 Prior to using this guide, be sure to set up Chef with the [Setting Up a Chef Server, Workstation, and Node](/docs/applications/chef/setting-up-chef-ubuntu-14-04) guide, and, if needed, review the [Beginner's Guide to Chef](/docs/applications/chef/beginners-guide-chef).
 
 {: .note}
@@ -261,7 +263,7 @@ After the initial installation Apache needs to be configured, starting with its 
     ~/chef-repo/cookbooks/lamp-stack/recipes/apache.rb
     :   ~~~ ruby
         #Virtual Hosts Files
-        
+
         node["lamp-stack"]["sites"].each do |sitename, data|
           document_root = "/var/www/html/#{sitename}"
 
@@ -304,7 +306,7 @@ After the initial installation Apache needs to be configured, starting with its 
           end
         ~~~  
 
-    The `notifies` command names the `:action` to be committed, then the resource, and resource name in square brackets. 
+    The `notifies` command names the `:action` to be committed, then the resource, and resource name in square brackets.
 
 10. `notifies` can also call on `execute` commands, which will run `a2ensite`and enable the sites we've made virtual hosts files for. Add the following `execute` command **above** the *template* resource code to create the `a2ensite` script:
 
