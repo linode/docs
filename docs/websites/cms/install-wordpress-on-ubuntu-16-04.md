@@ -148,11 +148,11 @@ Instruct Apache to allow individual sites to update the `.htaccess` file, by add
 {: .file-excerpt}
 /etc/apache2/sites-available/example.com.conf
 :   ~~~ apache
-        <Directory /var/www/html/example.com/public_html>
-            Options Indexes FollowSymLinks
-            AllowOverride All
-            Require all granted
-        </Directory>
+    <Directory /var/www/html/example.com/public_html>
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
     ~~~
 
 Restart Apache to enable the changes:
