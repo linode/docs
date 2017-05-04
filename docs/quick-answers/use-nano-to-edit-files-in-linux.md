@@ -16,7 +16,7 @@ external_resources:
  - '[Emacs, nano, or Vim: Choose your Terminal-Based Test Editor Wisely](https://medium.com/linode-cube/emacs-nano-or-vim-choose-your-terminal-based-text-editor-wisely-8f3826c92a68)'
 ---
 
-GNU nano, or more commonly, nano is the basic editor built-in to most Linux distributions. In this QuickAnswer, we'll cover some basics to help you get started.
+GNU nano, or more commonly, nano is the basic editor built-in to most Linux distributions. In this QuickAnswer, we'll cover some of the essentials to help you get started.
 To learn more, visit our full guide on [using nano](/docs/tools-reference/tools/using-nano).
 
 ## Use nano to Open a System File
@@ -25,7 +25,7 @@ From the terminal, enter `nano` and the file name. If the file doesn't exist, na
 
     sudo nano /etc/hosts
 
-The above example opens the system hosts file, similar to the following screenshot:
+The above example opens the system hosts file, similar to the following:
 
 ![Ubuntu hosts file in nano](/docs/assets/nano-hosts-ubuntu.png "Ubuntu hosts file in nano")
 
