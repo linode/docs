@@ -5,19 +5,23 @@ author:
 description: 'Use GNU nano to edit text and system files from the command line.'
 keywords: 'nano, editor,terminal,command line,shell'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Thursday, April 120, 2017'
-modified: 'Thursday, April 20, 2017'
+published: 'Thursday, May 4, 2017'
+modified: 'Thursday, May 4, 2017'
 modified_by:
   name: Edward Angert
 title: 'Use nano to Edit Files in Linux'
+external_resources:
+ - '[Using nano](/docs/tools-reference/tools/using-nano)'
+ - '[nano help](https://www.nano-editor.org/dist/v2.8/nano.html)'
+ - '[Emacs, nano, or Vim: Choose your Terminal-Based Test Editor Wisely](https://medium.com/linode-cube/emacs-nano-or-vim-choose-your-terminal-based-text-editor-wisely-8f3826c92a68)'
 ---
 
 GNU nano, or more commonly, nano is the basic editor built-in to most Linux distributions. In this QuickAnswer, we'll cover some basics to help you get started.
-To learn more, visit our guide on [using nano](/docs/tools-reference/tools/using-nano).
+To learn more, visit our full guide on [using nano](/docs/tools-reference/tools/using-nano).
 
 ## Use nano to Open a System File
 
-From the terminal, call `nano` and the file name. If the file doesn't exist, nano will create a new, temporary version in the location you specify. In this example, we'll use `sudo` permissions to open the system's hosts file:
+From the terminal, enter `nano` and the file name. If the file doesn't exist, nano will create a new, temporary version in the location you specify. In this example, we'll use `sudo` permissions to open the system's hosts file:
 
     sudo nano /etc/hosts
 
@@ -25,42 +29,17 @@ The above example opens the system hosts file, similar to the following screensh
 
 ![Ubuntu hosts file in nano](/docs/assets/nano-hosts-ubuntu.png "Ubuntu hosts file in nano")
 
-In the default view, nano shows the file being edited at the top
+In the default view, nano shows the file being edited in the center of the top *Titlebar*. At the bottom, the *Shortcut List* shows commonly used commands where `^` stands for the **CTRL** key. To save, hold **CTRL** and press **O** (for Write *O*ut); to exit, **CTRL+X**.
 
-* Scroll through previous commands with the **Up** arrow on your keyboard. Press **Enter** to send the command.
-* Stop the current process and get back to the prompt: **CTRL+C**
-* Use the **TAB** key to autocomplete commands and file paths
+Notice that some commands induce the *Statusbar*, at the bottom, directly above the Shortcut List. For example, the Statusbar appears when saving files and running searches (**CTRL+W**).
 
-## Easy Ways to Fix or Undo Text in the Terminal
+## Helpful nano Shortcuts
 
-* Jump left one word: **ESC+B**
-* Jump right one word: **ESC+F**
-* Jump to the beginning of the line: **CTRL+A**
-* Jump to the end of the line: **CTRL+E**
-* Delete the previous word: **CTRL+W**
-* Clear the entire line: **CTRL+U**
+* **^W**: Search within the open file
+  * **ALT+W**: Find the next instance of the search
+* **^O**: Save the file
+* **^K**: Cut the entire line
+  * **^U**: Paste the entire line
+* **^T**: View the file browser
+* **^X**: Exit
 
-## Quickly Find and Replace within the Last-Entered Command
-
-This is especially useful for both fixing typos and re-running system commands. 
-
-In the following example, we correct the typo in the first line using the command in the second:
-
-    sudo apt update && sudp apt upgrade
-    ^sudp^sudo
-
-Use it to change the action in a system command:
-
-    sudo systemctl stop nginx.service
-    ^stop^start
-
-## Redo the Previous Command with Sudo
-
-    sudo !!
-
-## Exit Vi(m)
-
-Found your way into the Vi(m) editor?
-
-* To exit without saving: **ESC** then **:q!**
-* Save and exit: **ESC** then **:wq**
