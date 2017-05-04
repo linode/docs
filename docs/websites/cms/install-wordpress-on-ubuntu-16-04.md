@@ -193,19 +193,19 @@ Wordpress, and many of its plugins, use PHP extensions that you'll need to insta
 
     To install the GD extension:
 
-        sudo apt-get install php7.0-gd
+        sudo apt install php7.0-gd
 
 -   For full non-English language support and to fix certain character encoding-related bugs, you'll need the multibyte string (MBSTRING) extension.
 
     To install MBSTRING:
 
-        sudo apt-get install php7.0-mbstring
+        sudo apt install php7.0-mbstring
 
 -   To use XML-RPC to access Wordpress via the mobile app, or to use Jetpack, you'll need `php-xmlrpc`.  For more information on XML-RPC, visit the [WordPress guide on XML-RPC](https://codex.wordpress.org/XML-RPC_Support). For more information on Jetpack, visit [Jetpack for Wordpress](https://jetpack.com/).
 
     To install the XML-RPC extension:
 
-        sudo apt-get install php7.0-xmlrpc
+        sudo apt install php7.0-xmlrpc
 
 These are only a few of the extensions you may find useful. Plenty of other PHP extensions exist and are required for certain plugin features, such as `php7.0-curl`, `php7.0-xml`, and `php7.0-mcrypt`. If you're having issues with a plugin or widget, check its documentation to see if a PHP extension is required.
 
