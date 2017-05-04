@@ -3,7 +3,7 @@ author:
   name: Edward Angert
   email: docs@linode.com
 description: 'Use GNU nano to edit text and system files from the command line.'
-keywords: 'nano, editor,terminal,command line,shell'
+keywords: 'nano,terminal,command line,shell'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Thursday, May 4, 2017'
 modified: 'Thursday, May 4, 2017'
@@ -16,7 +16,8 @@ external_resources:
  - '[Emacs, nano, or Vim: Choose your Terminal-Based Test Editor Wisely](https://medium.com/linode-cube/emacs-nano-or-vim-choose-your-terminal-based-text-editor-wisely-8f3826c92a68)'
 ---
 
-GNU nano, or more commonly, nano is the basic editor built-in to most Linux distributions. In this QuickAnswer, we'll cover some of the essentials to help you get started.
+GNU nano, or more commonly, nano is the basic, built-in editor for most Linux distributions. In this QuickAnswer, we'll cover some of the essentials to help you get started.
+
 To learn more, visit our full guide on [using nano](/docs/tools-reference/tools/using-nano).
 
 ## Use nano to Open a System File
@@ -29,7 +30,7 @@ The above example opens the system hosts file, similar to the following:
 
 ![Ubuntu hosts file in nano](/docs/assets/nano-hosts-ubuntu.png "Ubuntu hosts file in nano")
 
-In the default view, nano shows the file being edited in the center of the top *Titlebar*. At the bottom, the *Shortcut List* shows commonly used commands where `^` stands for the **CTRL** key. To save, hold **CTRL** and press **O** (for Write *O*ut); to exit, **CTRL+X**.
+In the default view, nano displays the file being edited in the center of the top *Titlebar*. At the bottom, the *Shortcut List* shows commonly used commands where `^` stands for the **CTRL** key. To save, hold **CTRL** and press **O** (for Write *O*ut); to exit, **CTRL+X**.
 
 Notice that some commands induce the *Statusbar*, at the bottom, directly above the Shortcut List. For example, the Statusbar appears when saving files and running searches (**CTRL+W**).
 
