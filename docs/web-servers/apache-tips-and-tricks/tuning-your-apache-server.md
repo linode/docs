@@ -95,7 +95,7 @@ Apache `mod_status` diplays information related to incoming server connections b
 
 The Apache2Buddy script, similar to MySQLTuner, reviews your Apache setup, and makes suggestions based on your Apache process memory and overall RAM. Although it is a fairly basic program, focusing on the `MaxClients` directive, Apache2Buddy is useful, and can be run through a single command:
 
-	curl -L http://apache2buddy.pl/ | perl
+	curl -sL https://raw.githubusercontent.com/richardforth/apache2buddy/master/apache2buddy.pl | perl
 
 ##Multi Processing Modules
 
@@ -164,7 +164,7 @@ Sets the maximum number of idle child processes. If there are more idle processe
 ####MaxClients
 The maximum amount of requests that can be served simultaneously, with any number going past the limit being queued. If this is set too low, connections sent to queue eventually time-out; however, if set too high, it causes the memory to start swapping. If this value is increased past 256, the `ServerLimit` value must also be increased.
 
-One way to calculate the best value for this is to divide the amount of RAM each Apache process uses by the amount of RAM available, leaving some room for other processes. Use [ApacheBuddy](#apachebuddy) to help determine these values, or the commands below.
+One way to calculate the best value for this is to divide the amount of RAM each Apache process uses by the amount of RAM available, leaving some room for other processes. Use [ApacheBuddy](#apache2buddy) to help determine these values, or the commands below.
 
 To determine the RAM each Apache process uses, replace `httpd` with `apache2` on Debian or Ubuntu systems:
 
