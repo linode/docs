@@ -9,7 +9,7 @@ modified: 'Monday, April 10th, 2017'
 modified_by:
   name: Phil Zona
 published: 'Monday, April 10th, 2017'
-title: How to Use the head Command
+title: How to Use the Head Command
 ---
 
 In this guide, you'll learn how to use the `head` command. Using `head` is a simple way to show the beginning of text files, for example, when analyzing logs and other text files that change over time. It may also be combined with other tools for selective, real-time monitoring. When performing administrative tasks on your Linode, `head` is one of the most useful tools available.

@@ -9,7 +9,7 @@ modified: 'Monday, April 10th, 2017'
 modified_by:
   name: Phil Zona
 published: 'Monday, April 10th, 2017'
-title: How to Use the grep Command
+title: How to Use the Grep Command
 ---
 
 In this guide, you'll learn how to use the `grep` command. When performing administrative tasks on your Linode, many commands will give you more information than you need. Using `grep` allows you to filter that output in order to find only the data that's relevant.
