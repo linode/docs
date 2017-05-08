@@ -12,13 +12,13 @@ published: 'Monday, May 8th, 2017'
 title: Enable Backups on a Linode
 ---
 
-This QuickAnswer will show you how to enable the [Linode Backup Service](https://www.linode.com/backups) on your Linode. See our full [Backup Service](/docs/platform/linode-backup-service) guide for additional information.
+This QuickAnswer will show you how to enable the [Linode Backup Service](/backups) on your Linode. See our full [Backup Service](/docs/platform/linode-backup-service) guide for additional information.
 
 1.  Log in to the [Linode Manager](https://manager.linode.com).
 2.  From the **Linodes** tab, select the Linode you want to back up.
 3.  Click the **Backups** tab.
 4.  Click **Enable backups for this Linode**. The *Complete Your Order* webpage appears.
-5.  Review the pro-rated total, and then click **Complete Order**.
+5.  Review the pro-rated total, then click **Complete Order**.
 
 The Linode Backup Service is now enabled for the selected Linode.
 
