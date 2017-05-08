@@ -14,7 +14,7 @@ title: Deploy an Image to a Linode
 
 This QuickAnswer will show you how to deploy a Linux distribution to your Linode. See our [Getting Started](/docs/getting-started) and [Disks and Configuration Profiles](/docs/platform/disk-images/disk-images-and-configuration-profiles) guides for additional information.
 
-1.  Once you've created your Linode, select it from the **Linodes** tab to access your Linode's Dashboard. Click on **Deploy an Image**:
+1.  Once you've created your Linode, select it from the **Linodes** tab to access the Dashboard. Click on **Deploy an Image**:
 
     [![Linux Dashboard](/docs/assets/linode-manager-dashboard-newacct_small.png)](/docs/assets/linode-manager-dashboard-newacct.png)
 
@@ -24,7 +24,7 @@ This QuickAnswer will show you how to deploy a Linux distribution to your Linode
 
 2.  Select a Linux distribution from the **Image** menu.
 
-3.  Enter a size for the disk in the **Deployment Disk Size** field. By default all of the available space on your Linode is allocated. Note that the minimum deployment size for you distribution is listed under the disk size field - in this example the minimum is **900MB** for a Debian 8 image.
+3.  Enter a size for the disk in the **Deployment Disk Size** field. By default, all of the available space on your Linode is allocated. Note that the minimum deployment size for you distribution is listed under the disk size field - in this example the minimum is **900MB** for a Debian 8 image.
 
 4.  Select a swap disk size from the **Swap Disk** menu. Unless you have a specific reason to use more, the default **256MB** is recommended.
 
@@ -32,6 +32,6 @@ This QuickAnswer will show you how to deploy a Linux distribution to your Linode
 
     -   lowercase and uppercase case letters
     -   numbers
-    -   punctuation characters
+    -   punctuation marks
 
 6.  Click **Deploy**. You can monitor the progress of your distribution deployment from the Linode's job queue. Once it completes, click the **Boot** button to boot your Linode.
