@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'Easy to remember Linux command line time savers.'
 keywords: 'terminal,command line,shell,tips,tricks,easy linux,cli'
+alias: ['quick-answers/linux-command-line-tips/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Thursday, April 13, 2017'
 modified: 'Thursday, April 13, 2017'

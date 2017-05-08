@@ -5,6 +5,7 @@ author:
 description: 'View the beginning of a text file with the head command.'
 keywords: 'linux,how to,head,first lines,file'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+alias: ['quick-answers/how-to-use-head/']
 modified: 'Monday, April 10th, 2017'
 modified_by:
   name: Phil Zona
