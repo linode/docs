@@ -59,7 +59,7 @@ Since a server is a type of computer, there are a lot of similarities between a 
 -   **Internet access**: Your Linode is connected to the Internet. That's how you connect to it to get everything set up, and how your users connect to it to view your website or download your app.
 
 ### A Little Bit About Linux
-Before you install Linux, decide which distribution to install. Linux comes in several different versions known as *distributions*. Different distributions are somewhat similar to operating system versions like Windows 7 or Windows 10, except Linux distributions aren't upgraded versions of each other, bur rather different but similar *flavors* of Linux. Different distributions install different default bundles of software. To learn more about distributions see the [Distributions](#distributions) section at the end of this article or read more on your own.
+Before you install Linux, decide which distribution to install. Linux comes in several different versions known as *distributions*. Different distributions are somewhat similar to operating system versions like Windows 7 or Windows 10, except Linux distributions aren't upgraded versions of each other, but rather different yet similar *flavors* of Linux. Different distributions install different default bundles of software. To learn more about distributions see the [Distributions](#distributions) section at the end of this article or read more on your own.
 
 ### Install Linux to Get Started
 
