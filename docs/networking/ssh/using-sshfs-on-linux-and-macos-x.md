@@ -24,7 +24,7 @@ SSHFS allows users to securely access remote filesystems over the SSH protocol. 
 
 ### Install Prerequisite Packages
 
-This example uses Debian 5 (Lenny) as the client operating system. We'll be accessing a remote server running Ubuntu 9.04. Issue the following commands to ensure that your system's package database is up to date and the latest versions of your packages have been installed:
+This example uses Debian 8 (Jessie) as the client operating system. We'll be accessing a remote server running Ubuntu 16.04. Issue the following commands to ensure that your system's package database is up to date and the latest versions of your packages have been installed:
 
     apt-get update
     apt-get upgrade
@@ -40,18 +40,39 @@ The above sequence of commands will work on Ubuntu clients as well. If you're ru
 
 ### Linux Client - Mount a Remote Filesystem
 
-After the required packages are installed, you may use the `sshfs` command in your terminal to mount a remote filesystem. If you wish to use a normal user account to mount filesystems using SSHFS, you'll need to add your user to the `fuse` group first. Execute the following command as root, substituting your user account name for "someuser":
+After the required packages are installed, you may use the `sshfs` command in your terminal to mount a remote filesystem. If you wish to use a normal user account to mount filesystems using SSHFS, you'll need to add your user to the `fuse` group first.
 
-    usermod -a -G fuse someuser
 
-Log out and log back into the client system before proceeding using a normal user account. If we wanted to mount the home directory of a user named "alex" on a remote server named "archimedes.example.com", we might issue the following commands:
+To check if the `fuse` group exists run: 
+	
+	cat /etc/group | grep 'fuse' 
+
+If the group exists then execute the following command as root, subsituting your user account name for "someuser":
+	
+	usermod -a -G fuse someuser 
+
+If the group does not exist it has to be created, then we will add the user to the group: 
+	 
+	 groupadd fuse
+	 usermod -a -G fuse user 
+	
+Log out and log back into the client system before proceeding using a normal user account.
+
+The syntax for the `sshfs` command is: `sshfs [user@]host:[dir] mountpoint [options]`
+If we wanted to mount the home directory of a user named "alex" on a remote server named "archimedes.example.com", we might issue the following commands:
 
     mkdir alex-archimedes
     sshfs alex@archimedes.example.com:/home/alex alex-archimedes
 
-To umount the filesystem, issue the `umount` command:
+
+You can also `sshfs` to your Linode servers IP address: 
+	
+	sshfs alex@192.168.0.0:/home/alex alex-archimedes
+	
+To unmount the filesystem, issue the `umount` command:
 
     umount alex-archimedes
+
 
 ### SSH Keys and Persistent Mounts
 
