@@ -63,7 +63,7 @@ The `events` function should look something like this when configured:
 /etc/nginx/nginx.conf
 :	~~~ conf
 	events {
-		worker_connections 66536;
+		worker_connections 65536;
 		use epoll;
 		multi_accept on;
 	}
@@ -200,14 +200,14 @@ These file system operations improve system memory management, and can be added 
 
 When nginx is acting as a proxy, each connection to an upstream server uses a temporary, or ephemeral, port.
 
-The IPv4 local port range defines a port range value.  A common setting is `net.ipv4.ip_local_port_range 1024 65000`.
+The IPv4 local port range defines a port range value.  A common setting is `net.ipv4.ip_local_port_range = 1024 65000`.
 
 The TCP FIN timeout belays the amount of time a port must be inactive before it can reused for another connection. The default is often 60 seconds, but can normally be safely reduced to 30 or even 15 seconds:
 
 {: .file-excerpt}
 /etc/sysctl.conf
 :	~~~
-	net.ipv4.tcp_fin_timeout 15
+	net.ipv4.tcp_fin_timeout = 15
 	~~~
 
 
