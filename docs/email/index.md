@@ -8,6 +8,7 @@ title: Email Server Guides
 featured:
  - running-a-mail-server.md
  - email-with-postfix-dovecot-and-mysql.md
+ - install-mail-filtering-for-debian-8.md
  - installing-mail-filtering-for-ubuntu-12-04.md
  - using-google-apps-for-email.md
 categories:
