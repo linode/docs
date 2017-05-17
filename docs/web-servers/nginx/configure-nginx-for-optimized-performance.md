@@ -63,7 +63,7 @@ The `events` function should look something like this when configured:
 /etc/nginx/nginx.conf
 :	~~~ conf
 	events {
-		worker_connections 66536;
+		worker_connections 65536;
 		use epoll;
 		multi_accept on;
 	}
