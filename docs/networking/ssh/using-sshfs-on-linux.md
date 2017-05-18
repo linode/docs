@@ -78,15 +78,14 @@ To unmount the filesystem, issue the `umount` command:
 
 ### SSH Keys Persistent Mounts
 
-You'll need to make sure you can log into the remote server without entering a password. We can do this by modifying our SSH 
+You'll need to make sure you can log into the remote server without entering a password. We can do this by modifying our SSH directory. The SSH Key will be stored in the remote directories `authorized_keys` file. 
 
-The SSH Key will be stored in the remote directories `authorized_keys` file. Issue the following commands to generate an SSH key and copy it to the remote server's `authorized_keys2` file. 
 {:note}
->Please note: If your system is older, this file may be named `authorized_keys2`. Please consult your `/etc/ssh/sshd_config`) if you are unsure. 
+>Please note: If your system is older, this file may be named `authorized_keys2`. Please consult `/etc/ssh/sshd_config`) if you are unsure. 
 
 Substitute values appropriate for your server in commands that include a hostname or user account name.
 
-If your remote server user account doesn't already have a key in `~/.ssh`, issue this command on the remote server, accepting the defaults:
+If the user account on your remote server doesn't already have a key in `~/.ssh`, issue this command on the remote server, accepting the defaults:
 
     ssh-keygen -t rsa
 
@@ -99,15 +98,15 @@ Issue these commands on the client system to copy your public SSH key to the rem
     scp ~/.ssh/id_rsa.pub user@usersLinode.example.com:/home/user/.ssh/uploaded_key.pub
     ssh user@ausersLinode.example.com "echo \`cat ~/.ssh/uploaded_key.pub\` >> ~/.ssh/authorized_keys"
 
-At this point, you should be able to log into the remote server as "alex" without entering a password. 
+At this point, you should be able to log into the remote server as "user" without entering a password. 
 You can force the mounted filesystem to remain persistent between reboots. This is done by including a mount directive for the remote user directory in `/etc/fstab`.  
 
 {: .file-excerpt }
 /etc/fstab
 : ~~~
-	<sshfs#user@usersLinode.example.com>:/home/users /root/sshfsExample fuse defaults 0 0
+    <sshfs#user@usersLinode.example.com>:/home/users /root/sshfsExample fuse defaults 0 0
 ~~~
 
-This entry would mount the home directory for "alex" on the server "usersLinode.example.com" locally at `/root/sshfsExample` each time the system is booted. You may treat this entry like any other in `/etc/fstab`; please consult the man page for `fstab` for an in-depth explanation of available options.
+This entry would mount the home directory for "user" on the server "usersLinode.example.com" locally at `/root/sshfsExample` each time the system is booted. You may treat this entry like any other in `/etc/fstab`.
 
 
