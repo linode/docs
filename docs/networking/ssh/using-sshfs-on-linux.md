@@ -14,7 +14,7 @@ title: Using SSHFS To Mount Remote Directories
 external_resources:
  - '[SSHFS Home Page](http://fuse.sourceforge.net/sshfs.html)'
  - '[Linux Security Basics](/docs/security/basics)'
- - '[Use Public Key Authentication with SSH](/docs/tools-reference/ssh/use-public-key-authentication-with-ssh)
+ - '[Use Public Key Authentication with SSH](/docs/tools-reference/ssh/use-public-key-authentication-with-ssh)'
 ---
 
 SSHFS (Secure Shell FileSystem), is a tool that allows users to securely access remote filesystems over the SSH protocol. This guide will help you get started with SSHFS on your Linode. SSHFS eliminates the need to use FTP/SFTP to transfer files to and from a remote server. For this guide you will need the SSH deamon running on your Linode. If you do not have the SSH deamon visit '[Securing Your Server](/docs/security/securing-your-server.md) before returning to this guide. 
