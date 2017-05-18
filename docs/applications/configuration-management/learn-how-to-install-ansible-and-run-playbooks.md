@@ -2,15 +2,16 @@
 author:
     name: Linode Community
     email: docs@linode.com
-description: 'A quick getting started guide to Ansible, with a demo of how to provision a basic web server with Ansible'
+description: 'An introduction to configuration
+management with the Ansible IT automation platform including installation, configuration and playbook set up.'
 keywords: 'ansible,ansible configuration,ansible provisioning,ansible infrastructure,ansible automation,ansible configuration,ansible configuration change management,ansible server automation'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['applications/ansible/getting-started-with-ansible/']
+alias: ['applications/ansible/getting-started-with-ansible/','getting-started-with-ansible/']
 published: 'Monday, September 8, 2015'
 modified: Monday, September 8, 2015
 modified_by:
     name: Linode
-title: 'Getting Started with Ansible'
+title: 'Learn How to Install Ansible and Run Playbooks'
 contributor:
     name: Joshua Lyman
     link: https://twitter.com/jlyman
@@ -20,7 +21,7 @@ external_resources:
  - '[Ansible Example Playbooks (GitHub)](https://github.com/ansible/ansible-examples)'
 ---
 
-## About
+#Getting started with Ansible: An Installation and Configuration Tutorial
 
 Consider the monotony of administering a server fleet; keeping them all updated, pushing changes out to them, copying files, etc. Things can get complicated and time consuming very quickly, but it doesn't have to be that way.
 
