@@ -5,10 +5,10 @@ author:
 description: 'Securely accessing remote filesystems with SSHFS on Linux.'
 keywords: 'sshfs,ssh filesystem,sshfs linux,sshfs macos'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['networking/ssh-filesystems/']
+alias: ['networking/ssh-filesystems/','networking/ssh/using-sshfs-on-linux-and-macos-x/']
 modified: Thursday, May 18th, 2017
 modified_by:
-  name: Linodee
+  name: Linode
 published: 'Monday, October 26th, 2009'
 title: Using SSHFS To Mount Remote Directories
 external_resources:
@@ -108,6 +108,6 @@ You can force the mounted filesystem to remain persistent between reboots. This 
 	<sshfs#user@usersLinode.example.com>:/home/users /root/sshfsExample fuse defaults 0 0
 ~~~
 
-This entry would mount the home directory for "alex" on the server "archimedes.example.com" locally at `/root/alex-archimedes` each time the system is booted. You may treat this entry like any other in `/etc/fstab`; please consult the man page for `fstab` for an in-depth explanation of available options.
+This entry would mount the home directory for "alex" on the server "usersLinode.example.com" locally at `/root/sshfsExample` each time the system is booted. You may treat this entry like any other in `/etc/fstab`; please consult the man page for `fstab` for an in-depth explanation of available options.
 
 
