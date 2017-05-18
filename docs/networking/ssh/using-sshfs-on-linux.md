@@ -10,7 +10,7 @@ modified: Thursday, May 18th, 2017
 modified_by:
   name: Linode
 published: 'Monday, October 26th, 2009'
-title: Using SSHFS on Linux
+title: Using SSHFS To Mount Remote Directories
 external_resources:
  - '[SSHFS Home Page](http://fuse.sourceforge.net/sshfs.html)'
  - '[Linux Security Basics](/docs/security/basics)'
@@ -76,11 +76,9 @@ To unmount the filesystem, issue the `umount` command:
     umount sshfsExample
 	
 
-
 ### SSH Keys Persistent Mounts
 
-
-You'll need to make sure you can log into the remote server without entering a password; you'll need to configure SSH keys to accomplish this. This will allow you to mount the remote filesystem without needing to enter a password.
+You'll need to make sure you can log into the remote server without entering a password. We can do this by modifying our SSH 
 
 The SSH Key will be stored in the remote directories `authorized_keys` file. Issue the following commands to generate an SSH key and copy it to the remote server's `authorized_keys2` file. 
 {:note}
