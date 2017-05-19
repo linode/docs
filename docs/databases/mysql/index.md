@@ -9,7 +9,7 @@ featured:
  - deploy-mysql-workbench-for-database-administration.md
  - securely-administer-mysql-with-an-ssh-tunnel.md
  - back-up-your-mysql-databases.md
- - tuning-your-mysql-database.md
+ - mysql-performance-tuning-tutorial.md
  - how-to-install-mysql-on-debian-8.md
  - how-to-install-mysql-on-centos-7.md
  - install-mysql-on-ubuntu-14-04.md
