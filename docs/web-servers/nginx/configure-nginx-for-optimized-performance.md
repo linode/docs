@@ -74,7 +74,7 @@ The `events` function should look something like this when configured:
 
 ### Keep Alive
 
-Keep alive allows for fewer reconnections from the browser.
+Keep alive allows for fewer reconnections from the browser. Remember to place these settings inside the http {} directive.
 
 - 	`keepalive_timeout` and `keepalive_requests` control the keep alive settings.
 
@@ -97,7 +97,7 @@ Keep alive allows for fewer reconnections from the browser.
 
 ### Buffer Size
 
-Making tweaks to the buffer size can be advantageous. If the buffer sizes are too low, then nginx will write to a temporary file. This will cause for excessive disk I/O.
+Making tweaks to the buffer size can be advantageous. If the buffer sizes are too low, then nginx will write to a temporary file. This will cause for excessive disk I/O. Remember to place these settings inside the http {} directive.
 
 -	`client_body_buffer_size` handles the client buffer size.  Most client buffers are coming from POST method form submissions. 128k is normally a good choice for this setting.
 
@@ -137,7 +137,7 @@ Packets can be buffered in the network card before being handed to the CPU by se
 
 ### Timeouts
 
-Timeouts can also drastically improve performance.
+Timeouts can also drastically improve performance. Remember to place these settings inside the http {} directive.
 
 -	`client_body_timeout` sends directives for the time a server will wait for a **body** to be sent.
 
@@ -156,7 +156,7 @@ Timeouts can also drastically improve performance.
 
 ### Static Asset Serving
 
-If your site serves static assets (such as CSS/JavaScript/images), nginx can cache these files for a short period of time.  Adding this within your configuration block tells nginx to cache 1000 files for 30 seconds, excluding any files that haven't been accessed in 20 seconds, and only files that have been accessed at least 5 times in that timeframe. If you aren't deploying frequently you can safely bump up these numbers higher.
+If your site serves static assets (such as CSS/JavaScript/images), nginx can cache these files for a short period of time.  Adding this within your configuration block tells nginx to cache 1000 files for 30 seconds, excluding any files that haven't been accessed in 20 seconds, and only files that have been accessed at least 5 times in that timeframe. If you aren't deploying frequently you can safely bump up these numbers higher. Remember to place these settings inside the http {} directive.
 
 {: .file-excerpt}
 /etc/nginx/nginx.conf
@@ -167,7 +167,7 @@ If your site serves static assets (such as CSS/JavaScript/images), nginx can cac
 	open_file_cache_errors off;
 	~~~
 
-You can also cache via a particular location.  Caching files for a long time is beneficial, especially if the files have a version control system delivered by the build process or CMS.
+You can also cache via a particular location.  Caching files for a long time is beneficial, especially if the files have a version control system delivered by the build process or CMS. This should be placed in the virtual host configuration or main configuration (e.g: /etc/nginx/sites-available/default)
 
 {: .file-excerpt}
 /etc/nginx/nginx.conf
@@ -180,14 +180,14 @@ You can also cache via a particular location.  Caching files for a long time is 
 
 ### Gzipping Content
 
-For content that is plain text, nginx can use gzip compression to serve back these assets compressed to the client.  Modern web browsers will accept gzip compression and this will shave bytes off of each request that comes in for plain text assets. The list below is a "safe" list of compressible content types; however, you only want to enable the content types that you are utilizing within your web application.
+For content that is plain text, nginx can use gzip compression to serve back these assets compressed to the client.  Modern web browsers will accept gzip compression and this will shave bytes off of each request that comes in for plain text assets. The list below is a "safe" list of compressible content types; however, you only want to enable the content types that you are utilizing within your web application. Remember to place these settings inside the http {} directive.
 
 {: .file-excerpt}
 /etc/nginx/nginx.conf
 :	~~~ conf
 	gzip on;
 	gzip_min_length 1000;
-	gzip_types: text/html application/x-javascript text/css application/javascript text/javascript text/plain text/xml application/json application/vnd.ms-fontobject application/x-font-opentype application/x-font-truetype application/x-font-ttf application/xml font/eot font/opentype font/otf image/svg+xml image/vnd.microsoft.icon;
+	gzip_types text/html application/x-javascript text/css application/javascript text/javascript text/plain text/xml application/json application/vnd.ms-fontobject application/x-font-opentype application/x-font-truetype application/x-font-ttf application/xml font/eot font/opentype font/otf image/svg+xml image/vnd.microsoft.icon;
 	gzip_disable "MSIE [1-6]\.";
 	~~~
 
@@ -223,7 +223,7 @@ The `net.ipv4.tcp_max_syn_backlog` determines a number of packets to keep in the
 
 ### Close connection on Missing Client Response
 
-`reset_timedout_connection on;` allows the server to close the connection after a client stops responding. This frees up socket-associated memory.
+`reset_timedout_connection on;` allows the server to close the connection after a client stops responding. This frees up socket-associated memory. Remember to place this setting inside the http {} directive.
 
 
 ### File Descriptors
