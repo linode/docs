@@ -2,19 +2,22 @@
 author:
   name: Elle Krout
   email: ekrout@linode.com
-description: 'Reviewing your MySQL configuration for optimum resource usage'
+description: 'A step-by-step guide to assessing your MySQL database performance using MySQLTuner to ensure optimum
+resource usage.'
 keywords: 'mysql,mysqltuner,resource tuning'
+alias: ['tuning-your-mysql-database/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Friday, February 27th, 2015
 modified_by:
   name: Linode
 published: 'Friday, February 27th, 2015'
-title: Tuning Your MySQL Database
+title: MySQL Performance Tuning Tutorial
 external_resources:
  - '[MySQL Documentation Library](http://dev.mysql.com/doc/index.html)'
  - '[MySQL Tuning Server Parameters](http://dev.mysql.com/doc/refman/5.7/en/server-parameters.html)'
  - '[MySQLTuner](http://mysqltuner.com/)'
 ---
+# How to Optimize MySQL Performance using MySQLTuner
 
 Running MySQL at optimal settings for specific resources helps in handling larger server loads and prevents any server slow-down. Generally, after [tuning Apache](/docs/websites/apache-tips-and-tricks/tuning-your-apache-server) to handle larger loads it is beneficial to tune MySQL to additional connections.
 
