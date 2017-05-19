@@ -2,8 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'A step-by-step guide to install and configure a Redis server and set up distributed data stores using
-master/slave replication on CentOS 7.'
+description: 'A step-by-step guide to install and configure a Redis server and set up distributed data stores using master/slave replication on CentOS 7.'
 keywords: 'redis, centos 7, redis cluster, centos'
 alias: ['databases/redis/deploy-redis-on-centos-7/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
