@@ -24,22 +24,33 @@ Seafile has [two editions](https://www.seafile.com/en/product/private_server/): 
 
 ## Prepare Ubuntu
 
-1.  Use our [Securing Your Server](/docs/security/securing-your-server) guide to [harden SSH access](/docs/security/securing-your-server#harden-ssh-access)
-
-2.  Update the system:
+1.  Update the system:
 
         apt update && apt upgrade
 
-3.  Set up UFW rules. UFW is Ubuntu's iptables controller which makes setting up firewall rules a little easier. For more info on UFW, see our guide [Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw). Set the allow rules for SSH and HTTP(S) access with:
+2.  Create a standard user account with root privileges. As an example, we'll call the user *sfadmin*:
 
-        ufw allow ssh
-        ufw allow http
-        ufw allow https
-        ufw enable
+        adduser sfadmin
+        adduser sfadmin sudo
+
+3.  Log out of your Linode's root user account and back in as *sfadmin*:
+
+        exit
+        ssh sfadmin&<your_linode's>ip>
+
+
+4.  You should now be logged into your Linode as *sfadmin*. Use our [Securing Your Server](/docs/security/securing-your-server#harden-ssh-access) guide to harden SSH access.
+
+5.  Set up UFW rules. UFW is Ubuntu's iptables controller which makes setting up firewall rules a little easier. For more info on UFW, see our guide [Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw). Set the allow rules for SSH and HTTP(S) access with:
+
+        sudo ufw allow ssh
+        sudo ufw allow http
+        sudo ufw allow https
+        sudo ufw enable
 
     Then check the status of your rules and list them numerically:
 
-        ufw status numbered
+        sudo ufw status numbered
 
     The output should be:
 
@@ -56,30 +67,18 @@ Seafile has [two editions](https://www.seafile.com/en/product/private_server/): 
 
     {: .note}
     >
-    > If you don't want UFW allowing SSH on port 22 for both IPv4 and IPv6, you can delete it. For example, you can delete the rule to allow SSH over IPv6 with `ufw delete 4`.
+    > If you don't want UFW allowing SSH on port 22 for both IPv4 and IPv6, you can delete it. For example, you can delete the rule to allow SSH over IPv6 with `sudo ufw delete 4`.
 
-4.  Set the Linode's hostname. We'll call it *seafile* as an example:
+6.  Set the Linode's hostname. We'll call it *seafile* as an example:
 
-        hostnamectl set-hostname seafile
+        sudo hostnamectl set-hostname seafile
 
-5.  On first boot, your Linode's timezone will be set to UTC. Changing this is optional, but if you wish, use:
+6.  On first boot, your Linode's timezone will be set to UTC. Changing this is optional, but if you wish, use:
 
-        dpkg-reconfigure tzdata
-
-6.  Create a standard user account with root privileges. As an example, we'll call the user *sfadmin*:
-
-        adduser sfadmin
-        adduser sfadmin sudo
-
-7.  Log out of your Linode's root user account and back in as *sfadmin*:
-
-        exit
-        ssh sfadmin&<your_linode's>ip>
+        sudo dpkg-reconfigure tzdata
 
 
 ## Install and Configure MySQL
-
-You should now be logged into your Linode as *sfadmin*.
 
 1.  During Installation, you will be asked to assign a password for the root mysql user:
 
@@ -98,15 +97,11 @@ You should now be logged into your Linode as *sfadmin*.
 
 If you don't already have an SSL/TLS certificate, you can create one. Note that this will be a self-signed certificate, so it will cause web browsers to complain about an insecure connection. We'll address that later in the guide.
 
-1.  Change to the root and to the location where we'll store the certificate files:
+1.  Change to the location where we'll store the certificate files and create server's certificate with key:
 
-        sudo su - root
         cd /etc/ssl
-
-2.  Create server's certificate and key files:
-
-        openssl genrsa -out caprivkey.pem 4096
-        openssl req -new -x509 -key caprivkey.pem -out cacert.pem
+        sudo openssl genrsa -out privkey.pem 4096
+        sudo openssl req -new -x509 -key privkey.pem -out cacert.pem
 
 
 ## Install and Configure nginx
@@ -178,7 +173,7 @@ server {
     }
 
     location /media {
-        root /home/sfadmin/seafile-server-latest/seahub;
+        root /home/sfadmin/sfroot/seafile-server-latest/seahub;
     }
 }
         ~~~
@@ -196,19 +191,18 @@ server {
 
 ## Configure and Install Seafile
 
-1.  [Seafile's manual](https://manual.seafile.com/deploy/using_mysql.html) advises of a particular directory tree to ease upgrades.
+1.  The [Seafile manual](https://manual.seafile.com/deploy/using_mysql.html) advises to use a particular directory structure to ease upgrades. We'll do the same here, but instead of using the example	`haiwen` directory found in the Seafile manual, we'll create a directory called `sfroot` in the `sfadmin` home folder.
 
-        mkdir installed
+        mkdir ~/sfroot && cd ~/sfroot
 
-2.  Download the Seafile CE 64 bit Linux server. You'll need to get the exact link from [seafile.com](https://www.seafile.com/en/download/). Once you have the URL, use `wget` to download it to the home directory of *sfadmin*. 
+2.  Download the Seafile CE 64 bit Linux server. You'll need to get the exact link from [seafile.com](https://www.seafile.com/en/download/). Once you have the URL, use `wget` to download it to *~/sfadmin/sfroot*.
 
-        cd ~/
         wget <link>
 
-3.  Extract the tarball to sfadmin's home and move it when finished:
+3.  Extract the tarball and move it when finished:
 
         tar -xzvf seafile-server*.tar.gz
-        mv seafile-server*.tar.gz installed
+        mkdir installed && mv seafile-server*.tar.gz installed
 
 4.  Install dependency packages for Seafile:
 
@@ -217,6 +211,8 @@ server {
 5.  Run the installation script:
 
         cd seafile-server-* && ./setup-seafile-mysql.sh
+
+    You'll be prompted to answer several questions and choose settings during the installation process. For those that recommend a default, use that.
 
 6.  Start the server.
 
@@ -227,7 +223,7 @@ server {
 
         ![First time starting Seafile](/docs/assets/seafile-firststart.png)
 
-   Seafile should now be accessible from a web browser using `server_name` you set earlier in nginx's `seafile.conf` file. Nginx will redirect to HTTPS and as mentioned earlier, your browser will warn of an insecure HTTPS connection due to the self-signed certificate you created. Once you ***'ll see the Seafile login.
+   Seafile should now be accessible from a web browser using both your Linode's IP address or the `server_name` you set earlier in nginx's `seafile.conf` file. Nginx will redirect to HTTPS and as mentioned earlier, your browser will warn of an HTTPS connection which is not private due to the self-signed certificate you created. Once you tell the browser to proceed to the site anyway, you'll see the Seafile login.
 
         ![Seafile login prompt](/docs/assets/seafile-login.png)
 
@@ -239,7 +235,7 @@ The `seafile.sh` and `seahub.sh` scripts don't automatically run if your Linode 
 1.  Create the systemd unit files:
 
     {: .file}
-    /etc/systemd/system/seahub.service
+    /etc/systemd/system/seafile.service
     :   ~~~ config
         [Unit]
         Description=Seafile Server
@@ -247,8 +243,8 @@ The `seafile.sh` and `seahub.sh` scripts don't automatically run if your Linode 
 
         [Service]
         Type=oneshot
-        ExecStart=/home/sfadmin/seafile-server-latest/seafile.sh start
-        ExecStop=/home/sfadmin/seafile-server-latest/seafile.sh stop
+        ExecStart=/home/sfadmin/sfroot/seafile-server-latest/seafile.sh start
+        ExecStop=/home/sfadmin/sfroot/seafile-server-latest/seafile.sh stop
         RemainAfterExit=yes
         User=sfadmin
         Group=sfadmin
@@ -267,8 +263,8 @@ The `seafile.sh` and `seahub.sh` scripts don't automatically run if your Linode 
 
         [Service]
         Type=oneshot
-        ExecStart=/home/sfadmin/seafile-server-latest/seahub.sh start-fastcgi
-        ExecStop=/home/sfadmin/seafile-server-latest/seahub.sh stop
+        ExecStart=/home/sfadmin/sfroot/seafile-server-latest/seahub.sh start-fastcgi
+        ExecStop=/home/sfadmin/sfroot/seafile-server-latest/seahub.sh stop
         RemainAfterExit=yes
         User=sfadmin
         Group=sfadmin
@@ -287,5 +283,9 @@ The `seafile.sh` and `seahub.sh` scripts don't automatically run if your Linode 
         sudo systemctl status seafile
         sudo systemctl status seafile
 
+3.  Confirm the startup scripts are working by rebooting your Linode. After bootup, both the Seafile and Seahub services should be active when running the status commands in the previous step. You should also still be able to access Seafile with a web browser.
+
 
 ## Updating Seafile
+
+There are various ways to update Seafile depending on if you are upgrading from one milestone to another (version 5 to 6), or upgrading between point releases (5.1.0 to 5.1.1). See the [Seafile Manual](https://manual.seafile.com/deploy/upgrade.html) for upgrade instructions that best suit your needs.
