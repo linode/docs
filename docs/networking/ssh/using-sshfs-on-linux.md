@@ -40,7 +40,11 @@ If you're running CentOS or Fedora on your Linode, use these commands instead:
 
 ### Linux Client - Mount a Remote Filesystem
 
+<<<<<<< HEAD
 Execute the command `sshfs` to mount a remote filesystem. If you wish to use a normal user account to mount filesystems using SSHFS, you'll need to add your user to the `fuse` group first. 
+=======
+After the required packages are installed, you may use the `sshfs` command in your terminal to mount a remote filesystem. If you wish to use a normal user account to mount filesystems using SSHFS, you'll need to add your user to the `fuse` group first. 
+>>>>>>> b9cabc2600420e639be397cd2670a3d29de1ff4c
 
 {:.note}
 > If you are unfamiliar with users, groups and file permissions, be sure to visit [Users and Groups](/docs/tools-reference/linux-users-and-groups) for a brief introduction. 
@@ -53,11 +57,19 @@ If the group exists then execute the following command with `sudo`, subsituting 
 	
 	sudo usermod -a -G fuse someuser 
 
+<<<<<<< HEAD
 If the group does not exist it has to be created to add the user to the `fuse` group: 
 	 
 	 sudo groupadd fuse
 	 sudo usermod -a -G fuse user 
 	
+=======
+If the group does not exist it has to be created, then we will add the user to the group: 
+
+    groupadd fuse
+    usermod -a -G fuse user 
+
+>>>>>>> b9cabc2600420e639be397cd2670a3d29de1ff4c
 Log out and log back into the client system before proceeding using a normal user account.
 
 The syntax for the `sshfs` command is: `sshfs [user@]host:[directory] mountpoint [options]`
@@ -69,23 +81,31 @@ Then we use the `sshfs` command to mount the directory from our remote server, t
     
 	sshfs user@ausersLinode.example.com:/home/user ssfhsExample
 
+<<<<<<< HEAD
 
 You can also `sshfs` to your Linode server's IP address: 
 	
 	sshfs user@192.168.0.0:/home/user sshfsExample
 	
 To unmount the filesystem, use the `umount` command:
+=======
+You can also `sshfs` to your Linode servers IP address: 
+
+    sshfs user@192.168.0.0:/home/user sshfsExample
+
+To unmount the filesystem, issue the `umount` command:
+>>>>>>> b9cabc2600420e639be397cd2670a3d29de1ff4c
 
     umount sshfsExample
-	
+
 
 ### SSH Keys Persistent Mounts
 
 To keep your servers directory mounted on your system through reboots, you have to create a persistent mount. 
 Make sure you can access the remote server without entering a password, to do this modify the SSH key directory. The SSH Key will be stored in the remote directories `authorized_keys` file. 
 
-{:note}
->Please note: If your system is older, this file may be named `authorized_keys2`. Please consult `/etc/ssh/sshd_config`) if you are unsure. 
+{: .note}
+> If your system is older, this file may be named `authorized_keys2`. Please consult `/etc/ssh/sshd_config`) if you are unsure. 
 
 Substitute values appropriate for your server in commands that include a hostname or user account name.
 
@@ -100,7 +120,7 @@ If your local client's user account doesn't already have an ssh key in `~/.ssh`,
 Issue these commands on the client system to copy your public SSH key to the remote server:
 
     scp ~/.ssh/id_rsa.pub user@usersLinode.example.com:/home/user/.ssh/uploaded_key.pub
-    ssh user@ausersLinode.example.com "echo \`cat ~/.ssh/uploaded_key.pub\` >> ~/.ssh/authorized_keys"
+    ssh user@usersLinode.example.com "echo \`cat ~/.ssh/uploaded_key.pub\` >> ~/.ssh/authorized_keys"
 
 At this point, you should be able to log into the remote server as "user" without entering a password. 
 You can force the mounted filesystem to remain persistent between reboots. This is done by including a mount directive for the remote user directory in `/etc/fstab`.  
@@ -109,7 +129,7 @@ You can force the mounted filesystem to remain persistent between reboots. This 
 /etc/fstab
 : ~~~
     <sshfs#user@usersLinode.example.com>:/home/users /root/sshfsExample fuse defaults 0 0
-~~~
+  ~~~
 
 This entry would mount the home directory for "user" on the server "usersLinode.example.com" locally at `/root/sshfsExample` each time the system is booted. You may treat this entry like any other in `/etc/fstab`.
 
